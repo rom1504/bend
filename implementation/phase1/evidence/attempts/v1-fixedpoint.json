@@ -1,0 +1,52 @@
+{
+  "started": "2026-09-21T04:31:07.326Z",
+  "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/compiler.bend",
+  "sourceSha256": "594d54fca3c3158e189623ee5d15aeb1bd82a6b7b3268c5c83d854e6edf3e2fe",
+  "runtimeSha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+  "initialCompiler": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/candidate-api.mjs",
+    "sha256": "832c4b45e1477bc44441c8a9426c6e5493b11951effe573870f58df9a5ac31da"
+  },
+  "driver": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/6d43cf39393e764ed32623b8a77c502092ed1ae234d9c2a43defba111c5a7b24/typed-driver.mjs",
+    "sha256": "b745fd8c6cf90afc2d5b28233bc80c9347ac66c67c7aa64d32b5f22dce74e51f"
+  },
+  "stages": [
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/candidate-api.mjs",
+      "compilerSha256": "832c4b45e1477bc44441c8a9426c6e5493b11951effe573870f58df9a5ac31da",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint/stage2.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": null,
+      "signal": "SIGTERM",
+      "ms": 279525
+    }
+  ],
+  "complete": false,
+  "resourceConfiguration": {
+    "node": "v24.18.0",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=12288"
+    ],
+    "osStackKB": "8192",
+    "timeoutMs": 10800000
+  },
+  "requestedStages": [
+    2,
+    3
+  ],
+  "validationPolicy": {
+    "required": [
+      2,
+      3
+    ],
+    "optionalRepeat": false,
+    "condition": "Stage2 and its checked self-emission stage3 must be byte-identical for the same frozen source."
+  },
+  "error": "Compiler stage failed; inspect /home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint/stage2.mjs.log",
+  "finished": "2026-09-21T04:35:46.878Z"
+}

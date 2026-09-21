@@ -1,0 +1,27 @@
+{
+  "finished": "2026-09-21T06:46:20.272424+00:00",
+  "pass": true,
+  "scope": "Relocated bootstrap and self-emitted API smoke: checking, interpretation, JS, native CPU and invalid-type rejection; not full corpus or fixed-point proof",
+  "directory": "/tmp/bend-phase1-relocated-7lwa6u8y",
+  "driverSha256": "40fbe7554e005fc48152ec46c31c6386af73b6f9f748c44bbde5948940af3ca1",
+  "originalWorkspaceReadsBlocked": true,
+  "freshBaseCache": true,
+  "guardSource": "import fs from 'node:fs';\nimport {syncBuiltinESMExports} from 'node:module';\nimport {fileURLToPath} from 'node:url';\nimport path from 'node:path';\nconst forbidden=[\"/home/ai/bend2/build/publish/bend/selfhost\", \"/workspace/scratch/4de8c3a3f107\"];\nfunction check(value){if(value instanceof URL)value=fileURLToPath(value);if(Buffer.isBuffer(value))value=value.toString();if(typeof value!=='string')return;const p=path.resolve(value);if(forbidden.some(root=>p===root||p.startsWith(root+'/')))throw Error('Original workspace dependency: '+p);}\nfor(const name of ['readFile','readFileSync','open','openSync','stat','statSync','lstat','lstatSync','realpath','realpathSync','access','accessSync','existsSync','writeFile','writeFileSync','appendFile','appendFileSync','mkdir','mkdirSync']){const original=fs[name];if(original){const wrapped=function(...args){check(args[0]);return original.apply(this,args)};if(original.native)wrapped.native=function(...args){check(args[0]);return original.native.apply(this,args)};fs[name]=wrapped;}}\nfor(const name of ['readFile','open','stat','lstat','realpath','access','writeFile','appendFile','mkdir']){const original=fs.promises[name];if(original)fs.promises[name]=function(...args){check(args[0]);return original.apply(this,args)};}\nsyncBuiltinESMExports();\n\nlet blocked=false;try{fs.readFileSync(\"/home/ai/bend2/build/publish/bend/selfhost/README.md\")}catch(error){blocked=String(error).includes(\"Original workspace dependency\")}if(!blocked)throw Error(\"Guard self-check failed\");\n",
+  "limitations": "Node fs API guard, not an OS sandbox; native compiler/toolchain and system-library reads remain permitted. Only five smoke routes per API.",
+  "results": [
+    {
+      "artifact": "bootstrap",
+      "sha256": "b3773bb97cc32befb4d27f5b329bf2076f3be8d3cd3df1118e463a690f13368c",
+      "exitCode": 0,
+      "stdout": "PASS Base program checked\nPASS Bend normalizer returns 42\nPASS Bend-generated JavaScript returns 42\nPASS invalid type rejected by checker\nPASS Bend-generated native C returns 42\n",
+      "stderr": ""
+    },
+    {
+      "artifact": "self-emitted",
+      "sha256": "44227e5e9aa714682c3a5f042cbf38fce86cc6bc510265aeda75103ed242579a",
+      "exitCode": 0,
+      "stdout": "PASS Base program checked\nPASS Bend normalizer returns 42\nPASS Bend-generated JavaScript returns 42\nPASS invalid type rejected by checker\nPASS Bend-generated native C returns 42\n",
+      "stderr": ""
+    }
+  ]
+}

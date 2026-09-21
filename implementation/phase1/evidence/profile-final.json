@@ -1,0 +1,424 @@
+{
+  "scope": "exploratory final self-emitted tree compilation, separate from timing matrix",
+  "profileSha256": "4f2cc9544382026ba3f684e9b49d7509035ae94865c2e7c17d932aaaf937043d",
+  "compilerSha256": "44227e5e9aa714682c3a5f042cbf38fce86cc6bc510265aeda75103ed242579a",
+  "sampling": "exclusive CPU samples grouped by name and generated global source line",
+  "samples": 16887,
+  "top": [
+    [
+      "<anonymous>",
+      6876
+    ],
+    [
+      "apply",
+      5277
+    ],
+    [
+      "force",
+      1346
+    ],
+    [
+      "call",
+      844
+    ],
+    [
+      "get",
+      639
+    ],
+    [
+      "(garbage collector)",
+      600
+    ],
+    [
+      "project",
+      547
+    ],
+    [
+      "stringEq",
+      269
+    ],
+    [
+      "fields",
+      166
+    ],
+    [
+      "ctor",
+      112
+    ],
+    [
+      "compileSourceTextModule",
+      40
+    ],
+    [
+      "(program)",
+      30
+    ],
+    [
+      "sub",
+      27
+    ],
+    [
+      "fn",
+      26
+    ],
+    [
+      "is_eq",
+      18
+    ],
+    [
+      "compileForInternalLoader",
+      11
+    ],
+    [
+      "add",
+      8
+    ],
+    [
+      "compileFunction",
+      7
+    ],
+    [
+      "matcher1",
+      5
+    ],
+    [
+      "jump",
+      5
+    ],
+    [
+      "mul",
+      4
+    ],
+    [
+      "matcher",
+      3
+    ],
+    [
+      "is_le",
+      2
+    ],
+    [
+      "x7069",
+      2
+    ],
+    [
+      "PerformanceNodeTiming",
+      1
+    ]
+  ],
+  "symbols": [
+    [
+      "apply",
+      5277
+    ],
+    [
+      "<anonymous>",
+      1511
+    ],
+    [
+      "force",
+      1346
+    ],
+    [
+      "call",
+      844
+    ],
+    [
+      "get",
+      639
+    ],
+    [
+      "(garbage collector)",
+      600
+    ],
+    [
+      "project",
+      547
+    ],
+    [
+      "G[\"index_find\"]:<anonymous>",
+      538
+    ],
+    [
+      "stringEq",
+      269
+    ],
+    [
+      "G[\"f_find\"]:<anonymous>",
+      240
+    ],
+    [
+      "fields",
+      166
+    ],
+    [
+      "G[\"tg\"]:<anonymous>",
+      125
+    ],
+    [
+      "G[\"subst_node\"]:<anonymous>",
+      123
+    ],
+    [
+      "G[\"index_child\"]:<anonymous>",
+      118
+    ],
+    [
+      "ctor",
+      112
+    ],
+    [
+      "G[\"norm_eval_node\"]:<anonymous>",
+      112
+    ],
+    [
+      "G[\"subst\"]:<anonymous>",
+      97
+    ],
+    [
+      "G[\"index_child_list\"]:<anonymous>",
+      90
+    ],
+    [
+      "G[\"f_lex\"]:<anonymous>",
+      86
+    ],
+    [
+      "G[\"f_scan_word\"]:<anonymous>",
+      76
+    ],
+    [
+      "G[\"f_prec\"]:<anonymous>",
+      76
+    ],
+    [
+      "G[\"f_grow_base\"]:<anonymous>",
+      75
+    ],
+    [
+      "G[\"check_node\"]:<anonymous>",
+      70
+    ],
+    [
+      "G[\"f_atom_base\"]:<anonymous>",
+      67
+    ],
+    [
+      "G[\"dk\"]:<anonymous>",
+      67
+    ],
+    [
+      "G[\"f_lex_symbol\"]:<anonymous>",
+      66
+    ],
+    [
+      "G[\"terms_at\"]:<anonymous>",
+      66
+    ],
+    [
+      "G[\"subst_terms\"]:<anonymous>",
+      61
+    ],
+    [
+      "G[\"f_dn\"]:<anonymous>",
+      60
+    ],
+    [
+      "G[\"f_eq\"]:<anonymous>",
+      57
+    ]
+  ],
+  "measurement": {
+    "started": "2026-09-21T06:46:20.780434+00:00",
+    "config": {
+      "node": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+      "cpu": 1,
+      "flags": [
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "--cpu-prof",
+        "--cpu-prof-dir=/home/ai/bend2/build/publish/bend/selfhost/build/phase1/profile-v4"
+      ],
+      "repetitions": 1,
+      "timeout": 180,
+      "variants": [
+        {
+          "name": "candidate-selfhost",
+          "kind": "bend",
+          "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v4/stage2.mjs",
+          "driver": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/typed-driver.mjs",
+          "runtime": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+          "sourceFiles": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/compiler-v4.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/candidate-v4-api.mjs.bootstrap.json"
+          ],
+          "cacheDirectory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/build/typed/cache"
+        }
+      ],
+      "workloads": [
+        {
+          "id": "tree-io",
+          "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+          "expected": "42",
+          "caches": [
+            "off"
+          ]
+        }
+      ]
+    },
+    "artifacts": {
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v4/stage2.mjs": "44227e5e9aa714682c3a5f042cbf38fce86cc6bc510265aeda75103ed242579a",
+      "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/typed-driver.mjs": "40fbe7554e005fc48152ec46c31c6386af73b6f9f748c44bbde5948940af3ca1",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/compiler-abi.mjs": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/assemble.mjs": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/compiler-v4.bend": "b4c35d844313c9b56b1c9cecc983200d03488c3ee499cedddf0e125c872d18af",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/candidate-v4-api.mjs.bootstrap.json": "bdd79fc059a1a591418401f55409e94082cfbb50c87d8b5795e1bda28fc4ec2f",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/profile-v4.config.json": "8e75ab2e676cf31b0b026557ebedacb809d9446b03ed143e977ba239a53cd123",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare.py": "a8d251bf50c7d200cf718016cefff0146994892434f4ab9c36938119381427f8",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs": "74899f3ad48221d961cd727fad6e9827ca53a0c31acf11cc34e4e2ec4b247f24",
+      "/home/ai/.nvm/versions/node/v24.18.0/bin/node": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/bend.ts": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168",
+      "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/comp.ts": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0",
+      "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+      "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend": "ee47602e212650f57d33510b02aef711ba86f4d75b99058b3914f55e2704f4e4"
+    },
+    "node": "v24.18.0",
+    "platform": "Linux-5.10.0-46-amd64-x86_64-with-glibc2.31",
+    "stack": [
+      8388608,
+      -1
+    ],
+    "loadStart": [
+      5.52,
+      5.29,
+      5.1
+    ],
+    "cpuInfo": "processor\t: 0\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3668.950\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 0\ncpu cores\t: 4\napicid\t\t: 0\ninitial apicid\t: 0\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 1\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3600.192\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 1\ncpu cores\t: 4\napicid\t\t: 2\ninitial apicid\t: 2\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 2\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3668.921\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 2\ncpu cores\t: 4\napicid\t\t: 4\ninitial apicid\t: 4\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 3\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3668.961\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 3\ncpu cores\t: 4\napicid\t\t: 6\ninitial apicid\t: 6\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 4\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3646.377\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 0\ncpu cores\t: 4\napicid\t\t: 1\ninitial apicid\t: 1\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 5\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3600.073\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 1\ncpu cores\t: 4\napicid\t\t: 3\ninitial apicid\t: 3\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 6\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3662.185\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 2\ncpu cores\t: 4\napicid\t\t: 5\ninitial apicid\t: 5\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 7\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3669.032\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 3\ncpu cores\t: 4\napicid\t\t: 7\ninitial apicid\t: 7\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\n",
+    "memoryInfo": "MemTotal:       32765788 kB\nMemFree:        11700480 kB\nMemAvailable:   20426968 kB\nBuffers:         1898684 kB\nCached:          5340140 kB\nSwapCached:        93596 kB\nActive:          6845896 kB\nInactive:       11704540 kB\nActive(anon):    1294508 kB\nInactive(anon): 10018340 kB\nActive(file):    5551388 kB\nInactive(file):  1686200 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:       1572852 kB\nSwapFree:         741536 kB\nDirty:              7424 kB\nWriteback:             0 kB\nAnonPages:      10851480 kB\nMapped:           630580 kB\nShmem:              1236 kB\nKReclaimable:    2005784 kB\nSlab:            2186956 kB\nSReclaimable:    2005784 kB\nSUnreclaim:       181172 kB\nKernelStack:       12496 kB\nPageTables:       112536 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    17955744 kB\nCommitted_AS:   12074648 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:       35656 kB\nVmallocChunk:          0 kB\nPercpu:            38464 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:   5015552 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:     1626116 kB\nDirectMap2M:    31823872 kB\n",
+    "method": "serial fresh processes; rotating variant order; measured priming separate from cached samples; output validation outside compilation",
+    "samples": [
+      {
+        "status": "ok",
+        "exitCode": 0,
+        "processMs": 23020.720228087157,
+        "command": [
+          "taskset",
+          "-c",
+          "1",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "--cpu-prof",
+          "--cpu-prof-dir=/home/ai/bend2/build/publish/bend/selfhost/build/phase1/profile-v4",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/profile-v4-measurement/tree-io-off-0-candidate-selfhost.request.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/profile-v4-measurement/tree-io-off-0-candidate-selfhost.result.json"
+        ],
+        "importMs": 97.715987,
+        "compileMs": 21232.807044,
+        "cpuMs": 21226.827,
+        "maxRssKiB": 474816,
+        "phases": {
+          "f_parse": 5768.463941999999,
+          "f_source_parsed": 0.2824529999998049,
+          "f_load_graph": 2719.246883999999,
+          "check_book": 10851.498864,
+          "driver_owned": 2.5689259999999194,
+          "driver_todos": 304.02678000000014,
+          "specialize_book": 350.35361999999805,
+          "specialized_error": 0.05357299999741372,
+          "specialized_book": 0.0426499999994121,
+          "driver_emit_owned": 25.31490499999927,
+          "j_compile_error": 4.725144,
+          "book_context": 468.7480060000016,
+          "j_roots": 0.2789630000006582,
+          "j_stops": 8.082590000001801,
+          "reach_book": 137.54533699999956,
+          "j_foreign_error": 1.1559110000016517,
+          "annotate_selected": 280.60351399999854,
+          "j_layout_error": 81.60858399999779,
+          "j_foreign_paths": 0.5744470000026922,
+          "j_program_selected": 224.5858769999977,
+          "j_modules": 0.12848700000176905
+        },
+        "calls": {
+          "f_parse": 2,
+          "f_source_parsed": 2,
+          "f_load_graph": 1,
+          "check_book": 1,
+          "driver_owned": 1,
+          "driver_todos": 1,
+          "specialize_book": 1,
+          "specialized_error": 1,
+          "specialized_book": 1,
+          "driver_emit_owned": 1,
+          "j_compile_error": 1,
+          "book_context": 1,
+          "j_roots": 1,
+          "j_stops": 2,
+          "reach_book": 1,
+          "j_foreign_error": 1,
+          "annotate_selected": 1,
+          "j_layout_error": 1,
+          "j_foreign_paths": 1,
+          "j_program_selected": 1,
+          "j_modules": 1
+        },
+        "outputBytes": 44229,
+        "workload": "tree-io",
+        "variant": "candidate-selfhost",
+        "round": 0,
+        "cache": "off",
+        "mode": "compile",
+        "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+        "validation": {
+          "exitCode": 0,
+          "stdout": "42\n",
+          "stderr": "",
+          "expected": "42"
+        }
+      }
+    ],
+    "primes": [],
+    "summary": [
+      {
+        "workload": "tree-io",
+        "cache": "off",
+        "variant": "candidate-selfhost",
+        "attempted": 1,
+        "successful": 1,
+        "compileMs": {
+          "median": 21232.807044,
+          "min": 21232.807044,
+          "max": 21232.807044
+        },
+        "processMs": {
+          "median": 23020.720228087157,
+          "min": 23020.720228087157,
+          "max": 23020.720228087157
+        },
+        "cpuMs": {
+          "median": 21226.827,
+          "min": 21226.827,
+          "max": 21226.827
+        },
+        "maxRssKiB": {
+          "median": 474816,
+          "min": 474816,
+          "max": 474816
+        }
+      }
+    ],
+    "finished": "2026-09-21T06:46:44.729678+00:00",
+    "loadEnd": [
+      5.44,
+      5.29,
+      5.1
+    ],
+    "inputsUnchanged": true
+  },
+  "limitation": "Profile includes worker startup and compilation. A separate generated-program execution profile exists but is not this artifact. Timing under profiling is not a controlled speedup sample."
+}

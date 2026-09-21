@@ -1,6 +1,9 @@
 # Phase 1 implementation: faster checked bootstrap
 
-Status: validation in progress. This report will be completed before publication.
+Status: performance measurements complete; whole-corpus validation remains in
+progress. This is an interim implementation report. The same-source full build
+improves **2.28×**, meeting its 2× timing target; the three uncached Base workloads
+improve **2.50–2.57×**, missing their 3× target. The candidate remains experimental.
 
 ## Implemented scope
 
@@ -149,6 +152,83 @@ shared caches, GC scheduling, CPU frequency and unrelated host activity remain
 sources of variation. A single full-build measurement is descriptive, not a
 statistical confidence interval or a cross-machine comparison.
 
+## Controlled small-workload results
+
+All 175 samples succeeded and passed result validation, with all frozen inputs
+unchanged. Values are median compilation seconds across seven fresh processes
+per cell; all use cache-off mode. Bootstrap and self-emitted artifacts are
+different execution modes, so both comparisons are shown.
+
+| Workload | Pinned TS | Old bootstrap | New bootstrap | Old self-emitted | New self-emitted | Self speedup |
+|---|---:|---:|---:|---:|---:|---:|
+| No Base (check) | 0.0062 | 0.0528 | 0.0485 | 0.1184 | 0.0775 | 1.53× |
+| 256 declarations (check) | 0.0265 | 1.524 | 1.133 | 4.235 | 1.853 | 2.29× |
+| Base U32 | 0.3828 | 8.805 | 7.134 | 43.979 | 17.608 | 2.50× |
+| Tree / IO | 0.3956 | 9.110 | 7.466 | 45.952 | 17.873 | 2.57× |
+| List sort | 0.4923 | 11.357 | 8.578 | 53.191 | 21.073 | 2.52× |
+
+The three Base workloads improve **2.50–2.57×** in the self-emitted compiler and
+**1.22–1.32×** in the bootstrap API. All three miss the initial 3× self-emitted
+target. Upstream remains substantially faster; for example, its Base compile
+median is 0.383 seconds versus 17.608 seconds for the new self-emitted artifact.
+Fresh-process wall medians for that case are 0.680 and 17.795 seconds respectively.
+The distinction matters particularly for the tiny no-Base case, where startup
+and TypeScript module import cost dominate upstream's process time.
+
+Self-emitted observed compile ranges are 41.903–44.524 → 16.017–17.795 seconds
+for Base, 45.304–46.162 → 17.761–18.081 for tree/IO, and 51.232–62.015 →
+20.828–24.238 for list sort. These are sample ranges, not confidence intervals.
+Median process peak RSS stays broadly similar: Base 325.3 → 322.7 MiB, tree/IO
+335.5 → 337.9 MiB, and list sort 355.9 → 371.4 MiB. The latter increases about
+4.4%; this is a time improvement, not a general memory-reduction claim.
+
+[Raw samples, phase counts, import/process timing, output checks and hashes](evidence/matrix-final.json)
+retain every run, including variability. The intermediate v3 matrix remains
+separate and is not mixed with final-candidate samples.
+
+## Cache and declaration-size comparisons
+
+All 28 cold/warm samples and 14 separate priming invocations succeeded, with
+unchanged frozen inputs. These tree/IO figures are seven-run median compilation
+seconds for the self-emitted artifacts:
+
+| Cache policy | Original | Phase 1 | Speedup |
+|---|---:|---:|---:|
+| Off (original matrix) | 45.952 | 17.873 | 2.57× |
+| Cold persistent cache | 59.630 | 27.462 | 2.17× |
+| Warm persistent cache | 11.988 | 3.872 | 3.10× |
+
+Cold means an empty persistent Base cache at invocation start, so that invocation
+pays for cache construction. It is slower than cache-off because first-use
+preparation currently duplicates graph loading: both artifacts call
+`f_load_graph` twice. Warm means a fresh process after a separate checked Base
+prime; the median prime process cost is 29.987 seconds for the original and
+17.569 seconds for phase 1. Those costs are recorded separately, not silently
+included in or discarded from a cold measurement. The warm 3.10× result does not
+satisfy the design's **uncached** 3× target.
+
+[Raw cache samples and priming invocations](evidence/caches-final.json) include
+phase counts, output checks, process timing and artifact/input hashes.
+
+The declaration-size experiment checks independent constant definitions without
+Base. It retains all 18 successful samples for the 64- and 1,024-definition
+inputs, with three fresh processes per cell. The 256-definition row below is the
+seven-run original matrix; these are different repetition counts, not pooled
+samples. Values are median compilation seconds:
+
+| Definitions | Pinned TS | Original self-emitted | Phase 1 self-emitted | Self speedup |
+|---|---:|---:|---:|---:|
+| 64 | 0.0184 | 1.043 | 0.521 | 2.00× |
+| 256 | 0.0265 | 4.235 | 1.853 | 2.29× |
+| 1,024 | 0.0853 | 27.240 | 10.470 | 2.60× |
+
+Increasing the generated definitions 16× increases the observed self-emitted
+compilation time about 26.1× before the changes and 20.1× after them. This small
+experiment suggests remaining costs grow faster than the input count over this
+range; it does not establish an asymptotic complexity bound. See the
+[raw scaling measurements](evidence/scaling-final.json) for all samples and
+frozen input hashes.
+
 ## Small-workload phase evidence
 
 Across seven uncached Base samples, the old/new self-emitted median compilation
@@ -169,18 +249,75 @@ The original 3× uncached-program target is **not met** on this workload. Parsin
 and checking now account for most of its remaining time. This does not justify
 weakening checking or changing the benchmark to hide first-use cost.
 
-## Full-source control
+## Controlled full-source result
 
-The local control compiled the archived 548,538-byte, 1,391-definition source
-in 4,922.363 seconds (82.04 minutes), with a 10,245.1 MiB process peak RSS.
+Both self-emitted compilers fully checked and emitted the **same archived
+548,538-byte, 1,391-definition source**, using a warm persistent Base cache and
+one fresh process each on logical CPU 2. The source SHA-256 is
+`ec9014bc182c3c454be5f5ebd73d00d4278020c7b9d8d7d8863e8d0943ba65a9`.
+The stack and heap limits are identical: 4 MiB and 12 GiB. Both invocations
+succeeded, their generated libraries passed JavaScript syntax validation, and all
+frozen inputs remained unchanged.
+
+| Metric | Original self-emitted | Phase 1 self-emitted |
+|---|---:|---:|
+| Compilation | 4,922.363 s (82.04 min) | 2,157.110 s (35.95 min) |
+| Process wall time | 4,923.625 s | 2,157.977 s |
+| Process peak RSS | 10,245.1 MiB | 9,371.5 MiB |
+| Generated library size | 1,202,877 bytes | 1,097,290 bytes |
+
+This is **2.28× faster**, or **56.2% less compilation time**, meeting the design's
+2× full-build timing target in this comparison. Peak process RSS is 8.5% lower.
+These are single observations on a shared host, not repeated-run medians or
+confidence intervals. The old and new generated libraries differ intentionally;
+syntax validation of these benchmark outputs is not a replacement for the
+separate changed-source fixed-point proof or the unfinished corpus validation.
+
+![Compilation phases for the same archived compiler source](figures/full-build.svg)
+
+The largest remaining phases are checking and annotation: together they consume
+66.9% of the candidate's compilation time. Per-phase observations in seconds are:
+
+| Phase | Original | Phase 1 | Speedup |
+|---|---:|---:|---:|
+| Parse | 79.380 | 47.108 | 1.69× |
+| Seeded graph loading | 182.161 | 57.005 | 3.20× |
+| Check from exact prefix | 1,450.270 | 749.045 | 1.94× |
+| Annotation | 1,542.507 | 693.436 | 2.22× |
+| Runtime layout validation | 349.966 | 179.346 | 1.95× |
+| Library emission | 1,116.484 | 329.391 | 3.39× |
+
+Other phases and host work remain included in the total and in the figure. Phase
+ratios describe the combined implementation changes, not independent speedup
+factors. The [original report](evidence/control-full.json) and
+[candidate report](evidence/candidate-full.json) retain exact launch arguments,
+priming runs, phase timing, output hashes and frozen artifact/input identities.
+The [plot script](figures/full-build.py) regenerates the figure from those reports.
+
 The pinned TypeScript compiler compiled the same source with all 1,391 exports
-in 48.718 seconds and 1,731.65 MiB peak RSS. The port used a warm persistent Base
-cache; upstream has no equivalent cache and ran with caching off. Those
-measurements describe the implementations but are not a matched-cache speedup.
-Library wrappers are backend-specific: upstream explicitly requests all source
-definitions, while the port also retains Base foreign roots under its normal
-library policy.
-The final old/new self-emitted comparison uses the same warm-cache policy.
+in **48.718 seconds**, with a **1,731.65 MiB** peak RSS. It has no equivalent Base
+cache and ran with caching off, so this is a reference observation rather than a
+matched-cache ratio. Library wrappers are backend-specific: upstream explicitly
+requests all source definitions, while the port also retains Base foreign roots
+under its normal library policy. Its [raw reference report](evidence/upstream-full.json)
+records the scope and output validation.
+
+## Final profile and distribution smoke
+
+A separate final tree/IO CPU profile recorded 16,887 samples. Generic `apply`,
+`force`, `call` and `get` account for 8,106 samples (**48.0%**); garbage collection
+accounts for 600 (**3.6%**). This profile includes worker startup and is not a
+speedup sample. Its raw profile, compiler hash and measurement configuration are
+in [the profile evidence](evidence/profile-final.json). Function-name aggregation
+and generated global source-line attribution are both retained.
+
+Both the bootstrap and self-emitted APIs also passed the five-route smoke after
+copying the compiler files to a fresh `/tmp` directory and blocking Node filesystem
+reads of the original checkout. Each used a fresh Base cache and no upstream
+checkout. The [relocation report](evidence/relocation-smoke.json) retains the guard
+source, artifact hashes and outputs. This is a Node filesystem guard, not an OS
+sandbox; native toolchain and system-library access remain available. The
+existing default API separately passed those five routes with the updated host.
 
 ## Promotion status
 
@@ -198,12 +335,27 @@ definitions. This implementation preserves that call and reuses the first full
 stop set for reachability and layout; one redundant annotation stop computation
 therefore remains.
 
-First-use Base preparation still may repeat work; this change does not broaden
-persistent cache trust or change cache schema. Constructor-owner indexes, checker
+First-use Base preparation still repeats graph loading: both measured cold-cache
+variants call `f_load_graph` twice. A follow-up should reuse the freshly prepared
+Base state in the requesting invocation, with explicit first-use, invalidation,
+Base-as-main and alias tests. This change does not broaden persistent cache trust
+or change cache schema. Constructor-owner indexes, checker
 book maintenance, general direct-call workers, ownership-based argument-vector
-elision, a lowering IR and lexer buffers are separate follow-ups. Their priority
-will be based on the new profile and phase timings, rather than multiplying
-hypothetical independent speedup factors.
+elision, a lowering IR and lexer buffers are separate follow-ups. The next bounded priorities are:
+
+1. Introduce compiler-owned known-call workers, beginning with hot stable global
+   calls. Preserve partial application, intermediate evaluation order, lexical
+   environments and the trampoline. Public `apply` and foreign argument vectors
+   must retain their ownership contract.
+2. Profile `nc_compile` specifically on the timed-out native fixtures. Their
+   traces were still in native emission at the deadline. The tree/IO JS profile
+   identifies runtime overhead but cannot distinguish native emitter algorithms.
+3. Use full-build checking/annotation phase shares to select the next traversal
+   or book-maintenance change. For uncached small programs, separately measure
+   lexer/cursor work because parsing is now a substantial share.
+
+These priorities follow observed remaining costs. They are not independent
+speedup factors to multiply together.
 
 Public `apply` still copies argument vectors as required by its mutation-isolation
 contract. The checker still validates the actual declaration sequence. No cached
@@ -216,5 +368,7 @@ See the [compiler guide](../../docs/BEND-IN-BEND.md), linked from the repository
 README, for explicit artifacts, bootstrap and fixed-point commands. See the
 [performance harness](../../selfhost/tools/performance/README.md) for configuration
 and the original [baseline protocol](../../selfhost/tools/performance/BASELINE.md)
-for historical measurements. Raw evidence and final results follow after the
-current validation completes.
+for historical measurements. The linked raw performance reports are complete; whole-corpus validation is
+still in progress and remains a separate promotion gate. The
+[performance evidence manifest](evidence/performance-final-files.json) records
+checksums for the measured reports and the reproducible full-build figure.

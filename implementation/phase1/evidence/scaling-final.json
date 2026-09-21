@@ -1,0 +1,1057 @@
+{
+  "started": "2026-09-21T07:08:08.367885+00:00",
+  "config": {
+    "node": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "cpu": 2,
+    "flags": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ],
+    "repetitions": 3,
+    "timeout": 180,
+    "variants": [
+      {
+        "name": "upstream",
+        "kind": "upstream"
+      },
+      {
+        "name": "control-selfhost",
+        "kind": "bend",
+        "api": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/control/selfhost/dist/selfhost/seed-verification/seed.mjs",
+        "driver": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/control/selfhost/tools/typed-driver.mjs",
+        "runtime": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/control/selfhost/src/runtime.mjs",
+        "cacheDirectory": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/control/selfhost/build/typed/cache"
+      },
+      {
+        "name": "candidate-selfhost",
+        "kind": "bend",
+        "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v4/stage2.mjs",
+        "driver": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/typed-driver.mjs",
+        "runtime": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+        "sourceFiles": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/compiler-v4.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/candidate-v4-api.mjs.bootstrap.json"
+        ],
+        "cacheDirectory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/build/typed/cache"
+      }
+    ],
+    "workloads": [
+      {
+        "id": "declarations-64",
+        "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/declarations-64.bend",
+        "mode": "check",
+        "caches": [
+          "off"
+        ]
+      },
+      {
+        "id": "declarations-1024",
+        "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/declarations-1024.bend",
+        "mode": "check",
+        "caches": [
+          "off"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/control/selfhost/dist/selfhost/seed-verification/seed.mjs": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/control/selfhost/src/runtime.mjs": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/control/selfhost/tools/typed-driver.mjs": "4537677650830a9e6ae673d3de41969bc88c8cf4cdd92e8f9df81f8c604e1481",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/control/selfhost/tools/compiler-abi.mjs": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/control/selfhost/tools/assemble.mjs": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/control/selfhost/tools/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v4/stage2.mjs": "44227e5e9aa714682c3a5f042cbf38fce86cc6bc510265aeda75103ed242579a",
+    "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/typed-driver.mjs": "40fbe7554e005fc48152ec46c31c6386af73b6f9f748c44bbde5948940af3ca1",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/compiler-abi.mjs": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/assemble.mjs": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/compiler-v4.bend": "b4c35d844313c9b56b1c9cecc983200d03488c3ee499cedddf0e125c872d18af",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/candidate-v4-api.mjs.bootstrap.json": "bdd79fc059a1a591418401f55409e94082cfbb50c87d8b5795e1bda28fc4ec2f",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4.config.json": "e701d95c77f1e0d29de12f92b6f669cea52bed1cd2734a4dc2a3c942024f194b",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare.py": "a8d251bf50c7d200cf718016cefff0146994892434f4ab9c36938119381427f8",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs": "74899f3ad48221d961cd727fad6e9827ca53a0c31acf11cc34e4e2ec4b247f24",
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/bend.ts": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/comp.ts": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/declarations-64.bend": "389d34d0b01eb9bfb6feeca36e5c4ba625ddc9b9d54c802f07babb33a1f4c389",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/declarations-1024.bend": "48318befc8b814008ee46a23580cd1a272b8d5646fa73743869119e729f61705"
+  },
+  "node": "v24.18.0",
+  "platform": "Linux-5.10.0-46-amd64-x86_64-with-glibc2.31",
+  "stack": [
+    8388608,
+    -1
+  ],
+  "loadStart": [
+    5.12,
+    5.17,
+    5.2
+  ],
+  "cpuInfo": "processor\t: 0\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3659.888\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 0\ncpu cores\t: 4\napicid\t\t: 0\ninitial apicid\t: 0\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 1\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3659.939\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 1\ncpu cores\t: 4\napicid\t\t: 2\ninitial apicid\t: 2\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 2\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3600.199\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 2\ncpu cores\t: 4\napicid\t\t: 4\ninitial apicid\t: 4\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 3\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3659.924\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 3\ncpu cores\t: 4\napicid\t\t: 6\ninitial apicid\t: 6\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 4\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3651.377\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 0\ncpu cores\t: 4\napicid\t\t: 1\ninitial apicid\t: 1\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 5\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3616.525\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 1\ncpu cores\t: 4\napicid\t\t: 3\ninitial apicid\t: 3\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 6\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3599.981\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 2\ncpu cores\t: 4\napicid\t\t: 5\ninitial apicid\t: 5\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 7\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3600.348\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 3\ncpu cores\t: 4\napicid\t\t: 7\ninitial apicid\t: 7\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\n",
+  "memoryInfo": "MemTotal:       32765788 kB\nMemFree:        12258532 kB\nMemAvailable:   21182948 kB\nBuffers:         1902512 kB\nCached:          5523968 kB\nSwapCached:        93592 kB\nActive:          6978052 kB\nInactive:       11031268 kB\nActive(anon):    1294524 kB\nInactive(anon):  9289672 kB\nActive(file):    5683528 kB\nInactive(file):  1741596 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:       1572852 kB\nSwapFree:         742048 kB\nDirty:              6072 kB\nWriteback:           340 kB\nAnonPages:      10112616 kB\nMapped:           715132 kB\nShmem:              1352 kB\nKReclaimable:    2016176 kB\nSlab:            2194904 kB\nSReclaimable:    2016176 kB\nSUnreclaim:       178728 kB\nKernelStack:       12336 kB\nPageTables:        86504 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    17955744 kB\nCommitted_AS:   11497172 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:       35568 kB\nVmallocChunk:          0 kB\nPercpu:            38464 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:   5044224 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:     1640452 kB\nDirectMap2M:    31809536 kB\n",
+  "method": "serial fresh processes; rotating variant order; measured priming separate from cached samples; output validation outside compilation",
+  "samples": [
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 315.4634200036526,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-0-upstream.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-0-upstream.result.json"
+      ],
+      "importMs": 239.09863599999997,
+      "compileMs": 13.282677999999976,
+      "cpuMs": 13.317,
+      "maxRssKiB": 100616,
+      "phases": {
+        "load": 7.642070999999987,
+        "check": 5.391775999999993
+      },
+      "calls": {
+        "load": 1,
+        "check": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-64",
+      "variant": "upstream",
+      "round": 0,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 1188.1330430041999,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-0-control-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-0-control-selfhost.result.json"
+      ],
+      "importMs": 88.21589300000001,
+      "compileMs": 1042.7670819999998,
+      "cpuMs": 1042.806,
+      "maxRssKiB": 113992,
+      "phases": {
+        "f_parse": 367.487846,
+        "f_load_graph": 322.002516,
+        "check_book": 321.89501900000016,
+        "driver_owned": 0.7318890000001375,
+        "driver_todos": 14.752130999999963,
+        "specialize_book": 13.734236999999894,
+        "specialized_error": 0.07863299999985429,
+        "specialized_book": 0.06296999999995023
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-64",
+      "variant": "control-selfhost",
+      "round": 0,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 671.1915959604084,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-0-candidate-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-0-candidate-selfhost.result.json"
+      ],
+      "importMs": 86.536541,
+      "compileMs": 526.678353,
+      "cpuMs": 526.722,
+      "maxRssKiB": 98640,
+      "phases": {
+        "f_parse": 251.99322100000003,
+        "f_source_parsed": 0.12089500000001863,
+        "f_load_graph": 34.16672700000004,
+        "check_book": 218.77889299999998,
+        "driver_owned": 0.541464000000019,
+        "driver_todos": 9.57060899999999,
+        "specialize_book": 9.414465000000064,
+        "specialized_error": 0.03791200000000572,
+        "specialized_book": 0.03316400000005615
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_source_parsed": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-64",
+      "variant": "candidate-selfhost",
+      "round": 0,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 1203.5518740303814,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-1-control-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-1-control-selfhost.result.json"
+      ],
+      "importMs": 89.61864700000001,
+      "compileMs": 1053.4442439999998,
+      "cpuMs": 1053.493,
+      "maxRssKiB": 111668,
+      "phases": {
+        "f_parse": 376.236042,
+        "f_load_graph": 325.17976899999996,
+        "check_book": 319.46215700000005,
+        "driver_owned": 0.6638379999999415,
+        "driver_todos": 15.382012000000032,
+        "specialize_book": 14.313415999999961,
+        "specialized_error": 0.0746480000000247,
+        "specialized_book": 0.06415199999992183
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-64",
+      "variant": "control-selfhost",
+      "round": 1,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 668.8232840970159,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-1-candidate-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-1-candidate-selfhost.result.json"
+      ],
+      "importMs": 87.05829599999998,
+      "compileMs": 515.2819420000001,
+      "cpuMs": 515.318,
+      "maxRssKiB": 104748,
+      "phases": {
+        "f_parse": 246.40371600000003,
+        "f_source_parsed": 0.14176799999995637,
+        "f_load_graph": 33.849635000000035,
+        "check_book": 213.91851499999996,
+        "driver_owned": 0.5458899999999858,
+        "driver_todos": 8.920639000000051,
+        "specialize_book": 9.342408999999975,
+        "specialized_error": 0.03819900000007692,
+        "specialized_book": 0.03402500000004238
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_source_parsed": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-64",
+      "variant": "candidate-selfhost",
+      "round": 1,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 310.0497650448233,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-1-upstream.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-1-upstream.result.json"
+      ],
+      "importMs": 235.192574,
+      "compileMs": 18.360032999999987,
+      "cpuMs": 18.394,
+      "maxRssKiB": 101504,
+      "phases": {
+        "load": 7.697235000000035,
+        "check": 10.417228000000023
+      },
+      "calls": {
+        "load": 1,
+        "check": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-64",
+      "variant": "upstream",
+      "round": 1,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 667.1059590298682,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-2-candidate-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-2-candidate-selfhost.result.json"
+      ],
+      "importMs": 85.84080699999998,
+      "compileMs": 521.4554330000001,
+      "cpuMs": 521.497,
+      "maxRssKiB": 102620,
+      "phases": {
+        "f_parse": 250.329441,
+        "f_source_parsed": 0.12206099999997377,
+        "f_load_graph": 34.443781,
+        "check_book": 215.66456599999998,
+        "driver_owned": 0.5428440000000592,
+        "driver_todos": 8.990615000000048,
+        "specialize_book": 9.177802000000042,
+        "specialized_error": 0.03757899999993697,
+        "specialized_book": 0.0328949999999395
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_source_parsed": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-64",
+      "variant": "candidate-selfhost",
+      "round": 2,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 316.42512208782136,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-2-upstream.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-2-upstream.result.json"
+      ],
+      "importMs": 229.71104,
+      "compileMs": 25.264058999999975,
+      "cpuMs": 25.298,
+      "maxRssKiB": 99796,
+      "phases": {
+        "load": 19.721667999999966,
+        "check": 5.295006999999998
+      },
+      "calls": {
+        "load": 1,
+        "check": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-64",
+      "variant": "upstream",
+      "round": 2,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 1190.400087973103,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-2-control-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-64-off-2-control-selfhost.result.json"
+      ],
+      "importMs": 88.624923,
+      "compileMs": 1040.081946,
+      "cpuMs": 1040.129,
+      "maxRssKiB": 114656,
+      "phases": {
+        "f_parse": 366.058669,
+        "f_load_graph": 321.51212000000004,
+        "check_book": 320.86241699999994,
+        "driver_owned": 0.6583630000000085,
+        "driver_todos": 14.883542999999918,
+        "specialize_book": 13.900204999999914,
+        "specialized_error": 0.07878499999992528,
+        "specialized_book": 0.0620010000000093
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-64",
+      "variant": "control-selfhost",
+      "round": 2,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 387.10965402424335,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-0-upstream.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-0-upstream.result.json"
+      ],
+      "importMs": 237.79868799999997,
+      "compileMs": 85.27970399999998,
+      "cpuMs": 85.304,
+      "maxRssKiB": 102364,
+      "phases": {
+        "load": 48.37126900000004,
+        "check": 36.070888000000025
+      },
+      "calls": {
+        "load": 1,
+        "check": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-1024",
+      "variant": "upstream",
+      "round": 0,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 27399.838036857545,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-0-control-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-0-control-selfhost.result.json"
+      ],
+      "importMs": 88.81761399999999,
+      "compileMs": 27236.714658,
+      "cpuMs": 27236.751,
+      "maxRssKiB": 288456,
+      "phases": {
+        "f_parse": 8797.027884,
+        "f_load_graph": 8454.932769,
+        "check_book": 6671.280543000001,
+        "driver_owned": 6.987338000002637,
+        "driver_todos": 1646.3853549999985,
+        "specialize_book": 1653.8683859999983,
+        "specialized_error": 0.11277999999947497,
+        "specialized_book": 0.07814700000017183
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-1024",
+      "variant": "control-selfhost",
+      "round": 0,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 10751.3206389267,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-0-candidate-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-0-candidate-selfhost.result.json"
+      ],
+      "importMs": 85.84746799999999,
+      "compileMs": 10587.721536000001,
+      "cpuMs": 10587.118,
+      "maxRssKiB": 281596,
+      "phases": {
+        "f_parse": 5060.818994,
+        "f_source_parsed": 0.12800400000014633,
+        "f_load_graph": 278.8259020000005,
+        "check_book": 3698.6299360000003,
+        "driver_owned": 4.058725999999297,
+        "driver_todos": 768.3882090000006,
+        "specialize_book": 770.7213260000008,
+        "specialized_error": 0.05353900000045542,
+        "specialized_book": 0.04884499999934633
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_source_parsed": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-1024",
+      "variant": "candidate-selfhost",
+      "round": 0,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 27682.977217948064,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-1-control-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-1-control-selfhost.result.json"
+      ],
+      "importMs": 87.55777400000001,
+      "compileMs": 27492.045995,
+      "cpuMs": 27492.302,
+      "maxRssKiB": 284420,
+      "phases": {
+        "f_parse": 9044.636261000001,
+        "f_load_graph": 8449.082105,
+        "check_book": 6604.072875999998,
+        "driver_owned": 9.19059500000003,
+        "driver_todos": 1708.2203000000009,
+        "specialize_book": 1670.4504770000021,
+        "specialized_error": 0.09861999999702675,
+        "specialized_book": 0.06557700000121258
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-1024",
+      "variant": "control-selfhost",
+      "round": 1,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 10632.846483960748,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-1-candidate-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-1-candidate-selfhost.result.json"
+      ],
+      "importMs": 85.500044,
+      "compileMs": 10469.878107999999,
+      "cpuMs": 10469.955,
+      "maxRssKiB": 285724,
+      "phases": {
+        "f_parse": 4808.9919310000005,
+        "f_source_parsed": 0.13300100000014936,
+        "f_load_graph": 282.90261399999963,
+        "check_book": 3726.0642480000006,
+        "driver_owned": 4.222966999999699,
+        "driver_todos": 825.2954740000005,
+        "specialize_book": 816.1667269999998,
+        "specialized_error": 0.05142899999918882,
+        "specialized_book": 0.03725999999915075
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_source_parsed": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-1024",
+      "variant": "candidate-selfhost",
+      "round": 1,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 385.81055006943643,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-1-upstream.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-1-upstream.result.json"
+      ],
+      "importMs": 232.238413,
+      "compileMs": 95.48686200000003,
+      "cpuMs": 95.503,
+      "maxRssKiB": 101928,
+      "phases": {
+        "load": 57.907479999999964,
+        "check": 37.314242000000036
+      },
+      "calls": {
+        "load": 1,
+        "check": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-1024",
+      "variant": "upstream",
+      "round": 1,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 10606.007393915206,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-2-candidate-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-2-candidate-selfhost.result.json"
+      ],
+      "importMs": 86.469955,
+      "compileMs": 10444.891501,
+      "cpuMs": 10444.831,
+      "maxRssKiB": 281104,
+      "phases": {
+        "f_parse": 4782.527306,
+        "f_source_parsed": 0.13138199999957578,
+        "f_load_graph": 274.51970100000017,
+        "check_book": 3841.2336109999997,
+        "driver_owned": 4.63141799999903,
+        "driver_todos": 771.0278239999989,
+        "specialize_book": 764.8145120000008,
+        "specialized_error": 0.04941800000051444,
+        "specialized_book": 0.03549899999961781
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_source_parsed": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-1024",
+      "variant": "candidate-selfhost",
+      "round": 2,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 396.6347211971879,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-2-upstream.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-2-upstream.result.json"
+      ],
+      "importMs": 244.757455,
+      "compileMs": 83.64796899999999,
+      "cpuMs": 83.676,
+      "maxRssKiB": 103008,
+      "phases": {
+        "load": 47.20327199999997,
+        "check": 36.17921100000001
+      },
+      "calls": {
+        "load": 1,
+        "check": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-1024",
+      "variant": "upstream",
+      "round": 2,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 27427.09096404724,
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-2-control-selfhost.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/scaling-v4/declarations-1024-off-2-control-selfhost.result.json"
+      ],
+      "importMs": 88.53340299999999,
+      "compileMs": 27240.291996,
+      "cpuMs": 27240.494,
+      "maxRssKiB": 286392,
+      "phases": {
+        "f_parse": 8917.429553,
+        "f_load_graph": 8476.293856000002,
+        "check_book": 6450.568598000002,
+        "driver_owned": 6.9969380000002275,
+        "driver_todos": 1682.3801860000021,
+        "specialize_book": 1700.5394059999999,
+        "specialized_error": 0.10528899999917485,
+        "specialized_book": 0.06497699999817996
+      },
+      "calls": {
+        "f_parse": 1,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1
+      },
+      "outputBytes": 7,
+      "workload": "declarations-1024",
+      "variant": "control-selfhost",
+      "round": 2,
+      "cache": "off",
+      "mode": "check",
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    }
+  ],
+  "primes": [],
+  "summary": [
+    {
+      "workload": "declarations-64",
+      "cache": "off",
+      "variant": "upstream",
+      "attempted": 3,
+      "successful": 3,
+      "compileMs": {
+        "median": 18.360032999999987,
+        "min": 13.282677999999976,
+        "max": 25.264058999999975
+      },
+      "processMs": {
+        "median": 315.4634200036526,
+        "min": 310.0497650448233,
+        "max": 316.42512208782136
+      },
+      "cpuMs": {
+        "median": 18.394,
+        "min": 13.317,
+        "max": 25.298
+      },
+      "maxRssKiB": {
+        "median": 100616,
+        "min": 99796,
+        "max": 101504
+      }
+    },
+    {
+      "workload": "declarations-64",
+      "cache": "off",
+      "variant": "control-selfhost",
+      "attempted": 3,
+      "successful": 3,
+      "compileMs": {
+        "median": 1042.7670819999998,
+        "min": 1040.081946,
+        "max": 1053.4442439999998
+      },
+      "processMs": {
+        "median": 1190.400087973103,
+        "min": 1188.1330430041999,
+        "max": 1203.5518740303814
+      },
+      "cpuMs": {
+        "median": 1042.806,
+        "min": 1040.129,
+        "max": 1053.493
+      },
+      "maxRssKiB": {
+        "median": 113992,
+        "min": 111668,
+        "max": 114656
+      }
+    },
+    {
+      "workload": "declarations-64",
+      "cache": "off",
+      "variant": "candidate-selfhost",
+      "attempted": 3,
+      "successful": 3,
+      "compileMs": {
+        "median": 521.4554330000001,
+        "min": 515.2819420000001,
+        "max": 526.678353
+      },
+      "processMs": {
+        "median": 668.8232840970159,
+        "min": 667.1059590298682,
+        "max": 671.1915959604084
+      },
+      "cpuMs": {
+        "median": 521.497,
+        "min": 515.318,
+        "max": 526.722
+      },
+      "maxRssKiB": {
+        "median": 102620,
+        "min": 98640,
+        "max": 104748
+      }
+    },
+    {
+      "workload": "declarations-1024",
+      "cache": "off",
+      "variant": "upstream",
+      "attempted": 3,
+      "successful": 3,
+      "compileMs": {
+        "median": 85.27970399999998,
+        "min": 83.64796899999999,
+        "max": 95.48686200000003
+      },
+      "processMs": {
+        "median": 387.10965402424335,
+        "min": 385.81055006943643,
+        "max": 396.6347211971879
+      },
+      "cpuMs": {
+        "median": 85.304,
+        "min": 83.676,
+        "max": 95.503
+      },
+      "maxRssKiB": {
+        "median": 102364,
+        "min": 101928,
+        "max": 103008
+      }
+    },
+    {
+      "workload": "declarations-1024",
+      "cache": "off",
+      "variant": "control-selfhost",
+      "attempted": 3,
+      "successful": 3,
+      "compileMs": {
+        "median": 27240.291996,
+        "min": 27236.714658,
+        "max": 27492.045995
+      },
+      "processMs": {
+        "median": 27427.09096404724,
+        "min": 27399.838036857545,
+        "max": 27682.977217948064
+      },
+      "cpuMs": {
+        "median": 27240.494,
+        "min": 27236.751,
+        "max": 27492.302
+      },
+      "maxRssKiB": {
+        "median": 286392,
+        "min": 284420,
+        "max": 288456
+      }
+    },
+    {
+      "workload": "declarations-1024",
+      "cache": "off",
+      "variant": "candidate-selfhost",
+      "attempted": 3,
+      "successful": 3,
+      "compileMs": {
+        "median": 10469.878107999999,
+        "min": 10444.891501,
+        "max": 10587.721536000001
+      },
+      "processMs": {
+        "median": 10632.846483960748,
+        "min": 10606.007393915206,
+        "max": 10751.3206389267
+      },
+      "cpuMs": {
+        "median": 10469.955,
+        "min": 10444.831,
+        "max": 10587.118
+      },
+      "maxRssKiB": {
+        "median": 281596,
+        "min": 281104,
+        "max": 285724
+      }
+    }
+  ],
+  "finished": "2026-09-21T07:10:11.405067+00:00",
+  "loadEnd": [
+    5.06,
+    5.14,
+    5.18
+  ],
+  "inputsUnchanged": true
+}

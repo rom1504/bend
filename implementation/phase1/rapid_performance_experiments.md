@@ -198,6 +198,20 @@ corpus continues on other cores; its evidence cannot certify this newer compiler
 
 ## Rejected or deferred experiments
 
+A further diagnostic specializes 2,446 non-tail calls to 28 retained scalar
+primitives. It preserves live function identity/code/arity/environment guards,
+callee-before-argument evaluation, fallback behavior and tail-call timing. Proven
+scalar results bypass argument arrays and generic forcing. It passes 8,400
+differential corner cases and 12 mutation/order/ABI checks.
+
+Three fresh-process medians are 18.461 s control, 16.806 s with scalar
+specialization, 14.786 s with the integrated Bend modules, and 13.470 s with
+both. All outputs remain byte-identical and execute to 42. That is about **9%**
+additional time reduction from scalar specialization, measured independently and
+on top of the Bend changes. It is a candidate for later backend work, not an
+integrated emitter optimization. [Measurements](rapid-evidence/native-scalars.json)
+and [differential tests](rapid-evidence/native-scalar-tests.json) retain the details.
+
 - Guarded calls and positional workers alone improved medians only 3–5%; no large
   emitter/runtime rewrite is integrated from that evidence.
 - Retaining native `Bool.and`/`Bool.not` and flattening calls changes malformed

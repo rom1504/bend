@@ -1,5 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
 import {convertCompilerAbi} from '../../tools/typed-driver.mjs';
 test('compiler ABI conversion handles deeply nested shared graphs without recursion',()=>{
   const fields={Con:['head','tail'],Nil:[],Pair:['left','right']};
@@ -14,4 +18,26 @@ test('compiler ABI conversion handles deeply nested shared graphs without recurs
   let count=0;
   for(let node=decoded.left;node.$==='Con';node=node.tail)count++;
   assert.equal(count,50000);
+});
+test('typed adapter artifacts identify helpers beside the consumed frozen driver',async()=>{
+  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'bend-frozen-adapter-')),file=name=>path.join(directory,name);
+  const keys=['BEND_TYPED_API','BEND_TYPED_RUNTIME','BEND_BASE','BEND_TYPED_TRACE'],previous=Object.fromEntries(keys.map(key=>[key,process.env[key]]));
+  try{
+    fs.mkdirSync(file('src/runtime/native/effs'),{recursive:true});
+    for(const name of ['api.mjs','base.bend','runtime.mjs','compiler-abi.mjs','node-resource-args.mjs','native-build.mjs','assemble.mjs'])fs.writeFileSync(file(name),'fixture');
+    fs.writeFileSync(file('typed-driver.mjs'),`import {fileURLToPath} from 'node:url';
+export const project=${JSON.stringify(directory)};
+export const driverPath=fileURLToPath(import.meta.url);
+export const apiPath=project+'/api.mjs',basePath=project+'/base.bend',runtimePath=project+'/runtime.mjs',compilerAbiPath=project+'/compiler-abi.mjs',nodeResourceArgsPath=project+'/node-resource-args.mjs';
+export const inspect=()=>{},execute=()=>{};
+`);
+    const source=fs.readFileSync(new URL('../../tools/conformance/adapters/typed.mjs',import.meta.url),'utf8').replace("from '../../typed-driver.mjs'","from './typed-driver.mjs'");
+    fs.writeFileSync(file('typed.mjs'),source);
+    const {artifacts}=await import(pathToFileURL(file('typed.mjs')));
+    assert.equal(artifacts.driver,file('typed-driver.mjs'));assert.equal(artifacts.nativeBuild,file('native-build.mjs'));assert.equal(artifacts.assemble,file('assemble.mjs'));
+    for(const name of ['nativeBuild','assemble'])assert.equal(fs.readFileSync(artifacts[name],'utf8'),'fixture');
+  }finally{
+    for(const key of keys)if(previous[key]===undefined)delete process.env[key];else process.env[key]=previous[key];
+    fs.rmSync(directory,{recursive:true,force:true});
+  }
 });

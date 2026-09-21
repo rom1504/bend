@@ -8,7 +8,8 @@ process.env.BEND_TYPED_RUNTIME=runtimePath;
 process.env.BEND_BASE=basePath;
 process.env.BEND_TYPED_TRACE??='1';
 export const name='typed-bend';
-export const artifacts={compiler:apiPath,base:basePath,runtime:runtimePath,driver:driverPath,compilerAbi:compilerAbiPath,nodeResources:nodeResourceArgsPath,nativeRuntime:path.join(project,'src/runtime/native/runtime.c')};
+export const artifacts={compiler:apiPath,base:basePath,runtime:runtimePath,driver:driverPath,compilerAbi:compilerAbiPath,nodeResources:nodeResourceArgsPath,
+  nativeBuild:path.join(path.dirname(driverPath),'native-build.mjs'),assemble:path.join(path.dirname(driverPath),'assemble.mjs'),nativeRuntime:path.join(project,'src/runtime/native/runtime.c')};
 const nativeEffects=path.join(project,'src/runtime/native/effs');
 for(const file of fs.readdirSync(nativeEffects))if(fs.statSync(path.join(nativeEffects,file)).isFile())artifacts['nativeEffect/'+file]=path.join(nativeEffects,file);
 const driverDigest=crypto.createHash('sha256').update(fs.readFileSync(driverPath)).digest('hex');

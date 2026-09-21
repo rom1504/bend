@@ -27,3 +27,12 @@ const original=G.thunk;
 G.thunk={arity:0,code:(...args)=>{events.push('construct');return original.code(...args)},env:original.env,bound:[]};
 events.length=0;assert.equal(actual.dynamic(false),29n);assert.deepEqual(events,['construct'],'computed unselected thunk must still be evaluated');
 console.log('choice oracle, partial/dynamic fallback, altered body, branch order, and 50000 tail calls passed');
+
+// Inlining must preserve the pre-existing closure-factory depth boundary.
+const deepSource=path.join(directory,'deep.bend'),deepOutput=path.join(directory,'deep.mjs');
+let body='n';for(let i=0;i<70;i++)body=`kc(Nat, b, u => ${body}, u => 0n)`;
+fs.writeFileSync(deepSource,fs.readFileSync(source,'utf8')+'\n@unsafe\ndef deep(+b: Bool, +n: Nat) -> Nat:\n  '+body+'\n');
+const deep=await inspect(deepSource,{mode:'library'});assert.equal(deep.status,'ok',JSON.stringify(deep));
+assert.match(deep.code,/F\["\$js\./,'deep choices retain flat factories');fs.writeFileSync(deepOutput,deep.code);
+const {default:d}=await import(pathToFileURL(deepOutput));assert.equal(d.deep(true,47n),47n);assert.equal(d.deep(false,47n),0n);
+console.log('70 nested choices preserve flat closure factories and captured values');

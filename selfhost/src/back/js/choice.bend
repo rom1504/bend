@@ -59,7 +59,7 @@ law j_choice_branch:
 @unsafe
 def j_choice_call(book, spine):
   kc(Bool, String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), 4), u =>
-    kc(Bool, String.eq(tg(j_strip(kid(spine, 2))), "Lam") && String.eq(tg(j_strip(kid(spine, 3))), "Lam"), u => j_choice_definition(book, lookup(book, nm(spine))), u => False{}), u => False{})
+    kc(Bool, String.eq(tg(j_strip(kid(spine, 2))), "Lam") && String.eq(tg(j_strip(kid(spine, 3))), "Lam") && String.eq(j_l_name(j_strip(kid(spine, 2))), "") && String.eq(j_l_name(j_strip(kid(spine, 3))), ""), u => j_choice_definition(book, lookup(book, nm(spine))), u => False{}), u => False{})
 
 @unsafe
 def j_choice_definition(book, d):

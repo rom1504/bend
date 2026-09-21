@@ -10,11 +10,11 @@ import {judge} from './judge.mjs';
 const project=path.resolve(import.meta.dirname,'../..');
 const options={upstream:process.env.BEND_UPSTREAM||path.resolve(project,'../upstream-bend'),
   adapter:path.join(import.meta.dirname,'adapters/prototype.mjs'),output:path.join(project,'tests/conformance/latest.json'),
-  jobs:8,timeout:5000,lanes:'parse,check,interpreter,js,native,metal,cuda',filter:'',gpu:''};
+  jobs:8,timeout:5000,lanes:'parse,check,interpreter,js,native,metal,cuda',filter:'',gpu:'','stack-kb':0,'heap-mb':0};
 for(let i=2;i<process.argv.length;i++) {
   const arg=process.argv[i];
   if(arg==='--help') {
-    console.log('node tools/conformance/run.mjs [--upstream PATH] [--adapter PATH] [--output PATH] [--jobs N] [--timeout MS] [--lanes parse,check,interpreter,js,native,metal,cuda] [--filter REGEX] [--gpu metal,cuda]');
+    console.log('node tools/conformance/run.mjs [--upstream PATH] [--adapter PATH] [--output PATH] [--jobs N] [--timeout MS] [--stack-kb N] [--heap-mb N] [--lanes parse,check,interpreter,js,native,metal,cuda] [--filter REGEX] [--gpu metal,cuda]');
     process.exit(0);
   }
   const key=arg.slice(2);
@@ -26,6 +26,12 @@ for(const key of ['jobs','timeout']) {
   options[key]=Number(options[key]);
   if(!Number.isInteger(options[key])||options[key]<1) throw Error(`Invalid --${key}`);
 }
+for(const key of ['stack-kb','heap-mb']) {
+  options[key]=Number(options[key]);
+  if(!Number.isInteger(options[key])||options[key]<0)throw Error(`Invalid --${key}`);
+}
+const workerNodeArgs=[...(options['stack-kb']?[`--stack-size=${options['stack-kb']}`]:[]),
+  ...(options['heap-mb']?[`--max-old-space-size=${options['heap-mb']}`]:[])];
 const laneNames=['parse','check','interpreter','js','native','metal','cuda'];
 const lanes=options.lanes.split(',');
 if(lanes.some(l=>!laneNames.includes(l))) throw Error('Unknown lane');
@@ -50,7 +56,7 @@ function runWorker(request) {
   return new Promise(resolve=>{
     const file=path.join(request.workdir,'request.json');
     fs.writeFileSync(file,JSON.stringify(request));
-    const child=spawn(process.execPath,[path.join(import.meta.dirname,'worker.mjs'),file],
+    const child=spawn(process.execPath,[...workerNodeArgs,path.join(import.meta.dirname,'worker.mjs'),file],
       {cwd:request.workdir,stdio:['ignore','pipe','pipe'],detached:process.platform!=='win32'});
     let stdout='',stderr='',timedOut=false,overflow=false;
     function stop() {
@@ -117,7 +123,7 @@ if(identity.adapter==='unchecked-prototype') {
   identity.compilerSha256=sha256(fs.readFileSync(process.env.BEND_CONFORMANCE_COMPILER||path.join(project,'dist/bend2c.mjs')));
   identity.runtimeSha256=sha256(fs.readFileSync(process.env.BEND_CONFORMANCE_RUNTIME||path.join(project,'src/runtime.mjs')));
 }
-const report={schemaVersion:1,started,finished:new Date().toISOString(),host:{platform:process.platform,arch:process.arch,node:process.version},
+const report={schemaVersion:1,started,finished:new Date().toISOString(),host:{platform:process.platform,arch:process.arch,node:process.version,workerNodeArgs},
   options,identity,complete,summary,inventory:manifest,results};
 fs.mkdirSync(path.dirname(options.output),{recursive:true});fs.writeFileSync(options.output,JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({complete,summary,report:options.output},null,2));

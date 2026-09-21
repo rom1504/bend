@@ -229,3 +229,11 @@ report hashes. `coverageComplete` means that every probe was observed;
 `complete` retains the runner's stricter conformance condition. Merging cannot
 turn timeouts, diagnostic mismatches, or hardware gates into passes. Do not mix
 initial attempts with retries to select favorable results.
+
+Self-emitted compiler libraries can require a larger JavaScript stack on large
+books. `--stack-kb 4096 --heap-mb 4096` passes those limits to each isolated
+compiler worker; zero (the default) preserves Node's defaults. Setting flags on
+the runner alone does not propagate them to workers. Reports record the exact
+worker flags, and the merger refuses groups with different limits. The OS stack
+must be larger than the requested JavaScript stack (8 MiB in the phase 1 run).
+These settings do not change per-probe deadlines or generated-program flags.

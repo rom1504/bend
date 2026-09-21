@@ -29,6 +29,7 @@ test('changed artifacts, policies, inventories and unfinished runs are rejected'
     r=>{r.identity.changedArtifacts=['compiler'];},
     r=>{r.identity.finalArtifactHashes.compiler='changed';},
     r=>{r.options.timeout=600000;},
+    r=>{r.host.workerNodeArgs=['--stack-size=8192'];},
     r=>{r.inventory.tests[0].negative=true;},
     r=>{delete r.finished;}
   ]){const rows=reports();edit(rows[1].report);assert.throws(()=>mergeReports(rows));}

@@ -40,3 +40,18 @@ test('infinite compiler probe is killed and filtered run cannot claim completene
     assert.equal(report.results[0].status,'timeout');
   } finally {fs.rmSync(temporary,{recursive:true,force:true});}
 });
+test('explicit stack and heap limits reach isolated compiler workers and the report',{skip:!available},()=>{
+  const temporary=fs.mkdtempSync(path.join(os.tmpdir(),'bend-harness-limits-'));
+  try {
+    const adapter=path.join(temporary,'limits.mjs'),output=path.join(temporary,'result.json');
+    fs.writeFileSync(adapter,"export const capabilities={parse:true}; export async function probe(){return {status:'ok',phase:'parse',exitCode:0,checked:false,args:process.execArgv}}\n");
+    const id=inventory(upstream).tests[0].id.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const child=spawnSync(process.execPath,[path.join(project,'tools/conformance/run.mjs'),'--upstream',upstream,'--adapter',adapter,
+      '--output',output,'--filter','^'+id+'$','--lanes','parse','--timeout','3000','--jobs','1','--stack-kb','4096','--heap-mb','1024'],
+      {encoding:'utf8',timeout:10000});
+    assert.equal(child.status,1,child.stderr); // Filtered coverage remains incomplete.
+    const report=JSON.parse(fs.readFileSync(output,'utf8'));
+    assert.deepEqual(report.host.workerNodeArgs,['--stack-size=4096','--max-old-space-size=1024']);
+    assert.deepEqual(report.results[0].result.args,report.host.workerNodeArgs);
+  } finally {fs.rmSync(temporary,{recursive:true,force:true});}
+});

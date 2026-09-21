@@ -99,3 +99,11 @@ plus Base. Keep checked C emission separate from C optimization retries: use
 `native-compile-c.mjs` on the retained C instead of repeating Bend checking and
 emission. Build times and runtime speed are separate results; `-O0` establishes
 feasibility but is not evidence for an optimized native speedup.
+
+The measured `-O1` prototype compiled representative programs in 1.67–2.07 seconds
+and the compiler's complete frozen source in 4m25s. That full-source output matches
+the verified JS fixed point exactly. Its optimized C build took 67 seconds after
+checked C emission. Use the native guide's fresh-path `--opt=O1 --timeout-ms=180000`
+build recipe and allow `--timeout-ms=600000` for the full compiler workload; an
+initial 180-second full-source attempt timed out. These are recorded observations,
+not runtime guarantees or native self-hosting certification.

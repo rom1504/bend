@@ -22,12 +22,12 @@ node tools/performance/rapid/native-bundle-prepare.mjs . build/native-bundle
 node --stack-size=4096 tools/performance/rapid/native-component.mjs \
   build/native-bundle/compiler.bend build/native-bundle/build --js --cpu=1
 node tools/performance/rapid/native-compile-c.mjs \
-  build/native-bundle/build/program.c build/native-bundle/build/program-o0 \
-  --opt=O0 --cpu=1 --timeout-ms=60000
+  build/native-bundle/build/program.c build/native-bundle/build/program-o1 \
+  --opt=O1 --cpu=1 --timeout-ms=180000
 ```
 
-Keep the source-module and runtime hashes with the build report. An executable built from a snapshot must be tested
-with the runtime from that same snapshot.
+Keep the source-module and runtime hashes with the build report. An executable
+built from a snapshot must be tested with the runtime from that same snapshot.
 
 Run the executable through the guarded host wrapper:
 
@@ -94,7 +94,7 @@ the configuration. It records input/artifact hashes, emitted-byte equality,
 execution, pipeline time, and process wall time. This comparison isolates the
 execution backend; it does not measure the handwritten TypeScript compiler.
 
-The quick build separates checked emission from C compilation, preserving both
+The build separates checked emission from C compilation, preserving both
 reports so a slow optimization pass never forces repeating earlier work. O0 is
 a feasibility build: it compiled the first full-compiler C snapshot in 18.6
 seconds. Runtime optimization is a separate experiment. Default `--build` uses
@@ -105,3 +105,26 @@ checked C for that optimized build, run `native-compile-c.mjs` with a fresh bina
 path, `--opt=O1 --timeout-ms=180000`. These build results alone do not establish
 native runtime performance. Use a supported Clang installation; the build tools
 record the selected compiler, flags, source hashes, and available diagnostics.
+
+The optimized prototype's measured runtime is 1.67–2.07 seconds on the three
+small workloads and 4m25s for the compiler's complete frozen source. Its full
+source output matches the checked JS fixed point byte-for-byte; this does not
+establish a native self-hosting fixed point. See the
+[implementation report](../../../../implementation/phase1/rapid_performance_experiments.md)
+for exact artifacts, repeated small-workload comparisons, retained failures and
+the separate TypeScript reference.
+
+To exercise a complete current source assembly with the optimized executable,
+keep this run separate from ordinary component checks:
+
+```sh
+node tools/assemble.mjs --output build/native-self-source.bend
+node tools/performance/rapid/native-bundle-run.mjs \
+  build/native-bundle/build/program-o1 build/native-self-source.bend \
+  .bootstrap/upstream/bend2/base.bend build/native-bundle/src/runtime.mjs \
+  build/native-self-source-api.mjs library --cpu=1 --timeout-ms=600000
+```
+
+The binary path must match the fresh optimized output chosen in the build step.
+Use a compiler snapshot built from the intended source and its paired runtime;
+output-hash comparison is only meaningful when source and runtime are identical.

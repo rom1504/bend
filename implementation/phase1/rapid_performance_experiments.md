@@ -1,8 +1,10 @@
 # Rapid performance experiments
 
 Status: two pure-Bend improvements integrated; checked bootstrap, all component
-groups and the new whole-compiler fixed point pass. Native execution experiments
-are in progress; full corpus results do not yet certify the new artifacts.
+groups and the new whole-compiler fixed point pass. The optimized native prototype
+passes its semantic suite and compiles the compiler's own source in 4m25s to the
+identical verified JS artifact. Full corpus results do not yet certify these new
+artifacts; the native host supports a main module plus Base.
 
 The [design](../../design/phase1/rapid_performance_experiments.md) separates cheap
 causal experiments from full compiler validation. The frozen phase 1 API is
@@ -362,13 +364,73 @@ These are backend comparisons of the same Bend implementation, **not** compariso
 with handwritten TypeScript. The separate whole-compiler table above measures
 the original TypeScript reference and complete self-emitted JS artifacts. The
 native result supports using an optimized native bootstrap for repeated compiler
-work, while its restricted host and pending larger-source measurements prevent
+work, while its restricted host and limited validation coverage prevent
 claiming a general drop-in compiler replacement or full native conformance.
 
 [Matched O1 measurements](rapid-evidence/native-compiler/matched-o1.json),
 [retained O0 measurements](rapid-evidence/native-compiler/matched-o0.json), and
 [optimized semantic checks](rapid-evidence/native-compiler/validation4-o1/validation.json)
 preserve timings, commands, exact hashes, output checks and source stability.
+
+## Native compilation of the compiler's own source
+
+The optimized native executable compiled the exact frozen compiler source with
+full checking and library emission in **264.863 seconds** inside its timer,
+**264.913 seconds (4m24.9s)** including native process startup and IO. Its
+1,114,468-byte output is **byte-identical to both verified JS fixed-point stages**:
+
+`ea27e9e9a50ee5a5a569f785c4436e7100ab371c15f258f1a7d26ba1ee4354d5`
+
+The corresponding checked JS-bootstrap emission took 728.772 s; the self-emitted
+JS compiler took 1,871.710 s. These are single full-workload observations of the
+same frozen source, with identical resulting JS. The native milestone is about
+**7.1× shorter** than the self-emitted JS run. They use different host drivers:
+the native inner timer excludes IO and optional declaration reports, while its
+reported process wall includes IO. Treat this as a practical milestone comparison,
+not a rotating multi-run estimate with identical host timing boundaries.
+
+Pinned handwritten TypeScript compiled that same source in **48.518 seconds**
+(48.947 s process wall), with 1,424 explicit user-definition exports, checking
+enabled and caching off. That is a separately labelled reference with its own
+export policy, not byte-equivalent backend output. The native compiler is still
+slower than TypeScript; the experiment substantially reduces the previous gap
+without replacing the compiler algorithms with host-language implementations.
+
+The first native full-source trial reached its 180-second limit without publishing
+output. It remains recorded. A new run with the same frozen inputs and a 600-second
+limit succeeded in 264.9 seconds. No conformance deadline was changed. The small
+program speedup did not predict the larger workload precisely, which is why this
+full-source check was necessary.
+
+[Native success and exact output parity](rapid-evidence/native-compiler/o1-runs/compiler-parity-600.json),
+[retained initial timeout](rapid-evidence/native-compiler/o1-runs/compiler-timeout-180.json),
+and [exact-source TypeScript reference](rapid-evidence/upstream-integrated-full.json)
+identify the inputs, compiler binaries, policies and results. This is the Bend
+compiler executing natively and emitting verified JS; it is **not a native
+self-hosting fixed point**. Default distributed artifacts remain unpromoted.
+
+The resulting workflow has three distinct costs: approximately 57.5 seconds for
+checked source/component validation, two-to-five-minute hypothesis experiments,
+and an observed 4m25s native full-source emission after building the native
+executable. The native build requires approximately 29 seconds of checked
+emission work plus the separately measured 67-second optimized C build. Full
+self-emitted-JS and corpus certification remain independent milestone gates.
+
+## Next measured question
+
+Read-only inspection found a plausible remaining native cost, not an established
+hotspot: Base `String.append` traverses and rebuilds its left operand, while JS
+emission maps it to host string concatenation. Nested expression emission in
+`j_apply_one`/`j_apply_regular` can repeatedly copy child output through its
+ancestors. Whole-book `j_defs` is right-recursive, so we found no evidence for a
+growing-prefix, quadratic definition-list concatenation. Deep-expression lowering
+also repeats AST/type traversals; their share of the full native run is unmeasured.
+
+Before changing emission, measure native phase boundaries and a small component
+probe at several expression depths, comparing nested wrapping with fragment
+accumulation and a flat-definition control. Require identical fully consumed
+output. The 264.9-second whole-source result alone cannot identify its remaining
+bottleneck, and no speculative emitter rewrite is integrated from this inspection.
 
 ## Rejected or deferred experiments
 

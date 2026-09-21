@@ -91,7 +91,7 @@ law j_layout_error:
 
 @unsafe
 def j_layout_error(book, defs, roots, stops):
-  kc(String, j_layout_visit(book_cached(book, norm_max_book(book)), book_cached(defs, 0), roots, Nil{}, stops), u => "an open Array element type", u => "")
+  kc(String, j_layout_visit(book_context(book), book_cached(defs, 0), roots, Nil{}, stops), u => "an open Array element type", u => "")
 
 law j_layout_visit:
   for +book: List<&2, KDef>

@@ -2,6 +2,7 @@
 # dependency traversal, cycle checks, alias resolution and qualification are Bend.
 type FSource is Data:
   FSource{+name: String, +path: String, +text: String}
+  FParsedSource{+name: String, +path: String, +text: String, +parsed: FResult}
 
 type FLoaded is Data:
   FLoaded{+book: List<&2, KDef>, +error: String, +seen: List<&2, String>}
@@ -229,17 +230,23 @@ def f_source_name(source):
   match source:
     case FSource{name, path, text}:
       name
+    case FParsedSource{name, path, text, parsed}:
+      name
 
 @unsafe
 def f_source_text(source):
   match source:
     case FSource{name, path, text}:
       text
+    case FParsedSource{name, path, text, parsed}:
+      text
 
 @unsafe
 def f_source_path(source):
   match source:
     case FSource{name, path, text}:
+      path
+    case FParsedSource{name, path, text, parsed}:
       path
 
 @unsafe
@@ -299,3 +306,28 @@ law f_qual_optional:
 @unsafe
 def f_qual_optional(defs, book, ns, imports):
   f_choose(List<&2, KDef>, String.is_empty(ns), u => defs, u => f_qual_defs(defs, book, ns, imports))
+
+# Invocation-local parse handoff. The driver supplies the unqualified result of
+# this compiler's parser; graph elaboration and validation still run normally.
+law f_source_parsed:
+  for +name: String
+  for +path: String
+  for +text: String
+  for +parsed: FResult
+  FSource
+
+law f_parse_source:
+  for +source: FSource
+  FResult
+
+@unsafe
+def f_source_parsed(name, path, text, parsed):
+  FParsedSource{name, path, text, parsed}
+
+@unsafe
+def f_parse_source(source):
+  match source:
+    case FSource{name, path, text}:
+      f_parse(text)
+    case FParsedSource{name, path, text, parsed}:
+      parsed

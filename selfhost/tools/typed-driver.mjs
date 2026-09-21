@@ -54,6 +54,8 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source');
   if(files.includes('src/check/prefix.bend'))exports.push('check_from_exact_prefix','exact_prefix');
   if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_main_names');
+  if(files.includes('src/load/modules.bend'))exports.push('f_source_parsed');
+  if(files.includes('src/core/index.bend'))exports.push('book_context');
   if(files.includes('src/load/seed.bend'))exports.push('f_load_graph_seed');
   if(files.includes('src/driver/report.bend'))exports.push('driver_report');
   if(files.includes('src/diagnostic/produce.bend'))exports.push('check_book_diagnostic','diagnostic_render','diagnostic_result_locate');
@@ -123,7 +125,7 @@ export async function loadApi() {
   if(!module.G) return module.default;
   // The bootstrap compiler marshals ADTs with named fields. The self-hosted
   // runtime uses positional fields. This is an ABI conversion, not elaboration.
-  const fields={Nil:[],Con:['head','tail'],FSource:['name','path','text'],FResult:['book','error','imports'],
+  const fields={Nil:[],Con:['head','tail'],FSource:['name','path','text'],FParsedSource:['name','path','text','parsed'],FResult:['book','error','imports'],
     KTerm:['tag','name','id','quant','kids','removed'],KDef:['name','kind','arity','templates','typ','value','ctors','native','unsafe'],
     KSpecialized:['book','error'],NC_Result:['source','error'],
     DText:['text'],DTerm:['term'],DNoSpan:[],DSpan:['source','begin','end'],
@@ -150,7 +152,7 @@ export function discoverSources(api,input,{seed=null}={}) {
     const seeded=name==='Base'&&seed&&seed.sourcePath===absolute&&seed.sourceText===source;
     const parsed=prior||(seeded?{book:list([]),imports:list([]),error:''}:api.f_parse(source));
     if(parsed.error) throw Object.assign(Error(parsed.error),{phase:'parse',sourceFile:absolute});
-    sources.push({$:'FSource',name,path:absolute,text:source});
+    sources.push(api.f_source_parsed&&!seeded?api.f_source_parsed(name,absolute,source,parsed):{$:'FSource',name,path:absolute,text:source});
     if(prior)return;
     physical.set(absolute,parsed);
     if(name!=='Base'&&api.f_path_join) for(const definition of array(parsed.book)) {
@@ -281,11 +283,13 @@ export async function inspect(input,{mode='check',api,args=[],timeoutMs=5000,com
       const error=api.j_compile_error(book);
       if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
     }
-    const contextBook=book;
+    const contextBook=mode!=='native'&&api.book_context?api.book_context(book):book;
+    const roots=api.j_roots?.(contextBook,mode==='library');
+    const stops=mode!=='native'?api.j_stops?.(contextBook):null;
     const selectedEmission=mode!=='native'&&api.reach_book&&api.annotate_selected&&api.j_program_selected&&api.j_library_selected;
     if(selectedEmission) {
       trace('prune reachable definitions');
-      book=api.reach_book(book,api.j_roots(book,mode==='library'),api.j_stops(book));
+      book=api.reach_book(contextBook,roots,stops);
     }
     if(mode!=='native'&&api.j_foreign_error) {
       const error=api.j_foreign_error(book);
@@ -301,7 +305,7 @@ export async function inspect(input,{mode='check',api,args=[],timeoutMs=5000,com
     } else book=selectedEmission?api.annotate_selected(contextBook,book,api.j_stops(contextBook)):api.annotate_book(book);
     if(api.j_layout_error) {
       trace('validate runtime layouts');
-      const error=api.j_layout_error(contextBook,layoutDefs||book,api.j_roots(contextBook,mode==='library'),layoutStops||api.j_stops(contextBook));
+      const error=api.j_layout_error(contextBook,layoutDefs||book,roots,layoutStops||stops);
       if(error)return {status:'error',phase,diagnostic:'Error: '+error,exitCode:1,checked:true};
     }
     if(mode==='native') {

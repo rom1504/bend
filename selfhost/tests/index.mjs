@@ -16,3 +16,12 @@ const collided=K.book_cached(list(pair.map((name,i)=>def(name,'collision-value'+
 for(let i=0;i<2;i++)assert.equal(K.lookup(collided,pair[i]).value.name,'collision-value'+i);
 assert.equal(K.lookup(K.book_put(collided,def(pair[0],'replaced')),pair[1]).value.name,'collision-value1');
 console.log('PASS persistent indexed lookup, overrides, first-match order and exact hash collisions');
+
+if(K.book_context){
+ const context=K.book_context(raw);
+ assert.equal(context.head.kind,'BookCache');
+ assert.deepEqual(K.book_context(context),context,'prepared context does not nest indexes');
+ assert.equal(K.lookup(context,'key77').value.name,'value77');
+ assert.equal(K.lookup(K.book_context(list([])),'missing').kind,'Absent');
+ console.log('PASS prepared context identity and empty lookup');
+}

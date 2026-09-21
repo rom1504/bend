@@ -151,3 +151,17 @@ def book_put(book, d):
     case Con{h, rest}:
       kc(List<&2, KDef>, String.eq(dk(h), "BookCache"), u => Con{KDef{dn(h), dk(h), da(h), 0, atom("Absent"), atom("Absent"), Con{index_set(index_first(dc(h)), d, index_hash(dn(d), 2166136261), 32), Nil{}}, True{}, False{}}, Con{d, index_remove(rest, dn(d))}}, u => Con{d, index_remove(book, dn(d))})
 
+
+# An immutable context may be reused by several backend phases. Never nest the
+# sentinel or recompute its maximum binder ID from the index's implementation.
+law book_context:
+  for +book: List<&2, KDef>
+  List<&2, KDef>
+
+@unsafe
+def book_context(book):
+  match book:
+    case Nil{}:
+      book_cached(book, 0)
+    case Con{h, rest}:
+      kc(List<&2, KDef>, String.eq(dk(h), "BookCache"), u => book, u => book_cached(book, norm_max_book(book)))

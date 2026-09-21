@@ -31,7 +31,7 @@ try{
     fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,bytes);
   }
   assemble(manifest.modules,source,{root:snapshot});
-  const roots=['check_book','check','infer','annotate_book','kp_show','specialize_book','specialized_book','specialized_error','strong','wnf','compare','exact_prefix','check_from_exact_prefix','reach_book','lookup','book_cached','book_put','f_parse','f_load_graph','f_load_graph_seed','f_main_names','f_fresh_term','f_fresh_defs','check_book_diagnostic','diagnostic_render','diagnostic_result_locate','dg_render','diagnostic_locate','f_load_origins','f_load_origins_for','nc_ctor_identity','nc_ctor_display','nc_ctor_encode','nc_ctor_owned'];
+  const roots=['check_book','check','infer','annotate_book','kp_show','specialize_book','specialized_book','specialized_error','strong','wnf','compare','exact_prefix','check_from_exact_prefix','reach_book','lookup','book_cached','book_context','book_put','f_parse','f_source_parsed','f_load_graph','f_load_graph_seed','f_main_names','f_fresh_term','f_fresh_defs','check_book_diagnostic','diagnostic_render','diagnostic_result_locate','dg_render','diagnostic_locate','f_load_origins','f_load_origins_for','nc_ctor_identity','nc_ctor_display','nc_ctor_encode','nc_ctor_owned'];
   run('upstream checks all compiler modules',['tools/stage0-library.mjs',source,api,...roots],{env:{BEND_UPSTREAM:upstream}});
   const env={BEND_UPSTREAM:upstream,BEND_KERNEL_API:api,BEND_ANNOTATE_API:api,BEND_PRETTY_API:api,BEND_TEMPLATE_API:api,BEND_NORMALIZE_API:api,BEND_PREFIX_API:api,BEND_REACH_API:api,BEND_INDEX_API:api,BEND_FRONT_API:api,BEND_DIAGNOSTIC_API:api,BEND_NATIVE_IDENTITY_API:api};
   run('dependent checker and annotation',['tests/kernel.mjs'],{env});
@@ -42,6 +42,7 @@ try{
   run('persistent book index',['tests/index.mjs'],{env});
   run('dependency closure',['tests/reach.mjs'],{env});
   run('validated prefix reuse',['tests/prefix.mjs'],{env});
+  run('parsed source handoff',['tests/frontend/parsed-source.mjs'],{env});
   run('seeded loader equivalence',['tests/frontend/seed-cache.mjs'],{env});
   run('stack-safe binder freshening',['tests/frontend/fresh-work.mjs'],{env});
   run('stack-safe declaration freshening',['tests/frontend/fresh-book.mjs'],{env});

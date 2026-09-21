@@ -217,7 +217,7 @@ def f_graph_source_load(s, ns, sources, g, stack):
 
 @unsafe
 def f_graph_cached(s, ns, sources, g, stack, entry):
-  f_choose(FGraph, f_eq(tg(entry), "Absent"), u => f_graph_parsed(s, ns, sources, g, Con{f_source_path(s), stack}, f_parse(f_source_text(s))), u => f_choose(FGraph, f_eq(nm(kid(entry, 0)), ns), u => g, u => f_graph_error(g, "one namespace per source file: " ++ f_source_path(s))))
+  f_choose(FGraph, f_eq(tg(entry), "Absent"), u => f_graph_parsed(s, ns, sources, g, Con{f_source_path(s), stack}, f_parse_source(s)), u => f_choose(FGraph, f_eq(nm(kid(entry, 0)), ns), u => g, u => f_graph_error(g, "one namespace per source file: " ++ f_source_path(s))))
 
 @unsafe
 def f_graph_error(g, err):
@@ -341,7 +341,7 @@ law f_main_seen:
 
 @unsafe
 def f_main_names(main, sources):
-  f_main_result_names(f_parse(f_source_text(f_graph_source(main, sources))))
+  f_main_result_names(f_parse_source(f_graph_source(main, sources)))
 
 @unsafe
 def f_main_result_names(r):

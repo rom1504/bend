@@ -147,15 +147,15 @@ def ka_wrap(t, ty):
 
 @unsafe
 def annotate_book(book):
-  ka_defs(book_cached(book, norm_max_book(book)), book)
+  ka_defs(book_context(book), book)
 
 @unsafe
 def annotate_except(book, stops):
-  ka_defs_except(book_cached(book, norm_max_book(book)), book, stops)
+  ka_defs_except(book_context(book), book, stops)
 
 @unsafe
 def annotate_selected(book, selected, stops):
-  ka_defs_except(book_cached(book, norm_max_book(book)), selected, stops)
+  ka_defs_except(book_context(book), selected, stops)
 
 @unsafe
 def ka_defs_except(book, ds, stops):

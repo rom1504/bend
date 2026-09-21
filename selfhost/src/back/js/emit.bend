@@ -454,6 +454,15 @@ law j_program_selected:
 
 @unsafe
 def j_program_selected(book, defs):
+  j_program_context(book_context(book), defs)
+
+law j_program_context:
+  for +book: List<&2, KDef>
+  for +defs: List<&2, KDef>
+  String
+
+@unsafe
+def j_program_context(book, defs):
   j_ctor_metadata(defs) ++ j_schemas(book, defs) ++ j_defs(book, defs) ++ "\nawait runmain(" ++ j_descriptor(book, dt(lookup(book, "main")), 64) ++ "," ++ kc(String, j_io_type(book, dt(lookup(book, "main"))), u => "true", u => "false") ++ ");\n"
 
 law j_let:
@@ -751,6 +760,15 @@ law j_library_selected:
 
 @unsafe
 def j_library_selected(book, defs):
+  j_library_context(book_context(book), defs)
+
+law j_library_context:
+  for +book: List<&2, KDef>
+  for +defs: List<&2, KDef>
+  String
+
+@unsafe
+def j_library_context(book, defs):
   j_ctor_metadata(defs) ++ j_schemas(book, defs) ++ j_defs(book, defs) ++ "\nexport {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k,(...args)=>call(get(G,k),args)]));\n"
 
 law j_desc_kind:

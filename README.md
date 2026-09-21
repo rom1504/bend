@@ -10,6 +10,12 @@ And with a **fast compiler**, we can run that code at peak compute.
 
 That's Bend - and nothing else.
 
+## Compiler written in Bend
+
+This fork includes the compiler port in [`selfhost/`](selfhost/README.md).
+See [building, running and validating it](docs/BEND-IN-BEND.md), and the
+[phase 1 implementation report](implementation/phase1/report.md).
+
 ## Bend runs FAST
 
 **Target:** be as fast as C on the CPU, as fast as CUDA on the GPU. **Status:**

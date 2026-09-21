@@ -83,3 +83,24 @@ fall back to the TypeScript compiler.
 Copied upstream C/Metal/CUDA runtime code is a runtime dependency, not a
 substitute for porting code-generation logic. Target hardware limitations must
 be reported as untested capabilities, not passing GPU tests.
+
+## Invocation work reuse
+
+Source discovery can construct `FParsedSource` through the Bend
+`f_source_parsed` factory. The graph loader, seed fallback and main-name query
+consume that immutable `FResult` through `f_parse_source`; raw `FSource` callers
+remain supported. This avoids reparsing the same physical text during one
+request. It does not change the persistent Base-cache trust boundary or bypass
+import resolution, binder freshening or checking.
+
+After specialization, the JS host prepares one Bend `book_context`, carrying
+an exact-name index and the book's fresh-binder bound. Annotation, runtime-layout
+validation and emission retain that full context while selecting live output
+definitions separately. An already prepared head `BookCache` is reused instead
+of nested. Changed books require newly prepared contexts.
+
+The JS backend's structurally proven choice calls and record-projection workers
+are described in [the backend guide](../src/back/js/README.md). They change
+execution of generated Bend code, not checker rules or source-language meaning.
+The [phase 1 report](../../implementation/phase1/report.md) identifies the
+artifacts and measurements that validate those changes.

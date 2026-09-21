@@ -1,0 +1,183 @@
+{
+  "profileSha256": "c65be58cb073b3825ae5008d2acdb750f8819912d6340552cbb23ee3115c749e",
+  "request": {
+    "variant": {
+      "name": "candidate-selfhost",
+      "kind": "bend",
+      "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v2/stage2.mjs",
+      "driver": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/typed-driver.mjs",
+      "runtime": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs"
+    },
+    "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+    "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/profile/tree.mjs",
+    "mode": "compile",
+    "cache": "off",
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream"
+  },
+  "result": {
+    "importMs": 180.482702,
+    "compileMs": 49918.34513,
+    "cpuMs": 24723.331,
+    "maxRssKiB": 367544,
+    "phases": {
+      "f_parse": 15222.97033,
+      "f_source_parsed": 0.21367199999986042,
+      "f_load_graph": 6597.269046999998,
+      "check_book": 23697.731691,
+      "driver_owned": 14.094699000001128,
+      "driver_todos": 657.8579050000044,
+      "specialize_book": 1201.077713999999,
+      "specialized_error": 0.10439800000312971,
+      "specialized_book": 0.08658100000320701,
+      "driver_emit_owned": 56.37747600000148,
+      "j_compile_error": 7.026449999997567,
+      "book_context": 854.3058240000028,
+      "j_roots": 0.20024499999999534,
+      "j_stops": 18.693272999997134,
+      "reach_book": 217.01027500000055,
+      "j_foreign_error": 1.3559620000014547,
+      "annotate_selected": 607.0920140000017,
+      "j_layout_error": 271.9784739999959,
+      "j_foreign_paths": 5.784685999999056,
+      "j_program_selected": 480.9446469999966,
+      "j_modules": 0.13898599999811267
+    },
+    "calls": {
+      "f_parse": 2,
+      "f_source_parsed": 2,
+      "f_load_graph": 1,
+      "check_book": 1,
+      "driver_owned": 1,
+      "driver_todos": 1,
+      "specialize_book": 1,
+      "specialized_error": 1,
+      "specialized_book": 1,
+      "driver_emit_owned": 1,
+      "j_compile_error": 1,
+      "book_context": 1,
+      "j_roots": 1,
+      "j_stops": 2,
+      "reach_book": 1,
+      "j_foreign_error": 1,
+      "annotate_selected": 1,
+      "j_layout_error": 1,
+      "j_foreign_paths": 1,
+      "j_program_selected": 1,
+      "j_modules": 1
+    },
+    "outputBytes": 44385
+  },
+  "sampling": "exclusive sample counts grouped by functionName; duplicate generated names are aggregated",
+  "samples": 3339,
+  "top": [
+    [
+      "<anonymous>",
+      1237
+    ],
+    [
+      "apply",
+      1050
+    ],
+    [
+      "(garbage collector)",
+      357
+    ],
+    [
+      "force",
+      222
+    ],
+    [
+      "get",
+      160
+    ],
+    [
+      "call",
+      112
+    ],
+    [
+      "project",
+      65
+    ],
+    [
+      "stringEq",
+      59
+    ],
+    [
+      "fields",
+      20
+    ],
+    [
+      "ctor",
+      11
+    ],
+    [
+      "(program)",
+      8
+    ],
+    [
+      "compileSourceTextModule",
+      6
+    ],
+    [
+      "is_eq",
+      6
+    ],
+    [
+      "jump",
+      4
+    ],
+    [
+      "compileForInternalLoader",
+      3
+    ],
+    [
+      "add",
+      3
+    ],
+    [
+      "mul",
+      3
+    ],
+    [
+      "fn",
+      3
+    ],
+    [
+      "sub",
+      2
+    ],
+    [
+      "compileFunction",
+      1
+    ],
+    [
+      "#getOrCreateModuleJobAfterResolve",
+      1
+    ],
+    [
+      "checkedChar",
+      1
+    ],
+    [
+      "decode",
+      1
+    ],
+    [
+      "is_ge",
+      1
+    ],
+    [
+      "cast",
+      1
+    ],
+    [
+      "is_lt",
+      1
+    ],
+    [
+      "div",
+      1
+    ]
+  ],
+  "limitation": "Exploratory profile under concurrent work. Elapsed times are not controlled comparison samples."
+}

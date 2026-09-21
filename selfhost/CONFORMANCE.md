@@ -1,6 +1,8 @@
 # Compiler validation
 
-The current typed compiler results are in [the compatibility matrix](docs/COMPATIBILITY-MATRIX.md).
+The supplied baseline compiler results are in [the compatibility matrix](docs/COMPATIBILITY-MATRIX.md).
+Phase 1 changes have separate artifact-specific evidence in the
+[implementation report](../implementation/phase1/report.md).
 The complete pinned corpus contains 1,378 fixtures across 24 namespaces; all 919
 positive fixtures parsed and passed checking in the recorded full run. Exact
 execution results, diagnostic differences, timeouts and hardware gates are

@@ -1,0 +1,191 @@
+{
+  "profileSha256": "eb032f07fbd3402279b6462166d2f7c8fdc363b307e16dba4d5ec0c5c23c79c5",
+  "request": {
+    "variant": {
+      "name": "candidate-selfhost",
+      "kind": "bend",
+      "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v3/stage2.mjs",
+      "driver": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/benchmark-host/tools/typed-driver.mjs",
+      "runtime": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "sourceFiles": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/compiler-v3.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/candidate-v3-api.mjs.bootstrap.json"
+      ]
+    },
+    "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+    "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/profile-v3/tree.mjs",
+    "mode": "compile",
+    "cache": "off",
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream"
+  },
+  "result": {
+    "importMs": 227.97175099999998,
+    "compileMs": 45131.567035,
+    "cpuMs": 39953.56,
+    "maxRssKiB": 381704,
+    "phases": {
+      "f_parse": 13238.039532,
+      "f_source_parsed": 0.3189060000004247,
+      "f_load_graph": 6070.515619999998,
+      "check_book": 22098.234303,
+      "driver_owned": 4.841885000001639,
+      "driver_todos": 624.1238440000016,
+      "specialize_book": 917.1785769999988,
+      "specialized_error": 0.08815199999662582,
+      "specialized_book": 0.06673399999999674,
+      "driver_emit_owned": 53.080480999997235,
+      "j_compile_error": 20.47957899999892,
+      "book_context": 787.8978150000039,
+      "j_roots": 0.30134199999884004,
+      "j_stops": 12.862787999998545,
+      "reach_book": 260.0703280000016,
+      "j_foreign_error": 2.240111999999499,
+      "annotate_selected": 511.2065819999989,
+      "j_layout_error": 150.84663899999578,
+      "j_foreign_paths": 1.1847090000010212,
+      "j_program_selected": 367.1832640000066,
+      "j_modules": 0.21398799999587936
+    },
+    "calls": {
+      "f_parse": 2,
+      "f_source_parsed": 2,
+      "f_load_graph": 1,
+      "check_book": 1,
+      "driver_owned": 1,
+      "driver_todos": 1,
+      "specialize_book": 1,
+      "specialized_error": 1,
+      "specialized_book": 1,
+      "driver_emit_owned": 1,
+      "j_compile_error": 1,
+      "book_context": 1,
+      "j_roots": 1,
+      "j_stops": 2,
+      "reach_book": 1,
+      "j_foreign_error": 1,
+      "annotate_selected": 1,
+      "j_layout_error": 1,
+      "j_foreign_paths": 1,
+      "j_program_selected": 1,
+      "j_modules": 1
+    },
+    "outputBytes": 44385
+  },
+  "sampling": "exclusive sample counts grouped by functionName; duplicate generated names are aggregated",
+  "samples": 3809,
+  "top": [
+    [
+      "<anonymous>",
+      1478
+    ],
+    [
+      "apply",
+      1188
+    ],
+    [
+      "force",
+      311
+    ],
+    [
+      "(garbage collector)",
+      204
+    ],
+    [
+      "call",
+      184
+    ],
+    [
+      "get",
+      169
+    ],
+    [
+      "project",
+      118
+    ],
+    [
+      "stringEq",
+      54
+    ],
+    [
+      "fields",
+      29
+    ],
+    [
+      "ctor",
+      26
+    ],
+    [
+      "(program)",
+      10
+    ],
+    [
+      "compileSourceTextModule",
+      7
+    ],
+    [
+      "compileForInternalLoader",
+      5
+    ],
+    [
+      "fn",
+      5
+    ],
+    [
+      "sub",
+      4
+    ],
+    [
+      "read",
+      2
+    ],
+    [
+      "add",
+      2
+    ],
+    [
+      "jump",
+      2
+    ],
+    [
+      "is_eq",
+      2
+    ],
+    [
+      "filterDuplicateStrings",
+      1
+    ],
+    [
+      "#getOrCreateModuleJobAfterResolve",
+      1
+    ],
+    [
+      "open",
+      1
+    ],
+    [
+      "wrap",
+      1
+    ],
+    [
+      "compile",
+      1
+    ],
+    [
+      "cast",
+      1
+    ],
+    [
+      "mul",
+      1
+    ],
+    [
+      "x7069",
+      1
+    ],
+    [
+      "unword",
+      1
+    ]
+  ],
+  "limitation": "Exploratory profile under concurrent work. Elapsed times are not controlled comparison samples."
+}

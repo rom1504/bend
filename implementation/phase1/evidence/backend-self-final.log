@@ -1,0 +1,30 @@
+tree ok
+erasure ok
+char ok
+nat ok
+intrinsic-name ok
+partial ok
+erased-partial ok
+apply-order ok
+matched-apply-order ok
+call ok
+let ok
+parallel-shadow ok
+captured-let ok
+deep-capture ok
+match ok
+pure Lam/Mat wrappers cached; delayed arms, forward references and Let/Rwt/value reevaluation preserved
+foreign imports/constructors/Char/shared state/erased closures/50000-cell list passed
+entry validation/Base provenance/cached IO alias identity/foreign main passed
+identity PASS
+dead PASS
+erased PASS
+erased-costly PASS
+constructor PASS
+primitive PASS
+clone PASS
+match PASS
+pinned-match PASS
+10 no-Base primitive-name constructors preserve their declared fields and matching
+196 String.eq cases match pinned Base implementation
+argument isolation, partial ownership, oversaturation, constructor ordering, IO application passed

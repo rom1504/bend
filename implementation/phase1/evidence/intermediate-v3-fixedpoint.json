@@ -1,0 +1,65 @@
+{
+  "started": "2026-09-21T05:00:39.883Z",
+  "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/compiler-v3.bend",
+  "sourceSha256": "fb821f06be3b547e8d2f5c0abb4895164873f207499e1a4ed1ed2434880a1088",
+  "runtimeSha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+  "initialCompiler": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/candidate-v3-api.mjs",
+    "sha256": "b764dc14c82120eeee0ea3074713c80700a5308d2a1bac451ab4c7c5d6b2c444"
+  },
+  "driver": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/6d43cf39393e764ed32623b8a77c502092ed1ae234d9c2a43defba111c5a7b24/typed-driver.mjs",
+    "sha256": "b745fd8c6cf90afc2d5b28233bc80c9347ac66c67c7aa64d32b5f22dce74e51f"
+  },
+  "stages": [
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/candidate-v3-api.mjs",
+      "compilerSha256": "b764dc14c82120eeee0ea3074713c80700a5308d2a1bac451ab4c7c5d6b2c444",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v3/stage2.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 827507,
+      "outputSha256": "bbf05713efe49dca6f4d9716d59d23c8f57e1aa2f864311aee3afe97590e04fe"
+    },
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v3/stage2.mjs",
+      "compilerSha256": "bbf05713efe49dca6f4d9716d59d23c8f57e1aa2f864311aee3afe97590e04fe",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v3/stage3.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 2605033,
+      "outputSha256": "bbf05713efe49dca6f4d9716d59d23c8f57e1aa2f864311aee3afe97590e04fe"
+    }
+  ],
+  "complete": true,
+  "resourceConfiguration": {
+    "node": "v24.18.0",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=12288"
+    ],
+    "osStackKB": "8192",
+    "timeoutMs": 10800000
+  },
+  "requestedStages": [
+    2,
+    3
+  ],
+  "validationPolicy": {
+    "required": [
+      2,
+      3
+    ],
+    "optionalRepeat": false,
+    "condition": "Stage2 and its checked self-emission stage3 must be byte-identical for the same frozen source."
+  },
+  "finished": "2026-09-21T05:57:52.705Z"
+}

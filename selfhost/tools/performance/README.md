@@ -57,4 +57,6 @@ benchmarks. Hash verification rejects changed inputs after a run.
 For profiles, use a separate run with Node CPU profiling flags in `flags` and an
 absolute writable profile directory. Never compare a profiled candidate against
 an unprofiled control as the primary performance result. The original
-`baseline.py` and committed September 21 baseline remain historical controls.
+[`run.py` workflow](BASELINE.md) and committed September 21 baseline remain
+historical controls. Run that workflow from the baseline tag, whose archive
+manifest is intentionally immutable.

@@ -4,6 +4,10 @@
 # No parsed/checker cache is used. Reads precede timing; writing follows timing.
 # Assemble after compiler modules: main(INPUT, BASE, RUNTIME, OUTPUT, MODE).
 
+type RapidBundlePlan is Data:
+  RapidBundleFailure{+error: String, +phase: String, checked: Bool}
+  RapidBundleReady{+context: List<&2, KDef>, +annotated: List<&2, KDef>}
+
 type RapidBundleResult is Data:
   RapidBundleResult{+source: String, +error: String, +phase: String, checked: Bool}
 
@@ -32,7 +36,7 @@ law rapid_bundle_emit:
   for +stops: List<&2, String>
   for +runtime: String
   for +library: Bool
-  RapidBundleResult
+  RapidBundlePlan
 
 law rapid_bundle_annotate:
   for +context: List<&2, KDef>
@@ -41,66 +45,58 @@ law rapid_bundle_annotate:
   for +stops: List<&2, String>
   for +runtime: String
   for +library: Bool
-  RapidBundleResult
-
-law rapid_bundle_foreign:
-  for +context: List<&2, KDef>
-  for +annotated: List<&2, KDef>
-  for +runtime: String
-  for +library: Bool
-  for +error: String
-  RapidBundleResult
+  RapidBundlePlan
 
 law rapid_bundle_reach:
   for +context: List<&2, KDef>
   for +runtime: String
   for +library: Bool
-  RapidBundleResult
+  RapidBundlePlan
 
 law rapid_bundle_entry:
   for +book: List<&2, KDef>
   for +runtime: String
   for +library: Bool
-  RapidBundleResult
+  RapidBundlePlan
 
 law rapid_bundle_specialized:
   for +book: List<&2, KDef>
   for +runtime: String
   for +library: Bool
-  RapidBundleResult
+  RapidBundlePlan
 
 law rapid_bundle_specialize:
   for +specialized: KSpecialized
   for +runtime: String
   for +library: Bool
-  RapidBundleResult
+  RapidBundlePlan
 
 law rapid_bundle_todos:
   for +book: List<&2, KDef>
   for +runtime: String
   for +library: Bool
   for +todos: U32
-  RapidBundleResult
+  RapidBundlePlan
 
 law rapid_bundle_owned:
   for +book: List<&2, KDef>
   for +runtime: String
   for +library: Bool
   for +error: String
-  RapidBundleResult
+  RapidBundlePlan
 
 law rapid_bundle_checked:
   for +book: List<&2, KDef>
   for +runtime: String
   for +library: Bool
   for +error: String
-  RapidBundleResult
+  RapidBundlePlan
 
 law rapid_bundle_loaded:
   for loaded: FResult
   for +runtime: String
   for +library: Bool
-  RapidBundleResult
+  RapidBundlePlan
 
 law rapid_bundle_base_parsed:
   for +input: String
@@ -226,22 +222,16 @@ def rapid_bundle_foreign_error(paths):
 @unsafe
 def rapid_bundle_emit(context, selected, roots, stops, runtime, library):
   +error = j_foreign_error(selected)
-  kc(RapidBundleResult, Bool.not(String.eq(error, "")),
-    u => rapid_bundle_error("compile", True{}, error),
+  kc(RapidBundlePlan, Bool.not(String.eq(error, "")),
+    u => rapid_plan_error("compile", True{}, error),
     u => rapid_bundle_annotate(context, annotate_selected(context, selected, stops), roots, stops, runtime, library))
 
 @unsafe
 def rapid_bundle_annotate(context, annotated, roots, stops, runtime, library):
   +error = j_layout_error(context, annotated, roots, stops)
-  kc(RapidBundleResult, Bool.not(String.eq(error, "")),
-    u => rapid_bundle_error("compile", True{}, error),
-    u => rapid_bundle_foreign(context, annotated, runtime, library, rapid_bundle_foreign_error(j_foreign_paths(annotated))))
-
-@unsafe
-def rapid_bundle_foreign(context, annotated, runtime, library, error):
-  kc(RapidBundleResult, Bool.not(String.eq(error, "")),
-    u => rapid_bundle_error("compile", True{}, error),
-    u => RapidBundleResult{runtime ++ "\n" ++ j_modules(annotated, Nil{}) ++ "\n" ++ kc(String, library, u => j_library_selected(context, annotated), u => j_program_selected(context, annotated)), "", "compile", True{}})
+  kc(RapidBundlePlan, Bool.not(String.eq(error, "")),
+    u => rapid_plan_error("compile", True{}, error),
+    u => RapidBundleReady{context, annotated})
 
 @unsafe
 def rapid_bundle_reach(context, runtime, library):
@@ -252,48 +242,48 @@ def rapid_bundle_reach(context, runtime, library):
 @unsafe
 def rapid_bundle_entry(book, runtime, library):
   +error = kc(String, library, u => "", u => j_compile_error(book))
-  kc(RapidBundleResult, Bool.not(String.eq(error, "")),
-    u => rapid_bundle_error("compile", True{}, error),
+  kc(RapidBundlePlan, Bool.not(String.eq(error, "")),
+    u => rapid_plan_error("compile", True{}, error),
     u => rapid_bundle_reach(book_context(book), runtime, library))
 
 @unsafe
 def rapid_bundle_specialized(book, runtime, library):
   +error = driver_emit_owned(book)
-  kc(RapidBundleResult, Bool.not(String.eq(error, "")),
-    u => rapid_bundle_error("compile", True{}, error),
+  kc(RapidBundlePlan, Bool.not(String.eq(error, "")),
+    u => rapid_plan_error("compile", True{}, error),
     u => rapid_bundle_entry(book, runtime, library))
 
 @unsafe
 def rapid_bundle_specialize(specialized, runtime, library):
   +error = specialized_error(specialized)
-  kc(RapidBundleResult, Bool.not(String.eq(error, "")),
-    u => rapid_bundle_error("check", True{}, error),
+  kc(RapidBundlePlan, Bool.not(String.eq(error, "")),
+    u => rapid_plan_error("check", True{}, error),
     u => rapid_bundle_specialized(specialized_book(specialized), runtime, library))
 
 @unsafe
 def rapid_bundle_todos(book, runtime, library, todos):
-  kc(RapidBundleResult, U32.is_eq(todos, 0),
+  kc(RapidBundlePlan, U32.is_eq(todos, 0),
     u => rapid_bundle_specialize(specialize_book(book), runtime, library),
-    u => rapid_bundle_error("check", True{}, U32.show(todos) ++ " TODO" ++ kc(String, U32.is_eq(todos, 1), u => "", u => "s") ++ " found.\nThe code is incomplete, and not a valid proof yet."))
+    u => rapid_plan_error("check", True{}, U32.show(todos) ++ " TODO" ++ kc(String, U32.is_eq(todos, 1), u => "", u => "s") ++ " found.\nThe code is incomplete, and not a valid proof yet."))
 
 @unsafe
 def rapid_bundle_owned(book, runtime, library, error):
-  kc(RapidBundleResult, Bool.not(String.eq(error, "")),
-    u => rapid_bundle_error("compile", True{}, error),
+  kc(RapidBundlePlan, Bool.not(String.eq(error, "")),
+    u => rapid_plan_error("compile", True{}, error),
     u => rapid_bundle_todos(book, runtime, library, driver_todos(book)))
 
 @unsafe
 def rapid_bundle_checked(book, runtime, library, error):
-  kc(RapidBundleResult, Bool.not(String.eq(error, "")),
-    u => rapid_bundle_error("check", True{}, error),
+  kc(RapidBundlePlan, Bool.not(String.eq(error, "")),
+    u => rapid_plan_error("check", True{}, error),
     u => rapid_bundle_owned(book, runtime, library, driver_owned(book)))
 
 @unsafe
 def rapid_bundle_loaded(loaded, runtime, library):
   match loaded:
     case FResult{+book, +error, imports}:
-      kc(RapidBundleResult, Bool.not(String.eq(error, "")),
-        u => rapid_bundle_error("parse", False{}, error),
+      kc(RapidBundlePlan, Bool.not(String.eq(error, "")),
+        u => rapid_plan_error("parse", False{}, error),
         u => rapid_bundle_checked(book, runtime, library, check_book(book)))
 
 @unsafe
@@ -304,7 +294,7 @@ def rapid_bundle_base_parsed(input, base_path, text, base_text, runtime, library
         u => rapid_bundle_error("parse", False{}, error),
         u => kc(RapidBundleResult, Bool.not(String.eq(rapid_bundle_import_error(imports), "")),
           v => rapid_bundle_error("load", False{}, rapid_bundle_import_error(imports)),
-          v => rapid_bundle_loaded(f_load_graph(input, [f_source_parsed(input, input, text, main_parsed), f_source_parsed("Base", base_path, base_text, base_parsed)]), runtime, library)))
+          v => rapid_bundle_finalize(rapid_bundle_loaded(f_load_graph(input, [f_source_parsed(input, input, text, main_parsed), f_source_parsed("Base", base_path, base_text, base_parsed)]), runtime, library), runtime, library, Nil{})))
 
 @unsafe
 def rapid_bundle_main_parsed(input, base_path, text, base_text, runtime, library, parsed):
@@ -316,7 +306,7 @@ def rapid_bundle_main_parsed(input, base_path, text, base_text, runtime, library
           v => rapid_bundle_error("load", False{}, rapid_bundle_import_error(imports)),
           v => kc(RapidBundleResult, rapid_bundle_has_base(imports),
             w => rapid_bundle_base_parsed(input, base_path, text, base_text, runtime, library, parsed, f_parse(base_text)),
-            w => rapid_bundle_loaded(f_load_graph(input, [f_source_parsed(input, input, text, parsed)]), runtime, library))))
+            w => rapid_bundle_finalize(rapid_bundle_loaded(f_load_graph(input, [f_source_parsed(input, input, text, parsed)]), runtime, library), runtime, library, Nil{}))))
 
 @unsafe
 def rapid_bundle_compile(input, base_path, text, base_text, runtime, library):
@@ -428,9 +418,11 @@ def rapid_bundle_paths(input, base_path, runtime_path, output, library):
 def rapid_bundle_cli(args):
   match args:
     case Con{+input, Con{+base_path, Con{+runtime_path, Con{+output, Con{+mode, Nil{}}}}}}:
-      kc(IO(U32), (String.eq(mode, "program") || String.eq(mode, "library")) && String.starts_with(input, "/") && String.starts_with(base_path, "/") && String.starts_with(runtime_path, "/") && String.starts_with(output, "/"),
+      kc(IO(U32), String.eq(input, "--graph"),
+        u => rapid_graph_paths(base_path, runtime_path, output, mode),
+        u => kc(IO(U32), (String.eq(mode, "program") || String.eq(mode, "library")) && String.starts_with(input, "/") && String.starts_with(base_path, "/") && String.starts_with(runtime_path, "/") && String.starts_with(output, "/"),
         u => rapid_bundle_paths(input, base_path, runtime_path, output, String.eq(mode, "library")),
-        u => IO.die(U32, 2, "closed bundle requires absolute canonical paths and program or library mode"))
+        u => IO.die(U32, 2, "closed bundle requires absolute canonical paths and program or library mode")))
     case other:
       IO.die(U32, 2, "usage: native-bundle INPUT BASE RUNTIME OUTPUT program|library")
 
@@ -439,3 +431,46 @@ def main():
   do IO<U32>:
     args : List<&1, String> <- IO.args()
     rapid_bundle_cli(args)
+
+# Shared pure plan keeps every compiler gate in Bend. IO hosts obtain assets only
+# after the plan has selected, annotated and validated the reachable book.
+law rapid_plan_error:
+  for +phase: String
+  for checked: Bool
+  for +error: String
+  RapidBundlePlan
+
+law rapid_bundle_missing_assets:
+  for paths: List<&2, String>
+  for +sources: List<&2, KTerm>
+  String
+
+law rapid_bundle_finalize:
+  for plan: RapidBundlePlan
+  for +runtime: String
+  for library: Bool
+  for +sources: List<&2, KTerm>
+  RapidBundleResult
+
+@unsafe
+def rapid_plan_error(phase, checked, error):
+  RapidBundleFailure{error, phase, checked}
+
+@unsafe
+def rapid_bundle_missing_assets(paths, sources):
+  match paths:
+    case Nil{}: ""
+    case Con{+path, rest}:
+      kc(String, String.eq(tg(f_env(path, sources)), "Absent"),
+        u => "foreign JavaScript source was not supplied: " ++ path,
+        u => rapid_bundle_missing_assets(rest, sources))
+
+@unsafe
+def rapid_bundle_finalize(plan, runtime, library, sources):
+  match plan:
+    case RapidBundleFailure{error, phase, checked}: rapid_bundle_error(phase, checked, error)
+    case RapidBundleReady{+context, +annotated}:
+      +error = rapid_bundle_missing_assets(j_foreign_paths(annotated), sources)
+      kc(RapidBundleResult, Bool.not(String.eq(error, "")),
+        u => rapid_bundle_error("compile", True{}, error),
+        u => RapidBundleResult{runtime ++ "\n" ++ j_modules(annotated, sources) ++ "\n" ++ kc(String, library, u => j_library_selected(context, annotated), u => j_program_selected(context, annotated)), "", "compile", True{}})

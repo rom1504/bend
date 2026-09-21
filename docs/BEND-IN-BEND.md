@@ -18,6 +18,8 @@ For short edit/check/measure cycles, see
 [fast compiler development](FAST_COMPILER_DEVELOPMENT.md) and the
 [rapid experiment report](../implementation/phase1/rapid_performance_experiments.md).
 Source changes and frozen distributed artifacts have separate validation evidence.
+The [phase 2 guide](PHASE2_DEVELOPMENT.md) adds exact differential selections,
+retained failure replay and the native graph-manifest workflow.
 
 ## Run a compiler artifact
 

@@ -237,3 +237,121 @@ the runner alone does not propagate them to workers. Reports record the exact
 worker flags, and the merger refuses groups with different limits. The OS stack
 must be larger than the requested JavaScript stack (8 MiB in the phase 1 run).
 These settings do not change per-probe deadlines or generated-program flags.
+
+## Fast selected differential loop
+
+Use a previously **checked** Bend API instead of rebuilding or self-emitting the
+compiler for each test. `target.mjs` runs live pinned TypeScript and the selected
+Bend artifact through the same worker, deadline, inventory, and judge protocol.
+It freezes the harness and typed host for the attempt. Supply a fresh output
+directory; existing evidence is never replaced.
+
+A configuration file uses paths relative to itself:
+
+```json
+{
+  "upstream": "/absolute/pinned/upstream",
+  "api": "/absolute/checked/api.mjs",
+  "bootstrapReport": "/absolute/checked/api.mjs.bootstrap.json",
+  "runtime": "/absolute/runtime.mjs",
+  "cpu": 2,
+  "timeoutMs": 30000,
+  "stackKb": 4096,
+  "heapMb": 4096,
+  "cases": [
+    {"id": "base/list_sort.bend", "lanes": ["check", "js"]}
+  ]
+}
+```
+
+```sh
+node tools/conformance/target.mjs config.json build/selected/attempt-1
+```
+
+The API, bootstrap report, assembled source, source modules, and Base must match
+the recorded checked build. The runtime is an explicit, separately hashed input.
+The command does not bootstrap. After changing compiler source, create a fresh
+checked API with the existing bootstrap workflow and point the next attempt at
+its report. The report records total selected-run wall time; it excludes a build
+that happened beforehand, which must be added when measuring edit-loop latency.
+
+The reference adapter calls unmodified pinned TypeScript APIs for loading,
+checking, ownership/TODO gates, pure interpretation, and emission. It implements
+the CLI's declaration report and `PROOF.bend` import policy as host orchestration.
+Node executes emitted JS with the same explicit resource flags as the Bend host.
+An effect that actually requires unavailable Bun is unsupported; GPU execution is
+unsupported. The native output lane uses the configured CPU C toolchain. No
+candidate compiler is substituted into the reference. Dirty tracked upstream
+source or fixtures fail the pinned-inventory check.
+
+`paired.json` reports both oracle verdicts and compiler agreement. Its
+`selectedComplete` requires every selected probe to pass its oracle on both
+implementations and agree semantically. `complete` remains false: selected probes
+never establish full language conformance. Exact diagnostics are also compared
+and listed separately. Timeouts, crashes, unsupported lanes, hardware gates,
+missing probes, and changed inputs or artifacts prevent a selected pass.
+
+For small local witnesses, provide `file`, a distinct `id`, and either `#|` lines
+in the source, an explicit `expected` string, or an explicit acceptance oracle:
+
+```json
+{"id":"local/late-template", "file":"late-template.bend",
+ "accept":false, "rejectPhase":"parse", "lanes":["check"]}
+```
+
+Acceptance-only witnesses support parse/check probes and do not claim diagnostic
+identity. Rejected witnesses require the declared phase, exit code, and checker
+flag where appropriate. A runtime or parser error cannot satisfy a checker
+rejection oracle. Positive check witnesses require actual check-phase acceptance.
+Exact diagnostic differences can coexist with `selectedComplete` for these
+explicit acceptance oracles; they remain visible in `discrepancies`. Built-in
+upstream fixture oracles cannot be replaced by custom acceptance metadata.
+A `selection` filename can replace the inline `cases` array.
+
+To rerun failures, set `rerun` to the previous **candidate conformance report**.
+Without a selection, only prior failures are selected. With a selection, previous
+failures run before the requested controls. Every attempt records the preceding
+report hash. Fixture identity changes, unknown/duplicate/ineligible pairs, and
+empty selections fail. Reruns are distinct attempts, never a merge of favorable
+observations into a full-suite pass.
+
+The underlying runner also accepts these features directly:
+
+```sh
+node tools/conformance/run.mjs --adapter tools/conformance/adapters/typed.mjs \
+  --selection cases.json --retain failed --selected-exit 1 \
+  --output build/selected/candidate.json --jobs 1 --timeout 30000
+```
+
+`--retain none|failed|all` preserves selected worker requests, responses, bounded
+streams, generated artifacts, and replay commands. The paired runner defaults to
+`all`; the ordinary full-suite runner retains its historical `none` default.
+`--selected-exit 1` controls the exit status only; it never changes full-suite
+`complete`. Exact replay requires unchanged recorded inputs/tools, the same Node
+executable/version, and the recorded allowlisted compiler configuration:
+
+```sh
+node tools/conformance/replay.mjs RETAINED_WORKDIR/request.json
+```
+
+Replay creates a new sibling work directory and preserves the original failure.
+Its metadata is an exact-path replay, not a portable copied reproducer. Foreign
+host toolchains and external runtime services still require the corresponding
+recorded environment; their complete installation is not bundled with a replay.
+
+### Explicit native compiler adapter
+
+`adapters/native-graph.mjs` executes the Bend compiler natively and tests its
+emitted **JavaScript lane**. It advertises no parse/check-only, interpreter,
+native-output, or GPU lane; there is no implicit JS compiler fallback. Configure
+`candidateAdapter` plus `candidateEnvironment` with `BEND_NATIVE_BINARY`,
+`BEND_NATIVE_RUNTIME`, and `BEND_NATIVE_MANIFEST_DIRECTORY`. Each selected fixture
+requires a versioned graph manifest at `DIRECTORY/FIXTURE_ID.json`, for example
+`DIRECTORY/base/list_sort.bend.json`. Its main file must match the selected fixture, and its canonical Base path must
+match the pinned reference `bend2/base.bend` (a relocated copy is not silently
+substituted into this paired comparison).
+Missing manifests are unsupported. The manifest lists all available modules and
+foreign assets explicitly; the adapter never discovers imports in JavaScript.
+See [the native graph host guide](../performance/rapid/native-graph.md) for the
+manifest/build boundary. The adapter records native compilation provenance and
+Node execution separately.

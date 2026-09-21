@@ -10,12 +10,8 @@ export function walk(dir) {
   return fs.readdirSync(dir, {withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name)).flatMap(e =>
     e.isDirectory() ? walk(path.join(dir,e.name)) : [path.join(dir,e.name)]);
 }
-export function inventory(upstream) {
-  const revision=spawnSync('git',['-C',upstream,'rev-parse','HEAD'],{encoding:'utf8'}).stdout.trim();
-  if(revision!==PIN) throw Error(`Expected pinned upstream ${PIN}, found ${revision}`);
-  const root=path.join(upstream,'tests');
-  const tests=walk(root).filter(f=>f.endsWith('.bend')).map(file=>{
-    const source=fs.readFileSync(file,'utf8'), id=path.relative(root,file).split(path.sep).join('/');
+export function describeFixture(file,id) {
+    const source=fs.readFileSync(file,'utf8');
     const expected=tidy(source.split('\n').filter(l=>l.startsWith('#|')).map(l=>l.slice(2)).join('\n'));
     const foreign=[...source.matchAll(/^\s*import\s+"([^"\n]+\.(c|js))"/gm)].map(m=>({path:m[1],backend:m[2]}));
     const imports=[...source.matchAll(/^import\s+(\S+)\s+as\s+(\S+)/gm)].map(m=>({path:m[1],alias:m[2]}));
@@ -29,6 +25,16 @@ export function inventory(upstream) {
         ...(/\bIO\./.test(source)?['io']:[]),...(/\{==\}|\blaw\b/.test(source)?['proof-or-law']:[]),
         ...(/\bfor\s+[+\-&]|(?:\(|,)\s*[+\-]\w+\s*:/.test(source)?['quantity']:[]),
         ...(/~/.test(source)?['comptime']:[])]};
+}
+
+export function inventory(upstream) {
+  const revision=spawnSync('git',['-C',upstream,'rev-parse','HEAD'],{encoding:'utf8'}).stdout.trim();
+  if(revision!==PIN) throw Error(`Expected pinned upstream ${PIN}, found ${revision}`);
+  const dirty=spawnSync('git',['-C',upstream,'diff','--quiet','HEAD','--','bend2','tests','gates/test.ts'],{encoding:'utf8'});
+  if(dirty.status!==0)throw Error('Pinned upstream source or fixtures differ from HEAD');
+  const root=path.join(upstream,'tests');
+  const tests=walk(root).filter(f=>f.endsWith('.bend')).map(file=>{
+    return describeFixture(file,path.relative(root,file).split(path.sep).join('/'));
   });
   const sources=['bend2/bend.ts','bend2/comp.ts','bend2/main.ts','bend2/base.bend','bend2/bend.lean','gates/test.ts'].map(name=>{
     const source=fs.readFileSync(path.join(upstream,name),'utf8');

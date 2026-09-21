@@ -31,17 +31,19 @@ const copy = (relative, bytes) => {
   return {file: relative, sha256: hash(bytes)};
 };
 const sources = modules.map(file => copy(file, fs.readFileSync(path.join(root, file))));
+const graphRelative = 'src/driver/native-graph.bend';
+const graph = copy(graphRelative, fs.readFileSync(new URL('./native-graph.bend', import.meta.url)));
 const driver = copy(driverRelative, fs.readFileSync(new URL('./native-bundle.bend', import.meta.url)));
 const runtime = copy('src/runtime.mjs', fs.readFileSync(path.join(root, 'src/runtime.mjs')));
 copy('src/compiler.json', manifest);
 const compiler = path.join(output, 'compiler.bend');
-const assembly = assemble([...modules, driverRelative], compiler, {root: output});
+const assembly = assemble([...modules, graphRelative, driverRelative], compiler, {root: output});
 const report = {
-  kind: 'experimental-native-closed-bundle-snapshot', preparedAt: new Date().toISOString(),
-  sourceRoot: root, manifestSha256: hash(manifest), modules: sources, driver, runtime,
+  kind: 'experimental-native-graph-snapshot', preparedAt: new Date().toISOString(),
+  sourceRoot: root, manifestSha256: hash(manifest), modules: sources, driver, graph, runtime,
   assembly: {...assembly, sha256: hash(fs.readFileSync(compiler))},
   toolSha256: hash(fs.readFileSync(import.meta.filename)),
-  scope: 'Actual compiler modules plus a separate main-and-Base experimental IO driver',
+  scope: 'Actual compiler modules plus explicit graph and main-plus-Base native IO entries',
 };
 const reportFile = path.join(output, 'preparation.json');
 fs.writeFileSync(reportFile, JSON.stringify(report, null, 2) + '\n');

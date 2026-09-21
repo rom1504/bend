@@ -51,7 +51,7 @@ try{
   run('normalization and conversion',['tests/normalize.mjs'],{env});
   run('template specialization',['tests/specialize.mjs'],{env});
   run('JavaScript primitive ABI',['src/runtime/js/test.mjs']);
-  run('conformance harness and host ABI safeguards',['--test','tests/conformance/inventory.test.mjs','tests/conformance/judge.test.mjs','tests/conformance/abi.test.mjs','tests/native-build.test.mjs']);
+  run('conformance harness and host ABI safeguards',['--test','tests/conformance/inventory.test.mjs','tests/conformance/judge.test.mjs','tests/conformance/abi.test.mjs','tests/conformance/selection.test.mjs','tests/conformance/targeted.test.mjs','tests/conformance/native-adapter.test.mjs','tests/node-resource-args.test.mjs','tests/native-build.test.mjs']);
 } catch(error){process.stderr.write(error.message+'\n');process.exitCode=1}
 finally{
   fs.mkdirSync(path.join(root,'dist'),{recursive:true});

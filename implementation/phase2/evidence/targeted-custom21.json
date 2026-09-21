@@ -1,0 +1,1012 @@
+{
+  "kind": "targeted-paired-conformance",
+  "started": "2026-09-21T14:46:19.639Z",
+  "complete": false,
+  "selectedComplete": true,
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/custom21-config.json",
+    "sha256": "6ecf8f7fec3b15d3bda3d208ccfaf63879e30c204d5b691c76ba6168b6e52980"
+  },
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/after/api.mjs",
+      "sha256": "8ae7a4cebb236c2bf83863417d433093b858f2831b6a32d8823ebf52f271eff1"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    },
+    "bootstrapReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/after/api.mjs.bootstrap.json",
+      "sha256": "1a3be85d2a9bca1a84421a57563057524826c1c504dcb82750e4f294651f5bd3"
+    }
+  },
+  "environment": {
+    "BEND_UPSTREAM": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "BEND_BASE": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "BEND_TYPED_API": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/after/api.mjs",
+    "BEND_TYPED_RUNTIME": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs"
+  },
+  "harnessSources": [
+    {
+      "file": "run.mjs",
+      "sourceSha256": "65acd0a68372737e0cef5eaca89546aad46696f02757688f8897be38beb06f38",
+      "consumedSha256": "cbb3a93875ac0d0186a149b0ec68fa4eeefe0cdd6c2c0d4e0d7169af5fbb033c"
+    },
+    {
+      "file": "worker.mjs",
+      "sourceSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "consumedSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+    },
+    {
+      "file": "inventory.mjs",
+      "sourceSha256": "bd07624791dedb66f610f1ea46626a48ccb60475b87fef4c9c022b497b2a1a4c",
+      "consumedSha256": "bd07624791dedb66f610f1ea46626a48ccb60475b87fef4c9c022b497b2a1a4c"
+    },
+    {
+      "file": "judge.mjs",
+      "sourceSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+      "consumedSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+    },
+    {
+      "file": "selection.mjs",
+      "sourceSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+      "consumedSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+    },
+    {
+      "file": "run-probe.mjs",
+      "sourceSha256": "d61b8ccfabd3c9d2bb522a063608a87dc45ec305c1e20dcf3b5e66e7f4875812",
+      "consumedSha256": "d61b8ccfabd3c9d2bb522a063608a87dc45ec305c1e20dcf3b5e66e7f4875812"
+    },
+    {
+      "file": "replay.mjs",
+      "sourceSha256": "7599a5ed831515aa92600d422e6a25b39f02e1567fb406aaaddb5097885da4b0",
+      "consumedSha256": "7599a5ed831515aa92600d422e6a25b39f02e1567fb406aaaddb5097885da4b0"
+    },
+    {
+      "file": "adapters/upstream.mjs",
+      "sourceSha256": "1987b8e57c381d827f19b37bcd17f0c6c1d8dd7ae6fd7402692d4eb0effc30fe",
+      "consumedSha256": "1987b8e57c381d827f19b37bcd17f0c6c1d8dd7ae6fd7402692d4eb0effc30fe"
+    }
+  ],
+  "targetSourceSha256": "fc8b16bb298da8cc67ac0c7cb7c44b814a2cf67fda930e59665d53310543d701",
+  "cpu": 3,
+  "attempts": {
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/custom21/reference.json",
+      "argv": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/custom21/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "all",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/custom21/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/custom21/harness/tools/conformance/adapters/upstream.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/custom21/reference.json"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "sha256": "bb4b9b76e2028a1f00be6615f544884da562f51b79c3f95491e8b9cfedaff969"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/custom21/candidate.json",
+      "argv": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/custom21/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "all",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/custom21/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/a601c384f6c7eb913ba78284abb15d9e6173ca325f57bdf8cb78843a2b2aa460/typed.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/custom21/candidate.json"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "sha256": "7ac26b1af2d351d1ca6137f8c30fded99ca10ae14aa2f271a74e89c5aaf01b17"
+    }
+  },
+  "rows": [
+    {
+      "id": "import-after-decorator",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'i'\nLocation:\n1 | @unsafe\n2>| import Base\n3 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 2:0: expected def after @unsafe; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-after-foreign",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : '\"'\n- observed : 'B'\nLocation:\n3 |   import \"unused.js\"\n4>| import Base\n5 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: foreign import requires a quoted .c or .js path",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-after-law",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   U32\n4>| import Base\n5 | def zero():",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:0: expected def, law or type; imports must precede declarations; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-after-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name (got the keyword 'import')\n- observed : ' '\nLocation:\n3 |   On{}\n4>| import Base\n5 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:0: expected def, law or type; imports must precede declarations; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-late-existing",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   0\n4>| import Base\n5 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:0: expected def, law or type; imports must precede declarations; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-leading",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "import-leading-repeated",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "law-fill-changed-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : '-'\nLocation:\n3 |   U32\n4>| def main() -> Nat:\n5 |   0n",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:11: expected : (a definition filling a law has no return annotation); got ->",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-fill-plain",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "law-fill-same-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : '-'\nLocation:\n3 |   U32\n4>| def main() -> U32:\n5 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:11: expected : (a definition filling a law has no return annotation); got ->",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-template-after-erased",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for -A: Type\n4>|   for ~n: U32\n5 |   for x: U32",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-template-late",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for x: U32\n4>|   for ~n: U32\n5 |   U32",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-template-leading",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "leading-unsafe-definition",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "local-binder",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "local-call-pattern",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a pattern (a binder or a constructor)\n- observed : f(1)\nLocation:\n4 | def main() -> U32:\n5>|   f(1) = {3 : U32}\n6 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: expected a binder or constructor pattern",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "local-constructor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "local-constructor-braces-required",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On = {3 : U32}\n6 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a constructor pattern requires braces: On",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "local-constructor-field-count",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a Box pattern with 1 field\nLocation:\n4 | def unbox(b: Box) -> U32:\n5>|   Box{x, y} = b\n6 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: constructor pattern field count differs: Box",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "local-constructor-nested",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "new-typed-definition",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    }
+  ],
+  "missing": [],
+  "discrepancies": [
+    {
+      "id": "import-after-decorator",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'i'\nLocation:\n1 | @unsafe\n2>| import Base\n3 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 2:0: expected def after @unsafe; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-after-foreign",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : '\"'\n- observed : 'B'\nLocation:\n3 |   import \"unused.js\"\n4>| import Base\n5 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: foreign import requires a quoted .c or .js path",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-after-law",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   U32\n4>| import Base\n5 | def zero():",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:0: expected def, law or type; imports must precede declarations; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-after-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name (got the keyword 'import')\n- observed : ' '\nLocation:\n3 |   On{}\n4>| import Base\n5 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:0: expected def, law or type; imports must precede declarations; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-late-existing",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   0\n4>| import Base\n5 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:0: expected def, law or type; imports must precede declarations; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-fill-changed-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : '-'\nLocation:\n3 |   U32\n4>| def main() -> Nat:\n5 |   0n",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:11: expected : (a definition filling a law has no return annotation); got ->",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-fill-same-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : '-'\nLocation:\n3 |   U32\n4>| def main() -> U32:\n5 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:11: expected : (a definition filling a law has no return annotation); got ->",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-template-after-erased",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for -A: Type\n4>|   for ~n: U32\n5 |   for x: U32",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-template-late",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for x: U32\n4>|   for ~n: U32\n5 |   U32",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "local-call-pattern",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a pattern (a binder or a constructor)\n- observed : f(1)\nLocation:\n4 | def main() -> U32:\n5>|   f(1) = {3 : U32}\n6 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: expected a binder or constructor pattern",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "local-constructor-braces-required",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On = {3 : U32}\n6 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a constructor pattern requires braces: On",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "local-constructor-field-count",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a Box pattern with 1 field\nLocation:\n4 | def unbox(b: Box) -> U32:\n5>|   Box{x, y} = b\n6 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: constructor pattern field count differs: Box",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    }
+  ],
+  "referenceSelectedComplete": true,
+  "candidateSelectedComplete": true,
+  "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+  "wallMs": 30203.237922,
+  "finished": "2026-09-21T14:46:49.844Z",
+  "sourceReportSha256": "17aa431e848a3f260fef231fbdaa044845e09a746ad02889fc433518641e40b9"
+}

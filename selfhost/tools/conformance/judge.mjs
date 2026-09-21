@@ -12,6 +12,15 @@ export function rendered(result) {
 export function judge(test,lane,result,capabilities) {
   if(result.status==='timeout'||result.status==='crash') return {status:result.status,reason:result.reason};
   if(result.status==='unsupported') return {status:'unsupported',reason:result.reason};
+  if(test.oracle==='acceptance') {
+    if(!['parse','check'].includes(lane))return {status:'unsupported',reason:'Acceptance-only fixture supplies no execution oracle.'};
+    if(test.accept) return result.status==='ok'&&(lane==='parse'?result.phase==='parse':result.phase==='check'&&result.checked===true)
+      ?{status:'pass',evidence:lane==='parse'?'frontend-acceptance':'checker-acceptance',oracle:'acceptance'}
+      :{status:'fail',reason:'Expected validated acceptance.',oracle:'acceptance'};
+    if(!test.rejectPhase)return {status:'fail',reason:'Acceptance-only negative requires an explicit rejection phase.',oracle:'acceptance'};
+    if(result.status!=='error'||result.phase!==test.rejectPhase||result.exitCode!==1||(['check','compile','runtime'].includes(test.rejectPhase)&&result.checked!==true))return {status:'fail',reason:'Expected rejection phase/checked/exit evidence differs.',oracle:'acceptance'};
+    return {status:'pass',evidence:['parse','load'].includes(result.phase)?'frontend-rejection':result.phase==='check'?'checker-rejection':result.phase+'-rejection',oracle:'acceptance'};
+  }
   if(lane==='parse') {
     if(test.negative) return {status:'observed',reason:'Negative parse observations do not establish checker conformance.'};
     return result.status==='ok'&&result.phase==='parse' ? {status:'pass'} : {status:'fail',reason:'Positive source did not parse.'};

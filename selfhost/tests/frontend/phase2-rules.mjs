@@ -30,6 +30,14 @@ const artifact={api:path.resolve(process.env.BEND_TYPED_API),apiSha256:hash(proc
   upstreamBendSha256:hash(path.join(upstream,'bend2/bend.ts')),upstreamCompSha256:hash(path.join(upstream,'bend2/comp.ts'))};
 const build=JSON.parse(fs.readFileSync(process.env.BEND_TYPED_API+'.bootstrap.json','utf8'));
 if(build.apiSha256!==artifact.apiSha256||build.revision!==pin)throw Error('Bootstrap report does not identify selected API');
+if(hash(build.source)!==build.sourceSha256||!build.modules?.length)throw Error('Missing or changed checked compiler source');
+for(const entry of build.modules){
+  if(hash(path.join(path.dirname(build.source),entry.file))!==entry.sha256)throw Error('Changed checked compiler module: '+entry.file);
+}
+const immutable=[artifact.api,artifact.api+'.bootstrap.json',build.source,driver.runtimePath,driver.driverPath,
+  path.join(upstream,'bend2/bend.ts'),path.join(upstream,'bend2/comp.ts'),path.join(upstream,'bend2/base.bend')]
+  .map(file=>({file,sha256:hash(file)}));
+artifact.checkedSource={file:build.source,sha256:build.sourceSha256};
 const report={schemaVersion:1,purpose:'Focused frontend acceptance and rejection-phase regression witnesses',revision,
   started:new Date().toISOString(),node:process.version,execArgv:process.execArgv,artifact,results:[]};
 for(const test of cases){
@@ -52,6 +60,8 @@ for(const test of cases){
   console.log(`${test.id}: reference=${reference.status}/${reference.phase} candidate=${candidate.status}/${candidate.phase}`);
 }
 report.finished=new Date().toISOString();
+report.changedArtifacts=immutable.filter(entry=>hash(entry.file)!==entry.sha256);
 report.pass=report.results.every(r=>r.referenceMatches&&r.candidateMatches);
+if(report.changedArtifacts.length)report.pass=false;
 fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n');
 if(!report.pass)process.exitCode=1;

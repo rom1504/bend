@@ -97,6 +97,67 @@ A frozen full checked self-emission/fixed-point run has started on CPU 1. It is
 independent of the targeted loop and is not counted as passed until both emitted
 stages finish and their hashes agree.
 
-Targeted harness, native graph hosting, broader validation and final timings will
-be recorded below as they complete. No whole-suite conformance or native
-self-hosting claim is made by this interim report.
+## Targeted differential harness
+
+The new `tools/conformance/target.mjs` builds no compiler. It verifies an explicit
+checked API, freezes its host and harness, then compares exact selected probes
+with live pinned TypeScript APIs. It preserves fixture-oracle verdicts separately
+from compiler agreement. Exact pair selection, failure-first queues, retained
+replays, bounded output, process-group deadlines, artifact/input drift, expected
+missing files and symlink identities are tested. Replay verifies Node identity
+and restores the recorded compiler configuration without inheriting unrelated
+current overrides. Dirty tracked upstream source/fixtures are rejected.
+
+The live reference uses upstream load, check, ownership, normalization and backend
+APIs, including declaration reporting and the `PROOF.bend`/`LAWS.bend` policy.
+Its exported loader combines loading and parsing, so some filesystem errors have
+coarser phase labels than the port. Missing Bun-dependent effects are unsupported.
+Neither limitation is hidden by substituting the Bend port into the reference.
+
+The [21-case paired attempt](evidence/targeted-custom21.json) completes in 30.203
+seconds with independent workers and retained artifacts. Both compilers satisfy
+all selected acceptance/phase oracles; all 12 diagnostic differences remain in
+the report. This has more isolation and replay overhead than the nine-second
+in-process focused matrix. Neither result sets full-suite `complete` to true.
+
+The [18 original adjacent fixtures](evidence/frontend-upstream-adjacent.json)
+agree semantically, including six positive controls. Twelve exact negative
+diagnostics still differ, so that attempt correctly has `selectedComplete=false`.
+
+## Native graph host: first candidate
+
+The native entry now accepts an explicit module/asset manifest. It supplies raw
+sources to the existing Bend graph loader, preserves canonical module identity,
+checks all normal compiler gates, and reads only JavaScript foreign assets
+selected after reachability. Logical foreign binding paths are preserved.
+The filesystem wrapper validates the bounded transport, protects input/output
+aliases, checks drift, and publishes by atomic rename only on success. The old
+main-plus-Base entry remains available.
+
+The [first native matrix](evidence/native-graph-v1-validation.json) passes 19/19
+cases. Valid outputs are byte-identical to the JS host running the same checked
+Bend program and produce the expected execution results. Cases cover imported
+graphs, diamonds, repeated imports, Unicode and symlink identities, conflicts,
+cycles, imported syntax/type errors, templates, ADTs, library exports, shared
+foreign assets and unused/missing inputs. A required file deliberately omitted
+from an explicit manifest is a documented scope difference from automatic JS
+host discovery; missing-module load/parse labels also differ.
+
+The [native harness route](evidence/targeted-native-smoke.json) also passes a live
+upstream comparison for `base/list_sort.bend`. It explicitly records native
+compiler execution and JavaScript program execution. Its only conformance lane
+is `js`; unsupported lanes never fall back to a JS compiler. Paired native
+manifests must use the canonical pinned Base file.
+
+Decoder/lookup and filesystem boundary tests accompany the host. Initial driver
+build attempts caught syntax issues before successful checked emission. The
+first matrix ran before the final tool-provenance hardening; its preserved local
+launcher reconstruction is labeled accordingly. The second candidate's matrix
+will verify the complete consumed tool/build identities. The first candidate's
+[source preparation](evidence/native-graph-v1-preparation.json) is distinct from
+the next source revision and is not silently updated.
+
+See the [development guide](../../docs/PHASE2_DEVELOPMENT.md) for build, selection,
+replay and native-manifest recipes. Broader validation and final timings will be
+recorded as they complete. No whole-suite conformance or native self-hosting
+claim is made by this interim report.

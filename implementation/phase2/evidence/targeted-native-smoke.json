@@ -1,0 +1,172 @@
+{
+  "kind": "targeted-paired-conformance",
+  "started": "2026-09-21T14:47:35.505Z",
+  "complete": false,
+  "selectedComplete": true,
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke-config.json",
+    "sha256": "4871d068a4abd88c6b002affe50e381d80024cd0fb36268d7e28a98f3fb6bbf1"
+  },
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "candidateAdapter": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/conformance/adapters/native-graph.mjs",
+      "sha256": "21914a03e998fcb7b5f2e66b6b0b30cb9241cf6c55e3c6da73ef8e393a76d18a"
+    }
+  },
+  "environment": {
+    "BEND_UPSTREAM": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "BEND_BASE": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "BEND_NATIVE_BINARY": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+    "BEND_NATIVE_RUNTIME": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+    "BEND_NATIVE_MANIFEST_DIRECTORY": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/adapter-manifests"
+  },
+  "harnessSources": [
+    {
+      "file": "run.mjs",
+      "sourceSha256": "65acd0a68372737e0cef5eaca89546aad46696f02757688f8897be38beb06f38",
+      "consumedSha256": "cbb3a93875ac0d0186a149b0ec68fa4eeefe0cdd6c2c0d4e0d7169af5fbb033c"
+    },
+    {
+      "file": "worker.mjs",
+      "sourceSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "consumedSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+    },
+    {
+      "file": "inventory.mjs",
+      "sourceSha256": "bd07624791dedb66f610f1ea46626a48ccb60475b87fef4c9c022b497b2a1a4c",
+      "consumedSha256": "bd07624791dedb66f610f1ea46626a48ccb60475b87fef4c9c022b497b2a1a4c"
+    },
+    {
+      "file": "judge.mjs",
+      "sourceSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+      "consumedSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+    },
+    {
+      "file": "selection.mjs",
+      "sourceSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+      "consumedSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+    },
+    {
+      "file": "run-probe.mjs",
+      "sourceSha256": "d61b8ccfabd3c9d2bb522a063608a87dc45ec305c1e20dcf3b5e66e7f4875812",
+      "consumedSha256": "d61b8ccfabd3c9d2bb522a063608a87dc45ec305c1e20dcf3b5e66e7f4875812"
+    },
+    {
+      "file": "replay.mjs",
+      "sourceSha256": "7599a5ed831515aa92600d422e6a25b39f02e1567fb406aaaddb5097885da4b0",
+      "consumedSha256": "7599a5ed831515aa92600d422e6a25b39f02e1567fb406aaaddb5097885da4b0"
+    },
+    {
+      "file": "adapters/upstream.mjs",
+      "sourceSha256": "1987b8e57c381d827f19b37bcd17f0c6c1d8dd7ae6fd7402692d4eb0effc30fe",
+      "consumedSha256": "1987b8e57c381d827f19b37bcd17f0c6c1d8dd7ae6fd7402692d4eb0effc30fe"
+    }
+  ],
+  "targetSourceSha256": "fc8b16bb298da8cc67ac0c7cb7c44b814a2cf67fda930e59665d53310543d701",
+  "cpu": 3,
+  "attempts": {
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke/reference.json",
+      "argv": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "all",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke/harness/tools/conformance/adapters/upstream.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke/reference.json"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "sha256": "ad95ddc1997f00003b29c6e593c51bd826938873cf3ea58faa33970aa9072b06"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke/candidate.json",
+      "argv": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "all",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke/harness/tools/conformance/adapters/native-graph.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/target/native-smoke/candidate.json"
+      ],
+      "exitCode": 0,
+      "error": null,
+      "sha256": "c60db05086dbb527b72b433a33bb0edc348b40212547e8019217c2f90fa41582"
+    }
+  },
+  "rows": [
+    {
+      "id": "base/list_sort.bend",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "6\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "6\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    }
+  ],
+  "missing": [],
+  "discrepancies": [],
+  "referenceSelectedComplete": true,
+  "candidateSelectedComplete": true,
+  "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+  "wallMs": 5517.1922429999995,
+  "finished": "2026-09-21T14:47:41.024Z",
+  "sourceReportSha256": "ffc7c50766cc12fc254528cc7d14dad40f4aa5c1ccdc2e8f5da5f1f3f78094c5"
+}

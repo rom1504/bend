@@ -1,0 +1,495 @@
+{
+  "scope": "18 selected original upstream check probes; semantic agreement does not imply exact diagnostic conformance",
+  "sourceReport": "selfhost/build/phase2/frontend/upstream-adjacent/paired.json",
+  "sourceReportSha256": "7ac21dc3f373ca1c4497ae5e723fdc1741615552ff8df481b050c45c8c1dc957",
+  "wallMs": 22246.796576,
+  "selectedComplete": false,
+  "semanticAgreements": 18,
+  "referencePasses": 18,
+  "candidateExactPasses": 6,
+  "rows": [
+    {
+      "id": "check/erased_local_dead_value.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "compile/local_name_livelock.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "compile/nested_literal_pattern.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "compile/nested_pattern.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "compile/shared_pattern_reuse.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "import/position_independent.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n11 | \n12>| import /late/mod.bend as L\n13 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 12:0: expected def, law or type; imports must precede declarations; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "parse/invalid_assign_target.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a pattern (a binder or a constructor)\n- observed : f(1)\nLocation:\n16 | def main():\n17>|   f(1) = 3\n18 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: expected a binder or constructor pattern",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "parse/law_fill_arrow.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : '-'\nLocation:\n7 | \n8>| def claim(n) -> {0n == 1n : Nat}:\n9 |   {==}",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 8:13: expected : (a definition filling a law has no return annotation); got ->",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "parse/reserved_pattern_binder.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a do-block heading this return\n- observed : '}'\nLocation:\n12 |   match n:\n13>|     case Sx{return}:\n14 |       Zx{}",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 13:12: expected term; got return",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "proof/template_law.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "reg/body_local_match.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a parameter or field scrutinee (a match cannot scrutinize a local binder: give it its own def)\nLocation:\n15 | def flip(v):\n16>|   x = v\n17 |   match x:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a match cannot scrutinize a local binding",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "reg/erased_local_match.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a parameter or field scrutinee (a match cannot scrutinize a local binder: give it its own def)\nLocation:\n12 | def leak(z):\n13>|   -x = {z : Bool}\n14 |   match x:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a match cannot scrutinize a local binding",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "spec/comp_erased_args.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n12 |   for -e: {a == b : Nat}\n13>|   for ~g: Nat -> Nat\n14 |   for x: Nat",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 13:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "spec/comp_generic_dedupe.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n14 |   for -B: Type\n15>|   for ~f: A -> B\n16 |   for xs: L<A>",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 15:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "spec/comp_generic_mint.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n14 |   for -B: Type\n15>|   for ~f: A -> B\n16 |   for xs: L<A>",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 15:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "spec/comp_instantiation_error.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n14 |   for -B: Type\n15>|   for ~f: A -> B\n16 |   for xs: L<A>",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 15:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "spec/comp_late_param.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n12 |   for xs: L\n13>|   for ~f: U32 -> U32\n14 |   L",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 13:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "spec/mint_count.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n10 |   for n: Nat\n11>|   for ~g: U32 -> U32\n12 |   for x: U32",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 11:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    }
+  ],
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/after/api.mjs",
+      "sha256": "8ae7a4cebb236c2bf83863417d433093b858f2831b6a32d8823ebf52f271eff1"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    },
+    "bootstrapReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/after/api.mjs.bootstrap.json",
+      "sha256": "1a3be85d2a9bca1a84421a57563057524826c1c504dcb82750e4f294651f5bd3"
+    }
+  }
+}

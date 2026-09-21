@@ -17,6 +17,9 @@ See [building, running and validating it](docs/BEND-IN-BEND.md), and the
 [phase 1 implementation report](implementation/phase1/report.md).
 For short iteration cycles, see [fast compiler development](docs/FAST_COMPILER_DEVELOPMENT.md)
 and the [rapid performance experiments](implementation/phase1/rapid_performance_experiments.md).
+For exact differential checks against pinned upstream, see the
+[phase 2 development guide](docs/PHASE2_DEVELOPMENT.md) and
+[phase 2 implementation report](implementation/phase2/report.md).
 The [experimental native bootstrap](selfhost/tools/performance/rapid/native-bundle.md)
 executes the Bend compiler natively for a main module plus Base.
 

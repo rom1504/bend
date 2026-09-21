@@ -1,0 +1,2476 @@
+{
+  "kind": "native-graph-semantic-validation",
+  "started": "2026-09-21T14:41:59.008Z",
+  "cpu": 3,
+  "files": {
+    "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+    "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/host-api/api.mjs",
+    "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs"
+  },
+  "hashes": {
+    "binary": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185",
+    "api": "1287fd06884b0956482e3e853ff81689377e93917296b9afc16db876e2e42ca6",
+    "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+  },
+  "complete": true,
+  "rows": [
+    {
+      "name": "nested-parent",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=1779\nconsumed_chars=43600\n",
+        "preparationMs": 23.136790000000005,
+        "nativeWallMs": 1783.636971,
+        "compileMs": 1779,
+        "consumedChars": 43600,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/manifest.json",
+          "fingerprint": "2306:71724871:212:1790001719000144775:1790001719000144775:33188",
+          "dev": "2306",
+          "ino": "71724871",
+          "bytes": 212,
+          "sha256": "7fd3813c050185c4f70e345853ff304572036d58c9b8def81a682c4e7336dd14"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/main.bend",
+            "fingerprint": "2306:71724866:94:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724866",
+            "bytes": 94,
+            "sha256": "6da7ebd4593e7a31a83958a87e3b5258b0a5878ccc2668866f6b7312395f8a84"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/sub/a.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/sub/a.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/sub/a.bend",
+            "fingerprint": "2306:71724868:79:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724868",
+            "bytes": 79,
+            "sha256": "9ef39b1b2f73605d25a13c209f0dcf83227c082afae1cb86a06d8062afdd1f62"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/shared/value.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/shared/value.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/shared/value.bend",
+            "fingerprint": "2306:71724870:38:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724870",
+            "bytes": 38,
+            "sha256": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "f7bb43b1ca0a6061d81c135ca9bf4019191566d588351f2d7bb5c1439f26f9d9",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/nested-parent/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 43600,
+        "outputSha256": "887c05fc8e404c9d685f3c4b0eee70278aa7f015c6033f0b335f6810324c362d",
+        "wallMs": 1809.497374
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/sub/a.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/nested-parent/shared/value.bend"
+        ],
+        "wallMs": 6743.357174,
+        "outputSha256": "887c05fc8e404c9d685f3c4b0eee70278aa7f015c6033f0b335f6810324c362d",
+        "outputBytes": 43600
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "diamond",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=1923\nconsumed_chars=43702\n",
+        "preparationMs": 35.323457999998936,
+        "nativeWallMs": 1928.8227889999998,
+        "compileMs": 1923,
+        "consumedChars": 43702,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/manifest.json",
+          "fingerprint": "2306:71724877:223:1790001719000144775:1790001719000144775:33188",
+          "dev": "2306",
+          "ino": "71724877",
+          "bytes": 223,
+          "sha256": "4f606af68bf25e7df45268e0f5cd283cfefb1d35b4d3f51c92c3917649b24f10"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/main.bend",
+            "fingerprint": "2306:71724873:139:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724873",
+            "bytes": 139,
+            "sha256": "8e6e0a287087ff64cbedcec45ca4ea0eabdcdecd7634b1b74bf7d9b1539a37b1"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/left.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/left.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/left.bend",
+            "fingerprint": "2306:71724874:72:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724874",
+            "bytes": 72,
+            "sha256": "f36440d75a819bea5943e5ac417c50420dd98eb5eb19db95c2c865fc9caa3313"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/right.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/right.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/right.bend",
+            "fingerprint": "2306:71724875:72:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724875",
+            "bytes": 72,
+            "sha256": "f36440d75a819bea5943e5ac417c50420dd98eb5eb19db95c2c865fc9caa3313"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/shared.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/shared.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/shared.bend",
+            "fingerprint": "2306:71724876:38:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724876",
+            "bytes": 38,
+            "sha256": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "697c02a47f2465f97374b773d14b5183218dbac3145c9bb268eca6561f8a3c3c",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/diamond/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 43702,
+        "outputSha256": "4949ea75ec0a10ca47baf019f43e3ff03804c3030a5ccf675ef8a345189e64d8",
+        "wallMs": 1968.7597339999993
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/left.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/shared.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/diamond/right.bend"
+        ],
+        "wallMs": 7176.206628000001,
+        "outputSha256": "4949ea75ec0a10ca47baf019f43e3ff03804c3030a5ccf675ef8a345189e64d8",
+        "outputBytes": 43702
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "84\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "84\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "repeated-alias",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=2223\nconsumed_chars=43567\n",
+        "preparationMs": 32.15255199999956,
+        "nativeWallMs": 2227.777761000001,
+        "compileMs": 2223,
+        "consumedChars": 43567,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/manifest.json",
+          "fingerprint": "2306:71724881:187:1790001719000144775:1790001719000144775:33188",
+          "dev": "2306",
+          "ino": "71724881",
+          "bytes": 187,
+          "sha256": "e807d7d1bb65c3fa0207b3abc06916fe12cc2a400963643567994183dd37a0ef"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/main.bend",
+            "fingerprint": "2306:71724879:142:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724879",
+            "bytes": 142,
+            "sha256": "20e73d64fcf899bf69a4472e7983ebea8c53b2f3f4417f3b9a0059c6cddefd7b"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/value.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/value.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/value.bend",
+            "fingerprint": "2306:71724880:38:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724880",
+            "bytes": 38,
+            "sha256": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "1dee89ae9f79f8c741b6f7aa02da0deb206ac8f6431bfe870991c71a65179f69",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/repeated-alias/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 43567,
+        "outputSha256": "585162b1361996b509255d610b64170626766468d0e923acd79186adbb0d47ea",
+        "wallMs": 2262.781561
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/repeated-alias/value.bend"
+        ],
+        "wallMs": 9557.448502,
+        "outputSha256": "585162b1361996b509255d610b64170626766468d0e923acd79186adbb0d47ea",
+        "outputBytes": 43567
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "84\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "84\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "unused-malformed",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=2429\nconsumed_chars=43519\n",
+        "preparationMs": 33.91917900000044,
+        "nativeWallMs": 2443.2955530000036,
+        "compileMs": 2429,
+        "consumedChars": 43519,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/manifest.json",
+          "fingerprint": "2306:71724886:206:1790001719000144775:1790001719000144775:33188",
+          "dev": "2306",
+          "ino": "71724886",
+          "bytes": 206,
+          "sha256": "5853dc6b6f21322ac7e05f6e4f76fe21a3bad1bcfd00e4cc9c06b475ad6a6e32"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/main.bend",
+            "fingerprint": "2306:71724883:94:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724883",
+            "bytes": 94,
+            "sha256": "67938fee93290503a2bbb5a8a49d48d4346314730ccab99188652b6108a202a9"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/value.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/value.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/value.bend",
+            "fingerprint": "2306:71724884:38:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724884",
+            "bytes": 38,
+            "sha256": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/unused.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/unused.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/unused.bend",
+            "fingerprint": "2306:71724885:19:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724885",
+            "bytes": 19,
+            "sha256": "34a4b97040142893702659d3f82cb24a4415da4304fa467712afab43360148ca"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "e76688cca0dd723f603cb67bb95253fcb4f2d14fea2f04745f88b11776894668",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/unused-malformed/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 43519,
+        "outputSha256": "783ba46d4927c6acf12ff075fe81ff4f2c840090901f7d4330cade5de8e56b6b",
+        "wallMs": 2480.021131999998
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unused-malformed/value.bend"
+        ],
+        "wallMs": 10703.488096,
+        "outputSha256": "783ba46d4927c6acf12ff075fe81ff4f2c840090901f7d4330cade5de8e56b6b",
+        "outputBytes": 43519
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "unicod\u00e9 \u732b",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=2683\nconsumed_chars=43519\n",
+        "preparationMs": 34.710251000004064,
+        "nativeWallMs": 2688.1744610000023,
+        "compileMs": 2683,
+        "consumedChars": 43519,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/manifest.json",
+          "fingerprint": "2306:71724890:187:1790001719000144775:1790001719000144775:33188",
+          "dev": "2306",
+          "ino": "71724890",
+          "bytes": 187,
+          "sha256": "e807d7d1bb65c3fa0207b3abc06916fe12cc2a400963643567994183dd37a0ef"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/main.bend",
+            "fingerprint": "2306:71724888:94:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724888",
+            "bytes": 94,
+            "sha256": "67938fee93290503a2bbb5a8a49d48d4346314730ccab99188652b6108a202a9"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/value.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/value.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/value.bend",
+            "fingerprint": "2306:71724889:38:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724889",
+            "bytes": 38,
+            "sha256": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "6a2beb2dccd4548cd368fc419e5b12b5d4cfa93e9ddb62fe3454111da04e70e6",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/unicod\u00e9 \u732b/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 43519,
+        "outputSha256": "783ba46d4927c6acf12ff075fe81ff4f2c840090901f7d4330cade5de8e56b6b",
+        "wallMs": 2725.8052060000045
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/unicod\u00e9 \u732b/value.bend"
+        ],
+        "wallMs": 8988.676707999999,
+        "outputSha256": "783ba46d4927c6acf12ff075fe81ff4f2c840090901f7d4330cade5de8e56b6b",
+        "outputBytes": 43519
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "symlink-main",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=1786\nconsumed_chars=43519\n",
+        "preparationMs": 20.186939999999595,
+        "nativeWallMs": 1789.7169070000018,
+        "compileMs": 1786,
+        "consumedChars": 43519,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/manifest.json",
+          "fingerprint": "2306:71724895:204:1790001719000144775:1790001719000144775:33188",
+          "dev": "2306",
+          "ino": "71724895",
+          "bytes": 204,
+          "sha256": "19792db7cce836b9b2ee5763e2172e5edabc653296f04121cf103ba1d0bdb6ee"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/real.bend",
+            "fingerprint": "2306:71724892:94:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724892",
+            "bytes": 94,
+            "sha256": "67938fee93290503a2bbb5a8a49d48d4346314730ccab99188652b6108a202a9"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/real.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/real.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/real.bend",
+            "fingerprint": "2306:71724892:94:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724892",
+            "bytes": 94,
+            "sha256": "67938fee93290503a2bbb5a8a49d48d4346314730ccab99188652b6108a202a9"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/value.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/value.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/value.bend",
+            "fingerprint": "2306:71724893:38:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724893",
+            "bytes": 38,
+            "sha256": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "b3052933d9ca5d893c32db523d7476415a6f4201bd9a54414a42e2a4a3b64638",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/symlink-main/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 43519,
+        "outputSha256": "783ba46d4927c6acf12ff075fe81ff4f2c840090901f7d4330cade5de8e56b6b",
+        "wallMs": 1813.3039019999997
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/real.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/symlink-main/value.bend"
+        ],
+        "wallMs": 7774.423915,
+        "outputSha256": "783ba46d4927c6acf12ff075fe81ff4f2c840090901f7d4330cade5de8e56b6b",
+        "outputBytes": 43519
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "namespace-conflict",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/manifest.json",
+      "expected": {
+        "accepted": false,
+        "phase": "parse",
+        "checked": false,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 1,
+        "signal": null,
+        "error": null,
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "one namespace per source file: /home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/value.bend",
+        "stdout": "",
+        "stderr": "compile_ms=940\nconsumed_chars=158\nphase=parse checked=False: one namespace per source file: /home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/value.bend\n",
+        "preparationMs": 20.393286999998963,
+        "nativeWallMs": 943.0050790000096,
+        "compileMs": 940,
+        "consumedChars": 158,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/manifest.json",
+          "fingerprint": "2306:71724900:205:1790001719000144775:1790001719000144775:33188",
+          "dev": "2306",
+          "ino": "71724900",
+          "bytes": 205,
+          "sha256": "56910180834a97e049091d35901a5781f3fea44811dc619fe1c1779b847cd5bf"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/main.bend",
+            "fingerprint": "2306:71724897:119:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724897",
+            "bytes": 119,
+            "sha256": "fed156335f1a59e07350f48bacd27a495ac7888eb8c2e19deb561f4da082850c"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/value.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/value.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/value.bend",
+            "fingerprint": "2306:71724898:38:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724898",
+            "bytes": 38,
+            "sha256": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/alias.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/alias.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/value.bend",
+            "fingerprint": "2306:71724898:38:1790001719000144775:1790001719000144775:33188",
+            "dev": "2306",
+            "ino": "71724898",
+            "bytes": 38,
+            "sha256": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "d3268cfe630eb2ff955ef4b28165cbf3182e83c66591cf012d673631725ea5ba",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/namespace-conflict/native.mjs",
+        "published": false,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "wallMs": 965.920248999988
+      },
+      "host": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: one namespace per source file: /home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/namespace-conflict/value.bend",
+        "exitCode": 1,
+        "checked": false,
+        "wallMs": 4560.446543
+      },
+      "phaseDifference": false
+    },
+    {
+      "name": "cycle",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/manifest.json",
+      "expected": {
+        "accepted": false,
+        "phase": "parse",
+        "checked": false,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 1,
+        "signal": null,
+        "error": null,
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "cyclic import through /home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/a.bend",
+        "stdout": "",
+        "stderr": "compile_ms=821\nconsumed_chars=132\nphase=parse checked=False: cyclic import through /home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/a.bend\n",
+        "preparationMs": 32.557517999986885,
+        "nativeWallMs": 824.2009830000025,
+        "compileMs": 821,
+        "consumedChars": 132,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/manifest.json",
+          "fingerprint": "2306:71724905:197:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724905",
+          "bytes": 197,
+          "sha256": "7666a10296a35d98fd7983053cbe4574e241a7ed64c7aef1d5cef590eafac490"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/main.bend",
+            "fingerprint": "2306:71724902:90:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724902",
+            "bytes": 90,
+            "sha256": "3517276c2f1550be9dea9e12be2495a651eb98c0d05afa7dda6849e582214d5d"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/a.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/a.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/a.bend",
+            "fingerprint": "2306:71724903:59:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724903",
+            "bytes": 59,
+            "sha256": "301298ed558c36194feb596c55a66454a63a6100f72ff71b682f47cc3c3f039b"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/b.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/b.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/b.bend",
+            "fingerprint": "2306:71724904:57:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724904",
+            "bytes": 57,
+            "sha256": "4ab10e97c21c7bf2f07bd260e776865e8ba72daf1f0a58a877d131a1ba54c3fc"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "f8f9b6b8005b5f1a83f8d0d8a74f3f6c4d5d18392838d6e2f8dd3f3713a16db9",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/cycle/native.mjs",
+        "published": false,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "wallMs": 859.1124869999912
+      },
+      "host": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: cyclic import through /home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/cycle/a.bend",
+        "exitCode": 1,
+        "checked": false,
+        "wallMs": 3230.669966
+      },
+      "phaseDifference": false
+    },
+    {
+      "name": "missing-module",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-module/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-module/manifest.json",
+      "expected": {
+        "accepted": false,
+        "phase": "parse",
+        "checked": false,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 1,
+        "signal": null,
+        "error": null,
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "module source was not supplied",
+        "stdout": "",
+        "stderr": "compile_ms=834\nconsumed_chars=30\nphase=parse checked=False: module source was not supplied\n",
+        "preparationMs": 31.00647399999434,
+        "nativeWallMs": 838.2125919999962,
+        "compileMs": 834,
+        "consumedChars": 30,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-module/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-module/manifest.json",
+          "fingerprint": "2306:71724908:167:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724908",
+          "bytes": 167,
+          "sha256": "840831792e8862d9590980aaa9fd09d5a629a449a9fdab5ec5a8c5d8603a0fdd"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-module/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-module/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-module/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-module/main.bend",
+            "fingerprint": "2306:71724907:96:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724907",
+            "bytes": 96,
+            "sha256": "789b433bfaa9f522135e1bf0633cf37db5476d94d6c64f661008cb492b481f86"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "a299437634ea0730f1364ef951aa58c8914f1a7fd60a9a44b023e2e3e82542fd",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/missing-module/native.mjs",
+        "published": false,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "wallMs": 870.2874429999938
+      },
+      "host": {
+        "status": "error",
+        "phase": "load",
+        "diagnostic": "Error: ENOENT: no such file or directory, lstat '/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-module/missing.bend'",
+        "exitCode": 1,
+        "checked": false,
+        "wallMs": 2175.60502
+      },
+      "phaseDifference": true
+    },
+    {
+      "name": "imported-parse-error",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/manifest.json",
+      "expected": {
+        "accepted": false,
+        "phase": "parse",
+        "checked": false,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 1,
+        "signal": null,
+        "error": null,
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "line 0:0: reserved parameter name; got <eof>",
+        "stdout": "",
+        "stderr": "compile_ms=873\nconsumed_chars=44\nphase=parse checked=False: line 0:0: reserved parameter name; got <eof>\n",
+        "preparationMs": 21.82271399999445,
+        "nativeWallMs": 890.9619749999983,
+        "compileMs": 873,
+        "consumedChars": 44,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/manifest.json",
+          "fingerprint": "2306:71724912:185:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724912",
+          "bytes": 185,
+          "sha256": "7c5d64dc6b7fe4ef47db1d380f180544ca0d7b02e4532c9790c3991fa083c355"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/main.bend",
+            "fingerprint": "2306:71724910:92:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724910",
+            "bytes": 92,
+            "sha256": "3398671fee376662bca3030aee89e92b7b64397594478f90a77f2a8044d71a0d"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/bad.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/bad.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/bad.bend",
+            "fingerprint": "2306:71724911:9:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724911",
+            "bytes": 9,
+            "sha256": "a38b0cf55b3538c5745ce94d88f77df9a96cbff57ca641d3eed3dcd8259112c3"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "5f9febae2050c21f6bf7d38d61cad23d531b3d276ae0bd61aa01cad3c6e97642",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/imported-parse-error/native.mjs",
+        "published": false,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "wallMs": 914.9203500000003
+      },
+      "host": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 0:0: reserved parameter name; got <eof>",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-parse-error/bad.bend",
+        "wallMs": 2278.745077
+      },
+      "phaseDifference": false
+    },
+    {
+      "name": "imported-type-error",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/manifest.json",
+      "expected": {
+        "accepted": false,
+        "phase": "check",
+        "checked": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 1,
+        "signal": null,
+        "error": null,
+        "phase": "check",
+        "checked": true,
+        "diagnostic": "bad.answer: constructor does not belong to goal or field count differs",
+        "stdout": "",
+        "stderr": "compile_ms=2505\nconsumed_chars=70\nphase=check checked=True: bad.answer: constructor does not belong to goal or field count differs\n",
+        "preparationMs": 34.97658899999806,
+        "nativeWallMs": 2527.9239620000008,
+        "compileMs": 2505,
+        "consumedChars": 70,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/manifest.json",
+          "fingerprint": "2306:71724916:185:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724916",
+          "bytes": 185,
+          "sha256": "7c5d64dc6b7fe4ef47db1d380f180544ca0d7b02e4532c9790c3991fa083c355"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/main.bend",
+            "fingerprint": "2306:71724914:92:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724914",
+            "bytes": 92,
+            "sha256": "3398671fee376662bca3030aee89e92b7b64397594478f90a77f2a8044d71a0d"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/bad.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/bad.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-type-error/bad.bend",
+            "fingerprint": "2306:71724915:41:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724915",
+            "bytes": 41,
+            "sha256": "38da1ecbc4c2e3a0a776a27b13aa72646682c0ec6b0f4ab9d7fc514900ad275c"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "c8e2a49021d20957025ed1157cdaedb45fc7fb910d22f909e6c0b499e2256f75",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/imported-type-error/native.mjs",
+        "published": false,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "wallMs": 2564.9842170000047
+      },
+      "host": {
+        "status": "error",
+        "phase": "check",
+        "diagnostic": "Error: bad.answer: constructor does not belong to goal or field count differs",
+        "exitCode": 1,
+        "checked": true,
+        "wallMs": 9260.502969
+      },
+      "phaseDifference": false
+    },
+    {
+      "name": "imported-adt",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=1943\nconsumed_chars=43765\n",
+        "preparationMs": 33.89796300001035,
+        "nativeWallMs": 1947.8340350000071,
+        "compileMs": 1943,
+        "consumedChars": 43765,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/manifest.json",
+          "fingerprint": "2306:71724920:185:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724920",
+          "bytes": 185,
+          "sha256": "32db2192370cd5bc4f3733fd68a0e75d4a51262e0b9e196bca04f016543c7a2d"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/main.bend",
+            "fingerprint": "2306:71724918:98:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724918",
+            "bytes": 98,
+            "sha256": "b868c2a3c1d5784e6165fb3e84b8d88abe9d4d6c5b0709ec995fdfaf76a45677"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/box.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/box.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/box.bend",
+            "fingerprint": "2306:71724919:114:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724919",
+            "bytes": 114,
+            "sha256": "39d8259db01f889da02cbb669e244274bdebb227449f79f524da257a6b807bd6"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "8d208b5156086b42c67f9f24cd87035b9e88c94b33e0155d683369b9aecc39de",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/imported-adt/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 43765,
+        "outputSha256": "a8a95d5bb7fdad44f527e6f489e3e02137702b02f0f331304dc0739508c06b3d",
+        "wallMs": 2459.122856000002
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-adt/box.bend"
+        ],
+        "wallMs": 9067.934256,
+        "outputSha256": "a8a95d5bb7fdad44f527e6f489e3e02137702b02f0f331304dc0739508c06b3d",
+        "outputBytes": 43765
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "imported-template",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=2526\nconsumed_chars=43626\n",
+        "preparationMs": 21.803317999991123,
+        "nativeWallMs": 2531.5232200000028,
+        "compileMs": 2526,
+        "consumedChars": 43626,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/manifest.json",
+          "fingerprint": "2306:71724924:190:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724924",
+          "bytes": 190,
+          "sha256": "51ae3f1b2406d9a3e9ba14a02ca48f26020ca3324cac7a095c35912de1e0014b"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/main.bend",
+            "fingerprint": "2306:71724922:121:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724922",
+            "bytes": 121,
+            "sha256": "ffa19af57fd0fb83b030ade47c2e5453d679540304a773a11025f137d570f1a1"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/template.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/template.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/template.bend",
+            "fingerprint": "2306:71724923:64:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724923",
+            "bytes": 64,
+            "sha256": "0443214d4149e4efb52671610a79b9405d1e8a1ab71fc3886d2427281d7185ac"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "1054715e2b219479d68e69d1416bc29b5c137fa35b83b03ce8a7d6ac1792fcdf",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/imported-template/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 43626,
+        "outputSha256": "e90488fe02e9ed28c7d329da6963a53c74a5842b8df03d631bb66404f7d755ea",
+        "wallMs": 2556.2164519999933
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/imported-template/template.bend"
+        ],
+        "wallMs": 7899.054126,
+        "outputSha256": "e90488fe02e9ed28c7d329da6963a53c74a5842b8df03d631bb66404f7d755ea",
+        "outputBytes": 43626
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "library",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "library",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=1734\nconsumed_chars=57830\n",
+        "preparationMs": 33.02084899999318,
+        "nativeWallMs": 1738.383560999995,
+        "compileMs": 1734,
+        "consumedChars": 57830,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/manifest.json",
+          "fingerprint": "2306:71724928:187:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724928",
+          "bytes": 187,
+          "sha256": "e807d7d1bb65c3fa0207b3abc06916fe12cc2a400963643567994183dd37a0ef"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/main.bend",
+            "fingerprint": "2306:71724926:71:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724926",
+            "bytes": 71,
+            "sha256": "2f676315db1f5931c0656049f6e0578714d2e2510e3ada253ecb91d918db21c3"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/value.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/value.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/value.bend",
+            "fingerprint": "2306:71724927:38:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724927",
+            "bytes": 38,
+            "sha256": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "4aa8792f27617a1ce779a29b6e5c048766ce1ecb0fdba30e4ae9d4dbfe4d90f6",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/library/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 57830,
+        "outputSha256": "c9d1eca2d59ada5f2ef1092fd82e357d969980097c16814749653c9e4919550a",
+        "wallMs": 1773.9606749999948
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/library/value.bend"
+        ],
+        "wallMs": 6987.974987,
+        "outputSha256": "c9d1eca2d59ada5f2ef1092fd82e357d969980097c16814749653c9e4919550a",
+        "outputBytes": 57830
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "foreign-imported",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "asset_used=0\ncompile_ms=1827\nconsumed_chars=44381\n",
+        "preparationMs": 20.238853000002564,
+        "nativeWallMs": 1830.7370059999957,
+        "compileMs": 1827,
+        "consumedChars": 44381,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/manifest.json",
+          "fingerprint": "2306:71724933:210:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724933",
+          "bytes": 210,
+          "sha256": "a6b0f05aced2c59b16e418601aa0e5885b12fdd828ca9d7a0e31d18a3c3bff94"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/main.bend",
+            "fingerprint": "2306:71724930:132:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724930",
+            "bytes": 132,
+            "sha256": "288f0c27d3361d3b4c1c00baed70638c250f69a632c99d83ed6e243da67e7c84"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          },
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/foreign.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/foreign.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/foreign.bend",
+            "fingerprint": "2306:71724931:64:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724931",
+            "bytes": 64,
+            "sha256": "bf6db11b7a19111bf91e3f8ffb5f9a6d0c3591e2e91b47b8247f7c1113428953"
+          }
+        ],
+        "assets": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/external.js",
+            "role": "asset",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/external.js",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/external.js",
+            "fingerprint": "2306:71724932:35:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724932",
+            "bytes": 35,
+            "sha256": "3f2a770c161ce92e464ea90f5d1da9c3f258460fda1ebed06e1d4733cd0f1825"
+          }
+        ],
+        "usedAssetIds": [
+          0
+        ],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "5fafa4040d06f61755c281f45bdf4e6174e2a81f749a5d91af942d841cdafbe2",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/foreign-imported/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 44381,
+        "outputSha256": "56577cbdcd025003bb42742bfeaa79b5067e3ff2a0466994ba92a7a9acd4b1a2",
+        "wallMs": 1854.167186000006
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/foreign.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-imported/./external.js"
+        ],
+        "wallMs": 7413.554332,
+        "outputSha256": "56577cbdcd025003bb42742bfeaa79b5067e3ff2a0466994ba92a7a9acd4b1a2",
+        "outputBytes": 44381
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "foreign-shared",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "asset_used=0\ncompile_ms=2237\nconsumed_chars=44747\n",
+        "preparationMs": 30.831021999998484,
+        "nativeWallMs": 2242.877854999999,
+        "compileMs": 2237,
+        "consumedChars": 44747,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/manifest.json",
+          "fingerprint": "2306:71724937:188:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724937",
+          "bytes": 188,
+          "sha256": "f3d6b858cb6bf3d14306b4f99d057e470688cd513be04a52aac814cb4fcfad24"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/main.bend",
+            "fingerprint": "2306:71724935:225:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724935",
+            "bytes": 225,
+            "sha256": "00c6c7099214238ddf264a1c7abcbbdf3d3805f3330ae5b8e1be5a978e1c9c7c"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          }
+        ],
+        "assets": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/external.js",
+            "role": "asset",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/external.js",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/external.js",
+            "fingerprint": "2306:71724936:60:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724936",
+            "bytes": 60,
+            "sha256": "21855d4d4a50f68a78c4543cefc9f5ffb5f6d6ce9b72a11e778b2530bf80fe49"
+          }
+        ],
+        "usedAssetIds": [
+          0
+        ],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "37063caaab728743da6fed76c634deba17be65335a33f2238aa51d2247899724",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/foreign-shared/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 44747,
+        "outputSha256": "1d70091cfbc8acba2368d9d0c5d49e90af9bd55bf0701f9ac7fe86b003498e6c",
+        "wallMs": 2276.297913999995
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/./external.js",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/foreign-shared/./external.js"
+        ],
+        "wallMs": 9632.757909,
+        "outputSha256": "1d70091cfbc8acba2368d9d0c5d49e90af9bd55bf0701f9ac7fe86b003498e6c",
+        "outputBytes": 44747
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "missing-unused-asset",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/manifest.json",
+      "expected": {
+        "accepted": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=1759\nconsumed_chars=41676\n",
+        "preparationMs": 31.92302699998254,
+        "nativeWallMs": 2156.3371000000043,
+        "compileMs": 1759,
+        "consumedChars": 41676,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/manifest.json",
+          "fingerprint": "2306:71724940:188:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724940",
+          "bytes": 188,
+          "sha256": "f3d6b858cb6bf3d14306b4f99d057e470688cd513be04a52aac814cb4fcfad24"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/main.bend",
+            "fingerprint": "2306:71724939:106:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724939",
+            "bytes": 106,
+            "sha256": "55ba8a5c56cc89cb181ac3645839258e2c262f97c1c7f2f15bc2fd39ae2e43d5"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          }
+        ],
+        "assets": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/external.js",
+            "role": "asset",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/external.js",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/external.js",
+            "missing": true
+          }
+        ],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "862fb74a2c9fd6b01a629284e274918738afe37c98a464b72ba8642101d9fb5a",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/missing-unused-asset/native.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 41676,
+        "outputSha256": "8fba8b3195d4d5ade51549e1a5198942c49872d08f64611bb0b9c1eda400b93d",
+        "wallMs": 2191.121841999993
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-unused-asset/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "wallMs": 11491.553004,
+        "outputSha256": "8fba8b3195d4d5ade51549e1a5198942c49872d08f64611bb0b9c1eda400b93d",
+        "outputBytes": 41676
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "missing-required-asset",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/manifest.json",
+      "expected": {
+        "accepted": false,
+        "phase": "compile",
+        "checked": true,
+        "scopeDifference": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 1,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "cannot read foreign JavaScript source /home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/./external.js: No such file or directory",
+        "stdout": "",
+        "stderr": "compile_ms=4933\nconsumed_chars=199\nphase=compile checked=True: cannot read foreign JavaScript source /home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/./external.js: No such file or directory\n",
+        "preparationMs": 102.4582689999952,
+        "nativeWallMs": 4963.6044859999965,
+        "compileMs": 4933,
+        "consumedChars": 199,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/manifest.json",
+          "fingerprint": "2306:71724943:188:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724943",
+          "bytes": 188,
+          "sha256": "f3d6b858cb6bf3d14306b4f99d057e470688cd513be04a52aac814cb4fcfad24"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/main.bend",
+            "fingerprint": "2306:71724942:156:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724942",
+            "bytes": 156,
+            "sha256": "e849f4e83f725bfb8113e15caeb6eb18402740b5cd5e5ceb42a57eed74a42476"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          }
+        ],
+        "assets": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/external.js",
+            "role": "asset",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/external.js",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/external.js",
+            "missing": true
+          }
+        ],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "1f3abd3ccb27af77bbb074aaad4544f3642044b076fe684b5cbfbec824136d11",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/missing-required-asset/native.mjs",
+        "published": false,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "wallMs": 5068.040307999996
+      },
+      "host": {
+        "status": "error",
+        "phase": "compile",
+        "diagnostic": "Error: ENOENT: no such file or directory, open '/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/missing-required-asset/./external.js'",
+        "exitCode": 1,
+        "checked": true,
+        "wallMs": 13826.56834
+      },
+      "phaseDifference": false
+    },
+    {
+      "name": "undeclared-required-asset",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/manifest.json",
+      "expected": {
+        "accepted": false,
+        "phase": "compile",
+        "checked": true,
+        "scopeDifference": true
+      },
+      "passed": true,
+      "native": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "program",
+        "cpu": 3,
+        "timeoutMs": 120000,
+        "status": 1,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "foreign JavaScript source was not supplied: /home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/./external.js",
+        "stdout": "",
+        "stderr": "compile_ms=3421\nconsumed_chars=181\nphase=compile checked=True: foreign JavaScript source was not supplied: /home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/./external.js\n",
+        "preparationMs": 41.406652000005124,
+        "nativeWallMs": 3427.0672950000153,
+        "compileMs": 3421,
+        "consumedChars": 181,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/manifest.json",
+          "fingerprint": "2306:71724947:167:1790001719004144654:1790001719004144654:33188",
+          "dev": "2306",
+          "ino": "71724947",
+          "bytes": 167,
+          "sha256": "840831792e8862d9590980aaa9fd09d5a629a449a9fdab5ec5a8c5d8603a0fdd"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/main.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/main.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/main.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/main.bend",
+            "fingerprint": "2306:71724945:156:1790001719004144654:1790001719004144654:33188",
+            "dev": "2306",
+            "ino": "71724945",
+            "bytes": 156,
+            "sha256": "e849f4e83f725bfb8113e15caeb6eb18402740b5cd5e5ceb42a57eed74a42476"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          }
+        ],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/build/program-o1",
+          "fingerprint": "2306:71724844:5416896:1790001684625179959:1790001684625179959:33261",
+          "dev": "2306",
+          "ino": "71724844",
+          "bytes": 5416896,
+          "sha256": "51d74d67d4141462b462281df4806bccea641e168098c0d9ccb43508d21bc185"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/src/runtime.mjs",
+          "fingerprint": "2306:71724622:38772:1790001507366518018:1790001507366518018:33188",
+          "dev": "2306",
+          "ino": "71724622",
+          "bytes": 38772,
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "transportSha256": "fb8ae3c423418ec315d0aaebc61dc69d4874f3a24d7f21636c53c40de46632d5",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/results/undeclared-required-asset/native.mjs",
+        "published": false,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "wallMs": 3470.406952999998
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/attempt6/validation1/fixtures/undeclared-required-asset/./external.js"
+        ],
+        "wallMs": 8809.682501,
+        "outputSha256": "e1d0b4d5ca733d5944dbad00952bf0004cd742a2f74c5d659f8ab9c26e1ede44",
+        "outputBytes": 44367
+      },
+      "phaseDifference": false
+    }
+  ],
+  "inputsUnchanged": true,
+  "finished": "2026-09-21T14:45:16.858Z",
+  "sourceReportSha256": "c79c848be56fbcdbe919e62bc4e5518a5c8359f2fcbf6b34e66f11681eb4ce7b"
+}

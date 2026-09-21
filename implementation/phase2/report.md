@@ -49,12 +49,53 @@ also verify resource-option propagation and exclusion of execution options.
 
 ## Frontend investigation
 
-Fresh differential witnesses are being run against the pinned TypeScript APIs
-and explicit checked Bend APIs. One initial hypothesis is already falsified:
+Fresh differential witnesses were run against the pinned TypeScript APIs
+and explicit checked Bend APIs. One initial hypothesis was falsified:
 although the frontend accepts an explicit arrow in a law fill, the downstream
 signature guard rejects a changed return type. There is no demonstrated type
 signature override. A redundant same-type arrow is still an invalid acceptance
-relative to upstream syntax and merits a compatibility fix.
+relative to upstream syntax and is now rejected.
+
+The three frontend modules now enforce four existing upstream rules:
+
+* A definition filling a law uses plain parameters followed by `:`, with no new
+  return annotation.
+* Template `~` law clauses form a leading prefix, before ordinary or erased
+  clauses.
+* Local assignment patterns pass the same constructor/binder validation as
+  match patterns, including braces and field counts.
+* Imports precede declarations and cannot follow an `@unsafe` decorator. The
+  current top-level grammar only adds declarations to its initially empty book;
+  this invariant makes the empty-book test an exact import-region boundary.
+
+The [before](evidence/frontend-before.json) and
+[after](evidence/frontend-after.json) reports retain 21 live differential cases:
+12 negative witnesses and nine valid controls. Nine invalid acceptances are
+closed, two rejections move from checking to the required frontend phase, and
+one existing frontend rejection is preserved. All nine valid controls continue
+to accept. Exact diagnostic text remains a separate obligation. The changed-type
+law example belongs to the phase corrections, not the invalid acceptances.
+
+The final focused matrix took 9.064 seconds with a reused API and warm Base cache:
+6.854 seconds in candidate calls and 1.965 in reference calls. The before matrix
+took 28.488 seconds, partly because invalid syntax reached later expensive gates;
+that difference is not a general compiler speedup. Initial witness authoring
+also exposed two invalid positive controls; those were corrected rather than
+weakening the language rules, and the earlier local attempt is retained.
+
+The [checked bootstrap](evidence/frontend-bootstrap.json) identifies API
+`8ae7a4cebb236c2bf83863417d433093b858f2831b6a32d8823ebf52f271eff1`
+and assembled source
+`2f0b4956987479763c0d2a4d06dfc5a17dd96dac5126ad72266b7347e8feb635`.
+The independent [component verification](evidence/components.json) passes all
+19 groups, including the dependent checker, diagnostics, index, loader, prefix
+cache, freshening, specialization and primitive runtime. Its checked build and
+all tests took 34.596 seconds on CPU 1; this is a single observed development
+cycle, not a repeated benchmark median.
+
+A frozen full checked self-emission/fixed-point run has started on CPU 1. It is
+independent of the targeted loop and is not counted as passed until both emitted
+stages finish and their hashes agree.
 
 Targeted harness, native graph hosting, broader validation and final timings will
 be recorded below as they complete. No whole-suite conformance or native

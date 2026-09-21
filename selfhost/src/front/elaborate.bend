@@ -316,7 +316,7 @@ def f_scope_body_base(t, env, book):
 
 @unsafe
 def f_scope_local(t, pats, env, book):
-  kt("Local", "", 0, qt(t), [terms_at(pats, 0), f_scope(kid(t, 1), env, book), f_scope_body(kid(t, 2), f_concat(f_penv(pats), env), book)])
+  f_scope_local_valid(t, pats, env, book, f_valid_patterns(pats, book))
 
 @unsafe
 def f_scope_rows(rows, env, book):

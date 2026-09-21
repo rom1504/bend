@@ -389,7 +389,7 @@ def f_tops(ts0, book, imports, unsafe):
 def f_top(ts, book, imports, unsafe):
   f_choose(FResult, f_eq(f_tx(ts), "<eof>"), u => f_result(book, "", imports),
     u => f_choose(FResult, f_eq(f_tx(ts), "@") && f_eq(f_tx(f_tl(ts)), "unsafe"), u => f_tops(f_tl(f_tl(ts)), book, imports, True{}),
-    u => f_choose(FResult, f_eq(f_tx(ts), "import"), u => f_import(f_tl(ts), book, imports),
+    u => f_choose(FResult, f_eq(f_tx(ts), "import"), u => f_import_leading(ts, book, imports, unsafe),
     u => f_choose(FResult, f_eq(f_tx(ts), "law"), u => f_law(f_tx(f_tl(ts)), f_skip(f_tl(f_tl(f_tl(ts)))), book, imports, Nil{}),
     u => f_choose(FResult, f_eq(f_tx(ts), "def"), u => f_def(f_tx(f_tl(ts)), f_tele(f_tl(f_tl(f_tl(ts))), ")", Nil{}), book, imports, unsafe),
     u => f_choose(FResult, f_eq(f_tx(ts), "type"), u => f_type(f_tx(f_tl(ts)), f_tl(f_tl(ts)), book, imports),
@@ -398,6 +398,23 @@ def f_top(ts, book, imports, unsafe):
 @unsafe
 def f_import(ts, book, imports):
   f_import_path(ts, "", book, imports)
+
+# The declaration book starts empty and grows on every law, def, or type.
+# Imports leave it empty; a decorator also closes the leading-import region.
+law f_import_leading:
+  for +ts: List<&2, FToken>
+  for +book: List<&2, KDef>
+  for +imports: List<&2, KTerm>
+  for +unsafe: Bool
+  FResult
+
+@unsafe
+def f_import_leading(ts, book, imports, unsafe):
+  match book:
+    case Nil{}:
+      f_choose(FResult, unsafe, u => f_result(book, nm(f_pn(f_err(ts, "expected def after @unsafe"))), imports), u => f_import(f_tl(ts), book, imports))
+    case Con{d, rest}:
+      f_result(book, nm(f_pn(f_err(ts, "expected def, law or type; imports must precede declarations"))), imports)
 
 @unsafe
 def f_tele(ts0, end, acc):
@@ -473,7 +490,9 @@ def f_law_base(name, ts, book, imports, clauses):
 
 @unsafe
 def f_law_clause(name, exi, ts, book, imports, clauses):
-  f_law_type(name, kt(f_choose(String, exi, u => "Exists", u => f_choose(String, f_eq(f_tx(ts), "~"), u => "Template", u => "Bind")), f_tx(f_unmark(ts)), f_atid(ts), f_quant(ts), Nil{}), f_expr(f_tl(f_tl(f_unmark(ts))), 0), book, imports, clauses)
+  f_choose(FResult, Bool.not(exi) && f_eq(f_tx(ts), "~") && U32.is_lt(f_templates(clauses), f_len(clauses)),
+    u => f_result(book, nm(f_pn(f_err(ts, "expected a plain clause (only leading clauses take ~)"))), imports),
+    u => f_law_type(name, kt(f_choose(String, exi, u => "Exists", u => f_choose(String, f_eq(f_tx(ts), "~"), u => "Template", u => "Bind")), f_tx(f_unmark(ts)), f_atid(ts), f_quant(ts), Nil{}), f_expr(f_tl(f_tl(f_unmark(ts))), 0), book, imports, clauses))
 
 @unsafe
 def f_law_type(name, binder, p, book, imports, clauses):

@@ -186,7 +186,21 @@ def f_bare_params(params):
 
 @unsafe
 def f_def_prior(name, p, book, imports, unsafe, old):
-  f_choose(FResult, f_eq(dk(old), "Missing"), u => f_def_base(name, p, book, imports, unsafe), u => f_choose(FResult, f_eq(dk(old), "Def") && f_eq(tg(dv(old)), "Absent") && f_bare_params(ks(f_pn(p))) && U32.is_ge(f_len(ks(f_pn(p))), dx(old)), u => f_def_base(name, p, book, imports, unsafe), u => f_result(book, "a definition must uniquely fill its law with plain parameter names", imports)))
+  f_choose(FResult, f_eq(dk(old), "Missing"), u => f_def_base(name, p, book, imports, unsafe), u => f_choose(FResult, f_eq(dk(old), "Def") && f_eq(tg(dv(old)), "Absent") && f_bare_params(ks(f_pn(p))) && U32.is_ge(f_len(ks(f_pn(p))), dx(old)), u => f_choose(FResult, f_eq(f_tx(f_pr(p)), ":"), u => f_def_base(name, p, book, imports, unsafe), u => f_result(book, nm(f_pn(f_err(f_pr(p), "expected : (a definition filling a law has no return annotation)"))), imports)), u => f_result(book, "a definition must uniquely fill its law with plain parameter names", imports)))
+
+law f_scope_local_valid:
+  for +t: KTerm
+  for +pats: List<&2, KTerm>
+  for +env: List<&2, KTerm>
+  for +book: List<&2, KDef>
+  for +err: String
+  KTerm
+
+@unsafe
+def f_scope_local_valid(t, pats, env, book, err):
+  f_choose(KTerm, String.is_empty(err),
+    u => kt("Local", "", 0, qt(t), [terms_at(pats, 0), f_scope(kid(t, 1), env, book), f_scope_body(kid(t, 2), f_concat(f_penv(pats), env), book)]),
+    u => kt("Error", err, 0, 0, Nil{}))
 
 law f_bang:
   for +n: KTerm

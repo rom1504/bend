@@ -21,7 +21,11 @@ BEND_TYPED_API="$PWD/build/phase2/dev-api.mjs" \
 
 This fully checks the current Bend compiler source and writes a selected API,
 `dev-api.mjs.bootstrap.json`, and immutable source snapshots. It does not replace
-the default distributed compiler. Reuse this API until the compiler source
+the default distributed compiler. New bootstrap reports verify a clean pinned
+upstream tree and hash the consumed upstream compiler files, host/build tools,
+manifest and source snapshots before and after checked emission. Historical
+reports lacking this build provenance remain historical evidence.
+Reuse this API until the compiler source
 changes; editing a test or rerunning a failed probe needs no rebuild.
 
 For the focused frontend rules changed in this phase:

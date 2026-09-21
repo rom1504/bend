@@ -31,12 +31,34 @@ function array(value) {
 const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 const trace=(message)=>{if(process.env.BEND_TYPED_TRACE)process.stderr.write(`[typed ${new Date().toISOString()}] ${message}\n`);};
 
-export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(project,'../upstream-bend'),timeoutMs=120000,nativeSnapshot=process.env.BEND_TYPED_NATIVE_SNAPSHOT,nativeModules}={}) {
+const bootstrapPin='6018e28ecc67cf1fffc0c20c64b11023474c2df8';
+function bootstrapUpstream(upstream,expectedRevision) {
   const revision=spawnSync('git',['-C',upstream,'rev-parse','HEAD'],{encoding:'utf8'}).stdout?.trim();
-  const pin='6018e28ecc67cf1fffc0c20c64b11023474c2df8';
-  if(revision!==pin) throw Error(`Bootstrap requires upstream ${pin}; found ${revision||'no checkout'}`);
+  if(revision!==expectedRevision)throw Error(`Bootstrap requires upstream ${expectedRevision}; found ${revision||'no checkout'}`);
+  const clean=spawnSync('git',['-C',upstream,'diff','--quiet','HEAD','--','bend2'],{encoding:'utf8'});
+  if(clean.status!==0)throw Error('Bootstrap upstream tracked sources differ from pinned HEAD');
+  return revision;
+}
+const bootstrapInput=(file,role)=>({role,file:path.resolve(file),canonicalPath:fs.realpathSync(file),sha256:hash(file)});
+export function captureBootstrapProvenance(upstream,{expectedRevision=bootstrapPin,tools=[driverPath,path.join(project,'tools/stage0-library.mjs'),...['assemble.mjs','compiler-abi.mjs','node-resource-args.mjs','native-build.mjs'].map(name=>path.join(path.dirname(driverPath),name))]}={}) {
+  upstream=path.resolve(upstream);
+  const revision=bootstrapUpstream(upstream,expectedRevision);
+  return {version:1,upstream:{file:upstream,canonicalPath:fs.realpathSync(upstream),revision,trackedSourcesClean:true},
+    node:{file:process.execPath,version:process.version,execArgv:process.execArgv},
+    inputs:[...['bend.ts','comp.ts','base.bend'].map(name=>bootstrapInput(path.join(upstream,'bend2',name),'upstream')), ...tools.map(file=>bootstrapInput(file,'host-tool'))],verifiedAfterBuild:false};
+}
+export function verifyBootstrapProvenance(provenance) {
+  if(fs.realpathSync(provenance.upstream.file)!==provenance.upstream.canonicalPath)throw Error('Bootstrap upstream canonical path changed');
+  bootstrapUpstream(provenance.upstream.file,provenance.upstream.revision);
+  for(const input of provenance.inputs)if(fs.realpathSync(input.file)!==input.canonicalPath||hash(input.file)!==input.sha256)throw Error('Bootstrap input changed: '+input.file);
+  return true;
+}
+
+export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(project,'../upstream-bend'),timeoutMs=120000,nativeSnapshot=process.env.BEND_TYPED_NATIVE_SNAPSHOT,nativeModules}={}) {
+  const provenance=captureBootstrapProvenance(upstream),revision=provenance.upstream.revision;
   const manifest=path.join(project,'src/compiler.json');
   if(!fs.existsSync(manifest))throw Error('Compiler module manifest is missing: '+manifest);
+  provenance.inputs.push(bootstrapInput(manifest,'compiler-manifest'));
   let files=JSON.parse(fs.readFileSync(manifest,'utf8')).modules;
   if(nativeModules) {
     if(!nativeSnapshot||nativeModules.some(file=>!file.startsWith('src/back/native/')))throw Error('Invalid native module snapshot');
@@ -77,11 +99,14 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   for(const s of snapshots) {const file=path.join(snapshot,s.file);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,s.bytes);}
   const source=path.join(snapshot,'compiler.bend');
   assemble(files,source,{root:snapshot});
+  provenance.inputs.push(bootstrapInput(source,'assembled-source'),...files.map(file=>bootstrapInput(path.join(snapshot,file),'compiler-module')));
+  verifyBootstrapProvenance(provenance);
   fs.mkdirSync(path.dirname(apiPath),{recursive:true});
   const staged=apiPath+'.tmp-'+process.pid;
   const result=spawnSync(process.execPath,[path.join(project,'tools/stage0-library.mjs'),source,staged,...exports],
     {cwd:project,env:{...process.env,BEND_UPSTREAM:upstream},encoding:'utf8',timeout:timeoutMs,maxBuffer:2**24});
   if(result.error||result.status!==0) {fs.rmSync(staged,{force:true});throw Error(result.error?.message||result.stderr||'Typed API bootstrap failed');}
+  try{verifyBootstrapProvenance(provenance);provenance.verifiedAfterBuild=true;}catch(error){fs.rmSync(staged,{force:true});throw error;}
   fs.renameSync(staged,apiPath);
   fs.copyFileSync(source,path.join(project,'build/typed/compiler.bend'));
   const upstreamBase=path.join(upstream,'bend2/base.bend');
@@ -90,7 +115,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(!fs.existsSync(bundledBasePath)||hash(bundledBasePath)!==hash(upstreamBase))
     fs.copyFileSync(upstreamBase,bundledBasePath);
   const report={stage:'upstream-bootstrap',revision,generated:new Date().toISOString(),apiPath,apiSha256:hash(apiPath),baseSha256:hash(bundledBasePath),
-    source,sourceSha256:hash(source),modules:files.map(file=>({file,sha256:hash(path.join(snapshot,file))})),exports,
+    source,sourceSha256:hash(source),modules:files.map(file=>({file,sha256:hash(path.join(snapshot,file))})),exports,provenance,
     ...(nativeSnapshot?{nativeModuleSnapshot:path.resolve(nativeSnapshot)}:{})};
   const reportPath=apiPath===path.join(project,'dist/typed-api.mjs')?path.join(project,'dist/typed-bootstrap-report.json'):apiPath+'.bootstrap.json';
   fs.writeFileSync(reportPath,JSON.stringify(report,null,2)+'\n');

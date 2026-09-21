@@ -265,3 +265,13 @@ stack. Pinned upstream's native `stack_fault_trap` crashes without output; the
 corrected port prints the fixture-required memory-fault line and exits 1. That
 intentional runtime bug fix is fixture success but not exact upstream parity.
 The paired report correctly remains unsuccessful as a joint exact comparison.
+
+A later provenance audit found that older bootstrap reports recorded the pin and
+source/API hashes without proving the consumed upstream checkout was clean at
+build time. New builds enforce clean pinned tracked compiler sources, capture
+canonical identities and hashes for the upstream compiler/Base, actual build
+tools, manifest, captured modules and assembled source, and verify them before
+and after emission. Drift prevents publishing the staged API. Three temporary
+Git-repository tests cover clean capture, dirty upstream and input/canonical
+identity drift. Earlier reports are not retroactively given this provenance; a
+fresh final-source rebuild will establish the strengthened evidence separately.

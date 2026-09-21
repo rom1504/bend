@@ -115,5 +115,212 @@
     "Pinned TypeScript native stack_fault_trap still crashes without the fixture-required diagnostic; the candidate now passes the fixture. This deliberate bug fix is an observed upstream divergence, not exact runtime parity.",
     "Both live compilers pass borrow_fork_hold interpreter/JavaScript with the same 4 MiB child Node stack limit.",
     "Timings are correctness-run evidence, not isolated compiler performance measurements."
-  ]
+  ],
+  "sourceReports": {
+    "reference": {
+      "file": "selfhost/build/phase2/runtime-live-reference/reference.json",
+      "sha256": "ff895dbe529b6f6fcc745d557c9986a21e6b0d2e93c56fac7795462aeb23bb1d",
+      "changedInputs": [],
+      "changedArtifacts": [],
+      "rows": [
+        {
+          "id": "io/stack_fault_trap.bend",
+          "namespace": "io",
+          "negative": false,
+          "lane": "native",
+          "status": "crash",
+          "reason": "Program terminated by SIGSEGV",
+          "ms": 4465,
+          "result": {
+            "status": "crash",
+            "phase": "runtime",
+            "checked": true,
+            "reason": "Program terminated by SIGSEGV",
+            "output": "",
+            "signal": "SIGSEGV",
+            "executionArgs": []
+          },
+          "artifacts": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/reference.json.artifacts/2",
+          "replay": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/harness/tools/conformance/replay.mjs",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/reference.json.artifacts/2/request.json"
+          ]
+        },
+        {
+          "id": "reg/borrow_fork_hold.bend",
+          "namespace": "reg",
+          "negative": false,
+          "lane": "interpreter",
+          "status": "pass",
+          "evidence": "checked-execution",
+          "ms": 824,
+          "result": {
+            "status": "ok",
+            "phase": "runtime",
+            "checked": true,
+            "output": "2003000\n",
+            "stdout": "2003000\n",
+            "stderr": "",
+            "exitCode": 0,
+            "executionArgs": [
+              "--stack-size=4096",
+              "--max-old-space-size=4096"
+            ],
+            "executionMode": "upstream-js-io"
+          },
+          "artifacts": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/reference.json.artifacts/0",
+          "replay": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/harness/tools/conformance/replay.mjs",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/reference.json.artifacts/0/request.json"
+          ]
+        },
+        {
+          "id": "reg/borrow_fork_hold.bend",
+          "namespace": "reg",
+          "negative": false,
+          "lane": "js",
+          "status": "pass",
+          "evidence": "checked-execution",
+          "ms": 848,
+          "result": {
+            "status": "ok",
+            "phase": "runtime",
+            "checked": true,
+            "output": "2003000\n",
+            "stdout": "2003000\n",
+            "stderr": "",
+            "exitCode": 0,
+            "executionArgs": [
+              "--stack-size=4096",
+              "--max-old-space-size=4096"
+            ],
+            "executionMode": "js"
+          },
+          "artifacts": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/reference.json.artifacts/1",
+          "replay": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/harness/tools/conformance/replay.mjs",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/reference.json.artifacts/1/request.json"
+          ]
+        }
+      ]
+    },
+    "candidate": {
+      "file": "selfhost/build/phase2/runtime-live-reference/candidate.json",
+      "sha256": "2bb60f7be443ce8d8c422e9b46beddc29b1d93da1d53859c72ad457a1fe77975",
+      "changedInputs": [],
+      "changedArtifacts": [],
+      "rows": [
+        {
+          "id": "io/stack_fault_trap.bend",
+          "namespace": "io",
+          "negative": false,
+          "lane": "native",
+          "status": "pass",
+          "evidence": "checked-execution",
+          "ms": 11465,
+          "result": {
+            "status": "error",
+            "phase": "runtime",
+            "stdout": "bend: memory fault (machine stack overflow?)\n",
+            "stderr": "",
+            "exitCode": 1,
+            "signal": null,
+            "checked": true,
+            "output": "bend: memory fault (machine stack overflow?)\n",
+            "nativeBuild": {
+              "target": "cpu",
+              "compiler": {
+                "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+                "version": 16,
+                "apple": false
+              },
+              "bangs": 0
+            },
+            "verdict": "All terms check.\n",
+            "hostProvenance": {
+              "driverSha256": "886942b40dc8f7b21875434635ef18cb5d63f1346ebc14f692917f5766eabfab",
+              "adapterSha256": "827dfdfd7e570705c2cab932d3cd6a34fa2a96040963a79786f02bbb80585a2c"
+            }
+          },
+          "artifacts": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/candidate.json.artifacts/2",
+          "replay": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/harness/tools/conformance/replay.mjs",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/candidate.json.artifacts/2/request.json"
+          ]
+        },
+        {
+          "id": "reg/borrow_fork_hold.bend",
+          "namespace": "reg",
+          "negative": false,
+          "lane": "interpreter",
+          "status": "pass",
+          "evidence": "checked-execution",
+          "ms": 2550,
+          "result": {
+            "status": "ok",
+            "phase": "runtime",
+            "stdout": "2003000\n",
+            "stderr": "",
+            "exitCode": 0,
+            "signal": null,
+            "checked": true,
+            "output": "2003000\n",
+            "runtimeNodeArgs": [
+              "--stack-size=4096",
+              "--max-old-space-size=4096"
+            ],
+            "verdict": "All terms check.\n",
+            "hostProvenance": {
+              "driverSha256": "886942b40dc8f7b21875434635ef18cb5d63f1346ebc14f692917f5766eabfab",
+              "adapterSha256": "827dfdfd7e570705c2cab932d3cd6a34fa2a96040963a79786f02bbb80585a2c"
+            }
+          },
+          "artifacts": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/candidate.json.artifacts/0",
+          "replay": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/harness/tools/conformance/replay.mjs",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/candidate.json.artifacts/0/request.json"
+          ]
+        },
+        {
+          "id": "reg/borrow_fork_hold.bend",
+          "namespace": "reg",
+          "negative": false,
+          "lane": "js",
+          "status": "pass",
+          "evidence": "checked-execution",
+          "ms": 2100,
+          "result": {
+            "status": "ok",
+            "phase": "runtime",
+            "stdout": "2003000\n",
+            "stderr": "",
+            "exitCode": 0,
+            "signal": null,
+            "checked": true,
+            "output": "2003000\n",
+            "runtimeNodeArgs": [
+              "--stack-size=4096",
+              "--max-old-space-size=4096"
+            ],
+            "verdict": "All terms check.\n",
+            "hostProvenance": {
+              "driverSha256": "886942b40dc8f7b21875434635ef18cb5d63f1346ebc14f692917f5766eabfab",
+              "adapterSha256": "827dfdfd7e570705c2cab932d3cd6a34fa2a96040963a79786f02bbb80585a2c"
+            }
+          },
+          "artifacts": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/candidate.json.artifacts/1",
+          "replay": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/harness/tools/conformance/replay.mjs",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/runtime-live-reference/candidate.json.artifacts/1/request.json"
+          ]
+        }
+      ]
+    }
+  }
 }

@@ -135,3 +135,9 @@ extends the original main-plus-Base experiment to provided modules and reachable
 JavaScript foreign assets. Module loading, checking and emission remain in Bend.
 The host supplies files and process management. Consult that guide and the
 implementation report for validated scope before choosing native for a batch.
+
+For unusually slow rejected programs, the [diagnostic-cost experiment](../selfhost/tools/performance/rapid/diagnostic-cost.md)
+separates authoritative checking from reporting replay without changing the
+production compiler. Its brief experimental output is not an exact-diagnostic
+conformance pass. The report identifies origin reconstruction and detailed
+checking replay as concrete next optimization targets.

@@ -389,3 +389,27 @@ final candidate where upstream rejects during parsing. Their small source files,
 commands and paired observations are retained for the next iteration; they are
 not relabeled as passing conformance. This bounded phase keeps its tested source
 frozen while the broader and self-hosting gates complete.
+
+## Confirmed negative-test reporting bottleneck
+
+The [eight-sample diagnostic experiment](evidence/diagnostic-cost-v2.json) uses
+fresh-process ABBA ordering, the unchanged final checked API, an explicitly
+prepared validated Base cache, one rejected fixture and one accepted control.
+It disables only the detailed reporting exports in the experimental API view;
+production code and conformance behavior are unchanged. All eight gates retain
+identical authoritative prefix-check errors, status, phase and checked flags.
+Diagnostic presentation remains separately recorded and is not asserted equal.
+
+For `base/bytes_ops.bend`, mean `inspect` checking time falls from **10.248 s to
+0.622 s** (16.46×). Whole fresh-process time falls from **10.378 s to 0.738 s**
+(14.07×). Detailed checking replay takes about **4.698 s** and origin reconstruction
+about **4.881 s**; the authoritative cached check itself is about **0.197 s**,
+versus **0.192 s** without reporting. The positive `base/list_sort.bend` control
+is essentially unchanged: 2.430 s versus 2.400 s process time. These two workloads
+do not establish a universal speedup.
+
+The next focused performance change should reuse the parsed graph's source
+origins and the validated Base prefix during full diagnostic production, then
+require exact diagnostic equality. Simply suppressing diagnostics is not the
+proposed production fix. The [experiment guide](../../selfhost/tools/performance/rapid/diagnostic-cost.md)
+provides the bounded reproduction command.

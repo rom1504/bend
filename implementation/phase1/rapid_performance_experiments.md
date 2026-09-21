@@ -196,6 +196,49 @@ keep these execution modes distinct. The new frozen source/API/runtime have
 started a separate fixed-point chain on a reserved core. The previous phase 1
 corpus continues on other cores; its evidence cannot certify this newer compiler.
 
+The first checked self-emission of the integrated source completed in
+**728.772 seconds (12.15 minutes)**. Its output SHA-256 is
+`ea27e9e9a50ee5a5a569f785c4436e7100ab371c15f258f1a7d26ba1ee4354d5`.
+The second emission is still running; a fixed point is not yet established.
+This is a changed-source validation milestone, not a controlled speedup claim
+against the previous source's self-emission time. Component experiments continued
+on a separate physical core throughout the long proof.
+
+## Matcher allocation and fallback chains
+
+A disposable generated-code transform removes temporary function wrappers from
+901 literal matcher arms and optionally fuses 463 fallback chains (934 nodes).
+It preserves defensive argument copies, getter/effect order, partial and excess
+arguments, computed-arm laziness, zero-field function identity and tail calls.
+The focused suite passes 59 ABI/effect checks, including 50,000 tail calls.
+
+| Compiler workers | Median tree compilation |
+|---|---:|
+| Frozen phase 1 control | 18.393 s |
+| Fused literal arms | 17.754 s |
+| Fused arms and fallback chains | 17.058 s |
+| Bend index/lexer plus matcher fusion | 13.758 s |
+
+Three rotating fresh processes per cell produced identical JS bytes and printed
+42 in all 12 samples. Matcher fusion alone saves **7.3%**; its complexity is not
+justified as an immediate production backend change. The combined result saves
+**25.2%** against this run's control. This block does not include a Bend-modules-only
+cell, so it does not establish the incremental matcher gain on those modules.
+Native execution is the next larger hypothesis to test before further small JS
+runtime rewrites. [Measurements](rapid-evidence/matcher-workers.json) and
+[transform counts](rapid-evidence/matcher-transforms.json) retain exact artifacts.
+
+Reproduce the transform and focused checks with:
+
+```sh
+node tools/performance/rapid/matcher-workers.mjs \
+  dist/phase1/selfhost-api.mjs build/matcher-experiment.mjs --chains
+node --stack-size=4096 tools/performance/rapid/matcher-workers.test.mjs --chains
+```
+
+Run the resulting API through the same `compare.py` fresh-process protocol; the
+checked-in measurement records its full configuration.
+
 ## Rejected or deferred experiments
 
 A further diagnostic specializes 2,446 non-tail calls to 28 retained scalar

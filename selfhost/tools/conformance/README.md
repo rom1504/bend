@@ -199,3 +199,17 @@ MODULE REPLACEMENT` copies and verifies every module in an existing bootstrap
 snapshot, replaces only the specified module, assembles the source, and checks it
 with the pinned bootstrap compiler. Its resulting API and source can be passed to
 the fixed-point runner without changing production source files.
+
+Compare two complete recorded runs with:
+
+```sh
+node tools/conformance/compare-artifacts.mjs BEFORE.json AFTER.json COMPARISON.json
+```
+
+The tool requires the same pinned revision and fixture hashes. It compares
+verdict, rejection phase, checked flag, exit code, diagnostic and output, ignoring
+timing and compiler/toolchain identity. Only the exact upstream checkout prefix
+is normalized. Every changed or missing probe is retained; negative check rows
+are listed separately. Matching observations do not establish intended-rule
+coverage for previously unproven negative cases, or turn GPU hardware gates into
+execution evidence. Keep both source reports alongside the comparison.

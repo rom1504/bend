@@ -1,0 +1,65 @@
+{
+  "started": "2026-09-21T07:57:09.116Z",
+  "source": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/build/typed/compiler.bend",
+  "sourceSha256": "5ff2a45473de006f9e86471c25d85533ced17e053577480a3fafb2ea3e6ed304",
+  "runtimeSha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+  "initialCompiler": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/dist/typed-api.mjs",
+    "sha256": "37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5"
+  },
+  "driver": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/tools/typed-driver.mjs",
+    "sha256": "40fbe7554e005fc48152ec46c31c6386af73b6f9f748c44bbde5948940af3ca1"
+  },
+  "stages": [
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/dist/typed-api.mjs",
+      "compilerSha256": "37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/fixedpoint/stage2.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 728772,
+      "outputSha256": "ea27e9e9a50ee5a5a569f785c4436e7100ab371c15f258f1a7d26ba1ee4354d5"
+    },
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/fixedpoint/stage2.mjs",
+      "compilerSha256": "ea27e9e9a50ee5a5a569f785c4436e7100ab371c15f258f1a7d26ba1ee4354d5",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/fixedpoint/stage3.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 1871710,
+      "outputSha256": "ea27e9e9a50ee5a5a569f785c4436e7100ab371c15f258f1a7d26ba1ee4354d5"
+    }
+  ],
+  "complete": true,
+  "resourceConfiguration": {
+    "node": "v24.18.0",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=12288"
+    ],
+    "osStackKB": "8192",
+    "timeoutMs": 10800000
+  },
+  "requestedStages": [
+    2,
+    3
+  ],
+  "validationPolicy": {
+    "required": [
+      2,
+      3
+    ],
+    "optionalRepeat": false,
+    "condition": "Stage2 and its checked self-emission stage3 must be byte-identical for the same frozen source."
+  },
+  "finished": "2026-09-21T08:40:29.700Z"
+}

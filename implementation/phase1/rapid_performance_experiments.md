@@ -1,7 +1,8 @@
 # Rapid performance experiments
 
-Status: two pure-Bend improvements integrated; checked bootstrap and all component
-groups pass. A new whole-compiler fixed-point run is in progress.
+Status: two pure-Bend improvements integrated; checked bootstrap, all component
+groups and the new whole-compiler fixed point pass. Native execution experiments
+are in progress; full corpus results do not yet certify the new artifacts.
 
 The [design](../../design/phase1/rapid_performance_experiments.md) separates cheap
 causal experiments from full compiler validation. The frozen phase 1 API is
@@ -192,17 +193,21 @@ about **16.5× slower** than the TypeScript compiler on this workload.
 [Build provenance](rapid-evidence/integrated-bootstrap.json),
 [component results](rapid-evidence/integrated-components.json), and
 [bootstrap performance](rapid-evidence/integrated-bootstrap-performance.json)
-keep these execution modes distinct. The new frozen source/API/runtime have
-started a separate fixed-point chain on a reserved core. The previous phase 1
+keep these execution modes distinct. The new frozen source/API/runtime completed
+a separate fixed-point chain on a reserved core. The previous phase 1
 corpus continues on other cores; its evidence cannot certify this newer compiler.
 
 The first checked self-emission of the integrated source completed in
 **728.772 seconds (12.15 minutes)**. Its output SHA-256 is
 `ea27e9e9a50ee5a5a569f785c4436e7100ab371c15f258f1a7d26ba1ee4354d5`.
-The second emission is still running; a fixed point is not yet established.
-This is a changed-source validation milestone, not a controlled speedup claim
-against the previous source's self-emission time. Component experiments continued
-on a separate physical core throughout the long proof.
+Its checked self-emission then completed in **1,871.710 seconds (31.20 minutes)**,
+producing exactly the same bytes. The fixed point is established for the frozen
+source/runtime and these compiler artifacts. This is a changed-source validation
+milestone, not a controlled speedup claim against the previous source's
+self-emission time. Component experiments continued on a separate physical core
+throughout the long proof. [Complete fixed-point evidence](rapid-evidence/integrated-fixedpoint.json)
+and [module snapshot](rapid-evidence/integrated-source-snapshot.json) identify the
+inputs. Full corpus certification remains separate.
 
 ## Matcher allocation and fallback chains
 

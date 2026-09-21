@@ -1,0 +1,216 @@
+--- a/src/back/js/emit.bend
++++ b/src/back/js/emit.bend
+@@ -1,4 +1,100 @@
+ import Base
++
++law j_l_name:
++  for +t: KTerm
++  String
++
++law j_l_names:
++  for +names: List<&2, String>
++  String
++
++law j_l_capture:
++  for +env: List<&2, KTerm>
++  for +seen: List<&2, String>
++  String
++
++law j_l_deep:
++  for +t: KTerm
++  for +depth: U32
++  Bool
++
++law j_l_deeps:
++  for +ts: List<&2, KTerm>
++  for +depth: U32
++  Bool
++
++law j_l_mark:
++  for +t: KTerm
++  for +path: String
++  for +depth: U32
++  KTerm
++
++law j_l_marks:
++  for +ts: List<&2, KTerm>
++  for +path: String
++  for +depth: U32
++  for +at: U32
++  List<&2, KTerm>
++
++law j_l_def:
++  for +book: List<&2, KDef>
++  for +d: KDef
++  String
++
++law j_l_definition:
++  for +book: List<&2, KDef>
++  for +d: KDef
++  for +t: KTerm
++  String
++
++law j_l_walk:
++  for +book: List<&2, KDef>
++  for +env: List<&2, KTerm>
++  for +t: KTerm
++  for +ty: KTerm
++  String
++
++law j_l_children:
++  for +book: List<&2, KDef>
++  for +env: List<&2, KTerm>
++  for +t: KTerm
++  for +ty: KTerm
++  String
++
++law j_l_lam:
++  for +book: List<&2, KDef>
++  for +env: List<&2, KTerm>
++  for +t: KTerm
++  for +ty: KTerm
++  String
++
++law j_l_mat:
++  for +book: List<&2, KDef>
++  for +env: List<&2, KTerm>
++  for +t: KTerm
++  for +ty: KTerm
++  String
++
++law j_l_app:
++  for +book: List<&2, KDef>
++  for +env: List<&2, KTerm>
++  for +t: KTerm
++  for +ty: KTerm
++  String
++
++law j_l_fields:
++  for +book: List<&2, KDef>
++  for +env: List<&2, KTerm>
++  for +ts: List<&2, KTerm>
++  for +ty: KTerm
++  String
++
++law j_l_bindings:
++  for +book: List<&2, KDef>
++  for +env: List<&2, KTerm>
++  for +ts: List<&2, KTerm>
++  String
++
+ 
+ # JavaScript emission from the checked first-order core.
+ # Emission is Bend2; JavaScript only supplies primitive values and effects.
+@@ -143,7 +239,7 @@
+ 
+ @unsafe
+ def j_expr(book, env, t, ty, tail):
+-  j_expr_on(book, env, t, ty, tail, tg(t))
++  kc(String, (String.eq(tg(t), "Lam") || String.eq(tg(t), "Mat")) && Bool.not(String.eq(j_l_name(t), "")), u => "F[" ++ j_quote(j_l_name(t)) ++ "](" ++ j_l_capture(env, Nil{}) ++ ")", u => j_expr_on(book, env, t, ty, tail, tg(t)))
+ 
+ law j_expr_on:
+   for +book: List<&2, KDef>
+@@ -327,7 +423,7 @@
+ @unsafe
+ def j_def(book, d):
+   kc(String, String.eq(tg(dv(d)), "Foreign"), u => j_foreign_def(book, d), u => kc(String, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) && Bool.not(String.eq(tg(dv(d)), "Absent")) && Bool.not(String.eq(tg(dv(d)), "Foreign")),
+-    u => kc(String, db(d) && j_intrinsic(dn(d)), u => "if(!Object.hasOwn(G," ++ j_quote(dn(d)) ++ "))", u => "") ++ "G[" ++ j_quote(dn(d)) ++ "]=fn(0,function(){return " ++ j_expr(book, Nil{}, dv(d), dt(d), True{}) ++ ";});\n",
++    u => kc(String, db(d) && j_intrinsic(dn(d)), u => "if(!Object.hasOwn(G," ++ j_quote(dn(d)) ++ "))", u => "") ++ j_l_def(book, d),
+     u => ""))
+ 
+ law j_defs:
+@@ -750,3 +846,94 @@
+     case Con{h, Nil{}}: ""
+     case Con{h, rest}:
+       kc(String, U32.is_eq(qt(h), 0), u => "null", u => j_expr(book, env, kid(h, 0), atom("Absent"), False{})) ++ "," ++ j_let_values(book, env, rest)
++
++# Deep closures use flat factories with explicit lexical captures.
++@unsafe
++def j_l_name(t):
++  j_l_names(rm(t))
++
++@unsafe
++def j_l_names(names):
++  match names:
++    case Nil{}: ""
++    case Con{h, rest}: kc(String, String.starts_with(h, "$js."), u => h, u => "")
++
++@unsafe
++def j_l_capture(env, seen):
++  match env:
++    case Nil{}: ""
++    case Con{h, rest}:
++      kc(String, has_name(seen, j_local(ix(h))), u => j_l_capture(rest, seen), u => j_local(ix(h)) ++ "," ++ j_l_capture(rest, Con{j_local(ix(h)), seen}))
++
++@unsafe
++def j_l_deep(t, depth):
++  kc(Bool, String.eq(tg(t), "Ann"), u => j_l_deep(kid(t, 0), depth), u =>
++  kc(Bool, String.eq(tg(t), "Var") || String.eq(tg(t), "Ref"), u => False{}, u =>
++  kc(Bool, String.eq(tg(t), "Lam") || String.eq(tg(t), "Mat"), u => kc(Bool, U32.is_ge(depth, 32), u => True{}, u => j_l_deeps(ks(t), U32.inc(depth))), u => j_l_deeps(ks(t), depth))))
++
++@unsafe
++def j_l_deeps(ts, depth):
++  match ts:
++    case Nil{}: False{}
++    case Con{h, rest}: kc(Bool, j_l_deep(h, depth), u => True{}, u => j_l_deeps(rest, depth))
++
++@unsafe
++def j_l_mark(t, path, depth):
++  kc(KTerm, String.eq(tg(t), "Ann"), u => KTerm{tg(t), nm(t), ix(t), qt(t), [j_l_mark(kid(t, 0), path, depth), kid(t, 1)], rm(t)}, u =>
++  kc(KTerm, String.eq(tg(t), "Var") || String.eq(tg(t), "Ref"), u => t, u =>
++  kc(KTerm, String.eq(tg(t), "Lam") || String.eq(tg(t), "Mat"), u =>
++    kc(KTerm, U32.is_ge(depth, 32), u => KTerm{tg(t), nm(t), ix(t), qt(t), j_l_marks(ks(t), path, 0, 0), ["$js." ++ path]}, u => KTerm{tg(t), nm(t), ix(t), qt(t), j_l_marks(ks(t), path, U32.inc(depth), 0), rm(t)}), u =>
++    KTerm{tg(t), nm(t), ix(t), qt(t), j_l_marks(ks(t), path, depth, 0), rm(t)})))
++
++@unsafe
++def j_l_marks(ts, path, depth, at):
++  match ts:
++    case Nil{}: Nil{}
++    case Con{h, rest}: Con{j_l_mark(h, path ++ "_" ++ U32.show(at), depth), j_l_marks(rest, path, depth, U32.inc(at))}
++
++@unsafe
++def j_l_def(book, d):
++  kc(String, j_l_deep(dv(d), 0), u => j_l_definition(book, d, j_l_mark(dv(d), "r", 0)), u => "G[" ++ j_quote(dn(d)) ++ "]=fn(0,function(){return " ++ j_expr(book, Nil{}, dv(d), dt(d), True{}) ++ ";});\n")
++
++@unsafe
++def j_l_definition(book, d, t):
++  "{const F=Object.create(null);\n" ++ j_l_walk(book, Nil{}, t, dt(d)) ++ "G[" ++ j_quote(dn(d)) ++ "]=fn(0,function(){return " ++ j_expr(book, Nil{}, t, dt(d), True{}) ++ ";});}\n"
++
++@unsafe
++def j_l_walk(book, env, t, ty):
++  kc(String, String.eq(tg(t), "Ann"), u => j_l_walk(book, env, kid(t, 0), kid(t, 1)), u =>
++  kc(String, String.eq(j_l_name(t), ""), u => "", u => "F[" ++ j_quote(j_l_name(t)) ++ "]=function(" ++ j_l_capture(env, Nil{}) ++ "){return " ++ j_expr_on(book, env, t, ty, False{}, tg(t)) ++ ";};\n") ++ j_l_children(book, env, t, ty))
++
++@unsafe
++def j_l_children(book, env, t, ty):
++  kc(String, String.eq(tg(t), "Lam"), u => j_l_lam(book, env, t, wnf(book, ty)), u =>
++  kc(String, String.eq(tg(t), "Mat"), u => j_l_mat(book, env, t, wnf(book, ty)), u =>
++  kc(String, String.eq(tg(t), "App"), u => j_l_app(book, env, t, wnf(book, j_type(book, env, kid(t, 0)))), u =>
++  kc(String, String.eq(tg(t), "Let"), u => j_l_bindings(book, env, ks(t)) ++ j_l_walk(book, j_context(book, env, ks(t)), j_body(ks(t)), ty), u =>
++  kc(String, String.eq(tg(t), "Ctr"), u => kc(String, String.eq(j_literal(t), ""), u => j_l_fields(book, env, ks(t), j_specialize(book, dt(j_find_ctor(book, nm(t))), ks(wnf(book, ty)))), u => ""), u =>
++  kc(String, String.eq(tg(t), "Rwt"), u => j_l_walk(book, env, kid(t, 2), ty), u => ""))))))
++
++@unsafe
++def j_l_lam(book, env, t, ty):
++  j_l_walk(book, Con{kt("Env", "", ix(t), 0, [kid(ty, 0)]), env}, kid(t, 0), subst(kid(ty, 1), ix(ty), var(nm(t), ix(t))))
++
++@unsafe
++def j_l_mat(book, env, t, ty):
++  j_l_walk(book, env, kid(t, 0), j_arm_type(book, ty, nm(t))) ++ kc(String, U32.is_eq(j_constructor_count(book, wnf(book, kid(ty, 0))), 1), u => "", u => j_l_walk(book, env, kid(t, 1), ty))
++
++@unsafe
++def j_l_app(book, env, t, ty):
++  j_l_walk(book, env, kid(t, 0), ty) ++ kc(String, String.eq(tg(ty), "All") && U32.is_eq(qt(ty), 0), u => "", u => j_l_walk(book, env, kid(t, 1), kid(ty, 0)))
++
++@unsafe
++def j_l_fields(book, env, ts, ty):
++  match ts:
++    case Nil{}: ""
++    case Con{h, rest}: kc(String, String.eq(tg(ty), "All") && U32.is_eq(qt(ty), 0), u => "", u => j_l_walk(book, env, h, kid(ty, 0))) ++ j_l_fields(book, env, rest, j_app_type(ty, h))
++
++@unsafe
++def j_l_bindings(book, env, ts):
++  match ts:
++    case Nil{}: ""
++    case Con{h, Nil{}}: ""
++    case Con{h, rest}: kc(String, U32.is_eq(qt(h), 0), u => "", u => j_l_walk(book, env, kid(h, 0), j_type(book, env, kid(h, 0)))) ++ j_l_bindings(book, env, rest)

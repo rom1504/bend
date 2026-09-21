@@ -1,0 +1,325 @@
+{
+  "api": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/fast-native-api.mjs",
+  "results": [
+    {
+      "fixture": "show/nullary_adt",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "3n",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "3n",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "3n",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 2162
+    },
+    {
+      "fixture": "show/string_unicode",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "\"Olá 日本 🙂\"",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "\"Olá 日本 🙂\"",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "\"Olá 日本 🙂\"",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 2691
+    },
+    {
+      "fixture": "compile/closure_partial_app",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "17",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "17",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "17",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 3236
+    },
+    {
+      "fixture": "compile/boxed_ctor_reuse",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "15",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "15",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "15",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 4755
+    },
+    {
+      "fixture": "compile/closure_slab_drop",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "5",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "5",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "5",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 4331
+    },
+    {
+      "fixture": "compile/bang_intrinsic_closure",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "3",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "3",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "3",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 4485
+    },
+    {
+      "fixture": "compile/array_dynamic_closure",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "9",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "9",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "9",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 3938
+    },
+    {
+      "fixture": "compile/array_swap_header",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "2337",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "2337",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "2337",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 5066
+    },
+    {
+      "fixture": "compile/float_compare",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "1999985",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "1999985",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "1999985",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 5147
+    },
+    {
+      "fixture": "compile/float_builtin_agreement",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "-2 -1 -1 1.5",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "-2 -1 -1 1.5",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "-2 -1 -1 1.5",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 3829
+    },
+    {
+      "fixture": "run/array_boxed_get",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "777113",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "777113",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "777113",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 6461
+    },
+    {
+      "fixture": "run/fork_shared_flat",
+      "status": "ok",
+      "phase": "compile",
+      "expected": "18\n18432",
+      "diagnostic": "",
+      "runs": [
+        {
+          "threads": 1,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "18\n18432",
+          "stderr": "",
+          "error": ""
+        },
+        {
+          "threads": 4,
+          "pass": true,
+          "exitCode": 0,
+          "stdout": "18\n18432",
+          "stderr": "",
+          "error": ""
+        }
+      ],
+      "milliseconds": 7857
+    },
+    {
+      "fixture": "run/array_split_join",
+      "status": "error",
+      "phase": "parse",
+      "expected": "145896",
+      "diagnostic": "Error: line 14:0: expected term; got law",
+      "milliseconds": 460
+    }
+  ]
+}

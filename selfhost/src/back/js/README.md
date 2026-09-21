@@ -1,0 +1,76 @@
+# JavaScript backend
+
+`emit.bend`, `foreign.bend`, `literals.bend`, and `validate.bend` are Bend2 source. Their input is the checked,
+specialized, annotated `KTerm`/`KDef` core. They emit JavaScript; they do not
+invoke another compiler.
+
+- `j_compile_error(book)` validates the executable entry before reachability.
+- `j_layout_error(context, annotatedDefinitions, roots, stops)` rejects live
+  Array operations whose element representation remains open, while retaining
+  valid generic identity functions and skipping erased or dead expressions.
+- `j_roots(book, library)` and `j_stops(book)` drive shared reachability.
+- `j_program_selected(context, definitions)` emits an executable from selected
+  annotated definitions, retaining the full book for type normalization.
+- `j_library_selected(context, definitions)` emits a library the same way.
+- `j_program(book)` emits declarations and the executable entry point.
+- `j_library(book)` emits declarations and an exported primitive ABI.
+- `j_foreign_paths(selected)` requests live custom foreign sources;
+  `j_foreign_error(selected)` rejects missing JavaScript implementations.
+- `j_modules(selected, sources)` embeds custom foreign JavaScript modules once each.
+  Each source is `KTerm("Source", exactPathName, ..., [KTerm("Text", contents)])`.
+- `j_descriptor(book, type, fuel)` emits typed readback metadata. Recursive
+  datatypes refer to finite named schemas.
+
+Prepend `src/runtime.mjs` to the output. Erased arguments/fields are null ABI
+slots and their expressions are not evaluated. Function and constructor
+metadata comes from annotations and constructor telescopes. Applications in
+tail position and returned constructor fields use the runtime trampoline.
+Foreign JavaScript uses named
+constructor fields and curried functions; runtime marshalling converts layouts
+iteratively and preserves trusted inbound values, including opaque fields on
+values passed directly between foreign functions.
+
+The bootstrap-only integration tests use `build/js-backend.mjs`, built with
+`tools/assemble.mjs` from `src/core/term.bend`, `src/core/index.bend`,
+`src/core/normalize.bend`, `src/core/pretty.bend`, `src/back/js/emit.bend`,
+`src/back/js/foreign.bend`, `src/back/js/literals.bend`, and
+`src/back/js/validate.bend`, then
+`tools/stage0-library.mjs` exporting `j_program j_expr j_descriptor j_library
+j_modules j_compile_error j_io_type book_cached j_layout_error`. Run `node src/back/js/test.mjs`,
+`node src/back/js/test-foreign.mjs`, and `node src/back/js/test-validation.mjs`
+from the project root. `survey.mjs` exercises actual upstream source files
+through the checked compiler pipeline and records the compiler API hash.
+`test-layout.mjs` checks the shared layout gate using the configured typed API;
+`test-string-eq.mjs` compares the equality intrinsic with a pinned Base oracle.
+
+The emitter uses lexical JavaScript variables for core binder IDs. Parallel
+`Let` right-hand sides remain outside the arrow function that introduces the
+new bindings. Consecutive leading lambdas share one closure; application
+batching stops at the proven leading-lambda arity so intermediate computation
+still precedes later argument evaluation. Computed globals remain reevaluated thunks; leading lambdas share one closure.
+`test.mjs` covers partial calls, erased arguments, effect/error evaluation order,
+parallel shadowing, and closures that outlive their defining `Let`.
+
+For parser performance comparisons, build both outputs from the same checked
+book with `benchmark-build-parser.mjs CANDIDATE_API.mjs`, then run
+`benchmark-parser.mjs BASELINE.mjs CANDIDATE.mjs [SOURCE.bend]`. The benchmark
+uses ABBA ordering and requires identical parsed output; `BEND_BENCHMARK_REPORT`
+selects the report path. `BEND_TYPED_API` selects the baseline compiler API.
+
+Definitions with more than 32 nested closures use flat closure factories with
+explicit lexical captures, keeping emitted JavaScript within parser stack
+limits. Below-threshold emission is unchanged; `BEND_JS_REFERENCE` optionally
+checks byte-equivalence against a prior backend API in `test.mjs`. The deep
+capture fixture and upstream `flatten/literal_rows_cubic.bend` cover the new
+path. Benchmark and promotion evidence lives in `experiments/`.
+
+`test-provenance.mjs` compiles a no-Base library that declares ten constructors
+with primitive names and verifies that their fields survive construction and
+matching. Generated metadata marks Base provenance; absent flags preserve the
+legacy runtime ABI. Literal compression also checks the declared result type.
+
+`test-global-initializers.mjs` checks that computed globals still initialize on
+every reference. Set `BEND_EXPECT_CACHED_LAM=1` to require leading-lambda caching.
+`src/runtime/js/test-apply.mjs` checks argument ownership, mutation isolation,
+partial application, oversaturation, and constructor evaluation order. The
+backend and runtime tests accept `BEND_JS_RUNTIME` for isolated runtime variants.

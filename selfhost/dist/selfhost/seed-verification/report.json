@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "started": "2026-09-21T01:40:20.844Z",
+  "complete": true,
+  "fixedPoint": true,
+  "validationPolicy": {
+    "decidedBeforeExecution": true,
+    "condition": "B = H(B, S): the generated seed compiler fully checks and emits the same frozen source, and its output must be byte-identical to the seed.",
+    "seedGenerationHostMayDiffer": true,
+    "reason": "Equality of the generated compiler with its own checked self-emission establishes the fixed point; repeating the original seed emission is unnecessary."
+  },
+  "inputs": {
+    "source": {
+      "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/compiler.bend",
+      "sha256": "ec9014bc182c3c454be5f5ebd73d00d4278020c7b9d8d7d8863e8d0943ba65a9"
+    },
+    "seed": {
+      "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage2.mjs",
+      "sha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418"
+    },
+    "runtime": {
+      "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/runtime-release.mjs",
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    },
+    "base": {
+      "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend",
+      "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+    },
+    "driver": {
+      "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/c19f48c7dc5b05986fb4453008588432af3aec2c438ecf823e0fdfbe192973ef/typed-driver.mjs",
+      "sha256": "def2b284eab5a92c13d4a192df28780ca93e388b5b82ba5f1af9f5bc77b7dd96"
+    },
+    "dependencies": [
+      {
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/c19f48c7dc5b05986fb4453008588432af3aec2c438ecf823e0fdfbe192973ef/compiler-abi.mjs",
+        "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+      },
+      {
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/c19f48c7dc5b05986fb4453008588432af3aec2c438ecf823e0fdfbe192973ef/native-build.mjs",
+        "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+      },
+      {
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/c19f48c7dc5b05986fb4453008588432af3aec2c438ecf823e0fdfbe192973ef/assemble.mjs",
+        "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+      }
+    ]
+  },
+  "seedProvenance": {
+    "report": {
+      "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/report.json",
+      "sha256": "c52a0f9a1e1de847f28ebae91594b50893a4a1fb7bba97fc76208e82375dbc84"
+    },
+    "successfulStage": {
+      "compiler": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/bootstrap-api.mjs",
+      "compilerSha256": "a6f99fc20820d59a622e5a08deb5e631a3c1c1d7fd82f66e00010a0bd9d27f6d",
+      "output": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage2.mjs",
+      "code": 0,
+      "signal": null,
+      "ms": 922854,
+      "outputSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418"
+    },
+    "originalDriver": {
+      "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/5a40e93880345d7b9fbd53cd46db0045a54ff4485abca2bf963acc706ead00d0/typed-driver.mjs",
+      "sha256": "84516e5d0a5b4dc899bf977ce5c8c0538e5ba6ec82bd55c8493d88a0edf5c1aa"
+    }
+  },
+  "resourceConfiguration": {
+    "node": "v24.19.0",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=12288"
+    ],
+    "osStackKB": "8192",
+    "timeoutMs": 10800000
+  },
+  "output": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/seed-verification/stage3.mjs",
+  "logFile": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/seed-verification/stage3.mjs.log",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "ms": 2950443,
+  "outputSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+  "finished": "2026-09-21T02:29:31.292Z",
+  "inputStability": {
+    "verifiedBeforeAndAfterByRunner": true,
+    "audited": "2026-09-21T02:32:47.449Z",
+    "artifacts": [
+      {
+        "name": "source",
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/compiler.bend",
+        "sha256": "ec9014bc182c3c454be5f5ebd73d00d4278020c7b9d8d7d8863e8d0943ba65a9",
+        "actualSha256": "ec9014bc182c3c454be5f5ebd73d00d4278020c7b9d8d7d8863e8d0943ba65a9"
+      },
+      {
+        "name": "seed",
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage2.mjs",
+        "sha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+        "actualSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418"
+      },
+      {
+        "name": "runtime",
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/runtime-release.mjs",
+        "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+        "actualSha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+      },
+      {
+        "name": "base",
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend",
+        "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+        "actualSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+      },
+      {
+        "name": "driver",
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/c19f48c7dc5b05986fb4453008588432af3aec2c438ecf823e0fdfbe192973ef/typed-driver.mjs",
+        "sha256": "def2b284eab5a92c13d4a192df28780ca93e388b5b82ba5f1af9f5bc77b7dd96",
+        "actualSha256": "def2b284eab5a92c13d4a192df28780ca93e388b5b82ba5f1af9f5bc77b7dd96"
+      },
+      {
+        "name": "compiler-abi.mjs",
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/c19f48c7dc5b05986fb4453008588432af3aec2c438ecf823e0fdfbe192973ef/compiler-abi.mjs",
+        "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+        "actualSha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+      },
+      {
+        "name": "native-build.mjs",
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/c19f48c7dc5b05986fb4453008588432af3aec2c438ecf823e0fdfbe192973ef/native-build.mjs",
+        "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+        "actualSha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+      },
+      {
+        "name": "assemble.mjs",
+        "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/c19f48c7dc5b05986fb4453008588432af3aec2c438ecf823e0fdfbe192973ef/assemble.mjs",
+        "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+        "actualSha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+      }
+    ],
+    "changed": []
+  },
+  "phaseTimings": [
+    {
+      "name": "f_parse",
+      "call": 1,
+      "encodeMs": 0,
+      "invokeMs": 36859,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 0,
+      "decodedViews": 1
+    },
+    {
+      "name": "f_load_graph_seed",
+      "call": 2,
+      "encodeMs": 21,
+      "invokeMs": 92960,
+      "decodeMs": 1,
+      "encodedObjects": 80448,
+      "unwrappedGraphs": 0,
+      "decodedViews": 1
+    },
+    {
+      "name": "check_from_exact_prefix",
+      "call": 3,
+      "encodeMs": 23,
+      "invokeMs": 802323,
+      "decodeMs": 0,
+      "encodedObjects": 80443,
+      "unwrappedGraphs": 1,
+      "decodedViews": 0
+    },
+    {
+      "name": "driver_owned",
+      "call": 4,
+      "encodeMs": 0,
+      "invokeMs": 14,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 0
+    },
+    {
+      "name": "driver_todos",
+      "call": 5,
+      "encodeMs": 0,
+      "invokeMs": 10815,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 0
+    },
+    {
+      "name": "specialize_book",
+      "call": 6,
+      "encodeMs": 0,
+      "invokeMs": 17079,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 1
+    },
+    {
+      "name": "specialized_error",
+      "call": 7,
+      "encodeMs": 0,
+      "invokeMs": 0,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 0
+    },
+    {
+      "name": "specialized_book",
+      "call": 8,
+      "encodeMs": 0,
+      "invokeMs": 0,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 1
+    },
+    {
+      "name": "f_main_names",
+      "call": 9,
+      "encodeMs": 0,
+      "invokeMs": 46497,
+      "decodeMs": 2,
+      "encodedObjects": 6,
+      "unwrappedGraphs": 0,
+      "decodedViews": 1
+    },
+    {
+      "name": "driver_report",
+      "call": 10,
+      "encodeMs": 0,
+      "invokeMs": 7852,
+      "decodeMs": 1,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 2,
+      "decodedViews": 0
+    },
+    {
+      "name": "driver_emit_owned",
+      "call": 11,
+      "encodeMs": 0,
+      "invokeMs": 78,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 0
+    },
+    {
+      "name": "j_roots",
+      "call": 12,
+      "encodeMs": 0,
+      "invokeMs": 18,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 1
+    },
+    {
+      "name": "j_stops",
+      "call": 13,
+      "encodeMs": 0,
+      "invokeMs": 23857,
+      "decodeMs": 1,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 1
+    },
+    {
+      "name": "reach_book",
+      "call": 14,
+      "encodeMs": 0,
+      "invokeMs": 76118,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 3,
+      "decodedViews": 1
+    },
+    {
+      "name": "j_foreign_error",
+      "call": 15,
+      "encodeMs": 0,
+      "invokeMs": 1914,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 0
+    },
+    {
+      "name": "j_stops",
+      "call": 16,
+      "encodeMs": 0,
+      "invokeMs": 4266,
+      "decodeMs": 1,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 1
+    },
+    {
+      "name": "annotate_selected",
+      "call": 17,
+      "encodeMs": 0,
+      "invokeMs": 843952,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 3,
+      "decodedViews": 1
+    },
+    {
+      "name": "j_roots",
+      "call": 18,
+      "encodeMs": 0,
+      "invokeMs": 32,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 1
+    },
+    {
+      "name": "j_stops",
+      "call": 19,
+      "encodeMs": 0,
+      "invokeMs": 5731,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 1
+    },
+    {
+      "name": "j_layout_error",
+      "call": 20,
+      "encodeMs": 1,
+      "invokeMs": 232117,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 4,
+      "decodedViews": 0
+    },
+    {
+      "name": "j_foreign_paths",
+      "call": 21,
+      "encodeMs": 0,
+      "invokeMs": 2298,
+      "decodeMs": 0,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 1,
+      "decodedViews": 1
+    },
+    {
+      "name": "j_library_selected",
+      "call": 22,
+      "encodeMs": 0,
+      "invokeMs": 744567,
+      "decodeMs": 1,
+      "encodedObjects": 1,
+      "unwrappedGraphs": 2,
+      "decodedViews": 0
+    },
+    {
+      "name": "j_modules",
+      "call": 23,
+      "encodeMs": 0,
+      "invokeMs": 1,
+      "decodeMs": 0,
+      "encodedObjects": 2,
+      "unwrappedGraphs": 1,
+      "decodedViews": 0
+    }
+  ],
+  "checkpoint": {
+    "saved": "2026-09-21T02:32:47.468Z",
+    "claim": "Verified typed compiler fixed point: the self-emitted seed fully checked and compiled its frozen source, producing exactly the seed bytes. No optional repeat was needed."
+  },
+  "checkpointArtifacts": [
+    {
+      "file": "compiler.bend",
+      "sha256": "ec9014bc182c3c454be5f5ebd73d00d4278020c7b9d8d7d8863e8d0943ba65a9"
+    },
+    {
+      "file": "compiler.bend.map.json",
+      "sha256": "f057cfc3786b80f2015b61dab4324f9382b1beae0307e6fb50522d15b1ae9e25"
+    },
+    {
+      "file": "seed.mjs",
+      "sha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418"
+    },
+    {
+      "file": "runtime.mjs",
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    },
+    {
+      "file": "seed-provenance.json",
+      "sha256": "c52a0f9a1e1de847f28ebae91594b50893a4a1fb7bba97fc76208e82375dbc84"
+    },
+    {
+      "file": "stage3.mjs",
+      "sha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418"
+    },
+    {
+      "file": "stage3.mjs.log",
+      "sha256": "daf1be198227cec664f9b5fae7d1484f1d5a0c5b4d96cf008e1f9f1052a86577"
+    },
+    {
+      "file": "host/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    {
+      "file": "host/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "host/native-build.mjs",
+      "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+    },
+    {
+      "file": "host/typed-driver.mjs",
+      "sha256": "def2b284eab5a92c13d4a192df28780ca93e388b5b82ba5f1af9f5bc77b7dd96"
+    }
+  ]
+}

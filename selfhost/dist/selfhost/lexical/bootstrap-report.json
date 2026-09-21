@@ -1,0 +1,275 @@
+{
+  "stage": "upstream-bootstrap-variant",
+  "revision": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+  "generated": "2026-09-20T23:20:31.995Z",
+  "parent": "afe1092f536426d8335b63c13bcd67c0a3edd170e29380c992a22bcf0dc6e4a8",
+  "apiPath": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/lexical-selfhost/bootstrap-api.mjs",
+  "apiSha256": "0e3c00f419b7e9fc4565ca52e3b14864121f48351ffe8dc7108a93a43a3d2115",
+  "source": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/lexical-selfhost/compiler.bend",
+  "sourceSha256": "3ff43e180d3c180d1dc3ec8e01eed36ad55b8b65bcbe649d4e467feb5a31e45f",
+  "modules": [
+    {
+      "file": "src/core/term.bend",
+      "sha256": "47f112aa7cfaabacb36df33fb4207c423b15b75e3111f8272d0c6a1836f7df6a"
+    },
+    {
+      "file": "src/core/index.bend",
+      "sha256": "6396055bda44e3d193625ecf4d7b51c945706c6ba86bc4352e7f2f412332cb40"
+    },
+    {
+      "file": "src/core/normalize.bend",
+      "sha256": "748e99a9dc192009d2ad479a6ed78cfdd572ebfa3a0ecfdc20baac47f32632d9"
+    },
+    {
+      "file": "src/core/reach.bend",
+      "sha256": "c7c1e1ff68ad798f3888d770ee5a02b1b73abbecd58cd2df9b81619428abb2cf"
+    },
+    {
+      "file": "src/core/pretty.bend",
+      "sha256": "9b7ffdca8ba9593b48167aea4f26abd8ac2802a2cca474b67dbf0cbebfca6def"
+    },
+    {
+      "file": "src/check/quantity.bend",
+      "sha256": "e6c7a06fd45cb132d9d5d1704a6f01f81325505eed2ff5d6025e118ff4522e8a"
+    },
+    {
+      "file": "src/check/kernel.bend",
+      "sha256": "b1b50c073b2530a14c8a674d473f1c906ce2d56425b6eb487dc0f0bdc642c963"
+    },
+    {
+      "file": "src/check/specialize.bend",
+      "sha256": "dd5371288c7083753dfe5944cff7b7a53ca8cf2ad1f64a152abf842421db60be"
+    },
+    {
+      "file": "src/check/prefix.bend",
+      "sha256": "35af4b272cfe893d60d4aca6433617273a1c52bb8ae4d8eeabfa0541354816cb"
+    },
+    {
+      "file": "src/check/annotate.bend",
+      "sha256": "599c58208dcee169ba7defd5f68fa46a5de2d19f898563406e0bba376a8e6d2c"
+    },
+    {
+      "file": "src/front/lexer.bend",
+      "sha256": "fcd0c6fcd66b4eba392b6e5f359ef61bff5593fffec1ab70358c9cc295df9ed1"
+    },
+    {
+      "file": "src/front/parser.bend",
+      "sha256": "52c59cc29bfcdc4112bcb347ce2e53c00946abdf0c7f40be4a74c4cc29e1f439"
+    },
+    {
+      "file": "src/front/declarations.bend",
+      "sha256": "06205d40c8701cee77ae959e360f3ad6ea811e303a0e1b069f6d3fe24c92af5b"
+    },
+    {
+      "file": "src/front/flatten.bend",
+      "sha256": "463d88f1c7de9828e1826d201f8b8de249f99e1d0bb64ae9768ba64d1f75af1e"
+    },
+    {
+      "file": "src/front/elaborate.bend",
+      "sha256": "f110501e6ef970ded45126f3be00448c17c7d36523b51e07bbb564025d5d276f"
+    },
+    {
+      "file": "src/front/sugar.bend",
+      "sha256": "d7535f1edfc3342e5b934ffd92c574a7d400d60fd5bcc751061d622ad081e59d"
+    },
+    {
+      "file": "src/front/unicode.bend",
+      "sha256": "ab9f2596af9af28bc3698d9cc101cdfd8565be2008d89322b2290cb2887862b6"
+    },
+    {
+      "file": "src/front/literals_arrays.bend",
+      "sha256": "4b38996d199d2230d7cd4559df20780876596f13aaafe77422b267ba3b0ebba8"
+    },
+    {
+      "file": "src/front/parallel.bend",
+      "sha256": "0d87ff167c85f67e1f60f397353158f6cf9d6a09180bc4d86db07d0e78ee46d9"
+    },
+    {
+      "file": "src/front/fresh_work.bend",
+      "sha256": "f20aa30efede513f495fbfe441c47496d8b1df670292c637c77104c961f4d48b"
+    },
+    {
+      "file": "src/front/freshen.bend",
+      "sha256": "08a685e2f0d819a466731e642ceb039c29eb4f47944ddb74222521422a41ec42"
+    },
+    {
+      "file": "src/load/paths.bend",
+      "sha256": "56d3ac6b7bf63db2ffd1c26521fb528f56b9469c78203d01296a93fc3812d38c"
+    },
+    {
+      "file": "src/front/families.bend",
+      "sha256": "9427f28c1508e2c5361521aa5f277c5992fb2c973df18268394bdd822cdf637e"
+    },
+    {
+      "file": "src/front/validate.bend",
+      "sha256": "bc64b22228b1d60fd5a1da9d4dfbde04455d24b8ff12fad083a95e6308886c5d"
+    },
+    {
+      "file": "src/load/imports.bend",
+      "sha256": "330a5d91abc35838086247abebac698e8832b7b03faa245f351d8d6b20ba16ae"
+    },
+    {
+      "file": "src/load/graph.bend",
+      "sha256": "58f94e109b1ff69d39e62d37232b3c332f54b067532f1ddbb9ec1b626a546426"
+    },
+    {
+      "file": "src/load/seed.bend",
+      "sha256": "cf09d0b47dc709d679a8fb4efae65e717fff2e2b00b7d29360f45a09ccf579a1"
+    },
+    {
+      "file": "src/load/modules.bend",
+      "sha256": "ed8f3700a407cca9bbebb6131cba786034edd5af354567d364affc17aaae0209"
+    },
+    {
+      "file": "src/diagnostic/model.bend",
+      "sha256": "dd69096c6fdcd682a45e9536eb6d475061fd285807961ac95a16b5a874358af5"
+    },
+    {
+      "file": "src/diagnostic/render.bend",
+      "sha256": "201867dba57eb715308026a3dcd36d1a61b0b51ea27c69c6ba00a3c935aedfe9"
+    },
+    {
+      "file": "src/diagnostic/trace.bend",
+      "sha256": "2f96bedcda46ead991754a9e627f984dc564a896e7a5f77fa08b0d3c029c431c"
+    },
+    {
+      "file": "src/diagnostic/produce.bend",
+      "sha256": "cffa6006781d453fc840b1d40107147a2b62714d10927c5ae3884891234c088a"
+    },
+    {
+      "file": "src/diagnostic/frontend.bend",
+      "sha256": "debfe6d4e6cea7e28f58c15c2ae82785118bc274f637b6e33a7646c4539311cd"
+    },
+    {
+      "file": "src/back/js/foreign.bend",
+      "sha256": "c1837cb2ee5f3401394f484b0586147d0e95dc72aef8280dd1025ec57301d8c9"
+    },
+    {
+      "file": "src/back/js/literals.bend",
+      "sha256": "e06ec7844c01786b76df39bbaec0083130cc6a2b6ca99f12da242666f92cb473"
+    },
+    {
+      "file": "src/back/js/validate.bend",
+      "sha256": "76a7f6e100de236a38b6d45a4ee73f76ee5a5158c2d629a4ed9a8e37f86c6783"
+    },
+    {
+      "file": "src/back/js/emit.bend",
+      "sha256": "0683269eb4311f572032cea603ef3d38bbcdc84b50c88bc3e83e3a214d3c01b4"
+    },
+    {
+      "file": "src/back/native/ir.bend",
+      "sha256": "2014202ac84403ce7720970870693f6f566cf81aea7ad44d69cf44ae65909f41"
+    },
+    {
+      "file": "src/back/native/text.bend",
+      "sha256": "053f8a05ced5c13f7face492da1d16cbdbfdfd90f356c4a5d8f0bbb5d83ef5f7"
+    },
+    {
+      "file": "src/back/native/layout.bend",
+      "sha256": "3470eca359bdee3add2e8672bd8456c2a9533231a861854b5257e8a22df291da"
+    },
+    {
+      "file": "src/back/native/intrinsic.bend",
+      "sha256": "8acf8c4e083b55cc33ef323552963b254ac310c22e7d8b5e3b82253776892ab0"
+    },
+    {
+      "file": "src/back/native/tables.bend",
+      "sha256": "26457cbe409162e70805b3ff0ec91946811b219f71bb2d45982663c3299daf54"
+    },
+    {
+      "file": "src/back/native/emit.bend",
+      "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a"
+    },
+    {
+      "file": "src/back/native/erase.bend",
+      "sha256": "299a73eab251033e3f64f8d2532ce9564e34f654fe74cd560a718b493e2186a1"
+    },
+    {
+      "file": "src/back/native/bridge.bend",
+      "sha256": "4e12b0f7ea54bfe8dcb82f8490c62e8708d28ba348a39d681176106fd8beee03"
+    },
+    {
+      "file": "src/back/native/show.bend",
+      "sha256": "003f63aa929c428851c7f55e94463b9ee0fab92ccfbe6a1d380f6484c8c8c3f0"
+    },
+    {
+      "file": "src/back/native/parallel.bend",
+      "sha256": "798345947093c51088ee84a3af2465bc4b340025219104f746669b73adf6269b"
+    },
+    {
+      "file": "src/back/native/array.bend",
+      "sha256": "4e1d5c9d282ba746ac1e98df470411d477bf1449b5621c3ad413f01e883d9149"
+    },
+    {
+      "file": "src/back/native/validate.bend",
+      "sha256": "9684fcb9bb25ff0e822ac11b738a319c1353ed721c6c4d864ed984cde0bfd089"
+    },
+    {
+      "file": "src/back/native/foreign.bend",
+      "sha256": "76621ff3bf60400281e7db4bd40a53abbf3627e28124b07fb7933c00a096eb68"
+    },
+    {
+      "file": "src/back/native/book.bend",
+      "sha256": "66f4448c933728fcdaa91e5cad4e402a7d9bbd96ad7aa9605287fa8dc6f0e6c0"
+    },
+    {
+      "file": "src/driver/report.bend",
+      "sha256": "461d05ad6f7647feafd13520fd5da0c9635eee976d58bea6c7d336b862831ba2"
+    },
+    {
+      "file": "src/driver/api.bend",
+      "sha256": "7bc65776b61c59247a7fb024bb29404e4242f0e2f81ea6ff663e83d1d7378fe9"
+    }
+  ],
+  "exports": [
+    "f_parse",
+    "f_load",
+    "f_path_join",
+    "f_path_dir",
+    "check_book",
+    "annotate_book",
+    "j_program",
+    "j_library",
+    "j_modules",
+    "driver_has_main",
+    "driver_is_io",
+    "driver_interpret",
+    "driver_todos",
+    "driver_owned",
+    "driver_emit_owned",
+    "specialize_book",
+    "specialized_book",
+    "specialized_error",
+    "nc_compile",
+    "nc_foreign_paths",
+    "nc_annotation_stops",
+    "nc_annotated_context",
+    "nc_foreign_source",
+    "check_from_exact_prefix",
+    "exact_prefix",
+    "f_load_graph",
+    "f_main_names",
+    "f_load_graph_seed",
+    "driver_report",
+    "check_book_diagnostic",
+    "diagnostic_render",
+    "diagnostic_result_locate",
+    "f_load_origins_for",
+    "j_compile_error",
+    "j_layout_error",
+    "reach_book",
+    "j_roots",
+    "j_stops",
+    "annotate_except",
+    "annotate_selected",
+    "j_program_selected",
+    "j_library_selected",
+    "j_foreign_paths",
+    "j_foreign_error"
+  ],
+  "replacement": {
+    "module": "src/back/js/emit.bend",
+    "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/js-prof/emit-lexical.bend"
+  },
+  "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+}

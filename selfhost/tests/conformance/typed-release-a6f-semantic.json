@@ -1,0 +1,80 @@
+{
+  "completedRows": 6019,
+  "positiveChecks": {
+    "total": 919,
+    "accepted": 919,
+    "other": []
+  },
+  "errorExpectations": {
+    "total": 459,
+    "acceptedForPhaseTriage": [
+      "io/main_foreign.bend",
+      "reg/array_open_element.bend"
+    ],
+    "acceptedWithExpectedLaterRejection": [
+      {
+        "id": "io/main_foreign.bend",
+        "lanes": [
+          "interpreter",
+          "js",
+          "native"
+        ],
+        "phases": [
+          "compile"
+        ]
+      },
+      {
+        "id": "reg/array_open_element.bend",
+        "lanes": [
+          "interpreter",
+          "js",
+          "native"
+        ],
+        "phases": [
+          "compile"
+        ]
+      }
+    ],
+    "acceptedWithoutExpectedLaterRejection": [],
+    "rejectedByPhase": {
+      "check": 298,
+      "parse": 152,
+      "compile": 1,
+      "load": 6
+    },
+    "timeoutsOrCrashes": []
+  },
+  "positiveCheckingFailureGroups": [],
+  "positiveExecutionFailureGroups": [],
+  "exactLanes": {
+    "parse": {
+      "observed": 459,
+      "pass": 919
+    },
+    "check": {
+      "pass": 1001,
+      "fail": 377
+    },
+    "interpreter": {
+      "pass": 977,
+      "fail": 277
+    },
+    "js": {
+      "pass": 672,
+      "fail": 206,
+      "not-applicable": 121
+    },
+    "native": {
+      "pass": 656,
+      "fail": 205,
+      "not-applicable": 121
+    },
+    "metal": {
+      "hardware-gated": 14
+    },
+    "cuda": {
+      "hardware-gated": 14
+    }
+  },
+  "note": "Accepted Error expectations require phase-specific triage. Rejections with different diagnostics are not exact conformance passes."
+}

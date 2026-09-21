@@ -1,0 +1,28 @@
+[typed 2026-09-21T00:46:35.347Z] discover /workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/compiler.bend
+[typed 2026-09-21T00:46:35.451Z] parse /workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/compiler.bend
+[typed 2026-09-21T00:47:12.764Z] parse /workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend
+[typed 2026-09-21T00:47:12.765Z] load and elaborate graph
+[typed 2026-09-21T00:48:49.198Z] check book
+[typed 2026-09-21T01:02:23.725Z] specialize book
+[typed 2026-09-21T01:03:12.960Z] report declarations
+[typed 2026-09-21T01:04:17.424Z] prune reachable definitions
+[typed 2026-09-21T01:06:08.346Z] annotate book
+
+<--- Last few GCs --->
+
+[13:0x44258000]  2219375 ms: Mark-Compact 12179.3 (12243.0) -> 12174.5 (12250.5) MB, pooled: 0 MB, 10682.16 / 0.00 ms  (average mu = 0.223, current mu = 0.093) full hash-table; GC in old space requested
+[13:0x44258000]  2226361 ms: Mark-Compact 12174.5 (12250.5) -> 12174.5 (12250.0) MB, pooled: 2 MB, 6985.82 / 0.00 ms  (average mu = 0.171, current mu = 0.000) full hash-table; GC in old space requested
+
+FATAL ERROR: invalid table size Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x75356c node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 2: 0xc52cd0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 3: 0xc52dbf  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 4: 0xef6695  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 5: 0x122ebf8  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 6: 0x122eda2  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 7: 0x1241024  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 8: 0x12411d6  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 9: 0x139f4b0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+10: 0x7fa383e769b6 

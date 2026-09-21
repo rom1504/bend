@@ -1,0 +1,7 @@
+type Bit is Data:
+  Off{}
+  On{}
+
+def main() -> Bit:
+  On{}
+#|On{}

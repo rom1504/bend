@@ -1,0 +1,23 @@
+{
+  "scope": "End-to-end smoke through the actual self-emitted release stage2 API, without upstream access; separate from full corpus and fixed-point verification.",
+  "pass": true,
+  "node": "v24.19.0",
+  "nodeArgs": [
+    "--stack-size=4096"
+  ],
+  "compiler": "dist/selfhost/release/stage2.mjs",
+  "compilerSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+  "runtimeSha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+  "driverSha256": "241163ead0ffff556c43a5851f63bb025d739647cfeb6db1a04aace4c03ad84c",
+  "nativeRuntimeSha256": "400606bb7e351041c9658e818aa78696e00ec96fbb35ff8bbb890996bf9fdd91",
+  "upstreamAvailable": false,
+  "command": "BEND_TYPED_API=dist/selfhost/release/stage2.mjs BEND_UPSTREAM=/unavailable-upstream node --stack-size=4096 tools/smoke.mjs --native",
+  "exitCode": 0,
+  "checks": [
+    "Base program checked",
+    "Bend normalizer returns 42",
+    "Bend-generated JavaScript returns 42",
+    "invalid type rejected by checker",
+    "Bend-generated native C returns 42"
+  ]
+}

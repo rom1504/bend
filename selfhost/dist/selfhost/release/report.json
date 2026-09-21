@@ -1,0 +1,160 @@
+{
+  "started": "2026-09-20T23:58:23.071Z",
+  "source": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/compiler.bend",
+  "sourceSha256": "ec9014bc182c3c454be5f5ebd73d00d4278020c7b9d8d7d8863e8d0943ba65a9",
+  "runtimeSha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+  "initialCompiler": {
+    "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/bootstrap-api.mjs",
+    "sha256": "a6f99fc20820d59a622e5a08deb5e631a3c1c1d7fd82f66e00010a0bd9d27f6d"
+  },
+  "driver": {
+    "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/5a40e93880345d7b9fbd53cd46db0045a54ff4485abca2bf963acc706ead00d0/typed-driver.mjs",
+    "sha256": "84516e5d0a5b4dc899bf977ce5c8c0538e5ba6ec82bd55c8493d88a0edf5c1aa"
+  },
+  "stages": [
+    {
+      "compiler": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/bootstrap-api.mjs",
+      "compilerSha256": "a6f99fc20820d59a622e5a08deb5e631a3c1c1d7fd82f66e00010a0bd9d27f6d",
+      "output": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage2.mjs",
+      "code": 0,
+      "signal": null,
+      "ms": 922854,
+      "outputSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418"
+    },
+    {
+      "compiler": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage2.mjs",
+      "compilerSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+      "output": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage3.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": null,
+      "signal": "SIGABRT",
+      "ms": 2517771
+    }
+  ],
+  "complete": false,
+  "previousAttempts": [
+    {
+      "saved": "2026-09-21T00:17:13.588Z",
+      "stages": [],
+      "currentStage": {
+        "compiler": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage2.mjs",
+        "output": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage3.mjs",
+        "started": "2026-09-21T00:13:45.934Z"
+      },
+      "log": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage3.mjs.log.attempt-1789949833588"
+    },
+    {
+      "saved": "2026-09-21T00:46:35.125Z",
+      "stages": [
+        {
+          "compiler": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage2.mjs",
+          "compilerSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+          "output": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage3.mjs",
+          "nodeArgs": [
+            "--stack-size=4096"
+          ],
+          "code": null,
+          "signal": "SIGABRT",
+          "ms": 1606724
+        }
+      ],
+      "error": "Compiler stage failed; inspect /workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage3.mjs.log",
+      "resourceConfiguration": {
+        "node": "v24.19.0",
+        "nodeArgs": [
+          "--stack-size=4096"
+        ],
+        "osStackKB": "8192",
+        "timeoutMs": 7200000
+      },
+      "logs": [
+        "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage3.mjs.log.attempt-1789951595126"
+      ]
+    }
+  ],
+  "resourceConfiguration": {
+    "node": "v24.19.0",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=12288"
+    ],
+    "osStackKB": "8192",
+    "timeoutMs": 10800000
+  },
+  "requestedStages": [
+    2,
+    3
+  ],
+  "validationPolicy": {
+    "required": [
+      2,
+      3
+    ],
+    "optionalRepeat": false,
+    "condition": "Stage2 and its checked self-emission stage3 must be byte-identical for the same frozen source."
+  },
+  "error": "Compiler stage failed; inspect /workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage3.mjs.log",
+  "finished": "2026-09-21T01:28:32.904Z",
+  "fixedPoint": false,
+  "checkpoint": {
+    "saved": "2026-09-21T01:35:15.687Z",
+    "claim": "Stage2 self-emission succeeded. Stage3 accepted the full source, then failed with SIGABRT during annotation/result conversion at a12GiB heap limit. The fatal stack identifies V8 WeakCollectionSet. No stage3 output or fixed point established."
+  },
+  "checkpointArtifacts": [
+    {
+      "file": "bootstrap-api.mjs",
+      "sha256": "a6f99fc20820d59a622e5a08deb5e631a3c1c1d7fd82f66e00010a0bd9d27f6d"
+    },
+    {
+      "file": "bootstrap-report.json",
+      "sha256": "dc73b234e7ccc18813f49fae17c82d700fa56cd3e9ceb65970faf01a2862f4cb"
+    },
+    {
+      "file": "compiler.bend",
+      "sha256": "ec9014bc182c3c454be5f5ebd73d00d4278020c7b9d8d7d8863e8d0943ba65a9"
+    },
+    {
+      "file": "compiler.bend.map.json",
+      "sha256": "f057cfc3786b80f2015b61dab4324f9382b1beae0307e6fb50522d15b1ae9e25"
+    },
+    {
+      "file": "default-stack-attempt.json",
+      "sha256": "8404fe59cc5889ca66f5a62e0ed6d13fb18a314899e31a4f583b4f0e449efe83"
+    },
+    {
+      "file": "runtime.mjs",
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    },
+    {
+      "file": "stage2.mjs",
+      "sha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418"
+    },
+    {
+      "file": "stage2.mjs.log",
+      "sha256": "f2dbd9f03d28d6aaf4a756022435a38a5c12ba76acca56e6157072714eaf2b1c"
+    },
+    {
+      "file": "stage3-12gb-heap-failure.log",
+      "sha256": "35f128b917aefc19f471d69f4c180744632d0f2f3a9cc312b1cc4a37aea0e20a"
+    },
+    {
+      "file": "stage3.mjs.log",
+      "sha256": "35f128b917aefc19f471d69f4c180744632d0f2f3a9cc312b1cc4a37aea0e20a"
+    },
+    {
+      "file": "stage3.mjs.log.attempt-1789949833588",
+      "sha256": "5a5035bc6c4c824fbf98e26f0f26d346a797b322c9b1c5644598a4c20894094b"
+    },
+    {
+      "file": "stage3.mjs.log.attempt-1789951595126",
+      "sha256": "55d4e84cdc36fd58271fecdda1ea5d4f510eb2263555fcade3846be4018b4d4a"
+    },
+    {
+      "file": "validation-policy.json",
+      "sha256": "8d74d98d1ae8ada8833cd3a22c6e737cd3415c0a654b219725bcee59ab8ba1b0"
+    }
+  ]
+}

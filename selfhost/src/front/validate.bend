@@ -1,0 +1,240 @@
+# Pattern grammar and reserved binder checks precede core checking.
+
+law f_reserved:
+  for +s: String
+  Bool
+
+law f_ctor_lookup:
+  for +name: String
+  for +book: List<&2,KDef>
+  KDef
+
+law f_ctor_more:
+  for +name: String
+  for +found: KDef
+  for +rest: List<&2,KDef>
+  KDef
+
+law f_valid_pattern:
+  for +p: KTerm
+  for +book: List<&2,KDef>
+  String
+
+law f_valid_ctor_pattern:
+  for +p: KTerm
+  for +ctr: KDef
+  for +book: List<&2,KDef>
+  String
+
+law f_valid_patterns:
+  for +ps: List<&2, KTerm>
+  for +book: List<&2,KDef>
+  String
+
+law f_valid_patterns_next:
+  for +err: String
+  for +ps: List<&2, KTerm>
+  for +book: List<&2,KDef>
+  String
+
+law f_scope_row_valid:
+  for +r: KTerm
+  for +pats: List<&2, KTerm>
+  for +env: List<&2, KTerm>
+  for +book: List<&2,KDef>
+  for +err: String
+  KTerm
+
+law f_lambda_valid:
+  for +a: KTerm
+  for +body: KTerm
+  KTerm
+
+law f_case_checked:
+  for +p: FParsed
+  for +indent: U32
+  for +heads: List<&2, KTerm>
+  for +rows: List<&2, KTerm>
+  for +pats: List<&2, KTerm>
+  FParsed
+
+@unsafe
+def f_reserved(s):
+  f_eq(s, "def") || f_eq(s, "type") || f_eq(s, "law") || f_eq(s, "match") || f_eq(s, "case") || f_eq(s, "do") || f_eq(s, "return") || f_eq(s, "for") || f_eq(s, "exs") || f_eq(s, "where") || f_eq(s, "is") || f_eq(s, "import") || f_eq(s, "Type") || f_eq(s, "Data") || f_eq(s, "Kind") || f_eq(s, "Quant")
+
+@unsafe
+def f_ctor_lookup(name, book):
+  match book:
+    case Nil{}:
+      f_find(name, Nil{})
+    case Con{+d, ds}:
+      f_choose(KDef, f_eq(dk(d), "Ctr") && f_eq(dn(d), name), u => d, u => f_ctor_more(name, f_ctor_lookup(name, dc(d)), ds))
+
+@unsafe
+def f_ctor_more(name, found, rest):
+  f_choose(KDef, f_eq(dk(found), "Missing"), u => f_ctor_lookup(name, rest), u => found)
+
+@unsafe
+def f_valid_pattern(p, book):
+  f_choose(String, f_eq(tg(p), "Var"), u => f_choose(String, Bool.not(f_valid_name(nm(p))), u => "reserved pattern binder: " ++ nm(p), u => f_choose(String, f_eq(dk(f_ctor_lookup(nm(p), book)), "Missing"), u => "", u => "a constructor pattern requires braces: " ++ nm(p))), u => f_choose(String, f_eq(tg(p), "Ctr"), u => f_valid_ctor_pattern(p, f_ctor_lookup(nm(p), book), book), u => "expected a binder or constructor pattern"))
+
+@unsafe
+def f_valid_ctor_pattern(p, ctr, book):
+  f_choose(String, f_eq(dk(ctr), "Missing"), u => "unknown constructor pattern: " ++ nm(p), u => f_choose(String, U32.is_eq(da(ctr), f_len(ks(p))), u => f_valid_patterns(ks(p), book), u => "constructor pattern field count differs: " ++ nm(p)))
+
+@unsafe
+def f_valid_patterns(ps, book):
+  match ps:
+    case Nil{}:
+      ""
+    case Con{p, rest}:
+      f_valid_patterns_next(f_valid_pattern(p, book), rest, book)
+
+@unsafe
+def f_valid_patterns_next(err, ps, book):
+  f_choose(String, String.is_empty(err), u => f_valid_patterns(ps, book), u => err)
+
+@unsafe
+def f_scope_row_valid(r, pats, env, book, err):
+  f_choose(KTerm, String.is_empty(err), u => f_scoped_row(pats, f_scope_body(kid(r, 1), f_concat(f_penv(pats), env), book)), u => kt("Row", "", 0, 1, [kt("Patterns", "", 0, 1, pats), kt("Error", err, 0, 0, Nil{})]))
+
+@unsafe
+def f_lambda_valid(a, body):
+  f_choose(KTerm, f_eq(tg(a), "Ref") && f_valid_name(nm(a)), u => kt("Lam", nm(a), ix(a), qt(a), [body]), u => kt("Error", "a lambda binder must be a non-reserved name", 0, 0, Nil{}))
+
+@unsafe
+def f_case_checked(p, indent, heads, rows, pats):
+  match p:
+    case FParsed{n, ts}:
+      f_choose(FParsed, U32.is_eq(f_len(pats), f_len(heads)), u => f_match_cases(f_skip(ts), indent, heads, Con{kt("Row", "", 0, 1, [kt("Patterns", "", 0, 1, pats), n]), rows}), u => f_err(ts, "one pattern is required per match scrutinee"))
+
+
+law f_alias_valid:
+  for +s: String
+  Bool
+
+law f_alias_chars:
+  for +s: String
+  Bool
+
+law f_import_alias:
+  for +ts: List<&2, FToken>
+  for +path: String
+  for +book: List<&2,KDef>
+  for +imports: List<&2, KTerm>
+  FResult
+
+law f_validate_param:
+  for +ts: List<&2, FToken>
+  for +end: String
+  for +acc: List<&2, KTerm>
+  FParsed
+
+@unsafe
+def f_alias_valid(s):
+  (Char.is_alpha(f_head(s)) || Char.is_eq(f_head(s), '_')) && f_alias_chars(s) && Bool.not(f_reserved(s))
+
+@unsafe
+def f_alias_chars(s):
+  f_choose(Bool, String.is_empty(s), u => True{}, u => (Char.is_alpha(f_head(s)) || Char.is_digit(f_head(s)) || Char.is_eq(f_head(s), '_')) && f_alias_chars(f_tail(s)))
+
+@unsafe
+def f_import_alias(ts, path, book, imports):
+  f_choose(FResult, String.ends_with(path, ".bend") && f_alias_valid(f_tx(f_tl(ts))), u => f_tops(f_tl(f_tl(ts)), book, Con{kt("Import", path, 0, 0, [kt("Alias", f_tx(f_tl(ts)), 0, 0, Nil{})]), imports}, False{}), u => f_result(book, "an import requires a .bend path and a valid alias", imports))
+
+@unsafe
+def f_validate_param(ts, end, acc):
+  f_choose(FParsed, f_eq(f_tx(ts), "~") && Bool.not(f_eq(end, ")")), u => f_err(ts, "~ is only allowed on def or law template parameters"), u => f_choose(FParsed, Bool.not(f_valid_name(f_tx(f_unmark(ts)))), u => f_err(ts, "reserved parameter name"), u => f_choose(FParsed, f_eq(f_tx(ts), "~") && U32.is_lt(f_templates(acc), f_len(acc)), u => f_err(ts, "only leading parameters may use ~"), u => f_tele_binder(f_tx(f_unmark(ts)), f_atid(ts), f_quant(ts), f_eq(f_tx(ts), "~"), f_tl(f_unmark(ts)), end, acc))))
+
+
+law f_valid_name:
+  for +s: String
+  Bool
+
+law f_name_chars:
+  for +s: String
+  Bool
+
+@unsafe
+def f_valid_name(s):
+  (Char.is_alpha(f_head(s)) || Char.is_eq(f_head(s), '_')) && f_name_chars(s) && Bool.not(f_reserved(s)) && Bool.not(String.ends_with(s, "."))
+
+@unsafe
+def f_name_chars(s):
+  f_choose(Bool, String.is_empty(s), u => True{}, u => f_ident(f_head(s)) && f_name_chars(f_tail(s)))
+
+law f_bare_params:
+  for +params: List<&2, KTerm>
+  Bool
+
+law f_def_prior:
+  for +name: String
+  for +p: FParsed
+  for +book: List<&2, KDef>
+  for +imports: List<&2, KTerm>
+  for +unsafe: Bool
+  for +old: KDef
+  FResult
+
+@unsafe
+def f_bare_params(params):
+  match params:
+    case Nil{}:
+      True{}
+    case Con{+p, rest}:
+      f_eq(tg(kid(p, 0)), "Qnt") && Bool.not(f_eq(tg(p), "Template")) && f_bare_params(rest)
+
+@unsafe
+def f_def_prior(name, p, book, imports, unsafe, old):
+  f_choose(FResult, f_eq(dk(old), "Missing"), u => f_def_base(name, p, book, imports, unsafe), u => f_choose(FResult, f_eq(dk(old), "Def") && f_eq(tg(dv(old)), "Absent") && f_bare_params(ks(f_pn(p))) && U32.is_ge(f_len(ks(f_pn(p))), dx(old)), u => f_def_base(name, p, book, imports, unsafe), u => f_result(book, "a definition must uniquely fill its law with plain parameter names", imports)))
+
+law f_bang:
+  for +n: KTerm
+  for +ts: List<&2, FToken>
+  for +min: U32
+  FParsed
+
+law f_foreign_path_valid:
+  for +ts: List<&2, FToken>
+  Bool
+
+@unsafe
+def f_bang(n, ts, min):
+  f_choose(FParsed, f_eq(tg(n), "Ref") && f_eq(f_tx(f_tl(ts)), "("), u => f_grow(FParsed{kt("Ref", nm(n), ix(n), 3, ks(n)), f_tl(ts)}, min), u => f_err(ts, "! must follow a named definition and precede call parentheses"))
+
+@unsafe
+def f_foreign_path_valid(ts):
+  U32.is_eq(f_kind(f_tl(ts)), 2) && Char.is_eq(f_head(f_tx(f_tl(ts))), '"') && (String.ends_with(f_unquote(f_tx(f_tl(ts))), ".c") || String.ends_with(f_unquote(f_tx(f_tl(ts))), ".js"))
+
+
+# Row quantity is internal flattening metadata: zero proves the body contains
+# no Var nodes, so every later column substitution is the identity. Open rows
+# remain conservatively marked even if their remaining variables disappear.
+law f_scoped_row:
+  for +pats: List<&2,KTerm>
+  for +body: KTerm
+  KTerm
+
+law f_contains_var:
+  for +t: KTerm
+  Bool
+
+law f_contains_var_terms:
+  for +ts: List<&2,KTerm>
+  Bool
+
+@unsafe
+def f_scoped_row(pats, body):
+  kt("Row", "", 0, f_choose(U32, f_contains_var(body), u => 1, u => 0), [kt("Patterns", "", 0, 1, pats), body])
+
+@unsafe
+def f_contains_var(t):
+  f_eq(tg(t), "Var") || f_contains_var_terms(ks(t))
+
+@unsafe
+def f_contains_var_terms(ts):
+  match ts:
+    case Nil{}:
+      False{}
+    case Con{+t, rest}:
+      f_contains_var(t) || f_contains_var_terms(rest)

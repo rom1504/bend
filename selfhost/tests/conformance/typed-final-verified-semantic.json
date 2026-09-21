@@ -1,0 +1,167 @@
+{
+  "completedRows": 6019,
+  "positiveChecks": {
+    "total": 919,
+    "accepted": 919,
+    "other": []
+  },
+  "errorExpectations": {
+    "total": 459,
+    "acceptedForPhaseTriage": [
+      "io/main_foreign.bend",
+      "reg/array_open_element.bend"
+    ],
+    "acceptedWithExpectedLaterRejection": [
+      {
+        "id": "io/main_foreign.bend",
+        "lanes": [
+          "interpreter",
+          "js",
+          "native"
+        ],
+        "phases": [
+          "compile"
+        ]
+      },
+      {
+        "id": "reg/array_open_element.bend",
+        "lanes": [
+          "interpreter",
+          "js",
+          "native"
+        ],
+        "phases": [
+          "compile"
+        ]
+      }
+    ],
+    "acceptedWithoutExpectedLaterRejection": [],
+    "rejectedByPhase": {
+      "check": 298,
+      "parse": 152,
+      "compile": 1,
+      "load": 6
+    },
+    "timeoutsOrCrashes": []
+  },
+  "positiveCheckingFailureGroups": [],
+  "positiveExecutionFailureGroups": [
+    {
+      "lane": "native",
+      "reason": "Probe exceeded 300000 ms.",
+      "ids": [
+        "base/list_sort.bend",
+        "base/show_read.bend",
+        "base/text_ops.bend",
+        "base/u32_divmod.bend",
+        "flatten/literal_rows_cubic.bend",
+        "proof/fold_assoc.bend",
+        "reg/arity_wall.bend",
+        "run/bit_walking.bend",
+        "run/evening_program.bend",
+        "run/nat_native.bend",
+        "run/word_arithmetic.bend",
+        "run/word_wrap_chains.bend"
+      ],
+      "count": 12
+    },
+    {
+      "lane": "native",
+      "reason": "Error: Maximum call stack size exceeded",
+      "ids": [
+        "compile/fork_width.bend",
+        "compile/u32_table_popcount.bend",
+        "reg/nat_chain.bend",
+        "run/map_set_ops.bend"
+      ],
+      "count": 4
+    },
+    {
+      "lane": "interpreter",
+      "reason": "Probe exceeded 300000 ms.",
+      "ids": [
+        "compile/fold_fuel_loop.bend",
+        "reg/interp_arm_share.bend",
+        "reg/interp_field_share.bend"
+      ],
+      "count": 3
+    },
+    {
+      "lane": "interpreter",
+      "reason": "Output/exit mismatch.",
+      "ids": [
+        "flatten/literal_rows_cubic.bend",
+        "stuck/fold.bend",
+        "stuck/map.bend"
+      ],
+      "count": 3
+    },
+    {
+      "lane": "native",
+      "reason": "Output/exit mismatch.",
+      "ids": [
+        "io/request_out_of_band.bend",
+        "io/stack_fault_trap.bend",
+        "io/tcp_send_slow_peer.bend"
+      ],
+      "count": 3
+    },
+    {
+      "lane": "js",
+      "reason": "Output/exit mismatch.",
+      "ids": [
+        "flatten/literal_rows_cubic.bend"
+      ],
+      "count": 1
+    },
+    {
+      "lane": "interpreter",
+      "reason": "Error: Maximum call stack size exceeded",
+      "ids": [
+        "reg/wnf_deep_chain.bend"
+      ],
+      "count": 1
+    },
+    {
+      "lane": "native",
+      "reason": "Error: native identifier collision: CID_LT",
+      "ids": [
+        "run/computed_match.bend"
+      ],
+      "count": 1
+    }
+  ],
+  "exactLanes": {
+    "parse": {
+      "observed": 459,
+      "pass": 919
+    },
+    "check": {
+      "fail": 456,
+      "pass": 922
+    },
+    "interpreter": {
+      "fail": 353,
+      "pass": 898,
+      "timeout": 3
+    },
+    "js": {
+      "fail": 262,
+      "pass": 616,
+      "not-applicable": 121
+    },
+    "native": {
+      "fail": 268,
+      "pass": 581,
+      "timeout": 12,
+      "not-applicable": 121
+    },
+    "metal": {
+      "hardware-gated": 14
+    },
+    "cuda": {
+      "hardware-gated": 14
+    }
+  },
+  "note": "Accepted Error expectations require phase-specific triage. Rejections with different diagnostics are not exact conformance passes."
+}

@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
+const root=path.resolve(import.meta.dirname,'..');
+const {default:K}=await import(pathToFileURL(process.env.BEND_REACH_API||path.join(root,'build/reach-test.mjs')));
+const list=xs=>xs.reduceRight((tail,head)=>({$:'Con',head,tail}),{$:'Nil'});
+const arr=xs=>{const out=[];for(;xs.$==='Con';xs=xs.tail)out.push(xs.head);return out};
+const t=(tag,name='',kids=[])=>({$:'KTerm',tag,name,id:0,quant:1,kids:list(kids),removed:list([])});
+const d=(name,typ=t('Absent'),value=t('Absent'),kind='Def',ctors=[])=>({$:'KDef',name,kind,arity:0,templates:0,typ,value,ctors:list(ctors),native:false,unsafe:false});
+const ref=n=>t('Ref',n),adt=n=>t('ADT',n);
+const book=[d('main',adt('Output'),ref('a')),d('unused',adt('Dead'),ref('unused')),d('a',adt('Output'),t('App','',[ref('b'),t('Ctr','Box',[ref('intrinsic')])])),d('b',adt('Output'),ref('a')),d('intrinsic',adt('Scalar'),ref('slowFallback')),d('slowFallback',adt('Scalar'),t('Ctr','Scalar')),d('Output',t('Typ'),t('Absent'),'ADT',[d('Out',ref('Payload'),t('Absent'),'Ctr')]),d('Payload',t('Typ'),t('Absent'),'ADT'),d('Scalar',t('Typ'),t('Absent'),'ADT'),d('Dead',t('Typ'),t('Absent'),'ADT'),d('Container',t('Typ'),t('Absent'),'ADT',[d('Box',adt('Scalar'),t('Absent'),'Ctr')])];
+const live=arr(K.reach_book(list(book),list(['main']),list(['intrinsic'])));
+assert.deepEqual(live.map(x=>x.name),['main','a','b','intrinsic','Output','Payload','Scalar','Container']);
+assert.deepEqual(live.find(x=>x.name==='intrinsic'),book.find(x=>x.name==='intrinsic'));
+assert.deepEqual(arr(K.reach_book(list(book),list([]),list([]))),[]);
+assert.ok(arr(K.reach_book(list(book),list(['main']),list([]))).some(x=>x.name==='slowFallback'));
+assert.deepEqual(arr(K.reach_book(list(book),list(['Out']),list([]))).map(x=>x.name),['Output','Payload']);
+console.log('5 dependency closure tests passed');

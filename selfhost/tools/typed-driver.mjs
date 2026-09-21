@@ -1,0 +1,455 @@
+#!/usr/bin/env node
+// IO and process shell. All Bend parsing, elaboration, checking, normalization,
+// specialization and JS emission execute the generated Bend API.
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import {assemble} from './assemble.mjs';
+import {buildNative} from './native-build.mjs';
+import {createCompilerAbi} from './compiler-abi.mjs';
+
+export const driverPath=fileURLToPath(import.meta.url);
+export const compilerAbiPath=fileURLToPath(new URL('./compiler-abi.mjs',import.meta.url));
+export const project=path.resolve(import.meta.dirname,'..');
+export const apiPath=path.resolve(process.env.BEND_TYPED_API||path.join(project,'dist/typed-api.mjs'));
+export const runtimePath=path.resolve(process.env.BEND_TYPED_RUNTIME||path.join(project,'src/runtime.mjs'));
+const bundledBasePath=path.join(project,'dist/base.bend');
+export const basePath=path.resolve(process.env.BEND_BASE||bundledBasePath);
+const roots=['f_parse','f_load','f_path_join','f_path_dir','check_book','annotate_book','j_program','j_library','j_modules','driver_has_main','driver_is_io','driver_interpret','driver_todos','driver_owned','driver_emit_owned'];
+const list=values=>values.reduceRight((tail,head)=>({$: 'Con',head,tail}),{$:'Nil'});
+function array(value) {
+  const values=[];
+  while(value?.$==='Con') {values.push(value.head);value=value.tail;}
+  if(value?.$!=='Nil') throw Error('Malformed list returned by compiler API');
+  return values;
+}
+const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const trace=(message)=>{if(process.env.BEND_TYPED_TRACE)process.stderr.write(`[typed ${new Date().toISOString()}] ${message}\n`);};
+
+export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(project,'../upstream-bend'),timeoutMs=120000,nativeSnapshot=process.env.BEND_TYPED_NATIVE_SNAPSHOT,nativeModules}={}) {
+  const revision=spawnSync('git',['-C',upstream,'rev-parse','HEAD'],{encoding:'utf8'}).stdout?.trim();
+  const pin='6018e28ecc67cf1fffc0c20c64b11023474c2df8';
+  if(revision!==pin) throw Error(`Bootstrap requires upstream ${pin}; found ${revision||'no checkout'}`);
+  const manifest=path.join(project,'src/compiler.json');
+  if(!fs.existsSync(manifest))throw Error('Compiler module manifest is missing: '+manifest);
+  let files=JSON.parse(fs.readFileSync(manifest,'utf8')).modules;
+  if(nativeModules) {
+    if(!nativeSnapshot||nativeModules.some(file=>!file.startsWith('src/back/native/')))throw Error('Invalid native module snapshot');
+    const at=files.findIndex(file=>file.startsWith('src/back/native/'));
+    files=files.filter(file=>!file.startsWith('src/back/native/'));
+    files.splice(at<0?files.length:at,0,...nativeModules);
+  }
+  const exports=[...roots];
+  if(fs.existsSync(path.join(project,'src/check/specialize.bend'))) {
+    if(!files.includes('src/check/specialize.bend'))files.push('src/check/specialize.bend');
+    exports.push('specialize_book','specialized_book','specialized_error');
+  }
+  if(files.includes('src/back/native/book.bend')) {
+    exports.push('nc_compile','nc_foreign_paths');
+    if(fs.readFileSync(path.join(project,'src/back/native/book.bend'),'utf8').includes('nc_annotation_stops('))exports.push('nc_annotation_stops','nc_annotated_context');
+  }
+  if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source');
+  if(files.includes('src/check/prefix.bend'))exports.push('check_from_exact_prefix','exact_prefix');
+  if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_main_names');
+  if(files.includes('src/load/seed.bend'))exports.push('f_load_graph_seed');
+  if(files.includes('src/driver/report.bend'))exports.push('driver_report');
+  if(files.includes('src/diagnostic/produce.bend'))exports.push('check_book_diagnostic','diagnostic_render','diagnostic_result_locate');
+  if(files.includes('src/diagnostic/frontend.bend'))exports.push('f_load_origins_for');
+  if(files.includes('src/back/js/validate.bend')) {
+    exports.push('j_compile_error');
+    if(fs.readFileSync(path.join(project,'src/back/js/validate.bend'),'utf8').includes('law j_layout_error:'))exports.push('j_layout_error');
+  }
+  if(files.includes('src/core/reach.bend'))exports.push('reach_book','j_roots','j_stops','annotate_except');
+  if(fs.readFileSync(path.join(project,'src/check/annotate.bend'),'utf8').includes('law annotate_selected:'))exports.push('annotate_selected');
+  if(fs.readFileSync(path.join(project,'src/back/js/emit.bend'),'utf8').includes('law j_program_selected:'))exports.push('j_program_selected','j_library_selected');
+  if(files.includes('src/back/js/foreign.bend'))exports.push('j_foreign_paths','j_foreign_error');
+  const snapshots=files.map(file=>({file,bytes:fs.readFileSync(path.join(nativeSnapshot&&file.startsWith('src/back/native/')?path.resolve(nativeSnapshot):project,file))}));
+  const fingerprint=crypto.createHash('sha256');
+  for(const s of snapshots)fingerprint.update(s.file).update('\0').update(s.bytes).update('\0');
+  const snapshot=path.join(project,'build/typed/snapshots',fingerprint.digest('hex'));
+  for(const s of snapshots) {const file=path.join(snapshot,s.file);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,s.bytes);}
+  const source=path.join(snapshot,'compiler.bend');
+  assemble(files,source,{root:snapshot});
+  fs.mkdirSync(path.dirname(apiPath),{recursive:true});
+  const staged=apiPath+'.tmp-'+process.pid;
+  const result=spawnSync(process.execPath,[path.join(project,'tools/stage0-library.mjs'),source,staged,...exports],
+    {cwd:project,env:{...process.env,BEND_UPSTREAM:upstream},encoding:'utf8',timeout:timeoutMs,maxBuffer:2**24});
+  if(result.error||result.status!==0) {fs.rmSync(staged,{force:true});throw Error(result.error?.message||result.stderr||'Typed API bootstrap failed');}
+  fs.renameSync(staged,apiPath);
+  fs.copyFileSync(source,path.join(project,'build/typed/compiler.bend'));
+  fs.copyFileSync(path.join(upstream,'bend2/base.bend'),bundledBasePath);
+  const report={stage:'upstream-bootstrap',revision,generated:new Date().toISOString(),apiPath,apiSha256:hash(apiPath),baseSha256:hash(bundledBasePath),
+    source,sourceSha256:hash(source),modules:files.map(file=>({file,sha256:hash(path.join(snapshot,file))})),exports,
+    ...(nativeSnapshot?{nativeModuleSnapshot:path.resolve(nativeSnapshot)}:{})};
+  const reportPath=apiPath===path.join(project,'dist/typed-api.mjs')?path.join(project,'dist/typed-bootstrap-report.json'):apiPath+'.bootstrap.json';
+  fs.writeFileSync(reportPath,JSON.stringify(report,null,2)+'\n');
+  return report;
+}
+
+// Iterative ABI graph copy preserves shared subtrees and handles compiler books
+// whose list/string-literal depth exceeds the JavaScript call-stack limit.
+export function convertCompilerAbi(value,encode,fields,ctor) {
+  const memo=new WeakMap(),pending=[];
+  const allocate=value=>{
+    if(value===null||typeof value!=='object')return value;
+    if(memo.has(value))return memo.get(value);
+    let target,keys;
+    if(Array.isArray(value)) {target=new Array(value.length);keys=null;}
+    else {
+      keys=fields[value.$];
+      if(!keys)throw Error('Unknown compiler ABI constructor: '+value.$);
+      target=encode?ctor(value.$,new Array(keys.length)):{$:value.$};
+    }
+    memo.set(value,target);pending.push({value,target,keys});return target;
+  };
+  const root=allocate(value);
+  while(pending.length) {
+    const {value,target,keys}=pending.pop();
+    if(keys===null)for(let i=0;i<value.length;i++)target[i]=allocate(value[i]);
+    else for(let i=0;i<keys.length;i++) {
+      if(encode)target.a[i]=allocate(value[keys[i]]);
+      else target[keys[i]]=allocate(value.a[i]);
+    }
+  }
+  return root;
+}
+
+export async function loadApi() {
+  if(!fs.existsSync(apiPath)) throw Error('Typed compiler API is missing. Run node tools/typed-driver.mjs --bootstrap once.');
+  const module=await import(pathToFileURL(apiPath));
+  if(!module.G) return module.default;
+  // The bootstrap compiler marshals ADTs with named fields. The self-hosted
+  // runtime uses positional fields. This is an ABI conversion, not elaboration.
+  const fields={Nil:[],Con:['head','tail'],FSource:['name','path','text'],FResult:['book','error','imports'],
+    KTerm:['tag','name','id','quant','kids','removed'],KDef:['name','kind','arity','templates','typ','value','ctors','native','unsafe'],
+    KSpecialized:['book','error'],NC_Result:['source','error'],
+    DText:['text'],DTerm:['term'],DNoSpan:[],DSpan:['source','begin','end'],
+    DOrigin:['definition','term','source','begin','end','path'],
+    DDiagnostic:['expected','observed','has_observed','context','definition','span','note','trail'],
+    DResult:['error','book','diagnostic'],FProvenance:['result','origins']};
+  return createCompilerAbi({fields,ctor:module.ctor,
+    onPhase:process.env.BEND_TYPED_TRACE?event=>trace(`ABI ${event.name} ${event.phase} ${JSON.stringify(event.stats)}`):undefined}).wrap(module.default);
+}
+
+export function discoverSources(api,input,{seed=null}={}) {
+  const sources=[],seen=new Map(),physical=new Map(),foreign=new Map();
+  const graphMode=typeof api.f_load_graph==='function';
+  const visit=(name,file)=>{
+    const absolute=fs.realpathSync(file);
+    if(seen.has(name)) {
+      if(seen.get(name)!==absolute) throw Object.assign(Error('Module import path collision: '+name),{phase:'load'});
+      return;
+    }
+    seen.set(name,absolute);
+    const source=fs.readFileSync(absolute,'utf8');
+    const prior=physical.get(absolute);
+    trace('parse '+absolute);
+    const seeded=name==='Base'&&seed&&seed.sourcePath===absolute&&seed.sourceText===source;
+    const parsed=prior||(seeded?{book:list([]),imports:list([]),error:''}:api.f_parse(source));
+    if(parsed.error) throw Object.assign(Error(parsed.error),{phase:'parse',sourceFile:absolute});
+    sources.push({$:'FSource',name,path:absolute,text:source});
+    if(prior)return;
+    physical.set(absolute,parsed);
+    if(name!=='Base'&&api.f_path_join) for(const definition of array(parsed.book)) {
+      if(definition.value.tag!=='Foreign')continue;
+      for(const imported of array(definition.value.kids)) {
+        const qualified=api.f_path_join(api.f_path_dir(absolute),imported.name);
+        foreign.set(qualified,{name:qualified,path:qualified});
+      }
+    }
+    for(const item of array(parsed.imports)) {
+      const imported=item.name;
+      const importedFile=imported==='Base'?basePath:path.resolve(path.dirname(absolute),imported);
+      visit(graphMode&&imported!=='Base'?importedFile:imported,importedFile);
+    }
+  };
+  const main=graphMode?path.resolve(input):'__main__';
+  visit(main,path.resolve(input));
+  return {main,sources:list(sources),files:[...physical.keys()],foreign:[...foreign.values()],hasBase:seen.has('Base')};
+}
+
+function baseCacheInfo(api) {
+  const compilerSha256=hash(apiPath),baseSha256=hash(basePath);
+  const sourcePath=fs.realpathSync(basePath),sourceText=fs.readFileSync(basePath,'utf8');
+  const version=api.f_load_graph_seed?2:1;
+  const directory=path.join(project,'build/typed/cache');
+  const location=crypto.createHash('sha256').update(sourcePath).digest('hex');
+  const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version===2?'-'+location:''}.json`);
+  return {version,compilerSha256,baseSha256,sourcePath,sourceText,directory,file};
+}
+function readBaseCache(info) {
+  try {
+    const cached=JSON.parse(fs.readFileSync(info.file,'utf8'));
+    if(cached.version!==info.version||cached.compilerSha256!==info.compilerSha256||cached.baseSha256!==info.baseSha256||cached.validatedBy!=='check_book')return null;
+    if(info.version===2&&(cached.sourcePath!==info.sourcePath||cached.bookSha256!==crypto.createHash('sha256').update(JSON.stringify(cached.book)).digest('hex')))return null;
+    return {...cached,sourcePath:info.sourcePath,sourceText:info.sourceText};
+  } catch(error) {if(error.code!=='ENOENT'&&!(error instanceof SyntaxError))throw error;return null;}
+}
+export async function prepareBase(api) {
+  api??=await loadApi();
+  const info=baseCacheInfo(api),prior=readBaseCache(info);
+  if(prior)return prior;
+  const source={$:'FSource',name:'Base',path:info.sourcePath,text:info.sourceText};
+  const loaded=(api.f_load_graph||api.f_load)('Base',list([source]));
+  if(loaded.error)throw Object.assign(Error(loaded.error),{phase:'parse'});
+  const error=api.check_book(loaded.book);
+  if(error)throw Object.assign(Error(error),{phase:'check'});
+  const {version,compilerSha256,baseSha256,sourcePath,directory,file}=info;
+  const cached={version,compilerSha256,baseSha256,sourcePath,validatedBy:'check_book',generated:new Date().toISOString(),
+    bookSha256:crypto.createHash('sha256').update(JSON.stringify(loaded.book)).digest('hex'),book:loaded.book};
+  fs.mkdirSync(directory,{recursive:true});
+  const staged=file+'.tmp-'+process.pid;
+  try {fs.writeFileSync(staged,JSON.stringify(cached));fs.renameSync(staged,file);} finally {fs.rmSync(staged,{force:true});}
+  return {...cached,sourceText:info.sourceText};
+}
+
+function foreignSources(graph,extension,required=null) {
+  const term=(tag,name,kids=[])=>({$:'KTerm',tag,name,id:0,quant:0,kids:list(kids),removed:list([])});
+  const files=required===null?graph.foreign.filter(f=>path.extname(f.path)===extension):[...new Set(required)].map(file=>({name:file,path:file}));
+  return list(files.map(file=>term('Source',file.name,[term('Text',fs.readFileSync(file.path,'utf8'))])));
+}
+
+
+export async function inspect(input,{mode='check',api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false}={}) {
+  api??=await loadApi();
+  let phase='load';
+  try {
+    trace('discover '+input);
+    const seed=api.f_load_graph_seed?readBaseCache(baseCacheInfo(api)):null;
+    const graph=discoverSources(api,input,{seed});
+    phase='parse';
+    trace('load and elaborate graph');
+    const loaded=seed?api.f_load_graph_seed(graph.main,graph.sources,seed.sourcePath,seed.sourceText,seed.book):
+      (api.f_load_graph||api.f_load)(graph.main,graph.sources);
+    if(loaded.error) return {status:'error',phase,diagnostic:'Error: '+loaded.error,exitCode:1,checked:false};
+    if(mode==='parse') return {status:'ok',phase,exitCode:0,checked:false,files:graph.files};
+    phase='check';
+    trace('check book');
+    const cached=graph.hasBase&&api.check_from_exact_prefix?(seed||await prepareBase(api)):null;
+    const diagnostic=cached?api.check_from_exact_prefix(loaded.book,cached.book):api.check_book(loaded.book);
+    if(diagnostic) {
+      let rendered='Error: '+diagnostic;
+      if(api.check_book_diagnostic&&api.diagnostic_render) {
+        try {
+          trace('render checker diagnostic');
+          let detailed=api.check_book_diagnostic(loaded.book,list([]));
+          // The ordinary checker verdict remains authoritative. Diagnostic replay
+          // can improve its presentation but cannot replace or accept a verdict.
+          if(detailed.error===diagnostic) {
+            if(api.f_load_origins_for&&api.diagnostic_result_locate&&detailed.diagnostic.definition) {
+              const provenance=api.f_load_origins_for(graph.main,graph.sources,detailed.diagnostic.definition);
+              if(!provenance.result.error)detailed=api.diagnostic_result_locate(detailed,provenance.origins);
+            }
+            rendered=api.diagnostic_render(detailed);
+          }
+        } catch(error) {trace('diagnostic replay unavailable: '+error.message);}
+      }
+      return {status:'error',phase,diagnostic:rendered,exitCode:1,checked:true};
+    }
+    const owned=api.driver_owned?api.driver_owned(loaded.book):'';
+    if(owned)return {status:'error',phase:'compile',diagnostic:'Error: '+owned,exitCode:1,checked:true};
+    const todos=api.driver_todos(loaded.book);
+    if(todos) return {status:'error',phase,diagnostic:`Error: ${todos} TODO${todos===1?'':'s'} found.\nThe code is incomplete, and not a valid proof yet.`,exitCode:1,checked:true};
+    let book=loaded.book;
+    if(api.specialize_book) {
+      trace('specialize book');
+      const specialized=api.specialize_book(book),error=api.specialized_error(specialized);
+      if(error) return {status:'error',phase,diagnostic:'Error: '+error,exitCode:1,checked:true};
+      book=api.specialized_book(specialized);
+    }
+    const needReport=mode==='check'||(mode==='interpreter'&&!api.driver_has_main(book))||withReport;
+    if(needReport)trace('report declarations');
+    const verdict=needReport&&api.driver_report&&api.f_main_names?api.driver_report(book,api.f_main_names(graph.main,graph.sources)):'All terms check.\n';
+    if(mode==='check') return {status:'ok',phase,stdout:verdict,exitCode:0,checked:true,files:graph.files};
+    let interpreterIO=false;
+    if(mode==='interpreter') {
+      if(!api.driver_has_main(book)) return {status:'ok',phase:'runtime',stdout:verdict,exitCode:0,checked:true};
+      interpreterIO=api.driver_is_io(book);
+      if(!interpreterIO) {
+        phase='runtime';
+        trace('normalize and print main');
+        return {status:'ok',phase,stdout:api.driver_interpret(loaded.book)+'\n',verdict,exitCode:0,checked:true};
+      }
+    }
+    phase='compile';
+    const emitOwned=api.driver_emit_owned?api.driver_emit_owned(book):'';
+    if(emitOwned)return {status:'error',phase,diagnostic:'Error: '+emitOwned,exitCode:1,checked:true};
+    if(mode!=='library'&&api.j_compile_error) {
+      const error=api.j_compile_error(book);
+      if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
+    }
+    const contextBook=book;
+    const selectedEmission=mode!=='native'&&api.reach_book&&api.annotate_selected&&api.j_program_selected&&api.j_library_selected;
+    if(selectedEmission) {
+      trace('prune reachable definitions');
+      book=api.reach_book(book,api.j_roots(book,mode==='library'),api.j_stops(book));
+    }
+    if(mode!=='native'&&api.j_foreign_error) {
+      const error=api.j_foreign_error(book);
+      if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
+    }
+    trace('annotate book');
+    let layoutDefs,layoutStops;
+    if(mode==='native'&&api.nc_annotation_stops&&api.nc_annotated_context&&api.reach_book&&api.annotate_selected) {
+      const stops=api.nc_annotation_stops(contextBook);
+      const selected=api.reach_book(contextBook,list(['main']),stops);
+      layoutDefs=api.annotate_selected(contextBook,selected,stops);layoutStops=stops;
+      book=api.nc_annotated_context(contextBook,layoutDefs);
+    } else book=selectedEmission?api.annotate_selected(contextBook,book,api.j_stops(contextBook)):api.annotate_book(book);
+    if(api.j_layout_error) {
+      trace('validate runtime layouts');
+      const error=api.j_layout_error(contextBook,layoutDefs||book,api.j_roots(contextBook,mode==='library'),layoutStops||api.j_stops(contextBook));
+      if(error)return {status:'error',phase,diagnostic:'Error: '+error,exitCode:1,checked:true};
+    }
+    if(mode==='native') {
+      if(!api.nc_compile)return {status:'unsupported',phase,reason:'Native emitter was not bootstrapped.',checked:true};
+      trace('collect native foreign paths');
+      const paths=api.nc_foreign_paths?array(api.nc_foreign_paths(book)):graph.foreign.filter(f=>path.extname(f.path)==='.c').map(f=>f.path);
+      const nativeInputs=[...graph.files,path.join(project,'src/runtime/native/runtime.c')];
+      const requests=[...new Set(paths)].map(file=>{
+        let resolved=path.resolve(file);
+        if(!fs.existsSync(resolved)&&path.dirname(resolved)===path.join(path.dirname(basePath),'effs'))resolved=path.join(project,'src/runtime/native/effs',path.basename(resolved));
+        nativeInputs.push(resolved);
+        const source=fs.readFileSync(resolved,'utf8');
+        trace('marshal native foreign source '+file);
+        return api.nc_foreign_source?api.nc_foreign_source(book,file,source):source;
+      }).join('\n');
+      trace('emit native');
+      const native=api.nc_compile(book,fs.readFileSync(path.join(project,'src/runtime/native/runtime.c'),'utf8'),requests);
+      if(native.error)return {status:'error',phase,diagnostic:'Error: '+native.error,exitCode:1,checked:true};
+      return {status:'ok',phase,code:native.source,verdict,exitCode:0,checked:true,files:nativeInputs};
+    }
+    trace('emit '+mode);
+    const jsPaths=api.j_foreign_paths?array(api.j_foreign_paths(book)):null;
+    const emitted=selectedEmission?(mode==='library'?api.j_library_selected(contextBook,book):api.j_program_selected(contextBook,book)):(mode==='library'?api.j_library(book):api.j_program(book));
+    const code=fs.readFileSync(runtimePath,'utf8')+'\n'+api.j_modules(book,foreignSources(graph,'.js',jsPaths))+'\n'+emitted;
+    trace('emitted '+Buffer.byteLength(code)+' bytes');
+    if(interpreterIO)return {...await executeCompiled({status:'ok',code},{timeoutMs,args:['--',...args],combinedOutput}),verdict};
+    return {status:'ok',phase,code,verdict,exitCode:0,checked:true,files:[...graph.files,...jsPaths||[]]};
+  } catch(error) {
+    trace('compiler exception: '+(error.stack||error.message));
+    return {status:'error',phase:error.phase||phase,diagnostic:'Error: '+error.message,exitCode:1,checked:phase==='check'||phase==='compile'||phase==='runtime',sourceFile:error.sourceFile};
+  }
+}
+
+export async function execute(input,{workdir,timeoutMs=5000,args=[],api,backend='js',combinedOutput=false,withReport=false}={}) {
+  const compiled=await inspect(input,{mode:backend==='js'?'compile':'native',api,withReport});
+  if(compiled.status!=='ok') return compiled;
+  return {...await executeCompiled(compiled,{workdir,timeoutMs,args,backend,combinedOutput}),verdict:compiled.verdict};
+}
+
+async function executeCompiled(compiled,{workdir,timeoutMs=5000,args=[],backend='js',combinedOutput=false}={}) {
+  const own=!workdir;
+  workdir??=fs.mkdtempSync(path.join(os.tmpdir(),'bend-typed-run-'));
+  try {
+    const file=path.join(workdir,backend==='js'?'program.mjs':'program.c');fs.writeFileSync(file,compiled.code);
+    let command=process.execPath,commandArgs=[file,...args];
+    let built=null;
+    if(backend!=='js') {
+      const binary=path.join(workdir,'program');
+      built=buildNative({source:compiled.code,file,binary,target:backend==='native'?'auto':backend,cwd:workdir,timeoutMs});
+      if(built.status!=='ok')return built;
+      command=binary;commandArgs=[...(backend==='metal'||backend==='cuda'?['--gpu','on']:[]),...args];
+    }
+    const outputFile=path.join(workdir,'runtime-output.log');
+    const fd=combinedOutput?fs.openSync(outputFile,'w'):null;
+    let child,output;
+    try {
+      child=spawnSync(command,commandArgs,{cwd:workdir,encoding:'utf8',timeout:timeoutMs,maxBuffer:2**20,
+        ...(fd===null?{}:{stdio:['ignore',fd,fd]})});
+    } finally {if(fd!==null)fs.closeSync(fd);}
+    if(combinedOutput) {
+      if(fs.statSync(outputFile).size>2**20)return {status:'crash',phase:'runtime',reason:'Execution exceeded output limit.',checked:true};
+      output=fs.readFileSync(outputFile,'utf8');
+    }
+    if(child.error?.code==='ETIMEDOUT') return {status:'timeout',phase:'runtime',reason:'Execution exceeded timeout.',checked:true};
+    return {status:child.status===0?'ok':'error',phase:'runtime',stdout:combinedOutput?output:(child.stdout||''),stderr:combinedOutput?'':(child.stderr||''),exitCode:child.status??1,signal:child.signal,checked:true,...(combinedOutput?{output}:{}),
+      ...(built?{nativeBuild:{target:built.target,compiler:built.compiler,bangs:built.bangs}}:{}),
+      ...((backend==='metal'||backend==='cuda')?{hardwareExecuted:child.status===0&&built?.bangs>0,target:built?.target}:{})};
+  } finally {if(own)fs.rmSync(workdir,{recursive:true,force:true});}
+}
+
+export async function main(args) {
+  if(args[0]==='--bootstrap') {const report=bootstrap();console.log('Bootstrapped checked Bend API: '+report.apiSha256);return;}
+  if(args[0]==='--prepare-base') {const result=await prepareBase();console.log('Base checked by generated Bend API: '+result.baseSha256);return;}
+  if(args.length===1&&['version','--version'].includes(args[0])) {console.log('Bend2 port targeting 2.0.21');return;}
+  const optionArgs=args.slice(0,args.includes('--')?args.indexOf('--'):args.length);
+  if(!args.length||optionArgs.includes('--help')||optionArgs.includes('-h')) {console.log('node cli.mjs FILE.bend [ARGS] [--check-only | --checkup | --interpret | --run | --library]\n  [-o OUTPUT]... [--native | --cpu | --metal | --cuda]\nDefault: check, then interpret main; .js/.mjs output emits JavaScript, .c emits C, other output builds a binary.\nnode tools/typed-driver.mjs --bootstrap');if(!args.length)process.exitCode=1;return;}
+  let input,mode='interpreter',programArgs=[],library=false,backend='js',checkup=false,only=false;
+  const outputs=[];
+  while(args.length) {
+    const arg=args.shift();
+    if(arg==='--check-only') {mode='check';only=true;}
+    else if(arg==='--checkup')checkup=true;
+    else if(arg==='--interpret') mode='interpreter';
+    else if(arg==='--run') mode='run';
+    else if(arg==='--library') {mode='library';library=true;}
+    else if(['--native','--cpu','--metal','--cuda'].includes(arg))backend=arg.slice(2);
+    else if(arg==='-o'&&args.length)outputs.push(path.resolve(args.shift()));
+    else if(arg==='--') {programArgs=args;break;}
+    else if(arg.startsWith('-'))throw Error('Unknown/incomplete option '+arg);
+    else if(!input)input=path.resolve(arg);
+    else programArgs.push(arg);
+  }
+  if(!input)throw Error('A Bend source file is required');
+  if(only&&(outputs.length||checkup||library||mode!=='check'))throw Error('--check-only takes no other option');
+  if(checkup&&(outputs.length||library))throw Error('--checkup takes no -o or --library');
+  if(programArgs.length&&(outputs.length||mode==='check'||checkup||library))throw Error('Arguments go to a run');
+  if(backend!=='js'&&library)throw Error('--library currently supports JavaScript only');
+  if(checkup) {
+    const api=await loadApi(),parsed=api.f_parse(fs.readFileSync(input,'utf8'));
+    if(parsed.error)throw Error(parsed.error);
+    let failed=false;
+    for(const item of array(parsed.imports)) {
+      if(item.name==='Base')continue;
+      process.stdout.write('--- '+item.name+' ---\n');
+      const result=await inspect(path.resolve(path.dirname(input),item.name),{mode:'interpreter',api,timeoutMs:120000});
+      printResult(result);
+      const code=result.exitCode??(result.status==='ok'?0:1);
+      if(code){process.stdout.write('exit '+code+'\n');failed=true;}
+    }
+    process.exitCode=failed?1:0;return;
+  }
+  if(outputs.length) {
+    const compiled=new Map();
+    for(const output of outputs) {
+      const extension=path.extname(output),binary=!library&&!['.js','.mjs','.c'].includes(extension);
+      const emission=library?'library':backend!=='js'||extension==='.c'||binary?'native':'compile';
+      let result=compiled.get(emission);
+      if(!result){result=await inspect(input,{mode:emission,timeoutMs:120000,withReport:true});compiled.set(emission,result);printVerdict(result);}
+      if(result.status!=='ok'){printResult(result);process.exitCode=result.exitCode??1;return;}
+      const target=fs.existsSync(output)?fs.realpathSync(output):output;
+      if(fs.existsSync(output)&&fs.statSync(output).isDirectory())throw Error('Output is a directory');
+      if([input,...(result.files||[]),apiPath,basePath,runtimePath].some(f=>(fs.existsSync(f)?fs.realpathSync(f):path.resolve(f))===target))throw Error('Output would overwrite a compiler or program input');
+      const temporary=output+'.tmp-'+process.pid;
+      try {
+        if(binary) {
+          const directory=fs.mkdtempSync(path.join(os.tmpdir(),'bend-build-'));
+          try {
+            const file=path.join(directory,'program.c');fs.writeFileSync(file,result.code);
+            const built=buildNative({source:result.code,file,binary:temporary,target:backend==='js'||backend==='native'?'auto':backend,timeoutMs:120000});
+            if(built.status!=='ok'){printResult(built);process.exitCode=1;return;}
+          } finally {fs.rmSync(directory,{recursive:true,force:true});}
+        } else fs.writeFileSync(temporary,result.code);
+        fs.renameSync(temporary,output);
+      } finally {fs.rmSync(temporary,{force:true});}
+    }
+    process.exitCode=0;return;
+  }
+  if(library)mode='library';
+  const result=mode==='run'?await execute(input,{args:programArgs,timeoutMs:120000,backend,withReport:true}):await inspect(input,{mode,args:programArgs,timeoutMs:120000,withReport:true});
+  printVerdict(result);
+  if(result.status==='ok'&&mode==='library')process.stdout.write(result.code);
+  else printResult(result);
+  process.exitCode=result.exitCode??(result.status==='ok'?0:1);
+}
+function printVerdict(result){if(result.verdict&&result.verdict!=='All terms check.\n'&&result.stdout!==result.verdict)process.stderr.write(result.verdict);}
+function printResult(result){
+  if(result.stdout)process.stdout.write(result.stdout);
+  if(result.stderr)process.stderr.write(result.stderr);
+  if(result.diagnostic||result.reason)process.stderr.write((result.diagnostic||result.reason)+'\n');
+}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) main(process.argv.slice(2)).catch(error=>{console.error(error.message);process.exitCode=1;});

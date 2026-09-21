@@ -1,0 +1,20 @@
+{
+  "scope": "compiler source checked by the Bend frontend and Bend kernel; not a bootstrap fixed-point proof",
+  "pass": true,
+  "source": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/selfcheck/compiler.bend",
+  "sourceSha256": "f9bb2773132753a863198b14ce9ec6106f29c9beafe6e0a1e16c73473b67f889",
+  "frontend": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/selfcheck/frontend-api.mjs",
+  "frontendSha256": "99556d3dbe5e7b3a7e95305cc554c2587f5192bd708a16d2cef760e305ed2b13",
+  "checker": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/selfcheck/checker-profiled-api.mjs",
+  "checkerSha256": "b11b02066c904ba03ec84b75a5c1e169d93059c1b71feffae71c162df545d4e1",
+  "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+  "events": 2369,
+  "loadSeconds": 11.19,
+  "checkSeconds": 117.175,
+  "diagnostic": "",
+  "generated": "2026-09-20T21:58:23.209Z",
+  "reproduce": "BEND_KERNEL_API=dist/selfcheck/checker-api.mjs node tools/selfcheck.mjs",
+  "uninstrumentedChecker": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/selfcheck/checker-api.mjs",
+  "uninstrumentedCheckerSha256": "85097a19aa454377aa4d4fadb417605929ec04c73495667a29b3bbd179d3b2fd",
+  "instrumentation": "Executed checker adds only a stderr definition-name log at check_definition entry. The uninstrumented artifact is preserved separately."
+}

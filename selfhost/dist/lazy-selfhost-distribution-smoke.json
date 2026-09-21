@@ -1,0 +1,27 @@
+{
+  "finished": "2026-09-21T01:46:46.099504+00:00",
+  "pass": true,
+  "scope": "Relocated archive self-generated compiler smoke through lazy ABI; not full corpus or fixed-point evidence",
+  "archiveSha256": "616a50bcaa7866759afc6d586a9ec4eee1db7aae89e16c2b2b0bcd2bbff40185",
+  "manifestFilesVerified": 309,
+  "compilerSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+  "driverSha256": "4537677650830a9e6ae673d3de41969bc88c8cf4cdd92e8f9df81f8c604e1481",
+  "abiSha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+  "runtimeSha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+  "nativeRuntimeSha256": "400606bb7e351041c9658e818aa78696e00ec96fbb35ff8bbb890996bf9fdd91",
+  "freshBaseCache": true,
+  "upstream": "/unavailable-upstream",
+  "originalWorkspaceReadsBlocked": true,
+  "guardSelfCheckPassed": true,
+  "guardSha256": "a85c7727890a0efe1bdc61675dd6844776319ed67f1ce89d3e6fc5c99d30a5dc",
+  "limitations": "Filesystem guard covers Node fs APIs used by the compiler; not an OS sandbox. Native toolchain/system-library reads remain permitted. The five smoke routes do not exercise all foreign effects.",
+  "command": "BEND_TYPED_API=dist/selfhost/release/stage2.mjs BEND_UPSTREAM=/unavailable-upstream NODE_OPTIONS=--import=GUARD node --stack-size=4096 tools/smoke.mjs --native",
+  "checks": [
+    "Base program checked",
+    "Bend normalizer returns 42",
+    "Bend-generated JavaScript returns 42",
+    "invalid type rejected by checker",
+    "Bend-generated native C returns 42"
+  ],
+  "guardSource": "import fs from 'node:fs';\nimport {syncBuiltinESMExports} from 'node:module';\nimport {fileURLToPath} from 'node:url';\nimport path from 'node:path';\nconst forbidden=['/workspace/scratch/4de8c3a3f107/bend2-selfhost','/workspace/scratch/4de8c3a3f107/upstream-bend'];\nfunction check(value){if(value instanceof URL)value=fileURLToPath(value);if(Buffer.isBuffer(value))value=value.toString();if(typeof value!=='string')return;const p=path.resolve(value);if(forbidden.some(root=>p===root||p.startsWith(root+'/')))throw Error('Original workspace dependency: '+p);}\nfor(const name of ['readFile','readFileSync','open','openSync','stat','statSync','lstat','lstatSync','realpath','realpathSync','access','accessSync','existsSync','writeFile','writeFileSync','appendFile','appendFileSync','mkdir','mkdirSync']){const original=fs[name];if(original){const wrapped=function(...args){check(args[0]);return original.apply(this,args)};if(original.native)wrapped.native=function(...args){check(args[0]);return original.native.apply(this,args)};fs[name]=wrapped;}}\nfor(const name of ['readFile','open','stat','lstat','realpath','access','writeFile','appendFile','mkdir']){const original=fs.promises[name];if(original)fs.promises[name]=function(...args){check(args[0]);return original.apply(this,args)};}\nsyncBuiltinESMExports();\n"
+}

@@ -1,0 +1,96 @@
+{
+  "compiler": "3e535d9d7a5121f29b2c7d8b3c0d769a89d99ddc334b62f7b8aa02fdfd569579",
+  "records": [
+    {
+      "id": "check/unsafe_field",
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check, but 3 defs rely on unsafe or foreign code:\n- boom\n- Box\n- uses\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/workspace/scratch/4de8c3a3f107/upstream-bend/tests/check/unsafe_field.bend",
+          "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend"
+        ]
+      },
+      "expected": "All terms check, but 3 defs rely on unsafe or foreign code:\n- boom\n- Box\n- uses"
+    },
+    {
+      "id": "check/unsafe_relies",
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check, but 3 defs rely on unsafe or foreign code:\n- boom\n- innocent\n- by_type\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/workspace/scratch/4de8c3a3f107/upstream-bend/tests/check/unsafe_relies.bend",
+          "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend"
+        ]
+      },
+      "expected": "All terms check, but 3 defs rely on unsafe or foreign code:\n- boom\n- innocent\n- by_type"
+    },
+    {
+      "id": "import/unsafe_lib",
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check, but 1 def relies on unsafe or foreign code:\n- boom\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/workspace/scratch/4de8c3a3f107/upstream-bend/tests/import/unsafe_lib.bend",
+          "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend"
+        ]
+      },
+      "expected": "All terms check, but 1 def relies on unsafe or foreign code:\n- boom"
+    },
+    {
+      "id": "import/unsafe_used",
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check, but 1 def relies on unsafe or foreign code:\n- innocent\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/workspace/scratch/4de8c3a3f107/upstream-bend/tests/import/unsafe_used.bend",
+          "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend",
+          "/workspace/scratch/4de8c3a3f107/upstream-bend/tests/import/unsafe_lib.bend"
+        ]
+      },
+      "expected": "All terms check, but 1 def relies on unsafe or foreign code:\n- innocent"
+    },
+    {
+      "id": "io/far_types",
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check, but 1 def relies on unsafe or foreign code:\n- far.make\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/workspace/scratch/4de8c3a3f107/upstream-bend/tests/io/far_types.bend",
+          "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend"
+        ]
+      },
+      "expected": "All terms check, but 1 def relies on unsafe or foreign code:\n- far.make"
+    },
+    {
+      "id": "io/marshal_imported_nullary_type",
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check, but 2 defs rely on unsafe or foreign code:\n- tag.off\n- tag.on\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/workspace/scratch/4de8c3a3f107/upstream-bend/tests/io/marshal_imported_nullary_type.bend",
+          "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend"
+        ]
+      },
+      "expected": "All terms check, but 2 defs rely on unsafe or foreign code:\n- tag.off\n- tag.on"
+    }
+  ]
+}

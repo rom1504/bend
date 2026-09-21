@@ -1,0 +1,28 @@
+Bend2 compiler port
+
+This implementation targets Bend2 from bendlang/bend at revision
+6018e28ecc67cf1fffc0c20c64b11023474c2df8 (2026-09-20).
+https://github.com/bendlang/bend
+
+The compiler algorithms in src/core, src/check, src/front, src/load and
+src/back are implemented in Bend2. Their design follows the pinned upstream
+language implementation and compiler. Upstream TypeScript is a bootstrap and
+validation dependency; ordinary compiler execution does not invoke it.
+
+The native execution runtime and effect implementations under
+src/runtime/native are extracted from upstream bend2/comp.ts and bend2/effs.
+They are retained in C/Metal/CUDA/JavaScript as execution runtimes, with their
+Apache-2.0 license and origin record. dist/base.bend is the pinned upstream
+standard library. The JavaScript runtime also follows upstream primitive and
+foreign-effect conventions. These dependencies are not claimed as new work.
+
+Upstream test programs and expected outputs referenced by conformance reports
+belong to their respective contributors. See UPSTREAM-LICENSE for the upstream
+Apache-2.0 license, and src/runtime/native/ORIGIN.md for runtime provenance.
+The new implementation and tooling are provided under Apache-2.0 (LICENSE).
+
+The earlier surface-only prototype remains in src/compiler.bend and
+its executable dist/bend2c.mjs for regression and bootstrap comparisons.
+The typed compiler is a separate implementation. Compatibility claims must be
+read with the recorded test results; source availability alone is not evidence
+of full upstream equivalence.

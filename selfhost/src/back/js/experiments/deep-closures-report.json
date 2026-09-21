@@ -1,0 +1,28 @@
+{
+  "candidateSourceSha256": "49c0dc52341bf81c34c72945499003421e88c4af52f31d84357d0b1c899f3a56",
+  "backendTests": 14,
+  "description": "Flat closure factories for definitions exceeding 32 nested closures; explicit lexical captures; all ordinary closures retained",
+  "actualSource": [
+    {
+      "test": "flatten/literal_rows_cubic.bend",
+      "expected": "1000\n1007\n1499\n2499\n2999",
+      "actual": "1000\n1007\n1499\n2499\n2999\n",
+      "apiPath": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/lexical-selfhost/bootstrap-api.mjs",
+      "apiSha256": "0e3c00f419b7e9fc4565ca52e3b14864121f48351ffe8dc7108a93a43a3d2115",
+      "backendPath": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/js-prof/deep-api.mjs",
+      "backendSha256": "8af1ba9e9ce233a7192fedcb6004a2ec6d545ffa7735698107e2b1f991f58ef8",
+      "status": "ok",
+      "phase": "runtime",
+      "stdout": "1000\n1007\n1499\n2499\n2999\n",
+      "stderr": "",
+      "exitCode": 0,
+      "signal": null,
+      "checked": true,
+      "verdict": "All terms check.\n",
+      "milliseconds": 88818,
+      "matches": true
+    }
+  ],
+  "ordinaryProgramsByteEquivalent": 13,
+  "foreignSuite": "Passed imports, constructors, Char, shared state, erased closures, and 50000-cell marshalling"
+}

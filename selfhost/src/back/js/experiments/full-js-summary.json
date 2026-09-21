@@ -1,0 +1,30 @@
+{
+  "compilerSha256": "0e3c00f419b7e9fc4565ca52e3b14864121f48351ffe8dc7108a93a43a3d2115",
+  "report": "tests/conformance/typed-lexical-js.json",
+  "probes": 999,
+  "strictStatuses": {
+    "pass": 671,
+    "fail": 207,
+    "not-applicable": 121
+  },
+  "positiveStatuses": {
+    "pass": 613,
+    "not-applicable": 121,
+    "fail": 1
+  },
+  "negativeStatuses": {
+    "pass": 58,
+    "fail": 206
+  },
+  "negativeFailuresAllRejected": true,
+  "timeouts": 0,
+  "positiveFailures": [
+    "flatten/literal_rows_cubic.bend"
+  ],
+  "targetedFix": {
+    "fixture": "flatten/literal_rows_cubic.bend",
+    "result": "passed after generic deep-closure factory lowering",
+    "evidence": "src/back/js/experiments/deep-closures-report.json"
+  },
+  "additionalProvenanceFix": "src/back/js/experiments/constructor-provenance.json"
+}

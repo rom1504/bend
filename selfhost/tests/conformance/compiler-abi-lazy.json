@@ -1,0 +1,66 @@
+{
+  "generated": "2026-09-21T01:39:53.105022+00:00",
+  "node": "v24.19.0",
+  "command": "BEND_COMPILER_ABI_MODULE=build/typed/release-selfhost/stages/stage2.mjs node tools/test-compiler-abi.mjs",
+  "adapterSha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+  "testSha256": "367cf86e59af1c86adc9297a04f18b6826d10cc64d814ba9254648e763df3478",
+  "focused": {
+    "ok": true,
+    "cases": [
+      "lazy fields",
+      "sharing",
+      "pass-through",
+      "named JSON",
+      "read-only views",
+      "mutable host inputs",
+      "cycles",
+      "arrays",
+      "sparse arrays",
+      "wrapper phases",
+      "exceptions",
+      "100000-node handoff"
+    ],
+    "stats": {
+      "views": 7,
+      "encoded": 5,
+      "unwrapped": 8,
+      "calls": 0
+    }
+  },
+  "integration": {
+    "ok": true,
+    "integration": "build/typed/release-selfhost/stages/stage2.mjs",
+    "compilerSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+    "stages": [
+      "f_parse",
+      "f_load_graph",
+      "check_book",
+      "specialize_book",
+      "j_roots",
+      "j_stops",
+      "reach_book",
+      "annotate_selected",
+      "j_layout_error",
+      "j_library_selected"
+    ],
+    "annotationEncodedObjects": 1,
+    "emittedSha256": "397ced2dfc8e077caeffc4703ea8484d580b6f955e2046958e7a5138bd3efb2e",
+    "stats": {
+      "views": 220,
+      "encoded": 13,
+      "unwrapped": 16,
+      "calls": 10
+    }
+  },
+  "limitations": [
+    "Small source equivalence gate; not a complete self-hosting fixed-point run.",
+    "Integration equivalence uses JSON only on this small source, materializing its lazy views for comparison."
+  ],
+  "largePassThrough": {
+    "nodes": 100000,
+    "newViews": 1,
+    "encodedObjects": 0,
+    "sameRawIdentity": true,
+    "descendantGetterNotInvoked": true
+  }
+}

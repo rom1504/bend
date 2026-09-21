@@ -1,0 +1,67 @@
+{
+  "started": "2026-09-20T23:20:54.532Z",
+  "source": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/lexical-selfhost/compiler.bend",
+  "sourceSha256": "3ff43e180d3c180d1dc3ec8e01eed36ad55b8b65bcbe649d4e467feb5a31e45f",
+  "runtimeSha256": "10d97fa5fdddf59b56d7a2718507fea85e734effae2836988b629c1608d4a400",
+  "initialCompiler": {
+    "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/lexical-selfhost/bootstrap-api.mjs",
+    "sha256": "0e3c00f419b7e9fc4565ca52e3b14864121f48351ffe8dc7108a93a43a3d2115"
+  },
+  "driver": {
+    "file": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/conformance-host/b8d71f57de0bd7f98e8179c510fc657cee5c550d61ce3446b0ed2055ec6ea12d/typed-driver.mjs",
+    "sha256": "fd34d3f348d7550a34d4d350414453192bf807474b31a232cfd8c83544bc782f"
+  },
+  "stages": [
+    {
+      "compiler": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/lexical-selfhost/bootstrap-api.mjs",
+      "compilerSha256": "0e3c00f419b7e9fc4565ca52e3b14864121f48351ffe8dc7108a93a43a3d2115",
+      "output": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/lexical-selfhost/stages/stage2.mjs",
+      "code": 0,
+      "signal": null,
+      "ms": 1146259,
+      "outputSha256": "1eac3a0ab16fcaa8ae91dec6b27508f5b6828f4fbf84d55c4055a6f87a7526ea"
+    },
+    {
+      "compiler": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/lexical-selfhost/stages/stage2.mjs",
+      "compilerSha256": "1eac3a0ab16fcaa8ae91dec6b27508f5b6828f4fbf84d55c4055a6f87a7526ea",
+      "output": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/lexical-selfhost/stages/stage3.mjs",
+      "code": 1,
+      "signal": null,
+      "ms": 216277
+    }
+  ],
+  "complete": false,
+  "error": "Compiler stage failed; inspect /workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/lexical-selfhost/stages/stage3.mjs.log",
+  "finished": "2026-09-20T23:43:37.085Z",
+  "checkpointArtifacts": {
+    "compiler.bend": {
+      "file": "compiler.bend",
+      "sha256": "3ff43e180d3c180d1dc3ec8e01eed36ad55b8b65bcbe649d4e467feb5a31e45f"
+    },
+    "bootstrap-api.mjs": {
+      "file": "bootstrap-api.mjs",
+      "sha256": "0e3c00f419b7e9fc4565ca52e3b14864121f48351ffe8dc7108a93a43a3d2115"
+    },
+    "bootstrap-report.json": {
+      "file": "bootstrap-report.json",
+      "sha256": "f306a3aca358fe15208304b8e041718afa5dd6ea63ca606bf10dac26b8779a8f"
+    },
+    "stage2.mjs": {
+      "file": "stage2.mjs",
+      "sha256": "1eac3a0ab16fcaa8ae91dec6b27508f5b6828f4fbf84d55c4055a6f87a7526ea"
+    },
+    "runtime.mjs": {
+      "file": "runtime.mjs",
+      "sha256": "10d97fa5fdddf59b56d7a2718507fea85e734effae2836988b629c1608d4a400"
+    },
+    "stage2.mjs.log": {
+      "file": "stage2.mjs.log",
+      "sha256": "03b647d725635a5453e7f4b8f67cae8002685a7458694b85fcc2da9289be6c3d"
+    },
+    "stage3.mjs.log": {
+      "file": "stage3.mjs.log",
+      "sha256": "ba7f78d060f7978a6c4bdcbeb4356866b2fa2056e344ccb5e1774ffcc64c6295"
+    }
+  },
+  "checkpoint": "Stage2 self-emission completed; stage3 parsed full source then failed graph loading with stack overflow. Fixed point not established."
+}

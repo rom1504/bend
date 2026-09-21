@@ -1,0 +1,233 @@
+{
+  "scope": "Self-hosted JavaScript checker host-stack resource probe; no compiler source or frozen snapshots changed. Threshold varies with Node/V8 optimization; configured success is the requirement.",
+  "defaultStack": {
+    "node": "v24.19.0",
+    "execArgv": [],
+    "api": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage2.mjs",
+    "apiSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+    "pass": false,
+    "results": [
+      {
+        "count": 1859,
+        "name": "count_open",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 86.96204800000001
+      },
+      {
+        "count": 1859,
+        "name": "count_open mixed native/filled/open",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 68.92266699999999
+      },
+      {
+        "count": 1859,
+        "name": "constructor_exists absent",
+        "pass": true,
+        "result": false,
+        "milliseconds": 61.66116999999997
+      },
+      {
+        "count": 1859,
+        "name": "constructor_exists at end",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 24.298009000000036
+      },
+      {
+        "count": 1859,
+        "name": "driver_owned_name absent",
+        "pass": true,
+        "result": false,
+        "milliseconds": 20.01579399999997
+      },
+      {
+        "count": 3000,
+        "name": "count_open",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 56.808535000000006
+      },
+      {
+        "count": 3000,
+        "name": "count_open mixed native/filled/open",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 50.17867999999993
+      },
+      {
+        "count": 3000,
+        "name": "constructor_exists absent",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 48.28108199999997
+      },
+      {
+        "count": 3000,
+        "name": "constructor_exists at end",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 27.231042000000002
+      },
+      {
+        "count": 3000,
+        "name": "driver_owned_name absent",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 18.540929000000006
+      },
+      {
+        "count": 5000,
+        "name": "count_open",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 39.20237499999996
+      },
+      {
+        "count": 5000,
+        "name": "count_open mixed native/filled/open",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 33.55963399999996
+      },
+      {
+        "count": 5000,
+        "name": "constructor_exists absent",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 22.43517099999997
+      },
+      {
+        "count": 5000,
+        "name": "constructor_exists at end",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 21.443439000000012
+      },
+      {
+        "count": 5000,
+        "name": "driver_owned_name absent",
+        "pass": false,
+        "error": "RangeError: Maximum call stack size exceeded",
+        "milliseconds": 11.806748999999968
+      }
+    ]
+  },
+  "configuredStack": {
+    "node": "v24.19.0",
+    "execArgv": [
+      "--stack-size=4096"
+    ],
+    "api": "/workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/stages/stage2.mjs",
+    "apiSha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+    "pass": true,
+    "results": [
+      {
+        "count": 1859,
+        "name": "count_open",
+        "pass": true,
+        "result": 1859,
+        "milliseconds": 66.746443
+      },
+      {
+        "count": 1859,
+        "name": "count_open mixed native/filled/open",
+        "pass": true,
+        "result": 620,
+        "milliseconds": 37.37534100000005
+      },
+      {
+        "count": 1859,
+        "name": "constructor_exists absent",
+        "pass": true,
+        "result": false,
+        "milliseconds": 33.197811
+      },
+      {
+        "count": 1859,
+        "name": "constructor_exists at end",
+        "pass": true,
+        "result": true,
+        "milliseconds": 63.67238100000003
+      },
+      {
+        "count": 1859,
+        "name": "driver_owned_name absent",
+        "pass": true,
+        "result": false,
+        "milliseconds": 20.330128000000002
+      },
+      {
+        "count": 3000,
+        "name": "count_open",
+        "pass": true,
+        "result": 3000,
+        "milliseconds": 31.43691899999999
+      },
+      {
+        "count": 3000,
+        "name": "count_open mixed native/filled/open",
+        "pass": true,
+        "result": 1000,
+        "milliseconds": 34.21240800000004
+      },
+      {
+        "count": 3000,
+        "name": "constructor_exists absent",
+        "pass": true,
+        "result": false,
+        "milliseconds": 36.33960400000001
+      },
+      {
+        "count": 3000,
+        "name": "constructor_exists at end",
+        "pass": true,
+        "result": true,
+        "milliseconds": 24.819863000000055
+      },
+      {
+        "count": 3000,
+        "name": "driver_owned_name absent",
+        "pass": true,
+        "result": false,
+        "milliseconds": 20.04717000000005
+      },
+      {
+        "count": 5000,
+        "name": "count_open",
+        "pass": true,
+        "result": 5000,
+        "milliseconds": 37.91310900000008
+      },
+      {
+        "count": 5000,
+        "name": "count_open mixed native/filled/open",
+        "pass": true,
+        "result": 1667,
+        "milliseconds": 38.85257899999999
+      },
+      {
+        "count": 5000,
+        "name": "constructor_exists absent",
+        "pass": true,
+        "result": false,
+        "milliseconds": 40.430826000000025
+      },
+      {
+        "count": 5000,
+        "name": "constructor_exists at end",
+        "pass": true,
+        "result": true,
+        "milliseconds": 44.220799000000056
+      },
+      {
+        "count": 5000,
+        "name": "driver_owned_name absent",
+        "pass": true,
+        "result": false,
+        "milliseconds": 19.25172699999996
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "compiler": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418",
+  "driver": "4537677650830a9e6ae673d3de41969bc88c8cf4cdd92e8f9df81f8c604e1481",
+  "compilerAbi": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+  "results": [
+    {
+      "mode": "check",
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/workspace/scratch/4de8c3a3f107/bend2-selfhost/tests/conformance/typed-smoke/base-u32.bend",
+          "/workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend"
+        ]
+      }
+    },
+    {
+      "mode": "interpreter",
+      "result": {
+        "status": "ok",
+        "phase": "runtime",
+        "stdout": "42\n",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true
+      }
+    },
+    {
+      "backend": "js",
+      "result": {
+        "status": "ok",
+        "phase": "runtime",
+        "stdout": "42\n",
+        "stderr": "",
+        "exitCode": 0,
+        "signal": null,
+        "checked": true,
+        "verdict": "All terms check.\n"
+      }
+    },
+    {
+      "backend": "native",
+      "result": {
+        "status": "ok",
+        "phase": "runtime",
+        "stdout": "42\n",
+        "stderr": "",
+        "exitCode": 0,
+        "signal": null,
+        "checked": true,
+        "nativeBuild": {
+          "target": "cpu",
+          "compiler": {
+            "command": "clang-19",
+            "version": 19,
+            "apple": false
+          },
+          "bangs": 0
+        },
+        "verdict": "All terms check.\n"
+      }
+    },
+    {
+      "mode": "bad-type",
+      "result": {
+        "status": "error",
+        "phase": "check",
+        "diagnostic": "Error:\n- expected : Bit\n- observed : Type\nLocation: main",
+        "exitCode": 1,
+        "checked": true
+      },
+      "upstreamDeliberatelyMissing": true
+    }
+  ],
+  "complete": true
+}

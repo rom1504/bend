@@ -1,0 +1,24 @@
+{
+  "name": "bend2-compiler-port",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "bootstrap": "node tools/typed-driver.mjs --bootstrap",
+    "test": "node tools/smoke.mjs",
+    "survey": "node tools/survey.mjs",
+    "check-fixtures": "node tools/check-fixtures.mjs",
+    "bootstrap:typed": "node tools/typed-driver.mjs --bootstrap",
+    "assemble": "node tools/assemble.mjs",
+    "verify": "node tools/verify.mjs",
+    "test:runtime": "node src/runtime/js/test.mjs",
+    "test:abi": "node tools/test-compiler-abi.mjs",
+    "test:harness": "node --test tests/conformance/*.test.mjs tests/native-build.test.mjs",
+    "conformance": "node tools/conformance/run.mjs --adapter tools/conformance/adapters/typed.mjs",
+    "bootstrap:legacy": "node tools/bootstrap.mjs",
+    "test:legacy": "node tools/test.mjs"
+  }
+}

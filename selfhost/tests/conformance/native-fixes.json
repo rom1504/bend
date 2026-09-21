@@ -1,0 +1,891 @@
+{
+  "schemaVersion": 1,
+  "kind": "targeted-native-regression-evidence",
+  "recordedAt": "2026-09-20T23:59:38.408188+00:00",
+  "upstreamCommit": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+  "scope": "Re-execution of the twenty retained binaries produced during targeted fixes, plus preserved final seven IO compile-and-run records. This is not a fresh twenty-fixture compilation from one final API.",
+  "baseline": {
+    "file": "tests/conformance/typed-final-verified.json",
+    "sha256": "cec1011bba38733d4345a8b074e84ed3af5762160235d4ef18e46ed5ca10f4ab",
+    "positiveNativeFailures": 20
+  },
+  "semanticApi": {
+    "file": "build/typed/verified-api.mjs",
+    "sha256": "58ee3bfe39001bc9421a7b5322358247facc1f7baa63a5a80c358fa24eb70e74"
+  },
+  "nativeApiSnapshots": {
+    "fixed": {
+      "historicalFile": "/tmp/native-path-fixed.mjs",
+      "sha256": "9300fc9fb05774794b1c52d20a7661406241897bbba721fef3423f2b519b3f47"
+    },
+    "final": {
+      "historicalFile": "/tmp/native-path-final.mjs",
+      "sha256": "d071b419d22b2d0bd185429ac45e21446a89eb442da476c0ec21b8f4d5ff564e"
+    },
+    "final2": {
+      "historicalFile": "/tmp/native-path-final2.mjs",
+      "sha256": "8504a454facc93096a862a1d08a692dbef8ee899a39e2e38904e54c9ecd2a24e"
+    },
+    "final3": {
+      "historicalFile": "/tmp/native-path-final3.mjs",
+      "sha256": "b2818782051e5a6e6435c74030f2e076f9d8c6608f831783653b43d8b722f4c0"
+    },
+    "final4": {
+      "historicalFile": "/tmp/native-path-final4.mjs",
+      "sha256": "7b819106c1c20d609df245b202f1aa578b5b86a69bb8b3ea5b8f7c87008ead1d"
+    },
+    "final5": {
+      "historicalFile": "/tmp/native-path-final5.mjs",
+      "sha256": "44941a7f970a5c9b83169b208f08a779ad43ffab364cd90dc95103738d896312"
+    },
+    "final6": {
+      "historicalFile": "/tmp/native-path-final6.mjs",
+      "sha256": "812e5346b12823f68be0c47c644fa735d84d0c2c8b74b9d4e33438bf26b85d00"
+    },
+    "final7": {
+      "historicalFile": "/tmp/native-path-final7.mjs",
+      "sha256": "bfadc0b7309340b07b3f83ac84f7da84b8092e7289511a640dfefbf65df4a23f"
+    }
+  },
+  "currentSourceSnapshot": {
+    "files": [
+      {
+        "file": "src/core/term.bend",
+        "sha256": "47f112aa7cfaabacb36df33fb4207c423b15b75e3111f8272d0c6a1836f7df6a"
+      },
+      {
+        "file": "src/core/index.bend",
+        "sha256": "6396055bda44e3d193625ecf4d7b51c945706c6ba86bc4352e7f2f412332cb40"
+      },
+      {
+        "file": "src/core/normalize.bend",
+        "sha256": "ae09f471bbf06633b9f308f9451835f7863a5c03535e8a6cf5ce6b31dbf0048d"
+      },
+      {
+        "file": "src/core/graph.bend",
+        "sha256": "7d5e75fce5d473fe2c63a4ccbd3e115db29bf42bb037fa9238d5427fce62a790"
+      },
+      {
+        "file": "src/core/reach.bend",
+        "sha256": "c7c1e1ff68ad798f3888d770ee5a02b1b73abbecd58cd2df9b81619428abb2cf"
+      },
+      {
+        "file": "src/core/pretty.bend",
+        "sha256": "9b7ffdca8ba9593b48167aea4f26abd8ac2802a2cca474b67dbf0cbebfca6def"
+      },
+      {
+        "file": "src/check/quantity.bend",
+        "sha256": "e6c7a06fd45cb132d9d5d1704a6f01f81325505eed2ff5d6025e118ff4522e8a"
+      },
+      {
+        "file": "src/check/kernel.bend",
+        "sha256": "b1b50c073b2530a14c8a674d473f1c906ce2d56425b6eb487dc0f0bdc642c963"
+      },
+      {
+        "file": "src/check/specialize.bend",
+        "sha256": "dd5371288c7083753dfe5944cff7b7a53ca8cf2ad1f64a152abf842421db60be"
+      },
+      {
+        "file": "src/check/prefix.bend",
+        "sha256": "35af4b272cfe893d60d4aca6433617273a1c52bb8ae4d8eeabfa0541354816cb"
+      },
+      {
+        "file": "src/check/annotate.bend",
+        "sha256": "599c58208dcee169ba7defd5f68fa46a5de2d19f898563406e0bba376a8e6d2c"
+      },
+      {
+        "file": "src/front/lexer.bend",
+        "sha256": "fcd0c6fcd66b4eba392b6e5f359ef61bff5593fffec1ab70358c9cc295df9ed1"
+      },
+      {
+        "file": "src/front/parser.bend",
+        "sha256": "52c59cc29bfcdc4112bcb347ce2e53c00946abdf0c7f40be4a74c4cc29e1f439"
+      },
+      {
+        "file": "src/front/declarations.bend",
+        "sha256": "06205d40c8701cee77ae959e360f3ad6ea811e303a0e1b069f6d3fe24c92af5b"
+      },
+      {
+        "file": "src/front/flatten.bend",
+        "sha256": "463d88f1c7de9828e1826d201f8b8de249f99e1d0bb64ae9768ba64d1f75af1e"
+      },
+      {
+        "file": "src/front/elaborate.bend",
+        "sha256": "f110501e6ef970ded45126f3be00448c17c7d36523b51e07bbb564025d5d276f"
+      },
+      {
+        "file": "src/front/sugar.bend",
+        "sha256": "d7535f1edfc3342e5b934ffd92c574a7d400d60fd5bcc751061d622ad081e59d"
+      },
+      {
+        "file": "src/front/unicode.bend",
+        "sha256": "ab9f2596af9af28bc3698d9cc101cdfd8565be2008d89322b2290cb2887862b6"
+      },
+      {
+        "file": "src/front/literals_arrays.bend",
+        "sha256": "4b38996d199d2230d7cd4559df20780876596f13aaafe77422b267ba3b0ebba8"
+      },
+      {
+        "file": "src/front/parallel.bend",
+        "sha256": "0d87ff167c85f67e1f60f397353158f6cf9d6a09180bc4d86db07d0e78ee46d9"
+      },
+      {
+        "file": "src/front/fresh_work.bend",
+        "sha256": "b84c60ecf96f3c50403c7fee86d9949a3bcacb4cab529f5a94cb64e920c6db53"
+      },
+      {
+        "file": "src/front/freshen.bend",
+        "sha256": "7b054636ae2cc593307d4ba8fea19bfd7e03363a6eb90e154abdd6ae50ba4d57"
+      },
+      {
+        "file": "src/load/paths.bend",
+        "sha256": "56d3ac6b7bf63db2ffd1c26521fb528f56b9469c78203d01296a93fc3812d38c"
+      },
+      {
+        "file": "src/front/families.bend",
+        "sha256": "9427f28c1508e2c5361521aa5f277c5992fb2c973df18268394bdd822cdf637e"
+      },
+      {
+        "file": "src/front/validate.bend",
+        "sha256": "bc64b22228b1d60fd5a1da9d4dfbde04455d24b8ff12fad083a95e6308886c5d"
+      },
+      {
+        "file": "src/load/imports.bend",
+        "sha256": "330a5d91abc35838086247abebac698e8832b7b03faa245f351d8d6b20ba16ae"
+      },
+      {
+        "file": "src/load/graph.bend",
+        "sha256": "58f94e109b1ff69d39e62d37232b3c332f54b067532f1ddbb9ec1b626a546426"
+      },
+      {
+        "file": "src/load/seed.bend",
+        "sha256": "cf09d0b47dc709d679a8fb4efae65e717fff2e2b00b7d29360f45a09ccf579a1"
+      },
+      {
+        "file": "src/load/modules.bend",
+        "sha256": "ed8f3700a407cca9bbebb6131cba786034edd5af354567d364affc17aaae0209"
+      },
+      {
+        "file": "src/diagnostic/model.bend",
+        "sha256": "dd69096c6fdcd682a45e9536eb6d475061fd285807961ac95a16b5a874358af5"
+      },
+      {
+        "file": "src/diagnostic/render.bend",
+        "sha256": "201867dba57eb715308026a3dcd36d1a61b0b51ea27c69c6ba00a3c935aedfe9"
+      },
+      {
+        "file": "src/diagnostic/trace.bend",
+        "sha256": "2f96bedcda46ead991754a9e627f984dc564a896e7a5f77fa08b0d3c029c431c"
+      },
+      {
+        "file": "src/diagnostic/produce.bend",
+        "sha256": "cffa6006781d453fc840b1d40107147a2b62714d10927c5ae3884891234c088a"
+      },
+      {
+        "file": "src/diagnostic/frontend.bend",
+        "sha256": "debfe6d4e6cea7e28f58c15c2ae82785118bc274f637b6e33a7646c4539311cd"
+      },
+      {
+        "file": "src/back/js/foreign.bend",
+        "sha256": "4b6d09ed9cdb914b5531b763bd65523121324bee554a8e5082c4887e728f085d"
+      },
+      {
+        "file": "src/back/js/literals.bend",
+        "sha256": "861525baf8fe999e3086a7ce1cd758e488235e23522dc97bdd8ee7694bb32ae7"
+      },
+      {
+        "file": "src/back/js/validate.bend",
+        "sha256": "608c448e0124fb2a386d081658bc64bd8a1941179c1dc76e0c8ec74de1c03a7f"
+      },
+      {
+        "file": "src/back/js/emit.bend",
+        "sha256": "356783cf6f7504a861b9fa6c0fd3db5a485ce7839951af5e08e3e74005730911"
+      },
+      {
+        "file": "src/back/native/ir.bend",
+        "sha256": "2014202ac84403ce7720970870693f6f566cf81aea7ad44d69cf44ae65909f41"
+      },
+      {
+        "file": "src/back/native/text.bend",
+        "sha256": "053f8a05ced5c13f7face492da1d16cbdbfdfd90f356c4a5d8f0bbb5d83ef5f7"
+      },
+      {
+        "file": "src/back/native/identity.bend",
+        "sha256": "79794a586a0c2f043c9bd417b97fe2092863eb3a8524250d6b49f0b77dc1810d"
+      },
+      {
+        "file": "src/back/native/layout.bend",
+        "sha256": "3470eca359bdee3add2e8672bd8456c2a9533231a861854b5257e8a22df291da"
+      },
+      {
+        "file": "src/back/native/intrinsic.bend",
+        "sha256": "8acf8c4e083b55cc33ef323552963b254ac310c22e7d8b5e3b82253776892ab0"
+      },
+      {
+        "file": "src/back/native/tables.bend",
+        "sha256": "26457cbe409162e70805b3ff0ec91946811b219f71bb2d45982663c3299daf54"
+      },
+      {
+        "file": "src/back/native/emit.bend",
+        "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a"
+      },
+      {
+        "file": "src/back/native/erase.bend",
+        "sha256": "db21d12efc46060fd21f0917f5100fc525f967d72aac6bb1ca84455f7eec7795"
+      },
+      {
+        "file": "src/back/native/bridge.bend",
+        "sha256": "88431cf52f0c9ac1b3b1c93aa4a54225ca201d0b8021283f98ba09c2aadc1c74"
+      },
+      {
+        "file": "src/back/native/direct.bend",
+        "sha256": "75c5d560b8390263d18c991da8410191a0c5909b4ae0e8ebae193c0d9fd02de5"
+      },
+      {
+        "file": "src/back/native/pattern.bend",
+        "sha256": "5c624607c7ad2e19660efeddf694d841d7b4d867b1a3870795f9847daca7d155"
+      },
+      {
+        "file": "src/back/native/show.bend",
+        "sha256": "6f662583a276295312217ad99b777cf96988c21ffa7beca3178c043d4b040780"
+      },
+      {
+        "file": "src/back/native/parallel.bend",
+        "sha256": "85326099c65dbd478574e480e13492f1d3973625c3c9aa50e286f7f4a38ff722"
+      },
+      {
+        "file": "src/back/native/array.bend",
+        "sha256": "4e1d5c9d282ba746ac1e98df470411d477bf1449b5621c3ad413f01e883d9149"
+      },
+      {
+        "file": "src/back/native/validate.bend",
+        "sha256": "9684fcb9bb25ff0e822ac11b738a319c1353ed721c6c4d864ed984cde0bfd089"
+      },
+      {
+        "file": "src/back/native/foreign.bend",
+        "sha256": "fa71a99ac100dc31a8d6246132fb717f2d8c69f6a7cae71a48a2b960d2c89d61"
+      },
+      {
+        "file": "src/back/native/book.bend",
+        "sha256": "1e5e8f7bde0ab8b4eae2408f83882d59a3e1bce27f4955ba02ad1e8479da9e15"
+      },
+      {
+        "file": "src/driver/report.bend",
+        "sha256": "461d05ad6f7647feafd13520fd5da0c9635eee976d58bea6c7d336b862831ba2"
+      },
+      {
+        "file": "src/driver/api.bend",
+        "sha256": "c4aff96313ecc8a2bcc236116af18d88ca0087b7f1230cf7c8bb62c30d5e00e7"
+      }
+    ],
+    "orderedHashesSha256": "b57dd3c5145a985c5aa72f54dac4951f5c191f3f49d9b2576470cb220cc91ed1"
+  },
+  "finalNativeApiSnapshot": "final7",
+  "finalNativeRuntime": {
+    "file": "src/runtime/native/runtime.c",
+    "sha256": "400606bb7e351041c9658e818aa78696e00ec96fbb35ff8bbb890996bf9fdd91"
+  },
+  "sourceRunner": {
+    "file": "src/back/native/fixtures.mjs",
+    "sha256": "54c0f615bdbd6d2b8976a157012b6c38c597d578820787937e331f91c3772d31"
+  },
+  "reproduce": {
+    "prerequisite": "Bootstrap the complete compiler API using the project README, then set BEND_TYPED_API to that generated API. BEND_UPSTREAM must identify the pinned upstream checkout. CC must support the retained runtime ABI (Clang 19 was used).",
+    "twenty": "CC=clang-19 BEND_TYPED_API=/absolute/path/to/compiler-api.mjs BEND_UPSTREAM=/absolute/path/to/upstream node src/back/native/fixtures.mjs --baseline-fixes",
+    "sevenIO": "CC=clang-19 BEND_TYPED_API=/absolute/path/to/compiler-api.mjs BEND_UPSTREAM=/absolute/path/to/upstream node src/back/native/fixtures.mjs --io-fixes",
+    "report": "build/native-fixtures/report.json; includes selected API, native runtime, driver, source hashes and one/four-thread execution results"
+  },
+  "historicalCompilationProvenance": "Each retained C and executable is hashed below. Several temporary per-run logs were overwritten during parallel investigation, so the exact producing native API cannot be attested for every historical binary. Those rows explicitly leave producingNativeApiSha256 null. Snapshot hashes are retained as a catalogue; they do not assert a unique row-to-snapshot relationship.",
+  "results": [
+    {
+      "id": "base/list_sort.bend",
+      "fixtureSha256": "b7e1a7187eb35e4253208fcdad5122311e4d936fb23198568568cb73db45746e",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "6",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "6\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "fd16f87bc55ae94c5707429fde65dd524f3f914c77f7d90d2befd8acaa577bd6"
+      },
+      "executable": {
+        "sha256": "baf5ad6f5aff9fcad89f2e06ee406caf405489182c2d45a3e793ce407f2d6684"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "base/show_read.bend",
+      "fixtureSha256": "efd902d65c4ca21eaebaa257d85f43465ffd1876f8c9d453af1de4f6e552bad0",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "5",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "5\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "48e9b87641c73b3b06fa5cfbde9074f391e89efe674c6cac846174cbcd758d4e"
+      },
+      "executable": {
+        "sha256": "9fb9afbd321f2dd9e989fbb0c80748dbc14719adc550a0aa1d845626801959e3"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "base/text_ops.bend",
+      "fixtureSha256": "509b5789efdc0de6d64408cfb72e3749a6e3016fe1483e501c89ff146a859bb4",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "14",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "14\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "0c4c6018a27847e4a4d0de412b1c5e4e9c90502da1c5e75993249213cc896998"
+      },
+      "executable": {
+        "sha256": "88e2ca0c17ed59cba8ebc09fae91427abe0da7a5adaa0ec999ed7a1936d47d3d"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "base/u32_divmod.bend",
+      "fixtureSha256": "f7e3f4d1c07be5a9c9f25b511d787f1ef46ceeb154ceedbfc7f8f04b15b1760c",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "14n",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "14n\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "24b9ceb2e1919934f534c01ab244701d211370af465cfcccfeffba3e47ddc447"
+      },
+      "executable": {
+        "sha256": "a8cf9170acc2af9328e3dc3383a9b001de3badeece5c6a2349c1e41e5bcb2a00"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "compile/fork_width.bend",
+      "fixtureSha256": "2b5a47e1714be3fadc10c054313d5073bed86fa9b0dfbd9c78577ab7188d2730",
+      "baselineStatus": "fail",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "1024n",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "1024n\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "bf933a3768f16029aac6fc40cf3570ebf40a3e04a0a136317f6f02ba55465535"
+      },
+      "executable": {
+        "sha256": "32e07cce78d35a6f0117b15c2a656260cd0a6314791dbbb714515c5aebb1eb74"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "compile/u32_table_popcount.bend",
+      "fixtureSha256": "ab2c02947e63ae2df232be3080d00ca4c383f87626e58f6c372288de159f83ba",
+      "baselineStatus": "fail",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "18432",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "18432\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "8b4746f01e461bf4f0d8ea884c449c94a03cf135d693d69fc067e5b48644d652"
+      },
+      "executable": {
+        "sha256": "4cd9024e3607689eb2eabb89d94b3b390341132dcf411e4573f0d7113f56abc3"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "flatten/literal_rows_cubic.bend",
+      "fixtureSha256": "27cf900cc11aaf0a52c7906790d4bbf893a251bf8620ec4c5b272362c6f4cc26",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "1000\n1007\n1499\n2499\n2999",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "1000\n1007\n1499\n2499\n2999\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "46225c088786b83da0135d3a08e0af8d1d42247e78dc35d5a35650da2e638049"
+      },
+      "executable": {
+        "sha256": "d410ef6dae8186fff5f3aeca24417631bf15078b73809e3118fa6e8aa41638a9"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "io/request_out_of_band.bend",
+      "fixtureSha256": "6bd9fa70be812911e71eab45b6a005cca4baa83b8764057fbfb79da1a333b115",
+      "baselineStatus": "fail",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "3\nbend: runtime fail-stop",
+        "exitCode": 1
+      },
+      "observed": {
+        "stdout": "3\n",
+        "stderr": "bend: runtime fail-stop\n",
+        "exitCode": 1,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "5d87f928bd3f03797ed4c74295c06531a794ee80fb0056049135a705a6ed5720"
+      },
+      "executable": {
+        "sha256": "91a47fafa26700a242c02466a09e5853bae76906b290f9c67387b447aa2e35a1"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "io/stack_fault_trap.bend",
+      "fixtureSha256": "04db469cad10b0bc0206df87dfe0bb3652b085c10124cc2e6bfdba253fd17381",
+      "baselineStatus": "fail",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "bend: memory fault (machine stack overflow?)",
+        "exitCode": 1
+      },
+      "observed": {
+        "stdout": "",
+        "stderr": "bend: memory fault (machine stack overflow?)\n",
+        "exitCode": 1,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "c50b5a574cf48c6511706428e7347a10d45ccc4c786a6d034352172202f37fc8"
+      },
+      "executable": {
+        "sha256": "68e2e75a92338e53d326b601644f4dffc444cc4fdee1b30db9772536ac08d5cd"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "io/tcp_send_slow_peer.bend",
+      "fixtureSha256": "9bd1f63265f03431a88327a944c77494e1b1b9eaf1125fc5eddb759a26b590b8",
+      "baselineStatus": "fail",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "loop alive\ncanary fast",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "loop alive\ncanary fast\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "7c377be0f4eca8e82dbf974f2e112fb591d1d8f5762e92409e7cfecb7b78523e"
+      },
+      "executable": {
+        "sha256": "646049a031980978f9fdef87496173ad49d8f5623dfafa1149eb6d99e8a648ae"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "proof/fold_assoc.bend",
+      "fixtureSha256": "394a826cdadc0c6178c0a8addcecbd257f77038220b0adb7d36d3944158f93e4",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "({==}, {==})",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "({==}, {==})\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "7e888ce3ce072c1cb034a23f33d12a263726d85ba19ac7710edb2249fa68997b"
+      },
+      "executable": {
+        "sha256": "f4632f4194f42b333355faa464e16ecb678185f5fc28960aee5b2acf5e708c62"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "reg/arity_wall.bend",
+      "fixtureSha256": "f2e6dd44789ba5a9c1594f180ec882354f4b84db897f89941e4cc58da4919e7a",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "1",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "1\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "a17ee1eb656b4b2696dee2e8232b4e2b8dfb9e045d0ade51e3980c647b87c228"
+      },
+      "executable": {
+        "sha256": "fe75002bcb74fc7b0d092a3dbb9ad66ac6f62a6617fc0efadf31e4169169ed87"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "reg/nat_chain.bend",
+      "fixtureSha256": "81fcaaa8db549fc99d98699793ea8d21211845674da602aea9b28816d02397aa",
+      "baselineStatus": "fail",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "411210",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "411210\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "6379918b794e5de8e1d05fb0f6642498ef918fa2216d9953539ff4d457f41444"
+      },
+      "executable": {
+        "sha256": "4647a96902010db9d484320f9c4a1aea34a1f14f310fe8aea1375d323f44d9d5"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "run/bit_walking.bend",
+      "fixtureSha256": "3b9d64e1894968bed496a8c18d6590a1a9c6951fe6d00fcbe7d0ee9cb2b90e2f",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "5",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "5\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "004c1630f7261e7ac678d809f5ee7f400e34bf21a13cf4be4eaf674fefcf0c4a"
+      },
+      "executable": {
+        "sha256": "3a3876ee99b6b0d031adef4e584c6bb1a05f47ef4a37c2542659211f94402884"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "run/computed_match.bend",
+      "fixtureSha256": "24a76d454fe43e12569f13620b3db6d3ae14cb2c97505d236048898eb41f9780",
+      "baselineStatus": "fail",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "123",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "123\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "4dec5baf5b6b1d7164bcdc63d87a7b3b9b9533a8274fe4f3df784043ed6c117a"
+      },
+      "executable": {
+        "sha256": "37ed6656635c287fded0a7d5af80ef921264493b9cd0f97c0ee0212062df93f6"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "run/evening_program.bend",
+      "fixtureSha256": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "81111",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "81111\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "f27985bcf592bf690e6663b312d839490fb0c6cafe481c51009632f24d4e4c17"
+      },
+      "executable": {
+        "sha256": "8982ec0b219d17dbc53e06e0cd53357d4d640a64ec1b3931b7b3196b9d6b1f9d"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "run/map_set_ops.bend",
+      "fixtureSha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+      "baselineStatus": "fail",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "11111",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "11111\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "fd2222aa23edf73e192dc0af58257531d97b803a0683a75743a0b18402ce7d2b"
+      },
+      "executable": {
+        "sha256": "8ec3d46e2156f614e5a5cd786a733973f472cd0e7416e9192224995db1b4058a"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "run/nat_native.bend",
+      "fixtureSha256": "aac3f56702e9fbbb7ac9867d30597f98fc989ce8c8dabb229cc49416c2b6890f",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "2084116725",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "2084116725\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "f804dcc819b31d17e93575768fd7530c266a69028d4554f8b7e69e02964b800e"
+      },
+      "executable": {
+        "sha256": "54e041ba52456f31de24ca782fd9bb4c545a3485a7af791ab5d3e43d65f24120"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "run/word_arithmetic.bend",
+      "fixtureSha256": "73db0427fca1c2c79db2c84141434b92f06b2bc96a84b0563a14ce37a00af9c5",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "63",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "63\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "ac66a3485f08093757b59ab668055bdd89fabaff3e072d4510028223be05b2c9"
+      },
+      "executable": {
+        "sha256": "bab99b7b2ffe7d497890a72f2645aec426eb7f519d9872fc26dc6f16a3efef5c"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    },
+    {
+      "id": "run/word_wrap_chains.bend",
+      "fixtureSha256": "56284ea3d1dd89589164211a9544795a5680826afa20dad53fa06ee605eca649",
+      "baselineStatus": "timeout",
+      "status": "pass",
+      "expected": {
+        "combinedOutput": "4",
+        "exitCode": 0
+      },
+      "observed": {
+        "stdout": "4\n",
+        "stderr": "",
+        "exitCode": 0,
+        "threads": 4
+      },
+      "emittedC": {
+        "sha256": "49c503bf92d6f2ecd14bc23e275078ed9b0b43e1de4ecf94199ccde3c54057cf"
+      },
+      "executable": {
+        "sha256": "792465a4d6eab80b91e7dd74c3e08a5748c07500a18cd2d570c8d56b30c7140a"
+      },
+      "producingNativeApiSha256": null,
+      "evidence": "Retained generated executable re-run when this report was recorded."
+    }
+  ],
+  "finalIO": {
+    "nativeApiSha256": "bfadc0b7309340b07b3f83ac84f7da84b8092e7289511a640dfefbf65df4a23f",
+    "semanticApiSha256": "58ee3bfe39001bc9421a7b5322358247facc1f7baa63a5a80c358fa24eb70e74",
+    "runtimeSha256": "400606bb7e351041c9658e818aa78696e00ec96fbb35ff8bbb890996bf9fdd91",
+    "positiveResults": [
+      {
+        "name": "io/stack_fault_trap",
+        "emitMs": 1796,
+        "status": "pass",
+        "expected": "bend: memory fault (machine stack overflow?)\nexit 1",
+        "compileMs": 1060,
+        "compileExit": 0,
+        "stdout": "",
+        "runExit": 1,
+        "stderr": "bend: memory fault (machine stack overflow?)\n",
+        "signal": null
+      },
+      {
+        "name": "io/tcp_send_slow_peer",
+        "emitMs": 7518,
+        "status": "pass",
+        "expected": "loop alive\ncanary fast",
+        "compileMs": 3555,
+        "compileExit": 0,
+        "stdout": "loop alive\ncanary fast",
+        "runExit": 0,
+        "stderr": "",
+        "signal": null
+      },
+      {
+        "name": "io/sleep_order",
+        "emitMs": 1303,
+        "status": "pass",
+        "expected": "a\nb\nc\nd",
+        "compileMs": 637,
+        "compileExit": 0,
+        "stdout": "a\nb\nc\nd",
+        "runExit": 0,
+        "stderr": "",
+        "signal": null
+      },
+      {
+        "name": "io/spawn_sleep",
+        "emitMs": 1041,
+        "status": "pass",
+        "expected": "main\nb\na\ndone",
+        "compileMs": 623,
+        "compileExit": 0,
+        "stdout": "main\nb\na\ndone",
+        "runExit": 0,
+        "stderr": "",
+        "signal": null
+      },
+      {
+        "name": "io/spawn_outlives_main",
+        "emitMs": 1077,
+        "status": "pass",
+        "expected": "main returns\nlate",
+        "compileMs": 569,
+        "compileExit": 0,
+        "stdout": "main returns\nlate",
+        "runExit": 0,
+        "stderr": "",
+        "signal": null
+      },
+      {
+        "name": "io/channel_fork_join",
+        "emitMs": 2898,
+        "status": "pass",
+        "expected": "1122",
+        "compileMs": 2019,
+        "compileExit": 0,
+        "stdout": "1122",
+        "runExit": 0,
+        "stderr": "",
+        "signal": null
+      },
+      {
+        "name": "io/chan_close_send",
+        "emitMs": 1148,
+        "status": "pass",
+        "expected": "TrueFalse",
+        "compileMs": 754,
+        "compileExit": 0,
+        "stdout": "TrueFalse",
+        "runExit": 0,
+        "stderr": "",
+        "signal": null
+      }
+    ],
+    "negativeObservation": [
+      {
+        "id": "io/channel_send_recv.bend",
+        "classification": "negative checker fixture; intentionally excluded from seven positive runtime tests",
+        "expected": "Error:\n- message  : a declared datatype (unknown: Sender)\nLocation: main\n12 |   do IO<U32>:\n13>|     c : Sender<U32> & Receiver<U32> <- Chan.new(U32, 8)\n14 |     s : Result<U32, Sender<U32>> <- Chan.send(U32, c, 42)\nexit 1",
+        "observed": {
+          "phase": "check",
+          "diagnostic": "Error: main: unknown family or wrong parameter count"
+        },
+        "status": "rejected-as-expected",
+        "note": "The historical checker wording differs from the expected upstream diagnostic. This record attests rejection, not exact diagnostic text or native execution."
+      }
+    ]
+  },
+  "summary": {
+    "retainedBaselineExecutables": 20,
+    "retainedBaselineExecutablesPassed": 20,
+    "finalPositiveIO": 7,
+    "finalPositiveIOPassed": 7
+  }
+}

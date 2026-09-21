@@ -1,0 +1,31 @@
+--- a/src/back/js/emit.bend
++++ b/src/back/js/emit.bend
+@@ -893,11 +893,11 @@
+ 
+ @unsafe
+ def j_l_def(book, d):
+-  kc(String, j_l_deep(dv(d), 0), u => j_l_definition(book, d, j_l_mark(dv(d), "r", 0)), u => "G[" ++ j_quote(dn(d)) ++ "]=fn(0,function(){return " ++ j_expr(book, Nil{}, dv(d), dt(d), True{}) ++ ";});\n")
++  kc(String, j_l_deep(dv(d), 0), u => j_l_definition(book, d, j_l_mark(dv(d), "r", 0)), u => j_l_global(book, d, dv(d)))
+ 
+ @unsafe
+ def j_l_definition(book, d, t):
+-  "{const F=Object.create(null);\n" ++ j_l_walk(book, Nil{}, t, dt(d)) ++ "G[" ++ j_quote(dn(d)) ++ "]=fn(0,function(){return " ++ j_expr(book, Nil{}, t, dt(d), True{}) ++ ";});}\n"
++  "{const F=Object.create(null);\n" ++ j_l_walk(book, Nil{}, t, dt(d)) ++ j_l_global(book, d, t) ++ "}\n"
+ 
+ @unsafe
+ def j_l_walk(book, env, t, ty):
+@@ -937,3 +937,14 @@
+     case Nil{}: ""
+     case Con{h, Nil{}}: ""
+     case Con{h, rest}: kc(String, U32.is_eq(qt(h), 0), u => "", u => j_l_walk(book, env, kid(h, 0), j_type(book, env, kid(h, 0)))) ++ j_l_bindings(book, env, rest)
++
++# Only leading lambdas are pure closure initializers. Computed values keep thunks.
++law j_l_global:
++  for +book: List<&2, KDef>
++  for +d: KDef
++  for +t: KTerm
++  String
++
++@unsafe
++def j_l_global(book, d, t):
++  "G[" ++ j_quote(dn(d)) ++ "]=" ++ kc(String, String.eq(tg(j_strip(t)), "Lam"), u => j_expr(book, Nil{}, t, dt(d), False{}), u => "fn(0,function(){return " ++ j_expr(book, Nil{}, t, dt(d), True{}) ++ ";})") ++ ";\n"

@@ -1,0 +1,156 @@
+# Reuse a driver-validated Base core book only for the exact source it cached.
+# Both canonical path and complete source text must match. The seed is inserted
+# lazily at Base's normal dependency position, never merely because it was
+# supplied. All other graph checks and final global alpha-renaming still run.
+# The driver binds seedBook to the checked Base bytes and compiler API hash.
+type FSeed is Data:
+  FSeed{+path: String, +book: List<&2, KDef>}
+
+law f_load_graph_seed:
+  for +main: String
+  for +sources: List<&2, FSource>
+  for +seedPath: String
+  for +seedText: String
+  for +seedBook: List<&2, KDef>
+  FResult
+
+law f_seed_matches:
+  for +source: FSource
+  for +path: String
+  for +text: String
+  Bool
+
+law fs_path:
+  for +seed: FSeed
+  String
+
+law fs_book:
+  for +seed: FSeed
+  List<&2, KDef>
+
+law fs_load:
+  for +path: String
+  for +ns: String
+  for +sources: List<&2, FSource>
+  for +g: FGraph
+  for +stack: List<&2, String>
+  for +seed: FSeed
+  FGraph
+
+law fs_source:
+  for +s: FSource
+  for +ns: String
+  for +sources: List<&2, FSource>
+  for +g: FGraph
+  for +stack: List<&2, String>
+  for +seed: FSeed
+  FGraph
+
+law fs_cached:
+  for +s: FSource
+  for +ns: String
+  for +sources: List<&2, FSource>
+  for +g: FGraph
+  for +stack: List<&2, String>
+  for +entry: KTerm
+  for +seed: FSeed
+  FGraph
+
+law fs_inject:
+  for +g: FGraph
+  for +seed: FSeed
+  FGraph
+
+law fs_parsed:
+  for +s: FSource
+  for +ns: String
+  for +sources: List<&2, FSource>
+  for +g: FGraph
+  for +stack: List<&2, String>
+  for +r: FResult
+  for +seed: FSeed
+  FGraph
+
+law fs_imports:
+  for +s: FSource
+  for +ns: String
+  for +book: List<&2, KDef>
+  for +allimports: List<&2, KTerm>
+  for +imports: List<&2, KTerm>
+  for +sources: List<&2, FSource>
+  for +g: FGraph
+  for +stack: List<&2, String>
+  for +seed: FSeed
+  FGraph
+
+@unsafe
+def f_load_graph_seed(main, sources, seedPath, seedText, seedBook):
+  f_choose(FResult, f_seed_matches(f_source("Base", sources), seedPath, seedText), u => f_graph_result(fs_load(main, "", sources, FGraph{Nil{}, "", Nil{}}, Nil{}, FSeed{seedPath, seedBook})), u => f_load_graph(main, sources))
+
+@unsafe
+def f_seed_matches(source, path, text):
+  Bool.not(String.is_empty(path)) && f_eq(f_source_name(source), "Base") && f_eq(f_source_path(source), path) && f_seed_text_equal(f_source_text(source), text)
+
+@unsafe
+def fs_path(seed):
+  match seed:
+    case FSeed{path, book}:
+      path
+
+@unsafe
+def fs_book(seed):
+  match seed:
+    case FSeed{path, book}:
+      book
+
+@unsafe
+def fs_load(path, ns, sources, g, stack, seed):
+  fs_source(f_graph_source(path, sources), ns, sources, g, stack, seed)
+
+@unsafe
+def fs_source(s, ns, sources, g, stack, seed):
+  match g:
+    case FGraph{book, +err, +done}:
+      f_choose(FGraph, Bool.not(String.is_empty(err)), u => FGraph{book, err, done}, u => f_choose(FGraph, String.is_empty(f_source_path(s)), u => FGraph{book, "module source was not supplied", done}, u => f_choose(FGraph, has_name(stack, f_source_path(s)), u => FGraph{book, "cyclic import through " ++ f_source_path(s), done}, u => fs_cached(s, ns, sources, FGraph{book, err, done}, stack, f_env(f_source_path(s), done), seed))))
+
+@unsafe
+def fs_cached(s, ns, sources, g, stack, entry, seed):
+  f_choose(FGraph, f_eq(tg(entry), "Absent"), u => f_choose(FGraph, String.is_empty(ns) && f_eq(f_source_name(s), "Base") && f_eq(f_source_path(s), fs_path(seed)), u => fs_inject(g, seed), u => fs_parsed(s, ns, sources, g, Con{f_source_path(s), stack}, f_parse(f_source_text(s)), seed)), u => f_choose(FGraph, f_eq(nm(kid(entry, 0)), ns), u => g, u => f_graph_error(g, "one namespace per source file: " ++ f_source_path(s))))
+
+@unsafe
+def fs_inject(g, seed):
+  match g:
+    case FGraph{book, err, done}:
+      FGraph{f_defs_append(book, fs_book(seed)), err, Con{kt("Loaded", fs_path(seed), 0, 0, [ref("")]), done}}
+
+@unsafe
+def fs_parsed(s, ns, sources, g, stack, r, seed):
+  match r:
+    case FResult{book, +err, imports}:
+      f_choose(FGraph, String.is_empty(err), u => fs_imports(s, ns, book, imports, imports, sources, g, stack, seed), u => f_graph_error(g, err))
+
+@unsafe
+def fs_imports(s, ns, book, allimports, imports, sources, g, stack, seed):
+  match imports:
+    case Nil{}:
+      f_graph_finish(s, ns, book, f_graph_aliases(allimports, ns), g)
+    case Con{+im, rest}:
+      fs_imports(s, ns, book, allimports, rest, sources, fs_load(f_import_pathname(im, s, sources), f_import_namespace(im, ns), sources, g, stack, seed), stack, seed)
+
+
+# Base is larger than the call-stack limit of the library's recursive compare.
+# This equality scan is tail-recursive and compares the entire source exactly.
+law f_seed_text_equal:
+  for +a: String
+  for +b: String
+  Bool
+
+@unsafe
+def f_seed_text_equal(a, b):
+  match a b:
+    case SNil{} SNil{}:
+      True{}
+    case SCon{x, xs} SCon{y, ys}:
+      f_choose(Bool, Char.is_eq(x, y), u => f_seed_text_equal(xs, ys), u => False{})
+    case _ _:
+      False{}

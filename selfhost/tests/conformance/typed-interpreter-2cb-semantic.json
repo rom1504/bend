@@ -1,0 +1,44 @@
+{
+  "completedRows": 1254,
+  "positiveChecks": {
+    "total": 0,
+    "accepted": 0,
+    "other": []
+  },
+  "errorExpectations": {
+    "total": 0,
+    "acceptedForPhaseTriage": [],
+    "acceptedWithExpectedLaterRejection": [],
+    "acceptedWithoutExpectedLaterRejection": [],
+    "rejectedByPhase": {},
+    "timeoutsOrCrashes": []
+  },
+  "positiveCheckingFailureGroups": [],
+  "positiveExecutionFailureGroups": [
+    {
+      "lane": "interpreter",
+      "reason": "Output/exit mismatch.",
+      "ids": [
+        "stuck/fold.bend",
+        "stuck/map.bend"
+      ],
+      "count": 2
+    },
+    {
+      "lane": "interpreter",
+      "reason": "Probe exceeded 300000 ms.",
+      "ids": [
+        "reg/interp_arm_share.bend"
+      ],
+      "count": 1
+    }
+  ],
+  "exactLanes": {
+    "interpreter": {
+      "pass": 974,
+      "fail": 279,
+      "timeout": 1
+    }
+  },
+  "note": "Accepted Error expectations require phase-specific triage. Rejections with different diagnostics are not exact conformance passes."
+}

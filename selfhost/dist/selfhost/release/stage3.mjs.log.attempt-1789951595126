@@ -1,0 +1,26 @@
+[typed 2026-09-21T00:17:13.760Z] discover /workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/compiler.bend
+[typed 2026-09-21T00:17:13.840Z] parse /workspace/scratch/4de8c3a3f107/bend2-selfhost/build/typed/release-selfhost/compiler.bend
+[typed 2026-09-21T00:18:03.417Z] parse /workspace/scratch/4de8c3a3f107/bend2-selfhost/dist/base.bend
+[typed 2026-09-21T00:18:03.417Z] load and elaborate graph
+[typed 2026-09-21T00:20:02.908Z] check book
+[typed 2026-09-21T00:36:07.753Z] specialize book
+[typed 2026-09-21T00:37:05.917Z] report declarations
+[typed 2026-09-21T00:38:15.385Z] prune reachable definitions
+[typed 2026-09-21T00:40:12.025Z] annotate book
+
+<--- Last few GCs --->
+
+[13:0x13245000]  1604401 ms: Scavenge 4065.7 (4098.0) -> 4050.2 (4098.8) MB, pooled: 0 MB, 3.39 / 0.00 ms  (average mu = 0.384, current mu = 0.377) allocation failure; 
+[13:0x13245000]  1606419 ms: Mark-Compact (reduce) 4050.2 (4098.8) -> 4042.5 (4066.8) MB, pooled: 0 MB, 2008.16 / 0.00 ms  (+ 3.7 ms in 1 steps since start of marking, biggest step 3.7 ms, walltime since start of marking 2018 ms) (average mu = 0.381, curr
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x75356c node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 2: 0xc52cd0  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 3: 0xc52dbf  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 4: 0xef6695  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 5: 0xef66c2  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 6: 0xef69ba  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 7: 0xf076ba  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 8: 0xf0ba60  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]
+ 9: 0x199e0d1  [/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node]

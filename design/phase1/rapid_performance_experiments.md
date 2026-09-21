@@ -72,3 +72,28 @@ separately from supported compiler changes and full validation evidence.
 
 Independent agents may investigate bounded experiments. They use separate files
 and coordinate CPU measurements; only the primary agent commits and pushes.
+
+## Native execution experiment
+
+The first experiments found modest gains from guarded calls, positional workers,
+scalar primitives and matcher fusion. Test the execution backend next: compile
+the same Bend compiler algorithms through pinned upstream's C backend. This is a
+bootstrap execution option, not a rewrite of the compiler in TypeScript or C.
+
+Start with the lexer and complete token consumption, then a closed-bundle Bend
+driver accepting a main source and Base. Retain every checker, ownership, TODO,
+specialization, reachability, foreign and layout gate from the JS host. Explicitly
+reject unsupported imports and foreign files. Protect input/output paths in the
+launcher. Keep this limited driver separate from the general compiler CLI.
+
+Emit native and JS versions of that same Bend pipeline. Read identical inputs
+before both inner timers, consume complete results before stopping them, and
+record process wall time independently. Compare emitted bytes and execute output;
+test negative inputs too. Historical JS host timings include file reads, so they
+must not silently become a matched inner-timer control. Keep handwritten upstream
+TypeScript as a separately labelled reference.
+
+Measure source checking, C generation and native compilation separately. A runtime
+win that requires a slow native rebuild may still benefit repeated validation, but
+must not be presented as the edit/check/build latency. Broader native import support
+and artifact promotion require their own validation after this bounded experiment.

@@ -1,0 +1,68 @@
+{
+  "started": "2026-09-21T14:31:51.758Z",
+  "source": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/7ef79881bd54736d2738c52524e1ed9c2b4dda8070f2bdf51a4ed959a2eb39bf/compiler.bend",
+  "sourceSha256": "2f0b4956987479763c0d2a4d06dfc5a17dd96dac5126ad72266b7347e8feb635",
+  "runtimeSha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+  "initialCompiler": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/after/api.mjs",
+    "sha256": "8ae7a4cebb236c2bf83863417d433093b858f2831b6a32d8823ebf52f271eff1"
+  },
+  "driver": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/a601c384f6c7eb913ba78284abb15d9e6173ca325f57bdf8cb78843a2b2aa460/typed-driver.mjs",
+    "sha256": "077737efef8cbe1e7b84ac59b4451f898639146c5ee046759ce6aa72ced07af6"
+  },
+  "stages": [
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/after/api.mjs",
+      "compilerSha256": "8ae7a4cebb236c2bf83863417d433093b858f2831b6a32d8823ebf52f271eff1",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/fixedpoint/stage2.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 751804,
+      "outputSha256": "817d21ce10df10ff8a314100845bc08f162dae266b7b6ee0aaee156113927d80"
+    },
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/fixedpoint/stage2.mjs",
+      "compilerSha256": "817d21ce10df10ff8a314100845bc08f162dae266b7b6ee0aaee156113927d80",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/fixedpoint/stage3.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 2237051,
+      "outputSha256": "817d21ce10df10ff8a314100845bc08f162dae266b7b6ee0aaee156113927d80"
+    }
+  ],
+  "complete": true,
+  "resourceConfiguration": {
+    "node": "v24.18.0",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=12288"
+    ],
+    "osStackKB": "8192",
+    "timeoutMs": 3600000
+  },
+  "requestedStages": [
+    2,
+    3
+  ],
+  "validationPolicy": {
+    "required": [
+      2,
+      3
+    ],
+    "optionalRepeat": false,
+    "condition": "Stage2 and its checked self-emission stage3 must be byte-identical for the same frozen source."
+  },
+  "finished": "2026-09-21T15:21:41.032Z",
+  "sourceReport": "selfhost/build/phase2/fixedpoint/report.json",
+  "sourceReportSha256": "b5899111b2f417349275931bc0a2257c9713ca400cc71ef83b5e13dc6fe5569d",
+  "scope": "Interim source revision v1, preceding second grammar repair. Old runner lacks Base/helper provenance; not the final v2 proof."
+}

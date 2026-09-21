@@ -9,7 +9,7 @@ const MAX_FILE = 16 * 1024 * 1024, MAX_TOTAL = 128 * 1024 * 1024, MAX_RECORDS = 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const fingerprint = stat => ['dev','ino','size','mtimeNs','ctimeNs','mode'].map(key => String(stat[key])).join(':');
 function field(value, name) {
-  if (typeof value !== 'string' || !value || value.includes('\0') || Buffer.byteLength(value) > 8192) throw Error(`Invalid ${name}`);
+  if (typeof value !== 'string' || !value || value.includes('\0') || !value.isWellFormed() || Buffer.byteLength(value) > 8192) throw Error(`Invalid ${name}`);
   return value;
 }
 function inspect(file, role, optional = false) {
@@ -64,6 +64,10 @@ export function loadNativeGraphManifest(manifestFile) {
     if (prior && prior.path !== source.path) throw Error(`Module import path collision: ${source.name}`);
     if (!prior) { names.set(source.name, source); unique.push(source); }
   }
+  for (const source of unique) {
+    const logical = names.get(source.path);
+    if (logical && logical.path !== source.path) throw Error(`Module logical/physical identity collision: ${source.path}`);
+  }
   const assetNames = new Set();
   for (const asset of assets) {
     field(asset.name, 'asset name'); field(asset.path, 'canonical asset path');
@@ -112,20 +116,7 @@ export function runNativeGraph({binary, manifest, runtime, output, mode = 'progr
     const nativeStarted = performance.now();
     const result = spawn(command, commandArgs, {encoding:'utf8',timeout:timeoutMs,maxBuffer:16*1024*1024});
     const nativeWallMs = performance.now() - nativeStarted;
-    for (const input of inputs) unchanged(input);
-    if (sha(fs.readFileSync(executable.path)) !== executable.sha256) throw Error('Native binary bytes changed during execution');
-    unchanged(executable);
     const usedAssetIds = [...new Set([...String(result.stderr ?? '').matchAll(/^asset_used=(\d+)$/gm)].map(match => Number(match[1])))];
-    for (const id of usedAssetIds) {
-      const asset = graph.assets[id];
-      if (!asset || asset.missing) throw Error('Native output reports an invalid asset identity');
-      asset.sha256 = sha(fs.readFileSync(asset.path)); unchanged(asset);
-    }
-    // Source snapshots fix bytes used by Bend. Verify originals again before publication.
-    for (const input of [runtimeFile, ...graph.modules]) {
-      if (sha(fs.readFileSync(input.path)) !== input.sha256) throw Error(`Input bytes changed during native graph run: ${input.path}`);
-      unchanged(input);
-    }
     const diagnostic = /(?:^|\n)phase=(\w+) checked=(True|False): ([\s\S]*)/.exec(result.stderr ?? '');
     report = {kind:'native-graph-run', version:1, mode, cpu:cpu === undefined ? null : Number(cpu), timeoutMs,
       status:result.status, signal:result.signal ?? null, error:result.error?.message ?? null,
@@ -136,6 +127,19 @@ export function runNativeGraph({binary, manifest, runtime, output, mode = 'progr
       manifest:graph.manifest,main:graph.main,modules:graph.modules,moduleAliases:graph.moduleAliases,assets:graph.assets,usedAssetIds,binary:executable,runtime:runtimeFile,
       transportSha256:sha(wire),output:target,published:false,
       scope:'Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.'};
+    for (const input of inputs) unchanged(input);
+    if (sha(fs.readFileSync(executable.path)) !== executable.sha256) throw Error('Native binary bytes changed during execution');
+    unchanged(executable);
+    for (const id of usedAssetIds) {
+      const asset = graph.assets[id];
+      if (!asset || asset.missing) throw Error('Native output reports an invalid asset identity');
+      asset.sha256 = sha(fs.readFileSync(asset.path)); unchanged(asset);
+    }
+    // Source snapshots fix bytes used by Bend. Verify originals again before publication.
+    for (const input of [runtimeFile, ...graph.modules]) {
+      if (sha(fs.readFileSync(input.path)) !== input.sha256) throw Error(`Input bytes changed during native graph run: ${input.path}`);
+      unchanged(input);
+    }
     if (result.status === 0 && !result.error) {
       const emitted = inspect(temporaryOutput, 'emitted output');
       destination(target, inputs);
@@ -143,6 +147,13 @@ export function runNativeGraph({binary, manifest, runtime, output, mode = 'progr
       fs.renameSync(temporaryOutput, target); report.published = true;
     }
     report.wallMs = performance.now() - started;
+    return report;
+  } catch (error) {
+    if (!report) throw error;
+    report.nativePhase = report.phase;
+    report.phase = 'host'; report.error = error.message; report.publicationError = error.message;
+    report.published = false; report.wallMs = performance.now() - started;
+    try { const bytes = fs.readFileSync(temporaryOutput); report.unpublishedOutput = {bytes:bytes.length,sha256:sha(bytes)}; } catch {}
     return report;
   } finally { fs.rmSync(temporary, {recursive:true,force:true}); }
 }

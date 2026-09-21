@@ -283,7 +283,7 @@ def rapid_bundle_loaded(loaded, runtime, library):
   match loaded:
     case FResult{+book, +error, imports}:
       kc(RapidBundlePlan, Bool.not(String.eq(error, "")),
-        u => rapid_plan_error("parse", False{}, error),
+        u => rapid_plan_error(kc(String, String.eq(error, "module source was not supplied"), v => "load", v => "parse"), False{}, error),
         u => rapid_bundle_checked(book, runtime, library, check_book(book)))
 
 @unsafe

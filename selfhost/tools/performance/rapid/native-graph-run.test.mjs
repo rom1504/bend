@@ -27,13 +27,19 @@ try {
   write({assets:['foreign.js','foreign.js']});assert.throws(()=>loadNativeGraphManifest(manifest),/Duplicate/);checks++;
   write({version:2});assert.throws(()=>loadNativeGraphManifest(manifest),/version/);checks++;
   write({main:'main\0.bend'});assert.throws(()=>loadNativeGraphManifest(manifest),/Invalid/);checks++;
+  write({main:'\ud800.bend'});assert.throws(()=>loadNativeGraphManifest(manifest),/Invalid/);checks++;
   write();for(const file of [manifest,files.binary,files['main.bend'],files['base.bend'],files['runtime.mjs'],files['helper 🐈.bend'],files['foreign.js']]){assert.throws(()=>runNativeGraph({...config,output:file},{spawn:success}),/aliases/);checks++;}
   const hardlink=path.join(dir,'hardlink-output');fs.linkSync(files['foreign.js'],hardlink);assert.throws(()=>runNativeGraph({...config,output:hardlink},{spawn:success}),/aliases/);checks++;
   const symlink=path.join(dir,'symlink-output');fs.symlinkSync(output,symlink);assert.throws(()=>runNativeGraph({...config,output:symlink},{spawn:success}),/symbolic link/);checks++;
   fs.writeFileSync(output,'previous');const failed=runNativeGraph(config,{spawn:()=>({status:1,stderr:'phase=compile checked=True: missing asset\n'})});assert.equal(failed.checked,true);assert.equal(failed.phase,'compile');assert.equal(failed.published,false);assert.equal(fs.readFileSync(output,'utf8'),'previous');checks++;
   const timeout=runNativeGraph(config,{spawn:()=>({status:null,signal:'SIGTERM',error:new Error('timeout')})});assert.equal(timeout.published,false);assert.equal(fs.readFileSync(output,'utf8'),'previous');checks++;
-  assert.throws(()=>runNativeGraph(config,{spawn:(...args)=>{const result=success(...args);fs.appendFileSync(files['main.bend'],'changed');return result;}}),/Input changed/);assert.equal(fs.readFileSync(output,'utf8'),'previous');checks++;
-  assert.throws(()=>runNativeGraph(config,{spawn:(...args)=>{const result=success(...args);fs.appendFileSync(files['foreign.js'],'changed');return result;}}),/Input changed/);checks++;
+  const drift=runNativeGraph(config,{spawn:(...args)=>{const result=success(...args);fs.appendFileSync(files['main.bend'],'changed');return result;}});assert.match(drift.error,/Input changed/);assert.equal(drift.published,false);assert.equal(drift.phase,'host');assert.equal(drift.compileMs,1);assert.ok(drift.unpublishedOutput.sha256);assert.equal(fs.readFileSync(output,'utf8'),'previous');checks++;
+  assert.match(runNativeGraph(config,{spawn:(...args)=>{const result=success(...args);fs.appendFileSync(files['foreign.js'],'changed');return result;}}).error,/Input changed/);checks++;
+  const second=path.join(dir,'second-alias.bend');fs.symlinkSync(files['helper 🐈.bend'],second);
+  write({modules:[{name:'logical.bend',path:'helper 🐈.bend'},{name:'logical.bend',path:'second-alias.bend'}]});
+  assert.equal(loadNativeGraphManifest(manifest).moduleAliases.length,1);checks++;
+  assert.match(runNativeGraph(config,{spawn:(...args)=>{const result=success(...args);fs.unlinkSync(second);fs.symlinkSync(files['main.bend'],second);return result;}}).error,/Input changed/);checks++;
+  write({modules:[{name:'other.bend',path:'helper 🐈.bend'},{name:'helper 🐈.bend',path:'unused.bend'}]});assert.throws(()=>loadNativeGraphManifest(manifest),/logical\/physical identity collision/);checks++;
   assert.equal(fs.readdirSync(dir).some(name=>name.startsWith('.bend-native-graph-')),false);checks++;
   console.log(JSON.stringify({passed:true,checks}));
 } finally {fs.rmSync(dir,{recursive:true,force:true});}

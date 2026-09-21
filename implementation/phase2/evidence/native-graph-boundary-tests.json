@@ -1,0 +1,77 @@
+{
+  "kind": "native-graph-final-boundary-correctness",
+  "recorded": "2026-09-21T15:23:02.058136+00:00",
+  "scope": "Brief correctness reruns only; no performance measurements, no reserved CPU claim. Native transport rerun replaces the earlier bare 9-check stdout as final provenance evidence. Tool hashes recorded when archiving immediately after these unchanged tests.",
+  "checks": {
+    "boundary": {
+      "result": {
+        "passed": true,
+        "checks": 25
+      },
+      "sourceReport": {
+        "file": "selfhost/build/phase2/native-host/v2/boundary-test.json",
+        "sha256": "dd36151fb0706a1916a9d5eec439fa01514f8ee062e0aa377803d79e0ba88205",
+        "bytes": 28
+      },
+      "testTool": {
+        "file": "selfhost/tools/performance/rapid/native-graph-run.test.mjs",
+        "sha256": "93d110e008c38448813b6b24bc1bedaacc48b7f5e2b6c28a08f8d397f59f83a2"
+      },
+      "command": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-run.test.mjs"
+      ]
+    },
+    "javascriptTransport": {
+      "result": {
+        "passed": true,
+        "checks": 17
+      },
+      "sourceReport": {
+        "file": "selfhost/build/phase2/native-host/v2/wire-test.json",
+        "sha256": "4bf5a90de012336fa11432100683237f246b96462d8a18c4be57a2835d2d4042",
+        "bytes": 28
+      },
+      "testTool": {
+        "file": "selfhost/tools/performance/rapid/native-graph-wire.test.mjs",
+        "sha256": "7b92e926e3bc4a8683c89f73a60f007c005ac240ef92adab3f845ec260debbc8"
+      },
+      "command": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-wire.test.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/host-api/api.mjs"
+      ]
+    },
+    "nativeTransport": {
+      "result": {
+        "passed": true,
+        "checks": 9
+      },
+      "sourceReport": {
+        "file": "selfhost/build/phase2/native-host/v2/wire-native-archive-test.json",
+        "sha256": "a3fd36d99b934115e7b4b6d818867002b6de103c102732cce51858f602aedea7",
+        "bytes": 27
+      },
+      "testTool": {
+        "file": "selfhost/tools/performance/rapid/native-graph-wire-native.test.mjs",
+        "sha256": "b9db2b9521dadf9ba8bca6afcc5cd568183a8c8759ccf7f25cf16722ee3bde97"
+      },
+      "command": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-wire-native.test.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/build/program-o1",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/src/runtime.mjs"
+      ]
+    }
+  },
+  "consumedArtifacts": {
+    "selfhost/tools/performance/rapid/native-graph-run.mjs": "c1fb8cf866bdc88f12bf6ee3f0bb0f9ac1ed13365002c20dc9b1b167d0c90353",
+    "selfhost/build/phase2/native-host/v2/host-api/api.mjs": "1287fd06884b0956482e3e853ff81689377e93917296b9afc16db876e2e42ca6",
+    "selfhost/build/phase2/native-host/v2/host-api/workers.cjs": "793691af4ba56c6378a2cb565d5a52ff2a17e387b4db0847423f63a7cb93737d",
+    "selfhost/build/phase2/native-host/v2/host-api/exposure.json": "186a700616577664e8e08e0cb3f70ceb4de9b4dfb45590b230a0dfba71589c6c",
+    "selfhost/build/phase2/native-host/v2/build/program-o1": "eda3674db740cd5911ebcce934a6b5408424eb6c2502ad09035b352b57f100de",
+    "selfhost/build/phase2/native-host/v2/src/runtime.mjs": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+  }
+}

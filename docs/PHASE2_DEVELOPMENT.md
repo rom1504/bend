@@ -40,6 +40,8 @@ Use a new report path for each attempt. This command compares 21 invalid/valid
 control cases with live pinned TypeScript APIs. It checks acceptance and rejection
 phase, not exact diagnostic formatting or the entire language. The recorded
 phase 2 run took about nine seconds with a reused API and warm Base cache.
+A later complete checked rebuild plus this matrix, starting without a candidate
+Base cache, took 40.5 seconds; see the report for its exact artifacts and scope.
 
 The separate 25-case grammar matrix uses the isolated paired harness:
 

@@ -1,0 +1,548 @@
+{
+  "kind": "native-graph-v2-build-provenance",
+  "sourceReports": {
+    "preparation": {
+      "file": "selfhost/build/phase2/native-host/v2/preparation.json",
+      "sha256": "86cdb9514521cc9ec2ac01b44784c22bc2a5984144d783b5d41d6a52b5e800d5",
+      "bytes": 9261
+    },
+    "checkedBuild": {
+      "file": "selfhost/build/phase2/native-host/v2/build/native-build-report.json",
+      "sha256": "4d460699a1dc5cc8fa3d01cbac3c8ca3a09fb590d40d3df800bcacc45f25a9b6",
+      "bytes": 2041
+    },
+    "cBuild": {
+      "file": "selfhost/build/phase2/native-host/v2/build/program-o1.build.json",
+      "sha256": "3cf05d4030f9232c80bcfab57c1ed25e6a439994996c8287286400e42fe1f7cd",
+      "bytes": 1200
+    },
+    "exposure": {
+      "file": "selfhost/build/phase2/native-host/v2/host-api/exposure.json",
+      "sha256": "186a700616577664e8e08e0cb3f70ceb4de9b4dfb45590b230a0dfba71589c6c",
+      "bytes": 849
+    },
+    "moduleParity": {
+      "file": "selfhost/build/phase2/native-host/v2/module-parity.json",
+      "sha256": "8dbfe96b2e83ad634a9ec1a68029b2ceae8d1edfd9354948e047860b7ce87c71",
+      "bytes": 218
+    }
+  },
+  "preparation": {
+    "kind": "experimental-native-graph-snapshot",
+    "preparedAt": "2026-09-21T14:57:12.240Z",
+    "sourceRoot": "/home/ai/bend2/build/publish/bend/selfhost",
+    "manifestSha256": "08c4c055006c8564139a88b793aadfe1dc0b6d100b4c3f2b26ccf8005f8d65c7",
+    "modules": [
+      {
+        "file": "src/core/term.bend",
+        "sha256": "47f112aa7cfaabacb36df33fb4207c423b15b75e3111f8272d0c6a1836f7df6a"
+      },
+      {
+        "file": "src/core/index.bend",
+        "sha256": "b2c87691a850dccddb230309cd34f2ad71ec1f339bc4affa2c46fde36547376c"
+      },
+      {
+        "file": "src/core/normalize.bend",
+        "sha256": "ae09f471bbf06633b9f308f9451835f7863a5c03535e8a6cf5ce6b31dbf0048d"
+      },
+      {
+        "file": "src/core/graph.bend",
+        "sha256": "7d5e75fce5d473fe2c63a4ccbd3e115db29bf42bb037fa9238d5427fce62a790"
+      },
+      {
+        "file": "src/core/reach.bend",
+        "sha256": "c7c1e1ff68ad798f3888d770ee5a02b1b73abbecd58cd2df9b81619428abb2cf"
+      },
+      {
+        "file": "src/core/pretty.bend",
+        "sha256": "9b7ffdca8ba9593b48167aea4f26abd8ac2802a2cca474b67dbf0cbebfca6def"
+      },
+      {
+        "file": "src/check/quantity.bend",
+        "sha256": "e6c7a06fd45cb132d9d5d1704a6f01f81325505eed2ff5d6025e118ff4522e8a"
+      },
+      {
+        "file": "src/check/kernel.bend",
+        "sha256": "b1b50c073b2530a14c8a674d473f1c906ce2d56425b6eb487dc0f0bdc642c963"
+      },
+      {
+        "file": "src/check/specialize.bend",
+        "sha256": "dd5371288c7083753dfe5944cff7b7a53ca8cf2ad1f64a152abf842421db60be"
+      },
+      {
+        "file": "src/check/prefix.bend",
+        "sha256": "35af4b272cfe893d60d4aca6433617273a1c52bb8ae4d8eeabfa0541354816cb"
+      },
+      {
+        "file": "src/check/annotate.bend",
+        "sha256": "7b80a62839afb8cd8af547fc0c01b56ee653c49ab247b265fb4dc93e428150ab"
+      },
+      {
+        "file": "src/front/lexer.bend",
+        "sha256": "08d47f5cb429c76df3c62f9582fa8a8c6423828b021f4b3f2373512d5f7bbdce"
+      },
+      {
+        "file": "src/front/parser.bend",
+        "sha256": "4b0aed286a08ba163c44ea05857f3fa4a9c48b625de7407c2cbe35bb03e4156d"
+      },
+      {
+        "file": "src/front/declarations.bend",
+        "sha256": "90d21f6d6930fc34d50e8bafb130be28ea71b2fbf87b4d9306d4a30b6c8c3e79"
+      },
+      {
+        "file": "src/front/flatten.bend",
+        "sha256": "463d88f1c7de9828e1826d201f8b8de249f99e1d0bb64ae9768ba64d1f75af1e"
+      },
+      {
+        "file": "src/front/elaborate.bend",
+        "sha256": "c000cb747814e48831f98f06c5d40ae7f3d0b88238264164b593749c521e245b"
+      },
+      {
+        "file": "src/front/sugar.bend",
+        "sha256": "d7535f1edfc3342e5b934ffd92c574a7d400d60fd5bcc751061d622ad081e59d"
+      },
+      {
+        "file": "src/front/unicode.bend",
+        "sha256": "ab9f2596af9af28bc3698d9cc101cdfd8565be2008d89322b2290cb2887862b6"
+      },
+      {
+        "file": "src/front/literals_arrays.bend",
+        "sha256": "17d745951eedcb4639548609f84d89fd223efb12f6873fa9a0465acf08fa9600"
+      },
+      {
+        "file": "src/front/parallel.bend",
+        "sha256": "0d87ff167c85f67e1f60f397353158f6cf9d6a09180bc4d86db07d0e78ee46d9"
+      },
+      {
+        "file": "src/front/fresh_work.bend",
+        "sha256": "b84c60ecf96f3c50403c7fee86d9949a3bcacb4cab529f5a94cb64e920c6db53"
+      },
+      {
+        "file": "src/front/freshen.bend",
+        "sha256": "7b054636ae2cc593307d4ba8fea19bfd7e03363a6eb90e154abdd6ae50ba4d57"
+      },
+      {
+        "file": "src/load/paths.bend",
+        "sha256": "56d3ac6b7bf63db2ffd1c26521fb528f56b9469c78203d01296a93fc3812d38c"
+      },
+      {
+        "file": "src/front/families.bend",
+        "sha256": "9427f28c1508e2c5361521aa5f277c5992fb2c973df18268394bdd822cdf637e"
+      },
+      {
+        "file": "src/front/validate.bend",
+        "sha256": "2d78e04a956c20c72a9381c665974a164dde3732c6b4739a69c1e2ac9d8ffa07"
+      },
+      {
+        "file": "src/load/imports.bend",
+        "sha256": "330a5d91abc35838086247abebac698e8832b7b03faa245f351d8d6b20ba16ae"
+      },
+      {
+        "file": "src/load/graph.bend",
+        "sha256": "2fbe21beb5c3178cc29cf29cd5fad7a8a9c952aa4e4018d577a71c86ac3da0f4"
+      },
+      {
+        "file": "src/load/seed.bend",
+        "sha256": "6411c5ae171eb7fca23628a1bd50e92ef3d6c6e2751e32fb83008f16b1e9587e"
+      },
+      {
+        "file": "src/load/modules.bend",
+        "sha256": "0ad8128a5f8b0e11d49449362d1fad594b3a9382b0b8feb4ae57bcd0359ae0d9"
+      },
+      {
+        "file": "src/diagnostic/model.bend",
+        "sha256": "dd69096c6fdcd682a45e9536eb6d475061fd285807961ac95a16b5a874358af5"
+      },
+      {
+        "file": "src/diagnostic/render.bend",
+        "sha256": "201867dba57eb715308026a3dcd36d1a61b0b51ea27c69c6ba00a3c935aedfe9"
+      },
+      {
+        "file": "src/diagnostic/trace.bend",
+        "sha256": "2f96bedcda46ead991754a9e627f984dc564a896e7a5f77fa08b0d3c029c431c"
+      },
+      {
+        "file": "src/diagnostic/produce.bend",
+        "sha256": "cffa6006781d453fc840b1d40107147a2b62714d10927c5ae3884891234c088a"
+      },
+      {
+        "file": "src/diagnostic/frontend.bend",
+        "sha256": "debfe6d4e6cea7e28f58c15c2ae82785118bc274f637b6e33a7646c4539311cd"
+      },
+      {
+        "file": "src/back/js/foreign.bend",
+        "sha256": "4b6d09ed9cdb914b5531b763bd65523121324bee554a8e5082c4887e728f085d"
+      },
+      {
+        "file": "src/back/js/literals.bend",
+        "sha256": "861525baf8fe999e3086a7ce1cd758e488235e23522dc97bdd8ee7694bb32ae7"
+      },
+      {
+        "file": "src/back/js/validate.bend",
+        "sha256": "917470e39b4d34c26a4f119f1b7acfca7a51926aba76a73d8397b103debca338"
+      },
+      {
+        "file": "src/back/js/choice.bend",
+        "sha256": "2b3ac6cd46a638063d793a1f40eef6f226b1602191cf345e958023a29e2b66c9"
+      },
+      {
+        "file": "src/back/js/projection.bend",
+        "sha256": "d1e327782e64ae05b05ce606350f20c61392c26255c0afefa2fff9f2c0ed1250"
+      },
+      {
+        "file": "src/back/js/emit.bend",
+        "sha256": "7bf4f547540fc148feea196efd76c2f9a5234b27a33b7d8ac794a04ff5816d78"
+      },
+      {
+        "file": "src/back/native/ir.bend",
+        "sha256": "2014202ac84403ce7720970870693f6f566cf81aea7ad44d69cf44ae65909f41"
+      },
+      {
+        "file": "src/back/native/text.bend",
+        "sha256": "053f8a05ced5c13f7face492da1d16cbdbfdfd90f356c4a5d8f0bbb5d83ef5f7"
+      },
+      {
+        "file": "src/back/native/identity.bend",
+        "sha256": "79794a586a0c2f043c9bd417b97fe2092863eb3a8524250d6b49f0b77dc1810d"
+      },
+      {
+        "file": "src/back/native/layout.bend",
+        "sha256": "3470eca359bdee3add2e8672bd8456c2a9533231a861854b5257e8a22df291da"
+      },
+      {
+        "file": "src/back/native/intrinsic.bend",
+        "sha256": "8acf8c4e083b55cc33ef323552963b254ac310c22e7d8b5e3b82253776892ab0"
+      },
+      {
+        "file": "src/back/native/tables.bend",
+        "sha256": "26457cbe409162e70805b3ff0ec91946811b219f71bb2d45982663c3299daf54"
+      },
+      {
+        "file": "src/back/native/emit.bend",
+        "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a"
+      },
+      {
+        "file": "src/back/native/erase.bend",
+        "sha256": "db21d12efc46060fd21f0917f5100fc525f967d72aac6bb1ca84455f7eec7795"
+      },
+      {
+        "file": "src/back/native/bridge.bend",
+        "sha256": "88431cf52f0c9ac1b3b1c93aa4a54225ca201d0b8021283f98ba09c2aadc1c74"
+      },
+      {
+        "file": "src/back/native/direct.bend",
+        "sha256": "75c5d560b8390263d18c991da8410191a0c5909b4ae0e8ebae193c0d9fd02de5"
+      },
+      {
+        "file": "src/back/native/pattern.bend",
+        "sha256": "5c624607c7ad2e19660efeddf694d841d7b4d867b1a3870795f9847daca7d155"
+      },
+      {
+        "file": "src/back/native/show.bend",
+        "sha256": "6f662583a276295312217ad99b777cf96988c21ffa7beca3178c043d4b040780"
+      },
+      {
+        "file": "src/back/native/parallel.bend",
+        "sha256": "85326099c65dbd478574e480e13492f1d3973625c3c9aa50e286f7f4a38ff722"
+      },
+      {
+        "file": "src/back/native/array.bend",
+        "sha256": "4e1d5c9d282ba746ac1e98df470411d477bf1449b5621c3ad413f01e883d9149"
+      },
+      {
+        "file": "src/back/native/validate.bend",
+        "sha256": "9684fcb9bb25ff0e822ac11b738a319c1353ed721c6c4d864ed984cde0bfd089"
+      },
+      {
+        "file": "src/back/native/foreign.bend",
+        "sha256": "fa71a99ac100dc31a8d6246132fb717f2d8c69f6a7cae71a48a2b960d2c89d61"
+      },
+      {
+        "file": "src/back/native/book.bend",
+        "sha256": "1e5e8f7bde0ab8b4eae2408f83882d59a3e1bce27f4955ba02ad1e8479da9e15"
+      },
+      {
+        "file": "src/driver/report.bend",
+        "sha256": "461d05ad6f7647feafd13520fd5da0c9635eee976d58bea6c7d336b862831ba2"
+      },
+      {
+        "file": "src/driver/api.bend",
+        "sha256": "c4aff96313ecc8a2bcc236116af18d88ca0087b7f1230cf7c8bb62c30d5e00e7"
+      }
+    ],
+    "driver": {
+      "file": "src/driver/native-bundle.bend",
+      "sha256": "f70db562f40cbc3cf8578912543f1b48afec3f80314d300f7fd7e5758b4536f2"
+    },
+    "graph": {
+      "file": "src/driver/native-graph.bend",
+      "sha256": "aef54031c7dc95b57ce28921186098dbbaa65df394979c4a975d3ef6badeea7d"
+    },
+    "runtime": {
+      "file": "src/runtime.mjs",
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    },
+    "assembly": {
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/compiler.bend",
+      "files": 61,
+      "declarations": 2810,
+      "bytes": 602117,
+      "sha256": "471d43094c2d01b0bdb84908666201f7180ff760932b66910a0d1b49d71e8e19"
+    },
+    "toolSha256": "6d4c5183247ace19d183b368abdd7160cc39a4b0154cc7ed2443371ac92f6da9",
+    "scope": "Actual compiler modules plus explicit graph and main-plus-Base native IO entries"
+  },
+  "checkedBuild": {
+    "kind": "checked-native-component-build",
+    "started": "2026-09-21T14:57:12.415Z",
+    "complete": true,
+    "node": "v24.18.0",
+    "nodeExecutable": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "cpu": 3,
+    "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/compiler.bend",
+    "sourceSha256": "471d43094c2d01b0bdb84908666201f7180ff760932b66910a0d1b49d71e8e19",
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+    "options": [
+      "--js",
+      "--cpu=3"
+    ],
+    "phases": [
+      {
+        "name": "load",
+        "milliseconds": 2800.0869940000002
+      },
+      {
+        "name": "check-and-owned",
+        "milliseconds": 5646.847333999999
+      },
+      {
+        "name": "javascript-emission",
+        "milliseconds": 4465.339534999999
+      },
+      {
+        "name": "c-emission",
+        "milliseconds": 31990.27053
+      }
+    ],
+    "toolSha256": "ddb7851385328903cf4c9adcb58356dfe54cba84dc098b1de0f4dfb80da9be56",
+    "scope": "Native experiment build, not compiler self-hosting or full language conformance",
+    "upstreamTrackedFilesClean": true,
+    "upstreamFiles": [
+      {
+        "file": "bend2/bend.ts",
+        "sha256": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168"
+      },
+      {
+        "file": "bend2/comp.ts",
+        "sha256": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0"
+      },
+      {
+        "file": "bend2/base.bend",
+        "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+      }
+    ],
+    "javascript": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/build/program.cjs",
+      "sha256": "95cab28761a946be6eee0f01a144fb9b6c466135bf037865b4343fc4264be0e9"
+    },
+    "c": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/build/program.c",
+      "sha256": "cbc79524c30c73b5ceaf6f2f048e780cb14ef2ada3b35e661ccf6cd4b1bda909",
+      "bytes": 5953353
+    },
+    "maxNodeRssKiB": 3297080,
+    "finished": "2026-09-21T14:57:58.849Z"
+  },
+  "cBuild": {
+    "kind": "native-c-only-build",
+    "started": "2026-09-21T14:58:44.279Z",
+    "complete": true,
+    "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/build/program.c",
+    "sourceSha256": "cbc79524c30c73b5ceaf6f2f048e780cb14ef2ada3b35e661ccf6cd4b1bda909",
+    "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/build/program-o1",
+    "compiler": {
+      "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+      "version": 16,
+      "apple": false
+    },
+    "args": [
+      "-std=c11",
+      "-O1",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/build/program.c",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/build/program-o1"
+    ],
+    "optimization": "O1",
+    "timeoutMs": 180000,
+    "cpu": 3,
+    "scope": "C compilation only; Bend checker/emission provenance must accompany this report",
+    "milliseconds": 163941.682657,
+    "exitCode": 0,
+    "signal": null,
+    "stdout": "",
+    "stderr": "",
+    "finished": "2026-09-21T15:01:28.243Z",
+    "binarySha256": "eda3674db740cd5911ebcce934a6b5408424eb6c2502ad09035b352b57f100de"
+  },
+  "exposure": {
+    "kind": "checked-native-program-js-worker-exposure",
+    "toolSha256": "441ce6d5798b1903f65ad398b251d81c495aa447f2fe545647e4a8a9b0669bfa",
+    "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/build/native-build-report.json",
+    "checkedProgramSha256": "95cab28761a946be6eee0f01a144fb9b6c466135bf037865b4343fc4264be0e9",
+    "sourceSha256": "471d43094c2d01b0bdb84908666201f7180ff760932b66910a0d1b49d71e8e19",
+    "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/host-api/api.mjs",
+    "apiSha256": "1287fd06884b0956482e3e853ff81689377e93917296b9afc16db876e2e42ca6",
+    "workers": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/host-api/workers.cjs",
+    "workersSha256": "793691af4ba56c6378a2cb565d5a52ff2a17e387b4db0847423f63a7cb93737d",
+    "exportedWorkers": 1038
+  },
+  "moduleParity": {
+    "equal": true,
+    "modules": 59,
+    "cachedApiSha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+    "cachedSourceSha256": "266933eb2ee6aa0d406a48b19f5bbe0250c6685e9f5f2d9fe276bc38bac31784"
+  },
+  "successfulPhaseWorkMs": 208844.22705,
+  "limitations": [
+    "Successful checking/emission/C-build phase sum is not an end-to-end edit/build timing and excludes earlier failed attempts.",
+    "C-build report records compiler path/version/flags and C/binary hashes, but did not hash the compiler executable, linked libraries or all consumed build tools before/after that historical build. Archive-time inventory is supplemental, not retroactive drift verification."
+  ],
+  "archiveTimeBuildToolInventory": {
+    "tools/performance/rapid/native-bundle-prepare.mjs": "6d4c5183247ace19d183b368abdd7160cc39a4b0154cc7ed2443371ac92f6da9",
+    "tools/performance/rapid/native-component.mjs": "ddb7851385328903cf4c9adcb58356dfe54cba84dc098b1de0f4dfb80da9be56",
+    "tools/performance/rapid/native-compile-c.mjs": "9dc0e0a4f680107842f5a7984d47a4e875a2725093a101453fbffd749fc4e447",
+    "tools/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+    "tools/assemble.mjs": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+  },
+  "archiveTimeCompilerInventory": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+    "sha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2"
+  },
+  "earlierGraphBuildAttempts": [
+    {
+      "attempt": "attempt1",
+      "sourceReport": {
+        "file": "selfhost/build/phase2/native-host/attempt1/build/native-build-report.json",
+        "sha256": "00bb1f9b93b25c05f99d117bf761dd0798e8f0324bd711f4cd8e63a1e8d56bd4",
+        "bytes": 1571
+      },
+      "complete": false,
+      "sourceSha256": "88bcf27d3150a252b7f2754c328871b7d108af8c603b85b934b74dbae6d2da4c",
+      "phase": "load",
+      "error": "Error:\n- message  : a match on a parameter or field (this name is a def or a consumed binder: give the value its own def)\nLocation:\n18477 |     u => rapid_graph_bad(),\n18478>|     u => match fields:\n18479 |       case Con{tag, Nil{}}:",
+      "phases": []
+    },
+    {
+      "attempt": "attempt2",
+      "sourceReport": {
+        "file": "selfhost/build/phase2/native-host/attempt2/build/native-build-report.json",
+        "sha256": "7d18d2b5ab66221285b3b9bb634a49c16cc2bfe01aab3a550c0ac0305f90c531",
+        "bytes": 1684
+      },
+      "complete": false,
+      "sourceSha256": "7672cbbc5d9ae79a69b77d9fee244c9496116345ba9a5d51697f89a3b95b0a37",
+      "phase": "load",
+      "error": "Error:\n- expected : a term (a match heads a def body, not a term)\n- observed : ' '\nLocation:\n18609 |     Unit <- File.close(file)\n18610>|     IO.pure(RapidGraphRead, match result:\n18611 |       case Done{tail}: kc(RapidGraphRead, String.eq(tail, \"\"), u => RapidGraphRead{text, \"\"}, u => RapidGraphRead{\"\", \"file was not completely read\"})",
+      "phases": []
+    },
+    {
+      "attempt": "attempt3",
+      "sourceReport": {
+        "file": "selfhost/build/phase2/native-host/attempt3/build/native-build-report.json",
+        "sha256": "55981c47d56545ed6fb4bb45f36f94f04d49008846f61a683b7716f11390d3b2",
+        "bytes": 1736
+      },
+      "complete": false,
+      "sourceSha256": "cd27ce760d94e5e09434a3aaeac20ff97bbccc8dbe34425d533ec65debcf188c",
+      "phase": "check-and-owned",
+      "error": "Error:\n- expected : count\n- observed : count (consumed more than once)\nContext:\n- c      : Char\n- rest   : String\n- word   : String\n- fields : List<&2, String>\n- width  : U32\nLocation: rapid_graph_wire\n18538 | @unsafe\n18539>| def rapid_graph_wire(text, word, fields, width, count):\n18540 |   match text:",
+      "phases": [
+        {
+          "name": "load",
+          "milliseconds": 952.9426919999999
+        }
+      ]
+    },
+    {
+      "attempt": "attempt4",
+      "sourceReport": {
+        "file": "selfhost/build/phase2/native-host/attempt4/build/native-build-report.json",
+        "sha256": "df20fd57b5373695230f2555743fee7328abe4faee017eb600d39e26584c624a",
+        "bytes": 1619
+      },
+      "complete": false,
+      "sourceSha256": "075965ec2f863fd7c5231f675fc6a9194405728fa9c678bd4d381352c7b891be",
+      "phase": "check-and-owned",
+      "error": "Error:\n- expected : file\n- observed : file (consumed more than once)\nLocation: rapid_graph_read_sized\n18634 | def rapid_graph_read_sized(pair):\n18635>|   (file, result) = pair\n18636 |   match result:",
+      "phases": [
+        {
+          "name": "load",
+          "milliseconds": 906.938461
+        }
+      ]
+    },
+    {
+      "attempt": "attempt5",
+      "sourceReport": {
+        "file": "selfhost/build/phase2/native-host/attempt5/build/native-build-report.json",
+        "sha256": "e2e13e5067c3d8d9b2554f5035264d098766ec8c17307cf1c0684da538584152",
+        "bytes": 2046
+      },
+      "complete": true,
+      "sourceSha256": "d524210266627f914ad3ace8d5600fd4fc7163f9647aba2d81bf204523133ea8",
+      "phase": null,
+      "error": null,
+      "phases": [
+        {
+          "name": "load",
+          "milliseconds": 974.745648
+        },
+        {
+          "name": "check-and-owned",
+          "milliseconds": 2772.12511
+        },
+        {
+          "name": "javascript-emission",
+          "milliseconds": 2553.0857739999997
+        },
+        {
+          "name": "c-emission",
+          "milliseconds": 18851.838525
+        }
+      ]
+    },
+    {
+      "attempt": "attempt6",
+      "sourceReport": {
+        "file": "selfhost/build/phase2/native-host/attempt6/build/native-build-report.json",
+        "sha256": "97da367e56c4f2603eb24203cd415810cd33c5945f636dd6569e595c338fc2cd",
+        "bytes": 2048
+      },
+      "complete": true,
+      "sourceSha256": "4d3af2aa0db9c04fb3f05b3e67715f2078d57bfeeaaadfcc2b6e2cb9572d7bbb",
+      "phase": null,
+      "error": null,
+      "phases": [
+        {
+          "name": "load",
+          "milliseconds": 1224.638558
+        },
+        {
+          "name": "check-and-owned",
+          "milliseconds": 3409.5230810000003
+        },
+        {
+          "name": "javascript-emission",
+          "milliseconds": 2898.668511
+        },
+        {
+          "name": "c-emission",
+          "milliseconds": 23176.535252
+        }
+      ]
+    }
+  ]
+}

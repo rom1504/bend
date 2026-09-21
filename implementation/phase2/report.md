@@ -210,10 +210,10 @@ workload and pass execution; compiler modules match across variants and all
 recorded inputs/tools remain unchanged. CPU 3 is pinned for these samples, on a
 shared host, so these medians are local observations rather than universal ratios.
 
-| Workload | Native graph | Uncached JS | Validated-cache JS |
-| --- | ---: | ---: | ---: |
-| Tree | 1.927 s | 6.718 s | 1.851 s |
-| Imported foreign code | 1.892 s | 6.604 s | 1.591 s |
+| Workload | Native graph | Uncached JS | Validated-cache JS | Pinned TypeScript |
+| --- | ---: | ---: | ---: | ---: |
+| Tree | 1.927 s | 6.718 s | 1.851 s | 0.737 s |
+| Imported foreign code | 1.892 s | 6.604 s | 1.591 s | 0.713 s |
 
 These are whole fresh-process compilation times, including startup and host
 work. The native executable's successful checking/emission/C-build phases cost
@@ -225,8 +225,11 @@ of an existing cache, not the cost of creating one after a changed compiler.
 
 This supports the phase 2 priority: use a checked bootstrap and validated Base
 reuse for focused semantic work, and schedule larger native/self-hosting proofs
-separately. The live pinned TypeScript measurements and larger compiler workload
-are recorded separately when complete.
+separately. Six subsequent [live pinned TypeScript samples](evidence/native-graph-v2-upstream-latency.json)
+use the same physical inputs, CPU and Node configuration; they are not an
+interleaved four-way experiment. Cached JS is 2.23–2.51× the TypeScript process
+time on these two small workloads. That ratio is not a replacement measurement
+for the earlier full self-compilation workload.
 
 ## Self-emission and comparison provenance
 
@@ -275,3 +278,43 @@ and after emission. Drift prevents publishing the staged API. Three temporary
 Git-repository tests cover clean capture, dirty upstream and input/canonical
 identity drift. Earlier reports are not retroactively given this provenance; a
 fresh final-source rebuild will establish the strengthened evidence separately.
+
+## Measured complete edit loop
+
+A [fresh build plus focused comparison](evidence/edit-loop-cold.json) completed
+in **40.467 seconds** on CPU 1. This includes a fully checked upstream bootstrap
+and all 21 live differential witnesses, starting with no validated Base cache
+for the candidate's private, byte-identical Base copy. The matrix then creates
+and reuses that cache within its process. Its reference uses the canonical
+pinned Base; this measures acceptance/phase checks, not output-byte identity
+across relocated Base paths. The report records that distinction, exact commands,
+input hashes and the newly created cache. The host is shared, so the timing is
+an observation, not a service-level guarantee.
+
+The [strengthened bootstrap report](evidence/frontend-v2-provenance-bootstrap.json)
+verifies clean pinned upstream and unchanged consumed inputs before and after
+emission. Its API is byte-identical to final candidate `794cbf5f…` and its source
+remains `266933eb…`. This supplies the stronger build evidence without pretending
+that earlier bootstrap reports contained fields they did not record.
+
+The [interim v1 self-host chain](evidence/fixedpoint-v1.json) also finished: checked
+stage 2 took 751.804 seconds and checked stage 3 took 2,237.051 seconds; both
+produced SHA `817d21ce10df10ff8a314100845bc08f162dae266b7b6ee0aaee156113927d80`.
+This uses the first grammar revision and the older proof runner. It is separate
+from the final revision's proof and its strengthened Base/helper provenance.
+
+## Final native host evidence
+
+The [native implementation report](native-host.md) records the complete manifest
+boundary, measured build and compilation costs, retained failed attempts and
+provenance limitations. The final matrix passes 23/23 declared graph cases, with
+a separate non-BMP source case passing exact output and execution. Boundary
+tests pass 25/25, emitted-JS transport tests 17/17, and malformed-input checks
+against the actual native executable 9/9. The explicit omitted-asset scope case
+is retained as an expected difference from automatic filesystem discovery.
+
+The final native compiler also checked and emitted the entire frozen compiler
+source in 311.544 seconds. Its JS output hash is
+`0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3`;
+byte comparison with the final JS stage and self-reproduction are separate gates.
+This establishes neither a native-output fixed point nor full backend conformance.

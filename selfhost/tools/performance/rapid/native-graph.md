@@ -62,7 +62,8 @@ This prints `42`. Use `library` for the compiler's existing library export polic
 All JSON paths resolve relative to the manifest file. `main` and `base` are added
 automatically; `modules` supplies the remaining available sources. Entries may be
 path strings or `{ "name": "logical/path", "path": "physical/file" }` records.
-Logical module names become absolute lexical paths. Physical paths are resolved
+Logical module names become absolute lexical paths. Ambiguous mappings where one
+module logical name collides with a different module physical identity reject. Physical paths are resolved
 with `realpath`; Bend uses them for canonical identity and source-relative imports.
 The reserved Base mapping is supplied only through `base`.
 
@@ -99,7 +100,10 @@ boundary, distinct from the JS host's discovery of an absent filesystem module.
 The wrapper rejects output aliases to the binary, runtime, manifest, any module
 or asset, including symlinks and hardlinks. It publishes a private temporary
 output by rename only after successful compilation and input-drift checks.
-Timeouts, rejection and failed writes preserve an existing destination. The direct
+Timeouts, rejection and failed writes preserve an existing destination. A post-run
+drift or publication failure retains native status/timing and, when available, an
+explicitly unpublished output hash in its JSON report; it is not a successful
+compilation publication. The direct
 binary CLI is internal; use the wrapper for this publication boundary.
 
 The JSON result records identities and hashes, selected asset IDs, error phase,
@@ -125,7 +129,9 @@ node --stack-size=4096 tools/performance/rapid/native-graph-wire.test.mjs \
 The API exposure tool replaces only the checked program's process entry with
 exports wrapped by its existing `run_lib` ABI. It leaves compiler workers intact,
 allowing the existing JavaScript host to exercise exactly the same Bend source.
-Its source/program/export hashes accompany differential evidence.
+Its source/program/export hashes accompany differential evidence. The validator
+also checks the native C-build identity and hashes the consumed host tools, Node
+executable and exposed workers before and after the run.
 
 Create a validation configuration with `binary`, `api`, `base`, `runtime`, `cpu`
 and optional `timeoutMs`; paths resolve relative to that configuration. `api`
@@ -142,3 +148,23 @@ and execution. It retains failures and explicit scope differences. These focused
 results do not assert whole-language conformance. The conformance harness's
 `native-graph` adapter requires per-fixture manifests and reports unsupported
 lanes instead of falling back to JavaScript compiler execution.
+
+## Compare the actual development loop
+
+`native-graph-measure.mjs CONFIG.json NEW_OUTPUT_DIRECTORY` measures alternating
+fresh-process native, uncached same-source JS, and ordinary checked JS with its
+validated Base cache. Supply `binary`, exposed `api`, ordinary `cachedApi`, `base`,
+`runtime`, `cpu`, `repetitions` (normally 3), and
+`workloads: [{id,input,manifest,stdout}]`. Paths resolve relative to the configuration.
+The report separates initial cache preparation, successful native build-phase
+work, compiler time and full child-process wall time. It checks output bytes and
+execution for every sample. Cached JS is a separate policy and must be included
+before recommending native for batches; an uncached-only speedup does not establish
+that the native path improves the normal cached development loop.
+
+`native-graph-upstream-measure.mjs LATENCY_REPORT.json PINNED_UPSTREAM NEW_OUTPUT_DIRECTORY`
+adds live TypeScript samples using the same physical inputs, CPU, Node flags and
+fresh-process policy. It requires the checked native build's clean upstream pin,
+checks the full upstream pipeline, and compares execution with the prior samples.
+These are subsequent samples rather than an interleaved four-way experiment;
+the report preserves that distinction. Upstream has no persistent Base cache.

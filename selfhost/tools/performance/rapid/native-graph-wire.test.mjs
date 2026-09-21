@@ -10,6 +10,7 @@ for(const fields of [[],['BEND_GRAPH_2','/main','E'],['BEND_GRAPH_1','relative',
 assert.notEqual(api.rapid_graph_parse(wire(valid).slice(0,-1)).error,'');checks++;
 assert.notEqual(api.rapid_graph_parse(wire(['BEND_GRAPH_1','/'+ 'x'.repeat(8193),'E'])).error,'');checks++;
 const many=['BEND_GRAPH_1','/main'];for(let i=0;i<4097;i++)many.push('A','/asset'+i,'/physical');many.push('E');assert.notEqual(api.rapid_graph_parse(wire(many)).error,'');checks++;
+const maximum=['BEND_GRAPH_1','/main'];for(let i=0;i<4096;i++)maximum.push('S','/module'+i,'/physical'+i,'/snapshot'+i);maximum.push('E');assert.equal(api.rapid_graph_parse(wire(maximum)).error,'');checks++;
 const escaped=['BEND_GRAPH_1','/tmp/"\\\n猫.bend','S','/tmp/"\\\n猫.bend','/tmp/"\\\n猫.bend','/snapshot/0','E'];assert.equal(api.rapid_graph_parse(wire(escaped)).error,'');checks++;
 const nil={$:'Nil'},list=items=>items.reduceRight((tail,head)=>({$:'Con',head,tail}),nil),term=(tag,name,id,kids=[])=>({$:'KTerm',tag,name,id,quant:0,kids:list(kids),removed:nil});
 const assets=list([term('Asset','/A',0,[term('Ref','/B',0)]),term('Asset','/B',1,[term('Ref','/C',0)])]);

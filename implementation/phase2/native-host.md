@@ -139,9 +139,47 @@ successful checked library emission under a 600-second limit:
 - JavaScript output: **1,117,775 bytes**; syntax check passed.
 - Output SHA: `0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3`.
 
-The JavaScript stage2 byte comparison is pending in this record. This program is
-a native execution host for the compiler that emits JavaScript. It does not
-demonstrate a native compiler fixed point or arbitrary native-output conformance.
+The [independent JavaScript stage2 comparison](evidence/native-js-fullsource-equality.json)
+now confirms **identical bytes** for the same source and canonical Base path.
+Checked B1 emitted stage2 in 784.367 s. The subsequent stage3 self-reproduction is
+a separate milestone. This native program is an execution host for the compiler
+that emits JavaScript; it does not demonstrate a native compiler fixed point or
+arbitrary native-output conformance.
+
+A subsequent [pinned TypeScript full-source sample](evidence/native-fullsource-upstream.json)
+compiled the same source with exactly the same canonical immutable Base path in
+**49.242 s**, or **49.738 s** process wall. Loading took 2.038 s, full checking and
+ownership took 5.368 s, and library emission took 41.830 s. The unchanged pinned
+`bend.ts` and `comp.ts` files ran from a private snapshot whose `base.bend` symlink
+resolved to the proof's frozen Base. Their bytes, Base and effect files, tool,
+Node and output hashes were retained and verified unchanged.
+
+This sample used the structural counterpart of `j_library_roots`, including
+**1,466 roots**, of which **40 were Base foreign definitions**. Using the ordinary
+bootstrap's narrower export list would have measured different work. All roots
+were present in the native-produced API; the TypeScript library's export list,
+syntax and ASCII helper execution passed. Its 1,180,983 output bytes have a
+different emitter/runtime representation, so byte equality with the port is not
+required.
+
+The [export-contract supplement](evidence/native-fullsource-root-supplement.json)
+clarifies that this historical check established root inclusion, not equality of
+the two default API export sets. Native exports **1,748** entries: its 1,466
+selected library roots plus **282** runtime globals and reachable Base helpers.
+TypeScript exports only the explicitly selected 1,466 roots. No TypeScript root
+was missing. The supplement preserves the complete extra set and an exact copy
+of the original consumed tool matching its recorded hash. The revised runner
+separately checks exact root selection by applying the actual Bend
+`j_library_roots` to the checked upstream metadata fields it reads, outside the
+compile timer; it records broader native API exports as a distinct contract.
+
+Native compile time is **6.33×** this TypeScript observation, and process wall is
+**6.27×**. This is one later CPU1 sample compared with the native CPU3 run, not a
+same-core interleaved benchmark or a median. The canonical source/Base identities
+and library workload match, but timing variation across cores and shared-host
+conditions remains a limitation. The faster 40.467-second edit loop above uses
+checked B1 bootstrap and targeted tests; it does not make the complete
+self-emitted-JavaScript fixed-point proof a 40-second operation.
 
 ## Retained failures and provenance limits
 

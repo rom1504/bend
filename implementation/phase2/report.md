@@ -333,3 +333,30 @@ projections and runtime ownership. All six borrowed-list/stack-fault probes pass
 on interpreter, JS and native program execution using the final checked API.
 The 48-second suite duration has uncontrolled cache warmth and is correctness
 evidence rather than an isolated performance comparison.
+
+The [final native/JS source comparison](evidence/native-js-fullsource-equality.json)
+now passes byte for byte: both emit the same 1,117,775-byte library with the hash
+above. The ordinary checked bootstrap API took 784.367 seconds to produce this
+stage 2 library, including its host work. Its recorded source, Base and host
+inputs passed the new post-stage identity checks. Stage 3 self-reproduction is
+still a separate milestone; native execution emitting matching JS is not itself
+a native fixed point.
+
+## Where the remaining large-workload cost sits
+
+The [interim self-emitted trace intervals](evidence/fixedpoint-v1-phase-profile.json)
+show why more lexer tuning alone will not remove the remaining self-compilation
+gap. Of the 2,237-second v1 stage, the check/post-check interval takes about
+746 seconds, annotation 583, emission 348 and layout/foreign preparation 215.
+Parsing plus loading takes about 133 seconds. These are adjacent host trace
+intervals including intervening gates, host work and GC on a shared machine;
+they are not isolated function CPU profiles or final-v2 measurements.
+
+The next large-workload investigation should isolate checking and annotation on
+frozen books, then compare the same Bend work under upstream-generated JS,
+self-emitted JS and native execution. The current traces locate expensive
+phases but do not yet establish their inner algorithmic cause. In parallel,
+negative-test latency has a specific smaller hypothesis: detailed diagnostics
+replay checking after the cached authoritative verdict. A bounded experiment
+will keep that verdict fixed while measuring reporting work separately; it must
+not weaken exact-diagnostic conformance checks.

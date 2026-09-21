@@ -94,8 +94,13 @@
     "assets": []
   },
   "javascriptStage2Comparison": {
-    "status": "pending",
-    "note": "Same final compiler source and immutable Base path must be used. This native program emits JavaScript; this is not a native fixed point."
+    "status": "complete",
+    "byteEqual": true,
+    "evidence": "implementation/phase2/evidence/native-js-fullsource-equality.json",
+    "evidenceSha256": "559c6643c7ccd3215ab75c26fec05fc18b06d6d492636175ca6791ff115f9dc4",
+    "outputSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+    "jsStage2Ms": 784367,
+    "note": "Checked JS stage2 and native emission of final source with identical canonical Base produced identical bytes. Stage3 self-reproduction is separate."
   },
   "compilerBuildEvidence": "native-graph-v2-build.json",
   "sourceCompilerSha256": "266933eb2ee6aa0d406a48b19f5bbe0250c6685e9f5f2d9fe276bc38bac31784",

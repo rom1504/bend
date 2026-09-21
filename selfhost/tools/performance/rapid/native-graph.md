@@ -168,3 +168,23 @@ fresh-process policy. It requires the checked native build's clean upstream pin,
 checks the full upstream pipeline, and compares execution with the prior samples.
 These are subsequent samples rather than an interleaved four-way experiment;
 the report preserves that distinction. Upstream has no persistent Base cache.
+
+For a full compiler-source library comparison,
+`native-fullsource-upstream.mjs CONFIG.json NEW_OUTPUT_DIRECTORY` accepts
+`upstream`, `input`, `base`, `nativeApi`, `nativeBuild`, `cpu`, and optional
+`repetitions` (1–3) and `timeoutMs`. It copies the unchanged pinned TypeScript
+modules into a private directory and symlinks Base to the specified canonical
+path. Roots follow `j_library_roots`, including Base foreign definitions; they
+are checked against `nativeApi`, a native-produced full compiler library. Each
+sample performs full checking and library emission, then separately checks
+syntax, export roots and a compiler-helper execution oracle. The report records
+the changed TypeScript module location and the exact Base identity. Use the same
+core and repeated samples for stronger timing claims; a single later sample
+must retain that limitation.
+
+The runner retains a read-only copy of its own consumed source and executes
+workers from that copy. Outside the compile timer, the actual Bend
+`j_library_roots` checks the selected root set from upstream definition metadata.
+Native default exports also contain runtime globals and reachable Base helpers;
+their extra names are recorded rather than misrepresented as matching the
+TypeScript library's narrower default export contract.

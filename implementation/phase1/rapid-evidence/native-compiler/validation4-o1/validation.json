@@ -1,0 +1,1137 @@
+{
+  "kind": "native-closed-bundle-semantic-validation",
+  "started": "2026-09-21T08:53:06.620Z",
+  "cpu": 3,
+  "files": {
+    "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+    "api": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/dist/typed-api.mjs",
+    "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs"
+  },
+  "hashes": {
+    "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+    "api": "37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5",
+    "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+  },
+  "complete": true,
+  "rows": [
+    {
+      "name": "no-base",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/no-base.bend",
+      "inputSha256": "44581c2f8549c956b8122c8f097e9690321873abe578ed9a8b67ebaa109a27a3",
+      "expected": {
+        "name": "no-base",
+        "file": "tools/performance/rapid/native-bundle-fixtures/no-base.bend",
+        "mode": "program",
+        "accepted": false,
+        "phase": "compile",
+        "checked": true,
+        "note": "Both drivers require import Base for executable program emission."
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/no-base.bend",
+            "dev": 2306,
+            "ino": 71722282,
+            "bytes": 66
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "44581c2f8549c956b8122c8f097e9690321873abe578ed9a8b67ebaa109a27a3",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/no-base/native.mjs",
+        "status": 1,
+        "signal": null,
+        "wallMs": 10.065444000000014,
+        "compileMs": 5,
+        "consumedChars": 25,
+        "stdout": "",
+        "stderr": "compile_ms=5\nconsumed_chars=25\nphase=compile checked=True: a build needs import Base\n",
+        "error": null,
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": "compile",
+        "checked": true
+      },
+      "host": {
+        "status": "error",
+        "phase": "compile",
+        "diagnostic": "Error: a build needs import Base",
+        "exitCode": 1,
+        "checked": true,
+        "wallMs": 42.35054000000001
+      }
+    },
+    {
+      "name": "base-u32",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend",
+      "inputSha256": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22",
+      "expected": {
+        "name": "base-u32",
+        "file": "tests/conformance/typed-smoke/base-u32.bend",
+        "mode": "program",
+        "accepted": true
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend",
+            "dev": 2306,
+            "ino": 71070777,
+            "bytes": 42
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/base-u32/native.mjs",
+        "status": 0,
+        "signal": null,
+        "wallMs": 1655.050843,
+        "compileMs": 1650,
+        "consumedChars": 40136,
+        "stdout": "",
+        "stderr": "compile_ms=1650\nconsumed_chars=40136\n",
+        "error": null,
+        "published": true,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "outputBytes": 40136,
+        "outputSha256": "d798686c52d7573d23888795f2ebbeaba6e34611fbd059d8fc67a2a540de2a85",
+        "phase": "compile",
+        "checked": true
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "wallMs": 6215.4374609999995,
+        "outputSha256": "d798686c52d7573d23888795f2ebbeaba6e34611fbd059d8fc67a2a540de2a85",
+        "outputBytes": 40136
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "tree",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+      "inputSha256": "ee47602e212650f57d33510b02aef711ba86f4d75b99058b3914f55e2704f4e4",
+      "expected": {
+        "name": "tree",
+        "file": "tests/fixtures/tree.bend",
+        "mode": "program",
+        "accepted": true,
+        "stdout": "42\n"
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+            "dev": 2306,
+            "ino": 71070786,
+            "bytes": 344
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "ee47602e212650f57d33510b02aef711ba86f4d75b99058b3914f55e2704f4e4",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/tree/native.mjs",
+        "status": 0,
+        "signal": null,
+        "wallMs": 1694.2310539999999,
+        "compileMs": 1689,
+        "consumedChars": 44229,
+        "stdout": "",
+        "stderr": "compile_ms=1689\nconsumed_chars=44229\n",
+        "error": null,
+        "published": true,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "outputBytes": 44229,
+        "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+        "phase": "compile",
+        "checked": true
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "wallMs": 6430.777954,
+        "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+        "outputBytes": 44229
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "list-sort",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+      "inputSha256": "b7e1a7187eb35e4253208fcdad5122311e4d936fb23198568568cb73db45746e",
+      "expected": {
+        "name": "list-sort",
+        "file": ".bootstrap/upstream/tests/base/list_sort.bend",
+        "mode": "program",
+        "accepted": true,
+        "stdout": "6\n"
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+            "dev": 2306,
+            "ino": 71172710,
+            "bytes": 3632
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "b7e1a7187eb35e4253208fcdad5122311e4d936fb23198568568cb73db45746e",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/list-sort/native.mjs",
+        "status": 0,
+        "signal": null,
+        "wallMs": 2062.326774000001,
+        "compileMs": 2057,
+        "consumedChars": 51155,
+        "stdout": "",
+        "stderr": "compile_ms=2057\nconsumed_chars=51155\n",
+        "error": null,
+        "published": true,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "outputBytes": 51155,
+        "outputSha256": "6bc1759c378bf2041131afb161541ce4411bb74fab2ef32f5889026067ae6db3",
+        "phase": "compile",
+        "checked": true
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "wallMs": 7791.249272,
+        "outputSha256": "6bc1759c378bf2041131afb161541ce4411bb74fab2ef32f5889026067ae6db3",
+        "outputBytes": 51155
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "6\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "6\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "builtin-io",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/hello.bend",
+      "inputSha256": "ee14924d30c8264688687133c522bc49c17c66d1ef40c35298586fe34a027234",
+      "expected": {
+        "name": "builtin-io",
+        "file": "tests/fixtures/hello.bend",
+        "mode": "program",
+        "accepted": true,
+        "stdout": "Hello from the self-hosted Bend2 compiler!\n"
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/hello.bend",
+            "dev": 2306,
+            "ino": 71070785,
+            "bytes": 94
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "ee14924d30c8264688687133c522bc49c17c66d1ef40c35298586fe34a027234",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/builtin-io/native.mjs",
+        "status": 0,
+        "signal": null,
+        "wallMs": 2004.7563470000023,
+        "compileMs": 1999,
+        "consumedChars": 41716,
+        "stdout": "",
+        "stderr": "compile_ms=1999\nconsumed_chars=41716\n",
+        "error": null,
+        "published": true,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "outputBytes": 41716,
+        "outputSha256": "ca71c5c150c797e274c054b91df4e4f83289d313b661531cb152c78f08768366",
+        "phase": "compile",
+        "checked": true
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/hello.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "wallMs": 7046.772964,
+        "outputSha256": "ca71c5c150c797e274c054b91df4e4f83289d313b661531cb152c78f08768366",
+        "outputBytes": 41716
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "Hello from the self-hosted Bend2 compiler!\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "Hello from the self-hosted Bend2 compiler!\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "unicode",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/unicode.bend",
+      "inputSha256": "3ca96046c437b3a7c7a1034d25aae64fdabd1a2433465d75358febb2abb15bd1",
+      "expected": {
+        "name": "unicode",
+        "file": "tools/performance/rapid/native-bundle-fixtures/unicode.bend",
+        "mode": "program",
+        "accepted": true,
+        "stdout": "Bend 🦋 λ café\n"
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/unicode.bend",
+            "dev": 2306,
+            "ino": 71722261,
+            "bytes": 70
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "3ca96046c437b3a7c7a1034d25aae64fdabd1a2433465d75358febb2abb15bd1",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/unicode/native.mjs",
+        "status": 0,
+        "signal": null,
+        "wallMs": 1801.5960359999954,
+        "compileMs": 1796,
+        "consumedChars": 41687,
+        "stdout": "",
+        "stderr": "compile_ms=1796\nconsumed_chars=41687\n",
+        "error": null,
+        "published": true,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "outputBytes": 41692,
+        "outputSha256": "19e6ef7dbfc3c2176862812d603cc6cd2c7664b8dc1b501b6219550e1713862a",
+        "phase": "compile",
+        "checked": true
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/unicode.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "wallMs": 6717.027714999999,
+        "outputSha256": "19e6ef7dbfc3c2176862812d603cc6cd2c7664b8dc1b501b6219550e1713862a",
+        "outputBytes": 41692
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "Bend 🦋 λ café\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "Bend 🦋 λ café\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "library",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend",
+      "inputSha256": "4b7ea902366826075daa8b213e121d769804f669d0d3e62aee4b3eadd807e40f",
+      "expected": {
+        "name": "library",
+        "file": "tools/performance/rapid/native-bundle-fixtures/library.bend",
+        "mode": "library",
+        "accepted": true,
+        "export": "answer",
+        "value": 42
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "library",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend",
+            "dev": 2306,
+            "ino": 71722260,
+            "bytes": 39
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "4b7ea902366826075daa8b213e121d769804f669d0d3e62aee4b3eadd807e40f",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/library/native.mjs",
+        "status": 0,
+        "signal": null,
+        "wallMs": 1703.8240489999953,
+        "compileMs": 1698,
+        "consumedChars": 57763,
+        "stdout": "",
+        "stderr": "compile_ms=1698\nconsumed_chars=57763\n",
+        "error": null,
+        "published": true,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "outputBytes": 57763,
+        "outputSha256": "d5a28c4ecdb38ee829762a902986724b28ede4b2334bc87ca264ccbcd6bd8e8e",
+        "phase": "compile",
+        "checked": true
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "wallMs": 6365.589573,
+        "outputSha256": "d5a28c4ecdb38ee829762a902986724b28ede4b2334bc87ca264ccbcd6bd8e8e",
+        "outputBytes": 57763
+      },
+      "equalOutput": true,
+      "execution": {
+        "native": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "host": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "name": "parse-error",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/parse-error.bend",
+      "inputSha256": "20d00f6fea0addb456725924a5f83e8141f235f569888d013e6a2c5af3ec5047",
+      "expected": {
+        "name": "parse-error",
+        "file": "tools/performance/rapid/native-bundle-fixtures/parse-error.bend",
+        "mode": "program",
+        "accepted": false,
+        "phase": "parse",
+        "checked": false
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/parse-error.bend",
+            "dev": 2306,
+            "ino": 71722254,
+            "bytes": 23
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "20d00f6fea0addb456725924a5f83e8141f235f569888d013e6a2c5af3ec5047",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/parse-error/native.mjs",
+        "status": 1,
+        "signal": null,
+        "wallMs": 7.7194260000032955,
+        "compileMs": 3,
+        "consumedChars": 44,
+        "stdout": "",
+        "stderr": "compile_ms=3\nconsumed_chars=44\nphase=parse checked=False: line 0:0: reserved parameter name; got <eof>\n",
+        "error": null,
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": "parse",
+        "checked": false
+      },
+      "host": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 0:0: reserved parameter name; got <eof>",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/parse-error.bend",
+        "wallMs": 9.335171000000003
+      }
+    },
+    {
+      "name": "type-error",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/type-error.bend",
+      "inputSha256": "074404f7b12ee380ef5d066ad66b18d0000b58bf827a9398b48e29932cd7fa3e",
+      "expected": {
+        "name": "type-error",
+        "file": "tools/performance/rapid/native-bundle-fixtures/type-error.bend",
+        "mode": "program",
+        "accepted": false,
+        "phase": "check",
+        "checked": true
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/type-error.bend",
+            "dev": 2306,
+            "ino": 71722255,
+            "bytes": 42
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "074404f7b12ee380ef5d066ad66b18d0000b58bf827a9398b48e29932cd7fa3e",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/type-error/native.mjs",
+        "status": 1,
+        "signal": null,
+        "wallMs": 1530.8007970000035,
+        "compileMs": 1527,
+        "consumedChars": 64,
+        "stdout": "",
+        "stderr": "compile_ms=1527\nconsumed_chars=64\nphase=check checked=True: main: constructor does not belong to goal or field count differs\n",
+        "error": null,
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": "check",
+        "checked": true
+      },
+      "host": {
+        "status": "error",
+        "phase": "check",
+        "diagnostic": "Error: main: constructor does not belong to goal or field count differs",
+        "exitCode": 1,
+        "checked": true,
+        "wallMs": 5653.191924000001
+      }
+    },
+    {
+      "name": "unresolved-law",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/unresolved-law.bend",
+      "inputSha256": "6130c2b51468cb74c6455853a18a32e4f47f9d9fd09eb59110ece910d0befb66",
+      "expected": {
+        "name": "unresolved-law",
+        "file": "tools/performance/rapid/native-bundle-fixtures/unresolved-law.bend",
+        "mode": "program",
+        "accepted": false,
+        "phase": "check",
+        "checked": true
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/unresolved-law.bend",
+            "dev": 2306,
+            "ino": 71722256,
+            "bytes": 56
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "6130c2b51468cb74c6455853a18a32e4f47f9d9fd09eb59110ece910d0befb66",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/unresolved-law/native.mjs",
+        "status": 1,
+        "signal": null,
+        "wallMs": 1531.6023849999983,
+        "compileMs": 1527,
+        "consumedChars": 64,
+        "stdout": "",
+        "stderr": "compile_ms=1527\nconsumed_chars=64\nphase=check checked=True: 1 TODO found.\nThe code is incomplete, and not a valid proof yet.\n",
+        "error": null,
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": "check",
+        "checked": true
+      },
+      "host": {
+        "status": "error",
+        "phase": "check",
+        "diagnostic": "Error: 1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+        "exitCode": 1,
+        "checked": true,
+        "wallMs": 5644.323972
+      }
+    },
+    {
+      "name": "owned-name",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/owned-name.bend",
+      "inputSha256": "06b680b2ad6727725f2e3ba6bb8bf5ded47c317c626aa63356205e455647ced0",
+      "expected": {
+        "name": "owned-name",
+        "file": "tools/performance/rapid/native-bundle-fixtures/owned-name.bend",
+        "mode": "program",
+        "accepted": false,
+        "phase": "compile",
+        "checked": true
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/owned-name.bend",
+            "dev": 2306,
+            "ino": 71722257,
+            "bytes": 79
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "06b680b2ad6727725f2e3ba6bb8bf5ded47c317c626aa63356205e455647ced0",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/owned-name/native.mjs",
+        "status": 1,
+        "signal": null,
+        "wallMs": 1554.307329999996,
+        "compileMs": 1550,
+        "consumedChars": 65,
+        "stdout": "",
+        "stderr": "compile_ms=1550\nconsumed_chars=65\nphase=compile checked=True: Clo.apply is a name the compiler encodes itself: name yours apart\n",
+        "error": null,
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": "compile",
+        "checked": true
+      },
+      "host": {
+        "status": "error",
+        "phase": "compile",
+        "diagnostic": "Error: Clo.apply is a name the compiler encodes itself: name yours apart",
+        "exitCode": 1,
+        "checked": true,
+        "wallMs": 5640.800779
+      }
+    },
+    {
+      "name": "extra-import",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/extra-import.bend",
+      "inputSha256": "e6011220acda5ab728cf448568f1287892b8db70c32497f916e626d5840a2dd8",
+      "expected": {
+        "name": "extra-import",
+        "file": "tools/performance/rapid/native-bundle-fixtures/extra-import.bend",
+        "mode": "program",
+        "accepted": false,
+        "phase": "load",
+        "checked": false,
+        "hostAccepted": true,
+        "scopeDifference": "Native experiment deliberately accepts Base only."
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/extra-import.bend",
+            "dev": 2306,
+            "ino": 71722259,
+            "bytes": 77
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "e6011220acda5ab728cf448568f1287892b8db70c32497f916e626d5840a2dd8",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/extra-import/native.mjs",
+        "status": 1,
+        "signal": null,
+        "wallMs": 7.810853999995743,
+        "compileMs": 3,
+        "consumedChars": 64,
+        "stdout": "",
+        "stderr": "compile_ms=3\nconsumed_chars=64\nphase=load checked=False: closed bundle supports only import Base; requested: ./extra.bend\n",
+        "error": null,
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": "load",
+        "checked": false
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/extra-import.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/extra.bend"
+        ],
+        "wallMs": 6238.476796,
+        "outputSha256": "4e6f27142777599657cc6fc6d4bca472d5605ea28dc3caacf0ad0be8f6fe66ff",
+        "outputBytes": 40201
+      }
+    },
+    {
+      "name": "foreign-asset",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/foreign.bend",
+      "inputSha256": "1c919a569c17ce399af6f327cc93b9995b929acd4ee88d5430fca1170ca267bd",
+      "expected": {
+        "name": "foreign-asset",
+        "file": "tools/performance/rapid/native-bundle-fixtures/foreign.bend",
+        "mode": "library",
+        "accepted": false,
+        "hostAccepted": true,
+        "phase": "compile",
+        "checked": true,
+        "scopeDifference": "Native experiment deliberately rejects required external JavaScript assets."
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "library",
+        "cpu": 3,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o1-long",
+            "dev": 2306,
+            "ino": 71722650,
+            "bytes": 5281880
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/foreign.bend",
+            "dev": 2306,
+            "ino": 71722283,
+            "bytes": 65
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "c3bc0a59d248b065c6bcf8701909a7bc6c037ffac4b07b8869cacf82b4e13de3",
+          "input": "1c919a569c17ce399af6f327cc93b9995b929acd4ee88d5430fca1170ca267bd",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation4-o1/foreign-asset/native.mjs",
+        "status": 1,
+        "signal": null,
+        "wallMs": 1676.7944169999973,
+        "compileMs": 1672,
+        "consumedChars": 160,
+        "stdout": "",
+        "stderr": "compile_ms=1672\nconsumed_chars=160\nphase=compile checked=True: closed bundle does not supply foreign JavaScript source: /home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/./external.js\n",
+        "error": null,
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": "compile",
+        "checked": true
+      },
+      "host": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/foreign.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/./external.js"
+        ],
+        "wallMs": 6376.424553,
+        "outputSha256": "a08ab1bc9f9e9642548558430712d13c61b67886634c5bf4e321233eb2686197",
+        "outputBytes": 58193
+      }
+    }
+  ],
+  "inputsUnchanged": true,
+  "finished": "2026-09-21T08:54:37.693Z"
+}

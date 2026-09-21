@@ -100,6 +100,8 @@ a feasibility build: it compiled the first full-compiler C snapshot in 18.6
 seconds. Runtime optimization is a separate experiment. Default `--build` uses
 O3; the initial combined 60-second bound left approximately 29 seconds for that
 Clang pass before cancellation. A separate O1 pass exceeded its 60-second bound;
-a longer O1 experiment is pending. These build results do not establish optimized
+a second O1 build with a 180-second bound succeeded in 67.3 seconds. To reuse the
+checked C for that optimized build, run `native-compile-c.mjs` with a fresh binary
+path, `--opt=O1 --timeout-ms=180000`. These build results alone do not establish
 native runtime performance. Use a supported Clang installation; the build tools
 record the selected compiler, flags, source hashes, and available diagnostics.

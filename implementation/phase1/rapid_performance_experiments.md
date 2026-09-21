@@ -327,11 +327,48 @@ is not an observed fresh end-to-end build.
 The `-O0` binary is a correctness baseline. Initial whole-compilation observations
 do not show a speedup over upstream-emitted JS. A longer `-O1` retry succeeded in
 **67.332 seconds**; the earlier timeout was narrowly insufficient. Matched runtime
-comparisons are in progress. A fast lexer microbenchmark does not establish a fast
+comparisons follow below. A fast lexer microbenchmark does not establish a fast
 complete compiler, particularly with different C flags.
 [Build evidence](rapid-evidence/native-compiler/build-attempt3/build-evidence-summary.json)
 and the [native experiment guide](../../selfhost/tools/performance/rapid/native-bundle.md)
 explain the separate checked-emission and C-only rebuild workflow.
+
+## Native optimized compiler: controlled runtime result
+
+The same Bend compiler pipeline was emitted as JS and native C, with the same
+preloaded source/Base/runtime and full output consumption inside both timers.
+Three alternating fresh processes per backend and workload give:
+
+| Workload | Upstream-emitted Bend JS | Native Bend, Clang O1 | Backend speedup |
+|---|---:|---:|---:|
+| Base U32 | 6.165 s | 1.668 s | 3.70× |
+| Tree/IO | 6.278 s | 1.730 s | 3.63× |
+| List sort | 7.212 s | 2.066 s | 3.49× |
+
+Native process medians, including native startup and file IO, are 1.672, 1.735
+and 2.071 seconds. All 18 samples match emitted bytes and complete-consumption
+counts, pass JS syntax checks, and execute correctly. The optimized binary also
+passes a fresh **13/13 semantic suite**, including rejection phases, Unicode,
+library exports and the explicit import/foreign-asset scope restrictions.
+
+The earlier matched `-O0` run passed the same 18 observations but was **13–16%
+slower** than JS. Compiler optimization is material to the native result. The
+optimized build's one-time C cost is 67.332 seconds, separate from its execution
+speed and the approximately 29 seconds of checked source/emission work. Ordinary
+source-edit validation can still use the previously measured 57.5-second checked
+bootstrap/component cycle.
+
+These are backend comparisons of the same Bend implementation, **not** comparisons
+with handwritten TypeScript. The separate whole-compiler table above measures
+the original TypeScript reference and complete self-emitted JS artifacts. The
+native result supports using an optimized native bootstrap for repeated compiler
+work, while its restricted host and pending larger-source measurements prevent
+claiming a general drop-in compiler replacement or full native conformance.
+
+[Matched O1 measurements](rapid-evidence/native-compiler/matched-o1.json),
+[retained O0 measurements](rapid-evidence/native-compiler/matched-o0.json), and
+[optimized semantic checks](rapid-evidence/native-compiler/validation4-o1/validation.json)
+preserve timings, commands, exact hashes, output checks and source stability.
 
 ## Rejected or deferred experiments
 

@@ -1,10 +1,22 @@
 # Phase 2 implementation report
 
-Work began on 2026-09-21 at 14:10 UTC, with a 17:10 UTC cutoff. This is a
-progressive report; later sections record completed validation rather than
-assuming every design objective has passed. The
-[design](../../design/phase2/fast_conformance_loop.md) was committed and pushed
-as `9e7a56d` before implementation.
+Phase 2 delivers a measured **40.5-second checked rebuild plus 21 live differential
+checks**, starting without a candidate Base cache. It closes 19 demonstrated
+invalid-acceptance witnesses across two grammar revisions, adds exact selected
+upstream comparisons with retained replay, and extends native compiler execution
+to explicit module and foreign-asset graphs. Full self-hosting remains a separate,
+substantially longer milestone.
+
+For the two measured small programs, ordinary cached Bend-in-Bend JS compilation
+takes 1.6–1.9 seconds per fresh process, versus 0.71–0.74 seconds for pinned
+TypeScript. Native compilation offers no advantage over that cached small-test
+path. The native compiler does emit the entire frozen compiler source in
+5m12s, producing exactly the same JS bytes as the ordinary checked Bend API.
+
+Work began on 2026-09-21 at 14:10 UTC, with a 17:10 UTC cutoff. Broader sweeps and
+the final self-reproduction proof are recorded below as they complete; no pending
+gate is counted as a pass. The [design](../../design/phase2/fast_conformance_loop.md)
+was committed and pushed as `9e7a56d` before implementation.
 
 ## Starting baseline
 
@@ -360,3 +372,20 @@ negative-test latency has a specific smaller hypothesis: detailed diagnostics
 replay checking after the cached authoritative verdict. A bounded experiment
 will keep that verdict fixed while measuring reporting work separately; it must
 not weaken exact-diagnostic conformance checks.
+
+## Independent frontend review and retained limits
+
+A [final independent review](frontend-final-review.md) retained four live
+declaration-order controls and four residual-gap witnesses. The suspected new
+local-binder regression was falsified: both compilers accept a binder whose name
+becomes a constructor later, and reject a bare binder matching an earlier
+constructor. The actual graph loader supplies incremental declaration context;
+the whole-book helper that prompted the concern is outside that path.
+
+The same review confirmed remaining grammar gaps: `@unsafe` before a law, a bare
+constructor in a parallel local binding, and a semicolon inside an expression
+operand. These pre-existing/incompletely covered cases remain accepted by the
+final candidate where upstream rejects during parsing. Their small source files,
+commands and paired observations are retained for the next iteration; they are
+not relabeled as passing conformance. This bounded phase keeps its tested source
+frozen while the broader and self-hosting gates complete.

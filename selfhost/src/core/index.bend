@@ -44,12 +44,42 @@ law index_set:
   for +bits: U32
   KDef
 
-law index_set_node:
+# Compressed persistent binary trie. Internal nodes carry one discriminating
+# hash bit; leaves retain exact-name buckets for complete 32-bit collisions.
+law index_tip:
+  for +tree: KDef
+  for +hash: U32
+  KDef
+
+law index_split_bit:
+  for +diff: U32
+  U32
+
+law index_leaf:
+  for +d: KDef
+  for +hash: U32
+  for +ds: List<&2, KDef>
+  KDef
+
+law index_node:
+  for +hash: U32
+  for +mask: U32
+  for +left: KDef
+  for +right: KDef
+  KDef
+
+law index_join:
   for +tree: KDef
   for +d: KDef
   for +hash: U32
-  for +bits: U32
-  for +right: Bool
+  for +mask: U32
+  KDef
+
+law index_insert:
+  for +tree: KDef
+  for +d: KDef
+  for +hash: U32
+  for +mask: U32
   KDef
 
 law index_build:
@@ -64,6 +94,12 @@ law index_lookup:
 law book_cached:
   for +book: List<&2, KDef>
   for +bound: U32
+  List<&2, KDef>
+
+law index_put_rest:
+  for +cache: KDef
+  for +rest: List<&2, KDef>
+  for +name: String
   List<&2, KDef>
 
 law book_put:
@@ -99,9 +135,14 @@ def index_first(ds):
     case Con{h, rest}:
       h
 
+# The public callers supply complete 32-bit hashes. `bits` remains in this
+# internal ABI for the native identifier validator; paths use stored masks.
 @unsafe
 def index_find(tree, name, hash, bits):
-  kc(KDef, String.eq(dk(tree), "Absent"), u => missing(), u => kc(KDef, U32.is_eq(bits, 0), u => index_bucket(dc(tree), name), u => index_find(index_child(tree, Bool.not(U32.is_eq(U32.and(hash, 1), 0))), name, U32.shr(hash), U32.sub(bits, 1))))
+  kc(KDef, String.eq(dk(tree), "Absent"), u => missing(), u =>
+    kc(KDef, U32.is_eq(dx(tree), 0),
+      u => kc(KDef, U32.is_eq(da(tree), hash), u => index_bucket(dc(tree), name), u => missing()),
+      u => index_find(index_child(tree, Bool.not(U32.is_eq(U32.and(hash, dx(tree)), 0))), name, hash, bits)))
 
 @unsafe
 def index_bucket(ds, name):
@@ -120,12 +161,43 @@ def index_remove(ds, name):
       kc(List<&2, KDef>, String.eq(dn(h), name), u => index_remove(rest, name), u => Con{h, index_remove(rest, name)})
 
 @unsafe
-def index_set(tree, d, hash, bits):
-  kc(KDef, U32.is_eq(bits, 0), u => KDef{"", "IndexLeaf", 0, 0, atom("Absent"), atom("Absent"), Con{d, index_remove(dc(tree), dn(d))}, True{}, False{}}, u => index_set_node(tree, d, hash, bits, Bool.not(U32.is_eq(U32.and(hash, 1), 0))))
+def index_tip(tree, hash):
+  kc(KDef, U32.is_eq(dx(tree), 0), u => tree,
+    u => index_tip(index_child(tree, Bool.not(U32.is_eq(U32.and(hash, dx(tree)), 0))), hash))
+
+# U32 subtraction wraps: x & (0 - x) isolates its lowest set bit, or 0.
+@unsafe
+def index_split_bit(diff):
+  U32.and(diff, U32.sub(0, diff))
 
 @unsafe
-def index_set_node(tree, d, hash, bits, right):
-  KDef{"", "IndexNode", 0, 0, atom("Absent"), atom("Absent"), Con{kc(KDef, right, u => index_child(tree, False{}), u => index_set(index_child(tree, False{}), d, U32.shr(hash), U32.sub(bits, 1))), Con{kc(KDef, right, u => index_set(index_child(tree, True{}), d, U32.shr(hash), U32.sub(bits, 1)), u => index_child(tree, True{})), Nil{}}}, True{}, False{}}
+def index_leaf(d, hash, ds):
+  KDef{"", "IndexLeaf", hash, 0, atom("Absent"), atom("Absent"), Con{d, index_remove(ds, dn(d))}, True{}, False{}}
+
+@unsafe
+def index_node(hash, mask, left, right):
+  KDef{"", "IndexNode", hash, mask, atom("Absent"), atom("Absent"), Con{left, Con{right, Nil{}}}, True{}, False{}}
+
+@unsafe
+def index_join(tree, d, hash, mask):
+  kc(KDef, U32.is_eq(U32.and(hash, mask), 0),
+    u => index_node(da(tree), mask, index_leaf(d, hash, Nil{}), tree),
+    u => index_node(da(tree), mask, tree, index_leaf(d, hash, Nil{})))
+
+@unsafe
+def index_insert(tree, d, hash, mask):
+  kc(KDef, Bool.not(U32.is_eq(mask, 0)) && (U32.is_eq(dx(tree), 0) || U32.is_lt(mask, dx(tree))),
+    u => index_join(tree, d, hash, mask),
+    u => kc(KDef, U32.is_eq(dx(tree), 0),
+      u => index_leaf(d, hash, dc(tree)),
+      u => kc(KDef, U32.is_eq(U32.and(hash, dx(tree)), 0),
+        u => index_node(da(tree), dx(tree), index_insert(index_child(tree, False{}), d, hash, mask), index_child(tree, True{})),
+        u => index_node(da(tree), dx(tree), index_child(tree, False{}), index_insert(index_child(tree, True{}), d, hash, mask)))))
+
+@unsafe
+def index_set(tree, d, hash, bits):
+  kc(KDef, String.eq(dk(tree), "Absent"), u => index_leaf(d, hash, Nil{}),
+    u => index_insert(tree, d, hash, index_split_bit(U32.xor(hash, da(index_tip(tree, hash))))))
 
 @unsafe
 def index_build(book):
@@ -143,13 +215,21 @@ def index_lookup(cache, name):
 def book_cached(book, bound):
   Con{KDef{"$kernel.cache", "BookCache", bound, 0, atom("Absent"), atom("Absent"), Con{index_build(book), Nil{}}, True{}, False{}}, book}
 
+# A cached name miss proves the declaration list contains nothing to remove.
+# Missing definitions have the empty name. Preserve the generic empty-name case
+# through filtering, even for malformed/duplicate books supplied through the API.
+@unsafe
+def index_put_rest(cache, rest, name):
+  kc(List<&2, KDef>, Bool.not(String.eq(name, "")) && String.eq(dn(index_lookup(cache, name)), ""),
+    u => rest, u => index_remove(rest, name))
+
 @unsafe
 def book_put(book, d):
   match book:
     case Nil{}:
       Con{d, Nil{}}
     case Con{h, rest}:
-      kc(List<&2, KDef>, String.eq(dk(h), "BookCache"), u => Con{KDef{dn(h), dk(h), da(h), 0, atom("Absent"), atom("Absent"), Con{index_set(index_first(dc(h)), d, index_hash(dn(d), 2166136261), 32), Nil{}}, True{}, False{}}, Con{d, index_remove(rest, dn(d))}}, u => Con{d, index_remove(book, dn(d))})
+      kc(List<&2, KDef>, String.eq(dk(h), "BookCache"), u => Con{KDef{dn(h), dk(h), da(h), 0, atom("Absent"), atom("Absent"), Con{index_set(index_first(dc(h)), d, index_hash(dn(d), 2166136261), 32), Nil{}}, True{}, False{}}, Con{d, index_put_rest(h, rest, dn(d))}}, u => Con{d, index_remove(book, dn(d))})
 
 
 # An immutable context may be reused by several backend phases. Never nest the

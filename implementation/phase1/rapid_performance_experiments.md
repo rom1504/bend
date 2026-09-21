@@ -1,6 +1,7 @@
 # Rapid performance experiments
 
-Status: first causal experiments complete; production candidates in preparation.
+Status: two pure-Bend improvements integrated; checked bootstrap and all component
+groups pass. A new whole-compiler fixed-point run is in progress.
 
 The [design](../../design/phase1/rapid_performance_experiments.md) separates cheap
 causal experiments from full compiler validation. The frozen phase 1 API is
@@ -114,10 +115,104 @@ Constructor metadata must match; all selected module workers must be present.
 This tests actual Bend-generated implementation changes without a 40-minute
 self-build. A component capsule is explicitly not a whole-compiler fixed point.
 
-Candidates are a path-compressed persistent index, avoiding declaration-list
-filtering for new names, and fewer repeated character operations in the Bend
-lexer. Full checked upstream bootstraps and focused backend tests precede
-source integration; complete candidate validation remains a separate milestone.
+## Integrated Bend changes
+
+`src/core/index.bend` now uses a persistent Patricia trie. Each internal node
+stores one discriminating hash bit; collision leaves still compare complete
+names. The 1,024-key test has 1,024 leaves and 1,023 branches, with maximum depth
+13. Root operations retain the existing complete 32-bit hash ABI used by the
+native identifier validator. Source declaration lists and cached bounds remain
+separate from the index representation.
+
+`book_put` also avoids filtering the declaration list when the old cache proves
+the nonempty name absent. Replacements and unusual empty names keep the original
+filtering behavior. This proof matters: simply dropping the filter would retain
+duplicate definitions and change declaration order. Both a prior version and a
+new version remain usable after every update.
+
+The first Patricia-only component experiment improved lookup about 2.2× and
+construction about 2.9×, but did not improve insertion into the declaration list.
+Adding the proven-miss path reduced 64 new-name insertions into a 1,024-definition
+book from a local median 316.2 ms to 8.4 ms (**37.6×**). Existing-name replacements
+did not improve. These are component results, not whole-compilation multipliers.
+The final Bend-generated capsule passes **5,769 differential checks**, including
+all 32 branch bits, collisions, duplicates, missing/empty names, bounds, ordering
+and retained old versions. The standard index test now also covers the new path.
+
+`src/front/lexer.bend` moves ordinary identifiers ahead of unnecessary triple-token
+checks and avoids eager exponent-lookahead work when a character is already an
+identifier character. Compiler-local ASCII predicates extract a numeric character
+once and use U32 comparisons. Base Char definitions, public runtime primitives and
+Unicode policy remain unchanged. The candidate matches **327 tokenization cases**,
+including 24,056 Base tokens, 37 identical failures, malformed UTF-16, non-BMP
+characters and U32 position wrapping. Complete Base parsing is structurally equal.
+Generated Bend helpers passed **4,456,569 comparisons** over all 1,114,112 codepoint
+values, including surrogate numbers; those classifier tests do not make surrogate
+text valid input.
+
+The capsule comparison for these actual Bend changes used three rotating fresh
+processes per cell, checking enabled and caching off:
+
+| Compiler workers | Median tree compilation |
+|---|---:|
+| Frozen phase 1 control | 17.698 s |
+| Bend index and insertion changes | 14.854 s |
+| Bend lexer changes | 16.822 s |
+| Both Bend modules | 14.099 s |
+
+Together these save **20.3%** of compilation time (**1.26×**), with identical
+emitted bytes and successful execution in every sample. This is useful but much
+smaller than the largest component result; it does not close the TypeScript gap.
+An earlier lexer variant plus the index was no faster than the index alone, so
+we do not assume every small source transformation improves the full compiler.
+
+[Pure-Bend comparison](rapid-evidence/bend-ascii-index.json),
+[earlier variant comparison](rapid-evidence/bend-index-lexer-v2.json),
+[index checks](rapid-evidence/index-v2-differential.log),
+[lexer checks](rapid-evidence/ascii-differential.json), and
+[exhaustive predicate checks](rapid-evidence/ascii-predicates.json) retain the
+evidence. Capsule manifests identify exact module/compiler hashes.
+
+## Complete checked bootstrap
+
+The integrated source rebuilt through pinned upstream in **20.637 seconds** and
+passed all **19 component groups** in another **36.865 seconds**, including the
+suite's own test API build. This **57.5-second** validation cycle checks the edited
+Bend source. It does not establish a self-emitted fixed point or whole-corpus
+conformance. The two source modules in the main checkout match the checked
+snapshot; compiler API SHA-256 is
+`37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5`.
+
+Three fresh-process uncached tree compilations give medians **0.386 s upstream**,
+**7.147 s previous bootstrap**, and **6.350 s new bootstrap**. The two Bend
+bootstrap artifacts emit identical program bytes and all nine executions print
+42. This is an **11.1% reduction** versus the preceding bootstrap; it is still
+about **16.5× slower** than the TypeScript compiler on this workload.
+
+[Build provenance](rapid-evidence/integrated-bootstrap.json),
+[component results](rapid-evidence/integrated-components.json), and
+[bootstrap performance](rapid-evidence/integrated-bootstrap-performance.json)
+keep these execution modes distinct. The new frozen source/API/runtime have
+started a separate fixed-point chain on a reserved core. The previous phase 1
+corpus continues on other cores; its evidence cannot certify this newer compiler.
+
+## Rejected or deferred experiments
+
+- Guarded calls and positional workers alone improved medians only 3–5%; no large
+  emitter/runtime rewrite is integrated from that evidence.
+- Retaining native `Bool.and`/`Bool.not` and flattening calls changes malformed
+  host-value handling and intermediate failure order. Fourteen negative
+  observations remain in [the differential report](rapid-evidence/boolean-differential.json).
+  The compatible staged variant is separate. Boolean timing samples overlapped
+  short lexer builds on the same core (including 07:45:02–07:45:14 UTC), so
+  [that exploratory timing report](rapid-evidence/boolean-exploratory.json) is not
+  used to claim a speedup. The unsafe whitelist change is not integrated.
+- The diagnostic Map and JS cursor remain experiments. The integrated compiler
+  algorithms remain Bend; its runtime and JS emitter are unchanged in this step.
+
+See [fast compiler development](../../docs/FAST_COMPILER_DEVELOPMENT.md) for the
+component/capsule workflow. Source improvements are committed independently of
+promotion: distributed phase 1 artifacts remain their original frozen versions.
 
 ## Reproduction
 

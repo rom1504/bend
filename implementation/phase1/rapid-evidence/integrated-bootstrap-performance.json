@@ -1,0 +1,778 @@
+{
+  "started": "2026-09-21T07:55:40.554497+00:00",
+  "config": {
+    "node": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "cpu": 1,
+    "flags": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ],
+    "repetitions": 3,
+    "timeout": 180,
+    "variants": [
+      {
+        "name": "upstream",
+        "kind": "upstream"
+      },
+      {
+        "name": "phase1-bootstrap",
+        "kind": "bend",
+        "api": "/home/ai/bend2/build/publish/bend/selfhost/dist/phase1/bootstrap-api.mjs",
+        "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/runtime.mjs",
+        "driver": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/host/tools/typed-driver.mjs",
+        "sourceFiles": [],
+        "cacheDirectory": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/host/build/typed/cache"
+      },
+      {
+        "name": "new-bootstrap",
+        "kind": "bend",
+        "api": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/dist/typed-api.mjs",
+        "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/runtime.mjs",
+        "driver": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/host/tools/typed-driver.mjs",
+        "sourceFiles": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/dist/typed-bootstrap-report.json"
+        ],
+        "cacheDirectory": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/host/build/typed/cache"
+      }
+    ],
+    "workloads": [
+      {
+        "id": "tree-io",
+        "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+        "expected": "42",
+        "caches": [
+          "off"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "/home/ai/bend2/build/publish/bend/selfhost/dist/phase1/bootstrap-api.mjs": "b3773bb97cc32befb4d27f5b329bf2076f3be8d3cd3df1118e463a690f13368c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/runtime.mjs": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/host/tools/typed-driver.mjs": "40fbe7554e005fc48152ec46c31c6386af73b6f9f748c44bbde5948940af3ca1",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/host/tools/compiler-abi.mjs": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/host/tools/assemble.mjs": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/round1/host/tools/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/dist/typed-api.mjs": "37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/dist/typed-bootstrap-report.json": "c07b3ab71f87eba3146b1c03a409693b762a90d7cbdc6e7d17fe681fd765314b",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap.config.json": "17c349aca33e3478c8bb7a088c00459ab11b0907ec73f28a3d48da864ec243e0",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare.py": "a8d251bf50c7d200cf718016cefff0146994892434f4ab9c36938119381427f8",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs": "74899f3ad48221d961cd727fad6e9827ca53a0c31acf11cc34e4e2ec4b247f24",
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/bend.ts": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/comp.ts": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend": "ee47602e212650f57d33510b02aef711ba86f4d75b99058b3914f55e2704f4e4"
+  },
+  "node": "v24.18.0",
+  "platform": "Linux-5.10.0-46-amd64-x86_64-with-glibc2.31",
+  "stack": [
+    8388608,
+    -1
+  ],
+  "loadStart": [
+    2.9,
+    3.52,
+    3.81
+  ],
+  "cpuInfo": "processor\t: 0\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3743.694\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 0\ncpu cores\t: 4\napicid\t\t: 0\ninitial apicid\t: 0\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 1\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3662.992\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 1\ncpu cores\t: 4\napicid\t\t: 2\ninitial apicid\t: 2\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 2\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3743.652\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 2\ncpu cores\t: 4\napicid\t\t: 4\ninitial apicid\t: 4\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 3\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3674.203\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 3\ncpu cores\t: 4\napicid\t\t: 6\ninitial apicid\t: 6\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 4\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3733.304\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 0\ncpu cores\t: 4\napicid\t\t: 1\ninitial apicid\t: 1\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 5\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3618.056\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 1\ncpu cores\t: 4\napicid\t\t: 3\ninitial apicid\t: 3\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 6\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3734.389\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 2\ncpu cores\t: 4\napicid\t\t: 5\ninitial apicid\t: 5\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 7\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 3688.434\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 3\ncpu cores\t: 4\napicid\t\t: 7\ninitial apicid\t: 7\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\n",
+  "memoryInfo": "MemTotal:       32765788 kB\nMemFree:        11009336 kB\nMemAvailable:   21891228 kB\nBuffers:         2369096 kB\nCached:          6776608 kB\nSwapCached:        94012 kB\nActive:          7725304 kB\nInactive:       11318600 kB\nActive(anon):    1285896 kB\nInactive(anon):  8613660 kB\nActive(file):    6439408 kB\nInactive(file):  2704940 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:       1572852 kB\nSwapFree:         744864 kB\nDirty:              2540 kB\nWriteback:             0 kB\nAnonPages:       9481608 kB\nMapped:           639056 kB\nShmem:              1356 kB\nKReclaimable:    2254428 kB\nSlab:            2433808 kB\nSReclaimable:    2254428 kB\nSUnreclaim:       179380 kB\nKernelStack:       13136 kB\nPageTables:        65776 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    17955744 kB\nCommitted_AS:   10492832 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:       36288 kB\nVmallocChunk:          0 kB\nPercpu:            38464 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:   4976640 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:     1796100 kB\nDirectMap2M:    31653888 kB\n",
+  "method": "serial fresh processes; rotating variant order; measured priming separate from cached samples; output validation outside compilation",
+  "samples": [
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 682.533826911822,
+      "command": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-0-upstream.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-0-upstream.result.json"
+      ],
+      "importMs": 230.49335100000002,
+      "compileMs": 386.580886,
+      "cpuMs": 386.606,
+      "maxRssKiB": 129220,
+      "phases": {
+        "load": 157.683853,
+        "check": 206.77463000000006,
+        "emit": 21.853564000000006
+      },
+      "calls": {
+        "load": 1,
+        "check": 1,
+        "emit": 1
+      },
+      "outputBytes": 13114,
+      "workload": "tree-io",
+      "variant": "upstream",
+      "round": 0,
+      "cache": "off",
+      "mode": "compile",
+      "outputSha256": "a2cf75428d48f4c330ad4637d33727a53d537e8ecddbe1f2b2924cdbc03c79be",
+      "validation": {
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "expected": "42"
+      }
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 7263.937172014266,
+      "command": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-0-phase1-bootstrap.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-0-phase1-bootstrap.result.json"
+      ],
+      "importMs": 43.544155,
+      "compileMs": 7146.782494,
+      "cpuMs": 7146.732,
+      "maxRssKiB": 265580,
+      "phases": {
+        "f_parse": 1824.47021,
+        "f_source_parsed": 0.03778099999976803,
+        "f_load_graph": 1182.2201530000002,
+        "check_book": 3334.8142530000005,
+        "driver_owned": 0.6839709999994739,
+        "driver_todos": 99.42567700000018,
+        "specialize_book": 108.6796459999996,
+        "specialized_error": 0.03397099999983766,
+        "specialized_book": 0.023769000000356755,
+        "driver_emit_owned": 4.048700000000281,
+        "j_compile_error": 2.1104110000005676,
+        "book_context": 61.170540000000074,
+        "j_roots": 0.1288459999996121,
+        "j_stops": 266.87498700000015,
+        "reach_book": 42.93699599999945,
+        "j_foreign_error": 3.5255630000001474,
+        "annotate_selected": 77.12068399999953,
+        "j_layout_error": 34.70325199999934,
+        "j_foreign_paths": 3.125390000000152,
+        "j_program_selected": 98.34064599999965,
+        "j_modules": 0.05739199999970879
+      },
+      "calls": {
+        "f_parse": 2,
+        "f_source_parsed": 2,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1,
+        "driver_emit_owned": 1,
+        "j_compile_error": 1,
+        "book_context": 1,
+        "j_roots": 1,
+        "j_stops": 2,
+        "reach_book": 1,
+        "j_foreign_error": 1,
+        "annotate_selected": 1,
+        "j_layout_error": 1,
+        "j_foreign_paths": 1,
+        "j_program_selected": 1,
+        "j_modules": 1
+      },
+      "outputBytes": 44229,
+      "workload": "tree-io",
+      "variant": "phase1-bootstrap",
+      "round": 0,
+      "cache": "off",
+      "mode": "compile",
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "validation": {
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "expected": "42"
+      }
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 6471.071691019461,
+      "command": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-0-new-bootstrap.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-0-new-bootstrap.result.json"
+      ],
+      "importMs": 43.650049,
+      "compileMs": 6357.028426,
+      "cpuMs": 6357.064,
+      "maxRssKiB": 261056,
+      "phases": {
+        "f_parse": 1787.479928,
+        "f_source_parsed": 0.04061300000012125,
+        "f_load_graph": 1172.6323389999998,
+        "check_book": 2620.0815450000005,
+        "driver_owned": 0.5876499999994849,
+        "driver_todos": 98.35029999999915,
+        "specialize_book": 112.8010119999999,
+        "specialized_error": 0.033302000000730914,
+        "specialized_book": 0.023317999999562744,
+        "driver_emit_owned": 4.065459000000374,
+        "j_compile_error": 2.2757830000000467,
+        "book_context": 40.50727899999947,
+        "j_roots": 0.13626399999975547,
+        "j_stops": 259.0469740000008,
+        "reach_book": 49.06674900000053,
+        "j_foreign_error": 3.604152000000795,
+        "annotate_selected": 62.67601500000001,
+        "j_layout_error": 41.9552620000004,
+        "j_foreign_paths": 3.1011249999992287,
+        "j_program_selected": 96.24030200000016,
+        "j_modules": 0.057708000000275206
+      },
+      "calls": {
+        "f_parse": 2,
+        "f_source_parsed": 2,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1,
+        "driver_emit_owned": 1,
+        "j_compile_error": 1,
+        "book_context": 1,
+        "j_roots": 1,
+        "j_stops": 2,
+        "reach_book": 1,
+        "j_foreign_error": 1,
+        "annotate_selected": 1,
+        "j_layout_error": 1,
+        "j_foreign_paths": 1,
+        "j_program_selected": 1,
+        "j_modules": 1
+      },
+      "outputBytes": 44229,
+      "workload": "tree-io",
+      "variant": "new-bootstrap",
+      "round": 0,
+      "cache": "off",
+      "mode": "compile",
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "validation": {
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "expected": "42"
+      }
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 7315.764223923907,
+      "command": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-1-phase1-bootstrap.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-1-phase1-bootstrap.result.json"
+      ],
+      "importMs": 43.244484,
+      "compileMs": 7204.463842,
+      "cpuMs": 7204.478,
+      "maxRssKiB": 263252,
+      "phases": {
+        "f_parse": 1833.2206139999998,
+        "f_source_parsed": 0.038461999999981344,
+        "f_load_graph": 1213.0505660000001,
+        "check_book": 3344.676929,
+        "driver_owned": 0.5900899999996909,
+        "driver_todos": 99.62046099999952,
+        "specialize_book": 107.65939900000012,
+        "specialized_error": 0.032201000000895874,
+        "specialized_book": 0.02341199999955279,
+        "driver_emit_owned": 4.0107740000003105,
+        "j_compile_error": 2.082749000000149,
+        "book_context": 49.864888000000064,
+        "j_roots": 0.14567199999964942,
+        "j_stops": 282.4160500000007,
+        "reach_book": 44.12000900000021,
+        "j_foreign_error": 3.466568000000734,
+        "annotate_selected": 77.95572300000003,
+        "j_layout_error": 34.78566300000057,
+        "j_foreign_paths": 3.1209390000003623,
+        "j_program_selected": 101.26954299999943,
+        "j_modules": 0.057423999999627995
+      },
+      "calls": {
+        "f_parse": 2,
+        "f_source_parsed": 2,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1,
+        "driver_emit_owned": 1,
+        "j_compile_error": 1,
+        "book_context": 1,
+        "j_roots": 1,
+        "j_stops": 2,
+        "reach_book": 1,
+        "j_foreign_error": 1,
+        "annotate_selected": 1,
+        "j_layout_error": 1,
+        "j_foreign_paths": 1,
+        "j_program_selected": 1,
+        "j_modules": 1
+      },
+      "outputBytes": 44229,
+      "workload": "tree-io",
+      "variant": "phase1-bootstrap",
+      "round": 1,
+      "cache": "off",
+      "mode": "compile",
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "validation": {
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "expected": "42"
+      }
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 6471.013708040118,
+      "command": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-1-new-bootstrap.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-1-new-bootstrap.result.json"
+      ],
+      "importMs": 43.985456000000006,
+      "compileMs": 6350.240387,
+      "cpuMs": 6350.29,
+      "maxRssKiB": 261664,
+      "phases": {
+        "f_parse": 1777.6463010000002,
+        "f_source_parsed": 0.048766999999998006,
+        "f_load_graph": 1183.272366,
+        "check_book": 2594.852012,
+        "driver_owned": 0.5662940000001981,
+        "driver_todos": 98.06070900000032,
+        "specialize_book": 106.45551299999988,
+        "specialized_error": 0.03230399999938527,
+        "specialized_book": 0.02351699999962875,
+        "driver_emit_owned": 3.867844000000332,
+        "j_compile_error": 2.2975249999999505,
+        "book_context": 38.53851500000019,
+        "j_roots": 0.1295719999998255,
+        "j_stops": 287.6745210000008,
+        "reach_book": 48.88909499999954,
+        "j_foreign_error": 3.806490999999369,
+        "annotate_selected": 61.48662500000046,
+        "j_layout_error": 41.663228000000345,
+        "j_foreign_paths": 3.552045999999791,
+        "j_program_selected": 95.11119599999984,
+        "j_modules": 0.05505599999924016
+      },
+      "calls": {
+        "f_parse": 2,
+        "f_source_parsed": 2,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1,
+        "driver_emit_owned": 1,
+        "j_compile_error": 1,
+        "book_context": 1,
+        "j_roots": 1,
+        "j_stops": 2,
+        "reach_book": 1,
+        "j_foreign_error": 1,
+        "annotate_selected": 1,
+        "j_layout_error": 1,
+        "j_foreign_paths": 1,
+        "j_program_selected": 1,
+        "j_modules": 1
+      },
+      "outputBytes": 44229,
+      "workload": "tree-io",
+      "variant": "new-bootstrap",
+      "round": 1,
+      "cache": "off",
+      "mode": "compile",
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "validation": {
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "expected": "42"
+      }
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 671.1027610581368,
+      "command": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-1-upstream.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-1-upstream.result.json"
+      ],
+      "importMs": 230.42457800000003,
+      "compileMs": 378.74352899999997,
+      "cpuMs": 378.778,
+      "maxRssKiB": 135956,
+      "phases": {
+        "load": 155.81586600000003,
+        "check": 202.84058699999997,
+        "emit": 19.830835999999977
+      },
+      "calls": {
+        "load": 1,
+        "check": 1,
+        "emit": 1
+      },
+      "outputBytes": 13114,
+      "workload": "tree-io",
+      "variant": "upstream",
+      "round": 1,
+      "cache": "off",
+      "mode": "compile",
+      "outputSha256": "a2cf75428d48f4c330ad4637d33727a53d537e8ecddbe1f2b2924cdbc03c79be",
+      "validation": {
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "expected": "42"
+      }
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 6426.460171118379,
+      "command": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-2-new-bootstrap.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-2-new-bootstrap.result.json"
+      ],
+      "importMs": 43.62895999999999,
+      "compileMs": 6309.391584,
+      "cpuMs": 6309.443,
+      "maxRssKiB": 260772,
+      "phases": {
+        "f_parse": 1751.0298910000001,
+        "f_source_parsed": 0.05500800000004347,
+        "f_load_graph": 1175.698628,
+        "check_book": 2579.999378,
+        "driver_owned": 0.5420739999999569,
+        "driver_todos": 98.01719299999968,
+        "specialize_book": 107.16851299999962,
+        "specialized_error": 0.03407500000048458,
+        "specialized_book": 0.02311900000040623,
+        "driver_emit_owned": 3.992094000000179,
+        "j_compile_error": 2.2693749999998545,
+        "book_context": 38.94099200000073,
+        "j_roots": 0.12077799999951822,
+        "j_stops": 278.0206049999997,
+        "reach_book": 54.75498499999958,
+        "j_foreign_error": 4.026092000000062,
+        "annotate_selected": 71.93828799999937,
+        "j_layout_error": 43.30717999999979,
+        "j_foreign_paths": 3.122715999999855,
+        "j_program_selected": 94.01517299999978,
+        "j_modules": 0.0568039999998291
+      },
+      "calls": {
+        "f_parse": 2,
+        "f_source_parsed": 2,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1,
+        "driver_emit_owned": 1,
+        "j_compile_error": 1,
+        "book_context": 1,
+        "j_roots": 1,
+        "j_stops": 2,
+        "reach_book": 1,
+        "j_foreign_error": 1,
+        "annotate_selected": 1,
+        "j_layout_error": 1,
+        "j_foreign_paths": 1,
+        "j_program_selected": 1,
+        "j_modules": 1
+      },
+      "outputBytes": 44229,
+      "workload": "tree-io",
+      "variant": "new-bootstrap",
+      "round": 2,
+      "cache": "off",
+      "mode": "compile",
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "validation": {
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "expected": "42"
+      }
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 690.3705971781164,
+      "command": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-2-upstream.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-2-upstream.result.json"
+      ],
+      "importMs": 240.41674300000003,
+      "compileMs": 385.6121749999999,
+      "cpuMs": 385.639,
+      "maxRssKiB": 127588,
+      "phases": {
+        "load": 157.328867,
+        "check": 205.45496699999995,
+        "emit": 22.579716000000076
+      },
+      "calls": {
+        "load": 1,
+        "check": 1,
+        "emit": 1
+      },
+      "outputBytes": 13114,
+      "workload": "tree-io",
+      "variant": "upstream",
+      "round": 2,
+      "cache": "off",
+      "mode": "compile",
+      "outputSha256": "a2cf75428d48f4c330ad4637d33727a53d537e8ecddbe1f2b2924cdbc03c79be",
+      "validation": {
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "expected": "42"
+      }
+    },
+    {
+      "status": "ok",
+      "exitCode": 0,
+      "processMs": 7253.411421086639,
+      "command": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-2-phase1-bootstrap.request.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/bootstrap-results-v2/tree-io-off-2-phase1-bootstrap.result.json"
+      ],
+      "importMs": 42.711444,
+      "compileMs": 7140.286074,
+      "cpuMs": 7140.337,
+      "maxRssKiB": 262140,
+      "phases": {
+        "f_parse": 1825.792974,
+        "f_source_parsed": 0.03794700000003104,
+        "f_load_graph": 1210.769369,
+        "check_book": 3305.3252439999997,
+        "driver_owned": 0.6022789999997258,
+        "driver_todos": 97.41897999999946,
+        "specialize_book": 105.5300930000003,
+        "specialized_error": 0.03224599999975908,
+        "specialized_book": 0.023372000000563276,
+        "driver_emit_owned": 3.9380629999996017,
+        "j_compile_error": 2.054041000000325,
+        "book_context": 48.144836999999825,
+        "j_roots": 0.0910490000005666,
+        "j_stops": 275.48657600000024,
+        "reach_book": 43.57526600000074,
+        "j_foreign_error": 3.454069000000345,
+        "annotate_selected": 78.16537999999946,
+        "j_layout_error": 34.81008600000041,
+        "j_foreign_paths": 3.0624019999995653,
+        "j_program_selected": 99.71423800000048,
+        "j_modules": 0.056811999999808904
+      },
+      "calls": {
+        "f_parse": 2,
+        "f_source_parsed": 2,
+        "f_load_graph": 1,
+        "check_book": 1,
+        "driver_owned": 1,
+        "driver_todos": 1,
+        "specialize_book": 1,
+        "specialized_error": 1,
+        "specialized_book": 1,
+        "driver_emit_owned": 1,
+        "j_compile_error": 1,
+        "book_context": 1,
+        "j_roots": 1,
+        "j_stops": 2,
+        "reach_book": 1,
+        "j_foreign_error": 1,
+        "annotate_selected": 1,
+        "j_layout_error": 1,
+        "j_foreign_paths": 1,
+        "j_program_selected": 1,
+        "j_modules": 1
+      },
+      "outputBytes": 44229,
+      "workload": "tree-io",
+      "variant": "phase1-bootstrap",
+      "round": 2,
+      "cache": "off",
+      "mode": "compile",
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "validation": {
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": "",
+        "expected": "42"
+      }
+    }
+  ],
+  "primes": [],
+  "summary": [
+    {
+      "workload": "tree-io",
+      "cache": "off",
+      "variant": "upstream",
+      "attempted": 3,
+      "successful": 3,
+      "compileMs": {
+        "median": 385.6121749999999,
+        "min": 378.74352899999997,
+        "max": 386.580886
+      },
+      "processMs": {
+        "median": 682.533826911822,
+        "min": 671.1027610581368,
+        "max": 690.3705971781164
+      },
+      "cpuMs": {
+        "median": 385.639,
+        "min": 378.778,
+        "max": 386.606
+      },
+      "maxRssKiB": {
+        "median": 129220,
+        "min": 127588,
+        "max": 135956
+      }
+    },
+    {
+      "workload": "tree-io",
+      "cache": "off",
+      "variant": "phase1-bootstrap",
+      "attempted": 3,
+      "successful": 3,
+      "compileMs": {
+        "median": 7146.782494,
+        "min": 7140.286074,
+        "max": 7204.463842
+      },
+      "processMs": {
+        "median": 7263.937172014266,
+        "min": 7253.411421086639,
+        "max": 7315.764223923907
+      },
+      "cpuMs": {
+        "median": 7146.732,
+        "min": 7140.337,
+        "max": 7204.478
+      },
+      "maxRssKiB": {
+        "median": 263252,
+        "min": 262140,
+        "max": 265580
+      }
+    },
+    {
+      "workload": "tree-io",
+      "cache": "off",
+      "variant": "new-bootstrap",
+      "attempted": 3,
+      "successful": 3,
+      "compileMs": {
+        "median": 6350.240387,
+        "min": 6309.391584,
+        "max": 6357.028426
+      },
+      "processMs": {
+        "median": 6471.013708040118,
+        "min": 6426.460171118379,
+        "max": 6471.071691019461
+      },
+      "cpuMs": {
+        "median": 6350.29,
+        "min": 6309.443,
+        "max": 6357.064
+      },
+      "maxRssKiB": {
+        "median": 261056,
+        "min": 260772,
+        "max": 261664
+      }
+    }
+  ],
+  "finished": "2026-09-21T07:56:25.127419+00:00",
+  "loadEnd": [
+    3.79,
+    3.66,
+    3.85
+  ],
+  "inputsUnchanged": true
+}

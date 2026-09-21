@@ -15,6 +15,18 @@ const pair=['costarring','liquid'];assert.equal(fnv(pair[0]),fnv(pair[1]),'test 
 const collided=K.book_cached(list(pair.map((name,i)=>def(name,'collision-value'+i))),0);
 for(let i=0;i<2;i++)assert.equal(K.lookup(collided,pair[i]).value.name,'collision-value'+i);
 assert.equal(K.lookup(K.book_put(collided,def(pair[0],'replaced')),pair[1]).value.name,'collision-value1');
+
+// A cache miss may share the old declaration list. Replacements must still
+// remove every prior occurrence, including unusual empty names from API users.
+const declarations=book=>{const out=[];for(let xs=book.tail;xs.$==='Con';xs=xs.tail)out.push(xs.head);return out;};
+const duplicates=K.book_cached(list([def('dup','first'),def('','empty1'),def('dup','last'),def('','empty2')]),17);
+const added=K.book_put(duplicates,def('new','inserted'));
+assert.deepEqual(declarations(added).map(d=>d.name),['new','dup','','dup','']);
+assert.equal(added.head.arity,17);
+assert.equal(K.lookup(duplicates,'new').kind,'Absent');
+assert.equal(K.lookup(added,'dup').value.name,'first');
+assert.deepEqual(declarations(K.book_put(added,def('dup','replacement'))).map(d=>d.name),['dup','new','','']);
+assert.deepEqual(declarations(K.book_put(added,def('','replacement'))).map(d=>d.name),['','new','dup','dup']);
 console.log('PASS persistent indexed lookup, overrides, first-match order and exact hash collisions');
 
 if(K.book_context){

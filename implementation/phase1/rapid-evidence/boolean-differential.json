@@ -1,0 +1,170 @@
+{
+  "canonicalCases": 54,
+  "malformedDifferences": [
+    {
+      "mode": "native",
+      "operation": "Bool.and",
+      "input": null,
+      "original": {
+        "value": false
+      },
+      "candidate": {
+        "value": null
+      }
+    },
+    {
+      "mode": "native",
+      "operation": "Bool.and",
+      "input": "undefined",
+      "original": {
+        "value": false
+      },
+      "candidate": {}
+    },
+    {
+      "mode": "native",
+      "operation": "Bool.and",
+      "input": 0,
+      "original": {
+        "value": false
+      },
+      "candidate": {
+        "value": 0
+      }
+    },
+    {
+      "mode": "native",
+      "operation": "Bool.and",
+      "input": "",
+      "original": {
+        "value": false
+      },
+      "candidate": {
+        "value": ""
+      }
+    },
+    {
+      "mode": "native",
+      "operation": "Bool.and",
+      "input": {
+        "request": true
+      },
+      "original": {
+        "error": "runtime fail-stop"
+      },
+      "candidate": {
+        "value": true
+      }
+    },
+    {
+      "mode": "native",
+      "operation": "Bool.not",
+      "input": {
+        "request": true
+      },
+      "original": {
+        "error": "runtime fail-stop"
+      },
+      "candidate": {
+        "value": false
+      }
+    },
+    {
+      "mode": "native",
+      "operation": "staged request fail-stop",
+      "original": {
+        "error": "runtime fail-stop",
+        "trace": []
+      },
+      "candidate": {
+        "value": true,
+        "trace": [
+          "second argument"
+        ]
+      }
+    },
+    {
+      "mode": "flatten",
+      "operation": "Bool.and",
+      "input": null,
+      "original": {
+        "value": false
+      },
+      "candidate": {
+        "value": null
+      }
+    },
+    {
+      "mode": "flatten",
+      "operation": "Bool.and",
+      "input": "undefined",
+      "original": {
+        "value": false
+      },
+      "candidate": {}
+    },
+    {
+      "mode": "flatten",
+      "operation": "Bool.and",
+      "input": 0,
+      "original": {
+        "value": false
+      },
+      "candidate": {
+        "value": 0
+      }
+    },
+    {
+      "mode": "flatten",
+      "operation": "Bool.and",
+      "input": "",
+      "original": {
+        "value": false
+      },
+      "candidate": {
+        "value": ""
+      }
+    },
+    {
+      "mode": "flatten",
+      "operation": "Bool.and",
+      "input": {
+        "request": true
+      },
+      "original": {
+        "error": "runtime fail-stop"
+      },
+      "candidate": {
+        "value": true
+      }
+    },
+    {
+      "mode": "flatten",
+      "operation": "Bool.not",
+      "input": {
+        "request": true
+      },
+      "original": {
+        "error": "runtime fail-stop"
+      },
+      "candidate": {
+        "value": false
+      }
+    },
+    {
+      "mode": "flatten",
+      "operation": "staged request fail-stop",
+      "original": {
+        "error": "runtime fail-stop",
+        "trace": []
+      },
+      "candidate": {
+        "value": true,
+        "trace": [
+          "second argument"
+        ]
+      }
+    }
+  ],
+  "provenanceRejections": 3
+}

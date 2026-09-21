@@ -15,6 +15,8 @@ That's Bend - and nothing else.
 This fork includes the compiler port in [`selfhost/`](selfhost/README.md).
 See [building, running and validating it](docs/BEND-IN-BEND.md), and the
 [phase 1 implementation report](implementation/phase1/report.md).
+For short iteration cycles, see [fast compiler development](docs/FAST_COMPILER_DEVELOPMENT.md)
+and the [rapid performance experiments](implementation/phase1/rapid_performance_experiments.md).
 
 ## Bend runs FAST
 

@@ -14,6 +14,11 @@ self-hosting do not establish full diagnostic or proof-checker equivalence.
 Read the [validation boundaries](../selfhost/CONFORMANCE.md) and
 [negative audit](../selfhost/docs/NEGATIVE-COMPATIBILITY.md) before relying on it.
 
+For short edit/check/measure cycles, see
+[fast compiler development](FAST_COMPILER_DEVELOPMENT.md) and the
+[rapid experiment report](../implementation/phase1/rapid_performance_experiments.md).
+Source changes and frozen distributed artifacts have separate validation evidence.
+
 ## Run a compiler artifact
 
 Use Node.js 24 or newer. From `selfhost/`:

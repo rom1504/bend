@@ -37,6 +37,16 @@ control cases with live pinned TypeScript APIs. It checks acceptance and rejecti
 phase, not exact diagnostic formatting or the entire language. The recorded
 phase 2 run took about nine seconds with a reused API and warm Base cache.
 
+The separate 25-case grammar matrix uses the isolated paired harness:
+
+```sh
+node tests/frontend/phase2-grammar.mjs build/phase2/dev-api.mjs \
+  build/phase2/grammar-attempt-01
+```
+
+It covers required types on marked parameters, list delimiters, and valid
+quantity parameters, typed arrays and statement/IO semicolons.
+
 ## Select exact upstream probes
 
 Create `build/phase2/dev-target.json`:
@@ -97,11 +107,13 @@ needs an adequate OS stack; the self-hosting runner checks for at least 8 MiB.
 Run the complete component build and tests separately:
 
 ```sh
-BEND_COMPONENT_REPORT="$PWD/build/phase2/components-attempt-01.json" \
+BEND_COMPONENT_DIR="$PWD/build/phase2/components-attempt-01" \
   node tools/verify.mjs
 ```
 
-The recorded build plus 19 test groups took about 35 seconds. These timings are
+This preserves the build, captured source and `report.json` in a fresh directory.
+`BEND_COMPONENT_REPORT` can select a different report path. An earlier recorded
+build plus 19 test groups took about 35 seconds. These timings are
 local observations, not guaranteed budgets. Full checked self-emission remains a
 larger milestone; use the recipe in [Bend-in-Bend](BEND-IN-BEND.md), freeze its
 source/API/runtime/host, and let it run while targeted tests use another CPU.

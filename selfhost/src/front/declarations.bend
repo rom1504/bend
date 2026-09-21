@@ -426,7 +426,7 @@ def f_tele_at(ts, end, acc):
 
 @unsafe
 def f_tele_binder(name, id, q, temp, ts, end, acc):
-  f_choose(FParsed, f_eq(f_tx(ts), ":"), u => f_tele_type(name, id, q, temp, f_expr(f_tl(ts), 0), end, acc), u => f_tele_type(name, id, 0, temp, FParsed{atom("Qnt"), ts}, end, acc))
+  f_choose(FParsed, f_eq(f_tx(ts), ":"), u => f_tele_type(name, id, q, temp, f_expr(f_tl(ts), 0), end, acc), u => f_choose(FParsed, U32.is_eq(q, 1) && Bool.not(temp), u => f_tele_type(name, id, 0, temp, FParsed{atom("Qnt"), ts}, end, acc), u => f_err(ts, "expected : (a marked parameter requires its type)")))
 
 @unsafe
 def f_tele_type(name, id, q, temp, p, end, acc):

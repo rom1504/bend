@@ -1,0 +1,148 @@
+{
+  "scope": "Read-only follow-up; unchanged before API; no compiler edits; CPU0 contention with full reference, no timing claim",
+  "sourceReport": "selfhost/build/phase2/next-grammar-probes/attempt/paired.json",
+  "sourceReportSha256": "9955d487f6e80966cd00147c44fedc60f7fad8fb0058500a59381f03c521d69d",
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/before/api.mjs",
+      "sha256": "37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    },
+    "bootstrapReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/before/api.mjs.bootstrap.json",
+      "sha256": "ac51143bd5293487939caeafa7ade0e7bf30f32caf52af70d97ef57e018beb98"
+    }
+  },
+  "rows": [
+    {
+      "id": "comma-list-control",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "quant-template-control",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "semicolon-list",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> List<&1, U32>:\n3>|   [7; 16]\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "untyped-template",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : ','\nLocation:\n1 | \n2>| def ignore(~unused, x: U32) -> U32:\n3 |   x",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    }
+  ],
+  "sources": [
+    {
+      "file": "selfhost/build/phase2/next-grammar-probes/comma-list-control.bend",
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  [7, 16]\n",
+      "sha256": "df5afbfda7cbd52429317dbaa79938374abf685a2514bc0b644c4cc7d3feeed9"
+    },
+    {
+      "file": "selfhost/build/phase2/next-grammar-probes/quant-template-control.bend",
+      "source": "import Base\ndef ignore(~unused: Quant, x: U32) -> U32:\n  x\ndef main() -> U32:\n  ignore(~&1, 7)\n",
+      "sha256": "e3683e7e65de667b4e876919c132e7ff90ce461d3cca0bc26370576f94a246f9"
+    },
+    {
+      "file": "selfhost/build/phase2/next-grammar-probes/semicolon-list.bend",
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  [7; 16]\n",
+      "sha256": "362779d0e169089f9579b2056a4a6d9cdbfd88a922c7d979975bd006c08f3424"
+    },
+    {
+      "file": "selfhost/build/phase2/next-grammar-probes/untyped-template.bend",
+      "source": "import Base\ndef ignore(~unused, x: U32) -> U32:\n  x\ndef main() -> U32:\n  ignore(~&1, 7)\n",
+      "sha256": "5829ee649af5f1f442102f29854de3f9ff3f9f1429a671ae0a553bb97edb1354"
+    }
+  ]
+}

@@ -97,7 +97,7 @@ def f_float_read(m):
 
 @unsafe
 def f_array(ts):
-  f_choose(FParsed, f_eq(f_tx(ts), "]"), u => FParsed{kt("Ctr", "Nil", 0, 1, Nil{}), f_tl(ts)}, u => f_array_first(f_expr(ts, 0)))
+  f_choose(FParsed, f_eq(f_tx(ts), ";"), u => f_err(ts, "expected term; a list does not use semicolon separators"), u => f_choose(FParsed, f_eq(f_tx(ts), "]"), u => FParsed{kt("Ctr", "Nil", 0, 1, Nil{}), f_tl(ts)}, u => f_array_first(f_expr(ts, 0))))
 
 @unsafe
 def f_array_first(p):

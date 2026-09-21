@@ -84,7 +84,11 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(result.error||result.status!==0) {fs.rmSync(staged,{force:true});throw Error(result.error?.message||result.stderr||'Typed API bootstrap failed');}
   fs.renameSync(staged,apiPath);
   fs.copyFileSync(source,path.join(project,'build/typed/compiler.bend'));
-  fs.copyFileSync(path.join(upstream,'bend2/base.bend'),bundledBasePath);
+  const upstreamBase=path.join(upstream,'bend2/base.bend');
+  // Concurrent frozen validations protect metadata as well as bytes. Rebuilding
+  // an API must not touch a shared Base file whose pinned contents are identical.
+  if(!fs.existsSync(bundledBasePath)||hash(bundledBasePath)!==hash(upstreamBase))
+    fs.copyFileSync(upstreamBase,bundledBasePath);
   const report={stage:'upstream-bootstrap',revision,generated:new Date().toISOString(),apiPath,apiSha256:hash(apiPath),baseSha256:hash(bundledBasePath),
     source,sourceSha256:hash(source),modules:files.map(file=>({file,sha256:hash(path.join(snapshot,file))})),exports,
     ...(nativeSnapshot?{nativeModuleSnapshot:path.resolve(nativeSnapshot)}:{})};

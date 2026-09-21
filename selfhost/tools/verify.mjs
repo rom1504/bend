@@ -9,7 +9,8 @@ import {assemble} from './assemble.mjs';
 const root=path.resolve(import.meta.dirname,'..');
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'src/compiler.json'),'utf8'));
 const upstream=process.env.BEND_UPSTREAM||path.join(root,'.bootstrap/upstream');
-const dir=path.join(root,'build/verify');
+const dir=process.env.BEND_COMPONENT_DIR?path.resolve(process.env.BEND_COMPONENT_DIR):path.join(root,'build/verify');
+if(process.env.BEND_COMPONENT_DIR&&fs.existsSync(dir))throw Error('Use a fresh BEND_COMPONENT_DIR to preserve component evidence');
 const source=path.join(dir,'compiler.bend'),api=path.join(dir,'api.mjs');
 const results=[];
 const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
@@ -54,6 +55,7 @@ try{
   run('conformance harness and host ABI safeguards',['--test','tests/conformance/inventory.test.mjs','tests/conformance/judge.test.mjs','tests/conformance/abi.test.mjs','tests/conformance/selection.test.mjs','tests/conformance/targeted.test.mjs','tests/conformance/native-adapter.test.mjs','tests/node-resource-args.test.mjs','tests/native-build.test.mjs']);
 } catch(error){process.stderr.write(error.message+'\n');process.exitCode=1}
 finally{
-  fs.mkdirSync(path.join(root,'dist'),{recursive:true});
-  fs.writeFileSync(process.env.BEND_COMPONENT_REPORT||path.join(root,'dist/component-report.json'),JSON.stringify({upstream:manifest.upstream,node:process.version,generated:new Date().toISOString(),scope:'component verification, not whole-language conformance or self-hosting',pass:process.exitCode!==1,modules:captured.map(({file,bytes})=>({file,sha256:digest(bytes)})),results},null,2)+'\n');
+  const reportFile=process.env.BEND_COMPONENT_REPORT||(process.env.BEND_COMPONENT_DIR?path.join(dir,'report.json'):path.join(root,'dist/component-report.json'));
+  fs.mkdirSync(path.dirname(reportFile),{recursive:true});
+  fs.writeFileSync(reportFile,JSON.stringify({upstream:manifest.upstream,node:process.version,generated:new Date().toISOString(),scope:'component verification, not whole-language conformance or self-hosting',pass:process.exitCode!==1,modules:captured.map(({file,bytes})=>({file,sha256:digest(bytes)})),results},null,2)+'\n');
 }

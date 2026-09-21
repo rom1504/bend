@@ -229,7 +229,7 @@ def f_app(f, xs):
 
 @unsafe
 def f_args_base(ts, end, acc):
-  f_choose(FParsed, f_eq(f_tx(f_skip(ts)), end), u => FParsed{kt("Args", "", 0, 1, List.reverse(&2, KTerm, acc)), f_tl(f_skip(ts))}, u => f_arg_next(f_expr(f_skip(ts), 0), end, acc))
+  f_choose(FParsed, f_eq(end, "]") && f_eq(f_tx(ts), ";"), u => f_err(ts, "expected term; a list does not use semicolon separators"), u => f_choose(FParsed, f_eq(f_tx(f_skip(ts)), end), u => FParsed{kt("Args", "", 0, 1, List.reverse(&2, KTerm, acc)), f_tl(f_skip(ts))}, u => f_arg_next(f_expr(f_skip(ts), 0), end, acc)))
 
 @unsafe
 def f_arg_next(p, end, acc):
@@ -323,8 +323,8 @@ def f_tuple(n, p):
 @unsafe
 def f_list(p):
   match p:
-    case FParsed{n, ts}:
-      FParsed{f_list_nodes(ks(n)), ts}
+    case FParsed{+n, ts}:
+      FParsed{f_choose(KTerm, f_eq(tg(n), "Error"), u => n, u => f_list_nodes(ks(n))), ts}
 
 @unsafe
 def f_list_nodes(xs):

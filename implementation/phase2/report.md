@@ -161,3 +161,42 @@ See the [development guide](../../docs/PHASE2_DEVELOPMENT.md) for build, selecti
 replay and native-manifest recipes. Broader validation and final timings will be
 recorded as they complete. No whole-suite conformance or native self-hosting
 claim is made by this interim report.
+
+## Second grammar revision
+
+The new differential loop exposed two further grammar defects, documented in the
+[follow-up investigation](frontend-followup.md). The second frozen revision
+requires an explicit `:` and type on marked (`~`, `+`, `-`) parameters while
+preserving permitted plain quantity parameters and plain names filling laws.
+It also rejects semicolons at list-element boundaries. This is a local delimiter
+repair, not a rewrite of general statement whitespace; valid body and IO
+semicolons remain supported. The list builder now propagates argument-parser
+errors instead of turning an error's empty child list into an empty literal.
+
+The [25-case paired matrix](evidence/frontend-grammar-v2.json) passes on both
+live compilers: ten additional invalid acceptances are closed and 15 valid
+controls pass. The [earlier 21-case matrix](evidence/frontend-v2-existing21.json)
+also remains green. Two original upstream syntax fixtures now reject at the
+matching frontend phase, while their exact diagnostic differences remain visible.
+Together the two focused matrices demonstrate 19 closed invalid acceptances;
+this is a count of witnesses, not 19 independent language rules or a full-suite
+conformance percentage.
+
+The [second checked bootstrap](evidence/frontend-grammar-v2-bootstrap.json)
+identifies API
+`794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6`
+and source
+`266933eb2ee6aa0d406a48b19f5bbe0250c6685e9f5f2d9fe276bc38bac31784`.
+All [19 component groups](evidence/components-v2-shared-cpu.json) pass, including
+35 individual harness/host tests in the expanded final group. This validation
+shared CPU 0 with the reference sweep and another bootstrap; its 129.7 seconds
+are not an isolated iteration-speed measurement. `BEND_COMPONENT_DIR` now keeps
+each requested component build and report in a fresh directory.
+
+The first native full-source run was rejected at publication because a concurrent
+bootstrap rewrote `dist/base.bend` with identical bytes, changing its metadata.
+The guard correctly withheld the temporary output. Bootstrap now avoids that
+unnecessary copy. A [fresh checked rebuild](evidence/bootstrap-base-preservation.json)
+confirms unchanged Base bytes, inode, mtime and ctime, and exactly the same second
+API hash. Final native/JS self-emission uses a separate immutable Base/effect
+snapshot with the same canonical path on both sides.

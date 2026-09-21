@@ -23,7 +23,8 @@ const output=path.join(directory,'program.mjs'),runtime=fs.readFileSync(path.joi
 fs.writeFileSync(output,runtime+'\n'+api.j_library(defs));
 const {default:a,G}=await import(pathToFileURL(output));
 for(const n of ['first','functionField','last'])assert.equal(G[n].arity,1,n+' must have a direct worker');
-for(const n of ['short','effect','erased'])assert.equal(G[n].arity,0,n+' must preserve its generic matcher');
+for(const n of ['first','functionField','last'])assert.match(G[n].code.toString(),/return project\(/);
+for(const n of ['short','effect','erased'])assert.doesNotMatch(G[n].code.toString(),/return project\(/,n+' must preserve its generic matcher body');
 const calls=[];const f={arity:1,code:args=>{calls.push(args[0]);return args[0]+1n},env:null,bound:[]};
 const x={$:'R',a:[7n,f,9n]};
 assert.equal(a.first(x),7n);assert.equal(a.last(x),9n);assert.equal(a.functionField(x),f);

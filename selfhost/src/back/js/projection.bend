@@ -66,4 +66,4 @@ def j_projection_code(name, slot):
 @unsafe
 def j_l_global_worker(book, d, t, worker):
   "G[" ++ j_quote(dn(d)) ++ "]=" ++ kc(String, Bool.not(String.eq(worker, "")), u => worker,
-    u => kc(String, String.eq(tg(j_strip(t)), "Lam"), u => j_expr(book, Nil{}, t, dt(d), False{}), u => "fn(0,function(){return " ++ j_expr(book, Nil{}, t, dt(d), True{}) ++ ";})")) ++ ";\n"
+    u => kc(String, (String.eq(tg(j_strip(t)), "Lam") || String.eq(tg(j_strip(t)), "Mat")), u => j_expr(book, Nil{}, t, dt(d), False{}), u => "fn(0,function(){return " ++ j_expr(book, Nil{}, t, dt(d), True{}) ++ ";})")) ++ ";\n"

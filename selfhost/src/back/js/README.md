@@ -47,7 +47,7 @@ The emitter uses lexical JavaScript variables for core binder IDs. Parallel
 `Let` right-hand sides remain outside the arrow function that introduces the
 new bindings. Consecutive leading lambdas share one closure; application
 batching stops at the proven leading-lambda arity so intermediate computation
-still precedes later argument evaluation. Computed globals remain reevaluated thunks; leading lambdas and proven record projections share one closure.
+still precedes later argument evaluation. Computed globals remain reevaluated thunks; leading lambdas, top-level matcher wrappers and proven record projections share one closure.
 `test.mjs` covers partial calls, erased arguments, effect/error evaluation order,
 parallel shadowing, and closures that outlive their defining `Let`.
 
@@ -111,3 +111,12 @@ erased-field arms and arbitrary computations retain the generic matcher.
 The worker uses the same `project` helper and retains the field-vector copy,
 including observable field-read order. `test-projection.mjs` checks those bounds,
 function fields, oversaturation, effects, erasure and input ownership.
+
+Top-level `Mat` values also have pure wrapper construction: `j_match` emits
+`matcher`/`matcher1` factories whose arm expressions are delayed callbacks.
+The wrapper is cached, while arms execute on each call. `Let`, `Rwt`, references
+and other computed initializers retain their thunks, including computations
+that return a matcher. Application-spine arity is unchanged, so applying a
+matcher still completes before evaluating later curried arguments.
+`test-global-initializers.mjs` and `test.mjs` cover deferred arms, live global
+references, computed matcher effects and intermediate-error ordering.

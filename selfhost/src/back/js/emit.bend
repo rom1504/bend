@@ -969,7 +969,7 @@ def j_l_bindings(book, env, ts):
     case Con{h, Nil{}}: ""
     case Con{h, rest}: kc(String, U32.is_eq(qt(h), 0), u => "", u => j_l_walk(book, env, kid(h, 0), j_type(book, env, kid(h, 0)))) ++ j_l_bindings(book, env, rest)
 
-# Leading lambdas and proven projections are pure closure initializers.
+# Leading lambdas and matchers are pure closure initializers; their bodies stay delayed.
 law j_l_global:
   for +book: List<&2, KDef>
   for +d: KDef

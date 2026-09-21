@@ -67,8 +67,57 @@ Four differential test groups include 300 deterministic mixed-input cases,
 Unicode, malformed UTF-16 fallback, token columns, quote errors and U32 wrapping.
 
 [Lexer measurements and operation counts](rapid-evidence/lexer-base.json).
-Complete parsing and a positional-worker experiment are next, along with checked
-pure-Bend production candidates for owned calls and compressed lookup.
+Complete parsing confirms that the lexer cost matters beyond its microbenchmark:
+median Base parse time is 4.556 s unchanged, 4.031 s with direct head/tail access,
+and 2.637 s with the cursor prototype. All parsed books, errors and imports are
+identical. These remain alternating in-process observations, including warmup
+variation; see [parser evidence](rapid-evidence/parser-base.json).
+
+## Round 2: positional workers and combined upper bound
+
+The next three-minute experiment generated 1,077 positional workers, keeping
+generic function objects for higher-order/partial calls and guarding code,
+environment, arity and identity before direct calls. Seven focused test groups
+cover effects, mutable globals, environment/factory exclusion, escaped argument
+arrays, partial/oversaturation and deep tail calls. Tail calls retain the original
+trampoline. This is a disposable transform, not a new production emitter.
+
+| Disposable compiler variant | Median compilation | Relative to round 2 control |
+|---|---:|---:|
+| Unchanged phase 1 | 17.143 s | 1.00× |
+| Guarded positional workers | 16.398 s | 1.05× |
+| Positional workers + Map | 13.446 s | 1.27× |
+| Positional workers + Map + cursor | 10.878 s | 1.58× |
+
+All 12 fresh-process compilations succeeded, produced byte-identical programs
+and executed to 42. Cache policy, input and checking remain unchanged. Control
+observations range 16.648–19.959 s, so small differences deserve caution on this
+shared host. The production cost of duplicating 1,077 worker bodies is not
+justified by this modest isolated improvement. This result redirects effort
+toward data structures and reducing actual operations.
+
+[Round 2 raw measurements](rapid-evidence/round2-positional.json) and
+[transform provenance](rapid-evidence/round2-transforms.json) distinguish this
+combined diagnostic result from a supported Bend implementation speedup.
+
+An additional static experiment falsified the idea that arbitrary nested calls
+were redundant currying: respecting actual runtime arities finds only one
+flattenable site. In particular, the generated `Bool.and` is an arity-one matcher,
+not the runtime's initially installed arity-two primitive. Replacing it changes
+intermediate application behavior and must be treated as a separate hypothesis.
+
+## Production experiments underway
+
+The next loop compiles just the changed Bend module and its dependencies, then
+transplants its generated workers into a disposable copy of the frozen compiler.
+Constructor metadata must match; all selected module workers must be present.
+This tests actual Bend-generated implementation changes without a 40-minute
+self-build. A component capsule is explicitly not a whole-compiler fixed point.
+
+Candidates are a path-compressed persistent index, avoiding declaration-list
+filtering for new names, and fewer repeated character operations in the Bend
+lexer. Full checked upstream bootstraps and focused backend tests precede
+source integration; complete candidate validation remains a separate milestone.
 
 ## Reproduction
 

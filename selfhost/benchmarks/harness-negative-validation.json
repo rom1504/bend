@@ -1,0 +1,69 @@
+{
+  "input": "tests/conformance/typed-smoke/bad-type.bend",
+  "sha256": "51d521f86978792ac5402a922777990733761e67a8a0b4fc6b537e843bdb55c3",
+  "results": [
+    {
+      "implementation": "upstream",
+      "exitCode": 1,
+      "rejected": true,
+      "outputWritten": false,
+      "stderr": "\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n{\n  '$': 'Err',\n  bok: {\n    tlds: [Object: null prototype] {\n      Bit: {\n        '$': 'ADT',\n        n: 0,\n        g: 0,\n        T: {\n          '$': 'Typ',\n          g: { '$': 'Qua', q: [Object], s: undefined },\n          s: {\n            src: 'type Bit is Data:\\n  Off{}\\n  On{}\\n\\ndef main() -> Bit:\\n  Type\\n',\n            beg: 12,\n            end: 16\n          }\n        },\n        c: [\n          { k: 'Off', n: 0, T: [Object] },\n          { k: 'On', n: 0, T: [Object] }\n        ]\n      },\n      main: {\n        '$': 'Def',\n        n: 0,\n        x: 0,\n        T: {\n          '$': 'Ref',\n          k: 'Bit',\n          s: {\n            src: 'type Bit is Data:\\n  Off{}\\n  On{}\\n\\ndef main() -> Bit:\\n  Type\\n',\n            beg: 48,\n            end: 51\n          },\n          b: undefined\n        },\n        v: null,\n        u: false\n      }\n    },\n    ctrs: [Object: null prototype] {\n      Off: {\n        k: 'Off',\n        n: 0,\n        T: { '$': 'ADT', k: 'Bit', x: [], r: [], s: undefined }\n      },\n      On: {\n        k: 'On',\n        n: 0,\n        T: { '$': 'ADT', k: 'Bit', x: [], r: [], s: undefined }\n      }\n    },\n    order: [ 'Bit', 'main' ],\n    hols: 0,\n    open: 0,\n    tmps: [Object: null prototype] {}\n  },\n  ctx: { '$': 'Emp' },\n  exp: {\n    '$': 'Ref',\n    k: 'Bit',\n    s: {\n      src: 'type Bit is Data:\\n  Off{}\\n  On{}\\n\\ndef main() -> Bit:\\n  Type\\n',\n      beg: 48,\n      end: 51\n    },\n    b: undefined\n  },\n  obs: {\n    '$': 'Typ',\n    g: { '$': 'Qua', q: { '$': 'Lone' }, s: undefined },\n    s: {\n      src: 'type Bit is Data:\\n  Off{}\\n  On{}\\n\\ndef main() -> Bit:\\n  Type\\n',\n      beg: 55,\n      end: 59\n    }\n  },\n  spn: {\n    src: 'type Bit is Data:\\n  Off{}\\n  On{}\\n\\ndef main() -> Bit:\\n  Type\\n',\n    beg: 55,\n    end: 59\n  },\n  def: 'main',\n  nte: undefined\n}\n\nNode.js v24.18.0\n",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bad-type.bend",
+        "/home/ai/bend2/build/performance/negative-upstream.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ]
+    },
+    {
+      "implementation": "bootstrap",
+      "exitCode": 1,
+      "rejected": true,
+      "outputWritten": false,
+      "stderr": "file:///home/ai/bend2/tools/performance/worker.mjs:39\n    if(result.status!=='ok'||!result.checked)throw Error(JSON.stringify(result));\n                                                   ^\n\nError: {\"status\":\"error\",\"phase\":\"check\",\"diagnostic\":\"Error:\\n- expected : Bit\\n- observed : Type\\nLocation: main\",\"exitCode\":1,\"checked\":true}\n    at compile (file:///home/ai/bend2/tools/performance/worker.mjs:39:52)\n    at async file:///home/ai/bend2/tools/performance/worker.mjs:45:12\n\nNode.js v24.18.0\n",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bad-type.bend",
+        "/home/ai/bend2/build/performance/negative-bootstrap.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ]
+    },
+    {
+      "implementation": "selfhost",
+      "exitCode": 1,
+      "rejected": true,
+      "outputWritten": false,
+      "stderr": "file:///home/ai/bend2/tools/performance/worker.mjs:39\n    if(result.status!=='ok'||!result.checked)throw Error(JSON.stringify(result));\n                                                   ^\n\nError: {\"status\":\"error\",\"phase\":\"check\",\"diagnostic\":\"Error:\\n- expected : Bit\\n- observed : Type\\nLocation: main\",\"exitCode\":1,\"checked\":true}\n    at compile (file:///home/ai/bend2/tools/performance/worker.mjs:39:52)\n    at async file:///home/ai/bend2/tools/performance/worker.mjs:45:12\n\nNode.js v24.18.0\n",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bad-type.bend",
+        "/home/ai/bend2/build/performance/negative-selfhost.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4079 @@
+{
+  "schema": 1,
+  "started": "2026-09-21T03:17:00.494644+00:00",
+  "upstreamRevision": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+  "methodology": {
+    "operation": "full check for no-Base workloads; load, fully check, and emit executable JavaScript for Base workloads",
+    "repetitions": 3,
+    "warmups": 0,
+    "processPolicy": "fresh Node process per sample; first compilation; no JIT warmup",
+    "cachePolicy": "no persistent Base cache or check-prefix reuse; OS filesystem caches uncontrolled/warm; Node module compile cache disabled",
+    "order": "three balanced cyclic orders per workload; serial execution",
+    "cpuAffinity": "2",
+    "nodeFlags": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ],
+    "timeoutSeconds": 180,
+    "timed": "imports and compiler pipeline separately; process wall includes startup and output persistence; output execution excluded",
+    "phaseCaveat": "Upstream and port phase boundaries differ; attribution only, not equivalent-work phase ratios",
+    "scope": "five selected positive workloads; no full-corpus, native/GPU, interpreter, warm-JIT, cached CLI or full-self-rebuild performance claim"
+  },
+  "environment": {
+    "node": "v24.18.0",
+    "nodeBinary": {
+      "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "bytes": 123655872,
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+    },
+    "versions": {
+      "node": "24.18.0",
+      "acorn": "8.16.0",
+      "ada": "3.4.4",
+      "amaro": "1.1.9",
+      "ares": "1.34.6",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.3",
+      "llhttp": "9.4.2",
+      "merve": "1.2.2",
+      "modules": "137",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.69.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "3.5.7",
+      "simdjson": "4.6.4",
+      "simdutf": "6.4.0",
+      "sqlite": "3.53.1",
+      "tz": "2026b",
+      "undici": "7.28.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "13.6.233.17-node.50",
+      "zlib": "1.3.1-e00f703",
+      "zstd": "1.5.7"
+    },
+    "platform": "Linux-5.10.0-46-amd64-x86_64-with-glibc2.31",
+    "cpuInfo": "processor\t: 0\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 1670.687\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 0\ncpu cores\t: 4\napicid\t\t: 0\ninitial apicid\t: 0\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 1\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 1698.851\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 1\ncpu cores\t: 4\napicid\t\t: 2\ninitial apicid\t: 2\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 2\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 1952.225\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 2\ncpu cores\t: 4\napicid\t\t: 4\ninitial apicid\t: 4\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 3\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 1669.425\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 3\ncpu cores\t: 4\napicid\t\t: 6\ninitial apicid\t: 6\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 4\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 1620.457\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 0\ncpu cores\t: 4\napicid\t\t: 1\ninitial apicid\t: 1\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 5\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 2702.722\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 1\ncpu cores\t: 4\napicid\t\t: 3\ninitial apicid\t: 3\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 6\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 1680.170\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 2\ncpu cores\t: 4\napicid\t\t: 5\ninitial apicid\t: 5\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 7\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 58\nmodel name\t: Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz\nstepping\t: 9\nmicrocode\t: 0x21\ncpu MHz\t\t: 1710.489\ncache size\t: 8192 KB\nphysical id\t: 0\nsiblings\t: 8\ncore id\t\t: 3\ncpu cores\t: 4\napicid\t\t: 7\ninitial apicid\t: 7\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 13\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d ibpb_exit_to_user\nvmx flags\t: vnmi preemption_timer invvpid ept_x_only flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest\nbugs\t\t: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds mmio_unknown vmscape\nbogomips\t: 6799.84\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 36 bits physical, 48 bits virtual\npower management:",
+    "memInfoAtStart": "MemTotal:       32765788 kB\nMemFree:         2230584 kB\nMemAvailable:   21509088 kB\nBuffers:         2948364 kB\nCached:         14415392 kB\nSwapCached:        60084 kB\nActive:         12686920 kB\nInactive:       15004648 kB\nActive(anon):    1025504 kB\nInactive(anon):  9303540 kB\nActive(file):   11661416 kB\nInactive(file):  5701108 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:       1572852 kB\nSwapFree:        1086852 kB\nDirty:              3756 kB\nWriteback:             0 kB\nAnonPages:       9725488 kB\nMapped:           730500 kB\nShmem:              1232 kB\nKReclaimable:    2383712 kB\nSlab:            2569312 kB\nSReclaimable:    2383712 kB\nSUnreclaim:       185600 kB\nKernelStack:       12016 kB\nPageTables:        68748 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    17955744 kB\nCommitted_AS:   10658924 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:       35256 kB\nVmallocChunk:          0 kB\nPercpu:            38464 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:   5036032 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:     1312772 kB\nDirectMap2M:    32137216 kB",
+    "loadAtStart": [
+      1.33,
+      0.88,
+      0.52
+    ],
+    "nativeStackLimitBytes": [
+      8388608,
+      -1
+    ],
+    "cgroup": "0::/user.slice/user-1003.slice/session-2.scope",
+    "cgroupCpuMax": "max 100000",
+    "cgroupMemoryMax": "max",
+    "cpuGovernor": "schedutil",
+    "loadAtEnd": [
+      1.28,
+      1.33,
+      0.94
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "/home/ai/bend2/dist/typed-api.mjs",
+      "bytes": 974250,
+      "sha256": "a6f99fc20820d59a622e5a08deb5e631a3c1c1d7fd82f66e00010a0bd9d27f6d"
+    },
+    {
+      "path": "/home/ai/bend2/dist/selfhost/seed-verification/seed.mjs",
+      "bytes": 1202197,
+      "sha256": "68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418"
+    },
+    {
+      "path": "/home/ai/bend2/src/runtime.mjs",
+      "bytes": 38772,
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    },
+    {
+      "path": "/home/ai/bend2/tools/typed-driver.mjs",
+      "bytes": 29405,
+      "sha256": "4537677650830a9e6ae673d3de41969bc88c8cf4cdd92e8f9df81f8c604e1481"
+    },
+    {
+      "path": "/home/ai/bend2/tools/compiler-abi.mjs",
+      "bytes": 4264,
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "path": "/home/ai/bend2/tools/performance/run.py",
+      "bytes": 8725,
+      "sha256": "0ebfcb433fcf64bb6c0a2391ac83fe6ba3afdf0cd40735e69c68f8940929b2b6"
+    },
+    {
+      "path": "/home/ai/bend2/tools/performance/worker.mjs",
+      "bytes": 2886,
+      "sha256": "eb61f8fef550dd38e2b7371a44db9dcfb1e1548c8b945de14692afe7d003ab8d"
+    },
+    {
+      "path": "/home/ai/bend2/ARCHIVE-MANIFEST.json",
+      "bytes": 51736,
+      "sha256": "d3941e1cfd3c2e3ebb9304722c650549b3c3750f3d2af9bf277221253eea49eb"
+    }
+  ],
+  "upstreamArtifacts": [
+    {
+      "path": "/home/ai/bend2/.bootstrap/upstream/bend2/bend.ts",
+      "bytes": 132537,
+      "sha256": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168"
+    },
+    {
+      "path": "/home/ai/bend2/.bootstrap/upstream/bend2/comp.ts",
+      "bytes": 188247,
+      "sha256": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0"
+    },
+    {
+      "path": "/home/ai/bend2/.bootstrap/upstream/bend2/base.bend",
+      "bytes": 64336,
+      "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+    }
+  ],
+  "workloads": [
+    {
+      "id": "no-base",
+      "file": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "mode": "check",
+      "expected": "checked",
+      "path": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "bytes": 67,
+      "sha256": "bba09be7622dd764f93050f53846435ee1f2aec22f27e363a702a32226f0a060"
+    },
+    {
+      "id": "declarations-256",
+      "file": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "mode": "check",
+      "expected": "checked",
+      "path": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "bytes": 7899,
+      "sha256": "587aa3cefcff245bfd236f474a5c50ca7d1d5d4e55161cc93a1e8d1b4a109acc"
+    },
+    {
+      "id": "base-u32",
+      "file": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "mode": "compile",
+      "expected": "42",
+      "path": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "bytes": 42,
+      "sha256": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22"
+    },
+    {
+      "id": "tree-io",
+      "file": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "mode": "compile",
+      "expected": "42",
+      "path": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "bytes": 344,
+      "sha256": "ee47602e212650f57d33510b02aef711ba86f4d75b99058b3914f55e2704f4e4"
+    },
+    {
+      "id": "list-sort",
+      "file": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "mode": "compile",
+      "expected": "6",
+      "path": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "bytes": 3632,
+      "sha256": "b7e1a7187eb35e4253208fcdad5122311e4d936fb23198568568cb73db45746e"
+    }
+  ],
+  "samples": [
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "round": 0,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:17:00.928404+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/no-base-0-upstream.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 330.07080596871674,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "importMs": 259.981586,
+      "compileMs": 6.02284800000001,
+      "importAndCompileMs": 266.004434,
+      "cpuMs": 6.05,
+      "maxRssKiB": 96288,
+      "phases": {
+        "load": 3.6281949999999483,
+        "check": 2.240287999999964
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "round": 0,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:17:01.273717+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/no-base-0-bootstrap.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 146.97146485559642,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "importMs": 47.403166999999996,
+      "compileMs": 49.262281,
+      "importAndCompileMs": 96.665448,
+      "cpuMs": 49.292,
+      "maxRssKiB": 65336,
+      "phases": {
+        "f_parse": 20.601558999999995,
+        "f_load_graph": 12.884405000000001,
+        "check_book": 13.232865999999987,
+        "driver_owned": 0.07742200000001276,
+        "driver_todos": 0.3943580000000111,
+        "specialize_book": 0.8072639999999751,
+        "specialized_error": 0.02031700000000569,
+        "specialized_book": 0.017529999999993606
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "round": 0,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:17:01.423309+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/no-base-0-selfhost.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 251.22042885050178,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "importMs": 86.01805699999998,
+      "compileMs": 110.18859899999998,
+      "importAndCompileMs": 196.20665599999995,
+      "cpuMs": 110.224,
+      "maxRssKiB": 79492,
+      "phases": {
+        "f_parse": 48.020094,
+        "f_load_graph": 33.747817999999995,
+        "check_book": 23.948660999999987,
+        "driver_owned": 0.238207999999986,
+        "driver_todos": 1.1040670000000148,
+        "specialize_book": 1.5749479999999778,
+        "specialized_error": 0.06594200000000683,
+        "specialized_book": 0.05861200000001077
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "round": 1,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:17:01.677319+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/no-base-1-bootstrap.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 147.49927399680018,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "importMs": 45.41002,
+      "compileMs": 49.47774599999998,
+      "importAndCompileMs": 94.88776599999998,
+      "cpuMs": 49.519,
+      "maxRssKiB": 65464,
+      "phases": {
+        "f_parse": 20.647436,
+        "f_load_graph": 12.915078000000008,
+        "check_book": 13.409573000000009,
+        "driver_owned": 0.07685000000000741,
+        "driver_todos": 0.3941480000000013,
+        "specialize_book": 0.7907080000000235,
+        "specialized_error": 0.020738000000022794,
+        "specialized_book": 0.017793000000011716
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "round": 1,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:17:01.827841+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/no-base-1-selfhost.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 251.90033786930144,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "importMs": 85.95993099999998,
+      "compileMs": 111.10110600000002,
+      "importAndCompileMs": 197.061037,
+      "cpuMs": 111.137,
+      "maxRssKiB": 80172,
+      "phases": {
+        "f_parse": 49.03222600000001,
+        "f_load_graph": 33.964582999999976,
+        "check_book": 23.602753000000007,
+        "driver_owned": 0.2410679999999843,
+        "driver_todos": 1.1039110000000107,
+        "specialize_book": 1.5926369999999963,
+        "specialized_error": 0.06582300000002306,
+        "specialized_book": 0.05902499999999122
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "round": 1,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:17:02.082954+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/no-base-1-upstream.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 327.88039511069655,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "importMs": 263.325867,
+      "compileMs": 6.018004000000019,
+      "importAndCompileMs": 269.34387100000004,
+      "cpuMs": 6.046,
+      "maxRssKiB": 100188,
+      "phases": {
+        "load": 3.6477069999999685,
+        "check": 2.2146439999999643
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "round": 2,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:17:02.413012+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/no-base-2-selfhost.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 250.50435378216207,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "importMs": 86.472625,
+      "compileMs": 109.66855900000002,
+      "importAndCompileMs": 196.141184,
+      "cpuMs": 109.704,
+      "maxRssKiB": 80008,
+      "phases": {
+        "f_parse": 47.949636999999996,
+        "f_load_graph": 33.68551099999999,
+        "check_book": 23.550184,
+        "driver_owned": 0.2394090000000233,
+        "driver_todos": 1.0942520000000115,
+        "specialize_book": 1.5861710000000073,
+        "specialized_error": 0.06620300000000157,
+        "specialized_book": 0.05912200000000212
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "round": 2,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:17:02.666974+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/no-base-2-upstream.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 323.68701812811196,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "importMs": 261.05612099999996,
+      "compileMs": 6.037962999999991,
+      "importAndCompileMs": 267.09408399999995,
+      "cpuMs": 6.063,
+      "maxRssKiB": 98104,
+      "phases": {
+        "load": 3.614309999999989,
+        "check": 2.2657800000000066
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "round": 2,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:17:02.994230+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/no-base-2-bootstrap.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 155.2940271794796,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/bool.bend",
+      "importMs": 45.524408,
+      "compileMs": 49.40227900000001,
+      "importAndCompileMs": 94.92668700000002,
+      "cpuMs": 49.429,
+      "maxRssKiB": 65424,
+      "phases": {
+        "f_parse": 20.660858999999988,
+        "f_load_graph": 12.821041999999991,
+        "check_book": 13.44913600000001,
+        "driver_owned": 0.08436399999999367,
+        "driver_todos": 0.3942339999999831,
+        "specialize_book": 0.7757110000000011,
+        "specialized_error": 0.020457000000021708,
+        "specialized_book": 0.01747899999998026
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "round": 0,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:17:03.153405+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256-0-upstream.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 341.39930200763047,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "importMs": 254.28705799999997,
+      "compileMs": 25.903826000000038,
+      "importAndCompileMs": 280.190884,
+      "cpuMs": 25.932,
+      "maxRssKiB": 99664,
+      "phases": {
+        "load": 20.012729999999976,
+        "check": 5.7267799999999625
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "round": 0,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:17:03.523765+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256-0-bootstrap.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 1446.31957099773,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "importMs": 45.077836000000005,
+      "compileMs": 1343.790084,
+      "importAndCompileMs": 1388.86792,
+      "cpuMs": 1343.831,
+      "maxRssKiB": 107916,
+      "phases": {
+        "f_parse": 464.366409,
+        "f_load_graph": 399.73628800000006,
+        "check_book": 367.8503719999999,
+        "driver_owned": 0.4023789999998826,
+        "driver_todos": 64.8784270000001,
+        "specialize_book": 45.00260099999991,
+        "specialized_error": 0.032251999999971304,
+        "specialized_book": 0.027945000000045184
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "round": 0,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:17:05.028987+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256-0-selfhost.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 4338.966028066352,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "importMs": 85.972409,
+      "compileMs": 4169.679054,
+      "importAndCompileMs": 4255.651463,
+      "cpuMs": 4169.086,
+      "maxRssKiB": 169404,
+      "phases": {
+        "f_parse": 1430.543427,
+        "f_load_graph": 1370.9274970000001,
+        "check_book": 1116.1835839999999,
+        "driver_owned": 2.0871979999997166,
+        "driver_todos": 134.97730899999988,
+        "specialize_book": 111.17392199999995,
+        "specialized_error": 0.07174099999974715,
+        "specialized_book": 0.06035200000042096
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "round": 1,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:17:09.370912+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256-1-bootstrap.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 1472.6418771315366,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "importMs": 45.165164999999995,
+      "compileMs": 1365.602125,
+      "importAndCompileMs": 1410.7672899999998,
+      "cpuMs": 1365.657,
+      "maxRssKiB": 108720,
+      "phases": {
+        "f_parse": 486.16685100000007,
+        "f_load_graph": 400.551819,
+        "check_book": 366.4763589999999,
+        "driver_owned": 0.40578900000014073,
+        "driver_todos": 64.79942499999993,
+        "specialize_book": 45.65477100000021,
+        "specialized_error": 0.022621000000071945,
+        "specialized_book": 0.0261040000000321
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "round": 1,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:17:10.873817+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256-1-selfhost.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 4238.582866033539,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "importMs": 86.227309,
+      "compileMs": 4064.936074,
+      "importAndCompileMs": 4151.163383,
+      "cpuMs": 4064.997,
+      "maxRssKiB": 172900,
+      "phases": {
+        "f_parse": 1345.797309,
+        "f_load_graph": 1365.683418,
+        "check_book": 1105.6648249999998,
+        "driver_owned": 1.701462999999876,
+        "driver_todos": 133.47912899999983,
+        "specialize_book": 108.91232999999966,
+        "specialized_error": 0.07377800000085699,
+        "specialized_book": 0.06132100000013452
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "round": 1,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:17:15.132123+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256-1-upstream.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 342.22064004279673,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "importMs": 261.009382,
+      "compileMs": 18.58618899999999,
+      "importAndCompileMs": 279.595571,
+      "cpuMs": 18.616,
+      "maxRssKiB": 101104,
+      "phases": {
+        "load": 12.545843999999988,
+        "check": 5.877141999999992
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "round": 2,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:17:15.479157+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256-2-selfhost.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 4203.54959112592,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "importMs": 85.932454,
+      "compileMs": 4044.401271,
+      "importAndCompileMs": 4130.333725,
+      "cpuMs": 4044.445,
+      "maxRssKiB": 169212,
+      "phases": {
+        "f_parse": 1344.073648,
+        "f_load_graph": 1352.014175,
+        "check_book": 1097.9330020000002,
+        "driver_owned": 1.6860360000000583,
+        "driver_todos": 134.13523399999985,
+        "specialize_book": 110.87674199999947,
+        "specialized_error": 0.0733299999992596,
+        "specialized_book": 0.060658999999759544
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "round": 2,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:17:19.721760+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256-2-upstream.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 343.80581812001765,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "importMs": 261.591424,
+      "compileMs": 18.76846800000004,
+      "importAndCompileMs": 280.35989200000006,
+      "cpuMs": 18.798,
+      "maxRssKiB": 98016,
+      "phases": {
+        "load": 12.892587000000049,
+        "check": 5.702788999999996
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "round": 2,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:17:20.088446+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256-2-bootstrap.txt",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "check"
+      ],
+      "status": "ok",
+      "processMs": 1467.2342659905553,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/build/performance/controlled-baseline-v2/declarations-256.bend",
+      "importMs": 45.23535400000001,
+      "compileMs": 1363.2834429999998,
+      "importAndCompileMs": 1408.5187969999997,
+      "cpuMs": 1363.323,
+      "maxRssKiB": 110748,
+      "phases": {
+        "f_parse": 474.561242,
+        "f_load_graph": 398.90645400000005,
+        "check_book": 375.1891959999999,
+        "driver_owned": 0.4131919999999809,
+        "driver_todos": 67.04668300000003,
+        "specialize_book": 45.61442000000011,
+        "specialized_error": 0.022985000000062428,
+        "specialized_book": 0.024081000000023778
+      },
+      "outputBytes": 7,
+      "validation": {
+        "actual": "checked",
+        "expected": "checked"
+      },
+      "outputSha256": "e61a3d78c65133c7260c43e719d97c46e16bd50c64ee7800536cf14c6407a617"
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "round": 0,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:17:21.577520+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/base-u32-0-upstream.cjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 688.5594429913908,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "importMs": 267.600549,
+      "compileMs": 357.72679200000005,
+      "importAndCompileMs": 625.327341,
+      "cpuMs": 357.769,
+      "maxRssKiB": 130680,
+      "phases": {
+        "load": 152.08266100000003,
+        "check": 198.28610499999996,
+        "emit": 7.134285999999975
+      },
+      "outputBytes": 11460,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "123c79d6d9a515e6c2d1141e09fad16a3daf4d187ce7fdbc85a5d974f6a0f352"
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "round": 0,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:17:22.321612+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/base-u32-0-bootstrap.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 8239.577023079619,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "importMs": 46.652618999999994,
+      "compileMs": 8119.570693,
+      "importAndCompileMs": 8166.223312,
+      "cpuMs": 8119.533,
+      "maxRssKiB": 260548,
+      "phases": {
+        "f_parse": 1751.3914320000001,
+        "f_load_graph": 2448.091797,
+        "check_book": 3157.0227639999994,
+        "driver_owned": 0.6817670000000362,
+        "driver_todos": 95.58930700000019,
+        "specialize_book": 103.29747299999963,
+        "specialized_error": 0.023474999999962165,
+        "specialized_book": 0.14249700000073062,
+        "driver_emit_owned": 4.008299000000079,
+        "j_compile_error": 3.727418000000398,
+        "j_roots": 0.06037000000014814,
+        "j_stops": 384.6989789999998,
+        "reach_book": 20.851149000000078,
+        "j_foreign_error": 1.2877760000001217,
+        "annotate_selected": 67.7765300000001,
+        "j_layout_error": 48.84013899999991,
+        "j_foreign_paths": 1.1671370000003662,
+        "j_program_selected": 28.788383000000067,
+        "j_modules": 0.05743799999982002
+      },
+      "outputBytes": 40162,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "96ec42f32e8e8a0f81e3f10793fa1b109190f2c7cdf6881badd06a4273654c52"
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "round": 0,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:17:30.712699+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/base-u32-0-selfhost.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 42940.845447126776,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "importMs": 88.279012,
+      "compileMs": 42776.810121,
+      "importAndCompileMs": 42865.089133,
+      "cpuMs": 42776.868,
+      "maxRssKiB": 334464,
+      "phases": {
+        "f_parse": 8384.074235,
+        "f_load_graph": 11913.867044,
+        "check_book": 15364.6342,
+        "driver_owned": 3.4322470000042813,
+        "driver_todos": 483.0785079999987,
+        "specialize_book": 677.4201929999981,
+        "specialized_error": 0.07366700000420678,
+        "specialized_book": 0.06623499999841442,
+        "driver_emit_owned": 26.424134000000777,
+        "j_compile_error": 12.953857999993488,
+        "j_roots": 0.1339799999987008,
+        "j_stops": 4681.522374,
+        "reach_book": 93.6911009999967,
+        "j_foreign_error": 15.68110400000296,
+        "annotate_selected": 577.021056000005,
+        "j_layout_error": 433.9246310000017,
+        "j_foreign_paths": 13.626022999997076,
+        "j_program_selected": 92.5514519999997,
+        "j_modules": 0.15005699999892386
+      },
+      "outputBytes": 40162,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "96ec42f32e8e8a0f81e3f10793fa1b109190f2c7cdf6881badd06a4273654c52"
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "round": 1,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:18:13.759993+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/base-u32-1-bootstrap.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 8143.691927893087,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "importMs": 45.410349999999994,
+      "compileMs": 8031.219311,
+      "importAndCompileMs": 8076.629661,
+      "cpuMs": 8031.275,
+      "maxRssKiB": 263116,
+      "phases": {
+        "f_parse": 1736.21618,
+        "f_load_graph": 2460.821,
+        "check_book": 3076.2344860000003,
+        "driver_owned": 0.672961000000214,
+        "driver_todos": 95.43245999999999,
+        "specialize_book": 101.65492499999982,
+        "specialized_error": 0.024268999999549123,
+        "specialized_book": 1.5968310000007477,
+        "driver_emit_owned": 3.8680640000002313,
+        "j_compile_error": 3.6852349999999205,
+        "j_roots": 0.060975999999755004,
+        "j_stops": 379.88153799999964,
+        "reach_book": 21.04322200000024,
+        "j_foreign_error": 1.3042160000004515,
+        "annotate_selected": 68.25552599999992,
+        "j_layout_error": 49.23609899999974,
+        "j_foreign_paths": 1.1699230000003809,
+        "j_program_selected": 28.023228000000017,
+        "j_modules": 0.05586899999980233
+      },
+      "outputBytes": 40162,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "96ec42f32e8e8a0f81e3f10793fa1b109190f2c7cdf6881badd06a4273654c52"
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "round": 1,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:18:22.009421+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/base-u32-1-selfhost.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 43607.411911012605,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "importMs": 86.80893599999999,
+      "compileMs": 43440.212873,
+      "importAndCompileMs": 43527.021809,
+      "cpuMs": 43440.097,
+      "maxRssKiB": 398004,
+      "phases": {
+        "f_parse": 8361.834775000001,
+        "f_load_graph": 12186.140611999997,
+        "check_book": 15606.658118000003,
+        "driver_owned": 3.6081300000005285,
+        "driver_todos": 468.59375,
+        "specialize_book": 613.7420999999958,
+        "specialized_error": 0.07349400000384776,
+        "specialized_book": 0.06600199999957113,
+        "driver_emit_owned": 26.404334999999264,
+        "j_compile_error": 12.90266100000008,
+        "j_roots": 0.1328319999956875,
+        "j_stops": 4973.577775000005,
+        "reach_book": 90.10189299999911,
+        "j_foreign_error": 14.679771999995864,
+        "annotate_selected": 476.3345329999938,
+        "j_layout_error": 398.088462000007,
+        "j_foreign_paths": 83.42514500000107,
+        "j_program_selected": 121.28259099999559,
+        "j_modules": 0.1400190000058501
+      },
+      "outputBytes": 40162,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "96ec42f32e8e8a0f81e3f10793fa1b109190f2c7cdf6881badd06a4273654c52"
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "round": 1,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:19:05.774005+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/base-u32-1-upstream.cjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 680.3912250325084,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "importMs": 259.74834,
+      "compileMs": 355.53785899999997,
+      "importAndCompileMs": 615.2861989999999,
+      "cpuMs": 355.573,
+      "maxRssKiB": 129056,
+      "phases": {
+        "load": 155.19843500000002,
+        "check": 193.10757999999998,
+        "emit": 7.022134999999935
+      },
+      "outputBytes": 11460,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "123c79d6d9a515e6c2d1141e09fad16a3daf4d187ce7fdbc85a5d974f6a0f352"
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "round": 2,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:19:06.524000+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/base-u32-2-selfhost.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 43240.565937012434,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "importMs": 86.533935,
+      "compileMs": 43057.234651000006,
+      "importAndCompileMs": 43143.768586000006,
+      "cpuMs": 43056.468,
+      "maxRssKiB": 327768,
+      "phases": {
+        "f_parse": 8483.1728,
+        "f_load_graph": 11976.192158000002,
+        "check_book": 15658.668839999998,
+        "driver_owned": 4.586639000001014,
+        "driver_todos": 451.42759300000034,
+        "specialize_book": 620.9290509999992,
+        "specialized_error": 0.07106400000338908,
+        "specialized_book": 0.06652300000132527,
+        "driver_emit_owned": 25.990984999996726,
+        "j_compile_error": 12.649442000001727,
+        "j_roots": 0.129374000003736,
+        "j_stops": 4700.943836000006,
+        "reach_book": 78.60583500000212,
+        "j_foreign_error": 15.999856000002183,
+        "annotate_selected": 504.0409359999976,
+        "j_layout_error": 418.54108899999846,
+        "j_foreign_paths": 26.065369000003557,
+        "j_program_selected": 76.60229600000457,
+        "j_modules": 0.1452969999954803
+      },
+      "outputBytes": 40162,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "96ec42f32e8e8a0f81e3f10793fa1b109190f2c7cdf6881badd06a4273654c52"
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "round": 2,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:19:49.915717+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/base-u32-2-upstream.cjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 693.863658932969,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "importMs": 260.927915,
+      "compileMs": 365.59407699999997,
+      "importAndCompileMs": 626.521992,
+      "cpuMs": 365.616,
+      "maxRssKiB": 128036,
+      "phases": {
+        "load": 145.57984899999997,
+        "check": 212.02011699999997,
+        "emit": 7.8062419999999975
+      },
+      "outputBytes": 11460,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "123c79d6d9a515e6c2d1141e09fad16a3daf4d187ce7fdbc85a5d974f6a0f352"
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "round": 2,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:19:50.673982+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/base-u32-2-bootstrap.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 8116.500492906198,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/conformance/typed-smoke/base-u32.bend",
+      "importMs": 45.221838000000005,
+      "compileMs": 8003.073020000001,
+      "importAndCompileMs": 8048.294858000001,
+      "cpuMs": 8003.038,
+      "maxRssKiB": 264376,
+      "phases": {
+        "f_parse": 1729.8520379999998,
+        "f_load_graph": 2433.7572710000004,
+        "check_book": 3078.540561,
+        "driver_owned": 0.7079670000002807,
+        "driver_todos": 96.09593900000073,
+        "specialize_book": 102.22785300000032,
+        "specialized_error": 0.024885999999241903,
+        "specialized_book": 0.15278899999975692,
+        "driver_emit_owned": 4.0505339999999705,
+        "j_compile_error": 3.698358999999982,
+        "j_roots": 0.06122999999934109,
+        "j_stops": 385.64240300000074,
+        "reach_book": 20.9038359999995,
+        "j_foreign_error": 1.313086000000112,
+        "annotate_selected": 66.80261700000028,
+        "j_layout_error": 47.623053000000255,
+        "j_foreign_paths": 1.3261560000000827,
+        "j_program_selected": 28.262920000000122,
+        "j_modules": 0.05683899999985442
+      },
+      "outputBytes": 40162,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "96ec42f32e8e8a0f81e3f10793fa1b109190f2c7cdf6881badd06a4273654c52"
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "round": 0,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:19:58.952006+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/tests/fixtures/tree.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/tree-io-0-upstream.cjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 693.3755129575729,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "importMs": 259.56582199999997,
+      "compileMs": 359.374863,
+      "importAndCompileMs": 618.940685,
+      "cpuMs": 359.398,
+      "maxRssKiB": 131040,
+      "phases": {
+        "load": 149.97189600000002,
+        "check": 187.57912100000004,
+        "emit": 21.62220000000002
+      },
+      "outputBytes": 13114,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "a2cf75428d48f4c330ad4637d33727a53d537e8ecddbe1f2b2924cdbc03c79be"
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "round": 0,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:19:59.699019+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/tests/fixtures/tree.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/tree-io-0-bootstrap.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 8431.288102874532,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "importMs": 45.202002,
+      "compileMs": 8315.99878,
+      "importAndCompileMs": 8361.200782,
+      "cpuMs": 8315.957,
+      "maxRssKiB": 265836,
+      "phases": {
+        "f_parse": 1693.6582689999998,
+        "f_load_graph": 2518.5084899999997,
+        "check_book": 3137.519685,
+        "driver_owned": 0.6891630000000077,
+        "driver_todos": 96.74358299999949,
+        "specialize_book": 102.31137800000033,
+        "specialized_error": 0.024258999999801745,
+        "specialized_book": 1.6090580000000045,
+        "driver_emit_owned": 3.9160799999999654,
+        "j_compile_error": 2.2025629999998273,
+        "j_roots": 0.06261100000028819,
+        "j_stops": 372.0540369999999,
+        "reach_book": 51.711779000000206,
+        "j_foreign_error": 3.7422260000003007,
+        "annotate_selected": 138.85234599999967,
+        "j_layout_error": 81.93349699999999,
+        "j_foreign_paths": 16.851706999999806,
+        "j_program_selected": 91.51543499999934,
+        "j_modules": 0.062252000001535635
+      },
+      "outputBytes": 44357,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "b440cc3c46ae9c8f622a1cab85238a514e265aacfe58959ba7297740ec4af3c8"
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "round": 0,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:20:08.243053+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/tests/fixtures/tree.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/tree-io-0-selfhost.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 44962.980643846095,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "importMs": 86.41380500000001,
+      "compileMs": 44797.651825,
+      "importAndCompileMs": 44884.06563,
+      "cpuMs": 44797.486,
+      "maxRssKiB": 384044,
+      "phases": {
+        "f_parse": 8494.851223,
+        "f_load_graph": 11900.478788,
+        "check_book": 16063.394744999998,
+        "driver_owned": 3.5590310000043246,
+        "driver_todos": 461.74210799999855,
+        "specialize_book": 639.7334239999982,
+        "specialized_error": 0.07175299999653362,
+        "specialized_book": 0.07072400000470225,
+        "driver_emit_owned": 25.948430999997072,
+        "j_compile_error": 9.44418399999995,
+        "j_roots": 0.13513999999850057,
+        "j_stops": 4717.326007999996,
+        "reach_book": 270.58134099999734,
+        "j_foreign_error": 48.23666900000535,
+        "annotate_selected": 871.3802460000006,
+        "j_layout_error": 732.0848649999971,
+        "j_foreign_paths": 86.15920599999663,
+        "j_program_selected": 469.8412150000004,
+        "j_modules": 0.11386299999867333
+      },
+      "outputBytes": 44357,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "b440cc3c46ae9c8f622a1cab85238a514e265aacfe58959ba7297740ec4af3c8"
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "round": 1,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:20:53.357423+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/tests/fixtures/tree.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/tree-io-1-bootstrap.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 8436.717095086351,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "importMs": 45.273250999999995,
+      "compileMs": 8317.738259,
+      "importAndCompileMs": 8363.01151,
+      "cpuMs": 8317.731,
+      "maxRssKiB": 266368,
+      "phases": {
+        "f_parse": 1700.486409,
+        "f_load_graph": 2509.975275,
+        "check_book": 3135.0500359999996,
+        "driver_owned": 0.7095639999997729,
+        "driver_todos": 96.92352599999958,
+        "specialize_book": 103.6433160000006,
+        "specialized_error": 0.02422400000068592,
+        "specialized_book": 0.1216759999997521,
+        "driver_emit_owned": 4.012615000000551,
+        "j_compile_error": 1.9908059999997931,
+        "j_roots": 0.0632130000003599,
+        "j_stops": 374.4199550000003,
+        "reach_book": 51.17557300000044,
+        "j_foreign_error": 3.729091999999582,
+        "annotate_selected": 140.63483200000064,
+        "j_layout_error": 83.65633600000001,
+        "j_foreign_paths": 16.90280100000018,
+        "j_program_selected": 92.14051299999846,
+        "j_modules": 0.057705999999598134
+      },
+      "outputBytes": 44357,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "b440cc3c46ae9c8f622a1cab85238a514e265aacfe58959ba7297740ec4af3c8"
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "round": 1,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:21:01.908295+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/tests/fixtures/tree.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/tree-io-1-selfhost.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 44679.89370506257,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "importMs": 86.15415499999999,
+      "compileMs": 44494.830819999996,
+      "importAndCompileMs": 44580.98497499999,
+      "cpuMs": 44494.2,
+      "maxRssKiB": 351332,
+      "phases": {
+        "f_parse": 8488.366879000001,
+        "f_load_graph": 11944.326083,
+        "check_book": 16135.489714,
+        "driver_owned": 4.461097999999765,
+        "driver_todos": 455.2564060000004,
+        "specialize_book": 608.7571409999946,
+        "specialized_error": 0.0714090000037686,
+        "specialized_book": 0.0726040000008652,
+        "driver_emit_owned": 30.482014000001072,
+        "j_compile_error": 9.097852999999304,
+        "j_roots": 0.1376239999954123,
+        "j_stops": 4695.401575999997,
+        "reach_book": 217.6667260000031,
+        "j_foreign_error": 47.69492900000478,
+        "annotate_selected": 885.0721090000006,
+        "j_layout_error": 523.184534999993,
+        "j_foreign_paths": 46.28992099999596,
+        "j_program_selected": 400.3750999999975,
+        "j_modules": 0.12604900000587804
+      },
+      "outputBytes": 44357,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "b440cc3c46ae9c8f622a1cab85238a514e265aacfe58959ba7297740ec4af3c8"
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "round": 1,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:21:46.697254+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/tests/fixtures/tree.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/tree-io-1-upstream.cjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 681.0981689486653,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "importMs": 258.642606,
+      "compileMs": 354.87242100000003,
+      "importAndCompileMs": 613.515027,
+      "cpuMs": 354.914,
+      "maxRssKiB": 131688,
+      "phases": {
+        "load": 145.21838299999996,
+        "check": 188.37496700000003,
+        "emit": 21.088429999999903
+      },
+      "outputBytes": 13114,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "a2cf75428d48f4c330ad4637d33727a53d537e8ecddbe1f2b2924cdbc03c79be"
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "round": 2,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:21:47.440783+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/tests/fixtures/tree.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/tree-io-2-selfhost.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 44231.516408966854,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "importMs": 86.158367,
+      "compileMs": 44072.116153999996,
+      "importAndCompileMs": 44158.274521,
+      "cpuMs": 44072.061,
+      "maxRssKiB": 346180,
+      "phases": {
+        "f_parse": 8465.669202,
+        "f_load_graph": 11799.292326,
+        "check_book": 15728.655243000005,
+        "driver_owned": 4.367926999999327,
+        "driver_todos": 449.057934000004,
+        "specialize_book": 599.6342310000036,
+        "specialized_error": 0.0710929999986547,
+        "specialized_book": 0.06668699999863748,
+        "driver_emit_owned": 27.46463400000357,
+        "j_compile_error": 9.402313000005961,
+        "j_roots": 0.13632399999914924,
+        "j_stops": 4717.812044999999,
+        "reach_book": 225.4743279999966,
+        "j_foreign_error": 47.64646199999697,
+        "annotate_selected": 872.8644409999979,
+        "j_layout_error": 520.1162220000042,
+        "j_foreign_paths": 46.003927000005206,
+        "j_program_selected": 555.7875819999972,
+        "j_modules": 0.11462800000299467
+      },
+      "outputBytes": 44357,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "b440cc3c46ae9c8f622a1cab85238a514e265aacfe58959ba7297740ec4af3c8"
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "round": 2,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:22:31.791036+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/tests/fixtures/tree.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/tree-io-2-upstream.cjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 693.3091359678656,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "importMs": 260.63939,
+      "compileMs": 366.267273,
+      "importAndCompileMs": 626.906663,
+      "cpuMs": 366.285,
+      "maxRssKiB": 136460,
+      "phases": {
+        "load": 148.54988199999997,
+        "check": 198.05582000000004,
+        "emit": 19.45611699999995
+      },
+      "outputBytes": 13114,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "a2cf75428d48f4c330ad4637d33727a53d537e8ecddbe1f2b2924cdbc03c79be"
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "round": 2,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:22:32.549290+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/tests/fixtures/tree.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/tree-io-2-bootstrap.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 8398.215459892526,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/tests/fixtures/tree.bend",
+      "importMs": 45.159400000000005,
+      "compileMs": 8285.781077,
+      "importAndCompileMs": 8330.940477,
+      "cpuMs": 8285.789,
+      "maxRssKiB": 264972,
+      "phases": {
+        "f_parse": 1690.5490829999999,
+        "f_load_graph": 2484.5717600000003,
+        "check_book": 3149.2784709999996,
+        "driver_owned": 0.6866890000001149,
+        "driver_todos": 95.89750300000014,
+        "specialize_book": 103.19340800000009,
+        "specialized_error": 0.023627999999916938,
+        "specialized_book": 0.11914400000023306,
+        "driver_emit_owned": 4.008232999999564,
+        "j_compile_error": 1.9564420000006066,
+        "j_roots": 0.06224399999973684,
+        "j_stops": 368.3696750000008,
+        "reach_book": 49.81792399999995,
+        "j_foreign_error": 3.694891000000098,
+        "annotate_selected": 139.19844700000067,
+        "j_layout_error": 82.7504740000004,
+        "j_foreign_paths": 3.328429999999571,
+        "j_program_selected": 106.18786800000089,
+        "j_modules": 0.05823400000008405
+      },
+      "outputBytes": 44357,
+      "validation": {
+        "exitCode": 0,
+        "actual": "42",
+        "expected": "42",
+        "stderr": ""
+      },
+      "outputSha256": "b440cc3c46ae9c8f622a1cab85238a514e265aacfe58959ba7297740ec4af3c8"
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "round": 0,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:22:41.057544+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/list-sort-0-upstream.cjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 767.7928311750293,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "importMs": 261.08855,
+      "compileMs": 446.40616700000004,
+      "importAndCompileMs": 707.494717,
+      "cpuMs": 446.427,
+      "maxRssKiB": 142404,
+      "phases": {
+        "load": 154.139099,
+        "check": 238.821351,
+        "emit": 53.228954000000044
+      },
+      "outputBytes": 17658,
+      "validation": {
+        "exitCode": 0,
+        "actual": "6",
+        "expected": "6",
+        "stderr": ""
+      },
+      "outputSha256": "2c3a70aefc5ec20715c6d3fff6bb21dfb8b27bffc2a91199b45f83f043770e91"
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "round": 0,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:22:41.899291+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/list-sort-0-bootstrap.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 9604.126202175394,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "importMs": 45.318506000000006,
+      "compileMs": 9468.77916,
+      "importAndCompileMs": 9514.097666,
+      "cpuMs": 9468.829,
+      "maxRssKiB": 281256,
+      "phases": {
+        "f_parse": 1823.9723329999997,
+        "f_load_graph": 2575.047322,
+        "check_book": 3463.782459,
+        "driver_owned": 2.025064999999813,
+        "driver_todos": 106.29706499999975,
+        "specialize_book": 115.47188899999946,
+        "specialized_error": 0.023782000000210246,
+        "specialized_book": 0.022159000000101514,
+        "driver_emit_owned": 3.75202199999967,
+        "j_compile_error": 2.0380310000000463,
+        "j_roots": 0.06236899999930756,
+        "j_stops": 377.16964499999995,
+        "reach_book": 81.57810900000004,
+        "j_foreign_error": 6.898558999999295,
+        "annotate_selected": 397.1982289999996,
+        "j_layout_error": 216.6661039999999,
+        "j_foreign_paths": 6.869442999999592,
+        "j_program_selected": 287.60868800000026,
+        "j_modules": 0.05773100000078557
+      },
+      "outputBytes": 51465,
+      "validation": {
+        "exitCode": 0,
+        "actual": "6",
+        "expected": "6",
+        "stderr": ""
+      },
+      "outputSha256": "de7d8ded979624d4c55936acfc4b2a5216d79a9faad6c33b703bce299fbe149f"
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "round": 0,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:22:51.649181+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/list-sort-0-selfhost.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 50270.66009887494,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "importMs": 86.14633600000002,
+      "compileMs": 50103.430094999996,
+      "importAndCompileMs": 50189.576430999994,
+      "cpuMs": 50102.662,
+      "maxRssKiB": 393448,
+      "phases": {
+        "f_parse": 8596.978699000001,
+        "f_load_graph": 12448.845561999999,
+        "check_book": 17304.831875999997,
+        "driver_owned": 5.356626000000688,
+        "driver_todos": 508.7656019999995,
+        "specialize_book": 667.7366370000018,
+        "specialized_error": 0.06791700000030687,
+        "specialized_book": 0.07273200000054203,
+        "driver_emit_owned": 28.12152100000094,
+        "j_compile_error": 9.235877999999502,
+        "j_roots": 0.13866999999299878,
+        "j_stops": 4929.029342999995,
+        "reach_book": 366.1661479999966,
+        "j_foreign_error": 90.03147500000341,
+        "annotate_selected": 2331.018526,
+        "j_layout_error": 952.6248480000068,
+        "j_foreign_paths": 86.1826379999984,
+        "j_program_selected": 1775.2893780000013,
+        "j_modules": 0.11195600000064587
+      },
+      "outputBytes": 51465,
+      "validation": {
+        "exitCode": 0,
+        "actual": "6",
+        "expected": "6",
+        "stderr": ""
+      },
+      "outputSha256": "de7d8ded979624d4c55936acfc4b2a5216d79a9faad6c33b703bce299fbe149f"
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "round": 1,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:23:42.035961+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/list-sort-1-bootstrap.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 9608.372459886596,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "importMs": 45.240454,
+      "compileMs": 9460.110603,
+      "importAndCompileMs": 9505.351057,
+      "cpuMs": 9460.095,
+      "maxRssKiB": 280444,
+      "phases": {
+        "f_parse": 1824.393861,
+        "f_load_graph": 2575.3654669999996,
+        "check_book": 3459.361715,
+        "driver_owned": 1.9707360000002154,
+        "driver_todos": 108.10882800000036,
+        "specialize_book": 116.5185360000005,
+        "specialized_error": 0.024164000000382657,
+        "specialized_book": 0.021886000000449712,
+        "driver_emit_owned": 3.8023910000001706,
+        "j_compile_error": 2.0692440000002534,
+        "j_roots": 0.061659000000872766,
+        "j_stops": 381.34988400000293,
+        "reach_book": 79.75927199999933,
+        "j_foreign_error": 6.932495999999446,
+        "annotate_selected": 393.8542040000011,
+        "j_layout_error": 213.73023300000023,
+        "j_foreign_paths": 6.402007000000594,
+        "j_program_selected": 284.1156410000003,
+        "j_modules": 0.06005199999890465
+      },
+      "outputBytes": 51465,
+      "validation": {
+        "exitCode": 0,
+        "actual": "6",
+        "expected": "6",
+        "stderr": ""
+      },
+      "outputSha256": "de7d8ded979624d4c55936acfc4b2a5216d79a9faad6c33b703bce299fbe149f"
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "round": 1,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:23:51.765934+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/list-sort-1-selfhost.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 50859.13774208166,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "importMs": 86.919454,
+      "compileMs": 50697.203513,
+      "importAndCompileMs": 50784.122967,
+      "cpuMs": 50696.975,
+      "maxRssKiB": 385092,
+      "phases": {
+        "f_parse": 8634.539687,
+        "f_load_graph": 12381.218214,
+        "check_book": 17487.857649,
+        "driver_owned": 5.352528000003076,
+        "driver_todos": 512.5295279999991,
+        "specialize_book": 674.9483899999977,
+        "specialized_error": 0.06871399999363348,
+        "specialized_book": 0.06639699999504955,
+        "driver_emit_owned": 28.288345000000845,
+        "j_compile_error": 9.422653000001446,
+        "j_roots": 0.13788900000508875,
+        "j_stops": 4923.957596,
+        "reach_book": 407.14600000000064,
+        "j_foreign_error": 91.11634100000083,
+        "annotate_selected": 2591.5797170000005,
+        "j_layout_error": 1023.9443030000039,
+        "j_foreign_paths": 104.4203370000032,
+        "j_program_selected": 1817.6707649999953,
+        "j_modules": 0.11075300000084098
+      },
+      "outputBytes": 51465,
+      "validation": {
+        "exitCode": 0,
+        "actual": "6",
+        "expected": "6",
+        "stderr": ""
+      },
+      "outputSha256": "de7d8ded979624d4c55936acfc4b2a5216d79a9faad6c33b703bce299fbe149f"
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "round": 1,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:24:42.770098+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/list-sort-1-upstream.cjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 734.4075618311763,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "importMs": 262.321244,
+      "compileMs": 411.547713,
+      "importAndCompileMs": 673.8689569999999,
+      "cpuMs": 411.567,
+      "maxRssKiB": 138440,
+      "phases": {
+        "load": 150.310073,
+        "check": 207.72471800000005,
+        "emit": 53.29912200000001
+      },
+      "outputBytes": 17658,
+      "validation": {
+        "exitCode": 0,
+        "actual": "6",
+        "expected": "6",
+        "stderr": ""
+      },
+      "outputSha256": "2c3a70aefc5ec20715c6d3fff6bb21dfb8b27bffc2a91199b45f83f043770e91"
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "round": 2,
+      "implementation": "selfhost",
+      "started": "2026-09-21T03:24:43.574376+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "selfhost",
+        "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/list-sort-2-selfhost.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 50526.890652952716,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "importMs": 86.39627000000002,
+      "compileMs": 50365.940827000006,
+      "importAndCompileMs": 50452.337097,
+      "cpuMs": 50364.952,
+      "maxRssKiB": 358516,
+      "phases": {
+        "f_parse": 8530.19533,
+        "f_load_graph": 12448.76642,
+        "check_book": 17632.484243,
+        "driver_owned": 5.387938000007125,
+        "driver_todos": 513.249748000002,
+        "specialize_book": 674.8497690000004,
+        "specialized_error": 0.06857699999818578,
+        "specialized_book": 0.06596900000295136,
+        "driver_emit_owned": 28.777028000004066,
+        "j_compile_error": 9.576600000000326,
+        "j_roots": 0.1390109999993001,
+        "j_stops": 4914.743334999999,
+        "reach_book": 340.2281359999979,
+        "j_foreign_error": 86.52744900000107,
+        "annotate_selected": 2554.053509000005,
+        "j_layout_error": 1027.752382000006,
+        "j_foreign_paths": 84.12824700000056,
+        "j_program_selected": 1512.0750659999976,
+        "j_modules": 0.10516800000186777
+      },
+      "outputBytes": 51465,
+      "validation": {
+        "exitCode": 0,
+        "actual": "6",
+        "expected": "6",
+        "stderr": ""
+      },
+      "outputSha256": "de7d8ded979624d4c55936acfc4b2a5216d79a9faad6c33b703bce299fbe149f"
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "round": 2,
+      "implementation": "upstream",
+      "started": "2026-09-21T03:25:34.233711+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "upstream",
+        "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/list-sort-2-upstream.cjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 771.2132199667394,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "importMs": 257.421273,
+      "compileMs": 453.75002099999995,
+      "importAndCompileMs": 711.171294,
+      "cpuMs": 453.789,
+      "maxRssKiB": 141948,
+      "phases": {
+        "load": 152.29629799999998,
+        "check": 247.99298199999993,
+        "emit": 53.26535899999999
+      },
+      "outputBytes": 17658,
+      "validation": {
+        "exitCode": 0,
+        "actual": "6",
+        "expected": "6",
+        "stderr": ""
+      },
+      "outputSha256": "2c3a70aefc5ec20715c6d3fff6bb21dfb8b27bffc2a91199b45f83f043770e91"
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "round": 2,
+      "implementation": "bootstrap",
+      "started": "2026-09-21T03:25:35.091957+00:00",
+      "command": [
+        "taskset",
+        "-c",
+        "2",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/tools/performance/worker.mjs",
+        "bootstrap",
+        "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+        "/home/ai/bend2/build/performance/controlled-baseline-v2/list-sort-2-bootstrap.mjs",
+        "/home/ai/bend2/.bootstrap/upstream",
+        "compile"
+      ],
+      "status": "ok",
+      "processMs": 9592.812990071252,
+      "exitCode": 0,
+      "input": "/home/ai/bend2/.bootstrap/upstream/tests/base/list_sort.bend",
+      "importMs": 45.123343999999996,
+      "compileMs": 9457.469029,
+      "importAndCompileMs": 9502.592373,
+      "cpuMs": 9457.395,
+      "maxRssKiB": 287440,
+      "phases": {
+        "f_parse": 1827.529516,
+        "f_load_graph": 2575.223142,
+        "check_book": 3451.785968,
+        "driver_owned": 2.1302809999997407,
+        "driver_todos": 105.96647099999973,
+        "specialize_book": 115.1670180000001,
+        "specialized_error": 0.023814000000129454,
+        "specialized_book": 0.02218799999991461,
+        "driver_emit_owned": 3.7197470000000976,
+        "j_compile_error": 2.0532240000002275,
+        "j_roots": 0.062425999998595216,
+        "j_stops": 382.7463009999992,
+        "reach_book": 80.53458500000124,
+        "j_foreign_error": 6.929006999998819,
+        "annotate_selected": 394.52297200000066,
+        "j_layout_error": 214.47731899999962,
+        "j_foreign_paths": 6.882040999998935,
+        "j_program_selected": 285.399875000001,
+        "j_modules": 0.060401000000638305
+      },
+      "outputBytes": 51465,
+      "validation": {
+        "exitCode": 0,
+        "actual": "6",
+        "expected": "6",
+        "stderr": ""
+      },
+      "outputSha256": "de7d8ded979624d4c55936acfc4b2a5216d79a9faad6c33b703bce299fbe149f"
+    }
+  ],
+  "summary": [
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "implementation": "upstream",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 6.02284800000001,
+        "min": 6.018004000000019,
+        "max": 6.037962999999991
+      },
+      "importMs": {
+        "n": 3,
+        "median": 261.05612099999996,
+        "min": 259.981586,
+        "max": 263.325867
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 267.09408399999995,
+        "min": 266.004434,
+        "max": 269.34387100000004
+      },
+      "processMs": {
+        "n": 3,
+        "median": 327.88039511069655,
+        "min": 323.68701812811196,
+        "max": 330.07080596871674
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 6.05,
+        "min": 6.046,
+        "max": 6.063
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 98104,
+        "min": 96288,
+        "max": 100188
+      },
+      "phases": {
+        "load": {
+          "n": 3,
+          "median": 3.6281949999999483,
+          "min": 3.614309999999989,
+          "max": 3.6477069999999685
+        },
+        "check": {
+          "n": 3,
+          "median": 2.240287999999964,
+          "min": 2.2146439999999643,
+          "max": 2.2657800000000066
+        }
+      },
+      "compileRatioToUpstream": 1.0
+    },
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "implementation": "bootstrap",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 49.40227900000001,
+        "min": 49.262281,
+        "max": 49.47774599999998
+      },
+      "importMs": {
+        "n": 3,
+        "median": 45.524408,
+        "min": 45.41002,
+        "max": 47.403166999999996
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 94.92668700000002,
+        "min": 94.88776599999998,
+        "max": 96.665448
+      },
+      "processMs": {
+        "n": 3,
+        "median": 147.49927399680018,
+        "min": 146.97146485559642,
+        "max": 155.2940271794796
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 49.429,
+        "min": 49.292,
+        "max": 49.519
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 65424,
+        "min": 65336,
+        "max": 65464
+      },
+      "phases": {
+        "f_parse": {
+          "n": 3,
+          "median": 20.647436,
+          "min": 20.601558999999995,
+          "max": 20.660858999999988
+        },
+        "f_load_graph": {
+          "n": 3,
+          "median": 12.884405000000001,
+          "min": 12.821041999999991,
+          "max": 12.915078000000008
+        },
+        "check_book": {
+          "n": 3,
+          "median": 13.409573000000009,
+          "min": 13.232865999999987,
+          "max": 13.44913600000001
+        },
+        "driver_owned": {
+          "n": 3,
+          "median": 0.07742200000001276,
+          "min": 0.07685000000000741,
+          "max": 0.08436399999999367
+        },
+        "driver_todos": {
+          "n": 3,
+          "median": 0.3942339999999831,
+          "min": 0.3941480000000013,
+          "max": 0.3943580000000111
+        },
+        "specialize_book": {
+          "n": 3,
+          "median": 0.7907080000000235,
+          "min": 0.7757110000000011,
+          "max": 0.8072639999999751
+        },
+        "specialized_error": {
+          "n": 3,
+          "median": 0.020457000000021708,
+          "min": 0.02031700000000569,
+          "max": 0.020738000000022794
+        },
+        "specialized_book": {
+          "n": 3,
+          "median": 0.017529999999993606,
+          "min": 0.01747899999998026,
+          "max": 0.017793000000011716
+        }
+      },
+      "compileRatioToUpstream": 8.202478129947812
+    },
+    {
+      "workload": "no-base",
+      "mode": "check",
+      "implementation": "selfhost",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 110.18859899999998,
+        "min": 109.66855900000002,
+        "max": 111.10110600000002
+      },
+      "importMs": {
+        "n": 3,
+        "median": 86.01805699999998,
+        "min": 85.95993099999998,
+        "max": 86.472625
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 196.20665599999995,
+        "min": 196.141184,
+        "max": 197.061037
+      },
+      "processMs": {
+        "n": 3,
+        "median": 251.22042885050178,
+        "min": 250.50435378216207,
+        "max": 251.90033786930144
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 110.224,
+        "min": 109.704,
+        "max": 111.137
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 80008,
+        "min": 79492,
+        "max": 80172
+      },
+      "phases": {
+        "f_parse": {
+          "n": 3,
+          "median": 48.020094,
+          "min": 47.949636999999996,
+          "max": 49.03222600000001
+        },
+        "f_load_graph": {
+          "n": 3,
+          "median": 33.747817999999995,
+          "min": 33.68551099999999,
+          "max": 33.964582999999976
+        },
+        "check_book": {
+          "n": 3,
+          "median": 23.602753000000007,
+          "min": 23.550184,
+          "max": 23.948660999999987
+        },
+        "driver_owned": {
+          "n": 3,
+          "median": 0.2394090000000233,
+          "min": 0.238207999999986,
+          "max": 0.2410679999999843
+        },
+        "driver_todos": {
+          "n": 3,
+          "median": 1.1039110000000107,
+          "min": 1.0942520000000115,
+          "max": 1.1040670000000148
+        },
+        "specialize_book": {
+          "n": 3,
+          "median": 1.5861710000000073,
+          "min": 1.5749479999999778,
+          "max": 1.5926369999999963
+        },
+        "specialized_error": {
+          "n": 3,
+          "median": 0.06594200000000683,
+          "min": 0.06582300000002306,
+          "max": 0.06620300000000157
+        },
+        "specialized_book": {
+          "n": 3,
+          "median": 0.05902499999999122,
+          "min": 0.05861200000001077,
+          "max": 0.05912200000000212
+        }
+      },
+      "compileRatioToUpstream": 18.295098763907006
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "implementation": "upstream",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 18.76846800000004,
+        "min": 18.58618899999999,
+        "max": 25.903826000000038
+      },
+      "importMs": {
+        "n": 3,
+        "median": 261.009382,
+        "min": 254.28705799999997,
+        "max": 261.591424
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 280.190884,
+        "min": 279.595571,
+        "max": 280.35989200000006
+      },
+      "processMs": {
+        "n": 3,
+        "median": 342.22064004279673,
+        "min": 341.39930200763047,
+        "max": 343.80581812001765
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 18.798,
+        "min": 18.616,
+        "max": 25.932
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 99664,
+        "min": 98016,
+        "max": 101104
+      },
+      "phases": {
+        "load": {
+          "n": 3,
+          "median": 12.892587000000049,
+          "min": 12.545843999999988,
+          "max": 20.012729999999976
+        },
+        "check": {
+          "n": 3,
+          "median": 5.7267799999999625,
+          "min": 5.702788999999996,
+          "max": 5.877141999999992
+        }
+      },
+      "compileRatioToUpstream": 1.0
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "implementation": "bootstrap",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 1363.2834429999998,
+        "min": 1343.790084,
+        "max": 1365.602125
+      },
+      "importMs": {
+        "n": 3,
+        "median": 45.165164999999995,
+        "min": 45.077836000000005,
+        "max": 45.23535400000001
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 1408.5187969999997,
+        "min": 1388.86792,
+        "max": 1410.7672899999998
+      },
+      "processMs": {
+        "n": 3,
+        "median": 1467.2342659905553,
+        "min": 1446.31957099773,
+        "max": 1472.6418771315366
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 1363.323,
+        "min": 1343.831,
+        "max": 1365.657
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 108720,
+        "min": 107916,
+        "max": 110748
+      },
+      "phases": {
+        "f_parse": {
+          "n": 3,
+          "median": 474.561242,
+          "min": 464.366409,
+          "max": 486.16685100000007
+        },
+        "f_load_graph": {
+          "n": 3,
+          "median": 399.73628800000006,
+          "min": 398.90645400000005,
+          "max": 400.551819
+        },
+        "check_book": {
+          "n": 3,
+          "median": 367.8503719999999,
+          "min": 366.4763589999999,
+          "max": 375.1891959999999
+        },
+        "driver_owned": {
+          "n": 3,
+          "median": 0.40578900000014073,
+          "min": 0.4023789999998826,
+          "max": 0.4131919999999809
+        },
+        "driver_todos": {
+          "n": 3,
+          "median": 64.8784270000001,
+          "min": 64.79942499999993,
+          "max": 67.04668300000003
+        },
+        "specialize_book": {
+          "n": 3,
+          "median": 45.61442000000011,
+          "min": 45.00260099999991,
+          "max": 45.65477100000021
+        },
+        "specialized_error": {
+          "n": 3,
+          "median": 0.022985000000062428,
+          "min": 0.022621000000071945,
+          "max": 0.032251999999971304
+        },
+        "specialized_book": {
+          "n": 3,
+          "median": 0.0261040000000321,
+          "min": 0.024081000000023778,
+          "max": 0.027945000000045184
+        }
+      },
+      "compileRatioToUpstream": 72.63690584655055
+    },
+    {
+      "workload": "declarations-256",
+      "mode": "check",
+      "implementation": "selfhost",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 4064.936074,
+        "min": 4044.401271,
+        "max": 4169.679054
+      },
+      "importMs": {
+        "n": 3,
+        "median": 85.972409,
+        "min": 85.932454,
+        "max": 86.227309
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 4151.163383,
+        "min": 4130.333725,
+        "max": 4255.651463
+      },
+      "processMs": {
+        "n": 3,
+        "median": 4238.582866033539,
+        "min": 4203.54959112592,
+        "max": 4338.966028066352
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 4064.997,
+        "min": 4044.445,
+        "max": 4169.086
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 169404,
+        "min": 169212,
+        "max": 172900
+      },
+      "phases": {
+        "f_parse": {
+          "n": 3,
+          "median": 1345.797309,
+          "min": 1344.073648,
+          "max": 1430.543427
+        },
+        "f_load_graph": {
+          "n": 3,
+          "median": 1365.683418,
+          "min": 1352.014175,
+          "max": 1370.9274970000001
+        },
+        "check_book": {
+          "n": 3,
+          "median": 1105.6648249999998,
+          "min": 1097.9330020000002,
+          "max": 1116.1835839999999
+        },
+        "driver_owned": {
+          "n": 3,
+          "median": 1.701462999999876,
+          "min": 1.6860360000000583,
+          "max": 2.0871979999997166
+        },
+        "driver_todos": {
+          "n": 3,
+          "median": 134.13523399999985,
+          "min": 133.47912899999983,
+          "max": 134.97730899999988
+        },
+        "specialize_book": {
+          "n": 3,
+          "median": 110.87674199999947,
+          "min": 108.91232999999966,
+          "max": 111.17392199999995
+        },
+        "specialized_error": {
+          "n": 3,
+          "median": 0.0733299999992596,
+          "min": 0.07174099999974715,
+          "max": 0.07377800000085699
+        },
+        "specialized_book": {
+          "n": 3,
+          "median": 0.060658999999759544,
+          "min": 0.06035200000042096,
+          "max": 0.06132100000013452
+        }
+      },
+      "compileRatioToUpstream": 216.583264760874
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "implementation": "upstream",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 357.72679200000005,
+        "min": 355.53785899999997,
+        "max": 365.59407699999997
+      },
+      "importMs": {
+        "n": 3,
+        "median": 260.927915,
+        "min": 259.74834,
+        "max": 267.600549
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 625.327341,
+        "min": 615.2861989999999,
+        "max": 626.521992
+      },
+      "processMs": {
+        "n": 3,
+        "median": 688.5594429913908,
+        "min": 680.3912250325084,
+        "max": 693.863658932969
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 357.769,
+        "min": 355.573,
+        "max": 365.616
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 129056,
+        "min": 128036,
+        "max": 130680
+      },
+      "phases": {
+        "load": {
+          "n": 3,
+          "median": 152.08266100000003,
+          "min": 145.57984899999997,
+          "max": 155.19843500000002
+        },
+        "check": {
+          "n": 3,
+          "median": 198.28610499999996,
+          "min": 193.10757999999998,
+          "max": 212.02011699999997
+        },
+        "emit": {
+          "n": 3,
+          "median": 7.134285999999975,
+          "min": 7.022134999999935,
+          "max": 7.8062419999999975
+        }
+      },
+      "compileRatioToUpstream": 1.0
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "implementation": "bootstrap",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 8031.219311,
+        "min": 8003.073020000001,
+        "max": 8119.570693
+      },
+      "importMs": {
+        "n": 3,
+        "median": 45.410349999999994,
+        "min": 45.221838000000005,
+        "max": 46.652618999999994
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 8076.629661,
+        "min": 8048.294858000001,
+        "max": 8166.223312
+      },
+      "processMs": {
+        "n": 3,
+        "median": 8143.691927893087,
+        "min": 8116.500492906198,
+        "max": 8239.577023079619
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 8031.275,
+        "min": 8003.038,
+        "max": 8119.533
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 263116,
+        "min": 260548,
+        "max": 264376
+      },
+      "phases": {
+        "f_parse": {
+          "n": 3,
+          "median": 1736.21618,
+          "min": 1729.8520379999998,
+          "max": 1751.3914320000001
+        },
+        "f_load_graph": {
+          "n": 3,
+          "median": 2448.091797,
+          "min": 2433.7572710000004,
+          "max": 2460.821
+        },
+        "check_book": {
+          "n": 3,
+          "median": 3078.540561,
+          "min": 3076.2344860000003,
+          "max": 3157.0227639999994
+        },
+        "driver_owned": {
+          "n": 3,
+          "median": 0.6817670000000362,
+          "min": 0.672961000000214,
+          "max": 0.7079670000002807
+        },
+        "driver_todos": {
+          "n": 3,
+          "median": 95.58930700000019,
+          "min": 95.43245999999999,
+          "max": 96.09593900000073
+        },
+        "specialize_book": {
+          "n": 3,
+          "median": 102.22785300000032,
+          "min": 101.65492499999982,
+          "max": 103.29747299999963
+        },
+        "specialized_error": {
+          "n": 3,
+          "median": 0.024268999999549123,
+          "min": 0.023474999999962165,
+          "max": 0.024885999999241903
+        },
+        "specialized_book": {
+          "n": 3,
+          "median": 0.15278899999975692,
+          "min": 0.14249700000073062,
+          "max": 1.5968310000007477
+        },
+        "driver_emit_owned": {
+          "n": 3,
+          "median": 4.008299000000079,
+          "min": 3.8680640000002313,
+          "max": 4.0505339999999705
+        },
+        "j_compile_error": {
+          "n": 3,
+          "median": 3.698358999999982,
+          "min": 3.6852349999999205,
+          "max": 3.727418000000398
+        },
+        "j_roots": {
+          "n": 3,
+          "median": 0.060975999999755004,
+          "min": 0.06037000000014814,
+          "max": 0.06122999999934109
+        },
+        "j_stops": {
+          "n": 3,
+          "median": 384.6989789999998,
+          "min": 379.88153799999964,
+          "max": 385.64240300000074
+        },
+        "reach_book": {
+          "n": 3,
+          "median": 20.9038359999995,
+          "min": 20.851149000000078,
+          "max": 21.04322200000024
+        },
+        "j_foreign_error": {
+          "n": 3,
+          "median": 1.3042160000004515,
+          "min": 1.2877760000001217,
+          "max": 1.313086000000112
+        },
+        "annotate_selected": {
+          "n": 3,
+          "median": 67.7765300000001,
+          "min": 66.80261700000028,
+          "max": 68.25552599999992
+        },
+        "j_layout_error": {
+          "n": 3,
+          "median": 48.84013899999991,
+          "min": 47.623053000000255,
+          "max": 49.23609899999974
+        },
+        "j_foreign_paths": {
+          "n": 3,
+          "median": 1.1699230000003809,
+          "min": 1.1671370000003662,
+          "max": 1.3261560000000827
+        },
+        "j_program_selected": {
+          "n": 3,
+          "median": 28.262920000000122,
+          "min": 28.023228000000017,
+          "max": 28.788383000000067
+        },
+        "j_modules": {
+          "n": 3,
+          "median": 0.05683899999985442,
+          "min": 0.05586899999980233,
+          "max": 0.05743799999982002
+        }
+      },
+      "compileRatioToUpstream": 22.450706770098446
+    },
+    {
+      "workload": "base-u32",
+      "mode": "compile",
+      "implementation": "selfhost",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 43057.234651000006,
+        "min": 42776.810121,
+        "max": 43440.212873
+      },
+      "importMs": {
+        "n": 3,
+        "median": 86.80893599999999,
+        "min": 86.533935,
+        "max": 88.279012
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 43143.768586000006,
+        "min": 42865.089133,
+        "max": 43527.021809
+      },
+      "processMs": {
+        "n": 3,
+        "median": 43240.565937012434,
+        "min": 42940.845447126776,
+        "max": 43607.411911012605
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 43056.468,
+        "min": 42776.868,
+        "max": 43440.097
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 334464,
+        "min": 327768,
+        "max": 398004
+      },
+      "phases": {
+        "f_parse": {
+          "n": 3,
+          "median": 8384.074235,
+          "min": 8361.834775000001,
+          "max": 8483.1728
+        },
+        "f_load_graph": {
+          "n": 3,
+          "median": 11976.192158000002,
+          "min": 11913.867044,
+          "max": 12186.140611999997
+        },
+        "check_book": {
+          "n": 3,
+          "median": 15606.658118000003,
+          "min": 15364.6342,
+          "max": 15658.668839999998
+        },
+        "driver_owned": {
+          "n": 3,
+          "median": 3.6081300000005285,
+          "min": 3.4322470000042813,
+          "max": 4.586639000001014
+        },
+        "driver_todos": {
+          "n": 3,
+          "median": 468.59375,
+          "min": 451.42759300000034,
+          "max": 483.0785079999987
+        },
+        "specialize_book": {
+          "n": 3,
+          "median": 620.9290509999992,
+          "min": 613.7420999999958,
+          "max": 677.4201929999981
+        },
+        "specialized_error": {
+          "n": 3,
+          "median": 0.07349400000384776,
+          "min": 0.07106400000338908,
+          "max": 0.07366700000420678
+        },
+        "specialized_book": {
+          "n": 3,
+          "median": 0.06623499999841442,
+          "min": 0.06600199999957113,
+          "max": 0.06652300000132527
+        },
+        "driver_emit_owned": {
+          "n": 3,
+          "median": 26.404334999999264,
+          "min": 25.990984999996726,
+          "max": 26.424134000000777
+        },
+        "j_compile_error": {
+          "n": 3,
+          "median": 12.90266100000008,
+          "min": 12.649442000001727,
+          "max": 12.953857999993488
+        },
+        "j_roots": {
+          "n": 3,
+          "median": 0.1328319999956875,
+          "min": 0.129374000003736,
+          "max": 0.1339799999987008
+        },
+        "j_stops": {
+          "n": 3,
+          "median": 4700.943836000006,
+          "min": 4681.522374,
+          "max": 4973.577775000005
+        },
+        "reach_book": {
+          "n": 3,
+          "median": 90.10189299999911,
+          "min": 78.60583500000212,
+          "max": 93.6911009999967
+        },
+        "j_foreign_error": {
+          "n": 3,
+          "median": 15.68110400000296,
+          "min": 14.679771999995864,
+          "max": 15.999856000002183
+        },
+        "annotate_selected": {
+          "n": 3,
+          "median": 504.0409359999976,
+          "min": 476.3345329999938,
+          "max": 577.021056000005
+        },
+        "j_layout_error": {
+          "n": 3,
+          "median": 418.54108899999846,
+          "min": 398.088462000007,
+          "max": 433.9246310000017
+        },
+        "j_foreign_paths": {
+          "n": 3,
+          "median": 26.065369000003557,
+          "min": 13.626022999997076,
+          "max": 83.42514500000107
+        },
+        "j_program_selected": {
+          "n": 3,
+          "median": 92.5514519999997,
+          "min": 76.60229600000457,
+          "max": 121.28259099999559
+        },
+        "j_modules": {
+          "n": 3,
+          "median": 0.1452969999954803,
+          "min": 0.1400190000058501,
+          "max": 0.15005699999892386
+        }
+      },
+      "compileRatioToUpstream": 120.36346064624648
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "implementation": "upstream",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 359.374863,
+        "min": 354.87242100000003,
+        "max": 366.267273
+      },
+      "importMs": {
+        "n": 3,
+        "median": 259.56582199999997,
+        "min": 258.642606,
+        "max": 260.63939
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 618.940685,
+        "min": 613.515027,
+        "max": 626.906663
+      },
+      "processMs": {
+        "n": 3,
+        "median": 693.3091359678656,
+        "min": 681.0981689486653,
+        "max": 693.3755129575729
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 359.398,
+        "min": 354.914,
+        "max": 366.285
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 131688,
+        "min": 131040,
+        "max": 136460
+      },
+      "phases": {
+        "load": {
+          "n": 3,
+          "median": 148.54988199999997,
+          "min": 145.21838299999996,
+          "max": 149.97189600000002
+        },
+        "check": {
+          "n": 3,
+          "median": 188.37496700000003,
+          "min": 187.57912100000004,
+          "max": 198.05582000000004
+        },
+        "emit": {
+          "n": 3,
+          "median": 21.088429999999903,
+          "min": 19.45611699999995,
+          "max": 21.62220000000002
+        }
+      },
+      "compileRatioToUpstream": 1.0
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "implementation": "bootstrap",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 8315.99878,
+        "min": 8285.781077,
+        "max": 8317.738259
+      },
+      "importMs": {
+        "n": 3,
+        "median": 45.202002,
+        "min": 45.159400000000005,
+        "max": 45.273250999999995
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 8361.200782,
+        "min": 8330.940477,
+        "max": 8363.01151
+      },
+      "processMs": {
+        "n": 3,
+        "median": 8431.288102874532,
+        "min": 8398.215459892526,
+        "max": 8436.717095086351
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 8315.957,
+        "min": 8285.789,
+        "max": 8317.731
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 265836,
+        "min": 264972,
+        "max": 266368
+      },
+      "phases": {
+        "f_parse": {
+          "n": 3,
+          "median": 1693.6582689999998,
+          "min": 1690.5490829999999,
+          "max": 1700.486409
+        },
+        "f_load_graph": {
+          "n": 3,
+          "median": 2509.975275,
+          "min": 2484.5717600000003,
+          "max": 2518.5084899999997
+        },
+        "check_book": {
+          "n": 3,
+          "median": 3137.519685,
+          "min": 3135.0500359999996,
+          "max": 3149.2784709999996
+        },
+        "driver_owned": {
+          "n": 3,
+          "median": 0.6891630000000077,
+          "min": 0.6866890000001149,
+          "max": 0.7095639999997729
+        },
+        "driver_todos": {
+          "n": 3,
+          "median": 96.74358299999949,
+          "min": 95.89750300000014,
+          "max": 96.92352599999958
+        },
+        "specialize_book": {
+          "n": 3,
+          "median": 103.19340800000009,
+          "min": 102.31137800000033,
+          "max": 103.6433160000006
+        },
+        "specialized_error": {
+          "n": 3,
+          "median": 0.02422400000068592,
+          "min": 0.023627999999916938,
+          "max": 0.024258999999801745
+        },
+        "specialized_book": {
+          "n": 3,
+          "median": 0.1216759999997521,
+          "min": 0.11914400000023306,
+          "max": 1.6090580000000045
+        },
+        "driver_emit_owned": {
+          "n": 3,
+          "median": 4.008232999999564,
+          "min": 3.9160799999999654,
+          "max": 4.012615000000551
+        },
+        "j_compile_error": {
+          "n": 3,
+          "median": 1.9908059999997931,
+          "min": 1.9564420000006066,
+          "max": 2.2025629999998273
+        },
+        "j_roots": {
+          "n": 3,
+          "median": 0.06261100000028819,
+          "min": 0.06224399999973684,
+          "max": 0.0632130000003599
+        },
+        "j_stops": {
+          "n": 3,
+          "median": 372.0540369999999,
+          "min": 368.3696750000008,
+          "max": 374.4199550000003
+        },
+        "reach_book": {
+          "n": 3,
+          "median": 51.17557300000044,
+          "min": 49.81792399999995,
+          "max": 51.711779000000206
+        },
+        "j_foreign_error": {
+          "n": 3,
+          "median": 3.729091999999582,
+          "min": 3.694891000000098,
+          "max": 3.7422260000003007
+        },
+        "annotate_selected": {
+          "n": 3,
+          "median": 139.19844700000067,
+          "min": 138.85234599999967,
+          "max": 140.63483200000064
+        },
+        "j_layout_error": {
+          "n": 3,
+          "median": 82.7504740000004,
+          "min": 81.93349699999999,
+          "max": 83.65633600000001
+        },
+        "j_foreign_paths": {
+          "n": 3,
+          "median": 16.851706999999806,
+          "min": 3.328429999999571,
+          "max": 16.90280100000018
+        },
+        "j_program_selected": {
+          "n": 3,
+          "median": 92.14051299999846,
+          "min": 91.51543499999934,
+          "max": 106.18786800000089
+        },
+        "j_modules": {
+          "n": 3,
+          "median": 0.05823400000008405,
+          "min": 0.057705999999598134,
+          "max": 0.062252000001535635
+        }
+      },
+      "compileRatioToUpstream": 23.14017933969967
+    },
+    {
+      "workload": "tree-io",
+      "mode": "compile",
+      "implementation": "selfhost",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 44494.830819999996,
+        "min": 44072.116153999996,
+        "max": 44797.651825
+      },
+      "importMs": {
+        "n": 3,
+        "median": 86.158367,
+        "min": 86.15415499999999,
+        "max": 86.41380500000001
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 44580.98497499999,
+        "min": 44158.274521,
+        "max": 44884.06563
+      },
+      "processMs": {
+        "n": 3,
+        "median": 44679.89370506257,
+        "min": 44231.516408966854,
+        "max": 44962.980643846095
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 44494.2,
+        "min": 44072.061,
+        "max": 44797.486
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 351332,
+        "min": 346180,
+        "max": 384044
+      },
+      "phases": {
+        "f_parse": {
+          "n": 3,
+          "median": 8488.366879000001,
+          "min": 8465.669202,
+          "max": 8494.851223
+        },
+        "f_load_graph": {
+          "n": 3,
+          "median": 11900.478788,
+          "min": 11799.292326,
+          "max": 11944.326083
+        },
+        "check_book": {
+          "n": 3,
+          "median": 16063.394744999998,
+          "min": 15728.655243000005,
+          "max": 16135.489714
+        },
+        "driver_owned": {
+          "n": 3,
+          "median": 4.367926999999327,
+          "min": 3.5590310000043246,
+          "max": 4.461097999999765
+        },
+        "driver_todos": {
+          "n": 3,
+          "median": 455.2564060000004,
+          "min": 449.057934000004,
+          "max": 461.74210799999855
+        },
+        "specialize_book": {
+          "n": 3,
+          "median": 608.7571409999946,
+          "min": 599.6342310000036,
+          "max": 639.7334239999982
+        },
+        "specialized_error": {
+          "n": 3,
+          "median": 0.0714090000037686,
+          "min": 0.0710929999986547,
+          "max": 0.07175299999653362
+        },
+        "specialized_book": {
+          "n": 3,
+          "median": 0.07072400000470225,
+          "min": 0.06668699999863748,
+          "max": 0.0726040000008652
+        },
+        "driver_emit_owned": {
+          "n": 3,
+          "median": 27.46463400000357,
+          "min": 25.948430999997072,
+          "max": 30.482014000001072
+        },
+        "j_compile_error": {
+          "n": 3,
+          "median": 9.402313000005961,
+          "min": 9.097852999999304,
+          "max": 9.44418399999995
+        },
+        "j_roots": {
+          "n": 3,
+          "median": 0.13632399999914924,
+          "min": 0.13513999999850057,
+          "max": 0.1376239999954123
+        },
+        "j_stops": {
+          "n": 3,
+          "median": 4717.326007999996,
+          "min": 4695.401575999997,
+          "max": 4717.812044999999
+        },
+        "reach_book": {
+          "n": 3,
+          "median": 225.4743279999966,
+          "min": 217.6667260000031,
+          "max": 270.58134099999734
+        },
+        "j_foreign_error": {
+          "n": 3,
+          "median": 47.69492900000478,
+          "min": 47.64646199999697,
+          "max": 48.23666900000535
+        },
+        "annotate_selected": {
+          "n": 3,
+          "median": 872.8644409999979,
+          "min": 871.3802460000006,
+          "max": 885.0721090000006
+        },
+        "j_layout_error": {
+          "n": 3,
+          "median": 523.184534999993,
+          "min": 520.1162220000042,
+          "max": 732.0848649999971
+        },
+        "j_foreign_paths": {
+          "n": 3,
+          "median": 46.28992099999596,
+          "min": 46.003927000005206,
+          "max": 86.15920599999663
+        },
+        "j_program_selected": {
+          "n": 3,
+          "median": 469.8412150000004,
+          "min": 400.3750999999975,
+          "max": 555.7875819999972
+        },
+        "j_modules": {
+          "n": 3,
+          "median": 0.11462800000299467,
+          "min": 0.11386299999867333,
+          "max": 0.12604900000587804
+        }
+      },
+      "compileRatioToUpstream": 123.81175035049681
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "implementation": "upstream",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 446.40616700000004,
+        "min": 411.547713,
+        "max": 453.75002099999995
+      },
+      "importMs": {
+        "n": 3,
+        "median": 261.08855,
+        "min": 257.421273,
+        "max": 262.321244
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 707.494717,
+        "min": 673.8689569999999,
+        "max": 711.171294
+      },
+      "processMs": {
+        "n": 3,
+        "median": 767.7928311750293,
+        "min": 734.4075618311763,
+        "max": 771.2132199667394
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 446.427,
+        "min": 411.567,
+        "max": 453.789
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 141948,
+        "min": 138440,
+        "max": 142404
+      },
+      "phases": {
+        "load": {
+          "n": 3,
+          "median": 152.29629799999998,
+          "min": 150.310073,
+          "max": 154.139099
+        },
+        "check": {
+          "n": 3,
+          "median": 238.821351,
+          "min": 207.72471800000005,
+          "max": 247.99298199999993
+        },
+        "emit": {
+          "n": 3,
+          "median": 53.26535899999999,
+          "min": 53.228954000000044,
+          "max": 53.29912200000001
+        }
+      },
+      "compileRatioToUpstream": 1.0
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "implementation": "bootstrap",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 9460.110603,
+        "min": 9457.469029,
+        "max": 9468.77916
+      },
+      "importMs": {
+        "n": 3,
+        "median": 45.240454,
+        "min": 45.123343999999996,
+        "max": 45.318506000000006
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 9505.351057,
+        "min": 9502.592373,
+        "max": 9514.097666
+      },
+      "processMs": {
+        "n": 3,
+        "median": 9604.126202175394,
+        "min": 9592.812990071252,
+        "max": 9608.372459886596
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 9460.095,
+        "min": 9457.395,
+        "max": 9468.829
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 281256,
+        "min": 280444,
+        "max": 287440
+      },
+      "phases": {
+        "f_parse": {
+          "n": 3,
+          "median": 1824.393861,
+          "min": 1823.9723329999997,
+          "max": 1827.529516
+        },
+        "f_load_graph": {
+          "n": 3,
+          "median": 2575.223142,
+          "min": 2575.047322,
+          "max": 2575.3654669999996
+        },
+        "check_book": {
+          "n": 3,
+          "median": 3459.361715,
+          "min": 3451.785968,
+          "max": 3463.782459
+        },
+        "driver_owned": {
+          "n": 3,
+          "median": 2.025064999999813,
+          "min": 1.9707360000002154,
+          "max": 2.1302809999997407
+        },
+        "driver_todos": {
+          "n": 3,
+          "median": 106.29706499999975,
+          "min": 105.96647099999973,
+          "max": 108.10882800000036
+        },
+        "specialize_book": {
+          "n": 3,
+          "median": 115.47188899999946,
+          "min": 115.1670180000001,
+          "max": 116.5185360000005
+        },
+        "specialized_error": {
+          "n": 3,
+          "median": 0.023814000000129454,
+          "min": 0.023782000000210246,
+          "max": 0.024164000000382657
+        },
+        "specialized_book": {
+          "n": 3,
+          "median": 0.022159000000101514,
+          "min": 0.021886000000449712,
+          "max": 0.02218799999991461
+        },
+        "driver_emit_owned": {
+          "n": 3,
+          "median": 3.75202199999967,
+          "min": 3.7197470000000976,
+          "max": 3.8023910000001706
+        },
+        "j_compile_error": {
+          "n": 3,
+          "median": 2.0532240000002275,
+          "min": 2.0380310000000463,
+          "max": 2.0692440000002534
+        },
+        "j_roots": {
+          "n": 3,
+          "median": 0.06236899999930756,
+          "min": 0.061659000000872766,
+          "max": 0.062425999998595216
+        },
+        "j_stops": {
+          "n": 3,
+          "median": 381.34988400000293,
+          "min": 377.16964499999995,
+          "max": 382.7463009999992
+        },
+        "reach_book": {
+          "n": 3,
+          "median": 80.53458500000124,
+          "min": 79.75927199999933,
+          "max": 81.57810900000004
+        },
+        "j_foreign_error": {
+          "n": 3,
+          "median": 6.929006999998819,
+          "min": 6.898558999999295,
+          "max": 6.932495999999446
+        },
+        "annotate_selected": {
+          "n": 3,
+          "median": 394.52297200000066,
+          "min": 393.8542040000011,
+          "max": 397.1982289999996
+        },
+        "j_layout_error": {
+          "n": 3,
+          "median": 214.47731899999962,
+          "min": 213.73023300000023,
+          "max": 216.6661039999999
+        },
+        "j_foreign_paths": {
+          "n": 3,
+          "median": 6.869442999999592,
+          "min": 6.402007000000594,
+          "max": 6.882040999998935
+        },
+        "j_program_selected": {
+          "n": 3,
+          "median": 285.399875000001,
+          "min": 284.1156410000003,
+          "max": 287.60868800000026
+        },
+        "j_modules": {
+          "n": 3,
+          "median": 0.06005199999890465,
+          "min": 0.05773100000078557,
+          "max": 0.060401000000638305
+        }
+      },
+      "compileRatioToUpstream": 21.191711276246767
+    },
+    {
+      "workload": "list-sort",
+      "mode": "compile",
+      "implementation": "selfhost",
+      "successful": 3,
+      "attempted": 3,
+      "compileMs": {
+        "n": 3,
+        "median": 50365.940827000006,
+        "min": 50103.430094999996,
+        "max": 50697.203513
+      },
+      "importMs": {
+        "n": 3,
+        "median": 86.39627000000002,
+        "min": 86.14633600000002,
+        "max": 86.919454
+      },
+      "importAndCompileMs": {
+        "n": 3,
+        "median": 50452.337097,
+        "min": 50189.576430999994,
+        "max": 50784.122967
+      },
+      "processMs": {
+        "n": 3,
+        "median": 50526.890652952716,
+        "min": 50270.66009887494,
+        "max": 50859.13774208166
+      },
+      "cpuMs": {
+        "n": 3,
+        "median": 50364.952,
+        "min": 50102.662,
+        "max": 50696.975
+      },
+      "maxRssKiB": {
+        "n": 3,
+        "median": 385092,
+        "min": 358516,
+        "max": 393448
+      },
+      "phases": {
+        "f_parse": {
+          "n": 3,
+          "median": 8596.978699000001,
+          "min": 8530.19533,
+          "max": 8634.539687
+        },
+        "f_load_graph": {
+          "n": 3,
+          "median": 12448.76642,
+          "min": 12381.218214,
+          "max": 12448.845561999999
+        },
+        "check_book": {
+          "n": 3,
+          "median": 17487.857649,
+          "min": 17304.831875999997,
+          "max": 17632.484243
+        },
+        "driver_owned": {
+          "n": 3,
+          "median": 5.356626000000688,
+          "min": 5.352528000003076,
+          "max": 5.387938000007125
+        },
+        "driver_todos": {
+          "n": 3,
+          "median": 512.5295279999991,
+          "min": 508.7656019999995,
+          "max": 513.249748000002
+        },
+        "specialize_book": {
+          "n": 3,
+          "median": 674.8497690000004,
+          "min": 667.7366370000018,
+          "max": 674.9483899999977
+        },
+        "specialized_error": {
+          "n": 3,
+          "median": 0.06857699999818578,
+          "min": 0.06791700000030687,
+          "max": 0.06871399999363348
+        },
+        "specialized_book": {
+          "n": 3,
+          "median": 0.06639699999504955,
+          "min": 0.06596900000295136,
+          "max": 0.07273200000054203
+        },
+        "driver_emit_owned": {
+          "n": 3,
+          "median": 28.288345000000845,
+          "min": 28.12152100000094,
+          "max": 28.777028000004066
+        },
+        "j_compile_error": {
+          "n": 3,
+          "median": 9.422653000001446,
+          "min": 9.235877999999502,
+          "max": 9.576600000000326
+        },
+        "j_roots": {
+          "n": 3,
+          "median": 0.13866999999299878,
+          "min": 0.13788900000508875,
+          "max": 0.1390109999993001
+        },
+        "j_stops": {
+          "n": 3,
+          "median": 4923.957596,
+          "min": 4914.743334999999,
+          "max": 4929.029342999995
+        },
+        "reach_book": {
+          "n": 3,
+          "median": 366.1661479999966,
+          "min": 340.2281359999979,
+          "max": 407.14600000000064
+        },
+        "j_foreign_error": {
+          "n": 3,
+          "median": 90.03147500000341,
+          "min": 86.52744900000107,
+          "max": 91.11634100000083
+        },
+        "annotate_selected": {
+          "n": 3,
+          "median": 2554.053509000005,
+          "min": 2331.018526,
+          "max": 2591.5797170000005
+        },
+        "j_layout_error": {
+          "n": 3,
+          "median": 1023.9443030000039,
+          "min": 952.6248480000068,
+          "max": 1027.752382000006
+        },
+        "j_foreign_paths": {
+          "n": 3,
+          "median": 86.1826379999984,
+          "min": 84.12824700000056,
+          "max": 104.4203370000032
+        },
+        "j_program_selected": {
+          "n": 3,
+          "median": 1775.2893780000013,
+          "min": 1512.0750659999976,
+          "max": 1817.6707649999953
+        },
+        "j_modules": {
+          "n": 3,
+          "median": 0.11075300000084098,
+          "min": 0.10516800000186777,
+          "max": 0.11195600000064587
+        }
+      },
+      "compileRatioToUpstream": 112.82536969745762
+    }
+  ],
+  "finished": "2026-09-21T03:25:44.980051+00:00",
+  "archiveUnchanged": true
+}

@@ -969,7 +969,7 @@ def j_l_bindings(book, env, ts):
     case Con{h, Nil{}}: ""
     case Con{h, rest}: kc(String, U32.is_eq(qt(h), 0), u => "", u => j_l_walk(book, env, kid(h, 0), j_type(book, env, kid(h, 0)))) ++ j_l_bindings(book, env, rest)
 
-# Only leading lambdas are pure closure initializers. Computed values keep thunks.
+# Leading lambdas and proven projections are pure closure initializers.
 law j_l_global:
   for +book: List<&2, KDef>
   for +d: KDef
@@ -978,4 +978,4 @@ law j_l_global:
 
 @unsafe
 def j_l_global(book, d, t):
-  "G[" ++ j_quote(dn(d)) ++ "]=" ++ kc(String, String.eq(tg(j_strip(t)), "Lam"), u => j_expr(book, Nil{}, t, dt(d), False{}), u => "fn(0,function(){return " ++ j_expr(book, Nil{}, t, dt(d), True{}) ++ ";})") ++ ";\n"
+  j_l_global_worker(book, d, t, j_projection_worker(book, t, dt(d)))

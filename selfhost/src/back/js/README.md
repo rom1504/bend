@@ -1,6 +1,6 @@
 # JavaScript backend
 
-`emit.bend`, `choice.bend`, `foreign.bend`, `literals.bend`, and `validate.bend` are Bend2 source. Their input is the checked,
+`emit.bend`, `choice.bend`, `projection.bend`, `foreign.bend`, `literals.bend`, and `validate.bend` are Bend2 source. Their input is the checked,
 specialized, annotated `KTerm`/`KDef` core. They emit JavaScript; they do not
 invoke another compiler.
 
@@ -32,7 +32,7 @@ values passed directly between foreign functions.
 
 The bootstrap-only integration tests use `build/js-backend.mjs`, built with
 `tools/assemble.mjs` from `src/core/term.bend`, `src/core/index.bend`,
-`src/core/normalize.bend`, `src/core/pretty.bend`, `src/back/js/emit.bend`, `src/back/js/choice.bend`,
+`src/core/normalize.bend`, `src/core/pretty.bend`, `src/back/js/emit.bend`, `src/back/js/choice.bend`, `src/back/js/projection.bend`,
 `src/back/js/foreign.bend`, `src/back/js/literals.bend`, and
 `src/back/js/validate.bend`, then
 `tools/stage0-library.mjs` exporting `j_program j_expr j_descriptor j_library
@@ -47,7 +47,7 @@ The emitter uses lexical JavaScript variables for core binder IDs. Parallel
 `Let` right-hand sides remain outside the arrow function that introduces the
 new bindings. Consecutive leading lambdas share one closure; application
 batching stops at the proven leading-lambda arity so intermediate computation
-still precedes later argument evaluation. Computed globals remain reevaluated thunks; leading lambdas share one closure.
+still precedes later argument evaluation. Computed globals remain reevaluated thunks; leading lambdas and proven record projections share one closure.
 `test.mjs` covers partial calls, erased arguments, effect/error evaluation order,
 parallel shadowing, and closures that outlive their defining `Let`.
 
@@ -97,3 +97,17 @@ Selected emission prepares one persistent `book_context` and reuses it through
 annotation, layout validation and emission. Direct backend entry points prepare
 an unindexed input themselves. A context is immutable and valid only for the
 book from which it was built; specialization must finish before preparation.
+
+To exercise a self-emitted API with the named-field backend fixtures, set both
+`BEND_TYPED_API=/absolute/self-emitted.mjs` and
+`BEND_JS_BACKEND=$PWD/tools/backend-test-api.mjs`. That adapter uses the same lazy
+ABI boundary as ordinary compilation. Bootstrap APIs can still be selected
+directly with `BEND_JS_BACKEND`.
+
+`projection.bend` gives pure single-constructor field accessors a one-argument
+worker. It proves that the arm consumes the complete live-field telescope and
+returns one of those fields. Eta-short arms that apply a function-valued field,
+erased-field arms and arbitrary computations retain the generic matcher.
+The worker uses the same `project` helper and retains the field-vector copy,
+including observable field-read order. `test-projection.mjs` checks those bounds,
+function fields, oversaturation, effects, erasure and input ownership.

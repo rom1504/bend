@@ -1,4 +1,6 @@
-import api from '../../../build/js-backend.mjs';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+const api=(await import(process.env.BEND_JS_BACKEND?pathToFileURL(path.resolve(process.env.BEND_JS_BACKEND)):new URL('../../../build/js-backend.mjs',import.meta.url))).default;
 import assert from 'node:assert/strict';
 const list=xs=>xs.reduceRight((tail,head)=>({$:'Con',head,tail}),{$:'Nil'});
 const t=(tag,name='',kids=[],id=0,quant=0)=>({$:'KTerm',tag,name,id,quant,kids:list(kids),removed:list([])});

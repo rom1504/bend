@@ -20,4 +20,4 @@ for(const name of ['computed','rewritten','matched','value'])assert.equal(G[name
 let ticks=0;G.tick={arity:0,code:()=>++ticks,env:null,bound:[]};
 assert.equal(call(library.computed(),[0]),1);assert.equal(call(library.computed(),[0]),2);assert.equal(ticks,2);
 assert.equal(library.direct(7),7);assert.equal(library.annotated(8),8);assert.equal(library.rewritten(9),9);
-console.log('only leading Lam/Ann-Lam globals cached; Let/Rwt/Mat/value thunks and repeated initialization preserved');
+console.log('Lam/Ann-Lam caching; Let/Rwt/non-projection Mat/value thunks and repeated initialization preserved');

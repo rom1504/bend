@@ -239,6 +239,40 @@ node --stack-size=4096 tools/performance/rapid/matcher-workers.test.mjs --chains
 Run the resulting API through the same `compare.py` fresh-process protocol; the
 checked-in measurement records its full configuration.
 
+## Native backend: matched lexer and complete consumption
+
+Compile the actual Bend ASCII lexer and a Bend token digest/count harness through
+the pinned upstream C and JS backends. Both inner timers include lexing, every
+token's complete text/position/kind digest, and the token count. Input reads occur
+before both timers. Generated C inspection confirms that digest and count finish
+before the second clock; process wall time supplies a separate upper bound.
+
+Three alternating fresh processes per backend produce median **81 ms native**
+versus **602.405 ms upstream-emitted JS**: **7.44×** for this component. Process
+medians are 85.367 and 699.704 ms. Every sample produces the same 24,056 tokens
+and digest 3746390705. These are the same Bend algorithms, with no cursor rewrite.
+They are not whole-compiler measurements and do not compare against handwritten
+TypeScript lexing. An earlier lexer-only timing was exploratory; this measurement
+supersedes it by including full result consumption.
+
+The complete checked component build took **3.26 seconds**, including 2.253 s in
+Clang 16; checking, JS emission and C emission are separately recorded. A first
+attempt embedding the large input literal had much slower compilation. Reading
+the input before timing removed that unnecessary rebuild cost.
+
+This is substantially larger than the isolated JS dispatch experiments and
+justifies testing native execution of the full Bend compiler pipeline. It does
+not individually attribute the gain to allocation, representation, dispatch or
+code generation. The native closed-bundle compiler driver is being built with all
+semantic checks enabled; its first build rejected an affine-use error in under
+five seconds, which is retained rather than bypassing ownership checks.
+
+[Matched measurements](rapid-evidence/native-lexer-comparison.json),
+[build phases](rapid-evidence/native-lexer-build.json),
+[source/input hashes](rapid-evidence/native-lexer-preparation.json), and
+[generated-C timing audit](rapid-evidence/native-lexer-timing-inspection.json)
+record the experiment. See the development guide for portable reproduction.
+
 ## Rejected or deferred experiments
 
 A further diagnostic specializes 2,446 non-tail calls to 28 retained scalar

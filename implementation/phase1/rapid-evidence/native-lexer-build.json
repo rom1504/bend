@@ -1,0 +1,84 @@
+{
+  "kind": "checked-native-component-build",
+  "started": "2026-09-21T08:29:33.278Z",
+  "complete": true,
+  "node": "v24.18.0",
+  "nodeExecutable": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+  "cpu": 1,
+  "source": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-lexer-consumed/lexer.bend",
+  "sourceSha256": "5bce980728a939380e5cae32581e74cf15040252facdf4138c2f66b9999e8581",
+  "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+  "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+  "options": [
+    "--js",
+    "--build",
+    "--cpu=1"
+  ],
+  "phases": [
+    {
+      "name": "load",
+      "milliseconds": 101.93445
+    },
+    {
+      "name": "check-and-owned",
+      "milliseconds": 161.31075799999996
+    },
+    {
+      "name": "javascript-emission",
+      "milliseconds": 100.93719999999996
+    },
+    {
+      "name": "c-emission",
+      "milliseconds": 376.551156
+    },
+    {
+      "name": "clang",
+      "milliseconds": 2253.3926739999997
+    }
+  ],
+  "toolSha256": "ddb7851385328903cf4c9adcb58356dfe54cba84dc098b1de0f4dfb80da9be56",
+  "scope": "Native experiment build, not compiler self-hosting or full language conformance",
+  "upstreamTrackedFilesClean": true,
+  "upstreamFiles": [
+    {
+      "file": "bend2/bend.ts",
+      "sha256": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168"
+    },
+    {
+      "file": "bend2/comp.ts",
+      "sha256": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0"
+    },
+    {
+      "file": "bend2/base.bend",
+      "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+    }
+  ],
+  "javascript": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-lexer-consumed/program.cjs",
+    "sha256": "ca940e87b404e4c9be6c8873828d5bfd41dc1228c6b8a4ec4f67406f0d546f1b"
+  },
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-lexer-consumed/program.c",
+    "sha256": "7ff8758b88c4d4d4c5fac4ace3ad1f24efd2571966e0fb2817a7a67863643c93",
+    "bytes": 210883
+  },
+  "native": {
+    "status": "ok",
+    "phase": "compile",
+    "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-lexer-consumed/program",
+    "target": "cpu",
+    "bangs": 0,
+    "compiler": {
+      "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+      "version": 16,
+      "apple": false
+    },
+    "checked": true
+  },
+  "binary": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-lexer-consumed/program",
+    "sha256": "54a5cd9387e2bf93a9b792ab31da9dc2beabf66b90b3d9f38ef80399d8e19d68"
+  },
+  "maxNodeRssKiB": 251384,
+  "finished": "2026-09-21T08:29:36.542Z"
+}

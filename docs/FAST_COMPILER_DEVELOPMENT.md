@@ -71,3 +71,23 @@ After a useful change passes focused comparisons, build a complete API with
 candidate for full self-emission and corpus validation. Keep that long run on
 separate cores. Reserve/release workers between fixture groups so a new experiment
 never pauses a test in the middle of its timeout window.
+
+## Compare native execution of a component
+
+The native lexer probe runs the same Bend lexer and complete token digest/count
+through upstream's C and JS backends. It requires the pinned upstream checkout,
+Node 24 and a supported Clang compiler (`CC` may select it). Run from `selfhost`:
+
+```sh
+node tools/performance/rapid/native-lexer.mjs . build/native-lexer-dev
+node --stack-size=4096 tools/performance/rapid/native-component.mjs \
+  build/native-lexer-dev/lexer.bend build/native-lexer-dev --js --build --cpu=1
+node tools/performance/rapid/native-lexer-measure.mjs build/native-lexer-dev 3 --cpu=1
+```
+
+Choose an available physical CPU and a fresh output directory. Reports retain
+source and executable hashes, build phases, failures, full token consumption and
+process wall time. The JS probe exposes unchanged generated Bend workers to Node
+because upstream's file IO requires Bun; input reading occurs outside both inner
+timers. Component speedups are evidence for a backend experiment, not a claim
+about the full compiler or self-hosting validation.

@@ -1,0 +1,102 @@
+{
+  "kind": "native-lexer-and-complete-consumption-comparison",
+  "started": "2026-09-21T08:30:24.795Z",
+  "complete": true,
+  "node": "v24.18.0",
+  "nodeExecutable": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+  "cpu": 1,
+  "repetitions": 3,
+  "method": "Alternating fresh processes. Timed work is the same Bend lexer, full token-text/position/kind digest, and Bend token count. Native clock rounds to milliseconds. Input reading, output printing, emission and Clang build excluded; process wall recorded separately. JavaScript host ABI removes the generated IO main invocation only; emitted Bend workers unchanged.",
+  "artifacts": {
+    "lexer.bend": "5bce980728a939380e5cae32581e74cf15040252facdf4138c2f66b9999e8581",
+    "program.c": "7ff8758b88c4d4d4c5fac4ace3ad1f24efd2571966e0fb2817a7a67863643c93",
+    "program.cjs": "ca940e87b404e4c9be6c8873828d5bfd41dc1228c6b8a4ec4f67406f0d546f1b",
+    "program": "54a5cd9387e2bf93a9b792ab31da9dc2beabf66b90b3d9f38ef80399d8e19d68",
+    "worker-exposed.cjs": "9012eb7fa1973cfa86b4e5800d9bc5e98c3938f8074fe19942d1016d78c46b9e"
+  },
+  "rows": [
+    {
+      "variant": "native",
+      "repetition": 0,
+      "processMilliseconds": 86.15050199999999,
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "3746390705\n24056\n82\n",
+      "stderr": "",
+      "digest": 3746390705,
+      "count": 24056,
+      "milliseconds": 82
+    },
+    {
+      "variant": "javascript",
+      "repetition": 0,
+      "processMilliseconds": 717.286909,
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "3746390705\n24056\n605.035527\n",
+      "stderr": "",
+      "digest": 3746390705,
+      "count": 24056,
+      "milliseconds": 605.035527
+    },
+    {
+      "variant": "javascript",
+      "repetition": 1,
+      "processMilliseconds": 691.492406,
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "3746390705\n24056\n602.4048879999999\n",
+      "stderr": "",
+      "digest": 3746390705,
+      "count": 24056,
+      "milliseconds": 602.4048879999999
+    },
+    {
+      "variant": "native",
+      "repetition": 1,
+      "processMilliseconds": 85.36731000000009,
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "3746390705\n24056\n81\n",
+      "stderr": "",
+      "digest": 3746390705,
+      "count": 24056,
+      "milliseconds": 81
+    },
+    {
+      "variant": "native",
+      "repetition": 2,
+      "processMilliseconds": 84.77879099999996,
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "3746390705\n24056\n81\n",
+      "stderr": "",
+      "digest": 3746390705,
+      "count": 24056,
+      "milliseconds": 81
+    },
+    {
+      "variant": "javascript",
+      "repetition": 2,
+      "processMilliseconds": 699.7039560000001,
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "3746390705\n24056\n599.928089\n",
+      "stderr": "",
+      "digest": 3746390705,
+      "count": 24056,
+      "milliseconds": 599.928089
+    }
+  ],
+  "summary": {
+    "native": {
+      "lexerAndConsumeMedianMilliseconds": 81,
+      "processMedianMilliseconds": 85.36731000000009
+    },
+    "javascript": {
+      "lexerAndConsumeMedianMilliseconds": 602.4048879999999,
+      "processMedianMilliseconds": 699.7039560000001
+    }
+  },
+  "finished": "2026-09-21T08:30:27.350Z"
+}

@@ -119,7 +119,8 @@ BEND_COMPONENT_DIR="$PWD/build/phase2/components-attempt-01" \
 
 This preserves the build, captured source and `report.json` in a fresh directory.
 `BEND_COMPONENT_REPORT` can select a different report path. An earlier recorded
-build plus 19 test groups took about 35 seconds. These timings are
+build plus 19 test groups took about 35 seconds; the final expanded suite,
+including 47 harness/host tests, recorded about 59 seconds. These timings are
 local observations, not guaranteed budgets. Full checked self-emission remains a
 larger milestone; use the recipe in [Bend-in-Bend](BEND-IN-BEND.md), freeze its
 source/API/runtime/host, and let it run while targeted tests use another CPU.

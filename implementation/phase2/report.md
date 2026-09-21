@@ -318,3 +318,18 @@ source in 311.544 seconds. Its JS output hash is
 `0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3`;
 byte comparison with the final JS stage and self-reproduction are separate gates.
 This establishes neither a native-output fixed point nor full backend conformance.
+
+## Final component and backend regressions
+
+All [19 final component groups](evidence/components-final.json) pass on the frozen
+second source revision. The expanded harness/host group contains **47 passing
+tests**, including bootstrap provenance, self-host resume/drift checks and frozen
+native-build helper identity. The sum of recorded group times is 59.35 seconds.
+
+All [12 backend/runtime suites](evidence/backend-runtime-v2.json) also pass with
+unchanged recorded inputs. They cover JS application/evaluation order, foreign
+ABI, layout rejection, primitive identity, globals, choice calls, strings, record
+projections and runtime ownership. All six borrowed-list/stack-fault probes pass
+on interpreter, JS and native program execution using the final checked API.
+The 48-second suite duration has uncontrolled cache warmth and is correctness
+evidence rather than an isolated performance comparison.

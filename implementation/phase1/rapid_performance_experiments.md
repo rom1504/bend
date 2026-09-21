@@ -209,6 +209,24 @@ throughout the long proof. [Complete fixed-point evidence](rapid-evidence/integr
 and [module snapshot](rapid-evidence/integrated-source-snapshot.json) identify the
 inputs. Full corpus certification remains separate.
 
+The complete verified compiler, rather than a component capsule, then underwent
+a fresh comparison against the preceding self-emitted compiler and pinned
+TypeScript. Three rotating processes per cell, checking enabled and caches off,
+gave these compilation medians:
+
+| Workload | Pinned TypeScript | Previous Bend self-emission | New Bend self-emission |
+|---|---:|---:|---:|
+| Tree/IO | 0.410 s | 17.961 s | 14.510 s |
+| List sort | 0.472 s | 21.918 s | 17.093 s |
+
+The actual compiler saves **19.2% and 22.0%** respectively. Every generated
+program executes correctly; previous/new Bend outputs are byte-identical within
+each workload. The remaining gap is still **35–36×** against TypeScript, so this
+does not justify calling the JS compiler fast. These measurements ran on physical
+CPU 3 after the fixed-point job finished; independent work continued on other
+cores. [Complete measurement evidence](rapid-evidence/actual-self-emitted-performance.json)
+records all 18 observations and artifact hashes.
+
 ## Matcher allocation and fallback chains
 
 A disposable generated-code transform removes temporary function wrappers from

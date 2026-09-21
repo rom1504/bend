@@ -88,7 +88,7 @@ one existing frontend rejection is preserved. All nine valid controls continue
 to accept. Exact diagnostic text remains a separate obligation. The changed-type
 law example belongs to the phase corrections, not the invalid acceptances.
 
-The final focused matrix took 9.064 seconds with a reused API and warm Base cache:
+The first repair matrix took 9.064 seconds with a reused API and warm Base cache:
 6.854 seconds in candidate calls and 1.965 in reference calls. The before matrix
 took 28.488 seconds, partly because invalid syntax reached later expensive gates;
 that difference is not a general compiler speedup. Initial witness authoring
@@ -165,14 +165,14 @@ Decoder/lookup and filesystem boundary tests accompany the host. Initial driver
 build attempts caught syntax issues before successful checked emission. The
 first matrix ran before the final tool-provenance hardening; its preserved local
 launcher reconstruction is labeled accordingly. The second candidate's matrix
-will verify the complete consumed tool/build identities. The first candidate's
+verifies the complete consumed tool/build identities, as recorded below. The first candidate's
 [source preparation](evidence/native-graph-v1-preparation.json) is distinct from
 the next source revision and is not silently updated.
 
 See the [development guide](../../docs/PHASE2_DEVELOPMENT.md) for build, selection,
-replay and native-manifest recipes. Broader validation and final timings will be
-recorded as they complete. No whole-suite conformance or native self-hosting
-claim is made by this interim report.
+replay and native-manifest recipes. Broader validation and final timings are
+recorded separately below. These selected matrices establish neither whole-suite
+conformance nor native self-hosting.
 
 ## Second grammar revision
 
@@ -200,7 +200,7 @@ identifies API
 and source
 `266933eb2ee6aa0d406a48b19f5bbe0250c6685e9f5f2d9fe276bc38bac31784`.
 All [19 component groups](evidence/components-v2-shared-cpu.json) pass, including
-35 individual harness/host tests in the expanded final group. This validation
+35 individual harness/host tests in the last group of that attempt. This validation
 shared CPU 0 with the reference sweep and another bootstrap; its 129.7 seconds
 are not an isolated iteration-speed measurement. `BEND_COMPONENT_DIR` now keeps
 each requested component build and report in a fresh directory.
@@ -289,7 +289,7 @@ tools, manifest, captured modules and assembled source, and verify them before
 and after emission. Drift prevents publishing the staged API. Three temporary
 Git-repository tests cover clean capture, dirty upstream and input/canonical
 identity drift. Earlier reports are not retroactively given this provenance; a
-fresh final-source rebuild will establish the strengthened evidence separately.
+fresh final-source rebuild establishes the strengthened evidence separately below.
 
 ## Measured complete edit loop
 
@@ -369,9 +369,9 @@ frozen books, then compare the same Bend work under upstream-generated JS,
 self-emitted JS and native execution. The current traces locate expensive
 phases but do not yet establish their inner algorithmic cause. In parallel,
 negative-test latency has a specific smaller hypothesis: detailed diagnostics
-replay checking after the cached authoritative verdict. A bounded experiment
-will keep that verdict fixed while measuring reporting work separately; it must
-not weaken exact-diagnostic conformance checks.
+replay checking after the cached authoritative verdict. The bounded experiment
+below keeps that verdict fixed while measuring reporting work separately; it
+does not weaken exact-diagnostic conformance checks.
 
 ## Independent frontend review and retained limits
 
@@ -406,7 +406,8 @@ For `base/bytes_ops.bend`, mean `inspect` checking time falls from **10.248 s to
 about **4.881 s**; the authoritative cached check itself is about **0.197 s**,
 versus **0.192 s** without reporting. The positive `base/list_sort.bend` control
 is essentially unchanged: 2.430 s versus 2.400 s process time. These two workloads
-do not establish a universal speedup.
+do not establish a universal speedup. Reporting replay explains this negative-test
+cost; it does not explain the successful full self-compilation gap.
 
 The next focused performance change should reuse the parsed graph's source
 origins and the validated Base prefix during full diagnostic production, then

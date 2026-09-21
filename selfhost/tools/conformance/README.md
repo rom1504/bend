@@ -213,3 +213,19 @@ is normalized. Every changed or missing probe is retained; negative check rows
 are listed separately. Matching observations do not establish intended-rule
 coverage for previously unproven negative cases, or turn GPU hardware gates into
 execution evidence. Keep both source reports alongside the comparison.
+
+For long runs, fixtures may be partitioned into disjoint `--filter` groups and
+run with the same artifact, host, pin and timeout. Retain every raw group report,
+then combine them with:
+
+```sh
+node tools/conformance/merge-reports.mjs MERGED.json SHARD_1.json SHARD_2.json ...
+```
+
+The merger requires every inventory probe exactly once. It rejects missing or
+duplicate probes, changed artifacts, differing inventories, hosts or timeout/GPU
+policies, and unfinished reports. It preserves every verdict and records input
+report hashes. `coverageComplete` means that every probe was observed;
+`complete` retains the runner's stricter conformance condition. Merging cannot
+turn timeouts, diagnostic mismatches, or hardware gates into passes. Do not mix
+initial attempts with retries to select favorable results.

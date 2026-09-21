@@ -188,3 +188,15 @@ workers from that copy. Outside the compile timer, the actual Bend
 Native default exports also contain runtime globals and reachable Base helpers;
 their extra names are recorded rather than misrepresented as matching the
 TypeScript library's narrower default export contract.
+
+`selfhost-cache-measure.mjs CONFIG.json NEW_OUTPUT_DIRECTORY` compares the
+checked B1 API, the final self-emitted H API and pinned TypeScript in rotating
+fresh-process order. Supply `priorReport` (the completed two-workload native/cache
+report), `selfhostReport` (the completed input-verified stage2/stage3 proof),
+`upstream`, `cpu`, and optional `repetitions` and `timeoutMs`. The tool validates
+the actual H stage chain instead of fabricating bootstrap provenance, primes
+B1/H validated Base caches separately, and uses the same host worker for both.
+It records current host sources and any changes since the earlier native sample;
+those earlier native timings remain a separate experiment. H/B1 emitted bytes
+must match the prior port output, and all three variants must match its execution
+oracle.

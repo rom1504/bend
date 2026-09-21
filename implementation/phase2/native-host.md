@@ -123,6 +123,42 @@ The design's earlier uncached batch estimate is superseded by this observation.
 Keep cached B1 for these small edit/test loops; native prefix caching or a batch
 host would require a new measured experiment before changing that recommendation.
 
+## Proven self-emitted H on the small workloads
+
+After the final proof completed, the [interleaved B1/H/TypeScript comparison](evidence/selfhost-cached-latency.json)
+ran all three variants with the same current host, canonical pinned Base, CPU3,
+Node executable and stack limit. Each sample used a fresh process; the variant
+order rotated across three repetitions. All **18/18** compilations and execution
+oracles passed, and B1/H output bytes matched the earlier port outputs.
+
+| Workload | Cached B1 process median | Cached self-emitted H | Pinned TypeScript |
+| --- | ---: | ---: | ---: |
+| Tree | 1.808 s | 3.448 s | 0.689 s |
+| Import plus foreign asset | 1.601 s | 3.162 s | 0.688 s |
+
+These process timings include startup, host preparation and output writing;
+execution checks run afterward. Inner compilation medians were respectively
+1.701 / 3.263 / 0.382 s for tree and 1.494 / 2.960 / 0.388 s for import plus foreign
+asset. B1 and H use their validated Base caches, while TypeScript fully checks
+Base in each fresh process. This compares the available edit-loop policies,
+not identical cache policies.
+
+The proven self-emitted H is **1.91–1.97× slower than B1** and **4.60–5.00× slower
+than TypeScript** by process wall on these small workloads. The earlier native
+observations around 1.9 s remain separate historical samples. The native host
+may beat H on these tasks, but it still has no demonstrated latency or build-cost
+advantage over cached B1.
+
+Cache setup was measured separately: B1's cache already existed (0.099 s internal,
+0.228 s process wall); H's cache was absent and required **14.494 s internal /
+14.909 s process wall** to build. Those setup costs are excluded from the medians.
+The H artifact was accepted through the completed, input-verified two-stage
+self-emission chain and equal output hashes; no synthetic bootstrap provenance
+was used. Input, worker and upstream hashes remained unchanged. The current host
+contains later bootstrap-only provenance changes relative to the original native
+benchmark, which is why B1 and H were rerun together. Child `NODE_OPTIONS` and
+`BEND_TYPED_TRACE` were cleared explicitly.
+
 ## Full compiler-source run
 
 The final frozen compiler source SHA is
@@ -141,8 +177,9 @@ successful checked library emission under a 600-second limit:
 
 The [independent JavaScript stage2 comparison](evidence/native-js-fullsource-equality.json)
 now confirms **identical bytes** for the same source and canonical Base path.
-Checked B1 emitted stage2 in 784.367 s. The subsequent stage3 self-reproduction is
-a separate milestone. This native program is an execution host for the compiler
+Checked B1 emitted stage2 in 784.367 s; stage2 then reproduced the identical
+stage3 bytes in **2,921.261 s (48.69 minutes)**. Both stages completed with verified
+inputs. This native program is an execution host for the compiler
 that emits JavaScript; it does not demonstrate a native compiler fixed point or
 arbitrary native-output conformance.
 
@@ -180,6 +217,28 @@ and library workload match, but timing variation across cores and shared-host
 conditions remains a limitation. The faster 40.467-second edit loop above uses
 checked B1 bootstrap and targeted tests; it does not make the complete
 self-emitted-JavaScript fixed-point proof a 40-second operation.
+
+The final [same-CPU3 TypeScript sample](evidence/native-fullsource-upstream-cpu3.json)
+completed in **47.784 s internal / 48.261 s process wall**. Loading took 1.883 s,
+checking and ownership 5.319 s, and emission 40.576 s. The independent actual Bend
+`j_library_roots` classifier selected exactly the same **1,466** roots from all
+1,936 checked declarations: no missing or extra roots. Syntax, exported-root and
+helper execution checks passed, with unchanged consumed hashes and a clean pin.
+
+| Same frozen full source | Observed process/stage wall | Ratio to final TypeScript sample |
+| --- | ---: | ---: |
+| Pinned TypeScript | 48.261 s | 1.00× |
+| Native graph compiler, emitting JS | 311.679 s | 6.46× |
+| Checked B1, emitting stage2 | 784.367 s | 16.25× |
+| Self-emitted H, reproducing stage3 | 2,921.261 s | 60.53× |
+
+All four used the same canonical immutable Base and final compiler source on
+CPU3. These are separate single observations across the session, not interleaved
+medians; Node startup, host work and output publication are included in the
+process/stage walls. Native output and both self-emitted stages are byte-identical.
+The full self-emitted compiler remains very slow despite the much shorter cached
+small-test loop. No claim of a fast complete bootstrap follows from the targeted
+validation timings.
 
 ## Retained failures and provenance limits
 

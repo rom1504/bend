@@ -1,0 +1,907 @@
+{
+  "kind": "phase2-js-historical-behavior-delta",
+  "before": {
+    "file": "selfhost/build/phase1/validation-v4/conformance-merged.json",
+    "sha256": "a754148decaac4d0582b8a9ccfd7661f6b3c96dd810c56efeaec0a5c3cad43bd",
+    "compilerGeneration": "Phase1 self-emitted H4, compiler SHA44227e5e...",
+    "started": "2026-09-21T06:27:31.630Z",
+    "finished": "2026-09-21T10:50:17.290Z",
+    "identity": {
+      "adapter": "typed-bend",
+      "capabilities": {
+        "parse": true,
+        "check": true,
+        "interpreter": true,
+        "js": true,
+        "native": true,
+        "metal": true,
+        "cuda": true,
+        "modules": true,
+        "foreign": true,
+        "dependentTypes": true,
+        "affine": true,
+        "termination": true,
+        "proofs": true
+      },
+      "adapterSha256": "5ac001e536c26f1c1e8c93f0888bd9f6c2c165614ddc7b16675fe5058a3a6494",
+      "artifacts": {
+        "compiler": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v4/stage2.mjs",
+          "sha256": "44227e5e9aa714682c3a5f042cbf38fce86cc6bc510265aeda75103ed242579a"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v4/runtime.mjs",
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/6d43cf39393e764ed32623b8a77c502092ed1ae234d9c2a43defba111c5a7b24/typed-driver.mjs",
+          "sha256": "b745fd8c6cf90afc2d5b28233bc80c9347ac66c67c7aa64d32b5f22dce74e51f"
+        },
+        "compilerAbi": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/6d43cf39393e764ed32623b8a77c502092ed1ae234d9c2a43defba111c5a7b24/compiler-abi.mjs",
+          "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+        },
+        "nativeRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+          "sha256": "400606bb7e351041c9658e818aa78696e00ec96fbb35ff8bbb890996bf9fdd91"
+        }
+      },
+      "finalAdapterSha256": "5ac001e536c26f1c1e8c93f0888bd9f6c2c165614ddc7b16675fe5058a3a6494",
+      "adapterChangedDuringRun": false,
+      "finalArtifactHashes": {
+        "compiler": "44227e5e9aa714682c3a5f042cbf38fce86cc6bc510265aeda75103ed242579a",
+        "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+        "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+        "driver": "b745fd8c6cf90afc2d5b28233bc80c9347ac66c67c7aa64d32b5f22dce74e51f",
+        "compilerAbi": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+        "nativeRuntime": "400606bb7e351041c9658e818aa78696e00ec96fbb35ff8bbb890996bf9fdd91"
+      },
+      "changedArtifacts": []
+    },
+    "jsProbes": 999,
+    "strictVerdicts": {
+      "pass": 671,
+      "fail": 207,
+      "not-applicable": 121
+    },
+    "positiveVerdicts": {
+      "pass": 613,
+      "not-applicable": 121,
+      "fail": 1
+    },
+    "negativeVerdicts": {
+      "pass": 58,
+      "fail": 206
+    }
+  },
+  "after": {
+    "file": "selfhost/build/phase2/grammar-v2/execution/js.json",
+    "sha256": "edbae6ceff2880a3419b08ef77fe7e47af3c37abc295468511640303f932be01",
+    "compilerGeneration": "Final phase2 upstream-emitted checked B1, compiler SHA794cbf5f...",
+    "started": "2026-09-21T15:31:19.897Z",
+    "finished": "2026-09-21T16:23:46.736Z",
+    "identity": {
+      "adapter": "typed-bend",
+      "capabilities": {
+        "parse": true,
+        "check": true,
+        "interpreter": true,
+        "js": true,
+        "native": true,
+        "metal": true,
+        "cuda": true,
+        "modules": true,
+        "foreign": true,
+        "dependentTypes": true,
+        "affine": true,
+        "termination": true,
+        "proofs": true
+      },
+      "adapterSha256": "57c7fd426a26dee8fd057f7916a2637bd2103fec20b21c1b54da10a4dee8c82e",
+      "artifacts": {
+        "compiler": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "sha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/f5ae8b167e0df112be6145833a57219ed0339899a025cdd1670dccb32e7029de/typed-driver.mjs",
+          "sha256": "11e96b1dc84b0bbb48e888d381e08b82a1c465d9bacae6d7e437d4eb459c0592"
+        },
+        "compilerAbi": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/f5ae8b167e0df112be6145833a57219ed0339899a025cdd1670dccb32e7029de/compiler-abi.mjs",
+          "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+        },
+        "nodeResources": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/f5ae8b167e0df112be6145833a57219ed0339899a025cdd1670dccb32e7029de/node-resource-args.mjs",
+          "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+        },
+        "nativeBuild": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/f5ae8b167e0df112be6145833a57219ed0339899a025cdd1670dccb32e7029de/native-build.mjs",
+          "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+        },
+        "assemble": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/f5ae8b167e0df112be6145833a57219ed0339899a025cdd1670dccb32e7029de/assemble.mjs",
+          "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+        },
+        "nativeRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+          "sha256": "1bbee6dfbe62736c94ad448ec69a8f7437526e98c0aea230b491574f5a9a85fb"
+        },
+        "nativeEffect/args.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/args.c",
+          "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+        },
+        "nativeEffect/audio_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_close.c",
+          "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+        },
+        "nativeEffect/audio_open.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_open.c",
+          "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+        },
+        "nativeEffect/audio_write.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_write.c",
+          "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+        },
+        "nativeEffect/chan_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_close.c",
+          "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+        },
+        "nativeEffect/chan_new.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_new.c",
+          "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+        },
+        "nativeEffect/chan_recv.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_recv.c",
+          "sha256": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1"
+        },
+        "nativeEffect/chan_send.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_send.c",
+          "sha256": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4"
+        },
+        "nativeEffect/file_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_close.c",
+          "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+        },
+        "nativeEffect/file_open.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_open.c",
+          "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+        },
+        "nativeEffect/file_read.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read.c",
+          "sha256": "4ec0b13491c0d9564836ad23b5a65aec930d84bd19e36c90e20e9c34211a7e2b"
+        },
+        "nativeEffect/file_read_at.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_at.c",
+          "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+        },
+        "nativeEffect/file_read_bytes.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_bytes.c",
+          "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+        },
+        "nativeEffect/file_size.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_size.c",
+          "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+        },
+        "nativeEffect/file_write.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write.c",
+          "sha256": "9829c7100982824fa17f78bab80150adccbddcb69a3cc47939e118018cc22504"
+        },
+        "nativeEffect/file_write_bytes.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write_bytes.c",
+          "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+        },
+        "nativeEffect/get_env.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/get_env.c",
+          "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+        },
+        "nativeEffect/listener_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/listener_close.c",
+          "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+        },
+        "nativeEffect/now.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/now.c",
+          "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+        },
+        "nativeEffect/print.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print.c",
+          "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+        },
+        "nativeEffect/print_err.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print_err.c",
+          "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+        },
+        "nativeEffect/random_u32.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/random_u32.c",
+          "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+        },
+        "nativeEffect/sleep.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/sleep.c",
+          "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+        },
+        "nativeEffect/socket_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/socket_close.c",
+          "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+        },
+        "nativeEffect/spawn.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/spawn.c",
+          "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+        },
+        "nativeEffect/tcp_accept.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_accept.c",
+          "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+        },
+        "nativeEffect/tcp_connect.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_connect.c",
+          "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+        },
+        "nativeEffect/tcp_listen.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_listen.c",
+          "sha256": "2f206b54e6698df529f6c669755cf84e92f51736db4d38e224dd5eb3fcd0a3ed"
+        },
+        "nativeEffect/tcp_poll.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_poll.c",
+          "sha256": "9f4adfe0f4b8e025783b07fa4ba9fec619a5938135dc5f4bb8c9cf7079e82b37"
+        },
+        "nativeEffect/tcp_recv.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_recv.c",
+          "sha256": "3a105d82f4e786b992e27bec66c407caa9efbda67a63c03d95805231a21d9ba1"
+        },
+        "nativeEffect/tcp_send.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_send.c",
+          "sha256": "70a5eba01d09e2cda7a9f3b22d976f4c8ba3fb7a8c8083abddd8d12c85d8a2a4"
+        },
+        "nativeEffect/udp_bind.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_bind.c",
+          "sha256": "fe405175c1890c2d19a2f6d94b2672259b47a1e6dc8f62f8e9ff540bef7a2245"
+        },
+        "nativeEffect/udp_poll.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_poll.c",
+          "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+        },
+        "nativeEffect/udp_recv_from.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_recv_from.c",
+          "sha256": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65"
+        },
+        "nativeEffect/udp_send_to.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_send_to.c",
+          "sha256": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f"
+        },
+        "nativeEffect/window_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_close.c",
+          "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+        },
+        "nativeEffect/window_frame.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_frame.c",
+          "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+        },
+        "nativeEffect/window_open.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_open.c",
+          "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+        },
+        "nativeEffect/window_set_title.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_set_title.c",
+          "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+        },
+        "nativeEffect/write.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/write.c",
+          "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+        },
+        "harness/run.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/run.mjs",
+          "sha256": "cbb3a93875ac0d0186a149b0ec68fa4eeefe0cdd6c2c0d4e0d7169af5fbb033c"
+        },
+        "harness/worker.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/worker.mjs",
+          "sha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+        },
+        "harness/inventory.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/inventory.mjs",
+          "sha256": "bd07624791dedb66f610f1ea46626a48ccb60475b87fef4c9c022b497b2a1a4c"
+        },
+        "harness/judge.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/judge.mjs",
+          "sha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+        },
+        "harness/selection.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/selection.mjs",
+          "sha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+        },
+        "harness/run-probe.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/run-probe.mjs",
+          "sha256": "d61b8ccfabd3c9d2bb522a063608a87dc45ec305c1e20dcf3b5e66e7f4875812"
+        },
+        "harness/replay.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/replay.mjs",
+          "sha256": "7599a5ed831515aa92600d422e6a25b39f02e1567fb406aaaddb5097885da4b0"
+        }
+      },
+      "finalAdapterSha256": "57c7fd426a26dee8fd057f7916a2637bd2103fec20b21c1b54da10a4dee8c82e",
+      "adapterChangedDuringRun": false,
+      "finalArtifactHashes": {
+        "compiler": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+        "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+        "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+        "driver": "11e96b1dc84b0bbb48e888d381e08b82a1c465d9bacae6d7e437d4eb459c0592",
+        "compilerAbi": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+        "nodeResources": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+        "nativeBuild": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+        "assemble": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+        "nativeRuntime": "1bbee6dfbe62736c94ad448ec69a8f7437526e98c0aea230b491574f5a9a85fb",
+        "nativeEffect/args.c": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0",
+        "nativeEffect/audio_close.c": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5",
+        "nativeEffect/audio_open.c": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41",
+        "nativeEffect/audio_write.c": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4",
+        "nativeEffect/chan_close.c": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a",
+        "nativeEffect/chan_new.c": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2",
+        "nativeEffect/chan_recv.c": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1",
+        "nativeEffect/chan_send.c": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4",
+        "nativeEffect/file_close.c": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3",
+        "nativeEffect/file_open.c": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7",
+        "nativeEffect/file_read.c": "4ec0b13491c0d9564836ad23b5a65aec930d84bd19e36c90e20e9c34211a7e2b",
+        "nativeEffect/file_read_at.c": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c",
+        "nativeEffect/file_read_bytes.c": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d",
+        "nativeEffect/file_size.c": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8",
+        "nativeEffect/file_write.c": "9829c7100982824fa17f78bab80150adccbddcb69a3cc47939e118018cc22504",
+        "nativeEffect/file_write_bytes.c": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097",
+        "nativeEffect/get_env.c": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3",
+        "nativeEffect/listener_close.c": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec",
+        "nativeEffect/now.c": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9",
+        "nativeEffect/print.c": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26",
+        "nativeEffect/print_err.c": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6",
+        "nativeEffect/random_u32.c": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d",
+        "nativeEffect/sleep.c": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd",
+        "nativeEffect/socket_close.c": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e",
+        "nativeEffect/spawn.c": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3",
+        "nativeEffect/tcp_accept.c": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8",
+        "nativeEffect/tcp_connect.c": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58",
+        "nativeEffect/tcp_listen.c": "2f206b54e6698df529f6c669755cf84e92f51736db4d38e224dd5eb3fcd0a3ed",
+        "nativeEffect/tcp_poll.c": "9f4adfe0f4b8e025783b07fa4ba9fec619a5938135dc5f4bb8c9cf7079e82b37",
+        "nativeEffect/tcp_recv.c": "3a105d82f4e786b992e27bec66c407caa9efbda67a63c03d95805231a21d9ba1",
+        "nativeEffect/tcp_send.c": "70a5eba01d09e2cda7a9f3b22d976f4c8ba3fb7a8c8083abddd8d12c85d8a2a4",
+        "nativeEffect/udp_bind.c": "fe405175c1890c2d19a2f6d94b2672259b47a1e6dc8f62f8e9ff540bef7a2245",
+        "nativeEffect/udp_poll.c": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71",
+        "nativeEffect/udp_recv_from.c": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65",
+        "nativeEffect/udp_send_to.c": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f",
+        "nativeEffect/window_close.c": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d",
+        "nativeEffect/window_frame.c": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4",
+        "nativeEffect/window_open.c": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d",
+        "nativeEffect/window_set_title.c": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5",
+        "nativeEffect/write.c": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac",
+        "harness/run.mjs": "cbb3a93875ac0d0186a149b0ec68fa4eeefe0cdd6c2c0d4e0d7169af5fbb033c",
+        "harness/worker.mjs": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+        "harness/inventory.mjs": "bd07624791dedb66f610f1ea46626a48ccb60475b87fef4c9c022b497b2a1a4c",
+        "harness/judge.mjs": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+        "harness/selection.mjs": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+        "harness/run-probe.mjs": "d61b8ccfabd3c9d2bb522a063608a87dc45ec305c1e20dcf3b5e66e7f4875812",
+        "harness/replay.mjs": "7599a5ed831515aa92600d422e6a25b39f02e1567fb406aaaddb5097885da4b0"
+      },
+      "changedArtifacts": []
+    },
+    "jsProbes": 999,
+    "strictVerdicts": {
+      "pass": 672,
+      "fail": 206,
+      "not-applicable": 121
+    },
+    "positiveVerdicts": {
+      "pass": 614,
+      "not-applicable": 121
+    },
+    "negativeVerdicts": {
+      "pass": 58,
+      "fail": 206
+    }
+  },
+  "method": "Join JS lane by fixture id, require identical pinned revision and selected fixture content hashes, compare strict verdict/evidence and observed status/phase/checked/exitCode/signal/diagnostic/output. Excludes timing and host provenance metadata from behavioral equality.",
+  "matchingProbes": 999,
+  "changedObservations": 17,
+  "categories": {
+    "negative-diagnostic-change": 6,
+    "negative-rejection-phase-change": 10,
+    "confirmed-resource-policy-fix": 1
+  },
+  "newFailingVerdicts": [],
+  "positiveChangedObservations": [
+    "reg/borrow_fork_hold.bend"
+  ],
+  "successfulOutputChanges": [],
+  "changes": [
+    {
+      "id": "check/list_not_array.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-diagnostic-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 0:0: expected }; got <eof>",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 0:0: expected term; got <eof>",
+        "output": null
+      }
+    },
+    {
+      "id": "check/monad_do_destructure.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-diagnostic-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 13:4: expected term; got return",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: expected a binder or constructor pattern",
+        "output": null
+      }
+    },
+    {
+      "id": "comptime/err_untyped.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-rejection-phase-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error:\n- expected : a function type\n- observed : Quant\nContext:\n- x : Nat\nLocation: app",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 4:10: expected : (a marked parameter requires its type); got ,",
+        "output": null
+      }
+    },
+    {
+      "id": "flatten/cid_pair_repr.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-diagnostic-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 15:10: reserved parameter name; got >",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 0:0: expected : (a definition filling a law has no return annotation); got <eof>",
+        "output": null
+      }
+    },
+    {
+      "id": "flatten/generic_type_param.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-diagnostic-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 16:13: reserved parameter name; got >",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 0:0: expected : (a definition filling a law has no return annotation); got <eof>",
+        "output": null
+      }
+    },
+    {
+      "id": "import/position_independent.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-rejection-phase-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "load",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: ENOENT: no such file or directory, lstat '/late'",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 12:0: expected def, law or type; imports must precede declarations; got import",
+        "output": null
+      }
+    },
+    {
+      "id": "parse/array_length_power.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-rejection-phase-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error:\n- expected : an annotated term (cannot infer)\n- observed : [7, 16]\nLocation: main",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 9:8: expected term; a list does not use semicolon separators; got ;",
+        "output": null
+      }
+    },
+    {
+      "id": "parse/gpu_mark_order.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-diagnostic-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 12:10: reserved parameter name; got >",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 0:0: expected : (a definition filling a law has no return annotation); got <eof>",
+        "output": null
+      }
+    },
+    {
+      "id": "parse/invalid_assign_target.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-rejection-phase-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error:\n- expected : an annotated term (cannot infer)\n- observed : 3\nLocation: main",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: expected a binder or constructor pattern",
+        "output": null
+      }
+    },
+    {
+      "id": "reg/borrow_fork_hold.bend",
+      "lane": "js",
+      "negative": false,
+      "category": "confirmed-resource-policy-fix",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": null,
+        "output": "bend: memory fault (machine stack overflow?)\n"
+      },
+      "after": {
+        "verdict": "pass",
+        "evidence": "checked-execution",
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "signal": null,
+        "diagnostic": null,
+        "output": "2003000\n"
+      }
+    },
+    {
+      "id": "spec/comp_erased_args.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-rejection-phase-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error:\n- expected : -g\n- observed : g\nContext:\n- b : Nat\n- e : {tpl~a2651 == b : Nat}\nLocation: tpl",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 13:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      }
+    },
+    {
+      "id": "spec/comp_generic_dedupe.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-rejection-phase-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error:\n- expected : -f\n- observed : f\nContext:\n- B : Type\nLocation: map",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 15:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      }
+    },
+    {
+      "id": "spec/comp_generic_mint.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-rejection-phase-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error:\n- expected : -f\n- observed : f\nContext:\n- B : Type\nLocation: map",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 15:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      }
+    },
+    {
+      "id": "spec/comp_instantiation_error.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-rejection-phase-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error:\n- expected : -f\n- observed : f\nContext:\n- B : Type\nLocation: map",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 15:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      }
+    },
+    {
+      "id": "spec/comp_late_param.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-rejection-phase-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error:\n- expected : an annotated term (cannot infer)\n- observed : \\{C: (h => t => f => C{f(h), each(t, f)}); N: (f => N{})}\nLocation: each",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 13:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      }
+    },
+    {
+      "id": "spec/comp_let_split.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-diagnostic-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: match requires an unconsumed parameter or constructor field",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 18:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      }
+    },
+    {
+      "id": "spec/mint_count.bend",
+      "lane": "js",
+      "negative": true,
+      "category": "negative-rejection-phase-change",
+      "before": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error:\n- expected : an annotated term (cannot infer)\n- observed : \\{Zero: (g => x => g(x)); Succ: (k => g => x => each(k, g, g(x)))}\nLocation: each",
+        "output": null
+      },
+      "after": {
+        "verdict": "fail",
+        "evidence": null,
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "signal": null,
+        "diagnostic": "Error: line 11:6: expected a plain clause (only leading clauses take ~); got ~",
+        "output": null
+      }
+    }
+  ],
+  "complete": false,
+  "limits": [
+    "Historical H4 and final B1 are different compiler artifacts and use different host revisions; this is not a controlled performance comparison or proof of backend equivalence.",
+    "Sixteen changed negative observations remain strict conformance failures. Rejection phase or diagnostic changes do not prove the intended checker/proof rule ran.",
+    "The 121 not-applicable JS probes are retained and are not counted as successful executions.",
+    "No other lanes, GPU coverage, or full conformance completion are inferred.",
+    "The borrowed-list fix is separately supported by unchanged-compiler runtime probes; this cross-artifact delta alone does not isolate causality."
+  ]
+}

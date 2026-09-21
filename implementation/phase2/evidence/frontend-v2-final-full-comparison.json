@@ -1,0 +1,4251 @@
+{
+  "kind": "phase2-v2-final-frontend-semantic-comparison",
+  "reference": {
+    "report": "selfhost/build/phase2/reference-all/report.json",
+    "sha256": "11a55472e52724da0b2fb1f0bd849eb923978942afb206a4be84427c782d2bb8",
+    "started": "2026-09-21T14:38:32.278Z",
+    "finished": "2026-09-21T15:09:40.906Z",
+    "summary": {
+      "tests": 1378,
+      "allTests": 1378,
+      "excludedTests": 0,
+      "probes": 2756,
+      "statuses": {
+        "observed": 459,
+        "pass": 2294,
+        "fail": 3
+      },
+      "lanes": {
+        "parse": {
+          "observed": 459,
+          "pass": 919
+        },
+        "check": {
+          "pass": 1375,
+          "fail": 3
+        }
+      },
+      "namespaces": {
+        "base": {
+          "observed": 4,
+          "pass": 50
+        },
+        "check": {
+          "pass": 295,
+          "observed": 146,
+          "fail": 1
+        },
+        "compile": {
+          "pass": 200,
+          "observed": 10
+        },
+        "comptime": {
+          "pass": 78,
+          "observed": 22
+        },
+        "cost": {
+          "pass": 9,
+          "observed": 1
+        },
+        "eval": {
+          "observed": 4,
+          "pass": 74
+        },
+        "flatten": {
+          "pass": 426,
+          "observed": 54
+        },
+        "gfx": {
+          "pass": 8
+        },
+        "grade": {
+          "pass": 19,
+          "observed": 15
+        },
+        "halt": {
+          "pass": 44,
+          "observed": 26
+        },
+        "import": {
+          "pass": 42,
+          "observed": 14
+        },
+        "io": {
+          "pass": 201,
+          "observed": 16,
+          "fail": 1
+        },
+        "page": {
+          "observed": 19,
+          "pass": 27
+        },
+        "parse": {
+          "pass": 225,
+          "observed": 63
+        },
+        "printer": {
+          "pass": 14
+        },
+        "proof": {
+          "pass": 123,
+          "observed": 33
+        },
+        "reg": {
+          "pass": 180,
+          "observed": 5,
+          "fail": 1
+        },
+        "rfc": {
+          "pass": 18
+        },
+        "run": {
+          "observed": 6,
+          "pass": 144
+        },
+        "show": {
+          "pass": 16
+        },
+        "spec": {
+          "observed": 13,
+          "pass": 17
+        },
+        "state": {
+          "pass": 24,
+          "observed": 8
+        },
+        "stats": {
+          "pass": 10
+        },
+        "stuck": {
+          "pass": 50
+        }
+      },
+      "checkerRejections": 273,
+      "frontendRejections": 182,
+      "uncheckedExecutions": 0
+    }
+  },
+  "candidate": {
+    "report": "selfhost/build/phase2/grammar-v2/full-frontend/report.json",
+    "sha256": "a2ef1514a3d1edab7b5c2d97be22d998ee369c4d579330e9c6f4f455321029e3",
+    "started": "2026-09-21T15:12:42.227Z",
+    "finished": "2026-09-21T16:20:58.609Z",
+    "summary": {
+      "tests": 1378,
+      "allTests": 1378,
+      "externalTests": 0,
+      "excludedTests": 0,
+      "probes": 2756,
+      "statuses": {
+        "observed": 459,
+        "pass": 1920,
+        "fail": 377
+      },
+      "lanes": {
+        "parse": {
+          "observed": 459,
+          "pass": 919
+        },
+        "check": {
+          "pass": 1001,
+          "fail": 377
+        }
+      },
+      "namespaces": {
+        "base": {
+          "observed": 4,
+          "pass": 50
+        },
+        "check": {
+          "pass": 180,
+          "observed": 146,
+          "fail": 116
+        },
+        "compile": {
+          "pass": 191,
+          "observed": 10,
+          "fail": 9
+        },
+        "comptime": {
+          "pass": 56,
+          "observed": 22,
+          "fail": 22
+        },
+        "cost": {
+          "pass": 8,
+          "observed": 1,
+          "fail": 1
+        },
+        "eval": {
+          "observed": 4,
+          "fail": 1,
+          "pass": 73
+        },
+        "flatten": {
+          "pass": 375,
+          "observed": 54,
+          "fail": 51
+        },
+        "gfx": {
+          "pass": 8
+        },
+        "grade": {
+          "pass": 6,
+          "observed": 15,
+          "fail": 13
+        },
+        "halt": {
+          "pass": 42,
+          "observed": 26,
+          "fail": 2
+        },
+        "import": {
+          "pass": 28,
+          "observed": 14,
+          "fail": 14
+        },
+        "io": {
+          "pass": 195,
+          "observed": 16,
+          "fail": 7
+        },
+        "page": {
+          "observed": 19,
+          "fail": 17,
+          "pass": 10
+        },
+        "parse": {
+          "pass": 165,
+          "observed": 63,
+          "fail": 60
+        },
+        "printer": {
+          "pass": 14
+        },
+        "proof": {
+          "pass": 90,
+          "observed": 33,
+          "fail": 33
+        },
+        "reg": {
+          "pass": 176,
+          "observed": 5,
+          "fail": 5
+        },
+        "rfc": {
+          "pass": 18
+        },
+        "run": {
+          "observed": 6,
+          "fail": 5,
+          "pass": 139
+        },
+        "show": {
+          "pass": 16
+        },
+        "spec": {
+          "observed": 13,
+          "fail": 13,
+          "pass": 4
+        },
+        "state": {
+          "pass": 16,
+          "observed": 8,
+          "fail": 8
+        },
+        "stats": {
+          "pass": 10
+        },
+        "stuck": {
+          "pass": 50
+        }
+      },
+      "checkerRejections": 81,
+      "frontendRejections": 0,
+      "uncheckedExecutions": 0
+    },
+    "identity": {
+      "adapter": "typed-bend",
+      "capabilities": {
+        "parse": true,
+        "check": true,
+        "interpreter": true,
+        "js": true,
+        "native": true,
+        "metal": true,
+        "cuda": true,
+        "modules": true,
+        "foreign": true,
+        "dependentTypes": true,
+        "affine": true,
+        "termination": true,
+        "proofs": true
+      },
+      "adapterSha256": "827dfdfd7e570705c2cab932d3cd6a34fa2a96040963a79786f02bbb80585a2c",
+      "artifacts": {
+        "compiler": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "sha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+          "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/e5ecba5a9d6b36f299ed5a08368ee8d2433b7b1f81f54b3aa3de9329c00cfdaa/typed-driver.mjs",
+          "sha256": "886942b40dc8f7b21875434635ef18cb5d63f1346ebc14f692917f5766eabfab"
+        },
+        "compilerAbi": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/e5ecba5a9d6b36f299ed5a08368ee8d2433b7b1f81f54b3aa3de9329c00cfdaa/compiler-abi.mjs",
+          "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+        },
+        "nodeResources": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/e5ecba5a9d6b36f299ed5a08368ee8d2433b7b1f81f54b3aa3de9329c00cfdaa/node-resource-args.mjs",
+          "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+        },
+        "nativeRuntime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+          "sha256": "1bbee6dfbe62736c94ad448ec69a8f7437526e98c0aea230b491574f5a9a85fb"
+        },
+        "nativeEffect/args.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/args.c",
+          "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+        },
+        "nativeEffect/audio_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_close.c",
+          "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+        },
+        "nativeEffect/audio_open.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_open.c",
+          "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+        },
+        "nativeEffect/audio_write.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_write.c",
+          "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+        },
+        "nativeEffect/chan_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_close.c",
+          "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+        },
+        "nativeEffect/chan_new.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_new.c",
+          "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+        },
+        "nativeEffect/chan_recv.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_recv.c",
+          "sha256": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1"
+        },
+        "nativeEffect/chan_send.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_send.c",
+          "sha256": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4"
+        },
+        "nativeEffect/file_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_close.c",
+          "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+        },
+        "nativeEffect/file_open.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_open.c",
+          "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+        },
+        "nativeEffect/file_read.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read.c",
+          "sha256": "4ec0b13491c0d9564836ad23b5a65aec930d84bd19e36c90e20e9c34211a7e2b"
+        },
+        "nativeEffect/file_read_at.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_at.c",
+          "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+        },
+        "nativeEffect/file_read_bytes.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_bytes.c",
+          "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+        },
+        "nativeEffect/file_size.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_size.c",
+          "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+        },
+        "nativeEffect/file_write.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write.c",
+          "sha256": "9829c7100982824fa17f78bab80150adccbddcb69a3cc47939e118018cc22504"
+        },
+        "nativeEffect/file_write_bytes.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write_bytes.c",
+          "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+        },
+        "nativeEffect/get_env.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/get_env.c",
+          "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+        },
+        "nativeEffect/listener_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/listener_close.c",
+          "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+        },
+        "nativeEffect/now.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/now.c",
+          "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+        },
+        "nativeEffect/print.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print.c",
+          "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+        },
+        "nativeEffect/print_err.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print_err.c",
+          "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+        },
+        "nativeEffect/random_u32.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/random_u32.c",
+          "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+        },
+        "nativeEffect/sleep.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/sleep.c",
+          "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+        },
+        "nativeEffect/socket_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/socket_close.c",
+          "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+        },
+        "nativeEffect/spawn.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/spawn.c",
+          "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+        },
+        "nativeEffect/tcp_accept.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_accept.c",
+          "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+        },
+        "nativeEffect/tcp_connect.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_connect.c",
+          "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+        },
+        "nativeEffect/tcp_listen.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_listen.c",
+          "sha256": "2f206b54e6698df529f6c669755cf84e92f51736db4d38e224dd5eb3fcd0a3ed"
+        },
+        "nativeEffect/tcp_poll.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_poll.c",
+          "sha256": "9f4adfe0f4b8e025783b07fa4ba9fec619a5938135dc5f4bb8c9cf7079e82b37"
+        },
+        "nativeEffect/tcp_recv.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_recv.c",
+          "sha256": "3a105d82f4e786b992e27bec66c407caa9efbda67a63c03d95805231a21d9ba1"
+        },
+        "nativeEffect/tcp_send.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_send.c",
+          "sha256": "70a5eba01d09e2cda7a9f3b22d976f4c8ba3fb7a8c8083abddd8d12c85d8a2a4"
+        },
+        "nativeEffect/udp_bind.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_bind.c",
+          "sha256": "fe405175c1890c2d19a2f6d94b2672259b47a1e6dc8f62f8e9ff540bef7a2245"
+        },
+        "nativeEffect/udp_poll.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_poll.c",
+          "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+        },
+        "nativeEffect/udp_recv_from.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_recv_from.c",
+          "sha256": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65"
+        },
+        "nativeEffect/udp_send_to.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_send_to.c",
+          "sha256": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f"
+        },
+        "nativeEffect/window_close.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_close.c",
+          "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+        },
+        "nativeEffect/window_frame.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_frame.c",
+          "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+        },
+        "nativeEffect/window_open.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_open.c",
+          "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+        },
+        "nativeEffect/window_set_title.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_set_title.c",
+          "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+        },
+        "nativeEffect/write.c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/write.c",
+          "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+        },
+        "harness/run.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/run.mjs",
+          "sha256": "cbb3a93875ac0d0186a149b0ec68fa4eeefe0cdd6c2c0d4e0d7169af5fbb033c"
+        },
+        "harness/worker.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/worker.mjs",
+          "sha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+        },
+        "harness/inventory.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/inventory.mjs",
+          "sha256": "bd07624791dedb66f610f1ea46626a48ccb60475b87fef4c9c022b497b2a1a4c"
+        },
+        "harness/judge.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/judge.mjs",
+          "sha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+        },
+        "harness/selection.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/selection.mjs",
+          "sha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+        },
+        "harness/run-probe.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/run-probe.mjs",
+          "sha256": "d61b8ccfabd3c9d2bb522a063608a87dc45ec305c1e20dcf3b5e66e7f4875812"
+        },
+        "harness/replay.mjs": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/full-frontend/harness/tools/conformance/replay.mjs",
+          "sha256": "7599a5ed831515aa92600d422e6a25b39f02e1567fb406aaaddb5097885da4b0"
+        }
+      },
+      "finalAdapterSha256": "827dfdfd7e570705c2cab932d3cd6a34fa2a96040963a79786f02bbb80585a2c",
+      "adapterChangedDuringRun": false,
+      "finalArtifactHashes": {
+        "compiler": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+        "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+        "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+        "driver": "886942b40dc8f7b21875434635ef18cb5d63f1346ebc14f692917f5766eabfab",
+        "compilerAbi": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+        "nodeResources": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+        "nativeRuntime": "1bbee6dfbe62736c94ad448ec69a8f7437526e98c0aea230b491574f5a9a85fb",
+        "nativeEffect/args.c": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0",
+        "nativeEffect/audio_close.c": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5",
+        "nativeEffect/audio_open.c": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41",
+        "nativeEffect/audio_write.c": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4",
+        "nativeEffect/chan_close.c": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a",
+        "nativeEffect/chan_new.c": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2",
+        "nativeEffect/chan_recv.c": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1",
+        "nativeEffect/chan_send.c": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4",
+        "nativeEffect/file_close.c": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3",
+        "nativeEffect/file_open.c": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7",
+        "nativeEffect/file_read.c": "4ec0b13491c0d9564836ad23b5a65aec930d84bd19e36c90e20e9c34211a7e2b",
+        "nativeEffect/file_read_at.c": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c",
+        "nativeEffect/file_read_bytes.c": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d",
+        "nativeEffect/file_size.c": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8",
+        "nativeEffect/file_write.c": "9829c7100982824fa17f78bab80150adccbddcb69a3cc47939e118018cc22504",
+        "nativeEffect/file_write_bytes.c": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097",
+        "nativeEffect/get_env.c": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3",
+        "nativeEffect/listener_close.c": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec",
+        "nativeEffect/now.c": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9",
+        "nativeEffect/print.c": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26",
+        "nativeEffect/print_err.c": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6",
+        "nativeEffect/random_u32.c": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d",
+        "nativeEffect/sleep.c": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd",
+        "nativeEffect/socket_close.c": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e",
+        "nativeEffect/spawn.c": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3",
+        "nativeEffect/tcp_accept.c": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8",
+        "nativeEffect/tcp_connect.c": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58",
+        "nativeEffect/tcp_listen.c": "2f206b54e6698df529f6c669755cf84e92f51736db4d38e224dd5eb3fcd0a3ed",
+        "nativeEffect/tcp_poll.c": "9f4adfe0f4b8e025783b07fa4ba9fec619a5938135dc5f4bb8c9cf7079e82b37",
+        "nativeEffect/tcp_recv.c": "3a105d82f4e786b992e27bec66c407caa9efbda67a63c03d95805231a21d9ba1",
+        "nativeEffect/tcp_send.c": "70a5eba01d09e2cda7a9f3b22d976f4c8ba3fb7a8c8083abddd8d12c85d8a2a4",
+        "nativeEffect/udp_bind.c": "fe405175c1890c2d19a2f6d94b2672259b47a1e6dc8f62f8e9ff540bef7a2245",
+        "nativeEffect/udp_poll.c": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71",
+        "nativeEffect/udp_recv_from.c": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65",
+        "nativeEffect/udp_send_to.c": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f",
+        "nativeEffect/window_close.c": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d",
+        "nativeEffect/window_frame.c": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4",
+        "nativeEffect/window_open.c": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d",
+        "nativeEffect/window_set_title.c": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5",
+        "nativeEffect/write.c": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac",
+        "harness/run.mjs": "cbb3a93875ac0d0186a149b0ec68fa4eeefe0cdd6c2c0d4e0d7169af5fbb033c",
+        "harness/worker.mjs": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+        "harness/inventory.mjs": "bd07624791dedb66f610f1ea46626a48ccb60475b87fef4c9c022b497b2a1a4c",
+        "harness/judge.mjs": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+        "harness/selection.mjs": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+        "harness/run-probe.mjs": "d61b8ccfabd3c9d2bb522a063608a87dc45ec305c1e20dcf3b5e66e7f4875812",
+        "harness/replay.mjs": "7599a5ed831515aa92600d422e6a25b39f02e1567fb406aaaddb5097885da4b0"
+      },
+      "changedArtifacts": []
+    }
+  },
+  "rawComparison": {
+    "report": "selfhost/build/phase2/grammar-v2/full-frontend/comparison.json",
+    "sha256": "ecd19bbad3acf7dbbeb93a0c75ae1c03dbe4431d034f76b066a9fbaa679799b1"
+  },
+  "completedProbesPerCompiler": 2756,
+  "timingStratification": {
+    "reference": {
+      "positiveCheck": {
+        "count": 919,
+        "medianMs": 719,
+        "sumMs": 761303,
+        "minMs": 307,
+        "maxMs": 3248
+      },
+      "negativeCheckRejectedParse": {
+        "count": 182,
+        "medianMs": 482.5,
+        "sumMs": 101713,
+        "minMs": 300,
+        "maxMs": 1336
+      },
+      "negativeCheckRejectedCheck": {
+        "count": 274,
+        "medianMs": 701.0,
+        "sumMs": 201285,
+        "minMs": 304,
+        "maxMs": 2144
+      }
+    },
+    "candidate": {
+      "positiveCheck": {
+        "count": 919,
+        "medianMs": 1246,
+        "sumMs": 1241857,
+        "minMs": 254,
+        "maxMs": 30528
+      },
+      "negativeCheckRejectedParse": {
+        "count": 163,
+        "medianMs": 246,
+        "sumMs": 56067,
+        "minMs": 200,
+        "maxMs": 986
+      },
+      "negativeCheckRejectedCheck": {
+        "count": 288,
+        "medianMs": 10080.5,
+        "sumMs": 2044775,
+        "minMs": 246,
+        "maxMs": 13451
+      }
+    },
+    "caveat": "Shared-host correctness observations, not an isolated performance benchmark. Different rejection-phase populations are not matched workloads."
+  },
+  "nextPerformanceHypothesis": {
+    "cause": "typed-driver inspect calls check_book_diagnostic after cached rejection. That API calls full check_book, then dg_events starts from an empty cached book and checks definitions again before detailed failure replay. This can repeat the validated prefix twice.",
+    "evidence": "selfhost/tools/typed-driver.mjs:266-281; selfhost/src/diagnostic/produce.bend:201-220",
+    "proposal": "A future component probe should separately time successful check, rejected check, and diagnostic replay for the same frozen book; then test diagnostic reuse without changing rule ordering or messages."
+  },
+  "positiveCheckAcceptance": {
+    "reference": 919,
+    "candidate": 919,
+    "candidateFailures": []
+  },
+  "negativeCheckAccepted": {
+    "reference": [
+      "io/main_foreign.bend",
+      "reg/array_open_element.bend"
+    ],
+    "candidate": [
+      "io/main_foreign.bend",
+      "reg/array_open_element.bend"
+    ]
+  },
+  "negativeCheckRejectedByPhase": {
+    "reference": {
+      "check": 274,
+      "parse": 182,
+      "compile": 1
+    },
+    "candidate": {
+      "check": 288,
+      "parse": 163,
+      "compile": 1,
+      "load": 5
+    }
+  },
+  "checkAcceptanceDifferences": [],
+  "parseAcceptanceDifferences": [
+    {
+      "id": "check/book_prefix_arity.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a fresh constructor name (duplicate declaration: K6)\n- observed : '{'\nLocation:\n11 | type B6 is Data:\n12>|   K6{a: Un6, b: Un6}\n13 | "
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "check/ctor_shared_tag.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a fresh constructor name (duplicate declaration: K5)\n- observed : '{'\nLocation:\n 9 | type B5 is Data:\n10>|   K5{a: A5}\n11 | "
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "check/do_missing_bind.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 0:0: expected term; got <eof>"
+      }
+    },
+    {
+      "id": "check/erased_match_numeric.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : '}'\n- observed : ':'\nLocation:\n10 | def hidden():\n11>|   \\{0: 0; (1)}\n12 | "
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "check/op_bare_refused.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n 8 |   + b\n 9>|   + c\n10 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again."
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "check/op_brace_refused.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a * b : Nat))\nLocation:\n5 | def main() -> Nat:\n6>|   {2n * 3n : Nat}\n7 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again."
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "check/op_ns_call_arg.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n 8 | def main() -> U32:\n 9>|   (id_u(2 + 3) : U32)\n10 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again."
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "check/template_ns_late.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n18 | \n19>| def contradiction() -> (Pick(~Unit + Unit) : Bar):\n20 |   Unit{}\nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again."
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "compile/ctor_tag_dispatch_000.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a fresh constructor name (duplicate declaration: K7)\n- observed : '{'\nLocation:\n10 | type B7b is Data:\n11>|   K7{a: U32, b: U32}\n12 | "
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "compile/ctor_tag_dispatch_001.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a fresh constructor name (duplicate declaration: Mk8b)\n- observed : '{'\nLocation:\n10 | type B8 is Data:\n11>|   Mk8b{v: U32, w: U32}\n12 | "
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "comptime/err_plus_term.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference"
+      }
+    },
+    {
+      "id": "flatten/statement_beta.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : '}'\n- observed : ':'\nLocation:\n18 | def main():\n19>|   usem(\\{0: 9; n => (n * 2 : U32)})\n20 | "
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "flatten/statement_lam_absorb.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : '}'\n- observed : ':'\nLocation:\n24 |   p = {P8a{k, (k + 1 : U32)} : P8a}\n25>|   \\{0: eat(p, 7); n => eat(p, n)}\n26 | "
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "import/duplicate_name.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a fresh name (duplicate declaration: Nat.add)\n- observed : ':'\nLocation:\n6 | \n7>| law Nat.add:\n8 |   for a: Nat"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "import/shadow_lib.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a fresh name (duplicate declaration: Nat.add)\n- observed : '('\nLocation:\n5 | \n6>| def Nat.add(a: Nat, b: Nat) -> Bool:\n7 |   True{}"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "import/shadow_tmpl_lib.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a fresh name (duplicate declaration: Nat.add)\n- observed : '('\nLocation:\n 9 | \n10>| def Nat.add(a: Nat, b: Nat) -> Nat:\n11 |   0n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "parse/duplicate_ctor_name.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a fresh constructor name (duplicate declaration: Kk)\n- observed : '{'\nLocation:\n5 |   Kk{}\n6>|   Kk{a: Aa}\n7 | "
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "parse/plus_binder_term.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference"
+      }
+    },
+    {
+      "id": "parse/prefix_operator_dead.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n 9 | def main():\n10>|   -5\n11 | "
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "parse/reserved_def_name_000.bend",
+      "lane": "parse",
+      "negative": true,
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a fresh name (duplicate declaration: U32)\n- observed : ':'\nLocation:\n5 | \n6>| law U32:\n7 |   Type"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    }
+  ],
+  "rejectionOrSuccessPhaseDifferences": [
+    {
+      "id": "check/book_prefix_arity.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "check/ctor_shared_tag.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "check/do_missing_bind.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "check",
+      "candidatePhase": "parse"
+    },
+    {
+      "id": "check/erased_match_numeric.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "check/op_bare_refused.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "check/op_brace_refused.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "check/op_ns_call_arg.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "check/template_ns_late.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "compile/ctor_tag_dispatch_000.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "compile/ctor_tag_dispatch_001.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "comptime/err_plus_term.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "check",
+      "candidatePhase": "parse"
+    },
+    {
+      "id": "flatten/statement_beta.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "flatten/statement_lam_absorb.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "import/cross_file_io.bend",
+      "lane": "parse",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "load"
+    },
+    {
+      "id": "import/cross_file_io.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "load"
+    },
+    {
+      "id": "import/cross_file_proof.bend",
+      "lane": "parse",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "load"
+    },
+    {
+      "id": "import/cross_file_proof.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "load"
+    },
+    {
+      "id": "import/cycle_terminates.bend",
+      "lane": "parse",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "load"
+    },
+    {
+      "id": "import/cycle_terminates.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "load"
+    },
+    {
+      "id": "import/diamond_dedup.bend",
+      "lane": "parse",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "load"
+    },
+    {
+      "id": "import/diamond_dedup.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "load"
+    },
+    {
+      "id": "import/duplicate_name.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "import/path_canonical.bend",
+      "lane": "parse",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "load"
+    },
+    {
+      "id": "import/path_canonical.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "load"
+    },
+    {
+      "id": "import/shadow_lib.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "import/shadow_tmpl_lib.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "parse/duplicate_ctor_name.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "parse/plus_binder_term.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "check",
+      "candidatePhase": "parse"
+    },
+    {
+      "id": "parse/prefix_operator_dead.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    },
+    {
+      "id": "parse/reserved_def_name_000.bend",
+      "lane": "check",
+      "negative": true,
+      "referencePhase": "parse",
+      "candidatePhase": "check"
+    }
+  ],
+  "diagnosticDifferences": {
+    "count": 560,
+    "rows": [
+      {
+        "id": "check/array_boxed_default.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_boxed_default.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_default_distinct.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_default_distinct.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_default_linear.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_default_linear.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_element_data.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_element_data.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_get_copy.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_get_copy.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_get_neutral.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_get_neutral.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_get_word_only.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_get_word_only.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_literal_capacity.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_literal_capacity.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_literal_mismatch.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_literal_mismatch.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_never_copyable.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_never_copyable.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_not_data.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_not_data.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_set_neutral_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_set_neutral_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/array_set_neutral_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/array_set_neutral_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/axiom_runtime_capture.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/beta_ann_lambda.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/binder_name_capture.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/book_prefix_arity.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/book_prefix_arity.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/bool_one_way.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/bool_word_bridge.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/buffer_word_range.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/buffer_word_range.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/canonical_ref_conversion.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/capture_soundness.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/chained_switch_conflation_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/chained_switch_conflation_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/chained_switch_conflation_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/chained_switch_conflation_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/comp_splice_tuple_goal.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/comp_splice_tuple_goal.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/computed_match_split.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/computed_match_split.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/cons_tail_mismatch.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/cop_adt_param_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/cop_ctr_field_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/cop_dead_hypothesis_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/cop_field_formation.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/cop_foreign_fill_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/cop_forged_lock_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/cop_inline_witness_002.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/cop_let_formation.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/cop_plain_domain_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/ctor_shared_tag.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/ctor_shared_tag.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/ctr_of_datatype.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/data_cycle_poison.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/data_self_ref.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/data_table_checked_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/data_table_checked_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/data_table_checked_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/dec_switch_respell_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/dec_switch_respell_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/dec_switch_respell_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/dec_switch_respell_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/default_arm_family.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/dependent_switch_induction.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/dependent_switch_induction.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/do_missing_bind.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/do_missing_bind.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/efq_erased_binder_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/either_data_wall.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/erased_binder_use.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/erased_field_conversion.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/erased_local_live_use.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/erased_local_match_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/erased_local_match_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/erased_match_ctor.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/erased_match_empty.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/erased_match_numeric.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/erased_match_numeric.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/error_window_assert_exists.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/error_window_filled_param_use.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/error_window_inline_exists.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/error_window_match_missing.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/error_window_match_repeated.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/error_window_param_use.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/error_window_rewrite_proof.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/error_window_stuck_app_kind.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/family_head_bare.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/field_type_bound.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/fits_app_invariant.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/fits_rfl_kind.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/float_builtin_arg.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/float_literal_type.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/float_match_scrutinee.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/float_no_mod.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/float_no_mod.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/forward_data_table.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/fuel_inline_dep_match.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/fuel_inline_dep_match.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/hoas_alpha_capture.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/hole_named.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/hole_todo.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/hurkens_paradox.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/lambda_single_use.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/let_lambda_twice.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/list_map_conversion.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/list_map_conversion.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/list_not_array.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/list_not_array.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/match_as_specialize.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/match_as_specialize.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/meet_charges_its_operands.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/meet_stuck_pending_ref.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/missing_ih_rewrite.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/monad_do_destructure.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/monad_do_destructure.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/motive_suffix_join.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/motive_suffix_join.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/nat_literal_import.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/nat_literal_pattern_arity.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/nat_literal_pattern_arity.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/nat_literal_pattern_empty.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/nat_literal_pattern_empty.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/negative_data_field_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/negative_data_reuse.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/neq_not_convertible.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/neq_qualified_capture.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/neq_reflexivity.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/nested_datatype_closure.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/nested_field_bound.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/op_bare_refused.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/op_bare_refused.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/op_brace_refused.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/op_brace_refused.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/op_ns_call_arg.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/op_ns_call_arg.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/operator_chain_linear.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/pair_data_wall.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/quant_tag_conversion_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/quant_tag_conversion_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/relation_install_lock.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/switch_miss_guard.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/template_inst_cycle.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/template_ns_late.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/template_ns_late.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/tuple_import_required.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/typed_let_mismatch.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/undo_residual_lane.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/undo_residual_lane.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/unit_ctor_mismatch.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/unit_ctor_mismatch.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/unit_paren_sugar.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "check/unit_paren_sugar.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/usage_counts_source.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "check/wrap_not_successor.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "compile/array_oob_access.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "compile/array_oob_access.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "compile/array_padding_slots.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "compile/array_padding_slots.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "compile/array_unboxed_default.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "compile/array_unboxed_default.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "compile/ctor_tag_dispatch_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "compile/ctor_tag_dispatch_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "compile/ctor_tag_dispatch_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "compile/ctor_tag_dispatch_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "compile/erasure_dead_param.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "compile/slab_drop_recycle.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "compile/slab_drop_recycle.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "compile/slab_lazy_alloc.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "compile/slab_lazy_alloc.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "compile/slab_sparse_default.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "compile/slab_sparse_default.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/dup_lone.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_arg_type.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_capture.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_dup.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_dup.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_extra.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_extra.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_fill_short.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_fill_short.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_generic.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_grow_double.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_grow.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_head.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_head.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_late_tilde.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_late_tilde.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_later.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_later.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_law.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_law.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_leak.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_let_arg.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_match_arg.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_param_arg.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_plus_term.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_plus_term.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_runtime.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_runtime.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_untyped.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "comptime/err_untyped.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/later_def.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "comptime/wrong_type.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "cost/array_fill_readback.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "cost/array_fill_readback.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "eval/array_packed_default.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/annotated_computed_scrutinee_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/arity_mismatch_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/arity_mismatch_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/arity_mismatch_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/arity_mismatch_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/arrow_bind_error_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/arrow_bind_error_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/arrow_bind_error_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/arrow_bind_error_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/as_pattern_error.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/as_pattern_error.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/cid_pair_repr.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/cid_pair_repr.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/consumed_column_error_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/consumed_column_error_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/dead_residue_elision_003.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/dead_residue_elision_003.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/dependent_goal_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/dependent_goal_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/destructure_annotation_error.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/destructure_let_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/destructure_let_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/dup_guard_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/dup_guard_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/dup_guard_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/dup_guard_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/empty_match.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/error_window_matched_scrutinee.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/error_window_substituted_scrutinee.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/error_window_substituted_scrutinee.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/forward_reference.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/forward_reference.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/generic_type_param.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/generic_type_param.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/inline_block_error.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/inline_block_error.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/kplus_missing_case.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/kplus_missing_case.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/lambda_match_literal_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/lambda_match_literal_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/lambda_match_literal_002.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/mark_computed_optout.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/mark_computed_optout.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/match_app_scrutinee_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/match_app_scrutinee_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/named_column_alias.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/named_column_alias.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/noninfer_error_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/noninfer_error_002.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/nontotal_error_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/nontotal_error_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/nontotal_error_002.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/nontotal_error_003.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/nontotal_multi_missing.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/nontotal_multi_scrutinee_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/nontotal_multi_scrutinee_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/nontotal_multi_scrutinee_002.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/nontotal_multi_scrutinee_003.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/nontotal_multi_scrutinee_004.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/order_ban_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/order_ban_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/order_ban_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/order_ban_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/order_ban_002.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/order_ban_002.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/order_ban_003.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/order_ban_003.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/pattern_shape_mismatch.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/share_binder_syntax.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/share_binder_syntax.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/shared_param_computed_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/shared_param_computed_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/statement_beta.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/statement_beta.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/statement_lam_absorb.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/statement_lam_absorb.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "flatten/unsupported_pattern.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "flatten/unsupported_pattern.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_cast.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_closure.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_copy_paradox.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_fn_field.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_kind_tip.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_leak.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_local_grade.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_negative.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_plus_field.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_refill.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_refill.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_rewrite.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_upcast.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "grade/reject_witness.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "halt/column_order_search.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "halt/column_order_search.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "halt/contraction_growth.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/c_suffix_module.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/c_suffix_module.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/cross_file_io.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/cross_file_io.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/cross_file_proof.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/cross_file_proof.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/cycle_terminates.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/cycle_terminates.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/diamond_dedup.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/diamond_dedup.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/duplicate_name.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/duplicate_name.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/empty_neq.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/list_sugar.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/parent_segments.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/parent_segments.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/path_canonical.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/path_canonical.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/position_independent.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/position_independent.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/shadow_lib.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/shadow_lib.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/shadow_tmpl_lib.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/shadow_tmpl_lib.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "import/suffix_refused.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "import/suffix_refused.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "io/cbody_bare_path.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "io/cbody_bare_path.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "io/cbody_dup_effect.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "io/cbody_dup_effect.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "io/cbody_effect.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "io/cbody_effect.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "io/cbody_needs_io.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "io/cbody_needs_io.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "io/channel_send_recv.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "io/reuse_across_effect.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/ambiguous_ctor_error.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "page/ambiguous_ctor_error.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/arm_leaf_context.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/bool_wrap_scope.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/comp_arrow_position.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "page/comp_arrow_position.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/comp_param_match.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/concat_type_infer.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/context_dedup_shadow.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/ctor_list_mismatch_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "page/ctor_list_mismatch_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/deep_list_walk.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/empty_match_datatype.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/match_missing_ctors.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/match_missing_default.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/match_not_datatype.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/missing_cons_ctor.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/overapply_hint.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/rewrite_non_equation.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "page/unknown_constructor.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/array_count_odd.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/array_count_odd.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/array_key_range.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/array_key_range.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/array_length_power.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/array_length_power.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/bare_caret_dead.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/bare_caret_dead.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/bind_outside_do.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/bind_outside_do.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/builtin_arity_mismatch_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/chain_old_spellings_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/chain_old_spellings_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/chain_old_spellings_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/chain_old_spellings_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/comp_arrow_position.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/comp_arrow_position.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/computed_mark_nonname.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/computed_mark_nonname.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/ctor_indexed_target.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/ctor_indexed_target.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/ctor_result_annotation.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/ctor_result_annotation.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/ctor_result_arrow.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/ctor_result_arrow.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/datatype_no_is.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/datatype_no_is.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/dead_lambda_syntax.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/dead_lambda_syntax.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/dead_motive_syntax.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/dead_motive_syntax.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/def_untyped_refused.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/def_untyped_refused.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/do_bind_continuation.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/do_bind_continuation.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/do_missing_param.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/do_missing_param.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/duplicate_buffer_key.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/duplicate_buffer_key.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/duplicate_ctor_name.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/duplicate_ctor_name.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/duplicate_declaration.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/duplicate_declaration.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/expected_float_literal.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/expected_float_literal.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/float_dotted_family_dead_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/float_dotted_family_dead_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/foreign_refill.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/foreign_refill.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/gadt_result_annotation_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/gadt_result_annotation_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/gadt_result_annotation_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/gadt_result_annotation_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/gpu_mark_order.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/gpu_mark_order.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/hex_no_digits.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/hex_no_digits.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/if_no_else.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/if_no_else.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/if_statement_only.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/invalid_assign_target.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/invalid_assign_target.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/invalid_string_escape.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/invalid_string_escape.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/keyword_reserved.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/keyword_reserved.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/law_fill_arrow.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/law_fill_arrow.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/legacy_bang_statement.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/legacy_bang_statement.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/legacy_brace_datatype.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/legacy_brace_datatype.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/legacy_data_annotation.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/legacy_data_annotation.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/let_arity_mismatch.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/let_arity_mismatch.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/plus_binder_term.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/plus_binder_term.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/prefix_operator_dead.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/prefix_operator_dead.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_assert_name.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_assert_name.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_ctor_field_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_ctor_field_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_ctor_field_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_ctor_field_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_def_name_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_def_name_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_def_name_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_def_name_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_def_name_002.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_def_name_002.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_dollar_name.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_dollar_name.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_lambda_binder.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_lambda_binder.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_let_binder_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_let_binder_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_pattern_binder.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_pattern_binder.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_pi_binder.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_pi_binder.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_type_name.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_type_name.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_type_param.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/reserved_type_param.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/rewrite_ctor_brace.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/rewrite_non_equation.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/unclosed_char_code.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/unclosed_char_code.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/unicode_forall_dead.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/unicode_forall_dead.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/unicode_lambda_dead.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/unicode_lambda_dead.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "parse/word_overflow_literal.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "parse/word_overflow_literal.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_002.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_003.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_004.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_005.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_006.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_007.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_008.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_009.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_010.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_011.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_012.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_013.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_014.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_015.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_016.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_017.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_018.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_019.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_020.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_021.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_022.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_023.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_024.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_025.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_026.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_027.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_028.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_029.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/goal_ladder_state_030.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/match_as_binding.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "proof/match_as_binding.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "proof/no_funext_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "reg/body_local_match.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "reg/body_local_match.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "reg/erased_local_match.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "reg/erased_local_match.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "reg/framed_cell_capture.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "reg/framed_cell_capture.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "reg/import_head.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "reg/import_head.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "run/array_bounds_000.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "run/array_bounds_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "run/array_bounds_001.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "run/array_bounds_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "run/array_slab.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "run/array_slab.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "run/array_struct_swap.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "run/array_struct_swap.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "run/binop_probe_split.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "run/binop_probe_split.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_any_term.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_capture_linear.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_capture_share.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_curried_lambda.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_erased_args.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_erased_args.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_generic_dedupe.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_generic_dedupe.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_generic_mint.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_generic_mint.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_instantiation_error.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_instantiation_error.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_late_param.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_late_param.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_let_split.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_let_split.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_mint_dedupe.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "spec/comp_mint_dedupe.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/hypothesis_retype.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "spec/hypothesis_retype.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "spec/mint_count.bend",
+        "lane": "parse",
+        "negative": true
+      },
+      {
+        "id": "spec/mint_count.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "state/ctor_stuck_goal.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "state/generic_args_goal.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "state/nested_call_goal_000.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "state/nested_call_goal_001.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "state/operator_goal.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "state/plain_goal.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "state/rewrite_goal.bend",
+        "lane": "check",
+        "negative": true
+      },
+      {
+        "id": "state/type_family_goal.bend",
+        "lane": "check",
+        "negative": true
+      }
+    ]
+  },
+  "abnormalCandidateResults": [],
+  "inputDrift": {
+    "reference": [],
+    "candidate": []
+  },
+  "complete": false,
+  "notes": [
+    "Full parse/check selection only; execution, GPU, and full conformance completion are not claimed.",
+    "Equal rejection phases and acceptance decisions do not prove rejection for the same intended rule. Existing negative-rule coverage limits remain.",
+    "io/main_foreign and reg/array_open_element are known later compile/layout gates, and are not counted as new soundness errors when accepted in check.",
+    "Differences compare the live pinned TypeScript reference with the v2-final checked Bend compiler; timing is not an isolated performance comparison."
+  ],
+  "interimV1ToFinalV2": {
+    "report": "selfhost/build/phase2/grammar-v2/full-frontend/v1-to-v2-comparison.json",
+    "sha256": "19c6c2f80f5a5c63cdfbbdd049e1e63d28b53ffc14086d33b29fd2b61db2fcaa",
+    "changes": [
+      {
+        "id": "check/list_not_array.bend",
+        "lane": "parse",
+        "negative": true,
+        "before": {
+          "verdict": "observed",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 0:0: expected }; got <eof>",
+          "output": null
+        },
+        "after": {
+          "verdict": "observed",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 0:0: expected term; got <eof>",
+          "output": null
+        }
+      },
+      {
+        "id": "check/list_not_array.bend",
+        "lane": "check",
+        "negative": true,
+        "before": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 0:0: expected }; got <eof>",
+          "output": null
+        },
+        "after": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 0:0: expected term; got <eof>",
+          "output": null
+        }
+      },
+      {
+        "id": "comptime/err_law.bend",
+        "lane": "parse",
+        "negative": true,
+        "before": {
+          "verdict": "observed",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: a definition must uniquely fill its law with plain parameter names",
+          "output": null
+        },
+        "after": {
+          "verdict": "observed",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 0:0: expected : (a definition filling a law has no return annotation); got <eof>",
+          "output": null
+        }
+      },
+      {
+        "id": "comptime/err_law.bend",
+        "lane": "check",
+        "negative": true,
+        "before": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: a definition must uniquely fill its law with plain parameter names",
+          "output": null
+        },
+        "after": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 0:0: expected : (a definition filling a law has no return annotation); got <eof>",
+          "output": null
+        }
+      },
+      {
+        "id": "comptime/err_untyped.bend",
+        "lane": "parse",
+        "negative": true,
+        "before": {
+          "verdict": "observed",
+          "evidence": null,
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": null
+        },
+        "after": {
+          "verdict": "observed",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 4:10: expected : (a marked parameter requires its type); got ,",
+          "output": null
+        }
+      },
+      {
+        "id": "comptime/err_untyped.bend",
+        "lane": "check",
+        "negative": true,
+        "before": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 1,
+          "diagnostic": "Error:\n- expected : a function type\n- observed : Quant\nContext:\n- x : Nat\nLocation: app",
+          "output": null
+        },
+        "after": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 4:10: expected : (a marked parameter requires its type); got ,",
+          "output": null
+        }
+      },
+      {
+        "id": "parse/array_length_power.bend",
+        "lane": "parse",
+        "negative": true,
+        "before": {
+          "verdict": "observed",
+          "evidence": null,
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": null
+        },
+        "after": {
+          "verdict": "observed",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 9:8: expected term; a list does not use semicolon separators; got ;",
+          "output": null
+        }
+      },
+      {
+        "id": "parse/array_length_power.bend",
+        "lane": "check",
+        "negative": true,
+        "before": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 1,
+          "diagnostic": "Error:\n- expected : an annotated term (cannot infer)\n- observed : [7, 16]\nLocation: main",
+          "output": null
+        },
+        "after": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 9:8: expected term; a list does not use semicolon separators; got ;",
+          "output": null
+        }
+      }
+    ],
+    "missing": [],
+    "sameObservedBehavior": false
+  }
+}

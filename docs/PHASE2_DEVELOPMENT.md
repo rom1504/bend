@@ -125,9 +125,13 @@ local observations, not guaranteed budgets. Full checked self-emission remains a
 larger milestone; use the recipe in [Bend-in-Bend](BEND-IN-BEND.md), freeze its
 source/API/runtime/host, and let it run while targeted tests use another CPU.
 
-For the two measured small workloads, validated Base caching makes the ordinary
-JS API as fast as or faster than the native graph host: about 1.6–1.9 seconds
-versus 1.9 seconds per fresh process. Uncached JS took about 6.6–6.7 seconds.
+For the two measured small workloads, validated Base caching makes the checked,
+upstream-emitted Bend API as fast as or faster than the native graph host: about
+1.6–1.9 seconds versus 1.9 seconds per fresh process. Uncached bootstrap JS took
+about 6.6–6.7 seconds. A later interleaved comparison measured the proven
+self-emitted API at 3.2–3.4 seconds, the checked bootstrap at 1.6–1.8 seconds and
+pinned TypeScript at about 0.69 seconds. These small-program results do not
+describe full self-compilation, which still took 48.7 minutes for self-emitted JS.
 Use the cached checked API for small edits; native compilation has a substantial
 build cost and is a separate option to measure on larger workloads.
 Its [explicit graph manifest interface](../selfhost/tools/performance/rapid/native-graph.md)

@@ -5,17 +5,20 @@ checks**, starting without a candidate Base cache. It closes 19 demonstrated
 invalid-acceptance witnesses across two grammar revisions, adds exact selected
 upstream comparisons with retained replay, and extends native compiler execution
 to explicit module and foreign-asset graphs. Full self-hosting remains a separate,
-substantially longer milestone.
+substantially longer milestone: final checked self-reproduction passed, taking
+48m41s for the self-emitted stage.
 
-For the two measured small programs, ordinary cached Bend-in-Bend JS compilation
-takes 1.6–1.9 seconds per fresh process, versus 0.71–0.74 seconds for pinned
-TypeScript. Native compilation offers no advantage over that cached small-test
-path. The native compiler does emit the entire frozen compiler source in
-5m12s, producing exactly the same JS bytes as the ordinary checked Bend API.
+For two measured small programs, the cached checked bootstrap API takes
+1.6–1.8 seconds per fresh process, the proven self-emitted API takes 3.2–3.4
+seconds, and pinned TypeScript takes about 0.69 seconds. The self-emitted API
+is therefore about 4.6–5.0× slower on those inputs. Large self-compilation remains
+much slower: 48m41s versus one 48.3-second upstream full-source observation.
+Native compiler execution emits the entire frozen source in about 5m12s,
+producing exactly the same JS bytes as both checked Bend API stages.
 
-Work began on 2026-09-21 at 14:10 UTC, with a 17:10 UTC cutoff. Broader sweeps and
-the final self-reproduction proof are recorded below as they complete; no pending
-gate is counted as a pass. The [design](../../design/phase2/fast_conformance_loop.md)
+Work began on 2026-09-21 at 14:10 UTC, with a 17:10 UTC cutoff. Completed sweeps
+and the final self-reproduction proof are recorded below; no pending gate is
+counted as a pass. The [design](../../design/phase2/fast_conformance_loop.md)
 was committed and pushed as `9e7a56d` before implementation.
 
 ## Starting baseline
@@ -105,9 +108,9 @@ cache, freshening, specialization and primitive runtime. Its checked build and
 all tests took 34.596 seconds on CPU 1; this is a single observed development
 cycle, not a repeated benchmark median.
 
-A frozen full checked self-emission/fixed-point run has started on CPU 1. It is
-independent of the targeted loop and is not counted as passed until both emitted
-stages finish and their hashes agree.
+This first revision also completed a checked self-emission/fixed-point run on
+CPU 1. Its matching outputs and timings are recorded below as interim evidence,
+separate from the final revision and the targeted edit loop.
 
 ## Targeted differential harness
 
@@ -328,7 +331,7 @@ is retained as an expected difference from automatic filesystem discovery.
 The final native compiler also checked and emitted the entire frozen compiler
 source in 311.544 seconds. Its JS output hash is
 `0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3`;
-byte comparison with the final JS stage and self-reproduction are separate gates.
+byte comparison with the final JS stage passes, as recorded below.
 This establishes neither a native-output fixed point nor full backend conformance.
 
 ## Final component and backend regressions
@@ -350,9 +353,12 @@ The [final native/JS source comparison](evidence/native-js-fullsource-equality.j
 now passes byte for byte: both emit the same 1,117,775-byte library with the hash
 above. The ordinary checked bootstrap API took 784.367 seconds to produce this
 stage 2 library, including its host work. Its recorded source, Base and host
-inputs passed the new post-stage identity checks. Stage 3 self-reproduction is
-still a separate milestone; native execution emitting matching JS is not itself
-a native fixed point.
+inputs passed the new post-stage identity checks. The [final checked JS
+self-reproduction proof](evidence/fixedpoint-v2.json) now also passes: stage 3 took
+2,921.261 seconds and reproduced exactly the same bytes. Both stages verified
+unchanged source, Base, runtime, compiler and frozen helper identities. This is
+a JS fixed point; native execution emitting matching JS is not itself a native
+fixed point.
 
 ## Where the remaining large-workload cost sits
 
@@ -363,6 +369,15 @@ gap. Of the 2,237-second v1 stage, the check/post-check interval takes about
 Parsing plus loading takes about 133 seconds. These are adjacent host trace
 intervals including intervening gates, host work and GC on a shared machine;
 they are not isolated function CPU profiles or final-v2 measurements.
+
+The [final v2 trace intervals](evidence/fixedpoint-v2-phase-profile.json) record
+617 seconds in checking/post-check work, 604 in annotation, 546 in layout/foreign
+preparation, and 948 in emission. The corresponding B1 stage intervals are 224,
+212, 89 and 171 seconds. Final self-emission is slower than the interim run;
+these shared-host observations are not a controlled A/B attribution of that
+change. The source revision and run differ, and no inner CPU/GC profile was
+captured. Phase 2 makes the development loop fast; it does not claim to have
+eliminated the large self-emission bottleneck.
 
 The next large-workload investigation should isolate checking and annotation on
 frozen books, then compare the same Bend work under upstream-generated JS,
@@ -414,3 +429,118 @@ origins and the validated Base prefix during full diagnostic production, then
 require exact diagnostic equality. Simply suppressing diagnostics is not the
 proposed production fix. The [experiment guide](../../selfhost/tools/performance/rapid/diagnostic-cost.md)
 provides the bounded reproduction command.
+
+## Final full frontend comparison
+
+The [final frozen frontend sweep](evidence/frontend-v2-final-full-comparison.json)
+observed all **2,756 parse/check probes across 1,378 pinned fixtures**. All **919
+positive check probes accept**, and there are **zero check-acceptance differences**
+from the live pinned TypeScript reference. No crashes, timeouts, positive failures
+or input/artifact drift were observed. The two negative fixtures accepted by both
+checkers still require their later compiler gates.
+
+Strict totals are **1,920 pass, 459 observed and 377 fail**; whole conformance
+remains incomplete. Twenty parse-acceptance staging differences, thirty phase
+differences and separately recorded diagnostic differences remain. Relative to
+the interim grammar revision, exactly eight observations across four negative
+fixtures changed: `err_untyped` and `array_length_power` now reject during parsing
+like upstream; `list_not_array` and `err_law` remain rejected during parsing with
+changed diagnostic text. The independent custom witnesses establish additional
+rules that the existing pinned corpus had masked.
+
+The sweep took 68m16s on the shared host. Median positive check time was 1.246s;
+negative parse rejection was 0.246s and negative check rejection 10.081s. These
+are different fixture populations, not a benchmark ratio. They reinforce why
+exact selected comparisons belong in the edit loop and broad sweeps belong at
+frozen milestones.
+
+## Final controlled small-workload comparison
+
+The [interleaved B1/H/TypeScript experiment](evidence/selfhost-cached-latency.json)
+uses the same CPU, Node resource flags, source files and current host for three
+fresh-process repetitions of each variant. All **18 samples pass** their
+execution oracle; B1 and self-emitted H also produce byte-identical port output.
+Both Bend variants use separately validated Base caches; TypeScript fully checks
+Base per process. H's initially absent cache costs **14.909 seconds** to build,
+recorded separately from the warmed sample medians.
+
+| Fresh-process median | Cached checked B1 | Cached self-emitted H | Pinned TypeScript |
+|---|---:|---:|---:|
+| Tree program | 1.808 s | 3.448 s | 0.689 s |
+| Imported module and foreign asset | 1.601 s | 3.162 s | 0.688 s |
+
+These are controlled small-workload results, not a universal ratio. H takes
+about 1.91–1.97× B1 and 4.60–5.00× TypeScript. The older native samples remain
+separate evidence; native was not added to this three-way interleaved experiment.
+
+The [same-CPU3 full-source upstream sample](evidence/native-fullsource-upstream-cpu3.json)
+takes **47.784 s inside compilation, 48.261 s process wall**. It validates the
+actual Bend library-root selection, unchanged inputs and execution of a helper.
+Compared with that separate single wall-time observation, B1 self-emission takes
+about 16.25×, H self-reproduction 60.53× and native compiler execution 6.46×.
+The [native report](native-host.md) records the shared-host qualification and
+export-contract difference: the port also exports reachable runtime/type helpers.
+These observations do not establish a universal or perfectly isolated ratio,
+but they clearly show that full self-compilation remains expensive.
+
+## Final JS execution sweep
+
+The [complete eligible JS-lane sweep](evidence/execution-js-v2.json) observed all
+**999 probes** on the final checked bootstrap API: **672 pass, 206 fail and 121
+not applicable**. Inventory-positive fixtures account for 614 passes and all 121
+not-applicable cases, with **zero unexpected positive execution failures**.
+Inventory-negative fixtures account for 58 passes and 206 strict mismatches.
+No abnormal compiler results or input/artifact drift were recorded; those
+negative mismatches remain failures, with their diagnostics and phase evidence
+retained in the archive.
+
+This runs the Bend compiler as upstream-emitted JS and tests generated JS
+programs. It is not a broad corpus sweep through the self-emitted H API, and it
+does not establish conformance in unexecuted interpreter, native or GPU lanes.
+Not-applicable observations do not supply program-execution evidence.
+
+## Final self-emitted frontend check
+
+The [50-case focused matrix](evidence/selfhost-frontend-paired.json) also passes
+through the proven self-emitted H API, with [completed-proof provenance](evidence/selfhost-frontend-provenance.json).
+It combines both repaired grammar matrices and four declaration-order controls.
+Both H and live pinned TypeScript satisfy every selected acceptance/phase oracle;
+23 diagnostic differences remain separately visible. The 106.2-second isolated
+paired run includes both compilers and retained replay artifacts. It does not
+claim exact diagnostic equality or broad H corpus conformance.
+
+The [historical-to-final JS delta](evidence/execution-js-historical-delta.json)
+compares the older H4 corpus with the final B1 corpus and records 17 changed
+observations: the borrowed-list failure now passes, ten negative fixtures move
+to parsing rejection, and six retain parsing rejection with changed diagnostics.
+There are no new failing verdicts or changed successful-program outputs in that
+comparison. Different compiler generations and frozen hosts make it behavior
+evidence, not a speed measurement.
+
+## Next bounded iteration
+
+Keep using the checked bootstrap plus selected live comparisons for source edits.
+The measured cold cycle is already below one minute, so further conformance work
+need not wait for a full self-hosting chain. Run that chain at frozen milestones.
+
+For negative-test throughput, add a Bend diagnostic entry that consumes the
+already validated exact prefix and authoritative error, then begins detailed
+replay at the unchecked suffix. Reuse the loaded graph's definition/source
+mapping when constructing locations. Today `check_book_diagnostic` invokes
+`check_book` again, and `f_load_origins_for` invokes `f_graph_load` again. Any reuse
+must preserve event order, declaration context, source paths, diagnostic text and
+failure fallback; a cached rejection must never become acceptance. Validate on
+first/middle/late failures, imported definitions and changed Base/source identities,
+with the existing full diagnostic path as the oracle.
+
+For semantic coverage, start with the retained independent-review witnesses and
+unmask intended checker/proof rules before repairing them. The passing corpus
+acceptance comparison alone does not establish that each negative fixture fails
+for its intended reason. For large self-compilation, profile frozen checking and
+annotation phases under B1, self-emitted H and native execution before choosing
+an algorithmic change; adjacent trace intervals alone cannot identify its cause.
+
+A brief external CPU-sampling attempt during the final self-emission could not
+start: `/usr/bin/perf` delegates to missing `perf_5.10`. It collected no samples
+and changed no compiler options. No GC or inner-function cause is inferred from
+that failed attempt.

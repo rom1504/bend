@@ -1,0 +1,206 @@
+{
+  "scope": "Adjacent host trace-marker wall-time intervals on a shared host. Buckets include intervening gates, host work and GC; they are not isolated per-function CPU profiles. Compiler/source revisions remain explicit.",
+  "sourceReport": "build/phase2/grammar-v2/fixedpoint/report.json",
+  "sourceReportSha256": "e2b4c1388df2d79bb6a640a1f9da281c6675aaef820dd6a4cad40e506a360fc7",
+  "sourceSha256": "266933eb2ee6aa0d406a48b19f5bbe0250c6685e9f5f2d9fe276bc38bac31784",
+  "stages": [
+    {
+      "stageOutput": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+      "compilerSha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+      "outputSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+      "stageMs": 784367,
+      "log": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs.log",
+      "logSha256": "10b1b5cdd42b5031f5c2a9acdefd8aae01b5ee29ad914f24c63e07cb294d5149",
+      "intervals": [
+        {
+          "marker": "discover /home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/compiler.bend",
+          "phase": "discover",
+          "started": "2026-09-21T15:19:57.372Z",
+          "ended": "2026-09-21T15:19:57.381Z",
+          "seconds": 0.009
+        },
+        {
+          "marker": "parse /home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/compiler.bend",
+          "phase": "parse",
+          "started": "2026-09-21T15:19:57.381Z",
+          "ended": "2026-09-21T15:20:14.619Z",
+          "seconds": 17.238
+        },
+        {
+          "marker": "parse /home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/frozen-base/base.bend",
+          "phase": "parse",
+          "started": "2026-09-21T15:20:14.619Z",
+          "ended": "2026-09-21T15:20:16.026Z",
+          "seconds": 1.407
+        },
+        {
+          "marker": "load and elaborate graph",
+          "phase": "load and elaborate graph",
+          "started": "2026-09-21T15:20:16.026Z",
+          "ended": "2026-09-21T15:20:43.794Z",
+          "seconds": 27.768
+        },
+        {
+          "marker": "check book",
+          "phase": "check book",
+          "started": "2026-09-21T15:20:43.794Z",
+          "ended": "2026-09-21T15:24:27.897Z",
+          "seconds": 224.103
+        },
+        {
+          "marker": "specialize book",
+          "phase": "specialize book",
+          "started": "2026-09-21T15:24:27.897Z",
+          "ended": "2026-09-21T15:24:33.616Z",
+          "seconds": 5.719
+        },
+        {
+          "marker": "report declarations",
+          "phase": "report declarations",
+          "started": "2026-09-21T15:24:33.616Z",
+          "ended": "2026-09-21T15:24:37.805Z",
+          "seconds": 4.189
+        },
+        {
+          "marker": "prune reachable definitions",
+          "phase": "prune reachable definitions",
+          "started": "2026-09-21T15:24:37.805Z",
+          "ended": "2026-09-21T15:25:09.868Z",
+          "seconds": 32.063
+        },
+        {
+          "marker": "annotate book",
+          "phase": "annotate book",
+          "started": "2026-09-21T15:25:09.868Z",
+          "ended": "2026-09-21T15:28:41.594Z",
+          "seconds": 211.726
+        },
+        {
+          "marker": "validate runtime layouts",
+          "phase": "validate runtime layouts",
+          "started": "2026-09-21T15:28:41.594Z",
+          "ended": "2026-09-21T15:30:10.581Z",
+          "seconds": 88.987
+        },
+        {
+          "marker": "emit library",
+          "phase": "emit library",
+          "started": "2026-09-21T15:30:10.581Z",
+          "ended": "2026-09-21T15:33:01.224Z",
+          "seconds": 170.643
+        }
+      ],
+      "phaseSeconds": {
+        "discover": 0.009,
+        "parse": 18.645,
+        "load and elaborate graph": 27.768,
+        "check book": 224.103,
+        "specialize book": 5.719,
+        "report declarations": 4.189,
+        "prune reachable definitions": 32.063,
+        "annotate book": 211.726,
+        "validate runtime layouts": 88.987,
+        "emit library": 170.643
+      }
+    },
+    {
+      "stageOutput": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage3.mjs",
+      "compilerSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+      "outputSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+      "stageMs": 2921261,
+      "log": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage3.mjs.log",
+      "logSha256": "fd1e6348988764a08bc2c28f4290c1edbd491316c99dcfe8b1ab09d778112638",
+      "intervals": [
+        {
+          "marker": "discover /home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/compiler.bend",
+          "phase": "discover",
+          "started": "2026-09-21T15:33:01.837Z",
+          "ended": "2026-09-21T15:33:01.845Z",
+          "seconds": 0.008
+        },
+        {
+          "marker": "parse /home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/compiler.bend",
+          "phase": "parse",
+          "started": "2026-09-21T15:33:01.845Z",
+          "ended": "2026-09-21T15:33:46.918Z",
+          "seconds": 45.073
+        },
+        {
+          "marker": "parse /home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/frozen-base/base.bend",
+          "phase": "parse",
+          "started": "2026-09-21T15:33:46.918Z",
+          "ended": "2026-09-21T15:33:50.975Z",
+          "seconds": 4.057
+        },
+        {
+          "marker": "load and elaborate graph",
+          "phase": "load and elaborate graph",
+          "started": "2026-09-21T15:33:50.975Z",
+          "ended": "2026-09-21T15:34:52.460Z",
+          "seconds": 61.485
+        },
+        {
+          "marker": "check book",
+          "phase": "check book",
+          "started": "2026-09-21T15:34:52.460Z",
+          "ended": "2026-09-21T15:45:09.806Z",
+          "seconds": 617.346
+        },
+        {
+          "marker": "specialize book",
+          "phase": "specialize book",
+          "started": "2026-09-21T15:45:09.806Z",
+          "ended": "2026-09-21T15:45:26.677Z",
+          "seconds": 16.871
+        },
+        {
+          "marker": "report declarations",
+          "phase": "report declarations",
+          "started": "2026-09-21T15:45:26.677Z",
+          "ended": "2026-09-21T15:45:42.629Z",
+          "seconds": 15.952
+        },
+        {
+          "marker": "prune reachable definitions",
+          "phase": "prune reachable definitions",
+          "started": "2026-09-21T15:45:42.629Z",
+          "ended": "2026-09-21T15:46:42.750Z",
+          "seconds": 60.121
+        },
+        {
+          "marker": "annotate book",
+          "phase": "annotate book",
+          "started": "2026-09-21T15:46:42.750Z",
+          "ended": "2026-09-21T15:56:47.198Z",
+          "seconds": 604.448
+        },
+        {
+          "marker": "validate runtime layouts",
+          "phase": "validate runtime layouts",
+          "started": "2026-09-21T15:56:47.198Z",
+          "ended": "2026-09-21T16:05:53.633Z",
+          "seconds": 546.435
+        },
+        {
+          "marker": "emit library",
+          "phase": "emit library",
+          "started": "2026-09-21T16:05:53.633Z",
+          "ended": "2026-09-21T16:21:41.959Z",
+          "seconds": 948.326
+        }
+      ],
+      "phaseSeconds": {
+        "discover": 0.008,
+        "parse": 49.13,
+        "load and elaborate graph": 61.485,
+        "check book": 617.346,
+        "specialize book": 16.871,
+        "report declarations": 15.952,
+        "prune reachable definitions": 60.121,
+        "annotate book": 604.448,
+        "validate runtime layouts": 546.435,
+        "emit library": 948.326
+      }
+    }
+  ]
+}

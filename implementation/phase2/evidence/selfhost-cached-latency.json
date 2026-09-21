@@ -1,0 +1,991 @@
+{
+  "kind": "interleaved-b1-self-emitted-h-typescript-latency",
+  "started": "2026-09-21T16:22:23.697Z",
+  "node": "v24.18.0",
+  "nodeArgs": [
+    "--stack-size=4096"
+  ],
+  "cpu": 3,
+  "repetitions": 3,
+  "timeoutMs": 120000,
+  "priorReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/latency/report.json",
+    "sha256": "637ef271e2ee7e7aaaa21054fd72c6d262a7e0c0fefc07a640c017674385b3c7"
+  },
+  "selfhostProof": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/report.json",
+    "sha256": "e2b4c1388df2d79bb6a640a1f9da281c6675aaef820dd6a4cad40e506a360fc7",
+    "sourceSha256": "266933eb2ee6aa0d406a48b19f5bbe0250c6685e9f5f2d9fe276bc38bac31784",
+    "stages": [
+      {
+        "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+        "compilerSha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+        "nodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=12288"
+        ],
+        "code": 0,
+        "signal": null,
+        "ms": 784367,
+        "inputsVerified": true,
+        "outputSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3"
+      },
+      {
+        "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+        "compilerSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage3.mjs",
+        "nodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=12288"
+        ],
+        "code": 0,
+        "signal": null,
+        "ms": 2921261,
+        "inputsVerified": true,
+        "outputSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3"
+      }
+    ],
+    "complete": true
+  },
+  "checkedBootstrap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs.bootstrap.json",
+    "sha256": "c22eea6463d81e070054e91abd5f2d83b1f4f0e3d450dfd94a56b47b92d50b52",
+    "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+    "apiSha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+    "moduleCount": 59
+  },
+  "apiH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage3.mjs",
+  "apiHSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+  "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+  "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+  "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+  "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/src/runtime.mjs",
+  "workloads": [
+    {
+      "id": "tree",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/measure-tree-manifest.json",
+      "stdout": "42\n"
+    },
+    {
+      "id": "import-foreign",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/main.bend",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/manifest.json",
+      "stdout": "42\n"
+    }
+  ],
+  "hashes": {
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-measure-config.json": "b389a959a2cfbf92f7270ad3b02dbcbfcd0455362bc8f6662fe597195d95e33e",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/latency/report.json": "637ef271e2ee7e7aaaa21054fd72c6d262a7e0c0fefc07a640c017674385b3c7",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/report.json": "e2b4c1388df2d79bb6a640a1f9da281c6675aaef820dd6a4cad40e506a360fc7",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage3.mjs": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs.bootstrap.json": "c22eea6463d81e070054e91abd5f2d83b1f4f0e3d450dfd94a56b47b92d50b52",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/src/runtime.mjs": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/selfhost-cache-measure.mjs": "3657fbdeb1b503ade011cca45c2dbb3fc5ad34d15e436a370d281d906ea91ce1",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-measure.mjs": "61529ab4302ed0a0ce1251c2415d8d835a682bce5e08a3801374665f26bf9bd5",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs": "74899f3ad48221d961cd727fad6e9827ca53a0c31acf11cc34e4e2ec4b247f24",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-run.mjs": "c1fb8cf866bdc88f12bf6ee3f0bb0f9ac1ed13365002c20dc9b1b167d0c90353",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs": "cea82078365536c51d289448488c99740b2448675f560d22f3d1c7635ae5e3c8",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/compiler-abi.mjs": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/node-resource-args.mjs": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/assemble.mjs": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/compiler.bend": "266933eb2ee6aa0d406a48b19f5bbe0250c6685e9f5f2d9fe276bc38bac31784",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/frozen-base/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/5f90da55c9ec7673d3700ab72ba21d5fd70b9fa1a5cf6efce8900916007bad31/typed-driver.mjs": "11e96b1dc84b0bbb48e888d381e08b82a1c465d9bacae6d7e437d4eb459c0592",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/5f90da55c9ec7673d3700ab72ba21d5fd70b9fa1a5cf6efce8900916007bad31/compiler-abi.mjs": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/5f90da55c9ec7673d3700ab72ba21d5fd70b9fa1a5cf6efce8900916007bad31/node-resource-args.mjs": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/5f90da55c9ec7673d3700ab72ba21d5fd70b9fa1a5cf6efce8900916007bad31/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/5f90da55c9ec7673d3700ab72ba21d5fd70b9fa1a5cf6efce8900916007bad31/assemble.mjs": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/core/term.bend": "47f112aa7cfaabacb36df33fb4207c423b15b75e3111f8272d0c6a1836f7df6a",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/core/index.bend": "b2c87691a850dccddb230309cd34f2ad71ec1f339bc4affa2c46fde36547376c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/core/normalize.bend": "ae09f471bbf06633b9f308f9451835f7863a5c03535e8a6cf5ce6b31dbf0048d",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/core/graph.bend": "7d5e75fce5d473fe2c63a4ccbd3e115db29bf42bb037fa9238d5427fce62a790",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/core/reach.bend": "c7c1e1ff68ad798f3888d770ee5a02b1b73abbecd58cd2df9b81619428abb2cf",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/core/pretty.bend": "9b7ffdca8ba9593b48167aea4f26abd8ac2802a2cca474b67dbf0cbebfca6def",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/check/quantity.bend": "e6c7a06fd45cb132d9d5d1704a6f01f81325505eed2ff5d6025e118ff4522e8a",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/check/kernel.bend": "b1b50c073b2530a14c8a674d473f1c906ce2d56425b6eb487dc0f0bdc642c963",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/check/specialize.bend": "dd5371288c7083753dfe5944cff7b7a53ca8cf2ad1f64a152abf842421db60be",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/check/prefix.bend": "35af4b272cfe893d60d4aca6433617273a1c52bb8ae4d8eeabfa0541354816cb",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/check/annotate.bend": "7b80a62839afb8cd8af547fc0c01b56ee653c49ab247b265fb4dc93e428150ab",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/lexer.bend": "08d47f5cb429c76df3c62f9582fa8a8c6423828b021f4b3f2373512d5f7bbdce",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/parser.bend": "4b0aed286a08ba163c44ea05857f3fa4a9c48b625de7407c2cbe35bb03e4156d",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/declarations.bend": "90d21f6d6930fc34d50e8bafb130be28ea71b2fbf87b4d9306d4a30b6c8c3e79",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/flatten.bend": "463d88f1c7de9828e1826d201f8b8de249f99e1d0bb64ae9768ba64d1f75af1e",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/elaborate.bend": "c000cb747814e48831f98f06c5d40ae7f3d0b88238264164b593749c521e245b",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/sugar.bend": "d7535f1edfc3342e5b934ffd92c574a7d400d60fd5bcc751061d622ad081e59d",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/unicode.bend": "ab9f2596af9af28bc3698d9cc101cdfd8565be2008d89322b2290cb2887862b6",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/literals_arrays.bend": "17d745951eedcb4639548609f84d89fd223efb12f6873fa9a0465acf08fa9600",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/parallel.bend": "0d87ff167c85f67e1f60f397353158f6cf9d6a09180bc4d86db07d0e78ee46d9",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/fresh_work.bend": "b84c60ecf96f3c50403c7fee86d9949a3bcacb4cab529f5a94cb64e920c6db53",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/freshen.bend": "7b054636ae2cc593307d4ba8fea19bfd7e03363a6eb90e154abdd6ae50ba4d57",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/load/paths.bend": "56d3ac6b7bf63db2ffd1c26521fb528f56b9469c78203d01296a93fc3812d38c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/families.bend": "9427f28c1508e2c5361521aa5f277c5992fb2c973df18268394bdd822cdf637e",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/front/validate.bend": "2d78e04a956c20c72a9381c665974a164dde3732c6b4739a69c1e2ac9d8ffa07",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/load/imports.bend": "330a5d91abc35838086247abebac698e8832b7b03faa245f351d8d6b20ba16ae",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/load/graph.bend": "2fbe21beb5c3178cc29cf29cd5fad7a8a9c952aa4e4018d577a71c86ac3da0f4",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/load/seed.bend": "6411c5ae171eb7fca23628a1bd50e92ef3d6c6e2751e32fb83008f16b1e9587e",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/load/modules.bend": "0ad8128a5f8b0e11d49449362d1fad594b3a9382b0b8feb4ae57bcd0359ae0d9",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/diagnostic/model.bend": "dd69096c6fdcd682a45e9536eb6d475061fd285807961ac95a16b5a874358af5",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/diagnostic/render.bend": "201867dba57eb715308026a3dcd36d1a61b0b51ea27c69c6ba00a3c935aedfe9",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/diagnostic/trace.bend": "2f96bedcda46ead991754a9e627f984dc564a896e7a5f77fa08b0d3c029c431c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/diagnostic/produce.bend": "cffa6006781d453fc840b1d40107147a2b62714d10927c5ae3884891234c088a",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/diagnostic/frontend.bend": "debfe6d4e6cea7e28f58c15c2ae82785118bc274f637b6e33a7646c4539311cd",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/js/foreign.bend": "4b6d09ed9cdb914b5531b763bd65523121324bee554a8e5082c4887e728f085d",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/js/literals.bend": "861525baf8fe999e3086a7ce1cd758e488235e23522dc97bdd8ee7694bb32ae7",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/js/validate.bend": "917470e39b4d34c26a4f119f1b7acfca7a51926aba76a73d8397b103debca338",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/js/choice.bend": "2b3ac6cd46a638063d793a1f40eef6f226b1602191cf345e958023a29e2b66c9",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/js/projection.bend": "d1e327782e64ae05b05ce606350f20c61392c26255c0afefa2fff9f2c0ed1250",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/js/emit.bend": "7bf4f547540fc148feea196efd76c2f9a5234b27a33b7d8ac794a04ff5816d78",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/ir.bend": "2014202ac84403ce7720970870693f6f566cf81aea7ad44d69cf44ae65909f41",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/text.bend": "053f8a05ced5c13f7face492da1d16cbdbfdfd90f356c4a5d8f0bbb5d83ef5f7",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/identity.bend": "79794a586a0c2f043c9bd417b97fe2092863eb3a8524250d6b49f0b77dc1810d",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/layout.bend": "3470eca359bdee3add2e8672bd8456c2a9533231a861854b5257e8a22df291da",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/intrinsic.bend": "8acf8c4e083b55cc33ef323552963b254ac310c22e7d8b5e3b82253776892ab0",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/tables.bend": "26457cbe409162e70805b3ff0ec91946811b219f71bb2d45982663c3299daf54",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/emit.bend": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/erase.bend": "db21d12efc46060fd21f0917f5100fc525f967d72aac6bb1ca84455f7eec7795",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/bridge.bend": "88431cf52f0c9ac1b3b1c93aa4a54225ca201d0b8021283f98ba09c2aadc1c74",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/direct.bend": "75c5d560b8390263d18c991da8410191a0c5909b4ae0e8ebae193c0d9fd02de5",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/pattern.bend": "5c624607c7ad2e19660efeddf694d841d7b4d867b1a3870795f9847daca7d155",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/show.bend": "6f662583a276295312217ad99b777cf96988c21ffa7beca3178c043d4b040780",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/parallel.bend": "85326099c65dbd478574e480e13492f1d3973625c3c9aa50e286f7f4a38ff722",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/array.bend": "4e1d5c9d282ba746ac1e98df470411d477bf1449b5621c3ad413f01e883d9149",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/validate.bend": "9684fcb9bb25ff0e822ac11b738a319c1353ed721c6c4d864ed984cde0bfd089",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/foreign.bend": "fa71a99ac100dc31a8d6246132fb717f2d8c69f6a7cae71a48a2b960d2c89d61",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/back/native/book.bend": "1e5e8f7bde0ab8b4eae2408f83882d59a3e1bce27f4955ba02ad1e8479da9e15",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/driver/report.bend": "461d05ad6f7647feafd13520fd5da0c9635eee976d58bea6c7d336b862831ba2",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/src/driver/api.bend": "c4aff96313ecc8a2bcc236116af18d88ca0087b7f1230cf7c8bb62c30d5e00e7",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/bend.lean": "fa8bc26b4c3b31986401852c97976a7d1aa1dafe11357028d58336523ff5ef7d",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/bend.ts": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/comp.ts": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/BendRT/main.typ": "7416bdd19b6f9db3e94082362ca1456a59f047a4cd3f6da93e3d5b6f4b3fba02",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/BendRT/refs.bib": "ca8cd096e3c421b70ce4f8116f25c3a78df85cc522497ea2ebb1f23d305bd00d",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/BendTT/main.typ": "6aa6bde23b721a26509b1c78973b6cf0328b0863e76efa0e48242756ff907fbd",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/BendTT/refs.bib": "4a2fa19668c4320f6f45397977eef46573747c3937109104973404827dbdd321",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/bend.sublime-syntax": "5d5960fba991af52052833d8e99e6f03d072d09a398e482ad0310194388b9e81",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/gen_anim.ts": "3e573ab8d44717a8b9ff8c94501f5f8916bd08db545ca5e5541fa240cd063426",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/gen_charts.ts": "3e2076c0fb9dfb03b8b85b7bac5ddb10427669cf2e7ec9071d8a4f02b6aff4e1",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/gen_gifs.ts": "a8e0c800b6370025cd0588f3243f14d3d2932960d58cdbb55ce00aa9513a7725",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/gen_pins.ts": "0cb2a1bc2d1578f62e318492610e2ba085c1cb062c3db4f6138496ccb65728d7",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/intro/.gitignore": "f4666df3003f7c19c0046767fdf8b2bf85cfe349f78b6223507bbfc1f08e6e48",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/intro/index.html": "b45990e8a0dcc20f8ad9992e7e6503a1420f3e100a7d2a8eb04d72056e1c7860",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/intro/package.json": "8963f0416a959e4c015dcb9077f4f90153c81627f77f72794b5b8aca035b8fa6",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/intro/render.js": "07488eabf1fda9a94110ee3f5589aa222acb69ef50cf6f542431e39b92552be9",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/intro/shots.js": "d7956bd125d542c111f77c0eae9db6bf837b404628cc96079b1a78545efce9e0",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/docs/intro/video.js": "9be311065898f399555ee7508a7630ba2bab015c10c1233d235c01f1030de528",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/args.c": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/args.js": "c0ab157ffd8c7cf8a64c04b209a9933613a7de4e4cf3985d79368734f5ee05d3",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/audio_close.c": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/audio_close.js": "a405efc23dc9ee40d042e0eb990a2ba35ed3d24e604f86b06c342fc8b88f0ba1",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/audio_open.c": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/audio_open.js": "955ee7459117cace471ba49daba1f830df626de1f25ce3e1196344cabfa6a6ad",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/audio_write.c": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/audio_write.js": "4d7d448c013e54e0b88b7d956fe9a3ecab5ca993ed07e1def384c142e2691f7c",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/chan_close.c": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/chan_close.js": "6d499aff10ef4bc31f6cbf1498d72d5e0459713b01ff71a7d0b81a1d72f22864",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/chan_new.c": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/chan_new.js": "c492de059560a6508f8abe0f76a61190afe3c09cdbff3ca0fcf325a54a5dc407",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/chan_recv.c": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/chan_recv.js": "bdb08d281e4e6c79ff9d8f155a2a831957a945e4bc20e40ab298251475e94330",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/chan_send.c": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/chan_send.js": "2fd3cccca3c6b5969be94abc41b04fcb4b897704b599ad0d9c049cae445b33fa",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_close.c": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_close.js": "23614d511e30900127c359da5cc9c1ea96642da564813866f062be67cbfbc618",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_open.c": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_open.js": "c5eef502a0a05b961685a6ef057fe22e1afe2fddbcce52b5813dac595948e956",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_read.c": "4ec0b13491c0d9564836ad23b5a65aec930d84bd19e36c90e20e9c34211a7e2b",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_read.js": "78fb4cf4cab0c3b20b6c26c2ab9124a85c90c8ae894400544909fe4fbd360457",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_read_at.c": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_read_at.js": "448b13cf2d0044dab6b200765533e95f4e71d85ed2ba3f00bc63cde0dfb549c6",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_read_bytes.c": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_read_bytes.js": "e318bb18d53e8acaaa7f38ca0ab13af73779771249a49ab02a71ec8b65a18d59",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_size.c": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_size.js": "3aaf57fb49127c71d19d975c243a415b0b957775b54b5c4093feadd0e4e84c5e",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_write.c": "9829c7100982824fa17f78bab80150adccbddcb69a3cc47939e118018cc22504",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_write.js": "1c24a3da8f32ce5f74c774cd71c62a9c7d69cecda3ec0b503789b63401bf48c7",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_write_bytes.c": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/file_write_bytes.js": "8d130a7a77f83528b5122aea6d117e39f710ed6b5fef0cb7919b87537e37b9ac",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/get_env.c": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/get_env.js": "f03f63c193653571742e843081caa14ff2f1246d4ac8edf1ad70082965ff6654",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/listener_close.c": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/listener_close.js": "a0fa00784e073fc31f86eee2e975ddf3fede1ce9bdce71dd6ca7e9d66f798b68",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/now.c": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/now.js": "c1b04cf21a8f4a32fc28a6340ebf0646ec0c4486494a5278ba1986308a878d2d",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/print.c": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/print.js": "d189cf8d2734f85aeacf6872f3eb49fb10caa0568f66c81cc4a814c3269953ff",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/print_err.c": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/print_err.js": "7b8cb3bc48101ce5e2ecaf98a478cc6d5abaa46e74df6b43dc822bce891eb26c",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/random_u32.c": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/random_u32.js": "82c9f51cac5dddc9664b0547232325b2c11653c75275bea87c67da9eb6364417",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/sleep.c": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/sleep.js": "6515ad28d914f204c09526c7b35aaea15d0e0df27cf10170a4a690fc584c8668",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/socket_close.c": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/socket_close.js": "bc0575a4afa9afdf0de06b93866369d52c7fa01769a535bf01770bee7b45fafb",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/spawn.c": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/spawn.js": "91659ebeeba7fb688218a7450ab6b0eb20ccf010741153a117a40f8a5182b6a9",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_accept.c": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_accept.js": "3f1723685ed07a51192e916c0c8816c38a30e03b0428d953adb4ed2629b96e3f",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_connect.c": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_connect.js": "f964afcd8687305aebe3edfac2c49d756fe1e15d405ea3c1372fc7f0d695dec4",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_listen.c": "2f206b54e6698df529f6c669755cf84e92f51736db4d38e224dd5eb3fcd0a3ed",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_listen.js": "36342dfb4f5bd050924757dd5354cee4c17a6c7319d5f0a91b697b57d5d74924",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_poll.c": "9f4adfe0f4b8e025783b07fa4ba9fec619a5938135dc5f4bb8c9cf7079e82b37",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_poll.js": "38c950ed71f4c2d5fbee0541197fd77bfe26e2f8d7f3b9957c067fc006062650",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_recv.c": "3a105d82f4e786b992e27bec66c407caa9efbda67a63c03d95805231a21d9ba1",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_recv.js": "f8c539f57f6a8f3ac02e8a66c58ca7474ab426be6cda103c1b39d5a6f40e14b0",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_send.c": "70a5eba01d09e2cda7a9f3b22d976f4c8ba3fb7a8c8083abddd8d12c85d8a2a4",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/tcp_send.js": "7d6ddf588d92ecba06aa2857dbc354cea0ea52a7e970c3aa2e79eb876d7208d7",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/udp_bind.c": "fe405175c1890c2d19a2f6d94b2672259b47a1e6dc8f62f8e9ff540bef7a2245",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/udp_bind.js": "ef2c6d2d228a64c6e506c78ecfe2252740e2802aaf7682843a7f6dc234c8a95b",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/udp_poll.c": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/udp_poll.js": "d2d0729d603486624e8431ff110959f55b73d20418ca3c959daffb252f22079c",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/udp_recv_from.c": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/udp_recv_from.js": "49ec389b36a8c07cca995a18d659e5febff9e770f0101d397d9697e67208651e",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/udp_send_to.c": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/udp_send_to.js": "85579f72782dd5d9491efd6cffe2c7fafa50f3d2e262c5b76172333df0fa7b5e",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/window_close.c": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/window_close.js": "62212c5388b793452a3b587274f09303e9af88610ccdbce390992b62dd872662",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/window_frame.c": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/window_frame.js": "c6874e758829d6901d244ef5b56dd9ec49939dca074258c08f05e34e199ac598",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/window_open.c": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/window_open.js": "26532181f772fb8cea4e4fc4a76b42b281a789b5acefb4d60b98dafec51c1f72",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/window_set_title.c": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/window_set_title.js": "9e9cd28c96867a9cc4d9603afc4c14c9de61d17963ebeb63b21c9c9c247838e2",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/write.c": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/effs/write.js": "09ba117d9de2520f284b4ad5f5657b74b5105ab78c55fbd774a552bd2ebdc420",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/main.ts": "34c69df407a8abff02752f26821ee2ff7c0a303e97a32b8b5e0082b142e63f59",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/pack/.gitignore": "16d30e4462189fb14dd611bdb708c510630c576a1f35b9383e89a4352da36c97",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/pack/bun.lock": "b4dba235c00883a8de46b8c6ba1b35da15a2a0fcf145cb36a15c3c2d56edaf71",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/pack/package.json": "b8c39994365e186de7a71cd0b06bbab79abcf22982c71553d85d23022e57340d",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/pack/tsconfig.json": "e69cca00b64368b2d2458bb0feb6418fa6b1bf31a407d081ce435ebd52ddbefc",
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend": "ee47602e212650f57d33510b02aef711ba86f4d75b99058b3914f55e2704f4e4",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/measure-tree-manifest.json": "18aceb9bb3e46a2ccf636c71594dc4a09f155f753762faab11bc09683503c220",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/main.bend": "288f0c27d3361d3b4c1c00baed70638c250f69a632c99d83ed6e243da67e7c84",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/manifest.json": "a6b0f05aced2c59b16e418601aa0e5885b12fdd828ca9d7a0e31d18a3c3bff94",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/foreign.bend": "bf6db11b7a19111bf91e3f8ffb5f9a6d0c3591e2e91b47b8247f7c1113428953",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/external.js": "3f2a770c161ce92e464ea90f5d1da9c3f258460fda1ebed06e1d4733cd0f1825",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json": "b0dfbba5ca13539e77454228c14ffb8ed6c69afa0214963e04627a0dc93a256d",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json": "5996bd58308b58e1ca6bbdac1aac0eff478670a1310e534fcdf4af52357af40d"
+  },
+  "toolSnapshots": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/selfhost-cache-measure.mjs",
+      "copy": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-latency/consumed-tools/0-selfhost-cache-measure.mjs",
+      "sha256": "3657fbdeb1b503ade011cca45c2dbb3fc5ad34d15e436a370d281d906ea91ce1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-measure.mjs",
+      "copy": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-latency/consumed-tools/1-native-graph-measure.mjs",
+      "sha256": "61529ab4302ed0a0ce1251c2415d8d835a682bce5e08a3801374665f26bf9bd5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/compare-worker.mjs",
+      "copy": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-latency/consumed-tools/2-compare-worker.mjs",
+      "sha256": "74899f3ad48221d961cd727fad6e9827ca53a0c31acf11cc34e4e2ec4b247f24"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-run.mjs",
+      "copy": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-latency/consumed-tools/3-native-graph-run.mjs",
+      "sha256": "c1fb8cf866bdc88f12bf6ee3f0bb0f9ac1ed13365002c20dc9b1b167d0c90353"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs",
+      "copy": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-latency/consumed-tools/4-typed-driver.mjs",
+      "sha256": "cea82078365536c51d289448488c99740b2448675f560d22f3d1c7635ae5e3c8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/compiler-abi.mjs",
+      "copy": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-latency/consumed-tools/5-compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/node-resource-args.mjs",
+      "copy": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-latency/consumed-tools/6-node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/assemble.mjs",
+      "copy": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-latency/consumed-tools/7-assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/native-build.mjs",
+      "copy": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-latency/consumed-tools/8-native-build.mjs",
+      "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+    }
+  ],
+  "hostChangesSincePrior": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs",
+      "priorSha256": "69b62f52746a2fd1bce017ce9ecfd409bdf018c07ba5b79578895d33903ffb6b",
+      "currentSha256": "cea82078365536c51d289448488c99740b2448675f560d22f3d1c7635ae5e3c8"
+    }
+  ],
+  "scope": "Fresh processes and rotating variant order on one CPU. B1 and proven self-emitted H use the same current native-graph-measure --host cached policy; each validated Base cache is primed and recorded separately. TypeScript fully checks Base per fresh process. H provenance is a completed self-emission chain, not a bootstrap report. Prior native timings are separate historical samples. processWallMs includes startup/host/output; program execution is a separate oracle.",
+  "cachePreparation": {
+    "B1": {
+      "status": 0,
+      "stderr": "",
+      "processWallMs": 227.53243500000008,
+      "kind": "validated-base-cache-preparation",
+      "milliseconds": 99.36254600000001,
+      "version": 2,
+      "compilerSha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+      "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+      "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1",
+      "sourcePath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+      "validatedBy": "check_book",
+      "generated": "2026-09-21T14:50:07.477Z",
+      "cacheFile": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json",
+      "existedBefore": true,
+      "cacheFileSha256": "b0dfbba5ca13539e77454228c14ffb8ed6c69afa0214963e04627a0dc93a256d"
+    },
+    "H": {
+      "status": 0,
+      "stderr": "",
+      "processWallMs": 14908.534178,
+      "kind": "validated-base-cache-preparation",
+      "milliseconds": 14493.781178000001,
+      "version": 2,
+      "compilerSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+      "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+      "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1",
+      "sourcePath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+      "validatedBy": "check_book",
+      "generated": "2026-09-21T16:22:37.621Z",
+      "cacheFile": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json",
+      "existedBefore": false,
+      "cacheFileSha256": "5996bd58308b58e1ca6bbdac1aac0eff478670a1310e534fcdf4af52357af40d"
+    }
+  },
+  "rows": [
+    {
+      "workload": "tree",
+      "repetition": 0,
+      "variant": "B1",
+      "passed": true,
+      "processWallMs": 1865.9081099999985,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "compileMs": 1749.911347,
+        "published": true,
+        "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+        "outputBytes": 44229
+      },
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "tree",
+      "repetition": 0,
+      "variant": "H",
+      "passed": true,
+      "processWallMs": 3426.2088650000005,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "compileMs": 3243.742686,
+        "published": true,
+        "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+        "outputBytes": 44229
+      },
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "tree",
+      "repetition": 0,
+      "variant": "typescript",
+      "passed": true,
+      "processWallMs": 676.5623350000023,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "importMs": 234.22460999999998,
+        "compileMs": 376.89741499999997,
+        "cpuMs": 376.941,
+        "maxRssKiB": 135064,
+        "phases": {
+          "load": 152.58519900000005,
+          "check": 200.68567000000002,
+          "emit": 23.381717999999978
+        },
+        "calls": {
+          "load": 1,
+          "check": 1,
+          "emit": 1
+        },
+        "outputBytes": 13114
+      },
+      "outputSha256": "a2cf75428d48f4c330ad4637d33727a53d537e8ecddbe1f2b2924cdbc03c79be",
+      "samePortOutput": null,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "import-foreign",
+      "repetition": 0,
+      "variant": "B1",
+      "passed": true,
+      "processWallMs": 1639.066827999999,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/foreign.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/./external.js"
+        ],
+        "compileMs": 1534.19257,
+        "published": true,
+        "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+        "outputBytes": 44367
+      },
+      "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "import-foreign",
+      "repetition": 0,
+      "variant": "H",
+      "passed": true,
+      "processWallMs": 3205.1052469999995,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/foreign.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/./external.js"
+        ],
+        "compileMs": 3001.386544,
+        "published": true,
+        "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+        "outputBytes": 44367
+      },
+      "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "import-foreign",
+      "repetition": 0,
+      "variant": "typescript",
+      "passed": true,
+      "processWallMs": 687.6343070000003,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "importMs": 237.418994,
+        "compileMs": 387.993297,
+        "cpuMs": 388.027,
+        "maxRssKiB": 133544,
+        "phases": {
+          "load": 156.170641,
+          "check": 210.04590800000005,
+          "emit": 21.533083000000033
+        },
+        "calls": {
+          "load": 1,
+          "check": 1,
+          "emit": 1
+        },
+        "outputBytes": 13227
+      },
+      "outputSha256": "6c66f17d186c11cb8f24ffcae1f3c1906e0dd1bf81de880cc43b74dad8b7cd3b",
+      "samePortOutput": null,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "tree",
+      "repetition": 1,
+      "variant": "H",
+      "passed": true,
+      "processWallMs": 3475.114909,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "compileMs": 3274.411439,
+        "published": true,
+        "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+        "outputBytes": 44229
+      },
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "tree",
+      "repetition": 1,
+      "variant": "typescript",
+      "passed": true,
+      "processWallMs": 689.1133440000012,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "importMs": 238.71093199999996,
+        "compileMs": 382.49776299999996,
+        "cpuMs": 382.515,
+        "maxRssKiB": 133460,
+        "phases": {
+          "load": 156.857755,
+          "check": 204.25648000000007,
+          "emit": 21.12617899999998
+        },
+        "calls": {
+          "load": 1,
+          "check": 1,
+          "emit": 1
+        },
+        "outputBytes": 13114
+      },
+      "outputSha256": "a2cf75428d48f4c330ad4637d33727a53d537e8ecddbe1f2b2924cdbc03c79be",
+      "samePortOutput": null,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "tree",
+      "repetition": 1,
+      "variant": "B1",
+      "passed": true,
+      "processWallMs": 1808.3073369999984,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "compileMs": 1701.1793389999998,
+        "published": true,
+        "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+        "outputBytes": 44229
+      },
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "import-foreign",
+      "repetition": 1,
+      "variant": "H",
+      "passed": true,
+      "processWallMs": 3036.0284880000036,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/foreign.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/./external.js"
+        ],
+        "compileMs": 2854.320397,
+        "published": true,
+        "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+        "outputBytes": 44367
+      },
+      "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "import-foreign",
+      "repetition": 1,
+      "variant": "typescript",
+      "passed": true,
+      "processWallMs": 672.0843669999958,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "importMs": 237.2877,
+        "compileMs": 376.99369299999995,
+        "cpuMs": 377.02,
+        "maxRssKiB": 133052,
+        "phases": {
+          "load": 156.45463,
+          "check": 199.73436800000002,
+          "emit": 20.557011999999986
+        },
+        "calls": {
+          "load": 1,
+          "check": 1,
+          "emit": 1
+        },
+        "outputBytes": 13227
+      },
+      "outputSha256": "6c66f17d186c11cb8f24ffcae1f3c1906e0dd1bf81de880cc43b74dad8b7cd3b",
+      "samePortOutput": null,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "import-foreign",
+      "repetition": 1,
+      "variant": "B1",
+      "passed": true,
+      "processWallMs": 1601.2925390000019,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/foreign.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/./external.js"
+        ],
+        "compileMs": 1494.411861,
+        "published": true,
+        "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+        "outputBytes": 44367
+      },
+      "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "tree",
+      "repetition": 2,
+      "variant": "typescript",
+      "passed": true,
+      "processWallMs": 694.4353799999953,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "importMs": 223.64519199999998,
+        "compileMs": 405.749123,
+        "cpuMs": 405.797,
+        "maxRssKiB": 134864,
+        "phases": {
+          "load": 167.04763300000002,
+          "check": 218.03888300000006,
+          "emit": 20.43639900000005
+        },
+        "calls": {
+          "load": 1,
+          "check": 1,
+          "emit": 1
+        },
+        "outputBytes": 13114
+      },
+      "outputSha256": "a2cf75428d48f4c330ad4637d33727a53d537e8ecddbe1f2b2924cdbc03c79be",
+      "samePortOutput": null,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "tree",
+      "repetition": 2,
+      "variant": "B1",
+      "passed": true,
+      "processWallMs": 1803.3716679999998,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "compileMs": 1691.123845,
+        "published": true,
+        "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+        "outputBytes": 44229
+      },
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "tree",
+      "repetition": 2,
+      "variant": "H",
+      "passed": true,
+      "processWallMs": 3447.706090000007,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "compileMs": 3263.210939,
+        "published": true,
+        "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+        "outputBytes": 44229
+      },
+      "outputSha256": "f49845d51686fba2bbfaa59d91352defeeda1bb8f198b95f6e8af9ddc696146b",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "import-foreign",
+      "repetition": 2,
+      "variant": "typescript",
+      "passed": true,
+      "processWallMs": 706.944279000003,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "importMs": 245.38808600000002,
+        "compileMs": 399.54864200000003,
+        "cpuMs": 399.578,
+        "maxRssKiB": 135416,
+        "phases": {
+          "load": 162.04991,
+          "check": 215.43334199999993,
+          "emit": 21.78990699999997
+        },
+        "calls": {
+          "load": 1,
+          "check": 1,
+          "emit": 1
+        },
+        "outputBytes": 13227
+      },
+      "outputSha256": "6c66f17d186c11cb8f24ffcae1f3c1906e0dd1bf81de880cc43b74dad8b7cd3b",
+      "samePortOutput": null,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "import-foreign",
+      "repetition": 2,
+      "variant": "B1",
+      "passed": true,
+      "processWallMs": 1576.1569430000018,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/foreign.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/./external.js"
+        ],
+        "compileMs": 1468.836092,
+        "published": true,
+        "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+        "outputBytes": 44367
+      },
+      "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "import-foreign",
+      "repetition": 2,
+      "variant": "H",
+      "passed": true,
+      "processWallMs": 3162.154432999996,
+      "status": 0,
+      "stderr": "",
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/main.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/foreign.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/validation/fixtures/foreign-imported/./external.js"
+        ],
+        "compileMs": 2960.411364,
+        "published": true,
+        "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+        "outputBytes": 44367
+      },
+      "outputSha256": "e0828c771075d784f4b131c1d624cb30498f0f58ef2c7a4bbd67f03aa2bdafe8",
+      "samePortOutput": true,
+      "execution": {
+        "status": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "complete": true,
+  "childEnvironmentPolicy": "Inherited environment with NODE_OPTIONS and BEND_TYPED_TRACE removed; compiler, runtime and Base paths are set by each worker request.",
+  "medians": {
+    "tree": {
+      "B1": {
+        "processWallMs": 1808.3073369999984,
+        "compileMs": 1701.1793389999998
+      },
+      "H": {
+        "processWallMs": 3447.706090000007,
+        "compileMs": 3263.210939
+      },
+      "typescript": {
+        "processWallMs": 689.1133440000012,
+        "compileMs": 382.49776299999996
+      }
+    },
+    "import-foreign": {
+      "B1": {
+        "processWallMs": 1601.2925390000019,
+        "compileMs": 1494.411861
+      },
+      "H": {
+        "processWallMs": 3162.154432999996,
+        "compileMs": 2960.411364
+      },
+      "typescript": {
+        "processWallMs": 687.6343070000003,
+        "compileMs": 387.993297
+      }
+    }
+  },
+  "inputsUnchanged": true,
+  "trackedStillClean": true,
+  "finished": "2026-09-21T16:23:16.097Z",
+  "sourceReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/native-host/v2/selfhost-latency/report.json",
+    "sha256": "5eb17fdbbc4bc5341b06f3a0332a15c5eb14572f934eabab89d4c3e9f8dc0429"
+  },
+  "archiveNote": "Completed original report retained with all rows, consumed input/tool hashes, proof and cache preparation identity. Read-only tool snapshots remain under the original output directory; their sources are tracked in the repository at this milestone."
+}

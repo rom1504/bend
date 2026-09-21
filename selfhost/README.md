@@ -1,9 +1,11 @@
 # Bend2 compiler port in Bend2
 
 See the [repository compiler guide](../docs/BEND-IN-BEND.md) for building, running
-and validating this port, and the [phase 1 implementation report](../implementation/phase1/report.md)
-for the current performance work. Historical results below apply to their recorded
-artifacts.
+and validating this port. The [fast conformance guide](../docs/PHASE2_DEVELOPMENT.md)
+and [phase 2 implementation report](../implementation/phase2/report.md) describe
+the current development workflow, measured performance and validation. Historical
+results below apply to their recorded artifacts; phase 2 does not replace the
+default distributed compiler.
 
 This project targets Bend2 2.0.21 at upstream revision
 [`6018e28ecc67cf1fffc0c20c64b11023474c2df8`](https://github.com/bendlang/bend/tree/6018e28ecc67cf1fffc0c20c64b11023474c2df8).

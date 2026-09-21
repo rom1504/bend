@@ -1,6 +1,6 @@
 # JavaScript backend
 
-`emit.bend`, `foreign.bend`, `literals.bend`, and `validate.bend` are Bend2 source. Their input is the checked,
+`emit.bend`, `choice.bend`, `foreign.bend`, `literals.bend`, and `validate.bend` are Bend2 source. Their input is the checked,
 specialized, annotated `KTerm`/`KDef` core. They emit JavaScript; they do not
 invoke another compiler.
 
@@ -32,7 +32,7 @@ values passed directly between foreign functions.
 
 The bootstrap-only integration tests use `build/js-backend.mjs`, built with
 `tools/assemble.mjs` from `src/core/term.bend`, `src/core/index.bend`,
-`src/core/normalize.bend`, `src/core/pretty.bend`, `src/back/js/emit.bend`,
+`src/core/normalize.bend`, `src/core/pretty.bend`, `src/back/js/emit.bend`, `src/back/js/choice.bend`,
 `src/back/js/foreign.bend`, `src/back/js/literals.bend`, and
 `src/back/js/validate.bend`, then
 `tools/stage0-library.mjs` exporting `j_program j_expr j_descriptor j_library
@@ -74,3 +74,26 @@ every reference. Set `BEND_EXPECT_CACHED_LAM=1` to require leading-lambda cachin
 `src/runtime/js/test-apply.mjs` checks argument ownership, mutation isolation,
 partial application, oversaturation, and constructor evaluation order. The
 backend and runtime tests accept `BEND_JS_RUNTIME` for isolated runtime variants.
+
+## Phase 1 execution improvements
+
+`choice.bend` recognizes a transparent Boolean-choice definition by its core
+body and Base Bool/Unit provenance. A fully applied call with two literal lambda
+thunks emits a JavaScript conditional. The selected lambda receives Unit (or an
+erased null slot), and its body retains the original tail-position flag. Partial
+calls, computed thunk arguments, and different bodies use ordinary application.
+`test-choice.mjs` compares both branches with pinned upstream and checks dynamic
+argument evaluation, condition-before-branch ordering and 50,000 tail calls.
+
+Base `String.contains`, `String.starts_with`, `String.reverse` and
+`String.is_empty` preserve the existing native runtime implementation. The same
+`j_intrinsic` classification drives stop sets and emission; user definitions
+without Base provenance retain their Bend implementation.
+`test-string-primitives.mjs` compares wrappers against pinned Base, including
+empty, non-BMP and malformed host strings. Run both new tests with an explicit
+`BEND_TYPED_API` and `BEND_UPSTREAM`.
+
+Selected emission prepares one persistent `book_context` and reuses it through
+annotation, layout validation and emission. Direct backend entry points prepare
+an unindexed input themselves. A context is immutable and valid only for the
+book from which it was built; specialization must finish before preparation.

@@ -341,6 +341,19 @@ law j_apply_spine:
 
 @unsafe
 def j_apply_spine(book, env, t, tail, fty, spine):
+  kc(String, j_choice_call(book, spine), u => j_choice_emit(book, env, spine, tail), u => j_apply_regular(book, env, t, tail, fty, spine))
+
+law j_apply_regular:
+  for +book: List<&2, KDef>
+  for +env: List<&2, KTerm>
+  for +t: KTerm
+  for +tail: Bool
+  for +fty: KTerm
+  for +spine: KTerm
+  String
+
+@unsafe
+def j_apply_regular(book, env, t, tail, fty, spine):
   kc(String, String.eq(tg(spine), "Call") && U32.is_gt(terms_len(ks(spine)), 1) && U32.is_le(terms_len(ks(spine)), j_call_arity(lookup(book, nm(spine)))), u => kc(String, tail, u => "jump(", u => "call(") ++ "get(G," ++ j_quote(nm(spine)) ++ "),[" ++ j_apply_args(book, env, ks(spine), dt(lookup(book, nm(spine)))) ++ "])", u => j_apply_one(book, env, t, tail, fty))
 
 law j_call_arity:
@@ -413,7 +426,7 @@ law j_intrinsic:
 
 @unsafe
 def j_intrinsic(name):
-  String.contains("|U32.add|U32.sub|U32.and|U32.or|U32.xor|U32.is_eq|U32.is_ne|U32.is_lt|U32.is_le|U32.is_gt|U32.is_ge|U32.mul|U32.div|U32.mod|U32.inc|U32.shl|U32.shr|U32.shln|U32.shrn|U32.not|U32.is_zero|U32.cmp|U32.to_f32|U32.to_nat|U32.from_nat|F32.add|F32.sub|F32.mul|F32.div|F32.neg|F32.is_eq|F32.is_ne|F32.is_lt|F32.is_le|F32.is_gt|F32.is_ge|F32.sqrt|F32.exp|F32.log|F32.log2|F32.log10|F32.sin|F32.cos|F32.tan|F32.asin|F32.acos|F32.atan|F32.sinh|F32.cosh|F32.tanh|F32.floor|F32.ceil|F32.trunc|F32.abs|F32.pow|F32.atan2|F32.mod|F32.to_u32|F32.bits|F32.show|F32.read|Nat.add|Nat.sub|Nat.mul|Nat.double|Nat.cmp|Nat.is_lt|Nat.divmod|Array.new|Array.set|Array.get|Array.swap|Array.size|Array.clone|IO.pure|IO.bind|IO.try|IO.pass|IO.die|IO.args|IO.print|IO.write|IO.print_err|IO.get_env|IO.now|IO.sleep|IO.random_u32|IO.spawn|IO.fork|IO.join|String.append|String.length|String.eq|Bool.or|Bool.xor|", "|" ++ name ++ "|")
+  String.contains("|U32.add|U32.sub|U32.and|U32.or|U32.xor|U32.is_eq|U32.is_ne|U32.is_lt|U32.is_le|U32.is_gt|U32.is_ge|U32.mul|U32.div|U32.mod|U32.inc|U32.shl|U32.shr|U32.shln|U32.shrn|U32.not|U32.is_zero|U32.cmp|U32.to_f32|U32.to_nat|U32.from_nat|F32.add|F32.sub|F32.mul|F32.div|F32.neg|F32.is_eq|F32.is_ne|F32.is_lt|F32.is_le|F32.is_gt|F32.is_ge|F32.sqrt|F32.exp|F32.log|F32.log2|F32.log10|F32.sin|F32.cos|F32.tan|F32.asin|F32.acos|F32.atan|F32.sinh|F32.cosh|F32.tanh|F32.floor|F32.ceil|F32.trunc|F32.abs|F32.pow|F32.atan2|F32.mod|F32.to_u32|F32.bits|F32.show|F32.read|Nat.add|Nat.sub|Nat.mul|Nat.double|Nat.cmp|Nat.is_lt|Nat.divmod|Array.new|Array.set|Array.get|Array.swap|Array.size|Array.clone|IO.pure|IO.bind|IO.try|IO.pass|IO.die|IO.args|IO.print|IO.write|IO.print_err|IO.get_env|IO.now|IO.sleep|IO.random_u32|IO.spawn|IO.fork|IO.join|String.append|String.length|String.eq|String.contains|String.starts_with|String.reverse|String.is_empty|Bool.or|Bool.xor|", "|" ++ name ++ "|")
 
 law j_def:
   for +book: List<&2, KDef>

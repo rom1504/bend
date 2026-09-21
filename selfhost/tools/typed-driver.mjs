@@ -18,7 +18,7 @@ export const apiPath=path.resolve(process.env.BEND_TYPED_API||path.join(project,
 export const runtimePath=path.resolve(process.env.BEND_TYPED_RUNTIME||path.join(project,'src/runtime.mjs'));
 const bundledBasePath=path.join(project,'dist/base.bend');
 export const basePath=path.resolve(process.env.BEND_BASE||bundledBasePath);
-const roots=['f_parse','f_load','f_path_join','f_path_dir','check_book','annotate_book','j_program','j_library','j_modules','driver_has_main','driver_is_io','driver_interpret','driver_todos','driver_owned','driver_emit_owned'];
+const roots=['f_parse','f_load','f_path_join','f_path_dir','check_book','annotate_book','j_program','j_library','j_expr','j_descriptor','j_io_type','j_modules','driver_has_main','driver_is_io','driver_interpret','driver_todos','driver_owned','driver_emit_owned'];
 const list=values=>values.reduceRight((tail,head)=>({$: 'Con',head,tail}),{$:'Nil'});
 function array(value) {
   const values=[];
@@ -55,7 +55,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(files.includes('src/check/prefix.bend'))exports.push('check_from_exact_prefix','exact_prefix');
   if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_main_names');
   if(files.includes('src/load/modules.bend'))exports.push('f_source_parsed');
-  if(files.includes('src/core/index.bend'))exports.push('book_context');
+  if(files.includes('src/core/index.bend'))exports.push('book_context','book_cached');
   if(files.includes('src/load/seed.bend'))exports.push('f_load_graph_seed');
   if(files.includes('src/driver/report.bend'))exports.push('driver_report');
   if(files.includes('src/diagnostic/produce.bend'))exports.push('check_book_diagnostic','diagnostic_render','diagnostic_result_locate');

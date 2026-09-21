@@ -55,5 +55,5 @@ try{
 } catch(error){process.stderr.write(error.message+'\n');process.exitCode=1}
 finally{
   fs.mkdirSync(path.join(root,'dist'),{recursive:true});
-  fs.writeFileSync(path.join(root,'dist/component-report.json'),JSON.stringify({upstream:manifest.upstream,node:process.version,generated:new Date().toISOString(),scope:'component verification, not whole-language conformance or self-hosting',pass:process.exitCode!==1,modules:captured.map(({file,bytes})=>({file,sha256:digest(bytes)})),results},null,2)+'\n');
+  fs.writeFileSync(process.env.BEND_COMPONENT_REPORT||path.join(root,'dist/component-report.json'),JSON.stringify({upstream:manifest.upstream,node:process.version,generated:new Date().toISOString(),scope:'component verification, not whole-language conformance or self-hosting',pass:process.exitCode!==1,modules:captured.map(({file,bytes})=>({file,sha256:digest(bytes)})),results},null,2)+'\n');
 }

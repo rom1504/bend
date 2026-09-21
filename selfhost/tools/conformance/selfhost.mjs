@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {spawn,spawnSync} from 'node:child_process';
-import {project,apiPath,runtimePath} from '../typed-driver.mjs';
+import {project,apiPath,runtimePath,basePath} from '../typed-driver.mjs';
 const source=path.resolve(process.argv[2]||'');
 if(!process.argv[2])throw Error('Usage: selfhost.mjs SOURCE.bend [OUTPUT_DIRECTORY]');
 const driver=path.resolve(process.env.BEND_SELFHOST_DRIVER||path.join(project,'tools/typed-driver.mjs'));
@@ -25,16 +25,29 @@ if(stackKB&&stackLimit!=='unlimited'&&!(Number(stackLimit)>=stackKB*2))throw Err
 const nodeArgs=[...(stackKB?[`--stack-size=${stackKB}`]:[]),...(heapMB?[`--max-old-space-size=${heapMB}`]:[])];
 const directory=path.resolve(process.argv[3]||path.join(project,'build/typed/fixedpoint'));
 const digest=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const identity=file=>({file:path.resolve(file),canonicalPath:fs.realpathSync(file),sha256:digest(file)});
+const verifyIdentity=(input,label)=>{
+  if(fs.realpathSync(input.file)!==input.canonicalPath||digest(input.file)!==input.sha256)throw Error('Self-host '+label+' changed during verification: '+input.file);
+};
+const base=identity(basePath);
+const sourceIdentity=identity(source);
+const hostHelpers=['compiler-abi.mjs','node-resource-args.mjs','native-build.mjs','assemble.mjs'].map(name=>identity(path.join(path.dirname(driver),name)));
+const reportFile=path.join(directory,'report.json');
+if(firstStage===2&&fs.existsSync(reportFile))throw Error('Fresh self-host attempt refuses an existing report; choose a new output directory or explicitly resume');
 fs.mkdirSync(directory,{recursive:true});
 const runtime=path.join(directory,'runtime.mjs');
 if(firstStage===2)fs.copyFileSync(runtimePath,runtime);
 const sourceSha256=digest(source),runtimeSha256=digest(runtime);
-const reportFile=path.join(directory,'report.json');
-const report=firstStage===2?{started:new Date().toISOString(),source,sourceSha256,runtimeSha256,initialCompiler:{file:apiPath,sha256:digest(apiPath)},driver:{file:driver,sha256:digest(driver)},stages:[],complete:false}:JSON.parse(fs.readFileSync(reportFile,'utf8'));
+const report=firstStage===2?{started:new Date().toISOString(),source,sourceIdentity,sourceSha256,runtimeSha256,base,hostHelpers,initialCompiler:identity(apiPath),driver:identity(driver),stages:[],complete:false}:JSON.parse(fs.readFileSync(reportFile,'utf8'));
 if(firstStage!==2) {
+  if(!report.base?.canonicalPath||!Array.isArray(report.hostHelpers)||report.hostHelpers.length!==hostHelpers.length)throw Error('Legacy self-host report lacks verified Base/helper provenance; start a fresh attempt');
+  if(!report.sourceIdentity?.canonicalPath)throw Error('Legacy self-host report lacks canonical source provenance; start a fresh attempt');
+  if(JSON.stringify(report.sourceIdentity)!==JSON.stringify(sourceIdentity))throw Error('Resume source identity differs from the recorded self-host attempt');
+  if(JSON.stringify(report.base)!==JSON.stringify(base)||JSON.stringify(report.hostHelpers)!==JSON.stringify(hostHelpers))throw Error('Resume Base or host helper inputs differ from the recorded self-host attempt');
+  verifyIdentity(report.initialCompiler,'initial compiler');verifyIdentity(report.driver,'driver');
   if(report.sourceSha256!==sourceSha256||report.runtimeSha256!==runtimeSha256||digest(runtimePath)!==runtimeSha256||report.initialCompiler.sha256!==digest(apiPath)||report.driver.sha256!==digest(driver))throw Error('Resume inputs differ from the recorded self-host attempt');
   const keep=report.stages.filter(stage=>Number(path.basename(stage.output).match(/stage(\d+)/)?.[1])<firstStage);
-  if(keep.length!==firstStage-2||keep.some(stage=>stage.code!==0||digest(stage.output)!==stage.outputSha256))throw Error('Resume requires every preceding verified stage output');
+  if(keep.length!==firstStage-2||keep.some(stage=>stage.code!==0||stage.inputsVerified!==true||digest(stage.output)!==stage.outputSha256))throw Error('Resume requires every preceding verified stage output');
   const attempt={saved:new Date().toISOString(),stages:report.stages.filter(stage=>!keep.includes(stage)),currentStage:report.currentStage,error:report.error,interrupted:report.interrupted,resourceConfiguration:report.resourceConfiguration};
   attempt.logs=[];
   for(const output of new Set([...attempt.stages.map(stage=>stage.output),...(report.currentStage?[report.currentStage.output]:[])])) {
@@ -44,6 +57,7 @@ if(firstStage!==2) {
   (report.previousAttempts??=[]).push(attempt);report.stages=keep;
   for(const key of ['error','interrupted','finished','currentStage'])delete report[key];
 }
+report.complete=false;
 report.resourceConfiguration={node:process.version,nodeArgs,osStackKB:stackLimit,timeoutMs};
 report.requestedStages=requestedStages;
 report.validationPolicy={required:[2,3],optionalRepeat:repeat,condition:'Stage2 and its checked self-emission stage3 must be byte-identical for the same frozen source.'};
@@ -60,11 +74,19 @@ async function compile(compiler,output) {
   if(digest(source)!==sourceSha256)throw Error('Self-host source changed during verification');
   if(digest(driver)!==report.driver.sha256)throw Error('Self-host driver changed during verification');
   if(digest(runtime)!==runtimeSha256)throw Error('Self-host runtime changed during verification');
+  const verifyHost=()=>{
+    verifyIdentity(report.sourceIdentity,'source');
+    verifyIdentity(report.base,'Base');
+    for(const helper of report.hostHelpers)verifyIdentity(helper,'host helper');
+    verifyIdentity(report.driver,'driver');verifyIdentity(report.initialCompiler,'initial compiler');
+    if(digest(source)!==sourceSha256||digest(runtime)!==runtimeSha256)throw Error('Self-host source/runtime changed during verification');
+  };
+  verifyHost();const compilerIdentity=identity(compiler);
   report.currentStage={compiler,output,nodeArgs,started:new Date().toISOString()};save();
   const log=fs.openSync(output+'.log','w'),start=performance.now();
   try {
     const child=spawn(process.execPath,[...nodeArgs,driver,source,'--library','-o',output],{
-      cwd:project,detached:process.platform!=='win32',stdio:['ignore',log,log],env:{...process.env,BEND_TYPED_API:compiler,BEND_TYPED_RUNTIME:runtime,BEND_TYPED_TRACE:'1'}});
+      cwd:project,detached:process.platform!=='win32',stdio:['ignore',log,log],env:{...process.env,BEND_BASE:report.base.canonicalPath,BEND_TYPED_API:compiler,BEND_TYPED_RUNTIME:runtime,BEND_TYPED_TRACE:'1'}});
     activeChild=child;
     const alarm=setTimeout(()=>{
       try {if(process.platform!=='win32')process.kill(-child.pid,'SIGKILL');else child.kill('SIGKILL');}catch {}
@@ -73,9 +95,10 @@ async function compile(compiler,output) {
       child.once('error',error=>{clearTimeout(alarm);reject(error);});
       child.once('exit',(code,signal)=>{clearTimeout(alarm);resolve({code,signal});});
     });
-    const stage={compiler,compilerSha256:digest(compiler),output,nodeArgs,...exit,ms:Math.round(performance.now()-start)};
+    const stage={compiler,compilerSha256:compilerIdentity.sha256,output,nodeArgs,...exit,ms:Math.round(performance.now()-start),inputsVerified:false};
     if(exit.code===0)stage.outputSha256=digest(output);
     report.stages.push(stage);delete report.currentStage;save();
+    verifyHost();verifyIdentity(compilerIdentity,'stage compiler');stage.inputsVerified=true;save();
     if(exit.code!==0)throw Error('Compiler stage failed; inspect '+output+'.log');
     console.log(path.basename(output)+': '+stage.outputSha256);
     return output;

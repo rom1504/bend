@@ -3,6 +3,10 @@
 The supplied baseline compiler results are in [the compatibility matrix](docs/COMPATIBILITY-MATRIX.md).
 Phase 1 changes have separate artifact-specific evidence in the
 [implementation report](../implementation/phase1/report.md).
+Phase 2 adds [exact paired checks and retained replay](../docs/PHASE2_DEVELOPMENT.md),
+with revision-specific results in its [implementation report](../implementation/phase2/report.md).
+Selected acceptance/phase checks, exact diagnostics, full-corpus coverage and
+self-emission are distinct verdicts; none substitutes for the others.
 The complete pinned corpus contains 1,378 fixtures across 24 namespaces; all 919
 positive fixtures parsed and passed checking in the recorded full run. Exact
 execution results, diagnostic differences, timeouts and hardware gates are

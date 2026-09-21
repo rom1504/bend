@@ -112,6 +112,12 @@ API, pass `--stack-kb 4096 --heap-mb 4096` to the conformance runner so its isol
 workers receive the same large-book resource settings; parent Node flags alone
 do not propagate to them.
 
+Self-host reports now record canonical source and Base identities, the compiler,
+runtime, driver and consumed host helpers, and verify them before and after each
+stage. Use a fresh output directory for a new proof. Reports from the older
+format cannot be resumed because they lack this provenance. Preserve the same
+canonical Base path when comparing output bytes across native and JS hosts.
+
 ## Internal boundaries and performance
 
 The [architecture](../selfhost/docs/ARCHITECTURE.md) describes the first-order

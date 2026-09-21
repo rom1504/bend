@@ -104,3 +104,23 @@ are described in [the backend guide](../src/back/js/README.md). They change
 execution of generated Bend code, not checker rules or source-language meaning.
 The [phase 1 report](../../implementation/phase1/report.md) identifies the
 artifacts and measurements that validate those changes.
+
+## Native compiler host
+
+The [experimental graph host](../tools/performance/rapid/native-graph.md) passes
+raw module text and explicit foreign assets through a bounded transport to a
+Bend entry point. The Bend loader resolves imports and performs parsing,
+checking, specialization, reachability, annotation and emission. The host only
+handles filesystem identity, process execution and guarded output publication;
+it does not parse imports or fall back to TypeScript compiler routines.
+
+This entry currently emits JavaScript. Running the compiler as a native
+executable is separate from validating the compiler's native backend or proving
+a native self-hosting fixed point. Explicit manifests also differ from the
+ordinary JS host's automatic file discovery. The phase 2 report preserves those
+scope differences and checks output bytes against the same-source JS entry.
+
+Long self-emission proofs freeze the source, compiler, Base, runtime and consumed
+host helpers. Their identities are checked before and after every stage.
+Targeted differential attempts retain their own harness and input identities,
+and cannot turn a selected pass into a whole-suite conformance claim.

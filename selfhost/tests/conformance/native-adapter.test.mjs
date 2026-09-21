@@ -17,5 +17,11 @@ test('paired native graph requires the selected source and canonical pinned Base
     assert.throws(()=>adapter.validateGraphFixture({...graph,modules:[graph.modules[0],{name:'Base',path:copy}]},{file:source},directory),/Base differs/);
     assert.throws(()=>adapter.validateGraphFixture(graph,{file:copy},directory),/main differs/);
     assert.equal(adapter.capabilities.js,true);for(const lane of ['parse','check','interpreter','native','metal','cuda'])assert.equal(adapter.capabilities[lane],false);
+    const alias=path.join(directory,'source-alias.bend'),manifest=path.join(directory,'example.bend.json');
+    fs.symlinkSync(source,alias);
+    fs.writeFileSync(manifest,JSON.stringify({version:1,main:source,base,modules:[{name:source,path:alias}],assets:[]}));
+    const inputs=adapter.inputFiles({tests:[{id:'example.bend'}]});
+    assert.ok(inputs.includes(alias),'deduplicated lexical aliases remain protected between probes');
+    assert.ok(inputs.includes(source));assert.ok(inputs.includes(base));assert.ok(inputs.includes(manifest));
   }finally{for(const key of keys)if(previous[key]===undefined)delete process.env[key];else process.env[key]=previous[key];fs.rmSync(directory,{recursive:true,force:true});}
 });

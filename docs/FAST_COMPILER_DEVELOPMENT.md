@@ -107,3 +107,9 @@ checked C emission. Use the native guide's fresh-path `--opt=O1 --timeout-ms=180
 build recipe and allow `--timeout-ms=600000` for the full compiler workload; an
 initial 180-second full-source attempt timed out. These are recorded observations,
 not runtime guarantees or native self-hosting certification.
+
+The phase 2 [development guide](PHASE2_DEVELOPMENT.md) extends this workflow
+with exact live-upstream comparisons, retained replay and an explicit native
+module/asset graph. See its [report](../implementation/phase2/report.md) for
+current compiler identities and cache-aware comparisons; the measurements above
+belong to the earlier phase 1 artifacts.

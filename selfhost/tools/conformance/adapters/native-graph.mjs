@@ -20,7 +20,7 @@ export function inputFiles({tests}) {
     if(!manifest.startsWith(directory+path.sep))continue;
     files.push(manifest);
     if(!fs.existsSync(manifest))continue;
-    try{const graph=loadNativeGraphManifest(manifest);for(const input of [...graph.modules,...graph.assets])files.push(input.lexical,input.path);}catch{/* The probe records malformed-manifest failure. */}
+    try{const graph=loadNativeGraphManifest(manifest);for(const input of [...graph.modules,...(graph.moduleAliases??[]),...graph.assets])files.push(input.lexical,input.path);}catch{/* The probe records malformed-manifest failure. */}
   }
   return [...new Set(files)];
 }

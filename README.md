@@ -20,8 +20,8 @@ and the [rapid performance experiments](implementation/phase1/rapid_performance_
 For exact differential checks against pinned upstream, see the
 [phase 2 development guide](docs/PHASE2_DEVELOPMENT.md) and
 [phase 2 implementation report](implementation/phase2/report.md).
-The [experimental native bootstrap](selfhost/tools/performance/rapid/native-bundle.md)
-executes the Bend compiler natively for a main module plus Base.
+The [experimental native graph host](selfhost/tools/performance/rapid/native-graph.md)
+executes the Bend compiler natively with an explicit module and foreign-asset manifest.
 
 ## Bend runs FAST
 

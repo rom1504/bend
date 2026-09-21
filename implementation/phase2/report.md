@@ -360,6 +360,13 @@ unchanged source, Base, runtime, compiler and frozen helper identities. This is
 a JS fixed point; native execution emitting matching JS is not itself a native
 fixed point.
 
+The same [12 backend/runtime suites also pass through proven H](evidence/backend-runtime-selfhost-v2.json),
+including all six interpreter, JS and native runtime boundary probes. This
+81.258-second run validates the actual self-emitted compiler API and current
+runtime, with unchanged proof, source and consumed-tool identities. It is
+correctness evidence with uncontrolled cache warmth, not a timing comparison
+against the earlier B1 suite run.
+
 ## Where the remaining large-workload cost sits
 
 The [interim self-emitted trace intervals](evidence/fixedpoint-v1-phase-profile.json)
@@ -376,7 +383,7 @@ preparation, and 948 in emission. The corresponding B1 stage intervals are 224,
 212, 89 and 171 seconds. Final self-emission is slower than the interim run;
 these shared-host observations are not a controlled A/B attribution of that
 change. The source revision and run differ, and no inner CPU/GC profile was
-captured. Phase 2 makes the development loop fast; it does not claim to have
+captured for that full-source stage. Phase 2 makes the development loop fast; it does not claim to have
 eliminated the large self-emission bottleneck.
 
 The next large-workload investigation should isolate checking and annotation on
@@ -499,6 +506,28 @@ programs. It is not a broad corpus sweep through the self-emitted H API, and it
 does not establish conformance in unexecuted interpreter, native or GPU lanes.
 Not-applicable observations do not supply program-execution evidence.
 
+## Final selected native execution sweep
+
+The [combined native program report](evidence/native-program-v2-selected.json)
+covers exactly **722 of 982 eligible native probes**: all 719 inventory-positive
+fixtures plus three previously identified later-gate negative fixtures. The
+remaining 260 early-rejection negative probes were excluded from this native
+selection; their frontend coverage is recorded separately.
+
+Results are **601 pass and 121 not applicable**, with **no failures or timeouts**:
+598 checked native CPU executions and three checked compile-phase rejections.
+The three compile rejections are `check/name_owned_def`, `io/main_foreign` and
+`reg/array_open_element`. Both disjoint shards have unchanged matching compiler,
+runtime, input and resource identities. Selected coverage and selected verdicts
+are complete; whole-native and whole-suite conformance remain incomplete.
+
+The compiler runs as final checked B1 JS and emits native programs. This is
+separate from the native compiler graph host and from self-emitted H execution.
+Passing observations that formerly timed out are not attributed to an unmade
+native-emitter optimization: compiler generation and host policy differ from the
+historical run. `reg/arity_wall` passed at 287.949 seconds within the unchanged
+300-second deadline, so this remains a shared-host correctness observation.
+
 ## Final self-emitted frontend check
 
 The [50-case focused matrix](evidence/selfhost-frontend-paired.json) also passes
@@ -516,6 +545,28 @@ to parsing rejection, and six retain parsing rejection with changed diagnostics.
 There are no new failing verdicts or changed successful-program outputs in that
 comparison. Different compiler generations and frozen hosts make it behavior
 evidence, not a speed measurement.
+
+## Bounded successful-compilation profile
+
+A [separate CPU profile](successful-profile.md) compiled the pinned 500-row
+`flatten/literal_rows_cubic.bend` fixture under B1 and H, with a 180-second limit
+per process. Both accepted, emitted identical 140,593-byte JS and matched the
+fixture's execution oracle. All recorded inputs remained unchanged. Instrumented
+wall times include profiling overhead and are not a speed comparison.
+
+H's `apply`, `force`, `call` and `get` helpers account for 49.4% of recorded
+exclusive sample time; GC accounts for 7.5%. B1 records 24.6% GC, 15.3% trampoline
+work and 17.3% across three `String.cmp` workers. These are one accepted fixture's
+samples, not an explanation of full-source self-compilation.
+
+The earlier phase 1 experiments already replaced over ten thousand saturated
+call sites and achieved only **1.03×** for guarded direct calls and **1.05×** for
+guarded positional workers. The new profile corroborates visible runtime cost;
+it does not justify repeating that unchanged experiment or promise a 10× gain.
+The detailed report proposes a distinct, bounded string-comparison representation
+probe with exact Unicode/order semantics. Diagnostic reuse remains the stronger
+first target for the conformance iteration loop because its redundant work was
+isolated directly.
 
 ## Next bounded iteration
 
@@ -544,3 +595,20 @@ A brief external CPU-sampling attempt during the final self-emission could not
 start: `/usr/bin/perf` delegates to missing `perf_5.10`. It collected no samples
 and changed no compiler options. No GC or inner-function cause is inferred from
 that failed attempt.
+
+## Completion and remaining limits
+
+The phase 2 delivery is complete: a measured selected differential/replay loop,
+checked semantic repairs and positive controls, native module/asset hosting,
+component/backend tests, frozen broader observations, JS self-reproduction,
+controlled small-program comparisons, documentation and archived evidence. The
+compiler source remains the tested 59-module revision. No default distributed
+compiler was replaced.
+
+Full conformance remains incomplete. Exact negative diagnostics and intended-rule
+coverage, the retained grammar gaps, broader H execution, omitted native probes,
+GPU execution and native-output self-reproduction are separate outstanding work.
+The next performance implementation should preserve full diagnostics while
+reusing validated checking and source-origin work, before another large batch of
+conformance repairs. Large self-compilation still requires its own phase-specific
+optimization effort; this report does not claim a universal 10× speedup.

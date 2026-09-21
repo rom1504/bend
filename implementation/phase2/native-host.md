@@ -159,6 +159,13 @@ contains later bootstrap-only provenance changes relative to the original native
 benchmark, which is why B1 and H were rerun together. Child `NODE_OPTIONS` and
 `BEND_TYPED_TRACE` were cleared explicitly.
 
+A separate [backend/runtime validation through proven H](evidence/backend-runtime-selfhost-v2.json)
+passed **12/12 suites**, including all six interpreter/JS/native boundary probes
+for borrow/fork lifetime and stack-fault handling. It used the same current runtime,
+4 MiB Node stack and 4 GiB heap as the earlier B1 backend run. All consumed inputs
+remained unchanged. The 81.258-second suite wall is a correctness-run observation,
+not an isolated benchmark; cache warmth was not controlled.
+
 ## Full compiler-source run
 
 The final frozen compiler source SHA is

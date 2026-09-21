@@ -1,0 +1,1951 @@
+{
+  "kind": "successful-compiler-cpu-profile",
+  "started": 1790008320.338864,
+  "cpu": 3,
+  "nodeArgs": [
+    "--stack-size=4096",
+    "--max-old-space-size=4096",
+    "--cpu-prof",
+    "--cpu-prof-interval=1000"
+  ],
+  "fixture": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/flatten/literal_rows_cubic.bend",
+  "sourceSha256": "266933eb2ee6aa0d406a48b19f5bbe0250c6685e9f5f2d9fe276bc38bac31784",
+  "inputs": {
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/flatten/literal_rows_cubic.bend": {
+      "sha256": "27cf900cc11aaf0a52c7906790d4bbf893a251bf8620ec4c5b272362c6f4cc26",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/flatten/literal_rows_cubic.bend"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": {
+      "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs": {
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-measure.mjs": {
+      "sha256": "61529ab4302ed0a0ce1251c2415d8d835a682bce5e08a3801374665f26bf9bd5",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-measure.mjs"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs.bootstrap.json": {
+      "sha256": "c22eea6463d81e070054e91abd5f2d83b1f4f0e3d450dfd94a56b47b92d50b52",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs.bootstrap.json"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/report.json": {
+      "sha256": "e2b4c1388df2d79bb6a640a1f9da281c6675aaef820dd6a4cad40e506a360fc7",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/report.json"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/compiler.bend": {
+      "sha256": "266933eb2ee6aa0d406a48b19f5bbe0250c6685e9f5f2d9fe276bc38bac31784",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/13c0511dc4648910fca8aaeb740a3f7457d148819e19ab89af34b4838549646d/compiler.bend"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json": {
+      "sha256": "08c4c055006c8564139a88b793aadfe1dc0b6d100b4c3f2b26ccf8005f8d65c7",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json"
+    },
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node": {
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "canonicalPath": "/home/ai/.nvm/versions/node/v24.18.0/bin/node"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs": {
+      "sha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs": {
+      "sha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-run.mjs": {
+      "sha256": "c1fb8cf866bdc88f12bf6ee3f0bb0f9ac1ed13365002c20dc9b1b167d0c90353",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-run.mjs"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs": {
+      "sha256": "cea82078365536c51d289448488c99740b2448675f560d22f3d1c7635ae5e3c8",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/compiler-abi.mjs": {
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/compiler-abi.mjs"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/node-resource-args.mjs": {
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/node-resource-args.mjs"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/assemble.mjs": {
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/assemble.mjs"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/native-build.mjs": {
+      "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/native-build.mjs"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json": {
+      "sha256": "b0dfbba5ca13539e77454228c14ffb8ed6c69afa0214963e04627a0dc93a256d",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json": {
+      "sha256": "5996bd58308b58e1ca6bbdac1aac0eff478670a1310e534fcdf4af52357af40d",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json"
+    }
+  },
+  "rows": [
+    {
+      "variant": "b1",
+      "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+      "request": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/b1-request.json",
+      "requestSha256": "0334c58479fc701f9a9cae78d21f1295cf866bb61e1abdf30ae5583fdf8f5ab8",
+      "warm": {
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-measure.mjs",
+          "--warm",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/b1-warm-request.json"
+        ],
+        "wallSeconds": 0.22468425100669265,
+        "exitCode": 0,
+        "timeout": false,
+        "log": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/b1-warm.log",
+        "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "cache": {
+        "kind": "validated-base-cache-preparation",
+        "milliseconds": 84.973573,
+        "version": 2,
+        "compilerSha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+        "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+        "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1",
+        "sourcePath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+        "validatedBy": "check_book",
+        "generated": "2026-09-21T14:50:07.477Z",
+        "cacheFile": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json",
+        "existedBefore": true,
+        "cacheFileSha256": "b0dfbba5ca13539e77454228c14ffb8ed6c69afa0214963e04627a0dc93a256d"
+      },
+      "profileRun": {
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "--cpu-prof",
+          "--cpu-prof-interval=1000",
+          "--cpu-prof-dir=/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile",
+          "--cpu-prof-name=b1.cpuprofile",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-measure.mjs",
+          "--host",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/b1-request.json"
+        ],
+        "wallSeconds": 74.79880378115922,
+        "exitCode": 0,
+        "timeout": false,
+        "log": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/b1.log",
+        "logSha256": "4c699e9bbfd83238e0995ee30e93b89603f5a2a0d7c2bbc77405c3ae7c3f8069"
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/b1.cpuprofile",
+        "sha256": "491583783039774d4916e729d57b3a94c2c710bbbbed5618b9bd2bd44b01b519",
+        "bytes": 349167281
+      },
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/flatten/literal_rows_cubic.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "compileMs": 69276.258976,
+        "published": true,
+        "outputSha256": "0bf940c282c816b20fae6f7707d2d6df9f11eecafcb0424dd042dacd13b176cf",
+        "outputBytes": 140593
+      }
+    },
+    {
+      "variant": "h",
+      "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+      "request": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/h-request.json",
+      "requestSha256": "aa21cfe2371d6b9741f0c644811f73a55c84804309936ed8e1db2a01ccd6175b",
+      "warm": {
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-measure.mjs",
+          "--warm",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/h-warm-request.json"
+        ],
+        "wallSeconds": 0.2663240300025791,
+        "exitCode": 0,
+        "timeout": false,
+        "log": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/h-warm.log",
+        "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "cache": {
+        "kind": "validated-base-cache-preparation",
+        "milliseconds": 80.394049,
+        "version": 2,
+        "compilerSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+        "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+        "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1",
+        "sourcePath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+        "validatedBy": "check_book",
+        "generated": "2026-09-21T16:22:37.621Z",
+        "cacheFile": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json",
+        "existedBefore": true,
+        "cacheFileSha256": "5996bd58308b58e1ca6bbdac1aac0eff478670a1310e534fcdf4af52357af40d"
+      },
+      "profileRun": {
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=4096",
+          "--cpu-prof",
+          "--cpu-prof-interval=1000",
+          "--cpu-prof-dir=/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile",
+          "--cpu-prof-name=h.cpuprofile",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-measure.mjs",
+          "--host",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/h-request.json"
+        ],
+        "wallSeconds": 144.55066722189076,
+        "exitCode": 0,
+        "timeout": false,
+        "log": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/h.log",
+        "logSha256": "6db8ad5b29a4e06968bba823d5a1e657a6e377bda66d14cbeb98f6b73ce78709"
+      },
+      "profile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/h.cpuprofile",
+        "sha256": "2869db629cafb105764ddeb2d3694e230424481c084c667c2c83e5e0a99b853d",
+        "bytes": 491442707
+      },
+      "compilation": {
+        "status": "ok",
+        "phase": "compile",
+        "verdict": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/flatten/literal_rows_cubic.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "compileMs": 136924.09928,
+        "published": true,
+        "outputSha256": "0bf940c282c816b20fae6f7707d2d6df9f11eecafcb0424dd042dacd13b176cf",
+        "outputBytes": 140593
+      }
+    }
+  ],
+  "complete": true,
+  "scope": "One successful fixture, one fresh process per compiler, sampled CPU profiles. Final upstream-emitted B1 versus final self-emitted H. Validated canonical pinned Base cache prepared before profiling. Reporting exports disabled by the unchanged existing --host worker; successful-path work unchanged. No universal or full-self-compilation attribution.",
+  "changedInputs": [],
+  "outputsEqual": true,
+  "execution": {
+    "command": [
+      "taskset",
+      "-c",
+      "3",
+      "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "--stack-size=4096",
+      "--max-old-space-size=4096",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/b1.mjs"
+    ],
+    "wallSeconds": 0.17240997892804444,
+    "exitCode": 0,
+    "timeout": false,
+    "log": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/execution.log",
+    "logSha256": "78f598e5e026368457e9d867fcff70cba8d4a2fd04ba62fd834c4f204d2fe620",
+    "expectedStdout": "1000\n1007\n1499\n2499\n2999\n",
+    "capturedCombinedOutput": "1000\n1007\n1499\n2499\n2999\n",
+    "matchesFixtureOutput": true
+  },
+  "finished": 1790008543.3795748,
+  "profiles": {
+    "b1": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/b1.cpuprofile",
+      "sha256": "491583783039774d4916e729d57b3a94c2c710bbbbed5618b9bd2bd44b01b519",
+      "samples": 50544,
+      "profileDurationSeconds": 69.372182,
+      "weightedSampleSeconds": 69.371739,
+      "gcSampledSeconds": 17.067375,
+      "gcSampledPercent": 24.602778085179615,
+      "idleSampledSeconds": 0.0,
+      "exclusiveFunctions": [
+        {
+          "function": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledSeconds": 17.067375,
+          "sampledPercent": 24.603
+        },
+        {
+          "function": "run_loop",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 114,
+          "sampledSeconds": 10.586389,
+          "sampledPercent": 15.26,
+          "sourceLinePrefix": "function run_loop(r) {"
+        },
+        {
+          "function": "$String$cmp$fin$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 3284,
+          "sampledSeconds": 5.457303,
+          "sampledPercent": 7.867,
+          "sourceLinePrefix": "function $String$cmp$fin$(t1_0, t2_0, hc_0) {"
+        },
+        {
+          "function": "$String$cmp$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 1826,
+          "sampledSeconds": 5.349918,
+          "sampledPercent": 7.712,
+          "sourceLinePrefix": "function $String$cmp$(a_0, b_0) {"
+        },
+        {
+          "function": "$kt$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 2656,
+          "sampledSeconds": 2.638413,
+          "sampledPercent": 3.803,
+          "sourceLinePrefix": "function $kt$(tag_0, name_0, id_0, quant_0, kids_0) {"
+        },
+        {
+          "function": "$String$eq$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 633,
+          "sampledSeconds": 1.667376,
+          "sampledPercent": 2.404,
+          "sourceLinePrefix": "function $String$eq$(a_0, b_0) {"
+        },
+        {
+          "function": "$kc$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 617,
+          "sampledSeconds": 1.513147,
+          "sampledPercent": 2.181,
+          "sourceLinePrefix": "function $kc$(b_0, yes_0, no_0) {"
+        },
+        {
+          "function": "$subst_node$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 9312,
+          "sampledSeconds": 1.411295,
+          "sampledPercent": 2.034,
+          "sourceLinePrefix": "function $subst_node$(t_0, id_0, v_0) {"
+        },
+        {
+          "function": "$String$cmp$rec$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 4890,
+          "sampledSeconds": 1.212025,
+          "sampledPercent": 1.747,
+          "sourceLinePrefix": "function $String$cmp$rec$(h1b_0, h2b_0, rr_0) {"
+        },
+        {
+          "function": "$terms_at$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 2014,
+          "sampledSeconds": 0.90475,
+          "sampledPercent": 1.304,
+          "sourceLinePrefix": "function $terms_at$(ts_0, n_0) {"
+        },
+        {
+          "function": "$index_find$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 3642,
+          "sampledSeconds": 0.688095,
+          "sampledPercent": 0.992,
+          "sourceLinePrefix": "function $index_find$(tree_0, name_0, hash_0, bits_0) {"
+        },
+        {
+          "function": "$String$eq$fin$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 1818,
+          "sampledSeconds": 0.639494,
+          "sampledPercent": 0.922,
+          "sourceLinePrefix": "function $String$eq$fin$(r_0) {"
+        },
+        {
+          "function": "$core_rebuild$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 11747,
+          "sampledSeconds": 0.597149,
+          "sampledPercent": 0.861,
+          "sourceLinePrefix": "function $core_rebuild$(t_0) {"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 3654,
+          "sampledSeconds": 0.522253,
+          "sampledPercent": 0.753,
+          "sourceLinePrefix": "}), run_clo((x_7) => {"
+        },
+        {
+          "function": "$Cmp$is_eq$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 3274,
+          "sampledSeconds": 0.510001,
+          "sampledPercent": 0.735,
+          "sourceLinePrefix": "function $Cmp$is_eq$(c_0) {"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 3645,
+          "sampledSeconds": 0.477232,
+          "sampledPercent": 0.688,
+          "sourceLinePrefix": "}), run_clo((x_1) => {"
+        },
+        {
+          "function": "run_jump",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 99,
+          "sampledSeconds": 0.457294,
+          "sampledPercent": 0.659,
+          "sourceLinePrefix": "function run_jump(f, x) {"
+        },
+        {
+          "function": "$index_child_list$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 8223,
+          "sampledSeconds": 0.415498,
+          "sampledPercent": 0.599,
+          "sourceLinePrefix": "function $index_child_list$(ds_0, right_0) {"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 4850,
+          "sampledSeconds": 0.404342,
+          "sampledPercent": 0.583,
+          "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), \"Ctr\")), run_clo((x_6) => {"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 10198,
+          "sampledSeconds": 0.387662,
+          "sampledPercent": 0.559,
+          "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), \"ADT\")), run_clo((x_0) => {"
+        },
+        {
+          "function": "$f_ctor_lookup$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 18308,
+          "sampledSeconds": 0.35941,
+          "sampledPercent": 0.518,
+          "sourceLinePrefix": "function $f_ctor_lookup$(name_0, book_0) {"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 15590,
+          "sampledSeconds": 0.354949,
+          "sampledPercent": 0.512,
+          "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), \"All\")), run_clo((x_0) => {"
+        },
+        {
+          "function": "$subst_terms$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 11755,
+          "sampledSeconds": 0.347661,
+          "sampledPercent": 0.501,
+          "sourceLinePrefix": "function $subst_terms$(ts_0, id_0, v_0) {"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 7940,
+          "sampledSeconds": 0.336748,
+          "sampledPercent": 0.485,
+          "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), \"Ctr\")), run_clo((x_2) => {"
+        },
+        {
+          "function": "$ka_args_head$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 10340,
+          "sampledSeconds": 0.328854,
+          "sampledPercent": 0.474,
+          "sourceLinePrefix": "function $ka_args_head$(e_0, ctx_0, tel_0, h_0, rest_0) {"
+        }
+      ],
+      "exclusiveHotspotCallers": [
+        {
+          "function": {
+            "function": "(garbage collector)",
+            "url": "",
+            "line": 0,
+            "sampledSeconds": 17.067375,
+            "sampledPercent": 24.603
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "(root)",
+              "url": "",
+              "line": 0,
+              "sampledSeconds": 17.067375,
+              "sampledPercent": 24.603
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "run_loop",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+            "line": 114,
+            "sampledSeconds": 10.586389,
+            "sampledPercent": 15.26,
+            "sourceLinePrefix": "function run_loop(r) {"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "$String$cmp$fin$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 3284,
+              "sampledSeconds": 1.525387,
+              "sampledPercent": 2.199,
+              "sourceLinePrefix": "function $String$cmp$fin$(t1_0, t2_0, hc_0) {"
+            },
+            {
+              "function": "$subst_terms$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 11755,
+              "sampledSeconds": 1.034005,
+              "sampledPercent": 1.491,
+              "sourceLinePrefix": "function $subst_terms$(ts_0, id_0, v_0) {"
+            },
+            {
+              "function": "$annotate$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 3266,
+              "sampledSeconds": 0.859844,
+              "sampledPercent": 1.239,
+              "sourceLinePrefix": "function $annotate$(e_0, ctx_0, t_0, ty_0) {"
+            },
+            {
+              "function": "$String$eq$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 633,
+              "sampledSeconds": 0.830672,
+              "sampledPercent": 1.197,
+              "sourceLinePrefix": "function $String$eq$(a_0, b_0) {"
+            },
+            {
+              "function": "$check$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 4792,
+              "sampledSeconds": 0.709761,
+              "sampledPercent": 1.023,
+              "sourceLinePrefix": "function $check$(e_0, ctx_0, t_0, dem_0, ty_0) {"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "$String$cmp$fin$",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+            "line": 3284,
+            "sampledSeconds": 5.457303,
+            "sampledPercent": 7.867,
+            "sourceLinePrefix": "function $String$cmp$fin$(t1_0, t2_0, hc_0) {"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "run_loop",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 114,
+              "sampledSeconds": 5.333704,
+              "sampledPercent": 7.689,
+              "sourceLinePrefix": "function run_loop(r) {"
+            },
+            {
+              "function": "(root)",
+              "url": "",
+              "line": 0,
+              "sampledSeconds": 0.020126,
+              "sampledPercent": 0.029
+            },
+            {
+              "function": "$String$cmp$fin$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 3284,
+              "sampledSeconds": 0.011827,
+              "sampledPercent": 0.017,
+              "sourceLinePrefix": "function $String$cmp$fin$(t1_0, t2_0, hc_0) {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 8197,
+              "sampledSeconds": 0.008362,
+              "sampledPercent": 0.012,
+              "sourceLinePrefix": "}), run_clo((x_3) => {"
+            },
+            {
+              "function": "$String$eq$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 633,
+              "sampledSeconds": 0.00743,
+              "sampledPercent": 0.011,
+              "sourceLinePrefix": "function $String$eq$(a_0, b_0) {"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "$String$cmp$",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+            "line": 1826,
+            "sampledSeconds": 5.349918,
+            "sampledPercent": 7.712,
+            "sourceLinePrefix": "function $String$cmp$(a_0, b_0) {"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "$String$eq$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 633,
+              "sampledSeconds": 2.771437,
+              "sampledPercent": 3.995,
+              "sourceLinePrefix": "function $String$eq$(a_0, b_0) {"
+            },
+            {
+              "function": "$String$cmp$fin$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 3284,
+              "sampledSeconds": 2.456071,
+              "sampledPercent": 3.54,
+              "sourceLinePrefix": "function $String$cmp$fin$(t1_0, t2_0, hc_0) {"
+            },
+            {
+              "function": "(root)",
+              "url": "",
+              "line": 0,
+              "sampledSeconds": 0.039909,
+              "sampledPercent": 0.058
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 8198,
+              "sampledSeconds": 0.005406,
+              "sampledPercent": 0.008,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(arm_0)), \"Mat\")), run_clo((x_4) => {"
+            },
+            {
+              "function": "run_loop",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 114,
+              "sampledSeconds": 0.005366,
+              "sampledPercent": 0.008,
+              "sourceLinePrefix": "function run_loop(r) {"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "$kt$",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+            "line": 2656,
+            "sampledSeconds": 2.638413,
+            "sampledPercent": 3.803,
+            "sourceLinePrefix": "function $kt$(tag_0, name_0, id_0, quant_0, kids_0) {"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "run_loop",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 114,
+              "sampledSeconds": 2.391004,
+              "sampledPercent": 3.447,
+              "sourceLinePrefix": "function run_loop(r) {"
+            },
+            {
+              "function": "$f_hit_row$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 18408,
+              "sampledSeconds": 0.089689,
+              "sampledPercent": 0.129,
+              "sourceLinePrefix": "function $f_hit_row$(r_0, c_0, fields_0, v_0) {"
+            },
+            {
+              "function": "$uses_merge$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 14249,
+              "sampledSeconds": 0.034467,
+              "sampledPercent": 0.05,
+              "sourceLinePrefix": "function $uses_merge$(a_0, b_0, join_0) {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 7940,
+              "sampledSeconds": 0.033016,
+              "sampledPercent": 0.048,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), \"Ctr\")), run_clo((x_2) => {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 6378,
+              "sampledSeconds": 0.016967,
+              "sampledPercent": 0.024,
+              "sourceLinePrefix": "    return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), \"Mat\")), run_clo((x_3) => {"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "$String$eq$",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+            "line": 633,
+            "sampledSeconds": 1.667376,
+            "sampledPercent": 2.404,
+            "sourceLinePrefix": "function $String$eq$(a_0, b_0) {"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "run_loop",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 114,
+              "sampledSeconds": 0.607448,
+              "sampledPercent": 0.876,
+              "sourceLinePrefix": "function run_loop(r) {"
+            },
+            {
+              "function": "$subst$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 7103,
+              "sampledSeconds": 0.135316,
+              "sampledPercent": 0.195,
+              "sourceLinePrefix": "function $subst$(t_0, id_0, v_0) {"
+            },
+            {
+              "function": "$index_find$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 3642,
+              "sampledSeconds": 0.132703,
+              "sampledPercent": 0.191,
+              "sourceLinePrefix": "function $index_find$(tree_0, name_0, hash_0, bits_0) {"
+            },
+            {
+              "function": "$core_rebuild$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 11747,
+              "sampledSeconds": 0.104772,
+              "sampledPercent": 0.151,
+              "sourceLinePrefix": "function $core_rebuild$(t_0) {"
+            },
+            {
+              "function": "$j_found_ctor$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 6239,
+              "sampledSeconds": 0.086951,
+              "sampledPercent": 0.125,
+              "sourceLinePrefix": "function $j_found_ctor$(found_0, rest_0, name_0) {"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "$kc$",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+            "line": 617,
+            "sampledSeconds": 1.513147,
+            "sampledPercent": 2.181,
+            "sourceLinePrefix": "function $kc$(b_0, yes_0, no_0) {"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "run_loop",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 114,
+              "sampledSeconds": 1.300014,
+              "sampledPercent": 1.874,
+              "sourceLinePrefix": "function run_loop(r) {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 10198,
+              "sampledSeconds": 0.040767,
+              "sampledPercent": 0.059,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), \"ADT\")), run_clo((x_0) => {"
+            },
+            {
+              "function": "$j_arm_type$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 3457,
+              "sampledSeconds": 0.022326,
+              "sampledPercent": 0.032,
+              "sourceLinePrefix": "function $j_arm_type$(book_0, ty_0, name_0) {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 3620,
+              "sampledSeconds": 0.020908,
+              "sampledPercent": 0.03,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), \"Ref\")), run_clo((x_6) => {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 10413,
+              "sampledSeconds": 0.020305,
+              "sampledPercent": 0.029,
+              "sourceLinePrefix": "  return run_jump($kc$, [(x_6 || x_7), run_clo((x_8) => {"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "$subst_node$",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+            "line": 9312,
+            "sampledSeconds": 1.411295,
+            "sampledPercent": 2.034,
+            "sourceLinePrefix": "function $subst_node$(t_0, id_0, v_0) {"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "run_loop",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 114,
+              "sampledSeconds": 1.372712,
+              "sampledPercent": 1.979,
+              "sourceLinePrefix": "function run_loop(r) {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 6375,
+              "sampledSeconds": 0.017263,
+              "sampledPercent": 0.025,
+              "sourceLinePrefix": "    return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), \"Lam\")), run_clo((x_1) => {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 15590,
+              "sampledSeconds": 0.012791,
+              "sampledPercent": 0.018,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), \"All\")), run_clo((x_0) => {"
+            },
+            {
+              "function": "$ka_args_head$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 10340,
+              "sampledSeconds": 0.004269,
+              "sampledPercent": 0.006,
+              "sourceLinePrefix": "function $ka_args_head$(e_0, ctx_0, tel_0, h_0, rest_0) {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 10345,
+              "sampledSeconds": 0.00426,
+              "sampledPercent": 0.006,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), \"All\")), run_clo((x_0) => {"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "$String$cmp$rec$",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+            "line": 4890,
+            "sampledSeconds": 1.212025,
+            "sampledPercent": 1.747,
+            "sourceLinePrefix": "function $String$cmp$rec$(h1b_0, h2b_0, rr_0) {"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "run_loop",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 114,
+              "sampledSeconds": 1.175821,
+              "sampledPercent": 1.695,
+              "sourceLinePrefix": "function run_loop(r) {"
+            },
+            {
+              "function": "(root)",
+              "url": "",
+              "line": 0,
+              "sampledSeconds": 0.018347,
+              "sampledPercent": 0.026
+            },
+            {
+              "function": "$String$cmp$fin$",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 3284,
+              "sampledSeconds": 0.007339,
+              "sampledPercent": 0.011,
+              "sourceLinePrefix": "function $String$cmp$fin$(t1_0, t2_0, hc_0) {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 8198,
+              "sampledSeconds": 0.002106,
+              "sampledPercent": 0.003,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(arm_0)), \"Mat\")), run_clo((x_4) => {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 797,
+              "sampledSeconds": 0.001137,
+              "sampledPercent": 0.002,
+              "sourceLinePrefix": "}), run_clo((x_1) => {"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "$terms_at$",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+            "line": 2014,
+            "sampledSeconds": 0.90475,
+            "sampledPercent": 1.304,
+            "sourceLinePrefix": "function $terms_at$(ts_0, n_0) {"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "run_loop",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 114,
+              "sampledSeconds": 0.803105,
+              "sampledPercent": 1.158,
+              "sourceLinePrefix": "function run_loop(r) {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 15590,
+              "sampledSeconds": 0.017927,
+              "sampledPercent": 0.026,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), \"All\")), run_clo((x_0) => {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 3611,
+              "sampledSeconds": 0.014186,
+              "sampledPercent": 0.02,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), \"App\")), run_clo((x_0) => {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 11748,
+              "sampledSeconds": 0.014177,
+              "sampledPercent": 0.02,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), \"App\")), run_clo((x_0) => {"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+              "line": 12793,
+              "sampledSeconds": 0.007493,
+              "sampledPercent": 0.011,
+              "sourceLinePrefix": "  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($nm$(t_0)), \"WCon\")), (at_0 < 32))), run_clo((x_5) => {"
+            }
+          ]
+        }
+      ],
+      "inclusiveCallTreeNodes": [
+        {
+          "function": "(root)",
+          "url": "",
+          "line": 0,
+          "sampledSeconds": 69.371739,
+          "sampledPercent": 100.0
+        },
+        {
+          "function": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledSeconds": 17.067375,
+          "sampledPercent": 24.603
+        },
+        {
+          "function": "$check$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 4792,
+          "sampledSeconds": 6.279135,
+          "sampledPercent": 9.051,
+          "sourceLinePrefix": "function $check$(e_0, ctx_0, t_0, dem_0, ty_0) {"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-measure.mjs",
+          "line": 1,
+          "sampledSeconds": 6.184833,
+          "sampledPercent": 8.915,
+          "sourceLinePrefix": "// Fresh-process compilation latency: native graph, same-source uncached JS,"
+        },
+        {
+          "function": "inspect",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs",
+          "line": 249,
+          "sampledSeconds": 6.154943,
+          "sampledPercent": 8.872,
+          "sourceLinePrefix": "export async function inspect(input,{mode='check',api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false}={}) {"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 122,
+          "sampledSeconds": 5.709905,
+          "sampledPercent": 8.231,
+          "sourceLinePrefix": "  return (...a) => a.length < n ? run_lib((...b) => f(...a, ...b), n - a.length)"
+        },
+        {
+          "function": "$annotate$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 3266,
+          "sampledSeconds": 5.374842,
+          "sampledPercent": 7.748,
+          "sourceLinePrefix": "function $annotate$(e_0, ctx_0, t_0, ty_0) {"
+        },
+        {
+          "function": "run_loop",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 114,
+          "sampledSeconds": 5.159541,
+          "sampledPercent": 7.438,
+          "sourceLinePrefix": "function run_loop(r) {"
+        },
+        {
+          "function": "$check$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 4792,
+          "sampledSeconds": 4.934801,
+          "sampledPercent": 7.114,
+          "sourceLinePrefix": "function $check$(e_0, ctx_0, t_0, dem_0, ty_0) {"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 14236,
+          "sampledSeconds": 4.934801,
+          "sampledPercent": 7.114,
+          "sourceLinePrefix": "}), run_clo((x_3) => {"
+        },
+        {
+          "function": "run_loop",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 114,
+          "sampledSeconds": 4.918609,
+          "sampledPercent": 7.09,
+          "sourceLinePrefix": "function run_loop(r) {"
+        },
+        {
+          "function": "$f_scope_rows$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 17694,
+          "sampledSeconds": 4.632737,
+          "sampledPercent": 6.678,
+          "sourceLinePrefix": "function $f_scope_rows$(rows_0, env_0, book_0) {"
+        },
+        {
+          "function": "$f_scope_rows$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 17694,
+          "sampledSeconds": 4.620789,
+          "sampledPercent": 6.661,
+          "sourceLinePrefix": "function $f_scope_rows$(rows_0, env_0, book_0) {"
+        },
+        {
+          "function": "$f_scope_rows$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 17694,
+          "sampledSeconds": 4.598081,
+          "sampledPercent": 6.628,
+          "sourceLinePrefix": "function $f_scope_rows$(rows_0, env_0, book_0) {"
+        },
+        {
+          "function": "$f_scope_rows$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 17694,
+          "sampledSeconds": 4.581064,
+          "sampledPercent": 6.604,
+          "sourceLinePrefix": "function $f_scope_rows$(rows_0, env_0, book_0) {"
+        },
+        {
+          "function": "$f_scope_rows$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 17694,
+          "sampledSeconds": 4.570623,
+          "sampledPercent": 6.589,
+          "sourceLinePrefix": "function $f_scope_rows$(rows_0, env_0, book_0) {"
+        },
+        {
+          "function": "run_loop",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 114,
+          "sampledSeconds": 4.564557,
+          "sampledPercent": 6.58,
+          "sourceLinePrefix": "function run_loop(r) {"
+        },
+        {
+          "function": "$f_scope_rows$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 17694,
+          "sampledSeconds": 4.560703,
+          "sampledPercent": 6.574,
+          "sourceLinePrefix": "function $f_scope_rows$(rows_0, env_0, book_0) {"
+        },
+        {
+          "function": "$f_scope_rows$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 17694,
+          "sampledSeconds": 4.54768,
+          "sampledPercent": 6.556,
+          "sourceLinePrefix": "function $f_scope_rows$(rows_0, env_0, book_0) {"
+        },
+        {
+          "function": "$f_scope_rows$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/checked/api.mjs",
+          "line": 17694,
+          "sampledSeconds": 4.529732,
+          "sampledPercent": 6.53,
+          "sourceLinePrefix": "function $f_scope_rows$(rows_0, env_0, book_0) {"
+        }
+      ]
+    },
+    "h": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/successful-profile/h.cpuprofile",
+      "sha256": "2869db629cafb105764ddeb2d3694e230424481c084c667c2c83e5e0a99b853d",
+      "samples": 115586,
+      "profileDurationSeconds": 137.056228,
+      "weightedSampleSeconds": 137.055384,
+      "gcSampledSeconds": 10.264195,
+      "gcSampledPercent": 7.489085580176843,
+      "idleSampledSeconds": 0.0,
+      "exclusiveFunctions": [
+        {
+          "function": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 31,
+          "sampledSeconds": 43.327468,
+          "sampledPercent": 31.613,
+          "sourceLinePrefix": "function apply(f,args){"
+        },
+        {
+          "function": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledSeconds": 10.264195,
+          "sampledPercent": 7.489
+        },
+        {
+          "function": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 17,
+          "sampledSeconds": 9.330937,
+          "sampledPercent": 6.808,
+          "sourceLinePrefix": "function force(x){"
+        },
+        {
+          "function": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 44,
+          "sampledSeconds": 8.471359,
+          "sampledPercent": 6.181,
+          "sourceLinePrefix": "const call=(f,args)=>force(apply(f,args));"
+        },
+        {
+          "function": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 46,
+          "sampledSeconds": 6.526587,
+          "sampledPercent": 4.762,
+          "sourceLinePrefix": "function get(v,k){if(k in v){const x=v[k];return x?.code&&x.arity===0?call(x,[]):x;}bad('unbound name: '+k)}"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 214,
+          "sampledSeconds": 5.058604,
+          "sampledPercent": 3.691,
+          "sourceLinePrefix": "function matcher(name,arm,other){return fn(1,([x])=>{const a=fields(name,x);return a===null?jump(other(),[x]):a.length?jump(arm(),a):arm()})}"
+        },
+        {
+          "function": "project",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 77,
+          "sampledSeconds": 4.291502,
+          "sampledPercent": 3.131,
+          "sourceLinePrefix": "function project(k,x){"
+        },
+        {
+          "function": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 156,
+          "sampledSeconds": 2.623778,
+          "sampledPercent": 1.914,
+          "sourceLinePrefix": "function stringEq(a,b){if(a.isWellFormed()&&b.isWellFormed())return a===b;let i=0,j=0;while(i<a.length&&j<b.length){const x=checkedChar(a.codePointAt(i)),y=checkedChar(b.codePointAt(j));if(x!==y)return false;i+=x>65535?2"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 92,
+          "sampledSeconds": 2.47214,
+          "sampledPercent": 1.804,
+          "sourceLinePrefix": "function matcher1(name,arm){return fn(1,([x])=>{const a=project(name,x);return a.length?jump(arm(),a):arm()})}"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2043,
+          "sampledSeconds": 1.628091,
+          "sampledPercent": 1.188,
+          "sourceLinePrefix": "G[\"index_find\"]=fn(4,function(a){const x6592=a[0];const x6593=a[1];const x6594=a[2];const x6595=a[3];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"dk\"),[x6592]),\"Absent\",])?((x6596)=>get(G,\"missing\"))(ctor(\"Un"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2081,
+          "sampledSeconds": 1.588421,
+          "sampledPercent": 1.159,
+          "sourceLinePrefix": "G[\"tg\"]=fn(1,function(a){return project(\"KTerm\",a[0]).slice()[0];});"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2053,
+          "sampledSeconds": 1.554368,
+          "sampledPercent": 1.134,
+          "sourceLinePrefix": "G[\"subst_node\"]=matcher1(\"KTerm\",()=>fn(8,function(a){const x6530=a[0];const x6531=a[1];const x6532=a[2];const x6533=a[3];const x6534=a[4];const x6535=a[5];const x6536=a[6];const x6537=a[7];return jump(get(G,\"core_rebuil"
+        },
+        {
+          "function": "fields",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 60,
+          "sampledSeconds": 1.448824,
+          "sampledPercent": 1.057,
+          "sourceLinePrefix": "function fields(k,x){"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 1560,
+          "sampledSeconds": 1.217359,
+          "sampledPercent": 0.888,
+          "sourceLinePrefix": "G[\"f_find\"]=fn(1,function(a){const x10963=a[0];return matcher(\"Nil\",()=>ctor(\"KDef\",[x10963,\"Missing\",0,0,call(get(G,\"atom\"),[\"Absent\"]),call(get(G,\"atom\"),[\"Absent\"]),ctor(\"Nil\",[]),ctor(\"False\",[]),ctor(\"False\",[]),]),"
+        },
+        {
+          "function": "ctor",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 47,
+          "sampledSeconds": 1.107136,
+          "sampledPercent": 0.808,
+          "sourceLinePrefix": "function ctor(k,a){"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 45,
+          "sampledSeconds": 1.087002,
+          "sampledPercent": 0.793,
+          "sourceLinePrefix": "const native=(name,n,f)=>G[name]=fn(n,a=>f(...a));"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2043,
+          "sampledSeconds": 1.077102,
+          "sampledPercent": 0.786,
+          "sourceLinePrefix": "G[\"index_find\"]=fn(4,function(a){const x6592=a[0];const x6593=a[1];const x6594=a[2];const x6595=a[3];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"dk\"),[x6592]),\"Absent\",])?((x6596)=>get(G,\"missing\"))(ctor(\"Un"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 1305,
+          "sampledSeconds": 1.012938,
+          "sampledPercent": 0.739,
+          "sourceLinePrefix": "G[\"f_ctor_lookup\"]=fn(1,function(a){const x13119=a[0];return matcher(\"Nil\",()=>call(call(get(G,\"f_find\"),[x13119]),[ctor(\"Nil\",[])]),()=>matcher1(\"Con\",()=>fn(2,function(a){const x13120=a[0];const x13121=a[1];return (/* "
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2074,
+          "sampledSeconds": 0.921747,
+          "sampledPercent": 0.673,
+          "sourceLinePrefix": "G[\"kid\"]=fn(2,function(a){const x6380=a[0];const x6381=a[1];return jump(call(get(G,\"terms_at\"),[call(get(G,\"ks\"),[x6380])]),[x6381]);});"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2075,
+          "sampledSeconds": 0.863621,
+          "sampledPercent": 0.63,
+          "sourceLinePrefix": "G[\"terms_at\"]=matcher(\"Nil\",()=>fn(1,function(a){const x6372=a[0];return jump(get(G,\"atom\"),[\"Absent\"]);}),()=>matcher1(\"Con\",()=>fn(3,function(a){const x6373=a[0];const x6374=a[1];const x6375=a[2];return (/* choice */ca"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2054,
+          "sampledSeconds": 0.861631,
+          "sampledPercent": 0.629,
+          "sourceLinePrefix": "G[\"subst\"]=fn(3,function(a){const x6520=a[0];const x6521=a[1];const x6522=a[2];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x6520]),\"Var\",])?((x6523)=>(/* choice */call(get(G,\"U32.is_eq\"),[call(get(G,\"i"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2043,
+          "sampledSeconds": 0.813261,
+          "sampledPercent": 0.593,
+          "sourceLinePrefix": "G[\"index_find\"]=fn(4,function(a){const x6592=a[0];const x6593=a[1];const x6594=a[2];const x6595=a[3];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"dk\"),[x6592]),\"Absent\",])?((x6596)=>get(G,\"missing\"))(ctor(\"Un"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2046,
+          "sampledSeconds": 0.729681,
+          "sampledPercent": 0.532,
+          "sourceLinePrefix": "G[\"index_child\"]=fn(2,function(a){const x6575=a[0];const x6576=a[1];return jump(call(get(G,\"index_child_list\"),[call(get(G,\"dc\"),[x6575])]),[x6576]);});"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2066,
+          "sampledSeconds": 0.681685,
+          "sampledPercent": 0.497,
+          "sourceLinePrefix": "G[\"dk\"]=fn(1,function(a){return project(\"KDef\",a[0]).slice()[1];});"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2077,
+          "sampledSeconds": 0.681423,
+          "sampledPercent": 0.497,
+          "sourceLinePrefix": "G[\"ks\"]=fn(1,function(a){return project(\"KTerm\",a[0]).slice()[4];});"
+        }
+      ],
+      "exclusiveHotspotCallers": [
+        {
+          "function": {
+            "function": "apply",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+            "line": 31,
+            "sampledSeconds": 43.327468,
+            "sampledPercent": 31.613,
+            "sourceLinePrefix": "function apply(f,args){"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "force",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 17,
+              "sampledSeconds": 22.072268,
+              "sampledPercent": 16.105,
+              "sourceLinePrefix": "function force(x){"
+            },
+            {
+              "function": "call",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 44,
+              "sampledSeconds": 20.085149,
+              "sampledPercent": 14.655,
+              "sourceLinePrefix": "const call=(f,args)=>force(apply(f,args));"
+            },
+            {
+              "function": "apply",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 31,
+              "sampledSeconds": 0.065004,
+              "sampledPercent": 0.047,
+              "sourceLinePrefix": "function apply(f,args){"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2089,
+              "sampledSeconds": 0.040142,
+              "sampledPercent": 0.029,
+              "sourceLinePrefix": "G[\"U32.show.fin\"]=fn(3,function(a){const x1684=a[0];const x1685=a[1];const x1686=a[2];return matcher(\"True\",()=>x1685,()=>matcher1(\"False\",()=>call(call(call(get(G,\"U32.show.go\"),[x1684]),[call(get(G,\"U32.div\"),[x1686,10"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 1823,
+              "sampledSeconds": 0.038704,
+              "sampledPercent": 0.028,
+              "sourceLinePrefix": "G[\"tele_check_head\"]=fn(6,function(a){const x8641=a[0];const x8642=a[1];const x8643=a[2];const x8644=a[3];const x8645=a[4];const x8646=a[5];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x8643]),\"All\",])?"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "(garbage collector)",
+            "url": "",
+            "line": 0,
+            "sampledSeconds": 10.264195,
+            "sampledPercent": 7.489
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "(root)",
+              "url": "",
+              "line": 0,
+              "sampledSeconds": 10.264195,
+              "sampledPercent": 7.489
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "force",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+            "line": 17,
+            "sampledSeconds": 9.330937,
+            "sampledPercent": 6.808,
+            "sourceLinePrefix": "function force(x){"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "call",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 44,
+              "sampledSeconds": 8.60924,
+              "sampledPercent": 6.282,
+              "sourceLinePrefix": "const call=(f,args)=>force(apply(f,args));"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 1450,
+              "sampledSeconds": 0.213019,
+              "sampledPercent": 0.155,
+              "sourceLinePrefix": "G[\"f_hit_row\"]=fn(4,function(a){const x12012=a[0];const x12013=a[1];const x12014=a[2];const x12015=a[3];return jump(get(G,\"kt\"),[\"Row\",\"\",0,call(get(G,\"qt\"),[x12012]),ctor(\"Con\",[call(get(G,\"kt\"),[\"Patterns\",\"\",0,1,call("
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 994,
+              "sampledSeconds": 0.046135,
+              "sampledPercent": 0.034,
+              "sourceLinePrefix": "G[\"j_arm_type\"]=fn(3,function(a){const x16154=a[0];const x16155=a[1];const x16156=a[2];return jump(get(G,\"j_arm_tel\"),[x16154,call(call(get(G,\"j_specialize\"),[x16154,call(get(G,\"dt\"),[call(call(get(G,\"j_find_ctor\"),[x161"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 1355,
+              "sampledSeconds": 0.03173,
+              "sampledPercent": 0.023,
+              "sourceLinePrefix": "G[\"ffd_type\"]=fn(4,function(a){const x12725=a[0];const x12726=a[1];const x12727=a[2];const x12728=a[3];return matcher1(\"FFresh\",()=>fn(2,function(a){const x12729=a[0];const x12730=a[1];return jump(call(get(G,\"ffd_value\")"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 1991,
+              "sampledSeconds": 0.023304,
+              "sampledPercent": 0.017,
+              "sourceLinePrefix": "G[\"norm_max_defs\"]=matcher(\"Nil\",()=>fn(1,function(a){const x7052=a[0];return x7052;}),()=>matcher1(\"Con\",()=>fn(3,function(a){const x7053=a[0];const x7054=a[1];const x7055=a[2];return jump(call(get(G,\"norm_max_defs\"),[c"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "call",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+            "line": 44,
+            "sampledSeconds": 8.471359,
+            "sampledPercent": 6.181,
+            "sourceLinePrefix": "const call=(f,args)=>force(apply(f,args));"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "get",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 46,
+              "sampledSeconds": 1.135862,
+              "sampledPercent": 0.829,
+              "sourceLinePrefix": "function get(v,k){if(k in v){const x=v[k];return x?.code&&x.arity===0?call(x,[]):x;}bad('unbound name: '+k)}"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2043,
+              "sampledSeconds": 0.480597,
+              "sampledPercent": 0.351,
+              "sourceLinePrefix": "G[\"index_find\"]=fn(4,function(a){const x6592=a[0];const x6593=a[1];const x6594=a[2];const x6595=a[3];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"dk\"),[x6592]),\"Absent\",])?((x6596)=>get(G,\"missing\"))(ctor(\"Un"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 1305,
+              "sampledSeconds": 0.358355,
+              "sampledPercent": 0.261,
+              "sourceLinePrefix": "G[\"f_ctor_lookup\"]=fn(1,function(a){const x13119=a[0];return matcher(\"Nil\",()=>call(call(get(G,\"f_find\"),[x13119]),[ctor(\"Nil\",[])]),()=>matcher1(\"Con\",()=>fn(2,function(a){const x13120=a[0];const x13121=a[1];return (/* "
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 960,
+              "sampledSeconds": 0.276872,
+              "sampledPercent": 0.202,
+              "sourceLinePrefix": "G[\"j_l_def\"]=fn(2,function(a){const x16408=a[0];const x16409=a[1];return (/* choice */call(get(G,\"j_l_deep\"),[call(get(G,\"dv\"),[x16409]),0,])?((x16410)=>jump(get(G,\"j_l_definition\"),[x16408,x16409,call(get(G,\"j_l_mark\"),"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 1648,
+              "sampledSeconds": 0.260148,
+              "sampledPercent": 0.19,
+              "sourceLinePrefix": "G[\"ka_node\"]=fn(4,function(a){const x10237=a[0];const x10238=a[1];const x10239=a[2];const x10240=a[3];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x10239]),\"Ann\",])?((x10241)=>jump(get(G,\"ka_node\"),[x10"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "get",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+            "line": 46,
+            "sampledSeconds": 6.526587,
+            "sampledPercent": 4.762,
+            "sourceLinePrefix": "function get(v,k){if(k in v){const x=v[k];return x?.code&&x.arity===0?call(x,[]):x;}bad('unbound name: '+k)}"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2057,
+              "sampledSeconds": 1.16828,
+              "sampledPercent": 0.852,
+              "sourceLinePrefix": "G[\"lookup\"]=matcher(\"Nil\",()=>fn(1,function(a){const x6498=a[0];return get(G,\"missing\");}),()=>matcher1(\"Con\",()=>fn(3,function(a){const x6499=a[0];const x6500=a[1];const x6501=a[2];return (/* choice */call(get(G,\"String"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2043,
+              "sampledSeconds": 0.364084,
+              "sampledPercent": 0.266,
+              "sourceLinePrefix": "G[\"index_find\"]=fn(4,function(a){const x6592=a[0];const x6593=a[1];const x6594=a[2];const x6595=a[3];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"dk\"),[x6592]),\"Absent\",])?((x6596)=>get(G,\"missing\"))(ctor(\"Un"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2043,
+              "sampledSeconds": 0.238081,
+              "sampledPercent": 0.174,
+              "sourceLinePrefix": "G[\"index_find\"]=fn(4,function(a){const x6592=a[0];const x6593=a[1];const x6594=a[2];const x6595=a[3];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"dk\"),[x6592]),\"Absent\",])?((x6596)=>get(G,\"missing\"))(ctor(\"Un"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2074,
+              "sampledSeconds": 0.181928,
+              "sampledPercent": 0.133,
+              "sourceLinePrefix": "G[\"kid\"]=fn(2,function(a){const x6380=a[0];const x6381=a[1];return jump(call(get(G,\"terms_at\"),[call(get(G,\"ks\"),[x6380])]),[x6381]);});"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2046,
+              "sampledSeconds": 0.169459,
+              "sampledPercent": 0.124,
+              "sourceLinePrefix": "G[\"index_child\"]=fn(2,function(a){const x6575=a[0];const x6576=a[1];return jump(call(get(G,\"index_child_list\"),[call(get(G,\"dc\"),[x6575])]),[x6576]);});"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "(anonymous)",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+            "line": 214,
+            "sampledSeconds": 5.058604,
+            "sampledPercent": 3.691,
+            "sourceLinePrefix": "function matcher(name,arm,other){return fn(1,([x])=>{const a=fields(name,x);return a===null?jump(other(),[x]):a.length?jump(arm(),a):arm()})}"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "apply",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 31,
+              "sampledSeconds": 5.03966,
+              "sampledPercent": 3.677,
+              "sourceLinePrefix": "function apply(f,args){"
+            },
+            {
+              "function": "(root)",
+              "url": "",
+              "line": 0,
+              "sampledSeconds": 0.014562,
+              "sampledPercent": 0.011
+            },
+            {
+              "function": "call",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 44,
+              "sampledSeconds": 0.004382,
+              "sampledPercent": 0.003,
+              "sourceLinePrefix": "const call=(f,args)=>force(apply(f,args));"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "project",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+            "line": 77,
+            "sampledSeconds": 4.291502,
+            "sampledPercent": 3.131,
+            "sourceLinePrefix": "function project(k,x){"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 92,
+              "sampledSeconds": 2.528382,
+              "sampledPercent": 1.845,
+              "sourceLinePrefix": "function matcher1(name,arm){return fn(1,([x])=>{const a=project(name,x);return a.length?jump(arm(),a):arm()})}"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2081,
+              "sampledSeconds": 0.596161,
+              "sampledPercent": 0.435,
+              "sourceLinePrefix": "G[\"tg\"]=fn(1,function(a){return project(\"KTerm\",a[0]).slice()[0];});"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2066,
+              "sampledSeconds": 0.238145,
+              "sampledPercent": 0.174,
+              "sourceLinePrefix": "G[\"dk\"]=fn(1,function(a){return project(\"KDef\",a[0]).slice()[1];});"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2061,
+              "sampledSeconds": 0.225537,
+              "sampledPercent": 0.165,
+              "sourceLinePrefix": "G[\"dc\"]=fn(1,function(a){return project(\"KDef\",a[0]).slice()[6];});"
+            },
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2077,
+              "sampledSeconds": 0.204626,
+              "sampledPercent": 0.149,
+              "sourceLinePrefix": "G[\"ks\"]=fn(1,function(a){return project(\"KTerm\",a[0]).slice()[4];});"
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "stringEq",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+            "line": 156,
+            "sampledSeconds": 2.623778,
+            "sampledPercent": 1.914,
+            "sourceLinePrefix": "function stringEq(a,b){if(a.isWellFormed()&&b.isWellFormed())return a===b;let i=0,j=0;while(i<a.length&&j<b.length){const x=checkedChar(a.codePointAt(i)),y=checkedChar(b.codePointAt(j));if(x!==y)return false;i+=x>65535?2"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 45,
+              "sampledSeconds": 2.597057,
+              "sampledPercent": 1.895,
+              "sourceLinePrefix": "const native=(name,n,f)=>G[name]=fn(n,a=>f(...a));"
+            },
+            {
+              "function": "apply",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 31,
+              "sampledSeconds": 0.016234,
+              "sampledPercent": 0.012,
+              "sourceLinePrefix": "function apply(f,args){"
+            },
+            {
+              "function": "(root)",
+              "url": "",
+              "line": 0,
+              "sampledSeconds": 0.010487,
+              "sampledPercent": 0.008
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "(anonymous)",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+            "line": 92,
+            "sampledSeconds": 2.47214,
+            "sampledPercent": 1.804,
+            "sourceLinePrefix": "function matcher1(name,arm){return fn(1,([x])=>{const a=project(name,x);return a.length?jump(arm(),a):arm()})}"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "apply",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 31,
+              "sampledSeconds": 2.457566,
+              "sampledPercent": 1.793,
+              "sourceLinePrefix": "function apply(f,args){"
+            },
+            {
+              "function": "force",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 17,
+              "sampledSeconds": 0.009687,
+              "sampledPercent": 0.007,
+              "sourceLinePrefix": "function force(x){"
+            },
+            {
+              "function": "(root)",
+              "url": "",
+              "line": 0,
+              "sampledSeconds": 0.004887,
+              "sampledPercent": 0.004
+            }
+          ]
+        },
+        {
+          "function": {
+            "function": "(anonymous)",
+            "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+            "line": 2043,
+            "sampledSeconds": 1.628091,
+            "sampledPercent": 1.188,
+            "sourceLinePrefix": "G[\"index_find\"]=fn(4,function(a){const x6592=a[0];const x6593=a[1];const x6594=a[2];const x6595=a[3];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"dk\"),[x6592]),\"Absent\",])?((x6596)=>get(G,\"missing\"))(ctor(\"Un"
+          },
+          "sampledImmediateCallerFunctions": [
+            {
+              "function": "(anonymous)",
+              "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+              "line": 2043,
+              "sampledSeconds": 1.628091,
+              "sampledPercent": 1.188,
+              "sourceLinePrefix": "G[\"index_find\"]=fn(4,function(a){const x6592=a[0];const x6593=a[1];const x6594=a[2];const x6595=a[3];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"dk\"),[x6592]),\"Absent\",])?((x6596)=>get(G,\"missing\"))(ctor(\"Un"
+            }
+          ]
+        }
+      ],
+      "inclusiveCallTreeNodes": [
+        {
+          "function": "(root)",
+          "url": "",
+          "line": 0,
+          "sampledSeconds": 137.055384,
+          "sampledPercent": 100.0
+        },
+        {
+          "function": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 31,
+          "sampledSeconds": 35.828479,
+          "sampledPercent": 26.142,
+          "sourceLinePrefix": "function apply(f,args){"
+        },
+        {
+          "function": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 44,
+          "sampledSeconds": 19.563885,
+          "sampledPercent": 14.274,
+          "sourceLinePrefix": "const call=(f,args)=>force(apply(f,args));"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-graph-measure.mjs",
+          "line": 1,
+          "sampledSeconds": 19.313017,
+          "sampledPercent": 14.091,
+          "sourceLinePrefix": "// Fresh-process compilation latency: native graph, same-source uncached JS,"
+        },
+        {
+          "function": "inspect",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs",
+          "line": 249,
+          "sampledSeconds": 19.258982,
+          "sampledPercent": 14.052,
+          "sourceLinePrefix": "export async function inspect(input,{mode='check',api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false}={}) {"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/tools/compiler-abi.mjs",
+          "line": 79,
+          "sampledSeconds": 18.583216,
+          "sampledPercent": 13.559,
+          "sourceLinePrefix": "    return Object.fromEntries(Object.entries(api).map(([name,method])=>[name,(...args)=>{"
+        },
+        {
+          "function": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 44,
+          "sampledSeconds": 18.51129,
+          "sampledPercent": 13.506,
+          "sourceLinePrefix": "const call=(f,args)=>force(apply(f,args));"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 2196,
+          "sampledSeconds": 18.51129,
+          "sampledPercent": 13.506,
+          "sourceLinePrefix": "export default Object.fromEntries(Object.keys(G).map(k=>[k,(...args)=>call(get(G,k),args)]));"
+        },
+        {
+          "function": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledSeconds": 10.264195,
+          "sampledPercent": 7.489
+        },
+        {
+          "function": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 17,
+          "sampledSeconds": 10.119014,
+          "sampledPercent": 7.383,
+          "sourceLinePrefix": "function force(x){"
+        },
+        {
+          "function": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 31,
+          "sampledSeconds": 10.094541,
+          "sampledPercent": 7.365,
+          "sourceLinePrefix": "function apply(f,args){"
+        },
+        {
+          "function": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 31,
+          "sampledSeconds": 9.437338,
+          "sampledPercent": 6.886,
+          "sourceLinePrefix": "function apply(f,args){"
+        },
+        {
+          "function": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 31,
+          "sampledSeconds": 9.370361,
+          "sampledPercent": 6.837,
+          "sourceLinePrefix": "function apply(f,args){"
+        },
+        {
+          "function": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 17,
+          "sampledSeconds": 9.140929,
+          "sampledPercent": 6.67,
+          "sourceLinePrefix": "function force(x){"
+        },
+        {
+          "function": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 31,
+          "sampledSeconds": 9.136664,
+          "sampledPercent": 6.666,
+          "sourceLinePrefix": "function apply(f,args){"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 1251,
+          "sampledSeconds": 7.174927,
+          "sampledPercent": 5.235,
+          "sourceLinePrefix": "G[\"f_load_graph_seed\"]=fn(5,function(a){const x13570=a[0];const x13571=a[1];const x13572=a[2];const x13573=a[3];const x13574=a[4];return (/* choice */call(get(G,\"f_seed_matches\"),[call(call(get(G,\"f_source\"),[\"Base\"]),[x"
+        },
+        {
+          "function": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 17,
+          "sampledSeconds": 7.038834,
+          "sampledPercent": 5.136,
+          "sourceLinePrefix": "function force(x){"
+        },
+        {
+          "function": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 44,
+          "sampledSeconds": 7.038834,
+          "sampledPercent": 5.136,
+          "sourceLinePrefix": "const call=(f,args)=>force(apply(f,args));"
+        },
+        {
+          "function": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 1251,
+          "sampledSeconds": 7.038834,
+          "sampledPercent": 5.136,
+          "sourceLinePrefix": "G[\"f_load_graph_seed\"]=fn(5,function(a){const x13570=a[0];const x13571=a[1];const x13572=a[2];const x13573=a[3];const x13574=a[4];return (/* choice */call(get(G,\"f_seed_matches\"),[call(call(get(G,\"f_source\"),[\"Base\"]),[x"
+        },
+        {
+          "function": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase2/grammar-v2/fixedpoint/stage2.mjs",
+          "line": 44,
+          "sampledSeconds": 7.014354,
+          "sampledPercent": 5.118,
+          "sourceLinePrefix": "const call=(f,args)=>force(apply(f,args));"
+        }
+      ]
+    }
+  },
+  "rawReport": {
+    "file": "selfhost/build/phase2/successful-profile/report.json",
+    "sha256": "28fd4fce879003f58edaafd9c1ee93efeb4126103a6c2d7f5479be94a29822f9"
+  },
+  "interpretationLimits": [
+    "Node CPU sampling changes execution cost; these instrumented wall times are not an unprofiled performance comparison.",
+    "One successful fixture cannot establish the cause of full compiler self-emission cost or a universal speedup.",
+    "Time deltas are attributed to sampled leaf frames; inclusive rows overlap and must not be added. V8 inlining/JIT and native builtins limit source-level attribution.",
+    "The unchanged --host worker disables detailed error-presentation exports. Both successful gates and exact output identity are reported explicitly.",
+    "GC sample share indicates VM time observed in GC; it does not by itself identify allocation sources or peak retained memory."
+  ],
+  "summaryTools": {
+    "selfhost/build/phase2/successful-profile/run.py": "26233562bbcec111113cdc3bbff4813cfb5701f8e7f37d628bd81bc640d5e36c",
+    "selfhost/build/phase2/successful-profile/summarize.py": "bf6dc52d9a7234df405d5e08ecf8cd8bbbe746277afb7b8ca8895dbc800257a2"
+  },
+  "sampledDispatchPercentH": 49.364,
+  "priorInterventions": {
+    "report": "implementation/phase1/rapid_performance_experiments.md",
+    "sha256": "0d60d9a9482f71d86bbb615df813bfd5a45fa4e481cdf4154c25d930197c816d",
+    "guardedDirectCalls": {
+      "saturatedSites": 10248,
+      "tailSites": 1872,
+      "measuredRelativeSpeed": 1.03,
+      "retained": "Live global lookup, argument evaluation order, arity/bound guards, forcing and stack-safe tails"
+    },
+    "guardedPositionalWorkers": {
+      "workers": 1077,
+      "measuredRelativeSpeed": 1.05,
+      "retained": "Code/environment/arity/identity guards and original tail trampoline"
+    },
+    "limitation": "Different historical artifact and tree/IO workload; these results nevertheless rule out presenting the unchanged guarded-call ablation as a new justified experiment."
+  },
+  "nextExperiment": {
+    "hypothesis": "B1 String.cmp character splitting, recursive comparison and tuple reconstruction perform avoidable work independently of the prior call-dispatch transforms.",
+    "distinctFromPrior": "Prior guarded direct/positional calls preserved the comparison algorithm and its results; this probe would attribute comparison operation counts and representation costs.",
+    "firstStep": "Count calls, compared code points and equal-prefix lengths on a frozen input and isolate the comparison component before a disposable implementation variant.",
+    "oracle": "Exact original returned strings and ordering results for empty/prefix, BMP/astral, and malformed UTF-16 cases; preserve character ordering rather than substituting JS code-unit order. Then exact emitted-byte and execution equality.",
+    "measurement": "Fresh unprofiled processes only after correctness gates; profile percentages are not an attainable speedup promise.",
+    "notAuthorizedHere": "No new experiment, compiler change, runtime change or guard elimination is performed in this report."
+  }
+}

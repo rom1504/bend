@@ -1,14 +1,16 @@
 import path from 'node:path';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-import {inspect,execute,apiPath,basePath,project,runtimePath,driverPath,compilerAbiPath} from '../../typed-driver.mjs';
+import {inspect,execute,apiPath,basePath,project,runtimePath,driverPath,compilerAbiPath,nodeResourceArgsPath} from '../../typed-driver.mjs';
 // Resolve environment paths before isolated workers change their directory.
 process.env.BEND_TYPED_API=apiPath;
 process.env.BEND_TYPED_RUNTIME=runtimePath;
 process.env.BEND_BASE=basePath;
 process.env.BEND_TYPED_TRACE??='1';
 export const name='typed-bend';
-export const artifacts={compiler:apiPath,base:basePath,runtime:runtimePath,driver:driverPath,compilerAbi:compilerAbiPath,nativeRuntime:path.join(project,'src/runtime/native/runtime.c')};
+export const artifacts={compiler:apiPath,base:basePath,runtime:runtimePath,driver:driverPath,compilerAbi:compilerAbiPath,nodeResources:nodeResourceArgsPath,nativeRuntime:path.join(project,'src/runtime/native/runtime.c')};
+const nativeEffects=path.join(project,'src/runtime/native/effs');
+for(const file of fs.readdirSync(nativeEffects))if(fs.statSync(path.join(nativeEffects,file)).isFile())artifacts['nativeEffect/'+file]=path.join(nativeEffects,file);
 const driverDigest=crypto.createHash('sha256').update(fs.readFileSync(driverPath)).digest('hex');
 const adapterDigest=crypto.createHash('sha256').update(fs.readFileSync(new URL(import.meta.url))).digest('hex');
 const digest=crypto.createHash('sha256').update(fs.readFileSync(apiPath)).digest('hex');

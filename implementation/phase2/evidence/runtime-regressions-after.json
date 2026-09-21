@@ -1,0 +1,177 @@
+{
+  "started": "2026-09-21T14:28:47.957Z",
+  "complete": true,
+  "node": "v24.18.0",
+  "runtimeNodeArgs": [
+    "--stack-size=4096",
+    "--max-old-space-size=4096"
+  ],
+  "identity": {
+    "compiler": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/dist/typed-api.mjs",
+      "sha256": "37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    },
+    "driver": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs",
+      "sha256": "ba9d393ea0b1bef7c760fcf55dbb05629faed4bc1d75b9fbdd98a1e64da7d98c"
+    },
+    "resourceArgs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    "nativeRuntime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+      "sha256": "1bbee6dfbe62736c94ad448ec69a8f7437526e98c0aea230b491574f5a9a85fb"
+    }
+  },
+  "rows": [
+    {
+      "id": "reg/borrow_fork_hold.bend",
+      "lane": "interpreter",
+      "sourceSha256": "729a440eb3276a7ca5d000bbd926e11c14f1acbe94432d13b08daea6ed817251",
+      "milliseconds": 1789.526936,
+      "result": {
+        "status": "ok",
+        "phase": "runtime",
+        "stdout": "2003000\n",
+        "stderr": "",
+        "exitCode": 0,
+        "signal": null,
+        "checked": true,
+        "output": "2003000\n",
+        "runtimeNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=4096"
+        ],
+        "verdict": "All terms check.\n"
+      },
+      "pass": true
+    },
+    {
+      "id": "reg/borrow_fork_hold.bend",
+      "lane": "js",
+      "sourceSha256": "729a440eb3276a7ca5d000bbd926e11c14f1acbe94432d13b08daea6ed817251",
+      "milliseconds": 1348.774714,
+      "result": {
+        "status": "ok",
+        "phase": "runtime",
+        "stdout": "2003000\n",
+        "stderr": "",
+        "exitCode": 0,
+        "signal": null,
+        "checked": true,
+        "output": "2003000\n",
+        "runtimeNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=4096"
+        ],
+        "verdict": "All terms check.\n"
+      },
+      "pass": true
+    },
+    {
+      "id": "reg/borrow_fork_hold.bend",
+      "lane": "native",
+      "sourceSha256": "729a440eb3276a7ca5d000bbd926e11c14f1acbe94432d13b08daea6ed817251",
+      "milliseconds": 3366.4351960000004,
+      "result": {
+        "status": "ok",
+        "phase": "runtime",
+        "stdout": "2003000\n",
+        "stderr": "",
+        "exitCode": 0,
+        "signal": null,
+        "checked": true,
+        "output": "2003000\n",
+        "nativeBuild": {
+          "target": "cpu",
+          "compiler": {
+            "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+            "version": 16,
+            "apple": false
+          },
+          "bangs": 0
+        },
+        "verdict": "All terms check.\n"
+      },
+      "pass": true
+    },
+    {
+      "id": "io/stack_fault_trap.bend",
+      "lane": "interpreter",
+      "sourceSha256": "04db469cad10b0bc0206df87dfe0bb3652b085c10124cc2e6bfdba253fd17381",
+      "milliseconds": 1720.3176409999996,
+      "result": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "bend: memory fault (machine stack overflow?)\n",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": null,
+        "checked": true,
+        "output": "bend: memory fault (machine stack overflow?)\n",
+        "runtimeNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=4096"
+        ],
+        "verdict": "All terms check.\n"
+      },
+      "pass": true
+    },
+    {
+      "id": "io/stack_fault_trap.bend",
+      "lane": "js",
+      "sourceSha256": "04db469cad10b0bc0206df87dfe0bb3652b085c10124cc2e6bfdba253fd17381",
+      "milliseconds": 1495.722554,
+      "result": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "bend: memory fault (machine stack overflow?)\n",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": null,
+        "checked": true,
+        "output": "bend: memory fault (machine stack overflow?)\n",
+        "runtimeNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=4096"
+        ],
+        "verdict": "All terms check.\n"
+      },
+      "pass": true
+    },
+    {
+      "id": "io/stack_fault_trap.bend",
+      "lane": "native",
+      "sourceSha256": "04db469cad10b0bc0206df87dfe0bb3652b085c10124cc2e6bfdba253fd17381",
+      "milliseconds": 8644.835667,
+      "result": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "bend: memory fault (machine stack overflow?)\n",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": null,
+        "checked": true,
+        "output": "bend: memory fault (machine stack overflow?)\n",
+        "nativeBuild": {
+          "target": "cpu",
+          "compiler": {
+            "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+            "version": 16,
+            "apple": false
+          },
+          "bangs": 0
+        },
+        "verdict": "All terms check.\n"
+      },
+      "pass": true
+    }
+  ],
+  "finished": "2026-09-21T14:29:06.554Z",
+  "sourceReportSha256": "93844e65eba02a94605e901a7bb6a2916d7f5d17c603512e260350cbd3720dcc"
+}

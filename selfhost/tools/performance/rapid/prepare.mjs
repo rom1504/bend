@@ -28,7 +28,7 @@ if(mode==='positional'){
 }
 for(const [name,source] of Object.entries(sources))fs.writeFileSync(path.join(out,name+'.mjs'),source);
 fs.copyFileSync(path.join(root,'dist/phase1/runtime.mjs'),path.join(out,'runtime.mjs'));
-for(const name of ['typed-driver.mjs','compiler-abi.mjs','assemble.mjs','native-build.mjs'])
+for(const name of ['typed-driver.mjs','compiler-abi.mjs','node-resource-args.mjs','assemble.mjs','native-build.mjs'])
   fs.copyFileSync(path.join(root,'tools',name),path.join(out,'host/tools',name));
 const helpers=['prepare.mjs','direct-calls.mjs','compact-index.mjs','positional-workers.mjs','lexer-probe.mjs'].map(name=>fileURLToPath(new URL(name,import.meta.url)));
 const hash=text=>crypto.createHash('sha256').update(text).digest('hex');

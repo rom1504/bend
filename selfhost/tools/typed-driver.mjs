@@ -9,10 +9,12 @@ import {spawnSync} from 'node:child_process';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {assemble} from './assemble.mjs';
 import {buildNative} from './native-build.mjs';
+import {nodeResourceArgs} from './node-resource-args.mjs';
 import {createCompilerAbi} from './compiler-abi.mjs';
 
 export const driverPath=fileURLToPath(import.meta.url);
 export const compilerAbiPath=fileURLToPath(new URL('./compiler-abi.mjs',import.meta.url));
+export const nodeResourceArgsPath=fileURLToPath(new URL('./node-resource-args.mjs',import.meta.url));
 export const project=path.resolve(import.meta.dirname,'..');
 export const apiPath=path.resolve(process.env.BEND_TYPED_API||path.join(project,'dist/typed-api.mjs'));
 export const runtimePath=path.resolve(process.env.BEND_TYPED_RUNTIME||path.join(project,'src/runtime.mjs'));
@@ -350,7 +352,8 @@ async function executeCompiled(compiled,{workdir,timeoutMs=5000,args=[],backend=
   workdir??=fs.mkdtempSync(path.join(os.tmpdir(),'bend-typed-run-'));
   try {
     const file=path.join(workdir,backend==='js'?'program.mjs':'program.c');fs.writeFileSync(file,compiled.code);
-    let command=process.execPath,commandArgs=[file,...args];
+    const runtimeNodeArgs=backend==='js'?nodeResourceArgs():[];
+    let command=process.execPath,commandArgs=[...runtimeNodeArgs,file,...args];
     let built=null;
     if(backend!=='js') {
       const binary=path.join(workdir,'program');
@@ -371,7 +374,7 @@ async function executeCompiled(compiled,{workdir,timeoutMs=5000,args=[],backend=
     }
     if(child.error?.code==='ETIMEDOUT') return {status:'timeout',phase:'runtime',reason:'Execution exceeded timeout.',checked:true};
     return {status:child.status===0?'ok':'error',phase:'runtime',stdout:combinedOutput?output:(child.stdout||''),stderr:combinedOutput?'':(child.stderr||''),exitCode:child.status??1,signal:child.signal,checked:true,...(combinedOutput?{output}:{}),
-      ...(built?{nativeBuild:{target:built.target,compiler:built.compiler,bangs:built.bangs}}:{}),
+      ...(built?{nativeBuild:{target:built.target,compiler:built.compiler,bangs:built.bangs}}:{runtimeNodeArgs}),
       ...((backend==='metal'||backend==='cuda')?{hardwareExecuted:child.status===0&&built?.bangs>0,target:built?.target}:{})};
   } finally {if(own)fs.rmSync(workdir,{recursive:true,force:true});}
 }

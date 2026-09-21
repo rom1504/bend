@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 const project=path.resolve(import.meta.dirname,'../..');
-const files=['tools/typed-driver.mjs','tools/compiler-abi.mjs','tools/native-build.mjs','tools/assemble.mjs','tools/conformance/adapters/typed.mjs'];
+const files=['tools/typed-driver.mjs','tools/compiler-abi.mjs','tools/node-resource-args.mjs','tools/native-build.mjs','tools/assemble.mjs','tools/conformance/adapters/typed.mjs'];
 const inputs=files.map(file=>({file,source:fs.readFileSync(path.join(project,file),'utf8')}));
 const digest=crypto.createHash('sha256');
 for(const input of inputs)digest.update(input.file+'\0'+input.source+'\0');

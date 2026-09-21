@@ -1,0 +1,416 @@
+{
+  "schemaVersion": 1,
+  "method": "disjoint-shards",
+  "coverageComplete": true,
+  "started": "2026-09-21T06:27:31.630Z",
+  "finished": "2026-09-21T10:50:17.290Z",
+  "host": {
+    "platform": "linux",
+    "arch": "x64",
+    "node": "v24.18.0",
+    "workerNodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ]
+  },
+  "complete": false,
+  "summary": {
+    "tests": 1378,
+    "allTests": 1378,
+    "excludedTests": 0,
+    "probes": 6019,
+    "statuses": {
+      "observed": 459,
+      "pass": 4219,
+      "fail": 1068,
+      "not-applicable": 242,
+      "hardware-gated": 28,
+      "timeout": 3
+    },
+    "lanes": {
+      "parse": {
+        "observed": 459,
+        "pass": 919
+      },
+      "check": {
+        "pass": 1001,
+        "fail": 377
+      },
+      "interpreter": {
+        "pass": 976,
+        "fail": 278
+      },
+      "js": {
+        "pass": 671,
+        "fail": 207,
+        "not-applicable": 121
+      },
+      "native": {
+        "pass": 652,
+        "fail": 206,
+        "not-applicable": 121,
+        "timeout": 3
+      },
+      "metal": {
+        "hardware-gated": 14
+      },
+      "cuda": {
+        "hardware-gated": 14
+      }
+    },
+    "namespaces": {
+      "base": {
+        "observed": 4,
+        "pass": 131
+      },
+      "check": {
+        "pass": 441,
+        "observed": 146,
+        "fail": 356,
+        "not-applicable": 8
+      },
+      "compile": {
+        "pass": 479,
+        "observed": 10,
+        "fail": 36,
+        "hardware-gated": 16
+      },
+      "comptime": {
+        "pass": 140,
+        "observed": 22,
+        "fail": 82,
+        "hardware-gated": 4
+      },
+      "cost": {
+        "pass": 20,
+        "observed": 1,
+        "fail": 4
+      },
+      "eval": {
+        "observed": 4,
+        "fail": 4,
+        "pass": 150,
+        "not-applicable": 34
+      },
+      "flatten": {
+        "pass": 585,
+        "observed": 54,
+        "fail": 129,
+        "not-applicable": 92,
+        "timeout": 1
+      },
+      "gfx": {
+        "pass": 20
+      },
+      "grade": {
+        "pass": 11,
+        "observed": 15,
+        "fail": 13
+      },
+      "halt": {
+        "pass": 121,
+        "observed": 26,
+        "fail": 6
+      },
+      "import": {
+        "pass": 59,
+        "observed": 14,
+        "fail": 46
+      },
+      "io": {
+        "pass": 476,
+        "observed": 16,
+        "fail": 26,
+        "timeout": 1,
+        "not-applicable": 2
+      },
+      "page": {
+        "observed": 19,
+        "fail": 52,
+        "pass": 17
+      },
+      "parse": {
+        "pass": 347,
+        "observed": 63,
+        "fail": 177,
+        "not-applicable": 38
+      },
+      "printer": {
+        "pass": 21,
+        "not-applicable": 14,
+        "hardware-gated": 4
+      },
+      "proof": {
+        "pass": 195,
+        "not-applicable": 2,
+        "observed": 33,
+        "fail": 37
+      },
+      "reg": {
+        "pass": 436,
+        "timeout": 1,
+        "observed": 5,
+        "fail": 17,
+        "not-applicable": 2
+      },
+      "rfc": {
+        "pass": 45
+      },
+      "run": {
+        "observed": 6,
+        "fail": 20,
+        "pass": 341,
+        "hardware-gated": 4,
+        "not-applicable": 8
+      },
+      "show": {
+        "pass": 34,
+        "not-applicable": 4
+      },
+      "spec": {
+        "observed": 13,
+        "fail": 52,
+        "pass": 10
+      },
+      "state": {
+        "pass": 22,
+        "observed": 8,
+        "fail": 11,
+        "not-applicable": 6
+      },
+      "stats": {
+        "pass": 25
+      },
+      "stuck": {
+        "pass": 93,
+        "not-applicable": 32
+      }
+    },
+    "checkerRejections": 265,
+    "frontendRejections": 0,
+    "uncheckedExecutions": 0
+  },
+  "identity": {
+    "adapter": "typed-bend",
+    "capabilities": {
+      "parse": true,
+      "check": true,
+      "interpreter": true,
+      "js": true,
+      "native": true,
+      "metal": true,
+      "cuda": true,
+      "modules": true,
+      "foreign": true,
+      "dependentTypes": true,
+      "affine": true,
+      "termination": true,
+      "proofs": true
+    },
+    "adapterSha256": "5ac001e536c26f1c1e8c93f0888bd9f6c2c165614ddc7b16675fe5058a3a6494",
+    "artifacts": {
+      "compiler": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v4/stage2.mjs",
+        "sha256": "44227e5e9aa714682c3a5f042cbf38fce86cc6bc510265aeda75103ed242579a"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+        "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/fixedpoint-v4/runtime.mjs",
+        "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/6d43cf39393e764ed32623b8a77c502092ed1ae234d9c2a43defba111c5a7b24/typed-driver.mjs",
+        "sha256": "b745fd8c6cf90afc2d5b28233bc80c9347ac66c67c7aa64d32b5f22dce74e51f"
+      },
+      "compilerAbi": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/6d43cf39393e764ed32623b8a77c502092ed1ae234d9c2a43defba111c5a7b24/compiler-abi.mjs",
+        "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+      },
+      "nativeRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+        "sha256": "400606bb7e351041c9658e818aa78696e00ec96fbb35ff8bbb890996bf9fdd91"
+      }
+    },
+    "finalAdapterSha256": "5ac001e536c26f1c1e8c93f0888bd9f6c2c165614ddc7b16675fe5058a3a6494",
+    "adapterChangedDuringRun": false,
+    "finalArtifactHashes": {
+      "compiler": "44227e5e9aa714682c3a5f042cbf38fce86cc6bc510265aeda75103ed242579a",
+      "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+      "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+      "driver": "b745fd8c6cf90afc2d5b28233bc80c9347ac66c67c7aa64d32b5f22dce74e51f",
+      "compilerAbi": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+      "nativeRuntime": "400606bb7e351041c9658e818aa78696e00ec96fbb35ff8bbb890996bf9fdd91"
+    },
+    "changedArtifacts": []
+  },
+  "sourceReport": {
+    "path": "build/phase1/validation-v4/conformance-merged.json",
+    "sha256": "a754148decaac4d0582b8a9ccfd7661f6b3c96dd810c56efeaec0a5c3cad43bd"
+  },
+  "comparison": {
+    "path": "build/phase1/validation-v4/comparison.json",
+    "sha256": "c3c73b7890f15c30f2ef593c03b2f96d52642c43d9421ab26808cb971f38e6d4",
+    "changes": [
+      {
+        "id": "flatten/literal_rows_cubic.bend",
+        "lane": "native",
+        "before": {
+          "verdict": "pass",
+          "evidence": "checked-execution",
+          "status": "ok",
+          "phase": "runtime",
+          "checked": true,
+          "exitCode": 0,
+          "output": "1000\n1007\n1499\n2499\n2999\n"
+        },
+        "after": {
+          "verdict": "timeout",
+          "evidence": null,
+          "status": "timeout",
+          "phase": null,
+          "checked": null,
+          "exitCode": null,
+          "output": ""
+        }
+      },
+      {
+        "id": "io/file_binary.bend",
+        "lane": "native",
+        "before": {
+          "verdict": "pass",
+          "evidence": "checked-execution",
+          "status": "ok",
+          "phase": "runtime",
+          "checked": true,
+          "exitCode": 0,
+          "output": "read on write-only handle\ninvalid byte\ninvalid write leaves empty file\nshared byte list survives write\nmax U32 is not a byte\nsize after failed write\nwrite on read-only handle\nsize after append\nsequential first byte\nall 256 byte values\nshort read at EOF\nzero-length read\nread at EOF\nread past EOF at the top offset\nsize preserves position\npositional reads preserve position\n"
+        },
+        "after": {
+          "verdict": "timeout",
+          "evidence": null,
+          "status": "timeout",
+          "phase": null,
+          "checked": null,
+          "exitCode": null,
+          "output": ""
+        }
+      },
+      {
+        "id": "io/stack_fault_trap.bend",
+        "lane": "native",
+        "before": {
+          "verdict": "pass",
+          "evidence": "checked-execution",
+          "status": "error",
+          "phase": "runtime",
+          "checked": true,
+          "exitCode": 1,
+          "output": "bend: memory fault (machine stack overflow?)\n"
+        },
+        "after": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "runtime",
+          "checked": true,
+          "exitCode": 1,
+          "output": ""
+        }
+      },
+      {
+        "id": "page/deep_list_walk.bend",
+        "lane": "check",
+        "before": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 1,
+          "output": null
+        },
+        "after": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 1,
+          "output": null
+        }
+      },
+      {
+        "id": "reg/arity_wall.bend",
+        "lane": "native",
+        "before": {
+          "verdict": "pass",
+          "evidence": "checked-execution",
+          "status": "ok",
+          "phase": "runtime",
+          "checked": true,
+          "exitCode": 0,
+          "output": "1\n"
+        },
+        "after": {
+          "verdict": "timeout",
+          "evidence": null,
+          "status": "timeout",
+          "phase": null,
+          "checked": null,
+          "exitCode": null,
+          "output": ""
+        }
+      },
+      {
+        "id": "reg/borrow_fork_hold.bend",
+        "lane": "interpreter",
+        "before": {
+          "verdict": "pass",
+          "evidence": "checked-execution",
+          "status": "ok",
+          "phase": "runtime",
+          "checked": true,
+          "exitCode": 0,
+          "output": "2003000\n"
+        },
+        "after": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "runtime",
+          "checked": true,
+          "exitCode": 1,
+          "output": "bend: memory fault (machine stack overflow?)\n"
+        }
+      },
+      {
+        "id": "reg/borrow_fork_hold.bend",
+        "lane": "js",
+        "before": {
+          "verdict": "pass",
+          "evidence": "checked-execution",
+          "status": "ok",
+          "phase": "runtime",
+          "checked": true,
+          "exitCode": 0,
+          "output": "2003000\n"
+        },
+        "after": {
+          "verdict": "fail",
+          "evidence": null,
+          "status": "error",
+          "phase": "runtime",
+          "checked": true,
+          "exitCode": 1,
+          "output": "bend: memory fault (machine stack overflow?)\n"
+        }
+      }
+    ],
+    "negativeChecks": 459,
+    "negativeChecksUnchanged": 458
+  },
+  "limitation": "Historical frozen H4 corpus, not phase2 candidate. Coverage complete is not conformance complete. Diagnostic text omitted from compact comparison; full original retained locally and hashed."
+}

@@ -1,0 +1,97 @@
+{
+  "compilerSha256": "37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5",
+  "rows": [
+    {
+      "name": "io/stack_fault_trap",
+      "lane": "native",
+      "elapsedMs": 8545.722287999999,
+      "result": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": "SIGSEGV",
+        "checked": true,
+        "output": "",
+        "nativeBuild": {
+          "target": "cpu",
+          "compiler": {
+            "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+            "version": 16,
+            "apple": false
+          },
+          "bangs": 0
+        },
+        "verdict": "All terms check.\n"
+      }
+    },
+    {
+      "name": "reg/borrow_fork_hold",
+      "lane": "interpreter",
+      "elapsedMs": 1133.2158739999995,
+      "result": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "bend: memory fault (machine stack overflow?)\n",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": null,
+        "checked": true,
+        "output": "bend: memory fault (machine stack overflow?)\n",
+        "verdict": "All terms check.\n"
+      }
+    },
+    {
+      "name": "reg/borrow_fork_hold",
+      "lane": "js",
+      "elapsedMs": 8412.159489000001,
+      "result": {
+        "status": "error",
+        "phase": "runtime",
+        "stdout": "bend: memory fault (machine stack overflow?)\n",
+        "stderr": "",
+        "exitCode": 1,
+        "signal": null,
+        "checked": true,
+        "output": "bend: memory fault (machine stack overflow?)\n",
+        "verdict": "All terms check.\n"
+      }
+    }
+  ],
+  "nativeSignalExperiment": [
+    {
+      "binary": "program",
+      "threads": 1,
+      "seconds": 4.588859459152445,
+      "code": -11,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "binary": "program",
+      "threads": 2,
+      "seconds": 4.535964312963188,
+      "code": -11,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "binary": "signal-safe",
+      "threads": 1,
+      "seconds": 4.5675514379981905,
+      "code": 1,
+      "stdout": "",
+      "stderr": "bend: memory fault (machine stack overflow?)\n"
+    },
+    {
+      "binary": "signal-safe",
+      "threads": 2,
+      "seconds": 4.543024971848354,
+      "code": 1,
+      "stdout": "",
+      "stderr": "bend: memory fault (machine stack overflow?)\n"
+    }
+  ],
+  "limitation": "Initial signal experiment used O1 for the replacement versus original O3. Fresh integrated after report rebuilds native using original O3 and is the controlled validation."
+}

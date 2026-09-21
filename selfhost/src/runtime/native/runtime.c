@@ -465,7 +465,11 @@ static void err_post(Corpus H, Err code) {
 }
 
 static void err_trap(int sig) {
-  err_post(NULL, ERR_DEEP);
+  // A machine stack fault can interrupt stdio or exhaust the handler's small
+  // alternate stack. Only async-signal-safe operations may run here.
+  static const char message[] = "bend: memory fault (machine stack overflow?)\n";
+  (void)write(STDERR_FILENO, message, sizeof(message) - 1);
+  _exit(1);
 }
 
 #endif

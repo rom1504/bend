@@ -20,7 +20,7 @@ export function inputFiles({tests}) {
     if(!manifest.startsWith(directory+path.sep))continue;
     files.push(manifest);
     if(!fs.existsSync(manifest))continue;
-    try{const graph=loadNativeGraphManifest(manifest);for(const input of [...graph.modules,...(graph.moduleAliases??[]),...graph.assets])files.push(input.lexical,input.path);}catch{/* The probe records malformed-manifest failure. */}
+    try{const graph=loadNativeGraphManifest(manifest);for(const input of [...graph.modules,...(graph.moduleAliases??[]),...graph.assets]){files.push(input.lexical,input.path);if(input.name!=='Base')files.push(input.name);}}catch{/* The probe records malformed-manifest failure. */}
   }
   return [...new Set(files)];
 }
@@ -28,6 +28,17 @@ export function validateGraphFixture(graph,test,upstream){
   const main=graph.modules.find(module=>module.name===graph.main),base=graph.modules.find(module=>module.name==='Base');
   if(main?.path!==fs.realpathSync(test.file))throw Error('Native manifest main differs from selected fixture');
   if(base?.path!==fs.realpathSync(path.join(upstream,'bend2/base.bend')))throw Error('Native manifest Base differs from pinned reference Base path');
+  // Standalone graph compilation supports remaps; a paired fixture comparison
+  // must consume the dependency selected by the reference filesystem instead.
+  for(const input of [...graph.modules,...(graph.moduleAliases??[]),...(graph.assets??[])]){
+    if(input.name==='Base')continue;
+    let expected;
+    try{expected=fs.realpathSync(input.name);}catch(error){
+      if(error.code!=='ENOENT'||!input.missing)throw Error('Native dependency logical path is unavailable to the reference: '+input.name);
+      expected=path.resolve(input.name);
+    }
+    if(expected!==input.path)throw Error('Native dependency remapping differs from reference filesystem: '+input.name);
+  }
 }
 export async function probe({test,lane,workdir,timeoutMs,upstream}){
   if(lane!=='js')return {status:'unsupported',reason:'Native graph host currently exposes only checked JavaScript emission/execution; no lane fallback.'};

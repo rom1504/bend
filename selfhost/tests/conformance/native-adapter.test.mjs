@@ -23,5 +23,18 @@ test('paired native graph requires the selected source and canonical pinned Base
     const inputs=adapter.inputFiles({tests:[{id:'example.bend'}]});
     assert.ok(inputs.includes(alias),'deduplicated lexical aliases remain protected between probes');
     assert.ok(inputs.includes(source));assert.ok(inputs.includes(base));assert.ok(inputs.includes(manifest));
+    const dependency=path.join(directory,'dependency.bend'),dependencyAlias=path.join(directory,'dependency-link.bend'),substitute=path.join(directory,'substitute.bend');
+    fs.writeFileSync(dependency,'identical dependency');fs.writeFileSync(substitute,'identical dependency');fs.symlinkSync(dependency,dependencyAlias);
+    const paired=extra=>adapter.validateGraphFixture({...graph,...extra},{file:source},directory);
+    assert.doesNotThrow(()=>paired({modules:[...graph.modules,{name:dependencyAlias,path:dependency}]}));
+    assert.throws(()=>paired({modules:[...graph.modules,{name:dependency,path:substitute}]}),/dependency remapping differs/);
+    assert.throws(()=>paired({assets:[{name:dependency,path:substitute}]}),/dependency remapping differs/);
+    assert.doesNotThrow(()=>paired({assets:[{name:dependencyAlias,path:dependency}]}));
+    const missing=path.join(directory,'missing.js');
+    assert.doesNotThrow(()=>paired({assets:[{name:missing,path:missing,missing:true}]}));
+    assert.throws(()=>paired({assets:[{name:missing,path:dependency}]}),/logical path is unavailable/);
+    assert.throws(()=>paired({assets:[{name:missing,path:missing+'-remapped',missing:true}]}),/dependency remapping differs/);
+    fs.writeFileSync(manifest,JSON.stringify({version:1,main:source,base,modules:[{name:dependencyAlias,path:dependency}],assets:[]}));
+    assert.ok(adapter.inputFiles({tests:[{id:'example.bend'}]}).includes(dependencyAlias),'logical dependency symlinks remain protected between probes');
   }finally{for(const key of keys)if(previous[key]===undefined)delete process.env[key];else process.env[key]=previous[key];fs.rmSync(directory,{recursive:true,force:true});}
 });

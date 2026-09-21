@@ -91,3 +91,11 @@ process wall time. The JS probe exposes unchanged generated Bend workers to Node
 because upstream's file IO requires Bun; input reading occurs outside both inner
 timers. Component speedups are evidence for a backend experiment, not a claim
 about the full compiler or self-hosting validation.
+
+For the complete compiler, the [native closed-bundle experiment](../selfhost/tools/performance/rapid/native-bundle.md)
+provides a Bend driver, snapshot/build commands, guarded launcher, matched JS/C
+measurement and semantic validation tools. Its initial scope is one main module
+plus Base. Keep checked C emission separate from C optimization retries: use
+`native-compile-c.mjs` on the retained C instead of repeating Bend checking and
+emission. Build times and runtime speed are separate results; `-O0` establishes
+feasibility but is not evidence for an optimized native speedup.

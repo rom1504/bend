@@ -296,6 +296,43 @@ five seconds, which is retained rather than bypassing ownership checks.
 [generated-C timing audit](rapid-evidence/native-lexer-timing-inspection.json)
 record the experiment. See the development guide for portable reproduction.
 
+## Native whole-compiler feasibility and build cost
+
+The experimental driver composes the actual 59 compiler modules in Bend, with
+the same runtime and source hashes as the verified JS compiler. It accepts a main
+file plus Base and explicitly rejects additional modules or external JS assets.
+It retains parsing, graph loading, checking, ownership/TODO checks, specialization,
+root selection, foreign checks, annotation, layouts and JS generation. It fully
+consumes the result before stopping its inner timer. A guarded host launcher
+protects input paths and only publishes a successful output with an atomic rename.
+
+The unoptimized native executable passes **13/13 semantic cases**. Six positive
+cases produce exactly the same JS bytes and execution as the checked JS bootstrap,
+including non-BMP Unicode and a callable library export. Error phases agree;
+the two deliberately unsupported scope cases reject explicitly. The first run's
+sandbox child-process failure is excluded. A mistaken no-Base fixture expectation
+was corrected after both compilers rejected it identically; only that cheap case
+was rerun. [The semantic summary](rapid-evidence/native-compiler/semantic-gate.json)
+links every successful observation and retains both earlier attempts.
+
+Native build cost is itself a finding. The checked source and emissions required
+1.090 s loading, 3.272 s checking/ownership, 2.420 s JS generation and 22.522 s C
+generation. An initial 60-second combined build exhausted its limit during
+Clang `-O3`, leaving only roughly 30 seconds for Clang; it was **not** a standalone
+60-second `-O3` trial. A separate `-O1` attempt timed out after 60 seconds. Reusing
+the already checked C, `-O0` succeeded in **18.636 seconds**. Successful phase work
+sums to **47.940 seconds**, excluding startup, failed attempts and gaps; this sum
+is not an observed fresh end-to-end build.
+
+The `-O0` binary is a correctness baseline. Initial whole-compilation observations
+do not show a speedup over upstream-emitted JS. A longer `-O1` retry succeeded in
+**67.332 seconds**; the earlier timeout was narrowly insufficient. Matched runtime
+comparisons are in progress. A fast lexer microbenchmark does not establish a fast
+complete compiler, particularly with different C flags.
+[Build evidence](rapid-evidence/native-compiler/build-attempt3/build-evidence-summary.json)
+and the [native experiment guide](../../selfhost/tools/performance/rapid/native-bundle.md)
+explain the separate checked-emission and C-only rebuild workflow.
+
 ## Rejected or deferred experiments
 
 A further diagnostic specializes 2,446 non-tail calls to 28 retained scalar

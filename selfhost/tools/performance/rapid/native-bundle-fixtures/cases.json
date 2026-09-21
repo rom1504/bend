@@ -1,0 +1,110 @@
+{
+  "pathsRelativeTo": "selfhost",
+  "expectedOnly": true,
+  "note": "Expected acceptance; actual native/host results must be recorded by validation runner. Use identical canonical file paths for both pipelines.",
+  "cases": [
+    {
+      "name": "no-base",
+      "file": "tools/performance/rapid/native-bundle-fixtures/no-base.bend",
+      "mode": "program",
+      "accepted": false,
+      "phase": "compile",
+      "checked": true,
+      "note": "Both drivers require import Base for executable program emission."
+    },
+    {
+      "name": "base-u32",
+      "file": "tests/conformance/typed-smoke/base-u32.bend",
+      "mode": "program",
+      "accepted": true
+    },
+    {
+      "name": "tree",
+      "file": "tests/fixtures/tree.bend",
+      "mode": "program",
+      "accepted": true,
+      "stdout": "42\n"
+    },
+    {
+      "name": "list-sort",
+      "file": ".bootstrap/upstream/tests/base/list_sort.bend",
+      "mode": "program",
+      "accepted": true,
+      "stdout": "6\n"
+    },
+    {
+      "name": "builtin-io",
+      "file": "tests/fixtures/hello.bend",
+      "mode": "program",
+      "accepted": true,
+      "stdout": "Hello from the self-hosted Bend2 compiler!\n"
+    },
+    {
+      "name": "unicode",
+      "file": "tools/performance/rapid/native-bundle-fixtures/unicode.bend",
+      "mode": "program",
+      "accepted": true,
+      "stdout": "Bend \ud83e\udd8b \u03bb caf\u00e9\n"
+    },
+    {
+      "name": "library",
+      "file": "tools/performance/rapid/native-bundle-fixtures/library.bend",
+      "mode": "library",
+      "accepted": true,
+      "export": "answer",
+      "value": 42
+    },
+    {
+      "name": "parse-error",
+      "file": "tools/performance/rapid/native-bundle-fixtures/parse-error.bend",
+      "mode": "program",
+      "accepted": false,
+      "phase": "parse",
+      "checked": false
+    },
+    {
+      "name": "type-error",
+      "file": "tools/performance/rapid/native-bundle-fixtures/type-error.bend",
+      "mode": "program",
+      "accepted": false,
+      "phase": "check",
+      "checked": true
+    },
+    {
+      "name": "unresolved-law",
+      "file": "tools/performance/rapid/native-bundle-fixtures/unresolved-law.bend",
+      "mode": "program",
+      "accepted": false,
+      "phase": "check",
+      "checked": true
+    },
+    {
+      "name": "owned-name",
+      "file": "tools/performance/rapid/native-bundle-fixtures/owned-name.bend",
+      "mode": "program",
+      "accepted": false,
+      "phase": "compile",
+      "checked": true
+    },
+    {
+      "name": "extra-import",
+      "file": "tools/performance/rapid/native-bundle-fixtures/extra-import.bend",
+      "mode": "program",
+      "accepted": false,
+      "phase": "load",
+      "checked": false,
+      "hostAccepted": true,
+      "scopeDifference": "Native experiment deliberately accepts Base only."
+    },
+    {
+      "name": "foreign-asset",
+      "file": "tools/performance/rapid/native-bundle-fixtures/foreign.bend",
+      "mode": "library",
+      "accepted": false,
+      "hostAccepted": true,
+      "phase": "compile",
+      "checked": true,
+      "scopeDifference": "Native experiment deliberately rejects required external JavaScript assets."
+    }
+  ]
+}

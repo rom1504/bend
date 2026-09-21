@@ -1,0 +1,69 @@
+{
+  "kind": "checked-native-component-build",
+  "started": "2026-09-21T08:33:28.963Z",
+  "complete": false,
+  "node": "v24.18.0",
+  "nodeExecutable": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+  "cpu": 1,
+  "source": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/attempt3-input/compiler.bend",
+  "sourceSha256": "1bc7fc1e5f7642e41283b80840c29afe84faee65e4b8cfb1228281313b82bc6d",
+  "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+  "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+  "options": [
+    "--js",
+    "--build",
+    "--cpu=1"
+  ],
+  "phases": [
+    {
+      "name": "load",
+      "milliseconds": 1089.878667
+    },
+    {
+      "name": "check-and-owned",
+      "milliseconds": 3272.258325
+    },
+    {
+      "name": "javascript-emission",
+      "milliseconds": 2419.539111
+    },
+    {
+      "name": "c-emission",
+      "milliseconds": 22522.051684
+    }
+  ],
+  "toolSha256": "ddb7851385328903cf4c9adcb58356dfe54cba84dc098b1de0f4dfb80da9be56",
+  "scope": "Native experiment build, not compiler self-hosting or full language conformance",
+  "upstreamTrackedFilesClean": true,
+  "upstreamFiles": [
+    {
+      "file": "bend2/bend.ts",
+      "sha256": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168"
+    },
+    {
+      "file": "bend2/comp.ts",
+      "sha256": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0"
+    },
+    {
+      "file": "bend2/base.bend",
+      "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+    }
+  ],
+  "javascript": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program.cjs",
+    "sha256": "213d5cd4aafca7ff768aa4f22edede1838b079bf31908231fc76957322176270"
+  },
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program.c",
+    "sha256": "2b7dc3cc23a5d5a0284f213a3628dc1749911d146a6215399fdac784dc7034a1",
+    "bytes": 5743956
+  },
+  "currentPhase": "clang",
+  "externalTimeout": {
+    "timeoutSeconds": 60,
+    "exitCode": 124,
+    "phase": "clang",
+    "recorded": "2026-09-21T08:36:37.525779+00:00",
+    "sourceAndEmissionsPreserved": true
+  }
+}

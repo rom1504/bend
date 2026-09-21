@@ -1,0 +1,98 @@
+{
+  "kind": "native-closed-bundle-semantic-validation",
+  "started": "2026-09-21T08:46:09.924Z",
+  "cpu": 1,
+  "files": {
+    "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o0",
+    "api": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/dist/typed-api.mjs",
+    "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs"
+  },
+  "hashes": {
+    "binary": "069ec691ef7e73df2ebdcea7120f6d85a2b9e4a6fca61afe665a92fa1abd1f77",
+    "api": "37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5",
+    "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+  },
+  "complete": true,
+  "rows": [
+    {
+      "name": "no-base",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/no-base.bend",
+      "inputSha256": "44581c2f8549c956b8122c8f097e9690321873abe578ed9a8b67ebaa109a27a3",
+      "expected": {
+        "name": "no-base",
+        "file": "tools/performance/rapid/native-bundle-fixtures/no-base.bend",
+        "mode": "program",
+        "accepted": false,
+        "phase": "compile",
+        "checked": true,
+        "note": "Both drivers require import Base for executable program emission."
+      },
+      "passed": true,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 1,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o0",
+            "dev": 2306,
+            "ino": 71722441,
+            "bytes": 7250328
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/no-base.bend",
+            "dev": 2306,
+            "ino": 71722282,
+            "bytes": 66
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "069ec691ef7e73df2ebdcea7120f6d85a2b9e4a6fca61afe665a92fa1abd1f77",
+          "input": "44581c2f8549c956b8122c8f097e9690321873abe578ed9a8b67ebaa109a27a3",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation3-no-base/no-base/native.mjs",
+        "status": 1,
+        "signal": null,
+        "wallMs": 19.87375200000001,
+        "compileMs": 12,
+        "consumedChars": 25,
+        "stdout": "",
+        "stderr": "compile_ms=12\nconsumed_chars=25\nphase=compile checked=True: a build needs import Base\n",
+        "error": null,
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": "compile",
+        "checked": true
+      },
+      "host": {
+        "status": "error",
+        "phase": "compile",
+        "diagnostic": "Error: a build needs import Base",
+        "exitCode": 1,
+        "checked": true,
+        "wallMs": 42.389163999999994
+      }
+    }
+  ],
+  "inputsUnchanged": true,
+  "finished": "2026-09-21T08:46:10.302Z"
+}

@@ -1,0 +1,368 @@
+{
+  "kind": "native-closed-bundle-semantic-validation",
+  "started": "2026-09-21T08:41:55.569Z",
+  "cpu": 1,
+  "files": {
+    "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o0",
+    "api": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/integrated/dist/typed-api.mjs",
+    "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs"
+  },
+  "hashes": {
+    "binary": "069ec691ef7e73df2ebdcea7120f6d85a2b9e4a6fca61afe665a92fa1abd1f77",
+    "api": "37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5",
+    "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+  },
+  "complete": false,
+  "rows": [
+    {
+      "name": "no-base",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/no-base.bend",
+      "inputSha256": "44581c2f8549c956b8122c8f097e9690321873abe578ed9a8b67ebaa109a27a3",
+      "expected": {
+        "name": "no-base",
+        "file": "tools/performance/rapid/native-bundle-fixtures/no-base.bend",
+        "mode": "program",
+        "accepted": true
+      },
+      "passed": false,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 1,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o0",
+            "dev": 2306,
+            "ino": 71722441,
+            "bytes": 7250328
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/no-base.bend",
+            "dev": 2306,
+            "ino": 71722282,
+            "bytes": 66
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "069ec691ef7e73df2ebdcea7120f6d85a2b9e4a6fca61afe665a92fa1abd1f77",
+          "input": "44581c2f8549c956b8122c8f097e9690321873abe578ed9a8b67ebaa109a27a3",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation1/no-base/native.mjs",
+        "status": 1,
+        "signal": null,
+        "wallMs": 23.64806999999999,
+        "compileMs": 13,
+        "consumedChars": 25,
+        "stdout": "",
+        "stderr": "compile_ms=13\nconsumed_chars=25\nphase=compile checked=True: a build needs import Base\n",
+        "error": "spawnSync taskset EPERM",
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": "compile",
+        "checked": true
+      },
+      "error": "Host worker failed: spawnSync taskset EPERM"
+    },
+    {
+      "name": "base-u32",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend",
+      "inputSha256": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22",
+      "expected": {
+        "name": "base-u32",
+        "file": "tests/conformance/typed-smoke/base-u32.bend",
+        "mode": "program",
+        "accepted": true
+      },
+      "passed": false,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 1,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o0",
+            "dev": 2306,
+            "ino": 71722441,
+            "bytes": 7250328
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend",
+            "dev": 2306,
+            "ino": 71070777,
+            "bytes": 42
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "069ec691ef7e73df2ebdcea7120f6d85a2b9e4a6fca61afe665a92fa1abd1f77",
+          "input": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation1/base-u32/native.mjs",
+        "status": 0,
+        "signal": null,
+        "wallMs": 7610.915389,
+        "compileMs": 7598,
+        "consumedChars": 40136,
+        "stdout": "",
+        "stderr": "compile_ms=7598\nconsumed_chars=40136\n",
+        "error": "spawnSync taskset EPERM",
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": null,
+        "checked": false
+      },
+      "error": "Host worker failed: spawnSync taskset EPERM"
+    },
+    {
+      "name": "tree",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+      "inputSha256": "ee47602e212650f57d33510b02aef711ba86f4d75b99058b3914f55e2704f4e4",
+      "expected": {
+        "name": "tree",
+        "file": "tests/fixtures/tree.bend",
+        "mode": "program",
+        "accepted": true,
+        "stdout": "42\n"
+      },
+      "passed": false,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 1,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o0",
+            "dev": 2306,
+            "ino": 71722441,
+            "bytes": 7250328
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+            "dev": 2306,
+            "ino": 71070786,
+            "bytes": 344
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "069ec691ef7e73df2ebdcea7120f6d85a2b9e4a6fca61afe665a92fa1abd1f77",
+          "input": "ee47602e212650f57d33510b02aef711ba86f4d75b99058b3914f55e2704f4e4",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation1/tree/native.mjs",
+        "status": 0,
+        "signal": null,
+        "wallMs": 8017.727389999998,
+        "compileMs": 8006,
+        "consumedChars": 44229,
+        "stdout": "",
+        "stderr": "compile_ms=8006\nconsumed_chars=44229\n",
+        "error": "spawnSync taskset EPERM",
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": null,
+        "checked": false
+      },
+      "error": "Host worker failed: spawnSync taskset EPERM"
+    },
+    {
+      "name": "list-sort",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+      "inputSha256": "b7e1a7187eb35e4253208fcdad5122311e4d936fb23198568568cb73db45746e",
+      "expected": {
+        "name": "list-sort",
+        "file": ".bootstrap/upstream/tests/base/list_sort.bend",
+        "mode": "program",
+        "accepted": true,
+        "stdout": "6\n"
+      },
+      "passed": false,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 1,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o0",
+            "dev": 2306,
+            "ino": 71722441,
+            "bytes": 7250328
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+            "dev": 2306,
+            "ino": 71172710,
+            "bytes": 3632
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "069ec691ef7e73df2ebdcea7120f6d85a2b9e4a6fca61afe665a92fa1abd1f77",
+          "input": "b7e1a7187eb35e4253208fcdad5122311e4d936fb23198568568cb73db45746e",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation1/list-sort/native.mjs",
+        "status": 0,
+        "signal": null,
+        "wallMs": 9409.887913999999,
+        "compileMs": 9396,
+        "consumedChars": 51155,
+        "stdout": "",
+        "stderr": "compile_ms=9396\nconsumed_chars=51155\n",
+        "error": "spawnSync taskset EPERM",
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": null,
+        "checked": false
+      },
+      "error": "Host worker failed: spawnSync taskset EPERM"
+    },
+    {
+      "name": "builtin-io",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/hello.bend",
+      "inputSha256": "ee14924d30c8264688687133c522bc49c17c66d1ef40c35298586fe34a027234",
+      "expected": {
+        "name": "builtin-io",
+        "file": "tests/fixtures/hello.bend",
+        "mode": "program",
+        "accepted": true,
+        "stdout": "Hello from the self-hosted Bend2 compiler!\n"
+      },
+      "passed": false,
+      "native": {
+        "kind": "experimental-native-closed-bundle-run",
+        "mode": "program",
+        "cpu": 1,
+        "platform": "linux",
+        "architecture": "x64",
+        "cpuModel": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+        "files": {
+          "binary": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/build-attempt3/program-o0",
+            "dev": 2306,
+            "ino": 71722441,
+            "bytes": 7250328
+          },
+          "input": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/hello.bend",
+            "dev": 2306,
+            "ino": 71070785,
+            "bytes": 94
+          },
+          "base": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "dev": 2306,
+            "ino": 71071776,
+            "bytes": 64336
+          },
+          "runtime": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/src/runtime.mjs",
+            "dev": 2306,
+            "ino": 71722194,
+            "bytes": 38772
+          }
+        },
+        "inputSha256": {
+          "binary": "069ec691ef7e73df2ebdcea7120f6d85a2b9e4a6fca61afe665a92fa1abd1f77",
+          "input": "ee14924d30c8264688687133c522bc49c17c66d1ef40c35298586fe34a027234",
+          "base": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "runtime": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+        },
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/rapid/native-compiler/validation1/builtin-io/native.mjs",
+        "status": 0,
+        "signal": null,
+        "wallMs": 9155.609508000001,
+        "compileMs": 9142,
+        "consumedChars": 41716,
+        "stdout": "",
+        "stderr": "compile_ms=9142\nconsumed_chars=41716\n",
+        "error": "spawnSync taskset EPERM",
+        "published": false,
+        "scope": "One main plus optional Base; regular files <=16 MiB; no other imports or external JS assets. compileMs excludes input IO; wallMs includes native process IO and output.",
+        "phase": null,
+        "checked": false
+      },
+      "error": "Host worker failed: spawnSync taskset EPERM"
+    },
+    {
+      "name": "unicode",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/unicode.bend",
+      "inputSha256": "3ca96046c437b3a7c7a1034d25aae64fdabd1a2433465d75358febb2abb15bd1",
+      "expected": {
+        "name": "unicode",
+        "file": "tools/performance/rapid/native-bundle-fixtures/unicode.bend",
+        "mode": "program",
+        "accepted": true,
+        "stdout": "Bend \ud83e\udd8b \u03bb caf\u00e9\n"
+      },
+      "passed": false
+    }
+  ],
+  "invalid": true,
+  "reason": "Sandbox spawnSync taskset EPERM; terminated own process tree and restarted escalated in validation2. Do not use this attempt for results or timing."
+}

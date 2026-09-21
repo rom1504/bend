@@ -200,3 +200,68 @@ unnecessary copy. A [fresh checked rebuild](evidence/bootstrap-base-preservation
 confirms unchanged Base bytes, inode, mtime and ctime, and exactly the same second
 API hash. Final native/JS self-emission uses a separate immutable Base/effect
 snapshot with the same canonical path on both sides.
+
+## Cache-aware iteration decision
+
+The second native candidate's fresh-process comparison rotates three variants
+over two workloads (a tree program and imported foreign code), with three
+repetitions each. All 18 compilations have identical emitted bytes within each
+workload and pass execution; compiler modules match across variants and all
+recorded inputs/tools remain unchanged. CPU 3 is pinned for these samples, on a
+shared host, so these medians are local observations rather than universal ratios.
+
+| Workload | Native graph | Uncached JS | Validated-cache JS |
+| --- | ---: | ---: | ---: |
+| Tree | 1.927 s | 6.718 s | 1.851 s |
+| Imported foreign code | 1.892 s | 6.604 s | 1.591 s |
+
+These are whole fresh-process compilation times, including startup and host
+work. The native executable's successful checking/emission/C-build phases cost
+208.844 seconds in this run. Native has no build-amortization advantage over
+cached JS on these small workloads. The design's earlier roughly twenty-case
+break-even estimate compared against uncached JS and must not guide normal
+cached development. The measured cache preparation was a 120 ms validation/read
+of an existing cache, not the cost of creating one after a changed compiler.
+
+This supports the phase 2 priority: use a checked bootstrap and validated Base
+reuse for focused semantic work, and schedule larger native/self-hosting proofs
+separately. The live pinned TypeScript measurements and larger compiler workload
+are recorded separately when complete.
+
+## Self-emission and comparison provenance
+
+The self-host runner now verifies source canonical identity, Base, runtime,
+initial/stage compilers, the actual driver and its consumed helpers before and
+after every stage. Eight focused tests cover successful proof/resume, Base and
+helper drift, source symlink retargeting, old-format resume refusal, preservation
+of an existing proof, and refusal to reuse a tainted stage. Reports created by
+the earlier runner remain earlier evidence; their missing provenance is not
+retroactively inferred.
+
+Paired native fixtures must use the selected main, canonical pinned Base and the
+reference filesystem's dependency identities. The adapter rejects module/asset
+remapping to another physical file, even with identical bytes, while allowing
+legitimate symlinks and unchanged missing assets. This restriction belongs to
+controlled comparisons; the standalone graph host retains its explicit remap
+capability.
+
+## Live pinned reference baseline
+
+The [fresh upstream frontend sweep](evidence/reference-full-frontend.json)
+observed all 1,378 fixtures in both parse and check lanes (2,756 probes), with no
+input/tool drift, crashes or timeouts. All 919 positive fixtures pass both lanes.
+Among 459 negative check observations, 457 reject (182 parse, 274 check, one
+compile) and two accept at checking because their required rejection belongs to
+a later compilation gate. There are three exact check-oracle failures: the
+template-cycle diagnostic includes different context, and the two deferred
+gates are `io/main_foreign.bend` and `reg/array_open_element.bend`.
+This reference uses the pinned exported TypeScript APIs and the documented
+CLI-policy adapter; it is not the unavailable Bun CLI.
+
+The [fresh runtime pairs](evidence/runtime-live-reference.json) isolate the host
+corrections using the pre-frontend-repair compiler API. Both live compilers pass
+`borrow_fork_hold` in the interpreter and JS lanes with the same 4 MiB child
+stack. Pinned upstream's native `stack_fault_trap` crashes without output; the
+corrected port prints the fixture-required memory-fault line and exits 1. That
+intentional runtime bug fix is fixture success but not exact upstream parity.
+The paired report correctly remains unsuccessful as a joint exact comparison.

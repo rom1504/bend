@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "started": "2026-09-21T14:38:32.278Z",
+  "finished": "2026-09-21T15:09:40.906Z",
+  "host": {
+    "platform": "linux",
+    "arch": "x64",
+    "node": "v24.18.0",
+    "workerNodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ]
+  },
+  "options": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/adapters/upstream.mjs",
+    "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/report.json",
+    "jobs": 1,
+    "timeout": 300000,
+    "lanes": "parse,check",
+    "filter": "",
+    "gpu": "",
+    "stack-kb": 4096,
+    "heap-mb": 4096,
+    "selection": "",
+    "rerun": "",
+    "retain": "failed",
+    "selected-exit": "0"
+  },
+  "identity": {
+    "adapter": "pinned-typescript-reference",
+    "capabilities": {
+      "parse": true,
+      "check": true,
+      "interpreter": true,
+      "js": true,
+      "native": true,
+      "metal": false,
+      "cuda": false,
+      "modules": true,
+      "foreign": true,
+      "dependentTypes": true,
+      "affine": true,
+      "termination": true,
+      "proofs": true
+    },
+    "adapterSha256": "1987b8e57c381d827f19b37bcd17f0c6c1d8dd7ae6fd7402692d4eb0effc30fe",
+    "artifacts": {
+      "bend.ts": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/bend.ts",
+        "sha256": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168"
+      },
+      "comp.ts": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/comp.ts",
+        "sha256": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0"
+      },
+      "base.bend": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+        "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+      },
+      "main.ts": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/main.ts",
+        "sha256": "34c69df407a8abff02752f26821ee2ff7c0a303e97a32b8b5e0082b142e63f59"
+      },
+      "nativeBuild": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/native-build.mjs",
+        "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+      },
+      "nodeResources": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/node-resource-args.mjs",
+        "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+      },
+      "harness/run.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/run.mjs",
+        "sha256": "2efb753a39552c47740cd6507d6ab94e63d56e8e82520cd32f0c05b4802e13d8"
+      },
+      "harness/worker.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/worker.mjs",
+        "sha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+      },
+      "harness/inventory.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/inventory.mjs",
+        "sha256": "bd07624791dedb66f610f1ea46626a48ccb60475b87fef4c9c022b497b2a1a4c"
+      },
+      "harness/judge.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/judge.mjs",
+        "sha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+      },
+      "harness/selection.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/selection.mjs",
+        "sha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+      },
+      "harness/run-probe.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/run-probe.mjs",
+        "sha256": "d61b8ccfabd3c9d2bb522a063608a87dc45ec305c1e20dcf3b5e66e7f4875812"
+      },
+      "harness/replay.mjs": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/replay.mjs",
+        "sha256": "52b42152e8f5574ce01ec518934ae2397e35c8bda6a3d9c89eb098245906639f"
+      }
+    },
+    "finalAdapterSha256": "1987b8e57c381d827f19b37bcd17f0c6c1d8dd7ae6fd7402692d4eb0effc30fe",
+    "adapterChangedDuringRun": false,
+    "finalArtifactHashes": {
+      "bend.ts": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168",
+      "comp.ts": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0",
+      "base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+      "main.ts": "34c69df407a8abff02752f26821ee2ff7c0a303e97a32b8b5e0082b142e63f59",
+      "nativeBuild": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+      "nodeResources": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+      "harness/run.mjs": "2efb753a39552c47740cd6507d6ab94e63d56e8e82520cd32f0c05b4802e13d8",
+      "harness/worker.mjs": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "harness/inventory.mjs": "bd07624791dedb66f610f1ea46626a48ccb60475b87fef4c9c022b497b2a1a4c",
+      "harness/judge.mjs": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+      "harness/selection.mjs": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+      "harness/run-probe.mjs": "d61b8ccfabd3c9d2bb522a063608a87dc45ec305c1e20dcf3b5e66e7f4875812",
+      "harness/replay.mjs": "52b42152e8f5574ce01ec518934ae2397e35c8bda6a3d9c89eb098245906639f"
+    },
+    "changedArtifacts": []
+  },
+  "complete": false,
+  "selectedComplete": false,
+  "changedInputs": [],
+  "summary": {
+    "tests": 1378,
+    "allTests": 1378,
+    "excludedTests": 0,
+    "probes": 2756,
+    "statuses": {
+      "observed": 459,
+      "pass": 2294,
+      "fail": 3
+    },
+    "lanes": {
+      "parse": {
+        "observed": 459,
+        "pass": 919
+      },
+      "check": {
+        "pass": 1375,
+        "fail": 3
+      }
+    },
+    "namespaces": {
+      "base": {
+        "observed": 4,
+        "pass": 50
+      },
+      "check": {
+        "pass": 295,
+        "observed": 146,
+        "fail": 1
+      },
+      "compile": {
+        "pass": 200,
+        "observed": 10
+      },
+      "comptime": {
+        "pass": 78,
+        "observed": 22
+      },
+      "cost": {
+        "pass": 9,
+        "observed": 1
+      },
+      "eval": {
+        "observed": 4,
+        "pass": 74
+      },
+      "flatten": {
+        "pass": 426,
+        "observed": 54
+      },
+      "gfx": {
+        "pass": 8
+      },
+      "grade": {
+        "pass": 19,
+        "observed": 15
+      },
+      "halt": {
+        "pass": 44,
+        "observed": 26
+      },
+      "import": {
+        "pass": 42,
+        "observed": 14
+      },
+      "io": {
+        "pass": 201,
+        "observed": 16,
+        "fail": 1
+      },
+      "page": {
+        "observed": 19,
+        "pass": 27
+      },
+      "parse": {
+        "pass": 225,
+        "observed": 63
+      },
+      "printer": {
+        "pass": 14
+      },
+      "proof": {
+        "pass": 123,
+        "observed": 33
+      },
+      "reg": {
+        "pass": 180,
+        "observed": 5,
+        "fail": 1
+      },
+      "rfc": {
+        "pass": 18
+      },
+      "run": {
+        "observed": 6,
+        "pass": 144
+      },
+      "show": {
+        "pass": 16
+      },
+      "spec": {
+        "observed": 13,
+        "pass": 17
+      },
+      "state": {
+        "pass": 24,
+        "observed": 8
+      },
+      "stats": {
+        "pass": 10
+      },
+      "stuck": {
+        "pass": 50
+      }
+    },
+    "checkerRejections": 273,
+    "frontendRejections": 182,
+    "uncheckedExecutions": 0
+  },
+  "report": "selfhost/build/phase2/reference-all/report.json",
+  "reportSha256": "11a55472e52724da0b2fb1f0bd849eb923978942afb206a4be84427c782d2bb8",
+  "probeCount": 2756,
+  "failures": [
+    {
+      "id": "check/template_inst_cycle.bend",
+      "namespace": "check",
+      "negative": true,
+      "lane": "check",
+      "status": "fail",
+      "reason": "Diagnostic/exit mismatch (unrelated rejection is not a pass).",
+      "ms": 351,
+      "result": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "diagnostic": "Error:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : loop\nContext:\n- u : Unit\nLocation: bounce~0\n18 | def loop(~k: Key, u: Unit) -> Empty:\n19>|   bounce(~loop(~k), u)\n20 | ",
+        "exitCode": 1
+      },
+      "artifacts": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/report.json.artifacts/453",
+      "replay": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/replay.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/report.json.artifacts/453/request.json"
+      ]
+    },
+    {
+      "id": "io/main_foreign.bend",
+      "namespace": "io",
+      "negative": true,
+      "lane": "check",
+      "status": "fail",
+      "reason": "Expected rejection; program was accepted.",
+      "ms": 780,
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "stdout": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n",
+        "exitCode": 0
+      },
+      "artifacts": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/report.json.artifacts/1647",
+      "replay": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/replay.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/report.json.artifacts/1647/request.json"
+      ]
+    },
+    {
+      "id": "reg/array_open_element.bend",
+      "namespace": "reg",
+      "negative": true,
+      "lane": "check",
+      "status": "fail",
+      "reason": "Expected rejection; program was accepted.",
+      "ms": 695,
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "stdout": "All terms check.\n",
+        "exitCode": 0
+      },
+      "artifacts": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/report.json.artifacts/2285",
+      "replay": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/harness/tools/conformance/replay.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/reference-all/report.json.artifacts/2285/request.json"
+      ]
+    }
+  ],
+  "notes": [
+    "This is the full pinned parse/check selection, not all execution lanes.",
+    "The two accepted negative check cases are known later compile/layout gates; the selected lanes do not test those later outcomes.",
+    "CPU0 was shared briefly with small frontend correctness probes; elapsed time is not an isolated performance measurement."
+  ]
+}

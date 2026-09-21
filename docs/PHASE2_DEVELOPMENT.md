@@ -118,7 +118,11 @@ local observations, not guaranteed budgets. Full checked self-emission remains a
 larger milestone; use the recipe in [Bend-in-Bend](BEND-IN-BEND.md), freeze its
 source/API/runtime/host, and let it run while targeted tests use another CPU.
 
-The native compiler host is useful when enough compilations amortize its build.
+For the two measured small workloads, validated Base caching makes the ordinary
+JS API as fast as or faster than the native graph host: about 1.6–1.9 seconds
+versus 1.9 seconds per fresh process. Uncached JS took about 6.6–6.7 seconds.
+Use the cached checked API for small edits; native compilation has a substantial
+build cost and is a separate option to measure on larger workloads.
 Its [explicit graph manifest interface](../selfhost/tools/performance/rapid/native-graph.md)
 extends the original main-plus-Base experiment to provided modules and reachable
 JavaScript foreign assets. Module loading, checking and emission remain in Bend.

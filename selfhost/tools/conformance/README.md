@@ -173,8 +173,11 @@ Set `BEND_SELFHOST_HEAP_MB` to configure Node's old-generation heap limit;
 this also appears in the recorded launch arguments. Full compiler annotation can
 exceed Node's default 4 GiB heap, so use a host with sufficient physical memory.
 `BEND_SELFHOST_RESUME=3` or `4` resumes from existing verified stage outputs;
-it verifies source, runtime, driver and compiler hashes and preserves the earlier
-attempt and log before restarting. No checking or emission gate is skipped.
+it verifies canonical source and Base identities, runtime, driver, consumed host
+helpers and compiler hashes, and preserves the earlier attempt and log before
+restarting. Legacy reports without that provenance cannot resume. A new proof
+refuses an existing report directory; a stage with detected input drift cannot
+be resumed as a verified predecessor. No checking or emission gate is skipped.
 
 ```sh
 BEND_TYPED_API=/absolute/path/to/bootstrap-api.mjs \
@@ -236,7 +239,8 @@ compiler worker; zero (the default) preserves Node's defaults. Setting flags on
 the runner alone does not propagate them to workers. Reports record the exact
 worker flags, and the merger refuses groups with different limits. The OS stack
 must be larger than the requested JavaScript stack (8 MiB in the phase 1 run).
-These settings do not change per-probe deadlines or generated-program flags.
+These settings do not change per-probe deadlines. The explicit stack and
+old-space settings propagate to generated Node programs; other Node flags do not.
 
 ## Fast selected differential loop
 
@@ -349,7 +353,11 @@ native-output, or GPU lane; there is no implicit JS compiler fallback. Configure
 requires a versioned graph manifest at `DIRECTORY/FIXTURE_ID.json`, for example
 `DIRECTORY/base/list_sort.bend.json`. Its main file must match the selected fixture, and its canonical Base path must
 match the pinned reference `bend2/base.bend` (a relocated copy is not silently
-substituted into this paired comparison).
+substituted into this paired comparison). Each dependency and asset logical path
+must also resolve to the supplied physical file. Legitimate filesystem symlinks
+are allowed; explicit remapping to a different dependency is rejected even when
+the bytes happen to match. Standalone graph compilation supports such remaps,
+but a paired comparison must use the reference filesystem identities.
 Missing manifests are unsupported. The manifest lists all available modules and
 foreign assets explicitly; the adapter never discovers imports in JavaScript.
 See [the native graph host guide](../performance/rapid/native-graph.md) for the

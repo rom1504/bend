@@ -1,0 +1,119 @@
+{
+  "kind": "targeted-paired-conformance",
+  "started": "2026-09-21T15:11:47.899Z",
+  "finished": "2026-09-21T15:12:13.005Z",
+  "complete": false,
+  "selectedComplete": false,
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/before/api.mjs",
+      "sha256": "37ebe8aea31b13aecd2ea84e5aaa0c5d2c48659e48661980badf71cb43e890e5"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    },
+    "bootstrapReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/before/api.mjs.bootstrap.json",
+      "sha256": "ac51143bd5293487939caeafa7ade0e7bf30f32caf52af70d97ef57e018beb98"
+    }
+  },
+  "environment": {
+    "BEND_UPSTREAM": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "BEND_BASE": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "BEND_TYPED_API": "/home/ai/bend2/build/publish/bend/selfhost/build/phase2/frontend/before/api.mjs",
+    "BEND_TYPED_RUNTIME": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs"
+  },
+  "cpu": 0,
+  "rows": [
+    {
+      "id": "io/stack_fault_trap.bend",
+      "lane": "native",
+      "referenceVerdict": "crash",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "crash",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": null,
+        "diagnostic": null,
+        "output": ""
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": null,
+        "output": "bend: memory fault (machine stack overflow?)\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": null,
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "reg/borrow_fork_hold.bend",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "2003000\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "2003000\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "reg/borrow_fork_hold.bend",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "2003000\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "2003000\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    }
+  ],
+  "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+  "wallMs": 25100.493134,
+  "report": "selfhost/build/phase2/runtime-live-reference/paired.json",
+  "reportSha256": "6bdc66aaf9e5b685107d195198122048a915acd717d1881e66c7d66c82703e9a",
+  "notes": [
+    "The candidate uses the pre-frontend-repair checked compiler with the corrected host/runtime, isolating these runtime fixes from grammar changes.",
+    "Pinned TypeScript native stack_fault_trap still crashes without the fixture-required diagnostic; the candidate now passes the fixture. This deliberate bug fix is an observed upstream divergence, not exact runtime parity.",
+    "Both live compilers pass borrow_fork_hold interpreter/JavaScript with the same 4 MiB child Node stack limit.",
+    "Timings are correctness-run evidence, not isolated compiler performance measurements."
+  ]
+}

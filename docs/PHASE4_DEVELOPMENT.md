@@ -39,6 +39,13 @@ API and choose a new report filename. Exact diagnostics and wider selections use
 `"workerMode": "persistent"` in its configuration. These focused commands do not
 replace broader frontend and self-reproduction gates.
 
+The 21-case rule command exercises frontend acceptance and rejection phases.
+For emitter or runtime edits, also compile and execute small programs using the
+selected development API, and run the applicable ABI/native witnesses described
+in the [compiler guide](BEND-IN-BEND.md). A frontend pass alone does not validate
+generated code. Choose focused witnesses for the changed component before the
+larger integration gates.
+
 The [final-source command measurements](../implementation/phase4/development-final.md)
 record 20.735 seconds for bootstrap and 16.483 seconds for cold focused
 validation: 37.217 seconds of child-process work together. Reusing the checked

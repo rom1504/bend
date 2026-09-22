@@ -22,9 +22,9 @@ not on PATH. Choose a fresh directory and an available CPU:
 node tools/performance/rapid/native-bundle-prepare.mjs . build/native-graph
 node --stack-size=4096 tools/performance/rapid/native-component.mjs \
   build/native-graph/compiler.bend build/native-graph/build --js --cpu=3
-node tools/performance/rapid/native-compile-c.mjs \
+taskset -c 3 node tools/performance/rapid/native-compiler-cache.mjs \
   build/native-graph/build/program.c build/native-graph/build/program-o1 \
-  --opt=O1 --cpu=3 --timeout-ms=180000
+  build/native-c-cache --opt=O1 --timeout-ms=180000
 ```
 
 The first command freezes the compiler modules, both native host modules and the
@@ -33,6 +33,13 @@ emitting JavaScript and C. The third compiles that preserved C. Keep preparation
 checked-emission and C-build reports together; a successful C compilation alone
 is not a Bend checking result. A timed-out optimization attempt does not require
 repeating checking or C emission. Use a fresh output binary name for each retry.
+The cache rechecks C preprocessing and compiler identity on every lookup; it is
+local to a stable host linker/library environment, not a hermetic toolchain.
+Validation and measurement accept both version-2 cache reports and the older
+`native-compile-c.mjs` reports. Keep the matching `.build.json` beside each binary.
+Cache hits record lookup preprocessing, but do not record the original C
+compilation duration; measurement reports leave that duration and the combined
+build-phase total null instead of treating reuse as zero-cost compilation.
 
 ## Manifest and invocation
 
@@ -119,6 +126,7 @@ checks. Compare matching scopes and record shared-host/resource conditions.
 ## Focused validation
 
 ```sh
+node --test tests/native-build-evidence.test.mjs
 node tools/performance/rapid/native-graph-run.test.mjs
 node tools/performance/rapid/native-graph-api.mjs \
   build/native-graph/build build/native-graph/host-api

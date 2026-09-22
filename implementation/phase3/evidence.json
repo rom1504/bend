@@ -72,6 +72,42 @@
       "baselineMedianMs": 1692.69,
       "candidateMedianMs": 85.78,
       "scope": "Synthetic context merge including index construction; no whole-compiler or native runtime claim."
+    },
+    "combinedSmallCompiler": {
+      "report": "implementation/phase3/final-small-compiler.json",
+      "passedSamples": 96,
+      "totalSamples": 96,
+      "positiveCompilation": "effectively unchanged for current vs historical H",
+      "negativeHBeforeMs": 25716.416086,
+      "negativeHAfterMs": 2228.126962,
+      "negativeSpeedup": 11.5417193565,
+      "scope": "Three alternating fresh-process samples; exact outcomes; same host/output runtime; separate validated Bend Base caches; TS has no serialized Base cache."
+    },
+    "coldEditLoop": {
+      "report": "implementation/phase3/evidence/cold-edit-loop.json",
+      "totalInToolMs": 36349.509989,
+      "checkedBootstrapMs": 16443.979514,
+      "pairedValidationMs": 16348.455094,
+      "cases": 21,
+      "scope": "One process, existing assembled source; excludes Node startup/assembly; compiler-side Base cache initially absent; OS caches not flushed."
+    },
+    "finalFullSourceTS": {
+      "report": "implementation/phase3/final-fullsource-typescript.json",
+      "samples": 3,
+      "medianCompileSeconds": 49.636,
+      "medianProcessSeconds": 50.062,
+      "selectedRoots": 1497,
+      "scope": "Three serial TS observations; unpaired with single native/H observations; unchanged pinned TS modules copied to private location."
+    },
+    "finalNativeCompiler": {
+      "report": "implementation/phase3/evidence/native-final.json",
+      "compileSeconds": 287.315,
+      "processSeconds": 287.54,
+      "nativeMatrixPassed": 11,
+      "nativeMatrixCases": 11,
+      "sameBytesAsB1Stage2": true,
+      "outputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+      "scope": "Single CPU0 observation on same frozen source and canonical Base; no native-output fixed point."
     }
   },
   "validation": {
@@ -101,7 +137,9 @@
         "TCP",
         "UDP"
       ]
-    }
+    },
+    "nativeBuildReportTests": 21,
+    "nativeBuildReportProductionSmoke": "passed using actual cached binary"
   },
   "integratedCandidate": {
     "apiSha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",

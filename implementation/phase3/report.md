@@ -26,6 +26,65 @@ Neither substitutes for measuring the combined self-emitted H artifact.
 The full H fixed-point and broad conformance gates therefore remain required
 before promoting a new default distribution.
 
+## Combined compiler measurements
+
+The final [small-workload comparison](final-small-compiler.json) passed all
+96 exact outcome, emitted-byte and execution checks. It alternated historical H,
+current H, current B1 and pinned TypeScript in three rounds on CPU1. All Bend
+variants used one frozen current host, separately primed validated Base caches
+and a shared output runtime; each compiler retained its own embedded runtime.
+TypeScript had no serialized Base cache. The timings below are complete request
+medians, including loading/checking/emission where applicable; module startup,
+before/after identity checks and report IO are outside this request timer.
+
+| Request | Historical H | Current H | Current B1 | Pinned TS |
+|---|---:|---:|---:|---:|
+| Tree, checked JS emission | 3.101 s | 3.141 s | 1.684 s | 0.392 s |
+| List sort, checked JS emission | 5.963 s | 5.880 s | 2.993 s | 0.417 s |
+| Bytes operations, exact rejection | 25.716 s | 2.228 s | 0.798 s | 0.359 s |
+
+The combined H rejection path is **11.54x faster** on this case. Positive
+compilation is effectively unchanged: current H remains 8.02x and 14.08x slower
+than TS on these two request workloads. The synthetic annotation/runtime gains
+do not imply a similar whole-compiler gain. Process-wall medians, which also
+include benchmark supervision and identity work, are respectively 4.351/7.067 s
+for current H positive emissions and 1.761/1.798 s for TS. The full request and
+process results remain separate in the archive and
+[reproduction recipe](../../selfhost/tools/performance/phase3/final-compiler-compare.md).
+
+A [fresh checked-build and validation observation](evidence/cold-edit-loop.json)
+completed in **36.350 seconds inside the tool**, including a 16.444-second B1
+build and 16.348 seconds for 21 live paired frontend cases. The compiler-side
+Base cache began absent. All nine checked-positive and 12 parse-negative witnesses
+passed. This consumes an already assembled source and excludes Node startup;
+OS caches were not flushed, and TS stayed loaded within the process. It is one
+workflow observation, not a repeated speedup over phase2's earlier 40-second loop.
+The build uses pinned upstream to emit the driver-facing B1 API, then runs the
+Bend-written compiler for candidate validation. Its narrower export contract
+and bootstrap route differ from asking H to reproduce the full compiler library.
+
+The [live pinned TS full-source control](final-fullsource-typescript.json) passed
+three serial fresh-process runs: **49.468, 49.647 and 49.636 seconds** inside the
+compile timer, with a 50.062-second median process wall. Each run performed full
+checking/ownership/closed-book gates and emitted identical TS bytes. The actual
+current H classifier independently confirmed exactly 1,497 library roots. This
+uses the same final source and canonical Base as the native and H runs, but the
+runs were not paired or interleaved. The TS modules were copied unchanged to a
+private location. Broader H exports include runtime helpers; equality of selected
+roots does not imply identical default export sets or emitter output bytes.
+
+The [final native workflow](native-final.md) compiles the same final source into
+**exactly the same 1,131,553 JavaScript bytes** as B1 stage2, SHA `360bb62b…`.
+Its single full-source observation took 287.315 seconds internally and 287.540
+seconds including the outer process, on CPU0. The B1 stage2 run took 704.229
+seconds on CPU3. Native is about 5.74x the separately sampled TS process median;
+that descriptive ratio is not a same-core paired estimate. The native build's
+checked JS/C emission took 40.655 seconds, followed by a 71.932-second cache miss;
+a subsequent verified cache hit took 1.846 seconds. These preparation costs are
+separate from compiler execution. Eleven native/JS cases and the updated
+production validator pass. This proves native execution of the compiler emitting
+JS, not a native-output fixed point.
+
 ## Implemented source changes
 
 `src/check/annotate.bend` now recognizes a Ref/Var-headed application spine and
@@ -173,6 +232,7 @@ The following checks passed:
 
 * JavaScript syntax checks for all new/changed harness, adapter and cache tools.
 * ABI, inventory, judge, selection, native-build, native-cache and persistent-worker tests.
+* 21 native build-report identity/timing tests, including real cache-hit validator execution.
 * Exact persistent-versus-isolated typed observations for six mixed fixtures.
 * Complete B1 loading and checking of the assembled compiler source, with and
   without the application-spine overlay as separate controls.
@@ -199,8 +259,8 @@ The integrated H fixed point remains a release gate.
 ## Remaining work and interpretation
 
 The combined source/API/runtime/host are frozen for the checked stage2/stage3
-self-emission proof. Broader component validation and a fresh small-workload
-comparison with historical H and pinned TypeScript are being archived separately.
+self-emission proof. Combined component and small-workload comparisons have
+completed; the full frontend sweep and the H reproduction stage are still running.
 Until those gates finish, no new default distribution is promoted and no combined
 whole-compiler speedup is claimed. Full language conformance remains a separate
 objective; existing exact-diagnostic failures remain failures.

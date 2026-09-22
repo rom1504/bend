@@ -72,6 +72,12 @@ cache: system linker and libraries must remain stable. It does not claim a
 hermetic toolchain. Source and header changes require new Bend emission/checking
 evidence where applicable, even when native caching is enabled.
 
+The [complete native graph recipe](../selfhost/tools/performance/rapid/native-graph.md)
+connects checked emission, this cache and validation. Its validation and latency
+tools accept both cache reports and legacy C-build reports. A cache hit leaves
+the original compilation duration unknown; it is never reported as a zero-cost
+original build.
+
 For a new compiler source, use the checked component/native-bundle preparation
 tools first; do not treat a cached binary as evidence that checking or Bend
 emission ran for the new source.
@@ -129,3 +135,19 @@ accessor exposes a semantic mismatch.
 The full measurements, source identities, failed hypotheses and known test
 limitations are recorded in
 [`implementation/phase3/report.md`](../implementation/phase3/report.md).
+
+## Measured iteration and comparison recipes
+
+The [cold checked-build loop](../selfhost/tools/performance/phase3/cold-edit-loop.md)
+rebuilt the complete compiler and ran 21 focused live paired cases in 36.35 seconds
+inside the tool. Source assembly and Node startup are outside that measurement;
+the compiler-side Base cache starts absent. Use this bounded workflow while
+editing, then run the self-emission proof after integration.
+
+The [four-way compiler comparison](../selfhost/tools/performance/phase3/final-compiler-compare.md)
+separates historical H, current H, checked B1 and pinned TypeScript. On its final
+samples, the slow exact rejection improved 11.54x, while positive compilation
+was essentially unchanged. The [full-source TS control](../selfhost/tools/performance/phase3/final-fullsource-typescript.md)
+records identical input/root policies and the limits of comparing separately
+run compilers. Always report request work, process wall and generated-program
+execution separately.

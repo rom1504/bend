@@ -1,5 +1,6 @@
 import fs from 'node:fs';import path from 'node:path';import {pathToFileURL,fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';import {createHash} from 'node:crypto';
+import {verifyNativeBuildEvidence} from './native-build-evidence.mjs';
 import {runNativeGraph} from './native-graph-run.mjs';import {makeNativeGraphFixtures} from './native-graph-fixtures.mjs';
 const tool=fileURLToPath(import.meta.url),hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 const save=(file,value)=>fs.writeFileSync(file,JSON.stringify(value,null,2)+'\n');
@@ -22,9 +23,8 @@ if(process.argv[2]==='--host'){
   const exposureFile=path.join(path.dirname(files.api),'exposure.json'),exposure=JSON.parse(fs.readFileSync(exposureFile,'utf8'));
   if(exposure.api!==files.api||hash(files.api)!==exposure.apiSha256||hash(exposure.workers)!==exposure.workersSha256)throw Error('Exposed checked JS workers changed');
   const checked=JSON.parse(fs.readFileSync(exposure.buildReport,'utf8')),cBuildFile=files.binary+'.build.json',cBuild=JSON.parse(fs.readFileSync(cBuildFile,'utf8'));
-  if(hash(checked.source)!==checked.sourceSha256||hash(checked.javascript.file)!==checked.javascript.sha256||hash(checked.c.file)!==checked.c.sha256)throw Error('Checked compiler source or emitted artifact changed');
-  if(!checked.complete||!cBuild.complete||cBuild.exitCode!==0||hash(files.binary)!==cBuild.binarySha256||checked.c.sha256!==cBuild.sourceSha256||checked.sourceSha256!==exposure.sourceSha256||checked.javascript.sha256!==exposure.checkedProgramSha256)throw Error('Native/JS checked build identity mismatch');
-  const tools=[tool,...['native-graph-run.mjs','native-graph-fixtures.mjs','native-graph-api.mjs'].map(file=>fileURLToPath(new URL(file,import.meta.url))),...['typed-driver.mjs','compiler-abi.mjs','node-resource-args.mjs','assemble.mjs','native-build.mjs'].map(file=>fileURLToPath(new URL('../../'+file,import.meta.url))),exposureFile,exposure.workers,exposure.buildReport,cBuildFile,checked.source,checked.javascript.file,checked.c.file,process.execPath];
+  verifyNativeBuildEvidence({checked,cBuild,exposure,binary:files.binary});
+  const tools=[tool,...['native-graph-run.mjs','native-graph-fixtures.mjs','native-graph-api.mjs','native-build-evidence.mjs'].map(file=>fileURLToPath(new URL(file,import.meta.url))),...['typed-driver.mjs','compiler-abi.mjs','node-resource-args.mjs','assemble.mjs','native-build.mjs'].map(file=>fileURLToPath(new URL('../../'+file,import.meta.url))),exposureFile,exposure.workers,exposure.buildReport,cBuildFile,checked.source,checked.javascript.file,checked.c.file,process.execPath];
   const toolHashes=Object.fromEntries(tools.map(file=>[file,hash(file)]));
   const output=path.resolve(outputDirectory);fs.mkdirSync(output,{recursive:false});const cpu=config.cpu,timeout=config.timeoutMs??120000;
   if(!Number.isSafeInteger(cpu)||cpu<0)throw Error('Explicit CPU required');

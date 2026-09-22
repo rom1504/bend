@@ -39,7 +39,7 @@ const cpu=config.cpu;if(cpu!==undefined&&(!Number.isSafeInteger(cpu)||cpu<0))thr
 // Freeze the whole harness as well as the typed host: concurrent tool edits
 // cannot change workers already assigned to this immutable attempt.
 const harness=path.join(output,'harness'),project=path.resolve(import.meta.dirname,'../..');
-const harnessFiles=['run.mjs','worker.mjs','inventory.mjs','judge.mjs','selection.mjs','run-probe.mjs','replay.mjs','adapters/upstream.mjs'];
+const harnessFiles=['run.mjs','worker.mjs','inventory.mjs','judge.mjs','selection.mjs','run-probe.mjs','replay.mjs','persistent-probe.mjs','persistent-worker.mjs','adapters/upstream.mjs'];
 const harnessSources=[];
 for(const file of harnessFiles){
   const sourceFile=path.join(import.meta.dirname,file),destination=path.join(harness,'tools/conformance',file);
@@ -53,7 +53,7 @@ if(adapter===path.join(import.meta.dirname,'adapters/native-graph.mjs')){
   const launcher=path.join(harness,'tools/performance/rapid/native-graph-run.mjs');fs.mkdirSync(path.dirname(launcher),{recursive:true});fs.copyFileSync(path.join(project,'tools/performance/rapid/native-graph-run.mjs'),launcher);
 }
 fs.copyFileSync(import.meta.filename,path.join(output,'target.mjs.source'));
-const runner=path.join(harness,'tools/conformance/run.mjs'),common=['--upstream',upstream,'--timeout',String(config.timeoutMs??30000),'--jobs',String(config.jobs??1),'--stack-kb',String(config.stackKb??4096),'--heap-mb',String(config.heapMb??4096),'--retain',config.retain??'all','--selected-exit','1'];
+const runner=path.join(harness,'tools/conformance/run.mjs'),common=['--upstream',upstream,'--timeout',String(config.timeoutMs??30000),'--jobs',String(config.jobs??1),'--worker-mode',config.workerMode??'isolated','--recycle-after',String(config.recycleAfter??64),'--rss-limit-mb',String(config.rssLimitMb??1024),'--stack-kb',String(config.stackKb??4096),'--heap-mb',String(config.heapMb??4096),'--retain',config.retain??'all','--selected-exit','1'];
 if(entries)common.push('--selection',selectionFile);if(prior)common.push('--rerun',prior);
 const report={kind:'targeted-paired-conformance',started:new Date().toISOString(),complete:false,selectedComplete:false,config:{file:configPath,sha256:hash(configPath)},artifacts,environment,harnessSources,targetSourceSha256:hash(path.join(output,'target.mjs.source')),cpu:cpu??null,attempts:{}};
 const reportFile=path.join(output,'paired.json'),flush=()=>save(reportFile,report);flush();

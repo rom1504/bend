@@ -1,0 +1,1515 @@
+{
+  "schemaVersion": 1,
+  "complete": true,
+  "preparedCache": {
+    "command": [
+      "taskset",
+      "-c",
+      "0",
+      "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "--stack-size=4096",
+      "--max-old-space-size=4096",
+      "--input-type=module",
+      "-e",
+      "const driver=await import(\"file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/typed-driver.mjs\");await driver.prepareBase();"
+    ],
+    "wallMs": 5410.0133479999995,
+    "files": {
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/build/typed/cache/base-7740bc5a8ccf098625330e9855eb8c977aabdfc38ee26443155a10ca378a641a-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-e555760aeaedc78cc9081685f76b2684be91dab8029041012322ff3d127bbc0e.json": "52078f68552298528a87a4f198120428cb1a8edd878539be53cfa8ce3b0cb652"
+    },
+    "includedInTimedCells": false
+  },
+  "upstreamIdentity": {
+    "revision": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+    "files": {
+      "bend.ts": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168",
+      "comp.ts": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0",
+      "main.ts": "34c69df407a8abff02752f26821ee2ff7c0a303e97a32b8b5e0082b142e63f59",
+      "base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+    }
+  },
+  "fixtures": [
+    {
+      "id": "base/list_fold.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_fold.bend",
+      "sha256": "99d0d1ee86621a581040e188ad1e7d7aea37a26a546e35b1fbf3e94f73d6dfa3",
+      "negative": false
+    },
+    {
+      "id": "check/alpha_equivalence.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/alpha_equivalence.bend",
+      "sha256": "7b6c4dc0a8a03169a2bb105b59b349dc51f85cd9e13bd13621e1fb603dc23c37",
+      "negative": false
+    },
+    {
+      "id": "check/typed_let_mismatch.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/typed_let_mismatch.bend",
+      "sha256": "9e5435361334e621e3a250dfcd2674653d349f2f5bc188e4eb28e0ebe2abec9e",
+      "negative": true
+    },
+    {
+      "id": "parse/law_fill_arrow.bend",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/parse/law_fill_arrow.bend",
+      "sha256": "74f328f728ceae0d4c1f8e34ebb2d5ac5d0fa8805c33818a86580f22c18b5ce4",
+      "negative": true
+    }
+  ],
+  "purpose": "Selected isolated/persistent frontend worker comparison; not full conformance or a cross-compiler speedup claim",
+  "host": {
+    "node": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "nodeVersion": "v24.18.0",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": 0,
+    "model": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz"
+  },
+  "config": {
+    "project": "/home/ai/bend2/build/publish/bend/selfhost",
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": "/tmp/phase3-current-api.mjs",
+    "cpu": 0,
+    "rounds": 3,
+    "timeoutMs": 30000
+  },
+  "recipe": [
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase3/persistent-measure.mjs",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/config.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run"
+  ],
+  "sourceConfigSha256": "284f34d3642874e14475cbb0de4b99ed24e9d6cbc28179d997160eefb8be14e5",
+  "toolSha256": "f655ac01ea6b788368a6e5ef74a571554033af4ca95db3027633ecba222d8a9e",
+  "frozenArtifactManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/frozen-artifacts.json",
+    "sha256": "44ba80cdd9f458edf408ba20f929b2bf8e86719b41435ea10892731d5b49e46d"
+  },
+  "keyArtifacts": {
+    "dist/api.mjs": "7740bc5a8ccf098625330e9855eb8c977aabdfc38ee26443155a10ca378a641a",
+    "dist/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "src/runtime.mjs": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+    "tools/typed-driver.mjs": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+    "tools/conformance/run.mjs": "7198c672c15d6fa9b20cd4010446966713fce1ed6054ae13bff1e6500521b6a0",
+    "tools/conformance/replay.mjs": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94",
+    "tools/conformance/persistent-probe.mjs": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225",
+    "tools/conformance/persistent-worker.mjs": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+    "tools/conformance/adapters/typed.mjs": "5852edbd87d5c23698ced81614f3fb3b372799867b5f008a5c9b4d93e128dbfe",
+    "tools/conformance/adapters/upstream.mjs": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd"
+  },
+  "limitations": [
+    "Small selected workload, three sequential repetitions by default, shared host CPU and memory contention remain possible.",
+    "The validated Base disk cache is prepared once outside timed cells and its digest checked after every cell; module compile disk caches are disabled.",
+    "Process wall includes inventory, identity hashing and report IO; probe sums include worker startup, framing, source loading and checking.",
+    "Requests are all parse/check; no mutable graph is intentionally shared. Negative diagnostic mismatches against fixture oracles remain visible.",
+    "Equality is exact within each adapter across modes/order, not between the two compiler implementations."
+  ],
+  "rows": [
+    {
+      "adapter": "typed",
+      "mode": "isolated",
+      "round": 0,
+      "order": [
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/typed.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-0.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-isolated-0.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "isolated",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 12163.745103999998,
+      "probeMs": 11669,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-isolated-0.json",
+      "reportSha256": "2668fd74d8a8dc225b8a00f8013fe41232e886601467da66805cab529146ebad",
+      "exitCode": 1,
+      "selectedComplete": false,
+      "fullComplete": false,
+      "summary": {
+        "pass": 4,
+        "observed": 2,
+        "fail": 2
+      },
+      "observationSha256": "29892aae9468ca4a2fde727bbd30d3f7d3948b43edbf0300323eaaf357574b80",
+      "workers": null
+    },
+    {
+      "adapter": "typed",
+      "mode": "persistent",
+      "round": 0,
+      "order": [
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/typed.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-0.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-persistent-0.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 10643.421346,
+      "probeMs": 10119,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-persistent-0.json",
+      "reportSha256": "a7e3a92e4a711cf81b7a0e8e72b5063fc18d1592d0a6000cbc2261ee5df61392",
+      "exitCode": 1,
+      "selectedComplete": false,
+      "fullComplete": false,
+      "summary": {
+        "pass": 4,
+        "observed": 2,
+        "fail": 2
+      },
+      "observationSha256": "29892aae9468ca4a2fde727bbd30d3f7d3948b43edbf0300323eaaf357574b80",
+      "workers": [
+        {
+          "stats": {
+            "starts": 1,
+            "requests": 8,
+            "recycles": 0,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 299085824
+          },
+          "errors": []
+        }
+      ]
+    },
+    {
+      "adapter": "upstream",
+      "mode": "isolated",
+      "round": 0,
+      "order": [
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/upstream.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-0.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-isolated-0.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "isolated",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 4601.984262000002,
+      "probeMs": 4098,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-isolated-0.json",
+      "reportSha256": "d4280e2a1aa193e07ebefe9320605dd26b96117e4dd4cfeeda9a6a685dcdb2e5",
+      "exitCode": 0,
+      "selectedComplete": true,
+      "fullComplete": false,
+      "summary": {
+        "pass": 6,
+        "observed": 2
+      },
+      "observationSha256": "7a405c39ac620c4818cf30a4b1fa64fc033db1a037b7196051f1d7523d85b430",
+      "workers": null
+    },
+    {
+      "adapter": "upstream",
+      "mode": "persistent",
+      "round": 0,
+      "order": [
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/upstream.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-0.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-persistent-0.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 2212.015658999997,
+      "probeMs": 1677,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-persistent-0.json",
+      "reportSha256": "8150e26d76ed1112e68f68c8585ffc6c2ee19c7b3ec3966972b308d4217f7157",
+      "exitCode": 0,
+      "selectedComplete": true,
+      "fullComplete": false,
+      "summary": {
+        "pass": 6,
+        "observed": 2
+      },
+      "observationSha256": "7a405c39ac620c4818cf30a4b1fa64fc033db1a037b7196051f1d7523d85b430",
+      "workers": [
+        {
+          "stats": {
+            "starts": 1,
+            "requests": 8,
+            "recycles": 0,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 195534848
+          },
+          "errors": []
+        }
+      ]
+    },
+    {
+      "adapter": "upstream",
+      "mode": "persistent",
+      "round": 1,
+      "order": [
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/upstream.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-1.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-persistent-1.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 2049.052735999998,
+      "probeMs": 1519,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-persistent-1.json",
+      "reportSha256": "f5102b3f538b6337bd6becebcbe4e8ef1369094a9c85abe9428087a8c84d2bbf",
+      "exitCode": 0,
+      "selectedComplete": true,
+      "fullComplete": false,
+      "summary": {
+        "pass": 6,
+        "observed": 2
+      },
+      "observationSha256": "7a405c39ac620c4818cf30a4b1fa64fc033db1a037b7196051f1d7523d85b430",
+      "workers": [
+        {
+          "stats": {
+            "starts": 1,
+            "requests": 8,
+            "recycles": 0,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 201359360
+          },
+          "errors": []
+        }
+      ]
+    },
+    {
+      "adapter": "upstream",
+      "mode": "isolated",
+      "round": 1,
+      "order": [
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/upstream.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-1.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-isolated-1.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "isolated",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 4479.367797999999,
+      "probeMs": 3969,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-isolated-1.json",
+      "reportSha256": "aeaea9adc949957b03f6d5a8f1deb57f5e124493ea1cf7f942b15897b0da057a",
+      "exitCode": 0,
+      "selectedComplete": true,
+      "fullComplete": false,
+      "summary": {
+        "pass": 6,
+        "observed": 2
+      },
+      "observationSha256": "7a405c39ac620c4818cf30a4b1fa64fc033db1a037b7196051f1d7523d85b430",
+      "workers": null
+    },
+    {
+      "adapter": "typed",
+      "mode": "persistent",
+      "round": 1,
+      "order": [
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/typed.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-1.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-persistent-1.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 11750.801218,
+      "probeMs": 11190,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-persistent-1.json",
+      "reportSha256": "59199ade945888f3cbe0fb9d78fda3e36bcc33f677cd2d2a5e942f97a53fe376",
+      "exitCode": 1,
+      "selectedComplete": false,
+      "fullComplete": false,
+      "summary": {
+        "pass": 4,
+        "observed": 2,
+        "fail": 2
+      },
+      "observationSha256": "29892aae9468ca4a2fde727bbd30d3f7d3948b43edbf0300323eaaf357574b80",
+      "workers": [
+        {
+          "stats": {
+            "starts": 1,
+            "requests": 8,
+            "recycles": 0,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 358375424
+          },
+          "errors": []
+        }
+      ]
+    },
+    {
+      "adapter": "typed",
+      "mode": "isolated",
+      "round": 1,
+      "order": [
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/typed.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-1.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-isolated-1.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "isolated",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 13433.500091999995,
+      "probeMs": 12902,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-isolated-1.json",
+      "reportSha256": "53eab57de16da41ac65df3172950d1c7cb938bf43cf8e6f784e95f8a94767f69",
+      "exitCode": 1,
+      "selectedComplete": false,
+      "fullComplete": false,
+      "summary": {
+        "pass": 4,
+        "observed": 2,
+        "fail": 2
+      },
+      "observationSha256": "29892aae9468ca4a2fde727bbd30d3f7d3948b43edbf0300323eaaf357574b80",
+      "workers": null
+    },
+    {
+      "adapter": "typed",
+      "mode": "isolated",
+      "round": 2,
+      "order": [
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/typed.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-2.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-isolated-2.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "isolated",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 13558.677886000005,
+      "probeMs": 13010,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-isolated-2.json",
+      "reportSha256": "60efe6ee47d888b6d331debd4d3ae7d5535c1ff9dbbb945e7f81680ca76a5655",
+      "exitCode": 1,
+      "selectedComplete": false,
+      "fullComplete": false,
+      "summary": {
+        "pass": 4,
+        "observed": 2,
+        "fail": 2
+      },
+      "observationSha256": "29892aae9468ca4a2fde727bbd30d3f7d3948b43edbf0300323eaaf357574b80",
+      "workers": null
+    },
+    {
+      "adapter": "typed",
+      "mode": "persistent",
+      "round": 2,
+      "order": [
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/typed.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-2.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-persistent-2.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 11607.266669999997,
+      "probeMs": 11035,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/typed-persistent-2.json",
+      "reportSha256": "5201b5120364aee7175be904341a3d9477904c49f9cad1065dc9970b9de7d182",
+      "exitCode": 1,
+      "selectedComplete": false,
+      "fullComplete": false,
+      "summary": {
+        "pass": 4,
+        "observed": 2,
+        "fail": 2
+      },
+      "observationSha256": "29892aae9468ca4a2fde727bbd30d3f7d3948b43edbf0300323eaaf357574b80",
+      "workers": [
+        {
+          "stats": {
+            "starts": 1,
+            "requests": 8,
+            "recycles": 0,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 297463808
+          },
+          "errors": []
+        }
+      ]
+    },
+    {
+      "adapter": "upstream",
+      "mode": "isolated",
+      "round": 2,
+      "order": [
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/upstream.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-2.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-isolated-2.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "isolated",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 4369.311816999994,
+      "probeMs": 3887,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-isolated-2.json",
+      "reportSha256": "c7ef12d20ac15b3bc8186f5bcb31e0cc05aca12351b3c543f8274a5bad05fa51",
+      "exitCode": 0,
+      "selectedComplete": true,
+      "fullComplete": false,
+      "summary": {
+        "pass": 6,
+        "observed": 2
+      },
+      "observationSha256": "7a405c39ac620c4818cf30a4b1fa64fc033db1a037b7196051f1d7523d85b430",
+      "workers": null
+    },
+    {
+      "adapter": "upstream",
+      "mode": "persistent",
+      "round": 2,
+      "order": [
+        {
+          "id": "base/list_fold.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "base/list_fold.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/alpha_equivalence.bend",
+          "lane": "check"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "check/typed_let_mismatch.bend",
+          "lane": "check"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "parse"
+        },
+        {
+          "id": "parse/law_fill_arrow.bend",
+          "lane": "check"
+        }
+      ],
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/tools/conformance/adapters/upstream.mjs",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/selection-2.json",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-persistent-2.json",
+        "--jobs",
+        "1",
+        "--timeout",
+        "30000",
+        "--retain",
+        "all",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "2048",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--selected-exit",
+        "1"
+      ],
+      "wallMs": 2023.377370000002,
+      "probeMs": 1510,
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/upstream-persistent-2.json",
+      "reportSha256": "778857e4f6305d662e0ed1549e6f4ed63051132c260ea120fdeebfef73a71cea",
+      "exitCode": 0,
+      "selectedComplete": true,
+      "fullComplete": false,
+      "summary": {
+        "pass": 6,
+        "observed": 2
+      },
+      "observationSha256": "7a405c39ac620c4818cf30a4b1fa64fc033db1a037b7196051f1d7523d85b430",
+      "workers": [
+        {
+          "stats": {
+            "starts": 1,
+            "requests": 8,
+            "recycles": 0,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 203882496
+          },
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "typed": {
+      "isolated": {
+        "wallMedianMs": 13433.500091999995,
+        "probeMedianMs": 12902
+      },
+      "persistent": {
+        "wallMedianMs": 11607.266669999997,
+        "probeMedianMs": 11035
+      },
+      "wallRatio": 1.1573353549910297,
+      "probeRatio": 1.1691889442682375,
+      "exactModeAndOrderEquality": true,
+      "observations": {
+        "hash": "29892aae9468ca4a2fde727bbd30d3f7d3948b43edbf0300323eaaf357574b80",
+        "rows": [
+          {
+            "id": "base/list_fold.bend",
+            "lane": "parse",
+            "result": {
+              "status": "ok",
+              "phase": "parse",
+              "exitCode": 0,
+              "checked": false,
+              "files": [
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_fold.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/dist/base.bend"
+              ],
+              "hostProvenance": {
+                "driverSha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+                "adapterSha256": "5852edbd87d5c23698ced81614f3fb3b372799867b5f008a5c9b4d93e128dbfe"
+              }
+            },
+            "status": "pass"
+          },
+          {
+            "id": "base/list_fold.bend",
+            "lane": "check",
+            "result": {
+              "status": "ok",
+              "phase": "check",
+              "stdout": "All terms check.\n",
+              "exitCode": 0,
+              "checked": true,
+              "files": [
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_fold.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/dist/base.bend"
+              ],
+              "hostProvenance": {
+                "driverSha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+                "adapterSha256": "5852edbd87d5c23698ced81614f3fb3b372799867b5f008a5c9b4d93e128dbfe"
+              }
+            },
+            "status": "pass",
+            "evidence": "checker-acceptance"
+          },
+          {
+            "id": "check/alpha_equivalence.bend",
+            "lane": "parse",
+            "result": {
+              "status": "ok",
+              "phase": "parse",
+              "exitCode": 0,
+              "checked": false,
+              "files": [
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/alpha_equivalence.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/dist/base.bend"
+              ],
+              "hostProvenance": {
+                "driverSha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+                "adapterSha256": "5852edbd87d5c23698ced81614f3fb3b372799867b5f008a5c9b4d93e128dbfe"
+              }
+            },
+            "status": "pass"
+          },
+          {
+            "id": "check/alpha_equivalence.bend",
+            "lane": "check",
+            "result": {
+              "status": "ok",
+              "phase": "check",
+              "stdout": "All terms check.\n",
+              "exitCode": 0,
+              "checked": true,
+              "files": [
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/alpha_equivalence.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/dist/base.bend"
+              ],
+              "hostProvenance": {
+                "driverSha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+                "adapterSha256": "5852edbd87d5c23698ced81614f3fb3b372799867b5f008a5c9b4d93e128dbfe"
+              }
+            },
+            "status": "pass",
+            "evidence": "checker-acceptance"
+          },
+          {
+            "id": "check/typed_let_mismatch.bend",
+            "lane": "parse",
+            "result": {
+              "status": "ok",
+              "phase": "parse",
+              "exitCode": 0,
+              "checked": false,
+              "files": [
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/typed_let_mismatch.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/snapshot/dist/base.bend"
+              ],
+              "hostProvenance": {
+                "driverSha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+                "adapterSha256": "5852edbd87d5c23698ced81614f3fb3b372799867b5f008a5c9b4d93e128dbfe"
+              }
+            },
+            "status": "observed",
+            "reason": "Negative parse observations do not establish checker conformance."
+          },
+          {
+            "id": "check/typed_let_mismatch.bend",
+            "lane": "check",
+            "result": {
+              "status": "error",
+              "phase": "check",
+              "diagnostic": "Error:\n- expected : Nat\n- observed : U32\nLocation: main",
+              "exitCode": 1,
+              "checked": true,
+              "hostProvenance": {
+                "driverSha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+                "adapterSha256": "5852edbd87d5c23698ced81614f3fb3b372799867b5f008a5c9b4d93e128dbfe"
+              }
+            },
+            "status": "fail",
+            "reason": "Diagnostic/exit mismatch (unrelated rejection is not a pass)."
+          },
+          {
+            "id": "parse/law_fill_arrow.bend",
+            "lane": "parse",
+            "result": {
+              "status": "error",
+              "phase": "parse",
+              "diagnostic": "Error: line 8:13: expected : (a definition filling a law has no return annotation); got ->",
+              "exitCode": 1,
+              "checked": false,
+              "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/parse/law_fill_arrow.bend",
+              "hostProvenance": {
+                "driverSha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+                "adapterSha256": "5852edbd87d5c23698ced81614f3fb3b372799867b5f008a5c9b4d93e128dbfe"
+              }
+            },
+            "status": "observed",
+            "reason": "Negative parse observations do not establish checker conformance."
+          },
+          {
+            "id": "parse/law_fill_arrow.bend",
+            "lane": "check",
+            "result": {
+              "status": "error",
+              "phase": "parse",
+              "diagnostic": "Error: line 8:13: expected : (a definition filling a law has no return annotation); got ->",
+              "exitCode": 1,
+              "checked": false,
+              "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/parse/law_fill_arrow.bend",
+              "hostProvenance": {
+                "driverSha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+                "adapterSha256": "5852edbd87d5c23698ced81614f3fb3b372799867b5f008a5c9b4d93e128dbfe"
+              }
+            },
+            "status": "fail",
+            "reason": "Diagnostic/exit mismatch (unrelated rejection is not a pass)."
+          }
+        ]
+      }
+    },
+    "upstream": {
+      "isolated": {
+        "wallMedianMs": 4479.367797999999,
+        "probeMedianMs": 3969
+      },
+      "persistent": {
+        "wallMedianMs": 2049.052735999998,
+        "probeMedianMs": 1519
+      },
+      "wallRatio": 2.186067600555891,
+      "probeRatio": 2.6129032258064515,
+      "exactModeAndOrderEquality": true,
+      "observations": {
+        "hash": "7a405c39ac620c4818cf30a4b1fa64fc033db1a037b7196051f1d7523d85b430",
+        "rows": [
+          {
+            "id": "base/list_fold.bend",
+            "lane": "parse",
+            "result": {
+              "status": "ok",
+              "phase": "parse",
+              "checked": false,
+              "exitCode": 0
+            },
+            "status": "pass"
+          },
+          {
+            "id": "base/list_fold.bend",
+            "lane": "check",
+            "result": {
+              "status": "ok",
+              "phase": "check",
+              "checked": true,
+              "stdout": "All terms check.\n",
+              "exitCode": 0
+            },
+            "status": "pass",
+            "evidence": "checker-acceptance"
+          },
+          {
+            "id": "check/alpha_equivalence.bend",
+            "lane": "parse",
+            "result": {
+              "status": "ok",
+              "phase": "parse",
+              "checked": false,
+              "exitCode": 0
+            },
+            "status": "pass"
+          },
+          {
+            "id": "check/alpha_equivalence.bend",
+            "lane": "check",
+            "result": {
+              "status": "ok",
+              "phase": "check",
+              "checked": true,
+              "stdout": "All terms check.\n",
+              "exitCode": 0
+            },
+            "status": "pass",
+            "evidence": "checker-acceptance"
+          },
+          {
+            "id": "check/typed_let_mismatch.bend",
+            "lane": "parse",
+            "result": {
+              "status": "ok",
+              "phase": "parse",
+              "checked": false,
+              "exitCode": 0
+            },
+            "status": "observed",
+            "reason": "Negative parse observations do not establish checker conformance."
+          },
+          {
+            "id": "check/typed_let_mismatch.bend",
+            "lane": "check",
+            "result": {
+              "status": "error",
+              "phase": "check",
+              "checked": true,
+              "diagnostic": "Error:\n- expected : Nat\n- observed : U32\nLocation: main\n4 | def main() -> U32:\n5>|   z : Nat = 30\n6 |   0",
+              "exitCode": 1
+            },
+            "status": "pass",
+            "evidence": "checker-rejection"
+          },
+          {
+            "id": "parse/law_fill_arrow.bend",
+            "lane": "parse",
+            "result": {
+              "status": "error",
+              "phase": "parse",
+              "checked": false,
+              "diagnostic": "Error:\n- expected : ':'\n- observed : '-'\nLocation:\n7 | \n8>| def claim(n) -> {0n == 1n : Nat}:\n9 |   {==}",
+              "exitCode": 1
+            },
+            "status": "observed",
+            "reason": "Negative parse observations do not establish checker conformance."
+          },
+          {
+            "id": "parse/law_fill_arrow.bend",
+            "lane": "check",
+            "result": {
+              "status": "error",
+              "phase": "parse",
+              "checked": false,
+              "diagnostic": "Error:\n- expected : ':'\n- observed : '-'\nLocation:\n7 | \n8>| def claim(n) -> {0n == 1n : Nat}:\n9 |   {==}",
+              "exitCode": 1
+            },
+            "status": "pass",
+            "evidence": "frontend-rejection"
+          }
+        ]
+      }
+    }
+  },
+  "rawReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/prepared-run/report.json",
+    "sha256": "158e4cac52100d4044a31e306d885a589370943732abe85e66ff517cfcad7129"
+  },
+  "artifactScope": "Experimental named-ABI B1 API 7740bc5a, before the FLoadTrace type-only relocation; not the pending native overlay or an integrated H fixed point.",
+  "excludedExploratoryRun": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/persistent-final/run/report.json",
+    "sha256": "623ec32cd9e85426895384c95d6cc93eb9e000fb97693e13f49e55f44ca28cde",
+    "reason": "The first isolated typed check built the Base disk cache. Excluded from the corrected timing comparison."
+  },
+  "validation": {
+    "command": "/home/ai/.nvm/versions/node/v24.18.0/bin/node --test selfhost/tests/conformance/persistent-worker.test.mjs selfhost/tests/conformance/targeted.test.mjs",
+    "tests": 19,
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 6588.659744,
+    "persistentTests": 13,
+    "existingIsolatedTests": 6
+  }
+}

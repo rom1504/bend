@@ -5,6 +5,9 @@ Phase 1 changes have separate artifact-specific evidence in the
 [implementation report](../implementation/phase1/report.md).
 Phase 2 adds [exact paired checks and retained replay](../docs/PHASE2_DEVELOPMENT.md),
 with revision-specific results in its [implementation report](../implementation/phase2/report.md).
+Phase 3 adds [persistent frontend workers](../docs/PHASE3_DEVELOPMENT.md),
+with artifact-specific validation and remaining gates in its
+[implementation report](../implementation/phase3/report.md).
 Selected acceptance/phase checks, exact diagnostics, full-corpus coverage and
 self-emission are distinct verdicts; none substitutes for the others.
 The complete pinned corpus contains 1,378 fixtures across 24 namespaces; all 919

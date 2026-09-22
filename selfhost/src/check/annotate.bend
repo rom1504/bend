@@ -185,7 +185,7 @@ def annotate(e, ctx, t, ty):
 def ka_node(e, ctx, t, ty):
   kc(KTerm, String.eq(tg(t), "Ann"), u => ka_node(e, ctx, kid(t, 0), wnf(cb(e), kid(t, 1))),
    u => kc(KTerm, String.eq(tg(t), "Lam"), u => ka_lam(e, ctx, t, ty),
-   u => kc(KTerm, String.eq(tg(t), "App"), u => ka_app(e, ctx, t, wnf(cb(e), ka_type(e, ctx, kid(t, 0)))),
+   u => kc(KTerm, String.eq(tg(t), "App"), u => kc(KTerm, ka_spine_eligible(t), u => ka_app_spine(e, ctx, t), u => ka_app(e, ctx, t, wnf(cb(e), ka_type(e, ctx, kid(t, 0))))),
    u => kc(KTerm, String.eq(tg(t), "Ctr"), u => kt("Ctr", nm(t), ix(t), qt(t), ka_args(e, ctx, tele_fill(cb(e), dt(lookup(dc(lookup(cb(e), nm(ty))), nm(t))), ks(ty)), ks(t))),
    u => kc(KTerm, String.eq(tg(t), "Mat"), u => ka_mat(e, ctx, t, ty, wnf(cb(e), kid(ty, 0))),
    u => kc(KTerm, String.eq(tg(t), "Let"), u => kt("Let", nm(t), ix(t), qt(t), ka_let(e, ctx, ctx, ks(t), ty)),
@@ -256,3 +256,84 @@ def ka_let_head(e, outer, ctx, h, rest, ty, vty):
 def ka_rwt(e, ctx, t, eq):
   kt("Rwt", nm(t), ix(t), qt(t), Con{annotate(e, ctx, kid(t, 0), eq), Con{kid(t, 1), Con{annotate(e, ctx, kid(t, 2), kapply(kapply(kid(t, 1), kid(eq, 0)), atom("Rfl"))), Nil{}}}})
 
+
+# A Ref/Var-headed application spine has no beta-redex in its function prefix.
+# Infer each intermediate function type once, preserving the old Ann structure.
+type KAnnotatedSpine is Data:
+  KAnnotatedSpine{+node: KTerm, +typ: KTerm}
+
+law ka_spine_eligible:
+  for +t: KTerm
+  Bool
+
+law ka_spine:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +t: KTerm
+  KAnnotatedSpine
+
+law ka_spine_finish:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +arg: KTerm
+  for +r: KAnnotatedSpine
+  KAnnotatedSpine
+
+law ka_spine_step:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +arg: KTerm
+  for +node: KTerm
+  for +fty: KTerm
+  KAnnotatedSpine
+
+law ka_app_spine:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +t: KTerm
+  KTerm
+
+law ka_app_spine_root:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +arg: KTerm
+  for +node: KTerm
+  for +fty: KTerm
+  KTerm
+
+@unsafe
+def ka_spine_eligible(t):
+  kc(Bool, String.eq(tg(t), "App"), u => ka_spine_eligible(kid(t, 0)), u => String.eq(tg(t), "Ref") || String.eq(tg(t), "Var"))
+
+@unsafe
+def ka_spine(e, ctx, t):
+  kc(KAnnotatedSpine, String.eq(tg(t), "App"), u => ka_spine_finish(e, ctx, kid(t, 1), ka_spine(e, ctx, kid(t, 0))), u => KAnnotatedSpine{t, ka_type(e, ctx, t)})
+
+@unsafe
+def ka_spine_finish(e, ctx, arg, r):
+  match r:
+    case KAnnotatedSpine{node, ty}: ka_spine_step(e, ctx, arg, node, wnf(cb(e), ty))
+
+@unsafe
+def ka_spine_step(e, ctx, arg, node, fty):
+  KAnnotatedSpine{ka_app_spine_root(e, ctx, arg, node, fty), subst(kid(fty, 1), ix(fty), arg)}
+
+@unsafe
+def ka_app_spine(e, ctx, t):
+  ka_app_spine_finish(e, ctx, kid(t, 1), ka_spine(e, ctx, kid(t, 0)))
+
+law ka_app_spine_finish:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +arg: KTerm
+  for +r: KAnnotatedSpine
+  KTerm
+
+@unsafe
+def ka_app_spine_finish(e, ctx, arg, r):
+  match r:
+    case KAnnotatedSpine{node, ty}: ka_app_spine_root(e, ctx, arg, node, wnf(cb(e), ty))
+
+@unsafe
+def ka_app_spine_root(e, ctx, arg, node, fty):
+  app(ka_wrap(node, fty), annotate(e, ctx, arg, kid(fty, 0)))

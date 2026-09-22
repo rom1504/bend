@@ -121,7 +121,7 @@ def fs_cached(s, ns, sources, g, stack, entry, seed):
 def fs_inject(g, seed):
   match g:
     case FGraph{book, err, done}:
-      FGraph{f_defs_append(book, fs_book(seed)), err, Con{kt("Loaded", fs_path(seed), 0, 0, [ref("")]), done}}
+      FGraph{f_defs_append(book, fs_book(seed)), err, Con{kt("Loaded", fs_path(seed), f_graph_count_defs(fs_book(seed), 0), 0, [ref("")]), done}}
 
 @unsafe
 def fs_parsed(s, ns, sources, g, stack, r, seed):
@@ -154,3 +154,15 @@ def f_seed_text_equal(a, b):
       f_choose(Bool, Char.is_eq(x, y), u => f_seed_text_equal(xs, ys), u => False{})
     case _ _:
       False{}
+
+law f_load_graph_seed_trace:
+  for +main: String
+  for +sources: List<&2,FSource>
+  for +seedPath: String
+  for +seedText: String
+  for +seedBook: List<&2,KDef>
+  FLoadTrace
+
+@unsafe
+def f_load_graph_seed_trace(main, sources, seedPath, seedText, seedBook):
+  f_choose(FLoadTrace, f_seed_matches(f_source("Base", sources), seedPath, seedText), u => f_graph_trace(fs_load(main, "", sources, FGraph{Nil{}, "", Nil{}}, Nil{}, FSeed{seedPath, seedBook}), sources), u => f_load_graph_trace(main, sources))

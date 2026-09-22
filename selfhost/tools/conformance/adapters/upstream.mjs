@@ -19,10 +19,9 @@ function declarationReport(B,book,n0){
   return list.length?`All terms check, but ${list.length} def${list.length===1?' relies':'s rely'} on unsafe or foreign code:\n`+list.map(key=>'- '+key+'\n').join(''):'All terms check.\n';
 }
 const format=(B,error)=>error instanceof RangeError?'Error: the machine stack overflowed (a deep recursion, or a literal too large to expand)':error?.$==='Err'?B.err_show(error):String(error);
-export async function probe({test,lane,workdir,timeoutMs,upstream}){
+async function probeWithModules({test,lane,workdir,timeoutMs,upstream},B,C){
   if(path.resolve(upstream)!==root)throw Error('Reference adapter and request upstream differ');
   if(!capabilities[lane])return {status:'unsupported',reason:'Reference adapter does not execute '+lane};
-  const B=await import(pathToFileURL(path.join(root,'bend2/bend.ts'))),C=await import(pathToFileURL(path.join(root,'bend2/comp.ts')));
   let phase='parse',checked=false;
   try{
     const book=B.book_nil(),seen=new Map(),n0=await B.book_load(book,test.file,'',seen);
@@ -56,4 +55,16 @@ export async function probe({test,lane,workdir,timeoutMs,upstream}){
     if(child.signal)return {status:'crash',phase,checked,reason:'Program terminated by '+child.signal,output,signal:child.signal,executionArgs};
     return {status:child.status===0?'ok':'error',phase,checked,output,stdout:output,stderr:'',exitCode:child.status,executionArgs,executionMode:lane==='interpreter'?'upstream-js-io':lane};
   }catch(error){return {status:'error',phase,checked,diagnostic:format(B,error),exitCode:1};}
+}
+export async function probe(request){
+  const B=await import(pathToFileURL(path.join(root,'bend2/bend.ts'))),C=await import(pathToFileURL(path.join(root,'bend2/comp.ts')));
+  return probeWithModules(request,B,C);
+}
+// Parse/check requests are safe to reuse with one immutable module pair. The
+// probe still allocates a new upstream book and `seen` map for every request;
+// no checker graph or mutable compiler result crosses the request boundary.
+export const persistentLanes=['parse','check'];
+export async function createPersistentSession(){
+  const B=await import(pathToFileURL(path.join(root,'bend2/bend.ts'))),C=await import(pathToFileURL(path.join(root,'bend2/comp.ts')));
+  return {probe:request=>probeWithModules(request,B,C)};
 }

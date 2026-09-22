@@ -1,0 +1,78 @@
+{
+  "phase": 3,
+  "design": "design/phase3/compiler_efficiency.md",
+  "baselineRevision": "f92d922",
+  "upstreamRevision": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+  "baseline": {
+    "b1ApiSha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+    "hApiSha256": "0b2b86aba15cda5ff7536b870f5ad3f372c7b159b8c77225e03715e5a969b7c3",
+    "runtimeSha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+    "manifestSha256": "f71443cd0d0615966eeb8f9acd5de5af799a80ed32970258eefb8182a515f46b"
+  },
+  "sourceSha256": {
+    "src/check/annotate.bend": "fcceac315efee3fff393b9c5f4fcf80f5a650347f74574da38f6ca9ed1bd23d1",
+    "src/diagnostic/frontend.bend": "b649b191ad232e2329dc26ca8f562ec81cbbff8551fe4cd0dd0ffdd4db9917fa",
+    "src/diagnostic/produce.bend": "912677325f76b8a5649af7761c194d15a6f671a4233975d8d29cf6a6ee95001f",
+    "src/load/graph.bend": "0649ab4f02d6306a205439a8949eadae5f8b15b6d4d59167073c49070c77fe16",
+    "src/load/seed.bend": "1c8032f719ed75d3dd8997835ee6beb778457238b859ae74dd19166239abac61",
+    "src/runtime/js/core.mjs": "cd9641ecd4a54d4b0c0c4a9bbbaec4208ff053f5d1226868aca58995cdcefc21",
+    "src/runtime/js/base.mjs": "9ccfa9c8db7abd1a08520f0df27feb2b3163fd9d2929bf4db8dcbe5de9015eb3",
+    "src/runtime.mjs": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+    "src/load/modules.bend": "5c7c19a5d75779ae3e81a44b4ab387c782cd32cf9eb5b20c02e5bede153f85c0"
+  },
+  "measurements": {
+    "b1SourceCheck": {
+      "loadMs": 34308,
+      "checkMs": 178463,
+      "error": ""
+    },
+    "b1SourceCheckWithSpine": {
+      "loadMs": 34611,
+      "checkMs": 178338,
+      "error": ""
+    },
+    "runtimeStringCmp": {
+      "report": "implementation/phase3/runtime-string-order.json",
+      "scope": "Same-process microbenchmark of the public String.cmp ABI, exact runtime bytes; no compiler or end-to-end speed claim.",
+      "iterationsPerSample": 1000,
+      "checks": 63668
+    },
+    "persistentFrontend": {
+      "report": "implementation/phase3/evidence/persistent-workers-final.json",
+      "rounds": 3,
+      "probesPerBatch": 8,
+      "typedIsolatedMs": 13433.5,
+      "typedPersistentMs": 11607.267,
+      "upstreamIsolatedMs": 4479.368,
+      "upstreamPersistentMs": 2049.053,
+      "scope": "Prepared Base cache; alternating fresh processes; exact within-adapter output equality; B1 still has two existing diagnostic-oracle failures."
+    },
+    "diagnosticReuse": {
+      "report": "implementation/phase3/diagnostic-benchmark.json",
+      "samplesPerVariantWorkload": 3,
+      "baselineCheckMs": 9286.413,
+      "candidateCheckMs": 728.3,
+      "positiveBaselineMs": 2110.878,
+      "positiveCandidateMs": 2112.493,
+      "exactResults": true
+    },
+    "annotationSpine": {
+      "report": "implementation/phase3/evidence/annotation-spine.json",
+      "arity128BaselineMs": 2256.099,
+      "arity128CandidateMs": 24.421,
+      "scope": "Synthetic annotation component; not complete compilation."
+    }
+  },
+  "validation": {
+    "persistentExactObservationRequests": 6,
+    "persistentExactObservation": true,
+    "runtimeDemandOrder": true,
+    "componentHarnessSubset": "passed",
+    "fullHFixedPoint": "pending after integrated Phase 3 source changes",
+    "fullConformance": "pending",
+    "nativeCacheFixture": "passed: miss/hit, included header, optimization, compiler executable, lock, corrupted binary",
+    "actualClangCache": "pending: Clang unavailable",
+    "diagnosticExactAssertions": 204,
+    "persistentAndTargetedTests": 19
+  }
+}

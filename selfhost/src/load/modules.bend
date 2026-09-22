@@ -4,6 +4,10 @@ type FSource is Data:
   FSource{+name: String, +path: String, +text: String}
   FParsedSource{+name: String, +path: String, +text: String, +parsed: FResult}
 
+# The load trace is part of the loader API, also usable without diagnostics.
+type FLoadTrace is Data:
+  FLoadTrace{+result: FResult, +done: List<&2,KTerm>, +sources: List<&2,FSource>}
+
 type FLoaded is Data:
   FLoaded{+book: List<&2, KDef>, +error: String, +seen: List<&2, String>}
 

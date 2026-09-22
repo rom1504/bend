@@ -7,6 +7,10 @@ the current development workflow, measured performance and validation. Historica
 results below apply to their recorded artifacts; phase 2 does not replace the
 default distributed compiler.
 
+The [phase 3 efficiency guide](../docs/PHASE3_DEVELOPMENT.md) covers persistent
+parse/check workers, reusable native builds and generated-program runtime probes;
+the [phase 3 report](../implementation/phase3/report.md) records their evidence.
+
 This project targets Bend2 2.0.21 at upstream revision
 [`6018e28ecc67cf1fffc0c20c64b11023474c2df8`](https://github.com/bendlang/bend/tree/6018e28ecc67cf1fffc0c20c64b11023474c2df8).
 It contains a modular typed compiler written in Bend2, plus the earlier

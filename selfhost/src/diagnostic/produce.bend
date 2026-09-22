@@ -253,3 +253,84 @@ def dg_constructor_names(ds):
 def dg_ctor_error(e, t, ty, ctr):
   kc(KChecked, Bool.not(String.eq(dk(ctr), "Absent")) && Bool.not(has_name(rm(ty), nm(t))), u => dg_bad_detail("constructor does not belong to goal or field count differs", dg_text(nm(t) ++ " with " ++ U32.show(da(ctr)) ++ kc(String, U32.is_eq(da(ctr), 1), u => " field", u => " fields")), t), u => kc(KChecked, String.eq(dg_family(cb(e), nm(t)), ""), u => dg_bad_detail("constructor does not belong to goal or field count differs", dg_text("a declared constructor (" ++ nm(ty) ++ " declares " ++ dg_constructor_names(dc(lookup(cb(e), nm(ty)))) ++ ")"), t), u => dg_bad_detail("constructor does not belong to goal or field count differs", ty, ref(dg_family(cb(e), nm(t))))))
 
+
+# The cached prefix must have passed check_book for this exact compiler and
+# source. Independently reproduce the suffix verdict; never echo a host error.
+law check_book_diagnostic_from_exact_prefix:
+  for +book: List<&2,KDef>
+  for +validated: List<&2,KDef>
+  for +origins: List<&2,DOrigin>
+  DResult
+law dg_prefix_seed:
+  for +todo: List<&2,KDef>
+  for +validated: List<&2,KDef>
+  for +done: List<&2,KDef>
+  for +original: List<&2,KDef>
+  for +origins: List<&2,DOrigin>
+  DResult
+law dg_suffix_events:
+  for +todo: List<&2,KDef>
+  for +done: List<&2,KDef>
+  for +original: List<&2,KDef>
+  for +origins: List<&2,DOrigin>
+  DResult
+law dg_suffix_guard:
+  for +rest: List<&2,KDef>
+  for +done: List<&2,KDef>
+  for +d: KDef
+  for +original: List<&2,KDef>
+  for +origins: List<&2,DOrigin>
+  for +guard: String
+  DResult
+law dg_suffix_check:
+  for +rest: List<&2,KDef>
+  for +done: List<&2,KDef>
+  for +d: KDef
+  for +original: List<&2,KDef>
+  for +origins: List<&2,DOrigin>
+  for +checked: String
+  DResult
+law dg_suffix_finish:
+  for +done: List<&2,KDef>
+  for +original: List<&2,KDef>
+  for +origins: List<&2,DOrigin>
+  for +error: String
+  DResult
+
+@unsafe
+def check_book_diagnostic_from_exact_prefix(book, validated, origins):
+  kc(DResult, exact_prefix(book, validated), u => dg_prefix_seed(book, validated, book_cached(Nil{}, norm_max_book(book)), book, origins), u => check_book_diagnostic(book, origins))
+@unsafe
+def dg_prefix_seed(todo, validated, done, original, origins):
+  match validated:
+    case Nil{}: dg_suffix_events(todo, done, original, origins)
+    case Con{head, tail}:
+      dg_prefix_step(todo, head, tail, done, original, origins)
+@unsafe
+def dg_suffix_events(todo, done, original, origins):
+  match todo:
+    case Nil{}: dg_suffix_finish(done, original, origins, check_open(done))
+    case Con{d, rest}: dg_suffix_guard(rest, done, d, original, origins, event_error(done, d, lookup(done, dn(d))))
+@unsafe
+def dg_suffix_guard(rest, done, d, original, origins, guard):
+  kc(DResult, String.eq(guard, ""), u => dg_suffix_check(rest, done, d, original, origins, check_definition(book_put(done, declared(d)), signature_mode(d, rest))), u => dg_finish(dn(d) ++ ": " ++ guard, done, dg_no_report(dn(d), guard), origins))
+@unsafe
+def dg_suffix_check(rest, done, d, original, origins, checked):
+  kc(DResult, String.eq(checked, ""), u => dg_suffix_events(rest, book_put(done, d), original, origins), u => dg_finish(dn(d) ++ ": " ++ checked, book_put(done, declared(d)), dg_report(dg_definition(book_put(done, declared(d)), signature_mode(d, rest)), dn(d)), origins))
+@unsafe
+def dg_suffix_finish(done, original, origins, error):
+  kc(DResult, String.eq(error, ""), u => DResult{"", original, dg_no_report("", "")}, u => dg_finish(error, done, dg_no_report("", error), origins))
+
+law dg_prefix_step:
+  for +todo: List<&2,KDef>
+  for +head: KDef
+  for +tail: List<&2,KDef>
+  for +done: List<&2,KDef>
+  for +original: List<&2,KDef>
+  for +origins: List<&2,DOrigin>
+  DResult
+@unsafe
+def dg_prefix_step(todo, head, tail, done, original, origins):
+  match todo:
+    case Nil{}: check_book_diagnostic(original, origins)
+    case Con{event, rest}: dg_prefix_seed(rest, tail, book_put(done, head), original, origins)

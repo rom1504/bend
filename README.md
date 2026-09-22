@@ -20,6 +20,10 @@ and the [rapid performance experiments](implementation/phase1/rapid_performance_
 For exact differential checks against pinned upstream, see the
 [phase 2 development guide](docs/PHASE2_DEVELOPMENT.md) and
 [phase 2 implementation report](implementation/phase2/report.md).
+The [phase 3 efficiency guide](docs/PHASE3_DEVELOPMENT.md) documents persistent
+validation workers, native build reuse and generated-runtime measurements; its
+[implementation report](implementation/phase3/report.md) records the checked
+results and remaining limits.
 The [experimental native graph host](selfhost/tools/performance/rapid/native-graph.md)
 executes the Bend compiler natively with an explicit module and foreign-asset manifest.
 

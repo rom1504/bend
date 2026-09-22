@@ -283,7 +283,7 @@ def f_graph_finish(s, ns, book, imports, g):
 
 @unsafe
 def f_graph_finish_alias(s, ns, book, imports, prior, err, done):
-  FGraph{f_defs_append(prior, f_path_defs(f_module_defs(book, Nil{}, f_family_book(prior), ns, imports), f_path_dir(f_source_path(s)), f_eq(f_source_name(s), "Base"))), err, Con{kt("Loaded", f_source_path(s), 0, 0, [ref(ns)]), done}}
+  FGraph{f_defs_append(prior, f_path_defs(f_module_defs(book, Nil{}, f_family_book(prior), ns, imports), f_path_dir(f_source_path(s)), f_eq(f_source_name(s), "Base"))), err, Con{kt("Loaded", f_source_path(s), f_graph_count_defs(book, 0), 0, [ref(ns)]), done}}
 
 
 law f_module_defs:
@@ -364,3 +364,33 @@ def f_main_seen(name, seen):
       False{}
     case Con{head, rest}:
       String.eq(name, head) || f_main_seen(name, rest)
+
+# Request-local trace of the exact graph that produced the freshened core.
+# Loaded.id records declaration-event count, including separate law/fill events.
+
+law f_load_graph_trace:
+  for +main: String
+  for +sources: List<&2,FSource>
+  FLoadTrace
+law f_graph_trace:
+  for +graph: FGraph
+  for +sources: List<&2,FSource>
+  FLoadTrace
+law f_graph_count_defs:
+  for +book: List<&2,KDef>
+  for +count: U32
+  U32
+
+@unsafe
+def f_load_graph_trace(main, sources):
+  f_graph_trace(f_graph_load(main, "", sources, FGraph{Nil{}, "", Nil{}}, Nil{}), sources)
+@unsafe
+def f_graph_trace(graph, sources):
+  match graph:
+    case FGraph{book, error, done}:
+      FLoadTrace{f_graph_result(graph), done, sources}
+@unsafe
+def f_graph_count_defs(book, count):
+  match book:
+    case Nil{}: count
+    case Con{head, tail}: f_graph_count_defs(tail, U32.add(count, 1))

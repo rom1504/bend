@@ -1,0 +1,959 @@
+{
+  "kind": "diagnostic-and-loader-trace-equivalence",
+  "started": "2026-09-22T05:54:59.071Z",
+  "complete": true,
+  "node": {
+    "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "version": "v24.18.0",
+    "args": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ]
+  },
+  "identity": {
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuild/api.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuild/api.mjs",
+      "sha256": "7740bc5a8ccf098625330e9855eb8c977aabdfc38ee26443155a10ca378a641a"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/api/b1.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/api/b1.mjs",
+      "sha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+      "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/typed-driver.mjs",
+      "sha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/diagnostic-reuse.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tests/diagnostic-reuse.mjs",
+      "sha256": "ee604eee109486f79447c2cd1dac3ef68082bf9abaf58ddd780eac12b449aabd"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/assemble.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/compiler-abi.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/node-resource-args.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/native-build.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/native-build.mjs",
+      "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/undefined.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/undefined.bend",
+      "sha256": "0e663bdb00196c4f94d364532c2a578d2ca2170553643be6a3b90969c6354c52"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/context.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/context.bend",
+      "sha256": "f9803218280f5d0fd7703981d90bf5da92fdb71fa2f7274df84b12945c41dd58"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/wrong-family.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/wrong-family.bend",
+      "sha256": "e96adaace3154546d1fdd7025a33dcfe1f0f9173718e85134d1dde0d7baadf0e"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/unknown-constructor.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/unknown-constructor.bend",
+      "sha256": "6398bc5877a4841562580859a6b72018d4c2b50be7b9895a14e4f3cf7ec718d2"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/field-arity.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/field-arity.bend",
+      "sha256": "ae2a9a7679b3378ea72f0091ed744f2f4f1f66b46f55256691bc4f76342a21d2"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/termination.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/termination.bend",
+      "sha256": "ba04967e85e03a25bdee1ffe069a6aa522b362a7dec14583be1b0a11eec2f1cb"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/dependent.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/dependent.bend",
+      "sha256": "2f666031af894d1ff9ca67f5fb25d69f8e14f35174ebed0a5bb043e09c77d3c8"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/affine.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/affine.bend",
+      "sha256": "15b588b4ba39077a0b6e82858bab230f7ab3a6d73704d46332856aeaf0e86bcd"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/law-fill.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/law-fill.bend",
+      "sha256": "c8df4c7abb27be76a24a0a5d265712aa219ea8d74b067ca528aaa5126a10a03e"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/open-law.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/open-law.bend",
+      "sha256": "5683387975d90c04c49a6465a43f82dce4503a1f99e5661de3861dc5b4ee9a71"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/positive.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/positive.bend",
+      "sha256": "b58493779307369733c61081a5e540489cb65fad54dc219c2593258a0729df44"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/unicode.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/unicode.bend",
+      "sha256": "a3899fea83a723d37bd4f86e9ddfee56dc3b044b018b405364a5e279b0f82c2d"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/first-error-order.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/first-error-order.bend",
+      "sha256": "f5c3632403490f91bee655d56efccd12537d9c7917cb83f792f4ec06099281e1"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/prefix-guards.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/prefix-guards.bend",
+      "sha256": "7a7b87de1dadc482f4a7b6cef4fb6c8102c04565633fa1d8f5561d1d0c2e91d6"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/duplicate-core.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/duplicate-core.bend",
+      "sha256": "8ae60b8b715a106aa1ceb2a1c7b0f74ec3a65fb7632d8a5758e5121eae27417a"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/graph/shared.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/graph/shared.bend",
+      "sha256": "02a6a216843387b7ddb38b1a98ebd2e885259dff6f604dde79645c9e53be7b8b"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/graph/left.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/graph/left.bend",
+      "sha256": "b4fefcfe67fa3c70f457e712044acf1fa87d03ddea28b283e48d11ee2d3022a4"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/graph/right.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/graph/right.bend",
+      "sha256": "ba2e45b38860371175a24ae88ad421a6f6e60e290980b94daad9d5d7b2e1014a"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/graph/main.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/graph/main.bend",
+      "sha256": "bf591bf1abf452a43b45a2e9d0d383e41890060e8be8886babf5cac815c0478e"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/parse-error.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/parse-error.bend",
+      "sha256": "463514cf765bde2e976df1e313b03040c871a2a0a5f96c07656283fd5e9a84d5"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/missing-import.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/missing-import.bend",
+      "sha256": "186c1eb62b43741587b3a7c3cb8b49d21a827045bd8740bf7d2794985e2d71eb"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/cycle.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/cycle.bend",
+      "sha256": "5e6f4e46a179d6c8f37cd8a8fb8811560f3cb97cb30ae8e140535c793fd32dd7"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/duplicate-source.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/duplicate-source.bend",
+      "sha256": "99302d5db698be8a51ed0d5442d3951b7195231d0d05156e4d5246f81007882d"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/bytes_ops.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/bytes_ops.bend",
+      "sha256": "5bc01d7c682525e1adfbba42f8a0f248e291f6a00045896f7eab15b6a89c0e5e"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/seed-mutation.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/seed-mutation.bend",
+      "sha256": "d9c23d080338f1b1b9b4c9deaeecd9283eb0af11a81022ba913b5cba70487013"
+    }
+  },
+  "checks": 204,
+  "rows": [
+    {
+      "id": "undefined",
+      "pass": true,
+      "milliseconds": 143.98523899999998,
+      "error": "main: undefined name",
+      "definition": "main",
+      "resultSha256": "2745733d2259f300572b29d510072ff4df8a9eb74a0b8ac06b39005aa3d76f67",
+      "origins": 2
+    },
+    {
+      "id": "context",
+      "pass": true,
+      "milliseconds": 93.80183599999998,
+      "error": "use: undefined name",
+      "definition": "use",
+      "resultSha256": "1e6b52d235265d1aa3992c40cd1d6761f37506fee765d9354394432853b5f344",
+      "origins": 3
+    },
+    {
+      "id": "wrong-family",
+      "pass": true,
+      "milliseconds": 81.513799,
+      "error": "main: constructor does not belong to goal or field count differs",
+      "definition": "main",
+      "resultSha256": "4bfde507192b8ddb7de257e3067972fc4841b46868f3cd3142b6f96cdb3e7d93",
+      "origins": 2
+    },
+    {
+      "id": "unknown-constructor",
+      "pass": true,
+      "milliseconds": 44.322536000000014,
+      "error": "main: constructor does not belong to goal or field count differs",
+      "definition": "main",
+      "resultSha256": "0215a94f88a28cbe8baa8576f7c9804e8968196fce90dfc899379c91194f73fe",
+      "origins": 2
+    },
+    {
+      "id": "field-arity",
+      "pass": true,
+      "milliseconds": 37.886897999999974,
+      "error": "main: constructor does not belong to goal or field count differs",
+      "definition": "main",
+      "resultSha256": "f7b9a5e857e85c5d477cd79905945f35e42495b3bc2fbf0eb920e4769e779eab",
+      "origins": 2
+    },
+    {
+      "id": "termination",
+      "pass": true,
+      "milliseconds": 38.349860000000035,
+      "error": "loop: nondecreasing self-call",
+      "definition": "loop",
+      "resultSha256": "8f30f4f75923320c85d6d1eab214cb88f4a0c8957fdc69fcd75df94c40352198",
+      "origins": 3
+    },
+    {
+      "id": "dependent",
+      "pass": true,
+      "milliseconds": 29.122934999999984,
+      "error": "wrong: type mismatch",
+      "definition": "wrong",
+      "resultSha256": "0e32f666c19a7c56128e639e3193c48bc52f2a61d329123bc4025962b562a526",
+      "origins": 1
+    },
+    {
+      "id": "affine",
+      "pass": true,
+      "milliseconds": 54.42416700000001,
+      "error": "dup: affine variable consumed more than allowed",
+      "definition": "dup",
+      "resultSha256": "a0bf910f457a594c2ba90d700b71af1c480cde3ed497748011dc58f2646d03b8",
+      "origins": 3
+    },
+    {
+      "id": "law-fill",
+      "pass": true,
+      "milliseconds": 31.428633999999988,
+      "error": "main: undefined name",
+      "definition": "main",
+      "resultSha256": "e79a67659aac1a72d8a3bd6eb0b0e77d0fd375f0fcba508a9bf49a6cfae7009a",
+      "origins": 3
+    },
+    {
+      "id": "open-law",
+      "pass": true,
+      "milliseconds": 15.06991800000003,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "definition": "",
+      "resultSha256": "1ea8ed99b0f838592d6247c380d4d87346a3ac67cbe2eae611ab1ce9e8a48f3e",
+      "origins": 0
+    },
+    {
+      "id": "positive",
+      "pass": true,
+      "milliseconds": 15.992036999999982,
+      "error": "",
+      "definition": "",
+      "resultSha256": "b3a6e05c35ca02d8e77a8d220c39eeb9f06c63ffc58034ea1d6345ec9507fd91",
+      "origins": 0
+    },
+    {
+      "id": "unicode",
+      "pass": true,
+      "milliseconds": 39.629727,
+      "error": "value: undefined name",
+      "definition": "value",
+      "resultSha256": "2ff7f74e76683c4f60f62cd305e3a9bee73a1dba58745f2b036da468d2821e04",
+      "origins": 2
+    },
+    {
+      "id": "first-error-order",
+      "pass": true,
+      "milliseconds": 36.78850699999998,
+      "error": "first: undefined name",
+      "definition": "first",
+      "resultSha256": "629c0303639a01bdb59f242fe8926d5056ba3adf994b434f06a93a1b82e1df35",
+      "origins": 2
+    },
+    {
+      "id": "complete-prefix-mismatch-guards",
+      "pass": true,
+      "milliseconds": 51.38907100000006,
+      "mutations": 15
+    },
+    {
+      "id": "duplicate-core-event-guard",
+      "pass": true,
+      "milliseconds": 17.86224900000002,
+      "diagnosticError": "value: duplicate declaration"
+    },
+    {
+      "id": "diamond-import-origin-trace",
+      "pass": true,
+      "milliseconds": 176.05150900000012,
+      "modules": 4,
+      "names": [
+        "shared.Flag",
+        "shared.broken",
+        "left.left",
+        "right.right",
+        "main",
+        "not-present"
+      ]
+    },
+    {
+      "id": "parse-error",
+      "pass": true,
+      "milliseconds": 2.730193999999983,
+      "error": "line 0:0: reserved parameter name; got <eof>"
+    },
+    {
+      "id": "missing-import",
+      "pass": true,
+      "milliseconds": 2.9342810000000554,
+      "error": "module source was not supplied"
+    },
+    {
+      "id": "cycle",
+      "pass": true,
+      "milliseconds": 7.661603000000014,
+      "error": "cyclic import through /home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/cycle.bend"
+    },
+    {
+      "id": "duplicate-source",
+      "pass": true,
+      "milliseconds": 5.644046000000117,
+      "error": "a definition must uniquely fill its law with plain parameter names"
+    },
+    {
+      "id": "base-seed-and-targeted-origins",
+      "pass": true,
+      "milliseconds": 19639.99027,
+      "error": "main: undefined name",
+      "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1",
+      "origins": 3
+    },
+    {
+      "id": "seed-source-and-canonical-path-invalidation",
+      "pass": true,
+      "milliseconds": 10843.871045,
+      "changed": [
+        "text",
+        "canonical path"
+      ]
+    },
+    {
+      "id": "host-exact-rejection-parity",
+      "pass": true,
+      "milliseconds": 0.37859900000330526,
+      "cases": 14,
+      "candidateCalls": {
+        "f_parse": {
+          "count": 14,
+          "milliseconds": 68.96926300000058
+        },
+        "f_source_parsed": {
+          "count": 14,
+          "milliseconds": 0.1008550000002515
+        },
+        "f_load_graph_seed_trace": {
+          "count": 14,
+          "milliseconds": 253.67527199999955
+        },
+        "check_book": {
+          "count": 13,
+          "milliseconds": 44.94940600000069
+        },
+        "check_book_diagnostic": {
+          "count": 12,
+          "milliseconds": 86.61734999999965
+        },
+        "f_loaded_origins_for": {
+          "count": 12,
+          "milliseconds": 46.59166900000014
+        },
+        "diagnostic_result_locate": {
+          "count": 12,
+          "milliseconds": 9.26115800000008
+        },
+        "diagnostic_render": {
+          "count": 13,
+          "milliseconds": 59.074648000000366
+        },
+        "driver_owned": {
+          "count": 1,
+          "milliseconds": 0.11919800000009673
+        },
+        "driver_todos": {
+          "count": 1,
+          "milliseconds": 0.3626850000000559
+        },
+        "specialize_book": {
+          "count": 1,
+          "milliseconds": 0.6011340000000018
+        },
+        "specialized_error": {
+          "count": 1,
+          "milliseconds": 0.02701600000000326
+        },
+        "specialized_book": {
+          "count": 1,
+          "milliseconds": 0.022795000000087384
+        },
+        "f_main_names": {
+          "count": 1,
+          "milliseconds": 0.26179899999988265
+        },
+        "driver_report": {
+          "count": 1,
+          "milliseconds": 1.18104500000004
+        },
+        "check_from_exact_prefix": {
+          "count": 1,
+          "milliseconds": 144.33320700000013
+        },
+        "check_book_diagnostic_from_exact_prefix": {
+          "count": 1,
+          "milliseconds": 94.83323600000017
+        }
+      },
+      "baselineCalls": {
+        "f_parse": {
+          "count": 14,
+          "milliseconds": 72.764745
+        },
+        "f_source_parsed": {
+          "count": 14,
+          "milliseconds": 0.09993899999966516
+        },
+        "f_load_graph_seed": {
+          "count": 14,
+          "milliseconds": 244.90821
+        },
+        "check_book": {
+          "count": 13,
+          "milliseconds": 30.916718999999603
+        },
+        "check_book_diagnostic": {
+          "count": 13,
+          "milliseconds": 4075.496279
+        },
+        "f_load_origins_for": {
+          "count": 12,
+          "milliseconds": 4311.932642999999
+        },
+        "diagnostic_result_locate": {
+          "count": 12,
+          "milliseconds": 1.1665399999993724
+        },
+        "diagnostic_render": {
+          "count": 13,
+          "milliseconds": 41.08441799999957
+        },
+        "driver_owned": {
+          "count": 1,
+          "milliseconds": 0.12442699999996876
+        },
+        "driver_todos": {
+          "count": 1,
+          "milliseconds": 0.3199850000000879
+        },
+        "specialize_book": {
+          "count": 1,
+          "milliseconds": 0.6332780000000184
+        },
+        "specialized_error": {
+          "count": 1,
+          "milliseconds": 0.0241689999998016
+        },
+        "specialized_book": {
+          "count": 1,
+          "milliseconds": 0.021937999999863678
+        },
+        "f_main_names": {
+          "count": 1,
+          "milliseconds": 0.22491600000012113
+        },
+        "driver_report": {
+          "count": 1,
+          "milliseconds": 0.9387219999998706
+        },
+        "check_from_exact_prefix": {
+          "count": 1,
+          "milliseconds": 141.98661700000002
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "scope": "Checked emitted Bend API candidate versus frozen B1 and independent legacy diagnostic/origin entry points. No correctness inferred from timing.",
+  "host": {
+    "candidate": {
+      "rows": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/undefined.bend",
+          "milliseconds": 147.0186,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : absent\nLocation: main\n5 | def main() -> Flag:\n6>|   absent\n7 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/context.bend",
+          "milliseconds": 108.40951899999999,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : absent\nContext:\n- x : Flag\nLocation: use\n5 | def use(x: Flag) -> Flag:\n6>|   absent\n7 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/wrong-family.bend",
+          "milliseconds": 108.13027100000005,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : Flag\n- observed : Other\nLocation: main\n7 | def main() -> Flag:\n8>|   Other{}\n9 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/unknown-constructor.bend",
+          "milliseconds": 90.73254799999995,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a declared constructor (Flag declares On, Off)\n- observed : Never{}\nLocation: main\n5 | def main() -> Flag:\n6>|   Never{}\n7 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/field-arity.bend",
+          "milliseconds": 95.09633199999996,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : Mk with 1 field\n- observed : Mk{}\nLocation: main\n7 | def main() -> Box:\n8>|   Mk{}\n9 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/termination.bend",
+          "milliseconds": 95.325692,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : loop\nContext:\n- x : Flag\nLocation: loop\n5 | def loop(x: Flag) -> Flag:\n6>|   loop(x)\n7 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/dependent.bend",
+          "milliseconds": 86.32365099999993,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : Type\n- observed : Flag\nContext:\n- x : Flag\nLocation: wrong",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/affine.bend",
+          "milliseconds": 87.14710000000002,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : x\n- observed : x (consumed more than once)\nLocation: dup",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/law-fill.bend",
+          "milliseconds": 95.91196500000001,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : missing\nLocation: main\n7 | def main():\n8>|   missing\n9 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/open-law.bend",
+          "milliseconds": 76.87001299999997,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error: 1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/positive.bend",
+          "milliseconds": 76.2283809999999,
+          "result": {
+            "status": "ok",
+            "phase": "check",
+            "stdout": "All terms check.\n",
+            "exitCode": 0,
+            "checked": true,
+            "files": [
+              "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/positive.bend"
+            ]
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/unicode.bend",
+          "milliseconds": 83.42685699999993,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : absent\nLocation: value\n6 |   # 😀 UTF16 source offset\n7>|   absent\n8 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/first-error-order.bend",
+          "milliseconds": 111.06572899999992,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : missing_first\nLocation: first\n5 | def first() -> Flag:\n6>|   missing_first\n7 | def later() -> Flag:",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/bytes_ops.bend",
+          "milliseconds": 573.950781,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : Bytes.encode\nLocation: main\n 9 | def main():\n10>|   Bytes.encode(\"banana\")\n11 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        }
+      ],
+      "calls": {
+        "f_parse": {
+          "count": 14,
+          "milliseconds": 68.96926300000058
+        },
+        "f_source_parsed": {
+          "count": 14,
+          "milliseconds": 0.1008550000002515
+        },
+        "f_load_graph_seed_trace": {
+          "count": 14,
+          "milliseconds": 253.67527199999955
+        },
+        "check_book": {
+          "count": 13,
+          "milliseconds": 44.94940600000069
+        },
+        "check_book_diagnostic": {
+          "count": 12,
+          "milliseconds": 86.61734999999965
+        },
+        "f_loaded_origins_for": {
+          "count": 12,
+          "milliseconds": 46.59166900000014
+        },
+        "diagnostic_result_locate": {
+          "count": 12,
+          "milliseconds": 9.26115800000008
+        },
+        "diagnostic_render": {
+          "count": 13,
+          "milliseconds": 59.074648000000366
+        },
+        "driver_owned": {
+          "count": 1,
+          "milliseconds": 0.11919800000009673
+        },
+        "driver_todos": {
+          "count": 1,
+          "milliseconds": 0.3626850000000559
+        },
+        "specialize_book": {
+          "count": 1,
+          "milliseconds": 0.6011340000000018
+        },
+        "specialized_error": {
+          "count": 1,
+          "milliseconds": 0.02701600000000326
+        },
+        "specialized_book": {
+          "count": 1,
+          "milliseconds": 0.022795000000087384
+        },
+        "f_main_names": {
+          "count": 1,
+          "milliseconds": 0.26179899999988265
+        },
+        "driver_report": {
+          "count": 1,
+          "milliseconds": 1.18104500000004
+        },
+        "check_from_exact_prefix": {
+          "count": 1,
+          "milliseconds": 144.33320700000013
+        },
+        "check_book_diagnostic_from_exact_prefix": {
+          "count": 1,
+          "milliseconds": 94.83323600000017
+        }
+      },
+      "cache": {
+        "compilerSha256": "7740bc5a8ccf098625330e9855eb8c977aabdfc38ee26443155a10ca378a641a",
+        "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+        "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1",
+        "sourcePath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+      }
+    },
+    "baseline": {
+      "rows": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/undefined.bend",
+          "milliseconds": 146.501435,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : absent\nLocation: main\n5 | def main() -> Flag:\n6>|   absent\n7 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/context.bend",
+          "milliseconds": 108.94214799999997,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : absent\nContext:\n- x : Flag\nLocation: use\n5 | def use(x: Flag) -> Flag:\n6>|   absent\n7 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/wrong-family.bend",
+          "milliseconds": 111.57787300000001,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : Flag\n- observed : Other\nLocation: main\n7 | def main() -> Flag:\n8>|   Other{}\n9 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/unknown-constructor.bend",
+          "milliseconds": 93.701956,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a declared constructor (Flag declares On, Off)\n- observed : Never{}\nLocation: main\n5 | def main() -> Flag:\n6>|   Never{}\n7 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/field-arity.bend",
+          "milliseconds": 90.02265900000009,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : Mk with 1 field\n- observed : Mk{}\nLocation: main\n7 | def main() -> Box:\n8>|   Mk{}\n9 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/termination.bend",
+          "milliseconds": 90.00878599999999,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : loop\nContext:\n- x : Flag\nLocation: loop\n5 | def loop(x: Flag) -> Flag:\n6>|   loop(x)\n7 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/dependent.bend",
+          "milliseconds": 83.79388799999992,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : Type\n- observed : Flag\nContext:\n- x : Flag\nLocation: wrong",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/affine.bend",
+          "milliseconds": 118.99984800000004,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : x\n- observed : x (consumed more than once)\nLocation: dup",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/law-fill.bend",
+          "milliseconds": 87.04614400000003,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : missing\nLocation: main\n7 | def main():\n8>|   missing\n9 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/open-law.bend",
+          "milliseconds": 74.0837570000001,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error: 1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/positive.bend",
+          "milliseconds": 80.14964800000007,
+          "result": {
+            "status": "ok",
+            "phase": "check",
+            "stdout": "All terms check.\n",
+            "exitCode": 0,
+            "checked": true,
+            "files": [
+              "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/positive.bend"
+            ]
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/unicode.bend",
+          "milliseconds": 80.94553300000007,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : absent\nLocation: value\n6 |   # 😀 UTF16 source offset\n7>|   absent\n8 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/diagnostic-reuse-rebuilt-validation/fixtures/first-error-order.bend",
+          "milliseconds": 84.5400790000001,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : missing_first\nLocation: first\n5 | def first() -> Flag:\n6>|   missing_first\n7 | def later() -> Flag:",
+            "exitCode": 1,
+            "checked": true
+          }
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/bytes_ops.bend",
+          "milliseconds": 8701.465594,
+          "result": {
+            "status": "error",
+            "phase": "check",
+            "diagnostic": "Error:\n- expected : a defined name\n- observed : Bytes.encode\nLocation: main\n 9 | def main():\n10>|   Bytes.encode(\"banana\")\n11 | ",
+            "exitCode": 1,
+            "checked": true
+          }
+        }
+      ],
+      "calls": {
+        "f_parse": {
+          "count": 14,
+          "milliseconds": 72.764745
+        },
+        "f_source_parsed": {
+          "count": 14,
+          "milliseconds": 0.09993899999966516
+        },
+        "f_load_graph_seed": {
+          "count": 14,
+          "milliseconds": 244.90821
+        },
+        "check_book": {
+          "count": 13,
+          "milliseconds": 30.916718999999603
+        },
+        "check_book_diagnostic": {
+          "count": 13,
+          "milliseconds": 4075.496279
+        },
+        "f_load_origins_for": {
+          "count": 12,
+          "milliseconds": 4311.932642999999
+        },
+        "diagnostic_result_locate": {
+          "count": 12,
+          "milliseconds": 1.1665399999993724
+        },
+        "diagnostic_render": {
+          "count": 13,
+          "milliseconds": 41.08441799999957
+        },
+        "driver_owned": {
+          "count": 1,
+          "milliseconds": 0.12442699999996876
+        },
+        "driver_todos": {
+          "count": 1,
+          "milliseconds": 0.3199850000000879
+        },
+        "specialize_book": {
+          "count": 1,
+          "milliseconds": 0.6332780000000184
+        },
+        "specialized_error": {
+          "count": 1,
+          "milliseconds": 0.0241689999998016
+        },
+        "specialized_book": {
+          "count": 1,
+          "milliseconds": 0.021937999999863678
+        },
+        "f_main_names": {
+          "count": 1,
+          "milliseconds": 0.22491600000012113
+        },
+        "driver_report": {
+          "count": 1,
+          "milliseconds": 0.9387219999998706
+        },
+        "check_from_exact_prefix": {
+          "count": 1,
+          "milliseconds": 141.98661700000002
+        }
+      },
+      "cache": {
+        "compilerSha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+        "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+        "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1",
+        "sourcePath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+      }
+    }
+  },
+  "finished": "2026-09-22T05:55:42.933Z"
+}

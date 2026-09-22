@@ -1,0 +1,672 @@
+{
+  "kind": "phase3-annotation-spine-differential",
+  "started": "2026-09-22T05:47:07.362Z",
+  "node": "v24.18.0",
+  "nodeArgs": [
+    "--stack-size=4096"
+  ],
+  "identities": {
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/annotation-spine.test.mjs": "b79e04b2c55fc9d0ac1d3823e0faf22e30315a068153387c78bd439bf4b948dd",
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/api/b1.mjs": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6",
+    "/tmp/phase3-current-api.mjs": "7740bc5a8ccf098625330e9855eb8c977aabdfc38ee26443155a10ca378a641a",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/src/runtime.mjs": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4",
+    "/home/ai/bend2/build/publish/bend/selfhost/src/check/annotate.bend": "fcceac315efee3fff393b9c5f4fcf80f5a650347f74574da38f6ca9ed1bd23d1",
+    "/home/ai/bend2/build/publish/bend/selfhost/src/core/term.bend": "47f112aa7cfaabacb36df33fb4207c423b15b75e3111f8272d0c6a1836f7df6a"
+  },
+  "exposure": {
+    "baseline": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/annotation-review/final/baseline.mjs",
+      "sha256": "d33d925b9f28147de66e45088da9fd926a40ac2625c484523d419ba7917b1bb8"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/annotation-review/final/candidate.mjs",
+      "sha256": "6e308b088cf38a03ba061ee92d4145d1e2fbeb4cea7d1cc2a26705fa5b3cf111"
+    }
+  },
+  "scope": "Exact annotated-core and emitted-JS equality against frozen B1. Both kernels check every manual term; source fixtures pass load/check/owned/TODO/specialization before annotation. Testing exports only; compiler worker bodies unchanged. Correctness timings are not benchmarks.",
+  "manual": [
+    {
+      "name": "reference identity",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "105b76085ec41053fe72fe579f94274d64f4ddf885e1b654f21101648dbcc295",
+      "annotationSha256": "5896bcd5ce295e9f953298b8c2a6250f93127c5473218b811a91d5d591353318",
+      "exact": true
+    },
+    {
+      "name": "reference value alias remains opaque to core_beta",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "db6b7cb4fbac69fad554d5bf390785cc03bb6a652468dbf7fa88ab06c5f99237",
+      "annotationSha256": "0baeca7aa9a49ad5cc1033ba0d162f975a90e46f88541465f1c7f95707e5a63a",
+      "exact": true
+    },
+    {
+      "name": "dependent erased type argument",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "8177c32781b08ae89c7bb07b34b85aeaec693583753f4a92291131fa67c95a22",
+      "annotationSha256": "24ae6e5aa45db2ed3e2d304f3d7125d09cd2b29e2340da6fd6159290f16f6d64",
+      "exact": true
+    },
+    {
+      "name": "dependent partial application",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "13021cbcdd4b74d7960f95b184f1ea95888f76b15586442a83e95ed8feaea674",
+      "annotationSha256": "51e6e49b7280afe3aeed8dfc2c108511fd55cce4b1162e350e22126d007f5a79",
+      "exact": true
+    },
+    {
+      "name": "variable function head",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "adf4585529493d77ce25d1ef30376077643760266e7cf9d1d5be003ebe21efcf",
+      "annotationSha256": "755deb89bec8e1325badeff3c31383a5b9f2778556868a36c25dade832efe85a",
+      "exact": true
+    },
+    {
+      "name": "variable dependent function head",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "f69cc00052aef57a6a31ed5f18bd666d0df32293964cb9fb549cbd69972f1037",
+      "annotationSha256": "139dc6c7afe89bd2cb52b243bef033baab4b345df4c7e5cc088311cbefb8c563",
+      "exact": true
+    },
+    {
+      "name": "variable function alias type",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "25a642f3d1757d3a34e2199c2928f429e9a0592883514dbba71d3c49afc31cee",
+      "annotationSha256": "9c23a81a7bf9a0ccbb1f92bcac2b9888bb8e3e802e20d9c5df46cf32aa975b78",
+      "exact": true
+    },
+    {
+      "name": "annotation on function head fallback",
+      "checked": true,
+      "eligible": false,
+      "inputSha256": "b945f5093615c5591e03253fa4d7b38a1cad3324a63a4a62a41865db612b3676",
+      "annotationSha256": "d24f6eebfb5a134743ebb9bce116419d18fb30c6551ae78c92a6e655487eafb4",
+      "exact": true
+    },
+    {
+      "name": "annotation inside function prefix fallback",
+      "checked": true,
+      "eligible": false,
+      "inputSha256": "0db5bd13e83fee87de4c72eba523914f943fbd7b6307357fb7be2acba5814fb6",
+      "annotationSha256": "1ab226caf29fade14aff2a9980b51240644b3576dfdf1853e803b9bc4d79ade0",
+      "exact": true
+    },
+    {
+      "name": "explicit lambda beta fallback",
+      "checked": true,
+      "eligible": false,
+      "inputSha256": "2c46840364d2764e23809b09b0b8c3d1c82e771c175246b964064d2860bf2e7c",
+      "annotationSha256": "3b702ee73ecfd213ca208f33fea720debf97aeb981e0d2291acaffe37987783a",
+      "exact": true
+    },
+    {
+      "name": "beta reduction exposes reference spine",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "2768a2c5e716249c0044721ff1b43bc13e64bc39cf4a7e9f256088b676f04227",
+      "annotationSha256": "5896bcd5ce295e9f953298b8c2a6250f93127c5473218b811a91d5d591353318",
+      "exact": true
+    },
+    {
+      "name": "lambda argument is annotated under domain",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "da49842b9b0743c08ce6dccb80b54b0b01bb82181ce46680c45f6a0dc70ee109",
+      "annotationSha256": "6ffbff41430f43233aa94841f961b7f1c0bb154aae232f1db85a4ae1f9cc42a1",
+      "exact": true
+    },
+    {
+      "name": "outer annotation retained as requested type",
+      "checked": true,
+      "eligible": false,
+      "inputSha256": "332534453aef8ebe9105aa8f5c9b3560afe98a3ace9bc3ef7b18887438c0da4a",
+      "annotationSha256": "5896bcd5ce295e9f953298b8c2a6250f93127c5473218b811a91d5d591353318",
+      "exact": true
+    },
+    {
+      "name": "variable payload is not unfolded by core_beta",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "de401d995cf639f9cf8b9a951914d4cbdc6bd3905642f5ca120e5aaf86a57709",
+      "annotationSha256": "415621bae517c8e6fb0ae01eb45cf12f200fb183d539b923ab75559936eef414",
+      "exact": true
+    },
+    {
+      "name": "arity 1 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "3308da2bbc0f5cd84654ff50beda50a207af1520fd842598fbbad8173ef3266a",
+      "annotationSha256": "f33fba94940429b54d3b42c7e44f87cd2c4fb87be5d7b16131669ea74a667908",
+      "exact": true
+    },
+    {
+      "name": "arity 2 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "f1f831e00cb14d018699bb90dd86628827d21e2d84fb9f601a896babc7b18c69",
+      "annotationSha256": "ee24aae09253cae4a11d088616ab8c5aac999704a463286511f70252b5bceca5",
+      "exact": true
+    },
+    {
+      "name": "arity 3 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "4a3f1f01108bc6290317b3e231f99020fe79aa3a08de9a511f5ef95932d0e089",
+      "annotationSha256": "abffe13b7fab7e119f2ab550bbbf034c3b319d9a790de1b93f0163426153cbaa",
+      "exact": true
+    },
+    {
+      "name": "arity 4 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "59427d11c3a917bb1325901497765dac0754dc044dac349e0e07a72f8da15025",
+      "annotationSha256": "77532d82ad2e51e280fbdae023863a7d7329a6019a3ddf5d25f20109fd3f7f5a",
+      "exact": true
+    },
+    {
+      "name": "arity 5 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "a1ee235cbb8e1003ab46008bf6cee6b2f1276e7ab422577ef99ef534f88613c3",
+      "annotationSha256": "6a01e407ec746aee73e84ed77d4f2331a08d0a55ef934ef8216230298b55c8f2",
+      "exact": true
+    },
+    {
+      "name": "arity 6 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "c97a6586038e4cff97cc37926b1fa8c35434a0590ff9a27e88d9d3c8b2c9d474",
+      "annotationSha256": "da976796ee6c75188a98c93b6202979257a7f55826cee0df127675edaa9714a9",
+      "exact": true
+    },
+    {
+      "name": "arity 7 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "8e3e2eb60fec77f08bfc8e84ce1d2f7e8e518fb3610c4f53bf0eb92bebaee740",
+      "annotationSha256": "71875d88534d761f330716f1653db4b549f1581c4edb250252b9951912d6fa61",
+      "exact": true
+    },
+    {
+      "name": "arity 8 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "51c2fb6dc7ff8b1e037acbd8305e6ad8e76455626771d4c6c5c4ac9662c20bfb",
+      "annotationSha256": "c2c04269333a92393ab03b019c620df20b91c2759bfbab88baf1d02e4add612a",
+      "exact": true
+    },
+    {
+      "name": "arity 9 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "2858d0ca93833ef0f5af0d396e8ecceff93ede7d8f38f9ca075d7c898645eec9",
+      "annotationSha256": "82f62e0c4bc0de83430ef1f10d74eb89d59048690ead57c4d481605c89a3a5ec",
+      "exact": true
+    },
+    {
+      "name": "arity 10 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "839d3b787633e2a456af3bf9f6464ec4047349fbde4fffd85b6a7efffa11ce39",
+      "annotationSha256": "b2ac9854ff9ba9c3b2072d18f9e55c1d9b61ec500e38180111833ae9f16113ab",
+      "exact": true
+    },
+    {
+      "name": "arity 11 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "f15a4a00963fce9cc511b1f7ee5cdd5aba5df7fed703d07c1feb151e420b6834",
+      "annotationSha256": "82efad93f025853a8250acdb8388e88ab14c51f5b34ee55e630a113a617da28a",
+      "exact": true
+    },
+    {
+      "name": "arity 12 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "0b3ca5ddef2bdcf94263644ff8a7b34142c514ca2b04b21585324cd1c617d277",
+      "annotationSha256": "5b86920088967ddee1f7ab78ba45b290ae7bb97f7ebfcd904053eeedb483570a",
+      "exact": true
+    },
+    {
+      "name": "arity 13 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "9d4f217dbd71d90fab5c882d54d221389353fc6bdff6a817b93ba52b1b3b0600",
+      "annotationSha256": "2082e2ee41dcfb404ad905bcab7215e7525b79df61dabd66557b7766ec6b85a9",
+      "exact": true
+    },
+    {
+      "name": "arity 14 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "eb0dd0fb2ca679729b679402acec334bb755012e39bef6cec9a7ccc0129a84cf",
+      "annotationSha256": "2f9f585c97b0b33d65c4496ced2c49dd7b69988e6daa13eae13e1444de91f97d",
+      "exact": true
+    },
+    {
+      "name": "arity 15 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "2fe2c79be1a80c6b9c79b4274b3b7017a56bc41e6622d09ac8db09042e757dc2",
+      "annotationSha256": "adadff50e65c5b0317a83f5f69f46257b909a3c88684a7c084ead8504311f2fa",
+      "exact": true
+    },
+    {
+      "name": "arity 16 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "78e7e911f015efe4ec0e13ad23156ebfef32bd5bed9b749724e03218b9d407d7",
+      "annotationSha256": "a3086d37c0fe280610d07b54fb1e6e9c227dc0d8d107793fc44f0a5dfa6c0c17",
+      "exact": true
+    },
+    {
+      "name": "arity 17 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "a734ccddd5f1c9dd94685412088d3f50faac3fa482d3d05ebb58aad40f074565",
+      "annotationSha256": "48e4129fdd8f027f28fe991ba67422c53bd8831595cb227f38647393345a8244",
+      "exact": true
+    },
+    {
+      "name": "arity 18 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "595f85834d63e0b8f5a1d078f8c73cbba8ef52a898d2ac05b1861f3043a1fef9",
+      "annotationSha256": "d8f9aec8f00ffe012216d36d9aa1d7bc533b45f66c612e57805be1b5b9950748",
+      "exact": true
+    },
+    {
+      "name": "arity 19 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "cb3c6512a6abc71ba32613ff634f86a6d14dd9b5f787873aba9f6fa10784f335",
+      "annotationSha256": "af63ff529558ba6f1945ef9bc6f92ab0c66a618db5de7a8c8f3ca600465b0257",
+      "exact": true
+    },
+    {
+      "name": "arity 20 erased/affine/unrestricted",
+      "checked": true,
+      "eligible": true,
+      "inputSha256": "d51361bfa9fa89b28b24133dd52a4bd038749ed819cd21d6047850b5fc700fc2",
+      "annotationSha256": "8c34b5aa544a216bf424cd512c3daee59c87dca048b9554f4c1b6aebe9000710",
+      "exact": true
+    }
+  ],
+  "sources": [
+    {
+      "name": "ref",
+      "sourceSha256": "f1473661dbb5e652ed278b6b9e6e99928917c2213c18eb5a82e05d52825bb8db",
+      "definitions": 3,
+      "checked": true,
+      "annotationSha256": "f8926aef284d0dfdee20821354069e51ad1b7bdb88fd4928e4810bf9f4599ef4",
+      "emittedSha256": "bc3da12326cd15deb05c50114b623ff4254f2bfbef0ab93b30269dcbe6730e43",
+      "execution": {
+        "$": "Yes",
+        "a": []
+      },
+      "exact": true
+    },
+    {
+      "name": "dependent",
+      "sourceSha256": "a1dbe175c6e8ea0b4881a4ad9486c2c2d50bc6c43695bf51d38c6321c650db5b",
+      "definitions": 3,
+      "checked": true,
+      "annotationSha256": "e372579ea5f04fca8fb33ddc7fb028b1fbcf1acf9c9d8bb734c728ba9e435c52",
+      "emittedSha256": "c330cd2a1dcdfdf5f31169a4606e6900415fad9ee37601105ed69dc732a56b61",
+      "execution": {
+        "$": "Yes",
+        "a": []
+      },
+      "exact": true
+    },
+    {
+      "name": "higher-order",
+      "sourceSha256": "63cfc6e617ea3a78d49f8cbb1f54317b4037b8c89509cfefe879a125f52e603d",
+      "definitions": 4,
+      "checked": true,
+      "annotationSha256": "6f2736d15a8e21512cc9db503a4d1af55c82782e4b8c8884097a9bd91c5b4648",
+      "emittedSha256": "784068ac0dd1c0ac967edc22b0c573e60a40783c82f41747a1999f6027ce31fc",
+      "execution": {
+        "$": "Yes",
+        "a": []
+      },
+      "exact": true
+    },
+    {
+      "name": "annotated-function",
+      "sourceSha256": "7f6a496aeda16ef48443a3bed62c26d3c0e3e78961b146d6f04e350633580896",
+      "definitions": 3,
+      "checked": true,
+      "annotationSha256": "fcf426f67b6d48a404f6783ddc9fe12f885127bc91b95692c26fa61e76620ae5",
+      "emittedSha256": "bc3da12326cd15deb05c50114b623ff4254f2bfbef0ab93b30269dcbe6730e43",
+      "execution": {
+        "$": "Yes",
+        "a": []
+      },
+      "exact": true
+    },
+    {
+      "name": "local-lambda",
+      "sourceSha256": "b0c31b12d5a2d93abb87eccc7dd9067c9907ad0d370e425c204ade33e701af7b",
+      "definitions": 2,
+      "checked": true,
+      "annotationSha256": "1c68d8e9c6a375b0dcfdf040932f3fbbf56ce128c5461899a23e2e8d06814e7e",
+      "emittedSha256": "83c494fa3610ec12e6dbc29fcc7270d9e48a396f3c9d8a1b543785b065f1f35e",
+      "execution": {
+        "$": "Yes",
+        "a": []
+      },
+      "exact": true
+    }
+  ],
+  "complete": true,
+  "refUnfoldingWitness": {
+    "coreBetaPreservesReference": true,
+    "wnfUnfoldsReference": true,
+    "explanation": "core_beta only reduces syntactic Lam heads. Unlike wnf it has no book argument; Ref heads remain Ref even if their definitions are lambdas."
+  },
+  "measurement": {
+    "scope": "Annotation only, same process, two untimed warmups then three alternating repetitions. Instrumentation is separate from timed workers. Synthetic checked arity scaling is not a whole-compiler benchmark.",
+    "rows": [
+      {
+        "arity": 8,
+        "counts": {
+          "baseline": {
+            "ka_type": 36,
+            "core_beta": 173,
+            "wnf": 53,
+            "subst": 308,
+            "ka_spine": 0,
+            "ka_spine_eligible": 0
+          },
+          "candidate": {
+            "ka_type": 1,
+            "core_beta": 18,
+            "wnf": 17,
+            "subst": 63,
+            "ka_spine": 8,
+            "ka_spine_eligible": 9
+          }
+        },
+        "samples": [
+          {
+            "variant": "baseline",
+            "rep": 0,
+            "milliseconds": 3.335935000000063
+          },
+          {
+            "variant": "candidate",
+            "rep": 0,
+            "milliseconds": 0.7277309999999488
+          },
+          {
+            "variant": "candidate",
+            "rep": 1,
+            "milliseconds": 0.6918989999999212
+          },
+          {
+            "variant": "baseline",
+            "rep": 1,
+            "milliseconds": 1.8551869999998871
+          },
+          {
+            "variant": "baseline",
+            "rep": 2,
+            "milliseconds": 3.0190840000000208
+          },
+          {
+            "variant": "candidate",
+            "rep": 2,
+            "milliseconds": 0.4955649999999423
+          }
+        ],
+        "medians": {
+          "baseline": 3.0190840000000208,
+          "candidate": 0.6918989999999212
+        }
+      },
+      {
+        "arity": 16,
+        "counts": {
+          "baseline": {
+            "ka_type": 136,
+            "core_beta": 985,
+            "wnf": 169,
+            "subst": 2600,
+            "ka_spine": 0,
+            "ka_spine_eligible": 0
+          },
+          "candidate": {
+            "ka_type": 1,
+            "core_beta": 34,
+            "wnf": 33,
+            "subst": 255,
+            "ka_spine": 16,
+            "ka_spine_eligible": 17
+          }
+        },
+        "samples": [
+          {
+            "variant": "baseline",
+            "rep": 0,
+            "milliseconds": 6.215600999999879
+          },
+          {
+            "variant": "candidate",
+            "rep": 0,
+            "milliseconds": 1.2757480000000214
+          },
+          {
+            "variant": "candidate",
+            "rep": 1,
+            "milliseconds": 21.154592999999977
+          },
+          {
+            "variant": "baseline",
+            "rep": 1,
+            "milliseconds": 6.467505999999958
+          },
+          {
+            "variant": "baseline",
+            "rep": 2,
+            "milliseconds": 6.4925530000000435
+          },
+          {
+            "variant": "candidate",
+            "rep": 2,
+            "milliseconds": 0.8454900000001544
+          }
+        ],
+        "medians": {
+          "baseline": 6.467505999999958,
+          "candidate": 1.2757480000000214
+        }
+      },
+      {
+        "arity": 32,
+        "counts": {
+          "baseline": {
+            "ka_type": 528,
+            "core_beta": 6577,
+            "wnf": 593,
+            "subst": 21328,
+            "ka_spine": 0,
+            "ka_spine_eligible": 0
+          },
+          "candidate": {
+            "ka_type": 1,
+            "core_beta": 66,
+            "wnf": 65,
+            "subst": 1023,
+            "ka_spine": 32,
+            "ka_spine_eligible": 33
+          }
+        },
+        "samples": [
+          {
+            "variant": "baseline",
+            "rep": 0,
+            "milliseconds": 40.974013000000014
+          },
+          {
+            "variant": "candidate",
+            "rep": 0,
+            "milliseconds": 5.311795999999958
+          },
+          {
+            "variant": "candidate",
+            "rep": 1,
+            "milliseconds": 3.3000809999998637
+          },
+          {
+            "variant": "baseline",
+            "rep": 1,
+            "milliseconds": 46.045028999999886
+          },
+          {
+            "variant": "baseline",
+            "rep": 2,
+            "milliseconds": 59.66913199999999
+          },
+          {
+            "variant": "candidate",
+            "rep": 2,
+            "milliseconds": 4.201535000000149
+          }
+        ],
+        "medians": {
+          "baseline": 46.045028999999886,
+          "candidate": 4.201535000000149
+        }
+      },
+      {
+        "arity": 64,
+        "counts": {
+          "baseline": {
+            "ka_type": 2080,
+            "core_beta": 47969,
+            "wnf": 2209,
+            "subst": 172704,
+            "ka_spine": 0,
+            "ka_spine_eligible": 0
+          },
+          "candidate": {
+            "ka_type": 1,
+            "core_beta": 130,
+            "wnf": 129,
+            "subst": 4095,
+            "ka_spine": 64,
+            "ka_spine_eligible": 65
+          }
+        },
+        "samples": [
+          {
+            "variant": "baseline",
+            "rep": 0,
+            "milliseconds": 279.3235050000003
+          },
+          {
+            "variant": "candidate",
+            "rep": 0,
+            "milliseconds": 7.5973549999998795
+          },
+          {
+            "variant": "candidate",
+            "rep": 1,
+            "milliseconds": 12.971130000000812
+          },
+          {
+            "variant": "baseline",
+            "rep": 1,
+            "milliseconds": 308.0945330000004
+          },
+          {
+            "variant": "baseline",
+            "rep": 2,
+            "milliseconds": 279.4521539999996
+          },
+          {
+            "variant": "candidate",
+            "rep": 2,
+            "milliseconds": 5.787497999999687
+          }
+        ],
+        "medians": {
+          "baseline": 279.4521539999996,
+          "candidate": 7.5973549999998795
+        }
+      },
+      {
+        "arity": 128,
+        "counts": {
+          "baseline": {
+            "ka_type": 8256,
+            "core_beta": 366273,
+            "wnf": 8513,
+            "subst": 1389888,
+            "ka_spine": 0,
+            "ka_spine_eligible": 0
+          },
+          "candidate": {
+            "ka_type": 1,
+            "core_beta": 258,
+            "wnf": 257,
+            "subst": 16383,
+            "ka_spine": 128,
+            "ka_spine_eligible": 129
+          }
+        },
+        "samples": [
+          {
+            "variant": "baseline",
+            "rep": 0,
+            "milliseconds": 2231.754852
+          },
+          {
+            "variant": "candidate",
+            "rep": 0,
+            "milliseconds": 24.287787000001117
+          },
+          {
+            "variant": "candidate",
+            "rep": 1,
+            "milliseconds": 26.768212999999378
+          },
+          {
+            "variant": "baseline",
+            "rep": 1,
+            "milliseconds": 2256.098898
+          },
+          {
+            "variant": "baseline",
+            "rep": 2,
+            "milliseconds": 2267.100957999999
+          },
+          {
+            "variant": "candidate",
+            "rep": 2,
+            "milliseconds": 24.420812000000296
+          }
+        ],
+        "medians": {
+          "baseline": 2256.098898,
+          "candidate": 24.420812000000296
+        }
+      }
+    ]
+  },
+  "inputsUnchanged": true,
+  "finished": "2026-09-22T05:47:28.749Z",
+  "sourceReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/annotation-review/final/report.json",
+    "sha256": "e916839f7aa5c8d9cb9df580fcde41627a7aec94d9e262e1c530ff84cf262b52"
+  },
+  "archiveNote": "Original report retained with source/API/tool hashes; full generated exposure APIs and emitted files remain in the local output directory. Reproducible test source is tracked. Candidate API was supplied from the root agent\u2019s checked upstream build; this probe does not fabricate a bootstrap report."
+}

@@ -77,13 +77,13 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   }
   if(files.includes('src/back/native/foreign.bend'))exports.push('nc_foreign_source');
   if(files.includes('src/check/prefix.bend'))exports.push('check_from_exact_prefix','exact_prefix');
-  if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_main_names');
+  if(files.includes('src/load/graph.bend'))exports.push('f_load_graph','f_main_names','f_load_graph_trace');
   if(files.includes('src/load/modules.bend'))exports.push('f_source_parsed');
   if(files.includes('src/core/index.bend'))exports.push('book_context','book_cached');
-  if(files.includes('src/load/seed.bend'))exports.push('f_load_graph_seed');
+  if(files.includes('src/load/seed.bend'))exports.push('f_load_graph_seed','f_load_graph_seed_trace');
   if(files.includes('src/driver/report.bend'))exports.push('driver_report');
-  if(files.includes('src/diagnostic/produce.bend'))exports.push('check_book_diagnostic','diagnostic_render','diagnostic_result_locate');
-  if(files.includes('src/diagnostic/frontend.bend'))exports.push('f_load_origins_for');
+  if(files.includes('src/diagnostic/produce.bend'))exports.push('check_book_diagnostic','check_book_diagnostic_from_exact_prefix','diagnostic_render','diagnostic_result_locate');
+  if(files.includes('src/diagnostic/frontend.bend'))exports.push('f_load_origins_for','f_loaded_origins_for');
   if(files.includes('src/back/js/validate.bend')) {
     exports.push('j_compile_error');
     if(fs.readFileSync(path.join(project,'src/back/js/validate.bend'),'utf8').includes('law j_layout_error:'))exports.push('j_layout_error');
@@ -156,7 +156,7 @@ export async function loadApi() {
   if(!module.G) return module.default;
   // The bootstrap compiler marshals ADTs with named fields. The self-hosted
   // runtime uses positional fields. This is an ABI conversion, not elaboration.
-  const fields={Nil:[],Con:['head','tail'],FSource:['name','path','text'],FParsedSource:['name','path','text','parsed'],FResult:['book','error','imports'],
+  const fields={Nil:[],Con:['head','tail'],FSource:['name','path','text'],FParsedSource:['name','path','text','parsed'],FResult:['book','error','imports'],FLoadTrace:['result','done','sources'],
     KTerm:['tag','name','id','quant','kids','removed'],KDef:['name','kind','arity','templates','typ','value','ctors','native','unsafe'],
     KSpecialized:['book','error'],NC_Result:['source','error'],
     DText:['text'],DTerm:['term'],DNoSpan:[],DSpan:['source','begin','end'],
@@ -255,7 +255,10 @@ export async function inspect(input,{mode='check',api,args=[],timeoutMs=5000,com
     const graph=discoverSources(api,input,{seed});
     phase='parse';
     trace('load and elaborate graph');
-    const loaded=seed?api.f_load_graph_seed(graph.main,graph.sources,seed.sourcePath,seed.sourceText,seed.book):
+    // Traces belong to this request and retain the exact parsed/source snapshots.
+    const loadTrace=seed&&api.f_load_graph_seed_trace?api.f_load_graph_seed_trace(graph.main,graph.sources,seed.sourcePath,seed.sourceText,seed.book):
+      !seed&&api.f_load_graph_trace?api.f_load_graph_trace(graph.main,graph.sources):null;
+    const loaded=loadTrace?loadTrace.result:seed?api.f_load_graph_seed(graph.main,graph.sources,seed.sourcePath,seed.sourceText,seed.book):
       (api.f_load_graph||api.f_load)(graph.main,graph.sources);
     if(loaded.error) return {status:'error',phase,diagnostic:'Error: '+loaded.error,exitCode:1,checked:false};
     if(mode==='parse') return {status:'ok',phase,exitCode:0,checked:false,files:graph.files};
@@ -268,12 +271,18 @@ export async function inspect(input,{mode='check',api,args=[],timeoutMs=5000,com
       if(api.check_book_diagnostic&&api.diagnostic_render) {
         try {
           trace('render checker diagnostic');
-          let detailed=api.check_book_diagnostic(loaded.book,list([]));
+          let detailed=cached&&api.check_book_diagnostic_from_exact_prefix?
+            api.check_book_diagnostic_from_exact_prefix(loaded.book,cached.book,list([])):
+            api.check_book_diagnostic(loaded.book,list([]));
+          if(cached&&detailed.error!==diagnostic&&api.check_book_diagnostic_from_exact_prefix)
+            detailed=api.check_book_diagnostic(loaded.book,list([]));
           // The ordinary checker verdict remains authoritative. Diagnostic replay
           // can improve its presentation but cannot replace or accept a verdict.
           if(detailed.error===diagnostic) {
             if(api.f_load_origins_for&&api.diagnostic_result_locate&&detailed.diagnostic.definition) {
-              const provenance=api.f_load_origins_for(graph.main,graph.sources,detailed.diagnostic.definition);
+              const provenance=loadTrace&&api.f_loaded_origins_for?
+                api.f_loaded_origins_for(loadTrace,detailed.diagnostic.definition):
+                api.f_load_origins_for(graph.main,graph.sources,detailed.diagnostic.definition);
               if(!provenance.result.error)detailed=api.diagnostic_result_locate(detailed,provenance.origins);
             }
             rendered=api.diagnostic_render(detailed);

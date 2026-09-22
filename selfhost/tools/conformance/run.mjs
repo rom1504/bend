@@ -7,16 +7,17 @@ import {pathToFileURL} from 'node:url';
 import {inventory,probes,sha256,walk} from './inventory.mjs';
 import {selectProbes,successful} from './selection.mjs';
 import {runProbe} from './run-probe.mjs';
+import {createPersistentRunner} from './persistent-probe.mjs';
 import {judge} from './judge.mjs';
 
 const project=path.resolve(import.meta.dirname,'../..');
 const options={upstream:process.env.BEND_UPSTREAM||path.resolve(project,'../upstream-bend'),
   adapter:path.join(import.meta.dirname,'adapters/prototype.mjs'),output:path.join(project,'tests/conformance/latest.json'),
-  jobs:8,timeout:5000,lanes:'parse,check,interpreter,js,native,metal,cuda',filter:'',gpu:'','stack-kb':0,'heap-mb':0,selection:'',rerun:'',retain:'none','selected-exit':'0'};
+  jobs:8,timeout:5000,'worker-mode':'isolated','recycle-after':'64','rss-limit-mb':'1024',lanes:'parse,check,interpreter,js,native,metal,cuda',filter:'',gpu:'','stack-kb':0,'heap-mb':0,selection:'',rerun:'',retain:'none','selected-exit':'0'};
 for(let i=2;i<process.argv.length;i++) {
   const arg=process.argv[i];
   if(arg==='--help') {
-    console.log('node tools/conformance/run.mjs [--upstream PATH] [--adapter PATH] [--output PATH] [--jobs N] [--timeout MS] [--stack-kb N] [--heap-mb N] [--lanes parse,check,interpreter,js,native,metal,cuda] [--filter REGEX] [--gpu metal,cuda] [--selection JSON] [--rerun REPORT] [--retain none|failed|all] [--selected-exit 0|1]');
+    console.log('node tools/conformance/run.mjs [--upstream PATH] [--adapter PATH] [--output PATH] [--jobs N] [--timeout MS] [--worker-mode isolated|persistent] [--recycle-after N] [--rss-limit-mb N] [--stack-kb N] [--heap-mb N] [--lanes parse,check,interpreter,js,native,metal,cuda] [--filter REGEX] [--gpu metal,cuda] [--selection JSON] [--rerun REPORT] [--retain none|failed|all] [--selected-exit 0|1]');
     process.exit(0);
   }
   const key=arg.slice(2);
@@ -26,7 +27,12 @@ for(let i=2;i<process.argv.length;i++) {
 for(const key of ['upstream','adapter','output']) options[key]=path.resolve(options[key]);
 for(const key of ['jobs','timeout']) {
   options[key]=Number(options[key]);
-  if(!Number.isInteger(options[key])||options[key]<1) throw Error(`Invalid --${key}`);
+  if(!Number.isSafeInteger(options[key])||options[key]<1||(key==='timeout'&&options[key]>2147483647)) throw Error(`Invalid --${key}`);
+}
+if(!['isolated','persistent'].includes(options['worker-mode']))throw Error('Invalid --worker-mode');
+for(const key of ['recycle-after','rss-limit-mb']) {
+  options[key]=Number(options[key]);
+  if(!Number.isSafeInteger(options[key])||options[key]<1)throw Error(`Invalid --${key}`);
 }
 for(const key of ['stack-kb','heap-mb']) {
   options[key]=Number(options[key]);
@@ -40,8 +46,11 @@ if(lanes.some(l=>!laneNames.includes(l))) throw Error('Unknown lane');
 const manifest=inventory(options.upstream);
 const adapter=await import(pathToFileURL(options.adapter));
 if(!adapter.capabilities||typeof adapter.probe!=='function') throw Error('Adapter must export capabilities and probe');
-const initialIdentity={adapter:adapter.name||options.adapter,capabilities:adapter.capabilities,adapterSha256:sha256(fs.readFileSync(options.adapter)),
-  artifacts:Object.fromEntries(Object.entries({...adapter.artifacts,...Object.fromEntries(['run.mjs','worker.mjs','inventory.mjs','judge.mjs','selection.mjs','run-probe.mjs','replay.mjs'].map(file=>['harness/'+file,path.join(import.meta.dirname,file)]))}).map(([name,file])=>[name,{file,sha256:sha256(fs.readFileSync(file))}]))};
+const persistent=options['worker-mode']==='persistent';
+if(persistent&&(!Array.isArray(adapter.persistentLanes)||typeof adapter.createPersistentSession!=='function'))throw Error('Persistent mode requires adapter persistentLanes and createPersistentSession');
+const harnessFiles=['run.mjs','worker.mjs','inventory.mjs','judge.mjs','selection.mjs','run-probe.mjs','replay.mjs',...(persistent?['persistent-probe.mjs','persistent-worker.mjs']:[])];
+const initialIdentity={adapter:adapter.name||options.adapter,capabilities:adapter.capabilities,persistentLanes:adapter.persistentLanes??null,workerMode:options['worker-mode'],adapterSha256:sha256(fs.readFileSync(options.adapter)),
+  artifacts:Object.fromEntries(Object.entries({...adapter.artifacts,...Object.fromEntries(harnessFiles.map(file=>['harness/'+file,path.join(import.meta.dirname,file)]))}).map(([name,file])=>[name,{file,sha256:sha256(fs.readFileSync(file))}]))};
 if(!['none','failed','all'].includes(options.retain))throw Error('Invalid --retain');
 if(!['0','1'].includes(String(options['selected-exit'])))throw Error('Invalid --selected-exit');
 for(const key of ['selection','rerun'])if(options[key])options[key]=path.resolve(options[key]);
@@ -63,6 +72,7 @@ const environmentKeys=['BEND_TYPED_API','BEND_TYPED_RUNTIME','BEND_BASE','BEND_U
 const environment=Object.fromEntries(environmentKeys.filter(key=>process.env[key]!==undefined).map(key=>[key,process.env[key]]));
 fs.writeFileSync(identityFile,JSON.stringify({identity:initialIdentity,inputHashes,inputPaths,environment,environmentKeys,workerNodeArgs,node:process.execPath,nodeVersion:process.version},null,2)+'\n');
 const results=[];
+const workerReports=[];
 fs.mkdirSync(path.dirname(options.output),{recursive:true});
 const progressFile=options.output.replace(/\.json$/, '')+'.progress.jsonl';
 fs.writeFileSync(progressFile,'');
@@ -79,20 +89,28 @@ function hardwareGate(lane) {
   return null;
 }
 try {
-  await Promise.all(Array.from({length:Math.min(options.jobs,jobs.length)},async()=>{
+  await Promise.all(Array.from({length:Math.min(options.jobs,jobs.length)},async(_,slot)=>{
+    const runner=persistent?createPersistentRunner({directory:path.join(temporary,`worker-${slot}`),workerNodeArgs,recycleAfter:options['recycle-after'],rssLimitMb:options['rss-limit-mb']}):null;
+    try {
     while(next<jobs.length) {
       const index=next++,{test,lane}=jobs[index],start=performance.now();
       const base={id:test.id,namespace:test.namespace,negative:test.negative,lane};
       const gate=hardwareGate(lane);
       if(gate) {record({...base,status:'hardware-gated',reason:gate,implemented:!!adapter.capabilities[lane]});continue;}
+      if(persistent&&!adapter.persistentLanes.includes(lane)) {record({...base,status:'unsupported',reason:`Persistent mode does not implement ${lane}; rerun with --worker-mode isolated.`,implemented:false});continue;}
       if(!adapter.capabilities[lane]) {record({...base,status:'unsupported',reason:'Adapter does not implement '+lane});continue;}
       const workdir=path.join(temporary,String(index));fs.mkdirSync(workdir);
       const request={adapter:options.adapter,test,lane,upstream:options.upstream,project,workdir,timeoutMs:options.timeout,response:path.join(workdir,'response.json'),identityFile,workerNodeArgs};
-      const result=await runProbe(request,{workerNodeArgs});
+      const execution=runner?await runner.run(request):null;
+      const result=execution?execution.result:await runProbe(request,{workerNodeArgs});
       const verdict=judge(test,lane,result,adapter.capabilities);
       const retained=options.retain==='all'||options.retain==='failed'&&!successful({...base,...verdict});
-      record({...base,...verdict,ms:Math.round(performance.now()-start),result,...retained?{artifacts:workdir,replay:[process.execPath,path.join(import.meta.dirname,'replay.mjs'),path.join(workdir,'request.json')]}:{}});
+      record({...base,...verdict,ms:Math.round(performance.now()-start),result,...execution?{worker:execution.worker}:{},...retained?{artifacts:workdir,replay:[process.execPath,path.join(import.meta.dirname,'replay.mjs'),path.join(workdir,'request.json')]}:{}});
       if(!retained)fs.rmSync(workdir,{recursive:true,force:true});
+    }
+    } finally {
+      runner?.close();
+      if(runner)workerReports[slot]={stats:{...runner.stats},errors:[...runner.errors]};
     }
   }));
 } finally {if(options.retain==='none')fs.rmSync(temporary,{recursive:true,force:true});}
@@ -111,13 +129,14 @@ identity.adapterChangedDuringRun=identity.finalAdapterSha256!==identity.adapterS
 identity.finalArtifactHashes=Object.fromEntries(Object.entries(identity.artifacts).map(([name,artifact])=>[name,fs.existsSync(artifact.file)?sha256(fs.readFileSync(artifact.file)):null]));
 identity.changedArtifacts=Object.entries(identity.artifacts).filter(([name,artifact])=>identity.finalArtifactHashes[name]!==artifact.sha256).map(([name])=>name);
 const changedInputs=Object.entries(inputHashes).filter(([file,hash])=>(fs.existsSync(file)?sha256(fs.readFileSync(file)):null)!==hash||(fs.existsSync(file)?fs.realpathSync(file):null)!==inputPaths[file]).map(([file])=>file);
-const selectedComplete=!identity.adapterChangedDuringRun&&!identity.changedArtifacts.length&&!changedInputs.length&&results.length===jobs.length&&results.every(successful);
-const complete=!options.selection&&!options.rerun&&!selected.external.length&&!changedInputs.length&&!identity.adapterChangedDuringRun&&!identity.changedArtifacts.length&&tests.length===manifest.total&&results.length===allRequired&&results.every(r=>r.status==='pass'||r.status==='not-applicable'||(r.lane==='parse'&&r.status==='observed'));
+const workerHealthy=!persistent||workerReports.length===Math.min(options.jobs,jobs.length)&&workerReports.every(report=>report&&!report.errors.length);
+const selectedComplete=!identity.adapterChangedDuringRun&&!identity.changedArtifacts.length&&!changedInputs.length&&workerHealthy&&results.length===jobs.length&&results.every(successful);
+const complete=workerHealthy&&!options.selection&&!options.rerun&&!selected.external.length&&!changedInputs.length&&!identity.adapterChangedDuringRun&&!identity.changedArtifacts.length&&tests.length===manifest.total&&results.length===allRequired&&results.every(r=>r.status==='pass'||r.status==='not-applicable'||(r.lane==='parse'&&r.status==='observed'));
 if(identity.adapter==='unchecked-prototype') {
   identity.compilerSha256=sha256(fs.readFileSync(process.env.BEND_CONFORMANCE_COMPILER||path.join(project,'dist/bend2c.mjs')));
   identity.runtimeSha256=sha256(fs.readFileSync(process.env.BEND_CONFORMANCE_RUNTIME||path.join(project,'src/runtime.mjs')));
 }
-const report={schemaVersion:1,started,finished:new Date().toISOString(),host:{platform:process.platform,arch:process.arch,node:process.version,workerNodeArgs},
+const report={schemaVersion:1,started,finished:new Date().toISOString(),host:{platform:process.platform,arch:process.arch,node:process.version,workerNodeArgs,workerMode:options['worker-mode']},workers:persistent?workerReports:null,
   options,identity,complete,selectedComplete,selection:{requested:jobs.map(({test,lane})=>({id:test.id,lane})),previous:selected.previous??null,external:selected.external.map(test=>test.id)},inputHashes,inputPaths,changedInputs,summary,inventory:manifest,results};
 fs.mkdirSync(path.dirname(options.output),{recursive:true});fs.writeFileSync(options.output,JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({complete,selectedComplete,summary,report:options.output},null,2));

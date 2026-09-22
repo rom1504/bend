@@ -29,7 +29,7 @@ test('typed adapter artifacts identify helpers beside the consumed frozen driver
 export const project=${JSON.stringify(directory)};
 export const driverPath=fileURLToPath(import.meta.url);
 export const apiPath=project+'/api.mjs',basePath=project+'/base.bend',runtimePath=project+'/runtime.mjs',compilerAbiPath=project+'/compiler-abi.mjs',nodeResourceArgsPath=project+'/node-resource-args.mjs';
-export const inspect=()=>{},execute=()=>{};
+export const inspect=()=>{},execute=()=>{},loadApi=async()=>({});
 `);
     const source=fs.readFileSync(new URL('../../tools/conformance/adapters/typed.mjs',import.meta.url),'utf8').replace("from '../../typed-driver.mjs'","from './typed-driver.mjs'");
     fs.writeFileSync(file('typed.mjs'),source);

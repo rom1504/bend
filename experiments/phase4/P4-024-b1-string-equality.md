@@ -17,3 +17,16 @@ First compare the actual internal original/transformed helper through test-only 
 Only after semantic success, run two opposite-order fresh-process real-core pairs on one reserved physical core, 4 MiB stack, 3 GiB heap and a 180-second per-process timeout. Use the same frozen host/Base/runtime and source identities, separate API-specific validated Base caches primed before measurements. Capture process wall, request wall, peak RSS and every failed attempt. Require checked exact emitted output SHA `016a5cedeb7e285adeabdad19388d99d3d9070668c15776ccc10fab8ea7b7186`.
 
 Stop for any semantic/output mismatch or less than 5% consistent request reduction in both core pairs. A survivor receives the list-sort and retained negative checker control with exact observations, followed only if explicitly coordinated by a short broader frontend gate. A useful local result may justify an optional future development artifact; it does not establish a full-source gain or full conformance. Retain null or failed outcomes without broadening the transform to other String operations.
+
+## Conditional integration gate, added before execution
+
+If both core pairs and the selected positive/negative controls pass, perform one
+full-source correctness observation with the derived image and a maximum
+15-minute process deadline. Reconstruct the candidate from the original checked
+B1 using the guarded transform, verify the original complete fixed-point proof,
+and require actual output bytes equal to H `b33b38e3…`. Preserve its elapsed time
+and memory as one workflow observation, without a paired full-source speed claim
+or a new bootstrap label. The separate full frontend gate uses a new truthful
+`experimental-derived-frontend` report; it must not rewrite checked-source
+provenance to match the derived image. Coordinate CPU masks with the root and
+start neither gate if it would overrun the 20:00 experiment stop.

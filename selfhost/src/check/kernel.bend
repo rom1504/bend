@@ -833,7 +833,7 @@ def tele_check(e, ctx, tel, args, dem):
     case Nil{}:
       ok(atom("Args"), tel, Nil{})
     case Con{h, t}:
-      tele_check_head(e, ctx, wnf(cb(e), tel), h, t, dem)
+      tele_check_cached_head(e, ctx, wnf(cb(e), tel), h, t, dem)
 
 @unsafe
 def tele_check_head(e, ctx, tel, h, rest, dem):
@@ -1194,3 +1194,81 @@ def check_template_binder(book, d, ty, body, lhs, n):
 def check_template_open(book, d, ty, body, lhs, n, name):
   check_template_definition(book_put(book, KDef{name, "Def", 0, 0, kid(ty, 0), atom("Absent"), Nil{}, True{}, False{}}), d, subst(kid(ty, 1), ix(ty), ref(name)), kapply(body, ref(name)), app(lhs, ref(name)), U32.sub(n, 1))
 
+
+law tele_check_cached_head:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +tel: KTerm
+  for +h: KTerm
+  for +rest: List<&2, KTerm>
+  for +dem: U32
+  KChecked
+
+law tele_check_static:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +tel: KTerm
+  for +args: List<&2, KTerm>
+  for +dem: U32
+  KChecked
+
+# A failed fact uses the original remaining traversal, avoiding repeated scans
+# of dependent tails. The public tele_check_head retains its existing behavior.
+law tele_check_legacy:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +tel: KTerm
+  for +args: List<&2, KTerm>
+  for +dem: U32
+  KChecked
+
+law tele_check_legacy_head:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +tel: KTerm
+  for +h: KTerm
+  for +rest: List<&2, KTerm>
+  for +dem: U32
+  KChecked
+
+@unsafe
+def tele_check_cached_head(e, ctx, tel, h, rest, dem):
+  kc(KChecked, String.eq(tg(tel), "All"),
+    u => tele_check_after_head(e, ctx, tel, h, rest, dem, check(e, ctx, h, qdem(qt(tel), dem), kid(tel, 0))),
+    u => bad("too many telescope arguments"))
+
+@unsafe
+def tele_check_static(e, ctx, tel, args, dem):
+  match args:
+    case Nil{}: ok(atom("Args"), tel, Nil{})
+    case Con{h, rest}:
+      kc(KChecked, String.eq(tg(tel), "All"),
+        u => tele_check_done(check(e, ctx, h, qdem(qt(tel), dem), kid(tel, 0)), tele_check_static(e, ctx, kid(tel, 1), rest, dem)),
+        u => tele_check(e, ctx, tel, args, dem))
+
+@unsafe
+def tele_check_legacy(e, ctx, tel, args, dem):
+  match args:
+    case Nil{}: ok(atom("Args"), tel, Nil{})
+    case Con{h, rest}:
+      tele_check_legacy_head(e, ctx, wnf(cb(e), tel), h, rest, dem)
+
+@unsafe
+def tele_check_legacy_head(e, ctx, tel, h, rest, dem):
+  kc(KChecked, String.eq(tg(tel), "All"), u => tele_check_done(check(e, ctx, h, qdem(qt(tel), dem), kid(tel, 0)), tele_check_legacy(e, ctx, subst(kid(tel, 1), ix(tel), h), rest, dem)), u => bad("too many telescope arguments"))
+
+law tele_check_after_head:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +tel: KTerm
+  for +h: KTerm
+  for +rest: List<&2, KTerm>
+  for +dem: U32
+  for +checked_head: KChecked
+  KChecked
+
+@unsafe
+def tele_check_after_head(e, ctx, tel, h, rest, dem, checked_head):
+  kc(KChecked, core_subst_stable(kid(tel, 1)),
+    u => tele_check_done(checked_head, tele_check_static(e, ctx, kid(tel, 1), rest, dem)),
+    u => tele_check_done(checked_head, tele_check_legacy(e, ctx, subst(kid(tel, 1), ix(tel), h), rest, dem)))

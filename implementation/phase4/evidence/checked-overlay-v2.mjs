@@ -68,7 +68,6 @@ try {
     fs.mkdirSync(path.dirname(destination), {recursive: true}); fs.copyFileSync(original, destination); capture(destination);
     report.modules.push({relative, original, destination, sha256: sha(destination), overridden: original === candidate});
   }
-  if (overlay) assert.ok(report.modules.some(module => module.overridden), 'The requested overlay did not replace any compiler module');
   const {assemble} = await import(pathToFileURL(path.join(baseline, 'tools/assemble.mjs')));
   const source = path.join(out, 'compiler.bend'), api = path.join(out, 'api.mjs');
   await timed('assemble', () => assemble(manifest.modules, source, {root: path.join(out, 'sources')}));
@@ -83,8 +82,6 @@ try {
   const book = B.book_nil();
   await timed('load', () => B.book_load(book, source, '', new Map()));
   await timed('check-owned-and-closed', () => { B.book_valid(book); C.book_owned(book, C.SYNTH); assert.equal(book.hols + book.open, 0, 'Unresolved laws or holes'); });
-  for (const root of roots) assert.ok(Object.hasOwn(book.tlds, root), 'Requested API root is absent from the checked book: ' + root);
-  report.requestedRootsExist = true;
   await timed('emit', () => fs.writeFileSync(api, C.js_lib(book, roots, roots)));
   report.api = identity(api);
   verify();

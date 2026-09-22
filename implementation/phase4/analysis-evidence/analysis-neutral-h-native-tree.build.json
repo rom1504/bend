@@ -1,0 +1,125 @@
+{
+  "kind": "native-content-addressed-build",
+  "version": 2,
+  "started": "2026-09-22T15:49:43.280Z",
+  "complete": true,
+  "cacheHit": false,
+  "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/analysis-neutral-h-native/tree-candidate.c",
+  "inputSha256": "ec39f4253e024ac2b2d7d3159de9674c5c28b764aaac00c4225ff49cc2f56dad",
+  "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/analysis-neutral-h-native/tree",
+  "cacheRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/analysis-neutral-h-native/cache",
+  "optimization": "O1",
+  "timeoutMs": 60000,
+  "plan": {
+    "target": "cpu",
+    "gpu": false,
+    "bangs": 0,
+    "args": [
+      "-std=c11",
+      "-O3",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/analysis-neutral-h-native/tree-candidate.c",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/analysis-neutral-h-native/tree"
+    ],
+    "deviceArgs": null
+  },
+  "cachePlan": {
+    "target": "cpu",
+    "gpu": false,
+    "bangs": 0,
+    "args": [
+      "-std=c11",
+      "-O1",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/analysis-neutral-h-native/tree-candidate.c",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "$OUTPUT"
+    ],
+    "deviceArgs": null
+  },
+  "toolSha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+  "cacheToolSha256": "682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01",
+  "scope": "Host-local cache. Preprocessed headers, C bytes, compiler executable and full version are identified. System linker and libraries must remain stable; this is not a hermetic toolchain. Bend checking and emission are separate required artifacts.",
+  "compiler": {
+    "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang",
+    "version": "Debian clang version 16.0.6 (15~deb11u2)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin",
+    "executableSha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2"
+  },
+  "preprocessMs": 73.892319,
+  "key": "6d19ce0cdc809fddfaa27183807547819e66e5a98796a5a930ca104bce174325",
+  "preprocessedSha256": "07622d280b6bb679f49fedb914a5f0cd2968d79a4220f1d11ed6f3c31c81ee7d",
+  "environment": {
+    "PATH": "/home/ai/.deno/bin:/home/ai/.elan/bin:/home/ai/.local/bin:/home/ai/.cargo/bin:/home/ai/.local/bin:/home/ai/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
+    "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+    "C_INCLUDE_PATH": null,
+    "CPLUS_INCLUDE_PATH": null,
+    "OBJC_INCLUDE_PATH": null,
+    "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+    "SDKROOT": null,
+    "MACOSX_DEPLOYMENT_TARGET": null,
+    "SOURCE_DATE_EPOCH": null
+  },
+  "compileMs": 1488.019362,
+  "args": [
+    "-std=c11",
+    "-O1",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/analysis-neutral-h-native/tree-candidate.c",
+    "-lpthread",
+    "-lm",
+    "-o",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/analysis-neutral-h-native/cache/.build-WVZXWs/compiler"
+  ],
+  "stdout": "",
+  "stderr": "",
+  "record": {
+    "key": "6d19ce0cdc809fddfaa27183807547819e66e5a98796a5a930ca104bce174325",
+    "identity": {
+      "version": 2,
+      "sourceSha256": "ec39f4253e024ac2b2d7d3159de9674c5c28b764aaac00c4225ff49cc2f56dad",
+      "preprocessedSha256": "07622d280b6bb679f49fedb914a5f0cd2968d79a4220f1d11ed6f3c31c81ee7d",
+      "optimization": "O1",
+      "plan": {
+        "target": "cpu",
+        "gpu": false,
+        "bangs": 0,
+        "args": [
+          "-std=c11",
+          "-O1",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/analysis-neutral-h-native/tree-candidate.c",
+          "-lpthread",
+          "-lm",
+          "-o",
+          "$OUTPUT"
+        ],
+        "deviceArgs": null
+      },
+      "compiler": {
+        "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang",
+        "version": "Debian clang version 16.0.6 (15~deb11u2)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin",
+        "executableSha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2"
+      },
+      "toolSha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+      "cacheToolSha256": "682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01",
+      "environment": {
+        "PATH": "/home/ai/.deno/bin:/home/ai/.elan/bin:/home/ai/.local/bin:/home/ai/.cargo/bin:/home/ai/.local/bin:/home/ai/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
+        "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+        "C_INCLUDE_PATH": null,
+        "CPLUS_INCLUDE_PATH": null,
+        "OBJC_INCLUDE_PATH": null,
+        "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+        "SDKROOT": null,
+        "MACOSX_DEPLOYMENT_TARGET": null,
+        "SOURCE_DATE_EPOCH": null
+      },
+      "platform": "linux",
+      "arch": "x64"
+    },
+    "binarySha256": "97f281db4095ebc5bcb0952adad2148304b48fd1b6e3dc4d39729ac8131880ab",
+    "created": "2026-09-22T15:49:44.950Z"
+  },
+  "binarySha256": "97f281db4095ebc5bcb0952adad2148304b48fd1b6e3dc4d39729ac8131880ab",
+  "finished": "2026-09-22T15:49:45.100Z"
+}

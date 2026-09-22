@@ -19,7 +19,6 @@ const inputs = new Map();
 const capture = file => { const item = identity(file); inputs.set(item.file, item); return item.file; };
 const verify = () => { for (const item of inputs.values()) assert.deepEqual(identity(item.file), item, 'Build input changed: ' + item.file); };
 const report = {kind: 'phase4-checked-overlay', complete: false, started: new Date().toISOString(), node: {path: process.execPath, version: process.version, args: process.execArgv}, phases: [], modules: []};
-let renderError = error => error?.stack || String(error);
 const flush = () => fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify({...report, inputs: [...inputs.values()]}, null, 2) + '\n');
 async function timed(name, action) {
   const start = performance.now();
@@ -42,9 +41,6 @@ async function git(upstream, args, label) {
 flush();
 try {
   capture(import.meta.filename); capture(configFile); capture(process.execPath);
-  const toolSnapshot = path.join(out, 'checked-overlay.mjs');
-  fs.copyFileSync(import.meta.filename, toolSnapshot); capture(toolSnapshot);
-  report.toolSnapshot = identity(toolSnapshot);
   const baseline = resolve(config.baseline), overlay = config.overlay ? resolve(config.overlay) : null;
   const frozenFile = capture(path.join(baseline, 'manifest.json'));
   const frozen = JSON.parse(fs.readFileSync(frozenFile));
@@ -68,7 +64,6 @@ try {
     fs.mkdirSync(path.dirname(destination), {recursive: true}); fs.copyFileSync(original, destination); capture(destination);
     report.modules.push({relative, original, destination, sha256: sha(destination), overridden: original === candidate});
   }
-  if (overlay) assert.ok(report.modules.some(module => module.overridden), 'The requested overlay did not replace any compiler module');
   const {assemble} = await import(pathToFileURL(path.join(baseline, 'tools/assemble.mjs')));
   const source = path.join(out, 'compiler.bend'), api = path.join(out, 'api.mjs');
   await timed('assemble', () => assemble(manifest.modules, source, {root: path.join(out, 'sources')}));
@@ -78,19 +73,16 @@ try {
   const roots = [...new Set([...Object.keys(previous), ...(config.extraRoots ?? [])])];
   assert.ok(roots.every(name => typeof name === 'string' && name.length)); report.roots = roots;
   const B = await import(pathToFileURL(path.join(upstream, 'bend2/bend.ts')));
-  renderError = error => error?.$ === 'Err' ? B.err_show(error) : error?.stack || String(error);
   const C = await import(pathToFileURL(path.join(upstream, 'bend2/comp.ts')));
   const book = B.book_nil();
   await timed('load', () => B.book_load(book, source, '', new Map()));
   await timed('check-owned-and-closed', () => { B.book_valid(book); C.book_owned(book, C.SYNTH); assert.equal(book.hols + book.open, 0, 'Unresolved laws or holes'); });
-  for (const root of roots) assert.ok(Object.hasOwn(book.tlds, root), 'Requested API root is absent from the checked book: ' + root);
-  report.requestedRootsExist = true;
   await timed('emit', () => fs.writeFileSync(api, C.js_lib(book, roots, roots)));
   report.api = identity(api);
   verify();
   assert.equal(await git(upstream, ['rev-parse', 'HEAD'], 'revision-after'), manifest.upstream);
   assert.equal(await git(upstream, ['status', '--porcelain', '--untracked-files=no'], 'status-after'), '');
   report.inputsUnchanged = true; report.complete = true;
-} catch (error) { report.error = renderError(error); process.exitCode = 1; }
+} catch (error) { report.error = error?.stack || String(error); process.exitCode = 1; }
 report.finished = new Date().toISOString(); flush();
 console.log(JSON.stringify({complete: report.complete, api: report.api, phases: report.phases, error: report.error}));

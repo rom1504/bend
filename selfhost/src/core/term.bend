@@ -384,3 +384,80 @@ law core_beta:
 @unsafe
 def core_beta(t):
   kc(KTerm, String.eq(tg(t), "App"), u => core_apply(core_beta(kid(t, 0)), kid(t, 1)), u => t)
+
+# Scan in substitution order: Var test, children, then App rebuilding.
+# A false fact returns to ordinary substitution, preserving its work and errors.
+# A canonical App also survives substitution unchanged if both children do and
+# its unchanged function is not Lam. Every metadata/arity check is necessary
+# because core_rebuild canonicalizes App nodes even without beta reduction.
+law core_subst_stable:
+  for +t: KTerm
+  Bool
+
+law core_subst_stable_terms:
+  for +ts: List<&2, KTerm>
+  Bool
+
+law core_subst_stable_app:
+  for +kids: List<&2, KTerm>
+  for +removed: List<&2, String>
+  Bool
+
+@unsafe
+def core_subst_stable(t):
+  match t:
+    case KTerm{tag, name, id, quant, kids, removed}:
+      kc(Bool, String.eq(tag, "Var"), u => False{},
+        u => kc(Bool, core_subst_stable_terms(kids),
+          u => kc(Bool, String.eq(tag, "App"),
+            u => kc(Bool, String.eq(name, "") && U32.is_eq(id, 0) && U32.is_eq(quant, 0), u => core_subst_stable_app(kids, removed), u => False{}),
+            u => True{}),
+          u => False{}))
+
+@unsafe
+def core_subst_stable_terms(ts):
+  match ts:
+    case Nil{}: True{}
+    case Con{h, rest}:
+      kc(Bool, core_subst_stable(h), u => core_subst_stable_terms(rest), u => False{})
+
+law core_subst_stable_app_kids:
+  for +kids: List<&2, KTerm>
+  Bool
+
+law core_subst_stable_app_tail:
+  for +f: KTerm
+  for +tail: List<&2, KTerm>
+  Bool
+
+law core_subst_stable_app_last:
+  for +f: KTerm
+  for +x: KTerm
+  for +rest: List<&2, KTerm>
+  Bool
+
+@unsafe
+def core_subst_stable_app(kids, removed):
+  match removed:
+    case Con{h, rest}: False{}
+    case Nil{}: core_subst_stable_app_kids(kids)
+
+@unsafe
+def core_subst_stable_app_kids(kids):
+  match kids:
+    case Nil{}: False{}
+    case Con{f, tail}: core_subst_stable_app_tail(f, tail)
+
+@unsafe
+def core_subst_stable_app_tail(f, tail):
+  match tail:
+    case Nil{}: False{}
+    case Con{x, rest}: core_subst_stable_app_last(f, x, rest)
+
+@unsafe
+def core_subst_stable_app_last(f, x, rest):
+  match rest:
+    case Con{h, tail}: False{}
+    case Nil{}:
+      Bool.not(String.eq(tg(f), "Lam"))
+

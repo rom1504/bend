@@ -1,0 +1,59 @@
+{
+  "baseline": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+  "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/analysis-stable-capsule/h-candidate.mjs",
+  "host": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed-driver.mjs",
+  "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs",
+  "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+  "components": [
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/normalize.mjs",
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/kernel.mjs",
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/specialize.mjs"
+  ],
+  "warmups": 2,
+  "rounds": 3,
+  "inputs": [
+    {
+      "id": "list-sort",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+      "stdout": "6\n"
+    },
+    {
+      "id": "tree",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+      "stdout": "42\n"
+    },
+    {
+      "id": "compiler-core",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/component/core.bend",
+      "mode": "library",
+      "warmups": 1,
+      "rounds": 3
+    },
+    {
+      "id": "invalid-type",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/bad-type.bend",
+      "reject": true,
+      "warmups": 0,
+      "rounds": 1
+    }
+  ],
+  "clangRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root",
+  "buildTool": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-compiler-cache.mjs",
+  "cases": [
+    {
+      "id": "tree",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+      "stdout": "42\n"
+    },
+    {
+      "id": "dependent",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/dependent.bend",
+      "stdout": "Yes{}\n"
+    },
+    {
+      "id": "dependent-pair",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/dependent_pair_destructure.bend",
+      "stdout": "3\n"
+    }
+  ]
+}

@@ -186,7 +186,7 @@ def ka_node(e, ctx, t, ty):
   kc(KTerm, String.eq(tg(t), "Ann"), u => ka_node(e, ctx, kid(t, 0), wnf(cb(e), kid(t, 1))),
    u => kc(KTerm, String.eq(tg(t), "Lam"), u => ka_lam(e, ctx, t, ty),
    u => kc(KTerm, String.eq(tg(t), "App"), u => kc(KTerm, ka_spine_eligible(t), u => ka_app_spine(e, ctx, t), u => ka_app(e, ctx, t, wnf(cb(e), ka_type(e, ctx, kid(t, 0))))),
-   u => kc(KTerm, String.eq(tg(t), "Ctr"), u => kt("Ctr", nm(t), ix(t), qt(t), ka_args(e, ctx, tele_fill(cb(e), dt(lookup(dc(lookup(cb(e), nm(ty))), nm(t))), ks(ty)), ks(t))),
+   u => kc(KTerm, String.eq(tg(t), "Ctr"), u => kt("Ctr", nm(t), ix(t), qt(t), ka_args_cached(e, ctx, tele_fill(cb(e), dt(lookup(dc(lookup(cb(e), nm(ty))), nm(t))), ks(ty)), ks(t))),
    u => kc(KTerm, String.eq(tg(t), "Mat"), u => ka_mat(e, ctx, t, ty, wnf(cb(e), kid(ty, 0))),
    u => kc(KTerm, String.eq(tg(t), "Let"), u => kt("Let", nm(t), ix(t), qt(t), ka_let(e, ctx, ctx, ks(t), ty)),
    u => kc(KTerm, String.eq(tg(t), "Rwt"), u => ka_rwt(e, ctx, t, wnf(cb(e), ka_type(e, ctx, kid(t, 0)))),
@@ -337,3 +337,64 @@ def ka_app_spine_finish(e, ctx, arg, r):
 @unsafe
 def ka_app_spine_root(e, ctx, arg, node, fty):
   app(ka_wrap(node, fty), annotate(e, ctx, arg, kid(fty, 0)))
+
+# Reuse a closed tail with only inert canonical Apps along its literal All spine.
+# Ref/Ann/other heads restart analysis after ordinary weak-head normalization.
+law ka_args_cached:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +tel: KTerm
+  for +xs: List<&2, KTerm>
+  List<&2, KTerm>
+
+law ka_args_cached_head:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +tel: KTerm
+  for +h: KTerm
+  for +rest: List<&2, KTerm>
+  List<&2, KTerm>
+
+law ka_args_static:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +tel: KTerm
+  for +xs: List<&2, KTerm>
+  List<&2, KTerm>
+
+@unsafe
+def ka_args_cached(e, ctx, tel, xs):
+  match xs:
+    case Nil{}: Nil{}
+    case Con{h, rest}:
+      ka_args_cached_head(e, ctx, wnf(cb(e), tel), h, rest)
+
+@unsafe
+def ka_args_cached_head(e, ctx, tel, h, rest):
+  kc(List<&2, KTerm>, String.eq(tg(tel), "All"),
+    u => ka_args_after_head(e, ctx, tel, h, rest, annotate(e, ctx, h, kid(tel, 0))),
+    u => ka_args_head(e, ctx, tel, h, rest))
+
+@unsafe
+def ka_args_static(e, ctx, tel, xs):
+  match xs:
+    case Nil{}: Nil{}
+    case Con{h, rest}:
+      kc(List<&2, KTerm>, String.eq(tg(tel), "All"),
+        u => Con{annotate(e, ctx, h, kid(tel, 0)), ka_args_static(e, ctx, kid(tel, 1), rest)},
+        u => ka_args_cached(e, ctx, tel, xs))
+
+law ka_args_after_head:
+  for +e: KEnv
+  for +ctx: List<&2, KTerm>
+  for +tel: KTerm
+  for +h: KTerm
+  for +rest: List<&2, KTerm>
+  for +annotated: KTerm
+  List<&2, KTerm>
+
+@unsafe
+def ka_args_after_head(e, ctx, tel, h, rest, annotated):
+  kc(List<&2, KTerm>, core_subst_stable(kid(tel, 1)),
+    u => Con{annotated, ka_args_static(e, ctx, kid(tel, 1), rest)},
+    u => Con{annotated, ka_args(e, ctx, subst(kid(tel, 1), ix(tel), h), rest)})

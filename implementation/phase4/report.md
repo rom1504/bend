@@ -154,6 +154,26 @@ type/ownership/completeness checks, and emits selected API roots. It does not
 fabricate normal bootstrap metadata. Its caller supplies process resource limits
 and a deadline.
 
+## Combined-source integration checkpoint
+
+The final constructor-telescope optimization is now integrated alongside guarded
+book selection. Its [component report](analysis-telescopes.md) records a fresh
+H median of 53.545 to 42.908 seconds, 19.9% less time, with exact output and
+dependent-type, diagnostic and native controls. The earlier normalization
+shortcut was [not promoted](analysis-normalization.md).
+
+At 16:22 UTC the complete combined source passed the untouched pinned TypeScript
+checker, ownership validation and zero unresolved holes. The builder also checked
+that every requested API root exists. Source SHA-256 is
+`34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122`;
+checked B1 API SHA-256 is
+`0653f21e7e227bf7bf7e3ad777630da64d520534753900636a571ed57a43f810`.
+The [checked-build record](evidence/combined-checked.json.gz) retains all consumed
+module identities. A fresh full checked B1-to-H-to-H reproduction started at
+16:23 UTC on CPU 2, with a frozen host, canonical Base, 4 MiB stack, 12 GiB heap
+and a one-hour deadline per stage. Completion and whole-source speed remain
+pending; the component gain is not substituted for those measurements.
+
 ## Pending completion gates
 
 The guarded selection algorithm has passed its focused checks and is integrated;

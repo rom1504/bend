@@ -2,12 +2,19 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {spawnSync} from 'node:child_process';
+import childProcess,{spawnSync} from 'node:child_process';
+import {syncBuiltinESMExports} from 'node:module';
 import test from 'node:test';
 import {inventory,probes} from '../../tools/conformance/inventory.mjs';
 const project=path.resolve(import.meta.dirname,'../..');
 const upstream=process.env.BEND_UPSTREAM||path.resolve(project,'../upstream-bend');
 const available=fs.existsSync(path.join(upstream,'tests'));
+test('successful git status never masks a subprocess capture error',context=>{
+  const mocked=context.mock.method(childProcess,'spawnSync',()=>({status:0,signal:null,error:new Error('spawnSync git EPERM')}));
+  syncBuiltinESMExports();
+  try {assert.throws(()=>inventory('/unused'),/verification failed: spawnSync git EPERM/);}
+  finally {mocked.mock.restore();syncBuiltinESMExports();}
+});
 test('pinned corpus is exhaustive and includes every negative namespace',{skip:!available},()=>{
   const inv=inventory(upstream);
   assert.equal(inv.total,1378);

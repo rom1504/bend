@@ -1,11 +1,27 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import os from 'node:os';
 import {spawnSync} from 'node:child_process';
 
 export const PIN = '6018e28ecc67cf1fffc0c20c64b11023474c2df8';
 export const tidy = text => text.replace(/[ \t]+$/gm, '').trim();
 export const sha256 = text => crypto.createHash('sha256').update(text).digest('hex');
+// File-backed capture also works under supervisors where synchronous pipe
+// capture reports EPERM after a child exits. Never ignore a spawn error merely
+// because the command happened to return status zero and some stdout.
+function git(upstream,args) {
+  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'bend-inventory-git-'));
+  const stdout=path.join(directory,'stdout'),stderr=path.join(directory,'stderr');
+  const a=fs.openSync(stdout,'wx'),b=fs.openSync(stderr,'wx');
+  try {
+    const result=spawnSync('git',['-C',upstream,...args],{stdio:['ignore',a,b],timeout:30000});
+    if(result.error||result.signal||result.status!==0)throw Error('Pinned upstream git verification failed: '+(result.error?.message??result.signal??'exit '+result.status)+' '+fs.readFileSync(stderr,'utf8'));
+    return fs.readFileSync(stdout,'utf8');
+  } finally {
+    fs.closeSync(a);fs.closeSync(b);fs.rmSync(directory,{recursive:true,force:true});
+  }
+}
 export function walk(dir) {
   return fs.readdirSync(dir, {withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name)).flatMap(e =>
     e.isDirectory() ? walk(path.join(dir,e.name)) : [path.join(dir,e.name)]);
@@ -28,10 +44,9 @@ export function describeFixture(file,id) {
 }
 
 export function inventory(upstream) {
-  const revision=spawnSync('git',['-C',upstream,'rev-parse','HEAD'],{encoding:'utf8'}).stdout.trim();
+  const revision=git(upstream,['rev-parse','HEAD']).trim();
   if(revision!==PIN) throw Error(`Expected pinned upstream ${PIN}, found ${revision}`);
-  const dirty=spawnSync('git',['-C',upstream,'diff','--quiet','HEAD','--','bend2','tests','gates/test.ts'],{encoding:'utf8'});
-  if(dirty.status!==0)throw Error('Pinned upstream source or fixtures differ from HEAD');
+  git(upstream,['diff','--quiet','HEAD','--','bend2','tests','gates/test.ts']);
   const root=path.join(upstream,'tests');
   const tests=walk(root).filter(f=>f.endsWith('.bend')).map(file=>{
     return describeFixture(file,path.relative(root,file).split(path.sep).join('/'));

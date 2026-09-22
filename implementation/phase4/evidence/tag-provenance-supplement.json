@@ -1,0 +1,20 @@
+{
+  "kind": "phase4-tag-preparation-verification",
+  "complete": true,
+  "preparedReportSha256": "c22650bf841212d3f60135cf4c4d65c57d654c9edd98c52a6747dfa664f1450f",
+  "coreReportSha256": "19ebc7792acd4e332679b33f2ad52b1ed37423f04ab3c8c4ea70fe972ec3e0c2",
+  "smallReportSha256": "837ed5f754e6dd7abf8a3e339c99206158b91e35b4cbd59d0e30fcbc055c2d6b",
+  "images": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/tag-images/private-control.mjs",
+      "sha256": "1905c283551d4ad93c129549f8c540d8d21b47eb0486d88036f0afa9a0d4f9ab",
+      "matchesBothBenchmarksBeforeAndAfterIdentities": true
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/tag-images/private-tags.mjs",
+      "sha256": "94e6da7dcadf319471e0c4fd9adea915cc6209e0de9dccc81ab85c3ff55c945e",
+      "matchesBothBenchmarksBeforeAndAfterIdentities": true
+    }
+  ],
+  "note": "The core-run1 builder did not compare the prepared-image hash automatically. This independently verifies that each exact identity recorded before and after both timed comparisons equals its preparation manifest. The tool now enforces this before launch. The consumed run1 tool snapshot is retained."
+}

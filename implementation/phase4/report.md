@@ -78,10 +78,17 @@ three-minute maximum deadline and 3 GiB heap through
 The private-image experiment isolates all compiler function objects in a child
 process and transports data-only requests/results. This makes stronger internal
 call specialization possible without changing the ordinary public library ABI.
-The first alternating matrix passed 45 exact host-observation, emitted-byte, and
-program-execution checks. Preliminary public-H to combined-private medians were
-3.088 to 2.695 seconds for tree and 6.391 to 4.974 seconds for list sort. These
-are experimental artifacts; integration and final gates remain pending.
+The clean final prototype matrix passed 48 exact observations. Public-H to
+private-image medians were 2.957 to 2.095 seconds for tree, 5.384 to 3.776 seconds
+for list sort, and 52.212 to 34.651 seconds for a real 312-declaration compiler
+fragment. See the [private-image report](private-image.md) for controls,
+intermediate experiments, and the exact boundary assumptions.
+
+A supported private build/run tool is being validated. Its outer process cost
+must also be measured: artifact verification and startup can erase inner compiler
+gains on very small requests. Full frontend observations are underway. An
+additional [tag-comparison transform](tag-comparisons.md) was rejected after
+showing no real-core gain despite a 1–2% change on small requests.
 
 The representation experiment found millions of projection copies but no clear
 gain from removing those copies alone. Its first pilot included uncached Base
@@ -89,10 +96,19 @@ loading/checking and must not be compared directly with the warm-cache profiles
 above. Follow-up experiments distinguish projection calls from data layout.
 
 The analysis experiment found many repeated weak-head-normalization requests for
-terms already in weak head normal form. A conservative `All`/`ADT` shortcut keeps
-all other tags on the original evaluator. A disposable list-sort ablation showed
-about 1.16x; a checked Bend-source overlay and exact normalization controls are
-required before accepting that result as an implementation improvement.
+terms already in weak head normal form. Conservative `All`/`ADT` shortcuts passed
+their semantic controls but did not deliver a material whole-H gain, so they were
+not promoted. A stronger constructor-telescope fact is being tested separately:
+closed terms without beta-reducible applications can avoid repeated structural
+substitution. Source and H gates remain pending for that candidate.
+
+The conformance inventory now captures Git output through files and rejects any
+subprocess error even when a supervisor also reports status zero. This environment
+reproduced `spawnSync git EPERM` alongside valid stdout/status zero with synchronous
+pipe capture. File capture succeeded; 15 inventory/judge tests, including an
+explicit error-with-zero-status regression test, passed. The frozen Phase 4
+frontend harness consumes the corrected inventory; compiler semantics are
+unchanged by this supervision fix.
 
 Indexed final-definition selection is now integrated in the Bend sources for
 `driver_final` and `sp_canonical`. The old routines repeatedly filter all prior

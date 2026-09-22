@@ -1,6 +1,6 @@
 # P4-020 — full-source validation of the final private compiler
 
-Status: running. This record was created after the corrected control finished
+Status: complete; exact emission passes, small profile gain with visible drift. This record was created after the corrected control finished
 and after the candidate launched; it is not a preregistration of those runs.
 
 Question: do the private call transformation and combined Boolean/stability
@@ -35,3 +35,19 @@ public-H fixed point and pinned TypeScript runs with different launch histories.
 The final-image full frontend sweep and small TypeScript comparison are separate
 gates. The ordinary B1 development loop remains the recommendation. No result
 here changes the public runtime or proves complete language conformance.
+
+## Completed decision — 18:39 UTC
+
+All four actual outputs equal the proven H. Outer wall in planned order is
+780.022 / 749.523 / 824.998 / 831.247 seconds (control/profile/profile/control).
+The profile improves the pairs by 3.91% and 0.75%; two-sample mean/median wall
+improves 805.634→787.260 seconds (2.28%), while mean maximum-child RSS rises
+3.16%. Preserve the approximately 10% candidate drift and 6.6% control drift;
+these observations do not support a tightly bounded speed estimate.
+
+The [complete report](../../implementation/phase4/private-full-source.md) links
+all four audited observations, actual cache payloads, exact output and tool
+identities. CPU2 affinity held, but other cores were active and a short unpinned
+C inspection overlapped candidate B. No valid observation was dropped. The
+full-source correctness gate passes; profile promotion additionally requires the
+separate frontend audit and reproduction through the canonical package.

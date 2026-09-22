@@ -1,6 +1,6 @@
 # P4-022 — residual costs after private specialization
 
-Status: planned, before collecting the new profiles.
+Status: complete. The plan below preceded both profiles.
 
 Question: which costs remain in the final private compiler, and how do they
 compare with checked B1 on the same real compiler-core source? The initial public
@@ -32,3 +32,17 @@ Only a concrete mechanism with a cheap falsifying gate earns implementation.
 Do not multiply old percentages, equate allocation counts with time, or infer a
 whole-compiler gain from one sampled helper. This diagnostic does not modify a
 compiler image, runtime, ordinary emitted program or any of the 59 Bend modules.
+
+## Result — 18:41 UTC
+
+Both bounded runs completed with checked success, unchanged inputs and identical
+actual emitted bytes. Private exclusive samples retain 28.16% generic `apply`,
+9.65% `force`, 3.64% `project`, 3.01% `call` and 5.22% GC. B1 retains 21.38%
+`run_loop` and substantial string comparison work. Checking/annotation dominate
+both API span inventories. These single diagnostics establish no speed estimate.
+
+Next decision: count concrete typed-worker/matcher staging sites, then apply the
+[lowering design's](../../design/phase4/next_compiler_lowering.md) correctness and
+material-benefit gates. Do not reopen rejected generic memoization or conclude
+that all sampled application work is removable. See the
+[residual report](../../implementation/phase4/residual-profile.md).

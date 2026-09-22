@@ -1,0 +1,212 @@
+{
+  "kind": "phase4-readonly-lowering-inventory",
+  "scope": "Static emitted syntax only; counts are not dynamic calls, allocations, profile samples or speed estimates.",
+  "inputs": {
+    "b1": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/api.mjs",
+      "sha256": "0653f21e7e227bf7bf7e3ad777630da64d520534753900636a571ed57a43f810",
+      "bytes": 1014729
+    },
+    "h": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "bytes": 1143517
+    },
+    "private": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/profile-combined/image.mjs",
+      "sha256": "4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3",
+      "bytes": 1977642
+    },
+    "upstreamCompiler": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/comp.ts",
+      "sha256": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0",
+      "bytes": 188247
+    },
+    "bendEmitter": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/emit.bend",
+      "sha256": "7bf4f547540fc148feea196efd76c2f9a5234b27a33b7d8ac794a04ff5816d78",
+      "bytes": 29673
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+      "bytes": 39290
+    },
+    "privateCalls": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/calls.mjs",
+      "sha256": "a8b9951e312250e7bd03f03e9ac14ab2755d531b65cec6f817684ae1a9941c2b",
+      "bytes": 8767
+    },
+    "privateRuntime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/runtime.mjs",
+      "sha256": "519bee7bae11e26cc84f6104fa27bbfb4a200651ca72769d27d1b7800019a4a4",
+      "bytes": 1943
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+      "sha256": "34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122",
+      "bytes": 589702
+    }
+  },
+  "helpers": [
+    {
+      "name": "core_subst_stable",
+      "b1Parameters": 1,
+      "hEntry": "matcher1/1",
+      "b1Line": 552,
+      "hLine": 2124,
+      "hText": "G[\"core_subst_stable\"]=matcher1(\"KTerm\",()=>fn(6,function(a){const x6757=a[0];const x6758=a[1];const x6759=a[2];const x6760=a[3];const x6761=a[4];const x6762=a[5];return (/* choice */call(get(G,\"String.eq\"),[x6757,\"Var\",])?((x6763)=>build(\"False\",[]))(ctor(\"Unit\",[])):((x6764)=>(/* choice */call(get(G,\"core_subst_stable_terms\"),[x6761])?((x6765)=>(/* choice */call(get(G,\"String.eq\"),[x6757,\"App\",])?((x6766)=>(/* choice */call(call(get(G,\"Bool.and\"),[call(call(get(G,\"Bool.and\"),[call(get(G,\"String.eq\"),[x6758,\"\",])]),[call(get(G,\"U32.is_eq\"),[x6759,0,])])]),[call(get(G,\"U32.is_eq\"),[x6760,0,])])?((x6767)=>jump(call(get(G,\"core_subst_stable_app\"),[x6761]),[x6762]))(ctor(\"Unit\",[])):((x6768)=>build(\"False\",[]))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[])):((x6769)=>build(\"True\",[]))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[])):((x6770)=>build(\"False\",[]))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[])));}));"
+    },
+    {
+      "name": "core_subst_stable_terms",
+      "b1Parameters": 1,
+      "hEntry": "matcher/1",
+      "b1Line": 1760,
+      "hLine": 2123,
+      "hText": "G[\"core_subst_stable_terms\"]=matcher(\"Nil\",()=>ctor(\"True\",[]),()=>matcher1(\"Con\",()=>fn(2,function(a){const x6772=a[0];const x6773=a[1];return (/* choice */call(get(G,\"core_subst_stable\"),[x6772])?((x6774)=>jump(get(G,\"core_subst_stable_terms\"),[x6773]))(ctor(\"Unit\",[])):((x6775)=>build(\"False\",[]))(ctor(\"Unit\",[])));})));"
+    },
+    {
+      "name": "core_subst_stable_app",
+      "b1Parameters": 2,
+      "hEntry": "fn/1",
+      "b1Line": 1774,
+      "hLine": 2122,
+      "hText": "G[\"core_subst_stable_app\"]=fn(1,function(a){const x6778=a[0];return matcher(\"Con\",()=>fn(2,function(a){const x6779=a[0];const x6780=a[1];return build(\"False\",[]);}),()=>matcher1(\"Nil\",()=>call(get(G,\"core_subst_stable_app_kids\"),[x6778])));});"
+    },
+    {
+      "name": "core_subst_stable_app_kids",
+      "b1Parameters": 1,
+      "hEntry": "matcher/1",
+      "b1Line": 3290,
+      "hLine": 2121,
+      "hText": "G[\"core_subst_stable_app_kids\"]=matcher(\"Nil\",()=>ctor(\"False\",[]),()=>matcher1(\"Con\",()=>fn(2,function(a){const x6782=a[0];const x6783=a[1];return jump(call(get(G,\"core_subst_stable_app_tail\"),[x6782]),[x6783]);})));"
+    },
+    {
+      "name": "subst",
+      "b1Parameters": 3,
+      "hEntry": "fn/3",
+      "b1Line": 3328,
+      "hLine": 2131,
+      "hText": "G[\"subst\"]=fn(3,function(a){const x6709=a[0];const x6710=a[1];const x6711=a[2];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x6709]),\"Var\",])?((x6712)=>(/* choice */call(get(G,\"U32.is_eq\"),[call(get(G,\"ix\"),[x6709]),x6710,])?((x6713)=>x6711)(ctor(\"Unit\",[])):((x6714)=>x6709)(ctor(\"Unit\",[]))))(ctor(\"Unit\",[])):((x6715)=>jump(call(call(get(G,\"subst_node\"),[x6709]),[x6710]),[x6711]))(ctor(\"Unit\",[])));});"
+    },
+    {
+      "name": "subst_node",
+      "b1Parameters": 3,
+      "hEntry": "matcher1/1",
+      "b1Line": 5209,
+      "hLine": 2130,
+      "hText": "G[\"subst_node\"]=matcher1(\"KTerm\",()=>fn(8,function(a){const x6719=a[0];const x6720=a[1];const x6721=a[2];const x6722=a[3];const x6723=a[4];const x6724=a[5];const x6725=a[6];const x6726=a[7];return jump(get(G,\"core_rebuild\"),[ctor(\"KTerm\",[x6719,x6720,x6721,x6722,call(call(call(get(G,\"subst_terms\"),[x6723]),[x6725]),[x6726]),x6724,])]);}));"
+    },
+    {
+      "name": "subst_terms",
+      "b1Parameters": 3,
+      "hEntry": "matcher/1",
+      "b1Line": 8459,
+      "hLine": 2129,
+      "hText": "G[\"subst_terms\"]=matcher(\"Nil\",()=>fn(2,function(a){const x6730=a[0];const x6731=a[1];return build(\"Nil\",[]);}),()=>matcher1(\"Con\",()=>fn(4,function(a){const x6732=a[0];const x6733=a[1];const x6734=a[2];const x6735=a[3];return build(\"Con\",[()=>jump(get(G,\"subst\"),[x6732,x6734,x6735,]),()=>jump(call(call(get(G,\"subst_terms\"),[x6733]),[x6734]),[x6735]),]);})));"
+    },
+    {
+      "name": "wnf",
+      "b1Parameters": 2,
+      "hEntry": "fn/2",
+      "b1Line": 899,
+      "hLine": 2086,
+      "hText": "G[\"wnf\"]=fn(2,function(a){const x7028=a[0];const x7029=a[1];return jump(get(G,\"norm_eval\"),[x7028,x7029,ctor(\"Nil\",[]),0,call(get(G,\"atom\"),[\"Absent\"]),]);});"
+    },
+    {
+      "name": "norm_eval",
+      "b1Parameters": 5,
+      "hEntry": "fn/5",
+      "b1Line": 2271,
+      "hLine": 2058,
+      "hText": "G[\"norm_eval\"]=fn(5,function(a){const x7316=a[0];const x7317=a[1];const x7318=a[2];const x7319=a[3];const x7320=a[4];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x7317]),\"Var\",])?((x7321)=>jump(call(call(call(call(get(G,\"norm_var\"),[x7316,x7317,]),[call(get(G,\"ks\"),[x7317])]),[x7318]),[x7319]),[x7320]))(ctor(\"Unit\",[])):((x7322)=>jump(get(G,\"norm_eval_node\"),[x7316,x7317,x7318,x7319,x7320,]))(ctor(\"Unit\",[])));});"
+    },
+    {
+      "name": "norm_eval_node",
+      "b1Parameters": 5,
+      "hEntry": "fn/5",
+      "b1Line": 4028,
+      "hLine": 2085,
+      "hText": "G[\"norm_eval_node\"]=fn(5,function(a){const x7035=a[0];const x7036=a[1];const x7037=a[2];const x7038=a[3];const x7039=a[4];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x7036]),\"App\",])?((x7040)=>jump(get(G,\"norm_eval\"),[x7035,call(get(G,\"kid\"),[x7036,0,]),ctor(\"Con\",[call(get(G,\"kid\"),[x7036,1,]),x7037,]),x7038,x7039,]))(ctor(\"Unit\",[])):((x7041)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x7036]),\"Ann\",])?((x7042)=>jump(get(G,\"norm_eval\"),[x7035,call(get(G,\"kid\"),[x7036,0,]),x7037,x7038,x7039,]))(ctor(\"Unit\",[])):((x7043)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x7036]),\"Let\",])?((x7044)=>jump(get(G,\"norm_eval\"),[x7035,call(get(G,\"norm_let\"),[call(get(G,\"ks\"),[x7036])]),x7037,x7038,x7039,]))(ctor(\"Unit\",[])):((x7045)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x7036]),\"Ref\",])?((x7046)=>jump(get(G,\"norm_ref\"),[x7035,x7036,x7037,call(call(get(G,\"lookup\"),[x7035]),[call(get(G,\"nm\"),[x7036])]),]))(ctor(\"Unit\",[])):((x7047)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x7036]),\"Min\",])?((x7048)=>jump(call(get(G,\"norm_apply\"),[call(get(G,\"norm_min\"),[x7035,call(get(G,\"kid\"),[x7036,0,]),call(get(G,\"kid\"),[x7036,1,]),])]),[x7037]))(ctor(\"Unit\",[])):((x7049)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x7036]),\"Rwt\",])?((x7050)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[call(get(G,\"wnf\"),[x7035,call(get(G,\"kid\"),[x7036,0,]),])]),\"Rfl\",])?((x7051)=>jump(get(G,\"norm_eval\"),[x7035,call(get(G,\"kid\"),[x7036,2,]),x7037,x7038,x7039,]))(ctor(\"Unit\",[])):((x7052)=>jump(call(get(G,\"norm_apply\"),[x7036]),[x7037]))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[])):((x7053)=>jump(call(call(call(get(G,\"norm_args\"),[x7035,x7036,]),[x7037]),[x7038]),[x7039]))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[])));});"
+    },
+    {
+      "name": "check",
+      "b1Parameters": 5,
+      "hEntry": "fn/5",
+      "b1Line": 3308,
+      "hLine": 1880,
+      "hText": "G[\"check\"]=fn(5,function(a){const x8984=a[0];const x8985=a[1];const x8986=a[2];const x8987=a[3];const x8988=a[4];return jump(get(G,\"dg_trace\"),[x8984,x8985,x8986,x8988,call(get(G,\"check_node\"),[x8984,x8985,call(get(G,\"core_beta\"),[x8986]),x8987,x8988,]),]);});"
+    },
+    {
+      "name": "check_node",
+      "b1Parameters": 5,
+      "hEntry": "fn/5",
+      "b1Line": 5139,
+      "hLine": 1879,
+      "hText": "G[\"check_node\"]=fn(5,function(a){const x8994=a[0];const x8995=a[1];const x8996=a[2];const x8997=a[3];const x8998=a[4];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x8996]),\"Lam\",])?((x8999)=>jump(get(G,\"check_lam\"),[x8994,x8995,x8996,x8997,call(get(G,\"wnf\"),[call(get(G,\"cb\"),[x8994]),x8998,]),]))(ctor(\"Unit\",[])):((x9000)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x8996]),\"Ctr\",])?((x9001)=>jump(get(G,\"check_ctr\"),[x8994,x8995,x8996,x8997,call(get(G,\"wnf\"),[call(get(G,\"cb\"),[x8994]),x8998,]),]))(ctor(\"Unit\",[])):((x9002)=>(/* choice */call(get(G,\"Bool.or\"),[call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x8996]),\"Mat\",]),call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x8996]),\"Efq\",]),])?((x9003)=>jump(get(G,\"check_mat\"),[x8994,x8995,x8996,x8997,call(get(G,\"wnf\"),[call(get(G,\"cb\"),[x8994]),x8998,]),]))(ctor(\"Unit\",[])):((x9004)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x8996]),\"Rfl\",])?((x9005)=>jump(get(G,\"check_rfl\"),[x8994,x8996,call(get(G,\"wnf\"),[call(get(G,\"cb\"),[x8994]),x8998,]),]))(ctor(\"Unit\",[])):((x9006)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x8996]),\"Hol\",])?((x9007)=>jump(get(G,\"bad\"),[\"unresolved hole\"]))(ctor(\"Unit\",[])):((x9008)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x8996]),\"Let\",])?((x9009)=>jump(call(call(call(call(call(get(G,\"check_let\"),[x8994,x8995,x8995,]),[call(get(G,\"ks\"),[x8996])]),[x8997]),[x8998]),[ctor(\"Nil\",[])]),[ctor(\"Nil\",[])]))(ctor(\"Unit\",[])):((x9010)=>(/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x8996]),\"Rwt\",])?((x9011)=>jump(get(G,\"check_rwt\"),[x8994,x8995,x8996,x8997,x8998,call(get(G,\"infer\"),[x8994,x8995,call(get(G,\"kid\"),[x8996,0,]),x8997,ctor(\"Nil\",[]),]),]))(ctor(\"Unit\",[])):((x9012)=>jump(get(G,\"check_fits\"),[x8994,call(get(G,\"infer\"),[x8994,x8995,x8996,x8997,ctor(\"Nil\",[]),]),x8998,]))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[]))))(ctor(\"Unit\",[])));});"
+    },
+    {
+      "name": "tele_check",
+      "b1Parameters": 5,
+      "hEntry": "fn/3",
+      "b1Line": 578,
+      "hLine": 1885,
+      "hText": "G[\"tele_check\"]=fn(3,function(a){const x8937=a[0];const x8938=a[1];const x8939=a[2];return matcher(\"Nil\",()=>fn(1,function(a){const x8940=a[0];return jump(get(G,\"ok\"),[call(get(G,\"atom\"),[\"Args\"]),x8939,ctor(\"Nil\",[]),]);}),()=>matcher1(\"Con\",()=>fn(3,function(a){const x8941=a[0];const x8942=a[1];const x8943=a[2];return jump(get(G,\"tele_check_cached_head\"),[x8937,x8938,call(get(G,\"wnf\"),[call(get(G,\"cb\"),[x8937]),x8939,]),x8941,x8942,x8943,]);})));});"
+    },
+    {
+      "name": "tele_check_static",
+      "b1Parameters": 5,
+      "hEntry": "fn/3",
+      "b1Line": 5109,
+      "hLine": 1813,
+      "hText": "G[\"tele_check_static\"]=fn(3,function(a){const x9725=a[0];const x9726=a[1];const x9727=a[2];return matcher(\"Nil\",()=>fn(1,function(a){const x9728=a[0];return jump(get(G,\"ok\"),[call(get(G,\"atom\"),[\"Args\"]),x9727,ctor(\"Nil\",[]),]);}),()=>matcher1(\"Con\",()=>fn(3,function(a){const x9729=a[0];const x9730=a[1];const x9731=a[2];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x9727]),\"All\",])?((x9732)=>jump(get(G,\"tele_check_done\"),[call(get(G,\"check\"),[x9725,x9726,x9729,call(get(G,\"qdem\"),[call(get(G,\"qt\"),[x9727]),x9731,]),call(get(G,\"kid\"),[x9727,0,]),]),call(call(call(get(G,\"tele_check_static\"),[x9725,x9726,call(get(G,\"kid\"),[x9727,1,]),]),[x9730]),[x9731]),]))(ctor(\"Unit\",[])):((x9733)=>jump(call(call(get(G,\"tele_check\"),[x9725,x9726,x9727,]),[ctor(\"Con\",[x9729,x9730,])]),[x9731]))(ctor(\"Unit\",[])));})));});"
+    },
+    {
+      "name": "ka_defs_except",
+      "b1Parameters": 3,
+      "hEntry": "fn/1",
+      "b1Line": 1613,
+      "hLine": 1708,
+      "hText": "G[\"ka_defs_except\"]=fn(1,function(a){const x10584=a[0];return matcher(\"Nil\",()=>fn(1,function(a){const x10585=a[0];return build(\"Nil\",[]);}),()=>matcher1(\"Con\",()=>fn(3,function(a){const x10586=a[0];const x10587=a[1];const x10588=a[2];return build(\"Con\",[()=>(/* choice */call(call(get(G,\"has_name\"),[x10588]),[call(get(G,\"dn\"),[x10586])])?((x10589)=>x10586)(ctor(\"Unit\",[])):((x10590)=>jump(get(G,\"ka_def\"),[x10584,x10586,]))(ctor(\"Unit\",[]))),()=>jump(call(call(get(G,\"ka_defs_except\"),[x10584]),[x10587]),[x10588]),]);})));});"
+    },
+    {
+      "name": "ka_def",
+      "b1Parameters": 2,
+      "hEntry": "fn/2",
+      "b1Line": 2082,
+      "hLine": 1706,
+      "hText": "G[\"ka_def\"]=fn(2,function(a){const x10598=a[0];const x10599=a[1];return build(\"KDef\",[()=>jump(get(G,\"dn\"),[x10599]),()=>jump(get(G,\"dk\"),[x10599]),()=>jump(get(G,\"da\"),[x10599]),()=>jump(get(G,\"dx\"),[x10599]),()=>jump(get(G,\"dt\"),[x10599]),()=>(/* choice */call(get(G,\"Bool.or\"),[call(get(G,\"Bool.or\"),[call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[call(get(G,\"dv\"),[x10599])]),\"Absent\",]),call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[call(get(G,\"dv\"),[x10599])]),\"Foreign\",]),]),call(get(G,\"U32.is_gt\"),[call(get(G,\"dx\"),[x10599]),0,]),])?((x10600)=>jump(get(G,\"dv\"),[x10599]))(ctor(\"Unit\",[])):((x10601)=>jump(get(G,\"annotate\"),[ctor(\"KEnv\",[x10598,call(get(G,\"dn\"),[x10599]),call(get(G,\"ref\"),[call(get(G,\"dn\"),[x10599])]),0,ctor(\"Nil\",[]),call(get(G,\"du\"),[x10599]),]),ctor(\"Nil\",[]),call(get(G,\"dv\"),[x10599]),call(get(G,\"dt\"),[x10599]),]))(ctor(\"Unit\",[]))),()=>jump(get(G,\"dc\"),[x10599]),()=>jump(get(G,\"db\"),[x10599]),()=>jump(get(G,\"du\"),[x10599]),]);});"
+    },
+    {
+      "name": "ka_args",
+      "b1Parameters": 4,
+      "hEntry": "fn/3",
+      "b1Line": 608,
+      "hLine": 1698,
+      "hText": "G[\"ka_args\"]=fn(3,function(a){const x10690=a[0];const x10691=a[1];const x10692=a[2];return matcher(\"Nil\",()=>ctor(\"Nil\",[]),()=>matcher1(\"Con\",()=>fn(2,function(a){const x10693=a[0];const x10694=a[1];return jump(get(G,\"ka_args_head\"),[x10690,x10691,call(get(G,\"wnf\"),[call(get(G,\"cb\"),[x10690]),x10692,]),x10693,x10694,]);})));});"
+    },
+    {
+      "name": "ka_args_static",
+      "b1Parameters": 4,
+      "hEntry": "fn/3",
+      "b1Line": 5219,
+      "hLine": 1682,
+      "hText": "G[\"ka_args_static\"]=fn(3,function(a){const x10844=a[0];const x10845=a[1];const x10846=a[2];return matcher(\"Nil\",()=>ctor(\"Nil\",[]),()=>matcher1(\"Con\",()=>fn(2,function(a){const x10847=a[0];const x10848=a[1];return (/* choice */call(get(G,\"String.eq\"),[call(get(G,\"tg\"),[x10846]),\"All\",])?((x10849)=>build(\"Con\",[()=>jump(get(G,\"annotate\"),[x10844,x10845,x10847,call(get(G,\"kid\"),[x10846,0,]),]),()=>jump(call(get(G,\"ka_args_static\"),[x10844,x10845,call(get(G,\"kid\"),[x10846,1,]),]),[x10848]),]))(ctor(\"Unit\",[])):((x10850)=>jump(call(get(G,\"ka_args_cached\"),[x10844,x10845,x10846,]),[ctor(\"Con\",[x10847,x10848,])]))(ctor(\"Unit\",[])));})));});"
+    },
+    {
+      "name": "annotate",
+      "b1Parameters": 4,
+      "hEntry": "fn/4",
+      "b1Line": 3349,
+      "hLine": 1705,
+      "hText": "G[\"annotate\"]=fn(4,function(a){const x10606=a[0];const x10607=a[1];const x10608=a[2];const x10609=a[3];return jump(get(G,\"ka_wrap\"),[call(get(G,\"ka_node\"),[x10606,x10607,call(get(G,\"core_beta\"),[x10608]),call(get(G,\"wnf\"),[call(get(G,\"cb\"),[x10606]),x10609,]),]),x10609,]);});"
+    }
+  ],
+  "inventory": {
+    "publicHGlobals": 1518,
+    "publicHMatcherEntries": 386,
+    "publicHOrdinaryFnEntries": 1132,
+    "privatePositionalWorkers": 1123
+  },
+  "method": "Read exact named emitted declarations and emitter/runtime source; parameter and declaration counts are static syntax inventory. All input hashes verified at archive creation. No compiler execution, profiling, timing or transformation in this review."
+}

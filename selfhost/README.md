@@ -1,11 +1,13 @@
 # Bend2 compiler port in Bend2
 
 See the [repository compiler guide](../docs/BEND-IN-BEND.md) for building, running
-and validating this port. The [fast conformance guide](../docs/PHASE2_DEVELOPMENT.md)
-and [phase 2 implementation report](../implementation/phase2/report.md) describe
-the current development workflow, measured performance and validation. Historical
-results below apply to their recorded artifacts; phase 2 does not replace the
-default distributed compiler.
+and validating this port. For current source edits, start with the
+[phase 4 development commands](../docs/PHASE4_DEVELOPMENT.md#keep-the-edit-loop-small):
+the measured checked B1 rebuild takes 20.735 seconds, and a reused live paired
+21-case check takes 9.328 seconds median. The
+[fast conformance guide](../docs/PHASE2_DEVELOPMENT.md) explains exact test selection.
+Historical reports apply to their recorded artifacts. Development APIs and
+private images are selected explicitly; the distributed default remains separate.
 
 The [phase 3 efficiency guide](../docs/PHASE3_DEVELOPMENT.md) covers persistent
 parse/check workers, reusable native builds and generated-program runtime probes;

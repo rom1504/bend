@@ -14,12 +14,14 @@ The source changes have passed a checked fixed point, all 2,756 frontend
 observations and the selected native gates. The 560 existing TypeScript
 differences remain; this is not full conformance.
 
-The corrected private compiler now passes full-source emission. Its first
-control/profile pair is **780.022→749.523 seconds**, with exact proven H output
-and maximum child RSS **4,333,668→4,464,192 KiB**. The reverse pair is running.
-The profile's focused core gain is 11.3%, but its first full-source gain is only
-3.91%. See the [whole-source report](private-full-source.md), rather than
-extrapolating the component result.
+The corrected private compiler passes all four full-source emissions, each
+exactly equal to proven H. Control/profile mean process wall is
+**805.634→787.260 seconds** (2.28% less); the two pairs improve 3.91% and 0.75%.
+The candidate ranges from 749.523 to 824.998 seconds, with mean maximum-child RSS
+3.16% higher. Its 11.3% core gain therefore becomes a modest whole-source gain.
+See the [complete comparison](private-full-source.md), which retains drift and
+all observations. Final private frontend results also preserve every one of the
+2,756 raw results and verdicts; canonical opt-in packaging is being finalized.
 
 The final [small comparison](private-final-small.md) passes 72/72 observations.
 Private H takes 35.0%/36.9% less request time than public H on successful tree/list
@@ -134,9 +136,9 @@ measurement are retained in [P4-016](../../experiments/phase4/P4-016-private-lex
 The [lexical-scope correction](private-scope-fix.md) now passes 25 package tests,
 14 actual split-worker controls and the exact escaped-string output comparison;
 its corrected full-source run now passes with exact H output. The combined
-profile also passes its first complete source run; its reverse-order comparison
-and final-image frontend sweep remain pending. Earlier
-selected program/frontend successes do not establish this missing emission gate.
+profile passes both complete source runs and its final-image frontend audit.
+The original failed image remains rejected; these gates apply to the corrected
+image identities, not to earlier selected successes.
 The [54-observation final small matrix](small-comparison.md) remains scoped to
 its tested inputs, including its recorded negative-case regression.
 

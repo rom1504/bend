@@ -101,3 +101,35 @@ the unchanged default and the ordinary checked B1 development loop. Do not
 launch more percentage-scale private variants while the selected candidate is
 under integration validation. Native frontend/annotation feasibility remains
 a separate investigation with its own source and semantic boundaries.
+
+## Final private gates — 2026-09-22, 18:41 UTC
+
+[P4-020](phase4/P4-020-private-full-source.md) passes all four planned source
+emissions, each exactly equal to the proven H. Opposite-order profile gains are
+3.91% and 0.75%; mean process wall improves 805.634→787.260 seconds (2.28%), with
+3.16% higher mean maximum-child RSS. Preserve the roughly 10% candidate drift.
+The final private frontend independently preserves all 2,756 raw results and
+verdicts, with the same 560 differences from TypeScript. Canonical named-profile
+packaging is being finalized; the default bytes remain a separate identity.
+
+[P4-018](phase4/P4-018-native-annotation-parallelism.md) rejects the disposable
+two-worker native annotation wrapper: exact trees agree, but component wall is
+11.5% worse in both orders. Propagation of may-fork metadata is a concrete
+suspected cause, not a proven causal ablation. No four-worker/full-source
+escalation follows this negative result.
+
+### Updated frontier
+
+[P4-021](phase4/P4-021-frontend-scheduling.md) measures four-core validation and
+an idle serial bracket with no competing compiler experiment. Finish this route
+before interpreting its wall-time improvement. Keep the seconds-scale B1 focused
+loop as the default edit workflow.
+
+[P4-022](phase4/P4-022-residual-private-profile.md) finishes bounded final-core
+profiles: private generic apply remains 28.16% exclusive samples, while checking
+and annotation dominate API spans. The
+[next lowering design](../design/phase4/next_compiler_lowering.md) identifies typed
+workers spanning matches, but the cheapest next gate is actual family/staging
+counts plus strict demand-order controls. A sample share is not a speed ceiling.
+Do not reopen rejected memoization or claim a tenfold gain from overlapping
+micro-optimizations.

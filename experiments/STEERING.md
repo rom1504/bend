@@ -1,8 +1,8 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-22, 17:56 UTC, after the corrected private full-source
-control and the independent combined-profile review.
-Next review: after final-image full-source and frontend gates.
+Evidence cutoff: 2026-09-22, 18:41 UTC, after both final private gates and
+bounded residual profiles.
+Next review: after the idle-host frontend scheduling comparison.
 Authorized work window ends approximately 20:16 UTC; reserve the final 15 minutes
 for evidence review, documentation, commits and push.
 
@@ -29,32 +29,39 @@ The routes below are investigator choices, not additional user requirements.
   seconds for old/new compiler; all emitted libraries equal the new H. There is
   visible control drift, retained in the report.
 - The explicit private compiler boundary removes substantial generic dispatch
-  cost on tested subsets. Its first whole-source attempt FAILED in emission:
-  hoisted workers lost block-local helper table `F`. P4-016's correction passed
-  25 package tests, 14 actual-worker controls and the escaped-string byte check.
-  Its corrected full-source rerun completed in 780.022 seconds of process wall,
-  emitted exactly the proven H bytes, and peaked at 4,333,668 KiB RSS. This is one
-  observation; the failed predecessor remains in the archive.
-- The corrected Boolean/stability four-way comparison passed all 48 observations.
-  Core median request time is 26.902→23.855 seconds, 11.3% less, with all three
-  pairs improving. Exact-image broad and full-source gates are now running.
+  cost on tested subsets. Its initial whole-source failure (`F is not defined`)
+  exposed an invalid lexical capture; the correction and counterexample are
+  retained. Both corrected default and combined profile now emit exact H twice.
+  Control/profile means are 805.634→787.260 seconds, 2.28% less wall; individual
+  pairs improve 3.91% and 0.75%, with visible drift and 3.16% higher mean
+  maximum-child RSS. This is a modest additional profile gain.
+- The final private frontend independently preserves all 2,756 raw results and
+  verdicts. Canonical named-profile packaging must reproduce exact image bytes
+  and pass its guards; the default remains unchanged.
+- The corrected Boolean/stability four-way comparison passes all 48 observations.
+  Core median request time is 26.902→23.855 seconds, 11.3% less. Final successful
+  small private requests take 35.0%/36.9% less time than public H, but remain
+  5.14×/8.05× the pinned TypeScript request time. Do not extrapolate either result
+  to full-source wall time.
+- Native parallel annotation is rejected: two-worker component wall is 11.5%
+  worse in both orders, despite exact annotation trees. Propagated task-mode
+  eligibility is a concrete suspicion, not a causal result.
 
 ## Ranked next decisions
 
 | Rank | Route | Cheapest useful test | Stop or promotion criterion |
 | --- | --- | --- | --- |
-| 1 | Complete final private profile gates | Corrected control completed; candidate full-source and frontend runs active | Exact full H bytes, unchanged frontend observations and resource evidence required |
-| 2 | Support the exact Boolean/stability combination | Four-way matrix and independent profile review pass | Keep default bytes unchanged; named opt-in profile pins reviewed H/runtime/bodies; require rank 1 before promotion |
-| 3 | Final small B1/H/private/TypeScript matrix | Final candidate identities, alternating fresh workers | Separate successful emission from exact rejection and startup |
-| 4 | Make the fastest validated workflow convenient | Run genuine focused CLI on the chosen artifact | Preserve all verdicts/diagnostics, reuse bounds and fresh source/import behavior |
-| 5 | Reduce remaining generated matcher dispatch | Exact Con/arity2 pilot has now failed its material-benefit threshold | Retain P4-015 rejection; require a stronger mechanism before reopening |
-| 6 | Native parallel annotation | Disposable checked wrapper, exact annotation oracle, serial/two-worker costs | Stop before 19:15 if build/protocol dominates; require material component gain before any full build |
-| 7 | Broader term-layout or typed intermediate representation | Quantify residual allocation/dispatch after current specialization | Do not start a migration on operation counts alone; require a boundary and an isolated material result |
+| 1 | Shorten full frontend validation through scheduling | Complete four-core run, idle serial bracket and reverse four-core if useful | Exact all-observation/history audit; record wall and aggregate live RSS |
+| 2 | Expose the proven private profile as opt-in | Reproduce both exact images through canonical package after timed scheduling | Default61e7/profile4318, package and refusal tests, unchanged public ABI |
+| 3 | Quantify typed-worker/matcher family | Bounded counters on actual final private core; exact output required | Stop if safe attribution fails or selected family is too rare; counts are not time |
+| 4 | Preserve reproducible experimental starting points | Finish bounded profile and complete gate archives | Hash actual artifacts, retain failed attempts, document scope and restoration |
+| 5 | Typed workers spanning matches | Follow the new lowering design only after rank3 | Demand/error order, capture, partial/overapplication and deep-stack controls before timing |
+| 6 | Constructor continuation or typed emission facts | Prove one dependency/demand boundary and count actual repeated work | Multi-day architectural work; no broad migration during final gate window |
 
-Ranks 1–4 are integration/measurement work, not new algorithmic hypotheses.
-Ranks 5–6 are alternatives if evidence and remaining time justify them.
-We cannot obtain another order of magnitude by adding the percentage gains of
-overlapping micro-optimizations.
+The four-core scheduling interval reserves all physical cores; other agents may
+prepare documentation and small metadata audits but must defer compiler work.
+Do not add percentage gains from overlapping transformations, and do not equate
+profile samples with an achievable whole-compiler speedup.
 
 ## Known obstructions
 
@@ -72,13 +79,13 @@ overlapping micro-optimizations.
 
 ## Assignment and resource state
 
-Root owns strategy, integration, ledger, commits and pushes, and final small
-comparisons on CPU0, frontend on CPU1 and full-source on CPU2. Direct-calls agent
-stages the profile integration without mutating running inputs. Compact-index
-agent independently reviews gates. Lexer-analysis has CPU3 for the bounded,
-disposable annotation experiment; multicore timings require explicit scheduling
-after other cores free. Shared cache/memory interference remains possible even
-on different cores. The 59 production modules and checked source are frozen.
+Root owns strategy, evidence archives, documentation, commits and pushes.
+Direct-calls agent owns the exclusively scheduled frontend comparison.
+Compact-index independently audits final gates and integrates the named profile
+after the timed interval. Lexer-analysis archives the negative annotation result
+and prepares bounded matcher-family counters. All 59 production modules and the
+checked source remain frozen. Timing still has shared cache/memory and operating
+system effects; "no competing compiler experiment" is not OS isolation.
 
 Do not mutate source or a tool consumed by a running experiment. Preserve frozen
 controls and invalid attempts. Read the [ledger](ledger.md) before assigning the

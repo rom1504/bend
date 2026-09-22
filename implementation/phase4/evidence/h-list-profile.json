@@ -1,0 +1,3071 @@
+{
+  "kind": "phase4-diagnostic-cpu-profile",
+  "complete": true,
+  "started": "2026-09-22T14:26:14.797Z",
+  "scope": "Instrumented one-request profile, after Base preparation and dependency discovery. CPU samples and API spans diagnose costs; instrumentation and warmed discovery mean these are not benchmark samples.",
+  "node": {
+    "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "version": "v24.18.0",
+    "args": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ]
+  },
+  "affinity": "Cpus_allowed_list:\t1",
+  "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+  "input": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+  "mode": "compile",
+  "primeMs": 78.41007500000006,
+  "samplingIntervalMicroseconds": 1000,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/cpu-profile.mjs",
+      "sha256": "105b05f04d8c858349f81025ae4549dedd6fd51c100f81cc038e8b407e09bce1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/h-list-profile-config.json",
+      "sha256": "6224f49e0c9baf84fd172887effa22a20662f30f1bc7b2ec0d83f59c837ddd23"
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "sha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/typed-driver.mjs",
+      "sha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+      "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+      "sha256": "b7e1a7187eb35e4253208fcdad5122311e4d936fb23198568568cb73db45746e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/native-build.mjs",
+      "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    }
+  ],
+  "events": [
+    {
+      "name": "f_parse",
+      "beginMs": 1099.364344,
+      "endMs": 1402.098308
+    },
+    {
+      "name": "f_source_parsed",
+      "beginMs": 1402.119845,
+      "endMs": 1402.163044
+    },
+    {
+      "name": "f_load_graph_seed_trace",
+      "beginMs": 1402.619839,
+      "endMs": 2509.926837
+    },
+    {
+      "name": "check_from_exact_prefix",
+      "beginMs": 2509.981392,
+      "endMs": 4529.635788
+    },
+    {
+      "name": "driver_owned",
+      "beginMs": 4529.653076,
+      "endMs": 4533.492568
+    },
+    {
+      "name": "driver_todos",
+      "beginMs": 4533.499427,
+      "endMs": 4902.336609
+    },
+    {
+      "name": "specialize_book",
+      "beginMs": 4902.359499,
+      "endMs": 5321.537973
+    },
+    {
+      "name": "specialized_error",
+      "beginMs": 5321.543372,
+      "endMs": 5321.593033
+    },
+    {
+      "name": "specialized_book",
+      "beginMs": 5321.595361,
+      "endMs": 5321.63328
+    },
+    {
+      "name": "driver_emit_owned",
+      "beginMs": 5321.658785,
+      "endMs": 5347.146155
+    },
+    {
+      "name": "j_compile_error",
+      "beginMs": 5347.153301,
+      "endMs": 5362.367797
+    },
+    {
+      "name": "book_context",
+      "beginMs": 5362.371967,
+      "endMs": 5510.178181
+    },
+    {
+      "name": "j_roots",
+      "beginMs": 5510.183365,
+      "endMs": 5510.382609
+    },
+    {
+      "name": "j_stops",
+      "beginMs": 5510.385448,
+      "endMs": 5513.698486
+    },
+    {
+      "name": "reach_book",
+      "beginMs": 5513.719348,
+      "endMs": 5689.235095
+    },
+    {
+      "name": "j_foreign_error",
+      "beginMs": 5689.241505,
+      "endMs": 5690.896996
+    },
+    {
+      "name": "j_stops",
+      "beginMs": 5690.919843,
+      "endMs": 5694.27552
+    },
+    {
+      "name": "annotate_selected",
+      "beginMs": 5694.277495,
+      "endMs": 6633.708486
+    },
+    {
+      "name": "j_layout_error",
+      "beginMs": 6633.726703,
+      "endMs": 6965.079058
+    },
+    {
+      "name": "j_foreign_paths",
+      "beginMs": 6965.096675,
+      "endMs": 6965.910002
+    },
+    {
+      "name": "j_program_selected",
+      "beginMs": 6965.914574,
+      "endMs": 7398.734924
+    },
+    {
+      "name": "j_modules",
+      "beginMs": 7399.019737,
+      "endMs": 7399.097861
+    }
+  ],
+  "requestMs": 6390.055271,
+  "profileStartUncertaintyMs": 31.242847000000097,
+  "samples": 4879,
+  "sampledMs": 6420.471,
+  "topFunctions": [
+    {
+      "functionName": "apply",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 31,
+      "sampledMs": 2464.419,
+      "fraction": 0.3838377277928675
+    },
+    {
+      "functionName": "(garbage collector)",
+      "url": "",
+      "line": 0,
+      "sampledMs": 423.93,
+      "fraction": 0.0660278661799111
+    },
+    {
+      "functionName": "force",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 17,
+      "sampledMs": 409.037,
+      "fraction": 0.06370825442557096
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 231,
+      "sampledMs": 277.267,
+      "fraction": 0.04318483799708775
+    },
+    {
+      "functionName": "call",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 44,
+      "sampledMs": 230.779,
+      "fraction": 0.035944247703945706
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 92,
+      "sampledMs": 199.186,
+      "fraction": 0.03102358066877025
+    },
+    {
+      "functionName": "get",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 46,
+      "sampledMs": 185.528,
+      "fraction": 0.028896322403761342
+    },
+    {
+      "functionName": "project",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 77,
+      "sampledMs": 160.34,
+      "fraction": 0.024973245732283503
+    },
+    {
+      "functionName": "stringEq",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 173,
+      "sampledMs": 122.104,
+      "fraction": 0.019017919401863197
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2095,
+      "sampledMs": 101.465,
+      "fraction": 0.01580335772873984
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2105,
+      "sampledMs": 76.534,
+      "fraction": 0.011920309273260482
+    },
+    {
+      "functionName": "readBaseCache",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/typed-driver.mjs",
+      "line": 216,
+      "sampledMs": 71.494,
+      "fraction": 0.011135320134613177
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1840,
+      "sampledMs": 65.092,
+      "fraction": 0.010138197026355232
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2133,
+      "sampledMs": 53.256,
+      "fraction": 0.008294718565039855
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2076,
+      "sampledMs": 49.986,
+      "fraction": 0.007785410135798448
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2106,
+      "sampledMs": 46.623,
+      "fraction": 0.007261616787927241
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2104,
+      "sampledMs": 44.878,
+      "fraction": 0.006989829873851934
+    },
+    {
+      "functionName": "ctor",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 47,
+      "sampledMs": 44.434,
+      "fraction": 0.006920676068780623
+    },
+    {
+      "functionName": "encode",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+      "line": 16,
+      "sampledMs": 42.467,
+      "fraction": 0.006614312252169662
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 45,
+      "sampledMs": 41.271,
+      "fraction": 0.00642803308355415
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1719,
+      "sampledMs": 41.147,
+      "fraction": 0.006408719858714415
+    },
+    {
+      "functionName": "fields",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 60,
+      "sampledMs": 40.552,
+      "fraction": 0.006316047529846331
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1409,
+      "sampledMs": 31.357,
+      "fraction": 0.004883909607254671
+    },
+    {
+      "functionName": "post",
+      "url": "node:inspector",
+      "line": 115,
+      "sampledMs": 31.047,
+      "fraction": 0.004835626545155332
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2044,
+      "sampledMs": 30.625,
+      "fraction": 0.004769899279974943
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2109,
+      "sampledMs": 29.66,
+      "fraction": 0.0046195987802141
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2087,
+      "sampledMs": 27.427,
+      "fraction": 0.004271804981285641
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2127,
+      "sampledMs": 25.963,
+      "fraction": 0.004043784326726186
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1406,
+      "sampledMs": 24.923,
+      "fraction": 0.0038818024409735673
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2119,
+      "sampledMs": 21.452,
+      "fraction": 0.003341187897274203
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2098,
+      "sampledMs": 21.327,
+      "fraction": 0.003321718920621244
+    },
+    {
+      "functionName": "fn",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 14,
+      "sampledMs": 20.975,
+      "fraction": 0.003266894282366512
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2102,
+      "sampledMs": 18.791,
+      "fraction": 0.002926732322286013
+    },
+    {
+      "functionName": "allocate",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+      "line": 18,
+      "sampledMs": 18.229,
+      "fraction": 0.0028391998032543096
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1022,
+      "sampledMs": 18.226,
+      "fraction": 0.0028387325478146383
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1700,
+      "sampledMs": 18.075,
+      "fraction": 0.002815214024017864
+    },
+    {
+      "functionName": "(program)",
+      "url": "",
+      "line": 0,
+      "sampledMs": 18.043,
+      "fraction": 0.0028102299659947066
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2099,
+      "sampledMs": 17.907,
+      "fraction": 0.002789047719396287
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2097,
+      "sampledMs": 17.527,
+      "fraction": 0.0027298620303712923
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+      "line": 79,
+      "sampledMs": 16.711,
+      "fraction": 0.002602768550780776
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1283,
+      "sampledMs": 15.893,
+      "fraction": 0.0024753635675638127
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1623,
+      "sampledMs": 15.524,
+      "fraction": 0.002417891148484278
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2118,
+      "sampledMs": 15.524,
+      "fraction": 0.002417891148484278
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2126,
+      "sampledMs": 14.775,
+      "fraction": 0.002301233040379748
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1021,
+      "sampledMs": 14.645,
+      "fraction": 0.0022809853046606705
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2129,
+      "sampledMs": 14.31,
+      "fraction": 0.0022288084472307404
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2135,
+      "sampledMs": 13.753,
+      "fraction": 0.0021420546872651554
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1717,
+      "sampledMs": 13.588,
+      "fraction": 0.0021163556380832498
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2116,
+      "sampledMs": 12.703,
+      "fraction": 0.0019785152833803003
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2074,
+      "sampledMs": 12.593,
+      "fraction": 0.0019613825839256962
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2113,
+      "sampledMs": 12.226,
+      "fraction": 0.0019042216684726089
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2079,
+      "sampledMs": 12.166,
+      "fraction": 0.0018948765596791886
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2049,
+      "sampledMs": 12.015,
+      "fraction": 0.0018713580358824143
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1407,
+      "sampledMs": 11.796,
+      "fraction": 0.0018372483887864302
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2110,
+      "sampledMs": 11.547,
+      "fraction": 0.001798466187293736
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1870,
+      "sampledMs": 11.526,
+      "fraction": 0.0017951953992160388
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1605,
+      "sampledMs": 11.419,
+      "fraction": 0.001778529955201106
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2072,
+      "sampledMs": 10.977,
+      "fraction": 0.001709687653756243
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2107,
+      "sampledMs": 10.908,
+      "fraction": 0.0016989407786438097
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 989,
+      "sampledMs": 10.746,
+      "fraction": 0.0016737089849015749
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2092,
+      "sampledMs": 10.739,
+      "fraction": 0.0016726187222090092
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2193,
+      "sampledMs": 10.72,
+      "fraction": 0.0016696594377577595
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2132,
+      "sampledMs": 10.368,
+      "fraction": 0.001614834799503027
+    },
+    {
+      "functionName": "digest",
+      "url": "node:internal/crypto/hash",
+      "line": 154,
+      "sampledMs": 10.01,
+      "fraction": 0.0015590756503689527
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1137,
+      "sampledMs": 9.996,
+      "fraction": 0.0015568951249838212
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1643,
+      "sampledMs": 9.73,
+      "fraction": 0.0015154651426663246
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1408,
+      "sampledMs": 9.521,
+      "fraction": 0.0014829130137025773
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2075,
+      "sampledMs": 9.459,
+      "fraction": 0.0014732564012827096
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1725,
+      "sampledMs": 9.216,
+      "fraction": 0.0014354087106693573
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2170,
+      "sampledMs": 8.601,
+      "fraction": 0.0013396213455367993
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2134,
+      "sampledMs": 8.515,
+      "fraction": 0.0013262266895995637
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2130,
+      "sampledMs": 8.106,
+      "fraction": 0.001262524197991082
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1976,
+      "sampledMs": 7.773,
+      "fraction": 0.0012106588441875993
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1883,
+      "sampledMs": 7.683,
+      "fraction": 0.0011966411809974688
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1662,
+      "sampledMs": 7.647,
+      "fraction": 0.0011910341157214167
+    },
+    {
+      "functionName": "is_eq",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 162,
+      "sampledMs": 7.57,
+      "fraction": 0.001179041226103194
+    },
+    {
+      "functionName": "update",
+      "url": "",
+      "line": 0,
+      "sampledMs": 7.397,
+      "fraction": 0.0011520961624154988
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 2093,
+      "sampledMs": 7.388,
+      "fraction": 0.0011506943960964858
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1875,
+      "sampledMs": 7.12,
+      "fraction": 0.0011089529101525417
+    },
+    {
+      "functionName": "(anonymous)",
+      "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+      "line": 1726,
+      "sampledMs": 7.031,
+      "fraction": 0.001095090998775635
+    }
+  ],
+  "byApi": [
+    {
+      "name": "(host/profiler/gap)",
+      "sampledMs": 121.018,
+      "topFunctions": [
+        {
+          "functionName": "readBaseCache",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/typed-driver.mjs",
+          "line": 216,
+          "sampledMs": 71.494,
+          "fraction": 0.011135320134613177
+        },
+        {
+          "functionName": "post",
+          "url": "node:inspector",
+          "line": 115,
+          "sampledMs": 31.047,
+          "fraction": 0.004835626545155332
+        },
+        {
+          "functionName": "digest",
+          "url": "node:internal/crypto/hash",
+          "line": 154,
+          "sampledMs": 10.01,
+          "fraction": 0.0015590756503689527
+        },
+        {
+          "functionName": "update",
+          "url": "",
+          "line": 0,
+          "sampledMs": 7.397,
+          "fraction": 0.0011520961624154988
+        },
+        {
+          "functionName": "normalizeEncoding",
+          "url": "node:internal/util",
+          "line": 258,
+          "sampledMs": 1.07,
+          "fraction": 0.0001666544401493286
+        }
+      ]
+    },
+    {
+      "name": "f_parse",
+      "sampledMs": 302.461,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 86.391,
+          "fraction": 0.013455554896206213
+        },
+        {
+          "functionName": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 41.447,
+          "fraction": 0.006455445402681516
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 17.861,
+          "fraction": 0.0027818831359879984
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 15.979,
+          "fraction": 0.0024887582235010486
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1623,
+          "sampledMs": 15.524,
+          "fraction": 0.002417891148484278
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 11.667,
+          "fraction": 0.0018171564048805764
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 10.061,
+          "fraction": 0.00156701899284336
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1643,
+          "sampledMs": 9.73,
+          "fraction": 0.0015154651426663246
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 8.49,
+          "fraction": 0.0013223328942689719
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1662,
+          "sampledMs": 7.647,
+          "fraction": 0.0011910341157214167
+        },
+        {
+          "functionName": "project",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 77,
+          "sampledMs": 7.325,
+          "fraction": 0.0011408820318633945
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2170,
+          "sampledMs": 5.262,
+          "fraction": 0.0008195660411829599
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1673,
+          "sampledMs": 5.249,
+          "fraction": 0.0008175412676110522
+        },
+        {
+          "functionName": "fields",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 60,
+          "sampledMs": 5.112,
+          "fraction": 0.0007962032691994092
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1624,
+          "sampledMs": 4.431,
+          "fraction": 0.0006901362843940888
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1678,
+          "sampledMs": 4.425,
+          "fraction": 0.0006892017735147468
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1351,
+          "sampledMs": 3.214,
+          "fraction": 0.0005005863277008806
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 174,
+          "sampledMs": 3.179,
+          "fraction": 0.000495135014238052
+        },
+        {
+          "functionName": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 173,
+          "sampledMs": 3.178,
+          "fraction": 0.0004949792624248284
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 45,
+          "sampledMs": 3.105,
+          "fraction": 0.00048360938005950033
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1663,
+          "sampledMs": 2.682,
+          "fraction": 0.00041772636306588724
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1669,
+          "sampledMs": 2.527,
+          "fraction": 0.0003935848320162181
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1660,
+          "sampledMs": 2.142,
+          "fraction": 0.00033362038392510457
+        },
+        {
+          "functionName": "ctor",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 47,
+          "sampledMs": 2.108,
+          "fraction": 0.0003283248222754997
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1654,
+          "sampledMs": 2.093,
+          "fraction": 0.00032598854507714464
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1336,
+          "sampledMs": 1.636,
+          "fraction": 0.00025480996643392675
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1675,
+          "sampledMs": 1.525,
+          "fraction": 0.00023752151516609918
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1646,
+          "sampledMs": 1.495,
+          "fraction": 0.00023284896076938903
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1614,
+          "sampledMs": 1.209,
+          "fraction": 0.00018830394218741895
+        },
+        {
+          "functionName": "fn",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 14,
+          "sampledMs": 1.124,
+          "fraction": 0.00017506503806340688
+        }
+      ]
+    },
+    {
+      "name": "f_load_graph_seed_trace",
+      "sampledMs": 1107.566,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 451.104,
+          "fraction": 0.07026026595245115
+        },
+        {
+          "functionName": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 98.061,
+          "fraction": 0.01527317855652646
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 85.338,
+          "fraction": 0.013291548236881686
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 63.509,
+          "fraction": 0.00989164190602216
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 40.213,
+          "fraction": 0.006263247665163506
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1409,
+          "sampledMs": 31.357,
+          "fraction": 0.004883909607254671
+        },
+        {
+          "functionName": "project",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 77,
+          "sampledMs": 30.845,
+          "fraction": 0.004804164678884151
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1406,
+          "sampledMs": 24.923,
+          "fraction": 0.0038818024409735673
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 19.683,
+          "fraction": 0.003065662939681528
+        },
+        {
+          "functionName": "encode",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+          "line": 16,
+          "sampledMs": 17.846,
+          "fraction": 0.0027795468587896435
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1283,
+          "sampledMs": 15.893,
+          "fraction": 0.0024753635675638127
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2133,
+          "sampledMs": 13.638,
+          "fraction": 0.0021241432287444333
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1407,
+          "sampledMs": 11.796,
+          "fraction": 0.0018372483887864302
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2193,
+          "sampledMs": 10.72,
+          "fraction": 0.0016696594377577595
+        },
+        {
+          "functionName": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 173,
+          "sampledMs": 10.698,
+          "fraction": 0.0016662328978668387
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 10.65,
+          "fraction": 0.0016587568108321026
+        },
+        {
+          "functionName": "ctor",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 47,
+          "sampledMs": 10.584,
+          "fraction": 0.0016484771911593403
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1605,
+          "sampledMs": 10.362,
+          "fraction": 0.001613900288623685
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1408,
+          "sampledMs": 9.521,
+          "fraction": 0.0014829130137025773
+        },
+        {
+          "functionName": "fields",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 60,
+          "sampledMs": 9.461,
+          "fraction": 0.001473567904909157
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 45,
+          "sampledMs": 7.056,
+          "fraction": 0.0010989847941062269
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2192,
+          "sampledMs": 6.353,
+          "fraction": 0.0009894912694099858
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+          "line": 79,
+          "sampledMs": 6.055,
+          "fraction": 0.0009430772290693315
+        },
+        {
+          "functionName": "allocate",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+          "line": 18,
+          "sampledMs": 5.492,
+          "fraction": 0.0008553889582244044
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2128,
+          "sampledMs": 5.308,
+          "fraction": 0.0008267306245912489
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2127,
+          "sampledMs": 5.298,
+          "fraction": 0.0008251731064590121
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2168,
+          "sampledMs": 5.044,
+          "fraction": 0.0007856121459001996
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1395,
+          "sampledMs": 4.663,
+          "fraction": 0.0007262707050619807
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1483,
+          "sampledMs": 4.497,
+          "fraction": 0.0007004159040668511
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1470,
+          "sampledMs": 4.334,
+          "fraction": 0.0006750283585113927
+        }
+      ]
+    },
+    {
+      "name": "check_from_exact_prefix",
+      "sampledMs": 2020.107,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 777.787,
+          "fraction": 0.12114173555179986
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 125.367,
+          "fraction": 0.01952613756841204
+        },
+        {
+          "functionName": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 122.312,
+          "fraction": 0.01905031577901372
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 83.264,
+          "fraction": 0.012968518976255792
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2095,
+          "sampledMs": 58.011,
+          "fraction": 0.009035318436918413
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 55.219,
+          "fraction": 0.008600459374397922
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 52.858,
+          "fraction": 0.008232729343376833
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 52.421,
+          "fraction": 0.008164665800998089
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2105,
+          "sampledMs": 43.021,
+          "fraction": 0.0067005987566955754
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1719,
+          "sampledMs": 41.147,
+          "fraction": 0.006408719858714415
+        },
+        {
+          "functionName": "project",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 77,
+          "sampledMs": 39.427,
+          "fraction": 0.0061408267399697
+        },
+        {
+          "functionName": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 173,
+          "sampledMs": 38.326,
+          "fraction": 0.005969343993610437
+        },
+        {
+          "functionName": "encode",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+          "line": 16,
+          "sampledMs": 24.621,
+          "fraction": 0.003834765393380018
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2076,
+          "sampledMs": 24.526,
+          "fraction": 0.0038199689711237695
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2106,
+          "sampledMs": 20.583,
+          "fraction": 0.0032058395715828325
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2104,
+          "sampledMs": 20.189,
+          "fraction": 0.003144473357172706
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 45,
+          "sampledMs": 17.185,
+          "fraction": 0.0026765949102487965
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2133,
+          "sampledMs": 16.27,
+          "fraction": 0.0025340820011491368
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2044,
+          "sampledMs": 15.823,
+          "fraction": 0.002464460940638156
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2087,
+          "sampledMs": 15.483,
+          "fraction": 0.0024115053241421072
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1717,
+          "sampledMs": 13.588,
+          "fraction": 0.0021163556380832498
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2098,
+          "sampledMs": 13.304,
+          "fraction": 0.002072122123127727
+        },
+        {
+          "functionName": "allocate",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+          "line": 18,
+          "sampledMs": 12.737,
+          "fraction": 0.0019838108450299053
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2097,
+          "sampledMs": 12.336,
+          "fraction": 0.001921354367927213
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2074,
+          "sampledMs": 11.608,
+          "fraction": 0.0018079670479003798
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1870,
+          "sampledMs": 11.526,
+          "fraction": 0.0017951953992160388
+        },
+        {
+          "functionName": "ctor",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 47,
+          "sampledMs": 11.411,
+          "fraction": 0.0017772839406953165
+        },
+        {
+          "functionName": "fields",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 60,
+          "sampledMs": 10.876,
+          "fraction": 0.0016939567206206523
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+          "line": 79,
+          "sampledMs": 10.656,
+          "fraction": 0.0016596913217114446
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2129,
+          "sampledMs": 8.517,
+          "fraction": 0.001326538193226011
+        }
+      ]
+    },
+    {
+      "name": "driver_owned",
+      "sampledMs": 3.958,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 1.867,
+          "fraction": 0.0002907886352885949
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 1.054,
+          "fraction": 0.00016416241113774985
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 631,
+          "sampledMs": 1.037,
+          "fraction": 0.00016151463031294745
+        }
+      ]
+    },
+    {
+      "name": "driver_todos",
+      "sampledMs": 368.31,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 153.545,
+          "fraction": 0.023914912161428655
+        },
+        {
+          "functionName": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 47.65,
+          "fraction": 0.007421573900107952
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1840,
+          "sampledMs": 47.167,
+          "fraction": 0.007346345774320918
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 20.079,
+          "fraction": 0.003127340657718102
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 16.877,
+          "fraction": 0.0026286233517759054
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 12.793,
+          "fraction": 0.0019925329465704305
+        },
+        {
+          "functionName": "project",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 77,
+          "sampledMs": 11.694,
+          "fraction": 0.0018213617038376157
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 10.583,
+          "fraction": 0.0016483214393461165
+        },
+        {
+          "functionName": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 173,
+          "sampledMs": 9.315,
+          "fraction": 0.001450828140178501
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 7.339,
+          "fraction": 0.0011430625572485258
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2119,
+          "sampledMs": 6.336,
+          "fraction": 0.0009868434885851832
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 637,
+          "sampledMs": 5.587,
+          "fraction": 0.0008701853804806532
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 634,
+          "sampledMs": 4.574,
+          "fraction": 0.0007124087936850739
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 633,
+          "sampledMs": 4.339,
+          "fraction": 0.000675807117577511
+        },
+        {
+          "functionName": "ctor",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 47,
+          "sampledMs": 4.023,
+          "fraction": 0.0006265895445988309
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2133,
+          "sampledMs": 2.097,
+          "fraction": 0.0003266115523300393
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 45,
+          "sampledMs": 1.892,
+          "fraction": 0.0002946824306191867
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 632,
+          "sampledMs": 1.361,
+          "fraction": 0.00021197821779741705
+        },
+        {
+          "functionName": "fields",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 60,
+          "sampledMs": 1.059,
+          "fraction": 0.00016494117020386822
+        }
+      ]
+    },
+    {
+      "name": "specialize_book",
+      "sampledMs": 419.913,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 201.971,
+          "fraction": 0.03145734946859818
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 38.698,
+          "fraction": 0.006027283668129643
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 18.952,
+          "fraction": 0.0029518083642150242
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 17.967,
+          "fraction": 0.0027983928281897076
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1840,
+          "sampledMs": 17.925,
+          "fraction": 0.0027918512520343133
+        },
+        {
+          "functionName": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 173,
+          "sampledMs": 15.89,
+          "fraction": 0.0024748963121241415
+        },
+        {
+          "functionName": "project",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 77,
+          "sampledMs": 13.741,
+          "fraction": 0.0021401856655064713
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2109,
+          "sampledMs": 11.095,
+          "fraction": 0.0017280663677166363
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 9.947,
+          "fraction": 0.0015492632861358615
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 9.451,
+          "fraction": 0.0014720103867769203
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1725,
+          "sampledMs": 9.216,
+          "fraction": 0.0014354087106693573
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2119,
+          "sampledMs": 8.442,
+          "fraction": 0.0013148568072342357
+        },
+        {
+          "functionName": "fn",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 14,
+          "sampledMs": 7.408,
+          "fraction": 0.001153809432360959
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2044,
+          "sampledMs": 7.4,
+          "fraction": 0.0011525634178551698
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1726,
+          "sampledMs": 7.031,
+          "fraction": 0.001095090998775635
+        },
+        {
+          "functionName": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 4.242,
+          "fraction": 0.0006606991916948149
+        },
+        {
+          "functionName": "fields",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 60,
+          "sampledMs": 3.179,
+          "fraction": 0.000495135014238052
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2079,
+          "sampledMs": 3.177,
+          "fraction": 0.0004948235106116047
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2133,
+          "sampledMs": 3.174,
+          "fraction": 0.0004943562551719337
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 45,
+          "sampledMs": 2.562,
+          "fraction": 0.00039903614547904663
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2129,
+          "sampledMs": 2.134,
+          "fraction": 0.0003323743694193152
+        },
+        {
+          "functionName": "ctor",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 47,
+          "sampledMs": 2.117,
+          "fraction": 0.0003297265885945128
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1788,
+          "sampledMs": 2.079,
+          "fraction": 0.00032380801969201324
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2064,
+          "sampledMs": 1.073,
+          "fraction": 0.00016712169558899962
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1784,
+          "sampledMs": 1.042,
+          "fraction": 0.00016229338937906581
+        }
+      ]
+    },
+    {
+      "name": "driver_emit_owned",
+      "sampledMs": 25.164,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 7.673,
+          "fraction": 0.001195083662865232
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 3.902,
+          "fraction": 0.0006077435751987665
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 628,
+          "sampledMs": 2.871,
+          "fraction": 0.00044716345576516117
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 2.708,
+          "fraction": 0.0004217759102097027
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2112,
+          "sampledMs": 2.283,
+          "fraction": 0.0003555813895896423
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 2.221,
+          "fraction": 0.0003459247771697746
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 1.502,
+          "fraction": 0.00023393922346195473
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 1.078,
+          "fraction": 0.00016790045465511799
+        },
+        {
+          "functionName": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 173,
+          "sampledMs": 0.926,
+          "fraction": 0.0001442261790451199
+        }
+      ]
+    },
+    {
+      "name": "j_compile_error",
+      "sampledMs": 15.771,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 11.514,
+          "fraction": 0.0017933263774573547
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 1.077,
+          "fraction": 0.0001677447028418943
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2109,
+          "sampledMs": 1.069,
+          "fraction": 0.00016649868833610494
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 1.057,
+          "fraction": 0.00016462966657742088
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2119,
+          "sampledMs": 1.054,
+          "fraction": 0.00016416241113774985
+        }
+      ]
+    },
+    {
+      "name": "book_context",
+      "sampledMs": 147.365,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 50.889,
+          "fraction": 0.007926054023139424
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 12.554,
+          "fraction": 0.001955308263209973
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2087,
+          "sampledMs": 11.944,
+          "fraction": 0.0018602996571435335
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 7.456,
+          "fraction": 0.0011612855193956955
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2044,
+          "sampledMs": 7.402,
+          "fraction": 0.001152874921481617
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 6.855,
+          "fraction": 0.0010676786796482687
+        },
+        {
+          "functionName": "project",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 77,
+          "sampledMs": 6.346,
+          "fraction": 0.0009884010067174199
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 5.289,
+          "fraction": 0.0008237713401399991
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2092,
+          "sampledMs": 4.295,
+          "fraction": 0.0006689540377956695
+        },
+        {
+          "functionName": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 3.314,
+          "fraction": 0.0005161615090232477
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2085,
+          "sampledMs": 3.301,
+          "fraction": 0.0005141367354513399
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2089,
+          "sampledMs": 3.158,
+          "fraction": 0.0004918642261603549
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2116,
+          "sampledMs": 2.792,
+          "fraction": 0.0004348590625204911
+        },
+        {
+          "functionName": "fn",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 14,
+          "sampledMs": 2.123,
+          "fraction": 0.0003306610994738548
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2131,
+          "sampledMs": 2.117,
+          "fraction": 0.0003297265885945128
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 2.114,
+          "fraction": 0.00032925933315484175
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2097,
+          "sampledMs": 2.098,
+          "fraction": 0.00032676730414326303
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2099,
+          "sampledMs": 2.096,
+          "fraction": 0.00032645580051681567
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2117,
+          "sampledMs": 2.067,
+          "fraction": 0.0003219389979333292
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2079,
+          "sampledMs": 1.057,
+          "fraction": 0.00016462966657742088
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2096,
+          "sampledMs": 1.057,
+          "fraction": 0.00016462966657742088
+        },
+        {
+          "functionName": "fields",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 60,
+          "sampledMs": 1.056,
+          "fraction": 0.0001644739147641972
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2129,
+          "sampledMs": 1.055,
+          "fraction": 0.00016431816295097354
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2064,
+          "sampledMs": 1.054,
+          "fraction": 0.00016416241113774985
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2113,
+          "sampledMs": 1.041,
+          "fraction": 0.00016213763756584213
+        },
+        {
+          "functionName": "is_eq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 162,
+          "sampledMs": 1.025,
+          "fraction": 0.00015964560855426339
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 168,
+          "sampledMs": 0.99,
+          "fraction": 0.00015419429509143487
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2086,
+          "sampledMs": 0.82,
+          "fraction": 0.00012771648684341071
+        }
+      ]
+    },
+    {
+      "name": "j_stops",
+      "sampledMs": 6.557,
+      "topFunctions": [
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 997,
+          "sampledMs": 2.26,
+          "fraction": 0.0003519990978854978
+        },
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 2.192,
+          "fraction": 0.00034140797458628814
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 176,
+          "sampledMs": 2.105,
+          "fraction": 0.00032785756683582874
+        }
+      ]
+    },
+    {
+      "name": "reach_book",
+      "sampledMs": 175.733,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 73.649,
+          "fraction": 0.01147096529211019
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 13.304,
+          "fraction": 0.002072122123127727
+        },
+        {
+          "functionName": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 173,
+          "sampledMs": 10.608,
+          "fraction": 0.0016522152346767083
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1976,
+          "sampledMs": 7.773,
+          "fraction": 0.0012106588441875993
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2107,
+          "sampledMs": 7.686,
+          "fraction": 0.0011971084364371398
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 7.534,
+          "fraction": 0.0011734341608271419
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 7.331,
+          "fraction": 0.0011418165427427365
+        },
+        {
+          "functionName": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 6.647,
+          "fraction": 0.0010352823024977452
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 6.407,
+          "fraction": 0.000997901867324064
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2109,
+          "sampledMs": 6.332,
+          "fraction": 0.0009862204813322886
+        },
+        {
+          "functionName": "project",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 77,
+          "sampledMs": 5.872,
+          "fraction": 0.0009145746472493996
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1979,
+          "sampledMs": 4.575,
+          "fraction": 0.0007125645454982975
+        },
+        {
+          "functionName": "fields",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 60,
+          "sampledMs": 3.229,
+          "fraction": 0.0005029226048992356
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2095,
+          "sampledMs": 3.171,
+          "fraction": 0.0004938889997322626
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 3.16,
+          "fraction": 0.0004921757297868022
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1975,
+          "sampledMs": 2.114,
+          "fraction": 0.00032925933315484175
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2135,
+          "sampledMs": 2.097,
+          "fraction": 0.0003266115523300393
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2110,
+          "sampledMs": 1.072,
+          "fraction": 0.00016696594377577594
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2118,
+          "sampledMs": 1.059,
+          "fraction": 0.00016494117020386822
+        },
+        {
+          "functionName": "fn",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 14,
+          "sampledMs": 1.058,
+          "fraction": 0.00016478541839064456
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2134,
+          "sampledMs": 1.055,
+          "fraction": 0.00016431816295097354
+        }
+      ]
+    },
+    {
+      "name": "j_foreign_error",
+      "sampledMs": 2.239,
+      "topFunctions": [
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 45,
+          "sampledMs": 1.177,
+          "fraction": 0.00018331988416426146
+        },
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 1.062,
+          "fraction": 0.00016540842564353924
+        }
+      ]
+    },
+    {
+      "name": "annotate_selected",
+      "sampledMs": 938.702,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 379.32,
+          "fraction": 0.05907977779200311
+        },
+        {
+          "functionName": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 77.623,
+          "fraction": 0.01208992299786106
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 60.109,
+          "fraction": 0.009362085741061676
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2095,
+          "sampledMs": 36.029,
+          "fraction": 0.005611582078635664
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 34.551,
+          "fraction": 0.005381380898691077
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2105,
+          "sampledMs": 31.435,
+          "fraction": 0.004896058248686117
+        },
+        {
+          "functionName": "project",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 77,
+          "sampledMs": 28.496,
+          "fraction": 0.004438303669621745
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 28.428,
+          "fraction": 0.004427712546322536
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2076,
+          "sampledMs": 25.46,
+          "fraction": 0.0039654411646746785
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2104,
+          "sampledMs": 24.689,
+          "fraction": 0.003845356516679228
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2106,
+          "sampledMs": 23.937,
+          "fraction": 0.003728231153135027
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 21.635,
+          "fraction": 0.003369690479094135
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1700,
+          "sampledMs": 18.075,
+          "fraction": 0.002815214024017864
+        },
+        {
+          "functionName": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 173,
+          "sampledMs": 17.408,
+          "fraction": 0.002711327564597675
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2133,
+          "sampledMs": 12.706,
+          "fraction": 0.0019789825388199715
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 12.035,
+          "fraction": 0.0018744730721468876
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2102,
+          "sampledMs": 10.726,
+          "fraction": 0.0016705939486371015
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2099,
+          "sampledMs": 8.528,
+          "fraction": 0.0013282514631714714
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2127,
+          "sampledMs": 8.178,
+          "fraction": 0.0012737383285431863
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2098,
+          "sampledMs": 8.023,
+          "fraction": 0.0012495967974935171
+        },
+        {
+          "functionName": "ctor",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 47,
+          "sampledMs": 6.214,
+          "fraction": 0.0009678417673718953
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2126,
+          "sampledMs": 5.495,
+          "fraction": 0.0008558562136640755
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 45,
+          "sampledMs": 4.997,
+          "fraction": 0.000778291810678687
+        },
+        {
+          "functionName": "fields",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 60,
+          "sampledMs": 4.187,
+          "fraction": 0.000652132841967513
+        },
+        {
+          "functionName": "fn",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 14,
+          "sampledMs": 3.924,
+          "fraction": 0.0006111701150896873
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2100,
+          "sampledMs": 3.364,
+          "fraction": 0.0005239490996844313
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2049,
+          "sampledMs": 3.321,
+          "fraction": 0.0005172517717158134
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2075,
+          "sampledMs": 3.201,
+          "fraction": 0.0004985615541289728
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2118,
+          "sampledMs": 3.185,
+          "fraction": 0.000496069525117394
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2097,
+          "sampledMs": 3.093,
+          "fraction": 0.00048174035830081624
+        }
+      ]
+    },
+    {
+      "name": "j_layout_error",
+      "sampledMs": 332.148,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 126.386,
+          "fraction": 0.019684848666086958
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 27.096,
+          "fraction": 0.004220251131108605
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 26.32,
+          "fraction": 0.004099387724047036
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 20.887,
+          "fraction": 0.003253188122802829
+        },
+        {
+          "functionName": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 13.873,
+          "fraction": 0.002160744904851996
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 13.03,
+          "fraction": 0.0020294461263044407
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1021,
+          "sampledMs": 10.414,
+          "fraction": 0.001621999382911316
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 10.088,
+          "fraction": 0.0015712242918003991
+        },
+        {
+          "functionName": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 173,
+          "sampledMs": 8.198,
+          "fraction": 0.0012768533648076597
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1022,
+          "sampledMs": 7.359,
+          "fraction": 0.0011461775935129993
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1137,
+          "sampledMs": 5.728,
+          "fraction": 0.0008921463861451909
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1143,
+          "sampledMs": 5.175,
+          "fraction": 0.0008060156334325006
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2135,
+          "sampledMs": 4.255,
+          "fraction": 0.0006627239652667226
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2134,
+          "sampledMs": 4.217,
+          "fraction": 0.0006568053963642231
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1136,
+          "sampledMs": 3.551,
+          "fraction": 0.0005530746887572578
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2118,
+          "sampledMs": 3.499,
+          "fraction": 0.0005449755944696269
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2109,
+          "sampledMs": 3.162,
+          "fraction": 0.0004924872334132496
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1111,
+          "sampledMs": 3.136,
+          "fraction": 0.0004884376862694342
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1052,
+          "sampledMs": 3.087,
+          "fraction": 0.0004808058474214742
+        },
+        {
+          "functionName": "ctor",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 47,
+          "sampledMs": 3.07,
+          "fraction": 0.0004781580665966718
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2088,
+          "sampledMs": 2.465,
+          "fraction": 0.0003839282195963505
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2110,
+          "sampledMs": 2.176,
+          "fraction": 0.00033891594557470937
+        },
+        {
+          "functionName": "fn",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 14,
+          "sampledMs": 2.15,
+          "fraction": 0.0003348663984308939
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 168,
+          "sampledMs": 2.136,
+          "fraction": 0.0003326858730457625
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1108,
+          "sampledMs": 2.129,
+          "fraction": 0.0003315956103531968
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2095,
+          "sampledMs": 2.112,
+          "fraction": 0.0003289478295283944
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2132,
+          "sampledMs": 2.107,
+          "fraction": 0.00032816907046227605
+        },
+        {
+          "functionName": "(program)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 1.624,
+          "fraction": 0.00025294094467524265
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2113,
+          "sampledMs": 1.5,
+          "fraction": 0.0002336277198355074
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1133,
+          "sampledMs": 1.105,
+          "fraction": 0.00017210575361215711
+        }
+      ]
+    },
+    {
+      "name": "j_program_selected",
+      "sampledMs": 433.459,
+      "topFunctions": [
+        {
+          "functionName": "apply",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 31,
+          "sampledMs": 139.069,
+          "fraction": 0.021660248913202784
+        },
+        {
+          "functionName": "call",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 44,
+          "sampledMs": 41.524,
+          "fraction": 0.00646743829229974
+        },
+        {
+          "functionName": "force",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 17,
+          "sampledMs": 35.705,
+          "fraction": 0.005561118491151195
+        },
+        {
+          "functionName": "get",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 46,
+          "sampledMs": 33.155,
+          "fraction": 0.005163951367430831
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 92,
+          "sampledMs": 19.975,
+          "fraction": 0.00311114246914284
+        },
+        {
+          "functionName": "project",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 77,
+          "sampledMs": 16.202,
+          "fraction": 0.002523490877849927
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 231,
+          "sampledMs": 15.39,
+          "fraction": 0.0023970204055123057
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1022,
+          "sampledMs": 10.867,
+          "fraction": 0.0016925549543016392
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 989,
+          "sampledMs": 10.746,
+          "fraction": 0.0016737089849015749
+        },
+        {
+          "functionName": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 8.761,
+          "fraction": 0.001364541635652587
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2110,
+          "sampledMs": 8.299,
+          "fraction": 0.0012925842979432506
+        },
+        {
+          "functionName": "stringEq",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 173,
+          "sampledMs": 7.557,
+          "fraction": 0.0011770164525312862
+        },
+        {
+          "functionName": "ctor",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 47,
+          "sampledMs": 4.907,
+          "fraction": 0.0007642741474885565
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2126,
+          "sampledMs": 4.355,
+          "fraction": 0.0006782991465890898
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1137,
+          "sampledMs": 4.268,
+          "fraction": 0.0006647487388386304
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1021,
+          "sampledMs": 4.231,
+          "fraction": 0.0006589859217493545
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2127,
+          "sampledMs": 4.224,
+          "fraction": 0.0006578956590567888
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1083,
+          "sampledMs": 3.353,
+          "fraction": 0.0005222358297389709
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 45,
+          "sampledMs": 3.303,
+          "fraction": 0.0005144482390777873
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2133,
+          "sampledMs": 3.271,
+          "fraction": 0.0005094641810546298
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1039,
+          "sampledMs": 3.235,
+          "fraction": 0.0005038571157785776
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2113,
+          "sampledMs": 3.087,
+          "fraction": 0.0004808058474214742
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1048,
+          "sampledMs": 2.489,
+          "fraction": 0.0003876662631137186
+        },
+        {
+          "functionName": "fields",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 60,
+          "sampledMs": 2.186,
+          "fraction": 0.0003404734637069461
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2095,
+          "sampledMs": 2.142,
+          "fraction": 0.00033362038392510457
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1042,
+          "sampledMs": 2.139,
+          "fraction": 0.00033315312848543354
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2118,
+          "sampledMs": 2.098,
+          "fraction": 0.00032676730414326303
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 1087,
+          "sampledMs": 2.069,
+          "fraction": 0.0003222505015597765
+        },
+        {
+          "functionName": "(program)",
+          "url": "",
+          "line": 0,
+          "sampledMs": 2.036,
+          "fraction": 0.00031711069172339536
+        },
+        {
+          "functionName": "(anonymous)",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/h.mjs",
+          "line": 2084,
+          "sampledMs": 1.14,
+          "fraction": 0.00017755706707498563
+        }
+      ]
+    }
+  ],
+  "apiTotals": [
+    {
+      "name": "check_from_exact_prefix",
+      "calls": 1,
+      "wallMs": 2019.6543959999995
+    },
+    {
+      "name": "f_load_graph_seed_trace",
+      "calls": 1,
+      "wallMs": 1107.306998
+    },
+    {
+      "name": "annotate_selected",
+      "calls": 1,
+      "wallMs": 939.4309910000002
+    },
+    {
+      "name": "j_program_selected",
+      "calls": 1,
+      "wallMs": 432.82034999999996
+    },
+    {
+      "name": "specialize_book",
+      "calls": 1,
+      "wallMs": 419.1784740000003
+    },
+    {
+      "name": "driver_todos",
+      "calls": 1,
+      "wallMs": 368.8371820000002
+    },
+    {
+      "name": "j_layout_error",
+      "calls": 1,
+      "wallMs": 331.352355
+    },
+    {
+      "name": "f_parse",
+      "calls": 1,
+      "wallMs": 302.733964
+    },
+    {
+      "name": "reach_book",
+      "calls": 1,
+      "wallMs": 175.51574700000037
+    },
+    {
+      "name": "book_context",
+      "calls": 1,
+      "wallMs": 147.80621400000018
+    },
+    {
+      "name": "driver_emit_owned",
+      "calls": 1,
+      "wallMs": 25.487370000000737
+    },
+    {
+      "name": "j_compile_error",
+      "calls": 1,
+      "wallMs": 15.214495999999599
+    },
+    {
+      "name": "j_stops",
+      "calls": 2,
+      "wallMs": 6.668715000000702
+    },
+    {
+      "name": "driver_owned",
+      "calls": 1,
+      "wallMs": 3.839492000000064
+    },
+    {
+      "name": "j_foreign_error",
+      "calls": 1,
+      "wallMs": 1.6554910000004384
+    },
+    {
+      "name": "j_foreign_paths",
+      "calls": 1,
+      "wallMs": 0.8133269999998447
+    },
+    {
+      "name": "j_roots",
+      "calls": 1,
+      "wallMs": 0.19924400000036258
+    },
+    {
+      "name": "j_modules",
+      "calls": 1,
+      "wallMs": 0.07812400000057096
+    },
+    {
+      "name": "specialized_error",
+      "calls": 1,
+      "wallMs": 0.04966100000001461
+    },
+    {
+      "name": "f_source_parsed",
+      "calls": 1,
+      "wallMs": 0.04319899999995869
+    },
+    {
+      "name": "specialized_book",
+      "calls": 1,
+      "wallMs": 0.037919000000329106
+    }
+  ],
+  "emitted": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/h-list-profile/program.mjs",
+    "bytes": 51673,
+    "sha256": "c2e7aa553e91281c5b061853cc7f340a4a4bc9654bcb6c9ae1de6365cf21ebd0"
+  },
+  "result": {
+    "status": "ok",
+    "phase": "compile",
+    "verdict": "All terms check.\n",
+    "exitCode": 0,
+    "checked": true,
+    "files": [
+      "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+      "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+    ]
+  },
+  "inputsUnchanged": true,
+  "finished": "2026-09-22T14:26:22.825Z"
+}

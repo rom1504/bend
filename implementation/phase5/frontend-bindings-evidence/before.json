@@ -1,0 +1,1035 @@
+{
+  "kind": "targeted-paired-conformance",
+  "started": "2026-09-22T21:43:51.849Z",
+  "complete": false,
+  "selectedComplete": false,
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/baseline.config.json",
+    "sha256": "ad397e48883268d49b45e4306ff121cc5f58fc79a2460bd8c91f267ac980b5d3"
+  },
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/development-final/api.mjs",
+      "sha256": "a3a287c25470a5a55d7c49085fce9a4a72aee3dfa6d15d3d5674c7c36566b2a2"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+    },
+    "bootstrapReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/development-final/api.mjs.bootstrap.json",
+      "sha256": "9bd1913c9dd14357ab4c95058bb1f7326b0412bb561e2e6c1fc8c7bb16e8f086"
+    }
+  },
+  "environment": {
+    "BEND_UPSTREAM": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "BEND_BASE": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "BEND_TYPED_API": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/development-final/api.mjs",
+    "BEND_TYPED_RUNTIME": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs"
+  },
+  "harnessSources": [
+    {
+      "file": "run.mjs",
+      "sourceSha256": "7198c672c15d6fa9b20cd4010446966713fce1ed6054ae13bff1e6500521b6a0",
+      "consumedSha256": "692e4bc350ad90d808726db5f5167c1b3a72b90d4981ae81dbc019f750c64c9a"
+    },
+    {
+      "file": "worker.mjs",
+      "sourceSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "consumedSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+    },
+    {
+      "file": "inventory.mjs",
+      "sourceSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd",
+      "consumedSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd"
+    },
+    {
+      "file": "judge.mjs",
+      "sourceSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+      "consumedSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+    },
+    {
+      "file": "selection.mjs",
+      "sourceSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+      "consumedSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+    },
+    {
+      "file": "run-probe.mjs",
+      "sourceSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c",
+      "consumedSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c"
+    },
+    {
+      "file": "replay.mjs",
+      "sourceSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94",
+      "consumedSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94"
+    },
+    {
+      "file": "persistent-probe.mjs",
+      "sourceSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225",
+      "consumedSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225"
+    },
+    {
+      "file": "persistent-worker.mjs",
+      "sourceSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+      "consumedSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d"
+    },
+    {
+      "file": "adapters/upstream.mjs",
+      "sourceSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd",
+      "consumedSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd"
+    }
+  ],
+  "targetSourceSha256": "2b273483c6adfd9bb5c52b614557741595560fb53acccd311d83ab87258df806",
+  "cpu": 1,
+  "attempts": {
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/before/reference.json",
+      "argv": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/before/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "1024",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "all",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/before/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/before/harness/tools/conformance/adapters/upstream.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/before/reference.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "322c11748a7aefd1b9f273c8b8d550f2cb787d7b747e8bc16cf2545a04fd58cb"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/before/candidate.json",
+      "argv": [
+        "taskset",
+        "-c",
+        "1",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/before/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "1024",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "all",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/before/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/4e65ccee69b4177575a4835c226f2e6d1b666833e8bd177671fade6986092668/typed.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/before/candidate.json"
+      ],
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "sha256": "affa3390f95ecf8f202a351a6b24f20ff50d82c61a7e47b7b0edb474a6bb26a9"
+    }
+  },
+  "rows": [
+    {
+      "id": "phase5/local-constructor-control",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/local-nested-constructor-control",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/parallel-bare-constructor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On x = {1 : U32} {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/parallel-braced-constructor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a name (a parallel let binds names; destructure in its body)\nLocation:\n4 | def main() -> U32:\n5>|   On{} x = On{} {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : an annotated term (cannot infer)\n- observed : On{}\nLocation: main\n4 | def main() -> U32:\n5>|   On{} x = On{} {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/parallel-duplicate-name",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/parallel-field-constructor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a name (a parallel let binds names; destructure in its body)\nLocation:\n4 | def main() -> U32:\n5>|   Box{n} x = Box{1} {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : an annotated term (cannot infer)\n- observed : Box{1}\nLocation: main\n4 | def main() -> U32:\n5>|   Box{n} x = Box{1} {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/parallel-first-bad-body",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On x = {1 : U32} {42 : U32}\n6 |   missing",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a defined name\n- observed : missing\nContext:\n- On : U32\n- x  : U32\nLocation: main\n5 |   On x = {1 : U32} {42 : U32}\n6>|   missing\n7 | ",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/parallel-first-bad-value",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On x = missing {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 5:21: expected term; got :",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5/parallel-later-constructor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/parallel-marked-name",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/parallel-renamed",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/parallel-three-names",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/plain-law-control",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/plain-type-control",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/unsafe-comment-def",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/unsafe-def",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5/unsafe-eof",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : end of input\nLocation:\n2 | @unsafe\n3>| ",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/unsafe-import",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'i'\nLocation:\n1 | @unsafe\n2>| import Base\n3 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 2:0: expected def after @unsafe; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5/unsafe-law",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'l'\nLocation:\n2 | @unsafe\n3>| law main:\n4 |   U32",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/unsafe-repeated",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : '@'\nLocation:\n2 | @unsafe\n3>| @unsafe\n4 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/unsafe-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 't'\nLocation:\n2 | @unsafe\n3>| type Bit is Data:\n4 |   On{}",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/unsafe-unknown-decorator",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : '@'\nLocation:\n2 | @unsafe\n3>| @unknown\n4 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 3:0: expected def, law, type or import; got @",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    }
+  ],
+  "missing": [],
+  "discrepancies": [
+    {
+      "id": "phase5/parallel-bare-constructor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On x = {1 : U32} {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/parallel-braced-constructor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a name (a parallel let binds names; destructure in its body)\nLocation:\n4 | def main() -> U32:\n5>|   On{} x = On{} {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : an annotated term (cannot infer)\n- observed : On{}\nLocation: main\n4 | def main() -> U32:\n5>|   On{} x = On{} {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/parallel-field-constructor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a name (a parallel let binds names; destructure in its body)\nLocation:\n4 | def main() -> U32:\n5>|   Box{n} x = Box{1} {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : an annotated term (cannot infer)\n- observed : Box{1}\nLocation: main\n4 | def main() -> U32:\n5>|   Box{n} x = Box{1} {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/parallel-first-bad-body",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On x = {1 : U32} {42 : U32}\n6 |   missing",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a defined name\n- observed : missing\nContext:\n- On : U32\n- x  : U32\nLocation: main\n5 |   On x = {1 : U32} {42 : U32}\n6>|   missing\n7 | ",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/parallel-first-bad-value",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On x = missing {42 : U32}\n6 |   x",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 5:21: expected term; got :",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5/unsafe-eof",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : end of input\nLocation:\n2 | @unsafe\n3>| ",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/unsafe-import",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'i'\nLocation:\n1 | @unsafe\n2>| import Base\n3 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 2:0: expected def after @unsafe; got import",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5/unsafe-law",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'l'\nLocation:\n2 | @unsafe\n3>| law main:\n4 |   U32",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/unsafe-repeated",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : '@'\nLocation:\n2 | @unsafe\n3>| @unsafe\n4 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/unsafe-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 't'\nLocation:\n2 | @unsafe\n3>| type Bit is Data:\n4 |   On{}",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5/unsafe-unknown-decorator",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : '@'\nLocation:\n2 | @unsafe\n3>| @unknown\n4 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 3:0: expected def, law, type or import; got @",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    }
+  ],
+  "referenceSelectedComplete": true,
+  "candidateSelectedComplete": false,
+  "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+  "wallMs": 13831.822521,
+  "finished": "2026-09-22T21:44:05.688Z"
+}

@@ -13,7 +13,10 @@ That's Bend - and nothing else.
 ## Compiler written in Bend
 
 This fork includes the compiler port in [`selfhost/`](selfhost/README.md).
-For current source edits, use the [checked development loop](docs/PHASE4_DEVELOPMENT.md#keep-the-edit-loop-small):
+For current source edits, use the [maintained development command](docs/PHASE5_DEVELOPMENT.md)
+to build a checked compiler and run selected paired tests. It also supports the
+explicit, verified equality optimization and reuse after fixture-only edits.
+The previous [checked development measurements](docs/PHASE4_DEVELOPMENT.md#keep-the-edit-loop-small) recorded
 20.735 seconds to rebuild B1, then 9.328 seconds median for reused paired
 21-case validation in the recorded environment. Full self-reproduction is a
 separate integration gate. The [four-worker frontend gate](docs/PHASE4_DEVELOPMENT.md#run-the-full-frontend-gate-with-four-workers)
@@ -30,6 +33,9 @@ The [phase 3 efficiency guide](docs/PHASE3_DEVELOPMENT.md) documents persistent
 validation workers, native build reuse and generated-runtime measurements; its
 [implementation report](implementation/phase3/report.md) records the checked
 results and remaining limits.
+The [phase 5 design](design/phase5/conformance_and_development.md) and
+[implementation report](implementation/phase5/report.md) track current
+conformance, simplification and development-loop work.
 The [phase 4 development guide](docs/PHASE4_DEVELOPMENT.md) covers checked source
 experiments, bounded profiling and private compiler images; follow the
 [phase 4 report](implementation/phase4/report.md) for measured progress.

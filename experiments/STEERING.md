@@ -1,8 +1,8 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-22 21:39 UTC, baseline `7d69850`.
+Evidence cutoff: 2026-09-22 22:24 UTC; baseline `7d69850`, first checked integration API `a17d909d9c48…`.
 Authorized Phase 5 window: 2026-09-22 21:39:36 to 2026-09-23 03:39:36 UTC.
-Next review: first frontend witnesses and workflow/equality falsifiers, about 22:15 UTC.
+Next review: second conformance batch and source-location falsifier, about 22:50 UTC.
 
 ## User objective
 
@@ -14,13 +14,14 @@ and results, and commit/push validated increments. See the
 ## Established position
 
 - Current source:59 Bend modules,16,055 physical lines; generated files excluded.
-- All 919 positive frontend fixtures pass;377 strict negative-check failures remain.
-- Live TypeScript comparison:560 differences across375 fixtures, including 50
-  acceptance/phase observations; matching status is not proof of the same rule.
+- All 919 positive frontend fixtures pass;376 strict check failures remain (377 at baseline).
+- Fresh live TypeScript comparison:558 differences, including48 acceptance/phase
+  observations; no new differences. Matching status is not proof of the same rule.
 - Focused reused loop 9.328 seconds; checked rebuild plus cold cases 37.217 seconds.
 - Four-core full frontend inventory about 5 minutes, with known failures retained.
 - Exact-image B1 equality improves controlled full-source wall 630.026→339.992s.
-  It is not yet a reusable checked-source optimization. Public H remains separate.
+  A reusable checked-source derivative now passes two-build correctness controls;
+  new Phase5 controlled timings remain pending. Public H remains separate.
 - Phase 4 correctness/performance records remain immutable and artifact-specific.
 
 ## Ranked work and cheapest falsifiers
@@ -32,8 +33,10 @@ and results, and commit/push validated increments. See the
 |3|One maintained development entry|Fresh checked build, selected probes, drift/failure/resume controls|direct_calls|
 |4|Portable B1 equality derivative|Strict provenance/dependency recognition, two new checked builds and Unicode/error controls|lexer_analysis|
 
-P5-001 through P5-004 identify these tracks. Initial implementation follows the
-committed design. First prototypes get bounded review before scope expands.
+P5-001 through P5-004 have validated focused results and a first integrated
+frontend gate. P5-005 tests exact reconstructed application origins, P5-006
+constructor-brace adjacency, and P5-007 diagnostic reasons. Next integrate only
+reviewed candidates, then broad-check; schedule an uncontended performance slot.
 No general parser/kernel/emitter rewrite and no reopening rejected Phase 4
 memoization/uncurrying/representation ideas without new evidence.
 

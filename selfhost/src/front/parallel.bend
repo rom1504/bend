@@ -43,6 +43,14 @@ law f_scope_parallel_pats:
   for +book: List<&2,KDef>
   KTerm
 
+law f_scope_parallel_valid:
+  for +t: KTerm
+  for +pats: List<&2, KTerm>
+  for +env: List<&2, KTerm>
+  for +book: List<&2, KDef>
+  for +err: String
+  KTerm
+
 law f_parallel_binds:
   for +pats: List<&2, KTerm>
   for +vals: List<&2, KTerm>
@@ -100,7 +108,13 @@ def f_scope_parallel(t, env, book):
 
 @unsafe
 def f_scope_parallel_pats(t, pats, env, book):
-  kt("Parallel", "", 0, 1, [kt("Patterns", "", 0, 1, pats), kt("Values", "", 0, 1, f_scope_terms(ks(kid(t, 1)), env, book)), f_scope_body(kid(t, 2), f_concat(f_penv(pats), env), book)])
+  f_scope_parallel_valid(t, pats, env, book, f_valid_patterns_mode(pats, book, True{}))
+
+@unsafe
+def f_scope_parallel_valid(t, pats, env, book, err):
+  f_choose(KTerm, String.is_empty(err),
+    u => kt("Parallel", "", 0, 1, [kt("Patterns", "", 0, 1, pats), kt("Values", "", 0, 1, f_scope_terms(ks(kid(t, 1)), env, book)), f_scope_body(kid(t, 2), f_pattern_env(pats, env), book)]),
+    u => kt("Error", err, 0, 0, Nil{}))
 
 @unsafe
 def f_parallel_binds(pats, vals):

@@ -31,11 +31,33 @@ law f_valid_patterns:
   for +book: List<&2,KDef>
   String
 
-law f_valid_patterns_next:
+# Ordinary patterns and parallel binders share validation, with the latter
+# restricted to names before the ordinary constructor-name check.
+law f_valid_patterns_mode:
+  for +ps: List<&2, KTerm>
+  for +book: List<&2, KDef>
+  for +names: Bool
+  String
+
+law f_valid_binding_pattern:
+  for +p: KTerm
+  for +book: List<&2, KDef>
+  for +names: Bool
+  String
+
+law f_valid_patterns_mode_next:
   for +err: String
   for +ps: List<&2, KTerm>
-  for +book: List<&2,KDef>
+  for +book: List<&2, KDef>
+  for +names: Bool
   String
+
+# Patterns open binders left-to-right. The body environment searches newest
+# binders first; values and the original pattern lists retain source order.
+law f_pattern_env:
+  for +pats: List<&2, KTerm>
+  for +env: List<&2, KTerm>
+  List<&2, KTerm>
 
 law f_scope_row_valid:
   for +r: KTerm
@@ -84,19 +106,33 @@ def f_valid_ctor_pattern(p, ctr, book):
 
 @unsafe
 def f_valid_patterns(ps, book):
+  f_valid_patterns_mode(ps, book, False{})
+
+@unsafe
+def f_valid_patterns_mode(ps, book, names):
   match ps:
     case Nil{}:
       ""
     case Con{p, rest}:
-      f_valid_patterns_next(f_valid_pattern(p, book), rest, book)
+      f_valid_patterns_mode_next(f_valid_binding_pattern(p, book, names), rest, book, names)
 
 @unsafe
-def f_valid_patterns_next(err, ps, book):
-  f_choose(String, String.is_empty(err), u => f_valid_patterns(ps, book), u => err)
+def f_valid_binding_pattern(p, book, names):
+  f_choose(String, names,
+    u => f_choose(String, f_eq(tg(p), "Var"), u => f_valid_pattern(p, book), u => "a parallel let binds names; destructure in its body"),
+    u => f_valid_pattern(p, book))
+
+@unsafe
+def f_valid_patterns_mode_next(err, ps, book, names):
+  f_choose(String, String.is_empty(err), u => f_valid_patterns_mode(ps, book, names), u => err)
+
+@unsafe
+def f_pattern_env(pats, env):
+  f_concat(List.reverse(&2, KTerm, f_penv(pats)), env)
 
 @unsafe
 def f_scope_row_valid(r, pats, env, book, err):
-  f_choose(KTerm, String.is_empty(err), u => f_scoped_row(pats, f_scope_body(kid(r, 1), f_concat(f_penv(pats), env), book)), u => kt("Row", "", 0, 1, [kt("Patterns", "", 0, 1, pats), kt("Error", err, 0, 0, Nil{})]))
+  f_choose(KTerm, String.is_empty(err), u => f_scoped_row(pats, f_scope_body(kid(r, 1), f_pattern_env(pats, env), book)), u => kt("Row", "", 0, 1, [kt("Patterns", "", 0, 1, pats), kt("Error", err, 0, 0, Nil{})]))
 
 @unsafe
 def f_lambda_valid(a, body):
@@ -199,7 +235,7 @@ law f_scope_local_valid:
 @unsafe
 def f_scope_local_valid(t, pats, env, book, err):
   f_choose(KTerm, String.is_empty(err),
-    u => kt("Local", "", 0, qt(t), [terms_at(pats, 0), f_scope(kid(t, 1), env, book), f_scope_body(kid(t, 2), f_concat(f_penv(pats), env), book)]),
+    u => kt("Local", "", 0, qt(t), [terms_at(pats, 0), f_scope(kid(t, 1), env, book), f_scope_body(kid(t, 2), f_pattern_env(pats, env), book)]),
     u => kt("Error", err, 0, 0, Nil{}))
 
 law f_bang:

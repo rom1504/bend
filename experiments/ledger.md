@@ -241,3 +241,25 @@ Commit/push the design, reproduce cheap semantic witnesses, then implement and
 validate bounded candidates. Root coordinates shared source, full-suite gates
 and uncontended timings. Work ends 2026-09-23 03:39:36 UTC, with source freeze
 and final evidence/documentation time reserved before that deadline.
+
+## Phase 5 first integrated checkpoint — 2026-09-22, 22:24 UTC
+
+P5-001, P5-002, P5-003 and P5-004 have focused evidence and archived attempts;
+see the [campaign report](../implementation/phase5/report.md). P5-004's concrete
+first target became do-notation grammar/desugaring after current mismatch triage.
+The genuine checked combined API `a17d909d9c48…` completes all2,756 frontend
+observations, preserves919/919positive fixtures and introduces zero new live
+TypeScript differences. Strictcheck failures377→376; liveexact differences
+560→558, acceptance/phase50→48. The fresh reference is unchanged. Known failures
+remain failures; selected local improvements do not inflate full-suite metrics.
+
+A failed reference setup and an incomplete180-second single-core attempt are
+retained alongside the completefour-worker retry. Workflow times are not
+controlled performance samples. The maintained workflow and reusable equality
+derivative have correctness/provenance gates, but no new Phase5 speed claim.
+
+### Updated frontier
+
+Continue bounded adjacency, diagnosticreason and exactsource-origin experiments,
+then integrate reviewed candidates. Keep sourcefreeze/finalproof time reserved;
+the six-hour campaign remains active until03:39:36UTC.

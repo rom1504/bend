@@ -2,8 +2,10 @@
 
 See the [repository compiler guide](../docs/BEND-IN-BEND.md) for building, running
 and validating this port. For current source edits, start with the
-[phase 4 development commands](../docs/PHASE4_DEVELOPMENT.md#keep-the-edit-loop-small):
-the measured checked B1 rebuild takes 20.735 seconds, and a reused live paired
+[maintained development command](../docs/PHASE5_DEVELOPMENT.md), with checked
+builds, explicit equality derivation and reusable paired validation. The
+[phase 4 measurements](../docs/PHASE4_DEVELOPMENT.md#keep-the-edit-loop-small)
+record a checked B1 rebuild of 20.735 seconds, and a reused live paired
 21-case check takes 9.328 seconds median. The
 [fast conformance guide](../docs/PHASE2_DEVELOPMENT.md) explains exact test selection.
 The [four-worker frontend gate](../docs/PHASE4_DEVELOPMENT.md#run-the-full-frontend-gate-with-four-workers)
@@ -18,7 +20,8 @@ the [phase 3 report](../implementation/phase3/report.md) records their evidence.
 The [phase 4 development guide](../docs/PHASE4_DEVELOPMENT.md) documents checked
 source overlays, bounded profiling and the current structural optimization work;
 the [phase 4 report](../implementation/phase4/report.md) separates results from
-experimental artifacts.
+experimental artifacts. The [phase 5 report](../implementation/phase5/report.md)
+tracks current conformance and simplification work with artifact-specific evidence.
 The [experiment ledger](../experiments/ledger.md) and
 [current strategy](../experiments/STEERING.md) track tested hypotheses and the
 next decisions; see the [workflow](../experiments/README.md) before starting a

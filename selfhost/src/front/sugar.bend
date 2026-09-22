@@ -27,6 +27,7 @@ law f_do:
 law f_do_return:
   for +monad: String
   for +types: List<&2, KTerm>
+  for +position: U32
   for +p: FParsed
   FParsed
 
@@ -142,35 +143,87 @@ def f_init(xs):
 
 @unsafe
 def f_do_start(ts):
-  f_do_types(f_tx(ts), f_args(f_tl(f_tl(ts)), ">", Nil{}))
+  f_do_named(f_do_space(ts))
+
+# Header whitespace is not a statement separator. f_skip also consumes ;.
+law f_do_space:
+  for +ts: List<&2,FToken>
+  List<&2,FToken>
+law f_do_named:
+  for +ts: List<&2,FToken>
+  FParsed
+law f_do_types_at:
+  for +monad: String
+  for +types: KTerm
+  for +ts: List<&2,FToken>
+  FParsed
+
+@unsafe
+def f_do_space(ts):
+  f_choose(List<&2,FToken>, f_eq(f_tx(ts), "\n"), u => f_do_space(f_tl(ts)), u => ts)
+
+@unsafe
+def f_do_named(ts):
+  f_choose(FParsed, f_valid_name(f_tx(ts)), u => f_do_parameters(f_tx(ts), f_do_space(f_tl(ts))), u => f_err(ts, "expected a name"))
+
+law f_do_parameters:
+  for +monad: String
+  for +ts: List<&2,FToken>
+  FParsed
+law f_do_parameters_open:
+  for +monad: String
+  for +ts: List<&2,FToken>
+  FParsed
+law f_do_bind_types:
+  for +types: List<&2,KTerm>
+  for +ty: KTerm
+  List<&2,KTerm>
+
+@unsafe
+def f_do_parameters(monad, ts):
+  f_choose(FParsed, f_eq(f_tx(ts), "<>"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_choose(FParsed, f_eq(f_tx(ts), "<"), u => f_do_parameters_open(monad, f_do_space(f_tl(ts))), u => f_err(ts, "expected <")))
+
+@unsafe
+def f_do_parameters_open(monad, ts):
+  f_choose(FParsed, f_eq(f_tx(ts), ";"), u => f_err(ts, "expected term"), u => f_choose(FParsed, f_eq(f_tx(ts), ">") || f_eq(f_tx(ts), ">op"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_do_types(monad, f_args(ts, ">", Nil{}))))
+
+@unsafe
+def f_do_bind_types(types, ty):
+  match types:
+    case Nil{}: [ty]
+    case Con{head, rest}: f_concat(f_init(types), [ty, f_last(types)])
 
 @unsafe
 def f_do_types(monad, p):
   match p:
     case FParsed{types, ts}:
-      f_do(monad, ks(types), f_skip(f_pr(f_expect(FParsed{types, ts}, ":"))), f_col(f_skip(f_tl(ts))))
+      f_choose(FParsed, f_eq(tg(types), "Error"), u => FParsed{types, ts}, u => f_do_types_at(monad, types, f_do_space(ts)))
+
+@unsafe
+def f_do_types_at(monad, types, ts):
+  f_choose(FParsed, f_eq(f_tx(ts), ":"), u => f_do(monad, ks(types), f_skip(f_tl(ts)), f_col(f_skip(f_tl(ts)))), u => f_err(ts, "expected :"))
 
 @unsafe
 def f_do(monad, types, ts, indent):
-  f_choose(FParsed, f_eq(f_tx(ts), "return"), u => f_do_return(monad, types, f_expr(f_tl(ts), 0)), u => f_do_statement(monad, types, f_expr(ts, 0), indent))
+  f_choose(FParsed, f_eq(f_tx(ts), "return"), u => f_do_return(monad, types, f_atid(ts), f_expr(f_tl(ts), 0)), u => f_do_statement(monad, types, f_expr(ts, 0), indent))
 
 @unsafe
-def f_do_return(monad, types, p):
+def f_do_return(monad, types, position, p):
   match p:
     case FParsed{n, ts}:
-      FParsed{f_app(ref(monad ++ ".pure"), f_concat(types, [n])), ts}
+      FParsed{f_app(kt("Ref", monad ++ ".pure", position, 1, Nil{}), f_concat(types, [n])), ts}
 
 @unsafe
 def f_do_statement(monad, types, p, indent):
   match p:
     case FParsed{+n, +ts}:
-      f_choose(FParsed, f_eq(f_tx(ts), ":"), u => f_do_annotated(monad, types, n, f_expr(f_tl(ts), 1), indent), u => f_choose(FParsed, f_eq(f_tx(ts), "<-"), u => f_do_value(monad, types, kt("Ref", "_", ix(n), 1, Nil{}), n, False{}, f_expr(f_tl(ts), 0), indent), u => f_choose(FParsed, (f_eq(f_tx(ts), ";") || U32.is_eq(f_col(f_skip(ts)), indent)) && Bool.not(f_eq(f_tx(f_skip(ts)), "<eof>")), u => f_do_value(monad, types, kt("Ref", "_", ix(n), 1, Nil{}), ref("Unit"), False{}, FParsed{n, ts}, indent), u => FParsed{n, ts})))
+      f_choose(FParsed, f_eq(f_tx(ts), ":") && f_eq(tg(n), "Ref") && f_alias_valid(nm(n)), u => f_do_annotated(monad, types, n, f_expr(f_tl(ts), 1), indent), u => f_choose(FParsed, f_eq(f_tx(ts), "<-"), u => f_do_value(monad, types, kt("Ref", "_", ix(n), 1, Nil{}), n, False{}, f_expr(f_tl(ts), 0), indent), u => f_choose(FParsed, (f_eq(f_tx(ts), ";") || U32.is_eq(f_col(f_skip(ts)), indent)) && Bool.not(f_eq(f_tx(f_skip(ts)), "<eof>")), u => f_do_value(monad, types, kt("Ref", "_", ix(n), 1, Nil{}), ref("Unit"), False{}, FParsed{n, ts}, indent), u => FParsed{n, ts})))
 
 @unsafe
 def f_do_annotated(monad, types, binder, p, indent):
   match p:
     case FParsed{ty, +ts}:
-      f_do_value(monad, types, binder, ty, f_eq(f_tx(ts), "="), f_expr(f_tl(ts), 0), indent)
+      f_choose(FParsed, f_eq(tg(ty), "Error"), u => FParsed{ty, ts}, u => f_choose(FParsed, f_eq(f_tx(ts), "=") || f_eq(f_tx(ts), "<-"), u => f_do_value(monad, types, binder, ty, f_eq(f_tx(ts), "="), f_expr(f_tl(ts), 0), indent), u => f_err(ts, "expected <-")))
 
 @unsafe
 def f_do_value(monad, types, binder, ty, pure, p, indent):
@@ -182,7 +235,7 @@ def f_do_value(monad, types, binder, ty, pure, p, indent):
 def f_do_tail(monad, types, binder, ty, pure, v, p):
   match p:
     case FParsed{body, ts}:
-      FParsed{f_choose(KTerm, pure, u => kt("Local", "", 0, 1, [binder, kt("Ann", "", 0, 1, [v, ty]), body]), u => f_app(ref(monad ++ ".bind"), f_concat(f_init(types), [ty, f_last(types), v, kt("Lam", nm(binder), ix(binder), qt(binder), [body])]))), ts}
+      FParsed{f_choose(KTerm, pure, u => kt("Local", "", 0, 1, [binder, kt("Ann", "", 0, 1, [v, ty]), body]), u => f_app(kt("Ref", monad ++ ".bind", ix(binder), 1, Nil{}), f_concat(f_do_bind_types(types, ty), [v, kt("Lam", nm(binder), ix(binder), qt(binder), [body])]))), ts}
 
 @unsafe
 def f_error_term(t):

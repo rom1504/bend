@@ -1,0 +1,314 @@
+{
+  "kind": "phase5-frontend-focused-audit",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/before/paired.json",
+      "sha256": "60f736b55e083059e68c33c814af5bcb9665fa69ea8ab900540b648376748802"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/focused-v3/paired.json",
+      "sha256": "820d0467f97ccc96bddfbb27769d6a8b7f8105fb93da60bc2c766cbe50b8321d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/execution-v3/paired.json",
+      "sha256": "50f81accc371c168e8144f439b30ea33d545bc066b38d6f7ee8a7062bda4802d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/frontend/scopes-v4/paired.json",
+      "sha256": "5fef1324ac02ab863150c8e312a1c324a0355fc0fe94ee0ada956d187b09d9ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/frontend/phase5-binding-audit.mjs",
+      "sha256": "3d84f7fd14bbcef6980603a7a7d4c345ca2b1ce3ca8237e1d97764fdb8eac590"
+    }
+  ],
+  "newBootstrap": false,
+  "checks": [
+    {
+      "id": "phase5-execution/local-nested-constructor-control",
+      "lane": "interpreter",
+      "output": "3\n"
+    },
+    {
+      "id": "phase5-execution/local-nested-constructor-control",
+      "lane": "js",
+      "output": "3\n"
+    },
+    {
+      "id": "phase5-execution/parallel-duplicate-name",
+      "lane": "interpreter",
+      "output": "2\n"
+    },
+    {
+      "id": "phase5-execution/parallel-duplicate-name",
+      "lane": "js",
+      "output": "2\n"
+    },
+    {
+      "id": "phase5-execution/parallel-later-constructor",
+      "lane": "interpreter",
+      "output": "42\n"
+    },
+    {
+      "id": "phase5-execution/parallel-later-constructor",
+      "lane": "js",
+      "output": "42\n"
+    },
+    {
+      "id": "phase5-execution/parallel-marked-name",
+      "lane": "interpreter",
+      "output": "4\n"
+    },
+    {
+      "id": "phase5-execution/parallel-marked-name",
+      "lane": "js",
+      "output": "4\n"
+    },
+    {
+      "id": "phase5-execution/parallel-three-names",
+      "lane": "interpreter",
+      "output": "6\n"
+    },
+    {
+      "id": "phase5-execution/parallel-three-names",
+      "lane": "js",
+      "output": "6\n"
+    },
+    {
+      "id": "phase5-execution/unsafe-def",
+      "lane": "interpreter",
+      "output": "42\n"
+    },
+    {
+      "id": "phase5-execution/unsafe-def",
+      "lane": "js",
+      "output": "42\n"
+    },
+    {
+      "id": "phase5-scope/local-destructure-duplicate-named",
+      "lane": "interpreter",
+      "output": "2\n"
+    },
+    {
+      "id": "phase5-scope/local-destructure-duplicate-named",
+      "lane": "js",
+      "output": "2\n"
+    },
+    {
+      "id": "phase5-scope/local-nested-duplicate-outer",
+      "lane": "interpreter",
+      "output": "9\n"
+    },
+    {
+      "id": "phase5-scope/local-nested-duplicate-outer",
+      "lane": "js",
+      "output": "9\n"
+    },
+    {
+      "id": "phase5-scope/match-row-duplicate-named",
+      "lane": "interpreter",
+      "output": "2\n"
+    },
+    {
+      "id": "phase5-scope/match-row-duplicate-named",
+      "lane": "js",
+      "output": "2\n"
+    },
+    {
+      "id": "phase5-scope/parallel-duplicate-outer-grouped",
+      "lane": "interpreter",
+      "output": "10\n"
+    },
+    {
+      "id": "phase5-scope/parallel-duplicate-outer-grouped",
+      "lane": "js",
+      "output": "10\n"
+    },
+    {
+      "id": "phase5-scope/parallel-erased-outer-control",
+      "lane": "interpreter",
+      "output": "2\n"
+    },
+    {
+      "id": "phase5-scope/parallel-erased-outer-control",
+      "lane": "js",
+      "output": "2\n"
+    },
+    {
+      "id": "phase5-scope/parallel-marked-earlier-duplicate",
+      "lane": "interpreter",
+      "output": "2\n"
+    },
+    {
+      "id": "phase5-scope/parallel-marked-earlier-duplicate",
+      "lane": "js",
+      "output": "2\n"
+    },
+    {
+      "id": "phase5-scope/parallel-marked-later-duplicate",
+      "lane": "interpreter",
+      "output": "4\n"
+    },
+    {
+      "id": "phase5-scope/parallel-marked-later-duplicate",
+      "lane": "js",
+      "output": "4\n"
+    },
+    {
+      "id": "phase5-scope/parallel-mixed-duplicate",
+      "lane": "interpreter",
+      "output": "5\n"
+    },
+    {
+      "id": "phase5-scope/parallel-mixed-duplicate",
+      "lane": "js",
+      "output": "5\n"
+    },
+    {
+      "id": "phase5-scope/parallel-values-outer-scope",
+      "lane": "interpreter",
+      "output": "8\n"
+    },
+    {
+      "id": "phase5-scope/parallel-values-outer-scope",
+      "lane": "js",
+      "output": "8\n"
+    },
+    {
+      "id": "phase5/parallel-bare-constructor",
+      "intendedRule": true,
+      "reference": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On x = {1 : U32} {42 : U32}\n6 |   x",
+      "candidate": "Error: a constructor pattern requires braces: On"
+    },
+    {
+      "id": "phase5/parallel-first-bad-body",
+      "intendedRule": true,
+      "reference": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On x = {1 : U32} {42 : U32}\n6 |   missing",
+      "candidate": "Error: a constructor pattern requires braces: On"
+    },
+    {
+      "id": "phase5/parallel-first-unbound-value",
+      "intendedRule": true,
+      "reference": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On x = {missing : U32} {42 : U32}\n6 |   x",
+      "candidate": "Error: a constructor pattern requires braces: On"
+    },
+    {
+      "id": "phase5/parallel-base-constructor",
+      "intendedRule": true,
+      "reference": "Error:\n- message  : a braced constructor pattern (Nil is a constructor: write Nil{}, or rename the binder)\nLocation:\n2 | def main() -> U32:\n3>|   Nil x = {1 : U32} {42 : U32}\n4 |   x",
+      "candidate": "Error: a constructor pattern requires braces: Nil"
+    },
+    {
+      "id": "phase5/parallel-braced-constructor",
+      "intendedRule": true,
+      "reference": "Error:\n- message  : a name (a parallel let binds names; destructure in its body)\nLocation:\n4 | def main() -> U32:\n5>|   On{} x = On{} {42 : U32}\n6 |   x",
+      "candidate": "Error: a parallel let binds names; destructure in its body"
+    },
+    {
+      "id": "phase5/parallel-field-constructor",
+      "intendedRule": true,
+      "reference": "Error:\n- message  : a name (a parallel let binds names; destructure in its body)\nLocation:\n4 | def main() -> U32:\n5>|   Box{n} x = Box{1} {42 : U32}\n6 |   x",
+      "candidate": "Error: a parallel let binds names; destructure in its body"
+    },
+    {
+      "id": "phase5/unsafe-law",
+      "intendedRule": true,
+      "reference": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'l'\nLocation:\n2 | @unsafe\n3>| law main:\n4 |   U32",
+      "candidate": "Error: line 3:0: expected def after @unsafe; got law"
+    },
+    {
+      "id": "phase5/unsafe-type",
+      "intendedRule": true,
+      "reference": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 't'\nLocation:\n2 | @unsafe\n3>| type Bit is Data:\n4 |   On{}",
+      "candidate": "Error: line 3:0: expected def after @unsafe; got type"
+    },
+    {
+      "id": "phase5/unsafe-import",
+      "intendedRule": true,
+      "reference": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'i'\nLocation:\n1 | @unsafe\n2>| import Base\n3 | def main() -> U32:",
+      "candidate": "Error: line 2:0: expected def after @unsafe; got import"
+    },
+    {
+      "id": "phase5/unsafe-eof",
+      "intendedRule": true,
+      "reference": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : end of input\nLocation:\n2 | @unsafe\n3>| ",
+      "candidate": "Error: line 0:0: expected def after @unsafe; got <eof>"
+    },
+    {
+      "id": "phase5/unsafe-repeated",
+      "intendedRule": true,
+      "reference": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : '@'\nLocation:\n2 | @unsafe\n3>| @unsafe\n4 | def main() -> U32:",
+      "candidate": "Error: line 3:0: expected def after @unsafe; got @"
+    },
+    {
+      "id": "phase5/unsafe-unknown-decorator",
+      "intendedRule": true,
+      "reference": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : '@'\nLocation:\n2 | @unsafe\n3>| @unknown\n4 | def main() -> U32:",
+      "candidate": "Error: line 3:0: expected def after @unsafe; got @"
+    }
+  ],
+  "scope": "Selected acceptance/phase, specific binder/decorator-rule diagnostics and exact interpreter/JS results; not full conformance.",
+  "firstErrorControls": true,
+  "baselineSemanticMismatches": [
+    "phase5/parallel-bare-constructor",
+    "phase5/parallel-braced-constructor",
+    "phase5/parallel-field-constructor",
+    "phase5/parallel-first-bad-body",
+    "phase5/unsafe-eof",
+    "phase5/unsafe-law",
+    "phase5/unsafe-repeated",
+    "phase5/unsafe-type"
+  ],
+  "knownDifferentRule": {
+    "id": "phase5/parallel-first-bad-value",
+    "reference": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On x = missing {42 : U32}\n6 |   x",
+    "candidate": "Error: line 5:21: expected term; got :",
+    "reason": "Existing raw-expression brace parsing discrepancy; same parse rejection is not evidence of intended-rule parity."
+  },
+  "observations": {
+    "focusedCheck": 70,
+    "scopeCheck": 9,
+    "interpreter": 15,
+    "js": 15,
+    "total": 109
+  },
+  "exactDiagnosticDifferences": [
+    "phase2-grammar/list-semicolon-after-comma",
+    "phase2-grammar/list-semicolon-leading",
+    "phase2-grammar/list-semicolon-middle",
+    "phase2-grammar/list-semicolon-multiline",
+    "phase2-grammar/list-semicolon-nested",
+    "phase2-grammar/list-semicolon-trailing",
+    "phase2-grammar/param-erased-untyped",
+    "phase2-grammar/param-shared-untyped",
+    "phase2-grammar/param-template-untyped-comma",
+    "phase2-grammar/param-template-untyped-last",
+    "phase2-rules/import-after-decorator",
+    "phase2-rules/import-after-foreign",
+    "phase2-rules/import-after-law",
+    "phase2-rules/import-after-type",
+    "phase2-rules/import-late-existing",
+    "phase2-rules/law-fill-changed-type",
+    "phase2-rules/law-fill-same-type",
+    "phase2-rules/law-template-after-erased",
+    "phase2-rules/law-template-late",
+    "phase2-rules/local-call-pattern",
+    "phase2-rules/local-constructor-braces-required",
+    "phase2-rules/local-constructor-field-count",
+    "phase5/parallel-bare-constructor",
+    "phase5/parallel-base-constructor",
+    "phase5/parallel-braced-constructor",
+    "phase5/parallel-field-constructor",
+    "phase5/parallel-first-bad-body",
+    "phase5/parallel-first-bad-value",
+    "phase5/parallel-first-unbound-value",
+    "phase5/unsafe-eof",
+    "phase5/unsafe-import",
+    "phase5/unsafe-law",
+    "phase5/unsafe-repeated",
+    "phase5/unsafe-type",
+    "phase5/unsafe-unknown-decorator"
+  ],
+  "inputsUnchanged": true
+}

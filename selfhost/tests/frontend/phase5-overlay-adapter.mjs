@@ -1,0 +1,35 @@
+// Expose a genuinely checked overlay to the existing paired harness. Never
+// fabricate a normal-bootstrap sidecar or treat a derived image as checked.
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+const [checkedArg,baselineRunArg,outputArg]=process.argv.slice(2);
+if(!outputArg)throw Error('Usage: phase5-overlay-adapter.mjs CHECKED_OVERLAY_REPORT BASELINE_CANDIDATE_REPORT NEW_DIRECTORY');
+const checkedFile=fs.realpathSync(checkedArg),baselineFile=fs.realpathSync(baselineRunArg),out=path.resolve(outputArg);
+fs.mkdirSync(out);
+const hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const identity=file=>({file:fs.realpathSync(file),sha256:hash(file)});
+const checked=JSON.parse(fs.readFileSync(checkedFile)),before=JSON.parse(fs.readFileSync(baselineFile));
+assert.equal(checked.complete,true);assert.equal(checked.inputsUnchanged,true);assert.equal(checked.requestedRootsExist,true);
+assert.equal(checked.kind,'phase4-checked-overlay');assert.equal(checked.upstream.pin,'6018e28ecc67cf1fffc0c20c64b11023474c2df8');
+const artifacts=before.identity.artifacts;
+for(const item of [checked.api,checked.source,...checked.inputs,...Object.values(artifacts)])assert.equal(hash(item.file),item.sha256);
+const adapter=path.join(path.dirname(artifacts.driver.file),'typed.mjs');assert.equal(hash(adapter),before.identity.adapterSha256);
+const manifest={kind:'phase5-checked-overlay-adapter',newBootstrap:false,checkedReport:identity(checkedFile),baselineRun:identity(baselineFile),generator:identity(import.meta.filename),adapter:identity(adapter),api:checked.api,source:checked.source,runtime:artifacts.runtime,base:artifacts.base,inputs:checked.inputs};
+const manifestFile=path.join(out,'manifest.json');fs.writeFileSync(manifestFile,JSON.stringify(manifest,null,2)+'\n');
+const source=`import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const m=JSON.parse(fs.readFileSync(${JSON.stringify(manifestFile)}));
+const sha=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+for(const i of [m.checkedReport,m.baselineRun,m.generator,m.adapter,m.api,m.source,m.runtime,m.base,...m.inputs])assert.equal(sha(i.file),i.sha256,'Checked-overlay adapter input drift: '+i.file);
+process.env.BEND_TYPED_API=m.api.file;process.env.BEND_TYPED_RUNTIME=m.runtime.file;process.env.BEND_BASE=m.base.file;
+const A=await import(${JSON.stringify(pathToFileURL(adapter).href)});
+export const name='phase5-checked-overlay';
+export const capabilities=A.capabilities,persistentLanes=A.persistentLanes;
+export const artifacts={...A.artifacts,checkedOverlay:m.checkedReport.file,overlayAdapterManifest:${JSON.stringify(manifestFile)},overlayAdapterGenerator:m.generator.file,...Object.fromEntries(m.inputs.map((i,n)=>['overlayInput/'+n,i.file]))};
+export const probe=A.probe,createPersistentSession=A.createPersistentSession;
+`;
+const output=path.join(out,'adapter.mjs');fs.writeFileSync(output,source);console.log(output);

@@ -60,6 +60,13 @@ law f_top:
   for +unsafe: Bool
   FResult
 
+law f_top_ready:
+  for +ts: List<&2, FToken>
+  for +book: List<&2, KDef>
+  for +imports: List<&2, KTerm>
+  for +unsafe: Bool
+  FResult
+
 law f_import:
   for +ts: List<&2, FToken>
   for +book: List<&2, KDef>
@@ -387,6 +394,12 @@ def f_tops(ts0, book, imports, unsafe):
 
 @unsafe
 def f_top(ts, book, imports, unsafe):
+  f_choose(FResult, unsafe,
+    u => f_choose(FResult, f_eq(f_tx(ts), "def"), u => f_top_ready(ts, book, imports, unsafe), u => f_result(book, nm(f_pn(f_err(ts, "expected def after @unsafe"))), imports)),
+    u => f_top_ready(ts, book, imports, unsafe))
+
+@unsafe
+def f_top_ready(ts, book, imports, unsafe):
   f_choose(FResult, f_eq(f_tx(ts), "<eof>"), u => f_result(book, "", imports),
     u => f_choose(FResult, f_eq(f_tx(ts), "@") && f_eq(f_tx(f_tl(ts)), "unsafe"), u => f_tops(f_tl(f_tl(ts)), book, imports, True{}),
     u => f_choose(FResult, f_eq(f_tx(ts), "import"), u => f_import_leading(ts, book, imports, unsafe),

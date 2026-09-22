@@ -30,3 +30,13 @@ or a new bootstrap label. The separate full frontend gate uses a new truthful
 `experimental-derived-frontend` report; it must not rewrite checked-source
 provenance to match the derived image. Coordinate CPU masks with the root and
 start neither gate if it would overrun the 20:00 experiment stop.
+
+## Selected result, 19:13 UTC
+
+[The complete pilot](../../implementation/phase4/b1-native-equality.md) passes 909 helper controls and one wrong-image refusal. Two opposite-order core pairs improve request time 35.58% and 35.13%; the subsequent list and retained checker rejection pairs also improve and preserve exact results. All 12 observations and actual emitted bytes match, including core SHA `016a5ced…`. Experimental API is `e95e1198…`; original checked B1 stays unchanged.
+
+The selected gate passes. Root separately authorized a complete frontend comparison and one bounded full-source exact-H emission; those are not yet part of this selected result. No new checked-bootstrap or whole-source speed claim is made.
+
+## Complete frontend preservation
+
+The derived four-worker gate completed all 2,756 observations with zero raw-result or verdict changes and 377 unchanged strict failures. The [independent audit](../../implementation/phase4/b1-native-equality-evidence/frontend-independent-review.json) confirms all 45 session histories/replay digests and identities without rerunning compiler probes. Selected pilot preservation is complete; the separately supervised whole-source gate is still pending.

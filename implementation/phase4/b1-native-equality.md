@@ -1,6 +1,6 @@
 # B1 primitive string equality: successful bounded pilot
 
-A disposable one-function change to checked B1 reduces the real compiler-core request time by **35.58% and 35.13%** in two opposite-order pairs, with exact checked output. The 909 helper controls and all 12 timed positive/negative observations pass. This clears the preregistered 5% core gate; the complete frontend gate also preserves all 2,756 observations. One bounded full-source gate is separate and still pending. The ordinary B1 API and all 59 Bend modules remain unchanged.
+A disposable one-function change to checked B1 reduces the real compiler-core request time by **35.58% and 35.13%** in two opposite-order pairs, with exact checked output. The 909 helper controls and all 12 timed positive/negative observations pass. This clears the preregistered 5% core gate; the complete frontend gate also preserves all 2,756 observations. The separate bounded full-source gate also emits exactly the original H bytes. The ordinary B1 API and all 59 Bend modules remain unchanged.
 
 ## Exact change and semantic boundary
 
@@ -46,4 +46,10 @@ Reserve CPU0 before timing. The comparator automatically stops after the core pa
 
 The [selected archive](b1-native-equality-evidence/manifest.json) preserves 101 files in 783,413 compressed bytes, including the actual derived API, test-only controls, all process results, output bytes, consumed tools and validated caches. [Preparation](b1-native-equality-evidence/preparation.json) and [pilot](b1-native-equality-evidence/pilot.json) remain readable. Historical paths are not rewritten into a new bootstrap.
 
-The later [full frontend gate and durable archive](b1-native-equality-frontend.md) and its [independent read-only audit](b1-native-equality-evidence/frontend-independent-review.json) preserve all 2,756 raw results and verdicts against final B1, including exact diagnostics. All 45 actual worker histories, replay prefixes, fixture/import hashes and candidate cache/provenance match. The 377 existing strict failures remain; this is behavior preservation, not full conformance. No compiler probes were rerun for the independent audit. The bounded full-source gate remains separate and pending.
+The later [full frontend gate and durable archive](b1-native-equality-frontend.md) and its [independent read-only audit](b1-native-equality-evidence/frontend-independent-review.json) preserve all 2,756 raw results and verdicts against final B1, including exact diagnostics. All 45 actual worker histories, replay prefixes, fixture/import hashes and candidate cache/provenance match. The 377 existing strict failures remain; this is behavior preservation, not full conformance. No compiler probes were rerun for the independent audit. The separate [complete-source gate and archive](b1-native-equality-full.md) also
+pass: actual 1,143,517 output bytes equal both original checked fixed-point
+stages, SHA `b33b38e3…`. Independent audit verified the candidate reconstruction,
+original checked source/proofs, host/helper/runtime/Base identities and validated
+candidate cache. Its single observation was 348.373 seconds process wall,
+347.098 seconds request wall and 2,841,452 KiB peak RSS. This is output-preservation
+evidence, not a paired whole-source speed claim or a new checked bootstrap.

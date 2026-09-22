@@ -1,6 +1,6 @@
 # P4-024: Primitive equality in the disposable B1 development compiler
 
-Status: planned, before execution. Owner: compact-index agent. Canonical packaging verification takes priority; execute only after the scheduling reservation ends, with an absolute experiment stop at 20:00 UTC on 2026-09-22.
+Status: bounded pilot, complete frontend preservation and one full-source exact-output gate passed. The following plan was recorded before execution. Owner: compact-index agent; full-source audit/archive: direct-calls agent. Canonical packaging verification takes priority; the absolute experiment stop was 20:00 UTC on 2026-09-22.
 
 ## Hypothesis and invariant
 
@@ -39,4 +39,19 @@ The selected gate passes. Root separately authorized a complete frontend compari
 
 ## Complete frontend preservation
 
-The derived four-worker gate completed all 2,756 observations with zero raw-result or verdict changes and 377 unchanged strict failures. The [independent audit](../../implementation/phase4/b1-native-equality-evidence/frontend-independent-review.json) confirms all 45 session histories/replay digests and identities without rerunning compiler probes. Selected pilot preservation is complete; the separately supervised whole-source gate is still pending.
+The derived four-worker gate completed all 2,756 observations with zero raw-result or verdict changes and 377 unchanged strict failures. The [independent audit](../../implementation/phase4/b1-native-equality-evidence/frontend-independent-review.json) confirms all 45 session histories/replay digests and identities without rerunning compiler probes. Selected pilot and frontend preservation are complete. The separate full-source result follows.
+
+
+## Complete-source preservation
+
+The [single full-source gate](../../implementation/phase4/b1-native-equality-full.md)
+finished successfully and emitted 1,143,517 actual bytes exactly equal to both
+original checked fixed-point stages, SHA `b33b38e3…`. An independent read-only
+audit verified the exact candidate guards, original checked source/proof chain,
+host/helpers, runtime, canonical Base and candidate-validated cache. The durable
+archive retains and verifies all 255 member paths and bytes.
+
+Process wall was 348.373 seconds, request wall 347.098 seconds, and peak RSS
+2,841,452 KiB. These are one workflow observation, not a paired full-source gain.
+The candidate remains an experimental derivative (`newBootstrap:false`);
+ordinary B1, compiler Bend modules and public emitted output remain unchanged.

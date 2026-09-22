@@ -71,15 +71,46 @@ spans include host argument conversion, and its CPU samples include profiler
 overhead. Use it to locate costs, then use uninstrumented alternating fresh
 processes for performance claims. A profile duration is not a benchmark result.
 
-## Separate compiler images from public libraries
+## Run a private compiler image
 
-The private-image experiment places the compiler behind a dedicated process
+The private compiler places the compiler behind a dedicated process
 boundary accepting data-only file/mode requests. Its internal function objects
 do not enter or leave that process. This permits experiments with simpler private
 calls and projections while ordinary emitted libraries retain their existing ABI.
 
-These artifacts are explicitly experimental until the report records their
-final gates. Do not import a private image as an ordinary public library or apply
+Build it from a completed checked self-reproduction report:
+
+```sh
+node --stack-size=4096 selfhost/tools/private-compiler/build.mjs \
+  PROOF/report.json PROOF/stage2.mjs PROOF/runtime.mjs NEW_IMAGE_DIRECTORY
+node selfhost/tools/private-compiler/run.mjs NEW_IMAGE_DIRECTORY \
+  /absolute/main.bend compile NEW_RESULT_DIRECTORY
+```
+
+For a focused group, use one finite batch. This amortizes compiler loading and
+artifact verification while retaining an external deadline for every request:
+
+```sh
+node selfhost/tools/private-compiler/batch.mjs NEW_IMAGE_DIRECTORY \
+  REQUESTS.json NEW_BATCH_DIRECTORY --recycle=32 --timeout-ms=120000
+```
+
+`REQUESTS.json` contains at most 256 records, for example
+`[{"input":"/absolute/main.bend","mode":"check"}]`. Each request creates a fresh
+source graph. Keep its inputs unchanged until its worker finishes; outputs are
+published only after identity verification. A failed request remains failed,
+and later requests can continue in a new worker. Parse/type rejections remain
+ordinary compiler observations. See the [tool guide](../selfhost/tools/private-compiler/README.md)
+for modes, resources, reports, proof requirements and retained failure behavior.
+
+The [controlled 21-case comparison](../implementation/phase4/private-cli.md)
+measured 17.524 seconds for one private H batch versus 43.023 seconds for separate
+private CLI invocations. Checked B1 in a reused process remained faster at
+7.850 seconds. Choose B1 for routine source development; private H is useful
+when the compiler itself must run from Bend-emitted code. These numbers use
+previously validated Base caches and exclude rebuilding the compiler.
+
+Do not import a private image as an ordinary public library or apply
 its transformations to arbitrary generated programs. Existing public function
 objects, accessors, partial applications, and argument ownership have observable
 behavior. The worker boundary is part of the optimization's correctness contract.

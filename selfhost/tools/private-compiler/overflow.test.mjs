@@ -1,0 +1,19 @@
+// Deliberately synthetic transport-only workers. They never compile Bend or
+// establish a bootstrap proof; their manifests exercise supervisor boundaries.
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import path from 'node:path';import os from 'node:os';
+import {identity,digest} from './common.mjs';import {runPrivateCompiler} from './run.mjs';import {runPrivateBatch} from './batch.mjs';
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'private-overflow-'));test.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+const source=`import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';
+const sha=x=>createHash('sha256').update(x).digest('hex');
+function result(out,request){const file=path.join(out,'generated.mjs.pending');fs.writeFileSync(file,'// output');fs.writeFileSync(path.join(out,'result.json'),JSON.stringify({complete:true,request,inputs:{files:[],resolutions:[],missing:[]},result:{status:'ok',phase:'compile',checked:true,exitCode:0},emitted:{file,sha256:sha('// output'),bytes:9}}));}
+function overflow(){fs.writeSync(1,Buffer.alloc(1024*1024+1,120));fs.writeSync(2,Buffer.alloc(1024*1024,120));process.exit(0);}
+`;
+function fixture(name){const image=path.join(dir,name);fs.mkdirSync(image);const artifacts=[];
+ const write=(relative,text)=>{const file=path.join(image,relative);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,text);artifacts.push({relative,sha256:digest(text)});};
+ for(const relative of ['image.mjs','runtime.mjs',...['typed-driver','compiler-abi','node-resource-args','assemble','native-build'].map(n=>'host/tools/'+n+'.mjs'),...['common','transport','input-audit','session'].map(n=>'runner/'+n+'.mjs')])write(relative,'// transport-only fixture');
+ write('runner/worker.mjs',source+`result(process.argv[4],JSON.parse(fs.readFileSync(process.argv[3],'utf8')));overflow();`);
+ write('runner/batch-worker.mjs',source+`const config=JSON.parse(fs.readFileSync(process.argv[2],'utf8')),file=path.join(config.image,'manifest.json');process.send({kind:'ready',node:{file:process.execPath,version:process.version},manifest:{file,canonicalPath:fs.realpathSync(file),sha256:sha(fs.readFileSync(file))}});process.on('message',m=>{if(m.kind==='request'){result(path.join(config.directory,String(m.index).padStart(3,'0')),m.request);process.send({kind:'result',index:m.index});}else if(m.kind==='finish'){process.send({kind:'finished'},()=>overflow());}});`);
+ const base=path.join(image,'base.bend');fs.writeFileSync(base,'// fixture');fs.writeFileSync(path.join(image,'manifest.json'),JSON.stringify({kind:'bend-private-compiler-image',version:1,complete:true,proofStatus:'fixedpoint',base:identity(base),artifacts}));return image;
+}
+test('single fast-exit writer exceeding combined log cap cannot publish otherwise valid output',async()=>{const image=fixture('single'),output=path.join(dir,'single-out');const r=await runPrivateCompiler({image,input:'/tmp/transport-only.bend',mode:'compile',output});assert.equal(r.status,0);assert.equal(r.outputLimit,true);assert.equal(r.logBytes,2*1024*1024+1);assert.equal(r.complete,false);assert.equal(fs.existsSync(path.join(output,'generated.mjs')),false);});
+test('batch fast-exit finish overflow rejects completed row and keeps its source unpublished',async()=>{const image=fixture('batch'),output=path.join(dir,'batch-out');const r=await runPrivateBatch({image,requests:[{input:'/tmp/transport-only.bend',mode:'compile'}],output});assert.equal(r.lifetimes[0].exit.status,0);assert.equal(r.lifetimes[0].outputLimit,true);assert.equal(r.lifetimes[0].logBytes,2*1024*1024+1);assert.equal(r.rows[0].workerComplete,true);assert.equal(r.rows[0].complete,false);assert.equal(r.rows[0].published,false);assert.equal(r.complete,false);assert.equal(fs.existsSync(path.join(output,'000/generated.mjs')),false);});

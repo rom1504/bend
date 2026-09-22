@@ -1,0 +1,6 @@
+// Optional diagnostic instrumentation, never used by the production launcher.
+import fs from 'node:fs';import crypto from 'node:crypto';import {syncBuiltinESMExports} from 'node:module';
+const read=fs.readFileSync,create=crypto.createHash,write=fs.writeFileSync,reads=new Map();let hashUpdateMs=0,hashBytes=0,hashCalls=0;
+fs.readFileSync=function(file,...args){const start=performance.now();try{return read.call(this,file,...args);}finally{const name=String(file),old=reads.get(name)??{calls:0,ms:0};old.calls++;old.ms+=performance.now()-start;reads.set(name,old);}};
+crypto.createHash=function(...args){const hash=create.apply(this,args),update=hash.update;hash.update=function(value,...rest){const start=performance.now();try{return update.call(this,value,...rest);}finally{hashUpdateMs+=performance.now()-start;hashBytes+=Buffer.byteLength(value);hashCalls++;}};return hash;};syncBuiltinESMExports();
+process.on('exit',()=>{const target=process.env.BEND_PRIVATE_STARTUP_PROFILE;if(target)write.call(fs,target+'-'+process.pid+'.json',JSON.stringify({kind:'private-startup-cost-profile',pid:process.pid,args:process.argv,hashUpdateMs,hashBytes,hashCalls,reads:[...reads].map(([file,v])=>({file,...v})).sort((a,b)=>b.ms-a.ms)},null,2)+'\n');});

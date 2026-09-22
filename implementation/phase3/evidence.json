@@ -113,6 +113,16 @@
       "candidateMs": 1228644,
       "upstreamMs": 237196,
       "scope": "Single serial persistent sweeps on CPU2, existing validated candidate Base cache. Not a repeated paired benchmark."
+    },
+    "nativeO2": {
+      "report": "implementation/phase3/evidence/native-o2.json",
+      "fullSourceCompileMs": 249953,
+      "fullSourceProcessMs": 250169,
+      "listSortO1MedianMs": 1958,
+      "listSortO2MedianMs": 1894,
+      "smallSamplesPerVariant": 3,
+      "sameOutputBytes": true,
+      "scope": "Fullsource O1/O2 are unpaired observations; small samples alternate; build and cache reuse costs separate."
     }
   },
   "validation": {
@@ -120,7 +130,15 @@
     "persistentExactObservation": true,
     "runtimeDemandOrder": true,
     "componentHarnessSubset": "passed",
-    "fullHFixedPoint": "running on frozen combined source/API/runtime/host",
+    "fullHFixedPoint": {
+      "complete": true,
+      "report": "implementation/phase3/evidence/final-fixedpoint.json",
+      "verifiedSummary": "implementation/phase3/evidence/final-fixedpoint-summary.json",
+      "stage2Ms": 704229,
+      "stage3Ms": 1980406,
+      "outputBytes": 1131553,
+      "outputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de"
+    },
     "fullConformance": "incomplete: existing exact frontend differences and unvalidated hardware/execution scopes remain",
     "nativeCacheFixture": "passed: miss/hit, included header, optimization, compiler executable, lock, corrupted binary",
     "actualClangCache": {
@@ -187,5 +205,6 @@
       "integrated": false,
       "reason": "No consistent joining gain; closed type fact cache needs realistic Bend implementation evidence"
     }
-  }
+  },
+  "status": "implementation-and-validation-complete; full-language-conformance remains incomplete"
 }

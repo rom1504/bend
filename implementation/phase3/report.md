@@ -22,9 +22,10 @@ compiler work, validation startup and generated-program runtime:
 The typed worker benchmark uses the checked named-ABI B1 artifact
 `7740bc5a…`; it measures transport and startup reuse. The diagnostic benchmark
 compares the frozen baseline B1 with a rebuilt candidate from pinned upstream.
-Neither substitutes for measuring the combined self-emitted H artifact.
-The full H fixed-point and broad conformance gates therefore remain required
-before promoting a new default distribution.
+The combined H comparison, full frontend sweep, and byte-identical
+self-reproduction proof are now complete and recorded below. The default
+distributed binary remains the earlier release; select or rebuild the phase3
+artifacts explicitly using the development guide.
 
 ## Combined compiler measurements
 
@@ -110,8 +111,8 @@ annotation medians were 2,256 ms and 24.4 ms. Telescope substitution is still
 quadratic; this does not establish a 92x whole-compiler improvement.
 
 The source overlay built successfully in 17.1 seconds; the integrated source was
-then checked as a complete assembled compiler with B1. The combined frozen source is now undergoing a checked self-emission chain;
-whole-H timings are separate from these component measurements.
+then checked as a complete assembled compiler with B1. The combined frozen source passed the checked self-emission chain described
+below; whole-H observations remain separate from these component measurements.
 
 The diagnostic path now has an exact-prefix replay entry. It independently
 verifies exact cached-prefix identity, seeds the same normalization context, walks only
@@ -258,7 +259,45 @@ Earlier root-supervised `spawnSync` attempts returned `EPERM`; those failed
 attempts remain recorded. Separate local subprocess validation passed all 19
 persistent/targeted tests, including existing isolated replay. The bundled Clang
 16 toolchain passed the real miss/hit and executable-output gate.
-The integrated H fixed point remains a release gate.
+The integrated H fixed-point gate passed with all recorded input identities
+verified before and after both stages.
+
+## Checked self-reproduction and remaining full-build cost
+
+The [completed proof](evidence/final-fixedpoint.json) ran checked B1 → H and then
+H → H on the exact frozen source, Base, runtime and host. Both outputs are
+**1,131,553 bytes**, SHA-256
+`360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de`.
+Stage2 took **704.229 seconds**; self-emitted H reproduced stage3 in
+**1,980.406 seconds (33 minutes)**. Inputs were verified before and after each
+stage. The [independently reverified summary](evidence/final-fixedpoint-summary.json)
+records all hashes and adjacent trace intervals; its tool also successfully
+verified the complete historical phase2 chain.
+
+The earlier phase2 H observation was 2,921.261 seconds (48.7 minutes). The new
+observation is lower by about 32%, but the source/API/runtime revisions differ
+and these are not paired repeated timings. The largest changes in adjacent H
+trace intervals are layout/foreign preparation, 546.435 → 192.052 seconds, and
+library emission, 948.326 → 347.140 seconds. Annotation was 604.448 → 587.922
+seconds; checking/post-check work was 617.346 → 641.071 seconds. These wall
+intervals include host work, intermediate gates and GC. They locate the observed
+difference, without establishing which individual change caused it.
+
+On the final source, H's stage wall is still about **39.6x** the separately
+measured 50.062-second TypeScript process median. Full H reproduction remains
+unsuitable as the per-edit loop. The checked B1 workflow and cached native
+execution are the practical routes while editing; self-reproduction is a batch
+integration gate.
+
+The [bounded native O2 experiment](native-o2.md) produced the same full-source JS
+bytes in **249.953 seconds internally / 250.169 seconds process wall**, compared
+with O1's earlier 287.315 / 287.540 seconds on CPU0. These full-source observations
+are unpaired. Three alternating list-sort samples showed a smaller gain:
+1.958 → 1.894 seconds internally, with exact code bytes and execution preserved.
+O2's build took 72.733 seconds, versus O1's earlier 71.932 seconds, and cache reuse
+took 1.796 seconds. Only the optimization setting and corresponding compiler flag
+differed across the cache identities. The retained O2 artifact is useful for this
+large compiler workload; it does not make ordinary small edits ten times faster.
 
 ## Full frontend compatibility
 
@@ -281,19 +320,29 @@ the earlier phase2 isolated sweep's 68 minutes remains a historical measurement
 with different execution policy. Full exact reports, including failures, are
 retained as losslessly compressed JSON alongside their hashes.
 
-## Remaining work and interpretation
+## Outcome and limits
 
-The combined source/API/runtime/host are frozen for the checked stage2/stage3
-self-emission proof. Combined component and small-workload comparisons have
-completed, as has the full frontend comparison. Only the H reproduction stage
-and the bounded native `-O2` comparison are still running.
-Until those gates finish, no new default distribution is promoted and no combined
-whole-compiler speedup is claimed. Full language conformance remains a separate
-objective; existing exact-diagnostic failures remain failures.
+All six design workstreams have measured outcomes: exact diagnostic reuse,
+persistent validation, reusable native builds, annotation/native analysis,
+generated-runtime comparison, and guarded emission/codegen experiments. The
+production changes passed the documented component gates, full frontend parity,
+selected H/native execution and checked self-reproduction. The unsuccessful or
+insufficiently supported experiments remain explicit and outside production.
+No new default distribution is promoted by this phase. Full language conformance
+remains incomplete, and TCP/UDP plus GPU execution retain their documented
+validation limits.
 
-For ordinary iteration, use the checked B1 component build and targeted
-parse/check workers. Run a full self-emission chain after a coherent batch of
-compiler changes, using immutable inputs. The native cache removes repeated C
-builds after checked emission; it does not replace source checking. This keeps
-expensive reproduction proof out of each edit/test cycle without treating a
-partial gate as a release proof.
+For ordinary iteration, use the checked B1 build and targeted parse/check
+workers: the observed cold build-plus-21-case loop took about 36 seconds inside
+the tool. For large source emission, the retained cached native O2 compiler took
+about four minutes. Run the 33-minute H self-emission proof after a coherent
+batch of compiler changes with immutable inputs. The native cache removes
+repeated C builds after checked emission; it does not replace source checking.
+
+Further large gains need controlled work on successful compilation, where the
+small H samples remain 8–14x slower than TypeScript. The emission probe identifies
+repeated type substitution as one bounded lead, but a safe compiler-owned fact
+representation needs realistic measurements. The suffix-index experiment is
+also retained for an incremental-planning alternative. Neither the primitive
+microbenchmarks nor the current negative-check improvement justify promising
+a general tenfold compiler speedup.

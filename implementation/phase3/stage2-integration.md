@@ -15,8 +15,9 @@ CPU 0 with the frozen final host and canonical pinned Base:
 API SHA-256 is `360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de`;
 runtime SHA-256 is `26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b`.
 The frozen host is `2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749`.
-These results exercise provisional Stage2 directly; they do not assert that the
-independently running Stage3 fixed-point proof has completed.
+These results exercised provisional Stage2 directly. The subsequent
+[completed Stage3 proof](evidence/final-fixedpoint.json) reproduced its exact bytes;
+the selected integration report retains its original measurement-time status.
 
 The small runner follows the existing `tools/smoke.mjs` routes and retains native
 C and executable hashes. Native compilation uses the unchanged frozen host's

@@ -23,7 +23,7 @@ emits that source before Clang runs. The target compiler source is
 `936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772`;
 the graph compiler including its IO entry has a different, recorded source hash.
 The target uses the same canonical pinned Base path and runtime bytes as the
-ongoing final fixed-point proof, rather than a copied Base module identity.
+completed [final fixed-point proof](evidence/final-fixedpoint.json), rather than a copied Base module identity.
 
 | Observation | Time |
 | --- | ---: |

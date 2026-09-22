@@ -1,0 +1,194 @@
+{
+  "kind": "verified-phase3-self-emission-summary",
+  "complete": true,
+  "report": "selfhost/build/phase3/final-fixedpoint/report.json",
+  "reportSha256": "8bf6cb66d90691af7870bbc0ac79c8f0b8dbf42b595f20466d86d3be4b22aa84",
+  "summaryToolSha256": "7cb66f73c01e8a37176c4ae3e424479189aa6ceee77d875ad522d832d03b8037",
+  "sourceSha256": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772",
+  "runtimeSha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+  "outputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+  "resourceConfiguration": {
+    "node": "v24.18.0",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=12288"
+    ],
+    "osStackKB": "8192",
+    "timeoutMs": 5400000
+  },
+  "scope": "Completed checked self-emission chain with reverified source, Base, host, runtime and compiler identities. Adjacent non-ABI trace markers measure wall intervals including intervening gates, host work and GC. The residual includes startup before the first marker, output publication after the emitted marker and unattributed work. These are not isolated function CPU timings. This is one chain, not a repeated benchmark.",
+  "stages": [
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs",
+      "compilerSha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 704229,
+      "inputsVerified": true,
+      "outputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+      "outputBytes": 1131553,
+      "log": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs.log",
+      "logSha256": "f7b8f44f4ef7c1e3a6d9d17e182768c68e5e626bd90659d84411906dd915739d",
+      "adjacentMarkerIntervals": [
+        {
+          "marker": "discover /home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+          "start": "2026-09-22T06:11:21.707000+00:00",
+          "end": "2026-09-22T06:11:21.715000+00:00",
+          "seconds": 0.008
+        },
+        {
+          "marker": "parse /home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+          "start": "2026-09-22T06:11:21.715000+00:00",
+          "end": "2026-09-22T06:11:37.368000+00:00",
+          "seconds": 15.653
+        },
+        {
+          "marker": "parse /home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "start": "2026-09-22T06:11:37.368000+00:00",
+          "end": "2026-09-22T06:11:38.616000+00:00",
+          "seconds": 1.248
+        },
+        {
+          "marker": "load and elaborate graph",
+          "start": "2026-09-22T06:11:38.616000+00:00",
+          "end": "2026-09-22T06:12:03.258000+00:00",
+          "seconds": 24.642
+        },
+        {
+          "marker": "check book",
+          "start": "2026-09-22T06:12:03.258000+00:00",
+          "end": "2026-09-22T06:15:18.715000+00:00",
+          "seconds": 195.457
+        },
+        {
+          "marker": "specialize book",
+          "start": "2026-09-22T06:15:18.715000+00:00",
+          "end": "2026-09-22T06:15:22.939000+00:00",
+          "seconds": 4.224
+        },
+        {
+          "marker": "report declarations",
+          "start": "2026-09-22T06:15:22.939000+00:00",
+          "end": "2026-09-22T06:15:26.428000+00:00",
+          "seconds": 3.489
+        },
+        {
+          "marker": "prune reachable definitions",
+          "start": "2026-09-22T06:15:26.428000+00:00",
+          "end": "2026-09-22T06:15:54.135000+00:00",
+          "seconds": 27.707
+        },
+        {
+          "marker": "annotate book",
+          "start": "2026-09-22T06:15:54.135000+00:00",
+          "end": "2026-09-22T06:19:04.297000+00:00",
+          "seconds": 190.162
+        },
+        {
+          "marker": "validate runtime layouts",
+          "start": "2026-09-22T06:19:04.297000+00:00",
+          "end": "2026-09-22T06:20:33.852000+00:00",
+          "seconds": 89.555
+        },
+        {
+          "marker": "emit library",
+          "start": "2026-09-22T06:20:33.852000+00:00",
+          "end": "2026-09-22T06:23:05.475000+00:00",
+          "seconds": 151.623
+        }
+      ],
+      "startupAndUnattributedSeconds": 0.461
+    },
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs",
+      "compilerSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage3.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 1980406,
+      "inputsVerified": true,
+      "outputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+      "outputBytes": 1131553,
+      "log": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage3.mjs.log",
+      "logSha256": "f11768ade164fffb5847fd0cb8a69bef5fc94aa83e128849d029bcb84889811c",
+      "adjacentMarkerIntervals": [
+        {
+          "marker": "discover /home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+          "start": "2026-09-22T06:23:06.021000+00:00",
+          "end": "2026-09-22T06:23:06.028000+00:00",
+          "seconds": 0.007
+        },
+        {
+          "marker": "parse /home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+          "start": "2026-09-22T06:23:06.028000+00:00",
+          "end": "2026-09-22T06:23:51.459000+00:00",
+          "seconds": 45.431
+        },
+        {
+          "marker": "parse /home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "start": "2026-09-22T06:23:51.459000+00:00",
+          "end": "2026-09-22T06:23:55.472000+00:00",
+          "seconds": 4.013
+        },
+        {
+          "marker": "load and elaborate graph",
+          "start": "2026-09-22T06:23:55.472000+00:00",
+          "end": "2026-09-22T06:24:58.938000+00:00",
+          "seconds": 63.466
+        },
+        {
+          "marker": "check book",
+          "start": "2026-09-22T06:24:58.938000+00:00",
+          "end": "2026-09-22T06:35:40.009000+00:00",
+          "seconds": 641.071
+        },
+        {
+          "marker": "specialize book",
+          "start": "2026-09-22T06:35:40.009000+00:00",
+          "end": "2026-09-22T06:35:57.212000+00:00",
+          "seconds": 17.203
+        },
+        {
+          "marker": "report declarations",
+          "start": "2026-09-22T06:35:57.212000+00:00",
+          "end": "2026-09-22T06:36:13.901000+00:00",
+          "seconds": 16.689
+        },
+        {
+          "marker": "prune reachable definitions",
+          "start": "2026-09-22T06:36:13.901000+00:00",
+          "end": "2026-09-22T06:37:18.347000+00:00",
+          "seconds": 64.446
+        },
+        {
+          "marker": "annotate book",
+          "start": "2026-09-22T06:37:18.347000+00:00",
+          "end": "2026-09-22T06:47:06.269000+00:00",
+          "seconds": 587.922
+        },
+        {
+          "marker": "validate runtime layouts",
+          "start": "2026-09-22T06:47:06.269000+00:00",
+          "end": "2026-09-22T06:50:18.321000+00:00",
+          "seconds": 192.052
+        },
+        {
+          "marker": "emit library",
+          "start": "2026-09-22T06:50:18.321000+00:00",
+          "end": "2026-09-22T06:56:05.461000+00:00",
+          "seconds": 347.14
+        }
+      ],
+      "startupAndUnattributedSeconds": 0.966
+    }
+  ]
+}

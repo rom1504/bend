@@ -151,3 +151,13 @@ was essentially unchanged. The [full-source TS control](../selfhost/tools/perfor
 records identical input/root policies and the limits of comparing separately
 run compilers. Always report request work, process wall and generated-program
 execution separately.
+
+The final checked H proof passed: both stages emitted SHA-256 `360bb62b…`, with
+stage3 taking 33 minutes. The recorded native O2 compiler emitted identical JS
+in 4 minutes 10 seconds. The [native O2 report](../implementation/phase3/native-o2.md)
+records its build cost and smaller measured gain on ordinary programs. For that
+compiler workload, pass `--opt=O2` to the cache tool and use a fresh output path;
+retain the checked-emission report and validate the resulting binary before use.
+These artifacts remain explicit development selections; the default distributed
+API is not replaced. See the final [report](../implementation/phase3/report.md)
+for the exact source/API/runtime identities and remaining conformance differences.

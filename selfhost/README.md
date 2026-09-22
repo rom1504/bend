@@ -6,6 +6,9 @@ and validating this port. For current source edits, start with the
 the measured checked B1 rebuild takes 20.735 seconds, and a reused live paired
 21-case check takes 9.328 seconds median. The
 [fast conformance guide](../docs/PHASE2_DEVELOPMENT.md) explains exact test selection.
+The [four-worker frontend gate](../docs/PHASE4_DEVELOPMENT.md#run-the-full-frontend-gate-with-four-workers)
+takes about five minutes for all 2,756 recorded observations, retaining known
+failures; its controlled scheduling comparison measures 3.47× throughput.
 Historical reports apply to their recorded artifacts. Development APIs and
 private images are selected explicitly; the distributed default remains separate.
 

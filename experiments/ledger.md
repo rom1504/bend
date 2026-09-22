@@ -133,3 +133,58 @@ workers spanning matches, but the cheapest next gate is actual family/staging
 counts plus strict demand-order controls. A sample share is not a speed ceiling.
 Do not reopen rejected memoization or claim a tenfold gain from overlapping
 micro-optimizations.
+
+## Faster validation and a surviving B1 ablation — 2026-09-22, 19:21 UTC
+
+[P4-021](phase4/P4-021-frontend-scheduling.md) is accepted as a resource-scheduling
+workflow. The idle serial gate takes 1,036.017 seconds; four-core runs immediately
+before/after take 299.376/297.699 seconds. Their median gives 3.47× throughput,
+71.18% less wall, with all 2,756 raw results, verdicts and replay histories exact.
+The earlier loaded serial is 9.04% slower and remains outside the primary ratio.
+[P4-019](phase4/P4-019-private-combined-profile.md) now also passes canonical
+packaging: actual default/profile images reproduce `61e7`/`4318`, with 25 unit cases
+and seven guards. The named profile is opt-in; source/public APIs stay distinct.
+
+[P4-023](phase4/P4-023-matcher-family-counts.md) completes its bounded exact-output
+counter gate. The two substitution helpers account for 18.22% of actual partial
+records and 8.68% of generic applications in this core workload. These are
+operation counts, not time or bytes. They justify a narrowly guarded semantic
+falsifier, now planned as P4-025, rather than a general lowering rewrite.
+
+[P4-024](phase4/P4-024-b1-string-equality.md) passes 909 helper controls and 12 exact
+selected observations. Core request reductions are 35.58% and 35.13% in opposite
+orders; list and the retained rejection also improve. The derived image also
+preserves every full frontend observation. Its single full-source exact-H gate
+is running. This is a guarded JavaScript artifact derived from checked B1,
+explicitly not a new checked bootstrap or a changed default API.
+
+### Updated frontier
+
+Finish the derived B1 full-source gate and preserve its measured scope. Complete
+the bounded substitution-worker falsifier only if demand/error/deep-stack
+controls pass; timed escalation still requires consistent material core gains.
+Stop new experiment work by 19:55–20:00, leaving the final 15 minutes for report,
+artifact/link review, commits and push. No production source mutation is needed
+for either remaining experiment.
+
+## Whole-source equality gate and worker rejection — 2026-09-22, 19:33 UTC
+
+P4-024's experimental B1 emits the exact full H in 348.373 seconds, with unchanged
+source, host, runtime and proof inputs. This completes its correctness escalation;
+the earlier full B1 build is not used as a paired performance control. The image
+remains an exact-artifact derivative, not a new checked bootstrap or default API.
+
+P4-025 passes 157 semantic controls and all four exact core emissions. Request
+gains are 7.25% and 1.99% in opposite orders, so the predeclared consistent-5%
+threshold rejects this narrow worker implementation. No broad/full-source gate
+or canonical integration follows. The general lowering question remains open;
+the observed partial-record count did not predict a stable material gain.
+
+### Updated frontier
+
+[P4-026](phase4/P4-026-b1-full-source-comparison.md) is the final timed experiment:
+four fresh complete-source observations in opposite orders, exact H and memory
+checks, with all competing compiler work stopped. Its absolute 20:09 deadline
+leaves time to retain any incomplete comparison before the 20:16 campaign end.
+Archive and review the completed gates in parallel; do not launch another
+optimization or source edit during this final measurement.

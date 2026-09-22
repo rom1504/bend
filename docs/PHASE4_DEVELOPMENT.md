@@ -52,7 +52,8 @@ The build report records source, roots, tool and input identities and revalidate
 consumed files after the build. It emits development evidence, not a fabricated
 normal-bootstrap sidecar.
 
-Example configuration, using absolute paths:
+Run the overlay example below from the repository root. Its configuration uses
+absolute paths:
 
 ```json
 {
@@ -129,6 +130,8 @@ entire historical harness and verifies every recorded worker history.
 
 Use the bounded sampling wrapper for small successful programs:
 
+Run this command from the repository root:
+
 ```sh
 node selfhost/tools/performance/phase4/bounded-profile.mjs \
   my-profile-config.json selfhost/build/phase4/my-profile
@@ -158,7 +161,7 @@ boundary accepting data-only file/mode requests. Its internal function objects
 do not enter or leave that process. This permits experiments with simpler private
 calls and projections while ordinary emitted libraries retain their existing ABI.
 
-Build it from a completed checked self-reproduction report:
+From the repository root, build it from a completed checked self-reproduction report:
 
 ```sh
 node --stack-size=4096 selfhost/tools/private-compiler/build.mjs \

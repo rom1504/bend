@@ -7,14 +7,14 @@ Starting compiler revision: `89e2c83`. The design was committed and pushed as
 
 ## Current result checkpoint
 
-The fastest validated edit loop is a **20.735-second checked B1 rebuild** followed
+The normal checked development loop is a **20.735-second B1 rebuild** followed
 by a cold **16.483-second paired 21-case command**; reused validation has a
 **9.328-second median**. Four-core [frontend scheduling](frontend-scheduling.md)
 reduces the complete observation gate from **17m16s to 4m59s** (3.47× workflow
 throughput), preserving all exact results and replay histories. Full
 self-compilation remains an integration gate.
-The source changes have passed a checked fixed point, all 2,756 frontend
-observations and the selected native gates. The 560 existing TypeScript
+The source changes have passed a checked fixed point and the selected native
+gates, and preserved all 2,756 frontend observations. The 560 existing TypeScript
 differences remain; this is not full conformance.
 
 The corrected private compiler passes all four full-source emissions, each
@@ -33,6 +33,16 @@ Private H takes 35.0%/36.9% less request time than public H on successful tree/l
 compilation, but remains 5.14×/8.05× the pinned TypeScript request time. B1 remains
 the faster JavaScript development compiler. Public user-program output is
 unchanged by these private-image optimizations.
+
+The final [B1 string-equality experiment](b1-native-equality.md) finds a larger,
+separate bottleneck: generic equality reconstructs strings only to discard them.
+A guarded primitive-string path reduces core requests by **35.58% and 35.13%**
+in opposite orders, with 909 helper controls, twelve exact selected observations
+and unchanged complete frontend results. One complete-source run takes
+**348.373 seconds** and emits exactly the proven H. A fresh opposite-order
+full-source comparison is planned as P4-026; the single observation is not its
+performance result. This remains a derivative of one exact checked B1 image,
+not a new checked bootstrap or a general optimization for future source edits.
 
 The experiment workflow now follows the useful file-based methodology from
 `rom1504/math`: [numbered records](../../experiments/ledger.md), a bounded
@@ -111,7 +121,7 @@ and excluded window, 14:39–14:57 UTC. Subsequent profiles use a small input,
 three-minute maximum deadline and 3 GiB heap through
 [`bounded-profile.mjs`](../../selfhost/tools/performance/phase4/bounded-profile.mjs).
 
-## Experiments underway
+## Compiler experiments and decisions
 
 The private-image experiment isolates all compiler function objects in a child
 process and transports data-only requests/results. This makes stronger internal
@@ -249,7 +259,7 @@ experiment took [39.490 seconds](evidence/cold-combined.json.gz), excluding sour
 assembly and its outer Node startup. Neither is compared causally with the older
 Phase 3 workflow, which used a different source and measurement harness.
 
-## Completed combined-source gates and remaining work
+## Completed combined-source gates
 
 The [full final-source frontend sweep](final-source.md) preserves all 2,756 prior
 parse/check observations over 1,378 fixtures, including exact diagnostics. There
@@ -285,8 +295,57 @@ B1 retains trampoline and string-comparison work. The
 [lowering comparison](residual-architecture.md) connects actual generated code to
 specific hypotheses, without using those samples as a speedup ceiling.
 
-P4-023 counts matcher-family entries and partial records before any rewrite;
-P4-024 tests one guarded native string-equality shortcut in a disposable copy of
-checked B1. Both plans precede execution, preserve the original artifacts and
-label derived JavaScript separately from a new checked bootstrap. Their final
-results will be appended when the bounded gates finish.
+[P4-023](matcher-family-counts.md) counts 67,779,248 generic applications and
+13,429,155 partial records in the real core request. The two substitution helpers
+account for 8.68% of those applications and 18.22% of partial records. These are
+operation counts, not allocated bytes or a time ceiling. They justify the
+bounded [P4-025 worker experiment](../../experiments/phase4/P4-025-substitution-workers.md),
+whose independent [semantic review](private-substitution-workers-review.md)
+checks the actual changed caller, staged malformed-input fallback, beta rebuild,
+metadata, deep terms and 100,000 tail steps. All 157 semantic controls and four
+exact core outputs pass, but the speed pairs improve 7.25% and only 1.99%.
+The candidate is rejected at its predeclared consistent-5% threshold, with no
+full-source escalation or production promotion. Fewer partial records do not
+guarantee a stable material gain.
+
+[P4-024](b1-native-equality.md) completes its guarded B1 pilot, full frontend gate
+and exact complete-source emission. The selected request gain is 35.35% by the
+two-pair core mean, with lower observed peak RSS. Both the actual derived image
+and its ordinary checked seed are preserved with honest provenance. The
+[frontend archive](b1-native-equality-frontend.md) preserves all 2,756 observations,
+45 worker histories and 1,494 input mappings. P4-026 measures full-source speed
+separately rather than deriving it from the profile or selected benchmark.
+
+## What improved, and what remains expensive
+
+The supported path for new source edits is the checked B1 rebuild followed by
+focused persistent checks. Four-worker scheduling makes broad regression checks
+fit within about five minutes on the recorded machine. Neither requires waiting
+for a self-build after every edit. Checked self-reproduction remains necessary
+at a source integration boundary, with exact provenance and output checks.
+
+Compiler throughput still trails the original TypeScript compiler. On the final
+complete source and library-root policy, the recorded process measurements are:
+
+| Compiler execution route | Process wall | Ratio to TypeScript | Measurement scope |
+| --- | ---: | ---: | --- |
+| Pinned TypeScript | 51.443 s | 1.00× | Three-run median |
+| Bend source, native O2 | 245.364 s | 4.77× | New-compiler median in three alternating pairs |
+| Experimental equality B1 | 348.373 s | 6.77× | One exact-output gate; controlled comparison separate |
+| Ordinary checked B1 | 670.766 s | 13.04× | Checked fixed-point first stage |
+| Optional private H profile | 787.260 s | 15.30× | Two-run mean in the four-row private comparison |
+| Public Bend-emitted H | 1,591.343 s | 30.93× | Checked fixed-point second stage |
+
+These cross-route ratios describe recorded observations. They are not a fresh
+randomized comparison: processes, cache histories, physical cores and resource
+boundaries differ. The linked route-specific reports contain the actual causal
+comparisons, distributions and memory observations. B1 executes the compiler
+written in Bend after TypeScript emits its JavaScript; it is distinct from
+compiling the same input directly with the original TypeScript compiler.
+
+The source algorithms, native lane and private representation changes improve
+compiler execution. The final private and B1 derivatives emit unchanged program
+bytes, so these measurements do not establish faster generated user programs.
+Earlier generated-runtime work remains scoped to its own Phase 3 evidence.
+The 560 exact frontend differences from upstream remain open conformance work.
+No optimization result makes this checker a trusted proof verifier.

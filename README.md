@@ -16,7 +16,9 @@ This fork includes the compiler port in [`selfhost/`](selfhost/README.md).
 For current source edits, use the [checked development loop](docs/PHASE4_DEVELOPMENT.md#keep-the-edit-loop-small):
 20.735 seconds to rebuild B1, then 9.328 seconds median for reused paired
 21-case validation in the recorded environment. Full self-reproduction is a
-separate integration gate.
+separate integration gate. The [four-worker frontend gate](docs/PHASE4_DEVELOPMENT.md#run-the-full-frontend-gate-with-four-workers)
+takes about five minutes while preserving all 2,756 recorded observations,
+including existing failures.
 See [building, running and validating it](docs/BEND-IN-BEND.md), and the
 [phase 1 implementation report](implementation/phase1/report.md).
 For short iteration cycles, see [fast compiler development](docs/FAST_COMPILER_DEVELOPMENT.md)

@@ -1,10 +1,10 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-22, 18:41 UTC, after both final private gates and
-bounded residual profiles.
-Next review: after the idle-host frontend scheduling comparison.
-Authorized work window ends approximately 20:16 UTC; reserve the final 15 minutes
-for evidence review, documentation, commits and push.
+Evidence cutoff: 2026-09-22, 19:33 UTC, after derived-B1 exact source emission
+and the substitution-worker rejection.
+Next review: each P4-026 full-source comparison row, then the completed comparison.
+Authorized work window ends approximately 20:16 UTC. Complete other evidence and
+documentation while the final comparison runs; stop it by 20:09 for final review.
 
 ## User objective
 
@@ -46,20 +46,31 @@ The routes below are investigator choices, not additional user requirements.
 - Native parallel annotation is rejected: two-worker component wall is 11.5%
   worse in both orders, despite exact annotation trees. Propagated task-mode
   eligibility is a concrete suspicion, not a causal result.
+- Four-core frontend scheduling preserves every observation and history, with
+  3.47× throughput against an idle serial bracket. Canonical private packaging
+  reproduces the exact default/profile images and passes 25 cases/seven guards.
+- Guarded B1 equality passes 909 helper controls, twelve selected observations,
+  the full frontend sweep and an exact whole-source H emission. Opposite-order
+  core gains are 35.58%/35.13%. The 348.373-second full-source observation needs a
+  fresh controlled comparison before making a whole-source speedup claim.
+- The counted substitution family is frequent, but its narrow saturated-worker
+  prototype improves the core by 7.25% then 1.99%. Reject it at the preregistered
+  consistent-5% threshold despite 157 semantic controls and four exact outputs.
 
 ## Ranked next decisions
 
 | Rank | Route | Cheapest useful test | Stop or promotion criterion |
 | --- | --- | --- | --- |
-| 1 | Shorten full frontend validation through scheduling | Complete four-core run, idle serial bracket and reverse four-core if useful | Exact all-observation/history audit; record wall and aggregate live RSS |
-| 2 | Expose the proven private profile as opt-in | Reproduce both exact images through canonical package after timed scheduling | Default61e7/profile4318, package and refusal tests, unchanged public ABI |
-| 3 | Quantify typed-worker/matcher family | Bounded counters on actual final private core; exact output required | Stop if safe attribution fails or selected family is too rare; counts are not time |
-| 4 | Preserve reproducible experimental starting points | Finish bounded profile and complete gate archives | Hash actual artifacts, retain failed attempts, document scope and restoration |
-| 5 | Typed workers spanning matches | Follow the new lowering design only after rank3 | Demand/error order, capture, partial/overapplication and deep-stack controls before timing |
-| 6 | Constructor continuation or typed emission facts | Prove one dependency/demand boundary and count actual repeated work | Multi-day architectural work; no broad migration during final gate window |
+| 1 | Measure whole-source B1 equality gain | Fresh control/candidate/candidate/control emissions on CPU2 | All exact H, unchanged inputs, both request/process pairs improve >5%; stop by20:09 |
+| 2 | Complete durable evidence and final report | Archive latest gates and rejected worker, review links/identities | Preserve actual artifacts and failures; state experimental/default boundaries |
+| 3 | Generalize equality safely in a later investigation | Define a checked-build transformation contract valid across changed sources | Exact-body/full-provenance guard, Unicode/error controls, no invented bootstrap |
+| 4 | Investigate shared identifier/index costs later | Separate tag tests, name hashes and list membership counts | Count before migration; do not reintroduce rejected eager suffix indexing |
+| 5 | General typed workers/constructor continuations later | Explain why a broader lowering overcomes the P4-025 null before implementation | Demand/error/deep-stack controls, real-core threshold, then broad gates |
 
-The four-core scheduling interval reserves all physical cores; other agents may
-prepare documentation and small metadata audits but must defer compiler work.
+P4-026 is the final timed experiment. Its plan was committed before execution,
+with an absolute deadline that leaves time to preserve incomplete results if
+necessary. All other compiler execution is stopped while it runs. The P4-024
+single full-source correctness observation is excluded from its paired samples.
 Do not add percentage gains from overlapping transformations, and do not equate
 profile samples with an achievable whole-compiler speedup.
 
@@ -80,10 +91,10 @@ profile samples with an achievable whole-compiler speedup.
 ## Assignment and resource state
 
 Root owns strategy, evidence archives, documentation, commits and pushes.
-Direct-calls agent owns the exclusively scheduled frontend comparison.
-Compact-index independently audits final gates and integrates the named profile
-after the timed interval. Lexer-analysis archives the negative annotation result
-and prepares bounded matcher-family counters. All 59 production modules and the
+Direct-calls agent archives the derived full-source correctness gate.
+Compact-index prepares the final B1 full-source comparator. Lexer-analysis
+archives the rejected substitution-worker experiment. Root owns the final
+comparison on CPU2 and final documentation. All 59 production modules and the
 checked source remain frozen. Timing still has shared cache/memory and operating
 system effects; "no competing compiler experiment" is not OS isolation.
 

@@ -1,0 +1,16 @@
+node:fs:561
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/home/ai/bend2/build/publish/bend/selfhost/build/phase4/frontend-private/pinned-ts.json'
+    at Object.openSync (node:fs:561:18)
+    at Object.readFileSync (node:fs:445:35)
+    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/frontend-sweep.mjs:68:30
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/ai/bend2/build/publish/bend/selfhost/build/phase4/frontend-private/pinned-ts.json'
+}
+
+Node.js v24.18.0

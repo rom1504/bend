@@ -1,0 +1,357 @@
+{
+  "kind": "phase4-final-pinned-typescript-summary",
+  "complete": true,
+  "actualHRootVerification": {
+    "complete": true,
+    "proofComplete": false,
+    "stage2Sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+    "rows": [
+      {
+        "repetition": 0,
+        "metadataSha256": "d633efc03a156b79f33e81559544abecc40dc321ee0bdc442a34594576d17bfa",
+        "rootsSha256": "9d5044f41d1a28387b23d4d26bcd4348afc1f03d871e7637a7150d5de6ec68a0",
+        "roots": 1522,
+        "exactOrderedRoots": true,
+        "rootsPresentInH": true
+      },
+      {
+        "repetition": 1,
+        "metadataSha256": "d633efc03a156b79f33e81559544abecc40dc321ee0bdc442a34594576d17bfa",
+        "rootsSha256": "9d5044f41d1a28387b23d4d26bcd4348afc1f03d871e7637a7150d5de6ec68a0",
+        "roots": 1522,
+        "exactOrderedRoots": true,
+        "rootsPresentInH": true
+      },
+      {
+        "repetition": 2,
+        "metadataSha256": "d633efc03a156b79f33e81559544abecc40dc321ee0bdc442a34594576d17bfa",
+        "rootsSha256": "9d5044f41d1a28387b23d4d26bcd4348afc1f03d871e7637a7150d5de6ec68a0",
+        "roots": 1522,
+        "exactOrderedRoots": true,
+        "rootsPresentInH": true
+      }
+    ],
+    "scope": "Actual checked self-emitted stage2 classifier verifies all three ordered root sets. Stage3 is still running; no completed fixed-point claim."
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "sha256": "34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122"
+  },
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+    "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+  },
+  "upstream": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+    "trackedClean": true
+  },
+  "node": {
+    "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "version": "v24.18.0",
+    "args": [
+      "--stack-size=4096",
+      "--max-old-space-size=12288"
+    ]
+  },
+  "cpu": 0,
+  "scope": "Three fresh processes, canonical source/Base, fully checked/owned/closed library compilation by unchanged pinned TypeScript modules copied to a private directory. No persistent Base cache. Root projection/classifier verification, output writing/hash, syntax and execution gates are outside compileMs; processWallMs includes worker startup, imports and transport. Same-source comparison on CPU0, not interleaved or same-core paired with H proof on CPU2. Other physical cores may be active.",
+  "medianCompileMs": 50937.456053,
+  "medianProcessWallMs": 51442.835548999996,
+  "rows": [
+    {
+      "repetition": 0,
+      "compileMs": 51550.390093,
+      "processWallMs": 52029.578703,
+      "phases": {
+        "load": 1983.7925599999999,
+        "check-and-owned": 5303.3674040000005,
+        "emit": 44260.859147
+      },
+      "outputBytes": 1206611,
+      "outputSha256": "1ef1d0d00271c8ae8340a5e69e0d6fb481bfd38f958853294ef931f3f5bd8457",
+      "rootCount": 1522,
+      "baseForeignRoots": [
+        "IO.print",
+        "IO.write",
+        "IO.print_err",
+        "IO.get_env",
+        "IO.args",
+        "IO.random_u32",
+        "IO.spawn",
+        "IO.sleep",
+        "IO.now",
+        "Chan.new",
+        "Chan.send",
+        "Chan.recv",
+        "Chan.close",
+        "File.open",
+        "File.read",
+        "File.read_bytes",
+        "File.read_at",
+        "File.size",
+        "File.write",
+        "File.write_bytes",
+        "File.close",
+        "TCP.listen",
+        "TCP.accept",
+        "TCP.connect",
+        "TCP.send",
+        "TCP.recv",
+        "TCP.poll",
+        "UDP.bind",
+        "UDP.send_to",
+        "UDP.recv_from",
+        "UDP.poll",
+        "Socket.close",
+        "Listener.close",
+        "Window.open",
+        "Window.frame",
+        "Window.set_title",
+        "Window.close",
+        "Audio.open",
+        "Audio.write",
+        "Audio.close"
+      ],
+      "rootComparison": {
+        "classifier": "checked-B1",
+        "exactOrderedRoots": true,
+        "roots": 1522,
+        "rootsSha256": "9d5044f41d1a28387b23d4d26bcd4348afc1f03d871e7637a7150d5de6ec68a0",
+        "metadataSha256": "d633efc03a156b79f33e81559544abecc40dc321ee0bdc442a34594576d17bfa"
+      },
+      "syntaxPassed": true,
+      "executionPassed": true,
+      "passed": true
+    },
+    {
+      "repetition": 1,
+      "compileMs": 50829.04782,
+      "processWallMs": 51361.305665,
+      "phases": {
+        "load": 1836.4161560000002,
+        "check-and-owned": 4965.519352,
+        "emit": 44024.664886
+      },
+      "outputBytes": 1206611,
+      "outputSha256": "1ef1d0d00271c8ae8340a5e69e0d6fb481bfd38f958853294ef931f3f5bd8457",
+      "rootCount": 1522,
+      "baseForeignRoots": [
+        "IO.print",
+        "IO.write",
+        "IO.print_err",
+        "IO.get_env",
+        "IO.args",
+        "IO.random_u32",
+        "IO.spawn",
+        "IO.sleep",
+        "IO.now",
+        "Chan.new",
+        "Chan.send",
+        "Chan.recv",
+        "Chan.close",
+        "File.open",
+        "File.read",
+        "File.read_bytes",
+        "File.read_at",
+        "File.size",
+        "File.write",
+        "File.write_bytes",
+        "File.close",
+        "TCP.listen",
+        "TCP.accept",
+        "TCP.connect",
+        "TCP.send",
+        "TCP.recv",
+        "TCP.poll",
+        "UDP.bind",
+        "UDP.send_to",
+        "UDP.recv_from",
+        "UDP.poll",
+        "Socket.close",
+        "Listener.close",
+        "Window.open",
+        "Window.frame",
+        "Window.set_title",
+        "Window.close",
+        "Audio.open",
+        "Audio.write",
+        "Audio.close"
+      ],
+      "rootComparison": {
+        "classifier": "checked-B1",
+        "exactOrderedRoots": true,
+        "roots": 1522,
+        "rootsSha256": "9d5044f41d1a28387b23d4d26bcd4348afc1f03d871e7637a7150d5de6ec68a0",
+        "metadataSha256": "d633efc03a156b79f33e81559544abecc40dc321ee0bdc442a34594576d17bfa"
+      },
+      "syntaxPassed": true,
+      "executionPassed": true,
+      "passed": true
+    },
+    {
+      "repetition": 2,
+      "compileMs": 50937.456053,
+      "processWallMs": 51442.835548999996,
+      "phases": {
+        "load": 1792.574633,
+        "check-and-owned": 4926.762601,
+        "emit": 44215.881549000005
+      },
+      "outputBytes": 1206611,
+      "outputSha256": "1ef1d0d00271c8ae8340a5e69e0d6fb481bfd38f958853294ef931f3f5bd8457",
+      "rootCount": 1522,
+      "baseForeignRoots": [
+        "IO.print",
+        "IO.write",
+        "IO.print_err",
+        "IO.get_env",
+        "IO.args",
+        "IO.random_u32",
+        "IO.spawn",
+        "IO.sleep",
+        "IO.now",
+        "Chan.new",
+        "Chan.send",
+        "Chan.recv",
+        "Chan.close",
+        "File.open",
+        "File.read",
+        "File.read_bytes",
+        "File.read_at",
+        "File.size",
+        "File.write",
+        "File.write_bytes",
+        "File.close",
+        "TCP.listen",
+        "TCP.accept",
+        "TCP.connect",
+        "TCP.send",
+        "TCP.recv",
+        "TCP.poll",
+        "UDP.bind",
+        "UDP.send_to",
+        "UDP.recv_from",
+        "UDP.poll",
+        "Socket.close",
+        "Listener.close",
+        "Window.open",
+        "Window.frame",
+        "Window.set_title",
+        "Window.close",
+        "Audio.open",
+        "Audio.write",
+        "Audio.close"
+      ],
+      "rootComparison": {
+        "classifier": "checked-B1",
+        "exactOrderedRoots": true,
+        "roots": 1522,
+        "rootsSha256": "9d5044f41d1a28387b23d4d26bcd4348afc1f03d871e7637a7150d5de6ec68a0",
+        "metadataSha256": "d633efc03a156b79f33e81559544abecc40dc321ee0bdc442a34594576d17bfa"
+      },
+      "syntaxPassed": true,
+      "executionPassed": true,
+      "passed": true
+    }
+  ],
+  "assets": [
+    {
+      "source": "selfhost/build/phase4/typescript-final/report.json",
+      "archive": "implementation/phase4/evidence/typescript-final/report.json.gz",
+      "sha256": "d47398ddbd3199ffb77d79f587625a778a8b2b1841640b05c62b490d27c87366",
+      "archiveSha256": "64b9524c9d2b5458938a25e5a96b766143505e62f85591eae321ac36da39a039"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final/consumed-tool.mjs",
+      "archive": "implementation/phase4/evidence/typescript-final/consumed-tool.mjs.gz",
+      "sha256": "3a8254a6ee16d0a2cc7c0349ba643e6383f50f2b9365f60d2b87c0d94fb0f436",
+      "archiveSha256": "2f36dde55dc5d67eef68a2e11783995573e071ca25d829b2d716eb1f36d74c0c"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final/library-0.mjs",
+      "archive": "implementation/phase4/evidence/typescript-final/library-0.mjs.gz",
+      "sha256": "1ef1d0d00271c8ae8340a5e69e0d6fb481bfd38f958853294ef931f3f5bd8457",
+      "archiveSha256": "04a5f0fc592a51985f0137c516679c9091bb21740400f772d7323418b06fa978"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final-config.json",
+      "archive": "implementation/phase4/evidence/typescript-final/typescript-final-config.json.gz",
+      "sha256": "4495d471224209cc62784b539dc9245a9940cf6e067eb3387adcc4bbd24f8b6a",
+      "archiveSha256": "a7508838de610354d4744bea48a59340c2df47ed949b75d3a714286abf94432d"
+    },
+    {
+      "source": "selfhost/build/phase4/combined-launch.json",
+      "archive": "implementation/phase4/evidence/typescript-final/combined-launch.json.gz",
+      "sha256": "7a8a1c770c84b145c555f8672edaec7a27e09c3f60ebab6feee08236f37de74c",
+      "archiveSha256": "74148d5a5236193df667d7d715d12c9bdb542556ad73148e98dcddcc303c2c95"
+    },
+    {
+      "source": "selfhost/build/phase4/combined-checked/report.json",
+      "archive": "implementation/phase4/evidence/typescript-final/checked-build.json.gz",
+      "sha256": "a1333e85cee5b6f24fcd22c5961ccad74e6d92064784fb47fba259c6c1a9a5d0",
+      "archiveSha256": "7a14fa1e70f49366c036a9d63d61b852fed0ed5607fa9bb317fb494bfcd597f8"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final/sample-0.json",
+      "archive": "implementation/phase4/evidence/typescript-final/sample-0.json.gz",
+      "sha256": "8b396bda3e3ca1662c3b9ba24aa27f30cf3469b63034eaec20a24f8fbed84bad",
+      "archiveSha256": "8fb56515cd53ad89127cd9901e25b920526920ad531ca2716d3c54b4ca06dcfa"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final/sample-1.json",
+      "archive": "implementation/phase4/evidence/typescript-final/sample-1.json.gz",
+      "sha256": "d83b618f88c0306adb24ead60bd4265a2cbfa52dfb60b16c1fcdbea3373afc0d",
+      "archiveSha256": "61df1099d60131fd1ff632bafeb692ef4ed9a7591400fa2ad9080830062cbf36"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final/sample-2.json",
+      "archive": "implementation/phase4/evidence/typescript-final/sample-2.json.gz",
+      "sha256": "7e84a2f3d987930d0ead9d4570f7f06789d85da4d29752f6aaa0d2f21855e22b",
+      "archiveSha256": "a09c4ebb85ac91daf7a628f73ce80106b07e5c70a7e595da09f11c31f72fd0a7"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final/request-0.json",
+      "archive": "implementation/phase4/evidence/typescript-final/request-0.json.gz",
+      "sha256": "1e935d409e8f12137ee575447a3fea9ff4d9f0a347698199161bb4f7dcbfeb70",
+      "archiveSha256": "c76acadf2cd258a0f2d2ce8b0b7bbf0dd22e624ee408c6a5eb0f02831cb701bc"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final/request-1.json",
+      "archive": "implementation/phase4/evidence/typescript-final/request-1.json.gz",
+      "sha256": "2d395e420aada46cefe6c20f14ba7e57e5a335c0d144684458c2258913673016",
+      "archiveSha256": "ab955e9a435b8e096a69e38ba1518c7f86864af3dd7508b5469673b861076789"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final/request-2.json",
+      "archive": "implementation/phase4/evidence/typescript-final/request-2.json.gz",
+      "sha256": "e4334fa3df3c485a252a1b498ad25ed84bd8e8857434776ac0a449cea63f26b5",
+      "archiveSha256": "489f3333eb55b810e264845c0e1d2318a08c2b6a4196dc623dbe85a6904adaa5"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final-h-verification/report.json",
+      "archive": "implementation/phase4/evidence/typescript-final/h-root-verification.json.gz",
+      "sha256": "a29e25c1d3c6c3905a4ecb64582b5be849df200bd83dcadf2873c59889553b89",
+      "archiveSha256": "1925df910abdfca2cb62d7fd1568de65530c9966823fcbc5ea83d96977ec4360"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final-h-verification/self-emission-proof.json",
+      "archive": "implementation/phase4/evidence/typescript-final/self-emission-proof.json.gz",
+      "sha256": "7016fed8279f388c25751c267597602877e058e46191ac69371cbc1afa878190",
+      "archiveSha256": "e69935f94c35c47b2c284dc8e283a76954c7c37e94bbcec283527b6f1e1288d2"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-h-preflight.json",
+      "archive": "implementation/phase4/evidence/typescript-final/typescript-h-preflight.json.gz",
+      "sha256": "356f888bfcbd39754508595c1bd8bcf59c45530f0af0e6f96b8e8847292688cf",
+      "archiveSha256": "fa5600c3a4016b7cfbfec1fc014bb795f284b0fc3f9662e0601839f26cfb0fe6"
+    }
+  ]
+}

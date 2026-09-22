@@ -84,9 +84,13 @@ for list sort, and 52.212 to 34.651 seconds for a real 312-declaration compiler
 fragment. See the [private-image report](private-image.md) for controls,
 intermediate experiments, and the exact boundary assumptions.
 
-A supported private build/run tool is being validated. Its outer process cost
-must also be measured: artifact verification and startup can erase inner compiler
-gains on very small requests. Full frontend observations are underway. An
+The [private build/run and finite-batch package](private-cli.md) is now implemented
+and tested. Artifact verification and startup can erase inner compiler gains on
+very small requests. A 21-case private batch takes 17.524 seconds versus 43.023
+seconds for separate private CLI invocations; reused B1 is faster at 7.850
+seconds. All 315 focused observations agree exactly. The original-source private
+image also [preserves all 2,756 frontend observations](frontend.md), including
+exact diagnostics and all 560 existing differences from live TypeScript. An
 additional [tag-comparison transform](tag-comparisons.md) was rejected after
 showing no real-core gain despite a 1–2% change on small requests.
 Sharing private [nullary values](nullary-values.md) was also deferred: list sort
@@ -100,9 +104,9 @@ above. Follow-up experiments distinguish projection calls from data layout.
 The analysis experiment found many repeated weak-head-normalization requests for
 terms already in weak head normal form. Conservative `All`/`ADT` shortcuts passed
 their semantic controls but did not deliver a material whole-H gain, so they were
-not promoted. A stronger constructor-telescope fact is being tested separately:
-closed terms without beta-reducible applications can avoid repeated structural
-substitution. Source and H gates remain pending for that candidate.
+not promoted. The stronger constructor-telescope fact is now integrated and
+documented in the combined-source checkpoint below. Its component gates pass;
+the whole-source fixed point and broader combined-source gates are separate.
 
 The conformance inventory now captures Git output through files and rejects any
 subprocess error even when a supervisor also reports status zero. This environment
@@ -173,6 +177,23 @@ module identities. A fresh full checked B1-to-H-to-H reproduction started at
 16:23 UTC on CPU 2, with a frozen host, canonical Base, 4 MiB stack, 12 GiB heap
 and a one-hour deadline per stage. Completion and whole-source speed remain
 pending; the component gain is not substituted for those measurements.
+
+The first checked self-emission completed in 670.766 seconds and produced H SHA
+`b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8`.
+Stage3 is still running. On exactly the same source and canonical Base,
+[three pinned TypeScript samples](typescript-final.md) have a 50.937-second
+compiler median and a 51.443-second process median. Actual H confirms all 1,522
+ordered library roots. This is the full library policy, not the limited bootstrap
+API's export set; the proof and timing runs have distinct cache/run histories.
+
+The [normal development commands](development-final.md) now have final-source
+evidence: a genuine 54-export checked bootstrap takes 20.735 seconds, followed by
+16.483 seconds for a cold 21-case live paired smoke command. Their child-process
+sum is 37.217 seconds. Three warm invocations have a 9.328-second process median,
+with unchanged observations and diagnostics. A separate in-process checked-build
+experiment took [39.490 seconds](evidence/cold-combined.json.gz), excluding source
+assembly and its outer Node startup. Neither is compared causally with the older
+Phase 3 workflow, which used a different source and measurement harness.
 
 ## Pending completion gates
 

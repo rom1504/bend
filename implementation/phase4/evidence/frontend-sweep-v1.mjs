@@ -19,14 +19,11 @@ const recorded=item=>{assert.equal(fs.realpathSync(item.file),item.canonicalPath
 const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(x=>x.isDirectory()?walk(path.join(dir,x.name)):[path.join(dir,x.name)]);
 const save=(name,value)=>fs.writeFileSync(path.join(out,name),JSON.stringify(value,null,2)+'\n');
 record(configFile);record(import.meta.filename);record(process.execPath);
-fs.copyFileSync(import.meta.filename,path.join(out,'frontend-sweep.mjs'));record(path.join(out,'frontend-sweep.mjs'));
 const project=resolve(config.project),upstream=resolve(config.upstream),base=resolve(config.base),runtime=record(resolve(config.runtime)),driver=resolve(config.driver);
 assert.equal(base,fs.realpathSync(path.join(upstream,'bend2/base.bend')));record(base);
 assert.ok(Number.isSafeInteger(config.cpu)&&config.cpu>=0);
 const harness=path.join(out,'harness');fs.mkdirSync(path.join(harness,'tools'),{recursive:true});
 fs.cpSync(path.join(project,'tools/conformance'),path.join(harness,'tools/conformance'),{recursive:true});
-// The live reference adapter imports these helpers even for parse/check lanes.
-for(const name of ['native-build.mjs','node-resource-args.mjs'])fs.copyFileSync(path.join(project,'tools',name),path.join(harness,'tools',name));
 const host=path.join(out,'host/tools');fs.mkdirSync(host,{recursive:true});
 for(const name of ['typed-driver','compiler-abi','node-resource-args','assemble','native-build'])fs.copyFileSync(path.join(path.dirname(driver),name+'.mjs'),path.join(host,name+'.mjs'));
 const adapter=path.join(out,'frontend-adapter.mjs');fs.copyFileSync(path.join(import.meta.dirname,'frontend-adapter.mjs'),adapter);
@@ -67,9 +64,6 @@ for(const variant of variants){
   });fs.closeSync(a);fs.closeSync(b);
   const row={variant:variant.id,command:'taskset',args,...child,timedOut,wallMs:performance.now()-start,report:reportFile,reportSha256:fs.existsSync(reportFile)?sha(reportFile):null};
   report.rows.push(row);save('execution.json',report);
-  if(child.error||child.signal||timedOut||![0,1].includes(child.status)||!fs.existsSync(reportFile)){
-    row.error='No complete runner report; inspect the retained launcher logs';save('execution.json',report);throw Error(row.error);
-  }
   assert.ok(!child.error&&!child.signal&&!timedOut&&[0,1].includes(child.status),'Infrastructure failure; inspect logs');
   const result=JSON.parse(fs.readFileSync(reportFile));
   assert.equal(result.inventory.total,1378);assert.equal(result.results.length,2756);

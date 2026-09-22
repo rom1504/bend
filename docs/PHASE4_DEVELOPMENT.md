@@ -14,6 +14,37 @@ conformance and checked self-reproduction are integration gates. The Phase 3
 workflow already demonstrated a fresh checked B1 build plus 21 focused cases in
 36.35 seconds inside its tool; a 33-minute H self-build is a different task.
 
+For ordinary development, run these commands from `selfhost/` with Node 24 and
+the pinned upstream checkout available. Choose a new attempt directory after
+each compiler edit:
+
+```sh
+BEND_UPSTREAM="$PWD/.bootstrap/upstream" \
+BEND_TYPED_API="$PWD/build/dev/attempt-01/api.mjs" \
+  node --stack-size=4096 --max-old-space-size=4096 \
+  tools/typed-driver.mjs --bootstrap
+
+BEND_UPSTREAM="$PWD/.bootstrap/upstream" \
+BEND_BASE="$PWD/.bootstrap/upstream/bend2/base.bend" \
+BEND_TYPED_API="$PWD/build/dev/attempt-01/api.mjs" \
+  node --stack-size=4096 --max-old-space-size=4096 \
+  tests/frontend/phase2-rules.mjs build/dev/attempt-01/rules-01.json
+```
+
+The first command checks the current Bend sources and records genuine bootstrap
+provenance. The second reuses that compiler for 21 live TypeScript/Bend
+acceptance and rejection-phase witnesses. When only a fixture changes, reuse the
+API and choose a new report filename. Exact diagnostics and wider selections use
+[`target.mjs`](PHASE2_DEVELOPMENT.md#select-exact-upstream-probes), with
+`"workerMode": "persistent"` in its configuration. These focused commands do not
+replace broader frontend and self-reproduction gates.
+
+The [final-source command measurements](../implementation/phase4/development-final.md)
+record 20.735 seconds for bootstrap and 16.483 seconds for cold focused
+validation: 37.217 seconds of child-process work together. Reusing the checked
+API and its validated Base cache gives a 9.328-second median for the full paired
+21-case command. The live TypeScript checks and provenance work are included.
+
 The Phase 4 overlay builder takes a frozen baseline and optional replacement
 modules, assembles a new compiler, and checks it with the untouched pinned
 TypeScript compiler. It checks ownership and completeness before emitting an API.

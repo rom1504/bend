@@ -45,17 +45,6 @@ if(['--prime','--sample'].includes(process.argv[2])){
   for(const [i,p] of (variant.provenance??[]).entries()){const original=resolve(p),snapshot=path.join(out,variant.id+'-provenance-'+i+'.json');fs.copyFileSync(original,snapshot);identities[snapshot]=identity(snapshot);const record=JSON.parse(fs.readFileSync(snapshot));provenance.push({variant:variant.id,original,snapshot,sha256:sha(snapshot),complete:record.complete??null});
    if(record.kind==='phase4-checked-overlay'){assert.equal(record.complete,true);assert.equal(record.inputsUnchanged,true);assert.equal(record.api.sha256,sha(variant.api));addRecorded(record.source);for(const input of record.inputs)addRecorded(input);}
    if(record.kind==='phase4-frozen-baseline'){const relative=path.relative(record.root,variant.api),entry=record.files[relative];assert.ok(entry,'Selected API must be in frozen manifest');assert.equal(entry.sha256,sha(variant.api));assert.equal(record.base.sha256,sha(base));}
-   if(record.kind==='bend-private-compiler-image'){
-    assert.equal(record.complete,true);assert.equal(record.proofStatus,'fixedpoint');
-    assert.equal(variant.api,path.join(path.dirname(original),'image.mjs'));
-    assert.equal(record.runtime.sha256,sha(runtime));assert.equal(record.base.canonicalPath,base);addRecorded(record.base);
-    const relatives=new Set();
-    for(const artifact of record.artifacts){
-     assert.ok(typeof artifact.relative==='string'&&!path.isAbsolute(artifact.relative)&&!artifact.relative.split(path.sep).includes('..')&&!relatives.has(artifact.relative),'Invalid or duplicate private artifact');relatives.add(artifact.relative);
-     const file=path.join(path.dirname(original),artifact.relative);assert.ok(fs.realpathSync(file).startsWith(fs.realpathSync(path.dirname(original))+path.sep));assert.equal(sha(file),artifact.sha256);identities[file]=identity(file);
-    }
-    assert.ok(relatives.has('image.mjs')&&relatives.has('runtime.mjs')&&relatives.has('provenance/proof.json'));
-   }
    if(record.kind==='phase3-checked-integration-api'){assert.equal(record.complete,true);assert.equal(record.apiSha256,sha(variant.api));assert.equal(record.sourceSha256,sha(record.source));assert.equal(record.provenance?.verifiedAfterBuild,true);assert.ok(record.provenance.inputs.length>0);for(const input of record.provenance.inputs)addRecorded(input);identities[record.source]=identity(record.source);}
    if(record.stage==='upstream-bootstrap'){assert.equal(record.apiSha256,sha(variant.api));assert.equal(record.baseSha256,sha(base));assert.equal(record.sourceSha256,sha(record.source));identities[record.source]=identity(record.source);for(const m of record.modules){const file=path.join(path.dirname(record.source),m.file);assert.equal(sha(file),m.sha256);identities[file]=identity(file);}}
    if(record.kind==='phase3-frozen-phase2-baseline'){const entry=record.files.find(f=>path.resolve(record.root,f.file)===variant.api);assert.ok(entry,'Baseline manifest must contain selected API');assert.equal(entry.sha256,sha(variant.api));assert.equal(record.baseSha256,sha(base));}

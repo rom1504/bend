@@ -165,6 +165,20 @@ and cannot turn a selected pass into a whole-suite conformance claim.
 
 ## Validation processes
 
+The [private compiler image](../tools/private-compiler/README.md) specializes a
+completed checked self-emitted compiler for a dedicated process. Static saturated
+calls use positional workers; reviewed scalar operations and immutable record
+projections avoid generic runtime work. Dynamic, partial and overapplied calls
+retain their original paths. A runtime fingerprint and generated-body checks
+guard these assumptions. Ordinary emitted libraries keep the public runtime ABI.
+
+Its interface accepts only file paths and parse/check/compile/library modes.
+Functions, graphs and callbacks cannot cross that interface, and compilation
+does not execute foreign source. Finite batches reuse a verified image but create
+fresh source graphs, enforce per-request external deadlines, and defer output
+publication until their worker's input and artifact identities are revalidated.
+An incomplete self-host proof can only produce an explicitly experimental image.
+
 The conformance runner supports isolated requests and explicitly declared
 persistent parse/check sessions. A persistent session retains the compiler
 module and validated Base data but creates a fresh source graph and context for

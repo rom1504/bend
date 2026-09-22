@@ -1,0 +1,22 @@
+{
+  "project": "/home/ai/bend2/build/publish/bend/selfhost",
+  "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+  "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+  "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+  "driver": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/typed-driver.mjs",
+  "cpu": 1,
+  "deadlineMs": 3600000,
+  "seedCacheDirectory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/tag-compare/host/build/typed/cache",
+  "variants": [
+    {
+      "id": "private-h",
+      "kind": "bend",
+      "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/release3/image.mjs",
+      "provenance": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/release3/manifest.json"
+    },
+    {
+      "id": "pinned-ts",
+      "kind": "typescript"
+    }
+  ]
+}

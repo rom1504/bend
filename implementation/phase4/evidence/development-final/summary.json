@@ -1,0 +1,204 @@
+{
+  "kind": "phase4-normal-development-loop-summary",
+  "complete": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/2e28ae3e956a539417909179bc4f8a2a5f834b99941bb7e9377c9b054e0a0cb8/compiler.bend",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/2e28ae3e956a539417909179bc4f8a2a5f834b99941bb7e9377c9b054e0a0cb8/compiler.bend",
+    "sha256": "34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/development-final/api.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/development-final/api.mjs",
+    "sha256": "a3a287c25470a5a55d7c49085fce9a4a72aee3dfa6d15d3d5674c7c36566b2a2"
+  },
+  "bootstrapReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/development-final/api.mjs.bootstrap.json",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/development-final/api.mjs.bootstrap.json",
+    "sha256": "9bd1913c9dd14357ab4c95058bb1f7326b0412bb561e2e6c1fc8c7bb16e8f086"
+  },
+  "cpu": 0,
+  "node": {
+    "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "version": "v24.18.0",
+    "parentArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ],
+    "childArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ]
+  },
+  "scope": "Actual typed-driver --bootstrap followed by actual phase2-rules CLI, one cold compiler-side Base-cache process then three warm-cache fresh processes. No persistent compiler process; OS caches are not flushed. Both live TS and checked Bend results are measured. Normal bootstrap stage0 child uses its existing default Node flags; parent flags are not claimed to propagate.",
+  "bootstrapProcessMs": 20734.600638,
+  "coldValidationProcessMs": 16482.817211999998,
+  "coldBuildAndValidationProcessMs": 37217.41785,
+  "warmValidationProcessMedianMs": 9328.116824000004,
+  "toolWallMs": 68202.590793,
+  "rows": [
+    {
+      "run": 0,
+      "cache": "cold",
+      "cachePresentBefore": false,
+      "pass": true,
+      "innerReferenceMs": 2022.3703200000014,
+      "innerCandidateMs": 13608.412596000002,
+      "innerObservationMs": 15630.782916000004,
+      "exactObservationsAcrossRuns": true,
+      "processWallMs": 16482.817211999998
+    },
+    {
+      "run": 1,
+      "cache": "warm",
+      "cachePresentBefore": true,
+      "pass": true,
+      "innerReferenceMs": 2115.894673999999,
+      "innerCandidateMs": 6663.439797000002,
+      "innerObservationMs": 8779.334471000002,
+      "exactObservationsAcrossRuns": true,
+      "processWallMs": 9317.650342
+    },
+    {
+      "run": 2,
+      "cache": "warm",
+      "cachePresentBefore": true,
+      "pass": true,
+      "innerReferenceMs": 2084.9924900000005,
+      "innerCandidateMs": 6572.468507999999,
+      "innerObservationMs": 8657.460997999999,
+      "exactObservationsAcrossRuns": true,
+      "processWallMs": 9336.285802999999
+    },
+    {
+      "run": 3,
+      "cache": "warm",
+      "cachePresentBefore": true,
+      "pass": true,
+      "innerReferenceMs": 2121.943342000001,
+      "innerCandidateMs": 6634.5831469999985,
+      "innerObservationMs": 8756.526489,
+      "exactObservationsAcrossRuns": true,
+      "processWallMs": 9328.116824000004
+    }
+  ],
+  "historical": {
+    "report": {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase3/evidence/cold-edit-loop.json",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/implementation/phase3/evidence/cold-edit-loop.json",
+      "sha256": "19beb2e6e915698f1666f61b8e1f26abdf8a0f76f26787f004850b8db64ed16a"
+    },
+    "scope": "Exact individual reference/candidate observations excluding ms; distinct source/build/timing workflow, so no speedup ratio.",
+    "deltas": [],
+    "exact": true
+  },
+  "assets": [
+    {
+      "source": "selfhost/build/phase4/development-final/report.json",
+      "archive": "implementation/phase4/evidence/development-final/report.json.gz",
+      "sha256": "2baa568fc7f4603b725dd9b8b711a9808a4adbfb7480ec01b30dc673ef4179e0",
+      "archiveSha256": "c685d847ce164e8072cba65be93c562bca556ce61908b6fcef913da3fb1e903e"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/api.mjs.bootstrap.json",
+      "archive": "implementation/phase4/evidence/development-final/api.mjs.bootstrap.json.gz",
+      "sha256": "9bd1913c9dd14357ab4c95058bb1f7326b0412bb561e2e6c1fc8c7bb16e8f086",
+      "archiveSha256": "833f38b307e4f8a700517f37ab09834f6f992be05a5544775102deda63852cbf"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/api.mjs",
+      "archive": "implementation/phase4/evidence/development-final/api.mjs.gz",
+      "sha256": "a3a287c25470a5a55d7c49085fce9a4a72aee3dfa6d15d3d5674c7c36566b2a2",
+      "archiveSha256": "c696649f76432cc2eeb3c3ec0923e7c00e597f38580c020e6c732be4dfaaffe5"
+    },
+    {
+      "source": "selfhost/build/phase4/development-git-tests.log",
+      "archive": "implementation/phase4/evidence/development-final/development-git-tests.log.gz",
+      "sha256": "d79f9cacab415226d3f3697c8e206a7b95de085bb60f9a5054c73f9521407bba",
+      "archiveSha256": "12f765bb568721934bdddcb11e57be90bf834e0405902035a4e228c18f6e5256"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-0.json",
+      "archive": "implementation/phase4/evidence/development-final/rules-0.json.gz",
+      "sha256": "c8398d2f121eea2a9816e7c197056ca62e73c0b0bf19d19723beaf9fd2f6cc25",
+      "archiveSha256": "fc4aa0e0017a01bab9e914822ac95a52bb86d8c78776263d3862bc259fb70575"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-1.json",
+      "archive": "implementation/phase4/evidence/development-final/rules-1.json.gz",
+      "sha256": "4c925eb093047663b594ef94934478d9235e3f93dc711fbf670cab8118db76ac",
+      "archiveSha256": "754196257f19dc464b3a1b5acb3f44210877c7e9cf488b6c15416f1f57bb9a32"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-2.json",
+      "archive": "implementation/phase4/evidence/development-final/rules-2.json.gz",
+      "sha256": "daa98d0cc712bc92747c886359f76993d61713777462551396c6a3c288bc5de9",
+      "archiveSha256": "ee5be8561c84966d90f004a0a26028dedb480174517036deaeaa6f43840e644f"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-3.json",
+      "archive": "implementation/phase4/evidence/development-final/rules-3.json.gz",
+      "sha256": "6d2795bdaaee89693c409acc6fe74f9608219b8b151491c9ac394aa0267b27a5",
+      "archiveSha256": "97c85a5f8dc245408ca10b7c7ade7dca331c92e446851dd91643e64e9bd606a1"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/bootstrap.stdout",
+      "archive": "implementation/phase4/evidence/development-final/bootstrap.stdout.gz",
+      "sha256": "0dd41d76e236857548497ad5b316a66b7a31ddf3bfc0ffd9d518088b5a1c2739",
+      "archiveSha256": "5326b76146ba3371925ad4f72bec71f98fb7fac48fe62ceda23e904db2d9d231"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-0.stdout",
+      "archive": "implementation/phase4/evidence/development-final/rules-0.stdout.gz",
+      "sha256": "f56c15bf35bfc08f4aa160836e1275957222e9b37f161d9a859947a57e722dc8",
+      "archiveSha256": "a79715cd6e2f7a0488829639d5606f8e9ad84050b432c67a2ecc0997ec02e657"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-1.stdout",
+      "archive": "implementation/phase4/evidence/development-final/rules-1.stdout.gz",
+      "sha256": "f56c15bf35bfc08f4aa160836e1275957222e9b37f161d9a859947a57e722dc8",
+      "archiveSha256": "a79715cd6e2f7a0488829639d5606f8e9ad84050b432c67a2ecc0997ec02e657"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-2.stdout",
+      "archive": "implementation/phase4/evidence/development-final/rules-2.stdout.gz",
+      "sha256": "f56c15bf35bfc08f4aa160836e1275957222e9b37f161d9a859947a57e722dc8",
+      "archiveSha256": "a79715cd6e2f7a0488829639d5606f8e9ad84050b432c67a2ecc0997ec02e657"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-3.stdout",
+      "archive": "implementation/phase4/evidence/development-final/rules-3.stdout.gz",
+      "sha256": "f56c15bf35bfc08f4aa160836e1275957222e9b37f161d9a859947a57e722dc8",
+      "archiveSha256": "a79715cd6e2f7a0488829639d5606f8e9ad84050b432c67a2ecc0997ec02e657"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/bootstrap.stderr",
+      "archive": "implementation/phase4/evidence/development-final/bootstrap.stderr.gz",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archiveSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-0.stderr",
+      "archive": "implementation/phase4/evidence/development-final/rules-0.stderr.gz",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archiveSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-1.stderr",
+      "archive": "implementation/phase4/evidence/development-final/rules-1.stderr.gz",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archiveSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-2.stderr",
+      "archive": "implementation/phase4/evidence/development-final/rules-2.stderr.gz",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archiveSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "selfhost/build/phase4/development-final/rules-3.stderr",
+      "archive": "implementation/phase4/evidence/development-final/rules-3.stderr.gz",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archiveSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    }
+  ]
+}

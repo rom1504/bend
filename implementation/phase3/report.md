@@ -240,6 +240,10 @@ The following checks passed:
   including exact diagnostic text against frozen H.
 * 63,668 runtime comparator and map/set assertions against pinned Base, plus
   argument-ownership/trampoline regression.
+* [Six current-H integration routes](stage2-integration.md): check, interpreter,
+  JavaScript, actual Clang/native execution, exact invalid-type diagnostics, and
+  byte-identical C for an erased dependent argument. Stage2 was provisional
+  while the separate stage3 reproduction gate ran.
 
 The [combined component archive](components.md) covers core checking, frontend,
 all ten JS backend suites, and 22 compiled/executed C programs. The original
@@ -256,11 +260,33 @@ persistent/targeted tests, including existing isolated replay. The bundled Clang
 16 toolchain passed the real miss/hit and executable-output gate.
 The integrated H fixed point remains a release gate.
 
+## Full frontend compatibility
+
+The [final broad frontend comparison](frontend-final.md) completed every
+parse/check probe for all 1,378 pinned fixtures. All 2,756 candidate observations,
+including exact diagnostics, match phase2; the new live TypeScript observations
+also match their historical reference. No compatibility difference was introduced
+or resolved. All 1,378 check-lane accept/reject statuses agree between compilers:
+921 accept and 457 reject. Exact conformance remains incomplete: 560 existing
+cross-compiler observations differ, comprising 20 parse acceptance differences,
+30 rejection-phase differences and 510 diagnostic/report differences. The fixture
+judge retains 377 candidate check failures and three reference check failures.
+
+The candidate workflow took 20 minutes 28.6 seconds and TypeScript 3 minutes
+57.2 seconds, serially on CPU2 with the same persistent harness and resource
+settings. Both performed 44 worker starts and 43 recycles with no worker failures,
+crashes, timeouts or input drift. The candidate used an existing validated Base
+cache. These are single workflow observations, not repeated paired speed claims;
+the earlier phase2 isolated sweep's 68 minutes remains a historical measurement
+with different execution policy. Full exact reports, including failures, are
+retained as losslessly compressed JSON alongside their hashes.
+
 ## Remaining work and interpretation
 
 The combined source/API/runtime/host are frozen for the checked stage2/stage3
 self-emission proof. Combined component and small-workload comparisons have
-completed; the full frontend sweep and the H reproduction stage are still running.
+completed, as has the full frontend comparison. Only the H reproduction stage
+and the bounded native `-O2` comparison are still running.
 Until those gates finish, no new default distribution is promoted and no combined
 whole-compiler speedup is claimed. Full language conformance remains a separate
 objective; existing exact-diagnostic failures remain failures.

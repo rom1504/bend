@@ -60,7 +60,7 @@ cache avoids repeating Clang work:
 ```sh
 node selfhost/tools/performance/rapid/native-compiler-cache.mjs \
   checked-compiler.c compiler-O1 build/native-compiler-cache \
-  --opt=O1 --timeout-ms=60000
+  --opt=O1 --timeout-ms=180000
 ```
 
 The cache key includes the C source and canonical path, preprocessed headers,
@@ -97,8 +97,8 @@ node selfhost/src/runtime/js/build.mjs
 
 Compiler throughput and generated-program runtime must be measured separately.
 The runtime kernel probe is useful for the latter, while compiler comparisons
-must use alternating fresh processes, identical Base/API artifacts and a
-consumed output checksum.
+must use alternating fresh processes, identical Base/workloads, fixed and hashed
+API identities per variant, and a consumed output checksum.
 
 ## Correctness gates
 

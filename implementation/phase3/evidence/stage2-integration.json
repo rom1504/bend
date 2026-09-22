@@ -1,0 +1,434 @@
+{
+  "kind": "phase3-stage2-selected-integration",
+  "archivedAt": "2026-09-22T06:49:36.362883+00:00",
+  "complete": true,
+  "scope": "Six selected smoke routes using the actual self-emitted stage2 API and frozen host; stage3 proof completion is not assumed. B1 supplies an independent checked-generation exact diagnostic/C oracle, not live handwritten TypeScript.",
+  "apiSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+  "runtimeSha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+  "hostDirectory": "2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749",
+  "cpu": 0,
+  "summary": {
+    "requiredRoutesPassed": 6,
+    "requiredRoutes": 6,
+    "routes": [
+      "positive check",
+      "positive interpreter42",
+      "positive JavaScript execution42",
+      "positive native C/Clang execution42",
+      "invalid type exact B1 diagnostic and check phase",
+      "dependent erased native-context exact B1 C/Clang executionYes{}"
+    ],
+    "provisionalStage2": true,
+    "allConsumedInputsUnchangedAtArchive": true,
+    "compilerIdentityMatchesEarlierNativeBuild": true
+  },
+  "compiler": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang",
+    "sha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2",
+    "retainedPriorVersion": "Debian clang version 16.0.6 (15~deb11u2)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin"
+  },
+  "attempts": [
+    {
+      "report": {
+        "kind": "phase3-provisional-stage2-smoke",
+        "started": "2026-09-22T06:47:08.252Z",
+        "cpu": 0,
+        "node": {
+          "version": "v24.18.0",
+          "executable": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+          "args": [
+            "--stack-size=4096",
+            "--max-old-space-size=4096"
+          ]
+        },
+        "scope": "Selected routes through actual self-emitted stage2 and frozen host. Stage3 proof still independent; no fabricated completed self-host proof. B1 exact diagnostic/C oracle is the checked integration artifact, not live handwritten TypeScript.",
+        "proofAtStart": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/proof-at-start.json",
+          "sha256": "331757325ec12b47b768ed298cf7b5415132125309817c900e5cd0d2d6708f7a"
+        },
+        "inputs": {
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/bad-type.bend": "51d521f86978792ac5402a922777990733761e67a8a0b4fc6b537e843bdb55c3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/dependent.bend": "0307784688a6d8106cd69a1a76e41a75753958f9da37d9dae8e6696cbb32a54b",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs": "95e33ebacc4096ee4705a3a58fd352cc5d7e453be71a14cb5f05990f3da12807",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/assemble.mjs": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/compiler-abi.mjs": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/node-resource-args.mjs": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/sources.json": "fa28f2a54d5502344f45806ae3aef557ad4427326cb9a9d735ddcf9940385c6d",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed-driver.mjs": "b8f7ef8bb2077c14518914aa5a9b88c73e2e6728799b84ec273802f732515951",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed.mjs": "8edf3703f0dc2f053c22a7b0440f3766bf33a83343a77c62101daa222b80e74c",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/LICENSE": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/ORIGIN.md": "cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/args.c": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_close.c": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_open.c": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_write.c": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_close.c": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_new.c": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_recv.c": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_send.c": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_close.c": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_open.c": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read.c": "4ec0b13491c0d9564836ad23b5a65aec930d84bd19e36c90e20e9c34211a7e2b",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_at.c": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_bytes.c": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_size.c": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write.c": "9829c7100982824fa17f78bab80150adccbddcb69a3cc47939e118018cc22504",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write_bytes.c": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/get_env.c": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/listener_close.c": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/now.c": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print.c": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print_err.c": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/random_u32.c": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/sleep.c": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/socket_close.c": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/spawn.c": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_accept.c": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_connect.c": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_listen.c": "2f206b54e6698df529f6c669755cf84e92f51736db4d38e224dd5eb3fcd0a3ed",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_poll.c": "9f4adfe0f4b8e025783b07fa4ba9fec619a5938135dc5f4bb8c9cf7079e82b37",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_recv.c": "3a105d82f4e786b992e27bec66c407caa9efbda67a63c03d95805231a21d9ba1",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_send.c": "70a5eba01d09e2cda7a9f3b22d976f4c8ba3fb7a8c8083abddd8d12c85d8a2a4",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_bind.c": "fe405175c1890c2d19a2f6d94b2672259b47a1e6dc8f62f8e9ff540bef7a2245",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_poll.c": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_recv_from.c": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_send_to.c": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_close.c": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_frame.c": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_open.c": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_set_title.c": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/write.c": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c": "1bbee6dfbe62736c94ad448ec69a8f7437526e98c0aea230b491574f5a9a85fb"
+        },
+        "environment": {
+          "CC": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+          "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+          "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+          "LD_LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu"
+        },
+        "complete": false,
+        "rows": [
+          {
+            "name": "positive-check",
+            "passed": true,
+            "result": {
+              "status": "ok",
+              "phase": "check",
+              "stdout": "All terms check.\n",
+              "exitCode": 0,
+              "checked": true,
+              "files": [
+                "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend",
+                "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+              ]
+            },
+            "wallMs": 2259.340225
+          },
+          {
+            "name": "positive-interpreter",
+            "passed": true,
+            "result": {
+              "status": "ok",
+              "phase": "runtime",
+              "stdout": "42\n",
+              "verdict": "All terms check.\n",
+              "exitCode": 0,
+              "checked": true
+            },
+            "wallMs": 1964.2279439999998
+          },
+          {
+            "name": "positive-JS-execution",
+            "passed": true,
+            "result": {
+              "status": "ok",
+              "phase": "runtime",
+              "stdout": "42\n",
+              "stderr": "",
+              "exitCode": 0,
+              "signal": null,
+              "checked": true,
+              "runtimeNodeArgs": [
+                "--stack-size=4096",
+                "--max-old-space-size=4096"
+              ],
+              "verdict": "All terms check.\n"
+            },
+            "wallMs": 1938.0281600000008
+          },
+          {
+            "name": "positive-native-C-execution",
+            "passed": true,
+            "code": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/base-u32.c",
+              "sha256": "d031a6898e3d950dc9ed33ec7b97be9234f07487ea7b005c167d3bdb9e76843d",
+              "bytes": 83506
+            },
+            "build": {
+              "status": "ok",
+              "phase": "compile",
+              "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/base-u32",
+              "target": "cpu",
+              "bangs": 0,
+              "compiler": {
+                "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+                "version": 16,
+                "apple": false
+              },
+              "checked": true
+            },
+            "binary": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/base-u32",
+              "sha256": "a46be50ce4466603fc0916bf976556f0b6b0cd895781fc92a459df982cf1610d"
+            },
+            "execution": {
+              "status": 0,
+              "signal": null,
+              "stdout": "42\n",
+              "stderr": ""
+            },
+            "wallMs": 3381.6992359999995
+          },
+          {
+            "name": "invalid-type-exact-B1-diagnostic",
+            "passed": true,
+            "expected": {
+              "status": "error",
+              "phase": "check",
+              "diagnostic": "Error:\n- expected : Bit\n- observed : Type\nLocation: main",
+              "exitCode": 1,
+              "checked": true
+            },
+            "actual": {
+              "status": "error",
+              "phase": "check",
+              "diagnostic": "Error:\n- expected : Bit\n- observed : Type\nLocation: main",
+              "exitCode": 1,
+              "checked": true
+            },
+            "exact": true,
+            "wallMs": 256.6153749999994
+          },
+          {
+            "name": "dependent-erased-native-context",
+            "passed": false,
+            "error": "AssertionError [ERR_ASSERTION]: {\"status\":\"error\",\"phase\":\"compile\",\"diagnostic\":\"Error: a build needs import Base\",\"exitCode\":1,\"checked\":true}\n\n'error' !== 'ok'\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:24:184\n    at async check (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:16:136)\n    at async file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:24:2",
+            "wallMs": 228.22956599999998
+          }
+        ],
+        "error": "AssertionError [ERR_ASSERTION]: {\"status\":\"error\",\"phase\":\"compile\",\"diagnostic\":\"Error: a build needs import Base\",\"exitCode\":1,\"checked\":true}\n\n'error' !== 'ok'\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:24:184\n    at async check (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:16:136)\n    at async file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:24:2",
+        "finished": "2026-09-22T06:47:18.808Z"
+      },
+      "role": "Five required routes pass; optional component-derived fixture correctly rejects because the ordinary host requires import Base."
+    },
+    {
+      "report": {
+        "kind": "phase3-provisional-stage2-smoke",
+        "started": "2026-09-22T06:48:16.577Z",
+        "cpu": 0,
+        "node": {
+          "version": "v24.18.0",
+          "executable": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+          "args": [
+            "--stack-size=4096",
+            "--max-old-space-size=4096"
+          ]
+        },
+        "scope": "Selected routes through actual self-emitted stage2 and frozen host. Stage3 proof still independent; no fabricated completed self-host proof. B1 exact diagnostic/C oracle is the checked integration artifact, not live handwritten TypeScript.",
+        "proofAtStart": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/proof-at-start.json",
+          "sha256": "331757325ec12b47b768ed298cf7b5415132125309817c900e5cd0d2d6708f7a"
+        },
+        "inputs": {
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/bad-type.bend": "51d521f86978792ac5402a922777990733761e67a8a0b4fc6b537e843bdb55c3",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/dependent.bend": "54fd6f355363d35960bfe0a94cd64a9287f662f97fb32bb15008eb0d94d1424b",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/run.mjs": "7c5cb6fdf186d0ae07ac5e90662429515a6f864fef7aa7f4c52186a7e5a7d5b8",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/assemble.mjs": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/compiler-abi.mjs": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/node-resource-args.mjs": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/sources.json": "fa28f2a54d5502344f45806ae3aef557ad4427326cb9a9d735ddcf9940385c6d",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed-driver.mjs": "b8f7ef8bb2077c14518914aa5a9b88c73e2e6728799b84ec273802f732515951",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed.mjs": "8edf3703f0dc2f053c22a7b0440f3766bf33a83343a77c62101daa222b80e74c",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/LICENSE": "0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/ORIGIN.md": "cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/args.c": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_close.c": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_open.c": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_write.c": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_close.c": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_new.c": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_recv.c": "7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_send.c": "f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_close.c": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_open.c": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read.c": "4ec0b13491c0d9564836ad23b5a65aec930d84bd19e36c90e20e9c34211a7e2b",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_at.c": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_bytes.c": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_size.c": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write.c": "9829c7100982824fa17f78bab80150adccbddcb69a3cc47939e118018cc22504",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write_bytes.c": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/get_env.c": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/listener_close.c": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/now.c": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print.c": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print_err.c": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/random_u32.c": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/sleep.c": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/socket_close.c": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/spawn.c": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_accept.c": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_connect.c": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_listen.c": "2f206b54e6698df529f6c669755cf84e92f51736db4d38e224dd5eb3fcd0a3ed",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_poll.c": "9f4adfe0f4b8e025783b07fa4ba9fec619a5938135dc5f4bb8c9cf7079e82b37",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_recv.c": "3a105d82f4e786b992e27bec66c407caa9efbda67a63c03d95805231a21d9ba1",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_send.c": "70a5eba01d09e2cda7a9f3b22d976f4c8ba3fb7a8c8083abddd8d12c85d8a2a4",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_bind.c": "fe405175c1890c2d19a2f6d94b2672259b47a1e6dc8f62f8e9ff540bef7a2245",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_poll.c": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_recv_from.c": "140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_send_to.c": "8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_close.c": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_frame.c": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_open.c": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_set_title.c": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/write.c": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac",
+          "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c": "1bbee6dfbe62736c94ad448ec69a8f7437526e98c0aea230b491574f5a9a85fb"
+        },
+        "environment": {
+          "CC": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+          "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+          "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+          "LD_LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu"
+        },
+        "complete": true,
+        "rows": [
+          {
+            "name": "dependent-erased-native-context",
+            "passed": true,
+            "exactB1C": true,
+            "b1CodeSha256": "1a5f0bcbbe40b5cec0ccde7d197fa990151baf2704b662b9a7861ab89fe4e8b3",
+            "code": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/dependent.c",
+              "sha256": "1a5f0bcbbe40b5cec0ccde7d197fa990151baf2704b662b9a7861ab89fe4e8b3",
+              "bytes": 84648
+            },
+            "build": {
+              "status": "ok",
+              "phase": "compile",
+              "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/dependent",
+              "target": "cpu",
+              "bangs": 0,
+              "compiler": {
+                "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+                "version": 16,
+                "apple": false
+              },
+              "checked": true
+            },
+            "binary": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/dependent",
+              "sha256": "3b351b89e7e9a682440c4553d154092d06afd86152b9cbe963fbe29b7f8316ff"
+            },
+            "execution": {
+              "status": 0,
+              "signal": null,
+              "stdout": "Yes{}\n",
+              "stderr": ""
+            },
+            "wallMs": 5700.383456
+          }
+        ],
+        "inputsUnchanged": true,
+        "finished": "2026-09-22T06:48:22.787Z"
+      },
+      "role": "Only the dependent control rerun with required Base import, with exact B1 C and actual native execution."
+    }
+  ],
+  "initialFixtureCorrection": {
+    "reason": "Component-only fixture omitted Base; ordinary host correctly returns Error: a build needs import Base. No compiler repair.",
+    "initialExpectedWronglyAccepted": true,
+    "retainedRejection": {
+      "name": "dependent-erased-native-context",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: {\"status\":\"error\",\"phase\":\"compile\",\"diagnostic\":\"Error: a build needs import Base\",\"exitCode\":1,\"checked\":true}\n\n'error' !== 'ok'\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:24:184\n    at async check (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:16:136)\n    at async file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:24:2",
+      "wallMs": 228.22956599999998
+    },
+    "correction": "Added import Base in a distinct fixture and ran only that control."
+  },
+  "artifacts": {
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/report.json": {
+      "sha256": "ce3bc18e46b775db32e3cbe65d98a281068e63ce1d59e348a53188c6a84141d4",
+      "text": "{\n  \"kind\": \"phase3-provisional-stage2-smoke\",\n  \"started\": \"2026-09-22T06:47:08.252Z\",\n  \"cpu\": 0,\n  \"node\": {\n    \"version\": \"v24.18.0\",\n    \"executable\": \"/home/ai/.nvm/versions/node/v24.18.0/bin/node\",\n    \"sha256\": \"41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c\",\n    \"args\": [\n      \"--stack-size=4096\",\n      \"--max-old-space-size=4096\"\n    ]\n  },\n  \"scope\": \"Selected routes through actual self-emitted stage2 and frozen host. Stage3 proof still independent; no fabricated completed self-host proof. B1 exact diagnostic/C oracle is the checked integration artifact, not live handwritten TypeScript.\",\n  \"proofAtStart\": {\n    \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/proof-at-start.json\",\n    \"sha256\": \"331757325ec12b47b768ed298cf7b5415132125309817c900e5cd0d2d6708f7a\"\n  },\n  \"inputs\": {\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs\": \"360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs\": \"26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend\": \"b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs\": \"8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend\": \"5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/bad-type.bend\": \"51d521f86978792ac5402a922777990733761e67a8a0b4fc6b537e843bdb55c3\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/dependent.bend\": \"0307784688a6d8106cd69a1a76e41a75753958f9da37d9dae8e6696cbb32a54b\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs\": \"95e33ebacc4096ee4705a3a58fd352cc5d7e453be71a14cb5f05990f3da12807\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/assemble.mjs\": \"f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/compiler-abi.mjs\": \"0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/native-build.mjs\": \"ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/node-resource-args.mjs\": \"6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/sources.json\": \"fa28f2a54d5502344f45806ae3aef557ad4427326cb9a9d735ddcf9940385c6d\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed-driver.mjs\": \"b8f7ef8bb2077c14518914aa5a9b88c73e2e6728799b84ec273802f732515951\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed.mjs\": \"8edf3703f0dc2f053c22a7b0440f3766bf33a83343a77c62101daa222b80e74c\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/LICENSE\": \"0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/ORIGIN.md\": \"cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/args.c\": \"7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_close.c\": \"c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_open.c\": \"65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_write.c\": \"0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_close.c\": \"d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_new.c\": \"41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_recv.c\": \"7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_send.c\": \"f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_close.c\": \"befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_open.c\": \"f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read.c\": \"4ec0b13491c0d9564836ad23b5a65aec930d84bd19e36c90e20e9c34211a7e2b\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_at.c\": \"689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_bytes.c\": \"810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_size.c\": \"09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write.c\": \"9829c7100982824fa17f78bab80150adccbddcb69a3cc47939e118018cc22504\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write_bytes.c\": \"80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/get_env.c\": \"62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/listener_close.c\": \"11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/now.c\": \"da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print.c\": \"709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print_err.c\": \"72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/random_u32.c\": \"10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/sleep.c\": \"77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/socket_close.c\": \"6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/spawn.c\": \"fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_accept.c\": \"e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_connect.c\": \"ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_listen.c\": \"2f206b54e6698df529f6c669755cf84e92f51736db4d38e224dd5eb3fcd0a3ed\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_poll.c\": \"9f4adfe0f4b8e025783b07fa4ba9fec619a5938135dc5f4bb8c9cf7079e82b37\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_recv.c\": \"3a105d82f4e786b992e27bec66c407caa9efbda67a63c03d95805231a21d9ba1\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_send.c\": \"70a5eba01d09e2cda7a9f3b22d976f4c8ba3fb7a8c8083abddd8d12c85d8a2a4\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_bind.c\": \"fe405175c1890c2d19a2f6d94b2672259b47a1e6dc8f62f8e9ff540bef7a2245\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_poll.c\": \"66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_recv_from.c\": \"140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_send_to.c\": \"8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_close.c\": \"655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_frame.c\": \"01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_open.c\": \"1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_set_title.c\": \"cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/write.c\": \"c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c\": \"1bbee6dfbe62736c94ad448ec69a8f7437526e98c0aea230b491574f5a9a85fb\"\n  },\n  \"environment\": {\n    \"CC\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16\",\n    \"CPATH\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include\",\n    \"LIBRARY_PATH\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu\",\n    \"LD_LIBRARY_PATH\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu\"\n  },\n  \"complete\": false,\n  \"rows\": [\n    {\n      \"name\": \"positive-check\",\n      \"passed\": true,\n      \"result\": {\n        \"status\": \"ok\",\n        \"phase\": \"check\",\n        \"stdout\": \"All terms check.\\n\",\n        \"exitCode\": 0,\n        \"checked\": true,\n        \"files\": [\n          \"/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend\",\n          \"/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend\"\n        ]\n      },\n      \"wallMs\": 2259.340225\n    },\n    {\n      \"name\": \"positive-interpreter\",\n      \"passed\": true,\n      \"result\": {\n        \"status\": \"ok\",\n        \"phase\": \"runtime\",\n        \"stdout\": \"42\\n\",\n        \"verdict\": \"All terms check.\\n\",\n        \"exitCode\": 0,\n        \"checked\": true\n      },\n      \"wallMs\": 1964.2279439999998\n    },\n    {\n      \"name\": \"positive-JS-execution\",\n      \"passed\": true,\n      \"result\": {\n        \"status\": \"ok\",\n        \"phase\": \"runtime\",\n        \"stdout\": \"42\\n\",\n        \"stderr\": \"\",\n        \"exitCode\": 0,\n        \"signal\": null,\n        \"checked\": true,\n        \"runtimeNodeArgs\": [\n          \"--stack-size=4096\",\n          \"--max-old-space-size=4096\"\n        ],\n        \"verdict\": \"All terms check.\\n\"\n      },\n      \"wallMs\": 1938.0281600000008\n    },\n    {\n      \"name\": \"positive-native-C-execution\",\n      \"passed\": true,\n      \"code\": {\n        \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/base-u32.c\",\n        \"sha256\": \"d031a6898e3d950dc9ed33ec7b97be9234f07487ea7b005c167d3bdb9e76843d\",\n        \"bytes\": 83506\n      },\n      \"build\": {\n        \"status\": \"ok\",\n        \"phase\": \"compile\",\n        \"binary\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/base-u32\",\n        \"target\": \"cpu\",\n        \"bangs\": 0,\n        \"compiler\": {\n          \"command\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16\",\n          \"version\": 16,\n          \"apple\": false\n        },\n        \"checked\": true\n      },\n      \"binary\": {\n        \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/base-u32\",\n        \"sha256\": \"a46be50ce4466603fc0916bf976556f0b6b0cd895781fc92a459df982cf1610d\"\n      },\n      \"execution\": {\n        \"status\": 0,\n        \"signal\": null,\n        \"stdout\": \"42\\n\",\n        \"stderr\": \"\"\n      },\n      \"wallMs\": 3381.6992359999995\n    },\n    {\n      \"name\": \"invalid-type-exact-B1-diagnostic\",\n      \"passed\": true,\n      \"expected\": {\n        \"status\": \"error\",\n        \"phase\": \"check\",\n        \"diagnostic\": \"Error:\\n- expected : Bit\\n- observed : Type\\nLocation: main\",\n        \"exitCode\": 1,\n        \"checked\": true\n      },\n      \"actual\": {\n        \"status\": \"error\",\n        \"phase\": \"check\",\n        \"diagnostic\": \"Error:\\n- expected : Bit\\n- observed : Type\\nLocation: main\",\n        \"exitCode\": 1,\n        \"checked\": true\n      },\n      \"exact\": true,\n      \"wallMs\": 256.6153749999994\n    },\n    {\n      \"name\": \"dependent-erased-native-context\",\n      \"passed\": false,\n      \"error\": \"AssertionError [ERR_ASSERTION]: {\\\"status\\\":\\\"error\\\",\\\"phase\\\":\\\"compile\\\",\\\"diagnostic\\\":\\\"Error: a build needs import Base\\\",\\\"exitCode\\\":1,\\\"checked\\\":true}\\n\\n'error' !== 'ok'\\n\\n    at file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:24:184\\n    at async check (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:16:136)\\n    at async file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:24:2\",\n      \"wallMs\": 228.22956599999998\n    }\n  ],\n  \"error\": \"AssertionError [ERR_ASSERTION]: {\\\"status\\\":\\\"error\\\",\\\"phase\\\":\\\"compile\\\",\\\"diagnostic\\\":\\\"Error: a build needs import Base\\\",\\\"exitCode\\\":1,\\\"checked\\\":true}\\n\\n'error' !== 'ok'\\n\\n    at file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:24:184\\n    at async check (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:16:136)\\n    at async file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs:24:2\",\n  \"finished\": \"2026-09-22T06:47:18.808Z\"\n}\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/run.mjs": {
+      "sha256": "95e33ebacc4096ee4705a3a58fd352cc5d7e453be71a14cb5f05990f3da12807",
+      "text": "import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import assert from 'node:assert/strict';import {pathToFileURL} from 'node:url';import {spawnSync} from 'node:child_process';\nconst out=import.meta.dirname,project=path.resolve(out,'../../..'),host=path.join(project,'build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749'),apiFile=path.join(project,'build/phase3/final-fixedpoint/stage2.mjs'),runtime=path.join(project,'build/phase3/final-fixedpoint/runtime.mjs'),base=path.join(project,'.bootstrap/upstream/bend2/base.bend'),b1File=path.join(project,'build/phase3/native-integrated/api.mjs');\nconst hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'),digest=text=>crypto.createHash('sha256').update(text).digest('hex');\nprocess.env.BEND_TYPED_API=apiFile;process.env.BEND_TYPED_RUNTIME=runtime;process.env.BEND_BASE=base;\nconst proof=path.join(project,'build/phase3/final-fixedpoint/report.json');fs.copyFileSync(proof,path.join(out,'proof-at-start.json'));\nassert.equal(hash(apiFile),'360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de');assert.equal(hash(runtime),'26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b');\nconst positive=path.join(project,'tests/conformance/typed-smoke/base-u32.bend'),invalid=path.join(project,'tests/conformance/typed-smoke/bad-type.bend'),dependent=path.join(out,'dependent.bend');\nfs.writeFileSync(dependent,'type B is Data:\\n  Yes{}\\n  No{}\\nlaw poly:\\n  for -A: Type\\n  for x: A\\n  A\\ndef poly(A, x):\\n  x\\ndef main() -> B:\\n  poly(B, Yes{})\\n');\nconst walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);\nconst inputs=[apiFile,runtime,base,b1File,positive,invalid,dependent,import.meta.filename,...walk(host),...walk(path.join(project,'src/runtime/native'))];\nconst inputsBefore=Object.fromEntries(inputs.map(file=>[file,hash(file)]));\nconst report={kind:'phase3-provisional-stage2-smoke',started:new Date().toISOString(),cpu:0,node:{version:process.version,executable:process.execPath,sha256:hash(process.execPath),args:process.execArgv},scope:'Selected routes through actual self-emitted stage2 and frozen host. Stage3 proof still independent; no fabricated completed self-host proof. B1 exact diagnostic/C oracle is the checked integration artifact, not live handwritten TypeScript.',proofAtStart:{file:path.join(out,'proof-at-start.json'),sha256:hash(path.join(out,'proof-at-start.json'))},inputs:inputsBefore,environment:Object.fromEntries(['CC','CPATH','LIBRARY_PATH','LD_LIBRARY_PATH'].map(k=>[k,process.env[k]])),complete:false,rows:[]};\nconst save=()=>fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\\n');save();\nconst D=await import(pathToFileURL(path.join(host,'typed-driver.mjs'))),api=await D.loadApi(),b1=(await import(pathToFileURL(b1File))).default;\nconst {buildNative}=await import(pathToFileURL(path.join(host,'native-build.mjs')));\nasync function check(name,fn){const row={name,passed:false},start=performance.now();report.rows.push(row);save();try{Object.assign(row,await fn());row.passed=true;}catch(e){row.error=e.stack;throw e;}finally{row.wallMs=performance.now()-start;save();console.log(name+': '+(row.passed?'pass':'FAIL'));}}\nfunction nativeExecute(compiled,name,expected){const cFile=path.join(out,name+'.c'),binary=path.join(out,name);fs.writeFileSync(cFile,compiled.code);const built=buildNative({source:compiled.code,file:cFile,binary,target:'cpu',timeoutMs:30000});assert.equal(built.status,'ok',JSON.stringify(built));const result=spawnSync(binary,[],{encoding:'utf8',timeout:10000,maxBuffer:1048576});assert.equal(result.status,0,JSON.stringify(result));assert.equal(result.stdout.trim(),expected);return {code:{file:cFile,sha256:hash(cFile),bytes:Buffer.byteLength(compiled.code)},build:built,binary:{file:binary,sha256:hash(binary)},execution:{status:result.status,signal:result.signal,stdout:result.stdout,stderr:result.stderr}};}\ntry{\n await check('positive-check',async()=>{const r=await D.inspect(positive,{api,mode:'check'});assert.equal(r.status,'ok');assert.equal(r.checked,true);return {result:r};});\n await check('positive-interpreter',async()=>{const r=await D.inspect(positive,{api,mode:'interpreter'});assert.equal(r.status,'ok');assert.equal(r.stdout.trim(),'42');return {result:r};});\n await check('positive-JS-execution',async()=>{const r=await D.execute(positive,{api,timeoutMs:30000});assert.equal(r.status,'ok',JSON.stringify(r));assert.equal(r.stdout.trim(),'42');return {result:r};});\n await check('positive-native-C-execution',async()=>{const r=await D.inspect(positive,{api,mode:'native'});assert.equal(r.status,'ok',JSON.stringify(r));assert.equal(r.checked,true);return nativeExecute(r,'base-u32','42');});\n await check('invalid-type-exact-B1-diagnostic',async()=>{const expected=await D.inspect(invalid,{api:b1,mode:'check'}),actual=await D.inspect(invalid,{api,mode:'check'});assert.equal(actual.status,'error');assert.equal(actual.phase,'check');assert.ok(actual.diagnostic.length);assert.deepEqual(actual,expected);return {expected,actual,exact:true};});\n await check('dependent-erased-native-context',async()=>{const expected=await D.inspect(dependent,{api:b1,mode:'native'}),actual=await D.inspect(dependent,{api,mode:'native'});assert.equal(actual.status,'ok',JSON.stringify(actual));assert.equal(expected.status,'ok',JSON.stringify(expected));assert.equal(actual.code,expected.code);return {exactB1C:true,b1CodeSha256:digest(expected.code),...nativeExecute(actual,'dependent','Yes{}')};});\n report.inputsUnchanged=Object.entries(inputsBefore).every(([file,expected])=>hash(file)===expected);assert.equal(report.inputsUnchanged,true);report.complete=true;\n}catch(e){report.error=e.stack;process.exitCode=1;}finally{report.finished=new Date().toISOString();save();}\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/stdout.log": {
+      "sha256": "0c874d9cc47088ada2a9167e038e954761b443e4a0e0ca818e8f1aae20eef513",
+      "text": "positive-check: pass\npositive-interpreter: pass\npositive-JS-execution: pass\npositive-native-C-execution: pass\ninvalid-type-exact-B1-diagnostic: pass\ndependent-erased-native-context: FAIL\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "text": ""
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/dependent.bend": {
+      "sha256": "0307784688a6d8106cd69a1a76e41a75753958f9da37d9dae8e6696cbb32a54b",
+      "text": "type B is Data:\n  Yes{}\n  No{}\nlaw poly:\n  for -A: Type\n  for x: A\n  A\ndef poly(A, x):\n  x\ndef main() -> B:\n  poly(B, Yes{})\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration/proof-at-start.json": {
+      "sha256": "331757325ec12b47b768ed298cf7b5415132125309817c900e5cd0d2d6708f7a",
+      "text": "{\n  \"started\": \"2026-09-22T06:11:21.581Z\",\n  \"source\": \"/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend\",\n  \"sourceIdentity\": {\n    \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend\",\n    \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend\",\n    \"sha256\": \"936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772\"\n  },\n  \"sourceSha256\": \"936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772\",\n  \"runtimeSha256\": \"26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b\",\n  \"base\": {\n    \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend\",\n    \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend\",\n    \"sha256\": \"b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946\"\n  },\n  \"hostHelpers\": [\n    {\n      \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/compiler-abi.mjs\",\n      \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/compiler-abi.mjs\",\n      \"sha256\": \"0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454\"\n    },\n    {\n      \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/node-resource-args.mjs\",\n      \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/node-resource-args.mjs\",\n      \"sha256\": \"6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758\"\n    },\n    {\n      \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/native-build.mjs\",\n      \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/native-build.mjs\",\n      \"sha256\": \"ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb\"\n    },\n    {\n      \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/assemble.mjs\",\n      \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/assemble.mjs\",\n      \"sha256\": \"f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75\"\n    }\n  ],\n  \"initialCompiler\": {\n    \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs\",\n    \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs\",\n    \"sha256\": \"8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923\"\n  },\n  \"driver\": {\n    \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed-driver.mjs\",\n    \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed-driver.mjs\",\n    \"sha256\": \"b8f7ef8bb2077c14518914aa5a9b88c73e2e6728799b84ec273802f732515951\"\n  },\n  \"stages\": [\n    {\n      \"compiler\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs\",\n      \"compilerSha256\": \"8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923\",\n      \"output\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs\",\n      \"nodeArgs\": [\n        \"--stack-size=4096\",\n        \"--max-old-space-size=12288\"\n      ],\n      \"code\": 0,\n      \"signal\": null,\n      \"ms\": 704229,\n      \"inputsVerified\": true,\n      \"outputSha256\": \"360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de\"\n    }\n  ],\n  \"complete\": false,\n  \"resourceConfiguration\": {\n    \"node\": \"v24.18.0\",\n    \"nodeArgs\": [\n      \"--stack-size=4096\",\n      \"--max-old-space-size=12288\"\n    ],\n    \"osStackKB\": \"8192\",\n    \"timeoutMs\": 5400000\n  },\n  \"requestedStages\": [\n    2,\n    3\n  ],\n  \"validationPolicy\": {\n    \"required\": [\n      2,\n      3\n    ],\n    \"optionalRepeat\": false,\n    \"condition\": \"Stage2 and its checked self-emission stage3 must be byte-identical for the same frozen source.\"\n  },\n  \"currentStage\": {\n    \"compiler\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs\",\n    \"output\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage3.mjs\",\n    \"nodeArgs\": [\n      \"--stack-size=4096\",\n      \"--max-old-space-size=12288\"\n    ],\n    \"started\": \"2026-09-22T06:23:05.894Z\"\n  }\n}\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/report.json": {
+      "sha256": "cb9035d09f12f2a252b8ce52bc0764bf160d80627b52508170fc2f0abdcc5bf4",
+      "text": "{\n  \"kind\": \"phase3-provisional-stage2-smoke\",\n  \"started\": \"2026-09-22T06:48:16.577Z\",\n  \"cpu\": 0,\n  \"node\": {\n    \"version\": \"v24.18.0\",\n    \"executable\": \"/home/ai/.nvm/versions/node/v24.18.0/bin/node\",\n    \"sha256\": \"41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c\",\n    \"args\": [\n      \"--stack-size=4096\",\n      \"--max-old-space-size=4096\"\n    ]\n  },\n  \"scope\": \"Selected routes through actual self-emitted stage2 and frozen host. Stage3 proof still independent; no fabricated completed self-host proof. B1 exact diagnostic/C oracle is the checked integration artifact, not live handwritten TypeScript.\",\n  \"proofAtStart\": {\n    \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/proof-at-start.json\",\n    \"sha256\": \"331757325ec12b47b768ed298cf7b5415132125309817c900e5cd0d2d6708f7a\"\n  },\n  \"inputs\": {\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs\": \"360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs\": \"26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend\": \"b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs\": \"8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend\": \"5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/bad-type.bend\": \"51d521f86978792ac5402a922777990733761e67a8a0b4fc6b537e843bdb55c3\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/dependent.bend\": \"54fd6f355363d35960bfe0a94cd64a9287f662f97fb32bb15008eb0d94d1424b\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/run.mjs\": \"7c5cb6fdf186d0ae07ac5e90662429515a6f864fef7aa7f4c52186a7e5a7d5b8\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/assemble.mjs\": \"f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/compiler-abi.mjs\": \"0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/native-build.mjs\": \"ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/node-resource-args.mjs\": \"6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/sources.json\": \"fa28f2a54d5502344f45806ae3aef557ad4427326cb9a9d735ddcf9940385c6d\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed-driver.mjs\": \"b8f7ef8bb2077c14518914aa5a9b88c73e2e6728799b84ec273802f732515951\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed.mjs\": \"8edf3703f0dc2f053c22a7b0440f3766bf33a83343a77c62101daa222b80e74c\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/LICENSE\": \"0beb288abd3d067e231f3fbe7df1f8ee37344061fc67f22018150a19e4b26c35\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/ORIGIN.md\": \"cc7d2b0e50253e3ccc3f88ed5c92134b3faba5a8c6eb86ae7aa9c7b5e7dd7073\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/args.c\": \"7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_close.c\": \"c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_open.c\": \"65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_write.c\": \"0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_close.c\": \"d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_new.c\": \"41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_recv.c\": \"7baa193d4adb09865a9397e84d41ec4fe7097cdd46150ed44513c76da126d0d1\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_send.c\": \"f12ade43cc52af51e13d35a93221b129db11fbfa7470f38557b1c0c9ef22caa4\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_close.c\": \"befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_open.c\": \"f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read.c\": \"4ec0b13491c0d9564836ad23b5a65aec930d84bd19e36c90e20e9c34211a7e2b\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_at.c\": \"689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_bytes.c\": \"810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_size.c\": \"09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write.c\": \"9829c7100982824fa17f78bab80150adccbddcb69a3cc47939e118018cc22504\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write_bytes.c\": \"80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/get_env.c\": \"62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/listener_close.c\": \"11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/now.c\": \"da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print.c\": \"709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print_err.c\": \"72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/random_u32.c\": \"10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/sleep.c\": \"77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/socket_close.c\": \"6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/spawn.c\": \"fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_accept.c\": \"e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_connect.c\": \"ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_listen.c\": \"2f206b54e6698df529f6c669755cf84e92f51736db4d38e224dd5eb3fcd0a3ed\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_poll.c\": \"9f4adfe0f4b8e025783b07fa4ba9fec619a5938135dc5f4bb8c9cf7079e82b37\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_recv.c\": \"3a105d82f4e786b992e27bec66c407caa9efbda67a63c03d95805231a21d9ba1\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_send.c\": \"70a5eba01d09e2cda7a9f3b22d976f4c8ba3fb7a8c8083abddd8d12c85d8a2a4\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_bind.c\": \"fe405175c1890c2d19a2f6d94b2672259b47a1e6dc8f62f8e9ff540bef7a2245\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_poll.c\": \"66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_recv_from.c\": \"140a281bca2348566030e092f3c27591893b5d945e57e2965863d02c2e6c0a65\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_send_to.c\": \"8704fe7e5770af7e4dcbe24f0fecf4cfbfe61a0a69a77b129df9965e306fae8f\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_close.c\": \"655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_frame.c\": \"01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_open.c\": \"1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_set_title.c\": \"cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/write.c\": \"c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac\",\n    \"/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c\": \"1bbee6dfbe62736c94ad448ec69a8f7437526e98c0aea230b491574f5a9a85fb\"\n  },\n  \"environment\": {\n    \"CC\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16\",\n    \"CPATH\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include\",\n    \"LIBRARY_PATH\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu\",\n    \"LD_LIBRARY_PATH\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu\"\n  },\n  \"complete\": true,\n  \"rows\": [\n    {\n      \"name\": \"dependent-erased-native-context\",\n      \"passed\": true,\n      \"exactB1C\": true,\n      \"b1CodeSha256\": \"1a5f0bcbbe40b5cec0ccde7d197fa990151baf2704b662b9a7861ab89fe4e8b3\",\n      \"code\": {\n        \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/dependent.c\",\n        \"sha256\": \"1a5f0bcbbe40b5cec0ccde7d197fa990151baf2704b662b9a7861ab89fe4e8b3\",\n        \"bytes\": 84648\n      },\n      \"build\": {\n        \"status\": \"ok\",\n        \"phase\": \"compile\",\n        \"binary\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/dependent\",\n        \"target\": \"cpu\",\n        \"bangs\": 0,\n        \"compiler\": {\n          \"command\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16\",\n          \"version\": 16,\n          \"apple\": false\n        },\n        \"checked\": true\n      },\n      \"binary\": {\n        \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/dependent\",\n        \"sha256\": \"3b351b89e7e9a682440c4553d154092d06afd86152b9cbe963fbe29b7f8316ff\"\n      },\n      \"execution\": {\n        \"status\": 0,\n        \"signal\": null,\n        \"stdout\": \"Yes{}\\n\",\n        \"stderr\": \"\"\n      },\n      \"wallMs\": 5700.383456\n    }\n  ],\n  \"inputsUnchanged\": true,\n  \"finished\": \"2026-09-22T06:48:22.787Z\"\n}\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/run.mjs": {
+      "sha256": "7c5cb6fdf186d0ae07ac5e90662429515a6f864fef7aa7f4c52186a7e5a7d5b8",
+      "text": "import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import assert from 'node:assert/strict';import {pathToFileURL} from 'node:url';import {spawnSync} from 'node:child_process';\nconst out=import.meta.dirname,project=path.resolve(out,'../../..'),host=path.join(project,'build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749'),apiFile=path.join(project,'build/phase3/final-fixedpoint/stage2.mjs'),runtime=path.join(project,'build/phase3/final-fixedpoint/runtime.mjs'),base=path.join(project,'.bootstrap/upstream/bend2/base.bend'),b1File=path.join(project,'build/phase3/native-integrated/api.mjs');\nconst hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'),digest=text=>crypto.createHash('sha256').update(text).digest('hex');\nprocess.env.BEND_TYPED_API=apiFile;process.env.BEND_TYPED_RUNTIME=runtime;process.env.BEND_BASE=base;\nconst proof=path.join(project,'build/phase3/final-fixedpoint/report.json');fs.copyFileSync(proof,path.join(out,'proof-at-start.json'));\nassert.equal(hash(apiFile),'360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de');assert.equal(hash(runtime),'26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b');\nconst positive=path.join(project,'tests/conformance/typed-smoke/base-u32.bend'),invalid=path.join(project,'tests/conformance/typed-smoke/bad-type.bend'),dependent=path.join(out,'dependent.bend');\nfs.writeFileSync(dependent,'import Base\\n\\ntype B is Data:\\n  Yes{}\\n  No{}\\nlaw poly:\\n  for -A: Type\\n  for x: A\\n  A\\ndef poly(A, x):\\n  x\\ndef main() -> B:\\n  poly(B, Yes{})\\n');\nconst walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);\nconst inputs=[apiFile,runtime,base,b1File,positive,invalid,dependent,import.meta.filename,...walk(host),...walk(path.join(project,'src/runtime/native'))];\nconst inputsBefore=Object.fromEntries(inputs.map(file=>[file,hash(file)]));\nconst report={kind:'phase3-provisional-stage2-smoke',started:new Date().toISOString(),cpu:0,node:{version:process.version,executable:process.execPath,sha256:hash(process.execPath),args:process.execArgv},scope:'Selected routes through actual self-emitted stage2 and frozen host. Stage3 proof still independent; no fabricated completed self-host proof. B1 exact diagnostic/C oracle is the checked integration artifact, not live handwritten TypeScript.',proofAtStart:{file:path.join(out,'proof-at-start.json'),sha256:hash(path.join(out,'proof-at-start.json'))},inputs:inputsBefore,environment:Object.fromEntries(['CC','CPATH','LIBRARY_PATH','LD_LIBRARY_PATH'].map(k=>[k,process.env[k]])),complete:false,rows:[]};\nconst save=()=>fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\\n');save();\nconst D=await import(pathToFileURL(path.join(host,'typed-driver.mjs'))),api=await D.loadApi(),b1=(await import(pathToFileURL(b1File))).default;\nconst {buildNative}=await import(pathToFileURL(path.join(host,'native-build.mjs')));\nasync function check(name,fn){const row={name,passed:false},start=performance.now();report.rows.push(row);save();try{Object.assign(row,await fn());row.passed=true;}catch(e){row.error=e.stack;throw e;}finally{row.wallMs=performance.now()-start;save();console.log(name+': '+(row.passed?'pass':'FAIL'));}}\nfunction nativeExecute(compiled,name,expected){const cFile=path.join(out,name+'.c'),binary=path.join(out,name);fs.writeFileSync(cFile,compiled.code);const built=buildNative({source:compiled.code,file:cFile,binary,target:'cpu',timeoutMs:30000});assert.equal(built.status,'ok',JSON.stringify(built));const result=spawnSync(binary,[],{encoding:'utf8',timeout:10000,maxBuffer:1048576});assert.equal(result.status,0,JSON.stringify(result));assert.equal(result.stdout.trim(),expected);return {code:{file:cFile,sha256:hash(cFile),bytes:Buffer.byteLength(compiled.code)},build:built,binary:{file:binary,sha256:hash(binary)},execution:{status:result.status,signal:result.signal,stdout:result.stdout,stderr:result.stderr}};}\ntry{\n await check('dependent-erased-native-context',async()=>{const expected=await D.inspect(dependent,{api:b1,mode:'native'}),actual=await D.inspect(dependent,{api,mode:'native'});assert.equal(actual.status,'ok',JSON.stringify(actual));assert.equal(expected.status,'ok',JSON.stringify(expected));assert.equal(actual.code,expected.code);return {exactB1C:true,b1CodeSha256:digest(expected.code),...nativeExecute(actual,'dependent','Yes{}')};});\n report.inputsUnchanged=Object.entries(inputsBefore).every(([file,expected])=>hash(file)===expected);assert.equal(report.inputsUnchanged,true);report.complete=true;\n}catch(e){report.error=e.stack;process.exitCode=1;}finally{report.finished=new Date().toISOString();save();}\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/stdout.log": {
+      "sha256": "2a45269e7fbde403e171363d2762d5d37d335a68ab4aa3a2ac3cc36b1663e1e1",
+      "text": "dependent-erased-native-context: pass\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "text": ""
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/dependent.bend": {
+      "sha256": "54fd6f355363d35960bfe0a94cd64a9287f662f97fb32bb15008eb0d94d1424b",
+      "text": "import Base\n\ntype B is Data:\n  Yes{}\n  No{}\nlaw poly:\n  for -A: Type\n  for x: A\n  A\ndef poly(A, x):\n  x\ndef main() -> B:\n  poly(B, Yes{})\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/stage2-integration-dependent/proof-at-start.json": {
+      "sha256": "331757325ec12b47b768ed298cf7b5415132125309817c900e5cd0d2d6708f7a",
+      "text": "{\n  \"started\": \"2026-09-22T06:11:21.581Z\",\n  \"source\": \"/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend\",\n  \"sourceIdentity\": {\n    \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend\",\n    \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend\",\n    \"sha256\": \"936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772\"\n  },\n  \"sourceSha256\": \"936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772\",\n  \"runtimeSha256\": \"26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b\",\n  \"base\": {\n    \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend\",\n    \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend\",\n    \"sha256\": \"b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946\"\n  },\n  \"hostHelpers\": [\n    {\n      \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/compiler-abi.mjs\",\n      \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/compiler-abi.mjs\",\n      \"sha256\": \"0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454\"\n    },\n    {\n      \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/node-resource-args.mjs\",\n      \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/node-resource-args.mjs\",\n      \"sha256\": \"6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758\"\n    },\n    {\n      \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/native-build.mjs\",\n      \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/native-build.mjs\",\n      \"sha256\": \"ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb\"\n    },\n    {\n      \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/assemble.mjs\",\n      \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/assemble.mjs\",\n      \"sha256\": \"f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75\"\n    }\n  ],\n  \"initialCompiler\": {\n    \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs\",\n    \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs\",\n    \"sha256\": \"8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923\"\n  },\n  \"driver\": {\n    \"file\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed-driver.mjs\",\n    \"canonicalPath\": \"/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749/typed-driver.mjs\",\n    \"sha256\": \"b8f7ef8bb2077c14518914aa5a9b88c73e2e6728799b84ec273802f732515951\"\n  },\n  \"stages\": [\n    {\n      \"compiler\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs\",\n      \"compilerSha256\": \"8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923\",\n      \"output\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs\",\n      \"nodeArgs\": [\n        \"--stack-size=4096\",\n        \"--max-old-space-size=12288\"\n      ],\n      \"code\": 0,\n      \"signal\": null,\n      \"ms\": 704229,\n      \"inputsVerified\": true,\n      \"outputSha256\": \"360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de\"\n    }\n  ],\n  \"complete\": false,\n  \"resourceConfiguration\": {\n    \"node\": \"v24.18.0\",\n    \"nodeArgs\": [\n      \"--stack-size=4096\",\n      \"--max-old-space-size=12288\"\n    ],\n    \"osStackKB\": \"8192\",\n    \"timeoutMs\": 5400000\n  },\n  \"requestedStages\": [\n    2,\n    3\n  ],\n  \"validationPolicy\": {\n    \"required\": [\n      2,\n      3\n    ],\n    \"optionalRepeat\": false,\n    \"condition\": \"Stage2 and its checked self-emission stage3 must be byte-identical for the same frozen source.\"\n  },\n  \"currentStage\": {\n    \"compiler\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage2.mjs\",\n    \"output\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/stage3.mjs\",\n    \"nodeArgs\": [\n      \"--stack-size=4096\",\n      \"--max-old-space-size=12288\"\n    ],\n    \"started\": \"2026-09-22T06:23:05.894Z\"\n  }\n}\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/base-u32.bend": {
+      "sha256": "5a2d51d91c8bf26594d03f438de453e8ad8dc9f9ddcdfd3f28d8e3f1651bcb22",
+      "text": "import Base\n\ndef main() -> U32:\n  42\n#|42\n"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/conformance/typed-smoke/bad-type.bend": {
+      "sha256": "51d521f86978792ac5402a922777990733761e67a8a0b4fc6b537e843bdb55c3",
+      "text": "type Bit is Data:\n  Off{}\n  On{}\n\ndef main() -> Bit:\n  Type\n"
+    }
+  },
+  "reproduction": {
+    "command": "CC=CLANG16 CPATH=CLANG_INCLUDE LD_LIBRARY_PATH=CLANG_LIB LIBRARY_PATH=CLANG_LIB timeout --signal=TERM --kill-after=5s 90s taskset -c 0 node --stack-size=4096 --max-old-space-size=4096 RUNNER.mjs > stdout.log 2> stderr.log",
+    "sourceSnapshots": "Each run.mjs is retained above; use a fresh build directory at the same depth or adjust its project path. Both import the unchanged frozen host.",
+    "limits": "Original main supervisor180s. Corrected-control launch accidentally specified90000 seconds instead of90; it completed in5.7s. Inner native compiler30s and executable10s timeouts applied. Reproduction command corrects the outer bound."
+  }
+}

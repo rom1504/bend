@@ -1,0 +1,3172 @@
+{
+  "kind": "phase3-final-frontend-archive",
+  "scope": "All pinned parse/check probes, serial persistent workers; exact observations and diagnostics retained. Workflow wall observations only, not a repeated paired performance benchmark or full-language conformance.",
+  "apiSha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",
+  "sourceSha256": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772",
+  "runtimeSha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+  "host": "/home/ai/bend2/build/publish/bend/selfhost/build/conformance-host/2b692463e833d36a96edba2adf3ceb53b7f1432dbcb42803ddebb779d7df1749",
+  "resources": {
+    "workerMode": "persistent",
+    "jobs": 1,
+    "stackKb": 4096,
+    "heapMb": 4096,
+    "rssLimitMb": 4096,
+    "recycleAfter": 64,
+    "timeoutMs": 300000,
+    "timeoutReason": "Matches established final phase2 frontend timeout to avoid changing the verdict deadline."
+  },
+  "cpu": 2,
+  "fixtureCount": 1378,
+  "probeCountPerCompiler": 2756,
+  "workflowMilliseconds": {
+    "candidate": 1228644.0,
+    "upstream": 237196.0
+  },
+  "inputsUnchanged": true,
+  "cacheUnchangedSinceRecordedObservation": true,
+  "existingBaseCache": {
+    "kind": "frontend-workflow-cache-observation",
+    "observedAt": "2026-09-22T06:27:25.513972+00:00",
+    "runStarted": "2026-09-22T06:24:25.128Z",
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/cache/base-8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json",
+    "exists": true,
+    "scope": "Observed after sweep launch; on-disk metadata and stored generation time distinguish an existing validated cache from a measured cold-cache preparation. No cold-cache timing claim.",
+    "sha256": "7ab755bdbbd5d2df50d9f18e10a158a028f3061f651d4cb5479a737e94252acb",
+    "modifiedAt": "2026-09-22T06:12:08.210909+00:00",
+    "storedGenerated": "2026-09-22T06:12:08.135Z",
+    "validatedBy": "check_book",
+    "compilerSha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",
+    "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1"
+  },
+  "summaries": {
+    "candidate": {
+      "tests": 1378,
+      "allTests": 1378,
+      "externalTests": 0,
+      "excludedTests": 0,
+      "probes": 2756,
+      "statuses": {
+        "observed": 459,
+        "pass": 1920,
+        "fail": 377
+      },
+      "lanes": {
+        "parse": {
+          "observed": 459,
+          "pass": 919
+        },
+        "check": {
+          "pass": 1001,
+          "fail": 377
+        }
+      },
+      "namespaces": {
+        "base": {
+          "observed": 4,
+          "pass": 50
+        },
+        "check": {
+          "pass": 180,
+          "observed": 146,
+          "fail": 116
+        },
+        "compile": {
+          "pass": 191,
+          "observed": 10,
+          "fail": 9
+        },
+        "comptime": {
+          "pass": 56,
+          "observed": 22,
+          "fail": 22
+        },
+        "cost": {
+          "pass": 8,
+          "observed": 1,
+          "fail": 1
+        },
+        "eval": {
+          "observed": 4,
+          "fail": 1,
+          "pass": 73
+        },
+        "flatten": {
+          "pass": 375,
+          "observed": 54,
+          "fail": 51
+        },
+        "gfx": {
+          "pass": 8
+        },
+        "grade": {
+          "pass": 6,
+          "observed": 15,
+          "fail": 13
+        },
+        "halt": {
+          "pass": 42,
+          "observed": 26,
+          "fail": 2
+        },
+        "import": {
+          "pass": 28,
+          "observed": 14,
+          "fail": 14
+        },
+        "io": {
+          "pass": 195,
+          "observed": 16,
+          "fail": 7
+        },
+        "page": {
+          "observed": 19,
+          "fail": 17,
+          "pass": 10
+        },
+        "parse": {
+          "pass": 165,
+          "observed": 63,
+          "fail": 60
+        },
+        "printer": {
+          "pass": 14
+        },
+        "proof": {
+          "pass": 90,
+          "observed": 33,
+          "fail": 33
+        },
+        "reg": {
+          "pass": 176,
+          "observed": 5,
+          "fail": 5
+        },
+        "rfc": {
+          "pass": 18
+        },
+        "run": {
+          "observed": 6,
+          "fail": 5,
+          "pass": 139
+        },
+        "show": {
+          "pass": 16
+        },
+        "spec": {
+          "observed": 13,
+          "fail": 13,
+          "pass": 4
+        },
+        "state": {
+          "pass": 16,
+          "observed": 8,
+          "fail": 8
+        },
+        "stats": {
+          "pass": 10
+        },
+        "stuck": {
+          "pass": 50
+        }
+      },
+      "checkerRejections": 81,
+      "frontendRejections": 0,
+      "uncheckedExecutions": 0
+    },
+    "upstream": {
+      "tests": 1378,
+      "allTests": 1378,
+      "externalTests": 0,
+      "excludedTests": 0,
+      "probes": 2756,
+      "statuses": {
+        "observed": 459,
+        "pass": 2294,
+        "fail": 3
+      },
+      "lanes": {
+        "parse": {
+          "observed": 459,
+          "pass": 919
+        },
+        "check": {
+          "pass": 1375,
+          "fail": 3
+        }
+      },
+      "namespaces": {
+        "base": {
+          "observed": 4,
+          "pass": 50
+        },
+        "check": {
+          "pass": 295,
+          "observed": 146,
+          "fail": 1
+        },
+        "compile": {
+          "pass": 200,
+          "observed": 10
+        },
+        "comptime": {
+          "pass": 78,
+          "observed": 22
+        },
+        "cost": {
+          "pass": 9,
+          "observed": 1
+        },
+        "eval": {
+          "observed": 4,
+          "pass": 74
+        },
+        "flatten": {
+          "pass": 426,
+          "observed": 54
+        },
+        "gfx": {
+          "pass": 8
+        },
+        "grade": {
+          "pass": 19,
+          "observed": 15
+        },
+        "halt": {
+          "pass": 44,
+          "observed": 26
+        },
+        "import": {
+          "pass": 42,
+          "observed": 14
+        },
+        "io": {
+          "pass": 201,
+          "observed": 16,
+          "fail": 1
+        },
+        "page": {
+          "observed": 19,
+          "pass": 27
+        },
+        "parse": {
+          "pass": 225,
+          "observed": 63
+        },
+        "printer": {
+          "pass": 14
+        },
+        "proof": {
+          "pass": 123,
+          "observed": 33
+        },
+        "reg": {
+          "pass": 180,
+          "observed": 5,
+          "fail": 1
+        },
+        "rfc": {
+          "pass": 18
+        },
+        "run": {
+          "observed": 6,
+          "pass": 144
+        },
+        "show": {
+          "pass": 16
+        },
+        "spec": {
+          "observed": 13,
+          "pass": 17
+        },
+        "state": {
+          "pass": 24,
+          "observed": 8
+        },
+        "stats": {
+          "pass": 10
+        },
+        "stuck": {
+          "pass": 50
+        }
+      },
+      "checkerRejections": 273,
+      "frontendRejections": 182,
+      "uncheckedExecutions": 0
+    }
+  },
+  "workerStats": {
+    "candidate": [
+      {
+        "stats": {
+          "starts": 44,
+          "requests": 2756,
+          "recycles": 43,
+          "timeouts": 0,
+          "failures": 0,
+          "maxRssBytes": 787996672
+        },
+        "errors": []
+      }
+    ],
+    "upstream": [
+      {
+        "stats": {
+          "starts": 44,
+          "requests": 2756,
+          "recycles": 43,
+          "timeouts": 0,
+          "failures": 0,
+          "maxRssBytes": 478343168
+        },
+        "errors": []
+      }
+    ]
+  },
+  "newHistoricalCandidateObservations": 0,
+  "newHistoricalReferenceObservations": 0,
+  "newLiveMismatches": 0,
+  "resolvedLiveMismatches": 0,
+  "existingMismatches": 560,
+  "mismatchesByLane": {
+    "check": 375,
+    "parse": 185
+  },
+  "all1378CheckAcceptanceStatusesAgree": true,
+  "checkStatusesBoth": {
+    "ok": 921,
+    "error": 457
+  },
+  "mismatchClassification": {
+    "parseAcceptanceStatus": 20,
+    "rejectionPhase": 30,
+    "exactDiagnosticOrReport": 510
+  },
+  "mismatchIndex": [
+    {
+      "probe": "check/array_boxed_default.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_boxed_default.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_default_distinct.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_default_distinct.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_default_linear.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_default_linear.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_element_data.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_element_data.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_get_copy.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_get_copy.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_get_neutral.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_get_neutral.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_get_word_only.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_get_word_only.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_literal_capacity.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_literal_capacity.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_literal_mismatch.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_literal_mismatch.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_never_copyable.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_never_copyable.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_not_data.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_not_data.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_set_neutral_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_set_neutral_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_set_neutral_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/array_set_neutral_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/axiom_runtime_capture.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/beta_ann_lambda.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/binder_name_capture.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/book_prefix_arity.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/book_prefix_arity.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/bool_one_way.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/bool_word_bridge.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/buffer_word_range.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/buffer_word_range.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/canonical_ref_conversion.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/capture_soundness.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/chained_switch_conflation_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/chained_switch_conflation_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/chained_switch_conflation_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/chained_switch_conflation_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/comp_splice_tuple_goal.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/comp_splice_tuple_goal.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/computed_match_split.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/computed_match_split.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/cons_tail_mismatch.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/cop_adt_param_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/cop_ctr_field_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/cop_dead_hypothesis_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/cop_field_formation.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/cop_foreign_fill_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/cop_forged_lock_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/cop_inline_witness_002.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/cop_let_formation.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/cop_plain_domain_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/ctor_shared_tag.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/ctor_shared_tag.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/ctr_of_datatype.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/data_cycle_poison.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/data_self_ref.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/data_table_checked_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/data_table_checked_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/data_table_checked_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/dec_switch_respell_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/dec_switch_respell_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/dec_switch_respell_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/dec_switch_respell_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/default_arm_family.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/dependent_switch_induction.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/dependent_switch_induction.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/do_missing_bind.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/do_missing_bind.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/efq_erased_binder_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/either_data_wall.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/erased_binder_use.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/erased_field_conversion.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/erased_local_live_use.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/erased_local_match_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/erased_local_match_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/erased_match_ctor.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/erased_match_empty.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/erased_match_numeric.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/erased_match_numeric.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/error_window_assert_exists.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/error_window_filled_param_use.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/error_window_inline_exists.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/error_window_match_missing.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/error_window_match_repeated.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/error_window_param_use.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/error_window_rewrite_proof.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/error_window_stuck_app_kind.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/family_head_bare.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/field_type_bound.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/fits_app_invariant.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/fits_rfl_kind.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/float_builtin_arg.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/float_literal_type.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/float_match_scrutinee.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/float_no_mod.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/float_no_mod.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/forward_data_table.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/fuel_inline_dep_match.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/fuel_inline_dep_match.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/hoas_alpha_capture.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/hole_named.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/hole_todo.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/hurkens_paradox.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/lambda_single_use.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/let_lambda_twice.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/list_map_conversion.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/list_map_conversion.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/list_not_array.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/list_not_array.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/match_as_specialize.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/match_as_specialize.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/meet_charges_its_operands.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/meet_stuck_pending_ref.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/missing_ih_rewrite.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/monad_do_destructure.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/monad_do_destructure.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/motive_suffix_join.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/motive_suffix_join.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/nat_literal_import.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/nat_literal_pattern_arity.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/nat_literal_pattern_arity.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/nat_literal_pattern_empty.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/nat_literal_pattern_empty.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/negative_data_field_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/negative_data_reuse.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/neq_not_convertible.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/neq_qualified_capture.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/neq_reflexivity.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/nested_datatype_closure.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/nested_field_bound.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/op_bare_refused.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/op_bare_refused.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/op_brace_refused.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/op_brace_refused.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/op_ns_call_arg.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/op_ns_call_arg.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/operator_chain_linear.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/pair_data_wall.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/quant_tag_conversion_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/quant_tag_conversion_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/relation_install_lock.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/switch_miss_guard.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/template_inst_cycle.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/template_ns_late.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/template_ns_late.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/tuple_import_required.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/typed_let_mismatch.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/undo_residual_lane.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/undo_residual_lane.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/unit_ctor_mismatch.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/unit_ctor_mismatch.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/unit_paren_sugar.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/unit_paren_sugar.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/usage_counts_source.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "check/wrap_not_successor.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/array_oob_access.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/array_oob_access.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/array_padding_slots.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/array_padding_slots.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/array_unboxed_default.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/array_unboxed_default.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/ctor_tag_dispatch_000.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/ctor_tag_dispatch_000.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/ctor_tag_dispatch_001.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/ctor_tag_dispatch_001.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/erasure_dead_param.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/slab_drop_recycle.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/slab_drop_recycle.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/slab_lazy_alloc.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/slab_lazy_alloc.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/slab_sparse_default.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "compile/slab_sparse_default.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/dup_lone.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_arg_type.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_capture.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_dup.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_dup.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_extra.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_extra.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_fill_short.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_fill_short.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_generic.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_grow.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_grow_double.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_head.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_head.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_late_tilde.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_late_tilde.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_later.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_later.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_law.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_law.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_leak.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_let_arg.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_match_arg.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_param_arg.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_plus_term.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_plus_term.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_runtime.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_runtime.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_untyped.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/err_untyped.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/later_def.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "comptime/wrong_type.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "cost/array_fill_readback.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "cost/array_fill_readback.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "eval/array_packed_default.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/annotated_computed_scrutinee_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/arity_mismatch_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/arity_mismatch_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/arity_mismatch_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/arity_mismatch_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/arrow_bind_error_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/arrow_bind_error_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/arrow_bind_error_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/arrow_bind_error_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/as_pattern_error.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/as_pattern_error.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/cid_pair_repr.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/cid_pair_repr.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/consumed_column_error_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/consumed_column_error_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/dead_residue_elision_003.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/dead_residue_elision_003.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/dependent_goal_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/dependent_goal_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/destructure_annotation_error.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/destructure_let_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/destructure_let_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/dup_guard_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/dup_guard_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/dup_guard_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/dup_guard_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/empty_match.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/error_window_matched_scrutinee.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/error_window_substituted_scrutinee.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/error_window_substituted_scrutinee.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/forward_reference.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/forward_reference.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/generic_type_param.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/generic_type_param.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/inline_block_error.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/inline_block_error.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/kplus_missing_case.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/kplus_missing_case.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/lambda_match_literal_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/lambda_match_literal_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/lambda_match_literal_002.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/mark_computed_optout.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/mark_computed_optout.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/match_app_scrutinee_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/match_app_scrutinee_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/named_column_alias.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/named_column_alias.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/noninfer_error_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/noninfer_error_002.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/nontotal_error_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/nontotal_error_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/nontotal_error_002.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/nontotal_error_003.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/nontotal_multi_missing.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/nontotal_multi_scrutinee_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/nontotal_multi_scrutinee_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/nontotal_multi_scrutinee_002.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/nontotal_multi_scrutinee_003.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/nontotal_multi_scrutinee_004.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/order_ban_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/order_ban_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/order_ban_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/order_ban_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/order_ban_002.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/order_ban_002.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/order_ban_003.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/order_ban_003.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/pattern_shape_mismatch.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/share_binder_syntax.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/share_binder_syntax.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/shared_param_computed_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/shared_param_computed_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/statement_beta.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/statement_beta.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/statement_lam_absorb.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/statement_lam_absorb.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/unsupported_pattern.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "flatten/unsupported_pattern.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_cast.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_closure.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_copy_paradox.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_fn_field.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_kind_tip.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_leak.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_local_grade.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_negative.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_plus_field.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_refill.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_refill.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_rewrite.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_upcast.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "grade/reject_witness.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "halt/column_order_search.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "halt/column_order_search.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "halt/contraction_growth.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/c_suffix_module.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/c_suffix_module.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/cross_file_io.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/cross_file_io.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/cross_file_proof.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/cross_file_proof.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/cycle_terminates.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/cycle_terminates.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/diamond_dedup.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/diamond_dedup.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/duplicate_name.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/duplicate_name.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/empty_neq.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/list_sugar.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/parent_segments.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/parent_segments.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/path_canonical.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/path_canonical.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/position_independent.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/position_independent.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/shadow_lib.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/shadow_lib.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/shadow_tmpl_lib.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/shadow_tmpl_lib.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/suffix_refused.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "import/suffix_refused.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "io/cbody_bare_path.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "io/cbody_bare_path.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "io/cbody_dup_effect.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "io/cbody_dup_effect.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "io/cbody_effect.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "io/cbody_effect.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "io/cbody_needs_io.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "io/cbody_needs_io.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "io/channel_send_recv.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "io/reuse_across_effect.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/ambiguous_ctor_error.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/ambiguous_ctor_error.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/arm_leaf_context.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/bool_wrap_scope.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/comp_arrow_position.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/comp_arrow_position.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/comp_param_match.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/concat_type_infer.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/context_dedup_shadow.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/ctor_list_mismatch_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/ctor_list_mismatch_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/deep_list_walk.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/empty_match_datatype.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/match_missing_ctors.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/match_missing_default.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/match_not_datatype.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/missing_cons_ctor.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/overapply_hint.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/rewrite_non_equation.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "page/unknown_constructor.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/array_count_odd.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/array_count_odd.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/array_key_range.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/array_key_range.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/array_length_power.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/array_length_power.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/bare_caret_dead.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/bare_caret_dead.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/bind_outside_do.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/bind_outside_do.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/builtin_arity_mismatch_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/chain_old_spellings_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/chain_old_spellings_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/chain_old_spellings_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/chain_old_spellings_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/comp_arrow_position.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/comp_arrow_position.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/computed_mark_nonname.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/computed_mark_nonname.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/ctor_indexed_target.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/ctor_indexed_target.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/ctor_result_annotation.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/ctor_result_annotation.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/ctor_result_arrow.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/ctor_result_arrow.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/datatype_no_is.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/datatype_no_is.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/dead_lambda_syntax.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/dead_lambda_syntax.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/dead_motive_syntax.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/dead_motive_syntax.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/def_untyped_refused.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/def_untyped_refused.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/do_bind_continuation.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/do_bind_continuation.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/do_missing_param.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/do_missing_param.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/duplicate_buffer_key.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/duplicate_buffer_key.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/duplicate_ctor_name.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/duplicate_ctor_name.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/duplicate_declaration.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/duplicate_declaration.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/expected_float_literal.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/expected_float_literal.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/float_dotted_family_dead_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/float_dotted_family_dead_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/foreign_refill.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/foreign_refill.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/gadt_result_annotation_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/gadt_result_annotation_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/gadt_result_annotation_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/gadt_result_annotation_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/gpu_mark_order.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/gpu_mark_order.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/hex_no_digits.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/hex_no_digits.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/if_no_else.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/if_no_else.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/if_statement_only.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/invalid_assign_target.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/invalid_assign_target.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/invalid_string_escape.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/invalid_string_escape.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/keyword_reserved.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/keyword_reserved.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/law_fill_arrow.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/law_fill_arrow.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/legacy_bang_statement.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/legacy_bang_statement.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/legacy_brace_datatype.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/legacy_brace_datatype.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/legacy_data_annotation.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/legacy_data_annotation.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/let_arity_mismatch.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/let_arity_mismatch.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/plus_binder_term.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/plus_binder_term.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/prefix_operator_dead.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/prefix_operator_dead.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_assert_name.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_assert_name.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_ctor_field_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_ctor_field_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_ctor_field_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_ctor_field_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_def_name_000.bend::check",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_def_name_000.bend::parse",
+      "kind": "acceptance-or-phase",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_def_name_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_def_name_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_def_name_002.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_def_name_002.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_dollar_name.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_dollar_name.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_lambda_binder.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_lambda_binder.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_let_binder_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_let_binder_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_pattern_binder.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_pattern_binder.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_pi_binder.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_pi_binder.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_type_name.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_type_name.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_type_param.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/reserved_type_param.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/rewrite_ctor_brace.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/rewrite_non_equation.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/unclosed_char_code.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/unclosed_char_code.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/unicode_forall_dead.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/unicode_forall_dead.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/unicode_lambda_dead.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/unicode_lambda_dead.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/word_overflow_literal.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "parse/word_overflow_literal.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_002.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_003.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_004.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_005.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_006.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_007.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_008.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_009.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_010.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_011.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_012.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_013.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_014.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_015.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_016.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_017.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_018.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_019.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_020.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_021.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_022.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_023.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_024.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_025.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_026.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_027.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_028.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_029.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/goal_ladder_state_030.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/match_as_binding.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/match_as_binding.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "proof/no_funext_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "reg/body_local_match.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "reg/body_local_match.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "reg/erased_local_match.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "reg/erased_local_match.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "reg/framed_cell_capture.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "reg/framed_cell_capture.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "reg/import_head.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "reg/import_head.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "run/array_bounds_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "run/array_bounds_000.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "run/array_bounds_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "run/array_bounds_001.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "run/array_slab.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "run/array_slab.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "run/array_struct_swap.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "run/array_struct_swap.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "run/binop_probe_split.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "run/binop_probe_split.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_any_term.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_capture_linear.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_capture_share.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_curried_lambda.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_erased_args.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_erased_args.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_generic_dedupe.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_generic_dedupe.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_generic_mint.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_generic_mint.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_instantiation_error.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_instantiation_error.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_late_param.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_late_param.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_let_split.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_let_split.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_mint_dedupe.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/comp_mint_dedupe.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/hypothesis_retype.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/hypothesis_retype.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/mint_count.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "spec/mint_count.bend::parse",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "state/ctor_stuck_goal.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "state/generic_args_goal.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "state/nested_call_goal_000.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "state/nested_call_goal_001.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "state/operator_goal.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "state/plain_goal.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "state/rewrite_goal.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    },
+    {
+      "probe": "state/type_family_goal.bend::check",
+      "kind": "exact-diagnostic-or-report",
+      "existedInPhase2": true
+    }
+  ],
+  "reports": {
+    "candidate": {
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/frontend-final/candidate.json",
+      "sourceSha256": "2ee11c1c654a6d0669373e11a9342d202dfb0670c252a9ca283927a126c92012",
+      "archive": "frontend-final-candidate.json.gz",
+      "archiveSha256": "046a72f1c3d55f4048afc2a8b5327c76c83dedb3980a2831d70f3b2cc4b48731"
+    },
+    "upstream": {
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/frontend-final/upstream.json",
+      "sourceSha256": "6622cbce8e9af01ca6bed8bf77b558e9d57595f820a16977e58d0324e88d05fe",
+      "archive": "frontend-final-upstream.json.gz",
+      "archiveSha256": "c66c5ee4b9f3fe9d7f800a73e1e3e500084cb528dd7455243730fcd0942c7003"
+    },
+    "comparison": {
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/frontend-final/comparison.json",
+      "sourceSha256": "bd960c34def03ecdf81a6c5fda90814aeb385b7258f4aea9a2a9b471a06e52a5",
+      "archive": "frontend-final-comparison.json.gz",
+      "archiveSha256": "0dfec3c5241eed5b7e13f69dac079d820a32b360f567faca25079bd3337147eb"
+    }
+  },
+  "allLaneCompleteness": {
+    "candidate": false,
+    "upstream": false
+  },
+  "comparisonSourceSha256": "fa0dc5c95c428071344db9632f00b1645d07591d5f1dcc81ffee33e48fd6dd0e"
+}

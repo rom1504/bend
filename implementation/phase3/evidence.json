@@ -108,6 +108,11 @@
       "sameBytesAsB1Stage2": true,
       "outputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
       "scope": "Single CPU0 observation on same frozen source and canonical Base; no native-output fixed point."
+    },
+    "frontendWorkflow": {
+      "candidateMs": 1228644,
+      "upstreamMs": 237196,
+      "scope": "Single serial persistent sweeps on CPU2, existing validated candidate Base cache. Not a repeated paired benchmark."
     }
   },
   "validation": {
@@ -116,7 +121,7 @@
     "runtimeDemandOrder": true,
     "componentHarnessSubset": "passed",
     "fullHFixedPoint": "running on frozen combined source/API/runtime/host",
-    "fullConformance": "pending",
+    "fullConformance": "incomplete: existing exact frontend differences and unvalidated hardware/execution scopes remain",
     "nativeCacheFixture": "passed: miss/hit, included header, optimization, compiler executable, lock, corrupted binary",
     "actualClangCache": {
       "report": "implementation/phase3/evidence/native-cache-actual.json",
@@ -139,7 +144,26 @@
       ]
     },
     "nativeBuildReportTests": 21,
-    "nativeBuildReportProductionSmoke": "passed using actual cached binary"
+    "nativeBuildReportProductionSmoke": "passed using actual cached binary",
+    "currentHIntegration": {
+      "report": "implementation/phase3/evidence/stage2-integration.json",
+      "routesPassed": 6,
+      "apiSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+      "proofStatusAtMeasurement": "stage2 inputs verified; stage3 still running"
+    },
+    "fullFrontend": {
+      "report": "implementation/phase3/evidence/frontend-final-summary.json",
+      "fixtures": 1378,
+      "probesPerCompiler": 2756,
+      "candidateChangesFromPhase2": 0,
+      "referenceChangesFromPriorPin": 0,
+      "checkStatusAgreements": 1378,
+      "existingCrossCompilerMismatches": 560,
+      "candidateFixtureFailures": 377,
+      "upstreamFixtureFailures": 3,
+      "workerFailures": 0,
+      "inputsUnchanged": true
+    }
   },
   "integratedCandidate": {
     "apiSha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",

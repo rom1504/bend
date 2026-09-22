@@ -82,7 +82,12 @@
     "fullHFixedPoint": "running on frozen combined source/API/runtime/host",
     "fullConformance": "pending",
     "nativeCacheFixture": "passed: miss/hit, included header, optimization, compiler executable, lock, corrupted binary",
-    "actualClangCache": "running with repository-local Clang16",
+    "actualClangCache": {
+      "report": "implementation/phase3/evidence/native-cache-actual.json",
+      "complete": true,
+      "sameBinaryAndOutput": true,
+      "observedHeaders": 157
+    },
     "diagnosticExactAssertions": 204,
     "persistentAndTargetedTests": 19,
     "components": {

@@ -1,0 +1,1170 @@
+{
+  "kind": "phase3-real-clang-cache-validation",
+  "cpu": 2,
+  "node": "v24.18.0",
+  "started": "2026-09-22T06:20:38.150Z",
+  "complete": true,
+  "scope": "One checked Bend borrow/fork lifetime program; actual Clang O1 miss/hit correctness and reuse, not whole-compiler performance. Native cache remains host-local, not hermetic.",
+  "checkedEmission": {
+    "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-suite2/runtime-regressions/report.json",
+    "reportSha256": "b97e97c8210aae313dca6e50c833ea86153dd741b92ee6d61e19d8ee53ee6e76",
+    "input": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/reg/borrow_fork_hold.bend",
+    "inputSha256": "729a440eb3276a7ca5d000bbd926e11c14f1acbe94432d13b08daea6ed817251",
+    "checked": true,
+    "originalCompileSupervision": {
+      "status": "error",
+      "phase": "compile",
+      "diagnostic": "spawnSync /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16 EPERM",
+      "exitCode": 0,
+      "checked": true,
+      "verdict": "All terms check.\n"
+    },
+    "originalC": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-suite2/runtime-regressions/reg-borrow_fork_hold.bend-native/program.c",
+    "cSha256": "78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613",
+    "copiedC": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c"
+  },
+  "environment": {
+    "CC": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+    "LD_LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+    "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+    "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include"
+  },
+  "identities": {
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/run.mjs": "3b6ab59db83c2de4cac031f89f64f004695b683d10ecee8ae525ae3c4e49e0fb",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c": "78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-suite2/runtime-regressions/reg-borrow_fork_hold.bend-native/program.c": "78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/reg/borrow_fork_hold.bend": "729a440eb3276a7ca5d000bbd926e11c14f1acbe94432d13b08daea6ed817251",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-suite2/runtime-regressions/report.json": "b97e97c8210aae313dca6e50c833ea86153dd741b92ee6d61e19d8ee53ee6e76",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-compiler-cache.mjs": "682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+  },
+  "commands": [
+    {
+      "id": "compiler-version",
+      "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+      "args": [
+        "--version"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "milliseconds": 24.257334,
+      "stdout": "Debian clang version 16.0.6 (15~deb11u2)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin\n",
+      "stderr": ""
+    },
+    {
+      "id": "headers",
+      "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+      "args": [
+        "-std=c11",
+        "-O1",
+        "-M",
+        "-MF",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/dependencies.d",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "milliseconds": 53.192417000000006,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "miss",
+      "command": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "args": [
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-compiler-cache.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/miss",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/cache",
+        "--opt=O1",
+        "--timeout-ms=60000"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "milliseconds": 1875.2670050000002,
+      "stdout": "{\"kind\":\"native-content-addressed-build\",\"version\":2,\"started\":\"2026-09-22T06:20:38.333Z\",\"complete\":true,\"cacheHit\":false,\"input\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c\",\"inputSha256\":\"78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613\",\"output\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/miss\",\"cacheRoot\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/cache\",\"optimization\":\"O1\",\"timeoutMs\":60000,\"plan\":{\"target\":\"cpu\",\"gpu\":false,\"bangs\":0,\"args\":[\"-std=c11\",\"-O3\",\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c\",\"-lpthread\",\"-lm\",\"-o\",\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/miss\"],\"deviceArgs\":null},\"cachePlan\":{\"target\":\"cpu\",\"gpu\":false,\"bangs\":0,\"args\":[\"-std=c11\",\"-O1\",\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c\",\"-lpthread\",\"-lm\",\"-o\",\"$OUTPUT\"],\"deviceArgs\":null},\"toolSha256\":\"ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb\",\"cacheToolSha256\":\"682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01\",\"scope\":\"Host-local cache. Preprocessed headers, C bytes, compiler executable and full version are identified. System linker and libraries must remain stable; this is not a hermetic toolchain. Bend checking and emission are separate required artifacts.\",\"compiler\":{\"command\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang\",\"version\":\"Debian clang version 16.0.6 (15~deb11u2)\\nTarget: x86_64-pc-linux-gnu\\nThread model: posix\\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin\",\"executableSha256\":\"8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2\"},\"preprocessMs\":80.78451900000002,\"key\":\"f5d124db2fb3943af9d882260b94fcb958003362829d6824c7b9dc2c57a6ae07\",\"preprocessedSha256\":\"6631dda41ecfeb6fcaaca449f6c3ed609195128739c566cdb7ef05818c423d1f\",\"environment\":{\"PATH\":\"/home/ai/.deno/bin:/home/ai/.elan/bin:/home/ai/.local/bin:/home/ai/.cargo/bin:/home/ai/.local/bin:/home/ai/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games\",\"CPATH\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include\",\"C_INCLUDE_PATH\":null,\"CPLUS_INCLUDE_PATH\":null,\"OBJC_INCLUDE_PATH\":null,\"LIBRARY_PATH\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu\",\"SDKROOT\":null,\"MACOSX_DEPLOYMENT_TARGET\":null,\"SOURCE_DATE_EPOCH\":null},\"compileMs\":1573.0578830000002,\"args\":[\"-std=c11\",\"-O1\",\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c\",\"-lpthread\",\"-lm\",\"-o\",\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/cache/.build-2DLSZt/compiler\"],\"stdout\":\"\",\"stderr\":\"\",\"record\":{\"key\":\"f5d124db2fb3943af9d882260b94fcb958003362829d6824c7b9dc2c57a6ae07\",\"identity\":{\"version\":2,\"sourceSha256\":\"78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613\",\"preprocessedSha256\":\"6631dda41ecfeb6fcaaca449f6c3ed609195128739c566cdb7ef05818c423d1f\",\"optimization\":\"O1\",\"plan\":{\"target\":\"cpu\",\"gpu\":false,\"bangs\":0,\"args\":[\"-std=c11\",\"-O1\",\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c\",\"-lpthread\",\"-lm\",\"-o\",\"$OUTPUT\"],\"deviceArgs\":null},\"compiler\":{\"command\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang\",\"version\":\"Debian clang version 16.0.6 (15~deb11u2)\\nTarget: x86_64-pc-linux-gnu\\nThread model: posix\\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin\",\"executableSha256\":\"8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2\"},\"toolSha256\":\"ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb\",\"cacheToolSha256\":\"682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01\",\"environment\":{\"PATH\":\"/home/ai/.deno/bin:/home/ai/.elan/bin:/home/ai/.local/bin:/home/ai/.cargo/bin:/home/ai/.local/bin:/home/ai/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games\",\"CPATH\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include\",\"C_INCLUDE_PATH\":null,\"CPLUS_INCLUDE_PATH\":null,\"OBJC_INCLUDE_PATH\":null,\"LIBRARY_PATH\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu\",\"SDKROOT\":null,\"MACOSX_DEPLOYMENT_TARGET\":null,\"SOURCE_DATE_EPOCH\":null},\"platform\":\"linux\",\"arch\":\"x64\"},\"binarySha256\":\"5b7de3480313830ef2cf77b44d965adbbd766819a110798c8dc42464fd7927e9\",\"created\":\"2026-09-22T06:20:40.103Z\"},\"binarySha256\":\"5b7de3480313830ef2cf77b44d965adbbd766819a110798c8dc42464fd7927e9\",\"finished\":\"2026-09-22T06:20:40.153Z\"}\n",
+      "stderr": ""
+    },
+    {
+      "id": "run-miss",
+      "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/miss",
+      "args": [],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "milliseconds": 2.8558109999999033,
+      "stdout": "2003000\n",
+      "stderr": ""
+    },
+    {
+      "id": "hit",
+      "command": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "args": [
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-compiler-cache.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/hit",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/cache",
+        "--opt=O1",
+        "--timeout-ms=60000"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "milliseconds": 237.93964799999958,
+      "stdout": "{\"kind\":\"native-content-addressed-build\",\"version\":2,\"started\":\"2026-09-22T06:20:40.214Z\",\"complete\":true,\"cacheHit\":true,\"input\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c\",\"inputSha256\":\"78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613\",\"output\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/hit\",\"cacheRoot\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/cache\",\"optimization\":\"O1\",\"timeoutMs\":60000,\"plan\":{\"target\":\"cpu\",\"gpu\":false,\"bangs\":0,\"args\":[\"-std=c11\",\"-O3\",\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c\",\"-lpthread\",\"-lm\",\"-o\",\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/hit\"],\"deviceArgs\":null},\"cachePlan\":{\"target\":\"cpu\",\"gpu\":false,\"bangs\":0,\"args\":[\"-std=c11\",\"-O1\",\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c\",\"-lpthread\",\"-lm\",\"-o\",\"$OUTPUT\"],\"deviceArgs\":null},\"toolSha256\":\"ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb\",\"cacheToolSha256\":\"682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01\",\"scope\":\"Host-local cache. Preprocessed headers, C bytes, compiler executable and full version are identified. System linker and libraries must remain stable; this is not a hermetic toolchain. Bend checking and emission are separate required artifacts.\",\"compiler\":{\"command\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang\",\"version\":\"Debian clang version 16.0.6 (15~deb11u2)\\nTarget: x86_64-pc-linux-gnu\\nThread model: posix\\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin\",\"executableSha256\":\"8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2\"},\"preprocessMs\":80.603212,\"key\":\"f5d124db2fb3943af9d882260b94fcb958003362829d6824c7b9dc2c57a6ae07\",\"preprocessedSha256\":\"6631dda41ecfeb6fcaaca449f6c3ed609195128739c566cdb7ef05818c423d1f\",\"environment\":{\"PATH\":\"/home/ai/.deno/bin:/home/ai/.elan/bin:/home/ai/.local/bin:/home/ai/.cargo/bin:/home/ai/.local/bin:/home/ai/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games\",\"CPATH\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include\",\"C_INCLUDE_PATH\":null,\"CPLUS_INCLUDE_PATH\":null,\"OBJC_INCLUDE_PATH\":null,\"LIBRARY_PATH\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu\",\"SDKROOT\":null,\"MACOSX_DEPLOYMENT_TARGET\":null,\"SOURCE_DATE_EPOCH\":null},\"record\":{\"key\":\"f5d124db2fb3943af9d882260b94fcb958003362829d6824c7b9dc2c57a6ae07\",\"identity\":{\"version\":2,\"sourceSha256\":\"78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613\",\"preprocessedSha256\":\"6631dda41ecfeb6fcaaca449f6c3ed609195128739c566cdb7ef05818c423d1f\",\"optimization\":\"O1\",\"plan\":{\"target\":\"cpu\",\"gpu\":false,\"bangs\":0,\"args\":[\"-std=c11\",\"-O1\",\"/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c\",\"-lpthread\",\"-lm\",\"-o\",\"$OUTPUT\"],\"deviceArgs\":null},\"compiler\":{\"command\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang\",\"version\":\"Debian clang version 16.0.6 (15~deb11u2)\\nTarget: x86_64-pc-linux-gnu\\nThread model: posix\\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin\",\"executableSha256\":\"8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2\"},\"toolSha256\":\"ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb\",\"cacheToolSha256\":\"682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01\",\"environment\":{\"PATH\":\"/home/ai/.deno/bin:/home/ai/.elan/bin:/home/ai/.local/bin:/home/ai/.cargo/bin:/home/ai/.local/bin:/home/ai/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games\",\"CPATH\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include\",\"C_INCLUDE_PATH\":null,\"CPLUS_INCLUDE_PATH\":null,\"OBJC_INCLUDE_PATH\":null,\"LIBRARY_PATH\":\"/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu\",\"SDKROOT\":null,\"MACOSX_DEPLOYMENT_TARGET\":null,\"SOURCE_DATE_EPOCH\":null},\"platform\":\"linux\",\"arch\":\"x64\"},\"binarySha256\":\"5b7de3480313830ef2cf77b44d965adbbd766819a110798c8dc42464fd7927e9\",\"created\":\"2026-09-22T06:20:40.103Z\"},\"binarySha256\":\"5b7de3480313830ef2cf77b44d965adbbd766819a110798c8dc42464fd7927e9\",\"finished\":\"2026-09-22T06:20:40.395Z\"}\n",
+      "stderr": ""
+    },
+    {
+      "id": "run-hit",
+      "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/hit",
+      "args": [],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "milliseconds": 2.3357420000002094,
+      "stdout": "2003000\n",
+      "stderr": ""
+    }
+  ],
+  "compilerVersion": "Debian clang version 16.0.6 (15~deb11u2)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin\n",
+  "headers": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+      "sha256": "78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/stdint.h",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/stdint.h",
+      "sha256": "217b5f30a428cb15c1580735c9ca8b2e4d7db3624bfb294a2a8a3e62872ebe9d"
+    },
+    {
+      "file": "/usr/include/stdint.h",
+      "canonicalPath": "/usr/include/stdint.h",
+      "sha256": "1053c4020a8656922a2c2107228a43f1b889be46864f9b82b364ca67ee13b7a9"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h",
+      "sha256": "42053eaf4d2751e7be1cc8342f4c1c7404a6670c330ca493b7e884b20d6c1747"
+    },
+    {
+      "file": "/usr/include/features.h",
+      "canonicalPath": "/usr/include/features.h",
+      "sha256": "981a26a502075c066b75617ea8db7623f98935b035e470833c46e53f1dea4e2b"
+    },
+    {
+      "file": "/usr/include/stdc-predef.h",
+      "canonicalPath": "/usr/include/stdc-predef.h",
+      "sha256": "64fdf694f7b3d51ec6c45c06dcb71ebbe9455742d3ea673012016668853d3bff"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/sys/cdefs.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/sys/cdefs.h",
+      "sha256": "3cc074d3fb0761b678ab4d2a6108b5eb02b9b29341e0bae6a0755cfbbd69cf1f"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/wordsize.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/wordsize.h",
+      "sha256": "716d8459074e2a082d65a28192b32eddbfd7587348372395b1c283a723ae4c18"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/long-double.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/long-double.h",
+      "sha256": "1d92fbb09acd8375debde9c0b4c6dd3e38d096d27159e32a537e3742f6b2cc25"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/gnu/stubs.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/gnu/stubs.h",
+      "sha256": "ef444295a0a9e8f5c40918399a00cc91ba0bd79774110cdf6e652baa6cfadb2e"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/gnu/stubs-64.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/gnu/stubs-64.h",
+      "sha256": "bae35edf2e1f5c08d88ff8a5b839e951c42839b855894751efdf94ae69cc0814"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types.h",
+      "sha256": "69454c580d77b06559520ed59cd14551d626cb494fcf5fd95a29144d79b2538b"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/timesize.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/timesize.h",
+      "sha256": "9c1a1a3517fe96894cf4e09cd362c999faac951caf8e70c3c579506a777b522b"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/typesizes.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/typesizes.h",
+      "sha256": "dd38f16bed43eda106684d2af8b57af4373814fd1c4404b37302fdefde7be2e0"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/time64.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/time64.h",
+      "sha256": "14312d2bcdc321b6691ef167e4768124d9af1ace8bac0142eb1159fac5a1b3b7"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/wchar.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/wchar.h",
+      "sha256": "43a321c5d22bfb678fcee382298c125e272ad21d05e55a2efea8e36f2a1e5cc0"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/stdint-intn.h",
+      "sha256": "c29565a4c6cdbe6134a46ac42d882b5f1c1dadd335657b43e0155d5f235b5a86"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h",
+      "sha256": "14a8f967badbfc7633134ff1d5ebe45bc7398bb7d0baceda8de6e23235b38ee7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/stdbool.h",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/stdbool.h",
+      "sha256": "a50ba3d832c0bb4faa973612a8c9114a7aa128a2e0a7753b32488860cfa1753d"
+    },
+    {
+      "file": "/usr/include/math.h",
+      "canonicalPath": "/usr/include/math.h",
+      "sha256": "f4d15c65048a9a4b5be4de461f17cb0e83124f8e7187d57f3c69dd0062a6298d"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/math-vector.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/math-vector.h",
+      "sha256": "25ecfe95d7da7860e868cfad5b58a20f01165fe7fc164134ee1bc96d236e39ff"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h",
+      "sha256": "0a688c7e653c7ea0ec6f085efeb949c0016361f229172c0033b4fc0a5ccdb157"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/floatn.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/floatn.h",
+      "sha256": "f405bd60859b27bbe56bf87d7c97dbf20827318291edc8ae45ce1ce1522fc73d"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/floatn-common.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/floatn-common.h",
+      "sha256": "f127bf11e1c361e585667429b05746eb13f42a6050eea1ae80495ec6f10052e5"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h",
+      "sha256": "1e3466ff0b30514f0ac67be022a75a0bc7a755a63f8411be8f0d939ce8ce33d1"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/fp-logb.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/fp-logb.h",
+      "sha256": "97c1d63f77c5705ec33a8fe23e03a5f9cfe0bf7204e268385782419086b09c07"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/fp-fast.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/fp-fast.h",
+      "sha256": "f61d26f3ff8dcf202526b97ea9b7faa7ac51456bb17efbd233690983c9261788"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h",
+      "sha256": "c6b0d486d89bae9d8a1c59d6c6d8e1617084084abe4ae36879ca486fd6db9780"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/mathcalls.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/mathcalls.h",
+      "sha256": "dec3854482334712242fc5cd14e6474df4983d428adb85d6f6225a881daf11c3"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h",
+      "sha256": "fd000ae4631c5f1568c2d6a6d97c4c8efcc549733911e1c7ef9952b701709e05"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/iscanonical.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/iscanonical.h",
+      "sha256": "c48bf23850c34d9b9dc49d55a626fc093723c7b0522bc9e9a9b429dfd7630070"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/mathinline.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/mathinline.h",
+      "sha256": "c22f8558fdde36c4763bfc6196a265a9e4bad364fadad0e7b0fee0436e70c657"
+    },
+    {
+      "file": "/usr/include/stdio.h",
+      "canonicalPath": "/usr/include/stdio.h",
+      "sha256": "e7d85131c888412c0eaaaca3a7165d86f147c8645993ddf333a5b2500117a478"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/stddef.h",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/stddef.h",
+      "sha256": "a027f4333b56be17fab24f4bd211f4f4a2ec3993ddc5f29820a4ecc35f5bfca0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/stdarg.h",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/stdarg.h",
+      "sha256": "aca105a80df66bb43f7f149e7b6dd719c20160ad2fea6069ebb6c23e28a0fc79"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h",
+      "sha256": "603e58ab31ed75b7e0ab09a2ca94e99955f7fbc63310466321ce27c906227eb4"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h",
+      "sha256": "c561df72d5b987ccbd022059fdb1bcb6899c3e94b403997a0576ef3e1afb0f94"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h",
+      "sha256": "8afae3abf006beb39fd9d4d4bae38745cdf08a91e6217ddf25833c8d4b04751b"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/__FILE.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/__FILE.h",
+      "sha256": "26c909942e8a6bc82725e9c402f393aed9e32d94190257ddf71e1b5f819b4e5e"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/FILE.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/FILE.h",
+      "sha256": "37515f78be386f2edad4746f2947c928f480728c56d9a94e25302ebbdaef3c96"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h",
+      "sha256": "4a1aefe381b17ad50add602a8f31c9d4579499064ad3dde703f7f6df48498311"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h",
+      "sha256": "e0f62133861106e467e0454988891e150dc6eb6f4a5098cedcf94a7d37e9aea6"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/stdio_lim.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/stdio_lim.h",
+      "sha256": "8b383d348468ce009e52ec801dfb0467f72b0f75496bb840f0ae0ef8a5f399a1"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/sys_errlist.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/sys_errlist.h",
+      "sha256": "7ef402713da42e35dc8d50a4838b3fbb8bfe959176dd86dd621ec47ac547b5b6"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/stdio.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/stdio.h",
+      "sha256": "68f7c4aa205c5043f0b9363f4809851c3d735d17e145051ef3c9e771880ddb4f"
+    },
+    {
+      "file": "/usr/include/stdlib.h",
+      "canonicalPath": "/usr/include/stdlib.h",
+      "sha256": "7ea37adb35a2acc112198f826c7c02ba214c0fd3e3532174870ba2fbc86a83b3"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/waitflags.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/waitflags.h",
+      "sha256": "4b5a3c68814e83b0f24286101a50c7f8a838ab502c8ee0ab1729e4fc845b0c75"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/waitstatus.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/waitstatus.h",
+      "sha256": "0b1a7624c450768f914aae61f3c45fb0aa48edd633285a64b6864aebae008703"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/locale_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/locale_t.h",
+      "sha256": "19cb01f0a44723edb409ecb6fdabbcdf9bca9733439f46e962a33d4b0f7bb348"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h",
+      "sha256": "3263b6f6b2b75c11f881796e09d636b7c2baf6421b52d750b76ace42ffe89153"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/sys/types.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/sys/types.h",
+      "sha256": "74ee1354a61ec7c6583e7995174223b69878915465fc36cafbc2d76d7f32262e"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/clock_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/clock_t.h",
+      "sha256": "81e60e8a8d99b28bc723c14b156d7f7fc8ff663d98a857a3f5aea90431f577e3"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h",
+      "sha256": "dcd64d184855b245e5c7acf21910a0aaca590f1faf094e400da5d30551d11eb0"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/time_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/time_t.h",
+      "sha256": "08a01b91752dc9dda93eb0f8c571e2c57fbb67b9768f5c23ad180fd0894e97a3"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/timer_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/timer_t.h",
+      "sha256": "d96a2452da0d933941273d11d1048ea525f033306892835b0a7a0999b13853aa"
+    },
+    {
+      "file": "/usr/include/endian.h",
+      "canonicalPath": "/usr/include/endian.h",
+      "sha256": "043dbd7fc10f60f4efc0c7759bf0d5c202fcecfede131232ac53c62edf93ffda"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/endian.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/endian.h",
+      "sha256": "12b47b421313cf9ddc75afa754101c7034bca71ddb797f4f8ae06fc6c4161517"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/endianness.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/endianness.h",
+      "sha256": "659a7060004eda113671a38852c4d1e9cb97a35932bcd1d8540f98c09c180747"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/byteswap.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/byteswap.h",
+      "sha256": "f68b8ddac8c43067083eb8bcee4309f565bba36805e5dc746732ddb731e744c4"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/uintn-identity.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/uintn-identity.h",
+      "sha256": "789cb0b97f2ab1484b9d520ecdb94c93c07d2eb6c34d6c981b8e02785b90c137"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/sys/select.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/sys/select.h",
+      "sha256": "1fe9febd98bdea3ac0cfaa55a06e4bc5e0962783cd4ab22246117c8647c389b1"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/select.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/select.h",
+      "sha256": "bebcf564c0b0f5298e352bee095128dfe8cf483426bc6d36869043bb4a0e2fae"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/sigset_t.h",
+      "sha256": "3db5ded9d98a694e8c7196a06690b2e816ec6bb82689940d281f6504533f37e1"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h",
+      "sha256": "05291a7d38bb1d0da1ed01c09fe85fa2b1f4d5bc708e06bb930efec672db08d5"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h",
+      "sha256": "0909a593d7f6dfae1ca5cef6cf1e62b6a67aaa586e50f6215f3622a47be854d4"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h",
+      "sha256": "494c455857a5fe8641d7f034a6892f848f1a2d304791bea3434e209a72d6b1cb"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/pthreadtypes.h",
+      "sha256": "bde992d95141320a2f4162d2d1336349b00f36531fb79b4b9d4bb2ec5dfd176b"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h",
+      "sha256": "233b18bdcb7fa4332cebd6b5e6b9e35213538994582e322253459605d53fc273"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h",
+      "sha256": "306fc6a0ccf8eea0e57f0cc4a6a6f0acd7c845c99c42cc509959f9ff8c13b731"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/struct_mutex.h",
+      "sha256": "f09453b4d356c8dc577f9b3f0c37b69c0ae76662e2c60be1cbd02b8f91865c51"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/struct_rwlock.h",
+      "sha256": "b596548e86bc3f016b511778bcf88603938b349d7e44eaccf03b8ffb49210a60"
+    },
+    {
+      "file": "/usr/include/alloca.h",
+      "canonicalPath": "/usr/include/alloca.h",
+      "sha256": "c4d2f51d2f4bfd2ee1ced32cf4c6f0e6f1d562264ce26052aa0510ab6c675630"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h",
+      "sha256": "eb7074a863a17e3e684e83218a82ef7418eeb535f50d6fb5365b5427663f27ae"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/stdlib-float.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/stdlib-float.h",
+      "sha256": "d8d9dd9f0d7dba7b868157cbd25eee2b0ec9404f36a8677a6d614432d85f4721"
+    },
+    {
+      "file": "/usr/include/string.h",
+      "canonicalPath": "/usr/include/string.h",
+      "sha256": "2315bb9e39fcb045b120599524f17461bd20bdf007c857b6fa52663cd620466d"
+    },
+    {
+      "file": "/usr/include/strings.h",
+      "canonicalPath": "/usr/include/strings.h",
+      "sha256": "ddce67e40651b6d2765cc3e9e72ea7376a810ba99b92b30e30c26422ef024832"
+    },
+    {
+      "file": "/usr/include/pthread.h",
+      "canonicalPath": "/usr/include/pthread.h",
+      "sha256": "1bc615973d0d7c3734a927bd39184cc8601bebb9cc979ca55ceb99c905367765"
+    },
+    {
+      "file": "/usr/include/sched.h",
+      "canonicalPath": "/usr/include/sched.h",
+      "sha256": "0c52c7c3764b45982f2b6048a929c19dfd9200359c880d01b0cb2b0d0723fe75"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/sched.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/sched.h",
+      "sha256": "a3a56e27f5acdd9f7b0b537fb3f27531b59240c21470fba1ff15231bd71869af"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h",
+      "sha256": "32877816a861201f1a8cbec905df10f6ed7cfb62113f5a7c5a53527043c4b5fa"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/cpu-set.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/cpu-set.h",
+      "sha256": "9a599a7d5538c4c8e4887983f4c819b1f2fc53086c850a807ff8ff8a6e6dce2d"
+    },
+    {
+      "file": "/usr/include/time.h",
+      "canonicalPath": "/usr/include/time.h",
+      "sha256": "e88cfe6848c864eec16061f3a23a2c37aaa39ef1cf4e271e81b00b9df94ce05d"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/time.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/time.h",
+      "sha256": "2f1af538c704ea54e3364fe05ee3f9028c998ba842fc925a1dc767868cc6ea52"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/timex.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/timex.h",
+      "sha256": "0e1462ebbb5070579e80a5eb4a59d4a4f715741739b6cf27b2e670634767b41b"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/struct_tm.h",
+      "sha256": "e7bdda3f42eb0633850ed150fef0a0cf6193cbba8fa740e7505925424a595566"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h",
+      "sha256": "d6299fbc46fc57e7d14635cd5cf69125710ed021ab7305586c84644a03a39f8e"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/setjmp.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/setjmp.h",
+      "sha256": "3f6eea166e444b00dc94d25356b0d1a898e653c63d9c2bb7cc09bc212a678601"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/stdatomic.h",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/stdatomic.h",
+      "sha256": "974dee35eb46b88dd559cf63296013453bbe97c98e2fb207404b07f00ba57e99"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/__stddef_max_align_t.h",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/clang/16/include/__stddef_max_align_t.h",
+      "sha256": "b38b5b55e82e831eb0895d9ad96c10e492c2165cab82e7b402e5fb2d1b5757ff"
+    },
+    {
+      "file": "/usr/include/unistd.h",
+      "canonicalPath": "/usr/include/unistd.h",
+      "sha256": "690e12d91da100d6916752f38804386710d427823f7783f730218a9ac2d043e2"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/posix_opt.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/posix_opt.h",
+      "sha256": "8417772f0c9fa7a39fcec5323c23e9869454e1f0c63531dd878bc7e81e694fe6"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/environments.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/environments.h",
+      "sha256": "5f0d55d7cb0330bae9ef464394de98c9045d0e5880d266d3801034678843f435"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/confname.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/confname.h",
+      "sha256": "091903356b086e4c7a46054f7321d583d51ae35296b1f077d3216f5f3a76f4de"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/getopt_posix.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/getopt_posix.h",
+      "sha256": "530d55a1958c75b33eb8a65a04a746c27cf876ec3c47827bb3e11595761824ac"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/getopt_core.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/getopt_core.h",
+      "sha256": "9fa5de6af98115c111cf43befe7468827d6e283edb400e1a6ca7a609a11aadbc"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/unistd_ext.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/unistd_ext.h",
+      "sha256": "b2fafcd2805dbd6869e0ef89833d2ae03c197ac8c01b89bab86a13c2499fca0a"
+    },
+    {
+      "file": "/usr/include/signal.h",
+      "canonicalPath": "/usr/include/signal.h",
+      "sha256": "f9c42bf1df8c113861410d711967973a3e8578641d88fbb9021effa8d928aaf9"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/signum.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/signum.h",
+      "sha256": "796e7e4116a0cc06c2ed40751fe13f47353eb93d14a0ea84eff2ba4215b676dd"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/signum-generic.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/signum-generic.h",
+      "sha256": "f12870e9fb54111b77278a2d5d5c96643c91f455e8ae5be9a378253bb1fd9d04"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h",
+      "sha256": "8c44b91c2eb6e509905e1becec6b98f8ac006709bfa5d85d86e34a46eb9013cc"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h",
+      "sha256": "88b1392b88af3a08d908866f4e9c5650c5cddb0c8e021b0a3f8293cef6616feb"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h",
+      "sha256": "368161d070efa731428f02559f0996ec72e5f69150e3b76bf7a056ecd43c2687"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/siginfo-arch.h",
+      "sha256": "0839bdc7af291182ff9822a7b6419659fb26a49af5e4264857a71af4ccb12213"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/siginfo-consts.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/siginfo-consts.h",
+      "sha256": "fc701a5ba17dfdd6fa149c1a6298bb50d037f79467cc103290fa63eee938effa"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h",
+      "sha256": "56e019330b859cc4e28af30854df4d29be120ec4bff74849301bb3c40c9f19ca"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/sigval_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/sigval_t.h",
+      "sha256": "7d94a894bed0b9490967e8dbcd53725c0f2af9559e58d4b19bd14d3707974ee3"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h",
+      "sha256": "7125083b8096dd146e6498a61f38bf3bc7215c1c9237e92469550bb355545bab"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/sigevent-consts.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/sigevent-consts.h",
+      "sha256": "276d7c2dff64f09341c4894cf8244691b2878e657b3df8d77cc5c08336e8811a"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/sigaction.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/sigaction.h",
+      "sha256": "834c1d1132bd3b1d156612c06204b7bb70698b1040381bf5247b95a9fcff2ae3"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/sigcontext.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/sigcontext.h",
+      "sha256": "3d6c257508c625908a74876ad1810b9c800581d05ffbb6a023c95f4854cf528d"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/stack_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/stack_t.h",
+      "sha256": "5a70eeeebffb4a5141f728f5816067287aa41a3ed5aa3e88a6cdca4aaed529f6"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/sys/ucontext.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/sys/ucontext.h",
+      "sha256": "6ea27d7ac320650fdb2924c6927ec73c71fcb1eb0303a40844b591fa4c278de4"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/sigstack.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/sigstack.h",
+      "sha256": "ad115beaa73b88165428b91a3549f12589b8f8ac6241a9c9345bda93fedb8863"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/ss_flags.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/ss_flags.h",
+      "sha256": "862d34c6cc7bd9df60e8e6c772a450b00086c4025205f3666d4a5a89086c6c6b"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h",
+      "sha256": "04d7127ad6e3f781903f13d98d4dba3aa69d33f0007a68a74cc62f94cf7131b7"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/sigthread.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/sigthread.h",
+      "sha256": "0980803c3e101171029fbbcff761d44590ad4997e72cb82c1171ecbd6d764ee6"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/signal_ext.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/signal_ext.h",
+      "sha256": "e91d623617ba0f2cc5c1477f587e32f1f6cd0bcc3f89b41dc4488f9376229a00"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/sys/mman.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/sys/mman.h",
+      "sha256": "9ef429fa95b5b1865ec05d032078984ae1afdbe37a4362d7839f07d6c6aa194e"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/mman.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/mman.h",
+      "sha256": "21d9ad6ba7b9e2ee66cc8c28e2c566b8574b0eeae7fbe5ead0aca5faef5b5796"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/mman-map-flags-generic.h",
+      "sha256": "d734a8a143fcf1d03ffe42e1a3beba48231b3192198f9f2d86410aa941f361c2"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/mman-linux.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/mman-linux.h",
+      "sha256": "dcf9c982a06ec0a6f76141b6f6aa3ff8b596eeaa57ab7db014a1b265badcef33"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/mman-shared.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/mman-shared.h",
+      "sha256": "0e9ef5f84e0636aa360ae874c5c2aeb2f6d88db420f2ccdc72d9de78ca439cea"
+    },
+    {
+      "file": "/usr/include/poll.h",
+      "canonicalPath": "/usr/include/poll.h",
+      "sha256": "04bd7e134e86aabf9499d9ef2f5b13546a7d0e113e141e8f935076d87ba185fd"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/sys/poll.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/sys/poll.h",
+      "sha256": "fda2956fcb460a554f36295cf99ced1237266b826c91e62505497d61194f00a1"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/poll.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/poll.h",
+      "sha256": "a1ce68bdd9798cb20c61cea95033502b245824e96860aae4cf79fabfd29e95b3"
+    },
+    {
+      "file": "/usr/include/arpa/inet.h",
+      "canonicalPath": "/usr/include/arpa/inet.h",
+      "sha256": "b637be3f1d8566904f50f4325ebaf7f8b7b830977b2bda02fc2970bc21c8d76d"
+    },
+    {
+      "file": "/usr/include/netinet/in.h",
+      "canonicalPath": "/usr/include/netinet/in.h",
+      "sha256": "cd6b9666a7a9f3dfa35c3b68f1cdfd68fdd43d4c976d133f8d3bd10e1ba56e9f"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/sys/socket.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/sys/socket.h",
+      "sha256": "559d2b530a373fbc1c15159bce28def9e5fa3812b4b29092a78165c76ef53728"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h",
+      "sha256": "89d865d365d7ae720892788154ad9e0c9c45087e14c759766b44315d30b22421"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/socket.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/socket.h",
+      "sha256": "def61d86e0e4a53ed81833cbe9ff8dcc562fe4cbc7c2a6ff2dc29db0591bdceb"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/socket_type.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/socket_type.h",
+      "sha256": "284ad44284d0e8e7e7d0ac1952620990cfe98a7ac406c5d0e8a8d37ed4ec6efd"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/sockaddr.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/sockaddr.h",
+      "sha256": "301417f056200b26fc68c531a820591eb434daa76f6069b77142f5bbda00d06b"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/asm/socket.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/asm/socket.h",
+      "sha256": "48e0940e8a6e8861eaaaf90853a685fa803c4e039166060a3c921c8d79001e3c"
+    },
+    {
+      "file": "/usr/include/asm-generic/socket.h",
+      "canonicalPath": "/usr/include/asm-generic/socket.h",
+      "sha256": "03bfcd42e1bf77bc96d23bb08e891d58d548fd9d912afed9e0890073c9348c4c"
+    },
+    {
+      "file": "/usr/include/linux/posix_types.h",
+      "canonicalPath": "/usr/include/linux/posix_types.h",
+      "sha256": "bc68636a383418f235d3457e4b21cf27cefc7c7f3edea4c1f6706f1018db196f"
+    },
+    {
+      "file": "/usr/include/linux/stddef.h",
+      "canonicalPath": "/usr/include/linux/stddef.h",
+      "sha256": "ff12e1eeeb77c42110550f35352d060fc48461249782fedb225f62891ce228f1"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/asm/posix_types.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/asm/posix_types.h",
+      "sha256": "983090c7e5e7eaff27114ec216889a8ad26e40ad8fbb78b8ae6c09391dc61543"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/asm/posix_types_64.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/asm/posix_types_64.h",
+      "sha256": "5cdabc01dac0a3e9731ac16353210a615ca44e85b6ec9eafd2e79206e0b26c76"
+    },
+    {
+      "file": "/usr/include/asm-generic/posix_types.h",
+      "canonicalPath": "/usr/include/asm-generic/posix_types.h",
+      "sha256": "8d273280f282bf9e810f00ad9905977161dec3f103ef789892ceec8c453e1398"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/asm/bitsperlong.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/asm/bitsperlong.h",
+      "sha256": "8ef5efeb3f25ae47ce03ba892f5caf77631b1257715fc12de72c21e61db17e43"
+    },
+    {
+      "file": "/usr/include/asm-generic/bitsperlong.h",
+      "canonicalPath": "/usr/include/asm-generic/bitsperlong.h",
+      "sha256": "74a305fd9066eb64f775e56b49569e7909d0916c030d4f0972376b310e732833"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/asm/sockios.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/asm/sockios.h",
+      "sha256": "ac496b3bcc37452f0caa104b2205a8a19dde0196a7791988b3b74e23c2174c1e"
+    },
+    {
+      "file": "/usr/include/asm-generic/sockios.h",
+      "canonicalPath": "/usr/include/asm-generic/sockios.h",
+      "sha256": "4455c37bc5982303b58c96b9ea7d446f76387856b9fb468c0d2d3c95dd96bc68"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h",
+      "sha256": "63619500aa6095b881f62d7a255bd31eeeab9a829cf34ec40e20a62729323efc"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/in.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/in.h",
+      "sha256": "5093e406f469f79d36f2334031f09439674d1de21f5e300decb472642a1e7a3e"
+    },
+    {
+      "file": "/usr/include/errno.h",
+      "canonicalPath": "/usr/include/errno.h",
+      "sha256": "bb34795fb8a34bea0b33a4bcf4e60e1aa24ca03bba063e045b90447ee79e1137"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/errno.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/errno.h",
+      "sha256": "7e7e8b459ac9a9683fa9ed91fb05c89ea874ed70b6d4aa6ef407db87a28b023b"
+    },
+    {
+      "file": "/usr/include/linux/errno.h",
+      "canonicalPath": "/usr/include/linux/errno.h",
+      "sha256": "a47fb2f49bce0546a1e88805cec954338abb1b2ac87de042166e8e3a74b23261"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/asm/errno.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/asm/errno.h",
+      "sha256": "4ee384515a4325315992e61dd957f0fa91f3858fe7c079de59f56edded51de86"
+    },
+    {
+      "file": "/usr/include/asm-generic/errno.h",
+      "canonicalPath": "/usr/include/asm-generic/errno.h",
+      "sha256": "fb7b5a504015f3a9074c641e7371b250d867d751d90e4a22a8ac17fced3d50af"
+    },
+    {
+      "file": "/usr/include/asm-generic/errno-base.h",
+      "canonicalPath": "/usr/include/asm-generic/errno-base.h",
+      "sha256": "2c148e92b8318deeb767fabd60822113e575ee664ff09a1873aed8f7a495793c"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/types/error_t.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/types/error_t.h",
+      "sha256": "8b424ad860b52b27391b94ac486bdf86475ee6ece9bc378576859c2d904c76ec"
+    },
+    {
+      "file": "/usr/include/fcntl.h",
+      "canonicalPath": "/usr/include/fcntl.h",
+      "sha256": "0b7409e674c5802bd43659ba883773e4e50332abff9614b767b3b7b07eb61cae"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/fcntl.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/fcntl.h",
+      "sha256": "14001f0553d6adb1b08f16ec879f797a59034d59c81f1ef0b44eeb9f90ce0bf2"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h",
+      "sha256": "1dc43f7aa98e2cea8ea4c26e8661ecdacb9ce4bb775bf8a959d4f5b1d6d9da97"
+    },
+    {
+      "file": "/usr/include/linux/falloc.h",
+      "canonicalPath": "/usr/include/linux/falloc.h",
+      "sha256": "e35cbe823cf1b8ccb9d1ed755cc6ab8e842cfa0d240f9818cc554423dc0ceee0"
+    },
+    {
+      "file": "/usr/include/x86_64-linux-gnu/bits/stat.h",
+      "canonicalPath": "/usr/include/x86_64-linux-gnu/bits/stat.h",
+      "sha256": "c7b261ced7bf6f6173097656d935f4a4dcf5bd7d40c92d5588652da1d1686978"
+    }
+  ],
+  "miss": {
+    "kind": "native-content-addressed-build",
+    "version": 2,
+    "started": "2026-09-22T06:20:38.333Z",
+    "complete": true,
+    "cacheHit": false,
+    "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+    "inputSha256": "78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613",
+    "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/miss",
+    "cacheRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/cache",
+    "optimization": "O1",
+    "timeoutMs": 60000,
+    "plan": {
+      "target": "cpu",
+      "gpu": false,
+      "bangs": 0,
+      "args": [
+        "-std=c11",
+        "-O3",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/miss"
+      ],
+      "deviceArgs": null
+    },
+    "cachePlan": {
+      "target": "cpu",
+      "gpu": false,
+      "bangs": 0,
+      "args": [
+        "-std=c11",
+        "-O1",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "$OUTPUT"
+      ],
+      "deviceArgs": null
+    },
+    "toolSha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+    "cacheToolSha256": "682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01",
+    "scope": "Host-local cache. Preprocessed headers, C bytes, compiler executable and full version are identified. System linker and libraries must remain stable; this is not a hermetic toolchain. Bend checking and emission are separate required artifacts.",
+    "compiler": {
+      "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang",
+      "version": "Debian clang version 16.0.6 (15~deb11u2)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin",
+      "executableSha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2"
+    },
+    "preprocessMs": 80.78451900000002,
+    "key": "f5d124db2fb3943af9d882260b94fcb958003362829d6824c7b9dc2c57a6ae07",
+    "preprocessedSha256": "6631dda41ecfeb6fcaaca449f6c3ed609195128739c566cdb7ef05818c423d1f",
+    "environment": {
+      "PATH": "/home/ai/.deno/bin:/home/ai/.elan/bin:/home/ai/.local/bin:/home/ai/.cargo/bin:/home/ai/.local/bin:/home/ai/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
+      "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+      "C_INCLUDE_PATH": null,
+      "CPLUS_INCLUDE_PATH": null,
+      "OBJC_INCLUDE_PATH": null,
+      "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+      "SDKROOT": null,
+      "MACOSX_DEPLOYMENT_TARGET": null,
+      "SOURCE_DATE_EPOCH": null
+    },
+    "compileMs": 1573.0578830000002,
+    "args": [
+      "-std=c11",
+      "-O1",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+      "-lpthread",
+      "-lm",
+      "-o",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/cache/.build-2DLSZt/compiler"
+    ],
+    "stdout": "",
+    "stderr": "",
+    "record": {
+      "key": "f5d124db2fb3943af9d882260b94fcb958003362829d6824c7b9dc2c57a6ae07",
+      "identity": {
+        "version": 2,
+        "sourceSha256": "78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613",
+        "preprocessedSha256": "6631dda41ecfeb6fcaaca449f6c3ed609195128739c566cdb7ef05818c423d1f",
+        "optimization": "O1",
+        "plan": {
+          "target": "cpu",
+          "gpu": false,
+          "bangs": 0,
+          "args": [
+            "-std=c11",
+            "-O1",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+            "-lpthread",
+            "-lm",
+            "-o",
+            "$OUTPUT"
+          ],
+          "deviceArgs": null
+        },
+        "compiler": {
+          "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang",
+          "version": "Debian clang version 16.0.6 (15~deb11u2)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin",
+          "executableSha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2"
+        },
+        "toolSha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+        "cacheToolSha256": "682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01",
+        "environment": {
+          "PATH": "/home/ai/.deno/bin:/home/ai/.elan/bin:/home/ai/.local/bin:/home/ai/.cargo/bin:/home/ai/.local/bin:/home/ai/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
+          "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+          "C_INCLUDE_PATH": null,
+          "CPLUS_INCLUDE_PATH": null,
+          "OBJC_INCLUDE_PATH": null,
+          "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+          "SDKROOT": null,
+          "MACOSX_DEPLOYMENT_TARGET": null,
+          "SOURCE_DATE_EPOCH": null
+        },
+        "platform": "linux",
+        "arch": "x64"
+      },
+      "binarySha256": "5b7de3480313830ef2cf77b44d965adbbd766819a110798c8dc42464fd7927e9",
+      "created": "2026-09-22T06:20:40.103Z"
+    },
+    "binarySha256": "5b7de3480313830ef2cf77b44d965adbbd766819a110798c8dc42464fd7927e9",
+    "finished": "2026-09-22T06:20:40.153Z"
+  },
+  "missOutputSha256": "699f0cc62e4fc84b8784bb825d82eae623718229b5254bec49e810fa7208181f",
+  "hit": {
+    "kind": "native-content-addressed-build",
+    "version": 2,
+    "started": "2026-09-22T06:20:40.214Z",
+    "complete": true,
+    "cacheHit": true,
+    "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+    "inputSha256": "78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613",
+    "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/hit",
+    "cacheRoot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/cache",
+    "optimization": "O1",
+    "timeoutMs": 60000,
+    "plan": {
+      "target": "cpu",
+      "gpu": false,
+      "bangs": 0,
+      "args": [
+        "-std=c11",
+        "-O3",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/hit"
+      ],
+      "deviceArgs": null
+    },
+    "cachePlan": {
+      "target": "cpu",
+      "gpu": false,
+      "bangs": 0,
+      "args": [
+        "-std=c11",
+        "-O1",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "$OUTPUT"
+      ],
+      "deviceArgs": null
+    },
+    "toolSha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+    "cacheToolSha256": "682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01",
+    "scope": "Host-local cache. Preprocessed headers, C bytes, compiler executable and full version are identified. System linker and libraries must remain stable; this is not a hermetic toolchain. Bend checking and emission are separate required artifacts.",
+    "compiler": {
+      "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang",
+      "version": "Debian clang version 16.0.6 (15~deb11u2)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin",
+      "executableSha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2"
+    },
+    "preprocessMs": 80.603212,
+    "key": "f5d124db2fb3943af9d882260b94fcb958003362829d6824c7b9dc2c57a6ae07",
+    "preprocessedSha256": "6631dda41ecfeb6fcaaca449f6c3ed609195128739c566cdb7ef05818c423d1f",
+    "environment": {
+      "PATH": "/home/ai/.deno/bin:/home/ai/.elan/bin:/home/ai/.local/bin:/home/ai/.cargo/bin:/home/ai/.local/bin:/home/ai/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
+      "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+      "C_INCLUDE_PATH": null,
+      "CPLUS_INCLUDE_PATH": null,
+      "OBJC_INCLUDE_PATH": null,
+      "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+      "SDKROOT": null,
+      "MACOSX_DEPLOYMENT_TARGET": null,
+      "SOURCE_DATE_EPOCH": null
+    },
+    "record": {
+      "key": "f5d124db2fb3943af9d882260b94fcb958003362829d6824c7b9dc2c57a6ae07",
+      "identity": {
+        "version": 2,
+        "sourceSha256": "78c7a4d56c53106a6344a4b56f3d577eed3564f9129eb311c1facd36317f5613",
+        "preprocessedSha256": "6631dda41ecfeb6fcaaca449f6c3ed609195128739c566cdb7ef05818c423d1f",
+        "optimization": "O1",
+        "plan": {
+          "target": "cpu",
+          "gpu": false,
+          "bangs": 0,
+          "args": [
+            "-std=c11",
+            "-O1",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/program.c",
+            "-lpthread",
+            "-lm",
+            "-o",
+            "$OUTPUT"
+          ],
+          "deviceArgs": null
+        },
+        "compiler": {
+          "command": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin/clang",
+          "version": "Debian clang version 16.0.6 (15~deb11u2)\nTarget: x86_64-pc-linux-gnu\nThread model: posix\nInstalledDir: /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/bin",
+          "executableSha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2"
+        },
+        "toolSha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+        "cacheToolSha256": "682674e6d2e550a147bcc61cda084ecd0ba886c1682590ecd0a25d971bf2ac01",
+        "environment": {
+          "PATH": "/home/ai/.deno/bin:/home/ai/.elan/bin:/home/ai/.local/bin:/home/ai/.cargo/bin:/home/ai/.local/bin:/home/ai/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
+          "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+          "C_INCLUDE_PATH": null,
+          "CPLUS_INCLUDE_PATH": null,
+          "OBJC_INCLUDE_PATH": null,
+          "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+          "SDKROOT": null,
+          "MACOSX_DEPLOYMENT_TARGET": null,
+          "SOURCE_DATE_EPOCH": null
+        },
+        "platform": "linux",
+        "arch": "x64"
+      },
+      "binarySha256": "5b7de3480313830ef2cf77b44d965adbbd766819a110798c8dc42464fd7927e9",
+      "created": "2026-09-22T06:20:40.103Z"
+    },
+    "binarySha256": "5b7de3480313830ef2cf77b44d965adbbd766819a110798c8dc42464fd7927e9",
+    "finished": "2026-09-22T06:20:40.395Z"
+  },
+  "hitOutputSha256": "699f0cc62e4fc84b8784bb825d82eae623718229b5254bec49e810fa7208181f",
+  "binaryBytesEqual": true,
+  "outputBytesEqual": true,
+  "changedInputs": [],
+  "changedHeaders": [],
+  "finished": "2026-09-22T06:20:40.423Z",
+  "archive": {
+    "sourceReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/report.json",
+    "sourceReportSha256": "fd9f4fb7dd1ad46126c6761da579895ffa7a4ab7880656eef8ac1de45c42a681"
+  }
+}

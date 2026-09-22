@@ -1,0 +1,156 @@
+{
+  "kind": "phase3-native-cache-observed-toolchain",
+  "scope": "Dependency identities observed immediately after the successful cache test. No hermetic or before/after dynamic-linker validation is claimed. Header identities before/after and preprocessed-content identities are in the main build report.",
+  "reports": [
+    {
+      "name": "clang",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+      "sha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2",
+      "lddStatus": 0,
+      "lddStdout": "\tlinux-vdso.so.1 (0x00007ffdf5d84000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f8eaab84000)\n\tlibclang-cpp.so.16 => /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu/libclang-cpp.so.16 (0x00007f8ea6f5f000)\n\tlibLLVM-16.so.1 => /home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu/libLLVM-16.so.1 (0x00007f8e9f960000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f8e9f793000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f8e9f64f000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f8e9f633000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f8e9f45f000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f8eaabd5000)\n\tlibffi.so.7 => /lib/x86_64-linux-gnu/libffi.so.7 (0x00007f8e9f453000)\n\tlibedit.so.2 => /lib/x86_64-linux-gnu/libedit.so.2 (0x00007f8e9f41a000)\n\tlibrt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f8e9f410000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f8e9f408000)\n\tlibz3.so.4 => /lib/x86_64-linux-gnu/libz3.so.4 (0x00007f8e9de2d000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f8e9de10000)\n\tlibzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x00007f8e9dd35000)\n\tlibtinfo.so.6 => /lib/x86_64-linux-gnu/libtinfo.so.6 (0x00007f8e9dd06000)\n\tlibxml2.so.2 => /lib/x86_64-linux-gnu/libxml2.so.2 (0x00007f8e9db58000)\n\tlibbsd.so.0 => /lib/x86_64-linux-gnu/libbsd.so.0 (0x00007f8e9db3f000)\n\tlibicuuc.so.67 => /lib/x86_64-linux-gnu/libicuuc.so.67 (0x00007f8e9d956000)\n\tliblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x00007f8e9d92e000)\n\tlibmd.so.0 => /lib/x86_64-linux-gnu/libmd.so.0 (0x00007f8e9d921000)\n\tlibicudata.so.67 => /lib/x86_64-linux-gnu/libicudata.so.67 (0x00007f8e9be08000)\n",
+      "lddStderr": "",
+      "dependencies": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu/libLLVM-16.so.1",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu/libLLVM-16.so.1",
+          "sha256": "7070cb907913823b3272d6f7919958d7b06a4e2965c47a2f131b7a943fe1676f"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu/libclang-cpp.so.16",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/libclang-cpp.so.16",
+          "sha256": "cfe49cc15c7557bdeb70c7b08ccb5d28ca32b2ee53e21d191d092a56d5508db8"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libbsd.so.0",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libbsd.so.0.11.3",
+          "sha256": "a0afc72213bf6e59d98e218abc721d4e9dea15487cc634e0a736531dc8643891"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libc.so.6",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "sha256": "d13f170ab30a0f91d9713e0c2196efa5fe0bc42f0f2737cf0e56380df8051159"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libdl.so.2",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libdl-2.31.so",
+          "sha256": "df5973c718b4ee540cdd4400e19e90182ab5f3bac2148c0c9f3bb92eb6af3121"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libedit.so.2",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libedit.so.2.0.63",
+          "sha256": "6dfc7513bb5d3a0c2d0f4ef9a22aa0eedaf1d749cc8b6f88af46e579c3e02b20"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libffi.so.7",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libffi.so.7.1.0",
+          "sha256": "d7ce7e96311388ad35a34835c0db7738c869c8e1c88c071e9af5971e6765d89e"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+          "sha256": "2d771c2e232fce107c7ec7f9a64b9a804e6d6737063088a2d8096b149a0af8cd"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libicudata.so.67",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libicudata.so.67.1",
+          "sha256": "daecc24ce07ac15b77833042bd07fa5c62e8b82f5d2c38361b45fe76658b0e45"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libicuuc.so.67",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libicuuc.so.67.1",
+          "sha256": "650d19e2164b13dbcac1f1cd493dbc01f0e3d873086e3a718d9ca09ddd59f2fd"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/liblzma.so.5",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/liblzma.so.5.2.5",
+          "sha256": "71bbfbe796af7ad52160cfa7083dc71cf84d92e8d2353a9aeabdc8dd8d874649"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libm.so.6",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libm-2.31.so",
+          "sha256": "5461e535328078fb72f25f7ca2bf36bc71c415bbf573ccdfa289a7b796ddfdd3"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libmd.so.0",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libmd.so.0.0.4",
+          "sha256": "3e8acc749b960c0ce4ecfeaa9427f190e4d2915c5a32c98b93ca3fb451bda642"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libpthread.so.0",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so",
+          "sha256": "7048cb46bda23f790af92e5f92975d84816a6de0a074a1624d46ac3c74dcdc3b"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/librt.so.1",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/librt-2.31.so",
+          "sha256": "a24ccd19ad1dc82d78d825553c4ad8332e25f879970fe602d230312d93b5ce23"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libstdc++.so.6",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28",
+          "sha256": "0e83d02a0144c726f05de850b71165691e380bd90205d22dd04bc8f788625507"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libtinfo.so.6",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2",
+          "sha256": "26d250890dc52618c47ddc30dcabc542423f17aa7519be28660be89adcfd825d"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libxml2.so.2",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libxml2.so.2.9.10",
+          "sha256": "de16bc86208c37b90cee06ec653144cbe9ccfbdcef3fa41c74287f8f37662d3d"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libz.so.1",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libz.so.1.2.11",
+          "sha256": "062372f2053424d8bafd9378ebdcc29a08d7e1850342b3fd5a0e73462ed84901"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libz3.so.4",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libz3.so.4",
+          "sha256": "4e6ac2c899c4fd9df0420813cee95d855c89399c6e381a17c9e88f87f973d0ab"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libzstd.so.1",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libzstd.so.1.4.8",
+          "sha256": "96200194950e60c3cee9aed6aea014c7eeec1260212ea2e3cbd4c9f97dd1ab8f"
+        },
+        {
+          "file": "/lib64/ld-linux-x86-64.so.2",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/ld-2.31.so",
+          "sha256": "1c654e88d721c9ac659b48400d20b5310ead8c6d15eeaf695d507d00d59ef490"
+        }
+      ]
+    },
+    {
+      "name": "binary",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-cache-actual/miss",
+      "sha256": "5b7de3480313830ef2cf77b44d965adbbd766819a110798c8dc42464fd7927e9",
+      "lddStatus": 0,
+      "lddStdout": "\tlinux-vdso.so.1 (0x00007fff9e595000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fac70a3b000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fac708f7000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fac70723000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fac70b98000)\n",
+      "lddStderr": "",
+      "dependencies": [
+        {
+          "file": "/lib/x86_64-linux-gnu/libc.so.6",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "sha256": "d13f170ab30a0f91d9713e0c2196efa5fe0bc42f0f2737cf0e56380df8051159"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libm.so.6",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libm-2.31.so",
+          "sha256": "5461e535328078fb72f25f7ca2bf36bc71c415bbf573ccdfa289a7b796ddfdd3"
+        },
+        {
+          "file": "/lib/x86_64-linux-gnu/libpthread.so.0",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so",
+          "sha256": "7048cb46bda23f790af92e5f92975d84816a6de0a074a1624d46ac3c74dcdc3b"
+        },
+        {
+          "file": "/lib64/ld-linux-x86-64.so.2",
+          "canonicalPath": "/usr/lib/x86_64-linux-gnu/ld-2.31.so",
+          "sha256": "1c654e88d721c9ac659b48400d20b5310ead8c6d15eeaf695d507d00d59ef490"
+        }
+      ]
+    }
+  ]
+}

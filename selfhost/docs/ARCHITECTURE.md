@@ -93,11 +93,28 @@ remain supported. This avoids reparsing the same physical text during one
 request. It does not change the persistent Base-cache trust boundary or bypass
 import resolution, binder freshening or checking.
 
+The trace-aware loader also returns an `FLoadTrace` with the actual module order
+and declaration-event counts. Rejection reporting uses this trace to locate the
+failed declaration without loading the graph again. When a checked Base prefix
+is available, diagnostic replay independently verifies its exact identity and
+checks the suffix, including open laws. The host renders that result only if its
+error equals the authoritative checker's error; otherwise it uses the complete
+legacy diagnostic path. The trace belongs to one request and is not a stored
+verdict or a replacement for checking.
+
 After specialization, the JS host prepares one Bend `book_context`, carrying
 an exact-name index and the book's fresh-binder bound. Annotation, runtime-layout
 validation and emission retain that full context while selecting live output
 definitions separately. An already prepared head `BookCache` is reused instead
 of nested. Changed books require newly prepared contexts.
+
+For a reference- or variable-headed application spine, annotation infers the
+head type once and threads the dependent result type through the arguments.
+The original `Ann` structure is preserved, and other application heads retain
+the general path. Native erasure similarly reuses an unchanged normalized
+telescope within each step. Its annotation-context merge builds one exact-name
+index for ordinary lists; lists containing any `BookCache` marker retain legacy
+lookup so cache boundaries and duplicate shadowing keep their meaning.
 
 The JS backend's structurally proven choice calls and record-projection workers
 are described in [the backend guide](../src/back/js/README.md). They change
@@ -124,3 +141,19 @@ Long self-emission proofs freeze the source, compiler, Base, runtime and consume
 host helpers. Their identities are checked before and after every stage.
 Targeted differential attempts retain their own harness and input identities,
 and cannot turn a selected pass into a whole-suite conformance claim.
+
+## Validation processes
+
+The conformance runner supports isolated requests and explicitly declared
+persistent parse/check sessions. A persistent session retains the compiler
+module and validated Base data but creates a fresh source graph and context for
+each request. Bounded transport, request deadlines, process-group termination,
+worker recycling and recorded session prefixes preserve failure isolation and
+replay. Program execution lanes continue to use isolated processes.
+
+Native build caching is separate from compiler checking: it reuses a binary
+only for matching checked C, preprocessed headers, compiler identity and build
+settings. It assumes a stable host linker and libraries. See the
+[phase 3 workflow](../../docs/PHASE3_DEVELOPMENT.md) for commands and the
+[phase 3 report](../../implementation/phase3/report.md) for measured benefits,
+rejected experiments and remaining validation limits.

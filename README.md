@@ -24,6 +24,9 @@ The [phase 3 efficiency guide](docs/PHASE3_DEVELOPMENT.md) documents persistent
 validation workers, native build reuse and generated-runtime measurements; its
 [implementation report](implementation/phase3/report.md) records the checked
 results and remaining limits.
+The [phase 4 development guide](docs/PHASE4_DEVELOPMENT.md) covers checked source
+experiments, bounded profiling and private compiler images; follow the
+[phase 4 report](implementation/phase4/report.md) for measured progress.
 The [experimental native graph host](selfhost/tools/performance/rapid/native-graph.md)
 executes the Bend compiler natively with an explicit module and foreign-asset manifest.
 

@@ -102,6 +102,16 @@ error equals the authoritative checker's error; otherwise it uses the complete
 legacy diagnostic path. The trace belongs to one request and is not a stored
 verdict or a replacement for checking.
 
+Final-definition selection for TODO reporting, interpretation and specialization
+retains the last declaration of each name in reverse event order. Short lists
+use the original filter. Lists of at least 256 events use the existing immutable
+exact-name trie as a local seen-name set, avoiding repeated filtering of all
+earlier definitions. Initial accumulator entries whose names were not replaced
+keep their original order and duplicates. Private marker values distinguish an
+empty name from an unsuccessful lookup; exact buckets handle hash collisions.
+A nonthrowing name scan sends malformed raw JavaScript UTF-16 input back through
+the original filter, preserving its comparison demand and error order.
+
 After specialization, the JS host prepares one Bend `book_context`, carrying
 an exact-name index and the book's fresh-binder bound. Annotation, runtime-layout
 validation and emission retain that full context while selecting live output

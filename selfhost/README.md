@@ -10,6 +10,10 @@ default distributed compiler.
 The [phase 3 efficiency guide](../docs/PHASE3_DEVELOPMENT.md) covers persistent
 parse/check workers, reusable native builds and generated-program runtime probes;
 the [phase 3 report](../implementation/phase3/report.md) records their evidence.
+The [phase 4 development guide](../docs/PHASE4_DEVELOPMENT.md) documents checked
+source overlays, bounded profiling and the current structural optimization work;
+the [phase 4 report](../implementation/phase4/report.md) separates results from
+experimental artifacts.
 
 This project targets Bend2 2.0.21 at upstream revision
 [`6018e28ecc67cf1fffc0c20c64b11023474c2df8`](https://github.com/bendlang/bend/tree/6018e28ecc67cf1fffc0c20c64b11023474c2df8).

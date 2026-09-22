@@ -26,9 +26,7 @@ law driver_final:
 
 @unsafe
 def driver_final(book, done):
-  match book:
-    case Nil{}: done
-    case Con{d, rest}: driver_final(rest, Con{d, book_without(done, dn(d))})
+  book_final_fast(book, done)
 
 @unsafe
 def driver_interpret(book):

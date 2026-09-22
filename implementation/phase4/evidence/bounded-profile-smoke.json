@@ -1,0 +1,38 @@
+{
+  "kind": "phase4-bounded-profile-launch",
+  "complete": true,
+  "started": "2026-09-22T15:15:05.179Z",
+  "cpu": 1,
+  "timeoutMs": 120000,
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/bounded-profile-smoke/config.json",
+    "sha256": "f6f1d48cf2579bbc8af34ef1221027b97bdd1fbc550620dbf4c0c3378fd3f234"
+  },
+  "worker": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/bounded-profile-smoke/cpu-profile.mjs",
+    "sha256": "105b05f04d8c858349f81025ae4549dedd6fd51c100f81cc038e8b407e09bce1"
+  },
+  "input": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+    "sha256": "ee47602e212650f57d33510b02aef711ba86f4d75b99058b3914f55e2704f4e4"
+  },
+  "node": {
+    "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "version": "v24.18.0"
+  },
+  "args": [
+    "--stack-size=4096",
+    "--max-old-space-size=3072"
+  ],
+  "timedOut": false,
+  "pid": 21,
+  "exitCode": 0,
+  "signal": null,
+  "childReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/bounded-profile-smoke/profile/report.json",
+    "sha256": "cd83d99842e936695d2c376f27e2477f7227a59c61c8593bf6eaf4a37eebe104",
+    "complete": true
+  },
+  "wallMs": 5279.113821,
+  "finished": "2026-09-22T15:15:10.464Z"
+}

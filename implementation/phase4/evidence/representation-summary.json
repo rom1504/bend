@@ -1,0 +1,160 @@
+{
+  "kind": "phase4-private-representation-summary",
+  "complete": true,
+  "scope": "Worker-only disposable private H images; no production representation/runtime change. Three fresh-process alternating repetitions, preexisting validated Base cache, CPU3; full output byte/execution equality.",
+  "sourceReports": {
+    "pilot": {
+      "path": "selfhost/build/phase4/representation/pilot/report.json",
+      "sha256": "ed96deacb0d467a12efdd14b22da40aa3ecf4bc2993b88a45b9a4ab40e4f2755",
+      "complete": true
+    },
+    "warm": {
+      "path": "selfhost/build/phase4/representation/warm/report.json",
+      "sha256": "c9204f2d125e335905d3034478e1067f077ed975b69b5c44b2e20176442f6251",
+      "complete": true
+    },
+    "warm-tree-repeat": {
+      "path": "selfhost/build/phase4/representation/warm-tree-repeat/report.json",
+      "sha256": "ab15d8f8a5da525a58d080688e11511677ece5983a5131dc0d629b4e57dd35a1",
+      "complete": false
+    },
+    "warm-tree-completion": {
+      "path": "selfhost/build/phase4/representation/warm-tree-completion/report.json",
+      "sha256": "8ddda9ab4bb27c050c1876bbba1e65b7b4e279095cd2b3ca0ec4e8ac15b810a7",
+      "complete": true
+    },
+    "final": {
+      "path": "selfhost/build/phase4/representation/final/report.json",
+      "sha256": "f85173d90b6f3f9e664a48b8b435e9ab124ff7ba16bb8f5c634fc23f2bf6b0ab",
+      "complete": true
+    }
+  },
+  "timings": {
+    "tree": {
+      "baseline": {
+        "samplesMs": [
+          3126.4928,
+          3184.6169250000003,
+          3215.5407739999996
+        ],
+        "medianMs": 3184.6169250000003,
+        "timeReductionPercent": 0.0
+      },
+      "no-copy": {
+        "samplesMs": [
+          3216.6897639999997,
+          3195.285746,
+          3126.245583
+        ],
+        "medianMs": 3195.285746,
+        "timeReductionPercent": -0.3350111253961785
+      },
+      "direct-kid": {
+        "samplesMs": [
+          3168.971176,
+          3155.531059,
+          3058.565822
+        ],
+        "medianMs": 3155.531059,
+        "timeReductionPercent": 0.9133238529152266
+      },
+      "combined": {
+        "samplesMs": [
+          3134.434685,
+          3161.7732929999997,
+          3123.033915
+        ],
+        "medianMs": 3134.434685,
+        "timeReductionPercent": 1.5757700590629198
+      }
+    },
+    "list": {
+      "baseline": {
+        "samplesMs": [
+          6630.305912,
+          6361.976315,
+          6420.69879
+        ],
+        "medianMs": 6420.69879,
+        "timeReductionPercent": 0.0
+      },
+      "no-copy": {
+        "samplesMs": [
+          5992.4158609999995,
+          5958.43754,
+          6166.928849
+        ],
+        "medianMs": 5992.4158609999995,
+        "timeReductionPercent": 6.6703476211504515
+      },
+      "direct-kid": {
+        "samplesMs": [
+          5844.097940000001,
+          5967.821718,
+          5852.647505
+        ],
+        "medianMs": 5852.647505,
+        "timeReductionPercent": 8.847187877505158
+      },
+      "combined": {
+        "samplesMs": [
+          5878.112363,
+          5799.653018,
+          5765.204904
+        ],
+        "medianMs": 5799.653018,
+        "timeReductionPercent": 9.672557338575915
+      }
+    }
+  },
+  "excludedTimingIntervalUTC": [
+    "2026-09-22T14:39:00Z",
+    "2026-09-22T14:57:00Z"
+  ],
+  "publicAbiCompatible": false,
+  "structuralAssertions": 16200,
+  "warmCounts": {
+    "tree": {
+      "KTermProjectionCopies": 791697,
+      "KDefProjectionCopies": 505618,
+      "kidIndices": {
+        "0": 11721,
+        "1": 5199,
+        "2": 8,
+        "3": 2
+      },
+      "KTermConstructorCalls": 144880,
+      "unfilledAbiPlaceholders": 39962,
+      "knownKTermArity": {
+        "0": 70755,
+        "1": 22192,
+        "2": 11856,
+        "3": 67,
+        "4": 47,
+        "5": 1
+      }
+    },
+    "list": {
+      "KTermProjectionCopies": 1501643,
+      "KDefProjectionCopies": 1035972,
+      "kidIndices": {
+        "0": 41189,
+        "1": 24002,
+        "2": 40,
+        "3": 10
+      },
+      "KTermConstructorCalls": 423377,
+      "unfilledAbiPlaceholders": 39962,
+      "knownKTermArity": {
+        "0": 242135,
+        "1": 102359,
+        "2": 38306,
+        "3": 200,
+        "4": 387,
+        "5": 13,
+        "6": 9,
+        "7": 6
+      }
+    }
+  }
+}

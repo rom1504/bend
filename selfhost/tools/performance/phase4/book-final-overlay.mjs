@@ -23,6 +23,14 @@ law book_final_fast:
   for +done: List<&2,KDef>
   List<&2,KDef>
 
+law book_final_names_valid:
+  for +book: List<&2,KDef>
+  Bool
+
+law book_final_name_valid:
+  for +name: String
+  Bool
+
 law book_final_large:
   for +book: List<&2,KDef>
   for +remaining: U32
@@ -67,15 +75,38 @@ law book_final_legacy:
 
 @unsafe
 def book_final_large(book, remaining):
-  kc(Bool, U32.is_eq(remaining, 0), u => True{}, u =>
-    match book:
-      case Nil{}: False{}
-      case Con{h, rest}: book_final_large(rest, U32.sub(remaining, 1)))
+  match book:
+    case Nil{}: U32.is_eq(remaining, 0)
+    case Con{h, rest}:
+      kc(Bool, U32.is_eq(remaining, 0), u => True{}, u => book_final_large(rest, U32.sub(remaining, 1)))
+
+# Malformed raw JavaScript names retain the legacy comparison demand order.
+# Projection and Char.to_u32 do not throw on surrogate codepoints; only the
+# unchanged legacy comparisons decide whether such input must fail.
+@unsafe
+def book_final_name_valid(name):
+  match name:
+    case SNil{}: True{}
+    case SCon{h, rest}:
+      kc(Bool, U32.is_le(U32.sub(Char.to_u32(h), 55296), 2047),
+        u => False{}, u => book_final_name_valid(rest))
+
+@unsafe
+def book_final_names_valid(book):
+  match book:
+    case Nil{}: True{}
+    case Con{d, rest}:
+      kc(Bool, book_final_name_valid(dn(d)),
+        u => book_final_names_valid(rest), u => False{})
 
 @unsafe
 def book_final_fast(book, done):
-  kc(List<&2,KDef>, book_final_large(book, 64),
-    u => book_final_scan(book_final_reverse(book, Nil{}), missing(), Nil{}, done),
+  kc(List<&2,KDef>, book_final_large(book, 256),
+    u => kc(List<&2,KDef>, book_final_names_valid(book),
+      u => kc(List<&2,KDef>, book_final_names_valid(done),
+        u => book_final_scan(book_final_reverse(book, Nil{}), missing(), Nil{}, done),
+        u => book_final_legacy(book, done)),
+      u => book_final_legacy(book, done)),
     u => book_final_legacy(book, done))
 
 @unsafe

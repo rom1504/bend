@@ -1,0 +1,50 @@
+{
+  "kind": "phase4-book-final-independent-audit-build",
+  "scope": "Actual library emitted by frozen checked B1 from minimal core/index source component; not a bootstrap fixed-point proof.",
+  "checkedBuild": {
+    "exitCode": 0,
+    "observedDiagnostic": "All terms check, but 160 defs rely on unsafe or foreign code",
+    "mode": "library",
+    "cpu": 3,
+    "node": "v24.18.0",
+    "stackMiB": 4,
+    "heapMiB": 4096
+  },
+  "identitiesRecordedAfterBuild": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/book-final-audit/component.bend",
+      "sha256": "7dc2036b250f977bcbc8f82fdd21eeb7ad531666d54ed668edb1f87a055ac0b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/book-final-audit/component.mjs",
+      "sha256": "504ef7ae3618630d14e66682fceca4d9cf5002a55ee8c5465989f644de006bf6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/b1.mjs",
+      "sha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/typed-driver.mjs",
+      "sha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+      "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+    }
+  ],
+  "thresholdInAuditedSource": 64,
+  "findings": [
+    "single malformed suffix matches; initial proposed witness falsified",
+    "distinct malformed names with shared invalid prefix: legacy error, fast success",
+    "malformed book/done common prefix: legacy error, fast success",
+    "identical invalid names both reject; non-BMP/empty/reserved/BookCache cases match"
+  ]
+}

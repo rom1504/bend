@@ -19,7 +19,6 @@ const inputs = new Map();
 const capture = file => { const item = identity(file); inputs.set(item.file, item); return item.file; };
 const verify = () => { for (const item of inputs.values()) assert.deepEqual(identity(item.file), item, 'Build input changed: ' + item.file); };
 const report = {kind: 'phase4-checked-overlay', complete: false, started: new Date().toISOString(), node: {path: process.execPath, version: process.version, args: process.execArgv}, phases: [], modules: []};
-let renderError = error => error?.stack || String(error);
 const flush = () => fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify({...report, inputs: [...inputs.values()]}, null, 2) + '\n');
 async function timed(name, action) {
   const start = performance.now();
@@ -42,9 +41,6 @@ async function git(upstream, args, label) {
 flush();
 try {
   capture(import.meta.filename); capture(configFile); capture(process.execPath);
-  const toolSnapshot = path.join(out, 'checked-overlay.mjs');
-  fs.copyFileSync(import.meta.filename, toolSnapshot); capture(toolSnapshot);
-  report.toolSnapshot = identity(toolSnapshot);
   const baseline = resolve(config.baseline), overlay = config.overlay ? resolve(config.overlay) : null;
   const frozenFile = capture(path.join(baseline, 'manifest.json'));
   const frozen = JSON.parse(fs.readFileSync(frozenFile));
@@ -77,7 +73,6 @@ try {
   const roots = [...new Set([...Object.keys(previous), ...(config.extraRoots ?? [])])];
   assert.ok(roots.every(name => typeof name === 'string' && name.length)); report.roots = roots;
   const B = await import(pathToFileURL(path.join(upstream, 'bend2/bend.ts')));
-  renderError = error => error?.$ === 'Err' ? B.err_show(error) : error?.stack || String(error);
   const C = await import(pathToFileURL(path.join(upstream, 'bend2/comp.ts')));
   const book = B.book_nil();
   await timed('load', () => B.book_load(book, source, '', new Map()));
@@ -88,6 +83,6 @@ try {
   assert.equal(await git(upstream, ['rev-parse', 'HEAD'], 'revision-after'), manifest.upstream);
   assert.equal(await git(upstream, ['status', '--porcelain', '--untracked-files=no'], 'status-after'), '');
   report.inputsUnchanged = true; report.complete = true;
-} catch (error) { report.error = renderError(error); process.exitCode = 1; }
+} catch (error) { report.error = error?.stack || String(error); process.exitCode = 1; }
 report.finished = new Date().toISOString(); flush();
 console.log(JSON.stringify({complete: report.complete, api: report.api, phases: report.phases, error: report.error}));

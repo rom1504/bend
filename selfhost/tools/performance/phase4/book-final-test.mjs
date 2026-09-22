@@ -30,25 +30,21 @@ function check(label, values, prior = []) {
 let state = 0x77ac4011;
 const next = () => { state = (Math.imul(state, 1664525) + 1013904223) >>> 0; return state; };
 const kinds = ['Def', 'ADT', 'Absent', 'BookCache', 'IndexLeaf', '$final.seen'];
-for (const size of [0, 1, 2, 16, 63, 64, 65, 128, 512]) {
+for (const size of [0, 1, 2, 16, 63, 64, 65, 128, 255, 256, 257, 512]) {
   check('unique-' + size, Array.from({length: size}, (_, i) => def('name-' + i, i)));
   check('duplicate-' + size, Array.from({length: size}, (_, i) => def('same', i)), [def('same', 900), def('untouched', 901), def('untouched', 902)]);
 }
 const names = ['', '$kernel.cache', '$kernel.max-id', '$final.seen', 'é', '𐀀', '🦋', 'a', 'aa', 'a\0b', 'z'];
 for (let sample = 0; sample < 80; sample++) {
-  const values = Array.from({length: 60 + next() % 110}, (_, i) => def(names[next() % names.length], i, kinds[next() % kinds.length]));
+  const values = Array.from({length: (sample % 2 ? 240 : 60) + next() % 110}, (_, i) => def(names[next() % names.length], i, kinds[next() % kinds.length]));
   const prior = Array.from({length: next() % 35}, (_, i) => def(names[next() % names.length], 1000 + i, kinds[next() % kinds.length]));
   check('random-' + sample, values, prior);
 }
-// Find and retain a real full 32-bit FNV collision, exercising exact-name buckets.
+// A verified full 32-bit FNV collision exercises exact-name buckets.
 const hash = name => { let h = 2166136261; for (const char of name) h = Math.imul(h ^ char.codePointAt(0), 16777619) >>> 0; return h; };
-const hashes = new Map(); let collision;
-for (let i = 0; i < 300000 && !collision; i++) {
-  const name = 'collision-' + i, h = hash(name);
-  if (hashes.has(h)) collision = [hashes.get(h), name, h]; else hashes.set(h, name);
-}
-assert.ok(collision, 'Collision fixture search must succeed'); report.collision = collision;
-check('full-hash-collision', Array.from({length: 140}, (_, i) => def(i % 3 ? collision[i % 2] : 'extra-' + i, i)), [def(collision[0], 900), def(collision[1], 901)]);
+const collision = ['costarring', 'liquid', hash('costarring')];
+assert.equal(hash(collision[1]), collision[2]); report.collision = collision;
+check('full-hash-collision', Array.from({length: 340}, (_, i) => def(i % 3 ? collision[i % 2] : 'extra-' + i, i)), [def(collision[0], 900), def(collision[1], 901)]);
 for (const size of [64, 256, 1024, 2048]) {
   const values = Array.from({length: size}, (_, i) => def('d' + i, i));
   const book = list(values), done = list([]);

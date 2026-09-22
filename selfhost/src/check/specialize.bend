@@ -616,11 +616,7 @@ def sp_put(st, d):
 
 @unsafe
 def sp_canonical(book, done):
-  match book:
-    case Nil{}:
-      done
-    case Con{h, rest}:
-      sp_canonical(rest, Con{h, book_without(done, dn(h))})
+  book_final_fast(book, done)
 
 @unsafe
 def specialize_book(book):

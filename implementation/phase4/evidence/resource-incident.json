@@ -1,0 +1,92 @@
+{
+  "kind": "phase4-resource-incident",
+  "fullProfile": {
+    "config": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/b1-full-profile-config.json",
+    "report": {
+      "kind": "phase4-diagnostic-cpu-profile",
+      "complete": false,
+      "started": "2026-09-22T14:26:58.040Z",
+      "scope": "Instrumented one-request profile, after Base preparation and dependency discovery. CPU samples and API spans diagnose costs; instrumentation and warmed discovery mean these are not benchmark samples.",
+      "node": {
+        "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "version": "v24.18.0",
+        "args": [
+          "--stack-size=4096",
+          "--max-old-space-size=12288"
+        ]
+      },
+      "affinity": "Cpus_allowed_list:\t1",
+      "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/b1.mjs",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/compiler.bend",
+      "mode": "library",
+      "primeMs": 81.02643399999994,
+      "samplingIntervalMicroseconds": 1000,
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/cpu-profile.mjs",
+          "sha256": "105b05f04d8c858349f81025ae4549dedd6fd51c100f81cc038e8b407e09bce1"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/b1-full-profile-config.json",
+          "sha256": "75f26323f76e071e48466ecf07082d67542c48fd5d7672bb16c0205e4130fee1"
+        },
+        {
+          "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/b1.mjs",
+          "sha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/typed-driver.mjs",
+          "sha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+          "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+          "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/compiler.bend",
+          "sha256": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs",
+          "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/assemble.mjs",
+          "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/native-build.mjs",
+          "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/node-resource-args.mjs",
+          "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+        }
+      ],
+      "events": []
+    },
+    "exitCode": 124,
+    "timeoutSeconds": 1800,
+    "completedCpuProfile": false,
+    "note": "Full-source inspector sampling at 1ms failed to finish inside its external deadline. No profile or valid full-source timing was produced."
+  },
+  "observedOtherEffects": [
+    "representation worker scheduling pause and output-child timeout",
+    "analysis dual-API worker exited137 without diagnostic",
+    "private-image run2 retained two deadline failures"
+  ],
+  "excludedTimingWindowUTC": [
+    "2026-09-22 14:39",
+    "2026-09-22 14:57"
+  ],
+  "causality": "The full-source sampler may have contributed memory/scheduling pressure. A definitive host OOM cause is not available; no cgroup v2 memory.events file was exposed. Exit137 alone does not prove OOM.",
+  "mitigation": "No further full-source CPU sampling. Use small diagnostic profiles, bounded fresh workers, separate physical CPU cores, and3\u20134GiB per-worker heaps; rerun affected timing matrices after recovery."
+}

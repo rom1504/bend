@@ -62,8 +62,16 @@ Retained reports and raw profiles:
 - [List-sort report](evidence/h-list-profile.json) and
   [compressed CPU profile](evidence/h-list-profile.cpuprofile.gz).
 
-A full-source B1 diagnostic profile is also running. Its timing will be labeled
-as instrumented and kept separate from controlled comparisons.
+A full-source B1 inspector profile failed to finish within its 1,800-second
+external deadline (exit 124); no completed profile or valid timing was produced.
+Other workers experienced scheduling delays, deadline failures, and an exit 137
+during the same period. The sampler may have contributed resource pressure, but
+the exact host cause is unproven. All affected timing conclusions were withheld
+and the agents repeated their controlled matrices after recovery. The
+[incident record](evidence/resource-incident.json) preserves the incomplete run
+and excluded window, 14:39–14:57 UTC. Subsequent profiles use a small input,
+three-minute maximum deadline and 3 GiB heap through
+[`bounded-profile.mjs`](../../selfhost/tools/performance/phase4/bounded-profile.mjs).
 
 ## Experiments underway
 
@@ -86,11 +94,30 @@ all other tags on the original evaluator. A disposable list-sort ablation showed
 about 1.16x; a checked Bend-source overlay and exact normalization controls are
 required before accepting that result as an implementation improvement.
 
-The coordinator is testing indexed final-definition selection for
+Indexed final-definition selection is now integrated in the Bend sources for
 `driver_final` and `sp_canonical`. The old routines repeatedly filter all prior
-declarations. The candidate preserves last-definition-wins order and the initial
-list's unrelated duplicates; short lists retain the original path. It is still
-an isolated source overlay, not a production change.
+declarations. The new helper preserves last-definition-wins order and the initial
+list's unrelated duplicates, with the original path below 256 events. The
+[independent audit](book-final-audit.md) caught a malformed-UTF-16 error-order
+change in the first index prototype. The integrated version uses a nonthrowing
+name guard and falls back to the unchanged original algorithm for those inputs.
+
+The checked integrated overlay passed 105 structural cases, a real full FNV
+collision, and 23 actual Bend-emitted H boundary cases plus eight name-validity
+controls. On the actual parsed compiler book (3,212 events), B1 final-definition
+selection improved from 2.151 seconds to 0.115 seconds, 18.75x; Base selection
+improved 1.42x under B1 and 1.40x in the H component. These are component results,
+not full-compilation gains. See [the real-book report](book-final-real.md).
+
+The guarded source candidate's fresh-process three-way comparison passed all
+27 exact observation/output/execution samples. Tree request medians were
+1.679 seconds for baseline B1, 1.588 seconds for the candidate, and 0.402 seconds
+for pinned TypeScript. List-sort medians were 3.038, 2.950, and 0.436 seconds.
+The unchanged rejection control was 0.816 versus 0.811 seconds. The modest
+whole-request changes are distinct from the large isolated-helper improvement.
+The [complete comparison](evidence/book-final-guarded-small.json.gz),
+[checked build](evidence/book-final-checked-build.json), and
+[component gate](evidence/book-final-guarded-component.json) retain identities.
 
 The shared
 [`checked-overlay.mjs`](../../selfhost/tools/performance/phase4/checked-overlay.mjs)
@@ -102,7 +129,9 @@ and a deadline.
 
 ## Pending completion gates
 
-No Phase 4 production optimization or distributed API promotion has been claimed
-at this checkpoint. Combined-source checking, broader exact conformance, final
-controlled timing, checked self-reproduction, native validation where affected,
-and final development documentation remain to be completed during this pass.
+The guarded selection algorithm has passed its focused checks and is integrated;
+the default distributed API has not been replaced. Combined-source checking,
+broader exact conformance, final controlled timing, checked self-reproduction,
+and native validation where affected remain to be completed during this pass.
+The [development guide](../../docs/PHASE4_DEVELOPMENT.md), linked from both READMEs,
+documents the checked-overlay and bounded-profiling workflows.

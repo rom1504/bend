@@ -1,0 +1,21 @@
+{
+  "cpu": 3,
+  "rounds": 1,
+  "timeoutMs": 120000,
+  "variants": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/representation/variants",
+  "driver": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/typed-driver.mjs",
+  "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+  "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+  "workloads": [
+    {
+      "id": "tree",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+      "expectedStdout": "42\n"
+    },
+    {
+      "id": "list",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+      "expectedStdout": "6\n"
+    }
+  ]
+}

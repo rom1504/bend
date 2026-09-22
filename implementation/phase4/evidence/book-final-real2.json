@@ -1,0 +1,242 @@
+{
+  "kind": "phase4-real-parsed-book-canonicalization",
+  "complete": true,
+  "config": {
+    "baseline": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline",
+    "checkedReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/book-final-checked4/report.json",
+    "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "hUnguarded": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/book-final-audit/component.mjs",
+    "hGuarded": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/book-final-audit4/component.mjs",
+    "cpu": 3
+  },
+  "identity": {
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/book-final-real.mjs": "d5baa9b34cf329ca370eb77c007f0e4423f59e012b0a20b691ef959a8f079a16",
+    "selfhost/build/phase4/book-final-real-config.json": "11632c5a57e1c5085ce0a2dade6c6021390857c96dfa9bdf7e52ef0e90c32e4e",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/book-final-checked4/report.json": "a1dd7a359ed1103525fd1c1c397802f25cf879d6d361063b0234a7a2597e1708",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/book-final-checked4/api.mjs": "a312d55c26846c6720e962f0baf4349468326ba40ae952f6467578d73be4dc25",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/manifest.json": "5135ae606df243b0e51bb6ed7e3d5a1bc7876c7448b11540efc837acf7f3b989",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/api/b1.mjs": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/compiler.bend": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/typed-driver.mjs": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/book-final-audit/component.mjs": "504ef7ae3618630d14e66682fceca4d9cf5002a55ee8c5465989f644de006bf6",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/book-final-audit4/component.mjs": "de9fa7047fb9b7a1880da6bdf7dee8c37c94cbdd47ba6deea2a9ff01939661f7",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/compiler-abi.mjs": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/assemble.mjs": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/native-build.mjs": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/tools/node-resource-args.mjs": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758",
+    "selfhost/build/phase4/book-final-real2.json.control.mjs": "1de39a0aaa996dd17f2203ff3c6a7089b9884695c9602ed60898d6ae377ad384"
+  },
+  "node": {
+    "version": "v24.18.0",
+    "args": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ]
+  },
+  "scope": "Component work on a source-identity-checked parsed compiler book; no repeated checker or code generator. Base preparation checked normally and reported separately.",
+  "phases": [
+    {
+      "name": "validated Base preparation",
+      "milliseconds": 86.32840900000002
+    },
+    {
+      "name": "discover and parse compiler source",
+      "milliseconds": 15770.651861
+    },
+    {
+      "name": "load graph with validated Base seed",
+      "milliseconds": 24372.103057
+    }
+  ],
+  "rows": [
+    {
+      "dataset": "Base",
+      "image": "checked-B1",
+      "method": "book_final_legacy",
+      "round": 0,
+      "milliseconds": 78.47199300000648,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "checked-B1",
+      "method": "book_final_fast",
+      "round": 0,
+      "milliseconds": 38.46163299999898,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "checked-B1",
+      "method": "book_final_fast",
+      "round": 1,
+      "milliseconds": 54.804974999999104,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "checked-B1",
+      "method": "book_final_legacy",
+      "round": 1,
+      "milliseconds": 57.82395700000052,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "checked-B1",
+      "method": "book_final_legacy",
+      "round": 2,
+      "milliseconds": 64.81311899999855,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "checked-B1",
+      "method": "book_final_fast",
+      "round": 2,
+      "milliseconds": 45.53497999999672,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "compiler",
+      "image": "checked-B1",
+      "method": "book_final_legacy",
+      "round": 0,
+      "milliseconds": 2151.027240000003,
+      "outputSha256": "309d3eb7b6e569adc1994ec60dce2c87b53288c20a8fd33a6e2459fed836e24a"
+    },
+    {
+      "dataset": "compiler",
+      "image": "checked-B1",
+      "method": "book_final_fast",
+      "round": 0,
+      "milliseconds": 114.7523680000013,
+      "outputSha256": "309d3eb7b6e569adc1994ec60dce2c87b53288c20a8fd33a6e2459fed836e24a"
+    },
+    {
+      "dataset": "compiler",
+      "image": "checked-B1",
+      "method": "book_final_fast",
+      "round": 1,
+      "milliseconds": 143.51409799999965,
+      "outputSha256": "309d3eb7b6e569adc1994ec60dce2c87b53288c20a8fd33a6e2459fed836e24a"
+    },
+    {
+      "dataset": "compiler",
+      "image": "checked-B1",
+      "method": "book_final_legacy",
+      "round": 1,
+      "milliseconds": 2156.2412189999886,
+      "outputSha256": "309d3eb7b6e569adc1994ec60dce2c87b53288c20a8fd33a6e2459fed836e24a"
+    },
+    {
+      "dataset": "compiler",
+      "image": "checked-B1",
+      "method": "book_final_legacy",
+      "round": 2,
+      "milliseconds": 2142.803651999988,
+      "outputSha256": "309d3eb7b6e569adc1994ec60dce2c87b53288c20a8fd33a6e2459fed836e24a"
+    },
+    {
+      "dataset": "compiler",
+      "image": "checked-B1",
+      "method": "book_final_fast",
+      "round": 2,
+      "milliseconds": 107.9122800000041,
+      "outputSha256": "309d3eb7b6e569adc1994ec60dce2c87b53288c20a8fd33a6e2459fed836e24a"
+    },
+    {
+      "dataset": "Base",
+      "image": "H-component",
+      "method": "legacy",
+      "round": 0,
+      "milliseconds": 191.4934579999972,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "H-component",
+      "method": "unguarded",
+      "round": 0,
+      "milliseconds": 101.9070500000089,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "H-component",
+      "method": "guarded",
+      "round": 0,
+      "milliseconds": 110.86891099999775,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "H-component",
+      "method": "guarded",
+      "round": 1,
+      "milliseconds": 133.59009300000616,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "H-component",
+      "method": "unguarded",
+      "round": 1,
+      "milliseconds": 130.6736729999975,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "H-component",
+      "method": "legacy",
+      "round": 1,
+      "milliseconds": 170.90986099999282,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "H-component",
+      "method": "legacy",
+      "round": 2,
+      "milliseconds": 169.1772889999993,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "H-component",
+      "method": "unguarded",
+      "round": 2,
+      "milliseconds": 155.67589600000065,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "dataset": "Base",
+      "image": "H-component",
+      "method": "guarded",
+      "round": 2,
+      "milliseconds": 122.06278399999428,
+      "outputSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    }
+  ],
+  "datasets": [
+    {
+      "label": "Base",
+      "definitions": 479,
+      "inputSha256": "7a5b52137f812203004d101abe91d4995622316757e8ca513a5d2e0d22285c12",
+      "resultSha256": "5d38c53f0d0aa417fb3b5ed96c335cc7a6ce7c422fb54c6604e9224f11dc129a"
+    },
+    {
+      "label": "compiler",
+      "definitions": 3212,
+      "inputSha256": "d000032e8a54122e0b35275b8c302e5eb984f856fe80e1d141c036f286b82917",
+      "resultSha256": "309d3eb7b6e569adc1994ec60dce2c87b53288c20a8fd33a6e2459fed836e24a"
+    }
+  ],
+  "base": {
+    "sourcePath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1",
+    "validatedBy": "check_book"
+  },
+  "changedInputs": []
+}

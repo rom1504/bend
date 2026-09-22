@@ -1,104 +1,65 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-22, 20:09 UTC, after all four P4-026 observations pass.
-Next review: read the completed report before any new optimization investigation.
-The authorized six-hour window ends approximately 20:16 UTC. Compiler work,
-independent archival and code review are complete; no experiment is active.
+Evidence cutoff: 2026-09-22 21:39 UTC, baseline `7d69850`.
+Authorized Phase 5 window: 2026-09-22 21:39:36 to 2026-09-23 03:39:36 UTC.
+Next review: first frontend witnesses and workflow/equality falsifiers, about 22:15 UTC.
 
 ## User objective
 
-Make the compiler written in Bend much faster, produce efficient code, and make
-correct validation iterations much faster. Preserve correctness. The user also
-requested the experiment-file methodology inspired by `rom1504/math`.
-The routes below are investigator choices, not additional user requirements.
+Prioritize conformance, simplify code where it helps future changes, and retain
+or improve the fast development loop. Work for six hours, document the design
+and results, and commit/push validated increments. See the
+[Phase 5 design](../design/phase5/conformance_and_development.md).
 
 ## Established position
 
-- The normal checked B1 rebuild plus the first paired 21-case command takes
-  37.217 seconds of child-process wall. Reused validation takes 9.328 seconds
-  median. This is the preferred focused edit loop.
-- Combined source passed checked self-reproduction; full H self-emission took
-  1,591.343 seconds. Pinned TypeScript compiles the identical source/root policy
-  in 51.443 seconds process-wall median. They were separate runs on different
-  physical cores; the roughly 30.9× gap is descriptive, not a controlled causal
-  comparison of optimization versions.
-- All 2,756 frontend observations remain unchanged. There are still 560 exact
-  differences from upstream. Preservation does not establish full conformance.
-- Native O2 same-source alternating comparisons have medians 284.807→245.364
-  seconds for old/new compiler; all emitted libraries equal the new H. There is
-  visible control drift, retained in the report.
-- The explicit private compiler boundary removes substantial generic dispatch
-  cost on tested subsets. Its initial whole-source failure (`F is not defined`)
-  exposed an invalid lexical capture; the correction and counterexample are
-  retained. Both corrected default and combined profile now emit exact H twice.
-  Control/profile means are 805.634→787.260 seconds, 2.28% less wall; individual
-  pairs improve 3.91% and 0.75%, with visible drift and 3.16% higher mean
-  maximum-child RSS. This is a modest additional profile gain.
-- The final private frontend independently preserves all 2,756 raw results and
-  verdicts. Canonical named-profile packaging must reproduce exact image bytes
-  and pass its guards; the default remains unchanged.
-- The corrected Boolean/stability four-way comparison passes all 48 observations.
-  Core median request time is 26.902→23.855 seconds, 11.3% less. Final successful
-  small private requests take 35.0%/36.9% less time than public H, but remain
-  5.14×/8.05× the pinned TypeScript request time. Do not extrapolate either result
-  to full-source wall time.
-- Native parallel annotation is rejected: two-worker component wall is 11.5%
-  worse in both orders, despite exact annotation trees. Propagated task-mode
-  eligibility is a concrete suspicion, not a causal result.
-- Four-core frontend scheduling preserves every observation and history, with
-  3.47× throughput against an idle serial bracket. Canonical private packaging
-  reproduces the exact default/profile images and passes 25 cases/seven guards.
-- Guarded B1 equality passes 909 helper controls, twelve selected observations,
-  the full frontend sweep and an exact whole-source H emission. Opposite-order
-  core gains are 35.58%/35.13%. The subsequent fresh P4-026 full-source comparison
-  reduces mean wall 630.026→339.992 seconds, 46.04% less / 1.85× faster. Both
-  opposite-order pairs improve about 46%; all four outputs are exact H. Mean
-  peak RSS is 1.56% lower, but the second candidate is slightly higher than its
-  control. This remains an exact-artifact derivative, not a new checked build.
-- The counted substitution family is frequent, but its narrow saturated-worker
-  prototype improves the core by 7.25% then 1.99%. Reject it at the preregistered
-  consistent-5% threshold despite 157 semantic controls and four exact outputs.
+- Current source:59 Bend modules,16,055 physical lines; generated files excluded.
+- All 919 positive frontend fixtures pass;377 strict negative-check failures remain.
+- Live TypeScript comparison:560 differences across375 fixtures, including 50
+  acceptance/phase observations; matching status is not proof of the same rule.
+- Focused reused loop 9.328 seconds; checked rebuild plus cold cases 37.217 seconds.
+- Four-core full frontend inventory about 5 minutes, with known failures retained.
+- Exact-image B1 equality improves controlled full-source wall 630.026→339.992s.
+  It is not yet a reusable checked-source optimization. Public H remains separate.
+- Phase 4 correctness/performance records remain immutable and artifact-specific.
 
-## Ranked next decisions
+## Ranked work and cheapest falsifiers
 
-| Rank | Route | Cheapest useful test | Stop or promotion criterion |
+| Rank | Work | First decisive gate | Owner |
 | --- | --- | --- | --- |
-| 1 | Generalize equality safely in a later investigation | Compare an explicit derived-build contract with a compiler-local Bend predicate | Genuine checked provenance, Unicode/error controls, no regression of H's existing intrinsic |
-| 2 | Use the established fast loop for conformance work | Focused exact witnesses for one existing mismatch, then the four-core regression gate | Preserve phase/diagnostic distinctions and require backend witnesses for backend edits |
-| 3 | Investigate shared identifier/index costs | Separate tag tests, name hashes and list membership counts | Count before migration; do not reintroduce rejected eager suffix indexing |
-| 4 | General typed workers/constructor continuations | Explain why a broader lowering overcomes the P4-025 null before implementation | Demand/error/deep-stack controls, real-core threshold, then broad gates |
+|1|Shared binder validation and decorator grammar|Live TS/B1 counterexamples plus valid neighbors|compact_index|
+|2|Current mismatch triage and shared diagnostic fidelity|Cluster raw differences, verify intended rule and exact rendering|root|
+|3|One maintained development entry|Fresh checked build, selected probes, drift/failure/resume controls|direct_calls|
+|4|Portable B1 equality derivative|Strict provenance/dependency recognition, two new checked builds and Unicode/error controls|lexer_analysis|
 
-P4-026 completed at 20:08:44, before its unchanged 20:09 deadline. Its consumed
-plan stays immutable; the outcome is linked from the ledger and dedicated report.
-No other intentional compiler work overlapped the four samples. The P4-024
-single full-source correctness observation is excluded from these paired samples.
-Do not add percentage gains from overlapping transformations, and do not equate
-profile samples with an achievable whole-compiler speedup.
+P5-001 through P5-004 identify these tracks. Initial implementation follows the
+committed design. First prototypes get bounded review before scope expands.
+No general parser/kernel/emitter rewrite and no reopening rejected Phase 4
+memoization/uncurrying/representation ideas without new evidence.
 
-## Known obstructions
+## Correctness and promotion rules
 
-- Public function objects, getters, rebinding and argument arrays are observable.
-  Private-image assumptions cannot be exported to the ordinary library ABI.
-- The first telescope prototype changed error order; its correction must remain.
-  Substitution stability is weaker than normalization stability.
-- Weak-head pair memoization regressed core time by 4.4% and memory by 2.9%.
-  High hit counts are not a sufficient reason to retry it.
-- Direct private tag comparisons did not improve the real core. Nullary sharing
-  gave only a small inconsistent core gain. Ordinary function uncurrying has
-  zero eligible sites in the actual image.
-- Full-source inspector sampling failed after 30 minutes. Use bounded small
-  profiles and counters; keep full-source builds as integration gates.
+Keep pinned upstream unchanged. Do not fabricate bootstrap or fixed-point
+provenance for derived images. Record exact acceptance, phase, checked flag,
+diagnostic and output; generic rejection is not conformance. Preserve failed
+attempts, counterexamples, all timings and superseded decisions. Archive small
+reproducers and raw reports durably. Known suite failures remain failures.
 
-## Assignment and resource state
+Fixes require focused positive/negative gates and independent review. Combined
+source gets the full frontend inventory and a final checked fixed point after
+source freeze. Backend-impacting edits require compile-and-execute witnesses;
+GPU coverage needs actual hardware. Keep default distribution separate unless
+all intended release obligations are explicitly satisfied.
 
-Root owns strategy, evidence archives, documentation, commits and pushes.
-Direct-calls completed full-source/frontend archives and preservation indexing.
-Compact-index completed the final comparison audit and archive. Lexer-analysis completed
-the rejected worker, independent code review and equality follow-on design.
-No compiler job is running. All 59 production modules and the
-checked source remain frozen. Timing still has shared cache/memory and operating
-system effects; "no competing compiler experiment" is not OS isolation.
+## Resources and checkpoints
 
-Do not mutate source or a tool consumed by a running experiment. Preserve frozen
-controls and invalid attempts. Read the [ledger](ledger.md) before assigning the
-next wave; append a new frontier after a decisive result.
+Root coordinates source integration, broad gates, performance windows and Git.
+Short correctness jobs: root CPU0, frontend CPU1, equality CPU2, workflow CPU3;
+4 GiB Node heaps by default. Frozen sources/tools prevent concurrent edit drift.
+No timed compiler comparisons while another intentional compiler job runs.
+No broad/full-source job without root scheduling and an external deadline.
+
+Commit the initial design before implementation, then validated increments.
+Aim to freeze source by 02:20 UTC for final proof and evidence review. Reserve
+03:10–03:39UTC for documentation, audits, commit/push and final status. Stop
+new experiments at the authorized boundary; report any unfinished gates honestly.

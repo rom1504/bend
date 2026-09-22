@@ -221,3 +221,23 @@ the artifact and source routes. Shared identifier/index counts remain a useful
 algorithm investigation; the narrow worker's rejected result still constrains
 larger lowering proposals. Conformance work can already use the seconds-scale
 focused loop while retaining the 560 known upstream differences explicitly.
+
+## Phase 5 authorized: conformance and simpler development — 2026-09-22, 21:39 UTC
+
+The user authorized another six hours after reviewing current performance,
+conformance and code-size metrics. The new design prioritizes conformance,
+targeted simplification and bounded reusable optimization. Baseline is `7d69850`;
+Phase 4's observations and rejected experiments remain unchanged.
+
+Initial independent tracks are P5-001 frontend binder/decorator witnesses,
+P5-002 maintained development workflow, P5-003 portable checked-B1 equality
+interpretation, and P5-004 current mismatch triage/diagnostic fidelity. See
+[the design](../design/phase5/conformance_and_development.md). No new measured
+result is claimed by this entry.
+
+### Updated frontier
+
+Commit/push the design, reproduce cheap semantic witnesses, then implement and
+validate bounded candidates. Root coordinates shared source, full-suite gates
+and uncontended timings. Work ends 2026-09-23 03:39:36 UTC, with source freeze
+and final evidence/documentation time reserved before that deadline.

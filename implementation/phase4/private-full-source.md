@@ -33,11 +33,15 @@ wall and waited-descendant CPU; `RUSAGE_CHILDREN.ru_maxrss` is the maximum child
 resident-set observation, **not a simultaneous sum of the process tree**.
 
 The request, launcher, outer measurement, source/input audits and emitted bytes
-agree. The first-pair [archive](private-full-first-pair/comparison.json) retains
+agree. The independently reviewed
+[first-pair archive](private-full-first-pair-reviewed/comparison.json) retains
 both observations, actual consumed caches, launcher tools and image manifests.
 The audit tool also preserves its own source and the selected comparison plan.
-The independent auditor found the actual first-pair records consistent; it is
-tightening malformed-record refusal before the final four-run archive.
+The [independent review](private-full-audit-review.md) confirms the actual bytes,
+cache payloads and cross-record identities, and adds nine refusal checks for
+malformed or incomplete evidence. The original
+[first audit](private-full-first-pair/comparison.json) and an intermediate auditor
+timestamp-parsing refusal remain preserved; no compiler measurement changed.
 
 The earlier 602-second failed attempt remains in
 [the lexical-scope report](private-scope-fix.md). That error observation supplies

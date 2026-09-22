@@ -1,0 +1,121 @@
+{
+  "kind": "phase4-private-full-source-comparison",
+  "complete": true,
+  "plan": {
+    "version": 1,
+    "purpose": "Completed first pair; reverse pair remains pending and is not represented by this checkpoint.",
+    "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "sourceSha256": "34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122",
+    "expectedH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+    "expectedHSha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+    "runs": [
+      {
+        "id": "control-a",
+        "variant": "control",
+        "directory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-full-fixed",
+        "imageSha256": "61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1"
+      },
+      {
+        "id": "candidate-a",
+        "variant": "candidate",
+        "directory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-full-profile",
+        "imageSha256": "4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "index": 0,
+      "id": "control-a",
+      "variant": "control",
+      "passed": true,
+      "imageSha256": "61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1",
+      "wallMs": 780021.6014799662,
+      "requestMs": 778536.428316,
+      "maxRssKiB": 4333668,
+      "userSeconds": 777.405781,
+      "systemSeconds": 2.609995,
+      "startedUtc": "2026-09-22T17:33:40Z",
+      "finishedUtc": "2026-09-22T17:46:41Z",
+      "baseCache": {
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/scope-fixed/host/build/typed/cache/base-61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/scope-fixed/host/build/typed/cache/base-61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json",
+          "sha256": "4706214a90876348c41b4bea316e89b538c37ed25ac66cf5089dcb180b24f3c9"
+        },
+        "compilerSha256": "61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1",
+        "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+        "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1",
+        "generated": "2026-09-22T17:32:54.370Z"
+      }
+    },
+    {
+      "index": 1,
+      "id": "candidate-a",
+      "variant": "candidate",
+      "passed": true,
+      "imageSha256": "4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3",
+      "wallMs": 749522.6617702283,
+      "requestMs": 747601.0008469999,
+      "maxRssKiB": 4464192,
+      "userSeconds": 746.921003,
+      "systemSeconds": 2.590022,
+      "startedUtc": "2026-09-22T17:52:01Z",
+      "finishedUtc": "2026-09-22T18:04:31Z",
+      "baseCache": {
+        "identity": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/profile-combined/host/build/typed/cache/base-4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/profile-combined/host/build/typed/cache/base-4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3-b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946-17959e2d779b5ff942b3612057f623370b55ace5688d31734f9eff6f35f1d0de.json",
+          "sha256": "644353ad0a94baa2a985a00330221d1d3d80d8d571a8fea34417e9b44eaa212c"
+        },
+        "compilerSha256": "4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3",
+        "baseSha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+        "bookSha256": "3e540547f0abcda6a28582a27b4b3fa5bfebfe4dbd80f77fd4ed8129499797a1",
+        "generated": "2026-09-22T17:46:48.037Z"
+      }
+    }
+  ],
+  "errors": [],
+  "inputsRechecked": true,
+  "scope": "Every planned observation required. Same source, CPU2, CLI and limits. Fresh processes, preexisting distinct validated Base caches; OS caches not flushed; other cores active.",
+  "rssScope": "Linux RUSAGE_CHILDREN ru_maxrss: maximum child high-water RSS reported through waited descendants, not simultaneous aggregate process-tree memory.",
+  "timingScope": "Request is host inspect plus consumed-read audit. Outer process wall includes CLI startup/supervision/publication but excludes measurement-wrapper final hashing.",
+  "summary": {
+    "control": {
+      "samples": 1,
+      "wallMs": {
+        "median": 780021.6014799662,
+        "min": 780021.6014799662,
+        "max": 780021.6014799662
+      },
+      "requestMs": {
+        "median": 778536.428316,
+        "min": 778536.428316,
+        "max": 778536.428316
+      },
+      "maxRssKiB": {
+        "median": 4333668,
+        "min": 4333668,
+        "max": 4333668
+      }
+    },
+    "candidate": {
+      "samples": 1,
+      "wallMs": {
+        "median": 749522.6617702283,
+        "min": 749522.6617702283,
+        "max": 749522.6617702283
+      },
+      "requestMs": {
+        "median": 747601.0008469999,
+        "min": 747601.0008469999,
+        "max": 747601.0008469999
+      },
+      "maxRssKiB": {
+        "median": 4464192,
+        "min": 4464192,
+        "max": 4464192
+      }
+    }
+  }
+}

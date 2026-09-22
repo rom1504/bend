@@ -1,0 +1,59 @@
+{
+  "kind": "phase4-private-full-source-comparison",
+  "complete": false,
+  "plan": {
+    "version": 1,
+    "purpose": "Completed first pair; reverse pair remains pending and is not represented by this checkpoint.",
+    "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "sourceSha256": "34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122",
+    "expectedH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+    "expectedHSha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+    "runs": [
+      {
+        "id": "control-a",
+        "variant": "control",
+        "directory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-full-fixed",
+        "imageSha256": "61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1"
+      },
+      {
+        "id": "candidate-a",
+        "variant": "candidate",
+        "directory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-full-profile",
+        "imageSha256": "4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "index": 0,
+      "id": "control-a",
+      "variant": "control",
+      "passed": false,
+      "error": "Invalid isoformat string: '2026-09-22T17:33:40Z'"
+    },
+    {
+      "index": 1,
+      "id": "candidate-a",
+      "variant": "candidate",
+      "passed": false,
+      "error": "Invalid isoformat string: '2026-09-22T17:52:01Z'"
+    }
+  ],
+  "errors": [
+    {
+      "run": "control-a",
+      "error": "Invalid isoformat string: '2026-09-22T17:33:40Z'",
+      "type": "ValueError"
+    },
+    {
+      "run": "candidate-a",
+      "error": "Invalid isoformat string: '2026-09-22T17:52:01Z'",
+      "type": "ValueError"
+    }
+  ],
+  "inputsRechecked": true,
+  "scope": "Every planned observation required. Same source, CPU2, CLI and limits. Fresh processes, preexisting distinct validated Base caches; OS caches not flushed; other cores active.",
+  "rssScope": "Linux RUSAGE_CHILDREN ru_maxrss: maximum child high-water RSS reported through waited descendants, not simultaneous aggregate process-tree memory.",
+  "timingScope": "Request is host inspect plus consumed-read audit. Outer process wall includes CLI startup/supervision/publication but excludes measurement-wrapper final hashing.",
+  "timingsWithheld": "At least one planned observation or provenance check is incomplete or failed. No successful-only summary."
+}

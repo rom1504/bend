@@ -1,0 +1,39 @@
+✔ private positional/tail and scalar modes preserve ordinary values and failure boundaries (151.019233ms)
+✔ runtime primitive override is not specialized; zero-arity factory stays lazy (6.115124ms)
+✖ block-local generated helpers remain captured on ordinary and tail calls (12.440641ms)
+✔ old public getter counterexample remains observable in untouched public image (4.349771ms)
+✔ inspect transport rejects function/graph/global/mode injection without invoking hooks (0.619743ms)
+✔ private branded application keeps partial/overapplication and tail semantics (21.0756ms)
+✔ private projection leaf inlining preserves immutable compiler record slots (9.70416ms)
+✔ private missing constant requires exact closed-body proof; arbitrary fn0 stays fresh (14.697687ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 250.302686
+
+✖ failing tests:
+
+test at tools/private-compiler/transform.test.mjs:51:1
+✖ block-local generated helpers remain captured on ordinary and tail calls (12.440641ms)
+  AssertionError [ERR_ASSERTION]: calls scoped_call
+  + actual - expected
+  
+    {
+  +   error: 'ReferenceError: F is not defined'
+  -   value: 4
+    }
+  
+      at TestContext.<anonymous> (file:///home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/transform.test.mjs:69:102)
+      at async Test.run (node:internal/test_runner/test:1332:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: [Object],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

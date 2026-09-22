@@ -100,7 +100,9 @@ The first final-source private full compile found an emission regression:
 specialized workers lost a block-local generated helper table and returned
 `F is not defined`. Its complete error observation and failed 602-second outer
 measurement are retained in [P4-016](../../experiments/phase4/P4-016-private-lexical-scope.md).
-The private transformation is being corrected before further promotion. Earlier
+The [lexical-scope correction](private-scope-fix.md) now passes 25 package tests,
+14 actual split-worker controls and the exact escaped-string output comparison;
+its new full-source run is pending. Earlier
 selected program/frontend successes do not establish this missing emission gate.
 The [54-observation final small matrix](small-comparison.md) remains scoped to
 its tested inputs, including its recorded negative-case regression.

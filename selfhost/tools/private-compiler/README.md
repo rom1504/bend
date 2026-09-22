@@ -58,6 +58,11 @@ constant. Unknown runtime/constant shapes fail closed. Partial/overapplication,
 zero-arity factories outside that proof, and ordinary public runtime mutation
 remain covered by the original paths/tests. Build manifests are provenance
 records, not cryptographic attestations against a malicious local builder.
+Only module-level generated functions are hoisted into positional workers.
+Functions enclosed by emitted lexical blocks retain their original closures and
+generic calls. The generated-suffix scope proof rejects unsupported syntax,
+unbalanced delimiters and duplicate global definitions; quoted braces and names
+are not treated as bindings. This preserves split matcher helper tables.
 The worker is an API isolation boundary, not an OS sandbox for arbitrary host
 plugins or a forged compiler artifact.
 

@@ -58,3 +58,21 @@ standalone gains: the four-way Boolean/stability comparison already shows
 interactions and run variation. The exact Con-arm pilot
 [P4-015](phase4/P4-015-exact-con-arms.md) is rejected for inconsistent material
 benefit; retain its proof and measurements without escalating to a full build.
+
+## Private scope correction — 2026-09-22
+
+The fix for [P4-016](phase4/P4-016-private-lexical-scope.md) is independently
+reviewed. Only proven module-level generated functions can be hoisted; captured
+workers use the original closure. Twenty-five package tests and fourteen actual
+split-worker controls pass. The escaped-string fixture's actual output equals
+public H byte for byte. The new private image is `61e7d94c…`; its full-source
+request is running under the original resource limits.
+
+### Updated frontier
+
+Complete that full-source gate and regenerate the Boolean/stability comparison
+on the corrected base. The original four-way results remain scoped historical
+evidence. Prioritize exact final-image frontend observations once the candidate
+is chosen. Archive principal checked artifacts so later investigations can start
+from verified bytes without repeating an eleven-minute emission solely to
+recover their starting image.

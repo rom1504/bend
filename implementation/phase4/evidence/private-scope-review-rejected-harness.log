@@ -1,0 +1,14 @@
+file:///home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/calls.mjs:41
+        if(source[i]==='\n')throw Error('Multiline generated string');
+                                  ^
+
+Error: Multiline generated string
+    at topLevelDefinitionLines (file:///home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/calls.mjs:41:35)
+    at transformPrivateCalls (file:///home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/calls.mjs:73:54)
+    at specializeCompiler (file:///home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/transform.mjs:6:15)
+    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/private-scope-review.mjs:16:17
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0

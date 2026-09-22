@@ -1,0 +1,166 @@
+{
+  "complete": true,
+  "scope": "Actual frozen H j_escape and nb_fork_close bodies through generated callers; test-only host roots/wrapper, no full compile or timing claim.",
+  "input": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+    "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8"
+  },
+  "tools": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/private-scope-review.mjs",
+      "sha256": "1f29726f8f706c48325784d57495594edc33907824e688015e623cd9f57a06ef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/calls.mjs",
+      "sha256": "a8b9951e312250e7bd03f03e9ac14ab2755d531b65cec6f817684ae1a9941c2b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/transform.mjs",
+      "sha256": "011105127c0d85ff13d54c46c7560d44dc47775472e4fe48f69101ce143ef069"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/runtime.mjs",
+      "sha256": "519bee7bae11e26cc84f6104fa27bbfb4a200651ca72769d27d1b7800019a4a4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/constants.mjs",
+      "sha256": "12663bc74d8bab9fdf234233d3ffb9f9819e632bff812c6289f92e19a21250a8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/tokens.mjs",
+      "sha256": "f1b736dbca9de8955aa1ffde4f74a964ff2c1799deffc3467cafadab89b989fe"
+    }
+  ],
+  "scopedDefinitions": [
+    "nb_fork_close",
+    "j_escape_char_on"
+  ],
+  "assertions": 14,
+  "rows": [
+    {
+      "worker": "j_escape",
+      "input": "plain",
+      "result": "plain"
+    },
+    {
+      "worker": "j_escape",
+      "input": "\u0000",
+      "result": "\\x00"
+    },
+    {
+      "worker": "j_escape",
+      "input": "\n",
+      "result": "\\n"
+    },
+    {
+      "worker": "j_escape",
+      "input": "\r",
+      "result": "\\r"
+    },
+    {
+      "worker": "j_escape",
+      "input": "\t",
+      "result": "\\t"
+    },
+    {
+      "worker": "j_escape",
+      "input": "\"",
+      "result": "\\\""
+    },
+    {
+      "worker": "j_escape",
+      "input": "\\",
+      "result": "\\\\"
+    },
+    {
+      "worker": "j_escape",
+      "input": "\u0000\n\r\t\"\\",
+      "result": "\\x00\\n\\r\\t\\\"\\\\"
+    },
+    {
+      "worker": "j_escape",
+      "input": "🙂",
+      "result": "🙂"
+    },
+    {
+      "worker": "nb_fork_close",
+      "input": 0,
+      "result": {
+        "$": "Con",
+        "a": [
+          "root",
+          {
+            "$": "Nil",
+            "a": []
+          }
+        ]
+      }
+    },
+    {
+      "worker": "nb_fork_close",
+      "input": 1,
+      "result": {
+        "$": "Con",
+        "a": [
+          "root",
+          {
+            "$": "Nil",
+            "a": []
+          }
+        ]
+      }
+    },
+    {
+      "worker": "nb_fork_close",
+      "input": 2,
+      "result": {
+        "$": "Con",
+        "a": [
+          "root",
+          {
+            "$": "Nil",
+            "a": []
+          }
+        ]
+      }
+    },
+    {
+      "worker": "nb_fork_close",
+      "input": 32,
+      "result": {
+        "$": "Con",
+        "a": [
+          "root",
+          {
+            "$": "Nil",
+            "a": []
+          }
+        ]
+      }
+    },
+    {
+      "worker": "nb_fork_close",
+      "input": 255,
+      "result": {
+        "$": "Con",
+        "a": [
+          "root",
+          {
+            "$": "Nil",
+            "a": []
+          }
+        ]
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private-scope-review/actual2/control.mjs",
+      "sha256": "de56964c560f46985c0657b1696e7efc97fa289bfb3b98781c2b47db974184af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private-scope-review/actual2/candidate.mjs",
+      "sha256": "4306fc0ecfc325abdedf4f4bdefa56fc454b55a4505fdcbddad4fda0aee7e9a2"
+    }
+  ]
+}

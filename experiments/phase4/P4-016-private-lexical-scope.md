@@ -3,7 +3,7 @@
 - Owner: root / direct-calls agent; independent review: compact-index agent.
 - Correctness: **counterexample found** in full-source compilation.
 - Measurement: the failed 602-second run is invalid as a successful-compile timing.
-- Decision: fix and validate before further private-image promotion.
+- Decision: lexical-scope fix accepted after independent review; full-source rerun pending.
 - Evidence: [failed launch](../../implementation/phase4/private-scope-evidence/failed-full-source-launch.json),
   [measurement](../../implementation/phase4/private-scope-evidence/failed-full-source-measurement.json),
   [consumed transform](../../implementation/phase4/private-scope-evidence/failed-calls-transform.mjs).
@@ -46,3 +46,14 @@ retains the original failure, image manifest, transform and resource result.
 Earlier small-program and frontend observations remain valid for their tested
 inputs; they did not exercise this emission branch and do not override this
 counterexample. Existing images are immutable and remain available for replay.
+
+## Fix checkpoint
+
+The scanner now proves module-level scope for hoisted definitions and leaves
+block-scoped definitions on the original path. Unknown syntax and duplicate
+emitted globals are refused. All 25 package tests, 14 actual split-worker controls
+and the escaped-string source pass. The latter emits exactly the public-H bytes.
+See the [fix report](../../implementation/phase4/private-scope-fix.md) and
+[independent review](../../implementation/phase4/private-scope-review.md).
+A new immutable image `61e7d94c…` is running the full-source gate; the old failed
+image and its reports remain unchanged.

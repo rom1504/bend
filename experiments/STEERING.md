@@ -1,8 +1,7 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-22, after the full-source private-image counterexample.
-Next review: after the lexical-scope fix and its cheap regression gates, before
-starting another full-source private compilation.
+Evidence cutoff: 2026-09-22, after the independently reviewed lexical-scope fix.
+Next review: after the corrected full-source gate or fixed-base four-way matrix.
 Authorized work window ends approximately 20:16 UTC; reserve the final 15 minutes
 for evidence review, documentation, commits and push.
 
@@ -30,14 +29,15 @@ The routes below are investigator choices, not additional user requirements.
   visible control drift, retained in the report.
 - The explicit private compiler boundary removes substantial generic dispatch
   cost on tested subsets. Its first whole-source attempt FAILED in emission:
-  hoisted workers lost block-local helper table `F`. P4-016 is now the priority;
-  no successful whole-source private timing is established.
+  hoisted workers lost block-local helper table `F`. P4-016's correction passed
+  25 package tests, 14 actual-worker controls and the escaped-string byte check.
+  Its full-source rerun is pending; no successful private full-source time yet.
 
 ## Ranked next decisions
 
 | Rank | Route | Cheapest useful test | Stop or promotion criterion |
 | --- | --- | --- | --- |
-| 1 | Fix private worker lexical capture, then rerun full source | Tiny captured-helper regression and actual split-worker probes | Preserve scoped bindings/generic fallback; exact full H bytes required |
+| 1 | Complete corrected private full-source gate | Cheap scope gates have passed; bounded full request is running | Exact full H bytes and resource evidence required |
 | 2 | Combine exact Boolean matchers and pure stability facts | Three-round real-core four-way comparison, exact controls, RSS | Advance only for a repeatable whole-workload gain; require broad frontend and full-source gates before support |
 | 3 | Final small B1/H/private/TypeScript matrix | Frozen final identities, alternating fresh workers | Separate successful emission from exact rejection and startup |
 | 4 | Make the fastest validated workflow convenient | Run genuine focused CLI on the chosen artifact | Preserve all verdicts/diagnostics, reuse bounds and fresh source/import behavior |

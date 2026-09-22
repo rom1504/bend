@@ -28,6 +28,9 @@ instructions do not become instructions for this repository.
 - Existing `implementation/phase*/` reports remain canonical evidence. Link them
   instead of copying competing versions of the same conclusion.
 
+The [preservation audit](PRESERVATION.md) records which historical tool versions,
+failures and artifacts are tracked, how to restore them, and any remaining gaps.
+
 Read steering and the latest frontier before choosing work. Review older records
 when an idea overlaps them. An independent reviewer may first derive a proposal
 without seeing the preferred explanation, then check the archive for duplicates.

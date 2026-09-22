@@ -1,0 +1,119 @@
+{
+  "kind": "phase4-native-profile-merge",
+  "complete": true,
+  "started": "2026-09-22T15:38:27.764Z",
+  "identity": {
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-opt-profile.mjs": "4208da86948635718ee5ce7bd8f97e7fe1f4446341a733f4f0ac5bfd26dde9b7",
+    "selfhost/build/phase4/native-opt/merge-config.json": "a28c8f9fd2936ff6aa839d7a67b8a5840a3aae952d1740474f559dbae24559ea",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/training/report.json": "9325de943773a4345f4f4bd5432b1719c24690f4ccaf87e99c882ae7621a3043",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/instrument/report.json": "44732821463ce1403d3430c726d59c1397359bf1f32f58f02d24c83fcb43b20d",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/instrument/compiler": "460929d801e9d504241c28e86100bf9dfe47eb945971b2c701765e4cac014507",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/checked/program.c": "74da4cbe2a3fbcfd52bdf2faf69501783c3522e45a14e60d1b8cf9870ab506b6",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/packages/root/usr/lib/llvm-16/bin/llvm-profdata": "aa06bc4e67499ddb4ee8704dcbb631864ef7f2eec2d34124dc2eb94940522249",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-file-capture.mjs": "753cbd54085dec8a4afde949db0afd026cb7614eb2cdaa97d0c7a88044dfa0dc",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/build-sequence.json": "5529701ad45cf2df9265e535afc3321793e51616708706fa2eeb42d077a46578",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/packages/packages.json": "612036c6ddc9688ec2517d73099141f0bbbcea71bc2f3e502a72eff6d398b7e5",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles/16943233118136771767_0-20.profraw": "c9ceb66670e1e4f59fb7538e4a508215fef705930a68360979e4613a475caa93",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles/16943233118136771767_0-36.profraw": "293930857ff489af5401d6a4ab64599c590cfa62cbb80d822a70700fa07cb3c4",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles/16943233118136771767_0-52.profraw": "e498456db2a48a8294aed04bc2f6c050d062cec441ba4507ce1208c379c1ada5"
+  },
+  "checkedC": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/checked/program.c",
+    "sha256": "74da4cbe2a3fbcfd52bdf2faf69501783c3522e45a14e60d1b8cf9870ab506b6",
+    "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/checked/native-build-report.json"
+  },
+  "trainingReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/training/report.json",
+  "trainingOutputChecksums": [
+    {
+      "workload": "tree",
+      "sha256": "525ee9c5c38a2078ebc466fde7642b385ac94522eedb5b3b9fd162839c947cc3"
+    },
+    {
+      "workload": "list",
+      "sha256": "c2e7aa553e91281c5b061853cc7f340a4a4bc9654bcb6c9ae1de6365cf21ebd0"
+    },
+    {
+      "workload": "compiler",
+      "sha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de"
+    }
+  ],
+  "profiles": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles/16943233118136771767_0-20.profraw",
+      "sha256": "c9ceb66670e1e4f59fb7538e4a508215fef705930a68360979e4613a475caa93",
+      "bytes": 1040816
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles/16943233118136771767_0-36.profraw",
+      "sha256": "293930857ff489af5401d6a4ab64599c590cfa62cbb80d822a70700fa07cb3c4",
+      "bytes": 1040816
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles/16943233118136771767_0-52.profraw",
+      "sha256": "e498456db2a48a8294aed04bc2f6c050d062cec441ba4507ce1208c379c1ada5",
+      "bytes": 1040816
+    }
+  ],
+  "commands": [
+    {
+      "name": "version",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/packages/root/usr/lib/llvm-16/bin/llvm-profdata",
+        "merge",
+        "--version"
+      ],
+      "milliseconds": 30.958557000000013,
+      "status": 0,
+      "signal": null,
+      "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/version.stdout",
+      "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/version.stderr",
+      "stdoutSha256": "e00785cd5b0014a38aaef6ad69fd449760c2a9e7d6816568ce36ebce95a82270",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "merge",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/packages/root/usr/lib/llvm-16/bin/llvm-profdata",
+        "merge",
+        "--failure-mode=any",
+        "--num-threads=1",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/compiler.profdata",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles/16943233118136771767_0-20.profraw",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles/16943233118136771767_0-36.profraw",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles/16943233118136771767_0-52.profraw"
+      ],
+      "milliseconds": 42.41076700000002,
+      "status": 0,
+      "signal": null,
+      "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/merge.stdout",
+      "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/merge.stderr",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "show",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/packages/root/usr/lib/llvm-16/bin/llvm-profdata",
+        "show",
+        "--all-functions",
+        "--counts",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/compiler.profdata"
+      ],
+      "milliseconds": 28.522485000000017,
+      "status": 0,
+      "signal": null,
+      "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/show.stdout",
+      "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/show.stderr",
+      "stdoutSha256": "9ab59bbc136d6a62a9e15bd8fe1080c1067b2af02bfb0137941bb8db621dd6e2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "profile": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/compiler.profdata",
+    "sha256": "4ccc136f801507bd3a02f6742ce31fb861cd822cfd312b374fc694b8995f1047",
+    "bytes": 1380096
+  },
+  "changedInputs": [],
+  "finished": "2026-09-22T15:38:28.038Z"
+}

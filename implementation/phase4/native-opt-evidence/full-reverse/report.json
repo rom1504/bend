@@ -1,0 +1,364 @@
+{
+  "kind": "phase4-native-optimization-measurement",
+  "complete": true,
+  "started": "2026-09-22T16:00:57.521Z",
+  "config": {
+    "variants": [
+      {
+        "id": "PGO",
+        "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/pgo/compiler",
+        "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/pgo/report.json"
+      },
+      {
+        "id": "O2",
+        "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2",
+        "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2.build.json"
+      }
+    ],
+    "workloads": [
+      {
+        "id": "compiler",
+        "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/compiler-manifest.json",
+        "mode": "library",
+        "expectedOutputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de"
+      }
+    ],
+    "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs",
+    "environmentReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/build-sequence.json",
+    "captureTool": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-file-capture.mjs",
+    "launcher": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-graph-run.mjs",
+    "cpu": 3,
+    "timeoutMs": 600000,
+    "repetitions": 1,
+    "extraInputs": [
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/report.json",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/compiler.profdata"
+    ]
+  },
+  "identity": {
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-opt-measure.mjs": "7e3c2db7ffc63cee414719e08a96e52f9e64ae4e85e4bcdd724ef957c01ee22b",
+    "selfhost/build/phase4/native-opt/full-reverse-config.json": "de0941eaa0f0ec077b914127f71b03b90ec99e1cf72f7452bc5928d02964c2bf",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-file-capture.mjs": "753cbd54085dec8a4afde949db0afd026cb7614eb2cdaa97d0c7a88044dfa0dc",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-graph-run.mjs": "cd7ee56eff1d94e9036b0bbb1d57c47e291f8666895ef349aaa6a22c73ab0aba",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/build-sequence.json": "5529701ad45cf2df9265e535afc3321793e51616708706fa2eeb42d077a46578",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/report.json": "1bf5e4ac90030d56c7c715589dd19c674b57fb074357364e2d823dc3376bc397",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/compiler.profdata": "4ccc136f801507bd3a02f6742ce31fb861cd822cfd312b374fc694b8995f1047",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/pgo/compiler": "8722ca849f68d7306ce540c72234da0564c596a983a33342d54dc7d3ae196444",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/pgo/report.json": "c413d7c5e228fbbc80a45f4a82a01d519d3cfe0fbe17b0313ce27ecbaecd50ec",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2": "11aaafcf5374f4e7f6af256b45f44bb2aa7b21eeed8e6c19340b910d3761e1e6",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2.build.json": "4bbaad7dac35265f7b3e8784fa8f9eee603091f50a74da2276977e5c940678b6",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/compiler-manifest.json": "be8c433945fbbcbf02f45e19103c9da364c75a579b4fe483aa79ab79dfc2d569",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+  },
+  "cpu": 3,
+  "node": {
+    "version": "v24.18.0",
+    "executableSha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+  },
+  "rows": [
+    {
+      "workload": "compiler",
+      "variant": "PGO",
+      "round": 0,
+      "profilesCreated": [],
+      "compilationProcessWallMs": 255951.129035,
+      "result": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "library",
+        "cpu": 3,
+        "timeoutMs": 600000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=255750\nconsumed_chars=1131553\n",
+        "preparationMs": 24.771009000000006,
+        "nativeWallMs": 255792.060131,
+        "compileMs": 255750,
+        "consumedChars": 1131553,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/compiler-manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/compiler-manifest.json",
+          "fingerprint": "2306:72235471:301:1790058438999456035:1790058438999456035:33188",
+          "dev": "2306",
+          "ino": "72235471",
+          "bytes": 301,
+          "sha256": "be8c433945fbbcbf02f45e19103c9da364c75a579b4fe483aa79ab79dfc2d569"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+            "fingerprint": "2306:72232418:578222:1790056941668611565:1790056941668611565:33188",
+            "dev": "2306",
+            "ino": "72232418",
+            "bytes": 578222,
+            "sha256": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          }
+        ],
+        "moduleAliases": [],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/pgo/compiler",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/pgo/compiler",
+          "fingerprint": "2306:72243656:4533312:1790091585770877225:1790091585770877225:33261",
+          "dev": "2306",
+          "ino": "72243656",
+          "bytes": 4533312,
+          "sha256": "8722ca849f68d7306ce540c72234da0564c596a983a33342d54dc7d3ae196444"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs",
+          "fingerprint": "2306:72233515:39290:1790057481576316085:1790057481576316085:33188",
+          "dev": "2306",
+          "ino": "72233515",
+          "bytes": 39290,
+          "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+        },
+        "transportSha256": "5b1408681e37c0a60f37ff217d53645ea9728e7e2a24601794f77af55443e48d",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-PGO.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 1131553,
+        "outputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+        "wallMs": 255838.410253
+      },
+      "exactOutputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+      "executionOrSyntax": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "workload": "compiler",
+      "variant": "O2",
+      "round": 0,
+      "profilesCreated": [],
+      "compilationProcessWallMs": 285016.711551,
+      "result": {
+        "kind": "native-graph-run",
+        "version": 1,
+        "mode": "library",
+        "cpu": 3,
+        "timeoutMs": 600000,
+        "status": 0,
+        "signal": null,
+        "error": null,
+        "phase": "compile",
+        "checked": true,
+        "diagnostic": "",
+        "stdout": "",
+        "stderr": "compile_ms=284843\nconsumed_chars=1131553\n",
+        "preparationMs": 24.156553000000002,
+        "nativeWallMs": 284887.544875,
+        "compileMs": 284843,
+        "consumedChars": 1131553,
+        "manifest": {
+          "role": "manifest",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/compiler-manifest.json",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/compiler-manifest.json",
+          "fingerprint": "2306:72235471:301:1790058438999456035:1790058438999456035:33188",
+          "dev": "2306",
+          "ino": "72235471",
+          "bytes": 301,
+          "sha256": "be8c433945fbbcbf02f45e19103c9da364c75a579b4fe483aa79ab79dfc2d569"
+        },
+        "main": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+        "modules": [
+          {
+            "name": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+            "fingerprint": "2306:72232418:578222:1790056941668611565:1790056941668611565:33188",
+            "dev": "2306",
+            "ino": "72232418",
+            "bytes": 578222,
+            "sha256": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772"
+          },
+          {
+            "name": "Base",
+            "role": "module",
+            "lexical": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+            "fingerprint": "2306:71071776:64336:1789963984610190378:1789963984610190378:33188",
+            "dev": "2306",
+            "ino": "71071776",
+            "bytes": 64336,
+            "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+          }
+        ],
+        "moduleAliases": [],
+        "assets": [],
+        "usedAssetIds": [],
+        "binary": {
+          "role": "binary",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2",
+          "fingerprint": "2306:72238399:5444048:1790060023131842846:1790060023151842245:33261",
+          "dev": "2306",
+          "ino": "72238399",
+          "bytes": 5444048,
+          "sha256": "11aaafcf5374f4e7f6af256b45f44bb2aa7b21eeed8e6c19340b910d3761e1e6"
+        },
+        "runtime": {
+          "role": "runtime",
+          "lexical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs",
+          "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs",
+          "fingerprint": "2306:72233515:39290:1790057481576316085:1790057481576316085:33188",
+          "dev": "2306",
+          "ino": "72233515",
+          "bytes": 39290,
+          "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+        },
+        "transportSha256": "b9e885fbb57e6479e03e16327f55d3a6bae5cf67db6a3cbc76977719d0b65c98",
+        "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-O2.mjs",
+        "published": true,
+        "scope": "Explicit module/asset manifest; native Bend graph, checks and JS emission; no discovery or JS/TypeScript compiler fallback. compileMs includes native source/selected-asset IO; wallMs includes host snapshot/provenance overhead.",
+        "outputBytes": 1131553,
+        "outputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+        "wallMs": 284937.477773
+      },
+      "exactOutputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+      "executionOrSyntax": {
+        "status": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    }
+  ],
+  "commands": [
+    {
+      "name": "compiler-0-PGO",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-graph-run.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/pgo/compiler",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/compiler-manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-PGO.mjs",
+        "library",
+        "--cpu=3",
+        "--timeout-ms=600000"
+      ],
+      "timeoutMs": 620000,
+      "started": "2026-09-22T16:00:57.909Z",
+      "wallMs": 255951.129035,
+      "status": 0,
+      "signal": null,
+      "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-PGO.stdout",
+      "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-PGO.stderr",
+      "stdoutSha256": "5a4c99af1e0d26328ec9efb6db275698764c89b12ca9c02c6fe678f7c3bf51bb",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "finished": "2026-09-22T16:05:13.860Z"
+    },
+    {
+      "name": "compiler-0-PGO-syntax",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "--check",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-PGO.mjs"
+      ],
+      "timeoutMs": 30000,
+      "started": "2026-09-22T16:05:13.885Z",
+      "wallMs": 83.6231099999859,
+      "status": 0,
+      "signal": null,
+      "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-PGO-syntax.stdout",
+      "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-PGO-syntax.stderr",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "finished": "2026-09-22T16:05:13.969Z"
+    },
+    {
+      "name": "compiler-0-O2",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-graph-run.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/compiler-manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-O2.mjs",
+        "library",
+        "--cpu=3",
+        "--timeout-ms=600000"
+      ],
+      "timeoutMs": 620000,
+      "started": "2026-09-22T16:05:13.969Z",
+      "wallMs": 285016.711551,
+      "status": 0,
+      "signal": null,
+      "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-O2.stdout",
+      "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-O2.stderr",
+      "stdoutSha256": "5e8d945d254d39b28846150e161293603a1d8f9efa946751bc2d03d5ad2bcddc",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "finished": "2026-09-22T16:09:58.986Z"
+    },
+    {
+      "name": "compiler-0-O2-syntax",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "--check",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-O2.mjs"
+      ],
+      "timeoutMs": 30000,
+      "started": "2026-09-22T16:09:59.035Z",
+      "wallMs": 80.44307799998205,
+      "status": 0,
+      "signal": null,
+      "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-O2-syntax.stdout",
+      "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/compiler-0-O2-syntax.stderr",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "finished": "2026-09-22T16:09:59.116Z"
+    }
+  ],
+  "changedInputs": [],
+  "finished": "2026-09-22T16:09:59.157Z"
+}

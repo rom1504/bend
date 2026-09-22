@@ -1,0 +1,38 @@
+{
+  "variants": [
+    {
+      "id": "instrumented-O2",
+      "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/instrument/compiler",
+      "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/instrument/report.json"
+    }
+  ],
+  "workloads": [
+    {
+      "id": "tree",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/tree-manifest.json",
+      "expectedStdout": "42\n"
+    },
+    {
+      "id": "list",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/list-manifest.json",
+      "expectedStdout": "6\n"
+    },
+    {
+      "id": "compiler",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/compiler-manifest.json",
+      "mode": "library",
+      "expectedOutputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de"
+    }
+  ],
+  "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs",
+  "environmentReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/build-sequence.json",
+  "captureTool": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-file-capture.mjs",
+  "launcher": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-graph-run.mjs",
+  "cpu": 3,
+  "timeoutMs": 900000,
+  "repetitions": 1,
+  "profileDirectory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles",
+  "extraEnvironment": {
+    "LLVM_PROFILE_FILE": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/profiles/%m-%p.profraw"
+  }
+}

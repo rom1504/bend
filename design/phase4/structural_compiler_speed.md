@@ -212,3 +212,45 @@ exact tested compiler identities, performance versus both Phase 3 and pinned
 TypeScript, the fastest measured edit loop, and remaining conformance limits.
 Do not silently promote a new distributed default API: promotion requires the
 documented checks and explicit provenance for the selected artifact.
+
+## Decisions during implementation
+
+The measured private-image gains justify a separate build/run package rather
+than changing the public generated runtime. Its production builder must consume
+a real completed checked self-reproduction proof, verify the exact reviewed
+runtime and generated-worker patterns, preserve all consumed identities, and
+produce a distinct immutable image. An explicitly experimental checked-stage
+mode may exist, but it must retain its pending-proof status everywhere.
+
+Initial CLI measurements exposed significant launch/verification overhead,
+including hashing the Node executable. The next supported interface is therefore
+a finite batch of at most 256 data requests. It reuses a private worker for at
+most 32 requests, while constructing fresh source graphs for each one. The
+supervisor owns per-request deadlines, output bounds and process-group cleanup;
+after a timeout or crash it preserves that failed row and starts a new worker
+for later requests. Compiler rejection is an ordinary completed observation.
+
+Node/image identities are checked before and after each worker lifetime; consumed
+source bytes and path resolutions are audited per request. Successful emitted
+files remain pending until the supervisor verifies that lifetime and rechecks
+the consumed inputs. Inputs must remain stable through the chunk. A separate
+fresh-source regression verifies that the reused compiler does not retain stale
+graphs when a file is deliberately edited between requests. There is no daemon,
+incoming function/graph transport, interpreter, native execution or user-code
+execution in this private interface.
+
+For source optimization, the promising fact is stronger than “no applications”:
+substitution-invariant children allow a canonical neutral application to remain
+unchanged. Exclude every variable, beta-reducible application, noncanonical
+application metadata and wrong child count. Compute the fact once and carry it
+only down literal `All` suffixes. Restart ordinary normalization/fact analysis at
+other heads, including references and annotations that may expose dependent
+types. Preserve head checking/annotation before the fact scan and preserve
+substitution's child traversal order. Exact malformed-text and error-order
+controls are required alongside real compiler-source timings.
+
+Native `-O3`, ThinLTO and profile-guided optimization are bounded comparisons of
+the identical checked C. Profiles are tied to that C, the compiler version and
+training input identities. Charge instrumented build/training time explicitly;
+a small steady-state win that costs minutes after each compiler edit may be a
+poor choice for the development loop. The existing O2 path remains the control.

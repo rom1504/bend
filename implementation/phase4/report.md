@@ -89,6 +89,8 @@ must also be measured: artifact verification and startup can erase inner compile
 gains on very small requests. Full frontend observations are underway. An
 additional [tag-comparison transform](tag-comparisons.md) was rejected after
 showing no real-core gain despite a 1–2% change on small requests.
+Sharing private [nullary values](nullary-values.md) was also deferred: list sort
+improved 7.6%, but the real-core median changed only 1.4%, with one pair flat.
 
 The representation experiment found millions of projection copies but no clear
 gain from removing those copies alone. Its first pilot included uncached Base
@@ -109,6 +111,15 @@ pipe capture. File capture succeeded; 15 inventory/judge tests, including an
 explicit error-with-zero-status regression test, passed. The frozen Phase 4
 frontend harness consumes the corrected inventory; compiler semantics are
 unchanged by this supervision fix.
+
+The completed [native flag study](native-opt.md) keeps O2 as the ordinary build
+choice. PGO reduced full-source time from a two-sample O2 mean of 280.227 seconds
+to 254.775 seconds, 9.1% less time, across opposite-order pairs. Its roughly
+nine-minute setup projects about 23 full compiles to repay and is tied to the
+exact native compiler C. O3 and ThinLTO showed insufficient small-workload gains.
+All 56 benchmark/training compilations and 11 semantic cases passed; every
+full-source output reproduced the proven Phase 3 H bytes. These flag-only
+measurements are separate from the pending combined-source native build.
 
 Indexed final-definition selection is now integrated in the Bend sources for
 `driver_final` and `sp_canonical`. The old routines repeatedly filter all prior

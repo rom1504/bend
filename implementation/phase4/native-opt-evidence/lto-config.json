@@ -1,0 +1,41 @@
+{
+  "referenceBuild": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2.build.json",
+  "checkedReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/checked/native-build-report.json",
+  "environmentReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/build-sequence.json",
+  "captureTool": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-file-capture.mjs",
+  "optimization": "O2",
+  "cpu": 3,
+  "timeoutMs": 600000,
+  "extraFlags": [
+    "-flto=thin",
+    "-Wl,-plugin-opt,jobs=1"
+  ],
+  "extraInputs": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/toolchain.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/LLVMgold.so",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/llvm-16/lib/libclang-cpp.so.16",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu/libLLVM-16.so.1",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/packages/root/usr/lib/llvm-16/bin/llvm-profdata",
+    "/usr/bin/x86_64-linux-gnu-ld.bfd",
+    "/usr/lib/x86_64-linux-gnu/ld-2.31.so",
+    "/usr/lib/x86_64-linux-gnu/libbsd.so.0.11.3",
+    "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+    "/usr/lib/x86_64-linux-gnu/libdl-2.31.so",
+    "/usr/lib/x86_64-linux-gnu/libedit.so.2.0.63",
+    "/usr/lib/x86_64-linux-gnu/libffi.so.7.1.0",
+    "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/usr/lib/x86_64-linux-gnu/libicudata.so.67.1",
+    "/usr/lib/x86_64-linux-gnu/libicuuc.so.67.1",
+    "/usr/lib/x86_64-linux-gnu/liblzma.so.5.2.5",
+    "/usr/lib/x86_64-linux-gnu/libm-2.31.so",
+    "/usr/lib/x86_64-linux-gnu/libmd.so.0.0.4",
+    "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so",
+    "/usr/lib/x86_64-linux-gnu/librt-2.31.so",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28",
+    "/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2",
+    "/usr/lib/x86_64-linux-gnu/libxml2.so.2.9.10",
+    "/usr/lib/x86_64-linux-gnu/libz.so.1.2.11",
+    "/usr/lib/x86_64-linux-gnu/libz3.so.4",
+    "/usr/lib/x86_64-linux-gnu/libzstd.so.1.4.8"
+  ]
+}

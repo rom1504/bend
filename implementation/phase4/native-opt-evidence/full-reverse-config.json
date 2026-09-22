@@ -1,0 +1,33 @@
+{
+  "variants": [
+    {
+      "id": "PGO",
+      "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/pgo/compiler",
+      "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/pgo/report.json"
+    },
+    {
+      "id": "O2",
+      "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2",
+      "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2.build.json"
+    }
+  ],
+  "workloads": [
+    {
+      "id": "compiler",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/compiler-manifest.json",
+      "mode": "library",
+      "expectedOutputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de"
+    }
+  ],
+  "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/final-fixedpoint/runtime.mjs",
+  "environmentReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/build-sequence.json",
+  "captureTool": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-file-capture.mjs",
+  "launcher": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/host/tools/performance/rapid/native-graph-run.mjs",
+  "cpu": 3,
+  "timeoutMs": 600000,
+  "repetitions": 1,
+  "extraInputs": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/merged/compiler.profdata"
+  ]
+}

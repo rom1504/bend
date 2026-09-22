@@ -1,0 +1,45 @@
+{
+  "kind": "phase4-native-optimization-summary",
+  "complete": true,
+  "nativeCompilerC": "74da4cbe2a3fbcfd52bdf2faf69501783c3522e45a14e60d1b8cf9870ab506b6",
+  "compilerOutputSha256": "360bb62bec910e8148a8c24ee63c1a350a8fda06c206bdd5f04c153a006804de",
+  "cpu": 3,
+  "fullSource": [
+    {
+      "variant": "O2",
+      "compilationProcessWallMs": 275848.30838899995,
+      "compileMs": 275611,
+      "sourceReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full/report.json"
+    },
+    {
+      "variant": "PGO",
+      "compilationProcessWallMs": 253975.08440300002,
+      "compileMs": 253800,
+      "sourceReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full/report.json"
+    },
+    {
+      "variant": "O3",
+      "compilationProcessWallMs": 269494.893483,
+      "compileMs": 269323,
+      "sourceReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full/report.json"
+    },
+    {
+      "variant": "PGO",
+      "compilationProcessWallMs": 255951.129035,
+      "compileMs": 255750,
+      "sourceReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/report.json"
+    },
+    {
+      "variant": "O2",
+      "compilationProcessWallMs": 285016.711551,
+      "compileMs": 284843,
+      "sourceReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-opt/full-reverse/report.json"
+    }
+  ],
+  "nativeBenchmarkAndTrainingCompilations": 56,
+  "focusedSemanticCases": 11,
+  "verdict": "Keep ordinary O2 default. PGO reduces full-source time by 7.9% and 10.2% in two opposite-order pairs, but training/build setup is substantial and exact native C identity is required. ThinLTO and O3 do not justify default changes. These flags do not change generated JavaScript bytes or demonstrate emitted-program runtime improvement.",
+  "O2MeanFullCompileMs": 280227,
+  "PGOMeanFullCompileMs": 254775,
+  "pgoMeanReductionFraction": 0.0908263657677526
+}

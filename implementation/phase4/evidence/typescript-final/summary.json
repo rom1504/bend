@@ -3,7 +3,7 @@
   "complete": true,
   "actualHRootVerification": {
     "complete": true,
-    "proofComplete": false,
+    "proofComplete": true,
     "stage2Sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
     "rows": [
       {
@@ -31,7 +31,7 @@
         "rootsPresentInH": true
       }
     ],
-    "scope": "Actual checked self-emitted stage2 classifier verifies all three ordered root sets. Stage3 is still running; no completed fixed-point claim."
+    "scope": "Actual checked self-emitted stage2 classifier verifies all three ordered root sets, now against completed stage2==stage3 proof. Earlier provisional proof and verification remain separately archived."
   },
   "source": {
     "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
@@ -352,6 +352,56 @@
       "archive": "implementation/phase4/evidence/typescript-final/typescript-h-preflight.json.gz",
       "sha256": "356f888bfcbd39754508595c1bd8bcf59c45530f0af0e6f96b8e8847292688cf",
       "archiveSha256": "fa5600c3a4016b7cfbfec1fc014bb795f284b0fc3f9662e0601839f26cfb0fe6"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final-h-complete/report.json",
+      "archive": "implementation/phase4/evidence/typescript-final/h-complete-root-verification.json.gz",
+      "sha256": "b6127a69c36f8066710c4aacc5cf23614933add29e6dc8295cb74d11f941ead8",
+      "archiveSha256": "e6239e1ccd582e0a14c8a208e83161d736773d856086439df2008c94a3c0bd7d"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-final-h-complete/self-emission-proof.json",
+      "archive": "implementation/phase4/evidence/typescript-final/h-complete-self-emission-proof.json.gz",
+      "sha256": "c01e23f8f01473984f51163858aba26e0dae881362e300077cbf964600793021",
+      "archiveSha256": "9f9c51b0b0f77ca2ecdb322eed87d20c69826751bee66cceff13144277a2af2a"
+    },
+    {
+      "source": "selfhost/build/phase4/typescript-h-complete-preflight.json",
+      "archive": "implementation/phase4/evidence/typescript-final/h-complete-preflight.json.gz",
+      "sha256": "a76ced24261abfd7764cbe78d8f7a498e12f303ef5b622cd6f12f90b6518c1e4",
+      "archiveSha256": "66db1b8bf73c0e300e39ac25e31847bb0067d0332abdfa8ac61ff2b733168d3f"
     }
-  ]
+  ],
+  "provisionalHRootVerification": {
+    "complete": true,
+    "proofComplete": false,
+    "stage2Sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+    "rows": [
+      {
+        "repetition": 0,
+        "metadataSha256": "d633efc03a156b79f33e81559544abecc40dc321ee0bdc442a34594576d17bfa",
+        "rootsSha256": "9d5044f41d1a28387b23d4d26bcd4348afc1f03d871e7637a7150d5de6ec68a0",
+        "roots": 1522,
+        "exactOrderedRoots": true,
+        "rootsPresentInH": true
+      },
+      {
+        "repetition": 1,
+        "metadataSha256": "d633efc03a156b79f33e81559544abecc40dc321ee0bdc442a34594576d17bfa",
+        "rootsSha256": "9d5044f41d1a28387b23d4d26bcd4348afc1f03d871e7637a7150d5de6ec68a0",
+        "roots": 1522,
+        "exactOrderedRoots": true,
+        "rootsPresentInH": true
+      },
+      {
+        "repetition": 2,
+        "metadataSha256": "d633efc03a156b79f33e81559544abecc40dc321ee0bdc442a34594576d17bfa",
+        "rootsSha256": "9d5044f41d1a28387b23d4d26bcd4348afc1f03d871e7637a7150d5de6ec68a0",
+        "roots": 1522,
+        "exactOrderedRoots": true,
+        "rootsPresentInH": true
+      }
+    ],
+    "scope": "Actual checked self-emitted stage2 classifier verifies all three ordered root sets. Stage3 is still running; no completed fixed-point claim."
+  }
 }

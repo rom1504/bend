@@ -41,3 +41,12 @@ lines its run must print, and the gates run on the mini cluster.
                         (the executables per platform) and the droplet ops;
                         gates/ping.ts and gen_charts.ts read it there (or at
                         $SITE_REPO)
+
+For this fork's compiler written in Bend under `selfhost/`, read
+`experiments/README.md`, the latest frontier in `experiments/ledger.md`, and
+`experiments/STEERING.md` before a new optimization investigation. Keep a
+file per hypothesis, link exact run evidence, preserve rejected attempts and
+separate correctness, measurement and promotion decisions. Use the checked B1
+focused workflow in `docs/PHASE4_DEVELOPMENT.md` for routine edits; reserve full
+self-reproduction and broad conformance for justified integration gates. The
+pinned upstream reference and the human-written `bend2/bend.ts` stay unchanged.

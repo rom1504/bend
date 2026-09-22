@@ -1,0 +1,85 @@
+{
+  "kind": "bend-private-compiler-launch",
+  "version": 1,
+  "complete": true,
+  "proofStatus": "fixedpoint",
+  "request": {
+    "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "mode": "library",
+    "withReport": false
+  },
+  "imageManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-release/manifest.json",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-release/manifest.json",
+    "sha256": "fe9b3efaf102ce3366a638b83246eddaf07f93782d395035c0dfbfdee8eb5c30"
+  },
+  "launcher": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/run.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/run.mjs",
+    "sha256": "8b77c70776a42e591fb8652a6602340072e57fb22551e84ab443de2a7d325d0a"
+  },
+  "launcherTools": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/run.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/run.mjs",
+      "sha256": "8b77c70776a42e591fb8652a6602340072e57fb22551e84ab443de2a7d325d0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/common.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/common.mjs",
+      "sha256": "09626a0d2687a206589fa19c02fdba2cab11368ad0818173d6854c7bcb87a668"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/transport.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/transport.mjs",
+      "sha256": "e4e68ea7f4f1d850ea2e567eb7a0153f189bcdc5f4770f4117db66043dc13f97"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/input-audit.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/input-audit.mjs",
+      "sha256": "3570ce2c4b1df763ffd9a911d3bfca299a964186682ad67dd54720edaf2e6b9a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/publish.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/publish.mjs",
+      "sha256": "ded814084c5eb6c9d893883b23a41b3ba92b988cc50f40bd899d3942a2f8c1c1"
+    }
+  ],
+  "node": {
+    "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "canonicalPath": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+    "version": "v24.18.0"
+  },
+  "command": "taskset",
+  "args": [
+    "-c",
+    "2",
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "--stack-size=4096",
+    "--max-old-space-size=12288",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-release/runner/worker.mjs",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-release",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-full-control/request.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-full-control"
+  ],
+  "resourceArgs": [
+    "--stack-size=4096",
+    "--max-old-space-size=12288"
+  ],
+  "timeoutMs": 3600000,
+  "timedOut": false,
+  "outputLimit": false,
+  "logBytes": 0,
+  "status": 0,
+  "signal": null,
+  "wallMs": 602149.670146,
+  "result": {
+    "status": "error",
+    "phase": "compile",
+    "diagnostic": "Error: F is not defined",
+    "exitCode": 1,
+    "checked": true
+  },
+  "requestMs": 600340.25793
+}

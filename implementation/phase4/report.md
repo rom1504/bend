@@ -96,6 +96,15 @@ showing no real-core gain despite a 1–2% change on small requests.
 Sharing private [nullary values](nullary-values.md) was also deferred: list sort
 improved 7.6%, but the real-core median changed only 1.4%, with one pair flat.
 
+The first final-source private full compile found an emission regression:
+specialized workers lost a block-local generated helper table and returned
+`F is not defined`. Its complete error observation and failed 602-second outer
+measurement are retained in [P4-016](../../experiments/phase4/P4-016-private-lexical-scope.md).
+The private transformation is being corrected before further promotion. Earlier
+selected program/frontend successes do not establish this missing emission gate.
+The [54-observation final small matrix](small-comparison.md) remains scoped to
+its tested inputs, including its recorded negative-case regression.
+
 The representation experiment found millions of projection copies but no clear
 gain from removing those copies alone. Its first pilot included uncached Base
 loading/checking and must not be compared directly with the warm-cache profiles

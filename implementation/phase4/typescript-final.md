@@ -5,8 +5,10 @@ combined Phase 4 source (median of three fresh processes); median process wall
 time is **51.443 seconds**. Every run emits the same 1,206,611-byte library and
 passes checking, ownership, exact library-root selection, syntax and selected
 execution controls. The actual checked stage2 H classifier also confirms all three ordered root sets.
-Stage3 is still running: this report does not yet establish a completed combined
-self-hosting fixed point or an H/TypeScript speed ratio.
+The combined proof is now complete: stage2 and stage3 are byte-identical, and
+the classifier check passed again against that completed proof. Timing remains
+a separate, non-interleaved observation; see [the final source report](final-source.md)
+for the full self-hosted run.
 
 [Archived results and provenance](evidence/typescript-final/summary.json) retain
 all three raw sample reports, requests, the complete measurement report, the
@@ -53,9 +55,11 @@ it must produce exactly the same ordered roots from complete checked TypeScript
 metadata. No classifier worker body is changed. The retained metadata supports
 an additional actual-H classifier check. That check passed against stage2 SHA
 `b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8`.
-Its proof snapshot explicitly records `proofComplete: false`. A retained preflight
-also verifies successful stage exit without a signal and matching source, Base,
-runtime, initial-compiler and host-helper identities.
+The first verification retained a provisional `proofComplete: false` snapshot.
+A second verification now records `proofComplete: true`; both snapshots remain
+archived. The final preflight requires successful signal-free checked stages,
+equal stage2/stage3 output hashes, and matching source, Base, runtime, initial
+compiler and host-helper identities.
 
 Compiler time begins after loading the TypeScript implementation modules and
 ends after library emission and output byte counting. Root-metadata transport,
@@ -87,16 +91,16 @@ its checked source/API records directly against the Phase 4 build report.
 Compiler outputs, request files, raw per-sample reports, metadata and process
 logs remain under `selfhost/build/phase4/typescript-final/`.
 
-Once stage2 has a verified checked-emission record, verify its actual classifier:
+With the completed proof available, verify the actual classifier in a fresh directory:
 
 ```sh
 "$NODE" --stack-size=4096 --max-old-space-size=12288 \
   selfhost/tools/performance/phase4/final-fullsource-typescript.mjs --verify-h \
   selfhost/build/phase4/typescript-final/report.json \
   selfhost/build/phase4/combined-fixedpoint/report.json \
-  selfhost/build/phase4/typescript-final-h-verification
+  selfhost/build/phase4/typescript-final-h-complete-replay
 ```
 
-That verification snapshots the proof report and records whether stage3 was
-complete at that moment. A successful stage2 root check alone is not a claim
-that stage2 and stage3 form a byte-identical fixed point.
+The verification snapshots the proof report and records completion status. The
+archived final run records `proofComplete: true`; the earlier stage2-only run
+is retained separately and is not relabeled as a completed proof.

@@ -1,0 +1,57 @@
+{
+  "complete": true,
+  "decision": "reject-current-narrow-transform-for-insufficient-repeatable-benefit",
+  "semanticAssertions": 69,
+  "timedObservations": 8,
+  "allExact": true,
+  "inputsVerified": true,
+  "counterListExecutions": 315755,
+  "privateSites": 192,
+  "pairs": [
+    {
+      "workload": "list",
+      "round": 0,
+      "controlMs": 3708.722401,
+      "candidateMs": 3681.665759,
+      "reductionPercent": 0.7295407710403046,
+      "controlWallMs": 4828.991682,
+      "candidateWallMs": 4777.804313000001,
+      "controlRssKB": 384912,
+      "candidateRssKB": 391564
+    },
+    {
+      "workload": "list",
+      "round": 1,
+      "controlMs": 3732.5786169999997,
+      "candidateMs": 3620.6302,
+      "reductionPercent": 2.9992246242351417,
+      "controlWallMs": 4816.980345000004,
+      "candidateWallMs": 4740.566441000003,
+      "controlRssKB": 384720,
+      "candidateRssKB": 391064
+    },
+    {
+      "workload": "core",
+      "round": 0,
+      "controlMs": 28461.635870000002,
+      "candidateMs": 27468.505025000002,
+      "reductionPercent": 3.4893667023785158,
+      "controlWallMs": 29712.896334,
+      "candidateWallMs": 28587.670708000005,
+      "controlRssKB": 584404,
+      "candidateRssKB": 580396
+    },
+    {
+      "workload": "core",
+      "round": 1,
+      "controlMs": 28033.028122,
+      "candidateMs": 28016.01124,
+      "reductionPercent": 0.0607029748122212,
+      "controlWallMs": 29128.456051000016,
+      "candidateWallMs": 29130.630936999994,
+      "controlRssKB": 584644,
+      "candidateRssKB": 581768
+    }
+  ],
+  "fullSourceLimitation": "The unchanged canonical75ebe9 image independently failed full-source compilation with F is not defined. No full-source success or promotion is claimed. This retained selected-workload pilot does not validate or repair that separate calling-transform defect."
+}

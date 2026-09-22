@@ -1,0 +1,27 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "2",
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "--stack-size=4096",
+    "--max-old-space-size=3072",
+    "tools/private-compiler/run.mjs",
+    "build/phase4/private/combined-release",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "library",
+    "build/phase4/private/combined-full-control",
+    "--cpu=2",
+    "--heap-mb=12288",
+    "--timeout-ms=3600000"
+  ],
+  "startedUtc": "2026-09-22T17:09:19Z",
+  "complete": false,
+  "measurement": "Python resource.RUSAGE_CHILDREN; wrapper and waited child process tree; one sample, cold private Base cache",
+  "returncode": 1,
+  "wallMs": 602235.4813590646,
+  "maxRssKiB": 4169836,
+  "userSeconds": 599.53507,
+  "systemSeconds": 2.6966609999999998,
+  "finishedUtc": "2026-09-22T17:19:21Z"
+}

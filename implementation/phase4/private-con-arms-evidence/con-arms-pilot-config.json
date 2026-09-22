@@ -1,0 +1,19 @@
+{
+  "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-release",
+  "cpu": 3,
+  "proof": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/report.json",
+  "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+  "repetitions": 2,
+  "workloads": [
+    {
+      "id": "list",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend"
+    },
+    {
+      "id": "core",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/component/core.bend",
+      "mode": "library"
+    }
+  ],
+  "countOnly": false
+}

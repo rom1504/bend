@@ -34,3 +34,27 @@ The combined source has completed checked self-reproduction: both H stages have 
 Prioritize a controlled full-source private-image comparison and the reviewed Boolean/stability combination. Keep the unchanged control image. Do not revisit weak-head memoization, direct tag comparisons or ordinary-function uncurrying without explicitly overcoming their recorded obstruction. Native O2 is a proven useful full-source lane; PGO setup is a separate amortization decision. Large term-layout migration remains an open research direction, not an inferred requirement.
 
 Next wave must use the current [strategy](STEERING.md), specify the quickest falsifying check, and preserve exact output and resource evidence before promotion. Update this frontier after each material decision; preserve the older entry as history.
+
+## Full-source private-image counterexample — 2026-09-22
+
+[P4-016](phase4/P4-016-private-lexical-scope.md) records a lexical-scope bug found
+by the whole-source gate. The canonical private image completed checking but
+failed emission with `F is not defined`. Specialized workers had been
+hoisted out of their generated helper-table blocks. The 602-second failed run
+is retained and provides no successful-compilation speedup. The public compiler's
+fixed point and earlier scoped observations remain valid.
+
+The new small comparison passes all 54 observations, with successful B1 requests
+7.6%/12.8% faster. A negative-case regression is retained; a separate five-round
+confirmation finds a smaller 4.9% request regression, with all 15 exact outcomes.
+See [the complete comparison](../implementation/phase4/small-comparison.md).
+
+### Updated frontier
+
+Correct the private lexical-scope transformation first, using a tiny reproducer
+and independent review, then issue new image identities and repeat the affected
+full-source gate. Other prototypes remain experimental. Do not multiply their
+standalone gains: the four-way Boolean/stability comparison already shows
+interactions and run variation. The exact Con-arm pilot
+[P4-015](phase4/P4-015-exact-con-arms.md) is rejected for inconsistent material
+benefit; retain its proof and measurements without escalating to a full build.

@@ -1,8 +1,8 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-22 17:13 UTC, Phase 4 migration checkpoint.
-Next review: after the Boolean/stability combined comparison or the private
-full-source control finishes, whichever first changes the decision.
+Evidence cutoff: 2026-09-22, after the full-source private-image counterexample.
+Next review: after the lexical-scope fix and its cheap regression gates, before
+starting another full-source private compilation.
 Authorized work window ends approximately 20:16 UTC; reserve the final 15 minutes
 for evidence review, documentation, commits and push.
 
@@ -29,17 +29,19 @@ The routes below are investigator choices, not additional user requirements.
   seconds for old/new compiler; all emitted libraries equal the new H. There is
   visible control drift, retained in the report.
 - The explicit private compiler boundary removes substantial generic dispatch
-  cost. Its whole-source comparison is running; no result is assumed yet.
+  cost on tested subsets. Its first whole-source attempt FAILED in emission:
+  hoisted workers lost block-local helper table `F`. P4-016 is now the priority;
+  no successful whole-source private timing is established.
 
 ## Ranked next decisions
 
 | Rank | Route | Cheapest useful test | Stop or promotion criterion |
 | --- | --- | --- | --- |
-| 1 | Complete the final private full-source comparison | Already-running unchanged control, exact emitted H hash and peak RSS | No speed claim if output, provenance, deadline or resource gate fails |
+| 1 | Fix private worker lexical capture, then rerun full source | Tiny captured-helper regression and actual split-worker probes | Preserve scoped bindings/generic fallback; exact full H bytes required |
 | 2 | Combine exact Boolean matchers and pure stability facts | Three-round real-core four-way comparison, exact controls, RSS | Advance only for a repeatable whole-workload gain; require broad frontend and full-source gates before support |
 | 3 | Final small B1/H/private/TypeScript matrix | Frozen final identities, alternating fresh workers | Separate successful emission from exact rejection and startup |
 | 4 | Make the fastest validated workflow convenient | Run genuine focused CLI on the chosen artifact | Preserve all verdicts/diagnostics, reuse bounds and fresh source/import behavior |
-| 5 | Reduce remaining generated matcher dispatch | Inspect actual matcher/handler arities and bounded profile | New demand-order/partial-application proof plus a measured opportunity before implementing |
+| 5 | Reduce remaining generated matcher dispatch | Exact Con/arity2 pilot has now failed its material-benefit threshold | Retain P4-015 rejection; require a stronger mechanism before reopening |
 | 6 | Broader term-layout or typed intermediate representation | Quantify residual allocation/dispatch after current specialization | Do not start a migration on operation counts alone; require a boundary and an isolated material result |
 
 Ranks 1–4 are integration/measurement work, not new algorithmic hypotheses.
@@ -64,12 +66,11 @@ overlapping micro-optimizations.
 ## Assignment and resource state
 
 Root owns strategy, integration, ledger, commits and pushes. Direct-calls agent
-owns the disposable combined private experiment on CPU0. Compact-index agent
-independently reviews Boolean semantics and completes the TypeScript proof
-classifier. Lexer-analysis agent investigates a concrete successor mechanism.
-Root's unchanged canonical-private full-source control owns CPU2. Coordinate
-CPU1/CPU3 before starting new timed work. Shared cache/memory interference remains
-possible even on different cores.
+finishes its frozen four-way comparison, then owns the private scope fix.
+Compact-index agent independently reviews the fix; lexer-analysis archives the
+rejected Con-arm pilot and its preservation audit. Root reduces the actual
+emission failure on CPU2. Coordinate other timed work; shared cache/memory
+interference remains possible even on different cores.
 
 Do not mutate source or a tool consumed by a running experiment. Preserve frozen
 controls and invalid attempts. Read the [ledger](ledger.md) before assigning the

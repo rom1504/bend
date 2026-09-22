@@ -1,0 +1,141 @@
+{
+  "kind": "phase4-independent-private-boolean-review",
+  "complete": true,
+  "reviewMethod": "Read-only source/runtime/token/composition inspection plus review of already completed actual-image tests and alternating benchmark reports; no new performance run.",
+  "decision": "Semantic approval for private compiler transport only; combining/promotion remains contingent on combined-image gates.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/private-booleans.mjs",
+      "sha256": "7851f1c4ea399b71f30b34b9cbe0a66f32f64d1ab99afd4180b7759303675e9e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/private-booleans-test.mjs",
+      "sha256": "57926dfd39749e5b16671dbb99af20b71e3a3acd9cdc2222bca319784a4b2ee2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/private-combined-transform.mjs",
+      "sha256": "291773afca17bdf50f10f5218cd29e72f23e8a0233068d945b8761707d85166b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/transform.mjs",
+      "sha256": "011105127c0d85ff13d54c46c7560d44dc47775472e4fe48f69101ce143ef069"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/runtime.mjs",
+      "sha256": "519bee7bae11e26cc84f6104fa27bbfb4a200651ca72769d27d1b7800019a4a4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/tokens.mjs",
+      "sha256": "f1b736dbca9de8955aa1ffde4f74a964ff2c1799deffc3467cafadab89b989fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private-booleans-tests/report.json",
+      "sha256": "4a4c6c1c54caf9ce1218dba68f11b8cefe98152558aeaff8fa4bbb5662d7192e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private-booleans-compare/report.json",
+      "sha256": "a0fd563efa099adeefce86b2a8ccdd7274f4268bdb5e36d829eff890e5eae0cc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-prepared/report.json",
+      "sha256": "377553ac044e77a38f8c3696d8b5140a5ad9c9dc18cd335612a36d0b22672fd9"
+    }
+  ],
+  "assertionsReviewed": 300,
+  "timingRowsReviewed": 24,
+  "summary": {
+    "tree": {
+      "valid": true,
+      "variants": {
+        "private-control": {
+          "samples": 3,
+          "medianRequestMs": 2100.808712,
+          "medianWallMs": 3459.902223000012
+        },
+        "private-booleans": {
+          "samples": 3,
+          "medianRequestMs": 2012.588556,
+          "medianWallMs": 3374.5126920000002
+        }
+      }
+    },
+    "list-sort": {
+      "valid": true,
+      "variants": {
+        "private-control": {
+          "samples": 3,
+          "medianRequestMs": 3659.120576,
+          "medianWallMs": 5049.091149
+        },
+        "private-booleans": {
+          "samples": 3,
+          "medianRequestMs": 3498.1637840000003,
+          "medianWallMs": 4894.109958000001
+        }
+      }
+    },
+    "bytes-ops": {
+      "valid": true,
+      "variants": {
+        "private-control": {
+          "samples": 3,
+          "medianRequestMs": 1578.6104929999997,
+          "medianWallMs": 2912.162150999997
+        },
+        "private-booleans": {
+          "samples": 3,
+          "medianRequestMs": 1474.9131810000001,
+          "medianWallMs": 2820.662703000009
+        }
+      }
+    },
+    "compiler-core": {
+      "valid": true,
+      "variants": {
+        "private-control": {
+          "samples": 3,
+          "medianRequestMs": 28114.558835,
+          "medianWallMs": 29511.698459000007
+        },
+        "private-booleans": {
+          "samples": 3,
+          "medianRequestMs": 25873.927826,
+          "medianWallMs": 27246.63728799997
+        }
+      }
+    }
+  },
+  "invariants": [
+    "Exact pinned original Bool.and/Bool.not worker bodies and native Boolean representation",
+    "Only a single explicit argument at deferred generated worker call/jump sites",
+    "Original G entries preserved; non-Boolean helper inputs use original matcher demand",
+    "Second argument remains eagerly evaluated by unchanged outer call",
+    "Two frozen private fn1 handlers cannot escape or be mutated through the data-only transport",
+    "Composition reconstructs stable-only variant exactly before applying disjoint stable call delta to Boolean variant"
+  ],
+  "limits": [
+    "Not a public-library or raw-JavaScript function identity optimization",
+    "No generic JavaScript short-circuit replacement",
+    "Original errors/fallbacks are retained; resource exhaustion and allocation identity are not equivalence oracles",
+    "Small workload/component timings do not establish full-compiler gain",
+    "Raw mutable/proxy/accessor/function callbacks are outside private request contract"
+  ],
+  "assets": [
+    {
+      "source": "selfhost/build/phase4/private-booleans-tests/report.json",
+      "sourceSha256": "4a4c6c1c54caf9ce1218dba68f11b8cefe98152558aeaff8fa4bbb5662d7192e",
+      "archive": "implementation/phase4/evidence/private-booleans-review-tests.json.gz",
+      "archiveSha256": "1441a48f67a0a4bef8db7534ca578f6b56aba92a86ead7bf221ae75c1ba82118"
+    },
+    {
+      "source": "selfhost/build/phase4/private-booleans-compare/report.json",
+      "sourceSha256": "a0fd563efa099adeefce86b2a8ccdd7274f4268bdb5e36d829eff890e5eae0cc",
+      "archive": "implementation/phase4/evidence/private-booleans-review-comparison.json.gz",
+      "archiveSha256": "f16e9f73b2a4d69a6f7824aa5e045ac0f68918a0aa80299d0844892a44348c19"
+    }
+  ]
+}

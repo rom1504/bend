@@ -1,0 +1,14 @@
+// P5-005 exact no-regression gate, distinct from full fixture conformance.
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';import{createHash}from'node:crypto';
+const hash=f=>createHash('sha256').update(fs.readFileSync(f)).digest('hex'),id=f=>({file:path.resolve(f),sha256:hash(f)}),read=f=>JSON.parse(fs.readFileSync(f));
+const [selectionFile,pairedFile,output]=process.argv.slice(2);assert.ok(output,'usage: SELECTION_PROVENANCE PAIRED_REPORT FRESH_OUTPUT');
+const selection=read(selectionFile),paired=read(pairedFile),old=read(selection.baseline.file);assert.equal(hash(selection.baseline.file),selection.baseline.sha256);
+const inputs=[id(import.meta.filename),id(selectionFile),id(pairedFile),id(selection.baseline.file),id(selection.historicalReference.file)];
+assert.equal(inputs.at(-1).sha256,selection.historicalReference.sha256);assert.equal(paired.error,undefined);
+for(const name of['candidate','reference']){const item=paired.attempts[name];assert.equal(hash(item.file),item.sha256);const r=read(item.file);assert.ok(r.finished);assert.equal(r.results.length,Object.keys(selection.groups).length);assert.ok(r.results.every(x=>x.result?.status==='error'&&x.result?.phase==='check'&&x.result?.checked===true));assert.deepEqual(r.changedInputs,[]);inputs.push(id(item.file));}
+const before=new Map(old.results.filter(x=>x.lane==='check').map(x=>[x.id,x.result]));
+const keys=['status','phase','checked','exitCode','diagnostic'],obs=x=>Object.fromEntries(keys.map(k=>[k,x[k]??null]));
+const rows=paired.rows.map(row=>{assert.ok(selection.groups[row.id]);const a=obs(before.get(row.id)),b=obs(row.candidate),r=obs(row.reference);const unchanged=JSON.stringify(a)===JSON.stringify(b),exact=JSON.stringify(b)===JSON.stringify(r);return{id:row.id,group:selection.groups[row.id],unchanged,exact,semanticAgreement:row.semanticAgreement,pass:row.semanticAgreement&&(unchanged||exact)&&(selection.groups[row.id]!=='prior-exact'||exact)};});
+assert.equal(rows.length,Object.keys(selection.groups).length);assert.equal(new Set(rows.map(x=>x.id)).size,rows.length);
+const result={kind:'phase5-application-origin-negative-comparison',complete:true,pass:rows.every(x=>x.pass),scope:'All147missing-excerpt and82prior-exact negative-check cases. Unchanged or exact reference; not full fixture conformance and no timing claim.',inputs,counts:{selected:rows.length,priorExact:rows.filter(x=>x.group==='prior-exact').length,missingExcerpt:rows.filter(x=>x.group==='missing-excerpt').length,repaired:rows.filter(x=>!x.unchanged&&x.exact).length,changedMismatch:rows.filter(x=>!x.unchanged&&!x.exact).length},rows};
+fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({pass:result.pass,counts:result.counts}));if(!result.pass)process.exitCode=1;

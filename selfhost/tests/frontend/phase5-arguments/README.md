@@ -1,0 +1,1 @@
+P5-008 initial oracle hypotheses; confirm against live pinned TypeScript. Tests cover argument boundaries only. The global expression/body parser and semicolons inside binary RHS are outside this patch. Source files and consumed manifests remain immutable across attempts.

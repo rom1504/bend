@@ -1,0 +1,72 @@
+--- a/src/diagnostic/frontend.bend
++++ b/src/diagnostic/frontend.bend
+@@ -1,7 +1,7 @@
+ # Additive source provenance consumes the actual loader trace and final
+ # freshened core, preserving origins through qualification and substitutions.
+-# Only Ref/ADT/Ctr nodes retaining an actual lexer position receive an origin;
+-# generated nodes and variable occurrences whose positions were erased do not.
++# Ref/ADT/Ctr retain actual lexer positions. The experimental App branch below
++# adds only a same-line head-token anchor after exact source reconstruction.
+ type FProvenance is Data:
+   FProvenance{+result: FResult, +origins: List<&2,DOrigin>}
+ 
+@@ -190,7 +190,7 @@
+ def fp_origin(t, definition, source, route):
+   match source:
+     case FPSource{text, tokens}:
+-      f_choose(List<&2,DOrigin>, (String.eq(tg(t), "Ref") || String.eq(tg(t), "ADT") || String.eq(tg(t), "Ctr")) && U32.is_ge(ix(t), 65536), u => fp_at_token(t, definition, text, fp_find_token(tokens, U32.div(ix(t), 65536), U32.mod(ix(t), 65536)), route), u => Nil{})
++      f_choose(List<&2,DOrigin>, (String.eq(tg(t), "Ref") || String.eq(tg(t), "ADT") || String.eq(tg(t), "Ctr")) && U32.is_ge(ix(t), 65536), u => fp_at_token(t, definition, text, fp_find_token(tokens, U32.div(ix(t), 65536), U32.mod(ix(t), 65536)), route), u => f_choose(List<&2,DOrigin>, String.eq(tg(t), "App"), u => fp_application_anchor(t, definition, text, tokens, route), u => Nil{}))
+ @unsafe
+ def fp_find_token(tokens, line, column):
+   match tokens:
+@@ -367,3 +367,50 @@
+   match result:
+     case FResult{book, error, imports}:
+       FProvenance{result, f_choose(List<&2,DOrigin>, String.is_empty(error), u => fp_loaded_modules(fp_loaded_reverse(done, Nil{}), book, sources, definition), u => Nil{})}
++
++# Experimental rejection-only anchors. Never store source positions in App.id.
++law fp_application_head:
++  for +t: KTerm
++  KTerm
++law fp_application_anchor:
++  for +t: KTerm
++  for +definition: String
++  for +text: String
++  for +tokens: List<&2,FToken>
++  for +route: List<&2,U32>
++  List<&2,DOrigin>
++law fp_application_token:
++  for +t: KTerm
++  for +head: KTerm
++  for +definition: String
++  for +text: String
++  for +tokens: List<&2,FToken>
++  for +route: List<&2,U32>
++  List<&2,DOrigin>
++law fp_application_parsed:
++  for +t: KTerm
++  for +definition: String
++  for +text: String
++  for +tokens: List<&2,FToken>
++  for +route: List<&2,U32>
++  for +parsed: FParsed
++  List<&2,DOrigin>
++
++@unsafe
++def fp_application_head(t):
++  f_choose(KTerm, String.eq(tg(t), "App"), u => fp_application_head(kid(t, 0)), u => t)
++
++@unsafe
++def fp_application_anchor(t, definition, text, tokens, route):
++  +head = fp_application_head(t)
++  f_choose(List<&2,DOrigin>, String.eq(tg(head), "Ref") && U32.is_ge(ix(head), 65536), u => fp_application_token(t, head, definition, text, fp_find_token(tokens, U32.div(ix(head), 65536), U32.mod(ix(head), 65536)), route), u => Nil{})
++
++@unsafe
++def fp_application_token(t, head, definition, text, tokens, route):
++  f_choose(List<&2,DOrigin>, String.eq(f_tx(tokens), nm(head)) && String.eq(f_tx(f_tl(tokens)), "("), u => fp_application_parsed(t, definition, text, tokens, route, f_expr(tokens, 13)), u => Nil{})
++
++@unsafe
++def fp_application_parsed(t, definition, text, tokens, route, parsed):
++  match parsed:
++    case FParsed{node, rest}:
++      f_choose(List<&2,DOrigin>, String.eq(tg(node), "Call") && U32.is_eq(f_line(tokens), f_line(rest)), u => f_choose(List<&2,DOrigin>, norm_exact(t, f_scope(node, Nil{}, Nil{})), u => fp_at_token(t, definition, text, tokens, route), u => Nil{}), u => Nil{})

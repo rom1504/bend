@@ -1,0 +1,70 @@
+{
+  "kind": "phase5-argument-boundary-selected-audit",
+  "complete": true,
+  "scope": "Distinct frozen v2 grammar regression and genuine final v3 message-correction/selected execution gates; residual operator-RHS failure retained; not full conformance or performance",
+  "gates": {
+    "grammar-v2": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/regression-v2/selected/paired.json",
+        "sha256": "91a9456905232170e18cb3fc0fd20affc7c3589d2ba3f3b81493f9207f10ede1"
+      },
+      "observations": 124,
+      "exactDifferences": 61
+    },
+    "final-v3": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/candidate-v3/validation-001/selected/paired.json",
+        "sha256": "a6dc979be5c2c00b09ef00d8c977537ecb69fe4521e39be46a7d2fb8d30b6aba"
+      },
+      "observations": 28,
+      "exactDifferences": 15
+    },
+    "execution-v3": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/selected/paired.json",
+        "sha256": "2719a6befd10346c082f9964bb577bde82f9cf9f538435c885040ec0342b34ab"
+      },
+      "observations": 16,
+      "exactDifferences": 0
+    }
+  },
+  "fixedInvalidAcceptances": [
+    "phase5-arguments/call-after-comma",
+    "phase5-arguments/call-leading",
+    "phase5-arguments/call-middle",
+    "phase5-arguments/call-trailing",
+    "phase5-arguments/constructor-after-comma",
+    "phase5-arguments/constructor-leading",
+    "phase5-arguments/constructor-middle",
+    "phase5-arguments/constructor-trailing",
+    "phase5-arguments/do-trailing",
+    "phase5-arguments/family-after-comma",
+    "phase5-arguments/family-leading",
+    "phase5-arguments/family-middle",
+    "phase5-arguments/family-trailing"
+  ],
+  "specificArgumentDiagnostics": 9,
+  "familyDiagnosticsStillGeneric": 4,
+  "v1IntroducedOveracceptanceRejected": true,
+  "v2ToV3OnlyDiagnosticTypo": true,
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/candidate-v3/api.mjs",
+    "sha256": "c09599e842e67a16385f7fb9b52e1314bc8ee9bd3ec1394edf2975967d25ab31"
+  },
+  "bootstrap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/candidate-v3/api.mjs.bootstrap.json",
+    "sha256": "c6d5893e04435494721d2e6ed39c7dcf05e929929b77791c5adae2e4239e9d35"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/candidate-v3/snapshot/build/typed/snapshots/515d396bd197f892707e400a0ce92ea56bb88a9e27fb75db6a02df4bd030b47d/compiler.bend",
+    "sha256": "3a66c69773100e8f9df22458c9a931b1035ac5a5e99f14a063ab7a6e9ec566a7"
+  },
+  "residual": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/residual-v3/selected/paired.json",
+    "sha256": "844793f094933a60ad9d966f8ebbd69fc3640ff9a9e6859e1a0d4a40cf234cdc"
+  },
+  "auditor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/frontend/phase5-arguments-audit.py",
+    "sha256": "c3e689813fce10988f14fc5d5021e3fe27226ff36484ea0e3a214a434167f9be"
+  }
+}

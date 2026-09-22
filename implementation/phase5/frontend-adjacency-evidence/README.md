@@ -1,0 +1,3 @@
+# Frontend evidence archive
+
+The manifest maps historical file paths to content-addressed gzip objects. Each object was reopened and byte-compared, with all files rehashed after archival. The archive preserves failed and successful attempts without relabeling them, checked source/API provenance and consumed fixtures/tools. Historical auxiliary README versions use explicit archivedFrom mappings to exact retained bytes; no compiler/fixture override is allowed. Large executable identities are external prerequisites. It is not a new bootstrap or proof that historical absolute paths are relocatable. See the separate focused audit and implementation report for what actually passed.

@@ -229,7 +229,8 @@ def f_app(f, xs):
 
 @unsafe
 def f_args_base(ts, end, acc):
-  f_choose(FParsed, f_eq(end, "]") && f_eq(f_tx(ts), ";"), u => f_err(ts, "expected term; a list does not use semicolon separators"), u => f_choose(FParsed, f_eq(f_tx(f_skip(ts)), end), u => FParsed{kt("Args", "", 0, 1, List.reverse(&2, KTerm, acc)), f_tl(f_skip(ts))}, u => f_arg_next(f_expr(f_skip(ts), 0), end, acc)))
+  +spaced = f_space(ts)
+  f_choose(FParsed, f_eq(f_tx(spaced), ";"), u => f_err(spaced, f_choose(String, f_eq(end, "]"), u => "expected term; a list does not use semicolon separators", u => "expected term; arguments do not use semicolon separators")), u => f_choose(FParsed, f_eq(f_tx(spaced), end), u => FParsed{kt("Args", "", 0, 1, List.reverse(&2, KTerm, acc)), f_tl(spaced)}, u => f_arg_next(f_expr(spaced, 0), end, acc)))
 
 @unsafe
 def f_arg_next(p, end, acc):
@@ -255,8 +256,32 @@ def f_atom_base(ts):
     u => f_choose(FParsed, f_eq(f_tx(ts), "Quant"), u => FParsed{kt("Qnt", "", 0, 0, Nil{}), f_tl(ts)},
     u => f_choose(FParsed, f_eq(f_tx(ts), "Kind"), u => f_kind_wrap(f_expect(f_expr(f_tl(f_tl(ts)), 0), ")")),
     u => f_choose(FParsed, U32.is_eq(f_kind_token(ts), 2), u => FParsed{kt("Literal", f_tx(ts), 0, 1, Nil{}), f_tl(ts)},
-    u => f_choose(FParsed, U32.is_eq(f_kind_token(ts), 1) && Bool.not(f_reserved(f_tx(ts))), u => FParsed{kt(f_choose(String, Char.is_digit(f_head(f_tx(ts))), u => "Literal", u => "Ref"), f_tx(ts), f_atid(ts), 1, Nil{}), f_tl(ts)},
+    u => f_choose(FParsed, U32.is_eq(f_kind_token(ts), 1) && Bool.not(f_reserved(f_tx(ts))), u => f_atom_name(ts),
     u => f_err(ts, "expected term"))))))))))))))
+
+# A constructor brace belongs to the raw name only when lexically adjacent.
+# General term growth must not absorb the next independent braced value.
+law f_atom_name:
+  for +ts: List<&2, FToken>
+  FParsed
+
+@unsafe
+def f_atom_name(ts):
+  f_choose(FParsed, Bool.not(Char.is_digit(f_head(f_tx(ts)))) && f_eq(f_tx(f_tl(ts)), "{") && U32.is_eq(f_line(ts), f_line(f_tl(ts))) && U32.is_eq(f_col(f_tl(ts)), U32.add(f_col(ts), U32.from_nat(String.length(f_tx(ts))))),
+    u => f_atom_constructor(f_tx(ts), f_atid(ts), f_args(f_tl(f_tl(ts)), "}", Nil{})),
+    u => FParsed{kt(f_choose(String, Char.is_digit(f_head(f_tx(ts))), u => "Literal", u => "Ref"), f_tx(ts), f_atid(ts), 1, Nil{}), f_tl(ts)})
+
+law f_atom_constructor:
+  for +name: String
+  for +id: U32
+  for +p: FParsed
+  FParsed
+
+@unsafe
+def f_atom_constructor(name, id, p):
+  match p:
+    case FParsed{+args, ts}:
+      f_choose(FParsed, f_eq(tg(args), "Error"), u => FParsed{args, ts}, u => FParsed{kt("Ctr", name, id, 1, ks(args)), ts})
 
 @unsafe
 def f_kind_token(ts):
@@ -376,8 +401,8 @@ def f_grow_base(p, min):
   match p:
     case FParsed{+n, +ts}:
       f_choose(FParsed, f_eq(tg(n), "Error"), u => FParsed{n, ts},
-        u => f_choose(FParsed, f_eq(f_tx(ts), "(") || (f_eq(f_tx(ts), "{") && f_eq(tg(n), "Ref")) || (f_eq(f_tx(ts), "<") && Char.is_upper(f_head(nm(n)))),
-          u => f_grow_args(n, f_tx(ts), min, f_args(f_tl(ts), f_choose(String, f_eq(f_tx(ts), "("), u => ")", u => f_choose(String, f_eq(f_tx(ts), "{"), u => "}", u => ">")), Nil{})),
+        u => f_choose(FParsed, f_eq(f_tx(ts), "(") || (f_eq(f_tx(ts), "<") && Char.is_upper(f_head(nm(n)))),
+          u => f_grow_args(n, f_tx(ts), min, f_args(f_tl(ts), f_choose(String, f_eq(f_tx(ts), "("), u => ")", u => ">"), Nil{})),
         u => f_choose(FParsed, U32.is_gt(f_prec(f_tx(ts)), min) && Bool.not((f_eq(f_tx(ts), "%") || f_eq(f_tx(ts), "-")) && U32.is_eq(f_col(f_tl(ts)), U32.add(f_col(ts), 1)) && Char.is_alpha(f_head(f_tx(f_tl(ts))))) && Bool.not(f_eq(f_tx(ts), ">")) && Bool.not(f_eq(f_tx(ts), ">>") && (f_eq(f_tx(f_tl(ts)), ")") || f_eq(f_tx(f_tl(ts)), "}") || f_eq(f_tx(f_tl(ts)), ",") || f_eq(f_tx(f_tl(ts)), ":") || f_eq(f_tx(f_tl(ts)), ">") || f_eq(f_tx(f_tl(ts)), "\n") || f_eq(f_tx(f_tl(ts)), "->") || f_eq(f_tx(f_tl(ts)), "<eof>") || f_eq(f_tx(f_tl(ts)), "]"))),
           u => f_binary(n, f_tx(ts), min, f_rhs_for(n, f_tl(ts), f_tx(ts), f_choose(U32, f_eq(f_tx(ts), "=>") || f_eq(f_tx(ts), "->") || f_eq(f_tx(ts), "<>") || f_eq(f_tx(ts), "&") || f_eq(f_tx(ts), "|"), u => U32.sub(f_prec(f_tx(ts)), 1), u => f_prec(f_tx(ts))))),
           u => FParsed{n, ts})))
@@ -386,7 +411,7 @@ def f_grow_base(p, min):
 def f_grow_args(n, op, min, p):
   match p:
     case FParsed{+args, ts}:
-      f_choose(FParsed, f_eq(tg(args), "Error"), u => FParsed{args, ts}, u => f_grow(FParsed{f_choose(KTerm, f_eq(op, "("), u => kt("Call", "", 0, 1, Con{n, ks(args)}), u => kt(f_choose(String, f_eq(op, "{"), u => "Ctr", u => "ADT"), nm(n), ix(n), qt(n), ks(args))), ts}, min))
+      f_choose(FParsed, f_eq(tg(args), "Error"), u => FParsed{args, ts}, u => f_grow(FParsed{f_choose(KTerm, f_eq(op, "("), u => kt("Call", "", 0, 1, Con{n, ks(args)}), u => kt("ADT", nm(n), ix(n), qt(n), ks(args))), ts}, min))
 
 @unsafe
 def f_binary(a, op, min, p):

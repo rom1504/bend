@@ -1,6 +1,6 @@
 # Phase 5 implementation report
 
-Status: in progress, first integrated checkpoint at 2026-09-22 22:24 UTC.
+Status: in progress, second integrated checkpoint at 2026-09-22 23:03 UTC.
 The authorized six-hour campaign began at 21:39:36 UTC and ends
 2026-09-23 03:39:36 UTC. Baseline: `7d69850`; design commit: `7c7db08`.
 
@@ -61,15 +61,66 @@ retry completed all 2,756 observations, with no reference behavior changes.
   derivative now recognizes two genuinely new checked builds, verifies the
   complete generated runtime/dependency contract, and keeps bootstrap proof
   separate from derived code. Unicode, malformed data, drift and rejection
-  controls pass. No new Phase 5 speed estimate is claimed yet.
+  controls pass. Its new-build performance confirmation is recorded below.
+
+## Second integrated source
+
+Checked API `c3c2ac7b1456…` includes the reviewed P5-006/007/008/009/010
+changes. All 213 focused check observations pass their declared oracles. The
+full 1,378-fixture / 2,756-observation gate preserves all 919 positive fixtures, has
+zero worker failures/timeouts/input drift, and introduces zero new exact live
+TypeScript differences relative to the first integration.
+
+| Measure | Campaign baseline | First integration | Second integration |
+| --- | ---: | ---: | ---: |
+| Strict check failures | 377 | 376 | 374 |
+| Exact TypeScript differences | 560 | 558 | 556 |
+| Acceptance/phase differences | 50 | 48 | 38 |
+| Remaining exact diagnostic/report differences | 510 | 510 | 518 |
+
+Ten observations move from an incorrect phase to a correct phase but still
+have different diagnostic text, explaining the increased presentation category.
+The exact matches newly repaired in this batch are `check/ctr_of_datatype` and
+`io/channel_send_recv`. The remaining 556 differences span 372 fixtures. The same
+pinned TypeScript report, freshly measured earlier in this campaign, is reused
+with identical fixture/compiler hashes; it has not been relabeled as another run.
+
+Validated additions are [constructor adjacency](frontend-adjacency.md),
+[argument delimiters](frontend-arguments.md),
+[constructor diagnostic reasons](constructor-diagnostics.md),
+[plain do binders](do-plain-binders.md) and
+[local constructor freshness](declaration-freshness.md). The unchanged
+newline-only helper moved from sugar to lexer as `f_space`, shared by do headers
+and argument lists; statement-aware `f_skip` retains its separate role.
+
+[P5-005 application-origin reconstruction](application-origins.md) is rejected.
+It repaired four exact upstream diagnostics without semantic regressions, but
+reparsed the same application repeatedly. An ordinary 128-argument rejection
+observation rose 2.855→4.845 seconds. These unpaired stress observations support
+rejecting the known quadratic work; they are not general speed estimates.
+No part of that source overlay was promoted.
+
+## Controlled equality measurement on the new source
+
+[P5-012](equality-performance.md) verifies the maintained derivative on checked
+API `c3c2ac7b1456…`. Opposite-order fresh-process requests improve from
+19.278 to 12.262 seconds for the fixed core library (36.4% less time), and
+2.464 to 1.849 seconds for list_sort (25.0% less). Pinned TypeScript takes
+0.397 seconds for that list request: checked B1 is 6.20× slower, the derivative
+4.65× slower. These are small workload request measurements with the documented
+Base-cache policy, not current complete-source ratios or CLI timings.
+All ten rows pass exact emitted-byte checks; list outputs execute exactly.
+Core coverage is checked compilation and JavaScript syntax, not full core runtime
+execution. Other intentional compiler jobs paused throughout the timed window.
 
 ## Remaining campaign work
 
-P5-005 tests a narrow source-location reconstruction for unchanged applications;
-P5-006 repairs lexical constructor-brace adjacency; P5-007 improves selected
-constructor/datatype error reasons without changing checker acceptance. They
-remain separate experiments until focused review and integration. Additional do
-binder and argument-separator witnesses are being prepared.
+P5-011 now prototypes structured raw-parser error transport with a once-only
+renderer and unchanged public loader result shape; see its
+[detailed design](../../design/phase5/structured_parser_diagnostics.md).
+P5-013 investigates unqualified operator refusal; P5-014 investigates invalid
+matcher-arm heads. P5-015 prepares a controlled complete frontend loop comparison. These isolated candidates are
+not production changes until their gates and review pass.
 
 The final source still needs a fresh broad gate, CPU backend coverage, checked
 self-reproduction, updated code-size/complexity counts and controlled performance
@@ -82,4 +133,7 @@ failures, checked source/API identities, consumed tools and fixtures. Historical
 absolute paths identify inputs; they are not a claim of portable replay. The
 [integration archive](integration-01-evidence/manifest.json) preserves the first
 combined source, complete reports, reference attempts and exact comparison.
-Large executable/toolchain prerequisites are identified separately.
+The [second integration archive](integration-02-evidence/manifest.json) preserves
+the next complete source, all 213 selected observations, the full frontend report
+and the exact comparison. Large executable/toolchain prerequisites are identified
+separately.

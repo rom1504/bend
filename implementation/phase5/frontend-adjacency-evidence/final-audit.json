@@ -1,0 +1,60 @@
+{
+  "kind": "phase5-adjacency-selected-audit",
+  "complete": true,
+  "scope": "96 paired acceptance/phase checks and14 exact interpreter/JS observations; not full conformance/native/fixedpoint or a performance comparison",
+  "gates": {
+    "regression-v1": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/regression-v1/selected/paired.json",
+        "sha256": "3ba6bdd00d4337f70c02302dbbe6016b14032360fdc529d0a517657c48ab3b7f"
+      },
+      "observations": 92,
+      "exactDiagnosticOrOutputDifferences": 44
+    },
+    "execution-v1": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/selected/paired.json",
+        "sha256": "f9badb774f4b92e9ef89e96ee2203f0d74efd1057c7c0e32906699c4acbb0363"
+      },
+      "observations": 14,
+      "exactDiagnosticOrOutputDifferences": 0
+    },
+    "review-boundary-v2": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/review-boundary-v2/selected/paired.json",
+        "sha256": "62994f936ba467551c14883067f7f63693754c359b5706f88fc5ecf60d6beff8"
+      },
+      "observations": 4,
+      "exactDiagnosticOrOutputDifferences": 2
+    }
+  },
+  "repairedAcceptanceCases": [
+    "phase5-adjacency/parallel-outer-ungrouped",
+    "phase5-adjacency/parallel-parenthesized-ref",
+    "phase5-adjacency/parallel-ref-then-annotation",
+    "phase5-adjacency/constructor-space",
+    "phase5-adjacency/constructor-parenthesized"
+  ],
+  "intendedBinderRuleRestored": true,
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/candidate-v1/api.mjs",
+    "sha256": "f58a828127b51ab70ba69b8f9e6e591134ffe27ab40913f9e6707a3e032d00b5"
+  },
+  "genuineBootstrap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/candidate-v1/api.mjs.bootstrap.json",
+    "sha256": "c043e852a4cd1364e57058d27bdd30bff8de0d84fdb40fb633fe81832962627a"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/candidate-v1/snapshot/build/typed/snapshots/76c75051faea0ca96ef8c1679cd1c1cbf58cdf035582ca2b9f8ac44b1f193933/compiler.bend",
+    "sha256": "221eea4b11529aff1375a2339dade5c7bdc513a08191ff92a82a8bd525bc6e5c"
+  },
+  "auditor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/frontend/phase5-adjacency-audit.py",
+    "sha256": "cbe08b5e00e4467824b3ca24e90c1082f72296616d970ef5a78e8b5fdfe164ca"
+  },
+  "retainedFailures": [
+    "before: two attempted positive controls destructure a known constructor and are invalid upstream",
+    "before-v2 and candidate-v1 initial validation: inline #| oracles correctly override attempted acceptance-metadata correction",
+    "review-boundary-v1: bare constructor used as inferred parallel value requires an annotation in both compilers; corrected fixture is separate"
+  ]
+}

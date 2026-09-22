@@ -1,0 +1,76 @@
+{
+  "kind": "phase5-application-origin-summary",
+  "decision": "rejected",
+  "promoted": false,
+  "reason": "Repeated source reconstruction costs too much for four upstream exact diagnostic repairs.",
+  "reports": {
+    "selected": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/application-origin-gate1/report.json",
+      "sha256": "8df021682b0037b68b10d63bfedd710408fa0857ec47121c5532138cb606733b"
+    },
+    "supplement": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/application-origin-supplement1/report.json",
+      "sha256": "58a3127bf9fc164b56c12e5ae10e463a5b40c6f26459cafbd09df5b88e95b31a"
+    },
+    "negativeComparison": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/application-origin-negatives1/comparison.json",
+      "sha256": "8d583ea461e90fb6120558209d62a60790f691f6207bd5da1986200c23eb9a71"
+    },
+    "negativePaired": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/application-origin-negatives1/paired.json",
+      "sha256": "18200ccd883f83a9a8478172cf233d5c7b2bed8329ea2bac502bd7cad0d0a4e1"
+    },
+    "ordinaryCost": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/application-origin-cost1/report.json",
+      "sha256": "e7a44a3d96a39b83e9a5739b953df5dede27de6d32d80ba5bbbb16a1020cd5a3"
+    },
+    "exploratoryCost": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/application-origin-stress1/report.json",
+      "sha256": "50bf794d7118f165f46bdbdb5d99d680b28bedbc124d918babd850d615f0bdcc"
+    }
+  },
+  "customCases": 18,
+  "customRepairs": 6,
+  "supplementCases": 4,
+  "upstreamCases": {
+    "selected": 229,
+    "priorExact": 82,
+    "missingExcerpt": 147,
+    "repaired": 4,
+    "changedMismatch": 0
+  },
+  "repaired": [
+    "check/bool_one_way.bend",
+    "check/float_builtin_arg.bend",
+    "page/overapply_hint.bend",
+    "parse/builtin_arity_mismatch_000.bend"
+  ],
+  "costScope": "One128-argument invalid call; original then candidate fresh processes, cached Base preparation included; ordinary inspect only (no second origin reconstruction). Unpaired wall observation during concurrent correctness jobs; not a benchmark.",
+  "costRows": [
+    {
+      "variant": "baseline",
+      "wallMs": 2854.949031,
+      "status": 0,
+      "signal": null,
+      "maxRssKiB": 402104,
+      "observations": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/application-origin-cost1/baseline-observations.json",
+        "sha256": "c78d80bcd19d697e33fdc7fea1fd4f977559edfa6b32250bddb33d1adf26aca2"
+      }
+    },
+    {
+      "variant": "candidate",
+      "wallMs": 4845.217901,
+      "status": 0,
+      "signal": null,
+      "maxRssKiB": 406852,
+      "observations": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/application-origin-cost1/candidate-observations.json",
+        "sha256": "83cedf11ca320b381e7c164192f0bbe98eb430bdf87fd5559f928d10df49c31e"
+      }
+    }
+  ],
+  "priorExploratoryCostScope": "Correctness worker also reconstructs origins again; not ordinary compiler latency.",
+  "newProductionSources": false,
+  "fullConformance": false
+}

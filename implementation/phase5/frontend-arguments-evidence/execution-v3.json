@@ -1,0 +1,586 @@
+{
+  "kind": "targeted-paired-conformance",
+  "started": "2026-09-22T22:37:36.459Z",
+  "complete": false,
+  "selectedComplete": true,
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/target.json",
+    "sha256": "cd6f299721e20fd548626987280b3b375ac94de74140e131bd75885da2cc807a"
+  },
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/candidate-v3/api.mjs",
+      "sha256": "c09599e842e67a16385f7fb9b52e1314bc8ee9bd3ec1394edf2975967d25ab31"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/candidate-v3/snapshot/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+    },
+    "bootstrapReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/candidate-v3/api.mjs.bootstrap.json",
+      "sha256": "c6d5893e04435494721d2e6ed39c7dcf05e929929b77791c5adae2e4239e9d35"
+    }
+  },
+  "environment": {
+    "BEND_UPSTREAM": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "BEND_BASE": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "BEND_TYPED_API": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/candidate-v3/api.mjs",
+    "BEND_TYPED_RUNTIME": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/candidate-v3/snapshot/src/runtime.mjs"
+  },
+  "harnessSources": [
+    {
+      "file": "run.mjs",
+      "sourceSha256": "7198c672c15d6fa9b20cd4010446966713fce1ed6054ae13bff1e6500521b6a0",
+      "consumedSha256": "9f5d0d4c52185e57e0350b825c014c89b764d8b709ca1d32d1cc09a2d5938a4a"
+    },
+    {
+      "file": "worker.mjs",
+      "sourceSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "consumedSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+    },
+    {
+      "file": "inventory.mjs",
+      "sourceSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd",
+      "consumedSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd"
+    },
+    {
+      "file": "judge.mjs",
+      "sourceSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+      "consumedSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+    },
+    {
+      "file": "selection.mjs",
+      "sourceSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+      "consumedSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+    },
+    {
+      "file": "run-probe.mjs",
+      "sourceSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c",
+      "consumedSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c"
+    },
+    {
+      "file": "replay.mjs",
+      "sourceSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94",
+      "consumedSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94"
+    },
+    {
+      "file": "persistent-probe.mjs",
+      "sourceSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225",
+      "consumedSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225"
+    },
+    {
+      "file": "persistent-worker.mjs",
+      "sourceSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+      "consumedSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d"
+    },
+    {
+      "file": "adapters/upstream.mjs",
+      "sourceSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd",
+      "consumedSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd"
+    }
+  ],
+  "targetSourceSha256": "2b273483c6adfd9bb5c52b614557741595560fb53acccd311d83ab87258df806",
+  "cpu": null,
+  "attempts": {
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/selected/reference.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "isolated",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "4096",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/selected/reference.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "0e949971f6069944e58536850edaaaa88686a5a1ef060984cfc76c5913b976f7"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/selected/candidate.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "isolated",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "4096",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/candidate-v3/snapshot/build/conformance-host/4e65ccee69b4177575a4835c226f2e6d1b666833e8bd177671fade6986092668/typed.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/arguments/execution-v3/selected/candidate.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "619d411604ec4e6fbcc2ba2fe7311c3e257e986c1d874c2a269d3c9a0026e30e"
+    }
+  },
+  "rows": [
+    {
+      "id": "phase5-adjacency/constructor-through-parameter",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/constructor-through-parameter",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/parallel-outer-ungrouped",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/parallel-outer-ungrouped",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/argument-body-semicolon",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/argument-body-semicolon",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/body-semicolon",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/body-semicolon",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/call-commas",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/call-commas",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/call-newlines",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/call-newlines",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/call-spaces",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/call-spaces",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/call-trailing-comma",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-arguments/call-trailing-comma",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    }
+  ],
+  "missing": [],
+  "discrepancies": [],
+  "referenceSelectedComplete": true,
+  "candidateSelectedComplete": true,
+  "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+  "wallMs": 33257.570544,
+  "finished": "2026-09-22T22:38:09.720Z"
+}

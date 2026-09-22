@@ -545,7 +545,7 @@ def f_type_kind(name, pars, p, book, imports):
 
 @unsafe
 def f_type_ctors(name, pars, ty, ts, book, imports, ctors):
-  f_choose(FResult, U32.is_gt(f_col(ts), 0) && f_eq(f_tx(f_tl(ts)), "{"), u => f_type_ctor(name, pars, ty, f_tx(ts), f_tele(f_tl(f_tl(ts)), "}", Nil{}), book, imports, ctors), u => f_tops(ts, Con{KDef{name, "ADT", f_len(pars), 0, f_tbind(pars, ty), atom("Absent"), List.reverse(&2, KDef, ctors), False{}, False{}}, book}, imports, False{}))
+  f_choose(FResult, U32.is_gt(f_col(ts), 0) && f_eq(f_tx(f_tl(ts)), "{"), u => f_choose(FResult, Bool.not(f_eq(dk(f_find(f_tx(ts), ctors)), "Missing")) || Bool.not(f_eq(dk(f_ctor_lookup(f_tx(ts), book)), "Missing")), u => f_result(book, nm(f_pn(f_err(f_tl(ts), "expected a fresh constructor name (duplicate declaration: " ++ f_tx(ts) ++ ")"))), imports), u => f_type_ctor(name, pars, ty, f_tx(ts), f_tele(f_tl(f_tl(ts)), "}", Nil{}), book, imports, ctors)), u => f_tops(ts, Con{KDef{name, "ADT", f_len(pars), 0, f_tbind(pars, ty), atom("Absent"), List.reverse(&2, KDef, ctors), False{}, False{}}, book}, imports, False{}))
 
 @unsafe
 def f_type_ctor(name, pars, ty, ctor, p, book, imports, ctors):

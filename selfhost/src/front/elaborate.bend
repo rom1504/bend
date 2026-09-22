@@ -316,7 +316,8 @@ def f_scope_body_base(t, env, book):
 
 @unsafe
 def f_scope_local(t, pats, env, book):
-  f_scope_local_valid(t, pats, env, book, f_valid_patterns(pats, book))
+  # Do assignments bind one name; ordinary locals may destructure constructors.
+  f_scope_local_valid(t, pats, env, book, f_valid_patterns(pats, f_choose(List<&2, KDef>, f_eq(nm(t), "Do"), u => Nil{}, u => book)))
 
 @unsafe
 def f_scope_rows(rows, env, book):

@@ -329,3 +329,12 @@ def f_ascii_ident_code(code):
 @unsafe
 def f_ascii_space_code(code):
   U32.is_eq(code, 32) || U32.is_le(U32.sub(code, 9), 4)
+
+# Header and argument whitespace preserves statement semicolons.
+law f_space:
+  for +ts: List<&2,FToken>
+  List<&2,FToken>
+
+@unsafe
+def f_space(ts):
+  f_choose(List<&2,FToken>, f_eq(f_tx(ts), "\n"), u => f_space(f_tl(ts)), u => ts)

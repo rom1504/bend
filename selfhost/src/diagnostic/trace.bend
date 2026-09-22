@@ -94,7 +94,7 @@ def dg_family(book, name):
 
 @unsafe
 def dg_typeless(book, ctx, t):
-  dg_text("non-inferrable term '" ++ dg_expr(book, DTerm{t}, dg_scope(List.reverse(&2, KTerm, ctx), Nil{})) ++ "'")
+  dg_text("non-inferrable term '" ++ dg_expr(book, DTerm{t}, dg_scope(List.reverse(&2, KTerm, ctx), Nil{})) ++ "'" ++ kc(String, String.eq(tg(t), "Ctr") && String.eq(dk(lookup(book, nm(t))), "ADT"), u => " (" ++ nm(t) ++ " is a datatype: write its arguments as <>)", u => ""))
 
 @unsafe
 def dg_trace(e, ctx, t, ty, r):
@@ -112,7 +112,7 @@ def dg_reason(e, ctx, t, ty, code):
    u => kc(KTerm, String.eq(code, "live use of an unfilled law"), u => dg_pair(dg_text("a filled definition (an unfilled law is a dead claim: live code cannot use it)"), t),
    u => kc(KTerm, String.eq(code, "a family requires angle-bracket parameters"), u => dg_pair(dg_text("a family instance (write " ++ nm(t) ++ "<..>)"), t),
    u => kc(KTerm, String.eq(code, "unresolved hole"), u => dg_pair(ty, t),
-   u => kc(KTerm, String.eq(code, "cannot infer: annotation required"), u => dg_pair(dg_text("an annotated term (cannot infer)"), t),
+   u => kc(KTerm, String.eq(code, "cannot infer: annotation required"), u => dg_pair(dg_text(kc(String, String.eq(tg(t), "Ctr") && String.eq(dg_family(cb(e), nm(t)), ""), u => "a declared constructor", u => "an annotated term (cannot infer)")), t),
    u => kc(KTerm, String.eq(code, "lambda requires a function type") || String.eq(code, "matcher requires a function type") || String.eq(code, "reflexivity requires equality goal"), u => dg_pair(ty, dg_typeless(cb(e), ctx, t)),
    u => kc(KTerm, String.eq(code, "constructor requires a datatype goal"), u => dg_pair(ty, kc(KTerm, String.eq(dg_family(cb(e), nm(t)), ""), u => dg_typeless(cb(e), ctx, t), u => ref(dg_family(cb(e), nm(t))))),
    u => kt("DDetail", "", 0, 0, [dg_text(code), atom("Absent")]))))))))))

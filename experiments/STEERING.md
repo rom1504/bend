@@ -1,8 +1,8 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-22 22:24 UTC; baseline `7d69850`, first checked integration API `a17d909d9c48…`.
+Evidence cutoff: 2026-09-22 23:03 UTC; baseline `7d69850`, second checked integration API `c3c2ac7b1456…`.
 Authorized Phase 5 window: 2026-09-22 21:39:36 to 2026-09-23 03:39:36 UTC.
-Next review: second conformance batch and source-location falsifier, about 22:50 UTC.
+Next review: full frontend equality comparison and parser transport, about 23:35 UTC.
 
 ## User objective
 
@@ -13,9 +13,9 @@ and results, and commit/push validated increments. See the
 
 ## Established position
 
-- Current source:59 Bend modules,16,055 physical lines; generated files excluded.
-- All 919 positive frontend fixtures pass;376 strict check failures remain (377 at baseline).
-- Fresh live TypeScript comparison:558 differences, including48 acceptance/phase
+- Campaign baseline: 59 Bend modules, 16,055 physical lines; recount after source freeze.
+- All 919 positive frontend fixtures pass;374 strict check failures remain (377 at baseline).
+- Fresh live TypeScript comparison:556 differences, including38 acceptance/phase
   observations; no new differences. Matching status is not proof of the same rule.
 - Focused reused loop 9.328 seconds; checked rebuild plus cold cases 37.217 seconds.
 - Four-core full frontend inventory about 5 minutes, with known failures retained.
@@ -33,10 +33,13 @@ and results, and commit/push validated increments. See the
 |3|One maintained development entry|Fresh checked build, selected probes, drift/failure/resume controls|direct_calls|
 |4|Portable B1 equality derivative|Strict provenance/dependency recognition, two new checked builds and Unicode/error controls|lexer_analysis|
 
-P5-001 through P5-004 have validated focused results and a first integrated
-frontend gate. P5-005 tests exact reconstructed application origins, P5-006
-constructor-brace adjacency, and P5-007 diagnostic reasons. Next integrate only
-reviewed candidates, then broad-check; schedule an uncontended performance slot.
+Two reviewed source batches have complete frontend gates and no new differences.
+P5-005 is rejected: four exact repairs do not justify repeated quadratic source
+reconstruction. P5-006/007/008/009/010 are integrated. Next: P5-011 preserves raw
+parser error metadata and renders once; P5-012 confirms the maintained equality
+derivative on small workloads; P5-014 checks matcher-head grammar and P5-013
+checks bare-operator refusal. The P5-015 full frontend timing window will pause
+other compiler jobs; report exact scope and retained failures.
 No general parser/kernel/emitter rewrite and no reopening rejected Phase 4
 memoization/uncurrying/representation ideas without new evidence.
 

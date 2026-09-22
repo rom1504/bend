@@ -1,0 +1,164 @@
+{
+  "cases": [
+    {
+      "id": "phase5/constructors/unknown-inferred-ctor",
+      "file": "unknown-inferred-ctor.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "a declared constructor"
+    },
+    {
+      "id": "phase5/constructors/known-inferred-ctor",
+      "file": "known-inferred-ctor.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "an annotated term (cannot infer)"
+    },
+    {
+      "id": "phase5/constructors/datatype-as-constructor",
+      "file": "datatype-as-constructor.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "Bool is a datatype: write its arguments as <>"
+    },
+    {
+      "id": "phase5/constructors/unknown-family",
+      "file": "unknown-family.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "a declared datatype (unknown: Missing)"
+    },
+    {
+      "id": "phase5/constructors/filled-def-as-family",
+      "file": "filled-def-as-family.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "a declared datatype (unknown: Family)"
+    },
+    {
+      "id": "phase5/constructors/unfilled-law-as-family",
+      "file": "unfilled-law-as-family.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "a declared datatype (unknown: Family)"
+    },
+    {
+      "id": "phase5/constructors/wrong-family-arity",
+      "file": "wrong-family-arity.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "Bool with 0 parameters"
+    },
+    {
+      "id": "phase5/constructors/known-ctor-wrong-goal",
+      "file": "known-ctor-wrong-goal.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "- observed : Bool"
+    },
+    {
+      "id": "phase5/constructors/known-ctor-wrong-fields",
+      "file": "known-ctor-wrong-fields.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "True with 0 fields"
+    },
+    {
+      "id": "phase5/constructors/unknown-family-before-argument",
+      "file": "unknown-family-before-argument.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "a declared datatype (unknown: Missing)"
+    },
+    {
+      "id": "phase5/constructors/arity-before-argument",
+      "file": "arity-before-argument.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "Bool with 0 parameters"
+    },
+    {
+      "id": "phase5/constructors/earlier-name-before-unknown-ctor",
+      "file": "earlier-name-before-unknown-ctor.bend",
+      "accept": false,
+      "rejectPhase": "check",
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": "a defined name"
+    },
+    {
+      "id": "phase5/constructors/known-ctor-positive",
+      "file": "known-ctor-positive.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": null
+    },
+    {
+      "id": "phase5/constructors/annotated-ctor-positive",
+      "file": "annotated-ctor-positive.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": null
+    },
+    {
+      "id": "phase5/constructors/family-positive",
+      "file": "family-positive.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": null
+    },
+    {
+      "id": "phase5/constructors/declared-family-positive",
+      "file": "declared-family-positive.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "referenceReason": null
+    }
+  ]
+}

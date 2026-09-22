@@ -143,12 +143,8 @@ def f_init(xs):
 
 @unsafe
 def f_do_start(ts):
-  f_do_named(f_do_space(ts))
+  f_do_named(f_space(ts))
 
-# Header whitespace is not a statement separator. f_skip also consumes ;.
-law f_do_space:
-  for +ts: List<&2,FToken>
-  List<&2,FToken>
 law f_do_named:
   for +ts: List<&2,FToken>
   FParsed
@@ -158,13 +154,10 @@ law f_do_types_at:
   for +ts: List<&2,FToken>
   FParsed
 
-@unsafe
-def f_do_space(ts):
-  f_choose(List<&2,FToken>, f_eq(f_tx(ts), "\n"), u => f_do_space(f_tl(ts)), u => ts)
 
 @unsafe
 def f_do_named(ts):
-  f_choose(FParsed, f_valid_name(f_tx(ts)), u => f_do_parameters(f_tx(ts), f_do_space(f_tl(ts))), u => f_err(ts, "expected a name"))
+  f_choose(FParsed, f_valid_name(f_tx(ts)), u => f_do_parameters(f_tx(ts), f_space(f_tl(ts))), u => f_err(ts, "expected a name"))
 
 law f_do_parameters:
   for +monad: String
@@ -181,7 +174,7 @@ law f_do_bind_types:
 
 @unsafe
 def f_do_parameters(monad, ts):
-  f_choose(FParsed, f_eq(f_tx(ts), "<>"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_choose(FParsed, f_eq(f_tx(ts), "<"), u => f_do_parameters_open(monad, f_do_space(f_tl(ts))), u => f_err(ts, "expected <")))
+  f_choose(FParsed, f_eq(f_tx(ts), "<>"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_choose(FParsed, f_eq(f_tx(ts), "<"), u => f_do_parameters_open(monad, f_space(f_tl(ts))), u => f_err(ts, "expected <")))
 
 @unsafe
 def f_do_parameters_open(monad, ts):
@@ -197,7 +190,7 @@ def f_do_bind_types(types, ty):
 def f_do_types(monad, p):
   match p:
     case FParsed{types, ts}:
-      f_choose(FParsed, f_eq(tg(types), "Error"), u => FParsed{types, ts}, u => f_do_types_at(monad, types, f_do_space(ts)))
+      f_choose(FParsed, f_eq(tg(types), "Error"), u => FParsed{types, ts}, u => f_do_types_at(monad, types, f_space(ts)))
 
 @unsafe
 def f_do_types_at(monad, types, ts):
@@ -235,7 +228,7 @@ def f_do_value(monad, types, binder, ty, pure, p, indent):
 def f_do_tail(monad, types, binder, ty, pure, v, p):
   match p:
     case FParsed{body, ts}:
-      FParsed{f_choose(KTerm, pure, u => kt("Local", "", 0, 1, [binder, kt("Ann", "", 0, 1, [v, ty]), body]), u => f_app(kt("Ref", monad ++ ".bind", ix(binder), 1, Nil{}), f_concat(f_do_bind_types(types, ty), [v, kt("Lam", nm(binder), ix(binder), qt(binder), [body])]))), ts}
+      FParsed{f_choose(KTerm, pure, u => kt("Local", "Do", 0, 1, [binder, kt("Ann", "", 0, 1, [v, ty]), body]), u => f_app(kt("Ref", monad ++ ".bind", ix(binder), 1, Nil{}), f_concat(f_do_bind_types(types, ty), [v, kt("Lam", nm(binder), ix(binder), qt(binder), [body])]))), ts}
 
 @unsafe
 def f_error_term(t):

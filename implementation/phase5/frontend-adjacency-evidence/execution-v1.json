@@ -1,0 +1,534 @@
+{
+  "kind": "targeted-paired-conformance",
+  "started": "2026-09-22T22:22:09.576Z",
+  "complete": false,
+  "selectedComplete": true,
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/target.json",
+    "sha256": "d3f667ce170e5915c333feab3b9da8196eec347fad454ee31e1f327eb905440c"
+  },
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/candidate-v1/api.mjs",
+      "sha256": "f58a828127b51ab70ba69b8f9e6e591134ffe27ab40913f9e6707a3e032d00b5"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/candidate-v1/snapshot/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+    },
+    "bootstrapReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/candidate-v1/api.mjs.bootstrap.json",
+      "sha256": "c043e852a4cd1364e57058d27bdd30bff8de0d84fdb40fb633fe81832962627a"
+    }
+  },
+  "environment": {
+    "BEND_UPSTREAM": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "BEND_BASE": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "BEND_TYPED_API": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/candidate-v1/api.mjs",
+    "BEND_TYPED_RUNTIME": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/candidate-v1/snapshot/src/runtime.mjs"
+  },
+  "harnessSources": [
+    {
+      "file": "run.mjs",
+      "sourceSha256": "7198c672c15d6fa9b20cd4010446966713fce1ed6054ae13bff1e6500521b6a0",
+      "consumedSha256": "200c38ce862c93b52815844c6dca3799f6f0e69b854c3ebe4c2e0eb5a673c8ba"
+    },
+    {
+      "file": "worker.mjs",
+      "sourceSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "consumedSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+    },
+    {
+      "file": "inventory.mjs",
+      "sourceSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd",
+      "consumedSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd"
+    },
+    {
+      "file": "judge.mjs",
+      "sourceSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+      "consumedSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+    },
+    {
+      "file": "selection.mjs",
+      "sourceSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+      "consumedSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+    },
+    {
+      "file": "run-probe.mjs",
+      "sourceSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c",
+      "consumedSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c"
+    },
+    {
+      "file": "replay.mjs",
+      "sourceSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94",
+      "consumedSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94"
+    },
+    {
+      "file": "persistent-probe.mjs",
+      "sourceSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225",
+      "consumedSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225"
+    },
+    {
+      "file": "persistent-worker.mjs",
+      "sourceSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+      "consumedSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d"
+    },
+    {
+      "file": "adapters/upstream.mjs",
+      "sourceSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd",
+      "consumedSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd"
+    }
+  ],
+  "targetSourceSha256": "2b273483c6adfd9bb5c52b614557741595560fb53acccd311d83ab87258df806",
+  "cpu": null,
+  "attempts": {
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/selected/reference.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "isolated",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "4096",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/selected/reference.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "18af7311262bb08a0df3ed4f1cd573b295e63a8d75b4a49e171a53ec2d580596"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/selected/candidate.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "isolated",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "4096",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/candidate-v1/snapshot/build/conformance-host/4e65ccee69b4177575a4835c226f2e6d1b666833e8bd177671fade6986092668/typed.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/adjacency/execution-v1/selected/candidate.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "f6802d16138344ab1be6612026f1e7ca44df074139b2caf065280769734b382d"
+    }
+  },
+  "rows": [
+    {
+      "id": "phase5-adjacency/call-whitespace",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/call-whitespace",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/constructor-through-parameter",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/constructor-through-parameter",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/namespace-call-whitespace",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/namespace-call-whitespace",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "42\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/parallel-comment-newline",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/parallel-comment-newline",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/parallel-outer-ungrouped",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/parallel-outer-ungrouped",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/parallel-parenthesized-ref",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/parallel-parenthesized-ref",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/parallel-ref-then-annotation",
+      "lane": "interpreter",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    },
+    {
+      "id": "phase5-adjacency/parallel-ref-then-annotation",
+      "lane": "js",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "runtime",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "10\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checked-execution",
+      "candidateEvidence": "checked-execution"
+    }
+  ],
+  "missing": [],
+  "discrepancies": [],
+  "referenceSelectedComplete": true,
+  "candidateSelectedComplete": true,
+  "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+  "wallMs": 42056.086517,
+  "finished": "2026-09-22T22:22:51.636Z"
+}

@@ -147,6 +147,11 @@ law dg_ctor_error:
   for +ctr: KDef
   KChecked
 
+law dg_adt_error:
+  for +t: KTerm
+  for +d: KDef
+  KChecked
+
 @unsafe
 def dg_span_same(a, b):
   match a:
@@ -334,3 +339,8 @@ def dg_prefix_step(todo, head, tail, done, original, origins):
   match todo:
     case Nil{}: check_book_diagnostic(original, origins)
     case Con{event, rest}: dg_prefix_seed(rest, tail, book_put(done, head), original, origins)
+
+# The checker verdict stays unchanged; only rejection metadata differs.
+@unsafe
+def dg_adt_error(t, d):
+  kc(KChecked, String.eq(dk(d), "ADT"), u => dg_bad_detail("unknown family or wrong parameter count", dg_text(nm(t) ++ " with " ++ U32.show(da(d)) ++ kc(String, U32.is_eq(da(d), 1), u => " parameter", u => " parameters")), t), u => dg_bad_message("unknown family or wrong parameter count", dg_text("a declared datatype (unknown: " ++ nm(t) ++ ")")))

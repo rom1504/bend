@@ -263,3 +263,31 @@ derivative have correctness/provenance gates, but no new Phase5 speed claim.
 Continue bounded adjacency, diagnosticreason and exactsource-origin experiments,
 then integrate reviewed candidates. Keep sourcefreeze/finalproof time reserved;
 the six-hour campaign remains active until03:39:36UTC.
+
+## Phase 5 second integrated checkpoint — 2026-09-22, 23:03 UTC
+
+P5-006/007/008/009/010 are integrated in genuine checked API `c3c2ac7b1456…`.
+All 213 selected observations meet their declared oracles; the full frontend
+preserves all 919 positive fixtures and introduces zero new live differences.
+Strict check failures are now 374 (377 at campaign start); live differences are
+556, including 38 acceptance/phase observations. The remaining 518 diagnostic
+and report discrepancies still count as failures. See the
+[campaign report](../implementation/phase5/report.md) and its second integration
+archive for exact source, tool and input identities.
+
+[P5-005](../implementation/phase5/application-origins.md) is rejected: four exact
+diagnostic repairs do not justify repeated quadratic application reconstruction.
+The failed attempts and original timings remain archived, with no promoted code.
+[P5-012](../implementation/phase5/equality-performance.md) confirms the reusable
+derivative on the new source: core request median 19.278→12.262 seconds and list
+2.464→1.849 seconds. All ten rows pass. Pinned TS list request is 0.397 seconds;
+the derivative is 4.65× slower on this small workload and stated cache policy.
+This does not replace the historical complete-source comparison.
+
+### Updated frontier
+
+Review structured parser transport, matcher heads and unqualified operators;
+separate the discovered namespace-delimiter error-loss bug from formatting.
+Run the prepared controlled four-core complete frontend ABBA comparison only
+when competing compiler jobs are paused. Keep final source freeze, CPU coverage
+and checked self-reproduction time reserved. Campaign ends at 03:39:36 UTC.

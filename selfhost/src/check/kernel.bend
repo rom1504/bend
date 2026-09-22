@@ -821,7 +821,7 @@ def infer_app_type(e, ctx, t, dem, r, ty):
 
 @unsafe
 def infer_adt(e, ctx, t, dem, d):
-  kc(KChecked, String.eq(dk(d), "ADT") && U32.is_eq(terms_len(ks(t)), da(d)), u => infer_adt_done(t, tele_check(e, ctx, dt(d), ks(t), dem)), u => dg_bad_detail("unknown family or wrong parameter count", dg_text(kc(String, String.eq(dk(d), "ADT"), u => nm(t) ++ " with " ++ U32.show(da(d)) ++ kc(String, U32.is_eq(da(d), 1), u => " parameter", u => " parameters"), u => "a datatype")), t))
+  kc(KChecked, String.eq(dk(d), "ADT") && U32.is_eq(terms_len(ks(t)), da(d)), u => infer_adt_done(t, tele_check(e, ctx, dt(d), ks(t), dem)), u => dg_adt_error(t, d))
 
 @unsafe
 def infer_adt_done(t, r):

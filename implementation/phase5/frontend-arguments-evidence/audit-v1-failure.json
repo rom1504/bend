@@ -1,0 +1,12 @@
+{
+  "kind": "retained-audit-failure",
+  "exitCode": 1,
+  "command": [
+    "python3",
+    "tests/frontend/phase5-arguments-audit.py",
+    "build/phase5/arguments",
+    "build/phase5/arguments/final-audit.json"
+  ],
+  "auditorSha256": "7e5495e1a108f13e8f7a23b16caab5e552db552aa4ace5dabed586e9b4c398ee",
+  "reason": "Line23 assumed all13 fixed cases retain specific argument diagnostic; four family-angle paths instead lose it downstream and render line0:0. Raw paired reports retain actual observations."
+}

@@ -1,0 +1,113 @@
+✔ bootstrap never treats zero exit status as recovery from a spawn error (4.036885ms)
+✔ bootstrap captures actual upstream/compiler/build tools with clean pinned identity (85.711035ms)
+✔ bootstrap rejects build-tool drift before publishing a checked artifact (59.354636ms)
+✔ bootstrap rejects same-byte tool symlink retargets (32.71414ms)
+✔ persistent runner isolates requests and recycles at its bound (133.999788ms)
+✔ captured stdout and stderr share one output budget and recover (154.477581ms)
+✔ captured and raw descriptor output share the budget and remain request-local (172.078841ms)
+✔ timeouts kill descendants and crashes reset session state before recovery (895.252392ms)
+✔ oversized response and invalid adapter result cannot poison the next request (211.454643ms)
+✔ stale completion files are removed and changed identity starts a new session (200.643163ms)
+✔ retained sequence validates every prefix result and request despite removed workdirs (184.895503ms)
+✔ FD3 overflow completion is rejected even without a done file (55.734603ms)
+✔ malformed, out-of-sequence and oversized FD3 messages fail promptly (166.146958ms)
+✔ completion waits for split pipe boundaries and checks response identity (190.74437ms)
+✔ request deadlines must fit Node timers, and RSS recycling restores fresh state (133.117449ms)
+✔ a reused runner directory preserves prior session and queue identity (185.027842ms)
+✖ CLI retained failure replays its deleted successful prefix and rejects tampering (1079.967772ms)
+✔ exact pairs do not select another fixture or lane (1.007019ms)
+✔ unknown, duplicate, empty, and ineligible pairs fail closed (0.71ms)
+✔ previous failures move first without deleting requested controls (0.905839ms)
+✔ an explicit acceptance oracle keeps wrong rejection phases failing (0.42002ms)
+✔ external fixtures require an explicit oracle (1.881039ms)
+✔ pinned fixture oracles cannot be replaced with custom acceptance (0.752146ms)
+✔ reruns reject fixture ID collisions and changed custom inputs (0.863874ms)
+✔ acceptance-only positive check must actually reach the check phase (0.174905ms)
+✖ selected pass stays incomplete; retained failure replays and rejects input drift (1652.868476ms)
+✖ artifact drift invalidates selected pass and output overflow remains a crash (1245.092358ms)
+✔ whole process group deadline kills delayed grandchildren (1575.458583ms)
+✔ adapter-declared inputs and expected missing assets cannot drift into a selected pass (1245.473983ms)
+✖ exact replay clears ambient configuration and rejects another Node version (1010.744436ms)
+✔ a same-content input symlink retarget invalidates source identity (640.28918ms)
+✖ tests/node-resource-args.test.mjs (0.127898ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 27
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11473.642891
+
+✖ failing tests:
+
+test at tests/conformance/persistent-worker.test.mjs:165:1
+✖ CLI retained failure replays its deleted successful prefix and rejects tampering (1079.967772ms)
+  SyntaxError: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at TestContext.<anonymous> (file:///home/ai/bend2/build/publish/bend/selfhost/tests/conformance/persistent-worker.test.mjs:179:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests/conformance/targeted.test.mjs:18:1
+✖ selected pass stays incomplete; retained failure replays and rejects input drift (1652.868476ms)
+  SyntaxError: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at TestContext.<anonymous> (file:///home/ai/bend2/build/publish/bend/selfhost/tests/conformance/targeted.test.mjs:24:155)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests/conformance/targeted.test.mjs:27:1
+✖ artifact drift invalidates selected pass and output overflow remains a crash (1245.092358ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'pass' !== 'crash'
+  
+      at TestContext.<anonymous> (file:///home/ai/bend2/build/publish/bend/selfhost/tests/conformance/targeted.test.mjs:31:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'pass',
+    expected: 'crash',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/conformance/targeted.test.mjs:48:1
+✖ exact replay clears ambient configuration and rejects another Node version (1010.744436ms)
+  SyntaxError: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at TestContext.<anonymous> (file:///home/ai/bend2/build/publish/bend/selfhost/tests/conformance/targeted.test.mjs:54:67)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests/node-resource-args.test.mjs:1:1
+✖ tests/node-resource-args.test.mjs (0.127898ms)
+  SyntaxError: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at file:///home/ai/bend2/build/publish/bend/selfhost/tests/node-resource-args.test.mjs:21:23
+      at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+      at async node:internal/modules/esm/loader:643:26
+      at async node:internal/test_runner/runner:1032:15
+      at async runFiles (node:internal/test_runner/runner:998:9)
+      at async runChain (node:internal/test_runner/runner:1076:5)

@@ -8,14 +8,8 @@ export function runProbe(request,{workerNodeArgs=[],worker=path.join(import.meta
     const captureDirectory=fs.mkdtempSync(path.join(request.workdir,'.worker-capture-'));
     const stdoutFile=path.join(captureDirectory,'stdout'),stderrFile=path.join(captureDirectory,'stderr');
     const a=fs.openSync(stdoutFile,'wx'),b=fs.openSync(stderrFile,'wx');
-    let child,launchError;
-    try{child=spawn(process.execPath,[...workerNodeArgs,worker,file],{cwd:request.workdir,stdio:['ignore',a,b],detached:process.platform!=='win32'})}
-    catch(error){launchError=error}
-    finally{fs.closeSync(a);fs.closeSync(b)}
-    if(launchError){
-      fs.writeFileSync(path.join(request.workdir,'worker.stdout'),'');fs.writeFileSync(path.join(request.workdir,'worker.stderr'),'');
-      fs.rmSync(captureDirectory,{recursive:true,force:true});resolve({status:'crash',reason:launchError.message});return;
-    }
+    const child=spawn(process.execPath,[...workerNodeArgs,worker,file],{cwd:request.workdir,stdio:['ignore',a,b],detached:process.platform!=='win32'});
+    fs.closeSync(a);fs.closeSync(b);
     let timedOut=false,overflow=false,spawnError=null,settled=false;
     const limit=2**20;
     const read=(name,tail=false)=>{
@@ -44,15 +38,7 @@ export function runProbe(request,{workerNodeArgs=[],worker=path.join(import.meta
       if(overflow)return finish({status:'crash',reason:'Probe exceeded output limit.',...output()});
       if(spawnError)return finish({status:'crash',reason:spawnError.message,exitCode:code,signal,...output()});
       if(signal)return finish({status:'crash',reason:'Worker terminated by '+signal,exitCode:code,signal,...output()});
-      // Compiler child exit codes belong to the response. This worker itself
-      // exits 0 normally or 1 for a reported failure; other codes are crashes.
-      if(code!==0&&code!==1)return finish({status:'crash',reason:'Worker exited unexpectedly',exitCode:code,...output()});
-      try{
-        if(fs.statSync(request.response).size>2**22)return finish({status:'crash',reason:'Worker response exceeded output limit.'});
-        const result=JSON.parse(fs.readFileSync(request.response,'utf8'));
-        if(code===1&&result.status==='ok')return finish({status:'crash',reason:'Worker exit contradicts successful response',exitCode:code,...output()});
-        finish(result);
-      }catch{finish({status:'crash',reason:'Worker returned no valid result',exitCode:code,...output()})}
+      try{if(fs.statSync(request.response).size>2**22)return finish({status:'crash',reason:'Worker response exceeded output limit.'});finish(JSON.parse(fs.readFileSync(request.response,'utf8')))}catch{finish({status:'crash',reason:'Worker returned no valid result',exitCode:code,...output()})}
     });
   });
 }

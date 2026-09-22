@@ -32,10 +32,26 @@ const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).diges
 const trace=(message)=>{if(process.env.BEND_TYPED_TRACE)process.stderr.write(`[typed ${new Date().toISOString()}] ${message}\n`);};
 
 const bootstrapPin='6018e28ecc67cf1fffc0c20c64b11023474c2df8';
+// Bootstrap is synchronous, but its subprocess output need not use pipes.
+// Some process supervisors report EPERM for pipe capture even after status 0.
+// Retain the actual spawn error; file capture avoids that ambiguity.
+function bootstrapCapture(command,args,options={}) {
+  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'bend-bootstrap-capture-'));
+  const stdout=path.join(directory,'stdout'),stderr=path.join(directory,'stderr');
+  const a=fs.openSync(stdout,'wx'),b=fs.openSync(stderr,'wx');
+  try {
+    const result=spawnSync(command,args,{timeout:30000,...options,stdio:['ignore',a,b]});
+    if(fs.statSync(stdout).size>2**24||fs.statSync(stderr).size>2**24)throw Error('Bootstrap subprocess output exceeded 16 MiB');
+    return {...result,stdout:fs.readFileSync(stdout,'utf8'),stderr:fs.readFileSync(stderr,'utf8')};
+  } finally {fs.closeSync(a);fs.closeSync(b);fs.rmSync(directory,{recursive:true,force:true});}
+}
 function bootstrapUpstream(upstream,expectedRevision) {
-  const revision=spawnSync('git',['-C',upstream,'rev-parse','HEAD'],{encoding:'utf8'}).stdout?.trim();
+  const version=bootstrapCapture('git',['-C',upstream,'rev-parse','HEAD']);
+  if(version.error||version.signal||version.status!==0)throw Error('Bootstrap upstream verification failed: '+(version.error?.message||version.signal||version.stderr));
+  const revision=version.stdout.trim();
   if(revision!==expectedRevision)throw Error(`Bootstrap requires upstream ${expectedRevision}; found ${revision||'no checkout'}`);
-  const clean=spawnSync('git',['-C',upstream,'diff','--quiet','HEAD','--','bend2'],{encoding:'utf8'});
+  const clean=bootstrapCapture('git',['-C',upstream,'diff','--quiet','HEAD','--','bend2']);
+  if(clean.error||clean.signal)throw Error('Bootstrap upstream verification failed: '+(clean.error?.message||clean.signal));
   if(clean.status!==0)throw Error('Bootstrap upstream tracked sources differ from pinned HEAD');
   return revision;
 }
@@ -103,9 +119,9 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   verifyBootstrapProvenance(provenance);
   fs.mkdirSync(path.dirname(apiPath),{recursive:true});
   const staged=apiPath+'.tmp-'+process.pid;
-  const result=spawnSync(process.execPath,[path.join(project,'tools/stage0-library.mjs'),source,staged,...exports],
-    {cwd:project,env:{...process.env,BEND_UPSTREAM:upstream},encoding:'utf8',timeout:timeoutMs,maxBuffer:2**24});
-  if(result.error||result.status!==0) {fs.rmSync(staged,{force:true});throw Error(result.error?.message||result.stderr||'Typed API bootstrap failed');}
+  const result=bootstrapCapture(process.execPath,[path.join(project,'tools/stage0-library.mjs'),source,staged,...exports],
+    {cwd:project,env:{...process.env,BEND_UPSTREAM:upstream},timeout:timeoutMs});
+  if(result.error||result.signal||result.status!==0) {fs.rmSync(staged,{force:true});throw Error(result.error?.message||result.signal||result.stderr||'Typed API bootstrap failed');}
   try{verifyBootstrapProvenance(provenance);provenance.verifiedAfterBuild=true;}catch(error){fs.rmSync(staged,{force:true});throw error;}
   fs.renameSync(staged,apiPath);
   fs.copyFileSync(source,path.join(project,'build/typed/compiler.bend'));

@@ -126,6 +126,17 @@ telescope within each step. Its annotation-context merge builds one exact-name
 index for ordinary lists; lists containing any `BookCache` marker retain legacy
 lookup so cache boundaries and duplicate shadowing keep their meaning.
 
+Constructor checking and annotation also recognize telescope tails that are
+structurally unchanged by substitution. `core_subst_stable` excludes variables
+and beta-reducible applications, recursively checks children, and admits only
+canonical neutral applications. A successful fact is reused through the literal
+`All` suffix; reaching another head returns to ordinary normalization. A failed
+fact uses the original traversal without repeatedly scanning dependent suffixes.
+The first argument is checked before the fact scan, preserving diagnostic demand
+order. This is a local fact about immutable typed terms, never a cache shared
+between books or requests. See the [telescope report](../../implementation/phase4/analysis-telescopes.md)
+for the invariant, malformed-input boundary and exact controls.
+
 The JS backend's structurally proven choice calls and record-projection workers
 are described in [the backend guide](../src/back/js/README.md). They change
 execution of generated Bend code, not checker rules or source-language meaning.

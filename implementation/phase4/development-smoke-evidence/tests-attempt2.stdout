@@ -1,0 +1,65 @@
+Node resource limits propagate without execution options.
+✔ bootstrap never treats zero exit status as recovery from a spawn error (6.13953ms)
+✔ bootstrap captures actual upstream/compiler/build tools with clean pinned identity (70.905021ms)
+✔ bootstrap rejects build-tool drift before publishing a checked artifact (82.367111ms)
+✔ bootstrap rejects same-byte tool symlink retargets (142.008668ms)
+✔ persistent runner isolates requests and recycles at its bound (128.095171ms)
+✔ captured stdout and stderr share one output budget and recover (143.266461ms)
+✔ captured and raw descriptor output share the budget and remain request-local (181.763713ms)
+✔ timeouts kill descendants and crashes reset session state before recovery (915.819351ms)
+✔ oversized response and invalid adapter result cannot poison the next request (200.027241ms)
+✔ stale completion files are removed and changed identity starts a new session (123.187187ms)
+✔ retained sequence validates every prefix result and request despite removed workdirs (136.549716ms)
+✔ FD3 overflow completion is rejected even without a done file (61.079376ms)
+✔ malformed, out-of-sequence and oversized FD3 messages fail promptly (153.295519ms)
+✔ completion waits for split pipe boundaries and checks response identity (195.589016ms)
+✔ request deadlines must fit Node timers, and RSS recycling restores fresh state (127.113218ms)
+✔ a reused runner directory preserves prior session and queue identity (127.419043ms)
+✔ CLI retained failure replays its deleted successful prefix and rejects tampering (1278.97895ms)
+✔ exact pairs do not select another fixture or lane (1.086116ms)
+✔ unknown, duplicate, empty, and ineligible pairs fail closed (0.709513ms)
+✔ previous failures move first without deleting requested controls (0.868967ms)
+✔ an explicit acceptance oracle keeps wrong rejection phases failing (0.394889ms)
+✔ external fixtures require an explicit oracle (1.688796ms)
+✔ pinned fixture oracles cannot be replaced with custom acceptance (0.336229ms)
+✔ reruns reject fixture ID collisions and changed custom inputs (0.81588ms)
+✔ acceptance-only positive check must actually reach the check phase (0.171136ms)
+✔ selected pass stays incomplete; retained failure replays and rejects input drift (1832.665375ms)
+✖ artifact drift invalidates selected pass and output overflow remains a crash (1303.79477ms)
+✔ whole process group deadline kills delayed grandchildren (1563.386595ms)
+✔ adapter-declared inputs and expected missing assets cannot drift into a selected pass (1180.368232ms)
+✔ exact replay clears ambient configuration and rejects another Node version (1051.014257ms)
+✔ a same-content input symlink retarget invalidates source identity (612.464923ms)
+✔ tests/node-resource-args.test.mjs (0.157813ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 31
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11787.717048
+
+✖ failing tests:
+
+test at tests/conformance/targeted.test.mjs:27:1
+✖ artifact drift invalidates selected pass and output overflow remains a crash (1303.79477ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'pass' !== 'crash'
+  
+      at TestContext.<anonymous> (file:///home/ai/bend2/build/publish/bend/selfhost/tests/conformance/targeted.test.mjs:31:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'pass',
+    expected: 'crash',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

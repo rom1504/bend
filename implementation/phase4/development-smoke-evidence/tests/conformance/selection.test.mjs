@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import test from 'node:test';
+import {selectProbes} from '../../tools/conformance/selection.mjs';
+import {judge} from '../../tools/conformance/judge.mjs';
+import {sha256} from '../../tools/conformance/inventory.mjs';
+const directory=fs.mkdtempSync(path.join(os.tmpdir(),'bend-selection-'));
+const fixture=path.join(directory,'case.bend');fs.writeFileSync(fixture,'def main() -> U32:\n  42\n#|42\n');
+const a={id:'a.bend',file:fixture,sha256:sha256(fs.readFileSync(fixture)),main:true,backends:['js'],negative:false,expected:'42'},b={...a,id:'b.bend'};
+const manifest={revision:'pin',tests:[a,b]};let serial=0;
+const write=value=>{const file=path.join(directory,serial+++'.json');fs.writeFileSync(file,JSON.stringify(value));return file};
+process.on('exit',()=>fs.rmSync(directory,{recursive:true,force:true}));
+test('exact pairs do not select another fixture or lane',()=>{const selected=selectProbes(manifest,{selection:write([{id:'a.bend',lane:'js'},{id:'b.bend',lane:'check'}])});assert.deepEqual(selected.jobs.map(x=>[x.test.id,x.lane]),[['a.bend','js'],['b.bend','check']]);});
+test('unknown, duplicate, empty, and ineligible pairs fail closed',()=>{for(const entries of [[],[{id:'none',lane:'check'}],[{id:'a.bend',lane:'js'},{id:'a.bend',lane:'js'}],[{id:'a.bend',lane:'cuda'}]])assert.throws(()=>selectProbes(manifest,{selection:write(entries)}));assert.throws(()=>selectProbes(manifest,{filter:'not-there',lanes:['check']}),/No probes/);});
+test('previous failures move first without deleting requested controls',()=>{const prior=write({inventory:manifest,results:[{id:'a.bend',lane:'check',status:'pass'},{id:'b.bend',lane:'check',status:'fail'}]});const selected=selectProbes(manifest,{selection:write([{id:'a.bend',lane:'check'},{id:'b.bend',lane:'check'}]),rerun:prior});assert.deepEqual(selected.jobs.map(x=>x.test.id),['b.bend','a.bend']);assert.ok(selected.previous.sha256);assert.deepEqual(selectProbes(manifest,{rerun:prior}).jobs.map(x=>x.test.id),['b.bend']);});
+test('an explicit acceptance oracle keeps wrong rejection phases failing',()=>{const test={oracle:'acceptance',accept:false,rejectPhase:'check'};assert.equal(judge(test,'check',{status:'error',phase:'parse',checked:false,exitCode:1},{check:true}).status,'fail');assert.equal(judge(test,'check',{status:'error',phase:'check',checked:true,exitCode:1},{check:true}).evidence,'checker-rejection');assert.equal(judge({...test,rejectPhase:null},'check',{status:'error',phase:'parse',exitCode:1},{check:true}).status,'fail');});
+test('external fixtures require an explicit oracle',()=>{const file=path.join(directory,'plain.bend');fs.writeFileSync(file,'def main():\n  42\n');assert.throws(()=>selectProbes(manifest,{selection:write([{file,lane:'check'}])}),/oracle/);const selected=selectProbes(manifest,{selection:write([{file,lane:'check',accept:true}])});assert.equal(selected.external[0].oracle,'acceptance');});
+test('pinned fixture oracles cannot be replaced with custom acceptance',()=>{const selected=selectProbes(manifest,{selection:write([{id:'a.bend',file:fixture,lane:'check',accept:false,rejectPhase:'parse',expected:'other'}])});assert.equal(selected.jobs[0].test.expected,'42');assert.equal(selected.jobs[0].test.oracle,undefined);});
+test('reruns reject fixture ID collisions and changed custom inputs',()=>{const prior=write({inventory:{revision:'pin',tests:[{...a,file:fixture+'.other'}]},results:[{id:'a.bend',lane:'check',status:'fail'}]});assert.throws(()=>selectProbes(manifest,{rerun:prior}),/identity differs/);const custom=path.join(directory,'old.bend');fs.writeFileSync(custom,'before');const old={...a,id:'custom',file:custom,sha256:sha256('before')};const report=write({inventory:{revision:'pin',tests:[old]},results:[{id:'custom',lane:'check',status:'fail'}]});fs.writeFileSync(custom,'after');assert.throws(()=>selectProbes(manifest,{rerun:report}),/changed/);});
+test('acceptance-only positive check must actually reach the check phase',()=>{
+  for(const phase of ['load','parse','runtime'])assert.equal(judge({oracle:'acceptance',accept:true},'check',{status:'ok',phase,checked:true,exitCode:0},{check:true}).status,'fail');
+});

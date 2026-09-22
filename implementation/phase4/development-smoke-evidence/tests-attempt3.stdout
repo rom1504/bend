@@ -1,0 +1,41 @@
+Node resource limits propagate without execution options.
+✔ bootstrap never treats zero exit status as recovery from a spawn error (5.983754ms)
+✔ bootstrap captures actual upstream/compiler/build tools with clean pinned identity (83.491569ms)
+✔ bootstrap rejects build-tool drift before publishing a checked artifact (64.180725ms)
+✔ bootstrap rejects same-byte tool symlink retargets (61.123563ms)
+✔ persistent runner isolates requests and recycles at its bound (127.352298ms)
+✔ captured stdout and stderr share one output budget and recover (135.289313ms)
+✔ captured and raw descriptor output share the budget and remain request-local (152.6819ms)
+✔ timeouts kill descendants and crashes reset session state before recovery (970.052791ms)
+✔ oversized response and invalid adapter result cannot poison the next request (184.994695ms)
+✔ stale completion files are removed and changed identity starts a new session (120.53773ms)
+✔ retained sequence validates every prefix result and request despite removed workdirs (136.027802ms)
+✔ FD3 overflow completion is rejected even without a done file (49.732894ms)
+✔ malformed, out-of-sequence and oversized FD3 messages fail promptly (151.590621ms)
+✔ completion waits for split pipe boundaries and checks response identity (182.462715ms)
+✔ request deadlines must fit Node timers, and RSS recycling restores fresh state (119.235261ms)
+✔ a reused runner directory preserves prior session and queue identity (119.110866ms)
+✔ CLI retained failure replays its deleted successful prefix and rejects tampering (1244.339689ms)
+✔ exact pairs do not select another fixture or lane (0.987388ms)
+✔ unknown, duplicate, empty, and ineligible pairs fail closed (0.66911ms)
+✔ previous failures move first without deleting requested controls (0.82726ms)
+✔ an explicit acceptance oracle keeps wrong rejection phases failing (0.379561ms)
+✔ external fixtures require an explicit oracle (1.663398ms)
+✔ pinned fixture oracles cannot be replaced with custom acceptance (0.366785ms)
+✔ reruns reject fixture ID collisions and changed custom inputs (0.815956ms)
+✔ acceptance-only positive check must actually reach the check phase (0.16248ms)
+✔ selected pass stays incomplete; retained failure replays and rejects input drift (1761.369313ms)
+✔ artifact drift invalidates selected pass and output overflow remains a crash (1208.302581ms)
+✔ whole process group deadline kills delayed grandchildren (1546.433166ms)
+✔ adapter-declared inputs and expected missing assets cannot drift into a selected pass (1289.346888ms)
+✔ exact replay clears ambient configuration and rejects another Node version (1053.765935ms)
+✔ a same-content input symlink retarget invalidates source identity (616.966805ms)
+✔ tests/node-resource-args.test.mjs (0.111339ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11552.771644

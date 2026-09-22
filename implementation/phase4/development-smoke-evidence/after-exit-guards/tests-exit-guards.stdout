@@ -1,0 +1,49 @@
+Node resource limits propagate without execution options.
+✔ bootstrap never treats zero exit status as recovery from a spawn error (4.367869ms)
+✔ bootstrap captures actual upstream/compiler/build tools with clean pinned identity (111.288076ms)
+✔ bootstrap rejects build-tool drift before publishing a checked artifact (67.023394ms)
+✔ bootstrap rejects same-byte tool symlink retargets (30.162456ms)
+✔ persistent runner isolates requests and recycles at its bound (137.896672ms)
+✔ captured stdout and stderr share one output budget and recover (141.153278ms)
+✔ captured and raw descriptor output share the budget and remain request-local (157.745019ms)
+✔ timeouts kill descendants and crashes reset session state before recovery (926.319266ms)
+✔ oversized response and invalid adapter result cannot poison the next request (213.745464ms)
+✔ stale completion files are removed and changed identity starts a new session (134.306154ms)
+✔ retained sequence validates every prefix result and request despite removed workdirs (187.330912ms)
+✔ FD3 overflow completion is rejected even without a done file (75.113224ms)
+✔ malformed, out-of-sequence and oversized FD3 messages fail promptly (196.274598ms)
+✔ completion waits for split pipe boundaries and checks response identity (189.925621ms)
+✔ request deadlines must fit Node timers, and RSS recycling restores fresh state (135.823902ms)
+✔ a reused runner directory preserves prior session and queue identity (138.782675ms)
+✔ CLI retained failure replays its deleted successful prefix and rejects tampering (1301.643018ms)
+✔ isolated capture rejects combined fast descriptor overflow despite a valid response (59.43269ms)
+✔ isolated capture does not accept a valid response from a signalled worker (43.735097ms)
+✔ isolated capture preserves a normal nonzero compiler rejection (39.857946ms)
+✔ isolated capture cannot reuse a stale response when a worker produces none (58.294394ms)
+✔ isolated capture rejects an unexpected numeric exit despite a valid response (43.590736ms)
+✔ isolated capture rejects a success response paired with worker exit one (41.191231ms)
+✔ isolated capture reports an actual missing-executable spawn failure (2.779185ms)
+✔ isolated capture closes inherited descriptors when spawn throws synchronously (1.648ms)
+✔ exact pairs do not select another fixture or lane (1.512966ms)
+✔ unknown, duplicate, empty, and ineligible pairs fail closed (0.92813ms)
+✔ previous failures move first without deleting requested controls (1.083004ms)
+✔ an explicit acceptance oracle keeps wrong rejection phases failing (0.408164ms)
+✔ external fixtures require an explicit oracle (1.745745ms)
+✔ pinned fixture oracles cannot be replaced with custom acceptance (1.41839ms)
+✔ reruns reject fixture ID collisions and changed custom inputs (16.250444ms)
+✔ acceptance-only positive check must actually reach the check phase (0.203911ms)
+✔ selected pass stays incomplete; retained failure replays and rejects input drift (1872.142808ms)
+✔ artifact drift invalidates selected pass and output overflow remains a crash (1263.050721ms)
+✔ whole process group deadline kills delayed grandchildren (1573.416148ms)
+✔ adapter-declared inputs and expected missing assets cannot drift into a selected pass (1361.78953ms)
+✔ exact replay clears ambient configuration and rejects another Node version (1115.088103ms)
+✔ a same-content input symlink retarget invalidates source identity (652.431404ms)
+✔ tests/node-resource-args.test.mjs (0.367961ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12468.51419

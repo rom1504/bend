@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
-import {spawnFileSync as spawnSync} from '../helpers/spawn-file-sync.mjs';
+import {spawnSync} from 'node:child_process';
 import path from 'node:path';
 import {createPersistentRunner,validatePersistentReplay} from '../../tools/conformance/persistent-probe.mjs';
 

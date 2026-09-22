@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {spawnFileSync as spawnSync} from '../helpers/spawn-file-sync.mjs';
+import {spawnSync} from 'node:child_process';
 import test from 'node:test';
 const root=path.resolve(import.meta.dirname,'../..'),upstream=process.env.BEND_UPSTREAM||path.join(root,'.bootstrap/upstream'),available=fs.existsSync(path.join(upstream,'tests'));
 const directory=fs.mkdtempSync(path.join(os.tmpdir(),'bend-targeted-test-'));let serial=0;

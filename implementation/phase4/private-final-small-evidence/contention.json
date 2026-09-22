@@ -1,0 +1,20 @@
+{
+  "kind": "phase4-measurement-contention-note",
+  "complete": true,
+  "createdUtc": "2026-09-22T17:58:30.378660+00:00",
+  "report": "report.json",
+  "affectedCpu": 0,
+  "windowsUtc": [
+    [
+      "2026-09-22T17:54:37Z",
+      "2026-09-22T17:54:39Z"
+    ],
+    [
+      "2026-09-22T17:55:23Z",
+      "2026-09-22T17:55:26Z"
+    ]
+  ],
+  "bounds": "Conservative filesystem timestamp bounds; package check reported0.3847s and refusal checks0.3851s. These are not independently instrumented process-exit times.",
+  "cause": "Two brief independent profile-package guards ran during the root comparison after an imminent-start message.",
+  "decision": "Keep all36 exact observations and timings. Repeat the entire unchanged comparison with exclusiveCPU0 to address possible timing interference; do not selectively remove affected rows."
+}

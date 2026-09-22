@@ -1,0 +1,71 @@
+{
+  "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+  "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+  "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+  "driver": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/typed-driver.mjs",
+  "referenceAdapter": "/home/ai/bend2/build/publish/bend/selfhost/tools/conformance/adapters/upstream.mjs",
+  "cpu": 0,
+  "repetitions": 3,
+  "timeoutMs": 120000,
+  "requireBendBytes": true,
+  "variants": [
+    {
+      "id": "combined-b1",
+      "kind": "bend",
+      "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/api.mjs",
+      "provenance": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/report.json"
+      ]
+    },
+    {
+      "id": "combined-h",
+      "kind": "bend",
+      "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+      "embeddedRuntime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+      "provenance": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/report.json"
+      ]
+    },
+    {
+      "id": "profile-combined",
+      "kind": "bend",
+      "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/profile-combined/image.mjs",
+      "provenance": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/profile-combined/manifest.json"
+      ]
+    },
+    {
+      "id": "pinned-ts",
+      "kind": "typescript"
+    }
+  ],
+  "workloads": [
+    {
+      "id": "tree",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend",
+      "expectedStatus": "ok",
+      "expectedStdout": "42\n",
+      "lanes": [
+        "emit"
+      ]
+    },
+    {
+      "id": "list-sort",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend",
+      "expectedStatus": "ok",
+      "expectedStdout": "6\n",
+      "lanes": [
+        "emit"
+      ]
+    },
+    {
+      "id": "bytes-ops",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/bytes_ops.bend",
+      "expectedStatus": "error",
+      "lanes": [
+        "check"
+      ]
+    }
+  ],
+  "seedCacheDirectory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/build/typed/cache"
+}

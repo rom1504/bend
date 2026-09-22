@@ -76,6 +76,13 @@ Choose a fresh output directory. Keep the report, assembled source, copied
 modules and builder snapshot together. A new source edit requires a new checked
 build; an older API's success does not validate it.
 
+To recover an unchanged experimental starting point, use the versioned
+[checked compiler capsule](../implementation/phase4/final-source-capsule/README.md)
+or [private image archive](../implementation/phase4/private-final-images/README.md).
+Their extractors verify hashes and refuse an existing destination. Restoration
+preserves historical provenance; it does not check new source or fabricate a new
+bootstrap. The archives document canonical Base and original path requirements.
+
 ## Profile representative requests
 
 Use the bounded sampling wrapper for small successful programs:

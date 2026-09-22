@@ -5,6 +5,37 @@ Design: [structural compiler speed](../../design/phase4/structural_compiler_spee
 Starting compiler revision: `89e2c83`. The design was committed and pushed as
 `4f59f08` before production compiler edits.
 
+## Current result checkpoint
+
+The fastest validated edit loop is a **20.735-second checked B1 rebuild** followed
+by a cold **16.483-second paired 21-case command**; reused validation has a
+**9.328-second median**. Full self-compilation remains an integration gate.
+The source changes have passed a checked fixed point, all 2,756 frontend
+observations and the selected native gates. The 560 existing TypeScript
+differences remain; this is not full conformance.
+
+The corrected private compiler now passes full-source emission. Its first
+control/profile pair is **780.022→749.523 seconds**, with exact proven H output
+and maximum child RSS **4,333,668→4,464,192 KiB**. The reverse pair is running.
+The profile's focused core gain is 11.3%, but its first full-source gain is only
+3.91%. See the [whole-source report](private-full-source.md), rather than
+extrapolating the component result.
+
+The final [small comparison](private-final-small.md) passes 72/72 observations.
+Private H takes 35.0%/36.9% less request time than public H on successful tree/list
+compilation, but remains 5.14×/8.05× the pinned TypeScript request time. B1 remains
+the faster JavaScript development compiler. Public user-program output is
+unchanged by these private-image optimizations.
+
+The experiment workflow now follows the useful file-based methodology from
+`rom1504/math`: [numbered records](../../experiments/ledger.md), a bounded
+[current strategy](../../experiments/STEERING.md), explicit rejection criteria,
+raw evidence, counterexamples and a recorded decision after each experiment.
+The [checked artifact capsule](final-source-capsule/README.md) and
+[exact private images](private-final-images/README.md) can be restored without
+rerunning compiler builds merely to recover an experimental starting point.
+Historical proof paths and status are preserved.
+
 ## Frozen starting point
 
 [baseline.json](baseline.json) identifies 73 captured artifacts in
@@ -102,7 +133,9 @@ specialized workers lost a block-local generated helper table and returned
 measurement are retained in [P4-016](../../experiments/phase4/P4-016-private-lexical-scope.md).
 The [lexical-scope correction](private-scope-fix.md) now passes 25 package tests,
 14 actual split-worker controls and the exact escaped-string output comparison;
-its new full-source run is pending. Earlier
+its corrected full-source run now passes with exact H output. The combined
+profile also passes its first complete source run; its reverse-order comparison
+and final-image frontend sweep remain pending. Earlier
 selected program/frontend successes do not establish this missing emission gate.
 The [54-observation final small matrix](small-comparison.md) remains scoped to
 its tested inputs, including its recorded negative-case regression.
@@ -230,6 +263,7 @@ The guarded selection and telescope algorithms are integrated; the default
 distributed API has not been replaced. Combined-source checking, checked
 self-reproduction, complete frontend observation preservation and selected
 native validation are complete. Further private-image integration measurements
-remain separate from these source gates. The
+and bounded native-annotation/frontend-scheduling experiments remain separate
+from these source gates. The
 [development guide](../../docs/PHASE4_DEVELOPMENT.md), linked from both READMEs,
 documents the checked-overlay and bounded-profiling workflows.

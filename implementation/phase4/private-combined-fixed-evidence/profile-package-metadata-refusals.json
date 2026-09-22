@@ -1,0 +1,45 @@
+{
+  "kind": "private-profile-package-metadata-refusals",
+  "complete": true,
+  "toolSha256": "1a01796e150139720996bbe705577413b9164312c185d3debb3e9fe04d24a2a2",
+  "rows": [
+    {
+      "case": "source recorded hash mismatch",
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "tools/performance/phase4/private-combined-package-test.mjs",
+        "build/phase4/private/profile-package",
+        "build/phase4/private/profile-default",
+        "build/phase4/private/profile-combined",
+        "build/phase4/private/profile-package-refusals/source.json",
+        "build/phase4/private/profile-package-refusals/source-result"
+      ],
+      "exitCode": 1,
+      "error": "file:///home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/common.mjs:10\n  if(actual.canonicalPath!==expected.canonicalPath||actual.sha256!==expected.sha256)throw Error('Artifact changed: '+expected.file);\n                                                                                          ^\n\nError: Artifact changed: /home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs\n    at verifyIdentity (file:///home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/common.mjs:10:91)\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/private-combined-package-test.mjs:13:40\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.18.0\n",
+      "configurationSha256": "755663f646bf65504098d0da1e09805e98626d0b5b379b754c48b7bc265ec7ab",
+      "passed": true
+    },
+    {
+      "case": "variant recorded hash mismatch",
+      "command": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "tools/performance/phase4/private-combined-package-test.mjs",
+        "build/phase4/private/profile-package",
+        "build/phase4/private/profile-default",
+        "build/phase4/private/profile-combined",
+        "build/phase4/private/profile-package-refusals/variant.json",
+        "build/phase4/private/profile-package-refusals/variant-result"
+      ],
+      "exitCode": 1,
+      "error": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Prepared variant changed: private-control\n+ actual - expected\n\n+ '61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1'\n- '0000000000000000000000000000000000000000000000000000000000000000'\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/private-combined-package-test.mjs:17:10\n    at Array.map (<anonymous>)\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/private-combined-package-test.mjs:14:58\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: '61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1',\n  expected: '0000000000000000000000000000000000000000000000000000000000000000',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.18.0\n",
+      "configurationSha256": "c6f6f824a6eba2b594cee58c0ed5c3cbdf58c7f1ccb7e099f89bd693f033b8a0",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "kind": "historical-private-image-preservation-verification",
+  "complete": true,
+  "verifiedAt": "2026-09-22T18:01:38.734006+00:00",
+  "manifestSha256": "23beab4f673d28723d8a136d2ba7ebcbacd39cf49ea9e9ff13b053096dc00258",
+  "allOriginalInputsStillUnchanged": true,
+  "restoration": {
+    "kind": "historical-private-image-restoration",
+    "complete": true,
+    "newBootstrap": false,
+    "newPrivateBuild": false,
+    "catalogSha256": "23beab4f673d28723d8a136d2ba7ebcbacd39cf49ea9e9ff13b053096dc00258",
+    "images": {
+      "scope-fixed": {
+        "directory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private-images-preservation/restored/scope-fixed",
+        "manifestSha256": "210d877527732b523a79baf83a55ca6708c11fcf69fcc6e49b2c3467099e7259",
+        "imageSha256": "61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1",
+        "filesVerified": 29
+      },
+      "profile-combined": {
+        "directory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private-images-preservation/restored/profile-combined",
+        "manifestSha256": "1213ef8ee37bae739c01e0fb2119154e6e6e3be5ce0ef95a9cb3ef0b72c11b7c",
+        "imageSha256": "4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3",
+        "filesVerified": 33
+      }
+    }
+  },
+  "verification": {
+    "kind": "historical-private-image-restoration",
+    "complete": true,
+    "newBootstrap": false,
+    "newPrivateBuild": false,
+    "catalogSha256": "23beab4f673d28723d8a136d2ba7ebcbacd39cf49ea9e9ff13b053096dc00258",
+    "images": {
+      "scope-fixed": {
+        "manifestSha256": "210d877527732b523a79baf83a55ca6708c11fcf69fcc6e49b2c3467099e7259",
+        "imageSha256": "61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1",
+        "filesVerified": 29
+      },
+      "profile-combined": {
+        "manifestSha256": "1213ef8ee37bae739c01e0fb2119154e6e6e3be5ce0ef95a9cb3ef0b72c11b7c",
+        "imageSha256": "4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3",
+        "filesVerified": 33
+      }
+    }
+  },
+  "tests": {
+    "passed": 5,
+    "failed": 0,
+    "affinity": "CPU3, coordinated with lexer agent; no timing claim",
+    "log": "tests.log",
+    "sha256": "ad12071fb08222873587114af3ae361c00f8098bbb112e40aaa3c2f5b7947376"
+  },
+  "tools": [
+    {
+      "file": "extract.py",
+      "sha256": "453437fab2814e4acb3eb5bdbc87e679bef5034a530cd8a9d4e88e144b459bc2"
+    },
+    {
+      "file": "extract_test.py",
+      "sha256": "c42fc69060e9c24ee33d25add8b96bca6ae3612f4d627ca7d53f9c9d209674d5"
+    },
+    {
+      "file": "creation-tool.py",
+      "sha256": "59464aad26adc7444fa512f6a0311602b3b93fc64845c1c10729ef32873205b1"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+file:///home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/common.mjs:10
+  if(actual.canonicalPath!==expected.canonicalPath||actual.sha256!==expected.sha256)throw Error('Artifact changed: '+expected.file);
+                                                                                          ^
+
+Error: Artifact changed: /home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs
+    at verifyIdentity (file:///home/ai/bend2/build/publish/bend/selfhost/tools/private-compiler/common.mjs:10:91)
+    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/private-combined-package-test.mjs:13:40
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0

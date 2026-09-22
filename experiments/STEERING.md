@@ -1,7 +1,8 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-22, after the independently reviewed lexical-scope fix.
-Next review: after the corrected full-source gate or fixed-base four-way matrix.
+Evidence cutoff: 2026-09-22, 17:56 UTC, after the corrected private full-source
+control and the independent combined-profile review.
+Next review: after final-image full-source and frontend gates.
 Authorized work window ends approximately 20:16 UTC; reserve the final 15 minutes
 for evidence review, documentation, commits and push.
 
@@ -31,18 +32,24 @@ The routes below are investigator choices, not additional user requirements.
   cost on tested subsets. Its first whole-source attempt FAILED in emission:
   hoisted workers lost block-local helper table `F`. P4-016's correction passed
   25 package tests, 14 actual-worker controls and the escaped-string byte check.
-  Its full-source rerun is pending; no successful private full-source time yet.
+  Its corrected full-source rerun completed in 780.022 seconds of process wall,
+  emitted exactly the proven H bytes, and peaked at 4,333,668 KiB RSS. This is one
+  observation; the failed predecessor remains in the archive.
+- The corrected Boolean/stability four-way comparison passed all 48 observations.
+  Core median request time is 26.902→23.855 seconds, 11.3% less, with all three
+  pairs improving. Exact-image broad and full-source gates are now running.
 
 ## Ranked next decisions
 
 | Rank | Route | Cheapest useful test | Stop or promotion criterion |
 | --- | --- | --- | --- |
-| 1 | Complete corrected private full-source gate | Cheap scope gates have passed; bounded full request is running | Exact full H bytes and resource evidence required |
-| 2 | Combine exact Boolean matchers and pure stability facts | Three-round real-core four-way comparison, exact controls, RSS | Advance only for a repeatable whole-workload gain; require broad frontend and full-source gates before support |
-| 3 | Final small B1/H/private/TypeScript matrix | Frozen final identities, alternating fresh workers | Separate successful emission from exact rejection and startup |
+| 1 | Complete final private profile gates | Corrected control completed; candidate full-source and frontend runs active | Exact full H bytes, unchanged frontend observations and resource evidence required |
+| 2 | Support the exact Boolean/stability combination | Four-way matrix and independent profile review pass | Keep default bytes unchanged; named opt-in profile pins reviewed H/runtime/bodies; require rank 1 before promotion |
+| 3 | Final small B1/H/private/TypeScript matrix | Final candidate identities, alternating fresh workers | Separate successful emission from exact rejection and startup |
 | 4 | Make the fastest validated workflow convenient | Run genuine focused CLI on the chosen artifact | Preserve all verdicts/diagnostics, reuse bounds and fresh source/import behavior |
 | 5 | Reduce remaining generated matcher dispatch | Exact Con/arity2 pilot has now failed its material-benefit threshold | Retain P4-015 rejection; require a stronger mechanism before reopening |
-| 6 | Broader term-layout or typed intermediate representation | Quantify residual allocation/dispatch after current specialization | Do not start a migration on operation counts alone; require a boundary and an isolated material result |
+| 6 | Native parallel annotation | Disposable checked wrapper, exact annotation oracle, serial/two-worker costs | Stop before 19:15 if build/protocol dominates; require material component gain before any full build |
+| 7 | Broader term-layout or typed intermediate representation | Quantify residual allocation/dispatch after current specialization | Do not start a migration on operation counts alone; require a boundary and an isolated material result |
 
 Ranks 1–4 are integration/measurement work, not new algorithmic hypotheses.
 Ranks 5–6 are alternatives if evidence and remaining time justify them.
@@ -65,12 +72,13 @@ overlapping micro-optimizations.
 
 ## Assignment and resource state
 
-Root owns strategy, integration, ledger, commits and pushes. Direct-calls agent
-finishes its frozen four-way comparison, then owns the private scope fix.
-Compact-index agent independently reviews the fix; lexer-analysis archives the
-rejected Con-arm pilot and its preservation audit. Root reduces the actual
-emission failure on CPU2. Coordinate other timed work; shared cache/memory
-interference remains possible even on different cores.
+Root owns strategy, integration, ledger, commits and pushes, and final small
+comparisons on CPU0, frontend on CPU1 and full-source on CPU2. Direct-calls agent
+stages the profile integration without mutating running inputs. Compact-index
+agent independently reviews gates. Lexer-analysis has CPU3 for the bounded,
+disposable annotation experiment; multicore timings require explicit scheduling
+after other cores free. Shared cache/memory interference remains possible even
+on different cores. The 59 production modules and checked source are frozen.
 
 Do not mutate source or a tool consumed by a running experiment. Preserve frozen
 controls and invalid attempts. Read the [ledger](ledger.md) before assigning the

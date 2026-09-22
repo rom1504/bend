@@ -1,0 +1,185 @@
+--- a/selfhost/tools/private-compiler/build.mjs
++++ b/selfhost/tools/private-compiler/build.mjs
+@@ -5,10 +5,10 @@
+ import {fileURLToPath,pathToFileURL} from 'node:url';
+ import {identity,verifyIdentity,writeJson,digest} from './common.mjs';
+ import {validateProof} from './proof.mjs';
+-import {specializeCompiler} from './transform.mjs';
++import {specializeProfile} from './profiles.mjs';
+ export const reviewedRuntimeSha256='26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b';
+ export function assertSupportedRuntime(source){if(digest(source)!==reviewedRuntimeSha256)throw Error('Runtime revision has not been reviewed for private projection and argument-ownership invariants');}
+-export async function buildPrivateCompiler({proofFile,apiFile,runtimeFile,output,experimental=false}) {
++export async function buildPrivateCompiler({proofFile,apiFile,runtimeFile,output,experimental=false,optimizationProfile='default'}) {
+   const started=performance.now();assertSupportedRuntime(fs.readFileSync(runtimeFile));
+   const validated=validateProof({proofFile,apiFile,runtimeFile,experimental});
+   const out=path.resolve(output);fs.mkdirSync(out,{recursive:false});
+@@ -21,7 +21,7 @@
+   const initial=await import(pathToFileURL(validated.proof.initialCompiler.file));
+   const exports=Object.keys(initial.default);
+   if(!exports.includes('f_parse')||!exports.includes('check_book')||!exports.includes('j_library'))throw Error('Incomplete checked seed host API');
+-  const transformed=specializeCompiler(original,exports);
++  const transformed=specializeProfile(original,exports,optimizationProfile);
+   fs.writeFileSync(path.join(out,'image.mjs'),transformed.source,{flag:'wx'});
+   fs.copyFileSync(runtimeFile,path.join(out,'runtime.mjs'));
+   fs.copyFileSync(apiFile,path.join(out,'provenance/public-api.mjs'));
+@@ -42,14 +42,16 @@
+     proof:{...validated.proofIdentity,complete:validated.proof.complete===true,selectedApi:validated.api,initialCompiler:validated.proof.initialCompiler,source:validated.proof.sourceIdentity},
+     base:validated.proof.base,runtime:validated.runtime,originalDriver:validated.proof.driver,
+     hostRewrite:{only:'project/cache root',originalSha256:digest(driver),copiedSha256:digest(rewritten)},
+-    exports,stats:transformed.stats,inputs:validated.inputs,tools:consumedTools,artifacts,
++    exports,optimizationProfile,stats:transformed.stats,inputs:validated.inputs,tools:consumedTools,artifacts,
+     node:{...identity(process.execPath),version:process.version},buildMs:performance.now()-started};
+   writeJson(path.join(out,'manifest.json'),manifest);
+   return {output:out,manifest:path.join(out,'manifest.json'),proofStatus:manifest.proofStatus,imageSha256:identity(path.join(out,'image.mjs')).sha256,buildMs:manifest.buildMs};
+ }
+ if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
+  const args=process.argv.slice(2),experimental=args.includes('--experimental');
++ const profileFlags=args.filter(x=>x.startsWith('--profile='));if(profileFlags.length>1)throw Error('Repeated profile option');
++ const optimizationProfile=profileFlags[0]?.slice(10)??'default';
+  const positional=args.filter(x=>!x.startsWith('--'));
+- if(positional.length!==4||args.some(x=>x.startsWith('--')&&x!=='--experimental'))throw Error('Usage: build.mjs PROOF_JSON CHECKED_H RUNTIME NEW_IMAGE_DIRECTORY [--experimental]');
+- console.log(JSON.stringify(await buildPrivateCompiler({proofFile:positional[0],apiFile:positional[1],runtimeFile:positional[2],output:positional[3],experimental})));
++ if(positional.length!==4||args.some(x=>x.startsWith('--')&&x!=='--experimental'&&!x.startsWith('--profile=')))throw Error('Usage: build.mjs PROOF_JSON CHECKED_H RUNTIME NEW_IMAGE_DIRECTORY [--experimental] [--profile=default|phase4-boolean-stable]');
++ console.log(JSON.stringify(await buildPrivateCompiler({proofFile:positional[0],apiFile:positional[1],runtimeFile:positional[2],output:positional[3],experimental,optimizationProfile})));
+ }
+--- /dev/null
++++ b/selfhost/tools/private-compiler/profiles.mjs
+@@ -0,0 +1,12 @@
++
++import {digest} from './common.mjs';
++import {specializeCompiler} from './transform.mjs';
++import {privateCombined} from './profile-combined.mjs';
++export const reviewedProfileH="b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8";
++export function specializeProfile(source,exports,profile='default') {
++  if(profile==='default')return specializeCompiler(source,exports);
++  if(profile!=='phase4-boolean-stable')throw Error('Unknown private optimization profile: '+profile);
++  if(digest(source)!==reviewedProfileH)throw Error('Unreviewed compiler image for phase4-boolean-stable; use default or re-audit the exact source');
++  const result=privateCombined(source,exports);
++  return {...result,stats:{...result.stats,optimizationProfile:{name:profile,reviewedH:reviewedProfileH,scope:'Experimental private immutable image only; whole-source and broad gates must be recorded separately.'}}};
++}
+--- /dev/null
++++ b/selfhost/tools/private-compiler/profile-booleans.mjs
+@@ -0,0 +1,48 @@
++// Exact reviewed Boolean matcher specialization in the private compiler only.
++// Reuse the two pure partial handlers; preserve first-argument demand order.
++import {createHash} from 'node:crypto';
++import {tokenize} from './tokens.mjs';
++import {specializeCompiler} from './transform.mjs';
++const reviewed = {
++  'Bool.and': 'b703a8d778eb794e44cf38a981a8808328d4af9431d75c922638bd3bc9e9bdd1',
++  'Bool.not': '195007f2b143de13d2dc029919780874cba46ebb9b0e2ab16dbd76380ebb3d89',
++};
++export function privateBooleans(source, exports) {
++  for (const [name, hash] of Object.entries(reviewed)) {
++    const lines = source.split('\n').filter(line => line.startsWith('G[' + JSON.stringify(name) +']='));
++    if (lines.length !== 1 || createHash('sha256').update(lines[0]).digest('hex') !== hash)
++      throw Error('Unreviewed Boolean matcher: ' + name);
++  }
++  for (const name of ['True', 'False'])
++    if (!source.includes('constructorNative[' + JSON.stringify(name) + ']=true;')) throw Error('Boolean constructor representation differs');
++  const result = specializeCompiler(source, exports), counts = {'Bool.and': 0, 'Bool.not': 0};
++  const transformed = result.source.split('\n').map(line => {
++    if (!/^G\[|^function privateWorker/.test(line)) return line;
++    const tokens = tokenize(line), edits = [];
++    for (let i = 0; i < tokens.length; i++) {
++      if (!['call', 'jump'].includes(tokens[i].text) || tokens.slice(i + 1, i + 6).map(t => t.text).join(' ') !== '( get ( G ,') continue;
++      let name; try { name = JSON.parse(tokens[i + 6]?.text); } catch { continue; }
++      if (!Object.hasOwn(counts, name) || tokens[i + 7]?.text !== ')' || tokens[i + 8]?.text !== ',' || tokens[i + 9]?.text !== '[') continue;
++      const end = tokens[i + 9].close;
++      if (end + 1 !== tokens[i + 1].close) continue;
++      let j = i + 10;
++      if (j === end || tokens[j].text === '.') continue;
++      while (j < end && tokens[j].text !== ',') j = tokens[j].close === undefined ? j + 1 : tokens[j].close + 1;
++      if (j < end && j + 1 !== end) continue;
++      const helper = name === 'Bool.and' ? 'privateBooleanAndFirst' : 'privateBooleanNot';
++      edits.push({start: tokens[i].start, end: tokens[i + 9].end, text: helper + '('}, {start: tokens[end].start, end: tokens[end].end, text: ''});
++      counts[name]++;
++    }
++    for (const edit of edits.sort((a, b) => b.start - a.start)) line = line.slice(0, edit.start) + edit.text + line.slice(edit.end);
++    return line;
++  }).join('\n');
++  const helpers = `
++const privateBooleanTrueHandler=fn(1,a=>a[0]);
++const privateBooleanFalseHandler=fn(1,a=>false);
++for(const value of [privateBooleanTrueHandler,privateBooleanFalseHandler]){Object.freeze(value.bound);Object.freeze(value);}
++function privateBooleanAndFirst(value){if(value===true)return privateBooleanTrueHandler;if(value===false)return privateBooleanFalseHandler;return call(get(G,"Bool.and"),[value]);}
++function privateBooleanNot(value){if(typeof value==='boolean')return !value;return call(get(G,"Bool.not"),[value]);}
++`;
++  return {source: transformed + helpers, stats: {...result.stats, booleans: {counts, reviewed,
++    scope: 'Private immutable function objects only; exact matcher bodies/native Boolean layout; first argument evaluated before second; non-Boolean first arguments use original call at the same demand point.'}}};
++}
+--- /dev/null
++++ b/selfhost/tools/private-compiler/profile-stability.mjs
+@@ -0,0 +1,33 @@
++// Experimental private-image-only cache for a proven context-free Boolean fact.
++// The public runtime and ordinary generated libraries are never transformed.
++import {createHash} from 'node:crypto';import {specializeCompiler} from './transform.mjs';import {tokenize} from './tokens.mjs';
++const sha=x=>createHash('sha256').update(x).digest('hex');
++const reviewed=Object.freeze({
++ core_subst_stable:'b278517ed757a9777aa2644d0ccc4e4d41315a72329460a747e2e0b5a8c034f1',
++ core_subst_stable_terms:'b57c645888b293214e53ccd29f865a613790bc7501197bbd79c8346b7a6157d4',
++ core_subst_stable_app:'73229cd8b9bfc195190c14350472461518924be0f2ce2ce23c5c038dad1aa673',
++ core_subst_stable_app_kids:'f852fda0fce3cd3b6812aac55944d20dcfdce935a8bd2c5960cea9b448bd6b17',
++ core_subst_stable_app_tail:'8a3fe6071ff380c6c299fae9f162f51aa10d643b0511b4dd5023127f468f4f6a',
++ core_subst_stable_app_last:'d707d0198c8974c721c399489da5e20540d666e783ec3f371ac7386f346bff7a',
++});
++export function privateStableMemo(source,exports){
++ for(const [name,expected] of Object.entries(reviewed)){const lines=source.split('\n').filter(l=>l.startsWith('G['+JSON.stringify(name)+']='));if(lines.length!==1||sha(lines[0])!==expected)throw Error('Unreviewed pure stability worker: '+name);}
++ const result=specializeCompiler(source,exports);let sites=0;
++ let transformed=result.source.split('\n').map(line=>{
++ if(!/^G\[|^function privateWorker/.test(line))return line;
++ const ts=tokenize(line),edits=[];
++ for(let i=0;i<ts.length;i++){
++  if(!['call','jump'].includes(ts[i].text)||ts.slice(i+1,i+10).map(t=>t.text).join(' ')!=='( get ( G , "core_subst_stable" ) , [')continue;
++  if(ts[i].text==='jump')throw Error('Stability cache does not transform tail calls');
++  const end=ts[i+9].close;if(end+1!==ts[i+1].close)throw Error('Unexpected stability call shape');
++  // Require exactly one argument, optionally followed by its emitted comma.
++  let j=i+10;if(j===end)throw Error('Missing stability argument');while(j<end&&ts[j].text!==',')j=ts[j].close===undefined?j+1:ts[j].close+1;
++  if(j<end&&j+1!==end)throw Error('Overapplied stability call');
++  edits.push({start:ts[i].start,end:ts[i+9].start,text:'privateStableArgs('});
++ }
++ sites+=edits.length;for(const e of edits.reverse())line=line.slice(0,e.start)+e.text+line.slice(e.end);return line;
++ }).join('\n');
++ if(sites!==5)throw Error('Unexpected stability call-site count: '+sites);
++ transformed+=`\n// Cache only complete native Boolean results at the existing call/force boundary.\nconst privateStableCache=new WeakMap();\nfunction privateStableArgs(args){const value=args[0],key=value!==null&&typeof value==='object'&&value.$==='KTerm'&&Array.isArray(value.a)&&value.a.length===6;if(key&&privateStableCache.has(value))return privateStableCache.get(value);const result=call(get(G,"core_subst_stable"),args);if(key&&typeof result==='boolean')privateStableCache.set(value,result);return result;}\n`;
++ return {source:transformed,stats:{...result.stats,stabilityMemo:{sites,reviewedWorkers:reviewed,scope:'Private immutable KTerm graphs only; no context/book dependency; original call/force on misses; no tail rewrite.'}}};
++}
+--- /dev/null
++++ b/selfhost/tools/private-compiler/profile-combined.mjs
+@@ -0,0 +1,11 @@
++// Compose verified post-specialization deltas once. Original prototypes remain
++// unchanged; the adapter must reconstruct stable-only byte-for-byte first.
++import assert from 'node:assert/strict';import {specializeCompiler} from './transform.mjs';import {privateBooleans} from './profile-booleans.mjs';import {privateStableMemo} from './profile-stability.mjs';
++export function privateCombined(source,exports){
++ const base=specializeCompiler(source,exports),booleans=privateBooleans(source,exports),stable=privateStableMemo(source,exports);
++ const marker='\n// Cache only complete native Boolean results at the existing call/force boundary.',at=stable.source.indexOf(marker);assert.ok(at>=0);assert.equal(stable.source.indexOf(marker,at+1),-1);const helper=stable.source.slice(at),from='call(get(G,"core_subst_stable"),[',to='privateStableArgs([';
++ const apply=text=>{assert.equal(text.split(from).length-1,stable.stats.stabilityMemo.sites,'Unexpected stable-call overlap');return text.replaceAll(from,to);};
++ assert.equal(apply(base.source)+helper,stable.source,'Composition does not reproduce the verified tokenized stability transform');
++ const combined=apply(booleans.source)+helper;
++ return {source:combined,stats:{...booleans.stats,stabilityMemo:stable.stats.stabilityMemo,composition:{specializationsPerVariant:1,referenceDeltaVerified:true,scope:'Boolean matcher and pure stability-call deltas are disjoint; original tokenized transforms and exact body guards are unchanged.'}}};
++}
+--- a/selfhost/tools/private-compiler/README.md
++++ b/selfhost/tools/private-compiler/README.md
+@@ -14,6 +14,22 @@
+ node tools/private-compiler/run.mjs NEW_IMAGE_DIRECTORY \
+   /absolute/path/main.bend compile NEW_RESULT_DIRECTORY --cpu=0
+ ```
++
++An optional build flag, `--profile=phase4-boolean-stable`, selects the reviewed
++Boolean/stability profile. Omit it, or use `--profile=default`, for the unchanged
++default specialization. The JavaScript builder API calls this option
++`optimizationProfile`; the selected name and all profile generator modules are
++recorded in the image manifest.
++
++The named profile accepts only checked H
++`b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8`,
++the reviewed runtime below and the exact reviewed Boolean/stability bodies.
++A different H fails explicitly, even if only its emitted variable names change;
++use the default profile or complete a fresh review. It preserves the same
++JSON-only worker boundary and does not optimize ordinary public libraries.
++See the [profile evidence](../../../implementation/phase4/private-combined-fixed.md)
++for measured scope, controls and final promotion gates. The ordinary checked B1
++edit loop does not require a private image or this profile.
+ 
+ Supported modes are `parse`, `check`, `compile`, and `library`. `--report` requests
+ the ordinary declaration report. `--timeout-ms=N` sets the whole worker deadline

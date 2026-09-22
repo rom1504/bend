@@ -1,0 +1,30 @@
+{
+  "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/scope-fixed",
+  "cpu": 0,
+  "proof": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/report.json",
+  "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+  "repetitions": 3,
+  "workloads": [
+    {
+      "id": "tree",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/tests/fixtures/tree.bend"
+    },
+    {
+      "id": "list",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/list_sort.bend"
+    },
+    {
+      "id": "bytes",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/base/bytes_ops.bend",
+      "mode": "check",
+      "status": "error",
+      "phase": "check"
+    },
+    {
+      "id": "core",
+      "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/component/core.bend",
+      "mode": "library"
+    }
+  ],
+  "prepared": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/private/combined-fixed-prepared/report.json"
+}

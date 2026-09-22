@@ -76,3 +76,28 @@ evidence. Prioritize exact final-image frontend observations once the candidate
 is chosen. Archive principal checked artifacts so later investigations can start
 from verified bytes without repeating an eleven-minute emission solely to
 recover their starting image.
+
+## Corrected combined private candidate — 2026-09-22
+
+[P4-019](phase4/P4-019-private-combined-profile.md) records the freshly rebased
+four-way experiment. All 48 selected observations agree exactly. Combined
+Boolean/stability specialization reduces core request median 26.902→23.855
+seconds (11.3%), with all three pairs improving and no observed peak-RSS increase.
+Focused Boolean, graph, changed-source/import, escaped-string and package
+provenance controls pass. The earlier matrix stays separately archived because
+its original base had the lexical-scope bug.
+
+The corrected default private image has completed whole-source compilation with
+exact H bytes. Its 780.022-second process and 778.536-second request observations
+are single-run results; they are not paired medians. The combined candidate's
+whole-source and exact frontend gates are running. Canonical profile integration
+is staged only, leaving the default and all active tool identities unchanged.
+
+### Updated frontier
+
+Finish and independently review those final candidate gates before exposing the
+named profile. Require exact output and retained resource evidence; preserve
+the unchanged default and the ordinary checked B1 development loop. Do not
+launch more percentage-scale private variants while the selected candidate is
+under integration validation. Native frontend/annotation feasibility remains
+a separate investigation with its own source and semantic boundaries.

@@ -1,0 +1,27 @@
+# Independent review of the named private optimization profile
+
+Decision: **GO for explicitly named opt-in packaging**, with the normal default retained. This is a packaging/provenance decision, not completion of the separate full-source or broad frontend gates. The candidate reviewed here is `4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3`; the corrected default is `61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1`. Running artifacts were not modified.
+
+Reviewed [package preparation](../../selfhost/tools/performance/phase4/private-combined-package.mjs), [its gate](../../selfhost/tools/performance/phase4/private-combined-package-test.mjs), the actual copied package, canonical builder/proof/image validators and supervised request paths. Boolean/stability semantics remain subject to their separate reviews; this review does not extend the private data-only boundary to public function objects or mutable graphs.
+
+## Guards and default behavior
+
+The default delegates directly to the corrected canonical specialization. The named `phase4-boolean-stable` branch first checks the complete input H SHA `b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8`, then applies the unchanged exact Boolean bodies, six stability-worker bodies and runtime guards. Unknown profiles or even an extra newline in H fail closed. The transform reconstructs the stability-only delta byte-for-byte before composition. No profile silently applies to a future compiler build.
+
+The copied builder retains full proof validation and the exact reviewed runtime hash. Normal release builds require a completed equal checked self-emission chain; source, seed, Base, runtime, actual stage files, driver and imported sibling helpers must match. Existing `--experimental` remains a separate explicit allowance for a completed selected stage with proof pending, recorded as `checked-stage-proof-pending`; merely choosing the optimization profile does not turn a pending proof into a completed one. Both reviewed images actually record `fixedpoint`.
+
+The profile selector is explicit, duplicate flags are rejected, builder modifications require exactly one occurrence of each expected code fragment, and unsupported builder layout fails preparation. The default image is byte-identical to the corrected matrix control; the named image is byte-identical to the measured corrected combination. Profile selection and reviewed-H identity are recorded in image metadata. The previous failed `75eb…` image is not the default/control for this gate.
+
+## Provenance and freshness
+
+Preparation copies the canonical package and records original inputs, import-path adaptations and hashes of every produced module. The copied builder automatically captures all four extra profile modules as consumed tools and image artifacts, alongside runtime, source/proof snapshots and frozen host. Inputs are rechecked before completion. Runtime launch checks every listed artifact and Base; the request supervisor also rechecks the manifest, consumed source/import bytes and symlink resolutions before publication. Profile caching therefore does not bypass source/import freshness or the checked-output gate.
+
+These are integrity/consistency checks within a trusted local build workflow, not signatures against a malicious builder. `verifyImage` verifies the sealed artifact inventory and proof-status label; it does not independently reperform the historical bootstrap or rederive the transformed code from the manifest. The profile name alone is not a correctness or performance certificate. Keep exact input/image hashes and completed downstream gates when publishing support.
+
+## Focused independent checks and required integration follow-up
+
+On CPU3, independently reran the existing package gate: **7/7 passed**. Independently ran canonical `boundary.test.mjs`: **14/14 passed**, including incomplete/failed/broken proof refusal, stale Base/helper rejection, runtime guard, publication and source-drift checks. No compiler matrix or full compilation was rerun. [Package observations](evidence/private-profile-review-package.json.gz), [boundary output](evidence/private-profile-review-boundary.log) and [review identities](evidence/private-profile-review.json) retain the exact scope.
+
+Before treating the package gate as a reusable historical-evidence validator, strengthen `private-combined-package-test.mjs`: compare `prepared.source` and the selected prepared variant files against their **recorded** hashes, and include those variant files in its before/after consumed-input inventory. Currently it compares current prepared bytes with current packaged bytes but does not itself bind each prepared variant to its earlier recorded hash. This is an evidence-harness gap, not a discovered candidate code mismatch. This independent review checked all four prepared variants and source against their recorded identities and rechecked every copied package artifact; all match. No active run or retained timing is invalidated by this finding.
+
+Promotion should preserve the exact-H refusal, explicit profile name, default-byte equality, full runtime/proof guards and tool inventory, then record the separately completed full-source and broad frontend gates. Do not refresh the reviewed hash automatically when source changes. Keep the current experimental package frozen while its jobs run; apply integration changes in a separate fresh package and compare its resulting image bytes.

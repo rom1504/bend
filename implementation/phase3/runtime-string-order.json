@@ -1,0 +1,162 @@
+{
+  "kind": "runtime-string-order-differential",
+  "started": "2026-09-22T05:44:02.264Z",
+  "complete": true,
+  "node": {
+    "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "version": "v24.18.0",
+    "args": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ]
+  },
+  "upstream": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8"
+  },
+  "identity": {
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/runtime-string-order.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tests/runtime-string-order.mjs",
+      "sha256": "acd7b35256c55f8b2d55babefd0f39447918fa63c797c3e42cd345de220db153"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+      "sha256": "69b90d40bc2823a42d10af396814138eb0426f512a0e624efe024ae27c01507b"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/bend.ts": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/bend.ts",
+      "sha256": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/comp.ts": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/comp.ts",
+      "sha256": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+      "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/core.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/core.mjs",
+      "sha256": "cd9641ecd4a54d4b0c0c4a9bbbaec4208ff053f5d1226868aca58995cdcefc21"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/base.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/base.mjs",
+      "sha256": "9ccfa9c8db7abd1a08520f0df27feb2b3163fd9d2929bf4db8dcbe5de9015eb3"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/effects.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/effects.mjs",
+      "sha256": "f33faa95620ecaa7561df76dcd623af7cea1ec001484b59fc7ae2f72405f0fac"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/readback.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/readback.mjs",
+      "sha256": "de7b7930f6e4167b7e44aaef6621b31d53b6d10e23f6e1a93366a214118dee69"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/foreign.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/foreign.mjs",
+      "sha256": "22b442bde5caf73f669fa94f6027ee9454b6934e61fa440a4bf5fb05c399dbff"
+    },
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/src/runtime.mjs": {
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/src/runtime.mjs",
+      "sha256": "a90a169e47fc28ddb93491e7c69eb6ecba188cf44ba153ad1daa77adce4b13e4"
+    }
+  },
+  "checks": 63668,
+  "mismatchCount": 0,
+  "mismatches": [],
+  "oracleBuild": {
+    "status": 0,
+    "stdout": "",
+    "stderr": "Checked 14 API exports\n"
+  },
+  "oracleSha256": "096e60c81d155a9f2dec0757476279de4afd54d8e29fbf05e8ee1b1210382d61",
+  "benchmark": {
+    "scope": "Same-process microbenchmark of the public String.cmp ABI, exact runtime bytes; no compiler or end-to-end speed claim.",
+    "iterations": 1000,
+    "warmup": 30,
+    "order": [
+      "baseline",
+      "candidate",
+      "candidate",
+      "baseline"
+    ],
+    "rows": [
+      {
+        "id": "early-mismatch",
+        "variant": "baseline",
+        "milliseconds": 301.6541480000001,
+        "checksum": 1000
+      },
+      {
+        "id": "early-mismatch",
+        "variant": "candidate",
+        "milliseconds": 1.0117400000001453,
+        "checksum": 1000
+      },
+      {
+        "id": "early-mismatch",
+        "variant": "candidate",
+        "milliseconds": 0.49610500000017055,
+        "checksum": 1000
+      },
+      {
+        "id": "early-mismatch",
+        "variant": "baseline",
+        "milliseconds": 294.05053599999997,
+        "checksum": 1000
+      },
+      {
+        "id": "equal-ascii",
+        "variant": "baseline",
+        "milliseconds": 660.7061279999998,
+        "checksum": 2000
+      },
+      {
+        "id": "equal-ascii",
+        "variant": "candidate",
+        "milliseconds": 78.00641799999994,
+        "checksum": 2000
+      },
+      {
+        "id": "equal-ascii",
+        "variant": "candidate",
+        "milliseconds": 75.80789700000014,
+        "checksum": 2000
+      },
+      {
+        "id": "equal-ascii",
+        "variant": "baseline",
+        "milliseconds": 646.2041549999999,
+        "checksum": 2000
+      },
+      {
+        "id": "late-astral",
+        "variant": "baseline",
+        "milliseconds": 105.35479799999985,
+        "checksum": 1000
+      },
+      {
+        "id": "late-astral",
+        "variant": "candidate",
+        "milliseconds": 25.00076500000023,
+        "checksum": 1000
+      },
+      {
+        "id": "late-astral",
+        "variant": "candidate",
+        "milliseconds": 26.53230100000019,
+        "checksum": 1000
+      },
+      {
+        "id": "late-astral",
+        "variant": "baseline",
+        "milliseconds": 106.361895,
+        "checksum": 1000
+      }
+    ]
+  },
+  "finished": "2026-09-22T05:44:06.025Z"
+}

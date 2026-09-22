@@ -40,7 +40,7 @@ for(const type of ['Nat','U32','F32'])native(type+'.clamp',3,(x,l,h)=>x<l?l:x>h?
 for(const [k,f]of Object.entries({eq:x=>x===0,ne:x=>x!==0,lt:x=>x<0,le:x=>x<=0,gt:x=>x>0,ge:x=>x>=0}))native('Cmp.is_'+k,1,c=>f(c.$==='LT'?-1:c.$==='GT'?1:0));
 native('U32.read',1,s=>/^\d+$/.test(s)&&BigInt(s)<=4294967295n?some(Number(s)):none());native('Nat.read',1,s=>/^\d+$/.test(s)&&BigInt(s)<=281474976710655n?some(BigInt(s)):none());
 for(const [k,f]of Object.entries({lt:(a,b)=>a<b,le:(a,b)=>a<=b,gt:(a,b)=>a>b,ge:(a,b)=>a>=b}))native('String.is_'+k,2,(a,b)=>f(compareText(a,b),0));
-native('String.order',2,(a,b)=>ctor(compareText(a,b)<0?'LT':compareText(a,b)>0?'GT':'EQ',[]));native('String.cmp',2,(a,b)=>[[a,b],ctor(compareText(a,b)<0?'LT':compareText(a,b)>0?'GT':'EQ',[])]);
+native('String.order',2,(a,b)=>{const c=compareText(a,b);return ctor(c<0?'LT':c>0?'GT':'EQ',[])});native('String.cmp',2,(a,b)=>{const c=compareText(a,b);return [[a,b],ctor(c<0?'LT':c>0?'GT':'EQ',[])]});
 native('String.get',2,(s,n)=>Number(n)<Array.from(s).length?some(s.codePointAt(Array.from(s).slice(0,Number(n)).join('').length)):none());
 native('String.to_list',1,s=>list(Array.from(s,c=>c.codePointAt(0))));native('String.from_list',1,x=>unlist(x).map(c=>String.fromCodePoint(c)).join(''));
 native('String.repeat',2,(s,n)=>s.repeat(Number(n)));native('String.to_upper',1,s=>s.replace(/[a-z]/g,c=>String.fromCharCode(c.charCodeAt(0)-32)));native('String.to_lower',1,s=>s.replace(/[A-Z]/g,c=>String.fromCharCode(c.charCodeAt(0)+32)));native('String.trim_start',1,s=>s.replace(/^[ \t\r\n\v\f]+/g,''));native('String.trim_end',1,s=>s.replace(/[ \t\r\n\v\f]+$/g,''));

@@ -1,0 +1,54 @@
+{
+  "kind": "phase4-native-same-source-summary",
+  "complete": true,
+  "sourceSha256": "34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122",
+  "outputSha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+  "outputBytes": 1143517,
+  "cpu": 3,
+  "pairs": [
+    {
+      "round": 0,
+      "order": [
+        "phase3",
+        "phase4"
+      ],
+      "oldCompileMs": 284807,
+      "newCompileMs": 245364,
+      "oldProcessWallMs": 285021.394897,
+      "newProcessWallMs": 245531.38189499994,
+      "reductionPercent": 13.849027587102846
+    },
+    {
+      "round": 1,
+      "order": [
+        "phase4",
+        "phase3"
+      ],
+      "oldCompileMs": 288696,
+      "newCompileMs": 247477,
+      "oldProcessWallMs": 288878.84911399987,
+      "newProcessWallMs": 247639.29095300008,
+      "reductionPercent": 14.277648460664505
+    },
+    {
+      "round": 2,
+      "order": [
+        "phase3",
+        "phase4"
+      ],
+      "oldCompileMs": 257663,
+      "newCompileMs": 242075,
+      "oldProcessWallMs": 257834.02035100013,
+      "newProcessWallMs": 242237.125428,
+      "reductionPercent": 6.049762674501191
+    }
+  ],
+  "oldMedianMs": 284807,
+  "newMedianMs": 245364,
+  "medianReductionPercent": 13.849027587102846,
+  "oldMeanMs": 277055.3333333333,
+  "newMeanMs": 244972,
+  "meanReductionPercent": 11.58011756977546,
+  "changedInputs": [],
+  "limitation": "CPU affinity is not host isolation. The third old-control sample is appreciably faster. All samples are retained; this is compiler-throughput evidence, not generated-program runtime evidence. Build costs are separate."
+}

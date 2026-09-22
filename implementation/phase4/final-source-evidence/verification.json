@@ -1,0 +1,77 @@
+{
+  "kind": "phase4-independent-final-source-verification",
+  "verifiedAt": "2026-09-22T17:10:49.171389+00:00",
+  "complete": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "sha256": "34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/api.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/api.mjs",
+    "sha256": "0653f21e7e227bf7bf7e3ad777630da64d520534753900636a571ed57a43f810"
+  },
+  "modulesVerifiedAgainstFrozenAndCurrentSource": 59,
+  "runtimeSha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+  },
+  "proof": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/report.json",
+    "sha256": "c01e23f8f01473984f51163858aba26e0dae881362e300077cbf964600793021",
+    "bytes": 4606
+  },
+  "stageOutputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "bytes": 1143517
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage3.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "bytes": 1143517
+    }
+  ],
+  "stageBytesIdentical": true,
+  "stageMilliseconds": [
+    670766,
+    1591343
+  ],
+  "frontend": {
+    "fixtures": 1378,
+    "probesPerCompiler": 2756,
+    "historicalBehaviorChanges": 0,
+    "referenceChanges": 0,
+    "liveMismatches": 560,
+    "newLiveMismatches": 0,
+    "resolvedLiveMismatches": 0,
+    "fixtureAndArtifactBytesReverified": true,
+    "reports": {
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/frontend-combined/combined-b1.json",
+        "sha256": "37fdd55898a0e0407e02bba9b57779626dd47e59fcfa7b91af8308034379a3fd",
+        "bytes": 4498887
+      },
+      "reference": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/frontend-combined/pinned-ts.json",
+        "sha256": "f6d1b5e6ff80aadadf20bf6ab36bf3ac2b2051162c3fc28d5bc78d857228f900",
+        "bytes": 3865503
+      },
+      "previousCandidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/frontend-final/candidate.json",
+        "sha256": "2ee11c1c654a6d0669373e11a9342d202dfb0670c252a9ca283927a126c92012",
+        "bytes": 5118986
+      },
+      "previousReference": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/frontend-final/upstream.json",
+        "sha256": "6622cbce8e9af01ca6bed8bf77b558e9d57595f820a16977e58d0324e88d05fe",
+        "bytes": 3855015
+      }
+    }
+  },
+  "scope": "Correctness and unchanged observations, not full language conformance or a controlled frontend performance comparison. An unrelated CPU1 audit overlapped 16:53:08.193\u201316:53:11.397 UTC (3.204s)."
+}

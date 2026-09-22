@@ -106,7 +106,7 @@ terms already in weak head normal form. Conservative `All`/`ADT` shortcuts passe
 their semantic controls but did not deliver a material whole-H gain, so they were
 not promoted. The stronger constructor-telescope fact is now integrated and
 documented in the combined-source checkpoint below. Its component gates pass;
-the whole-source fixed point and broader combined-source gates are separate.
+the [completed fixed point and full frontend sweep](final-source.md) now validate the combined source separately.
 
 The conformance inventory now captures Git output through files and rejects any
 subprocess error even when a supervisor also reports status zero. This environment
@@ -123,7 +123,7 @@ nine-minute setup projects about 23 full compiles to repay and is tied to the
 exact native compiler C. O3 and ThinLTO showed insufficient small-workload gains.
 All 56 benchmark/training compilations and 11 semantic cases passed; every
 full-source output reproduced the proven Phase 3 H bytes. These flag-only
-measurements are separate from the pending combined-source native build.
+measurements are separate from the [completed combined-source native build and comparison](native-final.md).
 
 Indexed final-definition selection is now integrated in the Bend sources for
 `driver_final` and `sp_canonical`. The old routines repeatedly filter all prior
@@ -175,12 +175,15 @@ checked B1 API SHA-256 is
 The [checked-build record](evidence/combined-checked.json.gz) retains all consumed
 module identities. A fresh full checked B1-to-H-to-H reproduction started at
 16:23 UTC on CPU 2, with a frozen host, canonical Base, 4 MiB stack, 12 GiB heap
-and a one-hour deadline per stage. Completion and whole-source speed remain
-pending; the component gain is not substituted for those measurements.
+and a one-hour deadline per stage. The [full proof completed](final-source.md) at
+17:01:13 UTC; actual stage2 and stage3 files are byte-identical. The component
+gain is not substituted for these independently completed measurements.
 
 The first checked self-emission completed in 670.766 seconds and produced H SHA
 `b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8`.
-Stage3 is still running. On exactly the same source and canonical Base,
+Stage3 completed in 1,591.343 seconds with identical bytes; all consumed proof
+inputs and all 59 current/frozen module identities were independently verified.
+On exactly the same source and canonical Base,
 [three pinned TypeScript samples](typescript-final.md) have a 50.937-second
 compiler median and a 51.443-second process median. Actual H confirms all 1,522
 ordered library roots. This is the full library policy, not the limited bootstrap
@@ -195,11 +198,27 @@ experiment took [39.490 seconds](evidence/cold-combined.json.gz), excluding sour
 assembly and its outer Node startup. Neither is compared causally with the older
 Phase 3 workflow, which used a different source and measurement harness.
 
-## Pending completion gates
+## Completed combined-source gates and remaining work
 
-The guarded selection algorithm has passed its focused checks and is integrated;
-the default distributed API has not been replaced. Combined-source checking,
-broader exact conformance, final controlled timing, checked self-reproduction,
-and native validation where affected remain to be completed during this pass.
-The [development guide](../../docs/PHASE4_DEVELOPMENT.md), linked from both READMEs,
+The [full final-source frontend sweep](final-source.md) preserves all 2,756 prior
+parse/check observations over 1,378 fixtures, including exact diagnostics. There
+are zero candidate/reference history changes, zero new mismatches, zero resolved
+mismatches and the same 560 existing live TypeScript differences. All observations
+completed without worker failures or timeouts. This is regression evidence, not
+full language conformance. A 3.204-second unrelated audit overlapped CPU 1 during
+the sweep; no controlled frontend timing claim is made.
+
+The [integrated native compiler](native-final.md) passed checked C emission,
+actual O2 cache miss/hit, 11 selected semantic cases and seven full-source output
+comparisons against the proven H bytes. Three same-source old/new O2 pairs lower
+median compile time from 284.807 to 245.364 seconds (13.85% less); individual
+paired reductions range from 6.05% to 14.28%, with the control drift retained.
+Build expenses are reported separately.
+
+The guarded selection and telescope algorithms are integrated; the default
+distributed API has not been replaced. Combined-source checking, checked
+self-reproduction, complete frontend observation preservation and selected
+native validation are complete. Further private-image integration measurements
+remain separate from these source gates. The
+[development guide](../../docs/PHASE4_DEVELOPMENT.md), linked from both READMEs,
 documents the checked-overlay and bounded-profiling workflows.

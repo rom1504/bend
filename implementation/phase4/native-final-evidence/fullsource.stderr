@@ -1,0 +1,13 @@
+file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-graph-run.mjs:54
+  if (!data || data.version !== 1 || Object.keys(data).some(key => !['version','main','base','modules','assets'].includes(key)) || !Array.isArray(data.modules ?? []) || !Array.isArray(data.assets ?? [])) throw Error('Expected native graph manifest version 1');
+                                                                                                                                                                                                                  ^
+
+Error: Expected native graph manifest version 1
+    at loadNativeGraphManifest (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-graph-run.mjs:54:211)
+    at runNativeGraph (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-graph-run.mjs:84:17)
+    at file:///home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-graph-run.mjs:164:24
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0

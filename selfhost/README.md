@@ -14,6 +14,10 @@ The [phase 4 development guide](../docs/PHASE4_DEVELOPMENT.md) documents checked
 source overlays, bounded profiling and the current structural optimization work;
 the [phase 4 report](../implementation/phase4/report.md) separates results from
 experimental artifacts.
+The [experiment ledger](../experiments/ledger.md) and
+[current strategy](../experiments/STEERING.md) track tested hypotheses and the
+next decisions; see the [workflow](../experiments/README.md) before starting a
+new optimization investigation.
 
 This project targets Bend2 2.0.21 at upstream revision
 [`6018e28ecc67cf1fffc0c20c64b11023474c2df8`](https://github.com/bendlang/bend/tree/6018e28ecc67cf1fffc0c20c64b11023474c2df8).

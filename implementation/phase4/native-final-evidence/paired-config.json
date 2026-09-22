@@ -1,0 +1,41 @@
+{
+  "environmentReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/report.json",
+  "captureTool": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-file-capture.mjs",
+  "launcher": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-graph-run.mjs",
+  "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+  "cpu": 3,
+  "repetitions": 3,
+  "timeoutMs": 600000,
+  "variants": [
+    {
+      "id": "phase3",
+      "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2",
+      "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-o2/compiler-o2.build.json"
+    },
+    {
+      "id": "phase4",
+      "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/compiler-o2",
+      "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/compiler-o2.build.json"
+    }
+  ],
+  "workloads": [
+    {
+      "id": "compiler",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/compiler-manifest-v1.json",
+      "mode": "library",
+      "expectedOutputSha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8"
+    }
+  ],
+  "extraInputs": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/checked/native-build-report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/snapshot/preparation.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/validation.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-launch.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/api.mjs",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/checked/native-build-report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-final/checked/program.c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/stage2-proof-snapshot.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs"
+  ]
+}

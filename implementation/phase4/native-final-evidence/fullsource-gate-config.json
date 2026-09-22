@@ -1,0 +1,31 @@
+{
+  "environmentReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/report.json",
+  "captureTool": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-file-capture.mjs",
+  "launcher": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-graph-run.mjs",
+  "runtime": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/baseline/src/runtime.mjs",
+  "cpu": 3,
+  "repetitions": 1,
+  "timeoutMs": 600000,
+  "variants": [
+    {
+      "id": "phase4",
+      "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/compiler-o2",
+      "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/compiler-o2.build.json"
+    }
+  ],
+  "workloads": [
+    {
+      "id": "compiler",
+      "manifest": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/compiler-manifest-v1.json",
+      "mode": "library"
+    }
+  ],
+  "extraInputs": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/checked/native-build-report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/snapshot/preparation.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/validation.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-launch.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/api.mjs"
+  ]
+}

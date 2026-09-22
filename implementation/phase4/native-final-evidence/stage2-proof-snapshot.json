@@ -1,0 +1,95 @@
+{
+  "started": "2026-09-22T16:23:30.710Z",
+  "source": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+  "sourceIdentity": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "sha256": "34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122"
+  },
+  "sourceSha256": "34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122",
+  "runtimeSha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+  },
+  "hostHelpers": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/compiler-abi.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/node-resource-args.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/node-resource-args.mjs",
+      "sha256": "6aefb3aee9b69b0c25d68edbf0ada6a57ba93e277d3adb8d232dfa6dff01d758"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/native-build.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/native-build.mjs",
+      "sha256": "ed6e4599d09fe05bd43f0038ad7b42a9164dbcc1a2f8995ce3baf3bf511ec3bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/assemble.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/assemble.mjs",
+      "sha256": "f7c8feff7a0b8f8b4a302c2ca8b99b363a8d7c4c9c48bc6b7a9463aa23c58b75"
+    }
+  ],
+  "initialCompiler": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/api.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/api.mjs",
+    "sha256": "0653f21e7e227bf7bf7e3ad777630da64d520534753900636a571ed57a43f810"
+  },
+  "driver": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/typed-driver.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-host/tools/typed-driver.mjs",
+    "sha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24"
+  },
+  "stages": [
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/api.mjs",
+      "compilerSha256": "0653f21e7e227bf7bf7e3ad777630da64d520534753900636a571ed57a43f810",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 670766,
+      "inputsVerified": true,
+      "outputSha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8"
+    }
+  ],
+  "complete": false,
+  "resourceConfiguration": {
+    "node": "v24.18.0",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=12288"
+    ],
+    "osStackKB": "8192",
+    "timeoutMs": 3600000
+  },
+  "requestedStages": [
+    2,
+    3
+  ],
+  "validationPolicy": {
+    "required": [
+      2,
+      3
+    ],
+    "optionalRepeat": false,
+    "condition": "Stage2 and its checked self-emission stage3 must be byte-identical for the same frozen source."
+  },
+  "currentStage": {
+    "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+    "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage3.mjs",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=12288"
+    ],
+    "started": "2026-09-22T16:34:41.645Z"
+  }
+}

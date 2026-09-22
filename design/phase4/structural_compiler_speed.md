@@ -213,6 +213,28 @@ TypeScript, the fastest measured edit loop, and remaining conformance limits.
 Do not silently promote a new distributed default API: promotion requires the
 documented checks and explicit provenance for the selected artifact.
 
+## Follow-up: exact Boolean matchers inside the private image
+
+Ordinary function uncurrying finds no eligible partial chains in the final H;
+the existing emitter already collects those arguments. Generated matchers need
+a separate argument-order proof. Start with the exact `Bool.and` and `Bool.not`
+bodies and native Boolean representation. Reuse immutable true/false partial
+handlers for `and`; directly negate native Booleans for `not`; retain the original
+matcher fallback at the first-argument demand point for other values. A false
+first value must still evaluate the second argument, and a failing first matcher
+must still fail before that argument. Do not apply ordinary-function saturation
+rules to arbitrary constructor matchers.
+
+The small experiment is positive, so the next decision is whether it composes
+with the independently reviewed stability fact cache. Compare a combined image
+against the unchanged canonical private image, preserving separate ablations.
+Run exact adversarial controls, repeated source/import requests and alternating
+real compiler-core samples before spending a full-source compile. Require exact
+full-library reproduction, a measured memory bound and the broad frontend sweep
+before supporting the combined specialization. Preserve the canonical control
+image and its launcher snapshots throughout. A prototype gain is not approval to
+change the public runtime or execute supplied JavaScript in the worker.
+
 ## Decisions during implementation
 
 The measured private-image gains justify a separate build/run package rather

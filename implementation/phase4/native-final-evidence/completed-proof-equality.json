@@ -1,0 +1,105 @@
+{
+  "kind": "phase4-native-completed-fixedpoint-equality",
+  "checkedAt": "2026-09-22T17:07:42.292615+00:00",
+  "complete": true,
+  "completedProof": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/report.json",
+    "sha256": "c01e23f8f01473984f51163858aba26e0dae881362e300077cbf964600793021",
+    "snapshot": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/completed-proof-snapshot.json"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/compiler.bend",
+    "sha256": "34c6ef63931e522a96a4203f8bbd8e103d3a27636cce5dd42d9ec57a8587d122"
+  },
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+  },
+  "runtimeSha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+  "stages": [
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-checked/api.mjs",
+      "compilerSha256": "0653f21e7e227bf7bf7e3ad777630da64d520534753900636a571ed57a43f810",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 670766,
+      "inputsVerified": true,
+      "outputSha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8"
+    },
+    {
+      "compiler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage2.mjs",
+      "compilerSha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/combined-fixedpoint/stage3.mjs",
+      "nodeArgs": [
+        "--stack-size=4096",
+        "--max-old-space-size=12288"
+      ],
+      "code": 0,
+      "signal": null,
+      "ms": 1591343,
+      "inputsVerified": true,
+      "outputSha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8"
+    }
+  ],
+  "nativeOutputs": [
+    {
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/fullsource-gate/compiler-0-phase4.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "bytes": 1143517,
+      "compileMs": 254370,
+      "processWallMs": 254541.278475
+    },
+    {
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/paired/compiler-0-phase3.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "bytes": 1143517,
+      "compileMs": 284807,
+      "processWallMs": 285021.394897
+    },
+    {
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/paired/compiler-0-phase4.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "bytes": 1143517,
+      "compileMs": 245364,
+      "processWallMs": 245531.38189499994
+    },
+    {
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/paired/compiler-1-phase4.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "bytes": 1143517,
+      "compileMs": 247477,
+      "processWallMs": 247639.29095300008
+    },
+    {
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/paired/compiler-1-phase3.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "bytes": 1143517,
+      "compileMs": 288696,
+      "processWallMs": 288878.84911399987
+    },
+    {
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/paired/compiler-2-phase3.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "bytes": 1143517,
+      "compileMs": 257663,
+      "processWallMs": 257834.02035100013
+    },
+    {
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/paired/compiler-2-phase4.mjs",
+      "sha256": "b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8",
+      "bytes": 1143517,
+      "compileMs": 242075,
+      "processWallMs": 242237.125428
+    }
+  ],
+  "exactBytesAllOutputs": true,
+  "benchmarkConsumedInputsUnchanged": true,
+  "scope": "Completed JavaScript self-hosting fixed point and seven native-compiler JavaScript emissions have identical bytes for the same source, canonical Base and runtime. This is not a native-code fixed point. Original incomplete proof snapshot and failed orchestration report remain unchanged."
+}

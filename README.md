@@ -27,6 +27,9 @@ results and remaining limits.
 The [phase 4 development guide](docs/PHASE4_DEVELOPMENT.md) covers checked source
 experiments, bounded profiling and private compiler images; follow the
 [phase 4 report](implementation/phase4/report.md) for measured progress.
+The [experiment workflow](experiments/README.md), [ledger](experiments/ledger.md)
+and [current strategy](experiments/STEERING.md) preserve hypotheses, results,
+rejected approaches and the next tests across development sessions.
 The [experimental native graph host](selfhost/tools/performance/rapid/native-graph.md)
 executes the Bend compiler natively with an explicit module and foreign-asset manifest.
 

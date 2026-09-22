@@ -68,5 +68,7 @@ No production compiler or emitted program was changed by these diagnostics.
 
 The profile archive preserves raw V8 samples, exact emitted output, launch and
 request reports, configurations, profiler tools and consumed-input hashes.
-Archive publication follows the isolated frontend-scheduling measurement window;
-raw observations currently reside in the immutable Phase 4 build directories.
+The [completed archive](residual-profile-evidence/README.md) preserves both raw
+profiles and their exact consumed images/tools in 4,029,395 packed bytes. It was
+created after the isolated frontend-scheduling measurement window; all 25 stored
+objects round-trip to their original bytes and all captured inputs were rehashed.

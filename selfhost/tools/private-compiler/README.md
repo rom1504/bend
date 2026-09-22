@@ -15,6 +15,22 @@ node tools/private-compiler/run.mjs NEW_IMAGE_DIRECTORY \
   /absolute/path/main.bend compile NEW_RESULT_DIRECTORY --cpu=0
 ```
 
+An optional build flag, `--profile=phase4-boolean-stable`, selects the reviewed
+Boolean/stability profile. Omit it, or use `--profile=default`, for the unchanged
+default specialization. The JavaScript builder API calls this option
+`optimizationProfile`; the selected name and all profile generator modules are
+recorded in the image manifest.
+
+The named profile accepts only checked H
+`b33b38e32a263bf78e1d43cf459b7abf9a41d78d112d71a25f87ddba7bd09bf8`,
+the reviewed runtime below and the exact reviewed Boolean/stability bodies.
+A different H fails explicitly, even if only its emitted variable names change;
+use the default profile or complete a fresh review. It preserves the same
+JSON-only worker boundary and does not optimize ordinary public libraries.
+See the [profile evidence](../../../implementation/phase4/private-combined-fixed.md)
+for measured scope, controls and final promotion gates. The ordinary checked B1
+edit loop does not require a private image or this profile.
+
 Supported modes are `parse`, `check`, `compile`, and `library`. `--report` requests
 the ordinary declaration report. `--timeout-ms=N` sets the whole worker deadline
 (default 120 seconds). The optional CPU flag uses Linux `taskset`; omit it on

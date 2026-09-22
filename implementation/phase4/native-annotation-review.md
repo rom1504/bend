@@ -19,3 +19,9 @@ The following tooling gaps were sent to the owner, who is preserving the current
 - The C inspector needed to require the digest-call case to explicitly reference the selected digest-return continuation, rather than selecting a later textual occurrence alone. That connection is present in the actual reviewed C. The owner added this assertion after review, without changing the running measurement tools; the retained earlier C-inspection report keeps its original tool identity.
 
 The benchmark includes splitting/joining and full structural hashing in the component clock. It cannot attribute their combined change solely to annotation parallelism, and the component share supplies no full-compiler speedup promise. Preserve original and corrected tool identities, actual native output equality, worker/CPU configuration and any failed controls before a multicore interpretation.
+
+## Follow-up, 2026-09-22
+
+The owner completed all three tooling corrections before the broader pilot; the [final report](native-annotation.md) and [versioned archive](native-annotation-evidence/manifest.json) retain the changed tools, six refusal controls and positive native smoke. Preparation now captures input buffers before use, checks copied modules against the checked manifest and rechecks afterward; measurement binds oracle/fixture/Base/build identities and refuses empty or unsafe configurations; the C inspector asserts the actual digest-call-to-continuation connection. The retrospective 59-module/source companion remains separate from original historical provenance.
+
+This follow-up acknowledges the archived owner corrections; it does not change the consumed identities or claim another independent execution of those controls. The experiment is now rejected for insufficient useful parallel benefit, with exact-output and failure evidence retained. No production annotation code was promoted.

@@ -9,7 +9,10 @@ Starting compiler revision: `89e2c83`. The design was committed and pushed as
 
 The fastest validated edit loop is a **20.735-second checked B1 rebuild** followed
 by a cold **16.483-second paired 21-case command**; reused validation has a
-**9.328-second median**. Full self-compilation remains an integration gate.
+**9.328-second median**. Four-core [frontend scheduling](frontend-scheduling.md)
+reduces the complete observation gate from **17m16s to 4m59s** (3.47× workflow
+throughput), preserving all exact results and replay histories. Full
+self-compilation remains an integration gate.
 The source changes have passed a checked fixed point, all 2,756 frontend
 observations and the selected native gates. The 560 existing TypeScript
 differences remain; this is not full conformance.
@@ -21,7 +24,9 @@ The candidate ranges from 749.523 to 824.998 seconds, with mean maximum-child RS
 3.16% higher. Its 11.3% core gain therefore becomes a modest whole-source gain.
 See the [complete comparison](private-full-source.md), which retains drift and
 all observations. Final private frontend results also preserve every one of the
-2,756 raw results and verdicts; canonical opt-in packaging is being finalized.
+2,756 raw results and verdicts. Canonical packaging now reproduces both exact
+images and passes 25 unit checks plus seven profile guards; the reviewed
+`--profile=phase4-boolean-stable` option is supported explicitly.
 
 The final [small comparison](private-final-small.md) passes 72/72 observations.
 Private H takes 35.0%/36.9% less request time than public H on successful tree/list
@@ -264,8 +269,24 @@ Build expenses are reported separately.
 The guarded selection and telescope algorithms are integrated; the default
 distributed API has not been replaced. Combined-source checking, checked
 self-reproduction, complete frontend observation preservation and selected
-native validation are complete. Further private-image integration measurements
-and bounded native-annotation/frontend-scheduling experiments remain separate
-from these source gates. The
+native validation are complete. Final private-image gates and opt-in packaging
+also pass. Four-core frontend scheduling is validated; the native annotation
+fork is rejected for an 11.5% component regression in both orders. These
+workflow/private-image experiments retain their separate source and ABI boundaries. The
 [development guide](../../docs/PHASE4_DEVELOPMENT.md), linked from both READMEs,
 documents the checked-overlay and bounded-profiling workflows.
+
+## Residual costs and final bounded experiments
+
+The [new B1/private core profiles](residual-profile.md) use complete, bounded
+10 ms sampling and exact output, with raw profiles and consumed images archived.
+Generic private application remains prominent (28.16% exclusive samples), while
+B1 retains trampoline and string-comparison work. The
+[lowering comparison](residual-architecture.md) connects actual generated code to
+specific hypotheses, without using those samples as a speedup ceiling.
+
+P4-023 counts matcher-family entries and partial records before any rewrite;
+P4-024 tests one guarded native string-equality shortcut in a disposable copy of
+checked B1. Both plans precede execution, preserve the original artifacts and
+label derived JavaScript separately from a new checked bootstrap. Their final
+results will be appended when the bounded gates finish.

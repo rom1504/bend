@@ -83,6 +83,48 @@ Their extractors verify hashes and refuse an existing destination. Restoration
 preserves historical provenance; it does not check new source or fabricate a new
 bootstrap. The archives document canonical Base and original path requirements.
 
+## Run the full frontend gate with four workers
+
+After the focused cases pass, the existing persistent harness can schedule the
+full parse/check inventory across four physical cores. From `selfhost/`, reuse
+the checked API from the edit-loop example, prepare its validated Base cache,
+and freeze the host adapter before starting:
+
+```sh
+export BEND_UPSTREAM="$PWD/.bootstrap/upstream"
+export BEND_BASE="$PWD/.bootstrap/upstream/bend2/base.bend"
+export BEND_TYPED_API="$PWD/build/dev/attempt-01/api.mjs"
+export BEND_TYPED_RUNTIME="$PWD/src/runtime.mjs"
+node --stack-size=4096 --max-old-space-size=4096 tools/typed-driver.mjs --prepare-base
+phase4_adapter="$(node tools/conformance/freeze-adapter.mjs)"
+taskset -c 0,1,2,3 node --stack-size=4096 --max-old-space-size=4096 \
+  tools/conformance/run.mjs --upstream "$BEND_UPSTREAM" \
+  --adapter "$phase4_adapter" --lanes parse,check --jobs 4 \
+  --worker-mode persistent --recycle-after 64 --rss-limit-mb 4096 \
+  --timeout 300000 --stack-kb 4096 --heap-mb 4096 --retain failed \
+  --output build/dev/attempt-01/frontend-01.json
+```
+
+Choose four available physical cores on your machine; `0,1,2,3` is the measured
+machine's mask. All workers share that mask rather than each being pinned to one
+core. Keep the selected API, runtime, Base, fixtures and harness unchanged for
+the whole run. Use a fresh output path. A nonzero harness exit can report
+retained conformance failures; inspect the full report and never reinterpret
+those failures as successful checks. Request deadlines, failed reproductions,
+worker recycling and replay histories still apply.
+
+[P4-021](../implementation/phase4/frontend-scheduling.md) measures a frozen
+historical final B1 with 1,378 fixtures / 2,756 observations and a previously
+validated Base cache. An otherwise-idle serial run took 1,036.017 seconds;
+four-worker runs before and after took 299.376 and 297.699 seconds. That is
+**3.47× full-gate throughput using four cores**, with every raw result, harness
+verdict and worker history verified. The same 377 known failed checks remain
+failed. These measurements exclude a new source bootstrap and do not establish
+correctness of future edits. The command above
+selects your newly checked development API; its report supplies its own inputs
+and outcomes. The experiment's separate prepare/run/compare recipe freezes the
+entire historical harness and verifies every recorded worker history.
+
 ## Profile representative requests
 
 Use the bounded sampling wrapper for small successful programs:
@@ -124,6 +166,17 @@ node --stack-size=4096 selfhost/tools/private-compiler/build.mjs \
 node selfhost/tools/private-compiler/run.mjs NEW_IMAGE_DIRECTORY \
   /absolute/main.bend compile NEW_RESULT_DIRECTORY
 ```
+
+For the reviewed Phase 4 H (`b33b38e3…`), append
+`--profile=phase4-boolean-stable` to the build command to select the tested
+Boolean/stability specialization. It reproduces private image `4318bbcd…`;
+omitting the option retains default `61e7d94c…` for that H. The opt-in profile
+rejects other H revisions and retains the same worker boundary. Its full-source
+comparison found 2.28% lower mean process wall, with visible variation and 3.16%
+higher mean maximum-child RSS. The [final gates](../implementation/phase4/private-frontend-final.md)
+include unchanged frontend observations, exact full H emissions, 25 package
+checks and seven profile guards. This option is independent of the ordinary B1
+edit workflow above.
 
 For a focused group, use one finite batch. This amortizes compiler loading and
 artifact verification while retaining an external deadline for every request:

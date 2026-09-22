@@ -2,9 +2,9 @@
 
 - Owner: direct-calls agent; resource coordination and final review: root.
 - Recorded before launch, 2026-09-22.
-- Correctness: pending focused one/four-worker parity and full inventories.
-- Measurement: pending new serial and four-core workflow observations.
-- Decision: **Investigate**, without compiler/source changes.
+- Correctness: focused parity and all four full inventories passed exact comparison; both full replay-history audits passed.
+- Measurement: idle serial 1,036.017 seconds; four-core brackets 299.376 / 297.699 seconds. Loaded-host serial retained separately.
+- Decision: **Use existing four-worker scheduling** for the full frontend gate when four cores are available; no compiler/source change.
 
 ## Claim and cheapest disproof
 
@@ -37,4 +37,14 @@ fails, preserving evidence before attempting a correction.
 
 Preparation, focused gates and timed runs will be recorded under
 `selfhost/build/phase4/frontend-scheduling/` and archived in a dedicated Phase 4
-report. This record remains pending until those observations exist.
+report. The first serial run finished at 18:26:50.982 UTC: 1,920 pass, 459 observed,
+377 fail, exactly matching the completed B1 reference. All 44 worker lifetimes
+closed with zero worker failures/timeouts; input hashes remained unchanged.
+These counts preserve existing conformance failures.
+
+The first serial run overlapped independent compiler work on the other three
+cores. The idle serial bracket was 9.04% faster and is the primary reference.
+The two four-core runs give 3.47× throughput / 71.18% less wall using increased
+CPU resources. Both preserve all known failures; no conformance pass is implied.
+See the [completed report](../../implementation/phase4/frontend-scheduling.md)
+and its durable archive for all raw observations, worker histories and hashes.

@@ -6,11 +6,11 @@ claim of preregistration.
 - Owner: direct-calls agent; independent review: compact-index agent.
 - Correctness: 48 selected comparison observations, 300 Boolean controls,
   3,786 stability controls, 14 reused-source/import observations and the actual
-  escaped-string fixture pass. Broad frontend and candidate whole-source gates
-  are running; ordinary public APIs are unchanged.
+  escaped-string fixture pass. Final frontend, opposite-order full-source and
+  canonical packaging gates also pass; ordinary public APIs are unchanged.
 - Measurement: three alternating fresh-process rounds on CPU 0, separately
   validated and primed Base caches, exact input/tool identities retained.
-- Decision: **Final observation gates passed; canonical packaging verification pending.**
+- Decision: **Accepted as an explicitly named opt-in profile; default unchanged.**
 - Related: [P4-009](P4-009-stability-memo.md),
   [P4-012](P4-012-boolean-matchers.md),
   [P4-016](P4-016-private-lexical-scope.md).
@@ -71,3 +71,7 @@ base attempt.
 The [complete frontend audit](../../implementation/phase4/private-frontend-final.md) found zero changes across all 2,756 raw candidate results and verdicts versus final B1; the repeated TypeScript reference also matches exactly. It verified 176 worker histories, tool/input identities and the completed public H association. The 377 candidate strict failures remain; this is behavior preservation, not full conformance.
 
 The [four-observation source audit](../../implementation/phase4/private-full-final-evidence/comparison.json) passed all exact-output gates. Candidate process wall improved 3.91% and 0.75% in the pairs; two-sample mean improvement is 2.28%, with mean maximum-child RSS 3.16% higher. The earlier core-only gain is not a whole-source gain. Staged canonical packaging is applied but remains unverified until rebuild, 25 tests and seven profile guards run after the reserved scheduling window.
+
+## Canonical integration verified
+
+The [fresh canonical gate](../../implementation/phase4/private-profile-integration-evidence/report.json) passes 25 unit cases and seven profile guards. Actual canonical builds reproduce default `61e7d94c…` and named `4318bbcd…`; all 59 Bend source modules remain unchanged. A first test-reporting attempt yielded only three file-level records and was rejected rather than counted as 25; its evidence is retained. Explicit nonisolated TAP execution supplies the final 25 individual results. Integration is ready with the exact-H guard and ordinary default retained.

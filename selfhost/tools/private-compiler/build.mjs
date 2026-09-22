@@ -5,10 +5,10 @@ import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {identity,verifyIdentity,writeJson,digest} from './common.mjs';
 import {validateProof} from './proof.mjs';
-import {specializeCompiler} from './transform.mjs';
+import {specializeProfile} from './profiles.mjs';
 export const reviewedRuntimeSha256='26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b';
 export function assertSupportedRuntime(source){if(digest(source)!==reviewedRuntimeSha256)throw Error('Runtime revision has not been reviewed for private projection and argument-ownership invariants');}
-export async function buildPrivateCompiler({proofFile,apiFile,runtimeFile,output,experimental=false}) {
+export async function buildPrivateCompiler({proofFile,apiFile,runtimeFile,output,experimental=false,optimizationProfile='default'}) {
   const started=performance.now();assertSupportedRuntime(fs.readFileSync(runtimeFile));
   const validated=validateProof({proofFile,apiFile,runtimeFile,experimental});
   const out=path.resolve(output);fs.mkdirSync(out,{recursive:false});
@@ -21,7 +21,7 @@ export async function buildPrivateCompiler({proofFile,apiFile,runtimeFile,output
   const initial=await import(pathToFileURL(validated.proof.initialCompiler.file));
   const exports=Object.keys(initial.default);
   if(!exports.includes('f_parse')||!exports.includes('check_book')||!exports.includes('j_library'))throw Error('Incomplete checked seed host API');
-  const transformed=specializeCompiler(original,exports);
+  const transformed=specializeProfile(original,exports,optimizationProfile);
   fs.writeFileSync(path.join(out,'image.mjs'),transformed.source,{flag:'wx'});
   fs.copyFileSync(runtimeFile,path.join(out,'runtime.mjs'));
   fs.copyFileSync(apiFile,path.join(out,'provenance/public-api.mjs'));
@@ -42,14 +42,16 @@ export async function buildPrivateCompiler({proofFile,apiFile,runtimeFile,output
     proof:{...validated.proofIdentity,complete:validated.proof.complete===true,selectedApi:validated.api,initialCompiler:validated.proof.initialCompiler,source:validated.proof.sourceIdentity},
     base:validated.proof.base,runtime:validated.runtime,originalDriver:validated.proof.driver,
     hostRewrite:{only:'project/cache root',originalSha256:digest(driver),copiedSha256:digest(rewritten)},
-    exports,stats:transformed.stats,inputs:validated.inputs,tools:consumedTools,artifacts,
+    exports,optimizationProfile,stats:transformed.stats,inputs:validated.inputs,tools:consumedTools,artifacts,
     node:{...identity(process.execPath),version:process.version},buildMs:performance.now()-started};
   writeJson(path.join(out,'manifest.json'),manifest);
   return {output:out,manifest:path.join(out,'manifest.json'),proofStatus:manifest.proofStatus,imageSha256:identity(path.join(out,'image.mjs')).sha256,buildMs:manifest.buildMs};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href){
  const args=process.argv.slice(2),experimental=args.includes('--experimental');
+ const profileFlags=args.filter(x=>x.startsWith('--profile='));if(profileFlags.length>1)throw Error('Repeated profile option');
+ const optimizationProfile=profileFlags[0]?.slice(10)??'default';
  const positional=args.filter(x=>!x.startsWith('--'));
- if(positional.length!==4||args.some(x=>x.startsWith('--')&&x!=='--experimental'))throw Error('Usage: build.mjs PROOF_JSON CHECKED_H RUNTIME NEW_IMAGE_DIRECTORY [--experimental]');
- console.log(JSON.stringify(await buildPrivateCompiler({proofFile:positional[0],apiFile:positional[1],runtimeFile:positional[2],output:positional[3],experimental})));
+ if(positional.length!==4||args.some(x=>x.startsWith('--')&&x!=='--experimental'&&!x.startsWith('--profile=')))throw Error('Usage: build.mjs PROOF_JSON CHECKED_H RUNTIME NEW_IMAGE_DIRECTORY [--experimental] [--profile=default|phase4-boolean-stable]');
+ console.log(JSON.stringify(await buildPrivateCompiler({proofFile:positional[0],apiFile:positional[1],runtimeFile:positional[2],output:positional[3],experimental,optimizationProfile})));
 }

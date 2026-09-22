@@ -1,6 +1,8 @@
 # Phase 4 structural compiler optimization report
 
-Status: in progress. Authorized window: 2026-09-22, approximately 14:16–20:16 UTC.
+Status: complete. Six-hour optimization campaign: 2026-09-22, approximately
+14:16–20:16 UTC. Final timed experiment finished at 20:08:44; its independent
+audit and durable archive passed before the closing documentation review.
 Design: [structural compiler speed](../../design/phase4/structural_compiler_speed.md).
 Starting compiler revision: `89e2c83`. The design was committed and pushed as
 `4f59f08` before production compiler edits.
@@ -38,10 +40,13 @@ The final [B1 string-equality experiment](b1-native-equality.md) finds a larger,
 separate bottleneck: generic equality reconstructs strings only to discard them.
 A guarded primitive-string path reduces core requests by **35.58% and 35.13%**
 in opposite orders, with 909 helper controls, twelve exact selected observations
-and unchanged complete frontend results. One complete-source run takes
-**348.373 seconds** and emits exactly the proven H. A fresh opposite-order
-full-source comparison is planned as P4-026; the single observation is not its
-performance result. This remains a derivative of one exact checked B1 image,
+and unchanged complete frontend results. The fresh opposite-order
+[full-source comparison](b1-native-equality-full-comparison.md) then reduces
+mean process wall **630.026→339.992 seconds**, or **46.04% less / 1.85× faster**.
+Both pairs improve by about 46%, and all four actual outputs equal proven H.
+Mean peak RSS is 1.56% lower, with per-run variation retained. The earlier
+348.373-second correctness observation is excluded from this comparison.
+This remains a derivative of one exact checked B1 image,
 not a new checked bootstrap or a general optimization for future source edits.
 
 The experiment workflow now follows the useful file-based methodology from
@@ -79,7 +84,7 @@ experiment applies only to its stated source, artifact or worker boundary.
 | P4-022, P4-023: residual profiles and family counts | Completed diagnostic evidence | Samples/counts are not speed estimates |
 | P4-024: native equality in B1 | Correctness gates passed; experimental exact artifact | 35.1–35.6% core gain, unchanged full frontend and full H output |
 | P4-025: narrow saturated substitution workers | Rejected | 7.25%/1.99% core gains fail the consistent-5% threshold |
-| P4-026: B1 equality full-source comparison | In progress under a fixed deadline | Fresh opposite-order comparison, separate from the prior correctness run |
+| P4-026: B1 equality full-source comparison | Completed; performance hypothesis passes | All four exact H outputs, 45.99%/46.08% less process wall; exact-artifact scope remains |
 
 The [next lowering design](../../design/phase4/next_compiler_lowering.md) records
 the remaining architectural questions and their cheapest falsifiers. General
@@ -347,8 +352,13 @@ and exact complete-source emission. The selected request gain is 35.35% by the
 two-pair core mean, with lower observed peak RSS. Both the actual derived image
 and its ordinary checked seed are preserved with honest provenance. The
 [frontend archive](b1-native-equality-frontend.md) preserves all 2,756 observations,
-45 worker histories and 1,494 input mappings. P4-026 measures full-source speed
-separately rather than deriving it from the profile or selected benchmark.
+45 worker histories and 1,494 input mappings. [P4-026](b1-native-equality-full-comparison.md)
+measures full-source speed separately: control/candidate/candidate/control
+process times are 628.273 / 339.318 / 340.665 / 631.779 seconds. Every request
+checks successfully, emits the actual proven H bytes and preserves all captured
+inputs. The comparison completes at 20:08:44 UTC, before its 20:09 deadline.
+Two pairs support this bounded result, not a confidence interval or an automatic
+optimization of arbitrary future checked builds.
 
 ## What improved, and what remains expensive
 
@@ -365,8 +375,8 @@ complete source and library-root policy, the recorded process measurements are:
 | --- | ---: | ---: | --- |
 | Pinned TypeScript | 51.443 s | 1.00× | Three-run median |
 | Bend source, native O2 | 245.364 s | 4.77× | New-compiler median in three alternating pairs |
-| Experimental equality B1 | 348.373 s | 6.77× | One exact-output gate; controlled comparison separate |
-| Ordinary checked B1 | 670.766 s | 13.04× | Checked fixed-point first stage |
+| Experimental equality B1 | 339.992 s | 6.61× | Two-run mean in the four-row controlled equality comparison |
+| Ordinary checked B1 | 630.026 s | 12.25× | Two-run control mean in that same comparison |
 | Optional private H profile | 787.260 s | 15.30× | Two-run mean in the four-row private comparison |
 | Public Bend-emitted H | 1,591.343 s | 30.93× | Checked fixed-point second stage |
 

@@ -188,3 +188,36 @@ checks, with all competing compiler work stopped. Its absolute 20:09 deadline
 leaves time to retain any incomplete comparison before the 20:16 campaign end.
 Archive and review the completed gates in parallel; do not launch another
 optimization or source edit during this final measurement.
+
+## Controlled full-source equality result — 2026-09-22, 20:09 UTC
+
+[P4-026](../implementation/phase4/b1-native-equality-full-comparison.md) completes
+all four planned observations at 20:08:44, before the unchanged 20:09 deadline.
+Control/candidate/candidate/control process times are 628.273 / 339.318 /
+340.665 / 631.779 seconds. Both opposite-order pairs pass the preregistered
+request and process thresholds: process reductions are 45.99% and 46.08%.
+Means are 630.026→339.992 seconds, **46.04% less time / 1.85× faster**. Every
+actual H output and captured input agrees exactly. Mean peak RSS is 1.56% lower;
+per-run values remain visible, including the slightly higher second candidate.
+
+This establishes a material complete-source gain for the exact derived B1.
+It does not promote arbitrary future builds, change the default distribution,
+establish faster emitted programs, or turn a derived JavaScript artifact into
+a newly checked bootstrap. The original single correctness observation remains
+outside the four-row comparison. The consumed preregistration file is preserved
+unchanged, with results in the dedicated report rather than appended to it.
+
+### Updated frontier
+
+The six-hour pass has finished compiler experiments and independent archive
+review. The final comparison preserves 259 file identities in 120 verified
+compressed objects. No compiler job remains running. The established loop is
+a checked B1 rebuild, targeted persistent
+witnesses, then four-core broad regression and justified source self-reproduction.
+
+For later work, first make equality portable across genuinely new checked builds
+without false provenance or an H regression. The new lowering design compares
+the artifact and source routes. Shared identifier/index counts remain a useful
+algorithm investigation; the narrow worker's rejected result still constrains
+larger lowering proposals. Conformance work can already use the seconds-scale
+focused loop while retaining the 560 known upstream differences explicitly.

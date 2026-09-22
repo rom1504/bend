@@ -1,7 +1,6 @@
 # Phase 4 preservation index
 
-Updated through **P4-025**, 2026-09-22, approximately 19:41 UTC. P4-026 is pending
-and needs a separate append after its run and audit finish. Preservation is
+Updated through **P4-026**, 2026-09-22, approximately 20:11 UTC. Preservation is
 separate from correctness, performance and promotion. New files become durable
 history with the root's checkpoint; an ignored build path or checksum alone is
 not stored evidence.
@@ -16,6 +15,7 @@ not stored evidence.
 | P4-024 complete frontend and full-source gates | [Frontend archive](../implementation/phase4/b1-native-equality-frontend-evidence/README.md), [full-source archive](../implementation/phase4/b1-native-equality-full-evidence/README.md) | Complete raw results, failures, real histories, actual emitted H, original proofs/source and audited consumed inputs. Both archives verify actual member paths and bytes. |
 | Earlier private helper versions | [Preservation objects](../implementation/phase4/preservation-evidence/manifest.json) | 123 historical references to 48 deduplicated small source objects, including pre-fix versions. Exact scope and unresolved gaps remain below. |
 | Rejected substitution workers, P4-025 | [P4-025 objects](../implementation/phase4/private-substitution-evidence/README.md) | 142 labels / 70 objects preserve all three controls, comparison, original/candidate images and historical test-source revisions. Rejection remains a rejection. |
+| Controlled full-source B1 equality comparison, P4-026 | [Comparison archive](../implementation/phase4/b1-native-equality-full-comparison-evidence/README.md) | 259 historical file identities / 120 objects preserve all four successful runs, actual H outputs, configurations, equal Base payloads, original checked provenance and immutable preregistration. The independent audit verifies actual restored bytes and both paired reductions. |
 
 From the repository root, the two portable capsule extractors verify their
 compressed and restored hashes, sizes and historical proof inventories before

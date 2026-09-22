@@ -1,10 +1,9 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-22, 19:33 UTC, after derived-B1 exact source emission
-and the substitution-worker rejection.
-Next review: each P4-026 full-source comparison row, then the completed comparison.
-Authorized work window ends approximately 20:16 UTC. Complete other evidence and
-documentation while the final comparison runs; stop it by 20:09 for final review.
+Evidence cutoff: 2026-09-22, 20:09 UTC, after all four P4-026 observations pass.
+Next review: read the completed report before any new optimization investigation.
+The authorized six-hour window ends approximately 20:16 UTC. Compiler work,
+independent archival and code review are complete; no experiment is active.
 
 ## User objective
 
@@ -51,8 +50,11 @@ The routes below are investigator choices, not additional user requirements.
   reproduces the exact default/profile images and passes 25 cases/seven guards.
 - Guarded B1 equality passes 909 helper controls, twelve selected observations,
   the full frontend sweep and an exact whole-source H emission. Opposite-order
-  core gains are 35.58%/35.13%. The 348.373-second full-source observation needs a
-  fresh controlled comparison before making a whole-source speedup claim.
+  core gains are 35.58%/35.13%. The subsequent fresh P4-026 full-source comparison
+  reduces mean wall 630.026→339.992 seconds, 46.04% less / 1.85× faster. Both
+  opposite-order pairs improve about 46%; all four outputs are exact H. Mean
+  peak RSS is 1.56% lower, but the second candidate is slightly higher than its
+  control. This remains an exact-artifact derivative, not a new checked build.
 - The counted substitution family is frequent, but its narrow saturated-worker
   prototype improves the core by 7.25% then 1.99%. Reject it at the preregistered
   consistent-5% threshold despite 157 semantic controls and four exact outputs.
@@ -61,16 +63,15 @@ The routes below are investigator choices, not additional user requirements.
 
 | Rank | Route | Cheapest useful test | Stop or promotion criterion |
 | --- | --- | --- | --- |
-| 1 | Measure whole-source B1 equality gain | Fresh control/candidate/candidate/control emissions on CPU2 | All exact H, unchanged inputs, both request/process pairs improve >5%; stop by20:09 |
-| 2 | Complete durable evidence and final report | Archive latest gates and rejected worker, review links/identities | Preserve actual artifacts and failures; state experimental/default boundaries |
-| 3 | Generalize equality safely in a later investigation | Define a checked-build transformation contract valid across changed sources | Exact-body/full-provenance guard, Unicode/error controls, no invented bootstrap |
-| 4 | Investigate shared identifier/index costs later | Separate tag tests, name hashes and list membership counts | Count before migration; do not reintroduce rejected eager suffix indexing |
-| 5 | General typed workers/constructor continuations later | Explain why a broader lowering overcomes the P4-025 null before implementation | Demand/error/deep-stack controls, real-core threshold, then broad gates |
+| 1 | Generalize equality safely in a later investigation | Compare an explicit derived-build contract with a compiler-local Bend predicate | Genuine checked provenance, Unicode/error controls, no regression of H's existing intrinsic |
+| 2 | Use the established fast loop for conformance work | Focused exact witnesses for one existing mismatch, then the four-core regression gate | Preserve phase/diagnostic distinctions and require backend witnesses for backend edits |
+| 3 | Investigate shared identifier/index costs | Separate tag tests, name hashes and list membership counts | Count before migration; do not reintroduce rejected eager suffix indexing |
+| 4 | General typed workers/constructor continuations | Explain why a broader lowering overcomes the P4-025 null before implementation | Demand/error/deep-stack controls, real-core threshold, then broad gates |
 
-P4-026 is the final timed experiment. Its plan was committed before execution,
-with an absolute deadline that leaves time to preserve incomplete results if
-necessary. All other compiler execution is stopped while it runs. The P4-024
-single full-source correctness observation is excluded from its paired samples.
+P4-026 completed at 20:08:44, before its unchanged 20:09 deadline. Its consumed
+plan stays immutable; the outcome is linked from the ledger and dedicated report.
+No other intentional compiler work overlapped the four samples. The P4-024
+single full-source correctness observation is excluded from these paired samples.
 Do not add percentage gains from overlapping transformations, and do not equate
 profile samples with an achievable whole-compiler speedup.
 
@@ -91,10 +92,10 @@ profile samples with an achievable whole-compiler speedup.
 ## Assignment and resource state
 
 Root owns strategy, evidence archives, documentation, commits and pushes.
-Direct-calls agent archives the derived full-source correctness gate.
-Compact-index prepares the final B1 full-source comparator. Lexer-analysis
-archives the rejected substitution-worker experiment. Root owns the final
-comparison on CPU2 and final documentation. All 59 production modules and the
+Direct-calls completed full-source/frontend archives and preservation indexing.
+Compact-index completed the final comparison audit and archive. Lexer-analysis completed
+the rejected worker, independent code review and equality follow-on design.
+No compiler job is running. All 59 production modules and the
 checked source remain frozen. Timing still has shared cache/memory and operating
 system effects; "no competing compiler experiment" is not OS isolation.
 

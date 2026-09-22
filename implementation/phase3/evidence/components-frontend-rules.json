@@ -1,0 +1,592 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Focused frontend acceptance and rejection-phase regression witnesses",
+  "revision": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+  "started": "2026-09-22T06:15:17.504Z",
+  "node": "v24.18.0",
+  "execArgv": [
+    "--stack-size=4096",
+    "--max-old-space-size=4096"
+  ],
+  "artifact": {
+    "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs",
+    "apiSha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",
+    "checkedIntegrationReportSha256": "0d9683516b3e2cc4a566ddbda40ef3800f39cf30d6472ac1bda0f5147dd9a412",
+    "runtimeSha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+    "driverSha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+    "checkedSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+      "sha256": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772"
+    }
+  },
+  "results": [
+    {
+      "id": "law-fill-changed-type",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-fill-changed-type.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\nlaw main:\n  U32\ndef main() -> Nat:\n  0n\n",
+      "sourceSha256": "c719b4e236725a698a2092eeab3915ab3d0da56a236e6666407386e3523d348f",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : '-'\nLocation:\n3 |   U32\n4>| def main() -> Nat:\n5 |   0n",
+        "ms": 164.26801899999998
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 4:11: expected : (a definition filling a law has no return annotation); got ->",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-fill-changed-type.bend",
+        "ms": 96.22710100000006
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "law-fill-same-type",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-fill-same-type.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\nlaw main:\n  U32\ndef main() -> U32:\n  0\n",
+      "sourceSha256": "8fadb0c13d1a05420ebb32ab5817aa886c7cbec9778ed9361e1c2d53c99d5855",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : '-'\nLocation:\n3 |   U32\n4>| def main() -> U32:\n5 |   0",
+        "ms": 87.64826300000004
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 4:11: expected : (a definition filling a law has no return annotation); got ->",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-fill-same-type.bend",
+        "ms": 87.74823900000001
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "law-fill-plain",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-fill-plain.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "source": "import Base\nlaw main:\n  U32\ndef main():\n  0\n",
+      "sourceSha256": "40b70a9a39dfcf734b37fa7494d09826cef22c01e2ff7deea37bf8426516eaa2",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 271.07607600000006
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-fill-plain.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 904.38147
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "new-typed-definition",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/new-typed-definition.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "source": "import Base\ndef main() -> U32:\n  0\n",
+      "sourceSha256": "b72769b7d7875aae09f79b29fd9dd995493baeb595bd4dd1b2cc2b6e21575b8d",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 180.30079100000012
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/new-typed-definition.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 707.022915
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "law-template-late",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-template-late.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\nlaw choose:\n  for x: U32\n  for ~n: U32\n  U32\ndef choose(x, n):\n  x\ndef main() -> U32:\n  choose(7, 3)\n",
+      "sourceSha256": "c173e8f11d2165d854bc92d2272898fb68b661f7e293b844695ee7de92360ee1",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for x: U32\n4>|   for ~n: U32\n5 |   U32",
+        "ms": 91.81926999999996
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 4:6: expected a plain clause (only leading clauses take ~); got ~",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-template-late.bend",
+        "ms": 84.18045600000005
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "law-template-after-erased",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-template-after-erased.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\nlaw choose:\n  for -A: Type\n  for ~n: U32\n  for x: U32\n  U32\ndef choose(A, n, x):\n  x\ndef main() -> U32:\n  choose(U32, 3, 7)\n",
+      "sourceSha256": "c3843c1538a7a98376bb4936e8201a5c9296f5b30f5802bbd8e02796e36892c1",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for -A: Type\n4>|   for ~n: U32\n5 |   for x: U32",
+        "ms": 43.42725999999993
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 4:6: expected a plain clause (only leading clauses take ~); got ~",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-template-after-erased.bend",
+        "ms": 81.94214099999999
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "law-template-leading",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-template-leading.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "source": "import Base\nlaw choose:\n  for ~n: U32\n  for x: U32\n  U32\ndef choose(n, x):\n  (n + x : U32)\ndef main() -> U32:\n  choose(3, 7)\n",
+      "sourceSha256": "c2ef204c77987824e50370f57f1332df6c352c372d2b375f7e1e32f55ff086ff",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 149.37445500000013
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/law-template-leading.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 840.0605109999997
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "local-call-pattern",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/local-call-pattern.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\ndef f(x: U32) -> U32:\n  x\ndef main() -> U32:\n  f(1) = {3 : U32}\n  0\n",
+      "sourceSha256": "4ba62de772333ae470894293d71a45c567ab1f07c1f993ff335d9ab1a563115f",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a pattern (a binder or a constructor)\n- observed : f(1)\nLocation:\n4 | def main() -> U32:\n5>|   f(1) = {3 : U32}\n6 |   0",
+        "ms": 89.58837400000084
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: expected a binder or constructor pattern",
+        "exitCode": 1,
+        "checked": false,
+        "ms": 204.71629500000017
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "local-binder",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/local-binder.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "source": "import Base\ndef main() -> U32:\n  x = {3 : U32}\n  x\n",
+      "sourceSha256": "851b83d46b20d760c68393bb2328217182417482c10fc593131d69d21daeab72",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 215.96796900000027
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/local-binder.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 515.5109819999998
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "local-constructor",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/local-constructor.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "source": "import Base\ntype Box is Data:\n  Box{value: U32}\ndef unbox(b: Box) -> U32:\n  Box{x} = b\n  x\ndef main() -> U32:\n  unbox(Box{3})\n",
+      "sourceSha256": "3a3489939f779fe0075a2eae76baa54fb4993a043eebe212da745af5f174944b",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 168.91248600000017
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/local-constructor.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 573.618512
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "import-late-existing",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-late-existing.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\ndef zero() -> U32:\n  0\nimport Base\ndef main() -> U32:\n  zero\n",
+      "sourceSha256": "870dfa8d35ceea10fe849dd4a6066860b26acea86d456d6cf72661a938cd7a77",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   0\n4>| import Base\n5 | def main() -> U32:",
+        "ms": 31.74067399999967
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 4:0: expected def, law or type; imports must precede declarations; got import",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-late-existing.bend",
+        "ms": 79.01026499999989
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "import-leading",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-leading.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "source": "# Leading imports remain legal after comments.\nimport Base\n\ndef zero() -> U32:\n  0\ndef main() -> U32:\n  zero\n",
+      "sourceSha256": "4a3a4e459750cec9a619cb3fe294d7d4f62adde78b3b278e408821283fa3086c",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 89.95888599999944
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-leading.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 534.5822790000002
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "import-after-law",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-after-law.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\nlaw zero:\n  U32\nimport Base\ndef zero():\n  0\ndef main() -> U32:\n  zero\n",
+      "sourceSha256": "b72b619379747e1009145d9106d5c7e54f60abe2b611be6778d44d147802a842",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   U32\n4>| import Base\n5 | def zero():",
+        "ms": 40.87661399999979
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 4:0: expected def, law or type; imports must precede declarations; got import",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-after-law.bend",
+        "ms": 83.15138999999999
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "import-after-type",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-after-type.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\ntype Bit is Data:\n  On{}\nimport Base\ndef main() -> U32:\n  0\n",
+      "sourceSha256": "3ae3c5aa9a0517ea10968b2dd69341260f2e3da04dd6070c0d7a3ad5fc39be80",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a name (got the keyword 'import')\n- observed : ' '\nLocation:\n3 |   On{}\n4>| import Base\n5 | def main() -> U32:",
+        "ms": 65.34797199999957
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 4:0: expected def, law or type; imports must precede declarations; got import",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-after-type.bend",
+        "ms": 105.79148900000018
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "import-after-decorator",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-after-decorator.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "@unsafe\nimport Base\ndef main() -> U32:\n  0\n",
+      "sourceSha256": "bdd2c2bc69553d0be990e689f624bde0f077ef81b2e146e4f0d07c16d3551280",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'i'\nLocation:\n1 | @unsafe\n2>| import Base\n3 | def main() -> U32:",
+        "ms": 0.5336729999999079
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 2:0: expected def after @unsafe; got import",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-after-decorator.bend",
+        "ms": 77.97191300000031
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "import-after-foreign",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-after-foreign.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\ndef foreign() -> U32:\n  import \"unused.js\"\nimport Base\ndef main() -> U32:\n  0\n",
+      "sourceSha256": "bc277ab2983d26123b30f74b54ec7ebb9cab5e5554696c86450b29aef71bbcc2",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : '\"'\n- observed : 'B'\nLocation:\n3 |   import \"unused.js\"\n4>| import Base\n5 | def main() -> U32:",
+        "ms": 22.495898000000125
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: foreign import requires a quoted .c or .js path",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-after-foreign.bend",
+        "ms": 78.84200299999975
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "import-leading-repeated",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-leading-repeated.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "source": "import Base\n# An additional leading import remains legal.\nimport Base\ndef main() -> U32:\n  0\n",
+      "sourceSha256": "5f7f073543a0ee23f6a0920df913483a2ed0a35fbef5fd387dd65720cc3550ac",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 76.39597700000013
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/import-leading-repeated.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 489.9339660000005
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "leading-unsafe-definition",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/leading-unsafe-definition.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "source": "import Base\n@unsafe\ndef main() -> U32:\n  0\n",
+      "sourceSha256": "122726c03542cbeb5a89c8416bc413e2d133564ed37ffe4562974c5f61dde6fb",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 89.21006699999998
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/leading-unsafe-definition.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 568.5774650000003
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "local-constructor-nested",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/local-constructor-nested.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "source": "import Base\ntype Box is Data:\n  Box{value: U32}\ntype Outer is Data:\n  Outer{inner: Box}\ndef unbox(b: Outer) -> U32:\n  Outer{Box{x}} = b\n  x\ndef main() -> U32:\n  unbox(Outer{Box{3}})\n",
+      "sourceSha256": "4079feafc7e1381e53286fb50dada25103f074151655c233318f147264e9c219",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 99.8106859999989
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/local-constructor-nested.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 797.2866120000017
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "local-constructor-braces-required",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/local-constructor-braces-required.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\ntype Bit is Data:\n  On{}\ndef main() -> U32:\n  On = {3 : U32}\n  0\n",
+      "sourceSha256": "881e307e4e3fad2c6ae669be412f238733d50803863ed0e218a3eef7bc2a2f12",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On = {3 : U32}\n6 |   0",
+        "ms": 50.06278700000075
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: a constructor pattern requires braces: On",
+        "exitCode": 1,
+        "checked": false,
+        "ms": 232.02974799999902
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "local-constructor-field-count",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-rules/local-constructor-field-count.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "source": "import Base\ntype Box is Data:\n  Box{value: U32}\ndef unbox(b: Box) -> U32:\n  Box{x, y} = b\n  0\ndef main() -> U32:\n  0\n",
+      "sourceSha256": "a359dd1c2e9f90639253064a65f5ba30ae72c8ce5bc560ee28d5b0e9040e7484",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- message  : a Box pattern with 1 field\nLocation:\n4 | def unbox(b: Box) -> U32:\n5>|   Box{x, y} = b\n6 |   0",
+        "ms": 31.86106800000016
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: constructor pattern field count differs: Box",
+        "exitCode": 1,
+        "checked": false,
+        "ms": 217.70031899999958
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    }
+  ],
+  "finished": "2026-09-22T06:15:27.243Z",
+  "changedArtifacts": [],
+  "pass": true,
+  "archive": {
+    "sourceReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/phase2-rules.json",
+    "sourceReportSha256": "3443d44ead8f89dea1c031fe388985ac308183db4bec0b7d2c49d0401c292495"
+  }
+}

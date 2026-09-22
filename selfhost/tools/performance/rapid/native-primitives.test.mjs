@@ -2,7 +2,8 @@ import fs from 'node:fs';import os from 'node:os';import path from 'node:path';
 import assert from 'node:assert/strict';import {pathToFileURL} from 'node:url';
 import {primitiveExpressions,transformNativePrimitives} from './native-primitives.mjs';
 import {transformPositionalWorkers} from './positional-workers.mjs';
-const runtime=fs.readFileSync(new URL('../../../dist/phase1/runtime.mjs',import.meta.url),'utf8');
+const runtimeFile=process.env.BEND_NATIVE_RUNTIME?path.resolve(process.env.BEND_NATIVE_RUNTIME):new URL('../../../dist/phase1/runtime.mjs',import.meta.url);
+const runtime=fs.readFileSync(runtimeFile,'utf8');
 let definitions='\nconst events=[];\n';
 for(const [name,[arity]] of Object.entries(primitiveExpressions))definitions+=`G[${JSON.stringify('test_'+name)}]=fn(${arity},function(a){return call(get(G,${JSON.stringify(name)}),[a[0]${arity===2?',a[1]':''}]);});\n`;
 definitions+=`

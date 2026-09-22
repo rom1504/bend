@@ -1,0 +1,137 @@
+--- a/src/check/kernel.bend
++++ b/src/check/kernel.bend
+@@ -1035,6 +1035,10 @@
+ 
+ @unsafe
+ def check_events(todo, done):
++  kc(String, cs_worth(todo, 256), u => kc(String, cs_plain(todo), u => cs_run_plan(cs_plan(todo), done), u => cs_legacy_events(todo, done)), u => cs_legacy_events(todo, done))
++
++@unsafe
++def cs_legacy_events(todo, done):
+   match todo:
+     case Nil{}:
+       check_open(done)
+@@ -1091,7 +1095,7 @@
+ 
+ @unsafe
+ def check_event_done(rest, done, d, err):
+-  kc(String, String.eq(err, ""), u => check_events(rest, book_put(done, d)), u => String.append(dn(d), String.append(": ", err)))
++  kc(String, String.eq(err, ""), u => cs_legacy_events(rest, book_put(done, d)), u => String.append(dn(d), String.append(": ", err)))
+ 
+ @unsafe
+ def check_definition(book, d):
+@@ -1194,3 +1198,114 @@
+ def check_template_open(book, d, ty, body, lhs, n, name):
+   check_template_definition(book_put(book, KDef{name, "Def", 0, 0, kid(ty, 0), atom("Absent"), Nil{}, True{}, False{}}), d, subst(kid(ty, 1), ix(ty), ref(name)), kapply(body, ref(name)), app(lhs, ref(name)), U32.sub(n, 1))
+ 
++
++# Precompute the nearest later definition in one indexed reverse traversal.
++# The original declaration and check mode remain separate so the event ledger
++# and error order are identical to the ordinary sequential checker.
++type KCheckEvent is Data:
++  KCheckEvent{+original: KDef, +mode: KDef}
++type KCheckPlan is Data:
++  KCheckPlan{+events: List<&2,KCheckEvent>, +later: KDef}
++
++law cs_plain:
++  for +todo: List<&2,KDef>
++  Bool
++
++law cs_legacy_events:
++  for +todo: List<&2,KDef>
++  for +done: List<&2,KDef>
++  String
++
++law cs_plan:
++  for +todo: List<&2,KDef>
++  KCheckPlan
++
++law cs_plan_cons:
++  for +d: KDef
++  for +plan: KCheckPlan
++  KCheckPlan
++
++law cs_mode:
++  for +d: KDef
++  for +later: KDef
++  KDef
++
++law cs_run_plan:
++  for +plan: KCheckPlan
++  for +done: List<&2,KDef>
++  String
++
++law cs_events:
++  for +events: List<&2,KCheckEvent>
++  for +done: List<&2,KDef>
++  String
++
++law cs_event:
++  for +event: KCheckEvent
++  for +rest: List<&2,KCheckEvent>
++  for +done: List<&2,KDef>
++  String
++
++law cs_guard:
++  for +d: KDef
++  for +mode: KDef
++  for +rest: List<&2,KCheckEvent>
++  for +done: List<&2,KDef>
++  for +error: String
++  String
++
++law cs_checked:
++  for +d: KDef
++  for +rest: List<&2,KCheckEvent>
++  for +done: List<&2,KDef>
++  for +error: String
++  String
++
++@unsafe
++def cs_plain(todo):
++  match todo:
++    case Nil{}: True{}
++    case Con{head, rest}: Bool.not(String.eq(dk(head), "BookCache")) && cs_plain(rest)
++@unsafe
++def cs_plan(todo):
++  match todo:
++    case Nil{}: KCheckPlan{Nil{}, missing()}
++    case Con{d, rest}: cs_plan_cons(d, cs_plan(rest))
++@unsafe
++def cs_plan_cons(d, plan):
++  match plan:
++    case KCheckPlan{events, later}:
++      KCheckPlan{Con{KCheckEvent{d, cs_mode(d, later)}, events}, index_set(later, d, index_hash(dn(d), 2166136261), 32)}
++@unsafe
++def cs_mode(d, later):
++  kc(KDef, String.eq(dk(d), "Def") && String.eq(tg(dv(d)), "Absent") && Bool.not(du(d)), u => signature_fill_mode(d, index_find(later, dn(d), index_hash(dn(d), 2166136261), 32)), u => d)
++@unsafe
++def cs_run_plan(plan, done):
++  match plan:
++    case KCheckPlan{events, later}: cs_events(events, done)
++@unsafe
++def cs_events(events, done):
++  match events:
++    case Nil{}: check_open(done)
++    case Con{event, rest}: cs_event(event, rest, done)
++@unsafe
++def cs_event(event, rest, done):
++  match event:
++    case KCheckEvent{d, mode}: cs_guard(d, mode, rest, done, event_error(done, d, lookup(done, dn(d))))
++@unsafe
++def cs_guard(d, mode, rest, done, error):
++  kc(String, String.eq(error, ""), u => cs_checked(d, rest, done, check_definition(book_put(done, declared(d)), mode)), u => dn(d) ++ ": " ++ error)
++@unsafe
++def cs_checked(d, rest, done, error):
++  kc(String, String.eq(error, ""), u => cs_events(rest, book_put(done, d)), u => dn(d) ++ ": " ++ error)
++
++law cs_worth:
++  for +todo: List<&2,KDef>
++  for +left: U32
++  Bool
++@unsafe
++def cs_worth(todo, left):
++  match todo:
++    case Nil{}: U32.is_eq(left, 0)
++    case Con{d, rest}:
++      kc(Bool, U32.is_eq(left, 0), u => True{}, u => cs_worth(rest, kc(U32, String.eq(dk(d), "Def") && String.eq(tg(dv(d)), "Absent") && Bool.not(du(d)), u => U32.sub(left, 1), u => left)))

@@ -30,6 +30,22 @@ test('self-host proof records Base and actual-driver helper identities for every
     const resumed=f.run({BEND_SELFHOST_RESUME:'3'});assert.equal(resumed.status,0,resumed.stderr);assert.equal(f.report().complete,true);
   }finally{f.close();}
 });
+test('Linux self-host resource gate reads the actual process stack limit',{skip:process.platform!=='linux'},()=>{
+  const line=fs.readFileSync('/proc/self/limits','utf8').split('\n').find(line=>line.startsWith('Max stack size'));
+  const soft=line.trim().split(/\s+/)[3];
+  const f=fixture();try{
+    // The driver is a fixed-point fixture; this tests resource admission only.
+    const requested=soft==='unlimited'?4096:Math.max(1,Math.floor(Number(soft)/2048));
+    const accepted=f.run({BEND_SELFHOST_STACK_KB:String(requested)});assert.equal(accepted.status,0,accepted.stderr);
+    assert.equal(f.report().resourceConfiguration.osStackKB,soft==='unlimited'?'unlimited':String(Number(soft)/1024));
+  }finally{f.close();}
+  if(soft!=='unlimited'){
+    const rejected=fixture();try{
+      const result=rejected.run({BEND_SELFHOST_STACK_KB:String(Math.floor(Number(soft)/2048)+1)});
+      assert.notEqual(result.status,0);assert.equal(fs.existsSync(rejected.file('result/report.json')),false);
+    }finally{rejected.close();}
+  }
+});
 for(const [name,label] of [['base.bend','Base'],['compiler-abi.mjs','host helper']])test('self-host rejects '+label+' drift during a stage',()=>{
   const f=fixture();try{
     const result=f.run({MUTATE_INPUT:f.file(name)});assert.notEqual(result.status,0);

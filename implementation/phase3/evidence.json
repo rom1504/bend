@@ -18,7 +18,9 @@
     "src/runtime/js/core.mjs": "cd9641ecd4a54d4b0c0c4a9bbbaec4208ff053f5d1226868aca58995cdcefc21",
     "src/runtime/js/base.mjs": "9ccfa9c8db7abd1a08520f0df27feb2b3163fd9d2929bf4db8dcbe5de9015eb3",
     "src/runtime.mjs": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
-    "src/load/modules.bend": "5c7c19a5d75779ae3e81a44b4ab387c782cd32cf9eb5b20c02e5bede153f85c0"
+    "src/load/modules.bend": "5c7c19a5d75779ae3e81a44b4ab387c782cd32cf9eb5b20c02e5bede153f85c0",
+    "src/back/native/book.bend": "56c161c2c0bd33ddb66d239a4283081331e98bf4112ceaebd1d3c76db14bb23e",
+    "src/back/native/erase.bend": "11fba4f16ef4de786f68076bafbc356c139fa953c22342c9557efe8b26936be1"
   },
   "measurements": {
     "b1SourceCheck": {
@@ -61,6 +63,15 @@
       "arity128BaselineMs": 2256.099,
       "arity128CandidateMs": 24.421,
       "scope": "Synthetic annotation component; not complete compilation."
+    },
+    "nativeContext": {
+      "report": "implementation/phase3/evidence/native-context.json",
+      "exactComparisons": 165,
+      "checkedByteIdenticalCOutputs": 3,
+      "definitions": 1024,
+      "baselineMedianMs": 1692.69,
+      "candidateMedianMs": 85.78,
+      "scope": "Synthetic context merge including index construction; no whole-compiler or native runtime claim."
     }
   },
   "validation": {
@@ -68,11 +79,46 @@
     "persistentExactObservation": true,
     "runtimeDemandOrder": true,
     "componentHarnessSubset": "passed",
-    "fullHFixedPoint": "pending after integrated Phase 3 source changes",
+    "fullHFixedPoint": "running on frozen combined source/API/runtime/host",
     "fullConformance": "pending",
     "nativeCacheFixture": "passed: miss/hit, included header, optimization, compiler executable, lock, corrupted binary",
-    "actualClangCache": "pending: Clang unavailable",
+    "actualClangCache": "running with repository-local Clang16",
     "diagnosticExactAssertions": 204,
-    "persistentAndTargetedTests": 19
+    "persistentAndTargetedTests": 19,
+    "components": {
+      "report": "implementation/phase3/components.md",
+      "originalMainSuitesPassed": 26,
+      "originalMainSuites": 30,
+      "supplements": "Equivalent non-socket semantic assertions passed with explicit harness adaptations",
+      "nativeProgramsBuiltAndRun": 22,
+      "pairedFrontendWitnesses": 46,
+      "unvalidated": [
+        "TCP",
+        "UDP"
+      ]
+    }
+  },
+  "integratedCandidate": {
+    "apiSha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",
+    "sourceSha256": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772",
+    "buildReport": "implementation/phase3/evidence/native-context-integration-build.json",
+    "provenanceLimitation": "Prior bootstrap metadata supplied module/export lists but was not itself drift-checked; actual modules/roots are recorded."
+  },
+  "experiments": {
+    "scalar": {
+      "report": "implementation/phase3/scalar-reassessment.json",
+      "productionEligible": false,
+      "reason": "Primitive code accessor changes observable exception behavior"
+    },
+    "signatureIndex": {
+      "report": "implementation/phase3/signature-index.md",
+      "integrated": false,
+      "reason": "One 8% real-source check gain; eager planning adds early-error work"
+    },
+    "emission": {
+      "report": "implementation/phase3/emission-analysis.md",
+      "integrated": false,
+      "reason": "No consistent joining gain; closed type fact cache needs realistic Bend implementation evidence"
+    }
   }
 }

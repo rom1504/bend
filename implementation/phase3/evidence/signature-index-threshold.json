@@ -1,0 +1,537 @@
+{
+  "kind": "bend-signature-index-differential",
+  "scope": "Checked Bend overlay against frozen B1. Exact event modes, positive/negative checker text; timings include planning plus all checker work on synthetic law/fill books.",
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/api/b1.mjs",
+    "sha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6"
+  },
+  "toolSha256": "0cdff07946016a3e1995a64559453acaea3ebc39f087e26d49527f6639410892",
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/signature-build-threshold/api.mjs",
+    "sha256": "5ebe9f68a7eeb1c4f0bfdfca7bfb3502216adffba482b202f68666850e37be52"
+  },
+  "node": "v24.18.0",
+  "rows": [
+    {
+      "n": 64,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 81.65703900000005
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 82.049577
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 61.66676899999993
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 61.31847800000003
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 87.58389
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 83.71202499999993
+        }
+      ]
+    },
+    {
+      "n": 128,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 120.63824399999999
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 120.1976430000002
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 90.44883300000038
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 89.83403500000031
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 86.90493300000026
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 87.49940199999992
+        }
+      ]
+    },
+    {
+      "n": 256,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 241.78008100000034
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 211.11583500000006
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 202.71414800000002
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 266.6261850000001
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 306.9729019999995
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 267.71033700000044
+        }
+      ]
+    },
+    {
+      "n": 512,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 780.3112039999996
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 569.1052170000003
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 561.6563229999992
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 760.6813660000007
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 778.5021480000014
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 547.5348119999999
+        }
+      ]
+    },
+    {
+      "n": 1024,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 2789.389142
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 1726.0663739999982
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 1783.688570000002
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 2709.889897000001
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 2695.196082999999
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 1709.3116309999969
+        }
+      ]
+    }
+  ],
+  "negative": [
+    {
+      "n": 64,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 64,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 64,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 64,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 128,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 128,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 128,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 128,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 256,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 256,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 256,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 256,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 512,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 512,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 512,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 512,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 1024,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 1024,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 1024,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 1024,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    }
+  ],
+  "complete": true,
+  "randomized": [
+    {
+      "iteration": 0,
+      "error": "q113: duplicate declaration",
+      "inputSha256": "1dd29a4ec020efa3bf2ac403d280175a136cc53173210e0dfb478f3b24a63590"
+    },
+    {
+      "iteration": 1,
+      "error": "q263: definition does not match prior law signature",
+      "inputSha256": "adb9c84d411a0ef392045fb1b6bf338a76bdb24d08db1af22b3d6bd65253a2ee"
+    },
+    {
+      "iteration": 2,
+      "error": "",
+      "inputSha256": "303b605ae413c2af385244208d5d04a7e3c5af380045c6d96a7d4c9d6439ab0d"
+    },
+    {
+      "iteration": 3,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "4744d30400f61fea11fb2e1216109fee7ec9d74fe0a38c95b2d1e58d3566a9f7"
+    },
+    {
+      "iteration": 4,
+      "error": "q262: duplicate declaration",
+      "inputSha256": "de64a5d88edf3b97715895d28ac5e6ab019711ad65bef7339cfabd330ac7e0a8"
+    },
+    {
+      "iteration": 5,
+      "error": "q48: definition does not match prior law signature",
+      "inputSha256": "4d0d2dc74c7cf2be02cbd0c92dbf4acd1bd10ca77787239729ca87e4d8d96caf"
+    },
+    {
+      "iteration": 6,
+      "error": "",
+      "inputSha256": "a15277c57c7d6fe527ae6c8ba6ddb99778e0ce198f6bebd2eebaccd4647551c3"
+    },
+    {
+      "iteration": 7,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "2c13d4485ccfc155cf5ea12ad323514c93a8f4cc73cdb30fa6c74a56b72a9d9a"
+    },
+    {
+      "iteration": 8,
+      "error": "q123: duplicate declaration",
+      "inputSha256": "b4cd5cefde43642bc748e218468481cc21a314afc7ac3970d3e8ca7bd3fadf7b"
+    },
+    {
+      "iteration": 9,
+      "error": "q153: constructor requires a datatype goal",
+      "inputSha256": "58edb430fd2a261719320a91f7aec5eefe16635255f570868355c08e5ae187ba"
+    },
+    {
+      "iteration": 10,
+      "error": "",
+      "inputSha256": "993865b3dc73dbc6c261915588cb201cfc973ccb2eda5d981bbc9053cf1ef64c"
+    },
+    {
+      "iteration": 11,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "a3bb545a30ae7ed0c1d007fa93d4fe5d2c3906d52a5e781835b6b1d1f4a43b33"
+    },
+    {
+      "iteration": 12,
+      "error": "q256: duplicate declaration",
+      "inputSha256": "f2a1ed44ee1f5a407879f1763eb98cb6ac553c5970a7cb0d1d438cc6675c63c8"
+    },
+    {
+      "iteration": 13,
+      "error": "q102: definition does not match prior law signature",
+      "inputSha256": "2ac0761a42478fc289b7de0803cadb420415652e1a683596a77fb368dbf159ea"
+    },
+    {
+      "iteration": 14,
+      "error": "",
+      "inputSha256": "3b22de8fb149a056edfdafb243ffcc02ea7fd9b361187f385565c62fe2948106"
+    },
+    {
+      "iteration": 15,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "07bf85955329644264e551586b6f249f44629e4ac5f4e3c5b9e3134152a8a278"
+    },
+    {
+      "iteration": 16,
+      "error": "q265: duplicate declaration",
+      "inputSha256": "67b972b9cdd3dd853447b784deeda61db75544bf868f372aeb5191c0f3406c32"
+    },
+    {
+      "iteration": 17,
+      "error": "q19: definition does not match prior law signature",
+      "inputSha256": "7b6c351e409c150a2c1acab5b5ce1fbe7d10425ce7f59f8515fd3055e5c1b12a"
+    },
+    {
+      "iteration": 18,
+      "error": "",
+      "inputSha256": "03ecc123f0c9c35609176fa5185c9fd8722f45def93cb5c79e4117e36c58edfe"
+    },
+    {
+      "iteration": 19,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "d8cd7831ecf661046fc6cdc50ea2384127f18a56fe2c20eab7d313e18bb09628"
+    },
+    {
+      "iteration": 20,
+      "error": "q46: duplicate declaration",
+      "inputSha256": "c40a9fc8a061e9c78fd15dbd0c2401dea9a48e489e10cdd118fa0fb0bf2deea1"
+    },
+    {
+      "iteration": 21,
+      "error": "q292: constructor requires a datatype goal",
+      "inputSha256": "29ec33f3301436f6e8a5b4a9c2880932defff61fa80a5e7ca4bf9e6b33d50612"
+    },
+    {
+      "iteration": 22,
+      "error": "",
+      "inputSha256": "a3e3a8352a3bafcea38182bbfbbf095abea9bf5e8d920a135695282711ba41ea"
+    },
+    {
+      "iteration": 23,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "cb8614b5ed460856031cc98cbbd0c257d2e518bc836987bf233023d9ecd070da"
+    },
+    {
+      "iteration": 24,
+      "error": "q19: duplicate declaration",
+      "inputSha256": "6cf6e35e3dc2b02a977385c1e089072d2f9ffbbc7ea014a426dee3d5ba0e5ec0"
+    },
+    {
+      "iteration": 25,
+      "error": "q197: constructor requires a datatype goal",
+      "inputSha256": "3bb470fe51c95ea4900588af7af08bc11c8c0074d97766a159813d6427822af3"
+    },
+    {
+      "iteration": 26,
+      "error": "",
+      "inputSha256": "48880ae3b9cc857636be32625e1680f37e0c18b7b95f781d670e18b9070a9a86"
+    },
+    {
+      "iteration": 27,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "453763d1b62e9e84b74274e82bd659a4ee6a563739676d6b3a23c696017a401c"
+    },
+    {
+      "iteration": 28,
+      "error": "q116: duplicate declaration",
+      "inputSha256": "6654fad4e3e645d912ba5b53df3e45db489572d7faf6e2dccde2dc41fac72ed6"
+    },
+    {
+      "iteration": 29,
+      "error": "q18: duplicate declaration",
+      "inputSha256": "40463a6e8053ab30135083d62053e3195fdacd4acebf139eefe736e8df1e0e02"
+    },
+    {
+      "iteration": 30,
+      "error": "",
+      "inputSha256": "6a6c7957ff4f7f42ac086401ed8300ce78e1717173d2d1ba31a0a612037ee114"
+    },
+    {
+      "iteration": 31,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "d452b1d4261b052ff9ca165fe1b2b17a52586d7cbeb53c64f4f15bbafc5905a7"
+    },
+    {
+      "iteration": 32,
+      "error": "q1: duplicate declaration",
+      "inputSha256": "73610348ffc23080de81c54e7100baa88b7f58dead7127665fe99cbb14a6263d"
+    },
+    {
+      "iteration": 33,
+      "error": "q15: constructor requires a datatype goal",
+      "inputSha256": "913e757b4836bba3ae646fd88519800319bedfe2c3608848eded66e2644bb7ab"
+    },
+    {
+      "iteration": 34,
+      "error": "",
+      "inputSha256": "2442ab8c8e3b98cc3a2a20503d2268a387948be813494144e6ea96e2162ecbdf"
+    },
+    {
+      "iteration": 35,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "4254571862e7b0b2cb549d4d73d6ec0cb2874bcfd113f8cfbce84f8b77cbc743"
+    },
+    {
+      "iteration": 36,
+      "error": "q86: duplicate declaration",
+      "inputSha256": "6ae797f75fc1c7a081fcef0389aee1102095af25dd4e83f3e8d2741e8e293811"
+    },
+    {
+      "iteration": 37,
+      "error": "q100: definition does not match prior law signature",
+      "inputSha256": "eea7418b6d52bc968d0ae8d1e4c5ea307e74df12d80e01b6a5a304a606a23fdf"
+    },
+    {
+      "iteration": 38,
+      "error": "",
+      "inputSha256": "0fe7487ae7ddc5785ce44816e54c509d0a2dbeaa87dfa9324fc9d81a8cc840d6"
+    },
+    {
+      "iteration": 39,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "936c24d0d80dfebc21184af9655d60b8c3c5315b7dd6267956c8bfef7944df60"
+    },
+    {
+      "iteration": 40,
+      "error": "q159: duplicate declaration",
+      "inputSha256": "c35cd7d825912d8852371f53bd7d62ab0d921211e47a523c145e98205a3da38a"
+    },
+    {
+      "iteration": 41,
+      "error": "q9: duplicate declaration",
+      "inputSha256": "65d0b40021eba71517b671fa9233c445c92a926339d6313737978f7ece385efd"
+    },
+    {
+      "iteration": 42,
+      "error": "",
+      "inputSha256": "cccab39dc3332112d3a5dbd79eae7aa1c9d92962a340438a77055725acb7f141"
+    },
+    {
+      "iteration": 43,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "6f39a16d1af3111edea44be5972aa6825cfc11319d893641883e1add7bb9c6ff"
+    },
+    {
+      "iteration": 44,
+      "error": "q124: duplicate declaration",
+      "inputSha256": "b88abfc0b515cd6e9d6a5e1bc1ce9426004b7ee9d03367410e96f7fcf21f300a"
+    },
+    {
+      "iteration": 45,
+      "error": "q182: definition does not match prior law signature",
+      "inputSha256": "5b8d88d4fbd77bbd2ec816070c306baf61dc8028dd80935ac766a35ead2492e4"
+    },
+    {
+      "iteration": 46,
+      "error": "",
+      "inputSha256": "b27b42b789e0825f0519333363240843ff3627c80508042b9de5da2531545774"
+    },
+    {
+      "iteration": 47,
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "inputSha256": "e3c4eb05b63e374554e3a9ed18fa23a098376dee26f29c287d0cbe40661d67d0"
+    }
+  ],
+  "cacheFallbackChecks": 3
+}

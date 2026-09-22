@@ -113,6 +113,19 @@ node --test selfhost/tests/conformance/abi.test.mjs \
   selfhost/tests/native-compiler-cache.test.mjs
 ```
 
+On Linux, the self-host proof reads the actual process stack limit from
+`/proc/self/limits`; the OS soft limit must be at least twice the configured V8
+stack. A candidate API is selected explicitly, and stage2/stage3 must compile
+the same frozen checked source into byte-identical libraries. This is a batch
+integration gate. Use checked components and targeted worker requests during
+normal editing.
+
+The native backend changes preserve C bytes. Scalar direct-call specialization,
+checker suffix indexing, and emission fact caches remain disposable experiments;
+their measured gains and correctness limitations are documented in the report.
+Do not apply the scalar transform to a production artifact: a retained primitive
+accessor exposes a semantic mismatch.
+
 The full measurements, source identities, failed hypotheses and known test
 limitations are recorded in
 [`implementation/phase3/report.md`](../implementation/phase3/report.md).

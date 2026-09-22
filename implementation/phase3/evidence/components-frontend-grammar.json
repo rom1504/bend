@@ -1,0 +1,786 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Focused frontend acceptance and rejection-phase regression witnesses",
+  "revision": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+  "started": "2026-09-22T06:15:27.736Z",
+  "node": "v24.18.0",
+  "execArgv": [
+    "--stack-size=4096",
+    "--max-old-space-size=4096"
+  ],
+  "artifact": {
+    "api": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated/api.mjs",
+    "apiSha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",
+    "checkedIntegrationReportSha256": "0d9683516b3e2cc4a566ddbda40ef3800f39cf30d6472ac1bda0f5147dd9a412",
+    "runtimeSha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+    "driverSha256": "1f4e09f5ea27fd4e7bf3502d81cf482c07b255e5cf52ce0be9479f8312b7fe24",
+    "checkedSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/f909e3c6dfa26a820833006e13c8ac9d3097c05d3a653dcded2faacaa2cb9e3d/compiler.bend",
+      "sha256": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772"
+    }
+  },
+  "results": [
+    {
+      "id": "param-template-untyped-comma",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-template-untyped-comma.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef ignore(~unused, x: U32) -> U32:\n  x\ndef main() -> U32:\n  ignore(~&1, 7)\n",
+      "sourceSha256": "5829ee649af5f1f442102f29854de3f9ff3f9f1429a671ae0a553bb97edb1354",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : ','\nLocation:\n1 | \n2>| def ignore(~unused, x: U32) -> U32:\n3 |   x",
+        "ms": 162.83934100000005
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 2:18: expected : (a marked parameter requires its type); got ,",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-template-untyped-comma.bend",
+        "ms": 94.49440299999992
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "param-template-untyped-last",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-template-untyped-last.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef ignore(~unused) -> U32:\n  7\ndef main() -> U32:\n  ignore(~&1)\n",
+      "sourceSha256": "a4e5f5a2b749eccf2553b55a42f25b8a2e5ecc6e000700519a8c203bddbc266b",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : ')'\nLocation:\n1 | \n2>| def ignore(~unused) -> U32:\n3 |   7",
+        "ms": 87.83144400000003
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 2:18: expected : (a marked parameter requires its type); got )",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-template-untyped-last.bend",
+        "ms": 87.93563900000004
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "param-template-typed",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-template-typed.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef ignore(~unused: Quant, x: U32) -> U32:\n  x\ndef main() -> U32:\n  ignore(~&1, 7)\n",
+      "sourceSha256": "e3683e7e65de667b4e876919c132e7ff90ce461d3cca0bc26370576f94a246f9",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 289.30582900000013
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-template-typed.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 979.6960310000002
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "param-plain-quantity",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-plain-quantity.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef ignore(unused, x: U32) -> U32:\n  x\ndef main() -> U32:\n  ignore(&1, 7)\n",
+      "sourceSha256": "eacd2ec2acb5bb34a16986018a7bcfb38331ccfd98b49595d5cbb881674d8682",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 194.8594479999997
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-plain-quantity.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 709.1409749999998
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "param-shared-untyped",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-shared-untyped.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef ignore(+unused, x: U32) -> U32:\n  x\ndef main() -> U32:\n  ignore(&1, 7)\n",
+      "sourceSha256": "aaf084858ea671a40a90510d89edf041069238f53fd94762bdf6bb3e505839eb",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : ','\nLocation:\n1 | \n2>| def ignore(+unused, x: U32) -> U32:\n3 |   x",
+        "ms": 94.81725199999983
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 2:18: expected : (a marked parameter requires its type); got ,",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-shared-untyped.bend",
+        "ms": 83.88952100000006
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "param-erased-untyped",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-erased-untyped.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef ignore(-unused, x: U32) -> U32:\n  x\ndef main() -> U32:\n  ignore(&1, 7)\n",
+      "sourceSha256": "af63b380b4894f27e611f385ab0619401e5f051631f154a7323e3834dff5fc65",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : ':'\n- observed : ','\nLocation:\n1 | \n2>| def ignore(-unused, x: U32) -> U32:\n3 |   x",
+        "ms": 44.0354040000002
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 2:18: expected : (a marked parameter requires its type); got ,",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-erased-untyped.bend",
+        "ms": 78.00929600000018
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "param-shared-typed",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-shared-typed.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef twice(+x: U32) -> U32:\n  (x + x : U32)\ndef main() -> U32:\n  twice(7)\n",
+      "sourceSha256": "b1cf7ee04cabe3bc799d2169ee71be581051723699b6c70663823ab10e213fac",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 165.63834099999985
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-shared-typed.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 533.95435
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "param-erased-typed",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-erased-typed.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef ignore(-unused: U32, x: U32) -> U32:\n  x\ndef main() -> U32:\n  ignore(3, 7)\n",
+      "sourceSha256": "275c41305e68c1bfbde5536e47d6d9c3b1edf718cf38a4587ae5a7647bcd5b91",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 211.87319600000046
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-erased-typed.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 559.2116850000002
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "param-law-fill",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-law-fill.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\nlaw identity:\n  for x: U32\n  U32\ndef identity(x):\n  x\ndef main() -> U32:\n  identity(7)\n",
+      "sourceSha256": "dfa346832a99404b6fa58f6e79a3d35df3d74a05a932a9c986634c4b0599460c",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 144.7691420000001
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-law-fill.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 505.6674070000008
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "param-template-law-fill",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-template-law-fill.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\nlaw ignore:\n  for ~unused: Quant\n  for x: U32\n  U32\ndef ignore(unused, x):\n  x\ndef main() -> U32:\n  ignore(~&1, 7)\n",
+      "sourceSha256": "58e4a23f5ebe77dbf6c27269c90b32990e14a4d7a0172b98a79d1e2426530c1f",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 93.00747500000034
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/param-template-law-fill.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 535.0271849999999
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-semicolon-leading",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-leading.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  [;7]\n",
+      "sourceSha256": "9120ab349b73545d9ff4609c966b49772acb4db481fc5834fad94ad7143ec22d",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> List<&1, U32>:\n3>|   [;7]\n4 | ",
+        "ms": 25.039620999999897
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 3:3: expected term; a list does not use semicolon separators; got ;",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-leading.bend",
+        "ms": 81.51173900000049
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-semicolon-middle",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-middle.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  [7;16]\n",
+      "sourceSha256": "2a71743fd3cb72684491f5aa8aab03bb6f710edb5f19948366b13401590bf682",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> List<&1, U32>:\n3>|   [7;16]\n4 | ",
+        "ms": 32.75791699999991
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 3:4: expected term; a list does not use semicolon separators; got ;",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-middle.bend",
+        "ms": 80.39265700000033
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-semicolon-trailing",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-trailing.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  [7;]\n",
+      "sourceSha256": "0c4d082a3527f08faf9e7e661ae0f1921eea8dbe96eba53348e600f65b2bd47d",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> List<&1, U32>:\n3>|   [7;]\n4 | ",
+        "ms": 95.09788500000013
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 3:4: expected term; a list does not use semicolon separators; got ;",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-trailing.bend",
+        "ms": 81.58693200000016
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-semicolon-after-comma",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-after-comma.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  [7,;16]\n",
+      "sourceSha256": "a38d05f959a3d59105a7397a1bef4b7b764a068dc056fc1b7f39ce9a12f31bde",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> List<&1, U32>:\n3>|   [7,;16]\n4 | ",
+        "ms": 58.56430799999998
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 3:5: expected term; a list does not use semicolon separators; got ;",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-after-comma.bend",
+        "ms": 93.62015100000008
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-semicolon-multiline",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-multiline.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  [7\n   ;16]\n",
+      "sourceSha256": "c38e5b2722e97178230c4b6bd6b857816d7fa8c0090d88832db92a54aad8a9f0",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n3 |   [7\n4>|    ;16]\n5 | ",
+        "ms": 28.560003999999935
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 4:3: expected term; a list does not use semicolon separators; got ;",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-multiline.bend",
+        "ms": 78.92146500000035
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-semicolon-nested",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-nested.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, List<&1, U32>>:\n  [[7;16]]\n",
+      "sourceSha256": "a1e09da3da4342f7a540257182e74c39f770d919adb404ffdbcb16bd60372e53",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> List<&1, List<&1, U32>>:\n3>|   [[7;16]]\n4 | ",
+        "ms": 21.486307999999553
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "diagnostic": "Error: line 0:0: expected term; got <eof>",
+        "exitCode": 1,
+        "checked": false,
+        "sourceFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-semicolon-nested.bend",
+        "ms": 79.75828399999955
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-comma",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-comma.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  [7,16]\n",
+      "sourceSha256": "fd2f7a9ed5ef0af6b29993e5f2096af4b6fe904290e198c00a71f6bb96945ac6",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 97.75220100000024
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-comma.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 503.7318409999998
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-whitespace",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-whitespace.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  [7 16]\n",
+      "sourceSha256": "50696810feec0b749c8e931ccf4c04eff68854ee587b066cc9e88fec25e678bd",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 74.04253999999946
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-whitespace.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 610.8739859999996
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-empty",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-empty.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  []\n",
+      "sourceSha256": "5cb5f2038466ee61316d53a7fc15db3e88be3f2fc7a2840138b9618cef763cf5",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 105.05089500000031
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-empty.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 503.8720660000017
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-multiline",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-multiline.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, U32>:\n  [7,\n   16]\n",
+      "sourceSha256": "160966da0bc209e8b9bed62d601f3f5da4fb846016b8dc26fc3a233dd422f437",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 84.20061499999974
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-multiline.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 493.47597999999925
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "list-nested",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-nested.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> List<&1, List<&1, U32>>:\n  [[7,16], []]\n",
+      "sourceSha256": "2d4f3e61124494948c46ab6f44ea2f49afef206e8949ec82a42c8c7a71624b68",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 49.402548000000024
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/list-nested.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 515.9943050000002
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "body-semicolon",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/body-semicolon.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> U32:\n  x = {7 : U32}; x\n",
+      "sourceSha256": "8d636d16ccb922334774b0557e35ff978d075d174e9beb41557fc3628c2b8aaf",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 60.67107600000054
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/body-semicolon.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 490.65128800000093
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "body-io-semicolon",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/body-io-semicolon.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> IO(U32):\n  do IO<U32>:\n    Unit <- IO.print(\"ok\"); return 0\n",
+      "sourceSha256": "8ff7d0006cef7b3193792746babb6aa2a247c8f0e633fdde6fd22a8c7bce1ee6",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 65.17682800000148
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/body-io-semicolon.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 563.2518650000002
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "array-typed-count",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/array-typed-count.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> Array<U32>:\n  [7 : U32 * 4n]\n",
+      "sourceSha256": "6621e8f39dd7516f3f3a932c778f653885406ce7659609d2cec75548fa596afb",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 61.977397000000565
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/array-typed-count.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 544.5712119999989
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "id": "array-typed-depth",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/array-typed-depth.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "check"
+      ],
+      "source": "import Base\ndef main() -> Array<U32>:\n  [7 : U32 ^ 2n]\n",
+      "sourceSha256": "58bcdb78a693611011b9ef5b684dedc410eebd0e45d1ed1b844e880eb838d9ff",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "ms": 122.27406700000029
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "stdout": "All terms check.\n",
+        "exitCode": 0,
+        "checked": true,
+        "files": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/frontend/phase2-grammar/array-typed-depth.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend"
+        ],
+        "ms": 501.43786100000034
+      },
+      "referenceMatches": true,
+      "candidateMatches": true
+    }
+  ],
+  "finished": "2026-09-22T06:15:40.070Z",
+  "changedArtifacts": [],
+  "pass": true,
+  "archive": {
+    "sourceReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/phase2-grammar-direct.json",
+    "sourceReportSha256": "87d5e522368061ae54ee857e8effaf206edb33d4a132e6c9f125309d5b59708e"
+  }
+}

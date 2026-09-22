@@ -1,3 +1,9 @@
+law nc_live_count_head:
+  for +book: List<&2, KDef>
+  for +head: KTerm
+  for +left: U32
+  U32
+
 # Erasure consumes annotate_book output. Type annotations determine erased
 # arguments, constructor fields, lambda binders, and match-field arities.
 
@@ -21,20 +27,27 @@ law nc_erase_args:
 def nc_tele_fill(+book: List<&2, KDef>, +tel: KTerm, args: List<&2, KTerm>) -> KTerm:
   match args:
     case Nil{}: tel
-    case Con{h, rest}: nc_tele_fill(book, subst(kid(wnf(book, tel), 1), ix(wnf(book, tel)), h), rest)
+    case Con{h, rest}:
+      +head = wnf(book, tel)
+      nc_tele_fill(book, subst(kid(head, 1), ix(head), h), rest)
 
 @unsafe
 def nc_live_count(+book: List<&2, KDef>, +tel: KTerm, +left: U32) -> U32:
-  nt_choose(U32, U32.is_eq(left, 0), u => 0, u => U32.add(nt_bool(Bool.not(U32.is_eq(qt(wnf(book, tel)), 0))), nc_live_count(book, kid(wnf(book, tel), 1), U32.sub(left, 1))))
+  nt_choose(U32, U32.is_eq(left, 0), u => 0, u => nc_live_count_head(book, wnf(book, tel), left))
+
+@unsafe
+def nc_live_count_head(book, head, left):
+  U32.add(nt_bool(Bool.not(U32.is_eq(qt(head), 0))), nc_live_count(book, kid(head, 1), U32.sub(left, 1)))
 
 @unsafe
 def nc_erase_args(book, tel, xs):
   match xs:
     case Nil{}: Nil{}
     case Con{h, rest}:
-      nt_choose(List<&2, KTerm>, U32.is_eq(qt(wnf(book, tel)), 0),
-        u => nc_erase_args(book, subst(kid(wnf(book, tel), 1), ix(wnf(book, tel)), h), rest),
-        u => Con{nc_erase(book, h), nc_erase_args(book, subst(kid(wnf(book, tel), 1), ix(wnf(book, tel)), h), rest)})
+      +head = wnf(book, tel)
+      nt_choose(List<&2, KTerm>, U32.is_eq(qt(head), 0),
+        u => nc_erase_args(book, subst(kid(head, 1), ix(head), h), rest),
+        u => Con{nc_erase(book, h), nc_erase_args(book, subst(kid(head, 1), ix(head), h), rest)})
 
 @unsafe
 def nc_erase_mat(+book: List<&2, KDef>, +t: KTerm, +adt: KTerm) -> KTerm:

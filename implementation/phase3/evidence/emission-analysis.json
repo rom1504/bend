@@ -1,0 +1,6383 @@
+{
+  "scaling": {
+    "schemaVersion": 1,
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/api/b1.mjs",
+      "sha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6"
+    },
+    "probe": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase3/emission-probe.mjs",
+      "sha256": "19a530ae0698dbededf2e2116ce184264a940aa404c01e032f825d69dcaacf97"
+    },
+    "variants": {
+      "plain": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/emission/scaling/plain.mjs",
+        "sha256": "d17dd1b8f4202de9232eeb8a54896b7fc2e18e0146911f41b44119ca555247a5"
+      },
+      "counted": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/emission/scaling/counted.mjs",
+        "sha256": "d6ae3c54a3cd22f412df3bdf99c882664dbd2fbb514817fe6bdaf009a4168b3c"
+      },
+      "joined": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/emission/scaling/joined.mjs",
+        "sha256": "28f1e802bfe57f652deab75d9877162050a6f37770859ff9fdab96e0c419e021"
+      }
+    },
+    "node": "v24.18.0",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ],
+    "cpu": 0,
+    "appendSites": 234,
+    "allChecked": true,
+    "allExact": true,
+    "unchangedApi": true,
+    "rows": [
+      {
+        "kind": "definition-count",
+        "size": 16,
+        "inputSha256": "8e6ee197947e450640cec47f5c39688900bed7885fdfe142b1ebb116677f8ac8",
+        "outputBytes": 1232,
+        "outputSha256": "c01553ca6a9e4b2a73af56d10e1f40b86e54b6449a988421c327518fa8c498e8",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 18,
+            "j_def": 17,
+            "j_intrinsic": 16,
+            "j_l_def": 16,
+            "j_l_deep": 32,
+            "j_l_deeps": 16,
+            "j_l_global": 16,
+            "j_projection_worker": 16,
+            "j_strip": 112,
+            "j_l_global_worker": 16,
+            "j_expr": 32,
+            "j_l_name": 32,
+            "j_l_names": 32,
+            "j_expr_on": 32,
+            "j_constructor_mode": 16,
+            "j_literal_typed": 16,
+            "j_literal": 16,
+            "j_literal_node": 16,
+            "j_literal_ctor": 16,
+            "j_find_ctor": 32,
+            "lookup": 48,
+            "j_found_ctor": 32,
+            "wnf": 16,
+            "j_specialize": 16,
+            "j_ctor_thunks": 16,
+            "j_quote": 43,
+            "j_escape": 194,
+            "j_escape_char": 151,
+            "j_escape_char_on": 151,
+            "j_schemas": 18,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 18,
+            "j_ctor_keys": 19,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 16,
+              "leftChars": 38,
+              "rightChars": 16,
+              "maxLeft": 3,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 64,
+              "leftChars": 224,
+              "rightChars": 288,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 151,
+              "leftChars": 151,
+              "rightChars": 210,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 86,
+              "leftChars": 194,
+              "rightChars": 237,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_l_global_worker": {
+              "calls": 96,
+              "leftChars": 1430,
+              "rightChars": 2630,
+              "maxLeft": 42,
+              "maxRight": 51
+            },
+            "j_def": {
+              "calls": 16,
+              "leftChars": 0,
+              "rightChars": 838,
+              "maxLeft": 0,
+              "maxRight": 53
+            },
+            "j_defs": {
+              "calls": 17,
+              "leftChars": 838,
+              "rightChars": 7153,
+              "maxLeft": 53,
+              "maxRight": 838
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 21,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 1110,
+              "rightChars": 2136,
+              "maxLeft": 838,
+              "maxRight": 1054
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 17,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 9.945423000000005,
+            "consumeMs": 0.07745499999998628,
+            "totalMs": 10.022877999999992
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 9.742627000000027,
+            "consumeMs": 0.05581899999998541,
+            "totalMs": 9.798446000000013
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 9.68575599999997,
+            "consumeMs": 0.06170700000001261,
+            "totalMs": 9.747462999999982
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 9.385866000000021,
+            "consumeMs": 0.06757499999997663,
+            "totalMs": 9.453440999999998
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 14.203747999999962,
+            "consumeMs": 0.062158000000010816,
+            "totalMs": 14.265905999999973
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 13.824384000000009,
+            "consumeMs": 0.07435800000001791,
+            "totalMs": 13.898742000000027
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 10.42228700000004,
+            "consumeMs": 0.06734899999997879,
+            "totalMs": 10.489636000000019
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 22.230455000000006,
+            "consumeMs": 0.15376799999995683,
+            "totalMs": 22.384222999999963
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 7.381795000000011,
+            "consumeMs": 0.10669100000001208,
+            "totalMs": 7.488486000000023
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 9.668430999999998,
+            "consumeMs": 0.06052000000005364,
+            "totalMs": 9.728951000000052
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 9.945423000000005,
+            "consumeMs": 0.07745499999998628,
+            "totalMs": 10.022877999999992
+          },
+          "joined": {
+            "emitMs": 9.742627000000027,
+            "consumeMs": 0.06170700000001261,
+            "totalMs": 9.798446000000013
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "definition-count",
+        "size": 64,
+        "inputSha256": "ae9ebd8f034d4f864d86fa65c58f0a7933a4d0a4a1ff86bfe01b9440fd14f32c",
+        "outputBytes": 3776,
+        "outputSha256": "234c2f93a6e1cc92ba2db0dd06319e0cd257ce920f726d63cbaed459102005f3",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 66,
+            "j_def": 65,
+            "j_intrinsic": 64,
+            "j_l_def": 64,
+            "j_l_deep": 128,
+            "j_l_deeps": 64,
+            "j_l_global": 64,
+            "j_projection_worker": 64,
+            "j_strip": 448,
+            "j_l_global_worker": 64,
+            "j_expr": 128,
+            "j_l_name": 128,
+            "j_l_names": 128,
+            "j_expr_on": 128,
+            "j_constructor_mode": 64,
+            "j_literal_typed": 64,
+            "j_literal": 64,
+            "j_literal_node": 64,
+            "j_literal_ctor": 64,
+            "j_find_ctor": 128,
+            "lookup": 192,
+            "j_found_ctor": 128,
+            "wnf": 64,
+            "j_specialize": 64,
+            "j_ctor_thunks": 64,
+            "j_quote": 139,
+            "j_escape": 626,
+            "j_escape_char": 487,
+            "j_escape_char_on": 487,
+            "j_schemas": 66,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 66,
+            "j_ctor_keys": 67,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 64,
+              "leftChars": 182,
+              "rightChars": 64,
+              "maxLeft": 3,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 256,
+              "leftChars": 896,
+              "rightChars": 1152,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 487,
+              "leftChars": 487,
+              "rightChars": 642,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 278,
+              "leftChars": 626,
+              "rightChars": 765,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_l_global_worker": {
+              "calls": 384,
+              "leftChars": 5750,
+              "rightChars": 10550,
+              "maxLeft": 42,
+              "maxRight": 51
+            },
+            "j_def": {
+              "calls": 64,
+              "leftChars": 0,
+              "rightChars": 3382,
+              "maxLeft": 0,
+              "maxRight": 53
+            },
+            "j_defs": {
+              "calls": 65,
+              "leftChars": 3382,
+              "rightChars": 110185,
+              "maxLeft": 53,
+              "maxRight": 3382
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 69,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 3654,
+              "rightChars": 7224,
+              "maxLeft": 3382,
+              "maxRight": 3598
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 65,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 29.280032000000006,
+            "consumeMs": 0.07367999999996755,
+            "totalMs": 29.353711999999973
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 39.97724800000003,
+            "consumeMs": 0.07271700000001147,
+            "totalMs": 40.04996500000004
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 39.491971000000035,
+            "consumeMs": 0.06482899999991787,
+            "totalMs": 39.55679999999995
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 34.96697599999993,
+            "consumeMs": 0.07628500000009808,
+            "totalMs": 35.04326100000003
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 28.719765000000052,
+            "consumeMs": 0.07361500000001797,
+            "totalMs": 28.79338000000007
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 26.23843599999998,
+            "consumeMs": 0.08026800000004641,
+            "totalMs": 26.318704000000025
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 31.07810699999993,
+            "consumeMs": 0.05706499999996595,
+            "totalMs": 31.135171999999898
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 29.99451600000009,
+            "consumeMs": 0.10403099999996357,
+            "totalMs": 30.098547000000053
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 25.98174400000005,
+            "consumeMs": 0.06588799999997264,
+            "totalMs": 26.04763200000002
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 24.539669000000004,
+            "consumeMs": 0.07500199999992674,
+            "totalMs": 24.61467099999993
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 29.280032000000006,
+            "consumeMs": 0.07367999999996755,
+            "totalMs": 29.353711999999973
+          },
+          "joined": {
+            "emitMs": 31.07810699999993,
+            "consumeMs": 0.07271700000001147,
+            "totalMs": 31.135171999999898
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "definition-count",
+        "size": 256,
+        "inputSha256": "59363735f709bd7bc704f642f5d850227408264ef8d221460652f5decb7941e1",
+        "outputBytes": 14108,
+        "outputSha256": "c432f5086767e874b7145a5aee7d8ca9d40f12d118da02409ba46a71ce694070",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 258,
+            "j_def": 257,
+            "j_intrinsic": 256,
+            "j_l_def": 256,
+            "j_l_deep": 512,
+            "j_l_deeps": 256,
+            "j_l_global": 256,
+            "j_projection_worker": 256,
+            "j_strip": 1792,
+            "j_l_global_worker": 256,
+            "j_expr": 512,
+            "j_l_name": 512,
+            "j_l_names": 512,
+            "j_expr_on": 512,
+            "j_constructor_mode": 256,
+            "j_literal_typed": 256,
+            "j_literal": 256,
+            "j_literal_node": 256,
+            "j_literal_ctor": 256,
+            "j_find_ctor": 512,
+            "lookup": 768,
+            "j_found_ctor": 512,
+            "wnf": 256,
+            "j_specialize": 256,
+            "j_ctor_thunks": 256,
+            "j_quote": 523,
+            "j_escape": 2510,
+            "j_escape_char": 1987,
+            "j_escape_char_on": 1987,
+            "j_schemas": 258,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 258,
+            "j_ctor_keys": 259,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 256,
+              "leftChars": 914,
+              "rightChars": 256,
+              "maxLeft": 4,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 1024,
+              "leftChars": 3584,
+              "rightChars": 4608,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 1987,
+              "leftChars": 1987,
+              "rightChars": 2838,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 1046,
+              "leftChars": 2510,
+              "rightChars": 3033,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_l_global_worker": {
+              "calls": 1536,
+              "leftChars": 23186,
+              "rightChars": 42386,
+              "maxLeft": 42,
+              "maxRight": 52
+            },
+            "j_def": {
+              "calls": 256,
+              "leftChars": 0,
+              "rightChars": 13714,
+              "maxLeft": 0,
+              "maxRight": 54
+            },
+            "j_defs": {
+              "calls": 257,
+              "leftChars": 13714,
+              "rightChars": 1771279,
+              "maxLeft": 54,
+              "maxRight": 13714
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 261,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 13986,
+              "rightChars": 27888,
+              "maxLeft": 13714,
+              "maxRight": 13930
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 257,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 101.85985300000016,
+            "consumeMs": 0.15785699999992175,
+            "totalMs": 102.01771000000008
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 100.59120299999995,
+            "consumeMs": 0.08628200000021025,
+            "totalMs": 100.67748500000016
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 96.9638060000002,
+            "consumeMs": 0.08985899999993308,
+            "totalMs": 97.05366500000014
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 114.62772700000005,
+            "consumeMs": 0.2297289999999066,
+            "totalMs": 114.85745599999996
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 114.18909900000017,
+            "consumeMs": 0.17784600000004502,
+            "totalMs": 114.36694500000021
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 112.15951799999993,
+            "consumeMs": 0.0887790000001587,
+            "totalMs": 112.2482970000001
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 105.49011799999971,
+            "consumeMs": 0.1196669999999358,
+            "totalMs": 105.60978499999965
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 108.13686499999994,
+            "consumeMs": 0.16138899999987188,
+            "totalMs": 108.29825399999982
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 94.15520700000025,
+            "consumeMs": 0.22263799999973344,
+            "totalMs": 94.37784499999998
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 93.32428299999992,
+            "consumeMs": 0.0885960000000523,
+            "totalMs": 93.41287899999998
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 108.13686499999994,
+            "consumeMs": 0.17784600000004502,
+            "totalMs": 108.29825399999982
+          },
+          "joined": {
+            "emitMs": 100.59120299999995,
+            "consumeMs": 0.0887790000001587,
+            "totalMs": 100.67748500000016
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "definition-count",
+        "size": 1024,
+        "inputSha256": "2016a330a6b182218328b695694015a4e4452f0b01cfc57aa01155cea39574ff",
+        "outputBytes": 55604,
+        "outputSha256": "b08cc8cbbb90c638d214676f7c4e701136328af5c48bdeb324cd7df56b7cd17b",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 1026,
+            "j_def": 1025,
+            "j_intrinsic": 1024,
+            "j_l_def": 1024,
+            "j_l_deep": 2048,
+            "j_l_deeps": 1024,
+            "j_l_global": 1024,
+            "j_projection_worker": 1024,
+            "j_strip": 7168,
+            "j_l_global_worker": 1024,
+            "j_expr": 2048,
+            "j_l_name": 2048,
+            "j_l_names": 2048,
+            "j_expr_on": 2048,
+            "j_constructor_mode": 1024,
+            "j_literal_typed": 1024,
+            "j_literal": 1024,
+            "j_literal_node": 1024,
+            "j_literal_ctor": 1024,
+            "j_find_ctor": 2048,
+            "lookup": 3072,
+            "j_found_ctor": 2048,
+            "wnf": 1024,
+            "j_specialize": 1024,
+            "j_ctor_thunks": 1024,
+            "j_quote": 2059,
+            "j_escape": 10214,
+            "j_escape_char": 8155,
+            "j_escape_char_on": 8155,
+            "j_schemas": 1026,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 1026,
+            "j_ctor_keys": 1027,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1024,
+              "leftChars": 4010,
+              "rightChars": 1024,
+              "maxLeft": 5,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 4096,
+              "leftChars": 14336,
+              "rightChars": 18432,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 8155,
+              "leftChars": 8155,
+              "rightChars": 12150,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 4118,
+              "leftChars": 10214,
+              "rightChars": 12273,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_l_global_worker": {
+              "calls": 6144,
+              "leftChars": 93098,
+              "rightChars": 169898,
+              "maxLeft": 42,
+              "maxRight": 53
+            },
+            "j_def": {
+              "calls": 1024,
+              "leftChars": 0,
+              "rightChars": 55210,
+              "maxLeft": 0,
+              "maxRight": 55
+            },
+            "j_defs": {
+              "calls": 1025,
+              "leftChars": 55210,
+              "rightChars": 28358395,
+              "maxLeft": 55,
+              "maxRight": 55210
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 1029,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 55482,
+              "rightChars": 110880,
+              "maxLeft": 55210,
+              "maxRight": 55426
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 1025,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 369.43366999999944,
+            "consumeMs": 0.429627999999866,
+            "totalMs": 369.8632979999993
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 368.7116239999996,
+            "consumeMs": 0.21902500000032887,
+            "totalMs": 368.9306489999999
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 368.5042060000005,
+            "consumeMs": 0.2560219999995752,
+            "totalMs": 368.7602280000001
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 364.13325500000064,
+            "consumeMs": 0.4244219999991401,
+            "totalMs": 364.5576769999998
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 407.7936099999997,
+            "consumeMs": 0.46423700000013923,
+            "totalMs": 408.25784699999986
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 406.3241429999998,
+            "consumeMs": 0.21658599999955186,
+            "totalMs": 406.5407289999994
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 403.2914259999998,
+            "consumeMs": 0.21891300000061165,
+            "totalMs": 403.5103390000004
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 370.5238670000008,
+            "consumeMs": 0.43513899999925343,
+            "totalMs": 370.95900600000004
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 365.30016500000056,
+            "consumeMs": 0.46101999999973486,
+            "totalMs": 365.7611850000003
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 386.3241109999999,
+            "consumeMs": 0.2823399999997491,
+            "totalMs": 386.60645099999965
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 369.43366999999944,
+            "consumeMs": 0.43513899999925343,
+            "totalMs": 369.8632979999993
+          },
+          "joined": {
+            "emitMs": 386.3241109999999,
+            "consumeMs": 0.21902500000032887,
+            "totalMs": 386.60645099999965
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "name-output-size",
+        "size": 16,
+        "inputSha256": "306070ebc7b07b48bcf8c65c633df190c844d2da9a284654751b8274e47ac255",
+        "outputBytes": 466,
+        "outputSha256": "80551b77c9760a794de21cb0672904183da156ee410a898be80dc5438bb89640",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 2,
+            "j_l_deeps": 1,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 7,
+            "j_l_global_worker": 1,
+            "j_expr": 2,
+            "j_l_name": 2,
+            "j_l_names": 2,
+            "j_expr_on": 2,
+            "j_constructor_mode": 1,
+            "j_literal_typed": 1,
+            "j_literal": 1,
+            "j_literal_node": 1,
+            "j_literal_ctor": 1,
+            "j_find_ctor": 2,
+            "lookup": 3,
+            "j_found_ctor": 2,
+            "wnf": 1,
+            "j_specialize": 1,
+            "j_ctor_thunks": 1,
+            "j_quote": 13,
+            "j_escape": 88,
+            "j_escape_char": 75,
+            "j_escape_char_on": 75,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 22,
+              "rightChars": 1,
+              "maxLeft": 22,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 4,
+              "leftChars": 14,
+              "rightChars": 18,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 75,
+              "leftChars": 75,
+              "rightChars": 323,
+              "maxLeft": 1,
+              "maxRight": 21
+            },
+            "j_quote": {
+              "calls": 26,
+              "leftChars": 88,
+              "rightChars": 101,
+              "maxLeft": 22,
+              "maxRight": 23
+            },
+            "j_l_global_worker": {
+              "calls": 6,
+              "leftChars": 109,
+              "rightChars": 184,
+              "maxLeft": 42,
+              "maxRight": 70
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 72,
+              "maxLeft": 0,
+              "maxRight": 72
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 72,
+              "rightChars": 72,
+              "maxLeft": 72,
+              "maxRight": 72
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 344,
+              "rightChars": 604,
+              "maxLeft": 178,
+              "maxRight": 288
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 0.543257999999696,
+            "consumeMs": 0.04303799999979674,
+            "totalMs": 0.5862959999994928
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 0.5057339999984833,
+            "consumeMs": 0.01558400000067195,
+            "totalMs": 0.5213179999991553
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 0.5003519999991113,
+            "consumeMs": 0.01594699999986915,
+            "totalMs": 0.5162989999989804
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 0.5146789999998873,
+            "consumeMs": 0.01598999999987427,
+            "totalMs": 0.5306689999997616
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 0.4746560000003228,
+            "consumeMs": 0.014757000000827247,
+            "totalMs": 0.48941300000115007
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 0.5472979999995005,
+            "consumeMs": 0.01609199999984412,
+            "totalMs": 0.5633899999993446
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 0.5117690000006405,
+            "consumeMs": 0.017600999999558553,
+            "totalMs": 0.5293700000001991
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 0.9654810000010912,
+            "consumeMs": 0.020679999999629217,
+            "totalMs": 0.9861610000007204
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.4724869999990915,
+            "consumeMs": 0.014798000000155298,
+            "totalMs": 0.4872849999992468
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 0.5222350000003644,
+            "consumeMs": 0.01534900000115158,
+            "totalMs": 0.537584000001516
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 0.5146789999998873,
+            "consumeMs": 0.01598999999987427,
+            "totalMs": 0.5306689999997616
+          },
+          "joined": {
+            "emitMs": 0.5117690000006405,
+            "consumeMs": 0.01594699999986915,
+            "totalMs": 0.5293700000001991
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "name-output-size",
+        "size": 64,
+        "inputSha256": "fa409b97a9a6467845643d3f8486fd5a404c13669cdb5d0ebe3af869b6a1b502",
+        "outputBytes": 514,
+        "outputSha256": "f66cff52b92ced79d23c68c510b088e471be3c5972cb4b54a36e1309df92ab89",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 2,
+            "j_l_deeps": 1,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 7,
+            "j_l_global_worker": 1,
+            "j_expr": 2,
+            "j_l_name": 2,
+            "j_l_names": 2,
+            "j_expr_on": 2,
+            "j_constructor_mode": 1,
+            "j_literal_typed": 1,
+            "j_literal": 1,
+            "j_literal_node": 1,
+            "j_literal_ctor": 1,
+            "j_find_ctor": 2,
+            "lookup": 3,
+            "j_found_ctor": 2,
+            "wnf": 1,
+            "j_specialize": 1,
+            "j_ctor_thunks": 1,
+            "j_quote": 13,
+            "j_escape": 136,
+            "j_escape_char": 123,
+            "j_escape_char_on": 123,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 70,
+              "rightChars": 1,
+              "maxLeft": 70,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 4,
+              "leftChars": 14,
+              "rightChars": 18,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 123,
+              "leftChars": 123,
+              "rightChars": 2507,
+              "maxLeft": 1,
+              "maxRight": 69
+            },
+            "j_quote": {
+              "calls": 26,
+              "leftChars": 136,
+              "rightChars": 149,
+              "maxLeft": 70,
+              "maxRight": 71
+            },
+            "j_l_global_worker": {
+              "calls": 6,
+              "leftChars": 157,
+              "rightChars": 232,
+              "maxLeft": 72,
+              "maxRight": 118
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 120,
+              "maxLeft": 0,
+              "maxRight": 120
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 120,
+              "rightChars": 120,
+              "maxLeft": 120,
+              "maxRight": 120
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 392,
+              "rightChars": 700,
+              "maxLeft": 178,
+              "maxRight": 336
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 0.6293050000003859,
+            "consumeMs": 0.04650899999978719,
+            "totalMs": 0.6758140000001731
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 0.6208200000000943,
+            "consumeMs": 0.018292000000656117,
+            "totalMs": 0.6391120000007504
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 0.5835109999989072,
+            "consumeMs": 0.01830300000074203,
+            "totalMs": 0.6018139999996492
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 0.6150809999999183,
+            "consumeMs": 0.017583000000740867,
+            "totalMs": 0.6326640000006591
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 0.5752179999999498,
+            "consumeMs": 0.01668699999936507,
+            "totalMs": 0.5919049999993149
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 0.6524480000007316,
+            "consumeMs": 0.01740099999915401,
+            "totalMs": 0.6698489999998856
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 0.593496999999843,
+            "consumeMs": 0.016915000000153668,
+            "totalMs": 0.6104119999999966
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 0.6096289999986766,
+            "consumeMs": 0.01618899999994028,
+            "totalMs": 0.6258179999986169
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.6115110000009736,
+            "consumeMs": 0.018224999999802094,
+            "totalMs": 0.6297360000007757
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 0.6225899999990361,
+            "consumeMs": 0.01827199999934237,
+            "totalMs": 0.6408619999983785
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 0.6115110000009736,
+            "consumeMs": 0.017583000000740867,
+            "totalMs": 0.6297360000007757
+          },
+          "joined": {
+            "emitMs": 0.6208200000000943,
+            "consumeMs": 0.01827199999934237,
+            "totalMs": 0.6391120000007504
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "name-output-size",
+        "size": 256,
+        "inputSha256": "988de22c603a674f3b25ec2e3fc6d903d5f5dd135e431741191fc657b76c5303",
+        "outputBytes": 706,
+        "outputSha256": "a9e361b93f49f9318a415bac2bea604f19aa12b6e65e07254cadc915ff1dae68",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 2,
+            "j_l_deeps": 1,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 7,
+            "j_l_global_worker": 1,
+            "j_expr": 2,
+            "j_l_name": 2,
+            "j_l_names": 2,
+            "j_expr_on": 2,
+            "j_constructor_mode": 1,
+            "j_literal_typed": 1,
+            "j_literal": 1,
+            "j_literal_node": 1,
+            "j_literal_ctor": 1,
+            "j_find_ctor": 2,
+            "lookup": 3,
+            "j_found_ctor": 2,
+            "wnf": 1,
+            "j_specialize": 1,
+            "j_ctor_thunks": 1,
+            "j_quote": 13,
+            "j_escape": 328,
+            "j_escape_char": 315,
+            "j_escape_char_on": 315,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 262,
+              "rightChars": 1,
+              "maxLeft": 262,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 4,
+              "leftChars": 14,
+              "rightChars": 18,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 315,
+              "leftChars": 315,
+              "rightChars": 34283,
+              "maxLeft": 1,
+              "maxRight": 261
+            },
+            "j_quote": {
+              "calls": 26,
+              "leftChars": 328,
+              "rightChars": 341,
+              "maxLeft": 262,
+              "maxRight": 263
+            },
+            "j_l_global_worker": {
+              "calls": 6,
+              "leftChars": 349,
+              "rightChars": 424,
+              "maxLeft": 264,
+              "maxRight": 310
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 312,
+              "maxLeft": 0,
+              "maxRight": 312
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 312,
+              "rightChars": 312,
+              "maxLeft": 312,
+              "maxRight": 312
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 584,
+              "rightChars": 1084,
+              "maxLeft": 312,
+              "maxRight": 528
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 0.9746800000011717,
+            "consumeMs": 0.04954600000019127,
+            "totalMs": 1.024226000001363
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 1.000584000001254,
+            "consumeMs": 0.0224579999994603,
+            "totalMs": 1.0230420000007143
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 0.9849830000002839,
+            "consumeMs": 0.021842000000106054,
+            "totalMs": 1.00682500000039
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 1.5004380000009405,
+            "consumeMs": 0.03939100000025064,
+            "totalMs": 1.5398290000011912
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 1.071442999998908,
+            "consumeMs": 0.034551000000647036,
+            "totalMs": 1.105993999999555
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 1.0992779999996856,
+            "consumeMs": 0.03737100000034843,
+            "totalMs": 1.136649000000034
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 1.1152530000017578,
+            "consumeMs": 0.039641999999730615,
+            "totalMs": 1.1548950000014884
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 1.034789000001183,
+            "consumeMs": 0.02811899999869638,
+            "totalMs": 1.0629079999998794
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.9327480000010837,
+            "consumeMs": 0.020184999999401043,
+            "totalMs": 0.9529330000004848
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 1.0702000000001135,
+            "consumeMs": 0.025449000000662636,
+            "totalMs": 1.0956490000007761
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 1.034789000001183,
+            "consumeMs": 0.034551000000647036,
+            "totalMs": 1.0629079999998794
+          },
+          "joined": {
+            "emitMs": 1.0702000000001135,
+            "consumeMs": 0.025449000000662636,
+            "totalMs": 1.0956490000007761
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "name-output-size",
+        "size": 1024,
+        "inputSha256": "324384b7e680a35788ec2712229ba0225ee94ac6ada79429c2c1445b98e2cd73",
+        "outputBytes": 1474,
+        "outputSha256": "6e55e4b58a4d6393764690296fd0f9f2ece3aee581bf2f163e392ef58f9063d8",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 2,
+            "j_l_deeps": 1,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 7,
+            "j_l_global_worker": 1,
+            "j_expr": 2,
+            "j_l_name": 2,
+            "j_l_names": 2,
+            "j_expr_on": 2,
+            "j_constructor_mode": 1,
+            "j_literal_typed": 1,
+            "j_literal": 1,
+            "j_literal_node": 1,
+            "j_literal_ctor": 1,
+            "j_find_ctor": 2,
+            "lookup": 3,
+            "j_found_ctor": 2,
+            "wnf": 1,
+            "j_specialize": 1,
+            "j_ctor_thunks": 1,
+            "j_quote": 13,
+            "j_escape": 1096,
+            "j_escape_char": 1083,
+            "j_escape_char_on": 1083,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 1030,
+              "rightChars": 1,
+              "maxLeft": 1030,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 4,
+              "leftChars": 14,
+              "rightChars": 18,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 1083,
+              "leftChars": 1083,
+              "rightChars": 530027,
+              "maxLeft": 1,
+              "maxRight": 1029
+            },
+            "j_quote": {
+              "calls": 26,
+              "leftChars": 1096,
+              "rightChars": 1109,
+              "maxLeft": 1030,
+              "maxRight": 1031
+            },
+            "j_l_global_worker": {
+              "calls": 6,
+              "leftChars": 1117,
+              "rightChars": 1192,
+              "maxLeft": 1032,
+              "maxRight": 1078
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 1080,
+              "maxLeft": 0,
+              "maxRight": 1080
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 1080,
+              "rightChars": 1080,
+              "maxLeft": 1080,
+              "maxRight": 1080
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 1352,
+              "rightChars": 2620,
+              "maxLeft": 1080,
+              "maxRight": 1296
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 2.477936999999656,
+            "consumeMs": 0.06273500000133936,
+            "totalMs": 2.5406720000009955
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 2.4802659999986645,
+            "consumeMs": 0.05565300000125717,
+            "totalMs": 2.5359189999999217
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 2.3980069999997795,
+            "consumeMs": 0.05220200000076147,
+            "totalMs": 2.450209000000541
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 2.8028440000016417,
+            "consumeMs": 0.06341599999905156,
+            "totalMs": 2.8662600000006933
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 2.4328949999999168,
+            "consumeMs": 0.059425999999803025,
+            "totalMs": 2.49232099999972
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 2.4636000000009517,
+            "consumeMs": 0.05331099999966682,
+            "totalMs": 2.5169110000006185
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 2.4396469999992405,
+            "consumeMs": 0.052534000000378,
+            "totalMs": 2.4921809999996185
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 2.605231999999887,
+            "consumeMs": 0.06361199999992095,
+            "totalMs": 2.668843999999808
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 2.5177140000014333,
+            "consumeMs": 0.06040699999903154,
+            "totalMs": 2.578121000000465
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 2.4104320000005828,
+            "consumeMs": 0.05251700000007986,
+            "totalMs": 2.4629490000006626
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 2.5177140000014333,
+            "consumeMs": 0.06273500000133936,
+            "totalMs": 2.578121000000465
+          },
+          "joined": {
+            "emitMs": 2.4396469999992405,
+            "consumeMs": 0.052534000000378,
+            "totalMs": 2.4921809999996185
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "constructor-depth",
+        "size": 8,
+        "inputSha256": "4a181f26115045aaf45325100c14dd76e48858dcd67428f5d6c2d38681edd346",
+        "outputBytes": 640,
+        "outputSha256": "a905ec1fd66cf41ee7278d94f1f1df6e247acfb13d15037ada5b922dd5d415b3",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 18,
+            "j_l_deeps": 17,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 15,
+            "j_l_global_worker": 1,
+            "j_expr": 18,
+            "j_l_name": 18,
+            "j_l_names": 18,
+            "j_expr_on": 18,
+            "j_constructor_mode": 9,
+            "j_literal_typed": 9,
+            "j_literal": 9,
+            "j_literal_node": 9,
+            "j_literal_ctor": 9,
+            "j_find_ctor": 18,
+            "lookup": 35,
+            "j_found_ctor": 18,
+            "wnf": 10,
+            "j_specialize": 9,
+            "j_ctor_thunks": 17,
+            "j_app_type": 8,
+            "subst": 8,
+            "subst_terms": 8,
+            "j_quote": 23,
+            "j_escape": 117,
+            "j_escape_char": 94,
+            "j_escape_char_on": 94,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 3,
+            "j_descriptor": 1,
+            "j_desc_kind": 1,
+            "j_desc_head": 1,
+            "j_desc_head_on": 1,
+            "j_desc_args": 1,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 3
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 5,
+              "rightChars": 1,
+              "maxLeft": 5,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 36,
+              "leftChars": 882,
+              "rightChars": 2430,
+              "maxLeft": 168,
+              "maxRight": 178
+            },
+            "j_escape": {
+              "calls": 94,
+              "leftChars": 94,
+              "rightChars": 146,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 46,
+              "leftChars": 117,
+              "rightChars": 140,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_ctor_thunks": {
+              "calls": 24,
+              "leftChars": 756,
+              "rightChars": 732,
+              "maxLeft": 163,
+              "maxRight": 164
+            },
+            "j_l_global_worker": {
+              "calls": 6,
+              "leftChars": 428,
+              "rightChars": 839,
+              "maxLeft": 210,
+              "maxRight": 221
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 223,
+              "maxLeft": 0,
+              "maxRight": 223
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 223,
+              "rightChars": 223,
+              "maxLeft": 223,
+              "maxRight": 223
+            },
+            "j_desc_head_on": {
+              "calls": 4,
+              "leftChars": 17,
+              "rightChars": 18,
+              "maxLeft": 9,
+              "maxRight": 10
+            },
+            "j_schema_fields": {
+              "calls": 2,
+              "leftChars": 20,
+              "rightChars": 1,
+              "maxLeft": 19,
+              "maxRight": 1
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 36,
+              "rightChars": 28,
+              "maxLeft": 20,
+              "maxRight": 22
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 76,
+              "rightChars": 316,
+              "maxLeft": 30,
+              "maxRight": 70
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 222,
+              "rightChars": 280,
+              "maxLeft": 113,
+              "maxRight": 101
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 518,
+              "rightChars": 925,
+              "maxLeft": 223,
+              "maxRight": 458
+            },
+            "j_field_keys": {
+              "calls": 2,
+              "leftChars": 8,
+              "rightChars": 1,
+              "maxLeft": 7,
+              "maxRight": 1
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 182,
+              "rightChars": 2133,
+              "maxLeft": 18,
+              "maxRight": 164
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 182,
+              "rightChars": 0,
+              "maxLeft": 182,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 1.0911230000001524,
+            "consumeMs": 0.048160999998799525,
+            "totalMs": 1.139283999998952
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 1.586592000001474,
+            "consumeMs": 0.04375699999945937,
+            "totalMs": 1.6303490000009333
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 0.9916300000004412,
+            "consumeMs": 0.029356999999436084,
+            "totalMs": 1.0209869999998773
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 3.7188179999993736,
+            "consumeMs": 0.045369000001301174,
+            "totalMs": 3.7641870000006747
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 0.8912469999995665,
+            "consumeMs": 0.021227000001090346,
+            "totalMs": 0.9124740000006568
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 0.9331249999995634,
+            "consumeMs": 0.02156199999990349,
+            "totalMs": 0.9546869999994669
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 0.8586580000010144,
+            "consumeMs": 0.019887000000380795,
+            "totalMs": 0.8785450000013952
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 1.1571920000005775,
+            "consumeMs": 0.027518000000782195,
+            "totalMs": 1.1847100000013597
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.8217350000013539,
+            "consumeMs": 0.0210929999993823,
+            "totalMs": 0.8428280000007362
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 0.9138359999997192,
+            "consumeMs": 0.02136900000004971,
+            "totalMs": 0.9352049999997689
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 1.0911230000001524,
+            "consumeMs": 0.027518000000782195,
+            "totalMs": 1.139283999998952
+          },
+          "joined": {
+            "emitMs": 0.9331249999995634,
+            "consumeMs": 0.02156199999990349,
+            "totalMs": 0.9546869999994669
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "constructor-depth",
+        "size": 32,
+        "inputSha256": "f1810b56e2216640a8595b30dfeb7077e28784f6b896e6940428d90620e8cb97",
+        "outputBytes": 1144,
+        "outputSha256": "a968b45adcb72d13208d61a8bfe2516429dc14be7a05748dd0050879dba49ddb",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 66,
+            "j_l_deeps": 65,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 39,
+            "j_l_global_worker": 1,
+            "j_expr": 66,
+            "j_l_name": 66,
+            "j_l_names": 66,
+            "j_expr_on": 66,
+            "j_constructor_mode": 33,
+            "j_literal_typed": 33,
+            "j_literal": 33,
+            "j_literal_node": 33,
+            "j_literal_ctor": 33,
+            "j_find_ctor": 66,
+            "lookup": 131,
+            "j_found_ctor": 66,
+            "wnf": 34,
+            "j_specialize": 33,
+            "j_ctor_thunks": 65,
+            "j_app_type": 32,
+            "subst": 32,
+            "subst_terms": 32,
+            "j_quote": 47,
+            "j_escape": 237,
+            "j_escape_char": 190,
+            "j_escape_char_on": 190,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 3,
+            "j_descriptor": 1,
+            "j_desc_kind": 1,
+            "j_desc_head": 1,
+            "j_desc_head_on": 1,
+            "j_desc_args": 1,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 3
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 5,
+              "rightChars": 1,
+              "maxLeft": 5,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 132,
+              "leftChars": 11550,
+              "rightChars": 33858,
+              "maxLeft": 672,
+              "maxRight": 682
+            },
+            "j_escape": {
+              "calls": 190,
+              "leftChars": 190,
+              "rightChars": 290,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 94,
+              "leftChars": 237,
+              "rightChars": 284,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_ctor_thunks": {
+              "calls": 96,
+              "leftChars": 11088,
+              "rightChars": 10992,
+              "maxLeft": 667,
+              "maxRight": 668
+            },
+            "j_l_global_worker": {
+              "calls": 6,
+              "leftChars": 1436,
+              "rightChars": 2855,
+              "maxLeft": 714,
+              "maxRight": 725
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 727,
+              "maxLeft": 0,
+              "maxRight": 727
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 727,
+              "rightChars": 727,
+              "maxLeft": 727,
+              "maxRight": 727
+            },
+            "j_desc_head_on": {
+              "calls": 4,
+              "leftChars": 17,
+              "rightChars": 18,
+              "maxLeft": 9,
+              "maxRight": 10
+            },
+            "j_schema_fields": {
+              "calls": 2,
+              "leftChars": 20,
+              "rightChars": 1,
+              "maxLeft": 19,
+              "maxRight": 1
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 36,
+              "rightChars": 28,
+              "maxLeft": 20,
+              "maxRight": 22
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 76,
+              "rightChars": 316,
+              "maxLeft": 30,
+              "maxRight": 70
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 222,
+              "rightChars": 280,
+              "maxLeft": 113,
+              "maxRight": 101
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 1022,
+              "rightChars": 1933,
+              "maxLeft": 727,
+              "maxRight": 962
+            },
+            "j_field_keys": {
+              "calls": 2,
+              "leftChars": 8,
+              "rightChars": 1,
+              "maxLeft": 7,
+              "maxRight": 1
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 182,
+              "rightChars": 2133,
+              "maxLeft": 18,
+              "maxRight": 164
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 182,
+              "rightChars": 0,
+              "maxLeft": 182,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 2.588459000000512,
+            "consumeMs": 0.05798099999992701,
+            "totalMs": 2.646440000000439
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 2.051245000000563,
+            "consumeMs": 0.04751599999872269,
+            "totalMs": 2.0987609999992856
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 2.1782400000010966,
+            "consumeMs": 0.04552999999941676,
+            "totalMs": 2.2237700000005134
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 2.2085340000012366,
+            "consumeMs": 0.046145999998771,
+            "totalMs": 2.2546800000000076
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 1.9704469999996945,
+            "consumeMs": 0.04571099999884609,
+            "totalMs": 2.0161579999985406
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 2.2753060000013647,
+            "consumeMs": 0.07816499999898952,
+            "totalMs": 2.3534710000003543
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 2.3951230000002397,
+            "consumeMs": 0.09171799999967334,
+            "totalMs": 2.486840999999913
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 2.5909909999991214,
+            "consumeMs": 0.06022099999972852,
+            "totalMs": 2.65121199999885
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 1.9688780000014958,
+            "consumeMs": 0.0525229999984731,
+            "totalMs": 2.021400999999969
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 2.1165579999997135,
+            "consumeMs": 0.054507000000739936,
+            "totalMs": 2.1710650000004534
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 2.2085340000012366,
+            "consumeMs": 0.0525229999984731,
+            "totalMs": 2.2546800000000076
+          },
+          "joined": {
+            "emitMs": 2.1782400000010966,
+            "consumeMs": 0.054507000000739936,
+            "totalMs": 2.2237700000005134
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "constructor-depth",
+        "size": 128,
+        "inputSha256": "d02ee77c63d4a3abcaf284d3991143c12fc8f956509f895d6de783b26e9fe1e6",
+        "outputBytes": 3160,
+        "outputSha256": "7b1ee022ac73a07049e41cf8e2ed6a34cd9b5a2dd7f5abe8f9bc77d2326a0820",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 258,
+            "j_l_deeps": 257,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 135,
+            "j_l_global_worker": 1,
+            "j_expr": 258,
+            "j_l_name": 258,
+            "j_l_names": 258,
+            "j_expr_on": 258,
+            "j_constructor_mode": 129,
+            "j_literal_typed": 129,
+            "j_literal": 129,
+            "j_literal_node": 129,
+            "j_literal_ctor": 129,
+            "j_find_ctor": 258,
+            "lookup": 515,
+            "j_found_ctor": 258,
+            "wnf": 130,
+            "j_specialize": 129,
+            "j_ctor_thunks": 257,
+            "j_app_type": 128,
+            "subst": 128,
+            "subst_terms": 128,
+            "j_quote": 143,
+            "j_escape": 717,
+            "j_escape_char": 574,
+            "j_escape_char_on": 574,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 3,
+            "j_descriptor": 1,
+            "j_desc_kind": 1,
+            "j_desc_head": 1,
+            "j_desc_head_on": 1,
+            "j_desc_args": 1,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 3
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 5,
+              "rightChars": 1,
+              "maxLeft": 5,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 516,
+              "leftChars": 175182,
+              "rightChars": 522450,
+              "maxLeft": 2688,
+              "maxRight": 2698
+            },
+            "j_escape": {
+              "calls": 574,
+              "leftChars": 574,
+              "rightChars": 866,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 286,
+              "leftChars": 717,
+              "rightChars": 860,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_ctor_thunks": {
+              "calls": 384,
+              "leftChars": 173376,
+              "rightChars": 172992,
+              "maxLeft": 2683,
+              "maxRight": 2684
+            },
+            "j_l_global_worker": {
+              "calls": 6,
+              "leftChars": 5468,
+              "rightChars": 10919,
+              "maxLeft": 2730,
+              "maxRight": 2741
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 2743,
+              "maxLeft": 0,
+              "maxRight": 2743
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 2743,
+              "rightChars": 2743,
+              "maxLeft": 2743,
+              "maxRight": 2743
+            },
+            "j_desc_head_on": {
+              "calls": 4,
+              "leftChars": 17,
+              "rightChars": 18,
+              "maxLeft": 9,
+              "maxRight": 10
+            },
+            "j_schema_fields": {
+              "calls": 2,
+              "leftChars": 20,
+              "rightChars": 1,
+              "maxLeft": 19,
+              "maxRight": 1
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 36,
+              "rightChars": 28,
+              "maxLeft": 20,
+              "maxRight": 22
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 76,
+              "rightChars": 316,
+              "maxLeft": 30,
+              "maxRight": 70
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 222,
+              "rightChars": 280,
+              "maxLeft": 113,
+              "maxRight": 101
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 3038,
+              "rightChars": 5965,
+              "maxLeft": 2743,
+              "maxRight": 2978
+            },
+            "j_field_keys": {
+              "calls": 2,
+              "leftChars": 8,
+              "rightChars": 1,
+              "maxLeft": 7,
+              "maxRight": 1
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 182,
+              "rightChars": 2133,
+              "maxLeft": 18,
+              "maxRight": 164
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 182,
+              "rightChars": 0,
+              "maxLeft": 182,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 6.5541250000005675,
+            "consumeMs": 0.07934500000010303,
+            "totalMs": 6.6334700000006706
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 7.944213000000673,
+            "consumeMs": 0.07644999999865831,
+            "totalMs": 8.020662999999331
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 10.831936000000496,
+            "consumeMs": 0.07739899999978661,
+            "totalMs": 10.909335000000283
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 8.524452999999994,
+            "consumeMs": 0.08562499999970896,
+            "totalMs": 8.610077999999703
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 7.3500979999989795,
+            "consumeMs": 0.09783100000095146,
+            "totalMs": 7.447928999999931
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 6.73086499999954,
+            "consumeMs": 0.08117300000048999,
+            "totalMs": 6.81203800000003
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 7.371379000000161,
+            "consumeMs": 0.0887590000002092,
+            "totalMs": 7.46013800000037
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 6.477080000000569,
+            "consumeMs": 0.0991199999989476,
+            "totalMs": 6.576199999999517
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 7.887528000001112,
+            "consumeMs": 0.08774699999958102,
+            "totalMs": 7.975275000000693
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 8.036247999998523,
+            "consumeMs": 0.08762900000147056,
+            "totalMs": 8.123876999999993
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 7.3500979999989795,
+            "consumeMs": 0.08774699999958102,
+            "totalMs": 7.447928999999931
+          },
+          "joined": {
+            "emitMs": 7.944213000000673,
+            "consumeMs": 0.08117300000048999,
+            "totalMs": 8.020662999999331
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "constructor-depth",
+        "size": 512,
+        "inputSha256": "b66d45c35906f3e63474988043b8d79977f951039a4d1c012760f8c34eef7291",
+        "outputBytes": 11224,
+        "outputSha256": "9a7e25cde154af8adb23dfc565610488dcc606599b06fb2942855ab64814c920",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 1026,
+            "j_l_deeps": 1025,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 519,
+            "j_l_global_worker": 1,
+            "j_expr": 1026,
+            "j_l_name": 1026,
+            "j_l_names": 1026,
+            "j_expr_on": 1026,
+            "j_constructor_mode": 513,
+            "j_literal_typed": 513,
+            "j_literal": 513,
+            "j_literal_node": 513,
+            "j_literal_ctor": 513,
+            "j_find_ctor": 1026,
+            "lookup": 2051,
+            "j_found_ctor": 1026,
+            "wnf": 514,
+            "j_specialize": 513,
+            "j_ctor_thunks": 1025,
+            "j_app_type": 512,
+            "subst": 512,
+            "subst_terms": 512,
+            "j_quote": 527,
+            "j_escape": 2637,
+            "j_escape_char": 2110,
+            "j_escape_char_on": 2110,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 3,
+            "j_descriptor": 1,
+            "j_desc_kind": 1,
+            "j_desc_head": 1,
+            "j_desc_head_on": 1,
+            "j_desc_args": 1,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 3
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 5,
+              "rightChars": 1,
+              "maxLeft": 5,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 2052,
+              "leftChars": 2765070,
+              "rightChars": 8282898,
+              "maxLeft": 10752,
+              "maxRight": 10762
+            },
+            "j_escape": {
+              "calls": 2110,
+              "leftChars": 2110,
+              "rightChars": 3170,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 1054,
+              "leftChars": 2637,
+              "rightChars": 3164,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_ctor_thunks": {
+              "calls": 1536,
+              "leftChars": 2757888,
+              "rightChars": 2756352,
+              "maxLeft": 10747,
+              "maxRight": 10748
+            },
+            "j_l_global_worker": {
+              "calls": 6,
+              "leftChars": 21596,
+              "rightChars": 43175,
+              "maxLeft": 10794,
+              "maxRight": 10805
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 10807,
+              "maxLeft": 0,
+              "maxRight": 10807
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 10807,
+              "rightChars": 10807,
+              "maxLeft": 10807,
+              "maxRight": 10807
+            },
+            "j_desc_head_on": {
+              "calls": 4,
+              "leftChars": 17,
+              "rightChars": 18,
+              "maxLeft": 9,
+              "maxRight": 10
+            },
+            "j_schema_fields": {
+              "calls": 2,
+              "leftChars": 20,
+              "rightChars": 1,
+              "maxLeft": 19,
+              "maxRight": 1
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 36,
+              "rightChars": 28,
+              "maxLeft": 20,
+              "maxRight": 22
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 76,
+              "rightChars": 316,
+              "maxLeft": 30,
+              "maxRight": 70
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 222,
+              "rightChars": 280,
+              "maxLeft": 113,
+              "maxRight": 101
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 11102,
+              "rightChars": 22093,
+              "maxLeft": 10807,
+              "maxRight": 11042
+            },
+            "j_field_keys": {
+              "calls": 2,
+              "leftChars": 8,
+              "rightChars": 1,
+              "maxLeft": 7,
+              "maxRight": 1
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 182,
+              "rightChars": 2133,
+              "maxLeft": 18,
+              "maxRight": 164
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 182,
+              "rightChars": 0,
+              "maxLeft": 182,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 30.81452200000058,
+            "consumeMs": 0.20689499999934924,
+            "totalMs": 31.02141699999993
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 26.052254000000175,
+            "consumeMs": 0.1890400000011141,
+            "totalMs": 26.24129400000129
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 103.62039899999945,
+            "consumeMs": 0.17258399999991525,
+            "totalMs": 103.79298299999937
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 74.32046999999875,
+            "consumeMs": 0.18884600000092178,
+            "totalMs": 74.50931599999967
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 33.67965399999957,
+            "consumeMs": 0.19518600000083097,
+            "totalMs": 33.874840000000404
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 25.123709000001327,
+            "consumeMs": 0.4651209999992716,
+            "totalMs": 25.5888300000006
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 24.480893999998443,
+            "consumeMs": 0.19349900000088383,
+            "totalMs": 24.674392999999327
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 23.218949000000066,
+            "consumeMs": 0.24750200000016775,
+            "totalMs": 23.466451000000234
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 28.280376000000615,
+            "consumeMs": 0.19803200000023935,
+            "totalMs": 28.478408000000854
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 37.84468099999867,
+            "consumeMs": 0.30988500000057684,
+            "totalMs": 38.15456599999925
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 30.81452200000058,
+            "consumeMs": 0.19803200000023935,
+            "totalMs": 31.02141699999993
+          },
+          "joined": {
+            "emitMs": 26.052254000000175,
+            "consumeMs": 0.19349900000088383,
+            "totalMs": 26.24129400000129
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "lambda-depth",
+        "size": 8,
+        "inputSha256": "de19394fa80bff7b526c8539be3e242f622a331ac9f60030303027f971ad057e",
+        "outputBytes": 578,
+        "outputSha256": "36dd65eb4830b43fe11b84d8b0a37549162c82959cd0323f9c52bc87bd99e53d",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 18,
+            "j_l_deeps": 17,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 7,
+            "j_l_global_worker": 1,
+            "j_expr": 3,
+            "j_l_name": 3,
+            "j_l_names": 3,
+            "j_expr_on": 3,
+            "wnf": 10,
+            "j_lambda": 1,
+            "j_lambda_code": 17,
+            "j_lambda_bind": 8,
+            "subst": 64,
+            "subst_terms": 120,
+            "j_constructor_mode": 1,
+            "j_literal_typed": 1,
+            "j_literal": 1,
+            "j_literal_node": 1,
+            "j_literal_ctor": 1,
+            "j_find_ctor": 2,
+            "lookup": 3,
+            "j_found_ctor": 2,
+            "j_specialize": 1,
+            "j_ctor_thunks": 1,
+            "j_quote": 13,
+            "j_escape": 71,
+            "j_escape_char": 58,
+            "j_escape_char_on": 58,
+            "j_local": 8,
+            "j_lambda_count": 17,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 5,
+              "rightChars": 1,
+              "maxLeft": 5,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 4,
+              "leftChars": 14,
+              "rightChars": 18,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 58,
+              "leftChars": 58,
+              "rightChars": 102,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 26,
+              "leftChars": 71,
+              "rightChars": 84,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_lambda_code": {
+              "calls": 2,
+              "leftChars": 23,
+              "rightChars": 18,
+              "maxLeft": 16,
+              "maxRight": 17
+            },
+            "j_lambda_bind": {
+              "calls": 56,
+              "leftChars": 152,
+              "rightChars": 3400,
+              "maxLeft": 6,
+              "maxRight": 146
+            },
+            "j_local": {
+              "calls": 8,
+              "leftChars": 8,
+              "rightChars": 24,
+              "maxLeft": 1,
+              "maxRight": 3
+            },
+            "j_lambda": {
+              "calls": 4,
+              "leftChars": 169,
+              "rightChars": 491,
+              "maxLeft": 152,
+              "maxRight": 168
+            },
+            "j_l_global_worker": {
+              "calls": 4,
+              "leftChars": 182,
+              "rightChars": 532,
+              "maxLeft": 171,
+              "maxRight": 182
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 184,
+              "maxLeft": 0,
+              "maxRight": 184
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 184,
+              "rightChars": 184,
+              "maxLeft": 184,
+              "maxRight": 184
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 456,
+              "rightChars": 828,
+              "maxLeft": 184,
+              "maxRight": 400
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 1.9789869999985967,
+            "consumeMs": 0.05299900000136404,
+            "totalMs": 2.0319859999999608
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 1.8643169999995735,
+            "consumeMs": 0.042987999999240856,
+            "totalMs": 1.9073049999988143
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 1.7481750000006286,
+            "consumeMs": 0.050887999999758904,
+            "totalMs": 1.7990630000003875
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 2.2256749999996828,
+            "consumeMs": 0.05393000000003667,
+            "totalMs": 2.2796049999997194
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 2.096337000000858,
+            "consumeMs": 0.0526640000007319,
+            "totalMs": 2.14900100000159
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 1.6987890000000334,
+            "consumeMs": 0.056571000000985805,
+            "totalMs": 1.7553600000010192
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 1.891127000000779,
+            "consumeMs": 0.05455899999833491,
+            "totalMs": 1.9456859999991138
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 1.8328750000000582,
+            "consumeMs": 0.06427100000109931,
+            "totalMs": 1.8971460000011575
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 1.8350390000014158,
+            "consumeMs": 0.058114999999816064,
+            "totalMs": 1.893154000001232
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 1.861401999998634,
+            "consumeMs": 0.06043700000009267,
+            "totalMs": 1.9218389999987266
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 1.9789869999985967,
+            "consumeMs": 0.05393000000003667,
+            "totalMs": 2.0319859999999608
+          },
+          "joined": {
+            "emitMs": 1.861401999998634,
+            "consumeMs": 0.05455899999833491,
+            "totalMs": 1.9073049999988143
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "lambda-depth",
+        "size": 16,
+        "inputSha256": "726276855170837ae51d1b2ec1a3d15918f1903528ef6e67baeef509447b6cd7",
+        "outputBytes": 713,
+        "outputSha256": "fd0b8323255be851ce28b8e822ae23b5ef170a4ede98007d8908d3faf00fa64e",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 34,
+            "j_l_deeps": 33,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 7,
+            "j_l_global_worker": 1,
+            "j_expr": 3,
+            "j_l_name": 3,
+            "j_l_names": 3,
+            "j_expr_on": 3,
+            "wnf": 18,
+            "j_lambda": 1,
+            "j_lambda_code": 33,
+            "j_lambda_bind": 16,
+            "subst": 256,
+            "subst_terms": 496,
+            "j_constructor_mode": 1,
+            "j_literal_typed": 1,
+            "j_literal": 1,
+            "j_literal_node": 1,
+            "j_literal_ctor": 1,
+            "j_find_ctor": 2,
+            "lookup": 3,
+            "j_found_ctor": 2,
+            "j_specialize": 1,
+            "j_ctor_thunks": 1,
+            "j_quote": 13,
+            "j_escape": 71,
+            "j_escape_char": 58,
+            "j_escape_char_on": 58,
+            "j_local": 16,
+            "j_lambda_count": 33,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 5,
+              "rightChars": 1,
+              "maxLeft": 5,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 4,
+              "leftChars": 14,
+              "rightChars": 18,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 58,
+              "leftChars": 58,
+              "rightChars": 102,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 26,
+              "leftChars": 71,
+              "rightChars": 84,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_lambda_code": {
+              "calls": 2,
+              "leftChars": 23,
+              "rightChars": 18,
+              "maxLeft": 16,
+              "maxRight": 17
+            },
+            "j_lambda_bind": {
+              "calls": 112,
+              "leftChars": 316,
+              "rightChars": 12319,
+              "maxLeft": 6,
+              "maxRight": 280
+            },
+            "j_local": {
+              "calls": 16,
+              "leftChars": 16,
+              "rightChars": 48,
+              "maxLeft": 1,
+              "maxRight": 3
+            },
+            "j_lambda": {
+              "calls": 4,
+              "leftChars": 304,
+              "rightChars": 894,
+              "maxLeft": 286,
+              "maxRight": 303
+            },
+            "j_l_global_worker": {
+              "calls": 4,
+              "leftChars": 317,
+              "rightChars": 937,
+              "maxLeft": 306,
+              "maxRight": 317
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 319,
+              "maxLeft": 0,
+              "maxRight": 319
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 319,
+              "rightChars": 319,
+              "maxLeft": 319,
+              "maxRight": 319
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 591,
+              "rightChars": 1098,
+              "maxLeft": 319,
+              "maxRight": 535
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 1.8814510000011069,
+            "consumeMs": 0.054765999999290216,
+            "totalMs": 1.936217000000397
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 2.5635130000009667,
+            "consumeMs": 0.06564999999864085,
+            "totalMs": 2.6291629999996076
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 2.924644000000626,
+            "consumeMs": 0.0587759999998525,
+            "totalMs": 2.9834200000004785
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 2.7683629999992263,
+            "consumeMs": 0.05557799999951385,
+            "totalMs": 2.82394099999874
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 2.0543609999986074,
+            "consumeMs": 0.06682499999988067,
+            "totalMs": 2.121185999998488
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 2.5864330000003974,
+            "consumeMs": 0.0642520000001241,
+            "totalMs": 2.6506850000005215
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 2.632048000001305,
+            "consumeMs": 0.3556799999987561,
+            "totalMs": 2.987728000000061
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 2.3081699999984266,
+            "consumeMs": 0.059675000000424916,
+            "totalMs": 2.3678449999988516
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 1.7705409999998665,
+            "consumeMs": 0.05472100000042701,
+            "totalMs": 1.8252620000002935
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 1.6947909999998956,
+            "consumeMs": 0.05139400000007299,
+            "totalMs": 1.7461849999999686
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 2.0543609999986074,
+            "consumeMs": 0.05557799999951385,
+            "totalMs": 2.121185999998488
+          },
+          "joined": {
+            "emitMs": 2.5864330000003974,
+            "consumeMs": 0.0642520000001241,
+            "totalMs": 2.6506850000005215
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "lambda-depth",
+        "size": 32,
+        "inputSha256": "0b6a8cd4612c6c0e5fd6d9dfefb5be0b7862c73035f2f74cc655a5c2d174839b",
+        "outputBytes": 985,
+        "outputSha256": "91ad2614698b563ea0489a9f1e4ae784e61fe0383a3e0157767704f45ab15d33",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 66,
+            "j_l_deeps": 65,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 7,
+            "j_l_global_worker": 1,
+            "j_expr": 3,
+            "j_l_name": 3,
+            "j_l_names": 3,
+            "j_expr_on": 3,
+            "wnf": 34,
+            "j_lambda": 1,
+            "j_lambda_code": 65,
+            "j_lambda_bind": 32,
+            "subst": 1024,
+            "subst_terms": 2016,
+            "j_constructor_mode": 1,
+            "j_literal_typed": 1,
+            "j_literal": 1,
+            "j_literal_node": 1,
+            "j_literal_ctor": 1,
+            "j_find_ctor": 2,
+            "lookup": 3,
+            "j_found_ctor": 2,
+            "j_specialize": 1,
+            "j_ctor_thunks": 1,
+            "j_quote": 13,
+            "j_escape": 71,
+            "j_escape_char": 58,
+            "j_escape_char_on": 58,
+            "j_local": 32,
+            "j_lambda_count": 65,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 5,
+              "rightChars": 1,
+              "maxLeft": 5,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 4,
+              "leftChars": 14,
+              "rightChars": 18,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 58,
+              "leftChars": 58,
+              "rightChars": 102,
+              "maxLeft": 1,
+              "maxRight": 4
+            },
+            "j_quote": {
+              "calls": 26,
+              "leftChars": 71,
+              "rightChars": 84,
+              "maxLeft": 5,
+              "maxRight": 6
+            },
+            "j_lambda_code": {
+              "calls": 2,
+              "leftChars": 23,
+              "rightChars": 18,
+              "maxLeft": 16,
+              "maxRight": 17
+            },
+            "j_lambda_bind": {
+              "calls": 224,
+              "leftChars": 652,
+              "rightChars": 46663,
+              "maxLeft": 6,
+              "maxRight": 552
+            },
+            "j_local": {
+              "calls": 32,
+              "leftChars": 32,
+              "rightChars": 96,
+              "maxLeft": 1,
+              "maxRight": 3
+            },
+            "j_lambda": {
+              "calls": 4,
+              "leftChars": 576,
+              "rightChars": 1710,
+              "maxLeft": 558,
+              "maxRight": 575
+            },
+            "j_l_global_worker": {
+              "calls": 4,
+              "leftChars": 589,
+              "rightChars": 1753,
+              "maxLeft": 578,
+              "maxRight": 589
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 591,
+              "maxLeft": 0,
+              "maxRight": 591
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 591,
+              "rightChars": 591,
+              "maxLeft": 591,
+              "maxRight": 591
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 863,
+              "rightChars": 1642,
+              "maxLeft": 591,
+              "maxRight": 807
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 2.73450000000048,
+            "consumeMs": 0.06277899999986403,
+            "totalMs": 2.7972790000003442
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 4.289557000000059,
+            "consumeMs": 0.057071999999607215,
+            "totalMs": 4.346628999999666
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 4.2567330000001675,
+            "consumeMs": 0.05666500000006636,
+            "totalMs": 4.313398000000234
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 2.662554000000455,
+            "consumeMs": 0.062493999999787775,
+            "totalMs": 2.7250480000002426
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 4.729106000000684,
+            "consumeMs": 0.05818299999918963,
+            "totalMs": 4.787288999999873
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 6.499471999999514,
+            "consumeMs": 0.16522400000030757,
+            "totalMs": 6.664695999999822
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 31.238906000000497,
+            "consumeMs": 0.05641800000012154,
+            "totalMs": 31.29532400000062
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 2.676000000001295,
+            "consumeMs": 0.05997899999965739,
+            "totalMs": 2.7359790000009525
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 3.2825080000002345,
+            "consumeMs": 0.0652009999994334,
+            "totalMs": 3.347708999999668
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 2.9264299999995274,
+            "consumeMs": 0.0628099999994447,
+            "totalMs": 2.989239999998972
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 2.73450000000048,
+            "consumeMs": 0.062493999999787775,
+            "totalMs": 2.7972790000003442
+          },
+          "joined": {
+            "emitMs": 4.289557000000059,
+            "consumeMs": 0.057071999999607215,
+            "totalMs": 4.346628999999666
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "lambda-depth",
+        "size": 64,
+        "inputSha256": "261d7085346cd16c7537dbe80033ac81323acd4efd28bb6193c25e6bf5b3956b",
+        "outputBytes": 2396,
+        "outputSha256": "52da366a735bcbb1173713042228cffce02b9fc2bd5a6861624f6093e93b5153",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 66,
+            "j_l_deeps": 32,
+            "j_l_mark": 130,
+            "j_l_marks": 129,
+            "j_l_definition": 1,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 9,
+            "j_l_global_worker": 1,
+            "j_expr": 4,
+            "j_l_name": 70,
+            "j_l_names": 70,
+            "j_expr_on": 5,
+            "wnf": 165,
+            "j_lambda": 2,
+            "j_lambda_code": 194,
+            "j_lambda_bind": 96,
+            "subst": 9216,
+            "subst_terms": 18272,
+            "j_constructor_mode": 2,
+            "j_literal_typed": 3,
+            "j_literal": 3,
+            "j_literal_node": 3,
+            "j_literal_ctor": 3,
+            "j_find_ctor": 6,
+            "lookup": 9,
+            "j_found_ctor": 6,
+            "j_specialize": 3,
+            "j_ctor_thunks": 2,
+            "j_quote": 15,
+            "j_escape": 146,
+            "j_escape_char": 131,
+            "j_escape_char_on": 131,
+            "j_local": 192,
+            "j_lambda_count": 194,
+            "j_l_walk": 130,
+            "j_l_children": 65,
+            "j_l_lam": 64,
+            "j_l_capture": 33,
+            "j_l_fields": 1,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 5,
+              "rightChars": 1,
+              "maxLeft": 5,
+              "maxRight": 1
+            },
+            "j_l_marks": {
+              "calls": 64,
+              "leftChars": 64,
+              "rightChars": 64,
+              "maxLeft": 1,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 8,
+              "leftChars": 28,
+              "rightChars": 36,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 131,
+              "leftChars": 131,
+              "rightChars": 2454,
+              "maxLeft": 1,
+              "maxRight": 68
+            },
+            "j_quote": {
+              "calls": 30,
+              "leftChars": 146,
+              "rightChars": 161,
+              "maxLeft": 69,
+              "maxRight": 70
+            },
+            "j_lambda_code": {
+              "calls": 4,
+              "leftChars": 46,
+              "rightChars": 36,
+              "maxLeft": 16,
+              "maxRight": 17
+            },
+            "j_lambda_bind": {
+              "calls": 672,
+              "leftChars": 1976,
+              "rightChars": 227294,
+              "maxLeft": 6,
+              "maxRight": 1096
+            },
+            "j_local": {
+              "calls": 192,
+              "leftChars": 192,
+              "rightChars": 576,
+              "maxLeft": 1,
+              "maxRight": 3
+            },
+            "j_lambda": {
+              "calls": 8,
+              "leftChars": 1696,
+              "rightChars": 5052,
+              "maxLeft": 1102,
+              "maxRight": 1119
+            },
+            "j_l_global_worker": {
+              "calls": 4,
+              "leftChars": 1133,
+              "rightChars": 3385,
+              "maxLeft": 1122,
+              "maxRight": 1133
+            },
+            "j_l_walk": {
+              "calls": 71,
+              "leftChars": 1666,
+              "rightChars": 30243,
+              "maxLeft": 835,
+              "maxRight": 835
+            },
+            "j_l_capture": {
+              "calls": 64,
+              "leftChars": 160,
+              "rightChars": 4992,
+              "maxLeft": 4,
+              "maxRight": 156
+            },
+            "j_l_definition": {
+              "calls": 3,
+              "leftChars": 2000,
+              "rightChars": 3111,
+              "maxLeft": 1135,
+              "maxRight": 1972
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 2002,
+              "maxLeft": 0,
+              "maxRight": 2002
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 2002,
+              "rightChars": 2002,
+              "maxLeft": 2002,
+              "maxRight": 2002
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 2274,
+              "rightChars": 4464,
+              "maxLeft": 2002,
+              "maxRight": 2218
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 48.94110700000056,
+            "consumeMs": 0.09454999999979918,
+            "totalMs": 49.035657000000356
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 54.689979999999196,
+            "consumeMs": 0.09124100000008184,
+            "totalMs": 54.78122099999928
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 15.428715000000011,
+            "consumeMs": 0.08887900000081572,
+            "totalMs": 15.517594000000827
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 14.534765000000334,
+            "consumeMs": 0.08971199999905366,
+            "totalMs": 14.624476999999388
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 17.28501800000049,
+            "consumeMs": 0.08988700000008976,
+            "totalMs": 17.37490500000058
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 19.792531999999483,
+            "consumeMs": 0.08174800000051619,
+            "totalMs": 19.87428
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 14.495154000000184,
+            "consumeMs": 0.0915420000001177,
+            "totalMs": 14.586696000000302
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 16.39634599999954,
+            "consumeMs": 0.1026480000000447,
+            "totalMs": 16.498993999999584
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 15.80471800000123,
+            "consumeMs": 0.08731900000020687,
+            "totalMs": 15.892037000001437
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 15.638187000000471,
+            "consumeMs": 0.09454700000060257,
+            "totalMs": 15.732734000001074
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 16.39634599999954,
+            "consumeMs": 0.08988700000008976,
+            "totalMs": 16.498993999999584
+          },
+          "joined": {
+            "emitMs": 15.638187000000471,
+            "consumeMs": 0.09124100000008184,
+            "totalMs": 15.732734000001074
+          }
+        },
+        "allExact": true
+      },
+      {
+        "kind": "lambda-depth",
+        "size": 128,
+        "inputSha256": "24ad05a2c7a2e3e2bae8ab812676c605d5768e18277305e85d6f24b63231d6fc",
+        "outputBytes": 7457,
+        "outputSha256": "9770b9d14d838b64fa732f3412d66deeb8386665122ce8eb3e07e71f9d9699ae",
+        "operations": {
+          "calls": {
+            "j_library_context": 1,
+            "j_defs": 3,
+            "j_def": 2,
+            "j_intrinsic": 1,
+            "j_l_def": 1,
+            "j_l_deep": 66,
+            "j_l_deeps": 32,
+            "j_l_mark": 258,
+            "j_l_marks": 257,
+            "j_l_definition": 1,
+            "j_l_global": 1,
+            "j_projection_worker": 1,
+            "j_strip": 11,
+            "j_l_global_worker": 1,
+            "j_expr": 6,
+            "j_l_name": 138,
+            "j_l_names": 138,
+            "j_expr_on": 9,
+            "wnf": 454,
+            "j_lambda": 4,
+            "j_lambda_code": 638,
+            "j_lambda_bind": 317,
+            "subst": 46853,
+            "subst_terms": 93261,
+            "j_constructor_mode": 4,
+            "j_literal_typed": 5,
+            "j_literal": 5,
+            "j_literal_node": 5,
+            "j_literal_ctor": 5,
+            "j_find_ctor": 10,
+            "lookup": 15,
+            "j_found_ctor": 10,
+            "j_specialize": 5,
+            "j_ctor_thunks": 4,
+            "j_quote": 19,
+            "j_escape": 494,
+            "j_escape_char": 475,
+            "j_escape_char_on": 475,
+            "j_local": 902,
+            "j_lambda_count": 638,
+            "j_l_walk": 258,
+            "j_l_children": 129,
+            "j_l_lam": 128,
+            "j_l_capture": 198,
+            "j_l_fields": 1,
+            "j_schemas": 3,
+            "j_schema_ctors": 3,
+            "j_schema_params": 2,
+            "j_schema_fields": 2,
+            "j_ctor_metadata": 3,
+            "j_ctor_keys": 4,
+            "j_field_keys": 2
+          },
+          "strings": {
+            "j_intrinsic": {
+              "calls": 1,
+              "leftChars": 5,
+              "rightChars": 1,
+              "maxLeft": 5,
+              "maxRight": 1
+            },
+            "j_l_marks": {
+              "calls": 128,
+              "leftChars": 128,
+              "rightChars": 128,
+              "maxLeft": 1,
+              "maxRight": 1
+            },
+            "j_constructor_mode": {
+              "calls": 16,
+              "leftChars": 56,
+              "rightChars": 72,
+              "maxLeft": 6,
+              "maxRight": 10
+            },
+            "j_escape": {
+              "calls": 475,
+              "leftChars": 475,
+              "rightChars": 31611,
+              "maxLeft": 1,
+              "maxRight": 200
+            },
+            "j_quote": {
+              "calls": 38,
+              "leftChars": 494,
+              "rightChars": 513,
+              "maxLeft": 201,
+              "maxRight": 202
+            },
+            "j_lambda_code": {
+              "calls": 8,
+              "leftChars": 92,
+              "rightChars": 72,
+              "maxLeft": 16,
+              "maxRight": 17
+            },
+            "j_lambda_bind": {
+              "calls": 2219,
+              "leftChars": 6633,
+              "rightChars": 1343635,
+              "maxLeft": 6,
+              "maxRight": 2212
+            },
+            "j_local": {
+              "calls": 902,
+              "leftChars": 902,
+              "rightChars": 2706,
+              "maxLeft": 1,
+              "maxRight": 3
+            },
+            "j_lambda": {
+              "calls": 16,
+              "leftChars": 5546,
+              "rightChars": 16564,
+              "maxLeft": 2218,
+              "maxRight": 2236
+            },
+            "j_l_global_worker": {
+              "calls": 4,
+              "leftChars": 2250,
+              "rightChars": 6736,
+              "maxLeft": 2239,
+              "maxRight": 2250
+            },
+            "j_l_walk": {
+              "calls": 147,
+              "leftChars": 9546,
+              "rightChars": 309012,
+              "maxLeft": 1923,
+              "maxRight": 4779
+            },
+            "j_l_capture": {
+              "calls": 390,
+              "leftChars": 975,
+              "rightChars": 73485,
+              "maxLeft": 4,
+              "maxRight": 486
+            },
+            "j_l_definition": {
+              "calls": 3,
+              "leftChars": 7061,
+              "rightChars": 9289,
+              "maxLeft": 4779,
+              "maxRight": 7033
+            },
+            "j_def": {
+              "calls": 1,
+              "leftChars": 0,
+              "rightChars": 7063,
+              "maxLeft": 0,
+              "maxRight": 7063
+            },
+            "j_defs": {
+              "calls": 2,
+              "leftChars": 7063,
+              "rightChars": 7063,
+              "maxLeft": 7063,
+              "maxRight": 7063
+            },
+            "j_schema_params": {
+              "calls": 4,
+              "leftChars": 16,
+              "rightChars": 8,
+              "maxLeft": 8,
+              "maxRight": 2
+            },
+            "j_schema_ctors": {
+              "calls": 8,
+              "leftChars": 57,
+              "rightChars": 200,
+              "maxLeft": 10,
+              "maxRight": 51
+            },
+            "j_schemas": {
+              "calls": 6,
+              "leftChars": 184,
+              "rightChars": 223,
+              "maxLeft": 94,
+              "maxRight": 82
+            },
+            "j_library_context": {
+              "calls": 3,
+              "leftChars": 7335,
+              "rightChars": 14586,
+              "maxLeft": 7063,
+              "maxRight": 7279
+            },
+            "j_ctor_keys": {
+              "calls": 26,
+              "leftChars": 178,
+              "rightChars": 2015,
+              "maxLeft": 18,
+              "maxRight": 160
+            },
+            "j_ctor_metadata": {
+              "calls": 2,
+              "leftChars": 178,
+              "rightChars": 0,
+              "maxLeft": 178,
+              "maxRight": 0
+            }
+          }
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 84.66131499999938,
+            "consumeMs": 0.16115399999944202,
+            "totalMs": 84.82246899999882
+          },
+          {
+            "round": 0,
+            "variant": "joined",
+            "emitMs": 107.14081799999985,
+            "consumeMs": 0.16609299999981886,
+            "totalMs": 107.30691099999967
+          },
+          {
+            "round": 1,
+            "variant": "joined",
+            "emitMs": 74.51897300000019,
+            "consumeMs": 0.1438959999995859,
+            "totalMs": 74.66286899999977
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 76.87994399999843,
+            "consumeMs": 0.11300800000026356,
+            "totalMs": 76.9929519999987
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 81.39563399999861,
+            "consumeMs": 0.12913100000150735,
+            "totalMs": 81.52476500000012
+          },
+          {
+            "round": 2,
+            "variant": "joined",
+            "emitMs": 78.16031699999985,
+            "consumeMs": 0.15429600000061328,
+            "totalMs": 78.31461300000046
+          },
+          {
+            "round": 3,
+            "variant": "joined",
+            "emitMs": 75.98827299999903,
+            "consumeMs": 0.18039500000122644,
+            "totalMs": 76.16866800000025
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 82.77586499999961,
+            "consumeMs": 0.13383600000088336,
+            "totalMs": 82.9097010000005
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 80.4533449999999,
+            "consumeMs": 0.13316200000008394,
+            "totalMs": 80.58650699999998
+          },
+          {
+            "round": 4,
+            "variant": "joined",
+            "emitMs": 76.5022399999998,
+            "consumeMs": 0.14366899999913585,
+            "totalMs": 76.64590899999894
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 81.39563399999861,
+            "consumeMs": 0.13316200000008394,
+            "totalMs": 81.52476500000012
+          },
+          "joined": {
+            "emitMs": 76.5022399999998,
+            "consumeMs": 0.15429600000061328,
+            "totalMs": 76.64590899999894
+          }
+        },
+        "allExact": true
+      }
+    ],
+    "limitations": [
+      "Synthetic checked/annotated books; not full compiler throughput.",
+      "Operation wrappers and append operand lengths are an untimed attribution run; operand lengths do not measure copying inside V8.",
+      "Plain/joined timings use one warmed process with five alternating samples per size; sub-millisecond cases are noisy.",
+      "Fully consumed output is SHA256 over UTF-8 bytes after each emission; output equality is exact before timings as well.",
+      "Joined variant changes only disposable generated B1 j_defs; no production Bend source change."
+    ],
+    "rawReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/emission/scaling/report.json",
+      "sha256": "15a6b8a0e585006f0dd66dc35a7d137c09201069fe02b9bceddc1e364e49b95d"
+    }
+  },
+  "facts": {
+    "schemaVersion": 1,
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/api/b1.mjs",
+      "sha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6"
+    },
+    "probe": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase3/emission-facts-probe.mjs",
+      "sha256": "c00ef15f2adf690a04bf85695835c818046c0ea6863f9c2bd76fda1f4ca2bdc9"
+    },
+    "variants": {
+      "plain": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/emission/facts/plain.mjs",
+        "sha256": "1191a818bdb1d86cfc69f4ab452f6f9d66421b08b0a11d72068214d74c851df8"
+      },
+      "facts": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/emission/facts/facts.mjs",
+        "sha256": "b92234349e57c303750c369c790e35f5bb95899f1846d7039a0c575bb9a93734"
+      },
+      "attribution": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/emission/facts/attribution.mjs",
+        "sha256": "af66b16fa758e09b90ca33ee8ea1ed44473f8e58a0632bc7e3b334c980c8ec84"
+      }
+    },
+    "scalingReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/emission/scaling/report.json",
+      "sha256": "15a6b8a0e585006f0dd66dc35a7d137c09201069fe02b9bceddc1e364e49b95d"
+    },
+    "node": "v24.18.0",
+    "nodeArgs": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ],
+    "cpu": 0,
+    "allChecked": true,
+    "allExact": true,
+    "substitutionControls": [
+      {
+        "name": "absent-binder-still-reduces-beta",
+        "term": {
+          "$": "KTerm",
+          "tag": "App",
+          "name": "",
+          "id": 0,
+          "quant": 0,
+          "kids": {
+            "$": "Con",
+            "head": {
+              "$": "KTerm",
+              "tag": "Lam",
+              "name": "T",
+              "id": 1100,
+              "quant": 0,
+              "kids": {
+                "$": "Con",
+                "head": {
+                  "$": "KTerm",
+                  "tag": "ADT",
+                  "name": "Bool",
+                  "id": 0,
+                  "quant": 0,
+                  "kids": {
+                    "$": "Nil"
+                  },
+                  "removed": {
+                    "$": "Nil"
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              },
+              "removed": {
+                "$": "Nil"
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "KTerm",
+                "tag": "Typ",
+                "name": "",
+                "id": 0,
+                "quant": 0,
+                "kids": {
+                  "$": "Con",
+                  "head": {
+                    "$": "KTerm",
+                    "tag": "Qua",
+                    "name": "",
+                    "id": 0,
+                    "quant": 2,
+                    "kids": {
+                      "$": "Nil"
+                    },
+                    "removed": {
+                      "$": "Nil"
+                    }
+                  },
+                  "tail": {
+                    "$": "Nil"
+                  }
+                },
+                "removed": {
+                  "$": "Nil"
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "id": 9999,
+        "value": {
+          "$": "KTerm",
+          "tag": "Ctr",
+          "name": "True",
+          "id": 0,
+          "quant": 0,
+          "kids": {
+            "$": "Nil"
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "expected": {
+          "$": "KTerm",
+          "tag": "ADT",
+          "name": "Bool",
+          "id": 0,
+          "quant": 0,
+          "kids": {
+            "$": "Nil"
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "stats": {
+          "factVisits": 5,
+          "substCalls": 4,
+          "skipped": 3,
+          "fallback": 1
+        }
+      },
+      {
+        "name": "dependent-variable-is-substituted",
+        "term": {
+          "$": "KTerm",
+          "tag": "All",
+          "name": "x",
+          "id": 1001,
+          "quant": 1,
+          "kids": {
+            "$": "Con",
+            "head": {
+              "$": "KTerm",
+              "tag": "Var",
+              "name": "A",
+              "id": 1000,
+              "quant": 0,
+              "kids": {
+                "$": "Nil"
+              },
+              "removed": {
+                "$": "Nil"
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "KTerm",
+                "tag": "Var",
+                "name": "A",
+                "id": 1000,
+                "quant": 0,
+                "kids": {
+                  "$": "Nil"
+                },
+                "removed": {
+                  "$": "Nil"
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "id": 1000,
+        "value": {
+          "$": "KTerm",
+          "tag": "ADT",
+          "name": "Bool",
+          "id": 0,
+          "quant": 0,
+          "kids": {
+            "$": "Nil"
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "expected": {
+          "$": "KTerm",
+          "tag": "All",
+          "name": "x",
+          "id": 1001,
+          "quant": 1,
+          "kids": {
+            "$": "Con",
+            "head": {
+              "$": "KTerm",
+              "tag": "ADT",
+              "name": "Bool",
+              "id": 0,
+              "quant": 0,
+              "kids": {
+                "$": "Nil"
+              },
+              "removed": {
+                "$": "Nil"
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "KTerm",
+                "tag": "ADT",
+                "name": "Bool",
+                "id": 0,
+                "quant": 0,
+                "kids": {
+                  "$": "Nil"
+                },
+                "removed": {
+                  "$": "Nil"
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "stats": {
+          "factVisits": 2,
+          "substCalls": 3,
+          "skipped": 0,
+          "fallback": 3
+        }
+      },
+      {
+        "name": "variable-with-same-id-and-changed-name",
+        "term": {
+          "$": "KTerm",
+          "tag": "Var",
+          "name": "A",
+          "id": 1000,
+          "quant": 0,
+          "kids": {
+            "$": "Nil"
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "id": 1000,
+        "value": {
+          "$": "KTerm",
+          "tag": "Var",
+          "name": "renamed",
+          "id": 1000,
+          "quant": 0,
+          "kids": {
+            "$": "Nil"
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "expected": {
+          "$": "KTerm",
+          "tag": "Var",
+          "name": "renamed",
+          "id": 1000,
+          "quant": 0,
+          "kids": {
+            "$": "Nil"
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "stats": {
+          "factVisits": 1,
+          "substCalls": 1,
+          "skipped": 0,
+          "fallback": 1
+        }
+      },
+      {
+        "name": "closed-app-free-tail",
+        "term": {
+          "$": "KTerm",
+          "tag": "All",
+          "name": "x",
+          "id": 1001,
+          "quant": 1,
+          "kids": {
+            "$": "Con",
+            "head": {
+              "$": "KTerm",
+              "tag": "ADT",
+              "name": "Bool",
+              "id": 0,
+              "quant": 0,
+              "kids": {
+                "$": "Nil"
+              },
+              "removed": {
+                "$": "Nil"
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "KTerm",
+                "tag": "ADT",
+                "name": "Bool",
+                "id": 0,
+                "quant": 0,
+                "kids": {
+                  "$": "Nil"
+                },
+                "removed": {
+                  "$": "Nil"
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "id": 1000,
+        "value": {
+          "$": "KTerm",
+          "tag": "Ctr",
+          "name": "True",
+          "id": 0,
+          "quant": 0,
+          "kids": {
+            "$": "Nil"
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "expected": {
+          "$": "KTerm",
+          "tag": "All",
+          "name": "x",
+          "id": 1001,
+          "quant": 1,
+          "kids": {
+            "$": "Con",
+            "head": {
+              "$": "KTerm",
+              "tag": "ADT",
+              "name": "Bool",
+              "id": 0,
+              "quant": 0,
+              "kids": {
+                "$": "Nil"
+              },
+              "removed": {
+                "$": "Nil"
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "KTerm",
+                "tag": "ADT",
+                "name": "Bool",
+                "id": 0,
+                "quant": 0,
+                "kids": {
+                  "$": "Nil"
+                },
+                "removed": {
+                  "$": "Nil"
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          },
+          "removed": {
+            "$": "Nil"
+          }
+        },
+        "stats": {
+          "factVisits": 2,
+          "substCalls": 1,
+          "skipped": 1,
+          "fallback": 0
+        }
+      }
+    ],
+    "rows": [
+      {
+        "name": "definition-count-16",
+        "outputBytes": 1232,
+        "outputSha256": "c01553ca6a9e4b2a73af56d10e1f40b86e54b6449a988421c327518fa8c498e8",
+        "inputSha256": "8e6ee197947e450640cec47f5c39688900bed7885fdfe142b1ebb116677f8ac8",
+        "facts": {
+          "factVisits": 0,
+          "substCalls": 0,
+          "skipped": 0,
+          "fallback": 0
+        },
+        "attribution": {},
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 9.125891999999965,
+            "totalMs": 9.210391999999956
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 9.193844000000013,
+            "totalMs": 9.259747000000004
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 8.910290999999972,
+            "totalMs": 8.980204000000015
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 8.718345,
+            "totalMs": 8.79461299999997
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 22.783968000000016,
+            "totalMs": 22.853635999999995
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 13.434081999999933,
+            "totalMs": 13.503623000000005
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 11.421864000000028,
+            "totalMs": 11.496001999999976
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 9.982803999999987,
+            "totalMs": 10.142779000000019
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 8.248866000000021,
+            "totalMs": 8.346672000000012
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 9.16782999999998,
+            "totalMs": 9.235750999999937
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 9.125891999999965,
+            "totalMs": 9.210391999999956
+          },
+          "facts": {
+            "emitMs": 9.193844000000013,
+            "totalMs": 9.259747000000004
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "definition-count-64",
+        "outputBytes": 3776,
+        "outputSha256": "234c2f93a6e1cc92ba2db0dd06319e0cd257ce920f726d63cbaed459102005f3",
+        "inputSha256": "ae9ebd8f034d4f864d86fa65c58f0a7933a4d0a4a1ff86bfe01b9440fd14f32c",
+        "facts": {
+          "factVisits": 0,
+          "substCalls": 0,
+          "skipped": 0,
+          "fallback": 0
+        },
+        "attribution": {},
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 25.00568499999997,
+            "totalMs": 25.08199300000001
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 35.23300699999993,
+            "totalMs": 35.46421499999997
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 36.72168599999998,
+            "totalMs": 36.80066199999999
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 31.211559999999963,
+            "totalMs": 31.29033000000004
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 22.825197000000003,
+            "totalMs": 22.90386799999999
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 22.598679999999945,
+            "totalMs": 22.676373000000012
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 27.184408000000076,
+            "totalMs": 27.263126000000057
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 26.962132999999994,
+            "totalMs": 27.038881999999944
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 22.399018999999953,
+            "totalMs": 22.477085999999986
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 23.33418199999994,
+            "totalMs": 23.424377999999933
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 25.00568499999997,
+            "totalMs": 25.08199300000001
+          },
+          "facts": {
+            "emitMs": 27.184408000000076,
+            "totalMs": 27.263126000000057
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "definition-count-256",
+        "outputBytes": 14108,
+        "outputSha256": "c432f5086767e874b7145a5aee7d8ca9d40f12d118da02409ba46a71ce694070",
+        "inputSha256": "59363735f709bd7bc704f642f5d850227408264ef8d221460652f5decb7941e1",
+        "facts": {
+          "factVisits": 0,
+          "substCalls": 0,
+          "skipped": 0,
+          "fallback": 0
+        },
+        "attribution": {},
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 92.76808599999981,
+            "totalMs": 92.93492100000003
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 93.73156500000005,
+            "totalMs": 93.8920290000001
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 90.56861200000003,
+            "totalMs": 90.73470700000007
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 88.60450900000001,
+            "totalMs": 88.77360799999997
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 107.43751599999996,
+            "totalMs": 107.60704899999996
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 105.59297899999979,
+            "totalMs": 105.75215899999989
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 100.3655859999999,
+            "totalMs": 100.53588600000012
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 95.31122400000004,
+            "totalMs": 95.474604
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 91.82627999999977,
+            "totalMs": 91.99065799999971
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 90.31273499999998,
+            "totalMs": 90.48060899999973
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 92.76808599999981,
+            "totalMs": 92.93492100000003
+          },
+          "facts": {
+            "emitMs": 93.73156500000005,
+            "totalMs": 93.8920290000001
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "definition-count-1024",
+        "outputBytes": 55604,
+        "outputSha256": "b08cc8cbbb90c638d214676f7c4e701136328af5c48bdeb324cd7df56b7cd17b",
+        "inputSha256": "2016a330a6b182218328b695694015a4e4452f0b01cfc57aa01155cea39574ff",
+        "facts": {
+          "factVisits": 0,
+          "substCalls": 0,
+          "skipped": 0,
+          "fallback": 0
+        },
+        "attribution": {},
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 390.30424500000026,
+            "totalMs": 390.73883000000023
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 352.247558,
+            "totalMs": 352.6783230000001
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 353.6013359999997,
+            "totalMs": 354.02867999999944
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 351.154818,
+            "totalMs": 351.5867440000002
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 402.05714200000057,
+            "totalMs": 402.4995140000001
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 404.8291159999999,
+            "totalMs": 405.2605880000001
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 345.99772099999973,
+            "totalMs": 346.430746
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 348.36768799999936,
+            "totalMs": 348.84103999999934
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 343.67238800000086,
+            "totalMs": 344.10693700000047
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 345.94046400000025,
+            "totalMs": 346.3670009999996
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 351.154818,
+            "totalMs": 351.5867440000002
+          },
+          "facts": {
+            "emitMs": 352.247558,
+            "totalMs": 352.6783230000001
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "name-output-size-16",
+        "outputBytes": 466,
+        "outputSha256": "80551b77c9760a794de21cb0672904183da156ee410a898be80dc5438bb89640",
+        "inputSha256": "306070ebc7b07b48bcf8c65c633df190c844d2da9a284654751b8274e47ac255",
+        "facts": {
+          "factVisits": 0,
+          "substCalls": 0,
+          "skipped": 0,
+          "fallback": 0
+        },
+        "attribution": {},
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 0.49132600000029925,
+            "totalMs": 0.5295089999999618
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 0.49675399999978254,
+            "totalMs": 0.5265380000000732
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 0.48924500000066473,
+            "totalMs": 0.5169280000000072
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 0.4778330000008282,
+            "totalMs": 0.5046270000002551
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 0.46792399999958434,
+            "totalMs": 0.4928780000000188
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 0.48155099999985396,
+            "totalMs": 0.5066349999997328
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 0.47906499999953667,
+            "totalMs": 0.5037709999996878
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 0.9095649999999296,
+            "totalMs": 0.9373450000002777
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.4726540000001478,
+            "totalMs": 0.4953799999993862
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 0.4813029999995706,
+            "totalMs": 0.5039919999999256
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 0.4778330000008282,
+            "totalMs": 0.5046270000002551
+          },
+          "facts": {
+            "emitMs": 0.48155099999985396,
+            "totalMs": 0.5066349999997328
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "name-output-size-64",
+        "outputBytes": 514,
+        "outputSha256": "f66cff52b92ced79d23c68c510b088e471be3c5972cb4b54a36e1309df92ab89",
+        "inputSha256": "fa409b97a9a6467845643d3f8486fd5a404c13669cdb5d0ebe3af869b6a1b502",
+        "facts": {
+          "factVisits": 0,
+          "substCalls": 0,
+          "skipped": 0,
+          "fallback": 0
+        },
+        "attribution": {},
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 0.5754589999996824,
+            "totalMs": 0.6038650000000416
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 0.5839420000002065,
+            "totalMs": 0.6077580000001035
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 0.570557000000008,
+            "totalMs": 0.5936780000001818
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 0.574717999999848,
+            "totalMs": 0.5975960000005216
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 0.5694839999996475,
+            "totalMs": 0.5911239999995814
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 0.57302399999935,
+            "totalMs": 0.595220999999583
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 0.5554470000006404,
+            "totalMs": 0.5765460000002349
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 0.5591669999994338,
+            "totalMs": 0.5807639999993626
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.5660669999997481,
+            "totalMs": 0.5948949999992692
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 0.596650999999838,
+            "totalMs": 0.629573000000164
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 0.5694839999996475,
+            "totalMs": 0.5948949999992692
+          },
+          "facts": {
+            "emitMs": 0.57302399999935,
+            "totalMs": 0.595220999999583
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "name-output-size-256",
+        "outputBytes": 706,
+        "outputSha256": "a9e361b93f49f9318a415bac2bea604f19aa12b6e65e07254cadc915ff1dae68",
+        "inputSha256": "988de22c603a674f3b25ec2e3fc6d903d5f5dd135e431741191fc657b76c5303",
+        "facts": {
+          "factVisits": 0,
+          "substCalls": 0,
+          "skipped": 0,
+          "fallback": 0
+        },
+        "attribution": {},
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 0.9502489999995305,
+            "totalMs": 0.9797979999993913
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 0.9153189999997267,
+            "totalMs": 0.9356610000004366
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 0.9070299999993949,
+            "totalMs": 0.9264579999999114
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 0.8994280000006256,
+            "totalMs": 0.9192270000003191
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 1.2652140000000145,
+            "totalMs": 1.2876460000006773
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 0.9107560000002195,
+            "totalMs": 0.9295110000002751
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 0.903189999999995,
+            "totalMs": 0.9215020000001459
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 0.9018790000000081,
+            "totalMs": 0.9196820000006483
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.9224949999997989,
+            "totalMs": 0.9413249999997788
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 0.9068790000001172,
+            "totalMs": 0.9254730000002382
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 0.9224949999997989,
+            "totalMs": 0.9413249999997788
+          },
+          "facts": {
+            "emitMs": 0.9070299999993949,
+            "totalMs": 0.9264579999999114
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "name-output-size-1024",
+        "outputBytes": 1474,
+        "outputSha256": "6e55e4b58a4d6393764690296fd0f9f2ece3aee581bf2f163e392ef58f9063d8",
+        "inputSha256": "324384b7e680a35788ec2712229ba0225ee94ac6ada79429c2c1445b98e2cd73",
+        "facts": {
+          "factVisits": 0,
+          "substCalls": 0,
+          "skipped": 0,
+          "fallback": 0
+        },
+        "attribution": {},
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 2.355854000000363,
+            "totalMs": 2.397672000000057
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 2.317246999999952,
+            "totalMs": 2.3492050000004383
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 2.295319999999265,
+            "totalMs": 2.326426999999967
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 2.7983369999992647,
+            "totalMs": 2.856678999999531
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 2.3676040000000285,
+            "totalMs": 2.3994080000002214
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 2.3682010000002265,
+            "totalMs": 2.399347999999918
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 2.307887999999366,
+            "totalMs": 2.338372999999592
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 2.310631000000285,
+            "totalMs": 2.3418919999994614
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 2.2761280000004263,
+            "totalMs": 2.3108390000006693
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 2.296056999999564,
+            "totalMs": 2.3246079999998983
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 2.355854000000363,
+            "totalMs": 2.397672000000057
+          },
+          "facts": {
+            "emitMs": 2.307887999999366,
+            "totalMs": 2.338372999999592
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "constructor-depth-8",
+        "outputBytes": 640,
+        "outputSha256": "a905ec1fd66cf41ee7278d94f1f1df6e247acfb13d15037ada5b922dd5d415b3",
+        "inputSha256": "4a181f26115045aaf45325100c14dd76e48858dcd67428f5d6c2d38681edd346",
+        "facts": {
+          "factVisits": 1,
+          "substCalls": 8,
+          "skipped": 8,
+          "fallback": 0
+        },
+        "attribution": {
+          "other": 8
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 0.9740499999998065,
+            "totalMs": 1.0030900000001566
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 1.0778470000004745,
+            "totalMs": 1.1022259999999733
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 1.1845550000007279,
+            "totalMs": 1.2084780000004685
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 0.8399410000001808,
+            "totalMs": 0.86200000000008
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 0.8121769999997923,
+            "totalMs": 0.8331250000001091
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 0.829475999999886,
+            "totalMs": 0.8496720000002824
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 0.7993420000002516,
+            "totalMs": 0.8184490000003279
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 0.8093440000002374,
+            "totalMs": 0.8288259999999354
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.7974309999999605,
+            "totalMs": 0.8164740000001984
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 0.8150749999995242,
+            "totalMs": 0.8352279999999155
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 0.8121769999997923,
+            "totalMs": 0.8331250000001091
+          },
+          "facts": {
+            "emitMs": 0.829475999999886,
+            "totalMs": 0.8496720000002824
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "constructor-depth-32",
+        "outputBytes": 1144,
+        "outputSha256": "a968b45adcb72d13208d61a8bfe2516429dc14be7a05748dd0050879dba49ddb",
+        "inputSha256": "f1810b56e2216640a8595b30dfeb7077e28784f6b896e6940428d90620e8cb97",
+        "facts": {
+          "factVisits": 1,
+          "substCalls": 32,
+          "skipped": 32,
+          "fallback": 0
+        },
+        "attribution": {
+          "other": 32
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 2.22796500000004,
+            "totalMs": 2.2731549999998606
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 1.8289730000005875,
+            "totalMs": 1.8597010000003138
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 1.955707999999504,
+            "totalMs": 1.9853259999999864
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 2.0221819999997024,
+            "totalMs": 2.051752999999735
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 1.8401850000000195,
+            "totalMs": 1.868561000000227
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 1.812261999999464,
+            "totalMs": 1.839572999999291
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 1.7570719999994253,
+            "totalMs": 1.783422999999857
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 1.8468320000001768,
+            "totalMs": 1.8752699999995457
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 2.155080000000453,
+            "totalMs": 2.1842450000003737
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 1.7845610000003944,
+            "totalMs": 1.8113520000006247
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 2.0221819999997024,
+            "totalMs": 2.051752999999735
+          },
+          "facts": {
+            "emitMs": 1.812261999999464,
+            "totalMs": 1.839572999999291
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "constructor-depth-128",
+        "outputBytes": 3160,
+        "outputSha256": "7b1ee022ac73a07049e41cf8e2ed6a34cd9b5a2dd7f5abe8f9bc77d2326a0820",
+        "inputSha256": "d02ee77c63d4a3abcaf284d3991143c12fc8f956509f895d6de783b26e9fe1e6",
+        "facts": {
+          "factVisits": 1,
+          "substCalls": 128,
+          "skipped": 128,
+          "fallback": 0
+        },
+        "attribution": {
+          "other": 128
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 6.7875459999995655,
+            "totalMs": 6.860364999999547
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 6.318549999999959,
+            "totalMs": 6.385025000000496
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 7.92766599999959,
+            "totalMs": 7.990499999999884
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 8.013178999999582,
+            "totalMs": 8.079077000000325
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 5.657524999999623,
+            "totalMs": 5.713565000000017
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 6.120944999999665,
+            "totalMs": 6.181421999999657
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 6.2878499999997075,
+            "totalMs": 6.359166000000187
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 6.5695120000000315,
+            "totalMs": 6.628740999999536
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 5.701709999999366,
+            "totalMs": 5.760341999999582
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 5.574986999999965,
+            "totalMs": 5.634124999999585
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 6.5695120000000315,
+            "totalMs": 6.628740999999536
+          },
+          "facts": {
+            "emitMs": 6.2878499999997075,
+            "totalMs": 6.359166000000187
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "constructor-depth-512",
+        "outputBytes": 11224,
+        "outputSha256": "9a7e25cde154af8adb23dfc565610488dcc606599b06fb2942855ab64814c920",
+        "inputSha256": "b66d45c35906f3e63474988043b8d79977f951039a4d1c012760f8c34eef7291",
+        "facts": {
+          "factVisits": 1,
+          "substCalls": 512,
+          "skipped": 512,
+          "fallback": 0
+        },
+        "attribution": {
+          "other": 512
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 24.026372000000265,
+            "totalMs": 24.203886999999668
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 22.644105999999738,
+            "totalMs": 22.837781000000177
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 138.28942900000038,
+            "totalMs": 138.47595400000046
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 75.02754800000002,
+            "totalMs": 75.19593700000041
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 63.277548000000024,
+            "totalMs": 63.44868200000019
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 29.093402000000424,
+            "totalMs": 29.261274000000412
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 26.523087999999916,
+            "totalMs": 26.691811999999118
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 21.065206999999646,
+            "totalMs": 21.235099999999875
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 22.67711700000109,
+            "totalMs": 22.848966000001383
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 19.052542000001267,
+            "totalMs": 19.181209000000308
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 24.026372000000265,
+            "totalMs": 24.203886999999668
+          },
+          "facts": {
+            "emitMs": 26.523087999999916,
+            "totalMs": 26.691811999999118
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "lambda-depth-8",
+        "outputBytes": 578,
+        "outputSha256": "36dd65eb4830b43fe11b84d8b0a37549162c82959cd0323f9c52bc87bd99e53d",
+        "inputSha256": "de19394fa80bff7b526c8539be3e242f622a331ac9f60030303027f971ad057e",
+        "facts": {
+          "factVisits": 64,
+          "substCalls": 8,
+          "skipped": 8,
+          "fallback": 0
+        },
+        "attribution": {
+          "j_lambda_bind": 64
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 0.9720159999997122,
+            "totalMs": 1.002480999999534
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 0.8132310000000871,
+            "totalMs": 0.8392060000005586
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 0.6363669999991544,
+            "totalMs": 0.6612269999986893
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 0.8050219999986439,
+            "totalMs": 0.8290280000001076
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 0.7961220000015601,
+            "totalMs": 0.8190890000005311
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 0.6381510000010167,
+            "totalMs": 0.6615150000016001
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 0.6226950000000215,
+            "totalMs": 0.6443490000001475
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 0.8904899999997724,
+            "totalMs": 0.9226500000004307
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.8240180000011605,
+            "totalMs": 0.8453750000007858
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 0.6772069999988162,
+            "totalMs": 0.6986170000000129
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 0.8240180000011605,
+            "totalMs": 0.8453750000007858
+          },
+          "facts": {
+            "emitMs": 0.6381510000010167,
+            "totalMs": 0.6615150000016001
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "lambda-depth-16",
+        "outputBytes": 713,
+        "outputSha256": "fd0b8323255be851ce28b8e822ae23b5ef170a4ede98007d8908d3faf00fa64e",
+        "inputSha256": "726276855170837ae51d1b2ec1a3d15918f1903528ef6e67baeef509447b6cd7",
+        "facts": {
+          "factVisits": 256,
+          "substCalls": 16,
+          "skipped": 16,
+          "fallback": 0
+        },
+        "attribution": {
+          "j_lambda_bind": 256
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 1.4717759999984992,
+            "totalMs": 1.503856999999698
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 1.2770930000006047,
+            "totalMs": 1.3055249999997613
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 1.0908819999986008,
+            "totalMs": 1.1176180000002205
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 1.6699720000015077,
+            "totalMs": 1.6973500000003696
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 1.4603649999990012,
+            "totalMs": 1.4858129999993253
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 0.8330319999986386,
+            "totalMs": 0.857717999999295
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 1.046899000000849,
+            "totalMs": 1.4186119999994844
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 1.6523900000011054,
+            "totalMs": 1.6794480000007752
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 1.9224209999993036,
+            "totalMs": 1.9482219999990775
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 0.7979500000001281,
+            "totalMs": 0.8207529999999679
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 1.6523900000011054,
+            "totalMs": 1.6794480000007752
+          },
+          "facts": {
+            "emitMs": 1.046899000000849,
+            "totalMs": 1.1176180000002205
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "lambda-depth-32",
+        "outputBytes": 985,
+        "outputSha256": "91ad2614698b563ea0489a9f1e4ae784e61fe0383a3e0157767704f45ab15d33",
+        "inputSha256": "0b6a8cd4612c6c0e5fd6d9dfefb5be0b7862c73035f2f74cc655a5c2d174839b",
+        "facts": {
+          "factVisits": 1024,
+          "substCalls": 32,
+          "skipped": 32,
+          "fallback": 0
+        },
+        "attribution": {
+          "j_lambda_bind": 1024
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 3.8525790000003326,
+            "totalMs": 3.900086999999985
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 1.223797000000559,
+            "totalMs": 1.2582390000006853
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 1.1536620000006224,
+            "totalMs": 1.183379000000059
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 17.830784000001586,
+            "totalMs": 17.87885500000084
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 4.313319999999294,
+            "totalMs": 4.353593999998338
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 2.9533229999997275,
+            "totalMs": 2.987409999999727
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 1.4997129999992467,
+            "totalMs": 1.532350999999835
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 2.3316820000000007,
+            "totalMs": 2.3626840000015363
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 2.261635999999271,
+            "totalMs": 2.290342000000237
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 3.0088599999999133,
+            "totalMs": 3.0411910000002536
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 3.8525790000003326,
+            "totalMs": 3.900086999999985
+          },
+          "facts": {
+            "emitMs": 1.4997129999992467,
+            "totalMs": 1.532350999999835
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "lambda-depth-64",
+        "outputBytes": 2396,
+        "outputSha256": "52da366a735bcbb1173713042228cffce02b9fc2bd5a6861624f6093e93b5153",
+        "inputSha256": "261d7085346cd16c7537dbe80033ac81323acd4efd28bb6193c25e6bf5b3956b",
+        "facts": {
+          "factVisits": 4096,
+          "substCalls": 160,
+          "skipped": 160,
+          "fallback": 0
+        },
+        "attribution": {
+          "j_lambda_bind": 5120,
+          "j_l_lam": 4096
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 53.19576099999904,
+            "totalMs": 53.26695499999914
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 24.996161999999458,
+            "totalMs": 25.07547799999884
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 5.984416999999667,
+            "totalMs": 6.045195999999123
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 15.686186999999336,
+            "totalMs": 15.75861100000111
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 16.48474200000055,
+            "totalMs": 16.55977300000086
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 16.79853699999876,
+            "totalMs": 16.872588000000178
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 41.22666600000048,
+            "totalMs": 41.307144000000335
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 15.150002000000313,
+            "totalMs": 15.230751000000964
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 17.051739999998972,
+            "totalMs": 17.14281899999878
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 6.4035600000006525,
+            "totalMs": 6.475078000001304
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 16.48474200000055,
+            "totalMs": 16.55977300000086
+          },
+          "facts": {
+            "emitMs": 16.79853699999876,
+            "totalMs": 16.872588000000178
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "lambda-depth-128",
+        "outputBytes": 7457,
+        "outputSha256": "9770b9d14d838b64fa732f3412d66deeb8386665122ce8eb3e07e71f9d9699ae",
+        "inputSha256": "24ad05a2c7a2e3e2bae8ab812676c605d5768e18277305e85d6f24b63231d6fc",
+        "facts": {
+          "factVisits": 16384,
+          "substCalls": 445,
+          "skipped": 445,
+          "fallback": 0
+        },
+        "attribution": {
+          "j_lambda_bind": 30469,
+          "j_l_lam": 16384
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 83.3403070000004,
+            "totalMs": 83.46389400000044
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 31.74735200000032,
+            "totalMs": 31.87018199999875
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 17.94644100000005,
+            "totalMs": 18.11236700000154
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 67.22115200000007,
+            "totalMs": 67.32917000000089
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 70.28336300000046,
+            "totalMs": 70.39578200000142
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 19.319029000000228,
+            "totalMs": 19.422120000001087
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 17.66741499999989,
+            "totalMs": 17.87128499999926
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 66.62552099999994,
+            "totalMs": 67.01413700000012
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 72.95621500000016,
+            "totalMs": 73.07608199999959
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 17.648877999999968,
+            "totalMs": 17.817603999999847
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 70.28336300000046,
+            "totalMs": 70.39578200000142
+          },
+          "facts": {
+            "emitMs": 17.94644100000005,
+            "totalMs": 18.11236700000154
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "dependent-identity",
+        "outputBytes": 477,
+        "outputSha256": "2a16f37cec01fcbc804c953957a53cd44ffbdbbf6353de62d7d80ec6d9881dd2",
+        "inputSha256": "57f9f58f060b4459a97e7b0869d10d226710a05009c61f8f58bb98b1f99d3d81",
+        "facts": {
+          "factVisits": 3,
+          "substCalls": 4,
+          "skipped": 0,
+          "fallback": 4
+        },
+        "attribution": {
+          "j_lambda_bind": 4
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 0.5547520000000077,
+            "totalMs": 0.748740999999427
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 0.6490819999999076,
+            "totalMs": 0.6671220000007452
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 0.546226000000388,
+            "totalMs": 0.5634920000011334
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 0.521907000000283,
+            "totalMs": 0.5385229999992589
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 0.5028249999995751,
+            "totalMs": 0.5191340000001219
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 0.5577130000001489,
+            "totalMs": 0.5746990000006917
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 0.5145869999996648,
+            "totalMs": 0.530810999998721
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 0.5197829999997339,
+            "totalMs": 0.5354869999991934
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.49745900000016263,
+            "totalMs": 0.5128119999990304
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 0.5140580000006594,
+            "totalMs": 0.5297520000003715
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 0.5197829999997339,
+            "totalMs": 0.5354869999991934
+          },
+          "facts": {
+            "emitMs": 0.546226000000388,
+            "totalMs": 0.5634920000011334
+          }
+        },
+        "allExact": true
+      },
+      {
+        "name": "beta-result-type",
+        "outputBytes": 448,
+        "outputSha256": "76e224c568b9ce9ed34feea28d86f16a7af45e0a5b17fd91aa96391ba4afa4ff",
+        "inputSha256": "eff4ca1b1f904a5bec4a88e4aba90757bb376e638d3d51f7608dbc4a1a5ea784",
+        "facts": {
+          "factVisits": 1,
+          "substCalls": 1,
+          "skipped": 1,
+          "fallback": 0
+        },
+        "attribution": {
+          "other": 1
+        },
+        "samples": [
+          {
+            "round": 0,
+            "variant": "plain",
+            "emitMs": 2.443061999998463,
+            "totalMs": 2.477235999998811
+          },
+          {
+            "round": 0,
+            "variant": "facts",
+            "emitMs": 2.1089869999996154,
+            "totalMs": 2.1281660000004194
+          },
+          {
+            "round": 1,
+            "variant": "facts",
+            "emitMs": 0.4683999999997468,
+            "totalMs": 0.4844260000008944
+          },
+          {
+            "round": 1,
+            "variant": "plain",
+            "emitMs": 0.5269229999994423,
+            "totalMs": 0.543072000000393
+          },
+          {
+            "round": 2,
+            "variant": "plain",
+            "emitMs": 0.46811499999967054,
+            "totalMs": 0.4829959999988205
+          },
+          {
+            "round": 2,
+            "variant": "facts",
+            "emitMs": 0.47014800000033574,
+            "totalMs": 0.48543900000004214
+          },
+          {
+            "round": 3,
+            "variant": "facts",
+            "emitMs": 0.4606999999996333,
+            "totalMs": 0.4754990000001271
+          },
+          {
+            "round": 3,
+            "variant": "plain",
+            "emitMs": 0.46855800000048475,
+            "totalMs": 0.4841039999992063
+          },
+          {
+            "round": 4,
+            "variant": "plain",
+            "emitMs": 0.5514970000003814,
+            "totalMs": 0.5679789999994682
+          },
+          {
+            "round": 4,
+            "variant": "facts",
+            "emitMs": 0.5271750000010798,
+            "totalMs": 0.5522230000005948
+          }
+        ],
+        "medians": {
+          "plain": {
+            "emitMs": 0.5269229999994423,
+            "totalMs": 0.543072000000393
+          },
+          "facts": {
+            "emitMs": 0.47014800000033574,
+            "totalMs": 0.48543900000004214
+          }
+        },
+        "allExact": true
+      }
+    ],
+    "limitations": [
+      "Disposable JS WeakMap metadata scoped to one emission; no shared-kernel/Bend production change.",
+      "Only terms without Var and App anywhere can skip substitution; all other terms use the original implementation.",
+      "Rebuilding App beta-reduces even when the target variable is absent; that behavior remains mandatory.",
+      "Facts are recomputed in each timed emission; checking and annotation are outside emission timing.",
+      "Synthetic microbenchmarks, five alternating samples in one process, shared-host observations; no whole-compiler speedup claim."
+    ],
+    "rawReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/emission/facts/report.json",
+      "sha256": "aae6e38c4b0c142bab4577e5a3fd4032866d347fec071a62897be6eb72d82bdb"
+    }
+  },
+  "decision": "No production emitter/kernel change. Definition join is a null result; closed/App-free substitution facts are a causal synthetic result requiring a scoped Bend representation and realistic checked-book measurement before promotion.",
+  "signatureOverlayReview": "Read-only review found no blocking semantic discrepancy in reverse nearest-name planning; preserve BookCache fallback and note eager planning before first error."
+}

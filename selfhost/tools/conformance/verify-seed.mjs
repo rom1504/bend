@@ -14,7 +14,10 @@ const timeoutMs=Number(process.env.BEND_SELFHOST_TIMEOUT||10800000);
 const stackKB=Number(process.env.BEND_SELFHOST_STACK_KB??4096);
 const heapMB=Number(process.env.BEND_SELFHOST_HEAP_MB||12288);
 if(!Number.isInteger(timeoutMs)||timeoutMs<1||!Number.isInteger(stackKB)||stackKB<0||!Number.isInteger(heapMB)||heapMB<0)throw Error('Invalid self-host resource configuration');
-const osStackKB=process.platform==='win32'?null:spawnSync('sh',['-c','ulimit -s'],{encoding:'utf8'}).stdout?.trim();
+const linuxStack=process.platform==='linux'?/^Max stack size\s+(\S+)\s+\S+\s+bytes\s*$/m.exec(fs.readFileSync('/proc/self/limits','utf8'))?.[1]:null;
+const osStackKB=process.platform==='win32'?null:process.platform==='linux'?
+  (linuxStack==='unlimited'?'unlimited':/^\d+$/.test(linuxStack||'')?String(Number(linuxStack)/1024):null):
+  spawnSync('sh',['-c','ulimit -s'],{encoding:'utf8'}).stdout?.trim();
 if(stackKB&&osStackKB!=='unlimited'&&!(Number(osStackKB)>=stackKB*2))throw Error('OS stack limit must be verified and at least twice the requested V8 stack');
 const nodeArgs=[...(stackKB?[`--stack-size=${stackKB}`]:[]),...(heapMB?[`--max-old-space-size=${heapMB}`]:[])];
 const hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');

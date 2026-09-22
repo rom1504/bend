@@ -1,0 +1,290 @@
+{
+  "kind": "signature-suffix-host-map-ablation",
+  "scope": "Upper-bound attribution only; host Map is not proposed production compiler code. Each timed candidate includes index construction and full frozen checking; no skipped checks.",
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/api/b1.mjs",
+    "sha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6"
+  },
+  "toolSha256": "a6c7f689a409804b1e4905412812d405d6d161643ce8858e107c0302aee7c839",
+  "node": "v24.18.0",
+  "rows": [
+    {
+      "n": 64,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 50.76252100000005
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 45.776228
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 38.94634100000002
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 39.70648
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 39.371110000000044
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 37.48413500000004
+        }
+      ]
+    },
+    {
+      "n": 128,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 113.79305199999999
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 70.93287799999985
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 70.50614900000005
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 95.3620199999998
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 88.38992600000006
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 68.12881400000015
+        }
+      ]
+    },
+    {
+      "n": 256,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 245.18968399999994
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 178.61222399999997
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 178.84434899999997
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 246.63183300000037
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 252.06540200000018
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 182.08625100000017
+        }
+      ]
+    },
+    {
+      "n": 512,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 751.0008129999997
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 483.70194900000024
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 476.38676899999973
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 739.5253709999997
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 751.6599609999994
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 484.43404399999963
+        }
+      ]
+    },
+    {
+      "n": 1024,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 2628.7306229999995
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 1626.4068829999997
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 1673.3686479999997
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 2735.5612299999993
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 2947.0787920000002
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 1808.957015
+        }
+      ]
+    }
+  ],
+  "negative": [
+    {
+      "n": 64,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 64,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 64,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 64,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 128,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 128,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 128,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 128,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 256,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 256,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 256,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 256,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 512,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 512,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 512,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 512,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 1024,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 1024,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 1024,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 1024,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    }
+  ],
+  "complete": true
+}

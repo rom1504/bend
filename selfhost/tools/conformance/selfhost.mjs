@@ -20,7 +20,12 @@ const stackKB=Number(process.env.BEND_SELFHOST_STACK_KB??4096);
 if(!Number.isInteger(stackKB)||stackKB<0)throw Error('Invalid BEND_SELFHOST_STACK_KB');
 const heapMB=Number(process.env.BEND_SELFHOST_HEAP_MB||0);
 if(!Number.isInteger(heapMB)||heapMB<0)throw Error('Invalid BEND_SELFHOST_HEAP_MB');
-const stackLimit=process.platform==='win32'?null:spawnSync('sh',['-c','ulimit -s'],{encoding:'utf8'}).stdout?.trim();
+// Linux exposes this process's actual soft limit directly. Reading it avoids
+// depending on shell-child stdout delivery under process supervisors.
+const linuxStack=process.platform==='linux'?/^Max stack size\s+(\S+)\s+\S+\s+bytes\s*$/m.exec(fs.readFileSync('/proc/self/limits','utf8'))?.[1]:null;
+const stackLimit=process.platform==='win32'?null:process.platform==='linux'?
+  (linuxStack==='unlimited'?'unlimited':/^\d+$/.test(linuxStack||'')?String(Number(linuxStack)/1024):null):
+  spawnSync('sh',['-c','ulimit -s'],{encoding:'utf8'}).stdout?.trim();
 if(stackKB&&stackLimit!=='unlimited'&&!(Number(stackLimit)>=stackKB*2))throw Error('Self-hosting requires a verified OS stack limit at least twice BEND_SELFHOST_STACK_KB; lower that setting or increase the OS limit.');
 const nodeArgs=[...(stackKB?[`--stack-size=${stackKB}`]:[]),...(heapMB?[`--max-old-space-size=${heapMB}`]:[])];
 const directory=path.resolve(process.argv[3]||path.join(project,'build/typed/fixedpoint'));

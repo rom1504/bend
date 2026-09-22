@@ -1,0 +1,97 @@
+{
+  "kind": "native-context-final-overlay",
+  "baselineApiSha256": "7740bc5a8ccf098625330e9855eb8c977aabdfc38ee26443155a10ca378a641a",
+  "baselineSource": "/home/ai/bend2/build/publish/bend/selfhost/build/typed/snapshots/8fccca40b3e9f1059d2224df781742d172fae5be7cbfc012fbed2736b42e2c4d/compiler.bend",
+  "baselineSourceSha256": "3b67a8962b2db9d26f10b0cc00f98ffd83e293fa2d730e37a195746281c6d129",
+  "baselineBootstrapReportSha256": "c098ce33c7bbef92406176771818874e0cc3336aba34db613bbc1455ed3f9f21",
+  "candidateApiSha256": "27a0d14f140c788625836a9dee3948f5f8000ba15776df5360f1fe3bddbe2664",
+  "candidateAssemblySha256": "31cb31689c101e3a1b1e1198c99d717e4d41d468c8c490945d52822a2e4213ac",
+  "onlyOwnedDeclarationBodiesChanged": true,
+  "comparisonPolicy": "Assembly map declarations compared after ignoring blank/comment-only lines; unchanged FLoadTrace declaration relocation recorded separately.",
+  "identicalDeclarationRelocations": [
+    {
+      "kind": "type",
+      "name": "FLoadTrace",
+      "from": "src/load/modules.bend",
+      "to": "src/diagnostic/frontend.bend"
+    }
+  ],
+  "changedDeclarations": [
+    {
+      "kind": "def",
+      "name": "nc_annotated_context",
+      "module": "src/back/native/book.bend"
+    },
+    {
+      "kind": "def",
+      "name": "nc_context_defs",
+      "module": "src/back/native/book.bend"
+    },
+    {
+      "kind": "def",
+      "name": "nc_context_has_cache",
+      "module": "src/back/native/book.bend"
+    },
+    {
+      "kind": "def",
+      "name": "nc_context_index",
+      "module": "src/back/native/book.bend"
+    },
+    {
+      "kind": "def",
+      "name": "nc_context_pick",
+      "module": "src/back/native/book.bend"
+    },
+    {
+      "kind": "def",
+      "name": "nc_erase_args",
+      "module": "src/back/native/erase.bend"
+    },
+    {
+      "kind": "def",
+      "name": "nc_live_count",
+      "module": "src/back/native/erase.bend"
+    },
+    {
+      "kind": "def",
+      "name": "nc_live_count_head",
+      "module": "src/back/native/erase.bend"
+    },
+    {
+      "kind": "def",
+      "name": "nc_tele_fill",
+      "module": "src/back/native/erase.bend"
+    },
+    {
+      "kind": "law",
+      "name": "nc_context_has_cache",
+      "module": "src/back/native/book.bend"
+    },
+    {
+      "kind": "law",
+      "name": "nc_context_index",
+      "module": "src/back/native/book.bend"
+    },
+    {
+      "kind": "law",
+      "name": "nc_context_pick",
+      "module": "src/back/native/book.bend"
+    },
+    {
+      "kind": "law",
+      "name": "nc_live_count_head",
+      "module": "src/back/native/erase.bend"
+    }
+  ],
+  "productionModules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/erase.bend",
+      "sha256": "11fba4f16ef4de786f68076bafbc356c139fa953c22342c9557efe8b26936be1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/native/book.bend",
+      "sha256": "56c161c2c0bd33ddb66d239a4283081331e98bf4112ceaebd1d3c76db14bb23e"
+    }
+  ],
+  "gate": "Pinned upstream stage0-library completed full book_valid/book_owned/no-open-laws/no-holes before emitting 23 explicit API exports. Integrated build report archived separately."
+}

@@ -1,0 +1,75 @@
+{
+  "kind": "phase3-component-file-capture-supplement",
+  "cpu": 2,
+  "node": "v24.18.0",
+  "started": "2026-09-22T06:16:56.364Z",
+  "scope": "File-backed child output capture avoids observed Node stdout-pipe loss; sockets excluded after independent TCP.listen EPERM reproduction.",
+  "inputs": {
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/final-checks.mjs": "109812ab6d0bba34f898c274ab72cd0a024d55ef4c7845f4ebf86a867fcdc333",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/src/runtime.mjs": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/runtime-socketfree.mjs": "18e9df508e6262c9b44c2cf8b31d5e046a4d6c8c36912eca8d4051dc02075023",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/runtime-halt.mjs": "f08810d6ed65669d4cca27bfe01d4a201277f15b854b935fe98eeb976021ca97",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/src/runtime/js/test.mjs": "39c5ca45f80779981dc74cb4e90a644d35be375de548a6d213eb4391c7fdd3c7"
+  },
+  "rows": [
+    {
+      "id": "runtime-socketfree",
+      "args": [
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/runtime-socketfree.mjs"
+      ],
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "stdout": "runtime numeric/readback/File/Chan checks passed (TCP/UDP excluded: sandbox EPERM)\n",
+      "stderr": "",
+      "pass": true
+    },
+    {
+      "id": "runtime-halt",
+      "args": [
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/runtime-halt.mjs"
+      ],
+      "status": 7,
+      "signal": null,
+      "error": null,
+      "stdout": "",
+      "stderr": "halt now\n",
+      "pass": true
+    },
+    {
+      "id": "host-safeguards",
+      "args": [
+        "--stack-size=4096",
+        "--max-old-space-size=4096",
+        "--test",
+        "tests/conformance/inventory.test.mjs",
+        "tests/conformance/judge.test.mjs",
+        "tests/conformance/abi.test.mjs",
+        "tests/conformance/selection.test.mjs",
+        "tests/conformance/targeted.test.mjs",
+        "tests/conformance/native-adapter.test.mjs",
+        "tests/conformance/selfhost-provenance.test.mjs",
+        "tests/conformance/bootstrap-provenance.test.mjs",
+        "tests/node-resource-args.test.mjs",
+        "tests/native-build.test.mjs"
+      ],
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "stdout": "\u2714 tests/conformance/abi.test.mjs (239.574501ms)\n\u2714 tests/conformance/bootstrap-provenance.test.mjs (241.73852ms)\n\u2714 tests/conformance/inventory.test.mjs (106.318031ms)\n\u2714 tests/conformance/judge.test.mjs (117.826848ms)\n\u2714 tests/conformance/native-adapter.test.mjs (161.669916ms)\n\u2714 tests/conformance/selection.test.mjs (124.744221ms)\n\u2714 tests/conformance/selfhost-provenance.test.mjs (2150.121766ms)\n\u2714 tests/conformance/targeted.test.mjs (117.80857ms)\n\u2714 tests/native-build.test.mjs (114.692518ms)\n<anonymous_script>:1\n\n\nSyntaxError: Unexpected end of JSON input\n    at JSON.parse (<anonymous>)\n    at file:///home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/host/tests/node-resource-args.test.mjs:21:23\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.18.0\n\u2716 tests/node-resource-args.test.mjs (163.259524ms)\n\u2139 tests 10\n\u2139 suites 0\n\u2139 pass 9\n\u2139 fail 1\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 3560.11578\n\n\u2716 failing tests:\n\ntest at tests/node-resource-args.test.mjs:1:1\n\u2716 tests/node-resource-args.test.mjs (163.259524ms)\n  'test failed'\n",
+      "stderr": "",
+      "pass": false
+    }
+  ],
+  "complete": false,
+  "changedInputs": [],
+  "finished": "2026-09-22T06:17:00.204Z",
+  "archive": {
+    "sourceReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-integrated-supplement/file-capture-report.json",
+    "sourceReportSha256": "aa9b6ae4a1c5380e9a3ac08d9a6182c8ccd8ea5d3c1d75a3a0d8606d271b2ddc"
+  }
+}

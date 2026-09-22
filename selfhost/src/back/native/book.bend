@@ -1,3 +1,12 @@
+law nc_context_index:
+  for annotated: List<&2, KDef>
+  List<&2, KDef>
+
+law nc_context_pick:
+  for +original: KDef
+  for +annotated: KDef
+  KDef
+
 type NC_Result is Data:
   NC_Result{+source: String, +error: String}
 
@@ -325,9 +334,33 @@ def nc_context_defs(book: List<&2, KDef>, +annotated: List<&2, KDef>) -> List<&2
     case Con{+d, +rest}:
       nt_choose(List<&2, KDef>, String.eq(dk(d), "BookCache"),
         u => nc_context_defs(rest, annotated),
-        u => Con{nt_choose(KDef, String.eq(dk(lookup(annotated, dn(d))), "Absent"), u => d, u => lookup(annotated, dn(d))), nc_context_defs(rest, annotated)})
+        u => Con{nc_context_pick(d, lookup(annotated, dn(d))), nc_context_defs(rest, annotated)})
 
 @unsafe
 def nc_annotated_context(+book: List<&2, KDef>, +annotated: List<&2, KDef>) -> List<&2, KDef>:
-  +merged = nc_context_defs(book, annotated)
+  +merged = nc_context_defs(book, nc_context_index(annotated))
   book_cached(merged, norm_max_book(merged))
+
+# Build an immutable first-match index once for plain annotation lists.
+# A cache sentinel anywhere changes lookup semantics, so retain that input.
+@unsafe
+def nc_context_index(annotated):
+  match annotated:
+    case Nil{}: Nil{}
+    case Con{+head, +rest}:
+      nt_choose(List<&2, KDef>, nc_context_has_cache(Con{head, rest}), u => Con{head, rest}, u => book_cached(Con{head, rest}, 0))
+
+@unsafe
+def nc_context_pick(original, annotated):
+  nt_choose(KDef, String.eq(dk(annotated), "Absent"), u => original, u => annotated)
+
+law nc_context_has_cache:
+  for annotated: List<&2, KDef>
+  Bool
+
+@unsafe
+def nc_context_has_cache(annotated):
+  match annotated:
+    case Nil{}: False{}
+    case Con{head, rest}:
+      nt_choose(Bool, String.eq(dk(head), "BookCache"), u => True{}, u => nc_context_has_cache(rest))

@@ -1,0 +1,13 @@
+{
+  "kind": "native-context-rejected-overlay",
+  "retainedBeforePromotion": true,
+  "candidateApi": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-optimization/api.mjs",
+  "candidateApiSha256": "b697ab1b723dd70ca5e1c80aa2c83fe4c56b9733bc6eac9e8c7aaa0c8e18fe24",
+  "candidateAssemblySha256": "60ea1aa89c48dd8a4ff1806117eccb29b4e08aaf748d9154b4c335998aa9c1aa",
+  "partialReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/native-optimization/sentinel-check/report.json",
+  "partialReportSha256": "06bc7a470cf36f427b388830b58ab5c2ad6379fee56b590e1a02c94620cf4963",
+  "failure": "Exact annotated-context comparison failed for a definition named $kernel.cache when the annotation list contained a cache sentinel after a raw prefix. Re-indexing exposed the sentinel as a definition, whereas legacy lookup entered its hidden index.",
+  "resolution": "nc_context_has_cache scans the entire annotation list; any cache sentinel retains legacy lookup, plain lists receive a first-match index.",
+  "productionAffected": false,
+  "passingCorrectedApiSha256": "27a0d14f140c788625836a9dee3948f5f8000ba15776df5360f1fe3bddbe2664"
+}

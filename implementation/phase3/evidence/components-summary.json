@@ -1,0 +1,62 @@
+{
+  "kind": "phase3-frozen-components-summary",
+  "apiSha256": "8787894920cc8959ab0abec28ddae0ea0dc05ad7665dc6f4d43f845445e60923",
+  "sourceSha256": "936266643e95973709bac4b567289c5792decadbb3297f90018ed5052582d772",
+  "runtimeSha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+  "cpu": 2,
+  "node": "v24.18.0",
+  "nodeFlags": [
+    "--stack-size=4096",
+    "--max-old-space-size=4096"
+  ],
+  "mainSuites": {
+    "passed": 26,
+    "total": 30,
+    "allInputsUnchanged": true
+  },
+  "supplements": {
+    "legacyOriginsSuites": 2,
+    "frontendPairedCases": 46,
+    "nativeCProgramsBuiltAndExecuted": 22,
+    "nativeRuntimeBoundaryProgramsExact": 2,
+    "stringPrimitiveParityPassed": true,
+    "socketFreePrimitiveAndHaltPassed": true,
+    "hostSafeguardSuitesOriginal": {
+      "passed": 9,
+      "total": 10
+    },
+    "remainingResourcePropagationPassedWithFileCapture": true
+  },
+  "limitations": [
+    {
+      "test": "TCP/UDP runtime networking",
+      "status": "not validated in this sandbox",
+      "observed": "Independent net.createServer().listen(0,127.0.0.1) returned EPERM errno -1; original runtime primitive suite failed at TCP listener use."
+    },
+    {
+      "test": "original synchronous child supervision",
+      "status": "original failures retained; checked equivalent supplements pass",
+      "observed": "Node/Clang spawnSync sometimes returned EPERM after execution. Native outputs were separately verified; string oracle rebuilt using unchanged pinned APIs in process."
+    },
+    {
+      "test": "Node stdout pipe capture",
+      "status": "file-backed capture used for observation supplement",
+      "observed": "Minimal asynchronous spawn(node,-e console.log(123)) returned exit 0 with empty stdout; file-backed equivalent returned 123 newline."
+    },
+    {
+      "test": "frontend rules bootstrap-only sidecar",
+      "status": "test harness locally adapted to actual checked integration report",
+      "observed": "No fabricated bootstrap report was created."
+    }
+  ],
+  "sourceReportHashes": {
+    "components-main.json": "de3f1b7fac0ca695cdcacd66eb0ae04159a396e38570e59b800330de514bba58",
+    "components-supplement.json": "af9d97e404982470b3b66be78f4e5f37918578534a8db80b6383127b0a388cb3",
+    "components-file-capture.json": "aa9b6ae4a1c5380e9a3ac08d9a6182c8ccd8ea5d3c1d75a3a0d8606d271b2ddc",
+    "components-resource-fd.json": "ab8b28507b1b02bf50fbc1689f535490eb81e443c188bf82431d946ae1b40765",
+    "components-runtime-original.json": "b97e97c8210aae313dca6e50c833ea86153dd741b92ee6d61e19d8ee53ee6e76",
+    "components-frontend-rules.json": "3443d44ead8f89dea1c031fe388985ac308183db4bec0b7d2c49d0401c292495",
+    "components-frontend-grammar.json": "87d5e522368061ae54ee857e8effaf206edb33d4a132e6c9f125309d5b59708e",
+    "components-legacy-build.json": "e304ba1a6ec6f56a9d636b6280cf12f6acc3c3962f2c4ed0f5d943218400afe9"
+  }
+}

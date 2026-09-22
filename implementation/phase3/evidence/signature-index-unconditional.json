@@ -1,0 +1,294 @@
+{
+  "kind": "bend-signature-index-differential",
+  "scope": "Checked Bend overlay against frozen B1. Exact event modes, positive/negative checker text; timings include planning plus all checker work on synthetic law/fill books.",
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/baseline/api/b1.mjs",
+    "sha256": "794cbf5f00a0a3a29f53821d530d27211c217a0636da14082adcbb18f4e5f2b6"
+  },
+  "toolSha256": "aac2f124794942f84cd2478561c323347a43489e402af8b99647b02203b97591",
+  "candidate": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase3/signature-build-direct/api.mjs",
+    "sha256": "51d7e2aa49badc90ec54b960e3a1cb9929ea33e973a34082778dac9646eafab8"
+  },
+  "node": "v24.18.0",
+  "rows": [
+    {
+      "n": 64,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 85.83748200000002
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 80.30724299999997
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 66.60363300000006
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 65.33112700000004
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 92.38205300000004
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 80.36516400000005
+        }
+      ]
+    },
+    {
+      "n": 128,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 127.53983400000016
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 104.77550999999971
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 97.16358300000002
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 92.8674060000003
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 90.2311380000001
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 76.79500300000018
+        }
+      ]
+    },
+    {
+      "n": 256,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 247.68829199999982
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 205.57650600000034
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 212.64700799999991
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 272.4277699999993
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 317.4442660000004
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 267.05850399999963
+        }
+      ]
+    },
+    {
+      "n": 512,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 790.6679860000004
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 566.5055919999995
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 538.2885189999997
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 763.9685550000013
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 837.4630649999999
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 581.1500620000006
+        }
+      ]
+    },
+    {
+      "n": 1024,
+      "samples": [
+        {
+          "name": "baseline",
+          "rep": 0,
+          "ms": 2740.445011
+        },
+        {
+          "name": "candidate",
+          "rep": 0,
+          "ms": 1798.5067820000004
+        },
+        {
+          "name": "candidate",
+          "rep": 1,
+          "ms": 1787.5549930000016
+        },
+        {
+          "name": "baseline",
+          "rep": 1,
+          "ms": 2764.9837320000006
+        },
+        {
+          "name": "baseline",
+          "rep": 2,
+          "ms": 2718.7638090000037
+        },
+        {
+          "name": "candidate",
+          "rep": 2,
+          "ms": 1734.841293999998
+        }
+      ]
+    }
+  ],
+  "negative": [
+    {
+      "n": 64,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 64,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 64,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 64,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 128,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 128,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 128,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 128,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 256,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 256,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 256,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 256,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 512,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 512,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 512,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 512,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    },
+    {
+      "n": 1024,
+      "name": "duplicate",
+      "error": "f0: duplicate declaration"
+    },
+    {
+      "n": 1024,
+      "name": "missing",
+      "error": "1 TODO found.\nThe code is incomplete, and not a valid proof yet."
+    },
+    {
+      "n": 1024,
+      "name": "unsafe-first-fill",
+      "error": ""
+    },
+    {
+      "n": 1024,
+      "name": "signature-mismatch",
+      "error": "f0: definition does not match prior law signature"
+    }
+  ],
+  "complete": true
+}

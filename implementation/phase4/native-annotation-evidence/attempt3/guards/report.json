@@ -1,0 +1,42 @@
+{
+  "kind": "native-annotation-boundary-controls",
+  "complete": true,
+  "rows": [
+    {
+      "id": "zero-rounds",
+      "status": 1,
+      "diagnostic": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Positive integer rounds required\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-measure.mjs:12:8\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.18.0\n",
+      "refusedBeforeNativeLaunch": true
+    },
+    {
+      "id": "empty-fixtures",
+      "status": 1,
+      "diagnostic": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Nonempty fixtures required\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-measure.mjs:10:8\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.18.0\n",
+      "refusedBeforeNativeLaunch": true
+    },
+    {
+      "id": "empty-variants",
+      "status": 1,
+      "diagnostic": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Nonempty variants required\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-measure.mjs:11:8\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.18.0\n",
+      "refusedBeforeNativeLaunch": true
+    },
+    {
+      "id": "unsafe-id",
+      "status": 1,
+      "diagnostic": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: IDs must be safe output basenames\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-measure.mjs:14:62\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: '../escaped',\n  expected: /^[A-Za-z0-9_-]+$/,\n  operator: 'match',\n  diff: 'simple'\n}\n\nNode.js v24.18.0\n",
+      "refusedBeforeNativeLaunch": true
+    },
+    {
+      "id": "fixture-alias",
+      "status": 1,
+      "diagnostic": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Fixture physical identity differs\n+ actual - expected\n\n+ '/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend'\n- '/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend'\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-measure.mjs:32:10\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: '/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend',\n  expected: '/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.18.0\n",
+      "refusedBeforeNativeLaunch": true
+    },
+    {
+      "id": "oracle-input-drift",
+      "status": 1,
+      "diagnostic": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Oracle input drift: /home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend\n+ actual - expected\n\n+ 'b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946'\n- '0000000000000000000000000000000000000000000000000000000000000000'\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-measure.mjs:25:70\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 'b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946',\n  expected: '0000000000000000000000000000000000000000000000000000000000000000',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.18.0\n",
+      "refusedBeforeNativeLaunch": true
+    }
+  ]
+}

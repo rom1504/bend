@@ -10,7 +10,7 @@ claim of preregistration.
   are running; ordinary public APIs are unchanged.
 - Measurement: three alternating fresh-process rounds on CPU 0, separately
   validated and primed Base caches, exact input/tool identities retained.
-- Decision: **Investigate; named opt-in promotion pending final gates.**
+- Decision: **Final observation gates passed; canonical packaging verification pending.**
 - Related: [P4-009](P4-009-stability-memo.md),
   [P4-012](P4-012-boolean-matchers.md),
   [P4-016](P4-016-private-lexical-scope.md).
@@ -65,3 +65,9 @@ Large checked source/API artifacts are prerequisite inputs identified there;
 the compact archive does not silently claim to contain them. Final gate results
 and the promotion decision must be appended rather than replacing the failed
 base attempt.
+
+## Final gates, 18:40 UTC
+
+The [complete frontend audit](../../implementation/phase4/private-frontend-final.md) found zero changes across all 2,756 raw candidate results and verdicts versus final B1; the repeated TypeScript reference also matches exactly. It verified 176 worker histories, tool/input identities and the completed public H association. The 377 candidate strict failures remain; this is behavior preservation, not full conformance.
+
+The [four-observation source audit](../../implementation/phase4/private-full-final-evidence/comparison.json) passed all exact-output gates. Candidate process wall improved 3.91% and 0.75% in the pairs; two-sample mean improvement is 2.28%, with mean maximum-child RSS 3.16% higher. The earlier core-only gain is not a whole-source gain. Staged canonical packaging is applied but remains unverified until rebuild, 25 tests and seven profile guards run after the reserved scheduling window.

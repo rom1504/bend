@@ -1,0 +1,50 @@
+{
+  "kind": "annotation-static-fork-flag-obstruction",
+  "rows": [
+    {
+      "name": "FID_KA_DEFS_EXCEPT",
+      "id": 4886,
+      "flags": 0,
+      "markedForkFree": false
+    },
+    {
+      "name": "FID_AP_DEFS",
+      "id": 4939,
+      "flags": 2,
+      "markedForkFree": true
+    },
+    {
+      "name": "FID_AP_HASH_DEFS",
+      "id": 4946,
+      "flags": 0,
+      "markedForkFree": false
+    },
+    {
+      "name": "FID_AP_PREPARE",
+      "id": 5003,
+      "flags": 0,
+      "markedForkFree": false
+    },
+    {
+      "name": "FID_AP_FORK2",
+      "id": 4879,
+      "flags": 0,
+      "markedForkFree": false
+    },
+    {
+      "name": "FID_CLO_APPLY",
+      "id": 5128,
+      "flags": 0,
+      "markedForkFree": false
+    },
+    {
+      "name": "FID_MAIN_C9424",
+      "id": 5096,
+      "flags": 0,
+      "markedForkFree": false
+    }
+  ],
+  "pinnedSource": "bend2/comp.ts:2894-2905",
+  "finding": "Native callgraph treats a closure apply as reaching every closure, so generic compiler callbacks become conservatively may-fork after a disposable fork is introduced. This is a static fact, not a measured causal attribution of all timing regression.",
+  "followup": "A bounded C-metadata ablation would require explicit closed-world no-fork proof for selected entries; no override was performed."
+}

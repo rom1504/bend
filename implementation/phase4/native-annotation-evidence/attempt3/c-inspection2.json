@@ -1,0 +1,55 @@
+{
+  "kind": "phase4-native-annotation-c-inspection",
+  "complete": true,
+  "at": "2026-09-22T18:22:06.413Z",
+  "toolSha256": "bbd3d62e0085b789069f6fc8c05580c8913cf53c18c4c200d162a59946221480",
+  "buildReport": {
+    "file": "build/phase4/annotation-parallel-attempt3/checked/native-build-report.json",
+    "sha256": "e47cc042fa12ee06723ffb4b0a1d6837afb539e563c76f4a750d527393779a94"
+  },
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/checked/program.c",
+    "sha256": "8ab07ba124eb065eaa08e136c1d46de2361aa4c4f69ffebad2a2ed38819c15db",
+    "bytes": 4633529
+  },
+  "observations": [
+    "Actual two-child join calls unchanged KA_DEFS_EXCEPT workers.",
+    "Fork retains context and stop roots; workers continue existing owned projections and per-definition context retention.",
+    "Complete structural hash returns a scalar into the continuation before construction of the second IO.now action. Exact serialization follows the timed region."
+  ],
+  "excerpts": {
+    "fork": {
+      "name": "FID_AP_FORK2_K8898",
+      "line": 177852,
+      "text": "  WL_CASE(FID_AP_FORK2_K8898)\n  {\n    WL_POPN(3);\n    Term context_3 = STK(0);\n    Term stops_3 = STK(1);\n    Term left_1 = STK(2);\n    Term right_0 = r0;\n    WL_OPEN\n    if (!seq) {\n      context_3 = term_keep(e, context_3);\n      stops_3 = term_keep(e, stops_3);\n      u64 t_3 = task_node(e, FID_AP_FORK2_J8899, WL_CONT, WL_IDX, 2);\n      u64 t_4 = task_node(e, FID_KA_DEFS_EXCEPT, term_tsk(FID_AP_FORK2_J8899, t_3), 0, 0);\n      e.mem[t_4 + 0] = context_3;\n      e.mem[t_4 + 1] = left_1;\n      e.mem[t_4 + 2] = stops_3;\n      e.mem[t_3 + 0] = term_tsk(FID_KA_DEFS_EXCEPT, t_4);\n      u64 t_5 = task_node(e, FID_KA_DEFS_EXCEPT, term_tsk(FID_AP_FORK2_J8899, t_3), 1, 0);\n      e.mem[t_5 + 0] = context_3;\n      e.mem[t_5 + 1] = right_0;\n      e.mem[t_5 + 2] = stops_3;\n      e.mem[t_3 + 1] = term_tsk(FID_KA_DEFS_EXCEPT, t_5);\n      return term_tsk(FID_AP_FORK2_J8899, t_3);\n    }\n    context_3 = term_keep(e, context_3);\n    stops_3 = term_keep(e, stops_3);\n    WL_ROOM(4);\n    STK(0) = context_3;\n    STK(1) = stops_3;\n    STK(2) = right_0;\n    STK(3) = FID_AP_FORK2_K8899;\n    WL_PUSHN(4);\n    r0 = context_3;\n    r1 = left_1;\n    r2 = stops_3;\n    WL_JMP(FID_KA_DEFS_EXCEPT);\n  }}\n#endif"
+    },
+    "definitionLoop": [
+      {
+        "name": "FID_KA_DEFS_EXCEPT",
+        "line": 177936,
+        "text": "  WL_CASE(FID_KA_DEFS_EXCEPT)\n  {\n    Term book_0 = r0;\n    Term ds_0 = r1;\n    Term stops_0 = r2;\n    WL_OPEN\n    if (term_aux(ds_0) == CID_NIL) {\n      term_sink(e, book_0);\n      term_sink(e, stops_0);\n      r0 = term_pak(CID_NIL, 0);\n      WL_RETN(1);\n    } else {\n      Term fb_0[2];\n      u64 sp_0 = ctr_take(e, ds_0, 2, fb_0);\n      Term f_0 = fb_0[0];\n      Term f_1 = fb_0[1];\n      Term v_0 = 0;\n      f_0 = term_keep(e, f_0);\n      Term v_1 = 0;\n      Term o_0[1];\n      if (spin_23(e, o_0, f_0) == 0) {\n        return 0;\n      }\n      v_1 = o_0[0];\n      v_0 = v_1;\n      stops_0 = term_keep(e, stops_0);\n      spare_free(e, cls_fit(2), sp_0);\n      if (seq) {\n        WL_ROOM(5);\n        STK(0) = book_0;\n        STK(1) = f_0;\n        STK(2) = f_1;\n        STK(3) = stops_0;\n        STK(4) = FID_KA_DEFS_EXCEPT_K8903;\n        WL_PUSHN(5);\n      } else {\n        u64 t_0 = task_node(e, FID_KA_DEFS_EXCEPT_K8903, WL_CONT, WL_IDX, 1);\n        e.mem[t_0 + 0] = book_0;\n        e.mem[t_0 + 1] = f_0;\n        e.mem[t_0 + 2] = f_1;\n        e.mem[t_0 + 3] = stops_0;\n        WL_CONT = term_tsk(FID_KA_DEFS_EXCEPT_K8903, t_0);\n        WL_IDX = 4;\n      }\n      r0 = stops_0;\n      r1 = v_0;\n      WL_JMP(FID_HAS_NAME);\n    }\n  }}\n#endif"
+      },
+      {
+        "name": "FID_KA_DEFS_EXCEPT_K8903",
+        "line": 177988,
+        "text": "  WL_CASE(FID_KA_DEFS_EXCEPT_K8903)\n  {\n    WL_POPN(4);\n    Term book_1 = STK(0);\n    Term f_2 = STK(1);\n    Term f_3 = STK(2);\n    Term stops_1 = STK(3);\n    u32 h_0 = r0;\n    WL_OPEN\n    f_2 = term_keep(e, f_2);\n    u64 nd_0 = heap_alloc(e, cls_fit(1));\n    e.mem[nd_0 + 0] = f_2;\n    book_1 = term_keep(e, book_1);\n    u64 nd_1 = heap_alloc(e, cls_fit(2));\n    e.mem[nd_1 + 0] = book_1;\n    e.mem[nd_1 + 1] = f_2;\n    if (seq) {\n      WL_ROOM(4);\n      STK(0) = book_1;\n      STK(1) = f_3;\n      STK(2) = stops_1;\n      STK(3) = FID_KA_DEFS_EXCEPT_K8911;\n      WL_PUSHN(4);\n    } else {\n      u64 t_4 = task_node(e, FID_KA_DEFS_EXCEPT_K8911, WL_CONT, WL_IDX, 1);\n      e.mem[t_4 + 0] = book_1;\n      e.mem[t_4 + 1] = f_3;\n      e.mem[t_4 + 2] = stops_1;\n      WL_CONT = term_tsk(FID_KA_DEFS_EXCEPT_K8911, t_4);\n      WL_IDX = 3;\n    }\n    r0 = h_0;\n    r1 = term_clo(FID_KA_DEFS_EXCEPT_C8904, nd_0);\n    r2 = term_clo(FID_KA_DEFS_EXCEPT_C8905, nd_1);\n    WL_JMP(FID_KC);\n  }}\n#endif"
+      }
+    ],
+    "digestCall": {
+      "name": "FID_MAIN_K9422",
+      "line": 184096,
+      "text": "  WL_CASE(FID_MAIN_K9422)\n  {\n    WL_POPN(2);\n    Term f_88 = STK(0);\n    Term x_28 = STK(1);\n    Term annotated_0 = r0;\n    WL_OPEN\n    annotated_0 = term_keep(e, annotated_0);\n    if (seq) {\n      WL_ROOM(4);\n      STK(0) = f_88;\n      STK(1) = x_28;\n      STK(2) = annotated_0;\n      STK(3) = FID_MAIN_K9423;\n      WL_PUSHN(4);\n    } else {\n      u64 t_13 = task_node(e, FID_MAIN_K9423, WL_CONT, WL_IDX, 1);\n      e.mem[t_13 + 0] = f_88;\n      e.mem[t_13 + 1] = x_28;\n      e.mem[t_13 + 2] = annotated_0;\n      WL_CONT = term_tsk(FID_MAIN_K9423, t_13);\n      WL_IDX = 3;\n    }\n    r0 = annotated_0;\n    r1 = 2166136261ull;\n    WL_JMP(FID_AP_HASH_DEFS);\n  }}\n#endif"
+    },
+    "digestReturn": {
+      "name": "FID_MAIN_K9423",
+      "line": 184126,
+      "text": "  WL_CASE(FID_MAIN_K9423)\n  {\n    WL_POPN(3);\n    Term f_89 = STK(0);\n    Term x_29 = STK(1);\n    Term annotated_1 = STK(2);\n    u32 digest_0 = r0;\n    WL_OPEN\n    u64 nd_18 = heap_alloc(e, cls_fit(4));\n    e.mem[nd_18 + 0] = f_89;\n    e.mem[nd_18 + 1] = x_29;\n    e.mem[nd_18 + 2] = annotated_1;\n    e.mem[nd_18 + 3] = digest_0;\n    r0 = term_clo(FID_MAIN_C9424, nd_18);\n    WL_RETN(1);\n  }}\n#endif"
+    },
+    "afterClock": {
+      "name": "FID_MAIN_C9424",
+      "line": 184145,
+      "text": "  WL_CASE(FID_MAIN_C9424)\n  {\n    Term f_90 = r0;\n    Term x_30 = r1;\n    Term annotated_2 = r2;\n    u32 digest_1 = r3;\n    Term x_31 = r4;\n    WL_OPEN\n    u64 nd_19 = heap_alloc(e, cls_fit(4));\n    e.mem[nd_19 + 0] = f_90;\n    e.mem[nd_19 + 1] = x_30;\n    e.mem[nd_19 + 2] = annotated_2;\n    e.mem[nd_19 + 3] = digest_1;\n    r0 = term_clo(FID_IO_NOW, 0);\n    r1 = term_clo(FID_MAIN_C9425, nd_19);\n    r2 = x_31;\n    WL_JMP(FID_IO_BIND);\n  }}\n#endif"
+    }
+  },
+  "limits": "Static emitted-code gate only. Correct tree results and actual thread paths require separate native execution gates; no concurrency or speedup is inferred from task construction alone."
+}

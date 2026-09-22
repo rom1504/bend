@@ -1,0 +1,22 @@
+{
+  "kind": "phase4-shared-resource-contention",
+  "knownProgram": "native-annotation-inspect.mjs",
+  "command": [
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "tools/performance/phase4/native-annotation-inspect.mjs",
+    "build/phase4/annotation-parallel-attempt3/checked/native-build-report.json",
+    "build/phase4/annotation-parallel-attempt3/c-inspection.json"
+  ],
+  "conservativeInterval": {
+    "start": "2026-09-22T18:13:40Z",
+    "end": "2026-09-22T18:14:05Z"
+  },
+  "affinity": "not explicitly pinned; actual CPU not captured",
+  "purpose": "Read-only emitted C fork/demand inspection; no compiler execution. Original prefix line-number scan was quadratic and took roughly 10\u201315 seconds. Fixed to a linear scan afterward.",
+  "affectedConcurrentWork": "Root candidateB full-source, frontend and scheduling broad runs may have shared-resource noise; no annotation timing had started. No causal slowdown or physical overlap is asserted.",
+  "consumedTool": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/inspect-consumed-v1.mjs",
+    "sha256": "436c4ae1b1f3b6afee3161eb500cc89921e5ebcd589b7ae4788011f9c3d5691a"
+  },
+  "correction": "All follow-up executable jobs explicitly use taskset; timings retain every sample and disclose overlap rather than relabeling gate correctness."
+}

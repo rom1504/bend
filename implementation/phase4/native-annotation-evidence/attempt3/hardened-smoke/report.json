@@ -1,0 +1,91 @@
+{
+  "kind": "phase4-native-annotation-component",
+  "complete": true,
+  "started": "2026-09-22T18:23:37.385Z",
+  "cfg": {
+    "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/checked/native-build-report.json",
+    "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/compiler-o2",
+    "oracleReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/oracle/report.json",
+    "captureTool": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-file-capture.mjs",
+    "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "fixtures": [
+      {
+        "id": "library",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend",
+        "boundaries": true
+      }
+    ],
+    "variants": [
+      {
+        "id": "serial1",
+        "mode": "serial",
+        "threads": 1,
+        "cpus": "3"
+      }
+    ],
+    "rounds": 1,
+    "timeoutMs": 120000
+  },
+  "identity": {
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-measure.mjs": "2ba235c62542744639160ea219447474f5cbf1569755e77b48012e4463c7779d",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-resource.py": "a64d70693742327733ebcf30d10f74d7c0a881f2e9a7867c36be0dffde9633b1",
+    "build/phase4/annotation-parallel-attempt3/hardened-smoke-config.json": "f5742ec56198b78be5bd3622a3bd78ab7b21fbdc58f2abcf0298416302851804",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/checked/native-build-report.json": "e47cc042fa12ee06723ffb4b0a1d6837afb539e563c76f4a750d527393779a94",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/compiler-o2.build.json": "cb5f7637cc5f8e86a22fc2d4cc75936b3525ea6db173e71c3e82e6fd8236e8b8",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/compiler-o2": "68c583425d45523c86b9f39cad2cd6e9b6d064f7df1527f21c3737e111477f08",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/compiler.bend": "2e914b7fb83c2ab74292eff7b8a3dc985f41e8b4fbefee49ea93ec3a9c94f7c7",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/checked/program.c": "8ab07ba124eb065eaa08e136c1d46de2361aa4c4f69ffebad2a2ed38819c15db",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/oracle/report.json": "05f50f05e2e765b6ab19897663a2dc7c494a856f2994f631489b4cb4c6c2c9ff",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-file-capture.mjs": "753cbd54085dec8a4afde949db0afd026cb7614eb2cdaa97d0c7a88044dfa0dc",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend": "4b7ea902366826075daa8b213e121d769804f669d0d3e62aee4b3eadd807e40f",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/oracle/library-normal.expected": "12e1993c0aeb1264cc1f604e672486c89eb8e3c68d60b7104d59e03fb42d2dfc"
+  },
+  "samples": [
+    {
+      "round": 0,
+      "fixture": "library",
+      "variant": {
+        "id": "serial1",
+        "mode": "serial",
+        "threads": 1,
+        "cpus": "3"
+      },
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-resource.py",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/compiler-o2",
+        "--threads",
+        "1",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/hardened-smoke/0-library-serial1.tree",
+        "serial"
+      ],
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/hardened-smoke/0-library-serial1.tree",
+      "started": "2026-09-22T18:23:37.386Z",
+      "wallMs": 1700.709075,
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "prepare_ms=1627\nselected=66\nannotation_consume_ms=5\ndigest=3271552499\nANNOTATION_RESOURCE wall=1.656137 user=1.628890 sys=0.003953 rssKiB=21416\n",
+      "finished": "2026-09-22T18:23:39.136Z",
+      "resourceWallSeconds": 1.656137,
+      "userSeconds": 1.62889,
+      "systemSeconds": 0.003953,
+      "peakRssKiB": 21416,
+      "componentMs": 5,
+      "prepareMs": 1627,
+      "digest": 3271552499,
+      "selected": 66,
+      "exactTree": true,
+      "sha256": "12e1993c0aeb1264cc1f604e672486c89eb8e3c68d60b7104d59e03fb42d2dfc"
+    }
+  ],
+  "scope": "Fresh native processes; prepare/check/specialize outside component clock. Component timer includes annotation, splitting/join for fork modes, full structural digest. Exact output bytes checked against frozen-B1 tree oracle. Exact canonical serialization occurs after the component clock; process wall includes preparation, serialization and file output. No full-source or emitted-user-program speed claim.",
+  "changedInputs": [],
+  "finished": "2026-09-22T18:23:39.173Z"
+}

@@ -1,0 +1,133 @@
+{
+  "kind": "native-annotation-negative-controls",
+  "complete": true,
+  "identity": {
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-negative.mjs": "c6ab0b501c5032817b734eacfabaf2c15e28f2022611596b04eab4024ff51a98",
+    "build/phase4/annotation-parallel-attempt3/negative-config.json": "5814959487c04cf37a60478f611a0a81cb14d5fbc32f9b96f39c069d561c9793",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/compiler-o2": "68c583425d45523c86b9f39cad2cd6e9b6d064f7df1527f21c3737e111477f08",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/compiler-o2.build.json": "cb5f7637cc5f8e86a22fc2d4cc75936b3525ea6db173e71c3e82e6fd8236e8b8",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/oracle/report.json": "05f50f05e2e765b6ab19897663a2dc7c494a856f2994f631489b4cb4c6c2c9ff",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt3/oracle/workers.cjs": "216b716c9d14cb8215380c60d849b9976c2229cbdb462993b12e9b5e60e2689a",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-file-capture.mjs": "753cbd54085dec8a4afde949db0afd026cb7614eb2cdaa97d0c7a88044dfa0dc",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/parse-error.bend": "20d00f6fea0addb456725924a5f83e8141f235f569888d013e6a2c5af3ec5047",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/type-error.bend": "074404f7b12ee380ef5d066ad66b18d0000b58bf827a9398b48e29932cd7fa3e",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/unresolved-law.bend": "6130c2b51468cb74c6455853a18a32e4f47f9d9fd09eb59110ece910d0befb66",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/owned-name.bend": "06b680b2ad6727725f2e3ba6bb8bf5ded47c317c626aa63356205e455647ced0"
+  },
+  "rows": [
+    {
+      "fixture": "parse-error",
+      "variant": {
+        "mode": "serial",
+        "threads": 1
+      },
+      "wallMs": 9.454185999999993,
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "prepare_ms=2\nline 0:0: reserved parameter name; got <eof>\n",
+      "expectedError": "line 0:0: reserved parameter name; got <eof>",
+      "rejectedBeforeAnnotation": true
+    },
+    {
+      "fixture": "parse-error",
+      "variant": {
+        "mode": "fork2",
+        "threads": 2
+      },
+      "wallMs": 7.229516999999987,
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "prepare_ms=2\nline 0:0: reserved parameter name; got <eof>\n",
+      "expectedError": "line 0:0: reserved parameter name; got <eof>",
+      "rejectedBeforeAnnotation": true
+    },
+    {
+      "fixture": "type-error",
+      "variant": {
+        "mode": "serial",
+        "threads": 1
+      },
+      "wallMs": 1551.548138,
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "prepare_ms=1526\nmain: constructor does not belong to goal or field count differs\n",
+      "expectedError": "main: constructor does not belong to goal or field count differs",
+      "rejectedBeforeAnnotation": true
+    },
+    {
+      "fixture": "type-error",
+      "variant": {
+        "mode": "fork2",
+        "threads": 2
+      },
+      "wallMs": 1835.9593610000002,
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "prepare_ms=1830\nmain: constructor does not belong to goal or field count differs\n",
+      "expectedError": "main: constructor does not belong to goal or field count differs",
+      "rejectedBeforeAnnotation": true
+    },
+    {
+      "fixture": "unresolved-law",
+      "variant": {
+        "mode": "serial",
+        "threads": 1
+      },
+      "wallMs": 1601.6863319999993,
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "prepare_ms=1576\n1 TODO found.\nThe code is incomplete, and not a valid proof yet.\n",
+      "expectedError": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "rejectedBeforeAnnotation": true
+    },
+    {
+      "fixture": "unresolved-law",
+      "variant": {
+        "mode": "fork2",
+        "threads": 2
+      },
+      "wallMs": 1829.4800559999985,
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "prepare_ms=1823\n1 TODO found.\nThe code is incomplete, and not a valid proof yet.\n",
+      "expectedError": "1 TODO found.\nThe code is incomplete, and not a valid proof yet.",
+      "rejectedBeforeAnnotation": true
+    },
+    {
+      "fixture": "owned-name",
+      "variant": {
+        "mode": "serial",
+        "threads": 1
+      },
+      "wallMs": 1542.5007589999987,
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "prepare_ms=1518\nClo.apply is a name the compiler encodes itself: name yours apart\n",
+      "expectedError": "Clo.apply is a name the compiler encodes itself: name yours apart",
+      "rejectedBeforeAnnotation": true
+    },
+    {
+      "fixture": "owned-name",
+      "variant": {
+        "mode": "fork2",
+        "threads": 2
+      },
+      "wallMs": 1833.9431939999995,
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "prepare_ms=1829\nClo.apply is a name the compiler encodes itself: name yours apart\n",
+      "expectedError": "Clo.apply is a name the compiler encodes itself: name yours apart",
+      "rejectedBeforeAnnotation": true
+    }
+  ],
+  "changedInputs": []
+}

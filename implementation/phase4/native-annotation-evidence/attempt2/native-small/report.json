@@ -1,0 +1,121 @@
+{
+  "kind": "phase4-native-annotation-component",
+  "complete": false,
+  "started": "2026-09-22T18:03:15.008Z",
+  "cfg": {
+    "buildReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/checked/native-build-report.json",
+    "binary": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/compiler-o2",
+    "oracleReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/oracle/report.json",
+    "captureTool": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-file-capture.mjs",
+    "base": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "fixtures": [
+      {
+        "id": "library",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend",
+        "boundaries": true
+      },
+      {
+        "id": "unicode",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/unicode.bend",
+        "boundaries": false
+      },
+      {
+        "id": "dependent",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/dependent_function_arg.bend",
+        "boundaries": false
+      },
+      {
+        "id": "erased",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/compile/erased_argument.bend",
+        "boundaries": false
+      },
+      {
+        "id": "template",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/spec/comp_map_mint.bend",
+        "boundaries": false
+      }
+    ],
+    "variants": [
+      {
+        "id": "serial1",
+        "mode": "serial",
+        "threads": 1,
+        "cpus": "3"
+      },
+      {
+        "id": "fork2-1",
+        "mode": "fork2",
+        "threads": 1,
+        "cpus": "3"
+      },
+      {
+        "id": "fork4-1",
+        "mode": "fork4",
+        "threads": 1,
+        "cpus": "3"
+      }
+    ],
+    "rounds": 1,
+    "timeoutMs": 120000
+  },
+  "identity": {
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-measure.mjs": "7086ae0b6eb19fdefab5e9ee7677a04f943c406f869f234f1f6fc9ddccf786ec",
+    "build/phase4/annotation-parallel-attempt2/native-small-config.json": "5bb8ff0fb0995ce3ebab37d282a5bfed11c08423aa6db0cf1a258c8c1d0d6246",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/checked/native-build-report.json": "da7bd8eb739c29ff915df293687f09397c3e50f7c260c0ebf4686259212a7305",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/compiler-o2.build.json": "413e181441bb8000df69e90e2bcc619e3af29237a20de08b7f7eb374fecf76bf",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/compiler-o2": "e519f78e14d325f6697fba32ea766a483b9fc8502a35f43d9ffc85088f1e9f2c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/compiler.bend": "baa53a5ea3005955eeb6d5d4f7b05310b0710520f7313676a5a42c884fb78853",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/checked/program.c": "47debdc7b96ec80d8706dd19872e68047e574312bf8cb54da9f6772c4b3053e9",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/oracle/report.json": "d038163eef6f73367f6f303ed37a204b74bef1f7cc71f4a7fbc819628deab867",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/host/tools/performance/rapid/native-file-capture.mjs": "753cbd54085dec8a4afde949db0afd026cb7614eb2cdaa97d0c7a88044dfa0dc",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend": "4b7ea902366826075daa8b213e121d769804f669d0d3e62aee4b3eadd807e40f",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/unicode.bend": "3ca96046c437b3a7c7a1034d25aae64fdabd1a2433465d75358febb2abb15bd1",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/dependent_function_arg.bend": "9e9cf662e7765f4dcebcecd27e3a10cd39ca3355298c0b3037fca6c0e696c19f",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/compile/erased_argument.bend": "cda7560d2a71f75a57f60e7004f8fb086e89ec1899a37f3b393344177008ae89",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/spec/comp_map_mint.bend": "05c10856eeea1e5235287a71933765be7aafb83f05b60cf43cd62a7be23a3426",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/oracle/library-normal.expected": "12e1993c0aeb1264cc1f604e672486c89eb8e3c68d60b7104d59e03fb42d2dfc",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/oracle/unicode-normal.expected": "15aa27c137c8c00f5fc0e43de89c67da5ebd651fec4d2434e8993958b28fd797",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/oracle/dependent-normal.expected": "b5cbae4951cf71e288479d76b055a5c901d26fca164b52e9273ab2507878b25c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/oracle/erased-normal.expected": "e8c6105a4afb2bd274eb25c337b946336ee61d278c01f0f5340acf90fb66dd1f",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/oracle/template-normal.expected": "983a4f3b7fc6771765ea421ec9194aacc9a893b8675dc4582e9187ebd00a3e79"
+  },
+  "samples": [
+    {
+      "round": 0,
+      "fixture": "library",
+      "variant": {
+        "id": "serial1",
+        "mode": "serial",
+        "threads": 1,
+        "cpus": "3"
+      },
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/usr/bin/time",
+        "-f",
+        "ANNOTATION_RESOURCE wall=%e user=%U sys=%S rssKiB=%M",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/compiler-o2",
+        "--threads",
+        "1",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/rapid/native-bundle-fixtures/library.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/native-small/0-library-serial1.tree",
+        "serial"
+      ],
+      "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/annotation-parallel-attempt2/native-small/0-library-serial1.tree",
+      "started": "2026-09-22T18:03:15.009Z",
+      "wallMs": 4.303762000000006,
+      "status": 127,
+      "signal": null,
+      "stdout": "",
+      "stderr": "taskset: failed to execute /usr/bin/time: No such file or directory\n",
+      "finished": "2026-09-22T18:03:15.031Z"
+    }
+  ],
+  "scope": "Fresh native processes; prepare/check/specialize outside component clock. Component timer includes annotation, splitting/join for fork modes, complete canonical serialization and digest. Exact output bytes checked against frozen-B1 tree oracle. Process wall includes preparation and file output. No full-source or emitted-user-program speed claim.",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n127 !== 0\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase4/native-annotation-measure.mjs:31:73\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
+  "finished": "2026-09-22T18:03:15.032Z"
+}

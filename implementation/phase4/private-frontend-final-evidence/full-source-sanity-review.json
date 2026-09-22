@@ -1,0 +1,74 @@
+{
+  "kind": "independent-four-observation-sanity-review",
+  "complete": true,
+  "comparison": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase4/private-full-final-evidence/comparison.json",
+    "sha256": "3468fd1fe5d769a324c9bdbeb8f6a41271cc82aa0fcda19bc98bfe4a6cf758ae"
+  },
+  "observations": [
+    {
+      "index": 0,
+      "id": "control-a",
+      "variant": "control",
+      "passed": true,
+      "imageSha256": "61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1",
+      "wallMs": 780021.6014799662,
+      "requestMs": 778536.428316,
+      "maxRssKiB": 4333668,
+      "userSeconds": 777.405781,
+      "systemSeconds": 2.609995,
+      "startedUtc": "2026-09-22T17:33:40Z",
+      "finishedUtc": "2026-09-22T17:46:41Z"
+    },
+    {
+      "index": 1,
+      "id": "candidate-a",
+      "variant": "candidate",
+      "passed": true,
+      "imageSha256": "4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3",
+      "wallMs": 749522.6617702283,
+      "requestMs": 747601.0008469999,
+      "maxRssKiB": 4464192,
+      "userSeconds": 746.921003,
+      "systemSeconds": 2.590022,
+      "startedUtc": "2026-09-22T17:52:01Z",
+      "finishedUtc": "2026-09-22T18:04:31Z"
+    },
+    {
+      "index": 2,
+      "id": "candidate-b",
+      "variant": "candidate",
+      "passed": true,
+      "imageSha256": "4318bbcdb2040ad794387b1466b0bafbe12233e67983224c5a564d13fa5753a3",
+      "wallMs": 824998.122960329,
+      "requestMs": 822745.333027,
+      "maxRssKiB": 4384292,
+      "userSeconds": 821.855844,
+      "systemSeconds": 3.137086,
+      "startedUtc": "2026-09-22T18:04:50Z",
+      "finishedUtc": "2026-09-22T18:18:35Z"
+    },
+    {
+      "index": 3,
+      "id": "control-b",
+      "variant": "control",
+      "passed": true,
+      "imageSha256": "61e7d94c19bbda2de2a55037d5e2b992868a145ab6f29d557f4bc0885e759cb1",
+      "wallMs": 831247.2080611624,
+      "requestMs": 829734.357957,
+      "maxRssKiB": 4244100,
+      "userSeconds": 828.27245,
+      "systemSeconds": 2.980572,
+      "startedUtc": "2026-09-22T18:20:39Z",
+      "finishedUtc": "2026-09-22T18:34:31Z"
+    }
+  ],
+  "sameDecodedBaseBook": true,
+  "pairWallReductionsPercent": [
+    3.910012190927925,
+    0.7517721611852379
+  ],
+  "twoSampleMeanWallReductionPercent": 2.280688646920226,
+  "twoSampleMeanMaxChildRssIncreasePercent": 3.156019141576216,
+  "scope": "Independent arithmetic/inventory/cache-policy review of root-owned audited four-run archive. Earlier first-pair actual bytes independently checked; root auditor validates all four source outputs. Not a third benchmark or new confidence interval."
+}

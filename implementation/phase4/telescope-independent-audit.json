@@ -1,0 +1,21 @@
+{
+  "kind": "phase4-independent-telescope-source-audit",
+  "method": "Read-only source proof and control-flow comparison; no additional timing or test claims.",
+  "inputs": {
+    "selfhost/src/core/term.bend": "e47b14c3fec0043dacccdf2db0366e5d9ed29394b3a4faae47afe08e69a8f522",
+    "selfhost/src/core/normalize.bend": "ae09f471bbf06633b9f308f9451835f7863a5c03535e8a6cf5ce6b31dbf0048d",
+    "selfhost/src/check/kernel.bend": "d078021d9c9e21783f7d161331e3b724b0de1d3721c0d8416a6a8807807b4bc1",
+    "selfhost/src/check/annotate.bend": "f033d726d951723b3bd52c62317e5b47721552beaf2ac42205e2444eb70c0c14"
+  },
+  "scope": "Finite immutable KTerm value graphs respecting declared field types. App.name=null is outside this boundary. Facts are not retained across requests/books/contexts.",
+  "conclusion": "No additional typed-shape correctness gap found. The fact establishes substitution identity, and wnf is omitted only on literal All suffixes where weak-head normalization with no arguments is identity.",
+  "reviewed": [
+    "Recursive structural induction for core_subst_stable including canonical App metadata, exact arity and non-Lam head",
+    "Variables/dependent domains force ordinary substitution; binder collisions do not create a false positive",
+    "Ref/Ann/Let/neutral App telescope heads resume ordinary wnf and re-analysis",
+    "First check/annotation result is evaluated once before the fact scan",
+    "Quantity demand, affine-use merging, argument order and terminal telescope value are unchanged",
+    "False fact stops scan then uses original remaining traversal; no cross-context fact cache",
+    "Allocation/object sharing is not a semantic observable of immutable Bend Data values"
+  ]
+}

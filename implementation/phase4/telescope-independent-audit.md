@@ -1,0 +1,11 @@
+# Independent telescope source audit
+
+A separate read-only review found no additional correctness gap for finite immutable `KTerm` values with the declared field types. This adds a source argument to the existing differential evidence; it does not claim another test run or broader conformance. [Source identities and review scope](telescope-independent-audit.json) are recorded separately.
+
+`core_subst_stable(t)` proves that `subst(t, id, replacement)` preserves the entire structure for every binder and replacement. It rejects every `Var`. Other nodes require stable children. An `App` additionally requires the exact metadata and two-child shape produced by `app`, and a function whose tag is not `Lam`. These conditions are necessary because `core_rebuild` can beta-reduce or canonicalize an application even when the substituted variable is absent. Recursive stability prevents a child from becoming a lambda during rebuilding.
+
+This is a substitution fact, not a normalization fact. A `Ref` can unfold to a lambda, but `core_apply` does not unfold references. The optimized telescope walk skips `wnf` only while its current node is literally `All`; `wnf` with no pending arguments returns that node unchanged. A `Ref`, `Ann`, `Let`, neutral application or any other head resumes ordinary normalization. The fact is recomputed about the newly exposed tail and is never reused across a changed book or context.
+
+Any dependency represented by a `Var` forces the original substitution route. Quantities still enter `qdem` at the same argument, checks and annotations retain argument order, and `tele_check_done`/`both` preserve error selection and affine-use merging. The first checked or annotated argument is evaluated once before scanning the tail. Empty remaining argument lists return the same terminal telescope without adding normalization.
+
+The fact scan follows substitution's Var/children/App-rebuild order. When a fact fails, the ordinary remaining traversal runs. Valid immutable fields introduce no new observable effects; changed allocation/sharing does not change the Bend value. The previously documented raw JavaScript `App.name = null` difference remains outside the declared String-field boundary. No further typed-shape counterexample was found, and no production change is proposed.

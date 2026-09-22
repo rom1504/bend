@@ -254,3 +254,50 @@ the identical checked C. Profiles are tied to that C, the compiler version and
 training input identities. Charge instrumented build/training time explicitly;
 a small steady-state win that costs minutes after each compiler edit may be a
 poor choice for the development loop. The existing O2 path remains the control.
+
+## Follow-up: private identity memoization
+
+The integrated substitution fact creates a specific measurable opportunity.
+On the real compiler-core workload, 1,853,629 of 2,078,196 calls receive a term
+object already seen by `core_subst_stable`: 89.2% identity reuse, with 224,567
+distinct objects. These are disposable counters after Base preparation, not a
+speedup measurement. Investigate two bounded private-image candidates before
+considering a general cache or representation change.
+
+First, memoize only completed Boolean results of `core_subst_stable` by term
+identity. Pin the reviewed helper bodies and runtime semantics. Its invariant
+depends solely on immutable term data, so it needs no book, environment or binder
+key. Intercept existing non-tail call/force boundaries; on a miss perform the
+original call, and cache only a successfully completed Boolean. Do not cache
+exceptions, bounces, pending computations or an optimistic cycle marker. A
+WeakMap permits unused term keys to be collected. Unknown shapes retain the
+original path. This is confined to the private data-only compiler boundary;
+mutable host graphs, proxies and arbitrary public runtime values do not qualify.
+
+Second, measure reuse of exact `(book identity, term identity)` pairs for `wnf`.
+Term identity alone is insufficient: the same reference can mean different
+things after a book change. Only if useful reuse exists, investigate a nested
+WeakMap of completed immutable results. `wnf` has explicit book/term inputs and
+does not allocate fresh binder IDs; graph evaluators with state heaps and
+freshness-dependent normalization are outside this proposal. Completed normal
+forms may retain substantial graphs while their keys live, so peak RSS and
+multi-request behavior are required evidence alongside latency.
+
+For both candidates, independent review must check purity, demand order,
+ownership, immutable sharing and the actual transport boundary. Test positive
+and negative facts, beta applications, noncanonical metadata, repeated throws,
+deep acyclic terms, source changes between requests and different books sharing
+one term. The `wnf` candidate additionally needs opaque foreign definitions,
+stuck/under-applied terms, variable payloads, rewriting and minimum quantities,
+plus the existing normalization suite. No added forcing is allowed. If a wrapper
+adds recursive host frames, measure the stack-depth consequence or place the
+cache in an existing runtime call frame.
+
+Use alternating fresh private control/candidate processes, exact emitted bytes,
+the real compiler fragment, selected programs and failures. Promote only a
+material whole-request gain that survives semantic and memory checks. A promoted
+candidate needs a new immutable image, broad exact frontend observations and
+checked full-source output equality; earlier image measurements cannot be
+assigned to changed bytes. Keep the original canonical package available as the
+control and preserve rejected experiments. These caches do not alter compiler
+algorithms in Bend or the public emitted-library ABI.

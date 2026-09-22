@@ -25,7 +25,7 @@ The proof ran on CPU 2 from 16:23:30 to 17:01:13 UTC with Node v24.18.0, a 4 MiB
 | Stage2 | Checked B1 API | 670.766 s | 1,143,517-byte JavaScript library |
 | Stage3 | Stage2 H API | 1,591.343 s | Identical 1,143,517-byte library |
 
-Both processes exited zero without signals; each stage verified its consumed inputs. Independent inspection compared the actual stage files byte-for-byte, not only their reported hashes. The [completed proof report](final-source-evidence/fixedpoint.json) and [verification record](final-source-evidence/verification.json) retain those checks. Generated APIs remain outside the evidence archive.
+Both processes exited zero without signals; each stage verified its consumed inputs. Independent inspection compared the actual stage files byte-for-byte, not only their reported hashes. The [completed proof report](final-source-evidence/fixedpoint.json) and [verification record](final-source-evidence/verification.json) retain those checks. The actual checked B1, equal H stages, assembled source and runtime are now preserved in the separately versioned [final-source capsule](final-source-capsule/README.md), with exact hashes and a verify/extract tool. Extraction reuses historical checked bytes; it does not claim a new bootstrap or relocate proof paths.
 
 These are completed proof-stage observations, not a repeated causal performance comparison with the old source. The separate [final TypeScript measurements](typescript-final.md) and [native comparison](native-final.md) describe their own resources and controls. The native compiler's full-source JavaScript emissions match these exact H bytes; no native-code fixed point is claimed.
 

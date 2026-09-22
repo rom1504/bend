@@ -1,0 +1,134 @@
+{
+  "kind": "typescript",
+  "rows": [
+    {
+      "id": "nested-parent",
+      "lane": "parse",
+      "result": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "nested-parent",
+      "lane": "check",
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "stdout": "All terms check.\n",
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "non-bmp-source",
+      "lane": "parse",
+      "result": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "non-bmp-source",
+      "lane": "check",
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "stdout": "All terms check.\n",
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "imported-parse-error",
+      "lane": "parse",
+      "result": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a name\n- observed : end of input\nLocation:\n1 | def bad(\n2>| ",
+        "exitCode": 1
+      }
+    },
+    {
+      "id": "imported-parse-error",
+      "lane": "check",
+      "result": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "diagnostic": "Error:\n- expected : a name\n- observed : end of input\nLocation:\n1 | def bad(\n2>| ",
+        "exitCode": 1
+      }
+    },
+    {
+      "id": "imported-type-error",
+      "lane": "parse",
+      "result": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "imported-type-error",
+      "lane": "check",
+      "result": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "diagnostic": "Error:\n- expected : U32\n- observed : String\nLocation: bad.answer\n2 | def answer() -> U32:\n3>|   \"bad\"\n4 | ",
+        "exitCode": 1
+      }
+    },
+    {
+      "id": "library",
+      "lane": "parse",
+      "result": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "library",
+      "lane": "check",
+      "result": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "stdout": "All terms check.\n",
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "imported-todo",
+      "lane": "parse",
+      "result": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "imported-todo",
+      "lane": "check",
+      "result": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "diagnostic": "Error:\n- expected : a filled definition (an unfilled law is a dead claim: live code cannot use it)\n- observed : hole.answer\nLocation: main\n3 | def main() -> IO(Unit):\n4>|   IO.print(U32.show(A.answer()))\n5 | ",
+        "exitCode": 1
+      }
+    }
+  ],
+  "complete": true,
+  "peakRssKB": 259636
+}

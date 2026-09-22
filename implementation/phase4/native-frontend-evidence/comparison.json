@@ -1,0 +1,354 @@
+{
+  "complete": true,
+  "decision": "no-go-for-cheap-mode-switch;defer-native-frontend-batch-until-separate-protocol-cache-work",
+  "portFullObservationsEqual": true,
+  "portObservationCount": 12,
+  "nativeUnsupportedObservations": 12,
+  "samePortTypeScriptSemantic": 12,
+  "samePortTypeScriptText": 9,
+  "rows": [
+    {
+      "id": "nested-parent",
+      "lane": "parse",
+      "sameSemantic": true,
+      "sameText": true,
+      "port": {
+        "semantic": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": ""
+      },
+      "typescript": {
+        "semantic": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": ""
+      }
+    },
+    {
+      "id": "nested-parent",
+      "lane": "check",
+      "sameSemantic": true,
+      "sameText": true,
+      "port": {
+        "semantic": {
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": "All terms check.\n"
+      },
+      "typescript": {
+        "semantic": {
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": "All terms check.\n"
+      }
+    },
+    {
+      "id": "non-bmp-source",
+      "lane": "parse",
+      "sameSemantic": true,
+      "sameText": true,
+      "port": {
+        "semantic": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": ""
+      },
+      "typescript": {
+        "semantic": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": ""
+      }
+    },
+    {
+      "id": "non-bmp-source",
+      "lane": "check",
+      "sameSemantic": true,
+      "sameText": true,
+      "port": {
+        "semantic": {
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": "All terms check.\n"
+      },
+      "typescript": {
+        "semantic": {
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": "All terms check.\n"
+      }
+    },
+    {
+      "id": "imported-parse-error",
+      "lane": "parse",
+      "sameSemantic": true,
+      "sameText": false,
+      "port": {
+        "semantic": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "signal": null
+        },
+        "text": "Error: line 0:0: reserved parameter name; got <eof>"
+      },
+      "typescript": {
+        "semantic": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "signal": null
+        },
+        "text": "Error:\n- expected : a name\n- observed : end of input\nLocation:\n1 | def bad(\n2>| "
+      }
+    },
+    {
+      "id": "imported-parse-error",
+      "lane": "check",
+      "sameSemantic": true,
+      "sameText": false,
+      "port": {
+        "semantic": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "signal": null
+        },
+        "text": "Error: line 0:0: reserved parameter name; got <eof>"
+      },
+      "typescript": {
+        "semantic": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "signal": null
+        },
+        "text": "Error:\n- expected : a name\n- observed : end of input\nLocation:\n1 | def bad(\n2>| "
+      }
+    },
+    {
+      "id": "imported-type-error",
+      "lane": "parse",
+      "sameSemantic": true,
+      "sameText": true,
+      "port": {
+        "semantic": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": ""
+      },
+      "typescript": {
+        "semantic": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": ""
+      }
+    },
+    {
+      "id": "imported-type-error",
+      "lane": "check",
+      "sameSemantic": true,
+      "sameText": false,
+      "port": {
+        "semantic": {
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 1,
+          "signal": null
+        },
+        "text": "Error:\n- expected : U32\n- observed : String\nLocation: bad.answer"
+      },
+      "typescript": {
+        "semantic": {
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 1,
+          "signal": null
+        },
+        "text": "Error:\n- expected : U32\n- observed : String\nLocation: bad.answer\n2 | def answer() -> U32:\n3>|   \"bad\"\n4 | "
+      }
+    },
+    {
+      "id": "library",
+      "lane": "parse",
+      "sameSemantic": true,
+      "sameText": true,
+      "port": {
+        "semantic": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": ""
+      },
+      "typescript": {
+        "semantic": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": ""
+      }
+    },
+    {
+      "id": "library",
+      "lane": "check",
+      "sameSemantic": true,
+      "sameText": true,
+      "port": {
+        "semantic": {
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": "All terms check.\n"
+      },
+      "typescript": {
+        "semantic": {
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": "All terms check.\n"
+      }
+    },
+    {
+      "id": "imported-todo",
+      "lane": "parse",
+      "sameSemantic": true,
+      "sameText": true,
+      "port": {
+        "semantic": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": ""
+      },
+      "typescript": {
+        "semantic": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "signal": null
+        },
+        "text": ""
+      }
+    },
+    {
+      "id": "imported-todo",
+      "lane": "check",
+      "sameSemantic": true,
+      "sameText": true,
+      "port": {
+        "semantic": {
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 1,
+          "signal": null
+        },
+        "text": "Error:\n- expected : a filled definition (an unfilled law is a dead claim: live code cannot use it)\n- observed : hole.answer\nLocation: main\n3 | def main() -> IO(Unit):\n4>|   IO.print(U32.show(A.answer()))\n5 | "
+      },
+      "typescript": {
+        "semantic": {
+          "status": "error",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 1,
+          "signal": null
+        },
+        "text": "Error:\n- expected : a filled definition (an unfilled law is a dead claim: live code cannot use it)\n- observed : hole.answer\nLocation: main\n3 | def main() -> IO(Unit):\n4>|   IO.print(U32.show(A.answer()))\n5 | "
+      }
+    }
+  ],
+  "referencePin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+  "referenceIdentities": {
+    "bend.ts": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/bend.ts",
+      "sha256": "461e0c5dd12789ea293daf01c1cb5b8504f8dfcf8d38b85744665a77ecc63168"
+    },
+    "comp.ts": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/comp.ts",
+      "sha256": "1cf3b5ffea86697656f8ef4d6c26040f16ac512fd92485d164f8a14425871bd0"
+    },
+    "base.bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+      "sha256": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946"
+    }
+  },
+  "nativeFixtureDependenciesReverified": {
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/nested-parent/main.bend": "6da7ebd4593e7a31a83958a87e3b5258b0a5878ccc2668866f6b7312395f8a84",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend": "b8c2734d45ec6b4ce70fee70ff06ef35e08fce885af8852d8eb77dbff020e946",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/nested-parent/sub/a.bend": "9ef39b1b2f73605d25a13c209f0dcf83227c082afae1cb86a06d8062afdd1f62",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/nested-parent/shared/value.bend": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/non-bmp-source/main.bend": "8cbcfb2ccee90845cbfdd0e804062d0892023eeaf829b9e2a091e5e6f4644e64",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/imported-parse-error/main.bend": "3398671fee376662bca3030aee89e92b7b64397594478f90a77f2a8044d71a0d",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/imported-parse-error/bad.bend": "a38b0cf55b3538c5745ce94d88f77df9a96cbff57ca641d3eed3dcd8259112c3",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/imported-type-error/main.bend": "3398671fee376662bca3030aee89e92b7b64397594478f90a77f2a8044d71a0d",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/imported-type-error/bad.bend": "38da1ecbc4c2e3a0a776a27b13aa72646682c0ec6b0f4ab9d7fc514900ad275c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/library/main.bend": "2f676315db1f5931c0656049f6e0578714d2e2510e3ada253ecb91d918db21c3",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/library/value.bend": "073d6b21cad5f6833a71d034e1c9142f23ff5887b1b786d1cb4412806bc8d857",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/imported-todo/main.bend": "5a78bf81203a04184371496365a8d033a2cc6945edf17058d5a2b5215f5e17f8",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/native-final/validation/fixtures/imported-todo/hole.bend": "bb48e389b3340c27308773af27c9793941d56060dc95fea8958d2c966dc32a1c"
+  },
+  "scope": "No native parse/check candidate or benchmark exists. Existing native compile observations are retained as different-mode evidence only; they cannot substitute for check. Dependency hash supplement verifies current fixture bytes against earlier native report; it does not add a missing per-read audit retroactively."
+}

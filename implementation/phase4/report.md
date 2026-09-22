@@ -53,6 +53,40 @@ The [checked artifact capsule](final-source-capsule/README.md) and
 rerunning compiler builds merely to recover an experimental starting point.
 Historical proof paths and status are preserved.
 
+## Experiment decision index
+
+The [chronological ledger](../../experiments/ledger.md) preserves earlier decisions
+and their corrections. This index gives the latest disposition; an accepted
+experiment applies only to its stated source, artifact or worker boundary.
+
+| Experiments | Final disposition | Where the result applies |
+| --- | --- | --- |
+| P4-001, P4-016: private calls and lexical-scope correction | Accepted after fixing the full-source counterexample | Dedicated private compiler process; original failed image remains rejected |
+| P4-002: indexed final-definition selection | Accepted | Final-definition selection in Bend, guarded malformed-name fallback |
+| P4-003: substitution-stable telescope suffixes | Accepted after fixing initial error order | Checking/annotation in the combined Bend source |
+| P4-004: projection and representation | Accessor work included in the private image; broader layout migration deferred | Component evidence does not predict a representation-wide gain |
+| P4-005, P4-006: normalization and direct tag shortcuts | Rejected | No material real-core benefit |
+| P4-007: nullary sharing | Deferred | Small/inconsistent core benefit despite a list-workload improvement |
+| P4-008: native flags/PGO | O2 retained; PGO deferred | 9.1% full-source mean gain has roughly nine minutes of setup |
+| P4-009, P4-012, P4-019, P4-020: stability/Boolean profile | Accepted as an explicit opt-in | Exact reviewed H; 2.28% full-source mean gain, retained drift and RSS increase |
+| P4-010: weak-head pair memoization | Rejected | Core time and memory regress despite many hits |
+| P4-011: ordinary-call uncurrying | Rejected | Zero eligible sites in the actual image |
+| P4-013, P4-021: edit loop and frontend scheduling | Accepted | Checked development workflow and four-core validation |
+| P4-014: full-source inspector sampling | Rejected | Deadline/resource incident; bounded profiles replace it |
+| P4-015: exact Con-arm fusion | Rejected | Inconsistent material core benefit |
+| P4-017: native frontend mode switch | No-go without a protocol design | Native compile mode cannot silently replace exact parse/check observations |
+| P4-018: native annotation parallelism | Rejected | Exact trees, but roughly 11.5% worse component time in both orders |
+| P4-022, P4-023: residual profiles and family counts | Completed diagnostic evidence | Samples/counts are not speed estimates |
+| P4-024: native equality in B1 | Correctness gates passed; experimental exact artifact | 35.1–35.6% core gain, unchanged full frontend and full H output |
+| P4-025: narrow saturated substitution workers | Rejected | 7.25%/1.99% core gains fail the consistent-5% threshold |
+| P4-026: B1 equality full-source comparison | In progress under a fixed deadline | Fresh opposite-order comparison, separate from the prior correctness run |
+
+The [next lowering design](../../design/phase4/next_compiler_lowering.md) records
+the remaining architectural questions and their cheapest falsifiers. General
+typed workers across matches, constructor continuations and compiler-wide
+identifier representation are larger changes. None inherits a speed promise
+from dispatch samples or the rejected narrow worker.
+
 ## Frozen starting point
 
 [baseline.json](baseline.json) identifies 73 captured artifacts in
@@ -349,3 +383,24 @@ bytes, so these measurements do not establish faster generated user programs.
 Earlier generated-runtime work remains scoped to its own Phase 3 evidence.
 The 560 exact frontend differences from upstream remain open conformance work.
 No optimization result makes this checker a trusted proof verifier.
+
+## Final review and artifact integrity
+
+The independent [code review](final-code-review.md) examined the six changed Bend
+modules, private-profile selection, lexical scope, demand order, graph freshness,
+cache identities and the process boundary. Its 31 exact reviewed file identities
+are preserved; it found no new blocker within the stated typed-data assumptions.
+It did not run another compiler or claim universal equivalence.
+
+The separate [identity audit](evidence/final-integrity.json) verifies every one
+of the 59 current and frozen modules against the checked-build report, both
+actual fixed-point byte sequences, and the exact source/B1/runtime/Base/private/
+derived-image identities. The pinned upstream tracked checkout is unchanged.
+The human-written `bend2/bend.ts`, distributed compiler artifacts and public
+runtime are unchanged from the campaign's starting revision. This is a read-only
+integrity check, distinct from the semantic and performance gates above.
+
+The [preservation index](../../experiments/PRESERVATION.md) links actual archived
+images, histories, outputs, caches, source and consumed tools. It retains the
+identified early-history gaps. Restoring an old image does not validate a new
+source edit, rewrite a historical proof or make its canonical paths relocatable.

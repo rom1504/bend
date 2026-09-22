@@ -21,3 +21,7 @@ A performance survivor still needs exact whole-compiler output/diagnostic and br
 ## Gate hardening follow-up
 
 The third immutable controls report passes **157 checks**. The owner added explicit successful-value assertions for valid/deep inputs, walked the actual 100,000-element Con spine through its terminal Nil, and checked that combined head/tail failure equals the isolated head failure. I inspected those assertions and their completed report; no additional execution was performed for this review. [Exact reviewed identities](evidence/private-substitution-workers-review.json) record the final source and report. The original two reports remain retained rather than rewritten. The identified harness gaps are resolved for this bounded gate; real-workload correctness and performance remain separate.
+
+## Performance decision
+
+The owner’s opposite-order core pilot completed with exact outputs but request reductions of 7.2507% and 1.9929%. The second pair misses the preregistered 5% threshold, so P4-025 is rejected for promotion. The scoped semantic review above remains a review of the bounded experiment; it does not turn this null performance result into an accepted compiler change. See [the experiment record](../../experiments/phase4/P4-025-substitution-workers.md).

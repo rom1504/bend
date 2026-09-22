@@ -1,0 +1,252 @@
+{
+  "kind": "phase4-final-readonly-code-review",
+  "complete": true,
+  "reviewedAt": "2026-09-22T19:42:19.653714+00:00",
+  "reviewedHead": "7fcfe8d359ef479ccd57ccd4a8b269893510f13b",
+  "baseRevision": "89e2c83cde9df75d83f407c9ce30fec78838a802",
+  "scope": "Read-only independent source and canonical private-profile integration review against starting revision; finite immutable compiler data and declared KTerm fields. No new tests, compiler executions, profiling or timing. Not a universal correctness proof or a gate for rejected prototypes.",
+  "conclusion": "No new actionable blocker found within the stated scope.",
+  "files": [
+    {
+      "file": "selfhost/src/check/annotate.bend",
+      "sha256": "f033d726d951723b3bd52c62317e5b47721552beaf2ac42205e2444eb70c0c14",
+      "bytes": 10850,
+      "matchesReviewedHead": true,
+      "group": "phase4-source-change"
+    },
+    {
+      "file": "selfhost/src/check/kernel.bend",
+      "sha256": "d078021d9c9e21783f7d161331e3b724b0de1d3721c0d8416a6a8807807b4bc1",
+      "bytes": 36212,
+      "matchesReviewedHead": true,
+      "group": "phase4-source-change"
+    },
+    {
+      "file": "selfhost/src/check/specialize.bend",
+      "sha256": "da87303205e36a0bf029799f8941418e31923b6955dcc1229ba958fb3d42ac90",
+      "bytes": 24327,
+      "matchesReviewedHead": true,
+      "group": "phase4-source-change"
+    },
+    {
+      "file": "selfhost/src/core/index.bend",
+      "sha256": "0daca8956571ed2be25c7526e9f7276a7bbf68428a108bcac13e8e4a8ad834ab",
+      "bytes": 10245,
+      "matchesReviewedHead": true,
+      "group": "phase4-source-change"
+    },
+    {
+      "file": "selfhost/src/core/term.bend",
+      "sha256": "e47b14c3fec0043dacccdf2db0366e5d9ed29394b3a4faae47afe08e69a8f522",
+      "bytes": 8527,
+      "matchesReviewedHead": true,
+      "group": "phase4-source-change"
+    },
+    {
+      "file": "selfhost/src/driver/api.bend",
+      "sha256": "a68a76de0ed77e3fc9b99193e4e0298257c97e516fbab79438123309112e63a1",
+      "bytes": 3115,
+      "matchesReviewedHead": true,
+      "group": "phase4-source-change"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/build.mjs",
+      "sha256": "6e7833676bd16cc31c6d6d4d574c31e536fc9e245cb0af9f0af4e3fd9746dc17",
+      "bytes": 5431,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/profiles.mjs",
+      "sha256": "29464825cdec0ee5c8cfead47cdf75d065ccb5d45a606351de83e1c6303f417e",
+      "bytes": 900,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/profile-booleans.mjs",
+      "sha256": "0d77115f054a96b1166a0c94822942d4cb9df2739728eb19fd53384aa36b8377",
+      "bytes": 3320,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/profile-stability.mjs",
+      "sha256": "76f380dd7394c915431102143423035a06bdaa8b4c8ae7c20e0db6d2e8177151",
+      "bytes": 3121,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/profile-combined.mjs",
+      "sha256": "068dcfac495a5a39f526c59a82a96cab6bb78bd1b04d813542ad0acf7e4f2736",
+      "bytes": 1489,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/calls.mjs",
+      "sha256": "a8b9951e312250e7bd03f03e9ac14ab2755d531b65cec6f817684ae1a9941c2b",
+      "bytes": 8767,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/runtime.mjs",
+      "sha256": "519bee7bae11e26cc84f6104fa27bbfb4a200651ca72769d27d1b7800019a4a4",
+      "bytes": 1943,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/constants.mjs",
+      "sha256": "12663bc74d8bab9fdf234233d3ffb9f9819e632bff812c6289f92e19a21250a8",
+      "bytes": 2465,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/primitives.mjs",
+      "sha256": "d6c2ba0ad187740f4729cc508480bf61318104517ba6a7d4a0957245891c184a",
+      "bytes": 2503,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/proof.mjs",
+      "sha256": "c5ad273882b651f06e1c37fc319a870fbd0eb08da9301db90401cde100d71319",
+      "bytes": 3440,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/common.mjs",
+      "sha256": "09626a0d2687a206589fa19c02fdba2cab11368ad0818173d6854c7bcb87a668",
+      "bytes": 2660,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/transport.mjs",
+      "sha256": "e4e68ea7f4f1d850ea2e567eb7a0153f189bcdc5f4770f4117db66043dc13f97",
+      "bytes": 2900,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/input-audit.mjs",
+      "sha256": "3570ce2c4b1df763ffd9a911d3bfca299a964186682ad67dd54720edaf2e6b9a",
+      "bytes": 3389,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/run.mjs",
+      "sha256": "8b77c70776a42e591fb8652a6602340072e57fb22551e84ab443de2a7d325d0a",
+      "bytes": 4715,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/batch.mjs",
+      "sha256": "6f6cab4e4429d3891b5cff9abf965cfbc2163a5483c2c90b2e8c72407503008d",
+      "bytes": 9674,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/batch-worker.mjs",
+      "sha256": "1f518fe787dcb71dcaf4174a36dffaa9382b98ff5b414c45013d16f36034c39e",
+      "bytes": 2096,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/session.mjs",
+      "sha256": "60adf5796ac8ad185eb3361505b74e9e0c90d18298aa04d901e233eec9dbc465",
+      "bytes": 2215,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/worker.mjs",
+      "sha256": "51c87760cc58356a29d142bd4714a846af621f98257f65cda3ceae9d7573bbb8",
+      "bytes": 2536,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/publish.mjs",
+      "sha256": "ded814084c5eb6c9d893883b23a41b3ba92b988cc50f40bd899d3942a2f8c1c1",
+      "bytes": 1142,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/transform.mjs",
+      "sha256": "011105127c0d85ff13d54c46c7560d44dc47775472e4fe48f69101ce143ef069",
+      "bytes": 647,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/tokens.mjs",
+      "sha256": "f1b736dbca9de8955aa1ffde4f74a964ff2c1799deffc3467cafadab89b989fe",
+      "bytes": 1300,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/compiler-abi.mjs",
+      "sha256": "0bcbcaf022108877600baab1b15356db6d9917f5c4d668af936279680c126454",
+      "bytes": 4264,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b",
+      "bytes": 39290,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "selfhost/tools/private-compiler/README.md",
+      "sha256": "b8b5d9f6f358af1e8acdf9731674a81678ab5a0b3f8dfa9870662b8fb67179fc",
+      "bytes": 9101,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    },
+    {
+      "file": "docs/PHASE4_DEVELOPMENT.md",
+      "sha256": "e325ca9db8002b68e36d05e62b55443aadeb32b8bb3bd07c07aa5a4d0e122988",
+      "bytes": 11861,
+      "matchesReviewedHead": true,
+      "group": "private-profile-or-boundary"
+    }
+  ],
+  "checks": [
+    "Named profile requires exact H plus reviewed runtime and Boolean/stability bodies; default remains distinct and unchanged.",
+    "Boolean first-argument handling retains staged demand and non-Boolean fallback.",
+    "Stability cache publishes only completed Boolean facts over immutable terms and is independent of book/context.",
+    "Fresh host-owned graph encoding and API-specific validated Base-cache identities remain in use.",
+    "Lexical-block functions retain closures; only module-level eligible generated workers are hoisted.",
+    "Data-only worker transport, consumed-read audits and verified publication preserve the private boundary.",
+    "Book-final selection retains last-definition/order/done semantics and malformed-name legacy fallback.",
+    "Telescope reuse is limited by the conservative substitution fact and literal All traversal; ordinary normalization resumes at other heads."
+  ],
+  "existingEvidenceConsulted": [
+    "implementation/phase4/final-source.md",
+    "implementation/phase4/private-profile-review.md",
+    "implementation/phase4/private-frontend-final.md",
+    "implementation/phase4/telescope-independent-audit.md",
+    "implementation/phase4/native-final.md"
+  ],
+  "limits": [
+    "Existing tests and completed reports were cross-checked, not independently rerun in this review.",
+    "No equivalence claim for mutable graphs, injected getters/proxies or malformed out-of-declared-type raw KTerm fields.",
+    "No new generated-user-program runtime speed claim; compiler-private packaging leaves that ABI separate.",
+    "Running comparator tools/inputs and concurrently edited reports were not modified."
+  ],
+  "newActionableFindings": []
+}

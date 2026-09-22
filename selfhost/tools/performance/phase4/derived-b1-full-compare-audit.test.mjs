@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {validateComparisonStructure,auditAndArchive} from './derived-b1-full-compare-audit.mjs';
+const shas={control:'0653f21e7e227bf7bf7e3ad777630da64d520534753900636a571ed57a43f810',candidate:'e95e119847307aa215765fcbea63d3b9e4a2bba625f3d30a915f298eb6ed9821'};
+function fixture(){const planned=['control','candidate','candidate','control'];return {kind:'phase4-derived-b1-full-comparison',newBootstrap:false,cpu:2,timeoutMs:900000,hardDeadline:'2026-09-22T20:09:00.000Z',started:'2026-09-22T19:36:00Z',finished:'2026-09-22T20:05:00Z',complete:true,inputsUnchanged:true,planned,rows:planned.map((variant,index)=>({index,variant,repetition:Math.floor(index/2),passed:true,inputsUnchanged:true,execution:{status:0,signal:null,timedOut:false},processMs:100,observation:{requestMs:90,maxRssKiB:1000,apiSha256:shas[variant],result:{status:'ok',phase:'compile',checked:true}}}))};}
+test('all four opposite-order observations are required for completion',()=>{assert.equal(validateComparisonStructure(fixture()).successful,4);const r=fixture();r.rows.pop();assert.throws(()=>validateComparisonStructure(r));});
+test('failed final row retained honestly in an incomplete comparison',()=>{const r=fixture();r.complete=false;r.error='deadline';Object.assign(r.rows[3],{passed:false,error:'deadline',execution:{status:null,signal:'SIGKILL',timedOut:true}});const v=validateComparisonStructure(r);assert.equal(v.experimentComplete,false);assert.equal(v.successful,3);assert.equal(v.attempted,4);});
+test('duplicate observation cannot masquerade as opposite-order pair',()=>{const r=fixture();r.rows[2]=structuredClone(r.rows[1]);assert.throws(()=>validateComparisonStructure(r));});
+test('wrong image is refused',()=>{const r=fixture();r.rows[1].observation.apiSha256=shas.control;assert.throws(()=>validateComparisonStructure(r));});
+test('false success with timeout or diagnostic is refused',()=>{for(const mutate of [r=>r.rows[0].execution.timedOut=true,r=>r.rows[0].observation.result.status='error',r=>r.rows[0].observation.result.checked=false]){const r=fixture();mutate(r);assert.throws(()=>validateComparisonStructure(r));}});
+test('active writer and nonfinite metrics are refused',()=>{const r=fixture();delete r.finished;assert.throws(()=>validateComparisonStructure(r));const q=fixture();q.rows[0].processMs=NaN;assert.throws(()=>validateComparisonStructure(q));});
+test('missing report produces durable incomplete audit; destination reuse refuses',()=>{const root=fs.mkdtempSync(path.join(os.tmpdir(),'b1-full-audit-')),input=path.join(root,'input'),out=path.join(root,'archive');fs.mkdirSync(input);const a=auditAndArchive(input,out);assert.equal(a.complete,false);assert.equal(a.errors.length,1);assert.equal(JSON.parse(fs.readFileSync(path.join(out,'audit.json'))).complete,false);assert.throws(()=>auditAndArchive(input,out));fs.rmSync(root,{recursive:true});});
+test('malformed finished report produces durable incomplete audit',()=>{const root=fs.mkdtempSync(path.join(os.tmpdir(),'b1-full-audit-'));fs.writeFileSync(path.join(root,'report.json'),'{');const a=auditAndArchive(root,path.join(root,'out'));assert.equal(a.complete,false);assert.equal(a.errors.length,1);fs.rmSync(root,{recursive:true});});

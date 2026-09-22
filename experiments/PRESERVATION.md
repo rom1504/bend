@@ -1,41 +1,106 @@
-# Phase 4 preservation audit
+# Phase 4 preservation index
 
-Audit cutoff: 2026-09-22, approximately 17:30 UTC. This records preservation state separately from correctness and performance decisions. Root handles commits; uncommitted evidence must be included in the next checkpoint before it is called durable repository history.
+Updated through **P4-025**, 2026-09-22, approximately 19:41 UTC. P4-026 is pending
+and needs a separate append after its run and audit finish. Preservation is
+separate from correctness, performance and promotion. New files become durable
+history with the root's checkpoint; an ignored build path or checksum alone is
+not stored evidence.
 
-## Newly preserved small sources
+## Recover the exact artifacts
 
-The [preservation archive](../implementation/phase4/preservation-evidence/manifest.json) contains 123 references to **48 distinct compressed objects (81,836 bytes)**. Identical bytes are deduplicated, while every experiment group retains its original path and identity.
+| Need | Durable entry | What restoration means |
+| --- | --- | --- |
+| Checked source, B1, H and runtime | [Final source capsule](../implementation/phase4/final-source-capsule/README.md) | Exact assembled source, **63-export** checked B1, equal stage2/stage3 H and paired runtime. This is not the separate normal 54-export development API. |
+| Default and named-profile private images | [Private image capsule](../implementation/phase4/private-final-images/README.md) | Exact `scope-fixed` and `profile-combined` images, original manifests, host/helper and runner bytes. Keep the source capsule beside it: four objects are shared. Mutable caches and measurements are separate. |
+| Experimental B1 equality derivative | [P4-024 selected archive](../implementation/phase4/b1-native-equality-evidence/README.md) | Actual original/derived APIs, test variants, selected observations, outputs, validated caches and consumed tools. The derivative remains `newBootstrap:false`. |
+| P4-024 complete frontend and full-source gates | [Frontend archive](../implementation/phase4/b1-native-equality-frontend-evidence/README.md), [full-source archive](../implementation/phase4/b1-native-equality-full-evidence/README.md) | Complete raw results, failures, real histories, actual emitted H, original proofs/source and audited consumed inputs. Both archives verify actual member paths and bytes. |
+| Earlier private helper versions | [Preservation objects](../implementation/phase4/preservation-evidence/manifest.json) | 123 historical references to 48 deduplicated small source objects, including pre-fix versions. Exact scope and unresolved gaps remain below. |
+| Rejected substitution workers, P4-025 | [P4-025 objects](../implementation/phase4/private-substitution-evidence/README.md) | 142 labels / 70 objects preserve all three controls, comparison, original/candidate images and historical test-source revisions. Rejection remains a rejection. |
 
-- Stability and rejected weak-head memo: historical consumed-tool copies for counter and comparison runs. Each recovered file was checked against the corresponding consumed SHA recorded in the already tracked report.
-- Boolean matcher experiment: preparation copies and comparison copies are separate groups. Both are checked against their own recorded input/snapshot identities, including the then-consumed canonical calls/runtime sources. A later private-call fix cannot silently replace these versions.
-- Rejected ordinary uncurrying: the original pre-duplicate-guard transform matches the rejection report's transform SHA. Other preparation copies are archived but explicitly labeled with **archive identity only**, because preparation never produced a completed input report.
-- Three initial stability failure logs: zero eligible tokenizer sites, cross-module partial-function branding comparison, and an incorrect assertion that a partially applicable value must throw. The logs remain failures; later successful gates do not relabel them.
+From the repository root, the two portable capsule extractors verify their
+compressed and restored hashes, sizes and historical proof inventories before
+writing a **new** destination:
 
-The prior stable/weak-head JSON reports already embed complete observations, counters, resource measurements and checked provenance, but their consumed-source snapshot paths previously pointed only into ignored build directories. These small source objects close that replay gap.
+```sh
+python3 implementation/phase4/final-source-capsule/extract.py --verify-only
+python3 implementation/phase4/final-source-capsule/extract.py /tmp/phase4-source-NEW
+python3 implementation/phase4/private-final-images/extract.py --verify-only
+python3 implementation/phase4/private-final-images/extract.py /tmp/phase4-private-NEW
+```
 
-## Other important current evidence
+For object archives, choose the desired `files` entry in its manifest, verify the
+compressed object's recorded hash, decompress it, then verify restored SHA and
+length before use. P4-024's measured candidate is the entry for
+`prepared/candidate.mjs`, **not** `candidate-test.mjs`. For tar archives, follow
+the manifest's exact member paths and hashes. Extract into a fresh directory;
+do not overwrite existing artifacts or rewrite historical reports.
 
-- The private full-source `F is not defined` failure is retained in [private-scope-evidence](../implementation/phase4/private-scope-evidence/manifest.json), including original call-transform bytes, image manifest and failed execution result. Its independent fix belongs to P4-016; a failed run supplies no full-source speed result.
-- P4-015 has [its own archive](../implementation/phase4/private-con-arms-evidence/manifest.json), original failed test, corrected selected tests, counters, exact pilot outputs and pre-fix consumed canonical helper copies. It is rejected for insufficient repeatable benefit.
-- Final checked source/proof/frontend data are preserved by [final-source](../implementation/phase4/final-source.md); native selected/full-source gates and all six same-source pairs by [native-final](../implementation/phase4/native-final.md).
-- P4-015 tools/reports, the P4-016 failure archive, the full-source measurement tool and the final TypeScript classifier supplement were committed in `12e1a6d`. The combined-variant tools and this preservation archive are included in the following fix checkpoint.
-
-## Remaining limitations
-
-The exact original standalone source of each early failed stability test/transform was not separately retained before correction. The archive preserves original stderr and identifies the remaining generated test artifacts where present, but **does not fabricate those missing source versions**. The first tokenizer failure happened before a generated test artifact existed. These are harness/prototype-development failures, not missing winning performance samples; their exact early-source replay remains unavailable.
-
-Large generated APIs, executables, cache books and output libraries remain omitted intentionally. Their identities and generation prerequisites are in the experiment reports. Recreating a private experiment requires the matching completed/partial historical proof state, corresponding H bytes, canonical Base/runtime/host and the consumed tool version, not just today's tools. P4-015 additionally requires the recorded pre-fix control bytes. Do not represent an ignored local path or checksum alone as durable artifact storage.
-
-## Verify and reconstruct an isolated source overlay
-
-From the repository root:
+The early source-overlay restorer remains available:
 
 ```sh
 python3 implementation/phase4/preservation-evidence/restore.py
 python3 implementation/phase4/preservation-evidence/restore.py \
-  boolean/preparation /tmp/phase4-boolean-preparation-overlay
+  boolean/preparation /tmp/phase4-boolean-overlay-NEW
 ```
 
-The helper verifies all packed/unpacked hashes and restores only the selected group to a **new** directory at its original repository-relative paths. It refuses overwrite. This is a source overlay, not a complete generated compiler image or a one-command benchmark rerun. Start from the repository checkpoint containing the reports, reconstruct the archived helper layout, then follow that experiment's frozen configuration and generation procedure. Rebase historical absolute paths deliberately and retain any change in canonical source identity; do not claim byte-identical path-sensitive replay after silently changing them.
+It restores only that group's repository-relative helper layout, not a complete
+compiler image or a benchmark environment.
 
-Report evidence changes as new records. Existing consumed report bytes, failed attempts and partial-proof snapshots stay unchanged.
+## Recover observations and replay histories
+
+- [Final source proof](../implementation/phase4/final-source.md) and
+  [canonical private integration](../implementation/phase4/private-profile-integration-evidence/manifest.json)
+  retain checked provenance, exact image gates and the actual unit/guard results.
+- [Final private frontend](../implementation/phase4/private-frontend-final-evidence/README.md)
+  retains four raw reports and 176 actual persistent histories.
+  [Full-source private observations](../implementation/phase4/private-full-final-evidence/manifest.json)
+  and [small comparisons](../implementation/phase4/private-final-small-evidence/manifest.json)
+  retain their own consumed versions, outputs and limitations.
+- [P4-021 scheduling](../implementation/phase4/frontend-scheduling-evidence/README.md)
+  preserves focused runs, loaded/idle serial controls, both four-worker runs,
+  failed reproductions, frozen harness/cache and every actual history. Its speed
+  claim concerns additional CPU resources; known conformance failures remain.
+- [Native final](../implementation/phase4/native-final.md),
+  [native frontend feasibility](../implementation/phase4/native-frontend-evidence/manifest.json)
+  and [rejected native annotation](../implementation/phase4/native-annotation-evidence/manifest.json)
+  retain checked build/config/source evidence and declared omissions. Native
+  executables and toolchains are not generally bundled; use their recorded
+  generation prerequisites rather than substituting an unrelated binary.
+- [Residual profiles](../implementation/phase4/residual-profile-evidence/README.md)
+  preserve diagnostic evidence separately from uninstrumented measurements.
+- The [19:36 local-link audit](../implementation/phase4/evidence/link-audit-20260922-193625-preservation.json)
+  preserves the exact script and report for 94 documents / 416 local targets,
+  with zero broken targets **at that time**. It says nothing about later edits.
+
+Restoring evidence creates no new checked build, relocated proof or conformance
+pass. Exact historical execution needs the recorded Node/toolchain, canonical
+source and Base identities, matching runtime/host/helpers, requested export
+roots and validated cache policy. The capsule records pinned upstream revision
+`6018e28ecc67cf1fffc0c20c64b11023474c2df8`; the checkout and external executables
+remain prerequisites. Keep failed requests and the whole preceding worker
+history for replay, not only the last request. If paths or inputs change, record
+a new configuration/run and let identity checks reject an unsupported exact
+replay. Changed Bend source requires a fresh checked build.
+
+## Historical gaps stay explicit
+
+The initial preservation archive separates preparation and comparison tool
+versions and retains hash-matching historical copies for stability, rejected
+weak-head memo and Boolean experiments. Rejected ordinary uncurrying includes
+its original transform; additional preparation files lacking a completed input
+report are labeled **archive identity only**.
+
+The exact standalone sources for three early stability harness failures were
+not saved before correction. Original stderr and surviving generated test
+artifacts are retained, but the first tokenizer failure predates any generated
+test. Those exact early-source versions remain unavailable; later tools do not
+retroactively repair their provenance.
+
+The [full-source lexical-capture failure](../implementation/phase4/private-scope-evidence/manifest.json)
+retains the old call-transform/image metadata and `F is not defined` result;
+it is no speed result. [P4-015](../implementation/phase4/private-con-arms-evidence/manifest.json)
+retains its failed test, later controls and pre-fix consumed helpers. Final
+capsules now preserve large winning compiler images that the early overlay
+archive intentionally omitted, but they do not fill every older generated-image
+or native-binary gap. Consult each manifest's included objects and omissions.
+No missing historical source, artifact, failure or proof state is fabricated.

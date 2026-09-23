@@ -1,7 +1,7 @@
 # P5-011 — Structured raw-parser errors
 
 - Owner: lexer-analysis; root owns design and promotion.
-- Status: preregistered, awaiting frozen source and implementation authorization.
+- Status: validated and promoted as narrow source/host hunks after root approval; combined integration pending (initial preregistration retained below).
 - Scope: isolated source overlay; no production module/default API changes.
 - Related design: `design/phase5/structured_parser_diagnostics.md` (root-owned).
 
@@ -78,3 +78,33 @@ Stop if this needs a public ABI migration, broad parser/scoper rewrite, guessed
 positions, new error precedence, or expensive successful-path processing. Keep
 performance observations separate from correctness; equality timing has its own
 scheduled uncontended slot. No automatic promotion or performance claim.
+
+## Bounded spike outcome (2026-09-22 23:07 UTC)
+
+Implementation was authorized against genuine integration attempt02. Final isolated
+attempt03 passes 25 targeted controls (eight exact repairs), three additional
+CRLF/line-width controls, and full raw-result equality on Base, the frozen compiler
+and list_sort. Across 167 baseline parse-error cases, six become exactly the live
+reference and 161 remain unchanged, with zero classification changes or new
+mismatches. Two pre-existing acceptance gaps remain; the overall conformance
+runner correctly remains failing. No performance claim is made.
+
+The first checked build failed on the unconverted forwarding law in sugar; the
+second candidate exposed a real spaced-constructor position mismatch. Both are
+retained. The final refusal requires genuine name/brace adjacency. Unknown token
+coordinates and offending non-BMP scalars also retain legacy text. Standalone
+frontend compilation exposed a pre-existing book_without layer dependency,
+reproduced on baseline and closed only with an explicit unchanged helper in the
+component test. Root owns the separate production layer correction.
+
+Independent static review found no blocker for this bounded scope. Promotion and
+combined source proof are pending root coordination. See
+[implementation report](../../implementation/phase5/structured-parser-diagnostics.md)
+for exact artifacts, controls and limitations. No production source or default
+API was changed by this experiment owner.
+
+Final report-only audit passed all 167 rows. Root authorized production promotion
+after the timing hold; the exact overlay applied cleanly, preserving independent
+matcher/sugar/core-layer changes. Historical failed attempts, exact consumed tool
+versions and before/after promotion sources are now durably archived. No default
+API was updated and no combined-proof claim is made by this isolated gate.

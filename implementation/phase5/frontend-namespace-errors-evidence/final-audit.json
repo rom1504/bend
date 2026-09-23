@@ -1,0 +1,65 @@
+{
+  "kind": "phase5-namespace-selected-audit",
+  "complete": true,
+  "scope": "16 selected acceptance/phase checks,14 exact executions,7 accepted raw graphs and3 earlier-error controls; not full conformance",
+  "inputs": {
+    "before": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/namespace-errors/before/paired.json",
+      "sha256": "97c87339c6ebd9e3ef8fd5ec8d8b7b4a12bfb0e0031bab4b5befccd87738e17b"
+    },
+    "focused": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/namespace-errors/focused-v1/selected/paired.json",
+      "sha256": "09bf59f785178909bfd200c3571c0a3de9835de094701ee1894e20df5cf523d9"
+    },
+    "execution": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/namespace-errors/execution-v1/selected/paired.json",
+      "sha256": "7008026336b8e04228221ba557465cc00c46faddf2b23d67be956111541c8531"
+    },
+    "order": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/namespace-errors/error-order-v1/selected/paired.json",
+      "sha256": "25c1978a7ce36d78aa15945c70512d1e4588d8987c0c9468a559ac1800ec3026"
+    },
+    "raw": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/namespace-errors/raw-v1.json",
+      "sha256": "a720eccb0ea07d2b3098b0f3390dac256507c446b5fe4b176b117988159ddc50"
+    },
+    "nested": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/namespace-errors/raw-error-order-v2.json",
+      "sha256": "16f5c5967468c4e9a26fb06dac99c7a9b26d387170784bd243e3cd0a10e88ae8"
+    },
+    "residual": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/namespace-errors/residual-v1/selected/paired.json",
+      "sha256": "37e407d1e2b0fe3cdc0e00f88c93297467f9e4db8af36962b11566e267f033dc"
+    }
+  },
+  "bootstrap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/namespace-errors/candidate-v1/api.mjs.bootstrap.json",
+    "sha256": "0f2945f52963408ecd2379f4eabafbd45818906a9624d98d734da8a0bc86dcb8"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/namespace-errors/candidate-v1/api.mjs",
+    "sha256": "047e5d191e8ef56a713d7723cb251774e1caeb1859b48afde56217c8698e46b2"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/namespace-errors/candidate-v1/snapshot/build/typed/snapshots/5b01b8c697ea84f214057fde9c7e8985db6b5a03eba129d51ce044632304da2e/compiler.bend",
+    "sha256": "cdcac70cf84b649a665f24af5cd0013e47fa747af5a7b9ecb290df85bd3bc069"
+  },
+  "fixedInvalidAcceptances": [
+    "phase5-namespace-errors/bad-namespace-expression",
+    "phase5-namespace-errors/missing-close",
+    "phase5-namespace-errors/missing-namespace",
+    "phase5-namespace-errors/wrong-after-comment",
+    "phase5-namespace-errors/wrong-brace",
+    "phase5-namespace-errors/wrong-square"
+  ],
+  "exactFocusedDiagnosticDifferences": 8,
+  "residual": "Operator namespace head validity is separate; wrong-close case agrees only on parse phase, not first intended rule. Literal non-name namespace remains accepted.",
+  "retainedFailedAttempts": [
+    "Initial local-body positive lacked an annotation and failed both compilers. Separate corrected fixture used.",
+    "Original nested raw audit incorrectly required a nonempty top-level error field; exact nested Error lives in book, verified by separate v2 helper."
+  ],
+  "auditor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/frontend/phase5-namespace-audit.py",
+    "sha256": "8edd1e69736b0c27f5b562e18ba614ebb594a8b1b4e0061594ec4a89edc9f7bb"
+  }
+}

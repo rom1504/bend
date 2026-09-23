@@ -1,6 +1,6 @@
 # Phase 5 implementation report
 
-Status: in progress, second integrated checkpoint at 2026-09-22 23:03 UTC.
+Status: in progress, validation checkpoint at 2026-09-23 00:45 UTC.
 The authorized six-hour campaign began at 21:39:36 UTC and ends
 2026-09-23 03:39:36 UTC. Baseline: `7d69850`; design commit: `7c7db08`.
 
@@ -113,18 +113,109 @@ All ten rows pass exact emitted-byte checks; list outputs execute exactly.
 Core coverage is checked compilation and JavaScript syntax, not full core runtime
 execution. Other intentional compiler jobs paused throughout the timed window.
 
+## Later source and validation work
+
+Reviewed changes now include [structured parser errors](structured-parser-diagnostics.md),
+[unresolved operators](frontend-operators.md), [matcher heads](frontend-matchers.md),
+[namespace error preservation](frontend-namespace-errors.md),
+[core-layer definition filtering](core-filter-layering.md),
+[Nat prefix parsing](frontend-nat-prefix.md),
+[imported declaration freshness](imported-freshness.md), and
+[embedded parser diagnostics](embedded-parser-diagnostics.md).
+
+Nat precedence was an actual wrong-result bug: `(2n * 1n+3n : Nat)` previously
+returned 5 while TypeScript returned 8. The final candidate returns 8 in both
+interpreter and JavaScript execution. A first-error regression discovered during
+development was corrected before promotion and remains in the evidence.
+Two obsolete Nat helpers were removed; the cleanup produces the same checked
+API bytes. Separately, removing the duplicate core/checker definition filter
+restores the standalone 22-module frontend build and passes 23 existing
+definition-selection controls on a Bend-emitted library.
+
+Integration-03 is genuine checked API `8cfa124d7567…`. Its initial selected gate
+is retained as **273/274 passing declared oracles**: the combination of new
+matcher validation and parser metadata exposed a nested-error formatting loss.
+The source-aware error-only renderer repairs that composition without scanning
+accepted books. A full integration-03 control run has now completed all 2,756
+observations, preserving 919/919 positives and retaining 365 strict check
+failures. That is an intermediate source, before the later Nat, freshness and
+additional expectation-site changes; it is not the final campaign metric.
+
+Integration-04 is genuine checked API `9bb69d433703…`, including the Nat,
+freshness and nested-error fixes. Its 362-observation selection has 361 semantic
+agreements. A missing-import control incorrectly required Bend's existing load
+phase even though TypeScript reports parse phase. That discrepancy is unchanged
+from the frozen baseline; the original fixture and failed paired run remain.
+A separately named confirmed selection excludes that known residual. Exact
+diagnostic agreement remains distinct from acceptance/phase agreement.
+
+The additional explicit expectation-site candidate has 45 newly exact messages
+in a 167-case comparison, retains all eight previously exact messages and changes
+no classifications. Its original stricter unchanged-or-exact gate still fails on
+nine reformatted but divergent messages. The approved presentation criterion
+requires faithful rendering of the same chosen error and no newly broken exact
+oracles; these remaining parser differences are not counted as repairs.
+Compiler source is now frozen pending the final combined checks.
+
+## Faster complete frontend loops
+
+[P5-015](equality-frontend.md) compares the maintained equality derivative with
+its genuine checked parent in a controlled four-worker ABBA schedule. All
+11,024 observations and closed worker histories agree exactly. Mean full-loop
+wall falls from **301.905 to 229.753 seconds**, 23.90% less time (1.314×).
+All four runs retain the same 374 strict check failures for that source.
+
+[P5-021](persistent-base-decoding.md) then isolates repeated host cache work.
+The cost probe attributes 44.14% of focused request time to decoding and
+re-verifying an unchanged Base book. A bounded private session memo passes
+84 mixed-request comparisons and 15 adversarial contract groups. Its focused
+ABBA pilot reduces request time **16.629→10.144 seconds**, 39.00%, with all
+168 observations exact. This is a separate host optimization and a different
+measurement boundary; its percentage must not be multiplied into the equality
+result to invent a combined speedup. The [complete-inventory memo comparison](base-memo-frontend.md) now passes:
+292.602→242.597 seconds, **17.09% less**, with all 11,024 observations and closed
+worker histories exact. The two measured host files are promoted with guarded
+input/output hashes. The final combined checked build is running.
+
+## Final combined source checkpoint — 00:43 UTC
+
+Genuine checked integration-05 API `5969c53d34a0…` compiles the frozen final
+source `e3b927d13dc2…`. The focused paired gate completes all **387 observations**
+on 371 fixtures: both compilers pass every declared oracle and agree in
+acceptance/phase. There are 277 exact agreements and 110 retained diagnostic
+differences; acceptance-only oracles do not turn those differences into exact
+conformance.
+
+The unfiltered full frontend gate completes **2,756 observations** on all 1,378
+pinned fixtures. All **919 positive fixtures pass parse and check**. Strict
+checking now has **1,060 passes and 318 failures**, compared with 377 failures
+at campaign baseline. Negative parse observations retain their diagnostic
+status; they are not counted as strict checker passes. The workflow correctly
+exits nonzero while marking the observations complete. The live pinned comparison has **444 exact differences**, down from 560:
+428 differ only in text fields and 16 differ in status/phase, down from 50.
+These text differences are not automatically cosmetic: they can describe
+different selected errors. There are **116 newly exact observations and no
+new exact regressions**, and all 2,756 fresh TypeScript observations match the
+baseline reference. See [the final conformance breakdown](final-conformance.md).
+
+The final paired backend selection also passes all 42 declared observations
+per compiler (84 actual observations), including nine positive programs through
+interpreter, JS and actual native C compilation/execution. Ten custom diagnostic
+differences remain; the pinned exact matcher diagnostic agrees through all three
+execution entry points. Two fixture-author errors caught in preflight are
+preserved alongside the corrected intended positive fixtures. See the
+[backend report](final-backends.md) and the verified
+[final integration archive](integration-final-evidence/manifest.json), including
+both earlier failed combined selections and their immutable inputs.
+
 ## Remaining campaign work
 
-P5-011 now prototypes structured raw-parser error transport with a once-only
-renderer and unchanged public loader result shape; see its
-[detailed design](../../design/phase5/structured_parser_diagnostics.md).
-P5-013 investigates unqualified operator refusal; P5-014 investigates invalid
-matcher-arm heads. P5-015 prepares a controlled complete frontend loop comparison. These isolated candidates are
-not production changes until their gates and review pass.
-
-The final source still needs a fresh broad gate, CPU backend coverage, checked
-self-reproduction, updated code-size/complexity counts and controlled performance
-samples. The default distribution and pinned upstream have not changed.
+After the controlled memo window, run the final genuine combined build and
+frontend gate, selected actual CPU/backend executions, a new complete-source
+TypeScript/checked-B1/derived comparison and the unchanged checked self-host
+fixed-point procedure. Recount source/support/experimental code separately and
+archive the final input identities and failures. The default distribution and
+pinned upstream remain unchanged. The six-hour campaign is still active.
 
 ## Evidence
 

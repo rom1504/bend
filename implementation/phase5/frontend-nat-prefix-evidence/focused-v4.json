@@ -1,0 +1,873 @@
+{
+  "kind": "targeted-paired-conformance",
+  "started": "2026-09-23T00:02:07.909Z",
+  "complete": false,
+  "selectedComplete": true,
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/validation-001/target.json",
+    "sha256": "a8a430e6822ff0a8643ac6a28af8b4393a62fc2e07dca06c619aedaad3c6e44e"
+  },
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/api.mjs",
+      "sha256": "07c2ee92f6a47fae3f0feb2997f4a3d19bdf1a3dbb9f7dfb34f34f263aad8083"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/snapshot/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+    },
+    "bootstrapReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/api.mjs.bootstrap.json",
+      "sha256": "0e218e60bf71873825591a8f13485b485959db9a63f3b032e61538ed24d005f9"
+    }
+  },
+  "environment": {
+    "BEND_UPSTREAM": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "BEND_BASE": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "BEND_TYPED_API": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/api.mjs",
+    "BEND_TYPED_RUNTIME": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/snapshot/src/runtime.mjs"
+  },
+  "harnessSources": [
+    {
+      "file": "run.mjs",
+      "sourceSha256": "7198c672c15d6fa9b20cd4010446966713fce1ed6054ae13bff1e6500521b6a0",
+      "consumedSha256": "8266f68c43da4d930c7cb0f03ea95c128fbd94404ec2629eb8138f092496c333"
+    },
+    {
+      "file": "worker.mjs",
+      "sourceSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "consumedSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+    },
+    {
+      "file": "inventory.mjs",
+      "sourceSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd",
+      "consumedSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd"
+    },
+    {
+      "file": "judge.mjs",
+      "sourceSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+      "consumedSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+    },
+    {
+      "file": "selection.mjs",
+      "sourceSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+      "consumedSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+    },
+    {
+      "file": "run-probe.mjs",
+      "sourceSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c",
+      "consumedSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c"
+    },
+    {
+      "file": "replay.mjs",
+      "sourceSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94",
+      "consumedSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94"
+    },
+    {
+      "file": "persistent-probe.mjs",
+      "sourceSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225",
+      "consumedSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225"
+    },
+    {
+      "file": "persistent-worker.mjs",
+      "sourceSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+      "consumedSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d"
+    },
+    {
+      "file": "adapters/upstream.mjs",
+      "sourceSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd",
+      "consumedSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd"
+    }
+  ],
+  "targetSourceSha256": "2b273483c6adfd9bb5c52b614557741595560fb53acccd311d83ab87258df806",
+  "cpu": null,
+  "attempts": {
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/validation-001/selected/reference.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/validation-001/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "4096",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/validation-001/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/validation-001/selected/reference.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "323020706d78a2954c068759585c6ddb97888ee111ed579a2015c7c0e7b472fc"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/validation-001/selected/candidate.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/validation-001/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "4096",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/validation-001/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/snapshot/build/conformance-host/c11e6465fba16f647ee504a6f7435df7d063410a50dbe4ec69f3190b6e5db89e/typed.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v4/validation-001/selected/candidate.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "940fb0503ff0024e4c12b9524c06597b45059cc5ac4935b7aa4acc5d13e46e75"
+    }
+  },
+  "rows": [
+    {
+      "id": "phase5-nat-prefix/adjacent",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5-nat-prefix/after-space",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5-nat-prefix/before-space",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n2 | def main() -> Nat:\n3>|   1n +2n\n4 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/chain",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5-nat-prefix/comment-after",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5-nat-prefix/comment-before",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n3 |   (1n # comment\n4>|    + 2n)\n5 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/large-prefix",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5-nat-prefix/missing-rhs",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a term\n- observed : end of input\nLocation:\n3 |   1n+\n4>| ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 0:0: expected term; got <eof>",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/multiply-prefix",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5-nat-prefix/namespace",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5-nat-prefix/newline-after",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5-nat-prefix/newline-before",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n3 |   (1n\n4>|    + 2n)\n5 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/operator-after-prefix",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n2 | def main() -> Nat:\n3>|   (1n+2n + 3n : Nat)\n4 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/operator-after-prefix-inner-namespace",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5-nat-prefix/parenthesized-left",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n2 | def main() -> Nat:\n3>|   (1n)+2n\n4 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/prefix-multiply",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a * b : Nat))\nLocation:\n2 | def main() -> Nat:\n3>|   (1n+2n * 3n : Nat)\n4 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a * b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/prefix-multiply-inner-namespace",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "phase5-nat-prefix/separated",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n2 | def main() -> Nat:\n3>|   1n + 2n\n4 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/zero",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    }
+  ],
+  "missing": [],
+  "discrepancies": [
+    {
+      "id": "phase5-nat-prefix/before-space",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n2 | def main() -> Nat:\n3>|   1n +2n\n4 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/comment-before",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n3 |   (1n # comment\n4>|    + 2n)\n5 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/missing-rhs",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a term\n- observed : end of input\nLocation:\n3 |   1n+\n4>| ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 0:0: expected term; got <eof>",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/newline-before",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n3 |   (1n\n4>|    + 2n)\n5 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/operator-after-prefix",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n2 | def main() -> Nat:\n3>|   (1n+2n + 3n : Nat)\n4 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/parenthesized-left",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n2 | def main() -> Nat:\n3>|   (1n)+2n\n4 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/prefix-multiply",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a * b : Nat))\nLocation:\n2 | def main() -> Nat:\n3>|   (1n+2n * 3n : Nat)\n4 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a * b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/separated",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : a type for this operator (write (a + b : Nat))\nLocation:\n2 | def main() -> Nat:\n3>|   1n + 2n\n4 | \nNote: we broke this after launch, sorry. Until 2.0.16 a bare operator meant Nat.\nThat was a bug: operators demand annotation. Wrap the expression and it'll work again.",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a type for this operator (write (a + b : Nat))",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    }
+  ],
+  "referenceSelectedComplete": true,
+  "candidateSelectedComplete": true,
+  "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+  "wallMs": 10662.071034,
+  "finished": "2026-09-23T00:02:18.574Z"
+}

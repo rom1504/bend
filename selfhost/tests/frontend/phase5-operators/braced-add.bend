@@ -1,0 +1,7 @@
+import Base
+
+def id(v: U32) -> U32:
+  v
+
+def main() -> U32:
+  {1 + 2 : U32}

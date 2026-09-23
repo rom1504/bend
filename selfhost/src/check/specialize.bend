@@ -612,7 +612,7 @@ def sp_fail(st, err):
 
 @unsafe
 def sp_put(st, d):
-  KSpecState{Con{d, book_without(sp_book(st), dn(d))}, sp_memo(st), sp_serial(st), sp_fresh(st), sp_error(st), sp_templates(st)}
+  KSpecState{Con{d, index_remove(sp_book(st), dn(d))}, sp_memo(st), sp_serial(st), sp_fresh(st), sp_error(st), sp_templates(st)}
 
 @unsafe
 def sp_canonical(book, done):
@@ -624,7 +624,7 @@ def specialize_book(book):
 
 @unsafe
 def sp_finish(st):
-  KSpecialized{book_without(sp_book(st), "$kernel.max-id"), sp_error(st)}
+  KSpecialized{index_remove(sp_book(st), "$kernel.max-id"), sp_error(st)}
 
 @unsafe
 def sp_definitions(todo, st):
@@ -850,7 +850,7 @@ def sp_validate(st, d):
 
 @unsafe
 def sp_validate_done(st, d, error):
-  kc(KSpecTerm, String.eq(error, ""), u => KSpecTerm{KSpecState{Con{d, book_without(sp_book(st), dn(d))}, sp_done_memo(sp_memo(st), dn(d)), sp_serial(st), sp_fresh(st), sp_error(st), sp_templates(st)}, ref(dn(d))}, u => KSpecTerm{sp_fail(st, dn(d) ++ ": " ++ error), ref(dn(d))})
+  kc(KSpecTerm, String.eq(error, ""), u => KSpecTerm{KSpecState{Con{d, index_remove(sp_book(st), dn(d))}, sp_done_memo(sp_memo(st), dn(d)), sp_serial(st), sp_fresh(st), sp_error(st), sp_templates(st)}, ref(dn(d))}, u => KSpecTerm{sp_fail(st, dn(d) ++ ": " ++ error), ref(dn(d))})
 
 @unsafe
 def sp_match(st, t, ctx, goal, owner, depth):
@@ -935,7 +935,7 @@ def sp_initial(book, bound):
 
 @unsafe
 def sp_stamp(book, bound):
-  Con{KDef{"$kernel.max-id", "BookBound", bound, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, book_without(book, "$kernel.max-id")}
+  Con{KDef{"$kernel.max-id", "BookBound", bound, 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}}, index_remove(book, "$kernel.max-id")}
 
 @unsafe
 def sp_needed(book, t):

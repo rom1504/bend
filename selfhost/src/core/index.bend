@@ -378,4 +378,4 @@ def book_final_filter(done, seen):
 def book_final_legacy(book, done):
   match book:
     case Nil{}: done
-    case Con{d, rest}: book_final_legacy(rest, Con{d, book_without(done, dn(d))})
+    case Con{d, rest}: book_final_legacy(rest, Con{d, index_remove(done, dn(d))})

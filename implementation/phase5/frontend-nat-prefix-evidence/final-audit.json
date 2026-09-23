@@ -1,0 +1,93 @@
+{
+  "kind": "phase5-nat-prefix-selected-audit",
+  "complete": true,
+  "scope": "25 acceptance/phase checks,14 exact executions,14 unchanged baseline raw graphs and11 v1-v3 raw graphs; no full-conformance claim",
+  "inputs": {
+    "before": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/before/paired.json",
+      "sha256": "f9ec655e39b2ea9391c705f82bdbecfa812576b9357d9a86d825a7b9bc1bed53"
+    },
+    "focused": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v3/validation-001/selected/paired.json",
+      "sha256": "034918e54c8a1d7bdab6b847da4645d161d55a04cd7006a1bb54c3b8567019bc"
+    },
+    "executionBefore": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/before-execution-v2/paired.json",
+      "sha256": "4157ab27aca76342d77dc625d5147a15d85e86e69dee1c033fbd8c0748456c30"
+    },
+    "execution": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/execution-v3/selected/paired.json",
+      "sha256": "a5772f6b491b8926c018b71694fdca2983f17fdb4d4bb0f150d687363464cbfe"
+    },
+    "boundaries": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/selected/paired.json",
+      "sha256": "6f28842f063c1e185bbcfe600837a729c80cb9bb1a8aa7836c9f9fc5f36d2d65"
+    },
+    "boundariesBefore": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/before-boundaries/paired.json",
+      "sha256": "ee1137e77b2152cda9c23df033836f5a53020a900822585b2a2051a09bc40d13"
+    },
+    "orderBefore": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/before-error-order/paired.json",
+      "sha256": "62bb2ab2ad6d4f727c228d25c31f0f1c366a65b8ac93d63d0e8c6ce77cd6512b"
+    },
+    "orderV2": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/error-order-v2/selected/paired.json",
+      "sha256": "0feaed27417a4c68ba5142c60252ca2b9388accf30eb807b0facb7fb26293750"
+    },
+    "rawBaseline": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/raw-baseline-v3.json",
+      "sha256": "6eafdd1afe9dff24d0fc28dffc7ebd2ab1f9c88fc22be1906828caec8079df00"
+    },
+    "rawV1": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/raw-v1-v3.json",
+      "sha256": "ac87c62064eac6f514d8b056240c7cf42bd2f08f6e3af85ad396734aa8fa15c8"
+    }
+  },
+  "bootstrap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v3/api.mjs.bootstrap.json",
+    "sha256": "5c4a7078a56282f3c26d858dbd57fc72649d84c8db6691225f501d510b92c7ba"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v3/api.mjs",
+    "sha256": "07c2ee92f6a47fae3f0feb2997f4a3d19bdf1a3dbb9f7dfb34f34f263aad8083"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v3/snapshot/build/typed/snapshots/fe6d04a5cc6be78b50c3245c140f3891b9b5bf4c6617c9483eeda51c7696b79f/compiler.bend",
+    "sha256": "a14ce982ebe5434f242c01ed48e6ddcdb7378f79fbcb3e0b5ca04d36ca2d29d1"
+  },
+  "fixedInvalidAcceptances": [
+    "phase5-nat-prefix/before-space",
+    "phase5-nat-prefix/comment-before",
+    "phase5-nat-prefix/newline-before",
+    "phase5-nat-prefix/operator-after-prefix",
+    "phase5-nat-prefix/parenthesized-left",
+    "phase5-nat-prefix/separated"
+  ],
+  "wrongResult": {
+    "source": "(2n * 1n+3n : Nat)",
+    "reference": 8,
+    "baseline": 5,
+    "candidateV3": 8,
+    "lanes": [
+      "interpreter",
+      "js"
+    ]
+  },
+  "firstErrorRegression": {
+    "v2": "RHS lambda error masks overflowing literal",
+    "v3": "restores original numeric-literal error before RHS",
+    "preserved": true
+  },
+  "residuals": [
+    "1n+;2n remains invalid acceptance due generic semicolon skipping",
+    "Malformed float-n suffix diagnostics/first-rule mismatch remains unchanged from baseline"
+  ],
+  "exactFocusedDiagnosticDifferences": 8,
+  "retainedSetupFailure": "Initial before-execution used persistent mode unsupported for execution lanes. Corrected separate isolated config/run; no overwritten rows.",
+  "baselineScope": "Integration03 genuine checked build, not a claim its combined selected gate passed (273/274 at experiment start).",
+  "auditor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/frontend/phase5-nat-audit.py",
+    "sha256": "89ffa203c3498d2d56db745ef82fdafa0728c9d69eed96b5706abb1c7ff28fb3"
+  }
+}

@@ -1,0 +1,1 @@
+P5-014: initial oracle hypotheses, pending live pinned-TypeScript confirmation. cases.json isolates named matcher head shapes; residual-cases.json keeps adjacent syntax hypotheses separate. pinned-cases.json retains the exact upstream diagnostics rather than replacing them with acceptance-only assertions. Preserve consumed files and failed controls.

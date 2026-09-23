@@ -446,11 +446,6 @@ law declared:
   for +d: KDef
   KDef
 
-law book_without:
-  for +book: List<&2, KDef>
-  for +name: String
-  List<&2, KDef>
-
 law check_book:
   for +book: List<&2, KDef>
   String
@@ -1020,14 +1015,6 @@ def tele_quantities_head(book, ty, n):
 @unsafe
 def declared(d):
   KDef{dn(d), dk(d), da(d), dx(d), dt(d), atom("Absent"), dc(d), db(d), du(d)}
-
-@unsafe
-def book_without(book, name):
-  match book:
-    case Nil{}:
-      Nil{}
-    case Con{h, t}:
-      kc(List<&2, KDef>, String.eq(dn(h), name), u => book_without(t, name), u => Con{h, book_without(t, name)})
 
 @unsafe
 def check_book(book):

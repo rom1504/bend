@@ -1,0 +1,218 @@
+{
+  "cases": [
+    {
+      "id": "phase5-nat-prefix/adjacent",
+      "file": "adjacent.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/after-space",
+      "file": "after-space.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/separated",
+      "file": "separated.bend",
+      "accept": false,
+      "lanes": [
+        "check"
+      ],
+      "rejectPhase": "parse"
+    },
+    {
+      "id": "phase5-nat-prefix/before-space",
+      "file": "before-space.bend",
+      "accept": false,
+      "lanes": [
+        "check"
+      ],
+      "rejectPhase": "parse"
+    },
+    {
+      "id": "phase5-nat-prefix/namespace",
+      "file": "namespace.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/parenthesized-left",
+      "file": "parenthesized-left.bend",
+      "accept": false,
+      "lanes": [
+        "check"
+      ],
+      "rejectPhase": "parse"
+    },
+    {
+      "id": "phase5-nat-prefix/chain",
+      "file": "chain.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/prefix-multiply",
+      "file": "prefix-multiply.bend",
+      "accept": false,
+      "lanes": [
+        "check"
+      ],
+      "rejectPhase": "parse"
+    },
+    {
+      "id": "phase5-nat-prefix/multiply-prefix",
+      "file": "multiply-prefix.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/operator-after-prefix",
+      "file": "operator-after-prefix.bend",
+      "accept": false,
+      "lanes": [
+        "check"
+      ],
+      "rejectPhase": "parse"
+    },
+    {
+      "id": "phase5-nat-prefix/zero",
+      "file": "zero.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/newline-before",
+      "file": "newline-before.bend",
+      "accept": false,
+      "lanes": [
+        "check"
+      ],
+      "rejectPhase": "parse"
+    },
+    {
+      "id": "phase5-nat-prefix/comment-before",
+      "file": "comment-before.bend",
+      "accept": false,
+      "lanes": [
+        "check"
+      ],
+      "rejectPhase": "parse"
+    },
+    {
+      "id": "phase5-nat-prefix/newline-after",
+      "file": "newline-after.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/comment-after",
+      "file": "comment-after.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/missing-rhs",
+      "file": "missing-rhs.bend",
+      "accept": false,
+      "lanes": [
+        "check"
+      ],
+      "rejectPhase": "parse"
+    },
+    {
+      "id": "phase5-nat-prefix/large-prefix",
+      "file": "large-prefix.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/prefix-multiply-inner-namespace",
+      "file": "prefix-multiply-inner-namespace.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/operator-after-prefix-inner-namespace",
+      "file": "operator-after-prefix-inner-namespace.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/float-suffix",
+      "file": "float-suffix.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/overflow-prefix",
+      "file": "overflow-prefix.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/double-plus",
+      "file": "double-plus.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/overflow-before-rhs-error",
+      "file": "overflow-before-rhs-error.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/malformed-before-rhs-error",
+      "file": "malformed-before-rhs-error.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-nat-prefix/valid-prefix-rhs-error",
+      "file": "valid-prefix-rhs-error.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "check"
+      ]
+    }
+  ]
+}

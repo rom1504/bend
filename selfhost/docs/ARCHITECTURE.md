@@ -9,6 +9,7 @@ available as a historical regression baseline.
 | Component | Responsibility | Source |
 |---|---|---|
 | Core terms | Binder IDs, substitutions, definitions, data declarations | `src/core/term.bend` |
+| Book indexing | Exact-name lookup, filtering and final-definition selection | `src/core/index.bend` |
 | Normalizer | Weak evaluation, memoized strong normalization, definitional equality | `src/core/normalize.bend`, `src/core/graph.bend` |
 | Quantities | Affine-use accounting, erased/reusable demand | `src/check/quantity.bend` |
 | Kernel | Dependent bidirectional checking and termination | `src/check/kernel.bend` |
@@ -63,6 +64,32 @@ map back to individual modules. It is not the primary editable source.
 The old `src/compiler.bend` is not linked into this typed implementation: its
 surface AST lacks quantities and dependent types. It remains a bootstrap aid
 and regression baseline, clearly separate from the typed compiler.
+
+The frontend and loader form a standalone component with the core term, index,
+normalization and graph modules. They do not require the checker or diagnostic
+renderer. Shared book operations belong in core: `index_remove` supplies the
+same order-preserving name filter to final-definition selection and checker
+specialization. `tests/frontend/trace-component.mjs` assembles and checks this
+smaller component, then compares the ordinary, traced and seeded loader APIs.
+
+Raw declaration and import parsing uses private `FRawResult`, whose error field
+retains the selected Error term. At `f_parse(source)`, the original source and
+explicit expectation metadata can produce a diagnostic; the public
+`FResult{book,error:String,imports}` and loader boundary remain unchanged. This
+transport preserves the parser's existing first-error choice. Explicit syntax
+expectations and adjacent constructor-freshness failures render once on rejection;
+unknown or inconsistent positions and unsupported Unicode cursors retain their
+legacy text. Successful parsing does not scan source text to render diagnostics.
+This frontend formatter has no dependency on the checker diagnostic modules.
+
+An embedded parser Error can survive inside a declaration until graph validation.
+Only after that validation rejects, the loader can recover the same Error in the
+same traversal order and use its declaration index plus Loaded event counts to
+find the original source. It verifies the selected error identity and unique
+canonical source before rendering. Accepted books are not scanned again, and
+unknown provenance retains the existing diagnostic. Formatting an existing
+parser error does not establish that its grammar or first-error choice agrees
+with the reference compiler.
 
 ## Host representation boundary
 
@@ -192,3 +219,23 @@ settings. It assumes a stable host linker and libraries. See the
 [phase 3 workflow](../../docs/PHASE3_DEVELOPMENT.md) for commands and the
 [phase 3 report](../../implementation/phase3/report.md) for measured benefits,
 rejected experiments and remaining validation limits.
+
+## Parser diagnostics and session-local Base decoding
+
+Parser rejection sites can carry structured expected-token information and a
+source position through private `FRawResult`/`KTermError` values. The public
+frontend result shape stays unchanged. After an error is selected, the loader
+can locate that same embedded error and its unique source owner to render a
+location once. Existing graph-error priority and definition traversal order
+remain authoritative. Accepted books do not incur this error-only traversal.
+Faithful formatting does not repair a different parse decision; residual
+diagnostic and phase differences remain explicit conformance failures.
+
+A persistent inspector owns one trusted API and one immutable decoded Base
+entry. Before reuse it binds the canonical API path and content digest, reads
+and hashes the exact cache bytes, and verifies the expected compiler/Base/cache
+identity tuple. Misses clear the prior entry; malformed or changed data follows
+normal validation. The same buffer is hashed and decoded on a miss, and the
+validated graph is frozen iteratively. Each request still builds its own source
+graph. The public single-request inspector and execution lanes do not share this
+private memo. See [the implementation and adversarial gates](../../implementation/phase5/persistent-base-decoding.md).

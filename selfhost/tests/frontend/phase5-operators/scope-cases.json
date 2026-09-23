@@ -1,0 +1,212 @@
+[
+  {
+    "id": "phase5-operators/bare-add",
+    "file": "bare-add.bend",
+    "accept": false,
+    "lanes": [
+      "check"
+    ],
+    "rejectPhase": "parse"
+  },
+  {
+    "id": "phase5-operators/bare-multiply",
+    "file": "bare-multiply.bend",
+    "accept": false,
+    "lanes": [
+      "check"
+    ],
+    "rejectPhase": "parse"
+  },
+  {
+    "id": "phase5-operators/braced-add",
+    "file": "braced-add.bend",
+    "accept": false,
+    "lanes": [
+      "check"
+    ],
+    "rejectPhase": "parse"
+  },
+  {
+    "id": "phase5-operators/call-inner",
+    "file": "call-inner.bend",
+    "accept": false,
+    "lanes": [
+      "check"
+    ],
+    "rejectPhase": "parse"
+  },
+  {
+    "id": "phase5-operators/annotated-add",
+    "file": "annotated-add.bend",
+    "accept": true,
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/call-inner-explicit",
+    "file": "call-inner-explicit.bend",
+    "accept": true,
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/direct-method",
+    "file": "direct-method.bend",
+    "accept": true,
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/outer-annotated-nested",
+    "file": "outer-annotated-nested.bend",
+    "accept": true,
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/braced-with-explicit",
+    "file": "braced-with-explicit.bend",
+    "accept": true,
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/annotated-shift",
+    "file": "annotated-shift.bend",
+    "accept": false,
+    "lanes": [
+      "check"
+    ],
+    "rejectPhase": "check"
+  },
+  {
+    "id": "phase5-operators/bare-shift",
+    "file": "bare-shift.bend",
+    "accept": false,
+    "lanes": [
+      "check"
+    ],
+    "rejectPhase": "parse"
+  },
+  {
+    "id": "phase5-operators/annotated-bitwise",
+    "file": "annotated-bitwise.bend",
+    "accept": true,
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/bare-bitwise",
+    "file": "bare-bitwise.bend",
+    "accept": false,
+    "lanes": [
+      "check"
+    ],
+    "rejectPhase": "parse"
+  },
+  {
+    "id": "phase5-operators/earlier-check-later-operator",
+    "file": "earlier-check-later-operator.bend",
+    "accept": false,
+    "rejectPhase": "parse",
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/earlier-operator-later-parse",
+    "file": "earlier-operator-later-parse.bend",
+    "accept": false,
+    "rejectPhase": "parse",
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/earlier-parse-later-operator",
+    "file": "earlier-parse-later-operator.bend",
+    "accept": false,
+    "rejectPhase": "parse",
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/annotated-shift-nat",
+    "file": "annotated-shift-nat.bend",
+    "accept": true,
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/fixed-bool",
+    "file": "fixed-bool.bend",
+    "accept": true,
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/fixed-string",
+    "file": "fixed-string.bend",
+    "accept": true,
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/fixed-comparison",
+    "file": "fixed-comparison.bend",
+    "accept": true,
+    "lanes": [
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/pinned-op_bare_refused",
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/op_bare_refused.bend",
+    "accept": false,
+    "rejectPhase": "parse",
+    "lanes": [
+      "parse",
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/pinned-op_brace_refused",
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/op_brace_refused.bend",
+    "accept": false,
+    "rejectPhase": "parse",
+    "lanes": [
+      "parse",
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/pinned-op_ns_call_arg",
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/op_ns_call_arg.bend",
+    "accept": false,
+    "rejectPhase": "parse",
+    "lanes": [
+      "parse",
+      "check"
+    ]
+  },
+  {
+    "id": "phase5-operators/pinned-template_ns_late",
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/tests/check/template_ns_late.bend",
+    "accept": false,
+    "rejectPhase": "parse",
+    "lanes": [
+      "parse",
+      "check"
+    ]
+  }
+]

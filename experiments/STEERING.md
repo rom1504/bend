@@ -1,8 +1,8 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-22 23:03 UTC; baseline `7d69850`, second checked integration API `c3c2ac7b1456…`.
+Evidence cutoff: 2026-09-23 00:43 UTC; baseline `7d69850`, final checked integration API `5969c53d34a0…`.
 Authorized Phase 5 window: 2026-09-22 21:39:36 to 2026-09-23 03:39:36 UTC.
-Next review: full frontend equality comparison and parser transport, about 23:35 UTC.
+Next review: controlled final full-source comparison, about 01:25 UTC.
 
 ## User objective
 
@@ -14,14 +14,22 @@ and results, and commit/push validated increments. See the
 ## Established position
 
 - Campaign baseline: 59 Bend modules, 16,055 physical lines; recount after source freeze.
-- All 919 positive frontend fixtures pass;374 strict check failures remain (377 at baseline).
-- Fresh live TypeScript comparison:556 differences, including38 acceptance/phase
-  observations; no new differences. Matching status is not proof of the same rule.
+- Final integration05 preserves all 919 positive fixtures and completes all
+  2,756 frontend observations: 1,060 strict check passes / 318 failures, down
+  from 377 failures at campaign baseline. Focused 387 declared oracles pass;
+  110 exact diagnostic differences remain in that explicit acceptance selection.
+- Last completed live comparison before that: integration02 has556differences,
+  including38acceptance/phase observations. Do not relabel those as final counts.
 - Focused reused loop 9.328 seconds; checked rebuild plus cold cases 37.217 seconds.
-- Four-core full frontend inventory about 5 minutes, with known failures retained.
+- Controlled full frontend ABBA:301.905→229.753s with maintained equality,
+  all11,024observations/history records exact and known failures retained.
 - Exact-image B1 equality improves controlled full-source wall 630.026→339.992s.
-  A reusable checked-source derivative now passes two-build correctness controls;
-  new Phase5 controlled timings remain pending. Public H remains separate.
+  A reusable checked-source derivative now passes new-build correctness and
+  controlled Phase5 small/full-frontend measurements. Public H remains separate.
+- Private Base-decoding memo passes84mixed requests/15adversarial groups; focused
+  ABBA16.629→10.144s (39.00%). Full-inventory ABBA passes all 11,024 observations/history records and reduces
+  mean wall292.602→242.597s(17.09%). The exact measured host is promoted; no
+  combined equality+memo gain is inferred.
 - Phase 4 correctness/performance records remain immutable and artifact-specific.
 
 ## Ranked work and cheapest falsifiers
@@ -35,11 +43,23 @@ and results, and commit/push validated increments. See the
 
 Two reviewed source batches have complete frontend gates and no new differences.
 P5-005 is rejected: four exact repairs do not justify repeated quadratic source
-reconstruction. P5-006/007/008/009/010 are integrated. Next: P5-011 preserves raw
-parser error metadata and renders once; P5-012 confirms the maintained equality
-derivative on small workloads; P5-014 checks matcher-head grammar and P5-013
-checks bare-operator refusal. The P5-015 full frontend timing window will pause
-other compiler jobs; report exact scope and retained failures.
+reconstruction. Subsequent reviewed work now repairs bare-operator/matcher/
+namespace rules, an actual Nat wrong result, and imported declaration freshness.
+The duplicate core/checker filter and two obsolete Nat helpers are removed.
+P5-011/019/022 provide explicit parser-error metadata and source-aware rendering.
+Their original stronger presentation gates remain failed where existing parser
+differences persist; the approved narrower claim is faithful rendering, no lost
+exact oracles and no acceptance changes. Source changes are frozen for final
+integration. A missing-import phase gap remains explicitly outside the confirmed
+selection, with the original failing combined run retained.
+
+P5-021 is complete. Final selected CPU/backend coverage passes 84 declared
+observations (42 per compiler), including actual native compilation/execution.
+P5-023 prepares the final complete-source TS/B1/derived comparison; cheap smoke
+failures revealed differing library export policy and natural root order, now
+explicitly corrected before timing. Reserve all cores during controlled timing
+and then the unchanged genuine checked-B1 fixed-point procedure. Broader JS and
+native correctness can run after those gates, with no timing claim.
 No general parser/kernel/emitter rewrite and no reopening rejected Phase 4
 memoization/uncurrying/representation ideas without new evidence.
 
@@ -66,6 +86,9 @@ No timed compiler comparisons while another intentional compiler job runs.
 No broad/full-source job without root scheduling and an external deadline.
 
 Commit the initial design before implementation, then validated increments.
-Aim to freeze source by 02:20 UTC for final proof and evidence review. Reserve
+Compiler source is frozen; freeze the final host/build by00:30–00:45UTC. Reserve
+roughly40minutes for controlled full-source comparison, then40minutes for checked
+self-reproduction with backend correctness jobs on other cores. Retain ample
+time for a failed gate rather than starting another source experiment. Reserve
 03:10–03:39UTC for documentation, audits, commit/push and final status. Stop
 new experiments at the authorized boundary; report any unfinished gates honestly.

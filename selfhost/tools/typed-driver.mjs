@@ -167,8 +167,15 @@ export function convertCompilerAbi(value,encode,fields,ctor) {
 }
 
 export async function loadApi() {
+  return loadApiForIdentity();
+}
+async function loadApiForIdentity(identity=null) {
   if(!fs.existsSync(apiPath)) throw Error('Typed compiler API is missing. Run node tools/typed-driver.mjs --bootstrap once.');
-  const module=await import(pathToFileURL(apiPath));
+  // A content identity prevents a new inspector from binding changed file bytes
+  // to an older module already held by Node's URL cache.
+  const url=pathToFileURL(identity?.canonicalPath??apiPath);
+  if(identity)url.searchParams.set('bendApiSha256',identity.sha256);
+  const module=await import(url);
   if(!module.G) return module.default;
   // The bootstrap compiler marshals ADTs with named fields. The self-hosted
   // runtime uses positional fields. This is an ABI conversion, not elaboration.
@@ -229,11 +236,37 @@ function baseCacheInfo(api) {
   const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version===2?'-'+location:''}.json`);
   return {version,compilerSha256,baseSha256,sourcePath,sourceText,directory,file};
 }
-function readBaseCache(info) {
+// Only persistent inspectors own this bounded memo. Re-read and hash the exact
+// bytes on every request; cached metadata and filesystem timestamps are not proof.
+function freezeBaseBook(book) {
+  const pending=[book];
+  while(pending.length) {
+    const value=pending.pop();
+    if(value===null||typeof value!=='object'||Object.isFrozen(value))continue;
+    Object.freeze(value);
+    for(const child of Object.values(value))if(child!==null&&typeof child==='object')pending.push(child);
+  }
+  return book;
+}
+function readBaseCache(info,memo=null) {
   try {
-    const cached=JSON.parse(fs.readFileSync(info.file,'utf8'));
+    const previous=memo?.entry;
+    if(memo)memo.entry=null;
+    const bytes=fs.readFileSync(info.file);
+    const key=memo?JSON.stringify([info.version,info.compilerSha256,info.baseSha256,info.sourcePath,info.file]):null;
+    const digest=memo?crypto.createHash('sha256').update(bytes).digest('hex'):null;
+    if(previous?.key===key&&previous.digest===digest) {
+      memo.entry=previous;
+      return {...previous.cached,sourcePath:info.sourcePath,sourceText:info.sourceText};
+    }
+    const cached=JSON.parse(bytes.toString('utf8'));
     if(cached.version!==info.version||cached.compilerSha256!==info.compilerSha256||cached.baseSha256!==info.baseSha256||cached.validatedBy!=='check_book')return null;
     if(info.version===2&&(cached.sourcePath!==info.sourcePath||cached.bookSha256!==crypto.createHash('sha256').update(JSON.stringify(cached.book)).digest('hex')))return null;
+    if(memo) {
+      freezeBaseBook(cached.book);
+      Object.freeze(cached);
+      memo.entry={key,digest,cached};
+    }
     return {...cached,sourcePath:info.sourcePath,sourceText:info.sourceText};
   } catch(error) {if(error.code!=='ENOENT'&&!(error instanceof SyntaxError))throw error;return null;}
 }
@@ -262,12 +295,35 @@ function foreignSources(graph,extension,required=null) {
 }
 
 
-export async function inspect(input,{mode='check',api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false}={}) {
+export async function inspect(input,options={}) {
+  return inspectWithMemo(input,options);
+}
+
+// An inspector owns its API and a single immutable decoded Base book. Public
+// inspect/prepareBase callers cannot inject an API into this private state.
+export async function createPersistentInspector() {
+  const identity={canonicalPath:fs.realpathSync(apiPath),sha256:hash(apiPath)};
+  const api=await loadApiForIdentity(identity);
+  if(fs.realpathSync(apiPath)!==identity.canonicalPath||hash(apiPath)!==identity.sha256)
+    throw Error('Compiler API changed while creating persistent inspector');
+  const memo={entry:null,identity};
+  return Object.freeze({inspect(input,options={}) {
+    if(!['parse','check'].includes(options.mode??'check'))throw Error('Persistent inspector supports only parse/check');
+    return inspectWithMemo(input,{...options,api},memo);
+  }});
+}
+
+async function inspectWithMemo(input,{mode='check',api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false}={},memo=null) {
   api??=await loadApi();
   let phase='load';
   try {
     trace('discover '+input);
-    const seed=api.f_load_graph_seed?readBaseCache(baseCacheInfo(api)):null;
+    const info=api.f_load_graph_seed?baseCacheInfo(api):null;
+    if(memo&&(fs.realpathSync(apiPath)!==memo.identity.canonicalPath||(info?.compilerSha256??hash(apiPath))!==memo.identity.sha256)) {
+      memo.entry=null;
+      throw Error('Compiler API changed during persistent inspection');
+    }
+    const seed=info?readBaseCache(info,memo):null;
     const graph=discoverSources(api,input,{seed});
     phase='parse';
     trace('load and elaborate graph');
@@ -276,7 +332,7 @@ export async function inspect(input,{mode='check',api,args=[],timeoutMs=5000,com
       !seed&&api.f_load_graph_trace?api.f_load_graph_trace(graph.main,graph.sources):null;
     const loaded=loadTrace?loadTrace.result:seed?api.f_load_graph_seed(graph.main,graph.sources,seed.sourcePath,seed.sourceText,seed.book):
       (api.f_load_graph||api.f_load)(graph.main,graph.sources);
-    if(loaded.error) return {status:'error',phase,diagnostic:'Error: '+loaded.error,exitCode:1,checked:false};
+    if(loaded.error) return {status:'error',phase,diagnostic:loaded.error.startsWith('Error:')?loaded.error:'Error: '+loaded.error,exitCode:1,checked:false};
     if(mode==='parse') return {status:'ok',phase,exitCode:0,checked:false,files:graph.files};
     phase='check';
     trace('check book');
@@ -391,7 +447,7 @@ export async function inspect(input,{mode='check',api,args=[],timeoutMs=5000,com
     return {status:'ok',phase,code,verdict,exitCode:0,checked:true,files:[...graph.files,...jsPaths||[]]};
   } catch(error) {
     trace('compiler exception: '+(error.stack||error.message));
-    return {status:'error',phase:error.phase||phase,diagnostic:'Error: '+error.message,exitCode:1,checked:phase==='check'||phase==='compile'||phase==='runtime',sourceFile:error.sourceFile};
+    return {status:'error',phase:error.phase||phase,diagnostic:typeof error.message==='string'&&error.message.startsWith('Error:')?error.message:'Error: '+error.message,exitCode:1,checked:phase==='check'||phase==='compile'||phase==='runtime',sourceFile:error.sourceFile};
   }
 }
 

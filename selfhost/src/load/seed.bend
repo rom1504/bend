@@ -85,7 +85,7 @@ law fs_imports:
 
 @unsafe
 def f_load_graph_seed(main, sources, seedPath, seedText, seedBook):
-  f_choose(FResult, f_seed_matches(f_source("Base", sources), seedPath, seedText), u => f_graph_result(fs_load(main, "", sources, FGraph{Nil{}, "", Nil{}}, Nil{}, FSeed{seedPath, seedBook})), u => f_load_graph(main, sources))
+  f_choose(FResult, f_seed_matches(f_source("Base", sources), seedPath, seedText), u => f_graph_result_at(fs_load(main, "", sources, FGraph{Nil{}, "", Nil{}}, Nil{}, FSeed{seedPath, seedBook}), sources), u => f_load_graph(main, sources))
 
 @unsafe
 def f_seed_matches(source, path, text):

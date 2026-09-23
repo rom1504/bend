@@ -180,7 +180,7 @@ def f_scope_apply_many(head, args):
 
 @unsafe
 def f_scope_reference(t, bound, book):
-  f_choose(KTerm, U32.is_eq(qt(t), 2) && Bool.not(f_eq(dk(f_find(nm(t), book)), "ADT")), u => kt("Error", "+ marks a binder or a quantified datatype, not a value reference", 0, 0, Nil{}), u => f_choose(KTerm, U32.is_eq(qt(t), 3) && (Bool.not(f_eq(tg(bound), "Absent")) || f_eq(dk(f_find(nm(t), book)), "ADT")), u => kt("Error", "offload requires a named definition", 0, 0, Nil{}), u => f_choose(KTerm, Bool.not(f_eq(tg(bound), "Absent")), u => kt("Var", nm(bound), ix(bound), qt(bound), Nil{}), u => f_choose(KTerm, f_eq(dk(f_find(nm(t), book)), "ADT"), u => f_adt(t, Nil{}, f_find(nm(t), book)), u => t))))
+  f_choose(KTerm, U32.is_eq(qt(t), 2) && Bool.not(f_eq(dk(f_find(nm(t), book)), "ADT")), u => kt("Error", "+ marks a binder or a quantified datatype, not a value reference", 0, 0, Nil{}), u => f_choose(KTerm, U32.is_eq(qt(t), 3) && (Bool.not(f_eq(tg(bound), "Absent")) || f_eq(dk(f_find(nm(t), book)), "ADT")), u => kt("Error", "offload requires a named definition", 0, 0, Nil{}), u => f_choose(KTerm, Bool.not(f_eq(tg(bound), "Absent")), u => kt("Var", nm(bound), ix(bound), qt(bound), Nil{}), u => f_choose(KTerm, f_eq(dk(f_find(nm(t), book)), "ADT"), u => f_adt(t, Nil{}, f_find(nm(t), book)), u => f_choose(KTerm, Char.is_eq(f_head(nm(t)), '.') && Bool.not(Char.is_eq(f_head(f_tail(nm(t))), '.')), u => kt("Error", "a type for this operator (write (a " ++ f_operator_display(nm(t), ["+", "-", "*", "/", "%", "<", ">op", "<=", ">=", "<<", ">>op", ".&.", ".|.", ".^."]) ++ " b : Nat))", ix(t), 0, Nil{}), u => t)))))
 
 @unsafe
 def f_scope_lambda(t, env, book):
@@ -190,3 +190,18 @@ def f_scope_lambda(t, env, book):
 def f_scope_lambda_var(t, env, book, v):
   f_flat(f_scope_body(kid(t, 0), Con{v, env}, book), [kt("Var", nm(v), ix(v), qt(v), Nil{})])
 
+
+
+# Only the rejected unresolved-operator path needs this reverse display lookup.
+law f_operator_display:
+  for +name: String
+  for +ops: List<&2,String>
+  String
+
+@unsafe
+def f_operator_display(name, ops):
+  match ops:
+    case Nil{}:
+      name
+    case Con{+op, rest}:
+      f_choose(String, f_eq(f_operator(op), name), u => f_choose(String, f_eq(op, ">op"), u => ">", u => f_choose(String, f_eq(op, ">>op"), u => ">>", u => op)), u => f_operator_display(name, rest))

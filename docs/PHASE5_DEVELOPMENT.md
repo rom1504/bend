@@ -80,6 +80,22 @@ selection before increasing a deadline.
 The optional `"profile": "equality"` delegates to the separate checked-B1
 equality derivation helper. It retains the untouched checked API and records a
 distinct derived artifact. Unknown bodies or missing provenance are refused.
-The focused workflow gate passes for this route; `"checked"` remains the default.
+The focused workflow gate and a full2,756-observation frontend gate pass for this
+route; `"checked"` remains the default. On the frozen second integration, an
+exclusive four-core ABBA comparison reduced mean full frontend wall from301.9
+to229.8seconds (23.9%), retaining every known failure. This is an artifact-specific
+workflow result, not a general compiler or generated-program speed claim; see
+the [controlled comparison](../implementation/phase5/equality-frontend.md).
 See the [workflow evidence](../implementation/phase5/development-workflow.md)
 for the exact tested scope and retained diagnostic differences.
+
+Persistent parse/check workers now privately reuse decoded Base data after
+verifying the complete cache bytes and compiler/Base identities on each request.
+A changed or invalid cache clears the entry before normal validation; the book
+is immutable and source graphs remain per-request. This requires no user setting.
+Public single-request compilation and program execution keep their existing
+paths. A controlled full-inventory comparison on one frozen checked compiler
+reduced mean wall from 292.6 to 242.6 seconds (17.1%), with every observation and
+worker history unchanged. See [the cache policy and gates](../implementation/phase5/persistent-base-decoding.md).
+The equality and Base-memo percentages come from separate comparisons and must
+not be multiplied to claim an unmeasured combined gain.

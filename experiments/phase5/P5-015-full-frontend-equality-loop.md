@@ -1,9 +1,9 @@
 # P5-015 — Full frontend loop with the maintained equality derivative
 
-- Owner: direct_calls; parent review pending.
-- Correctness: first derived full frontend run will be a new gate.
-- Measurement: preregistered ABBA; no runs started.
-- Decision: investigate, following the positive P5-012 small comparison.
+- Owner: direct_calls; parent approved the frozen wrapper before launch.
+- Correctness: all four2,756-observation sweeps and histories match exactly.
+- Measurement: completed ABBA,23.90%less mean finite harness wall.
+- Decision: retain the maintained labelled equality profile; checked default unchanged.
 
 ## Claim and stop conditions
 
@@ -52,4 +52,13 @@ node tools/performance/phase5/equality-frontend.mjs run SNAPSHOT NEW_RUN
 
 CONFIG contains only `attempt` and `comparison`, paths relative to CONFIG;
 `comparison` is the completed P5-012 report. Only the parent can release the
-resource slot. No timing or broader correctness result is claimed in this record.
+resource slot.
+
+## Outcome
+
+Completed23:10:41.997–23:28:40.632UTC on2026-09-22. Checked walls308.051/295.759s;
+derived229.885/229.621s. Mean301.905→229.753s; both opposite-order pairs improve
+(25.37%/22.36%). All11,024 raw observations, unchanged known verdicts, input
+identities and closed session histories pass the exact gate. Each sweep retains
+374strict check failures; this is not full conformance. RSS ranges overlap and no
+memory gain is claimed. See the [report and retained evidence](../../implementation/phase5/equality-frontend.md).

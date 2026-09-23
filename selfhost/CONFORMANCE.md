@@ -8,6 +8,11 @@ with revision-specific results in its [implementation report](../implementation/
 Phase 3 adds [persistent frontend workers](../docs/PHASE3_DEVELOPMENT.md),
 with artifact-specific validation and remaining gates in its
 [implementation report](../implementation/phase3/report.md).
+Phase 4 separates genuine checked B1, derived development images, native and
+self-emitted artifacts in its [report](../implementation/phase4/report.md).
+Phase 5 adds the [maintained checked workflow](../docs/PHASE5_DEVELOPMENT.md),
+with source-specific repairs, controlled timings and remaining failures in its
+[report](../implementation/phase5/report.md).
 Selected acceptance/phase checks, exact diagnostics, full-corpus coverage and
 self-emission are distinct verdicts; none substitutes for the others.
 The complete pinned corpus contains 1,378 fixtures across 24 namespaces; all 919

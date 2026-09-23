@@ -1,0 +1,4043 @@
+{
+  "kind": "phase5-final-live-frontend-comparison",
+  "complete": true,
+  "scope": "Exact retained parse/check observations only; negative parse observations do not establish checker conformance. No new compiler run or controlled timing.",
+  "inputs": {
+    "final": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/integration/attempt-05/validation-001/frontend.json",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/integration/attempt-05/validation-001/frontend.json",
+      "sha256": "bc233aef92977a0acdc2b5c7a03a707709a5dbb300b9d0ab8b20e58f6bda5d22"
+    },
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/integration/reference-03.json",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/integration/reference-03.json",
+      "sha256": "f3abefb8d7e9db2ee09847422db08ddf023e70358b84be256c55a579b857716a"
+    },
+    "baseline": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/frontend-combined/combined-b1.json",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/frontend-combined/combined-b1.json",
+      "sha256": "37fdd55898a0e0407e02bba9b57779626dd47e59fcfa7b91af8308034379a3fd"
+    },
+    "historicalReference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/frontend-combined/pinned-ts.json",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase4/frontend-combined/pinned-ts.json",
+      "sha256": "f6d1b5e6ff80aadadf20bf6ab36bf3ac2b2051162c3fc28d5bc78d857228f900"
+    },
+    "comparisonTool": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase5/final-frontend-comparison.py",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase5/final-frontend-comparison.py",
+      "sha256": "165baea2228be11569dfd8e4219ef0fd3efb1f91b3bd5a0cec4f27a7e8c96357"
+    }
+  },
+  "fixtureCount": 1378,
+  "observationCount": 2756,
+  "sameFixtureBytesAndOracles": true,
+  "healthyCompletedInventory": true,
+  "groups": {
+    "parse": {
+      "observations": 1378,
+      "baselineExactDifferences": 185,
+      "finalExactDifferences": 128,
+      "statusDifferences": 3,
+      "statusOrPhaseDifferences": 8,
+      "checkedFlagDifferences": 0,
+      "classificationDifferences": 8,
+      "textOnlyDifferences": 120
+    },
+    "check": {
+      "observations": 1378,
+      "baselineExactDifferences": 375,
+      "finalExactDifferences": 316,
+      "statusDifferences": 0,
+      "statusOrPhaseDifferences": 8,
+      "checkedFlagDifferences": 3,
+      "classificationDifferences": 8,
+      "textOnlyDifferences": 308
+    },
+    "all": {
+      "observations": 2756,
+      "baselineExactDifferences": 560,
+      "finalExactDifferences": 444,
+      "statusDifferences": 3,
+      "statusOrPhaseDifferences": 16,
+      "checkedFlagDifferences": 3,
+      "classificationDifferences": 16,
+      "textOnlyDifferences": 428
+    }
+  },
+  "summaries": {
+    "final": {
+      "strictByLane": {
+        "parse": {
+          "observed": 459,
+          "pass": 919
+        },
+        "check": {
+          "pass": 1060,
+          "fail": 318
+        }
+      },
+      "strictCheckFailures": [
+        "check/array_element_data.bend::check",
+        "check/array_get_neutral.bend::check",
+        "check/array_get_word_only.bend::check",
+        "check/array_never_copyable.bend::check",
+        "check/array_not_data.bend::check",
+        "check/array_set_neutral_000.bend::check",
+        "check/array_set_neutral_001.bend::check",
+        "check/axiom_runtime_capture.bend::check",
+        "check/beta_ann_lambda.bend::check",
+        "check/binder_name_capture.bend::check",
+        "check/bool_one_way.bend::check",
+        "check/bool_word_bridge.bend::check",
+        "check/canonical_ref_conversion.bend::check",
+        "check/capture_soundness.bend::check",
+        "check/chained_switch_conflation_000.bend::check",
+        "check/chained_switch_conflation_001.bend::check",
+        "check/comp_splice_tuple_goal.bend::check",
+        "check/computed_match_split.bend::check",
+        "check/cons_tail_mismatch.bend::check",
+        "check/cop_adt_param_000.bend::check",
+        "check/cop_ctr_field_000.bend::check",
+        "check/cop_dead_hypothesis_000.bend::check",
+        "check/cop_field_formation.bend::check",
+        "check/cop_foreign_fill_000.bend::check",
+        "check/cop_forged_lock_001.bend::check",
+        "check/cop_inline_witness_002.bend::check",
+        "check/cop_let_formation.bend::check",
+        "check/cop_plain_domain_000.bend::check",
+        "check/data_cycle_poison.bend::check",
+        "check/data_self_ref.bend::check",
+        "check/data_table_checked_000.bend::check",
+        "check/data_table_checked_001.bend::check",
+        "check/dec_switch_respell_000.bend::check",
+        "check/dec_switch_respell_001.bend::check",
+        "check/default_arm_family.bend::check",
+        "check/dependent_switch_induction.bend::check",
+        "check/efq_erased_binder_000.bend::check",
+        "check/either_data_wall.bend::check",
+        "check/erased_binder_use.bend::check",
+        "check/erased_field_conversion.bend::check",
+        "check/erased_local_live_use.bend::check",
+        "check/erased_local_match_000.bend::check",
+        "check/erased_match_ctor.bend::check",
+        "check/erased_match_empty.bend::check",
+        "check/error_window_assert_exists.bend::check",
+        "check/error_window_filled_param_use.bend::check",
+        "check/error_window_inline_exists.bend::check",
+        "check/error_window_match_missing.bend::check",
+        "check/error_window_match_repeated.bend::check",
+        "check/error_window_param_use.bend::check",
+        "check/error_window_rewrite_proof.bend::check",
+        "check/error_window_stuck_app_kind.bend::check",
+        "check/family_head_bare.bend::check",
+        "check/field_type_bound.bend::check",
+        "check/fits_app_invariant.bend::check",
+        "check/fits_rfl_kind.bend::check",
+        "check/float_builtin_arg.bend::check",
+        "check/float_literal_type.bend::check",
+        "check/float_match_scrutinee.bend::check",
+        "check/float_no_mod.bend::check",
+        "check/forward_data_table.bend::check",
+        "check/fuel_inline_dep_match.bend::check",
+        "check/hoas_alpha_capture.bend::check",
+        "check/hole_named.bend::check",
+        "check/hole_todo.bend::check",
+        "check/hurkens_paradox.bend::check",
+        "check/lambda_single_use.bend::check",
+        "check/let_lambda_twice.bend::check",
+        "check/list_map_conversion.bend::check",
+        "check/list_not_array.bend::check",
+        "check/match_as_specialize.bend::check",
+        "check/meet_charges_its_operands.bend::check",
+        "check/meet_stuck_pending_ref.bend::check",
+        "check/missing_ih_rewrite.bend::check",
+        "check/monad_do_destructure.bend::check",
+        "check/motive_suffix_join.bend::check",
+        "check/nat_literal_import.bend::check",
+        "check/nat_literal_pattern_arity.bend::check",
+        "check/nat_literal_pattern_empty.bend::check",
+        "check/negative_data_field_000.bend::check",
+        "check/negative_data_reuse.bend::check",
+        "check/neq_not_convertible.bend::check",
+        "check/neq_qualified_capture.bend::check",
+        "check/neq_reflexivity.bend::check",
+        "check/nested_datatype_closure.bend::check",
+        "check/nested_field_bound.bend::check",
+        "check/op_bare_refused.bend::check",
+        "check/op_brace_refused.bend::check",
+        "check/op_ns_call_arg.bend::check",
+        "check/operator_chain_linear.bend::check",
+        "check/pair_data_wall.bend::check",
+        "check/quant_tag_conversion_000.bend::check",
+        "check/quant_tag_conversion_001.bend::check",
+        "check/relation_install_lock.bend::check",
+        "check/switch_miss_guard.bend::check",
+        "check/template_inst_cycle.bend::check",
+        "check/template_ns_late.bend::check",
+        "check/tuple_import_required.bend::check",
+        "check/typed_let_mismatch.bend::check",
+        "check/usage_counts_source.bend::check",
+        "check/wrap_not_successor.bend::check",
+        "compile/erasure_dead_param.bend::check",
+        "comptime/dup_lone.bend::check",
+        "comptime/err_arg_type.bend::check",
+        "comptime/err_capture.bend::check",
+        "comptime/err_dup.bend::check",
+        "comptime/err_extra.bend::check",
+        "comptime/err_fill_short.bend::check",
+        "comptime/err_generic.bend::check",
+        "comptime/err_grow_double.bend::check",
+        "comptime/err_grow.bend::check",
+        "comptime/err_head.bend::check",
+        "comptime/err_late_tilde.bend::check",
+        "comptime/err_later.bend::check",
+        "comptime/err_law.bend::check",
+        "comptime/err_leak.bend::check",
+        "comptime/err_let_arg.bend::check",
+        "comptime/err_match_arg.bend::check",
+        "comptime/err_param_arg.bend::check",
+        "comptime/err_plus_term.bend::check",
+        "comptime/err_runtime.bend::check",
+        "comptime/err_untyped.bend::check",
+        "comptime/later_def.bend::check",
+        "comptime/wrong_type.bend::check",
+        "cost/array_fill_readback.bend::check",
+        "eval/array_packed_default.bend::check",
+        "flatten/annotated_computed_scrutinee_001.bend::check",
+        "flatten/arity_mismatch_000.bend::check",
+        "flatten/arity_mismatch_001.bend::check",
+        "flatten/as_pattern_error.bend::check",
+        "flatten/cid_pair_repr.bend::check",
+        "flatten/consumed_column_error_001.bend::check",
+        "flatten/dead_residue_elision_003.bend::check",
+        "flatten/dependent_goal_000.bend::check",
+        "flatten/dependent_goal_001.bend::check",
+        "flatten/destructure_annotation_error.bend::check",
+        "flatten/destructure_let_001.bend::check",
+        "flatten/dup_guard_000.bend::check",
+        "flatten/dup_guard_001.bend::check",
+        "flatten/empty_match.bend::check",
+        "flatten/error_window_matched_scrutinee.bend::check",
+        "flatten/error_window_substituted_scrutinee.bend::check",
+        "flatten/forward_reference.bend::check",
+        "flatten/generic_type_param.bend::check",
+        "flatten/inline_block_error.bend::check",
+        "flatten/kplus_missing_case.bend::check",
+        "flatten/lambda_match_literal_000.bend::check",
+        "flatten/lambda_match_literal_001.bend::check",
+        "flatten/lambda_match_literal_002.bend::check",
+        "flatten/mark_computed_optout.bend::check",
+        "flatten/match_app_scrutinee_000.bend::check",
+        "flatten/match_app_scrutinee_001.bend::check",
+        "flatten/named_column_alias.bend::check",
+        "flatten/noninfer_error_000.bend::check",
+        "flatten/noninfer_error_002.bend::check",
+        "flatten/nontotal_error_000.bend::check",
+        "flatten/nontotal_error_001.bend::check",
+        "flatten/nontotal_error_002.bend::check",
+        "flatten/nontotal_error_003.bend::check",
+        "flatten/nontotal_multi_missing.bend::check",
+        "flatten/nontotal_multi_scrutinee_000.bend::check",
+        "flatten/nontotal_multi_scrutinee_001.bend::check",
+        "flatten/nontotal_multi_scrutinee_002.bend::check",
+        "flatten/nontotal_multi_scrutinee_003.bend::check",
+        "flatten/nontotal_multi_scrutinee_004.bend::check",
+        "flatten/order_ban_000.bend::check",
+        "flatten/order_ban_001.bend::check",
+        "flatten/order_ban_002.bend::check",
+        "flatten/order_ban_003.bend::check",
+        "flatten/pattern_shape_mismatch.bend::check",
+        "flatten/share_binder_syntax.bend::check",
+        "flatten/shared_param_computed_001.bend::check",
+        "flatten/unsupported_pattern.bend::check",
+        "grade/reject_cast.bend::check",
+        "grade/reject_closure.bend::check",
+        "grade/reject_copy_paradox.bend::check",
+        "grade/reject_fn_field.bend::check",
+        "grade/reject_kind_tip.bend::check",
+        "grade/reject_leak.bend::check",
+        "grade/reject_local_grade.bend::check",
+        "grade/reject_negative.bend::check",
+        "grade/reject_plus_field.bend::check",
+        "grade/reject_refill.bend::check",
+        "grade/reject_rewrite.bend::check",
+        "grade/reject_upcast.bend::check",
+        "grade/reject_witness.bend::check",
+        "halt/column_order_search.bend::check",
+        "halt/contraction_growth.bend::check",
+        "import/c_suffix_module.bend::check",
+        "import/cross_file_io.bend::check",
+        "import/cross_file_proof.bend::check",
+        "import/cycle_terminates.bend::check",
+        "import/diamond_dedup.bend::check",
+        "import/duplicate_name.bend::check",
+        "import/empty_neq.bend::check",
+        "import/list_sugar.bend::check",
+        "import/parent_segments.bend::check",
+        "import/path_canonical.bend::check",
+        "import/shadow_lib.bend::check",
+        "import/shadow_tmpl_lib.bend::check",
+        "import/suffix_refused.bend::check",
+        "io/main_foreign.bend::check",
+        "io/reuse_across_effect.bend::check",
+        "page/arm_leaf_context.bend::check",
+        "page/bool_wrap_scope.bend::check",
+        "page/comp_arrow_position.bend::check",
+        "page/comp_param_match.bend::check",
+        "page/concat_type_infer.bend::check",
+        "page/context_dedup_shadow.bend::check",
+        "page/ctor_list_mismatch_001.bend::check",
+        "page/deep_list_walk.bend::check",
+        "page/empty_match_datatype.bend::check",
+        "page/match_missing_ctors.bend::check",
+        "page/match_missing_default.bend::check",
+        "page/match_not_datatype.bend::check",
+        "page/missing_cons_ctor.bend::check",
+        "page/overapply_hint.bend::check",
+        "page/rewrite_non_equation.bend::check",
+        "page/unknown_constructor.bend::check",
+        "parse/array_count_odd.bend::check",
+        "parse/array_key_range.bend::check",
+        "parse/builtin_arity_mismatch_000.bend::check",
+        "parse/chain_old_spellings_000.bend::check",
+        "parse/chain_old_spellings_001.bend::check",
+        "parse/comp_arrow_position.bend::check",
+        "parse/computed_mark_nonname.bend::check",
+        "parse/datatype_no_is.bend::check",
+        "parse/dead_lambda_syntax.bend::check",
+        "parse/dead_motive_syntax.bend::check",
+        "parse/def_untyped_refused.bend::check",
+        "parse/do_bind_continuation.bend::check",
+        "parse/duplicate_buffer_key.bend::check",
+        "parse/duplicate_declaration.bend::check",
+        "parse/expected_float_literal.bend::check",
+        "parse/float_dotted_family_dead_000.bend::check",
+        "parse/foreign_refill.bend::check",
+        "parse/gpu_mark_order.bend::check",
+        "parse/hex_no_digits.bend::check",
+        "parse/if_no_else.bend::check",
+        "parse/if_statement_only.bend::check",
+        "parse/invalid_assign_target.bend::check",
+        "parse/invalid_string_escape.bend::check",
+        "parse/keyword_reserved.bend::check",
+        "parse/law_fill_arrow.bend::check",
+        "parse/plus_binder_term.bend::check",
+        "parse/prefix_operator_dead.bend::check",
+        "parse/reserved_assert_name.bend::check",
+        "parse/reserved_ctor_field_000.bend::check",
+        "parse/reserved_ctor_field_001.bend::check",
+        "parse/reserved_def_name_000.bend::check",
+        "parse/reserved_def_name_001.bend::check",
+        "parse/reserved_def_name_002.bend::check",
+        "parse/reserved_dollar_name.bend::check",
+        "parse/reserved_lambda_binder.bend::check",
+        "parse/reserved_let_binder_001.bend::check",
+        "parse/reserved_pattern_binder.bend::check",
+        "parse/reserved_pi_binder.bend::check",
+        "parse/reserved_type_name.bend::check",
+        "parse/reserved_type_param.bend::check",
+        "parse/rewrite_ctor_brace.bend::check",
+        "parse/rewrite_non_equation.bend::check",
+        "parse/word_overflow_literal.bend::check",
+        "proof/goal_ladder_state_000.bend::check",
+        "proof/goal_ladder_state_001.bend::check",
+        "proof/goal_ladder_state_002.bend::check",
+        "proof/goal_ladder_state_003.bend::check",
+        "proof/goal_ladder_state_004.bend::check",
+        "proof/goal_ladder_state_005.bend::check",
+        "proof/goal_ladder_state_006.bend::check",
+        "proof/goal_ladder_state_007.bend::check",
+        "proof/goal_ladder_state_008.bend::check",
+        "proof/goal_ladder_state_009.bend::check",
+        "proof/goal_ladder_state_010.bend::check",
+        "proof/goal_ladder_state_011.bend::check",
+        "proof/goal_ladder_state_012.bend::check",
+        "proof/goal_ladder_state_013.bend::check",
+        "proof/goal_ladder_state_014.bend::check",
+        "proof/goal_ladder_state_015.bend::check",
+        "proof/goal_ladder_state_016.bend::check",
+        "proof/goal_ladder_state_017.bend::check",
+        "proof/goal_ladder_state_018.bend::check",
+        "proof/goal_ladder_state_019.bend::check",
+        "proof/goal_ladder_state_020.bend::check",
+        "proof/goal_ladder_state_021.bend::check",
+        "proof/goal_ladder_state_022.bend::check",
+        "proof/goal_ladder_state_023.bend::check",
+        "proof/goal_ladder_state_024.bend::check",
+        "proof/goal_ladder_state_025.bend::check",
+        "proof/goal_ladder_state_026.bend::check",
+        "proof/goal_ladder_state_027.bend::check",
+        "proof/goal_ladder_state_028.bend::check",
+        "proof/goal_ladder_state_029.bend::check",
+        "proof/goal_ladder_state_030.bend::check",
+        "proof/match_as_binding.bend::check",
+        "proof/no_funext_000.bend::check",
+        "reg/array_open_element.bend::check",
+        "reg/body_local_match.bend::check",
+        "reg/erased_local_match.bend::check",
+        "reg/framed_cell_capture.bend::check",
+        "reg/import_head.bend::check",
+        "run/array_bounds_000.bend::check",
+        "run/array_bounds_001.bend::check",
+        "run/array_slab.bend::check",
+        "run/array_struct_swap.bend::check",
+        "spec/comp_any_term.bend::check",
+        "spec/comp_capture_linear.bend::check",
+        "spec/comp_capture_share.bend::check",
+        "spec/comp_curried_lambda.bend::check",
+        "spec/comp_mint_dedupe.bend::check",
+        "spec/hypothesis_retype.bend::check",
+        "state/ctor_stuck_goal.bend::check",
+        "state/generic_args_goal.bend::check",
+        "state/nested_call_goal_000.bend::check",
+        "state/nested_call_goal_001.bend::check",
+        "state/operator_goal.bend::check",
+        "state/plain_goal.bend::check",
+        "state/rewrite_goal.bend::check",
+        "state/type_family_goal.bend::check"
+      ],
+      "positiveFixtures": 919,
+      "positiveFixturesBothLanesPass": 919,
+      "negativeParseObserved": 459,
+      "negativeCheckActualPhases": {
+        "check": 275,
+        "parse": 178,
+        "compile": 1,
+        "load": 5
+      },
+      "negativeCheckStatus": {
+        "error": 457,
+        "ok": 2
+      },
+      "negativeCheckCheckedTrue": 276,
+      "harnessCompleteFlag": false
+    },
+    "reference": {
+      "strictByLane": {
+        "parse": {
+          "observed": 459,
+          "pass": 919
+        },
+        "check": {
+          "pass": 1375,
+          "fail": 3
+        }
+      },
+      "strictCheckFailures": [
+        "check/template_inst_cycle.bend::check",
+        "io/main_foreign.bend::check",
+        "reg/array_open_element.bend::check"
+      ],
+      "positiveFixtures": 919,
+      "positiveFixturesBothLanesPass": 919,
+      "negativeParseObserved": 459,
+      "negativeCheckActualPhases": {
+        "check": 276,
+        "parse": 182,
+        "compile": 1
+      },
+      "negativeCheckStatus": {
+        "error": 457,
+        "ok": 2
+      },
+      "negativeCheckCheckedTrue": 277,
+      "harnessCompleteFlag": false
+    },
+    "baseline": {
+      "strictByLane": {
+        "parse": {
+          "observed": 459,
+          "pass": 919
+        },
+        "check": {
+          "pass": 1001,
+          "fail": 377
+        }
+      },
+      "strictCheckFailures": [
+        "check/array_boxed_default.bend::check",
+        "check/array_default_distinct.bend::check",
+        "check/array_default_linear.bend::check",
+        "check/array_element_data.bend::check",
+        "check/array_get_copy.bend::check",
+        "check/array_get_neutral.bend::check",
+        "check/array_get_word_only.bend::check",
+        "check/array_literal_capacity.bend::check",
+        "check/array_literal_mismatch.bend::check",
+        "check/array_never_copyable.bend::check",
+        "check/array_not_data.bend::check",
+        "check/array_set_neutral_000.bend::check",
+        "check/array_set_neutral_001.bend::check",
+        "check/axiom_runtime_capture.bend::check",
+        "check/beta_ann_lambda.bend::check",
+        "check/binder_name_capture.bend::check",
+        "check/book_prefix_arity.bend::check",
+        "check/bool_one_way.bend::check",
+        "check/bool_word_bridge.bend::check",
+        "check/buffer_word_range.bend::check",
+        "check/canonical_ref_conversion.bend::check",
+        "check/capture_soundness.bend::check",
+        "check/chained_switch_conflation_000.bend::check",
+        "check/chained_switch_conflation_001.bend::check",
+        "check/comp_splice_tuple_goal.bend::check",
+        "check/computed_match_split.bend::check",
+        "check/cons_tail_mismatch.bend::check",
+        "check/cop_adt_param_000.bend::check",
+        "check/cop_ctr_field_000.bend::check",
+        "check/cop_dead_hypothesis_000.bend::check",
+        "check/cop_field_formation.bend::check",
+        "check/cop_foreign_fill_000.bend::check",
+        "check/cop_forged_lock_001.bend::check",
+        "check/cop_inline_witness_002.bend::check",
+        "check/cop_let_formation.bend::check",
+        "check/cop_plain_domain_000.bend::check",
+        "check/ctor_shared_tag.bend::check",
+        "check/ctr_of_datatype.bend::check",
+        "check/data_cycle_poison.bend::check",
+        "check/data_self_ref.bend::check",
+        "check/data_table_checked_000.bend::check",
+        "check/data_table_checked_001.bend::check",
+        "check/dec_switch_respell_000.bend::check",
+        "check/dec_switch_respell_001.bend::check",
+        "check/default_arm_family.bend::check",
+        "check/dependent_switch_induction.bend::check",
+        "check/do_missing_bind.bend::check",
+        "check/efq_erased_binder_000.bend::check",
+        "check/either_data_wall.bend::check",
+        "check/erased_binder_use.bend::check",
+        "check/erased_field_conversion.bend::check",
+        "check/erased_local_live_use.bend::check",
+        "check/erased_local_match_000.bend::check",
+        "check/erased_match_ctor.bend::check",
+        "check/erased_match_empty.bend::check",
+        "check/erased_match_numeric.bend::check",
+        "check/error_window_assert_exists.bend::check",
+        "check/error_window_filled_param_use.bend::check",
+        "check/error_window_inline_exists.bend::check",
+        "check/error_window_match_missing.bend::check",
+        "check/error_window_match_repeated.bend::check",
+        "check/error_window_param_use.bend::check",
+        "check/error_window_rewrite_proof.bend::check",
+        "check/error_window_stuck_app_kind.bend::check",
+        "check/family_head_bare.bend::check",
+        "check/field_type_bound.bend::check",
+        "check/fits_app_invariant.bend::check",
+        "check/fits_rfl_kind.bend::check",
+        "check/float_builtin_arg.bend::check",
+        "check/float_literal_type.bend::check",
+        "check/float_match_scrutinee.bend::check",
+        "check/float_no_mod.bend::check",
+        "check/forward_data_table.bend::check",
+        "check/fuel_inline_dep_match.bend::check",
+        "check/hoas_alpha_capture.bend::check",
+        "check/hole_named.bend::check",
+        "check/hole_todo.bend::check",
+        "check/hurkens_paradox.bend::check",
+        "check/lambda_single_use.bend::check",
+        "check/let_lambda_twice.bend::check",
+        "check/list_map_conversion.bend::check",
+        "check/list_not_array.bend::check",
+        "check/match_as_specialize.bend::check",
+        "check/meet_charges_its_operands.bend::check",
+        "check/meet_stuck_pending_ref.bend::check",
+        "check/missing_ih_rewrite.bend::check",
+        "check/monad_do_destructure.bend::check",
+        "check/motive_suffix_join.bend::check",
+        "check/nat_literal_import.bend::check",
+        "check/nat_literal_pattern_arity.bend::check",
+        "check/nat_literal_pattern_empty.bend::check",
+        "check/negative_data_field_000.bend::check",
+        "check/negative_data_reuse.bend::check",
+        "check/neq_not_convertible.bend::check",
+        "check/neq_qualified_capture.bend::check",
+        "check/neq_reflexivity.bend::check",
+        "check/nested_datatype_closure.bend::check",
+        "check/nested_field_bound.bend::check",
+        "check/op_bare_refused.bend::check",
+        "check/op_brace_refused.bend::check",
+        "check/op_ns_call_arg.bend::check",
+        "check/operator_chain_linear.bend::check",
+        "check/pair_data_wall.bend::check",
+        "check/quant_tag_conversion_000.bend::check",
+        "check/quant_tag_conversion_001.bend::check",
+        "check/relation_install_lock.bend::check",
+        "check/switch_miss_guard.bend::check",
+        "check/template_inst_cycle.bend::check",
+        "check/template_ns_late.bend::check",
+        "check/tuple_import_required.bend::check",
+        "check/typed_let_mismatch.bend::check",
+        "check/undo_residual_lane.bend::check",
+        "check/unit_ctor_mismatch.bend::check",
+        "check/unit_paren_sugar.bend::check",
+        "check/usage_counts_source.bend::check",
+        "check/wrap_not_successor.bend::check",
+        "compile/array_oob_access.bend::check",
+        "compile/array_padding_slots.bend::check",
+        "compile/array_unboxed_default.bend::check",
+        "compile/ctor_tag_dispatch_000.bend::check",
+        "compile/ctor_tag_dispatch_001.bend::check",
+        "compile/erasure_dead_param.bend::check",
+        "compile/slab_drop_recycle.bend::check",
+        "compile/slab_lazy_alloc.bend::check",
+        "compile/slab_sparse_default.bend::check",
+        "comptime/dup_lone.bend::check",
+        "comptime/err_arg_type.bend::check",
+        "comptime/err_capture.bend::check",
+        "comptime/err_dup.bend::check",
+        "comptime/err_extra.bend::check",
+        "comptime/err_fill_short.bend::check",
+        "comptime/err_generic.bend::check",
+        "comptime/err_grow_double.bend::check",
+        "comptime/err_grow.bend::check",
+        "comptime/err_head.bend::check",
+        "comptime/err_late_tilde.bend::check",
+        "comptime/err_later.bend::check",
+        "comptime/err_law.bend::check",
+        "comptime/err_leak.bend::check",
+        "comptime/err_let_arg.bend::check",
+        "comptime/err_match_arg.bend::check",
+        "comptime/err_param_arg.bend::check",
+        "comptime/err_plus_term.bend::check",
+        "comptime/err_runtime.bend::check",
+        "comptime/err_untyped.bend::check",
+        "comptime/later_def.bend::check",
+        "comptime/wrong_type.bend::check",
+        "cost/array_fill_readback.bend::check",
+        "eval/array_packed_default.bend::check",
+        "flatten/annotated_computed_scrutinee_001.bend::check",
+        "flatten/arity_mismatch_000.bend::check",
+        "flatten/arity_mismatch_001.bend::check",
+        "flatten/arrow_bind_error_000.bend::check",
+        "flatten/arrow_bind_error_001.bend::check",
+        "flatten/as_pattern_error.bend::check",
+        "flatten/cid_pair_repr.bend::check",
+        "flatten/consumed_column_error_001.bend::check",
+        "flatten/dead_residue_elision_003.bend::check",
+        "flatten/dependent_goal_000.bend::check",
+        "flatten/dependent_goal_001.bend::check",
+        "flatten/destructure_annotation_error.bend::check",
+        "flatten/destructure_let_001.bend::check",
+        "flatten/dup_guard_000.bend::check",
+        "flatten/dup_guard_001.bend::check",
+        "flatten/empty_match.bend::check",
+        "flatten/error_window_matched_scrutinee.bend::check",
+        "flatten/error_window_substituted_scrutinee.bend::check",
+        "flatten/forward_reference.bend::check",
+        "flatten/generic_type_param.bend::check",
+        "flatten/inline_block_error.bend::check",
+        "flatten/kplus_missing_case.bend::check",
+        "flatten/lambda_match_literal_000.bend::check",
+        "flatten/lambda_match_literal_001.bend::check",
+        "flatten/lambda_match_literal_002.bend::check",
+        "flatten/mark_computed_optout.bend::check",
+        "flatten/match_app_scrutinee_000.bend::check",
+        "flatten/match_app_scrutinee_001.bend::check",
+        "flatten/named_column_alias.bend::check",
+        "flatten/noninfer_error_000.bend::check",
+        "flatten/noninfer_error_002.bend::check",
+        "flatten/nontotal_error_000.bend::check",
+        "flatten/nontotal_error_001.bend::check",
+        "flatten/nontotal_error_002.bend::check",
+        "flatten/nontotal_error_003.bend::check",
+        "flatten/nontotal_multi_missing.bend::check",
+        "flatten/nontotal_multi_scrutinee_000.bend::check",
+        "flatten/nontotal_multi_scrutinee_001.bend::check",
+        "flatten/nontotal_multi_scrutinee_002.bend::check",
+        "flatten/nontotal_multi_scrutinee_003.bend::check",
+        "flatten/nontotal_multi_scrutinee_004.bend::check",
+        "flatten/order_ban_000.bend::check",
+        "flatten/order_ban_001.bend::check",
+        "flatten/order_ban_002.bend::check",
+        "flatten/order_ban_003.bend::check",
+        "flatten/pattern_shape_mismatch.bend::check",
+        "flatten/share_binder_syntax.bend::check",
+        "flatten/shared_param_computed_001.bend::check",
+        "flatten/statement_beta.bend::check",
+        "flatten/statement_lam_absorb.bend::check",
+        "flatten/unsupported_pattern.bend::check",
+        "grade/reject_cast.bend::check",
+        "grade/reject_closure.bend::check",
+        "grade/reject_copy_paradox.bend::check",
+        "grade/reject_fn_field.bend::check",
+        "grade/reject_kind_tip.bend::check",
+        "grade/reject_leak.bend::check",
+        "grade/reject_local_grade.bend::check",
+        "grade/reject_negative.bend::check",
+        "grade/reject_plus_field.bend::check",
+        "grade/reject_refill.bend::check",
+        "grade/reject_rewrite.bend::check",
+        "grade/reject_upcast.bend::check",
+        "grade/reject_witness.bend::check",
+        "halt/column_order_search.bend::check",
+        "halt/contraction_growth.bend::check",
+        "import/c_suffix_module.bend::check",
+        "import/cross_file_io.bend::check",
+        "import/cross_file_proof.bend::check",
+        "import/cycle_terminates.bend::check",
+        "import/diamond_dedup.bend::check",
+        "import/duplicate_name.bend::check",
+        "import/empty_neq.bend::check",
+        "import/list_sugar.bend::check",
+        "import/parent_segments.bend::check",
+        "import/path_canonical.bend::check",
+        "import/position_independent.bend::check",
+        "import/shadow_lib.bend::check",
+        "import/shadow_tmpl_lib.bend::check",
+        "import/suffix_refused.bend::check",
+        "io/cbody_bare_path.bend::check",
+        "io/cbody_dup_effect.bend::check",
+        "io/cbody_effect.bend::check",
+        "io/cbody_needs_io.bend::check",
+        "io/channel_send_recv.bend::check",
+        "io/main_foreign.bend::check",
+        "io/reuse_across_effect.bend::check",
+        "page/ambiguous_ctor_error.bend::check",
+        "page/arm_leaf_context.bend::check",
+        "page/bool_wrap_scope.bend::check",
+        "page/comp_arrow_position.bend::check",
+        "page/comp_param_match.bend::check",
+        "page/concat_type_infer.bend::check",
+        "page/context_dedup_shadow.bend::check",
+        "page/ctor_list_mismatch_001.bend::check",
+        "page/deep_list_walk.bend::check",
+        "page/empty_match_datatype.bend::check",
+        "page/match_missing_ctors.bend::check",
+        "page/match_missing_default.bend::check",
+        "page/match_not_datatype.bend::check",
+        "page/missing_cons_ctor.bend::check",
+        "page/overapply_hint.bend::check",
+        "page/rewrite_non_equation.bend::check",
+        "page/unknown_constructor.bend::check",
+        "parse/array_count_odd.bend::check",
+        "parse/array_key_range.bend::check",
+        "parse/array_length_power.bend::check",
+        "parse/bare_caret_dead.bend::check",
+        "parse/bind_outside_do.bend::check",
+        "parse/builtin_arity_mismatch_000.bend::check",
+        "parse/chain_old_spellings_000.bend::check",
+        "parse/chain_old_spellings_001.bend::check",
+        "parse/comp_arrow_position.bend::check",
+        "parse/computed_mark_nonname.bend::check",
+        "parse/ctor_indexed_target.bend::check",
+        "parse/ctor_result_annotation.bend::check",
+        "parse/ctor_result_arrow.bend::check",
+        "parse/datatype_no_is.bend::check",
+        "parse/dead_lambda_syntax.bend::check",
+        "parse/dead_motive_syntax.bend::check",
+        "parse/def_untyped_refused.bend::check",
+        "parse/do_bind_continuation.bend::check",
+        "parse/do_missing_param.bend::check",
+        "parse/duplicate_buffer_key.bend::check",
+        "parse/duplicate_ctor_name.bend::check",
+        "parse/duplicate_declaration.bend::check",
+        "parse/expected_float_literal.bend::check",
+        "parse/float_dotted_family_dead_000.bend::check",
+        "parse/foreign_refill.bend::check",
+        "parse/gadt_result_annotation_000.bend::check",
+        "parse/gadt_result_annotation_001.bend::check",
+        "parse/gpu_mark_order.bend::check",
+        "parse/hex_no_digits.bend::check",
+        "parse/if_no_else.bend::check",
+        "parse/if_statement_only.bend::check",
+        "parse/invalid_assign_target.bend::check",
+        "parse/invalid_string_escape.bend::check",
+        "parse/keyword_reserved.bend::check",
+        "parse/law_fill_arrow.bend::check",
+        "parse/legacy_bang_statement.bend::check",
+        "parse/legacy_brace_datatype.bend::check",
+        "parse/legacy_data_annotation.bend::check",
+        "parse/let_arity_mismatch.bend::check",
+        "parse/plus_binder_term.bend::check",
+        "parse/prefix_operator_dead.bend::check",
+        "parse/reserved_assert_name.bend::check",
+        "parse/reserved_ctor_field_000.bend::check",
+        "parse/reserved_ctor_field_001.bend::check",
+        "parse/reserved_def_name_000.bend::check",
+        "parse/reserved_def_name_001.bend::check",
+        "parse/reserved_def_name_002.bend::check",
+        "parse/reserved_dollar_name.bend::check",
+        "parse/reserved_lambda_binder.bend::check",
+        "parse/reserved_let_binder_001.bend::check",
+        "parse/reserved_pattern_binder.bend::check",
+        "parse/reserved_pi_binder.bend::check",
+        "parse/reserved_type_name.bend::check",
+        "parse/reserved_type_param.bend::check",
+        "parse/rewrite_ctor_brace.bend::check",
+        "parse/rewrite_non_equation.bend::check",
+        "parse/unclosed_char_code.bend::check",
+        "parse/unicode_forall_dead.bend::check",
+        "parse/unicode_lambda_dead.bend::check",
+        "parse/word_overflow_literal.bend::check",
+        "proof/goal_ladder_state_000.bend::check",
+        "proof/goal_ladder_state_001.bend::check",
+        "proof/goal_ladder_state_002.bend::check",
+        "proof/goal_ladder_state_003.bend::check",
+        "proof/goal_ladder_state_004.bend::check",
+        "proof/goal_ladder_state_005.bend::check",
+        "proof/goal_ladder_state_006.bend::check",
+        "proof/goal_ladder_state_007.bend::check",
+        "proof/goal_ladder_state_008.bend::check",
+        "proof/goal_ladder_state_009.bend::check",
+        "proof/goal_ladder_state_010.bend::check",
+        "proof/goal_ladder_state_011.bend::check",
+        "proof/goal_ladder_state_012.bend::check",
+        "proof/goal_ladder_state_013.bend::check",
+        "proof/goal_ladder_state_014.bend::check",
+        "proof/goal_ladder_state_015.bend::check",
+        "proof/goal_ladder_state_016.bend::check",
+        "proof/goal_ladder_state_017.bend::check",
+        "proof/goal_ladder_state_018.bend::check",
+        "proof/goal_ladder_state_019.bend::check",
+        "proof/goal_ladder_state_020.bend::check",
+        "proof/goal_ladder_state_021.bend::check",
+        "proof/goal_ladder_state_022.bend::check",
+        "proof/goal_ladder_state_023.bend::check",
+        "proof/goal_ladder_state_024.bend::check",
+        "proof/goal_ladder_state_025.bend::check",
+        "proof/goal_ladder_state_026.bend::check",
+        "proof/goal_ladder_state_027.bend::check",
+        "proof/goal_ladder_state_028.bend::check",
+        "proof/goal_ladder_state_029.bend::check",
+        "proof/goal_ladder_state_030.bend::check",
+        "proof/match_as_binding.bend::check",
+        "proof/no_funext_000.bend::check",
+        "reg/array_open_element.bend::check",
+        "reg/body_local_match.bend::check",
+        "reg/erased_local_match.bend::check",
+        "reg/framed_cell_capture.bend::check",
+        "reg/import_head.bend::check",
+        "run/array_bounds_000.bend::check",
+        "run/array_bounds_001.bend::check",
+        "run/array_slab.bend::check",
+        "run/array_struct_swap.bend::check",
+        "run/binop_probe_split.bend::check",
+        "spec/comp_any_term.bend::check",
+        "spec/comp_capture_linear.bend::check",
+        "spec/comp_capture_share.bend::check",
+        "spec/comp_curried_lambda.bend::check",
+        "spec/comp_erased_args.bend::check",
+        "spec/comp_generic_dedupe.bend::check",
+        "spec/comp_generic_mint.bend::check",
+        "spec/comp_instantiation_error.bend::check",
+        "spec/comp_late_param.bend::check",
+        "spec/comp_let_split.bend::check",
+        "spec/comp_mint_dedupe.bend::check",
+        "spec/hypothesis_retype.bend::check",
+        "spec/mint_count.bend::check",
+        "state/ctor_stuck_goal.bend::check",
+        "state/generic_args_goal.bend::check",
+        "state/nested_call_goal_000.bend::check",
+        "state/nested_call_goal_001.bend::check",
+        "state/operator_goal.bend::check",
+        "state/plain_goal.bend::check",
+        "state/rewrite_goal.bend::check",
+        "state/type_family_goal.bend::check"
+      ],
+      "positiveFixtures": 919,
+      "positiveFixturesBothLanesPass": 919,
+      "negativeParseObserved": 459,
+      "negativeCheckActualPhases": {
+        "check": 290,
+        "parse": 163,
+        "compile": 1,
+        "load": 5
+      },
+      "negativeCheckStatus": {
+        "error": 457,
+        "ok": 2
+      },
+      "negativeCheckCheckedTrue": 291,
+      "harnessCompleteFlag": false
+    },
+    "historicalReference": {
+      "strictByLane": {
+        "parse": {
+          "observed": 459,
+          "pass": 919
+        },
+        "check": {
+          "pass": 1375,
+          "fail": 3
+        }
+      },
+      "strictCheckFailures": [
+        "check/template_inst_cycle.bend::check",
+        "io/main_foreign.bend::check",
+        "reg/array_open_element.bend::check"
+      ],
+      "positiveFixtures": 919,
+      "positiveFixturesBothLanesPass": 919,
+      "negativeParseObserved": 459,
+      "negativeCheckActualPhases": {
+        "check": 276,
+        "parse": 182,
+        "compile": 1
+      },
+      "negativeCheckStatus": {
+        "error": 457,
+        "ok": 2
+      },
+      "negativeCheckCheckedTrue": 277,
+      "harnessCompleteFlag": false
+    }
+  },
+  "referenceChanges": [],
+  "newExactDifferences": [],
+  "resolvedExactDifferences": [
+    "check/array_boxed_default.bend::check",
+    "check/array_boxed_default.bend::parse",
+    "check/array_default_distinct.bend::check",
+    "check/array_default_distinct.bend::parse",
+    "check/array_default_linear.bend::check",
+    "check/array_default_linear.bend::parse",
+    "check/array_get_copy.bend::check",
+    "check/array_get_copy.bend::parse",
+    "check/array_literal_capacity.bend::check",
+    "check/array_literal_capacity.bend::parse",
+    "check/array_literal_mismatch.bend::check",
+    "check/array_literal_mismatch.bend::parse",
+    "check/book_prefix_arity.bend::check",
+    "check/book_prefix_arity.bend::parse",
+    "check/buffer_word_range.bend::check",
+    "check/buffer_word_range.bend::parse",
+    "check/ctor_shared_tag.bend::check",
+    "check/ctor_shared_tag.bend::parse",
+    "check/ctr_of_datatype.bend::check",
+    "check/do_missing_bind.bend::check",
+    "check/do_missing_bind.bend::parse",
+    "check/erased_match_numeric.bend::check",
+    "check/erased_match_numeric.bend::parse",
+    "check/undo_residual_lane.bend::check",
+    "check/undo_residual_lane.bend::parse",
+    "check/unit_ctor_mismatch.bend::check",
+    "check/unit_ctor_mismatch.bend::parse",
+    "check/unit_paren_sugar.bend::check",
+    "check/unit_paren_sugar.bend::parse",
+    "compile/array_oob_access.bend::check",
+    "compile/array_oob_access.bend::parse",
+    "compile/array_padding_slots.bend::check",
+    "compile/array_padding_slots.bend::parse",
+    "compile/array_unboxed_default.bend::check",
+    "compile/array_unboxed_default.bend::parse",
+    "compile/ctor_tag_dispatch_000.bend::check",
+    "compile/ctor_tag_dispatch_000.bend::parse",
+    "compile/ctor_tag_dispatch_001.bend::check",
+    "compile/ctor_tag_dispatch_001.bend::parse",
+    "compile/slab_drop_recycle.bend::check",
+    "compile/slab_drop_recycle.bend::parse",
+    "compile/slab_lazy_alloc.bend::check",
+    "compile/slab_lazy_alloc.bend::parse",
+    "compile/slab_sparse_default.bend::check",
+    "compile/slab_sparse_default.bend::parse",
+    "flatten/arrow_bind_error_000.bend::check",
+    "flatten/arrow_bind_error_000.bend::parse",
+    "flatten/arrow_bind_error_001.bend::check",
+    "flatten/arrow_bind_error_001.bend::parse",
+    "flatten/statement_beta.bend::check",
+    "flatten/statement_beta.bend::parse",
+    "flatten/statement_lam_absorb.bend::check",
+    "flatten/statement_lam_absorb.bend::parse",
+    "import/position_independent.bend::check",
+    "import/position_independent.bend::parse",
+    "io/cbody_bare_path.bend::check",
+    "io/cbody_bare_path.bend::parse",
+    "io/cbody_dup_effect.bend::check",
+    "io/cbody_dup_effect.bend::parse",
+    "io/cbody_effect.bend::check",
+    "io/cbody_effect.bend::parse",
+    "io/cbody_needs_io.bend::check",
+    "io/cbody_needs_io.bend::parse",
+    "io/channel_send_recv.bend::check",
+    "page/ambiguous_ctor_error.bend::check",
+    "page/ambiguous_ctor_error.bend::parse",
+    "parse/array_length_power.bend::check",
+    "parse/array_length_power.bend::parse",
+    "parse/bare_caret_dead.bend::check",
+    "parse/bare_caret_dead.bend::parse",
+    "parse/bind_outside_do.bend::check",
+    "parse/bind_outside_do.bend::parse",
+    "parse/ctor_indexed_target.bend::check",
+    "parse/ctor_indexed_target.bend::parse",
+    "parse/ctor_result_annotation.bend::check",
+    "parse/ctor_result_annotation.bend::parse",
+    "parse/ctor_result_arrow.bend::check",
+    "parse/ctor_result_arrow.bend::parse",
+    "parse/do_missing_param.bend::check",
+    "parse/do_missing_param.bend::parse",
+    "parse/duplicate_ctor_name.bend::check",
+    "parse/duplicate_ctor_name.bend::parse",
+    "parse/gadt_result_annotation_000.bend::check",
+    "parse/gadt_result_annotation_000.bend::parse",
+    "parse/gadt_result_annotation_001.bend::check",
+    "parse/gadt_result_annotation_001.bend::parse",
+    "parse/legacy_bang_statement.bend::check",
+    "parse/legacy_bang_statement.bend::parse",
+    "parse/legacy_brace_datatype.bend::check",
+    "parse/legacy_brace_datatype.bend::parse",
+    "parse/legacy_data_annotation.bend::check",
+    "parse/legacy_data_annotation.bend::parse",
+    "parse/let_arity_mismatch.bend::check",
+    "parse/let_arity_mismatch.bend::parse",
+    "parse/unclosed_char_code.bend::check",
+    "parse/unclosed_char_code.bend::parse",
+    "parse/unicode_forall_dead.bend::check",
+    "parse/unicode_forall_dead.bend::parse",
+    "parse/unicode_lambda_dead.bend::check",
+    "parse/unicode_lambda_dead.bend::parse",
+    "run/binop_probe_split.bend::check",
+    "run/binop_probe_split.bend::parse",
+    "spec/comp_erased_args.bend::check",
+    "spec/comp_erased_args.bend::parse",
+    "spec/comp_generic_dedupe.bend::check",
+    "spec/comp_generic_dedupe.bend::parse",
+    "spec/comp_generic_mint.bend::check",
+    "spec/comp_generic_mint.bend::parse",
+    "spec/comp_instantiation_error.bend::check",
+    "spec/comp_instantiation_error.bend::parse",
+    "spec/comp_late_param.bend::check",
+    "spec/comp_late_param.bend::parse",
+    "spec/comp_let_split.bend::check",
+    "spec/comp_let_split.bend::parse",
+    "spec/mint_count.bend::check",
+    "spec/mint_count.bend::parse"
+  ],
+  "remainingDifferences": [
+    {
+      "key": "check/array_element_data.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_element_data.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_get_neutral.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_get_neutral.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_get_word_only.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_get_word_only.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_never_copyable.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_never_copyable.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_not_data.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_not_data.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_set_neutral_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_set_neutral_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_set_neutral_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/array_set_neutral_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/axiom_runtime_capture.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/beta_ann_lambda.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/binder_name_capture.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/bool_one_way.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/bool_word_bridge.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/canonical_ref_conversion.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/capture_soundness.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/chained_switch_conflation_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/chained_switch_conflation_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/chained_switch_conflation_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/chained_switch_conflation_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/comp_splice_tuple_goal.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/comp_splice_tuple_goal.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/computed_match_split.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/computed_match_split.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/cons_tail_mismatch.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/cop_adt_param_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/cop_ctr_field_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/cop_dead_hypothesis_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/cop_field_formation.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/cop_foreign_fill_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/cop_forged_lock_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/cop_inline_witness_002.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/cop_let_formation.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/cop_plain_domain_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/data_cycle_poison.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/data_self_ref.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/data_table_checked_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/data_table_checked_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/data_table_checked_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/dec_switch_respell_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/dec_switch_respell_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/dec_switch_respell_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/dec_switch_respell_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/default_arm_family.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/dependent_switch_induction.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/dependent_switch_induction.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/efq_erased_binder_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/either_data_wall.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/erased_binder_use.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/erased_field_conversion.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/erased_local_live_use.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/erased_local_match_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/erased_local_match_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/erased_match_ctor.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/erased_match_empty.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/error_window_assert_exists.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/error_window_filled_param_use.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/error_window_inline_exists.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/error_window_match_missing.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/error_window_match_repeated.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/error_window_param_use.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/error_window_rewrite_proof.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/error_window_stuck_app_kind.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/family_head_bare.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/field_type_bound.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/fits_app_invariant.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/fits_rfl_kind.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/float_builtin_arg.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/float_literal_type.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/float_match_scrutinee.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/float_no_mod.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/float_no_mod.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/forward_data_table.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/fuel_inline_dep_match.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/fuel_inline_dep_match.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/hoas_alpha_capture.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/hole_named.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/hole_todo.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/hurkens_paradox.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/lambda_single_use.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/let_lambda_twice.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/list_map_conversion.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/list_map_conversion.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/list_not_array.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/list_not_array.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/match_as_specialize.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/match_as_specialize.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/meet_charges_its_operands.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/meet_stuck_pending_ref.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/missing_ih_rewrite.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/monad_do_destructure.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/monad_do_destructure.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/motive_suffix_join.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/motive_suffix_join.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/nat_literal_import.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/nat_literal_pattern_arity.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/nat_literal_pattern_arity.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/nat_literal_pattern_empty.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/nat_literal_pattern_empty.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/negative_data_field_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/negative_data_reuse.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/neq_not_convertible.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/neq_qualified_capture.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/neq_reflexivity.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/nested_datatype_closure.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/nested_field_bound.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/op_bare_refused.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/op_bare_refused.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/op_brace_refused.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/op_brace_refused.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/op_ns_call_arg.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/op_ns_call_arg.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/operator_chain_linear.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/pair_data_wall.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/quant_tag_conversion_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/quant_tag_conversion_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/relation_install_lock.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/switch_miss_guard.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/template_inst_cycle.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/template_ns_late.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/template_ns_late.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/tuple_import_required.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/typed_let_mismatch.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/usage_counts_source.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "check/wrap_not_successor.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "compile/erasure_dead_param.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/dup_lone.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_arg_type.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_capture.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_dup.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_dup.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_extra.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_extra.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_fill_short.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_fill_short.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_generic.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_grow.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_grow_double.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_head.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_head.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_late_tilde.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_late_tilde.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_later.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_later.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_law.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_law.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_leak.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_let_arg.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_match_arg.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_param_arg.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_plus_term.bend::check",
+      "differentFields": [
+        "phase",
+        "checked",
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_plus_term.bend::parse",
+      "differentFields": [
+        "status",
+        "exitCode",
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_runtime.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_runtime.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_untyped.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/err_untyped.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/later_def.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "comptime/wrong_type.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "cost/array_fill_readback.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "cost/array_fill_readback.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "eval/array_packed_default.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/annotated_computed_scrutinee_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/arity_mismatch_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/arity_mismatch_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/arity_mismatch_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/arity_mismatch_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/as_pattern_error.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/as_pattern_error.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/cid_pair_repr.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/cid_pair_repr.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/consumed_column_error_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/consumed_column_error_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/dead_residue_elision_003.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/dead_residue_elision_003.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/dependent_goal_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/dependent_goal_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/destructure_annotation_error.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/destructure_let_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/destructure_let_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/dup_guard_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/dup_guard_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/dup_guard_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/dup_guard_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/empty_match.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/error_window_matched_scrutinee.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/error_window_substituted_scrutinee.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/error_window_substituted_scrutinee.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/forward_reference.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/forward_reference.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/generic_type_param.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/generic_type_param.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/inline_block_error.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/inline_block_error.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/kplus_missing_case.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/kplus_missing_case.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/lambda_match_literal_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/lambda_match_literal_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/lambda_match_literal_002.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/mark_computed_optout.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/mark_computed_optout.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/match_app_scrutinee_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/match_app_scrutinee_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/named_column_alias.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/named_column_alias.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/noninfer_error_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/noninfer_error_002.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/nontotal_error_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/nontotal_error_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/nontotal_error_002.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/nontotal_error_003.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/nontotal_multi_missing.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/nontotal_multi_scrutinee_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/nontotal_multi_scrutinee_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/nontotal_multi_scrutinee_002.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/nontotal_multi_scrutinee_003.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/nontotal_multi_scrutinee_004.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/order_ban_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/order_ban_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/order_ban_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/order_ban_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/order_ban_002.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/order_ban_002.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/order_ban_003.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/order_ban_003.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/pattern_shape_mismatch.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/share_binder_syntax.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/share_binder_syntax.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/shared_param_computed_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/shared_param_computed_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/unsupported_pattern.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "flatten/unsupported_pattern.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_cast.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_closure.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_copy_paradox.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_fn_field.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_kind_tip.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_leak.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_local_grade.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_negative.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_plus_field.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_refill.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_refill.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_rewrite.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_upcast.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "grade/reject_witness.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "halt/column_order_search.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "halt/column_order_search.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "halt/contraction_growth.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/c_suffix_module.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/c_suffix_module.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/cross_file_io.bend::check",
+      "differentFields": [
+        "phase",
+        "text"
+      ]
+    },
+    {
+      "key": "import/cross_file_io.bend::parse",
+      "differentFields": [
+        "phase",
+        "text"
+      ]
+    },
+    {
+      "key": "import/cross_file_proof.bend::check",
+      "differentFields": [
+        "phase",
+        "text"
+      ]
+    },
+    {
+      "key": "import/cross_file_proof.bend::parse",
+      "differentFields": [
+        "phase",
+        "text"
+      ]
+    },
+    {
+      "key": "import/cycle_terminates.bend::check",
+      "differentFields": [
+        "phase",
+        "text"
+      ]
+    },
+    {
+      "key": "import/cycle_terminates.bend::parse",
+      "differentFields": [
+        "phase",
+        "text"
+      ]
+    },
+    {
+      "key": "import/diamond_dedup.bend::check",
+      "differentFields": [
+        "phase",
+        "text"
+      ]
+    },
+    {
+      "key": "import/diamond_dedup.bend::parse",
+      "differentFields": [
+        "phase",
+        "text"
+      ]
+    },
+    {
+      "key": "import/duplicate_name.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/duplicate_name.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/empty_neq.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/list_sugar.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/parent_segments.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/parent_segments.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/path_canonical.bend::check",
+      "differentFields": [
+        "phase",
+        "text"
+      ]
+    },
+    {
+      "key": "import/path_canonical.bend::parse",
+      "differentFields": [
+        "phase",
+        "text"
+      ]
+    },
+    {
+      "key": "import/shadow_lib.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/shadow_lib.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/shadow_tmpl_lib.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/shadow_tmpl_lib.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/suffix_refused.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "import/suffix_refused.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "io/reuse_across_effect.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/arm_leaf_context.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/bool_wrap_scope.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/comp_arrow_position.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/comp_arrow_position.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/comp_param_match.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/concat_type_infer.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/context_dedup_shadow.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/ctor_list_mismatch_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/ctor_list_mismatch_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/deep_list_walk.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/empty_match_datatype.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/match_missing_ctors.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/match_missing_default.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/match_not_datatype.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/missing_cons_ctor.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/overapply_hint.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/rewrite_non_equation.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "page/unknown_constructor.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/array_count_odd.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/array_count_odd.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/array_key_range.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/array_key_range.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/builtin_arity_mismatch_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/chain_old_spellings_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/chain_old_spellings_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/chain_old_spellings_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/chain_old_spellings_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/comp_arrow_position.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/comp_arrow_position.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/computed_mark_nonname.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/computed_mark_nonname.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/datatype_no_is.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/datatype_no_is.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/dead_lambda_syntax.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/dead_lambda_syntax.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/dead_motive_syntax.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/dead_motive_syntax.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/def_untyped_refused.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/def_untyped_refused.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/do_bind_continuation.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/do_bind_continuation.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/duplicate_buffer_key.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/duplicate_buffer_key.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/duplicate_declaration.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/duplicate_declaration.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/expected_float_literal.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/expected_float_literal.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/float_dotted_family_dead_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/float_dotted_family_dead_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/foreign_refill.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/foreign_refill.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/gpu_mark_order.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/gpu_mark_order.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/hex_no_digits.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/hex_no_digits.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/if_no_else.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/if_no_else.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/if_statement_only.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/invalid_assign_target.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/invalid_assign_target.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/invalid_string_escape.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/invalid_string_escape.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/keyword_reserved.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/keyword_reserved.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/law_fill_arrow.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/law_fill_arrow.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/plus_binder_term.bend::check",
+      "differentFields": [
+        "phase",
+        "checked",
+        "text"
+      ]
+    },
+    {
+      "key": "parse/plus_binder_term.bend::parse",
+      "differentFields": [
+        "status",
+        "exitCode",
+        "text"
+      ]
+    },
+    {
+      "key": "parse/prefix_operator_dead.bend::check",
+      "differentFields": [
+        "phase",
+        "checked",
+        "text"
+      ]
+    },
+    {
+      "key": "parse/prefix_operator_dead.bend::parse",
+      "differentFields": [
+        "status",
+        "exitCode",
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_assert_name.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_assert_name.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_ctor_field_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_ctor_field_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_ctor_field_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_ctor_field_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_def_name_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_def_name_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_def_name_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_def_name_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_def_name_002.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_def_name_002.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_dollar_name.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_dollar_name.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_lambda_binder.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_lambda_binder.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_let_binder_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_let_binder_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_pattern_binder.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_pattern_binder.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_pi_binder.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_pi_binder.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_type_name.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_type_name.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_type_param.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/reserved_type_param.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/rewrite_ctor_brace.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/rewrite_non_equation.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/word_overflow_literal.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "parse/word_overflow_literal.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_002.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_003.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_004.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_005.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_006.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_007.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_008.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_009.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_010.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_011.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_012.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_013.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_014.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_015.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_016.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_017.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_018.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_019.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_020.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_021.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_022.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_023.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_024.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_025.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_026.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_027.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_028.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_029.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/goal_ladder_state_030.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/match_as_binding.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/match_as_binding.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "proof/no_funext_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "reg/body_local_match.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "reg/body_local_match.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "reg/erased_local_match.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "reg/erased_local_match.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "reg/framed_cell_capture.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "reg/framed_cell_capture.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "reg/import_head.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "reg/import_head.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "run/array_bounds_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "run/array_bounds_000.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "run/array_bounds_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "run/array_bounds_001.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "run/array_slab.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "run/array_slab.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "run/array_struct_swap.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "run/array_struct_swap.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "spec/comp_any_term.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "spec/comp_capture_linear.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "spec/comp_capture_share.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "spec/comp_curried_lambda.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "spec/comp_mint_dedupe.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "spec/comp_mint_dedupe.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "spec/hypothesis_retype.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "spec/hypothesis_retype.bend::parse",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "state/ctor_stuck_goal.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "state/generic_args_goal.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "state/nested_call_goal_000.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "state/nested_call_goal_001.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "state/operator_goal.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "state/plain_goal.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "state/rewrite_goal.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    },
+    {
+      "key": "state/type_family_goal.bend::check",
+      "differentFields": [
+        "text"
+      ]
+    }
+  ],
+  "changedCandidateObservations": [
+    "check/array_boxed_default.bend::check",
+    "check/array_boxed_default.bend::parse",
+    "check/array_default_distinct.bend::check",
+    "check/array_default_distinct.bend::parse",
+    "check/array_default_linear.bend::check",
+    "check/array_default_linear.bend::parse",
+    "check/array_get_copy.bend::check",
+    "check/array_get_copy.bend::parse",
+    "check/array_literal_capacity.bend::check",
+    "check/array_literal_capacity.bend::parse",
+    "check/array_literal_mismatch.bend::check",
+    "check/array_literal_mismatch.bend::parse",
+    "check/book_prefix_arity.bend::check",
+    "check/book_prefix_arity.bend::parse",
+    "check/buffer_word_range.bend::check",
+    "check/buffer_word_range.bend::parse",
+    "check/ctor_shared_tag.bend::check",
+    "check/ctor_shared_tag.bend::parse",
+    "check/ctr_of_datatype.bend::check",
+    "check/do_missing_bind.bend::check",
+    "check/do_missing_bind.bend::parse",
+    "check/erased_match_numeric.bend::check",
+    "check/erased_match_numeric.bend::parse",
+    "check/nat_literal_import.bend::check",
+    "check/op_bare_refused.bend::check",
+    "check/op_bare_refused.bend::parse",
+    "check/op_brace_refused.bend::check",
+    "check/op_brace_refused.bend::parse",
+    "check/op_ns_call_arg.bend::check",
+    "check/op_ns_call_arg.bend::parse",
+    "check/template_ns_late.bend::check",
+    "check/template_ns_late.bend::parse",
+    "check/tuple_import_required.bend::check",
+    "check/undo_residual_lane.bend::check",
+    "check/undo_residual_lane.bend::parse",
+    "check/unit_ctor_mismatch.bend::check",
+    "check/unit_ctor_mismatch.bend::parse",
+    "check/unit_paren_sugar.bend::check",
+    "check/unit_paren_sugar.bend::parse",
+    "compile/array_oob_access.bend::check",
+    "compile/array_oob_access.bend::parse",
+    "compile/array_padding_slots.bend::check",
+    "compile/array_padding_slots.bend::parse",
+    "compile/array_unboxed_default.bend::check",
+    "compile/array_unboxed_default.bend::parse",
+    "compile/ctor_tag_dispatch_000.bend::check",
+    "compile/ctor_tag_dispatch_000.bend::parse",
+    "compile/ctor_tag_dispatch_001.bend::check",
+    "compile/ctor_tag_dispatch_001.bend::parse",
+    "compile/slab_drop_recycle.bend::check",
+    "compile/slab_drop_recycle.bend::parse",
+    "compile/slab_lazy_alloc.bend::check",
+    "compile/slab_lazy_alloc.bend::parse",
+    "compile/slab_sparse_default.bend::check",
+    "compile/slab_sparse_default.bend::parse",
+    "cost/array_fill_readback.bend::check",
+    "cost/array_fill_readback.bend::parse",
+    "flatten/arrow_bind_error_000.bend::check",
+    "flatten/arrow_bind_error_000.bend::parse",
+    "flatten/arrow_bind_error_001.bend::check",
+    "flatten/arrow_bind_error_001.bend::parse",
+    "flatten/statement_beta.bend::check",
+    "flatten/statement_beta.bend::parse",
+    "flatten/statement_lam_absorb.bend::check",
+    "flatten/statement_lam_absorb.bend::parse",
+    "import/duplicate_name.bend::check",
+    "import/duplicate_name.bend::parse",
+    "import/list_sugar.bend::check",
+    "import/position_independent.bend::check",
+    "import/position_independent.bend::parse",
+    "import/shadow_lib.bend::check",
+    "import/shadow_lib.bend::parse",
+    "import/shadow_tmpl_lib.bend::check",
+    "import/shadow_tmpl_lib.bend::parse",
+    "io/cbody_bare_path.bend::check",
+    "io/cbody_bare_path.bend::parse",
+    "io/cbody_dup_effect.bend::check",
+    "io/cbody_dup_effect.bend::parse",
+    "io/cbody_effect.bend::check",
+    "io/cbody_effect.bend::parse",
+    "io/cbody_needs_io.bend::check",
+    "io/cbody_needs_io.bend::parse",
+    "io/channel_send_recv.bend::check",
+    "page/ambiguous_ctor_error.bend::check",
+    "page/ambiguous_ctor_error.bend::parse",
+    "parse/array_key_range.bend::check",
+    "parse/array_key_range.bend::parse",
+    "parse/array_length_power.bend::check",
+    "parse/array_length_power.bend::parse",
+    "parse/bare_caret_dead.bend::check",
+    "parse/bare_caret_dead.bend::parse",
+    "parse/bind_outside_do.bend::check",
+    "parse/bind_outside_do.bend::parse",
+    "parse/ctor_indexed_target.bend::check",
+    "parse/ctor_indexed_target.bend::parse",
+    "parse/ctor_result_annotation.bend::check",
+    "parse/ctor_result_annotation.bend::parse",
+    "parse/ctor_result_arrow.bend::check",
+    "parse/ctor_result_arrow.bend::parse",
+    "parse/dead_lambda_syntax.bend::check",
+    "parse/dead_lambda_syntax.bend::parse",
+    "parse/do_missing_param.bend::check",
+    "parse/do_missing_param.bend::parse",
+    "parse/duplicate_buffer_key.bend::check",
+    "parse/duplicate_buffer_key.bend::parse",
+    "parse/duplicate_ctor_name.bend::check",
+    "parse/duplicate_ctor_name.bend::parse",
+    "parse/gadt_result_annotation_000.bend::check",
+    "parse/gadt_result_annotation_000.bend::parse",
+    "parse/gadt_result_annotation_001.bend::check",
+    "parse/gadt_result_annotation_001.bend::parse",
+    "parse/if_no_else.bend::check",
+    "parse/if_no_else.bend::parse",
+    "parse/legacy_bang_statement.bend::check",
+    "parse/legacy_bang_statement.bend::parse",
+    "parse/legacy_brace_datatype.bend::check",
+    "parse/legacy_brace_datatype.bend::parse",
+    "parse/legacy_data_annotation.bend::check",
+    "parse/legacy_data_annotation.bend::parse",
+    "parse/let_arity_mismatch.bend::check",
+    "parse/let_arity_mismatch.bend::parse",
+    "parse/reserved_def_name_000.bend::check",
+    "parse/reserved_def_name_000.bend::parse",
+    "parse/reserved_let_binder_001.bend::check",
+    "parse/reserved_let_binder_001.bend::parse",
+    "parse/unclosed_char_code.bend::check",
+    "parse/unclosed_char_code.bend::parse",
+    "parse/unicode_forall_dead.bend::check",
+    "parse/unicode_forall_dead.bend::parse",
+    "parse/unicode_lambda_dead.bend::check",
+    "parse/unicode_lambda_dead.bend::parse",
+    "reg/framed_cell_capture.bend::check",
+    "reg/framed_cell_capture.bend::parse",
+    "run/array_bounds_000.bend::check",
+    "run/array_bounds_000.bend::parse",
+    "run/array_bounds_001.bend::check",
+    "run/array_bounds_001.bend::parse",
+    "run/array_slab.bend::check",
+    "run/array_slab.bend::parse",
+    "run/array_struct_swap.bend::check",
+    "run/array_struct_swap.bend::parse",
+    "run/binop_probe_split.bend::check",
+    "run/binop_probe_split.bend::parse",
+    "spec/comp_erased_args.bend::check",
+    "spec/comp_erased_args.bend::parse",
+    "spec/comp_generic_dedupe.bend::check",
+    "spec/comp_generic_dedupe.bend::parse",
+    "spec/comp_generic_mint.bend::check",
+    "spec/comp_generic_mint.bend::parse",
+    "spec/comp_instantiation_error.bend::check",
+    "spec/comp_instantiation_error.bend::parse",
+    "spec/comp_late_param.bend::check",
+    "spec/comp_late_param.bend::parse",
+    "spec/comp_let_split.bend::check",
+    "spec/comp_let_split.bend::parse",
+    "spec/comp_mint_dedupe.bend::check",
+    "spec/comp_mint_dedupe.bend::parse",
+    "spec/mint_count.bend::check",
+    "spec/mint_count.bend::parse"
+  ],
+  "strictCheckRegressions": [],
+  "strictCheckImprovements": [
+    "check/array_boxed_default.bend::check",
+    "check/array_default_distinct.bend::check",
+    "check/array_default_linear.bend::check",
+    "check/array_get_copy.bend::check",
+    "check/array_literal_capacity.bend::check",
+    "check/array_literal_mismatch.bend::check",
+    "check/book_prefix_arity.bend::check",
+    "check/buffer_word_range.bend::check",
+    "check/ctor_shared_tag.bend::check",
+    "check/ctr_of_datatype.bend::check",
+    "check/do_missing_bind.bend::check",
+    "check/erased_match_numeric.bend::check",
+    "check/undo_residual_lane.bend::check",
+    "check/unit_ctor_mismatch.bend::check",
+    "check/unit_paren_sugar.bend::check",
+    "compile/array_oob_access.bend::check",
+    "compile/array_padding_slots.bend::check",
+    "compile/array_unboxed_default.bend::check",
+    "compile/ctor_tag_dispatch_000.bend::check",
+    "compile/ctor_tag_dispatch_001.bend::check",
+    "compile/slab_drop_recycle.bend::check",
+    "compile/slab_lazy_alloc.bend::check",
+    "compile/slab_sparse_default.bend::check",
+    "flatten/arrow_bind_error_000.bend::check",
+    "flatten/arrow_bind_error_001.bend::check",
+    "flatten/statement_beta.bend::check",
+    "flatten/statement_lam_absorb.bend::check",
+    "import/position_independent.bend::check",
+    "io/cbody_bare_path.bend::check",
+    "io/cbody_dup_effect.bend::check",
+    "io/cbody_effect.bend::check",
+    "io/cbody_needs_io.bend::check",
+    "io/channel_send_recv.bend::check",
+    "page/ambiguous_ctor_error.bend::check",
+    "parse/array_length_power.bend::check",
+    "parse/bare_caret_dead.bend::check",
+    "parse/bind_outside_do.bend::check",
+    "parse/ctor_indexed_target.bend::check",
+    "parse/ctor_result_annotation.bend::check",
+    "parse/ctor_result_arrow.bend::check",
+    "parse/do_missing_param.bend::check",
+    "parse/duplicate_ctor_name.bend::check",
+    "parse/gadt_result_annotation_000.bend::check",
+    "parse/gadt_result_annotation_001.bend::check",
+    "parse/legacy_bang_statement.bend::check",
+    "parse/legacy_brace_datatype.bend::check",
+    "parse/legacy_data_annotation.bend::check",
+    "parse/let_arity_mismatch.bend::check",
+    "parse/unclosed_char_code.bend::check",
+    "parse/unicode_forall_dead.bend::check",
+    "parse/unicode_lambda_dead.bend::check",
+    "run/binop_probe_split.bend::check",
+    "spec/comp_erased_args.bend::check",
+    "spec/comp_generic_dedupe.bend::check",
+    "spec/comp_generic_mint.bend::check",
+    "spec/comp_instantiation_error.bend::check",
+    "spec/comp_late_param.bend::check",
+    "spec/comp_let_split.bend::check",
+    "spec/mint_count.bend::check"
+  ],
+  "referenceStrictFailures": [
+    {
+      "key": "check/template_inst_cycle.bend::check",
+      "final": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "text": "Error: nondecreasing cross-instance template recursion"
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "text": "Error:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : loop\nContext:\n- u : Unit\nLocation: bounce~0\n18 | def loop(~k: Key, u: Unit) -> Empty:\n19>|   bounce(~loop(~k), u)\n20 | "
+      },
+      "baseline": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "text": "Error: nondecreasing cross-instance template recursion"
+      },
+      "historicalReference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "signal": null,
+        "text": "Error:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : loop\nContext:\n- u : Unit\nLocation: bounce~0\n18 | def loop(~k: Key, u: Unit) -> Empty:\n19>|   bounce(~loop(~k), u)\n20 | "
+      },
+      "strictVerdicts": {
+        "final": "fail",
+        "reference": "fail",
+        "baseline": "fail",
+        "historicalReference": "fail"
+      }
+    },
+    {
+      "key": "io/main_foreign.bend::check",
+      "final": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "signal": null,
+        "text": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "signal": null,
+        "text": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "baseline": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "signal": null,
+        "text": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "historicalReference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "signal": null,
+        "text": "All terms check, but 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "strictVerdicts": {
+        "final": "fail",
+        "reference": "fail",
+        "baseline": "fail",
+        "historicalReference": "fail"
+      }
+    },
+    {
+      "key": "reg/array_open_element.bend::check",
+      "final": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "signal": null,
+        "text": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "signal": null,
+        "text": "All terms check.\n"
+      },
+      "baseline": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "signal": null,
+        "text": "All terms check.\n"
+      },
+      "historicalReference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "signal": null,
+        "text": "All terms check.\n"
+      },
+      "strictVerdicts": {
+        "final": "fail",
+        "reference": "fail",
+        "baseline": "fail",
+        "historicalReference": "fail"
+      }
+    }
+  ],
+  "exactDiagnosticLocation": "Original result.diagnostic/output/stdout fields in the four hash-identified input reports, indexed by id::lane; no trimming or normalization.",
+  "fullLanguageConformanceClaim": false
+}

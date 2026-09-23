@@ -1,0 +1,162 @@
+{
+  "cases": [
+    {
+      "id": "phase5-final-backends/nat-precedence",
+      "file": "../phase5-nat-prefix/execute-multiply-prefix.bend",
+      "expected": "8",
+      "lanes": [
+        "interpreter",
+        "js",
+        "native"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/nat-nested-namespace",
+      "file": "../phase5-nat-prefix/execute-prefix-multiply-inner-namespace.bend",
+      "expected": "7",
+      "lanes": [
+        "interpreter",
+        "js",
+        "native"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/parallel-duplicate",
+      "file": "../phase5-scopes/parallel-mixed-duplicate.bend",
+      "expected": "5",
+      "lanes": [
+        "interpreter",
+        "js",
+        "native"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/parallel-adjacency",
+      "file": "../phase5-adjacency/parallel-ref-then-annotation.bend",
+      "expected": "10",
+      "lanes": [
+        "interpreter",
+        "js",
+        "native"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/namespace-local",
+      "file": "../phase5-namespace-errors/local-body-annotated.bend",
+      "expected": "42",
+      "lanes": [
+        "interpreter",
+        "js",
+        "native"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/do-constructor-name",
+      "file": "../phase5-do-next/constructor-name-bind.bend",
+      "expected": "4",
+      "lanes": [
+        "interpreter",
+        "js",
+        "native"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/ordinary-law-fill",
+      "file": "../phase5-imported-freshness/ordinary-law-fill.bend",
+      "expected": "4",
+      "lanes": [
+        "interpreter",
+        "js",
+        "native"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/imported-positive",
+      "file": "imported-positive.bend",
+      "expected": "42",
+      "lanes": [
+        "interpreter",
+        "js",
+        "native"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/ctor-top-positive",
+      "file": "ctor-top-positive.bend",
+      "expected": "42",
+      "lanes": [
+        "interpreter",
+        "js",
+        "native"
+      ]
+    },
+    {
+      "id": "flatten/statement_lam_absorb.bend",
+      "lanes": [
+        "interpreter",
+        "js",
+        "native"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/namespace-close",
+      "file": "../phase5-namespace-errors/wrong-square.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse",
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/nat-spaced",
+      "file": "../phase5-nat-prefix/separated.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse",
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/unsafe-law",
+      "file": "../phase5-bindings/unsafe-law.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse",
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/parallel-constructor",
+      "file": "../phase5-bindings/parallel-bare-constructor.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse",
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/base-law-freshness",
+      "file": "../phase5-imported-freshness/native-open-law.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse",
+        "check"
+      ]
+    },
+    {
+      "id": "phase5-final-backends/base-type-freshness",
+      "file": "../phase5-imported-freshness/base-type-shadow.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse",
+        "check"
+      ]
+    }
+  ]
+}

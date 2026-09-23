@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "id": "phase5-namespace-errors/operator-invalid-namespace",
+      "file": "operator-invalid-namespace.bend",
+      "accept": false,
+      "lanes": [
+        "check"
+      ],
+      "rejectPhase": "parse"
+    },
+    {
+      "id": "phase5-namespace-errors/operator-invalid-namespace-wrong-close",
+      "file": "operator-invalid-namespace-wrong-close.bend",
+      "accept": false,
+      "lanes": [
+        "check"
+      ],
+      "rejectPhase": "parse"
+    },
+    {
+      "id": "phase5-namespace-errors/literal-nonname-namespace",
+      "file": "literal-nonname-namespace.bend",
+      "accept": true,
+      "lanes": [
+        "check"
+      ]
+    }
+  ]
+}

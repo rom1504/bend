@@ -36,6 +36,9 @@ results and remaining limits.
 The [phase 5 design](design/phase5/conformance_and_development.md) and
 [implementation report](implementation/phase5/report.md) track current
 conformance, simplification and development-loop work.
+The [latest frontend comparison](implementation/phase5/final-conformance.md) preserves
+all 919 positive fixtures, reduces strict check failures from 377 to 318, and
+records the remaining diagnostic and acceptance differences explicitly.
 The [phase 4 development guide](docs/PHASE4_DEVELOPMENT.md) covers checked source
 experiments, bounded profiling and private compiler images; follow the
 [phase 4 report](implementation/phase4/report.md) for measured progress.

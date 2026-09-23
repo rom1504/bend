@@ -13,7 +13,14 @@ out.mkdir(); (out/'objects').mkdir()
 repo=pathlib.Path(__file__).resolve().parents[2]
 known={}
 for p in (repo/'implementation/phase5').glob('*/objects/*.gz'):
- known[p.stem]=p
+ known[p.stem]=(p,True)
+# A later isolated overlay may supersede its mutable preparation directory.
+# Recover the recorded bytes from an immutable attempt snapshot, by digest.
+# Historical identity remains the report's original path, with recovery explicit.
+for root in roots:
+ for p in sorted(root.rglob('*')) if root.is_dir() else [root]:
+  if p.is_file() and p.stat().st_size<=32*1024*1024:
+   known.setdefault(hashlib.sha256(p.read_bytes()).hexdigest(),(p,False))
 manifest={'kind':'phase5-consumed-evidence','complete':False,'newBootstrap':False,
  'scope':'Finished attempts, raw failures and exact consumed input versions. Absolute paths are historical identities; executable/toolchain prerequisites remain external.',
  'roots':list(map(str,roots)),'files':[],'external':[],'objects':[]}
@@ -24,9 +31,10 @@ def capture(file,expected=None):
  if expected and (str(p),expected) in files:return
  b=p.read_bytes() if p.is_file() else None; source=None
  if expected and (b is None or sha(b)!=expected):
-  source=known.get(expected)
-  assert source, 'Missing historical bytes: '+str(p)+' '+expected
-  b=gzip.decompress(source.read_bytes())
+  recovery=known.get(expected)
+  assert recovery, 'Missing historical bytes: '+str(p)+' '+expected
+  source,compressed=recovery
+  b=gzip.decompress(source.read_bytes()) if compressed else source.read_bytes()
  assert b is not None, 'Missing file: '+str(p)
  h=sha(b)
  if expected:assert expected==h

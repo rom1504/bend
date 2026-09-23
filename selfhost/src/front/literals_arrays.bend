@@ -60,15 +60,6 @@ law f_index_value:
   for +min: U32
   FParsed
 
-law f_ends_nat:
-  for +s: String
-  Bool
-
-law f_nat_plus:
-  for +lit: KTerm
-  for +b: KTerm
-  KTerm
-
 law f_nat_extend:
   for +a: KTerm
   for +b: KTerm
@@ -140,14 +131,6 @@ def f_index_value(n, idx, p, min):
   match p:
     case FParsed{v, ts}:
       f_grow(FParsed{f_choose(KTerm, f_eq(tg(n), "Ref"), u => kt("Write", nm(n), ix(n), 1, [f_app(ref("Array.set"), [ref("U32"), n, f_namespace(idx, ref("U32")), v])]), u => f_app(ref("Array.set"), [ref("U32"), n, f_namespace(idx, ref("U32")), v])), ts}, min)
-
-@unsafe
-def f_ends_nat(s):
-  f_choose(Bool, String.is_empty(f_tail(s)), u => f_eq(s, "n"), u => f_ends_nat(f_tail(s)))
-
-@unsafe
-def f_nat_plus(lit, b):
-  f_nat_extend(f_literal(nm(lit)), b)
 
 @unsafe
 def f_nat_extend(a, b):

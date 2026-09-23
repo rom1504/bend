@@ -174,11 +174,11 @@ law f_do_bind_types:
 
 @unsafe
 def f_do_parameters(monad, ts):
-  f_choose(FParsed, f_eq(f_tx(ts), "<>"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_choose(FParsed, f_eq(f_tx(ts), "<"), u => f_do_parameters_open(monad, f_space(f_tl(ts))), u => f_err(ts, "expected <")))
+  f_choose(FParsed, f_eq(f_tx(ts), "<>"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_choose(FParsed, f_eq(f_tx(ts), "<"), u => f_do_parameters_open(monad, f_space(f_tl(ts))), u => fpe_error(ts, "expected <", "'<'")))
 
 @unsafe
 def f_do_parameters_open(monad, ts):
-  f_choose(FParsed, f_eq(f_tx(ts), ";"), u => f_err(ts, "expected term"), u => f_choose(FParsed, f_eq(f_tx(ts), ">") || f_eq(f_tx(ts), ">op"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_do_types(monad, f_args(ts, ">", Nil{}))))
+  f_choose(FParsed, f_eq(f_tx(ts), ";"), u => fpe_error(ts, "expected term", "a term"), u => f_choose(FParsed, f_eq(f_tx(ts), ">") || f_eq(f_tx(ts), ">op"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_do_types(monad, f_args(ts, ">", Nil{}))))
 
 @unsafe
 def f_do_bind_types(types, ty):
@@ -307,7 +307,7 @@ law f_law_where:
   for +book: List<&2,KDef>
   for +imports: List<&2, KTerm>
   for +clauses: List<&2, KTerm>
-  FResult
+  FRawResult
 
 law f_erased_local:
   for +ts: List<&2, FToken>
@@ -346,7 +346,9 @@ law f_template_expr:
 def f_group_namespace(n, p):
   match p:
     case FParsed{ty, ts}:
-      FParsed{f_namespace(n, ty), ts}
+      f_choose(FParsed, f_eq(tg(ty), "Error"),
+        u => FParsed{f_choose(KTerm, String.is_empty(f_error_term(n)), u => ty, u => n), ts},
+        u => FParsed{f_namespace(n, ty), ts})
 
 @unsafe
 def f_template_expr(p):

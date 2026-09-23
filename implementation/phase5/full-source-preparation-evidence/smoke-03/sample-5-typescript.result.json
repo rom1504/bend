@@ -1,0 +1,3265 @@
+{
+  "variant": "typescript",
+  "result": {
+    "status": "ok",
+    "phase": "compile",
+    "checked": true,
+    "exitCode": 0
+  },
+  "emitted": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/full-source-preparation/smoke-03/sample-5-typescript.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/full-source-preparation/smoke-03/sample-5-typescript.mjs",
+    "sha256": "cf4ac07c7879ce71632aa442b38ea887781eb01e11e9da716d1dffb77cb393b9",
+    "bytes": 33138
+  },
+  "roots": [
+    "f_ascii_ident_code",
+    "Audio.close",
+    "Audio.write",
+    "Audio.open",
+    "Window.close",
+    "Window.set_title",
+    "Window.frame",
+    "Window.open",
+    "Listener.close",
+    "Socket.close",
+    "UDP.poll",
+    "UDP.recv_from",
+    "UDP.send_to",
+    "UDP.bind",
+    "TCP.poll",
+    "TCP.recv",
+    "TCP.send",
+    "TCP.connect",
+    "TCP.accept",
+    "TCP.listen",
+    "File.close",
+    "File.write_bytes",
+    "File.write",
+    "File.size",
+    "File.read_at",
+    "File.read_bytes",
+    "File.read",
+    "File.open",
+    "Chan.close",
+    "Chan.recv",
+    "Chan.send",
+    "Chan.new",
+    "IO.now",
+    "IO.sleep",
+    "IO.spawn",
+    "IO.random_u32",
+    "IO.args",
+    "IO.get_env",
+    "IO.print_err",
+    "IO.write",
+    "IO.print"
+  ],
+  "eligibleRoots": [
+    "IO.print",
+    "IO.write",
+    "IO.print_err",
+    "IO.get_env",
+    "IO.args",
+    "IO.random_u32",
+    "IO.spawn",
+    "IO.sleep",
+    "IO.now",
+    "Chan.new",
+    "Chan.send",
+    "Chan.recv",
+    "Chan.close",
+    "File.open",
+    "File.read",
+    "File.read_bytes",
+    "File.read_at",
+    "File.size",
+    "File.write",
+    "File.write_bytes",
+    "File.close",
+    "TCP.listen",
+    "TCP.accept",
+    "TCP.connect",
+    "TCP.send",
+    "TCP.recv",
+    "TCP.poll",
+    "UDP.bind",
+    "UDP.send_to",
+    "UDP.recv_from",
+    "UDP.poll",
+    "Socket.close",
+    "Listener.close",
+    "Window.open",
+    "Window.frame",
+    "Window.set_title",
+    "Window.close",
+    "Audio.open",
+    "Audio.write",
+    "Audio.close",
+    "f_ascii_ident_code"
+  ],
+  "rootMetadata": [
+    {
+      "name": "Empty",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Unit",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Bool",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Cmp",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Either",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Sigma",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Maybe",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Result",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.Nil",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.Con",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "F32",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Image",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Event",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "File",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "Socket",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "Listener",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "Window",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "Audio",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "Chan",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "IO.OP",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Pair",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "IO",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "App",
+      "kind": "ADT",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Exists",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Or",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Pair.fst",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Pair.snd",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "IO.pure",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "IO.bind",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "IO.print",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "IO.write",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "IO.print_err",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "IO.get_env",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "IO.args",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "IO.die",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "IO.pass",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "IO.try",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "IO.random_u32",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "IO.spawn",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "IO.sleep",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "IO.now",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Chan.new",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Chan.send",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Chan.recv",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Chan.close",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "IO.fork.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "IO.fork",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "IO.join.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "IO.join",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "File.open",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "File.read",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "File.read_bytes",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "File.read_at",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "File.size",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "File.write",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "File.write_bytes",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "File.close",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "TCP.listen",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "TCP.accept",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "TCP.connect",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "TCP.send",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "TCP.recv",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "TCP.poll",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "UDP.bind",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "UDP.send_to",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "UDP.recv_from",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "UDP.poll",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Socket.close",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Listener.close",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Window.open",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Window.frame",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Window.set_title",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Window.close",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Audio.open",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Audio.write",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Audio.close",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Foreign"
+    },
+    {
+      "name": "Equal.cong",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Equal.sym",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Equal.trans",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Empty.absurd",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Bool.not",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Bool.and",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Bool.or",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Bool.xor",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Bool.cmp",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Bool.full_add",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Bool.pick",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Bool.to_u32",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Cmp.is_lt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Cmp.is_eq",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Cmp.is_gt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Cmp.is_le",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Cmp.is_ge",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.double",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.add",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.sub",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.mul",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.divmod.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.divmod",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.cmp",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.is_lt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.is_eq",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.is_ne",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.is_le",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.is_gt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.is_ge",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.min",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.max",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.ge_refl",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.max_ge_l",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.max_ge_r",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.div.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.div",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.mod.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.mod",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.pow",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Maybe.pure",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Maybe.bind",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Maybe.default",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Maybe.is_some",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Maybe.is_none",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Maybe.map",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Maybe.or",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Result.pure",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Result.bind",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Result.default",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Result.is_done",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Result.is_fail",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Result.map",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.map",
+      "kind": "Def",
+      "templates": 3,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.length",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.append",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.concat",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.reverse.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.reverse",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.is_empty",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.head",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.tail",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.last.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.last",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.get",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.set",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.take",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.drop",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.zip",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.range.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.range",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.replicate",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.filter.put",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.filter",
+      "kind": "Def",
+      "templates": 2,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.foldl",
+      "kind": "Def",
+      "templates": 4,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.foldr",
+      "kind": "Def",
+      "templates": 4,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.any",
+      "kind": "Def",
+      "templates": 3,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.all",
+      "kind": "Def",
+      "templates": 3,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.find.put",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.find",
+      "kind": "Def",
+      "templates": 2,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.contains",
+      "kind": "Def",
+      "templates": 2,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.merge.step",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.merge.go",
+      "kind": "Def",
+      "templates": 2,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.sort.runs",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.sort.pass",
+      "kind": "Def",
+      "templates": 2,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.sort.go",
+      "kind": "Def",
+      "templates": 2,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.sort",
+      "kind": "Def",
+      "templates": 2,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.for_each",
+      "kind": "Def",
+      "templates": 3,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.zero",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.not",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.and",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.or",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.xor",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.shl.put",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.shl",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.shl.out.con",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.shl.out",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.shr.pad",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.shr",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.cmp.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.cmp",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.inc",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.adc",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.adc.con",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.add",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.sub",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.add_comm.arm",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.add_comm.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.add_comm",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.to_nat",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.mul.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Word.mul",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.inc",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.add",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.add_comm",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.sub",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.mul",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.not",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.and",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.or",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.xor",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.shl",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.shr",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.shln",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.shrn",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.cmp",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.is_eq",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.is_ne",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.is_lt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.is_le",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.is_gt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.is_ge",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.is_zero",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.to_nat",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.from_nat",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.divmod.go.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.divmod.go.shl",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.divmod.go.rec",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.divmod.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.div.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.div.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.div",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.mod.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.mod.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.mod",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.min",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.max",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.clamp",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.pow",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.is_even",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.to_f32",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.to_u32",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.add",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.sub",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.mul",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.div",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.mod",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.pow",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.atan2",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.neg",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.abs",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.sqrt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.exp",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.log",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.log2",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.log10",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.sin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.cos",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.tan",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.asin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.acos",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.atan",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.sinh",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.cosh",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.tanh",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.floor",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.ceil",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.trunc",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.is_eq",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.is_ne",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.is_lt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.is_le",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.is_gt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.is_ge",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.show",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.bits",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.read",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Absent"
+    },
+    {
+      "name": "F32.min",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "F32.max",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "F32.clamp",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "F32.lerp",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "F32.square",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "F32.hypot",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "F32.round",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "F32.pi",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "F32.from_nat",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "F32.to_nat",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.cmp",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.to_u32",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.from_u32",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.is_eq",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.is_digit",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.is_upper",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.is_lower",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.is_alpha",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.is_space",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.to_upper",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.to_lower",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.append",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.cmp.rec",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.cmp",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.cmp.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.eq.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.eq",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.length",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.is_empty",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.reverse.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.reverse",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.order.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.order",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.is_lt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.is_le",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.is_gt",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.is_ge",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.starts_with",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.starts_with.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.ends_with",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.contains",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.contains.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.take",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.drop",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.get",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.to_list",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.from_list",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.concat",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.join.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.join",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.split.push",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.split.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.split",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.lines",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.repeat",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.to_upper",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.to_lower",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.trim_start",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.trim_start.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.trim_end",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "String.trim",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.show.put",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.show.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.show.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.show",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.read.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.read.max",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.read.fit",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.read.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Nat.read",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.show.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.show.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.show.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.show",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.read.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.read.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "U32.read",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Bool.show",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Char.show",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Maybe.show",
+      "kind": "Def",
+      "templates": 3,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.show.go",
+      "kind": "Def",
+      "templates": 3,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "List.show",
+      "kind": "Def",
+      "templates": 3,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.size.node",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.size",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.swap.lo",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.swap.hi",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.swap.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.swap.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.swap.at",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.swap",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.clone.node",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.clone",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.new",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.set.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.set",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.get.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.get.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.get.at",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.get",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.to_list.go",
+      "kind": "Def",
+      "templates": 1,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.to_list",
+      "kind": "Def",
+      "templates": 1,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Array.map",
+      "kind": "Def",
+      "templates": 3,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.bit.u",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.bit.chr",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.bit.go.chr",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.bit.go.rec",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.bit.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.bit.at",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.bit",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.msb.u",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.msb.u.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.diff.chr",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.diff.step",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.diff",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.diff.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.new",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.put",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.put.bit",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.ins.splice.bit",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.ins.splice",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.ins",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.ins.deep",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.ins.if",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.lo",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.hi",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.seek",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.seek.bit",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.set.fin.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.set.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.set.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.set",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.has.leaf",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.has",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.has.bit",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.get.leaf",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.get",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.get.bit",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.pop.lo",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.pop.hi",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.pop.leaf",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.pop",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.pop.bit",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.del.fin",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.del",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.to_list.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.to_list",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.keys.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.keys",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.from_list.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.from_list",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.union",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.size",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.values.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Map.values",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Set",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Set.new",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Set.add",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Set.has",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Set.del",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Set.size",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Set.to_list",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Set.from_list.go",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Set.from_list",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Image.sink",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Image.drop.join",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Image.free",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "Image.drop",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "App.next",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "App.turn",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "App.draw",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "App.step",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "App.loop",
+      "kind": "Def",
+      "templates": 2,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "App.run",
+      "kind": "Def",
+      "templates": 2,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "App.more",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "App.fold",
+      "kind": "Def",
+      "templates": 0,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "App.play",
+      "kind": "Def",
+      "templates": 2,
+      "base": true,
+      "valueTag": "Present"
+    },
+    {
+      "name": "f_ascii_ident_code",
+      "kind": "Def",
+      "templates": 0,
+      "base": false,
+      "valueTag": "Present"
+    }
+  ],
+  "importMs": 270.87517099999997,
+  "requestMs": 370.16810399999997,
+  "cpuMs": 367.914,
+  "phases": {
+    "load": 155.14830400000005,
+    "check": 191.73030700000004,
+    "ownership": 0.1423459999998613,
+    "emit": 22.454320999999936
+  },
+  "calls": {
+    "load": 1,
+    "check": 1,
+    "ownership": 1,
+    "emit": 1
+  },
+  "maxRssKiB": 265500,
+  "node": {
+    "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "version": "v24.18.0",
+    "args": [
+      "--stack-size=4096",
+      "--max-old-space-size=4096"
+    ]
+  },
+  "affinity": "Cpus_allowed_list:\t2",
+  "inputsVerified": true
+}

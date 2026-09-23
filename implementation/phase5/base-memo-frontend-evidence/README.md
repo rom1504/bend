@@ -1,0 +1,9 @@
+# P5-021 full frontend host comparison evidence
+
+`manifest.json` indexes every retained file by repository-relative path, byte count and SHA-256. `archive.py` reads back every compressed member and verifies its bytes and path. The archive retains the four raw reports, all closed persistent worker histories, failed-case repros, logs, copied hosts and harnesses, compiler/source/bootstrap inputs, validated Base cache bytes, configuration and routing smoke.
+
+Restore `raw.tar.gz` under a fresh repository root with `tar -xzf raw.tar.gz -C RESTORE_ROOT`. Reports retain their original absolute paths; exact automated replay requires restoring those paths or explicitly producing a new relocated run. The archive does not fabricate a new bootstrap or transplant a report onto another API. The recorded Node binary, Linux tools and clean pinned upstream Git metadata are external prerequisites listed in the manifest.
+
+`run-01/report.json` records the complete ABBA comparison. `snapshot-02/snapshot.json` binds both hosts to the same genuine checked API and identical fixture/runtime/Base bytes. Only the typed driver and typed adapter differ. Each raw result's exact host provenance is checked separately; every other result and oracle field must agree. A completed comparison retains known conformance failures and does not mean the compiler passes the whole suite.
+
+`supporting-manifest.json` indexes `supporting.tar.gz`, which retains the initial cost-attribution falsifier, focused ABBA pilot, both candidate preparations and both focused gate sets. One historical tool moved: gates-01 consumed the old `base-memo-gates.mjs`; its exact recorded SHA is retained under `selfhost/build/phase5/base-memo/history/base-memo-gates.mjs`. The manifest records both the changed original path and this exact-byte recovery candidate. Restore that historical tool version when replaying gates-01. This does not affect the current full comparison, which verified the v2 tool identity.

@@ -1,0 +1,535 @@
+{
+  "kind": "targeted-paired-conformance",
+  "started": "2026-09-22T23:56:45.104Z",
+  "complete": false,
+  "selectedComplete": false,
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/target.json",
+    "sha256": "3144c6d42067c039d01ed15adc5a8aed291d9a966e1211c7091f3ab583a823b7"
+  },
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v3/api.mjs",
+      "sha256": "07c2ee92f6a47fae3f0feb2997f4a3d19bdf1a3dbb9f7dfb34f34f263aad8083"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v3/snapshot/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+    },
+    "bootstrapReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v3/api.mjs.bootstrap.json",
+      "sha256": "5c4a7078a56282f3c26d858dbd57fc72649d84c8db6691225f501d510b92c7ba"
+    }
+  },
+  "environment": {
+    "BEND_UPSTREAM": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "BEND_BASE": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "BEND_TYPED_API": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v3/api.mjs",
+    "BEND_TYPED_RUNTIME": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v3/snapshot/src/runtime.mjs"
+  },
+  "harnessSources": [
+    {
+      "file": "run.mjs",
+      "sourceSha256": "7198c672c15d6fa9b20cd4010446966713fce1ed6054ae13bff1e6500521b6a0",
+      "consumedSha256": "2854286d32fe6acfe97093b3df46c4fdd7a6073fff75dd9243738eaad24ef7e8"
+    },
+    {
+      "file": "worker.mjs",
+      "sourceSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "consumedSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+    },
+    {
+      "file": "inventory.mjs",
+      "sourceSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd",
+      "consumedSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd"
+    },
+    {
+      "file": "judge.mjs",
+      "sourceSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+      "consumedSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+    },
+    {
+      "file": "selection.mjs",
+      "sourceSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+      "consumedSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+    },
+    {
+      "file": "run-probe.mjs",
+      "sourceSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c",
+      "consumedSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c"
+    },
+    {
+      "file": "replay.mjs",
+      "sourceSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94",
+      "consumedSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94"
+    },
+    {
+      "file": "persistent-probe.mjs",
+      "sourceSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225",
+      "consumedSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225"
+    },
+    {
+      "file": "persistent-worker.mjs",
+      "sourceSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+      "consumedSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d"
+    },
+    {
+      "file": "adapters/upstream.mjs",
+      "sourceSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd",
+      "consumedSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd"
+    }
+  ],
+  "targetSourceSha256": "2b273483c6adfd9bb5c52b614557741595560fb53acccd311d83ab87258df806",
+  "cpu": null,
+  "attempts": {
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/selected/reference.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "4096",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/selected/reference.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "a7a77393f17ed5dcc3544f59b4c7aa7c152668ffe5fbffabaab7a89145cca2c0"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/selected/candidate.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "30000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "4096",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/candidate-v3/snapshot/build/conformance-host/c11e6465fba16f647ee504a6f7435df7d063410a50dbe4ec69f3190b6e5db89e/typed.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/nat-prefix/boundaries-v3/selected/candidate.json"
+      ],
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "sha256": "7dee1977e27d9eb4a8cb87536d968ed3d671b924e3367a99cf5d7b3d8f80e499"
+    }
+  },
+  "rows": [
+    {
+      "id": "phase5-nat-prefix/double-plus",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a quantified datatype after + (+D<..> sets D's leading quantities to &2)\n- observed : end of input\nLocation:\n3 |   1n++2n\n4>| ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 3:8: + requires a binder or quantified datatype; got \n",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/float-suffix",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : '='\n- observed : end of input\nLocation:\n3 |   1.5n+2n\n4>| ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: invalid f32 literal",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/malformed-before-rhs-error",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a lambda binder (one name: k => body)\n- observed : ' '\nLocation:\n2 | def main() -> Nat:\n3>|   1.5n+(0 => 0)\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: invalid f32 literal",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/overflow-before-rhs-error",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a nat literal up to 4294967295n (got 4294967296n)\n- observed : '+'\nLocation:\n2 | def main() -> Nat:\n3>|   4294967296n+(0 => 0)\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: invalid or unsupported numeric literal",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/overflow-prefix",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a nat literal up to 4294967295n (got 4294967296n)\n- observed : '+'\nLocation:\n2 | def main() -> Nat:\n3>|   4294967296n+2n\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: invalid or unsupported numeric literal",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/semicolon-after-prefix",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> Nat:\n3>|   1n+;2n\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5-nat-prefix/valid-prefix-rhs-error",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a lambda binder (one name: k => body)\n- observed : ' '\nLocation:\n2 | def main() -> Nat:\n3>|   1n+(0 => 0)\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a lambda binder must be a non-reserved name",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    }
+  ],
+  "missing": [],
+  "discrepancies": [
+    {
+      "id": "phase5-nat-prefix/double-plus",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a quantified datatype after + (+D<..> sets D's leading quantities to &2)\n- observed : end of input\nLocation:\n3 |   1n++2n\n4>| ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 3:8: + requires a binder or quantified datatype; got \n",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/float-suffix",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : '='\n- observed : end of input\nLocation:\n3 |   1.5n+2n\n4>| ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: invalid f32 literal",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/malformed-before-rhs-error",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a lambda binder (one name: k => body)\n- observed : ' '\nLocation:\n2 | def main() -> Nat:\n3>|   1.5n+(0 => 0)\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: invalid f32 literal",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/overflow-before-rhs-error",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a nat literal up to 4294967295n (got 4294967296n)\n- observed : '+'\nLocation:\n2 | def main() -> Nat:\n3>|   4294967296n+(0 => 0)\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: invalid or unsupported numeric literal",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/overflow-prefix",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a nat literal up to 4294967295n (got 4294967296n)\n- observed : '+'\nLocation:\n2 | def main() -> Nat:\n3>|   4294967296n+2n\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: invalid or unsupported numeric literal",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-nat-prefix/semicolon-after-prefix",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "fail",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> Nat:\n3>|   1n+;2n\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": false,
+      "semanticAgreement": false,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": null
+    },
+    {
+      "id": "phase5-nat-prefix/valid-prefix-rhs-error",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a lambda binder (one name: k => body)\n- observed : ' '\nLocation:\n2 | def main() -> Nat:\n3>|   1n+(0 => 0)\n4 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: a lambda binder must be a non-reserved name",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    }
+  ],
+  "referenceSelectedComplete": true,
+  "candidateSelectedComplete": false,
+  "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+  "wallMs": 3568.2463119999998,
+  "finished": "2026-09-22T23:56:48.676Z"
+}

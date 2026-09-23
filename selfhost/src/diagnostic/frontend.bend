@@ -117,7 +117,7 @@ def f_load_origins(main, sources):
 def fp_graph(graph, sources):
   match graph:
     case FGraph{book, error, done}:
-      fp_result(f_graph_result(graph), done, sources)
+      fp_result(f_graph_result_at(graph, sources), done, sources)
 @unsafe
 def fp_result(result, done, sources):
   match result:
@@ -255,7 +255,7 @@ def f_load_origins_for(main, sources, definition):
 def fp_graph_for(graph, sources, definition):
   match graph:
     case FGraph{book, error, done}:
-      fp_result_for(f_graph_result(graph), done, sources, definition)
+      fp_result_for(f_graph_result_at(graph, sources), done, sources, definition)
 @unsafe
 def fp_result_for(result, done, sources, definition):
   match result:

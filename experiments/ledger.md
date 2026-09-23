@@ -291,3 +291,73 @@ separate the discovered namespace-delimiter error-loss bug from formatting.
 Run the prepared controlled four-core complete frontend ABBA comparison only
 when competing compiler jobs are paused. Keep final source freeze, CPU coverage
 and checked self-reproduction time reserved. Campaign ends at 03:39:36 UTC.
+
+## Phase 5 validation checkpoint — 2026-09-23, 00:20 UTC
+
+[P5-015](../implementation/phase5/equality-frontend.md) completed the controlled
+full-inventory ABBA comparison. All11,024raw observations and worker histories
+agree; mean wall301.905→229.753s,23.90%less. Each run retains the same374strict
+check failures for its source. This does not alter the historical full-source
+ratio to TypeScript.
+
+P5-011/013/014/016/017 are reviewed and integrated in checked API8cfa124d….
+A complete full control now preserves919/919positives with365strictcheck
+failures. The selected diagnostic composition failure is retained and addressed
+by P5-022. Later checked API9bb69d… also includes P5-018/020/022:361of362selected
+semantic observations agree, with one unchanged missing-import phase gap exposed
+by an incorrect joint oracle. The original case and failed run remain; the
+confirmed subset is explicitly separate.
+
+[P5-018](../implementation/phase5/frontend-nat-prefix.md) repairs both adjacency
+and an actual8-versus5 result discrepancy. Its intermediate error-order regression
+was corrected and retained. [P5-017](../implementation/phase5/core-filter-layering.md)
+restores standalone frontend layering and passes23existing definition-selection
+controls. [P5-020](../implementation/phase5/imported-freshness.md) repairs18selected
+acceptance/phase observations; a focused overhead gate finds no material regression.
+
+P5-019 adds45exact diagnostics in167cases with no previously exact losses or
+classification changes. P5-019/022 retain their original failed unchanged-or-exact
+gates. Independent review approves faithful rendering of the same chosen error,
+while existing parser/first-error mismatches continue to count as differences.
+No grammar tags or fixture filters conceal those residuals.
+
+[P5-021](../implementation/phase5/persistent-base-decoding.md) identified repeated
+Base JSON decoding/verification as44.14%of a focused request sample. The private
+session memo passes84mixed comparisons and15adversarial groups. A168-observation
+ABBA pilot measures39.00%less request time. The full same-compiler, different-host
+ABBA is running under a20-minute budget; no full gain or promotion is claimed yet.
+
+### Updated frontier
+
+Compiler source is frozen. Complete the memo gate, final combined build/frontend
+inventory, actual CPU/backend coverage, fresh complete-source TS/B1/derived
+comparison and genuine checked self-reproduction. Recount production, maintained
+support and experimental code separately. Preserve all failed or incomplete
+attempts. The campaign remains active until03:39:36UTC.
+
+## 2026-09-23 00:38 UTC — P5-021 full gate and final combined build
+
+The full Base memo comparison completes with all 11,024 result/history records
+exact and mean 292.602→242.597 seconds (17.09% less). Both orders improve about
+17%; all 919 positives and 365 known strict failures are retained. The exact
+measured two-file host candidate is promoted under SHA guards; full evidence
+and historical cost/gate tools are archived. Integration05 starts from frozen
+combined source with 371 focused fixtures/387 observations and the unfiltered
+1,378-fixture frontend inventory. The known missing-import phase residual stays
+in the original failed selection/evidence and is explicitly excluded only from
+the confirmed focused repairs. No final combined metric or fixed point is claimed.
+
+## 2026-09-23 00:44 UTC — final combined source gates
+
+Integration05 is genuine checked API5969c53d34a0… for sourcee3b927d13dc2… .
+All387 focused declared oracles pass (277exact/110diagnostic differences).
+The full unfiltered frontend completes2,756observations and preserves919positive
+fixtures in both lanes. Strict check failures377→318,59repairs/0regressions.
+Against fresh pinnedTS, exactdifferences560→444 (116resolved/0new); status/phase
+differences50→16, with428remaining differences in text fields. This does not
+classify every text difference as cosmetic. All2,756reference observations are
+unchanged. The separate42-percompiler backend gate passes84actualobservations,
+including9positive interpreter/JS/native executions and exact pinnednegative
+diagnostics, while retaining10custom diagnostic differences. Final integration
+evidence archives4,890historicalfileidentities/3,260objects/9,383,519compressed
+bytes. Full-source timings and genuine checked self-reproduction remain pending.

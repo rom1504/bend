@@ -1,0 +1,581 @@
+--- a/src/front/parser.bend
++++ b/src/front/parser.bend
+@@ -217,7 +217,7 @@
+ def f_expect(p, s):
+   match p:
+     case FParsed{+n, +ts}:
+-      f_choose(FParsed, f_eq(tg(n), "Error") || f_eq(f_tx(ts), s), u => FParsed{n, f_tl(ts)}, u => f_err(ts, "expected " ++ s))
++      f_choose(FParsed, f_eq(tg(n), "Error") || f_eq(f_tx(ts), s), u => FParsed{n, f_tl(ts)}, u => f_choose(FParsed, f_eq(s, ")") || f_eq(s, "}") || f_eq(s, "]"), u => fpe_error(ts, "expected " ++ s, "'" ++ s ++ "'"), u => f_err(ts, "expected " ++ s)))
+ 
+ @unsafe
+ def f_app(f, xs):
+@@ -513,3 +513,110 @@
+ @unsafe
+ def f_rhs_for(left, ts, op, min):
+   f_choose(FParsed, f_eq(op, "+") && f_eq(tg(left), "Literal") && String.ends_with(nm(left), "n"), u => f_expr(ts, 0), u => f_rhs(ts, op, min))
++
++# P5-011 rejection-only rendering; raw errors retain their legacy text for fallback.
++law fpe_error:
++  for +ts: List<&2,FToken>
++  for +legacy: String
++  for +expected: String
++  FParsed
++law fpe_finish:
++  for +source: String
++  for +raw: FRawResult
++  FResult
++law fpe_render:
++  for +source: String
++  for +error: KTerm
++  String
++law fpe_seek:
++  for +source: String
++  for +rest: String
++  for +line: U32
++  for +column: U32
++  for +error: KTerm
++  String
++law fpe_here:
++  for +source: String
++  for +rest: String
++  for +error: KTerm
++  String
++law fpe_message:
++  for +source: String
++  for +error: KTerm
++  for +observed: String
++  String
++law fpe_lines_count:
++  for +lines: List<&2,String>
++  U32
++law fpe_snippet:
++  for +lines: List<&2,String>
++  for +at: U32
++  String
++law fpe_snippet_lines:
++  for +lines: List<&2,String>
++  for +at: U32
++  for +end: U32
++  for +line: U32
++  String
++law fpe_pad:
++  for +text: String
++  for +width: U32
++  String
++
++@unsafe
++def fpe_error(ts, legacy, expected):
++  FParsed{kt("Error", nm(f_pn(f_err(ts, legacy))), f_line(ts), f_col(ts), [kt("ParseExpected", expected, 0, 0, Nil{}), kt("ParseToken", f_tx(ts), 0, 0, Nil{})]), Nil{}}
++
++@unsafe
++def fpe_finish(source, raw):
++  match raw:
++    case FRawResult{book, error, imports}:
++      FResult{book, fpe_render(source, error), imports}
++
++@unsafe
++def fpe_render(source, error):
++  f_choose(String, String.eq(tg(error), "Absent"), u => "", u => f_choose(String, String.eq(tg(error), "Error") && String.eq(tg(kid(error, 0)), "ParseExpected") && String.eq(tg(kid(error, 1)), "ParseToken") && U32.is_gt(ix(error), 0), u => fpe_seek(source, source, 1, 0, error), u => nm(error)))
++
++@unsafe
++def fpe_seek(source, rest, line, column, error):
++  f_choose(String, U32.is_eq(line, ix(error)) && U32.is_eq(column, qt(error)), u => fpe_here(source, rest, error), u => f_choose(String, String.is_empty(rest), u => nm(error), u => f_choose(String, U32.is_eq(Char.to_u32(f_head(rest)), 10), u => fpe_seek(source, f_tail(rest), U32.add(line, 1), 0, error), u => fpe_seek(source, f_tail(rest), line, U32.add(column, 1), error))))
++
++@unsafe
++def fpe_here(source, rest, error):
++  f_choose(String, String.is_empty(rest), u => f_choose(String, String.eq(nm(kid(error, 1)), "<eof>"), u => fpe_message(source, error, "end of input"), u => nm(error)), u => f_choose(String, Bool.not(U32.is_eq(Char.to_u32(f_head(rest)), Char.to_u32(f_head(nm(kid(error, 1)))))) || U32.is_gt(Char.to_u32(f_head(rest)), 65535) || (U32.is_ge(Char.to_u32(f_head(rest)), 55296) && U32.is_le(Char.to_u32(f_head(rest)), 57343)), u => nm(error), u => fpe_message(source, error, "'" ++ SCon{f_head(rest), ""} ++ "'")))
++
++@unsafe
++def fpe_message(source, error, observed):
++  "Error:\n- expected : " ++ nm(kid(error, 0)) ++ "\n- observed : " ++ observed ++ "\nLocation:" ++ fpe_snippet(String.lines(source), ix(error))
++
++@unsafe
++def fpe_lines_count(lines):
++  match lines:
++    case Nil{}: 0
++    case Con{head, tail}: U32.add(1, fpe_lines_count(tail))
++
++@unsafe
++def fpe_snippet(lines, at):
++  fpe_snippet_lines(lines, at, f_choose(U32, U32.is_lt(fpe_lines_count(lines), U32.add(at, 1)), u => fpe_lines_count(lines), u => U32.add(at, 1)), 1)
++
++@unsafe
++def fpe_snippet_lines(lines, at, end, line):
++  match lines:
++    case Nil{}: ""
++    case Con{head, tail}:
++      f_choose(String, U32.is_gt(line, end), u => "", u => f_choose(String, U32.is_lt(U32.add(line, 1), at), u => "", u => "\n" ++ fpe_pad(U32.show(line), U32.from_nat(String.length(U32.show(end)))) ++ f_choose(String, U32.is_eq(line, at), u => ">| ", u => " | ") ++ head) ++ fpe_snippet_lines(tail, at, end, U32.add(line, 1)))
++
++@unsafe
++def fpe_pad(text, width):
++  f_choose(String, U32.is_lt(U32.from_nat(String.length(text)), width), u => fpe_pad(" " ++ text, width), u => text)
++
++# The pinned parser tests constructor freshness immediately after its name.
++# A next-token position is equivalent only when the name and brace are adjacent.
++law fpe_fresh:
++  for +ts: List<&2,FToken>
++  for +legacy: String
++  for +expected: String
++  FParsed
++@unsafe
++def fpe_fresh(ts, legacy, expected):
++  f_choose(FParsed, U32.is_eq(f_line(ts), f_line(f_tl(ts))) && U32.is_eq(f_col(f_tl(ts)), U32.add(f_col(ts), U32.from_nat(String.length(f_tx(ts))))), u => fpe_error(f_tl(ts), legacy, expected), u => f_err(f_tl(ts), legacy))
+--- a/src/front/declarations.bend
++++ b/src/front/declarations.bend
+@@ -2,15 +2,19 @@
+ type FResult is Data:
+   FResult{+book: List<&2, KDef>, +error: String, +imports: List<&2, KTerm>}
+ 
++# Internal parser transport only; public FResult remains unchanged.
++type FRawResult is Data:
++  FRawResult{+book: List<&2, KDef>, +error: KTerm, +imports: List<&2, KTerm>}
++
+ law f_parse:
+   for +source: String
+   FResult
+ 
+ law f_result:
+   for +book: List<&2, KDef>
+-  for +err: String
+-  for +imports: List<&2, KTerm>
+-  FResult
++  for +err: KTerm
++  for +imports: List<&2, KTerm>
++  FRawResult
+ 
+ law f_len:
+   for +xs: List<&2, KTerm>
+@@ -51,27 +55,27 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +unsafe: Bool
+-  FResult
++  FRawResult
+ 
+ law f_top:
+   for +ts: List<&2, FToken>
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +unsafe: Bool
+-  FResult
++  FRawResult
+ 
+ law f_top_ready:
+   for +ts: List<&2, FToken>
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +unsafe: Bool
+-  FResult
++  FRawResult
+ 
+ law f_import:
+   for +ts: List<&2, FToken>
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_tele:
+   for +ts0: List<&2, FToken>
+@@ -125,7 +129,7 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +unsafe: Bool
+-  FResult
++  FRawResult
+ 
+ law f_def_type:
+   for +name: String
+@@ -134,7 +138,7 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +unsafe: Bool
+-  FResult
++  FRawResult
+ 
+ law f_def_signature:
+   for +name: String
+@@ -151,7 +155,7 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +unsafe: Bool
+-  FResult
++  FRawResult
+ 
+ law f_foreign:
+   for +name: String
+@@ -162,7 +166,7 @@
+   for +imports: List<&2, KTerm>
+   for +unsafe: Bool
+   for +paths: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_law:
+   for +name: String
+@@ -170,7 +174,7 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +clauses: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_law_clause:
+   for +name: String
+@@ -179,7 +183,7 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +clauses: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_law_type:
+   for +name: String
+@@ -188,7 +192,7 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +clauses: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_law_bind:
+   for +clauses: List<&2, KTerm>
+@@ -201,21 +205,21 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +clauses: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_type:
+   for +name: String
+   for +ts: List<&2, FToken>
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_type_params:
+   for +name: String
+   for +p: FParsed
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_type_kind:
+   for +name: String
+@@ -223,7 +227,7 @@
+   for +p: FParsed
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_type_ctors:
+   for +name: String
+@@ -233,7 +237,7 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +ctors: List<&2, KDef>
+-  FResult
++  FRawResult
+ 
+ law f_type_ctor:
+   for +name: String
+@@ -244,7 +248,7 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +ctors: List<&2, KDef>
+-  FResult
++  FRawResult
+ 
+ law f_param_refs:
+   for +pars: List<&2, KTerm>
+@@ -328,11 +332,11 @@
+ 
+ @unsafe
+ def f_parse(source):
+-  f_tops(f_lex(source, 1, 0, 0, Nil{}), Nil{}, Nil{}, False{})
++  fpe_finish(source, f_tops(f_lex(source, 1, 0, 0, Nil{}), Nil{}, Nil{}, False{}))
+ 
+ @unsafe
+ def f_result(book, err, imports):
+-  FResult{List.reverse(&2, KDef, book), err, List.reverse(&2, KTerm, imports)}
++  FRawResult{List.reverse(&2, KDef, book), err, List.reverse(&2, KTerm, imports)}
+ 
+ @unsafe
+ def f_len(xs):
+@@ -394,19 +398,19 @@
+ 
+ @unsafe
+ def f_top(ts, book, imports, unsafe):
+-  f_choose(FResult, unsafe,
+-    u => f_choose(FResult, f_eq(f_tx(ts), "def"), u => f_top_ready(ts, book, imports, unsafe), u => f_result(book, nm(f_pn(f_err(ts, "expected def after @unsafe"))), imports)),
++  f_choose(FRawResult, unsafe,
++    u => f_choose(FRawResult, f_eq(f_tx(ts), "def"), u => f_top_ready(ts, book, imports, unsafe), u => f_result(book, f_pn(f_err(ts, "expected def after @unsafe")), imports)),
+     u => f_top_ready(ts, book, imports, unsafe))
+ 
+ @unsafe
+ def f_top_ready(ts, book, imports, unsafe):
+-  f_choose(FResult, f_eq(f_tx(ts), "<eof>"), u => f_result(book, "", imports),
+-    u => f_choose(FResult, f_eq(f_tx(ts), "@") && f_eq(f_tx(f_tl(ts)), "unsafe"), u => f_tops(f_tl(f_tl(ts)), book, imports, True{}),
+-    u => f_choose(FResult, f_eq(f_tx(ts), "import"), u => f_import_leading(ts, book, imports, unsafe),
+-    u => f_choose(FResult, f_eq(f_tx(ts), "law"), u => f_law(f_tx(f_tl(ts)), f_skip(f_tl(f_tl(f_tl(ts)))), book, imports, Nil{}),
+-    u => f_choose(FResult, f_eq(f_tx(ts), "def"), u => f_def(f_tx(f_tl(ts)), f_tele(f_tl(f_tl(f_tl(ts))), ")", Nil{}), book, imports, unsafe),
+-    u => f_choose(FResult, f_eq(f_tx(ts), "type"), u => f_type(f_tx(f_tl(ts)), f_tl(f_tl(ts)), book, imports),
+-    u => f_result(book, nm(f_pn(f_err(ts, "expected def, law, type or import"))), imports)))))))
++  f_choose(FRawResult, f_eq(f_tx(ts), "<eof>"), u => f_result(book, atom("Absent"), imports),
++    u => f_choose(FRawResult, f_eq(f_tx(ts), "@") && f_eq(f_tx(f_tl(ts)), "unsafe"), u => f_tops(f_tl(f_tl(ts)), book, imports, True{}),
++    u => f_choose(FRawResult, f_eq(f_tx(ts), "import"), u => f_import_leading(ts, book, imports, unsafe),
++    u => f_choose(FRawResult, f_eq(f_tx(ts), "law"), u => f_law(f_tx(f_tl(ts)), f_skip(f_tl(f_tl(f_tl(ts)))), book, imports, Nil{}),
++    u => f_choose(FRawResult, f_eq(f_tx(ts), "def"), u => f_def(f_tx(f_tl(ts)), f_tele(f_tl(f_tl(f_tl(ts))), ")", Nil{}), book, imports, unsafe),
++    u => f_choose(FRawResult, f_eq(f_tx(ts), "type"), u => f_type(f_tx(f_tl(ts)), f_tl(f_tl(ts)), book, imports),
++    u => f_result(book, f_pn(f_err(ts, "expected def, law, type or import")), imports)))))))
+ 
+ @unsafe
+ def f_import(ts, book, imports):
+@@ -419,15 +423,15 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +unsafe: Bool
+-  FResult
++  FRawResult
+ 
+ @unsafe
+ def f_import_leading(ts, book, imports, unsafe):
+   match book:
+     case Nil{}:
+-      f_choose(FResult, unsafe, u => f_result(book, nm(f_pn(f_err(ts, "expected def after @unsafe"))), imports), u => f_import(f_tl(ts), book, imports))
++      f_choose(FRawResult, unsafe, u => f_result(book, f_pn(f_err(ts, "expected def after @unsafe")), imports), u => f_import(f_tl(ts), book, imports))
+     case Con{d, rest}:
+-      f_result(book, nm(f_pn(f_err(ts, "expected def, law or type; imports must precede declarations"))), imports)
++      f_result(book, f_pn(f_err(ts, "expected def, law or type; imports must precede declarations")), imports)
+ 
+ @unsafe
+ def f_tele(ts0, end, acc):
+@@ -475,13 +479,13 @@
+ def f_def_base(name, p, book, imports, unsafe):
+   match p:
+     case FParsed{+pars, +ts}:
+-      f_choose(FResult, f_eq(tg(pars), "Error"), u => f_result(book, nm(pars), imports), u => f_choose(FResult, f_eq(f_tx(ts), "->"), u => f_def_type(name, ks(pars), f_expr(f_tl(ts), 0), book, imports, unsafe), u => f_def_type(name, ks(pars), FParsed{f_dt(f_find(name, book)), ts}, book, imports, unsafe)))
++      f_choose(FRawResult, f_eq(tg(pars), "Error"), u => f_result(book, pars, imports), u => f_choose(FRawResult, f_eq(f_tx(ts), "->"), u => f_def_type(name, ks(pars), f_expr(f_tl(ts), 0), book, imports, unsafe), u => f_def_type(name, ks(pars), FParsed{f_dt(f_find(name, book)), ts}, book, imports, unsafe)))
+ 
+ @unsafe
+ def f_def_type(name, pars, p, book, imports, unsafe):
+   match p:
+     case FParsed{+ty, +ts}:
+-      f_choose(FResult, f_eq(tg(ty), "Absent"), u => f_result(book, "definition without return type needs a law: " ++ name, imports), u => f_choose(FResult, f_eq(f_tx(f_skip(f_tl(ts))), "import"), u => f_foreign(name, pars, f_def_signature(name, pars, ty, book), f_skip(f_tl(ts)), book, imports, unsafe, Nil{}), u => f_def_body(name, pars, f_def_signature(name, pars, ty, book), f_body(f_pr(f_expect(FParsed{ty, ts}, ":"))), book, imports, unsafe)))
++      f_choose(FRawResult, f_eq(tg(ty), "Absent"), u => f_result(book, kt("Error", "definition without return type needs a law: " ++ name, 0, 0, Nil{}), imports), u => f_choose(FRawResult, f_eq(f_tx(f_skip(f_tl(ts))), "import"), u => f_foreign(name, pars, f_def_signature(name, pars, ty, book), f_skip(f_tl(ts)), book, imports, unsafe, Nil{}), u => f_def_body(name, pars, f_def_signature(name, pars, ty, book), f_body(f_pr(f_expect(FParsed{ty, ts}, ":"))), book, imports, unsafe)))
+ 
+ @unsafe
+ def f_def_signature(name, pars, ty, book):
+@@ -491,27 +495,27 @@
+ def f_def_body(name, pars, ty, p, book, imports, unsafe):
+   match p:
+     case FParsed{+body, ts}:
+-      f_choose(FResult, f_eq(tg(body), "Error"), u => f_result(book, nm(body), imports), u => f_tops(ts, f_put(KDef{name, "Def", f_len(pars), f_choose(U32, f_eq(f_dk(f_find(name, book)), "Missing"), u => f_templates(pars), u => f_dx(f_find(name, book))), ty, kt("Body", "", fc_start(pars, ty, body, Bool.not(f_eq(f_dk(f_find(name, book)), "Missing"))), 0, [kt("Params", "", 0, 0, pars), body]), Nil{}, False{}, unsafe}, book), imports, False{}))
++      f_choose(FRawResult, f_eq(tg(body), "Error"), u => f_result(book, body, imports), u => f_tops(ts, f_put(KDef{name, "Def", f_len(pars), f_choose(U32, f_eq(f_dk(f_find(name, book)), "Missing"), u => f_templates(pars), u => f_dx(f_find(name, book))), ty, kt("Body", "", fc_start(pars, ty, body, Bool.not(f_eq(f_dk(f_find(name, book)), "Missing"))), 0, [kt("Params", "", 0, 0, pars), body]), Nil{}, False{}, unsafe}, book), imports, False{}))
+ 
+ @unsafe
+ def f_foreign(name, pars, ty, ts, book, imports, unsafe, paths):
+-  f_choose(FResult, f_eq(f_tx(ts), "import"), u => f_choose(FResult, f_foreign_path_valid(ts), u => f_foreign(name, pars, ty, f_skip(f_tl(f_tl(ts))), book, imports, unsafe, Con{kt("Path", f_unquote(f_tx(f_tl(ts))), 0, 0, Nil{}), paths}), u => f_result(book, "foreign import requires a quoted .c or .js path", imports)), u => f_tops(ts, f_put(KDef{name, "Def", f_len(pars), 0, ty, kt("Foreign", name, 0, 0, List.reverse(&2, KTerm, paths)), Nil{}, False{}, unsafe}, book), imports, False{}))
++  f_choose(FRawResult, f_eq(f_tx(ts), "import"), u => f_choose(FRawResult, f_foreign_path_valid(ts), u => f_foreign(name, pars, ty, f_skip(f_tl(f_tl(ts))), book, imports, unsafe, Con{kt("Path", f_unquote(f_tx(f_tl(ts))), 0, 0, Nil{}), paths}), u => f_result(book, kt("Error", "foreign import requires a quoted .c or .js path", 0, 0, Nil{}), imports)), u => f_tops(ts, f_put(KDef{name, "Def", f_len(pars), 0, ty, kt("Foreign", name, 0, 0, List.reverse(&2, KTerm, paths)), Nil{}, False{}, unsafe}, book), imports, False{}))
+ 
+ @unsafe
+ def f_law_base(name, ts, book, imports, clauses):
+-  f_choose(FResult, f_eq(f_tx(ts), "for") || f_eq(f_tx(ts), "exs"), u => f_law_clause(name, f_eq(f_tx(ts), "exs"), f_tl(ts), book, imports, clauses), u => f_law_end(name, f_expr(ts, 0), book, imports, List.reverse(&2, KTerm, clauses)))
++  f_choose(FRawResult, f_eq(f_tx(ts), "for") || f_eq(f_tx(ts), "exs"), u => f_law_clause(name, f_eq(f_tx(ts), "exs"), f_tl(ts), book, imports, clauses), u => f_law_end(name, f_expr(ts, 0), book, imports, List.reverse(&2, KTerm, clauses)))
+ 
+ @unsafe
+ def f_law_clause(name, exi, ts, book, imports, clauses):
+-  f_choose(FResult, Bool.not(exi) && f_eq(f_tx(ts), "~") && U32.is_lt(f_templates(clauses), f_len(clauses)),
+-    u => f_result(book, nm(f_pn(f_err(ts, "expected a plain clause (only leading clauses take ~)"))), imports),
++  f_choose(FRawResult, Bool.not(exi) && f_eq(f_tx(ts), "~") && U32.is_lt(f_templates(clauses), f_len(clauses)),
++    u => f_result(book, f_pn(f_err(ts, "expected a plain clause (only leading clauses take ~)")), imports),
+     u => f_law_type(name, kt(f_choose(String, exi, u => "Exists", u => f_choose(String, f_eq(f_tx(ts), "~"), u => "Template", u => "Bind")), f_tx(f_unmark(ts)), f_atid(ts), f_quant(ts), Nil{}), f_expr(f_tl(f_tl(f_unmark(ts))), 0), book, imports, clauses))
+ 
+ @unsafe
+ def f_law_type(name, binder, p, book, imports, clauses):
+   match p:
+     case FParsed{+ty, ts}:
+-      f_choose(FResult, f_eq(tg(ty), "Error"), u => f_result(book, nm(ty), imports), u => f_choose(FResult, f_eq(f_tx(f_skip(ts)), "where"), u => f_law_where(name, binder, ty, f_expr(f_tl(f_skip(ts)), 0), book, imports, clauses), u => f_law(name, f_skip(ts), book, imports, Con{kt(tg(binder), nm(binder), ix(binder), qt(binder), [ty]), clauses})))
++      f_choose(FRawResult, f_eq(tg(ty), "Error"), u => f_result(book, ty, imports), u => f_choose(FRawResult, f_eq(f_tx(f_skip(ts)), "where"), u => f_law_where(name, binder, ty, f_expr(f_tl(f_skip(ts)), 0), book, imports, clauses), u => f_law(name, f_skip(ts), book, imports, Con{kt(tg(binder), nm(binder), ix(binder), qt(binder), [ty]), clauses})))
+ 
+ @unsafe
+ def f_law_bind(clauses, ty):
+@@ -525,33 +529,33 @@
+ def f_law_end(name, p, book, imports, clauses):
+   match p:
+     case FParsed{+ty, ts}:
+-      f_choose(FResult, f_eq(tg(ty), "Error"), u => f_result(book, nm(ty), imports), u => f_tops(ts, Con{KDef{name, "Def", f_law_arity(clauses), f_templates(clauses), f_law_bind(clauses, ty), atom("Absent"), Nil{}, False{}, False{}}, book}, imports, False{}))
++      f_choose(FRawResult, f_eq(tg(ty), "Error"), u => f_result(book, ty, imports), u => f_tops(ts, Con{KDef{name, "Def", f_law_arity(clauses), f_templates(clauses), f_law_bind(clauses, ty), atom("Absent"), Nil{}, False{}, False{}}, book}, imports, False{}))
+ 
+ @unsafe
+ def f_type_base(name, ts, book, imports):
+-  f_choose(FResult, f_eq(f_tx(ts), "<") || f_eq(f_tx(ts), "<-"), u => f_type_params(name, f_tele(f_choose(List<&2, FToken>, f_eq(f_tx(ts), "<-"), u => Con{FToken{"-", f_line(ts), U32.add(f_col(ts), 1), 0}, f_tl(ts)}, u => f_tl(ts)), ">", Nil{}), book, imports), u => f_type_params(name, FParsed{kt("Tele", "", 0, 0, Nil{}), ts}, book, imports))
++  f_choose(FRawResult, f_eq(f_tx(ts), "<") || f_eq(f_tx(ts), "<-"), u => f_type_params(name, f_tele(f_choose(List<&2, FToken>, f_eq(f_tx(ts), "<-"), u => Con{FToken{"-", f_line(ts), U32.add(f_col(ts), 1), 0}, f_tl(ts)}, u => f_tl(ts)), ">", Nil{}), book, imports), u => f_type_params(name, FParsed{kt("Tele", "", 0, 0, Nil{}), ts}, book, imports))
+ 
+ @unsafe
+ def f_type_params(name, p, book, imports):
+   match p:
+     case FParsed{pars, ts}:
+-      f_choose(FResult, f_eq(tg(pars), "Error"), u => f_result(book, nm(pars), imports), u => f_type_kind(name, ks(pars), f_expect(f_expr(f_pr(f_expect(FParsed{pars, ts}, "is")), 0), ":"), book, imports))
++      f_choose(FRawResult, f_eq(tg(pars), "Error"), u => f_result(book, pars, imports), u => f_type_kind(name, ks(pars), f_expect(f_expr(f_pr(f_expect(FParsed{pars, ts}, "is")), 0), ":"), book, imports))
+ 
+ @unsafe
+ def f_type_kind(name, pars, p, book, imports):
+   match p:
+     case FParsed{ty, ts}:
+-      f_choose(FResult, f_eq(tg(ty), "Error"), u => f_result(book, nm(ty), imports), u => f_type_ctors(name, pars, ty, f_skip(ts), book, imports, Nil{}))
++      f_choose(FRawResult, f_eq(tg(ty), "Error"), u => f_result(book, ty, imports), u => f_type_ctors(name, pars, ty, f_skip(ts), book, imports, Nil{}))
+ 
+ @unsafe
+ def f_type_ctors(name, pars, ty, ts, book, imports, ctors):
+-  f_choose(FResult, U32.is_gt(f_col(ts), 0) && f_eq(f_tx(f_tl(ts)), "{"), u => f_choose(FResult, Bool.not(f_eq(dk(f_find(f_tx(ts), ctors)), "Missing")) || Bool.not(f_eq(dk(f_ctor_lookup(f_tx(ts), book)), "Missing")), u => f_result(book, nm(f_pn(f_err(f_tl(ts), "expected a fresh constructor name (duplicate declaration: " ++ f_tx(ts) ++ ")"))), imports), u => f_type_ctor(name, pars, ty, f_tx(ts), f_tele(f_tl(f_tl(ts)), "}", Nil{}), book, imports, ctors)), u => f_tops(ts, Con{KDef{name, "ADT", f_len(pars), 0, f_tbind(pars, ty), atom("Absent"), List.reverse(&2, KDef, ctors), False{}, False{}}, book}, imports, False{}))
++  f_choose(FRawResult, U32.is_gt(f_col(ts), 0) && f_eq(f_tx(f_tl(ts)), "{"), u => f_choose(FRawResult, Bool.not(f_eq(dk(f_find(f_tx(ts), ctors)), "Missing")) || Bool.not(f_eq(dk(f_ctor_lookup(f_tx(ts), book)), "Missing")), u => f_result(book, f_pn(fpe_fresh(ts, "expected a fresh constructor name (duplicate declaration: " ++ f_tx(ts) ++ ")", "a fresh constructor name (duplicate declaration: " ++ f_tx(ts) ++ ")")), imports), u => f_type_ctor(name, pars, ty, f_tx(ts), f_tele(f_tl(f_tl(ts)), "}", Nil{}), book, imports, ctors)), u => f_tops(ts, Con{KDef{name, "ADT", f_len(pars), 0, f_tbind(pars, ty), atom("Absent"), List.reverse(&2, KDef, ctors), False{}, False{}}, book}, imports, False{}))
+ 
+ @unsafe
+ def f_type_ctor(name, pars, ty, ctor, p, book, imports, ctors):
+   match p:
+     case FParsed{fields, ts}:
+-      f_choose(FResult, f_eq(tg(fields), "Error"), u => f_result(book, nm(fields), imports), u => f_type_ctors(name, pars, ty, f_skip(ts), book, imports, Con{KDef{ctor, "Ctr", f_len(ks(fields)), 0, f_tbind(pars, f_tbind(ks(fields), kt("ADT", name, 0, 1, f_param_refs(pars)))), kt("Absent", ctor, 0, 0, Nil{}), Nil{}, False{}, False{}}, ctors}))
++      f_choose(FRawResult, f_eq(tg(fields), "Error"), u => f_result(book, fields, imports), u => f_type_ctors(name, pars, ty, f_skip(ts), book, imports, Con{KDef{ctor, "Ctr", f_len(ks(fields)), 0, f_tbind(pars, f_tbind(ks(fields), kt("ADT", name, 0, 1, f_param_refs(pars)))), kt("Absent", ctor, 0, 0, Nil{}), Nil{}, False{}, False{}}, ctors}))
+ 
+ @unsafe
+ def f_param_refs(pars):
+@@ -642,11 +646,11 @@
+   for +ts: List<&2, FToken>
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ @unsafe
+ def f_type_named(name, ts, book, imports):
+-  f_choose(FResult, f_eq(f_tx(ts), "<>"), u => f_type_params(name, FParsed{kt("Tele", "", 0, 0, Nil{}), f_tl(ts)}, book, imports), u => f_type_base(name, ts, book, imports))
++  f_choose(FRawResult, f_eq(f_tx(ts), "<>"), u => f_type_params(name, FParsed{kt("Tele", "", 0, 0, Nil{}), f_tl(ts)}, book, imports), u => f_type_base(name, ts, book, imports))
+ 
+ law f_def_base:
+   for +name: String
+@@ -654,11 +658,11 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +unsafe: Bool
+-  FResult
++  FRawResult
+ 
+ @unsafe
+ def f_def(name, p, book, imports, unsafe):
+-  f_choose(FResult, Bool.not(f_valid_name(name)), u => f_result(book, "reserved definition name: " ++ name, imports), u => f_def_prior(name, p, book, imports, unsafe, f_find(name, book)))
++  f_choose(FRawResult, Bool.not(f_valid_name(name)), u => f_result(book, kt("Error", "reserved definition name: " ++ name, 0, 0, Nil{}), imports), u => f_def_prior(name, p, book, imports, unsafe, f_find(name, book)))
+ 
+ law f_body_context:
+   for +ts: List<&2, FToken>
+@@ -706,19 +710,19 @@
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+   for +clauses: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_type_named:
+   for +name: String
+   for +ts: List<&2, FToken>
+   for +book: List<&2, KDef>
+   for +imports: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ @unsafe
+ def f_law(name, ts, book, imports, clauses):
+-  f_choose(FResult, f_valid_name(name) && f_eq(dk(f_find(name, book)), "Missing"), u => f_law_base(name, ts, book, imports, clauses), u => f_result(book, "invalid or reserved law name: " ++ name, imports))
++  f_choose(FRawResult, f_valid_name(name) && f_eq(dk(f_find(name, book)), "Missing"), u => f_law_base(name, ts, book, imports, clauses), u => f_result(book, kt("Error", "invalid or reserved law name: " ++ name, 0, 0, Nil{}), imports))
+ 
+ @unsafe
+ def f_type(name, ts, book, imports):
+-  f_choose(FResult, f_valid_name(name) && f_eq(dk(f_find(name, book)), "Missing"), u => f_type_named(name, ts, book, imports), u => f_result(book, "invalid or reserved datatype name: " ++ name, imports))
++  f_choose(FRawResult, f_valid_name(name) && f_eq(dk(f_find(name, book)), "Missing"), u => f_type_named(name, ts, book, imports), u => f_result(book, kt("Error", "invalid or reserved datatype name: " ++ name, 0, 0, Nil{}), imports))
+--- a/src/front/validate.bend
++++ b/src/front/validate.bend
+@@ -158,7 +158,7 @@
+   for +path: String
+   for +book: List<&2,KDef>
+   for +imports: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_validate_param:
+   for +ts: List<&2, FToken>
+@@ -176,7 +176,7 @@
+ 
+ @unsafe
+ def f_import_alias(ts, path, book, imports):
+-  f_choose(FResult, String.ends_with(path, ".bend") && f_alias_valid(f_tx(f_tl(ts))), u => f_tops(f_tl(f_tl(ts)), book, Con{kt("Import", path, 0, 0, [kt("Alias", f_tx(f_tl(ts)), 0, 0, Nil{})]), imports}, False{}), u => f_result(book, "an import requires a .bend path and a valid alias", imports))
++  f_choose(FRawResult, String.ends_with(path, ".bend") && f_alias_valid(f_tx(f_tl(ts))), u => f_tops(f_tl(f_tl(ts)), book, Con{kt("Import", path, 0, 0, [kt("Alias", f_tx(f_tl(ts)), 0, 0, Nil{})]), imports}, False{}), u => f_result(book, kt("Error", "an import requires a .bend path and a valid alias", 0, 0, Nil{}), imports))
+ 
+ @unsafe
+ def f_validate_param(ts, end, acc):
+@@ -210,7 +210,7 @@
+   for +imports: List<&2, KTerm>
+   for +unsafe: Bool
+   for +old: KDef
+-  FResult
++  FRawResult
+ 
+ @unsafe
+ def f_bare_params(params):
+@@ -222,7 +222,7 @@
+ 
+ @unsafe
+ def f_def_prior(name, p, book, imports, unsafe, old):
+-  f_choose(FResult, f_eq(dk(old), "Missing"), u => f_def_base(name, p, book, imports, unsafe), u => f_choose(FResult, f_eq(dk(old), "Def") && f_eq(tg(dv(old)), "Absent") && f_bare_params(ks(f_pn(p))) && U32.is_ge(f_len(ks(f_pn(p))), dx(old)), u => f_choose(FResult, f_eq(f_tx(f_pr(p)), ":"), u => f_def_base(name, p, book, imports, unsafe), u => f_result(book, nm(f_pn(f_err(f_pr(p), "expected : (a definition filling a law has no return annotation)"))), imports)), u => f_result(book, "a definition must uniquely fill its law with plain parameter names", imports)))
++  f_choose(FRawResult, f_eq(dk(old), "Missing"), u => f_def_base(name, p, book, imports, unsafe), u => f_choose(FRawResult, f_eq(dk(old), "Def") && f_eq(tg(dv(old)), "Absent") && f_bare_params(ks(f_pn(p))) && U32.is_ge(f_len(ks(f_pn(p))), dx(old)), u => f_choose(FRawResult, f_eq(f_tx(f_pr(p)), ":"), u => f_def_base(name, p, book, imports, unsafe), u => f_result(book, f_pn(f_err(f_pr(p), "expected : (a definition filling a law has no return annotation)")), imports)), u => f_result(book, kt("Error", "a definition must uniquely fill its law with plain parameter names", 0, 0, Nil{}), imports)))
+ 
+ law f_scope_local_valid:
+   for +t: KTerm
+--- a/src/front/sugar.bend
++++ b/src/front/sugar.bend
+@@ -307,7 +307,7 @@
+   for +book: List<&2,KDef>
+   for +imports: List<&2, KTerm>
+   for +clauses: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ law f_erased_local:
+   for +ts: List<&2, FToken>
+--- a/src/load/imports.bend
++++ b/src/load/imports.bend
+@@ -5,9 +5,9 @@
+   for +path: String
+   for +book: List<&2,KDef>
+   for +imports: List<&2, KTerm>
+-  FResult
++  FRawResult
+ 
+ @unsafe
+ def f_import_path(ts, path, book, imports):
+-  f_choose(FResult, f_eq(f_tx(ts), "as"), u => f_import_alias(ts, path, book, imports), u => f_choose(FResult, f_eq(f_tx(ts), "\n") || f_eq(f_tx(ts), "<eof>"), u => f_choose(FResult, f_eq(path, "Base"), u => f_tops(ts, book, Con{kt("Import", path, 0, 0, Nil{}), imports}, False{}), u => f_result(book, "a module import requires as followed by an alias", imports)), u => f_import_path(f_tl(ts), path ++ f_tx(ts), book, imports)))
++  f_choose(FRawResult, f_eq(f_tx(ts), "as"), u => f_import_alias(ts, path, book, imports), u => f_choose(FRawResult, f_eq(f_tx(ts), "\n") || f_eq(f_tx(ts), "<eof>"), u => f_choose(FRawResult, f_eq(path, "Base"), u => f_tops(ts, book, Con{kt("Import", path, 0, 0, Nil{}), imports}, False{}), u => f_result(book, kt("Error", "a module import requires as followed by an alias", 0, 0, Nil{}), imports)), u => f_import_path(f_tl(ts), path ++ f_tx(ts), book, imports)))
+ 
+--- a/tools/typed-driver.mjs
++++ b/tools/typed-driver.mjs
+@@ -276,7 +276,7 @@
+       !seed&&api.f_load_graph_trace?api.f_load_graph_trace(graph.main,graph.sources):null;
+     const loaded=loadTrace?loadTrace.result:seed?api.f_load_graph_seed(graph.main,graph.sources,seed.sourcePath,seed.sourceText,seed.book):
+       (api.f_load_graph||api.f_load)(graph.main,graph.sources);
+-    if(loaded.error) return {status:'error',phase,diagnostic:'Error: '+loaded.error,exitCode:1,checked:false};
++    if(loaded.error) return {status:'error',phase,diagnostic:loaded.error.startsWith('Error:')?loaded.error:'Error: '+loaded.error,exitCode:1,checked:false};
+     if(mode==='parse') return {status:'ok',phase,exitCode:0,checked:false,files:graph.files};
+     phase='check';
+     trace('check book');
+@@ -391,7 +391,7 @@
+     return {status:'ok',phase,code,verdict,exitCode:0,checked:true,files:[...graph.files,...jsPaths||[]]};
+   } catch(error) {
+     trace('compiler exception: '+(error.stack||error.message));
+-    return {status:'error',phase:error.phase||phase,diagnostic:'Error: '+error.message,exitCode:1,checked:phase==='check'||phase==='compile'||phase==='runtime',sourceFile:error.sourceFile};
++    return {status:'error',phase:error.phase||phase,diagnostic:typeof error.message==='string'&&error.message.startsWith('Error:')?error.message:'Error: '+error.message,exitCode:1,checked:phase==='check'||phase==='compile'||phase==='runtime',sourceFile:error.sourceFile};
+   }
+ }
+ 

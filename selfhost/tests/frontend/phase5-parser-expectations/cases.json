@@ -1,0 +1,251 @@
+{
+  "scope": "P51926-case integration: explicit exact or acceptance/phase oracles, all source gate statuses/phases agree with live reference; retained diagnostic mismatches documented separately.",
+  "cases": [
+    {
+      "id": "phase5-parser-expectations/term-punctuation",
+      "file": "term-punctuation.bend",
+      "expected": "Error:\n- expected : a term\n- observed : '!'\nLocation:\n2 | def main() -> U32:\n3>|   !\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/term-semicolon-list",
+      "file": "term-semicolon-list.bend",
+      "expected": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> U32:\n3>|   [0; 1]\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/term-semicolon-call",
+      "file": "term-semicolon-call.bend",
+      "expected": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> U32:\n3>|   f(0; 1)\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/term-semicolon-do",
+      "file": "term-semicolon-do.bend",
+      "expected": "Error:\n- expected : a term\n- observed : ';'\nLocation:\n2 | def main() -> U32:\n3>|   do IO<;>:\n4 |     0\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/term-reserved-fallback",
+      "file": "term-reserved-fallback.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/term-match-fallback",
+      "file": "term-match-fallback.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/top-name",
+      "file": "top-name.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/top-punctuation",
+      "file": "top-punctuation.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/top-late-import",
+      "file": "top-late-import.bend",
+      "expected": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   0\n4>| import Base\n5 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/top-unknown-decorator-fallback",
+      "file": "top-unknown-decorator-fallback.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/law-plain-clause",
+      "file": "law-plain-clause.bend",
+      "expected": "Error:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for x: U32\n4>|   for ~A: Type\n5 |   U32\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/law-plain-comment",
+      "file": "law-plain-comment.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/do-missing-open",
+      "file": "do-missing-open.bend",
+      "expected": "Error:\n- expected : '<'\n- observed : ':'\nLocation:\n2 | def main() -> U32:\n3>|   do IO:\n4 |     0\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/do-comment-open",
+      "file": "do-comment-open.bend",
+      "expected": "Error:\n- expected : '<'\n- observed : ':'\nLocation:\n3 |   do IO # comment\n4>|     :\n5 |       0\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/foreign-unquoted",
+      "file": "foreign-unquoted.bend",
+      "expected": "Error:\n- expected : '\"'\n- observed : 'm'\nLocation:\n2 | def external() -> U32:\n3>|   import missing.js\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/foreign-number",
+      "file": "foreign-number.bend",
+      "expected": "Error:\n- expected : '\"'\n- observed : '4'\nLocation:\n2 | def external() -> U32:\n3>|   import 42\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/foreign-extension-fallback",
+      "file": "foreign-extension-fallback.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/foreign-valid",
+      "file": "foreign-valid.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/term-crlf-tab",
+      "file": "term-crlf-tab.bend",
+      "expected": "Error:\n- expected : a term\n- observed : '!'\nLocation:\n2 | def main() -> U32:\r\n3>| \t!\r\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/term-comment",
+      "file": "term-comment.bend",
+      "expected": "Error:\n- expected : a term\n- observed : '!'\nLocation:\n3 |   # before error\n4>|   !\n5 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/term-eof-fallback",
+      "file": "term-eof-fallback.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/term-nonbmp-fallback",
+      "file": "term-nonbmp-fallback.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/term-nonbmp-prefix",
+      "file": "term-nonbmp-prefix.bend",
+      "expected": "Error:\n- expected : a term\n- observed : '!'\nLocation:\n2 | def main() -> U32:\n3>|   f(\"\ud83d\ude42\", !)\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/first-term-before-later",
+      "file": "first-term-before-later.bend",
+      "expected": "Error:\n- expected : a term\n- observed : '!'\nLocation:\n2 | def main() -> U32:\n3>|   !\n4 | def later() -> U32:\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact diagnostic"
+    },
+    {
+      "id": "phase5-parser-expectations/first-legacy-before-term",
+      "file": "first-legacy-before-term.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    },
+    {
+      "id": "phase5-parser-expectations/valid-neighbor",
+      "file": "valid-neighbor.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; retained diagnostic differences are not exact passes"
+    }
+  ]
+}

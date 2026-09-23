@@ -1,0 +1,107 @@
+--- a/src/front/parser.bend
++++ b/src/front/parser.bend
+@@ -230,7 +230,7 @@
+ @unsafe
+ def f_args_base(ts, end, acc):
+   +spaced = f_space(ts)
+-  f_choose(FParsed, f_eq(f_tx(spaced), ";"), u => f_err(spaced, f_choose(String, f_eq(end, "]"), u => "expected term; a list does not use semicolon separators", u => "expected term; arguments do not use semicolon separators")), u => f_choose(FParsed, f_eq(f_tx(spaced), end), u => FParsed{kt("Args", "", 0, 1, List.reverse(&2, KTerm, acc)), f_tl(spaced)}, u => f_arg_next(f_expr(spaced, 0), end, acc)))
++  f_choose(FParsed, f_eq(f_tx(spaced), ";"), u => fpe_error(spaced, f_choose(String, f_eq(end, "]"), u => "expected term; a list does not use semicolon separators", u => "expected term; arguments do not use semicolon separators"), "a term"), u => f_choose(FParsed, f_eq(f_tx(spaced), end), u => FParsed{kt("Args", "", 0, 1, List.reverse(&2, KTerm, acc)), f_tl(spaced)}, u => f_arg_next(f_expr(spaced, 0), end, acc)))
+ 
+ @unsafe
+ def f_arg_next(p, end, acc):
+@@ -257,7 +257,7 @@
+     u => f_choose(FParsed, f_eq(f_tx(ts), "Kind"), u => f_kind_wrap(f_expect(f_expr(f_tl(f_tl(ts)), 0), ")")),
+     u => f_choose(FParsed, U32.is_eq(f_kind_token(ts), 2), u => FParsed{kt("Literal", f_tx(ts), 0, 1, Nil{}), f_tl(ts)},
+     u => f_choose(FParsed, U32.is_eq(f_kind_token(ts), 1) && Bool.not(f_reserved(f_tx(ts))), u => f_atom_name(ts),
+-    u => f_err(ts, "expected term"))))))))))))))
++    u => f_choose(FParsed, f_reserved(f_tx(ts)), u => f_err(ts, "expected term"), u => fpe_error(ts, "expected term", "a term")))))))))))))))
+ 
+ # A constructor brace belongs to the raw name only when lexically adjacent.
+ # General term growth must not absorb the next independent braced value.
+@@ -565,7 +565,18 @@
+ 
+ @unsafe
+ def fpe_error(ts, legacy, expected):
+-  FParsed{kt("Error", nm(f_pn(f_err(ts, legacy))), f_line(ts), f_col(ts), [kt("ParseExpected", expected, 0, 0, Nil{}), kt("ParseToken", f_tx(ts), 0, 0, Nil{})]), Nil{}}
++  fpe_legacy(ts, nm(f_pn(f_err(ts, legacy))), expected)
++
++# Keep an already formatted fallback unchanged; expectation is explicit input.
++law fpe_legacy:
++  for +ts: List<&2,FToken>
++  for +legacy: String
++  for +expected: String
++  FParsed
++
++@unsafe
++def fpe_legacy(ts, legacy, expected):
++  FParsed{kt("Error", legacy, f_line(ts), f_col(ts), [kt("ParseExpected", expected, 0, 0, Nil{}), kt("ParseToken", f_tx(ts), 0, 0, Nil{})]), Nil{}}
+ 
+ @unsafe
+ def fpe_finish(source, raw):
+--- a/src/front/declarations.bend
++++ b/src/front/declarations.bend
+@@ -410,7 +410,7 @@
+     u => f_choose(FRawResult, f_eq(f_tx(ts), "law"), u => f_law(f_tx(f_tl(ts)), f_skip(f_tl(f_tl(f_tl(ts)))), book, imports, Nil{}),
+     u => f_choose(FRawResult, f_eq(f_tx(ts), "def"), u => f_def(f_tx(f_tl(ts)), f_tele(f_tl(f_tl(f_tl(ts))), ")", Nil{}), book, imports, unsafe),
+     u => f_choose(FRawResult, f_eq(f_tx(ts), "type"), u => f_type(f_tx(f_tl(ts)), f_tl(f_tl(ts)), book, imports),
+-    u => f_result(book, f_pn(f_err(ts, "expected def, law, type or import")), imports)))))))
++    u => f_result(book, f_pn(f_choose(FParsed, f_eq(f_tx(ts), "@"), u => f_err(ts, "expected def, law, type or import"), u => fpe_error(ts, "expected def, law, type or import", "'def', 'type' or 'law'"))), imports)))))))
+ 
+ @unsafe
+ def f_import(ts, book, imports):
+@@ -431,7 +431,7 @@
+     case Nil{}:
+       f_choose(FRawResult, unsafe, u => f_result(book, f_pn(f_err(ts, "expected def after @unsafe")), imports), u => f_import(f_tl(ts), book, imports))
+     case Con{d, rest}:
+-      f_result(book, f_pn(f_err(ts, "expected def, law or type; imports must precede declarations")), imports)
++      f_result(book, f_pn(fpe_error(ts, "expected def, law or type; imports must precede declarations", "'def', 'type' or 'law'")), imports)
+ 
+ @unsafe
+ def f_tele(ts0, end, acc):
+@@ -499,7 +499,7 @@
+ 
+ @unsafe
+ def f_foreign(name, pars, ty, ts, book, imports, unsafe, paths):
+-  f_choose(FRawResult, f_eq(f_tx(ts), "import"), u => f_choose(FRawResult, f_foreign_path_valid(ts), u => f_foreign(name, pars, ty, f_skip(f_tl(f_tl(ts))), book, imports, unsafe, Con{kt("Path", f_unquote(f_tx(f_tl(ts))), 0, 0, Nil{}), paths}), u => f_result(book, kt("Error", "foreign import requires a quoted .c or .js path", 0, 0, Nil{}), imports)), u => f_tops(ts, f_put(KDef{name, "Def", f_len(pars), 0, ty, kt("Foreign", name, 0, 0, List.reverse(&2, KTerm, paths)), Nil{}, False{}, unsafe}, book), imports, False{}))
++  f_choose(FRawResult, f_eq(f_tx(ts), "import"), u => f_choose(FRawResult, f_foreign_path_valid(ts), u => f_foreign(name, pars, ty, f_skip(f_tl(f_tl(ts))), book, imports, unsafe, Con{kt("Path", f_unquote(f_tx(f_tl(ts))), 0, 0, Nil{}), paths}), u => f_result(book, fpe_foreign(f_space(f_tl(ts))), imports)), u => f_tops(ts, f_put(KDef{name, "Def", f_len(pars), 0, ty, kt("Foreign", name, 0, 0, List.reverse(&2, KTerm, paths)), Nil{}, False{}, unsafe}, book), imports, False{}))
+ 
+ @unsafe
+ def f_law_base(name, ts, book, imports, clauses):
+@@ -508,7 +508,7 @@
+ @unsafe
+ def f_law_clause(name, exi, ts, book, imports, clauses):
+   f_choose(FRawResult, Bool.not(exi) && f_eq(f_tx(ts), "~") && U32.is_lt(f_templates(clauses), f_len(clauses)),
+-    u => f_result(book, f_pn(f_err(ts, "expected a plain clause (only leading clauses take ~)")), imports),
++    u => f_result(book, f_pn(fpe_error(ts, "expected a plain clause (only leading clauses take ~)", "a plain clause (only leading clauses take ~)")), imports),
+     u => f_law_type(name, kt(f_choose(String, exi, u => "Exists", u => f_choose(String, f_eq(f_tx(ts), "~"), u => "Template", u => "Bind")), f_tx(f_unmark(ts)), f_atid(ts), f_quant(ts), Nil{}), f_expr(f_tl(f_tl(f_unmark(ts))), 0), book, imports, clauses))
+ 
+ @unsafe
+@@ -726,3 +726,12 @@
+ @unsafe
+ def f_type(name, ts, book, imports):
+   f_choose(FRawResult, f_valid_name(name) && f_eq(dk(f_find(name, book)), "Missing"), u => f_type_named(name, ts, book, imports), u => f_result(book, kt("Error", "invalid or reserved datatype name: " ++ name, 0, 0, Nil{}), imports))
++
++# The wrong-extension cursor follows the closing quote; keep that case legacy.
++law fpe_foreign:
++  for +ts: List<&2,FToken>
++  KTerm
++
++@unsafe
++def fpe_foreign(ts):
++  f_choose(KTerm, Char.is_eq(f_head(f_tx(ts)), '"'), u => kt("Error", "foreign import requires a quoted .c or .js path", 0, 0, Nil{}), u => f_pn(fpe_legacy(ts, "foreign import requires a quoted .c or .js path", "'\"'")))
+--- a/src/front/sugar.bend
++++ b/src/front/sugar.bend
+@@ -174,11 +174,11 @@
+ 
+ @unsafe
+ def f_do_parameters(monad, ts):
+-  f_choose(FParsed, f_eq(f_tx(ts), "<>"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_choose(FParsed, f_eq(f_tx(ts), "<"), u => f_do_parameters_open(monad, f_space(f_tl(ts))), u => f_err(ts, "expected <")))
++  f_choose(FParsed, f_eq(f_tx(ts), "<>"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_choose(FParsed, f_eq(f_tx(ts), "<"), u => f_do_parameters_open(monad, f_space(f_tl(ts))), u => fpe_error(ts, "expected <", "'<'")))
+ 
+ @unsafe
+ def f_do_parameters_open(monad, ts):
+-  f_choose(FParsed, f_eq(f_tx(ts), ";"), u => f_err(ts, "expected term"), u => f_choose(FParsed, f_eq(f_tx(ts), ">") || f_eq(f_tx(ts), ">op"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_do_types(monad, f_args(ts, ">", Nil{}))))
++  f_choose(FParsed, f_eq(f_tx(ts), ";"), u => fpe_error(ts, "expected term", "a term"), u => f_choose(FParsed, f_eq(f_tx(ts), ">") || f_eq(f_tx(ts), ">op"), u => f_do_types(monad, FParsed{kt("Args", "", 0, 1, Nil{}), f_tl(ts)}), u => f_do_types(monad, f_args(ts, ">", Nil{}))))
+ 
+ @unsafe
+ def f_do_bind_types(types, ty):

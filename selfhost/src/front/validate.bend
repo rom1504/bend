@@ -158,7 +158,7 @@ law f_import_alias:
   for +path: String
   for +book: List<&2,KDef>
   for +imports: List<&2, KTerm>
-  FResult
+  FRawResult
 
 law f_validate_param:
   for +ts: List<&2, FToken>
@@ -176,7 +176,7 @@ def f_alias_chars(s):
 
 @unsafe
 def f_import_alias(ts, path, book, imports):
-  f_choose(FResult, String.ends_with(path, ".bend") && f_alias_valid(f_tx(f_tl(ts))), u => f_tops(f_tl(f_tl(ts)), book, Con{kt("Import", path, 0, 0, [kt("Alias", f_tx(f_tl(ts)), 0, 0, Nil{})]), imports}, False{}), u => f_result(book, "an import requires a .bend path and a valid alias", imports))
+  f_choose(FRawResult, String.ends_with(path, ".bend") && f_alias_valid(f_tx(f_tl(ts))), u => f_tops(f_tl(f_tl(ts)), book, Con{kt("Import", path, 0, 0, [kt("Alias", f_tx(f_tl(ts)), 0, 0, Nil{})]), imports}, False{}), u => f_result(book, kt("Error", "an import requires a .bend path and a valid alias", 0, 0, Nil{}), imports))
 
 @unsafe
 def f_validate_param(ts, end, acc):
@@ -210,7 +210,7 @@ law f_def_prior:
   for +imports: List<&2, KTerm>
   for +unsafe: Bool
   for +old: KDef
-  FResult
+  FRawResult
 
 @unsafe
 def f_bare_params(params):
@@ -222,7 +222,7 @@ def f_bare_params(params):
 
 @unsafe
 def f_def_prior(name, p, book, imports, unsafe, old):
-  f_choose(FResult, f_eq(dk(old), "Missing"), u => f_def_base(name, p, book, imports, unsafe), u => f_choose(FResult, f_eq(dk(old), "Def") && f_eq(tg(dv(old)), "Absent") && f_bare_params(ks(f_pn(p))) && U32.is_ge(f_len(ks(f_pn(p))), dx(old)), u => f_choose(FResult, f_eq(f_tx(f_pr(p)), ":"), u => f_def_base(name, p, book, imports, unsafe), u => f_result(book, nm(f_pn(f_err(f_pr(p), "expected : (a definition filling a law has no return annotation)"))), imports)), u => f_result(book, "a definition must uniquely fill its law with plain parameter names", imports)))
+  f_choose(FRawResult, f_eq(dk(old), "Missing"), u => f_def_base(name, p, book, imports, unsafe), u => f_choose(FRawResult, f_eq(dk(old), "Def") && f_eq(tg(dv(old)), "Absent") && f_bare_params(ks(f_pn(p))) && U32.is_ge(f_len(ks(f_pn(p))), dx(old)), u => f_choose(FRawResult, f_eq(f_tx(f_pr(p)), ":"), u => f_def_base(name, p, book, imports, unsafe), u => f_result(book, f_pn(f_err(f_pr(p), "expected : (a definition filling a law has no return annotation)")), imports)), u => f_result(book, kt("Error", "a definition must uniquely fill its law with plain parameter names", 0, 0, Nil{}), imports)))
 
 law f_scope_local_valid:
   for +t: KTerm

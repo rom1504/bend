@@ -1,0 +1,50 @@
+{
+  "kind": "phase5-matcher-head-selected-audit",
+  "complete": true,
+  "scope": "16 custom acceptance/phase checks and12 exact executions pass; six pinned phases repaired but three strict diagnostic checks still fail; three sibling grammar residuals retained",
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/matchers/candidate-v1/api.mjs",
+    "sha256": "61f64b45ca8f55e5bca64252c8e84ebc0e429076ecd207f91676f859594b8689"
+  },
+  "bootstrap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/matchers/candidate-v1/api.mjs.bootstrap.json",
+    "sha256": "89e662351b9585defaa60ee6f159e25e766d2564956122970583b5cad818bb4d"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/matchers/candidate-v1/snapshot/build/typed/snapshots/a3bdc71a3f1bcd58fa5740c4504fda08b27a44457878de05f1b8983015c3e4b3/compiler.bend",
+    "sha256": "b1176efbb33f547d4ad89f0e8869e74f0f3c6b4175090838ac4272f6c403c764"
+  },
+  "focused": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/matchers/focused-v1/selected/paired.json",
+    "sha256": "d10524510e25abd31196dea26ab390ddc0dcdd282468fa3db8098bd26c6b489a"
+  },
+  "execution": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/matchers/execution-v1/selected/paired.json",
+    "sha256": "db33405e12577c0add79608eae8c2922b972264606893ba1917ad0e80f287279"
+  },
+  "pinnedAndResidual": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/matchers/pinned-residual-v1/selected/paired.json",
+    "sha256": "5a3fce59f8b3a9be76e8b57e6b94266eee7a1ef08f3868d64a6f9d4186d64e1f"
+  },
+  "fixedFreshBaselineCases": [
+    "phase5-matchers/braced-constructor",
+    "phase5-matchers/call",
+    "phase5-matchers/character",
+    "phase5-matchers/numeric",
+    "phase5-matchers/numeric-bad-body",
+    "phase5-matchers/string"
+  ],
+  "pinnedPhaseRepairs": 6,
+  "pinnedStrictCheckFailures": 3,
+  "unfixedSiblingCases": [
+    "phase5-matchers/missing-open-brace",
+    "phase5-matchers/repeated-arm-semicolon",
+    "phase5-matchers/tail-semicolon"
+  ],
+  "exactFocusedDiagnosticDifferences": 9,
+  "auditor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/frontend/phase5-matchers-audit.py",
+    "sha256": "4e12dbe603ee63cc25222cb9086e80bb178254d4289683299da4a565dd710eb4"
+  },
+  "initialOracleCorrection": "(MatcherOn : MatcherBit) is namespace syntax preserving raw Ref, so it is a valid key; initial negative oracle retained and revised in separate cases-v2.json"
+}

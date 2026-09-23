@@ -1,0 +1,317 @@
+{
+  "scope": "P522 focused integration: exact negative diagnostics where proven; remaining acceptance/phase explicitly separate. Loader/order controls retained independently.",
+  "cases": [
+    {
+      "id": "phase5-embedded-parser/upstream-statement-lam",
+      "file": "upstream-statement-lam.bend",
+      "expected": "Error:\n- expected : '}'\n- observed : ':'\nLocation:\n24 |   p = {P8a{k, (k + 1 : U32)} : P8a}\n25>|   \\{0: eat(p, 7); n => eat(p, n)}\n26 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/nested-local",
+      "file": "nested-local.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n3 |   x = 0;\n4>|   (1]\n5 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/nested-local-two",
+      "file": "nested-local-two.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n4 |   y = 1;\n5>|   (2]\n6 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/nested-value-first",
+      "file": "nested-value-first.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n2 | def main() -> U32:\n3>|   x = (0];\n4 |   (1}\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/nested-prior-binder",
+      "file": "nested-prior-binder.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/nested-import",
+      "file": "nested-import.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n3 |   x = 0;\n4>|   (1]\n5 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/nested-empty-import",
+      "file": "nested-empty-import.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n3 |   x = 0;\n4>|   (1]\n5 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/import-error-first",
+      "file": "import-error-first.bend",
+      "accept": false,
+      "rejectPhase": "load",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/accept-simple",
+      "file": "accept-simple.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/accept-group",
+      "file": "accept-group.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/accept-unicode",
+      "file": "accept-unicode.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/accept-law",
+      "file": "accept-law.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/accept-type",
+      "file": "accept-type.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/close-paren",
+      "file": "close-paren.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n2 | def main() -> U32:\n3>|   (0]\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/known-gap-close-group-type",
+      "file": "known-gap-close-group-type.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n2 | def main() -> U32:\n3>|   (0 : U32]\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/close-equation",
+      "file": "close-equation.bend",
+      "expected": "Error:\n- expected : '}'\n- observed : ']'\nLocation:\n2 | law example:\n3>|   {0 == 0 : U32]\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/close-index",
+      "file": "close-index.bend",
+      "expected": "Error:\n- expected : ']'\n- observed : '}'\nLocation:\n2 | def main() -> U32:\n3>|   0[1}\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/duplicate-ctor",
+      "file": "duplicate-ctor.bend",
+      "expected": "Error:\n- expected : a fresh constructor name (duplicate declaration: UniqueCtor)\n- observed : '{'\nLocation:\n4 | type Two is Data:\n5>|   UniqueCtor{}\n6 | def main() -> U32:\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/duplicate-local-ctor",
+      "file": "duplicate-local-ctor.bend",
+      "expected": "Error:\n- expected : a fresh constructor name (duplicate declaration: UniqueCtor)\n- observed : '{'\nLocation:\n3 |   UniqueCtor{}\n4>|   UniqueCtor{}\n5 | def main() -> U32:\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/duplicate-spaced-ctor",
+      "file": "duplicate-spaced-ctor.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/eof-no-newline",
+      "file": "eof-no-newline.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/eof-with-newline",
+      "file": "eof-with-newline.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/comment-before-fault",
+      "file": "comment-before-fault.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n3 |   (0 # comment\n4>|   ]\n5 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/tab-before-fault",
+      "file": "tab-before-fault.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n2 | def main() -> U32:\n3>| \t(0]\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/nonbmp-prefix",
+      "file": "nonbmp-prefix.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n2 | def main() -> U32:\n3>|   (\"\ud83d\ude42\", 0]\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/nonbmp-prefix-direct",
+      "file": "nonbmp-prefix-direct.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n2 | def main() -> U32:\n3>|   (\"\ud83d\ude42\"]\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/nonbmp-fault",
+      "file": "nonbmp-fault.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/two-errors",
+      "file": "two-errors.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n2 | def main() -> U32:\n3>|   (0]\n4 | def later() -> U32:\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    },
+    {
+      "id": "phase5-embedded-parser/legacy-first",
+      "file": "legacy-first.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/comment-cursor-fallback",
+      "file": "comment-cursor-fallback.bend",
+      "accept": false,
+      "rejectPhase": "parse",
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/legacy-undefined",
+      "file": "legacy-undefined.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/import-valid",
+      "file": "import-valid.bend",
+      "accept": true,
+      "rejectPhase": null,
+      "lanes": [
+        "parse"
+      ],
+      "coverage": "acceptance/phase only; exact or unchanged differential remains in isolated evidence"
+    },
+    {
+      "id": "phase5-embedded-parser/import-bad",
+      "file": "import-bad.bend",
+      "expected": "Error:\n- expected : ')'\n- observed : ']'\nLocation:\n2 | def value() -> U32:\n3>|   (0]\n4 |\nexit 1",
+      "lanes": [
+        "check"
+      ],
+      "coverage": "exact parser diagnostic"
+    }
+  ]
+}

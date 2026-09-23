@@ -361,3 +361,30 @@ including9positive interpreter/JS/native executions and exact pinnednegative
 diagnostics, while retaining10custom diagnostic differences. Final integration
 evidence archives4,890historicalfileidentities/3,260objects/9,383,519compressed
 bytes. Full-source timings and genuine checked self-reproduction remain pending.
+
+## 2026-09-23 01:33 UTC — P5-023 complete; final proof running
+
+The [final-source comparison](../implementation/phase5/full-source-comparison.md)
+completed at01:25:56UTC. All six fresh-process checking, emitter-family byte and
+execution gates pass. Mean process wall is60.248s for pinned TypeScript,
+642.581s for genuine checked B1 and363.392s for its maintained derivative:
+43.45%less than B1,6.03×the TypeScript workflow. Both opposite-order pairs
+improve. The documented Base-cache asymmetry, two samples per variant and distinct
+emitter/export policies remain explicit. An independent raw-file audit passes;
+the archive preserves253fileidentities/205objects/1,926,588compressedbytes.
+The consumed precommitted plan is unchanged; its later association record is
+dated honestly and does not rewrite benchmark inputs.
+
+A [targeted static-review counterexample](../implementation/phase5/static-counterexample.md)
+confirms an existing multiline-string lexer cursor defect and a new wrong source
+excerpt in final05. The actual offending line is5; both earlier/final Bend report4,
+and the new renderer highlights string content on that line. Rejection phase and
+checked flags are unchanged; the valid neighbor agrees exactly. Both four-case
+paired gates retain two exact diagnostic mismatches. No fix was attempted on
+the frozen source.
+
+The fresh unchanged maintained self-host procedure started at01:32:44UTC from
+genuine final B1, in its own directory with no imported measurement stages.
+Competing compiler jobs are paused. After actual B1→H→H completion, the plan is
+full public-H/derivative frontend equivalence followed by bounded paired broad
+JS/native execution. No proof or unexecuted backend coverage is claimed yet.

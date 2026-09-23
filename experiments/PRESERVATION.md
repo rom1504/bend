@@ -1,4 +1,40 @@
-# Phase 4 preservation index
+# Compiler evidence preservation index
+
+## Phase 5 checkpoint — 2026-09-23 01:56 UTC
+
+The [campaign report](../implementation/phase5/report.md) links each source
+experiment, its failures and its scoped validation. The main completed inputs
+and observations are retained here:
+
+| Evidence | Durable entry | Scope |
+| --- | --- | --- |
+| Final combined checked source and earlier integration failures | [Integration archive](../implementation/phase5/integration-final-evidence/manifest.json) | Genuine attempt03/04/05 inputs and raw selected/full frontend results, including the original failed selections. |
+| Exact frontend progress | [Comparison](../implementation/phase5/final-conformance.md) | Frozen baseline, fresh pinned reference and final B1: all 2,756 observations, unchanged fixtures and exact new/resolved differences. |
+| Final full-source performance | [Comparison archive](../implementation/phase5/full-source-evidence/manifest.json), [report](../implementation/phase5/full-source-comparison.md) | All six checked compilation rows, actual emitted modules, execution-oracle records, cache/input identities and exact consumed tools. |
+| Independent timing audit | [Final audit](../implementation/phase5/full-source-audit.json), [audit history](../implementation/phase5/full-source-audit-history/manifest.json) | Actual raw-file/byte verification and both successful auditor versions; no compiler or oracle rerun is implied. |
+| Selected actual backend executions | [Backend report and archive](../implementation/phase5/final-backends.md) | 42 declared observations per compiler, actual C and executables, corrected fixture-author failures and toolchain prerequisites. |
+| Confirmed multiline diagnostic defect | [Counterexample](../implementation/phase5/static-counterexample.md) | Exact original/final/TS observations and valid neighbor; compact evidence is not a complete standalone compiler capsule. |
+
+The controlled equality and Base-memo reports link their own complete ABBA
+archives. Each generic Phase 5 archive maps historical `files` identities to
+content-addressed gzip `objects`; verify the compressed SHA, decompress, then
+verify the original length and SHA before using an object. Historical tool
+versions recovered from immutable snapshots or earlier archives are labeled
+`historicalBytesFrom`. A manifest's `complete` describes capture of its declared
+scope, never the correctness verdict of an archived failed experiment.
+
+Files larger than 32 MiB are listed as external prerequisites rather than
+silently omitted. Node, Clang, linked system libraries and the recorded execution
+environment are not a hermetic bundled toolchain. Absolute paths retain
+historical identity; restoring bytes elsewhere creates neither a new checked
+bootstrap nor a relocated fixed-point proof. Use a fresh checked run if source,
+canonical Base paths, artifacts or the environment change.
+
+The final fresh fixed-point procedure is currently running. Public-H/derived
+frontend and broad JS/native validation are still prospective at this cutoff;
+this index does not claim their completion or preservation before they finish.
+
+## Phase 4 historical index
 
 Updated through **P4-026**, 2026-09-22, approximately 20:11 UTC. Preservation is
 separate from correctness, performance and promotion. New files become durable

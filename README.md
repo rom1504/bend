@@ -39,6 +39,11 @@ conformance, simplification and development-loop work.
 The [latest frontend comparison](implementation/phase5/final-conformance.md) preserves
 all 919 positive fixtures, reduces strict check failures from 377 to 318, and
 records the remaining diagnostic and acceptance differences explicitly.
+The [final-source timing comparison](implementation/phase5/full-source-comparison.md)
+measures 60.25 seconds for pinned TypeScript, 642.58 seconds for checked B1 and
+363.39 seconds for its verified equality derivative. Those are full compilation
+process times under the documented cache policy, separate from edit-loop and
+generated-program runtime measurements.
 The [phase 4 development guide](docs/PHASE4_DEVELOPMENT.md) covers checked source
 experiments, bounded profiling and private compiler images; follow the
 [phase 4 report](implementation/phase4/report.md) for measured progress.

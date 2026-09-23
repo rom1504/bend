@@ -1,0 +1,223 @@
+{
+  "kind": "phase5-multiline-cursor-counterexample",
+  "complete": true,
+  "compilerModified": false,
+  "classificationChanges": 0,
+  "exactDifferencesPerVariant": 2,
+  "rows": {
+    "baseline-01": [
+      {
+        "id": "phase5-review/multiline-string-cursor",
+        "lane": "parse",
+        "referenceVerdict": "pass",
+        "candidateVerdict": "pass",
+        "reference": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '?'\nLocation:\n4 | ?\"\n5>| ?\n6 | ",
+          "output": null
+        },
+        "candidate": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 4:0: expected def, law, type or import; got ?",
+          "output": null
+        },
+        "exactAgreement": false,
+        "semanticAgreement": true,
+        "referenceEvidence": "frontend-rejection",
+        "candidateEvidence": "frontend-rejection"
+      },
+      {
+        "id": "phase5-review/multiline-string-cursor",
+        "lane": "check",
+        "referenceVerdict": "pass",
+        "candidateVerdict": "pass",
+        "reference": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '?'\nLocation:\n4 | ?\"\n5>| ?\n6 | ",
+          "output": null
+        },
+        "candidate": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error: line 4:0: expected def, law, type or import; got ?",
+          "output": null
+        },
+        "exactAgreement": false,
+        "semanticAgreement": true,
+        "referenceEvidence": "frontend-rejection",
+        "candidateEvidence": "frontend-rejection"
+      },
+      {
+        "id": "phase5-review/multiline-string-valid",
+        "lane": "parse",
+        "referenceVerdict": "pass",
+        "candidateVerdict": "pass",
+        "reference": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": null
+        },
+        "candidate": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": null
+        },
+        "exactAgreement": true,
+        "semanticAgreement": true,
+        "referenceEvidence": "frontend-acceptance",
+        "candidateEvidence": "frontend-acceptance"
+      },
+      {
+        "id": "phase5-review/multiline-string-valid",
+        "lane": "check",
+        "referenceVerdict": "pass",
+        "candidateVerdict": "pass",
+        "reference": {
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": "All terms check.\n"
+        },
+        "candidate": {
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": "All terms check.\n"
+        },
+        "exactAgreement": true,
+        "semanticAgreement": true,
+        "referenceEvidence": "checker-acceptance",
+        "candidateEvidence": "checker-acceptance"
+      }
+    ],
+    "final-01": [
+      {
+        "id": "phase5-review/multiline-string-cursor",
+        "lane": "parse",
+        "referenceVerdict": "pass",
+        "candidateVerdict": "pass",
+        "reference": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '?'\nLocation:\n4 | ?\"\n5>| ?\n6 | ",
+          "output": null
+        },
+        "candidate": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '?'\nLocation:\n3 |   \"a\n4>| ?\"\n5 | ?",
+          "output": null
+        },
+        "exactAgreement": false,
+        "semanticAgreement": true,
+        "referenceEvidence": "frontend-rejection",
+        "candidateEvidence": "frontend-rejection"
+      },
+      {
+        "id": "phase5-review/multiline-string-cursor",
+        "lane": "check",
+        "referenceVerdict": "pass",
+        "candidateVerdict": "pass",
+        "reference": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '?'\nLocation:\n4 | ?\"\n5>| ?\n6 | ",
+          "output": null
+        },
+        "candidate": {
+          "status": "error",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 1,
+          "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '?'\nLocation:\n3 |   \"a\n4>| ?\"\n5 | ?",
+          "output": null
+        },
+        "exactAgreement": false,
+        "semanticAgreement": true,
+        "referenceEvidence": "frontend-rejection",
+        "candidateEvidence": "frontend-rejection"
+      },
+      {
+        "id": "phase5-review/multiline-string-valid",
+        "lane": "parse",
+        "referenceVerdict": "pass",
+        "candidateVerdict": "pass",
+        "reference": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": null
+        },
+        "candidate": {
+          "status": "ok",
+          "phase": "parse",
+          "checked": false,
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": null
+        },
+        "exactAgreement": true,
+        "semanticAgreement": true,
+        "referenceEvidence": "frontend-acceptance",
+        "candidateEvidence": "frontend-acceptance"
+      },
+      {
+        "id": "phase5-review/multiline-string-valid",
+        "lane": "check",
+        "referenceVerdict": "pass",
+        "candidateVerdict": "pass",
+        "reference": {
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": "All terms check.\n"
+        },
+        "candidate": {
+          "status": "ok",
+          "phase": "check",
+          "checked": true,
+          "exitCode": 0,
+          "diagnostic": null,
+          "output": "All terms check.\n"
+        },
+        "exactAgreement": true,
+        "semanticAgreement": true,
+        "referenceEvidence": "checker-acceptance",
+        "candidateEvidence": "checker-acceptance"
+      }
+    ]
+  },
+  "scope": "Pre-existing line-number defect confirmed; final renderer additionally displays the incorrect source excerpt. Valid neighbor unchanged. Four selected observations perB1 with independent liveTS reference pervariant; not a fullparser gate.",
+  "fixtureIsolation": "Exact sources copied to sibling static-review-fixtures because external fixture directory recursive hashing would otherwise include mutable output subdirectories. Original selection and plan retained."
+}

@@ -1,8 +1,8 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-23 00:43 UTC; baseline `7d69850`, final checked integration API `5969c53d34a0…`.
+Evidence cutoff: 2026-09-23 01:33 UTC; baseline `7d69850`, final checked integration API `5969c53d34a0…`.
 Authorized Phase 5 window: 2026-09-22 21:39:36 to 2026-09-23 03:39:36 UTC.
-Next review: controlled final full-source comparison, about 01:25 UTC.
+Next review: fresh checked self-reproduction, expected around 02:12 UTC, with a 55-minute outer bound.
 
 ## User objective
 
@@ -13,33 +13,36 @@ and results, and commit/push validated increments. See the
 
 ## Established position
 
-- Campaign baseline: 59 Bend modules, 16,055 physical lines; recount after source freeze.
+- Production source: 59 Bend modules, 16,055→16,509 physical lines (+2.83%).
 - Final integration05 preserves all 919 positive fixtures and completes all
   2,756 frontend observations: 1,060 strict check passes / 318 failures, down
   from 377 failures at campaign baseline. Focused 387 declared oracles pass;
   110 exact diagnostic differences remain in that explicit acceptance selection.
-- Last completed live comparison before that: integration02 has556differences,
-  including38acceptance/phase observations. Do not relabel those as final counts.
+- Final live comparison has444exact differences (560at baseline), including16
+  status/phase differences (50at baseline). There are116new exact agreements and
+  zero new exact regressions. The remaining428text-field differences can include
+  different selected errors; they are not all assumed cosmetic.
 - Focused reused loop 9.328 seconds; checked rebuild plus cold cases 37.217 seconds.
 - Controlled full frontend ABBA:301.905→229.753s with maintained equality,
   all11,024observations/history records exact and known failures retained.
-- Exact-image B1 equality improves controlled full-source wall 630.026→339.992s.
-  A reusable checked-source derivative now passes new-build correctness and
-  controlled Phase5 small/full-frontend measurements. Public H remains separate.
+- Final-source controlled P5-023 completes all six fresh processes and output
+  gates: TS60.248s /checkedB1 642.581s /maintained derivative363.392s mean process
+  wall. The derivative uses43.45%less time than B1 and remains6.03×slower than TS
+  for the documented workflow/cache policy. Public H remains separate.
 - Private Base-decoding memo passes84mixed requests/15adversarial groups; focused
   ABBA16.629→10.144s (39.00%). Full-inventory ABBA passes all 11,024 observations/history records and reduces
   mean wall292.602→242.597s(17.09%). The exact measured host is promoted; no
   combined equality+memo gain is inferred.
 - Phase 4 correctness/performance records remain immutable and artifact-specific.
 
-## Ranked work and cheapest falsifiers
+## Remaining validation, in order
 
-| Rank | Work | First decisive gate | Owner |
+| Rank | Work | Decisive gate | Owner |
 | --- | --- | --- | --- |
-|1|Shared binder validation and decorator grammar|Live TS/B1 counterexamples plus valid neighbors|compact_index|
-|2|Current mismatch triage and shared diagnostic fidelity|Cluster raw differences, verify intended rule and exact rendering|root|
-|3|One maintained development entry|Fresh checked build, selected probes, drift/failure/resume controls|direct_calls|
-|4|Portable B1 equality derivative|Strict provenance/dependency recognition, two new checked builds and Unicode/error controls|lexer_analysis|
+|1|Fresh unchanged checked self-reproduction|Actual B1→H→H, identical stage2/stage3 bytes and unchanged inputs|root|
+|2|Final H and derivative frontend inventory|All2,756observations/artifact, exact B1 equivalence and closed histories|compact_index|
+|3|Paired broad JS/native execution|All1,981eligible probes/compiler, preserved failures and actual outputs|direct_calls|
+|4|Final evidence/report audit|Consistent claims, durable inputs and explicit remaining defects|lexer_analysis/root|
 
 Two reviewed source batches have complete frontend gates and no new differences.
 P5-005 is rejected: four exact repairs do not justify repeated quadratic source
@@ -55,11 +58,14 @@ selection, with the original failing combined run retained.
 
 P5-021 is complete. Final selected CPU/backend coverage passes 84 declared
 observations (42 per compiler), including actual native compilation/execution.
-P5-023 prepares the final complete-source TS/B1/derived comparison; cheap smoke
-failures revealed differing library export policy and natural root order, now
-explicitly corrected before timing. Reserve all cores during controlled timing
-and then the unchanged genuine checked-B1 fixed-point procedure. Broader JS and
-native correctness can run after those gates, with no timing claim.
+P5-023 is complete and independently audited. Cheap smoke failures revealed
+differing library export policy and natural root order; both were explicitly
+handled before timing. The unchanged genuine checked-B1 fixed-point procedure
+started at01:32:44UTC with all competing intentional compiler jobs paused.
+Public H/derivative full frontend gates follow, then broad JS/native correctness
+on four cores, with no timing claim. A tiny static-review probe confirmed an
+existing multiline-string cursor error that makes the new renderer highlight
+the wrong line; it remains unfixed and acceptance behavior is unchanged.
 No general parser/kernel/emitter rewrite and no reopening rejected Phase 4
 memoization/uncurrying/representation ideas without new evidence.
 
@@ -88,7 +94,8 @@ No broad/full-source job without root scheduling and an external deadline.
 Commit the initial design before implementation, then validated increments.
 Compiler source is frozen; freeze the final host/build by00:30–00:45UTC. Reserve
 roughly40minutes for controlled full-source comparison, then40minutes for checked
-self-reproduction with backend correctness jobs on other cores. Retain ample
-time for a failed gate rather than starting another source experiment. Reserve
-03:10–03:39UTC for documentation, audits, commit/push and final status. Stop
+self-reproduction. The final schedule gives the proof exclusive compiler access,
+then four cores to H/derivative frontend validation (cutoff02:45UTC) and the broad
+backend gate (45-minute bound). Prepare documentation during the proof and reserve
+the remaining final window for archives, audits, commit/push and final status. Stop
 new experiments at the authorized boundary; report any unfinished gates honestly.

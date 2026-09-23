@@ -99,3 +99,12 @@ reduced mean wall from 292.6 to 242.6 seconds (17.1%), with every observation an
 worker history unchanged. See [the cache policy and gates](../implementation/phase5/persistent-base-decoding.md).
 The equality and Base-memo percentages come from separate comparisons and must
 not be multiplied to claim an unmeasured combined gain.
+
+On the final Phase 5 source, the [controlled complete-source comparison](../implementation/phase5/full-source-comparison.md)
+measures mean process wall of 60.25 seconds for pinned TypeScript, 642.58 seconds
+for checked B1 and 363.39 seconds for its maintained equality derivative. All six
+compilations pass checking, output-byte and execution gates. Bend uses validated
+disk Base caches while TypeScript reloads/checks Base, so the 6.03× derivative/TS
+ratio describes these workflows. This is a long integration workload; use the
+focused commands above for ordinary edits. It does not measure public self-emitted
+H or establish faster runtime for generated user programs.

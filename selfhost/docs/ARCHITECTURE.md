@@ -81,6 +81,10 @@ expectations and adjacent constructor-freshness failures render once on rejectio
 unknown or inconsistent positions and unsupported Unicode cursors retain their
 legacy text. Successful parsing does not scan source text to render diagnostics.
 This frontend formatter has no dependency on the checker diagnostic modules.
+One confirmed location limitation remains: a physical newline inside a quoted
+string can leave the lexer's next-token cursor on the wrong line, and a matching
+character there can pass the formatter's guard. The [retained counterexample](../../implementation/phase5/static-counterexample.md)
+records unchanged rejection behavior but an incorrect highlighted excerpt.
 
 An embedded parser Error can survive inside a declaration until graph validation.
 Only after that validation rejects, the loader can recover the same Error in the

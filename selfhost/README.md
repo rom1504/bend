@@ -22,6 +22,11 @@ source overlays, bounded profiling and the current structural optimization work;
 the [phase 4 report](../implementation/phase4/report.md) separates results from
 experimental artifacts. The [phase 5 report](../implementation/phase5/report.md)
 tracks current conformance and simplification work with artifact-specific evidence.
+Its [final frontend comparison](../implementation/phase5/final-conformance.md)
+preserves all 919 positives, with 318 strict check failures and 444 exact live
+TypeScript differences remaining. The [current full-source timing report](../implementation/phase5/full-source-comparison.md)
+measures 60.25 seconds for TypeScript and 363.39 seconds for the explicit optimized
+B1 derivative; self-emitted H has separate validation and timing evidence.
 The [experiment ledger](../experiments/ledger.md) and
 [current strategy](../experiments/STEERING.md) track tested hypotheses and the
 next decisions; see the [workflow](../experiments/README.md) before starting a
@@ -37,7 +42,7 @@ as a claim of full upstream equivalence or use its checker as a trusted proof
 verifier.** The reports distinguish implemented components, measured passes,
 incorrect behavior, and targets that have not been tested on hardware.
 
-The recorded full run covers all 1,378 upstream fixtures. All 919 positive
+The supplied baseline's recorded full run covers all 1,378 upstream fixtures. All 919 positive
 programs parse and check; every eligible positive interpreter, JavaScript and
 native CPU probe either matches its expected result or its exact upstream
 output exemption. Negative compatibility still includes diagnostic rendering,

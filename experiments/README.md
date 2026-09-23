@@ -28,6 +28,11 @@ instructions do not become instructions for this repository.
 - Existing `implementation/phase*/` reports remain canonical evidence. Link them
   instead of copying competing versions of the same conclusion.
 
+An experiment can freeze its plan before timing. In that case, leave its
+pre-execution status and bytes unchanged, and put outcomes in the linked
+implementation report, ledger and current steering. The frozen plan is a dated
+input, not a competing statement of current completion.
+
 The [preservation audit](PRESERVATION.md) records which historical tool versions,
 failures and artifacts are tracked, how to restore them, and any remaining gaps.
 

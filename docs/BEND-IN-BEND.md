@@ -21,6 +21,35 @@ Source changes and frozen distributed artifacts have separate validation evidenc
 The [phase 2 guide](PHASE2_DEVELOPMENT.md) adds exact differential selections,
 retained failure replay and the native graph-manifest workflow.
 
+## Work on the current source
+
+For new compiler edits, use the [Phase 5 development workflow](PHASE5_DEVELOPMENT.md).
+It builds a genuinely checked compiler, freezes source/runtime/host identities,
+prepares a validated Base cache and runs selected tests against pinned TypeScript.
+The workflow's `validate` command reuses that frozen compiler for fixture-only
+changes; run a new build when compiler source changes. The optional equality
+profile is a verified derivative with separate provenance.
+
+The [current report](../implementation/phase5/report.md) and
+[frontend comparison](../implementation/phase5/final-conformance.md) describe the
+current source. Bundled `dist/` artifacts retain their own historical validation;
+ordinary CLI commands select an artifact and do not silently rebuild changed
+source. Use a newly built attempt's API to exercise current source changes:
+
+```sh
+# From selfhost/, after creating build/dev/attempt-01 with the maintained workflow.
+BEND_TYPED_API="$PWD/build/dev/attempt-01/api.mjs" \
+BEND_TYPED_RUNTIME="$PWD/build/dev/attempt-01/snapshot/src/runtime.mjs" \
+BEND_BASE="$PWD/.bootstrap/upstream/bend2/base.bend" \
+  node build/dev/attempt-01/snapshot/tools/typed-driver.mjs \
+  tests/conformance/typed-smoke/base-u32.bend --check-only
+```
+
+For an equality-profile attempt, its selected API is recorded in `attempt.json`;
+the original `api.mjs` remains the checked parent. The maintained `validate`
+command follows the selected artifact automatically. Full checked self-reproduction
+is a separate integration gate, not a prerequisite for every small edit.
+
 ## Run a compiler artifact
 
 Use Node.js 24 or newer. From `selfhost/`:

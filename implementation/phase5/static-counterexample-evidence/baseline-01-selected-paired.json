@@ -1,0 +1,327 @@
+{
+  "kind": "targeted-paired-conformance",
+  "started": "2026-09-23T01:27:17.849Z",
+  "complete": false,
+  "selectedComplete": true,
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/static-review/baseline-01/target.json",
+    "sha256": "2c001ae129993cf85ec12e9d33067439c858c9fa1178f265288d0c936fc33dd7"
+  },
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/integration/attempt-01/api.mjs",
+      "sha256": "a17d909d9c481784545b5ca36c9f1dba73960eaa98cee2ac089362321674b9a4"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/integration/attempt-01/snapshot/src/runtime.mjs",
+      "sha256": "26f5eee2f54b194b64f768df6ff505c67bf7a5df2159aa06caf53ecba54e910b"
+    },
+    "bootstrapReport": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/integration/attempt-01/api.mjs.bootstrap.json",
+      "sha256": "0f7267a8f4967bd6e57271b8b02ef09c90060722bb4b24f62b957b1ec3be96a1"
+    }
+  },
+  "environment": {
+    "BEND_UPSTREAM": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+    "BEND_BASE": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream/bend2/base.bend",
+    "BEND_TYPED_API": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/integration/attempt-01/api.mjs",
+    "BEND_TYPED_RUNTIME": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/integration/attempt-01/snapshot/src/runtime.mjs"
+  },
+  "harnessSources": [
+    {
+      "file": "run.mjs",
+      "sourceSha256": "7198c672c15d6fa9b20cd4010446966713fce1ed6054ae13bff1e6500521b6a0",
+      "consumedSha256": "d7ea1acafb81533d359833f03ee9148e995e3ad3ecf8304bff5309f743776360"
+    },
+    {
+      "file": "worker.mjs",
+      "sourceSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "consumedSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+    },
+    {
+      "file": "inventory.mjs",
+      "sourceSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd",
+      "consumedSha256": "1661cd577a897f4dd711aadec4b1b5d67031b9c315b82255538cdde6568de6fd"
+    },
+    {
+      "file": "judge.mjs",
+      "sourceSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466",
+      "consumedSha256": "4940d3c351457291ca3000596ff61731deb04d9c94c80b23ad3103344680b466"
+    },
+    {
+      "file": "selection.mjs",
+      "sourceSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2",
+      "consumedSha256": "c30b45c0c18052312c51084ae4b316370c070b3f27e657d4762b05281df254b2"
+    },
+    {
+      "file": "run-probe.mjs",
+      "sourceSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c",
+      "consumedSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c"
+    },
+    {
+      "file": "replay.mjs",
+      "sourceSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94",
+      "consumedSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94"
+    },
+    {
+      "file": "persistent-probe.mjs",
+      "sourceSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225",
+      "consumedSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225"
+    },
+    {
+      "file": "persistent-worker.mjs",
+      "sourceSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+      "consumedSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d"
+    },
+    {
+      "file": "adapters/upstream.mjs",
+      "sourceSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd",
+      "consumedSha256": "7414d35c6f58ba7e7542afa28816c9cdc1a81bbff9511bc9b37686d40a65a7dd"
+    }
+  ],
+  "targetSourceSha256": "2b273483c6adfd9bb5c52b614557741595560fb53acccd311d83ab87258df806",
+  "cpu": null,
+  "attempts": {
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/static-review/baseline-01/selected/reference.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/static-review/baseline-01/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "120000",
+        "--jobs",
+        "4",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "4096",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/static-review/baseline-01/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/static-review/baseline-01/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/static-review/baseline-01/selected/reference.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "b78466eb4c5eaedf2d230c3330533643f099fc7a287a61fd7e72311deb6d5363"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/static-review/baseline-01/selected/candidate.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/static-review/baseline-01/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream",
+        "--timeout",
+        "120000",
+        "--jobs",
+        "4",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "4096",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "4096",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/static-review/baseline-01/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/integration/attempt-01/snapshot/build/conformance-host/4e65ccee69b4177575a4835c226f2e6d1b666833e8bd177671fade6986092668/typed.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase5/static-review/baseline-01/selected/candidate.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "2a5cd749ec9b69c90bfd902ea3320b23512e5a586acd03b5b4eaa3c69da63ef3"
+    }
+  },
+  "rows": [
+    {
+      "id": "phase5-review/multiline-string-cursor",
+      "lane": "parse",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '?'\nLocation:\n4 | ?\"\n5>| ?\n6 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:0: expected def, law, type or import; got ?",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-review/multiline-string-cursor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '?'\nLocation:\n4 | ?\"\n5>| ?\n6 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:0: expected def, law, type or import; got ?",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-review/multiline-string-valid",
+      "lane": "parse",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-acceptance",
+      "candidateEvidence": "frontend-acceptance"
+    },
+    {
+      "id": "phase5-review/multiline-string-valid",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    }
+  ],
+  "missing": [],
+  "discrepancies": [
+    {
+      "id": "phase5-review/multiline-string-cursor",
+      "lane": "parse",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '?'\nLocation:\n4 | ?\"\n5>| ?\n6 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:0: expected def, law, type or import; got ?",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase5-review/multiline-string-cursor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '?'\nLocation:\n4 | ?\"\n5>| ?\n6 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 4:0: expected def, law, type or import; got ?",
+        "output": null
+      },
+      "exactAgreement": false,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    }
+  ],
+  "referenceSelectedComplete": true,
+  "candidateSelectedComplete": true,
+  "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+  "wallMs": 2431.88065,
+  "finished": "2026-09-23T01:27:20.284Z"
+}

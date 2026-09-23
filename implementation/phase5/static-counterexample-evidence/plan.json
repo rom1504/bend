@@ -1,0 +1,13 @@
+{
+  "kind": "phase5-read-only-review-followup",
+  "created": "2026-09-23T00:52:10.322654+00:00",
+  "executed": false,
+  "sourceFrozen": true,
+  "hypothesis": "Existing multiline quote scanning undercounts subsequent lexer lines; a matching source character could let new diagnostic rendering display the wrong line. Static suspicion only, not a measured regression.",
+  "afterExclusiveBenchmark": "Run pinned TS and final checked B1 plus earlier genuine checked integration01 on malformed case and valid neighbor, preserving exact diagnostics and classifications. Do not interrupt or contaminate controlled timings.",
+  "origin": "direct_calls bounded static review of P511/P519/P522",
+  "files": [
+    "multiline-string-cursor.bend",
+    "multiline-string-valid.bend"
+  ]
+}

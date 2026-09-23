@@ -1,6 +1,6 @@
 # Phase 5 implementation report
 
-Status: in progress, validation checkpoint at 2026-09-23 00:45 UTC.
+Status: in progress, validation checkpoint at 2026-09-23 01:33 UTC.
 The authorized six-hour campaign began at 21:39:36 UTC and ends
 2026-09-23 03:39:36 UTC. Baseline: `7d69850`; design commit: `7c7db08`.
 
@@ -8,6 +8,71 @@ The [design](../../design/phase5/conformance_and_development.md) prioritizes
 conformance, targeted simplification and reusable performance improvements.
 The [experiment ledger](../../experiments/ledger.md) and
 [current strategy](../../experiments/STEERING.md) track decisions and evidence.
+
+## Current outcomes
+
+| Final-source metric | Campaign baseline | Current checked source |
+| --- | ---: | ---: |
+| Positive fixtures passing parse and check | 919 / 919 | 919 / 919 |
+| Strict check failures | 377 | 318 |
+| Exact live frontend differences | 560 | 444 |
+| Status/phase differences | 50 | 16 |
+| Production Bend modules | 59 | 59 |
+| Production Bend physical lines | 16,055 | 16,509 |
+| Production Bend nonblank lines | 13,400 | 13,803 |
+| Production Bend definitions | 1,482 | 1,526 |
+
+No previously exact observation or strict check regressed. Remaining text-field
+mismatches can still reflect different selected errors; they are not assumed to
+be cosmetic. All check statuses match pinned TypeScript on this inventory, while
+three parse acceptance discrepancies and eight differing rejection phases
+remain. See [the complete breakdown](final-conformance.md).
+
+Two distinct controlled workflow experiments pass: the maintained equality
+profile reduces full frontend wall by 23.9% on its frozen source, and private
+Base decoding reuse reduces it by 17.1% on another frozen source. Those gains
+are not multiplied into an unmeasured combined percentage. The final-source
+[controlled compilation comparison](full-source-comparison.md) is complete:
+mean process wall is **60.25s for pinned TypeScript, 642.58s for checked B1,
+and 363.39s for its maintained equality derivative**. The derivative uses
+**43.45% less time** than checked B1 and remains **6.03× slower than TypeScript**
+on this workload and documented cache policy. All six checked compilation,
+emitter-family byte and output-execution gates pass. Public self-emitted H is a
+separate artifact; these measurements do not establish its compilation speed or
+the runtime speed of emitted user programs. Genuine checked self-reproduction
+started at 01:32:44 UTC and is pending.
+
+The [source recount](code-size.md) reports +454 production lines (+2.83%),
+principally structured diagnostics and imported declaration checks. Removing a
+duplicate core/checker filter and two obsolete Nat helpers simplifies specific
+boundaries; this is not a claim that the whole compiler shrank or that line
+counts measure semantic complexity. The [independent static review](final-static-review.md)
+records its scope and a [confirmed diagnostic-location counterexample](static-counterexample.md).
+After a physical newline inside a string, an existing lexer cursor error can
+make the new renderer highlight the wrong line. Rejection behavior is unchanged;
+the valid neighbor agrees exactly. The defect remains explicitly unfixed in
+this frozen source.
+
+## Final development workflow observations
+
+The final integration's maintained commands recorded these process durations:
+
+| Operation | Observed wall |
+| --- | ---: |
+| Checked B1 bootstrap subprocess | 14.63s |
+| Prepare its validated Base cache | 4.41s |
+| Paired 387-observation focused selection, per compiler | 42.13s total for the pair |
+| Full B1 frontend inventory, 2,756 observations | 292.25s |
+
+The build report's broader start-to-finish interval is 15.37 seconds; the table
+uses recorded child-process walls. These are completed workflow observations
+amid other correctness work, not a
+controlled speed comparison with the campaign baseline. The checked API build
+exports the ordinary API; it is distinct from the 1,566-root complete-library
+benchmark and from checked B1→H→H self-reproduction. Small edits can use the
+focused paired gate, fixture-only changes can reuse a verified build, and the
+long proof remains an integration gate. The [maintained guide](../../docs/PHASE5_DEVELOPMENT.md)
+documents those commands and their artifact boundaries.
 
 ## First integrated source
 
@@ -155,7 +220,7 @@ no classifications. Its original stricter unchanged-or-exact gate still fails on
 nine reformatted but divergent messages. The approved presentation criterion
 requires faithful rendering of the same chosen error and no newly broken exact
 oracles; these remaining parser differences are not counted as repairs.
-Compiler source is now frozen pending the final combined checks.
+Compiler source was frozen here for the final combined checks reported below.
 
 ## Faster complete frontend loops
 
@@ -175,7 +240,7 @@ measurement boundary; its percentage must not be multiplied into the equality
 result to invent a combined speedup. The [complete-inventory memo comparison](base-memo-frontend.md) now passes:
 292.602→242.597 seconds, **17.09% less**, with all 11,024 observations and closed
 worker histories exact. The two measured host files are promoted with guarded
-input/output hashes. The final combined checked build is running.
+input/output hashes and are included in the completed final combined build.
 
 ## Final combined source checkpoint — 00:43 UTC
 
@@ -210,12 +275,39 @@ both earlier failed combined selections and their immutable inputs.
 
 ## Remaining campaign work
 
-After the controlled memo window, run the final genuine combined build and
-frontend gate, selected actual CPU/backend executions, a new complete-source
-TypeScript/checked-B1/derived comparison and the unchanged checked self-host
-fixed-point procedure. Recount source/support/experimental code separately and
-archive the final input identities and failures. The default distribution and
-pinned upstream remain unchanged. The six-hour campaign is still active.
+The final genuine combined build, full B1 frontend inventory, selected actual
+CPU/backend executions and complete-source comparison have finished. The
+unchanged checked self-host fixed-point procedure is running with competing
+intentional compiler jobs paused. Next, independently validate the resulting
+public H and final derivative against the complete frontend inventory, then run
+the bounded paired broad JS/native gate. Recount the final support/experimental
+tools, archive proof and validation inputs/failures, and finish documentation.
+The default distribution and pinned upstream remain unchanged. The six-hour
+campaign is still active.
+
+## Priorities after this campaign
+
+The maintained checked/derived workflow makes focused conformance changes
+practical without repeating a full self-host build on every edit. Next, target
+the three remaining parser acceptance discrepancies and the five missing-import
+phase discrepancies, with first-error and valid-neighbor controls. Repair the
+confirmed multiline-string cursor/excerpt defect as its own checked change.
+These eight pinned fixtures plus the new reproducer are more precise targets
+than treating all 428 text-field differences as one rendering problem.
+
+Then distinguish wrong selected errors from provenance/presentation differences.
+Keep independent semantic witnesses such as the repaired Nat 8-versus-5 result:
+the pinned positive inventory alone did not expose that bug. Reuse structured
+transport and the thin maintained workflow rather than reintroducing repeated
+application reparsing or a second general validation framework.
+
+For performance, the final coarse observations still put substantial time in
+checking, annotation and lowering even after the equality optimization. Profile
+those regions on the chosen artifact before another broad representation or
+emitter change. The measured derivative leaves generated bytes unchanged and
+does not establish a runtime improvement for user programs. Local removal of
+duplicate logic is useful, but the compiler grew 2.83%; further simplification
+should be justified by a concrete shared contract and its regression gates.
 
 ## Evidence
 

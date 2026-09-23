@@ -35,9 +35,9 @@ from isolated candidates.
 | Rank | Next change | Cheapest decisive falsifier | State |
 | --- | --- | --- | --- |
 | 1 | Prefix precedence and erased names | `+f(1)` versus `(+f)(1)`, `+U32`, erased invalid name, valid neighbors and first error | Erased guard promising; marked-name candidate rejected for regression; no promotion. |
-| 2 | Explicit Boolean source workers | Actual-H positional controls and exact core output; then separate H timing and broader gates | B1 small-core ABBA passes both ≥5% request/process thresholds; not a whole-source result. |
+| 2 | Explicit Boolean source workers | Resolve H partial-function graph oracle, then matched H timing and broader gates | B1 ABBA passes both ≥5% request/process thresholds; actual-H checked core output matches, but its separate malformed-data graph gate fails. No promotion. |
 | 3 | Declared missing-import failure | Tagged ENOENT only, preserved span and competing malformed-body error | Read-only design covers ten current phase differences; no exact-diagnostic gain claimed. |
-| 4 | Scalar native constructor fields | Emit-only 32/64/128 size scaling, then ownership/order/actual native execution | Static 255-field witness shows quadratic continuation saves and a real timeout. |
+| 4 | Scalar native constructor fields | Proven-immediate fast-path candidate with ownership/order/actual native execution controls | Checked 32/64/128 emission confirms near-quadratic continuation growth against the retained 255-field timeout anchor; no optimization yet. |
 | 5 | Shared exact checked facts / typed lowering | Instrument duplicate visits, bounded component candidate with malformed/dependent controls | Designed; no implementation or gain yet. Largest plausible route beyond small hot-path gains. |
 
 Also repair the confirmed multiline-string cursor/excerpt defect as a separate

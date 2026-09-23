@@ -32,6 +32,10 @@ The [checked self-host proof](implementation/phase5/final-selfhost.md) reproduce
 identical compiler bytes through B1→H→H. The optimized compiler and self-emitted
 compiler each preserve all 2,756 frontend observations in the
 [final artifact gate](implementation/phase5/final-artifact-frontend.md).
+The [broad JS/native gate](implementation/phase5/broad-backends.md) records current
+backend coverage and the remaining large-record native timeout. The
+[Phase 6 opening experiments](implementation/phase6/report.md) target semantic gaps
+and remaining compilation cost; their candidates are separate from this release.
 Historical artifacts and their evidence remain indexed in the
 [experiment ledger](experiments/ledger.md), [preservation index](experiments/PRESERVATION.md)
 and [current strategy](experiments/STEERING.md). Known failures remain explicit;

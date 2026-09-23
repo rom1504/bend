@@ -50,6 +50,9 @@ different rejection phases/rules, and unproven intended-rule coverage. See the
 [negative-test audit](docs/NEGATIVE-COMPATIBILITY.md).
 The typed compiler also passed a complete checked, byte-identical self-rebuild;
 see [the self-hosting report](dist/selfhost/seed-verification/report.json).
+Those are historical baseline observations. The current release's
+[broad JS/native report](../implementation/phase5/broad-backends.md) records its
+remaining negative diagnostic failures and one large-record native timeout.
 
 ## Use the typed compiler
 

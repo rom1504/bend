@@ -1,7 +1,7 @@
 # Phase 5 implementation report
 
-Status: consolidated release; final evidence checkpoint at 2026-09-23T03:20:06+00:00.
-The authorized six-hour campaign began at 21:39:36 UTC and ends
+Status: implementation and release validation complete; final documentation checkpoint 2026-09-23T03:31:27+00:00.
+The authorized six-hour campaign window began at 21:39:36 UTC and ends
 2026-09-23 03:39:36 UTC. Baseline: `7d69850`; design commit: `7c7db08`.
 
 The [design](../../design/phase5/conformance_and_development.md) prioritizes
@@ -71,6 +71,9 @@ duplicate core/checker filter and two obsolete Nat helpers simplifies specific
 boundaries; this is not a claim that the whole compiler shrank or that line
 counts measure semantic complexity. The [independent static review](final-static-review.md)
 records its scope and a [confirmed diagnostic-location counterexample](static-counterexample.md).
+The final explicit support boundary totals 12,919 physical lines; experimental
+performance tools/prototypes/tests are a separate 14,771 lines in 260 files.
+These are published file-selection counts, not a cyclomatic complexity measure.
 After a physical newline inside a string, an existing lexer cursor error can
 make the new renderer highlight the wrong line. Rejection behavior is unchanged;
 the valid neighbor agrees exactly. The defect remains explicitly unfixed in
@@ -371,3 +374,23 @@ The [second integration archive](integration-02-evidence/manifest.json) preserve
 the next complete source, all 213 selected observations, the full frontend report
 and the exact comparison. Large executable/toolchain prerequisites are identified
 separately.
+
+## Final handoff
+
+The consolidated compiler is the ordinary default on `selfhost/bootstrap`.
+`npm run build` and `npm run verify:release` are the maintained entry points;
+[the user guide](../../docs/BEND-IN-BEND.md) covers first checkout, normal use,
+rebuilding, source experiments and separate proof gates. The default API remains
+`e2b5463678a26558e8fea1d585782e0863f1046067949a374f0469080281b15a`.
+No Phase 6 candidate was merged into it.
+
+All requested Phase 5 compiler/integration jobs are closed. Optional public-H
+selected user-program backend coverage was prepared but not launched; all recorded
+strict failures, the native timeout and untested GPU execution remain limitations.
+The [Phase 6 report](../phase6/report.md) preserves the final bounded experiments
+and ranks semantic repairs, Boolean validation, native scalar-field lowering and
+repeated checking/annotation work. The [final documentation audit](release-doc-evidence/)
+and [independent review](../phase6/final-release-doc-review.md) document their exact
+scope. The final recount keeps source, maintained support and experimental tools
+separate. This handoff does not claim full conformance or TypeScript performance
+parity; it supplies a stable compiler and concrete, reproducible next experiments.

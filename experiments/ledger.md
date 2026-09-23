@@ -478,3 +478,20 @@ The [native footprint analysis](../implementation/phase6/native-arity-wall.md)
 identifies quadratic scalar-field continuation saves in the timed-out large
 record, a separate problem from JS library compilation. The [Phase 6 report](../implementation/phase6/report.md)
 links the follow-up designs, bounded experiments and remaining promotion gates.
+
+## Last bounded follow-ups — 2026-09-23T03:28:07+00:00
+
+The [native scaling falsifier](../implementation/phase6/native-arity-wall.md)
+completed checked emission for 32/64/128 fields. Literal continuation bytes
+62,299 / 230,651 / 888,091 nearly quadruple with each doubling, corroborating
+quadratic prefix repetition against the retained 255-field anchor. No Clang,
+user-program execution or optimized emitter was run.
+
+The [actual-H Boolean follow-up](../implementation/phase6/boolean-branches.md)
+retains two distinct verdicts: original positional malformed-data graph gate
+failed after 430 completed controls; separately named checked core-emission gate
+passed exact output. Baseline H itself fails the inherited raw-function identity
+comparison, so this is an unresolved oracle/partial-function contract, not a
+silently repaired success. No H speed claim, new fixed point or source promotion.
+All compiler experiments are now closed. Remaining campaign work is final
+source recount, documentation/evidence checks, commit and push.

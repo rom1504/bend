@@ -166,3 +166,18 @@ SHA-256:`1f4e44802d0ea134a72a81628e554310b20c29a4e95f5f6debce12fb8a6289d1`.
 It contains both complete2,756-row gates,91closed worker histories, exact
 APIs/proof, consumed tools/caches and canonical fixtures. Known318strict failures
 remain recorded; archive verification does not upgrade their verdicts.
+
+## Final bounded Phase 6 follow-ups
+
+The [native scaling archive](../implementation/phase6/native-scaling-evidence/README.md)
+retains all 58 members, 716,290 compressed bytes, SHA-256
+`cd8a71742a7ef11552cbc484568b5291477e1131c50beb3373cf2500499e0e05`.
+It includes the actual prelaunch plan, three checked emissions, complete C and
+the retained 255-field anchor. No native executable was newly built by this probe.
+
+The separate [actual-H Boolean archive](../implementation/phase6/boolean-branches-h-evidence/manifest.json)
+retains 1,050,446 compressed bytes, SHA-256
+`60687bdda305718b494243d25c4cfd3537f74d0585629f375713560f33cdfb0d`.
+Its malformed-data graph gate remains failed; its separately named checked
+core-output gate passes exact bytes. Archive verification changes neither verdict.
+Both experiments leave released source and artifacts unchanged.

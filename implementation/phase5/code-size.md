@@ -1,6 +1,6 @@
 # Phase5 source-size recount
 
-Recounted at 2026-09-23T02:20:43.169702+00:00 against campaign baseline `7d69850b9943ab5c66e573ebd69a2ce289626b12`, including the final validation tools. The original pre-promotion and 00:37 host-promotion counts are retained. Experimental tools are a point-in-time count; later source changes require another explicitly dated recount.
+Recounted at 2026-09-23T03:25:45.048168+00:00 against campaign baseline `7d69850b9943ab5c66e573ebd69a2ce289626b12`, after freezing the consolidated release and opening Phase 6 tools. Earlier pre-promotion, host-promotion and 02:20 counts remain unchanged. Experimental tools are a point-in-time count; later changes require a separately dated recount.
 
 The same `compiler.json` boundary reproduces the prior 59-module baseline exactly. Current production is **16,509 physical / 13,803 nonblank lines**, with **1,526 definitions and 1,280 laws**: net +454 physical lines (+2.83%), +403 nonblank, +44 definitions, +44 laws and one type. Eighteen production files changed; the module count remains 59. These are size and declaration counts, not cyclomatic or semantic complexity.
 
@@ -9,14 +9,14 @@ The same `compiler.json` boundary reproduces the prior 59-module baseline exactl
 | Production Bend modules | 59 → 59 | 16,055 → 16,509 | 13,400 → 13,803 |
 | Top-level host/tool scripts | 18 → 18 | 1,271 → 1,327 | 1,235 → 1,289 |
 | Conformance tooling | 24 → 24 | 1,641 → 1,641 | 1,584 → 1,584 |
-| Development workflow | 0 → 4 | 0 → 517 | 0 → 503 |
+| Development workflow | 0 → 5 | 0 → 624 | 0 → 605 |
 | Private compiler tooling | 33 → 33 | 1,190 → 1,190 | 1,186 → 1,186 |
 | Runtime JS components/tests | 8 → 8 | 484 → 484 | 481 → 481 |
 | Native runtime/source headers | 41 → 41 | 5,101 → 5,101 | 4,537 → 4,537 |
 | Other source support/tests | 18 → 18 | 2,552 → 2,552 | 2,296 → 2,296 |
-| Performance tools/prototypes/tests | 208 → 256 | 12,209 → 14,644 | 11,790 → 14,184 |
+| Performance tools/prototypes/tests | 208 → 260 | 12,209 → 14,771 | 11,790 → 14,311 |
 
-The experimental baseline also reproduces the earlier **12,209** physical lines. The explicit support categories above total **12,239 → 12,812** physical lines. They do **not** reproduce the previous report’s 12,462 support total: its original file-selection script was unavailable, leaving a 223-line boundary difference. This recount does not silently reinterpret that old total. Both revisions here use the same published rules; the current +573 support lines comprise the 517-line maintained development workflow and 56 net host lines. Tests stored inside selected source/tool directories count in those categories, while `selfhost/tests` fixtures and tests are outside this size inventory.
+The experimental baseline also reproduces the earlier **12,209** physical lines. The explicit support categories above total **12,239 → 12,919** physical lines. They do **not** reproduce the previous report’s 12,462 support total: its original file-selection script was unavailable, leaving a 223-line boundary difference. This recount does not silently reinterpret that old total. Both revisions here use the same published rules; the current +680 support lines comprise the 624-line maintained development/release workflow and 56 net host lines. Tests stored inside selected source/tool directories count in those categories, while `selfhost/tests` fixtures and tests are outside this size inventory.
 
 The principal additions support explicit parser error transport/presentation and import freshness. Size growth does not establish an increase or decrease in implementation difficulty. Bounded simplifications also removed the duplicate checker filter and unreachable Nat helpers; their deletions remain visible rather than being hidden by the larger diagnostic additions.
 
@@ -62,7 +62,7 @@ Zero line-count deltas can still contain semantic edits; the JSON retains the ex
 
 ## Exact method and reproduction
 
-[The final campaign recount](code-size-evidence/final-campaign-report.json) lists every selected file at both revisions, its category, SHA-256, bytes, physical/nonblank lines and declaration counts. The earlier [post-promotion report](code-size-evidence/host-promoted-report.json) remains unchanged. [The script](code-size-evidence/recount.py) selects compiler modules from each revision’s `compiler.json`; support code comes from the explicitly named `src`/`tools` categories. Performance code is reported separately. Included suffixes are `.mjs`, `.js`, `.ts`, `.py`, `.sh`, `.bend`, `.c` and `.h`. Generated build outputs, result archives, documentation and external fixtures are excluded. The checked-in runtime bundle and its source components both occur within the support boundary; totals do not represent unique deduplicated implementation.
+[The consolidated release recount](code-size-evidence/consolidated-report.json) lists every selected file at both revisions, its category, SHA-256, bytes, physical/nonblank lines and declaration counts. The earlier [02:20 recount](code-size-evidence/final-campaign-report.json) and [post-promotion report](code-size-evidence/host-promoted-report.json) remains unchanged. [The script](code-size-evidence/recount.py) selects compiler modules from each revision’s `compiler.json`; support code comes from the explicitly named `src`/`tools` categories. Performance code is reported separately. Included suffixes are `.mjs`, `.js`, `.ts`, `.py`, `.sh`, `.bend`, `.c` and `.h`. Generated build outputs, result archives, documentation and external fixtures are excluded. The checked-in runtime bundle and its source components both occur within the support boundary; totals do not represent unique deduplicated implementation.
 
 Physical lines use Python `str.splitlines()`; a terminal newline adds no empty line. Nonblank lines contain non-whitespace. Bend definitions/laws/types are line-start declarations (`def` also permits same-line `@unsafe`). Declaration counts are interpreted only for production Bend; matching text inside tool fixtures is not a JavaScript complexity metric. Git reads use a bounded path list and a single file-backed `cat-file --batch`, with checked exit codes. Current buffers are read again after counting to reject mid-count changes. No compiler, test, build, checkout or artifact-tree scan runs.
 

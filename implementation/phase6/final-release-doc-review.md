@@ -95,3 +95,49 @@ pre-existing `+U32` defect and template diagnostic collapse, and names the
 uncompleted baseline core-graph/broad/proof obligations. Neither this candidate
 nor the independently tested erased-name candidate is represented as shipped.
 No new release-blocking discrepancy was found within this documentation scope.
+
+## Campaign-report cross-scope review — 2026-09-23 03:24 UTC
+
+Read the updated Phase5 report, new Phase6 report and `experiments/STEERING.md`,
+plus the latest native footprint/scaling note and the user-facing README sections.
+No compiler, test, archive or hash work ran. The major scope boundaries are
+consistent: the released6.03× comparison is unchanged; H proof durations are
+separate descriptive observations; the Boolean pilot and both parser candidates
+are unpromoted; backend strict/infrastructure failures remain failures. The
+outside-inventory `+U32` counterexample properly qualifies the inventory-only
+agreement statement. The fixed-point claim is not used as user-program backend
+coverage, and the native C-size issue is not blamed for the separate JS compiler
+throughput deficit.
+
+Two concrete follow-ups were sent to root. First, the newly completed native
+32/64/128-field scaling gate (native-arity-wall.md,03:21:14) now corroborates
+quadratic emitted continuation expansion, while the Phase6 summary and strategy
+still name that same scaling falsifier as future work. Update their state to
+completed checked emission, retaining the explicit absence of Clang/runtime
+execution or an implemented optimization. Second, the selfhost README's older
+all-positive backend paragraph explicitly says “supplied baseline,” so it is
+historically scoped rather than a false current claim. A nearby pointer to the
+current broad report and its native timeout would make the distinction clear
+without requiring readers to follow campaign-report links. The main repository
+README limits its current numerical pass claim to frontend fixtures.
+
+## Confirmed closeout resolutions — 2026-09-23 03:32 UTC
+
+All three remaining documentation follow-ups are resolved in the current text:
+Phase6/STEERING mark the32/64/128-field checked-emission scaling as completed,
+with measured sizes and no runtime/optimization claim; the selfhost README links
+the current broad timeout directly after its historical baseline paragraph; and
+the Boolean report now calls the400 generated controls finite KTerm data graphs.
+The original findings above remain historical. This confirmation read only the
+changed documentation, without rerunning tools or checking archive hashes.
+
+The new actual-H follow-up and Phase6 aggregate preserve the important failure
+boundary. They report the original positional malformed-data graph gate as
+failed after430 controls, disclose that later deep/list cases did not execute,
+and do not infer partial-closure equivalence from matching arity/type metadata
+or baseline self-comparison failure. The separately authorized checked core
+emission is explicitly a separate passed subgate using the changed disposable H
+capsule. It does not override the failed graph gate. Workflow durations are not
+H speed measurements, B1's pilot gain is not transferred to H, and no source
+promotion or new whole-source fixed point is claimed. No additional scope
+correction was identified.

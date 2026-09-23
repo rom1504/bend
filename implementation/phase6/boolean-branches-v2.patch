@@ -1,0 +1,101 @@
+--- baseline/src/core/term.bend
++++ v2/src/core/term.bend
+@@ -403,23 +403,91 @@
+   for +removed: List<&2, String>
+   Bool
+ 
++law core_subst_stable_var:
++  for +flag: Bool
++  for +tag: String
++  for +name: String
++  for +id: U32
++  for +quant: U32
++  for +kids: List<&2, KTerm>
++  for +removed: List<&2, String>
++  Bool
++
++law core_subst_stable_children:
++  for +flag: Bool
++  for +tag: String
++  for +name: String
++  for +id: U32
++  for +quant: U32
++  for +kids: List<&2, KTerm>
++  for +removed: List<&2, String>
++  Bool
++
++law core_subst_stable_tag:
++  for +flag: Bool
++  for +name: String
++  for +id: U32
++  for +quant: U32
++  for +kids: List<&2, KTerm>
++  for +removed: List<&2, String>
++  Bool
++
++law core_subst_stable_shape:
++  for +flag: Bool
++  for +kids: List<&2, KTerm>
++  for +removed: List<&2, String>
++  Bool
++
++law core_subst_stable_head:
++  for +flag: Bool
++  for +rest: List<&2, KTerm>
++  Bool
++
+ @unsafe
+ def core_subst_stable(t):
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed}:
+-      kc(Bool, String.eq(tag, "Var"), u => False{},
+-        u => kc(Bool, core_subst_stable_terms(kids),
+-          u => kc(Bool, String.eq(tag, "App"),
+-            u => kc(Bool, String.eq(name, "") && U32.is_eq(id, 0) && U32.is_eq(quant, 0), u => core_subst_stable_app(kids, removed), u => False{}),
+-            u => True{}),
+-          u => False{}))
++      core_subst_stable_var(String.eq(tag, "Var"), tag, name, id, quant, kids, removed)
++
++@unsafe
++def core_subst_stable_var(flag, tag, name, id, quant, kids, removed):
++  match flag:
++    case True{}: False{}
++    case False{}:
++      core_subst_stable_children(core_subst_stable_terms(kids), tag, name, id, quant, kids, removed)
++
++@unsafe
++def core_subst_stable_children(flag, tag, name, id, quant, kids, removed):
++  match flag:
++    case False{}: False{}
++    case True{}:
++      core_subst_stable_tag(String.eq(tag, "App"), name, id, quant, kids, removed)
++
++@unsafe
++def core_subst_stable_tag(flag, name, id, quant, kids, removed):
++  match flag:
++    case False{}: True{}
++    case True{}:
++      core_subst_stable_shape(String.eq(name, "") && U32.is_eq(id, 0) && U32.is_eq(quant, 0), kids, removed)
++
++@unsafe
++def core_subst_stable_shape(flag, kids, removed):
++  match flag:
++    case False{}: False{}
++    case True{}: core_subst_stable_app(kids, removed)
+ 
+ @unsafe
+ def core_subst_stable_terms(ts):
+   match ts:
+     case Nil{}: True{}
+     case Con{h, rest}:
+-      kc(Bool, core_subst_stable(h), u => core_subst_stable_terms(rest), u => False{})
++      core_subst_stable_head(core_subst_stable(h), rest)
++
++@unsafe
++def core_subst_stable_head(flag, rest):
++  match flag:
++    case False{}: False{}
++    case True{}: core_subst_stable_terms(rest)
+ 
+ law core_subst_stable_app_kids:
+   for +kids: List<&2, KTerm>

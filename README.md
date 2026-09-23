@@ -12,48 +12,30 @@ That's Bend - and nothing else.
 
 ## Compiler written in Bend
 
-This fork includes the compiler port in [`selfhost/`](selfhost/README.md).
-For current source edits, use the [maintained development command](docs/PHASE5_DEVELOPMENT.md)
-to build a checked compiler and run selected paired tests. It also supports the
-explicit, verified equality optimization and reuse after fixture-only edits.
-The previous [checked development measurements](docs/PHASE4_DEVELOPMENT.md#keep-the-edit-loop-small) recorded
-20.735 seconds to rebuild B1, then 9.328 seconds median for reused paired
-21-case validation in the recorded environment. Full self-reproduction is a
-separate integration gate. The [four-worker frontend gate](docs/PHASE4_DEVELOPMENT.md#run-the-full-frontend-gate-with-four-workers)
-takes about five minutes while preserving all 2,756 recorded observations,
-including existing failures.
-See [building, running and validating it](docs/BEND-IN-BEND.md), and the
-[phase 1 implementation report](implementation/phase1/report.md).
-For short iteration cycles, see [fast compiler development](docs/FAST_COMPILER_DEVELOPMENT.md)
-and the [rapid performance experiments](implementation/phase1/rapid_performance_experiments.md).
-For exact differential checks against pinned upstream, see the
-[phase 2 development guide](docs/PHASE2_DEVELOPMENT.md) and
-[phase 2 implementation report](implementation/phase2/report.md).
-The [phase 3 efficiency guide](docs/PHASE3_DEVELOPMENT.md) documents persistent
-validation workers, native build reuse and generated-runtime measurements; its
-[implementation report](implementation/phase3/report.md) records the checked
-results and remaining limits.
-The [phase 5 design](design/phase5/conformance_and_development.md) and
-[implementation report](implementation/phase5/report.md) track current
-conformance, simplification and development-loop work.
-The [latest frontend comparison](implementation/phase5/final-conformance.md) preserves
-all 919 positive fixtures, reduces strict check failures from 377 to 318, and
-records the remaining diagnostic and acceptance differences explicitly.
-The [final-source timing comparison](implementation/phase5/full-source-comparison.md)
-measures 60.25 seconds for pinned TypeScript, 642.58 seconds for checked B1 and
-363.39 seconds for its verified equality derivative. Those are full compilation
-process times under the documented cache policy, separate from edit-loop and
-generated-program runtime measurements.
-The [final checked self-host proof](implementation/phase5/final-selfhost.md)
-reproduces the same compiler bytes through B1→H→H and verifies all 59 source modules.
-The [phase 4 development guide](docs/PHASE4_DEVELOPMENT.md) covers checked source
-experiments, bounded profiling and private compiler images; follow the
-[phase 4 report](implementation/phase4/report.md) for measured progress.
-The [experiment workflow](experiments/README.md), [ledger](experiments/ledger.md)
-and [current strategy](experiments/STEERING.md) preserve hypotheses, results,
-rejected approaches and the next tests across development sessions.
-The [experimental native graph host](selfhost/tools/performance/rapid/native-graph.md)
-executes the Bend compiler natively with an explicit module and foreign-asset manifest.
+This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
+`selfhost/bootstrap`. Start with [building, running and validating the compiler](docs/BEND-IN-BEND.md).
+From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
+Use `npm run build` to rebuild the default with pinned upstream.
+The [maintained development command](docs/PHASE5_DEVELOPMENT.md) builds a checked
+compiler and reuses selected paired tests for short iteration cycles.
+
+The [Phase 5 report](implementation/phase5/report.md) records the current release
+and its limits: all 919 positive frontend fixtures pass, strict check failures
+fell from 377 to 318, and exact live TypeScript differences fell from 560 to 444.
+The [controlled full-source comparison](implementation/phase5/full-source-comparison.md)
+measures 60.25 seconds for pinned TypeScript and 363.39 seconds for the validated
+optimized compiler: **6.03× slower** under the documented workflow/cache policy.
+A checked API rebuild took 14.63 seconds in the final integration; full
+self-reproduction remains a separate integration gate.
+
+The [checked self-host proof](implementation/phase5/final-selfhost.md) reproduces
+identical compiler bytes through B1→H→H. The optimized compiler and self-emitted
+compiler each preserve all 2,756 frontend observations in the
+[final artifact gate](implementation/phase5/final-artifact-frontend.md).
+Historical artifacts and their evidence remain indexed in the
+[experiment ledger](experiments/ledger.md), [preservation index](experiments/PRESERVATION.md)
+and [current strategy](experiments/STEERING.md). Known failures remain explicit;
+these gates do not establish full upstream equivalence.
 
 ## Bend runs FAST
 

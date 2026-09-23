@@ -20,6 +20,9 @@
     "test:harness": "node --test tests/conformance/*.test.mjs tests/native-build.test.mjs",
     "conformance": "node tools/conformance/run.mjs --adapter tools/conformance/adapters/typed.mjs",
     "bootstrap:legacy": "node tools/bootstrap.mjs",
-    "test:legacy": "node tools/test.mjs"
+    "test:legacy": "node tools/test.mjs",
+    "build": "node --stack-size=4096 --max-old-space-size=4096 tools/development/release.mjs --build",
+    "release": "node --stack-size=4096 --max-old-space-size=4096 tools/development/release.mjs",
+    "verify:release": "node tools/development/release.mjs --verify"
   }
 }

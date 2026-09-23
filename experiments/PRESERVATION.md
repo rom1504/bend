@@ -142,3 +142,12 @@ capsules now preserve large winning compiler images that the early overlay
 archive intentionally omitted, but they do not fill every older generated-image
 or native-binary gap. Consult each manifest's included objects and omissions.
 No missing historical source, artifact, failure or proof state is fabricated.
+
+## Phase 5 final artifact frontend archive — 2026-09-23
+
+[Archive and restoration instructions](../implementation/phase5/final-artifact-frontend-evidence/README.md)
+preserve5,034regular members in5,175,824compressedbytes, all reopened and checked.
+SHA-256:`1f4e44802d0ea134a72a81628e554310b20c29a4e95f5f6debce12fb8a6289d1`.
+It contains both complete2,756-row gates,91closed worker histories, exact
+APIs/proof, consumed tools/caches and canonical fixtures. Known318strict failures
+remain recorded; archive verification does not upgrade their verdicts.

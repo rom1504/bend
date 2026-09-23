@@ -1,36 +1,35 @@
 # Bend2 compiler port in Bend2
 
-See the [repository compiler guide](../docs/BEND-IN-BEND.md) for building, running
-and validating this port. For current source edits, start with the
-[maintained development command](../docs/PHASE5_DEVELOPMENT.md), with checked
-builds, explicit equality derivation and reusable paired validation. The
-[phase 4 measurements](../docs/PHASE4_DEVELOPMENT.md#keep-the-edit-loop-small)
-record a checked B1 rebuild of 20.735 seconds, and a reused live paired
-21-case check takes 9.328 seconds median. The
-[fast conformance guide](../docs/PHASE2_DEVELOPMENT.md) explains exact test selection.
-The [four-worker frontend gate](../docs/PHASE4_DEVELOPMENT.md#run-the-full-frontend-gate-with-four-workers)
-takes about five minutes for all 2,756 recorded observations, retaining known
-failures; its controlled scheduling comparison measures 3.47× throughput.
-Historical reports apply to their recorded artifacts. Development APIs and
-private images are selected explicitly; the distributed default remains separate.
+Use the [compiler guide](../docs/BEND-IN-BEND.md) for the consolidated default:
 
-The [phase 3 efficiency guide](../docs/PHASE3_DEVELOPMENT.md) covers persistent
-parse/check workers, reusable native builds and generated-program runtime probes;
-the [phase 3 report](../implementation/phase3/report.md) records their evidence.
-The [phase 4 development guide](../docs/PHASE4_DEVELOPMENT.md) documents checked
-source overlays, bounded profiling and the current structural optimization work;
-the [phase 4 report](../implementation/phase4/report.md) separates results from
-experimental artifacts. The [phase 5 report](../implementation/phase5/report.md)
-tracks current conformance and simplification work with artifact-specific evidence.
-Its [final frontend comparison](../implementation/phase5/final-conformance.md)
-preserves all 919 positives, with 318 strict check failures and 444 exact live
-TypeScript differences remaining. The [current full-source timing report](../implementation/phase5/full-source-comparison.md)
-measures 60.25 seconds for TypeScript and 363.39 seconds for the explicit optimized
-B1 derivative; self-emitted H has separate validation and timing evidence.
-The [experiment ledger](../experiments/ledger.md) and
-[current strategy](../experiments/STEERING.md) track tested hypotheses and the
-next decisions; see the [workflow](../experiments/README.md) before starting a
-new optimization investigation.
+```sh
+# From selfhost/, with Node.js 24 or newer:
+npm run verify:release
+node cli.mjs tests/conformance/typed-smoke/base-u32.bend --run
+# Rebuild source using the pinned upstream checkout:
+npm run build
+```
+
+The default is the validated Phase 5 compiler, with guarded native string
+equality. Its [release manifest](dist/release.json) binds source, API, Base,
+runtime and host; verification works after checkout relocation. Compiler edits
+use the [maintained development workflow](../docs/PHASE5_DEVELOPMENT.md) for
+checked builds and short paired selections. Ordinary compilation has no upstream
+TypeScript fallback.
+
+The [Phase 5 report](../implementation/phase5/report.md) records 919/919 positive
+frontend fixtures, 318 remaining strict check failures and 444 exact live
+TypeScript differences. The [controlled full-source comparison](../implementation/phase5/full-source-comparison.md)
+measures 60.25s for pinned TypeScript and 363.39s for this optimized compiler
+(6.03×), under its documented cache policy. The [checked fixed point](../implementation/phase5/final-selfhost.md)
+and [final artifact frontend gate](../implementation/phase5/final-artifact-frontend.md)
+provide separate reproduction and equivalence evidence.
+
+Historical reports apply to their recorded artifacts. The
+[experiment ledger](../experiments/ledger.md), [current strategy](../experiments/STEERING.md)
+and [preservation index](../experiments/PRESERVATION.md) retain decisions and
+failed experiments. Read the [experiment workflow](../experiments/README.md)
+before a new optimization investigation.
 
 This project targets Bend2 2.0.21 at upstream revision
 [`6018e28ecc67cf1fffc0c20c64b11023474c2df8`](https://github.com/bendlang/bend/tree/6018e28ecc67cf1fffc0c20c64b11023474c2df8).

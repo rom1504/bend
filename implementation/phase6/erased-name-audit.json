@@ -1,0 +1,845 @@
+{
+  "kind": "phase6-erased-name-file-audit",
+  "complete": true,
+  "scope": "isolated checked B1, selected parser/checker evidence only; no promotion or timing claim",
+  "apiSha256": "c23671a37f49dcbc45eee57269f816e39529712baf59bd67529f103e1e3b4617",
+  "sourceSha256": "ab0c1a175802295c8a69d3bee7ab22742db19edbf25539cdad16fba76cb14684",
+  "changedModules": [
+    "front/sugar.bend"
+  ],
+  "productionSugarUnchanged": true,
+  "rows": 28,
+  "baselineSemanticAgreement": 16,
+  "candidateSemanticAgreement": 28,
+  "baselineExactAgreement": 6,
+  "candidateExactAgreement": 20,
+  "newExact": [
+    "parse/prefix_operator_dead.bend::parse",
+    "parse/prefix_operator_dead.bend::check",
+    "phase6-erased-name/comment::parse",
+    "phase6-erased-name/comment::check",
+    "phase6-erased-name/newline::parse",
+    "phase6-erased-name/newline::check",
+    "phase6-erased-name/number::parse",
+    "phase6-erased-name/number::check",
+    "phase6-erased-name/number-before-bad-body::parse",
+    "phase6-erased-name/number-before-bad-body::check",
+    "phase6-erased-name/semicolon::parse",
+    "phase6-erased-name/semicolon::check",
+    "phase6-erased-name/string::parse",
+    "phase6-erased-name/string::check"
+  ],
+  "lostExact": [],
+  "changedResidual": [
+    "phase6-erased-name/empty::parse",
+    "phase6-erased-name/empty::check",
+    "phase6-erased-name/keyword::parse",
+    "phase6-erased-name/keyword::check",
+    "phase6-erased-name/trailing-dot::parse",
+    "phase6-erased-name/trailing-dot::check"
+  ],
+  "residual": [
+    "phase6-erased-name/braced::parse",
+    "phase6-erased-name/braced::check",
+    "phase6-erased-name/empty::parse",
+    "phase6-erased-name/empty::check",
+    "phase6-erased-name/keyword::parse",
+    "phase6-erased-name/keyword::check",
+    "phase6-erased-name/trailing-dot::parse",
+    "phase6-erased-name/trailing-dot::check"
+  ],
+  "referenceUnchanged": true,
+  "firstIncorrectFixtureGateRetained": true,
+  "reports": [
+    {
+      "file": "selfhost/build/phase6/erased-name/attempt-01/build.json",
+      "sha256": "43aafc5d3d601d9979e257e1f69944cef4de6f9e5b7f680c8303378e73c66f87"
+    },
+    {
+      "file": "selfhost/build/phase6/erased-name/attempt-01/api.mjs.bootstrap.json",
+      "sha256": "f7220765b15db916ab11233115579147a935ffb74b8562fc75cb74e9d9459069"
+    },
+    {
+      "file": "selfhost/build/phase6/erased-name/attempt-01/validation-001/report.json",
+      "sha256": "7377afbb94d52fe5507fb6bc35e505aeb793d2bdca0b29c408c166716458e92e"
+    },
+    {
+      "file": "selfhost/build/phase6/erased-name/attempt-01/validation-001/selected/paired.json",
+      "sha256": "05d1c84b9ac2633c52b27794645d5bb18c10ba0abdb09b384bf943451433dbd4"
+    },
+    {
+      "file": "selfhost/build/phase6/erased-name/validation-02/report.json",
+      "sha256": "4aec635dea9955ace331eb89b40c09e9cc2d69aeec0972f51b067c6ee914c525"
+    },
+    {
+      "file": "selfhost/build/phase6/erased-name/validation-02/selected/paired.json",
+      "sha256": "ec74285f49aefac833e417c21bc5b7122cf144d18c988ef5dbc7ac38eea36eb8"
+    },
+    {
+      "file": "selfhost/build/phase6/erased-name/baseline-v2/paired.json",
+      "sha256": "f90bf0bfe61f2e7d4a6fed1e3c6255070f84733ed0b07f7cc23197906e76d8b9"
+    },
+    {
+      "file": "selfhost/build/phase6/erased-name/preparation.json",
+      "sha256": "989d01ef768f15d591169841b5cd2319c38bbea0fae9c5f7fd8519479f4b4f97"
+    }
+  ],
+  "observations": [
+    {
+      "key": "parse/prefix_operator_dead.bend::parse",
+      "before": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n 9 | def main():\n10>|   -5\n11 | ",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n 9 | def main():\n10>|   -5\n11 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "parse/prefix_operator_dead.bend::check",
+      "before": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a defined name\n- observed : 5\nLocation: main\n 9 | def main():\n10>|   -5\n11 | ",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n 9 | def main():\n10>|   -5\n11 | ",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n 9 | def main():\n10>|   -5\n11 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/braced::parse",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '{'\nLocation:\n6 | def main():\n7>|   -Box{}\n8 | ",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '{'\nLocation:\n6 | def main():\n7>|   -Box{}\n8 | ",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : '='\n- observed : '{'\nLocation:\n6 | def main():\n7>|   -Box{}\n8 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/braced::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '{'\nLocation:\n6 | def main():\n7>|   -Box{}\n8 | ",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : '{'\nLocation:\n6 | def main():\n7>|   -Box{}\n8 | ",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : '='\n- observed : '{'\nLocation:\n6 | def main():\n7>|   -Box{}\n8 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/comment::parse",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: reserved pattern binder: \n",
+        "output": null
+      },
+      "after": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/comment::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: reserved pattern binder: \n",
+        "output": null
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      }
+    },
+    {
+      "key": "phase6-erased-name/empty::parse",
+      "before": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 0:0: expected name; got <eof>",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : end of input\nLocation:\n7 |   -\n8>| ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/empty::check",
+      "before": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a defined name\n- observed : \n\nLocation: main\n6 | def main():\n7>|   -\n8 | ",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: line 0:0: expected name; got <eof>",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : end of input\nLocation:\n7 |   -\n8>| ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/keyword::parse",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: reserved pattern binder: return",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : 'r'\nLocation:\n6 | def main():\n7>|   -return = 0\n8 |   42",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name (got the keyword 'return')\n- observed : ' '\nLocation:\n6 | def main():\n7>|   -return = 0\n8 |   42",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/keyword::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: reserved pattern binder: return",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : 'r'\nLocation:\n6 | def main():\n7>|   -return = 0\n8 |   42",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name (got the keyword 'return')\n- observed : ' '\nLocation:\n6 | def main():\n7>|   -return = 0\n8 |   42",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/newline::parse",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: reserved pattern binder: \n",
+        "output": null
+      },
+      "after": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/newline::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: reserved pattern binder: \n",
+        "output": null
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      }
+    },
+    {
+      "key": "phase6-erased-name/number::parse",
+      "before": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n6 | def main():\n7>|   -5\n8 | ",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n6 | def main():\n7>|   -5\n8 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/number::check",
+      "before": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a defined name\n- observed : 5\nLocation: main\n6 | def main():\n7>|   -5\n8 | ",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n6 | def main():\n7>|   -5\n8 | ",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n6 | def main():\n7>|   -5\n8 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/number-before-bad-body::parse",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : ')'\nLocation:\n7 |   -5\n8>|   )\n9 | ",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n6 | def main():\n7>|   -5\n8 |   )",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n6 | def main():\n7>|   -5\n8 |   )",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/number-before-bad-body::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : 'def', 'type' or 'law'\n- observed : ')'\nLocation:\n7 |   -5\n8>|   )\n9 | ",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n6 | def main():\n7>|   -5\n8 |   )",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '5'\nLocation:\n6 | def main():\n7>|   -5\n8 |   )",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/ordinary::parse",
+      "before": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "after": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/ordinary::check",
+      "before": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      }
+    },
+    {
+      "key": "phase6-erased-name/plain::parse",
+      "before": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "after": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/plain::check",
+      "before": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      }
+    },
+    {
+      "key": "phase6-erased-name/semicolon::parse",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: reserved pattern binder: ;",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : ';'\nLocation:\n6 | def main():\n7>|   -;x = 0\n8 |   42",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : ';'\nLocation:\n6 | def main():\n7>|   -;x = 0\n8 |   42",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/semicolon::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: reserved pattern binder: ;",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : ';'\nLocation:\n6 | def main():\n7>|   -;x = 0\n8 |   42",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : ';'\nLocation:\n6 | def main():\n7>|   -;x = 0\n8 |   42",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/string::parse",
+      "before": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '\"'\nLocation:\n6 | def main():\n7>|   -\"x\"\n8 | ",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '\"'\nLocation:\n6 | def main():\n7>|   -\"x\"\n8 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/string::check",
+      "before": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a defined name\n- observed : \"x\"\nLocation: main\n6 | def main():\n7>|   -\"x\"\n8 | ",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '\"'\nLocation:\n6 | def main():\n7>|   -\"x\"\n8 | ",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : '\"'\nLocation:\n6 | def main():\n7>|   -\"x\"\n8 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/trailing-dot::parse",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: reserved pattern binder: x.",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : 'x'\nLocation:\n6 | def main():\n7>|   -x. = 0\n8 |   42",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name (a name cannot end in '.')\n- observed : ' '\nLocation:\n6 | def main():\n7>|   -x. = 0\n8 |   42",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/trailing-dot::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: reserved pattern binder: x.",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name\n- observed : 'x'\nLocation:\n6 | def main():\n7>|   -x. = 0\n8 |   42",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a name (a name cannot end in '.')\n- observed : ' '\nLocation:\n6 | def main():\n7>|   -x. = 0\n8 |   42",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/typed::parse",
+      "before": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "after": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-erased-name/typed::check",
+      "before": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      }
+    }
+  ]
+}

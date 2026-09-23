@@ -126,7 +126,7 @@ function run_lib(f, n) {
 // =======
 
 function $f_parse$(source_0) {
-  return run_jump($f_tops$, [run_loop($f_lex$(source_0, 1, 0, 0, {$: "Nil"})), {$: "Nil"}, {$: "Nil"}, false]);
+  return run_jump($fpe_finish$, [source_0, run_loop($f_tops$(run_loop($f_lex$(source_0, 1, 0, 0, {$: "Nil"})), {$: "Nil"}, {$: "Nil"}, false))]);
 }
 
 function $f_load$(main_0, sources_0) {
@@ -150,7 +150,7 @@ function $check_book$(book_0) {
 }
 
 function $annotate_book$(book_0) {
-  return run_jump($ka_defs$, [run_loop($book_cached$(book_0, run_loop($norm_max_book$(book_0)))), book_0]);
+  return run_jump($ka_defs$, [run_loop($book_context$(book_0)), book_0]);
 }
 
 function $j_program$(book_0) {
@@ -159,6 +159,33 @@ function $j_program$(book_0) {
 
 function $j_library$(book_0) {
   return run_jump($j_library_selected$, [book_0, book_0]);
+}
+
+function $j_expr$(book_0, env_0, t_0, ty_0, tail_0) {
+  const x_0 = run_loop($String$eq$(run_loop($tg$(t_0)), "Lam"));
+  const x_1 = run_loop($String$eq$(run_loop($tg$(t_0)), "Mat"));
+  return run_jump($kc$, [run_loop($Bool$and$((x_0 || x_1), run_loop($Bool$not$(run_loop($String$eq$(run_loop($j_l_name$(t_0)), "")))))), run_clo((x_2) => {
+  const x_3 = run_loop($j_l_capture$(env_0, {$: "Nil"}));
+  const x_4 = (x_3 + ")");
+  const x_5 = run_loop($j_quote$(run_loop($j_l_name$(t_0))));
+  const x_6 = ("](" + x_4);
+  const x_7 = (x_5 + x_6);
+  return ("F[" + x_7);
+}), run_clo((x_8) => {
+  return run_jump($j_expr_on$, [book_0, env_0, t_0, ty_0, tail_0, run_loop($tg$(t_0))]);
+})]);
+}
+
+function $j_descriptor$(book_0, ty_0, fuel_0) {
+  return run_jump($j_desc_kind$, [book_0, run_loop($wnf$(book_0, ty_0)), fuel_0]);
+}
+
+function $j_io_type$(book_0, ty_0) {
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($dk$(run_loop($lookup$(book_0, "IO")))), "Def")), run_loop($db$(run_loop($lookup$(book_0, "IO")))))), run_clo((x_0) => {
+  return run_jump($j_io_spine$, [run_loop($wnf$(run_loop($j_io_shadow$(book_0)), ty_0)), 0]);
+}), run_clo((x_1) => {
+  return false;
+})]);
 }
 
 function $j_modules$(book_0, sources_0) {
@@ -276,7 +303,7 @@ function $nc_annotation_stops$(book_0) {
 }
 
 function $nc_annotated_context$(book_0, annotated_0) {
-  const merged_0 = run_loop($nc_context_defs$(book_0, annotated_0));
+  const merged_0 = run_loop($nc_context_defs$(book_0, run_loop($nc_context_index$(annotated_0))));
   return run_jump($book_cached$, [merged_0, run_loop($norm_max_book$(merged_0))]);
 }
 
@@ -307,18 +334,52 @@ function $exact_prefix$(book_0, prefix_0) {
 }
 
 function $f_load_graph$(main_0, sources_0) {
-  return run_jump($f_graph_result$, [run_loop($f_graph_load$(main_0, "", sources_0, {$: "FGraph", ["book"]: {$: "Nil"}, ["error"]: "", ["done"]: {$: "Nil"}}, {$: "Nil"}))]);
+  return run_jump($f_graph_result_at$, [run_loop($f_graph_load$(main_0, "", sources_0, {$: "FGraph", ["book"]: {$: "Nil"}, ["error"]: "", ["done"]: {$: "Nil"}}, {$: "Nil"})), sources_0]);
 }
 
 function $f_main_names$(main_0, sources_0) {
-  return run_jump($f_main_result_names$, [run_loop($f_parse$(run_loop($f_source_text$(run_loop($f_graph_source$(main_0, sources_0))))))]);
+  return run_jump($f_main_result_names$, [run_loop($f_parse_source$(run_loop($f_graph_source$(main_0, sources_0))))]);
+}
+
+function $f_load_graph_trace$(main_0, sources_0) {
+  return run_jump($f_graph_trace$, [run_loop($f_graph_load$(main_0, "", sources_0, {$: "FGraph", ["book"]: {$: "Nil"}, ["error"]: "", ["done"]: {$: "Nil"}}, {$: "Nil"})), sources_0]);
+}
+
+function $f_source_parsed$(name_0, path_0, text_0, parsed_0) {
+  return {$: "FParsedSource", ["name"]: name_0, ["path"]: path_0, ["text"]: text_0, ["parsed"]: parsed_0};
+}
+
+function $book_context$(book_0) {
+  if (book_0.$ === "Nil") {
+    return run_jump($book_cached$, [{$: "Nil"}, 0]);
+  } else {
+    const h_0 = book_0["head"];
+    const rest_0 = book_0["tail"];
+    return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(h_0)), "BookCache")), run_clo((x_0) => {
+    return {$: "Con", ["head"]: h_0, ["tail"]: rest_0};
+}), run_clo((x_1) => {
+    return run_jump($book_cached$, [{$: "Con", ["head"]: h_0, ["tail"]: rest_0}, run_loop($norm_max_book$({$: "Con", ["head"]: h_0, ["tail"]: rest_0}))]);
+})]);
+  }
+}
+
+function $book_cached$(book_0, bound_0) {
+  return {$: "Con", ["head"]: {$: "KDef", ["name"]: "$kernel.cache", ["kind"]: "BookCache", ["arity"]: bound_0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Con", ["head"]: run_loop($index_build$(book_0)), ["tail"]: {$: "Nil"}}, ["native"]: true, ["unsafe"]: false}, ["tail"]: book_0};
 }
 
 function $f_load_graph_seed$(main_0, sources_0, seedPath_0, seedText_0, seedBook_0) {
   return run_jump($f_choose$, [run_loop($f_seed_matches$(run_loop($f_source$("Base", sources_0)), seedPath_0, seedText_0)), run_clo((x_0) => {
-  return run_jump($f_graph_result$, [run_loop($fs_load$(main_0, "", sources_0, {$: "FGraph", ["book"]: {$: "Nil"}, ["error"]: "", ["done"]: {$: "Nil"}}, {$: "Nil"}, {$: "FSeed", ["path"]: seedPath_0, ["book"]: seedBook_0}))]);
+  return run_jump($f_graph_result_at$, [run_loop($fs_load$(main_0, "", sources_0, {$: "FGraph", ["book"]: {$: "Nil"}, ["error"]: "", ["done"]: {$: "Nil"}}, {$: "Nil"}, {$: "FSeed", ["path"]: seedPath_0, ["book"]: seedBook_0})), sources_0]);
 }), run_clo((x_1) => {
   return run_jump($f_load_graph$, [main_0, sources_0]);
+})]);
+}
+
+function $f_load_graph_seed_trace$(main_0, sources_0, seedPath_0, seedText_0, seedBook_0) {
+  return run_jump($f_choose$, [run_loop($f_seed_matches$(run_loop($f_source$("Base", sources_0)), seedPath_0, seedText_0)), run_clo((x_0) => {
+  return run_jump($f_graph_trace$, [run_loop($fs_load$(main_0, "", sources_0, {$: "FGraph", ["book"]: {$: "Nil"}, ["error"]: "", ["done"]: {$: "Nil"}}, {$: "Nil"}, {$: "FSeed", ["path"]: seedPath_0, ["book"]: seedBook_0})), sources_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_load_graph_trace$, [main_0, sources_0]);
 })]);
 }
 
@@ -328,6 +389,14 @@ function $driver_report$(book_0, names_0) {
 
 function $check_book_diagnostic$(book_0, origins_0) {
   return run_jump($dg_book_checked$, [book_0, origins_0, run_loop($check_book$(book_0))]);
+}
+
+function $check_book_diagnostic_from_exact_prefix$(book_0, validated_0, origins_0) {
+  return run_jump($kc$, [run_loop($exact_prefix$(book_0, validated_0)), run_clo((x_0) => {
+  return run_jump($dg_prefix_seed$, [book_0, validated_0, run_loop($book_cached$({$: "Nil"}, run_loop($norm_max_book$(book_0)))), book_0, origins_0]);
+}), run_clo((x_1) => {
+  return run_jump($check_book_diagnostic$, [book_0, origins_0]);
+})]);
 }
 
 function $diagnostic_render$(result_0) {
@@ -352,6 +421,13 @@ function $f_load_origins_for$(main_0, sources_0, definition_0) {
   return run_jump($fp_graph_for$, [run_loop($f_graph_load$(main_0, "", sources_0, {$: "FGraph", ["book"]: {$: "Nil"}, ["error"]: "", ["done"]: {$: "Nil"}}, {$: "Nil"})), sources_0, definition_0]);
 }
 
+function $f_loaded_origins_for$(trace_0, definition_0) {
+  const result_0 = trace_0["result"];
+  const done_0 = trace_0["done"];
+  const sources_0 = trace_0["sources"];
+  return run_jump($fp_loaded_result$, [result_0, done_0, sources_0, definition_0]);
+}
+
 function $j_compile_error$(book_0) {
   return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(run_loop($lookup$(book_0, "IO")))), "Absent")), run_clo((x_0) => {
   return "a build needs import Base";
@@ -361,7 +437,7 @@ function $j_compile_error$(book_0) {
 }
 
 function $j_layout_error$(book_0, defs_0, roots_0, stops_0) {
-  return run_jump($kc$, [run_loop($j_layout_visit$(run_loop($book_cached$(book_0, run_loop($norm_max_book$(book_0)))), run_loop($book_cached$(defs_0, 0)), roots_0, {$: "Nil"}, stops_0)), run_clo((x_0) => {
+  return run_jump($kc$, [run_loop($j_layout_visit$(run_loop($book_context$(book_0)), run_loop($book_cached$(defs_0, 0)), roots_0, {$: "Nil"}, stops_0)), run_clo((x_0) => {
   return "an open Array element type";
 }), run_clo((x_1) => {
   return "";
@@ -395,39 +471,19 @@ function $j_stops$(book_0) {
 }
 
 function $annotate_except$(book_0, stops_0) {
-  return run_jump($ka_defs_except$, [run_loop($book_cached$(book_0, run_loop($norm_max_book$(book_0)))), book_0, stops_0]);
+  return run_jump($ka_defs_except$, [run_loop($book_context$(book_0)), book_0, stops_0]);
 }
 
 function $annotate_selected$(book_0, selected_0, stops_0) {
-  return run_jump($ka_defs_except$, [run_loop($book_cached$(book_0, run_loop($norm_max_book$(book_0)))), selected_0, stops_0]);
+  return run_jump($ka_defs_except$, [run_loop($book_context$(book_0)), selected_0, stops_0]);
 }
 
 function $j_program_selected$(book_0, defs_0) {
-  const x_2 = run_loop($kc$(run_loop($j_io_type$(book_0, run_loop($dt$(run_loop($lookup$(book_0, "main")))))), run_clo((x_0) => {
-  return "true";
-}), run_clo((x_1) => {
-  return "false";
-})));
-  const x_3 = (x_2 + ");\n");
-  const x_4 = run_loop($j_descriptor$(book_0, run_loop($dt$(run_loop($lookup$(book_0, "main")))), 64));
-  const x_5 = ("," + x_3);
-  const x_6 = (x_4 + x_5);
-  const x_7 = run_loop($j_defs$(book_0, defs_0));
-  const x_8 = ("\nawait runmain(" + x_6);
-  const x_9 = run_loop($j_schemas$(book_0, defs_0));
-  const x_10 = (x_7 + x_8);
-  const x_11 = run_loop($j_ctor_metadata$(defs_0));
-  const x_12 = (x_9 + x_10);
-  return (x_11 + x_12);
+  return run_jump($j_program_context$, [run_loop($book_context$(book_0)), defs_0]);
 }
 
 function $j_library_selected$(book_0, defs_0) {
-  const x_0 = run_loop($j_defs$(book_0, defs_0));
-  const x_1 = run_loop($j_schemas$(book_0, defs_0));
-  const x_2 = (x_0 + "\nexport {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k,(...args)=>call(get(G,k),args)]));\n");
-  const x_3 = run_loop($j_ctor_metadata$(defs_0));
-  const x_4 = (x_1 + x_2);
-  return (x_3 + x_4);
+  return run_jump($j_library_context$, [run_loop($book_context$(book_0)), defs_0]);
 }
 
 function $j_foreign_paths$(book_0) {
@@ -459,6 +515,13 @@ function $j_foreign_error$(book_0) {
   }
 }
 
+function $fpe_finish$(source_0, raw_0) {
+  const book_0 = raw_0["book"];
+  const error_0 = raw_0["error"];
+  const imports_0 = raw_0["imports"];
+  return {$: "FResult", ["book"]: book_0, ["error"]: run_loop($fpe_render$(source_0, error_0)), ["imports"]: imports_0};
+}
+
 function $f_tops$(ts0_0, book_0, imports_0, unsafe_0) {
   return run_jump($f_top$, [run_loop($f_skip$(ts0_0)), book_0, imports_0, unsafe_0]);
 }
@@ -467,31 +530,35 @@ function $f_lex$(s_0, l_0, c_0, d_0, acc_0) {
   return run_jump($f_choose$, [run_loop($String$is_empty$(s_0)), run_clo((x_0) => {
   return run_jump($List$reverse$, [acc_0]);
 }), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\n")), run_clo((x_2) => {
+  return run_jump($f_choose$, [run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "\n")), run_clo((x_2) => {
   return run_jump($f_lex$, [run_loop($f_tail$(s_0)), ((l_0 + 1) >>> 0), 0, d_0, run_loop($f_choose$((d_0 === 0), run_clo((x_3) => {
   return {$: "Con", ["head"]: {$: "FToken", ["text"]: "\n", ["f_line"]: l_0, ["f_col"]: c_0, ["f_kind"]: 0}, ["tail"]: acc_0};
 }), run_clo((x_4) => {
   return acc_0;
 })))]);
 }), run_clo((x_5) => {
-  return run_jump($f_choose$, [run_loop($Char$is_space$(run_loop($f_head$(s_0)))), run_clo((x_6) => {
+  return run_jump($f_choose$, [run_loop($f_ascii_space$(run_loop($f_head$(s_0)))), run_clo((x_6) => {
   return run_jump($f_lex$, [run_loop($f_tail$(s_0)), l_0, ((c_0 + 1) >>> 0), d_0, acc_0]);
 }), run_clo((x_7) => {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "#")), run_clo((x_8) => {
+  return run_jump($f_choose$, [run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "#")), run_clo((x_8) => {
   return run_jump($f_lex$, [run_loop($f_scan_comment$(s_0)), l_0, c_0, d_0, acc_0]);
 }), run_clo((x_9) => {
-  const x_10 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\""));
-  const x_11 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "'"));
+  const x_10 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "\""));
+  const x_11 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "'"));
   return run_jump($f_choose$, [(x_10 || x_11), run_clo((x_12) => {
   return run_jump($f_lex_scanned$, [run_loop($f_scan_quote$(run_loop($f_tail$(s_0)), run_loop($f_head$(s_0)), (run_loop($f_head$(s_0)) + ""), 1)), l_0, c_0, d_0, 2, acc_0]);
 }), run_clo((x_13) => {
-  return run_jump($f_choose$, [run_loop($f_triple_op$(s_0)), run_clo((x_14) => {
-  return run_jump($f_lex$, [run_loop($f_tail$(run_loop($f_tail$(run_loop($f_tail$(s_0)))))), l_0, ((c_0 + 3) >>> 0), d_0, {$: "Con", ["head"]: {$: "FToken", ["text"]: run_loop($f_three$(s_0)), ["f_line"]: l_0, ["f_col"]: c_0, ["f_kind"]: 0}, ["tail"]: acc_0}]);
-}), run_clo((x_15) => {
-  return run_jump($f_choose$, [run_loop($f_ident$(run_loop($f_head$(s_0)))), run_clo((x_16) => {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_ident$(run_loop($f_head$(s_0)))), run_loop($Bool$not$(run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), ".")))))), run_clo((x_14) => {
   return run_jump($f_lex_scanned$, [run_loop($f_scan_word$(s_0, "", 0)), l_0, c_0, d_0, 1, acc_0]);
+}), run_clo((x_15) => {
+  return run_jump($f_choose$, [run_loop($f_triple_op$(s_0)), run_clo((x_16) => {
+  return run_jump($f_lex$, [run_loop($f_tail$(run_loop($f_tail$(run_loop($f_tail$(s_0)))))), l_0, ((c_0 + 3) >>> 0), d_0, {$: "Con", ["head"]: {$: "FToken", ["text"]: run_loop($f_three$(s_0)), ["f_line"]: l_0, ["f_col"]: c_0, ["f_kind"]: 0}, ["tail"]: acc_0}]);
 }), run_clo((x_17) => {
+  return run_jump($f_choose$, [run_loop($f_ident$(run_loop($f_head$(s_0)))), run_clo((x_18) => {
+  return run_jump($f_lex_scanned$, [run_loop($f_scan_word$(s_0, "", 0)), l_0, c_0, d_0, 1, acc_0]);
+}), run_clo((x_19) => {
   return run_jump($f_lex_symbol$, [s_0, l_0, c_0, d_0, acc_0]);
+})]);
 })]);
 })]);
 })]);
@@ -567,10 +634,6 @@ function $check_events$(todo_0, done_0) {
   }
 }
 
-function $book_cached$(book_0, bound_0) {
-  return {$: "Con", ["head"]: {$: "KDef", ["name"]: "$kernel.cache", ["kind"]: "BookCache", ["arity"]: bound_0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Con", ["head"]: run_loop($index_build$(book_0)), ["tail"]: {$: "Nil"}}, ["native"]: true, ["unsafe"]: false}, ["tail"]: book_0};
-}
-
 function $norm_max_book$(book_0) {
   return run_jump($norm_max_defs$, [book_0, 0]);
 }
@@ -585,10 +648,220 @@ function $ka_defs$(book_0, ds_0) {
   }
 }
 
+function $kc$(b_0, yes_0, no_0) {
+  if (b_0) {
+    return run_tail(yes_0, {$: "Unit"});
+  } else {
+    return run_tail(no_0, {$: "Unit"});
+  }
+}
+
+function $Bool$and$(a_0, b_0) {
+  if (!a_0) {
+    return false;
+  } else {
+    return b_0;
+  }
+}
+
+function $String$eq$(a_0, b_0) {
+  if (typeof a_0 === "string" && typeof b_0 === "string" && a_0.isWellFormed() && b_0.isWellFormed()) return a_0 === b_0;
+  return run_jump($String$eq$fin$, [run_loop($String$cmp$(a_0, b_0))]);
+}
+
+function $tg$(t_0) {
+  const tag_0 = t_0["tag"];
+  const name_0 = t_0["name"];
+  const id_0 = t_0["id"];
+  const quant_0 = t_0["quant"];
+  const kids_0 = t_0["kids"];
+  const removed_0 = t_0["removed"];
+  return tag_0;
+}
+
+function $Bool$not$(b_0) {
+  if (!b_0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function $j_l_name$(t_0) {
+  return run_jump($j_l_names$, [run_loop($rm$(t_0))]);
+}
+
 function $j_quote$(s_0) {
   const x_0 = run_loop($j_escape$(s_0));
   const x_1 = (x_0 + "\"");
   return ("\"" + x_1);
+}
+
+function $j_l_capture$(env_0, seen_0) {
+  if (env_0.$ === "Nil") {
+    return "";
+  } else {
+    const h_0 = env_0["head"];
+    const rest_0 = env_0["tail"];
+    return run_jump($kc$, [run_loop($has_name$(seen_0, run_loop($j_local$(run_loop($ix$(h_0)))))), run_clo((x_0) => {
+    return run_jump($j_l_capture$, [rest_0, seen_0]);
+}), run_clo((x_1) => {
+    const x_2 = run_loop($j_l_capture$(rest_0, {$: "Con", ["head"]: run_loop($j_local$(run_loop($ix$(h_0)))), ["tail"]: seen_0}));
+    const x_3 = run_loop($j_local$(run_loop($ix$(h_0))));
+    const x_4 = ("," + x_2);
+    return (x_3 + x_4);
+})]);
+  }
+}
+
+function $j_expr_on$(book_0, env_0, t_0, ty_0, tail_0, key_0) {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Var")), run_clo((x_0) => {
+  return run_jump($j_local$, [run_loop($ix$(t_0))]);
+}), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Ref")), run_clo((x_2) => {
+  const x_3 = run_loop($j_quote$(run_loop($nm$(t_0))));
+  const x_4 = (x_3 + ")");
+  return ("get(G," + x_4);
+}), run_clo((x_5) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "App")), run_clo((x_6) => {
+  return run_jump($j_apply$, [book_0, env_0, t_0, tail_0, run_loop($wnf$(book_0, run_loop($j_type$(book_0, env_0, run_loop($kid$(t_0, 0))))))]);
+}), run_clo((x_7) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Ctr")), run_clo((x_8) => {
+  return run_jump($j_constructor_mode$, [book_0, env_0, t_0, ty_0, tail_0]);
+}), run_clo((x_9) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Ann")), run_clo((x_10) => {
+  return run_jump($j_expr$, [book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($kid$(t_0, 1)), tail_0]);
+}), run_clo((x_11) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Lam")), run_clo((x_12) => {
+  return run_jump($j_lambda$, [book_0, env_0, t_0, run_loop($wnf$(book_0, ty_0))]);
+}), run_clo((x_13) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Mat")), run_clo((x_14) => {
+  return run_jump($j_match$, [book_0, env_0, t_0, run_loop($wnf$(book_0, ty_0))]);
+}), run_clo((x_15) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Let")), run_clo((x_16) => {
+  return run_jump($j_let$, [book_0, env_0, run_loop($ks$(t_0)), ty_0, tail_0]);
+}), run_clo((x_17) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Rwt")), run_clo((x_18) => {
+  return run_jump($j_expr$, [book_0, env_0, run_loop($kid$(t_0, 2)), ty_0, tail_0]);
+}), run_clo((x_19) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Efq")), run_clo((x_20) => {
+  return "fn(1,()=>bad(\"an absurd elimination\"))";
+}), run_clo((x_21) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Hol")), run_clo((x_22) => {
+  return "bad(\"cannot compile a hole\")";
+}), run_clo((x_23) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "ADT")), run_clo((x_24) => {
+  const x_25 = run_loop($j_exprs$(book_0, env_0, run_loop($ks$(t_0))));
+  const x_26 = (x_25 + "]})");
+  const x_27 = run_loop($j_quote$(run_loop($nm$(t_0))));
+  const x_28 = (",typeArgs:[" + x_26);
+  const x_29 = (x_27 + x_28);
+  return ("({typeName:" + x_29);
+}), run_clo((x_30) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Qua")), run_clo((x_31) => {
+  const x_32 = run_loop($U32$show$(run_loop($qt$(t_0))));
+  const x_33 = run_loop($j_quote$(("&" + x_32)));
+  const x_34 = (x_33 + "})");
+  return ("({typeName:" + x_34);
+}), run_clo((x_35) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Typ")), run_clo((x_36) => {
+  return "({typeName:\"Type\"})";
+}), run_clo((x_37) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Rfl")), run_clo((x_38) => {
+  return "({proof:true})";
+}), run_clo((x_39) => {
+  return "null";
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+}
+
+function $j_desc_kind$(book_0, ty_0, fuel_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), run_clo((x_0) => {
+  const x_1 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 1)), fuel_0));
+  const x_2 = (x_1 + "]");
+  const x_3 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 0)), fuel_0));
+  const x_4 = ("," + x_2);
+  const x_5 = (x_3 + x_4);
+  const x_6 = run_loop($U32$show$(run_loop($qt$(ty_0))));
+  const x_7 = ("," + x_5);
+  const x_8 = (x_6 + x_7);
+  return ("[\"Fun\"," + x_8);
+}), run_clo((x_9) => {
+  return run_jump($j_desc_head$, [book_0, ty_0, fuel_0]);
+})]);
+}
+
+function $wnf$(book_0, t_0) {
+  return run_jump($norm_eval$, [book_0, t_0, {$: "Nil"}, 0, run_loop($atom$("Absent"))]);
+}
+
+function $dk$(d_0) {
+  const name_0 = d_0["name"];
+  const kind_0 = d_0["kind"];
+  const arity_0 = d_0["arity"];
+  const templates_0 = d_0["templates"];
+  const typ_0 = d_0["typ"];
+  const value_0 = d_0["value"];
+  const ctors_0 = d_0["ctors"];
+  const native_0 = d_0["native"];
+  const unsafe_0 = d_0["unsafe"];
+  return kind_0;
+}
+
+function $lookup$(book_0, name_0) {
+  if (book_0.$ === "Nil") {
+    return run_jump($missing$, []);
+  } else {
+    const d_0 = book_0["head"];
+    const rest_0 = book_0["tail"];
+    return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(d_0)), "BookCache")), run_clo((x_0) => {
+    return run_jump($index_lookup$, [d_0, name_0]);
+}), run_clo((x_1) => {
+    return run_jump($kc$, [run_loop($String$eq$(run_loop($dn$(d_0)), name_0)), run_clo((x_2) => {
+    return d_0;
+}), run_clo((x_3) => {
+    return run_jump($lookup$, [rest_0, name_0]);
+})]);
+})]);
+  }
+}
+
+function $db$(d_0) {
+  const name_0 = d_0["name"];
+  const kind_0 = d_0["kind"];
+  const arity_0 = d_0["arity"];
+  const templates_0 = d_0["templates"];
+  const typ_0 = d_0["typ"];
+  const value_0 = d_0["value"];
+  const ctors_0 = d_0["ctors"];
+  const native_0 = d_0["native"];
+  const unsafe_0 = d_0["unsafe"];
+  return native_0;
+}
+
+function $j_io_spine$(t_0, args_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_0) => {
+  return run_jump($j_io_spine$, [run_loop($kid$(t_0, 0)), ((args_0 + 1) >>> 0)]);
+}), run_clo((x_1) => {
+  return run_jump($Bool$and$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Ref")), run_loop($String$eq$(run_loop($nm$(t_0)), "IO")))), (args_0 === 1)]);
+})]);
+}
+
+function $j_io_shadow$(book_0) {
+  return run_jump($j_io_shadow_def$, [book_0, run_loop($lookup$(book_0, "IO"))]);
 }
 
 function $nm$(t_0) {
@@ -625,28 +898,6 @@ function $j_module_exports$(book_0, path_0) {
   }
 }
 
-function $Bool$not$(b_0) {
-  if (!b_0) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function $String$eq$(a_0, b_0) {
-  return run_jump($String$eq$fin$, [run_loop($String$cmp$(a_0, b_0))]);
-}
-
-function $tg$(t_0) {
-  const tag_0 = t_0["tag"];
-  const name_0 = t_0["name"];
-  const id_0 = t_0["id"];
-  const quant_0 = t_0["quant"];
-  const kids_0 = t_0["kids"];
-  const removed_0 = t_0["removed"];
-  return tag_0;
-}
-
 function $dv$(d_0) {
   const name_0 = d_0["name"];
   const kind_0 = d_0["kind"];
@@ -658,32 +909,6 @@ function $dv$(d_0) {
   const native_0 = d_0["native"];
   const unsafe_0 = d_0["unsafe"];
   return value_0;
-}
-
-function $lookup$(book_0, name_0) {
-  if (book_0.$ === "Nil") {
-    return run_jump($missing$, []);
-  } else {
-    const d_0 = book_0["head"];
-    const rest_0 = book_0["tail"];
-    return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(d_0)), "BookCache")), run_clo((x_0) => {
-    return run_jump($index_lookup$, [d_0, name_0]);
-}), run_clo((x_1) => {
-    return run_jump($kc$, [run_loop($String$eq$(run_loop($dn$(d_0)), name_0)), run_clo((x_2) => {
-    return d_0;
-}), run_clo((x_3) => {
-    return run_jump($lookup$, [rest_0, name_0]);
-})]);
-})]);
-  }
-}
-
-function $j_io_type$(book_0, ty_0) {
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($dk$(run_loop($lookup$(book_0, "IO")))), "Def")), run_loop($db$(run_loop($lookup$(book_0, "IO")))))), run_clo((x_0) => {
-  return run_jump($j_io_spine$, [run_loop($wnf$(run_loop($j_io_shadow$(book_0)), ty_0)), 0]);
-}), run_clo((x_1) => {
-  return false;
-})]);
 }
 
 function $dt$(d_0) {
@@ -700,13 +925,7 @@ function $dt$(d_0) {
 }
 
 function $driver_final$(book_0, done_0) {
-  if (book_0.$ === "Nil") {
-    return done_0;
-  } else {
-    const d_0 = book_0["head"];
-    const rest_0 = book_0["tail"];
-    return run_jump($driver_final$, [rest_0, {$: "Con", ["head"]: d_0, ["tail"]: run_loop($book_without$(done_0, run_loop($dn$(d_0))))}]);
-  }
+  return run_jump($book_final_fast$, [book_0, done_0]);
 }
 
 function $kp_show$(t_0) {
@@ -737,22 +956,6 @@ function $driver_count_todos$(book_0) {
   }
 }
 
-function $kc$(b_0, yes_0, no_0) {
-  if (b_0) {
-    return run_tail(yes_0, {$: "Unit"});
-  } else {
-    return run_tail(no_0, {$: "Unit"});
-  }
-}
-
-function $Bool$and$(a_0, b_0) {
-  if (!a_0) {
-    return false;
-  } else {
-    return b_0;
-  }
-}
-
 function $dn$(d_0) {
   const name_0 = d_0["name"];
   const kind_0 = d_0["kind"];
@@ -764,19 +967,6 @@ function $dn$(d_0) {
   const native_0 = d_0["native"];
   const unsafe_0 = d_0["unsafe"];
   return name_0;
-}
-
-function $db$(d_0) {
-  const name_0 = d_0["name"];
-  const kind_0 = d_0["kind"];
-  const arity_0 = d_0["arity"];
-  const templates_0 = d_0["templates"];
-  const typ_0 = d_0["typ"];
-  const value_0 = d_0["value"];
-  const ctors_0 = d_0["ctors"];
-  const native_0 = d_0["native"];
-  const unsafe_0 = d_0["unsafe"];
-  return native_0;
 }
 
 function $driver_owned_names$(book_0, names_0) {
@@ -794,7 +984,7 @@ function $driver_owned_names$(book_0, names_0) {
 }
 
 function $sp_finish$(st_0) {
-  return {$: "KSpecialized", ["book"]: run_loop($book_without$(run_loop($sp_book$(st_0)), "$kernel.max-id")), ["error"]: run_loop($sp_error$(st_0))};
+  return {$: "KSpecialized", ["book"]: run_loop($index_remove$(run_loop($sp_book$(st_0)), "$kernel.max-id")), ["error"]: run_loop($sp_error$(st_0))};
 }
 
 function $sp_definitions$(todo_0, st_0) {
@@ -816,13 +1006,7 @@ function $sp_initial$(book_0, bound_0) {
 }
 
 function $sp_canonical$(book_0, done_0) {
-  if (book_0.$ === "Nil") {
-    return done_0;
-  } else {
-    const h_0 = book_0["head"];
-    const rest_0 = book_0["tail"];
-    return run_jump($sp_canonical$, [rest_0, {$: "Con", ["head"]: h_0, ["tail"]: run_loop($book_without$(done_0, run_loop($dn$(h_0))))}]);
-  }
+  return run_jump($book_final_fast$, [book_0, done_0]);
 }
 
 function $nv_owned$(book_0) {
@@ -846,19 +1030,6 @@ function $nt_choose$(b_0, yes_0, no_0) {
   } else {
     return run_tail(no_0, {$: "Unit"});
   }
-}
-
-function $dk$(d_0) {
-  const name_0 = d_0["name"];
-  const kind_0 = d_0["kind"];
-  const arity_0 = d_0["arity"];
-  const templates_0 = d_0["templates"];
-  const typ_0 = d_0["typ"];
-  const value_0 = d_0["value"];
-  const ctors_0 = d_0["ctors"];
-  const native_0 = d_0["native"];
-  const unsafe_0 = d_0["unsafe"];
-  return kind_0;
 }
 
 function $nc_unann$(t_0) {
@@ -960,11 +1131,21 @@ function $nc_context_defs$(book_0, annotated_0) {
     return run_jump($nt_choose$, [run_loop($String$eq$(run_loop($dk$(d_0)), "BookCache")), run_clo((x_0) => {
     return run_jump($nc_context_defs$, [rest_0, annotated_0]);
 }), run_clo((x_1) => {
-    return {$: "Con", ["head"]: run_loop($nt_choose$(run_loop($String$eq$(run_loop($dk$(run_loop($lookup$(annotated_0, run_loop($dn$(d_0)))))), "Absent")), run_clo((x_2) => {
-    return d_0;
-}), run_clo((x_3) => {
-    return run_jump($lookup$, [annotated_0, run_loop($dn$(d_0))]);
-}))), ["tail"]: run_loop($nc_context_defs$(rest_0, annotated_0))};
+    return {$: "Con", ["head"]: run_loop($nc_context_pick$(d_0, run_loop($lookup$(annotated_0, run_loop($dn$(d_0)))))), ["tail"]: run_loop($nc_context_defs$(rest_0, annotated_0))};
+})]);
+  }
+}
+
+function $nc_context_index$(annotated_0) {
+  if (annotated_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const head_0 = annotated_0["head"];
+    const rest_0 = annotated_0["tail"];
+    return run_jump($nt_choose$, [run_loop($nc_context_has_cache$({$: "Con", ["head"]: head_0, ["tail"]: rest_0})), run_clo((x_0) => {
+    return {$: "Con", ["head"]: head_0, ["tail"]: rest_0};
+}), run_clo((x_1) => {
+    return run_jump($book_cached$, [{$: "Con", ["head"]: head_0, ["tail"]: rest_0}, 0]);
 })]);
   }
 }
@@ -1051,11 +1232,8 @@ function $exact_prefix_head$(book_0, h_0, rest_0) {
   }
 }
 
-function $f_graph_result$(g_0) {
-  const book_0 = g_0["book"];
-  const err_0 = g_0["error"];
-  const done_0 = g_0["done"];
-  return run_jump($f_fresh_result$, [run_loop($f_validate_result$({$: "FResult", ["book"]: book_0, ["error"]: err_0, ["imports"]: {$: "Nil"}}))]);
+function $f_graph_result_at$(graph_0, sources_0) {
+  return run_jump($fpe_graph_result$, [graph_0, sources_0, run_loop($f_graph_result$(graph_0))]);
 }
 
 function $f_graph_load$(path_0, ns_0, sources_0, g_0, stack_0) {
@@ -1073,11 +1251,19 @@ function $f_main_result_names$(r_0) {
 })]);
 }
 
-function $f_source_text$(source_0) {
-  const name_0 = source_0["name"];
-  const path_0 = source_0["path"];
-  const text_0 = source_0["text"];
-  return text_0;
+function $f_parse_source$(source_0) {
+  if (source_0.$ === "FSource") {
+    const name_0 = source_0["name"];
+    const path_0 = source_0["path"];
+    const text_0 = source_0["text"];
+    return run_jump($f_parse$, [text_0]);
+  } else {
+    const name_1 = source_0["name"];
+    const path_1 = source_0["path"];
+    const text_1 = source_0["text"];
+    const parsed_0 = source_0["parsed"];
+    return parsed_0;
+  }
 }
 
 function $f_graph_source$(path_0, sources_0) {
@@ -1093,6 +1279,27 @@ function $f_graph_source$(path_0, sources_0) {
 }), run_clo((x_3) => {
     return run_jump($f_graph_source$, [path_0, rest_0]);
 })]);
+  }
+}
+
+function $f_graph_trace$(graph_0, sources_0) {
+  const book_0 = graph_0["book"];
+  const error_0 = graph_0["error"];
+  const done_0 = graph_0["done"];
+  return {$: "FLoadTrace", ["result"]: run_loop($f_graph_result_at$({$: "FGraph", ["book"]: book_0, ["error"]: error_0, ["done"]: done_0}, sources_0)), ["done"]: done_0, ["sources"]: sources_0};
+}
+
+function $atom$(tag_0) {
+  return run_jump($kt$, [tag_0, "", 0, 0, {$: "Nil"}]);
+}
+
+function $index_build$(book_0) {
+  if (book_0.$ === "Nil") {
+    return run_jump($missing$, []);
+  } else {
+    const h_0 = book_0["head"];
+    const rest_0 = book_0["tail"];
+    return run_jump($index_set$, [run_loop($index_build$(rest_0)), h_0, run_loop($index_hash$(run_loop($dn$(h_0)), 2166136261)), 32]);
   }
 }
 
@@ -1161,6 +1368,16 @@ function $dg_book_checked$(book_0, origins_0, error_0) {
 })]);
 }
 
+function $dg_prefix_seed$(todo_0, validated_0, done_0, original_0, origins_0) {
+  if (validated_0.$ === "Nil") {
+    return run_jump($dg_suffix_events$, [todo_0, done_0, original_0, origins_0]);
+  } else {
+    const head_0 = validated_0["head"];
+    const tail_0 = validated_0["tail"];
+    return run_jump($dg_prefix_step$, [todo_0, head_0, tail_0, done_0, original_0, origins_0]);
+  }
+}
+
 function $dg_render_checked$(book_0, diagnostic_0, error_0) {
   const expected_0 = diagnostic_0["expected"];
   const observed_0 = diagnostic_0["observed"];
@@ -1198,7 +1415,18 @@ function $fp_graph_for$(graph_0, sources_0, definition_0) {
   const book_0 = graph_0["book"];
   const error_0 = graph_0["error"];
   const done_0 = graph_0["done"];
-  return run_jump($fp_result_for$, [run_loop($f_graph_result$({$: "FGraph", ["book"]: book_0, ["error"]: error_0, ["done"]: done_0})), done_0, sources_0, definition_0]);
+  return run_jump($fp_result_for$, [run_loop($f_graph_result_at$({$: "FGraph", ["book"]: book_0, ["error"]: error_0, ["done"]: done_0}, sources_0)), done_0, sources_0, definition_0]);
+}
+
+function $fp_loaded_result$(result_0, done_0, sources_0, definition_0) {
+  const book_0 = result_0["book"];
+  const error_0 = result_0["error"];
+  const imports_0 = result_0["imports"];
+  return {$: "FProvenance", ["result"]: {$: "FResult", ["book"]: book_0, ["error"]: error_0, ["imports"]: imports_0}, ["origins"]: run_loop($f_choose$(run_loop($String$is_empty$(error_0)), run_clo((x_0) => {
+  return run_jump($fp_loaded_modules$, [run_loop($fp_loaded_reverse$(done_0, {$: "Nil"})), book_0, sources_0, definition_0]);
+}), run_clo((x_1) => {
+  return {$: "Nil"};
+})))};
 }
 
 function $j_main_error$(book_0, main_0) {
@@ -1292,7 +1520,7 @@ function $j_library_roots$(book_0) {
 
 function $j_intrinsic$(name_0) {
   const x_0 = (name_0 + "|");
-  return run_jump($String$contains$, ["|U32.add|U32.sub|U32.and|U32.or|U32.xor|U32.is_eq|U32.is_ne|U32.is_lt|U32.is_le|U32.is_gt|U32.is_ge|U32.mul|U32.div|U32.mod|U32.inc|U32.shl|U32.shr|U32.shln|U32.shrn|U32.not|U32.is_zero|U32.cmp|U32.to_f32|U32.to_nat|U32.from_nat|F32.add|F32.sub|F32.mul|F32.div|F32.neg|F32.is_eq|F32.is_ne|F32.is_lt|F32.is_le|F32.is_gt|F32.is_ge|F32.sqrt|F32.exp|F32.log|F32.log2|F32.log10|F32.sin|F32.cos|F32.tan|F32.asin|F32.acos|F32.atan|F32.sinh|F32.cosh|F32.tanh|F32.floor|F32.ceil|F32.trunc|F32.abs|F32.pow|F32.atan2|F32.mod|F32.to_u32|F32.bits|F32.show|F32.read|Nat.add|Nat.sub|Nat.mul|Nat.double|Nat.cmp|Nat.is_lt|Nat.divmod|Array.new|Array.set|Array.get|Array.swap|Array.size|Array.clone|IO.pure|IO.bind|IO.try|IO.pass|IO.die|IO.args|IO.print|IO.write|IO.print_err|IO.get_env|IO.now|IO.sleep|IO.random_u32|IO.spawn|IO.fork|IO.join|String.append|String.length|String.eq|Bool.or|Bool.xor|", ("|" + x_0)]);
+  return run_jump($String$contains$, ["|U32.add|U32.sub|U32.and|U32.or|U32.xor|U32.is_eq|U32.is_ne|U32.is_lt|U32.is_le|U32.is_gt|U32.is_ge|U32.mul|U32.div|U32.mod|U32.inc|U32.shl|U32.shr|U32.shln|U32.shrn|U32.not|U32.is_zero|U32.cmp|U32.to_f32|U32.to_nat|U32.from_nat|F32.add|F32.sub|F32.mul|F32.div|F32.neg|F32.is_eq|F32.is_ne|F32.is_lt|F32.is_le|F32.is_gt|F32.is_ge|F32.sqrt|F32.exp|F32.log|F32.log2|F32.log10|F32.sin|F32.cos|F32.tan|F32.asin|F32.acos|F32.atan|F32.sinh|F32.cosh|F32.tanh|F32.floor|F32.ceil|F32.trunc|F32.abs|F32.pow|F32.atan2|F32.mod|F32.to_u32|F32.bits|F32.show|F32.read|Nat.add|Nat.sub|Nat.mul|Nat.double|Nat.cmp|Nat.is_lt|Nat.divmod|Array.new|Array.set|Array.get|Array.swap|Array.size|Array.clone|IO.pure|IO.bind|IO.try|IO.pass|IO.die|IO.args|IO.print|IO.write|IO.print_err|IO.get_env|IO.now|IO.sleep|IO.random_u32|IO.spawn|IO.fork|IO.join|String.append|String.length|String.eq|String.contains|String.starts_with|String.reverse|String.is_empty|Bool.or|Bool.xor|", ("|" + x_0)]);
 }
 
 function $ka_defs_except$(book_0, ds_0, stops_0) {
@@ -1309,53 +1537,32 @@ function $ka_defs_except$(book_0, ds_0, stops_0) {
   }
 }
 
-function $j_ctor_metadata$(defs_0) {
-  if (defs_0.$ === "Nil") {
-    return "";
-  } else {
-    const d_0 = defs_0["head"];
-    const rest_0 = defs_0["tail"];
-    const x_0 = run_loop($j_ctor_keys$(run_loop($dc$(d_0)), run_loop($da$(d_0))));
-    const x_1 = run_loop($j_ctor_metadata$(rest_0));
-    return (x_0 + x_1);
-  }
-}
-
-function $j_schemas$(book_0, defs_0) {
-  if (defs_0.$ === "Nil") {
-    return "";
-  } else {
-    const d_0 = defs_0["head"];
-    const rest_0 = defs_0["tail"];
-    const x_7 = run_loop($kc$(run_loop($String$eq$(run_loop($dk$(d_0)), "ADT")), run_clo((x_0) => {
-    const x_1 = run_loop($j_schema_ctors$(book_0, run_loop($dc$(d_0)), run_loop($da$(d_0))));
-    const x_2 = (x_1 + "}];\n");
-    const x_3 = run_loop($j_quote$(run_loop($dn$(d_0))));
-    const x_4 = ("]=(p)=>[\"ADT\",{" + x_2);
-    const x_5 = (x_3 + x_4);
-    return ("showSchemas[" + x_5);
-}), run_clo((x_6) => {
-    return "";
+function $j_program_context$(book_0, defs_0) {
+  const x_2 = run_loop($kc$(run_loop($j_io_type$(book_0, run_loop($dt$(run_loop($lookup$(book_0, "main")))))), run_clo((x_0) => {
+  return "true";
+}), run_clo((x_1) => {
+  return "false";
 })));
-    const x_8 = run_loop($j_schemas$(book_0, rest_0));
-    return (x_7 + x_8);
-  }
+  const x_3 = (x_2 + ");\n");
+  const x_4 = run_loop($j_descriptor$(book_0, run_loop($dt$(run_loop($lookup$(book_0, "main")))), 64));
+  const x_5 = ("," + x_3);
+  const x_6 = (x_4 + x_5);
+  const x_7 = run_loop($j_defs$(book_0, defs_0));
+  const x_8 = ("\nawait runmain(" + x_6);
+  const x_9 = run_loop($j_schemas$(book_0, defs_0));
+  const x_10 = (x_7 + x_8);
+  const x_11 = run_loop($j_ctor_metadata$(defs_0));
+  const x_12 = (x_9 + x_10);
+  return (x_11 + x_12);
 }
 
-function $j_defs$(book_0, defs_0) {
-  if (defs_0.$ === "Nil") {
-    return "";
-  } else {
-    const d_0 = defs_0["head"];
-    const rest_0 = defs_0["tail"];
-    const x_0 = run_loop($j_def$(book_0, d_0));
-    const x_1 = run_loop($j_defs$(book_0, rest_0));
-    return (x_0 + x_1);
-  }
-}
-
-function $j_descriptor$(book_0, ty_0, fuel_0) {
-  return run_jump($j_desc_kind$, [book_0, run_loop($wnf$(book_0, ty_0)), fuel_0]);
+function $j_library_context$(book_0, defs_0) {
+  const x_0 = run_loop($j_defs$(book_0, defs_0));
+  const x_1 = run_loop($j_schemas$(book_0, defs_0));
+  const x_2 = (x_0 + "\nexport {G,call,list,ctor};\nexport default Object.fromEntries(Object.keys(G).map(k=>[k,(...args)=>call(get(G,k),args)]));\n");
+  const x_3 = run_loop($j_ctor_metadata$(defs_0));
+  const x_4 = (x_1 + x_2);
+  return (x_3 + x_4);
 }
 
 function $j_strip$(t_0) {
@@ -1397,31 +1604,28 @@ function $ks$(t_0) {
   return kids_0;
 }
 
-function $f_top$(ts_0, book_0, imports_0, unsafe_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<eof>")), run_clo((x_0) => {
-  return run_jump($f_result$, [book_0, "", imports_0]);
+function $fpe_render$(source_0, error_0) {
+  return run_jump($f_choose$, [run_loop($String$eq$(run_loop($tg$(error_0)), "Absent")), run_clo((x_0) => {
+  return "";
 }), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "@")), run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "unsafe")))), run_clo((x_2) => {
-  return run_jump($f_tops$, [run_loop($f_tl$(run_loop($f_tl$(ts_0)))), book_0, imports_0, true]);
+  const x_2 = run_loop($ix$(error_0));
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(error_0)), "Error")), run_loop($String$eq$(run_loop($tg$(run_loop($kid$(error_0, 0)))), "ParseExpected")))), run_loop($String$eq$(run_loop($tg$(run_loop($kid$(error_0, 1)))), "ParseToken")))), (x_2 > 0))), run_clo((x_3) => {
+  return run_jump($fpe_seek$, [source_0, source_0, 1, 0, error_0]);
+}), run_clo((x_4) => {
+  return run_jump($nm$, [error_0]);
+})]);
+})]);
+}
+
+function $f_top$(ts_0, book_0, imports_0, unsafe_0) {
+  return run_jump($f_choose$, [unsafe_0, run_clo((x_0) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "def")), run_clo((x_1) => {
+  return run_jump($f_top_ready$, [ts_0, book_0, imports_0, unsafe_0]);
+}), run_clo((x_2) => {
+  return run_jump($f_result$, [book_0, run_loop($f_pn$(run_loop($f_err$(ts_0, "expected def after @unsafe")))), imports_0]);
+})]);
 }), run_clo((x_3) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "import")), run_clo((x_4) => {
-  return run_jump($f_import$, [run_loop($f_tl$(ts_0)), book_0, imports_0]);
-}), run_clo((x_5) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "law")), run_clo((x_6) => {
-  return run_jump($f_law$, [run_loop($f_tx$(run_loop($f_tl$(ts_0)))), run_loop($f_skip$(run_loop($f_tl$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))))))), book_0, imports_0, {$: "Nil"}]);
-}), run_clo((x_7) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "def")), run_clo((x_8) => {
-  return run_jump($f_def$, [run_loop($f_tx$(run_loop($f_tl$(ts_0)))), run_loop($f_tele$(run_loop($f_tl$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))))), ")", {$: "Nil"})), book_0, imports_0, unsafe_0]);
-}), run_clo((x_9) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "type")), run_clo((x_10) => {
-  return run_jump($f_type$, [run_loop($f_tx$(run_loop($f_tl$(ts_0)))), run_loop($f_tl$(run_loop($f_tl$(ts_0)))), book_0, imports_0]);
-}), run_clo((x_11) => {
-  return run_jump($f_result$, [book_0, run_loop($nm$(run_loop($f_pn$(run_loop($f_err$(ts_0, "expected def, law, type or import")))))), imports_0]);
-})]);
-})]);
-})]);
-})]);
-})]);
+  return run_jump($f_top_ready$, [ts_0, book_0, imports_0, unsafe_0]);
 })]);
 }
 
@@ -1449,6 +1653,12 @@ function $List$reverse$(xs_0) {
   return run_jump($List$reverse$go$, [xs_0, {$: "Nil"}]);
 }
 
+function $f_ascii_char_eq$(a_0, b_0) {
+  const x_0 = run_loop($Char$to_u32$(a_0));
+  const x_1 = run_loop($Char$to_u32$(b_0));
+  return (x_0 === x_1);
+}
+
 function $f_tail$(s_0) {
   if (s_0 === "") {
     return "";
@@ -1459,16 +1669,13 @@ function $f_tail$(s_0) {
   }
 }
 
-function $Char$is_space$(c_0) {
-  const x_0 = c_0.codePointAt(0);
-  const x_1 = (x_0 === 32);
-  const x_2 = run_loop($Bool$and$((x_0 >= 9), (x_0 <= 13)));
-  return (x_1 || x_2);
+function $f_ascii_space$(c_0) {
+  return run_jump($f_ascii_space_code$, [run_loop($Char$to_u32$(c_0))]);
 }
 
 function $f_scan_comment$(s_0) {
   const x_0 = run_loop($String$is_empty$(s_0));
-  const x_1 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\n"));
+  const x_1 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "\n"));
   return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
   return s_0;
 }), run_clo((x_3) => {
@@ -1491,15 +1698,35 @@ function $f_scan_quote$(s_0, quote_0, acc_0, n_0) {
   return run_jump($f_choose$, [run_loop($String$is_empty$(s_0)), run_clo((x_0) => {
   return {$: "FScanned", ["word"]: "", ["rest"]: "", ["size"]: 0};
 }), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), quote_0)), run_clo((x_2) => {
+  return run_jump($f_choose$, [run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), quote_0)), run_clo((x_2) => {
   return {$: "FScanned", ["word"]: run_loop($String$reverse$((quote_0 + acc_0))), ["rest"]: run_loop($f_tail$(s_0)), ["size"]: ((n_0 + 1) >>> 0)};
 }), run_clo((x_3) => {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\\")), run_clo((x_4) => {
+  return run_jump($f_choose$, [run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "\\")), run_clo((x_4) => {
   return run_jump($f_scan_quote$, [run_loop($f_tail$(run_loop($f_tail$(s_0)))), quote_0, (run_loop($f_head$(run_loop($f_tail$(s_0)))) + ("\\" + acc_0)), ((n_0 + 2) >>> 0)]);
 }), run_clo((x_5) => {
   return run_jump($f_scan_quote$, [run_loop($f_tail$(s_0)), quote_0, (run_loop($f_head$(s_0)) + acc_0), ((n_0 + 1) >>> 0)]);
 })]);
 })]);
+})]);
+}
+
+function $f_ident$(c_0) {
+  return run_jump($f_ascii_ident_code$, [run_loop($Char$to_u32$(c_0))]);
+}
+
+function $f_scan_word$(s_0, acc_0, n_0) {
+  return run_jump($f_choose$, [run_loop($f_choose$(run_loop($f_ident$(run_loop($f_head$(s_0)))), run_clo((x_0) => {
+  return true;
+}), run_clo((x_1) => {
+  const x_2 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "+"));
+  const x_3 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "-"));
+  const x_4 = run_loop($f_ascii_char_eq$(run_loop($f_head$(acc_0)), "e"));
+  const x_5 = run_loop($f_ascii_char_eq$(run_loop($f_head$(acc_0)), "E"));
+  return run_jump($Bool$and$, [run_loop($Bool$and$((x_2 || x_3), (x_4 || x_5))), run_loop($f_ascii_digit$(run_loop($f_head$(run_loop($f_tail$(s_0))))))]);
+}))), run_clo((x_6) => {
+  return run_jump($f_scan_word$, [run_loop($f_tail$(s_0)), (run_loop($f_head$(s_0)) + acc_0), ((n_0 + 1) >>> 0)]);
+}), run_clo((x_7) => {
+  return {$: "FScanned", ["word"]: run_loop($String$reverse$(acc_0)), ["rest"]: s_0, ["size"]: n_0};
 })]);
 }
 
@@ -1515,30 +1742,6 @@ function $f_triple_op$(s_0) {
 
 function $f_three$(s_0) {
   return (run_loop($f_head$(s_0)) + (run_loop($f_head$(run_loop($f_tail$(s_0)))) + (run_loop($f_head$(run_loop($f_tail$(run_loop($f_tail$(s_0)))))) + "")));
-}
-
-function $f_ident$(c_0) {
-  const x_0 = run_loop($Char$is_alpha$(c_0));
-  const x_1 = run_loop($Char$is_digit$(c_0));
-  const x_2 = (x_0 || x_1);
-  const x_3 = run_loop($Char$is_eq$(c_0, "_"));
-  const x_4 = (x_2 || x_3);
-  const x_5 = run_loop($Char$is_eq$(c_0, "."));
-  return (x_4 || x_5);
-}
-
-function $f_scan_word$(s_0, acc_0, n_0) {
-  const x_0 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "+"));
-  const x_1 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "-"));
-  const x_2 = run_loop($Char$is_eq$(run_loop($f_head$(acc_0)), "e"));
-  const x_3 = run_loop($Char$is_eq$(run_loop($f_head$(acc_0)), "E"));
-  const x_4 = run_loop($f_ident$(run_loop($f_head$(s_0))));
-  const x_5 = run_loop($Bool$and$(run_loop($Bool$and$((x_0 || x_1), (x_2 || x_3))), run_loop($Char$is_digit$(run_loop($f_head$(run_loop($f_tail$(s_0))))))));
-  return run_jump($f_choose$, [(x_4 || x_5), run_clo((x_6) => {
-  return run_jump($f_scan_word$, [run_loop($f_tail$(s_0)), (run_loop($f_head$(s_0)) + acc_0), ((n_0 + 1) >>> 0)]);
-}), run_clo((x_7) => {
-  return {$: "FScanned", ["word"]: run_loop($String$reverse$(acc_0)), ["rest"]: s_0, ["size"]: n_0};
-})]);
 }
 
 function $f_lex_symbol$(s_0, l_0, c_0, d_0, acc_0) {
@@ -1559,17 +1762,17 @@ function $f_lex_symbol$(s_0, l_0, c_0, d_0, acc_0) {
   return run_jump($f_two$, [s_0]);
 }))), ["f_line"]: l_0, ["f_col"]: c_0, ["f_kind"]: 0}, ["tail"]: acc_0}]);
 }), run_clo((x_13) => {
-  const x_14 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "("));
-  const x_15 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "["));
+  const x_14 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "("));
+  const x_15 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "["));
   const x_16 = (x_14 || x_15);
-  const x_17 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "{"));
+  const x_17 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "{"));
   return run_jump($f_lex$, [run_loop($f_tail$(s_0)), l_0, ((c_0 + 1) >>> 0), run_loop($f_choose$((x_16 || x_17), run_clo((x_18) => {
   return ((d_0 + 1) >>> 0);
 }), run_clo((x_19) => {
-  const x_20 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), ")"));
-  const x_21 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "]"));
+  const x_20 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), ")"));
+  const x_21 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "]"));
   const x_22 = (x_20 || x_21);
-  const x_23 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "}"));
+  const x_23 = run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "}"));
   return run_jump($f_choose$, [(x_22 || x_23), run_clo((x_24) => {
   return ((d_0 - 1) >>> 0);
 }), run_clo((x_25) => {
@@ -1644,20 +1847,6 @@ function $event_error$(done_0, d_0, old_0) {
 })]);
 }
 
-function $atom$(tag_0) {
-  return run_jump($kt$, [tag_0, "", 0, 0, {$: "Nil"}]);
-}
-
-function $index_build$(book_0) {
-  if (book_0.$ === "Nil") {
-    return run_jump($missing$, []);
-  } else {
-    const h_0 = book_0["head"];
-    const rest_0 = book_0["tail"];
-    return run_jump($index_set$, [run_loop($index_build$(rest_0)), h_0, run_loop($index_hash$(run_loop($dn$(h_0)), 2166136261)), 32]);
-  }
-}
-
 function $norm_max_defs$(todo_0, bound_0) {
   if (todo_0.$ === "Nil") {
     return bound_0;
@@ -1679,45 +1868,6 @@ function $ka_def$(book_0, d_0) {
 }), run_clo((x_6) => {
   return run_jump($annotate$, [{$: "KEnv", ["book"]: book_0, ["name"]: run_loop($dn$(d_0)), ["lhs"]: run_loop($ref$(run_loop($dn$(d_0)))), ["pending"]: 0, ["quantities"]: {$: "Nil"}, ["unsafe"]: run_loop($du$(d_0))}, {$: "Nil"}, run_loop($dv$(d_0)), run_loop($dt$(d_0))]);
 }))), ["ctors"]: run_loop($dc$(d_0)), ["native"]: run_loop($db$(d_0)), ["unsafe"]: run_loop($du$(d_0))};
-}
-
-function $j_escape$(s_0) {
-  if (s_0 === "") {
-    return "";
-  } else {
-    const c_0 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(0, 2) : s_0[0]);
-    const t_0 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(2) : s_0.slice(1));
-    const x_0 = run_loop($j_escape_char$(c_0));
-    const x_1 = run_loop($j_escape$(t_0));
-    return (x_0 + x_1);
-  }
-}
-
-function $terms_at$(ts_0, n_0) {
-  if (ts_0.$ === "Nil") {
-    return run_jump($atom$, ["Absent"]);
-  } else {
-    const h_0 = ts_0["head"];
-    const t_0 = ts_0["tail"];
-    return run_jump($kc$, [(n_0 === 0), run_clo((x_0) => {
-    return h_0;
-}), run_clo((x_1) => {
-    return run_jump($terms_at$, [t_0, ((n_0 - 1) >>> 0)]);
-})]);
-  }
-}
-
-function $j_module_export$(name_0, implementation_0) {
-  const x_0 = (implementation_0 + ":undefined,");
-  const x_1 = ("===\"function\"?" + x_0);
-  const x_2 = (implementation_0 + x_1);
-  const x_3 = run_loop($j_quote$(name_0));
-  const x_4 = (":typeof " + x_2);
-  return (x_3 + x_4);
-}
-
-function $j_foreign_name$(name_0) {
-  return run_jump($j_foreign_chars$, [run_loop($String$to_lower$(name_0))]);
 }
 
 function $String$eq$fin$(r_0) {
@@ -1750,6 +1900,160 @@ function $String$cmp$(a_0, b_0) {
   }
 }
 
+function $j_l_names$(names_0) {
+  if (names_0.$ === "Nil") {
+    return "";
+  } else {
+    const h_0 = names_0["head"];
+    const rest_0 = names_0["tail"];
+    return run_jump($kc$, [run_loop($String$starts_with$(h_0, "$js.")), run_clo((x_0) => {
+    return h_0;
+}), run_clo((x_1) => {
+    return "";
+})]);
+  }
+}
+
+function $rm$(t_0) {
+  const tag_0 = t_0["tag"];
+  const name_0 = t_0["name"];
+  const id_0 = t_0["id"];
+  const quant_0 = t_0["quant"];
+  const kids_0 = t_0["kids"];
+  const removed_0 = t_0["removed"];
+  return removed_0;
+}
+
+function $j_escape$(s_0) {
+  if (s_0 === "") {
+    return "";
+  } else {
+    const c_0 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(0, 2) : s_0[0]);
+    const t_0 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(2) : s_0.slice(1));
+    const x_0 = run_loop($j_escape_char$(c_0));
+    const x_1 = run_loop($j_escape$(t_0));
+    return (x_0 + x_1);
+  }
+}
+
+function $j_local$(id_0) {
+  const x_0 = run_loop($U32$show$(id_0));
+  return ("x" + x_0);
+}
+
+function $ix$(t_0) {
+  const tag_0 = t_0["tag"];
+  const name_0 = t_0["name"];
+  const id_0 = t_0["id"];
+  const quant_0 = t_0["quant"];
+  const kids_0 = t_0["kids"];
+  const removed_0 = t_0["removed"];
+  return id_0;
+}
+
+function $j_apply$(book_0, env_0, t_0, tail_0, fty_0) {
+  return run_jump($j_apply_spine$, [book_0, env_0, t_0, tail_0, fty_0, run_loop($j_call_spine$(t_0, {$: "Nil"}))]);
+}
+
+function $j_type$(book_0, env_0, t_0) {
+  return run_jump($j_type_on$, [book_0, env_0, t_0, run_loop($tg$(t_0))]);
+}
+
+function $j_constructor_mode$(book_0, env_0, t_0, ty_0, tail_0) {
+  return run_jump($kc$, [run_loop($Bool$and$(tail_0, run_loop($String$eq$(run_loop($j_literal_typed$(book_0, t_0, ty_0)), "")))), run_clo((x_0) => {
+  const x_1 = run_loop($j_ctor_thunks$(book_0, env_0, run_loop($ks$(t_0)), run_loop($j_specialize$(book_0, run_loop($dt$(run_loop($j_find_ctor$(book_0, run_loop($nm$(t_0)))))), run_loop($ks$(run_loop($wnf$(book_0, ty_0))))))));
+  const x_2 = (x_1 + "])");
+  const x_3 = run_loop($j_quote$(run_loop($nm$(t_0))));
+  const x_4 = (",[" + x_2);
+  const x_5 = (x_3 + x_4);
+  return ("build(" + x_5);
+}), run_clo((x_6) => {
+  return run_jump($j_constructor$, [book_0, env_0, t_0, ty_0]);
+})]);
+}
+
+function $j_lambda$(book_0, env_0, t_0, ty_0) {
+  const x_0 = run_loop($j_lambda_code$(book_0, env_0, t_0, ty_0, 0));
+  const x_1 = (x_0 + "})");
+  const x_2 = run_loop($U32$show$(run_loop($j_lambda_count$(t_0))));
+  const x_3 = (",function(a){" + x_1);
+  const x_4 = (x_2 + x_3);
+  return ("fn(" + x_4);
+}
+
+function $j_match$(book_0, env_0, t_0, ty_0) {
+  const x_0 = run_loop($j_constructor_count$(book_0, run_loop($wnf$(book_0, run_loop($kid$(ty_0, 0))))));
+  return run_jump($kc$, [(x_0 === 1), run_clo((x_1) => {
+  const x_2 = run_loop($j_expr$(book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($j_arm_type$(book_0, ty_0, run_loop($nm$(t_0)))), false));
+  const x_3 = (x_2 + ")");
+  const x_4 = run_loop($j_quote$(run_loop($nm$(t_0))));
+  const x_5 = (",()=>" + x_3);
+  const x_6 = (x_4 + x_5);
+  return ("matcher1(" + x_6);
+}), run_clo((x_7) => {
+  const x_8 = run_loop($j_expr$(book_0, env_0, run_loop($kid$(t_0, 1)), ty_0, false));
+  const x_9 = (x_8 + ")");
+  const x_10 = run_loop($j_expr$(book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($j_arm_type$(book_0, ty_0, run_loop($nm$(t_0)))), false));
+  const x_11 = (",()=>" + x_9);
+  const x_12 = (x_10 + x_11);
+  const x_13 = run_loop($j_quote$(run_loop($nm$(t_0))));
+  const x_14 = (",()=>" + x_12);
+  const x_15 = (x_13 + x_14);
+  return ("matcher(" + x_15);
+})]);
+}
+
+function $j_let$(book_0, env_0, xs_0, ty_0, tail_0) {
+  const x_0 = run_loop($j_let_values$(book_0, env_0, xs_0));
+  const x_1 = (x_0 + ")");
+  const x_2 = run_loop($j_expr$(book_0, run_loop($j_context$(book_0, env_0, xs_0)), run_loop($j_body$(xs_0)), ty_0, tail_0));
+  const x_3 = (")(" + x_1);
+  const x_4 = (x_2 + x_3);
+  const x_5 = run_loop($j_bindings$(book_0, env_0, xs_0));
+  const x_6 = (")=>" + x_4);
+  const x_7 = (x_5 + x_6);
+  return ("((" + x_7);
+}
+
+function $j_exprs$(book_0, env_0, xs_0) {
+  if (xs_0.$ === "Nil") {
+    return "";
+  } else {
+    const h_0 = xs_0["head"];
+    const rest_0 = xs_0["tail"];
+    const x_0 = run_loop($j_expr$(book_0, env_0, h_0, run_loop($atom$("Absent")), false));
+    const x_1 = run_loop($j_exprs_tail$(book_0, env_0, rest_0));
+    return (x_0 + x_1);
+  }
+}
+
+function $U32$show$(a_0) {
+  const b_0 = a_0;
+  return run_jump($U32$show$if$, [b_0, (b_0 === 0)]);
+}
+
+function $qt$(t_0) {
+  const tag_0 = t_0["tag"];
+  const name_0 = t_0["name"];
+  const id_0 = t_0["id"];
+  const quant_0 = t_0["quant"];
+  const kids_0 = t_0["kids"];
+  const removed_0 = t_0["removed"];
+  return quant_0;
+}
+
+function $j_desc_head$(book_0, ty_0, fuel_0) {
+  return run_jump($j_desc_head_on$, [book_0, ty_0, fuel_0, run_loop($nm$(ty_0))]);
+}
+
+function $norm_eval$(book_0, t_0, args_0, left_0, fallback_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Var")), run_clo((x_0) => {
+  return run_jump($norm_var$, [book_0, t_0, run_loop($ks$(t_0)), args_0, left_0, fallback_0]);
+}), run_clo((x_1) => {
+  return run_jump($norm_eval_node$, [book_0, t_0, args_0, left_0, fallback_0]);
+})]);
+}
+
 function $missing$() {
   return {$: "KDef", ["name"]: "", ["kind"]: "Absent", ["arity"]: 0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: false};
 }
@@ -1758,34 +2062,51 @@ function $index_lookup$(cache_0, name_0) {
   return run_jump($index_find$, [run_loop($index_first$(run_loop($dc$(cache_0)))), name_0, run_loop($index_hash$(name_0, 2166136261)), 32]);
 }
 
-function $j_io_spine$(t_0, args_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_0) => {
-  return run_jump($j_io_spine$, [run_loop($kid$(t_0, 0)), ((args_0 + 1) >>> 0)]);
-}), run_clo((x_1) => {
-  return run_jump($Bool$and$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Ref")), run_loop($String$eq$(run_loop($nm$(t_0)), "IO")))), (args_0 === 1)]);
-})]);
+function $j_io_shadow_def$(book_0, d_0) {
+  return run_jump($book_put$, [book_0, {$: "KDef", ["name"]: run_loop($dn$(d_0)), ["kind"]: run_loop($dk$(d_0)), ["arity"]: run_loop($da$(d_0)), ["templates"]: run_loop($dx$(d_0)), ["typ"]: run_loop($dt$(d_0)), ["value"]: run_loop($atom$("Absent")), ["ctors"]: run_loop($dc$(d_0)), ["native"]: run_loop($db$(d_0)), ["unsafe"]: run_loop($du$(d_0))}]);
 }
 
-function $wnf$(book_0, t_0) {
-  return run_jump($norm_eval$, [book_0, t_0, {$: "Nil"}, 0, run_loop($atom$("Absent"))]);
-}
-
-function $j_io_shadow$(book_0) {
-  return run_jump($j_io_shadow_def$, [book_0, run_loop($lookup$(book_0, "IO"))]);
-}
-
-function $book_without$(book_0, name_0) {
-  if (book_0.$ === "Nil") {
-    return {$: "Nil"};
+function $terms_at$(ts_0, n_0) {
+  if (ts_0.$ === "Nil") {
+    return run_jump($atom$, ["Absent"]);
   } else {
-    const h_0 = book_0["head"];
-    const t_0 = book_0["tail"];
-    return run_jump($kc$, [run_loop($String$eq$(run_loop($dn$(h_0)), name_0)), run_clo((x_0) => {
-    return run_jump($book_without$, [t_0, name_0]);
+    const h_0 = ts_0["head"];
+    const t_0 = ts_0["tail"];
+    return run_jump($kc$, [(n_0 === 0), run_clo((x_0) => {
+    return h_0;
 }), run_clo((x_1) => {
-    return {$: "Con", ["head"]: h_0, ["tail"]: run_loop($book_without$(t_0, name_0))};
+    return run_jump($terms_at$, [t_0, ((n_0 - 1) >>> 0)]);
 })]);
   }
+}
+
+function $j_module_export$(name_0, implementation_0) {
+  const x_0 = (implementation_0 + ":undefined,");
+  const x_1 = ("===\"function\"?" + x_0);
+  const x_2 = (implementation_0 + x_1);
+  const x_3 = run_loop($j_quote$(name_0));
+  const x_4 = (":typeof " + x_2);
+  return (x_3 + x_4);
+}
+
+function $j_foreign_name$(name_0) {
+  return run_jump($j_foreign_chars$, [run_loop($String$to_lower$(name_0))]);
+}
+
+function $book_final_fast$(book_0, done_0) {
+  return run_jump($kc$, [run_loop($book_final_large$(book_0, 256)), run_clo((x_0) => {
+  return run_jump($kc$, [run_loop($book_final_names_valid$(book_0)), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($book_final_names_valid$(done_0)), run_clo((x_2) => {
+  return run_jump($book_final_scan$, [run_loop($book_final_reverse$(book_0, {$: "Nil"})), run_loop($missing$()), {$: "Nil"}, done_0]);
+}), run_clo((x_3) => {
+  return run_jump($book_final_legacy$, [book_0, done_0]);
+})]);
+}), run_clo((x_4) => {
+  return run_jump($book_final_legacy$, [book_0, done_0]);
+})]);
+}), run_clo((x_5) => {
+  return run_jump($book_final_legacy$, [book_0, done_0]);
+})]);
 }
 
 function $kp_go$(t_0, p_0, env_0) {
@@ -1906,6 +2227,20 @@ function $driver_owned_name$(book_0, name_0) {
   }
 }
 
+function $index_remove$(ds_0, name_0) {
+  if (ds_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const h_0 = ds_0["head"];
+    const rest_0 = ds_0["tail"];
+    return run_jump($kc$, [run_loop($String$eq$(run_loop($dn$(h_0)), name_0)), run_clo((x_0) => {
+    return run_jump($index_remove$, [rest_0, name_0]);
+}), run_clo((x_1) => {
+    return {$: "Con", ["head"]: h_0, ["tail"]: run_loop($index_remove$(rest_0, name_0))};
+})]);
+  }
+}
+
 function $sp_book$(st_0) {
   const book_0 = st_0["book"];
   const memo_0 = st_0["memo"];
@@ -1942,7 +2277,7 @@ function $sp_definition_next$(rest_0, st_0, d_0) {
 }
 
 function $sp_stamp$(book_0, bound_0) {
-  return {$: "Con", ["head"]: {$: "KDef", ["name"]: "$kernel.max-id", ["kind"]: "BookBound", ["arity"]: bound_0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: false}, ["tail"]: run_loop($book_without$(book_0, "$kernel.max-id"))};
+  return {$: "Con", ["head"]: {$: "KDef", ["name"]: "$kernel.max-id", ["kind"]: "BookBound", ["arity"]: bound_0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: false}, ["tail"]: run_loop($index_remove$(book_0, "$kernel.max-id"))};
 }
 
 function $sp_template_book$(book_0) {
@@ -1979,7 +2314,7 @@ function $book_put$(book_0, d_0) {
     const h_0 = book_0["head"];
     const rest_0 = book_0["tail"];
     return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(h_0)), "BookCache")), run_clo((x_0) => {
-    return {$: "Con", ["head"]: {$: "KDef", ["name"]: run_loop($dn$(h_0)), ["kind"]: run_loop($dk$(h_0)), ["arity"]: run_loop($da$(h_0)), ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Con", ["head"]: run_loop($index_set$(run_loop($index_first$(run_loop($dc$(h_0)))), d_0, run_loop($index_hash$(run_loop($dn$(d_0)), 2166136261)), 32)), ["tail"]: {$: "Nil"}}, ["native"]: true, ["unsafe"]: false}, ["tail"]: {$: "Con", ["head"]: d_0, ["tail"]: run_loop($index_remove$(rest_0, run_loop($dn$(d_0))))}};
+    return {$: "Con", ["head"]: {$: "KDef", ["name"]: run_loop($dn$(h_0)), ["kind"]: run_loop($dk$(h_0)), ["arity"]: run_loop($da$(h_0)), ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Con", ["head"]: run_loop($index_set$(run_loop($index_first$(run_loop($dc$(h_0)))), d_0, run_loop($index_hash$(run_loop($dn$(d_0)), 2166136261)), 32)), ["tail"]: {$: "Nil"}}, ["native"]: true, ["unsafe"]: false}, ["tail"]: {$: "Con", ["head"]: d_0, ["tail"]: run_loop($index_put_rest$(h_0, rest_0, run_loop($dn$(d_0))))}};
 }), run_clo((x_1) => {
     return {$: "Con", ["head"]: d_0, ["tail"]: run_loop($index_remove$({$: "Con", ["head"]: h_0, ["tail"]: rest_0}, run_loop($dn$(d_0))))};
 })]);
@@ -2175,6 +2510,28 @@ function $nc_array_known$(k_0) {
   return (x_8 || x_9);
 }
 
+function $nc_context_pick$(original_0, annotated_0) {
+  return run_jump($nt_choose$, [run_loop($String$eq$(run_loop($dk$(annotated_0)), "Absent")), run_clo((x_0) => {
+  return original_0;
+}), run_clo((x_1) => {
+  return annotated_0;
+})]);
+}
+
+function $nc_context_has_cache$(annotated_0) {
+  if (annotated_0.$ === "Nil") {
+    return false;
+  } else {
+    const head_0 = annotated_0["head"];
+    const rest_0 = annotated_0["tail"];
+    return run_jump($nt_choose$, [run_loop($String$eq$(run_loop($dk$(head_0)), "BookCache")), run_clo((x_0) => {
+    return true;
+}), run_clo((x_1) => {
+    return run_jump($nc_context_has_cache$, [rest_0]);
+})]);
+  }
+}
+
 function $nc_foreign_has$(paths_0, path_0) {
   if (paths_0.$ === "Nil") {
     return false;
@@ -2310,15 +2667,22 @@ function $exact_def$(a_0, b_0) {
   return run_jump($Bool$and$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($dn$(a_0)), run_loop($dn$(b_0)))), run_loop($String$eq$(run_loop($dk$(a_0)), run_loop($dk$(b_0)))))), (x_0 === x_1))), (x_2 === x_3))), run_loop($Bool$not$((x_4 !== x_5))))), run_loop($Bool$not$((x_6 !== x_7))))), run_loop($exact_term$(run_loop($dt$(a_0)), run_loop($dt$(b_0)))))), run_loop($exact_term$(run_loop($dv$(a_0)), run_loop($dv$(b_0)))))), run_loop($exact_defs$(run_loop($dc$(a_0)), run_loop($dc$(b_0))))]);
 }
 
-function $f_validate_result$(r_0) {
-  const book_0 = r_0["book"];
-  const err_0 = r_0["error"];
-  const imports_0 = r_0["imports"];
-  return {$: "FResult", ["book"]: book_0, ["error"]: run_loop($f_choose$(run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
-  return run_jump($f_error_defs$, [book_0]);
+function $fpe_graph_result$(graph_0, sources_0, result_0) {
+  const book_0 = graph_0["book"];
+  const error_0 = graph_0["error"];
+  const done_0 = graph_0["done"];
+  return run_jump($f_choose$, [run_loop($String$is_empty$(error_0)), run_clo((x_0) => {
+  return run_jump($fpe_rejected$, [result_0, book_0, done_0, sources_0]);
 }), run_clo((x_1) => {
-  return err_0;
-}))), ["imports"]: imports_0};
+  return result_0;
+})]);
+}
+
+function $f_graph_result$(g_0) {
+  const book_0 = g_0["book"];
+  const err_0 = g_0["error"];
+  const done_0 = g_0["done"];
+  return run_jump($f_fresh_result$, [run_loop($f_graph_fresh_result$(run_loop($f_validate_result$({$: "FResult", ["book"]: book_0, ["error"]: err_0, ["imports"]: {$: "Nil"}}))))]);
 }
 
 function $f_graph_source_load$(s_0, ns_0, sources_0, g_0, stack_0) {
@@ -2360,17 +2724,58 @@ function $f_eq$(a_0, b_0) {
 }
 
 function $f_source_name$(source_0) {
-  const name_0 = source_0["name"];
-  const path_0 = source_0["path"];
-  const text_0 = source_0["text"];
-  return name_0;
+  if (source_0.$ === "FSource") {
+    const name_0 = source_0["name"];
+    const path_0 = source_0["path"];
+    const text_0 = source_0["text"];
+    return name_0;
+  } else {
+    const name_1 = source_0["name"];
+    const path_1 = source_0["path"];
+    const text_1 = source_0["text"];
+    const parsed_0 = source_0["parsed"];
+    return name_1;
+  }
 }
 
 function $f_source_path$(source_0) {
-  const name_0 = source_0["name"];
-  const path_0 = source_0["path"];
-  const text_0 = source_0["text"];
-  return path_0;
+  if (source_0.$ === "FSource") {
+    const name_0 = source_0["name"];
+    const path_0 = source_0["path"];
+    const text_0 = source_0["text"];
+    return path_0;
+  } else {
+    const name_1 = source_0["name"];
+    const path_1 = source_0["path"];
+    const text_1 = source_0["text"];
+    const parsed_0 = source_0["parsed"];
+    return path_1;
+  }
+}
+
+function $kt$(tag_0, name_0, id_0, quant_0, kids_0) {
+  return {$: "KTerm", ["tag"]: tag_0, ["name"]: name_0, ["id"]: id_0, ["quant"]: quant_0, ["kids"]: kids_0, ["removed"]: {$: "Nil"}};
+}
+
+function $index_set$(tree_0, d_0, hash_0, bits_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(tree_0)), "Absent")), run_clo((x_0) => {
+  return run_jump($index_leaf$, [d_0, hash_0, {$: "Nil"}]);
+}), run_clo((x_1) => {
+  const x_2 = run_loop($da$(run_loop($index_tip$(tree_0, hash_0))));
+  return run_jump($index_insert$, [tree_0, d_0, hash_0, run_loop($index_split_bit$(((hash_0 ^ x_2) >>> 0)))]);
+})]);
+}
+
+function $index_hash$(name_0, acc_0) {
+  if (name_0 === "") {
+    return acc_0;
+  } else {
+    const h_0 = (name_0.codePointAt(0) > 0xFFFF ? name_0.slice(0, 2) : name_0[0]);
+    const rest_0 = (name_0.codePointAt(0) > 0xFFFF ? name_0.slice(2) : name_0.slice(1));
+    const x_0 = run_loop($Char$to_u32$(h_0));
+    const x_1 = ((acc_0 ^ x_0) >>> 0);
+    return run_jump($index_hash$, [rest_0, (Math.imul(x_1, 16777619) >>> 0)]);
+  }
 }
 
 function $f_seed_text_equal$(a_0, b_0) {
@@ -2397,6 +2802,21 @@ function $f_seed_text_equal$(a_0, b_0) {
   }
 }
 
+function $f_source_text$(source_0) {
+  if (source_0.$ === "FSource") {
+    const name_0 = source_0["name"];
+    const path_0 = source_0["path"];
+    const text_0 = source_0["text"];
+    return text_0;
+  } else {
+    const name_1 = source_0["name"];
+    const path_1 = source_0["path"];
+    const text_1 = source_0["text"];
+    const parsed_0 = source_0["parsed"];
+    return text_1;
+  }
+}
+
 function $fs_source$(s_0, ns_0, sources_0, g_0, stack_0, seed_0) {
   const book_0 = g_0["book"];
   const err_0 = g_0["error"];
@@ -2415,11 +2835,6 @@ function $fs_source$(s_0, ns_0, sources_0, g_0, stack_0, seed_0) {
 })]);
 })]);
 })]);
-}
-
-function $U32$show$(a_0) {
-  const b_0 = a_0;
-  return run_jump($U32$show$if$, [b_0, (b_0 === 0)]);
 }
 
 function $dr_count$(names_0) {
@@ -2471,6 +2886,26 @@ function $dg_events$(todo_0, done_0, origins_0, error_0) {
     const d_0 = todo_0["head"];
     const rest_0 = todo_0["tail"];
     return run_jump($dg_event_guard$, [rest_0, done_0, d_0, origins_0, error_0, run_loop($event_error$(done_0, d_0, run_loop($lookup$(done_0, run_loop($dn$(d_0))))))]);
+  }
+}
+
+function $dg_suffix_events$(todo_0, done_0, original_0, origins_0) {
+  if (todo_0.$ === "Nil") {
+    return run_jump($dg_suffix_finish$, [done_0, original_0, origins_0, run_loop($check_open$(done_0))]);
+  } else {
+    const d_0 = todo_0["head"];
+    const rest_0 = todo_0["tail"];
+    return run_jump($dg_suffix_guard$, [rest_0, done_0, d_0, original_0, origins_0, run_loop($event_error$(done_0, d_0, run_loop($lookup$(done_0, run_loop($dn$(d_0))))))]);
+  }
+}
+
+function $dg_prefix_step$(todo_0, head_0, tail_0, done_0, original_0, origins_0) {
+  if (todo_0.$ === "Nil") {
+    return run_jump($check_book_diagnostic$, [original_0, origins_0]);
+  } else {
+    const event_0 = todo_0["head"];
+    const rest_0 = todo_0["tail"];
+    return run_jump($dg_prefix_seed$, [rest_0, tail_0, run_loop($book_put$(done_0, head_0)), original_0, origins_0]);
   }
 }
 
@@ -2529,6 +2964,26 @@ function $fp_result_for$(result_0, done_0, sources_0, definition_0) {
 })))};
 }
 
+function $fp_loaded_modules$(done_0, book_0, sources_0, definition_0) {
+  if (done_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const entry_0 = done_0["head"];
+    const rest_0 = done_0["tail"];
+    return run_jump($List$append$, [run_loop($fp_loaded_module$(run_loop($fp_loaded_take$(book_0, run_loop($ix$(entry_0)))), run_loop($f_graph_source$(run_loop($nm$(entry_0)), sources_0)), definition_0)), run_loop($fp_loaded_modules$(rest_0, run_loop($fp_loaded_drop$(book_0, run_loop($ix$(entry_0)))), sources_0, definition_0))]);
+  }
+}
+
+function $fp_loaded_reverse$(done_0, acc_0) {
+  if (done_0.$ === "Nil") {
+    return acc_0;
+  } else {
+    const head_0 = done_0["head"];
+    const tail_0 = done_0["tail"];
+    return run_jump($fp_loaded_reverse$, [tail_0, {$: "Con", ["head"]: head_0, ["tail"]: acc_0}]);
+  }
+}
+
 function $j_printable$(book_0, ty_0, seen_0, fuel_0) {
   return run_jump($j_printable_head$, [book_0, run_loop($wnf$(book_0, ty_0)), seen_0, fuel_0]);
 }
@@ -2564,98 +3019,72 @@ function $String$contains$(s_0, p_0) {
   }
 }
 
-function $j_ctor_keys$(ctors_0, params_0) {
-  if (ctors_0.$ === "Nil") {
+function $j_ctor_metadata$(defs_0) {
+  if (defs_0.$ === "Nil") {
     return "";
   } else {
-    const d_0 = ctors_0["head"];
-    const rest_0 = ctors_0["tail"];
-    const x_4 = run_loop($j_ctor_keys$(rest_0, params_0));
-    const x_5 = run_loop($j_field_keys$(run_loop($dt$(d_0)), params_0));
-    const x_6 = ("];\n" + x_4);
-    const x_7 = (x_5 + x_6);
-    const x_8 = run_loop($j_quote$(run_loop($dn$(d_0))));
-    const x_9 = ("]=[" + x_7);
-    const x_10 = (x_8 + x_9);
-    const x_11 = run_loop($j_quote$(run_loop($kc$(run_loop($String$eq$(run_loop($nm$(run_loop($dv$(d_0)))), "")), run_clo((x_2) => {
-    return run_jump($dn$, [d_0]);
-}), run_clo((x_3) => {
-    return run_jump($nm$, [run_loop($dv$(d_0))]);
-})))));
-    const x_12 = (";constructors[" + x_10);
-    const x_13 = (x_11 + x_12);
-    const x_14 = run_loop($j_quote$(run_loop($dn$(d_0))));
-    const x_15 = ("]=" + x_13);
-    const x_16 = (x_14 + x_15);
-    const x_17 = run_loop($kc$(run_loop($db$(d_0)), run_clo((x_0) => {
-    return "true";
-}), run_clo((x_1) => {
-    return "false";
-})));
-    const x_18 = (";constructorOwn[" + x_16);
-    const x_19 = (x_17 + x_18);
-    const x_20 = run_loop($j_quote$(run_loop($dn$(d_0))));
-    const x_21 = ("]=" + x_19);
-    const x_22 = (x_20 + x_21);
-    return ("constructorNative[" + x_22);
+    const d_0 = defs_0["head"];
+    const rest_0 = defs_0["tail"];
+    const x_0 = run_loop($j_ctor_keys$(run_loop($dc$(d_0)), run_loop($da$(d_0))));
+    const x_1 = run_loop($j_ctor_metadata$(rest_0));
+    return (x_0 + x_1);
   }
 }
 
-function $j_schema_ctors$(book_0, ctors_0, params_0) {
-  if (ctors_0.$ === "Nil") {
+function $j_schemas$(book_0, defs_0) {
+  if (defs_0.$ === "Nil") {
     return "";
   } else {
-    const d_0 = ctors_0["head"];
-    const rest_0 = ctors_0["tail"];
-    const x_0 = run_loop($j_schema_ctors$(book_0, rest_0, params_0));
-    const x_1 = run_loop($j_schema_params$(book_0, run_loop($dt$(d_0)), params_0, 0));
-    const x_2 = ("})()," + x_0);
-    const x_3 = (x_1 + x_2);
-    const x_4 = run_loop($j_quote$(run_loop($dn$(d_0))));
-    const x_5 = (":(()=>{" + x_3);
-    return (x_4 + x_5);
+    const d_0 = defs_0["head"];
+    const rest_0 = defs_0["tail"];
+    const x_7 = run_loop($kc$(run_loop($String$eq$(run_loop($dk$(d_0)), "ADT")), run_clo((x_0) => {
+    const x_1 = run_loop($j_schema_ctors$(book_0, run_loop($dc$(d_0)), run_loop($da$(d_0))));
+    const x_2 = (x_1 + "}];\n");
+    const x_3 = run_loop($j_quote$(run_loop($dn$(d_0))));
+    const x_4 = ("]=(p)=>[\"ADT\",{" + x_2);
+    const x_5 = (x_3 + x_4);
+    return ("showSchemas[" + x_5);
+}), run_clo((x_6) => {
+    return "";
+})));
+    const x_8 = run_loop($j_schemas$(book_0, rest_0));
+    return (x_7 + x_8);
   }
 }
 
-function $j_def$(book_0, d_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Foreign")), run_clo((x_0) => {
-  return run_jump($j_foreign_def$, [book_0, d_0]);
-}), run_clo((x_1) => {
-  const x_2 = run_loop($dx$(d_0));
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($dk$(d_0)), "Def")), (x_2 === 0))), run_loop($Bool$not$(run_loop($String$eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Absent")))))), run_loop($Bool$not$(run_loop($String$eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Foreign")))))), run_clo((x_3) => {
-  const x_8 = run_loop($kc$(run_loop($Bool$and$(run_loop($db$(d_0)), run_loop($j_intrinsic$(run_loop($dn$(d_0)))))), run_clo((x_4) => {
-  const x_5 = run_loop($j_quote$(run_loop($dn$(d_0))));
-  const x_6 = (x_5 + "))");
-  return ("if(!Object.hasOwn(G," + x_6);
-}), run_clo((x_7) => {
-  return "";
-})));
-  const x_9 = run_loop($j_l_def$(book_0, d_0));
-  return (x_8 + x_9);
-}), run_clo((x_10) => {
-  return "";
-})]);
-})]);
-}
-
-function $j_desc_kind$(book_0, ty_0, fuel_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), run_clo((x_0) => {
-  const x_1 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 1)), fuel_0));
-  const x_2 = (x_1 + "]");
-  const x_3 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 0)), fuel_0));
-  const x_4 = ("," + x_2);
-  const x_5 = (x_3 + x_4);
-  const x_6 = run_loop($U32$show$(run_loop($qt$(ty_0))));
-  const x_7 = ("," + x_5);
-  const x_8 = (x_6 + x_7);
-  return ("[\"Fun\"," + x_8);
-}), run_clo((x_9) => {
-  return run_jump($j_desc_head$, [book_0, ty_0, fuel_0]);
-})]);
+function $j_defs$(book_0, defs_0) {
+  if (defs_0.$ === "Nil") {
+    return "";
+  } else {
+    const d_0 = defs_0["head"];
+    const rest_0 = defs_0["tail"];
+    const x_0 = run_loop($j_def$(book_0, d_0));
+    const x_1 = run_loop($j_defs$(book_0, rest_0));
+    return (x_0 + x_1);
+  }
 }
 
 function $String$ends_with$(s_0, p_0) {
   return run_jump($String$starts_with$, [run_loop($String$reverse$(s_0)), run_loop($String$reverse$(p_0))]);
+}
+
+function $fpe_seek$(source_0, rest_0, line_0, column_0, error_0) {
+  const x_0 = run_loop($ix$(error_0));
+  const x_1 = run_loop($qt$(error_0));
+  return run_jump($f_choose$, [run_loop($Bool$and$((line_0 === x_0), (column_0 === x_1))), run_clo((x_2) => {
+  return run_jump($fpe_here$, [source_0, rest_0, error_0]);
+}), run_clo((x_3) => {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(rest_0)), run_clo((x_4) => {
+  return run_jump($nm$, [error_0]);
+}), run_clo((x_5) => {
+  const x_6 = run_loop($Char$to_u32$(run_loop($f_head$(rest_0))));
+  return run_jump($f_choose$, [(x_6 === 10), run_clo((x_7) => {
+  return run_jump($fpe_seek$, [source_0, run_loop($f_tail$(rest_0)), ((line_0 + 1) >>> 0), 0, error_0]);
+}), run_clo((x_8) => {
+  return run_jump($fpe_seek$, [source_0, run_loop($f_tail$(rest_0)), line_0, ((column_0 + 1) >>> 0), error_0]);
+})]);
+})]);
+})]);
 }
 
 function $f_tx$(ts_0) {
@@ -2672,50 +3101,40 @@ function $f_tx$(ts_0) {
   }
 }
 
+function $f_top_ready$(ts_0, book_0, imports_0, unsafe_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<eof>")), run_clo((x_0) => {
+  return run_jump($f_result$, [book_0, run_loop($atom$("Absent")), imports_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "@")), run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "unsafe")))), run_clo((x_2) => {
+  return run_jump($f_tops$, [run_loop($f_tl$(run_loop($f_tl$(ts_0)))), book_0, imports_0, true]);
+}), run_clo((x_3) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "import")), run_clo((x_4) => {
+  return run_jump($f_import_leading$, [ts_0, book_0, imports_0, unsafe_0]);
+}), run_clo((x_5) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "law")), run_clo((x_6) => {
+  return run_jump($f_law$, [run_loop($f_tx$(run_loop($f_tl$(ts_0)))), run_loop($f_skip$(run_loop($f_tl$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))))))), book_0, imports_0, {$: "Nil"}]);
+}), run_clo((x_7) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "def")), run_clo((x_8) => {
+  return run_jump($f_def$, [run_loop($f_tx$(run_loop($f_tl$(ts_0)))), run_loop($f_tele$(run_loop($f_tl$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))))), ")", {$: "Nil"})), book_0, imports_0, unsafe_0]);
+}), run_clo((x_9) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "type")), run_clo((x_10) => {
+  return run_jump($f_type$, [run_loop($f_tx$(run_loop($f_tl$(ts_0)))), run_loop($f_tl$(run_loop($f_tl$(ts_0)))), book_0, imports_0]);
+}), run_clo((x_11) => {
+  return run_jump($f_result$, [book_0, run_loop($f_pn$(run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "@")), run_clo((x_12) => {
+  return run_jump($f_err$, [ts_0, "expected def, law, type or import"]);
+}), run_clo((x_13) => {
+  return run_jump($fpe_error$, [ts_0, "expected def, law, type or import", "'def', 'type' or 'law'"]);
+}))))), imports_0]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+}
+
 function $f_result$(book_0, err_0, imports_0) {
-  return {$: "FResult", ["book"]: run_loop($List$reverse$(book_0)), ["error"]: err_0, ["imports"]: run_loop($List$reverse$(imports_0))};
-}
-
-function $f_tl$(ts_0) {
-  if (ts_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const t_0 = ts_0["head"];
-    const rest_0 = ts_0["tail"];
-    return rest_0;
-  }
-}
-
-function $f_import$(ts_0, book_0, imports_0) {
-  return run_jump($f_import_path$, [ts_0, "", book_0, imports_0]);
-}
-
-function $f_law$(name_0, ts_0, book_0, imports_0, clauses_0) {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_valid_name$(name_0)), run_loop($f_eq$(run_loop($dk$(run_loop($f_find$(name_0, book_0)))), "Missing")))), run_clo((x_0) => {
-  return run_jump($f_law_base$, [name_0, ts_0, book_0, imports_0, clauses_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_result$, [book_0, ("invalid or reserved law name: " + name_0), imports_0]);
-})]);
-}
-
-function $f_def$(name_0, p_0, book_0, imports_0, unsafe_0) {
-  return run_jump($f_choose$, [run_loop($Bool$not$(run_loop($f_valid_name$(name_0)))), run_clo((x_0) => {
-  return run_jump($f_result$, [book_0, ("reserved definition name: " + name_0), imports_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_def_prior$, [name_0, p_0, book_0, imports_0, unsafe_0, run_loop($f_find$(name_0, book_0))]);
-})]);
-}
-
-function $f_tele$(ts0_0, end_0, acc_0) {
-  return run_jump($f_tele_at$, [run_loop($f_skip$(ts0_0)), end_0, acc_0]);
-}
-
-function $f_type$(name_0, ts_0, book_0, imports_0) {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_valid_name$(name_0)), run_loop($f_eq$(run_loop($dk$(run_loop($f_find$(name_0, book_0)))), "Missing")))), run_clo((x_0) => {
-  return run_jump($f_type_named$, [name_0, ts_0, book_0, imports_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_result$, [book_0, ("invalid or reserved datatype name: " + name_0), imports_0]);
-})]);
+  return {$: "FRawResult", ["book"]: run_loop($List$reverse$(book_0)), ["error"]: err_0, ["imports"]: run_loop($List$reverse$(imports_0))};
 }
 
 function $f_pn$(p_0) {
@@ -2737,6 +3156,16 @@ function $f_err$(ts_0, msg_0) {
   return {$: "FParsed", ["term"]: run_loop($kt$("Error", ("line " + x_8), 0, 0, {$: "Nil"})), ["rest"]: {$: "Nil"}};
 }
 
+function $f_tl$(ts_0) {
+  if (ts_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const t_0 = ts_0["head"];
+    const rest_0 = ts_0["tail"];
+    return rest_0;
+  }
+}
+
 function $List$reverse$go$(xs_0, acc_0) {
   if (xs_0.$ === "Nil") {
     return acc_0;
@@ -2747,19 +3176,39 @@ function $List$reverse$go$(xs_0, acc_0) {
   }
 }
 
+function $Char$to_u32$(c_0) {
+  const x_0 = c_0.codePointAt(0);
+  return x_0;
+}
+
+function $f_ascii_space_code$(code_0) {
+  const x_0 = ((code_0 - 9) >>> 0);
+  const x_1 = (code_0 === 32);
+  const x_2 = (x_0 <= 4);
+  return (x_1 || x_2);
+}
+
 function $String$reverse$(s_0) {
   return run_jump($String$reverse$go$, [s_0, ""]);
 }
 
-function $Char$is_alpha$(c_0) {
-  const x_0 = run_loop($Char$is_upper$(c_0));
-  const x_1 = run_loop($Char$is_lower$(c_0));
-  return (x_0 || x_1);
+function $f_ascii_ident_code$(code_0) {
+  const x_0 = ((code_0 | 32) >>> 0);
+  const x_1 = ((x_0 - 97) >>> 0);
+  const x_2 = ((code_0 - 48) >>> 0);
+  const x_3 = (x_1 <= 25);
+  const x_4 = (x_2 <= 9);
+  const x_5 = (x_3 || x_4);
+  const x_6 = (code_0 === 95);
+  const x_7 = (x_5 || x_6);
+  const x_8 = (code_0 === 46);
+  return (x_7 || x_8);
 }
 
-function $Char$is_digit$(c_0) {
-  const x_0 = c_0.codePointAt(0);
-  return run_jump($Bool$and$, [(x_0 >= 48), (x_0 <= 57)]);
+function $f_ascii_digit$(c_0) {
+  const x_0 = run_loop($Char$to_u32$(c_0));
+  const x_1 = ((x_0 - 48) >>> 0);
+  return (x_1 <= 9);
 }
 
 function $f_pair_op$(s_0) {
@@ -2814,7 +3263,7 @@ function $f_symbol_text$(s_0, c_0, acc_0) {
   const x_2 = run_loop($f_col$(acc_0));
   const x_3 = Number(x_1 & 0xFFFFFFFFn);
   const x_4 = ((x_2 + x_3) >>> 0);
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "+")), run_loop($Char$is_alpha$(run_loop($f_head$(run_loop($f_tail$(s_0)))))))), run_loop($Bool$not$(run_loop($Bool$and$(run_loop($String$ends_with$(run_loop($f_tx$(acc_0)), "n")), (x_4 === c_0))))))), run_clo((x_5) => {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), "+")), run_loop($f_ascii_alpha$(run_loop($f_head$(run_loop($f_tail$(s_0)))))))), run_loop($Bool$not$(run_loop($Bool$and$(run_loop($String$ends_with$(run_loop($f_tx$(acc_0)), "n")), (x_4 === c_0))))))), run_clo((x_5) => {
   return "+bind";
 }), run_clo((x_6) => {
   const x_7 = run_loop($f_tx$(acc_0));
@@ -2822,7 +3271,7 @@ function $f_symbol_text$(s_0, c_0, acc_0) {
   const x_9 = run_loop($f_col$(acc_0));
   const x_10 = Number(x_8 & 0xFFFFFFFFn);
   const x_11 = ((x_9 + x_10) >>> 0);
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Char$is_eq$(run_loop($f_head$(s_0)), ">")), (c_0 > x_11))), run_clo((x_12) => {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_ascii_char_eq$(run_loop($f_head$(s_0)), ">")), (c_0 > x_11))), run_clo((x_12) => {
   return ">op";
 }), run_clo((x_13) => {
   return (run_loop($f_head$(s_0)) + "");
@@ -2941,31 +3390,6 @@ function $compare$(book_0, a_0, b_0, le_0) {
   return run_jump($norm_compare$, [book_0, a_0, b_0, le_0, ((1 + x_0) >>> 0)]);
 }
 
-function $kt$(tag_0, name_0, id_0, quant_0, kids_0) {
-  return {$: "KTerm", ["tag"]: tag_0, ["name"]: name_0, ["id"]: id_0, ["quant"]: quant_0, ["kids"]: kids_0, ["removed"]: {$: "Nil"}};
-}
-
-function $index_set$(tree_0, d_0, hash_0, bits_0) {
-  return run_jump($kc$, [(bits_0 === 0), run_clo((x_0) => {
-  return {$: "KDef", ["name"]: "", ["kind"]: "IndexLeaf", ["arity"]: 0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Con", ["head"]: d_0, ["tail"]: run_loop($index_remove$(run_loop($dc$(tree_0)), run_loop($dn$(d_0))))}, ["native"]: true, ["unsafe"]: false};
-}), run_clo((x_1) => {
-  const x_2 = ((hash_0 & 1) >>> 0);
-  return run_jump($index_set_node$, [tree_0, d_0, hash_0, bits_0, run_loop($Bool$not$((x_2 === 0)))]);
-})]);
-}
-
-function $index_hash$(name_0, acc_0) {
-  if (name_0 === "") {
-    return acc_0;
-  } else {
-    const h_0 = (name_0.codePointAt(0) > 0xFFFF ? name_0.slice(0, 2) : name_0[0]);
-    const rest_0 = (name_0.codePointAt(0) > 0xFFFF ? name_0.slice(2) : name_0.slice(1));
-    const x_0 = run_loop($Char$to_u32$(h_0));
-    const x_1 = ((acc_0 ^ x_0) >>> 0);
-    return run_jump($index_hash$, [rest_0, (Math.imul(x_1, 16777619) >>> 0)]);
-  }
-}
-
 function $norm_defs_join$(a_0, b_0) {
   if (a_0.$ === "Nil") {
     return b_0;
@@ -2994,38 +3418,6 @@ function $annotate$(e_0, ctx_0, t_0, ty_0) {
 
 function $ref$(name_0) {
   return run_jump($kt$, ["Ref", name_0, 0, 0, {$: "Nil"}]);
-}
-
-function $j_escape_char$(c_0) {
-  return run_jump($j_escape_char_on$, [c_0, run_loop($Char$to_u32$(c_0))]);
-}
-
-function $j_foreign_chars$(name_0) {
-  if (name_0 === "") {
-    return "";
-  } else {
-    const h_0 = (name_0.codePointAt(0) > 0xFFFF ? name_0.slice(0, 2) : name_0[0]);
-    const rest_0 = (name_0.codePointAt(0) > 0xFFFF ? name_0.slice(2) : name_0.slice(1));
-    const x_0 = run_loop($Char$is_eq$(h_0, "."));
-    const x_1 = run_loop($Char$is_eq$(h_0, "/"));
-    const x_4 = run_loop($kc$((x_0 || x_1), run_clo((x_2) => {
-    return "_";
-}), run_clo((x_3) => {
-    return run_jump($Char$show$, [h_0]);
-})));
-    const x_5 = run_loop($j_foreign_chars$(rest_0));
-    return (x_4 + x_5);
-  }
-}
-
-function $String$to_lower$(s_0) {
-  if (s_0 === "") {
-    return "";
-  } else {
-    const h_0 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(0, 2) : s_0[0]);
-    const t_0 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(2) : s_0.slice(1));
-    return (run_loop($Char$to_lower$(h_0)) + run_loop($String$to_lower$(t_0)));
-  }
 }
 
 function $Cmp$is_eq$(c_0) {
@@ -3058,15 +3450,360 @@ function $Char$cmp$(a_0, b_0) {
   return {$: "Tuple", ["fst"]: {$: "Tuple", ["fst"]: char_new(x_0), ["snd"]: char_new(y_0)}, ["snd"]: cmp_new(x_0, y_0)};
 }
 
+function $String$starts_with$(s_0, p_0) {
+  if (s_0 === "") {
+    if (p_0 === "") {
+      return true;
+    } else {
+      const h_0 = (p_0.codePointAt(0) > 0xFFFF ? p_0.slice(0, 2) : p_0[0]);
+      const t_0 = (p_0.codePointAt(0) > 0xFFFF ? p_0.slice(2) : p_0.slice(1));
+      return false;
+    }
+  } else {
+    const h_1 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(0, 2) : s_0[0]);
+    const t_1 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(2) : s_0.slice(1));
+    if (p_0 === "") {
+      return true;
+    } else {
+      const y_0 = (p_0.codePointAt(0) > 0xFFFF ? p_0.slice(0, 2) : p_0[0]);
+      const yt_0 = (p_0.codePointAt(0) > 0xFFFF ? p_0.slice(2) : p_0.slice(1));
+      return run_jump($String$starts_with$if$, [t_1, yt_0, run_loop($Char$is_eq$(h_1, y_0))]);
+    }
+  }
+}
+
+function $j_escape_char$(c_0) {
+  return run_jump($j_escape_char_on$, [c_0, run_loop($Char$to_u32$(c_0))]);
+}
+
+function $j_apply_spine$(book_0, env_0, t_0, tail_0, fty_0, spine_0) {
+  return run_jump($kc$, [run_loop($j_choice_call$(book_0, spine_0)), run_clo((x_0) => {
+  return run_jump($j_choice_emit$, [book_0, env_0, spine_0, tail_0]);
+}), run_clo((x_1) => {
+  return run_jump($j_apply_regular$, [book_0, env_0, t_0, tail_0, fty_0, spine_0]);
+})]);
+}
+
+function $j_call_spine$(t_0, args_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
+  return run_jump($j_call_spine$, [run_loop($kid$(t_0, 0)), args_0]);
+}), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_2) => {
+  return run_jump($j_call_spine$, [run_loop($kid$(t_0, 0)), {$: "Con", ["head"]: run_loop($kid$(t_0, 1)), ["tail"]: args_0}]);
+}), run_clo((x_3) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ref")), run_clo((x_4) => {
+  return run_jump($kt$, ["Call", run_loop($nm$(t_0)), 0, 0, args_0]);
+}), run_clo((x_5) => {
+  return run_jump($atom$, ["Absent"]);
+})]);
+})]);
+})]);
+}
+
+function $j_type_on$(book_0, env_0, t_0, key_0) {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Ann")), run_clo((x_0) => {
+  return run_jump($kid$, [t_0, 1]);
+}), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Var")), run_clo((x_2) => {
+  return run_jump($j_env$, [env_0, run_loop($ix$(t_0))]);
+}), run_clo((x_3) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Ref")), run_clo((x_4) => {
+  return run_jump($dt$, [run_loop($lookup$(book_0, run_loop($nm$(t_0))))]);
+}), run_clo((x_5) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "App")), run_clo((x_6) => {
+  return run_jump($j_app_type$, [run_loop($wnf$(book_0, run_loop($j_type$(book_0, env_0, run_loop($kid$(t_0, 0)))))), run_loop($kid$(t_0, 1))]);
+}), run_clo((x_7) => {
+  return run_jump($atom$, ["Absent"]);
+})]);
+})]);
+})]);
+})]);
+}
+
+function $j_literal_typed$(book_0, t_0, ty_0) {
+  const literal_0 = run_loop($j_literal$(t_0));
+  return run_jump($kc$, [run_loop($String$eq$(literal_0, "")), run_clo((x_0) => {
+  return "";
+}), run_clo((x_1) => {
+  return run_jump($j_literal_provenance$, [book_0, run_loop($wnf$(book_0, ty_0)), literal_0]);
+})]);
+}
+
+function $j_ctor_thunks$(book_0, env_0, args_0, tel_0) {
+  if (args_0.$ === "Nil") {
+    return "";
+  } else {
+    const h_0 = args_0["head"];
+    const rest_0 = args_0["tail"];
+    const x_0 = run_loop($qt$(tel_0));
+    const x_3 = run_loop($j_ctor_thunks$(book_0, env_0, rest_0, run_loop($j_app_type$(tel_0, h_0))));
+    const x_4 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), (x_0 === 0))), run_clo((x_1) => {
+    return "null";
+}), run_clo((x_2) => {
+    return run_jump($j_expr$, [book_0, env_0, h_0, run_loop($kid$(tel_0, 0)), true]);
+})));
+    const x_5 = ("," + x_3);
+    const x_6 = (x_4 + x_5);
+    return ("()=>" + x_6);
+  }
+}
+
+function $j_specialize$(book_0, tel_0, args_0) {
+  if (args_0.$ === "Nil") {
+    return tel_0;
+  } else {
+    const h_0 = args_0["head"];
+    const rest_0 = args_0["tail"];
+    return run_jump($j_specialize$, [book_0, run_loop($j_app_type$(run_loop($wnf$(book_0, tel_0)), h_0)), rest_0]);
+  }
+}
+
+function $j_find_ctor$(book_0, name_0) {
+  if (book_0.$ === "Nil") {
+    return run_jump($missing$, []);
+  } else {
+    const d_0 = book_0["head"];
+    const rest_0 = book_0["tail"];
+    return run_jump($j_found_ctor$, [run_loop($lookup$(run_loop($dc$(d_0)), name_0)), rest_0, name_0]);
+  }
+}
+
+function $j_constructor$(book_0, env_0, t_0, ty_0) {
+  return run_jump($j_constructor_literal$, [book_0, env_0, t_0, ty_0, run_loop($j_literal_typed$(book_0, t_0, ty_0))]);
+}
+
+function $j_lambda_count$(t_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
+  return run_jump($j_lambda_count$, [run_loop($kid$(t_0, 0))]);
+}), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Lam")), run_clo((x_2) => {
+  const x_3 = run_loop($j_lambda_count$(run_loop($kid$(t_0, 0))));
+  return ((1 + x_3) >>> 0);
+}), run_clo((x_4) => {
+  return 0;
+})]);
+})]);
+}
+
+function $j_lambda_code$(book_0, env_0, t_0, ty_0, at_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
+  return run_jump($j_lambda_code$, [book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($kid$(t_0, 1)), at_0]);
+}), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Lam")), run_clo((x_2) => {
+  return run_jump($j_lambda_bind$, [book_0, env_0, t_0, run_loop($wnf$(book_0, ty_0)), at_0]);
+}), run_clo((x_3) => {
+  const x_4 = run_loop($j_expr$(book_0, env_0, t_0, ty_0, true));
+  const x_5 = (x_4 + ";");
+  return ("return " + x_5);
+})]);
+})]);
+}
+
+function $j_constructor_count$(book_0, ty_0) {
+  return run_jump($j_count_constructors$, [run_loop($dc$(run_loop($lookup$(book_0, run_loop($nm$(ty_0)))))), run_loop($rm$(ty_0))]);
+}
+
+function $j_arm_type$(book_0, ty_0, name_0) {
+  return run_jump($j_arm_tel$, [book_0, run_loop($j_specialize$(book_0, run_loop($dt$(run_loop($j_find_ctor$(book_0, name_0)))), run_loop($ks$(run_loop($wnf$(book_0, run_loop($kid$(ty_0, 0)))))))), run_loop($kid$(ty_0, 1))]);
+}
+
+function $j_bindings$(book_0, env_0, xs_0) {
+  if (xs_0.$ === "Nil") {
+    return "";
+  } else {
+    const h_0 = xs_0["head"];
+    const _t_0 = xs_0["tail"];
+    if (_t_0.$ === "Nil") {
+      return "";
+    } else {
+      const x_0 = run_loop($j_bindings$(book_0, env_0, _t_0));
+      const x_1 = run_loop($j_local$(run_loop($ix$(h_0))));
+      const x_2 = ("," + x_0);
+      return (x_1 + x_2);
+    }
+  }
+}
+
+function $j_context$(book_0, env_0, xs_0) {
+  if (xs_0.$ === "Nil") {
+    return env_0;
+  } else {
+    const h_0 = xs_0["head"];
+    const _t_0 = xs_0["tail"];
+    if (_t_0.$ === "Nil") {
+      return env_0;
+    } else {
+      return {$: "Con", ["head"]: run_loop($kt$("Env", "", run_loop($ix$(h_0)), 0, {$: "Con", ["head"]: run_loop($j_type$(book_0, env_0, run_loop($kid$(h_0, 0)))), ["tail"]: {$: "Nil"}})), ["tail"]: run_loop($j_context$(book_0, env_0, _t_0))};
+    }
+  }
+}
+
+function $j_body$(xs_0) {
+  if (xs_0.$ === "Nil") {
+    return run_jump($atom$, ["Absent"]);
+  } else {
+    const h_0 = xs_0["head"];
+    const _t_0 = xs_0["tail"];
+    if (_t_0.$ === "Nil") {
+      return h_0;
+    } else {
+      return run_jump($j_body$, [_t_0]);
+    }
+  }
+}
+
+function $j_let_values$(book_0, env_0, xs_0) {
+  if (xs_0.$ === "Nil") {
+    return "";
+  } else {
+    const h_0 = xs_0["head"];
+    const _t_0 = xs_0["tail"];
+    if (_t_0.$ === "Nil") {
+      return "";
+    } else {
+      const x_0 = run_loop($qt$(h_0));
+      const x_3 = run_loop($j_let_values$(book_0, env_0, _t_0));
+      const x_4 = run_loop($kc$((x_0 === 0), run_clo((x_1) => {
+      return "null";
+}), run_clo((x_2) => {
+      return run_jump($j_expr$, [book_0, env_0, run_loop($kid$(h_0, 0)), run_loop($atom$("Absent")), false]);
+})));
+      const x_5 = ("," + x_3);
+      return (x_4 + x_5);
+    }
+  }
+}
+
+function $j_exprs_tail$(book_0, env_0, xs_0) {
+  if (xs_0.$ === "Nil") {
+    return "";
+  } else {
+    const h_0 = xs_0["head"];
+    const rest_0 = xs_0["tail"];
+    const x_0 = run_loop($j_expr$(book_0, env_0, h_0, run_loop($atom$("Absent")), false));
+    const x_1 = run_loop($j_exprs_tail$(book_0, env_0, rest_0));
+    const x_2 = (x_0 + x_1);
+    return ("," + x_2);
+  }
+}
+
+function $U32$show$if$(a_0, z_0) {
+  if (z_0) {
+    return "0";
+  } else {
+    return run_jump($U32$show$go$, [10n, a_0, ""]);
+  }
+}
+
+function $j_desc_head_on$(book_0, ty_0, fuel_0, key_0) {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Char")), run_clo((x_0) => {
+  return "[\"Char\"]";
+}), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "F32")), run_clo((x_2) => {
+  return "[\"F32\"]";
+}), run_clo((x_3) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "List")), run_clo((x_4) => {
+  const x_5 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 1)), fuel_0));
+  const x_6 = (x_5 + "]");
+  return ("[\"List\"," + x_6);
+}), run_clo((x_7) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Array")), run_clo((x_8) => {
+  const x_9 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 0)), fuel_0));
+  const x_10 = (x_9 + "]");
+  return ("[\"Array\"," + x_10);
+}), run_clo((x_11) => {
+  return run_jump($kc$, [run_loop($String$eq$(key_0, "Sigma")), run_clo((x_12) => {
+  const x_13 = run_loop($j_descriptor$(book_0, run_loop($kid$(run_loop($kid$(ty_0, 3)), 0)), fuel_0));
+  const x_14 = (x_13 + "]");
+  const x_15 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 2)), fuel_0));
+  const x_16 = ("," + x_14);
+  const x_17 = (x_15 + x_16);
+  return ("[\"Tuple\"," + x_17);
+}), run_clo((x_18) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "Var")), run_clo((x_19) => {
+  const x_20 = run_loop($j_local$(run_loop($ix$(ty_0))));
+  const x_21 = (x_20 + ")");
+  const x_22 = run_loop($j_local$(run_loop($ix$(ty_0))));
+  const x_23 = ("===\"undefined\"?null:" + x_21);
+  const x_24 = (x_22 + x_23);
+  return ("(typeof " + x_24);
+}), run_clo((x_25) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "ADT")), run_clo((x_26) => {
+  const x_27 = run_loop($j_desc_args$(book_0, run_loop($ks$(ty_0)), fuel_0));
+  const x_28 = (x_27 + "]]");
+  const x_29 = run_loop($j_quote$(run_loop($nm$(ty_0))));
+  const x_30 = (",[" + x_28);
+  const x_31 = (x_29 + x_30);
+  return ("[\"Named\"," + x_31);
+}), run_clo((x_32) => {
+  return "null";
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+}
+
+function $norm_var$(book_0, t_0, values_0, args_0, left_0, fallback_0) {
+  if (values_0.$ === "Nil") {
+    return run_jump($norm_apply$, [t_0, args_0]);
+  } else {
+    const h_0 = values_0["head"];
+    const rest_0 = values_0["tail"];
+    return run_jump($norm_eval$, [book_0, h_0, args_0, left_0, fallback_0]);
+  }
+}
+
+function $norm_eval_node$(book_0, t_0, args_0, left_0, fallback_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_0) => {
+  return run_jump($norm_eval$, [book_0, run_loop($kid$(t_0, 0)), {$: "Con", ["head"]: run_loop($kid$(t_0, 1)), ["tail"]: args_0}, left_0, fallback_0]);
+}), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_2) => {
+  return run_jump($norm_eval$, [book_0, run_loop($kid$(t_0, 0)), args_0, left_0, fallback_0]);
+}), run_clo((x_3) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Let")), run_clo((x_4) => {
+  return run_jump($norm_eval$, [book_0, run_loop($norm_let$(run_loop($ks$(t_0)))), args_0, left_0, fallback_0]);
+}), run_clo((x_5) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ref")), run_clo((x_6) => {
+  return run_jump($norm_ref$, [book_0, t_0, args_0, run_loop($lookup$(book_0, run_loop($nm$(t_0))))]);
+}), run_clo((x_7) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Min")), run_clo((x_8) => {
+  return run_jump($norm_apply$, [run_loop($norm_min$(book_0, run_loop($kid$(t_0, 0)), run_loop($kid$(t_0, 1)))), args_0]);
+}), run_clo((x_9) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Rwt")), run_clo((x_10) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(run_loop($wnf$(book_0, run_loop($kid$(t_0, 0)))))), "Rfl")), run_clo((x_11) => {
+  return run_jump($norm_eval$, [book_0, run_loop($kid$(t_0, 2)), args_0, left_0, fallback_0]);
+}), run_clo((x_12) => {
+  return run_jump($norm_apply$, [t_0, args_0]);
+})]);
+}), run_clo((x_13) => {
+  return run_jump($norm_args$, [book_0, t_0, args_0, left_0, fallback_0]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+}
+
 function $index_find$(tree_0, name_0, hash_0, bits_0) {
   return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(tree_0)), "Absent")), run_clo((x_0) => {
   return run_jump($missing$, []);
 }), run_clo((x_1) => {
-  return run_jump($kc$, [(bits_0 === 0), run_clo((x_2) => {
+  const x_2 = run_loop($dx$(tree_0));
+  return run_jump($kc$, [(x_2 === 0), run_clo((x_3) => {
+  const x_4 = run_loop($da$(tree_0));
+  return run_jump($kc$, [(x_4 === hash_0), run_clo((x_5) => {
   return run_jump($index_bucket$, [run_loop($dc$(tree_0)), name_0]);
-}), run_clo((x_3) => {
-  const x_4 = ((hash_0 & 1) >>> 0);
-  return run_jump($index_find$, [run_loop($index_child$(tree_0, run_loop($Bool$not$((x_4 === 0))))), name_0, ((hash_0 >>> 1) >>> 0), ((bits_0 - 1) >>> 0)]);
+}), run_clo((x_6) => {
+  return run_jump($missing$, []);
+})]);
+}), run_clo((x_7) => {
+  const x_8 = run_loop($dx$(tree_0));
+  const x_9 = ((hash_0 & x_8) >>> 0);
+  return run_jump($index_find$, [run_loop($index_child$(tree_0, run_loop($Bool$not$((x_9 === 0))))), name_0, hash_0, bits_0]);
 })]);
 })]);
 }
@@ -3081,16 +3818,90 @@ function $index_first$(ds_0) {
   }
 }
 
-function $norm_eval$(book_0, t_0, args_0, left_0, fallback_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Var")), run_clo((x_0) => {
-  return run_jump($norm_var$, [book_0, t_0, run_loop($ks$(t_0)), args_0, left_0, fallback_0]);
-}), run_clo((x_1) => {
-  return run_jump($norm_eval_node$, [book_0, t_0, args_0, left_0, fallback_0]);
-})]);
+function $j_foreign_chars$(name_0) {
+  if (name_0 === "") {
+    return "";
+  } else {
+    const h_0 = (name_0.codePointAt(0) > 0xFFFF ? name_0.slice(0, 2) : name_0[0]);
+    const rest_0 = (name_0.codePointAt(0) > 0xFFFF ? name_0.slice(2) : name_0.slice(1));
+    const x_0 = run_loop($Char$is_eq$(h_0, "."));
+    const x_1 = run_loop($Char$is_eq$(h_0, "/"));
+    const x_4 = run_loop($kc$((x_0 || x_1), run_clo((x_2) => {
+    return "_";
+}), run_clo((x_3) => {
+    return run_jump($Char$show$, [h_0]);
+})));
+    const x_5 = run_loop($j_foreign_chars$(rest_0));
+    return (x_4 + x_5);
+  }
 }
 
-function $j_io_shadow_def$(book_0, d_0) {
-  return run_jump($book_put$, [book_0, {$: "KDef", ["name"]: run_loop($dn$(d_0)), ["kind"]: run_loop($dk$(d_0)), ["arity"]: run_loop($da$(d_0)), ["templates"]: run_loop($dx$(d_0)), ["typ"]: run_loop($dt$(d_0)), ["value"]: run_loop($atom$("Absent")), ["ctors"]: run_loop($dc$(d_0)), ["native"]: run_loop($db$(d_0)), ["unsafe"]: run_loop($du$(d_0))}]);
+function $String$to_lower$(s_0) {
+  if (s_0 === "") {
+    return "";
+  } else {
+    const h_0 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(0, 2) : s_0[0]);
+    const t_0 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(2) : s_0.slice(1));
+    return (run_loop($Char$to_lower$(h_0)) + run_loop($String$to_lower$(t_0)));
+  }
+}
+
+function $book_final_large$(book_0, remaining_0) {
+  if (book_0.$ === "Nil") {
+    return (remaining_0 === 0);
+  } else {
+    const h_0 = book_0["head"];
+    const rest_0 = book_0["tail"];
+    return run_jump($kc$, [(remaining_0 === 0), run_clo((x_0) => {
+    return true;
+}), run_clo((x_1) => {
+    return run_jump($book_final_large$, [rest_0, ((remaining_0 - 1) >>> 0)]);
+})]);
+  }
+}
+
+function $book_final_names_valid$(book_0) {
+  if (book_0.$ === "Nil") {
+    return true;
+  } else {
+    const d_0 = book_0["head"];
+    const rest_0 = book_0["tail"];
+    return run_jump($kc$, [run_loop($book_final_name_valid$(run_loop($dn$(d_0)))), run_clo((x_0) => {
+    return run_jump($book_final_names_valid$, [rest_0]);
+}), run_clo((x_1) => {
+    return false;
+})]);
+  }
+}
+
+function $book_final_scan$(book_0, seen_0, kept_0, done_0) {
+  if (book_0.$ === "Nil") {
+    return run_jump($book_final_reverse$, [kept_0, run_loop($book_final_filter$(done_0, seen_0))]);
+  } else {
+    const d_0 = book_0["head"];
+    const rest_0 = book_0["tail"];
+    return run_jump($book_final_step$, [d_0, rest_0, seen_0, kept_0, done_0, run_loop($index_hash$(run_loop($dn$(d_0)), 2166136261))]);
+  }
+}
+
+function $book_final_reverse$(book_0, done_0) {
+  if (book_0.$ === "Nil") {
+    return done_0;
+  } else {
+    const d_0 = book_0["head"];
+    const rest_0 = book_0["tail"];
+    return run_jump($book_final_reverse$, [rest_0, {$: "Con", ["head"]: d_0, ["tail"]: done_0}]);
+  }
+}
+
+function $book_final_legacy$(book_0, done_0) {
+  if (book_0.$ === "Nil") {
+    return done_0;
+  } else {
+    const d_0 = book_0["head"];
+    const rest_0 = book_0["tail"];
+    return run_jump($book_final_legacy$, [rest_0, {$: "Con", ["head"]: d_0, ["tail"]: run_loop($index_remove$(done_0, run_loop($dn$(d_0))))}]);
+  }
 }
 
 function $kp_eq$(a_0, b_0) {
@@ -3122,16 +3933,6 @@ function $kp_scope$(env_0, id_0, name_0) {
   }
 }
 
-function $ix$(t_0) {
-  const tag_0 = t_0["tag"];
-  const name_0 = t_0["name"];
-  const id_0 = t_0["id"];
-  const quant_0 = t_0["quant"];
-  const kids_0 = t_0["kids"];
-  const removed_0 = t_0["removed"];
-  return id_0;
-}
-
 function $kp_bound$(env_0, name_0) {
   if (env_0.$ === "Nil") {
     return false;
@@ -3145,16 +3946,6 @@ function $kp_bound$(env_0, name_0) {
     const x_1 = run_loop($kp_bound$(t_0, name_0));
     return (x_0 || x_1);
   }
-}
-
-function $qt$(t_0) {
-  const tag_0 = t_0["tag"];
-  const name_0 = t_0["name"];
-  const id_0 = t_0["id"];
-  const quant_0 = t_0["quant"];
-  const kids_0 = t_0["kids"];
-  const removed_0 = t_0["removed"];
-  return quant_0;
 }
 
 function $kp_par$(s_0, yes_0) {
@@ -3329,18 +4120,12 @@ function $sp_term$(st_0, t_0, ctx_0, goal_0, owner_0, depth_0) {
 })]);
 }
 
-function $index_remove$(ds_0, name_0) {
-  if (ds_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const h_0 = ds_0["head"];
-    const rest_0 = ds_0["tail"];
-    return run_jump($kc$, [run_loop($String$eq$(run_loop($dn$(h_0)), name_0)), run_clo((x_0) => {
-    return run_jump($index_remove$, [rest_0, name_0]);
+function $index_put_rest$(cache_0, rest_0, name_0) {
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$not$(run_loop($String$eq$(name_0, "")))), run_loop($String$eq$(run_loop($dn$(run_loop($index_lookup$(cache_0, name_0)))), "")))), run_clo((x_0) => {
+  return rest_0;
 }), run_clo((x_1) => {
-    return {$: "Con", ["head"]: h_0, ["tail"]: run_loop($index_remove$(rest_0, name_0))};
+  return run_jump($index_remove$, [rest_0, name_0]);
 })]);
-  }
 }
 
 function $nc_has_ctor$(cs_0, key_0) {
@@ -3591,28 +4376,6 @@ function $nt_clean$(s_0) {
   }
 }
 
-function $String$starts_with$(s_0, p_0) {
-  if (s_0 === "") {
-    if (p_0 === "") {
-      return true;
-    } else {
-      const h_0 = (p_0.codePointAt(0) > 0xFFFF ? p_0.slice(0, 2) : p_0[0]);
-      const t_0 = (p_0.codePointAt(0) > 0xFFFF ? p_0.slice(2) : p_0.slice(1));
-      return false;
-    }
-  } else {
-    const h_1 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(0, 2) : s_0[0]);
-    const t_1 = (s_0.codePointAt(0) > 0xFFFF ? s_0.slice(2) : s_0.slice(1));
-    if (p_0 === "") {
-      return true;
-    } else {
-      const y_0 = (p_0.codePointAt(0) > 0xFFFF ? p_0.slice(0, 2) : p_0[0]);
-      const yt_0 = (p_0.codePointAt(0) > 0xFFFF ? p_0.slice(2) : p_0.slice(1));
-      return run_jump($String$starts_with$if$, [t_1, yt_0, run_loop($Char$is_eq$(h_1, y_0))]);
-    }
-  }
-}
-
 function $nc_ctor_display$(name_0) {
   return run_jump($kc$, [run_loop($String$starts_with$(name_0, "$ctor.")), run_clo((x_0) => {
   return run_jump($nc_ctor_decode$, [run_loop($String$drop$(name_0, BigInt([..."$ctor."].length))), 0, 0, "", name_0]);
@@ -3653,10 +4416,7 @@ function $nc_live_count$(book_0, tel_0, left_0) {
   return run_jump($nt_choose$, [(left_0 === 0), run_clo((x_0) => {
   return 0;
 }), run_clo((x_1) => {
-  const x_2 = run_loop($qt$(run_loop($wnf$(book_0, tel_0))));
-  const x_3 = run_loop($nt_bool$(run_loop($Bool$not$((x_2 === 0)))));
-  const x_4 = run_loop($nc_live_count$(book_0, run_loop($kid$(run_loop($wnf$(book_0, tel_0)), 1)), ((left_0 - 1) >>> 0)));
-  return ((x_3 + x_4) >>> 0);
+  return run_jump($nc_live_count_head$, [book_0, run_loop($wnf$(book_0, tel_0)), left_0]);
 })]);
 }
 
@@ -3722,19 +4482,42 @@ function $exact_defs$(a_0, b_0) {
   }
 }
 
-function $f_error_defs$(ds_0) {
-  if (ds_0.$ === "Nil") {
-    return "";
-  } else {
-    const d_0 = ds_0["head"];
-    const rest_0 = ds_0["tail"];
-    return run_jump($f_error_def_next$, [run_loop($f_error_terms$({$: "Con", ["head"]: run_loop($dt$(d_0)), ["tail"]: {$: "Con", ["head"]: run_loop($dv$(d_0)), ["tail"]: {$: "Nil"}}})), run_loop($dc$(d_0)), rest_0]);
-  }
+function $fpe_rejected$(result_0, book_0, done_0, sources_0) {
+  const out_0 = result_0["book"];
+  const error_0 = result_0["error"];
+  const imports_0 = result_0["imports"];
+  return {$: "FResult", ["book"]: out_0, ["error"]: run_loop($f_choose$(run_loop($String$is_empty$(error_0)), run_clo((x_0) => {
+  return error_0;
+}), run_clo((x_1) => {
+  return run_jump($fpe_selected$, [error_0, run_loop($fpe_find$(book_0, 0)), done_0, sources_0]);
+}))), ["imports"]: imports_0};
+}
+
+function $f_graph_fresh_result$(r_0) {
+  const book_0 = r_0["book"];
+  const err_0 = r_0["error"];
+  const imports_0 = r_0["imports"];
+  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
+  return {$: "FResult", ["book"]: book_0, ["error"]: run_loop($f_graph_fresh_names$(book_0, run_loop($missing$()))), ["imports"]: imports_0};
+}), run_clo((x_1) => {
+  return {$: "FResult", ["book"]: book_0, ["error"]: err_0, ["imports"]: imports_0};
+})]);
+}
+
+function $f_validate_result$(r_0) {
+  const book_0 = r_0["book"];
+  const err_0 = r_0["error"];
+  const imports_0 = r_0["imports"];
+  return {$: "FResult", ["book"]: book_0, ["error"]: run_loop($f_choose$(run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
+  return run_jump($f_error_defs$, [book_0]);
+}), run_clo((x_1) => {
+  return err_0;
+}))), ["imports"]: imports_0};
 }
 
 function $f_graph_cached$(s_0, ns_0, sources_0, g_0, stack_0, entry_0) {
   return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(entry_0)), "Absent")), run_clo((x_0) => {
-  return run_jump($f_graph_parsed$, [s_0, ns_0, sources_0, g_0, {$: "Con", ["head"]: run_loop($f_source_path$(s_0)), ["tail"]: stack_0}, run_loop($f_parse$(run_loop($f_source_text$(s_0))))]);
+  return run_jump($f_graph_parsed$, [s_0, ns_0, sources_0, g_0, {$: "Con", ["head"]: run_loop($f_source_path$(s_0)), ["tail"]: stack_0}, run_loop($f_parse_source$(s_0))]);
 }), run_clo((x_1) => {
   return run_jump($f_choose$, [run_loop($f_eq$(run_loop($nm$(run_loop($kid$(entry_0, 0)))), ns_0)), run_clo((x_2) => {
   return g_0;
@@ -3773,12 +4556,55 @@ function $f_main_seen$(name_0, seen_0) {
   }
 }
 
+function $index_leaf$(d_0, hash_0, ds_0) {
+  return {$: "KDef", ["name"]: "", ["kind"]: "IndexLeaf", ["arity"]: hash_0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Con", ["head"]: d_0, ["tail"]: run_loop($index_remove$(ds_0, run_loop($dn$(d_0))))}, ["native"]: true, ["unsafe"]: false};
+}
+
+function $index_insert$(tree_0, d_0, hash_0, mask_0) {
+  const x_0 = run_loop($dx$(tree_0));
+  const x_1 = run_loop($dx$(tree_0));
+  const x_2 = (x_0 === 0);
+  const x_3 = (mask_0 < x_1);
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$not$((mask_0 === 0))), (x_2 || x_3))), run_clo((x_4) => {
+  return run_jump($index_join$, [tree_0, d_0, hash_0, mask_0]);
+}), run_clo((x_5) => {
+  const x_6 = run_loop($dx$(tree_0));
+  return run_jump($kc$, [(x_6 === 0), run_clo((x_7) => {
+  return run_jump($index_leaf$, [d_0, hash_0, run_loop($dc$(tree_0))]);
+}), run_clo((x_8) => {
+  const x_9 = run_loop($dx$(tree_0));
+  const x_10 = ((hash_0 & x_9) >>> 0);
+  return run_jump($kc$, [(x_10 === 0), run_clo((x_11) => {
+  return run_jump($index_node$, [run_loop($da$(tree_0)), run_loop($dx$(tree_0)), run_loop($index_insert$(run_loop($index_child$(tree_0, false)), d_0, hash_0, mask_0)), run_loop($index_child$(tree_0, true))]);
+}), run_clo((x_12) => {
+  return run_jump($index_node$, [run_loop($da$(tree_0)), run_loop($dx$(tree_0)), run_loop($index_child$(tree_0, false)), run_loop($index_insert$(run_loop($index_child$(tree_0, true)), d_0, hash_0, mask_0))]);
+})]);
+})]);
+})]);
+}
+
+function $index_split_bit$(diff_0) {
+  const x_0 = ((0 - diff_0) >>> 0);
+  return ((diff_0 & x_0) >>> 0);
+}
+
+function $index_tip$(tree_0, hash_0) {
+  const x_0 = run_loop($dx$(tree_0));
+  return run_jump($kc$, [(x_0 === 0), run_clo((x_1) => {
+  return tree_0;
+}), run_clo((x_2) => {
+  const x_3 = run_loop($dx$(tree_0));
+  const x_4 = ((hash_0 & x_3) >>> 0);
+  return run_jump($index_tip$, [run_loop($index_child$(tree_0, run_loop($Bool$not$((x_4 === 0))))), hash_0]);
+})]);
+}
+
 function $fs_cached$(s_0, ns_0, sources_0, g_0, stack_0, entry_0, seed_0) {
   return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(entry_0)), "Absent")), run_clo((x_0) => {
   return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$is_empty$(ns_0)), run_loop($f_eq$(run_loop($f_source_name$(s_0)), "Base")))), run_loop($f_eq$(run_loop($f_source_path$(s_0)), run_loop($fs_path$(seed_0)))))), run_clo((x_1) => {
   return run_jump($fs_inject$, [g_0, seed_0]);
 }), run_clo((x_2) => {
-  return run_jump($fs_parsed$, [s_0, ns_0, sources_0, g_0, {$: "Con", ["head"]: run_loop($f_source_path$(s_0)), ["tail"]: stack_0}, run_loop($f_parse$(run_loop($f_source_text$(s_0)))), seed_0]);
+  return run_jump($fs_parsed$, [s_0, ns_0, sources_0, g_0, {$: "Con", ["head"]: run_loop($f_source_path$(s_0)), ["tail"]: stack_0}, run_loop($f_parse_source$(s_0)), seed_0]);
 })]);
 }), run_clo((x_3) => {
   return run_jump($f_choose$, [run_loop($f_eq$(run_loop($nm$(run_loop($kid$(entry_0, 0)))), ns_0)), run_clo((x_4) => {
@@ -3788,14 +4614,6 @@ function $fs_cached$(s_0, ns_0, sources_0, g_0, stack_0, entry_0, seed_0) {
   return run_jump($f_graph_error$, [g_0, ("one namespace per source file: " + x_6)]);
 })]);
 })]);
-}
-
-function $U32$show$if$(a_0, z_0) {
-  if (z_0) {
-    return "0";
-  } else {
-    return run_jump($U32$show$go$, [10n, a_0, ""]);
-  }
 }
 
 function $dr_relies_def$(book_0, todo_0, seen_0, d_0) {
@@ -3817,6 +4635,24 @@ function $dg_event_guard$(rest_0, done_0, d_0, origins_0, error_0, guard_0) {
   return run_jump($dg_event_check$, [rest_0, done_0, d_0, origins_0, error_0, run_loop($check_definition$(run_loop($book_put$(done_0, run_loop($declared$(d_0)))), run_loop($signature_mode$(d_0, rest_0))))]);
 }), run_clo((x_1) => {
   return run_jump($dg_finish$, [error_0, done_0, run_loop($dg_no_report$(run_loop($dn$(d_0)), guard_0)), origins_0]);
+})]);
+}
+
+function $dg_suffix_finish$(done_0, original_0, origins_0, error_0) {
+  return run_jump($kc$, [run_loop($String$eq$(error_0, "")), run_clo((x_0) => {
+  return {$: "DResult", ["error"]: "", ["book"]: original_0, ["diagnostic"]: run_loop($dg_no_report$("", ""))};
+}), run_clo((x_1) => {
+  return run_jump($dg_finish$, [error_0, done_0, run_loop($dg_no_report$("", error_0)), origins_0]);
+})]);
+}
+
+function $dg_suffix_guard$(rest_0, done_0, d_0, original_0, origins_0, guard_0) {
+  return run_jump($kc$, [run_loop($String$eq$(guard_0, "")), run_clo((x_0) => {
+  return run_jump($dg_suffix_check$, [rest_0, done_0, d_0, original_0, origins_0, run_loop($check_definition$(run_loop($book_put$(done_0, run_loop($declared$(d_0)))), run_loop($signature_mode$(d_0, rest_0))))]);
+}), run_clo((x_1) => {
+  const x_2 = run_loop($dn$(d_0));
+  const x_3 = (": " + guard_0);
+  return run_jump($dg_finish$, [(x_2 + x_3), done_0, run_loop($dg_no_report$(run_loop($dn$(d_0)), guard_0)), origins_0]);
 })]);
 }
 
@@ -3904,6 +4740,42 @@ function $fp_modules$(done_0, sources_0) {
   }
 }
 
+function $fp_loaded_module$(book_0, source_0, definition_0) {
+  return run_jump($f_choose$, [run_loop($fp_loaded_has$(book_0, definition_0)), run_clo((x_0) => {
+  return run_jump($fp_loaded_defs$, [book_0, {$: "FPSource", ["source"]: run_loop($f_source_text$(source_0)), ["tokens"]: run_loop($f_lex$(run_loop($f_source_text$(source_0)), 1, 0, 0, {$: "Nil"}))}, definition_0]);
+}), run_clo((x_1) => {
+  return {$: "Nil"};
+})]);
+}
+
+function $fp_loaded_take$(book_0, count_0) {
+  if (book_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const head_0 = book_0["head"];
+    const tail_0 = book_0["tail"];
+    return run_jump($f_choose$, [(count_0 === 0), run_clo((x_0) => {
+    return {$: "Nil"};
+}), run_clo((x_1) => {
+    return {$: "Con", ["head"]: head_0, ["tail"]: run_loop($fp_loaded_take$(tail_0, ((count_0 - 1) >>> 0)))};
+})]);
+  }
+}
+
+function $fp_loaded_drop$(book_0, count_0) {
+  if (book_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const head_0 = book_0["head"];
+    const tail_0 = book_0["tail"];
+    return run_jump($f_choose$, [(count_0 === 0), run_clo((x_0) => {
+    return {$: "Con", ["head"]: head_0, ["tail"]: tail_0};
+}), run_clo((x_1) => {
+    return run_jump($fp_loaded_drop$, [tail_0, ((count_0 - 1) >>> 0)]);
+})]);
+  }
+}
+
 function $j_printable_head$(book_0, ty_0, seen_0, fuel_0) {
   return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "Eql")), run_clo((x_0) => {
   return true;
@@ -3944,156 +4816,151 @@ function $String$contains$if$(t_0, p_0, here_0) {
   }
 }
 
-function $j_field_keys$(ty_0, skip_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), run_clo((x_0) => {
-  return run_jump($kc$, [(skip_0 === 0), run_clo((x_1) => {
-  const x_2 = run_loop($j_field_keys$(run_loop($kid$(ty_0, 1)), 0));
-  const x_3 = run_loop($j_quote$(run_loop($nm$(ty_0))));
-  const x_4 = ("," + x_2);
-  return (x_3 + x_4);
-}), run_clo((x_5) => {
-  return run_jump($j_field_keys$, [run_loop($kid$(ty_0, 1)), ((skip_0 - 1) >>> 0)]);
-})]);
-}), run_clo((x_6) => {
-  return "";
-})]);
-}
-
-function $j_schema_params$(book_0, ty_0, left_0, index_0) {
-  return run_jump($kc$, [(left_0 === 0), run_clo((x_0) => {
-  const x_1 = run_loop($j_schema_fields$(book_0, ty_0));
-  const x_2 = (x_1 + "];");
-  return ("return [" + x_2);
-}), run_clo((x_3) => {
-  const x_4 = run_loop($j_schema_params$(book_0, run_loop($kid$(ty_0, 1)), ((left_0 - 1) >>> 0), ((index_0 + 1) >>> 0)));
-  const x_5 = run_loop($U32$show$(index_0));
-  const x_6 = ("];" + x_4);
-  const x_7 = (x_5 + x_6);
-  const x_8 = run_loop($j_local$(run_loop($ix$(ty_0))));
-  const x_9 = ("=p[" + x_7);
-  const x_10 = (x_8 + x_9);
-  return ("const " + x_10);
-})]);
-}
-
-function $j_foreign_def$(book_0, d_0) {
-  const x_4 = run_loop($j_descriptor$(book_0, run_loop($j_io_result$(book_0, run_loop($j_foreign_return$(book_0, run_loop($dt$(d_0)), run_loop($da$(d_0)))))), 64));
-  const x_5 = (x_4 + ")};});\n");
-  const x_6 = run_loop($j_foreign_args$(book_0, run_loop($dt$(d_0)), run_loop($da$(d_0))));
-  const x_7 = ("]," + x_5);
-  const x_8 = (x_6 + x_7);
-  const x_9 = run_loop($j_quote$(run_loop($dn$(d_0))));
-  const x_10 = (",a,[" + x_8);
-  const x_11 = (x_9 + x_10);
-  const x_12 = run_loop($j_quote$(run_loop($j_foreign_path$(run_loop($ks$(run_loop($dv$(d_0))))))));
-  const x_13 = ("," + x_11);
-  const x_14 = (x_12 + x_13);
-  const x_15 = run_loop($U32$show$(run_loop($da$(d_0))));
-  const x_16 = (",function(a){const v=scope(null);return {io:()=>foreignCall(" + x_14);
-  const x_17 = (x_15 + x_16);
-  const x_18 = run_loop($j_quote$(run_loop($dn$(d_0))));
-  const x_19 = ("]=fn(" + x_17);
-  const x_20 = (x_18 + x_19);
-  const x_21 = run_loop($kc$(run_loop($j_builtin_effect$(run_loop($dn$(d_0)))), run_clo((x_0) => {
-  const x_1 = run_loop($j_quote$(run_loop($dn$(d_0))));
-  const x_2 = (x_1 + "))");
-  return ("if(!Object.hasOwn(G," + x_2);
-}), run_clo((x_3) => {
-  return "";
-})));
-  const x_22 = ("G[" + x_20);
-  return (x_21 + x_22);
-}
-
-function $j_l_def$(book_0, d_0) {
-  return run_jump($kc$, [run_loop($j_l_deep$(run_loop($dv$(d_0)), 0)), run_clo((x_0) => {
-  return run_jump($j_l_definition$, [book_0, d_0, run_loop($j_l_mark$(run_loop($dv$(d_0)), "r", 0))]);
-}), run_clo((x_1) => {
-  return run_jump($j_l_global$, [book_0, d_0, run_loop($dv$(d_0))]);
-})]);
-}
-
-function $j_desc_head$(book_0, ty_0, fuel_0) {
-  return run_jump($j_desc_head_on$, [book_0, ty_0, fuel_0, run_loop($nm$(ty_0))]);
-}
-
-function $f_import_path$(ts_0, path_0, book_0, imports_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "as")), run_clo((x_0) => {
-  return run_jump($f_import_alias$, [ts_0, path_0, book_0, imports_0]);
-}), run_clo((x_1) => {
-  const x_2 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "\n"));
-  const x_3 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<eof>"));
-  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(path_0, "Base")), run_clo((x_5) => {
-  return run_jump($f_tops$, [ts_0, book_0, {$: "Con", ["head"]: run_loop($kt$("Import", path_0, 0, 0, {$: "Nil"})), ["tail"]: imports_0}, false]);
-}), run_clo((x_6) => {
-  return run_jump($f_result$, [book_0, "a module import requires as followed by an alias", imports_0]);
-})]);
-}), run_clo((x_7) => {
-  const x_8 = run_loop($f_tx$(ts_0));
-  return run_jump($f_import_path$, [run_loop($f_tl$(ts_0)), (path_0 + x_8), book_0, imports_0]);
-})]);
-})]);
-}
-
-function $f_valid_name$(s_0) {
-  const x_0 = run_loop($Char$is_alpha$(run_loop($f_head$(s_0))));
-  const x_1 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "_"));
-  return run_jump($Bool$and$, [run_loop($Bool$and$(run_loop($Bool$and$((x_0 || x_1), run_loop($f_name_chars$(s_0)))), run_loop($Bool$not$(run_loop($f_reserved$(s_0)))))), run_loop($Bool$not$(run_loop($String$ends_with$(s_0, "."))))]);
-}
-
-function $f_find$(name_0, book_0) {
-  if (book_0.$ === "Nil") {
-    return {$: "KDef", ["name"]: name_0, ["kind"]: "Missing", ["arity"]: 0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: false};
+function $j_ctor_keys$(ctors_0, params_0) {
+  if (ctors_0.$ === "Nil") {
+    return "";
   } else {
-    const d_0 = book_0["head"];
-    const ds_0 = book_0["tail"];
-    return run_jump($f_choose$, [run_loop($f_eq$(name_0, run_loop($f_dn$(d_0)))), run_clo((x_0) => {
-    return d_0;
+    const d_0 = ctors_0["head"];
+    const rest_0 = ctors_0["tail"];
+    const x_4 = run_loop($j_ctor_keys$(rest_0, params_0));
+    const x_5 = run_loop($j_field_keys$(run_loop($dt$(d_0)), params_0));
+    const x_6 = ("];\n" + x_4);
+    const x_7 = (x_5 + x_6);
+    const x_8 = run_loop($j_quote$(run_loop($dn$(d_0))));
+    const x_9 = ("]=[" + x_7);
+    const x_10 = (x_8 + x_9);
+    const x_11 = run_loop($j_quote$(run_loop($kc$(run_loop($String$eq$(run_loop($nm$(run_loop($dv$(d_0)))), "")), run_clo((x_2) => {
+    return run_jump($dn$, [d_0]);
+}), run_clo((x_3) => {
+    return run_jump($nm$, [run_loop($dv$(d_0))]);
+})))));
+    const x_12 = (";constructors[" + x_10);
+    const x_13 = (x_11 + x_12);
+    const x_14 = run_loop($j_quote$(run_loop($dn$(d_0))));
+    const x_15 = ("]=" + x_13);
+    const x_16 = (x_14 + x_15);
+    const x_17 = run_loop($kc$(run_loop($db$(d_0)), run_clo((x_0) => {
+    return "true";
 }), run_clo((x_1) => {
-    return run_jump($f_find$, [name_0, ds_0]);
-})]);
+    return "false";
+})));
+    const x_18 = (";constructorOwn[" + x_16);
+    const x_19 = (x_17 + x_18);
+    const x_20 = run_loop($j_quote$(run_loop($dn$(d_0))));
+    const x_21 = ("]=" + x_19);
+    const x_22 = (x_20 + x_21);
+    return ("constructorNative[" + x_22);
   }
 }
 
-function $f_law_base$(name_0, ts_0, book_0, imports_0, clauses_0) {
-  const x_0 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "for"));
-  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "exs"));
-  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return run_jump($f_law_clause$, [name_0, run_loop($f_eq$(run_loop($f_tx$(ts_0)), "exs")), run_loop($f_tl$(ts_0)), book_0, imports_0, clauses_0]);
+function $j_schema_ctors$(book_0, ctors_0, params_0) {
+  if (ctors_0.$ === "Nil") {
+    return "";
+  } else {
+    const d_0 = ctors_0["head"];
+    const rest_0 = ctors_0["tail"];
+    const x_0 = run_loop($j_schema_ctors$(book_0, rest_0, params_0));
+    const x_1 = run_loop($j_schema_params$(book_0, run_loop($dt$(d_0)), params_0, 0));
+    const x_2 = ("})()," + x_0);
+    const x_3 = (x_1 + x_2);
+    const x_4 = run_loop($j_quote$(run_loop($dn$(d_0))));
+    const x_5 = (":(()=>{" + x_3);
+    return (x_4 + x_5);
+  }
+}
+
+function $j_def$(book_0, d_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Foreign")), run_clo((x_0) => {
+  return run_jump($j_foreign_def$, [book_0, d_0]);
+}), run_clo((x_1) => {
+  const x_2 = run_loop($dx$(d_0));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($dk$(d_0)), "Def")), (x_2 === 0))), run_loop($Bool$not$(run_loop($String$eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Absent")))))), run_loop($Bool$not$(run_loop($String$eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Foreign")))))), run_clo((x_3) => {
+  const x_8 = run_loop($kc$(run_loop($Bool$and$(run_loop($db$(d_0)), run_loop($j_intrinsic$(run_loop($dn$(d_0)))))), run_clo((x_4) => {
+  const x_5 = run_loop($j_quote$(run_loop($dn$(d_0))));
+  const x_6 = (x_5 + "))");
+  return ("if(!Object.hasOwn(G," + x_6);
+}), run_clo((x_7) => {
+  return "";
+})));
+  const x_9 = run_loop($j_l_def$(book_0, d_0));
+  return (x_8 + x_9);
+}), run_clo((x_10) => {
+  return "";
+})]);
+})]);
+}
+
+function $fpe_here$(source_0, rest_0, error_0) {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(rest_0)), run_clo((x_0) => {
+  return run_jump($f_choose$, [run_loop($String$eq$(run_loop($nm$(run_loop($kid$(error_0, 1)))), "<eof>")), run_clo((x_1) => {
+  return run_jump($fpe_message$, [source_0, error_0, "end of input"]);
+}), run_clo((x_2) => {
+  return run_jump($nm$, [error_0]);
+})]);
 }), run_clo((x_3) => {
-  return run_jump($f_law_end$, [name_0, run_loop($f_expr$(ts_0, 0)), book_0, imports_0, run_loop($List$reverse$(clauses_0))]);
+  const x_4 = run_loop($Char$to_u32$(run_loop($f_head$(rest_0))));
+  const x_5 = run_loop($Char$to_u32$(run_loop($f_head$(run_loop($nm$(run_loop($kid$(error_0, 1))))))));
+  const x_6 = run_loop($Char$to_u32$(run_loop($f_head$(rest_0))));
+  const x_7 = run_loop($Bool$not$((x_4 === x_5)));
+  const x_8 = (x_6 > 65535);
+  const x_9 = run_loop($Char$to_u32$(run_loop($f_head$(rest_0))));
+  const x_10 = run_loop($Char$to_u32$(run_loop($f_head$(rest_0))));
+  const x_11 = (x_7 || x_8);
+  const x_12 = run_loop($Bool$and$((x_9 >= 55296), (x_10 <= 57343)));
+  return run_jump($f_choose$, [(x_11 || x_12), run_clo((x_13) => {
+  return run_jump($nm$, [error_0]);
+}), run_clo((x_14) => {
+  const x_15 = (run_loop($f_head$(rest_0)) + "");
+  const x_16 = (x_15 + "'");
+  return run_jump($fpe_message$, [source_0, error_0, ("'" + x_16)]);
+})]);
 })]);
 }
 
-function $f_def_prior$(name_0, p_0, book_0, imports_0, unsafe_0, old_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($dk$(old_0)), "Missing")), run_clo((x_0) => {
-  return run_jump($f_def_base$, [name_0, p_0, book_0, imports_0, unsafe_0]);
+function $f_import_leading$(ts_0, book_0, imports_0, unsafe_0) {
+  if (book_0.$ === "Nil") {
+    return run_jump($f_choose$, [unsafe_0, run_clo((x_0) => {
+    return run_jump($f_result$, [{$: "Nil"}, run_loop($f_pn$(run_loop($f_err$(ts_0, "expected def after @unsafe")))), imports_0]);
 }), run_clo((x_1) => {
-  const x_2 = run_loop($f_len$(run_loop($ks$(run_loop($f_pn$(p_0))))));
-  const x_3 = run_loop($dx$(old_0));
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($f_eq$(run_loop($dk$(old_0)), "Def")), run_loop($f_eq$(run_loop($tg$(run_loop($dv$(old_0)))), "Absent")))), run_loop($f_bare_params$(run_loop($ks$(run_loop($f_pn$(p_0)))))))), (x_2 >= x_3))), run_clo((x_4) => {
-  return run_jump($f_def_base$, [name_0, p_0, book_0, imports_0, unsafe_0]);
-}), run_clo((x_5) => {
-  return run_jump($f_result$, [book_0, "a definition must uniquely fill its law with plain parameter names", imports_0]);
+    return run_jump($f_import$, [run_loop($f_tl$(ts_0)), {$: "Nil"}, imports_0]);
 })]);
+  } else {
+    const d_0 = book_0["head"];
+    const rest_0 = book_0["tail"];
+    return run_jump($f_result$, [{$: "Con", ["head"]: d_0, ["tail"]: rest_0}, run_loop($f_pn$(run_loop($fpe_error$(ts_0, "expected def, law or type; imports must precede declarations", "'def', 'type' or 'law'")))), imports_0]);
+  }
+}
+
+function $f_law$(name_0, ts_0, book_0, imports_0, clauses_0) {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_valid_name$(name_0)), run_loop($f_eq$(run_loop($dk$(run_loop($f_find$(name_0, book_0)))), "Missing")))), run_clo((x_0) => {
+  return run_jump($f_law_base$, [name_0, ts_0, book_0, imports_0, clauses_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_result$, [book_0, run_loop($kt$("Error", ("invalid or reserved law name: " + name_0), 0, 0, {$: "Nil"})), imports_0]);
 })]);
 }
 
-function $f_tele_at$(ts_0, end_0, acc_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), end_0)), run_clo((x_0) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Tele", "", 0, 0, run_loop($List$reverse$(acc_0)))), ["rest"]: run_loop($f_tl$(ts_0))};
+function $f_def$(name_0, p_0, book_0, imports_0, unsafe_0) {
+  return run_jump($f_choose$, [run_loop($Bool$not$(run_loop($f_valid_name$(name_0)))), run_clo((x_0) => {
+  return run_jump($f_result$, [book_0, run_loop($kt$("Error", ("reserved definition name: " + name_0), 0, 0, {$: "Nil"})), imports_0]);
 }), run_clo((x_1) => {
-  return run_jump($f_validate_param$, [ts_0, end_0, acc_0]);
+  return run_jump($f_def_prior$, [name_0, p_0, book_0, imports_0, unsafe_0, run_loop($f_find$(name_0, book_0))]);
 })]);
 }
 
-function $f_type_named$(name_0, ts_0, book_0, imports_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<>")), run_clo((x_0) => {
-  return run_jump($f_type_params$, [name_0, {$: "FParsed", ["term"]: run_loop($kt$("Tele", "", 0, 0, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))}, book_0, imports_0]);
+function $f_tele$(ts0_0, end_0, acc_0) {
+  return run_jump($f_tele_at$, [run_loop($f_skip$(ts0_0)), end_0, acc_0]);
+}
+
+function $f_type$(name_0, ts_0, book_0, imports_0) {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_valid_name$(name_0)), run_loop($f_eq$(run_loop($dk$(run_loop($f_find$(name_0, book_0)))), "Missing")))), run_clo((x_0) => {
+  return run_jump($f_type_named$, [name_0, ts_0, book_0, imports_0]);
 }), run_clo((x_1) => {
-  return run_jump($f_type_base$, [name_0, ts_0, book_0, imports_0]);
+  return run_jump($f_result$, [book_0, run_loop($kt$("Error", ("invalid or reserved datatype name: " + name_0), 0, 0, {$: "Nil"})), imports_0]);
 })]);
+}
+
+function $fpe_error$(ts_0, legacy_0, expected_0) {
+  return run_jump($fpe_legacy$, [ts_0, run_loop($nm$(run_loop($f_pn$(run_loop($f_err$(ts_0, legacy_0)))))), expected_0]);
 }
 
 function $f_line$(ts_0) {
@@ -4120,14 +4987,11 @@ function $String$reverse$go$(s_0, acc_0) {
   }
 }
 
-function $Char$is_upper$(c_0) {
-  const x_0 = c_0.codePointAt(0);
-  return run_jump($Bool$and$, [(x_0 >= 65), (x_0 <= 90)]);
-}
-
-function $Char$is_lower$(c_0) {
-  const x_0 = c_0.codePointAt(0);
-  return run_jump($Bool$and$, [(x_0 >= 97), (x_0 <= 122)]);
+function $f_ascii_alpha$(c_0) {
+  const x_0 = run_loop($Char$to_u32$(c_0));
+  const x_1 = ((x_0 | 32) >>> 0);
+  const x_2 = ((x_1 - 97) >>> 0);
+  return (x_2 <= 25);
 }
 
 function $f_fresh_book_stack$(book_0, next_0) {
@@ -4231,23 +5095,6 @@ function $norm_compare$(book_0, a_0, b_0, le_0, fresh_0) {
 })]);
 }
 
-function $index_set_node$(tree_0, d_0, hash_0, bits_0, right_0) {
-  return {$: "KDef", ["name"]: "", ["kind"]: "IndexNode", ["arity"]: 0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Con", ["head"]: run_loop($kc$(right_0, run_clo((x_0) => {
-  return run_jump($index_child$, [tree_0, false]);
-}), run_clo((x_1) => {
-  return run_jump($index_set$, [run_loop($index_child$(tree_0, false)), d_0, ((hash_0 >>> 1) >>> 0), ((bits_0 - 1) >>> 0)]);
-}))), ["tail"]: {$: "Con", ["head"]: run_loop($kc$(right_0, run_clo((x_2) => {
-  return run_jump($index_set$, [run_loop($index_child$(tree_0, true)), d_0, ((hash_0 >>> 1) >>> 0), ((bits_0 - 1) >>> 0)]);
-}), run_clo((x_3) => {
-  return run_jump($index_child$, [tree_0, true]);
-}))), ["tail"]: {$: "Nil"}}}, ["native"]: true, ["unsafe"]: false};
-}
-
-function $Char$to_u32$(c_0) {
-  const x_0 = c_0.codePointAt(0);
-  return x_0;
-}
-
 function $norm_max_walk$(todo_0, bound_0) {
   if (todo_0.$ === "Nil") {
     return bound_0;
@@ -4270,20 +5117,24 @@ function $ka_node$(e_0, ctx_0, t_0, ty_0) {
   return run_jump($ka_lam$, [e_0, ctx_0, t_0, ty_0]);
 }), run_clo((x_3) => {
   return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_4) => {
+  return run_jump($kc$, [run_loop($ka_spine_eligible$(t_0)), run_clo((x_5) => {
+  return run_jump($ka_app_spine$, [e_0, ctx_0, t_0]);
+}), run_clo((x_6) => {
   return run_jump($ka_app$, [e_0, ctx_0, t_0, run_loop($wnf$(run_loop($cb$(e_0)), run_loop($ka_type$(e_0, ctx_0, run_loop($kid$(t_0, 0))))))]);
-}), run_clo((x_5) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_6) => {
-  return run_jump($kt$, ["Ctr", run_loop($nm$(t_0)), run_loop($ix$(t_0)), run_loop($qt$(t_0)), run_loop($ka_args$(e_0, ctx_0, run_loop($tele_fill$(run_loop($cb$(e_0)), run_loop($dt$(run_loop($lookup$(run_loop($dc$(run_loop($lookup$(run_loop($cb$(e_0)), run_loop($nm$(ty_0)))))), run_loop($nm$(t_0)))))), run_loop($ks$(ty_0)))), run_loop($ks$(t_0))))]);
+})]);
 }), run_clo((x_7) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Mat")), run_clo((x_8) => {
-  return run_jump($ka_mat$, [e_0, ctx_0, t_0, ty_0, run_loop($wnf$(run_loop($cb$(e_0)), run_loop($kid$(ty_0, 0))))]);
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_8) => {
+  return run_jump($kt$, ["Ctr", run_loop($nm$(t_0)), run_loop($ix$(t_0)), run_loop($qt$(t_0)), run_loop($ka_args_cached$(e_0, ctx_0, run_loop($tele_fill$(run_loop($cb$(e_0)), run_loop($dt$(run_loop($lookup$(run_loop($dc$(run_loop($lookup$(run_loop($cb$(e_0)), run_loop($nm$(ty_0)))))), run_loop($nm$(t_0)))))), run_loop($ks$(ty_0)))), run_loop($ks$(t_0))))]);
 }), run_clo((x_9) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Let")), run_clo((x_10) => {
-  return run_jump($kt$, ["Let", run_loop($nm$(t_0)), run_loop($ix$(t_0)), run_loop($qt$(t_0)), run_loop($ka_let$(e_0, ctx_0, ctx_0, run_loop($ks$(t_0)), ty_0))]);
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Mat")), run_clo((x_10) => {
+  return run_jump($ka_mat$, [e_0, ctx_0, t_0, ty_0, run_loop($wnf$(run_loop($cb$(e_0)), run_loop($kid$(ty_0, 0))))]);
 }), run_clo((x_11) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Rwt")), run_clo((x_12) => {
-  return run_jump($ka_rwt$, [e_0, ctx_0, t_0, run_loop($wnf$(run_loop($cb$(e_0)), run_loop($ka_type$(e_0, ctx_0, run_loop($kid$(t_0, 0))))))]);
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Let")), run_clo((x_12) => {
+  return run_jump($kt$, ["Let", run_loop($nm$(t_0)), run_loop($ix$(t_0)), run_loop($qt$(t_0)), run_loop($ka_let$(e_0, ctx_0, ctx_0, run_loop($ks$(t_0)), ty_0))]);
 }), run_clo((x_13) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Rwt")), run_clo((x_14) => {
+  return run_jump($ka_rwt$, [e_0, ctx_0, t_0, run_loop($wnf$(run_loop($cb$(e_0)), run_loop($ka_type$(e_0, ctx_0, run_loop($kid$(t_0, 0))))))]);
+}), run_clo((x_15) => {
   return t_0;
 })]);
 })]);
@@ -4310,6 +5161,22 @@ function $cb$(e_0) {
   const quantities_0 = e_0["quantities"];
   const unsafe_0 = e_0["unsafe"];
   return book_0;
+}
+
+function $String$cmp$rec$(h1b_0, h2b_0, rr_0) {
+  const _t_0 = rr_0["fst"];
+  const t1b_0 = _t_0["fst"];
+  const t2b_0 = _t_0["snd"];
+  const r_0 = rr_0["snd"];
+  return {$: "Tuple", ["fst"]: {$: "Tuple", ["fst"]: (h1b_0 + t1b_0), ["snd"]: (h2b_0 + t2b_0)}, ["snd"]: r_0};
+}
+
+function $String$starts_with$if$(t_0, pt_0, same_0) {
+  if (!same_0) {
+    return false;
+  } else {
+    return run_jump($String$starts_with$, [t_0, pt_0]);
+  }
 }
 
 function $j_escape_char_on$(c_0, key_0) {
@@ -5570,23 +6437,231 @@ function $j_escape_char_on$(c_0, key_0) {
   }
 }
 
-function $Char$show$(c_0) {
-  return (c_0 + "");
+function $j_choice_call$(book_0, spine_0) {
+  const x_0 = run_loop($terms_len$(run_loop($ks$(spine_0))));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(spine_0)), "Call")), (x_0 === 4))), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(run_loop($kid$(spine_0, 2)))))), "Lam")), run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(run_loop($kid$(spine_0, 3)))))), "Lam")))), run_loop($String$eq$(run_loop($j_l_name$(run_loop($j_strip$(run_loop($kid$(spine_0, 2)))))), "")))), run_loop($String$eq$(run_loop($j_l_name$(run_loop($j_strip$(run_loop($kid$(spine_0, 3)))))), "")))), run_clo((x_2) => {
+  return run_jump($j_choice_definition$, [book_0, run_loop($lookup$(book_0, run_loop($nm$(spine_0))))]);
+}), run_clo((x_3) => {
+  return false;
+})]);
+}), run_clo((x_4) => {
+  return false;
+})]);
 }
 
-function $Char$to_lower$(c_0) {
-  const x_0 = run_loop($Bool$to_u32$(run_loop($Char$is_upper$(c_0))));
-  const x_1 = run_loop($Char$to_u32$(c_0));
-  const x_2 = (Math.imul(x_0, 32) >>> 0);
-  return char_new(((x_1 + x_2) >>> 0));
+function $j_choice_emit$(book_0, env_0, spine_0, tail_0) {
+  return run_jump($j_choice_after_type$, [book_0, env_0, run_loop($ks$(spine_0)), tail_0, run_loop($wnf$(book_0, run_loop($j_app_type$(run_loop($wnf$(book_0, run_loop($dt$(run_loop($lookup$(book_0, run_loop($nm$(spine_0)))))))), run_loop($kid$(spine_0, 0))))))]);
 }
 
-function $String$cmp$rec$(h1b_0, h2b_0, rr_0) {
-  const _t_0 = rr_0["fst"];
-  const t1b_0 = _t_0["fst"];
-  const t2b_0 = _t_0["snd"];
-  const r_0 = rr_0["snd"];
-  return {$: "Tuple", ["fst"]: {$: "Tuple", ["fst"]: (h1b_0 + t1b_0), ["snd"]: (h2b_0 + t2b_0)}, ["snd"]: r_0};
+function $j_apply_regular$(book_0, env_0, t_0, tail_0, fty_0, spine_0) {
+  const x_0 = run_loop($terms_len$(run_loop($ks$(spine_0))));
+  const x_1 = run_loop($terms_len$(run_loop($ks$(spine_0))));
+  const x_2 = run_loop($j_call_arity$(run_loop($lookup$(book_0, run_loop($nm$(spine_0))))));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(spine_0)), "Call")), (x_0 > 1))), (x_1 <= x_2))), run_clo((x_3) => {
+  const x_6 = run_loop($j_apply_args$(book_0, env_0, run_loop($ks$(spine_0)), run_loop($dt$(run_loop($lookup$(book_0, run_loop($nm$(spine_0))))))));
+  const x_7 = (x_6 + "])");
+  const x_8 = run_loop($j_quote$(run_loop($nm$(spine_0))));
+  const x_9 = ("),[" + x_7);
+  const x_10 = (x_8 + x_9);
+  const x_11 = run_loop($kc$(tail_0, run_clo((x_4) => {
+  return "jump(";
+}), run_clo((x_5) => {
+  return "call(";
+})));
+  const x_12 = ("get(G," + x_10);
+  return (x_11 + x_12);
+}), run_clo((x_13) => {
+  return run_jump($j_apply_one$, [book_0, env_0, t_0, tail_0, fty_0]);
+})]);
+}
+
+function $j_env$(env_0, id_0) {
+  if (env_0.$ === "Nil") {
+    return run_jump($atom$, ["Absent"]);
+  } else {
+    const h_0 = env_0["head"];
+    const rest_0 = env_0["tail"];
+    const x_0 = run_loop($ix$(h_0));
+    return run_jump($kc$, [(x_0 === id_0), run_clo((x_1) => {
+    return run_jump($kid$, [h_0, 0]);
+}), run_clo((x_2) => {
+    return run_jump($j_env$, [rest_0, id_0]);
+})]);
+  }
+}
+
+function $j_app_type$(ty_0, arg_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), run_clo((x_0) => {
+  return run_jump($subst$, [run_loop($kid$(ty_0, 1)), run_loop($ix$(ty_0)), arg_0]);
+}), run_clo((x_1) => {
+  return run_jump($atom$, ["Absent"]);
+})]);
+}
+
+function $j_literal$(t_0) {
+  return run_jump($j_literal_node$, [run_loop($j_strip$(t_0))]);
+}
+
+function $j_literal_provenance$(book_0, ty_0, literal_0) {
+  const d_0 = run_loop($lookup$(book_0, run_loop($nm$(ty_0))));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(ty_0)), "ADT")), run_loop($String$eq$(run_loop($dk$(d_0)), "ADT")))), run_loop($Bool$not$(run_loop($db$(d_0)))))), run_clo((x_0) => {
+  return "";
+}), run_clo((x_1) => {
+  return literal_0;
+})]);
+}
+
+function $j_found_ctor$(found_0, rest_0, name_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(found_0)), "Absent")), run_clo((x_0) => {
+  return run_jump($j_find_ctor$, [rest_0, name_0]);
+}), run_clo((x_1) => {
+  return found_0;
+})]);
+}
+
+function $j_constructor_literal$(book_0, env_0, t_0, ty_0, literal_0) {
+  return run_jump($kc$, [run_loop($String$eq$(literal_0, "")), run_clo((x_0) => {
+  const x_1 = run_loop($j_ctor_args$(book_0, env_0, run_loop($ks$(t_0)), run_loop($j_specialize$(book_0, run_loop($dt$(run_loop($j_find_ctor$(book_0, run_loop($nm$(t_0)))))), run_loop($ks$(run_loop($wnf$(book_0, ty_0))))))));
+  const x_2 = (x_1 + "])");
+  const x_3 = run_loop($j_quote$(run_loop($nm$(t_0))));
+  const x_4 = (",[" + x_2);
+  const x_5 = (x_3 + x_4);
+  return ("ctor(" + x_5);
+}), run_clo((x_6) => {
+  return literal_0;
+})]);
+}
+
+function $j_lambda_bind$(book_0, env_0, t_0, ty_0, at_0) {
+  const x_0 = run_loop($qt$(ty_0));
+  const x_5 = run_loop($j_lambda_code$(book_0, {$: "Con", ["head"]: run_loop($kt$("Env", "", run_loop($ix$(t_0)), 0, {$: "Con", ["head"]: run_loop($kid$(ty_0, 0)), ["tail"]: {$: "Nil"}})), ["tail"]: env_0}, run_loop($kid$(t_0, 0)), run_loop($subst$(run_loop($kid$(ty_0, 1)), run_loop($ix$(ty_0)), run_loop($var$(run_loop($nm$(t_0)), run_loop($ix$(t_0)))))), ((at_0 + 1) >>> 0)));
+  const x_6 = run_loop($kc$(run_loop($Bool$and$((x_0 === 0), run_loop($String$eq$(run_loop($tg$(ty_0)), "All")))), run_clo((x_1) => {
+  return "null";
+}), run_clo((x_2) => {
+  const x_3 = run_loop($U32$show$(at_0));
+  const x_4 = (x_3 + "]");
+  return ("a[" + x_4);
+})));
+  const x_7 = (";" + x_5);
+  const x_8 = (x_6 + x_7);
+  const x_9 = run_loop($j_local$(run_loop($ix$(t_0))));
+  const x_10 = ("=" + x_8);
+  const x_11 = (x_9 + x_10);
+  return ("const " + x_11);
+}
+
+function $j_count_constructors$(ctors_0, removed_0) {
+  if (ctors_0.$ === "Nil") {
+    return 0;
+  } else {
+    const d_0 = ctors_0["head"];
+    const rest_0 = ctors_0["tail"];
+    const x_2 = run_loop($kc$(run_loop($has_name$(removed_0, run_loop($dn$(d_0)))), run_clo((x_0) => {
+    return 0;
+}), run_clo((x_1) => {
+    return 1;
+})));
+    const x_3 = run_loop($j_count_constructors$(rest_0, removed_0));
+    return ((x_2 + x_3) >>> 0);
+  }
+}
+
+function $j_arm_tel$(book_0, tel_0, ret_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), run_clo((x_0) => {
+  return run_jump($all$, [run_loop($qt$(tel_0)), run_loop($nm$(tel_0)), run_loop($ix$(tel_0)), run_loop($kid$(tel_0, 0)), run_loop($j_arm_tel$(book_0, run_loop($kid$(tel_0, 1)), ret_0))]);
+}), run_clo((x_1) => {
+  return ret_0;
+})]);
+}
+
+function $U32$show$go$(f_0, n_0, acc_0) {
+  if (f_0 === 0n) {
+    return acc_0;
+  } else {
+    const g_0 = (f_0 - 1n);
+    return run_jump($U32$show$fin$, [g_0, acc_0, n_0, (n_0 === 0)]);
+  }
+}
+
+function $j_desc_args$(book_0, args_0, fuel_0) {
+  if (args_0.$ === "Nil") {
+    return "";
+  } else {
+    const h_0 = args_0["head"];
+    const rest_0 = args_0["tail"];
+    const x_0 = run_loop($j_desc_args$(book_0, rest_0, fuel_0));
+    const x_1 = run_loop($j_descriptor$(book_0, h_0, fuel_0));
+    const x_2 = ("," + x_0);
+    return (x_1 + x_2);
+  }
+}
+
+function $norm_apply$(t_0, args_0) {
+  if (args_0.$ === "Nil") {
+    return t_0;
+  } else {
+    const h_0 = args_0["head"];
+    const rest_0 = args_0["tail"];
+    return run_jump($norm_apply$, [run_loop($app$(t_0, h_0)), rest_0]);
+  }
+}
+
+function $norm_let$(ts_0) {
+  if (ts_0.$ === "Nil") {
+    return run_jump($atom$, ["Absent"]);
+  } else {
+    const h_0 = ts_0["head"];
+    const rest_0 = ts_0["tail"];
+    return run_jump($norm_let_tail$, [h_0, rest_0]);
+  }
+}
+
+function $norm_ref$(book_0, t_0, args_0, d_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(d_0)), "ADT")), run_clo((x_0) => {
+  const x_1 = run_loop($da$(d_0));
+  return run_jump($kc$, [(x_1 === 0), run_clo((x_2) => {
+  return run_jump($norm_apply$, [run_loop($kt$("ADT", run_loop($nm$(t_0)), 0, 0, {$: "Nil"})), args_0]);
+}), run_clo((x_3) => {
+  return run_jump($norm_apply$, [t_0, args_0]);
+})]);
+}), run_clo((x_4) => {
+  const x_5 = run_loop($String$eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Absent"));
+  const x_6 = run_loop($String$eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Foreign"));
+  const x_7 = run_loop($da$(d_0));
+  const x_8 = run_loop($terms_len$(args_0));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$not$((x_5 || x_6))), (x_7 <= x_8))), run_clo((x_9) => {
+  return run_jump($norm_eval$, [book_0, run_loop($dv$(d_0)), args_0, run_loop($da$(d_0)), run_loop($norm_apply$(t_0, args_0))]);
+}), run_clo((x_10) => {
+  return run_jump($norm_apply$, [t_0, args_0]);
+})]);
+})]);
+}
+
+function $norm_min$(book_0, a_0, b_0) {
+  return run_jump($norm_min_left$, [book_0, run_loop($wnf$(book_0, a_0)), b_0]);
+}
+
+function $norm_args$(book_0, t_0, args_0, left_0, fallback_0) {
+  if (args_0.$ === "Nil") {
+    return t_0;
+  } else {
+    const x_0 = args_0["head"];
+    const rest_0 = args_0["tail"];
+    return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Lam")), run_clo((x_1) => {
+    return run_jump($norm_eval$, [book_0, run_loop($subst$(run_loop($kid$(t_0, 0)), run_loop($ix$(t_0)), x_0)), rest_0, run_loop($norm_dec$(left_0)), fallback_0]);
+}), run_clo((x_2) => {
+    return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Mat")), run_clo((x_3) => {
+    return run_jump($norm_match$, [book_0, t_0, t_0, x_0, run_loop($wnf$(book_0, x_0)), rest_0, left_0, fallback_0]);
+}), run_clo((x_4) => {
+    return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Efq")), run_loop($Bool$not$((left_0 === 0))))), run_clo((x_5) => {
+    return fallback_0;
+}), run_clo((x_6) => {
+    return run_jump($norm_apply$, [t_0, {$: "Con", ["head"]: x_0, ["tail"]: rest_0}]);
+})]);
+})]);
+})]);
+  }
 }
 
 function $index_bucket$(ds_0, name_0) {
@@ -5607,45 +6682,52 @@ function $index_child$(tree_0, right_0) {
   return run_jump($index_child_list$, [run_loop($dc$(tree_0)), right_0]);
 }
 
-function $norm_var$(book_0, t_0, values_0, args_0, left_0, fallback_0) {
-  if (values_0.$ === "Nil") {
-    return run_jump($norm_apply$, [t_0, args_0]);
+function $Char$show$(c_0) {
+  return (c_0 + "");
+}
+
+function $Char$to_lower$(c_0) {
+  const x_0 = run_loop($Bool$to_u32$(run_loop($Char$is_upper$(c_0))));
+  const x_1 = run_loop($Char$to_u32$(c_0));
+  const x_2 = (Math.imul(x_0, 32) >>> 0);
+  return char_new(((x_1 + x_2) >>> 0));
+}
+
+function $book_final_name_valid$(name_0) {
+  if (name_0 === "") {
+    return true;
   } else {
-    const h_0 = values_0["head"];
-    const rest_0 = values_0["tail"];
-    return run_jump($norm_eval$, [book_0, h_0, args_0, left_0, fallback_0]);
+    const h_0 = (name_0.codePointAt(0) > 0xFFFF ? name_0.slice(0, 2) : name_0[0]);
+    const rest_0 = (name_0.codePointAt(0) > 0xFFFF ? name_0.slice(2) : name_0.slice(1));
+    const x_0 = run_loop($Char$to_u32$(h_0));
+    const x_1 = ((x_0 - 55296) >>> 0);
+    return run_jump($kc$, [(x_1 <= 2047), run_clo((x_2) => {
+    return false;
+}), run_clo((x_3) => {
+    return run_jump($book_final_name_valid$, [rest_0]);
+})]);
   }
 }
 
-function $norm_eval_node$(book_0, t_0, args_0, left_0, fallback_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_0) => {
-  return run_jump($norm_eval$, [book_0, run_loop($kid$(t_0, 0)), {$: "Con", ["head"]: run_loop($kid$(t_0, 1)), ["tail"]: args_0}, left_0, fallback_0]);
+function $book_final_filter$(done_0, seen_0) {
+  if (done_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const d_0 = done_0["head"];
+    const rest_0 = done_0["tail"];
+    return run_jump($kc$, [run_loop($book_final_seen$(seen_0, run_loop($dn$(d_0)), run_loop($index_hash$(run_loop($dn$(d_0)), 2166136261)))), run_clo((x_0) => {
+    return run_jump($book_final_filter$, [rest_0, seen_0]);
 }), run_clo((x_1) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_2) => {
-  return run_jump($norm_eval$, [book_0, run_loop($kid$(t_0, 0)), args_0, left_0, fallback_0]);
-}), run_clo((x_3) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Let")), run_clo((x_4) => {
-  return run_jump($norm_eval$, [book_0, run_loop($norm_let$(run_loop($ks$(t_0)))), args_0, left_0, fallback_0]);
-}), run_clo((x_5) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ref")), run_clo((x_6) => {
-  return run_jump($norm_ref$, [book_0, t_0, args_0, run_loop($lookup$(book_0, run_loop($nm$(t_0))))]);
-}), run_clo((x_7) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Min")), run_clo((x_8) => {
-  return run_jump($norm_apply$, [run_loop($norm_min$(book_0, run_loop($kid$(t_0, 0)), run_loop($kid$(t_0, 1)))), args_0]);
-}), run_clo((x_9) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Rwt")), run_clo((x_10) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(run_loop($wnf$(book_0, run_loop($kid$(t_0, 0)))))), "Rfl")), run_clo((x_11) => {
-  return run_jump($norm_eval$, [book_0, run_loop($kid$(t_0, 2)), args_0, left_0, fallback_0]);
-}), run_clo((x_12) => {
-  return run_jump($norm_apply$, [t_0, args_0]);
+    return {$: "Con", ["head"]: d_0, ["tail"]: run_loop($book_final_filter$(rest_0, seen_0))};
 })]);
-}), run_clo((x_13) => {
-  return run_jump($norm_args$, [book_0, t_0, args_0, left_0, fallback_0]);
-})]);
-})]);
-})]);
-})]);
-})]);
+  }
+}
+
+function $book_final_step$(d_0, rest_0, seen_0, kept_0, done_0, hash_0) {
+  return run_jump($kc$, [run_loop($book_final_seen$(seen_0, run_loop($dn$(d_0)), hash_0)), run_clo((x_0) => {
+  return run_jump($book_final_scan$, [rest_0, seen_0, kept_0, done_0]);
+}), run_clo((x_1) => {
+  return run_jump($book_final_scan$, [rest_0, run_loop($index_set$(seen_0, {$: "KDef", ["name"]: run_loop($dn$(d_0)), ["kind"]: "$final.seen", ["arity"]: 0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Nil"}, ["native"]: true, ["unsafe"]: false}, hash_0, 32)), {$: "Con", ["head"]: d_0, ["tail"]: kept_0}, done_0]);
 })]);
 }
 
@@ -5789,7 +6871,7 @@ function $sp_neededs$(book_0, ts_0) {
 }
 
 function $sp_put$(st_0, d_0) {
-  return {$: "KSpecState", ["book"]: {$: "Con", ["head"]: d_0, ["tail"]: run_loop($book_without$(run_loop($sp_book$(st_0)), run_loop($dn$(d_0))))}, ["memo"]: run_loop($sp_memo$(st_0)), ["serial"]: run_loop($sp_serial$(st_0)), ["fresh"]: run_loop($sp_fresh$(st_0)), ["error"]: run_loop($sp_error$(st_0)), ["templates"]: run_loop($sp_templates$(st_0))};
+  return {$: "KSpecState", ["book"]: {$: "Con", ["head"]: d_0, ["tail"]: run_loop($index_remove$(run_loop($sp_book$(st_0)), run_loop($dn$(d_0))))}, ["memo"]: run_loop($sp_memo$(st_0)), ["serial"]: run_loop($sp_serial$(st_0)), ["fresh"]: run_loop($sp_fresh$(st_0)), ["error"]: run_loop($sp_error$(st_0)), ["templates"]: run_loop($sp_templates$(st_0))};
 }
 
 function $sp_state$(r_0) {
@@ -6396,12 +7478,15 @@ function $nc_erase_list$(book_0, ts_0) {
   }
 }
 
-function $String$starts_with$if$(t_0, pt_0, same_0) {
-  if (!same_0) {
-    return false;
-  } else {
-    return run_jump($String$starts_with$, [t_0, pt_0]);
-  }
+function $Char$is_alpha$(c_0) {
+  const x_0 = run_loop($Char$is_upper$(c_0));
+  const x_1 = run_loop($Char$is_lower$(c_0));
+  return (x_0 || x_1);
+}
+
+function $Char$is_digit$(c_0) {
+  const x_0 = c_0.codePointAt(0);
+  return run_jump($Bool$and$, [(x_0 >= 48), (x_0 <= 57)]);
 }
 
 function $nc_ctor_decode$(rest_0, acc_0, digits_0, out_0, original_0) {
@@ -6451,6 +7536,13 @@ function $nc_ctor_encode$(name_0) {
   return ("$ctor." + x_0);
 }
 
+function $nc_live_count_head$(book_0, head_0, left_0) {
+  const x_0 = run_loop($qt$(head_0));
+  const x_1 = run_loop($nt_bool$(run_loop($Bool$not$((x_0 === 0)))));
+  const x_2 = run_loop($nc_live_count$(book_0, run_loop($kid$(head_0, 1)), ((left_0 - 1) >>> 0)));
+  return ((x_1 + x_2) >>> 0);
+}
+
 function $nt_join_go$(xs_0, sep_0, acc_0, first_0) {
   if (xs_0.$ === "Nil") {
     return acc_0;
@@ -6498,16 +7590,6 @@ function $exact_names$(a_0, b_0) {
   }
 }
 
-function $rm$(t_0) {
-  const tag_0 = t_0["tag"];
-  const name_0 = t_0["name"];
-  const id_0 = t_0["id"];
-  const quant_0 = t_0["quant"];
-  const kids_0 = t_0["kids"];
-  const removed_0 = t_0["removed"];
-  return removed_0;
-}
-
 function $defs_empty$(ds_0) {
   if (ds_0.$ === "Nil") {
     return true;
@@ -6528,21 +7610,41 @@ function $exact_defs_head$(h_0, rest_0, b_0) {
   }
 }
 
-function $f_error_def_next$(err_0, ctors_0, rest_0) {
-  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
-  return run_jump($f_error_defs_more$, [run_loop($f_error_defs$(ctors_0)), rest_0]);
+function $fpe_selected$(legacy_0, owner_0, done_0, sources_0) {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(owner_0)), "ParseOwner")), run_loop($String$eq$(run_loop($nm$(run_loop($kid$(owner_0, 0)))), legacy_0)))), run_clo((x_0) => {
+  return run_jump($fpe_source_render$, [legacy_0, run_loop($kid$(owner_0, 0)), run_loop($fpe_unique_source$(run_loop($fpe_owner_path$(run_loop($List$reverse$(done_0)), run_loop($ix$(owner_0)))), sources_0, run_loop($atom$("Absent"))))]);
 }), run_clo((x_1) => {
-  return err_0;
+  return legacy_0;
 })]);
 }
 
-function $f_error_terms$(ts_0) {
-  if (ts_0.$ === "Nil") {
+function $fpe_find$(ds_0, index_0) {
+  if (ds_0.$ === "Nil") {
+    return run_jump($atom$, ["Absent"]);
+  } else {
+    const head_0 = ds_0["head"];
+    const tail_0 = ds_0["tail"];
+    return run_jump($fpe_find_next$, [run_loop($fpe_def$(head_0)), tail_0, index_0]);
+  }
+}
+
+function $f_graph_fresh_names$(todo_0, done_0) {
+  if (todo_0.$ === "Nil") {
     return "";
   } else {
-    const t_0 = ts_0["head"];
-    const rest_0 = ts_0["tail"];
-    return run_jump($f_error_more$, [run_loop($f_error_term$(t_0)), rest_0]);
+    const d_0 = todo_0["head"];
+    const rest_0 = todo_0["tail"];
+    return run_jump($f_graph_fresh_hashed$, [rest_0, done_0, d_0, run_loop($index_hash$(run_loop($dn$(d_0)), 2166136261))]);
+  }
+}
+
+function $f_error_defs$(ds_0) {
+  if (ds_0.$ === "Nil") {
+    return "";
+  } else {
+    const d_0 = ds_0["head"];
+    const rest_0 = ds_0["tail"];
+    return run_jump($f_error_def_next$, [run_loop($f_error_terms$({$: "Con", ["head"]: run_loop($dt$(d_0)), ["tail"]: {$: "Con", ["head"]: run_loop($dv$(d_0)), ["tail"]: {$: "Nil"}}})), run_loop($dc$(d_0)), rest_0]);
   }
 }
 
@@ -6564,6 +7666,19 @@ function $f_graph_error$(g_0, err_0) {
   return {$: "FGraph", ["book"]: book_0, ["error"]: err_0, ["done"]: done_0};
 }
 
+function $index_join$(tree_0, d_0, hash_0, mask_0) {
+  const x_0 = ((hash_0 & mask_0) >>> 0);
+  return run_jump($kc$, [(x_0 === 0), run_clo((x_1) => {
+  return run_jump($index_node$, [run_loop($da$(tree_0)), mask_0, run_loop($index_leaf$(d_0, hash_0, {$: "Nil"})), tree_0]);
+}), run_clo((x_2) => {
+  return run_jump($index_node$, [run_loop($da$(tree_0)), mask_0, tree_0, run_loop($index_leaf$(d_0, hash_0, {$: "Nil"}))]);
+})]);
+}
+
+function $index_node$(hash_0, mask_0, left_0, right_0) {
+  return {$: "KDef", ["name"]: "", ["kind"]: "IndexNode", ["arity"]: hash_0, ["templates"]: mask_0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Con", ["head"]: left_0, ["tail"]: {$: "Con", ["head"]: right_0, ["tail"]: {$: "Nil"}}}, ["native"]: true, ["unsafe"]: false};
+}
+
 function $fs_path$(seed_0) {
   const path_0 = seed_0["path"];
   const book_0 = seed_0["book"];
@@ -6574,7 +7689,7 @@ function $fs_inject$(g_0, seed_0) {
   const book_0 = g_0["book"];
   const err_0 = g_0["error"];
   const done_0 = g_0["done"];
-  return {$: "FGraph", ["book"]: run_loop($f_defs_append$(book_0, run_loop($fs_book$(seed_0)))), ["error"]: err_0, ["done"]: {$: "Con", ["head"]: run_loop($kt$("Loaded", run_loop($fs_path$(seed_0)), 0, 0, {$: "Con", ["head"]: run_loop($ref$("")), ["tail"]: {$: "Nil"}})), ["tail"]: done_0}};
+  return {$: "FGraph", ["book"]: run_loop($f_defs_append$(book_0, run_loop($fs_book$(seed_0)))), ["error"]: err_0, ["done"]: {$: "Con", ["head"]: run_loop($kt$("Loaded", run_loop($fs_path$(seed_0)), run_loop($f_graph_count_defs$(run_loop($fs_book$(seed_0)), 0)), 0, {$: "Con", ["head"]: run_loop($ref$("")), ["tail"]: {$: "Nil"}})), ["tail"]: done_0}};
 }
 
 function $fs_parsed$(s_0, ns_0, sources_0, g_0, stack_0, r_0, seed_0) {
@@ -6588,20 +7703,21 @@ function $fs_parsed$(s_0, ns_0, sources_0, g_0, stack_0, r_0, seed_0) {
 })]);
 }
 
-function $U32$show$go$(f_0, n_0, acc_0) {
-  if (f_0 === 0n) {
-    return acc_0;
-  } else {
-    const g_0 = (f_0 - 1n);
-    return run_jump($U32$show$fin$, [g_0, acc_0, n_0, (n_0 === 0)]);
-  }
-}
-
 function $dg_event_check$(rest_0, done_0, d_0, origins_0, error_0, checked_0) {
   return run_jump($kc$, [run_loop($String$eq$(checked_0, "")), run_clo((x_0) => {
   return run_jump($dg_events$, [rest_0, run_loop($book_put$(done_0, d_0)), origins_0, error_0]);
 }), run_clo((x_1) => {
   return run_jump($dg_finish$, [error_0, run_loop($book_put$(done_0, run_loop($declared$(d_0)))), run_loop($dg_report$(run_loop($dg_definition$(run_loop($book_put$(done_0, run_loop($declared$(d_0)))), run_loop($signature_mode$(d_0, rest_0)))), run_loop($dn$(d_0)))), origins_0]);
+})]);
+}
+
+function $dg_suffix_check$(rest_0, done_0, d_0, original_0, origins_0, checked_0) {
+  return run_jump($kc$, [run_loop($String$eq$(checked_0, "")), run_clo((x_0) => {
+  return run_jump($dg_suffix_events$, [rest_0, run_loop($book_put$(done_0, d_0)), original_0, origins_0]);
+}), run_clo((x_1) => {
+  const x_2 = run_loop($dn$(d_0));
+  const x_3 = (": " + checked_0);
+  return run_jump($dg_finish$, [(x_2 + x_3), run_loop($book_put$(done_0, run_loop($declared$(d_0)))), run_loop($dg_report$(run_loop($dg_definition$(run_loop($book_put$(done_0, run_loop($declared$(d_0)))), run_loop($signature_mode$(d_0, rest_0)))), run_loop($dn$(d_0)))), origins_0]);
 })]);
 }
 
@@ -6698,6 +7814,34 @@ function $fp_module$(source_0) {
   return run_jump($fp_module_parsed$, [run_loop($f_source_text$(source_0)), run_loop($f_lex$(run_loop($f_source_text$(source_0)), 1, 0, 0, {$: "Nil"})), run_loop($f_parse$(run_loop($f_source_text$(source_0))))]);
 }
 
+function $fp_loaded_has$(book_0, definition_0) {
+  if (book_0.$ === "Nil") {
+    return false;
+  } else {
+    const head_0 = book_0["head"];
+    const tail_0 = book_0["tail"];
+    return run_jump($f_choose$, [run_loop($String$eq$(run_loop($dn$(head_0)), definition_0)), run_clo((x_0) => {
+    return true;
+}), run_clo((x_1) => {
+    return run_jump($fp_loaded_has$, [tail_0, definition_0]);
+})]);
+  }
+}
+
+function $fp_loaded_defs$(book_0, source_0, definition_0) {
+  if (book_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const head_0 = book_0["head"];
+    const tail_0 = book_0["tail"];
+    return run_jump($List$append$, [run_loop($f_choose$(run_loop($String$eq$(run_loop($dn$(head_0)), definition_0)), run_clo((x_0) => {
+    return run_jump($fp_def$, [head_0, source_0]);
+}), run_clo((x_1) => {
+    return {$: "Nil"};
+}))), run_loop($fp_loaded_defs$(tail_0, source_0, definition_0))]);
+  }
+}
+
 function $j_printable_adt$(book_0, ty_0, seen_0, fuel_0) {
   const x_0 = run_loop($nm$(ty_0));
   const x_1 = (x_0 + "|");
@@ -6792,341 +7936,155 @@ function $kr_parent$(book_0, name_0) {
   }
 }
 
-function $j_schema_fields$(book_0, ty_0) {
+function $j_field_keys$(ty_0, skip_0) {
   return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), run_clo((x_0) => {
-  const x_1 = run_loop($qt$(ty_0));
-  const x_4 = run_loop($j_schema_fields$(book_0, run_loop($kid$(ty_0, 1))));
-  const x_5 = run_loop($kc$((x_1 === 0), run_clo((x_2) => {
-  return "[\"Erased\"]";
-}), run_clo((x_3) => {
-  return run_jump($j_descriptor$, [book_0, run_loop($kid$(ty_0, 0)), 64]);
-})));
-  const x_6 = ("," + x_4);
-  return (x_5 + x_6);
-}), run_clo((x_7) => {
-  return "";
-})]);
-}
-
-function $j_local$(id_0) {
-  const x_0 = run_loop($U32$show$(id_0));
-  return ("x" + x_0);
-}
-
-function $j_foreign_args$(book_0, ty_0, n_0) {
-  return run_jump($kc$, [(n_0 === 0), run_clo((x_0) => {
-  return "";
-}), run_clo((x_1) => {
-  const x_2 = run_loop($j_foreign_args$(book_0, run_loop($kid$(ty_0, 1)), ((n_0 - 1) >>> 0)));
-  const x_3 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 0)), 64));
-  const x_4 = ("]," + x_2);
-  const x_5 = (x_3 + x_4);
-  const x_6 = run_loop($U32$show$(run_loop($qt$(ty_0))));
-  const x_7 = ("," + x_5);
-  const x_8 = (x_6 + x_7);
-  return ("[" + x_8);
-})]);
-}
-
-function $j_io_result$(book_0, ty_0) {
-  return run_jump($kid$, [run_loop($wnf$(book_0, run_loop($kid$(run_loop($wnf$(book_0, run_loop($kid$(ty_0, 1)))), 0)))), 0]);
-}
-
-function $j_foreign_return$(book_0, ty_0, n_0) {
-  return run_jump($kc$, [(n_0 === 0), run_clo((x_0) => {
-  return run_jump($wnf$, [book_0, ty_0]);
-}), run_clo((x_1) => {
-  return run_jump($j_foreign_return$, [book_0, run_loop($kid$(ty_0, 1)), ((n_0 - 1) >>> 0)]);
-})]);
-}
-
-function $j_l_deep$(t_0, depth_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
-  return run_jump($j_l_deep$, [run_loop($kid$(t_0, 0)), depth_0]);
-}), run_clo((x_1) => {
-  const x_2 = run_loop($String$eq$(run_loop($tg$(t_0)), "Var"));
-  const x_3 = run_loop($String$eq$(run_loop($tg$(t_0)), "Ref"));
-  return run_jump($kc$, [(x_2 || x_3), run_clo((x_4) => {
-  return false;
+  return run_jump($kc$, [(skip_0 === 0), run_clo((x_1) => {
+  const x_2 = run_loop($j_field_keys$(run_loop($kid$(ty_0, 1)), 0));
+  const x_3 = run_loop($j_quote$(run_loop($nm$(ty_0))));
+  const x_4 = ("," + x_2);
+  return (x_3 + x_4);
 }), run_clo((x_5) => {
-  const x_6 = run_loop($String$eq$(run_loop($tg$(t_0)), "Lam"));
-  const x_7 = run_loop($String$eq$(run_loop($tg$(t_0)), "Mat"));
-  return run_jump($kc$, [(x_6 || x_7), run_clo((x_8) => {
-  return run_jump($kc$, [(depth_0 >= 32), run_clo((x_9) => {
-  return true;
-}), run_clo((x_10) => {
-  return run_jump($j_l_deeps$, [run_loop($ks$(t_0)), ((depth_0 + 1) >>> 0)]);
+  return run_jump($j_field_keys$, [run_loop($kid$(ty_0, 1)), ((skip_0 - 1) >>> 0)]);
 })]);
-}), run_clo((x_11) => {
-  return run_jump($j_l_deeps$, [run_loop($ks$(t_0)), depth_0]);
-})]);
-})]);
-})]);
-}
-
-function $j_l_definition$(book_0, d_0, t_0) {
-  const x_0 = run_loop($j_l_global$(book_0, d_0, t_0));
-  const x_1 = run_loop($j_l_walk$(book_0, {$: "Nil"}, t_0, run_loop($dt$(d_0))));
-  const x_2 = (x_0 + "}\n");
-  const x_3 = (x_1 + x_2);
-  return ("{const F=Object.create(null);\n" + x_3);
-}
-
-function $j_l_mark$(t_0, path_0, depth_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
-  return {$: "KTerm", ["tag"]: run_loop($tg$(t_0)), ["name"]: run_loop($nm$(t_0)), ["id"]: run_loop($ix$(t_0)), ["quant"]: run_loop($qt$(t_0)), ["kids"]: {$: "Con", ["head"]: run_loop($j_l_mark$(run_loop($kid$(t_0, 0)), path_0, depth_0)), ["tail"]: {$: "Con", ["head"]: run_loop($kid$(t_0, 1)), ["tail"]: {$: "Nil"}}}, ["removed"]: run_loop($rm$(t_0))};
-}), run_clo((x_1) => {
-  const x_2 = run_loop($String$eq$(run_loop($tg$(t_0)), "Var"));
-  const x_3 = run_loop($String$eq$(run_loop($tg$(t_0)), "Ref"));
-  return run_jump($kc$, [(x_2 || x_3), run_clo((x_4) => {
-  return t_0;
-}), run_clo((x_5) => {
-  const x_6 = run_loop($String$eq$(run_loop($tg$(t_0)), "Lam"));
-  const x_7 = run_loop($String$eq$(run_loop($tg$(t_0)), "Mat"));
-  return run_jump($kc$, [(x_6 || x_7), run_clo((x_8) => {
-  return run_jump($kc$, [(depth_0 >= 32), run_clo((x_9) => {
-  return {$: "KTerm", ["tag"]: run_loop($tg$(t_0)), ["name"]: run_loop($nm$(t_0)), ["id"]: run_loop($ix$(t_0)), ["quant"]: run_loop($qt$(t_0)), ["kids"]: run_loop($j_l_marks$(run_loop($ks$(t_0)), path_0, 0, 0)), ["removed"]: {$: "Con", ["head"]: ("$js." + path_0), ["tail"]: {$: "Nil"}}};
-}), run_clo((x_10) => {
-  return {$: "KTerm", ["tag"]: run_loop($tg$(t_0)), ["name"]: run_loop($nm$(t_0)), ["id"]: run_loop($ix$(t_0)), ["quant"]: run_loop($qt$(t_0)), ["kids"]: run_loop($j_l_marks$(run_loop($ks$(t_0)), path_0, ((depth_0 + 1) >>> 0), 0)), ["removed"]: run_loop($rm$(t_0))};
-})]);
-}), run_clo((x_11) => {
-  return {$: "KTerm", ["tag"]: run_loop($tg$(t_0)), ["name"]: run_loop($nm$(t_0)), ["id"]: run_loop($ix$(t_0)), ["quant"]: run_loop($qt$(t_0)), ["kids"]: run_loop($j_l_marks$(run_loop($ks$(t_0)), path_0, depth_0, 0)), ["removed"]: run_loop($rm$(t_0))};
-})]);
-})]);
-})]);
-}
-
-function $j_l_global$(book_0, d_0, t_0) {
-  const x_4 = run_loop($kc$(run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(t_0)))), "Lam")), run_clo((x_0) => {
-  return run_jump($j_expr$, [book_0, {$: "Nil"}, t_0, run_loop($dt$(d_0)), false]);
-}), run_clo((x_1) => {
-  const x_2 = run_loop($j_expr$(book_0, {$: "Nil"}, t_0, run_loop($dt$(d_0)), true));
-  const x_3 = (x_2 + ";})");
-  return ("fn(0,function(){return " + x_3);
-})));
-  const x_5 = (x_4 + ";\n");
-  const x_6 = run_loop($j_quote$(run_loop($dn$(d_0))));
-  const x_7 = ("]=" + x_5);
-  const x_8 = (x_6 + x_7);
-  return ("G[" + x_8);
-}
-
-function $j_desc_head_on$(book_0, ty_0, fuel_0, key_0) {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Char")), run_clo((x_0) => {
-  return "[\"Char\"]";
-}), run_clo((x_1) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "F32")), run_clo((x_2) => {
-  return "[\"F32\"]";
-}), run_clo((x_3) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "List")), run_clo((x_4) => {
-  const x_5 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 1)), fuel_0));
-  const x_6 = (x_5 + "]");
-  return ("[\"List\"," + x_6);
-}), run_clo((x_7) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Array")), run_clo((x_8) => {
-  const x_9 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 0)), fuel_0));
-  const x_10 = (x_9 + "]");
-  return ("[\"Array\"," + x_10);
-}), run_clo((x_11) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Sigma")), run_clo((x_12) => {
-  const x_13 = run_loop($j_descriptor$(book_0, run_loop($kid$(run_loop($kid$(ty_0, 3)), 0)), fuel_0));
-  const x_14 = (x_13 + "]");
-  const x_15 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 2)), fuel_0));
-  const x_16 = ("," + x_14);
-  const x_17 = (x_15 + x_16);
-  return ("[\"Tuple\"," + x_17);
-}), run_clo((x_18) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "Var")), run_clo((x_19) => {
-  const x_20 = run_loop($j_local$(run_loop($ix$(ty_0))));
-  const x_21 = (x_20 + ")");
-  const x_22 = run_loop($j_local$(run_loop($ix$(ty_0))));
-  const x_23 = ("===\"undefined\"?null:" + x_21);
-  const x_24 = (x_22 + x_23);
-  return ("(typeof " + x_24);
-}), run_clo((x_25) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "ADT")), run_clo((x_26) => {
-  const x_27 = run_loop($j_desc_args$(book_0, run_loop($ks$(ty_0)), fuel_0));
-  const x_28 = (x_27 + "]]");
-  const x_29 = run_loop($j_quote$(run_loop($nm$(ty_0))));
-  const x_30 = (",[" + x_28);
-  const x_31 = (x_29 + x_30);
-  return ("[\"Named\"," + x_31);
-}), run_clo((x_32) => {
-  return "null";
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-}
-
-function $f_import_alias$(ts_0, path_0, book_0, imports_0) {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($String$ends_with$(path_0, ".bend")), run_loop($f_alias_valid$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))))), run_clo((x_0) => {
-  return run_jump($f_tops$, [run_loop($f_tl$(run_loop($f_tl$(ts_0)))), book_0, {$: "Con", ["head"]: run_loop($kt$("Import", path_0, 0, 0, {$: "Con", ["head"]: run_loop($kt$("Alias", run_loop($f_tx$(run_loop($f_tl$(ts_0)))), 0, 0, {$: "Nil"})), ["tail"]: {$: "Nil"}})), ["tail"]: imports_0}, false]);
-}), run_clo((x_1) => {
-  return run_jump($f_result$, [book_0, "an import requires a .bend path and a valid alias", imports_0]);
-})]);
-}
-
-function $f_name_chars$(s_0) {
-  return run_jump($f_choose$, [run_loop($String$is_empty$(s_0)), run_clo((x_0) => {
-  return true;
-}), run_clo((x_1) => {
-  return run_jump($Bool$and$, [run_loop($f_ident$(run_loop($f_head$(s_0)))), run_loop($f_name_chars$(run_loop($f_tail$(s_0))))]);
-})]);
-}
-
-function $f_reserved$(s_0) {
-  const x_0 = run_loop($f_eq$(s_0, "def"));
-  const x_1 = run_loop($f_eq$(s_0, "type"));
-  const x_2 = (x_0 || x_1);
-  const x_3 = run_loop($f_eq$(s_0, "law"));
-  const x_4 = (x_2 || x_3);
-  const x_5 = run_loop($f_eq$(s_0, "match"));
-  const x_6 = (x_4 || x_5);
-  const x_7 = run_loop($f_eq$(s_0, "case"));
-  const x_8 = (x_6 || x_7);
-  const x_9 = run_loop($f_eq$(s_0, "do"));
-  const x_10 = (x_8 || x_9);
-  const x_11 = run_loop($f_eq$(s_0, "return"));
-  const x_12 = (x_10 || x_11);
-  const x_13 = run_loop($f_eq$(s_0, "for"));
-  const x_14 = (x_12 || x_13);
-  const x_15 = run_loop($f_eq$(s_0, "exs"));
-  const x_16 = (x_14 || x_15);
-  const x_17 = run_loop($f_eq$(s_0, "where"));
-  const x_18 = (x_16 || x_17);
-  const x_19 = run_loop($f_eq$(s_0, "is"));
-  const x_20 = (x_18 || x_19);
-  const x_21 = run_loop($f_eq$(s_0, "import"));
-  const x_22 = (x_20 || x_21);
-  const x_23 = run_loop($f_eq$(s_0, "Type"));
-  const x_24 = (x_22 || x_23);
-  const x_25 = run_loop($f_eq$(s_0, "Data"));
-  const x_26 = (x_24 || x_25);
-  const x_27 = run_loop($f_eq$(s_0, "Kind"));
-  const x_28 = (x_26 || x_27);
-  const x_29 = run_loop($f_eq$(s_0, "Quant"));
-  return (x_28 || x_29);
-}
-
-function $f_dn$(d_0) {
-  const name_0 = d_0["name"];
-  const kind_0 = d_0["kind"];
-  const arity_0 = d_0["arity"];
-  const templates_0 = d_0["templates"];
-  const typ_0 = d_0["typ"];
-  const value_0 = d_0["value"];
-  const ctors_0 = d_0["ctors"];
-  const native_0 = d_0["native"];
-  const unsafe_0 = d_0["unsafe"];
-  return name_0;
-}
-
-function $f_law_clause$(name_0, exi_0, ts_0, book_0, imports_0, clauses_0) {
-  return run_jump($f_law_type$, [name_0, run_loop($kt$(run_loop($f_choose$(exi_0, run_clo((x_0) => {
-  return "Exists";
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), run_clo((x_2) => {
-  return "Template";
-}), run_clo((x_3) => {
-  return "Bind";
-})]);
-}))), run_loop($f_tx$(run_loop($f_unmark$(ts_0)))), run_loop($f_atid$(ts_0)), run_loop($f_quant$(ts_0)), {$: "Nil"})), run_loop($f_expr$(run_loop($f_tl$(run_loop($f_tl$(run_loop($f_unmark$(ts_0)))))), 0)), book_0, imports_0, clauses_0]);
-}
-
-function $f_law_end$(name_0, p_0, book_0, imports_0, clauses_0) {
-  const ty_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(ty_0)), "Error")), run_clo((x_0) => {
-  return run_jump($f_result$, [book_0, run_loop($nm$(ty_0)), imports_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_tops$, [ts_0, {$: "Con", ["head"]: {$: "KDef", ["name"]: name_0, ["kind"]: "Def", ["arity"]: run_loop($f_law_arity$(clauses_0)), ["templates"]: run_loop($f_templates$(clauses_0)), ["typ"]: run_loop($f_law_bind$(clauses_0, ty_0)), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: false}, ["tail"]: book_0}, imports_0, false]);
-})]);
-}
-
-function $f_expr$(ts_0, min_0) {
-  return run_jump($f_grow$, [run_loop($f_atom$(run_loop($f_skip$(ts_0)))), min_0]);
-}
-
-function $f_def_base$(name_0, p_0, book_0, imports_0, unsafe_0) {
-  const pars_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(pars_0)), "Error")), run_clo((x_0) => {
-  return run_jump($f_result$, [book_0, run_loop($nm$(pars_0)), imports_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "->")), run_clo((x_2) => {
-  return run_jump($f_def_type$, [name_0, run_loop($ks$(pars_0)), run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), book_0, imports_0, unsafe_0]);
-}), run_clo((x_3) => {
-  return run_jump($f_def_type$, [name_0, run_loop($ks$(pars_0)), {$: "FParsed", ["term"]: run_loop($f_dt$(run_loop($f_find$(name_0, book_0)))), ["rest"]: ts_0}, book_0, imports_0, unsafe_0]);
-})]);
-})]);
-}
-
-function $f_bare_params$(params_0) {
-  if (params_0.$ === "Nil") {
-    return true;
-  } else {
-    const p_0 = params_0["head"];
-    const rest_0 = params_0["tail"];
-    return run_jump($Bool$and$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(run_loop($kid$(p_0, 0)))), "Qnt")), run_loop($Bool$not$(run_loop($f_eq$(run_loop($tg$(p_0)), "Template")))))), run_loop($f_bare_params$(rest_0))]);
-  }
-}
-
-function $f_len$(xs_0) {
-  if (xs_0.$ === "Nil") {
-    return 0;
-  } else {
-    const x_0 = xs_0["head"];
-    const xt_0 = xs_0["tail"];
-    const x_1 = run_loop($f_len$(xt_0));
-    return ((1 + x_1) >>> 0);
-  }
-}
-
-function $f_validate_param$(ts_0, end_0, acc_0) {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), run_loop($Bool$not$(run_loop($f_eq$(end_0, ")")))))), run_clo((x_0) => {
-  return run_jump($f_err$, [ts_0, "~ is only allowed on def or law template parameters"]);
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($Bool$not$(run_loop($f_valid_name$(run_loop($f_tx$(run_loop($f_unmark$(ts_0)))))))), run_clo((x_2) => {
-  return run_jump($f_err$, [ts_0, "reserved parameter name"]);
-}), run_clo((x_3) => {
-  const x_4 = run_loop($f_templates$(acc_0));
-  const x_5 = run_loop($f_len$(acc_0));
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), (x_4 < x_5))), run_clo((x_6) => {
-  return run_jump($f_err$, [ts_0, "only leading parameters may use ~"]);
-}), run_clo((x_7) => {
-  return run_jump($f_tele_binder$, [run_loop($f_tx$(run_loop($f_unmark$(ts_0)))), run_loop($f_atid$(ts_0)), run_loop($f_quant$(ts_0)), run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), run_loop($f_tl$(run_loop($f_unmark$(ts_0)))), end_0, acc_0]);
-})]);
-})]);
-})]);
-}
-
-function $f_type_params$(name_0, p_0, book_0, imports_0) {
-  const pars_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(pars_0)), "Error")), run_clo((x_0) => {
-  return run_jump($f_result$, [book_0, run_loop($nm$(pars_0)), imports_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_type_kind$, [name_0, run_loop($ks$(pars_0)), run_loop($f_expect$(run_loop($f_expr$(run_loop($f_pr$(run_loop($f_expect$({$: "FParsed", ["term"]: pars_0, ["rest"]: ts_0}, "is")))), 0)), ":")), book_0, imports_0]);
-})]);
-}
-
-function $f_type_base$(name_0, ts_0, book_0, imports_0) {
-  const x_0 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<"));
-  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<-"));
-  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return run_jump($f_type_params$, [name_0, run_loop($f_tele$(run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<-")), run_clo((x_3) => {
-  const x_4 = run_loop($f_col$(ts_0));
-  return {$: "Con", ["head"]: {$: "FToken", ["text"]: "-", ["f_line"]: run_loop($f_line$(ts_0)), ["f_col"]: ((x_4 + 1) >>> 0), ["f_kind"]: 0}, ["tail"]: run_loop($f_tl$(ts_0))};
-}), run_clo((x_5) => {
-  return run_jump($f_tl$, [ts_0]);
-}))), ">", {$: "Nil"})), book_0, imports_0]);
 }), run_clo((x_6) => {
-  return run_jump($f_type_params$, [name_0, {$: "FParsed", ["term"]: run_loop($kt$("Tele", "", 0, 0, {$: "Nil"})), ["rest"]: ts_0}, book_0, imports_0]);
+  return "";
 })]);
+}
+
+function $j_schema_params$(book_0, ty_0, left_0, index_0) {
+  return run_jump($kc$, [(left_0 === 0), run_clo((x_0) => {
+  const x_1 = run_loop($j_schema_fields$(book_0, ty_0));
+  const x_2 = (x_1 + "];");
+  return ("return [" + x_2);
+}), run_clo((x_3) => {
+  const x_4 = run_loop($j_schema_params$(book_0, run_loop($kid$(ty_0, 1)), ((left_0 - 1) >>> 0), ((index_0 + 1) >>> 0)));
+  const x_5 = run_loop($U32$show$(index_0));
+  const x_6 = ("];" + x_4);
+  const x_7 = (x_5 + x_6);
+  const x_8 = run_loop($j_local$(run_loop($ix$(ty_0))));
+  const x_9 = ("=p[" + x_7);
+  const x_10 = (x_8 + x_9);
+  return ("const " + x_10);
+})]);
+}
+
+function $j_foreign_def$(book_0, d_0) {
+  const x_4 = run_loop($j_descriptor$(book_0, run_loop($j_io_result$(book_0, run_loop($j_foreign_return$(book_0, run_loop($dt$(d_0)), run_loop($da$(d_0)))))), 64));
+  const x_5 = (x_4 + ")};});\n");
+  const x_6 = run_loop($j_foreign_args$(book_0, run_loop($dt$(d_0)), run_loop($da$(d_0))));
+  const x_7 = ("]," + x_5);
+  const x_8 = (x_6 + x_7);
+  const x_9 = run_loop($j_quote$(run_loop($dn$(d_0))));
+  const x_10 = (",a,[" + x_8);
+  const x_11 = (x_9 + x_10);
+  const x_12 = run_loop($j_quote$(run_loop($j_foreign_path$(run_loop($ks$(run_loop($dv$(d_0))))))));
+  const x_13 = ("," + x_11);
+  const x_14 = (x_12 + x_13);
+  const x_15 = run_loop($U32$show$(run_loop($da$(d_0))));
+  const x_16 = (",function(a){const v=scope(null);return {io:()=>foreignCall(" + x_14);
+  const x_17 = (x_15 + x_16);
+  const x_18 = run_loop($j_quote$(run_loop($dn$(d_0))));
+  const x_19 = ("]=fn(" + x_17);
+  const x_20 = (x_18 + x_19);
+  const x_21 = run_loop($kc$(run_loop($j_builtin_effect$(run_loop($dn$(d_0)))), run_clo((x_0) => {
+  const x_1 = run_loop($j_quote$(run_loop($dn$(d_0))));
+  const x_2 = (x_1 + "))");
+  return ("if(!Object.hasOwn(G," + x_2);
+}), run_clo((x_3) => {
+  return "";
+})));
+  const x_22 = ("G[" + x_20);
+  return (x_21 + x_22);
+}
+
+function $j_l_def$(book_0, d_0) {
+  return run_jump($kc$, [run_loop($j_l_deep$(run_loop($dv$(d_0)), 0)), run_clo((x_0) => {
+  return run_jump($j_l_definition$, [book_0, d_0, run_loop($j_l_mark$(run_loop($dv$(d_0)), "r", 0))]);
+}), run_clo((x_1) => {
+  return run_jump($j_l_global$, [book_0, d_0, run_loop($dv$(d_0))]);
+})]);
+}
+
+function $fpe_message$(source_0, error_0, observed_0) {
+  const x_0 = run_loop($fpe_snippet$(run_loop($String$lines$(source_0)), run_loop($ix$(error_0))));
+  const x_1 = ("\nLocation:" + x_0);
+  const x_2 = (observed_0 + x_1);
+  const x_3 = run_loop($nm$(run_loop($kid$(error_0, 0))));
+  const x_4 = ("\n- observed : " + x_2);
+  const x_5 = (x_3 + x_4);
+  return ("Error:\n- expected : " + x_5);
+}
+
+function $f_import$(ts_0, book_0, imports_0) {
+  return run_jump($f_import_path$, [ts_0, "", book_0, imports_0]);
+}
+
+function $f_valid_name$(s_0) {
+  const x_0 = run_loop($Char$is_alpha$(run_loop($f_head$(s_0))));
+  const x_1 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "_"));
+  return run_jump($Bool$and$, [run_loop($Bool$and$(run_loop($Bool$and$((x_0 || x_1), run_loop($f_name_chars$(s_0)))), run_loop($Bool$not$(run_loop($f_reserved$(s_0)))))), run_loop($Bool$not$(run_loop($String$ends_with$(s_0, "."))))]);
+}
+
+function $f_find$(name_0, book_0) {
+  if (book_0.$ === "Nil") {
+    return {$: "KDef", ["name"]: name_0, ["kind"]: "Missing", ["arity"]: 0, ["templates"]: 0, ["typ"]: run_loop($atom$("Absent")), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: false};
+  } else {
+    const d_0 = book_0["head"];
+    const ds_0 = book_0["tail"];
+    return run_jump($f_choose$, [run_loop($f_eq$(name_0, run_loop($f_dn$(d_0)))), run_clo((x_0) => {
+    return d_0;
+}), run_clo((x_1) => {
+    return run_jump($f_find$, [name_0, ds_0]);
+})]);
+  }
+}
+
+function $f_law_base$(name_0, ts_0, book_0, imports_0, clauses_0) {
+  const x_0 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "for"));
+  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "exs"));
+  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+  return run_jump($f_law_clause$, [name_0, run_loop($f_eq$(run_loop($f_tx$(ts_0)), "exs")), run_loop($f_tl$(ts_0)), book_0, imports_0, clauses_0]);
+}), run_clo((x_3) => {
+  return run_jump($f_law_end$, [name_0, run_loop($f_expr$(ts_0, 0)), book_0, imports_0, run_loop($List$reverse$(clauses_0))]);
+})]);
+}
+
+function $f_def_prior$(name_0, p_0, book_0, imports_0, unsafe_0, old_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($dk$(old_0)), "Missing")), run_clo((x_0) => {
+  return run_jump($f_def_base$, [name_0, p_0, book_0, imports_0, unsafe_0]);
+}), run_clo((x_1) => {
+  const x_2 = run_loop($f_len$(run_loop($ks$(run_loop($f_pn$(p_0))))));
+  const x_3 = run_loop($dx$(old_0));
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($f_eq$(run_loop($dk$(old_0)), "Def")), run_loop($f_eq$(run_loop($tg$(run_loop($dv$(old_0)))), "Absent")))), run_loop($f_bare_params$(run_loop($ks$(run_loop($f_pn$(p_0)))))))), (x_2 >= x_3))), run_clo((x_4) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(run_loop($f_pr$(p_0)))), ":")), run_clo((x_5) => {
+  return run_jump($f_def_base$, [name_0, p_0, book_0, imports_0, unsafe_0]);
+}), run_clo((x_6) => {
+  return run_jump($f_result$, [book_0, run_loop($f_pn$(run_loop($f_err$(run_loop($f_pr$(p_0)), "expected : (a definition filling a law has no return annotation)")))), imports_0]);
+})]);
+}), run_clo((x_7) => {
+  return run_jump($f_result$, [book_0, run_loop($kt$("Error", "a definition must uniquely fill its law with plain parameter names", 0, 0, {$: "Nil"})), imports_0]);
+})]);
+})]);
+}
+
+function $f_tele_at$(ts_0, end_0, acc_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), end_0)), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Tele", "", 0, 0, run_loop($List$reverse$(acc_0)))), ["rest"]: run_loop($f_tl$(ts_0))};
+}), run_clo((x_1) => {
+  return run_jump($f_validate_param$, [ts_0, end_0, acc_0]);
+})]);
+}
+
+function $f_type_named$(name_0, ts_0, book_0, imports_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<>")), run_clo((x_0) => {
+  return run_jump($f_type_params$, [name_0, {$: "FParsed", ["term"]: run_loop($kt$("Tele", "", 0, 0, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))}, book_0, imports_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_type_base$, [name_0, ts_0, book_0, imports_0]);
+})]);
+}
+
+function $fpe_legacy$(ts_0, legacy_0, expected_0) {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Error", legacy_0, run_loop($f_line$(ts_0)), run_loop($f_col$(ts_0)), {$: "Con", ["head"]: run_loop($kt$("ParseExpected", expected_0, 0, 0, {$: "Nil"})), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("ParseToken", run_loop($f_tx$(ts_0)), 0, 0, {$: "Nil"})), ["tail"]: {$: "Nil"}}})), ["rest"]: {$: "Nil"}};
 }
 
 function $ffd_walk$(book_0, next_0, built_0, stack_0) {
@@ -7322,6 +8280,20 @@ function $ka_lam$(e_0, ctx_0, t_0, ty_0) {
 }))), {$: "Con", ["head"]: run_loop($annotate$(e_0, run_loop($ctx_bind$(ctx_0, run_loop($ix$(t_0)), run_loop($qt$(ty_0)), run_loop($nm$(t_0)), run_loop($kid$(ty_0, 0)))), run_loop($kid$(t_0, 0)), run_loop($subst$(run_loop($kid$(ty_0, 1)), run_loop($ix$(ty_0)), run_loop($var$(run_loop($nm$(t_0)), run_loop($ix$(t_0)))))))), ["tail"]: {$: "Nil"}}]);
 }
 
+function $ka_spine_eligible$(t_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_0) => {
+  return run_jump($ka_spine_eligible$, [run_loop($kid$(t_0, 0))]);
+}), run_clo((x_1) => {
+  const x_2 = run_loop($String$eq$(run_loop($tg$(t_0)), "Ref"));
+  const x_3 = run_loop($String$eq$(run_loop($tg$(t_0)), "Var"));
+  return (x_2 || x_3);
+})]);
+}
+
+function $ka_app_spine$(e_0, ctx_0, t_0) {
+  return run_jump($ka_app_spine_finish$, [e_0, ctx_0, run_loop($kid$(t_0, 1)), run_loop($ka_spine$(e_0, ctx_0, run_loop($kid$(t_0, 0))))]);
+}
+
 function $ka_app$(e_0, ctx_0, t_0, fty_0) {
   return run_jump($app$, [run_loop($annotate$(e_0, ctx_0, run_loop($kid$(t_0, 0)), fty_0)), run_loop($annotate$(e_0, ctx_0, run_loop($kid$(t_0, 1)), run_loop($kid$(fty_0, 0))))]);
 }
@@ -7330,13 +8302,13 @@ function $ka_type$(e_0, ctx_0, t_0) {
   return run_jump($ka_type_node$, [e_0, ctx_0, run_loop($core_beta$(t_0))]);
 }
 
-function $ka_args$(e_0, ctx_0, tel_0, xs_0) {
+function $ka_args_cached$(e_0, ctx_0, tel_0, xs_0) {
   if (xs_0.$ === "Nil") {
     return {$: "Nil"};
   } else {
     const h_0 = xs_0["head"];
     const rest_0 = xs_0["tail"];
-    return run_jump($ka_args_head$, [e_0, ctx_0, run_loop($wnf$(run_loop($cb$(e_0)), tel_0)), h_0, rest_0]);
+    return run_jump($ka_args_cached_head$, [e_0, ctx_0, run_loop($wnf$(run_loop($cb$(e_0)), tel_0)), h_0, rest_0]);
   }
 }
 
@@ -7384,12 +8356,153 @@ function $Char$from_u32$(x_0) {
   return char_new(x_0);
 }
 
-function $Bool$to_u32$(b_0) {
-  if (!b_0) {
-    return 0;
+function $j_choice_definition$(book_0, d_0) {
+  const x_0 = run_loop($qt$(run_loop($dt$(d_0))));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($db$(run_loop($lookup$(book_0, "Bool")))), run_loop($db$(run_loop($lookup$(book_0, "Unit")))))), run_loop($String$eq$(run_loop($tg$(run_loop($dt$(d_0)))), "All")))), (x_0 === 0))), run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(run_loop($dv$(d_0)))))), "Lam")))), run_clo((x_1) => {
+  return run_jump($j_choice_match$, [run_loop($j_strip$(run_loop($kid$(run_loop($j_strip$(run_loop($dv$(d_0)))), 0))))]);
+}), run_clo((x_2) => {
+  return false;
+})]);
+}
+
+function $j_choice_after_type$(book_0, env_0, args_0, tail_0, ty_0) {
+  return run_jump($j_choice_after_bool$, [book_0, env_0, args_0, tail_0, run_loop($j_expr$(book_0, env_0, run_loop($terms_at$(args_0, 1)), run_loop($kid$(ty_0, 0)), false)), run_loop($wnf$(book_0, run_loop($j_app_type$(ty_0, run_loop($terms_at$(args_0, 1))))))]);
+}
+
+function $j_call_arity$(d_0) {
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($db$(d_0)), run_loop($j_intrinsic$(run_loop($dn$(d_0)))))), run_clo((x_0) => {
+  return run_jump($da$, [d_0]);
+}), run_clo((x_1) => {
+  return run_jump($j_lambda_count$, [run_loop($dv$(d_0))]);
+})]);
+}
+
+function $j_apply_args$(book_0, env_0, args_0, ty_0) {
+  return run_jump($j_apply_args_head$, [book_0, env_0, args_0, run_loop($wnf$(book_0, ty_0))]);
+}
+
+function $j_apply_one$(book_0, env_0, t_0, tail_0, fty_0) {
+  const x_2 = run_loop($qt$(fty_0));
+  const x_5 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(fty_0)), "All")), (x_2 === 0))), run_clo((x_3) => {
+  return "null";
+}), run_clo((x_4) => {
+  return run_jump($j_expr$, [book_0, env_0, run_loop($kid$(t_0, 1)), run_loop($kid$(fty_0, 0)), false]);
+})));
+  const x_6 = (x_5 + "])");
+  const x_7 = run_loop($j_expr$(book_0, env_0, run_loop($kid$(t_0, 0)), fty_0, false));
+  const x_8 = (",[" + x_6);
+  const x_9 = run_loop($kc$(tail_0, run_clo((x_0) => {
+  return "jump(";
+}), run_clo((x_1) => {
+  return "call(";
+})));
+  const x_10 = (x_7 + x_8);
+  return (x_9 + x_10);
+}
+
+function $j_literal_node$(t_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_0) => {
+  return run_jump($j_literal_ctor$, [t_0]);
+}), run_clo((x_1) => {
+  return "";
+})]);
+}
+
+function $j_ctor_args$(book_0, env_0, args_0, tel_0) {
+  if (args_0.$ === "Nil") {
+    return "";
   } else {
-    return 1;
+    const h_0 = args_0["head"];
+    const rest_0 = args_0["tail"];
+    const x_0 = run_loop($qt$(tel_0));
+    const x_3 = run_loop($j_ctor_args$(book_0, env_0, rest_0, run_loop($j_app_type$(tel_0, h_0))));
+    const x_4 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), (x_0 === 0))), run_clo((x_1) => {
+    return "null";
+}), run_clo((x_2) => {
+    return run_jump($j_expr$, [book_0, env_0, h_0, run_loop($kid$(tel_0, 0)), false]);
+})));
+    const x_5 = ("," + x_3);
+    return (x_4 + x_5);
   }
+}
+
+function $all$(q_0, name_0, id_0, a_0, b_0) {
+  return run_jump($kt$, ["All", name_0, id_0, q_0, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}]);
+}
+
+function $U32$show$fin$(g_0, acc_0, n_0, z_0) {
+  if (z_0) {
+    return acc_0;
+  } else {
+    const x_0 = (10 === 0 ? n_0 : n_0 % 10);
+    return run_jump($U32$show$go$, [g_0, (10 === 0 ? 0 : (n_0 / 10) >>> 0), (char_new(((48 + x_0) >>> 0)) + acc_0)]);
+  }
+}
+
+function $app$(f_0, x_0) {
+  return run_jump($kt$, ["App", "", 0, 0, {$: "Con", ["head"]: f_0, ["tail"]: {$: "Con", ["head"]: x_0, ["tail"]: {$: "Nil"}}}]);
+}
+
+function $norm_let_tail$(h_0, rest_0) {
+  if (rest_0.$ === "Nil") {
+    return h_0;
+  } else {
+    const x_0 = rest_0["head"];
+    const xs_0 = rest_0["tail"];
+    return run_jump($subst$, [run_loop($norm_let$({$: "Con", ["head"]: x_0, ["tail"]: xs_0})), run_loop($ix$(h_0)), run_loop($kid$(h_0, 0))]);
+  }
+}
+
+function $norm_min_left$(book_0, a_0, b_0) {
+  const x_0 = run_loop($qt$(a_0));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(a_0)), "Qua")), (x_0 === 2))), run_clo((x_1) => {
+  return run_jump($wnf$, [book_0, b_0]);
+}), run_clo((x_2) => {
+  const x_3 = run_loop($qt$(a_0));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(a_0)), "Qua")), (x_3 === 0))), run_clo((x_4) => {
+  return a_0;
+}), run_clo((x_5) => {
+  return run_jump($norm_min_right$, [a_0, run_loop($wnf$(book_0, b_0))]);
+})]);
+})]);
+}
+
+function $norm_dec$(n_0) {
+  return run_jump($kc$, [(n_0 === 0), run_clo((x_0) => {
+  return 0;
+}), run_clo((x_1) => {
+  return ((n_0 - 1) >>> 0);
+})]);
+}
+
+function $norm_match$(book_0, arm_0, original_0, raw_0, x_0, args_0, left_0, fallback_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(x_0)), "Ctr")), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(arm_0)), "Ann")), run_clo((x_2) => {
+  return run_jump($norm_match$, [book_0, run_loop($kid$(arm_0, 0)), original_0, raw_0, x_0, args_0, left_0, fallback_0]);
+}), run_clo((x_3) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(arm_0)), "Mat")), run_clo((x_4) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(arm_0)), run_loop($nm$(x_0)))), run_clo((x_5) => {
+  return run_jump($kc$, [(left_0 === 0), run_clo((x_6) => {
+  return run_jump($norm_eval$, [book_0, run_loop($kid$(arm_0, 0)), run_loop($norm_join$(run_loop($ks$(x_0)), args_0)), 0, fallback_0]);
+}), run_clo((x_7) => {
+  const x_8 = run_loop($norm_dec$(left_0));
+  const x_9 = run_loop($terms_len$(run_loop($ks$(x_0))));
+  return run_jump($norm_eval$, [book_0, run_loop($kid$(arm_0, 0)), run_loop($norm_join$(run_loop($ks$(x_0)), args_0)), ((x_8 + x_9) >>> 0), fallback_0]);
+})]);
+}), run_clo((x_10) => {
+  return run_jump($norm_match$, [book_0, run_loop($kid$(arm_0, 1)), original_0, raw_0, x_0, args_0, left_0, fallback_0]);
+})]);
+}), run_clo((x_11) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(arm_0)), "Efq")), run_clo((x_12) => {
+  return run_jump($norm_stuck$, [original_0, raw_0, args_0, left_0, fallback_0]);
+}), run_clo((x_13) => {
+  return run_jump($norm_eval$, [book_0, arm_0, {$: "Con", ["head"]: x_0, ["tail"]: args_0}, left_0, fallback_0]);
+})]);
+})]);
+})]);
+}), run_clo((x_14) => {
+  return run_jump($norm_stuck$, [original_0, raw_0, args_0, left_0, fallback_0]);
+})]);
 }
 
 function $index_child_list$(ds_0, right_0) {
@@ -7406,71 +8519,21 @@ function $index_child_list$(ds_0, right_0) {
   }
 }
 
-function $norm_apply$(t_0, args_0) {
-  if (args_0.$ === "Nil") {
-    return t_0;
+function $Bool$to_u32$(b_0) {
+  if (!b_0) {
+    return 0;
   } else {
-    const h_0 = args_0["head"];
-    const rest_0 = args_0["tail"];
-    return run_jump($norm_apply$, [run_loop($app$(t_0, h_0)), rest_0]);
+    return 1;
   }
 }
 
-function $norm_let$(ts_0) {
-  if (ts_0.$ === "Nil") {
-    return run_jump($atom$, ["Absent"]);
-  } else {
-    const h_0 = ts_0["head"];
-    const rest_0 = ts_0["tail"];
-    return run_jump($norm_let_tail$, [h_0, rest_0]);
-  }
+function $Char$is_upper$(c_0) {
+  const x_0 = c_0.codePointAt(0);
+  return run_jump($Bool$and$, [(x_0 >= 65), (x_0 <= 90)]);
 }
 
-function $norm_ref$(book_0, t_0, args_0, d_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(d_0)), "ADT")), run_clo((x_0) => {
-  const x_1 = run_loop($da$(d_0));
-  return run_jump($kc$, [(x_1 === 0), run_clo((x_2) => {
-  return run_jump($norm_apply$, [run_loop($kt$("ADT", run_loop($nm$(t_0)), 0, 0, {$: "Nil"})), args_0]);
-}), run_clo((x_3) => {
-  return run_jump($norm_apply$, [t_0, args_0]);
-})]);
-}), run_clo((x_4) => {
-  const x_5 = run_loop($String$eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Absent"));
-  const x_6 = run_loop($String$eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Foreign"));
-  const x_7 = run_loop($da$(d_0));
-  const x_8 = run_loop($terms_len$(args_0));
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$not$((x_5 || x_6))), (x_7 <= x_8))), run_clo((x_9) => {
-  return run_jump($norm_eval$, [book_0, run_loop($dv$(d_0)), args_0, run_loop($da$(d_0)), run_loop($norm_apply$(t_0, args_0))]);
-}), run_clo((x_10) => {
-  return run_jump($norm_apply$, [t_0, args_0]);
-})]);
-})]);
-}
-
-function $norm_min$(book_0, a_0, b_0) {
-  return run_jump($norm_min_left$, [book_0, run_loop($wnf$(book_0, a_0)), b_0]);
-}
-
-function $norm_args$(book_0, t_0, args_0, left_0, fallback_0) {
-  if (args_0.$ === "Nil") {
-    return t_0;
-  } else {
-    const x_0 = args_0["head"];
-    const rest_0 = args_0["tail"];
-    return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Lam")), run_clo((x_1) => {
-    return run_jump($norm_eval$, [book_0, run_loop($subst$(run_loop($kid$(t_0, 0)), run_loop($ix$(t_0)), x_0)), rest_0, run_loop($norm_dec$(left_0)), fallback_0]);
-}), run_clo((x_2) => {
-    return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Mat")), run_clo((x_3) => {
-    return run_jump($norm_match$, [book_0, t_0, t_0, x_0, run_loop($wnf$(book_0, x_0)), rest_0, left_0, fallback_0]);
-}), run_clo((x_4) => {
-    return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Efq")), run_loop($Bool$not$((left_0 === 0))))), run_clo((x_5) => {
-    return fallback_0;
-}), run_clo((x_6) => {
-    return run_jump($norm_apply$, [t_0, {$: "Con", ["head"]: x_0, ["tail"]: rest_0}]);
-})]);
-})]);
-})]);
-  }
+function $book_final_seen$(seen_0, name_0, hash_0) {
+  return run_jump($String$eq$, [run_loop($dk$(run_loop($index_find$(seen_0, name_0, hash_0, 32)))), "$final.seen"]);
 }
 
 function $kp_is$(t_0, tag_0, name_0) {
@@ -8551,11 +9614,12 @@ function $nc_erase_args$(book_0, tel_0, xs_0) {
   } else {
     const h_0 = xs_0["head"];
     const rest_0 = xs_0["tail"];
-    const x_0 = run_loop($qt$(run_loop($wnf$(book_0, tel_0))));
+    const head_0 = run_loop($wnf$(book_0, tel_0));
+    const x_0 = run_loop($qt$(head_0));
     return run_jump($nt_choose$, [(x_0 === 0), run_clo((x_1) => {
-    return run_jump($nc_erase_args$, [book_0, run_loop($subst$(run_loop($kid$(run_loop($wnf$(book_0, tel_0)), 1)), run_loop($ix$(run_loop($wnf$(book_0, tel_0)))), h_0)), rest_0]);
+    return run_jump($nc_erase_args$, [book_0, run_loop($subst$(run_loop($kid$(head_0, 1)), run_loop($ix$(head_0)), h_0)), rest_0]);
 }), run_clo((x_2) => {
-    return {$: "Con", ["head"]: run_loop($nc_erase$(book_0, h_0)), ["tail"]: run_loop($nc_erase_args$(book_0, run_loop($subst$(run_loop($kid$(run_loop($wnf$(book_0, tel_0)), 1)), run_loop($ix$(run_loop($wnf$(book_0, tel_0)))), h_0)), rest_0))};
+    return {$: "Con", ["head"]: run_loop($nc_erase$(book_0, h_0)), ["tail"]: run_loop($nc_erase_args$(book_0, run_loop($subst$(run_loop($kid$(head_0, 1)), run_loop($ix$(head_0)), h_0)), rest_0))};
 })]);
   }
 }
@@ -8566,7 +9630,8 @@ function $nc_tele_fill$(book_0, tel_0, args_0) {
   } else {
     const h_0 = args_0["head"];
     const rest_0 = args_0["tail"];
-    return run_jump($nc_tele_fill$, [book_0, run_loop($subst$(run_loop($kid$(run_loop($wnf$(book_0, tel_0)), 1)), run_loop($ix$(run_loop($wnf$(book_0, tel_0)))), h_0)), rest_0]);
+    const head_0 = run_loop($wnf$(book_0, tel_0));
+    return run_jump($nc_tele_fill$, [book_0, run_loop($subst$(run_loop($kid$(head_0, 1)), run_loop($ix$(head_0)), h_0)), rest_0]);
   }
 }
 
@@ -8578,6 +9643,11 @@ function $nc_erase_mat$(book_0, t_0, adt_0) {
 }), run_clo((x_1) => {
   return run_jump($nc_ctor_identity$, [book_0, run_loop($nm$(t_0))]);
 }))), ((count_0 + 1) >>> 0), run_loop($qt$(t_0)), run_loop($nc_erase_list$(book_0, run_loop($ks$(t_0))))]);
+}
+
+function $Char$is_lower$(c_0) {
+  const x_0 = c_0.codePointAt(0);
+  return run_jump($Bool$and$, [(x_0 >= 97), (x_0 <= 122)]);
 }
 
 function $nc_ctor_decode_step$(h_0, rest_0, acc_0, digits_0, out_0, original_0) {
@@ -8652,28 +9722,80 @@ function $exact_names_head$(h_0, rest_0, b_0) {
   }
 }
 
-function $f_error_defs_more$(err_0, rest_0) {
+function $fpe_source_render$(legacy_0, error_0, source_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(source_0)), "ParseSource")), run_clo((x_0) => {
+  return run_jump($fpe_render$, [run_loop($nm$(source_0)), error_0]);
+}), run_clo((x_1) => {
+  return legacy_0;
+})]);
+}
+
+function $fpe_unique_source$(path_0, sources_0, found_0) {
+  if (sources_0.$ === "Nil") {
+    return found_0;
+  } else {
+    const head_0 = sources_0["head"];
+    const tail_0 = sources_0["tail"];
+    return run_jump($f_choose$, [run_loop($String$eq$(path_0, run_loop($f_source_path$(head_0)))), run_clo((x_0) => {
+    return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(found_0)), "Absent")), run_clo((x_1) => {
+    return run_jump($fpe_unique_source$, [path_0, tail_0, run_loop($kt$("ParseSource", run_loop($f_source_text$(head_0)), 0, 0, {$: "Nil"}))]);
+}), run_clo((x_2) => {
+    return run_jump($atom$, ["Ambiguous"]);
+})]);
+}), run_clo((x_3) => {
+    return run_jump($fpe_unique_source$, [path_0, tail_0, found_0]);
+})]);
+  }
+}
+
+function $fpe_owner_path$(done_0, index_0) {
+  if (done_0.$ === "Nil") {
+    return "";
+  } else {
+    const head_0 = done_0["head"];
+    const tail_0 = done_0["tail"];
+    const x_0 = run_loop($ix$(head_0));
+    return run_jump($f_choose$, [(index_0 < x_0), run_clo((x_1) => {
+    return run_jump($nm$, [head_0]);
+}), run_clo((x_2) => {
+    const x_3 = run_loop($ix$(head_0));
+    return run_jump($fpe_owner_path$, [tail_0, ((index_0 - x_3) >>> 0)]);
+})]);
+  }
+}
+
+function $fpe_find_next$(error_0, rest_0, index_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(error_0)), "Absent")), run_clo((x_0) => {
+  return run_jump($fpe_find$, [rest_0, ((index_0 + 1) >>> 0)]);
+}), run_clo((x_1) => {
+  return run_jump($kt$, ["ParseOwner", "", index_0, 0, {$: "Con", ["head"]: error_0, ["tail"]: {$: "Nil"}}]);
+})]);
+}
+
+function $fpe_def$(d_0) {
+  return run_jump($fpe_defs_next$, [run_loop($fpe_terms$({$: "Con", ["head"]: run_loop($dt$(d_0)), ["tail"]: {$: "Con", ["head"]: run_loop($dv$(d_0)), ["tail"]: {$: "Nil"}}})), run_loop($dc$(d_0))]);
+}
+
+function $f_graph_fresh_hashed$(rest_0, done_0, d_0, hash_0) {
+  return run_jump($f_graph_fresh_name$, [rest_0, done_0, d_0, hash_0, run_loop($index_find$(done_0, run_loop($dn$(d_0)), hash_0, 32))]);
+}
+
+function $f_error_def_next$(err_0, ctors_0, rest_0) {
   return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
-  return run_jump($f_error_defs$, [rest_0]);
+  return run_jump($f_error_defs_more$, [run_loop($f_error_defs$(ctors_0)), rest_0]);
 }), run_clo((x_1) => {
   return err_0;
 })]);
 }
 
-function $f_error_more$(err_0, rest_0) {
-  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
-  return run_jump($f_error_terms$, [rest_0]);
-}), run_clo((x_1) => {
-  return err_0;
-})]);
-}
-
-function $f_error_term$(t_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Error")), run_clo((x_0) => {
-  return run_jump($nm$, [t_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_error_terms$, [run_loop($ks$(t_0))]);
-})]);
+function $f_error_terms$(ts_0) {
+  if (ts_0.$ === "Nil") {
+    return "";
+  } else {
+    const t_0 = ts_0["head"];
+    const rest_0 = ts_0["tail"];
+    return run_jump($f_error_more$, [run_loop($f_error_term$(t_0)), rest_0]);
+  }
 }
 
 function $f_graph_imports$(s_0, ns_0, book_0, allimports_0, imports_0, sources_0, g_0, stack_0) {
@@ -8702,6 +9824,16 @@ function $fs_book$(seed_0) {
   return book_0;
 }
 
+function $f_graph_count_defs$(book_0, count_0) {
+  if (book_0.$ === "Nil") {
+    return count_0;
+  } else {
+    const head_0 = book_0["head"];
+    const tail_0 = book_0["tail"];
+    return run_jump($f_graph_count_defs$, [tail_0, ((count_0 + 1) >>> 0)]);
+  }
+}
+
 function $fs_imports$(s_0, ns_0, book_0, allimports_0, imports_0, sources_0, g_0, stack_0, seed_0) {
   if (imports_0.$ === "Nil") {
     return run_jump($f_graph_finish$, [s_0, ns_0, book_0, run_loop($f_graph_aliases$(allimports_0, ns_0)), g_0]);
@@ -8709,15 +9841,6 @@ function $fs_imports$(s_0, ns_0, book_0, allimports_0, imports_0, sources_0, g_0
     const im_0 = imports_0["head"];
     const rest_0 = imports_0["tail"];
     return run_jump($fs_imports$, [s_0, ns_0, book_0, allimports_0, rest_0, sources_0, run_loop($fs_load$(run_loop($f_import_pathname$(im_0, s_0, sources_0)), run_loop($f_import_namespace$(im_0, ns_0)), sources_0, g_0, stack_0, seed_0)), stack_0, seed_0]);
-  }
-}
-
-function $U32$show$fin$(g_0, acc_0, n_0, z_0) {
-  if (z_0) {
-    return acc_0;
-  } else {
-    const x_0 = (10 === 0 ? n_0 : n_0 % 10);
-    return run_jump($U32$show$go$, [g_0, (10 === 0 ? 0 : (n_0 / 10) >>> 0), (char_new(((48 + x_0) >>> 0)) + acc_0)]);
   }
 }
 
@@ -8861,10 +9984,6 @@ function $j_layout_app$(book_0, env_0, t_0, fty_0, todo_0) {
 })))))]);
 }
 
-function $j_type$(book_0, env_0, t_0) {
-  return run_jump($j_type_on$, [book_0, env_0, t_0, run_loop($tg$(t_0))]);
-}
-
 function $j_layout_lam$(book_0, env_0, t_0, ty_0, todo_0) {
   return run_jump($j_layout_term$, [book_0, {$: "Con", ["head"]: run_loop($kt$("Env", "", run_loop($ix$(t_0)), 0, {$: "Con", ["head"]: run_loop($kid$(ty_0, 0)), ["tail"]: {$: "Nil"}})), ["tail"]: env_0}, run_loop($kid$(t_0, 0)), run_loop($subst$(run_loop($kid$(ty_0, 1)), run_loop($ix$(ty_0)), run_loop($var$(run_loop($nm$(t_0)), run_loop($ix$(t_0)))))), todo_0]);
 }
@@ -8876,15 +9995,6 @@ function $j_layout_match$(book_0, env_0, t_0, ty_0, todo_0) {
 }), run_clo((x_2) => {
   return run_jump($j_layout_term$, [book_0, env_0, run_loop($kid$(t_0, 1)), ty_0, todo_0]);
 })))))]);
-}
-
-function $j_literal_typed$(book_0, t_0, ty_0) {
-  const literal_0 = run_loop($j_literal$(t_0));
-  return run_jump($kc$, [run_loop($String$eq$(literal_0, "")), run_clo((x_0) => {
-  return "";
-}), run_clo((x_1) => {
-  return run_jump($j_literal_provenance$, [book_0, run_loop($wnf$(book_0, ty_0)), literal_0]);
-})]);
 }
 
 function $j_layout_open$(book_0, ty_0) {
@@ -8903,26 +10013,6 @@ function $j_layout_fields$(book_0, env_0, args_0, tel_0, todo_0) {
 }), run_clo((x_2) => {
     return run_jump($j_layout_term$, [book_0, env_0, h_0, run_loop($kid$(tel_0, 0)), todo_0]);
 })))]);
-  }
-}
-
-function $j_specialize$(book_0, tel_0, args_0) {
-  if (args_0.$ === "Nil") {
-    return tel_0;
-  } else {
-    const h_0 = args_0["head"];
-    const rest_0 = args_0["tail"];
-    return run_jump($j_specialize$, [book_0, run_loop($j_app_type$(run_loop($wnf$(book_0, tel_0)), h_0)), rest_0]);
-  }
-}
-
-function $j_find_ctor$(book_0, name_0) {
-  if (book_0.$ === "Nil") {
-    return run_jump($missing$, []);
-  } else {
-    const d_0 = book_0["head"];
-    const rest_0 = book_0["tail"];
-    return run_jump($j_found_ctor$, [run_loop($lookup$(run_loop($dc$(d_0)), name_0)), rest_0, name_0]);
   }
 }
 
@@ -8948,234 +10038,185 @@ function $kr_push$(name_0, names_0) {
 })]);
 }
 
-function $j_l_deeps$(ts_0, depth_0) {
-  if (ts_0.$ === "Nil") {
-    return false;
-  } else {
-    const h_0 = ts_0["head"];
-    const rest_0 = ts_0["tail"];
-    return run_jump($kc$, [run_loop($j_l_deep$(h_0, depth_0)), run_clo((x_0) => {
-    return true;
-}), run_clo((x_1) => {
-    return run_jump($j_l_deeps$, [rest_0, depth_0]);
-})]);
-  }
-}
-
-function $j_l_walk$(book_0, env_0, t_0, ty_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
-  return run_jump($j_l_walk$, [book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($kid$(t_0, 1))]);
-}), run_clo((x_1) => {
-  const x_12 = run_loop($kc$(run_loop($String$eq$(run_loop($j_l_name$(t_0)), "")), run_clo((x_2) => {
+function $j_schema_fields$(book_0, ty_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), run_clo((x_0) => {
+  const x_1 = run_loop($qt$(ty_0));
+  const x_4 = run_loop($j_schema_fields$(book_0, run_loop($kid$(ty_0, 1))));
+  const x_5 = run_loop($kc$((x_1 === 0), run_clo((x_2) => {
+  return "[\"Erased\"]";
+}), run_clo((x_3) => {
+  return run_jump($j_descriptor$, [book_0, run_loop($kid$(ty_0, 0)), 64]);
+})));
+  const x_6 = ("," + x_4);
+  return (x_5 + x_6);
+}), run_clo((x_7) => {
   return "";
-}), run_clo((x_3) => {
-  const x_4 = run_loop($j_expr_on$(book_0, env_0, t_0, ty_0, false, run_loop($tg$(t_0))));
-  const x_5 = (x_4 + ";};\n");
-  const x_6 = run_loop($j_l_capture$(env_0, {$: "Nil"}));
-  const x_7 = ("){return " + x_5);
+})]);
+}
+
+function $j_foreign_args$(book_0, ty_0, n_0) {
+  return run_jump($kc$, [(n_0 === 0), run_clo((x_0) => {
+  return "";
+}), run_clo((x_1) => {
+  const x_2 = run_loop($j_foreign_args$(book_0, run_loop($kid$(ty_0, 1)), ((n_0 - 1) >>> 0)));
+  const x_3 = run_loop($j_descriptor$(book_0, run_loop($kid$(ty_0, 0)), 64));
+  const x_4 = ("]," + x_2);
+  const x_5 = (x_3 + x_4);
+  const x_6 = run_loop($U32$show$(run_loop($qt$(ty_0))));
+  const x_7 = ("," + x_5);
   const x_8 = (x_6 + x_7);
-  const x_9 = run_loop($j_quote$(run_loop($j_l_name$(t_0))));
-  const x_10 = ("]=function(" + x_8);
-  const x_11 = (x_9 + x_10);
-  return ("F[" + x_11);
-})));
-  const x_13 = run_loop($j_l_children$(book_0, env_0, t_0, ty_0));
-  return (x_12 + x_13);
+  return ("[" + x_8);
 })]);
 }
 
-function $j_l_marks$(ts_0, path_0, depth_0, at_0) {
-  if (ts_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const h_0 = ts_0["head"];
-    const rest_0 = ts_0["tail"];
-    const x_0 = run_loop($U32$show$(at_0));
-    const x_1 = ("_" + x_0);
-    return {$: "Con", ["head"]: run_loop($j_l_mark$(h_0, (path_0 + x_1), depth_0)), ["tail"]: run_loop($j_l_marks$(rest_0, path_0, depth_0, ((at_0 + 1) >>> 0)))};
-  }
+function $j_io_result$(book_0, ty_0) {
+  return run_jump($kid$, [run_loop($wnf$(book_0, run_loop($kid$(run_loop($wnf$(book_0, run_loop($kid$(ty_0, 1)))), 0)))), 0]);
 }
 
-function $j_expr$(book_0, env_0, t_0, ty_0, tail_0) {
-  const x_0 = run_loop($String$eq$(run_loop($tg$(t_0)), "Lam"));
-  const x_1 = run_loop($String$eq$(run_loop($tg$(t_0)), "Mat"));
-  return run_jump($kc$, [run_loop($Bool$and$((x_0 || x_1), run_loop($Bool$not$(run_loop($String$eq$(run_loop($j_l_name$(t_0)), "")))))), run_clo((x_2) => {
-  const x_3 = run_loop($j_l_capture$(env_0, {$: "Nil"}));
-  const x_4 = (x_3 + ")");
-  const x_5 = run_loop($j_quote$(run_loop($j_l_name$(t_0))));
-  const x_6 = ("](" + x_4);
-  const x_7 = (x_5 + x_6);
-  return ("F[" + x_7);
-}), run_clo((x_8) => {
-  return run_jump($j_expr_on$, [book_0, env_0, t_0, ty_0, tail_0, run_loop($tg$(t_0))]);
-})]);
-}
-
-function $j_desc_args$(book_0, args_0, fuel_0) {
-  if (args_0.$ === "Nil") {
-    return "";
-  } else {
-    const h_0 = args_0["head"];
-    const rest_0 = args_0["tail"];
-    const x_0 = run_loop($j_desc_args$(book_0, rest_0, fuel_0));
-    const x_1 = run_loop($j_descriptor$(book_0, h_0, fuel_0));
-    const x_2 = ("," + x_0);
-    return (x_1 + x_2);
-  }
-}
-
-function $f_alias_valid$(s_0) {
-  const x_0 = run_loop($Char$is_alpha$(run_loop($f_head$(s_0))));
-  const x_1 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "_"));
-  return run_jump($Bool$and$, [run_loop($Bool$and$((x_0 || x_1), run_loop($f_alias_chars$(s_0)))), run_loop($Bool$not$(run_loop($f_reserved$(s_0))))]);
-}
-
-function $f_law_type$(name_0, binder_0, p_0, book_0, imports_0, clauses_0) {
-  const ty_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(ty_0)), "Error")), run_clo((x_0) => {
-  return run_jump($f_result$, [book_0, run_loop($nm$(ty_0)), imports_0]);
+function $j_foreign_return$(book_0, ty_0, n_0) {
+  return run_jump($kc$, [(n_0 === 0), run_clo((x_0) => {
+  return run_jump($wnf$, [book_0, ty_0]);
 }), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), "where")), run_clo((x_2) => {
-  return run_jump($f_law_where$, [name_0, binder_0, ty_0, run_loop($f_expr$(run_loop($f_tl$(run_loop($f_skip$(ts_0)))), 0)), book_0, imports_0, clauses_0]);
-}), run_clo((x_3) => {
-  return run_jump($f_law$, [name_0, run_loop($f_skip$(ts_0)), book_0, imports_0, {$: "Con", ["head"]: run_loop($kt$(run_loop($tg$(binder_0)), run_loop($nm$(binder_0)), run_loop($ix$(binder_0)), run_loop($qt$(binder_0)), {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}})), ["tail"]: clauses_0}]);
-})]);
+  return run_jump($j_foreign_return$, [book_0, run_loop($kid$(ty_0, 1)), ((n_0 - 1) >>> 0)]);
 })]);
 }
 
-function $f_unmark$(ts_0) {
-  const x_0 = run_loop($f_quant$(ts_0));
-  return run_jump($f_choose$, [(x_0 === 1), run_clo((x_1) => {
-  return ts_0;
-}), run_clo((x_2) => {
-  return run_jump($f_tl$, [ts_0]);
-})]);
-}
-
-function $f_atid$(ts_0) {
-  const x_0 = run_loop($f_line$(ts_0));
-  const x_1 = (Math.imul(x_0, 65536) >>> 0);
-  const x_2 = run_loop($f_col$(ts_0));
-  return ((x_1 + x_2) >>> 0);
-}
-
-function $f_quant$(ts_0) {
-  const x_0 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "-"));
-  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~"));
-  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return 0;
-}), run_clo((x_3) => {
-  const x_4 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "+"));
-  const x_5 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "+bind"));
-  return run_jump($f_choose$, [(x_4 || x_5), run_clo((x_6) => {
-  return 2;
-}), run_clo((x_7) => {
-  return 1;
-})]);
-})]);
-}
-
-function $f_law_arity$(clauses_0) {
-  if (clauses_0.$ === "Nil") {
-    return 0;
-  } else {
-    const c_0 = clauses_0["head"];
-    const rest_0 = clauses_0["tail"];
-    return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(c_0)), "Exists")), run_clo((x_0) => {
-    return 0;
+function $j_l_deep$(t_0, depth_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
+  return run_jump($j_l_deep$, [run_loop($kid$(t_0, 0)), depth_0]);
 }), run_clo((x_1) => {
-    const x_2 = run_loop($f_law_arity$(rest_0));
-    return ((1 + x_2) >>> 0);
-})]);
-  }
-}
-
-function $f_templates$(pars_0) {
-  if (pars_0.$ === "Nil") {
-    return 0;
-  } else {
-    const p_0 = pars_0["head"];
-    const ps_0 = pars_0["tail"];
-    const x_2 = run_loop($f_choose$(run_loop($f_eq$(run_loop($tg$(p_0)), "Template")), run_clo((x_0) => {
-    return 1;
-}), run_clo((x_1) => {
-    return 0;
-})));
-    const x_3 = run_loop($f_templates$(ps_0));
-    return ((x_2 + x_3) >>> 0);
-  }
-}
-
-function $f_law_bind$(clauses_0, ty_0) {
-  if (clauses_0.$ === "Nil") {
-    return ty_0;
-  } else {
-    const c_0 = clauses_0["head"];
-    const cs_0 = clauses_0["tail"];
-    return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(c_0)), "Exists")), run_clo((x_0) => {
-    return run_jump($f_app$, [run_loop($kt$("Ref", "Exists", 0, 1, {$: "Nil"})), {$: "Con", ["head"]: run_loop($kid$(c_0, 0)), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Lam", run_loop($nm$(c_0)), run_loop($ix$(c_0)), 1, {$: "Con", ["head"]: run_loop($f_law_bind$(cs_0, ty_0)), ["tail"]: {$: "Nil"}})), ["tail"]: {$: "Nil"}}}]);
-}), run_clo((x_1) => {
-    return run_jump($kt$, ["All", run_loop($nm$(c_0)), run_loop($ix$(c_0)), run_loop($qt$(c_0)), {$: "Con", ["head"]: run_loop($kid$(c_0, 0)), ["tail"]: {$: "Con", ["head"]: run_loop($f_law_bind$(cs_0, ty_0)), ["tail"]: {$: "Nil"}}}]);
-})]);
-  }
-}
-
-function $f_grow$(p_0, min_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  const x_0 = run_loop($f_prec$(run_loop($f_tx$(run_loop($f_skip$(ts_0))))));
-  const x_1 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), "%"));
-  const x_2 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), "-"));
-  const x_3 = run_loop($f_col$(run_loop($f_skip$(ts_0))));
-  const x_4 = run_loop($f_col$(run_loop($f_tl$(run_loop($f_skip$(ts_0))))));
-  const x_5 = ((x_3 + 1) >>> 0);
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "\n")), (x_0 > 0))), run_loop($Bool$not$(run_loop($Bool$and$((x_1 || x_2), (x_4 === x_5))))))), run_clo((x_6) => {
-  return run_jump($f_grow_base$, [{$: "FParsed", ["term"]: n_0, ["rest"]: run_loop($f_skip$(ts_0))}, min_0]);
-}), run_clo((x_7) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "!")), run_clo((x_8) => {
-  return run_jump($f_bang$, [n_0, ts_0, min_0]);
-}), run_clo((x_9) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "[")), run_clo((x_10) => {
-  return run_jump($f_index$, [n_0, run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), "]")), min_0]);
-}), run_clo((x_11) => {
-  return run_jump($f_grow_base$, [{$: "FParsed", ["term"]: n_0, ["rest"]: ts_0}, min_0]);
-})]);
-})]);
-})]);
-}
-
-function $f_atom$(ts_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), run_clo((x_0) => {
-  return run_jump($f_template_expr$, [run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))]);
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "do")), run_clo((x_2) => {
-  return run_jump($f_do_start$, [run_loop($f_tl$(ts_0))]);
-}), run_clo((x_3) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "%")), run_clo((x_4) => {
-  return run_jump($f_rewrite$, [run_loop($f_tl$(ts_0))]);
+  const x_2 = run_loop($String$eq$(run_loop($tg$(t_0)), "Var"));
+  const x_3 = run_loop($String$eq$(run_loop($tg$(t_0)), "Ref"));
+  return run_jump($kc$, [(x_2 || x_3), run_clo((x_4) => {
+  return false;
 }), run_clo((x_5) => {
-  return run_jump($f_atom_base$, [ts_0]);
+  const x_6 = run_loop($String$eq$(run_loop($tg$(t_0)), "Lam"));
+  const x_7 = run_loop($String$eq$(run_loop($tg$(t_0)), "Mat"));
+  return run_jump($kc$, [(x_6 || x_7), run_clo((x_8) => {
+  return run_jump($kc$, [(depth_0 >= 32), run_clo((x_9) => {
+  return true;
+}), run_clo((x_10) => {
+  return run_jump($j_l_deeps$, [run_loop($ks$(t_0)), ((depth_0 + 1) >>> 0)]);
+})]);
+}), run_clo((x_11) => {
+  return run_jump($j_l_deeps$, [run_loop($ks$(t_0)), depth_0]);
 })]);
 })]);
 })]);
 }
 
-function $f_def_type$(name_0, pars_0, p_0, book_0, imports_0, unsafe_0) {
-  const ty_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(ty_0)), "Absent")), run_clo((x_0) => {
-  return run_jump($f_result$, [book_0, ("definition without return type needs a law: " + name_0), imports_0]);
+function $j_l_definition$(book_0, d_0, t_0) {
+  const x_0 = run_loop($j_l_global$(book_0, d_0, t_0));
+  const x_1 = run_loop($j_l_walk$(book_0, {$: "Nil"}, t_0, run_loop($dt$(d_0))));
+  const x_2 = (x_0 + "}\n");
+  const x_3 = (x_1 + x_2);
+  return ("{const F=Object.create(null);\n" + x_3);
+}
+
+function $j_l_mark$(t_0, path_0, depth_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
+  return {$: "KTerm", ["tag"]: run_loop($tg$(t_0)), ["name"]: run_loop($nm$(t_0)), ["id"]: run_loop($ix$(t_0)), ["quant"]: run_loop($qt$(t_0)), ["kids"]: {$: "Con", ["head"]: run_loop($j_l_mark$(run_loop($kid$(t_0, 0)), path_0, depth_0)), ["tail"]: {$: "Con", ["head"]: run_loop($kid$(t_0, 1)), ["tail"]: {$: "Nil"}}}, ["removed"]: run_loop($rm$(t_0))};
 }), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(run_loop($f_tl$(ts_0)))))), "import")), run_clo((x_2) => {
-  return run_jump($f_foreign$, [name_0, pars_0, run_loop($f_def_signature$(name_0, pars_0, ty_0, book_0)), run_loop($f_skip$(run_loop($f_tl$(ts_0)))), book_0, imports_0, unsafe_0, {$: "Nil"}]);
-}), run_clo((x_3) => {
-  return run_jump($f_def_body$, [name_0, pars_0, run_loop($f_def_signature$(name_0, pars_0, ty_0, book_0)), run_loop($f_body$(run_loop($f_pr$(run_loop($f_expect$({$: "FParsed", ["term"]: ty_0, ["rest"]: ts_0}, ":")))))), book_0, imports_0, unsafe_0]);
+  const x_2 = run_loop($String$eq$(run_loop($tg$(t_0)), "Var"));
+  const x_3 = run_loop($String$eq$(run_loop($tg$(t_0)), "Ref"));
+  return run_jump($kc$, [(x_2 || x_3), run_clo((x_4) => {
+  return t_0;
+}), run_clo((x_5) => {
+  const x_6 = run_loop($String$eq$(run_loop($tg$(t_0)), "Lam"));
+  const x_7 = run_loop($String$eq$(run_loop($tg$(t_0)), "Mat"));
+  return run_jump($kc$, [(x_6 || x_7), run_clo((x_8) => {
+  return run_jump($kc$, [(depth_0 >= 32), run_clo((x_9) => {
+  return {$: "KTerm", ["tag"]: run_loop($tg$(t_0)), ["name"]: run_loop($nm$(t_0)), ["id"]: run_loop($ix$(t_0)), ["quant"]: run_loop($qt$(t_0)), ["kids"]: run_loop($j_l_marks$(run_loop($ks$(t_0)), path_0, 0, 0)), ["removed"]: {$: "Con", ["head"]: ("$js." + path_0), ["tail"]: {$: "Nil"}}};
+}), run_clo((x_10) => {
+  return {$: "KTerm", ["tag"]: run_loop($tg$(t_0)), ["name"]: run_loop($nm$(t_0)), ["id"]: run_loop($ix$(t_0)), ["quant"]: run_loop($qt$(t_0)), ["kids"]: run_loop($j_l_marks$(run_loop($ks$(t_0)), path_0, ((depth_0 + 1) >>> 0), 0)), ["removed"]: run_loop($rm$(t_0))};
+})]);
+}), run_clo((x_11) => {
+  return {$: "KTerm", ["tag"]: run_loop($tg$(t_0)), ["name"]: run_loop($nm$(t_0)), ["id"]: run_loop($ix$(t_0)), ["quant"]: run_loop($qt$(t_0)), ["kids"]: run_loop($j_l_marks$(run_loop($ks$(t_0)), path_0, depth_0, 0)), ["removed"]: run_loop($rm$(t_0))};
+})]);
 })]);
 })]);
 }
 
-function $f_dt$(d_0) {
+function $j_l_global$(book_0, d_0, t_0) {
+  return run_jump($j_l_global_worker$, [book_0, d_0, t_0, run_loop($j_projection_worker$(book_0, t_0, run_loop($dt$(d_0))))]);
+}
+
+function $fpe_snippet$(lines_0, at_0) {
+  const x_0 = run_loop($fpe_lines_count$(lines_0));
+  const x_1 = ((at_0 + 1) >>> 0);
+  return run_jump($fpe_snippet_lines$, [lines_0, at_0, run_loop($f_choose$((x_0 < x_1), run_clo((x_2) => {
+  return run_jump($fpe_lines_count$, [lines_0]);
+}), run_clo((x_3) => {
+  return ((at_0 + 1) >>> 0);
+}))), 1]);
+}
+
+function $String$lines$(s_0) {
+  return run_jump($String$split$, [s_0, "\n"]);
+}
+
+function $f_import_path$(ts_0, path_0, book_0, imports_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "as")), run_clo((x_0) => {
+  return run_jump($f_import_alias$, [ts_0, path_0, book_0, imports_0]);
+}), run_clo((x_1) => {
+  const x_2 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "\n"));
+  const x_3 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<eof>"));
+  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(path_0, "Base")), run_clo((x_5) => {
+  return run_jump($f_tops$, [ts_0, book_0, {$: "Con", ["head"]: run_loop($kt$("Import", path_0, 0, 0, {$: "Nil"})), ["tail"]: imports_0}, false]);
+}), run_clo((x_6) => {
+  return run_jump($f_result$, [book_0, run_loop($kt$("Error", "a module import requires as followed by an alias", 0, 0, {$: "Nil"})), imports_0]);
+})]);
+}), run_clo((x_7) => {
+  const x_8 = run_loop($f_tx$(ts_0));
+  return run_jump($f_import_path$, [run_loop($f_tl$(ts_0)), (path_0 + x_8), book_0, imports_0]);
+})]);
+})]);
+}
+
+function $f_name_chars$(s_0) {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(s_0)), run_clo((x_0) => {
+  return true;
+}), run_clo((x_1) => {
+  return run_jump($Bool$and$, [run_loop($f_ident$(run_loop($f_head$(s_0)))), run_loop($f_name_chars$(run_loop($f_tail$(s_0))))]);
+})]);
+}
+
+function $f_reserved$(s_0) {
+  const x_0 = run_loop($f_eq$(s_0, "def"));
+  const x_1 = run_loop($f_eq$(s_0, "type"));
+  const x_2 = (x_0 || x_1);
+  const x_3 = run_loop($f_eq$(s_0, "law"));
+  const x_4 = (x_2 || x_3);
+  const x_5 = run_loop($f_eq$(s_0, "match"));
+  const x_6 = (x_4 || x_5);
+  const x_7 = run_loop($f_eq$(s_0, "case"));
+  const x_8 = (x_6 || x_7);
+  const x_9 = run_loop($f_eq$(s_0, "do"));
+  const x_10 = (x_8 || x_9);
+  const x_11 = run_loop($f_eq$(s_0, "return"));
+  const x_12 = (x_10 || x_11);
+  const x_13 = run_loop($f_eq$(s_0, "for"));
+  const x_14 = (x_12 || x_13);
+  const x_15 = run_loop($f_eq$(s_0, "exs"));
+  const x_16 = (x_14 || x_15);
+  const x_17 = run_loop($f_eq$(s_0, "where"));
+  const x_18 = (x_16 || x_17);
+  const x_19 = run_loop($f_eq$(s_0, "is"));
+  const x_20 = (x_18 || x_19);
+  const x_21 = run_loop($f_eq$(s_0, "import"));
+  const x_22 = (x_20 || x_21);
+  const x_23 = run_loop($f_eq$(s_0, "Type"));
+  const x_24 = (x_22 || x_23);
+  const x_25 = run_loop($f_eq$(s_0, "Data"));
+  const x_26 = (x_24 || x_25);
+  const x_27 = run_loop($f_eq$(s_0, "Kind"));
+  const x_28 = (x_26 || x_27);
+  const x_29 = run_loop($f_eq$(s_0, "Quant"));
+  return (x_28 || x_29);
+}
+
+function $f_dn$(d_0) {
   const name_0 = d_0["name"];
   const kind_0 = d_0["kind"];
   const arity_0 = d_0["arity"];
@@ -9185,43 +10226,123 @@ function $f_dt$(d_0) {
   const ctors_0 = d_0["ctors"];
   const native_0 = d_0["native"];
   const unsafe_0 = d_0["unsafe"];
-  return typ_0;
+  return name_0;
 }
 
-function $f_tele_binder$(name_0, id_0, q_0, temp_0, ts_0, end_0, acc_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_0) => {
-  return run_jump($f_tele_type$, [name_0, id_0, q_0, temp_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), end_0, acc_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_tele_type$, [name_0, id_0, 0, temp_0, {$: "FParsed", ["term"]: run_loop($atom$("Qnt")), ["rest"]: ts_0}, end_0, acc_0]);
+function $f_law_clause$(name_0, exi_0, ts_0, book_0, imports_0, clauses_0) {
+  const x_0 = run_loop($f_templates$(clauses_0));
+  const x_1 = run_loop($f_len$(clauses_0));
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$not$(exi_0)), run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")))), (x_0 < x_1))), run_clo((x_2) => {
+  return run_jump($f_result$, [book_0, run_loop($f_pn$(run_loop($fpe_error$(ts_0, "expected a plain clause (only leading clauses take ~)", "a plain clause (only leading clauses take ~)")))), imports_0]);
+}), run_clo((x_3) => {
+  return run_jump($f_law_type$, [name_0, run_loop($kt$(run_loop($f_choose$(exi_0, run_clo((x_4) => {
+  return "Exists";
+}), run_clo((x_5) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), run_clo((x_6) => {
+  return "Template";
+}), run_clo((x_7) => {
+  return "Bind";
+})]);
+}))), run_loop($f_tx$(run_loop($f_unmark$(ts_0)))), run_loop($f_atid$(ts_0)), run_loop($f_quant$(ts_0)), {$: "Nil"})), run_loop($f_expr$(run_loop($f_tl$(run_loop($f_tl$(run_loop($f_unmark$(ts_0)))))), 0)), book_0, imports_0, clauses_0]);
 })]);
 }
 
-function $f_type_kind$(name_0, pars_0, p_0, book_0, imports_0) {
+function $f_law_end$(name_0, p_0, book_0, imports_0, clauses_0) {
   const ty_0 = p_0["term"];
   const ts_0 = p_0["rest"];
   return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(ty_0)), "Error")), run_clo((x_0) => {
-  return run_jump($f_result$, [book_0, run_loop($nm$(ty_0)), imports_0]);
+  return run_jump($f_result$, [book_0, ty_0, imports_0]);
 }), run_clo((x_1) => {
-  return run_jump($f_type_ctors$, [name_0, pars_0, ty_0, run_loop($f_skip$(ts_0)), book_0, imports_0, {$: "Nil"}]);
+  return run_jump($f_tops$, [ts_0, {$: "Con", ["head"]: {$: "KDef", ["name"]: name_0, ["kind"]: "Def", ["arity"]: run_loop($f_law_arity$(clauses_0)), ["templates"]: run_loop($f_templates$(clauses_0)), ["typ"]: run_loop($f_law_bind$(clauses_0, ty_0)), ["value"]: run_loop($atom$("Absent")), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: false}, ["tail"]: book_0}, imports_0, false]);
 })]);
 }
 
-function $f_expect$(p_0, s_0) {
-  const n_0 = p_0["term"];
+function $f_expr$(ts_0, min_0) {
+  return run_jump($f_grow$, [run_loop($f_atom$(run_loop($f_skip$(ts_0)))), min_0]);
+}
+
+function $f_def_base$(name_0, p_0, book_0, imports_0, unsafe_0) {
+  const pars_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  const x_0 = run_loop($f_eq$(run_loop($tg$(n_0)), "Error"));
-  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), s_0));
-  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return {$: "FParsed", ["term"]: n_0, ["rest"]: run_loop($f_tl$(ts_0))};
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(pars_0)), "Error")), run_clo((x_0) => {
+  return run_jump($f_result$, [book_0, pars_0, imports_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "->")), run_clo((x_2) => {
+  return run_jump($f_def_type$, [name_0, run_loop($ks$(pars_0)), run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), book_0, imports_0, unsafe_0]);
 }), run_clo((x_3) => {
-  return run_jump($f_err$, [ts_0, ("expected " + s_0)]);
+  return run_jump($f_def_type$, [name_0, run_loop($ks$(pars_0)), {$: "FParsed", ["term"]: run_loop($f_dt$(run_loop($f_find$(name_0, book_0)))), ["rest"]: ts_0}, book_0, imports_0, unsafe_0]);
 })]);
+})]);
+}
+
+function $f_bare_params$(params_0) {
+  if (params_0.$ === "Nil") {
+    return true;
+  } else {
+    const p_0 = params_0["head"];
+    const rest_0 = params_0["tail"];
+    return run_jump($Bool$and$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(run_loop($kid$(p_0, 0)))), "Qnt")), run_loop($Bool$not$(run_loop($f_eq$(run_loop($tg$(p_0)), "Template")))))), run_loop($f_bare_params$(rest_0))]);
+  }
+}
+
+function $f_len$(xs_0) {
+  if (xs_0.$ === "Nil") {
+    return 0;
+  } else {
+    const x_0 = xs_0["head"];
+    const xt_0 = xs_0["tail"];
+    const x_1 = run_loop($f_len$(xt_0));
+    return ((1 + x_1) >>> 0);
+  }
 }
 
 function $f_pr$(p_0) {
   const n_0 = p_0["term"];
   const ts_0 = p_0["rest"];
   return ts_0;
+}
+
+function $f_validate_param$(ts_0, end_0, acc_0) {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), run_loop($Bool$not$(run_loop($f_eq$(end_0, ")")))))), run_clo((x_0) => {
+  return run_jump($f_err$, [ts_0, "~ is only allowed on def or law template parameters"]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($Bool$not$(run_loop($f_valid_name$(run_loop($f_tx$(run_loop($f_unmark$(ts_0)))))))), run_clo((x_2) => {
+  return run_jump($f_err$, [ts_0, "reserved parameter name"]);
+}), run_clo((x_3) => {
+  const x_4 = run_loop($f_templates$(acc_0));
+  const x_5 = run_loop($f_len$(acc_0));
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), (x_4 < x_5))), run_clo((x_6) => {
+  return run_jump($f_err$, [ts_0, "only leading parameters may use ~"]);
+}), run_clo((x_7) => {
+  return run_jump($f_tele_binder$, [run_loop($f_tx$(run_loop($f_unmark$(ts_0)))), run_loop($f_atid$(ts_0)), run_loop($f_quant$(ts_0)), run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), run_loop($f_tl$(run_loop($f_unmark$(ts_0)))), end_0, acc_0]);
+})]);
+})]);
+})]);
+}
+
+function $f_type_params$(name_0, p_0, book_0, imports_0) {
+  const pars_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(pars_0)), "Error")), run_clo((x_0) => {
+  return run_jump($f_result$, [book_0, pars_0, imports_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_type_kind$, [name_0, run_loop($ks$(pars_0)), run_loop($f_expect$(run_loop($f_expr$(run_loop($f_pr$(run_loop($f_expect$({$: "FParsed", ["term"]: pars_0, ["rest"]: ts_0}, "is")))), 0)), ":")), book_0, imports_0]);
+})]);
+}
+
+function $f_type_base$(name_0, ts_0, book_0, imports_0) {
+  const x_0 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<"));
+  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<-"));
+  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+  return run_jump($f_type_params$, [name_0, run_loop($f_tele$(run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<-")), run_clo((x_3) => {
+  const x_4 = run_loop($f_col$(ts_0));
+  return {$: "Con", ["head"]: {$: "FToken", ["text"]: "-", ["f_line"]: run_loop($f_line$(ts_0)), ["f_col"]: ((x_4 + 1) >>> 0), ["f_kind"]: 0}, ["tail"]: run_loop($f_tl$(ts_0))};
+}), run_clo((x_5) => {
+  return run_jump($f_tl$, [ts_0]);
+}))), ">", {$: "Nil"})), book_0, imports_0]);
+}), run_clo((x_6) => {
+  return run_jump($f_type_params$, [name_0, {$: "FParsed", ["term"]: run_loop($kt$("Tele", "", 0, 0, {$: "Nil"})), ["rest"]: ts_0}, book_0, imports_0]);
+})]);
 }
 
 function $ffd_done$(book_0, next_0, stack_0) {
@@ -9388,22 +10509,26 @@ function $dg_reason$(e_0, ctx_0, t_0, ty_0, code_0) {
   return run_jump($dg_pair$, [ty_0, t_0]);
 }), run_clo((x_13) => {
   return run_jump($kc$, [run_loop($String$eq$(code_0, "cannot infer: annotation required")), run_clo((x_14) => {
-  return run_jump($dg_pair$, [run_loop($dg_text$("an annotated term (cannot infer)")), t_0]);
-}), run_clo((x_15) => {
-  const x_16 = run_loop($String$eq$(code_0, "lambda requires a function type"));
-  const x_17 = run_loop($String$eq$(code_0, "matcher requires a function type"));
-  const x_18 = (x_16 || x_17);
-  const x_19 = run_loop($String$eq$(code_0, "reflexivity requires equality goal"));
-  return run_jump($kc$, [(x_18 || x_19), run_clo((x_20) => {
+  return run_jump($dg_pair$, [run_loop($dg_text$(run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_loop($String$eq$(run_loop($dg_family$(run_loop($cb$(e_0)), run_loop($nm$(t_0)))), "")))), run_clo((x_15) => {
+  return "a declared constructor";
+}), run_clo((x_16) => {
+  return "an annotated term (cannot infer)";
+}))))), t_0]);
+}), run_clo((x_17) => {
+  const x_18 = run_loop($String$eq$(code_0, "lambda requires a function type"));
+  const x_19 = run_loop($String$eq$(code_0, "matcher requires a function type"));
+  const x_20 = (x_18 || x_19);
+  const x_21 = run_loop($String$eq$(code_0, "reflexivity requires equality goal"));
+  return run_jump($kc$, [(x_20 || x_21), run_clo((x_22) => {
   return run_jump($dg_pair$, [ty_0, run_loop($dg_typeless$(run_loop($cb$(e_0)), ctx_0, t_0))]);
-}), run_clo((x_21) => {
-  return run_jump($kc$, [run_loop($String$eq$(code_0, "constructor requires a datatype goal")), run_clo((x_22) => {
-  return run_jump($dg_pair$, [ty_0, run_loop($kc$(run_loop($String$eq$(run_loop($dg_family$(run_loop($cb$(e_0)), run_loop($nm$(t_0)))), "")), run_clo((x_23) => {
+}), run_clo((x_23) => {
+  return run_jump($kc$, [run_loop($String$eq$(code_0, "constructor requires a datatype goal")), run_clo((x_24) => {
+  return run_jump($dg_pair$, [ty_0, run_loop($kc$(run_loop($String$eq$(run_loop($dg_family$(run_loop($cb$(e_0)), run_loop($nm$(t_0)))), "")), run_clo((x_25) => {
   return run_jump($dg_typeless$, [run_loop($cb$(e_0)), ctx_0, t_0]);
-}), run_clo((x_24) => {
+}), run_clo((x_26) => {
   return run_jump($ref$, [run_loop($dg_family$(run_loop($cb$(e_0)), run_loop($nm$(t_0))))]);
 })))]);
-}), run_clo((x_25) => {
+}), run_clo((x_27) => {
   return run_jump($kt$, ["DDetail", "", 0, 0, {$: "Con", ["head"]: run_loop($dg_text$(code_0)), ["tail"]: {$: "Con", ["head"]: run_loop($atom$("Absent")), ["tail"]: {$: "Nil"}}}]);
 })]);
 })]);
@@ -9531,8 +10656,18 @@ function $norm_cmp_heads$(book_0, a_0, b_0, le_0, fresh_0, rest_0, alts_0) {
 })]);
 }
 
-function $app$(f_0, x_0) {
-  return run_jump($kt$, ["App", "", 0, 0, {$: "Con", ["head"]: f_0, ["tail"]: {$: "Con", ["head"]: x_0, ["tail"]: {$: "Nil"}}}]);
+function $ka_app_spine_finish$(e_0, ctx_0, arg_0, r_0) {
+  const node_0 = r_0["node"];
+  const ty_0 = r_0["typ"];
+  return run_jump($ka_app_spine_root$, [e_0, ctx_0, arg_0, node_0, run_loop($wnf$(run_loop($cb$(e_0)), ty_0))]);
+}
+
+function $ka_spine$(e_0, ctx_0, t_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_0) => {
+  return run_jump($ka_spine_finish$, [e_0, ctx_0, run_loop($kid$(t_0, 1)), run_loop($ka_spine$(e_0, ctx_0, run_loop($kid$(t_0, 0))))]);
+}), run_clo((x_1) => {
+  return {$: "KAnnotatedSpine", ["node"]: t_0, ["typ"]: run_loop($ka_type$(e_0, ctx_0, t_0))};
+})]);
 }
 
 function $ka_type_node$(e_0, ctx_0, t_0) {
@@ -9577,8 +10712,12 @@ function $ka_type_node$(e_0, ctx_0, t_0) {
 })]);
 }
 
-function $ka_args_head$(e_0, ctx_0, tel_0, h_0, rest_0) {
-  return {$: "Con", ["head"]: run_loop($annotate$(e_0, ctx_0, h_0, run_loop($kid$(tel_0, 0)))), ["tail"]: run_loop($ka_args$(e_0, ctx_0, run_loop($subst$(run_loop($kid$(tel_0, 1)), run_loop($ix$(tel_0)), h_0)), rest_0))};
+function $ka_args_cached_head$(e_0, ctx_0, tel_0, h_0, rest_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), run_clo((x_0) => {
+  return run_jump($ka_args_after_head$, [e_0, ctx_0, tel_0, h_0, rest_0, run_loop($annotate$(e_0, ctx_0, h_0, run_loop($kid$(tel_0, 0))))]);
+}), run_clo((x_1) => {
+  return run_jump($ka_args_head$, [e_0, ctx_0, tel_0, h_0, rest_0]);
+})]);
 }
 
 function $tele_fill_head$(book_0, tel_0, h_0, rest_0) {
@@ -9605,65 +10744,90 @@ function $kapply$(fn_0, x_0) {
 })]);
 }
 
-function $norm_let_tail$(h_0, rest_0) {
-  if (rest_0.$ === "Nil") {
-    return h_0;
+function $j_choice_match$(t_0) {
+  return run_jump($Bool$and$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Mat")), run_loop($String$eq$(run_loop($nm$(t_0)), "True")))), run_loop($j_choice_arm$(run_loop($j_strip$(run_loop($kid$(t_0, 0)))), true)))), run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(run_loop($kid$(t_0, 1)))))), "Mat")))), run_loop($String$eq$(run_loop($nm$(run_loop($j_strip$(run_loop($kid$(t_0, 1)))))), "False")))), run_loop($j_choice_arm$(run_loop($j_strip$(run_loop($kid$(run_loop($j_strip$(run_loop($kid$(t_0, 1)))), 0)))), false)))), run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(run_loop($kid$(run_loop($j_strip$(run_loop($kid$(t_0, 1)))), 1)))))), "Efq"))]);
+}
+
+function $j_choice_after_bool$(book_0, env_0, args_0, tail_0, condition_0, ty_0) {
+  const x_0 = run_loop($j_choice_branch$(book_0, env_0, run_loop($j_strip$(run_loop($terms_at$(args_0, 3)))), run_loop($wnf$(book_0, run_loop($kid$(run_loop($wnf$(book_0, run_loop($j_app_type$(ty_0, run_loop($terms_at$(args_0, 2)))))), 0)))), tail_0));
+  const x_1 = (x_0 + ")");
+  const x_2 = run_loop($j_choice_branch$(book_0, env_0, run_loop($j_strip$(run_loop($terms_at$(args_0, 2)))), run_loop($wnf$(book_0, run_loop($kid$(ty_0, 0)))), tail_0));
+  const x_3 = (":" + x_1);
+  const x_4 = (x_2 + x_3);
+  const x_5 = ("?" + x_4);
+  const x_6 = (condition_0 + x_5);
+  return ("(/* choice */" + x_6);
+}
+
+function $j_apply_args_head$(book_0, env_0, args_0, ty_0) {
+  if (args_0.$ === "Nil") {
+    return "";
   } else {
-    const x_0 = rest_0["head"];
-    const xs_0 = rest_0["tail"];
-    return run_jump($subst$, [run_loop($norm_let$({$: "Con", ["head"]: x_0, ["tail"]: xs_0})), run_loop($ix$(h_0)), run_loop($kid$(h_0, 0))]);
+    const h_0 = args_0["head"];
+    const rest_0 = args_0["tail"];
+    const x_0 = run_loop($qt$(ty_0));
+    const x_3 = run_loop($j_apply_args$(book_0, env_0, rest_0, run_loop($j_app_type$(ty_0, h_0))));
+    const x_4 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), (x_0 === 0))), run_clo((x_1) => {
+    return "null";
+}), run_clo((x_2) => {
+    return run_jump($j_expr$, [book_0, env_0, h_0, run_loop($kid$(ty_0, 0)), false]);
+})));
+    const x_5 = ("," + x_3);
+    return (x_4 + x_5);
   }
 }
 
-function $norm_min_left$(book_0, a_0, b_0) {
-  const x_0 = run_loop($qt$(a_0));
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(a_0)), "Qua")), (x_0 === 2))), run_clo((x_1) => {
-  return run_jump($wnf$, [book_0, b_0]);
-}), run_clo((x_2) => {
-  const x_3 = run_loop($qt$(a_0));
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(a_0)), "Qua")), (x_3 === 0))), run_clo((x_4) => {
-  return a_0;
-}), run_clo((x_5) => {
-  return run_jump($norm_min_right$, [a_0, run_loop($wnf$(book_0, b_0))]);
-})]);
-})]);
-}
-
-function $norm_dec$(n_0) {
-  return run_jump($kc$, [(n_0 === 0), run_clo((x_0) => {
-  return 0;
+function $j_literal_ctor$(t_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "U32")), run_clo((x_0) => {
+  return run_jump($j_word_text$, [run_loop($j_word$(run_loop($j_strip$(run_loop($kid$(t_0, 0)))), 0, 0)), false]);
 }), run_clo((x_1) => {
-  return ((n_0 - 1) >>> 0);
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "F32")), run_clo((x_2) => {
+  return run_jump($j_word_text$, [run_loop($j_word$(run_loop($j_strip$(run_loop($kid$(t_0, 0)))), 0, 0)), true]);
+}), run_clo((x_3) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "Chr")), run_clo((x_4) => {
+  return run_jump($j_char_text$, [run_loop($j_u32$(run_loop($kid$(t_0, 0))))]);
+}), run_clo((x_5) => {
+  const x_6 = run_loop($String$eq$(run_loop($nm$(t_0)), "Zero"));
+  const x_7 = run_loop($String$eq$(run_loop($nm$(t_0)), "Succ"));
+  return run_jump($kc$, [(x_6 || x_7), run_clo((x_8) => {
+  return run_jump($j_nat_text$, [run_loop($j_nat$(t_0, 0n))]);
+}), run_clo((x_9) => {
+  const x_10 = run_loop($String$eq$(run_loop($nm$(t_0)), "SNil"));
+  const x_11 = run_loop($String$eq$(run_loop($nm$(t_0)), "SCon"));
+  return run_jump($kc$, [(x_10 || x_11), run_clo((x_12) => {
+  return run_jump($j_string_text$, [run_loop($j_string$(t_0, ""))]);
+}), run_clo((x_13) => {
+  return "";
+})]);
+})]);
+})]);
+})]);
 })]);
 }
 
-function $norm_match$(book_0, arm_0, original_0, raw_0, x_0, args_0, left_0, fallback_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(x_0)), "Ctr")), run_clo((x_1) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(arm_0)), "Ann")), run_clo((x_2) => {
-  return run_jump($norm_match$, [book_0, run_loop($kid$(arm_0, 0)), original_0, raw_0, x_0, args_0, left_0, fallback_0]);
+function $norm_min_right$(a_0, b_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(b_0)), "Qua")), run_clo((x_0) => {
+  const x_1 = run_loop($qt$(b_0));
+  return run_jump($kc$, [(x_1 === 2), run_clo((x_2) => {
+  return a_0;
 }), run_clo((x_3) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(arm_0)), "Mat")), run_clo((x_4) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(arm_0)), run_loop($nm$(x_0)))), run_clo((x_5) => {
-  return run_jump($kc$, [(left_0 === 0), run_clo((x_6) => {
-  return run_jump($norm_eval$, [book_0, run_loop($kid$(arm_0, 0)), run_loop($norm_join$(run_loop($ks$(x_0)), args_0)), 0, fallback_0]);
+  const x_4 = run_loop($qt$(b_0));
+  return run_jump($kc$, [run_loop($Bool$and$((x_4 === 1), run_loop($Bool$not$(run_loop($String$eq$(run_loop($tg$(a_0)), "Qua")))))), run_clo((x_5) => {
+  return run_jump($kt$, ["Min", "", 0, 0, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}]);
+}), run_clo((x_6) => {
+  return b_0;
+})]);
+})]);
 }), run_clo((x_7) => {
-  const x_8 = run_loop($norm_dec$(left_0));
-  const x_9 = run_loop($terms_len$(run_loop($ks$(x_0))));
-  return run_jump($norm_eval$, [book_0, run_loop($kid$(arm_0, 0)), run_loop($norm_join$(run_loop($ks$(x_0)), args_0)), ((x_8 + x_9) >>> 0), fallback_0]);
+  return run_jump($kt$, ["Min", "", 0, 0, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}]);
 })]);
-}), run_clo((x_10) => {
-  return run_jump($norm_match$, [book_0, run_loop($kid$(arm_0, 1)), original_0, raw_0, x_0, args_0, left_0, fallback_0]);
-})]);
-}), run_clo((x_11) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(arm_0)), "Efq")), run_clo((x_12) => {
-  return run_jump($norm_stuck$, [original_0, raw_0, args_0, left_0, fallback_0]);
-}), run_clo((x_13) => {
-  return run_jump($norm_eval$, [book_0, arm_0, {$: "Con", ["head"]: x_0, ["tail"]: args_0}, left_0, fallback_0]);
-})]);
-})]);
-})]);
-}), run_clo((x_14) => {
-  return run_jump($norm_stuck$, [original_0, raw_0, args_0, left_0, fallback_0]);
+}
+
+function $norm_stuck$(t_0, x_0, args_0, left_0, fallback_0) {
+  return run_jump($kc$, [(left_0 === 0), run_clo((x_1) => {
+  return run_jump($norm_apply$, [run_loop($app$(t_0, x_0)), args_0]);
+}), run_clo((x_2) => {
+  return fallback_0;
 })]);
 }
 
@@ -10977,6 +12141,62 @@ function $subst_terms$(ts_0, id_0, v_0) {
   }
 }
 
+function $fpe_defs_next$(error_0, rest_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(error_0)), "Absent")), run_clo((x_0) => {
+  return run_jump($fpe_defs$, [rest_0]);
+}), run_clo((x_1) => {
+  return error_0;
+})]);
+}
+
+function $fpe_terms$(ts_0) {
+  if (ts_0.$ === "Nil") {
+    return run_jump($atom$, ["Absent"]);
+  } else {
+    const head_0 = ts_0["head"];
+    const tail_0 = ts_0["tail"];
+    return run_jump($fpe_terms_next$, [run_loop($fpe_term$(head_0)), tail_0]);
+  }
+}
+
+function $f_graph_fresh_name$(rest_0, done_0, d_0, hash_0, old_0) {
+  const x_0 = run_loop($Bool$not$(run_loop($db$(old_0))));
+  const x_1 = run_loop($db$(d_0));
+  const x_2 = run_loop($f_eq$(run_loop($dk$(old_0)), "Absent"));
+  const x_3 = run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($f_eq$(run_loop($dk$(old_0)), "Def")), run_loop($f_eq$(run_loop($dk$(d_0)), "Def")))), run_loop($f_eq$(run_loop($tg$(run_loop($dv$(old_0)))), "Absent")))), run_loop($Bool$not$(run_loop($f_eq$(run_loop($tg$(run_loop($dv$(d_0)))), "Absent")))))), (x_0 || x_1)));
+  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
+  return run_jump($f_graph_fresh_names$, [rest_0, run_loop($index_set$(done_0, d_0, hash_0, 32))]);
+}), run_clo((x_5) => {
+  const x_6 = run_loop($dn$(d_0));
+  const x_7 = (x_6 + ")");
+  return ("expected a fresh name (duplicate declaration: " + x_7);
+})]);
+}
+
+function $f_error_defs_more$(err_0, rest_0) {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
+  return run_jump($f_error_defs$, [rest_0]);
+}), run_clo((x_1) => {
+  return err_0;
+})]);
+}
+
+function $f_error_more$(err_0, rest_0) {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
+  return run_jump($f_error_terms$, [rest_0]);
+}), run_clo((x_1) => {
+  return err_0;
+})]);
+}
+
+function $f_error_term$(t_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Error")), run_clo((x_0) => {
+  return run_jump($nm$, [t_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_error_terms$, [run_loop($ks$(t_0))]);
+})]);
+}
+
 function $f_graph_finish$(s_0, ns_0, book_0, imports_0, g_0) {
   const prior_0 = g_0["book"];
   const err_0 = g_0["error"];
@@ -11062,10 +12282,6 @@ function $dg_snippet_at$(lines_0, at_0) {
 }))), 1]);
 }
 
-function $String$lines$(s_0) {
-  return run_jump($String$split$, [s_0, "\n"]);
-}
-
 function $dg_line_at$(s_0, offset_0, line_0) {
   if (s_0 === "") {
     return line_0;
@@ -11145,68 +12361,11 @@ function $j_layout_function$(book_0, env_0, t_0, ty_0, todo_0) {
 })]);
 }
 
-function $j_type_on$(book_0, env_0, t_0, key_0) {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Ann")), run_clo((x_0) => {
-  return run_jump($kid$, [t_0, 1]);
-}), run_clo((x_1) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Var")), run_clo((x_2) => {
-  return run_jump($j_env$, [env_0, run_loop($ix$(t_0))]);
-}), run_clo((x_3) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Ref")), run_clo((x_4) => {
-  return run_jump($dt$, [run_loop($lookup$(book_0, run_loop($nm$(t_0))))]);
-}), run_clo((x_5) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "App")), run_clo((x_6) => {
-  return run_jump($j_app_type$, [run_loop($wnf$(book_0, run_loop($j_type$(book_0, env_0, run_loop($kid$(t_0, 0)))))), run_loop($kid$(t_0, 1))]);
-}), run_clo((x_7) => {
-  return run_jump($atom$, ["Absent"]);
-})]);
-})]);
-})]);
-})]);
-}
-
-function $j_arm_type$(book_0, ty_0, name_0) {
-  return run_jump($j_arm_tel$, [book_0, run_loop($j_specialize$(book_0, run_loop($dt$(run_loop($j_find_ctor$(book_0, name_0)))), run_loop($ks$(run_loop($wnf$(book_0, run_loop($kid$(ty_0, 0)))))))), run_loop($kid$(ty_0, 1))]);
-}
-
-function $j_constructor_count$(book_0, ty_0) {
-  return run_jump($j_count_constructors$, [run_loop($dc$(run_loop($lookup$(book_0, run_loop($nm$(ty_0)))))), run_loop($rm$(ty_0))]);
-}
-
-function $j_literal$(t_0) {
-  return run_jump($j_literal_node$, [run_loop($j_strip$(t_0))]);
-}
-
-function $j_literal_provenance$(book_0, ty_0, literal_0) {
-  const d_0 = run_loop($lookup$(book_0, run_loop($nm$(ty_0))));
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(ty_0)), "ADT")), run_loop($String$eq$(run_loop($dk$(d_0)), "ADT")))), run_loop($Bool$not$(run_loop($db$(d_0)))))), run_clo((x_0) => {
-  return "";
-}), run_clo((x_1) => {
-  return literal_0;
-})]);
-}
-
 function $j_layout_open_head$(book_0, ty_0) {
   return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(ty_0)), "ADT")), run_loop($String$eq$(run_loop($nm$(ty_0)), "Array")))), run_clo((x_0) => {
   return run_jump($Bool$not$, [run_loop($String$eq$(run_loop($tg$(run_loop($wnf$(book_0, run_loop($kid$(ty_0, 0)))))), "ADT"))]);
 }), run_clo((x_1) => {
   return false;
-})]);
-}
-
-function $j_app_type$(ty_0, arg_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), run_clo((x_0) => {
-  return run_jump($subst$, [run_loop($kid$(ty_0, 1)), run_loop($ix$(ty_0)), arg_0]);
-}), run_clo((x_1) => {
-  return run_jump($atom$, ["Absent"]);
-})]);
-}
-
-function $j_found_ctor$(found_0, rest_0, name_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(found_0)), "Absent")), run_clo((x_0) => {
-  return run_jump($j_find_ctor$, [rest_0, name_0]);
-}), run_clo((x_1) => {
-  return found_0;
 })]);
 }
 
@@ -11229,494 +12388,331 @@ function $j_layout_bindings$(book_0, env_0, xs_0, todo_0) {
   }
 }
 
-function $j_context$(book_0, env_0, xs_0) {
-  if (xs_0.$ === "Nil") {
-    return env_0;
+function $j_l_deeps$(ts_0, depth_0) {
+  if (ts_0.$ === "Nil") {
+    return false;
   } else {
-    const h_0 = xs_0["head"];
-    const _t_0 = xs_0["tail"];
-    if (_t_0.$ === "Nil") {
-      return env_0;
-    } else {
-      return {$: "Con", ["head"]: run_loop($kt$("Env", "", run_loop($ix$(h_0)), 0, {$: "Con", ["head"]: run_loop($j_type$(book_0, env_0, run_loop($kid$(h_0, 0)))), ["tail"]: {$: "Nil"}})), ["tail"]: run_loop($j_context$(book_0, env_0, _t_0))};
-    }
+    const h_0 = ts_0["head"];
+    const rest_0 = ts_0["tail"];
+    return run_jump($kc$, [run_loop($j_l_deep$(h_0, depth_0)), run_clo((x_0) => {
+    return true;
+}), run_clo((x_1) => {
+    return run_jump($j_l_deeps$, [rest_0, depth_0]);
+})]);
   }
 }
 
-function $j_body$(xs_0) {
-  if (xs_0.$ === "Nil") {
-    return run_jump($atom$, ["Absent"]);
+function $j_l_walk$(book_0, env_0, t_0, ty_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
+  return run_jump($j_l_walk$, [book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($kid$(t_0, 1))]);
+}), run_clo((x_1) => {
+  const x_12 = run_loop($kc$(run_loop($String$eq$(run_loop($j_l_name$(t_0)), "")), run_clo((x_2) => {
+  return "";
+}), run_clo((x_3) => {
+  const x_4 = run_loop($j_expr_on$(book_0, env_0, t_0, ty_0, false, run_loop($tg$(t_0))));
+  const x_5 = (x_4 + ";};\n");
+  const x_6 = run_loop($j_l_capture$(env_0, {$: "Nil"}));
+  const x_7 = ("){return " + x_5);
+  const x_8 = (x_6 + x_7);
+  const x_9 = run_loop($j_quote$(run_loop($j_l_name$(t_0))));
+  const x_10 = ("]=function(" + x_8);
+  const x_11 = (x_9 + x_10);
+  return ("F[" + x_11);
+})));
+  const x_13 = run_loop($j_l_children$(book_0, env_0, t_0, ty_0));
+  return (x_12 + x_13);
+})]);
+}
+
+function $j_l_marks$(ts_0, path_0, depth_0, at_0) {
+  if (ts_0.$ === "Nil") {
+    return {$: "Nil"};
   } else {
-    const h_0 = xs_0["head"];
-    const _t_0 = xs_0["tail"];
-    if (_t_0.$ === "Nil") {
-      return h_0;
-    } else {
-      return run_jump($j_body$, [_t_0]);
-    }
+    const h_0 = ts_0["head"];
+    const rest_0 = ts_0["tail"];
+    const x_0 = run_loop($U32$show$(at_0));
+    const x_1 = ("_" + x_0);
+    return {$: "Con", ["head"]: run_loop($j_l_mark$(h_0, (path_0 + x_1), depth_0)), ["tail"]: run_loop($j_l_marks$(rest_0, path_0, depth_0, ((at_0 + 1) >>> 0)))};
   }
 }
 
-function $j_l_name$(t_0) {
-  return run_jump($j_l_names$, [run_loop($rm$(t_0))]);
+function $j_l_global_worker$(book_0, d_0, t_0, worker_0) {
+  const x_8 = run_loop($kc$(run_loop($Bool$not$(run_loop($String$eq$(worker_0, "")))), run_clo((x_0) => {
+  return worker_0;
+}), run_clo((x_1) => {
+  const x_2 = run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(t_0)))), "Lam"));
+  const x_3 = run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(t_0)))), "Mat"));
+  return run_jump($kc$, [(x_2 || x_3), run_clo((x_4) => {
+  return run_jump($j_expr$, [book_0, {$: "Nil"}, t_0, run_loop($dt$(d_0)), false]);
+}), run_clo((x_5) => {
+  const x_6 = run_loop($j_expr$(book_0, {$: "Nil"}, t_0, run_loop($dt$(d_0)), true));
+  const x_7 = (x_6 + ";})");
+  return ("fn(0,function(){return " + x_7);
+})]);
+})));
+  const x_9 = (x_8 + ";\n");
+  const x_10 = run_loop($j_quote$(run_loop($dn$(d_0))));
+  const x_11 = ("]=" + x_9);
+  const x_12 = (x_10 + x_11);
+  return ("G[" + x_12);
 }
 
-function $j_l_capture$(env_0, seen_0) {
-  if (env_0.$ === "Nil") {
+function $j_projection_worker$(book_0, t_0, ty_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(t_0)))), "Mat")), run_clo((x_0) => {
+  return run_jump($j_projection_match$, [book_0, run_loop($j_strip$(t_0)), run_loop($wnf$(book_0, ty_0))]);
+}), run_clo((x_1) => {
+  return "";
+})]);
+}
+
+function $fpe_snippet_lines$(lines_0, at_0, end_0, line_0) {
+  if (lines_0.$ === "Nil") {
     return "";
   } else {
-    const h_0 = env_0["head"];
-    const rest_0 = env_0["tail"];
-    return run_jump($kc$, [run_loop($has_name$(seen_0, run_loop($j_local$(run_loop($ix$(h_0)))))), run_clo((x_0) => {
-    return run_jump($j_l_capture$, [rest_0, seen_0]);
+    const head_0 = lines_0["head"];
+    const tail_0 = lines_0["tail"];
+    return run_jump($f_choose$, [(line_0 > end_0), run_clo((x_0) => {
+    return "";
 }), run_clo((x_1) => {
-    const x_2 = run_loop($j_l_capture$(rest_0, {$: "Con", ["head"]: run_loop($j_local$(run_loop($ix$(h_0)))), ["tail"]: seen_0}));
-    const x_3 = run_loop($j_local$(run_loop($ix$(h_0))));
-    const x_4 = ("," + x_2);
-    return (x_3 + x_4);
-})]);
-  }
-}
-
-function $j_expr_on$(book_0, env_0, t_0, ty_0, tail_0, key_0) {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Var")), run_clo((x_0) => {
-  return run_jump($j_local$, [run_loop($ix$(t_0))]);
-}), run_clo((x_1) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Ref")), run_clo((x_2) => {
-  const x_3 = run_loop($j_quote$(run_loop($nm$(t_0))));
-  const x_4 = (x_3 + ")");
-  return ("get(G," + x_4);
-}), run_clo((x_5) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "App")), run_clo((x_6) => {
-  return run_jump($j_apply$, [book_0, env_0, t_0, tail_0, run_loop($wnf$(book_0, run_loop($j_type$(book_0, env_0, run_loop($kid$(t_0, 0))))))]);
-}), run_clo((x_7) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Ctr")), run_clo((x_8) => {
-  return run_jump($j_constructor_mode$, [book_0, env_0, t_0, ty_0, tail_0]);
-}), run_clo((x_9) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Ann")), run_clo((x_10) => {
-  return run_jump($j_expr$, [book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($kid$(t_0, 1)), tail_0]);
-}), run_clo((x_11) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Lam")), run_clo((x_12) => {
-  return run_jump($j_lambda$, [book_0, env_0, t_0, run_loop($wnf$(book_0, ty_0))]);
-}), run_clo((x_13) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Mat")), run_clo((x_14) => {
-  return run_jump($j_match$, [book_0, env_0, t_0, run_loop($wnf$(book_0, ty_0))]);
-}), run_clo((x_15) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Let")), run_clo((x_16) => {
-  return run_jump($j_let$, [book_0, env_0, run_loop($ks$(t_0)), ty_0, tail_0]);
-}), run_clo((x_17) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Rwt")), run_clo((x_18) => {
-  return run_jump($j_expr$, [book_0, env_0, run_loop($kid$(t_0, 2)), ty_0, tail_0]);
-}), run_clo((x_19) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Efq")), run_clo((x_20) => {
-  return "fn(1,()=>bad(\"an absurd elimination\"))";
-}), run_clo((x_21) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Hol")), run_clo((x_22) => {
-  return "bad(\"cannot compile a hole\")";
-}), run_clo((x_23) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "ADT")), run_clo((x_24) => {
-  const x_25 = run_loop($j_exprs$(book_0, env_0, run_loop($ks$(t_0))));
-  const x_26 = (x_25 + "]})");
-  const x_27 = run_loop($j_quote$(run_loop($nm$(t_0))));
-  const x_28 = (",typeArgs:[" + x_26);
-  const x_29 = (x_27 + x_28);
-  return ("({typeName:" + x_29);
-}), run_clo((x_30) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Qua")), run_clo((x_31) => {
-  const x_32 = run_loop($U32$show$(run_loop($qt$(t_0))));
-  const x_33 = run_loop($j_quote$(("&" + x_32)));
-  const x_34 = (x_33 + "})");
-  return ("({typeName:" + x_34);
-}), run_clo((x_35) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Typ")), run_clo((x_36) => {
-  return "({typeName:\"Type\"})";
-}), run_clo((x_37) => {
-  return run_jump($kc$, [run_loop($String$eq$(key_0, "Rfl")), run_clo((x_38) => {
-  return "({proof:true})";
-}), run_clo((x_39) => {
-  return "null";
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-}
-
-function $j_l_children$(book_0, env_0, t_0, ty_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Lam")), run_clo((x_0) => {
-  return run_jump($j_l_lam$, [book_0, env_0, t_0, run_loop($wnf$(book_0, ty_0))]);
-}), run_clo((x_1) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Mat")), run_clo((x_2) => {
-  return run_jump($j_l_mat$, [book_0, env_0, t_0, run_loop($wnf$(book_0, ty_0))]);
-}), run_clo((x_3) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_4) => {
-  return run_jump($j_l_app$, [book_0, env_0, t_0, run_loop($wnf$(book_0, run_loop($j_type$(book_0, env_0, run_loop($kid$(t_0, 0))))))]);
-}), run_clo((x_5) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Let")), run_clo((x_6) => {
-  const x_7 = run_loop($j_l_bindings$(book_0, env_0, run_loop($ks$(t_0))));
-  const x_8 = run_loop($j_l_walk$(book_0, run_loop($j_context$(book_0, env_0, run_loop($ks$(t_0)))), run_loop($j_body$(run_loop($ks$(t_0)))), ty_0));
-  return (x_7 + x_8);
-}), run_clo((x_9) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_10) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($j_literal_typed$(book_0, t_0, ty_0)), "")), run_clo((x_11) => {
-  return run_jump($j_l_fields$, [book_0, env_0, run_loop($ks$(t_0)), run_loop($j_specialize$(book_0, run_loop($dt$(run_loop($j_find_ctor$(book_0, run_loop($nm$(t_0)))))), run_loop($ks$(run_loop($wnf$(book_0, ty_0))))))]);
-}), run_clo((x_12) => {
-  return "";
-})]);
-}), run_clo((x_13) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Rwt")), run_clo((x_14) => {
-  return run_jump($j_l_walk$, [book_0, env_0, run_loop($kid$(t_0, 2)), ty_0]);
-}), run_clo((x_15) => {
-  return "";
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-}
-
-function $f_alias_chars$(s_0) {
-  return run_jump($f_choose$, [run_loop($String$is_empty$(s_0)), run_clo((x_0) => {
-  return true;
-}), run_clo((x_1) => {
-  const x_2 = run_loop($Char$is_alpha$(run_loop($f_head$(s_0))));
-  const x_3 = run_loop($Char$is_digit$(run_loop($f_head$(s_0))));
-  const x_4 = (x_2 || x_3);
-  const x_5 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "_"));
-  return run_jump($Bool$and$, [(x_4 || x_5), run_loop($f_alias_chars$(run_loop($f_tail$(s_0))))]);
-})]);
-}
-
-function $f_law_where$(name_0, binder_0, ty_0, p_0, book_0, imports_0, clauses_0) {
-  const predicate_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_law_type$, [name_0, binder_0, {$: "FParsed", ["term"]: run_loop($f_app$(run_loop($ref$("Exists")), {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Lam", run_loop($nm$(binder_0)), run_loop($ix$(binder_0)), 1, {$: "Con", ["head"]: predicate_0, ["tail"]: {$: "Nil"}})), ["tail"]: {$: "Nil"}}})), ["rest"]: ts_0}, book_0, imports_0, clauses_0]);
-}
-
-function $f_app$(f_0, xs_0) {
-  if (xs_0.$ === "Nil") {
-    return f_0;
-  } else {
-    const x_0 = xs_0["head"];
-    const xt_0 = xs_0["tail"];
-    return run_jump($f_app$, [run_loop($kt$("App", "", 0, 1, {$: "Con", ["head"]: f_0, ["tail"]: {$: "Con", ["head"]: x_0, ["tail"]: {$: "Nil"}}})), xt_0]);
-  }
-}
-
-function $f_prec$(s_0) {
-  const x_0 = run_loop($f_eq$(s_0, "=>"));
-  const x_1 = run_loop($f_eq$(s_0, "->"));
-  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return 1;
-}), run_clo((x_3) => {
-  const x_4 = run_loop($f_eq$(s_0, "&"));
-  const x_5 = run_loop($f_eq$(s_0, "|"));
-  return run_jump($f_choose$, [(x_4 || x_5), run_clo((x_6) => {
-  return 2;
-}), run_clo((x_7) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(s_0, "||")), run_clo((x_8) => {
-  return 3;
-}), run_clo((x_9) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(s_0, "&&")), run_clo((x_10) => {
-  return 4;
-}), run_clo((x_11) => {
-  const x_12 = run_loop($f_eq$(s_0, "<"));
-  const x_13 = run_loop($f_eq$(s_0, ">op"));
-  const x_14 = (x_12 || x_13);
-  const x_15 = run_loop($f_eq$(s_0, "<="));
-  const x_16 = (x_14 || x_15);
-  const x_17 = run_loop($f_eq$(s_0, ">="));
-  return run_jump($f_choose$, [(x_16 || x_17), run_clo((x_18) => {
-  return 5;
-}), run_clo((x_19) => {
-  const x_20 = run_loop($f_eq$(s_0, "<>"));
-  const x_21 = run_loop($f_eq$(s_0, "++"));
-  const x_22 = (x_20 || x_21);
-  const x_23 = run_loop($f_eq$(s_0, "<&>"));
-  return run_jump($f_choose$, [(x_22 || x_23), run_clo((x_24) => {
-  return 6;
-}), run_clo((x_25) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(s_0, ".|.")), run_clo((x_26) => {
-  return 7;
-}), run_clo((x_27) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(s_0, ".^.")), run_clo((x_28) => {
-  return 8;
-}), run_clo((x_29) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(s_0, ".&.")), run_clo((x_30) => {
-  return 9;
-}), run_clo((x_31) => {
-  const x_32 = run_loop($f_eq$(s_0, "<<"));
-  const x_33 = run_loop($f_eq$(s_0, ">>op"));
-  return run_jump($f_choose$, [(x_32 || x_33), run_clo((x_34) => {
-  return 10;
-}), run_clo((x_35) => {
-  const x_36 = run_loop($f_eq$(s_0, "+"));
-  const x_37 = run_loop($f_eq$(s_0, "-"));
-  return run_jump($f_choose$, [(x_36 || x_37), run_clo((x_38) => {
-  return 11;
-}), run_clo((x_39) => {
-  const x_40 = run_loop($f_eq$(s_0, "*"));
-  const x_41 = run_loop($f_eq$(s_0, "/"));
-  const x_42 = (x_40 || x_41);
-  const x_43 = run_loop($f_eq$(s_0, "%"));
-  return run_jump($f_choose$, [(x_42 || x_43), run_clo((x_44) => {
-  return 12;
-}), run_clo((x_45) => {
-  return 0;
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-}
-
-function $f_grow_base$(p_0, min_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(n_0)), "Error")), run_clo((x_0) => {
-  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
-}), run_clo((x_1) => {
-  const x_2 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "("));
-  const x_3 = run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "{")), run_loop($f_eq$(run_loop($tg$(n_0)), "Ref"))));
-  const x_4 = (x_2 || x_3);
-  const x_5 = run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<")), run_loop($Char$is_upper$(run_loop($f_head$(run_loop($nm$(n_0))))))));
-  return run_jump($f_choose$, [(x_4 || x_5), run_clo((x_6) => {
-  return run_jump($f_grow_args$, [n_0, run_loop($f_tx$(ts_0)), min_0, run_loop($f_args$(run_loop($f_tl$(ts_0)), run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "(")), run_clo((x_7) => {
-  return ")";
+    const x_2 = ((line_0 + 1) >>> 0);
+    const x_13 = run_loop($f_choose$((x_2 < at_0), run_clo((x_3) => {
+    return "";
+}), run_clo((x_4) => {
+    const x_5 = run_loop($U32$show$(end_0));
+    const x_6 = BigInt([...x_5].length);
+    const x_9 = run_loop($f_choose$((line_0 === at_0), run_clo((x_7) => {
+    return ">| ";
 }), run_clo((x_8) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "{")), run_clo((x_9) => {
-  return "}";
-}), run_clo((x_10) => {
-  return ">";
+    return " | ";
+})));
+    const x_10 = run_loop($fpe_pad$(run_loop($U32$show$(line_0)), Number(x_6 & 0xFFFFFFFFn)));
+    const x_11 = (x_9 + head_0);
+    const x_12 = (x_10 + x_11);
+    return ("\n" + x_12);
+})));
+    const x_14 = run_loop($fpe_snippet_lines$(tail_0, at_0, end_0, ((line_0 + 1) >>> 0)));
+    return (x_13 + x_14);
 })]);
-}))), {$: "Nil"}))]);
-}), run_clo((x_11) => {
-  const x_12 = run_loop($f_prec$(run_loop($f_tx$(ts_0))));
-  const x_13 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "%"));
-  const x_14 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "-"));
-  const x_15 = run_loop($f_col$(ts_0));
-  const x_16 = run_loop($f_col$(run_loop($f_tl$(ts_0))));
-  const x_17 = ((x_15 + 1) >>> 0);
-  const x_18 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), ")"));
-  const x_19 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "}"));
-  const x_20 = (x_18 || x_19);
-  const x_21 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), ","));
-  const x_22 = (x_20 || x_21);
-  const x_23 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), ":"));
-  const x_24 = (x_22 || x_23);
-  const x_25 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), ">"));
-  const x_26 = (x_24 || x_25);
-  const x_27 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "\n"));
-  const x_28 = (x_26 || x_27);
-  const x_29 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "->"));
-  const x_30 = (x_28 || x_29);
-  const x_31 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "<eof>"));
-  const x_32 = (x_30 || x_31);
-  const x_33 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "]"));
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$((x_12 > min_0), run_loop($Bool$not$(run_loop($Bool$and$(run_loop($Bool$and$((x_13 || x_14), (x_16 === x_17))), run_loop($Char$is_alpha$(run_loop($f_head$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))))))))))), run_loop($Bool$not$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ">")))))), run_loop($Bool$not$(run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ">>")), (x_32 || x_33))))))), run_clo((x_34) => {
-  const x_35 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=>"));
-  const x_36 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "->"));
-  const x_37 = (x_35 || x_36);
-  const x_38 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<>"));
-  const x_39 = (x_37 || x_38);
-  const x_40 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "&"));
-  const x_41 = (x_39 || x_40);
-  const x_42 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "|"));
-  return run_jump($f_binary$, [n_0, run_loop($f_tx$(ts_0)), min_0, run_loop($f_rhs_for$(n_0, run_loop($f_tl$(ts_0)), run_loop($f_tx$(ts_0)), run_loop($f_choose$((x_41 || x_42), run_clo((x_43) => {
-  const x_44 = run_loop($f_prec$(run_loop($f_tx$(ts_0))));
-  return ((x_44 - 1) >>> 0);
-}), run_clo((x_45) => {
-  return run_jump($f_prec$, [run_loop($f_tx$(ts_0))]);
-})))))]);
-}), run_clo((x_46) => {
-  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
-})]);
-})]);
-})]);
+  }
 }
 
-function $f_bang$(n_0, ts_0, min_0) {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(n_0)), "Ref")), run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "(")))), run_clo((x_0) => {
-  return run_jump($f_grow$, [{$: "FParsed", ["term"]: run_loop($kt$("Ref", run_loop($nm$(n_0)), run_loop($ix$(n_0)), 3, run_loop($ks$(n_0)))), ["rest"]: run_loop($f_tl$(ts_0))}, min_0]);
+function $fpe_lines_count$(lines_0) {
+  if (lines_0.$ === "Nil") {
+    return 0;
+  } else {
+    const head_0 = lines_0["head"];
+    const tail_0 = lines_0["tail"];
+    const x_0 = run_loop($fpe_lines_count$(tail_0));
+    return ((1 + x_0) >>> 0);
+  }
+}
+
+function $f_import_alias$(ts_0, path_0, book_0, imports_0) {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($String$ends_with$(path_0, ".bend")), run_loop($f_alias_valid$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))))), run_clo((x_0) => {
+  return run_jump($f_tops$, [run_loop($f_tl$(run_loop($f_tl$(ts_0)))), book_0, {$: "Con", ["head"]: run_loop($kt$("Import", path_0, 0, 0, {$: "Con", ["head"]: run_loop($kt$("Alias", run_loop($f_tx$(run_loop($f_tl$(ts_0)))), 0, 0, {$: "Nil"})), ["tail"]: {$: "Nil"}})), ["tail"]: imports_0}, false]);
 }), run_clo((x_1) => {
-  return run_jump($f_err$, [ts_0, "! must follow a named definition and precede call parentheses"]);
+  return run_jump($f_result$, [book_0, run_loop($kt$("Error", "an import requires a .bend path and a valid alias", 0, 0, {$: "Nil"})), imports_0]);
 })]);
 }
 
-function $f_index$(n_0, p_0, min_0) {
-  const idx_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<-")), run_clo((x_0) => {
-  return run_jump($f_index_value$, [n_0, idx_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 2)), min_0]);
+function $f_templates$(pars_0) {
+  if (pars_0.$ === "Nil") {
+    return 0;
+  } else {
+    const p_0 = pars_0["head"];
+    const ps_0 = pars_0["tail"];
+    const x_2 = run_loop($f_choose$(run_loop($f_eq$(run_loop($tg$(p_0)), "Template")), run_clo((x_0) => {
+    return 1;
 }), run_clo((x_1) => {
-  return run_jump($f_grow$, [{$: "FParsed", ["term"]: run_loop($f_app$(run_loop($ref$("Array.get")), {$: "Con", ["head"]: run_loop($ref$("U32")), ["tail"]: {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_namespace$(idx_0, run_loop($ref$("U32")))), ["tail"]: {$: "Nil"}}}})), ["rest"]: ts_0}, min_0]);
-})]);
+    return 0;
+})));
+    const x_3 = run_loop($f_templates$(ps_0));
+    return ((x_2 + x_3) >>> 0);
+  }
 }
 
-function $f_template_expr$(p_0) {
-  const t_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($kt$("TemplateArg", "", 0, 0, {$: "Con", ["head"]: t_0, ["tail"]: {$: "Nil"}})), ["rest"]: ts_0};
-}
-
-function $f_do_start$(ts_0) {
-  return run_jump($f_do_types$, [run_loop($f_tx$(ts_0)), run_loop($f_args$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))), ">", {$: "Nil"}))]);
-}
-
-function $f_rewrite$(ts_0) {
-  return run_jump($f_rewrite_head$, [run_loop($f_expr$(ts_0, 0))]);
-}
-
-function $f_atom_base$(ts_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "(")), run_clo((x_0) => {
-  return run_jump($f_group$, [run_loop($f_body$(run_loop($f_tl$(ts_0))))]);
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "{")), run_clo((x_2) => {
-  return run_jump($f_brace$, [run_loop($f_tl$(ts_0))]);
-}), run_clo((x_3) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "[")), run_clo((x_4) => {
-  return run_jump($f_array$, [run_loop($f_tl$(ts_0))]);
-}), run_clo((x_5) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "@")), run_clo((x_6) => {
-  return run_jump($f_all$, [run_loop($f_tl$(ts_0)), false]);
-}), run_clo((x_7) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "&")), run_clo((x_8) => {
-  return run_jump($f_grade$, [run_loop($f_tl$(ts_0))]);
-}), run_clo((x_9) => {
-  const x_10 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "+"));
-  const x_11 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "+bind"));
-  return run_jump($f_choose$, [(x_10 || x_11), run_clo((x_12) => {
-  return run_jump($f_mark$, [run_loop($f_atom$(run_loop($f_tl$(ts_0)))), 2]);
-}), run_clo((x_13) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "?")), run_clo((x_14) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Hol", run_loop($f_tx$(run_loop($f_tl$(ts_0)))), 0, 0, {$: "Nil"})), ["rest"]: run_loop($f_tl$(run_loop($f_tl$(ts_0))))};
-}), run_clo((x_15) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "\\")), run_clo((x_16) => {
-  return run_jump($f_matcher$, [run_loop($f_tl$(run_loop($f_tl$(ts_0))))]);
-}), run_clo((x_17) => {
-  const x_18 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "Type"));
-  const x_19 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "Data"));
-  return run_jump($f_choose$, [(x_18 || x_19), run_clo((x_20) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Typ", "", 0, 0, {$: "Con", ["head"]: run_loop($kt$("Qua", "", 0, run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "Data")), run_clo((x_21) => {
-  return 2;
-}), run_clo((x_22) => {
-  return 1;
-}))), {$: "Nil"})), ["tail"]: {$: "Nil"}})), ["rest"]: run_loop($f_tl$(ts_0))};
-}), run_clo((x_23) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "Quant")), run_clo((x_24) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Qnt", "", 0, 0, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
-}), run_clo((x_25) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "Kind")), run_clo((x_26) => {
-  return run_jump($f_kind_wrap$, [run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))), 0)), ")"))]);
-}), run_clo((x_27) => {
-  const x_28 = run_loop($f_kind_token$(ts_0));
-  return run_jump($f_choose$, [(x_28 === 2), run_clo((x_29) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Literal", run_loop($f_tx$(ts_0)), 0, 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
-}), run_clo((x_30) => {
-  const x_31 = run_loop($f_kind_token$(ts_0));
-  return run_jump($f_choose$, [run_loop($Bool$and$((x_31 === 1), run_loop($Bool$not$(run_loop($f_reserved$(run_loop($f_tx$(ts_0)))))))), run_clo((x_32) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$(run_loop($f_choose$(run_loop($Char$is_digit$(run_loop($f_head$(run_loop($f_tx$(ts_0)))))), run_clo((x_33) => {
-  return "Literal";
-}), run_clo((x_34) => {
-  return "Ref";
-}))), run_loop($f_tx$(ts_0)), run_loop($f_atid$(ts_0)), 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
-}), run_clo((x_35) => {
-  return run_jump($f_err$, [ts_0, "expected term"]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
-}
-
-function $f_foreign$(name_0, pars_0, ty_0, ts_0, book_0, imports_0, unsafe_0, paths_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "import")), run_clo((x_0) => {
-  return run_jump($f_choose$, [run_loop($f_foreign_path_valid$(ts_0)), run_clo((x_1) => {
-  return run_jump($f_foreign$, [name_0, pars_0, ty_0, run_loop($f_skip$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))))), book_0, imports_0, unsafe_0, {$: "Con", ["head"]: run_loop($kt$("Path", run_loop($f_unquote$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))), 0, 0, {$: "Nil"})), ["tail"]: paths_0}]);
-}), run_clo((x_2) => {
-  return run_jump($f_result$, [book_0, "foreign import requires a quoted .c or .js path", imports_0]);
-})]);
-}), run_clo((x_3) => {
-  return run_jump($f_tops$, [ts_0, run_loop($f_put$({$: "KDef", ["name"]: name_0, ["kind"]: "Def", ["arity"]: run_loop($f_len$(pars_0)), ["templates"]: 0, ["typ"]: ty_0, ["value"]: run_loop($kt$("Foreign", name_0, 0, 0, run_loop($List$reverse$(paths_0)))), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: unsafe_0}, book_0)), imports_0, false]);
-})]);
-}
-
-function $f_def_signature$(name_0, pars_0, ty_0, book_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_dk$(run_loop($f_find$(name_0, book_0)))), "Missing")), run_clo((x_0) => {
-  return run_jump($f_tbind$, [pars_0, ty_0]);
-}), run_clo((x_1) => {
-  return ty_0;
-})]);
-}
-
-function $f_def_body$(name_0, pars_0, ty_0, p_0, book_0, imports_0, unsafe_0) {
-  const body_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(body_0)), "Error")), run_clo((x_0) => {
-  return run_jump($f_result$, [book_0, run_loop($nm$(body_0)), imports_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_tops$, [ts_0, run_loop($f_put$({$: "KDef", ["name"]: name_0, ["kind"]: "Def", ["arity"]: run_loop($f_len$(pars_0)), ["templates"]: run_loop($f_choose$(run_loop($f_eq$(run_loop($f_dk$(run_loop($f_find$(name_0, book_0)))), "Missing")), run_clo((x_2) => {
-  return run_jump($f_templates$, [pars_0]);
-}), run_clo((x_3) => {
-  return run_jump($f_dx$, [run_loop($f_find$(name_0, book_0))]);
-}))), ["typ"]: ty_0, ["value"]: run_loop($kt$("Body", "", run_loop($fc_start$(pars_0, ty_0, body_0, run_loop($Bool$not$(run_loop($f_eq$(run_loop($f_dk$(run_loop($f_find$(name_0, book_0)))), "Missing")))))), 0, {$: "Con", ["head"]: run_loop($kt$("Params", "", 0, 0, pars_0)), ["tail"]: {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}}})), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: unsafe_0}, book_0)), imports_0, false]);
-})]);
-}
-
-function $f_body$(ts_0) {
-  return run_jump($f_body_context$, [ts_0, 0]);
-}
-
-function $f_tele_type$(name_0, id_0, q_0, temp_0, p_0, end_0, acc_0) {
+function $f_law_type$(name_0, binder_0, p_0, book_0, imports_0, clauses_0) {
   const ty_0 = p_0["term"];
   const ts_0 = p_0["rest"];
   return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(ty_0)), "Error")), run_clo((x_0) => {
-  return {$: "FParsed", ["term"]: ty_0, ["rest"]: ts_0};
+  return run_jump($f_result$, [book_0, ty_0, imports_0]);
 }), run_clo((x_1) => {
-  return run_jump($f_tele$, [run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_2) => {
-  return run_jump($f_tl$, [ts_0]);
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), "where")), run_clo((x_2) => {
+  return run_jump($f_law_where$, [name_0, binder_0, ty_0, run_loop($f_expr$(run_loop($f_tl$(run_loop($f_skip$(ts_0)))), 0)), book_0, imports_0, clauses_0]);
 }), run_clo((x_3) => {
-  return ts_0;
-}))), end_0, {$: "Con", ["head"]: run_loop($kt$(run_loop($f_choose$(temp_0, run_clo((x_4) => {
-  return "Template";
-}), run_clo((x_5) => {
-  return "Bind";
-}))), name_0, id_0, q_0, {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}})), ["tail"]: acc_0}]);
+  return run_jump($f_law$, [name_0, run_loop($f_skip$(ts_0)), book_0, imports_0, {$: "Con", ["head"]: run_loop($kt$(run_loop($tg$(binder_0)), run_loop($nm$(binder_0)), run_loop($ix$(binder_0)), run_loop($qt$(binder_0)), {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}})), ["tail"]: clauses_0}]);
+})]);
 })]);
 }
 
-function $f_type_ctors$(name_0, pars_0, ty_0, ts_0, book_0, imports_0, ctors_0) {
-  const x_0 = run_loop($f_col$(ts_0));
-  return run_jump($f_choose$, [run_loop($Bool$and$((x_0 > 0), run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "{")))), run_clo((x_1) => {
-  return run_jump($f_type_ctor$, [name_0, pars_0, ty_0, run_loop($f_tx$(ts_0)), run_loop($f_tele$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))), "}", {$: "Nil"})), book_0, imports_0, ctors_0]);
+function $f_unmark$(ts_0) {
+  const x_0 = run_loop($f_quant$(ts_0));
+  return run_jump($f_choose$, [(x_0 === 1), run_clo((x_1) => {
+  return ts_0;
 }), run_clo((x_2) => {
-  return run_jump($f_tops$, [ts_0, {$: "Con", ["head"]: {$: "KDef", ["name"]: name_0, ["kind"]: "ADT", ["arity"]: run_loop($f_len$(pars_0)), ["templates"]: 0, ["typ"]: run_loop($f_tbind$(pars_0, ty_0)), ["value"]: run_loop($atom$("Absent")), ["ctors"]: run_loop($List$reverse$(ctors_0)), ["native"]: false, ["unsafe"]: false}, ["tail"]: book_0}, imports_0, false]);
+  return run_jump($f_tl$, [ts_0]);
+})]);
+}
+
+function $f_atid$(ts_0) {
+  const x_0 = run_loop($f_line$(ts_0));
+  const x_1 = (Math.imul(x_0, 65536) >>> 0);
+  const x_2 = run_loop($f_col$(ts_0));
+  return ((x_1 + x_2) >>> 0);
+}
+
+function $f_quant$(ts_0) {
+  const x_0 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "-"));
+  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~"));
+  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+  return 0;
+}), run_clo((x_3) => {
+  const x_4 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "+"));
+  const x_5 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "+bind"));
+  return run_jump($f_choose$, [(x_4 || x_5), run_clo((x_6) => {
+  return 2;
+}), run_clo((x_7) => {
+  return 1;
+})]);
+})]);
+}
+
+function $f_law_arity$(clauses_0) {
+  if (clauses_0.$ === "Nil") {
+    return 0;
+  } else {
+    const c_0 = clauses_0["head"];
+    const rest_0 = clauses_0["tail"];
+    return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(c_0)), "Exists")), run_clo((x_0) => {
+    return 0;
+}), run_clo((x_1) => {
+    const x_2 = run_loop($f_law_arity$(rest_0));
+    return ((1 + x_2) >>> 0);
+})]);
+  }
+}
+
+function $f_law_bind$(clauses_0, ty_0) {
+  if (clauses_0.$ === "Nil") {
+    return ty_0;
+  } else {
+    const c_0 = clauses_0["head"];
+    const cs_0 = clauses_0["tail"];
+    return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(c_0)), "Exists")), run_clo((x_0) => {
+    return run_jump($f_app$, [run_loop($kt$("Ref", "Exists", 0, 1, {$: "Nil"})), {$: "Con", ["head"]: run_loop($kid$(c_0, 0)), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Lam", run_loop($nm$(c_0)), run_loop($ix$(c_0)), 1, {$: "Con", ["head"]: run_loop($f_law_bind$(cs_0, ty_0)), ["tail"]: {$: "Nil"}})), ["tail"]: {$: "Nil"}}}]);
+}), run_clo((x_1) => {
+    return run_jump($kt$, ["All", run_loop($nm$(c_0)), run_loop($ix$(c_0)), run_loop($qt$(c_0)), {$: "Con", ["head"]: run_loop($kid$(c_0, 0)), ["tail"]: {$: "Con", ["head"]: run_loop($f_law_bind$(cs_0, ty_0)), ["tail"]: {$: "Nil"}}}]);
+})]);
+  }
+}
+
+function $f_grow$(p_0, min_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  const x_0 = run_loop($f_prec$(run_loop($f_tx$(run_loop($f_skip$(ts_0))))));
+  const x_1 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), "%"));
+  const x_2 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), "-"));
+  const x_3 = run_loop($f_col$(run_loop($f_skip$(ts_0))));
+  const x_4 = run_loop($f_col$(run_loop($f_tl$(run_loop($f_skip$(ts_0))))));
+  const x_5 = ((x_3 + 1) >>> 0);
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "\n")), (x_0 > 0))), run_loop($Bool$not$(run_loop($Bool$and$((x_1 || x_2), (x_4 === x_5))))))), run_clo((x_6) => {
+  return run_jump($f_grow_base$, [{$: "FParsed", ["term"]: n_0, ["rest"]: run_loop($f_skip$(ts_0))}, min_0]);
+}), run_clo((x_7) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "!")), run_clo((x_8) => {
+  return run_jump($f_bang$, [n_0, ts_0, min_0]);
+}), run_clo((x_9) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "[")), run_clo((x_10) => {
+  return run_jump($f_index$, [n_0, run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), "]")), min_0]);
+}), run_clo((x_11) => {
+  return run_jump($f_grow_base$, [{$: "FParsed", ["term"]: n_0, ["rest"]: ts_0}, min_0]);
+})]);
+})]);
+})]);
+}
+
+function $f_atom$(ts_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), run_clo((x_0) => {
+  return run_jump($f_template_expr$, [run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "do")), run_clo((x_2) => {
+  return run_jump($f_do_start$, [run_loop($f_tl$(ts_0))]);
+}), run_clo((x_3) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "%")), run_clo((x_4) => {
+  return run_jump($f_rewrite$, [run_loop($f_tl$(ts_0))]);
+}), run_clo((x_5) => {
+  return run_jump($f_atom_base$, [ts_0]);
+})]);
+})]);
+})]);
+}
+
+function $f_def_type$(name_0, pars_0, p_0, book_0, imports_0, unsafe_0) {
+  const ty_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(ty_0)), "Absent")), run_clo((x_0) => {
+  return run_jump($f_result$, [book_0, run_loop($kt$("Error", ("definition without return type needs a law: " + name_0), 0, 0, {$: "Nil"})), imports_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(run_loop($f_tl$(ts_0)))))), "import")), run_clo((x_2) => {
+  return run_jump($f_foreign$, [name_0, pars_0, run_loop($f_def_signature$(name_0, pars_0, ty_0, book_0)), run_loop($f_skip$(run_loop($f_tl$(ts_0)))), book_0, imports_0, unsafe_0, {$: "Nil"}]);
+}), run_clo((x_3) => {
+  return run_jump($f_def_body$, [name_0, pars_0, run_loop($f_def_signature$(name_0, pars_0, ty_0, book_0)), run_loop($f_body$(run_loop($f_pr$(run_loop($f_expect$({$: "FParsed", ["term"]: ty_0, ["rest"]: ts_0}, ":")))))), book_0, imports_0, unsafe_0]);
+})]);
+})]);
+}
+
+function $f_dt$(d_0) {
+  const name_0 = d_0["name"];
+  const kind_0 = d_0["kind"];
+  const arity_0 = d_0["arity"];
+  const templates_0 = d_0["templates"];
+  const typ_0 = d_0["typ"];
+  const value_0 = d_0["value"];
+  const ctors_0 = d_0["ctors"];
+  const native_0 = d_0["native"];
+  const unsafe_0 = d_0["unsafe"];
+  return typ_0;
+}
+
+function $f_tele_binder$(name_0, id_0, q_0, temp_0, ts_0, end_0, acc_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_0) => {
+  return run_jump($f_tele_type$, [name_0, id_0, q_0, temp_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), end_0, acc_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($Bool$and$((q_0 === 1), run_loop($Bool$not$(temp_0)))), run_clo((x_2) => {
+  return run_jump($f_tele_type$, [name_0, id_0, 0, temp_0, {$: "FParsed", ["term"]: run_loop($atom$("Qnt")), ["rest"]: ts_0}, end_0, acc_0]);
+}), run_clo((x_3) => {
+  return run_jump($f_err$, [ts_0, "expected : (a marked parameter requires its type)"]);
+})]);
+})]);
+}
+
+function $f_type_kind$(name_0, pars_0, p_0, book_0, imports_0) {
+  const ty_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(ty_0)), "Error")), run_clo((x_0) => {
+  return run_jump($f_result$, [book_0, ty_0, imports_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_type_ctors$, [name_0, pars_0, ty_0, run_loop($f_skip$(ts_0)), book_0, imports_0, {$: "Nil"}]);
+})]);
+}
+
+function $f_expect$(p_0, s_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  const x_0 = run_loop($f_eq$(run_loop($tg$(n_0)), "Error"));
+  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), s_0));
+  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+  return {$: "FParsed", ["term"]: n_0, ["rest"]: run_loop($f_tl$(ts_0))};
+}), run_clo((x_3) => {
+  const x_4 = run_loop($f_eq$(s_0, ")"));
+  const x_5 = run_loop($f_eq$(s_0, "}"));
+  const x_6 = (x_4 || x_5);
+  const x_7 = run_loop($f_eq$(s_0, "]"));
+  return run_jump($f_choose$, [(x_6 || x_7), run_clo((x_8) => {
+  const x_9 = (s_0 + "'");
+  return run_jump($fpe_error$, [ts_0, ("expected " + s_0), ("'" + x_9)]);
+}), run_clo((x_10) => {
+  return run_jump($f_err$, [ts_0, ("expected " + s_0)]);
+})]);
 })]);
 }
 
@@ -11837,12 +12833,6 @@ function $dg_text$(s_0) {
   return run_jump($kt$, ["DText", s_0, 0, 0, {$: "Nil"}]);
 }
 
-function $dg_typeless$(book_0, ctx_0, t_0) {
-  const x_0 = run_loop($dg_expr$(book_0, {$: "DTerm", ["term"]: t_0}, run_loop($dg_scope$(run_loop($List$reverse$(ctx_0)), {$: "Nil"}))));
-  const x_1 = (x_0 + "'");
-  return run_jump($dg_text$, [("non-inferrable term '" + x_1)]);
-}
-
 function $dg_family$(book_0, name_0) {
   if (book_0.$ === "Nil") {
     return "";
@@ -11855,6 +12845,20 @@ function $dg_family$(book_0, name_0) {
     return run_jump($dg_family$, [rest_0, name_0]);
 })]);
   }
+}
+
+function $dg_typeless$(book_0, ctx_0, t_0) {
+  const x_4 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_loop($String$eq$(run_loop($dk$(run_loop($lookup$(book_0, run_loop($nm$(t_0)))))), "ADT")))), run_clo((x_0) => {
+  const x_1 = run_loop($nm$(t_0));
+  const x_2 = (x_1 + " is a datatype: write its arguments as <>)");
+  return (" (" + x_2);
+}), run_clo((x_3) => {
+  return "";
+})));
+  const x_5 = run_loop($dg_expr$(book_0, {$: "DTerm", ["term"]: t_0}, run_loop($dg_scope$(run_loop($List$reverse$(ctx_0)), {$: "Nil"}))));
+  const x_6 = ("'" + x_4);
+  const x_7 = (x_5 + x_6);
+  return run_jump($dg_text$, [("non-inferrable term '" + x_7)]);
 }
 
 function $check_lam_q$(e_0, ctx_0, t_0, dem_0, ty_0, q_0) {
@@ -12072,6 +13076,16 @@ function $norm_cmp_fail$(book_0, alts_0) {
   }
 }
 
+function $ka_app_spine_root$(e_0, ctx_0, arg_0, node_0, fty_0) {
+  return run_jump($app$, [run_loop($ka_wrap$(node_0, fty_0)), run_loop($annotate$(e_0, ctx_0, arg_0, run_loop($kid$(fty_0, 0))))]);
+}
+
+function $ka_spine_finish$(e_0, ctx_0, arg_0, r_0) {
+  const node_0 = r_0["node"];
+  const ty_0 = r_0["typ"];
+  return run_jump($ka_spine_step$, [e_0, ctx_0, arg_0, node_0, run_loop($wnf$(run_loop($cb$(e_0)), ty_0))]);
+}
+
 function $ctx_get$(ctx_0, id_0) {
   if (ctx_0.$ === "Nil") {
     return run_jump($atom$, ["Absent"]);
@@ -12091,6 +13105,18 @@ function $ka_type_app$(e_0, t_0, fty_0) {
   return run_jump($subst$, [run_loop($kid$(fty_0, 1)), run_loop($ix$(fty_0)), run_loop($kid$(t_0, 1))]);
 }
 
+function $ka_args_after_head$(e_0, ctx_0, tel_0, h_0, rest_0, annotated_0) {
+  return run_jump($kc$, [run_loop($core_subst_stable$(run_loop($kid$(tel_0, 1)))), run_clo((x_0) => {
+  return {$: "Con", ["head"]: annotated_0, ["tail"]: run_loop($ka_args_static$(e_0, ctx_0, run_loop($kid$(tel_0, 1)), rest_0))};
+}), run_clo((x_1) => {
+  return {$: "Con", ["head"]: annotated_0, ["tail"]: run_loop($ka_args$(e_0, ctx_0, run_loop($subst$(run_loop($kid$(tel_0, 1)), run_loop($ix$(tel_0)), h_0)), rest_0))};
+})]);
+}
+
+function $ka_args_head$(e_0, ctx_0, tel_0, h_0, rest_0) {
+  return {$: "Con", ["head"]: run_loop($annotate$(e_0, ctx_0, h_0, run_loop($kid$(tel_0, 0)))), ["tail"]: run_loop($ka_args$(e_0, ctx_0, run_loop($subst$(run_loop($kid$(tel_0, 1)), run_loop($ix$(tel_0)), h_0)), rest_0))};
+}
+
 function $mat_goal$(book_0, goal_0, tel_0, n_0, name_0, xs_0) {
   return run_jump($kc$, [(n_0 === 0), run_clo((x_0) => {
   return run_jump($subst$, [run_loop($kid$(goal_0, 1)), run_loop($ix$(goal_0)), run_loop($kt$("Ctr", name_0, 0, 0, run_loop($norm_join$(xs_0, {$: "Nil"}))))]);
@@ -12099,33 +13125,129 @@ function $mat_goal$(book_0, goal_0, tel_0, n_0, name_0, xs_0) {
 })]);
 }
 
-function $all$(q_0, name_0, id_0, a_0, b_0) {
-  return run_jump($kt$, ["All", name_0, id_0, q_0, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}]);
+function $j_choice_arm$(t_0, first_0) {
+  return run_jump($Bool$and$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Lam")), run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(run_loop($kid$(t_0, 0)))))), "Lam")))), run_loop($j_choice_leaf$(run_loop($j_strip$(run_loop($kid$(run_loop($j_strip$(run_loop($kid$(t_0, 0)))), 0)))), run_loop($kc$(first_0, run_clo((x_0) => {
+  return run_jump($ix$, [t_0]);
+}), run_clo((x_1) => {
+  return run_jump($ix$, [run_loop($j_strip$(run_loop($kid$(t_0, 0))))]);
+})))))]);
 }
 
-function $norm_min_right$(a_0, b_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(b_0)), "Qua")), run_clo((x_0) => {
-  const x_1 = run_loop($qt$(b_0));
-  return run_jump($kc$, [(x_1 === 2), run_clo((x_2) => {
-  return a_0;
+function $j_choice_branch$(book_0, env_0, t_0, ty_0, tail_0) {
+  const x_0 = run_loop($qt$(ty_0));
+  const x_3 = run_loop($kc$((x_0 === 0), run_clo((x_1) => {
+  return "null";
+}), run_clo((x_2) => {
+  return "ctor(\"Unit\",[])";
+})));
+  const x_4 = (x_3 + ")");
+  const x_5 = run_loop($j_expr$(book_0, {$: "Con", ["head"]: run_loop($kt$("Env", "", run_loop($ix$(t_0)), 0, {$: "Con", ["head"]: run_loop($kid$(ty_0, 0)), ["tail"]: {$: "Nil"}})), ["tail"]: env_0}, run_loop($kid$(t_0, 0)), run_loop($subst$(run_loop($kid$(ty_0, 1)), run_loop($ix$(ty_0)), run_loop($var$(run_loop($nm$(t_0)), run_loop($ix$(t_0)))))), tail_0));
+  const x_6 = (")(" + x_4);
+  const x_7 = (x_5 + x_6);
+  const x_8 = run_loop($j_local$(run_loop($ix$(t_0))));
+  const x_9 = (")=>" + x_7);
+  const x_10 = (x_8 + x_9);
+  return ("((" + x_10);
+}
+
+function $j_word_text$(value_0, float_0) {
+  if (value_0.$ === "None") {
+    return "";
+  } else {
+    const n_0 = value_0["value"];
+    return run_jump($kc$, [float_0, run_clo((x_0) => {
+    const x_1 = run_loop($U32$show$(n_0));
+    const x_2 = (x_1 + ")");
+    return ("bitsFloat(" + x_2);
 }), run_clo((x_3) => {
-  const x_4 = run_loop($qt$(b_0));
-  return run_jump($kc$, [run_loop($Bool$and$((x_4 === 1), run_loop($Bool$not$(run_loop($String$eq$(run_loop($tg$(a_0)), "Qua")))))), run_clo((x_5) => {
-  return run_jump($kt$, ["Min", "", 0, 0, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}]);
+    return run_jump($U32$show$, [n_0]);
+})]);
+  }
+}
+
+function $j_word$(t_0, at_0, acc_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_0) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "WNil")), run_clo((x_1) => {
+  return run_jump($kc$, [(at_0 === 32), run_clo((x_2) => {
+  return {$: "Some", ["value"]: acc_0};
+}), run_clo((x_3) => {
+  return {$: "None"};
+})]);
+}), run_clo((x_4) => {
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($nm$(t_0)), "WCon")), (at_0 < 32))), run_clo((x_5) => {
+  return run_jump($j_word_bit$, [run_loop($j_strip$(run_loop($kid$(t_0, 0)))), run_loop($j_strip$(run_loop($kid$(t_0, 1)))), at_0, acc_0]);
 }), run_clo((x_6) => {
-  return b_0;
+  return {$: "None"};
 })]);
 })]);
 }), run_clo((x_7) => {
-  return run_jump($kt$, ["Min", "", 0, 0, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}]);
+  return {$: "None"};
 })]);
 }
 
-function $norm_stuck$(t_0, x_0, args_0, left_0, fallback_0) {
-  return run_jump($kc$, [(left_0 === 0), run_clo((x_1) => {
-  return run_jump($norm_apply$, [run_loop($app$(t_0, x_0)), args_0]);
+function $j_char_text$(value_0) {
+  if (value_0.$ === "None") {
+    return "";
+  } else {
+    const n_0 = value_0["value"];
+    const x_0 = run_loop($U32$show$(n_0));
+    const x_1 = (x_0 + ")");
+    return ("checkedChar(" + x_1);
+  }
+}
+
+function $j_u32$(t_0) {
+  return run_jump($j_u32_node$, [run_loop($j_strip$(t_0))]);
+}
+
+function $j_nat_text$(value_0) {
+  if (value_0.$ === "None") {
+    return "";
+  } else {
+    const n_0 = value_0["value"];
+    const x_0 = run_loop($Nat$show$(n_0));
+    return (x_0 + "n");
+  }
+}
+
+function $j_nat$(t_0, acc_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_0) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "Zero")), run_clo((x_1) => {
+  return {$: "Some", ["value"]: acc_0};
 }), run_clo((x_2) => {
-  return fallback_0;
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "Succ")), run_clo((x_3) => {
+  return run_jump($j_nat$, [run_loop($j_strip$(run_loop($kid$(t_0, 0)))), nat_chk(acc_0 + 1n)]);
+}), run_clo((x_4) => {
+  return {$: "None"};
+})]);
+})]);
+}), run_clo((x_5) => {
+  return {$: "None"};
+})]);
+}
+
+function $j_string_text$(value_0) {
+  if (value_0.$ === "None") {
+    return "";
+  } else {
+    const s_0 = value_0["value"];
+    return run_jump($j_quote$, [s_0]);
+  }
+}
+
+function $j_string$(t_0, acc_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_0) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "SNil")), run_clo((x_1) => {
+  return {$: "Some", ["value"]: run_loop($String$reverse$(acc_0))};
+}), run_clo((x_2) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "SCon")), run_clo((x_3) => {
+  return run_jump($j_string_head$, [run_loop($j_strip$(run_loop($kid$(t_0, 0)))), run_loop($j_strip$(run_loop($kid$(t_0, 1)))), acc_0]);
+}), run_clo((x_4) => {
+  return {$: "None"};
+})]);
+})]);
+}), run_clo((x_5) => {
+  return {$: "None"};
 })]);
 }
 
@@ -12847,8 +13969,38 @@ function $ni_fill$(s_0, xs_0, i_0) {
   }
 }
 
+function $fpe_defs$(ds_0) {
+  if (ds_0.$ === "Nil") {
+    return run_jump($atom$, ["Absent"]);
+  } else {
+    const head_0 = ds_0["head"];
+    const tail_0 = ds_0["tail"];
+    return run_jump($fpe_defs_next$, [run_loop($fpe_def$(head_0)), tail_0]);
+  }
+}
+
+function $fpe_terms_next$(error_0, rest_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(error_0)), "Absent")), run_clo((x_0) => {
+  return run_jump($fpe_terms$, [rest_0]);
+}), run_clo((x_1) => {
+  return error_0;
+})]);
+}
+
+function $fpe_term$(t_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Error")), run_clo((x_0) => {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(run_loop($nm$(t_0)))), run_clo((x_1) => {
+  return run_jump($atom$, ["Absent"]);
+}), run_clo((x_2) => {
+  return t_0;
+})]);
+}), run_clo((x_3) => {
+  return run_jump($fpe_terms$, [run_loop($ks$(t_0))]);
+})]);
+}
+
 function $f_graph_finish_alias$(s_0, ns_0, book_0, imports_0, prior_0, err_0, done_0) {
-  return {$: "FGraph", ["book"]: run_loop($f_defs_append$(prior_0, run_loop($f_path_defs$(run_loop($f_module_defs$(book_0, {$: "Nil"}, run_loop($f_family_book$(prior_0)), ns_0, imports_0)), run_loop($f_path_dir$(run_loop($f_source_path$(s_0)))), run_loop($f_eq$(run_loop($f_source_name$(s_0)), "Base")))))), ["error"]: err_0, ["done"]: {$: "Con", ["head"]: run_loop($kt$("Loaded", run_loop($f_source_path$(s_0)), 0, 0, {$: "Con", ["head"]: run_loop($ref$(ns_0)), ["tail"]: {$: "Nil"}})), ["tail"]: done_0}};
+  return {$: "FGraph", ["book"]: run_loop($f_defs_append$(prior_0, run_loop($f_path_defs$(run_loop($f_module_defs$(book_0, {$: "Nil"}, run_loop($f_family_book$(prior_0)), ns_0, imports_0)), run_loop($f_path_dir$(run_loop($f_source_path$(s_0)))), run_loop($f_eq$(run_loop($f_source_name$(s_0)), "Base")))))), ["error"]: err_0, ["done"]: {$: "Con", ["head"]: run_loop($kt$("Loaded", run_loop($f_source_path$(s_0)), run_loop($f_graph_count_defs$(book_0, 0)), 0, {$: "Con", ["head"]: run_loop($ref$(ns_0)), ["tail"]: {$: "Nil"}})), ["tail"]: done_0}};
 }
 
 function $f_alias_defs$(ds_0, imports_0) {
@@ -12968,454 +14120,389 @@ function $fp_children$(terms_0, definition_0, source_0, route_0, index_0) {
   }
 }
 
-function $j_env$(env_0, id_0) {
-  if (env_0.$ === "Nil") {
-    return run_jump($atom$, ["Absent"]);
-  } else {
-    const h_0 = env_0["head"];
-    const rest_0 = env_0["tail"];
-    const x_0 = run_loop($ix$(h_0));
-    return run_jump($kc$, [(x_0 === id_0), run_clo((x_1) => {
-    return run_jump($kid$, [h_0, 0]);
-}), run_clo((x_2) => {
-    return run_jump($j_env$, [rest_0, id_0]);
-})]);
-  }
-}
-
-function $j_arm_tel$(book_0, tel_0, ret_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), run_clo((x_0) => {
-  return run_jump($all$, [run_loop($qt$(tel_0)), run_loop($nm$(tel_0)), run_loop($ix$(tel_0)), run_loop($kid$(tel_0, 0)), run_loop($j_arm_tel$(book_0, run_loop($kid$(tel_0, 1)), ret_0))]);
+function $j_l_children$(book_0, env_0, t_0, ty_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Lam")), run_clo((x_0) => {
+  return run_jump($j_l_lam$, [book_0, env_0, t_0, run_loop($wnf$(book_0, ty_0))]);
 }), run_clo((x_1) => {
-  return ret_0;
-})]);
-}
-
-function $j_count_constructors$(ctors_0, removed_0) {
-  if (ctors_0.$ === "Nil") {
-    return 0;
-  } else {
-    const d_0 = ctors_0["head"];
-    const rest_0 = ctors_0["tail"];
-    const x_2 = run_loop($kc$(run_loop($has_name$(removed_0, run_loop($dn$(d_0)))), run_clo((x_0) => {
-    return 0;
-}), run_clo((x_1) => {
-    return 1;
-})));
-    const x_3 = run_loop($j_count_constructors$(rest_0, removed_0));
-    return ((x_2 + x_3) >>> 0);
-  }
-}
-
-function $j_literal_node$(t_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_0) => {
-  return run_jump($j_literal_ctor$, [t_0]);
-}), run_clo((x_1) => {
-  return "";
-})]);
-}
-
-function $j_l_names$(names_0) {
-  if (names_0.$ === "Nil") {
-    return "";
-  } else {
-    const h_0 = names_0["head"];
-    const rest_0 = names_0["tail"];
-    return run_jump($kc$, [run_loop($String$starts_with$(h_0, "$js.")), run_clo((x_0) => {
-    return h_0;
-}), run_clo((x_1) => {
-    return "";
-})]);
-  }
-}
-
-function $j_apply$(book_0, env_0, t_0, tail_0, fty_0) {
-  return run_jump($j_apply_spine$, [book_0, env_0, t_0, tail_0, fty_0, run_loop($j_call_spine$(t_0, {$: "Nil"}))]);
-}
-
-function $j_constructor_mode$(book_0, env_0, t_0, ty_0, tail_0) {
-  return run_jump($kc$, [run_loop($Bool$and$(tail_0, run_loop($String$eq$(run_loop($j_literal_typed$(book_0, t_0, ty_0)), "")))), run_clo((x_0) => {
-  const x_1 = run_loop($j_ctor_thunks$(book_0, env_0, run_loop($ks$(t_0)), run_loop($j_specialize$(book_0, run_loop($dt$(run_loop($j_find_ctor$(book_0, run_loop($nm$(t_0)))))), run_loop($ks$(run_loop($wnf$(book_0, ty_0))))))));
-  const x_2 = (x_1 + "])");
-  const x_3 = run_loop($j_quote$(run_loop($nm$(t_0))));
-  const x_4 = (",[" + x_2);
-  const x_5 = (x_3 + x_4);
-  return ("build(" + x_5);
-}), run_clo((x_6) => {
-  return run_jump($j_constructor$, [book_0, env_0, t_0, ty_0]);
-})]);
-}
-
-function $j_lambda$(book_0, env_0, t_0, ty_0) {
-  const x_0 = run_loop($j_lambda_code$(book_0, env_0, t_0, ty_0, 0));
-  const x_1 = (x_0 + "})");
-  const x_2 = run_loop($U32$show$(run_loop($j_lambda_count$(t_0))));
-  const x_3 = (",function(a){" + x_1);
-  const x_4 = (x_2 + x_3);
-  return ("fn(" + x_4);
-}
-
-function $j_match$(book_0, env_0, t_0, ty_0) {
-  const x_0 = run_loop($j_constructor_count$(book_0, run_loop($wnf$(book_0, run_loop($kid$(ty_0, 0))))));
-  return run_jump($kc$, [(x_0 === 1), run_clo((x_1) => {
-  const x_2 = run_loop($j_expr$(book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($j_arm_type$(book_0, ty_0, run_loop($nm$(t_0)))), false));
-  const x_3 = (x_2 + ")");
-  const x_4 = run_loop($j_quote$(run_loop($nm$(t_0))));
-  const x_5 = (",()=>" + x_3);
-  const x_6 = (x_4 + x_5);
-  return ("matcher1(" + x_6);
-}), run_clo((x_7) => {
-  const x_8 = run_loop($j_expr$(book_0, env_0, run_loop($kid$(t_0, 1)), ty_0, false));
-  const x_9 = (x_8 + ")");
-  const x_10 = run_loop($j_expr$(book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($j_arm_type$(book_0, ty_0, run_loop($nm$(t_0)))), false));
-  const x_11 = (",()=>" + x_9);
-  const x_12 = (x_10 + x_11);
-  const x_13 = run_loop($j_quote$(run_loop($nm$(t_0))));
-  const x_14 = (",()=>" + x_12);
-  const x_15 = (x_13 + x_14);
-  return ("matcher(" + x_15);
-})]);
-}
-
-function $j_let$(book_0, env_0, xs_0, ty_0, tail_0) {
-  const x_0 = run_loop($j_let_values$(book_0, env_0, xs_0));
-  const x_1 = (x_0 + ")");
-  const x_2 = run_loop($j_expr$(book_0, run_loop($j_context$(book_0, env_0, xs_0)), run_loop($j_body$(xs_0)), ty_0, tail_0));
-  const x_3 = (")(" + x_1);
-  const x_4 = (x_2 + x_3);
-  const x_5 = run_loop($j_bindings$(book_0, env_0, xs_0));
-  const x_6 = (")=>" + x_4);
-  const x_7 = (x_5 + x_6);
-  return ("((" + x_7);
-}
-
-function $j_exprs$(book_0, env_0, xs_0) {
-  if (xs_0.$ === "Nil") {
-    return "";
-  } else {
-    const h_0 = xs_0["head"];
-    const rest_0 = xs_0["tail"];
-    const x_0 = run_loop($j_expr$(book_0, env_0, h_0, run_loop($atom$("Absent")), false));
-    const x_1 = run_loop($j_exprs_tail$(book_0, env_0, rest_0));
-    return (x_0 + x_1);
-  }
-}
-
-function $j_l_lam$(book_0, env_0, t_0, ty_0) {
-  return run_jump($j_l_walk$, [book_0, {$: "Con", ["head"]: run_loop($kt$("Env", "", run_loop($ix$(t_0)), 0, {$: "Con", ["head"]: run_loop($kid$(ty_0, 0)), ["tail"]: {$: "Nil"}})), ["tail"]: env_0}, run_loop($kid$(t_0, 0)), run_loop($subst$(run_loop($kid$(ty_0, 1)), run_loop($ix$(ty_0)), run_loop($var$(run_loop($nm$(t_0)), run_loop($ix$(t_0))))))]);
-}
-
-function $j_l_mat$(book_0, env_0, t_0, ty_0) {
-  const x_0 = run_loop($j_constructor_count$(book_0, run_loop($wnf$(book_0, run_loop($kid$(ty_0, 0))))));
-  const x_3 = run_loop($j_l_walk$(book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($j_arm_type$(book_0, ty_0, run_loop($nm$(t_0))))));
-  const x_4 = run_loop($kc$((x_0 === 1), run_clo((x_1) => {
-  return "";
-}), run_clo((x_2) => {
-  return run_jump($j_l_walk$, [book_0, env_0, run_loop($kid$(t_0, 1)), ty_0]);
-})));
-  return (x_3 + x_4);
-}
-
-function $j_l_app$(book_0, env_0, t_0, ty_0) {
-  const x_0 = run_loop($qt$(ty_0));
-  const x_3 = run_loop($j_l_walk$(book_0, env_0, run_loop($kid$(t_0, 0)), ty_0));
-  const x_4 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), (x_0 === 0))), run_clo((x_1) => {
-  return "";
-}), run_clo((x_2) => {
-  return run_jump($j_l_walk$, [book_0, env_0, run_loop($kid$(t_0, 1)), run_loop($kid$(ty_0, 0))]);
-})));
-  return (x_3 + x_4);
-}
-
-function $j_l_bindings$(book_0, env_0, ts_0) {
-  if (ts_0.$ === "Nil") {
-    return "";
-  } else {
-    const h_0 = ts_0["head"];
-    const _t_0 = ts_0["tail"];
-    if (_t_0.$ === "Nil") {
-      return "";
-    } else {
-      const x_0 = run_loop($qt$(h_0));
-      const x_3 = run_loop($kc$((x_0 === 0), run_clo((x_1) => {
-      return "";
-}), run_clo((x_2) => {
-      return run_jump($j_l_walk$, [book_0, env_0, run_loop($kid$(h_0, 0)), run_loop($j_type$(book_0, env_0, run_loop($kid$(h_0, 0))))]);
-})));
-      const x_4 = run_loop($j_l_bindings$(book_0, env_0, _t_0));
-      return (x_3 + x_4);
-    }
-  }
-}
-
-function $j_l_fields$(book_0, env_0, ts_0, ty_0) {
-  if (ts_0.$ === "Nil") {
-    return "";
-  } else {
-    const h_0 = ts_0["head"];
-    const rest_0 = ts_0["tail"];
-    const x_0 = run_loop($qt$(ty_0));
-    const x_3 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), (x_0 === 0))), run_clo((x_1) => {
-    return "";
-}), run_clo((x_2) => {
-    return run_jump($j_l_walk$, [book_0, env_0, h_0, run_loop($kid$(ty_0, 0))]);
-})));
-    const x_4 = run_loop($j_l_fields$(book_0, env_0, rest_0, run_loop($j_app_type$(ty_0, h_0))));
-    return (x_3 + x_4);
-  }
-}
-
-function $f_grow_args$(n_0, op_0, min_0, p_0) {
-  const args_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(args_0)), "Error")), run_clo((x_0) => {
-  return {$: "FParsed", ["term"]: args_0, ["rest"]: ts_0};
-}), run_clo((x_1) => {
-  return run_jump($f_grow$, [{$: "FParsed", ["term"]: run_loop($f_choose$(run_loop($f_eq$(op_0, "(")), run_clo((x_2) => {
-  return run_jump($kt$, ["Call", "", 0, 1, {$: "Con", ["head"]: n_0, ["tail"]: run_loop($ks$(args_0))}]);
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Mat")), run_clo((x_2) => {
+  return run_jump($j_l_mat$, [book_0, env_0, t_0, run_loop($wnf$(book_0, ty_0))]);
 }), run_clo((x_3) => {
-  return run_jump($kt$, [run_loop($f_choose$(run_loop($f_eq$(op_0, "{")), run_clo((x_4) => {
-  return "Ctr";
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_4) => {
+  return run_jump($j_l_app$, [book_0, env_0, t_0, run_loop($wnf$(book_0, run_loop($j_type$(book_0, env_0, run_loop($kid$(t_0, 0))))))]);
 }), run_clo((x_5) => {
-  return "ADT";
-}))), run_loop($nm$(n_0)), run_loop($ix$(n_0)), run_loop($qt$(n_0)), run_loop($ks$(args_0))]);
-}))), ["rest"]: ts_0}, min_0]);
-})]);
-}
-
-function $f_args$(ts_0, end_0, acc_0) {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(end_0, ">")), run_loop($f_eq$(run_loop($f_tx$(ts_0)), ">>")))), run_clo((x_0) => {
-  const x_1 = run_loop($f_col$(ts_0));
-  return {$: "FParsed", ["term"]: run_loop($kt$("Args", "", 0, 1, run_loop($List$reverse$(acc_0)))), ["rest"]: {$: "Con", ["head"]: {$: "FToken", ["text"]: ">", ["f_line"]: run_loop($f_line$(ts_0)), ["f_col"]: ((x_1 + 1) >>> 0), ["f_kind"]: 0}, ["tail"]: run_loop($f_tl$(ts_0))}};
-}), run_clo((x_2) => {
-  return run_jump($f_args_base$, [ts_0, end_0, acc_0]);
-})]);
-}
-
-function $f_binary$(a_0, op_0, min_0, p_0) {
-  const b_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_grow$, [{$: "FParsed", ["term"]: run_loop($f_binary_node$(a_0, op_0, b_0)), ["rest"]: ts_0}, min_0]);
-}
-
-function $f_rhs_for$(left_0, ts_0, op_0, min_0) {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($f_eq$(op_0, "+")), run_loop($f_eq$(run_loop($tg$(left_0)), "Literal")))), run_loop($String$ends_with$(run_loop($nm$(left_0)), "n")))), run_clo((x_0) => {
-  return run_jump($f_expr$, [ts_0, 0]);
-}), run_clo((x_1) => {
-  return run_jump($f_rhs$, [ts_0, op_0, min_0]);
-})]);
-}
-
-function $f_index_value$(n_0, idx_0, p_0, min_0) {
-  const v_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_grow$, [{$: "FParsed", ["term"]: run_loop($f_choose$(run_loop($f_eq$(run_loop($tg$(n_0)), "Ref")), run_clo((x_0) => {
-  return run_jump($kt$, ["Write", run_loop($nm$(n_0)), run_loop($ix$(n_0)), 1, {$: "Con", ["head"]: run_loop($f_app$(run_loop($ref$("Array.set")), {$: "Con", ["head"]: run_loop($ref$("U32")), ["tail"]: {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_namespace$(idx_0, run_loop($ref$("U32")))), ["tail"]: {$: "Con", ["head"]: v_0, ["tail"]: {$: "Nil"}}}}})), ["tail"]: {$: "Nil"}}]);
-}), run_clo((x_1) => {
-  return run_jump($f_app$, [run_loop($ref$("Array.set")), {$: "Con", ["head"]: run_loop($ref$("U32")), ["tail"]: {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_namespace$(idx_0, run_loop($ref$("U32")))), ["tail"]: {$: "Con", ["head"]: v_0, ["tail"]: {$: "Nil"}}}}}]);
-}))), ["rest"]: ts_0}, min_0]);
-}
-
-function $f_namespace$(t_0, ty_0) {
-  const x_0 = run_loop($f_eq$(run_loop($tg$(t_0)), "Local"));
-  const x_1 = run_loop($f_eq$(run_loop($tg$(t_0)), "Parallel"));
-  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return run_jump($kt$, [run_loop($tg$(t_0)), run_loop($nm$(t_0)), run_loop($ix$(t_0)), run_loop($qt$(t_0)), {$: "Con", ["head"]: run_loop($kid$(t_0, 0)), ["tail"]: {$: "Con", ["head"]: run_loop($kid$(t_0, 1)), ["tail"]: {$: "Con", ["head"]: run_loop($f_namespace$(run_loop($kid$(t_0, 2)), ty_0)), ["tail"]: {$: "Nil"}}}}]);
-}), run_clo((x_3) => {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(t_0)), "Ref")), run_loop($Char$is_eq$(run_loop($f_head$(run_loop($nm$(t_0)))), ".")))), run_clo((x_4) => {
-  const x_5 = run_loop($nm$(run_loop($f_namespace_head$(ty_0))));
-  const x_6 = run_loop($nm$(t_0));
-  return run_jump($ref$, [(x_5 + x_6)]);
-}), run_clo((x_7) => {
-  const x_8 = run_loop($f_eq$(run_loop($tg$(t_0)), "App"));
-  const x_9 = run_loop($f_eq$(run_loop($tg$(t_0)), "Call"));
-  return run_jump($f_choose$, [run_loop($Bool$and$((x_8 || x_9), run_loop($f_namespace_operator$(run_loop($f_namespace_head$(t_0)))))), run_clo((x_10) => {
-  return {$: "KTerm", ["tag"]: run_loop($tg$(t_0)), ["name"]: run_loop($nm$(t_0)), ["id"]: run_loop($ix$(t_0)), ["quant"]: run_loop($qt$(t_0)), ["kids"]: run_loop($f_namespace_terms$(run_loop($ks$(t_0)), ty_0)), ["removed"]: run_loop($rm$(t_0))};
-}), run_clo((x_11) => {
-  return t_0;
-})]);
-})]);
-})]);
-}
-
-function $f_do_types$(monad_0, p_0) {
-  const types_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_do$, [monad_0, run_loop($ks$(types_0)), run_loop($f_skip$(run_loop($f_pr$(run_loop($f_expect$({$: "FParsed", ["term"]: types_0, ["rest"]: ts_0}, ":")))))), run_loop($f_col$(run_loop($f_skip$(run_loop($f_tl$(ts_0))))))]);
-}
-
-function $f_rewrite_head$(p_0) {
-  const e_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "@")), run_clo((x_0) => {
-  return run_jump($f_rewrite_proof$, [run_loop($nm$(e_0)), run_loop($ix$(e_0)), run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), ":"))]);
-}), run_clo((x_1) => {
-  return run_jump($f_rewrite_proof$, ["", run_loop($ix$(e_0)), run_loop($f_expect$({$: "FParsed", ["term"]: e_0, ["rest"]: ts_0}, ":"))]);
-})]);
-}
-
-function $f_group$(p_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_0) => {
-  return run_jump($f_tuple$, [n_0, run_loop($f_group$(run_loop($f_body$(run_loop($f_tl$(ts_0))))))]);
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_2) => {
-  return run_jump($f_group_namespace$, [n_0, run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), ")"))]);
-}), run_clo((x_3) => {
-  return run_jump($f_expect$, [{$: "FParsed", ["term"]: n_0, ["rest"]: ts_0}, ")"]);
-})]);
-})]);
-}
-
-function $f_brace$(ts_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "==")), run_clo((x_0) => {
-  return run_jump($f_expect$, [{$: "FParsed", ["term"]: run_loop($kt$("Rfl", "", 0, 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))}, "}"]);
-}), run_clo((x_1) => {
-  return run_jump($f_brace_left$, [run_loop($f_expr$(ts_0, 0))]);
-})]);
-}
-
-function $f_array$(ts_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "]")), run_clo((x_0) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Ctr", "Nil", 0, 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
-}), run_clo((x_1) => {
-  return run_jump($f_array_first$, [run_loop($f_expr$(ts_0, 0))]);
-})]);
-}
-
-function $f_all$(ts_0, exi_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), run_clo((x_0) => {
-  return run_jump($f_err$, [ts_0, "~ is only allowed on leading def or law template parameters"]);
-}), run_clo((x_1) => {
-  return run_jump($f_all_domain$, [run_loop($f_tx$(run_loop($f_unmark$(ts_0)))), run_loop($f_atid$(ts_0)), run_loop($f_quant$(ts_0)), exi_0, run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(run_loop($f_tl$(run_loop($f_unmark$(ts_0)))))), 1)), "->"))]);
-})]);
-}
-
-function $f_grade$(ts_0) {
-  const x_0 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "0"));
-  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "1"));
-  const x_2 = (x_0 || x_1);
-  const x_3 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "2"));
-  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Qua", "", 0, run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "0")), run_clo((x_5) => {
-  return 0;
-}), run_clo((x_6) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "1")), run_clo((x_7) => {
-  return 1;
-}), run_clo((x_8) => {
-  return 2;
-})]);
-}))), {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Let")), run_clo((x_6) => {
+  const x_7 = run_loop($j_l_bindings$(book_0, env_0, run_loop($ks$(t_0))));
+  const x_8 = run_loop($j_l_walk$(book_0, run_loop($j_context$(book_0, env_0, run_loop($ks$(t_0)))), run_loop($j_body$(run_loop($ks$(t_0)))), ty_0));
+  return (x_7 + x_8);
 }), run_clo((x_9) => {
-  return run_jump($f_all$, [ts_0, true]);
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_10) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($j_literal_typed$(book_0, t_0, ty_0)), "")), run_clo((x_11) => {
+  return run_jump($j_l_fields$, [book_0, env_0, run_loop($ks$(t_0)), run_loop($j_specialize$(book_0, run_loop($dt$(run_loop($j_find_ctor$(book_0, run_loop($nm$(t_0)))))), run_loop($ks$(run_loop($wnf$(book_0, ty_0))))))]);
+}), run_clo((x_12) => {
+  return "";
+})]);
+}), run_clo((x_13) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Rwt")), run_clo((x_14) => {
+  return run_jump($j_l_walk$, [book_0, env_0, run_loop($kid$(t_0, 2)), ty_0]);
+}), run_clo((x_15) => {
+  return "";
+})]);
+})]);
+})]);
+})]);
+})]);
 })]);
 }
 
-function $f_mark$(p_0, q_0) {
-  const n_0 = p_0["term"];
+function $j_projection_match$(book_0, t_0, ty_0) {
+  const x_0 = run_loop($qt$(ty_0));
+  const x_1 = run_loop($j_constructor_count$(book_0, run_loop($wnf$(book_0, run_loop($kid$(ty_0, 0))))));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), run_loop($Bool$not$((x_0 === 0))))), (x_1 === 1))), run_clo((x_2) => {
+  return run_jump($j_projection_code$, [run_loop($nm$(t_0)), run_loop($j_projection_arm$(run_loop($j_strip$(run_loop($kid$(t_0, 0)))), run_loop($j_specialize$(book_0, run_loop($dt$(run_loop($j_find_ctor$(book_0, run_loop($nm$(t_0)))))), run_loop($ks$(run_loop($wnf$(book_0, run_loop($kid$(ty_0, 0)))))))), {$: "Nil"}, 0))]);
+}), run_clo((x_3) => {
+  return "";
+})]);
+}
+
+function $fpe_pad$(text_0, width_0) {
+  const x_0 = BigInt([...text_0].length);
+  const x_1 = Number(x_0 & 0xFFFFFFFFn);
+  return run_jump($f_choose$, [(x_1 < width_0), run_clo((x_2) => {
+  return run_jump($fpe_pad$, [(" " + text_0), width_0]);
+}), run_clo((x_3) => {
+  return text_0;
+})]);
+}
+
+function $f_alias_valid$(s_0) {
+  const x_0 = run_loop($Char$is_alpha$(run_loop($f_head$(s_0))));
+  const x_1 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "_"));
+  return run_jump($Bool$and$, [run_loop($Bool$and$((x_0 || x_1), run_loop($f_alias_chars$(s_0)))), run_loop($Bool$not$(run_loop($f_reserved$(s_0))))]);
+}
+
+function $f_law_where$(name_0, binder_0, ty_0, p_0, book_0, imports_0, clauses_0) {
+  const predicate_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  const x_0 = run_loop($f_eq$(run_loop($tg$(n_0)), "Ref"));
-  const x_1 = run_loop($f_eq$(run_loop($tg$(n_0)), "ADT"));
-  const x_2 = (x_0 || x_1);
-  const x_3 = run_loop($f_eq$(run_loop($tg$(n_0)), "Error"));
-  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$(run_loop($tg$(n_0)), run_loop($nm$(n_0)), run_loop($ix$(n_0)), q_0, run_loop($ks$(n_0)))), ["rest"]: ts_0};
-}), run_clo((x_5) => {
-  return run_jump($f_err$, [ts_0, "+ requires a binder or quantified datatype"]);
-})]);
+  return run_jump($f_law_type$, [name_0, binder_0, {$: "FParsed", ["term"]: run_loop($f_app$(run_loop($ref$("Exists")), {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Lam", run_loop($nm$(binder_0)), run_loop($ix$(binder_0)), 1, {$: "Con", ["head"]: predicate_0, ["tail"]: {$: "Nil"}})), ["tail"]: {$: "Nil"}}})), ["rest"]: ts_0}, book_0, imports_0, clauses_0]);
 }
 
-function $f_matcher$(ts_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "}")), run_clo((x_0) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Efq", "", 0, 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
-}), run_clo((x_1) => {
-  return run_jump($f_matcher_head$, [run_loop($f_expr$(ts_0, 0))]);
-})]);
-}
-
-function $f_kind_wrap$(p_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($kt$("Typ", "", 0, 0, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Nil"}})), ["rest"]: ts_0};
-}
-
-function $f_kind_token$(ts_0) {
-  return run_jump($f_kind$, [ts_0]);
-}
-
-function $f_foreign_path_valid$(ts_0) {
-  const x_0 = run_loop($f_kind$(run_loop($f_tl$(ts_0))));
-  const x_1 = run_loop($String$ends_with$(run_loop($f_unquote$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))), ".c"));
-  const x_2 = run_loop($String$ends_with$(run_loop($f_unquote$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))), ".js"));
-  return run_jump($Bool$and$, [run_loop($Bool$and$((x_0 === 2), run_loop($Char$is_eq$(run_loop($f_head$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))), "\"")))), (x_1 || x_2)]);
-}
-
-function $f_unquote$(s_0) {
-  return run_jump($f_unquote_chars$, [run_loop($f_tail$(s_0))]);
-}
-
-function $f_put$(d_0, book_0) {
-  return {$: "Con", ["head"]: d_0, ["tail"]: book_0};
-}
-
-function $f_dk$(d_0) {
-  const name_0 = d_0["name"];
-  const kind_0 = d_0["kind"];
-  const arity_0 = d_0["arity"];
-  const templates_0 = d_0["templates"];
-  const typ_0 = d_0["typ"];
-  const value_0 = d_0["value"];
-  const ctors_0 = d_0["ctors"];
-  const native_0 = d_0["native"];
-  const unsafe_0 = d_0["unsafe"];
-  return kind_0;
-}
-
-function $f_tbind$(pars_0, result_0) {
-  if (pars_0.$ === "Nil") {
-    return result_0;
+function $f_app$(f_0, xs_0) {
+  if (xs_0.$ === "Nil") {
+    return f_0;
   } else {
-    const p_0 = pars_0["head"];
-    const ps_0 = pars_0["tail"];
-    return run_jump($kt$, ["All", run_loop($nm$(p_0)), run_loop($ix$(p_0)), run_loop($qt$(p_0)), {$: "Con", ["head"]: run_loop($kid$(p_0, 0)), ["tail"]: {$: "Con", ["head"]: run_loop($f_tbind$(ps_0, result_0)), ["tail"]: {$: "Nil"}}}]);
+    const x_0 = xs_0["head"];
+    const xt_0 = xs_0["tail"];
+    return run_jump($f_app$, [run_loop($kt$("App", "", 0, 1, {$: "Con", ["head"]: f_0, ["tail"]: {$: "Con", ["head"]: x_0, ["tail"]: {$: "Nil"}}})), xt_0]);
   }
 }
 
-function $f_dx$(d_0) {
-  const name_0 = d_0["name"];
-  const kind_0 = d_0["kind"];
-  const arity_0 = d_0["arity"];
-  const templates_0 = d_0["templates"];
-  const typ_0 = d_0["typ"];
-  const value_0 = d_0["value"];
-  const ctors_0 = d_0["ctors"];
-  const native_0 = d_0["native"];
-  const unsafe_0 = d_0["unsafe"];
-  return templates_0;
+function $f_prec$(s_0) {
+  const x_0 = run_loop($f_eq$(s_0, "=>"));
+  const x_1 = run_loop($f_eq$(s_0, "->"));
+  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+  return 1;
+}), run_clo((x_3) => {
+  const x_4 = run_loop($f_eq$(s_0, "&"));
+  const x_5 = run_loop($f_eq$(s_0, "|"));
+  return run_jump($f_choose$, [(x_4 || x_5), run_clo((x_6) => {
+  return 2;
+}), run_clo((x_7) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(s_0, "||")), run_clo((x_8) => {
+  return 3;
+}), run_clo((x_9) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(s_0, "&&")), run_clo((x_10) => {
+  return 4;
+}), run_clo((x_11) => {
+  const x_12 = run_loop($f_eq$(s_0, "<"));
+  const x_13 = run_loop($f_eq$(s_0, ">op"));
+  const x_14 = (x_12 || x_13);
+  const x_15 = run_loop($f_eq$(s_0, "<="));
+  const x_16 = (x_14 || x_15);
+  const x_17 = run_loop($f_eq$(s_0, ">="));
+  return run_jump($f_choose$, [(x_16 || x_17), run_clo((x_18) => {
+  return 5;
+}), run_clo((x_19) => {
+  const x_20 = run_loop($f_eq$(s_0, "<>"));
+  const x_21 = run_loop($f_eq$(s_0, "++"));
+  const x_22 = (x_20 || x_21);
+  const x_23 = run_loop($f_eq$(s_0, "<&>"));
+  return run_jump($f_choose$, [(x_22 || x_23), run_clo((x_24) => {
+  return 6;
+}), run_clo((x_25) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(s_0, ".|.")), run_clo((x_26) => {
+  return 7;
+}), run_clo((x_27) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(s_0, ".^.")), run_clo((x_28) => {
+  return 8;
+}), run_clo((x_29) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(s_0, ".&.")), run_clo((x_30) => {
+  return 9;
+}), run_clo((x_31) => {
+  const x_32 = run_loop($f_eq$(s_0, "<<"));
+  const x_33 = run_loop($f_eq$(s_0, ">>op"));
+  return run_jump($f_choose$, [(x_32 || x_33), run_clo((x_34) => {
+  return 10;
+}), run_clo((x_35) => {
+  const x_36 = run_loop($f_eq$(s_0, "+"));
+  const x_37 = run_loop($f_eq$(s_0, "-"));
+  return run_jump($f_choose$, [(x_36 || x_37), run_clo((x_38) => {
+  return 11;
+}), run_clo((x_39) => {
+  const x_40 = run_loop($f_eq$(s_0, "*"));
+  const x_41 = run_loop($f_eq$(s_0, "/"));
+  const x_42 = (x_40 || x_41);
+  const x_43 = run_loop($f_eq$(s_0, "%"));
+  return run_jump($f_choose$, [(x_42 || x_43), run_clo((x_44) => {
+  return 12;
+}), run_clo((x_45) => {
+  return 0;
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
 }
 
-function $fc_start$(pars_0, ty_0, body_0, filled_0) {
-  const x_2 = run_loop($f_choose$(filled_0, run_clo((x_0) => {
-  return run_jump($f_len$, [pars_0]);
-}), run_clo((x_1) => {
-  return run_jump($fc_term$, [ty_0, {$: "Nil"}]);
-})));
-  const x_3 = run_loop($fc_term$(body_0, pars_0));
-  return ((x_2 + x_3) >>> 0);
-}
-
-function $f_body_context$(ts_0, outer_0) {
-  return run_jump($f_body_context_at$, [run_loop($f_skip$(ts_0)), outer_0]);
-}
-
-function $f_type_ctor$(name_0, pars_0, ty_0, ctor_0, p_0, book_0, imports_0, ctors_0) {
-  const fields_0 = p_0["term"];
+function $f_grow_base$(p_0, min_0) {
+  const n_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(fields_0)), "Error")), run_clo((x_0) => {
-  return run_jump($f_result$, [book_0, run_loop($nm$(fields_0)), imports_0]);
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(n_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
 }), run_clo((x_1) => {
-  return run_jump($f_type_ctors$, [name_0, pars_0, ty_0, run_loop($f_skip$(ts_0)), book_0, imports_0, {$: "Con", ["head"]: {$: "KDef", ["name"]: ctor_0, ["kind"]: "Ctr", ["arity"]: run_loop($f_len$(run_loop($ks$(fields_0)))), ["templates"]: 0, ["typ"]: run_loop($f_tbind$(pars_0, run_loop($f_tbind$(run_loop($ks$(fields_0)), run_loop($kt$("ADT", name_0, 0, 1, run_loop($f_param_refs$(pars_0)))))))), ["value"]: run_loop($kt$("Absent", ctor_0, 0, 0, {$: "Nil"})), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: false}, ["tail"]: ctors_0}]);
+  const x_2 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "("));
+  const x_3 = run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<")), run_loop($Char$is_upper$(run_loop($f_head$(run_loop($nm$(n_0))))))));
+  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
+  return run_jump($f_grow_args$, [n_0, run_loop($f_tx$(ts_0)), min_0, run_loop($f_args$(run_loop($f_tl$(ts_0)), run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "(")), run_clo((x_5) => {
+  return ")";
+}), run_clo((x_6) => {
+  return ">";
+}))), {$: "Nil"}))]);
+}), run_clo((x_7) => {
+  const x_8 = run_loop($f_prec$(run_loop($f_tx$(ts_0))));
+  const x_9 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "%"));
+  const x_10 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "-"));
+  const x_11 = run_loop($f_col$(ts_0));
+  const x_12 = run_loop($f_col$(run_loop($f_tl$(ts_0))));
+  const x_13 = ((x_11 + 1) >>> 0);
+  const x_14 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), ")"));
+  const x_15 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "}"));
+  const x_16 = (x_14 || x_15);
+  const x_17 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), ","));
+  const x_18 = (x_16 || x_17);
+  const x_19 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), ":"));
+  const x_20 = (x_18 || x_19);
+  const x_21 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), ">"));
+  const x_22 = (x_20 || x_21);
+  const x_23 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "\n"));
+  const x_24 = (x_22 || x_23);
+  const x_25 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "->"));
+  const x_26 = (x_24 || x_25);
+  const x_27 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "<eof>"));
+  const x_28 = (x_26 || x_27);
+  const x_29 = run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "]"));
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$((x_8 > min_0), run_loop($Bool$not$(run_loop($Bool$and$(run_loop($Bool$and$((x_9 || x_10), (x_12 === x_13))), run_loop($Char$is_alpha$(run_loop($f_head$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))))))))))), run_loop($Bool$not$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ">")))))), run_loop($Bool$not$(run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ">>")), (x_28 || x_29))))))), run_clo((x_30) => {
+  const x_31 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=>"));
+  const x_32 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "->"));
+  const x_33 = (x_31 || x_32);
+  const x_34 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<>"));
+  const x_35 = (x_33 || x_34);
+  const x_36 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "&"));
+  const x_37 = (x_35 || x_36);
+  const x_38 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "|"));
+  return run_jump($f_binary$, [n_0, run_loop($f_tx$(ts_0)), min_0, run_loop($f_rhs$(run_loop($f_tl$(ts_0)), run_loop($f_tx$(ts_0)), run_loop($f_choose$((x_37 || x_38), run_clo((x_39) => {
+  const x_40 = run_loop($f_prec$(run_loop($f_tx$(ts_0))));
+  return ((x_40 - 1) >>> 0);
+}), run_clo((x_41) => {
+  return run_jump($f_prec$, [run_loop($f_tx$(ts_0))]);
+})))))]);
+}), run_clo((x_42) => {
+  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
+})]);
+})]);
+})]);
+}
+
+function $f_bang$(n_0, ts_0, min_0) {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(n_0)), "Ref")), run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "(")))), run_clo((x_0) => {
+  return run_jump($f_grow$, [{$: "FParsed", ["term"]: run_loop($kt$("Ref", run_loop($nm$(n_0)), run_loop($ix$(n_0)), 3, run_loop($ks$(n_0)))), ["rest"]: run_loop($f_tl$(ts_0))}, min_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_err$, [ts_0, "! must follow a named definition and precede call parentheses"]);
+})]);
+}
+
+function $f_index$(n_0, p_0, min_0) {
+  const idx_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<-")), run_clo((x_0) => {
+  return run_jump($f_index_value$, [n_0, idx_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 2)), min_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_grow$, [{$: "FParsed", ["term"]: run_loop($f_app$(run_loop($ref$("Array.get")), {$: "Con", ["head"]: run_loop($ref$("U32")), ["tail"]: {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_namespace$(idx_0, run_loop($ref$("U32")))), ["tail"]: {$: "Nil"}}}})), ["rest"]: ts_0}, min_0]);
+})]);
+}
+
+function $f_template_expr$(p_0) {
+  const t_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($kt$("TemplateArg", "", 0, 0, {$: "Con", ["head"]: t_0, ["tail"]: {$: "Nil"}})), ["rest"]: ts_0};
+}
+
+function $f_do_start$(ts_0) {
+  return run_jump($f_do_named$, [run_loop($f_space$(ts_0))]);
+}
+
+function $f_rewrite$(ts_0) {
+  return run_jump($f_rewrite_head$, [run_loop($f_expr$(ts_0, 0))]);
+}
+
+function $f_atom_base$(ts_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "(")), run_clo((x_0) => {
+  return run_jump($f_group$, [run_loop($f_body$(run_loop($f_tl$(ts_0))))]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "{")), run_clo((x_2) => {
+  return run_jump($f_brace$, [run_loop($f_tl$(ts_0))]);
+}), run_clo((x_3) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "[")), run_clo((x_4) => {
+  return run_jump($f_array$, [run_loop($f_tl$(ts_0))]);
+}), run_clo((x_5) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "@")), run_clo((x_6) => {
+  return run_jump($f_all$, [run_loop($f_tl$(ts_0)), false]);
+}), run_clo((x_7) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "&")), run_clo((x_8) => {
+  return run_jump($f_grade$, [run_loop($f_tl$(ts_0))]);
+}), run_clo((x_9) => {
+  const x_10 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "+"));
+  const x_11 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "+bind"));
+  return run_jump($f_choose$, [(x_10 || x_11), run_clo((x_12) => {
+  return run_jump($f_mark$, [run_loop($f_atom$(run_loop($f_tl$(ts_0)))), 2]);
+}), run_clo((x_13) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "?")), run_clo((x_14) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Hol", run_loop($f_tx$(run_loop($f_tl$(ts_0)))), 0, 0, {$: "Nil"})), ["rest"]: run_loop($f_tl$(run_loop($f_tl$(ts_0))))};
+}), run_clo((x_15) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "\\")), run_clo((x_16) => {
+  return run_jump($f_matcher$, [run_loop($f_tl$(run_loop($f_tl$(ts_0))))]);
+}), run_clo((x_17) => {
+  const x_18 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "Type"));
+  const x_19 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "Data"));
+  return run_jump($f_choose$, [(x_18 || x_19), run_clo((x_20) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Typ", "", 0, 0, {$: "Con", ["head"]: run_loop($kt$("Qua", "", 0, run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "Data")), run_clo((x_21) => {
+  return 2;
+}), run_clo((x_22) => {
+  return 1;
+}))), {$: "Nil"})), ["tail"]: {$: "Nil"}})), ["rest"]: run_loop($f_tl$(ts_0))};
+}), run_clo((x_23) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "Quant")), run_clo((x_24) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Qnt", "", 0, 0, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
+}), run_clo((x_25) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "Kind")), run_clo((x_26) => {
+  return run_jump($f_kind_wrap$, [run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))), 0)), ")"))]);
+}), run_clo((x_27) => {
+  const x_28 = run_loop($f_kind_token$(ts_0));
+  return run_jump($f_choose$, [(x_28 === 2), run_clo((x_29) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Literal", run_loop($f_tx$(ts_0)), 0, 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
+}), run_clo((x_30) => {
+  const x_31 = run_loop($f_kind_token$(ts_0));
+  return run_jump($f_choose$, [run_loop($Bool$and$((x_31 === 1), run_loop($Bool$not$(run_loop($f_reserved$(run_loop($f_tx$(ts_0)))))))), run_clo((x_32) => {
+  return run_jump($f_atom_name$, [ts_0]);
+}), run_clo((x_33) => {
+  return run_jump($f_choose$, [run_loop($f_reserved$(run_loop($f_tx$(ts_0)))), run_clo((x_34) => {
+  return run_jump($f_err$, [ts_0, "expected term"]);
+}), run_clo((x_35) => {
+  return run_jump($fpe_error$, [ts_0, "expected term", "a term"]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+}
+
+function $f_foreign$(name_0, pars_0, ty_0, ts_0, book_0, imports_0, unsafe_0, paths_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "import")), run_clo((x_0) => {
+  return run_jump($f_choose$, [run_loop($f_foreign_path_valid$(ts_0)), run_clo((x_1) => {
+  return run_jump($f_foreign$, [name_0, pars_0, ty_0, run_loop($f_skip$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))))), book_0, imports_0, unsafe_0, {$: "Con", ["head"]: run_loop($kt$("Path", run_loop($f_unquote$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))), 0, 0, {$: "Nil"})), ["tail"]: paths_0}]);
+}), run_clo((x_2) => {
+  return run_jump($f_result$, [book_0, run_loop($fpe_foreign$(run_loop($f_space$(run_loop($f_tl$(ts_0)))))), imports_0]);
+})]);
+}), run_clo((x_3) => {
+  return run_jump($f_tops$, [ts_0, run_loop($f_put$({$: "KDef", ["name"]: name_0, ["kind"]: "Def", ["arity"]: run_loop($f_len$(pars_0)), ["templates"]: 0, ["typ"]: ty_0, ["value"]: run_loop($kt$("Foreign", name_0, 0, 0, run_loop($List$reverse$(paths_0)))), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: unsafe_0}, book_0)), imports_0, false]);
+})]);
+}
+
+function $f_def_signature$(name_0, pars_0, ty_0, book_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_dk$(run_loop($f_find$(name_0, book_0)))), "Missing")), run_clo((x_0) => {
+  return run_jump($f_tbind$, [pars_0, ty_0]);
+}), run_clo((x_1) => {
+  return ty_0;
+})]);
+}
+
+function $f_def_body$(name_0, pars_0, ty_0, p_0, book_0, imports_0, unsafe_0) {
+  const body_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(body_0)), "Error")), run_clo((x_0) => {
+  return run_jump($f_result$, [book_0, body_0, imports_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_tops$, [ts_0, run_loop($f_put$({$: "KDef", ["name"]: name_0, ["kind"]: "Def", ["arity"]: run_loop($f_len$(pars_0)), ["templates"]: run_loop($f_choose$(run_loop($f_eq$(run_loop($f_dk$(run_loop($f_find$(name_0, book_0)))), "Missing")), run_clo((x_2) => {
+  return run_jump($f_templates$, [pars_0]);
+}), run_clo((x_3) => {
+  return run_jump($f_dx$, [run_loop($f_find$(name_0, book_0))]);
+}))), ["typ"]: ty_0, ["value"]: run_loop($kt$("Body", "", run_loop($fc_start$(pars_0, ty_0, body_0, run_loop($Bool$not$(run_loop($f_eq$(run_loop($f_dk$(run_loop($f_find$(name_0, book_0)))), "Missing")))))), 0, {$: "Con", ["head"]: run_loop($kt$("Params", "", 0, 0, pars_0)), ["tail"]: {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}}})), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: unsafe_0}, book_0)), imports_0, false]);
+})]);
+}
+
+function $f_body$(ts_0) {
+  return run_jump($f_body_context$, [ts_0, 0]);
+}
+
+function $f_tele_type$(name_0, id_0, q_0, temp_0, p_0, end_0, acc_0) {
+  const ty_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(ty_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: ty_0, ["rest"]: ts_0};
+}), run_clo((x_1) => {
+  return run_jump($f_tele$, [run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_2) => {
+  return run_jump($f_tl$, [ts_0]);
+}), run_clo((x_3) => {
+  return ts_0;
+}))), end_0, {$: "Con", ["head"]: run_loop($kt$(run_loop($f_choose$(temp_0, run_clo((x_4) => {
+  return "Template";
+}), run_clo((x_5) => {
+  return "Bind";
+}))), name_0, id_0, q_0, {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}})), ["tail"]: acc_0}]);
+})]);
+}
+
+function $f_type_ctors$(name_0, pars_0, ty_0, ts_0, book_0, imports_0, ctors_0) {
+  const x_0 = run_loop($f_col$(ts_0));
+  return run_jump($f_choose$, [run_loop($Bool$and$((x_0 > 0), run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "{")))), run_clo((x_1) => {
+  const x_2 = run_loop($Bool$not$(run_loop($f_eq$(run_loop($dk$(run_loop($f_find$(run_loop($f_tx$(ts_0)), ctors_0)))), "Missing"))));
+  const x_3 = run_loop($Bool$not$(run_loop($f_eq$(run_loop($dk$(run_loop($f_ctor_lookup$(run_loop($f_tx$(ts_0)), book_0)))), "Missing"))));
+  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
+  const x_5 = run_loop($f_tx$(ts_0));
+  const x_6 = (x_5 + ")");
+  const x_7 = run_loop($f_tx$(ts_0));
+  const x_8 = (x_7 + ")");
+  return run_jump($f_result$, [book_0, run_loop($f_pn$(run_loop($fpe_fresh$(ts_0, ("expected a fresh constructor name (duplicate declaration: " + x_6), ("a fresh constructor name (duplicate declaration: " + x_8))))), imports_0]);
+}), run_clo((x_9) => {
+  return run_jump($f_type_ctor$, [name_0, pars_0, ty_0, run_loop($f_tx$(ts_0)), run_loop($f_tele$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))), "}", {$: "Nil"})), book_0, imports_0, ctors_0]);
+})]);
+}), run_clo((x_10) => {
+  return run_jump($f_tops$, [ts_0, {$: "Con", ["head"]: {$: "KDef", ["name"]: name_0, ["kind"]: "ADT", ["arity"]: run_loop($f_len$(pars_0)), ["templates"]: 0, ["typ"]: run_loop($f_tbind$(pars_0, ty_0)), ["value"]: run_loop($atom$("Absent")), ["ctors"]: run_loop($List$reverse$(ctors_0)), ["native"]: false, ["unsafe"]: false}, ["tail"]: book_0}, imports_0, false]);
 })]);
 }
 
@@ -13544,7 +14631,7 @@ function $tele_check$(e_0, ctx_0, tel_0, args_0, dem_0) {
   } else {
     const h_0 = args_0["head"];
     const t_0 = args_0["tail"];
-    return run_jump($tele_check_head$, [e_0, ctx_0, run_loop($wnf$(run_loop($cb$(e_0)), tel_0)), h_0, t_0, dem_0]);
+    return run_jump($tele_check_cached_head$, [e_0, ctx_0, run_loop($wnf$(run_loop($cb$(e_0)), tel_0)), h_0, t_0, dem_0]);
   }
 }
 
@@ -13754,21 +14841,7 @@ function $infer_adt$(e_0, ctx_0, t_0, dem_0, d_0) {
   return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($dk$(d_0)), "ADT")), (x_0 === x_1))), run_clo((x_2) => {
   return run_jump($infer_adt_done$, [t_0, run_loop($tele_check$(e_0, ctx_0, run_loop($dt$(d_0)), run_loop($ks$(t_0)), dem_0))]);
 }), run_clo((x_3) => {
-  return run_jump($dg_bad_detail$, ["unknown family or wrong parameter count", run_loop($dg_text$(run_loop($kc$(run_loop($String$eq$(run_loop($dk$(d_0)), "ADT")), run_clo((x_4) => {
-  const x_5 = run_loop($da$(d_0));
-  const x_8 = run_loop($U32$show$(run_loop($da$(d_0))));
-  const x_9 = run_loop($kc$((x_5 === 1), run_clo((x_6) => {
-  return " parameter";
-}), run_clo((x_7) => {
-  return " parameters";
-})));
-  const x_10 = (x_8 + x_9);
-  const x_11 = run_loop($nm$(t_0));
-  const x_12 = (" with " + x_10);
-  return (x_11 + x_12);
-}), run_clo((x_13) => {
-  return "a datatype";
-}))))), t_0]);
+  return run_jump($dg_adt_error$, [t_0, d_0]);
 })]);
 }
 
@@ -13854,6 +14927,60 @@ function $norm_cmp_plain$(book_0, a_0, b_0, fresh_0, rest_0, alts_0) {
 })]);
 }
 
+function $ka_spine_step$(e_0, ctx_0, arg_0, node_0, fty_0) {
+  return {$: "KAnnotatedSpine", ["node"]: run_loop($ka_app_spine_root$(e_0, ctx_0, arg_0, node_0, fty_0)), ["typ"]: run_loop($subst$(run_loop($kid$(fty_0, 1)), run_loop($ix$(fty_0)), arg_0))};
+}
+
+function $core_subst_stable$(t_0) {
+  const tag_0 = t_0["tag"];
+  const name_0 = t_0["name"];
+  const id_0 = t_0["id"];
+  const quant_0 = t_0["quant"];
+  const kids_0 = t_0["kids"];
+  const removed_0 = t_0["removed"];
+  return run_jump($kc$, [run_loop($String$eq$(tag_0, "Var")), run_clo((x_0) => {
+  return false;
+}), run_clo((x_1) => {
+  return run_jump($kc$, [run_loop($core_subst_stable_terms$(kids_0)), run_clo((x_2) => {
+  return run_jump($kc$, [run_loop($String$eq$(tag_0, "App")), run_clo((x_3) => {
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(name_0, "")), (id_0 === 0))), (quant_0 === 0))), run_clo((x_4) => {
+  return run_jump($core_subst_stable_app$, [kids_0, removed_0]);
+}), run_clo((x_5) => {
+  return false;
+})]);
+}), run_clo((x_6) => {
+  return true;
+})]);
+}), run_clo((x_7) => {
+  return false;
+})]);
+})]);
+}
+
+function $ka_args_static$(e_0, ctx_0, tel_0, xs_0) {
+  if (xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const h_0 = xs_0["head"];
+    const rest_0 = xs_0["tail"];
+    return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), run_clo((x_0) => {
+    return {$: "Con", ["head"]: run_loop($annotate$(e_0, ctx_0, h_0, run_loop($kid$(tel_0, 0)))), ["tail"]: run_loop($ka_args_static$(e_0, ctx_0, run_loop($kid$(tel_0, 1)), rest_0))};
+}), run_clo((x_1) => {
+    return run_jump($ka_args_cached$, [e_0, ctx_0, tel_0, {$: "Con", ["head"]: h_0, ["tail"]: rest_0}]);
+})]);
+  }
+}
+
+function $ka_args$(e_0, ctx_0, tel_0, xs_0) {
+  if (xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const h_0 = xs_0["head"];
+    const rest_0 = xs_0["tail"];
+    return run_jump($ka_args_head$, [e_0, ctx_0, run_loop($wnf$(run_loop($cb$(e_0)), tel_0)), h_0, rest_0]);
+  }
+}
+
 function $mat_goal_head$(book_0, goal_0, tel_0, n_0, name_0, xs_0) {
   const x_0 = run_loop($qt$(tel_0));
   return run_jump($all$, [run_loop($kc$((x_0 === 0), run_clo((x_1) => {
@@ -13866,6 +14993,49 @@ function $mat_goal_head$(book_0, goal_0, tel_0, n_0, name_0, xs_0) {
   return run_jump($qadd$, [run_loop($qt$(goal_0)), run_loop($qt$(goal_0))]);
 })]);
 }))), run_loop($nm$(tel_0)), run_loop($ix$(tel_0)), run_loop($kid$(tel_0, 0)), run_loop($mat_goal$(book_0, goal_0, run_loop($kid$(tel_0, 1)), ((n_0 - 1) >>> 0), name_0, run_loop($norm_join$(xs_0, {$: "Con", ["head"]: run_loop($var$(run_loop($nm$(tel_0)), run_loop($ix$(tel_0)))), ["tail"]: {$: "Nil"}}))))]);
+}
+
+function $j_choice_leaf$(t_0, binder_0) {
+  const x_0 = run_loop($ix$(run_loop($j_strip$(run_loop($kid$(t_0, 0))))));
+  const x_1 = run_loop($terms_len$(run_loop($ks$(run_loop($j_strip$(run_loop($kid$(t_0, 1))))))));
+  return run_jump($Bool$and$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(run_loop($kid$(t_0, 0)))))), "Var")))), (x_0 === binder_0))), run_loop($String$eq$(run_loop($tg$(run_loop($j_strip$(run_loop($kid$(t_0, 1)))))), "Ctr")))), run_loop($String$eq$(run_loop($nm$(run_loop($j_strip$(run_loop($kid$(t_0, 1)))))), "Unit")))), (x_1 === 0)]);
+}
+
+function $j_word_bit$(bit_0, rest_0, at_0, acc_0) {
+  const x_0 = run_loop($String$eq$(run_loop($nm$(bit_0)), "True"));
+  const x_1 = run_loop($String$eq$(run_loop($nm$(bit_0)), "False"));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(bit_0)), "Ctr")), (x_0 || x_1))), run_clo((x_2) => {
+  const x_6 = run_loop($kc$(run_loop($String$eq$(run_loop($nm$(bit_0)), "True")), run_clo((x_3) => {
+  const x_4 = BigInt(at_0);
+  return (x_4 >= 32n ? 0 : (1 << Number(x_4)) >>> 0);
+}), run_clo((x_5) => {
+  return 0;
+})));
+  return run_jump($j_word$, [rest_0, ((at_0 + 1) >>> 0), ((acc_0 | x_6) >>> 0)]);
+}), run_clo((x_7) => {
+  return {$: "None"};
+})]);
+}
+
+function $j_u32_node$(t_0) {
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_loop($String$eq$(run_loop($nm$(t_0)), "U32")))), run_clo((x_0) => {
+  return run_jump($j_word$, [run_loop($j_strip$(run_loop($kid$(t_0, 0)))), 0, 0]);
+}), run_clo((x_1) => {
+  return {$: "None"};
+})]);
+}
+
+function $Nat$show$(n_0) {
+  const m_0 = n_0;
+  return run_jump($Nat$show$fin$, [m_0, "", run_loop($Nat$show$put$(nat_divmod(m_0, 10n)))]);
+}
+
+function $j_string_head$(head_0, tail_0, acc_0) {
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(head_0)), "Ctr")), run_loop($String$eq$(run_loop($nm$(head_0)), "Chr")))), run_clo((x_0) => {
+  return run_jump($j_string_char$, [run_loop($j_u32$(run_loop($kid$(head_0, 0)))), tail_0, acc_0]);
+}), run_clo((x_1) => {
+  return {$: "None"};
+})]);
 }
 
 function $kp_float_point$(s_0) {
@@ -13883,11 +15053,6 @@ function $kp_float_point$(s_0) {
     return (x_3 + x_4);
 })]);
   }
-}
-
-function $Nat$show$(n_0) {
-  const m_0 = n_0;
-  return run_jump($Nat$show$fin$, [m_0, "", run_loop($Nat$show$put$(nat_divmod(m_0, 10n)))]);
 }
 
 function $kp_ctor_string$(s_0, t_0, p_0, env_0) {
@@ -14425,188 +15590,138 @@ function $fp_find_token$(tokens_0, line_0, column_0) {
   }
 }
 
-function $j_literal_ctor$(t_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "U32")), run_clo((x_0) => {
-  return run_jump($j_word_text$, [run_loop($j_word$(run_loop($j_strip$(run_loop($kid$(t_0, 0)))), 0, 0)), false]);
-}), run_clo((x_1) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "F32")), run_clo((x_2) => {
-  return run_jump($j_word_text$, [run_loop($j_word$(run_loop($j_strip$(run_loop($kid$(t_0, 0)))), 0, 0)), true]);
-}), run_clo((x_3) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "Chr")), run_clo((x_4) => {
-  return run_jump($j_char_text$, [run_loop($j_u32$(run_loop($kid$(t_0, 0))))]);
-}), run_clo((x_5) => {
-  const x_6 = run_loop($String$eq$(run_loop($nm$(t_0)), "Zero"));
-  const x_7 = run_loop($String$eq$(run_loop($nm$(t_0)), "Succ"));
-  return run_jump($kc$, [(x_6 || x_7), run_clo((x_8) => {
-  return run_jump($j_nat_text$, [run_loop($j_nat$(t_0, 0n))]);
-}), run_clo((x_9) => {
-  const x_10 = run_loop($String$eq$(run_loop($nm$(t_0)), "SNil"));
-  const x_11 = run_loop($String$eq$(run_loop($nm$(t_0)), "SCon"));
-  return run_jump($kc$, [(x_10 || x_11), run_clo((x_12) => {
-  return run_jump($j_string_text$, [run_loop($j_string$(t_0, ""))]);
-}), run_clo((x_13) => {
+function $j_l_lam$(book_0, env_0, t_0, ty_0) {
+  return run_jump($j_l_walk$, [book_0, {$: "Con", ["head"]: run_loop($kt$("Env", "", run_loop($ix$(t_0)), 0, {$: "Con", ["head"]: run_loop($kid$(ty_0, 0)), ["tail"]: {$: "Nil"}})), ["tail"]: env_0}, run_loop($kid$(t_0, 0)), run_loop($subst$(run_loop($kid$(ty_0, 1)), run_loop($ix$(ty_0)), run_loop($var$(run_loop($nm$(t_0)), run_loop($ix$(t_0))))))]);
+}
+
+function $j_l_mat$(book_0, env_0, t_0, ty_0) {
+  const x_0 = run_loop($j_constructor_count$(book_0, run_loop($wnf$(book_0, run_loop($kid$(ty_0, 0))))));
+  const x_3 = run_loop($j_l_walk$(book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($j_arm_type$(book_0, ty_0, run_loop($nm$(t_0))))));
+  const x_4 = run_loop($kc$((x_0 === 1), run_clo((x_1) => {
   return "";
-})]);
-})]);
-})]);
-})]);
-})]);
-}
-
-function $j_apply_spine$(book_0, env_0, t_0, tail_0, fty_0, spine_0) {
-  const x_0 = run_loop($terms_len$(run_loop($ks$(spine_0))));
-  const x_1 = run_loop($terms_len$(run_loop($ks$(spine_0))));
-  const x_2 = run_loop($j_call_arity$(run_loop($lookup$(book_0, run_loop($nm$(spine_0))))));
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(spine_0)), "Call")), (x_0 > 1))), (x_1 <= x_2))), run_clo((x_3) => {
-  const x_6 = run_loop($j_apply_args$(book_0, env_0, run_loop($ks$(spine_0)), run_loop($dt$(run_loop($lookup$(book_0, run_loop($nm$(spine_0))))))));
-  const x_7 = (x_6 + "])");
-  const x_8 = run_loop($j_quote$(run_loop($nm$(spine_0))));
-  const x_9 = ("),[" + x_7);
-  const x_10 = (x_8 + x_9);
-  const x_11 = run_loop($kc$(tail_0, run_clo((x_4) => {
-  return "jump(";
-}), run_clo((x_5) => {
-  return "call(";
-})));
-  const x_12 = ("get(G," + x_10);
-  return (x_11 + x_12);
-}), run_clo((x_13) => {
-  return run_jump($j_apply_one$, [book_0, env_0, t_0, tail_0, fty_0]);
-})]);
-}
-
-function $j_call_spine$(t_0, args_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
-  return run_jump($j_call_spine$, [run_loop($kid$(t_0, 0)), args_0]);
-}), run_clo((x_1) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "App")), run_clo((x_2) => {
-  return run_jump($j_call_spine$, [run_loop($kid$(t_0, 0)), {$: "Con", ["head"]: run_loop($kid$(t_0, 1)), ["tail"]: args_0}]);
-}), run_clo((x_3) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ref")), run_clo((x_4) => {
-  return run_jump($kt$, ["Call", run_loop($nm$(t_0)), 0, 0, args_0]);
-}), run_clo((x_5) => {
-  return run_jump($atom$, ["Absent"]);
-})]);
-})]);
-})]);
-}
-
-function $j_ctor_thunks$(book_0, env_0, args_0, tel_0) {
-  if (args_0.$ === "Nil") {
-    return "";
-  } else {
-    const h_0 = args_0["head"];
-    const rest_0 = args_0["tail"];
-    const x_0 = run_loop($qt$(tel_0));
-    const x_3 = run_loop($j_ctor_thunks$(book_0, env_0, rest_0, run_loop($j_app_type$(tel_0, h_0))));
-    const x_4 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), (x_0 === 0))), run_clo((x_1) => {
-    return "null";
 }), run_clo((x_2) => {
-    return run_jump($j_expr$, [book_0, env_0, h_0, run_loop($kid$(tel_0, 0)), true]);
+  return run_jump($j_l_walk$, [book_0, env_0, run_loop($kid$(t_0, 1)), ty_0]);
 })));
-    const x_5 = ("," + x_3);
-    const x_6 = (x_4 + x_5);
-    return ("()=>" + x_6);
-  }
+  return (x_3 + x_4);
 }
 
-function $j_constructor$(book_0, env_0, t_0, ty_0) {
-  return run_jump($j_constructor_literal$, [book_0, env_0, t_0, ty_0, run_loop($j_literal_typed$(book_0, t_0, ty_0))]);
+function $j_l_app$(book_0, env_0, t_0, ty_0) {
+  const x_0 = run_loop($qt$(ty_0));
+  const x_3 = run_loop($j_l_walk$(book_0, env_0, run_loop($kid$(t_0, 0)), ty_0));
+  const x_4 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), (x_0 === 0))), run_clo((x_1) => {
+  return "";
+}), run_clo((x_2) => {
+  return run_jump($j_l_walk$, [book_0, env_0, run_loop($kid$(t_0, 1)), run_loop($kid$(ty_0, 0))]);
+})));
+  return (x_3 + x_4);
 }
 
-function $j_lambda_count$(t_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
-  return run_jump($j_lambda_count$, [run_loop($kid$(t_0, 0))]);
-}), run_clo((x_1) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Lam")), run_clo((x_2) => {
-  const x_3 = run_loop($j_lambda_count$(run_loop($kid$(t_0, 0))));
-  return ((1 + x_3) >>> 0);
-}), run_clo((x_4) => {
-  return 0;
-})]);
-})]);
-}
-
-function $j_lambda_code$(book_0, env_0, t_0, ty_0, at_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ann")), run_clo((x_0) => {
-  return run_jump($j_lambda_code$, [book_0, env_0, run_loop($kid$(t_0, 0)), run_loop($kid$(t_0, 1)), at_0]);
-}), run_clo((x_1) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Lam")), run_clo((x_2) => {
-  return run_jump($j_lambda_bind$, [book_0, env_0, t_0, run_loop($wnf$(book_0, ty_0)), at_0]);
-}), run_clo((x_3) => {
-  const x_4 = run_loop($j_expr$(book_0, env_0, t_0, ty_0, true));
-  const x_5 = (x_4 + ";");
-  return ("return " + x_5);
-})]);
-})]);
-}
-
-function $j_bindings$(book_0, env_0, xs_0) {
-  if (xs_0.$ === "Nil") {
+function $j_l_bindings$(book_0, env_0, ts_0) {
+  if (ts_0.$ === "Nil") {
     return "";
   } else {
-    const h_0 = xs_0["head"];
-    const _t_0 = xs_0["tail"];
-    if (_t_0.$ === "Nil") {
-      return "";
-    } else {
-      const x_0 = run_loop($j_bindings$(book_0, env_0, _t_0));
-      const x_1 = run_loop($j_local$(run_loop($ix$(h_0))));
-      const x_2 = ("," + x_0);
-      return (x_1 + x_2);
-    }
-  }
-}
-
-function $j_let_values$(book_0, env_0, xs_0) {
-  if (xs_0.$ === "Nil") {
-    return "";
-  } else {
-    const h_0 = xs_0["head"];
-    const _t_0 = xs_0["tail"];
+    const h_0 = ts_0["head"];
+    const _t_0 = ts_0["tail"];
     if (_t_0.$ === "Nil") {
       return "";
     } else {
       const x_0 = run_loop($qt$(h_0));
-      const x_3 = run_loop($j_let_values$(book_0, env_0, _t_0));
-      const x_4 = run_loop($kc$((x_0 === 0), run_clo((x_1) => {
-      return "null";
+      const x_3 = run_loop($kc$((x_0 === 0), run_clo((x_1) => {
+      return "";
 }), run_clo((x_2) => {
-      return run_jump($j_expr$, [book_0, env_0, run_loop($kid$(h_0, 0)), run_loop($atom$("Absent")), false]);
+      return run_jump($j_l_walk$, [book_0, env_0, run_loop($kid$(h_0, 0)), run_loop($j_type$(book_0, env_0, run_loop($kid$(h_0, 0))))]);
 })));
-      const x_5 = ("," + x_3);
-      return (x_4 + x_5);
+      const x_4 = run_loop($j_l_bindings$(book_0, env_0, _t_0));
+      return (x_3 + x_4);
     }
   }
 }
 
-function $j_exprs_tail$(book_0, env_0, xs_0) {
-  if (xs_0.$ === "Nil") {
+function $j_l_fields$(book_0, env_0, ts_0, ty_0) {
+  if (ts_0.$ === "Nil") {
     return "";
   } else {
-    const h_0 = xs_0["head"];
-    const rest_0 = xs_0["tail"];
-    const x_0 = run_loop($j_expr$(book_0, env_0, h_0, run_loop($atom$("Absent")), false));
-    const x_1 = run_loop($j_exprs_tail$(book_0, env_0, rest_0));
-    const x_2 = (x_0 + x_1);
-    return ("," + x_2);
+    const h_0 = ts_0["head"];
+    const rest_0 = ts_0["tail"];
+    const x_0 = run_loop($qt$(ty_0));
+    const x_3 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), (x_0 === 0))), run_clo((x_1) => {
+    return "";
+}), run_clo((x_2) => {
+    return run_jump($j_l_walk$, [book_0, env_0, h_0, run_loop($kid$(ty_0, 0))]);
+})));
+    const x_4 = run_loop($j_l_fields$(book_0, env_0, rest_0, run_loop($j_app_type$(ty_0, h_0))));
+    return (x_3 + x_4);
   }
 }
 
-function $f_args_base$(ts_0, end_0, acc_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), end_0)), run_clo((x_0) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Args", "", 0, 1, run_loop($List$reverse$(acc_0)))), ["rest"]: run_loop($f_tl$(run_loop($f_skip$(ts_0))))};
+function $j_projection_code$(name_0, slot_0) {
+  return run_jump($kc$, [run_loop($String$eq$(slot_0, "")), run_clo((x_0) => {
+  return "";
 }), run_clo((x_1) => {
-  return run_jump($f_arg_next$, [run_loop($f_expr$(run_loop($f_skip$(ts_0)), 0)), end_0, acc_0]);
+  const x_2 = (slot_0 + "];})");
+  const x_3 = run_loop($j_quote$(name_0));
+  const x_4 = (",a[0]).slice()[" + x_2);
+  const x_5 = (x_3 + x_4);
+  return ("fn(1,function(a){return project(" + x_5);
 })]);
 }
 
-function $f_binary_node$(a_0, op_0, b_0) {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($f_eq$(op_0, "+")), run_loop($f_eq$(run_loop($tg$(a_0)), "Literal")))), run_loop($f_ends_nat$(run_loop($nm$(a_0)))))), run_clo((x_0) => {
-  return run_jump($f_nat_plus$, [a_0, b_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_binary_plain$, [a_0, op_0, b_0]);
+function $j_projection_arm$(t_0, tel_0, slots_0, at_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), run_clo((x_0) => {
+  const x_1 = run_loop($qt$(tel_0));
+  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Lam")), run_loop($Bool$not$((x_1 === 0))))), run_clo((x_2) => {
+  return run_jump($j_projection_arm$, [run_loop($j_strip$(run_loop($kid$(t_0, 0)))), run_loop($kid$(tel_0, 1)), {$: "Con", ["head"]: run_loop($kt$("Slot", "", run_loop($ix$(t_0)), at_0, {$: "Nil"})), ["tail"]: slots_0}, ((at_0 + 1) >>> 0)]);
+}), run_clo((x_3) => {
+  return "";
 })]);
+}), run_clo((x_4) => {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Var")), run_clo((x_5) => {
+  return run_jump($j_projection_slot$, [run_loop($ix$(t_0)), slots_0]);
+}), run_clo((x_6) => {
+  return "";
+})]);
+})]);
+}
+
+function $f_alias_chars$(s_0) {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(s_0)), run_clo((x_0) => {
+  return true;
+}), run_clo((x_1) => {
+  const x_2 = run_loop($Char$is_alpha$(run_loop($f_head$(s_0))));
+  const x_3 = run_loop($Char$is_digit$(run_loop($f_head$(s_0))));
+  const x_4 = (x_2 || x_3);
+  const x_5 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "_"));
+  return run_jump($Bool$and$, [(x_4 || x_5), run_loop($f_alias_chars$(run_loop($f_tail$(s_0))))]);
+})]);
+}
+
+function $f_grow_args$(n_0, op_0, min_0, p_0) {
+  const args_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(args_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: args_0, ["rest"]: ts_0};
+}), run_clo((x_1) => {
+  return run_jump($f_grow$, [{$: "FParsed", ["term"]: run_loop($f_choose$(run_loop($f_eq$(op_0, "(")), run_clo((x_2) => {
+  return run_jump($kt$, ["Call", "", 0, 1, {$: "Con", ["head"]: n_0, ["tail"]: run_loop($ks$(args_0))}]);
+}), run_clo((x_3) => {
+  return run_jump($kt$, ["ADT", run_loop($nm$(n_0)), run_loop($ix$(n_0)), run_loop($qt$(n_0)), run_loop($ks$(args_0))]);
+}))), ["rest"]: ts_0}, min_0]);
+})]);
+}
+
+function $f_args$(ts_0, end_0, acc_0) {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(end_0, ">")), run_loop($f_eq$(run_loop($f_tx$(ts_0)), ">>")))), run_clo((x_0) => {
+  const x_1 = run_loop($f_col$(ts_0));
+  return {$: "FParsed", ["term"]: run_loop($kt$("Args", "", 0, 1, run_loop($List$reverse$(acc_0)))), ["rest"]: {$: "Con", ["head"]: {$: "FToken", ["text"]: ">", ["f_line"]: run_loop($f_line$(ts_0)), ["f_col"]: ((x_1 + 1) >>> 0), ["f_kind"]: 0}, ["tail"]: run_loop($f_tl$(ts_0))}};
+}), run_clo((x_2) => {
+  return run_jump($f_args_base$, [ts_0, end_0, acc_0]);
+})]);
+}
+
+function $f_binary$(a_0, op_0, min_0, p_0) {
+  const b_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_grow$, [{$: "FParsed", ["term"]: run_loop($f_binary_plain$(a_0, op_0, b_0)), ["rest"]: ts_0}, min_0]);
 }
 
 function $f_rhs$(ts_0, op_0, min_0) {
@@ -14617,213 +15732,301 @@ function $f_rhs$(ts_0, op_0, min_0) {
 })]);
 }
 
-function $f_namespace_head$(t_0) {
-  const x_0 = run_loop($f_eq$(run_loop($tg$(t_0)), "App"));
-  const x_1 = run_loop($f_eq$(run_loop($tg$(t_0)), "Call"));
+function $f_index_value$(n_0, idx_0, p_0, min_0) {
+  const v_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_grow$, [{$: "FParsed", ["term"]: run_loop($f_choose$(run_loop($f_eq$(run_loop($tg$(n_0)), "Ref")), run_clo((x_0) => {
+  return run_jump($kt$, ["Write", run_loop($nm$(n_0)), run_loop($ix$(n_0)), 1, {$: "Con", ["head"]: run_loop($f_app$(run_loop($ref$("Array.set")), {$: "Con", ["head"]: run_loop($ref$("U32")), ["tail"]: {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_namespace$(idx_0, run_loop($ref$("U32")))), ["tail"]: {$: "Con", ["head"]: v_0, ["tail"]: {$: "Nil"}}}}})), ["tail"]: {$: "Nil"}}]);
+}), run_clo((x_1) => {
+  return run_jump($f_app$, [run_loop($ref$("Array.set")), {$: "Con", ["head"]: run_loop($ref$("U32")), ["tail"]: {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_namespace$(idx_0, run_loop($ref$("U32")))), ["tail"]: {$: "Con", ["head"]: v_0, ["tail"]: {$: "Nil"}}}}}]);
+}))), ["rest"]: ts_0}, min_0]);
+}
+
+function $f_namespace$(t_0, ty_0) {
+  const x_0 = run_loop($f_eq$(run_loop($tg$(t_0)), "Local"));
+  const x_1 = run_loop($f_eq$(run_loop($tg$(t_0)), "Parallel"));
   return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return run_jump($f_namespace_head$, [run_loop($kid$(t_0, 0))]);
+  return run_jump($kt$, [run_loop($tg$(t_0)), run_loop($nm$(t_0)), run_loop($ix$(t_0)), run_loop($qt$(t_0)), {$: "Con", ["head"]: run_loop($kid$(t_0, 0)), ["tail"]: {$: "Con", ["head"]: run_loop($kid$(t_0, 1)), ["tail"]: {$: "Con", ["head"]: run_loop($f_namespace$(run_loop($kid$(t_0, 2)), ty_0)), ["tail"]: {$: "Nil"}}}}]);
 }), run_clo((x_3) => {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(t_0)), "Ref")), run_loop($Char$is_eq$(run_loop($f_head$(run_loop($nm$(t_0)))), ".")))), run_clo((x_4) => {
+  const x_5 = run_loop($nm$(run_loop($f_namespace_head$(ty_0))));
+  const x_6 = run_loop($nm$(t_0));
+  return run_jump($ref$, [(x_5 + x_6)]);
+}), run_clo((x_7) => {
+  const x_8 = run_loop($f_eq$(run_loop($tg$(t_0)), "App"));
+  const x_9 = run_loop($f_eq$(run_loop($tg$(t_0)), "Call"));
+  return run_jump($f_choose$, [run_loop($Bool$and$((x_8 || x_9), run_loop($f_namespace_operator$(run_loop($f_namespace_head$(t_0)))))), run_clo((x_10) => {
+  return {$: "KTerm", ["tag"]: run_loop($tg$(t_0)), ["name"]: run_loop($nm$(t_0)), ["id"]: run_loop($ix$(t_0)), ["quant"]: run_loop($qt$(t_0)), ["kids"]: run_loop($f_namespace_terms$(run_loop($ks$(t_0)), ty_0)), ["removed"]: run_loop($rm$(t_0))};
+}), run_clo((x_11) => {
   return t_0;
 })]);
-}
-
-function $f_namespace_operator$(head_0) {
-  const x_0 = run_loop($Char$is_eq$(run_loop($f_head$(run_loop($nm$(head_0)))), "."));
-  const x_1 = run_loop($f_eq$(run_loop($nm$(head_0)), "Bool.and"));
-  const x_2 = (x_0 || x_1);
-  const x_3 = run_loop($f_eq$(run_loop($nm$(head_0)), "Bool.or"));
-  const x_4 = (x_2 || x_3);
-  const x_5 = run_loop($f_eq$(run_loop($nm$(head_0)), "String.append"));
-  return run_jump($Bool$and$, [run_loop($f_eq$(run_loop($tg$(head_0)), "Ref")), (x_4 || x_5)]);
-}
-
-function $f_namespace_terms$(terms_0, ty_0) {
-  if (terms_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const term_0 = terms_0["head"];
-    const rest_0 = terms_0["tail"];
-    return {$: "Con", ["head"]: run_loop($f_namespace$(term_0, ty_0)), ["tail"]: run_loop($f_namespace_terms$(rest_0, ty_0))};
-  }
-}
-
-function $f_do$(monad_0, types_0, ts_0, indent_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "return")), run_clo((x_0) => {
-  return run_jump($f_do_return$, [monad_0, types_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))]);
-}), run_clo((x_1) => {
-  return run_jump($f_do_statement$, [monad_0, types_0, run_loop($f_expr$(ts_0, 0)), indent_0]);
+})]);
 })]);
 }
 
-function $f_rewrite_proof$(name_0, id_0, p_0) {
+function $f_do_named$(ts_0) {
+  return run_jump($f_choose$, [run_loop($f_valid_name$(run_loop($f_tx$(ts_0)))), run_clo((x_0) => {
+  return run_jump($f_do_parameters$, [run_loop($f_tx$(ts_0)), run_loop($f_space$(run_loop($f_tl$(ts_0))))]);
+}), run_clo((x_1) => {
+  return run_jump($f_err$, [ts_0, "expected a name"]);
+})]);
+}
+
+function $f_space$(ts_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "\n")), run_clo((x_0) => {
+  return run_jump($f_space$, [run_loop($f_tl$(ts_0))]);
+}), run_clo((x_1) => {
+  return ts_0;
+})]);
+}
+
+function $f_rewrite_head$(p_0) {
   const e_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  return run_jump($f_rewrite_motive$, [name_0, id_0, e_0, run_loop($f_expr$(ts_0, 0))]);
-}
-
-function $f_tuple$(n_0, p_0) {
-  const m_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($kt$("Ctr", "Tuple", 0, 1, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: m_0, ["tail"]: {$: "Nil"}}})), ["rest"]: ts_0};
-}
-
-function $f_group_namespace$(n_0, p_0) {
-  const ty_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($f_namespace$(n_0, ty_0)), ["rest"]: ts_0};
-}
-
-function $f_brace_left$(p_0) {
-  const a_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  const x_0 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=="));
-  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "!="));
-  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return run_jump($f_equation$, [a_0, run_loop($f_eq$(run_loop($f_tx$(ts_0)), "!=")), run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), ":"))]);
-}), run_clo((x_3) => {
-  return run_jump($f_group_ann$, [a_0, run_loop($f_expect$(run_loop($f_expr$(run_loop($f_pr$(run_loop($f_expect$({$: "FParsed", ["term"]: a_0, ["rest"]: ts_0}, ":")))), 0)), "}"))]);
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "@")), run_clo((x_0) => {
+  return run_jump($f_rewrite_proof$, [run_loop($nm$(e_0)), run_loop($ix$(e_0)), run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), ":"))]);
+}), run_clo((x_1) => {
+  return run_jump($f_rewrite_proof$, ["", run_loop($ix$(e_0)), run_loop($f_expect$({$: "FParsed", ["term"]: e_0, ["rest"]: ts_0}, ":"))]);
 })]);
 }
 
-function $f_array_first$(p_0) {
+function $f_group$(p_0) {
   const n_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_0) => {
-  return run_jump($f_array_type$, [n_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 12))]);
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_0) => {
+  return run_jump($f_tuple$, [n_0, run_loop($f_group$(run_loop($f_body$(run_loop($f_tl$(ts_0))))))]);
 }), run_clo((x_1) => {
-  return run_jump($f_list$, [run_loop($f_args$(run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_2) => {
-  return run_jump($f_tl$, [ts_0]);
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_2) => {
+  return run_jump($f_group_namespace$, [n_0, run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), ")"))]);
 }), run_clo((x_3) => {
-  return ts_0;
-}))), "]", {$: "Con", ["head"]: n_0, ["tail"]: {$: "Nil"}}))]);
+  return run_jump($f_expect$, [{$: "FParsed", ["term"]: n_0, ["rest"]: ts_0}, ")"]);
+})]);
 })]);
 }
 
-function $f_all_domain$(name_0, id_0, q_0, exi_0, p_0) {
-  const a_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_all_body$, [name_0, id_0, q_0, exi_0, a_0, run_loop($f_expr$(ts_0, 0))]);
-}
-
-function $f_matcher_head$(p_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_0) => {
-  return run_jump($f_matcher_arm$, [run_loop($nm$(n_0)), run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))]);
+function $f_brace$(ts_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "==")), run_clo((x_0) => {
+  return run_jump($f_expect$, [{$: "FParsed", ["term"]: run_loop($kt$("Rfl", "", 0, 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))}, "}"]);
 }), run_clo((x_1) => {
-  return run_jump($f_expect$, [{$: "FParsed", ["term"]: n_0, ["rest"]: ts_0}, "}"]);
+  return run_jump($f_brace_left$, [run_loop($f_expr$(ts_0, 0))]);
 })]);
 }
 
-function $f_kind$(ts_0) {
-  if (ts_0.$ === "Nil") {
-    return 0;
-  } else {
-    const _t_0 = ts_0["head"];
-    const t_0 = _t_0["text"];
-    const l_0 = _t_0["f_line"];
-    const c_0 = _t_0["f_col"];
-    const k_0 = _t_0["f_kind"];
-    const rest_0 = ts_0["tail"];
-    return k_0;
-  }
-}
-
-function $f_unquote_chars$(s_0) {
-  const x_0 = run_loop($String$is_empty$(s_0));
-  const x_1 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\""));
-  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return "";
+function $f_array$(ts_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ";")), run_clo((x_0) => {
+  return run_jump($f_err$, [ts_0, "expected term; a list does not use semicolon separators"]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "]")), run_clo((x_2) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Ctr", "Nil", 0, 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
 }), run_clo((x_3) => {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\\")), run_clo((x_4) => {
-  return (char_new(run_loop($f_escape_code$(run_loop($f_head$(run_loop($f_tail$(s_0))))))) + run_loop($f_unquote_chars$(run_loop($f_tail$(run_loop($f_tail$(s_0)))))));
-}), run_clo((x_5) => {
-  return (run_loop($f_head$(s_0)) + run_loop($f_unquote_chars$(run_loop($f_tail$(s_0)))));
+  return run_jump($f_array_first$, [run_loop($f_expr$(ts_0, 0))]);
 })]);
 })]);
 }
 
-function $fc_term$(t_0, env_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Ref")), run_clo((x_0) => {
-  return run_jump($fc_ref$, [run_loop($nm$(t_0)), env_0]);
+function $f_all$(ts_0, exi_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "~")), run_clo((x_0) => {
+  return run_jump($f_err$, [ts_0, "~ is only allowed on leading def or law template parameters"]);
 }), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "ADT")), run_clo((x_2) => {
-  const x_3 = run_loop($fc_ref$(run_loop($nm$(t_0)), env_0));
-  const x_4 = run_loop($fc_terms$(run_loop($ks$(t_0)), env_0));
-  return ((x_3 + x_4) >>> 0);
-}), run_clo((x_5) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "All")), run_clo((x_6) => {
-  const x_7 = run_loop($fc_term$(run_loop($kid$(t_0, 0)), env_0));
-  const x_8 = run_loop($fc_term$(run_loop($kid$(t_0, 1)), run_loop($fc_bind$(t_0, env_0))));
-  const x_9 = ((x_7 + x_8) >>> 0);
-  return ((1 + x_9) >>> 0);
-}), run_clo((x_10) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Lam")), run_clo((x_11) => {
-  const x_12 = run_loop($fc_ref$(run_loop($nm$(t_0)), env_0));
-  const x_13 = run_loop($fc_term$(run_loop($kid$(t_0, 0)), run_loop($fc_bind$(t_0, env_0))));
-  const x_14 = ((x_12 + x_13) >>> 0);
-  return ((1 + x_14) >>> 0);
-}), run_clo((x_15) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Match")), run_clo((x_16) => {
-  const x_17 = run_loop($fc_terms$(run_loop($ks$(run_loop($kid$(t_0, 0)))), env_0));
-  const x_18 = run_loop($fc_rows$(run_loop($f_tail_terms$(run_loop($ks$(t_0)))), env_0));
-  return ((x_17 + x_18) >>> 0);
-}), run_clo((x_19) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Local")), run_clo((x_20) => {
-  const x_21 = run_loop($qt$(run_loop($kid$(t_0, 0))));
-  const x_24 = run_loop($fc_bind_count$({$: "Con", ["head"]: run_loop($kid$(t_0, 0)), ["tail"]: {$: "Nil"}}));
-  const x_25 = run_loop($fc_term$(run_loop($kid$(t_0, 2)), run_loop($f_concat$(run_loop($fc_binders$({$: "Con", ["head"]: run_loop($kid$(t_0, 0)), ["tail"]: {$: "Nil"}})), env_0))));
-  const x_26 = run_loop($fc_term$(run_loop($kid$(t_0, 1)), env_0));
-  const x_27 = ((x_24 + x_25) >>> 0);
-  const x_28 = run_loop($f_choose$((x_21 === 0), run_clo((x_22) => {
+  return run_jump($f_all_domain$, [run_loop($f_tx$(run_loop($f_unmark$(ts_0)))), run_loop($f_atid$(ts_0)), run_loop($f_quant$(ts_0)), exi_0, run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(run_loop($f_tl$(run_loop($f_unmark$(ts_0)))))), 1)), "->"))]);
+})]);
+}
+
+function $f_grade$(ts_0) {
+  const x_0 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "0"));
+  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "1"));
+  const x_2 = (x_0 || x_1);
+  const x_3 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "2"));
+  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Qua", "", 0, run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "0")), run_clo((x_5) => {
   return 0;
-}), run_clo((x_23) => {
-  return run_jump($fc_term$, [run_loop($kid$(t_0, 0)), env_0]);
-})));
-  const x_29 = ((x_26 + x_27) >>> 0);
-  return ((x_28 + x_29) >>> 0);
-}), run_clo((x_30) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Parallel")), run_clo((x_31) => {
-  const x_32 = run_loop($fc_bind_count$(run_loop($ks$(run_loop($kid$(t_0, 0))))));
-  const x_33 = run_loop($fc_term$(run_loop($kid$(t_0, 2)), run_loop($f_concat$(run_loop($fc_binders$(run_loop($ks$(run_loop($kid$(t_0, 0)))))), env_0))));
-  const x_34 = run_loop($fc_terms$(run_loop($ks$(run_loop($kid$(t_0, 1)))), env_0));
-  const x_35 = ((x_32 + x_33) >>> 0);
-  const x_36 = run_loop($fc_terms$(run_loop($ks$(run_loop($kid$(t_0, 0)))), env_0));
-  const x_37 = ((x_34 + x_35) >>> 0);
-  return ((x_36 + x_37) >>> 0);
-}), run_clo((x_38) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Mat")), run_clo((x_39) => {
-  const x_40 = run_loop($fc_ref$(run_loop($nm$(t_0)), env_0));
-  const x_41 = run_loop($fc_terms$(run_loop($ks$(t_0)), env_0));
-  return ((x_40 + x_41) >>> 0);
-}), run_clo((x_42) => {
-  return run_jump($fc_terms$, [run_loop($ks$(t_0)), env_0]);
+}), run_clo((x_6) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "1")), run_clo((x_7) => {
+  return 1;
+}), run_clo((x_8) => {
+  return 2;
 })]);
-})]);
-})]);
-})]);
-})]);
-})]);
-})]);
+}))), {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
+}), run_clo((x_9) => {
+  return run_jump($f_all$, [ts_0, true]);
 })]);
 }
 
-function $f_body_context_at$(ts_0, outer_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "match")), run_clo((x_0) => {
-  return run_jump($f_match_heads$, [run_loop($f_tl$(ts_0)), outer_0, {$: "Nil"}]);
+function $f_mark$(p_0, q_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  const x_0 = run_loop($f_eq$(run_loop($tg$(n_0)), "Ref"));
+  const x_1 = run_loop($f_eq$(run_loop($tg$(n_0)), "ADT"));
+  const x_2 = (x_0 || x_1);
+  const x_3 = run_loop($f_eq$(run_loop($tg$(n_0)), "Error"));
+  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$(run_loop($tg$(n_0)), run_loop($nm$(n_0)), run_loop($ix$(n_0)), q_0, run_loop($ks$(n_0)))), ["rest"]: ts_0};
+}), run_clo((x_5) => {
+  return run_jump($f_err$, [ts_0, "+ requires a binder or quantified datatype"]);
+})]);
+}
+
+function $f_matcher$(ts_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "}")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Efq", "", 0, 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
 }), run_clo((x_1) => {
-  return run_jump($f_body_at$, [ts_0]);
+  return run_jump($f_matcher_head$, [run_loop($f_expr$(ts_0, 0))]);
 })]);
 }
 
-function $f_param_refs$(pars_0) {
+function $f_kind_wrap$(p_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($kt$("Typ", "", 0, 0, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Nil"}})), ["rest"]: ts_0};
+}
+
+function $f_kind_token$(ts_0) {
+  return run_jump($f_kind$, [ts_0]);
+}
+
+function $f_atom_name$(ts_0) {
+  return run_jump($f_choose$, [run_loop($Char$is_digit$(run_loop($f_head$(run_loop($f_tx$(ts_0)))))), run_clo((x_0) => {
+  const x_1 = run_loop($f_line$(ts_0));
+  const x_2 = run_loop($f_line$(run_loop($f_tl$(ts_0))));
+  const x_3 = run_loop($f_tx$(ts_0));
+  const x_4 = BigInt([...x_3].length);
+  const x_5 = run_loop($f_col$(ts_0));
+  const x_6 = Number(x_4 & 0xFFFFFFFFn);
+  const x_7 = run_loop($f_col$(run_loop($f_tl$(ts_0))));
+  const x_8 = ((x_5 + x_6) >>> 0);
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($Bool$and$(run_loop($String$ends_with$(run_loop($f_tx$(ts_0)), "n")), run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "+")))), (x_1 === x_2))), (x_7 === x_8))), run_clo((x_9) => {
+  return run_jump($f_atom_nat_start$, [ts_0, run_loop($f_literal$(run_loop($f_tx$(ts_0))))]);
+}), run_clo((x_10) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Literal", run_loop($f_tx$(ts_0)), run_loop($f_atid$(ts_0)), 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
+})]);
+}), run_clo((x_11) => {
+  const x_12 = run_loop($f_line$(ts_0));
+  const x_13 = run_loop($f_line$(run_loop($f_tl$(ts_0))));
+  const x_14 = run_loop($f_tx$(ts_0));
+  const x_15 = BigInt([...x_14].length);
+  const x_16 = run_loop($f_col$(ts_0));
+  const x_17 = Number(x_15 & 0xFFFFFFFFn);
+  const x_18 = run_loop($f_col$(run_loop($f_tl$(ts_0))));
+  const x_19 = ((x_16 + x_17) >>> 0);
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))), "{")), (x_12 === x_13))), (x_18 === x_19))), run_clo((x_20) => {
+  return run_jump($f_atom_constructor$, [run_loop($f_tx$(ts_0)), run_loop($f_atid$(ts_0)), run_loop($f_args$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))), "}", {$: "Nil"}))]);
+}), run_clo((x_21) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Ref", run_loop($f_tx$(ts_0)), run_loop($f_atid$(ts_0)), 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))};
+})]);
+})]);
+}
+
+function $f_foreign_path_valid$(ts_0) {
+  const x_0 = run_loop($f_kind$(run_loop($f_tl$(ts_0))));
+  const x_1 = run_loop($String$ends_with$(run_loop($f_unquote$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))), ".c"));
+  const x_2 = run_loop($String$ends_with$(run_loop($f_unquote$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))), ".js"));
+  return run_jump($Bool$and$, [run_loop($Bool$and$((x_0 === 2), run_loop($Char$is_eq$(run_loop($f_head$(run_loop($f_tx$(run_loop($f_tl$(ts_0)))))), "\"")))), (x_1 || x_2)]);
+}
+
+function $f_unquote$(s_0) {
+  return run_jump($f_unquote_chars$, [run_loop($f_tail$(s_0))]);
+}
+
+function $fpe_foreign$(ts_0) {
+  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(run_loop($f_tx$(ts_0)))), "\"")), run_clo((x_0) => {
+  return run_jump($kt$, ["Error", "foreign import requires a quoted .c or .js path", 0, 0, {$: "Nil"}]);
+}), run_clo((x_1) => {
+  return run_jump($f_pn$, [run_loop($fpe_legacy$(ts_0, "foreign import requires a quoted .c or .js path", "'\"'"))]);
+})]);
+}
+
+function $f_put$(d_0, book_0) {
+  return {$: "Con", ["head"]: d_0, ["tail"]: book_0};
+}
+
+function $f_dk$(d_0) {
+  const name_0 = d_0["name"];
+  const kind_0 = d_0["kind"];
+  const arity_0 = d_0["arity"];
+  const templates_0 = d_0["templates"];
+  const typ_0 = d_0["typ"];
+  const value_0 = d_0["value"];
+  const ctors_0 = d_0["ctors"];
+  const native_0 = d_0["native"];
+  const unsafe_0 = d_0["unsafe"];
+  return kind_0;
+}
+
+function $f_tbind$(pars_0, result_0) {
   if (pars_0.$ === "Nil") {
-    return {$: "Nil"};
+    return result_0;
   } else {
     const p_0 = pars_0["head"];
     const ps_0 = pars_0["tail"];
-    return {$: "Con", ["head"]: run_loop($kt$("Ref", run_loop($nm$(p_0)), run_loop($ix$(p_0)), run_loop($qt$(p_0)), {$: "Nil"})), ["tail"]: run_loop($f_param_refs$(ps_0))};
+    return run_jump($kt$, ["All", run_loop($nm$(p_0)), run_loop($ix$(p_0)), run_loop($qt$(p_0)), {$: "Con", ["head"]: run_loop($kid$(p_0, 0)), ["tail"]: {$: "Con", ["head"]: run_loop($f_tbind$(ps_0, result_0)), ["tail"]: {$: "Nil"}}}]);
   }
+}
+
+function $f_dx$(d_0) {
+  const name_0 = d_0["name"];
+  const kind_0 = d_0["kind"];
+  const arity_0 = d_0["arity"];
+  const templates_0 = d_0["templates"];
+  const typ_0 = d_0["typ"];
+  const value_0 = d_0["value"];
+  const ctors_0 = d_0["ctors"];
+  const native_0 = d_0["native"];
+  const unsafe_0 = d_0["unsafe"];
+  return templates_0;
+}
+
+function $fc_start$(pars_0, ty_0, body_0, filled_0) {
+  const x_2 = run_loop($f_choose$(filled_0, run_clo((x_0) => {
+  return run_jump($f_len$, [pars_0]);
+}), run_clo((x_1) => {
+  return run_jump($fc_term$, [ty_0, {$: "Nil"}]);
+})));
+  const x_3 = run_loop($fc_term$(body_0, pars_0));
+  return ((x_2 + x_3) >>> 0);
+}
+
+function $f_body_context$(ts_0, outer_0) {
+  return run_jump($f_body_context_at$, [run_loop($f_skip$(ts_0)), outer_0]);
+}
+
+function $f_ctor_lookup$(name_0, book_0) {
+  if (book_0.$ === "Nil") {
+    return run_jump($f_find$, [name_0, {$: "Nil"}]);
+  } else {
+    const d_0 = book_0["head"];
+    const ds_0 = book_0["tail"];
+    return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($dk$(d_0)), "Ctr")), run_loop($f_eq$(run_loop($dn$(d_0)), name_0)))), run_clo((x_0) => {
+    return d_0;
+}), run_clo((x_1) => {
+    return run_jump($f_ctor_more$, [name_0, run_loop($f_ctor_lookup$(name_0, run_loop($dc$(d_0)))), ds_0]);
+})]);
+  }
+}
+
+function $fpe_fresh$(ts_0, legacy_0, expected_0) {
+  const x_0 = run_loop($f_line$(ts_0));
+  const x_1 = run_loop($f_line$(run_loop($f_tl$(ts_0))));
+  const x_2 = run_loop($f_tx$(ts_0));
+  const x_3 = BigInt([...x_2].length);
+  const x_4 = run_loop($f_col$(ts_0));
+  const x_5 = Number(x_3 & 0xFFFFFFFFn);
+  const x_6 = run_loop($f_col$(run_loop($f_tl$(ts_0))));
+  const x_7 = ((x_4 + x_5) >>> 0);
+  return run_jump($f_choose$, [run_loop($Bool$and$((x_0 === x_1), (x_6 === x_7))), run_clo((x_8) => {
+  return run_jump($fpe_error$, [run_loop($f_tl$(ts_0)), legacy_0, expected_0]);
+}), run_clo((x_9) => {
+  return run_jump($f_err$, [run_loop($f_tl$(ts_0)), legacy_0]);
+})]);
+}
+
+function $f_type_ctor$(name_0, pars_0, ty_0, ctor_0, p_0, book_0, imports_0, ctors_0) {
+  const fields_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(fields_0)), "Error")), run_clo((x_0) => {
+  return run_jump($f_result$, [book_0, fields_0, imports_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_type_ctors$, [name_0, pars_0, ty_0, run_loop($f_skip$(ts_0)), book_0, imports_0, {$: "Con", ["head"]: {$: "KDef", ["name"]: ctor_0, ["kind"]: "Ctr", ["arity"]: run_loop($f_len$(run_loop($ks$(fields_0)))), ["templates"]: 0, ["typ"]: run_loop($f_tbind$(pars_0, run_loop($f_tbind$(run_loop($ks$(fields_0)), run_loop($kt$("ADT", name_0, 0, 1, run_loop($f_param_refs$(pars_0)))))))), ["value"]: run_loop($kt$("Absent", ctor_0, 0, 0, {$: "Nil"})), ["ctors"]: {$: "Nil"}, ["native"]: false, ["unsafe"]: false}, ["tail"]: ctors_0}]);
+})]);
 }
 
 function $ffw_done$(term_0, next_0, stack_0) {
@@ -15018,9 +16221,9 @@ function $cq$(e_0) {
   return quantities_0;
 }
 
-function $tele_check_head$(e_0, ctx_0, tel_0, h_0, rest_0, dem_0) {
+function $tele_check_cached_head$(e_0, ctx_0, tel_0, h_0, rest_0, dem_0) {
   return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), run_clo((x_0) => {
-  return run_jump($tele_check_done$, [run_loop($check$(e_0, ctx_0, h_0, run_loop($qdem$(run_loop($qt$(tel_0)), dem_0)), run_loop($kid$(tel_0, 0)))), run_loop($tele_check$(e_0, ctx_0, run_loop($subst$(run_loop($kid$(tel_0, 1)), run_loop($ix$(tel_0)), h_0)), rest_0, dem_0))]);
+  return run_jump($tele_check_after_head$, [e_0, ctx_0, tel_0, h_0, rest_0, dem_0, run_loop($check$(e_0, ctx_0, h_0, run_loop($qdem$(run_loop($qt$(tel_0)), dem_0)), run_loop($kid$(tel_0, 0))))]);
 }), run_clo((x_1) => {
   return run_jump($bad$, ["too many telescope arguments"]);
 })]);
@@ -15099,6 +16302,26 @@ function $infer_adt_done$(t_0, r_0) {
   return run_jump($checked$, [r_0, t_0, run_loop($cy$(r_0))]);
 }
 
+function $dg_adt_error$(t_0, d_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($dk$(d_0)), "ADT")), run_clo((x_0) => {
+  const x_1 = run_loop($da$(d_0));
+  const x_4 = run_loop($U32$show$(run_loop($da$(d_0))));
+  const x_5 = run_loop($kc$((x_1 === 1), run_clo((x_2) => {
+  return " parameter";
+}), run_clo((x_3) => {
+  return " parameters";
+})));
+  const x_6 = (x_4 + x_5);
+  const x_7 = run_loop($nm$(t_0));
+  const x_8 = (" with " + x_6);
+  return run_jump($dg_bad_detail$, ["unknown family or wrong parameter count", run_loop($dg_text$((x_7 + x_8))), t_0]);
+}), run_clo((x_9) => {
+  const x_10 = run_loop($nm$(t_0));
+  const x_11 = (x_10 + ")");
+  return run_jump($dg_bad_message$, ["unknown family or wrong parameter count", run_loop($dg_text$(("a declared datatype (unknown: " + x_11)))]);
+})]);
+}
+
 function $norm_subset$(as_0, bs_0) {
   if (bs_0.$ === "Nil") {
     return true;
@@ -15136,6 +16359,30 @@ function $norm_cmp_zip$(as_0, bs_0, fresh_0, rest_0) {
   }
 }
 
+function $core_subst_stable_terms$(ts_0) {
+  if (ts_0.$ === "Nil") {
+    return true;
+  } else {
+    const h_0 = ts_0["head"];
+    const rest_0 = ts_0["tail"];
+    return run_jump($kc$, [run_loop($core_subst_stable$(h_0)), run_clo((x_0) => {
+    return run_jump($core_subst_stable_terms$, [rest_0]);
+}), run_clo((x_1) => {
+    return false;
+})]);
+  }
+}
+
+function $core_subst_stable_app$(kids_0, removed_0) {
+  if (removed_0.$ === "Con") {
+    const h_0 = removed_0["head"];
+    const rest_0 = removed_0["tail"];
+    return false;
+  } else {
+    return run_jump($core_subst_stable_app_kids$, [kids_0]);
+  }
+}
+
 function $Nat$show$fin$(g_0, acc_0, dq_0) {
   const d_0 = dq_0["fst"];
   const _t_0 = dq_0["snd"];
@@ -15152,6 +16399,21 @@ function $Nat$show$put$(qr_0) {
   const r_0 = qr_0["snd"];
   const x_0 = nat_chk(48n + r_0);
   return {$: "Tuple", ["fst"]: char_new(Number(x_0 & 0xFFFFFFFFn)), ["snd"]: q_0};
+}
+
+function $j_string_char$(value_0, tail_0, acc_0) {
+  if (value_0.$ === "None") {
+    return {$: "None"};
+  } else {
+    const n_0 = value_0["value"];
+    const x_0 = (n_0 < 55296);
+    const x_1 = (n_0 > 57343);
+    return run_jump($kc$, [run_loop($Bool$and$((n_0 <= 1114111), (x_0 || x_1))), run_clo((x_2) => {
+    return run_jump($j_string$, [tail_0, (run_loop($Char$from_u32$(n_0)) + acc_0)]);
+}), run_clo((x_3) => {
+    return {$: "None"};
+})]);
+  }
 }
 
 function $kp_list$(chain_0, p_0, env_0) {
@@ -15565,193 +16827,36 @@ function $fp_token_origin$(t_0, definition_0, text_0, token_0, route_0) {
   return {$: "Con", ["head"]: {$: "DOrigin", ["definition"]: definition_0, ["term"]: t_0, ["source"]: text_0, ["begin"]: begin_0, ["end"]: ((begin_0 + x_0) >>> 0), ["path"]: route_0}, ["tail"]: {$: "Nil"}};
 }
 
-function $j_word_text$(value_0, float_0) {
-  if (value_0.$ === "None") {
+function $j_projection_slot$(id_0, slots_0) {
+  if (slots_0.$ === "Nil") {
     return "";
   } else {
-    const n_0 = value_0["value"];
-    return run_jump($kc$, [float_0, run_clo((x_0) => {
-    const x_1 = run_loop($U32$show$(n_0));
-    const x_2 = (x_1 + ")");
-    return ("bitsFloat(" + x_2);
-}), run_clo((x_3) => {
-    return run_jump($U32$show$, [n_0]);
-})]);
-  }
-}
-
-function $j_word$(t_0, at_0, acc_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_0) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "WNil")), run_clo((x_1) => {
-  return run_jump($kc$, [(at_0 === 32), run_clo((x_2) => {
-  return {$: "Some", ["value"]: acc_0};
-}), run_clo((x_3) => {
-  return {$: "None"};
-})]);
-}), run_clo((x_4) => {
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($nm$(t_0)), "WCon")), (at_0 < 32))), run_clo((x_5) => {
-  return run_jump($j_word_bit$, [run_loop($j_strip$(run_loop($kid$(t_0, 0)))), run_loop($j_strip$(run_loop($kid$(t_0, 1)))), at_0, acc_0]);
-}), run_clo((x_6) => {
-  return {$: "None"};
-})]);
-})]);
-}), run_clo((x_7) => {
-  return {$: "None"};
-})]);
-}
-
-function $j_char_text$(value_0) {
-  if (value_0.$ === "None") {
-    return "";
-  } else {
-    const n_0 = value_0["value"];
-    const x_0 = run_loop($U32$show$(n_0));
-    const x_1 = (x_0 + ")");
-    return ("checkedChar(" + x_1);
-  }
-}
-
-function $j_u32$(t_0) {
-  return run_jump($j_u32_node$, [run_loop($j_strip$(t_0))]);
-}
-
-function $j_nat_text$(value_0) {
-  if (value_0.$ === "None") {
-    return "";
-  } else {
-    const n_0 = value_0["value"];
-    const x_0 = run_loop($Nat$show$(n_0));
-    return (x_0 + "n");
-  }
-}
-
-function $j_nat$(t_0, acc_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_0) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "Zero")), run_clo((x_1) => {
-  return {$: "Some", ["value"]: acc_0};
+    const s_0 = slots_0["head"];
+    const rest_0 = slots_0["tail"];
+    const x_0 = run_loop($ix$(s_0));
+    return run_jump($kc$, [(id_0 === x_0), run_clo((x_1) => {
+    return run_jump($U32$show$, [run_loop($qt$(s_0))]);
 }), run_clo((x_2) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "Succ")), run_clo((x_3) => {
-  return run_jump($j_nat$, [run_loop($j_strip$(run_loop($kid$(t_0, 0)))), nat_chk(acc_0 + 1n)]);
-}), run_clo((x_4) => {
-  return {$: "None"};
+    return run_jump($j_projection_slot$, [id_0, rest_0]);
 })]);
-})]);
+  }
+}
+
+function $f_args_base$(ts_0, end_0, acc_0) {
+  const spaced_0 = run_loop($f_space$(ts_0));
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(spaced_0)), ";")), run_clo((x_0) => {
+  return run_jump($fpe_error$, [spaced_0, run_loop($f_choose$(run_loop($f_eq$(end_0, "]")), run_clo((x_1) => {
+  return "expected term; a list does not use semicolon separators";
+}), run_clo((x_2) => {
+  return "expected term; arguments do not use semicolon separators";
+}))), "a term"]);
+}), run_clo((x_3) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(spaced_0)), end_0)), run_clo((x_4) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Args", "", 0, 1, run_loop($List$reverse$(acc_0)))), ["rest"]: run_loop($f_tl$(spaced_0))};
 }), run_clo((x_5) => {
-  return {$: "None"};
-})]);
-}
-
-function $j_string_text$(value_0) {
-  if (value_0.$ === "None") {
-    return "";
-  } else {
-    const s_0 = value_0["value"];
-    return run_jump($j_quote$, [s_0]);
-  }
-}
-
-function $j_string$(t_0, acc_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_clo((x_0) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "SNil")), run_clo((x_1) => {
-  return {$: "Some", ["value"]: run_loop($String$reverse$(acc_0))};
-}), run_clo((x_2) => {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($nm$(t_0)), "SCon")), run_clo((x_3) => {
-  return run_jump($j_string_head$, [run_loop($j_strip$(run_loop($kid$(t_0, 0)))), run_loop($j_strip$(run_loop($kid$(t_0, 1)))), acc_0]);
-}), run_clo((x_4) => {
-  return {$: "None"};
+  return run_jump($f_arg_next$, [run_loop($f_expr$(spaced_0, 0)), end_0, acc_0]);
 })]);
 })]);
-}), run_clo((x_5) => {
-  return {$: "None"};
-})]);
-}
-
-function $j_call_arity$(d_0) {
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($db$(d_0)), run_loop($j_intrinsic$(run_loop($dn$(d_0)))))), run_clo((x_0) => {
-  return run_jump($da$, [d_0]);
-}), run_clo((x_1) => {
-  return run_jump($j_lambda_count$, [run_loop($dv$(d_0))]);
-})]);
-}
-
-function $j_apply_args$(book_0, env_0, args_0, ty_0) {
-  return run_jump($j_apply_args_head$, [book_0, env_0, args_0, run_loop($wnf$(book_0, ty_0))]);
-}
-
-function $j_apply_one$(book_0, env_0, t_0, tail_0, fty_0) {
-  const x_2 = run_loop($qt$(fty_0));
-  const x_5 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(fty_0)), "All")), (x_2 === 0))), run_clo((x_3) => {
-  return "null";
-}), run_clo((x_4) => {
-  return run_jump($j_expr$, [book_0, env_0, run_loop($kid$(t_0, 1)), run_loop($kid$(fty_0, 0)), false]);
-})));
-  const x_6 = (x_5 + "])");
-  const x_7 = run_loop($j_expr$(book_0, env_0, run_loop($kid$(t_0, 0)), fty_0, false));
-  const x_8 = (",[" + x_6);
-  const x_9 = run_loop($kc$(tail_0, run_clo((x_0) => {
-  return "jump(";
-}), run_clo((x_1) => {
-  return "call(";
-})));
-  const x_10 = (x_7 + x_8);
-  return (x_9 + x_10);
-}
-
-function $j_constructor_literal$(book_0, env_0, t_0, ty_0, literal_0) {
-  return run_jump($kc$, [run_loop($String$eq$(literal_0, "")), run_clo((x_0) => {
-  const x_1 = run_loop($j_ctor_args$(book_0, env_0, run_loop($ks$(t_0)), run_loop($j_specialize$(book_0, run_loop($dt$(run_loop($j_find_ctor$(book_0, run_loop($nm$(t_0)))))), run_loop($ks$(run_loop($wnf$(book_0, ty_0))))))));
-  const x_2 = (x_1 + "])");
-  const x_3 = run_loop($j_quote$(run_loop($nm$(t_0))));
-  const x_4 = (",[" + x_2);
-  const x_5 = (x_3 + x_4);
-  return ("ctor(" + x_5);
-}), run_clo((x_6) => {
-  return literal_0;
-})]);
-}
-
-function $j_lambda_bind$(book_0, env_0, t_0, ty_0, at_0) {
-  const x_0 = run_loop($qt$(ty_0));
-  const x_5 = run_loop($j_lambda_code$(book_0, {$: "Con", ["head"]: run_loop($kt$("Env", "", run_loop($ix$(t_0)), 0, {$: "Con", ["head"]: run_loop($kid$(ty_0, 0)), ["tail"]: {$: "Nil"}})), ["tail"]: env_0}, run_loop($kid$(t_0, 0)), run_loop($subst$(run_loop($kid$(ty_0, 1)), run_loop($ix$(ty_0)), run_loop($var$(run_loop($nm$(t_0)), run_loop($ix$(t_0)))))), ((at_0 + 1) >>> 0)));
-  const x_6 = run_loop($kc$(run_loop($Bool$and$((x_0 === 0), run_loop($String$eq$(run_loop($tg$(ty_0)), "All")))), run_clo((x_1) => {
-  return "null";
-}), run_clo((x_2) => {
-  const x_3 = run_loop($U32$show$(at_0));
-  const x_4 = (x_3 + "]");
-  return ("a[" + x_4);
-})));
-  const x_7 = (";" + x_5);
-  const x_8 = (x_6 + x_7);
-  const x_9 = run_loop($j_local$(run_loop($ix$(t_0))));
-  const x_10 = ("=" + x_8);
-  const x_11 = (x_9 + x_10);
-  return ("const " + x_11);
-}
-
-function $f_arg_next$(p_0, end_0, acc_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(n_0)), "Error")), run_clo((x_0) => {
-  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
-}), run_clo((x_1) => {
-  return run_jump($f_args$, [run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_2) => {
-  return run_jump($f_tl$, [ts_0]);
-}), run_clo((x_3) => {
-  return ts_0;
-}))), end_0, {$: "Con", ["head"]: n_0, ["tail"]: acc_0}]);
-})]);
-}
-
-function $f_ends_nat$(s_0) {
-  return run_jump($f_choose$, [run_loop($String$is_empty$(run_loop($f_tail$(s_0)))), run_clo((x_0) => {
-  return run_jump($f_eq$, [s_0, "n"]);
-}), run_clo((x_1) => {
-  return run_jump($f_ends_nat$, [run_loop($f_tail$(s_0))]);
-})]);
-}
-
-function $f_nat_plus$(lit_0, b_0) {
-  return run_jump($f_nat_extend$, [run_loop($f_literal$(run_loop($nm$(lit_0)))), b_0]);
 }
 
 function $f_binary_plain$(a_0, op_0, b_0) {
@@ -15774,221 +16879,267 @@ function $f_binary_plain$(a_0, op_0, b_0) {
 })]);
 }
 
-function $f_do_return$(monad_0, types_0, p_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($f_app$(run_loop($ref$((monad_0 + ".pure"))), run_loop($f_concat$(types_0, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Nil"}})))), ["rest"]: ts_0};
-}
-
-function $f_do_statement$(monad_0, types_0, p_0, indent_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_0) => {
-  return run_jump($f_do_annotated$, [monad_0, types_0, n_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 1)), indent_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<-")), run_clo((x_2) => {
-  return run_jump($f_do_value$, [monad_0, types_0, run_loop($kt$("Ref", "_", run_loop($ix$(n_0)), 1, {$: "Nil"})), n_0, false, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), indent_0]);
-}), run_clo((x_3) => {
-  const x_4 = run_loop($f_col$(run_loop($f_skip$(ts_0))));
-  const x_5 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), ";"));
-  const x_6 = (x_4 === indent_0);
-  return run_jump($f_choose$, [run_loop($Bool$and$((x_5 || x_6), run_loop($Bool$not$(run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), "<eof>")))))), run_clo((x_7) => {
-  return run_jump($f_do_value$, [monad_0, types_0, run_loop($kt$("Ref", "_", run_loop($ix$(n_0)), 1, {$: "Nil"})), run_loop($ref$("Unit")), false, {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0}, indent_0]);
-}), run_clo((x_8) => {
-  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
-})]);
-})]);
-})]);
-}
-
-function $f_rewrite_motive$(name_0, id_0, e_0, p_0) {
-  const motive_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_rewrite_body$, [e_0, run_loop($kt$("Lam", "_", ((id_0 + 2147483648) >>> 0), 4, {$: "Con", ["head"]: run_loop($kt$("Lam", name_0, id_0, 1, {$: "Con", ["head"]: motive_0, ["tail"]: {$: "Nil"}})), ["tail"]: {$: "Nil"}})), run_loop($f_body$(ts_0))]);
-}
-
-function $f_equation$(a_0, neg_0, p_0) {
-  const b_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_equation_type$, [a_0, b_0, neg_0, run_loop($f_expect$(run_loop($f_expr$(ts_0, 0)), "}"))]);
-}
-
-function $f_group_ann$(n_0, p_0) {
-  const ty_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($kt$("Ann", "", 0, 1, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}}})), ["rest"]: ts_0};
-}
-
-function $f_array_type$(n_0, p_0) {
-  const ty_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_array_size$, [n_0, ty_0, run_loop($f_eq$(run_loop($f_tx$(ts_0)), "*")), run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), "]"))]);
-}
-
-function $f_list$(p_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($f_list_nodes$(run_loop($ks$(n_0)))), ["rest"]: ts_0};
-}
-
-function $f_all_body$(name_0, id_0, q_0, exi_0, a_0, p_0) {
-  const b_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($f_choose$(exi_0, run_clo((x_0) => {
-  return run_jump($f_app$, [run_loop($kt$("Ref", "Exists", 0, 1, {$: "Nil"})), {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Lam", name_0, id_0, q_0, {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}})), ["tail"]: {$: "Nil"}}}]);
-}), run_clo((x_1) => {
-  return run_jump($kt$, ["All", name_0, id_0, q_0, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}]);
-}))), ["rest"]: ts_0};
-}
-
-function $f_matcher_arm$(name_0, p_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_matcher_tail$, [name_0, n_0, run_loop($f_matcher$(run_loop($f_skip$(ts_0))))]);
-}
-
-function $f_escape_code$(c_0) {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(c_0, "n")), run_clo((x_0) => {
-  return 10;
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(c_0, "t")), run_clo((x_2) => {
-  return 9;
-}), run_clo((x_3) => {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(c_0, "r")), run_clo((x_4) => {
-  return 13;
-}), run_clo((x_5) => {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(c_0, "0")), run_clo((x_6) => {
-  return 0;
-}), run_clo((x_7) => {
-  return run_jump($Char$to_u32$, [c_0]);
-})]);
-})]);
-})]);
-})]);
-}
-
-function $fc_ref$(name_0, env_0) {
-  const x_0 = run_loop($f_contains$(name_0, "."));
-  const x_1 = run_loop($Bool$not$(run_loop($f_eq$(run_loop($tg$(run_loop($f_env$(name_0, env_0)))), "Absent"))));
+function $f_namespace_head$(t_0) {
+  const x_0 = run_loop($f_eq$(run_loop($tg$(t_0)), "App"));
+  const x_1 = run_loop($f_eq$(run_loop($tg$(t_0)), "Call"));
   return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return 0;
+  return run_jump($f_namespace_head$, [run_loop($kid$(t_0, 0))]);
 }), run_clo((x_3) => {
-  return 1;
+  return t_0;
 })]);
 }
 
-function $fc_terms$(ts_0, env_0) {
-  if (ts_0.$ === "Nil") {
-    return 0;
+function $f_namespace_operator$(head_0) {
+  const x_0 = run_loop($Char$is_eq$(run_loop($f_head$(run_loop($nm$(head_0)))), "."));
+  const x_1 = run_loop($f_eq$(run_loop($nm$(head_0)), "Bool.and"));
+  const x_2 = (x_0 || x_1);
+  const x_3 = run_loop($f_eq$(run_loop($nm$(head_0)), "Bool.or"));
+  const x_4 = (x_2 || x_3);
+  const x_5 = run_loop($f_eq$(run_loop($nm$(head_0)), "String.append"));
+  return run_jump($Bool$and$, [run_loop($f_eq$(run_loop($tg$(head_0)), "Ref")), (x_4 || x_5)]);
+}
+
+function $f_namespace_terms$(terms_0, ty_0) {
+  if (terms_0.$ === "Nil") {
+    return {$: "Nil"};
   } else {
-    const t_0 = ts_0["head"];
-    const rest_0 = ts_0["tail"];
-    const x_0 = run_loop($fc_term$(t_0, env_0));
-    const x_1 = run_loop($fc_terms$(rest_0, env_0));
-    return ((x_0 + x_1) >>> 0);
+    const term_0 = terms_0["head"];
+    const rest_0 = terms_0["tail"];
+    return {$: "Con", ["head"]: run_loop($f_namespace$(term_0, ty_0)), ["tail"]: run_loop($f_namespace_terms$(rest_0, ty_0))};
   }
 }
 
-function $fc_bind$(v_0, env_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($nm$(v_0)), "_")), run_clo((x_0) => {
-  return env_0;
+function $f_do_parameters$(monad_0, ts_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<>")), run_clo((x_0) => {
+  return run_jump($f_do_types$, [monad_0, {$: "FParsed", ["term"]: run_loop($kt$("Args", "", 0, 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))}]);
 }), run_clo((x_1) => {
-  return {$: "Con", ["head"]: v_0, ["tail"]: env_0};
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<")), run_clo((x_2) => {
+  return run_jump($f_do_parameters_open$, [monad_0, run_loop($f_space$(run_loop($f_tl$(ts_0))))]);
+}), run_clo((x_3) => {
+  return run_jump($fpe_error$, [ts_0, "expected <", "'<'"]);
+})]);
 })]);
 }
 
-function $fc_rows$(rs_0, env_0) {
-  if (rs_0.$ === "Nil") {
-    return 0;
-  } else {
-    const r_0 = rs_0["head"];
-    const rest_0 = rs_0["tail"];
-    const x_0 = run_loop($fc_term$(run_loop($kid$(r_0, 1)), run_loop($f_concat$(run_loop($fc_binders$(run_loop($ks$(run_loop($kid$(r_0, 0)))))), env_0))));
-    const x_1 = run_loop($fc_rows$(rest_0, env_0));
-    const x_2 = run_loop($fc_bind_count$(run_loop($ks$(run_loop($kid$(r_0, 0))))));
-    const x_3 = ((x_0 + x_1) >>> 0);
-    const x_4 = run_loop($fc_terms$(run_loop($ks$(run_loop($kid$(r_0, 0)))), env_0));
-    const x_5 = ((x_2 + x_3) >>> 0);
-    return ((x_4 + x_5) >>> 0);
-  }
+function $f_rewrite_proof$(name_0, id_0, p_0) {
+  const e_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_rewrite_motive$, [name_0, id_0, e_0, run_loop($f_expr$(ts_0, 0))]);
 }
 
-function $f_tail_terms$(xs_0) {
-  if (xs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const x_0 = xs_0["head"];
-    const xt_0 = xs_0["tail"];
-    return xt_0;
-  }
+function $f_tuple$(n_0, p_0) {
+  const m_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($kt$("Ctr", "Tuple", 0, 1, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: m_0, ["tail"]: {$: "Nil"}}})), ["rest"]: ts_0};
 }
 
-function $fc_bind_count$(ps_0) {
-  if (ps_0.$ === "Nil") {
-    return 0;
-  } else {
-    const p_0 = ps_0["head"];
-    const rest_0 = ps_0["tail"];
-    const x_0 = run_loop($f_eq$(run_loop($tg$(p_0)), "Ref"));
-    const x_1 = run_loop($f_eq$(run_loop($tg$(p_0)), "Var"));
-    const x_4 = run_loop($f_choose$((x_0 || x_1), run_clo((x_2) => {
-    return 1;
+function $f_group_namespace$(n_0, p_0) {
+  const ty_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(ty_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: run_loop($f_choose$(run_loop($String$is_empty$(run_loop($f_error_term$(n_0)))), run_clo((x_1) => {
+  return ty_0;
+}), run_clo((x_2) => {
+  return n_0;
+}))), ["rest"]: ts_0};
 }), run_clo((x_3) => {
-    return run_jump($fc_bind_count$, [run_loop($ks$(p_0))]);
-})));
-    const x_5 = run_loop($fc_bind_count$(rest_0));
-    return ((x_4 + x_5) >>> 0);
-  }
-}
-
-function $f_concat$(xs_0, ys_0) {
-  if (xs_0.$ === "Nil") {
-    return ys_0;
-  } else {
-    const x_0 = xs_0["head"];
-    const xt_0 = xs_0["tail"];
-    return {$: "Con", ["head"]: x_0, ["tail"]: run_loop($f_concat$(xt_0, ys_0))};
-  }
-}
-
-function $fc_binders$(ps_0) {
-  if (ps_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const p_0 = ps_0["head"];
-    const rest_0 = ps_0["tail"];
-    const x_0 = run_loop($f_eq$(run_loop($tg$(p_0)), "Ref"));
-    const x_1 = run_loop($f_eq$(run_loop($tg$(p_0)), "Var"));
-    return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-    return run_jump($fc_bind$, [p_0, run_loop($fc_binders$(rest_0))]);
-}), run_clo((x_3) => {
-    return run_jump($f_concat$, [run_loop($fc_binders$(run_loop($ks$(p_0)))), run_loop($fc_binders$(rest_0))]);
+  return {$: "FParsed", ["term"]: run_loop($f_namespace$(n_0, ty_0)), ["rest"]: ts_0};
 })]);
-  }
 }
 
-function $f_match_heads$(ts_0, indent_0, acc_0) {
+function $f_brace_left$(p_0) {
+  const a_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  const x_0 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=="));
+  const x_1 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "!="));
+  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+  return run_jump($f_equation$, [a_0, run_loop($f_eq$(run_loop($f_tx$(ts_0)), "!=")), run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), ":"))]);
+}), run_clo((x_3) => {
+  return run_jump($f_group_ann$, [a_0, run_loop($f_expect$(run_loop($f_expr$(run_loop($f_pr$(run_loop($f_expect$({$: "FParsed", ["term"]: a_0, ["rest"]: ts_0}, ":")))), 0)), "}"))]);
+})]);
+}
+
+function $f_array_first$(p_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
   return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_0) => {
-  return run_jump($f_match_begin$, [run_loop($f_skip$(run_loop($f_tl$(ts_0)))), indent_0, run_loop($List$reverse$(acc_0))]);
+  return run_jump($f_array_type$, [n_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 12))]);
 }), run_clo((x_1) => {
-  return run_jump($f_match_head$, [run_loop($f_expr$(run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_2) => {
+  return run_jump($f_list$, [run_loop($f_args$(run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_2) => {
   return run_jump($f_tl$, [ts_0]);
 }), run_clo((x_3) => {
   return ts_0;
-}))), 0)), indent_0, acc_0]);
+}))), "]", {$: "Con", ["head"]: n_0, ["tail"]: {$: "Nil"}}))]);
 })]);
 }
 
-function $f_body_at$(ts_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "-")), run_clo((x_0) => {
-  return run_jump($f_erased_local$, [run_loop($f_tl$(ts_0))]);
+function $f_all_domain$(name_0, id_0, q_0, exi_0, p_0) {
+  const a_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_all_body$, [name_0, id_0, q_0, exi_0, a_0, run_loop($f_expr$(ts_0, 0))]);
+}
+
+function $f_matcher_head$(p_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(n_0)), "Ref")), run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")))), run_clo((x_0) => {
+  return run_jump($f_matcher_arm$, [run_loop($nm$(n_0)), run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))]);
 }), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "match")), run_clo((x_2) => {
-  return run_jump($f_match_heads$, [run_loop($f_tl$(ts_0)), run_loop($f_col$(ts_0)), {$: "Nil"}]);
+  return run_jump($f_expect$, [{$: "FParsed", ["term"]: n_0, ["rest"]: ts_0}, "}"]);
+})]);
+}
+
+function $f_kind$(ts_0) {
+  if (ts_0.$ === "Nil") {
+    return 0;
+  } else {
+    const _t_0 = ts_0["head"];
+    const t_0 = _t_0["text"];
+    const l_0 = _t_0["f_line"];
+    const c_0 = _t_0["f_col"];
+    const k_0 = _t_0["f_kind"];
+    const rest_0 = ts_0["tail"];
+    return k_0;
+  }
+}
+
+function $f_atom_nat_start$(ts_0, lit_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(lit_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: lit_0, ["rest"]: {$: "Nil"}};
+}), run_clo((x_1) => {
+  return run_jump($f_atom_nat_plus$, [lit_0, run_loop($f_expr$(run_loop($f_tl$(run_loop($f_tl$(ts_0)))), 0))]);
+})]);
+}
+
+function $f_literal$(s_0) {
+  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\"")), run_clo((x_0) => {
+  return run_jump($f_string$, [run_loop($f_tail$(s_0))]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "'")), run_clo((x_2) => {
+  return run_jump($f_char_literal$, [run_loop($f_tail$(s_0))]);
 }), run_clo((x_3) => {
-  return run_jump($f_statement$, [run_loop($f_expr$(ts_0, 0))]);
+  return run_jump($f_choose$, [run_loop($f_contains$(s_0, ".")), run_clo((x_4) => {
+  return run_jump($f_float$, [s_0]);
+}), run_clo((x_5) => {
+  return run_jump($f_number$, [s_0, 0]);
 })]);
 })]);
+})]);
+}
+
+function $f_atom_constructor$(name_0, id_0, p_0) {
+  const args_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(args_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: args_0, ["rest"]: ts_0};
+}), run_clo((x_1) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Ctr", name_0, id_0, 1, run_loop($ks$(args_0)))), ["rest"]: ts_0};
+})]);
+}
+
+function $f_unquote_chars$(s_0) {
+  const x_0 = run_loop($String$is_empty$(s_0));
+  const x_1 = run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\""));
+  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+  return "";
+}), run_clo((x_3) => {
+  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\\")), run_clo((x_4) => {
+  return (char_new(run_loop($f_escape_code$(run_loop($f_head$(run_loop($f_tail$(s_0))))))) + run_loop($f_unquote_chars$(run_loop($f_tail$(run_loop($f_tail$(s_0)))))));
+}), run_clo((x_5) => {
+  return (run_loop($f_head$(s_0)) + run_loop($f_unquote_chars$(run_loop($f_tail$(s_0)))));
+})]);
+})]);
+}
+
+function $fc_term$(t_0, env_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Ref")), run_clo((x_0) => {
+  return run_jump($fc_ref$, [run_loop($nm$(t_0)), env_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "ADT")), run_clo((x_2) => {
+  const x_3 = run_loop($fc_ref$(run_loop($nm$(t_0)), env_0));
+  const x_4 = run_loop($fc_terms$(run_loop($ks$(t_0)), env_0));
+  return ((x_3 + x_4) >>> 0);
+}), run_clo((x_5) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "All")), run_clo((x_6) => {
+  const x_7 = run_loop($fc_term$(run_loop($kid$(t_0, 0)), env_0));
+  const x_8 = run_loop($fc_term$(run_loop($kid$(t_0, 1)), run_loop($fc_bind$(t_0, env_0))));
+  const x_9 = ((x_7 + x_8) >>> 0);
+  return ((1 + x_9) >>> 0);
+}), run_clo((x_10) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Lam")), run_clo((x_11) => {
+  const x_12 = run_loop($fc_ref$(run_loop($nm$(t_0)), env_0));
+  const x_13 = run_loop($fc_term$(run_loop($kid$(t_0, 0)), run_loop($fc_bind$(t_0, env_0))));
+  const x_14 = ((x_12 + x_13) >>> 0);
+  return ((1 + x_14) >>> 0);
+}), run_clo((x_15) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Match")), run_clo((x_16) => {
+  const x_17 = run_loop($fc_terms$(run_loop($ks$(run_loop($kid$(t_0, 0)))), env_0));
+  const x_18 = run_loop($fc_rows$(run_loop($f_tail_terms$(run_loop($ks$(t_0)))), env_0));
+  return ((x_17 + x_18) >>> 0);
+}), run_clo((x_19) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Local")), run_clo((x_20) => {
+  const x_21 = run_loop($qt$(run_loop($kid$(t_0, 0))));
+  const x_24 = run_loop($fc_bind_count$({$: "Con", ["head"]: run_loop($kid$(t_0, 0)), ["tail"]: {$: "Nil"}}));
+  const x_25 = run_loop($fc_term$(run_loop($kid$(t_0, 2)), run_loop($f_concat$(run_loop($fc_binders$({$: "Con", ["head"]: run_loop($kid$(t_0, 0)), ["tail"]: {$: "Nil"}})), env_0))));
+  const x_26 = run_loop($fc_term$(run_loop($kid$(t_0, 1)), env_0));
+  const x_27 = ((x_24 + x_25) >>> 0);
+  const x_28 = run_loop($f_choose$((x_21 === 0), run_clo((x_22) => {
+  return 0;
+}), run_clo((x_23) => {
+  return run_jump($fc_term$, [run_loop($kid$(t_0, 0)), env_0]);
+})));
+  const x_29 = ((x_26 + x_27) >>> 0);
+  return ((x_28 + x_29) >>> 0);
+}), run_clo((x_30) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Parallel")), run_clo((x_31) => {
+  const x_32 = run_loop($fc_bind_count$(run_loop($ks$(run_loop($kid$(t_0, 0))))));
+  const x_33 = run_loop($fc_term$(run_loop($kid$(t_0, 2)), run_loop($f_concat$(run_loop($fc_binders$(run_loop($ks$(run_loop($kid$(t_0, 0)))))), env_0))));
+  const x_34 = run_loop($fc_terms$(run_loop($ks$(run_loop($kid$(t_0, 1)))), env_0));
+  const x_35 = ((x_32 + x_33) >>> 0);
+  const x_36 = run_loop($fc_terms$(run_loop($ks$(run_loop($kid$(t_0, 0)))), env_0));
+  const x_37 = ((x_34 + x_35) >>> 0);
+  return ((x_36 + x_37) >>> 0);
+}), run_clo((x_38) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(t_0)), "Mat")), run_clo((x_39) => {
+  const x_40 = run_loop($fc_ref$(run_loop($nm$(t_0)), env_0));
+  const x_41 = run_loop($fc_terms$(run_loop($ks$(t_0)), env_0));
+  return ((x_40 + x_41) >>> 0);
+}), run_clo((x_42) => {
+  return run_jump($fc_terms$, [run_loop($ks$(t_0)), env_0]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+})]);
+}
+
+function $f_body_context_at$(ts_0, outer_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "match")), run_clo((x_0) => {
+  return run_jump($f_match_heads$, [run_loop($f_tl$(ts_0)), outer_0, {$: "Nil"}]);
+}), run_clo((x_1) => {
+  return run_jump($f_body_at$, [ts_0]);
+})]);
+}
+
+function $f_ctor_more$(name_0, found_0, rest_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($dk$(found_0)), "Missing")), run_clo((x_0) => {
+  return run_jump($f_ctor_lookup$, [name_0, rest_0]);
+}), run_clo((x_1) => {
+  return found_0;
+})]);
+}
+
+function $f_param_refs$(pars_0) {
+  if (pars_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const p_0 = pars_0["head"];
+    const ps_0 = pars_0["tail"];
+    return {$: "Con", ["head"]: run_loop($kt$("Ref", run_loop($nm$(p_0)), run_loop($ix$(p_0)), run_loop($qt$(p_0)), {$: "Nil"})), ["tail"]: run_loop($f_param_refs$(ps_0))};
+  }
 }
 
 function $ffw_frame$(frame_0, value_0, next_0, stack_0) {
@@ -16064,6 +17215,16 @@ function $f_templates_valid$(args_0, left_0, ordinary_0) {
   }
 }
 
+function $f_tail_terms$(xs_0) {
+  if (xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const x_0 = xs_0["head"];
+    const xt_0 = xs_0["tail"];
+    return xt_0;
+  }
+}
+
 function $f_scope_apply_many$(head_0, args_0) {
   if (args_0.$ === "Nil") {
     return head_0;
@@ -16130,22 +17291,6 @@ function $f_scope_ref$(t_0, bound_0, book_0) {
   return run_jump($f_scope_reference$, [t_0, bound_0, book_0]);
 }
 
-function $f_literal$(s_0) {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\"")), run_clo((x_0) => {
-  return run_jump($f_string$, [run_loop($f_tail$(s_0))]);
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "'")), run_clo((x_2) => {
-  return run_jump($f_char_literal$, [run_loop($f_tail$(s_0))]);
-}), run_clo((x_3) => {
-  return run_jump($f_choose$, [run_loop($f_contains$(s_0, ".")), run_clo((x_4) => {
-  return run_jump($f_float$, [s_0]);
-}), run_clo((x_5) => {
-  return run_jump($f_number$, [s_0, 0]);
-})]);
-})]);
-})]);
-}
-
 function $f_scope_lambda$(t_0, env_0, book_0) {
   const x_0 = run_loop($qt$(t_0));
   const x_3 = run_loop($qt$(t_0));
@@ -16190,6 +17335,16 @@ function $f_scope_body$(t_0, env_0, book_0) {
 })]);
 }
 
+function $f_concat$(xs_0, ys_0) {
+  if (xs_0.$ === "Nil") {
+    return ys_0;
+  } else {
+    const x_0 = xs_0["head"];
+    const xt_0 = xs_0["tail"];
+    return {$: "Con", ["head"]: x_0, ["tail"]: run_loop($f_concat$(xt_0, ys_0))};
+  }
+}
+
 function $f_vars$(xs_0) {
   if (xs_0.$ === "Nil") {
     return {$: "Nil"};
@@ -16208,8 +17363,12 @@ function $f_flat$(t_0, vars_0) {
 })]);
 }
 
-function $tele_check_done$(a_0, b_0) {
-  return run_jump($both$, [a_0, b_0, run_loop($ct$(b_0)), run_loop($cy$(b_0)), false]);
+function $tele_check_after_head$(e_0, ctx_0, tel_0, h_0, rest_0, dem_0, checked_head_0) {
+  return run_jump($kc$, [run_loop($core_subst_stable$(run_loop($kid$(tel_0, 1)))), run_clo((x_0) => {
+  return run_jump($tele_check_done$, [checked_head_0, run_loop($tele_check_static$(e_0, ctx_0, run_loop($kid$(tel_0, 1)), rest_0, dem_0))]);
+}), run_clo((x_1) => {
+  return run_jump($tele_check_done$, [checked_head_0, run_loop($tele_check_legacy$(e_0, ctx_0, run_loop($subst$(run_loop($kid$(tel_0, 1)), run_loop($ix$(tel_0)), h_0)), rest_0, dem_0))]);
+})]);
 }
 
 function $lhs_ext$(lhs_0, name_0, tel_0, n_0, xs_0) {
@@ -16247,6 +17406,16 @@ function $terms_tail$(ts_0) {
     const h_0 = ts_0["head"];
     const t_0 = ts_0["tail"];
     return t_0;
+  }
+}
+
+function $core_subst_stable_app_kids$(kids_0) {
+  if (kids_0.$ === "Nil") {
+    return false;
+  } else {
+    const f_0 = kids_0["head"];
+    const tail_0 = kids_0["tail"];
+    return run_jump($core_subst_stable_app_tail$, [f_0, tail_0]);
   }
 }
 
@@ -16503,83 +17672,17 @@ function $fp_utf16$(text_0) {
 })]);
 }
 
-function $j_word_bit$(bit_0, rest_0, at_0, acc_0) {
-  const x_0 = run_loop($String$eq$(run_loop($nm$(bit_0)), "True"));
-  const x_1 = run_loop($String$eq$(run_loop($nm$(bit_0)), "False"));
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(bit_0)), "Ctr")), (x_0 || x_1))), run_clo((x_2) => {
-  const x_6 = run_loop($kc$(run_loop($String$eq$(run_loop($nm$(bit_0)), "True")), run_clo((x_3) => {
-  const x_4 = BigInt(at_0);
-  return (x_4 >= 32n ? 0 : (1 << Number(x_4)) >>> 0);
-}), run_clo((x_5) => {
-  return 0;
-})));
-  return run_jump($j_word$, [rest_0, ((at_0 + 1) >>> 0), ((acc_0 | x_6) >>> 0)]);
-}), run_clo((x_7) => {
-  return {$: "None"};
-})]);
-}
-
-function $j_u32_node$(t_0) {
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(t_0)), "Ctr")), run_loop($String$eq$(run_loop($nm$(t_0)), "U32")))), run_clo((x_0) => {
-  return run_jump($j_word$, [run_loop($j_strip$(run_loop($kid$(t_0, 0)))), 0, 0]);
+function $f_arg_next$(p_0, end_0, acc_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(n_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
 }), run_clo((x_1) => {
-  return {$: "None"};
-})]);
-}
-
-function $j_string_head$(head_0, tail_0, acc_0) {
-  return run_jump($kc$, [run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(head_0)), "Ctr")), run_loop($String$eq$(run_loop($nm$(head_0)), "Chr")))), run_clo((x_0) => {
-  return run_jump($j_string_char$, [run_loop($j_u32$(run_loop($kid$(head_0, 0)))), tail_0, acc_0]);
-}), run_clo((x_1) => {
-  return {$: "None"};
-})]);
-}
-
-function $j_apply_args_head$(book_0, env_0, args_0, ty_0) {
-  if (args_0.$ === "Nil") {
-    return "";
-  } else {
-    const h_0 = args_0["head"];
-    const rest_0 = args_0["tail"];
-    const x_0 = run_loop($qt$(ty_0));
-    const x_3 = run_loop($j_apply_args$(book_0, env_0, rest_0, run_loop($j_app_type$(ty_0, h_0))));
-    const x_4 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(ty_0)), "All")), (x_0 === 0))), run_clo((x_1) => {
-    return "null";
-}), run_clo((x_2) => {
-    return run_jump($j_expr$, [book_0, env_0, h_0, run_loop($kid$(ty_0, 0)), false]);
-})));
-    const x_5 = ("," + x_3);
-    return (x_4 + x_5);
-  }
-}
-
-function $j_ctor_args$(book_0, env_0, args_0, tel_0) {
-  if (args_0.$ === "Nil") {
-    return "";
-  } else {
-    const h_0 = args_0["head"];
-    const rest_0 = args_0["tail"];
-    const x_0 = run_loop($qt$(tel_0));
-    const x_3 = run_loop($j_ctor_args$(book_0, env_0, rest_0, run_loop($j_app_type$(tel_0, h_0))));
-    const x_4 = run_loop($kc$(run_loop($Bool$and$(run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), (x_0 === 0))), run_clo((x_1) => {
-    return "null";
-}), run_clo((x_2) => {
-    return run_jump($j_expr$, [book_0, env_0, h_0, run_loop($kid$(tel_0, 0)), false]);
-})));
-    const x_5 = ("," + x_3);
-    return (x_4 + x_5);
-  }
-}
-
-function $f_nat_extend$(a_0, b_0) {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(a_0)), "Ctr")), run_loop($f_eq$(run_loop($nm$(a_0)), "Zero")))), run_clo((x_0) => {
-  return b_0;
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(a_0)), "Ctr")), run_loop($f_eq$(run_loop($nm$(a_0)), "Succ")))), run_clo((x_2) => {
-  return run_jump($kt$, ["Ctr", "Succ", 0, 1, {$: "Con", ["head"]: run_loop($f_nat_extend$(run_loop($kid$(a_0, 0)), b_0)), ["tail"]: {$: "Nil"}}]);
+  return run_jump($f_args$, [run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_2) => {
+  return run_jump($f_tl$, [ts_0]);
 }), run_clo((x_3) => {
-  return run_jump($f_app$, [run_loop($ref$("Nat.add")), {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}]);
-})]);
+  return ts_0;
+}))), end_0, {$: "Con", ["head"]: n_0, ["tail"]: acc_0}]);
 })]);
 }
 
@@ -16671,58 +17774,100 @@ function $f_operator$(s_0) {
 })]);
 }
 
-function $f_do_annotated$(monad_0, types_0, binder_0, p_0, indent_0) {
-  const ty_0 = p_0["term"];
+function $f_do_types$(monad_0, p_0) {
+  const types_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  return run_jump($f_do_value$, [monad_0, types_0, binder_0, ty_0, run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=")), run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), indent_0]);
-}
-
-function $f_do_value$(monad_0, types_0, binder_0, ty_0, pure_0, p_0, indent_0) {
-  const v_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_do_tail$, [monad_0, types_0, binder_0, ty_0, pure_0, v_0, run_loop($f_do$(monad_0, types_0, run_loop($f_skip$(ts_0)), indent_0))]);
-}
-
-function $f_rewrite_body$(e_0, motive_0, p_0) {
-  const body_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($kt$("Rwt", "", 0, 1, {$: "Con", ["head"]: e_0, ["tail"]: {$: "Con", ["head"]: motive_0, ["tail"]: {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}}}})), ["rest"]: ts_0};
-}
-
-function $f_equation_type$(a_0, b_0, neg_0, p_0) {
-  const ty_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($f_choose$(neg_0, run_clo((x_0) => {
-  return run_jump($kt$, ["All", "_", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Eql", "", 0, 1, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}}}})), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Ref", "Empty", 0, 1, {$: "Nil"})), ["tail"]: {$: "Nil"}}}]);
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(types_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: types_0, ["rest"]: ts_0};
 }), run_clo((x_1) => {
-  return run_jump($kt$, ["Eql", "", 0, 1, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}}}}]);
+  return run_jump($f_do_types_at$, [monad_0, types_0, run_loop($f_space$(ts_0))]);
+})]);
+}
+
+function $f_do_parameters_open$(monad_0, ts_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ";")), run_clo((x_0) => {
+  return run_jump($fpe_error$, [ts_0, "expected term", "a term"]);
+}), run_clo((x_1) => {
+  const x_2 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), ">"));
+  const x_3 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), ">op"));
+  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
+  return run_jump($f_do_types$, [monad_0, {$: "FParsed", ["term"]: run_loop($kt$("Args", "", 0, 1, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))}]);
+}), run_clo((x_5) => {
+  return run_jump($f_do_types$, [monad_0, run_loop($f_args$(ts_0, ">", {$: "Nil"}))]);
+})]);
+})]);
+}
+
+function $f_rewrite_motive$(name_0, id_0, e_0, p_0) {
+  const motive_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_rewrite_body$, [e_0, run_loop($kt$("Lam", "_", ((id_0 + 2147483648) >>> 0), 4, {$: "Con", ["head"]: run_loop($kt$("Lam", name_0, id_0, 1, {$: "Con", ["head"]: motive_0, ["tail"]: {$: "Nil"}})), ["tail"]: {$: "Nil"}})), run_loop($f_body$(ts_0))]);
+}
+
+function $f_equation$(a_0, neg_0, p_0) {
+  const b_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_equation_type$, [a_0, b_0, neg_0, run_loop($f_expect$(run_loop($f_expr$(ts_0, 0)), "}"))]);
+}
+
+function $f_group_ann$(n_0, p_0) {
+  const ty_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($kt$("Ann", "", 0, 1, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}}})), ["rest"]: ts_0};
+}
+
+function $f_array_type$(n_0, p_0) {
+  const ty_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_array_size$, [n_0, ty_0, run_loop($f_eq$(run_loop($f_tx$(ts_0)), "*")), run_loop($f_expect$(run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), "]"))]);
+}
+
+function $f_list$(p_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($f_choose$(run_loop($f_eq$(run_loop($tg$(n_0)), "Error")), run_clo((x_0) => {
+  return n_0;
+}), run_clo((x_1) => {
+  return run_jump($f_list_nodes$, [run_loop($ks$(n_0))]);
 }))), ["rest"]: ts_0};
 }
 
-function $f_array_size$(n_0, ty_0, count_0, p_0) {
-  const size_0 = p_0["term"];
+function $f_all_body$(name_0, id_0, q_0, exi_0, a_0, p_0) {
+  const b_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($f_app$(run_loop($ref$("Array.new")), {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_choose$(count_0, run_clo((x_0) => {
-  return run_jump($f_array_depth$, [size_0]);
+  return {$: "FParsed", ["term"]: run_loop($f_choose$(exi_0, run_clo((x_0) => {
+  return run_jump($f_app$, [run_loop($kt$("Ref", "Exists", 0, 1, {$: "Nil"})), {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Lam", name_0, id_0, q_0, {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}})), ["tail"]: {$: "Nil"}}}]);
 }), run_clo((x_1) => {
-  return size_0;
-}))), ["tail"]: {$: "Con", ["head"]: run_loop($f_namespace$(n_0, ty_0)), ["tail"]: {$: "Nil"}}}})), ["rest"]: ts_0};
+  return run_jump($kt$, ["All", name_0, id_0, q_0, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}]);
+}))), ["rest"]: ts_0};
 }
 
-function $f_list_nodes$(xs_0) {
-  if (xs_0.$ === "Nil") {
-    return run_jump($kt$, ["Ctr", "Nil", 0, 1, {$: "Nil"}]);
-  } else {
-    const x_0 = xs_0["head"];
-    const xt_0 = xs_0["tail"];
-    return run_jump($kt$, ["Ctr", "Con", 0, 1, {$: "Con", ["head"]: x_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_list_nodes$(xt_0)), ["tail"]: {$: "Nil"}}}]);
-  }
-}
-
-function $f_matcher_tail$(name_0, n_0, p_0) {
-  const m_0 = p_0["term"];
+function $f_matcher_arm$(name_0, p_0) {
+  const n_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($kt$("Mat", name_0, 0, 1, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: m_0, ["tail"]: {$: "Nil"}}})), ["rest"]: ts_0};
+  return run_jump($f_matcher_tail$, [name_0, n_0, run_loop($f_matcher$(run_loop($f_skip$(ts_0))))]);
+}
+
+function $f_atom_nat_plus$(lit_0, p_0) {
+  const rhs_0 = p_0["term"];
+  const rest_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(rhs_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: rhs_0, ["rest"]: rest_0};
+}), run_clo((x_1) => {
+  return {$: "FParsed", ["term"]: run_loop($f_nat_extend$(lit_0, rhs_0)), ["rest"]: rest_0};
+})]);
+}
+
+function $f_string$(s_0) {
+  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\"")), run_clo((x_0) => {
+  return run_jump($kt$, ["Ctr", "SNil", 0, 1, {$: "Nil"}]);
+}), run_clo((x_1) => {
+  return run_jump($f_string_decoded$, [run_loop($f_decode_char$(s_0))]);
+})]);
+}
+
+function $f_char_literal$(s_0) {
+  return run_jump($f_char_decoded$, [run_loop($f_decode_char$(s_0))]);
 }
 
 function $f_contains$(s_0, c_0) {
@@ -16735,40 +17880,152 @@ function $f_contains$(s_0, c_0) {
 })]);
 }
 
-function $f_match_begin$(ts_0, outer_0, heads_0) {
-  const x_0 = run_loop($f_col$(ts_0));
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "case")), (x_0 > outer_0))), run_clo((x_1) => {
-  const x_2 = run_loop($f_col$(ts_0));
-  return run_jump($f_match_cases$, [ts_0, ((x_2 - 1) >>> 0), heads_0, {$: "Nil"}]);
+function $f_float$(s_0) {
+  return run_jump($f_float_read$, [f32_read(s_0)]);
+}
+
+function $f_number$(s_0, acc_0) {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(s_0)), run_clo((x_0) => {
+  return run_jump($f_u32$, [acc_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(s_0, "n")), run_clo((x_2) => {
+  return run_jump($f_nat$, [acc_0]);
 }), run_clo((x_3) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Match", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Heads", "", 0, 1, heads_0)), ["tail"]: {$: "Nil"}})), ["rest"]: ts_0};
+  const x_4 = run_loop($Char$to_u32$(run_loop($f_head$(s_0))));
+  const x_5 = (acc_0 < 429496729);
+  const x_6 = run_loop($Bool$and$((acc_0 === 429496729), (x_4 <= 53)));
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Char$is_digit$(run_loop($f_head$(s_0)))), (x_5 || x_6))), run_clo((x_7) => {
+  const x_8 = run_loop($Char$to_u32$(run_loop($f_head$(s_0))));
+  const x_9 = (Math.imul(acc_0, 10) >>> 0);
+  const x_10 = ((x_8 - 48) >>> 0);
+  return run_jump($f_number$, [run_loop($f_tail$(s_0)), ((x_9 + x_10) >>> 0)]);
+}), run_clo((x_11) => {
+  return run_jump($kt$, ["Error", "invalid or unsupported numeric literal", 0, 0, {$: "Nil"}]);
+})]);
+})]);
 })]);
 }
 
-function $f_match_head$(p_0, indent_0, acc_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(n_0)), "Error")), run_clo((x_0) => {
-  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
+function $f_escape_code$(c_0) {
+  return run_jump($f_choose$, [run_loop($Char$is_eq$(c_0, "n")), run_clo((x_0) => {
+  return 10;
 }), run_clo((x_1) => {
-  return run_jump($f_match_heads$, [ts_0, indent_0, {$: "Con", ["head"]: n_0, ["tail"]: acc_0}]);
+  return run_jump($f_choose$, [run_loop($Char$is_eq$(c_0, "t")), run_clo((x_2) => {
+  return 9;
+}), run_clo((x_3) => {
+  return run_jump($f_choose$, [run_loop($Char$is_eq$(c_0, "r")), run_clo((x_4) => {
+  return 13;
+}), run_clo((x_5) => {
+  return run_jump($f_choose$, [run_loop($Char$is_eq$(c_0, "0")), run_clo((x_6) => {
+  return 0;
+}), run_clo((x_7) => {
+  return run_jump($Char$to_u32$, [c_0]);
+})]);
+})]);
+})]);
 })]);
 }
 
-function $f_erased_local$(ts_0) {
-  return run_jump($f_statement$, [{$: "FParsed", ["term"]: run_loop($kt$("Ref", run_loop($f_tx$(ts_0)), run_loop($f_atid$(ts_0)), 0, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))}]);
+function $fc_ref$(name_0, env_0) {
+  const x_0 = run_loop($f_contains$(name_0, "."));
+  const x_1 = run_loop($Bool$not$(run_loop($f_eq$(run_loop($tg$(run_loop($f_env$(name_0, env_0)))), "Absent"))));
+  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+  return 0;
+}), run_clo((x_3) => {
+  return 1;
+})]);
 }
 
-function $f_statement$(p_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=")), run_clo((x_0) => {
-  return run_jump($f_let_value$, [n_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))]);
+function $fc_terms$(ts_0, env_0) {
+  if (ts_0.$ === "Nil") {
+    return 0;
+  } else {
+    const t_0 = ts_0["head"];
+    const rest_0 = ts_0["tail"];
+    const x_0 = run_loop($fc_term$(t_0, env_0));
+    const x_1 = run_loop($fc_terms$(rest_0, env_0));
+    return ((x_0 + x_1) >>> 0);
+  }
+}
+
+function $fc_bind$(v_0, env_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($nm$(v_0)), "_")), run_clo((x_0) => {
+  return env_0;
 }), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_2) => {
-  return run_jump($f_typed_let_try$, [n_0, ts_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))]);
+  return {$: "Con", ["head"]: v_0, ["tail"]: env_0};
+})]);
+}
+
+function $fc_rows$(rs_0, env_0) {
+  if (rs_0.$ === "Nil") {
+    return 0;
+  } else {
+    const r_0 = rs_0["head"];
+    const rest_0 = rs_0["tail"];
+    const x_0 = run_loop($fc_term$(run_loop($kid$(r_0, 1)), run_loop($f_concat$(run_loop($fc_binders$(run_loop($ks$(run_loop($kid$(r_0, 0)))))), env_0))));
+    const x_1 = run_loop($fc_rows$(rest_0, env_0));
+    const x_2 = run_loop($fc_bind_count$(run_loop($ks$(run_loop($kid$(r_0, 0))))));
+    const x_3 = ((x_0 + x_1) >>> 0);
+    const x_4 = run_loop($fc_terms$(run_loop($ks$(run_loop($kid$(r_0, 0)))), env_0));
+    const x_5 = ((x_2 + x_3) >>> 0);
+    return ((x_4 + x_5) >>> 0);
+  }
+}
+
+function $fc_bind_count$(ps_0) {
+  if (ps_0.$ === "Nil") {
+    return 0;
+  } else {
+    const p_0 = ps_0["head"];
+    const rest_0 = ps_0["tail"];
+    const x_0 = run_loop($f_eq$(run_loop($tg$(p_0)), "Ref"));
+    const x_1 = run_loop($f_eq$(run_loop($tg$(p_0)), "Var"));
+    const x_4 = run_loop($f_choose$((x_0 || x_1), run_clo((x_2) => {
+    return 1;
 }), run_clo((x_3) => {
-  return run_jump($f_statement_more$, [{$: "FParsed", ["term"]: n_0, ["rest"]: ts_0}]);
+    return run_jump($fc_bind_count$, [run_loop($ks$(p_0))]);
+})));
+    const x_5 = run_loop($fc_bind_count$(rest_0));
+    return ((x_4 + x_5) >>> 0);
+  }
+}
+
+function $fc_binders$(ps_0) {
+  if (ps_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const p_0 = ps_0["head"];
+    const rest_0 = ps_0["tail"];
+    const x_0 = run_loop($f_eq$(run_loop($tg$(p_0)), "Ref"));
+    const x_1 = run_loop($f_eq$(run_loop($tg$(p_0)), "Var"));
+    return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+    return run_jump($fc_bind$, [p_0, run_loop($fc_binders$(rest_0))]);
+}), run_clo((x_3) => {
+    return run_jump($f_concat$, [run_loop($fc_binders$(run_loop($ks$(p_0)))), run_loop($fc_binders$(rest_0))]);
+})]);
+  }
+}
+
+function $f_match_heads$(ts_0, indent_0, acc_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_0) => {
+  return run_jump($f_match_begin$, [run_loop($f_skip$(run_loop($f_tl$(ts_0)))), indent_0, run_loop($List$reverse$(acc_0))]);
+}), run_clo((x_1) => {
+  return run_jump($f_match_head$, [run_loop($f_expr$(run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_2) => {
+  return run_jump($f_tl$, [ts_0]);
+}), run_clo((x_3) => {
+  return ts_0;
+}))), 0)), indent_0, acc_0]);
+})]);
+}
+
+function $f_body_at$(ts_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "-")), run_clo((x_0) => {
+  return run_jump($f_erased_local$, [run_loop($f_tl$(ts_0))]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "match")), run_clo((x_2) => {
+  return run_jump($f_match_heads$, [run_loop($f_tl$(ts_0)), run_loop($f_col$(ts_0)), {$: "Nil"}]);
+}), run_clo((x_3) => {
+  return run_jump($f_statement$, [run_loop($f_expr$(ts_0, 0))]);
 })]);
 })]);
 }
@@ -16826,46 +18083,14 @@ function $f_scope_reference$(t_0, bound_0, book_0) {
   return run_jump($f_choose$, [run_loop($f_eq$(run_loop($dk$(run_loop($f_find$(run_loop($nm$(t_0)), book_0)))), "ADT")), run_clo((x_10) => {
   return run_jump($f_adt$, [t_0, {$: "Nil"}, run_loop($f_find$(run_loop($nm$(t_0)), book_0))]);
 }), run_clo((x_11) => {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Char$is_eq$(run_loop($f_head$(run_loop($nm$(t_0)))), ".")), run_loop($Bool$not$(run_loop($Char$is_eq$(run_loop($f_head$(run_loop($f_tail$(run_loop($nm$(t_0)))))), ".")))))), run_clo((x_12) => {
+  const x_13 = run_loop($f_operator_display$(run_loop($nm$(t_0)), {$: "Con", ["head"]: "+", ["tail"]: {$: "Con", ["head"]: "-", ["tail"]: {$: "Con", ["head"]: "*", ["tail"]: {$: "Con", ["head"]: "/", ["tail"]: {$: "Con", ["head"]: "%", ["tail"]: {$: "Con", ["head"]: "<", ["tail"]: {$: "Con", ["head"]: ">op", ["tail"]: {$: "Con", ["head"]: "<=", ["tail"]: {$: "Con", ["head"]: ">=", ["tail"]: {$: "Con", ["head"]: "<<", ["tail"]: {$: "Con", ["head"]: ">>op", ["tail"]: {$: "Con", ["head"]: ".&.", ["tail"]: {$: "Con", ["head"]: ".|.", ["tail"]: {$: "Con", ["head"]: ".^.", ["tail"]: {$: "Nil"}}}}}}}}}}}}}}}));
+  const x_14 = (x_13 + " b : Nat))");
+  return run_jump($kt$, ["Error", ("a type for this operator (write (a " + x_14), run_loop($ix$(t_0)), 0, {$: "Nil"}]);
+}), run_clo((x_15) => {
   return t_0;
 })]);
 })]);
-})]);
-})]);
-}
-
-function $f_string$(s_0) {
-  return run_jump($f_choose$, [run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "\"")), run_clo((x_0) => {
-  return run_jump($kt$, ["Ctr", "SNil", 0, 1, {$: "Nil"}]);
-}), run_clo((x_1) => {
-  return run_jump($f_string_decoded$, [run_loop($f_decode_char$(s_0))]);
-})]);
-}
-
-function $f_char_literal$(s_0) {
-  return run_jump($f_char_decoded$, [run_loop($f_decode_char$(s_0))]);
-}
-
-function $f_float$(s_0) {
-  return run_jump($f_float_read$, [f32_read(s_0)]);
-}
-
-function $f_number$(s_0, acc_0) {
-  return run_jump($f_choose$, [run_loop($String$is_empty$(s_0)), run_clo((x_0) => {
-  return run_jump($f_u32$, [acc_0]);
-}), run_clo((x_1) => {
-  return run_jump($f_choose$, [run_loop($f_eq$(s_0, "n")), run_clo((x_2) => {
-  return run_jump($f_nat$, [acc_0]);
-}), run_clo((x_3) => {
-  const x_4 = run_loop($Char$to_u32$(run_loop($f_head$(s_0))));
-  const x_5 = (acc_0 < 429496729);
-  const x_6 = run_loop($Bool$and$((acc_0 === 429496729), (x_4 <= 53)));
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Char$is_digit$(run_loop($f_head$(s_0)))), (x_5 || x_6))), run_clo((x_7) => {
-  const x_8 = run_loop($Char$to_u32$(run_loop($f_head$(s_0))));
-  const x_9 = (Math.imul(acc_0, 10) >>> 0);
-  const x_10 = ((x_8 - 48) >>> 0);
-  return run_jump($f_number$, [run_loop($f_tail$(s_0)), ((x_9 + x_10) >>> 0)]);
-}), run_clo((x_11) => {
-  return run_jump($kt$, ["Error", "invalid or unsupported numeric literal", 0, 0, {$: "Nil"}]);
 })]);
 })]);
 })]);
@@ -16951,6 +18176,34 @@ function $f_flat_base$(t_0, vars_0) {
 })]);
 }
 
+function $tele_check_done$(a_0, b_0) {
+  return run_jump($both$, [a_0, b_0, run_loop($ct$(b_0)), run_loop($cy$(b_0)), false]);
+}
+
+function $tele_check_static$(e_0, ctx_0, tel_0, args_0, dem_0) {
+  if (args_0.$ === "Nil") {
+    return run_jump($ok$, [run_loop($atom$("Args")), tel_0, {$: "Nil"}]);
+  } else {
+    const h_0 = args_0["head"];
+    const rest_0 = args_0["tail"];
+    return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), run_clo((x_0) => {
+    return run_jump($tele_check_done$, [run_loop($check$(e_0, ctx_0, h_0, run_loop($qdem$(run_loop($qt$(tel_0)), dem_0)), run_loop($kid$(tel_0, 0)))), run_loop($tele_check_static$(e_0, ctx_0, run_loop($kid$(tel_0, 1)), rest_0, dem_0))]);
+}), run_clo((x_1) => {
+    return run_jump($tele_check$, [e_0, ctx_0, tel_0, {$: "Con", ["head"]: h_0, ["tail"]: rest_0}, dem_0]);
+})]);
+  }
+}
+
+function $tele_check_legacy$(e_0, ctx_0, tel_0, args_0, dem_0) {
+  if (args_0.$ === "Nil") {
+    return run_jump($ok$, [run_loop($atom$("Args")), tel_0, {$: "Nil"}]);
+  } else {
+    const h_0 = args_0["head"];
+    const rest_0 = args_0["tail"];
+    return run_jump($tele_check_legacy_head$, [e_0, ctx_0, run_loop($wnf$(run_loop($cb$(e_0)), tel_0)), h_0, rest_0, dem_0]);
+  }
+}
+
 function $descend_go$(a_0, p_0) {
   return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(p_0)), "Var")), run_clo((x_0) => {
   const x_1 = run_loop($ix$(a_0));
@@ -16973,6 +18226,16 @@ function $descend_go$(a_0, p_0) {
   return 2;
 })]);
 })]);
+}
+
+function $core_subst_stable_app_tail$(f_0, tail_0) {
+  if (tail_0.$ === "Nil") {
+    return false;
+  } else {
+    const x_0 = tail_0["head"];
+    const rest_0 = tail_0["tail"];
+    return run_jump($core_subst_stable_app_last$, [f_0, x_0, rest_0]);
+  }
 }
 
 function $kp_digit$(n_0) {
@@ -17055,77 +18318,64 @@ function $sp_name_keys$(ns_0) {
   }
 }
 
-function $j_string_char$(value_0, tail_0, acc_0) {
-  if (value_0.$ === "None") {
-    return {$: "None"};
-  } else {
-    const n_0 = value_0["value"];
-    const x_0 = (n_0 < 55296);
-    const x_1 = (n_0 > 57343);
-    return run_jump($kc$, [run_loop($Bool$and$((n_0 <= 1114111), (x_0 || x_1))), run_clo((x_2) => {
-    return run_jump($j_string$, [tail_0, (run_loop($Char$from_u32$(n_0)) + acc_0)]);
-}), run_clo((x_3) => {
-    return {$: "None"};
+function $f_do_types_at$(monad_0, types_0, ts_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_0) => {
+  return run_jump($f_do$, [monad_0, run_loop($ks$(types_0)), run_loop($f_skip$(run_loop($f_tl$(ts_0)))), run_loop($f_col$(run_loop($f_skip$(run_loop($f_tl$(ts_0))))))]);
+}), run_clo((x_1) => {
+  return run_jump($f_err$, [ts_0, "expected :"]);
 })]);
-  }
 }
 
-function $f_do_tail$(monad_0, types_0, binder_0, ty_0, pure_0, v_0, p_0) {
+function $f_rewrite_body$(e_0, motive_0, p_0) {
   const body_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($f_choose$(pure_0, run_clo((x_0) => {
-  return run_jump($kt$, ["Local", "", 0, 1, {$: "Con", ["head"]: binder_0, ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Ann", "", 0, 1, {$: "Con", ["head"]: v_0, ["tail"]: {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}}})), ["tail"]: {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}}}}]);
+  return {$: "FParsed", ["term"]: run_loop($kt$("Rwt", "", 0, 1, {$: "Con", ["head"]: e_0, ["tail"]: {$: "Con", ["head"]: motive_0, ["tail"]: {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}}}})), ["rest"]: ts_0};
+}
+
+function $f_equation_type$(a_0, b_0, neg_0, p_0) {
+  const ty_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($f_choose$(neg_0, run_clo((x_0) => {
+  return run_jump($kt$, ["All", "_", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Eql", "", 0, 1, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}}}})), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Ref", "Empty", 0, 1, {$: "Nil"})), ["tail"]: {$: "Nil"}}}]);
 }), run_clo((x_1) => {
-  return run_jump($f_app$, [run_loop($ref$((monad_0 + ".bind"))), run_loop($f_concat$(run_loop($f_init$(types_0)), {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_last$(types_0)), ["tail"]: {$: "Con", ["head"]: v_0, ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Lam", run_loop($nm$(binder_0)), run_loop($ix$(binder_0)), run_loop($qt$(binder_0)), {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}})), ["tail"]: {$: "Nil"}}}}}))]);
+  return run_jump($kt$, ["Eql", "", 0, 1, {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}}}}]);
 }))), ["rest"]: ts_0};
 }
 
-function $f_array_depth$(size_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(size_0)), "Literal")), run_clo((x_0) => {
-  return run_jump($f_power_depth$, [run_loop($nm$(size_0)), 0]);
-}), run_clo((x_1) => {
-  return run_jump($kt$, ["Error", "array count must be a literal power of two", 0, 0, {$: "Nil"}]);
-})]);
-}
-
-function $f_match_cases$(ts_0, indent_0, heads_0, rows_0) {
-  const x_0 = run_loop($f_col$(ts_0));
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "case")), (x_0 > indent_0))), run_clo((x_1) => {
-  return run_jump($f_case_pats$, [run_loop($f_tl$(ts_0)), indent_0, heads_0, rows_0, {$: "Nil"}]);
-}), run_clo((x_2) => {
-  return {$: "FParsed", ["term"]: run_loop($kt$("Match", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Heads", "", 0, 1, heads_0)), ["tail"]: run_loop($List$reverse$(rows_0))})), ["rest"]: ts_0};
-})]);
-}
-
-function $f_let_value$(pat_0, p_0) {
-  const v_0 = p_0["term"];
+function $f_array_size$(n_0, ty_0, count_0, p_0) {
+  const size_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  return run_jump($f_let_body$, [pat_0, v_0, run_loop($f_body$(ts_0))]);
+  return {$: "FParsed", ["term"]: run_loop($f_app$(run_loop($ref$("Array.new")), {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_choose$(count_0, run_clo((x_0) => {
+  return run_jump($f_array_depth$, [size_0]);
+}), run_clo((x_1) => {
+  return size_0;
+}))), ["tail"]: {$: "Con", ["head"]: run_loop($f_namespace$(n_0, ty_0)), ["tail"]: {$: "Nil"}}}})), ["rest"]: ts_0};
 }
 
-function $f_typed_let_try$(n_0, old_0, p_0) {
-  const ty_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=")), run_clo((x_0) => {
-  return run_jump($f_let_value$, [n_0, run_loop($f_let_ann$(ty_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))))]);
-}), run_clo((x_1) => {
-  return {$: "FParsed", ["term"]: n_0, ["rest"]: old_0};
-})]);
+function $f_list_nodes$(xs_0) {
+  if (xs_0.$ === "Nil") {
+    return run_jump($kt$, ["Ctr", "Nil", 0, 1, {$: "Nil"}]);
+  } else {
+    const x_0 = xs_0["head"];
+    const xt_0 = xs_0["tail"];
+    return run_jump($kt$, ["Ctr", "Con", 0, 1, {$: "Con", ["head"]: x_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_list_nodes$(xt_0)), ["tail"]: {$: "Nil"}}}]);
+  }
 }
 
-function $f_statement_more$(p_0) {
-  const n_0 = p_0["term"];
+function $f_matcher_tail$(name_0, n_0, p_0) {
+  const m_0 = p_0["term"];
   const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(n_0)), "Write")), run_clo((x_0) => {
-  return run_jump($f_write_statement$, [n_0, ts_0]);
+  return {$: "FParsed", ["term"]: run_loop($kt$("Mat", name_0, 0, 1, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Con", ["head"]: m_0, ["tail"]: {$: "Nil"}}})), ["rest"]: ts_0};
+}
+
+function $f_nat_extend$(a_0, b_0) {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(a_0)), "Ctr")), run_loop($f_eq$(run_loop($nm$(a_0)), "Zero")))), run_clo((x_0) => {
+  return b_0;
 }), run_clo((x_1) => {
-  const x_2 = run_loop($f_kind$(ts_0));
-  const x_3 = (x_2 === 1);
-  const x_4 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "+bind"));
-  return run_jump($f_choose$, [(x_3 || x_4), run_clo((x_5) => {
-  return run_jump($f_parallel$, [ts_0, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Nil"}}]);
-}), run_clo((x_6) => {
-  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($tg$(a_0)), "Ctr")), run_loop($f_eq$(run_loop($nm$(a_0)), "Succ")))), run_clo((x_2) => {
+  return run_jump($kt$, ["Ctr", "Succ", 0, 1, {$: "Con", ["head"]: run_loop($f_nat_extend$(run_loop($kid$(a_0, 0)), b_0)), ["tail"]: {$: "Nil"}}]);
+}), run_clo((x_3) => {
+  return run_jump($f_app$, [run_loop($ref$("Nat.add")), {$: "Con", ["head"]: a_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}]);
 })]);
 })]);
 }
@@ -17187,6 +18437,66 @@ function $f_nat$(n_0) {
   return run_jump($kt$, ["Ctr", "Succ", 0, 1, {$: "Con", ["head"]: run_loop($f_nat$(((n_0 - 1) >>> 0))), ["tail"]: {$: "Nil"}}]);
 })]);
 })]);
+}
+
+function $f_match_begin$(ts_0, outer_0, heads_0) {
+  const x_0 = run_loop($f_col$(ts_0));
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "case")), (x_0 > outer_0))), run_clo((x_1) => {
+  const x_2 = run_loop($f_col$(ts_0));
+  return run_jump($f_match_cases$, [ts_0, ((x_2 - 1) >>> 0), heads_0, {$: "Nil"}]);
+}), run_clo((x_3) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Match", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Heads", "", 0, 1, heads_0)), ["tail"]: {$: "Nil"}})), ["rest"]: ts_0};
+})]);
+}
+
+function $f_match_head$(p_0, indent_0, acc_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(n_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
+}), run_clo((x_1) => {
+  return run_jump($f_match_heads$, [ts_0, indent_0, {$: "Con", ["head"]: n_0, ["tail"]: acc_0}]);
+})]);
+}
+
+function $f_erased_local$(ts_0) {
+  return run_jump($f_statement$, [{$: "FParsed", ["term"]: run_loop($kt$("Ref", run_loop($f_tx$(ts_0)), run_loop($f_atid$(ts_0)), 0, {$: "Nil"})), ["rest"]: run_loop($f_tl$(ts_0))}]);
+}
+
+function $f_statement$(p_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=")), run_clo((x_0) => {
+  return run_jump($f_let_value$, [n_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_2) => {
+  return run_jump($f_typed_let_try$, [n_0, ts_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))]);
+}), run_clo((x_3) => {
+  return run_jump($f_statement_more$, [{$: "FParsed", ["term"]: n_0, ["rest"]: ts_0}]);
+})]);
+})]);
+}
+
+function $f_operator_display$(name_0, ops_0) {
+  if (ops_0.$ === "Nil") {
+    return name_0;
+  } else {
+    const op_0 = ops_0["head"];
+    const rest_0 = ops_0["tail"];
+    return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_operator$(op_0)), name_0)), run_clo((x_0) => {
+    return run_jump($f_choose$, [run_loop($f_eq$(op_0, ">op")), run_clo((x_1) => {
+    return ">";
+}), run_clo((x_2) => {
+    return run_jump($f_choose$, [run_loop($f_eq$(op_0, ">>op")), run_clo((x_3) => {
+    return ">>";
+}), run_clo((x_4) => {
+    return op_0;
+})]);
+})]);
+}), run_clo((x_5) => {
+    return run_jump($f_operator_display$, [name_0, rest_0]);
+})]);
+  }
 }
 
 function $f_first_ctor$(rows_0) {
@@ -17310,7 +18620,7 @@ function $f_unlamb$(body_0, n_0) {
 }
 
 function $f_scope_parallel_pats$(t_0, pats_0, env_0, book_0) {
-  return run_jump($kt$, ["Parallel", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Patterns", "", 0, 1, pats_0)), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Values", "", 0, 1, run_loop($f_scope_terms$(run_loop($ks$(run_loop($kid$(t_0, 1)))), env_0, book_0)))), ["tail"]: {$: "Con", ["head"]: run_loop($f_scope_body$(run_loop($kid$(t_0, 2)), run_loop($f_concat$(run_loop($f_penv$(pats_0)), env_0)), book_0)), ["tail"]: {$: "Nil"}}}}]);
+  return run_jump($f_scope_parallel_valid$, [t_0, pats_0, env_0, book_0, run_loop($f_valid_patterns_mode$(pats_0, book_0, true))]);
 }
 
 function $f_patterns$(xs_0) {
@@ -17332,7 +18642,11 @@ function $f_patterns$(xs_0) {
 }
 
 function $f_scope_local$(t_0, pats_0, env_0, book_0) {
-  return run_jump($kt$, ["Local", "", 0, run_loop($qt$(t_0)), {$: "Con", ["head"]: run_loop($terms_at$(pats_0, 0)), ["tail"]: {$: "Con", ["head"]: run_loop($f_scope$(run_loop($kid$(t_0, 1)), env_0, book_0)), ["tail"]: {$: "Con", ["head"]: run_loop($f_scope_body$(run_loop($kid$(t_0, 2)), run_loop($f_concat$(run_loop($f_penv$(pats_0)), env_0)), book_0)), ["tail"]: {$: "Nil"}}}}]);
+  return run_jump($f_scope_local_valid$, [t_0, pats_0, env_0, book_0, run_loop($f_valid_patterns$(pats_0, run_loop($f_choose$(run_loop($f_eq$(run_loop($nm$(t_0)), "Do")), run_clo((x_0) => {
+  return {$: "Nil"};
+}), run_clo((x_1) => {
+  return book_0;
+})))))]);
 }
 
 function $f_scope_rows$(rows_0, env_0, book_0) {
@@ -17373,6 +18687,14 @@ function $f_flat_local$(t_0, vars_0) {
 })]);
 }
 
+function $tele_check_legacy_head$(e_0, ctx_0, tel_0, h_0, rest_0, dem_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($tg$(tel_0)), "All")), run_clo((x_0) => {
+  return run_jump($tele_check_done$, [run_loop($check$(e_0, ctx_0, h_0, run_loop($qdem$(run_loop($qt$(tel_0)), dem_0)), run_loop($kid$(tel_0, 0)))), run_loop($tele_check_legacy$(e_0, ctx_0, run_loop($subst$(run_loop($kid$(tel_0, 1)), run_loop($ix$(tel_0)), h_0)), rest_0, dem_0))]);
+}), run_clo((x_1) => {
+  return run_jump($bad$, ["too many telescope arguments"]);
+})]);
+}
+
 function $descend_ctr$(a_0, p_0, ord_0) {
   return run_jump($kc$, [(ord_0 === 2), run_clo((x_0) => {
   return run_jump($descend_sub$, [a_0, run_loop($ks$(p_0))]);
@@ -17397,6 +18719,16 @@ function $descend_fields$(a_0, p_0, ord_0) {
     return run_jump($descend$, [1, h_0, run_loop($terms_at$(p_0, 0))]);
 })))]);
 })]);
+  }
+}
+
+function $core_subst_stable_app_last$(f_0, x_0, rest_0) {
+  if (rest_0.$ === "Con") {
+    const h_0 = rest_0["head"];
+    const tail_0 = rest_0["tail"];
+    return false;
+  } else {
+    return run_jump($Bool$not$, [run_loop($String$eq$(run_loop($tg$(f_0)), "Lam"))]);
   }
 }
 
@@ -17455,95 +18787,19 @@ function $sp_apply_template$(body_0, xs_0) {
   }
 }
 
-function $f_init$(xs_0) {
-  if (xs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const x_0 = xs_0["head"];
-    const xt_0 = xs_0["tail"];
-    const x_1 = run_loop($f_len$(xt_0));
-    return run_jump($f_choose$, [(x_1 === 0), run_clo((x_2) => {
-    return {$: "Nil"};
-}), run_clo((x_3) => {
-    return {$: "Con", ["head"]: x_0, ["tail"]: run_loop($f_init$(xt_0))};
+function $f_do$(monad_0, types_0, ts_0, indent_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "return")), run_clo((x_0) => {
+  return run_jump($f_do_return$, [monad_0, types_0, run_loop($f_atid$(ts_0)), run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))]);
+}), run_clo((x_1) => {
+  return run_jump($f_do_statement$, [monad_0, types_0, run_loop($f_expr$(ts_0, 0)), indent_0]);
 })]);
-  }
 }
 
-function $f_last$(xs_0) {
-  if (xs_0.$ === "Nil") {
-    return run_jump($atom$, ["Absent"]);
-  } else {
-    const x_0 = xs_0["head"];
-    const xt_0 = xs_0["tail"];
-    const x_1 = run_loop($f_len$(xt_0));
-    return run_jump($f_choose$, [(x_1 === 0), run_clo((x_2) => {
-    return x_0;
-}), run_clo((x_3) => {
-    return run_jump($f_last$, [xt_0]);
-})]);
-  }
-}
-
-function $f_power_depth$(s_0, n_0) {
-  const x_0 = run_loop($String$is_empty$(s_0));
-  const x_1 = run_loop($f_eq$(s_0, "n"));
-  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return run_jump($f_power_bits$, [n_0, 0]);
-}), run_clo((x_3) => {
-  return run_jump($f_choose$, [run_loop($Char$is_digit$(run_loop($f_head$(s_0)))), run_clo((x_4) => {
-  const x_5 = run_loop($Char$to_u32$(run_loop($f_head$(s_0))));
-  const x_6 = (Math.imul(n_0, 10) >>> 0);
-  const x_7 = ((x_5 - 48) >>> 0);
-  return run_jump($f_power_depth$, [run_loop($f_tail$(s_0)), ((x_6 + x_7) >>> 0)]);
-}), run_clo((x_8) => {
+function $f_array_depth$(size_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(size_0)), "Literal")), run_clo((x_0) => {
+  return run_jump($f_power_depth$, [run_loop($nm$(size_0)), 0]);
+}), run_clo((x_1) => {
   return run_jump($kt$, ["Error", "array count must be a literal power of two", 0, 0, {$: "Nil"}]);
-})]);
-})]);
-}
-
-function $f_case_pats$(ts_0, indent_0, heads_0, rows_0, pats_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_0) => {
-  return run_jump($f_case_body$, [run_loop($f_body_context$(run_loop($f_tl$(ts_0)), ((indent_0 + 1) >>> 0))), indent_0, heads_0, rows_0, run_loop($List$reverse$(pats_0))]);
-}), run_clo((x_1) => {
-  return run_jump($f_case_pat$, [run_loop($f_expr$(run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_2) => {
-  return run_jump($f_tl$, [ts_0]);
-}), run_clo((x_3) => {
-  return ts_0;
-}))), 0)), indent_0, heads_0, rows_0, pats_0]);
-})]);
-}
-
-function $f_let_body$(pat_0, v_0, p_0) {
-  const b_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($kt$("Local", "", 0, 1, {$: "Con", ["head"]: pat_0, ["tail"]: {$: "Con", ["head"]: v_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}})), ["rest"]: ts_0};
-}
-
-function $f_let_ann$(ty_0, p_0) {
-  const v_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($kt$("Ann", "", 0, 1, {$: "Con", ["head"]: v_0, ["tail"]: {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}}})), ["rest"]: ts_0};
-}
-
-function $f_write_statement$(n_0, ts_0) {
-  const x_0 = run_loop($ix$(n_0));
-  const x_1 = run_loop($f_col$(run_loop($f_skip$(ts_0))));
-  const x_2 = ((x_0 & 65535) >>> 0);
-  const x_3 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), ";"));
-  const x_4 = (x_1 === x_2);
-  return run_jump($f_choose$, [run_loop($Bool$and$((x_3 || x_4), run_loop($Bool$not$(run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), "<eof>")))))), run_clo((x_5) => {
-  return run_jump($f_let_value$, [run_loop($kt$("Ref", run_loop($nm$(n_0)), run_loop($ix$(n_0)), 1, {$: "Nil"})), {$: "FParsed", ["term"]: run_loop($kid$(n_0, 0)), ["rest"]: ts_0}]);
-}), run_clo((x_6) => {
-  return {$: "FParsed", ["term"]: run_loop($kid$(n_0, 0)), ["rest"]: ts_0};
-})]);
-}
-
-function $f_parallel$(ts_0, pats_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=")), run_clo((x_0) => {
-  return run_jump($f_parallel_values$, [run_loop($f_tl$(ts_0)), run_loop($List$reverse$(pats_0)), run_loop($f_len$(pats_0)), {$: "Nil"}]);
-}), run_clo((x_1) => {
-  return run_jump($f_parallel_pat$, [run_loop($f_expr$(ts_0, 0)), pats_0]);
 })]);
 }
 
@@ -17581,6 +18837,48 @@ function $f_word$(n_0, bits_0) {
 })]);
 }
 
+function $f_match_cases$(ts_0, indent_0, heads_0, rows_0) {
+  const x_0 = run_loop($f_col$(ts_0));
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), "case")), (x_0 > indent_0))), run_clo((x_1) => {
+  return run_jump($f_case_pats$, [run_loop($f_tl$(ts_0)), indent_0, heads_0, rows_0, {$: "Nil"}]);
+}), run_clo((x_2) => {
+  return {$: "FParsed", ["term"]: run_loop($kt$("Match", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Heads", "", 0, 1, heads_0)), ["tail"]: run_loop($List$reverse$(rows_0))})), ["rest"]: ts_0};
+})]);
+}
+
+function $f_let_value$(pat_0, p_0) {
+  const v_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_let_body$, [pat_0, v_0, run_loop($f_body$(ts_0))]);
+}
+
+function $f_typed_let_try$(n_0, old_0, p_0) {
+  const ty_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=")), run_clo((x_0) => {
+  return run_jump($f_let_value$, [n_0, run_loop($f_let_ann$(ty_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0))))]);
+}), run_clo((x_1) => {
+  return {$: "FParsed", ["term"]: n_0, ["rest"]: old_0};
+})]);
+}
+
+function $f_statement_more$(p_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(n_0)), "Write")), run_clo((x_0) => {
+  return run_jump($f_write_statement$, [n_0, ts_0]);
+}), run_clo((x_1) => {
+  const x_2 = run_loop($f_kind$(ts_0));
+  const x_3 = (x_2 === 1);
+  const x_4 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "+bind"));
+  return run_jump($f_choose$, [(x_3 || x_4), run_clo((x_5) => {
+  return run_jump($f_parallel$, [ts_0, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Nil"}}]);
+}), run_clo((x_6) => {
+  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
+})]);
+})]);
+}
+
 function $f_rowpat$(r_0) {
   return run_jump($kid$, [run_loop($kid$(r_0, 0)), 0]);
 }
@@ -17599,17 +18897,21 @@ function $ff_lam$(v_0, r_0) {
   return {$: "FFlatten", ["term"]: run_loop($kt$("Lam", run_loop($nm$(v_0)), run_loop($ix$(v_0)), run_loop($qt$(v_0)), {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}})), ["next"]: next_0};
 }
 
-function $f_penv$(xs_0) {
-  if (xs_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const x_0 = xs_0["head"];
-    const xt_0 = xs_0["tail"];
-    return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(x_0)), "Var")), run_clo((x_1) => {
-    return {$: "Con", ["head"]: x_0, ["tail"]: run_loop($f_penv$(xt_0))};
-}), run_clo((x_2) => {
-    return run_jump($f_concat$, [run_loop($f_penv$(run_loop($ks$(x_0)))), run_loop($f_penv$(xt_0))]);
+function $f_scope_parallel_valid$(t_0, pats_0, env_0, book_0, err_0) {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
+  return run_jump($kt$, ["Parallel", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Patterns", "", 0, 1, pats_0)), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Values", "", 0, 1, run_loop($f_scope_terms$(run_loop($ks$(run_loop($kid$(t_0, 1)))), env_0, book_0)))), ["tail"]: {$: "Con", ["head"]: run_loop($f_scope_body$(run_loop($kid$(t_0, 2)), run_loop($f_pattern_env$(pats_0, env_0)), book_0)), ["tail"]: {$: "Nil"}}}}]);
+}), run_clo((x_1) => {
+  return run_jump($kt$, ["Error", err_0, 0, 0, {$: "Nil"}]);
 })]);
+}
+
+function $f_valid_patterns_mode$(ps_0, book_0, names_0) {
+  if (ps_0.$ === "Nil") {
+    return "";
+  } else {
+    const p_0 = ps_0["head"];
+    const rest_0 = ps_0["tail"];
+    return run_jump($f_valid_patterns_mode_next$, [run_loop($f_valid_binding_pattern$(p_0, book_0, names_0)), rest_0, book_0, names_0]);
   }
 }
 
@@ -17619,6 +18921,18 @@ function $f_pattern_literal$(s_0) {
 }), run_clo((x_1) => {
   return run_jump($f_literal$, [s_0]);
 })]);
+}
+
+function $f_scope_local_valid$(t_0, pats_0, env_0, book_0, err_0) {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
+  return run_jump($kt$, ["Local", "", 0, run_loop($qt$(t_0)), {$: "Con", ["head"]: run_loop($terms_at$(pats_0, 0)), ["tail"]: {$: "Con", ["head"]: run_loop($f_scope$(run_loop($kid$(t_0, 1)), env_0, book_0)), ["tail"]: {$: "Con", ["head"]: run_loop($f_scope_body$(run_loop($kid$(t_0, 2)), run_loop($f_pattern_env$(pats_0, env_0)), book_0)), ["tail"]: {$: "Nil"}}}}]);
+}), run_clo((x_1) => {
+  return run_jump($kt$, ["Error", err_0, 0, 0, {$: "Nil"}]);
+})]);
+}
+
+function $f_valid_patterns$(ps_0, book_0) {
+  return run_jump($f_valid_patterns_mode$, [ps_0, book_0, false]);
 }
 
 function $f_scope_row$(r_0, pats_0, env_0, book_0) {
@@ -17680,6 +18994,243 @@ function $sp_shifts$(ts_0, offset_0) {
   }
 }
 
+function $f_do_return$(monad_0, types_0, position_0, p_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($f_app$(run_loop($kt$("Ref", (monad_0 + ".pure"), position_0, 1, {$: "Nil"})), run_loop($f_concat$(types_0, {$: "Con", ["head"]: n_0, ["tail"]: {$: "Nil"}})))), ["rest"]: ts_0};
+}
+
+function $f_do_statement$(monad_0, types_0, p_0, indent_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Bool$and$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_loop($f_eq$(run_loop($tg$(n_0)), "Ref")))), run_loop($f_alias_valid$(run_loop($nm$(n_0)))))), run_clo((x_0) => {
+  return run_jump($f_do_annotated$, [monad_0, types_0, n_0, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 1)), indent_0]);
+}), run_clo((x_1) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<-")), run_clo((x_2) => {
+  return run_jump($f_do_value$, [monad_0, types_0, run_loop($kt$("Ref", "_", run_loop($ix$(n_0)), 1, {$: "Nil"})), n_0, false, run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), indent_0]);
+}), run_clo((x_3) => {
+  const x_4 = run_loop($f_col$(run_loop($f_skip$(ts_0))));
+  const x_5 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), ";"));
+  const x_6 = (x_4 === indent_0);
+  return run_jump($f_choose$, [run_loop($Bool$and$((x_5 || x_6), run_loop($Bool$not$(run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), "<eof>")))))), run_clo((x_7) => {
+  return run_jump($f_do_value$, [monad_0, types_0, run_loop($kt$("Ref", "_", run_loop($ix$(n_0)), 1, {$: "Nil"})), run_loop($ref$("Unit")), false, {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0}, indent_0]);
+}), run_clo((x_8) => {
+  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
+})]);
+})]);
+})]);
+}
+
+function $f_power_depth$(s_0, n_0) {
+  const x_0 = run_loop($String$is_empty$(s_0));
+  const x_1 = run_loop($f_eq$(s_0, "n"));
+  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+  return run_jump($f_power_bits$, [n_0, 0]);
+}), run_clo((x_3) => {
+  return run_jump($f_choose$, [run_loop($Char$is_digit$(run_loop($f_head$(s_0)))), run_clo((x_4) => {
+  const x_5 = run_loop($Char$to_u32$(run_loop($f_head$(s_0))));
+  const x_6 = (Math.imul(n_0, 10) >>> 0);
+  const x_7 = ((x_5 - 48) >>> 0);
+  return run_jump($f_power_depth$, [run_loop($f_tail$(s_0)), ((x_6 + x_7) >>> 0)]);
+}), run_clo((x_8) => {
+  return run_jump($kt$, ["Error", "array count must be a literal power of two", 0, 0, {$: "Nil"}]);
+})]);
+})]);
+}
+
+function $f_decode_unicode$(s_0, code_0, count_0) {
+  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "}")), (count_0 > 0))), run_clo((x_0) => {
+  return {$: "FDecoded", ["code"]: code_0, ["rest"]: run_loop($f_tail$(s_0)), ["error"]: ""};
+}), run_clo((x_1) => {
+  const x_2 = run_loop($f_hex$(run_loop($f_head$(s_0))));
+  return run_jump($f_choose$, [run_loop($Bool$and$((x_2 < 16), (count_0 < 6))), run_clo((x_3) => {
+  const x_4 = (Math.imul(code_0, 16) >>> 0);
+  const x_5 = run_loop($f_hex$(run_loop($f_head$(s_0))));
+  return run_jump($f_decode_unicode$, [run_loop($f_tail$(s_0)), ((x_4 + x_5) >>> 0), ((count_0 + 1) >>> 0)]);
+}), run_clo((x_6) => {
+  return {$: "FDecoded", ["code"]: 0, ["rest"]: s_0, ["error"]: "invalid Unicode escape"};
+})]);
+})]);
+}
+
+function $f_escape_valid$(c_0) {
+  const x_0 = run_loop($Char$is_eq$(c_0, "n"));
+  const x_1 = run_loop($Char$is_eq$(c_0, "t"));
+  const x_2 = (x_0 || x_1);
+  const x_3 = run_loop($Char$is_eq$(c_0, "r"));
+  const x_4 = (x_2 || x_3);
+  const x_5 = run_loop($Char$is_eq$(c_0, "0"));
+  const x_6 = (x_4 || x_5);
+  const x_7 = run_loop($Char$is_eq$(c_0, "\\"));
+  const x_8 = (x_6 || x_7);
+  const x_9 = run_loop($Char$is_eq$(c_0, "'"));
+  const x_10 = (x_8 || x_9);
+  const x_11 = run_loop($Char$is_eq$(c_0, "\""));
+  return (x_10 || x_11);
+}
+
+function $f_case_pats$(ts_0, indent_0, heads_0, rows_0, pats_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), ":")), run_clo((x_0) => {
+  return run_jump($f_case_body$, [run_loop($f_body_context$(run_loop($f_tl$(ts_0)), ((indent_0 + 1) >>> 0))), indent_0, heads_0, rows_0, run_loop($List$reverse$(pats_0))]);
+}), run_clo((x_1) => {
+  return run_jump($f_case_pat$, [run_loop($f_expr$(run_loop($f_choose$(run_loop($f_eq$(run_loop($f_tx$(ts_0)), ",")), run_clo((x_2) => {
+  return run_jump($f_tl$, [ts_0]);
+}), run_clo((x_3) => {
+  return ts_0;
+}))), 0)), indent_0, heads_0, rows_0, pats_0]);
+})]);
+}
+
+function $f_let_body$(pat_0, v_0, p_0) {
+  const b_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($kt$("Local", "", 0, 1, {$: "Con", ["head"]: pat_0, ["tail"]: {$: "Con", ["head"]: v_0, ["tail"]: {$: "Con", ["head"]: b_0, ["tail"]: {$: "Nil"}}}})), ["rest"]: ts_0};
+}
+
+function $f_let_ann$(ty_0, p_0) {
+  const v_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($kt$("Ann", "", 0, 1, {$: "Con", ["head"]: v_0, ["tail"]: {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}}})), ["rest"]: ts_0};
+}
+
+function $f_write_statement$(n_0, ts_0) {
+  const x_0 = run_loop($ix$(n_0));
+  const x_1 = run_loop($f_col$(run_loop($f_skip$(ts_0))));
+  const x_2 = ((x_0 & 65535) >>> 0);
+  const x_3 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), ";"));
+  const x_4 = (x_1 === x_2);
+  return run_jump($f_choose$, [run_loop($Bool$and$((x_3 || x_4), run_loop($Bool$not$(run_loop($f_eq$(run_loop($f_tx$(run_loop($f_skip$(ts_0)))), "<eof>")))))), run_clo((x_5) => {
+  return run_jump($f_let_value$, [run_loop($kt$("Ref", run_loop($nm$(n_0)), run_loop($ix$(n_0)), 1, {$: "Nil"})), {$: "FParsed", ["term"]: run_loop($kid$(n_0, 0)), ["rest"]: ts_0}]);
+}), run_clo((x_6) => {
+  return {$: "FParsed", ["term"]: run_loop($kid$(n_0, 0)), ["rest"]: ts_0};
+})]);
+}
+
+function $f_parallel$(ts_0, pats_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=")), run_clo((x_0) => {
+  return run_jump($f_parallel_values$, [run_loop($f_tl$(ts_0)), run_loop($List$reverse$(pats_0)), run_loop($f_len$(pats_0)), {$: "Nil"}]);
+}), run_clo((x_1) => {
+  return run_jump($f_parallel_pat$, [run_loop($f_expr$(ts_0, 0)), pats_0]);
+})]);
+}
+
+function $ff_fields_done$(h_0, hs_0, rows_0, v_0, vs_0, c_0, r_0) {
+  const fields_0 = r_0["fields"];
+  const next_0 = r_0["next"];
+  return run_jump($ff_hit_done$, [h_0, hs_0, rows_0, v_0, vs_0, c_0, run_loop($ff_match$(run_loop($f_concat$(fields_0, hs_0)), run_loop($f_hit_rows$(rows_0, c_0, fields_0, v_0)), run_loop($f_concat$(fields_0, vs_0)), next_0))]);
+}
+
+function $ff_fields$(ps_0, q_0, next_0) {
+  if (ps_0.$ === "Nil") {
+    return {$: "FFields", ["fields"]: {$: "Nil"}, ["next"]: next_0};
+  } else {
+    const p_0 = ps_0["head"];
+    const rest_0 = ps_0["tail"];
+    return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(p_0)), "Var")), run_clo((x_0) => {
+    return run_jump($ff_field_cons$, [run_loop($kt$("Var", run_loop($nm$(p_0)), run_loop($ix$(p_0)), run_loop($f_choose$((q_0 === 2), run_clo((x_1) => {
+    return 2;
+}), run_clo((x_2) => {
+    return run_jump($qt$, [p_0]);
+}))), {$: "Nil"})), run_loop($ff_fields$(rest_0, q_0, next_0))]);
+}), run_clo((x_3) => {
+    const x_4 = run_loop($U32$show$(next_0));
+    return run_jump($ff_field_cons$, [run_loop($kt$("Var", ("_" + x_4), ((2147483648 + next_0) >>> 0), q_0, {$: "Nil"})), run_loop($ff_fields$(rest_0, q_0, ((next_0 + 1) >>> 0)))]);
+})]);
+  }
+}
+
+function $f_pattern_env$(pats_0, env_0) {
+  return run_jump($f_concat$, [run_loop($List$reverse$(run_loop($f_penv$(pats_0)))), env_0]);
+}
+
+function $f_valid_patterns_mode_next$(err_0, ps_0, book_0, names_0) {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
+  return run_jump($f_valid_patterns_mode$, [ps_0, book_0, names_0]);
+}), run_clo((x_1) => {
+  return err_0;
+})]);
+}
+
+function $f_valid_binding_pattern$(p_0, book_0, names_0) {
+  return run_jump($f_choose$, [names_0, run_clo((x_0) => {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(p_0)), "Var")), run_clo((x_1) => {
+  return run_jump($f_valid_pattern$, [p_0, book_0]);
+}), run_clo((x_2) => {
+  return "a parallel let binds names; destructure in its body";
+})]);
+}), run_clo((x_3) => {
+  return run_jump($f_valid_pattern$, [p_0, book_0]);
+})]);
+}
+
+function $f_nat_pattern$(n_0) {
+  return run_jump($f_choose$, [(n_0 === 0), run_clo((x_0) => {
+  return run_jump($kt$, ["Ctr", "Zero", 0, 1, {$: "Nil"}]);
+}), run_clo((x_1) => {
+  return run_jump($kt$, ["Ctr", "Succ", 0, 1, {$: "Con", ["head"]: run_loop($f_nat_pattern$(((n_0 - 1) >>> 0))), ["tail"]: {$: "Nil"}}]);
+})]);
+}
+
+function $f_pattern_number$(s_0, n_0) {
+  const x_0 = run_loop($f_eq$(s_0, "n"));
+  const x_1 = run_loop($String$is_empty$(s_0));
+  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
+  return n_0;
+}), run_clo((x_3) => {
+  const x_4 = run_loop($Char$to_u32$(run_loop($f_head$(s_0))));
+  const x_5 = (Math.imul(n_0, 10) >>> 0);
+  const x_6 = ((x_4 - 48) >>> 0);
+  return run_jump($f_pattern_number$, [run_loop($f_tail$(s_0)), ((x_5 + x_6) >>> 0)]);
+})]);
+}
+
+function $f_scope_row_valid$(r_0, pats_0, env_0, book_0, err_0) {
+  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
+  return run_jump($f_scoped_row$, [pats_0, run_loop($f_scope_body$(run_loop($kid$(r_0, 1)), run_loop($f_pattern_env$(pats_0, env_0)), book_0))]);
+}), run_clo((x_1) => {
+  return run_jump($kt$, ["Row", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Patterns", "", 0, 1, pats_0)), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Error", err_0, 0, 0, {$: "Nil"})), ["tail"]: {$: "Nil"}}}]);
+})]);
+}
+
+function $f_flat_split$(h_0, hs_0, rows_0, v_0, vs_0, c_0) {
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(c_0)), "Absent")), run_clo((x_0) => {
+  return run_jump($atom$, ["Efq"]);
+}), run_clo((x_1) => {
+  const x_2 = run_loop($ix$(c_0));
+  return run_jump($f_flat_fields$, [h_0, hs_0, rows_0, v_0, vs_0, c_0, run_loop($f_mark_fields$(run_loop($f_fresh_fields$(run_loop($ks$(c_0)), ((2147483648 + x_2) >>> 0))), run_loop($f_mark_rows$(rows_0, run_loop($qt$(v_0))))))]);
+})]);
+}
+
+function $sp_validate$(st_0, d_0) {
+  return run_jump($kc$, [run_loop($String$eq$(run_loop($sp_error$(st_0)), "")), run_clo((x_0) => {
+  return run_jump($sp_validate_done$, [st_0, d_0, run_loop($check_definition$(run_loop($sp_book$(st_0)), d_0))]);
+}), run_clo((x_1) => {
+  return {$: "KSpecTerm", ["state"]: st_0, ["term"]: run_loop($ref$(run_loop($dn$(d_0))))};
+})]);
+}
+
+function $f_do_annotated$(monad_0, types_0, binder_0, p_0, indent_0) {
+  const ty_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(ty_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: ty_0, ["rest"]: ts_0};
+}), run_clo((x_1) => {
+  const x_2 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "="));
+  const x_3 = run_loop($f_eq$(run_loop($f_tx$(ts_0)), "<-"));
+  return run_jump($f_choose$, [(x_2 || x_3), run_clo((x_4) => {
+  return run_jump($f_do_value$, [monad_0, types_0, binder_0, ty_0, run_loop($f_eq$(run_loop($f_tx$(ts_0)), "=")), run_loop($f_expr$(run_loop($f_tl$(ts_0)), 0)), indent_0]);
+}), run_clo((x_5) => {
+  return run_jump($f_err$, [ts_0, "expected <-"]);
+})]);
+})]);
+}
+
+function $f_do_value$(monad_0, types_0, binder_0, ty_0, pure_0, p_0, indent_0) {
+  const v_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_do_tail$, [monad_0, types_0, binder_0, ty_0, pure_0, v_0, run_loop($f_do$(monad_0, types_0, run_loop($f_skip$(ts_0)), indent_0))]);
+}
+
 function $f_power_bits$(n_0, d_0) {
   return run_jump($f_choose$, [(n_0 === 1), run_clo((x_0) => {
   return run_jump($f_nat$, [d_0]);
@@ -17691,6 +19242,22 @@ function $f_power_bits$(n_0, d_0) {
   return run_jump($kt$, ["Error", "array count must be a positive power of two", 0, 0, {$: "Nil"}]);
 }), run_clo((x_6) => {
   return run_jump($f_power_bits$, [(1n >= 32n ? 0 : (n_0 >>> Number(1n)) >>> 0), ((d_0 + 1) >>> 0)]);
+})]);
+})]);
+}
+
+function $f_hex$(c_0) {
+  return run_jump($f_choose$, [run_loop($Char$is_digit$(c_0)), run_clo((x_0) => {
+  const x_1 = run_loop($Char$to_u32$(c_0));
+  return ((x_1 - 48) >>> 0);
+}), run_clo((x_2) => {
+  const x_3 = run_loop($Char$to_u32$(run_loop($Char$to_lower$(c_0))));
+  const x_4 = run_loop($Char$to_u32$(run_loop($Char$to_lower$(c_0))));
+  return run_jump($f_choose$, [run_loop($Bool$and$((x_3 >= 97), (x_4 <= 102))), run_clo((x_5) => {
+  const x_6 = run_loop($Char$to_u32$(run_loop($Char$to_lower$(c_0))));
+  return ((x_6 - 87) >>> 0);
+}), run_clo((x_7) => {
+  return 16;
 })]);
 })]);
 }
@@ -17727,162 +19294,6 @@ function $f_parallel_pat$(p_0, pats_0) {
 })]);
 }
 
-function $f_decode_unicode$(s_0, code_0, count_0) {
-  return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($Char$is_eq$(run_loop($f_head$(s_0)), "}")), (count_0 > 0))), run_clo((x_0) => {
-  return {$: "FDecoded", ["code"]: code_0, ["rest"]: run_loop($f_tail$(s_0)), ["error"]: ""};
-}), run_clo((x_1) => {
-  const x_2 = run_loop($f_hex$(run_loop($f_head$(s_0))));
-  return run_jump($f_choose$, [run_loop($Bool$and$((x_2 < 16), (count_0 < 6))), run_clo((x_3) => {
-  const x_4 = (Math.imul(code_0, 16) >>> 0);
-  const x_5 = run_loop($f_hex$(run_loop($f_head$(s_0))));
-  return run_jump($f_decode_unicode$, [run_loop($f_tail$(s_0)), ((x_4 + x_5) >>> 0), ((count_0 + 1) >>> 0)]);
-}), run_clo((x_6) => {
-  return {$: "FDecoded", ["code"]: 0, ["rest"]: s_0, ["error"]: "invalid Unicode escape"};
-})]);
-})]);
-}
-
-function $f_escape_valid$(c_0) {
-  const x_0 = run_loop($Char$is_eq$(c_0, "n"));
-  const x_1 = run_loop($Char$is_eq$(c_0, "t"));
-  const x_2 = (x_0 || x_1);
-  const x_3 = run_loop($Char$is_eq$(c_0, "r"));
-  const x_4 = (x_2 || x_3);
-  const x_5 = run_loop($Char$is_eq$(c_0, "0"));
-  const x_6 = (x_4 || x_5);
-  const x_7 = run_loop($Char$is_eq$(c_0, "\\"));
-  const x_8 = (x_6 || x_7);
-  const x_9 = run_loop($Char$is_eq$(c_0, "'"));
-  const x_10 = (x_8 || x_9);
-  const x_11 = run_loop($Char$is_eq$(c_0, "\""));
-  return (x_10 || x_11);
-}
-
-function $ff_fields_done$(h_0, hs_0, rows_0, v_0, vs_0, c_0, r_0) {
-  const fields_0 = r_0["fields"];
-  const next_0 = r_0["next"];
-  return run_jump($ff_hit_done$, [h_0, hs_0, rows_0, v_0, vs_0, c_0, run_loop($ff_match$(run_loop($f_concat$(fields_0, hs_0)), run_loop($f_hit_rows$(rows_0, c_0, fields_0, v_0)), run_loop($f_concat$(fields_0, vs_0)), next_0))]);
-}
-
-function $ff_fields$(ps_0, q_0, next_0) {
-  if (ps_0.$ === "Nil") {
-    return {$: "FFields", ["fields"]: {$: "Nil"}, ["next"]: next_0};
-  } else {
-    const p_0 = ps_0["head"];
-    const rest_0 = ps_0["tail"];
-    return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(p_0)), "Var")), run_clo((x_0) => {
-    return run_jump($ff_field_cons$, [run_loop($kt$("Var", run_loop($nm$(p_0)), run_loop($ix$(p_0)), run_loop($f_choose$((q_0 === 2), run_clo((x_1) => {
-    return 2;
-}), run_clo((x_2) => {
-    return run_jump($qt$, [p_0]);
-}))), {$: "Nil"})), run_loop($ff_fields$(rest_0, q_0, next_0))]);
-}), run_clo((x_3) => {
-    const x_4 = run_loop($U32$show$(next_0));
-    return run_jump($ff_field_cons$, [run_loop($kt$("Var", ("_" + x_4), ((2147483648 + next_0) >>> 0), q_0, {$: "Nil"})), run_loop($ff_fields$(rest_0, q_0, ((next_0 + 1) >>> 0)))]);
-})]);
-  }
-}
-
-function $f_nat_pattern$(n_0) {
-  return run_jump($f_choose$, [(n_0 === 0), run_clo((x_0) => {
-  return run_jump($kt$, ["Ctr", "Zero", 0, 1, {$: "Nil"}]);
-}), run_clo((x_1) => {
-  return run_jump($kt$, ["Ctr", "Succ", 0, 1, {$: "Con", ["head"]: run_loop($f_nat_pattern$(((n_0 - 1) >>> 0))), ["tail"]: {$: "Nil"}}]);
-})]);
-}
-
-function $f_pattern_number$(s_0, n_0) {
-  const x_0 = run_loop($f_eq$(s_0, "n"));
-  const x_1 = run_loop($String$is_empty$(s_0));
-  return run_jump($f_choose$, [(x_0 || x_1), run_clo((x_2) => {
-  return n_0;
-}), run_clo((x_3) => {
-  const x_4 = run_loop($Char$to_u32$(run_loop($f_head$(s_0))));
-  const x_5 = (Math.imul(n_0, 10) >>> 0);
-  const x_6 = ((x_4 - 48) >>> 0);
-  return run_jump($f_pattern_number$, [run_loop($f_tail$(s_0)), ((x_5 + x_6) >>> 0)]);
-})]);
-}
-
-function $f_scope_row_valid$(r_0, pats_0, env_0, book_0, err_0) {
-  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
-  return run_jump($f_scoped_row$, [pats_0, run_loop($f_scope_body$(run_loop($kid$(r_0, 1)), run_loop($f_concat$(run_loop($f_penv$(pats_0)), env_0)), book_0))]);
-}), run_clo((x_1) => {
-  return run_jump($kt$, ["Row", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Patterns", "", 0, 1, pats_0)), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Error", err_0, 0, 0, {$: "Nil"})), ["tail"]: {$: "Nil"}}}]);
-})]);
-}
-
-function $f_valid_patterns$(ps_0, book_0) {
-  if (ps_0.$ === "Nil") {
-    return "";
-  } else {
-    const p_0 = ps_0["head"];
-    const rest_0 = ps_0["tail"];
-    return run_jump($f_valid_patterns_next$, [run_loop($f_valid_pattern$(p_0, book_0)), rest_0, book_0]);
-  }
-}
-
-function $f_flat_split$(h_0, hs_0, rows_0, v_0, vs_0, c_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(c_0)), "Absent")), run_clo((x_0) => {
-  return run_jump($atom$, ["Efq"]);
-}), run_clo((x_1) => {
-  const x_2 = run_loop($ix$(c_0));
-  return run_jump($f_flat_fields$, [h_0, hs_0, rows_0, v_0, vs_0, c_0, run_loop($f_mark_fields$(run_loop($f_fresh_fields$(run_loop($ks$(c_0)), ((2147483648 + x_2) >>> 0))), run_loop($f_mark_rows$(rows_0, run_loop($qt$(v_0))))))]);
-})]);
-}
-
-function $sp_validate$(st_0, d_0) {
-  return run_jump($kc$, [run_loop($String$eq$(run_loop($sp_error$(st_0)), "")), run_clo((x_0) => {
-  return run_jump($sp_validate_done$, [st_0, d_0, run_loop($check_definition$(run_loop($sp_book$(st_0)), d_0))]);
-}), run_clo((x_1) => {
-  return {$: "KSpecTerm", ["state"]: st_0, ["term"]: run_loop($ref$(run_loop($dn$(d_0))))};
-})]);
-}
-
-function $f_case_checked$(p_0, indent_0, heads_0, rows_0, pats_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  const x_0 = run_loop($f_len$(pats_0));
-  const x_1 = run_loop($f_len$(heads_0));
-  return run_jump($f_choose$, [(x_0 === x_1), run_clo((x_2) => {
-  return run_jump($f_match_cases$, [run_loop($f_skip$(ts_0)), indent_0, heads_0, {$: "Con", ["head"]: run_loop($kt$("Row", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Patterns", "", 0, 1, pats_0)), ["tail"]: {$: "Con", ["head"]: n_0, ["tail"]: {$: "Nil"}}})), ["tail"]: rows_0}]);
-}), run_clo((x_3) => {
-  return run_jump($f_err$, [ts_0, "one pattern is required per match scrutinee"]);
-})]);
-}
-
-function $f_parallel_body$(pats_0, vals_0, p_0) {
-  const body_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return {$: "FParsed", ["term"]: run_loop($kt$("Parallel", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Patterns", "", 0, 1, pats_0)), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Values", "", 0, 1, vals_0)), ["tail"]: {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}}}})), ["rest"]: ts_0};
-}
-
-function $f_parallel_value$(p_0, pats_0, left_0, vals_0) {
-  const n_0 = p_0["term"];
-  const ts_0 = p_0["rest"];
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(n_0)), "Error")), run_clo((x_0) => {
-  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
-}), run_clo((x_1) => {
-  return run_jump($f_parallel_values$, [ts_0, pats_0, ((left_0 - 1) >>> 0), {$: "Con", ["head"]: n_0, ["tail"]: vals_0}]);
-})]);
-}
-
-function $f_hex$(c_0) {
-  return run_jump($f_choose$, [run_loop($Char$is_digit$(c_0)), run_clo((x_0) => {
-  const x_1 = run_loop($Char$to_u32$(c_0));
-  return ((x_1 - 48) >>> 0);
-}), run_clo((x_2) => {
-  const x_3 = run_loop($Char$to_u32$(run_loop($Char$to_lower$(c_0))));
-  const x_4 = run_loop($Char$to_u32$(run_loop($Char$to_lower$(c_0))));
-  return run_jump($f_choose$, [run_loop($Bool$and$((x_3 >= 97), (x_4 <= 102))), run_clo((x_5) => {
-  const x_6 = run_loop($Char$to_u32$(run_loop($Char$to_lower$(c_0))));
-  return ((x_6 - 87) >>> 0);
-}), run_clo((x_7) => {
-  return 16;
-})]);
-})]);
-}
-
 function $ff_hit_done$(h_0, hs_0, rows_0, v_0, vs_0, c_0, r_0) {
   const hit_0 = r_0["term"];
   const next_0 = r_0["next"];
@@ -17911,20 +19322,18 @@ function $ff_field_cons$(p_0, r_0) {
   return {$: "FFields", ["fields"]: {$: "Con", ["head"]: p_0, ["tail"]: fields_0}, ["next"]: next_0};
 }
 
-function $f_scoped_row$(pats_0, body_0) {
-  return run_jump($kt$, ["Row", "", 0, run_loop($f_choose$(run_loop($f_contains_var$(body_0)), run_clo((x_0) => {
-  return 1;
-}), run_clo((x_1) => {
-  return 0;
-}))), {$: "Con", ["head"]: run_loop($kt$("Patterns", "", 0, 1, pats_0)), ["tail"]: {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}}}]);
-}
-
-function $f_valid_patterns_next$(err_0, ps_0, book_0) {
-  return run_jump($f_choose$, [run_loop($String$is_empty$(err_0)), run_clo((x_0) => {
-  return run_jump($f_valid_patterns$, [ps_0, book_0]);
-}), run_clo((x_1) => {
-  return err_0;
+function $f_penv$(xs_0) {
+  if (xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const x_0 = xs_0["head"];
+    const xt_0 = xs_0["tail"];
+    return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(x_0)), "Var")), run_clo((x_1) => {
+    return {$: "Con", ["head"]: x_0, ["tail"]: run_loop($f_penv$(xt_0))};
+}), run_clo((x_2) => {
+    return run_jump($f_concat$, [run_loop($f_penv$(run_loop($ks$(x_0)))), run_loop($f_penv$(xt_0))]);
 })]);
+  }
 }
 
 function $f_valid_pattern$(p_0, book_0) {
@@ -17947,6 +19356,14 @@ function $f_valid_pattern$(p_0, book_0) {
   return "expected a binder or constructor pattern";
 })]);
 })]);
+}
+
+function $f_scoped_row$(pats_0, body_0) {
+  return run_jump($kt$, ["Row", "", 0, run_loop($f_choose$(run_loop($f_contains_var$(body_0)), run_clo((x_0) => {
+  return 1;
+}), run_clo((x_1) => {
+  return 0;
+}))), {$: "Con", ["head"]: run_loop($kt$("Patterns", "", 0, 1, pats_0)), ["tail"]: {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}}}]);
 }
 
 function $f_flat_fields$(h_0, hs_0, rows_0, v_0, vs_0, c_0, fields_0) {
@@ -17983,11 +19400,49 @@ function $f_fresh_fields$(ps_0, id_0) {
 
 function $sp_validate_done$(st_0, d_0, error_0) {
   return run_jump($kc$, [run_loop($String$eq$(error_0, "")), run_clo((x_0) => {
-  return {$: "KSpecTerm", ["state"]: {$: "KSpecState", ["book"]: {$: "Con", ["head"]: d_0, ["tail"]: run_loop($book_without$(run_loop($sp_book$(st_0)), run_loop($dn$(d_0))))}, ["memo"]: run_loop($sp_done_memo$(run_loop($sp_memo$(st_0)), run_loop($dn$(d_0)))), ["serial"]: run_loop($sp_serial$(st_0)), ["fresh"]: run_loop($sp_fresh$(st_0)), ["error"]: run_loop($sp_error$(st_0)), ["templates"]: run_loop($sp_templates$(st_0))}, ["term"]: run_loop($ref$(run_loop($dn$(d_0))))};
+  return {$: "KSpecTerm", ["state"]: {$: "KSpecState", ["book"]: {$: "Con", ["head"]: d_0, ["tail"]: run_loop($index_remove$(run_loop($sp_book$(st_0)), run_loop($dn$(d_0))))}, ["memo"]: run_loop($sp_done_memo$(run_loop($sp_memo$(st_0)), run_loop($dn$(d_0)))), ["serial"]: run_loop($sp_serial$(st_0)), ["fresh"]: run_loop($sp_fresh$(st_0)), ["error"]: run_loop($sp_error$(st_0)), ["templates"]: run_loop($sp_templates$(st_0))}, ["term"]: run_loop($ref$(run_loop($dn$(d_0))))};
 }), run_clo((x_1) => {
   const x_2 = run_loop($dn$(d_0));
   const x_3 = (": " + error_0);
   return {$: "KSpecTerm", ["state"]: run_loop($sp_fail$(st_0, (x_2 + x_3))), ["term"]: run_loop($ref$(run_loop($dn$(d_0))))};
+})]);
+}
+
+function $f_do_tail$(monad_0, types_0, binder_0, ty_0, pure_0, v_0, p_0) {
+  const body_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($f_choose$(pure_0, run_clo((x_0) => {
+  return run_jump($kt$, ["Local", "Do", 0, 1, {$: "Con", ["head"]: binder_0, ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Ann", "", 0, 1, {$: "Con", ["head"]: v_0, ["tail"]: {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}}})), ["tail"]: {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}}}}]);
+}), run_clo((x_1) => {
+  return run_jump($f_app$, [run_loop($kt$("Ref", (monad_0 + ".bind"), run_loop($ix$(binder_0)), 1, {$: "Nil"})), run_loop($f_concat$(run_loop($f_do_bind_types$(types_0, ty_0)), {$: "Con", ["head"]: v_0, ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Lam", run_loop($nm$(binder_0)), run_loop($ix$(binder_0)), run_loop($qt$(binder_0)), {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}})), ["tail"]: {$: "Nil"}}}))]);
+}))), ["rest"]: ts_0};
+}
+
+function $f_case_checked$(p_0, indent_0, heads_0, rows_0, pats_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  const x_0 = run_loop($f_len$(pats_0));
+  const x_1 = run_loop($f_len$(heads_0));
+  return run_jump($f_choose$, [(x_0 === x_1), run_clo((x_2) => {
+  return run_jump($f_match_cases$, [run_loop($f_skip$(ts_0)), indent_0, heads_0, {$: "Con", ["head"]: run_loop($kt$("Row", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Patterns", "", 0, 1, pats_0)), ["tail"]: {$: "Con", ["head"]: n_0, ["tail"]: {$: "Nil"}}})), ["tail"]: rows_0}]);
+}), run_clo((x_3) => {
+  return run_jump($f_err$, [ts_0, "one pattern is required per match scrutinee"]);
+})]);
+}
+
+function $f_parallel_body$(pats_0, vals_0, p_0) {
+  const body_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return {$: "FParsed", ["term"]: run_loop($kt$("Parallel", "", 0, 1, {$: "Con", ["head"]: run_loop($kt$("Patterns", "", 0, 1, pats_0)), ["tail"]: {$: "Con", ["head"]: run_loop($kt$("Values", "", 0, 1, vals_0)), ["tail"]: {$: "Con", ["head"]: body_0, ["tail"]: {$: "Nil"}}}})), ["rest"]: ts_0};
+}
+
+function $f_parallel_value$(p_0, pats_0, left_0, vals_0) {
+  const n_0 = p_0["term"];
+  const ts_0 = p_0["rest"];
+  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($tg$(n_0)), "Error")), run_clo((x_0) => {
+  return {$: "FParsed", ["term"]: n_0, ["rest"]: ts_0};
+}), run_clo((x_1) => {
+  return run_jump($f_parallel_values$, [ts_0, pats_0, ((left_0 - 1) >>> 0), {$: "Con", ["head"]: n_0, ["tail"]: vals_0}]);
 })]);
 }
 
@@ -18028,26 +19483,6 @@ function $f_hit_row$(r_0, c_0, fields_0, v_0) {
 }))), ["tail"]: {$: "Nil"}}}]);
 }
 
-function $f_contains_var$(t_0) {
-  const x_0 = run_loop($f_eq$(run_loop($tg$(t_0)), "Var"));
-  const x_1 = run_loop($f_contains_var_terms$(run_loop($ks$(t_0))));
-  return (x_0 || x_1);
-}
-
-function $f_ctor_lookup$(name_0, book_0) {
-  if (book_0.$ === "Nil") {
-    return run_jump($f_find$, [name_0, {$: "Nil"}]);
-  } else {
-    const d_0 = book_0["head"];
-    const ds_0 = book_0["tail"];
-    return run_jump($f_choose$, [run_loop($Bool$and$(run_loop($f_eq$(run_loop($dk$(d_0)), "Ctr")), run_loop($f_eq$(run_loop($dn$(d_0)), name_0)))), run_clo((x_0) => {
-    return d_0;
-}), run_clo((x_1) => {
-    return run_jump($f_ctor_more$, [name_0, run_loop($f_ctor_lookup$(name_0, run_loop($dc$(d_0)))), ds_0]);
-})]);
-  }
-}
-
 function $f_valid_ctor_pattern$(p_0, ctr_0, book_0) {
   return run_jump($f_choose$, [run_loop($f_eq$(run_loop($dk$(ctr_0)), "Missing")), run_clo((x_0) => {
   const x_1 = run_loop($nm$(p_0));
@@ -18064,6 +19499,12 @@ function $f_valid_ctor_pattern$(p_0, ctr_0, book_0) {
 })]);
 }
 
+function $f_contains_var$(t_0) {
+  const x_0 = run_loop($f_eq$(run_loop($tg$(t_0)), "Var"));
+  const x_1 = run_loop($f_contains_var_terms$(run_loop($ks$(t_0))));
+  return (x_0 || x_1);
+}
+
 function $sp_done_memo$(ms_0, name_0) {
   if (ms_0.$ === "Nil") {
     return {$: "Nil"};
@@ -18075,6 +19516,16 @@ function $sp_done_memo$(ms_0, name_0) {
 }), run_clo((x_1) => {
     return h_0;
 }))), ["tail"]: run_loop($sp_done_memo$(rest_0, name_0))};
+  }
+}
+
+function $f_do_bind_types$(types_0, ty_0) {
+  if (types_0.$ === "Nil") {
+    return {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Nil"}};
+  } else {
+    const head_0 = types_0["head"];
+    const rest_0 = types_0["tail"];
+    return run_jump($f_concat$, [run_loop($f_init$({$: "Con", ["head"]: head_0, ["tail"]: rest_0})), {$: "Con", ["head"]: ty_0, ["tail"]: {$: "Con", ["head"]: run_loop($f_last$({$: "Con", ["head"]: head_0, ["tail"]: rest_0})), ["tail"]: {$: "Nil"}}}]);
   }
 }
 
@@ -18090,12 +19541,34 @@ function $f_contains_var_terms$(ts_0) {
   }
 }
 
-function $f_ctor_more$(name_0, found_0, rest_0) {
-  return run_jump($f_choose$, [run_loop($f_eq$(run_loop($dk$(found_0)), "Missing")), run_clo((x_0) => {
-  return run_jump($f_ctor_lookup$, [name_0, rest_0]);
-}), run_clo((x_1) => {
-  return found_0;
+function $f_init$(xs_0) {
+  if (xs_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const x_0 = xs_0["head"];
+    const xt_0 = xs_0["tail"];
+    const x_1 = run_loop($f_len$(xt_0));
+    return run_jump($f_choose$, [(x_1 === 0), run_clo((x_2) => {
+    return {$: "Nil"};
+}), run_clo((x_3) => {
+    return {$: "Con", ["head"]: x_0, ["tail"]: run_loop($f_init$(xt_0))};
 })]);
+  }
+}
+
+function $f_last$(xs_0) {
+  if (xs_0.$ === "Nil") {
+    return run_jump($atom$, ["Absent"]);
+  } else {
+    const x_0 = xs_0["head"];
+    const xt_0 = xs_0["tail"];
+    const x_1 = run_loop($f_len$(xt_0));
+    return run_jump($f_choose$, [(x_1 === 0), run_clo((x_2) => {
+    return x_0;
+}), run_clo((x_3) => {
+    return run_jump($f_last$, [xt_0]);
+})]);
+  }
 }
 export default {
   "f_parse": run_lib($f_parse$, 1),
@@ -18106,6 +19579,9 @@ export default {
   "annotate_book": run_lib($annotate_book$, 1),
   "j_program": run_lib($j_program$, 1),
   "j_library": run_lib($j_library$, 1),
+  "j_expr": run_lib($j_expr$, 5),
+  "j_descriptor": run_lib($j_descriptor$, 3),
+  "j_io_type": run_lib($j_io_type$, 2),
   "j_modules": run_lib($j_modules$, 2),
   "driver_has_main": run_lib($driver_has_main$, 1),
   "driver_is_io": run_lib($driver_is_io$, 1),
@@ -18125,12 +19601,19 @@ export default {
   "exact_prefix": run_lib($exact_prefix$, 2),
   "f_load_graph": run_lib($f_load_graph$, 2),
   "f_main_names": run_lib($f_main_names$, 2),
+  "f_load_graph_trace": run_lib($f_load_graph_trace$, 2),
+  "f_source_parsed": run_lib($f_source_parsed$, 4),
+  "book_context": run_lib($book_context$, 1),
+  "book_cached": run_lib($book_cached$, 2),
   "f_load_graph_seed": run_lib($f_load_graph_seed$, 5),
+  "f_load_graph_seed_trace": run_lib($f_load_graph_seed_trace$, 5),
   "driver_report": run_lib($driver_report$, 2),
   "check_book_diagnostic": run_lib($check_book_diagnostic$, 2),
+  "check_book_diagnostic_from_exact_prefix": run_lib($check_book_diagnostic_from_exact_prefix$, 3),
   "diagnostic_render": run_lib($diagnostic_render$, 1),
   "diagnostic_result_locate": run_lib($diagnostic_result_locate$, 2),
   "f_load_origins_for": run_lib($f_load_origins_for$, 3),
+  "f_loaded_origins_for": run_lib($f_loaded_origins_for$, 2),
   "j_compile_error": run_lib($j_compile_error$, 1),
   "j_layout_error": run_lib($j_layout_error$, 4),
   "reach_book": run_lib($reach_book$, 3),

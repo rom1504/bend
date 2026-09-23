@@ -412,3 +412,19 @@ then derivative frontend gates launch with unchanged2756-observation inventories
 the H cap is prospectively25minutes rather than30 to reserve derivative time
 before the02:45cutoff. Broad paired JS/native execution remains held until those
 compiler jobs finish. No unexecuted coverage is counted as passed.
+
+## 2026-09-23 02:36 UTC — consolidate the validated compiler
+
+The final H and maintained derivative frontend gate completed at02:30:30UTC.
+Both reproduce all2,756 B1 observations exactly, preserve all318 strict failures,
+and close/revalidate all91 worker histories. The verified archive preserves
+5,034 members in5,175,824 bytes; see the [artifact gate](../implementation/phase5/final-artifact-frontend.md).
+
+The user now explicitly requests one usable compiler version, then remaining
+semantic gaps and the6× deficit. The [consolidation design](../design/phase5/consolidated-release.md)
+promotes the validated equality-derived B1 as the ordinary CLI default, with
+a relocatable release manifest and genuine historical lineage kept distinct.
+This supersedes older default-distribution holds; it does not rewrite original
+proof or timing evidence. Broad backend preparation04 will test this selected
+derivative, rather than the unexecuted checked-parent preparations01–03.
+No broad result or release completion is claimed by this decision entry.

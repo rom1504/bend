@@ -14,12 +14,62 @@ self-hosting do not establish full diagnostic or proof-checker equivalence.
 Read the [validation boundaries](../selfhost/CONFORMANCE.md) and
 [negative audit](../selfhost/docs/NEGATIVE-COMPATIBILITY.md) before relying on it.
 
-For short edit/check/measure cycles, see
-[fast compiler development](FAST_COMPILER_DEVELOPMENT.md) and the
-[rapid experiment report](../implementation/phase1/rapid_performance_experiments.md).
-Source changes and frozen distributed artifacts have separate validation evidence.
-The [phase 2 guide](PHASE2_DEVELOPMENT.md) adds exact differential selections,
-retained failure replay and the native graph-manifest workflow.
+The default compiler is the consolidated Phase 5 version in
+`selfhost/dist/typed-api.mjs`. It includes the maintained, verified string-equality
+optimization and the final Phase 5 source changes. The
+[release manifest](../selfhost/dist/release.json) binds the API to its source,
+Base, runtime and host. Historical compiler variants are retained with their
+reports; ordinary use requires no artifact selection.
+
+## Run the compiler
+
+Use Node.js 24 or newer. From the repository root:
+
+```sh
+cd selfhost
+npm run verify:release
+node cli.mjs tests/conformance/typed-smoke/base-u32.bend --check-only
+node cli.mjs tests/conformance/typed-smoke/base-u32.bend --run
+node cli.mjs tests/conformance/typed-smoke/base-u32.bend -o program.mjs
+node program.mjs
+```
+
+With Clang 14 or newer, `node cli.mjs FILE --cpu --run` compiles and executes
+native CPU code. `CC` selects Clang. GPU execution requires its own SDK/hardware
+and remains outside the measured coverage here. Without `--run`, the default
+checks the program and interprets `main`.
+
+`verify:release` checks installed bytes, current source/runtime/host identities,
+and exact replay of the guarded equality transformation. It works after moving
+the checkout; original bootstrap reports retain their historical paths and are
+not relabeled as new proofs. This verifies integrity and lineage, not another
+run of all conformance tests. Normal CLI execution does not rebuild source.
+
+## Rebuild the default
+
+The supplied artifact runs without TypeScript or a local upstream checkout.
+Rebuilding explicitly uses the pinned upstream bootstrap tool. With the pinned
+checkout at `selfhost/.bootstrap/upstream`, run from `selfhost/`:
+
+```sh
+npm run build
+npm run verify:release
+```
+
+The build creates a fresh immutable attempt, checks all compiler source, derives
+the equality optimization, runs the maintained focused paired selection, then
+installs the result. A failed selected gate prevents installation. To choose a
+different upstream location or selection, use a development JSON config:
+
+```sh
+npm run build -- /absolute/release-config.json /absolute/new-attempt
+```
+
+Config fields and selection semantics are documented in the
+[maintained workflow guide](PHASE5_DEVELOPMENT.md). Broad conformance and checked
+self-reproduction are release/integration gates, not every small edit's build.
+The [Phase 5 report](../implementation/phase5/report.md) records the shipped
+artifact's broader evidence and remaining failures.
 
 ## Work on the current source
 
@@ -27,14 +77,14 @@ For new compiler edits, use the [Phase 5 development workflow](PHASE5_DEVELOPMEN
 It builds a genuinely checked compiler, freezes source/runtime/host identities,
 prepares a validated Base cache and runs selected tests against pinned TypeScript.
 The workflow's `validate` command reuses that frozen compiler for fixture-only
-changes; run a new build when compiler source changes. The optional equality
-profile is a verified derivative with separate provenance.
+changes; run a new build when compiler source changes. The equality
+profile is a verified derivative with separate provenance and is used by the
+default release build.
 
 The [current report](../implementation/phase5/report.md) and
 [frontend comparison](../implementation/phase5/final-conformance.md) describe the
-current source. Bundled `dist/` artifacts retain their own historical validation;
-ordinary CLI commands select an artifact and do not silently rebuild changed
-source. Use a newly built attempt's API to exercise current source changes:
+current source and consolidated default. For experimental source changes, keep
+the release stable and select a newly built attempt explicitly:
 
 ```sh
 # From selfhost/, after creating build/dev/attempt-01 with the maintained workflow.
@@ -50,56 +100,23 @@ the original `api.mjs` remains the checked parent. The maintained `validate`
 command follows the selected artifact automatically. Full checked self-reproduction
 is a separate integration gate, not a prerequisite for every small edit.
 
-## Run a compiler artifact
+## Artifact history and advanced selection
 
-Use Node.js 24 or newer. From `selfhost/`:
+`BEND_TYPED_API=/absolute/compiler.mjs` selects an experimental compiler API.
+`BEND_BASE=/absolute/base.bend` selects Base; `BEND_TYPED_RUNTIME` supplies runtime
+text for generated JavaScript and does not replace the runtime embedded in an
+already generated compiler. Historical artifacts under `dist/phase1/` and
+`dist/selfhost/` keep their original evidence. See the
+[Phase 1 report](../implementation/phase1/report.md) for their historical limits.
 
-```sh
-node cli.mjs tests/conformance/typed-smoke/base-u32.bend --check-only
-node cli.mjs tests/conformance/typed-smoke/base-u32.bend -o program.mjs
-node program.mjs
-node cli.mjs tests/conformance/typed-smoke/base-u32.bend --cpu --run
-```
+The default API's checked parent and exact transformation are under
+`dist/release-lineage/`. The old default and its authentic bootstrap sidecars
+are under `dist/release-history/`. The optimized API has no bootstrap sidecar:
+it is a verified derivative of the checked parent, not a new upstream bootstrap.
+The separately self-emitted compiler has its own [checked fixed-point proof](../implementation/phase5/final-selfhost.md).
+Its performance must not be confused with the default's measured 6.03× ratio.
 
-The native CPU lane requires Clang 14 or newer; `CC` can select it. GPU execution
-requires the appropriate SDK and hardware and has separate validation gates.
-The JavaScript backend requires neither Clang nor GPU tools.
-
-`BEND_TYPED_API=/absolute/compiler.mjs` selects an explicit compiler artifact.
-`BEND_BASE=/absolute/base.bend` selects Base. `BEND_TYPED_RUNTIME` supplies runtime
-text for generated JavaScript; it does **not** replace the runtime embedded in an
-already generated compiler. Change a compiler by rebuilding it, not by pointing
-an old API at newly edited Bend source.
-
-## Phase 1 candidate
-
-The phase 1 compiler artifacts are published separately under
-[`selfhost/dist/phase1/`](../selfhost/dist/phase1/). The default
-`dist/typed-api.mjs` retains the supplied baseline compiler while the candidate's
-remaining performance and conformance gates are open. The host supports both
-artifact generations; ordinary commands never silently rebuild an API.
-
-From `selfhost/`, select the new bootstrap API explicitly:
-
-```sh
-BEND_TYPED_API="$PWD/dist/phase1/bootstrap-api.mjs" \
-  node cli.mjs tests/conformance/typed-smoke/base-u32.bend --run
-```
-
-Or exercise the compiler emitted by the Bend implementation's own JS backend:
-
-```sh
-BEND_TYPED_API="$PWD/dist/phase1/selfhost-api.mjs" \
-  node --stack-size=4096 cli.mjs tests/conformance/typed-smoke/base-u32.bend --run
-```
-
-Both artifacts execute the Bend compiler algorithms. Their difference is which
-backend emitted that compiler's JavaScript: pinned upstream for the bootstrap
-API, or this port for the self-emitted API. Their timings and validation evidence
-must be kept separate. See the [phase 1 report](../implementation/phase1/report.md)
-for exact hashes, native timeout limitations, and targets that remain unmet.
-
-## Build and verify
+## Full self-reproduction and component checks
 
 `src/compiler.json` gives the ordered module list and upstream pin.
 `tools/assemble.mjs` links those modules into one source file, ordering types,

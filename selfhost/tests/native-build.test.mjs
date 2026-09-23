@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {nativeBuildPlan} from '../tools/native-build.mjs';
+import childProcess from 'node:child_process';
+import {syncBuiltinESMExports} from 'node:module';
+import {nativeBuildPlan,buildNative} from '../tools/native-build.mjs';
 
 const input={file:'/tmp/program.c',binary:'/tmp/program',env:{},exists:()=>false};
 test('CPU fallback links the foreign libraries that the emitted source uses',()=>{
@@ -27,4 +29,25 @@ test('Metal uses Objective-C ARC while explicit CPU can avoid GPU build',()=>{
 test('an explicit unavailable GPU target cannot silently fall back to CPU',()=>{
   assert.throws(()=>nativeBuildPlan({...input,platform:'linux',source:'',target:'metal'}),/Apple host/);
   assert.throws(()=>nativeBuildPlan({...input,platform:'linux',source:'',target:'cuda'}),/nvrtc.h/);
+});
+
+test('native subprocess errors cannot report a successful exit code',t=>{
+  let outcome;
+  const spawn=t.mock.method(childProcess,'spawnSync',(_command,args)=>
+    args[0]==='--version'?{status:0,stdout:'clang version 16.0.0'}:outcome);
+  syncBuiltinESMExports();
+  try {
+    const build=()=>buildNative({source:'',file:'/tmp/program.c',binary:'/tmp/program',target:'cpu',env:{PATH:'',CC:'test-clang'}});
+    // Real sandbox observation: pipe capture can supply both error and status0.
+    outcome={error:Object.assign(new Error('capture denied'),{code:'EPERM'}),status:0};
+    const denied=build();
+    assert.equal(denied.status,'error');assert.equal(denied.exitCode,1);
+    assert.equal(denied.diagnostic,'capture denied');
+    outcome={status:19,stderr:'compiler rejected C'};
+    assert.equal(build().exitCode,19);
+    outcome={status:null,signal:'SIGSEGV'};
+    assert.equal(build().exitCode,1);
+    outcome={status:0,stdout:'',stderr:''};
+    assert.equal(build().status,'ok');
+  } finally {spawn.mock.restore();syncBuiltinESMExports();}
 });

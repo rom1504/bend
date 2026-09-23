@@ -1,0 +1,21 @@
+--- a/selfhost/src/front/sugar.bend
++++ b/selfhost/src/front/sugar.bend
+@@ -326,7 +326,17 @@
+ 
+ @unsafe
+ def f_erased_local(ts):
+-  f_statement(FParsed{kt("Ref", f_tx(ts), f_atid(ts), 0, Nil{}), f_tl(ts)})
++  f_erased_local_name(f_space(ts))
++
++law f_erased_local_name:
++  for +ts: List<&2,FToken>
++  FParsed
++
++@unsafe
++def f_erased_local_name(ts):
++  f_choose(FParsed, f_valid_name(f_tx(ts)),
++    u => f_statement(FParsed{kt("Ref", f_tx(ts), f_atid(ts), 0, Nil{}), f_tl(ts)}),
++    u => fpe_error(ts, "expected name", "a name"))
+ 
+ @unsafe
+ def f_write_statement(n, ts):

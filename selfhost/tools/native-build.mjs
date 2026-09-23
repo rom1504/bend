@@ -58,7 +58,7 @@ export function buildNative({source,file,binary,target='auto',cwd,timeoutMs=1200
     const remaining=Math.max(1,timeoutMs-(performance.now()-started));
     const result=spawnSync(command,args,{cwd,env,encoding:'utf8',timeout:Math.ceil(remaining),maxBuffer:2**20});
     if(result.error?.code==='ETIMEDOUT') return {status:'timeout',phase:'compile',reason:`Native ${phase} exceeded timeout.`,checked:true};
-    if(result.error||result.status!==0) return {status:'error',phase:'compile',diagnostic:result.error?.message||result.stderr||result.stdout||`${command} failed`,exitCode:result.status??1,checked:true};
+    if(result.error||result.status!==0) return {status:'error',phase:'compile',diagnostic:result.error?.message||result.stderr||result.stdout||`${command} failed`,exitCode:result.status||1,checked:true};
   }
   return {status:'ok',phase:'compile',binary:path.resolve(binary),target:plan.target,bangs:plan.bangs,compiler,checked:true};
 }

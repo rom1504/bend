@@ -142,3 +142,57 @@ with stage3 running. That advances the pending-proof status but is not a
 completed fixed point or a public-H compilation-speed measurement. This review
 does not rerun proof verification; its final completion and H-specific gates
 remain separate evidence to link when available.
+
+
+## Outcome inventory review — 2026-09-23 02:31 UTC
+
+Reviewed the 02:26 outcome inventory against all 23 linked workstream reports,
+including their decision, mechanism and scope summaries. All links resolve and
+experiment IDs map to the intended reports. The reviewed `outcomes.md` SHA-256 is
+`a91b76c1235a5d8731b451a84dd4ece61140c0c74063b4d79724b6bc1ea72421`.
+Two small wording corrections are recommended; neither changes a measured result:
+
+- P5-007 corrects **constructor/datatype** rejection reasons, not binder rules.
+  Its three mechanisms are undeclared-constructor inference, the datatype `<>`
+  hint, and absent-family versus wrong-family-arity distinction. The report
+  preserves authoritative checker strings and separates the two exact upstream
+  repairs from four residual diagnostics.
+- P5-014 restricts named matcher arms to raw Ref heads; other terms follow the
+  **existing** tail/expected-`}` route. Describing it simply as an explicit
+  expectation path can obscure that it changes one grammar condition, while
+  structured rendering belongs to P5-011/P5-022. The isolated strict diagnostic
+  failures remain visible in its own report.
+
+P5-008 is correctly mapped to generic argument boundaries, not constructor
+reasons. Its narrow `f_args_base` change rejects semicolons while preserving the
+special `>>` boundary and statement skipping elsewhere. Its report distinguishes
+13 acceptance repairs from exact diagnostics, the rejected V1 newline behavior,
+the V2 message typo, corrected V3, and the retained typed-list residual.
+
+The P5-015, P5-021 and P5-023 numbers agree with their linked measured reports:
+301.905→229.753s/23.90%, 292.602→242.597s/17.09%, and
+642.58→363.39s/43.45% with TS60.25s respectively. The inventory correctly avoids
+multiplying these different-workload improvements, claiming faster generated
+programs, or treating the B1 derivative as public H. The final conformance
+377→318 strict failures and560→444 exact differences also agree with the
+independent comparison. Completed self-reproduction is now separately evidenced
+by [the final proof audit](final-selfhost.md); the 01:52 pending status above
+remains a historical observation. No new H frontend/backend completion is
+inferred from this review.
+
+The updated code-size document uses the final campaign count created
+`2026-09-23T02:20:43.169702+00:00`, rather than its retained earlier counts:
+59 production modules/16,509 physical lines, 12,812 selected maintained-support
+lines, and256 experimental-tool files/14,644 physical lines.
+`currentUnchangedDuringCount` is true in that actual JSON. The support total
+matches the displayed category sum; the historical223-line boundary discrepancy
+is still explicit. The reviewed document SHA-256 is
+`0ed00dd93866aace968ea5e9f8fbf4ab90c8d309ff517f4aa1825f7e9149a056`;
+`code-size-evidence/final-campaign-report.json` is
+`840975f3159a90b8bb70261397bc90c339323c291555e364c0d0074a0f664ccb`.
+These are verification of retained counts, not a new source recount.
+
+Only light document/JSON reads, small arithmetic and hashes of these small
+reviewed files were performed. No compiler, oracle, tests, audit executable,
+archive, Git operation or source mutation ran. Only this dated review was added;
+the root-owned outcome/main reports were not edited.

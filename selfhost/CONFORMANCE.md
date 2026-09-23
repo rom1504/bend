@@ -1,5 +1,13 @@
 # Compiler validation
 
+The ordinary CLI now uses the [consolidated Phase 5 release](../implementation/phase5/consolidated-release.md).
+Its [manifest](dist/release.json) identifies the exact API/source/runtime/host;
+`npm run verify:release` checks local integrity and transformation replay.
+The [final frontend gate](../implementation/phase5/final-artifact-frontend.md)
+preserves all 2,756 checked-parent observations for this optimized artifact,
+including 318 strict failures. Historical sections below retain their recorded
+artifact scope and do not substitute for the current release's separate gates.
+
 The supplied baseline compiler results are in [the compatibility matrix](docs/COMPATIBILITY-MATRIX.md).
 Phase 1 changes have separate artifact-specific evidence in the
 [implementation report](../implementation/phase1/report.md).

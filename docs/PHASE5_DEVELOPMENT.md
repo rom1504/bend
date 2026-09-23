@@ -1,5 +1,11 @@
 # Phase 5 development workflow
 
+For ordinary use and rebuilding the shipped compiler, start with the
+[consolidated compiler guide](BEND-IN-BEND.md). `npm run build` composes this
+workflow with verified equality derivation and installation; `npm run
+verify:release` checks the installed package. The commands below retain isolated
+attempts for experiments without replacing the default.
+
 Use a genuinely checked B1 for routine compiler edits. The maintained entry
 freezes the source, runtime and host, builds the API, prepares its own validated
 Base cache, and runs selected cases against pinned TypeScript. Compiler work

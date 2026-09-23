@@ -1,14 +1,16 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-23 02:12 UTC; baseline `7d69850`, final checked integration API `5969c53d34a0…`.
+Evidence cutoff: 2026-09-23 02:40 UTC; baseline `7d69850`, final checked integration API `5969c53d34a0…`.
 Authorized Phase 5 window: 2026-09-22 21:39:36 to 2026-09-23 03:39:36 UTC.
-Next review: H frontend progress around 02:18 UTC; combined H/derived cutoff 02:45 UTC.
+Next review: consolidated CLI/default verification, then broad backend closure by03:25 UTC.
 
 ## User objective
 
 Prioritize conformance, simplify code where it helps future changes, and retain
 or improve the fast development loop. Work for six hours, document the design
-and results, and commit/push validated increments. See the
+and results, and commit/push validated increments. Latest steering explicitly asks
+for one usable consolidated compiler, then the remaining semantic gaps and6×
+performance deficit. See the
 [Phase 5 design](../design/phase5/conformance_and_development.md).
 
 ## Established position
@@ -39,9 +41,14 @@ and results, and commit/push validated increments. See the
 
 | Rank | Work | Decisive gate | Owner |
 | --- | --- | --- | --- |
-|1|Final H and derivative frontend inventory|All2,756observations/artifact, exact B1 equivalence and closed histories|compact_index|
-|2|Paired broad JS/native execution|All1,981eligible probes/compiler, preserved failures and actual outputs|direct_calls|
-|3|Final evidence/report audit|Actual proved bytes, consistent claims, durable inputs and explicit defects|lexer_analysis/root|
+|1|Consolidated default release|Actual default CLI and relocatable source/runtime/lineage verification|compact_index/root|
+|2|Paired broad JS/native execution, running|All1,981eligible probes/compiler on chosen derivative, preserved failures and outputs|direct_calls|
+|3|Remaining semantic gaps|Isolated parser witnesses/patch with unchanged released source|lexer_analysis|
+|4|Residual6× deficit|Bounded diagnostic profile of actual optimized compiler, then cheapest falsifier|root|
+
+The final H and derivative frontend inventories are complete: each has2,756exact
+B1 observations,318known strict failures and closed/revalidated worker histories.
+The completed archive preserves5,034members in5,175,824compressedbytes.
 
 Two reviewed source batches have complete frontend gates and no new differences.
 P5-005 is rejected: four exact repairs do not justify repeated quadratic source
@@ -62,9 +69,9 @@ differing library export policy and natural root order; both were explicitly
 handled before timing. The unchanged genuine checked-B1 fixed-point procedure
 completed at02:10:22UTC with all competing intentional compiler jobs paused.
 Both actual stages have SHA5043267732f5…; B1stage661.410s/Hstage1595.546s are
-descriptive proof observations. Public H/derivative full frontend gates started
-at02:12UTC with a25-minute H cap and02:45global cutoff, then broad JS/native correctness
-on four cores, with no timing claim. A tiny static-review probe confirmed an
+descriptive proof observations. Public H/derivative full frontend gates completed
+at02:30UTC. Broad JS/native correctness now runs on the chosen derivative with
+four workers, ending by03:25UTC; it makes no timing claim. A tiny static-review probe confirmed an
 existing multiline-string cursor error that makes the new renderer highlight
 the wrong line; it remains unfixed and acceptance behavior is unchanged.
 No general parser/kernel/emitter rewrite and no reopening rejected Phase 4
@@ -81,8 +88,9 @@ reproducers and raw reports durably. Known suite failures remain failures.
 Fixes require focused positive/negative gates and independent review. Combined
 source gets the full frontend inventory and a final checked fixed point after
 source freeze. Backend-impacting edits require compile-and-execute witnesses;
-GPU coverage needs actual hardware. Keep default distribution separate unless
-all intended release obligations are explicitly satisfied.
+GPU coverage needs actual hardware. The user now authorizes default consolidation;
+follow the [release design](../design/phase5/consolidated-release.md), preserve
+authentic parent/proof provenance and verify the actual packaged default.
 
 ## Resources and checkpoints
 

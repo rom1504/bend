@@ -388,3 +388,27 @@ genuine final B1, in its own directory with no imported measurement stages.
 Competing compiler jobs are paused. After actual B1→H→H completion, the plan is
 full public-H/derivative frontend equivalence followed by bounded paired broad
 JS/native execution. No proof or unexecuted backend coverage is claimed yet.
+
+## 2026-09-23 02:12 UTC — fresh checked fixed point complete
+
+The unchanged maintained self-host procedure completed its fresh B1→H→H proof
+at02:10:22UTC. Both stages exited0 without signals and verified their recorded
+inputs. Stage2 and stage3 report identical SHA5043267732f5178b12d14708e7dc07e3aa1a71b9d1d5949ef279af23c4297edd;
+actual stage2 already matches the four P523 Bend outputs. Independent final-byte
+and module auditing follows before archiving. B1stage took661.410seconds and
+publicHstage1595.546seconds; these are descriptive proof-stage observations,
+not a repeated controlled H/TS comparison. No competing intentional compiler or
+archive job ran during the proof. Small documentation/read-only metadata work
+and a Git checkpoint pinned toCPU3 overlapped the CPU0 proof.
+
+The audited P523/report checkpoint is pushed as307962c. Automatic review first
+rejected the push for unverified destination; read-only account/repository checks
+established authenticated rom1504 ownership, ADMIN access and the configured fork
+of bendlang/bend. The same authorized destination then accepted the push.
+
+All three broad-wrapper guard tests pass, and fresh snapshot03 retains the exact
+corrected tool. Previous snapshots remain unexecuted history. The full publicH
+then derivative frontend gates launch with unchanged2756-observation inventories;
+the H cap is prospectively25minutes rather than30 to reserve derivative time
+before the02:45cutoff. Broad paired JS/native execution remains held until those
+compiler jobs finish. No unexecuted coverage is counted as passed.

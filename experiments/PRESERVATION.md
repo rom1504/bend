@@ -1,6 +1,6 @@
 # Compiler evidence preservation index
 
-## Phase 5 checkpoint — 2026-09-23 01:56 UTC
+## Phase 5 checkpoint — 2026-09-23 02:14 UTC
 
 The [campaign report](../implementation/phase5/report.md) links each source
 experiment, its failures and its scoped validation. The main completed inputs
@@ -14,6 +14,7 @@ and observations are retained here:
 | Independent timing audit | [Final audit](../implementation/phase5/full-source-audit.json), [audit history](../implementation/phase5/full-source-audit-history/manifest.json) | Actual raw-file/byte verification and both successful auditor versions; no compiler or oracle rerun is implied. |
 | Selected actual backend executions | [Backend report and archive](../implementation/phase5/final-backends.md) | 42 declared observations per compiler, actual C and executables, corrected fixture-author failures and toolchain prerequisites. |
 | Confirmed multiline diagnostic defect | [Counterexample](../implementation/phase5/static-counterexample.md) | Exact original/final/TS observations and valid neighbor; compact evidence is not a complete standalone compiler capsule. |
+| Final fresh checked B1→H→H proof | [Proof report](../implementation/phase5/final-selfhost.md), [archive](../implementation/phase5/final-selfhost-evidence/manifest.json) | Both actual equal stages, 59 matching current/frozen/assembly modules, unchanged runner/host and independent first-attempt audit. |
 
 The controlled equality and Base-memo reports link their own complete ABBA
 archives. Each generic Phase 5 archive maps historical `files` identities to
@@ -30,9 +31,10 @@ historical identity; restoring bytes elsewhere creates neither a new checked
 bootstrap nor a relocated fixed-point proof. Use a fresh checked run if source,
 canonical Base paths, artifacts or the environment change.
 
-The final fresh fixed-point procedure is currently running. Public-H/derived
-frontend and broad JS/native validation are still prospective at this cutoff;
-this index does not claim their completion or preservation before they finish.
+The final fresh fixed point and its independent actual-byte audit pass.
+Public-H/derived frontend validation is running and broad JS/native validation
+is still prospective at this cutoff; this index does not claim their completion
+or preservation before they finish.
 
 ## Phase 4 historical index
 

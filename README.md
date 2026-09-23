@@ -44,6 +44,8 @@ measures 60.25 seconds for pinned TypeScript, 642.58 seconds for checked B1 and
 363.39 seconds for its verified equality derivative. Those are full compilation
 process times under the documented cache policy, separate from edit-loop and
 generated-program runtime measurements.
+The [final checked self-host proof](implementation/phase5/final-selfhost.md)
+reproduces the same compiler bytes through B1→H→H and verifies all 59 source modules.
 The [phase 4 development guide](docs/PHASE4_DEVELOPMENT.md) covers checked source
 experiments, bounded profiling and private compiler images; follow the
 [phase 4 report](implementation/phase4/report.md) for measured progress.

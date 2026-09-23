@@ -1,6 +1,6 @@
 # Phase 5 implementation report
 
-Status: in progress, validation checkpoint at 2026-09-23 01:33 UTC.
+Status: in progress, validation checkpoint at 2026-09-23 02:12 UTC.
 The authorized six-hour campaign began at 21:39:36 UTC and ends
 2026-09-23 03:39:36 UTC. Baseline: `7d69850`; design commit: `7c7db08`.
 
@@ -40,7 +40,10 @@ on this workload and documented cache policy. All six checked compilation,
 emitter-family byte and output-execution gates pass. Public self-emitted H is a
 separate artifact; these measurements do not establish its compilation speed or
 the runtime speed of emitted user programs. Genuine checked self-reproduction
-started at 01:32:44 UTC and is pending.
+completed at 02:10:22 UTC: actual B1→H→H stages are byte-identical, with all
+recorded inputs verified. B1's stage took 661.410 seconds and public H's stage
+1,595.546 seconds. Those single proof-stage observations have a separate setup
+and are not a repeated controlled H/TypeScript comparison.
 
 The [source recount](code-size.md) reports +454 production lines (+2.83%),
 principally structured diagnostics and imported declaration checks. Removing a
@@ -277,10 +280,12 @@ both earlier failed combined selections and their immutable inputs.
 
 The final genuine combined build, full B1 frontend inventory, selected actual
 CPU/backend executions and complete-source comparison have finished. The
-unchanged checked self-host fixed-point procedure is running with competing
-intentional compiler jobs paused. Next, independently validate the resulting
-public H and final derivative against the complete frontend inventory, then run
-the bounded paired broad JS/native gate. Recount the final support/experimental
+unchanged checked self-host fixed-point procedure has completed successfully.
+The [independent proof audit](final-selfhost.md) passes all 225 recorded file
+identities, all 59 current/frozen/assembly module matches, actual stage2/stage3
+byte equality and linkage to every P523 Bend output. The complete
+public-H/final-derivative frontend inventory is now running. Next run the bounded paired broad JS/native
+gate. Recount the final support/experimental
 tools, archive proof and validation inputs/failures, and finish documentation.
 The default distribution and pinned upstream remain unchanged. The six-hour
 campaign is still active.

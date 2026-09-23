@@ -13,6 +13,9 @@ self-emitted artifacts in its [report](../implementation/phase4/report.md).
 Phase 5 adds the [maintained checked workflow](../docs/PHASE5_DEVELOPMENT.md),
 with source-specific repairs, controlled timings and remaining failures in its
 [report](../implementation/phase5/report.md).
+Its [final-source checked self-reproduction](../implementation/phase5/final-selfhost.md)
+has actual equal stage2/stage3 bytes and matching current/frozen source modules;
+this is separate from the supplied distribution's historical proof below.
 Selected acceptance/phase checks, exact diagnostics, full-corpus coverage and
 self-emission are distinct verdicts; none substitutes for the others.
 The complete pinned corpus contains 1,378 fixtures across 24 namespaces; all 919

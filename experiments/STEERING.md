@@ -1,8 +1,8 @@
 # Current compiler experiment strategy
 
-Evidence cutoff: 2026-09-23 01:33 UTC; baseline `7d69850`, final checked integration API `5969c53d34a0…`.
+Evidence cutoff: 2026-09-23 02:12 UTC; baseline `7d69850`, final checked integration API `5969c53d34a0…`.
 Authorized Phase 5 window: 2026-09-22 21:39:36 to 2026-09-23 03:39:36 UTC.
-Next review: fresh checked self-reproduction, expected around 02:12 UTC, with a 55-minute outer bound.
+Next review: H frontend progress around 02:18 UTC; combined H/derived cutoff 02:45 UTC.
 
 ## User objective
 
@@ -39,10 +39,9 @@ and results, and commit/push validated increments. See the
 
 | Rank | Work | Decisive gate | Owner |
 | --- | --- | --- | --- |
-|1|Fresh unchanged checked self-reproduction|Actual B1→H→H, identical stage2/stage3 bytes and unchanged inputs|root|
-|2|Final H and derivative frontend inventory|All2,756observations/artifact, exact B1 equivalence and closed histories|compact_index|
-|3|Paired broad JS/native execution|All1,981eligible probes/compiler, preserved failures and actual outputs|direct_calls|
-|4|Final evidence/report audit|Consistent claims, durable inputs and explicit remaining defects|lexer_analysis/root|
+|1|Final H and derivative frontend inventory|All2,756observations/artifact, exact B1 equivalence and closed histories|compact_index|
+|2|Paired broad JS/native execution|All1,981eligible probes/compiler, preserved failures and actual outputs|direct_calls|
+|3|Final evidence/report audit|Actual proved bytes, consistent claims, durable inputs and explicit defects|lexer_analysis/root|
 
 Two reviewed source batches have complete frontend gates and no new differences.
 P5-005 is rejected: four exact repairs do not justify repeated quadratic source
@@ -61,8 +60,10 @@ observations (42 per compiler), including actual native compilation/execution.
 P5-023 is complete and independently audited. Cheap smoke failures revealed
 differing library export policy and natural root order; both were explicitly
 handled before timing. The unchanged genuine checked-B1 fixed-point procedure
-started at01:32:44UTC with all competing intentional compiler jobs paused.
-Public H/derivative full frontend gates follow, then broad JS/native correctness
+completed at02:10:22UTC with all competing intentional compiler jobs paused.
+Both actual stages have SHA5043267732f5…; B1stage661.410s/Hstage1595.546s are
+descriptive proof observations. Public H/derivative full frontend gates started
+at02:12UTC with a25-minute H cap and02:45global cutoff, then broad JS/native correctness
 on four cores, with no timing claim. A tiny static-review probe confirmed an
 existing multiline-string cursor error that makes the new renderer highlight
 the wrong line; it remains unfixed and acceptance behavior is unchanged.

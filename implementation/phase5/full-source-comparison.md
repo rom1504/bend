@@ -87,6 +87,9 @@ separate evidence. The comparison closed at01:25:56.553UTC.
 The maintained selfhost runner must independently produce and verify its own
 stage2/stage3 report. A timed compiler output cannot be relabeled as one of those
 stages. Any subsequent fixed-point/output linkage belongs in a separate audit.
+That [fresh proof and independent byte audit](final-selfhost.md) subsequently
+passed: its actual stage2 and stage3 match each other and all four measured Bend
+outputs. Its stage durations retain their separate proof/setup boundary.
 
 ## What the remaining cost suggests
 

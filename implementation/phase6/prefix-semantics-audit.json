@@ -1,0 +1,67 @@
+{
+  "kind": "phase6-prefix-semantics-audit",
+  "created": "2026-09-23T05:37:20.482962+00:00",
+  "complete": true,
+  "decision": "isolated-gates-pass; ready for root integration; not promoted",
+  "sourceSha256": "37bcda6917d639cc0a6391408ac782b2f8b56327bb2bd89b882a5f481ba47f0d",
+  "checkedApiSha256": "f1401a62050e56036711db956147d72f59f93c7d4561d0551e98c6315f22afaf",
+  "derivedApiSha256": "4633b1365c659cf88fbb02ca665c63374e2e62a5c1e42c7596c0760a2b7af590",
+  "changedModules": [
+    "src/front/parser.bend",
+    "src/front/sugar.bend",
+    "src/front/fresh_work.bend",
+    "src/front/families.bend",
+    "src/load/modules.bend"
+  ],
+  "productionSourceUnchanged": true,
+  "frontend": {
+    "observations": 140,
+    "baselineClassificationAgreement": 78,
+    "candidateClassificationAgreement": 140,
+    "baselineExact": 33,
+    "candidateExact": 98,
+    "newExact": 65,
+    "lostExact": 0,
+    "referenceUnchanged": true,
+    "strictFailures": [
+      {
+        "id": "comptime/err_plus_term.bend",
+        "lane": "check"
+      },
+      {
+        "id": "parse/plus_binder_term.bend",
+        "lane": "check"
+      }
+    ]
+  },
+  "runtime": {
+    "observationsPerCompiler": 36,
+    "lanes": [
+      "interpreter",
+      "js",
+      "native"
+    ],
+    "fixtures": 12,
+    "exactAgreement": 36
+  },
+  "graphControls": 20,
+  "closedPersistentHistories": 40,
+  "reports": [
+    {
+      "file": "selfhost/build/phase6/campaign/semantics/baseline-combined-v1/paired.json",
+      "sha256": "1a525df01d21b22a6ce1bf34e971f0b19edfee1a4161a7ffe0a189edc07a6924"
+    },
+    {
+      "file": "selfhost/build/phase6/campaign/semantics/validation-combined-v1/selected/paired.json",
+      "sha256": "32be995c18edda554a2d81376742fad19c2deba4ba5ed556c8361a4bfba4138e"
+    },
+    {
+      "file": "selfhost/build/phase6/campaign/semantics/runtime-combined-v1/selected/paired.json",
+      "sha256": "47b59864684bf92ff642ba08d6f6b4417d8941fe5f5b38a43e5042314b87f800"
+    },
+    {
+      "file": "selfhost/build/phase6/campaign/semantics/graph-controls-combined-v1/report.json",
+      "sha256": "ceb6f07b9ae1c0ba1afcd698b13636a23275fbafd4b669d4af9a6b2468986d33"
+    }
+  ]
+}

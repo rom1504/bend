@@ -1,0 +1,182 @@
+--- a/selfhost/src/front/families.bend
++++ b/selfhost/src/front/families.bend
+@@ -58,7 +58,9 @@
+ 
+ @unsafe
+ def f_adt(t, args, d):
+-  f_adt_fill(t, args, da(d), f_leading_quants(dt(d)))
++  f_choose(KTerm, U32.is_eq(qt(t), 2) && (Bool.not(f_eq(dk(d), "ADT")) || U32.is_eq(f_leading_quants(dt(d)), 0) || (Bool.not(f_eq(tg(t), "ADT")) && U32.is_lt(f_leading_quants(dt(d)), da(d)))),
++    u => kt("Error", "a quantified datatype after + (+D<..> sets D's leading quantities to &2)", ix(t), 0, Nil{}),
++    u => f_adt_fill(t, args, da(d), f_leading_quants(dt(d))))
+ 
+ @unsafe
+ def f_adt_fill(t, args, arity, g):
+@@ -180,7 +182,7 @@
+ 
+ @unsafe
+ def f_scope_reference(t, bound, book):
+-  f_choose(KTerm, U32.is_eq(qt(t), 2) && Bool.not(f_eq(dk(f_find(nm(t), book)), "ADT")), u => kt("Error", "+ marks a binder or a quantified datatype, not a value reference", 0, 0, Nil{}), u => f_choose(KTerm, U32.is_eq(qt(t), 3) && (Bool.not(f_eq(tg(bound), "Absent")) || f_eq(dk(f_find(nm(t), book)), "ADT")), u => kt("Error", "offload requires a named definition", 0, 0, Nil{}), u => f_choose(KTerm, Bool.not(f_eq(tg(bound), "Absent")), u => kt("Var", nm(bound), ix(bound), qt(bound), Nil{}), u => f_choose(KTerm, f_eq(dk(f_find(nm(t), book)), "ADT"), u => f_adt(t, Nil{}, f_find(nm(t), book)), u => f_choose(KTerm, Char.is_eq(f_head(nm(t)), '.') && Bool.not(Char.is_eq(f_head(f_tail(nm(t))), '.')), u => kt("Error", "a type for this operator (write (a " ++ f_operator_display(nm(t), ["+", "-", "*", "/", "%", "<", ">op", "<=", ">=", "<<", ">>op", ".&.", ".|.", ".^."]) ++ " b : Nat))", ix(t), 0, Nil{}), u => t)))))
++  f_choose(KTerm, U32.is_eq(qt(t), 2), u => f_scope_marked(t, bound, f_find(nm(t), book)), u => f_choose(KTerm, U32.is_eq(qt(t), 3) && (Bool.not(f_eq(tg(bound), "Absent")) || f_eq(dk(f_find(nm(t), book)), "ADT")), u => kt("Error", "offload requires a named definition", 0, 0, Nil{}), u => f_choose(KTerm, Bool.not(f_eq(tg(bound), "Absent")), u => kt("Var", nm(bound), ix(bound), qt(bound), Nil{}), u => f_choose(KTerm, f_eq(dk(f_find(nm(t), book)), "ADT"), u => f_adt(t, Nil{}, f_find(nm(t), book)), u => f_choose(KTerm, Char.is_eq(f_head(nm(t)), '.') && Bool.not(Char.is_eq(f_head(f_tail(nm(t))), '.')), u => kt("Error", "a type for this operator (write (a " ++ f_operator_display(nm(t), ["+", "-", "*", "/", "%", "<", ">op", "<=", ">=", "<<", ">>op", ".&.", ".|.", ".^."]) ++ " b : Nat))", ix(t), 0, Nil{}), u => t)))))
+ 
+ @unsafe
+ def f_scope_lambda(t, env, book):
+@@ -205,3 +207,18 @@
+       name
+     case Con{+op, rest}:
+       f_choose(String, f_eq(f_operator(op), name), u => f_choose(String, f_eq(op, ">op"), u => ">", u => f_choose(String, f_eq(op, ">>op"), u => ">>", u => op)), u => f_operator_display(name, rest))
++
++# Marked values are deliberately unbound. The quantity on this private marker
++# records whether qualification may resolve an unbound spelling to a global.
++law f_scope_marked:
++  for +t: KTerm
++  for +bound: KTerm
++  for +definition: KDef
++  KTerm
++
++@unsafe
++def f_scope_marked(t, bound, definition):
++  f_choose(KTerm, f_eq(dk(definition), "ADT"), u => f_adt(t, Nil{}, definition),
++    u => f_choose(KTerm, Bool.not(f_eq(tg(bound), "Absent")) || Bool.not(String.contains(nm(t), ".")),
++      u => kt("FUnboundVar", nm(t), ix(t), f_choose(U32, f_eq(tg(bound), "Absent"), u => 1, u => 0), Nil{}),
++      u => kt("Error", "a quantified datatype after + (+D<..> sets D's leading quantities to &2)", ix(t), 0, Nil{})))
+--- a/selfhost/src/front/fresh_work.bend
++++ b/selfhost/src/front/fresh_work.bend
+@@ -61,11 +61,12 @@
+   ffw_walk(term, env, next, Nil{})
+ @unsafe
+ def ffw_walk(term, env, next, stack):
+-  f_choose(FFresh, String.eq(tg(term), "Var"), u => ffw_done(f_rename_var(term, env), next, stack),
++  f_choose(FFresh, String.eq(tg(term), "FUnboundVar"), u => ffw_done(kt("Var", nm(term), next, 1, Nil{}), U32.add(next, 1), stack),
++    u => f_choose(FFresh, String.eq(tg(term), "Var"), u => ffw_done(f_rename_var(term, env), next, stack),
+     u => f_choose(FFresh, String.eq(tg(term), "All"), u => ffw_walk(kid(term, 0), env, U32.add(next, 1), Con{FFAllA{term, env, next}, stack}),
+     u => f_choose(FFresh, String.eq(tg(term), "Lam"), u => ffw_walk(kid(term, 0), Con{kt("Map", "", ix(term), 0, [var(nm(term), next)]), env}, U32.add(next, 1), Con{FFLambda{term, next}, stack}),
+     u => f_choose(FFresh, String.eq(tg(term), "Let"), u => ffw_let(env, env, ks(term), Nil{}, next, stack),
+-    u => ffw_kids(term, env, ks(term), Nil{}, next, stack)))))
++    u => ffw_kids(term, env, ks(term), Nil{}, next, stack))))))
+ @unsafe
+ def ffw_done(term, next, stack):
+   match stack:
+--- a/selfhost/src/front/parser.bend
++++ b/selfhost/src/front/parser.bend
+@@ -238,12 +238,13 @@
+ 
+ @unsafe
+ def f_atom_base(ts):
+-  f_choose(FParsed, f_eq(f_tx(ts), "("), u => f_group(f_body(f_tl(ts))),
++  f_choose(FParsed, f_eq(f_tx(ts), "++"), u => f_atom_base(Con{FToken{"+", f_line(ts), f_col(ts), 0}, Con{FToken{"+", f_line(ts), U32.add(f_col(ts), 1), 0}, f_tl(ts)}}),
++    u => f_choose(FParsed, f_eq(f_tx(ts), "("), u => f_group(f_body(f_tl(ts))),
+     u => f_choose(FParsed, f_eq(f_tx(ts), "{"), u => f_brace(f_tl(ts)),
+     u => f_choose(FParsed, f_eq(f_tx(ts), "["), u => f_array(f_tl(ts)),
+     u => f_choose(FParsed, f_eq(f_tx(ts), "@"), u => f_all(f_tl(ts), False{}),
+     u => f_choose(FParsed, f_eq(f_tx(ts), "&"), u => f_grade(f_tl(ts)),
+-    u => f_choose(FParsed, f_eq(f_tx(ts), "+") || f_eq(f_tx(ts), "+bind"), u => f_mark(f_atom(f_tl(ts)), 2),
++    u => f_choose(FParsed, f_eq(f_tx(ts), "+") || f_eq(f_tx(ts), "+bind"), u => f_mark(f_expr(f_tl(ts), 12), 2),
+     u => f_choose(FParsed, f_eq(f_tx(ts), "?"), u => FParsed{kt("Hol", f_tx(f_tl(ts)), 0, 0, Nil{}), f_tl(f_tl(ts))},
+     u => f_choose(FParsed, f_eq(f_tx(ts), "\\"), u => f_matcher(f_tl(f_tl(ts))),
+     u => f_choose(FParsed, f_eq(f_tx(ts), "Type") || f_eq(f_tx(ts), "Data"), u => FParsed{kt("Typ", "", 0, 0, [kt("Qua", "", 0, f_choose(U32, f_eq(f_tx(ts), "Data"), u => 2, u => 1), Nil{})]), f_tl(ts)},
+@@ -251,7 +252,7 @@
+     u => f_choose(FParsed, f_eq(f_tx(ts), "Kind"), u => f_kind_wrap(f_expect(f_expr(f_tl(f_tl(ts)), 0), ")")),
+     u => f_choose(FParsed, U32.is_eq(f_kind_token(ts), 2), u => FParsed{kt("Literal", f_tx(ts), 0, 1, Nil{}), f_tl(ts)},
+     u => f_choose(FParsed, U32.is_eq(f_kind_token(ts), 1) && Bool.not(f_reserved(f_tx(ts))), u => f_atom_name(ts),
+-    u => f_choose(FParsed, f_reserved(f_tx(ts)), u => f_err(ts, "expected term"), u => fpe_error(ts, "expected term", "a term")))))))))))))))
++    u => f_choose(FParsed, f_reserved(f_tx(ts)), u => f_err(ts, "expected term"), u => fpe_error(ts, "expected term", "a term"))))))))))))))))
+ 
+ # A constructor brace belongs to the raw name only when lexically adjacent.
+ # General term growth must not absorb the next independent braced value.
+@@ -315,7 +316,10 @@
+ def f_mark(p, q):
+   match p:
+     case FParsed{+n, ts}:
+-      f_choose(FParsed, f_eq(tg(n), "Ref") || f_eq(tg(n), "ADT") || f_eq(tg(n), "Error"), u => FParsed{kt(tg(n), nm(n), ix(n), q, ks(n)), ts}, u => f_err(ts, "+ requires a binder or quantified datatype"))
++      f_choose(FParsed, f_eq(tg(n), "Error"), u => FParsed{n, ts},
++        u => f_choose(FParsed, f_eq(tg(n), "Call") && U32.is_eq(f_len(ks(n)), 1), u => f_mark(FParsed{kid(n, 0), ts}, q),
++        u => f_choose(FParsed, (f_eq(tg(n), "Ref") && Bool.not(U32.is_eq(qt(n), 3))) || f_eq(tg(n), "ADT"), u => FParsed{KTerm{tg(n), nm(n), ix(n), q, ks(n), rm(n)}, ts},
++        u => fpe_error(f_space(ts), "+ requires a binder or quantified datatype", "a quantified datatype after + (+D<..> sets D's leading quantities to &2)"))))
+ 
+ @unsafe
+ def f_grade(ts):
+--- a/selfhost/src/front/sugar.bend
++++ b/selfhost/src/front/sugar.bend
+@@ -326,7 +326,17 @@
+ 
+ @unsafe
+ def f_erased_local(ts):
+-  f_statement(FParsed{kt("Ref", f_tx(ts), f_atid(ts), 0, Nil{}), f_tl(ts)})
++  f_erased_local_name(f_space(ts))
++
++law f_erased_local_name:
++  for +ts: List<&2,FToken>
++  FParsed
++
++@unsafe
++def f_erased_local_name(ts):
++  f_choose(FParsed, f_valid_name(f_tx(ts)),
++    u => f_erased_header(f_tl(ts), [kt("Ref", f_tx(ts), f_atid(ts), 0, Nil{})]),
++    u => fpe_error(ts, "expected name", "a name"))
+ 
+ @unsafe
+ def f_write_statement(n, ts):
+@@ -356,3 +366,50 @@
+     case FParsed{t, ts}:
+       FParsed{kt("TemplateArg", "", 0, 0, [t]), ts}
+ 
++
++# Erased headers require assignment. Only same-line name-headed terms extend a
++# parallel header; whitespace before the assignment/annotation is unrestricted.
++law f_erased_header:
++  for +ts: List<&2,FToken>
++  for +patterns: List<&2,KTerm>
++  FParsed
++law f_erased_header_at:
++  for +ts: List<&2,FToken>
++  for +spaced: List<&2,FToken>
++  for +patterns: List<&2,KTerm>
++  FParsed
++law f_erased_head:
++  for +parsed: FParsed
++  for +patterns: List<&2,KTerm>
++  FParsed
++law f_erased_local_done:
++  for +parsed: FParsed
++  FParsed
++
++@unsafe
++def f_erased_header(ts, patterns):
++  f_erased_header_at(ts, f_space(ts), patterns)
++
++@unsafe
++def f_erased_header_at(ts, spaced, patterns):
++  f_choose(FParsed, U32.is_eq(f_len(patterns), 1) && (f_eq(f_tx(spaced), "=") || f_eq(f_tx(spaced), ":")),
++    u => f_erased_local_done(f_statement(FParsed{terms_at(patterns, 0), spaced})),
++    u => f_choose(FParsed, f_eq(f_tx(spaced), "="),
++      u => f_parallel_values(f_tl(spaced), List.reverse(&2,KTerm,patterns), f_len(patterns), Nil{}),
++      u => f_choose(FParsed, (Char.is_alpha(f_head(f_tx(ts))) || Char.is_eq(f_head(f_tx(ts)), '_')) && Bool.not(f_reserved(f_tx(ts))),
++        u => f_erased_head(f_expr(ts, 0), patterns),
++        u => fpe_error(spaced, "expected =", "'='"))))
++
++@unsafe
++def f_erased_head(parsed, patterns):
++  match parsed:
++    case FParsed{+term, rest}:
++      f_choose(FParsed, f_eq(tg(term), "Error"), u => FParsed{term, rest},
++        u => f_choose(FParsed, f_eq(tg(term), "Call") && U32.is_eq(f_len(ks(term)), 1), u => f_erased_head(FParsed{kid(term, 0), rest}, patterns),
++        u => f_erased_header(rest, Con{KTerm{tg(term), nm(term), ix(term), 0, ks(term), rm(term)}, patterns})))
++
++@unsafe
++def f_erased_local_done(parsed):
++  match parsed:
++    case FParsed{+term, rest}:
++      f_choose(FParsed, f_eq(tg(term), "Local") || f_eq(tg(term), "Error"), u => FParsed{term, rest}, u => fpe_error(f_space(rest), "expected =", "'='"))
+--- a/selfhost/src/load/modules.bend
++++ b/selfhost/src/load/modules.bend
+@@ -197,7 +197,9 @@
+ 
+ @unsafe
+ def f_qual_term(t, book, ns, imports):
+-  KTerm{tg(t), f_choose(String, f_eq(tg(t), "Ref") || f_eq(tg(t), "ADT") || f_eq(tg(t), "Ctr") || f_eq(tg(t), "Mat"), u => f_resolve_name(nm(t), book, ns, imports), u => nm(t)), ix(t), qt(t), f_qual_terms(ks(t), book, ns, imports), rm(t)}
++  f_choose(KTerm, f_eq(tg(t), "FUnboundVar") && U32.is_eq(qt(t), 1) && Bool.not(String.is_empty(ns)) && f_declared(nm(t), book),
++    u => kt("Error", "a quantified datatype after + (+D<..> sets D's leading quantities to &2)", ix(t), 0, Nil{}),
++    u => KTerm{tg(t), f_choose(String, f_eq(tg(t), "Ref") || f_eq(tg(t), "ADT") || f_eq(tg(t), "Ctr") || f_eq(tg(t), "Mat"), u => f_resolve_name(nm(t), book, ns, imports), u => nm(t)), ix(t), qt(t), f_qual_terms(ks(t), book, ns, imports), rm(t)})
+ 
+ @unsafe
+ def f_qual_terms(ts, book, ns, imports):

@@ -1,0 +1,27 @@
+--- a/selfhost/tools/typed-driver.mjs
++++ b/selfhost/tools/typed-driver.mjs
+@@ -193,8 +193,13 @@
+ export function discoverSources(api,input,{seed=null}={}) {
+   const sources=[],seen=new Map(),physical=new Map(),foreign=new Map();
+   const graphMode=typeof api.f_load_graph==='function';
+-  const visit=(name,file)=>{
+-    const absolute=fs.realpathSync(file);
++  const visit=(name,file,fromImport=false)=>{
++    let absolute;
++    try {absolute=fs.realpathSync(file);}
++    catch(error) {
++      if(fromImport&&error?.code==='ENOENT'&&error.phase===undefined)error.phase='parse';
++      throw error;
++    }
+     if(seen.has(name)) {
+       if(seen.get(name)!==absolute) throw Object.assign(Error('Module import path collision: '+name),{phase:'load'});
+       return;
+@@ -219,7 +224,7 @@
+     for(const item of array(parsed.imports)) {
+       const imported=item.name;
+       const importedFile=imported==='Base'?basePath:path.resolve(path.dirname(absolute),imported);
+-      visit(graphMode&&imported!=='Base'?importedFile:imported,importedFile);
++      visit(graphMode&&imported!=='Base'?importedFile:imported,importedFile,true);
+     }
+   };
+   const main=graphMode?path.resolve(input):'__main__';

@@ -510,3 +510,21 @@ and native immediate words. Root handles baseline identity, obsolete-path audit,
 missing imports and checked-result reuse. Source implementation starts after the
 design checkpoint. No new speedup, simplification or conformance repair is claimed
 at this starting entry.
+
+## First ten-hour campaign checkpoint — 2026-09-23T05:40:05.229181+00:00
+
+The [campaign report](../implementation/phase6/campaign-report.md) records five
+frozen candidates: prefix/erased semantics, native immediate fields, multiline
+lexer positions, obsolete freshening and missing-import phase classification.
+Checked isolated gates and independent reviews are retained; production remains
+unchanged. The native255-field witness now actually compiles and runs, with95.31%
+less generated C. The cleanup removes184lines with byte-identical selected APIs.
+These results do not change the release's6.03×TypeScript speed claim.
+
+Source provenance v2 fixes112missing-excerpt cases while preserving141prior exact
+negatives, but has material metadata allocation/cache cost. Measure that cost
+serially before promoting; retain the earlier one-case diagnostic regression.
+Root's structured-error candidate removes140Bend lines and passes its first
+checked/default gate; exact broader gates remain. The next frontier is accepted
+provenance overhead, one authoritative checker result, typed-fact opportunity
+measurement, parser families and the Boolean H oracle.

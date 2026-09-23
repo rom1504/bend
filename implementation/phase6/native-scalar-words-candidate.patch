@@ -1,0 +1,23 @@
+--- a/selfhost/src/back/native/bridge.bend
++++ b/selfhost/src/back/native/bridge.bend
+@@ -199,13 +199,18 @@
+ def nc_values(+xs: List<&2, KTerm>, +env: List<&2, NC_Binding>) -> List<&2, String>:
+   match xs:
+     case Nil{}: Nil{}
+-    case Con{+h, +t}: Con{nc_word(ix(h), env), nc_values(t, env)}
++    case Con{+h, +t}: Con{nt_choose(String, String.eq(tg(h), "NWord"), u => nm(h) ++ "ull", u => nc_word(ix(h), env)), nc_values(t, env)}
+ 
+ @unsafe
+ def nc_sequence(+tag: String, +name: String, +xs: List<&2, KTerm>, +acc: List<&2, KTerm>, +n: U32) -> KTerm:
+   match xs:
+     case Nil{}: kt(tag, name, 0, 0, List.reverse(&2, KTerm, acc))
+-    case Con{+h, +t}: nc_mklet(nc_id(n), h, nc_sequence(tag, name, t, Con{var("", nc_id(n)), acc}, U32.inc(n)))
++    case Con{+h, +t}:
++      # Compacted scalar words have no evaluation, allocation or ownership effect.
++      # Preserve the reserved field ID while omitting its needless continuation.
++      nt_choose(KTerm, String.eq(tag, "NCtr") && String.eq(tg(h), "NWord"),
++        u => nc_sequence(tag, name, t, Con{h, acc}, U32.inc(n)),
++        u => nc_mklet(nc_id(n), h, nc_sequence(tag, name, t, Con{var("", nc_id(n)), acc}, U32.inc(n))))
+ 
+ @unsafe
+ def nc_head(+xs: List<&2, String>) -> String:

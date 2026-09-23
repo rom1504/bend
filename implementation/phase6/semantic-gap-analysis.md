@@ -208,3 +208,14 @@ choose new output paths on replay. All compiler jobs ended by02:46:29, within
 five minutes of the02:41:38 launch, alongside other correctness work. Elapsed
 times are not a speed comparison. The decision remains **isolated evidence;
 no promotion**, with the marked-name design still entirely unimplemented.
+
+## Dated follow-up — 2026-09-23 03:12 UTC
+
+The marked-name proposal above and the earlier “entirely unimplemented” status
+are historical. The subsequently authorized isolated marker candidate was built
+and tested; [its completed report](marked-name-analysis.md) records selected
+phase improvements and ten noncapture controls, but also the decisive new
+`+f(1)` parse/check regression. It is **rejected for promotion**. The erased-name
+candidate remains separate and unpromoted; the released Phase5 compiler is
+unchanged. Exact diagnostics, broad integration and other uncompleted obligations
+are not implied by these bounded experiments.

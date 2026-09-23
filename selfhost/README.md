@@ -110,101 +110,47 @@ user programs. See [the architecture notes](docs/ARCHITECTURE.md).
 
 ## Rebuild and validate
 
-Set `BEND_UPSTREAM` to a checkout at the exact pinned revision. Bootstrap uses
-the upstream compiler once to type-check and build the port's API:
+Prepare the exact upstream checkout once as described in the
+[compiler guide](../docs/BEND-IN-BEND.md#rebuild-the-default), then run:
 
 ```sh
-git clone https://github.com/bendlang/bend.git /absolute/path/to/bend
-git -C /absolute/path/to/bend checkout 6018e28ecc67cf1fffc0c20c64b11023474c2df8
-BEND_UPSTREAM=/absolute/path/to/bend node tools/typed-driver.mjs --bootstrap
-BEND_UPSTREAM=/absolute/path/to/bend node tools/verify.mjs
+npm run build
+npm run verify:release
 ```
 
-The supplied API can be exercised without that checkout:
+For a custom upstream location or focused selection, pass a development JSON
+configuration and a fresh attempt path to `npm run build -- CONFIG NEW_ATTEMPT`.
+For experiments that should leave the default intact, use the
+[maintained development workflow](../docs/PHASE5_DEVELOPMENT.md).
+
+Full self-reproduction is a separate integration gate using a genuine checked
+parent. Follow [the current reproduction instructions](../docs/BEND-IN-BEND.md#full-self-reproduction-and-component-checks)
+and [final Phase 5 proof](../implementation/phase5/final-selfhost.md). A derived
+API must not acquire a bootstrap sidecar. Low-level bootstrap commands need an
+explicit fresh `BEND_TYPED_API` path; running them against the default replaces
+its artifact kind and invalidates release verification.
+
+Runtime, ABI and harness checks remain available:
 
 ```sh
-npm test
-node tools/smoke.mjs --native
 npm run test:runtime
-npm run test:harness
 npm run test:abi
+npm run test:harness
 ```
 
-Component verification checks the complete assembled source and exercises the
-kernel, normalization, specialization, annotation, readback, runtime ABI and
-conformance harness. It is a separate gate from self-hosting and full-suite
-compatibility. The generated report is `dist/component-report.json`.
+The [conformance protocol](tools/conformance/README.md) documents full inventory,
+exact selections, resource limits and retained failures. Negative syntax
+rejection is not automatically correct type rejection, and GPU execution needs
+actual hardware evidence. Use a fresh report path and preserve the artifact
+identities; historical reports do not validate later source just because paths
+have the same names.
 
-Verify the included self-emitted compiler directly against its own source:
-
-```sh
-BEND_TYPED_RUNTIME=dist/selfhost/seed-verification/runtime.mjs \
-BEND_SELFHOST_SEED_REPORT=dist/selfhost/seed-verification/seed-provenance.json \
-BEND_SELFHOST_HEAP_MB=12288 BEND_SELFHOST_TIMEOUT=10800000 \
-  node tools/conformance/verify-seed.mjs \
-  dist/selfhost/seed-verification/compiler.bend \
-  dist/selfhost/seed-verification/seed.mjs build/selfhost-recheck
-```
-
-This runs the generated compiler's parser, checker, annotation and emitter on
-the complete source and requires its output to equal the seed byte for byte.
-The condition is `B = H(B, S)`; the seed's original host and the current host are
-recorded separately. [The direct verification report](dist/selfhost/seed-verification/report.json)
-records a **successful byte-identical self-rebuild**, completed in 49 minutes
-on 2026-09-21. The seed and rebuilt compiler both have SHA-256
-`68585dc2852d8364b3ead69ea26b1e6c5a05809eeab7325206d18e06e8124418`.
-[Earlier failed attempts](dist/selfhost/release/report.json) remain available.
-This establishes self-reproduction of the typed compiler; full upstream
-compatibility is a separate question covered by the conformance reports.
-Generated foreign-function metadata includes canonical source paths, so direct
-comparison with an archived seed requires the original path layout. After moving
-the checkout, generate a local seed and compare its self-emission instead:
-
-```sh
-BEND_TYPED_API=dist/typed-api.mjs BEND_SELFHOST_HEAP_MB=12288 \
-BEND_SELFHOST_TIMEOUT=10800000 node tools/conformance/selfhost.mjs \
-  dist/selfhost/seed-verification/compiler.bend build/local-selfhost-recheck
-```
-The self-hosting runner uses an explicit 4 MB JavaScript stack for the large
-compiler book; the host must provide a larger native stack (8 MB in the recorded
-Linux run). The command also allows a 12 GB Node heap. Earlier eager ABI copies
-exhausted both the default heap and a 12 GB heap; the current host uses a
-[tested lazy ABI adapter](docs/COMPILER-ABI.md) to pass compiler graphs between
-phases without copying them. These resource settings do not skip any
-parsing, checking, annotation or emission phase. See the
-[resource measurements and reproduction test](docs/SELFHOST-RESOURCES.md).
-
-The self-emitted compiler is also included and can run ordinary programs:
-
-```sh
-BEND_TYPED_API=dist/selfhost/seed-verification/seed.mjs node --stack-size=4096 \
-  cli.mjs tests/conformance/typed-smoke/base-u32.bend --run
-```
-
-Its separate [end-to-end smoke report](dist/selfhost-smoke.json) covers checking,
-interpretation, JavaScript, native C and invalid-type rejection. Full-corpus
-reports identify which compiler artifact they exercised.
-The [relocated lazy-adapter smoke](dist/lazy-selfhost-distribution-smoke.json)
-also exercises all five routes with upstream and original-project filesystem
-access blocked, using a fresh Base cache.
-
-The conformance runner inventories every pinned upstream test and isolates each
-probe with a timeout. It does not count a syntax rejection as a correct type
-rejection, and GPU execution needs explicit hardware evidence.
-
-```sh
-node tools/conformance/run.mjs --upstream /absolute/path/to/bend \
-  --adapter tools/conformance/adapters/typed.mjs \
-  --output tests/conformance/typed-current.json
-```
-
-See [the conformance protocol](tools/conformance/README.md) and the JSON reports
-under `tests/conformance/`. Reports identify the exact API/runtime hashes they
-tested; an older snapshot's result does not establish coverage of a newer one.
-
-To create a distribution with the generated compiler, sources, licenses and
-completed validation reports, run `python3 tools/package.py`. Its archive manifest
-records the SHA-256 of each file; build caches and partial progress logs are excluded.
+Historical self-emitted distributions and their original reproduction reports
+remain in `dist/selfhost/`; the [preservation index](../experiments/PRESERVATION.md)
+and [experiment ledger](../experiments/ledger.md) identify their exact scope.
+They are not alternate defaults. The current release can run after relocation
+without an upstream checkout, as verified by its
+[clean-package CLI checks](../implementation/phase5/relocated-cli-evidence/README.md).
 
 ## Earlier prototype
 

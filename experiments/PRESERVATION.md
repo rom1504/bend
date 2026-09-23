@@ -31,10 +31,25 @@ historical identity; restoring bytes elsewhere creates neither a new checked
 bootstrap nor a relocated fixed-point proof. Use a fresh checked run if source,
 canonical Base paths, artifacts or the environment change.
 
-The final fresh fixed point and its independent actual-byte audit pass.
-Public-H/derived frontend validation is running and broad JS/native validation
-is still prospective at this cutoff; this index does not claim their completion
-or preservation before they finish.
+The final fresh fixed point, independent actual-byte audit and final H/derivative
+frontend inventories are complete. The final frontend archive is recorded below.
+The consolidated default and the subsequent native exit-status fix have
+[release evidence](../implementation/phase5/consolidated-release-evidence/manifest.json)
+and [host-fix evidence](../implementation/phase5/native-exit-fix-evidence/manifest.json).
+Broad JS/native validation is complete. Its [archive and restoration instructions](../implementation/phase5/broad-backend-evidence/README.md)
+preserve 24,148 members, including 1,196 actual C files and 1,194 native binaries,
+in three ordered parts. The logical gzip archive is 107,566,763 bytes, SHA-256
+`f2697c3cf1cde72559750b5f8799d10a8c4a5f0970d083ee33c670576e424196`.
+Every member was reopened and verified. The 32 MiB external-file rule above
+applies to earlier generic object archives; this purpose-built split archive
+retains its declared native evidence directly. Completion does not upgrade the
+315 negative strict failures or the positive native timeout.
+
+The [Phase 6 report](../implementation/phase6/report.md) links separate archives
+for the optimized profile, successful Boolean pilot, erased-name candidate and
+rejected marked-name candidate. None is part of the released production source.
+The [relocated CLI evidence](../implementation/phase5/relocated-cli-evidence/README.md)
+records ordinary use without historical build paths or an upstream checkout.
 
 ## Phase 4 historical index
 

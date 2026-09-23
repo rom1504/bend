@@ -1,6 +1,6 @@
 # Prospective final JS/native validation
 
-**Prepared scope only; no broad backend execution result is claimed here.** The final checked API is bound by a genuine attempt and its bootstrap/source/runtime identities. Every comparison uses a fresh pinned TypeScript run on the same fixtures; Phase2 execution counts are scheduling history, not current passes or a substitute baseline.
+**Broad execution began02:38:49.554UTC; results remain pending.** The chosen maintained equality-derived B1 is bound to its genuine checked parent and separately verified derivation; it has no fabricated bootstrap sidecar. Every comparison uses a fresh pinned TypeScript run on the same fixtures; Phase2 execution counts are scheduling history, not current passes or a substitute baseline.
 
 The pinned inventory contains 1,378 fixtures. Its existing `probes()` policy yields **999 JavaScript and 982 native eligible observations per compiler**, or 1,981 each and 3,962 paired observations in total. Eligibility requires a main entry point and that backend in the fixture policy. The **379 JS and 396 native ineligible fixture/lane entries** are listed separately with reasons; they are not executed observations or counted as passes. These per-lane exclusions must not be summed as distinct excluded fixtures.
 
@@ -44,3 +44,13 @@ timeout --kill-after=5s 2760s taskset -c 0,1,2,3 \
 ```
 
 Use a separately verified newer attempt explicitly if root changes the final API. Never attach the old checked proof to different bytes. The eventual archive/report must preserve all observed failures and list any unfinished requests separately; this plan alone is not validation evidence.
+
+## User-directed default artifact amendment (preparation04)
+
+After the user requested one usable maintained default, root authorized this broad gate on the proven equality-derived B1 SHA `e2b5463678a26558e8fea1d585782e0863f1046067949a374f0469080281b15a`, not the original checked-image bytes. The genuine parent remains API05 SHA `5969c53d34a088bc9630eb2c065c2eea7fd260294cf3fefb14dffb305b7e4667`. Preparations01–03 and exact tool copies remain unchanged and unexecuted.
+
+Preparation04 calls maintained `verifyEqualityDerivation`, binds its original API/bootstrap to the verified attempt and its output path/hash to the executed API, and repeats verification after execution. Only then does it use the existing paired harness's explicit candidate-adapter route. No derivative bootstrap sidecar is generated. The exact prevalidated API-specific cache from the completed artifact frontend gate was copied to the frozen attempt host cache, byte-verified and recorded in `derived-cache-copy.json`. Three pure guard tests passed again.
+
+The launch uses `broad-snapshot-04` and fresh `broad-run-01` with the same four-worker mask, retention and bounded resource policy. It began02:38:49.554UTC. The original external2760-second deadline ends before03:25UTC; internal child allowance remains2695seconds. Root may run a short CPU2 diagnostic and the release agent short CPU0 correctness checks concurrently. This explicitly precludes a timing comparison; it does not change semantic or input-identity gates. Unsupported reference environments, failures and partial outcomes remain visible.
+
+Reprepare this variant explicitly using `--derivation=build/phase5/full-source-final/derived/api.mjs.derivation.json` as the fourth prepare argument. The report records `artifactKind: derived-b1-equality`, the original checked parent and `newBootstrap:false`. Broad source/tool inputs stay frozen while the normal CLI/default-distribution work proceeds separately.

@@ -7,7 +7,7 @@ The API is the actual Phase 5 optimized release, `e2b5463678a2…`, with frozen
 final05 host/runtime and canonical pinned Base. All recorded inputs are unchanged.
 This is a profile, not a controlled timing comparison: broad backend correctness
 work overlapped, and instrumentation/pre-discovery change the request boundary.
-The unchanged bounded launcher completed in24.012seconds under its180-second cap.
+The unchanged bounded launcher completed in 24.012 seconds under its 180-second cap.
 
 The plan [P6-001](../../experiments/phase6/P6-001-optimized-residual-profile.md)
 was written before launch, but its manually entered02:50 timestamp was an error:
@@ -34,7 +34,7 @@ samples are retained; this table does not aggregate hidden costs into a claim.
 
 The top-level check call took7.058seconds and annotation5.125seconds in this
 instrumented request; loading1.979, library emission1.969, parsing1.141 and layout
-0.864seconds. These spans include ABI handling. They describe this60,909-byte
+0.864seconds. These spans include ABI handling. They describe this 60,909-byte
 component, not whole-source speed or an optimization ceiling. Total observed
 request was19.776seconds; prior source/profile timings must not be divided into
 this observation to invent an improvement.
@@ -63,3 +63,12 @@ The [next performance design](../../design/phase6/residual-performance.md)
 ranks branch lowering, repeated immutable facts and identifier/index work, with
 separate invariants and cheap falsifiers. The established whole-source ratio
 remains6.03× TypeScript until a new controlled full-source experiment says otherwise.
+
+## Preservation and review
+
+[The durable archive](profile-evidence/manifest.json) preserves 25 historical file
+identities in 23 objects (1,003,774 compressed bytes), including raw V8 samples,
+exact output, consumed APIs/host/tools, configuration and timestamp correction.
+[Independent review](profile-and-release-review.md) recomputes the seven table
+shares from all 1,761 samples/time deltas and verifies their actual source frames.
+All archived objects and original input bytes were rechecked.

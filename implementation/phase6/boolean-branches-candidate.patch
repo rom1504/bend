@@ -1,0 +1,42 @@
+--- a/selfhost/src/core/term.bend
++++ b/selfhost/src/core/term.bend
+@@ -407,19 +407,32 @@
+ def core_subst_stable(t):
+   match t:
+     case KTerm{tag, name, id, quant, kids, removed}:
+-      kc(Bool, String.eq(tag, "Var"), u => False{},
+-        u => kc(Bool, core_subst_stable_terms(kids),
+-          u => kc(Bool, String.eq(tag, "App"),
+-            u => kc(Bool, String.eq(name, "") && U32.is_eq(id, 0) && U32.is_eq(quant, 0), u => core_subst_stable_app(kids, removed), u => False{}),
+-            u => True{}),
+-          u => False{}))
++      is_var = String.eq(tag, "Var")
++      match is_var:
++        case True{}: False{}
++        case False{}:
++          stable_kids = core_subst_stable_terms(kids)
++          match stable_kids:
++            case False{}: False{}
++            case True{}:
++              is_app = String.eq(tag, "App")
++              match is_app:
++                case False{}: True{}
++                case True{}:
++                  canonical = String.eq(name, "") && U32.is_eq(id, 0) && U32.is_eq(quant, 0)
++                  match canonical:
++                    case False{}: False{}
++                    case True{}: core_subst_stable_app(kids, removed)
+ 
+ @unsafe
+ def core_subst_stable_terms(ts):
+   match ts:
+     case Nil{}: True{}
+     case Con{h, rest}:
+-      kc(Bool, core_subst_stable(h), u => core_subst_stable_terms(rest), u => False{})
++      stable_head = core_subst_stable(h)
++      match stable_head:
++        case False{}: False{}
++        case True{}: core_subst_stable_terms(rest)
+ 
+ law core_subst_stable_app_kids:
+   for +kids: List<&2, KTerm>

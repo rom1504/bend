@@ -1,0 +1,662 @@
+{
+  "kind": "phase6-marked-name-evidence-audit",
+  "complete": true,
+  "decision": "rejected-for-promotion: introduced direct-call parse/check phase regression",
+  "apiSha256": "a6ee7560ffc8dc48b0b93734f7e40044a1aca60ab5d9dcd7bc49598b0bd88cb3",
+  "sourceSha256": "7d414d0455112293d026340e4cb115df7df37e34679f1b9457b2d3bb9fb76ba3",
+  "changedModules": [
+    "front/fresh_work.bend",
+    "front/families.bend"
+  ],
+  "productionUnchanged": true,
+  "selected": {
+    "rows": 19,
+    "baselineSemantic": 8,
+    "candidateSemantic": 18,
+    "baselineExact": 7,
+    "candidateExact": 9,
+    "newExact": [
+      "comptime/err_plus_term.bend::parse",
+      "parse/plus_binder_term.bend::parse"
+    ],
+    "lostExact": []
+  },
+  "callFalsifier": {
+    "rows": 3,
+    "baselineSemantic": 1,
+    "candidateSemantic": 2,
+    "introducedPhaseMismatch": "phase6-plus-call/direct::check",
+    "incorrectOriginalOracleRetained": "phase6-plus-call/global: parse expected, but live reference check rejects"
+  },
+  "freshnessControls": 10,
+  "referenceObservationsUnchanged": true,
+  "preexistingFalseAcceptance": [
+    "phase6-marked-name/no-quant-datatype::check"
+  ],
+  "reports": [
+    {
+      "file": "selfhost/build/phase6/marked-name/baseline/paired.json",
+      "sha256": "e839b3beb85d9bedaccead20aeef21cc4403c7c57ed517ca13f84b3f7d2b45b8"
+    },
+    {
+      "file": "selfhost/build/phase6/marked-name/attempt-01/validation-001/selected/paired.json",
+      "sha256": "ff2e21d4f494b7927bc7a60a64a8f2afea4fcbe5901e3937379c8d675cc737ae"
+    },
+    {
+      "file": "selfhost/build/phase6/marked-name/call-baseline/paired.json",
+      "sha256": "f87ff739816d60dca00926baba265039566e5fbbd382aff10982afcf92391235"
+    },
+    {
+      "file": "selfhost/build/phase6/marked-name/call-gate/selected/paired.json",
+      "sha256": "418b602d721e02a7b309c5f9049959116dce310795458e254cbc45f0e141b988"
+    },
+    {
+      "file": "selfhost/build/phase6/marked-name/freshness-01/report.json",
+      "sha256": "601aa926d61c8b035ff8ac23d349a656d9ca60dc088f659867e7ae6949288d46"
+    },
+    {
+      "file": "selfhost/build/phase6/marked-name/attempt-01/api.mjs.bootstrap.json",
+      "sha256": "10662ea34a1abd28d42b9ae4676a1ec3247d68e8d2b500e0d7ef0af6c6df0230"
+    },
+    {
+      "file": "selfhost/build/phase6/marked-name/preparation.json",
+      "sha256": "3f8a97716d981744b05a9c1da5b2096b2a56e6796a1896f3db65b56d5a4e6bdd"
+    }
+  ],
+  "observations": [
+    {
+      "key": "comptime/err_plus_term.bend::parse",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      }
+    },
+    {
+      "key": "comptime/err_plus_term.bend::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- message  : template argument is open or ill-typed\nContext:\n- x : Nat\nLocation: g\n 9 | def g(x: Nat) -> Nat:\n10>|   app(~(y => +y), x)\n11 | ",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : y^-1\nContext:\n- y : Nat\nLocation: g\n 9 | def g(x: Nat) -> Nat:\n10>|   app(~(y => +y), x)\n11 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "grade/accept_fill.bend::parse",
+      "before": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "after": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      }
+    },
+    {
+      "key": "grade/accept_fill.bend::check",
+      "before": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      }
+    },
+    {
+      "key": "parse/plus_binder_term.bend::parse",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": null
+      }
+    },
+    {
+      "key": "parse/plus_binder_term.bend::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : x^2646\nContext:\n- x : U32\nLocation: main",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : x^-1\nContext:\n- x : U32\nLocation: main\n6 |   x = U32.add(1, 1)\n7>|   U32.add(+x, 1)\n8 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-marked-name/bound::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : x^2647\nContext:\n- x : U32\nLocation: bad",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : x^-1\nContext:\n- x : U32\nLocation: bad\n3 | def bad(x: U32) -> U32:\n4>|   +x\n5 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-marked-name/earlier-type::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : U32\n- observed : String\nLocation: first",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : U32\n- observed : String\nLocation: first\n3 | def first() -> U32:\n4>|   \"bad\"\n5 | def later(x: U32) -> U32:",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-marked-name/global::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : value^2645\nLocation: bad",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : value\nLocation: bad\n5 | def bad() -> U32:\n6>|   +value\n7 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-marked-name/imported::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : x^2647\nContext:\n- x : U32\nLocation: Lib.bad",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : x^-1\nContext:\n- x : U32\nLocation: Lib.bad\n3 | def bad(x: U32) -> U32:\n4>|   +x\n5 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-marked-name/later-syntax::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ')'\nLocation:\n5 | def later() -> U32:\n6>|   )\n7 | ",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ')'\nLocation:\n5 | def later() -> U32:\n6>|   )\n7 | ",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a term\n- observed : ')'\nLocation:\n5 | def later() -> U32:\n6>|   )\n7 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-marked-name/marked-lambda::check",
+      "before": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      }
+    },
+    {
+      "key": "phase6-marked-name/marked-local::check",
+      "before": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      }
+    },
+    {
+      "key": "phase6-marked-name/marked-parameter::check",
+      "before": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      }
+    },
+    {
+      "key": "phase6-marked-name/nested::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : x^2649\nContext:\n- x : U32\n- x : U32\nLocation: bad",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : x^-1\nContext:\n- x : U32\n- x : U32\nLocation: bad\n3 | def bad(x: U32) -> U32:\n4>|   f = {(x => +x) : U32 -> U32}\n5 |   f(x)",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-marked-name/no-quant-datatype::check",
+      "before": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a quantified datatype after + (+D<..> sets D's leading quantities to &2)\n- observed : 'd'\nLocation:\n5 | \n6>| def main() -> U32:\n7 |   42",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-marked-name/ordinary::check",
+      "before": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "after": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      },
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "All terms check.\n"
+      }
+    },
+    {
+      "key": "phase6-marked-name/qualified::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a quantified datatype after + (+D<..> sets D's leading quantities to &2)\n- observed : 'd'\nLocation:\n7 | \n8>| def main() -> U32:\n9 |   42",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-marked-name/unbound::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : missing^2645\nLocation: bad",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : missing\nLocation: bad\n3 | def bad() -> U32:\n4>|   +missing\n5 | ",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-plus-call/direct::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : f^2648\nContext:\n- f : @_:U32 -> U32\nLocation: bad",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a quantified datatype after + (+D<..> sets D's leading quantities to &2)\n- observed : 'd'\nLocation:\n5 |   +f(1)\n6>| def main() -> U32:\n7 |   42",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-plus-call/global::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : value^2648\nContext:\n- f : @_:U32 -> U32\nLocation: bad",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : value\nContext:\n- f : @_:U32 -> U32\nLocation: bad\n4 | def bad(f: U32 -> U32) -> U32:\n5>|   +value()\n6 | def main() -> U32:",
+        "output": null
+      }
+    },
+    {
+      "key": "phase6-plus-call/grouped::check",
+      "before": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "exitCode": 1,
+        "diagnostic": "Error: + marks a binder or a quantified datatype, not a value reference",
+        "output": null
+      },
+      "after": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : f^2648\nContext:\n- f : @_:U32 -> U32\nLocation: bad",
+        "output": null
+      },
+      "reference": {
+        "status": "error",
+        "phase": "check",
+        "checked": true,
+        "exitCode": 1,
+        "diagnostic": "Error:\n- expected : a bound variable\n- observed : f^-1\nContext:\n- f : @_:U32 -> U32\nLocation: bad\n4 | def bad(f: U32 -> U32) -> U32:\n5>|   (+f)(1)\n6 | def main() -> U32:",
+        "output": null
+      }
+    }
+  ]
+}

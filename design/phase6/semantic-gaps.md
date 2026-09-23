@@ -31,3 +31,38 @@ loading and nested shadowing. Exact -1 diagnostic presentation is a separate
 obligation; no marker implementation/build is authorized by the erased-name gate.
 Detailed root-cause analysis and observed results are in
 [the implementation note](../../implementation/phase6/semantic-gap-analysis.md).
+
+
+## Authorized marked-name spike — 2026-09-23 02:59 UTC
+
+Root authorizes at most15minutes, CPU1 correctness, all compiler jobs stopped
+by03:12UTC. No source/default promotion. Use a fresh final05 snapshot (do not
+silently combine the erased-name patch). Two-module candidate: marked non-ADT
+value references that are locally bound or syntactically unqualified become
+private FUnboundVar nodes; global freshening consumes them into fresh Var IDs,
+advancing next without an environment mapping. Qualified nonlocal references
+retain the existing quantified-datatype rejection. ADT branches are untouched.
+The resulting ordinary core Var is deliberately unbound. No U32 sentinel or
+permanent core tag, checker bypass, diagnostic-string rewrite or signed-ID change.
+
+First gate: actual two pinned cases must parse successfully and fail checking as
+unbound variables. Their strict diagnostic oracles stay intact; fresh positive,
+global/qualified, datatype, nested/imported and competing-error controls run live
+against pinned TypeScript. Exact text may retain a different printed fresh ID;
+that is not an exact conformance fix. An explicit post-loader shape check must
+prove marker elimination and no free-variable ID capture by any binder, with
+seeded/unseeded comparison. Valid neighbors must retain exact core graphs.
+Stop on a new acceptance regression, capture/overflow, marker escape at the
+ordinary checked loader boundary, or architectural work beyond this capsule.
+
+### Marked-name spike outcome — 2026-09-23 03:06 UTC
+
+The isolated scope-only marker is rejected for promotion. Selected classification
+agreement improves8→18 of19, and ten allocation/noncapture controls pass, but
+`+f(1)` introduces a new parse/check phase mismatch while `(+f)(1)` needs the
+opposite phase. The next coherent attempt must preserve prefix operand precedence
+before marking; it cannot simply widen the scoper's accepted references. The
+existing `+U32` false acceptance and template_arg_done diagnostic collapse are
+separate pre-existing issues. The [result note](../../implementation/phase6/marked-name-analysis.md)
+retains the genuine build, baseline comparisons, original failed oracles and
+uncompleted gates. Production/default source is unchanged.

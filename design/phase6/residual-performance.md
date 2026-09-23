@@ -1,7 +1,7 @@
 # Closing the remaining compiler throughput gap
 
-The consolidated Phase 5 default is equality-derived checked B1, APIe2b5463678a2…,
-from sourcee3b927d13dc2…. Its controlled complete-source process mean is363.392s
+The consolidated Phase 5 default is equality-derived checked B1, API e2b5463678a2…,
+from source e3b927d13dc2…. Its controlled complete-source process mean is363.392s
 versus60.248s for pinned TypeScript,6.03×, with the documented Base-cache policy.
 The edit loop is much shorter: a checked API bootstrap observed14.63s and focused
 paired validation can select only affected cases. Full self-emission is an
@@ -19,7 +19,7 @@ removable-cost ceilings. Old unoptimized B1 string-comparison percentages cannot
 be reused after the equality fix. Private H's generic matcher overhead describes
 a different artifact and cannot explain the entire default-versus-TypeScript gap.
 
-To reach TypeScript speed from6.03× requires removing about83.4% of present wall
+To reach TypeScript speed from6.03× requires removing about 83.4% of present wall
 cost on that workload. A small local optimization may help iteration but cannot
 plausibly close that gap alone. The next campaign should test an algorithmic
 change alongside inexpensive control-flow improvements, without abandoning the
@@ -79,7 +79,7 @@ short term tags and do not by themselves identify name lookup.
 3. Compile the real core component and require unchanged checked status and exact
    output bytes where the intervention cannot alter emission. Freeze every input.
 4. After all competing compiler work stops, run two opposite-order fresh-process
-   pairs with equal cache policy, Node flags and CPU affinity. Require at least5%
+   pairs with equal cache policy, Node flags and CPU affinity. Require at least 5%
    reduction in both pairs to earn broader work. Report RSS and all samples.
 5. A survivor receives repeated representative programs, complete frontend and
    backend regression, then one controlled whole-source comparison. Only the final

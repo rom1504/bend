@@ -428,3 +428,53 @@ This supersedes older default-distribution holds; it does not rewrite original
 proof or timing evidence. Broad backend preparation04 will test this selected
 derivative, rather than the unexecuted checked-parent preparations01–03.
 No broad result or release completion is claimed by this decision entry.
+
+## 2026-09-23 03:00 UTC — usable default checkpoint
+
+Commitd5a7bd8 is pushed to the authorized selfhost/bootstrap fork branch.
+The [consolidated release](../implementation/phase5/consolidated-release.md)
+uses APIe2b546… without overrides; actual npm build reproduces its exact bytes.
+Default check/interpreter/JS/native and relocation/integrity controls pass.
+An observed native subprocess error with status0 now returns exit1; five host
+regression groups and an actual default-CLI EPERM reproduction verify the fix,
+followed by another genuine checked build and21paired controls. No compiler
+source/API bytes changed. A clean relocated package without upstream/build data
+also verifies and runs pure/IO JavaScript programs.
+
+The broad backend sweep remains running on its frozen pre-fix host and same API.
+It retains unsupported reference cases and actual failures. The fresh
+[optimized profile](../implementation/phase6/optimized-residual-profile.md)
+identifies residual trampoline/closure/allocation work. An isolated explicit
+Boolean-worker candidate passes438direct controls and exact core emission; its
+controlled ABBA timing is held until competing compiler jobs close. An isolated
+erased-name parser candidate repairs14exact focused observations with no lost
+exact result; it remains unpromoted, and a marked-name noncapture experiment
+is still running. None of these candidate results changes release metrics.
+
+## Consolidation and opening Phase 6 outcomes — 2026-09-23T03:22:29+00:00
+
+The Phase 5 default is installed and already pushed (`d5a7bd8`), with actual
+checked rebuild, source/runtime/host-bound manifest, native error-exit fix and
+relocated ordinary CLI evidence. The [campaign report](../implementation/phase5/report.md)
+links all final integration gates.
+
+The [broad JS/native run](../implementation/phase5/broad-backends.md) closed at
+03:08:40 UTC: 3,962 observations, no missing rows or drift, 315 negative strict
+Bend failures and one positive native timeout. Its 24,148 verified archive members
+include actual generated C and native executables. Complete coverage remains
+distinct from conformance/infrastructure pass.
+
+The [Boolean pilot](../implementation/phase6/boolean-branches.md) passed both
+predeclared opposite-order ≥5% request/process thresholds, with exact core-library
+bytes: 6.72%/6.18% less request time and 6.30%/5.79% less process wall. This does
+not change the default or its measured 6.03× TS full-source ratio. Public-H
+behavior and timing require separate gates. The [marked-name candidate](../implementation/phase6/marked-name-analysis.md)
+is rejected for a concrete `+f(1)` precedence regression despite selected phase
+repairs. The separate [erased-name guard](../implementation/phase6/semantic-gap-analysis.md)
+improves its focused comparisons but remains unpromoted. New `+U32` false
+acceptance outside the pinned inventory is retained explicitly.
+
+The [native footprint analysis](../implementation/phase6/native-arity-wall.md)
+identifies quadratic scalar-field continuation saves in the timed-out large
+record, a separate problem from JS library compilation. The [Phase 6 report](../implementation/phase6/report.md)
+links the follow-up designs, bounded experiments and remaining promotion gates.

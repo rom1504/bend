@@ -48,8 +48,16 @@ run of all conformance tests. Normal CLI execution does not rebuild source.
 ## Rebuild the default
 
 The supplied artifact runs without TypeScript or a local upstream checkout.
-Rebuilding explicitly uses the pinned upstream bootstrap tool. With the pinned
-checkout at `selfhost/.bootstrap/upstream`, run from `selfhost/`:
+Rebuilding explicitly uses the pinned upstream bootstrap tool. On a fresh
+checkout, prepare it once from `selfhost/`:
+
+```sh
+mkdir -p .bootstrap
+git clone https://github.com/bendlang/bend.git .bootstrap/upstream
+git -C .bootstrap/upstream checkout --detach 6018e28ecc67cf1fffc0c20c64b11023474c2df8
+```
+
+Then build and verify from `selfhost/`:
 
 ```sh
 npm run build

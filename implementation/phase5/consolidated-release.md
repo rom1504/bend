@@ -17,7 +17,7 @@ The previous default API and its authentic reports are retained under `dist/rele
 
 Twelve focused controls passed: release verification, default CLI checking, interpreter/JavaScript/native execution of the repaired Nat witness (all print `8`), invalid-type diagnostic equality with the genuine checked parent, relocated verification, stale bootstrap-sidecar refusal, changed runtime/API refusal, and restoration. A separate plain `node cli.mjs … --interpret` invocation with no compiler overrides or Node resource flags also printed `8`.
 
-The first sandboxed native observation was correctly rejected by the test: Clang pipe capture reported `EPERM`, the host emitted no program output, and the existing CLI returned zero despite that error. This failure is retained. With authorized ordinary subprocess permissions, actual native compilation/execution passed. No frozen host helper was changed to conceal the failed observation. The host’s zero-exit error propagation is a remaining limitation, separate from compiler-image correctness.
+The first sandboxed native observation was correctly rejected by the test: Clang pipe capture reported `EPERM`, the host emitted no program output, and the existing CLI returned zero despite that error. This failure is retained. With authorized ordinary subprocess permissions, actual native compilation/execution passed. No frozen host helper was changed to conceal the failed observation. The host’s zero-exit error propagation was a limitation at this first test, separate from compiler-image correctness; it is resolved in the dated follow-up below.
 
 Tests used CPU0 while other correctness gates ran; timings are workflow observations, not performance measurements. [Durable evidence](consolidated-release-evidence/manifest.json) preserves the actual build/validation reports, controls, failed sandbox attempt, installed manifest/lineage and consumed source/tool bytes. No fabricated bootstrap or full-conformance claim is made.
 
@@ -30,7 +30,7 @@ signal/null status, ordinary compile rejection and success. A second actual
 default-CLI sandbox observation reproduces EPERM and now exits1 with no program
 output. The original exit0 observation remains in the earlier archive.
 
-A fresh maintained release build after this one-line host change passes all21
+A fresh maintained release build after this one-line host change passes all 21
 paired controls and reproduces the exact same API/source hashes. The current
 release manifest binds the corrected native helper and the new genuine checked
 build lineage; local release verification passes. The broader compiler/proof
@@ -38,7 +38,14 @@ evidence still applies to identical compiler bytes, while broad backend executio
 uses its immutable pre-fix host and is labeled accordingly. No source compiler
 change or new fixed-point claim follows from the host repair.
 
-The [additional archive](native-exit-fix-evidence/manifest.json) preserves344file
-identities in248objects,1,521,356compressedbytes, including the tested current
+The [additional archive](native-exit-fix-evidence/manifest.json) preserves 344 file
+identities in 248 objects,1,521,356 compressed bytes, including the tested current
 release manifest, exact helper/tests, all rebuild/paired reports and actual CLI
 observations. It supplements rather than replaces the first release archive.
+
+A subsequent [fresh relocated CLI check](relocated-cli-evidence/README.md) copies
+only the manifest-bound package and release helper dependencies into a new
+`/tmp` directory, with no upstream checkout or preexisting build/cache tree.
+Verification, ordinary interpretation, JS execution and an IO-print program
+all pass without compiler environment overrides. Outputs are8,8 andhello; this
+extends the earlier relocation check from integrity verification to actual use.

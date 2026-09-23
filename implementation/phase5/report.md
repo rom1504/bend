@@ -1,6 +1,6 @@
 # Phase 5 implementation report
 
-Status: in progress, consolidation checkpoint at 2026-09-23 02:47 UTC.
+Status: consolidated release; final evidence checkpoint at 2026-09-23T03:20:06+00:00.
 The authorized six-hour campaign began at 21:39:36 UTC and ends
 2026-09-23 03:39:36 UTC. Baseline: `7d69850`; design commit: `7c7db08`.
 
@@ -18,8 +18,10 @@ relocatable manifest and one `npm run build` command. The advertised command was
 actually rebuilt and passed its focused gate; its API bytes remain identical to
 the measured/validated artifact. Default interpretation, JavaScript and actual
 native CPU execution pass, along with relocation and changed-input refusal checks.
-Broad paired JS/native validation is still running and retains its observed host
-and reference failures rather than treating them as passes.
+Broad paired JS/native validation is [complete](broad-backends.md): 3,962 actual
+observations, with retained negative diagnostic/phase failures, environment
+limitations and one positive native timeout. Coverage completion is not a
+full-conformance pass.
 
 The full H and derivative frontend [gates](final-artifact-frontend.md) are
 complete: each reproduces all 2,756 B1 observations exactly, preserving all 318
@@ -294,14 +296,14 @@ preserved alongside the corrected intended positive fixtures. See the
 [final integration archive](integration-final-evidence/manifest.json), including
 both earlier failed combined selections and their immutable inputs.
 
-## Consolidation and remaining gate
+## Consolidation and completed broad validation
 
 The final genuine combined build, full B1 frontend inventory, selected actual
 CPU/backend executions, complete-source comparison and fresh checked fixed point
-have finished. The [independent proof audit](final-selfhost.md) verifies225file
-identities and all59modules, actual stage2/stage3byte equality and every P523 Bend
+have finished. The [independent proof audit](final-selfhost.md) verifies 225 file
+identities and all 59modules, actual stage2/stage3 byte equality and every P523 Bend
 output. The [H/derivative frontend gate](final-artifact-frontend.md) also completes
-with all2,756observations/artifact exact and all worker histories closed.
+with all 2,756observations/artifact exact and all worker histories closed.
 
 The default distribution is now the consolidated optimized release; pinned
 upstream and compiler source remain unchanged. The advertised build reproduces
@@ -310,11 +312,26 @@ native subprocess error could incorrectly return exit0; a one-line host fix and
 regression controls address it, followed by another checked release build with
 identical compiler bytes. Historical pre-fix observations remain in their archives.
 
-The paired broad JS/native gate is running on the same compiler image with its
-frozen pre-fix host. Its full strict outcomes and infrastructure failures will be
-reported separately; incomplete or unsupported observations are never passes.
-The six-hour campaign remains active. Isolated Phase6 candidates and diagnostics
-are preserved without replacing the validated compiler source.
+The paired [broad JS/native gate](broad-backends.md) completed at 03:08:40 UTC on
+that same compiler image with its frozen pre-fix host: 1,981 observations per
+compiler, 3,962 total, no missing rows or input drift. Bend recorded 1,423 strict
+passes, 315 negative diagnostic/phase failures, 242 not-applicable observations
+and one positive native timeout. All 527 eligible negative observations were
+rejected. The 354 exact paired differences comprise 299 diagnostic-only and 55
+other differences; the latter include unavailable Bun, reference toolchain/runtime
+failures and 16 known rejection-phase differences. They are not 55 new language
+bugs. Full strict conformance and infrastructure health remain failed gates.
+
+The native timeout emitted 3,716,568 bytes of C for a 255-field record, versus
+80,723 bytes for TypeScript. [Static analysis](../phase6/native-arity-wall.md)
+identifies quadratic repetition of scalar-field continuation saves, distinct
+from the JS library workload's 6.03× compiler deficit. All actual C files, native
+binaries and failures are retained in the 24,148-member broad archive.
+
+The installed package also passed a fresh [relocated CLI check](relocated-cli-evidence/README.md)
+without an upstream checkout or build/cache tree at startup. Phase 6 candidates
+remain isolated; their [outcome report](../phase6/report.md) separates focused
+improvements, rejected patches and uncompleted promotion gates.
 
 ## Priorities after this campaign
 
@@ -334,8 +351,11 @@ application reparsing or a second general validation framework.
 
 For performance, the final coarse observations still put substantial time in
 checking, annotation and lowering even after the equality optimization. A fresh [optimized-core profile](../phase6/optimized-residual-profile.md) now
-identifies remaining trampoline, closure and allocation work; a bounded explicit
-Boolean-branch source candidate is under independent review before timing. The measured derivative leaves generated bytes unchanged and
+identifies remaining trampoline, closure and allocation work. An isolated explicit
+Boolean-worker candidate [passed its controlled core pilot](../phase6/boolean-branches.md):
+6.18–6.72% less request time and 5.79–6.30% less process wall in both orders, with
+exact emitted bytes. This is one small workload, not a new whole-source ratio or
+a promoted compiler. The released derivative leaves generated bytes unchanged and
 does not establish a runtime improvement for user programs. Local removal of
 duplicate logic is useful, but the compiler grew 2.83%; further simplification
 should be justified by a concrete shared contract and its regression gates.

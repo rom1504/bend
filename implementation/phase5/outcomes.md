@@ -1,6 +1,6 @@
 # Phase 5 experiment outcomes
 
-Evidence cutoff: 2026-09-23 02:26 UTC. These outcomes supplement the original
+Evidence cutoff: 2026-09-23T03:20:06+00:00. These outcomes supplement the original
 dated experiment plans; a frozen plan's pre-execution status is not rewritten.
 “Included” means part of the final checked source or maintained tooling, not
 complete upstream conformance. The [campaign report](report.md) gives combined
@@ -43,5 +43,7 @@ live differences](final-conformance.md), with no lost previously exact observati
 and all 919 positive fixtures retained. These are different metrics, not counts
 of equivalent soundness repairs. The [new multiline diagnostic counterexample](static-counterexample.md)
 remains unfixed in this frozen source. Public-H/derived frontend validation is [complete](final-artifact-frontend.md),
-with2,756exact B1 observations each. Broad backend validation has its own report
-and remains pending at this checkpoint.
+with2,756exact B1 observations each. [Broad backend validation](broad-backends.md) is complete with 3,962 observations;
+known failures and the native arity timeout remain failures. The [consolidated
+release](consolidated-release.md) is the default, and isolated [Phase 6 results](../phase6/report.md)
+do not alter that release or its measured 6.03× ratio.

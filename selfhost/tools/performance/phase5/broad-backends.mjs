@@ -1,6 +1,7 @@
 // Bounded complete eligible JS/native inventory. Keep failures and partial progress.
 import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';
-import {verifyAttempt,identity,verifyIdentity} from '../../development/workflow.mjs';
+import {verifyAttempt,identity,verifyIdentity,validatedCache} from '../../development/workflow.mjs';
+import {verifyEqualityDerivation} from '../../development/equality.mjs';
 import {supervise} from '../../development/process.mjs';
 const read=f=>JSON.parse(fs.readFileSync(f)),write=(f,v)=>fs.writeFileSync(f,JSON.stringify(v,null,2)+'\n',{flag:'wx'});
 
@@ -15,11 +16,13 @@ export function infrastructureCounts(results){
 export function pairedCoverageComplete(execution,rows,paired,count=1981){
  return !execution.error&&!execution.signal&&!execution.timedOut&&!execution.overflow&&[0,1].includes(execution.exitCode)&&!paired?.error&&Array.isArray(paired?.rows)&&paired.rows.length===count&&Array.isArray(paired.missing)&&paired.missing.length===0&&['reference','candidate'].every(n=>rows[n]?.observations===count&&rows[n].adapterChangedDuringRun===false&&Array.isArray(rows[n].changedInputs)&&!rows[n].changedInputs.length&&Array.isArray(rows[n].changedArtifacts)&&!rows[n].changedArtifacts.length);
 }
+function verifyDerived(report,m){const d=verifyEqualityDerivation(report);if(d.metadata.original.api.canonicalPath!==m.api.canonicalPath||d.metadata.original.api.sha256!==m.api.sha256||d.metadata.original.bootstrapReport.sha256!==m.bootstrapReport.sha256)throw Error('Derived compiler does not belong to this genuine checked attempt');return d;}
 async function main(){
-const[mode,input,outArg]=process.argv.slice(2);if(!outArg||!['prepare','run'].includes(mode))throw Error('Usage: broad-backends.mjs prepare ATTEMPT NEW_SNAPSHOT | run SNAPSHOT NEW_OUTPUT');
+const[mode,input,outArg,derivationArg,...extra]=process.argv.slice(2);if(!outArg||extra.length||!['prepare','run'].includes(mode)||(derivationArg&&(mode!=='prepare'||!derivationArg.startsWith('--derivation='))))throw Error('Usage: broad-backends.mjs prepare ATTEMPT NEW_SNAPSHOT [--derivation=REPORT] | run SNAPSHOT NEW_OUTPUT');
 const out=path.resolve(outArg);fs.mkdirSync(out,{recursive:false});
 if(mode==='prepare'){
  const attempt=fs.realpathSync(input),m=await verifyAttempt(attempt);if(m.artifactKind!=='checked-b1')throw Error('Require genuine normal checked B1');
+ const derivation=derivationArg?verifyDerived(fs.realpathSync(derivationArg.slice('--derivation='.length)),m):null,api=derivation?derivation.metadata.output:m.api;
  const inventoryTool=path.join(m.snapshot.root,'tools/conformance/inventory.mjs'),{inventory,probes}=await import(pathToFileURL(inventoryTool)),manifest=inventory(m.config.upstream);
  const lanes=['js','native'],cases=manifest.tests.map(test=>({id:test.id,lanes:lanes.filter(l=>probes(test).some(p=>p.lane===l))})).filter(c=>c.lanes.length);
  const eligibility=Object.fromEntries(lanes.map(l=>[l,{eligible:cases.filter(c=>c.lanes.includes(l)).length,ineligible:manifest.tests.filter(t=>!probes(t).some(p=>p.lane===l)).map(t=>({id:t.id,reason:!t.main?'No main entry point':'Fixture excludes this backend'}))}]));
@@ -27,16 +30,20 @@ if(mode==='prepare'){
  const selection=path.join(out,'selection.json');write(selection,{cases});
  const inputs=[identity(import.meta.filename),...['workflow','process'].map(n=>identity(new URL('../../development/'+n+'.mjs',import.meta.url).pathname)),identity(path.join(attempt,'attempt.json')),m.api,m.runtime,m.base,m.bootstrapReport,identity(inventoryTool),identity(path.join(m.snapshot.root,'tools/conformance/target.mjs')),identity(selection),identity(process.execPath)];
  for(const t of manifest.tests)inputs.push(identity(t.file));
+ if(derivation)inputs.push(identity(derivation.report),api,identity(new URL('../../development/equality.mjs',import.meta.url).pathname));
+ const cache=validatedCache(path.join(m.snapshot.root,'build/typed/cache'),api.file,m.base.file);inputs.push(identity(cache.file));
  const config={upstream:m.config.upstream,api:m.api.file,runtime:m.runtime.file,bootstrapReport:m.bootstrapReport.file,selection,jobs:4,workerMode:'isolated',heapMb:4096,stackKb:4096,rssLimitMb:4096,timeoutMs:120000,retain:'all'};
+ if(derivation){delete config.api;delete config.runtime;delete config.bootstrapReport;config.candidateAdapter=path.join(m.snapshot.root,'tools/conformance/adapters/typed.mjs');inputs.push(identity(config.candidateAdapter));}
  const configFile=path.join(out,'config.json');write(configFile,config);inputs.push(identity(configFile));
- const report={kind:'phase5-broad-backend-preparation',complete:true,prepared:new Date().toISOString(),attempt,api:m.api,bootstrap:m.bootstrapReport,target:path.join(m.snapshot.root,'tools/conformance/target.mjs'),configFile,inputs,nodeVersion:process.version,eligibility,eligibleObservationsPerCompiler:1981,totalFixtures:1378,scope:'Fresh pinned TypeScript and checked Bend observations on every eligible JS/native probe. Ineligible fixtures listed separately; known failures, unsupported cases and timeouts retained. No whole-language or performance claim.'};inputs.forEach(verifyIdentity);write(path.join(out,'snapshot.json'),report);console.log(JSON.stringify({prepared:true,eligible:1981,ineligible:{js:379,native:396}}));
+ const report={kind:'phase5-broad-backend-preparation',complete:true,prepared:new Date().toISOString(),attempt,api,checkedParent:m.api,runtime:m.runtime,base:m.base,derivation:derivation?identity(derivation.report):null,bootstrap:m.bootstrapReport,target:path.join(m.snapshot.root,'tools/conformance/target.mjs'),configFile,inputs,nodeVersion:process.version,eligibility,eligibleObservationsPerCompiler:1981,totalFixtures:1378,scope:'Fresh pinned TypeScript and explicitly identified checked/derived Bend observations on every eligible JS/native probe. Ineligible fixtures listed separately; known failures, unsupported cases and timeouts retained. No whole-language or performance claim.'};inputs.forEach(verifyIdentity);write(path.join(out,'snapshot.json'),report);console.log(JSON.stringify({prepared:true,eligible:1981,ineligible:{js:379,native:396}}));
 }else{
  const snapshot=fs.realpathSync(path.join(input,'snapshot.json')),s=read(snapshot);if(s.kind!=='phase5-broad-backend-preparation'||!s.complete)throw Error('Invalid preparation');
- s.inputs.forEach(verifyIdentity);if(process.version!==s.nodeVersion)throw Error('Node version drift');await verifyAttempt(s.attempt);
+ s.inputs.forEach(verifyIdentity);if(process.version!==s.nodeVersion)throw Error('Node version drift');const checked=await verifyAttempt(s.attempt);if(s.derivation){const d=verifyDerived(s.derivation.file,checked);if(d.metadata.output.sha256!==s.api.sha256||d.metadata.output.canonicalPath!==s.api.canonicalPath)throw Error('Derived output identity mismatch');}
  const env={...process.env};for(const k of Object.keys(env))if(k.startsWith('BEND_')||k==='NODE_OPTIONS')delete env[k];
+ Object.assign(env,{BEND_TYPED_API:s.api.file,BEND_TYPED_RUNTIME:s.runtime.file,BEND_BASE:s.base.file});
  const toolchain=['CC','CPATH','LIBRARY_PATH','LD_LIBRARY_PATH'];if(toolchain.some(k=>!env[k]))throw Error('Set the recorded Clang environment before running');
  const inputs=[...s.inputs,identity(snapshot),identity(fs.realpathSync(env.CC))];const directory=path.join(out,'paired');
- const report={kind:'phase5-broad-backend-execution',complete:false,started:new Date().toISOString(),inputs,eligibility:s.eligibility,toolchain:Object.fromEntries(toolchain.map(k=>[k,env[k]])),scope:s.scope,resourceScope:'Four isolated workers shareCPU0,1,2,3;4GiBheap each;120-second probe deadline;45-minute parent limit. No timing comparison.',rows:{}};
+ const report={kind:'phase5-broad-backend-execution',complete:false,started:new Date().toISOString(),artifactKind:s.derivation?'derived-b1-equality':'checked-b1',newBootstrap:false,api:s.api,checkedParent:s.checkedParent,derivation:s.derivation,inputs,eligibility:s.eligibility,toolchain:Object.fromEntries(toolchain.map(k=>[k,env[k]])),scope:s.scope,resourceScope:'Four isolated workers shareCPU0,1,2,3;4GiBheap each;120-second probe deadline;45-minute parent limit. No timing comparison.',rows:{}};
  const save=()=>fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');save();
  try{
   report.execution=await supervise('taskset',['-c','0,1,2,3',process.execPath,'--stack-size=4096','--max-old-space-size=4096',s.target,s.configFile,directory],{directory:path.join(out,'process'),env,timeoutMs:2695000});
@@ -46,7 +53,7 @@ if(mode==='prepare'){
    else{const parsed=parseProgress(fs.existsSync(progress)?fs.readFileSync(progress,'utf8'):'');report.rows[n]={complete:false,progress:fs.existsSync(progress)?identity(progress):null,completedObservations:parsed.rows.length,infrastructureFailures:infrastructureCounts(parsed.rows),invalidProgressLines:parsed.invalidLines,trailingFragmentBytes:parsed.trailingFragmentBytes};}
   }
   const pair=path.join(directory,'paired.json');let paired=null;if(fs.existsSync(pair)){const p=read(pair);paired=p;report.paired=identity(pair);report.exactDifferences=p.rows?.filter(r=>!r.exactAgreement).length;report.semanticDifferences=p.rows?.filter(r=>!r.semanticAgreement).length;report.selectedComplete=p.selectedComplete;}
-  await verifyAttempt(s.attempt);inputs.forEach(verifyIdentity);report.inputsVerified=true;
+  const after=await verifyAttempt(s.attempt);if(s.derivation)verifyDerived(s.derivation.file,after);inputs.forEach(verifyIdentity);report.inputsVerified=true;
   report.complete=pairedCoverageComplete(report.execution,report.rows,paired);
   report.infrastructureHealthy=report.complete&&Object.values(report.rows).every(row=>Object.values(row.infrastructureFailures).every(n=>n===0));
   report.completionMeaning='Complete paired coverage with unchanged inputs/adapter. Strict fixture pass and infrastructure health are separate; known failures never become a full-conformance pass.';

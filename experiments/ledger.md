@@ -495,3 +495,18 @@ comparison, so this is an unresolved oracle/partial-function contract, not a
 silently repaired success. No H speed claim, new fixed point or source promotion.
 All compiler experiments are now closed. Remaining campaign work is final
 source recount, documentation/evidence checks, commit and push.
+
+## New authorized Phase 6 campaign — 2026-09-23 05:06:12 UTC
+
+The user authorizes all proposed speed, complexity/line-count and conformance
+improvements, with up to ten hours. The new deadline is 15:06:12 UTC. Baseline
+`a6459af` is clean and already pushed. The [campaign design](../design/phase6/ten_hour_campaign.md)
+separates nine concrete experiments covering the eight proposals, isolated
+implementation, measured promotion gates and a final usable release. Earlier
+Phase 6 opening results and failed candidates retain their original scope.
+
+Initial parallel read-only assignments cover prefix semantics, source provenance
+and native immediate words. Root handles baseline identity, obsolete-path audit,
+missing imports and checked-result reuse. Source implementation starts after the
+design checkpoint. No new speedup, simplification or conformance repair is claimed
+at this starting entry.

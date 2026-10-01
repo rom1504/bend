@@ -7,9 +7,9 @@ import {execFileSync} from 'node:child_process';
 import {verifyAttempt, identity, verifyIdentity} from '../../development/workflow.mjs';
 import {verifyRelease} from '../../development/release.mjs';
 
-const [selection, inputArgument, outputArgument] = process.argv.slice(2);
+const [selection, inputArgument, outputArgument, catalogArgument] = process.argv.slice(2);
 assert.ok(selection && inputArgument && outputArgument,
-  'Usage: emit-worker.mjs installed|ATTEMPT|upstream:CHECKOUT SOURCE NEW_MODULE');
+  'Usage: emit-worker.mjs installed|ATTEMPT|upstream:CHECKOUT SOURCE NEW_MODULE [CATALOG]');
 const project = path.resolve(import.meta.dirname, '../../..');
 const input = fs.realpathSync(inputArgument), output = path.resolve(outputArgument);
 const report = {kind:'bend-program-checked-emission', schemaVersion:1, complete:false,
@@ -19,7 +19,9 @@ const begin = performance.now();
 try {
   // Direct use has the same explicit compiler selection as supervised use.
   for (const key of Object.keys(process.env)) if (key.startsWith('BEND_')) delete process.env[key];
-  const catalog = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'catalog.json'), 'utf8'));
+  const catalogFile = fs.realpathSync(catalogArgument ?? path.join(import.meta.dirname, 'catalog.json'));
+  report.catalog = identity(catalogFile);
+  const catalog = JSON.parse(fs.readFileSync(catalogFile, 'utf8'));
   let api, runtime, base, driver, verify, code;
   if (selection.startsWith('upstream:')) {
     const upstream = fs.realpathSync(selection.slice('upstream:'.length));
@@ -74,7 +76,7 @@ try {
     for (const key of ['api','runtime','base','driver']) verifyIdentity(report.compiler[key]);
   }
   assert.equal(typeof code, 'string');
-  verifyIdentity(report.input); await verify();
+  verifyIdentity(report.input); verifyIdentity(report.catalog); await verify();
   report.verifiers.forEach(verifyIdentity);
   fs.writeFileSync(output, code, {flag:'wx'});
   report.output = identity(output); report.complete = true;

@@ -23,15 +23,17 @@ def select(catalog, set_name, cases):
     return [lookup[key] for key in ids]
 
 
-def checked_source(case):
+def checked_source(case, catalog=CATALOG):
     item = case['source']
     relative = Path(item['path'])
     if relative.is_absolute() or '..' in relative.parts:
         raise ValueError('Invalid catalog source path')
-    requested = HERE / relative
+    root = Path(catalog).resolve().parent
+    requested = root / relative
     source = requested.resolve()
-    if not source.is_relative_to(HERE) or requested.is_symlink():
-        raise ValueError('Source must remain inside the suite')
+    if not source.is_relative_to(root) or any((root / Path(*relative.parts[:i])).is_symlink()
+                                             for i in range(1, len(relative.parts) + 1)):
+        raise ValueError('Source must remain inside the catalog directory without symlinks')
     actual = identity(source)
     if any(actual[k] != item[k] for k in ['sha256', 'bytes']):
         raise ValueError('Changed catalog source: ' + str(source))
@@ -63,6 +65,8 @@ def main():
     compiler_group.add_argument('--upstream', type=Path, help='Clean checkout at catalog pin; requires --role typescript')
     parser.add_argument('--set', choices=['fast', 'core', 'broad', 'full'], default='fast')
     parser.add_argument('--cases', help='Comma-separated case IDs, overriding --set')
+    parser.add_argument('--catalog', type=Path, default=CATALOG,
+                        help='Catalog; fixture paths are confined to its directory without symlinks')
     parser.add_argument('--role', choices=['candidate', 'baseline', 'typescript'], default='candidate')
     parser.add_argument('--node', default=shutil.which('node'))
     parser.add_argument('--cpu', type=int, default=min(os.sched_getaffinity(0)))
@@ -77,9 +81,10 @@ def main():
         parser.error('Node is required; heap must be 128..2048 MiB and RSS 256..4096 MiB')
     if args.available_mib < 1024 or not 1 <= args.timeout <= 1800 or args.cpu not in os.sched_getaffinity(0):
         parser.error('Require available-memory floor >=1024 MiB, timeout 1..1800, and an allowed CPU')
-    catalog = json.loads(CATALOG.read_text())
+    catalog_file = args.catalog.resolve()
+    catalog = json.loads(catalog_file.read_text())
     selected = select(catalog, args.set, args.cases)
-    sources = {case['source']['path']: checked_source(case) for case in selected}
+    sources = {case['source']['path']: checked_source(case, catalog_file) for case in selected}
     expected_sources = {case['source']['path']: case['source'] for case in selected}
     if len({source.stem for source in sources.values()}) != len(sources):
         parser.error('Different source paths must have distinct stems for module output names')
@@ -89,20 +94,21 @@ def main():
         parser.error('Node executable does not exist')
     out = args.out.resolve()
     manifest = dict(kind='bend-program-bundle', schemaVersion=1, complete=False,
-                    upstreamCommit=catalog['upstreamCommit'], catalogSha256=identity(CATALOG)['sha256'],
+                    upstreamCommit=catalog['upstreamCommit'], catalogSha256=identity(catalog_file)['sha256'],
                     roles={}, cases=[])
     receipt = dict(kind='bend-program-preparation', schemaVersion=1, complete=False,
                    scope='Serial checked acquisition only; excluded from all execution-time budgets.',
                    producer=identity(__file__), worker=identity(HERE / 'emit-worker.mjs'),
-                   supervisor=identity(HERE / 'support.py'), catalog=identity(CATALOG), node=identity(node),
+                   supervisor=identity(HERE / 'support.py'), catalog=identity(catalog_file), node=identity(node),
                    verifiers=[identity(file) for file in verifiers],
                    cpu=args.cpu, heapMiB=args.heap_mib, sources=[], adapters=[])
     with ExecutionGuard(rss_mib=args.rss_mib, available_mib=args.available_mib) as guard:
         out.mkdir(parents=True, exist_ok=False)
         (out / 'modules').mkdir()
         (out / 'consumed').mkdir()
-        for name in ['prepare.py', 'emit-worker.mjs', 'support.py', 'catalog.json']:
+        for name in ['prepare.py', 'emit-worker.mjs', 'support.py']:
             shutil.copyfile(HERE / name, out / 'consumed' / name)
+        shutil.copyfile(catalog_file, out / 'consumed' / 'catalog.json')
         for file in verifiers:
             shutil.copyfile(file, out / 'consumed' / ('verifier-' + file.name))
         save(out / 'manifest.json', manifest)
@@ -117,7 +123,8 @@ def main():
                 command = ['taskset', '-c', str(args.cpu), str(node), '--stack-size=4096',
                            '--max-old-space-size=' + str(args.heap_mib), str(HERE / 'emit-worker.mjs'),
                            ('upstream:' + str(args.upstream.resolve())) if args.upstream else
-                           str(args.attempt.resolve()) if args.attempt else 'installed', str(source), str(target)]
+                           str(args.attempt.resolve()) if args.attempt else 'installed', str(source), str(target),
+                           str(catalog_file)]
                 process = guard.run(command, out / ('emit-' + str(index).zfill(2)), time.monotonic() + args.timeout)
                 row = dict(source=identity(source), process=process)
                 receipt['sources'].append(row)
@@ -142,7 +149,7 @@ def main():
                 modules[name] = target
                 print(json.dumps(dict(source=source.name, complete=True)), flush=True)
             for case in selected:
-                checked_source(case)
+                checked_source(case, catalog_file)
                 target = modules[case['source']['path']]
                 if case.get('adapter'):
                     if case['adapter'] != 'generic-row':
@@ -155,9 +162,11 @@ def main():
                     target = adapted
                 manifest['cases'].append(dict(id=case['id'], sourceSha256=case['source']['sha256'],
                     point=case['point'], modules={args.role:relative_identity(target, out)}))
-            if identity(CATALOG)['sha256'] != manifest['catalogSha256']:
+            if identity(catalog_file)['sha256'] != manifest['catalogSha256']:
                 raise RuntimeError('Catalog changed during acquisition')
-            for name in ['prepare.py', 'emit-worker.mjs', 'support.py', 'catalog.json']:
+            if identity(out / 'consumed' / 'catalog.json')['sha256'] != manifest['catalogSha256']:
+                raise RuntimeError('Consumed catalog changed during acquisition')
+            for name in ['prepare.py', 'emit-worker.mjs', 'support.py']:
                 if identity(HERE / name)['sha256'] != identity(out / 'consumed' / name)['sha256']:
                     raise RuntimeError('Preparation producer changed during acquisition: ' + name)
             if identity(node) != receipt['node']:

@@ -20,6 +20,13 @@ The [Phase33 report](../implementation/phase33/README.md) records validation of
 the tooling. Its protocol starts a new timing series; historical Phase32 medians
 retain their original warmup, process and validation boundaries.
 
+The additive [Phase37 coverage suite](../selfhost/tools/performance/phase37/README.md)
+contains **45 points in 23 source files**, including varied inputs and eight new
+program families. It has a separate portable Phase36/TypeScript reference and
+keeps three families out of optimizer tuning. Select its catalog explicitly;
+its full inventory requires bounded chunks rather than one promised 600-second
+run. The original fifteen-point catalog remains unchanged.
+
 The [diagnostics guide](../selfhost/tools/performance/programs/DIAGNOSTICS.md)
 adds separate CPU and allocation profiles plus AST comparisons of those exact
 generated modules. It produces raw V8 profiles, source-attributed hot frames,

@@ -1,0 +1,974 @@
+{
+  "kind": "phase37-application-point-proposal",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "oracle": {
+    "sha256": "b590c3b96b2a623e85ab3b4d23ae9e04940f9dfa2d378d8cf873796d22e310b2",
+    "bytes": 10100
+  },
+  "cases": [
+    {
+      "id": "coverage-closures-64",
+      "family": "closures",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build and apply captured closure composition chains",
+      "scope": "size captured affine closures; generated chain and invocation both timed",
+      "source": {
+        "path": "fixtures-new/closures.bend",
+        "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "bytes": 1392,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/closures_hof.bend",
+            "gitBlob": "015235618ee5d528d4301d56d4a7d5c5571ba932",
+            "sha256": "995334f3b7925f6d12a19cc84d1353db05736d9ebde158accdf9c9621991f059",
+            "bytes": 1202
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Build and execute a dynamically sized captured closure chain.\ndef bench(size: U32, seed: U32) -> U32:\n  chain(U32.to_nat(size))(seed)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          64,
+          17
+        ],
+        "expected": 2097
+      },
+      "oracle": "Closed-form seed + n(n+1)/2 modulo 2^32; no generated code or recursive closure interpreter.",
+      "coverage": [
+        "higher-order",
+        "captured-values",
+        "function-construction",
+        "Nat-recursion"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-closures-256",
+      "family": "closures",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build and apply captured closure composition chains",
+      "scope": "size captured affine closures; generated chain and invocation both timed",
+      "source": {
+        "path": "fixtures-new/closures.bend",
+        "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "bytes": 1392,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/closures_hof.bend",
+            "gitBlob": "015235618ee5d528d4301d56d4a7d5c5571ba932",
+            "sha256": "995334f3b7925f6d12a19cc84d1353db05736d9ebde158accdf9c9621991f059",
+            "bytes": 1202
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Build and execute a dynamically sized captured closure chain.\ndef bench(size: U32, seed: U32) -> U32:\n  chain(U32.to_nat(size))(seed)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          256,
+          123
+        ],
+        "expected": 33019
+      },
+      "oracle": "Closed-form seed + n(n+1)/2 modulo 2^32; no generated code or recursive closure interpreter.",
+      "coverage": [
+        "higher-order",
+        "captured-values",
+        "function-construction",
+        "Nat-recursion"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "family": "list-pipeline",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Generate, filter, map and fold a word list",
+      "scope": "size LCG words; remove 0/1, double remaining words, sum all retained elements",
+      "source": {
+        "path": "fixtures-new/list-pipeline.bend",
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+        "bytes": 3249,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/list_map_fold_ops.bend",
+            "gitBlob": "61b1b6d606beb1af0a483fdbd233edebda47c942",
+            "sha256": "ddd1d5eb538c5fd8ca5b91c27af5625d86dc39dbb640845077a0656064a60eda",
+            "bytes": 2909
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\ndef p37.list(n: Nat, +seed: U32) -> List<&2, U32>:\n  match n:\n    case 0n:\n      Nil{}\n    case 1n+p:\n      U32.mod(seed, 16) <> p37.list(p, U32.add(U32.mul(seed, 1664525), 1013904223))\n\ndef bench(size: U32, seed: U32) -> U32:\n  suma(dbl(keep_gt1(p37.list(U32.to_nat(size), seed))), 0)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          17
+        ],
+        "expected": 1904
+      },
+      "oracle": "Python list comprehension over an integer LCG and mathematical sum modulo 2^32.",
+      "coverage": [
+        "linear-list",
+        "constructor-churn",
+        "filter",
+        "composed-traversals",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "family": "list-pipeline",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Generate, filter, map and fold a word list",
+      "scope": "size LCG words; remove 0/1, double remaining words, sum all retained elements",
+      "source": {
+        "path": "fixtures-new/list-pipeline.bend",
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+        "bytes": 3249,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/list_map_fold_ops.bend",
+            "gitBlob": "61b1b6d606beb1af0a483fdbd233edebda47c942",
+            "sha256": "ddd1d5eb538c5fd8ca5b91c27af5625d86dc39dbb640845077a0656064a60eda",
+            "bytes": 2909
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\ndef p37.list(n: Nat, +seed: U32) -> List<&2, U32>:\n  match n:\n    case 0n:\n      Nil{}\n    case 1n+p:\n      U32.mod(seed, 16) <> p37.list(p, U32.add(U32.mul(seed, 1664525), 1013904223))\n\ndef bench(size: U32, seed: U32) -> U32:\n  suma(dbl(keep_gt1(p37.list(U32.to_nat(size), seed))), 0)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          512,
+          123
+        ],
+        "expected": 7616
+      },
+      "oracle": "Python list comprehension over an integer LCG and mathematical sum modulo 2^32.",
+      "coverage": [
+        "linear-list",
+        "constructor-churn",
+        "filter",
+        "composed-traversals",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-bst-32",
+      "family": "bst",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Zipper insertion and traversal of skewed or irregular BSTs",
+      "scope": "size insertion values modulo257; seed0 is ascending/skewed, seed17 is irregular; fuel=size+1",
+      "source": {
+        "path": "fixtures-new/bst.bend",
+        "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "bytes": 3051,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/bst_insert.bend",
+            "gitBlob": "7cfc1b00ced39a243668db5abe90a51fdab8865a",
+            "sha256": "88a0f65526e35c53e5b806f15dfdf700d5b91a78fd30fb22b67167f09a693cc1",
+            "bytes": 2383
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Dynamic fuel is sufficient for either a skewed or irregular insertion tree.\ndef p37.bst.insert(+fuel: Nat, +x: U32, tree: BST) -> BST:\n  insert.fin(x, bst.down(fuel, x, (tree, Nil{})))\n\ndef p37.bst.build(n: Nat, +fuel: Nat, +i: U32, +seed: U32, tree: BST) -> BST:\n  match n:\n    case 0n:\n      tree\n    case 1n+p:\n      x = U32.mod(U32.add(U32.mul(i, U32.add(U32.mul(seed, 2), 1)), seed), 257)\n      p37.bst.build(p, fuel, U32.add(i, 1), seed, p37.bst.insert(fuel, x, tree))\n\ndef bench(+size: U32, seed: U32) -> U32:\n  inorder(p37.bst.build(U32.to_nat(size), Nat.add(U32.to_nat(size), 1n), 0, seed, BLeaf{}), 0)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          0
+        ],
+        "expected": 1802825775
+      },
+      "oracle": "Independently sort generated values, then fold decimal positional digest modulo 2^32.",
+      "coverage": [
+        "irregular-tree",
+        "skewed-tree",
+        "zipper",
+        "tuple-state",
+        "insertion",
+        "ordered-fold"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    },
+    {
+      "id": "coverage-bst-64",
+      "family": "bst",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Zipper insertion and traversal of skewed or irregular BSTs",
+      "scope": "size insertion values modulo257; seed0 is ascending/skewed, seed17 is irregular; fuel=size+1",
+      "source": {
+        "path": "fixtures-new/bst.bend",
+        "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "bytes": 3051,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/bst_insert.bend",
+            "gitBlob": "7cfc1b00ced39a243668db5abe90a51fdab8865a",
+            "sha256": "88a0f65526e35c53e5b806f15dfdf700d5b91a78fd30fb22b67167f09a693cc1",
+            "bytes": 2383
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Dynamic fuel is sufficient for either a skewed or irregular insertion tree.\ndef p37.bst.insert(+fuel: Nat, +x: U32, tree: BST) -> BST:\n  insert.fin(x, bst.down(fuel, x, (tree, Nil{})))\n\ndef p37.bst.build(n: Nat, +fuel: Nat, +i: U32, +seed: U32, tree: BST) -> BST:\n  match n:\n    case 0n:\n      tree\n    case 1n+p:\n      x = U32.mod(U32.add(U32.mul(i, U32.add(U32.mul(seed, 2), 1)), seed), 257)\n      p37.bst.build(p, fuel, U32.add(i, 1), seed, p37.bst.insert(fuel, x, tree))\n\ndef bench(+size: U32, seed: U32) -> U32:\n  inorder(p37.bst.build(U32.to_nat(size), Nat.add(U32.to_nat(size), 1n), 0, seed, BLeaf{}), 0)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          64,
+          17
+        ],
+        "expected": 861157620
+      },
+      "oracle": "Independently sort generated values, then fold decimal positional digest modulo 2^32.",
+      "coverage": [
+        "irregular-tree",
+        "skewed-tree",
+        "zipper",
+        "tuple-state",
+        "insertion",
+        "ordered-fold"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "family": "unicode-text",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build, split and join mixed-script Unicode text",
+      "scope": "size blocks containing Greek, supplementary-plane emoji, CJK, decimal seed and separators; complete string observed",
+      "source": {
+        "path": "fixtures-new/unicode-text.bend",
+        "sha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+        "bytes": 5277,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/string_algorithms.bend",
+            "gitBlob": "f7a5f10a532aacf998ef2ba37ed2f1a66e6ad109",
+            "sha256": "b20ca36f67f1eba88ee4890ba9eb659b0b5f963da644b83e9c3f8c33224ea418",
+            "bytes": 4874
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\ndef p37.text.repeat(n: Nat, +block: String) -> String:\n  match n:\n    case 0n:\n      SNil{}\n    case 1n+p:\n      String.append(block, p37.text.repeat(p, block))\n\ndef bench(size: U32, seed: U32) -> String:\n  text = p37.text.repeat(U32.to_nat(size), String.append(\"α,β,🍎,中,\", String.append(U32.show(seed), \",\")))\n  sjoin(\"|\", ssplit(44, text))\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          16,
+          17
+        ],
+        "expected": "α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|α|β|🍎|中|17|"
+      },
+      "oracle": "Python code-point string repetition and delimiter replacement; complete output equality.",
+      "coverage": [
+        "Unicode",
+        "supplementary-plane",
+        "String",
+        "list-of-strings",
+        "split-join"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "family": "unicode-text",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build, split and join mixed-script Unicode text",
+      "scope": "size blocks containing Greek, supplementary-plane emoji, CJK, decimal seed and separators; complete string observed",
+      "source": {
+        "path": "fixtures-new/unicode-text.bend",
+        "sha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+        "bytes": 5277,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/string_algorithms.bend",
+            "gitBlob": "f7a5f10a532aacf998ef2ba37ed2f1a66e6ad109",
+            "sha256": "b20ca36f67f1eba88ee4890ba9eb659b0b5f963da644b83e9c3f8c33224ea418",
+            "bytes": 4874
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\ndef p37.text.repeat(n: Nat, +block: String) -> String:\n  match n:\n    case 0n:\n      SNil{}\n    case 1n+p:\n      String.append(block, p37.text.repeat(p, block))\n\ndef bench(size: U32, seed: U32) -> String:\n  text = p37.text.repeat(U32.to_nat(size), String.append(\"α,β,🍎,中,\", String.append(U32.show(seed), \",\")))\n  sjoin(\"|\", ssplit(44, text))\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          64,
+          123
+        ],
+        "expected": "α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|"
+      },
+      "oracle": "Python code-point string repetition and delimiter replacement; complete output equality.",
+      "coverage": [
+        "Unicode",
+        "supplementary-plane",
+        "String",
+        "list-of-strings",
+        "split-join"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-expression-32",
+      "family": "expression",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Construct and interpret an unbalanced arithmetic expression AST",
+      "scope": "size nested expression layers; variable Add/Mul/Sub dispatch and small side trees; U32 wrapping",
+      "source": {
+        "path": "fixtures-new/expression.bend",
+        "sha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "bytes": 1522,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/expr_interpreter.bend",
+            "gitBlob": "0a7b6a511c26f42d0732347d932e0524b50d0e80",
+            "sha256": "74bdcbabe870bff14d0e9247a44a5687671e7d26ba17543198ccb222d9217d4e",
+            "bytes": 881
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Non-balanced expression tree: one recursive child and one varying shallow arm.\ndef p37.expr.pick(op: Nat, e: Expr, +seed: U32) -> Expr:\n  match op:\n    case 0n:\n      Add{e, Mul{Lit{seed}, Lit{3}}}\n    case 1n+0n:\n      Mul{e, Add{Lit{U32.mod(seed, 5)}, Lit{1}}}\n    case 1n+1n+p:\n      Sub{e, Add{Lit{seed}, Lit{7}}}\n\ndef p37.expr(n: Nat, +seed: U32) -> Expr:\n  match n:\n    case 0n:\n      Lit{seed}\n    case 1n+p:\n      p37.expr.pick(U32.to_nat(U32.mod(seed, 3)), p37.expr(p, U32.add(seed, 1)), seed)\n\ndef bench(size: U32, seed: U32) -> U32:\n  eval(p37.expr(U32.to_nat(size), seed))\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 2928000
+      },
+      "oracle": "Independent bottom-up scalar recurrence; no AST allocation or recursive evaluator.",
+      "coverage": [
+        "AST",
+        "unbalanced-tree",
+        "sum-types",
+        "producer-consumer",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    },
+    {
+      "id": "coverage-expression-128",
+      "family": "expression",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Construct and interpret an unbalanced arithmetic expression AST",
+      "scope": "size nested expression layers; variable Add/Mul/Sub dispatch and small side trees; U32 wrapping",
+      "source": {
+        "path": "fixtures-new/expression.bend",
+        "sha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "bytes": 1522,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/expr_interpreter.bend",
+            "gitBlob": "0a7b6a511c26f42d0732347d932e0524b50d0e80",
+            "sha256": "74bdcbabe870bff14d0e9247a44a5687671e7d26ba17543198ccb222d9217d4e",
+            "bytes": 881
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Non-balanced expression tree: one recursive child and one varying shallow arm.\ndef p37.expr.pick(op: Nat, e: Expr, +seed: U32) -> Expr:\n  match op:\n    case 0n:\n      Add{e, Mul{Lit{seed}, Lit{3}}}\n    case 1n+0n:\n      Mul{e, Add{Lit{U32.mod(seed, 5)}, Lit{1}}}\n    case 1n+1n+p:\n      Sub{e, Add{Lit{seed}, Lit{7}}}\n\ndef p37.expr(n: Nat, +seed: U32) -> Expr:\n  match n:\n    case 0n:\n      Lit{seed}\n    case 1n+p:\n      p37.expr.pick(U32.to_nat(U32.mod(seed, 3)), p37.expr(p, U32.add(seed, 1)), seed)\n\ndef bench(size: U32, seed: U32) -> U32:\n  eval(p37.expr(U32.to_nat(size), seed))\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          123
+        ],
+        "expected": 3393903617
+      },
+      "oracle": "Independent bottom-up scalar recurrence; no AST allocation or recursive evaluator.",
+      "coverage": [
+        "AST",
+        "unbalanced-tree",
+        "sum-types",
+        "producer-consumer",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "family": "map-churn",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build, replace, delete and traverse a larger string-key map",
+      "scope": "size distinct keys; replace every third key; delete every fourth; digest every remaining ordered key and value",
+      "source": {
+        "path": "fixtures-new/map-churn.bend",
+        "sha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+        "bytes": 1703,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 2930913555
+      },
+      "oracle": "Python dictionary, lexical ordering and independent wrapping content digest.",
+      "coverage": [
+        "Map",
+        "many-keys",
+        "replacement",
+        "deletion",
+        "ordered-traversal",
+        "String-formatting"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "family": "map-churn",
+      "category": "coverage",
+      "partition": "development",
+      "description": "Build, replace, delete and traverse a larger string-key map",
+      "scope": "size distinct keys; replace every third key; delete every fourth; digest every remaining ordered key and value",
+      "source": {
+        "path": "fixtures-new/map-churn.bend",
+        "sha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+        "bytes": 1703,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          123
+        ],
+        "expected": 3714872484
+      },
+      "oracle": "Python dictionary, lexical ordering and independent wrapping content digest.",
+      "coverage": [
+        "Map",
+        "many-keys",
+        "replacement",
+        "deletion",
+        "ordered-traversal",
+        "String-formatting"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "family": "numeric-recurrence",
+      "category": "coverage",
+      "partition": "development",
+      "description": "F32 nonlinear recurrence with wrapping word observation",
+      "scope": "size logistic recurrence steps; round each operation to binary32; incorporate every intermediate value into U32 digest",
+      "source": {
+        "path": "fixtures-new/numeric-recurrence.bend",
+        "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "bytes": 556,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          256,
+          17
+        ],
+        "expected": 2747714257
+      },
+      "oracle": "Python struct binary32 rounding after each primitive, Python integer U32 wrapping; exact scalar equality.",
+      "coverage": [
+        "F32-rounding",
+        "F32-U32-conversion",
+        "numeric-loop",
+        "Nat-counter",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "family": "numeric-recurrence",
+      "category": "coverage",
+      "partition": "development",
+      "description": "F32 nonlinear recurrence with wrapping word observation",
+      "scope": "size logistic recurrence steps; round each operation to binary32; incorporate every intermediate value into U32 digest",
+      "source": {
+        "path": "fixtures-new/numeric-recurrence.bend",
+        "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "bytes": 556,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          1024,
+          123
+        ],
+        "expected": 1376326140
+      },
+      "oracle": "Python struct binary32 rounding after each primitive, Python integer U32 wrapping; exact scalar equality.",
+      "coverage": [
+        "F32-rounding",
+        "F32-U32-conversion",
+        "numeric-loop",
+        "Nat-counter",
+        "U32-wrapping"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-development"
+      ]
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "family": "record-aggregation",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Generate textual records, parse amounts, aggregate and render a report",
+      "scope": "size records;16 Unicode department keys; decimal parsing; whole ordered report observed; in-memory, not CSV or IO throughput",
+      "source": {
+        "path": "fixtures-new/record-aggregation.bend",
+        "sha256": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+        "bytes": 1651,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          64,
+          17
+        ],
+        "expected": "部門0=1840;部門1=1620;部門10=1952;部門11=2100;部門12=1248;部門13=1396;部門14=1544;部門15=1692;部門2=1768;部門3=1916;部門4=2064;部門5=2212;部門6=2360;部門7=1508;部門8=1656;部門9=1804;"
+      },
+      "oracle": "Independent Python integer/dictionary aggregation and full ordered report string.",
+      "coverage": [
+        "composed-application",
+        "text-number-parsing",
+        "Map",
+        "Unicode",
+        "list-of-records",
+        "report-formatting"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "family": "record-aggregation",
+      "category": "coverage",
+      "partition": "holdout",
+      "description": "Generate textual records, parse amounts, aggregate and render a report",
+      "scope": "size records;16 Unicode department keys; decimal parsing; whole ordered report observed; in-memory, not CSV or IO throughput",
+      "source": {
+        "path": "fixtures-new/record-aggregation.bend",
+        "sha256": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+        "bytes": 1651,
+        "provenance": {
+          "kind": "phase37-authored-application",
+          "description": "Independent program authored before candidate optimization; pinned Base imported unchanged.",
+          "record": "design/phase37/applications.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          256,
+          123
+        ],
+        "expected": "部門0=6968;部門1=7560;部門10=7888;部門11=7008;部門12=7600;部門13=8192;部門14=7784;部門15=7376;部門2=8152;部門3=7744;部門4=7336;部門5=6928;部門6=7520;部門7=8112;部門8=8704;部門9=8296;"
+      },
+      "oracle": "Independent Python integer/dictionary aggregation and full ordered report string.",
+      "coverage": [
+        "composed-application",
+        "text-number-parsing",
+        "Map",
+        "Unicode",
+        "list-of-records",
+        "report-formatting"
+      ],
+      "sets": [
+        "coverage",
+        "coverage-holdout"
+      ]
+    }
+  ],
+  "validationPoints": [
+    {
+      "family": "closures",
+      "exportName": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "family": "closures",
+      "exportName": "bench",
+      "args": [
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "family": "closures",
+      "exportName": "bench",
+      "args": [
+        2,
+        17
+      ],
+      "expected": 20
+    },
+    {
+      "family": "closures",
+      "exportName": "bench",
+      "args": [
+        7,
+        123
+      ],
+      "expected": 151
+    },
+    {
+      "family": "list-pipeline",
+      "exportName": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "family": "list-pipeline",
+      "exportName": "bench",
+      "args": [
+        1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "family": "list-pipeline",
+      "exportName": "bench",
+      "args": [
+        2,
+        17
+      ],
+      "expected": 24
+    },
+    {
+      "family": "list-pipeline",
+      "exportName": "bench",
+      "args": [
+        7,
+        123
+      ],
+      "expected": 112
+    },
+    {
+      "family": "bst",
+      "exportName": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "family": "bst",
+      "exportName": "bench",
+      "args": [
+        1,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "family": "bst",
+      "exportName": "bench",
+      "args": [
+        2,
+        17
+      ],
+      "expected": 222
+    },
+    {
+      "family": "bst",
+      "exportName": "bench",
+      "args": [
+        7,
+        123
+      ],
+      "expected": 71234553
+    },
+    {
+      "family": "unicode-text",
+      "exportName": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expected": ""
+    },
+    {
+      "family": "unicode-text",
+      "exportName": "bench",
+      "args": [
+        1,
+        0
+      ],
+      "expected": "α|β|🍎|中|0|"
+    },
+    {
+      "family": "unicode-text",
+      "exportName": "bench",
+      "args": [
+        2,
+        17
+      ],
+      "expected": "α|β|🍎|中|17|α|β|🍎|中|17|"
+    },
+    {
+      "family": "unicode-text",
+      "exportName": "bench",
+      "args": [
+        7,
+        123
+      ],
+      "expected": "α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|α|β|🍎|中|123|"
+    },
+    {
+      "family": "expression",
+      "exportName": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "family": "expression",
+      "exportName": "bench",
+      "args": [
+        1,
+        0
+      ],
+      "expected": 1
+    },
+    {
+      "family": "expression",
+      "exportName": "bench",
+      "args": [
+        2,
+        17
+      ],
+      "expected": 49
+    },
+    {
+      "family": "expression",
+      "exportName": "bench",
+      "args": [
+        7,
+        123
+      ],
+      "expected": 7329
+    },
+    {
+      "family": "map-churn",
+      "exportName": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 2166136261
+    },
+    {
+      "family": "map-churn",
+      "exportName": "bench",
+      "args": [
+        1,
+        0
+      ],
+      "expected": 2166136261
+    },
+    {
+      "family": "map-churn",
+      "exportName": "bench",
+      "args": [
+        2,
+        17
+      ],
+      "expected": 3225986295
+    },
+    {
+      "family": "map-churn",
+      "exportName": "bench",
+      "args": [
+        7,
+        123
+      ],
+      "expected": 861924933
+    },
+    {
+      "family": "numeric-recurrence",
+      "exportName": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "family": "numeric-recurrence",
+      "exportName": "bench",
+      "args": [
+        1,
+        0
+      ],
+      "expected": 37125
+    },
+    {
+      "family": "numeric-recurrence",
+      "exportName": "bench",
+      "args": [
+        2,
+        17
+      ],
+      "expected": 2939368227
+    },
+    {
+      "family": "numeric-recurrence",
+      "exportName": "bench",
+      "args": [
+        7,
+        123
+      ],
+      "expected": 310502262
+    },
+    {
+      "family": "record-aggregation",
+      "exportName": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expected": ""
+    },
+    {
+      "family": "record-aggregation",
+      "exportName": "bench",
+      "args": [
+        1,
+        0
+      ],
+      "expected": "部門0=0;"
+    },
+    {
+      "family": "record-aggregation",
+      "exportName": "bench",
+      "args": [
+        2,
+        17
+      ],
+      "expected": "部門1=17;部門2=54;"
+    },
+    {
+      "family": "record-aggregation",
+      "exportName": "bench",
+      "args": [
+        7,
+        123
+      ],
+      "expected": "部門0=308;部門1=345;部門11=123;部門12=160;部門13=197;部門14=234;部門15=271;"
+    }
+  ],
+  "observationLimits": "Digest outputs can collide. Only Unicode and aggregation observe complete returned strings. These references are independent executable specifications, not proofs of compiler correctness or representativeness."
+}

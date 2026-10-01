@@ -25,9 +25,12 @@ def main():
     parser.add_argument('--baseline', type=Path, required=True, help='Completed prepare.py --role baseline --set full directory')
     parser.add_argument('--typescript', type=Path, required=True, help='Completed prepare.py --role typescript --set full directory')
     parser.add_argument('--out', type=Path, required=True, help='New reference directory')
+    parser.add_argument('--catalog', type=Path, default=CATALOG,
+                        help='Catalog used for both checked preparations')
     args = parser.parse_args()
-    catalog = json.loads(CATALOG.read_text())
-    catalog_sha = identity(CATALOG)['sha256']
+    catalog_file = args.catalog.resolve()
+    catalog = json.loads(catalog_file.read_text())
+    catalog_sha = identity(catalog_file)['sha256']
     files, manifests, roles, before = {}, {}, {}, {}
     inputs = dict(baseline=args.baseline.resolve(), typescript=args.typescript.resolve())
     for role, root in inputs.items():
@@ -57,7 +60,7 @@ def main():
         roles['baseline']['label'] = 'Phase32 checked03'
     cases = []
     for case in catalog['cases']:
-        checked_source(case)
+        checked_source(case, catalog_file)
         row = dict(id=case['id'], sourceSha256=case['source']['sha256'], point=case['point'], modules={})
         for role in inputs:
             ready = manifests[role][case['id']]
@@ -71,7 +74,7 @@ def main():
             row['modules'][role] = record(files[name], name)
         cases.append(row)
     provenance = dict(kind='bend-program-frozen-reference-provenance', complete=True,
-        producer=identity(__file__), adapterProducer=identity(HERE / 'prepare.py'), catalog=identity(CATALOG),
+        producer=identity(__file__), adapterProducer=identity(HERE / 'prepare.py'), catalog=identity(catalog_file),
         preparations={role:identity(root / 'preparation.json') for role, root in inputs.items()},
         acquisitionScope='Fresh checked sequential emissions, one process per source and compiler. Complete acquisition receipts and logs retained under each role in the archive. Absolute receipt paths are historical provenance only, never runtime dependencies.',
         observationScope='Scalar/string outputs and an explicit full-state generic-row serializer. Archive creation executes no compiler or generated program and establishes no timing result.')
@@ -93,8 +96,8 @@ def main():
     for file, expected in before.items():
         assert identity(file) == expected, 'Input changed during reference capture'
     for case in catalog['cases']:
-        checked_source(case)
-    assert catalog_sha == identity(CATALOG)['sha256']
+        checked_source(case, catalog_file)
+    assert catalog_sha == identity(catalog_file)['sha256']
     manifest = dict(kind='bend-program-bundle', schemaVersion=1, complete=True,
         upstreamCommit=catalog['upstreamCommit'], catalogSha256=catalog_sha, roles=roles,
         archive=record(archive.read_bytes(), archive.name), cases=cases,

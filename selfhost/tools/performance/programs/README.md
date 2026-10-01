@@ -6,6 +6,11 @@ the pinned upstream TypeScript compiler and, optionally, a prepared candidate.
 Compilation is a separate preparation step. The ordinary timing command never
 builds or imports a compiler.
 
+The additive [Phase37 coverage suite](../phase37/README.md) retains these fifteen
+points and adds varied inputs and eight program families, with explicit Phase36
+and TypeScript references. Its catalog and workload groups are separate so old
+comparisons keep their original meanings.
+
 For CPU profiles, sampled allocation profiles, syntax counts and side-by-side
 generated-code comparisons, use the [diagnostics guide](DIAGNOSTICS.md).
 Add `--diagnostics all --diagnostic-budget 60` to a timing command, or diagnose

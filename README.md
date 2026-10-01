@@ -53,6 +53,13 @@ profiles and generated-JavaScript comparisons. Checked acquisition plus 36
 focused checks took **42.3 seconds**; the one-case symreg screen took **8 seconds**.
 Heavy jobs run serially with explicit memory bounds.
 
+The [expanded coverage suite](selfhost/tools/performance/phase37/README.md) adds
+varied inputs and eight program families: **45 points across 23 source files**,
+with three families reserved for final validation. Its portable reference uses
+Phase36 and the same pinned TypeScript compiler. See the
+[coverage findings](implementation/phase37/coverage-findings.md) for measured
+gaps, source selection and limitations.
+
 From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
 `npm run build` rebuilds with pinned upstream. The
 [checked workflow](docs/PHASE5_DEVELOPMENT.md),

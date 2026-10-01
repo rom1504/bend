@@ -1,9 +1,26 @@
-# Phase37 current frontier
+# Phase38 research frontier; Phase37 compiler installed
 
 User authorization covers compiler experiments, design/report and commit/push to
 `rom1504/bend`, branch `selfhost/bootstrap`. No PR comments without an explicit
 request. Older timed campaigns are historical. Preserve the 103 unrelated
 starting files and closed Phase35/36 evidence.
+
+## Research decision, 2026-10-01
+
+The [Phase38 collection](../design/phase38/README.md) completes the requested
+compiler research without implementing new optimizations. Twelve studies cover
+the pinned TS backend, MLton, GHC, Flambda, Lean, Koka, Chez, JS engines, Zig,
+Rust/Cranelift, fusion and validation. [Ranked ideas](../design/phase38/ideas.md)
+separate observed evidence from conditional gains and correctness risks.
+
+Prioritize a small private Number-counter probe, a ray guard-scope probe and
+one direct tagged recursive component. Known callback specialization precedes
+fusion. Share analysis facts only after two examples justify the abstraction;
+defer a general optimizer/RC/runtime rewrite. Numeric already has one outer
+guard, so scope amortization is not its established opportunity. All proposals
+remain unexecuted. See the [prospective queue](../design/phase38/experiments.md)
+and [research report](../implementation/phase38/README.md). Phase37 metrics below
+are unchanged, and its formerly heldout families are now exposed.
 
 ## Installed result
 

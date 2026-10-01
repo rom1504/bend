@@ -2396,3 +2396,34 @@ host guards. Keep 20/60 second focused execution screens, reserve the 17.61 minu
 suite for acceptance, and separate build, compilation, profiling and timing.
 Former holdouts are now exposed; freeze new families before another tuning pass.
 All 103 unrelated starting files remain protected; no PR comment is posted.
+
+## Phase38 — compiler research collection and mined proposals (2026-10-01)
+
+User request: research other compilers, including Bend's TS backend, write a
+large document collection, and rank promising ideas with gain/risk estimates.
+The [collection](../design/phase38/README.md) contains 19 design documents and
+12 studies, with versioned sources, current evidence, architecture, estimates
+and a prospective experiment queue. Three agents researched disjoint compiler
+families; root added pinned TS/Koka/Chez inspection and integrated the ranking.
+[Report](../implementation/phase38/README.md) and
+[independent review](../implementation/phase38/review.md).
+
+**No compiler change or new benchmark result.** Installed Phase37 checked03 and
+upstream 0187512 remain selected; closed evidence is unchanged. Main conclusion:
+preserve callee/arity/demand/shape/control facts across a useful private component,
+initially keeping tagged data. Cheap counter and ray-scope probes precede broader
+workers; known callbacks precede fusion; allocation elimination precedes reuse.
+
+Conditional forecasts versus current eligible workloads: 1.1–1.5× numeric from
+a private Number countdown, 1.15–1.5× active ray from scope amortization,
+1.5–2.5× tree from direct recursive workers, 1.5–3× selected list/closure work
+from known callbacks. Fusion's 1.2–2× screening range instead uses a future
+direct-unfused comparator. None is measured or additive; no parity forecast.
+Numeric already has one outer guard and is not an established scope-amortization
+target. Public host mutation, reentry, demand/error order and stack contracts
+remain mandatory. Shared-fact simplification and compile-cost recovery are
+unmeasured hypotheses, not achieved reductions.
+
+The collection is linked from README. Local documentation/source-identity checks
+and protection of all 103 unrelated files pass. No build, target execution,
+optimization, external compiler benchmark or PR comment was performed.

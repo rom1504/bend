@@ -72,6 +72,13 @@ From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
 [Phase36 results](implementation/phase36/README.md) and earlier measurements
 retain their original baselines and scopes.
 
+The [Phase38 compiler research collection](design/phase38/README.md) covers
+twelve compiler/research studies, including the pinned TypeScript backend, then
+ranks [optimization ideas with scoped gain and risk estimates](design/phase38/ideas.md).
+It includes source references, architectural tradeoffs and fast falsifiable
+experiments. This research leaves the installed Phase37 compiler unchanged;
+the [research report](implementation/phase38/README.md) records its scope and review.
+
 ## Bend runs FAST
 
 **Target:** be as fast as C on the CPU, as fast as CUDA on the GPU. **Status:**

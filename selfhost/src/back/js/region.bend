@@ -148,7 +148,7 @@ def j_region_root_done(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> Stri
     "(()=>{" ++ j_region_declarations(book, j_region_helpers(s)) ++ "const $guards=[" ++ j_quote(dn(d)) ++ "," ++ j_region_names(j_region_helpers(s)) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){/* private scalar root */" ++ j_nat_loop_slots(da(d), 0) ++
     "if($entered&&" ++ j_fold_root_guard(book, d, j_region_helpers(s)) ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++ "&&localGuard($guards)){" ++
-    j_nat_loop_generic(book, Nil{}, j_region_term(s), dt(d), 0) ++ "}" ++
+    j_tree_scope(book, d, j_region_helpers(s), j_nat_loop_generic(book, Nil{}, j_region_term(s), dt(d), 0)) ++ "}" ++
     j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()", u => "")
 
 @unsafe
@@ -776,15 +776,15 @@ def j_region_field_operands(+xs: List<&2,KTerm>) -> Bool:
     case Nil{}: True{}
     case Con{h, rest}: j_region_field_atom(h) && j_region_field_operands(rest)
 
-# A private Nat below 2^48 fits exactly in a Number. Change only a vector-loop
+# A private Nat below 2^48 fits exactly in a Number. Change only a loop
 # predecessor occurring once, as the first self-tail argument: it cannot escape
 # through source arithmetic, stores, results, type terms or copied helper plans.
 @unsafe
 def j_region_number_counter(+book: List<&2,KDef>, +d: KDef) -> Bool:
   +succ = j_strip(kid(j_strip(kid(dv(d), 1)), 0))
-  U32.is_gt(j_region_vector_count(book, d), 0) && String.eq(tg(succ), "Lam") &&
-    j_nat_loop_tail(j_nat_loop_unwrap(succ), dn(d), ix(succ), da(d)) &&
-    U32.is_eq(j_region_counter_uses([kid(succ, 0)], ix(succ), 0), 1)
+  kc(Bool, String.eq(tg(succ), "Lam"), u =>
+    kc(Bool, j_nat_loop_tail(j_nat_loop_unwrap(succ), dn(d), ix(succ), da(d)), u =>
+      U32.is_eq(j_region_counter_uses([kid(succ, 0)], ix(succ), 0), 1), u => False{}), u => False{})
 
 # Stop after two uses. Inspect every child, including closures and annotations;
 # globally fresh frontend IDs make copied helper binders unambiguous here.

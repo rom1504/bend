@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "New mechanism fixture, not an extension of frozen Phase37 coverage or evidence of real-world prevalence.",
+  "derivation": {
+    "parentSource": {
+      "path": "callback-fixture.bend",
+      "sha256": "fdd8ec2fda7f20a15c2c3d0186a8e26ea40393188700ce7c830625449364d1ec"
+    },
+    "parentProducer": {
+      "path": "callback-catalog.py",
+      "sha256": "043361725380a36462dae4e024f030b63b9979d55a0652ba79ef1434d9f544ea"
+    },
+    "change": "Mark the Nat input of callback.make duplicable because its predecessor is used for both dynamic offset and recursive construction. No algorithm/oracle change."
+  },
+  "cases": [
+    {
+      "id": "callback-affine-64-17",
+      "category": "diagnostic",
+      "description": "Affine scalar captures over materialized callback/input/result lists",
+      "source": {
+        "path": "callback-fixture-v2.bend",
+        "bytes": 1424,
+        "sha256": "435646e46362366a6ca9c286bbc4e082f83c35c69537a9efd58421cef52d4bd5",
+        "provenance": {
+          "kind": "phase39-authored-affine-callback-control",
+          "design": "design/phase39/callbacks.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          64,
+          17
+        ],
+        "expected": 2177792
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "partition": "development",
+      "family": "affine-callback",
+      "oracle": "Independent Python U32 recurrence; full small lists also retained"
+    },
+    {
+      "id": "callback-affine-256-1234567",
+      "category": "diagnostic",
+      "description": "Affine scalar captures over materialized callback/input/result lists",
+      "source": {
+        "path": "callback-fixture-v2.bend",
+        "bytes": 1424,
+        "sha256": "435646e46362366a6ca9c286bbc4e082f83c35c69537a9efd58421cef52d4bd5",
+        "provenance": {
+          "kind": "phase39-authored-affine-callback-control",
+          "design": "design/phase39/callbacks.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          256,
+          1234567
+        ],
+        "expected": 324441088
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "partition": "development",
+      "family": "affine-callback",
+      "oracle": "Independent Python U32 recurrence; full small lists also retained"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "callback-affine-64-17",
+      "callback-affine-256-1234567"
+    ],
+    "core": [
+      "callback-affine-64-17",
+      "callback-affine-256-1234567"
+    ],
+    "broad": [
+      "callback-affine-64-17",
+      "callback-affine-256-1234567"
+    ],
+    "full": [
+      "callback-affine-64-17",
+      "callback-affine-256-1234567"
+    ]
+  },
+  "validationPoints": [
+    {
+      "args": [
+        0,
+        0
+      ],
+      "result": [],
+      "expected": 0
+    },
+    {
+      "args": [
+        1,
+        17
+      ],
+      "result": [
+        34
+      ],
+      "expected": 34
+    },
+    {
+      "args": [
+        3,
+        123
+      ],
+      "result": [
+        248,
+        64538,
+        44768
+      ],
+      "expected": 109554
+    },
+    {
+      "args": [
+        15,
+        4294967295
+      ],
+      "result": [
+        65548,
+        36190,
+        52372,
+        60510,
+        27564,
+        23726,
+        52180,
+        64206,
+        24460,
+        38718,
+        48468,
+        54910,
+        16300,
+        20750,
+        42260
+      ],
+      "expected": 628162
+    },
+    {
+      "args": [
+        17,
+        19
+      ],
+      "result": [
+        54,
+        34424,
+        2526,
+        49176,
+        33558,
+        1032,
+        25182,
+        54984,
+        25142,
+        45272,
+        41246,
+        7864,
+        16790,
+        57576,
+        2590,
+        3048,
+        1334
+      ],
+      "expected": 401798
+    },
+    {
+      "args": [
+        31,
+        2147483647
+      ],
+      "result": [
+        2147549212,
+        2147519854,
+        2147536036,
+        2147544174,
+        2147511228,
+        2147507390,
+        2147535844,
+        2147547870,
+        2147508124,
+        2147522382,
+        2147532132,
+        2147538574,
+        2147499964,
+        2147504414,
+        2147525924,
+        2147529598,
+        2147528732,
+        2147540526,
+        2147534628,
+        2147485102,
+        2147521724,
+        2147537534,
+        2147526500,
+        2147516702,
+        2147488156,
+        2147484174,
+        2147486180,
+        2147490254,
+        2147519164,
+        2147516638,
+        2147545764
+      ],
+      "expected": 2148625058
+    }
+  ],
+  "oracleProducer": {
+    "path": "callback-catalog-v2.py",
+    "sha256": "278d815efb4440e7a0072ae49835c841c6f16255bf1734480019397a56eacdcb"
+  }
+}

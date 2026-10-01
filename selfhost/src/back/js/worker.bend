@@ -151,6 +151,7 @@ def j_region_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KT
 
 @unsafe
 def j_nat_loop_body(+book: List<&2,KDef>, +d: KDef, +succ: KTerm, +total: U32) -> String:
+  kc(String, j_region_number_counter(book, d), u => "$s0=regionCounterNumber($s0);", u => "") ++
   "for(;;){" ++ j_nat_loop_enter(book, Nil{}, succ, j_arm_type(book, wnf(book, dt(d)), "Succ"), d, 0, total) ++ "}"
 
 @unsafe
@@ -187,8 +188,8 @@ def j_nat_loop_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: 
   kc(String, String.eq(tg(t), "JIf"), u => "if(" ++ j_expr(book, env, kid(t, 0), kt("ADT", "Bool", 0, 0, Nil{}), False{}) ++ "){" ++
     j_nat_loop_emit(book, env, kid(t, 1), ty, d, total) ++ "}else{" ++ j_nat_loop_emit(book, env, kid(t, 2), ty, d, total) ++ "}", u =>
     j_nat_loop_next(book, env, ks(j_call_spine(t, Nil{})), dt(d), 0) ++
-    "if($n0===0n){" ++ j_nat_loop_zero(book, d, total) ++ "}" ++
-    "$s0=$n0-1n;" ++ j_nat_loop_assign(total, 1) ++ "continue;")))
+    "if($n0===" ++ kc(String, j_region_number_counter(book, d), u => "0", u => "0n") ++ "){" ++ j_nat_loop_zero(book, d, total) ++ "}" ++
+    "$s0=$n0-" ++ kc(String, j_region_number_counter(book, d), u => "1", u => "1n") ++ ";" ++ j_nat_loop_assign(total, 1) ++ "continue;")))
 
 # Values are outside the block that introduces all parallel binders. The body
 # then sees fresh immutable aliases on every iteration, including in closures.

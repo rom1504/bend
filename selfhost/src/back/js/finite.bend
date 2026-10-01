@@ -94,7 +94,7 @@ def j_finite_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +g
   kc(String, U32.is_eq(terms_len(ks(spine)), da(d)), u => kc(String, j_finite_ready(book, d), u =>
     "(regionProof!==null&&regionProofCovers([" ++ j_quote(dn(d)) ++ "])?((" ++ j_region_parameters(0, da(d)) ++ ")=>{/* private finite selector */" ++
       j_finite_emit(book, Nil{}, dv(d), dt(d), j_finite_slots(0, da(d))) ++ "})(" ++
-      j_apply_args(book, env, ks(spine), dt(d)) ++ "):" ++ generic ++ ")", u => generic), u => generic)
+      j_apply_args(book, env, ks(spine), dt(d)) ++ "):" ++ generic ++ ")", u => j_component_named(book, env, spine, generic)), u => generic)
 
 @unsafe
 def j_finite_slots(+at: U32, +total: U32) -> List<&2,String>:

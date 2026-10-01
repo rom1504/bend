@@ -45,12 +45,12 @@ Root invocation, using new output directories and the final candidate:
 python3 selfhost/tools/performance/phase39/compiler-cost-plan.py \
   selfhost/build/phase39/FINAL_CHECKED \
   selfhost/build/phase39/FINAL_PREPARATION/manifest.json \
-  selfhost/build/phase39/compiler-cost-plan01 \
+  selfhost/build/phase39/compiler-cost-plan-NEW \
   --baseline-attempt selfhost/build/phase37/checked03 \
   --baseline-preparation selfhost/tools/performance/phase39/baseline/manifest.json
 python3 selfhost/tools/performance/phase35/compiler-cost-run.py \
-  selfhost/build/phase39/compiler-cost-plan01/config.json \
-  selfhost/build/phase39/compiler-cost01
+  selfhost/build/phase39/compiler-cost-plan-NEW/config.json \
+  selfhost/build/phase39/compiler-cost-NEW
 ```
 
 The planner defaults to the Phase37 catalog and three unchanged, unadapted source

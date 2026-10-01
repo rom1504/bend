@@ -1,14 +1,26 @@
 # Generated-program performance and the fast development loop
 
-Use the [compiler guide](BEND-IN-BEND.md) for normal compilation and the
-[Phase37 report index](../implementation/phase37/README.md) for exact results,
-artifact identities, failed experiments and current promotion status. The target
+Use the [compiler guide](BEND-IN-BEND.md) for normal compilation, the
+[Phase39 report index](../implementation/phase39/README.md) for the current
+optimization campaign, and the
+[Phase37 report index](../implementation/phase37/README.md) for the preceding
+installed version and its historical results. The target
 remains upstream `018751270e800bc222a93dad7f257083ee53a5f7`. The comparison is
 between JavaScript emitted from the same Bend source by the two compilers.
 Compiler checking cost is a separate measurement.
 
-**Phase37 checked03 is installed; release verification and all 42 ordinary/
-relocated CLI checks pass.** The [final gates](../implementation/phase37/final-conformance/gates.md)
+**Phase39 checked05 passes the 45-point final execution comparison and semantic
+gates.** Expression points improve **4.461× / 8.052×**, trees **1.761–2.252×** and
+active-ray points **2.617–2.867×** relative to Phase37. These are fixed-program
+results with documented drift, remaining TypeScript gaps and measured costs.
+The [admission decision](../implementation/phase39/performance-admission.md)
+retains four bounded changes. **Checked05 is installed and all 42 ordinary/relocated
+CLI checks pass**; the [release record](../implementation/phase39/release-05.md)
+preserves the same-tool retry. The [final audit](../implementation/phase39/final-conformance/gates.md)
+accepts all 15 postinstallation groups and verifies 227 canonical source pairs.
+
+**The preceding release was Phase37 checked03; its release verification
+and all 42 ordinary/relocated CLI checks passed.** The [final gates](../implementation/phase37/final-conformance/gates.md)
 close 15 postinstallation audit groups and verify 227 canonical files; the
 [release record](../implementation/phase37/release-03.md) binds installation.
 Fresh frontend agreement covers 3,026 main + 196 broader observations. Backend
@@ -46,7 +58,124 @@ generated modules. It produces raw V8 profiles, source-attributed hot frames,
 normalized tokens and a side-by-side HTML view. Profiled durations never become
 speed ratios; syntax sites are distinguished from dynamically sampled costs.
 
-## Phase37 selected-output measurements
+## Phase39 comparison and portable fast loop
+
+Phase39 retains the same **45 points / 23 source files** and upstream pin. Its
+incremental denominator is freshly executed **Phase37 checked03**, alongside
+fresh pinned TypeScript execution. This differs from the historical Phase37
+comparison below, which used Phase36. The former Phase37 holdout labels are
+preserved in the catalog, but those programs are now exposed; they are not
+fresh unseen validation distributions for this phase.
+
+The [portable Phase39 baseline](../selfhost/tools/performance/phase39/baseline/manifest.json)
+contains exact checked03 and TypeScript modules. The
+[portable checked05 candidate](../selfhost/tools/performance/phase39/current/manifest.json)
+contains 45 points in a verified 1,326,874-byte archive. It retains checked
+receipts and exact generated modules; ordinary execution does not require
+historical `selfhost/build/` directories or compiler rebuilds. Its candidate role
+is actual compiler output, not a manual JavaScript prototype. Archive reopening
+and a five-point / 45-sample portable smoke pass; the latter took 17.444 seconds
+and is separate from the primary performance comparison.
+
+Run from the repository root:
+
+```sh
+python3 selfhost/tools/performance/programs/run.py \
+  --catalog selfhost/tools/performance/phase37/catalog.json \
+  --baseline selfhost/tools/performance/phase39/baseline/manifest.json \
+  --candidate selfhost/tools/performance/phase39/current/manifest.json \
+  --budget 20 --cpu 3 --out selfhost/build/my-phase39-screen
+```
+
+Use a fresh output directory each time. For this expanded catalog the default
+sets are five fast points at 20 seconds, eight core points at 60 seconds, ten
+coverage-development points at 300 seconds, and all 45 at 600 seconds. The
+budget is a ceiling, not a completion guarantee. `--set fast|core|broad|full`
+chooses coverage independently; `--cases` chooses exact comma-separated IDs.
+For example, replace the budget/selection with
+`--budget 60 --cases coverage-expression-32,coverage-expression-128` for the
+small expression loop. Run the full inventory in bounded chunks for release
+validation; never reduce the frozen workload to make a time budget pass.
+
+`--diagnostics all --diagnostic-budget 60` additionally requests separate AST
+comparisons, CPU profiles and allocation profiles for the same selected module
+bytes. These runs are diagnostic and their durations do not enter execution
+ratios. Keep profiling and other compiler jobs off the timing CPU during clean
+comparisons. Node 24.18.0, serial CPU3 execution, a 1 GiB heap, a bounded process
+tree and a 2 GiB free-memory floor are the Phase39 campaign protocol.
+
+The selected candidate contains four bounded extensions: exact Number counters for
+eligible private scalar countdowns; reuse of a complete synchronous proof
+across an existing scalar root; explicit frames for two-child structural
+recursion over existing tagged data; and a one-child Nat producer whose
+arguments retain their original before-child/after-child evaluation phases.
+The public ABI and generic fallbacks remain part of each rule's correctness
+contract. Known-callback investigation is reported separately; no general
+callback or fusion optimization is claimed.
+
+## Phase39 selected-output measurements
+
+All **45 primary points pass**, with **669 fresh samples in 1,076.213 seconds**
+across four bounded runs. A separate four-point confirmation contributes 60
+samples in 98.328 seconds; its samples are not pooled with the primary results.
+The [complete table](../implementation/phase39/execution/report.md) retains all
+45 points, TypeScript/current/candidate ranges, paired counts and drift. Ordinary
+points use five fresh rounds per role; original raytrace uses three. Historical
+and variation groups use 1,000 ms warmup / 300 ms timed targets; development and
+exposed groups use 600 / 250 ms. Workflow time is not the execution denominator.
+
+| Point | Phase37 / checked05 speedup | Checked05 / TypeScript time |
+| --- | ---: | ---: |
+| Expression 32 | 4.461× | 10.465× |
+| Expression 128 | 8.052× | 5.239× |
+| Tree 6 / seed 17 | 1.761× | 44.003× |
+| Tree 8 / seed 0 | 1.793× | 36.801× |
+| Tree 9 / seed 123 | 2.252× | 31.846× |
+| Active ray 64 / start 2440 | 2.867× | 33.653× |
+| Active ray 256 / start 2240 | 2.617× | 31.027× |
+| Numeric recurrence 256 | 1.068× | 7.517× |
+| Numeric recurrence 1024 | 1.221× | 2.794× |
+| Scalar countdown 8192 | 1.203× | 1.174× |
+
+All listed points have changed emitted modules, five candidate wins and disjoint
+observed ranges. Symbolic-regression points also gain 1.752–1.829×, remaining
+2.140–2.201× TypeScript. There is no average-program or parity claim: BST remains
+183–223× TS, map churn 96–103×, lists 56–63× and lexer 84–89× on these fixed inputs.
+Original raytrace remains 22.8× TS and its module is unchanged.
+
+Drift qualifies the gains. Tree8 candidate drifts −15.63% to −12.27% internally;
+tree9 baseline drifts +20.54% to +22.47%. Active64 has large two-sided drift in
+both roles, and active256 candidate drifts −27.49% to −2.79%. Expression128
+candidate ranges from −1.53% to +9.65%. Disjoint ranges are not confidence
+intervals, and these figures are measured protocol results, not steady-state
+estimates. Earlier prototype screens remain separate evidence.
+
+**23 of 45 points have byte-identical baseline/candidate modules.** Their timing
+changes—including the lexer's small disjoint changes, list/closure differences,
+and evening program's variable 1.501× ratio—are unchanged-code controls, not
+compiler optimization effects. Equality here is verified by module SHA, not
+inferred from equal size. The full report preserves these observations instead
+of filtering them out.
+
+The changed generic-row32 module has a consistent observed cost: **+0.966%** in
+the primary run and **+1.656%** in its separate confirmation, losing every pairing
+in both. Primary ranges are disjoint; confirmation ranges overlap. The second
+run also preserves unchanged-code canaries: map/set changes +10.30% to +1.30%,
+large fold +6.82% to −6.62%, and small lexer +1.17% to +2.15%. These variable
+ratios are not combined or attributed to a source change. Full slower-point and
+paired-result accounting is in the [admission record](../implementation/phase39/performance-admission.md).
+
+The [compiler-cost study](../implementation/phase39/compiler-cost.md) reports
+normal checked requests separately. Tree compilation increases **3.50%** by
+ratio of medians, with all three pairings slower and disjoint ranges. Local and
+numeric medians decrease 1.60% / 1.68% with overlapping ranges; no general
+compiler-speed gain follows. Request time remains **5.05–5.98× TypeScript** on
+those three sources. Compiler source grows **364 physical Bend lines (1.98%)**
+to **18,722 in 70 modules**, and 42 definitions to 2,087; runtime, type and law
+counts remain unchanged. Generated tree JS grows 7,010 bytes and the compiler
+API 35,303 bytes. This is a performance tradeoff, not simplification.
+
+## Historical Phase37 selected-output measurements
 
 All **45 points pass their frozen output checks**, with **669 samples** across
 four bounded final runs totaling **1,056.32 seconds**. Each comparison uses fresh

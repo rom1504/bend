@@ -1,57 +1,59 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md) and
-[Phase37 report](../implementation/phase37/README.md). **Phase37 checked03 is
+[Phase39 report](../implementation/phase39/README.md). **Phase39 checked05 is
 installed; release verification and all 42 ordinary/relocated CLI checks pass.**
-The [gate closure](../implementation/phase37/final-conformance/gates.md) closes
-15 postinstallation audit groups and verifies 227 canonical source files;
-the [release record](../implementation/phase37/release-03.md) binds installation.
-The [manifest](dist/release.json) identifies the installed image. Ordinary
-compilation executes the Bend implementation without a TypeScript fallback.
-The selected compiler is a checked B1 derivative, not a new self-emitted fixed
-point; earlier releases retain their own evidence.
+The [release record](../implementation/phase39/release-05.md) preserves the
+successful same-tool retry and its earlier sandbox failure. The
+[final closure](../implementation/phase39/final-conformance/gates.md) accepts
+all 15 postinstallation audit groups and verifies all 227 canonical/frozen source
+pairs. The [manifest](dist/release.json) identifies the image:
+API `04d9ebf417a20297598bb6b047936a02228f3b8fb3a3b0cc4b59eeea04bad49f`.
+Ordinary compilation executes Bend code without a TypeScript fallback. This is
+a checked B1 derivative, not a new self-emitted fixed point.
 
-The expanded benchmark contains **45 points across 23 source files**, with
-varied inputs, eight new application families and three held-out families.
-All final outputs pass in **669 samples**, using four bounded runs totaling
-**1,056.32 seconds**. Against fresh same-run Phase36 output, numeric recurrence
-improves **2.674× / 5.165×** and the three tree points improve **1.165–1.270×**.
-The larger active-ray and list points instead slow about **3.6% and 4.7%**.
-BST 64, expression 128 and record aggregation 64 slow in all five paired rounds,
-with median paired penalties of 3.85%, 3.00% and 3.44%. The
-[execution table](../implementation/phase37/execution/report.md) and
-[holdout findings](../implementation/phase37/holdout-findings.md) preserve these
-costs, ranges and drift. Remaining TypeScript gaps include 152–209× on BST;
-these workloads do not establish average application speed or broad parity.
+Phase39 keeps the **45-point / 23-source** catalog and measures fresh Phase37
+checked03 and pinned TypeScript baselines. All points pass in **669 primary
+samples**, with **60 separate confirmation samples**. Expression points improve
+**4.461× / 8.052×**, tree points **1.761–2.252×**, active-ray points **2.617–2.867×**,
+and numeric recurrence **1.068× / 1.221×**. The
+[execution table](../implementation/phase39/execution/report.md) preserves exact
+per-point ratios, ranges, paired outcomes and internal drift. These are scoped
+results, not average program speed or TypeScript parity.
 
-The new finite selectors reuse the original typed match prefix, complete pure
-source graph and materialized private values. Original tagged storage, sharing,
-public entries and generic fallback remain. A shared exact `F32.to_u32` helper
-removes generic native dispatch within existing guarded regions. Additional
-DataView checks preserve host mutations and callbacks. The first ray candidate
-was rejected because 1,968 extra tiny scopes cost more than their selectors
-saved; new scopes now require a selector touching non-scalar data.
+**23/45 points execute identical baseline/candidate module bytes**; their timing
+changes are controls, not compiler effects. The changed generic-row module is
+slower in every primary and confirmation pairing (+0.966% / +1.656% median time).
+Tree compilation costs **3.50%** more by request medians; normal checked requests
+remain **5.05–5.98× TypeScript** on three selected sources. The
+[admission](../implementation/phase39/performance-admission.md),
+[compiler-cost study](../implementation/phase39/compiler-cost.md) and
+[42 diagnostic captures](../implementation/phase39/profile-findings.md) keep
+these costs and measurement boundaries separate.
 
-[Normal checked-library cost](../implementation/phase37/compiler-cost.md)
-increases **2.47% local, 6.40% tree and 1.06% numeric** in request medians, with
-consistent increases on the first two sources. Those measurements remain
-separate from generated-program execution. Source contains **18,358 physical /
-15,709 nonblank Bend lines in 70 modules**, with 2,045 definitions, 640 laws and
-71 types. This adds 184 physical lines (1.01%); it is not a source-reduction
-result. The [admission record](../implementation/phase37/performance-admission.md)
-records the performance and complexity tradeoffs.
+The compiler carries an unobservable private Nat countdown in a Number, shares
+a proved scalar root's guard scope, and adds explicit frames for eligible
+two-child data traversal and unary data production. It retains tagged values,
+sharing, ordered argument evaluation and public fallback. Complete graph proofs,
+exact entry, host/dependency guards and reentry cleanup still apply. No callback
+specialization or fusion is installed. Read the
+[backend rules](../implementation/phase39/backend-rules.md) and
+[new-owner controls](../implementation/phase39/new-owner-gates.md) before extending
+these paths. Source contains **18,722 physical / 16,031 nonblank Bend lines in
+70 modules**, 2,087 definitions, 640 laws and 71 types. This adds 364 physical
+lines (1.98%) and 42 definitions to Phase37; runtime, modules, types and laws stay
+unchanged. It is a performance tradeoff, not simplification.
 
-Fresh selected-candidate controls pass all **154 expanded correctness executions**
-and the three new [optimizer owner groups](../implementation/phase37/optimizer/final-scope-owner-report.md):
-exact native cast, shared DataView guard and finite selectors. All fifteen
-inherited Phase35 groups and seven Phase36 groups also pass on this API, with
-separate owner closures. Fresh frontend execution agrees exactly on **3,026
-main + 196 broader observations**; the backend pilot retains **69 pass / 8 not
-applicable / 4 shared failures** in the
-[final closure](../implementation/phase37/final-conformance/gates.md).
-[Conformance](CONFORMANCE.md) distinguishes their scopes and historical results.
-Full backend/GPU and independent proof validity remain unestablished;
-`--verdict` is unsupported.
+Final frontend observations agree exactly on **3,026 main + 196 broader results**;
+the backend pilot retains **69 pass / 8 not applicable / 4 shared failures**.
+All 154 expanded correctness observations and the separate 15 Phase35, seven
+Phase36, three Phase37 and four Phase39 owner groups pass on this image.
+[Integration](../implementation/phase39/integration.md) and
+[conformance](CONFORMANCE.md) distinguish their overlapping scopes. Full
+backend/GPU and independent proof validity remain unestablished; `--verdict`
+is unsupported. Previous [Phase37 results](../implementation/phase37/README.md)
+and its [release](../implementation/phase37/release-03.md) are historical evidence
+with their original denominator, not validation of the current image.
 
 The target remains upstream
 [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
@@ -65,10 +67,11 @@ npm run build
 ```
 
 Use the [checked workflow](../docs/PHASE5_DEVELOPMENT.md) for compiler edits.
-The [execution suite](tools/performance/programs/README.md) offers 20/60/300/600-second
-ceilings and independent case selection; the
-[expanded catalog guide](tools/performance/phase37/README.md) uses the new
-Phase36/TypeScript reference in bounded chunks. Separate
+The portable [Phase39 execution suite](tools/performance/phase39/README.md) offers
+20/60/300/600-second ceilings and independent case selection. It reuses checked
+modules from the current compiler and Phase37/TypeScript reference without a
+compiler rebuild or historical build directories. Complete coverage uses bounded
+chunks; a ceiling is not a promise that all 45 points finish in one run. Separate
 [diagnostics](tools/performance/programs/DIAGNOSTICS.md) add profiles and JavaScript
 analysis. Heavy jobs run serially with explicit heaps, RSS/deadline bounds and a
 free-memory floor.
@@ -175,8 +178,8 @@ have the same names.
 Historical self-emitted distributions and their original reproduction reports
 remain in `dist/selfhost/`; the [preservation index](../experiments/PRESERVATION.md)
 and [experiment ledger](../experiments/ledger.md) identify their exact scope.
-They are not alternate defaults. The installed Phase37 image passes its own
-[42 ordinary/relocated CLI checks](../implementation/phase37/release-03.md),
+They are not alternate defaults. The installed Phase39 image passes its own
+[42 ordinary/relocated CLI checks](../implementation/phase39/release-05.md),
 including relocation without an upstream checkout. The earlier
 [Phase36 release](../implementation/phase36/release-03.md) retains its separate evidence.
 The earlier [Phase5 clean-package evidence](../implementation/phase5/relocated-cli-evidence/README.md)

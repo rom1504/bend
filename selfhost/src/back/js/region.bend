@@ -288,7 +288,7 @@ def j_region_constructor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, 
   +c = j_producer_ctor(book, ty, nm(t), active)
   kc(JRegionBuild, j_region_local_type(book, ty) && String.eq(dk(c), "Ctr") && String.eq(dn(c), nm(t)) &&
     U32.is_eq(terms_len(ks(t)), da(c)) &&
-    kc(Bool, j_fold_type(book, ty), u => j_fold_terminal_fields(book, ks(t), da(c)), u =>
+    kc(Bool, j_fold_type(book, ty), u => j_producer_fields(book, ks(t), da(c), active), u =>
       kc(Bool, j_region_record(book, ty), u => kc(Bool, root, u => j_fold_terminal_fields(book, ks(t), da(c)),
         u => j_region_field_values(book, ks(t), da(c))), u => True{})), u =>
     j_region_constructor_done(book, t, ty, j_region_args(book, env, ks(t), j_specialize(book, dt(c), ks(ty)), active, depth, level, s)), u => j_region_fail(s))

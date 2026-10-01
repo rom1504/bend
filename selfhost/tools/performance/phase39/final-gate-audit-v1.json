@@ -1,0 +1,111 @@
+{
+  "kind": "phase39-release-smoke-audit-derivation",
+  "complete": true,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/final-gate-audit.py",
+    "sha256": "808068f34159c1e9979914a469a46ba52a18f2cb4194ec47cc117d059226516a",
+    "bytes": 24207
+  },
+  "parentDerivation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/final-gate-audit.json",
+    "sha256": "1f0f1c2e2b8140734f37d1e2cc57e43089e8c148b4240431eb4e01e81f9c7517",
+    "bytes": 2094
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/final-gate-audit-v1.py",
+    "sha256": "2227841d041138e43166cfef90c7b9f1e8d01cfe501f7c3cf6613f23f29b4785",
+    "bytes": 28274
+  },
+  "failedSmoke": {
+    "launcher": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/final-plan01/release-smoke/launcher.json",
+      "sha256": "890c844a6016e8954255d066ead87d03d7136116211b3e7a9ffcca86c395c678",
+      "bytes": 3069
+    },
+    "checks": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/final-plan01/release-smoke/checks/report.json",
+      "sha256": "6be11ddbb4c98083a891042f53bdf726a941511e6a4f117fc56ba0cfea661722",
+      "bytes": 118301
+    },
+    "clangError6": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/final-plan01/release-smoke/checks/logs/06.stderr",
+      "sha256": "ca62464103405885973eeceee9586f4013bccd647107e743fb085b2fcf1e653c",
+      "bytes": 100
+    },
+    "clangError11": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/final-plan01/release-smoke/checks/logs/11.stderr",
+      "sha256": "ca62464103405885973eeceee9586f4013bccd647107e743fb085b2fcf1e653c",
+      "bytes": 100
+    },
+    "clangError16": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/final-plan01/release-smoke/checks/logs/16.stderr",
+      "sha256": "ca62464103405885973eeceee9586f4013bccd647107e743fb085b2fcf1e653c",
+      "bytes": 100
+    },
+    "clangError24": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/final-plan01/release-smoke/checks/logs/24.stderr",
+      "sha256": "ca62464103405885973eeceee9586f4013bccd647107e743fb085b2fcf1e653c",
+      "bytes": 100
+    },
+    "clangError29": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/final-plan01/release-smoke/checks/logs/29.stderr",
+      "sha256": "ca62464103405885973eeceee9586f4013bccd647107e743fb085b2fcf1e653c",
+      "bytes": 100
+    },
+    "clangError34": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/final-plan01/release-smoke/checks/logs/34.stderr",
+      "sha256": "ca62464103405885973eeceee9586f4013bccd647107e743fb085b2fcf1e653c",
+      "bytes": 100
+    }
+  },
+  "retrySmoke": {
+    "launcher": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/release-smoke-retry01/launcher.json",
+      "sha256": "d58e7938c114c5e73db743f962f29848de4783ebad211792fc5f102010f24eed",
+      "bytes": 2928
+    },
+    "checks": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/release-smoke-retry01/checks/report.json",
+      "sha256": "e888e114a701667d7facb5fcc4e17a665c5f29e097584478c18e8d1cb2f71722",
+      "bytes": 123059
+    },
+    "execution": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/release-smoke-retry-run01/run.json",
+      "sha256": "2aa5eed0e47ddcf1c4b7c27be783b650aa33d9a4b8882bf6d3c30f79a464ab57",
+      "bytes": 1480
+    }
+  },
+  "changes": [
+    {
+      "before": "ap.add_argument('--backend-report')",
+      "after": "ap.add_argument('--backend-report')\nap.add_argument('--release-smoke-report',\n                help='Select the preserved, supervised smoke retry; all 42 CLI assertions remain required.')",
+      "count": 1
+    },
+    {
+      "before": "derivation_file = Path(__file__).with_suffix('.json')",
+      "after": "inherited_audit = Path(__file__).resolve().parent.parent/'phase37/final-gate-audit.py'\nassert identity(inherited_audit)['sha256'] == '808068f34159c1e9979914a469a46ba52a18f2cb4194ec47cc117d059226516a'\nderivation_file = inherited_audit.with_suffix('.json')",
+      "count": 1
+    },
+    {
+      "before": "assert Path(derivation['derived']['file']).resolve() == Path(__file__).resolve()",
+      "after": "assert Path(derivation['derived']['file']).resolve() == inherited_audit",
+      "count": 1
+    },
+    {
+      "before": "verify(derivation['derived']); verify(derivation['parent']); verify(derivation['producer'])",
+      "after": "verify(derivation['derived']); verify(derivation['parent']); verify(derivation['producer'])\nsuccessor_file = Path(__file__).with_suffix('.json')\nsuccessor = read(successor_file)\nassert successor['kind'] == 'phase39-release-smoke-audit-derivation' and successor['complete']\nassert Path(verify(successor['derived'])['file']) == Path(__file__).resolve()\nassert Path(verify(successor['parent'])['file']) == inherited_audit\nassert Path(verify(successor['parentDerivation'])['file']) == derivation_file\nfor entry in [*successor['failedSmoke'].values(), *successor['retrySmoke'].values()]:\n    verify(entry)\nassert not args.release_smoke_report or args.post_install\n",
+      "count": 1
+    },
+    {
+      "before": "if args.post_install:\n    audit('installed-ordinary-relocated-cli', base/'release-smoke/launcher.json', cli)",
+      "after": "def selected_cli(data):\n    if not args.release_smoke_report:\n        return cli(data)\n    selected = Path(args.release_smoke_report).resolve()\n    assert selected == Path(successor['retrySmoke']['launcher']['file'])\n    assert identity(selected)['sha256'] == successor['retrySmoke']['launcher']['sha256']\n    assert Path(data['checks']['file']).resolve() == selected.parent/'checks/report.json'\n    assert data['checks']['sha256'] == successor['retrySmoke']['checks']['sha256']\n    launcher, runner = [base/'tools'/name for name in ['release-smoke-launch.mjs', 'release-smoke.mjs']]\n    for tool in [launcher, runner]:\n        planned = [r for r in plan['inputs'] if Path(r['file']).resolve() == tool]\n        consumed = [r for r in data['inputs'] if Path(r['file']).resolve() == tool]\n        assert len(planned) == len(consumed) == 1\n        assert verify(planned[0])['sha256'] == verify(consumed[0])['sha256']\n    assert identity(selected.parent/'consumed-launcher.mjs')['sha256'] == identity(launcher)['sha256']\n    checks = read(data['checks']['file'])\n    assert verify(checks['runner'])['sha256'] == identity(runner)['sha256']\n    node = verify(manifest['node'])\n    assert verify(checks['node'])['sha256'] == node['sha256']\n    process = data['execution']\n    assert process['command'] == 'taskset' and process['exitCode'] == 0\n    assert not any(process.get(k) for k in ['signal', 'error', 'timedOut', 'overflow'])\n    assert process['args'] == ['-c', '3', node['file'], '--stack-size=4096',\n        '--max-old-space-size=1024', str(runner), manifest['config']['project'],\n        str(selected.parent/'checks'), api]\n    run = read(successor['retrySmoke']['execution']['file'])\n    assert run['complete'] and run['returncode'] == 0 and not run.get('stoppedFor')\n    assert run['producer']['sha256'] == '860b59bce0b8c38e2e548368b14c51825bd62d8da1da200e2049737f1e0e383d'\n    verify(run['producer']); verify(run['stdout']); verify(run['stderr'])\n    command = run['command']; cwd = Path(run['cwd']).resolve()\n    assert command[:3] == ['taskset', '-c', '3'] and len(command) == 9\n    assert Path(command[3]).resolve() == Path(node['file']) and command[4] == '--max-old-space-size=1024'\n    assert [(cwd/Path(x)).resolve() for x in command[5:8]] == [launcher,\n        Path(manifest['config']['project']), selected.parent]\n    assert command[8] == api\n    assert 0 < run['secondsLimit'] <= 1200 and run['wallSeconds'] <= run['secondsLimit']\n    assert 0 < run['rssLimitBytes'] <= 2048*2**20 and run['peakTreeRssBytes'] <= run['rssLimitBytes']\n    assert run['availableFloorBytes'] >= 2048*2**20 and run['minimumAvailableBytes'] >= run['availableFloorBytes']\n    return dict(cli(data), explicitOverride=True, supervisedRetry=successor['retrySmoke']['execution'],\n                preservedFailedSmoke=successor['failedSmoke'])\n\n\nif args.post_install:\n    smoke_report = Path(args.release_smoke_report).resolve() if args.release_smoke_report else base/'release-smoke/launcher.json'\n    audit('installed-ordinary-relocated-cli', smoke_report, selected_cli)",
+      "count": 1
+    },
+    {
+      "before": "originalPhase35Audit=identity(original_audit), historicalReferenceResolutions=list(historical_resolutions.values()),",
+      "after": "originalPhase35Audit=identity(original_audit), historicalReferenceResolutions=list(historical_resolutions.values()),\n    auditDerivation=identity(successor_file), inheritedPhase37Audit=identity(inherited_audit),\n    releaseSmokeOverride=str(Path(args.release_smoke_report).resolve()) if args.release_smoke_report else None,",
+      "count": 1
+    }
+  ],
+  "scope": "Select only the preserved supervised smoke retry. Original CLI, conformance, owner and canonical-source assertions retained; original Phase37 ancestry explicitly verified without spoofing __file__. No audit or target execution by the author."
+}

@@ -1,5 +1,22 @@
 # Compiler evidence preservation index
 
+## Phase39 recursive components and private scopes — 2026-10-01
+
+The [closed capsule](../implementation/phase39/evidence/README.md) preserves
+26,974 raw files / 374,749,255 logical bytes in two ordered volumes totaling
+52,380,683 bytes. Capture reopens every member and rehashes the closed source;
+a separate verification repeats both checks. Stream SHA256 is
+`dff4cb2df3796aba73123e1d9b0e9ad4c38cd57983934cc36e04b0c2745f9fcf`.
+
+All checked candidates, declaration/fixture/auditor failures, final semantic
+owners, 669 primary + 60 separate canary samples, 27 compiler-cost emissions,
+42 profiles, installation and failed/successful CLI smoke receipts are retained.
+The [release record](../implementation/phase39/release-05.json) binds installed
+API `04d9ebf4…`, 42 CLI checks, 15 post-install groups and 227 canonical files.
+Previous/current/TS [portable bundles](../selfhost/tools/performance/phase39/README.md)
+provide the ordinary fast loop without restoring historical build trees.
+The 103 unrelated starting files and earlier closed phases remain untouched.
+
 ## Phase21 local and typed-annotation origins — 2026-09-29
 
 The [release capsule](../implementation/phase21/group-evidence/README.md) preserves

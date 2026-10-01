@@ -134,6 +134,49 @@ assigned entirely to one mechanism: this compiler also narrows eligible Nat
 countdowns, and the warmup/measurement protocol differs. Broader measurements
 and separate diagnostic profiles remain the appropriate promotion evidence.
 
+## Separate CPU and allocation observations
+
+`checked01-diagnostics01` completed all 12 requested captures in 16.724 seconds.
+On active ray 256, estimated sampled allocation fell from **87.184 MB to
+35.641 MB per call**, about **59.1%**, using decimal MB. This is allocation
+during the sampling window, not retained heap or an exact object count.
+
+The baseline's largest self CPU site was `regionHostGuard` (25.4%); the
+candidate's was `apply` (27.7%). The largest attributed allocation site shifted
+from `getOwnPropertyDescriptor` (38.9%) to `apply` (25.9%). This supports the
+counter evidence that removing repeated descriptor work changes allocation as
+well as direct guard execution. It also identifies generic dispatch as a
+remaining target. These profiles are separately instrumented observations,
+with different sample totals; they do not establish a throughput ratio or an
+exact causal partition of the measured gain. In particular, the combined
+candidate includes countdown changes as well as the scope change.
+
+## Final checked05 correctness closure
+
+The final source image reacquired this owner through
+`guard-final-derived01/derive.json` and reran all **13 observations** in
+`guard-final-controls01/report.json`. The selected checked05 API is
+`04d9ebf417a20297598bb6b047936a02228f3b8fb3a3b0cc4b59eeea04bad49f`;
+the final active-ray checked receipt is
+`final-candidate01/modules/raytrace-active.mjs.json`, SHA256
+`ffd9f17bbe4076748eaf05b55b0e725b7e5303bbcadf505569a7042d479a5ab2`.
+Its clean emitted module retains SHA256
+`e4c5d59ff692913bee47c9a4fa68666da5040a846d4f861a2660d47289270f60`.
+That byte equality is confirmed by a fresh final-image receipt, not used as a
+substitute for one.
+
+The final derivation verifies all 26 unchanged guard names. Controls again
+witness 730→1 and 2,973→1 full host checks for the two active-ray cases,
+balanced scope restoration, dependency mutation, host-hook reentry and staged
+entry behavior. The [successful four-owner audit](new-owner-gates.md) binds
+these exact final reports and the bounded control execution to checked05;
+its raw receipt is `new-owner-close03/report.json`. Final guard report SHA256:
+`6914e3d3c2e10a1b34fd17d29b3b36aee2852420a43b910c3a2c586bfa0ba4b7`.
+
+This closes guard correctness and provenance for the final image. The timing
+and allocation sections above remain explicitly checked01 development evidence;
+the final 45-point campaign supplies the separate final performance decision.
+
 ## Evidence and reproduction
 
 Root retained `selfhost/build/phase39/guard-derived01`, `guard-controls01` and

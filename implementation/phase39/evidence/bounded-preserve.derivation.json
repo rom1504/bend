@@ -1,0 +1,28 @@
+{
+  "kind": "phase39-preservation-supervisor-derivation",
+  "version": 1,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+    "sha256": "860b59bce0b8c38e2e548368b14c51825bd62d8da1da200e2049737f1e0e383d",
+    "bytes": 4339
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase39/evidence/bounded-preserve.py",
+    "sha256": "73afa4e45f725e5bddea586a2674a52157f2e63482b691e2c2a3daad850794c2",
+    "bytes": 4334
+  },
+  "changes": [
+    {
+      "before": "lock = (root / 'selfhost/build/phase32/execution.lock').open('a')",
+      "after": "lock = Path('/tmp/bend-phase39-preservation.lock').open('a')",
+      "reason": "Outer memory/deadline supervisor uses a dedicated preservation lock; inner preserve.py owns the unchanged shared execution lock."
+    }
+  ],
+  "scope": "Exactly one line replaced; all resource bounds, process-tree monitoring, environment filtering, timeout enforcement, report fields and cleanup behavior remain byte-identical. No execution has been performed by the author.",
+  "protocol": {
+    "outerLock": "/tmp/bend-phase39-preservation.lock",
+    "innerLock": "selfhost/build/phase32/execution.lock",
+    "outerReport": "implementation/phase39/preservation-run01",
+    "precondition": "Root confirms all raw writers are closed before launching preservation; output is outside the closed raw tree."
+  }
+}

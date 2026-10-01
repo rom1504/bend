@@ -1,0 +1,42 @@
+--- a/selfhost/src/back/js/producer.bend
++++ b/selfhost/src/back/js/producer.bend
+@@ -254,3 +254,28 @@
+       kc(String, U32.is_lt(at, child), u => "$frame.before[" ++ U32.show(at) ++ "]", u =>
+         kc(String, U32.is_eq(at, child), u => "$value", u => j_expr(book, env, h, kid(head, 0), False{}))) ++ "," ++
+       j_producer_unary_resume(book, env, rest, j_app_type(head, h), child, U32.inc(at))
++
++# Only the already whole-graph-proved producer context may nest constructors.
++# Leaves keep the existing atom/primitive grammar; typed argument planning still
++# checks every constructor and field. Ordinary public/root admission is unchanged.
++@unsafe
++def j_producer_fields(+book: List<&2,KDef>, +xs: List<&2,KTerm>, +left: U32, +active: List<&2,String>) -> Bool:
++  kc(Bool, has_name(active, "@producer"), u => j_producer_nested_fields(book, xs, left, 128),
++    u => j_fold_terminal_fields(book, xs, left))
++
++@unsafe
++def j_producer_nested_fields(+book: List<&2,KDef>, +xs: List<&2,KTerm>, +left: U32, +fuel: U32) -> Bool:
++  match xs:
++    case Nil{}: U32.is_eq(left, 0)
++    case Con{h, rest}:
++      kc(Bool, U32.is_gt(left, 0) && U32.is_gt(fuel, 0), u =>
++        j_producer_nested_field(book, h, U32.sub(fuel, 1)) &&
++          j_producer_nested_fields(book, rest, U32.sub(left, 1), U32.sub(fuel, 1)), u => False{})
++
++@unsafe
++def j_producer_nested_field(+book: List<&2,KDef>, +t: KTerm, +fuel: U32) -> Bool:
++  +body = j_strip(t)
++  kc(Bool, U32.is_gt(fuel, 0), u =>
++    kc(Bool, j_fold_terminal_expr(book, body, fuel), u => True{}, u =>
++      kc(Bool, String.eq(tg(body), "Ctr"), u =>
++        j_producer_nested_fields(book, ks(body), terms_len(ks(body)), U32.sub(fuel, 1)), u => False{})), u => False{})
+--- a/selfhost/src/back/js/region.bend
++++ b/selfhost/src/back/js/region.bend
+@@ -288,7 +288,7 @@
+   +c = j_producer_ctor(book, ty, nm(t), active)
+   kc(JRegionBuild, j_region_local_type(book, ty) && String.eq(dk(c), "Ctr") && String.eq(dn(c), nm(t)) &&
+     U32.is_eq(terms_len(ks(t)), da(c)) &&
+-    kc(Bool, j_fold_type(book, ty), u => j_fold_terminal_fields(book, ks(t), da(c)), u =>
++    kc(Bool, j_fold_type(book, ty), u => j_producer_fields(book, ks(t), da(c), active), u =>
+       kc(Bool, j_region_record(book, ty), u => kc(Bool, root, u => j_fold_terminal_fields(book, ks(t), da(c)),
+         u => j_region_field_values(book, ks(t), da(c))), u => True{})), u =>
+     j_region_constructor_done(book, t, ty, j_region_args(book, env, ks(t), j_specialize(book, dt(c), ks(ty)), active, depth, level, s)), u => j_region_fail(s))

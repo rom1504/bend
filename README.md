@@ -17,51 +17,51 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 Ordinary compilation runs the Bend implementation without a TypeScript fallback;
 the target remains pinned to **0187512, after Bend 2.0.34**.
 
-**[Phase37 checked03 is installed](implementation/phase37/release-03.md)**;
-release verification and all **42 ordinary/relocated CLI checks** pass. The
-[gate closure](implementation/phase37/final-conformance/gates.md) closes all
-15 postinstallation audit groups and verifies 227 canonical source files.
-The selected API is a checked B1 derivative, not a new self-emitted fixed point.
+**[Phase39 checked05 is installed](implementation/phase39/release-05.md).**
+Release integrity and all **42 ordinary/relocated CLI checks** pass. The compiler
+is a checked B1 derivative, not a new self-emitted fixed point.
 
-Coverage was expanded before optimization: **45 points across 23 source files**,
-including eight new application families and three held-out families. All final
-outputs pass in **669 samples across four bounded runs totaling 1,056.32
-seconds**. Against fresh same-run Phase36 output, numeric recurrence becomes
-**2.674× / 5.165× faster**, and three tree points improve **1.165–1.270×**.
-The [complete execution table](implementation/phase37/execution/report.md) also
-retains regressions: the larger active-ray point is about 3.6% slower and the
-larger list point about 4.7% slower. Some held-out points slow consistently in
-paired rounds. Remaining TypeScript gaps vary widely, including **152–209× for
-BST**; these selected programs do not define average application speed.
+The [Phase39 report](implementation/phase39/README.md) applies the
+[compiler research](design/phase38/README.md) through four guarded changes:
+private Number countdowns, shared outer proof scopes, direct structural tree
+workers and direct unary producers. Tagged values, sharing, evaluation order,
+host mutation and public fallback remain covered by actual-output controls.
+A slower callback-specialization prototype was rejected.
 
-Finite selectors reuse proved private data and the existing trampoline. A
-shared exact F32 conversion removes generic dispatch within admitted regions.
-A rejected candidate paid 1,968 extra tiny guard scopes per active-ray call;
-the final policy avoids opening those scopes. New semantic controls cover
-complete trees and aliases, 30,000-step tail cycles, mutable native dependencies,
-DataView hooks and error reentry. See the [phase report](implementation/phase37/README.md)
-for failed experiments and preserved evidence.
+Fresh paired execution covers **45 points across 23 sources**. All **669 primary
+samples** pass. Relative to Phase37, selected expression points become
+**4.46–8.05× faster**, active rays **2.62–2.87×**, trees **1.76–2.25×**, symbolic
+regression **1.75–1.83×**, and numeric recurrence **1.07–1.22×**. These are
+protocol-specific ratios with retained drift, not average-program or parity
+claims. Map and BST workloads still have very large TypeScript gaps.
 
-Normal [compiler request medians](implementation/phase37/compiler-cost.md)
-increase **2.47% local, 6.40% tree and 1.06% numeric**, separately from program
-execution. Source now contains **18,358 physical Bend lines in 70 modules**,
-up 184 lines (1.01%), with no new types or laws. The
-[performance decision](implementation/phase37/performance-admission.md) records
-these costs and the execution tradeoffs. Fresh frontend results agree exactly
-on **3,026 main + 196 broader observations**; backend outcomes remain
-**69 pass / 8 not applicable / 4 shared failures**. Fifteen inherited Phase35
-owner groups, seven Phase36 groups and three new Phase37 groups close separately.
-See [conformance](selfhost/CONFORMANCE.md): these counts overlap, and full
-backend/GPU and independent proof validity remain unestablished.
+The [complete comparison](implementation/phase39/execution/report.md) and
+[admission decision](implementation/phase39/performance-admission.md) retain costs:
+a generic-row point is about **1.0% slower**, and **1.7% slower** in a separate
+confirmation. **23 points have byte-identical old/new JavaScript**; their timing
+shifts are negative controls, not optimization results. Separate
+[profiles](implementation/phase39/profile-findings.md) record allocation and
+remaining dispatch/guard costs.
 
-Use the [program execution benchmarks](selfhost/tools/performance/programs/README.md)
-with **20 / 60 / 300 / 600-second ceilings** and selectable cases. The
-[expanded suite guide](selfhost/tools/performance/phase37/README.md) selects the
-new catalog explicitly with its Phase36/TypeScript reference. All 45 points
-require bounded chunks; 600 seconds is not a full-suite promise. Separate
-[diagnostics](selfhost/tools/performance/programs/DIAGNOSTICS.md) provide CPU/allocation
-profiles and generated-JavaScript comparisons. Heavy jobs run serially with
-explicit memory bounds.
+Normal [compiler-request cost](implementation/phase39/compiler-cost.md) is
+**3.5% higher for tree**; two other sources have overlapping ranges. These three
+requests remain **5.05–5.98× TypeScript**. Source grows **364 Bend lines (+1.98%)**
+to **18,722 lines / 70 modules**, with unchanged types, laws and runtime. This
+phase improves selected generated programs, without claiming simplification.
+
+Frontend agreement remains **3,026 main + 196 broader exact observations**.
+Backend outcomes remain **69 pass / 8 not applicable / 4 shared failures**.
+Inherited and new semantic owners close separately; see
+[integration](implementation/phase39/integration.md) and
+[conformance](selfhost/CONFORMANCE.md) for limits. These overlapping counts do
+not establish full backend/GPU conformance or independent proof validity.
+
+Use the [portable Phase39 benchmark guide](selfhost/tools/performance/phase39/README.md)
+for **20 / 60 / 300 / 600-second ceilings**, selected cases, CPU/allocation
+profiles and generated-JavaScript comparisons. The full primary suite took
+17.94 minutes in bounded groups; it is an integration check, not the edit loop.
+The portable five-point fast check took **17.44 seconds**. Heavy jobs run serially
+with explicit memory limits.
 
 From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
 `npm run build` rebuilds with pinned upstream. The
@@ -69,15 +69,8 @@ From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
 [performance guide](docs/BEND-IN-BEND-PERFORMANCE.md),
 [experiment ledger](experiments/ledger.md) and
 [current strategy](experiments/STEERING.md) explain the workflow.
-[Phase36 results](implementation/phase36/README.md) and earlier measurements
-retain their original baselines and scopes.
-
-The [Phase38 compiler research collection](design/phase38/README.md) covers
-twelve compiler/research studies, including the pinned TypeScript backend, then
-ranks [optimization ideas with scoped gain and risk estimates](design/phase38/ideas.md).
-It includes source references, architectural tradeoffs and fast falsifiable
-experiments. This research leaves the installed Phase37 compiler unchanged;
-the [research report](implementation/phase38/README.md) records its scope and review.
+[Phase37](implementation/phase37/README.md) and earlier results retain their
+original baselines and scopes.
 
 ## Bend runs FAST
 

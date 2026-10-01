@@ -69,3 +69,33 @@ unchanged. Runtime/backend edits belong to other owners until coordinated.
 
 [Experiment](../../experiments/phase39/P39-003-components.md) ·
 [Results](../../implementation/phase39/components.md)
+
+## Selected production subset after the first screens
+
+The stricter generic-leaf tree mechanism showed a 1.509× initial gain, sufficient
+to try a reusable two-result structural rule. Expression remains a separate
+unary producer investigation; its larger saved-output gain is not an admission
+argument for the binary rule. The binary rule's independent source fixture zips
+two different skewed ADTs into a third ADT, with unequal shapes and a Bool
+combine that deliberately retains aliases. It includes sequential child-result
+dependence, transitive owner backedges and tail-only recursion as refusals.
+
+The source plan admits at most eight original arguments and 512 source nodes.
+A typed Lam/Mat prefix may descend through the original first ADT's fields.
+Every recursive leaf has exactly two independently scoped saturated self calls
+whose first arguments are proper descendants of that first input. The complete
+JPure graph must pass; helper-to-owner backedges refuse. The existing public
+worker remains intact. A private declaration executes explicit local frames;
+leaf and combine expressions retain the generic emitter. No new IR is needed.
+
+Call analysis and declaration analysis must use the exact same context-book
+definition. Selected emission definitions have already been annotated, and
+annotation can add references in type children. Counting those as computation
+caused a demonstrated false refusal when generating helper declarations while
+call sites still admitted the original body. The common definition emitter now
+looks up the same original body used by call analysis. A static output control
+requires each component call target to have exactly one declared helper.
+
+The source rule adds proof work and generated code, so promotion still needs
+compiler latency/bytes and broad regression measurements. A clear local speedup
+does not waive the explicit public mutation, demand and tail-stack contracts.

@@ -1,20 +1,20 @@
 # Phase39 countdown experiment
 
-Status: saved-output and actual-source controls passed; minimal compiler change
-included in the checked Phase39 `checked01` build. Five-round target measurements
-confirm gains; full campaign acceptance remains pending. Root ran every execution;
-the owner inspected code and authored the design, tools and reserved helpers.
+Status: accepted in installed and verified Phase39 checked05. Final five-round
+comparisons improve numeric 256/1,024 by 1.068×/1.221× and scalar 8,192 by 1.203×
+against Phase37; actual controls and selected-image owner closure pass. Root ran
+every execution; the owner inspected evidence and authored the reserved helpers.
 
 The [design](../../design/phase39/countdown.md) freezes the mechanism and controls;
 [P39-001](../../experiments/phase39/P39-001-countdown.md) tracks its decision.
-Source inspection finds two BigInt private loops in the installed numeric module.
-Existing vector countdown admission can be reused, but scalar emission also
-needs coordinated changes in two `worker.bend` helpers if the ablation wins.
+Initial source inspection found two BigInt private loops in the Phase37 numeric
+module. The accepted implementation reuses vector countdown admission and
+coordinates scalar emission in two existing `worker.bend` helpers.
 
-## Evidence acquired so far
+## Development ablation and screen
 
 `selfhost/build/phase39/countdown-derived01/derive.json` binds the installed
-numeric parent `a2ffdcd6…` to unchanged, nested-only and both-loop prototypes.
+numeric parent `a 2ffdcd6…` to unchanged, nested-only and both-loop prototypes.
 Generic fallback, guards, floating operations and native casts remain unchanged.
 `countdown-controls01/report.json` passes **50 independent numeric oracles,
 18 nonzero/zero admission checks, 32 capped boundary cases and 56 public/host
@@ -33,8 +33,8 @@ medians improved and the ranges were disjoint:
 
 Evidence: `selfhost/build/phase39/countdown-screen01/report.{json,md}`. This is
 an early screen, not a steady-state claim: half-sample drift reaches −12.58% in
-one baseline 256 sample and −10.22% in a candidate 1,024 sample. Deeper confirmation
-and actual emitted-code measurements remain necessary. The denominator is the
+one baseline 256 sample and −10.22% in a candidate 1,024 sample. The final measurements below supersede this development screen; it alone
+did not establish acceptance. The denominator is the
 installed Phase37 compiler's programs; these ratios do not include previous wins.
 
 ## Minimal source implementation
@@ -68,12 +68,12 @@ First actual fixture acquisition, `countdown-cohort01`, preserved successful
 checked baseline and candidate emissions. TypeScript acquisition then failed
 with sandbox `spawnSync git EPERM` while verifying its upstream checkout. This
 was an environmental acquisition failure, not a rejected Bend fixture or a
-compiler correctness failure. Root will use a new cohort directory for the
-authorized retry. Read-only inspection already confirms that actual candidate
-`p39.count`/`p39.keep` loops use Number and `p39.escape`/`p39.observe` retain
-BigInt; that static evidence does not replace the awaited control execution.
+compiler correctness failure. The successful new-directory retry is recorded
+below. Static inspection already showed actual candidate `p39.count`/`p39.keep`
+Number loops and `p39.escape`/`p39.observe` BigInt loops; subsequent controls,
+rather than that inspection alone, established the observed behavior.
 
-## Actual source controls and paired confirmation
+## Actual source controls and development confirmation
 
 The clean `countdown-cohort02` retry acquired all three compilers successfully.
 Actual controls v1 then preserved a **test expectation error** after 36 U32
@@ -108,11 +108,68 @@ candidate measurements; the earlier isolated countdown ablation supplies causal
 evidence. Static inspection of scalar 8,192 finds five new Number conversions
 and no `regionProofOpen($guards)` scope in either version.
 
-Awaited gates: broad regression coverage and aggregate compiler-cost checks.
-No universal speedup,
-Nat representation change or installed-release promotion is claimed here.
+Separate `checked01-diagnostics01` completed all 12 CPU/allocation profiles in
+16.724 seconds. For numeric 1,024, sampled allocation fell from approximately
+51,967 to 10,696 bytes per invocation (79.4% lower). The largest baseline sampled
+allocator was `p37.numeric` (79.0%); the candidate's largest was
+`getOwnPropertyDescriptor` (62.6%). This supports removing repeated BigInt work
+and identifies guard allocation as a remaining cost. Candidate `p37.numeric`
+still accounts for 38.5% sampled self CPU. These are separate instrumented
+observations, not throughput ratios or a prediction that removing a percentage
+of samples will yield the same percentage speedup. Sampled allocation measures
+allocation during the window, not retained heap or exact object counts.
 
-## Proposed root commands
+Final-candidate semantic rerun: `countdown-cohort03` acquires all three checked
+fixture emissions with the selected checked05 API
+`04d9ebf417a20297598bb6b047936a02228f3b8fb3a3b0cc4b59eeea04bad49f`.
+`countdown-final-controls01` again passes all 66 value oracles, 12 live
+admission/refusal rows and 25 public boundaries using unchanged controls v2.
+This carries the countdown result through the later tree/unary integration;
+its final timing is recorded in the aggregate release comparison below.
+
+## Final selected-image outcome
+
+The completed [45-point execution comparison](execution/report.md) uses the
+frozen checked05 output, Phase37 and TypeScript in the same runs. Final medians
+[ranges] are milliseconds per export; each row has five paired rounds:
+
+| Point | Phase37 | Final Phase39 | Phase37 / Phase39 | Phase39 / TS |
+|---|---:|---:|---:|---:|
+| Numeric 256 | 0.016784 [0.016421–0.017096] | 0.015716 [0.015091–0.016151] | 1.068× | 7.517× |
+| Numeric 1,024 | 0.027083 [0.027054–0.030594] | 0.022181 [0.022065–0.024737] | 1.221× | 2.794× |
+| Scalar 8,192 | 0.141353 [0.140659–0.156815] | 0.117468 [0.116119–0.128806] | 1.203× | 1.174× |
+
+All three observed ranges are disjoint. Numeric 1,024 selfhost half drift stays
+within 2%; numeric 256 reaches +6.75% and scalar 8,192 about ±7.54% in candidate samples.
+These are final aggregate source-candidate results; the isolated development
+ablation supplies the specific countdown mechanism evidence.
+
+The final [profile comparison](profile-findings.md) confirms numeric 1,024 sampled
+allocation falls 51,632→10,749 bytes/call (−79.18%). Its remaining allocation is
+mostly descriptor/name/scalar-guard work; the profile does not justify removing
+checks across public calls. [Compiler cost](compiler-cost.md) passes 27 fresh
+checked emissions with exact frozen-byte agreement. Numeric source request
+medians are 1,344.882→1,322.234 ms (−1.68%, overlapping ranges). Aggregate tree
+compilation costs 3.50% more; neither result attributes compiler cost to countdown alone.
+
+The [new-owner closure](new-owner-gates.md) passes all four checked05 groups,
+including the final 66/12/25 countdown observations. The inherited Phase35 counter
+fixture initially failed its old assertion that the scalar loop must stay BigInt,
+after all 35 independent input oracles passed. The explicit Phase39 successor now
+requires that eligible scalar Number loop while preserving observable/stored/
+aliased predecessor refusals and all five live mutation boundaries. Its successful
+bounded execution and exact consumed tool bytes are bound by
+`counter-owner-rebind-v2.py`; `counter-owner-rebind01/owner-report.json` closes
+all 15 inherited owner groups without editing the original plan or failure.
+
+Checked05 is installed and its release verification passes. The unchanged CLI
+smoke retry passes 42/42 after the first attempt's environment-only `clang EPERM`
+failure, which is retained. See the [integration report](integration.md) and
+[campaign report](README.md) for the complete release ledger and final audit.
+Public Nat representation remains BigInt; these gains apply to the proven
+private countdowns and do not claim a universal program speedup.
+
+## Development experiment command recipes
 
 The module arguments may be restored Phase39 portable-baseline files with the
 same bytes. The deriver requires the exact Phase37 SHA, and records both parent

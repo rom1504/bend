@@ -1,0 +1,221 @@
+{
+  "kind": "phase39-final-new-owner-spec",
+  "version": 3,
+  "scope": "Freeze actual-tool identities and mandatory observations before final release runs. No timing or promotion claim.",
+  "derivation": {
+    "identityResolverParent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/owner-close-v2.py",
+      "sha256": "6595799297f1ad4382594f4439b37f6267fa58b19d7b72d329458e453313c0b4",
+      "bytes": 15729
+    },
+    "changes": "V3 applies phase=compile and exitCode=0 to checked Bend emission receipts only. Pinned TypeScript receipts expose status=ok, checked=true, mode=library; all three acquisition process records independently require zero exit status. All source/API/runtime/Base/driver, owner count, refusal and diagnostic assertions remain unchanged. V2 audit schema failure is preserved.",
+    "parentCloser": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/new-owner-close-v2.py",
+      "sha256": "3faeef344e558cb3c852ee0ff5d9aca84648102c2984a9b37ecb43ea7ca35e55",
+      "bytes": 20011
+    },
+    "parentSpecification": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/new-owner-spec-v2.json",
+      "sha256": "aacbb396820f4e1177e12c50e014706edccffa8c9aa15a75dc7a1e50ef923286",
+      "bytes": 10441
+    },
+    "failedUnaryV3Acquisition": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/unary-cohort02/derive.json",
+      "sha256": "faf0dd8c13a8a8bd4e3c2542ffd890e5cd687c029950adc5e06b52d6461af8ba",
+      "bytes": 4747
+    },
+    "failedAudit": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/new-owner-close01/report.json",
+      "sha256": "59bdbabbcbd91ad54e2a579cc935d7b50899d0b5119ac55c251fe0cb44b75850",
+      "bytes": 345
+    },
+    "failedExecution": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase39/new-owner-close-run01/run.json",
+      "sha256": "872a2fd3d1158aa38977d55d76315503ef1fe0c0e59c1e846b0524d0cad5bab4",
+      "bytes": 1371
+    }
+  },
+  "owners": {
+    "countdown": {
+      "kind": "phase39-countdown-actual-controls-v2",
+      "cohortKind": "phase39-countdown-checked-cohorts",
+      "fixture": "countdown-fixture.bend",
+      "acquirer": "countdown-acquire.py",
+      "controls": "countdown-compiled-controls-v2.mjs",
+      "counts": {
+        "oracles": 66,
+        "admission": 12,
+        "boundaries": 25
+      }
+    },
+    "guard": {
+      "kind": "phase39-checked-scope-controls",
+      "deriver": "guard-checked-derive.mjs",
+      "controls": "guard-checked-controls.mjs",
+      "counts": {
+        "observations": 13
+      },
+      "sourceSha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+      "baselineModuleSha256": "a4bb4434cc19e9adfbe283a2679a032ca59577c531de9d407ea627080324bfaa",
+      "baselineReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/candidate02/modules/raytrace-active.mjs.json",
+        "sha256": "2101ddf6565f5b06efb90875b901f9e006f3d5d254092402348482fbc5257952",
+        "bytes": 4542
+      }
+    },
+    "component": {
+      "kind": "phase39-actual-structural-component-controls",
+      "cohortKind": "phase39-component-checked-cohorts-v3",
+      "fixture": "component-fixture-v3.bend",
+      "acquirer": "component-acquire-v3.py",
+      "deriver": "component-actual-derive.mjs",
+      "controls": "component-actual-controls.mjs",
+      "counts": {
+        "oracle": 159,
+        "boundaries": 113,
+        "admission": 3
+      }
+    },
+    "unary": {
+      "kind": "phase39-actual-unary-controls-v4",
+      "cohortKind": "phase39-unary-checked-cohorts-v4",
+      "fixture": "unary-fixture-v4.bend",
+      "acquirer": "unary-acquire-v4.py",
+      "controls": "unary-compiled-controls-v4.mjs",
+      "counts": {
+        "oracles": 83,
+        "structures": 56,
+        "admission": 3,
+        "boundaries": 32,
+        "order": 3
+      },
+      "refusals": [
+        "unary.two",
+        "unary.hidden",
+        "unary.nonpred"
+      ]
+    }
+  },
+  "files": {
+    "selfhost/tools/performance/phase39/countdown-fixture.bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/countdown-fixture.bend",
+      "sha256": "9dddb8f9ca6ec4a19383f937fba3b3ce46823e0888bde38f5b4b448c490acdc7",
+      "bytes": 1200
+    },
+    "selfhost/tools/performance/phase39/countdown-acquire.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/countdown-acquire.py",
+      "sha256": "7feb0966cebdce728c61f4675ee9d2642648ea08afaf7163209ace14dff05588",
+      "bytes": 6607
+    },
+    "selfhost/tools/performance/phase39/countdown-compiled-controls-v2.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/countdown-compiled-controls-v2.mjs",
+      "sha256": "7c7c3c4386964eb664acd6396327485972afbcbc2426768d850b1fc542db6a84",
+      "bytes": 12826
+    },
+    "selfhost/tools/performance/phase39/guard-checked-derive.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/guard-checked-derive.mjs",
+      "sha256": "4f9f845b6ff1263abf64159448bc6c307ffbf91ffa0e207deca018a25cb91c80",
+      "bytes": 7754
+    },
+    "selfhost/tools/performance/phase39/guard-checked-controls.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/guard-checked-controls.mjs",
+      "sha256": "ec09e6e61c490a723c1f18d279a6346bc4c8666b4a75ef085d6e39f1fb5ee11f",
+      "bytes": 8336
+    },
+    "selfhost/tools/performance/phase39/component-fixture-v3.bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/component-fixture-v3.bend",
+      "sha256": "30c1fbd270252f78db456683e088f55d3ad687cc028b3f58706f1cd94e9888e9",
+      "bytes": 4521
+    },
+    "selfhost/tools/performance/phase39/component-acquire-v3.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/component-acquire-v3.py",
+      "sha256": "d36389592ea160bce3c486fee19139474cc73ac9247709e593f3871a639ac598",
+      "bytes": 6566
+    },
+    "selfhost/tools/performance/phase39/component-actual-derive.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/component-actual-derive.mjs",
+      "sha256": "37aa551f6e330a24fd5a782405e26a34caea5cf678b16a44d792147ac1388618",
+      "bytes": 8804
+    },
+    "selfhost/tools/performance/phase39/component-actual-controls.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/component-actual-controls.mjs",
+      "sha256": "882989f599d1ba468044baa860f2df11a9cca5edbf75445c18ac6d78bd6fc6ba",
+      "bytes": 17095
+    },
+    "selfhost/tools/performance/phase39/unary-fixture-v2.bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/unary-fixture-v2.bend",
+      "sha256": "267483be29d8fc65dad0362f22e562cc2ebf23e3f5f8e5c6b7d3c96570de7483",
+      "bytes": 2987
+    },
+    "selfhost/tools/performance/phase39/unary-acquire-v2.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/unary-acquire-v2.py",
+      "sha256": "793b91be68f1fd6d7e600bd4b0d4796a9eb27544548f104f707c2a6ece19750b",
+      "bytes": 6746
+    },
+    "selfhost/tools/performance/phase39/unary-compiled-controls-v2.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/unary-compiled-controls-v2.mjs",
+      "sha256": "4568c906009ea59422c87df5674b1a759ddba4b2a5ede64c8cd9ee769f72ce0d",
+      "bytes": 13996
+    },
+    "selfhost/tools/performance/phase37/owner-close-v2.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/owner-close-v2.py",
+      "sha256": "6595799297f1ad4382594f4439b37f6267fa58b19d7b72d329458e453313c0b4",
+      "bytes": 15729
+    },
+    "selfhost/tools/performance/phase39/unary-fixture-v3.bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/unary-fixture-v3.bend",
+      "sha256": "920951c69571b0c783591d5265d39e8fa50a180b3e951b1fec3780f9730c2133",
+      "bytes": 3917
+    },
+    "selfhost/tools/performance/phase39/unary-acquire-v3.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/unary-acquire-v3.py",
+      "sha256": "250953b9525c74857dfee70b081a9571ef110c8d1ff699c0b31d2ce43e3baa38",
+      "bytes": 6679
+    },
+    "selfhost/tools/performance/phase39/unary-compiled-controls-v3.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/unary-compiled-controls-v3.mjs",
+      "sha256": "525bf24f94262f29ff30edda18425faa2cc05eb2a05d65892939482c6c046d7b",
+      "bytes": 14551
+    },
+    "selfhost/tools/performance/phase32/bounded-run.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+      "sha256": "860b59bce0b8c38e2e548368b14c51825bd62d8da1da200e2049737f1e0e383d",
+      "bytes": 4339
+    },
+    "selfhost/tools/performance/programs/emit-worker.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/emit-worker.mjs",
+      "sha256": "b03ae6d62cb4419fbe5ba9e2e268afa4db76a7de33c7b6087d98edae922f0f11",
+      "bytes": 5821
+    },
+    "selfhost/tools/performance/programs/support.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    "selfhost/tools/development/workflow.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+      "sha256": "1158d3e7fb28ebcf37caba0d32f34cbcb762d0987bff472c385a375bbeb793ff",
+      "bytes": 18124
+    },
+    "selfhost/tools/development/release.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/release.mjs",
+      "sha256": "da2c88a9cc1b641d03dddfbe2c39fc5a3ea5c724e14993c9d68fa971727809a0",
+      "bytes": 12981
+    },
+    "selfhost/tools/performance/phase39/unary-fixture-v4.bend": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/unary-fixture-v4.bend",
+      "sha256": "29f8b1306ed7fcc891835bc6f1a8e95e6980191fcffc7fdbfa07fa18bc0cd4a4",
+      "bytes": 4081
+    },
+    "selfhost/tools/performance/phase39/unary-acquire-v4.py": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/unary-acquire-v4.py",
+      "sha256": "9d746901adf93f0ae68cc6ef0bb33fadc0b6b502afac852360cc0bdb6e2253f0",
+      "bytes": 6820
+    },
+    "selfhost/tools/performance/phase39/unary-compiled-controls-v4.mjs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase39/unary-compiled-controls-v4.mjs",
+      "sha256": "f46b46b3bced4f0c4715a34488064daa7f208a0826a99dea75cb3c4723ee4b45",
+      "bytes": 14598
+    }
+  }
+}

@@ -2427,3 +2427,47 @@ unmeasured hypotheses, not achieved reductions.
 The collection is linked from README. Local documentation/source-identity checks
 and protection of all 103 unrelated files pass. No build, target execution,
 optimization, external compiler benchmark or PR comment was performed.
+
+## Phase39 — research recommendations implemented and installed (2026-10-01)
+
+The [prospective design](../design/phase39/README.md) and portable checked Phase37
+baseline were committed before source promotion. Four changes survive actual
+checked-emission controls: private scalar Number countdowns, reused whole-root
+proof scope, two-child structural frames and unary producer frames. A genuine
+callback fixture rejects the slower specialization prototype; no fusion or new
+runtime is retained. [Report](../implementation/phase39/README.md),
+[findings](../implementation/phase39/findings.md),
+[release](../implementation/phase39/release-05.md).
+
+**Checked05 installed:** API04d9ebf4…,42 ordinary/relocated CLI checks,15 post-install
+audit groups and227 canonical files pass. All15+7+3 inherited and4 new semantic
+owner groups close, plus154 application executions. Frontend3,026+196 exact
+observations and backend69pass/8N/A/4shared failures keep their original scope.
+No new self-emitted fixed point, full backend/GPU or proof-validity claim.
+
+[Execution](../implementation/phase39/execution/report.md):45points/23sources,
+669 primary samples /1,076.213seconds plus60 separate confirmation samples.
+Changed-module gains versus fresh Phase37 are expression4.46–8.05×,
+active-ray2.62–2.87×, tree1.76–2.25×, symreg1.75–1.83×, numeric1.07–1.22×.
+All selected gains retain ranges and drift. Generic-row costs0.97% primary /
+1.66% confirmation (five paired losses each).23points have identical old/new
+JavaScript; even their large apparent changes cannot be compiler effects.
+Map/BST still have very large TypeScript gaps. No pooled ratio or typical-program
+claim. All42 separate profiles pass; sampled allocation reductions on changed
+paths are about50/60/79/83% for tree/ray/numeric/expression.
+
+[Compiler cost](../implementation/phase39/compiler-cost.md) reproduces27 checked
+emissions exactly. Tree request time rises3.50% with disjoint ranges; local−1.60%
+and numeric−1.68% overlap. These requests remain5.05–5.98×TS. Source grows364lines
+(+1.98%) to18,722lines/70modules/2,087definitions; runtime/types/laws unchanged.
+This is a selected execution improvement with explicit costs, not simplification.
+The [portable loop](../selfhost/tools/performance/phase39/README.md) provides
+20/60/300/600-second case selection; five-point smoke passes in17.444seconds.
+
+Preserved failures include missing worker declarations in checked02/03, fixture
+admission mistakes, inherited scalar-counter expectation, distinct TS receipt
+schema/bootstrap relative paths, and sandbox-denied Clang smoke. Reviewed
+successors keep semantic assertions and byte provenance; unchanged smoke retry
+passes42/42. [Closed evidence](../implementation/phase39/evidence/README.md)
+retains failures and successful final-image data. All103 unrelated starting
+files remain unchanged and unstaged. No PR comment is posted.

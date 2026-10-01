@@ -11,12 +11,26 @@ const identity=file=>({path:fs.realpathSync(file),sha256:createHash('sha256').up
 const inputs=new Map();function track(file,expected){const actual=identity(file);if(expected){assert.equal(actual.sha256,expected.sha256);if('bytes'in expected)assert.equal(actual.bytes,expected.bytes);}
  if(inputs.has(actual.path))assert.deepEqual(actual,inputs.get(actual.path));else inputs.set(actual.path,actual);return actual;}
 const pointer=row=>track(row.canonicalPath??row.file??row.path,row);
-const source=track(path.join(import.meta.dirname,'component-fixture-v2.bend'));
+const source=track(path.join(import.meta.dirname,'component-fixture-v3.bend'));
 const attemptFile=track(path.join(attemptArg,'attempt.json')),attempt=await verifyAttempt(path.dirname(attemptFile.path));
 assert.equal(attempt.checked,true);for(const key of ['api','runtime','base'])pointer(attempt[key]);for(const item of attempt.snapshot.sources)pointer(item.frozen);
+const bootstrapFile=pointer(attempt.bootstrapReport),bootstrap=JSON.parse(fs.readFileSync(bootstrapFile.path));
+assert.equal(bootstrap.revision,'018751270e800bc222a93dad7f257083ee53a5f7');
+const frozenDriver=attempt.snapshot.sources.find(item=>path.relative(attempt.snapshot.root,item.frozen.file)==='tools/typed-driver.mjs');
+assert(frozenDriver,'selected attempt has no frozen driver');const driver=pointer(frozenDriver.frozen);
+
 const parserText=process.binding('natives')['internal/deps/acorn/acorn/dist/acorn'],parser={exports:{}};
 new Function('module','exports',parserText)(parser,parser.exports);assert.equal(parser.exports.version,'8.16.0');
 const parse=text=>parser.exports.parse(text,{ecmaVersion:'latest',sourceType:'module'});
+function visit(node,fn){if(!node||typeof node!=='object')return;fn(node);for(const value of Object.values(node)){
+ if(Array.isArray(value))for(const child of value)visit(child,fn);else if(value&&typeof value.type==='string')visit(value,fn);}}
+function helperClosure(ast){const declarations=new Map(),calls=[];visit(ast,node=>{
+ if(node.type==='FunctionDeclaration'&&node.id?.name?.endsWith('$tree'))declarations.set(node.id.name,(declarations.get(node.id.name)||0)+1);
+ if(node.type==='CallExpression'&&node.callee.type==='Identifier'&&node.callee.name.endsWith('$tree'))calls.push(node.callee.name);
+ });for(const [name,count]of declarations)assert.equal(count,1,'duplicate component helper '+name);
+ for(const name of calls)assert.equal(declarations.get(name),1,'undefined component helper '+name);
+ return{declarations:[...declarations.keys()],callTargets:[...new Set(calls)],calls:calls.length};}
+
 function read(file,role){const module=track(file),receipt=track(file+'.json'),e=JSON.parse(fs.readFileSync(receipt.path));
  assert.equal(e.kind,'bend-program-checked-emission');assert.equal(e.complete,true);assert.equal(e.observation.checked,true);assert.equal(e.observation.status,'ok');
  assert.equal(e.input.sha256,source.sha256);pointer(e.input);assert.equal(pointer(e.output).sha256,module.sha256);pointer(e.producer);pointer(e.catalog);e.verifiers.forEach(pointer);
@@ -24,7 +38,8 @@ function read(file,role){const module=track(file),receipt=track(file+'.json'),e=
  if(role==='typescript'){assert.equal(e.compiler.kind,'checked-pinned-typescript');e.compiler.sources.forEach(pointer);}
  else{assert.equal(e.compiler.kind,'checked-development-attempt');assert.equal(e.observation.typeAccepted,true);pointer(e.attempt);for(const key of ['api','runtime','base','driver'])pointer(e.compiler[key]);
   if(role==='original')assert.equal(e.compiler.api.sha256,'ea5db4a2857ffddce8263406041f56acc9b613754660d7a20c6b7c58682c86a1');
-  else{assert.equal(e.attempt.sha256,attemptFile.sha256);for(const key of ['api','runtime','base'])assert.equal(e.compiler[key].sha256,attempt[key].sha256);}}
+  else{assert.equal(e.attempt.sha256,attemptFile.sha256);for(const key of ['api','runtime','base']){assert.equal(e.compiler[key].sha256,attempt[key].sha256);assert.equal(pointer(e.compiler[key]).path,pointer(attempt[key]).path);}
+   assert.equal(e.compiler.sourceSha256,bootstrap.sourceSha256);assert.equal(pointer(e.compiler.driver).path,driver.path);assert.equal(e.compiler.driver.sha256,driver.sha256);}}
  return{module,receipt,compiler:e.compiler,text:fs.readFileSync(module.path,'utf8')};}
 const baseline=read(baselineArg,'original'),candidate=read(candidateArg,'direct'),typescript=read(typescriptArg,'typescript');
 const encoded=name=>'$R'+Array.from(name,c=>'_'+c.codePointAt(0)).join('')+'$tree';
@@ -33,7 +48,7 @@ fs.mkdirSync(out);track(import.meta.filename);
 const report={kind:'phase39-actual-structural-component',complete:false,checked:true,certified:false,producer:identity(import.meta.filename),attempt:attemptFile,compiler:candidate.compiler,
  source,typescript:typescript.module,dependencies:names,modules:[],inputs:[],scope:'Actual compiler output; clean copies unchanged. Counters count real emitted worker entries; owned-input adapters open only diagnostic proofs and still invoke the generic public function, whose actual compiled call sites choose workers.'};
 for(const [variant,parent]of[['original',baseline],['direct',candidate]]){
- const ast=parse(parent.text),workers=ast.body.filter(n=>n.type==='FunctionDeclaration'&&n.id?.name?.endsWith('$tree'));
+ const ast=parse(parent.text),closure=helperClosure(ast),workers=ast.body.filter(n=>n.type==='FunctionDeclaration'&&n.id?.name?.endsWith('$tree'));
  const found=workers.filter(n=>n.id.name===encoded('component.mix'));
  assert.equal(found.length,variant==='direct'?1:0,'actual worker presence');
  for(const name of ['component.tail','component.dependent','component.back','component.cycle','component.mutual'])assert(!workers.some(n=>n.id.name===encoded(name)),'refused shape became worker: '+name);
@@ -60,7 +75,7 @@ export function privateProofActive(){return regionProof!==null;}
  parse(text);
  for(const counters of[false,true]){const file=path.join(out,variant+(counters?'.mjs':'.clean.mjs'));fs.writeFileSync(file,counters?text:parent.text,{flag:'wx'});
   if(!counters)assert.equal(identity(file).sha256,parent.module.sha256);
-  report.modules.push({variant,counters,parent:parent.module,emission:parent.receipt,workers:workers.map(n=>n.id.name),rootSites,...identity(file)});}
+  report.modules.push({variant,counters,parent:parent.module,emission:parent.receipt,workers:workers.map(n=>n.id.name),closure,rootSites,...identity(file)});}
 }
 for(const row of inputs.values())assert.deepEqual(identity(row.path),row);report.inputs=[...inputs.values()];report.complete=true;
 fs.copyFileSync(import.meta.filename,path.join(out,'consumed-derive.mjs'));fs.writeFileSync(path.join(out,'derive.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});

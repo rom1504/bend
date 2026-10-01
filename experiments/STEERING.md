@@ -1,9 +1,18 @@
-# Phase36 current frontier
+# Phase37 current frontier
 
 User authorization covers compiler experiments, implementation, design/report
 and commit/push to `rom1504/bend`, branch `selfhost/bootstrap`. No PR comments
 without an explicit request. Older timed campaigns are historical. Preserve the
 103 unrelated starting files and the closed Phase35 and Phase36 raw trees.
+
+## Active Phase37 campaign
+
+Expand coverage before production changes: retain the historical15points, add
+varied inputs and8additional families, freeze oracles and a family-level holdout,
+then baseline Phase36 against pinned TypeScript. Test a narrow private tree
+operation before any general compiler implementation. No speedup is yet claimed.
+[Prospective design](../design/phase37/README.md). Root alone executes bounded
+jobs; agents author and inspect. Every failed attempt remains evidence.
 
 ## Installed result
 

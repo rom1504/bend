@@ -1,0 +1,4105 @@
+{
+  "kind": "phase37-list-source-static-ast",
+  "complete": true,
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/optimizer/list-source-shape-v2.mjs",
+    "sha256": "93fc27b68d6a840f4a12a1062ddb62762ad89fab7e6910913a280406910e1aa5",
+    "bytes": 5466
+  },
+  "node": "v24.18.0",
+  "parser": "8.16.0",
+  "scope": "Static syntax and literal-G dependency reachability only. No target module import, execution, allocation or profiler sample; this does not establish runtime frequency or causation.",
+  "baseline": {
+    "module": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/baseline01/modules/list-pipeline.mjs",
+      "sha256": "5d8f6e69b9aa3cc7225eda1a3c35fa887372253dc67e006999a19b67db4c58c5",
+      "bytes": 116349
+    },
+    "receipt": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/baseline01/modules/list-pipeline.mjs.json",
+      "sha256": "59e6d49d2be0e0543e0794c25ccaa217868994c9a8320590689453a9845107d2",
+      "bytes": 4514
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+      "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+      "bytes": 3249
+    },
+    "compiler": {
+      "kind": "checked-development-attempt",
+      "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "sourceSha256": "3a17f92d036ee64230d358de26be85722315ce7f41d0fe63a92ce150722bf3d4",
+      "artifact": "derived-b1",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase36/checked03/equality/api.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase36/checked03/equality/api.mjs",
+        "sha256": "93e55ad7ee456eebb5fa3dd9606c2cf262ea386c6f66bfd891ffe187d8f50a75"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase36/checked03/snapshot/src/runtime.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase36/checked03/snapshot/src/runtime.mjs",
+        "sha256": "c1a75ed096e77cfa50ab66279b513b8cdb5aa2e273f1f56b82f8cbdde40e19fa"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase36/checked03/snapshot/tools/typed-driver.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase36/checked03/snapshot/tools/typed-driver.mjs",
+        "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+      }
+    },
+    "moduleMetrics": {
+      "nodes": 27652,
+      "calls": {
+        "callOwned": 271,
+        "call": 34,
+        "jump": 56,
+        "build": 51,
+        "ctor": 343,
+        "matcher": 127,
+        "matcher1": 156,
+        "fn": 254,
+        "exactCode": 0,
+        "scalarCapture": 5,
+        "regionHostGuard": 0,
+        "regionProofOpen": 0,
+        "regionProofCovers": 2,
+        "regionF32ToU32": 0
+      },
+      "dependencies": [
+        "Bool.not",
+        "Char.cmp",
+        "Cmp.is_eq",
+        "Cmp.is_gt",
+        "Cmp.is_lt",
+        "IO.print",
+        "Map.bit",
+        "Map.bit.at",
+        "Map.bit.chr",
+        "Map.bit.go",
+        "Map.bit.go.chr",
+        "Map.bit.go.rec",
+        "Map.bit.u",
+        "Map.diff",
+        "Map.diff.chr",
+        "Map.diff.fin",
+        "Map.diff.step",
+        "Map.from_list",
+        "Map.from_list.go",
+        "Map.hi",
+        "Map.ins",
+        "Map.ins.go",
+        "Map.ins.splice",
+        "Map.ins.splice.bit",
+        "Map.lo",
+        "Map.msb.u",
+        "Map.msb.u.if",
+        "Map.put",
+        "Map.put.go",
+        "Map.seek",
+        "Map.seek.go",
+        "Map.set",
+        "Map.set.fin",
+        "Map.set.fin.go",
+        "Map.set.go",
+        "Nat.add",
+        "Nat.cmp",
+        "Nat.divmod",
+        "Nat.divmod.go",
+        "Nat.is_lt",
+        "Nat.sub",
+        "String.cmp",
+        "String.cmp.fin",
+        "String.cmp.rec",
+        "String.length",
+        "U32.cmp",
+        "U32.div.if",
+        "U32.mod.if",
+        "U32.show",
+        "U32.show.fin",
+        "U32.show.go",
+        "U32.show.if",
+        "Word.Nil",
+        "Word.add",
+        "Word.and",
+        "Word.cmp",
+        "Word.mul",
+        "Word.shr",
+        "Word.to_nat",
+        "Word.xor",
+        "allpos",
+        "allpos.at",
+        "anyeq2",
+        "anyeq2.at",
+        "b2u",
+        "dbl",
+        "keep_gt1",
+        "keep_gt1.at",
+        "main.out",
+        "mfold",
+        "mmul10",
+        "p37.list",
+        "suma"
+      ],
+      "dynamicGlobals": 4,
+      "selectors": [
+        null,
+        null
+      ]
+    },
+    "globals": {
+      "Word": {
+        "nodes": 34,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Word.Nil"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "dad7ad97422a2fe2efcb07522dec5b81793411d1e5aefb32dfca075108e05fe9",
+        "sourceSha256": "dfe96bc86d5eba8f08839125cc6b079e80734a88eee03ef208d4677f7640a82d"
+      },
+      "Pair": {
+        "nodes": 45,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "5f8299a1c3bf4ab339506576b0b3de0f970d015e47ee5ffc199b407237b075bb",
+        "sourceSha256": "75bb87c53f363d3cf221f24d270c4aec33e551f054aec7db1dfbce5a1a5665e7"
+      },
+      "IO": {
+        "nodes": 12,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "937d0144000ee89de0a97cbc535856b3bde04f249932c0f9724dcc8b63bdf04f",
+        "sourceSha256": "057cf0f6fb67049d11d5ca3902c162bc52cdef842d41cc79cc4718e0e686a851"
+      },
+      "Char.cmp": {
+        "nodes": 67,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 1,
+          "build": 4,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "U32.cmp"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "638d8af04094c55cfe4c2e311d9e963c5e901e7d5b4919aa5e4da1794c113b34",
+        "sourceSha256": "8833c20466e16764006dba0359c2dcb162e0c8a6a7efb93539142dc11831a59d"
+      },
+      "String.cmp.rec": {
+        "nodes": 81,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 4,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "99fe713396d9748b5f434fe451f862b0b02028cc9bff332b905f8a9ad580abbe",
+        "sourceSha256": "099ad21be4b2f6b4131fceeaaa07c1c424206715c3999630fa622281f03aa377"
+      },
+      "String.cmp.fin": {
+        "nodes": 132,
+        "calls": {
+          "callOwned": 4,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 10,
+          "matcher": 2,
+          "matcher1": 3,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "String.cmp",
+          "String.cmp.rec"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "d20d564309a30a2ca96fd27675588b05b8ecbd8178d90d4bc8f10013a09ebe14",
+        "sourceSha256": "8e5149011cde1c33cdece3a67ff1b251533c626b9c0588962da9d0dd4c94c3e9"
+      },
+      "String.cmp": {
+        "nodes": 166,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 4,
+          "ctor": 7,
+          "matcher": 3,
+          "matcher1": 3,
+          "fn": 3,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Char.cmp",
+          "String.cmp.fin"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "2d31fa7a5b1ffb60cb76e5a51ce758b94e50f4dfde56a6ef471344043312b429",
+        "sourceSha256": "2ced7f85587daf26a8eb77f78a390cda8925b4cf0c7309ac6175bdaf04ae11a8"
+      },
+      "U32.show.fin": {
+        "nodes": 96,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 2,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "U32.show.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "c6b66cb18c1780369cbeb8a8ad36a57a4916f65e0aa806c0657c380948462846",
+        "sourceSha256": "9ebc4f19105499db6873861adb9693f11192541e6a167fce2182d789d4b753aa"
+      },
+      "U32.show.go": {
+        "nodes": 70,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "U32.show.fin"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "f03af39390f42e36c73908e547e2f6f1c09fca081880599adcce4777475fa23b",
+        "sourceSha256": "ca79208feab3798c8ace37779ef83ccc3f84dcab9b40f1e62a14c668662de369"
+      },
+      "U32.show.if": {
+        "nodes": 39,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "U32.show.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "c8f3ab1d88ea555d684c9c9144bf3b5cee486ccd22da5feae710f5d4c1534428",
+        "sourceSha256": "231eeff90e517793a027ca9d6096b359d5c2d47c8609ec8f1ffddb7d08c875e0"
+      },
+      "U32.show": {
+        "nodes": 31,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "U32.show.if"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "e9184ee843c850fd7f2e8cdd81ac3aebec3e4dbe0facdebde7e616a535f8f3c9",
+        "sourceSha256": "c64eef1f469fe36162c02b9cbde1e2fdb4c6746511aa66f473b1c21d1d1d7760"
+      },
+      "Map.bit.u": {
+        "nodes": 43,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "107d5354e52e2bd2800403a8064e6aa0a2f181bb8d4e70c0add01beb3d44065a",
+        "sourceSha256": "68453779b7a1af03e88757e595c87580cef762db0192009179620800f2f86b8d"
+      },
+      "Map.bit.chr": {
+        "nodes": 81,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 2,
+          "ctor": 3,
+          "matcher": 1,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit.u",
+          "Nat.sub"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "6cfd2ebf9fa67316c34ee1a1f5b2d52b3ebff179e1f38db980beb8d6f861ba99",
+        "sourceSha256": "ebd6fd25a2c4348034018918a9472a223f1b613068bf84bdf9e8a6a2ce7d91f9"
+      },
+      "Map.bit.go.chr": {
+        "nodes": 51,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "533a7b1303fe5bd52c8055cb01e89d996eb79c9985020e157da5fd52fd0c2f36",
+        "sourceSha256": "1c95e37dcf7cc49bb53a7db0263946b5096892ba31838dc3b3bcb418bac0e963"
+      },
+      "Map.bit.go.rec": {
+        "nodes": 51,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "1f65a954cc1e396166ff8cd9c33d24d1b4d5a492f45251fe6431edd24d44cd70",
+        "sourceSha256": "2a56bca67863394c4072a6171ad8c8b7b69e6894866f9b738683fcded204d360"
+      },
+      "Map.bit.go": {
+        "nodes": 149,
+        "calls": {
+          "callOwned": 7,
+          "call": 0,
+          "jump": 2,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 2,
+          "matcher1": 2,
+          "fn": 4,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit.chr",
+          "Map.bit.go",
+          "Map.bit.go.chr",
+          "Map.bit.go.rec"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "272a3ad37f09fb084d1a9e1d05fb17999fcbf58438347833b80479d9d6dbb42b",
+        "sourceSha256": "60f3d44d20ec0565799f487d69b805c3dce71a6962a5b9dce01b33e6f6fe3045"
+      },
+      "Map.bit.at": {
+        "nodes": 52,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "231ad187827cedc3e43015f3dc4901028d52c2fb6bc7e8f28c2635782732dfdb",
+        "sourceSha256": "66fb0e6c8b5d0b77987eea4b964563e5b6561c6a329afd5f5487f6c24f4e7dd5"
+      },
+      "Map.bit": {
+        "nodes": 39,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit.at",
+          "Nat.divmod"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "84611a88bc4e3f8d6208d9f741ab2cc113032c2ffb8618e4a49322f3192edf3f",
+        "sourceSha256": "39a96a8580fbaf8d4641e8acbd6de83030e6a95fd5de60508639a80bff35c81b"
+      },
+      "Map.msb.u.if": {
+        "nodes": 51,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.msb.u",
+          "Nat.add"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "6b50e9b0c3075977fb5ef9a16d58a4bdc99dbb6aaaad0ea095bb15ebec35da00",
+        "sourceSha256": "0b2a00c35c952ec89a67261804ece38c7e53e67aaf8f9b277ba436d9b308ef64"
+      },
+      "Map.msb.u": {
+        "nodes": 57,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.msb.u.if"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "be788653fa2adc667d65f4a68914a10ed9753843fc1ab34252b1f75adf0efd0a",
+        "sourceSha256": "dfb4979f096b59cfd46903e15f50330839a07c738db5f84eee930eef2875a08a"
+      },
+      "Map.diff.chr": {
+        "nodes": 33,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.msb.u",
+          "Nat.sub"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "02b5e9ef7c1a83c563295d23f2b4f1758a24366d1c6a3df9fcd7a9abbd9293a0",
+        "sourceSha256": "de35bd3d31e8e30e9c60c64ac82d3ad59fc4cf3c42ac3bc0febf52ad276a4d0a"
+      },
+      "Map.diff.step": {
+        "nodes": 55,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 1,
+          "build": 1,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.diff.chr"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "c4c701da70aba079c68f189106425b9828de505829baf5c753abbd4a9c091146",
+        "sourceSha256": "0498b7fc0f498f927b3bbb537df2a2c7f65716fed3fa3a291968a6770b82400c"
+      },
+      "Map.diff.fin": {
+        "nodes": 66,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.diff",
+          "Nat.add"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "2d6b8a69d20125373a5643b5c377082953773c78c5e925238f2d9b7cadcb5503",
+        "sourceSha256": "d3eee9d3a0722c94492ad1d3859ebd6824542f9c95d24df0acd83b2258b07dbb"
+      },
+      "Map.diff": {
+        "nodes": 95,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 2,
+          "matcher1": 2,
+          "fn": 3,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.diff.fin",
+          "Map.diff.step"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "dc39412e9e790e1b1404c941f3d4c6d07f34100727513a01d1aa6640e342b1b8",
+        "sourceSha256": "49111c85ce4faa950c39d7abcd33fdf2450b2fbc3dc4c1fd4bfb7043664d6f47"
+      },
+      "Map.put.go": {
+        "nodes": 1074,
+        "calls": {
+          "callOwned": 30,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 54,
+          "matcher": 18,
+          "matcher1": 22,
+          "fn": 23,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.put.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "d18ab9672fbb224d8c7cd2e071c69409fc7c9a08af09eef8e93c14826f4df944",
+        "sourceSha256": "73185efb66c6fbc446c518acadd8dbc22541003ac326ed0f3f54e50d76b4c408"
+      },
+      "Map.put": {
+        "nodes": 167,
+        "calls": {
+          "callOwned": 4,
+          "call": 0,
+          "jump": 1,
+          "build": 2,
+          "ctor": 1,
+          "matcher": 2,
+          "matcher1": 1,
+          "fn": 4,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.put.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "ea760e6a1140cabb8b5dd767b41fa3bc5d4ba31a2f9561f39a1746768df07810",
+        "sourceSha256": "134c4e02268dfd519f5379be79df52ad4ebcdf21d4d15a237509cb64cf9af18b"
+      },
+      "Map.ins.splice.bit": {
+        "nodes": 83,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 4,
+          "matcher": 1,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "d1d603b54f56acdfe39c756867f37c2aeaa3b65b15c09210ef63f952468d33cd",
+        "sourceSha256": "d236bbe05475063dc5ccd87b8cc5047a9821129e28d2cf3dece2bf6690d178e8"
+      },
+      "Map.ins.splice": {
+        "nodes": 63,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.ins.splice.bit"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "ee463cea62c93ea7a730620d229dff60b6bd01f1017ab0f6cffdca29ec19f591",
+        "sourceSha256": "f7d02a75d421049acb524118fa27664e266441ab1100524da062b3e93ff1e9ad"
+      },
+      "Map.ins.go": {
+        "nodes": 1980,
+        "calls": {
+          "callOwned": 72,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 108,
+          "matcher": 36,
+          "matcher1": 40,
+          "fn": 23,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.ins.go",
+          "Map.ins.splice",
+          "Nat.is_lt"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "2c20f1e8a51d1b5b68632875c64861aa3763253aeec9d756ac9abca1abf65598",
+        "sourceSha256": "0951d7695f8c6e1c454dd718532d4cd124bb27fdfbee81e8a7b5c3b917c4db04"
+      },
+      "Map.ins": {
+        "nodes": 211,
+        "calls": {
+          "callOwned": 7,
+          "call": 0,
+          "jump": 2,
+          "build": 1,
+          "ctor": 2,
+          "matcher": 2,
+          "matcher1": 1,
+          "fn": 4,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.ins.go",
+          "Map.ins.splice",
+          "Nat.is_lt"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "32728bf80758d3eb9ab10b6c39ad1b6e3085676dd63e4bd680e6fb2504789d9f",
+        "sourceSha256": "5daea8d29145e5dbeadd2f262301a68a986f7b9f34760bee1830110f93820c05"
+      },
+      "Map.lo": {
+        "nodes": 71,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "7284cf9aca0386dd6558b42de9bfe85ca039c147b8c46f7ca910718bc6df2fb8",
+        "sourceSha256": "a2a9c2fd35a00db907c5fc1eab972c1d420d904c7535c9c5a220fb8433ae068c"
+      },
+      "Map.hi": {
+        "nodes": 71,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "be75476cd0a993169377c020ec50fa9e592f281ab3e5f954b752c4c6db9cea24",
+        "sourceSha256": "d509da267f4d56af95f884a2b5d54ad937e94d63317b8b4d0b85411435c54b52"
+      },
+      "Map.seek.go": {
+        "nodes": 1207,
+        "calls": {
+          "callOwned": 36,
+          "call": 0,
+          "jump": 0,
+          "build": 3,
+          "ctor": 84,
+          "matcher": 18,
+          "matcher1": 23,
+          "fn": 21,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.hi",
+          "Map.lo",
+          "Map.seek.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "cdac0ffa7c183cf671406f4cc4b5bb4338a47bcc17c7a6825e57fc82f50b2f95",
+        "sourceSha256": "9722bc24bcf833435c55bb7e817ec3d9c4dcf2d302ecd9a9e608191a0bfd7b31"
+      },
+      "Map.seek": {
+        "nodes": 177,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 8,
+          "ctor": 1,
+          "matcher": 2,
+          "matcher1": 1,
+          "fn": 4,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.seek.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "729193f0209bc327fdabffc4a68a1694c39f03832cbcd6fb045ef0532a45060e",
+        "sourceSha256": "be60880e02985d92b5758575ca1296e6e6e2be3b9b9b3efb0728d8cee725d28f"
+      },
+      "Map.set.fin.go": {
+        "nodes": 135,
+        "calls": {
+          "callOwned": 10,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 2,
+          "fn": 3,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.diff",
+          "Map.ins",
+          "Map.put"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "b268321ac79524e5b99d39e4da555b610274a7d7f57e1b57741f958c6d4cdfab",
+        "sourceSha256": "620c3d1ea3d49d194c53faa51af69878810842d665b9205be500ad272f7d881e"
+      },
+      "Map.set.fin": {
+        "nodes": 72,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.set.fin.go",
+          "String.cmp"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "f083fadc38cded6c6791569debc9ca5652516568179abd506d41aab612efba5c",
+        "sourceSha256": "795f88cbf4c975d5a0fe73f528348d9be045e6716d5c9ec4aa55126fa685652a"
+      },
+      "Map.set.go": {
+        "nodes": 101,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 3,
+          "fn": 4,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.set.fin"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "59ec9fe8fefb527695a8c190b2faec8225a86c558dfe946ea42dfc639959b762",
+        "sourceSha256": "335a7bf7b13847d87f1ee3e21d68c3bf62ac0de83a661b01f1f8a45a1f571c81"
+      },
+      "Map.set": {
+        "nodes": 63,
+        "calls": {
+          "callOwned": 4,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.seek",
+          "Map.set.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "2d89865105b1549fe9b320b9c4d3e221685454e7a63bb440884ac8e36deb941e",
+        "sourceSha256": "bc24aa6175d37e9d5dc64b761df2fcf85d8dc256d5acb54c5a3c811efcb6f241"
+      },
+      "Map.from_list.go": {
+        "nodes": 101,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 2,
+          "fn": 3,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.from_list.go",
+          "Map.set"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "cd17e6f1a81e5100e25fa1421578c2b5762bf0ca9bd5fb0f0dbd47d55357b693",
+        "sourceSha256": "559ce8e52540ca3594327be8bdfb1c284e49069f8790780dc5b9e215b32ebe1e"
+      },
+      "Map.from_list": {
+        "nodes": 41,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.from_list.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "139dbad86fb784d442265e73095af8d0736acbb30b5e771b10393e812df18df0",
+        "sourceSha256": "45fb0fb36ac3785486f164a680c25ba2af27927969a0a879bd1ec6e2e7f276e0"
+      },
+      "b2u": {
+        "nodes": 14,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 1,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "6e9c0190dbfab0ce5d873fba23d5563556d69c0f4637ac0e6b81019dac846dff",
+        "sourceSha256": "7b498e4f211be9de11f669cb956be15e4619977d8845b441109d23cccb1604f4"
+      },
+      "dbl": {
+        "nodes": 54,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 1,
+          "build": 1,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "dbl"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "f977c2262e9ceb40c6b7e038f975573365986bbff5056f486f75fa854246effc",
+        "sourceSha256": "313b3e26a00e3573c648968f29e2ed4bada7d4e0a97f4c47a783594c8756d462"
+      },
+      "keep_gt1.at": {
+        "nodes": 35,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "6bf8575e5ea93261b9e137d9814e20ed0bd05c5b5892d0d4f675165ac5a77ee4",
+        "sourceSha256": "3961b1fe8ff40bc057c7d37e164d289d97bafdb8801f7565613ddb2e38a915f8"
+      },
+      "keep_gt1": {
+        "nodes": 58,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "keep_gt1",
+          "keep_gt1.at"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "a008f94b96ff27495729990677c43e9388c5387888fa2d7b0b473450201dd193",
+        "sourceSha256": "ae203fecd2cf3b4e605ded128651583855d5eb6248d92445a3b39023f3522240"
+      },
+      "suma": {
+        "nodes": 64,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "suma"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "ce6e3f54febf6d61ee0f7cd584e16f907075d94007a94175dff83c29c69fca8f",
+        "sourceSha256": "8c2a8c63665bac1a35881b40bbe68d51be18f61f9f8c6b20eeb54e1f245532a6"
+      },
+      "anyeq2.at": {
+        "nodes": 30,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 1,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "306e038ee0e5b065332bc71d5d507502b6435a04fc37d258b8c0e1b21ae15214",
+        "sourceSha256": "53b1b9d193796dd4fba47ad630b9ec730f9853b9cdbc881a9f75189194900372"
+      },
+      "anyeq2": {
+        "nodes": 53,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "anyeq2",
+          "anyeq2.at"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "fa3bffa398f4daed87ff1fd3f2197dd6ff3e89659c3a05cbb78f0a6c047511a0",
+        "sourceSha256": "d41c424d90c2911c4a71449d0444c63ab5faae47bcc1d43cc07c8c9ddf1e4b27"
+      },
+      "allpos.at": {
+        "nodes": 30,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 1,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "6b657e784a4d5ebee7339e4800040c00b9abcc5861d3be5161f4c7593a0c46c8",
+        "sourceSha256": "262db27dba2fbc4dbb66e40fe939461d658a57fc6444e2b461fd988c33c4cfb9"
+      },
+      "allpos": {
+        "nodes": 53,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "allpos",
+          "allpos.at"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "f00521e81aa3e33a1e714adb2f0690aead1f750f0cc4f1711695b282b8bef3bd",
+        "sourceSha256": "aeec25064ee5b84e72758648f64488103ce43a5dc30ca3ac94f771078a7566f1"
+      },
+      "mmul10": {
+        "nodes": 101,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 2,
+          "build": 2,
+          "ctor": 1,
+          "matcher": 2,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "mmul10"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "4846cff14e03696b445c06b76ff1c8085f7994d9c46da00b28abdd7a5268a828",
+        "sourceSha256": "7dcaa0cb56dc2230e343cc6c1bb690c8ca48e26c6422972577da427452d1a541"
+      },
+      "mfold": {
+        "nodes": 127,
+        "calls": {
+          "callOwned": 4,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 2,
+          "matcher1": 1,
+          "fn": 3,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "String.length",
+          "mfold"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "7390f92ad00c95aafec164acbd62bf37264b7aace5329729042b34402028dd8c",
+        "sourceSha256": "2bf35295ed622c853980101e37ef9094057d0ad4c8ac26a937e33d077a77c543"
+      },
+      "main.out": {
+        "nodes": 348,
+        "calls": {
+          "callOwned": 20,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 25,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.from_list",
+          "allpos",
+          "anyeq2",
+          "b2u",
+          "dbl",
+          "keep_gt1",
+          "mfold",
+          "mmul10",
+          "suma"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "504923e47424b3bbafbe8316dc3baceba615cb7d12f3eaa5c60e6659a133a2b2",
+        "sourceSha256": "c276a3c87dd92b3246aad1a7f92352beccaaa54b7858bd26d82cbd878873797a"
+      },
+      "main": {
+        "nodes": 24,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "IO.print",
+          "U32.show",
+          "main.out"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "68aef00fe8c3cd0f1993b270d3e7050dd68f92b2359240c7a52d282091f1b662",
+        "sourceSha256": "026ea535f6a876ef680513f710ecade17af1bbd430aa46f0db8aa4c2ce28766c"
+      },
+      "p37.list": {
+        "nodes": 88,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "p37.list"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "c86663a31d9dfa1ebce4681c2e8fd6fd47d229b55ae1e9f7c0962cc79768f8fb",
+        "sourceSha256": "12e8c029549a58e1b776b77880582c68acede473aea23ce12afd616cd6557441"
+      },
+      "bench": {
+        "nodes": 61,
+        "calls": {
+          "callOwned": 5,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 1,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "dbl",
+          "keep_gt1",
+          "p37.list",
+          "suma"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "cf91fc734b769ce3c515eca0ef91f998e85d700c2d9380ee521e2d4ef5a620bc",
+        "sourceSha256": "871884c7d62207b63e3876b737e20ce6758fedec91e318fb8992b12ab6919f46"
+      }
+    },
+    "runtime": {
+      "invokeExact": {
+        "nodes": 123,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "0eaa71077e35bae64e1d3c0f10ab647bfff95ec7296d1ba456437554028aec54",
+        "sourceSha256": "356d349a21f0d8366bab8e706b127d5493b4125584690e88f42bd807c14ffb8f"
+      },
+      "force": {
+        "nodes": 149,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 2,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "1dd1290dbcbc9dcbc8019afc2d03d8bf0eb2333bd1eafbc9b6a305b4bffee5f4",
+        "sourceSha256": "bd6c70c5427b3bab7efd6a3b0f87e4f17b37db4ab27fd50151020e220190ecc6"
+      },
+      "apply": {
+        "nodes": 216,
+        "calls": {
+          "callOwned": 0,
+          "call": 1,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "831bc732749f3c307f2421de91638da8b7c21a231d98633dd1307e0b0ac50ed8",
+        "sourceSha256": "7429ccaeaa862c90159d0d05cf0bcfdc8eb3c0975cf04c5066421983e09ad210"
+      },
+      "scalarGuard": {
+        "nodes": 319,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 1,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [
+          null
+        ],
+        "astSha256": "63b7716a433e53121fba3e22ecad36fc296190bc685881cf21d0b12ac85006f0",
+        "sourceSha256": "6aac37c1cec68fc77c33d12340189c147e23167ef7736a218a8dfcf44be6a161"
+      },
+      "localGuard": {
+        "nodes": 42,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 1,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [
+          null
+        ],
+        "astSha256": "8667154401f1aafa71716451f7634510aa076c4eae5f2b04582d3f8e681a3a0a",
+        "sourceSha256": "edac89535707aaf80f91a2585993df7cd22af5756a36f2836e8a417edf832a0c"
+      },
+      "regionHostGuard": {
+        "nodes": 257,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "b443489b7f6717d09bd52a36d7d84345fb5670c98343773f3d159b4c03ce1fb8",
+        "sourceSha256": "1267ecaa9fe11ad28d34e74b96da29c8308f78008bd1348d4a8f4738adc9e45a"
+      },
+      "get": {
+        "nodes": 39,
+        "calls": {
+          "callOwned": 0,
+          "call": 1,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "05eb55f3e9264be3759bb83604e11ab7b7e0ff802d20dc38df3ef6904c94d3fe",
+        "sourceSha256": "7bff1ff228c25abf689be532ef968250c3dfee1ba1f21b6d21f9979daf22b986"
+      },
+      "ctor": {
+        "nodes": 128,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "ff2fc527b3682dd3a29d583ad967035fe19951025158e813596ac0e1a33de432",
+        "sourceSha256": "ccf0121b4e060a29afdddfd5b00f4237c11949000282d818ba2977e3d793bc8f"
+      }
+    },
+    "reachableGlobals": [
+      "bench",
+      "dbl",
+      "keep_gt1",
+      "keep_gt1.at",
+      "p37.list",
+      "suma"
+    ],
+    "unresolvedNamedDependencies": [],
+    "finiteSites": []
+  },
+  "candidate": {
+    "module": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/candidate02/modules/list-pipeline.mjs",
+      "sha256": "f8533e1dd7598b1ad848b05a04c2c9027542886a223cdc1ee9adc7e8286f10f5",
+      "bytes": 119735
+    },
+    "receipt": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/candidate02/modules/list-pipeline.mjs.json",
+      "sha256": "22aa1c4812e0dd974e37550e9bf9d85e9c38ef2266531befd76569111dad2177",
+      "bytes": 4522
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+      "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+      "bytes": 3249
+    },
+    "compiler": {
+      "kind": "checked-development-attempt",
+      "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "sourceSha256": "6b97ede24fd9e57101ac6f372bcae3e78a82aebb6e9cb5903d53ff0b44983201",
+      "artifact": "derived-b1",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/checked03/equality/api.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/checked03/equality/api.mjs",
+        "sha256": "ea5db4a2857ffddce8263406041f56acc9b613754660d7a20c6b7c58682c86a1"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/checked03/snapshot/src/runtime.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/checked03/snapshot/src/runtime.mjs",
+        "sha256": "51bb6046a8ac116865e2b1ed94b5587d1257f951aed536da77da3e91338eac49"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/checked03/snapshot/tools/typed-driver.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase37/checked03/snapshot/tools/typed-driver.mjs",
+        "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+      }
+    },
+    "moduleMetrics": {
+      "nodes": 28236,
+      "calls": {
+        "callOwned": 287,
+        "call": 34,
+        "jump": 56,
+        "build": 51,
+        "ctor": 370,
+        "matcher": 127,
+        "matcher1": 156,
+        "fn": 254,
+        "exactCode": 0,
+        "scalarCapture": 5,
+        "regionHostGuard": 0,
+        "regionProofOpen": 0,
+        "regionProofCovers": 10,
+        "regionF32ToU32": 0
+      },
+      "dependencies": [
+        "Bool.not",
+        "Char.cmp",
+        "Cmp.is_eq",
+        "Cmp.is_gt",
+        "Cmp.is_lt",
+        "IO.print",
+        "Map.bit",
+        "Map.bit.at",
+        "Map.bit.chr",
+        "Map.bit.go",
+        "Map.bit.go.chr",
+        "Map.bit.go.rec",
+        "Map.bit.u",
+        "Map.diff",
+        "Map.diff.chr",
+        "Map.diff.fin",
+        "Map.diff.step",
+        "Map.from_list",
+        "Map.from_list.go",
+        "Map.hi",
+        "Map.ins",
+        "Map.ins.go",
+        "Map.ins.splice",
+        "Map.ins.splice.bit",
+        "Map.lo",
+        "Map.msb.u",
+        "Map.msb.u.if",
+        "Map.put",
+        "Map.put.go",
+        "Map.seek",
+        "Map.seek.go",
+        "Map.set",
+        "Map.set.fin",
+        "Map.set.fin.go",
+        "Map.set.go",
+        "Nat.add",
+        "Nat.cmp",
+        "Nat.divmod",
+        "Nat.divmod.go",
+        "Nat.is_lt",
+        "Nat.sub",
+        "String.cmp",
+        "String.cmp.fin",
+        "String.cmp.rec",
+        "String.length",
+        "U32.cmp",
+        "U32.div.if",
+        "U32.mod.if",
+        "U32.show",
+        "U32.show.fin",
+        "U32.show.go",
+        "U32.show.if",
+        "Word.Nil",
+        "Word.add",
+        "Word.and",
+        "Word.cmp",
+        "Word.mul",
+        "Word.shr",
+        "Word.to_nat",
+        "Word.xor",
+        "allpos",
+        "allpos.at",
+        "anyeq2",
+        "anyeq2.at",
+        "b2u",
+        "dbl",
+        "keep_gt1",
+        "keep_gt1.at",
+        "main.out",
+        "mfold",
+        "mmul10",
+        "p37.list",
+        "suma"
+      ],
+      "dynamicGlobals": 4,
+      "selectors": [
+        null,
+        null,
+        [
+          "anyeq2.at"
+        ],
+        [
+          "allpos.at"
+        ],
+        [
+          "b2u"
+        ],
+        [
+          "b2u"
+        ],
+        [
+          "b2u"
+        ],
+        [
+          "b2u"
+        ],
+        [
+          "b2u"
+        ],
+        [
+          "b2u"
+        ]
+      ]
+    },
+    "globals": {
+      "Word": {
+        "nodes": 34,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Word.Nil"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "dad7ad97422a2fe2efcb07522dec5b81793411d1e5aefb32dfca075108e05fe9",
+        "sourceSha256": "dfe96bc86d5eba8f08839125cc6b079e80734a88eee03ef208d4677f7640a82d"
+      },
+      "Pair": {
+        "nodes": 45,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "5f8299a1c3bf4ab339506576b0b3de0f970d015e47ee5ffc199b407237b075bb",
+        "sourceSha256": "75bb87c53f363d3cf221f24d270c4aec33e551f054aec7db1dfbce5a1a5665e7"
+      },
+      "IO": {
+        "nodes": 12,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "937d0144000ee89de0a97cbc535856b3bde04f249932c0f9724dcc8b63bdf04f",
+        "sourceSha256": "057cf0f6fb67049d11d5ca3902c162bc52cdef842d41cc79cc4718e0e686a851"
+      },
+      "Char.cmp": {
+        "nodes": 67,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 1,
+          "build": 4,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "U32.cmp"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "638d8af04094c55cfe4c2e311d9e963c5e901e7d5b4919aa5e4da1794c113b34",
+        "sourceSha256": "8833c20466e16764006dba0359c2dcb162e0c8a6a7efb93539142dc11831a59d"
+      },
+      "String.cmp.rec": {
+        "nodes": 81,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 4,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "99fe713396d9748b5f434fe451f862b0b02028cc9bff332b905f8a9ad580abbe",
+        "sourceSha256": "099ad21be4b2f6b4131fceeaaa07c1c424206715c3999630fa622281f03aa377"
+      },
+      "String.cmp.fin": {
+        "nodes": 132,
+        "calls": {
+          "callOwned": 4,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 10,
+          "matcher": 2,
+          "matcher1": 3,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "String.cmp",
+          "String.cmp.rec"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "d20d564309a30a2ca96fd27675588b05b8ecbd8178d90d4bc8f10013a09ebe14",
+        "sourceSha256": "8e5149011cde1c33cdece3a67ff1b251533c626b9c0588962da9d0dd4c94c3e9"
+      },
+      "String.cmp": {
+        "nodes": 166,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 4,
+          "ctor": 7,
+          "matcher": 3,
+          "matcher1": 3,
+          "fn": 3,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Char.cmp",
+          "String.cmp.fin"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "2d31fa7a5b1ffb60cb76e5a51ce758b94e50f4dfde56a6ef471344043312b429",
+        "sourceSha256": "2ced7f85587daf26a8eb77f78a390cda8925b4cf0c7309ac6175bdaf04ae11a8"
+      },
+      "U32.show.fin": {
+        "nodes": 96,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 2,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "U32.show.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "c6b66cb18c1780369cbeb8a8ad36a57a4916f65e0aa806c0657c380948462846",
+        "sourceSha256": "9ebc4f19105499db6873861adb9693f11192541e6a167fce2182d789d4b753aa"
+      },
+      "U32.show.go": {
+        "nodes": 70,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "U32.show.fin"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "f03af39390f42e36c73908e547e2f6f1c09fca081880599adcce4777475fa23b",
+        "sourceSha256": "ca79208feab3798c8ace37779ef83ccc3f84dcab9b40f1e62a14c668662de369"
+      },
+      "U32.show.if": {
+        "nodes": 39,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "U32.show.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "c8f3ab1d88ea555d684c9c9144bf3b5cee486ccd22da5feae710f5d4c1534428",
+        "sourceSha256": "231eeff90e517793a027ca9d6096b359d5c2d47c8609ec8f1ffddb7d08c875e0"
+      },
+      "U32.show": {
+        "nodes": 31,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "U32.show.if"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "e9184ee843c850fd7f2e8cdd81ac3aebec3e4dbe0facdebde7e616a535f8f3c9",
+        "sourceSha256": "c64eef1f469fe36162c02b9cbde1e2fdb4c6746511aa66f473b1c21d1d1d7760"
+      },
+      "Map.bit.u": {
+        "nodes": 43,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "107d5354e52e2bd2800403a8064e6aa0a2f181bb8d4e70c0add01beb3d44065a",
+        "sourceSha256": "68453779b7a1af03e88757e595c87580cef762db0192009179620800f2f86b8d"
+      },
+      "Map.bit.chr": {
+        "nodes": 81,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 2,
+          "ctor": 3,
+          "matcher": 1,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit.u",
+          "Nat.sub"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "6cfd2ebf9fa67316c34ee1a1f5b2d52b3ebff179e1f38db980beb8d6f861ba99",
+        "sourceSha256": "ebd6fd25a2c4348034018918a9472a223f1b613068bf84bdf9e8a6a2ce7d91f9"
+      },
+      "Map.bit.go.chr": {
+        "nodes": 51,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "533a7b1303fe5bd52c8055cb01e89d996eb79c9985020e157da5fd52fd0c2f36",
+        "sourceSha256": "1c95e37dcf7cc49bb53a7db0263946b5096892ba31838dc3b3bcb418bac0e963"
+      },
+      "Map.bit.go.rec": {
+        "nodes": 51,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "1f65a954cc1e396166ff8cd9c33d24d1b4d5a492f45251fe6431edd24d44cd70",
+        "sourceSha256": "2a56bca67863394c4072a6171ad8c8b7b69e6894866f9b738683fcded204d360"
+      },
+      "Map.bit.go": {
+        "nodes": 149,
+        "calls": {
+          "callOwned": 7,
+          "call": 0,
+          "jump": 2,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 2,
+          "matcher1": 2,
+          "fn": 4,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit.chr",
+          "Map.bit.go",
+          "Map.bit.go.chr",
+          "Map.bit.go.rec"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "272a3ad37f09fb084d1a9e1d05fb17999fcbf58438347833b80479d9d6dbb42b",
+        "sourceSha256": "60f3d44d20ec0565799f487d69b805c3dce71a6962a5b9dce01b33e6f6fe3045"
+      },
+      "Map.bit.at": {
+        "nodes": 52,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "231ad187827cedc3e43015f3dc4901028d52c2fb6bc7e8f28c2635782732dfdb",
+        "sourceSha256": "66fb0e6c8b5d0b77987eea4b964563e5b6561c6a329afd5f5487f6c24f4e7dd5"
+      },
+      "Map.bit": {
+        "nodes": 39,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit.at",
+          "Nat.divmod"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "84611a88bc4e3f8d6208d9f741ab2cc113032c2ffb8618e4a49322f3192edf3f",
+        "sourceSha256": "39a96a8580fbaf8d4641e8acbd6de83030e6a95fd5de60508639a80bff35c81b"
+      },
+      "Map.msb.u.if": {
+        "nodes": 51,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.msb.u",
+          "Nat.add"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "6b50e9b0c3075977fb5ef9a16d58a4bdc99dbb6aaaad0ea095bb15ebec35da00",
+        "sourceSha256": "0b2a00c35c952ec89a67261804ece38c7e53e67aaf8f9b277ba436d9b308ef64"
+      },
+      "Map.msb.u": {
+        "nodes": 57,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.msb.u.if"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "be788653fa2adc667d65f4a68914a10ed9753843fc1ab34252b1f75adf0efd0a",
+        "sourceSha256": "dfb4979f096b59cfd46903e15f50330839a07c738db5f84eee930eef2875a08a"
+      },
+      "Map.diff.chr": {
+        "nodes": 33,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.msb.u",
+          "Nat.sub"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "02b5e9ef7c1a83c563295d23f2b4f1758a24366d1c6a3df9fcd7a9abbd9293a0",
+        "sourceSha256": "de35bd3d31e8e30e9c60c64ac82d3ad59fc4cf3c42ac3bc0febf52ad276a4d0a"
+      },
+      "Map.diff.step": {
+        "nodes": 55,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 1,
+          "build": 1,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.diff.chr"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "c4c701da70aba079c68f189106425b9828de505829baf5c753abbd4a9c091146",
+        "sourceSha256": "0498b7fc0f498f927b3bbb537df2a2c7f65716fed3fa3a291968a6770b82400c"
+      },
+      "Map.diff.fin": {
+        "nodes": 66,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.diff",
+          "Nat.add"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "2d6b8a69d20125373a5643b5c377082953773c78c5e925238f2d9b7cadcb5503",
+        "sourceSha256": "d3eee9d3a0722c94492ad1d3859ebd6824542f9c95d24df0acd83b2258b07dbb"
+      },
+      "Map.diff": {
+        "nodes": 95,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 2,
+          "matcher1": 2,
+          "fn": 3,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.diff.fin",
+          "Map.diff.step"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "dc39412e9e790e1b1404c941f3d4c6d07f34100727513a01d1aa6640e342b1b8",
+        "sourceSha256": "49111c85ce4faa950c39d7abcd33fdf2450b2fbc3dc4c1fd4bfb7043664d6f47"
+      },
+      "Map.put.go": {
+        "nodes": 1074,
+        "calls": {
+          "callOwned": 30,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 54,
+          "matcher": 18,
+          "matcher1": 22,
+          "fn": 23,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.put.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "d18ab9672fbb224d8c7cd2e071c69409fc7c9a08af09eef8e93c14826f4df944",
+        "sourceSha256": "73185efb66c6fbc446c518acadd8dbc22541003ac326ed0f3f54e50d76b4c408"
+      },
+      "Map.put": {
+        "nodes": 167,
+        "calls": {
+          "callOwned": 4,
+          "call": 0,
+          "jump": 1,
+          "build": 2,
+          "ctor": 1,
+          "matcher": 2,
+          "matcher1": 1,
+          "fn": 4,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.put.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "ea760e6a1140cabb8b5dd767b41fa3bc5d4ba31a2f9561f39a1746768df07810",
+        "sourceSha256": "134c4e02268dfd519f5379be79df52ad4ebcdf21d4d15a237509cb64cf9af18b"
+      },
+      "Map.ins.splice.bit": {
+        "nodes": 83,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 4,
+          "matcher": 1,
+          "matcher1": 2,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "d1d603b54f56acdfe39c756867f37c2aeaa3b65b15c09210ef63f952468d33cd",
+        "sourceSha256": "d236bbe05475063dc5ccd87b8cc5047a9821129e28d2cf3dece2bf6690d178e8"
+      },
+      "Map.ins.splice": {
+        "nodes": 63,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.ins.splice.bit"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "ee463cea62c93ea7a730620d229dff60b6bd01f1017ab0f6cffdca29ec19f591",
+        "sourceSha256": "f7d02a75d421049acb524118fa27664e266441ab1100524da062b3e93ff1e9ad"
+      },
+      "Map.ins.go": {
+        "nodes": 1980,
+        "calls": {
+          "callOwned": 72,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 108,
+          "matcher": 36,
+          "matcher1": 40,
+          "fn": 23,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.ins.go",
+          "Map.ins.splice",
+          "Nat.is_lt"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "2c20f1e8a51d1b5b68632875c64861aa3763253aeec9d756ac9abca1abf65598",
+        "sourceSha256": "0951d7695f8c6e1c454dd718532d4cd124bb27fdfbee81e8a7b5c3b917c4db04"
+      },
+      "Map.ins": {
+        "nodes": 211,
+        "calls": {
+          "callOwned": 7,
+          "call": 0,
+          "jump": 2,
+          "build": 1,
+          "ctor": 2,
+          "matcher": 2,
+          "matcher1": 1,
+          "fn": 4,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.ins.go",
+          "Map.ins.splice",
+          "Nat.is_lt"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "32728bf80758d3eb9ab10b6c39ad1b6e3085676dd63e4bd680e6fb2504789d9f",
+        "sourceSha256": "5daea8d29145e5dbeadd2f262301a68a986f7b9f34760bee1830110f93820c05"
+      },
+      "Map.lo": {
+        "nodes": 71,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "7284cf9aca0386dd6558b42de9bfe85ca039c147b8c46f7ca910718bc6df2fb8",
+        "sourceSha256": "a2a9c2fd35a00db907c5fc1eab972c1d420d904c7535c9c5a220fb8433ae068c"
+      },
+      "Map.hi": {
+        "nodes": 71,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "be75476cd0a993169377c020ec50fa9e592f281ab3e5f954b752c4c6db9cea24",
+        "sourceSha256": "d509da267f4d56af95f884a2b5d54ad937e94d63317b8b4d0b85411435c54b52"
+      },
+      "Map.seek.go": {
+        "nodes": 1207,
+        "calls": {
+          "callOwned": 36,
+          "call": 0,
+          "jump": 0,
+          "build": 3,
+          "ctor": 84,
+          "matcher": 18,
+          "matcher1": 23,
+          "fn": 21,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.hi",
+          "Map.lo",
+          "Map.seek.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "cdac0ffa7c183cf671406f4cc4b5bb4338a47bcc17c7a6825e57fc82f50b2f95",
+        "sourceSha256": "9722bc24bcf833435c55bb7e817ec3d9c4dcf2d302ecd9a9e608191a0bfd7b31"
+      },
+      "Map.seek": {
+        "nodes": 177,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 8,
+          "ctor": 1,
+          "matcher": 2,
+          "matcher1": 1,
+          "fn": 4,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.bit",
+          "Map.seek.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "729193f0209bc327fdabffc4a68a1694c39f03832cbcd6fb045ef0532a45060e",
+        "sourceSha256": "be60880e02985d92b5758575ca1296e6e6e2be3b9b9b3efb0728d8cee725d28f"
+      },
+      "Map.set.fin.go": {
+        "nodes": 135,
+        "calls": {
+          "callOwned": 10,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 2,
+          "fn": 3,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.diff",
+          "Map.ins",
+          "Map.put"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "b268321ac79524e5b99d39e4da555b610274a7d7f57e1b57741f958c6d4cdfab",
+        "sourceSha256": "620c3d1ea3d49d194c53faa51af69878810842d665b9205be500ad272f7d881e"
+      },
+      "Map.set.fin": {
+        "nodes": 72,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.set.fin.go",
+          "String.cmp"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "f083fadc38cded6c6791569debc9ca5652516568179abd506d41aab612efba5c",
+        "sourceSha256": "795f88cbf4c975d5a0fe73f528348d9be045e6716d5c9ec4aa55126fa685652a"
+      },
+      "Map.set.go": {
+        "nodes": 101,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 3,
+          "fn": 4,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.set.fin"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "59ec9fe8fefb527695a8c190b2faec8225a86c558dfe946ea42dfc639959b762",
+        "sourceSha256": "335a7bf7b13847d87f1ee3e21d68c3bf62ac0de83a661b01f1f8a45a1f571c81"
+      },
+      "Map.set": {
+        "nodes": 63,
+        "calls": {
+          "callOwned": 4,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.seek",
+          "Map.set.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "2d89865105b1549fe9b320b9c4d3e221685454e7a63bb440884ac8e36deb941e",
+        "sourceSha256": "bc24aa6175d37e9d5dc64b761df2fcf85d8dc256d5acb54c5a3c811efcb6f241"
+      },
+      "Map.from_list.go": {
+        "nodes": 101,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 2,
+          "fn": 3,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.from_list.go",
+          "Map.set"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "cd17e6f1a81e5100e25fa1421578c2b5762bf0ca9bd5fb0f0dbd47d55357b693",
+        "sourceSha256": "559ce8e52540ca3594327be8bdfb1c284e49069f8790780dc5b9e215b32ebe1e"
+      },
+      "Map.from_list": {
+        "nodes": 41,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.from_list.go"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "139dbad86fb784d442265e73095af8d0736acbb30b5e771b10393e812df18df0",
+        "sourceSha256": "45fb0fb36ac3785486f164a680c25ba2af27927969a0a879bd1ec6e2e7f276e0"
+      },
+      "b2u": {
+        "nodes": 14,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 1,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "6e9c0190dbfab0ce5d873fba23d5563556d69c0f4637ac0e6b81019dac846dff",
+        "sourceSha256": "7b498e4f211be9de11f669cb956be15e4619977d8845b441109d23cccb1604f4"
+      },
+      "dbl": {
+        "nodes": 54,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 1,
+          "build": 1,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "dbl"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "f977c2262e9ceb40c6b7e038f975573365986bbff5056f486f75fa854246effc",
+        "sourceSha256": "313b3e26a00e3573c648968f29e2ed4bada7d4e0a97f4c47a783594c8756d462"
+      },
+      "keep_gt1.at": {
+        "nodes": 35,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "6bf8575e5ea93261b9e137d9814e20ed0bd05c5b5892d0d4f675165ac5a77ee4",
+        "sourceSha256": "3961b1fe8ff40bc057c7d37e164d289d97bafdb8801f7565613ddb2e38a915f8"
+      },
+      "keep_gt1": {
+        "nodes": 58,
+        "calls": {
+          "callOwned": 2,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "keep_gt1",
+          "keep_gt1.at"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "a008f94b96ff27495729990677c43e9388c5387888fa2d7b0b473450201dd193",
+        "sourceSha256": "ae203fecd2cf3b4e605ded128651583855d5eb6248d92445a3b39023f3522240"
+      },
+      "suma": {
+        "nodes": 64,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "suma"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "ce6e3f54febf6d61ee0f7cd584e16f907075d94007a94175dff83c29c69fca8f",
+        "sourceSha256": "8c2a8c63665bac1a35881b40bbe68d51be18f61f9f8c6b20eeb54e1f245532a6"
+      },
+      "anyeq2.at": {
+        "nodes": 30,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 1,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "306e038ee0e5b065332bc71d5d507502b6435a04fc37d258b8c0e1b21ae15214",
+        "sourceSha256": "53b1b9d193796dd4fba47ad630b9ec730f9853b9cdbc881a9f75189194900372"
+      },
+      "anyeq2": {
+        "nodes": 105,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 2,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 1,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "anyeq2",
+          "anyeq2.at"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [
+          [
+            "anyeq2.at"
+          ]
+        ],
+        "astSha256": "d78f6e73cfbb5ddf3d81fe2bf67ca967ad5aa3ad6669217b221f9f177d7dd4d3",
+        "sourceSha256": "e57e6998099206ed5ff59c26f789640691d20bf8f048ace76ae76d92e4542185"
+      },
+      "allpos.at": {
+        "nodes": 30,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 1,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "6b657e784a4d5ebee7339e4800040c00b9abcc5861d3be5161f4c7593a0c46c8",
+        "sourceSha256": "262db27dba2fbc4dbb66e40fe939461d658a57fc6444e2b461fd988c33c4cfb9"
+      },
+      "allpos": {
+        "nodes": 105,
+        "calls": {
+          "callOwned": 3,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 2,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 1,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "allpos",
+          "allpos.at"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [
+          [
+            "allpos.at"
+          ]
+        ],
+        "astSha256": "31d731ad7d2f7c7148d97a964bfb9d4bbbdba0eb89d04c15a0fa90175ac4248d",
+        "sourceSha256": "54a9615435a7b5944cba22942d18c54c8aac22e5e0790ad1e642e75b2716b9af"
+      },
+      "mmul10": {
+        "nodes": 101,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 2,
+          "build": 2,
+          "ctor": 1,
+          "matcher": 2,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "mmul10"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "4846cff14e03696b445c06b76ff1c8085f7994d9c46da00b28abdd7a5268a828",
+        "sourceSha256": "7dcaa0cb56dc2230e343cc6c1bb690c8ca48e26c6422972577da427452d1a541"
+      },
+      "mfold": {
+        "nodes": 127,
+        "calls": {
+          "callOwned": 4,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 2,
+          "matcher1": 1,
+          "fn": 3,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "String.length",
+          "mfold"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "7390f92ad00c95aafec164acbd62bf37264b7aace5329729042b34402028dd8c",
+        "sourceSha256": "2bf35295ed622c853980101e37ef9094057d0ad4c8ac26a937e33d077a77c543"
+      },
+      "main.out": {
+        "nodes": 761,
+        "calls": {
+          "callOwned": 34,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 50,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 6,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "Map.from_list",
+          "allpos",
+          "anyeq2",
+          "b2u",
+          "dbl",
+          "keep_gt1",
+          "mfold",
+          "mmul10",
+          "suma"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [
+          [
+            "b2u"
+          ],
+          [
+            "b2u"
+          ],
+          [
+            "b2u"
+          ],
+          [
+            "b2u"
+          ],
+          [
+            "b2u"
+          ],
+          [
+            "b2u"
+          ]
+        ],
+        "astSha256": "ee60c9fa429c9faa45d30208a012ca8b434a7b8a8ab0ad49281ee39246de09da",
+        "sourceSha256": "ade566aedc40443f3894c191461f84f62227e6a879a1080ac35ff2e7f834491c"
+      },
+      "main": {
+        "nodes": 24,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "IO.print",
+          "U32.show",
+          "main.out"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "68aef00fe8c3cd0f1993b270d3e7050dd68f92b2359240c7a52d282091f1b662",
+        "sourceSha256": "026ea535f6a876ef680513f710ecade17af1bbd430aa46f0db8aa4c2ce28766c"
+      },
+      "p37.list": {
+        "nodes": 88,
+        "calls": {
+          "callOwned": 1,
+          "call": 0,
+          "jump": 1,
+          "build": 2,
+          "ctor": 0,
+          "matcher": 1,
+          "matcher1": 1,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "p37.list"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "c86663a31d9dfa1ebce4681c2e8fd6fd47d229b55ae1e9f7c0962cc79768f8fb",
+        "sourceSha256": "12e8c029549a58e1b776b77880582c68acede473aea23ce12afd616cd6557441"
+      },
+      "bench": {
+        "nodes": 61,
+        "calls": {
+          "callOwned": 5,
+          "call": 0,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 1,
+          "exactCode": 0,
+          "scalarCapture": 1,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [
+          "dbl",
+          "keep_gt1",
+          "p37.list",
+          "suma"
+        ],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "cf91fc734b769ce3c515eca0ef91f998e85d700c2d9380ee521e2d4ef5a620bc",
+        "sourceSha256": "871884c7d62207b63e3876b737e20ce6758fedec91e318fb8992b12ab6919f46"
+      }
+    },
+    "runtime": {
+      "invokeExact": {
+        "nodes": 123,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "0eaa71077e35bae64e1d3c0f10ab647bfff95ec7296d1ba456437554028aec54",
+        "sourceSha256": "356d349a21f0d8366bab8e706b127d5493b4125584690e88f42bd807c14ffb8f"
+      },
+      "force": {
+        "nodes": 149,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 2,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "1dd1290dbcbc9dcbc8019afc2d03d8bf0eb2333bd1eafbc9b6a305b4bffee5f4",
+        "sourceSha256": "bd6c70c5427b3bab7efd6a3b0f87e4f17b37db4ab27fd50151020e220190ecc6"
+      },
+      "apply": {
+        "nodes": 216,
+        "calls": {
+          "callOwned": 0,
+          "call": 1,
+          "jump": 1,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 2,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "831bc732749f3c307f2421de91638da8b7c21a231d98633dd1307e0b0ac50ed8",
+        "sourceSha256": "7429ccaeaa862c90159d0d05cf0bcfdc8eb3c0975cf04c5066421983e09ad210"
+      },
+      "scalarGuard": {
+        "nodes": 319,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 1,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [
+          null
+        ],
+        "astSha256": "63b7716a433e53121fba3e22ecad36fc296190bc685881cf21d0b12ac85006f0",
+        "sourceSha256": "6aac37c1cec68fc77c33d12340189c147e23167ef7736a218a8dfcf44be6a161"
+      },
+      "localGuard": {
+        "nodes": 42,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 1,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [
+          null
+        ],
+        "astSha256": "8667154401f1aafa71716451f7634510aa076c4eae5f2b04582d3f8e681a3a0a",
+        "sourceSha256": "edac89535707aaf80f91a2585993df7cd22af5756a36f2836e8a417edf832a0c"
+      },
+      "regionHostGuard": {
+        "nodes": 286,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "2e9ac9814a23adb0c00d415a8c6fbb829ee36abede3af83f747e1f47c0dc94f8",
+        "sourceSha256": "67872fc474d7bf7335aeff330623d152823f65f39d7e36d7d3a715f5bb97e3be"
+      },
+      "get": {
+        "nodes": 39,
+        "calls": {
+          "callOwned": 0,
+          "call": 1,
+          "jump": 0,
+          "build": 0,
+          "ctor": 0,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "05eb55f3e9264be3759bb83604e11ab7b7e0ff802d20dc38df3ef6904c94d3fe",
+        "sourceSha256": "7bff1ff228c25abf689be532ef968250c3dfee1ba1f21b6d21f9979daf22b986"
+      },
+      "ctor": {
+        "nodes": 128,
+        "calls": {
+          "callOwned": 0,
+          "call": 0,
+          "jump": 0,
+          "build": 0,
+          "ctor": 1,
+          "matcher": 0,
+          "matcher1": 0,
+          "fn": 0,
+          "exactCode": 0,
+          "scalarCapture": 0,
+          "regionHostGuard": 0,
+          "regionProofOpen": 0,
+          "regionProofCovers": 0,
+          "regionF32ToU32": 0
+        },
+        "dependencies": [],
+        "dynamicGlobals": 0,
+        "selectors": [],
+        "astSha256": "ff2fc527b3682dd3a29d583ad967035fe19951025158e813596ac0e1a33de432",
+        "sourceSha256": "ccf0121b4e060a29afdddfd5b00f4237c11949000282d818ba2977e3d793bc8f"
+      }
+    },
+    "reachableGlobals": [
+      "bench",
+      "dbl",
+      "keep_gt1",
+      "keep_gt1.at",
+      "p37.list",
+      "suma"
+    ],
+    "unresolvedNamedDependencies": [],
+    "finiteSites": [
+      {
+        "name": "anyeq2",
+        "selectors": [
+          [
+            "anyeq2.at"
+          ]
+        ],
+        "reachable": false
+      },
+      {
+        "name": "allpos",
+        "selectors": [
+          [
+            "allpos.at"
+          ]
+        ],
+        "reachable": false
+      },
+      {
+        "name": "main.out",
+        "selectors": [
+          [
+            "b2u"
+          ],
+          [
+            "b2u"
+          ],
+          [
+            "b2u"
+          ],
+          [
+            "b2u"
+          ],
+          [
+            "b2u"
+          ],
+          [
+            "b2u"
+          ]
+        ],
+        "reachable": false
+      }
+    ]
+  },
+  "comparison": {
+    "reachableSetsEqual": true,
+    "globals": [
+      {
+        "name": "bench",
+        "sourceEqual": true,
+        "astEqual": true,
+        "baseline": {
+          "nodes": 61,
+          "calls": {
+            "callOwned": 5,
+            "call": 0,
+            "jump": 1,
+            "build": 0,
+            "ctor": 0,
+            "matcher": 0,
+            "matcher1": 0,
+            "fn": 1,
+            "exactCode": 0,
+            "scalarCapture": 1,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [
+            "dbl",
+            "keep_gt1",
+            "p37.list",
+            "suma"
+          ],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "cf91fc734b769ce3c515eca0ef91f998e85d700c2d9380ee521e2d4ef5a620bc",
+          "sourceSha256": "871884c7d62207b63e3876b737e20ce6758fedec91e318fb8992b12ab6919f46"
+        },
+        "candidate": {
+          "nodes": 61,
+          "calls": {
+            "callOwned": 5,
+            "call": 0,
+            "jump": 1,
+            "build": 0,
+            "ctor": 0,
+            "matcher": 0,
+            "matcher1": 0,
+            "fn": 1,
+            "exactCode": 0,
+            "scalarCapture": 1,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [
+            "dbl",
+            "keep_gt1",
+            "p37.list",
+            "suma"
+          ],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "cf91fc734b769ce3c515eca0ef91f998e85d700c2d9380ee521e2d4ef5a620bc",
+          "sourceSha256": "871884c7d62207b63e3876b737e20ce6758fedec91e318fb8992b12ab6919f46"
+        }
+      },
+      {
+        "name": "dbl",
+        "sourceEqual": true,
+        "astEqual": true,
+        "baseline": {
+          "nodes": 54,
+          "calls": {
+            "callOwned": 0,
+            "call": 0,
+            "jump": 1,
+            "build": 1,
+            "ctor": 1,
+            "matcher": 1,
+            "matcher1": 1,
+            "fn": 1,
+            "exactCode": 0,
+            "scalarCapture": 0,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [
+            "dbl"
+          ],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "f977c2262e9ceb40c6b7e038f975573365986bbff5056f486f75fa854246effc",
+          "sourceSha256": "313b3e26a00e3573c648968f29e2ed4bada7d4e0a97f4c47a783594c8756d462"
+        },
+        "candidate": {
+          "nodes": 54,
+          "calls": {
+            "callOwned": 0,
+            "call": 0,
+            "jump": 1,
+            "build": 1,
+            "ctor": 1,
+            "matcher": 1,
+            "matcher1": 1,
+            "fn": 1,
+            "exactCode": 0,
+            "scalarCapture": 0,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [
+            "dbl"
+          ],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "f977c2262e9ceb40c6b7e038f975573365986bbff5056f486f75fa854246effc",
+          "sourceSha256": "313b3e26a00e3573c648968f29e2ed4bada7d4e0a97f4c47a783594c8756d462"
+        }
+      },
+      {
+        "name": "keep_gt1",
+        "sourceEqual": true,
+        "astEqual": true,
+        "baseline": {
+          "nodes": 58,
+          "calls": {
+            "callOwned": 2,
+            "call": 0,
+            "jump": 1,
+            "build": 0,
+            "ctor": 1,
+            "matcher": 1,
+            "matcher1": 1,
+            "fn": 1,
+            "exactCode": 0,
+            "scalarCapture": 0,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [
+            "keep_gt1",
+            "keep_gt1.at"
+          ],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "a008f94b96ff27495729990677c43e9388c5387888fa2d7b0b473450201dd193",
+          "sourceSha256": "ae203fecd2cf3b4e605ded128651583855d5eb6248d92445a3b39023f3522240"
+        },
+        "candidate": {
+          "nodes": 58,
+          "calls": {
+            "callOwned": 2,
+            "call": 0,
+            "jump": 1,
+            "build": 0,
+            "ctor": 1,
+            "matcher": 1,
+            "matcher1": 1,
+            "fn": 1,
+            "exactCode": 0,
+            "scalarCapture": 0,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [
+            "keep_gt1",
+            "keep_gt1.at"
+          ],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "a008f94b96ff27495729990677c43e9388c5387888fa2d7b0b473450201dd193",
+          "sourceSha256": "ae203fecd2cf3b4e605ded128651583855d5eb6248d92445a3b39023f3522240"
+        }
+      },
+      {
+        "name": "keep_gt1.at",
+        "sourceEqual": true,
+        "astEqual": true,
+        "baseline": {
+          "nodes": 35,
+          "calls": {
+            "callOwned": 0,
+            "call": 0,
+            "jump": 0,
+            "build": 0,
+            "ctor": 1,
+            "matcher": 1,
+            "matcher1": 1,
+            "fn": 1,
+            "exactCode": 0,
+            "scalarCapture": 0,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "6bf8575e5ea93261b9e137d9814e20ed0bd05c5b5892d0d4f675165ac5a77ee4",
+          "sourceSha256": "3961b1fe8ff40bc057c7d37e164d289d97bafdb8801f7565613ddb2e38a915f8"
+        },
+        "candidate": {
+          "nodes": 35,
+          "calls": {
+            "callOwned": 0,
+            "call": 0,
+            "jump": 0,
+            "build": 0,
+            "ctor": 1,
+            "matcher": 1,
+            "matcher1": 1,
+            "fn": 1,
+            "exactCode": 0,
+            "scalarCapture": 0,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "6bf8575e5ea93261b9e137d9814e20ed0bd05c5b5892d0d4f675165ac5a77ee4",
+          "sourceSha256": "3961b1fe8ff40bc057c7d37e164d289d97bafdb8801f7565613ddb2e38a915f8"
+        }
+      },
+      {
+        "name": "p37.list",
+        "sourceEqual": true,
+        "astEqual": true,
+        "baseline": {
+          "nodes": 88,
+          "calls": {
+            "callOwned": 1,
+            "call": 0,
+            "jump": 1,
+            "build": 2,
+            "ctor": 0,
+            "matcher": 1,
+            "matcher1": 1,
+            "fn": 2,
+            "exactCode": 0,
+            "scalarCapture": 0,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [
+            "p37.list"
+          ],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "c86663a31d9dfa1ebce4681c2e8fd6fd47d229b55ae1e9f7c0962cc79768f8fb",
+          "sourceSha256": "12e8c029549a58e1b776b77880582c68acede473aea23ce12afd616cd6557441"
+        },
+        "candidate": {
+          "nodes": 88,
+          "calls": {
+            "callOwned": 1,
+            "call": 0,
+            "jump": 1,
+            "build": 2,
+            "ctor": 0,
+            "matcher": 1,
+            "matcher1": 1,
+            "fn": 2,
+            "exactCode": 0,
+            "scalarCapture": 0,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [
+            "p37.list"
+          ],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "c86663a31d9dfa1ebce4681c2e8fd6fd47d229b55ae1e9f7c0962cc79768f8fb",
+          "sourceSha256": "12e8c029549a58e1b776b77880582c68acede473aea23ce12afd616cd6557441"
+        }
+      },
+      {
+        "name": "suma",
+        "sourceEqual": true,
+        "astEqual": true,
+        "baseline": {
+          "nodes": 64,
+          "calls": {
+            "callOwned": 1,
+            "call": 0,
+            "jump": 1,
+            "build": 0,
+            "ctor": 0,
+            "matcher": 1,
+            "matcher1": 1,
+            "fn": 2,
+            "exactCode": 0,
+            "scalarCapture": 0,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [
+            "suma"
+          ],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "ce6e3f54febf6d61ee0f7cd584e16f907075d94007a94175dff83c29c69fca8f",
+          "sourceSha256": "8c2a8c63665bac1a35881b40bbe68d51be18f61f9f8c6b20eeb54e1f245532a6"
+        },
+        "candidate": {
+          "nodes": 64,
+          "calls": {
+            "callOwned": 1,
+            "call": 0,
+            "jump": 1,
+            "build": 0,
+            "ctor": 0,
+            "matcher": 1,
+            "matcher1": 1,
+            "fn": 2,
+            "exactCode": 0,
+            "scalarCapture": 0,
+            "regionHostGuard": 0,
+            "regionProofOpen": 0,
+            "regionProofCovers": 0,
+            "regionF32ToU32": 0
+          },
+          "dependencies": [
+            "suma"
+          ],
+          "dynamicGlobals": 0,
+          "selectors": [],
+          "astSha256": "ce6e3f54febf6d61ee0f7cd584e16f907075d94007a94175dff83c29c69fca8f",
+          "sourceSha256": "8c2a8c63665bac1a35881b40bbe68d51be18f61f9f8c6b20eeb54e1f245532a6"
+        }
+      }
+    ],
+    "runtime": [
+      {
+        "name": "invokeExact",
+        "sourceEqual": true,
+        "astEqual": true
+      },
+      {
+        "name": "force",
+        "sourceEqual": true,
+        "astEqual": true
+      },
+      {
+        "name": "apply",
+        "sourceEqual": true,
+        "astEqual": true
+      },
+      {
+        "name": "scalarGuard",
+        "sourceEqual": true,
+        "astEqual": true
+      },
+      {
+        "name": "localGuard",
+        "sourceEqual": true,
+        "astEqual": true
+      },
+      {
+        "name": "regionHostGuard",
+        "sourceEqual": false,
+        "astEqual": false
+      },
+      {
+        "name": "get",
+        "sourceEqual": true,
+        "astEqual": true
+      },
+      {
+        "name": "ctor",
+        "sourceEqual": true,
+        "astEqual": true
+      }
+    ]
+  }
+}

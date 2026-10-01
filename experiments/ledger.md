@@ -2348,3 +2348,51 @@ additive speedup estimate. Keep the 42.3-second checked loop and 8-second actual
 symreg screen. Full report, raw evidence capsule and next steps are in
 [Phase36](../implementation/phase36/README.md). All 103 unrelated starting files
 remain protected. No PR comment is posted.
+
+
+## Phase37 — expand program coverage before another backend pass
+
+[P37-001](phase37/P37-001-coverage.md) freezes 45 points/23 sources before compiler
+changes: historical 15, 14 input variants and 16 points across eight new families.
+Three families/six points remain out of tuning until the final candidate is frozen.
+Both reference compilers check 23 sources; final candidate/TS correctness passes
+154 observations (45 points + 32 small controls, two roles).
+
+[P37-002](phase37/P37-002-finite-sum-workers.md) retains bounded finite selectors
+inside complete private proofs. A broader first candidate opened 1,968 tiny scopes
+and regressed active ray 35.6%; scalar-only selectors no longer justify new roots.
+[P37-003](phase37/P37-003-guarded-conversion.md) removes generic F32 conversion
+calls inside an existing region. A checksum-only success missed host callbacks;
+18/22 adversarial DataView observations failed before the guard correction.
+Final emitted-code owner groups all pass, including deep tail cycles and aliases.
+
+**Checked03 is installed and verified:** 42 ordinary/relocated CLI checks,
+15 postinstall audit groups, 227 canonical files, 15 Phase35 owner groups, seven
+Phase36 groups and three new groups. Frontend 3,026 + 196 exact observations and
+backend 69 pass / 8 N/A / 4 shared
+failures retain their scopes. The first inherited-owner closer failed historical
+catalog path resolution after all controls passed; its independently reviewed
+successor preserves 43 original assertions and verifies 678 files/15 Git blobs.
+
+The [45-point comparison](../implementation/phase37/execution/report.md) retains
+669 samples over 1,056.320 seconds. Numeric gains are 2.674×/5.165×; tree gains across
+three sizes 1.165–1.270×. Four disjoint slower points remain: symreg +1.63%, smaller
+lexer +1.78%, active ray 256 +3.58%, list 512 +4.65%. Heldout paired penalties and large
+record 256 tails are preserved. BST remains 152–209× TS, map 91–106× TS; no average
+application or parity claim. All 24 separate profiles pass; sampled numeric/tree
+allocation falls about 71%/31%, while list/ray is roughly unchanged.
+
+[Admission](../implementation/phase37/performance-admission.md) accepts normal
+checked-request costs +2.47% local / +6.40% tree / +1.06% numeric and 184 added Bend
+lines (+1.01%) to 18,358 lines / 70 modules, with unchanged 71 types / 640 laws. This is a measured
+execution tradeoff, not compiler throughput improvement or source simplification.
+[Release](../implementation/phase37/release-03.md) and
+[capsule](../implementation/phase37/evidence/README.md) bind artifacts and failures.
+
+**Updated frontier:** isolated saturated dispatch/matching in map/lexer and a
+reusable recursive tree component after a second shape validates the mechanism.
+First investigate inactive-branch/module-layout costs; do not weaken mandatory
+host guards. Keep 20/60 second focused execution screens, reserve the 17.61 minute
+suite for acceptance, and separate build, compilation, profiling and timing.
+Former holdouts are now exposed; freeze new families before another tuning pass.
+All 103 unrelated starting files remain protected; no PR comment is posted.

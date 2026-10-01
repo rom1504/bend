@@ -1,0 +1,11 @@
+{
+  "kind": "phase37-static-analysis-harness-failure",
+  "complete": false,
+  "producer": {
+    "path": "selfhost/tools/performance/phase37/optimizer/list-source-shape-v1.mjs",
+    "sha256": "55d12b6344616c5a3da5f7e856ddf4f95efc14ab30cb236bac05e03e0b55ab68"
+  },
+  "error": "TypeError: Do not know how to serialize a BigInt",
+  "where": "normalized AST JSON.stringify",
+  "scope": "Static parser only, no generated module imported or executed. V2 normalizes BigInt literal values before comparing ASTs."
+}

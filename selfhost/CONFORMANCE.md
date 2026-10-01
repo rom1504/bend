@@ -1,9 +1,78 @@
 # Compiler validation
 
-## Phase36 installed03 validation
+## Phase37 installed03 validation
 
-**Checked03 is installed, release verification passes, and all 42 ordinary/
-relocated CLI checks pass.** The final postinstall audit closes all **15 groups**,
+**Phase37 checked03 is installed; release verification and all 42 ordinary/
+relocated CLI checks pass.** The
+[Phase37 release record](../implementation/phase37/release-03.md) and
+[final gate closure](../implementation/phase37/final-conformance/gates.md) close
+all 15 postinstallation audit groups, with 227 canonical files matching the
+checked snapshot. The installed API SHA256 is
+`ea5db4a2857ffddce8263406041f56acc9b613754660d7a20c6b7c58682c86a1`;
+the pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+The image is a checked B1 derivative, not a new self-emitted fixed point.
+
+The [new owner closure](../implementation/phase37/optimizer/final-scope-owner-report.md)
+passes on fresh actual checked03 emissions, verifying 710 file identities and
+15 pinned Git provenance blobs:
+
+| New owner group | Passed observations |
+| --- | ---: |
+| Exact private F32-to-U32 conversion | 44 oracle rows / 57 boundaries / seven admission records |
+| Shared DataView guard | 22 prototype/instance observations |
+| Finite private selectors | 154 oracle rows / nine admission records / 76 boundaries |
+
+Finite controls observe all five intended selectors, complete tree aliases and
+two 30,000-step self/mutual tail cycles. Each cycle has one outer proof owner,
+a terminal selector entry and an inactive proof after completion. Native and
+DataView controls retain mutation callbacks, errors, argument order and reentry.
+Rejected fixture/control versions and a failed provenance audit remain preserved;
+their successful successors are separately bound.
+
+The expanded untimed gate also passes **154 executions**: 45 catalog points plus
+32 small application controls, each run by checked03 and pinned TypeScript.
+All 45 final performance points pass their frozen output checks in 669 samples;
+those repeated timings are not 669 independent language-conformance tests.
+The [phase report](../implementation/phase37/README.md) and
+[execution table](../implementation/phase37/execution/report.md) retain coverage
+limitations, performance tradeoffs and the unchanged fifteen-point catalog.
+
+Fresh execution agrees exactly with the pinned TypeScript reference on **3,026
+main + 196 broader frontend observations**, with no behavioral or additional-field
+differences. Main raw outcomes remain **2,525 pass / 497 observed / 4 shared
+failures**; broader remains **195 pass / 1 observed**. The reference acquisition
+is reused with identity verification, not presented as a new TypeScript run.
+The backend pilot retains **69 pass / 8 not applicable / 4 shared failures**
+across 81 selected rows; exact agreement does not turn shared failures into passes.
+
+All fifteen inherited Phase35 owner groups pass freshly on the installed API.
+The seven Phase36 owner groups also pass on fresh actual checked emissions:
+ray/column public behavior, scoped proof lifetime, Error reentry, native-array
+refusal, producer fixtures, independent complete-tree/alias checks and producer
+selectors. Their separate
+[successor audit](../implementation/phase37/inherited-owner-audit-repair.md)
+closes all seven groups, verifying 678 file identities and 15 pinned Git blobs.
+It preserves the first closer's path-namespace failure and all original semantic
+assertions. The three new Phase37 groups retain the independent closure above;
+these overlapping counts must not be summed as unique language tests.
+
+Fresh inherited gates also pass 36 focused probes, 56,205 primitive checks,
+3,759 worker checks, 144 nested checks, 1,129 primitive guards, 15 upstream JS
+probes, 23 libraries/127 points, 40 worker guards/two witnesses, 22 compiler
+components and complete 42-byte HVM output. The installed/relocated CLI gate
+includes JavaScript and native CPU execution, with no upstream checkout supplied
+to the relocated image. Historical outcomes below retain their original artifacts.
+
+Full backend/GPU, universal host equivalence and independent proof validity
+remain unestablished; `--verdict` is unsupported. Correctness,
+[performance admission](../implementation/phase37/performance-admission.md),
+[compiler cost](../implementation/phase37/compiler-cost.md) and installed-release
+validation retain separate evidence.
+
+## Historical Phase36 installed03 validation
+
+**Phase36 checked03 was installed, release verification passed, and all 42
+ordinary/relocated CLI checks passed.** Its final postinstall audit closes all **15 groups**,
 following all 38 preinstall steps, with **226 canonical files** matching the
 checked snapshot. Its API SHA256 is
 `93e55ad7ee456eebb5fa3dd9606c2cf262ea386c6f66bfd891ffe187d8f50a75`;

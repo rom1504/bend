@@ -176,8 +176,15 @@ const regionProtocolPairs=[[Array.prototype,Symbol.iterator],[Array.prototype,'c
   [regionIteratorPrototype,'next'],[regionIteratorPrototype,'return'],[regionIteratorParent,'return'],[Object.prototype,'return']];
 const regionProtocolDescriptors=[];
 for(let i=0;i<regionProtocolPairs.length;i++)regionProtocolDescriptors[i]=Object.getOwnPropertyDescriptor(regionProtocolPairs[i][0],regionProtocolPairs[i][1]);
+// F32 literals use the shared DataView. A prior generic hook may retain that
+// instance, so verify its own methods/prototype as well as the host methods.
+const regionDataViewPrototype=DataView.prototype;
+const regionDataViewKeys=['setUint32','getFloat32','setFloat32','getUint32'];
+for(const key of regionDataViewKeys)regionNumericHooks.push([regionDataViewPrototype,key,regionDataViewPrototype[key]]);
 function regionHostGuard(){
   if(regionProof!==null)return true;
+  if(regionGetPrototype(floatView)!==regionDataViewPrototype)return false;
+  for(let i=0;i<regionDataViewKeys.length;i++)if(regionGetDescriptor(floatView,regionDataViewKeys[i]))return false;
   for(let i=0;i<regionNumericHooks.length;i++){
     const p=regionNumericHooks[i],d=regionGetDescriptor(p[0],p[1]);
     if(!d||!regionOwn(d,'value')||d.value!==p[2])return false;
@@ -204,7 +211,7 @@ function regionHostGuard(){
 
 const native=(name,n,f)=>{
   const value=fn(n,a=>f(...a));
-  return G[name]=name==='Array.new'||name==='Array.get'||name==='Array.set'||name==='F32.to_u32'?scalarCapture(name,value):value;
+  return G[name]=name==='Array.new'||name==='Array.get'||name==='Array.set'||name==='F32.to_u32'||name==='Bool.xor'?scalarCapture(name,value):value;
 };
 function get(v,k){if(k in v){const x=v[k];return x?.code&&x.arity===0?call(x,[]):x;}bad('unbound name: '+k)}
 function ctor(k,a){

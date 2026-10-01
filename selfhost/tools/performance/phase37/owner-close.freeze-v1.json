@@ -1,0 +1,68 @@
+{
+  "kind": "phase37-owner-audit-producer-freeze",
+  "executed": false,
+  "producer": {
+    "path": "selfhost/tools/performance/phase37/owner-close.py",
+    "sha256": "cfe95276140112fc7ea199f1443b5225c3b66321e75617e645f438311b595651",
+    "bytes": 12531
+  },
+  "scope": "Producer/fixture/control contract frozen after root finite-v5/v2 success. This is not a completed owner closure; fresh final cast/DataView controls and root audit execution remain required.",
+  "finalAttempt": {
+    "path": "selfhost/build/phase37/checked03/attempt.json",
+    "sha256": "7ae878dda1b75dce1655c62d8e7238e184319da1fa04a8a12a189f37badc8f85",
+    "bytes": 208872
+  },
+  "finiteEvidence": {
+    "path": "selfhost/build/phase37/finite-controls02/report.json",
+    "sha256": "66e10f892921d1ddb2b21ecc050b5d0d92e958ed678459783a52f026f62ae127",
+    "bytes": 83017
+  },
+  "counts": {
+    "cast": {
+      "oracles": 44,
+      "boundaries": 57,
+      "admission": 7
+    },
+    "dataview": {
+      "observations": 22,
+      "errors": 0
+    },
+    "finite": {
+      "oracle": 154,
+      "admission": 9,
+      "boundaries": 76
+    }
+  },
+  "tools": [
+    {
+      "path": "selfhost/tools/performance/phase37/optimizer/finite-fixture-v5.bend",
+      "sha256": "c8d68da2cb6ddd292651ecdb304fa915b7035f79af165bb2f954b0f7f2749d58",
+      "bytes": 5318
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/optimizer/finite-acquire-v5.py",
+      "sha256": "7bc5394962b33e8597225e19d0fca5b9c6e115f156a0d5f82538f7afc86a430b",
+      "bytes": 6691
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/optimizer/finite-controls-v2.mjs",
+      "sha256": "9baf2039bc818faa257904363c3621b1c0b2bc5e408ba630c8d8793bd094ce29",
+      "bytes": 16019
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/optimizer/native-cast-actual-derive-v4.mjs",
+      "sha256": "c0ac5f1792ea54c7f15368f23ab86ff8d95d739665744c521188215dcb696b31",
+      "bytes": 6908
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/optimizer/native-cast-actual-controls-v5.mjs",
+      "sha256": "36bef591d43fc2ced4bf883ec4a4535379522ccb9a1e1b1650f2d97233217567",
+      "bytes": 12582
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/optimizer/native-cast-actual-dataview-controls-v4.mjs",
+      "sha256": "e3e298854ad6f81e00fbdc14411f5707be6cdb0790bfa6ec756c625395de8cee",
+      "bytes": 5751
+    }
+  ]
+}

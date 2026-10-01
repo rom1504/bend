@@ -1,0 +1,62 @@
+{
+  "kind": "phase37-inherited-final-planner-derivation",
+  "complete": true,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase36/final-integration-plan.py",
+    "sha256": "6b05713f240e91394c0e7abe78f955016c138610b7a92a1adc080cbc125de7f0",
+    "bytes": 15508
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/derive-integration-tools.py",
+    "sha256": "457e63030efdef249d70301bf4c6241f06f6a1d3fcec2be0f656983d76dd51df",
+    "bytes": 5591
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/final-integration-plan.py",
+    "sha256": "003b4fc7dea5b12b228bbc901ca7e99c545a2dbc8eadf30f9b3b1add360ce7e5",
+    "bytes": 15906
+  },
+  "changes": [
+    {
+      "before": "\"\"\"Freeze Phase36 gates using the unchanged Phase35 assertions; execute nothing.\"\"\"",
+      "after": "\"\"\"Freeze Phase37 gates using inherited semantic assertions; execute nothing.\"\"\"",
+      "count": 1
+    },
+    {
+      "before": "'src/back/js/producer.bend': 'src/back/js/fold.bend'}",
+      "after": "'src/back/js/producer.bend': 'src/back/js/fold.bend',\n             'src/back/js/finite.bend': 'src/back/js/producer.bend'}",
+      "count": 1
+    },
+    {
+      "before": "'phase36-inherited-final-planner-derivation'",
+      "after": "'phase37-inherited-final-planner-derivation'",
+      "count": 1
+    },
+    {
+      "before": "keep(proof['parent']['file'], proof['parent']['sha256'])",
+      "after": "keep(proof['parent']['file'], proof['parent']['sha256'])\nkeep(proof['producer']['file'], proof['producer']['sha256'])\nkeep(Path(__file__).with_name('final-gate-audit.py'))\nkeep(Path(__file__).with_name('final-gate-audit.json'))\nkeep(HERE.parent/'phase36/final-integration-plan.json')",
+      "count": 1
+    },
+    {
+      "before": "save(out/'phase36-parentage.json'",
+      "after": "save(out/'phase37-parentage.json'",
+      "count": 1
+    },
+    {
+      "before": "parent=keep(HERE/'final-integration-plan.py'), successor=keep(__file__)",
+      "after": "parent=keep(HERE.parent/'phase36/final-integration-plan.py'), successor=keep(__file__)",
+      "count": 1
+    },
+    {
+      "before": "assertionPolicy='All Phase35 frontend/backend/inherited/15 owner assertions and auditors remain unchanged. Successor provenance, one explicit named module position and two previously established report-pointer corrections are added. Phase36-specific owner controls are separately required.'",
+      "after": "assertionPolicy='All inherited frontend/backend/15 owner semantic assertions remain unchanged. Add finite.bend only after producer.bend. Preserve known scope/vector report-pointer corrections. The Phase37 auditor pins the current packer separately while preserving historical archived producer checks.'",
+      "count": 1
+    },
+    {
+      "before": "phase36Owners='Separate explicit final-API producer, scoped-guard and compiler-cost controls; not discharged by this inherited plan.'",
+      "after": "separateOwners='Reacquire all seven Phase36 producer/scoped-guard groups on the final API. New Phase37 finite/native/cast owner groups and normal compiler costs remain separate mandatory admission requirements.'",
+      "count": 1
+    }
+  ],
+  "scope": "Exact source derivation only. No compiler, gate, timing, install or publication executed."
+}

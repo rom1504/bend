@@ -1,98 +1,83 @@
 # Phase37 current frontier
 
-User authorization covers compiler experiments, implementation, design/report
-and commit/push to `rom1504/bend`, branch `selfhost/bootstrap`. No PR comments
-without an explicit request. Older timed campaigns are historical. Preserve the
-103 unrelated starting files and the closed Phase35 and Phase36 raw trees.
-
-## Active Phase37 campaign
-
-Expand coverage before production changes: retain the historical15points, add
-varied inputs and8additional families, freeze oracles and a family-level holdout,
-then baseline Phase36 against pinned TypeScript. Test a narrow private tree
-operation before any general compiler implementation. No speedup is yet claimed.
-[Prospective design](../design/phase37/README.md). Root alone executes bounded
-jobs; agents author and inspect. Every failed attempt remains evidence.
+User authorization covers compiler experiments, design/report and commit/push to
+`rom1504/bend`, branch `selfhost/bootstrap`. No PR comments without an explicit
+request. Older timed campaigns are historical. Preserve the 103 unrelated
+starting files and closed Phase35/36 evidence.
 
 ## Installed result
 
-**Phase36 checked03 is installed and verified.** All 42 ordinary/relocated CLI
-checks and all 15 inherited postinstall audit groups pass; 226 canonical files
-match. Seven new owner groups separately close on the same API:
-`93e55ad7ee456eebb5fa3dd9606c2cf262ea386c6f66bfd891ffe187d8f50a75`.
+**Phase37 checked03 is installed and verified.** All 42 ordinary/relocated CLI
+checks and all 15 post-install audit groups pass; 227 canonical files match.
+Fifteen inherited Phase35, seven Phase36 and three new Phase37 owner groups
+close separately on API
+`ea5db4a2857ffddce8263406041f56acc9b613754660d7a20c6b7c58682c86a1`.
 Upstream remains `018751270e800bc222a93dad7f257083ee53a5f7`. This is a checked B1
-derivative, not a new self-emitted fixed point. The previous Phase35 release is
-preserved in release history.
+derivative, not a new self-emitted fixed point. Phase36 remains in release history.
 
-[Report](../implementation/phase36/README.md) ·
-[Release](../implementation/phase36/release-03.md) ·
-[Admission](../implementation/phase36/performance-admission.md) ·
-[Profiles](../implementation/phase36/profile-findings.md)
+[Report](../implementation/phase37/README.md) ·
+[Release](../implementation/phase37/release-03.md) ·
+[Admission](../implementation/phase37/performance-admission.md) ·
+[Profiles](../implementation/phase37/profile-findings.md)
 
-Retained changes: scoped guard reuse under whole-root purity and private ordered
-tree production with finite Nat/Bool selectors. Error construction suspends proof
-through callbacks; native-array graphs are refused. Original tagged storage,
-sharing, public stages and fallback remain. No new types or laws were needed.
-The source is frozen at `selfhost/build/phase36/checked03`.
+Finite selectors reuse typed matching, existing purity proofs and tagged values.
+Direct F32-to-U32 conversion shares the effective public native body inside a
+proved private region. DataView guards preserve callbacks, leaked instances and
+host mutation. Scalar-only selectors cannot justify another proof scope; the
+first broad version regressed active ray by 35.6% and is rejected.
 
 ## Measurements and costs
 
-The unchanged fifteen-point comparison takes 401.551 seconds. Versus fresh
-same-run Phase35, symreg is **3.653×** and raytrace **2.319×** faster, with disjoint
-observed ranges. Remaining TS gaps are **3.834×** and **23.473×**. Other points
-have overlapping ranges; all fifteen remain slower than TS. Lexer and tree-bitonic
-retain **89.379×** and **80.618×** gaps. Do not average these fixed-input ratios.
+Coverage expands from 15 to 45 points across 23 sources, including eight new
+families and three families held out while selecting this compiler. All 669
+final samples pass their output expectations. Four bounded runs take 1,056.320
+seconds total (17.61 minutes); this is not an inner-loop requirement.
 
-Map/set shows +3.190% in the full run and −0.523% in a same-protocol focused
-follow-up; both overlap and remain evidence. Thirteen complete program suffixes
-are byte-identical, with a common runtime increase of 1,005 bytes. Normal checked
-request medians change −1.56% pair, +0.42% Mandelbrot, +4.50% symreg and +4.02% ray,
-all overlapping across three samples. Accept these possible costs explicitly;
-no compiler-throughput improvement is established.
+Versus fresh same-run Phase36, numeric recurrence is **2.674×/5.165× faster** and
+three tree sizes are **1.165–1.270× faster**, with disjoint ranges and every pair
+improving. Remaining TS gaps are 3.338–7.382× numeric and 57.117–64.794× tree.
+Four points have disjoint slower ranges: symreg +1.63%, smaller lexer +1.78%,
+active ray 256 +3.58%, list 512 +4.65%. Several heldout points also slow in every
+paired round despite overlapping ranges; record 256 has two large slow rounds.
+No average across fixed inputs, overall gain or typical-program claim follows.
 
-Source grows 124 physical lines (0.687%) to **18,174 Bend lines / 69 modules /
-2,024 definitions**, with 15,545 nonblank lines, 71 types and 640 laws. Generated
-program sections grow 1,440 bytes for symreg and 186 for ray. This phase improves
-execution, not source simplicity.
+Checked-request medians rise 2.47% local row, 6.40% tree and 1.06% numeric;
+local/tree ranges are disjoint. Source grows 184 physical Bend lines (+1.01%)
+to 18,358 lines / 70 modules / 2,045 definitions; 71 types/640 laws stay unchanged.
+This phase improves selected execution paths, not compiler throughput or simplicity.
+Final allocation profiles estimate numeric -71% and tree -31%; list/ray allocation
+is roughly unchanged. Profiles do not explain every small timing regression.
 
-## Next experiments
+## Next investigations
 
-1. Test one private finite-sum or tree-to-tree operation from lexer or bitonic,
-   such as `step.at`, `warp_leaf.go` or `warp_zip`. Their hot generic application,
-   forcing and closures remain, and guard-only work will not cover these paths.
-2. Find a proved enclosing boundary for symreg's remaining guards: its producer
-   ancestry falls 63.92→12.30%, while guards now occupy 35.58% of sampled ancestry.
-3. Lower one remaining ray geometry/tagged-result call. Guards fall 50.12→0.44%;
-   `apply` now accounts for 31.53% of self samples. Keep the complete-row oracle.
-4. Consider narrowly proved direct nonnative constructor creation only as a
-   secondary ablation; `ctor` is 4.52% of symreg allocation samples.
+1. Isolate unused finite branches/module layout and repeated guards before
+   adding more proof boundaries. List benchmark-reachable bodies are unchanged;
+   its slowdown is measured but not causally explained.
+2. Ablate one saturated dispatch/matching component in map churn or lexer.
+   Current gaps remain 91–106× and 81–91× TS. Use counters and complete oracles.
+3. Revisit a reusable private recursive tree component only after a second
+   independent shape validates the saved-output mechanism. BST gaps 152–209× TS
+   expose headroom, not a forecast of achievable gain.
+4. Consolidate workers/representations only when two component experiments
+   establish the same missing abstraction. Measure compiler and emitted-size cost.
 
-These are unimplemented hypotheses without gain promises. Start with a clean
-saved-output ablation and complete local oracles; require actual path entry,
-mutation/reentry and refusal controls before a checked compiler change. Do not
-repeat the rejected extra reflection shortcut or compiler-analysis preflight
-without overcoming their recorded lack of material benefit. Do not build a new
-optimizer IR before a narrow mechanism establishes its value.
+See [next opportunities](../implementation/phase37/next-opportunities.md).
+Previously heldout BST/expression/record families are now exposed; preserve them
+as regression tests and reserve new holdouts for the next optimization phase.
+Add non-cycle list lengths/selectivity in a new catalog; keep old points unchanged.
+No further optimization is part of the now-frozen Phase37 candidate.
 
-## Reproduction and closure
+## Iteration and correctness
 
-Use the maintained 20/60/300/600-second execution ceilings with independent
-`--set`/`--cases`. The default portable baseline remains Phase32; Phase36 uses the
-explicit `baseline02/manifest.json` containing Phase35 checked output. See the
-[phase tools guide](../selfhost/tools/performance/phase36/README.md). Checked03
-plus Focus36 takes 42.288 seconds; the actual symreg screen takes 8.028 seconds.
-Profiles are separate: all 24 pass in 76.666 seconds. Clean final run is
-`full-confirm03`; follow-up `map-set-confirm03`; cost `compiler-cost-run03`;
-profiles `profiles03`, all under `selfhost/build/phase36`.
+Use the explicit [Phase37 catalog](../selfhost/tools/performance/phase37/README.md),
+portable Phase36/TS reference, and 20/60/300/600-second ceilings with selected IDs.
+Build/acquisition are separate; checked03 plus 36 focused probes took 42.175 seconds.
+Root runs heavy jobs serially on CPU3, heap<=1 GiB, process tree<=2 GiB, with 2 GiB
+available memory. Agents author and inspect; preserve failed attempts.
 
-Frontend agrees exactly on 3,026 main + 196 broader observations. Raw main
-verdicts remain 2,525 pass / 497 observed / 4 shared failures; backend81 remains
-69 pass / 8 N/A / 4 shared failures. Counts overlap and no full backend/GPU or
-independent proof-kernel result follows.
-
-The [capsule](../implementation/phase36/evidence/README.md) preserves failures and
-successes with independent reopening/source verification. Resource receipts show
-zero resource stops and zero unfinished jobs; all 103 protected files remain
-unchanged. Root alone runs heavy jobs serially, CPU3, heap at most 1 GiB, process
-tree at most 2 GiB, and a 2 GiB free-memory floor. Agents inspect and prepare
-controls/docs without concurrent compiler or benchmark jobs.
+Frontend matches 3,026 main + 196 broader retained observations. Main verdicts remain
+2,525 pass / 497 observed / 4 shared failures; backend 81 remains 69 pass / 8 N/A / 4 shared
+failures. No full backend/GPU or independent proof-kernel claim. The inherited
+owner audit path error and its reviewed successor both remain evidence.
+The [capsule](../implementation/phase37/evidence/README.md) closes raw writers and
+verifies archived bytes independently before publication.

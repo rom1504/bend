@@ -127,10 +127,12 @@ def j_region_local_signature_head(+book: List<&2,KDef>, +ty: KTerm, +left: U32) 
 @unsafe
 def j_region_local_native(+book: List<&2,KDef>, +spine: KTerm) -> Bool:
   +name = nm(spine)
+  kc(Bool, String.eq(name, "F32.to_u32"),
+    u => String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), 1) && j_pure_native(book, lookup(book, name)), u =>
   kc(Bool, String.eq(tg(spine), "Call") && String.contains("|Array.new|Array.get|Array.set|", "|" ++ name ++ "|") &&
     U32.is_eq(terms_len(ks(spine)), kc(U32, String.eq(name, "Array.set"), u => 4, u => 3)), u =>
     kc(Bool, j_primitive_type(book, wnf(book, kid(spine, 0)), "U32"), u =>
-      j_region_local_native_def(book, lookup(book, name), kid(spine, 0), terms_len(ks(spine))), u => False{}), u => False{})
+      j_region_local_native_def(book, lookup(book, name), kid(spine, 0), terms_len(ks(spine))), u => False{}), u => False{}))
 
 @unsafe
 def j_region_local_native_def(+book: List<&2,KDef>, +d: KDef, +element: KTerm, +arity: U32) -> Bool:

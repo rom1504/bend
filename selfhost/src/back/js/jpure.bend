@@ -91,9 +91,20 @@ def j_pure_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> Bool:
 @unsafe
 def j_pure_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
   +ty = wnf(book, dt(d))
-  String.eq(dn(d), "F32.to_u32") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 1) && U32.is_eq(dx(d), 0) &&
+  j_pure_bool_native(book, d) || (String.eq(dn(d), "F32.to_u32") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 1) && U32.is_eq(dx(d), 0) &&
     Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) &&
-    j_primitive_type(book, wnf(book, kid(ty, 0)), "F32") && j_primitive_type(book, wnf(book, kid(ty, 1)), "U32")
+    j_primitive_type(book, wnf(book, kid(ty, 0)), "F32") && j_primitive_type(book, wnf(book, kid(ty, 1)), "U32"))
+
+# The residual call keeps its ordinary native ABI; only its closed signature
+# and immutable captured descriptor can participate in a private root proof.
+@unsafe
+def j_pure_bool_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
+  +ty = wnf(book, dt(d))
+  +rest = wnf(book, kid(ty, 1))
+  String.eq(dn(d), "Bool.xor") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) &&
+    Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) &&
+    j_primitive_type(book, wnf(book, kid(ty, 0)), "Bool") && String.eq(tg(rest), "All") && Bool.not(U32.is_eq(qt(rest), 0)) &&
+    j_primitive_type(book, wnf(book, kid(rest, 0)), "Bool") && j_primitive_type(book, wnf(book, kid(rest, 1)), "Bool")
 
 @unsafe
 def j_pure_eligible(+book: List<&2,KDef>, +d: KDef) -> Bool:

@@ -1,0 +1,42 @@
+{
+  "kind": "phase37-inherited-final-audit-derivation",
+  "complete": true,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase35/final-gate-audit-v2.py",
+    "sha256": "1474ed3f83eb0b02df77705c36b419dc2a1854b5fd8f9435a96e6a670ebbeb29",
+    "bytes": 23835
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/derive-integration-tools.py",
+    "sha256": "457e63030efdef249d70301bf4c6241f06f6a1d3fcec2be0f656983d76dd51df",
+    "bytes": 5591
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/final-gate-audit.py",
+    "sha256": "808068f34159c1e9979914a469a46ba52a18f2cb4194ec47cc117d059226516a",
+    "bytes": 24207
+  },
+  "changes": [
+    {
+      "before": "\"\"\"Audit Phase35 receipts; resolve only the pinned portable reference via frozen provenance.\"\"\"",
+      "after": "\"\"\"Audit inherited Phase37 receipts; preserve exact historical archive provenance.\"\"\"",
+      "count": 1
+    },
+    {
+      "before": "original_audit = Path(__file__).with_name('final-gate-audit.py')",
+      "after": "original_audit = Path(__file__).resolve().parent.parent/'phase35/final-gate-audit.py'",
+      "count": 1
+    },
+    {
+      "before": "('freeze-reference.py', 'f230fffbd70ea26e020b88520c94dceee71833b5054c72b5f753dca648f6e760')]:",
+      "after": "('freeze-reference.py', 'a3daa6004187a8713d041043e7e3d72c3377c18e629b43c61af12f8f5310fc6d')]:",
+      "count": 1
+    },
+    {
+      "before": "identity(__file__)\n",
+      "after": "identity(__file__)\nderivation_file = Path(__file__).with_suffix('.json')\nderivation = read(derivation_file)\nassert derivation['kind'] == 'phase37-inherited-final-audit-derivation' and derivation['complete']\nassert Path(derivation['derived']['file']).resolve() == Path(__file__).resolve()\nverify(derivation['derived']); verify(derivation['parent']); verify(derivation['producer'])\n",
+      "count": 1
+    }
+  ],
+  "scope": "Exact source derivation only. No compiler, gate, timing, install or publication executed."
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "phase37-native-cast-source-fixture",
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "source": {
+    "path": "selfhost/tools/performance/phase37/optimizer/native-cast-fixture-v1.bend",
+    "sha256": "a809e18954dd1c96c748d842fdffce48ef16aff713da7aaeaa3d66adf7ef5410",
+    "bytes": 1160
+  },
+  "parent": {
+    "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+    "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3"
+  },
+  "wrapper": "\n# Actual compiler ownership controls: retain the unchanged recurrence above.\ndef cast.steps(n: Nat, +x: F32, h: U32) -> U32:\n  match n:\n    case 0n:\n      h\n    case 1n+p:\n      cast.steps(p, x, U32.xor(U32.mul(h, 16777619), F32.to_u32(x)))\n\ndef cast.probe(x: F32) -> U32:\n  cast.steps(1n, x, 0)\n\ndef cast.order(x: F32, y: F32) -> U32:\n  U32.add(cast.steps(1n, x, 0), cast.steps(1n, y, 0))\n\ndef cast.once(x: F32) -> U32:\n  cast.steps(1n, F32.add(x, 0.25), 0)\n\ndef cast.unused(x: F32) -> U32:\n  ignored = cast.steps(1n, x, 0)\n  17\n\ndef cast.staged(x: F32) -> U32 -> U32:\n  h => U32.add(F32.to_u32(x), h)\n",
+  "exports": [
+    "bench",
+    "cast.steps",
+    "cast.probe",
+    "cast.order",
+    "cast.once",
+    "cast.unused",
+    "cast.staged"
+  ],
+  "scope": "Recurrence body unchanged; actual source F32 boundaries, unused result, argument demand, order and delayed partial closure."
+}

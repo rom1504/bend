@@ -137,6 +137,85 @@ focused refusal/alias/error tests, fresh expanded-catalog execution, normal
 compilation-cost measurement and integration gates. Record Bend source lines,
 definitions/types, runtime lines and emitted-program size separately from speed.
 
+## Selected actual-source candidate after the mechanism screen
+
+The five-round, three-size confirmation finds only 1.03–1.10× for zip alone,
+but 1.32–1.33× consistently for zip plus leaf selection. The complete recursive
+component gives 2.60–3.56×. Test a bounded inline finite prefix first; the larger
+recursive worker remains a separate architecture decision.
+
+The candidate has one 163-line Bend module with 19 small helpers. It reuses the
+original typed Lam/Mat representation, `JPure`, materialized constructor layout,
+existing scalar dependency/host guard and existing generic expression. It adds
+no optimizer IR or new runtime worker table. Native `Bool.xor` keeps generic
+dispatch but gains an exact typed purity predicate and captured descriptor.
+
+Admission requires a known saturated nonnative callee, at most eight arguments,
+at most 256 executable source nodes and prefix depth below 32. The prefix permits
+original parameter bindings, complete matches on private nonnative sums or Bool,
+and total variable/literal/primitive/inert-constructor leaves. Helper calls,
+recursive selector bodies, lets and native constructors other than Bool refuse
+this route. The mandatory independent typed prefix proof validates branch
+completeness and erased/variable/type obligations.
+
+At an eligible call, an IIFE captures actual arguments in original left-to-right
+order, then follows the original prefix using fresh source binder identities.
+It is selected only when an active whole-graph scalar proof covers the callee.
+The complete scalar graph guarantees already-forced compiler-owned fields, so
+inspecting earlier matched fields before/after evaluating later arguments crosses
+only total tag/field reads. Purity without this ownership fact is insufficient.
+Outside that scope the exact original generic expression remains.
+
+A residual scalar root may open the scope if its complete pure graph contains
+a useful selector. It fully forces the original generic result before closing
+the proof. It opens only when no proof is active: nested root→matcher→root tail
+cycles must return jumps to the outer force loop, avoiding nested JS stacks.
+
+Readiness uses nested `kc` gates because Bend Boolean operators evaluate their
+arguments eagerly. The match scan strips annotations after the executable-node
+budget check. This avoids expensive readiness on nonsaturated or unsupported
+calls, but repeated per-call analysis and duplicated inline text remain cost
+risks. Normal checked compilation costs and emitted sizes are promotion gates;
+the patch is not accepted merely because its runtime benchmark wins.
+
+The actual-source fixture tests three-constructor sums, first/last Bool matches,
+two input trees with a type alias, nested constructors and surviving child aliases,
+declined helper/native/higher-order/array shapes, 30,000-step self/mutual tail
+cycles, and actual argument overflow with Error mutation/reentry. Diagnostics
+count actual emitted selector branches, not a substituted handwritten worker.
+See the versioned outcomes in
+[`implementation/phase37/optimizer/attempts.md`](../../implementation/phase37/optimizer/attempts.md).
+
+The accompanying independent native-cast experiment also identified a missing
+host-guard dependency: mutable DataView methods and a previously captured shared
+float-view instance. Both candidates require that guard correction before
+promotion. Its cost must be measured on active floating workloads, where a
+complete outer proof may not be available to amortize descriptor checks.
+
+### Profitability successor before checked03
+
+The actual active-ray ablation establishes 1,968 successful tiny helper scopes
+per call (984 each in `fmax0` and `shade`). They add exactly 1,968 full host checks:
+4,941 in the candidate versus 2,973 when new roots are disabled. The timed export
+uses an older scalar root without a proof scope, so the unused new `bench` root
+cannot amortize these costs. The issue is excessive small scope entries, not
+failure to enter the new roots.
+
+Narrow only the **usefulness predicate for creating a new finite root**. At least
+one admitted finite callee in its proved graph must have an argument or result
+outside the existing scalar signature predicate. Scalar-only min/max and Bool
+selectors can still inline inside an already active proof, but cannot alone
+justify a new complete host/dependency check. This reuses `j_region_signature`
+and requires no new analysis, worker, runtime state or proof assumption.
+
+The tree zip/leaf/stat selector signatures touch private sums and should retain
+their scopes. Ray's three finite selector names are scalar-only and should no
+longer create the eight new finite roots. Verify those static shapes, actual
+tree/fixture private entries, active-ray execution, normal compiler costs and
+the expanded catalog in a fresh checked03 acquisition. Keep checked02 and the
+failed/regressing evidence unchanged. The DataView correction remains required;
+its independent cost is not a reason to remove it from production.
+
 ## Root commands
 
 All paths below are relative to the repository. Use new output directories.

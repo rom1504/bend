@@ -107,4 +107,4 @@ def j_u32_global(+book: List<&2,KDef>, +d: KDef, +worker: Maybe<&2,String>) -> S
   match worker:
     case Some{code}: j_l_global_worker(book, d, dv(d), code)
     case None{}:
-      kc(String, j_l_deep(dv(d), 0), u => j_l_definition(book, d, j_l_mark(dv(d), "r", 0)), u => j_l_global(book, d, dv(d)))
+      j_finite_global(book, d, j_finite_root(book, d))

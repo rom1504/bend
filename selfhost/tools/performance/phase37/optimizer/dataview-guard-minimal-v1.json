@@ -1,0 +1,15 @@
+{
+  "kind": "phase37-dataview-guard-minimal-proposal",
+  "applied": false,
+  "source": {
+    "path": "selfhost/src/runtime/js/core.mjs",
+    "sha256": "53d4a49d3c8782f10ae479f6ae2e9ef6bd4bf21d5245adbae8e0a27d7d461c24"
+  },
+  "proposedSha256": "2db3975c945912eb50fecb79865fe597aefd101b145d8dabb9d91b3df718e4f9",
+  "patch": {
+    "path": "selfhost/tools/performance/phase37/optimizer/dataview-guard-minimal-v1.patch",
+    "sha256": "6eb00dc6cb0cba01625d07a06a57b63d24154edf54d43f8da2f33cab4a9346f6"
+  },
+  "changes": "Remove only global constructor binding, constructor prototype and prototype-parent checks. Keep exact shared-instance prototype, own-method absence and four captured prototype methods. Root owns apply and runtime assembly after ablation decision.",
+  "required": "Fresh checked API, repeated22 DataView controls plus actual source cast and full owner checks; no timing claim from source check count."
+}

@@ -1,0 +1,19 @@
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -178,14 +178,12 @@
+ for(let i=0;i<regionProtocolPairs.length;i++)regionProtocolDescriptors[i]=Object.getOwnPropertyDescriptor(regionProtocolPairs[i][0],regionProtocolPairs[i][1]);
+ // F32 literals use the shared DataView. A prior generic hook may retain that
+ // instance, so verify its own methods/prototype as well as the host methods.
+-const regionDataViewCtor=DataView,regionDataViewPrototype=DataView.prototype;
+-const regionDataViewParent=regionGetPrototype(regionDataViewPrototype);
++const regionDataViewPrototype=DataView.prototype;
+ const regionDataViewKeys=['setUint32','getFloat32','setFloat32','getUint32'];
+ for(const key of regionDataViewKeys)regionNumericHooks.push([regionDataViewPrototype,key,regionDataViewPrototype[key]]);
+-regionNumericHooks.push([globalThis,'DataView',regionDataViewCtor],[regionDataViewCtor,'prototype',regionDataViewPrototype]);
+ function regionHostGuard(){
+   if(regionProof!==null)return true;
+-  if(regionGetPrototype(floatView)!==regionDataViewPrototype||regionGetPrototype(regionDataViewPrototype)!==regionDataViewParent)return false;
++  if(regionGetPrototype(floatView)!==regionDataViewPrototype)return false;
+   for(let i=0;i<regionDataViewKeys.length;i++)if(regionGetDescriptor(floatView,regionDataViewKeys[i]))return false;
+   for(let i=0;i<regionNumericHooks.length;i++){
+     const p=regionNumericHooks[i],d=regionGetDescriptor(p[0],p[1]);

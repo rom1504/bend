@@ -1,0 +1,61 @@
+--- a/selfhost/src/back/js/local.bend
++++ b/selfhost/src/back/js/local.bend
+@@ -127,10 +127,12 @@
+ @unsafe
+ def j_region_local_native(+book: List<&2,KDef>, +spine: KTerm) -> Bool:
+   +name = nm(spine)
++  kc(Bool, String.eq(name, "F32.to_u32"),
++    u => String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), 1) && j_pure_native(book, lookup(book, name)), u =>
+   kc(Bool, String.eq(tg(spine), "Call") && String.contains("|Array.new|Array.get|Array.set|", "|" ++ name ++ "|") &&
+     U32.is_eq(terms_len(ks(spine)), kc(U32, String.eq(name, "Array.set"), u => 4, u => 3)), u =>
+     kc(Bool, j_primitive_type(book, wnf(book, kid(spine, 0)), "U32"), u =>
+-      j_region_local_native_def(book, lookup(book, name), kid(spine, 0), terms_len(ks(spine))), u => False{}), u => False{})
++      j_region_local_native_def(book, lookup(book, name), kid(spine, 0), terms_len(ks(spine))), u => False{}), u => False{}))
+ 
+ @unsafe
+ def j_region_local_native_def(+book: List<&2,KDef>, +d: KDef, +element: KTerm, +arity: U32) -> Bool:
+--- a/selfhost/src/back/js/emit.bend
++++ b/selfhost/src/back/js/emit.bend
+@@ -979,8 +979,9 @@
+ 
+ @unsafe
+ def j_region_native_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> String:
++  kc(String, String.eq(nm(t), "F32.to_u32"), u => "regionF32ToU32(" ++ j_apply_args(book, env, ks(t), dt(lookup(book, nm(t)))) ++ ")", u =>
+   kc(String, String.eq(nm(t), "Array.new"), u => "((_t,d,v)=>arrayfill(v,d,'^'))(" ++ j_apply_args(book, env, ks(t), dt(lookup(book, nm(t)))) ++ ")", u =>
+-    j_region_native_array(book, env, t, ks(t)))
++    j_region_native_array(book, env, t, ks(t))))
+ 
+ # The checked native plan erases its U32 type argument. The remaining arguments
+ # keep their original left-to-right order without an intermediate closure.
+--- a/selfhost/src/runtime/js/base.mjs
++++ b/selfhost/src/runtime/js/base.mjs
+@@ -88,7 +88,8 @@
+ native('List.contains',4,(_a,eq,x,v)=>unlist(x).some(w=>call(eq,[w,v])));
+ native('U32.is_even',1,n=>(n&1)===0);
+ native('F32.div',2,(a,b)=>Math.fround(a/b));native('F32.mod',2,(a,b)=>Math.fround(a%b));
+-native('F32.to_u32',1,x=>!Number.isFinite(x)||x<0||x>=4294967296?0:Math.trunc(x)>>>0);
++const regionF32ToU32=x=>!Number.isFinite(x)||x<0||x>=4294967296?0:Math.trunc(x)>>>0;
++native('F32.to_u32',1,regionF32ToU32);
+ function word(n,bits=32){let w=ctor('WNil',[]);for(let i=bits-1;i>=0;i--)w=ctor('WCon',[((n>>>i)&1)===1,w]);return w}
+ function unword(w){let n=0,i=0;while(w.$==='WCon'){if(w.a[0])n=(n+2**i)>>>0;i++;w=w.a[1]}return n}
+ native('F32.lerp',3,(a,b,t)=>Math.fround(a+Math.fround(Math.fround(b-a)*t)));
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -176,8 +176,17 @@
+   [regionIteratorPrototype,'next'],[regionIteratorPrototype,'return'],[regionIteratorParent,'return'],[Object.prototype,'return']];
+ const regionProtocolDescriptors=[];
+ for(let i=0;i<regionProtocolPairs.length;i++)regionProtocolDescriptors[i]=Object.getOwnPropertyDescriptor(regionProtocolPairs[i][0],regionProtocolPairs[i][1]);
++// F32 literals use the shared DataView. A prior generic hook may retain that
++// instance, so verify its own methods/prototype as well as the host methods.
++const regionDataViewCtor=DataView,regionDataViewPrototype=DataView.prototype;
++const regionDataViewParent=regionGetPrototype(regionDataViewPrototype);
++const regionDataViewKeys=['setUint32','getFloat32','setFloat32','getUint32'];
++for(const key of regionDataViewKeys)regionNumericHooks.push([regionDataViewPrototype,key,regionDataViewPrototype[key]]);
++regionNumericHooks.push([globalThis,'DataView',regionDataViewCtor],[regionDataViewCtor,'prototype',regionDataViewPrototype]);
+ function regionHostGuard(){
+   if(regionProof!==null)return true;
++  if(regionGetPrototype(floatView)!==regionDataViewPrototype||regionGetPrototype(regionDataViewPrototype)!==regionDataViewParent)return false;
++  for(let i=0;i<regionDataViewKeys.length;i++)if(regionGetDescriptor(floatView,regionDataViewKeys[i]))return false;
+   for(let i=0;i<regionNumericHooks.length;i++){
+     const p=regionNumericHooks[i],d=regionGetDescriptor(p[0],p[1]);
+     if(!d||!regionOwn(d,'value')||d.value!==p[2])return false;

@@ -365,6 +365,10 @@ law j_apply_regular:
 
 @unsafe
 def j_apply_regular(book, env, t, tail, fty, spine):
+  j_finite_call(book, env, spine, j_apply_generic(book, env, t, tail, fty, spine))
+
+@unsafe
+def j_apply_generic(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +tail: Bool, +fty: KTerm, +spine: KTerm) -> String:
   kc(String, String.eq(tg(spine), "Call") && U32.is_gt(terms_len(ks(spine)), 1) && U32.is_le(terms_len(ks(spine)), j_call_arity(lookup(book, nm(spine)))), u => kc(String, tail, u => "jump(", u => "callOwned(") ++ "get(G," ++ j_quote(nm(spine)) ++ "),[" ++ j_apply_args(book, env, ks(spine), dt(lookup(book, nm(spine)))) ++ "])", u => j_apply_one(book, env, t, tail, fty))
 
 law j_call_arity:
@@ -975,8 +979,9 @@ def j_l_global(book, d, t):
 
 @unsafe
 def j_region_native_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> String:
+  kc(String, String.eq(nm(t), "F32.to_u32"), u => "regionF32ToU32(" ++ j_apply_args(book, env, ks(t), dt(lookup(book, nm(t)))) ++ ")", u =>
   kc(String, String.eq(nm(t), "Array.new"), u => "((_t,d,v)=>arrayfill(v,d,'^'))(" ++ j_apply_args(book, env, ks(t), dt(lookup(book, nm(t)))) ++ ")", u =>
-    j_region_native_array(book, env, t, ks(t)))
+    j_region_native_array(book, env, t, ks(t))))
 
 # The checked native plan erases its U32 type argument. The remaining arguments
 # keep their original left-to-right order without an intermediate closure.

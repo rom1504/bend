@@ -88,7 +88,8 @@ native('List.zip',6,(_q,_r,_a,_b,x,y)=>{const a=unlist(x),b=unlist(y);return lis
 native('List.contains',4,(_a,eq,x,v)=>unlist(x).some(w=>call(eq,[w,v])));
 native('U32.is_even',1,n=>(n&1)===0);
 native('F32.div',2,(a,b)=>Math.fround(a/b));native('F32.mod',2,(a,b)=>Math.fround(a%b));
-native('F32.to_u32',1,x=>!Number.isFinite(x)||x<0||x>=4294967296?0:Math.trunc(x)>>>0);
+const regionF32ToU32=x=>!Number.isFinite(x)||x<0||x>=4294967296?0:Math.trunc(x)>>>0;
+native('F32.to_u32',1,regionF32ToU32);
 function word(n,bits=32){let w=ctor('WNil',[]);for(let i=bits-1;i>=0;i--)w=ctor('WCon',[((n>>>i)&1)===1,w]);return w}
 function unword(w){let n=0,i=0;while(w.$==='WCon'){if(w.a[0])n=(n+2**i)>>>0;i++;w=w.a[1]}return n}
 native('F32.lerp',3,(a,b,t)=>Math.fround(a+Math.fround(Math.fround(b-a)*t)));

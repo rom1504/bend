@@ -1,11 +1,23 @@
 # Generated-program performance and the fast development loop
 
 Use the [compiler guide](BEND-IN-BEND.md) for normal compilation and the
-[Phase36 report index](../implementation/phase36/README.md) for exact results,
+[Phase37 report index](../implementation/phase37/README.md) for exact results,
 artifact identities, failed experiments and current promotion status. The target
 remains upstream `018751270e800bc222a93dad7f257083ee53a5f7`. The comparison is
 between JavaScript emitted from the same Bend source by the two compilers.
 Compiler checking cost is a separate measurement.
+
+**Phase37 checked03 is installed; release verification and all 42 ordinary/
+relocated CLI checks pass.** The [final gates](../implementation/phase37/final-conformance/gates.md)
+close 15 postinstallation audit groups and verify 227 canonical files; the
+[release record](../implementation/phase37/release-03.md) binds installation.
+Fresh frontend agreement covers 3,026 main + 196 broader observations. Backend
+outcomes remain 69 pass / 8 not applicable / 4 shared failures. Fifteen inherited
+Phase35 owner groups, seven Phase36 groups and three new Phase37 groups pass
+with separate closures; these overlapping counts do not establish full backend
+or GPU conformance.
+The [performance decision](../implementation/phase37/performance-admission.md)
+records both useful gains and measured regressions.
 
 ## What to run during optimization
 
@@ -22,8 +34,9 @@ retain their original warmup, process and validation boundaries.
 
 The additive [Phase37 coverage suite](../selfhost/tools/performance/phase37/README.md)
 contains **45 points in 23 source files**, including varied inputs and eight new
-program families. It has a separate portable Phase36/TypeScript reference and
-keeps three families out of optimizer tuning. Select its catalog explicitly;
+program families. It has a separate portable Phase36/TypeScript reference;
+three families were held out until final measurement, with no subsequent
+optimizer changes. Select its catalog explicitly;
 its full inventory requires bounded chunks rather than one promised 600-second
 run. The original fifteen-point catalog remains unchanged.
 
@@ -32,6 +45,43 @@ adds separate CPU and allocation profiles plus AST comparisons of those exact
 generated modules. It produces raw V8 profiles, source-attributed hot frames,
 normalized tokens and a side-by-side HTML view. Profiled durations never become
 speed ratios; syntax sites are distinguished from dynamically sampled costs.
+
+## Phase37 selected-output measurements
+
+All **45 points pass their frozen output checks**, with **669 samples** across
+four bounded final runs totaling **1,056.32 seconds**. Each comparison uses fresh
+same-run Phase36 and pinned TypeScript roles. The
+[complete table](../implementation/phase37/execution/report.md) retains every
+point, observed range and protocol; the total wall time is workflow cost, not a
+program-runtime denominator.
+
+| Point | Phase36 / checked03 speedup | Checked03 / TypeScript time |
+| --- | ---: | ---: |
+| Numeric recurrence 256 | 2.674× | 7.382× |
+| Numeric recurrence 1024 | 5.165× | 3.338× |
+| Tree depth 6 / seed 17 | 1.165× | 62.708× |
+| Tree depth 8 / seed 0 | 1.221× | 57.117× |
+| Tree depth 9 / seed 123 | 1.270× | 64.794× |
+| Active ray 256 / start 2240 | 0.965× | 71.589× |
+| List pipeline 512 | 0.956× | 44.424× |
+
+The tree and numeric gains have disjoint observed ranges. Active ray and list
+also have disjoint ranges, in the slower direction: about 3.6% and 4.7% costs.
+Smaller disjoint slowdowns occur in historical symbolic regression and the small
+lexer variation. Held-out BST 64, expression 128 and record aggregation 64 are
+slower in every paired round, with median paired penalties of 3.85%, 3.00% and
+3.44%, despite overlapping full ranges. Record 256 has two large slower rounds
+behind a near-unchanged median. The
+[holdout report](../implementation/phase37/holdout-findings.md) keeps all samples
+and drift limitations. Its BST gaps remain 152–209× TypeScript; no average or
+broad parity claim follows from these selected programs.
+
+The [compiler-cost study](../implementation/phase37/compiler-cost.md) measures
+normal checked requests separately: medians increase 2.47% local, 6.40% tree and
+1.06% numeric, with consistent costs on the first two sources. Source grows
+184 physical Bend lines (1.01%) to **18,358 lines in 70 modules**, with no new
+types or laws. The generated API grows 16,972 bytes. This is a bounded extension
+of existing proof machinery, not a source-reduction result.
 
 ## What the backend optimizes
 
@@ -157,6 +207,40 @@ storage; direct fields are restricted to inert or primitive expressions so
 general delayed calls do not become eager. See the
 [producer report](../implementation/phase36/private-producers.md).
 
+The Phase37 compiler adds bounded **finite selectors** inside that
+whole-graph boundary. Fully saturated calls can consume the original typed
+lambda/match prefix directly, including several tagged-data arguments and
+ordinary arguments following a match. Actual arguments are evaluated left to
+right before local bindings; admitted prefixes inspect only complete private
+values. Leaf work is restricted to inert construction and supported primitive
+expressions. Existing tagged storage and shared-child identity remain intact.
+Public data, partial calls, changed dependencies and unsupported prefixes retain
+ordinary dispatch. This reuses the current terms, types and purity analysis;
+there is no additional intermediate representation.
+
+A new scalar root opens such a scope only when its closed graph contains an
+eligible selector whose signature includes data beyond native scalars. Tiny
+scalar-only selectors do not justify a fresh full guard. An existing proof can
+still serve scalar selectors. Only an outer entry with no active proof owns the
+new force loop; recursive tail transfers return to that trampoline, and
+`finally` restores the previous scope. Existing optimizations may take priority,
+so a finite branch appearing in emitted text does not establish that it runs.
+
+The compiler also shares the existing `F32.to_u32` implementation between its
+public native wrapper and admitted private calls. The same finite/range checks
+and truncation remain; the private path avoids descriptor application only
+after checking the canonical native signature and guarding its binding and
+host intrinsics. Host guarding additionally checks the shared F32 `DataView`'s
+prototype and four methods, including unexpected instance overrides. A generic
+hook can retain that view, so prototype checks alone are insufficient. Mutation
+must retain observable fallback and callback behavior.
+
+These mechanisms and their controls are recorded in the
+[Phase37 design](../design/phase37/README.md) and
+[independent finite review](../implementation/phase37/optimizer/finite-review.md).
+Their final output measurements appear above; actual-source owner controls and
+installed-release validation retain separate evidence.
+
 ## Why entry and fallback matter
 
 Before entering a private region, generated code checks primitive input
@@ -228,9 +312,9 @@ emission; they are not fed back into checking or evaluation. See
 [purity](../selfhost/src/back/js/jpure.bend) and
 [fold](../selfhost/src/back/js/fold.bend) analyses.
 
-## Phase36 checked-output measurements
+## Historical Phase36 checked-output measurements
 
-The selected checked03 output completes all fifteen unchanged points in 401.551
+The historical Phase36 checked03 output completes all fifteen unchanged points in 401.551
 seconds. This comparison uses **Phase35 checked09 as the incremental baseline**,
 alongside pinned TypeScript. The maintained suite's default portable baseline is
 still Phase32; pass the explicit Phase36 `baseline02/manifest.json` to reproduce

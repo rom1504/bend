@@ -172,3 +172,26 @@ the catalog directory, rejects path traversal and file/directory symlinks, and
 verifies exact source hashes. The existing default catalog behavior stays intact.
 Root runs `programs/tests/test_catalog_preparation.py` and existing worker/harness
 controls separately from benchmarks; authors do not run heavy jobs concurrently.
+
+## Candidate correctness and final integration
+
+`fixtures-new/check-prepared-v2.mjs` takes `FINAL_ATTEMPT CANDIDATE_MANIFEST
+TYPESCRIPT_MANIFEST POINTS_V1 CATALOG NEW_OUT`. Root runs it under the bounded
+supervisor with Node24.18, CPU3 and a1024MiB heap. It reuses all45 catalog and32
+small application assertions for154 untimed observations, verifies the selected
+attempt and every checked receipt, and preserves per-point failures. The
+original `check-prepared.mjs` remains pinned to the Phase36 baseline. Neither
+worker measures heldout performance.
+
+Follow the [final integration guide](final-integration-README.md) for exact
+source-derived planners, a no-recompilation historical15 subset, inherited
+frontend/backend/15owner gates, seven separately rebound Phase36 owners and
+release/CLI closure. New Phase37 optimizer owners and clean performance/cost
+admission remain separate requirements.
+
+After complete same-run three-role measurements, root can run
+`summarize-expanded.py --attempt FINAL --report RUN/report.json` with repeated
+`--report` arguments, `--out NEW` and optionally `--require-full`. It verifies
+the exact compiler/catalog identities and recomputes each point's statistics;
+duplicate points or a different candidate are rejected. It retains protocols,
+ranges and drift without pooling measurements or averaging fixed-input ratios.

@@ -177,8 +177,15 @@ const regionProtocolPairs=[[Array.prototype,Symbol.iterator],[Array.prototype,'c
   [regionIteratorPrototype,'next'],[regionIteratorPrototype,'return'],[regionIteratorParent,'return'],[Object.prototype,'return']];
 const regionProtocolDescriptors=[];
 for(let i=0;i<regionProtocolPairs.length;i++)regionProtocolDescriptors[i]=Object.getOwnPropertyDescriptor(regionProtocolPairs[i][0],regionProtocolPairs[i][1]);
+// F32 literals use the shared DataView. A prior generic hook may retain that
+// instance, so verify its own methods/prototype as well as the host methods.
+const regionDataViewPrototype=DataView.prototype;
+const regionDataViewKeys=['setUint32','getFloat32','setFloat32','getUint32'];
+for(const key of regionDataViewKeys)regionNumericHooks.push([regionDataViewPrototype,key,regionDataViewPrototype[key]]);
 function regionHostGuard(){
   if(regionProof!==null)return true;
+  if(regionGetPrototype(floatView)!==regionDataViewPrototype)return false;
+  for(let i=0;i<regionDataViewKeys.length;i++)if(regionGetDescriptor(floatView,regionDataViewKeys[i]))return false;
   for(let i=0;i<regionNumericHooks.length;i++){
     const p=regionNumericHooks[i],d=regionGetDescriptor(p[0],p[1]);
     if(!d||!regionOwn(d,'value')||d.value!==p[2])return false;
@@ -205,7 +212,7 @@ function regionHostGuard(){
 
 const native=(name,n,f)=>{
   const value=fn(n,a=>f(...a));
-  return G[name]=name==='Array.new'||name==='Array.get'||name==='Array.set'||name==='F32.to_u32'?scalarCapture(name,value):value;
+  return G[name]=name==='Array.new'||name==='Array.get'||name==='Array.set'||name==='F32.to_u32'||name==='Bool.xor'?scalarCapture(name,value):value;
 };
 function get(v,k){if(k in v){const x=v[k];return x?.code&&x.arity===0?call(x,[]):x;}bad('unbound name: '+k)}
 function ctor(k,a){
@@ -408,7 +415,8 @@ native('List.zip',6,(_q,_r,_a,_b,x,y)=>{const a=unlist(x),b=unlist(y);return lis
 native('List.contains',4,(_a,eq,x,v)=>unlist(x).some(w=>call(eq,[w,v])));
 native('U32.is_even',1,n=>(n&1)===0);
 native('F32.div',2,(a,b)=>Math.fround(a/b));native('F32.mod',2,(a,b)=>Math.fround(a%b));
-native('F32.to_u32',1,x=>!Number.isFinite(x)||x<0||x>=4294967296?0:Math.trunc(x)>>>0);
+const regionF32ToU32=x=>!Number.isFinite(x)||x<0||x>=4294967296?0:Math.trunc(x)>>>0;
+native('F32.to_u32',1,regionF32ToU32);
 function word(n,bits=32){let w=ctor('WNil',[]);for(let i=bits-1;i>=0;i--)w=ctor('WCon',[((n>>>i)&1)===1,w]);return w}
 function unword(w){let n=0,i=0;while(w.$==='WCon'){if(w.a[0])n=(n+2**i)>>>0;i++;w=w.a[1]}return n}
 native('F32.lerp',3,(a,b,t)=>Math.fround(a+Math.fround(Math.fround(b-a)*t)));

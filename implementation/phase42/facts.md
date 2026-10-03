@@ -355,3 +355,11 @@ is weakened to claim native equality success. Source16 static complexity
 changes no counts from15 and reduces compiler source22bytes/API137bytes;
 [current complexity](complexity.md) and the retained source15 account bind
 their respective frozen attempts. Actual source16 controls/cost belong to root.
+
+Final selected16 [compiler-cost gate](compiler-cost.md) passes36 independently
+validated outputs across four cases/three roles/three rotations. Request
+medians tree−6.17% and numeric−6.03%, pair+5.79% and list+6.69%; median RSS
+rises0.24–0.82%. List and numeric ranges overlap; TS list has one high sample.
+This is the net selected-image tradeoff, not cache-only attribution. Existing
+report/config reads generated the account; no runtime measurement or large-file
+hash sweep was run by the facts owner. Runtime/release qualification is separate.

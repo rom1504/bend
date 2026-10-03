@@ -54,3 +54,26 @@ The distinction matters: a plausible source-level optimization does not imply
 that every caller takes that route. Activation must be read from actual checked
 emission and measured with the corresponding ordinary entry, rather than
 loosening a gate based on a predicted route.
+
+## Phase41 wrapper controller follows selected lexical declarations
+
+The final inherited wrapper control subsequently failed its ordinary admission
+assertion while all preceding tagged diagnostic values agreed. Unlike the list
+prediction, actual emitted scope inspection confirms this counter assumption is
+stale: the original controller instruments only two global wrapper declarations,
+but ordinary bench now calls its lexical flat wrap.turn clone and forward_check
+calls its lexical flat direct wrap.forward helper.
+
+The narrow [v4 controller](../../selfhost/tools/performance/phase42/fusion/phase41-wrapper-controls-v4.mjs)
+retains the original84 value oracles, two strict mutation boundaries, complete
+admitted/refused inventory and global tagged diagnostic decoding. It inventories
+exactly six selected global/lexical declarations and counts them separately.
+Diagnostic fixturePoint still calls the actual global tagged wrap.turn and must
+record60 entries before the ordinary grid. Each ordinary bench must enter its
+actual lexical turn once; each forward_check must enter its actual lexical flat
+forward helper once. Neither ordinary call may increase global wrapper counters.
+Strict mutation observations still require zero total selected-wrapper entry
+and proof cleanup. This is a diagnostic producer correction, with no source or
+algorithm change. The report kind and84/2 contract remain unchanged; new scope
+inventory/counters make activation explicit. Pinned Node syntax passes; fresh
+root execution and collector binding remain necessary before final qualification.

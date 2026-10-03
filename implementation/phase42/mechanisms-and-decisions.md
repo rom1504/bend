@@ -1,10 +1,11 @@
 # Phase42 mechanisms and decisions
 
-This account explains the selected checked15 candidate and the experiments that
-led to it. It is written while broad qualification is pending; it does not claim
-installation, final catalog-wide performance, or release admission. Checkpoints
+This account explains the mechanisms selected for checked16 and the experiments
+that led to them. Release status and final measurements are reported separately
+in the [release account](README.md). Checkpoints
 [01](checkpoint01.md), [02](checkpoint02.md), [03](checkpoint03.md),
-[04](checkpoint04.md), [05](checkpoint05.md), and [06](checkpoint06.md) retain the
+[04](checkpoint04.md), [05](checkpoint05.md), [06](checkpoint06.md), and
+[07](checkpoint07.md) retain the
 chronology. Machine tables [01](prototype-summary01.json),
 [02](prototype-summary02.json), [03](prototype-summary03.json),
 [04](prototype-summary04.json), [05](prototype-summary05.json),
@@ -18,6 +19,13 @@ images to isolate incremental changes; checked07 or checked13 must not be
 relabeled Phase41. Saved JavaScript establishes a mechanism hypothesis; only
 fresh checked compiler emission establishes that the source implements it.
 Diagnostic counters and scopes are kept separate from clean timing modules.
+
+Checked16 differs from checked15 by a five-line equality-domain repair: local
+region comparison retains its established quantity-2 vector behavior, while
+strict native-container equality is called directly from its own JPure proof
+sites. The unchanged vector admission gate caught the regression. This repair
+does not widen native ownership, and the emitted tree benchmark is byte-identical
+between checked15 and checked16. See [integration corrections](integration-corrections.md).
 
 ## Reduce dispatch inside a proved private graph
 

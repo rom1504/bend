@@ -32,7 +32,7 @@ Request-local facts preserve complete canonical original component/direct plans,
 
 Flat covered-call lowering and native field/constructor emission reduce repeated runtime descriptor dispatch while adding source graph audits, ownership/representation checks and fallback paths. Fusion adds a bounded producer/filter/map/fold recognizer and generated loop; sequential and hybrid workers add continuation/selection obligations. Exact source container proof alone does not permit public foreign data: existing scalar-root/fullgraph guards remain required under the published standard-intrinsics-at-initialization contract. The unsupported preimport BigInt observer counterexample is retained as a contract boundary, not suppressed or treated as a supported-domain pass.
 
-The early checked13 compiler screen shows the tradeoff rather than proving cache benefit: tree request median2492.636→2242.556ms (−10.03%), list2000.799→2241.447ms (+12.03%). Those combined-image deltas cannot isolate caching or fusion. The selected source16 four-case cost gate is pending root; source size, runtime timing and compiler request cost must remain separate claims.
+The early checked13 compiler screen shows the tradeoff rather than proving cache benefit: tree request median2492.636→2242.556ms (−10.03%), list2000.799→2241.447ms (+12.03%). Those combined-image deltas cannot isolate caching or fusion. The selected source16 [four-case compiler-cost gate](compiler-cost.md) passes36 requests: tree/numeric request medians improve6.17%/6.03%, pair/list regress5.79%/6.69%, with modest RSS growth. These net-image tradeoffs do not isolate plan caching; source size, runtime timing and request cost remain separate claims.
 
 ## Generated and supporting volume
 

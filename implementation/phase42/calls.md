@@ -388,3 +388,24 @@ lines change; exact before/after and Phase41 snapshot identities are recorded.
 This preserves all strict JPure shape/quantity/type checks while restoring the
 pre-existing optimized vector domain. No canonical edits or target execution
 were performed by this owner.
+
+Final recipe runtime audit found two stale cross-role equalities: original
+owned tree and unary-fixture derivations compared checked02 runtime51bb... to
+selected16 runtime6dbd..., although both roles had valid distinct checked
+producers. Frozen successors in calls (`owned-actual-derive-v2.mjs`,
+`owned-fixture-derive-v2.mjs`) remove only that equality premise and verify each
+role's API/runtime/Base against its own completed checked attempt plus driver
+identity against that attempt's frozen snapshot. Source/Base equality, all
+structural assays, counters, adapters and emitted executable bytes are retained;
+receipts add explicit roleProvenance. Original tools and failed recipes remain
+unchanged. Syntax checks only were run here.
+
+The remaining recipe cross-runtime comparisons are valid: hybrid's checked13
+cost-screen acquisition and native-owned BST13 assay input both use runtime
+6dbd...81c, equal to selected16. Fusion list derivation independently binds each
+runtime and its fixture control does not impose runtime equality. Calls global
+five-worker assertions remain true; flat lexical workers shadow those names,
+but all marked flat-scope helper arrows are instrumented. Diagnostic tagged
+adapters continue selecting global workers. Owned ordinary constructor totals
+are not a separate flat activation proof; the dedicated flat assay remains
+required. No additional certain lexical-counter failure was identified statically.

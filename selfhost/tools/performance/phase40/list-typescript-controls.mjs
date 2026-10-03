@@ -32,7 +32,7 @@ try{
     const chain=owner==='chain',p=m[owner+'.make'](BigInt(n),seed),f=m[owner+'.select'](p),q=m[owner+'.twice'](f),sum=m[owner+'.add'](q,0);
     for(const [value,key]of [[p,'produced'],[f,'filtered'],[q,'mapped']])assert.deepEqual(canonical(value,chain,i===0,n),oracle[key],variants[i]+':'+owner+':'+key);
     assert.equal(sum,oracle.sum);assert.equal(m[owner+'_bench'](n,seed),oracle.sum);
-    assert.equal(m[owner+'.choose'](7,p,i===0?false:{$:'False',a:[]}),p,'false combiner child alias');
+    assert.equal(m[owner+'.choose'](7,p,false),p,'false combiner child alias');
     row.pipelines[owner]={sum};
    }
    row.bench=m.bench(n,seed);assert.equal(row.bench,Number(BigInt.asUintN(32,BigInt(oracle.sum)*2n)));observations.push(row);

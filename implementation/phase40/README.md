@@ -1,7 +1,9 @@
 # Phase40 implementation report
 
-Status: checked05 is the integration candidate; Phase39 remains installed while
-the broader gates run. The campaign started 2026-10-02 00:18:49 UTC and resumed
+Status: checked05 passed all 45 output checks but was rejected for a 2.43×
+raytrace slowdown. Checked06 narrows the new Nat rule to data results; corrective
+validation is in progress. Phase39 remains installed. The campaign started
+2026-10-02 00:18:49 UTC and resumed
 on October 3 after an interruption. The [prospective design](../../design/phase40/README.md) defines
 the baseline, experiment order, validation requirements and efficiency measures.
 
@@ -28,7 +30,8 @@ Saved-JavaScript experiments show substantial list/tree opportunities and about
 2× lexer gains. The lexer remains a manual prototype because production
 integration needs a broader String/Char/Sigma proof boundary. Prototype timings
 are not delivered compiler gains. Final actual-output timing and release
-admission remain pending.
+admission remain pending. The [selection review](raytrace-selection-review.md)
+explains why the broader new worker displaced an existing faster scalar path.
 
 - [Lists](lists.md), [trees and order](tree.md), [lexer experiment](lexer.md)
 - [Source review](source-review.md), [emission correction review](linear-emission-review.md)

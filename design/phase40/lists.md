@@ -2,9 +2,11 @@
 
 2026-10-02. Owner: list investigator. First prototype budget 30–45 minutes.
 Initial hypothesis: correctness unchecked; measurement not run.
-Current source status (2026-10-03): checked05 list controls pass52 integer-oracle
-rows,106 boundary rows and one ordinary worker/proof admission. Source timing
-and independent pinned TypeScript fixture comparison remain pending here.
+Current source status (2026-10-03): selected checked06 list controls pass52
+integer-oracle rows,106 boundaries and one ordinary worker/proof admission;
+independent pinned TypeScript controls pass49 rows. Corrected final timing is
+pending. Checked05 is rejected for performance on historical raytrace; its
+list timings remain diagnostic evidence.
 
 Hypothesis: dispatch-free first-order producer/filter/map/fold workers can improve
 list-pipeline while retaining every tagged intermediate stage, constructor order,

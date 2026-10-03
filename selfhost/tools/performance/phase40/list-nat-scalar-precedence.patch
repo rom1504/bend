@@ -1,0 +1,14 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -144,7 +144,10 @@
+     U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && String.eq(tg(head), "All"), u =>
+     kc(JPure, (String.eq(tg(wnf(book, kid(head, 0))), "ADT") && Bool.not(db(lookup(book, nm(wnf(book, kid(head, 0))))))) ||
+       j_list_ground_type(book, kid(head, 0)) ||
+-      (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book)), u =>
++      # Nat-to-scalar workers retain the existing scalar island selection.
++      # The remaining purity proof verifies admitted data result types.
++      (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book) &&
++        Bool.not(j_region_scalar(book, j_fold_root_result(book, dt(d), da(d))))), u =>
+     kc(JPure, j_u32_bounded([dv(d)], 512) && Bool.not(j_l_deep(dv(d), 0)), u =>
+     kc(JPure, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u =>
+     kc(JPure, j_region_capture_eligible(book, d) &&

@@ -1,7 +1,11 @@
 # Tree saved-output handoff
 
-Correctness unchecked; measurement not run by author; no compiler change or
-promotion. Root owns execution and retains failed attempts. Prospective contract:
+Current status: checked06 is the integration candidate and passes fresh selected
+actual semantic controls. Checked05 remains performance-rejected because raytrace
+regresses. Final checked06 catalog timing and release admission remain pending.
+
+Initial prototype status: correctness unchecked; measurement not run by author;
+no compiler change or promotion. Root owns execution and retains failed attempts. Prospective contract:
 [design](../../design/phase40/tree.md).
 
 Files: `tree-derive.mjs` parses exact Phase39 checked05 saved output, verifies its
@@ -253,5 +257,75 @@ producer/catalog/verifier and diagnostic module identities remain bound by the
 actual derivations. Supervisor receipts pass with sampled process-tree peaks
 about109MiB Nat and93MiB linear under the1GiB heap/2GiB RSS/free-memory contracts.
 Closed Phase39 evidence and failed Phase40 fixture/derive/control attempts remain
-preserved. Root is preparing the complete catalog separately; those outcomes
-must not be inferred from these scoped owners.
+preserved. The complete checked05 catalog later passed result checks but was
+rejected for performance admission; its outcomes are separate from these owners.
+
+## Actual checked05 variation timing (performance-rejected candidate)
+
+[Final variation report](../../selfhost/build/phase40/variation-final01/report.json)
+passes all14 selected variation points in387.563seconds under its600second
+ceiling. The two tree points contribute30 clean samples: five rotating paired
+rounds ×three roles ×two fixed inputs. Node24.18.0 runs on CPU3 with a1GiB heap,
+three warmup calls plus a1second floor and a300ms timed-block target. Each timed
+export checks the exact expected result. The candidate is the actual checked05
+emission; baseline is portable Phase39 checked05, with the pinned TypeScript
+comparator. Import and first-call work remain separately reported.
+
+| Fixed input | Phase39 median ms (range) | Phase40 median ms (range) | TypeScript median ms (range) | Phase39 / Phase40 | Phase40 / TypeScript |
+|---|---:|---:|---:|---:|---:|
+| depth6,seed17 |1.619085 (1.601405–1.797119)|0.797184 (0.785326–0.940683)|0.037010 (0.036750–0.042055)|2.031×|21.540×|
+| depth9,seed123 |22.116740 (21.806438–24.697058)|12.091194 (12.024535–13.406375)|0.697609 (0.693477–0.744715)|1.829×|17.332×|
+
+Both candidate ranges are disjoint from baseline and all five paired rounds
+favor the candidate at each point. Paired Phase39/Phase40 ratios in round order
+are1.910,1.896,2.142,2.062,2.009 at depth6 and
+1.771,1.809,1.842,1.839,1.841 at depth9. Within-sample second-half drift ranges
+at depth6 are−1.572% to+11.061% baseline,−9.493% to−0.893% candidate,
+and−3.049% to−1.847% TypeScript. At depth9 they are−1.822% to−0.438%
+baseline,−7.782% to+9.292% candidate, and−4.765% to+4.825% TypeScript.
+This is a gain under the recorded protocol, not a claim of universally stable
+steady-state timing or TypeScript parity. The shared slower first/third rounds
+and candidate drift remain evidence rather than discarded outliers.
+
+These final measurements are not pooled with the earlier checked01 screen or
+manual saved-output prototype. They include the final shared unary-frame source
+correction and use their own same-run Phase39 denominator. The historical group
+has now completed separately. Checked05 is rejected for
+performance admission because historical raytrace regresses; these tree timings
+remain valid diagnostic evidence for that image, not selected release results.
+The checked06 narrowing and fresh validations are pending.
+
+## Checked06 selected semantic successor and focused screen
+
+Checked06 API is
+`630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a`.
+The only source successor narrows new Nat-first component admission to eligible
+data results. Nat-to-scalar functions retain their previous scalar island
+selection; ADT/List-first scalar folds remain eligible. This is the reviewed
+[raytrace selection repair](raytrace-selection-review.md), with no relaxed purity,
+provenance, backedge or mutable-boundary obligation.
+
+Fresh [Nat controls06](../../selfhost/build/phase40/tree-nat-controls06/report.json)
+pass302 oracle rows/84 boundary groups. The actual ordinary admission again
+increments root36→37 and flow component300→301. Fresh
+[linear controls06](../../selfhost/build/phase40/linear-order-controls06/report.json)
+pass160 complete structure/scalar oracles,12 error-order cases and36 boundary
+groups. Their scopes and independent model/TypeScript limitations remain those
+described for checked05 above; these are new successful acquisitions and controls
+bound to the checked06 identities, not renamed checked05 evidence. The new list
+owner also passes52 oracles/106 boundaries, with49 separate TypeScript stage/export
+comparisons recorded by its owner. Counts overlap and are not additive coverage.
+
+Focused actual checked06 tree/list program bytes match their checked05 parents
+exactly; focused raytrace bytes match Phase39 exactly. This static evidence
+confirms the proposed selection repair while preserving changed materialized
+component emission. It does not by itself establish measured speed.
+
+The separate [precedence screen06](../../selfhost/build/phase40/precedence-screen06/report.json)
+passes four points/36 clean samples in47.620seconds. Same-run baseline/candidate
+ratios are0.999705 for raytrace,2.538105 for tree8,13.314126 for list512 and
+0.996058 for unchanged scalar8192. Raytrace and scalar byte-identical shifts
+are noise. This short screen supports continuing acceptance and is not pooled
+with rejected checked05 final runs or manual prototypes. Full45-point checked06
+preparation, final measurement and release gates remain pending; no retention
+or promotion claim follows yet.

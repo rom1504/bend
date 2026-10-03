@@ -162,6 +162,6 @@ shared role variation remain visible; the run does not prove full JIT stability.
 Correctness remains selected manual saved-output controls, measurement valid for
 these fixed inputs, decision retain evidence/defer compiler-source proof. The
 scope is direct materialized lex/step under a manual privateBench guard. Nothing
-is installed, no fusion is retained, and ordinary public/compiler-throughput or
-TypeScript-parity claims follow. The concrete guard correction and broad native
+is installed, and no fusion is retained. No ordinary public/compiler-throughput
+or TypeScript-parity claim follows. The concrete guard correction and broad native
 String/Char/Sigma/nullary-helper obligations above remain the next design work.

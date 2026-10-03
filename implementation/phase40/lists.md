@@ -1,5 +1,11 @@
 # P40-L1 list investigation
 
+Current selection: checked06 passes actual List/Nat/linear and independent
+TypeScript controls; final corrected45-point timing is pending. Checked05 is
+rejected for performance because historical raytrace regressed. Its passing
+list correctness and timing rows remain diagnostic evidence, not release
+selection or final retention evidence.
+
 2026-10-02: saved-JS prototype authored within the first 15 minutes; no compiler
 or Node execution by this owner. Correctness unchecked, measurement not run,
 decision investigate. Root owns execution and any result-dependent changes.
@@ -114,7 +120,8 @@ Hostile ordinary calls may enter another independently guarded region after
 fallback; explicit diagnostic-refusal rows require no private producer entry.
 This distinguishes fallback semantics from the successful whole-component proof.
 Affine/nested/Bool/Nat List and same-input/primitive-combiner definitions retain
-no new structural worker. No source edit follows this passing source snapshot.
+no new structural worker. This was the checked05 correctness checkpoint; the
+later scalar-island precedence correction is recorded below.
 
 Independent pinned TypeScript fixture-v3 public stage/export comparison is
 prepared in list-typescript-controls.mjs. It verifies all three checked receipt
@@ -122,3 +129,99 @@ input identities, compares each compiler's own representation to integer-oracle
 heads/tags, checks false-combiner child identity and49 size/seed points. This is a
 separate independent correctness comparator, pending root execution; hostile
 runtime hooks remain specific to the self-host runtime controls.
+
+The former-final checked05 development-final01 ten-point campaign completes
+successfully in184.472s, but checked05 is subsequently rejected for performance
+on historical raytrace. The following list timings are retained diagnostic rows.
+Five fresh pinned-CPU rounds per role use600ms warmup and250ms measurement; these
+are generated-program execution measurements, not compiler speed measurements.
+Static calculations and input report identities are in list-final-timing01.json.
+
+| List size | Phase39 median ms (min–max) | Checked05 median ms (min–max) | Ratio of medians | Round-paired Phase39/checked05 ratios |
+| --- | --- | --- | --- | --- |
+|128|0.446039 (0.442908–0.446615)|0.044725 (0.044193–0.044734)|9.973×|9.990,10.093,9.985,9.979,9.903|
+|512|1.739693 (1.663637–2.036742)|0.132664 (0.130180–0.133899)|13.113×|15.646,13.562,12.425,13.214,13.009|
+
+Within-call half drift is10.77…12.26% for Phase39 at128 and−19.93…−1.76%
+at512; checked05 drift is−4.66…−3.00% and2.03…4.69% respectively. The
+512 baseline spread/drift makes its precise ratio less stable, but all paired
+ratios exceed12×. TypeScript medians0.006863/0.029402ms still lead checked05 by
+6.52×/4.51×. The other eight selected points are unchanged-byte controls:
+closures64/256, Unicode16/64, map32/128, numeric256/1024. Their Phase39/candidate
+median ratios are1.012,1.002,1.034,0.995,0.995,1.010,1.005,1.007 respectively.
+These movements measure run noise; they cannot be attributed to source changes.
+
+The separate saved-JS confirmation uses three rounds,350ms warmup and150ms
+measurement. At128/512 original medians0.427217/1.660570ms and specialized
+component medians0.030525/0.078045ms give13.996×/21.277×; paired ratios are
+14.206,13.931,13.772 and21.358,21.174,21.500. Its unchanged-byte noise medians
+0.424597/1.668883ms corroborate that comparison. Actual checked compiler code
+therefore retains a large gain but trails this prototype's selected signal.
+The protocols differ: cross-run candidate medians are descriptive comparisons,
+not a paired ablation establishing where the performance gap originates.
+
+Inspection suggests plausible overhead in the general source mechanism. Actual
+producer/filter/map continuations save a frame object, argument array and before
+array per node, create next-argument arrays, restore owner arguments and replay
+constructor-prefix matching during unwind. The prototype saves only head numbers
+in a dense array and rebuilds in a direct loop. Actual tail fold also forms a
+next-argument array each step; prototype updates scalar locals. Actual code uses
+ctor dispatch and the existing shared phase0/1/2 continuation skeleton, while the
+prototype directly creates tagged objects. Both retain tagged intermediate
+stages, BigInt producer countdown and native U32 operations; both remain unfused.
+Frame/argument representation, repeated tests and general constructor handling
+could explain the shortfall. This is an inspection inference, not an isolated
+measured cause; this inspection itself introduces no source change.
+
+Historical raytrace checked05 timing raises a regression concern; final paired
+measurement remains root-owned. Static comparison identifies new global colf
+and rowf structural workers plus a new bench root. That direct region route
+bypasses the retained Phase39 colf scalar island and its nine local helpers:
+the old island's leaf calls private colf.px directly; global colf instead calls
+the ordinary curried G.colf.px runtime. The historical fixture traverses64 rows
+and16384 column leaves per row (1048576 total), although most columns lie beyond
+width80. Generic leaf dispatch is therefore a plausible dominant regression
+cause. This is not a lost Number-countdown optimization: the old scalar tree
+already uses BigInt, since its predecessor also enters U32.shln.
+
+Root authorizes a narrow correction after independent tree review: only the
+new Nat-first component alternative excludes scalar result types through
+j_region_scalar(book,j_fold_root_result(book,dt(d),da(d))). Existing JPure
+signature proof still verifies every retained nonscalar result as a closed ADT
+or grounded List. Nat data producers remain admitted; List/ADT-first scalar
+folds remain admitted; existing Nat scalar islands retain prior selection.
+The exact source delta is list-nat-scalar-precedence.patch. Checked05 controls
+and timing are preserved; fresh source evidence must use a new checked attempt.
+
+list-scalar-island-controls.py supplies a static independent refusal witness:
+entire historical raytrace candidate bytes must equal Phase39, colf/rowf source
+signatures must be Nat→U32, no new structural worker/root may appear, and both
+retained scalar islands must carry entry/host/local guards, closed proof scope
+and relevant leaf dependencies. It also requires the private colf.px leaf call.
+Root runs this after the corrected emission, plus fresh actual List/Nat/linear
+controls bound to the corrected API. No regression recovery claim precedes them.
+
+The selected corrective checked06 source passes fresh actual List controls
+(list-actual-controls06:52 oracle rows,106 boundaries, one admission), independent
+pinned TypeScript List/Chain public complete-stage/export controls
+(list-typescript-controls06:49 rows), Nat controls
+(tree-nat-controls06:302 oracle rows,84 boundaries), and mixed unary/binary
+linear controls (linear-order-controls06:160 oracles,12 order witnesses,
+36 boundaries). Each fresh diagnostic binds checked06 receipts/API; no passing
+checked05 result substitutes for the new source check.
+
+Actual List fixture checked06 output is byte-identical to checked05:119867bytes,
+SHA2568f4f3f62b6d7bd7c2c924b1c794d5fffc60b32eb946564714dc80caffcd879b0.
+The scalar-island static control passes three checks, requiring complete
+historical raytrace byte equality with Phase39 plus both typed refusal/guard
+owner witnesses. Thus the corrective Nat result gate removes the competing
+Nat→scalar route while preserving the independently validated List output.
+
+The fresh precedence-screen06 completes47.620s with Phase39/candidate median
+ratios: historical raytrace0.999705 (same bytes), tree-bitonic2.538105,
+list51213.314126 and scalar8192 0.996058. This bounded confirmation supports
+regression recovery and retention of List/Nat-data gains. Same-byte ray/scalar
+ratios measure run variation; no code-speed gain is attributed to them.
+Corrected final45-point candidate preparation/timing remains root-owned and
+pending at this checkpoint. Earlier checked05 campaign rows and source hashes
+remain preserved as rejected-candidate diagnostic evidence.

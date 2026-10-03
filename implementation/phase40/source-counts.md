@@ -1,6 +1,6 @@
 # Frozen checked06 source accounting
 
-Latest [source-counts02](../../selfhost/build/phase40/source-counts02.json) compares
+Latest [source-counts02](source-counts.json) compares
 starting Phase39 checked05 with Phase40 checked06 API
 `630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a`.
 Earlier [source-counts01](../../selfhost/build/phase40/source-counts01.json) retains
@@ -21,5 +21,5 @@ Runtime remains byte-identical:663physical/653nonblank lines,53346bytes,
 SHA256 `51bb6046a8ac116865e2b1ed94b5587d1257f951aed536da77da3e91338eac49`.
 Counts cover manifest Bend modules; generated compiler images and experiment/tool
 infrastructure are excluded. Checked06 adds a typed Nat-first/data-result admission
-restriction after checked05's ray performance rejection. Retention and installation
-still require semantic, cost, timing and release gates bound to the selected API.
+restriction after checked05's ray performance rejection. Semantic, cost, timing and release gates now close on the selected API; the
+[release record](release-06.md) binds its installed image.

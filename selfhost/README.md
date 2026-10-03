@@ -1,59 +1,48 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md) and
-[Phase39 report](../implementation/phase39/README.md). **Phase39 checked05 is
+[Phase40 report](../implementation/phase40/README.md). **Phase40 checked06 is
 installed; release verification and all 42 ordinary/relocated CLI checks pass.**
-The [release record](../implementation/phase39/release-05.md) preserves the
-successful same-tool retry and its earlier sandbox failure. The
-[final closure](../implementation/phase39/final-conformance/gates.md) accepts
-all 15 postinstallation audit groups and verifies all 227 canonical/frozen source
-pairs. The [manifest](dist/release.json) identifies the image:
-API `04d9ebf417a20297598bb6b047936a02228f3b8fb3a3b0cc4b59eeea04bad49f`.
+The [release record](../implementation/phase40/release-06.md) and
+[final integration](../implementation/phase40/integration.md) retain the evidence:
+all **15 postinstallation audit groups and 227 canonical/frozen source pairs**
+pass. The [manifest](dist/release.json) identifies API
+`630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a`.
 Ordinary compilation executes Bend code without a TypeScript fallback. This is
 a checked B1 derivative, not a new self-emitted fixed point.
 
-Phase39 keeps the **45-point / 23-source** catalog and measures fresh Phase37
-checked03 and pinned TypeScript baselines. All points pass in **669 primary
-samples**, with **60 separate confirmation samples**. Expression points improve
-**4.461× / 8.052×**, tree points **1.761–2.252×**, active-ray points **2.617–2.867×**,
-and numeric recurrence **1.068× / 1.221×**. The
-[execution table](../implementation/phase39/execution/report.md) preserves exact
-per-point ratios, ranges, paired outcomes and internal drift. These are scoped
-results, not average program speed or TypeScript parity.
+[Execution evidence](../implementation/phase40/execution/report.md) covers
+**45 points / 23 sources**, selecting **42 complete checked05 measurements by
+exact checked06 module identity and three fresh checked06 ray measurements**.
+The reused measurements retain their original same-run baseline and TypeScript
+rotations. Relative to starting Phase39, list points improve **9.97–13.11×** and
+tree points **1.83–2.18×**; they remain **4.51–6.52×** and **17.15–21.54×** slower
+than TypeScript respectively. Protocols, ranges, paired outcomes and drift remain
+per point. This is selected evidence, not a fresh full checked06 timing run or
+an average program-speed claim.
 
-**23/45 points execute identical baseline/candidate module bytes**; their timing
-changes are controls, not compiler effects. The changed generic-row module is
-slower in every primary and confirmation pairing (+0.966% / +1.656% median time).
-Tree compilation costs **3.50%** more by request medians; normal checked requests
-remain **5.05–5.98× TypeScript** on three selected sources. The
-[admission](../implementation/phase39/performance-admission.md),
-[compiler-cost study](../implementation/phase39/compiler-cost.md) and
-[42 diagnostic captures](../implementation/phase39/profile-findings.md) keep
-these costs and measurement boundaries separate.
+[Compiler-request cost](../implementation/phase40/compiler-cost.md) rises
+**24.45% for tree** and **19.09% for list**, with requests **4.66–8.37× TypeScript**
+on four measured sources. The [admission decision](../implementation/phase40/performance-admission.md)
+and [profiles](../implementation/phase40/profile-findings.md) retain these tradeoffs
+and separate compilation from generated-program execution.
 
-The compiler carries an unobservable private Nat countdown in a Number, shares
-a proved scalar root's guard scope, and adds explicit frames for eligible
-two-child data traversal and unary data production. It retains tagged values,
-sharing, ordered argument evaluation and public fallback. Complete graph proofs,
-exact entry, host/dependency guards and reentry cleanup still apply. No callback
-specialization or fusion is installed. Read the
-[backend rules](../implementation/phase39/backend-rules.md) and
-[new-owner controls](../implementation/phase39/new-owner-gates.md) before extending
-these paths. Source contains **18,722 physical / 16,031 nonblank Bend lines in
-70 modules**, 2,087 definitions, 640 laws and 71 types. This adds 364 physical
-lines (1.98%) and 42 definitions to Phase37; runtime, modules, types and laws stay
-unchanged. It is a performance tradeoff, not simplification.
+Phase40 adds guarded list workers and broader structural traversal. Exact entry,
+complete graph proofs, host/dependency guards, proof cleanup, evaluation order,
+sharing and public fallback remain covered by actual compiler-output controls.
+Lexer speedups remain manual experiments. Source contains **18,863 physical /
+16,156 nonblank Bend lines in 70 modules**, 2,104 definitions, 640 laws and
+71 types: **141 physical lines and 17 definitions more than Phase39**. Runtime,
+modules, types and laws remain unchanged. This is a performance tradeoff, not
+simplification.
 
-Final frontend observations agree exactly on **3,026 main + 196 broader results**;
+Frontend observations agree exactly on **3,026 main + 196 broader results**;
 the backend pilot retains **69 pass / 8 not applicable / 4 shared failures**.
-All 154 expanded correctness observations and the separate 15 Phase35, seven
-Phase36, three Phase37 and four Phase39 owner groups pass on this image.
-[Integration](../implementation/phase39/integration.md) and
+[Integration](../implementation/phase40/integration.md) and
 [conformance](CONFORMANCE.md) distinguish their overlapping scopes. Full
 backend/GPU and independent proof validity remain unestablished; `--verdict`
-is unsupported. Previous [Phase37 results](../implementation/phase37/README.md)
-and its [release](../implementation/phase37/release-03.md) are historical evidence
-with their original denominator, not validation of the current image.
+is unsupported. Earlier [Phase39 results](../implementation/phase39/README.md)
+retain their original baseline and validation scope.
 
 The target remains upstream
 [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
@@ -67,11 +56,13 @@ npm run build
 ```
 
 Use the [checked workflow](../docs/PHASE5_DEVELOPMENT.md) for compiler edits.
-The portable [Phase39 execution suite](tools/performance/phase39/README.md) offers
-20/60/300/600-second ceilings and independent case selection. It reuses checked
-modules from the current compiler and Phase37/TypeScript reference without a
-compiler rebuild or historical build directories. Complete coverage uses bounded
-chunks; a ceiling is not a promise that all 45 points finish in one run. Separate
+The portable [Phase40 execution suite](tools/performance/phase40/README.md) offers
+20/60/300/600-second ceilings and independent case selection. Its current bundle
+preserves **45 points in 1,336,751 bytes**, alongside the starting Phase39 and
+pinned TypeScript reference. The five-point smoke passes all **45 samples** with
+**20.36 seconds** reported wall using the 20-second preset. Complete coverage
+uses bounded chunks; a ceiling is
+not a promise that all 45 points finish in one run. Separate
 [diagnostics](tools/performance/programs/DIAGNOSTICS.md) add profiles and JavaScript
 analysis. Heavy jobs run serially with explicit heaps, RSS/deadline bounds and a
 free-memory floor.

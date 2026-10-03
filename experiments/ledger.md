@@ -2471,3 +2471,53 @@ successors keep semantic assertions and byte provenance; unchanged smoke retry
 passes42/42. [Closed evidence](../implementation/phase39/evidence/README.md)
 retains failures and successful final-image data. All103 unrelated starting
 files remain unchanged and unstaged. No PR comment is posted.
+
+
+## Phase40 — direct components installed (2026-10-03)
+
+The [prospective design](../design/phase40/README.md) uses compact Sol6.1 medium
+mechanism owners, a low-effort evidence owner and serial root execution. Lists,
+trees and lexer receive mechanism experiments before compiler promotion.
+[Report](../implementation/phase40/README.md),
+[release](../implementation/phase40/release-06.md),
+[admission](../implementation/phase40/performance-admission.md).
+
+Checked06 is installed: 42 CLI checks, 15 postinstallation audit groups and 227
+canonical source pairs pass. Frontend 3,026 + 196 observations match; the
+backend retains 69 pass / 8 not applicable / 4 shared failures within its
+original scope. The 154 application observations and all inherited/new owners
+close. No new fixed point, full backend/GPU or independent proof claim.
+
+Actual direct-unfused lists improve 9.973× / 13.113×; trees improve 1.829–2.176×
+over Phase39. Final 45-point evidence explicitly selects 42 byte-identical
+checked05 rotations plus three fresh checked06 ray rotations, totaling 669
+selected samples. All original ratios, ranges and drift remain intact. Thirty
+final points equal Phase39 bytes; shifts are controls. The smallest Mandelbrot
+point's 9.68% slower median overlaps ranges and remains disclosed. The 2.426×
+ray regression of checked05 was rejected: checked06's Nat admission for data
+results preserves existing scalar islands and restores complete Phase39 ray
+bytes.
+
+All 36 checked requests match expected bytes, but tree/list request medians cost
+24.45% / 19.09% more (disjoint ranges); local +18.44% is noisy, numeric flat.
+Four-source requests remain 4.66–8.37× TS. Source grows 141 lines / 17
+definitions to 18,863 lines / 2,104 definitions, with 70 modules, 71 types, 640
+laws and runtime unchanged. All 18 separate profiles pass; per-call sampled
+allocation falls 81.8% for list512 / 46.9% for tree8. These are execution gains
+with explicit compiler/source costs, not a simplification claim.
+
+Preserved failures include incorrect List admission metadata, checked04
+saved-child emission, checked05 ray selection and inherited
+counter/decoder/entry diagnostic assumptions. Their reviewed successors retain
+semantic assertions, exact selected emission and successful resource/provenance
+checks. Lexer remains a roughly 2× manual prototype, deferred pending wider
+String/Char/Sigma proof support.
+
+**Updated frontier:** recover compiler analysis cost; prove one lexer component;
+follow tree residual dispatch and Map/String/BST hotspots. Use the new direct
+unfused list denominator for future fusion. The portable fast-five check passes
+in 20.36 s using the 20-second preset; a checked build plus 36 probes takes
+45.845 s. No PR comment. The 103 unrelated files remain unchanged/unstaged.
+[Evidence](../implementation/phase40/evidence/README.md) and
+[workflow](../implementation/phase40/workflow-findings.md) separate
+interruption, recorded jobs and model-attribution limits.

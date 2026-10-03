@@ -1,35 +1,55 @@
 # Generated-program performance and the fast development loop
 
-Use the [compiler guide](BEND-IN-BEND.md) for normal compilation, the
-[Phase39 report index](../implementation/phase39/README.md) for the current
-optimization campaign, and the
-[Phase37 report index](../implementation/phase37/README.md) for the preceding
-installed version and its historical results. The target
-remains upstream `018751270e800bc222a93dad7f257083ee53a5f7`. The comparison is
-between JavaScript emitted from the same Bend source by the two compilers.
-Compiler checking cost is a separate measurement.
+Use the [compiler guide](BEND-IN-BEND.md), the
+[Phase40 report](../implementation/phase40/README.md) and the
+[portable current benchmark guide](../selfhost/tools/performance/phase40/README.md).
+**Phase40 checked06 is installed**, with 42 ordinary/relocated CLI checks and all
+15 postinstallation audit groups passing. The target remains upstream
+`018751270e800bc222a93dad7f257083ee53a5f7`. Ordinary compilation executes Bend.
 
-**Phase39 checked05 passes the 45-point final execution comparison and semantic
-gates.** Expression points improve **4.461× / 8.052×**, trees **1.761–2.252×** and
-active-ray points **2.617–2.867×** relative to Phase37. These are fixed-program
-results with documented drift, remaining TypeScript gaps and measured costs.
-The [admission decision](../implementation/phase39/performance-admission.md)
-retains four bounded changes. **Checked05 is installed and all 42 ordinary/relocated
-CLI checks pass**; the [release record](../implementation/phase39/release-05.md)
-preserves the same-tool retry. The [final audit](../implementation/phase39/final-conformance/gates.md)
-accepts all 15 postinstallation groups and verifies 227 canonical source pairs.
+Against Phase39, the two list pipeline points run **9.97–13.11× faster** and
+three tree points **1.83–2.18× faster**. List remains **4.51–6.52× TypeScript time**
+and tree **17.15–21.54×**. The [full table](../implementation/phase40/execution/report.md)
+covers 45 points / 23 sources using 42 retained exact-byte comparisons and three
+fresh corrected ray comparisons. Each keeps its original intact paired rotation
+and protocol. No typical-program speed or parity claim follows.
 
-**The preceding release was Phase37 checked03; its release verification
-and all 42 ordinary/relocated CLI checks passed.** The [final gates](../implementation/phase37/final-conformance/gates.md)
-close 15 postinstallation audit groups and verify 227 canonical files; the
-[release record](../implementation/phase37/release-03.md) binds installation.
-Fresh frontend agreement covers 3,026 main + 196 broader observations. Backend
-outcomes remain 69 pass / 8 not applicable / 4 shared failures. Fifteen inherited
-Phase35 owner groups, seven Phase36 groups and three new Phase37 groups pass
-with separate closures; these overlapping counts do not establish full backend
-or GPU conformance.
-The [performance decision](../implementation/phase37/performance-admission.md)
-records both useful gains and measured regressions.
+The [admission record](../implementation/phase40/performance-admission.md) keeps
+costs and rejected outcomes: a 2.43× ray regression was corrected before release;
+the smallest Mandelbrot point retains a 9.68% slower median with overlapping
+ranges; 30 final points have identical Phase39/Phase40 bytes. Compilation request
+cost rises **24.45% tree / 19.09% list**, with numeric unchanged and local noisy.
+Four-source requests remain **4.66–8.37× TypeScript**. Source grows **141 lines**,
+with unchanged runtime, module and type counts. The
+[cost report](../implementation/phase40/compiler-cost.md) separates request,
+startup and full-process boundaries.
+
+All 18 final diagnostic captures pass on the exact selected modules. Sampled
+allocation per call falls **81.8% list512 / 46.9% tree8**. List hot paths now use
+direct workers; tree still contains residual generic dispatch. Static total call
+sites grow because fallback code remains. The
+[profile report](../implementation/phase40/profile-findings.md) distinguishes
+static sites, dynamically sampled costs and clean execution timing.
+
+Start a portable current comparison from the repository root:
+
+```sh
+python3 selfhost/tools/performance/programs/run.py \
+  --catalog selfhost/tools/performance/phase37/catalog.json \
+  --baseline selfhost/tools/performance/phase40/baseline/manifest.json \
+  --candidate selfhost/tools/performance/phase40/current/manifest.json \
+  --budget 20 --set fast --cpu 3 --out selfhost/build/my-phase40-screen
+```
+
+Use a new output path. Select cases independently from the 20/60/300/600-second
+presets. The current five-point portable smoke passes in **20.36 seconds**,
+including runner overhead; a preset is not a guarantee of full catalog coverage
+or an exact enclosing wall time. Keep incomplete outcomes explicit. Separate
+profiles/static analysis use `programs/diagnose.py` with the same manifests and
+catalog; see the [guide](../selfhost/tools/performance/phase40/README.md).
+
+Historical sections below retain their original Phase39/37 denominators and
+protocols. Their ratios must not be multiplied into a current comparison.
 
 ## What to run during optimization
 
@@ -58,7 +78,7 @@ generated modules. It produces raw V8 profiles, source-attributed hot frames,
 normalized tokens and a side-by-side HTML view. Profiled durations never become
 speed ratios; syntax sites are distinguished from dynamically sampled costs.
 
-## Phase39 comparison and portable fast loop
+## Historical Phase39 comparison and portable fast loop
 
 Phase39 retains the same **45 points / 23 source files** and upstream pin. Its
 incremental denominator is freshly executed **Phase37 checked03**, alongside
@@ -113,7 +133,7 @@ The public ABI and generic fallbacks remain part of each rule's correctness
 contract. Known-callback investigation is reported separately; no general
 callback or fusion optimization is claimed.
 
-## Phase39 selected-output measurements
+## Historical Phase39 selected-output measurements
 
 All **45 primary points pass**, with **669 fresh samples in 1,076.213 seconds**
 across four bounded runs. A separate four-point confirmation contributes 60

@@ -1,0 +1,29 @@
+--- selfhost/tools/performance/phase39/unary-compiled-controls-v4.mjs
++++ selfhost/tools/performance/phase40/unary-compiled-controls-v1.mjs
+@@ -2,20 +2,21 @@
+ import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';
+ import {createHash} from 'node:crypto';import {pathToFileURL} from 'node:url';
+ const [cohortArg,outArg]=process.argv.slice(2);
+-assert(cohortArg&&outArg,'usage: unary-compiled-controls-v4.mjs COHORT/unary NEW_OUT');
++assert(cohortArg&&outArg,'usage: unary-compiled-controls-v1.mjs COHORT/unary NEW_OUT');
+ const cohort=fs.realpathSync(cohortArg),out=path.resolve(outArg);assert(!fs.existsSync(out));fs.mkdirSync(out);
+ const identity=p=>({path:fs.realpathSync(p),sha256:createHash('sha256').update(fs.readFileSync(p)).digest('hex')});
+ const verify=r=>{const actual=identity(r.file??r.path);assert.equal(actual.sha256,r.sha256);return actual;};
+ const manifestFile=path.join(cohort,'derive.json'),manifest=JSON.parse(fs.readFileSync(manifestFile));
+-const report={kind:'phase39-actual-unary-controls-v4',complete:false,pass:false,node:process.version,
+- derivation:{parent:identity(new URL('./unary-compiled-controls-v3.mjs',import.meta.url)),changes:'V4 consumes the termination-checkable fixture successor with @unsafe on unary.nonpred only. All V3 actual admission/order/alias/refusal assertions are byte-identical.'},
+- inputs:[identity(import.meta.filename),identity(new URL('./unary-compiled-controls-v3.mjs',import.meta.url)),identity(manifestFile)],oracles:[],structures:[],admission:[],boundaries:[],order:[]};
++const predecessor=identity(new URL('../phase39/unary-compiled-controls-v4.mjs',import.meta.url));assert.equal(predecessor.sha256,'f46b46b3bced4f0c4715a34488064daa7f208a0826a99dea75cb3c4723ee4b45');
++const report={successor:{parent:predecessor,changes:'Decode only complete ordinary decimal helper names; structural $tree suffixes remain distinct helpers and are not mistaken for unary workers. All existing unary value/order/alias/admission/refusal/boundary assertions unchanged.'},kind:'phase39-actual-unary-controls-v4',complete:false,pass:false,node:process.version,
++ derivation:{parent:identity(new URL('../phase39/unary-compiled-controls-v3.mjs',import.meta.url)),changes:'V4 consumes the termination-checkable fixture successor with @unsafe on unary.nonpred only. All V3 actual admission/order/alias/refusal assertions are byte-identical.'},
++ inputs:[predecessor,identity(import.meta.filename),identity(new URL('../phase39/unary-compiled-controls-v3.mjs',import.meta.url)),identity(manifestFile)],oracles:[],structures:[],admission:[],boundaries:[],order:[]};
+ fs.copyFileSync(import.meta.filename,path.join(out,'consumed-controls.mjs'));
+ const parserModule={exports:{}};new Function('module','exports',process.binding('natives')['internal/deps/acorn/acorn/dist/acorn'])(parserModule,parserModule.exports);
+ assert.equal(parserModule.exports.version,'8.16.0');const parse=s=>parserModule.exports.parse(s,{ecmaVersion:'latest',sourceType:'module'});
+ function visit(n,f){if(!n||typeof n!=='object')return;f(n);for(const [k,v]of Object.entries(n)){
+  if(k==='start'||k==='end')continue;if(Array.isArray(v)){for(const c of v)visit(c,f);}else if(v&&typeof v.type==='string')visit(v,f);}}
+-const decoded=n=>n?.startsWith('$R_')?n.slice(3).split('_').map(x=>String.fromCodePoint(Number(x))).join(''):null;
++const decoded=n=>{if(typeof n!=='string'||!/^\$R(?:_[0-9]+)+$/.test(n))return null;const points=n.slice(3).split('_').map(Number);return points.every(x=>Number.isSafeInteger(x)&&x>=0&&x<=0x10ffff)?String.fromCodePoint(...points):null;};
+ const names=['unary.first','unary.middle','unary.last'],pickers=names.map(n=>n.replace('unary.','unary.pick_'));
+ const childIndex={'unary.first':0,'unary.middle':1,'unary.last':1};
+ const normalize=x=>typeof x==='bigint'?{bigint:String(x)}:x===undefined?{undefined:true}:x===null||typeof x!=='object'?x:

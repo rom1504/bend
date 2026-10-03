@@ -1,8 +1,49 @@
 # Compiler validation
 
-## Phase37 installed03 validation
+## Phase40 installed06 validation
 
-**Phase37 checked03 is installed; release verification and all 42 ordinary/
+**Phase40 checked06 is installed; release verification and all 42 ordinary and
+relocated CLI checks pass.** The [release record](../implementation/phase40/release-06.md)
+and [final audit](../implementation/phase40/final-conformance/gates.md) close
+15 postinstallation groups and verify 227 canonical source files. API SHA256:
+`630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a`.
+The pin remains `018751270e800bc222a93dad7f257083ee53a5f7`. This is a checked
+B1 derivative, not a new self-emitted fixed point.
+
+Fresh candidate frontend results exactly match 3,026 main + 196 broader retained
+reference observations. Main outcomes remain 2,525 pass / 497 observed / 4 shared
+failures; broader remains 195 pass / 1 observed. Backend outcomes remain 69 pass /
+8 not applicable / 4 shared failures across 81 selected rows. Reference reuse is
+verified explicitly; agreement does not turn shared failures into passes.
+
+Fresh selected-image gates pass 36 focused probes, 56,205 primitive checks,
+3,759 worker checks, 144 nested checks, 1,129 primitive guards, 15 upstream JS
+probes, 23 libraries / 127 points, 40 worker guards / two witnesses, 22 compiler
+components and complete 42-byte HVM output. Separately, 154 expanded application
+observations pass. Fifteen Phase35, seven Phase36, three Phase37 and four Phase39
+owner groups close, with supplemental structural-tail controls and new Phase40
+List, Nat/data, mixed-frame ordering and scalar-island precedence owners.
+The [integration record](../implementation/phase40/integration.md) gives exact
+receipts and overlapping scopes rather than an inflated unique-test total.
+
+New actual-output controls retain complete values, aliases, mutation/reentry,
+argument/error order, fallback refusal and deep 30,000-level behavior. Historical
+diagnostic assumptions were corrected with versioned tools; their original
+failures remain preserved. All 45 benchmark points have selected execution
+evidence: 42 retained rotations with exact final-byte equality plus three fresh
+ray rotations. These repeated measurements are not additional independent
+language-conformance tests. [Performance](../implementation/phase40/performance-admission.md),
+[compiler cost](../implementation/phase40/compiler-cost.md) and release validation
+remain separate decisions.
+
+Full backend/GPU, universal host equivalence and independent proof validity
+remain unestablished; `--verdict` is unsupported. The previous
+[Phase39 release](../implementation/phase39/release-05.md) and older evidence below
+retain their original source/API and test scopes.
+
+## Historical Phase37 installed03 validation
+
+**Phase37 checked03 was installed; release verification and all 42 ordinary/
 relocated CLI checks pass.** The
 [Phase37 release record](../implementation/phase37/release-03.md) and
 [final gate closure](../implementation/phase37/final-conformance/gates.md) close

@@ -1,10 +1,13 @@
 # P40-L1 list investigation
 
-Current selection: checked06 passes actual List/Nat/linear and independent
-TypeScript controls; final corrected45-point timing is pending. Checked05 is
-rejected for performance because historical raytrace regressed. Its passing
-list correctness and timing rows remain diagnostic evidence, not release
-selection or final retention evidence.
+Current selection: **checked06 is installed** with complete semantic, execution,
+compiler-cost and release closure. Lists128/512 improve9.973×/13.113× over Phase39.
+Checked05 remains performance-rejected for raytrace. Its list modules exactly
+match fresh checked06 emission, so their complete paired timing rows are retained
+under the reviewed [identity rule](../../design/phase40/identity-reuse.md).
+See [final integration](integration.md), [execution](execution/report.md) and
+[release](release-06.md). The chronological entries below preserve the status
+and failed attempts at each earlier observation cutoff.
 
 2026-10-02: saved-JS prototype authored within the first 15 minutes; no compiler
 or Node execution by this owner. Correctness unchecked, measurement not run,
@@ -225,3 +228,52 @@ ratios measure run variation; no code-speed gain is attributed to them.
 Corrected final45-point candidate preparation/timing remains root-owned and
 pending at this checkpoint. Earlier checked05 campaign rows and source hashes
 remain preserved as rejected-candidate diagnostic evidence.
+
+Inherited recursive-fold owner gate on checked06 fails after27 successful oracle
+rows and iterative structure checks because its broad frame counter observes2
+entries for benchDeep. Inspection separates them: one new admitted fold.make
+structural producer and one original private $node fold. This is an obsolete
+diagnostic counter expectation, not a discovered value/order failure. Original
+Phase35 tool and failed final-plan02 owner report remain preserved unchanged.
+
+Authorized fold-controls-v2.mjs preserves every inherited semantic/boundary
+assertion and the requirement of exactly one fold entry, narrowing only its
+instrumentation marker to the original $node frame initializer. It independently
+counts the single actual fold.make structural worker and requires producer
+entries1/0/1/1 for Deep/Shared/Weight/Record. It also requires exact captured
+root/producer/fold guard owners, host/local entry guards, region coverage and
+proof finally restoration. The JSON derivation record binds the unchanged
+parent and derived script; exact substitution replay passes before execution.
+Successor runtime controls remain pending root execution at this checkpoint.
+
+The final auditor accepts an owner mapping row with both direct successor
+control and unchanged fold-guards report identities, each complete/pass/error-free
+and independently reaching the selected API and attempt through tested hash
+edges. The new guard config binds checked06 attempt/API identities; the unchanged
+guard script consumes that config. This closes provenance without changing the
+auditor, rewriting the failed wrapper, or substituting an unrelated final API.
+
+The consumed v2 successor fails on benchShared's distinct producer expectation
+after the inherited27 oracle rows pass. This expectation was incomplete: source
+fold.share binds fold.make once, then Two{child,child}; its emitted residual
+invokes the global producer under region coverage opened by benchShared. Thus
+one producer entry is independently required even though benchShared's own
+line contains no direct producer invocation. V2 files/failure remain immutable.
+
+fold-controls-v3.mjs derives from exact v2 and changes the shared producer
+expectation to1, extends captured guard inventory to
+benchShared/fold.share/fold.make/fold.size, proves one emitted producer call
+inside the shared binder, and requires both actual fold.size input child slots
+to alias. The original fold-entry requirement remains1 throughout. Its JSON
+record binds parent derivation and failed v2 report; exact substitutions replay
+and emitted shared-binder pattern checks pass statically. Runtime validation is
+pending root execution; no semantic assertion or compiler source is changed.
+
+Before v3 consumption, root review catches an unescaped single-quoted Two literal
+inside its generated witness-source string. Explicit pinned Node24 --check
+confirms the syntax error; changing that inner literal to double quotes repairs
+it. The unconsumed failed syntax source is preserved as
+fold-controls-v3-syntax-failed.mjs (SHAa7756356…516ebe). V3 script/derivation/patch
+are updated coherently: corrected SHA04d05cf0…55db04, exact parent substitution
+replay passes, and pinned Node --check exits0. This is static validation only;
+successor execution remains pending, and v2 consumed artifacts remain unchanged.

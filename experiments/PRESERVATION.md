@@ -639,3 +639,32 @@ reference remain documented prerequisites. The previous Phase35 installed image
 is preserved under its API hash in release history. All 103 unrelated starting
 files remain unchanged and unstaged in the
 [protection audit](../implementation/phase36/protected-files-final.json).
+
+
+## Phase40 closure (2026-10-03)
+
+The [verified capsule](../implementation/phase40/evidence/README.md) preserves all
+26,793 closed raw files and 6,419 directories: 320,047,611 logical bytes in two
+ordered volumes totaling 49,947,767 compressed bytes. Stream SHA256:
+`68e2fbac1cefe532b55b8a4be60efce6905eeda66bc983499e903e8fd8b990be`.
+Capture reopens and verifies every member, then rehashes the complete source;
+a separate source/archive verification also passes. Nothing is filtered by
+success. Failed checked04 emission, rejected checked05 ray timings and inherited
+diagnostic failures remain alongside successful successors and checked06 gates.
+
+[Writer closure](../implementation/phase40/raw-closure.json),
+[capture receipt](../implementation/phase40/preservation-run01/run.json) and
+[verification receipt](../implementation/phase40/preservation-verify-run01/run.json)
+are outside the closed raw tree. Capture takes 24.505 seconds / 70,873,088 bytes
+peak process-tree RSS; verification takes 9.644 seconds / 63,041,536 bytes.
+The [portable current bundle](../selfhost/tools/performance/phase40/current/manifest.json)
+retains 45 selected points in a separate 1,336,751-byte archive for fast execution
+without historical build directories. Its five-point smoke passes in 20.36 seconds
+with a recorded 0.36-second preset overrun.
+
+The [installed release](../implementation/phase40/release-06.md) and
+[execution selection](../implementation/phase40/execution/report.json) distinguish
+checked06 identity, 42 retained exact-byte timing comparisons, three fresh ray
+comparisons and preserved rejected evidence. Original external receipt paths
+retain their meaning; a restored copy does not fabricate relocated provenance.
+Future experiments must use a new raw phase directory.

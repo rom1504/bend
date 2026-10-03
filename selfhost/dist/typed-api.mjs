@@ -10926,24 +10926,27 @@ function $j_component_declaration$(_book_0, _d_0, _pure_0) {
   const _x_3 = run_loop($j_component_emit$(_book_0, {$: "Nil"}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($j_component_values$(0, ($da$(_d_0)))), _d_0, 1));
   const _x_4 = ("}else{" + _x_2);
   const _x_5 = (_x_3 + _x_4);
-  const _x_6 = run_loop($j_component_restore$(0, ($da$(_d_0))));
-  const _x_7 = ("if($frame.phase===0){$frame.left=$value;$frame.phase=1;" + _x_5);
+  const _x_6 = run_loop($j_component_emit$(_book_0, {$: "Nil"}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($j_component_values$(0, ($da$(_d_0)))), _d_0, 3));
+  const _x_7 = ("--$top;}else if($frame.phase===0){$frame.left=$value;$frame.phase=1;" + _x_5);
   const _x_8 = (_x_6 + _x_7);
-  const _x_9 = ("while($top){const $frame=$frames[$top-1];" + _x_8);
-  const _x_10 = run_loop($j_component_emit$(_book_0, {$: "Nil"}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($j_component_values$(0, ($da$(_d_0)))), _d_0, 0));
-  const _x_11 = ("}" + _x_9);
-  const _x_12 = (_x_10 + _x_11);
-  const _x_13 = run_loop($j_region_nested_slots$(0, ($da$(_d_0))));
-  const _x_14 = ("const $frames=[];let $top=0,$value;$visit:for(;;){$step:{" + _x_12);
+  const _x_9 = run_loop($j_component_restore$(0, ($da$(_d_0))));
+  const _x_10 = ("if($frame.phase===2){" + _x_8);
+  const _x_11 = (_x_9 + _x_10);
+  const _x_12 = ("while($top){const $frame=$frames[$top-1];" + _x_11);
+  const _x_13 = run_loop($j_component_emit$(_book_0, {$: "Nil"}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($j_component_values$(0, ($da$(_d_0)))), _d_0, 0));
+  const _x_14 = ("}" + _x_12);
   const _x_15 = (_x_13 + _x_14);
-  const _x_16 = run_loop($j_region_parameters$(0, ($da$(_d_0))));
-  const _x_17 = ("){/* private structural component */" + _x_15);
+  const _x_16 = run_loop($j_region_nested_slots$(0, ($da$(_d_0))));
+  const _x_17 = ("const $frames=[];let $top=0,$value;$visit:for(;;){$step:{" + _x_15);
   const _x_18 = (_x_16 + _x_17);
-  const _x_19 = ($j_region_name$(($dn$(_d_0))));
-  const _x_20 = ("$tree(" + _x_18);
+  const _x_19 = run_loop($j_region_parameters$(0, ($da$(_d_0))));
+  const _x_20 = ("){/* private structural component */" + _x_18);
   const _x_21 = (_x_19 + _x_20);
-  return ("function " + _x_21);
-}) : ((_x_22) => {
+  const _x_22 = ($j_region_name$(($dn$(_d_0))));
+  const _x_23 = ("$tree(" + _x_21);
+  const _x_24 = (_x_22 + _x_23);
+  return ("function " + _x_24);
+}) : ((_x_25) => {
   return "";
 }), {$: "Unit"});
 }
@@ -10954,25 +10957,29 @@ function $j_component_plan$(_book_0, _d_0) {
   const _x_1 = ($da$(_d_0));
   const _x_2 = ($da$(_d_0));
   return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), ($Bool$not$(($db$(_d_0)))))), (_x_0 === 0))), (_x_1 > 0))), (_x_2 <= 8))), ($String$eq$(($tg$(_head_0)), "All"))))) ? ((_x_3) => {
-  return run_tail((($Bool$and$(($String$eq$(($tg$(run_loop($wnf$(_book_0, run_loop($kid$(_head_0, 0)))))), "ADT")), ($Bool$not$(($db$(run_loop($lookup$(_book_0, ($nm$(run_loop($wnf$(_book_0, run_loop($kid$(_head_0, 0))))))))))))))) ? ((_x_4) => {
-  return run_tail((($Bool$and$(run_loop($j_u32_bounded$({$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}}, 512)), ($Bool$not$(run_loop($j_l_deep$(($dv$(_d_0)), 0))))))) ? ((_x_5) => {
-  const _x_6 = run_loop($j_component_refs$({$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}}, ($dn$(_d_0)), 1024, 0));
-  return run_tail(((_x_6 > 0)) ? ((_x_7) => {
-  return run_tail((($Bool$and$(run_loop($j_region_capture_eligible$(_book_0, _d_0)), run_loop($j_component_prefix$(_book_0, {$: "Nil"}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($j_component_slots$(0, ($da$(_d_0)))), _d_0, 0))))) ? ((_x_8) => {
+  const _x_4 = ($Bool$and$(($String$eq$(($tg$(run_loop($wnf$(_book_0, run_loop($kid$(_head_0, 0)))))), "ADT")), ($Bool$not$(($db$(run_loop($lookup$(_book_0, ($nm$(run_loop($wnf$(_book_0, run_loop($kid$(_head_0, 0))))))))))))));
+  const _x_5 = run_loop($j_list_ground_type$(_book_0, run_loop($kid$(_head_0, 0))));
+  const _x_6 = (_x_4 || _x_5);
+  const _x_7 = ($Bool$and$(($Bool$and$(($j_primitive_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_head_0, 0)))), "Nat")), ($j_nat_loop_native$(_book_0)))), ($Bool$not$(($j_region_scalar$(_book_0, run_loop($j_fold_root_result$(_book_0, ($dt$(_d_0)), ($da$(_d_0))))))))));
+  return run_tail(((_x_6 || _x_7)) ? ((_x_8) => {
+  return run_tail((($Bool$and$(run_loop($j_u32_bounded$({$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}}, 512)), ($Bool$not$(run_loop($j_l_deep$(($dv$(_d_0)), 0))))))) ? ((_x_9) => {
+  const _x_10 = run_loop($j_component_refs$({$: "Con", "head": ($dv$(_d_0)), "tail": {$: "Nil"}}, ($dn$(_d_0)), 1024, 0));
+  return run_tail(((_x_10 > 0)) ? ((_x_11) => {
+  return run_tail((($Bool$and$(run_loop($j_region_capture_eligible$(_book_0, _d_0)), run_loop($j_component_prefix$(_book_0, {$: "Nil"}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($j_component_slots$(0, ($da$(_d_0)))), _d_0, 0))))) ? ((_x_12) => {
   return $j_component_closed$(_d_0, run_loop($j_pure_graph$(_book_0, _d_0, {$: "JPure", "defs": {$: "Nil"}, "fuel": 32768, "valid": true})));
-}) : ((_x_9) => {
-  return {$: "JPure", "defs": {$: "Nil"}, "fuel": 0, "valid": false};
-}), {$: "Unit"});
-}) : ((_x_10) => {
-  return {$: "JPure", "defs": {$: "Nil"}, "fuel": 0, "valid": false};
-}), {$: "Unit"});
-}) : ((_x_11) => {
-  return {$: "JPure", "defs": {$: "Nil"}, "fuel": 0, "valid": false};
-}), {$: "Unit"});
-}) : ((_x_12) => {
-  return {$: "JPure", "defs": {$: "Nil"}, "fuel": 0, "valid": false};
-}), {$: "Unit"});
 }) : ((_x_13) => {
+  return {$: "JPure", "defs": {$: "Nil"}, "fuel": 0, "valid": false};
+}), {$: "Unit"});
+}) : ((_x_14) => {
+  return {$: "JPure", "defs": {$: "Nil"}, "fuel": 0, "valid": false};
+}), {$: "Unit"});
+}) : ((_x_15) => {
+  return {$: "JPure", "defs": {$: "Nil"}, "fuel": 0, "valid": false};
+}), {$: "Unit"});
+}) : ((_x_16) => {
+  return {$: "JPure", "defs": {$: "Nil"}, "fuel": 0, "valid": false};
+}), {$: "Unit"});
+}) : ((_x_17) => {
   return {$: "JPure", "defs": {$: "Nil"}, "fuel": 0, "valid": false};
 }), {$: "Unit"});
 }
@@ -13085,6 +13092,52 @@ function $j_component_restore$(_at_0, _total_0) {
 }), {$: "Unit"});
 }
 
+function $j_list_ground_type$(_book_0, _ty_0) {
+  const _head_0 = run_loop($wnf$(_book_0, _ty_0));
+  const _d_0 = run_loop($lookup$(_book_0, "List"));
+  const _x_0 = ($dx$(_d_0));
+  const _x_1 = ($da$(_d_0));
+  const _x_2 = ($j_region_def_count$(($dc$(_d_0))));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($j_list_ground_head$(_book_0, _head_0)), ($String$eq$(($dk$(_d_0)), "ADT")))), ($db$(_d_0)))), (_x_0 === 0))), (_x_1 === 2))), (_x_2 === 2)))) ? ((_x_3) => {
+  return $Bool$and$(($Bool$and$(($j_list_ground_kind$(run_loop($wnf$(_book_0, ($j_specialize$(_book_0, ($dt$(_d_0)), ($ks$(_head_0)))))))), run_loop($j_list_ground_ctor$(_book_0, run_loop($lookup$(($dc$(_d_0)), "Nil")), _head_0, 0)))), run_loop($j_list_ground_ctor$(_book_0, run_loop($lookup$(($dc$(_d_0)), "Con")), _head_0, 2)));
+}) : ((_x_4) => {
+  return false;
+}), {$: "Unit"});
+}
+
+function $j_primitive_type$(_book_0, _ty_0, _name_0) {
+  const _x_0 = ($terms_len$(($ks$(_ty_0))));
+  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($String$eq$(($nm$(_ty_0)), _name_0)))), (_x_0 === 0))), ($List$is_empty$(($rm$(_ty_0)))))), run_loop(run_tail((($String$eq$(_name_0, "Nat"))) ? ((_x_1) => {
+  return $Bool$and$(($j_u32_native_ctor$(_book_0, "Nat", "Zero")), ($j_u32_native_ctor$(_book_0, "Nat", "Succ")));
+}) : ((_x_2) => {
+  return run_tail((($String$eq$(_name_0, "F32"))) ? ((_x_3) => {
+  return $Bool$and$(($j_u32_native_ctor$(_book_0, "F32", "F32")), ($j_u32_native_book$(_book_0)));
+}) : ((_x_4) => {
+  return run_tail((($String$eq$(_name_0, "Bool"))) ? ((_x_5) => {
+  return $Bool$and$(($j_u32_native_ctor$(_book_0, "Bool", "False")), ($j_u32_native_ctor$(_book_0, "Bool", "True")));
+}) : ((_x_6) => {
+  return $j_u32_native_book$(_book_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"})));
+}
+
+function $j_nat_loop_native$(_book_0) {
+  const _owner_0 = run_loop($lookup$(_book_0, "Nat"));
+  const _succ_0 = run_loop($wnf$(_book_0, ($dt$(run_loop($lookup$(($dc$(_owner_0)), "Succ"))))));
+  const _x_0 = ($qt$(_succ_0));
+  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($j_u32_native_ctor$(_book_0, "Nat", "Zero")), ($j_u32_native_ctor$(_book_0, "Nat", "Succ")))), ($j_primitive_type$(_book_0, run_loop($wnf$(_book_0, ($dt$(run_loop($lookup$(($dc$(_owner_0)), "Zero")))))), "Nat")))), ($String$eq$(($tg$(_succ_0)), "All")))), ($Bool$not$((_x_0 === 0))))), ($j_primitive_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_succ_0, 0)))), "Nat")))), ($j_primitive_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_succ_0, 1)))), "Nat")));
+}
+
+function $j_fold_root_result$(_book_0, _ty_0, _left_0) {
+  const _head_0 = run_loop($wnf$(_book_0, _ty_0));
+  return run_tail(((_left_0 === 0)) ? ((_x_0) => {
+  return _head_0;
+}) : ((_x_1) => {
+  return $j_fold_root_result$(_book_0, run_loop($kid$(_head_0, 1)), ((_left_0 - 1) >>> 0));
+}), {$: "Unit"});
+}
+
 function $j_u32_bounded$(_todo_0, _fuel_0) {
   if (_todo_0.$ === "Nil") {
     return true;
@@ -13301,23 +13354,6 @@ return {$: "$JMP", f: $kid$, x: [_t_0, 1]};
 
 function $strip$(_t_0) {
   return $core_force$(_t_0);
-}
-
-function $j_primitive_type$(_book_0, _ty_0, _name_0) {
-  const _x_0 = ($terms_len$(($ks$(_ty_0))));
-  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($String$eq$(($nm$(_ty_0)), _name_0)))), (_x_0 === 0))), ($List$is_empty$(($rm$(_ty_0)))))), run_loop(run_tail((($String$eq$(_name_0, "Nat"))) ? ((_x_1) => {
-  return $Bool$and$(($j_u32_native_ctor$(_book_0, "Nat", "Zero")), ($j_u32_native_ctor$(_book_0, "Nat", "Succ")));
-}) : ((_x_2) => {
-  return run_tail((($String$eq$(_name_0, "F32"))) ? ((_x_3) => {
-  return $Bool$and$(($j_u32_native_ctor$(_book_0, "F32", "F32")), ($j_u32_native_book$(_book_0)));
-}) : ((_x_4) => {
-  return run_tail((($String$eq$(_name_0, "Bool"))) ? ((_x_5) => {
-  return $Bool$and$(($j_u32_native_ctor$(_book_0, "Bool", "False")), ($j_u32_native_ctor$(_book_0, "Bool", "True")));
-}) : ((_x_6) => {
-  return $j_u32_native_book$(_book_0);
-}), {$: "Unit"});
-}), {$: "Unit"});
-}), {$: "Unit"})));
 }
 
 function $j_primitive_telescope$(_book_0, _ty_0, _name_0, _at_0, _left_0) {
@@ -15320,19 +15356,24 @@ function $j_component_finish$(_book_0, _env_0, _t_0, _ty_0, _d_0, _phase_0) {
   return "return bad('private component continuation invariant');";
 }), {$: "Unit"});
 }) : ((_x_6) => {
-  return run_tail(((_phase_0 === 2)) ? ((_x_7) => {
-  const _x_8 = run_loop($j_expr$(_book_0, ($j_context$(_book_0, _env_0, ($ks$(_t_0)))), run_loop($kid$(_t_0, 2)), _ty_0, false));
-  const _x_9 = (_x_8 + ";");
-  const _x_10 = ("$value=" + _x_9);
-  const _x_11 = ($j_local$(($ix$(run_loop($kid$(_t_0, 1))))));
-  const _x_12 = ("=$value;" + _x_10);
-  const _x_13 = (_x_11 + _x_12);
-  const _x_14 = ($j_local$(($ix$(run_loop($kid$(_t_0, 0))))));
-  const _x_15 = ("=$frame.left;const " + _x_13);
+  const _x_7 = run_loop($j_component_refs$({$: "Con", "head": _t_0, "tail": {$: "Nil"}}, ($dn$(_d_0)), 1024, 0));
+  return run_tail(((_x_7 === 1)) ? ((_x_8) => {
+  return $j_linear_finish$(_book_0, _env_0, _t_0, _ty_0, _d_0, _phase_0);
+}) : ((_x_9) => {
+  return run_tail(((_phase_0 === 2)) ? ((_x_10) => {
+  const _x_11 = run_loop($j_expr$(_book_0, ($j_context$(_book_0, _env_0, ($ks$(_t_0)))), run_loop($kid$(_t_0, 2)), _ty_0, false));
+  const _x_12 = (_x_11 + ";");
+  const _x_13 = ("$value=" + _x_12);
+  const _x_14 = ($j_local$(($ix$(run_loop($kid$(_t_0, 1))))));
+  const _x_15 = ("=$value;" + _x_13);
   const _x_16 = (_x_14 + _x_15);
-  return ("const " + _x_16);
-}) : ((_x_17) => {
+  const _x_17 = ($j_local$(($ix$(run_loop($kid$(_t_0, 0))))));
+  const _x_18 = ("=$frame.left;const " + _x_16);
+  const _x_19 = (_x_17 + _x_18);
+  return ("const " + _x_19);
+}) : ((_x_20) => {
   return $j_component_enter$(_book_0, _env_0, run_loop($j_call_spine$(run_loop($kid$(run_loop($kid$(_t_0, _phase_0)), 0)), {$: "Nil"})), _d_0, _phase_0);
+}), {$: "Unit"});
 }), {$: "Unit"});
 }), {$: "Unit"});
 }
@@ -15340,12 +15381,21 @@ function $j_component_finish$(_book_0, _env_0, _t_0, _ty_0, _d_0, _phase_0) {
 function $j_component_emit_match$(_book_0, _env_0, _t_0, _ty_0, _arg_0, _rest_0, _d_0, _phase_0) {
   const _input_0 = run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 0))));
   const _c_0 = run_loop($lookup$(($dc$(run_loop($lookup$(_book_0, ($nm$(_input_0)))))), ($nm$(_t_0))));
-  const _x_10 = run_loop($j_component_emit$(_book_0, _env_0, run_loop($kid$(_t_0, 1)), _ty_0, {$: "Con", "head": _arg_0, "tail": _rest_0}, _d_0, _phase_0));
-  const _x_11 = (_x_10 + "}");
-  const _x_12 = run_loop($j_component_emit$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($j_arm_type$(_book_0, _ty_0, ($nm$(_t_0)))), run_loop($j_finite_fields$(_arg_0, 0, ($da$(_c_0)), _rest_0)), _d_0, _phase_0));
-  const _x_13 = ("}else{" + _x_11);
-  const _x_14 = (_x_12 + _x_13);
-  const _x_15 = run_loop(run_tail((($j_primitive_type$(_book_0, _input_0, "Bool"))) ? ((_x_0) => {
+  const _x_22 = run_loop($j_component_emit$(_book_0, _env_0, run_loop($kid$(_t_0, 1)), _ty_0, {$: "Con", "head": _arg_0, "tail": _rest_0}, _d_0, _phase_0));
+  const _x_23 = (_x_22 + "}");
+  const _x_24 = run_loop($j_component_emit$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($j_arm_type$(_book_0, _ty_0, ($nm$(_t_0)))), run_loop(run_tail((($j_primitive_type$(_book_0, _input_0, "Nat"))) ? ((_x_17) => {
+  return run_tail((($String$eq$(($nm$(_t_0)), "Zero"))) ? ((_x_18) => {
+  return _rest_0;
+}) : ((_x_19) => {
+  const _x_20 = (_arg_0 + "-1n)");
+  return {$: "Con", "head": ("(" + _x_20), "tail": _rest_0};
+}), {$: "Unit"});
+}) : ((_x_21) => {
+  return $j_finite_fields$(_arg_0, 0, ($da$(_c_0)), _rest_0);
+}), {$: "Unit"})), _d_0, _phase_0));
+  const _x_25 = ("}else{" + _x_23);
+  const _x_26 = (_x_24 + _x_25);
+  const _x_27 = run_loop(run_tail((($j_primitive_type$(_book_0, _input_0, "Bool"))) ? ((_x_0) => {
   const _x_3 = run_loop(run_tail((($String$eq$(($nm$(_t_0)), "True"))) ? ((_x_1) => {
   return "true";
 }) : ((_x_2) => {
@@ -15355,14 +15405,62 @@ function $j_component_emit_match$(_book_0, _env_0, _t_0, _ty_0, _arg_0, _rest_0,
   const _x_5 = (_arg_0 + _x_4);
   return ("(" + _x_5);
 }) : ((_x_6) => {
-  const _x_7 = ($j_quote$(($nm$(_t_0))));
-  const _x_8 = (").$===" + _x_7);
-  const _x_9 = (_arg_0 + _x_8);
-  return ("(" + _x_9);
+  return run_tail((($j_primitive_type$(_book_0, _input_0, "Nat"))) ? ((_x_7) => {
+  const _x_10 = run_loop(run_tail((($String$eq$(($nm$(_t_0)), "Zero"))) ? ((_x_8) => {
+  return "===0n";
+}) : ((_x_9) => {
+  return "!==0n";
 }), {$: "Unit"}));
-  const _x_16 = ("){" + _x_14);
-  const _x_17 = (_x_15 + _x_16);
-  return ("if(" + _x_17);
+  const _x_11 = (")" + _x_10);
+  const _x_12 = (_arg_0 + _x_11);
+  return ("(" + _x_12);
+}) : ((_x_13) => {
+  const _x_14 = ($j_quote$(($nm$(_t_0))));
+  const _x_15 = (").$===" + _x_14);
+  const _x_16 = (_arg_0 + _x_15);
+  return ("(" + _x_16);
+}), {$: "Unit"});
+}), {$: "Unit"}));
+  const _x_28 = ("){" + _x_26);
+  const _x_29 = (_x_27 + _x_28);
+  return ("if(" + _x_29);
+}
+
+function $j_list_ground_head$(_book_0, _ty_0) {
+  const _x_0 = ($terms_len$(($ks$(_ty_0))));
+  const _x_1 = ($qt$(run_loop($kid$(_ty_0, 0))));
+  const _x_2 = ($terms_len$(($ks$(run_loop($kid$(_ty_0, 0))))));
+  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), ($String$eq$(($nm$(_ty_0)), "List")))), (_x_0 === 2))), ($List$is_empty$(($rm$(_ty_0)))))), ($String$eq$(($tg$(run_loop($kid$(_ty_0, 0)))), "Qua")))), (_x_1 === 2))), (_x_2 === 0))), ($j_primitive_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 1)))), "U32")));
+}
+
+function $j_region_def_count$(_ds_0) {
+  if (_ds_0.$ === "Nil") {
+    return 0;
+  } else {
+    const _rest_0 = _ds_0["tail"];
+    const _x_0 = ($j_region_def_count$(_rest_0));
+    return ((_x_0 + 1) >>> 0);
+  }
+}
+
+function $j_list_ground_kind$(_ty_0) {
+  const _x_0 = ($terms_len$(($ks$(_ty_0))));
+  const _x_1 = ($qt$(run_loop($kid$(_ty_0, 0))));
+  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "Typ")), (_x_0 === 1))), ($String$eq$(($tg$(run_loop($kid$(_ty_0, 0)))), "Qua")))), (_x_1 === 2));
+}
+
+function $j_list_ground_ctor$(_book_0, _c_0, _ty_0, _fields_0) {
+  const _x_0 = ($dx$(_c_0));
+  const _x_1 = ($da$(_c_0));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_c_0)), "Ctr")), ($db$(_c_0)))), (_x_0 === 0))), (_x_1 === _fields_0)))) ? ((_x_2) => {
+  return $j_list_ground_fields$(_book_0, ($j_specialize$(_book_0, ($dt$(_c_0)), ($ks$(_ty_0)))), _fields_0);
+}) : ((_x_3) => {
+  return false;
+}), {$: "Unit"});
+}
+
+function $j_u32_native_book$(_book_0) {
+  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($j_u32_native_ctor$(_book_0, "U32", "U32")), ($j_u32_native_ctor$(_book_0, "Word.Nil", "WNil")))), ($j_u32_native_ctor$(_book_0, "Word.Con", "WCon")))), ($j_u32_native_ctor$(_book_0, "Bool", "False")))), ($j_u32_native_ctor$(_book_0, "Bool", "True")))), ($String$eq$(($dk$(run_loop($lookup$(_book_0, "Word")))), "Def")))), ($db$(run_loop($lookup$(_book_0, "Word")))));
 }
 
 function $j_l_deeps$(_ts_0, _depth_0) {
@@ -15414,7 +15512,7 @@ function $j_component_leaf$(_book_0, _env_0, _t_0, _d_0) {
   const _x_5 = ($qt$(run_loop($kid$(_t_0, 1))));
   return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(run_loop($j_nat_loop_bindings$(($ks$(_t_0)), 0, {$: "Nil"})), ($j_component_independent$(_env_0, _t_0)))), ($Bool$not$((_x_4 === 0))))), ($Bool$not$((_x_5 === 0))))), ($j_component_self$(_env_0, run_loop($kid$(run_loop($kid$(_t_0, 0)), 0)), _d_0)))), ($j_component_self$(_env_0, run_loop($kid$(run_loop($kid$(_t_0, 1)), 0)), _d_0)));
 }) : ((_x_6) => {
-  return false;
+  return $j_linear_leaf$(_book_0, _env_0, _t_0, _d_0);
 }), {$: "Unit"});
 }), {$: "Unit"});
 }
@@ -15430,10 +15528,14 @@ function $j_component_match$(_book_0, _env_0, _t_0, _ty_0, _slots_0, _d_0, _dept
     const _c_0 = run_loop($lookup$(($dc$(_owner_0)), ($nm$(_t_0))));
     const _x_0 = ($terms_len$(($ks$(_t_0))));
     const _x_1 = ($j_primitive_type$(_book_0, _arg_0, "Bool"));
-    const _x_2 = ($Bool$and$(($Bool$not$(($db$(_owner_0)))), ($Bool$not$(($db$(_c_0))))));
-    return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_t_0)), "Mat")), ($String$eq$(run_loop($j_l_name$(_t_0)), "")))), (_x_0 === 2))), ($String$eq$(($dk$(_c_0)), "Ctr")))), (_x_1 || _x_2)))) ? ((_x_3) => {
+    const _x_2 = run_loop($j_list_ground_type$(_book_0, _arg_0));
+    const _x_3 = (_x_1 || _x_2);
+    const _x_4 = ($Bool$and$(($j_primitive_type$(_book_0, _arg_0, "Nat")), ($j_nat_loop_native$(_book_0))));
+    const _x_5 = (_x_3 || _x_4);
+    const _x_6 = ($Bool$and$(($Bool$not$(($db$(_owner_0)))), ($Bool$not$(($db$(_c_0))))));
+    return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_t_0)), "Mat")), ($String$eq$(run_loop($j_l_name$(_t_0)), "")))), (_x_0 === 2))), ($String$eq$(($dk$(_c_0)), "Ctr")))), (_x_5 || _x_6)))) ? ((_x_7) => {
   return $Bool$and$(run_loop($j_component_prefix$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($j_arm_type$(_book_0, _ty_0, ($nm$(_t_0)))), run_loop($j_component_fields$(_origin_0, ($da$(_c_0)), _rest_0)), _d_0, ((_depth_0 + 1) >>> 0))), run_loop($j_component_prefix$(_book_0, _env_0, run_loop($kid$(_t_0, 1)), _ty_0, {$: "Con", "head": _origin_0, "tail": _rest_0}, _d_0, ((_depth_0 + 1) >>> 0))));
-}) : ((_x_4) => {
+}) : ((_x_8) => {
   return false;
 }), {$: "Unit"});
   }
@@ -15637,10 +15739,6 @@ function $core_force$(_t_0) {
   return _t_0;
 }), {$: "Unit"});
 }), {$: "Unit"});
-}
-
-function $j_u32_native_book$(_book_0) {
-  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($j_u32_native_ctor$(_book_0, "U32", "U32")), ($j_u32_native_ctor$(_book_0, "Word.Nil", "WNil")))), ($j_u32_native_ctor$(_book_0, "Word.Con", "WCon")))), ($j_u32_native_ctor$(_book_0, "Bool", "False")))), ($j_u32_native_ctor$(_book_0, "Bool", "True")))), ($String$eq$(($dk$(run_loop($lookup$(_book_0, "Word")))), "Def")))), ($db$(run_loop($lookup$(_book_0, "Word")))));
 }
 
 function $j_primitive_result$(_name_0) {
@@ -17470,13 +17568,6 @@ function $j_region_prefix$(_book_0, _env_0, _t_0, _ty_0, _at_0, _left_0, _keep_0
 }), {$: "Unit"});
 }
 
-function $j_nat_loop_native$(_book_0) {
-  const _owner_0 = run_loop($lookup$(_book_0, "Nat"));
-  const _succ_0 = run_loop($wnf$(_book_0, ($dt$(run_loop($lookup$(($dc$(_owner_0)), "Succ"))))));
-  const _x_0 = ($qt$(_succ_0));
-  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($j_u32_native_ctor$(_book_0, "Nat", "Zero")), ($j_u32_native_ctor$(_book_0, "Nat", "Succ")))), ($j_primitive_type$(_book_0, run_loop($wnf$(_book_0, ($dt$(run_loop($lookup$(($dc$(_owner_0)), "Zero")))))), "Nat")))), ($String$eq$(($tg$(_succ_0)), "All")))), ($Bool$not$((_x_0 === 0))))), ($j_primitive_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_succ_0, 0)))), "Nat")))), ($j_primitive_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_succ_0, 1)))), "Nat")));
-}
-
 function $j_nat_loop_signature$(_book_0, _ty_0, _at_0, _left_0) {
   const _head_0 = run_loop($wnf$(_book_0, _ty_0));
   return run_tail(((_left_0 === 0)) ? ((_x_0) => {
@@ -17651,7 +17742,7 @@ function $j_nat_loop_count$(_t_0, _at_0) {
 }
 
 function $j_region_root_done$(_book_0, _d_0, _s_0) {
-  return run_tail((($Bool$and$(($j_region_valid$(_s_0)), run_loop($j_region_has_loop$(($j_region_helpers$(_s_0))))))) ? ((_x_0) => {
+  return run_tail((($Bool$and$(($j_region_valid$(_s_0)), run_loop($j_region_has_loop$(_book_0, ($j_region_helpers$(_s_0))))))) ? ((_x_0) => {
   const _x_1 = run_loop($j_nat_loop_generic$(_book_0, {$: "Nil"}, ($dv$(_d_0)), ($dt$(_d_0)), 0));
   const _x_2 = (_x_1 + "}));})()");
   const _x_3 = run_loop($j_tree_scope$(_book_0, _d_0, ($j_region_helpers$(_s_0)), run_loop($j_nat_loop_generic$(_book_0, {$: "Nil"}, ($j_region_term$(_s_0)), ($dt$(_d_0)), 0))));
@@ -17746,6 +17837,30 @@ function $j_l_capture_scalar$(_book_0, _d_0, _code_0) {
 }), {$: "Unit"});
 }
 
+function $j_linear_finish$(_book_0, _env_0, _t_0, _ty_0, _d_0, _phase_0) {
+  return run_tail((($j_linear_alias$(_t_0, ($dn$(_d_0))))) ? ((_x_0) => {
+  const _x_1 = run_loop($j_linear_finish$(_book_0, ($j_context$(_book_0, _env_0, ($ks$(_t_0)))), run_loop($j_strip$(run_loop($kid$(_t_0, 1)))), _ty_0, _d_0, _phase_0));
+  const _x_2 = ($j_nat_loop_names$(($ks$(_t_0)), 0));
+  const _x_3 = (_x_1 + "}}");
+  const _x_4 = (_x_2 + _x_3);
+  const _x_5 = ($j_nat_loop_values$(_book_0, _env_0, ($ks$(_t_0)), 0));
+  const _x_6 = ("{" + _x_4);
+  const _x_7 = (_x_5 + _x_6);
+  return ("{" + _x_7);
+}) : ((_x_8) => {
+  return run_tail((($j_linear_emit_self$(_t_0, _d_0))) ? ((_x_9) => {
+  const _x_10 = run_loop($j_component_assign$(0, ($da$(_d_0))));
+  const _x_11 = (_x_10 + "continue $visit;");
+  const _x_12 = ($j_apply_args$(_book_0, _env_0, ($ks$(run_loop($j_call_spine$(_t_0, {$: "Nil"})))), ($dt$(_d_0))));
+  const _x_13 = ("];" + _x_11);
+  const _x_14 = (_x_12 + _x_13);
+  return ("const $next=[" + _x_14);
+}) : ((_x_15) => {
+  return $j_linear_split$(_book_0, _env_0, _t_0, _ty_0, _d_0, _phase_0, run_loop($j_linear_spine$(_t_0)));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
 function $j_component_enter$(_book_0, _env_0, _spine_0, _d_0, _phase_0) {
   const _x_5 = run_loop($j_component_assign$(0, ($da$(_d_0))));
   const _x_6 = run_loop(run_tail(((_phase_0 === 0)) ? ((_x_0) => {
@@ -17773,6 +17888,24 @@ function $j_finite_fields$(_value_0, _at_0, _total_0, _rest_0) {
   const _x_4 = (").a[" + _x_3);
   const _x_5 = (_value_0 + _x_4);
   return {$: "Con", "head": ("(" + _x_5), "tail": run_loop($j_finite_fields$(_value_0, ((_at_0 + 1) >>> 0), _total_0, _rest_0))};
+}), {$: "Unit"});
+}
+
+function $j_list_ground_fields$(_book_0, _tel_0, _left_0) {
+  const _head_0 = run_loop($wnf$(_book_0, _tel_0));
+  return run_tail(((_left_0 === 0)) ? ((_x_0) => {
+  return $j_list_ground_head$(_book_0, _head_0);
+}) : ((_x_1) => {
+  const _x_2 = ($qt$(_head_0));
+  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($tg$(_head_0)), "All")), (_x_2 === 1))), run_loop(run_tail(((_left_0 === 2)) ? ((_x_3) => {
+  return $j_primitive_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_head_0, 0)))), "U32");
+}) : ((_x_4) => {
+  return $j_list_ground_head$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_head_0, 0)))));
+}), {$: "Unit"}))))) ? ((_x_5) => {
+  return $j_list_ground_fields$(_book_0, run_loop($kid$(_head_0, 1)), ((_left_0 - 1) >>> 0));
+}) : ((_x_6) => {
+  return false;
+}), {$: "Unit"});
 }), {$: "Unit"});
 }
 
@@ -17807,6 +17940,23 @@ function $j_component_self$(_env_0, _t_0, _d_0) {
   return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_spine_0)), "Call")), ($String$eq$(($nm$(_spine_0)), ($dn$(_d_0)))))), (_x_0 === _x_1))), ($String$eq$(($tg$(_first_0)), "Var")))), ($String$eq$(run_loop($j_component_origin$(_env_0, ($ix$(_first_0)))), "@child")));
 }
 
+function $j_linear_leaf$(_book_0, _env_0, _t_0, _d_0) {
+  const _x_0 = run_loop($j_component_refs$({$: "Con", "head": _t_0, "tail": {$: "Nil"}}, ($dn$(_d_0)), 1024, 0));
+  return run_tail(((_x_0 === 1)) ? ((_x_1) => {
+  return run_tail((($j_linear_alias$(_t_0, ($dn$(_d_0))))) ? ((_x_2) => {
+  return $j_linear_leaf$(_book_0, ($j_context$(_book_0, _env_0, ($ks$(_t_0)))), run_loop($j_strip$(run_loop($kid$(_t_0, 1)))), _d_0);
+}) : ((_x_3) => {
+  return run_tail((($j_component_self$(_env_0, _t_0, _d_0))) ? ((_x_4) => {
+  return true;
+}) : ((_x_5) => {
+  return $j_linear_combine$(_book_0, _env_0, _t_0, _d_0, run_loop($j_linear_spine$(_t_0)));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}) : ((_x_6) => {
+  return false;
+}), {$: "Unit"});
+}
+
 function $j_component_fields$(_origin_0, _left_0, _rest_0) {
   return run_tail(((_left_0 === 0)) ? ((_x_0) => {
   return _rest_0;
@@ -17827,16 +17977,6 @@ function $j_pure_native$(_book_0, _d_0) {
   const _x_3 = ($j_pure_bool_native$(_book_0, _d_0));
   const _x_4 = ($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dn$(_d_0)), "F32.to_u32")), ($String$eq$(($dk$(_d_0)), "Def")))), ($db$(_d_0)))), (_x_0 === 1))), (_x_1 === 0))), ($Bool$not$(($String$eq$(($tg$(run_loop($j_strip$(($dv$(_d_0)))))), "Foreign")))))), ($String$eq$(($tg$(_ty_0)), "All")))), ($Bool$not$((_x_2 === 0))))), ($j_primitive_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 0)))), "F32")))), ($j_primitive_type$(_book_0, run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 1)))), "U32"))));
   return (_x_3 || _x_4);
-}
-
-function $j_region_def_count$(_ds_0) {
-  if (_ds_0.$ === "Nil") {
-    return 0;
-  } else {
-    const _rest_0 = _ds_0["tail"];
-    const _x_0 = ($j_region_def_count$(_rest_0));
-    return ((_x_0 + 1) >>> 0);
-  }
 }
 
 function $j_pure_graph_callees$(_book_0, _ds_0, _s_0) {
@@ -19466,14 +19606,14 @@ function $j_region_local_type$(_book_0, _ty_0) {
 
 function $j_region_expr_on$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _active_0, _depth_0, _level_0, _s_0) {
   return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_0) => {
-  return run_tail((($Bool$and$(($j_region_local_type$(_book_0, run_loop($kid$(_t_0, 1)))), ($String$eq$(($nm$(run_loop($wnf$(_book_0, run_loop($kid$(_t_0, 1)))))), ($nm$(_ty_0))))))) ? ((_x_1) => {
+  return run_tail((($Bool$and$(($j_region_local_type$(_book_0, run_loop($kid$(_t_0, 1)))), run_loop($j_region_same_type$(_book_0, run_loop($kid$(_t_0, 1)), _ty_0))))) ? ((_x_1) => {
   return $j_region_expr$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), _ty_0, _tail_0, _active_0, _depth_0, _level_0, _s_0);
 }) : ((_x_2) => {
   return $j_region_fail$(_s_0);
 }), {$: "Unit"});
 }) : ((_x_3) => {
   return run_tail((($String$eq$(($tg$(_t_0)), "Var"))) ? ((_x_4) => {
-  return run_tail((($Bool$and$(($j_region_local_type$(_book_0, run_loop($j_env$(_env_0, ($ix$(_t_0)))))), ($String$eq$(($nm$(run_loop($wnf$(_book_0, run_loop($j_env$(_env_0, ($ix$(_t_0)))))))), ($nm$(_ty_0))))))) ? ((_x_5) => {
+  return run_tail((($Bool$and$(($j_region_local_type$(_book_0, run_loop($j_env$(_env_0, ($ix$(_t_0)))))), run_loop($j_region_same_type$(_book_0, run_loop($j_env$(_env_0, ($ix$(_t_0)))), _ty_0))))) ? ((_x_5) => {
   return $j_region_result$(_s_0, ($j_region_annotate$(run_loop($j_region_variable$(_env_0, _t_0)), _ty_0)));
 }) : ((_x_6) => {
   return $j_region_fail$(_s_0);
@@ -19565,7 +19705,7 @@ function $j_tree_prefix$(_book_0, _env_0, _t_0, _ty_0, _left_0, _name_0, _s_0) {
 }), {$: "Unit"});
 }
 
-function $j_region_has_loop$(_helpers_0) {
+function $j_region_has_loop$(_book_0, _helpers_0) {
   if (_helpers_0.$ === "Nil") {
     return false;
   } else {
@@ -19575,13 +19715,17 @@ function $j_region_has_loop$(_helpers_0) {
     const _x_1 = ($String$eq$(($tg$(($dv$(_d_0)))), "JFold"));
     const _x_2 = (_x_0 || _x_1);
     const _x_3 = ($String$eq$(($tg$(($dv$(_d_0)))), "JProducer"));
-    if ((($Bool$and$(($Bool$not$(($db$(_d_0)))), (_x_2 || _x_3))))) {
-const _x_4 = {$: "Unit"};
+    return run_tail((($Bool$and$(($Bool$not$(($db$(_d_0)))), (_x_2 || _x_3)))) ? ((_x_4) => {
+  return true;
+}) : ((_x_5) => {
+  if ((($Bool$and$(($String$eq$(($tg$(($dv$(_d_0)))), "JResidual")), ($j_pure_valid$(run_loop($j_component_plan$(_book_0, run_loop($lookup$(_book_0, ($dn$(_d_0)))))))))))) {
+const _x_6 = {$: "Unit"};
 return true;
 } else {
-const _x_5 = {$: "Unit"};
-return {$: "$JMP", f: $j_region_has_loop$, x: [_rest_0]};
+const _x_7 = {$: "Unit"};
+return {$: "$JMP", f: $j_region_has_loop$, x: [_book_0, _rest_0]};
 }
+}), {$: "Unit"});
   }
 }
 
@@ -19693,16 +19837,18 @@ function $j_u32_word$(_t_0, _depth_0) {
   return $j_u32_word_node$(run_loop($j_strip$(_t_0)), _depth_0);
 }
 
-function $j_component_save$(_at_0, _total_0) {
-  return run_tail(((_at_0 === _total_0)) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  const _x_2 = run_loop($j_component_save$(((_at_0 + 1) >>> 0), _total_0));
-  const _x_3 = ($U32$show$(_at_0));
-  const _x_4 = ("," + _x_2);
-  const _x_5 = (_x_3 + _x_4);
-  return ("$s" + _x_5);
-}), {$: "Unit"});
+function $j_linear_alias$(_t_0, _name_0) {
+  const _x_0 = ($terms_len$(($ks$(_t_0))));
+  const _x_1 = ($qt$(run_loop($kid$(_t_0, 0))));
+  const _x_2 = run_loop($j_component_refs$({$: "Con", "head": run_loop($kid$(_t_0, 0)), "tail": {$: "Nil"}}, _name_0, 1024, 0));
+  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_t_0)), "Let")), (_x_0 === 2))), ($Bool$not$((_x_1 === 0))))), ($j_region_field_atom$(run_loop($j_strip$(run_loop($kid$(run_loop($kid$(_t_0, 0)), 0)))))))), (_x_2 === 0));
+}
+
+function $j_linear_emit_self$(_t_0, _d_0) {
+  const _spine_0 = run_loop($j_call_spine$(run_loop($j_strip$(_t_0)), {$: "Nil"}));
+  const _x_0 = ($terms_len$(($ks$(_spine_0))));
+  const _x_1 = ($da$(_d_0));
+  return $Bool$and$(($Bool$and$(($String$eq$(($tg$(_spine_0)), "Call")), ($String$eq$(($nm$(_spine_0)), ($dn$(_d_0)))))), (_x_0 === _x_1));
 }
 
 function $j_component_assign$(_at_0, _total_0) {
@@ -19717,6 +19863,62 @@ function $j_component_assign$(_at_0, _total_0) {
   const _x_7 = ("=$next[" + _x_5);
   const _x_8 = (_x_6 + _x_7);
   return ("$s" + _x_8);
+}), {$: "Unit"});
+}
+
+function $j_linear_split$(_book_0, _env_0, _t_0, _ty_0, _d_0, _phase_0, _spine_0) {
+  const _child_0 = run_loop($j_linear_emit_child$(($ks$(_spine_0)), _d_0, 0));
+  const _tel_0 = run_loop($j_linear_tel$(_book_0, _t_0, _ty_0));
+  return run_tail(((_phase_0 === 3)) ? ((_x_0) => {
+  const _x_8 = run_loop(run_tail((($String$eq$(($tg$(_t_0)), "Ctr"))) ? ((_x_1) => {
+  const _x_2 = ($j_producer_unary_resume$(_book_0, _env_0, ($ks$(_spine_0)), _tel_0, _child_0, 0));
+  const _x_3 = (_x_2 + "])");
+  const _x_4 = ($j_quote$(($nm$(_t_0))));
+  const _x_5 = (",[" + _x_3);
+  const _x_6 = (_x_4 + _x_5);
+  return ("ctor(" + _x_6);
+}) : ((_x_7) => {
+  return $j_linear_combiner_emit$(_book_0, ($nm$(_spine_0)), ($j_producer_unary_resume$(_book_0, _env_0, ($ks$(_spine_0)), _tel_0, _child_0, 0)));
+}), {$: "Unit"}));
+  const _x_9 = (_x_8 + ";");
+  return ("$value=" + _x_9);
+}) : ((_x_10) => {
+  const _x_11 = run_loop($j_component_assign$(0, ($da$(_d_0))));
+  const _x_12 = (_x_11 + "continue $visit;");
+  const _x_13 = run_loop($j_region_vector_names$("$u", 0, _child_0));
+  const _x_14 = ("];$saved.phase=2;++$top;" + _x_12);
+  const _x_15 = (_x_13 + _x_14);
+  const _x_16 = run_loop($j_component_save$(0, ($da$(_d_0))));
+  const _x_17 = ("];$saved.before=[" + _x_15);
+  const _x_18 = (_x_16 + _x_17);
+  const _x_19 = ("$saved.args=[" + _x_18);
+  const _x_20 = ("let $saved=$top<$frames.length?$frames[$top]:null;if(!$saved)$saved=$frames[$top]={args:null,left:null,phase:0,before:null};" + _x_19);
+  const _x_21 = ($j_apply_args$(_book_0, _env_0, ($ks$(run_loop($j_call_spine$(run_loop($j_strip$(run_loop($terms_at$(($ks$(_spine_0)), _child_0)))), {$: "Nil"})))), ($dt$(_d_0))));
+  const _x_22 = ("];" + _x_20);
+  const _x_23 = (_x_21 + _x_22);
+  const _x_24 = run_loop($j_producer_unary_before$(_book_0, _env_0, ($ks$(_spine_0)), _tel_0, _child_0, 0));
+  const _x_25 = ("const $next=[" + _x_23);
+  return (_x_24 + _x_25);
+}), {$: "Unit"});
+}
+
+function $j_linear_spine$(_t_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ctr"))) ? ((_x_0) => {
+  return $kt$("Call", ($nm$(_t_0)), 0, 0, ($ks$(_t_0)));
+}) : ((_x_1) => {
+  return $j_call_spine$(_t_0, {$: "Nil"});
+}), {$: "Unit"});
+}
+
+function $j_component_save$(_at_0, _total_0) {
+  return run_tail(((_at_0 === _total_0)) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  const _x_2 = run_loop($j_component_save$(((_at_0 + 1) >>> 0), _total_0));
+  const _x_3 = ($U32$show$(_at_0));
+  const _x_4 = ("," + _x_2);
+  const _x_5 = (_x_3 + _x_4);
+  return ("$s" + _x_5);
 }), {$: "Unit"});
 }
 
@@ -19773,6 +19975,17 @@ return {$: "$JMP", f: $j_component_origin$, x: [_rest_0, _id_0]};
   }
 }
 
+function $j_linear_combine$(_book_0, _env_0, _t_0, _d_0, _spine_0) {
+  const _target_0 = run_loop($lookup$(_book_0, ($nm$(_spine_0))));
+  const _x_0 = ($terms_len$(($ks$(_spine_0))));
+  const _x_1 = ($da$(_target_0));
+  const _x_2 = ($String$eq$(($tg$(_t_0)), "Ctr"));
+  const _x_3 = ($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_spine_0)), "Call")), ($Bool$not$(($String$eq$(($nm$(_spine_0)), ($dn$(_d_0)))))))), ($Bool$not$(run_loop($j_primitive_call$(_book_0, _spine_0)))))), (_x_0 === _x_1)));
+  const _x_4 = run_loop($j_linear_child$(_env_0, ($ks$(_spine_0)), _d_0, 0));
+  const _x_5 = ($terms_len$(($ks$(_spine_0))));
+  return $Bool$and$((_x_2 || _x_3), (_x_4 < _x_5));
+}
+
 function $j_pure_bool_native$(_book_0, _d_0) {
   const _ty_0 = run_loop($wnf$(_book_0, ($dt$(_d_0))));
   const _rest_0 = run_loop($wnf$(_book_0, run_loop($kid$(_ty_0, 1))));
@@ -19807,14 +20020,14 @@ function $j_pure_remove$(_ds_0, _name_0) {
 
 function $j_pure_expr_on$(_book_0, _env_0, _t_0, _ty_0, _level_0, _s_0) {
   return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_0) => {
-  return run_tail((($Bool$and$(($j_pure_type$(_book_0, run_loop($kid$(_t_0, 1)))), ($String$eq$(($nm$(run_loop($wnf$(_book_0, run_loop($kid$(_t_0, 1)))))), ($nm$(_ty_0))))))) ? ((_x_1) => {
+  return run_tail((($Bool$and$(($j_pure_type$(_book_0, run_loop($kid$(_t_0, 1)))), run_loop($j_region_same_type$(_book_0, run_loop($kid$(_t_0, 1)), _ty_0))))) ? ((_x_1) => {
   return $j_pure_expr$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), _ty_0, _level_0, _s_0);
 }) : ((_x_2) => {
   return $j_pure_fail$(_s_0);
 }), {$: "Unit"});
 }) : ((_x_3) => {
   return run_tail((($String$eq$(($tg$(_t_0)), "Var"))) ? ((_x_4) => {
-  if ((($Bool$and$(($j_pure_type$(_book_0, run_loop($j_env$(_env_0, ($ix$(_t_0)))))), ($String$eq$(($nm$(run_loop($wnf$(_book_0, run_loop($j_env$(_env_0, ($ix$(_t_0)))))))), ($nm$(_ty_0)))))))) {
+  if ((($Bool$and$(($j_pure_type$(_book_0, run_loop($j_env$(_env_0, ($ix$(_t_0)))))), run_loop($j_region_same_type$(_book_0, run_loop($j_env$(_env_0, ($ix$(_t_0)))), _ty_0)))))) {
 const _x_5 = {$: "Unit"};
 return _s_0;
 } else {
@@ -19884,8 +20097,10 @@ function $j_finite_arm$(_book_0, _env_0, _t_0, _ty_0, _depth_0) {
   const _x_0 = ($qt$(_ty_0));
   const _x_1 = ($terms_len$(($ks$(_t_0))));
   const _x_2 = ($j_primitive_type$(_book_0, _arg_0, "Bool"));
-  const _x_3 = ($Bool$and$(($Bool$and$(($Bool$not$(($db$(_owner_0)))), ($Bool$not$(($db$(_c_0)))))), ($j_pure_type$(_book_0, _arg_0))));
-  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "All")), ($Bool$not$((_x_0 === 0))))), ($String$eq$(run_loop($j_l_name$(_t_0)), "")))), (_x_1 === 2))), ($String$eq$(($dk$(_c_0)), "Ctr")))), (_x_2 || _x_3))), run_loop($j_finite_prefix$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($j_arm_type$(_book_0, _ty_0, ($nm$(_t_0)))), ((_depth_0 + 1) >>> 0))))), run_loop($j_finite_prefix$(_book_0, _env_0, run_loop($kid$(_t_0, 1)), _ty_0, ((_depth_0 + 1) >>> 0))));
+  const _x_3 = run_loop($j_list_ground_type$(_book_0, _arg_0));
+  const _x_4 = (_x_2 || _x_3);
+  const _x_5 = ($Bool$and$(($Bool$and$(($Bool$not$(($db$(_owner_0)))), ($Bool$not$(($db$(_c_0)))))), ($j_pure_type$(_book_0, _arg_0))));
+  return $Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "All")), ($Bool$not$((_x_0 === 0))))), ($String$eq$(run_loop($j_l_name$(_t_0)), "")))), (_x_1 === 2))), ($String$eq$(($dk$(_c_0)), "Ctr")))), (_x_4 || _x_5))), run_loop($j_finite_prefix$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($j_arm_type$(_book_0, _ty_0, ($nm$(_t_0)))), ((_depth_0 + 1) >>> 0))))), run_loop($j_finite_prefix$(_book_0, _env_0, run_loop($kid$(_t_0, 1)), _ty_0, ((_depth_0 + 1) >>> 0))));
 }
 
 function $j_finite_expr$(_book_0, _env_0, _t_0, _ty_0, _depth_0) {
@@ -21004,6 +21219,18 @@ function $j_region_local_check$(_book_0, _ty_0, _active_0, _fuel_0) {
 }), {$: "Unit"});
 }
 
+function $j_region_same_type$(_book_0, _a_0, _b_0) {
+  const _x_0 = run_loop($wnf$(_book_0, _a_0));
+  const _y_0 = run_loop($wnf$(_book_0, _b_0));
+  const _x_1 = ($String$eq$(($nm$(_x_0)), "List"));
+  const _x_2 = ($String$eq$(($nm$(_y_0)), "List"));
+  return run_tail(((_x_1 || _x_2)) ? ((_x_3) => {
+  return $Bool$and$(($j_list_ground_head$(_book_0, _x_0)), ($j_list_ground_head$(_book_0, _y_0)));
+}) : ((_x_4) => {
+  return $String$eq$(($nm$(_x_0)), ($nm$(_y_0)));
+}), {$: "Unit"});
+}
+
 function $j_region_variable$(_env_0, _t_0) {
   if (_env_0.$ === "Nil") {
     return $atom$("Absent");
@@ -21122,15 +21349,6 @@ function $j_tree_left$(_book_0, _env_0, _t_0, _ty_0, _name_0, _s_0) {
 }), {$: "Unit"});
 }
 
-function $j_fold_root_result$(_book_0, _ty_0, _left_0) {
-  const _head_0 = run_loop($wnf$(_book_0, _ty_0));
-  return run_tail(((_left_0 === 0)) ? ((_x_0) => {
-  return _head_0;
-}) : ((_x_1) => {
-  return $j_fold_root_result$(_book_0, run_loop($kid$(_head_0, 1)), ((_left_0 - 1) >>> 0));
-}), {$: "Unit"});
-}
-
 function $j_l_walk$(_book_0, _env_0, _t_0, _ty_0) {
   return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_0) => {
   return $j_l_walk$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($kid$(_t_0, 1)));
@@ -21217,32 +21435,152 @@ function $j_u32_word_node$(_t_0, _depth_0) {
 }), {$: "Unit"});
 }
 
+function $j_region_field_atom$(_t_0) {
+  const _body_0 = run_loop($j_strip$(_t_0));
+  const _x_0 = ($String$eq$(($tg$(_body_0)), "Var"));
+  const _x_1 = ($String$eq$(($tg$(_body_0)), "Lit"));
+  const _x_2 = ($terms_len$(($ks$(_body_0))));
+  const _x_3 = ($String$eq$(($nm$(_body_0)), "True"));
+  const _x_4 = ($String$eq$(($nm$(_body_0)), "False"));
+  const _x_5 = (_x_0 || _x_1);
+  const _x_6 = ($Bool$and$(($Bool$and$(($String$eq$(($tg$(_body_0)), "Ctr")), (_x_2 === 0))), (_x_3 || _x_4)));
+  return (_x_5 || _x_6);
+}
+
+function $j_linear_emit_child$(_args_0, _d_0, _at_0) {
+  if (_args_0.$ === "Nil") {
+    return 32;
+  } else {
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    if ((($j_linear_emit_self$(_h_0, _d_0)))) {
+const _x_0 = {$: "Unit"};
+return _at_0;
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $j_linear_emit_child$, x: [_rest_0, _d_0, ((_at_0 + 1) >>> 0)]};
+}
+  }
+}
+
+function $j_linear_tel$(_book_0, _t_0, _ty_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ctr"))) ? ((_x_0) => {
+  return $j_specialize$(_book_0, ($dt$(run_loop($j_layout_ctor$(_book_0, run_loop($wnf$(_book_0, _ty_0)), ($nm$(_t_0)))))), ($ks$(run_loop($wnf$(_book_0, _ty_0)))));
+}) : ((_x_1) => {
+  return $dt$(run_loop($lookup$(_book_0, ($nm$(run_loop($j_linear_spine$(_t_0)))))));
+}), {$: "Unit"});
+}
+
+function $j_producer_unary_resume$(_book_0, _env_0, _args_0, _ty_0, _child_0, _at_0) {
+  if (_args_0.$ === "Nil") {
+    return "";
+  } else {
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    const _head_0 = run_loop($wnf$(_book_0, _ty_0));
+    const _x_6 = ($j_producer_unary_resume$(_book_0, _env_0, _rest_0, run_loop($j_app_type$(_head_0, _h_0)), _child_0, ((_at_0 + 1) >>> 0)));
+    const _x_7 = run_loop(run_tail(((_at_0 < _child_0)) ? ((_x_0) => {
+  const _x_1 = ($U32$show$(_at_0));
+  const _x_2 = (_x_1 + "]");
+  return ("$frame.before[" + _x_2);
+}) : ((_x_3) => {
+  return run_tail(((_at_0 === _child_0)) ? ((_x_4) => {
+  return "$value";
+}) : ((_x_5) => {
+  return $j_expr$(_book_0, _env_0, _h_0, run_loop($kid$(_head_0, 0)), false);
+}), {$: "Unit"});
+}), {$: "Unit"}));
+    const _x_8 = ("," + _x_6);
+    return (_x_7 + _x_8);
+  }
+}
+
+function $j_linear_combiner_emit$(_book_0, _name_0, _args_0) {
+  const _d_0 = run_loop($lookup$(_book_0, _name_0));
+  return run_tail((run_loop($j_finite_ready$(_book_0, _d_0))) ? ((_x_0) => {
+  const _x_1 = (_args_0 + ")");
+  const _x_2 = run_loop($j_finite_emit$(_book_0, {$: "Nil"}, ($dv$(_d_0)), ($dt$(_d_0)), run_loop($j_finite_slots$(0, ($da$(_d_0))))));
+  const _x_3 = ("})(" + _x_1);
+  const _x_4 = (_x_2 + _x_3);
+  const _x_5 = run_loop($j_region_parameters$(0, ($da$(_d_0))));
+  const _x_6 = (")=>{" + _x_4);
+  const _x_7 = (_x_5 + _x_6);
+  return ("((" + _x_7);
+}) : ((_x_8) => {
+  const _x_9 = (_args_0 + "])");
+  const _x_10 = ($j_quote$(_name_0));
+  const _x_11 = ("),[" + _x_9);
+  const _x_12 = (_x_10 + _x_11);
+  return ("callOwned(get(G," + _x_12);
+}), {$: "Unit"});
+}
+
+function $j_producer_unary_before$(_book_0, _env_0, _args_0, _ty_0, _child_0, _at_0) {
+  if (_args_0.$ === "Nil") {
+    return "";
+  } else {
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    const _head_0 = run_loop($wnf$(_book_0, _ty_0));
+    return run_tail(((_at_0 === _child_0)) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  const _x_2 = run_loop($j_producer_unary_before$(_book_0, _env_0, _rest_0, run_loop($j_app_type$(_head_0, _h_0)), _child_0, ((_at_0 + 1) >>> 0)));
+  const _x_3 = run_loop($j_expr$(_book_0, _env_0, _h_0, run_loop($kid$(_head_0, 0)), false));
+  const _x_4 = (";" + _x_2);
+  const _x_5 = (_x_3 + _x_4);
+  const _x_6 = ($U32$show$(_at_0));
+  const _x_7 = ("=" + _x_5);
+  const _x_8 = (_x_6 + _x_7);
+  return ("const $u" + _x_8);
+}), {$: "Unit"});
+  }
+}
+
 function $j_pure_type_head$(_book_0, _ty_0, _active_0, _fuel_0) {
   const _owner_0 = run_loop($lookup$(_book_0, ($nm$(_ty_0))));
   const _kind_0 = run_loop($wnf$(_book_0, ($dt$(_owner_0))));
-  return run_tail((($j_region_scalar$(_book_0, _ty_0))) ? ((_x_0) => {
+  const _x_0 = ($j_region_scalar$(_book_0, _ty_0));
+  const _x_1 = run_loop($j_list_ground_type$(_book_0, _ty_0));
+  return run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
   return {$: "Some", "value": _fuel_0};
-}) : ((_x_1) => {
-  const _x_2 = ($terms_len$(($ks$(_ty_0))));
-  const _x_3 = ($da$(_owner_0));
-  const _x_4 = ($dx$(_owner_0));
-  const _x_5 = ($terms_len$(($ks$(_kind_0))));
-  const _x_6 = ($qt$(run_loop($kid$(_kind_0, 0))));
-  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), (_x_2 === 0))), ($List$is_empty$(($rm$(_ty_0)))))), ($String$eq$(($dk$(_owner_0)), "ADT")))), ($Bool$not$(($db$(_owner_0)))))), (_x_3 === 0))), (_x_4 === 0))), ($String$eq$(($tg$(_kind_0)), "Typ")))), (_x_5 === 1))), ($String$eq$(($tg$(run_loop($kid$(_kind_0, 0)))), "Qua")))), (_x_6 === 2)))) ? ((_x_7) => {
-  return run_tail((($has_name$(_active_0, ($nm$(_ty_0))))) ? ((_x_8) => {
+}) : ((_x_3) => {
+  const _x_4 = ($terms_len$(($ks$(_ty_0))));
+  const _x_5 = ($da$(_owner_0));
+  const _x_6 = ($dx$(_owner_0));
+  const _x_7 = ($terms_len$(($ks$(_kind_0))));
+  const _x_8 = ($qt$(run_loop($kid$(_kind_0, 0))));
+  return run_tail((($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($tg$(_ty_0)), "ADT")), (_x_4 === 0))), ($List$is_empty$(($rm$(_ty_0)))))), ($String$eq$(($dk$(_owner_0)), "ADT")))), ($Bool$not$(($db$(_owner_0)))))), (_x_5 === 0))), (_x_6 === 0))), ($String$eq$(($tg$(_kind_0)), "Typ")))), (_x_7 === 1))), ($String$eq$(($tg$(run_loop($kid$(_kind_0, 0)))), "Qua")))), (_x_8 === 2)))) ? ((_x_9) => {
+  return run_tail((($has_name$(_active_0, ($nm$(_ty_0))))) ? ((_x_10) => {
   return {$: "Some", "value": _fuel_0};
-}) : ((_x_9) => {
-  const _x_10 = ($j_region_def_count$(($dc$(_owner_0))));
-  return run_tail((($Bool$and$(($Bool$not$(($List$is_empty$(($dc$(_owner_0)))))), (_x_10 <= 32)))) ? ((_x_11) => {
+}) : ((_x_11) => {
+  const _x_12 = ($j_region_def_count$(($dc$(_owner_0))));
+  return run_tail((($Bool$and$(($Bool$not$(($List$is_empty$(($dc$(_owner_0)))))), (_x_12 <= 32)))) ? ((_x_13) => {
   return $j_pure_type_ctors$(_book_0, ($dc$(_owner_0)), ($nm$(_ty_0)), {$: "Con", "head": ($nm$(_ty_0)), "tail": _active_0}, _fuel_0);
-}) : ((_x_12) => {
+}) : ((_x_14) => {
   return {$: "None"};
 }), {$: "Unit"});
 }), {$: "Unit"});
-}) : ((_x_13) => {
+}) : ((_x_15) => {
   return {$: "None"};
 }), {$: "Unit"});
 }), {$: "Unit"});
+}
+
+function $j_linear_child$(_env_0, _args_0, _d_0, _at_0) {
+  if (_args_0.$ === "Nil") {
+    return 32;
+  } else {
+    const _h_0 = _args_0["head"];
+    const _rest_0 = _args_0["tail"];
+    if ((($j_component_self$(_env_0, _h_0, _d_0)))) {
+const _x_0 = {$: "Unit"};
+return _at_0;
+} else {
+const _x_1 = {$: "Unit"};
+return {$: "$JMP", f: $j_linear_child$, x: [_env_0, _rest_0, _d_0, ((_at_0 + 1) >>> 0)]};
+}
+  }
 }
 
 function $j_pure_constructor$(_book_0, _env_0, _t_0, _ty_0, _level_0, _s_0) {
@@ -21250,7 +21588,7 @@ function $j_pure_constructor$(_book_0, _env_0, _t_0, _ty_0, _level_0, _s_0) {
   const _x_0 = ($terms_len$(($ks$(_t_0))));
   const _x_1 = ($da$(_c_0));
   return run_tail((($Bool$and$(($String$eq$(($dk$(_c_0)), "Ctr")), (_x_0 === _x_1)))) ? ((_x_2) => {
-  return $j_pure_args$(_book_0, _env_0, ($ks$(_t_0)), ($dt$(_c_0)), _ty_0, _level_0, _s_0);
+  return $j_pure_args$(_book_0, _env_0, ($ks$(_t_0)), ($j_specialize$(_book_0, ($dt$(_c_0)), ($ks$(_ty_0)))), _ty_0, _level_0, _s_0);
 }) : ((_x_3) => {
   return $j_pure_fail$(_s_0);
 }), {$: "Unit"});
@@ -21313,8 +21651,10 @@ function $j_finite_ctor$(_book_0, _env_0, _t_0, _ty_0, _depth_0) {
   const _x_0 = ($terms_len$(($ks$(_t_0))));
   const _x_1 = ($da$(_c_0));
   const _x_2 = ($j_primitive_type$(_book_0, _ty_0, "Bool"));
-  const _x_3 = ($Bool$and$(($Bool$not$(($db$(_owner_0)))), ($Bool$not$(($db$(_c_0))))));
-  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_c_0)), "Ctr")), (_x_0 === _x_1))), (_x_2 || _x_3))), ($j_finite_values$(_book_0, _env_0, ($ks$(_t_0)), ($dt$(_c_0)), ((_depth_0 + 1) >>> 0))));
+  const _x_3 = run_loop($j_list_ground_type$(_book_0, _ty_0));
+  const _x_4 = (_x_2 || _x_3);
+  const _x_5 = ($Bool$and$(($Bool$not$(($db$(_owner_0)))), ($Bool$not$(($db$(_c_0))))));
+  return $Bool$and$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_c_0)), "Ctr")), (_x_0 === _x_1))), (_x_4 || _x_5))), ($j_finite_values$(_book_0, _env_0, ($ks$(_t_0)), ($j_specialize$(_book_0, ($dt$(_c_0)), ($ks$(_ty_0)))), ((_depth_0 + 1) >>> 0))));
 }
 
 function $j_finite_primitive$(_book_0, _env_0, _spine_0, _depth_0) {
@@ -22683,16 +23023,18 @@ function $j_region_local_check_head$(_book_0, _ty_0, _active_0, _fuel_0) {
   return run_tail((run_loop($j_region_local_array$(_book_0, _ty_0))) ? ((_x_2) => {
   return {$: "Some", "value": _fuel_0};
 }) : ((_x_3) => {
-  return run_tail((($j_fold_type$(_book_0, _ty_0))) ? ((_x_4) => {
+  const _x_4 = ($j_fold_type$(_book_0, _ty_0));
+  const _x_5 = run_loop($j_list_ground_type$(_book_0, _ty_0));
+  return run_tail(((_x_4 || _x_5)) ? ((_x_6) => {
   return {$: "Some", "value": _fuel_0};
-}) : ((_x_5) => {
-  return run_tail((($Bool$not$(($has_name$(_active_0, ($nm$(_ty_0))))))) ? ((_x_6) => {
-  return $j_region_local_record_check$(_book_0, _ty_0, run_loop($j_region_local_ctor_head$(_book_0, _ty_0)), run_loop(run_tail((run_loop($j_region_local_sigma$(_book_0, _ty_0))) ? ((_x_7) => {
+}) : ((_x_7) => {
+  return run_tail((($Bool$not$(($has_name$(_active_0, ($nm$(_ty_0))))))) ? ((_x_8) => {
+  return $j_region_local_record_check$(_book_0, _ty_0, run_loop($j_region_local_ctor_head$(_book_0, _ty_0)), run_loop(run_tail((run_loop($j_region_local_sigma$(_book_0, _ty_0))) ? ((_x_9) => {
   return _active_0;
-}) : ((_x_8) => {
+}) : ((_x_10) => {
   return {$: "Con", "head": ($nm$(_ty_0)), "tail": _active_0};
 }), {$: "Unit"})), _fuel_0);
-}) : ((_x_9) => {
+}) : ((_x_11) => {
   return {$: "None"};
 }), {$: "Unit"});
 }), {$: "Unit"});
@@ -22701,9 +23043,11 @@ function $j_region_local_check_head$(_book_0, _ty_0, _active_0, _fuel_0) {
 }
 
 function $j_producer_ctor$(_book_0, _ty_0, _name_0, _active_0) {
-  return run_tail((($Bool$and$(($has_name$(_active_0, "@producer")), ($j_fold_type$(_book_0, _ty_0))))) ? ((_x_0) => {
+  const _x_0 = ($Bool$and$(($has_name$(_active_0, "@producer")), ($j_fold_type$(_book_0, _ty_0))));
+  const _x_1 = run_loop($j_list_ground_type$(_book_0, _ty_0));
+  return run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
   return $lookup$(($dc$(run_loop($lookup$(_book_0, ($nm$(_ty_0)))))), _name_0);
-}) : ((_x_1) => {
+}) : ((_x_3) => {
   return $j_region_local_ctor$(_book_0, _ty_0);
 }), {$: "Unit"});
 }
@@ -24012,18 +24356,6 @@ function $j_fold_terminal_expr$(_book_0, _t_0, _fuel_0) {
 }), {$: "Unit"});
 }
 
-function $j_region_field_atom$(_t_0) {
-  const _body_0 = run_loop($j_strip$(_t_0));
-  const _x_0 = ($String$eq$(($tg$(_body_0)), "Var"));
-  const _x_1 = ($String$eq$(($tg$(_body_0)), "Lit"));
-  const _x_2 = ($terms_len$(($ks$(_body_0))));
-  const _x_3 = ($String$eq$(($nm$(_body_0)), "True"));
-  const _x_4 = ($String$eq$(($nm$(_body_0)), "False"));
-  const _x_5 = (_x_0 || _x_1);
-  const _x_6 = ($Bool$and$(($Bool$and$(($String$eq$(($tg$(_body_0)), "Ctr")), (_x_2 === 0))), (_x_3 || _x_4)));
-  return (_x_5 || _x_6);
-}
-
 function $j_region_field_compare$(_book_0, _t_0) {
   const _spine_0 = run_loop($j_call_spine$(_t_0, {$: "Nil"}));
   const _x_0 = ($String$starts_with$(($nm$(_spine_0)), "U32.is_"));
@@ -24269,7 +24601,7 @@ return {$: "None"};
 
 function $j_pure_args_head$(_book_0, _env_0, _xs_0, _head_0, _result_0, _level_0, _s_0) {
   if (_xs_0.$ === "Nil") {
-    if ((($Bool$and$(($j_pure_type$(_book_0, _head_0)), ($String$eq$(($nm$(_head_0)), ($nm$(_result_0)))))))) {
+    if ((($Bool$and$(($j_pure_type$(_book_0, _head_0)), run_loop($j_region_same_type$(_book_0, _head_0, _result_0)))))) {
 const _x_0 = {$: "Unit"};
 return _s_0;
 } else {
@@ -24679,30 +25011,6 @@ return "$value";
     const _x_18 = ("=" + _x_16);
     const _x_19 = (_x_17 + _x_18);
     return ("const " + _x_19);
-  }
-}
-
-function $j_producer_unary_resume$(_book_0, _env_0, _args_0, _ty_0, _child_0, _at_0) {
-  if (_args_0.$ === "Nil") {
-    return "";
-  } else {
-    const _h_0 = _args_0["head"];
-    const _rest_0 = _args_0["tail"];
-    const _head_0 = run_loop($wnf$(_book_0, _ty_0));
-    const _x_6 = ($j_producer_unary_resume$(_book_0, _env_0, _rest_0, run_loop($j_app_type$(_head_0, _h_0)), _child_0, ((_at_0 + 1) >>> 0)));
-    const _x_7 = run_loop(run_tail(((_at_0 < _child_0)) ? ((_x_0) => {
-  const _x_1 = ($U32$show$(_at_0));
-  const _x_2 = (_x_1 + "]");
-  return ("$frame.before[" + _x_2);
-}) : ((_x_3) => {
-  return run_tail(((_at_0 === _child_0)) ? ((_x_4) => {
-  return "$value";
-}) : ((_x_5) => {
-  return $j_expr$(_book_0, _env_0, _h_0, run_loop($kid$(_head_0, 0)), false);
-}), {$: "Unit"});
-}), {$: "Unit"}));
-    const _x_8 = ("," + _x_6);
-    return (_x_7 + _x_8);
   }
 }
 
@@ -25556,28 +25864,6 @@ function $f_context_tele$(_binder_0, _temp_0, _ty_0, _end_0, _acc_0, _opened_0) 
 }) : ((_x_3) => {
   return "Bind";
 }), {$: "Unit"})), ($nm$(_bound_0)), ($ix$(_bound_0)), ($qt$(_binder_0)), {$: "Con", "head": _ty_0, "tail": {$: "Nil"}}, ($kb$(_binder_0)), ($ke$(_binder_0)))), "tail": _acc_0});
-}
-
-function $j_producer_unary_before$(_book_0, _env_0, _args_0, _ty_0, _child_0, _at_0) {
-  if (_args_0.$ === "Nil") {
-    return "";
-  } else {
-    const _h_0 = _args_0["head"];
-    const _rest_0 = _args_0["tail"];
-    const _head_0 = run_loop($wnf$(_book_0, _ty_0));
-    return run_tail(((_at_0 === _child_0)) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  const _x_2 = run_loop($j_producer_unary_before$(_book_0, _env_0, _rest_0, run_loop($j_app_type$(_head_0, _h_0)), _child_0, ((_at_0 + 1) >>> 0)));
-  const _x_3 = run_loop($j_expr$(_book_0, _env_0, _h_0, run_loop($kid$(_head_0, 0)), false));
-  const _x_4 = (";" + _x_2);
-  const _x_5 = (_x_3 + _x_4);
-  const _x_6 = ($U32$show$(_at_0));
-  const _x_7 = ("=" + _x_5);
-  const _x_8 = (_x_6 + _x_7);
-  return ("const $u" + _x_8);
-}), {$: "Unit"});
-  }
 }
 
 function $j_region_vector_next$(_book_0, _env_0, _args_0, _ty_0, _at_0, _last_0, _fields_0) {

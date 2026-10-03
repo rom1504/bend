@@ -1,12 +1,14 @@
 # Phase40 reusable evidence tools
 
 Run from the repository root. Root owns compiler builds and program executions;
-these tools only package saved bytes or record evidence. Preserve all closed
-Phase39 directories and choose new outputs.
+builds, timing and diagnostics are separate operations. Preserve closed Phase39
+and existing Phase40 campaign outputs, including failures; choose new outputs.
 
 ## Starting baseline
 
-Repackage the portable Phase39 checked05 modules as the incremental baseline,
+The checked [baseline bundle](baseline/manifest.json) is already available;
+ordinary benchmarks use it directly. To create a fresh equivalent bundle,
+repackage the portable Phase39 checked05 modules as the incremental baseline,
 with the unchanged pinned TypeScript modules. This derivative of Phase39's
 freezer uses the maintained bundle verifier and does not depend on the ignored
 checked05 build. It retains the complete original manifests, provenance and
@@ -18,7 +20,7 @@ python3 selfhost/tools/performance/phase40/freeze-baseline.py \
   --reference selfhost/tools/performance/phase39/baseline/manifest.json \
   --catalog selfhost/tools/performance/phase37/catalog.json \
   --expected-api 04d9ebf417a20297598bb6b047936a02228f3b8fb3a3b0cc4b59eeea04bad49f \
-  --out selfhost/tools/performance/phase40/baseline
+  --out selfhost/tools/performance/phase40/baseline-NEW
 ```
 
 Reuse [the existing execution guide](../phase39/README.md) with this new
@@ -68,12 +70,19 @@ the Markdown tables are a convenient view of those records.
 
 ## Portable generated-program comparisons
 
-Publication status: `phase40/current/manifest.json` has **not been created yet**.
-It is the intended destination after root completes the selected image's test,
-performance and release closure. The commands below use that destination once
-published; until then, point `PHASE40_CANDIDATE` at a fresh checked preparation
-manifest as shown below. Do not substitute a manual prototype for a checked
-candidate or describe a pending bundle as installed.
+The published [current bundle](current/manifest.json) contains installed
+checked06 API
+`630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a`: all45
+points,176 archive members and1,336,751compressed bytes. Ordinary/relocated
+installed CLI checks pass42/42; the final postinstall audit passes15 gate groups
+and exact canonical identity of227 sources. This is a checked B1 derivative,
+not a newly self-emitted fixed point.
+
+The [portable fast smoke](../../../build/phase40/portable-smoke06/report.json)
+passes five points and45 samples (five ×three roles ×three rounds). Its20second
+preset completes in20.36seconds including runner overhead; it is not a hard
+less-than20second wall promise or an additional performance-admission result.
+It validates portable execution separately from the complete catalog evidence.
 
 The available [baseline](baseline/manifest.json) packages the exact Phase39
 checked05 program outputs plus the unchanged pinned TypeScript outputs at commit
@@ -230,7 +239,7 @@ publication uses the freezer without running a compiler or target program:
 python3 selfhost/tools/performance/phase40/freeze-candidate.py \
   --from selfhost/build/phase40-replay/MY_CANDIDATE/manifest.json \
   --attempt selfhost/build/MY_CHECKED_ATTEMPT \
-  --out selfhost/tools/performance/phase40/current
+  --out selfhost/tools/performance/phase40/current-NEW
 ```
 
 This requires all 45 points. The destination must be new; do not overwrite a
@@ -238,6 +247,28 @@ frozen bundle. Freezing binds portable bytes and provenance, and does not itself
 establish correctness, performance admission or installation.
 
 ## Results, final gates and resource limits
+
+The installed benchmark basis is **42 exact-byte reused checked05 point
+comparisons plus three fresh checked06 ray comparisons**, with669 selected
+primary samples. These are not45 newly timed checked06 points. The
+[evidence selector](select-execution.py) rehashes the final checked45-point
+preparation, all three roles' bytes and raw measured rows; recomputes statistics,
+paired rounds, ranges and drift; and preserves each row's measurement API and
+protocol. Only reused generated-program execution evidence transfers by byte
+identity. Compiler cost, semantic owners and installation are fresh checked06
+checks. The
+[selected receipt](../../../build/phase40/selected06-execution01/report.json)
+retains rejected checked05 ray rows separately. No denominator or warming
+protocol is pooled across points.
+
+Historical/variation groups use the600second preset; development/holdout use
+300seconds. Three fresh ray replacements match their respective old protocols;
+all42 reused rows keep their original same-run baseline/TypeScript observations.
+The rejected checked05 image, its669 original primary samples and the manual
+lexer prototype remain separate evidence. Read the
+[performance decision](../../../../implementation/phase40/performance-admission.md)
+for changed gains, adverse Mandelbrot observations, remaining TypeScript gaps
+and measured compiler-request costs; a portable smoke does not replace it.
 
 `report.md` presents per-point medians; `report.json` retains ranges, drift,
 import/first-call costs, paired rounds, exact module identities and failures.
@@ -251,9 +282,15 @@ build time, generated-program timing and diagnostics. They need checked
 attempt/cache artifacts and pinned sources; portable program bundles alone are
 insufficient. The separate final integration suite also needs those artifacts
 and checks broader semantics and identity. It is an acceptance gate, not an
-edit-loop prerequisite. Follow [integration instructions](INTEGRATION.md) and
+edit-loop prerequisite. Follow [integration instructions](INTEGRATION.md), including the separate historical
+15-point owner catalog and reviewed semantic diagnostic successors, and
 the [implementation report](../../../../implementation/phase40/README.md) for
 completed gates rather than inferring them from a timing pass. Selected new
+Reviewed integration successors keep the existing counter semantics, fold V3
+producer/fold ownership and shared aliases, selected-image guard checks, inherited
+closer V2 plus tail V2, and the unary helper decoder correction. Original failed
+assertions and exact predecessor hashes remain preserved; these corrections do
+not waive semantic or provenance checks. The selected new
 [backend semantic owners](../../../../implementation/phase40/backend-rules.md)
 cover complete values, aliases, mutation/reentry, demand/error order and stack
 depth; their scopes overlap and are not additive language coverage.

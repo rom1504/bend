@@ -1,0 +1,76 @@
+{
+  "kind": "phase40-fold-control-successor-derivation",
+  "complete": true,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/fold-controls-v2.mjs",
+    "sha256": "d23164e18fd0d077a55b31c2312763eef68576197379f964ad1001d6d2853621"
+  },
+  "parentDerivation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/fold-controls-v2.json",
+    "sha256": "7db0e80f27bc0bc6cf2f4dfe172b76179091a0fd2f45c504c6ae42cf5df4180b"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/fold-controls-v3.mjs",
+    "sha256": "04d05cf02e1879026e9e753e7415054e92df69c1839ec493f6fb98c56955db04"
+  },
+  "changes": [
+    {
+      "before": " for(const name of ['benchDeep','benchWeight','benchRecord'])",
+      "after": " for(const name of ['benchDeep','benchShared','benchWeight','benchRecord'])",
+      "count": 1
+    },
+    {
+      "before": "  assert.deepEqual(guardOwners,[name,'fold.make',name==='benchWeight'?'fold.weight':'fold.value'],'captured producer/fold owners '+name);",
+      "after": "  const expectedOwners=name==='benchShared'?[name,'fold.share','fold.make','fold.size']:[name,'fold.make',name==='benchWeight'?'fold.weight':'fold.value'];\n  assert.deepEqual(guardOwners,expectedOwners,'captured producer/fold owners '+name);",
+      "count": 1
+    },
+    {
+      "before": "'regionProofCovers([\"fold.make\"])'])assert(line.includes(proof)",
+      "after": "...(name==='benchShared'?[]:['regionProofCovers([\"fold.make\"])'])])assert(line.includes(proof)",
+      "count": 1
+    },
+    {
+      "before": " const producerSource=source.slice(0,producerOpen+1)+'++phase40ProducerEntries;'+source.slice(producerOpen+1);",
+      "after": " // Source fold.share evaluates one producer binding, then shares that child.\n const shareLine=rootLine('fold.share');assert.equal(shareLine.split(producerName+'(').length,2,'one shared producer invocation');\n assert(shareLine.includes('regionProofCovers([\"fold.make\"])'),'shared residual covers producer');\n assert(/\\(\\((x\\d+),\\)=>build\\(\"Two\",\\[\\(\\)=>\\1,\\(\\)=>\\1,\\]\\)\\)/.test(shareLine),'shared child binder preserved');\n const sharedFoldMarker='function '+privateName('fold.size')+'($p0){';assert(source.includes(sharedFoldMarker));\n const producerSource=(source.slice(0,producerOpen+1)+'++phase40ProducerEntries;'+source.slice(producerOpen+1)).replaceAll(sharedFoldMarker,sharedFoldMarker+'phase40SharedFoldInput=$p0;');",
+      "count": 1
+    },
+    {
+      "before": "let phase35FoldEntries=0,phase40ProducerEntries=0;",
+      "after": "let phase35FoldEntries=0,phase40ProducerEntries=0,phase40SharedFoldInput=null;",
+      "count": 1
+    },
+    {
+      "before": "export const phase40ProducerCount=()=>phase40ProducerEntries;",
+      "after": "export const phase40ProducerCount=()=>phase40ProducerEntries;export const phase40SharedChildAlias=()=>phase40SharedFoldInput?.$===\"Two\"&&phase40SharedFoldInput.a[0]===phase40SharedFoldInput.a[1];",
+      "count": 1
+    },
+    {
+      "before": "['benchShared',[7,17],0]",
+      "after": "['benchShared',[7,17],1]",
+      "count": 1
+    },
+    {
+      "before": "assert.equal(producerEntries,expectedProducer,name+' enters structural producer');report.admission",
+      "after": "assert.equal(producerEntries,expectedProducer,name+' enters structural producer');if(name==='benchShared')assert.equal(witness.phase40SharedChildAlias(),true,'shared producer child alias');report.admission",
+      "count": 1
+    }
+  ],
+  "scope": "Correct shared producer admission from the independently inspected source and residual call path: fold.share invokes fold.make once under captured proof, then reuses the same child. Preserve fold counter===1 and all inherited controls; extend exact guard owners and require actual folded shared-child identity. Preserve v2 consumed failure.",
+  "failedV2Controls": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/fold-controls-v2-06/report.json",
+    "sha256": "f901477a2114f0f36970a956e9220f2b88bd7a4735c44062598ed59fc75ff2d8"
+  },
+  "staticSyntaxCheck": {
+    "command": [
+      "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "--check",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/fold-controls-v3.mjs"
+    ],
+    "correctedExitCode": 0,
+    "failedUnconsumedSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/fold-controls-v3-syntax-failed.mjs",
+      "sha256": "a7756356b7ac3c304ee1bbe1703904b63ae00c96fcb11271c7ec377edc516ebe"
+    },
+    "initialError": "SyntaxError: missing ) after argument list; nested single-quoted Two ended the generated export source string"
+  }
+}

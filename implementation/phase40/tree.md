@@ -1,8 +1,12 @@
 # Tree saved-output handoff
 
-Current status: checked06 is the integration candidate and passes fresh selected
-actual semantic controls. Checked05 remains performance-rejected because raytrace
-regresses. Final checked06 catalog timing and release admission remain pending.
+Current status: **checked06 is installed**. Fresh actual-emission semantic owners,
+final execution selection and release gates close. Tree6/8/9 improves
+2.031×/2.176×/1.829× over Phase39. Checked05 remains rejected for raytrace, while
+its byte-identical tree comparisons are retained under the reviewed
+[identity rule](../../design/phase40/identity-reuse.md). See
+[final integration](integration.md) and [release](release-06.md).
+The chronological checkpoints below preserve their original observation cutoffs.
 
 Initial prototype status: correctness unchecked; measurement not run by author;
 no compiler change or promotion. Root owns execution and retains failed attempts. Prospective contract:

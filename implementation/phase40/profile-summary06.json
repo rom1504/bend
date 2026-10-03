@@ -1,0 +1,2397 @@
+{
+  "kind": "phase40-compact-profile-findings",
+  "complete": true,
+  "pass": true,
+  "scope": "Read-only copied diagnostic summaries; no profiled timing ratios. Allocation normalized by validated calls, not raw totals. Inclusive costs are not added.",
+  "report": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/report.json",
+    "sha256": "d815f5e628be55b1c3d8104e4d1e1ecccb857096a06013e08146278aa52e666d",
+    "bytes": 1714948
+  },
+  "analysis": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/analysis/report.json",
+    "sha256": "e96f963d787dae87b95ca55d7d3f93aa3bcfde1e813cfd65cd13a2744557a2e5",
+    "bytes": 10635574
+  },
+  "baselineManifest": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/baseline/manifest.json",
+    "sha256": "88f53b66840a0b860d6755a8ddea057c9578d768c7ffe6116ade0dcb33ff439f",
+    "bytes": 45121
+  },
+  "candidateManifest": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/final-candidate02/manifest.json",
+    "sha256": "888ef811ac18680120ddf0284b7aa90c219c22f42f9a89649fe8b6c50d4195a1",
+    "bytes": 29314
+  },
+  "checkedCandidateApi": "630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a",
+  "wallSeconds": 22.585841135005467,
+  "plan": {
+    "kind": "bend-program-diagnostic-plan",
+    "version": 1,
+    "budgetSeconds": 60,
+    "selectedIds": [
+      "coverage-list-pipeline-512",
+      "tree-bitonic",
+      "scalar-region-8192"
+    ],
+    "mode": "all",
+    "warmupCalls": 1,
+    "warmupMs": 150,
+    "targetMs": 600,
+    "maxRepetitions": 10000000,
+    "samplingIntervalUs": 1000,
+    "samplingIntervalBytes": 32768,
+    "cpu": 3,
+    "heapMiB": 1024,
+    "allocationIntervalOverrides": {
+      "raytrace": 262144
+    },
+    "rssMiB": 2048,
+    "availableMiB": 2048,
+    "scope": "Separate instrumented diagnostics; no throughput ratios. Static analysis never executes analyzed code."
+  },
+  "identityChecks": {
+    "diagnosticInputs": 50,
+    "diagnosticOutputs": 48,
+    "analysisInputs": 19
+  },
+  "modules": [
+    {
+      "id": "coverage-list-pipeline-512",
+      "role": "typescript",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/modules/coverage-list-pipeline-512/typescript.mjs",
+        "sha256": "b96abde772d5e7675b28548e738e495a52dd7ecb88f067026245e75213694c8b",
+        "bytes": 40351
+      },
+      "matchesSelectedManifest": true,
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+      },
+      "sourceOwnedStatic": {
+        "trampolineHelperCalls": 0,
+        "globalLookupCalls": 0,
+        "closureHelperCalls": 0,
+        "constructorHelperCalls": 0,
+        "argumentArraySites": 0,
+        "arrayLiteralSites": 1,
+        "calls": 40
+      },
+      "structuralWorkers": []
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "role": "baseline",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/modules/coverage-list-pipeline-512/baseline.mjs",
+        "sha256": "f8533e1dd7598b1ad848b05a04c2c9027542886a223cdc1ee9adc7e8286f10f5",
+        "bytes": 119735
+      },
+      "matchesSelectedManifest": true,
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+      },
+      "sourceOwnedStatic": {
+        "trampolineHelperCalls": 65,
+        "globalLookupCalls": 49,
+        "closureHelperCalls": 23,
+        "constructorHelperCalls": 65,
+        "argumentArraySites": 65,
+        "arrayLiteralSites": 138,
+        "calls": 271
+      },
+      "structuralWorkers": []
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "role": "candidate",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/modules/coverage-list-pipeline-512/candidate.mjs",
+        "sha256": "d623912da283c60a135535e25c724bc704582bde31fdf1241e55d5a6aa6556ad",
+        "bytes": 142134
+      },
+      "matchesSelectedManifest": true,
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/list-pipeline.bend",
+        "sha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0"
+      },
+      "sourceOwnedStatic": {
+        "trampolineHelperCalls": 112,
+        "globalLookupCalls": 80,
+        "closureHelperCalls": 31,
+        "constructorHelperCalls": 148,
+        "argumentArraySites": 112,
+        "arrayLiteralSites": 382,
+        "calls": 653
+      },
+      "structuralWorkers": [
+        {
+          "name": "$R_100_98_108$tree",
+          "bendNames": [
+            "dbl"
+          ],
+          "bytes": 2034,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 0,
+            "globalLookupCalls": 0,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 2,
+            "argumentArraySites": 0,
+            "arrayLiteralSites": 12,
+            "calls": 12
+          }
+        },
+        {
+          "name": "$R_107_101_101_112_95_103_116_49$tree",
+          "bendNames": [
+            "keep_gt1"
+          ],
+          "bytes": 2286,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 0,
+            "globalLookupCalls": 0,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 1,
+            "argumentArraySites": 0,
+            "arrayLiteralSites": 11,
+            "calls": 9
+          }
+        },
+        {
+          "name": "$R_115_117_109_97$tree",
+          "bendNames": [
+            "suma"
+          ],
+          "bytes": 1686,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 0,
+            "globalLookupCalls": 0,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 0,
+            "argumentArraySites": 0,
+            "arrayLiteralSites": 5,
+            "calls": 7
+          }
+        },
+        {
+          "name": "$R_97_110_121_101_113_50$tree",
+          "bendNames": [
+            "anyeq2"
+          ],
+          "bytes": 2030,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 0,
+            "globalLookupCalls": 0,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 1,
+            "argumentArraySites": 0,
+            "arrayLiteralSites": 11,
+            "calls": 9
+          }
+        },
+        {
+          "name": "$R_97_108_108_112_111_115$tree",
+          "bendNames": [
+            "allpos"
+          ],
+          "bytes": 2029,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 0,
+            "globalLookupCalls": 0,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 1,
+            "argumentArraySites": 0,
+            "arrayLiteralSites": 11,
+            "calls": 9
+          }
+        },
+        {
+          "name": "$R_112_51_55_46_108_105_115_116$tree",
+          "bendNames": [
+            "p37.list"
+          ],
+          "bytes": 2420,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 0,
+            "globalLookupCalls": 0,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 2,
+            "argumentArraySites": 0,
+            "arrayLiteralSites": 12,
+            "calls": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": "tree-bitonic",
+      "role": "typescript",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/modules/tree-bitonic/typescript.mjs",
+        "sha256": "c24fff66dd20c4579b7912b42450f1574e4c0b7a84e5d8b2d3d1d1345ef2b159",
+        "bytes": 10593
+      },
+      "matchesSelectedManifest": true,
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+        "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d"
+      },
+      "sourceOwnedStatic": {
+        "trampolineHelperCalls": 0,
+        "globalLookupCalls": 0,
+        "closureHelperCalls": 0,
+        "constructorHelperCalls": 0,
+        "argumentArraySites": 0,
+        "arrayLiteralSites": 0,
+        "calls": 29
+      },
+      "structuralWorkers": []
+    },
+    {
+      "id": "tree-bitonic",
+      "role": "baseline",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/modules/tree-bitonic/baseline.mjs",
+        "sha256": "c0695bb8e900c1855d159b4b9533e50d6c76eb04baa344ecb74c0be62e89d0c5",
+        "bytes": 98342
+      },
+      "matchesSelectedManifest": true,
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+        "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d"
+      },
+      "sourceOwnedStatic": {
+        "trampolineHelperCalls": 90,
+        "globalLookupCalls": 45,
+        "closureHelperCalls": 53,
+        "constructorHelperCalls": 57,
+        "argumentArraySites": 89,
+        "arrayLiteralSites": 174,
+        "calls": 385
+      },
+      "structuralWorkers": [
+        {
+          "name": "$R_119_97_114_112$tree",
+          "bendNames": [
+            "warp"
+          ],
+          "bytes": 3820,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 3,
+            "globalLookupCalls": 2,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 2,
+            "argumentArraySites": 3,
+            "arrayLiteralSites": 10,
+            "calls": 24
+          }
+        },
+        {
+          "name": "$R_115_99_97_110$tree",
+          "bendNames": [
+            "scan"
+          ],
+          "bytes": 1348,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 2,
+            "globalLookupCalls": 1,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 1,
+            "argumentArraySites": 2,
+            "arrayLiteralSites": 7,
+            "calls": 9
+          }
+        }
+      ]
+    },
+    {
+      "id": "tree-bitonic",
+      "role": "candidate",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/modules/tree-bitonic/candidate.mjs",
+        "sha256": "3a5d3c78ebb74aba0cc5a6729547b1ea2892874f07a5c3ccb474c7cb04a2cfd9",
+        "bytes": 107990
+      },
+      "matchesSelectedManifest": true,
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/tree-bitonic.bend",
+        "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d"
+      },
+      "sourceOwnedStatic": {
+        "trampolineHelperCalls": 102,
+        "globalLookupCalls": 50,
+        "closureHelperCalls": 53,
+        "constructorHelperCalls": 71,
+        "argumentArraySites": 102,
+        "arrayLiteralSites": 227,
+        "calls": 483
+      },
+      "structuralWorkers": [
+        {
+          "name": "$R_119_97_114_112$tree",
+          "bendNames": [
+            "warp"
+          ],
+          "bytes": 4675,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 3,
+            "globalLookupCalls": 2,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 2,
+            "argumentArraySites": 3,
+            "arrayLiteralSites": 11,
+            "calls": 30
+          }
+        },
+        {
+          "name": "$R_102_108_111_119$tree",
+          "bendNames": [
+            "flow"
+          ],
+          "bytes": 3596,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 4,
+            "globalLookupCalls": 2,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 4,
+            "argumentArraySites": 4,
+            "arrayLiteralSites": 13,
+            "calls": 31
+          }
+        },
+        {
+          "name": "$R_98_115_111_114_116$tree",
+          "bendNames": [
+            "bsort"
+          ],
+          "bytes": 2570,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 10,
+            "globalLookupCalls": 4,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 3,
+            "argumentArraySites": 10,
+            "arrayLiteralSites": 21,
+            "calls": 30
+          }
+        },
+        {
+          "name": "$R_115_99_97_110$tree",
+          "bendNames": [
+            "scan"
+          ],
+          "bytes": 1655,
+          "exclusiveStatic": {
+            "trampolineHelperCalls": 2,
+            "globalLookupCalls": 1,
+            "closureHelperCalls": 0,
+            "constructorHelperCalls": 1,
+            "argumentArraySites": 2,
+            "arrayLiteralSites": 8,
+            "calls": 11
+          }
+        }
+      ]
+    },
+    {
+      "id": "scalar-region-8192",
+      "role": "typescript",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/modules/scalar-region-8192/typescript.mjs",
+        "sha256": "752a5711b92b0ba8b0e146f41e70ac3934e50965f77950d009b5e738320b594a",
+        "bytes": 6552
+      },
+      "matchesSelectedManifest": true,
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+        "sha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d"
+      },
+      "sourceOwnedStatic": {
+        "trampolineHelperCalls": 0,
+        "globalLookupCalls": 0,
+        "closureHelperCalls": 0,
+        "constructorHelperCalls": 0,
+        "argumentArraySites": 0,
+        "arrayLiteralSites": 0,
+        "calls": 15
+      },
+      "structuralWorkers": []
+    },
+    {
+      "id": "scalar-region-8192",
+      "role": "baseline",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/modules/scalar-region-8192/baseline.mjs",
+        "sha256": "2faa5286810e5aebae78770a77a67bc2e0a9b6f2f87801263b0d4c013a14adf8",
+        "bytes": 88329
+      },
+      "matchesSelectedManifest": true,
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+        "sha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d"
+      },
+      "sourceOwnedStatic": {
+        "trampolineHelperCalls": 31,
+        "globalLookupCalls": 12,
+        "closureHelperCalls": 17,
+        "constructorHelperCalls": 0,
+        "argumentArraySites": 31,
+        "arrayLiteralSites": 38,
+        "calls": 163
+      },
+      "structuralWorkers": []
+    },
+    {
+      "id": "scalar-region-8192",
+      "role": "candidate",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/modules/scalar-region-8192/candidate.mjs",
+        "sha256": "2faa5286810e5aebae78770a77a67bc2e0a9b6f2f87801263b0d4c013a14adf8",
+        "bytes": 88329
+      },
+      "matchesSelectedManifest": true,
+      "source": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+        "sha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d"
+      },
+      "sourceOwnedStatic": {
+        "trampolineHelperCalls": 31,
+        "globalLookupCalls": 12,
+        "closureHelperCalls": 17,
+        "constructorHelperCalls": 0,
+        "argumentArraySites": 31,
+        "arrayLiteralSites": 38,
+        "calls": 163
+      },
+      "structuralWorkers": []
+    }
+  ],
+  "profiles": [
+    {
+      "id": "coverage-list-pipeline-512",
+      "role": "typescript",
+      "kind": "cpu",
+      "repetitions": 19248,
+      "moduleSha256": "b96abde772d5e7675b28548e738e495a52dd7ecb88f067026245e75213694c8b",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/coverage-list-pipeline-512/typescript-cpu/profile.cpuprofile",
+        "sha256": "5f07e03e18a499488e5f1b037587f212610fd2e6b4dbae3ea3819ce28deddc55",
+        "bytes": 970140
+      },
+      "sampleCount": 534,
+      "categories": {
+        "node": {
+          "selfWeight": 17959,
+          "selfSamples": 1,
+          "selfPercent": 2.905498103878959
+        },
+        "harness": {
+          "selfWeight": 11327,
+          "selfSamples": 7,
+          "selfPercent": 1.8325395079145257
+        },
+        "other": {
+          "selfWeight": 3170,
+          "selfSamples": 3,
+          "selfPercent": 0.5128586775041093
+        },
+        "garbage-collector": {
+          "selfWeight": 64804,
+          "selfSamples": 48,
+          "selfPercent": 10.48431979084426
+        },
+        "generated": {
+          "selfWeight": 520844,
+          "selfSamples": 475,
+          "selfPercent": 84.26478391985815
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$p37$list$",
+          "line": 318,
+          "category": "generated",
+          "selfPercent": 30.324832067095503,
+          "bendNames": [
+            "p37.list"
+          ],
+          "selfWeight": 187439
+        },
+        {
+          "name": "$keep_gt1$",
+          "line": 180,
+          "category": "generated",
+          "selfPercent": 24.35205078756973,
+          "bendNames": [
+            "keep_gt1"
+          ],
+          "selfWeight": 150521
+        },
+        {
+          "name": "$dbl$",
+          "line": 170,
+          "category": "generated",
+          "selfPercent": 21.31663927106118,
+          "bendNames": [
+            "dbl"
+          ],
+          "selfWeight": 131759
+        },
+        {
+          "name": "(garbage collector)",
+          "line": null,
+          "category": "garbage-collector",
+          "selfPercent": 10.48431979084426,
+          "bendNames": [],
+          "selfWeight": 64804
+        },
+        {
+          "name": "(anonymous)",
+          "line": 1066,
+          "category": "generated",
+          "selfPercent": 6.687062371380868,
+          "bendNames": [],
+          "selfWeight": 41333
+        },
+        {
+          "name": "post",
+          "line": 115,
+          "category": "node",
+          "selfPercent": 2.905498103878959,
+          "bendNames": [],
+          "selfWeight": 17959
+        },
+        {
+          "name": "main",
+          "line": 156,
+          "category": "harness",
+          "selfPercent": 1.621571774329239,
+          "bendNames": [],
+          "selfWeight": 10023
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "role": "typescript",
+      "kind": "allocation",
+      "repetitions": 6222,
+      "moduleSha256": "b96abde772d5e7675b28548e738e495a52dd7ecb88f067026245e75213694c8b",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/coverage-list-pipeline-512/typescript-allocation/profile.heapprofile",
+        "sha256": "9513aec3a853bcab596a071661eb3c96d4bc8ef36aab47239af3ce1f5fbd269c",
+        "bytes": 1335648
+      },
+      "sampleCount": 17582,
+      "categories": {
+        "other": {
+          "selfWeight": 0,
+          "selfSamples": 0,
+          "selfPercent": 0
+        },
+        "generated": {
+          "selfWeight": 576406608,
+          "selfSamples": 17563,
+          "selfPercent": 99.89201803575808
+        },
+        "harness": {
+          "selfWeight": 98352,
+          "selfSamples": 3,
+          "selfPercent": 0.017044530061759596
+        },
+        "node": {
+          "selfWeight": 524736,
+          "selfSamples": 16,
+          "selfPercent": 0.09093743418016394
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$p37$list$",
+          "line": 318,
+          "category": "generated",
+          "selfPercent": 39.02260170679327,
+          "bendNames": [
+            "p37.list"
+          ],
+          "selfWeight": 225172000
+        },
+        {
+          "name": "$dbl$",
+          "line": 170,
+          "category": "generated",
+          "selfPercent": 30.60554304643621,
+          "bendNames": [
+            "dbl"
+          ],
+          "selfWeight": 176603072
+        },
+        {
+          "name": "$keep_gt1$",
+          "line": 180,
+          "category": "generated",
+          "selfPercent": 30.002432318491977,
+          "bendNames": [
+            "keep_gt1"
+          ],
+          "selfWeight": 173122944
+        },
+        {
+          "name": "(anonymous)",
+          "line": 144,
+          "category": "generated",
+          "selfPercent": 0.1364227881956356,
+          "bendNames": [],
+          "selfWeight": 787200
+        },
+        {
+          "name": "now",
+          "line": 137,
+          "category": "node",
+          "selfPercent": 0.09093743418016394,
+          "bendNames": [],
+          "selfWeight": 524736
+        },
+        {
+          "name": "$keep_gt1$at$",
+          "line": 191,
+          "category": "generated",
+          "selfPercent": 0.06252156561453641,
+          "bendNames": [
+            "keep_gt1.at"
+          ],
+          "selfWeight": 360768
+        },
+        {
+          "name": "(anonymous)",
+          "line": 1066,
+          "category": "generated",
+          "selfPercent": 0.06249661022645185,
+          "bendNames": [],
+          "selfWeight": 360624
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ],
+      "estimatedBytes": 577029696,
+      "estimatedBytesPerCall": 92740.2275795564,
+      "accounting": {
+        "sampleEstimatedBytes": 577029696,
+        "headSelfSizeBytes": 576747640,
+        "sampleMinusHeadBytes": 282056,
+        "unattributedSamples": 0,
+        "unattributedEstimatedBytes": 0
+      }
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "role": "baseline",
+      "kind": "cpu",
+      "repetitions": 425,
+      "moduleSha256": "f8533e1dd7598b1ad848b05a04c2c9027542886a223cdc1ee9adc7e8286f10f5",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/coverage-list-pipeline-512/baseline-cpu/profile.cpuprofile",
+        "sha256": "4751256f13e49cfccf01a26b1faa659e2ba08bb20d2f33a8353ad90ec3ac369f",
+        "bytes": 639069
+      },
+      "sampleCount": 526,
+      "categories": {
+        "node": {
+          "selfWeight": 27535,
+          "selfSamples": 1,
+          "selfPercent": 4.383751383106596
+        },
+        "harness": {
+          "selfWeight": 3259,
+          "selfSamples": 3,
+          "selfPercent": 0.5188540315069693
+        },
+        "other": {
+          "selfWeight": 4177,
+          "selfSamples": 2,
+          "selfPercent": 0.6650056120296443
+        },
+        "generated": {
+          "selfWeight": 568097,
+          "selfSamples": 496,
+          "selfPercent": 90.44474339889989
+        },
+        "garbage-collector": {
+          "selfWeight": 25047,
+          "selfSamples": 24,
+          "selfPercent": 3.987645574456907
+        }
+      },
+      "topSelf": [
+        {
+          "name": "apply",
+          "line": 69,
+          "category": "generated",
+          "selfPercent": 30.772868025759614,
+          "bendNames": [],
+          "selfWeight": 193289
+        },
+        {
+          "name": "force",
+          "line": 55,
+          "category": "generated",
+          "selfPercent": 16.75155027343719,
+          "bendNames": [],
+          "selfWeight": 105219
+        },
+        {
+          "name": "callOwned",
+          "line": 85,
+          "category": "generated",
+          "selfPercent": 7.089784513982313,
+          "bendNames": [],
+          "selfWeight": 44532
+        },
+        {
+          "name": "(anonymous)",
+          "line": 406,
+          "category": "generated",
+          "selfPercent": 5.284223430422773,
+          "bendNames": [],
+          "selfWeight": 33191
+        },
+        {
+          "name": "invokeExact",
+          "line": 41,
+          "category": "generated",
+          "selfPercent": 5.126608980839496,
+          "bendNames": [],
+          "selfWeight": 32201
+        },
+        {
+          "name": "post",
+          "line": 115,
+          "category": "node",
+          "selfPercent": 4.383751383106596,
+          "bendNames": [],
+          "selfWeight": 27535
+        },
+        {
+          "name": "(garbage collector)",
+          "line": null,
+          "category": "garbage-collector",
+          "selfPercent": 3.987645574456907,
+          "bendNames": [],
+          "selfWeight": 25047
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "role": "baseline",
+      "kind": "allocation",
+      "repetitions": 274,
+      "moduleSha256": "f8533e1dd7598b1ad848b05a04c2c9027542886a223cdc1ee9adc7e8286f10f5",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/coverage-list-pipeline-512/baseline-allocation/profile.heapprofile",
+        "sha256": "75eded2d00e97e2bbbb224e4f70abd4f9d84aa83fa8bef387a1f61ecdbe71190",
+        "bytes": 1443558
+      },
+      "sampleCount": 22897,
+      "categories": {
+        "other": {
+          "selfWeight": 0,
+          "selfSamples": 0,
+          "selfPercent": 0
+        },
+        "generated": {
+          "selfWeight": 753155176,
+          "selfSamples": 22897,
+          "selfPercent": 100
+        },
+        "harness": {
+          "selfWeight": 0,
+          "selfSamples": 0,
+          "selfPercent": 0
+        }
+      },
+      "topSelf": [
+        {
+          "name": "apply",
+          "line": 69,
+          "category": "generated",
+          "selfPercent": 12.641034813787167,
+          "bendNames": [],
+          "selfWeight": 95206608
+        },
+        {
+          "name": "force",
+          "line": 55,
+          "category": "generated",
+          "selfPercent": 9.913660607970117,
+          "bendNames": [],
+          "selfWeight": 74665248
+        },
+        {
+          "name": "(anonymous)",
+          "line": 406,
+          "category": "generated",
+          "selfPercent": 7.417966679419063,
+          "bendNames": [],
+          "selfWeight": 55868800
+        },
+        {
+          "name": "(anonymous)",
+          "line": 826,
+          "category": "generated",
+          "selfPercent": 6.517095223415155,
+          "bendNames": [
+            "keep_gt1.at"
+          ],
+          "selfWeight": 49083840
+        },
+        {
+          "name": "(anonymous)",
+          "line": 827,
+          "category": "generated",
+          "selfPercent": 5.908168916308424,
+          "bendNames": [
+            "keep_gt1"
+          ],
+          "selfWeight": 44497680
+        },
+        {
+          "name": "(anonymous)",
+          "line": 837,
+          "category": "generated",
+          "selfPercent": 5.020995567054298,
+          "bendNames": [
+            "p37.list"
+          ],
+          "selfWeight": 37815888
+        },
+        {
+          "name": "(anonymous)",
+          "line": 827,
+          "category": "generated",
+          "selfPercent": 4.707900991707451,
+          "bendNames": [
+            "keep_gt1"
+          ],
+          "selfWeight": 35457800
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ],
+      "estimatedBytes": 753155176,
+      "estimatedBytesPerCall": 2748741.5182481753,
+      "accounting": {
+        "sampleEstimatedBytes": 753155176,
+        "headSelfSizeBytes": 752272800,
+        "sampleMinusHeadBytes": 882376,
+        "unattributedSamples": 0,
+        "unattributedEstimatedBytes": 0
+      }
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "role": "candidate",
+      "kind": "cpu",
+      "repetitions": 4568,
+      "moduleSha256": "d623912da283c60a135535e25c724bc704582bde31fdf1241e55d5a6aa6556ad",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/coverage-list-pipeline-512/candidate-cpu/profile.cpuprofile",
+        "sha256": "98992e5ead931f07fd658ac71fc8664103209dd6f8fa3e252b6e53944fda2367",
+        "bytes": 11802
+      },
+      "sampleCount": 538,
+      "categories": {
+        "node": {
+          "selfWeight": 24453,
+          "selfSamples": 3,
+          "selfPercent": 3.9279908502695444
+        },
+        "harness": {
+          "selfWeight": 3181,
+          "selfSamples": 3,
+          "selfPercent": 0.5109777489349945
+        },
+        "other": {
+          "selfWeight": 8491,
+          "selfSamples": 8,
+          "selfPercent": 1.3639459497664377
+        },
+        "garbage-collector": {
+          "selfWeight": 73008,
+          "selfSamples": 54,
+          "selfPercent": 11.72758990702486
+        },
+        "generated": {
+          "selfWeight": 513399,
+          "selfSamples": 470,
+          "selfPercent": 82.46949554400416
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$R_112_51_55_46_108_105_115_116$tree",
+          "line": 843,
+          "category": "generated",
+          "selfPercent": 23.014399259797084,
+          "bendNames": [
+            "p37.list"
+          ],
+          "selfWeight": 143272
+        },
+        {
+          "name": "$R_107_101_101_112_95_103_116_49$tree",
+          "line": 829,
+          "category": "generated",
+          "selfPercent": 17.868479050072928,
+          "bendNames": [
+            "keep_gt1"
+          ],
+          "selfWeight": 111237
+        },
+        {
+          "name": "$R_100_98_108$tree",
+          "line": 826,
+          "category": "generated",
+          "selfPercent": 16.11933201827376,
+          "bendNames": [
+            "dbl"
+          ],
+          "selfWeight": 100348
+        },
+        {
+          "name": "(garbage collector)",
+          "line": null,
+          "category": "garbage-collector",
+          "selfPercent": 11.72758990702486,
+          "bendNames": [],
+          "selfWeight": 73008
+        },
+        {
+          "name": "(anonymous)",
+          "line": 844,
+          "category": "generated",
+          "selfPercent": 8.960021332236737,
+          "bendNames": [
+            "bench"
+          ],
+          "selfWeight": 55779
+        },
+        {
+          "name": "regionHostGuard",
+          "line": 185,
+          "category": "generated",
+          "selfPercent": 6.816517062576703,
+          "bendNames": [],
+          "selfWeight": 42435
+        },
+        {
+          "name": "post",
+          "line": 115,
+          "category": "node",
+          "selfPercent": 3.5874461071880646,
+          "bendNames": [],
+          "selfWeight": 22333
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "role": "candidate",
+      "kind": "allocation",
+      "repetitions": 3313,
+      "moduleSha256": "d623912da283c60a135535e25c724bc704582bde31fdf1241e55d5a6aa6556ad",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/coverage-list-pipeline-512/candidate-allocation/profile.heapprofile",
+        "sha256": "b8a9209a735fca00d6721f9faf3a58e30062967a3bbc2924cfb0feb2a1011723",
+        "bytes": 2157901
+      },
+      "sampleCount": 50323,
+      "categories": {
+        "other": {
+          "selfWeight": 40112328,
+          "selfSamples": 1220,
+          "selfPercent": 2.420734238996925
+        },
+        "harness": {
+          "selfWeight": 32784,
+          "selfSamples": 1,
+          "selfPercent": 0.0019784778208653256
+        },
+        "node": {
+          "selfWeight": 229600,
+          "selfSamples": 7,
+          "selfPercent": 0.013856103821091958
+        },
+        "generated": {
+          "selfWeight": 1616656752,
+          "selfSamples": 49095,
+          "selfPercent": 97.56343117936112
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$R_112_51_55_46_108_105_115_116$tree",
+          "line": 843,
+          "category": "generated",
+          "selfPercent": 36.18070248061385,
+          "bendNames": [
+            "p37.list"
+          ],
+          "selfWeight": 599525624
+        },
+        {
+          "name": "$R_107_101_101_112_95_103_116_49$tree",
+          "line": 829,
+          "category": "generated",
+          "selfPercent": 34.16886669328809,
+          "bendNames": [
+            "keep_gt1"
+          ],
+          "selfWeight": 566188872
+        },
+        {
+          "name": "$R_100_98_108$tree",
+          "line": 826,
+          "category": "generated",
+          "selfPercent": 26.626707433480572,
+          "bendNames": [
+            "dbl"
+          ],
+          "selfWeight": 441212920
+        },
+        {
+          "name": "getOwnPropertyDescriptor",
+          "line": null,
+          "category": "other",
+          "selfPercent": 1.6354769712447659,
+          "bendNames": [],
+          "selfWeight": 27100368
+        },
+        {
+          "name": "getOwnPropertyNames",
+          "line": null,
+          "category": "other",
+          "selfPercent": 0.5576212764056483,
+          "bendNames": [],
+          "selfWeight": 9239960
+        },
+        {
+          "name": "scalarGuard",
+          "line": 122,
+          "category": "generated",
+          "selfPercent": 0.3505473568967789,
+          "bendNames": [],
+          "selfWeight": 5808680
+        },
+        {
+          "name": "next",
+          "line": null,
+          "category": "other",
+          "selfPercent": 0.21377988752541874,
+          "bendNames": [],
+          "selfWeight": 3542400
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ],
+      "estimatedBytes": 1657031464,
+      "estimatedBytesPerCall": 500160.4177482644,
+      "accounting": {
+        "sampleEstimatedBytes": 1657031464,
+        "headSelfSizeBytes": 1655865080,
+        "sampleMinusHeadBytes": 1166384,
+        "unattributedSamples": 0,
+        "unattributedEstimatedBytes": 0
+      }
+    },
+    {
+      "id": "tree-bitonic",
+      "role": "typescript",
+      "kind": "cpu",
+      "repetitions": 2081,
+      "moduleSha256": "c24fff66dd20c4579b7912b42450f1574e4c0b7a84e5d8b2d3d1d1345ef2b159",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/tree-bitonic/typescript-cpu/profile.cpuprofile",
+        "sha256": "fa66e6ce95b3aa08d2793d86a4e3d3df144df534f8fe5e1b65d29cad4484e366",
+        "bytes": 69047
+      },
+      "sampleCount": 533,
+      "categories": {
+        "node": {
+          "selfWeight": 17678,
+          "selfSamples": 1,
+          "selfPercent": 2.863339439674372
+        },
+        "harness": {
+          "selfWeight": 2141,
+          "selfSamples": 1,
+          "selfPercent": 0.34678186108964987
+        },
+        "other": {
+          "selfWeight": 1056,
+          "selfSamples": 1,
+          "selfPercent": 0.17104233783777217
+        },
+        "garbage-collector": {
+          "selfWeight": 67988,
+          "selfSamples": 50,
+          "selfPercent": 11.012146273593233
+        },
+        "generated": {
+          "selfWeight": 528528,
+          "selfSamples": 480,
+          "selfPercent": 85.60669008780496
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$warp$",
+          "line": 209,
+          "category": "generated",
+          "selfPercent": 54.40976625833548,
+          "bendNames": [
+            "warp"
+          ],
+          "selfWeight": 335921
+        },
+        {
+          "name": "$flow$",
+          "line": 244,
+          "category": "generated",
+          "selfPercent": 20.047749319313045,
+          "bendNames": [
+            "flow"
+          ],
+          "selfWeight": 123773
+        },
+        {
+          "name": "(garbage collector)",
+          "line": null,
+          "category": "garbage-collector",
+          "selfPercent": 11.012146273593233,
+          "bendNames": [],
+          "selfWeight": 67988
+        },
+        {
+          "name": "$bsort$",
+          "line": 269,
+          "category": "generated",
+          "selfPercent": 4.461192340024393,
+          "bendNames": [
+            "bsort"
+          ],
+          "selfWeight": 27543
+        },
+        {
+          "name": "$warp_zip$",
+          "line": 189,
+          "category": "generated",
+          "selfPercent": 3.600149662045608,
+          "bendNames": [
+            "warp_zip"
+          ],
+          "selfWeight": 22227
+        },
+        {
+          "name": "post",
+          "line": 115,
+          "category": "node",
+          "selfPercent": 2.863339439674372,
+          "bendNames": [],
+          "selfWeight": 17678
+        },
+        {
+          "name": "$scan$",
+          "line": 303,
+          "category": "generated",
+          "selfPercent": 2.573085775464819,
+          "bendNames": [
+            "scan"
+          ],
+          "selfWeight": 15886
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "tree-bitonic",
+      "role": "typescript",
+      "kind": "allocation",
+      "repetitions": 1236,
+      "moduleSha256": "c24fff66dd20c4579b7912b42450f1574e4c0b7a84e5d8b2d3d1d1345ef2b159",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/tree-bitonic/typescript-allocation/profile.heapprofile",
+        "sha256": "13974d6f13c8184cb215d2af3bc5b14adb6248ccb5372b05fafb674bf7ba8d70",
+        "bytes": 2330689
+      },
+      "sampleCount": 51434,
+      "categories": {
+        "other": {
+          "selfWeight": 0,
+          "selfSamples": 0,
+          "selfPercent": 0
+        },
+        "harness": {
+          "selfWeight": 98400,
+          "selfSamples": 3,
+          "selfPercent": 0.005831217044023527
+        },
+        "node": {
+          "selfWeight": 65584,
+          "selfSamples": 2,
+          "selfPercent": 0.003886529863976006
+        },
+        "generated": {
+          "selfWeight": 1687305360,
+          "selfSamples": 51429,
+          "selfPercent": 99.990282253092
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$warp$",
+          "line": 209,
+          "category": "generated",
+          "selfPercent": 67.021585193313,
+          "bendNames": [
+            "warp"
+          ],
+          "selfWeight": 1130968704
+        },
+        {
+          "name": "$flow$",
+          "line": 244,
+          "category": "generated",
+          "selfPercent": 17.87692327997634,
+          "bendNames": [
+            "flow"
+          ],
+          "selfWeight": 301667600
+        },
+        {
+          "name": "$warp_zip$",
+          "line": 189,
+          "category": "generated",
+          "selfPercent": 6.764974096027193,
+          "bendNames": [
+            "warp_zip"
+          ],
+          "selfWeight": 114156864
+        },
+        {
+          "name": "$scan$",
+          "line": 303,
+          "category": "generated",
+          "selfPercent": 4.223703159611295,
+          "bendNames": [
+            "scan"
+          ],
+          "selfWeight": 71273696
+        },
+        {
+          "name": "$bsort$",
+          "line": 269,
+          "category": "generated",
+          "selfPercent": 4.087547560212151,
+          "bendNames": [
+            "bsort"
+          ],
+          "selfWeight": 68976112
+        },
+        {
+          "name": "$stat_join$go$",
+          "line": 281,
+          "category": "generated",
+          "selfPercent": 0.007776852389444059,
+          "bendNames": [
+            "stat_join.go"
+          ],
+          "selfWeight": 131232
+        },
+        {
+          "name": "main",
+          "line": 156,
+          "category": "harness",
+          "selfPercent": 0.005831217044023527,
+          "bendNames": [],
+          "selfWeight": 98400
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ],
+      "estimatedBytes": 1687469344,
+      "estimatedBytesPerCall": 1365266.4595469255,
+      "accounting": {
+        "sampleEstimatedBytes": 1687469344,
+        "headSelfSizeBytes": 1688918288,
+        "sampleMinusHeadBytes": -1448944,
+        "unattributedSamples": 0,
+        "unattributedEstimatedBytes": 0
+      }
+    },
+    {
+      "id": "tree-bitonic",
+      "role": "baseline",
+      "kind": "cpu",
+      "repetitions": 63,
+      "moduleSha256": "c0695bb8e900c1855d159b4b9533e50d6c76eb04baa344ecb74c0be62e89d0c5",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/tree-bitonic/baseline-cpu/profile.cpuprofile",
+        "sha256": "1eaa8b861280a59fee5a478a3d7f5d452b5cebaa3c19ab5bda77529fe7f56b95",
+        "bytes": 247525
+      },
+      "sampleCount": 500,
+      "categories": {
+        "node": {
+          "selfWeight": 23001,
+          "selfSamples": 2,
+          "selfPercent": 3.672538747590999
+        },
+        "harness": {
+          "selfWeight": 3149,
+          "selfSamples": 3,
+          "selfPercent": 0.5027965965029371
+        },
+        "other": {
+          "selfWeight": 2110,
+          "selfSamples": 2,
+          "selfPercent": 0.33690086332842084
+        },
+        "garbage-collector": {
+          "selfWeight": 45480,
+          "selfSamples": 27,
+          "selfPercent": 7.261730456955726
+        },
+        "generated": {
+          "selfWeight": 552557,
+          "selfSamples": 466,
+          "selfPercent": 88.22603333562192
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$R_119_97_114_112$tree",
+          "line": 789,
+          "category": "generated",
+          "selfPercent": 18.410115328669942,
+          "bendNames": [
+            "warp"
+          ],
+          "selfWeight": 115302
+        },
+        {
+          "name": "apply",
+          "line": 69,
+          "category": "generated",
+          "selfPercent": 15.385831322838845,
+          "bendNames": [],
+          "selfWeight": 96361
+        },
+        {
+          "name": "invokeExact",
+          "line": 41,
+          "category": "generated",
+          "selfPercent": 12.843427319626311,
+          "bendNames": [],
+          "selfWeight": 80438
+        },
+        {
+          "name": "(garbage collector)",
+          "line": null,
+          "category": "garbage-collector",
+          "selfPercent": 7.261730456955726,
+          "bendNames": [],
+          "selfWeight": 45480
+        },
+        {
+          "name": "force",
+          "line": 55,
+          "category": "generated",
+          "selfPercent": 4.865423273622579,
+          "bendNames": [],
+          "selfWeight": 30472
+        },
+        {
+          "name": "(anonymous)",
+          "line": 406,
+          "category": "generated",
+          "selfPercent": 4.533152801306729,
+          "bendNames": [],
+          "selfWeight": 28391
+        },
+        {
+          "name": "(anonymous)",
+          "line": 792,
+          "category": "generated",
+          "selfPercent": 4.004489882595638,
+          "bendNames": [
+            "bsort"
+          ],
+          "selfWeight": 25080
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "tree-bitonic",
+      "role": "baseline",
+      "kind": "allocation",
+      "repetitions": 46,
+      "moduleSha256": "c0695bb8e900c1855d159b4b9533e50d6c76eb04baa344ecb74c0be62e89d0c5",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/tree-bitonic/baseline-allocation/profile.heapprofile",
+        "sha256": "7eee9f4486be453ddec0ad8b92650d71b58d4cac68d14e806e94aecf7b49ffb0",
+        "bytes": 3731248
+      },
+      "sampleCount": 16550,
+      "categories": {
+        "other": {
+          "selfWeight": 788352,
+          "selfSamples": 24,
+          "selfPercent": 0.14496876133855666
+        },
+        "harness": {
+          "selfWeight": 0,
+          "selfSamples": 0,
+          "selfPercent": 0
+        },
+        "generated": {
+          "selfWeight": 543019840,
+          "selfSamples": 16526,
+          "selfPercent": 99.85503123866144
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$R_119_97_114_112$tree",
+          "line": 789,
+          "category": "generated",
+          "selfPercent": 18.688876242599893,
+          "bendNames": [
+            "warp"
+          ],
+          "selfWeight": 101631640
+        },
+        {
+          "name": "(anonymous)",
+          "line": 786,
+          "category": "generated",
+          "selfPercent": 13.147144351955625,
+          "bendNames": [
+            "warp_leaf"
+          ],
+          "selfWeight": 71495248
+        },
+        {
+          "name": "ctor",
+          "line": 218,
+          "category": "generated",
+          "selfPercent": 8.365743780483543,
+          "bendNames": [],
+          "selfWeight": 45493600
+        },
+        {
+          "name": "(anonymous)",
+          "line": 791,
+          "category": "generated",
+          "selfPercent": 8.266544097960187,
+          "bendNames": [
+            "flow"
+          ],
+          "selfWeight": 44954144
+        },
+        {
+          "name": "apply",
+          "line": 69,
+          "category": "generated",
+          "selfPercent": 6.947626121822012,
+          "bendNames": [],
+          "selfWeight": 37781760
+        },
+        {
+          "name": "(anonymous)",
+          "line": 406,
+          "category": "generated",
+          "selfPercent": 3.801240272599645,
+          "bendNames": [],
+          "selfWeight": 20671456
+        },
+        {
+          "name": "(anonymous)",
+          "line": 790,
+          "category": "generated",
+          "selfPercent": 3.135798292645066,
+          "bendNames": [
+            "warp_node"
+          ],
+          "selfWeight": 17052728
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ],
+      "estimatedBytes": 543808192,
+      "estimatedBytesPerCall": 11821917.217391305,
+      "accounting": {
+        "sampleEstimatedBytes": 543808192,
+        "headSelfSizeBytes": 543446136,
+        "sampleMinusHeadBytes": 362056,
+        "unattributedSamples": 0,
+        "unattributedEstimatedBytes": 0
+      }
+    },
+    {
+      "id": "tree-bitonic",
+      "role": "candidate",
+      "kind": "cpu",
+      "repetitions": 132,
+      "moduleSha256": "3a5d3c78ebb74aba0cc5a6729547b1ea2892874f07a5c3ccb474c7cb04a2cfd9",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/tree-bitonic/candidate-cpu/profile.cpuprofile",
+        "sha256": "036a42b4df4775b848ddfa0315231e1ddd563990d3802b1108f6c38f1d1a7e7c",
+        "bytes": 26346
+      },
+      "sampleCount": 533,
+      "categories": {
+        "node": {
+          "selfWeight": 22584,
+          "selfSamples": 1,
+          "selfPercent": 3.6197934614835963
+        },
+        "harness": {
+          "selfWeight": 0,
+          "selfSamples": 0,
+          "selfPercent": 0
+        },
+        "other": {
+          "selfWeight": 1058,
+          "selfSamples": 1,
+          "selfPercent": 0.16957764267842917
+        },
+        "garbage-collector": {
+          "selfWeight": 44876,
+          "selfSamples": 26,
+          "selfPercent": 7.192784775838552
+        },
+        "generated": {
+          "selfWeight": 555385,
+          "selfSamples": 505,
+          "selfPercent": 89.01784411999942
+        }
+      },
+      "topSelf": [
+        {
+          "name": "apply",
+          "line": 69,
+          "category": "generated",
+          "selfPercent": 17.65659084825686,
+          "bendNames": [],
+          "selfWeight": 110160
+        },
+        {
+          "name": "invokeExact",
+          "line": 41,
+          "category": "generated",
+          "selfPercent": 11.946728898562757,
+          "bendNames": [],
+          "selfWeight": 74536
+        },
+        {
+          "name": "$R_119_97_114_112$tree",
+          "line": 789,
+          "category": "generated",
+          "selfPercent": 11.366350217902463,
+          "bendNames": [
+            "warp"
+          ],
+          "selfWeight": 70915
+        },
+        {
+          "name": "(garbage collector)",
+          "line": null,
+          "category": "garbage-collector",
+          "selfPercent": 7.192784775838552,
+          "bendNames": [],
+          "selfWeight": 44876
+        },
+        {
+          "name": "(anonymous)",
+          "line": 786,
+          "category": "generated",
+          "selfPercent": 6.607918218056333,
+          "bendNames": [
+            "warp_leaf"
+          ],
+          "selfWeight": 41227
+        },
+        {
+          "name": "$R_102_108_111_119$tree",
+          "line": 792,
+          "category": "generated",
+          "selfPercent": 4.922880640099503,
+          "bendNames": [
+            "flow"
+          ],
+          "selfWeight": 30714
+        },
+        {
+          "name": "(anonymous)",
+          "line": 805,
+          "category": "generated",
+          "selfPercent": 4.551508808260259,
+          "bendNames": [
+            "bench"
+          ],
+          "selfWeight": 28397
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "tree-bitonic",
+      "role": "candidate",
+      "kind": "allocation",
+      "repetitions": 110,
+      "moduleSha256": "3a5d3c78ebb74aba0cc5a6729547b1ea2892874f07a5c3ccb474c7cb04a2cfd9",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/tree-bitonic/candidate-allocation/profile.heapprofile",
+        "sha256": "56d0b3bf81c85cf435f30d691b9cdfdf679dd40c47e15d0d838ee88557c60115",
+        "bytes": 906847
+      },
+      "sampleCount": 21031,
+      "categories": {
+        "other": {
+          "selfWeight": 2333280,
+          "selfSamples": 71,
+          "selfPercent": 0.3376649911308237
+        },
+        "harness": {
+          "selfWeight": 0,
+          "selfSamples": 0,
+          "selfPercent": 0
+        },
+        "node": {
+          "selfWeight": 32800,
+          "selfSamples": 1,
+          "selfPercent": 0.004746713514490767
+        },
+        "generated": {
+          "selfWeight": 688638336,
+          "selfSamples": 20959,
+          "selfPercent": 99.65758829535469
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$R_119_97_114_112$tree",
+          "line": 789,
+          "category": "generated",
+          "selfPercent": 27.176529071559507,
+          "bendNames": [
+            "warp"
+          ],
+          "selfWeight": 187791016
+        },
+        {
+          "name": "(anonymous)",
+          "line": 786,
+          "category": "generated",
+          "selfPercent": 20.577848231870057,
+          "bendNames": [
+            "warp_leaf"
+          ],
+          "selfWeight": 142193840
+        },
+        {
+          "name": "ctor",
+          "line": 218,
+          "category": "generated",
+          "selfPercent": 15.241697095029853,
+          "bendNames": [],
+          "selfWeight": 105320800
+        },
+        {
+          "name": "(anonymous)",
+          "line": 406,
+          "category": "generated",
+          "selfPercent": 8.336590427809943,
+          "bendNames": [],
+          "selfWeight": 57606208
+        },
+        {
+          "name": "$R_102_108_111_119$tree",
+          "line": 792,
+          "category": "generated",
+          "selfPercent": 8.131430523303631,
+          "bendNames": [
+            "flow"
+          ],
+          "selfWeight": 56188544
+        },
+        {
+          "name": "apply",
+          "line": 69,
+          "category": "generated",
+          "selfPercent": 5.55789443753714,
+          "bendNames": [],
+          "selfWeight": 38405296
+        },
+        {
+          "name": "(anonymous)",
+          "line": 790,
+          "category": "generated",
+          "selfPercent": 4.000632030693129,
+          "bendNames": [
+            "warp_node"
+          ],
+          "selfWeight": 27644544
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ],
+      "estimatedBytes": 691004416,
+      "estimatedBytesPerCall": 6281858.327272727,
+      "accounting": {
+        "sampleEstimatedBytes": 691004416,
+        "headSelfSizeBytes": 690275448,
+        "sampleMinusHeadBytes": 728968,
+        "unattributedSamples": 0,
+        "unattributedEstimatedBytes": 0
+      }
+    },
+    {
+      "id": "scalar-region-8192",
+      "role": "typescript",
+      "kind": "cpu",
+      "repetitions": 5958,
+      "moduleSha256": "752a5711b92b0ba8b0e146f41e70ac3934e50965f77950d009b5e738320b594a",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/scalar-region-8192/typescript-cpu/profile.cpuprofile",
+        "sha256": "7e26c89dab59f26879c9f8467860bf0ad1b94c4776b19e75181006342bcce83e",
+        "bytes": 6593
+      },
+      "sampleCount": 545,
+      "categories": {
+        "node": {
+          "selfWeight": 17616,
+          "selfSamples": 2,
+          "selfPercent": 2.8571706614505787
+        },
+        "harness": {
+          "selfWeight": 1055,
+          "selfSamples": 1,
+          "selfPercent": 0.17111234376875342
+        },
+        "other": {
+          "selfWeight": 0,
+          "selfSamples": 0,
+          "selfPercent": 0
+        },
+        "generated": {
+          "selfWeight": 596811,
+          "selfSamples": 541,
+          "selfPercent": 96.7978473904962
+        },
+        "garbage-collector": {
+          "selfWeight": 1072,
+          "selfSamples": 1,
+          "selfPercent": 0.17386960428445844
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$mit$",
+          "line": 188,
+          "category": "generated",
+          "selfPercent": 96.7978473904962,
+          "bendNames": [
+            "mit"
+          ],
+          "selfWeight": 596811
+        },
+        {
+          "name": "post",
+          "line": 115,
+          "category": "node",
+          "selfPercent": 2.6862205094768665,
+          "bendNames": [],
+          "selfWeight": 16562
+        },
+        {
+          "name": "(garbage collector)",
+          "line": null,
+          "category": "garbage-collector",
+          "selfPercent": 0.17386960428445844,
+          "bendNames": [],
+          "selfWeight": 1072
+        },
+        {
+          "name": "main",
+          "line": 156,
+          "category": "harness",
+          "selfPercent": 0.17111234376875342,
+          "bendNames": [],
+          "selfWeight": 1055
+        },
+        {
+          "name": "(anonymous)",
+          "line": 546,
+          "category": "node",
+          "selfPercent": 0.17095015197371194,
+          "bendNames": [],
+          "selfWeight": 1054
+        },
+        {
+          "name": "(root)",
+          "line": null,
+          "category": "other",
+          "selfPercent": 0,
+          "bendNames": [],
+          "selfWeight": 0
+        },
+        {
+          "name": "(anonymous)",
+          "line": 246,
+          "category": "generated",
+          "selfPercent": 0,
+          "bendNames": [],
+          "selfWeight": 0
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "scalar-region-8192",
+      "role": "typescript",
+      "kind": "allocation",
+      "repetitions": 6012,
+      "moduleSha256": "752a5711b92b0ba8b0e146f41e70ac3934e50965f77950d009b5e738320b594a",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/scalar-region-8192/typescript-allocation/profile.heapprofile",
+        "sha256": "3ad1d70299f6022aded3bf4f303004d26602c1d5e48ea894a982def41c78cc8d",
+        "bytes": 2554
+      },
+      "sampleCount": 36,
+      "categories": {
+        "other": {
+          "selfWeight": 0,
+          "selfSamples": 0,
+          "selfPercent": 0
+        },
+        "harness": {
+          "selfWeight": 32784,
+          "selfSamples": 1,
+          "selfPercent": 2.776648508008781
+        },
+        "node": {
+          "selfWeight": 557520,
+          "selfSamples": 17,
+          "selfPercent": 47.21928612082283
+        },
+        "generated": {
+          "selfWeight": 590400,
+          "selfSamples": 18,
+          "selfPercent": 50.00406537116838
+        }
+      },
+      "topSelf": [
+        {
+          "name": "(anonymous)",
+          "line": 144,
+          "category": "generated",
+          "selfPercent": 50.00406537116838,
+          "bendNames": [],
+          "selfWeight": 590400
+        },
+        {
+          "name": "now",
+          "line": 137,
+          "category": "node",
+          "selfPercent": 47.21928612082283,
+          "bendNames": [],
+          "selfWeight": 557520
+        },
+        {
+          "name": "main",
+          "line": 156,
+          "category": "harness",
+          "selfPercent": 2.776648508008781,
+          "bendNames": [],
+          "selfWeight": 32784
+        },
+        {
+          "name": "(root)",
+          "line": null,
+          "category": "other",
+          "selfPercent": 0,
+          "bendNames": [],
+          "selfWeight": 0
+        },
+        {
+          "name": "(anonymous)",
+          "line": null,
+          "category": "other",
+          "selfPercent": 0,
+          "bendNames": [],
+          "selfWeight": 0
+        },
+        {
+          "name": "invoke",
+          "line": 212,
+          "category": "harness",
+          "selfPercent": 0,
+          "bendNames": [],
+          "selfWeight": 0
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ],
+      "estimatedBytes": 1180704,
+      "estimatedBytesPerCall": 196.39121756487026,
+      "accounting": {
+        "sampleEstimatedBytes": 1180704,
+        "headSelfSizeBytes": 1180272,
+        "sampleMinusHeadBytes": 432,
+        "unattributedSamples": 0,
+        "unattributedEstimatedBytes": 0
+      }
+    },
+    {
+      "id": "scalar-region-8192",
+      "role": "baseline",
+      "kind": "cpu",
+      "repetitions": 5099,
+      "moduleSha256": "2faa5286810e5aebae78770a77a67bc2e0a9b6f2f87801263b0d4c013a14adf8",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/scalar-region-8192/baseline-cpu/profile.cpuprofile",
+        "sha256": "514e469ae70beb16a7117c8e0df5f390aad4f380b1c9c281f612b8211c3118f7",
+        "bytes": 8275
+      },
+      "sampleCount": 531,
+      "categories": {
+        "node": {
+          "selfWeight": 19249,
+          "selfSamples": 2,
+          "selfPercent": 3.1160762272312263
+        },
+        "harness": {
+          "selfWeight": 1057,
+          "selfSamples": 1,
+          "selfPercent": 0.17110980166156198
+        },
+        "other": {
+          "selfWeight": 2110,
+          "selfSamples": 2,
+          "selfPercent": 0.3415720733262968
+        },
+        "generated": {
+          "selfWeight": 593204,
+          "selfSamples": 524,
+          "selfPercent": 96.0293460594562
+        },
+        "garbage-collector": {
+          "selfWeight": 2112,
+          "selfSamples": 2,
+          "selfPercent": 0.3418958383247104
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$R_109_105_116",
+          "line": 773,
+          "category": "generated",
+          "selfPercent": 90.76330836025978,
+          "bendNames": [
+            "mit"
+          ],
+          "selfWeight": 560674
+        },
+        {
+          "name": "localGuard",
+          "line": 153,
+          "category": "generated",
+          "selfPercent": 3.127408002175701,
+          "bendNames": [],
+          "selfWeight": 19319
+        },
+        {
+          "name": "post",
+          "line": 115,
+          "category": "node",
+          "selfPercent": 2.945290190568078,
+          "bendNames": [],
+          "selfWeight": 18194
+        },
+        {
+          "name": "scalarGuard",
+          "line": 122,
+          "category": "generated",
+          "selfPercent": 1.3685546482940822,
+          "bendNames": [],
+          "selfWeight": 8454
+        },
+        {
+          "name": "(anonymous)",
+          "line": 773,
+          "category": "generated",
+          "selfPercent": 0.42785544540350834,
+          "bendNames": [
+            "bench"
+          ],
+          "selfWeight": 2643
+        },
+        {
+          "name": "(garbage collector)",
+          "line": null,
+          "category": "garbage-collector",
+          "selfPercent": 0.3418958383247104,
+          "bendNames": [],
+          "selfWeight": 2112
+        },
+        {
+          "name": "(program)",
+          "line": null,
+          "category": "other",
+          "selfPercent": 0.3415720733262968,
+          "bendNames": [],
+          "selfWeight": 2110
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "scalar-region-8192",
+      "role": "baseline",
+      "kind": "allocation",
+      "repetitions": 5019,
+      "moduleSha256": "2faa5286810e5aebae78770a77a67bc2e0a9b6f2f87801263b0d4c013a14adf8",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/scalar-region-8192/baseline-allocation/profile.heapprofile",
+        "sha256": "c931292bf06c90e270c2617137143d2330c2cf9072709a6caa57fbee68e0cd87",
+        "bytes": 44917
+      },
+      "sampleCount": 1016,
+      "categories": {
+        "other": {
+          "selfWeight": 22571888,
+          "selfSamples": 688,
+          "selfPercent": 67.70746868799
+        },
+        "harness": {
+          "selfWeight": 98352,
+          "selfSamples": 3,
+          "selfPercent": 0.2950202907440083
+        },
+        "node": {
+          "selfWeight": 196800,
+          "selfSamples": 6,
+          "selfPercent": 0.5903285466327156
+        },
+        "generated": {
+          "selfWeight": 10398752,
+          "selfSamples": 317,
+          "selfPercent": 31.192480462164863
+        },
+        "unattributed": {
+          "selfWeight": 71576,
+          "selfSamples": 2,
+          "selfPercent": 0.21470201246841084
+        }
+      },
+      "topSelf": [
+        {
+          "name": "getOwnPropertyDescriptor",
+          "line": null,
+          "category": "other",
+          "selfPercent": 56.2944501197575,
+          "bendNames": [],
+          "selfWeight": 18767088
+        },
+        {
+          "name": "scalarGuard",
+          "line": 122,
+          "category": "generated",
+          "selfPercent": 24.207357941394775,
+          "bendNames": [],
+          "selfWeight": 8070096
+        },
+        {
+          "name": "next",
+          "line": null,
+          "category": "other",
+          "selfPercent": 10.429137657177975,
+          "bendNames": [],
+          "selfWeight": 3476800
+        },
+        {
+          "name": "(anonymous)",
+          "line": 773,
+          "category": "generated",
+          "selfPercent": 4.034103712086689,
+          "bendNames": [
+            "bench"
+          ],
+          "selfWeight": 1344864
+        },
+        {
+          "name": "invokeExact",
+          "line": 41,
+          "category": "generated",
+          "selfPercent": 1.278517248272269,
+          "bendNames": [],
+          "selfWeight": 426224
+        },
+        {
+          "name": "slice",
+          "line": null,
+          "category": "other",
+          "selfPercent": 0.9838809110545259,
+          "bendNames": [],
+          "selfWeight": 328000
+        },
+        {
+          "name": "(anonymous)",
+          "line": 777,
+          "category": "generated",
+          "selfPercent": 0.7871047288436208,
+          "bendNames": [],
+          "selfWeight": 262400
+        }
+      ],
+      "warnings": [
+        "2 allocation samples (71576 estimated bytes) refer to absent tree nodes; preserved as unattributed, with no inferred call path.",
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ],
+      "estimatedBytes": 33337368,
+      "estimatedBytesPerCall": 6642.233114166169,
+      "accounting": {
+        "sampleEstimatedBytes": 33337368,
+        "headSelfSizeBytes": 33257120,
+        "sampleMinusHeadBytes": 80248,
+        "unattributedSamples": 2,
+        "unattributedEstimatedBytes": 71576
+      }
+    },
+    {
+      "id": "scalar-region-8192",
+      "role": "candidate",
+      "kind": "cpu",
+      "repetitions": 5040,
+      "moduleSha256": "2faa5286810e5aebae78770a77a67bc2e0a9b6f2f87801263b0d4c013a14adf8",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/scalar-region-8192/candidate-cpu/profile.cpuprofile",
+        "sha256": "05478465f3f2a589fd531078b941ef5e6b285d2510575144326e26bf1103b92b",
+        "bytes": 8382
+      },
+      "sampleCount": 531,
+      "categories": {
+        "node": {
+          "selfWeight": 18056,
+          "selfSamples": 1,
+          "selfPercent": 2.923068704094336
+        },
+        "harness": {
+          "selfWeight": 3164,
+          "selfSamples": 3,
+          "selfPercent": 0.5122169572305316
+        },
+        "other": {
+          "selfWeight": 0,
+          "selfSamples": 0,
+          "selfPercent": 0
+        },
+        "generated": {
+          "selfWeight": 594373,
+          "selfSamples": 525,
+          "selfPercent": 96.22248088495031
+        },
+        "garbage-collector": {
+          "selfWeight": 2114,
+          "selfSamples": 2,
+          "selfPercent": 0.3422334537248242
+        }
+      },
+      "topSelf": [
+        {
+          "name": "$R_109_105_116",
+          "line": 773,
+          "category": "generated",
+          "selfPercent": 90.51394917007578,
+          "bendNames": [
+            "mit"
+          ],
+          "selfWeight": 559111
+        },
+        {
+          "name": "post",
+          "line": 115,
+          "category": "node",
+          "selfPercent": 2.923068704094336,
+          "bendNames": [],
+          "selfWeight": 18056
+        },
+        {
+          "name": "localGuard",
+          "line": 153,
+          "category": "generated",
+          "selfPercent": 2.445010336615904,
+          "bendNames": [],
+          "selfWeight": 15103
+        },
+        {
+          "name": "scalarGuard",
+          "line": 122,
+          "category": "generated",
+          "selfPercent": 2.0506486084826627,
+          "bendNames": [],
+          "selfWeight": 12667
+        },
+        {
+          "name": "(anonymous)",
+          "line": 773,
+          "category": "generated",
+          "selfPercent": 0.7004939234944724,
+          "bendNames": [
+            "bench"
+          ],
+          "selfWeight": 4327
+        },
+        {
+          "name": "(garbage collector)",
+          "line": null,
+          "category": "garbage-collector",
+          "selfPercent": 0.3422334537248242,
+          "bendNames": [],
+          "selfWeight": 2114
+        },
+        {
+          "name": "(anonymous)",
+          "line": 144,
+          "category": "generated",
+          "selfPercent": 0.34158589752099294,
+          "bendNames": [],
+          "selfWeight": 2110
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "scalar-region-8192",
+      "role": "candidate",
+      "kind": "allocation",
+      "repetitions": 5078,
+      "moduleSha256": "2faa5286810e5aebae78770a77a67bc2e0a9b6f2f87801263b0d4c013a14adf8",
+      "rawProfile": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/diagnostics06/profiles/scalar-region-8192/candidate-allocation/profile.heapprofile",
+        "sha256": "b4713f62e5be9c36564e73a6bb26e6ed5c613cccb85b395c2415b8efc3753e61",
+        "bytes": 44284
+      },
+      "sampleCount": 1001,
+      "categories": {
+        "other": {
+          "selfWeight": 21062368,
+          "selfSamples": 642,
+          "selfPercent": 64.13199401648171
+        },
+        "harness": {
+          "selfWeight": 65568,
+          "selfSamples": 2,
+          "selfPercent": 0.19964548068254592
+        },
+        "node": {
+          "selfWeight": 459184,
+          "selfSamples": 14,
+          "selfPercent": 1.3981516959756917
+        },
+        "generated": {
+          "selfWeight": 11255096,
+          "selfSamples": 343,
+          "selfPercent": 34.27020880686005
+        }
+      },
+      "topSelf": [
+        {
+          "name": "getOwnPropertyDescriptor",
+          "line": null,
+          "category": "other",
+          "selfPercent": 53.04626216452629,
+          "bendNames": [],
+          "selfWeight": 17421568
+        },
+        {
+          "name": "scalarGuard",
+          "line": 122,
+          "category": "generated",
+          "selfPercent": 25.082667990491263,
+          "bendNames": [],
+          "selfWeight": 8237704
+        },
+        {
+          "name": "next",
+          "line": null,
+          "category": "other",
+          "selfPercent": 10.486503103201075,
+          "bendNames": [],
+          "selfWeight": 3444000
+        },
+        {
+          "name": "(anonymous)",
+          "line": 773,
+          "category": "generated",
+          "selfPercent": 4.99367034185513,
+          "bendNames": [
+            "bench"
+          ],
+          "selfWeight": 1640032
+        },
+        {
+          "name": "localGuard",
+          "line": 153,
+          "category": "generated",
+          "selfPercent": 1.4977308473947069,
+          "bendNames": [],
+          "selfWeight": 491888
+        },
+        {
+          "name": "now",
+          "line": 137,
+          "category": "node",
+          "selfPercent": 1.3981516959756917,
+          "bendNames": [],
+          "selfWeight": 459184
+        },
+        {
+          "name": "invokeExact",
+          "line": 41,
+          "category": "generated",
+          "selfPercent": 1.0981962971073571,
+          "bendNames": [],
+          "selfWeight": 360672
+        }
+      ],
+      "warnings": [
+        "Allocation sample and tree estimates differ. Frame weights use samples[].size only; both accounting totals and per-node differences are retained. The cause is not established by this profile."
+      ],
+      "estimatedBytes": 32842216,
+      "estimatedBytesPerCall": 6467.549428909019,
+      "accounting": {
+        "sampleEstimatedBytes": 32842216,
+        "headSelfSizeBytes": 32834488,
+        "sampleMinusHeadBytes": 7728,
+        "unattributedSamples": 0,
+        "unattributedEstimatedBytes": 0
+      }
+    }
+  ]
+}

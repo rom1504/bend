@@ -1,9 +1,11 @@
 # Static review of historical raytrace selection
 
-Status: checked05 performance admission rejected; narrowing approved for
-checked06, whose fresh validation is pending. This review reads exact Phase39 and
-Phase40 checked emissions. All rejected-image timing and semantic evidence stays
-preserved; no measured repair is claimed.
+Final status: checked05 was rejected for performance; corrected checked06 is
+installed after fresh validation. Both corrected ray modules exactly equal
+Phase39. Fresh three-point ratios have overlapping ranges and are recorded in
+[final execution](execution/report.md); no new ray speedup is attributed to
+identical code. The analysis below explains the rejected05 graph, and its
+original timing and semantic evidence remain preserved.
 
 Compared inputs are `selfhost/build/phase39/final-candidate01/modules/raytrace.mjs`
 and `selfhost/build/phase40/final-candidate01/modules/raytrace.mjs`. Their sizes

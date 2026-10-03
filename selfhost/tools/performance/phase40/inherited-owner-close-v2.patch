@@ -1,0 +1,36 @@
+--- /home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/inherited-owner-close-v1.py
++++ /home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/inherited-owner-close-v2.py
+@@ -311,14 +311,14 @@
+ 
+ attempt_file = document(a.attempt, 'attempt.json')
+ mapping_file = resolve(a.mapping)
+-spec_file = LOCAL/'inherited-owner-spec-v1.json'
+-report = dict(kind='phase40-inherited-owner-controls-v1', complete=False, **{'pass': False},
++spec_file = LOCAL/'inherited-owner-spec-v2.json'
++report = dict(kind='phase40-inherited-owner-controls-v2', complete=False, **{'pass': False},
+               scope='All V4 owner receipt/hash/control contracts retained. Component diagnostic deriver successor adds actual proved structural-tail observation; supplementary tail controls are mandatory. Conformance, timing and installation remain separate.',
+               cases=[])
+ try:
+     verify(identity(Path(__file__)))
+     spec = read(spec_file)
+-    assert spec['kind'] == 'phase40-inherited-owner-spec' and spec['version'] == 1
++    assert spec['kind'] == 'phase40-inherited-owner-spec' and spec['version'] == 2
+     assert set(spec['owners']) == {'countdown', 'guard', 'component', 'unary'}
+     for ref in spec['files'].values():
+         verify(ref)
+@@ -358,6 +358,7 @@
+                     assert diagnostic['sites']
+                 assert {row['role'] for row in gate['diagnostics']} == {'baseline', 'candidate'}
+             else:
++                assert verify(gate['successor']['parent']) == verify(spec['files']['selfhost/tools/performance/phase39/unary-compiled-controls-v4.mjs'])
+                 assert verify(gate['diagnostic']['parent']) == verify(manifest['variants']['candidate'])
+                 assert set(gate['diagnostic']['workers']) == {'unary.first', 'unary.middle', 'unary.last'}
+                 assert set(gate['diagnostic']['chooserSites']) == {'unary.pick_first', 'unary.pick_middle', 'unary.pick_last'}
+@@ -411,6 +412,7 @@
+                 tail_file, tail_execution = resolve(entry['tailReport']), resolve(entry['tailExecution'])
+                 tail = read(tail_file)
+                 assert tail['kind'] == owner['tailKind'] and tail['complete'] is True and tail['pass'] is True
++                assert verify(tail['predecessor']) == verify(spec['files']['selfhost/tools/performance/phase40/component-inherited-tail-controls-v1.mjs'])
+                 assert not tail.get('error') and not tail.get('current') and tail['node'] == gate['node']
+                 for key, count in owner['tailCounts'].items():
+                     assert len(tail[key]) == count, ('component-tail', key, count)

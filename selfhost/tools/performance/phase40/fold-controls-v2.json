@@ -1,0 +1,25 @@
+{
+  "kind": "phase40-fold-control-successor-derivation",
+  "complete": true,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase35/fold-controls.mjs",
+    "sha256": "2daa80a8fe7bfa520faec65e693bbf0ef44bd03735ac1ebb8676c4bad0d7bff8"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/fold-controls-v2.mjs",
+    "sha256": "d23164e18fd0d077a55b31c2312763eef68576197379f964ad1001d6d2853621"
+  },
+  "changes": [
+    {
+      "before": "const report={kind:'phase35-compiled-recursive-fold-controls',complete:false,pass:false,inputs:[import.meta.filename,manifestFile,...files].map(identity)",
+      "after": "const derivationFile=import.meta.filename.replace(/\\.mjs$/,'.json'),derivation=JSON.parse(fs.readFileSync(derivationFile));\nassert.equal(derivation.kind,'phase40-fold-control-successor-derivation');assert(derivation.complete);\nfor(const row of [derivation.parent,derivation.derived])assert.deepEqual(identity(row.file),row);\nconst report={kind:'phase35-compiled-recursive-fold-controls',complete:false,pass:false,inputs:[import.meta.filename,derivationFile,derivation.parent.file,manifestFile,...files].map(identity)",
+      "count": 1
+    },
+    {
+      "before": " const countMarker='const $frames=[];let $top=0';assert(source.includes(countMarker));\n const witnessFile=path.join(out,'admission-witness.mjs');fs.writeFileSync(witnessFile,'let phase35FoldEntries=0;\\n'+source.replaceAll(countMarker,'++phase35FoldEntries;'+countMarker)+'\\nexport const phase35FoldCount=()=>phase35FoldEntries;\\n',{flag:'wx'});\n const witness=await import(pathToFileURL(witnessFile));for(const[name,args]of[['benchDeep',[7,17]],['benchShared',[7,17]],['benchWeight',[7,17]],['benchRecord',[7,17]]]){const before=witness.phase35FoldCount();witness.default[name](...args);const entries=witness.phase35FoldCount()-before;assert.equal(entries,1,name+' enters fold');report.admission.push({name,entries});}",
+      "after": " // A structural producer also owns frames; the inherited fold witness must\n // count only the original $node-based fold, with its entries===1 unchanged.\n const countMarker='const $frames=[];let $top=0,$node=';assert(source.includes(countMarker));\n const producerName=privateName('fold.make')+'$tree',producerStart='function '+producerName+'(';\n assert.equal(source.split(producerStart).length,2,'one structural producer declaration');\n const producerAt=source.indexOf(producerStart),producerOpen=source.indexOf('{',producerAt);\n assert(source.slice(producerOpen+1,producerOpen+60).includes('/* private structural component */'));\n assert.equal((source.match(/function \\$R_[0-9_]+\\$tree\\(/g)??[]).length,1,'no unrelated structural producer');\n for(const name of ['benchDeep','benchWeight','benchRecord']){const line=rootLine(name),guardMatch=line.match(/const \\$guards=(\\[[^;]+\\]);/);assert(guardMatch,'producer guard declaration '+name);const guardOwners=JSON.parse(guardMatch[1]);\n  assert.deepEqual(guardOwners,[name,'fold.make',name==='benchWeight'?'fold.weight':'fold.value'],'captured producer/fold owners '+name);\n  for(const proof of ['regionHostGuard()','localGuard($guards)','regionProofOpen($guards)','finally{regionProofClose($previousProof);}','regionProofCovers([\"fold.make\"])'])assert(line.includes(proof),'producer proof '+name+':'+proof);\n }\n const producerSource=source.slice(0,producerOpen+1)+'++phase40ProducerEntries;'+source.slice(producerOpen+1);\n const witnessFile=path.join(out,'admission-witness.mjs');fs.writeFileSync(witnessFile,'let phase35FoldEntries=0,phase40ProducerEntries=0;\\n'+producerSource.replaceAll(countMarker,'++phase35FoldEntries;'+countMarker)+'\\nexport const phase35FoldCount=()=>phase35FoldEntries;export const phase40ProducerCount=()=>phase40ProducerEntries;\\n',{flag:'wx'});\n const witness=await import(pathToFileURL(witnessFile));for(const[name,args,expectedProducer]of[['benchDeep',[7,17],1],['benchShared',[7,17],0],['benchWeight',[7,17],1],['benchRecord',[7,17],1]]){const before=witness.phase35FoldCount(),producerBefore=witness.phase40ProducerCount();witness.default[name](...args);const entries=witness.phase35FoldCount()-before;assert.equal(entries,1,name+' enters fold');const producerEntries=witness.phase40ProducerCount()-producerBefore;assert.equal(producerEntries,expectedProducer,name+' enters structural producer');report.admission.push({name,entries,producerEntries,expectedProducer});}",
+      "count": 1
+    }
+  ],
+  "scope": "Preserve all integer/deep/order/host/alias/refusal assertions and fold entries===1. Narrow the diagnostic fold counter to existing $node frames; separately require producer entries1/0/1/1 and its guard/proof ownership. Original failed tool/report remain unchanged. No compiler source change."
+}

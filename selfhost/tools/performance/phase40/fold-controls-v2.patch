@@ -1,0 +1,39 @@
+--- /home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase35/fold-controls.mjs
++++ selfhost/tools/performance/phase40/fold-controls-v2.mjs
+@@ -7,7 +7,10 @@
+ const manifestFile=path.join(root,'derive.json'),manifest=JSON.parse(fs.readFileSync(manifestFile));assert(manifest.complete);
+ const roles=['baseline','candidate','typescript'],files=roles.map(r=>manifest.variants[r].file);
+ for(let i=0;i<files.length;i++)assert.equal(identity(files[i]).sha256,manifest.variants[roles[i]].sha256);
+-const report={kind:'phase35-compiled-recursive-fold-controls',complete:false,pass:false,inputs:[import.meta.filename,manifestFile,...files].map(identity),oracle:[],boundaries:[],structure:[],admission:[]};
++const derivationFile=import.meta.filename.replace(/\.mjs$/,'.json'),derivation=JSON.parse(fs.readFileSync(derivationFile));
++assert.equal(derivation.kind,'phase40-fold-control-successor-derivation');assert(derivation.complete);
++for(const row of [derivation.parent,derivation.derived])assert.deepEqual(identity(row.file),row);
++const report={kind:'phase35-compiled-recursive-fold-controls',complete:false,pass:false,inputs:[import.meta.filename,derivationFile,derivation.parent.file,manifestFile,...files].map(identity),oracle:[],boundaries:[],structure:[],admission:[]};
+ fs.copyFileSync(import.meta.filename,path.join(out,'consumed-controls.mjs'));
+ const modules=[],mask=0xffffffffn,word=n=>Number(n&mask),record=r=>r.a??[r.score,r.weighted];
+ function oracle(n,seed){const value=(BigInt(seed)+2n*BigInt(n)+7n)&mask;let weight=(BigInt(seed)+BigInt(n)+7n)&mask;
+@@ -41,9 +44,21 @@
+  const rootLine=name=>{const at=source.indexOf('G['+JSON.stringify(name)+']=');assert(at>=0);return source.slice(at,source.indexOf('\n',at));};
+  assert(rootLine('benchRecord').includes('build('),'terminal record keeps deferred construction');
+  assert(rootLine('benchDeep').includes('regionHostGuard()'),'fold host guard');
+- const countMarker='const $frames=[];let $top=0';assert(source.includes(countMarker));
+- const witnessFile=path.join(out,'admission-witness.mjs');fs.writeFileSync(witnessFile,'let phase35FoldEntries=0;\n'+source.replaceAll(countMarker,'++phase35FoldEntries;'+countMarker)+'\nexport const phase35FoldCount=()=>phase35FoldEntries;\n',{flag:'wx'});
+- const witness=await import(pathToFileURL(witnessFile));for(const[name,args]of[['benchDeep',[7,17]],['benchShared',[7,17]],['benchWeight',[7,17]],['benchRecord',[7,17]]]){const before=witness.phase35FoldCount();witness.default[name](...args);const entries=witness.phase35FoldCount()-before;assert.equal(entries,1,name+' enters fold');report.admission.push({name,entries});}
++ // A structural producer also owns frames; the inherited fold witness must
++ // count only the original $node-based fold, with its entries===1 unchanged.
++ const countMarker='const $frames=[];let $top=0,$node=';assert(source.includes(countMarker));
++ const producerName=privateName('fold.make')+'$tree',producerStart='function '+producerName+'(';
++ assert.equal(source.split(producerStart).length,2,'one structural producer declaration');
++ const producerAt=source.indexOf(producerStart),producerOpen=source.indexOf('{',producerAt);
++ assert(source.slice(producerOpen+1,producerOpen+60).includes('/* private structural component */'));
++ assert.equal((source.match(/function \$R_[0-9_]+\$tree\(/g)??[]).length,1,'no unrelated structural producer');
++ for(const name of ['benchDeep','benchWeight','benchRecord']){const line=rootLine(name),guardMatch=line.match(/const \$guards=(\[[^;]+\]);/);assert(guardMatch,'producer guard declaration '+name);const guardOwners=JSON.parse(guardMatch[1]);
++  assert.deepEqual(guardOwners,[name,'fold.make',name==='benchWeight'?'fold.weight':'fold.value'],'captured producer/fold owners '+name);
++  for(const proof of ['regionHostGuard()','localGuard($guards)','regionProofOpen($guards)','finally{regionProofClose($previousProof);}','regionProofCovers(["fold.make"])'])assert(line.includes(proof),'producer proof '+name+':'+proof);
++ }
++ const producerSource=source.slice(0,producerOpen+1)+'++phase40ProducerEntries;'+source.slice(producerOpen+1);
++ const witnessFile=path.join(out,'admission-witness.mjs');fs.writeFileSync(witnessFile,'let phase35FoldEntries=0,phase40ProducerEntries=0;\n'+producerSource.replaceAll(countMarker,'++phase35FoldEntries;'+countMarker)+'\nexport const phase35FoldCount=()=>phase35FoldEntries;export const phase40ProducerCount=()=>phase40ProducerEntries;\n',{flag:'wx'});
++ const witness=await import(pathToFileURL(witnessFile));for(const[name,args,expectedProducer]of[['benchDeep',[7,17],1],['benchShared',[7,17],0],['benchWeight',[7,17],1],['benchRecord',[7,17],1]]){const before=witness.phase35FoldCount(),producerBefore=witness.phase40ProducerCount();witness.default[name](...args);const entries=witness.phase35FoldCount()-before;assert.equal(entries,1,name+' enters fold');const producerEntries=witness.phase40ProducerCount()-producerBefore;assert.equal(producerEntries,expectedProducer,name+' enters structural producer');report.admission.push({name,entries,producerEntries,expectedProducer});}
+  report.witness={...identity(witnessFile),parent:identity(files[1]),timed:false};
+  for(const count of [0,1])boundary('public-prefix:'+count,m=>{const args=[7,17],p=m.call(m.G.benchDeep,args.slice(0,count));return{arity:p.arity,bound:p.bound.length,name:p.code.name,length:p.code.length,own:Reflect.ownKeys(p.code).map(String),constructible:Object.hasOwn(p.code,'prototype'),value:m.call(p,args.slice(count))};});
+  for(const helper of ['benchDeep','fold.make','fold.value'])for(const mode of ['wrapper','getter','binding'])boundary(helper+':'+mode,(m,e)=>{change(m,e,helper,mode);return m.default.benchDeep(3,17);});

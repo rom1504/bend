@@ -17,51 +17,44 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 Ordinary compilation runs the Bend implementation without a TypeScript fallback;
 the target remains pinned to **0187512, after Bend 2.0.34**.
 
-**[Phase39 checked05 is installed](implementation/phase39/release-05.md).**
-Release integrity and all **42 ordinary/relocated CLI checks** pass. The compiler
-is a checked B1 derivative, not a new self-emitted fixed point.
+**[Phase40 checked06 is installed](implementation/phase40/release-06.md).**
+Release verification and all **42 ordinary/relocated CLI checks** pass. The
+[final integration](implementation/phase40/integration.md) closes **15 audit
+groups and 227 canonical/frozen source pairs**. This is a checked B1 derivative,
+not a new self-emitted fixed point.
 
-The [Phase39 report](implementation/phase39/README.md) applies the
-[compiler research](design/phase38/README.md) through four guarded changes:
-private Number countdowns, shared outer proof scopes, direct structural tree
-workers and direct unary producers. Tagged values, sharing, evaluation order,
-host mutation and public fallback remain covered by actual-output controls.
-A slower callback-specialization prototype was rejected.
+The [Phase40 report](implementation/phase40/README.md) adds guarded list workers
+and broader structural traversal while retaining tagged values, sharing,
+evaluation order, host mutation and public fallback. Lexer experiments remain
+manual prototypes.
 
-Fresh paired execution covers **45 points across 23 sources**. All **669 primary
-samples** pass. Relative to Phase37, selected expression points become
-**4.46–8.05× faster**, active rays **2.62–2.87×**, trees **1.76–2.25×**, symbolic
-regression **1.75–1.83×**, and numeric recurrence **1.07–1.22×**. These are
-protocol-specific ratios with retained drift, not average-program or parity
-claims. Map and BST workloads still have very large TypeScript gaps.
+[Selected execution evidence](implementation/phase40/execution/report.md) covers
+**45 points across 23 sources**: **42 complete Phase40 checked05 measurements
+reused by exact module identity, plus three fresh checked06 ray measurements**.
+Relative to starting Phase39, selected list points improve **9.97–13.11×** and
+tree points **1.83–2.18×**. Remaining TypeScript execution gaps are
+**4.51–6.52× for lists** and **17.15–21.54× for trees**. Per-point protocols,
+ranges and drift remain explicit; these are not average-program or parity claims.
+See [profiles](implementation/phase40/profile-findings.md) and the
+[admission decision](implementation/phase40/performance-admission.md).
 
-The [complete comparison](implementation/phase39/execution/report.md) and
-[admission decision](implementation/phase39/performance-admission.md) retain costs:
-a generic-row point is about **1.0% slower**, and **1.7% slower** in a separate
-confirmation. **23 points have byte-identical old/new JavaScript**; their timing
-shifts are negative controls, not optimization results. Separate
-[profiles](implementation/phase39/profile-findings.md) record allocation and
-remaining dispatch/guard costs.
-
-Normal [compiler-request cost](implementation/phase39/compiler-cost.md) is
-**3.5% higher for tree**; two other sources have overlapping ranges. These three
-requests remain **5.05–5.98× TypeScript**. Source grows **364 Bend lines (+1.98%)**
-to **18,722 lines / 70 modules**, with unchanged types, laws and runtime. This
-phase improves selected generated programs, without claiming simplification.
+Normal [compiler-request cost](implementation/phase40/compiler-cost.md) rises
+**24.45% for tree** and **19.09% for list**; checked requests remain
+**4.66–8.37× TypeScript** on the four measured sources. Source grows **141 physical
+Bend lines** to **18,863 lines / 70 modules**, with unchanged types, laws and
+runtime. Runtime gains carry a compiler-cost and source-size tradeoff.
 
 Frontend agreement remains **3,026 main + 196 broader exact observations**.
 Backend outcomes remain **69 pass / 8 not applicable / 4 shared failures**.
-Inherited and new semantic owners close separately; see
-[integration](implementation/phase39/integration.md) and
-[conformance](selfhost/CONFORMANCE.md) for limits. These overlapping counts do
-not establish full backend/GPU conformance or independent proof validity.
+[Integration](implementation/phase40/integration.md) and
+[conformance](selfhost/CONFORMANCE.md) retain their overlapping scopes and limits.
 
-Use the [portable Phase39 benchmark guide](selfhost/tools/performance/phase39/README.md)
-for **20 / 60 / 300 / 600-second ceilings**, selected cases, CPU/allocation
-profiles and generated-JavaScript comparisons. The full primary suite took
-17.94 minutes in bounded groups; it is an integration check, not the edit loop.
-The portable five-point fast check took **17.44 seconds**. Heavy jobs run serially
-with explicit memory limits.
+Use the [portable Phase40 benchmark guide](selfhost/tools/performance/phase40/README.md)
+for **20 / 60 / 300 / 600-second presets**, selected cases, CPU/allocation
+profiles and generated-JavaScript comparisons. Its current bundle preserves all
+**45 points** in **1,336,751 bytes**. Its five-point portable smoke passes all
+**45 samples**, with **20.36 seconds** reported wall using the 20-second preset.
+Heavy jobs run serially with explicit memory limits.
 
 From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
 `npm run build` rebuilds with pinned upstream. The
@@ -69,7 +62,7 @@ From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
 [performance guide](docs/BEND-IN-BEND-PERFORMANCE.md),
 [experiment ledger](experiments/ledger.md) and
 [current strategy](experiments/STEERING.md) explain the workflow.
-[Phase37](implementation/phase37/README.md) and earlier results retain their
+[Phase39](implementation/phase39/README.md) and earlier results retain their
 original baselines and scopes.
 
 ## Bend runs FAST

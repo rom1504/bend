@@ -1,0 +1,351 @@
+{
+  "kind": "phase41-tree-wrapper-interim-results-v1",
+  "complete": true,
+  "final": false,
+  "decision": "Checked-source wrapper screen passes semantic controls and shows faster generated-module execution in this narrow supplemental cohort. Final admission, integration and broader validation are pending.",
+  "scope": "Checked Phase41 source emission for the tree wrapper experiment. Original role is fresh Phase40 checked06 output; wrapper role is emitted from Phase41 checked01. Supplemental three-point screen; not a compiler release or broad catalog result.",
+  "baseline": {
+    "phase40ApiSha256": "630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a",
+    "originalTreeModuleSha256": "3a5d3c78ebb74aba0cc5a6729547b1ea2892874f07a5c3ccb474c7cb04a2cfd9"
+  },
+  "candidate": {
+    "checkedAttempt": {
+      "path": "selfhost/build/phase41/checked01/attempt.json",
+      "bytes": 208872,
+      "sha256": "df79fadeab5eff7e405aea636488108a894da3d39bb2dc8207b3def8eae9feba"
+    },
+    "checkedApiSha256": "9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b",
+    "compilerSourceSha256": "ac20ac993e7f1ef6c4726bd8e27e29386ca3a9d7d0b83cb89986cd82f0598e46",
+    "preparedManifest": {
+      "path": "selfhost/build/phase41/tree-preparation01/manifest.json",
+      "bytes": 3668,
+      "sha256": "fcf350b8adc46a2a257faab0607b2779c21d0eb510471f4ea5d49f59463c7e6b"
+    },
+    "derivedWrapperModuleSha256": "64bfc698048c2ebf92c123111a5ce3fd8ccdb47b2fd8a7488243adbd1c2f6e9d"
+  },
+  "screen": {
+    "complete": true,
+    "passed": true,
+    "rounds": 3,
+    "wallSeconds": 22.833264058019267,
+    "report": {
+      "path": "selfhost/build/phase41/tree-actual-screen01/report.json",
+      "bytes": 199170,
+      "sha256": "f15a5174263e9b4e4940a3a192698ef5efd5298ad77af09eb1660542c79a149f"
+    },
+    "markdown": {
+      "path": "selfhost/build/phase41/tree-actual-screen01/report.md",
+      "bytes": 895,
+      "sha256": "bc62ad441e5a6810966ed88cc6a0e3898703913749828d823ec772c719f32760"
+    },
+    "cases": [
+      {
+        "id": "tree-bitonic",
+        "mediansMs": {
+          "phase40Checked06": 4.857880451612903,
+          "phase41CheckedSourceWrapper": 3.371790739130436,
+          "pinnedTypeScript": 0.2932334118773947
+        },
+        "ratios": {
+          "phase40Checked06OverPhase41Wrapper": 1.4407419758397346,
+          "phase41WrapperOverTypeScript": 11.498658074272354
+        },
+        "samplesMs": {
+          "original": [
+            5.080081218749999,
+            4.817649218749999,
+            4.857880451612903
+          ],
+          "wrapper": [
+            3.717565904761903,
+            3.371790739130436,
+            3.3270818181818167
+          ],
+          "typescript": [
+            0.2932334118773947,
+            0.29382874904942974,
+            0.29029519848771285
+          ]
+        }
+      },
+      {
+        "id": "variation-tree-bitonic-6-17",
+        "mediansMs": {
+          "phase40Checked06": 0.8153652637362637,
+          "phase41CheckedSourceWrapper": 0.5839092397003746,
+          "pinnedTypeScript": 0.03786105352731266
+        },
+        "ratios": {
+          "phase40Checked06OverPhase41Wrapper": 1.3963904118980166,
+          "phase41WrapperOverTypeScript": 15.422424504884608
+        },
+        "samplesMs": {
+          "original": [
+            0.8241335303867405,
+            0.8153652637362637,
+            0.8143060329670332
+          ],
+          "wrapper": [
+            0.5766033726937269,
+            0.5867409407407409,
+            0.5839092397003746
+          ],
+          "typescript": [
+            0.03769715660998355,
+            0.03786105352731266,
+            0.03789813636363637
+          ]
+        }
+      },
+      {
+        "id": "variation-tree-bitonic-9-123",
+        "mediansMs": {
+          "phase40Checked06": 12.45082236363637,
+          "phase41CheckedSourceWrapper": 8.590518466666671,
+          "pinnedTypeScript": 0.7662099625668447
+        },
+        "ratios": {
+          "phase40Checked06OverPhase41Wrapper": 1.4493679760946478,
+          "phase41WrapperOverTypeScript": 11.211702909588869
+        },
+        "samplesMs": {
+          "original": [
+            12.071572090909088,
+            12.45082236363637,
+            14.506714363636371
+          ],
+          "wrapper": [
+            8.622459812500004,
+            8.590518466666671,
+            7.604896941176475
+          ],
+          "typescript": [
+            0.7662099625668447,
+            0.7414881701030928,
+            0.776784143617021
+          ]
+        }
+      }
+    ]
+  },
+  "semanticControls": {
+    "complete": true,
+    "checked": true,
+    "oracles": 124,
+    "boundaries": 17,
+    "deep": {
+      "nodes": 60002,
+      "leaves": 60003,
+      "sum": "420021"
+    },
+    "report": {
+      "path": "selfhost/build/phase41/tree-actual-controls01/report.json",
+      "bytes": 1716,
+      "sha256": "6ec063d345033e2401ddc42739c335c488ecc5ef89887fb24d6b593b1126a3a0"
+    }
+  },
+  "editToScreen": {
+    "startedUtc": "2026-10-03T17:00:41.228Z",
+    "finishedUtc": "2026-10-03T17:04:03.880Z",
+    "seconds": 202.65190529823303,
+    "minutes": 3.3775317549705504,
+    "basis": "Ledger interval from checked01 job start to tree-actual-screen01 job finish; elapsed span, not active work estimate.",
+    "stageReceipts": [
+      {
+        "label": "checked01",
+        "sequence": 13,
+        "startedEpoch": 1791046841.2287204,
+        "finishedEpoch": 1791046885.8903885,
+        "startedUtc": "2026-10-03T17:00:41.228Z",
+        "finishedUtc": "2026-10-03T17:01:25.890Z",
+        "toolElapsedSeconds": 44.66127517001587,
+        "complete": true,
+        "returncode": 0,
+        "receipt": {
+          "bytes": 1474,
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/checked01/run.json",
+          "sha256": "9d19fa107939e98671a81d8aed08818676cd10501c810528c0788e4a26170084"
+        }
+      },
+      {
+        "label": "tree-prepare01",
+        "sequence": 14,
+        "startedEpoch": 1791046911.4917572,
+        "finishedEpoch": 1791046919.1446958,
+        "startedUtc": "2026-10-03T17:01:51.491Z",
+        "finishedUtc": "2026-10-03T17:01:59.144Z",
+        "toolElapsedSeconds": 7.652559853013372,
+        "complete": true,
+        "returncode": 0,
+        "receipt": {
+          "bytes": 1524,
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/tree-prepare01/run.json",
+          "sha256": "dfe025311775ac1641617ec821a1c7996f19573422e45eb88184f974ed3f6e36"
+        }
+      },
+      {
+        "label": "tree-actual-derive01",
+        "sequence": 15,
+        "startedEpoch": 1791046947.4180868,
+        "finishedEpoch": 1791046950.013155,
+        "startedUtc": "2026-10-03T17:02:27.418Z",
+        "finishedUtc": "2026-10-03T17:02:30.013Z",
+        "toolElapsedSeconds": 2.594695118983509,
+        "complete": true,
+        "returncode": 0,
+        "receipt": {
+          "bytes": 1720,
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/tree-actual-derive01/run.json",
+          "sha256": "5d0915e0f18f59753a8bf7209581babfde0d0458c4cf0eacb2aca24be9953f0e"
+        }
+      },
+      {
+        "label": "tree-actual-controls01",
+        "sequence": 16,
+        "startedEpoch": 1791047003.9376457,
+        "finishedEpoch": 1791047004.6244378,
+        "startedUtc": "2026-10-03T17:03:23.937Z",
+        "finishedUtc": "2026-10-03T17:03:24.624Z",
+        "toolElapsedSeconds": 0.6863979159970768,
+        "complete": true,
+        "returncode": 0,
+        "receipt": {
+          "bytes": 1553,
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/tree-actual-controls01/run.json",
+          "sha256": "d6259c00e4804892b4288178af36882155590a40d64216b4bcb6d2770cc58ccc"
+        }
+      },
+      {
+        "label": "tree-actual-screen01",
+        "sequence": 19,
+        "startedEpoch": 1791047020.9783976,
+        "finishedEpoch": 1791047043.8806257,
+        "startedUtc": "2026-10-03T17:03:40.978Z",
+        "finishedUtc": "2026-10-03T17:04:03.880Z",
+        "toolElapsedSeconds": 22.90180921400315,
+        "complete": true,
+        "returncode": 0,
+        "receipt": {
+          "bytes": 1299,
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/tree-actual-screen01/run.json",
+          "sha256": "ec511b0cfaa9628831b1bcaea962ff75eacd17b8d5cfe0b202fa9d8383799570"
+        }
+      }
+    ],
+    "interveningGaps": [
+      {
+        "after": "checked01",
+        "before": "tree-prepare01",
+        "seconds": 25.60136866569519,
+        "classification": "unclassified wall gap; no agent-cost attribution"
+      },
+      {
+        "after": "tree-prepare01",
+        "before": "tree-actual-derive01",
+        "seconds": 28.273391008377075,
+        "classification": "unclassified wall gap; no agent-cost attribution"
+      },
+      {
+        "after": "tree-actual-derive01",
+        "before": "tree-actual-controls01",
+        "seconds": 53.92449069023132,
+        "classification": "unclassified wall gap; no agent-cost attribution"
+      },
+      {
+        "after": "tree-actual-controls01",
+        "before": "tree-actual-screen01",
+        "seconds": 16.353959798812866,
+        "classification": "unclassified wall gap; no agent-cost attribution"
+      }
+    ],
+    "overlappingLedgerJobs": [
+      {
+        "label": "integration01-derive-frontend",
+        "sequence": 17,
+        "startedUtc": "2026-10-03T17:03:42.181Z",
+        "finishedUtc": "2026-10-03T17:03:42.236Z",
+        "toolElapsedSeconds": 0.054390125995269045,
+        "receipt": {
+          "bytes": 1201,
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/integration01-derive-frontend/run.json",
+          "sha256": "d1e9560bf8e8bcb728e46e167e6b85a40866325976fabfdfa7d075b445ddcb07"
+        }
+      },
+      {
+        "label": "integration01-derive-current-integration",
+        "sequence": 18,
+        "startedUtc": "2026-10-03T17:03:42.340Z",
+        "finishedUtc": "2026-10-03T17:03:42.395Z",
+        "toolElapsedSeconds": 0.054356391017790884,
+        "receipt": {
+          "bytes": 1225,
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/integration01-derive-current-integration/run.json",
+          "sha256": "c76e474b0f5806b4eeb54ab2f4fe61a86ee6f18b875d5705f39fa4d1db893e8c"
+        }
+      }
+    ]
+  },
+  "interimRootWindow": {
+    "startedUtc": "2026-10-03T16:39:33.000Z",
+    "finishedUtc": "2026-10-03T17:04:03.880Z",
+    "seconds": 1470.8806257247925,
+    "basis": "Campaign start to actual checked-source screen receipt finish; interim observation bound, not final campaign duration."
+  },
+  "sourceArtifacts": [
+    {
+      "path": "selfhost/build/phase41/checked01/attempt.json",
+      "bytes": 208872,
+      "sha256": "df79fadeab5eff7e405aea636488108a894da3d39bb2dc8207b3def8eae9feba"
+    },
+    {
+      "path": "selfhost/build/phase41/checked01/build.json",
+      "bytes": 3593,
+      "sha256": "af2a0d587123472166c8795db5902c92183937bb43b64aa7fdddc267662c5cc2"
+    },
+    {
+      "path": "selfhost/build/phase41/checked01/equality/api.mjs",
+      "bytes": 1233516,
+      "sha256": "9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b"
+    },
+    {
+      "path": "selfhost/build/phase41/tree-preparation01/manifest.json",
+      "bytes": 3668,
+      "sha256": "fcf350b8adc46a2a257faab0607b2779c21d0eb510471f4ea5d49f59463c7e6b"
+    },
+    {
+      "path": "selfhost/build/phase41/tree-preparation01/preparation.json",
+      "bytes": 3278,
+      "sha256": "0faa4e20b077315b6b33be473313154062c630345795f85b0bcbcf91a02982c4"
+    },
+    {
+      "path": "selfhost/build/phase41/tree-actual-derived01/derive.json",
+      "bytes": 2775,
+      "sha256": "5d0e397775dc75b5696f2b4a84e49ab343d5b9cd1113bb67dfd9bb903f76df20"
+    },
+    {
+      "path": "selfhost/build/phase41/tree-actual-derived01/compare.json",
+      "bytes": 2193,
+      "sha256": "4930615ed4491d73edf1c965f77dc3de3d71616a62b8c186733b431fc816efbd"
+    },
+    {
+      "path": "selfhost/build/phase41/tree-actual-controls01/report.json",
+      "bytes": 1716,
+      "sha256": "6ec063d345033e2401ddc42739c335c488ecc5ef89887fb24d6b593b1126a3a0"
+    },
+    {
+      "path": "selfhost/build/phase41/tree-actual-screen01/report.json",
+      "bytes": 199170,
+      "sha256": "f15a5174263e9b4e4940a3a192698ef5efd5298ad77af09eb1660542c79a149f"
+    },
+    {
+      "path": "selfhost/build/phase41/tree-actual-screen01/report.md",
+      "bytes": 895,
+      "sha256": "bc62ad441e5a6810966ed88cc6a0e3898703913749828d823ec772c719f32760"
+    }
+  ],
+  "admission": {
+    "final": false,
+    "integrationPending": true,
+    "requiredNext": "Complete remaining focused and full integration gates, review results and close the campaign before final admission."
+  }
+}

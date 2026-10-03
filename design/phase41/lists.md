@@ -30,6 +30,11 @@ block ownership, fresh temporary names, no tuple aliases/escapes, and exactly
 one constant-index read per slot, each the RHS of its matching `$sN=` assignment.
 It refuses every other shape. No tagged value escapes are eliminated.
 
+The saved-JS ablation deliberately refuses empty or incomplete tuples.
+The source proposal preserves the exact original array/index path when an
+argument spine has a different length from the worker arity, including empty
+spines in unreachable binary-worker continuation branches.
+
 The isolated source proposal evaluates erased argument positions as `null`
 and advances the normalized dependent telescope exactly as `j_apply_args`.
 The existing `j_expr` remains responsible for live expression/type emission.
@@ -50,3 +55,12 @@ Start with existing checked06 diagnostic complete-stage/refusal suite, compare
 clean benchmark copies at sizes128/512, then source controls only if useful.
 Counter modules are never timed. Keep exact Phase40 baseline bytes and source/API
 identities; clean derived output is a manual prototype, not checked emission.
+
+
+Final outcome (2026-10-03): selected saved-JS controls pass55 oracle/106 boundary/
+one ordinary admission/two transfer witnesses. Three-round screen noise/scalar
+median ratios1.00228×/1.00400× overlap ranges and are dominated by identical-byte
+baseline variation. **Reject source integration** under the stated useful-signal
+falsifier; no source patch is applied and no allocation reduction is observed.
+See [final report](../../implementation/phase41/lists.md) for exact root-run rows,
+preserved v1 parser failure and versioned grouping correction.

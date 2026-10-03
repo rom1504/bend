@@ -1,0 +1,11 @@
+# P41-002 — Acyclic tree wrapper dispatch
+
+- Status: Phase41 checked source patch implemented; focused actual-emission controls and three-point screen pass. Full integration and final admission remain pending.
+- Baseline: Phase40 checked06 tree-bitonic module/API; upstream pin unchanged.
+- Design: [tree wrapper hypothesis](../../design/phase41/tree.md). Current evidence: [tree implementation record](../../implementation/phase41/tree.md).
+
+**Hypothesis.** Avoid generic `warp_node` dispatch at saturated call sites by using the already admitted warp structural worker behind the complete-graph guard, retaining each original generic fallback and tagged intermediate. This tests wrapper overhead only; it does not alter worker bodies, constructors, frames, entry points, or runtime.
+
+**Cheapest disproof.** Require exact complete tree values and shapes, fresh Leaf results, aliases, host getter/mutation/reentry/throw refusal and proof cleanup, dependency guard coverage, and deep-stack behavior. Then compare the clean noise/original/wrapper roles. Stop if any semantic boundary differs or the screen has no useful repeatable effect. Any future source gate must continue rejecting transitive backedges and wrappers outside the exact proved graph.
+
+**Observed checkpoint.** The first controls attempt exposed an incorrect deep-tree oracle and is preserved as failed. Corrected `tree-controls02` passed its saved-output controls. Root then ran checked source patch `checked01`; actual prepared emission, `tree-actual-controls01`, and the three-point `tree-actual-screen01` all completed successfully. The [interim canonical results](../../implementation/phase41/results.md) give raw receipt identities, medians, and the 202.652-second checked-job-to-screen span. The screen shows 1.396–1.449× Phase40/wrapper ratios and 11.212–15.422× wrapper/TypeScript ratios on these points. This is checked-source evidence for a narrow mechanism, while final integration/admission and broader validation remain pending. Do not present it as final admission or a catalog-wide speed claim.

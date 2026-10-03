@@ -1,0 +1,38 @@
+{
+  "kind": "phase41-list-next-tuples-v2-successor",
+  "parents": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase41/lists/next-tuples.mjs",
+      "bytes": 7004,
+      "sha256": "9817982094deb2c2682eafa6c1ae8a9fd89fcd7386f29002a34564859e322787"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase41/lists/controls.mjs",
+      "bytes": 13988,
+      "sha256": "d27ec0e17930ee48f0c33745f098fe1c31042c4cbf1676a619fde4143ef5e161"
+    }
+  ],
+  "successors": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase41/lists/next-tuples-v2.mjs",
+      "bytes": 7147,
+      "sha256": "658bfbb59ff6c1a269890df584606d56be842fea7635fbdbd3d53f3d7dfd5384"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase41/lists/controls-v2.mjs",
+      "bytes": 14000,
+      "sha256": "545cab74d99918a599693151ebde7804a1260a066cec6ed6196bb46e21d9333f"
+    }
+  ],
+  "failure": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/lists-controls01/report.json",
+    "bytes": 8683,
+    "sha256": "c7da5e6193ece9b02aa4f7b03603c71282c7fd49942753e4b380c1fa61c51a33"
+  },
+  "changes": [
+    "Wrap scalarized AST RHS in parentheses; Acorn SequenceExpression excludes source grouping parentheses.",
+    "Require only one matched tuple per lexical block.",
+    "Successor controls import and bind v2 transformer; all semantic assertions retained."
+  ],
+  "checked": false
+}

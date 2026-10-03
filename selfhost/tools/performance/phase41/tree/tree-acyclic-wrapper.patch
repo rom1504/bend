@@ -1,0 +1,67 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -149,12 +149,45 @@
+       (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book) &&
+         Bool.not(j_region_scalar(book, j_fold_root_result(book, dt(d), da(d))))), u =>
+     kc(JPure, j_u32_bounded([dv(d)], 512) && Bool.not(j_l_deep(dv(d), 0)), u =>
+-    kc(JPure, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u =>
++    kc(JPure, j_component_admit(book, d), u =>
+     kc(JPure, j_region_capture_eligible(book, d) &&
+       j_component_prefix(book, Nil{}, dv(d), dt(d), j_component_slots(0, da(d)), d, 0), u =>
+-        j_component_closed(d, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}})),
++        j_component_select(book, d, j_component_closed(d, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}}))),
+       u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}}),
+       u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}})
++
++# Preserve recursive admission. Acyclic ADT-first wrappers need a direct
++# reference to an independently admitted recursive component; scalar-first,
++# Nat-first and List wrappers retain their previous selection.
++@unsafe
++def j_component_admit(+book: List<&2,KDef>, +d: KDef) -> Bool:
++  kc(Bool, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u => True{}, u =>
++    j_component_wrapper_arg(book, wnf(book, kid(wnf(book, dt(d)), 0))))
++
++@unsafe
++def j_component_wrapper_arg(+book: List<&2,KDef>, +arg: KTerm) -> Bool:
++  String.eq(tg(arg), "ADT") && Bool.not(db(lookup(book, nm(arg))))
++
++# Reuse the already computed complete graph, rather than proving it twice.
++@unsafe
++def j_component_select(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> JPure:
++  kc(JPure, j_pure_valid(pure), u =>
++    kc(JPure, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u => pure, u =>
++      kc(JPure, j_component_wrapper_calls(book, d, j_pure_defs(pure)), u => pure,
++        u => JPure{Nil{}, 0, False{}})), u => pure)
++
++@unsafe
++def j_component_wrapper_calls(+book: List<&2,KDef>, +d: KDef, +ds: List<&2,KDef>) -> Bool:
++  match ds:
++    case Nil{}: False{}
++    case Con{callee, rest}:
++      # Only positive-self-reference candidates reach the nested planner, so
++      # planning never follows an acyclic wrapper chain recursively. The full
++      # typed graph independently guarantees saturated, first-order calls.
++      kc(Bool, U32.is_gt(j_component_refs([dv(callee)], dn(callee), 1024, 0), 0) &&
++        U32.is_gt(j_component_refs([dv(d)], dn(callee), 1024, 0), 0), u =>
++        kc(Bool, j_pure_valid(j_component_plan(book, callee)), u => True{}, u =>
++          j_component_wrapper_calls(book, d, rest)), u => j_component_wrapper_calls(book, d, rest))
+ 
+ # Reject mutual backedges into this worker: forcing such a leaf could otherwise
+ # nest native worker calls instead of remaining in the runtime tail trampoline.
+@@ -261,12 +294,14 @@
+ def j_component_declaration(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> String:
+   kc(String, j_pure_valid(pure), u =>
+     "function " ++ j_region_name(dn(d)) ++ "$tree(" ++ j_region_parameters(0, da(d)) ++ "){/* private structural component */" ++
+-    j_region_nested_slots(0, da(d)) ++ "const $frames=[];let $top=0,$value;$visit:for(;;){$step:{" ++
++    j_region_nested_slots(0, da(d)) ++ kc(String, U32.is_eq(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u =>
++      "let $value;$step:{" ++ j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 0) ++ "}return $value;}\n", u =>
++    "const $frames=[];let $top=0,$value;$visit:for(;;){$step:{" ++
+     j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 0) ++ "}" ++
+     "while($top){const $frame=$frames[$top-1];" ++ j_component_restore(0, da(d)) ++
+     "if($frame.phase===2){" ++ j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 3) ++ "--$top;}else if($frame.phase===0){$frame.left=$value;$frame.phase=1;" ++
+     j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 1) ++ "}else{" ++
+-    j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 2) ++ "--$top;}}return $value;}}\n", u => "")
++    j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 2) ++ "--$top;}}return $value;}}\n"), u => "")
+ 
+ @unsafe
+ def j_component_values(+at: U32, +total: U32) -> List<&2,String>:

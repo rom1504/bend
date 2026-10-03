@@ -149,45 +149,12 @@ def j_component_plan(+book: List<&2,KDef>, +d: KDef) -> JPure:
       (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book) &&
         Bool.not(j_region_scalar(book, j_fold_root_result(book, dt(d), da(d))))), u =>
     kc(JPure, j_u32_bounded([dv(d)], 512) && Bool.not(j_l_deep(dv(d), 0)), u =>
-    kc(JPure, j_component_admit(book, d), u =>
+    kc(JPure, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u =>
     kc(JPure, j_region_capture_eligible(book, d) &&
       j_component_prefix(book, Nil{}, dv(d), dt(d), j_component_slots(0, da(d)), d, 0), u =>
-        j_component_select(book, d, j_component_closed(d, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}}))),
+        j_component_closed(d, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}})),
       u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}}),
       u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}})
-
-# Preserve recursive admission. Acyclic ADT-first wrappers need a direct
-# reference to an independently admitted recursive component; scalar-first,
-# Nat-first and List wrappers retain their previous selection.
-@unsafe
-def j_component_admit(+book: List<&2,KDef>, +d: KDef) -> Bool:
-  kc(Bool, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u => True{}, u =>
-    j_component_wrapper_arg(book, wnf(book, kid(wnf(book, dt(d)), 0))))
-
-@unsafe
-def j_component_wrapper_arg(+book: List<&2,KDef>, +arg: KTerm) -> Bool:
-  String.eq(tg(arg), "ADT") && Bool.not(db(lookup(book, nm(arg))))
-
-# Reuse the already computed complete graph, rather than proving it twice.
-@unsafe
-def j_component_select(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> JPure:
-  kc(JPure, j_pure_valid(pure), u =>
-    kc(JPure, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u => pure, u =>
-      kc(JPure, j_component_wrapper_calls(book, d, j_pure_defs(pure)), u => pure,
-        u => JPure{Nil{}, 0, False{}})), u => pure)
-
-@unsafe
-def j_component_wrapper_calls(+book: List<&2,KDef>, +d: KDef, +ds: List<&2,KDef>) -> Bool:
-  match ds:
-    case Nil{}: False{}
-    case Con{callee, rest}:
-      # Only positive-self-reference candidates reach the nested planner, so
-      # planning never follows an acyclic wrapper chain recursively. The full
-      # typed graph independently guarantees saturated, first-order calls.
-      kc(Bool, U32.is_gt(j_component_refs([dv(callee)], dn(callee), 1024, 0), 0) &&
-        U32.is_gt(j_component_refs([dv(d)], dn(callee), 1024, 0), 0), u =>
-        kc(Bool, j_pure_valid(j_component_plan(book, callee)), u => True{}, u =>
-          j_component_wrapper_calls(book, d, rest)), u => j_component_wrapper_calls(book, d, rest))
 
 # Reject mutual backedges into this worker: forcing such a leaf could otherwise
 # nest native worker calls instead of remaining in the runtime tail trampoline.
@@ -294,14 +261,12 @@ def j_component_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, 
 def j_component_declaration(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> String:
   kc(String, j_pure_valid(pure), u =>
     "function " ++ j_region_name(dn(d)) ++ "$tree(" ++ j_region_parameters(0, da(d)) ++ "){/* private structural component */" ++
-    j_region_nested_slots(0, da(d)) ++ kc(String, U32.is_eq(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u =>
-      "let $value;$step:{" ++ j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 0) ++ "}return $value;}\n", u =>
-    "const $frames=[];let $top=0,$value;$visit:for(;;){$step:{" ++
+    j_region_nested_slots(0, da(d)) ++ "const $frames=[];let $top=0,$value;$visit:for(;;){$step:{" ++
     j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 0) ++ "}" ++
     "while($top){const $frame=$frames[$top-1];" ++ j_component_restore(0, da(d)) ++
     "if($frame.phase===2){" ++ j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 3) ++ "--$top;}else if($frame.phase===0){$frame.left=$value;$frame.phase=1;" ++
     j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 1) ++ "}else{" ++
-    j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 2) ++ "--$top;}}return $value;}}\n"), u => "")
+    j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 2) ++ "--$top;}}return $value;}}\n", u => "")
 
 @unsafe
 def j_component_values(+at: U32, +total: U32) -> List<&2,String>:
@@ -359,15 +324,42 @@ def j_component_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +t
 
 @unsafe
 def j_component_enter(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +d: KDef, +phase: U32) -> String:
-  "const $next=[" ++ j_apply_args(book, env, ks(spine), dt(d)) ++ "];" ++
+  j_component_next_args(book, env, ks(spine), dt(d), da(d)) ++
     kc(String, U32.is_eq(phase, 0), u =>
       "let $saved=$top<$frames.length?$frames[$top]:null;if(!$saved)$saved=$frames[$top]={args:null,left:null,phase:0};" ++
       "$saved.args=[" ++ j_component_save(0, da(d)) ++ "];$saved.left=null;$saved.phase=0;++$top;", u => "") ++
-    j_component_assign(0, da(d)) ++ "continue $visit;"
+    j_component_transfer(ks(spine), da(d)) ++ "continue $visit;"
+
+# Retain the old array path for incomplete argument spines emitted in dead
+# continuation branches; only full transfers gain scalar temporaries.
+@unsafe
+def j_component_next_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +args: List<&2,KTerm>, +ty: KTerm, +total: U32) -> String:
+  kc(String, U32.is_eq(terms_len(args), total), u => j_component_next(book, env, args, ty, 0),
+    u => "const $next=[" ++ j_apply_args(book, env, args, ty) ++ "];")
+
+@unsafe
+def j_component_transfer(+args: List<&2,KTerm>, +total: U32) -> String:
+  kc(String, U32.is_eq(terms_len(args), total), u => j_component_assign(0, total), u => j_component_array_assign(0, total))
+
+@unsafe
+def j_component_array_assign(+at: U32, +total: U32) -> String:
+  kc(String, U32.is_eq(at, total), u => "", u => "$s" ++ U32.show(at) ++ "=$next[" ++ U32.show(at) ++ "];" ++ j_component_array_assign(U32.inc(at), total))
+
+# Evaluate all next arguments before updating any state slot. Erased positions
+# retain the same null value and telescope advancement as j_apply_args.
+@unsafe
+def j_component_next(+book: List<&2,KDef>, +env: List<&2,KTerm>, +args: List<&2,KTerm>, +ty: KTerm, +at: U32) -> String:
+  match args:
+    case Nil{}: ""
+    case Con{h, rest}:
+      +head = wnf(book, ty)
+      "const $p41next" ++ U32.show(at) ++ "=(" ++
+        kc(String, String.eq(tg(head), "All") && U32.is_eq(qt(head), 0), u => "null", u => j_expr(book, env, h, kid(head, 0), False{})) ++ ");" ++
+        j_component_next(book, env, rest, j_app_type(head, h), U32.inc(at))
 
 @unsafe
 def j_component_assign(+at: U32, +total: U32) -> String:
-  kc(String, U32.is_eq(at, total), u => "", u => "$s" ++ U32.show(at) ++ "=$next[" ++ U32.show(at) ++ "];" ++ j_component_assign(U32.inc(at), total))
+  kc(String, U32.is_eq(at, total), u => "", u => "$s" ++ U32.show(at) ++ "=$p41next" ++ U32.show(at) ++ ";" ++ j_component_assign(U32.inc(at), total))
 
 # Parallel RHSs see only the original prefix environment. JPure checks this
 # independently; explicit freshness/use tests also justify emitted JS scopes.
@@ -421,8 +413,8 @@ def j_linear_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: 
     "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++ j_nat_loop_names(ks(t), 0) ++
     j_linear_finish(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty, d, phase) ++ "}}", u =>
     kc(String, j_linear_emit_self(t, d), u =>
-      "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(t, Nil{})), dt(d)) ++ "];" ++
-      j_component_assign(0, da(d)) ++ "continue $visit;", u =>
+      j_component_next_args(book, env, ks(j_call_spine(t, Nil{})), dt(d), da(d)) ++
+      j_component_transfer(ks(j_call_spine(t, Nil{})), da(d)) ++ "continue $visit;", u =>
       j_linear_split(book, env, t, ty, d, phase, j_linear_spine(t))))
 
 @unsafe
@@ -434,10 +426,10 @@ def j_linear_split(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: K
       u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "])",
       u => j_linear_combiner_emit(book, nm(spine), j_producer_unary_resume(book, env, ks(spine), tel, child, 0))) ++ ";", u =>
     j_producer_unary_before(book, env, ks(spine), tel, child, 0) ++
-    "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(j_strip(terms_at(ks(spine), child)), Nil{})), dt(d)) ++ "];" ++
+    j_component_next_args(book, env, ks(j_call_spine(j_strip(terms_at(ks(spine), child)), Nil{})), dt(d), da(d)) ++
     "let $saved=$top<$frames.length?$frames[$top]:null;if(!$saved)$saved=$frames[$top]={args:null,left:null,phase:0,before:null};" ++
     "$saved.args=[" ++ j_component_save(0, da(d)) ++ "];$saved.before=[" ++ j_region_vector_names("$u", 0, child) ++
-    "];$saved.phase=2;++$top;" ++ j_component_assign(0, da(d)) ++ "continue $visit;")
+    "];$saved.phase=2;++$top;" ++ j_component_transfer(ks(j_call_spine(j_strip(terms_at(ks(spine), child)), Nil{})), da(d)) ++ "continue $visit;")
 
 @unsafe
 def j_linear_combiner_emit(+book: List<&2,KDef>, +name: String, +args: String) -> String:

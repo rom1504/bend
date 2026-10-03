@@ -1,0 +1,38 @@
+{
+  "kind": "phase41-baseline-freezer-derivation",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "path": "selfhost/tools/performance/phase40/freeze-baseline.py",
+    "bytes": 5095,
+    "sha256": "3461ac69450e1aff1b65e7f45af9a60df2b1ef7502f472538bcdb25992d97f1e"
+  },
+  "output": {
+    "path": "selfhost/tools/performance/phase41/freeze-baseline.py",
+    "bytes": 5096,
+    "sha256": "a30ce01b34ea946653a7a611a89026c3460cb44033b91c24bc5f06eba5da09d8"
+  },
+  "changes": [
+    {
+      "before": "Phase40 starting Phase39 checked05 (retained portable acquisition)",
+      "after": "Phase41 starting Phase40 checked06 (retained portable acquisition)",
+      "count": 1
+    },
+    {
+      "before": "kind='phase40-retained-checked-reference'",
+      "after": "kind='phase41-retained-checked-reference'",
+      "count": 1
+    },
+    {
+      "before": "Repackages exact retained starting checked current and pinned TS outputs. No new compilation or execution. Current candidate role is relabeled baseline; original receipts and reference archive are retained.",
+      "after": "Repackages exact retained Phase40 checked06 current and pinned TS outputs. No new compilation or execution. Current candidate role is relabeled baseline; original receipts and reference archive are retained.",
+      "count": 1
+    },
+    {
+      "before": "HERE.parent/'phase39/freeze-baseline.py'",
+      "after": "HERE.parent/'phase40/freeze-baseline.py'",
+      "count": 1
+    }
+  ],
+  "scope": "Only Phase41 baseline display label, provenance kind/scope wording and parentTool identity path change. All bundle loading, API pinning, source/provenance checks, input stability checks, archive reopen checks and hashes are preserved. No freezer execution or acquisition performed."
+}

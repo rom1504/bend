@@ -1,0 +1,72 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -324,15 +324,42 @@
+ 
+ @unsafe
+ def j_component_enter(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +d: KDef, +phase: U32) -> String:
+-  "const $next=[" ++ j_apply_args(book, env, ks(spine), dt(d)) ++ "];" ++
++  j_component_next_args(book, env, ks(spine), dt(d), da(d)) ++
+     kc(String, U32.is_eq(phase, 0), u =>
+       "let $saved=$top<$frames.length?$frames[$top]:null;if(!$saved)$saved=$frames[$top]={args:null,left:null,phase:0};" ++
+       "$saved.args=[" ++ j_component_save(0, da(d)) ++ "];$saved.left=null;$saved.phase=0;++$top;", u => "") ++
+-    j_component_assign(0, da(d)) ++ "continue $visit;"
++    j_component_transfer(ks(spine), da(d)) ++ "continue $visit;"
++
++# Retain the old array path for incomplete argument spines emitted in dead
++# continuation branches; only full transfers gain scalar temporaries.
++@unsafe
++def j_component_next_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +args: List<&2,KTerm>, +ty: KTerm, +total: U32) -> String:
++  kc(String, U32.is_eq(terms_len(args), total), u => j_component_next(book, env, args, ty, 0),
++    u => "const $next=[" ++ j_apply_args(book, env, args, ty) ++ "];")
++
++@unsafe
++def j_component_transfer(+args: List<&2,KTerm>, +total: U32) -> String:
++  kc(String, U32.is_eq(terms_len(args), total), u => j_component_assign(0, total), u => j_component_array_assign(0, total))
++
++@unsafe
++def j_component_array_assign(+at: U32, +total: U32) -> String:
++  kc(String, U32.is_eq(at, total), u => "", u => "$s" ++ U32.show(at) ++ "=$next[" ++ U32.show(at) ++ "];" ++ j_component_array_assign(U32.inc(at), total))
++
++# Evaluate all next arguments before updating any state slot. Erased positions
++# retain the same null value and telescope advancement as j_apply_args.
++@unsafe
++def j_component_next(+book: List<&2,KDef>, +env: List<&2,KTerm>, +args: List<&2,KTerm>, +ty: KTerm, +at: U32) -> String:
++  match args:
++    case Nil{}: ""
++    case Con{h, rest}:
++      +head = wnf(book, ty)
++      "const $p41next" ++ U32.show(at) ++ "=(" ++
++        kc(String, String.eq(tg(head), "All") && U32.is_eq(qt(head), 0), u => "null", u => j_expr(book, env, h, kid(head, 0), False{})) ++ ");" ++
++        j_component_next(book, env, rest, j_app_type(head, h), U32.inc(at))
+ 
+ @unsafe
+ def j_component_assign(+at: U32, +total: U32) -> String:
+-  kc(String, U32.is_eq(at, total), u => "", u => "$s" ++ U32.show(at) ++ "=$next[" ++ U32.show(at) ++ "];" ++ j_component_assign(U32.inc(at), total))
++  kc(String, U32.is_eq(at, total), u => "", u => "$s" ++ U32.show(at) ++ "=$p41next" ++ U32.show(at) ++ ";" ++ j_component_assign(U32.inc(at), total))
+ 
+ # Parallel RHSs see only the original prefix environment. JPure checks this
+ # independently; explicit freshness/use tests also justify emitted JS scopes.
+@@ -386,8 +413,8 @@
+     "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++ j_nat_loop_names(ks(t), 0) ++
+     j_linear_finish(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty, d, phase) ++ "}}", u =>
+     kc(String, j_linear_emit_self(t, d), u =>
+-      "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(t, Nil{})), dt(d)) ++ "];" ++
+-      j_component_assign(0, da(d)) ++ "continue $visit;", u =>
++      j_component_next_args(book, env, ks(j_call_spine(t, Nil{})), dt(d), da(d)) ++
++      j_component_transfer(ks(j_call_spine(t, Nil{})), da(d)) ++ "continue $visit;", u =>
+       j_linear_split(book, env, t, ty, d, phase, j_linear_spine(t))))
+ 
+ @unsafe
+@@ -399,10 +426,10 @@
+       u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "])",
+       u => j_linear_combiner_emit(book, nm(spine), j_producer_unary_resume(book, env, ks(spine), tel, child, 0))) ++ ";", u =>
+     j_producer_unary_before(book, env, ks(spine), tel, child, 0) ++
+-    "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(j_strip(terms_at(ks(spine), child)), Nil{})), dt(d)) ++ "];" ++
++    j_component_next_args(book, env, ks(j_call_spine(j_strip(terms_at(ks(spine), child)), Nil{})), dt(d), da(d)) ++
+     "let $saved=$top<$frames.length?$frames[$top]:null;if(!$saved)$saved=$frames[$top]={args:null,left:null,phase:0,before:null};" ++
+     "$saved.args=[" ++ j_component_save(0, da(d)) ++ "];$saved.before=[" ++ j_region_vector_names("$u", 0, child) ++
+-    "];$saved.phase=2;++$top;" ++ j_component_assign(0, da(d)) ++ "continue $visit;")
++    "];$saved.phase=2;++$top;" ++ j_component_transfer(ks(j_call_spine(j_strip(terms_at(ks(spine), child)), Nil{})), da(d)) ++ "continue $visit;")
+ 
+ @unsafe
+ def j_linear_combiner_emit(+book: List<&2,KDef>, +name: String, +args: String) -> String:

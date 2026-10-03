@@ -1,0 +1,44 @@
+diff --git a/docs/BEND-IN-BEND.md b/docs/BEND-IN-BEND.md
+--- a/docs/BEND-IN-BEND.md
++++ b/docs/BEND-IN-BEND.md
+@@ -55,6 +55,21 @@ selected image. Counts overlap; [conformance](../selfhost/CONFORMANCE.md) retains
+ shared failures, unavailable platforms and proof-trust limits. Full backend/GPU
+ and independent proof validity remain unestablished; `--verdict` is unsupported.
+ 
++## Phase41 wrapper experiment
++
++Phase41 is evaluating a narrow acyclic wrapper rule around an already admitted
++recursive worker. Its checked01 tree candidate adds 35 Bend source lines: a
++leaf or nonrecursive wrapper runs once and returns the recursive worker's
++result, without allocating continuation frames. The recursive worker retains
++the existing structural frame engine. Admission requires the existing typed
++prefix and complete closed-graph proof, a nonbuiltin ADT first argument, and a
++direct reference to an independently admitted recursive worker; the planner
++does not follow chains of acyclic wrappers.
++
++Existing exact-entry and dependency guards, the generic fallback, tagged
++representation and child/result order remain in force. The experiment adds no
++runtime code and leaves the TypeScript target pinned to
++`018751270e800bc222a93dad7f257083ee53a5f7`. Checked01 tree controls and the
++execution screen pass; independent fixture controls and promotion remain
++pending, so this is not an installed compiler change. See the
++[Phase41 report](../implementation/phase41/README.md) for the evidence and the
++separate lexer and list decisions.
++
+ ## What Phase40 changes
+ 
+ The existing structural frame engine now supports canonical Nat producers with
+ diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -16,6 +16,9 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
+ `selfhost/bootstrap`. Start with the [compiler guide](docs/BEND-IN-BEND.md).
+ Ordinary compilation runs the Bend implementation without a TypeScript fallback;
+ the target remains pinned to **0187512, after Bend 2.0.34**.
+ 
++The [Phase41 campaign report](implementation/phase41/README.md) tracks the
++current wrapper experiment; it is not yet a promoted or installed compiler.
++
+ **[Phase40 checked06 is installed](implementation/phase40/release-06.md).**
+ Release verification and all **42 ordinary/relocated CLI checks** pass. The
+ [final integration](implementation/phase40/integration.md) closes **15 audit

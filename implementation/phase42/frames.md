@@ -80,7 +80,7 @@ controls, native ABI checks and exact direct-constructor AST/admission counters.
 The separate `owned-fixture.bend` / `owned-fixture-derive.mjs` /
 `owned-fixture-controls.mjs` cover unary reconstruction, every-node freshness,
 native List/Nat/Bool helpers, generic getter/throw ordering, and unguarded public
-unary depth30000 deferred fallback. The fixture's independent scalar oracle is
+unary depth 30000 deferred fallback. The fixture's independent scalar oracle is
 46 at main, and modulo-U32 arithmetic-series totals for the ordinary root grid.
 Root owns parsing/checked emission/control execution; this owner has not run them.
 
@@ -119,3 +119,100 @@ component and finite/direct helper Tuple projection and closed List admission,
 retains runtime/native constructors and the U32 list algorithm selector, and
 passes a read-only12-occurrence signature/call arity check. Actual checked
 emission, complete values and negative controls remain root/calls-owned pending.
+
+Host-callback falsifiers are frozen as independent diagnostic evidence.
+`frames/preimport-bigint-counterexample.mjs` executed producer/retained bytes are
+SHA256 b324d9a0ad8c0faaa7b01a743da01bf2a9480207ef1bab55f1b0bb7d015559b1.
+Root's `selfhost/build/phase42/preimport-bigint-counterexample01/report.json`
+records a real checked07/checked11 sequence counterexample: proxy-fold 26 versus 30,
+outer 47 in both, and mutation callback 7 original code events versus 0 candidate.
+Root holds the new bridge/native/sequential matched set. Public proof suspension
+alone cannot repair a private callee selected before a converter callback mutates
+its dependency, and replaying the root would duplicate the callback.
+
+The separately frozen retained-core witness is
+`frames/preimport-safe-core-counterexample-v1.mjs`, SHA256
+40f579ad79a8660cb8f1c3862ea57c0bd7817bacfd43d6ab49d24168374404b2.
+Root's core-boundary-tree-BigInt-01, core-boundary-tree-imul-01, and
+core-boundary-fusion-imul-01 report directories retain all actual values, property
+accesses, descriptor mutation events, primitive call order and worker counts.
+Tree public scan/flow reentry traces match; tree helper mutation events differ.
+Fusion also changes wrapped Math.imul call order and mutable dbl observations.
+These are actual counterexamples under arbitrary pre-import callbacks. They do
+not establish a portable native-provenance oracle from regionHostGuard's captured
+current identities. Root reviewed the existing Phase30/36/40 standard-at-import
+intrinsics contract and retained core/flat/fusion within that same boundary;
+Phase36 guard-scoped-proof.md and private-producers.md explicitly exclude a
+universal equivalence claim for arbitrary pre-import monkey-patching. The new
+negative traces remain failed evidence, not relabeled passing controls.
+
+The next continuation discriminator is frozen but not executed by this owner:
+`frames/hybrid-flat-derive-v1.mjs` and `hybrid-flat-controls-v1.mjs`. It derives
+bounded native prefixes 4/8/16 from the exact checked09 flat binary workers,
+then hands current operands to the original iterative worker. The original
+worker dependency DAG is checked for cycles; helpers, BigInt Nat, constructor
+layout, source algorithm and operation order are retained. Complete generated
+trees/Stat/public scalars are checked against an independent same-algorithm
+oracle, with mixed/asymmetric/shared cases, fresh roots/aliased children, and
+actual scan depth 30000 requiring the iterative fallback. This is a saved-output
+performance discriminator, not a compiler source integration or a Number/algorithm
+change. Root owns all execution and measurement.
+
+Root subsequently completed the source BST/sequential matched-set13 controls.
+Under the already documented standard-at-import host contract, the pre-import
+callback diagnostic does not itself block that bridge/native source route. The
+initial hold remains historical; it is superseded by root's successful supported-
+boundary validation. No universal arbitrary-host equivalence claim is added.
+
+Hybrid derivation01 failed its exact four-worker assertion before any outputs:
+its selector demanded a flat field read and omitted bsort, which creates flat
+values but takes scalar/Nat inputs. Frozen v1 is retained. Version2 selects the
+original framed declarations by containment inside the exact flat-graph block,
+then retains the same exact four-worker and binary-spine checks. No local runs.
+
+Root's corrected hybrid-flat02 derivation and hybrid-flat-controls02 pass:
+168 complete/warp observations, 48 ordinary scalar entries, 20 freshness/alias
+assertions, and four scan depth 30000 cases. Every hybrid deep case recorded
+minimum budget 0, two original iterative fallback entries and no active proof
+on exit. Clean screen hybrid-flat02-screen01 measures literal 16 at 0.368417 ms
+versus original 0.570217 ms at tree8; tree9 is 0.921017 ms versus 1.350445 ms and
+tree6 is 0.076507 ms versus 0.102197 ms. Algorithm, BigInt Nat and flat layout stay
+identical; this isolates bounded continuation handling. The benchmark remains
+slower than pinned TypeScript, and no algorithm/Number speedup is attributed.
+
+The isolated source candidate `hybrid-source-v1.patch` adds 58/removes 2 lines of
+tree.bend. Canonical prepatch SHA256 is
+f8d705f0a38693f39e7f42a0343fe8b3ab12f513e80d0c8f6a916b27ad387791;
+frozen patch SHA256 is
+a1a6dfd6b65fe91356ab8434c51409b2f320f96bb480db5b6ad6691430951ae8.
+Independent review approved original typed binder/order preservation, binary
+refusal, budget-before-demand and existing full-closure backedge/DAG proof.
+Root applied it and owns source14 compilation and actual validation. The actual
+comparison tools are `hybrid-actual-derive-v1.mjs` and
+`hybrid-flat-controls-v2.mjs`: four literal 16 hybrid markers, budget 0 before
+prefix, byte-identical original iterative fallback bodies, ordinary/full values,
+asymmetric/shared cases, aliases and actual deep fallback counts. No source
+integration has been marked complete merely from the saved-output screen.
+
+Root checked14 build passes in 47.27 s. Actual source integration derivation
+`selfhost/build/phase42/hybrid-actual14/derive.json` and controls
+`selfhost/build/phase42/hybrid-actual14-controls` pass in 0.67 s/0.5 s.
+The four emitted iterative fallback bodies are byte-identical to source13;
+all four actual hybrid wrappers use literal 16 and check budget0 before prefix.
+The two-module controls cover 84 complete/warp observations, 24 ordinary scalar
+checks, 10 freshness/alias assertions and two scan depth30000 runs. Candidate
+counters record 6317 hybrid activations, 2 fallback entries, minimum budget0,
+no active proof on exit and deep-fallback delta 2. Root's candidate API is
+ee2239af083829f4b5a8aad0e446c2fb3d683b520b12d64b1162b69691098788,
+with unchanged runtime 6dbda18f176702557041530652690601c32b09261327ad49af7bf0cc8e7fb81c.
+Validation owner received exact groups, identities and assertions for final
+matched-v4 extension. Actual source performance confirmation is root-owned.
+
+Actual checked source confirmation `hybrid-actual14-screen01` passes separately
+from the saved hybrid-flat02 prototype. Median source13/source14/TypeScript ms:
+tree8 0.647930/0.442217/0.316952; tree6 0.105213/0.076815/0.038534;
+tree9 1.350673/0.838008/0.685509. Source14 gains 1.37–1.61x over source13,
+while remaining 1.22x TypeScript at tree9, 1.395x at tree8 and 1.99x at tree6.
+These are bounded hybrid continuation gains with unchanged algorithm, BigInt
+Nat and flat layout. Final full boundary/fixture/matched-set gates remain
+root-owned; this screen alone is not their substitute.

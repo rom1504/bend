@@ -26,7 +26,7 @@ Controls reuse the Phase41 independent nested-array oracle and hostile boundary
 owner, recording their exact hashes. They compare complete flow trees across
 scalar domains, shared/uneven trees, fresh root/child alias identities, mutation
 and getter event traces, exception/proof close order, ordinary bench entry, and
-an iterative depth30000 oracle. Root owns every timing and heavy control run.
+an iterative depth 30000 oracle. Root owns every timing and heavy control run.
 
 This first derivation is fixture-specific, unchecked saved JS. It asserts exactly
 four binary workers and does not admit unary continuation phase3. Source promotion
@@ -107,3 +107,25 @@ explicit owned-mode proposal is superseded by the globally logically closed
 JPure domain under existing scalar-root guard ownership; no new mode/cache
 hierarchy is added. Ordinary grounded-U32 List selectors are not widened. No
 saved-JS BST ablation or execution was performed by this owner.
+
+The bounded hybrid follow-up uses source terms, not generated JavaScript syntax,
+for production admission. Its first subset is an already admitted flat component
+whose every self-recursive leaf is the existing independent two-binding Let.
+Unary reconstruction, sequential child/result transfer and tail-only leaves keep
+the iterative worker. A new emission phase shares the original typed prefix;
+it evaluates the original left argument expressions and child, then the original
+right arguments and child, then the original typed combiner. Constant budget 16
+is private. Budget 0 delegates current positional arguments to the original
+iterative declaration before initializing slots or demanding a prefix field.
+
+Every admitted component's complete reachable JPure graph rejects another
+member referring back to its owner; therefore a cycle containing a budget-reset
+component cannot be admitted. Direct helper graphs independently require acyclic
+closures, and the complete flat frontier audit accounts for every consumer.
+JPure's definition limit 32 bounds source graph depth. With budget K, each framed
+component contributes at most K+1 hybrid activations, one iterative fallback and
+one entry wrapper: a conservative bound is L*(K+3), plus fixed finite-helper and
+runtime entry depth, for source graph depth L <= 32. Data depth does not enter this
+bound. The saved actual tree DAG has L = 4, giving 76 component frames at K = 16; the
+30000-deep actual scan witness reaches budget 0 and continues in its original
+iterative worker. This is a source-level stack bound, not an input depth cutoff.

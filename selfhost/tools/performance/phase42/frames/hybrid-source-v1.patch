@@ -1,0 +1,87 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -298,7 +298,16 @@
+ 
+ @unsafe
+ def j_component_covered_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm) -> String:
+-  "function " ++ j_region_name(dn(d)) ++ "$tree(" ++ j_region_parameters(0, da(d)) ++ "){/* private structural component */" ++
++  kc(String, j_flat_active(book) && U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0) &&
++    j_hybrid_binary_shape(dv(d), dn(d), 8192),
++    u => j_hybrid_declaration(book, d, body),
++    u => j_component_stack_declaration(book, d, body, "$tree"))
++
++# The normal and exhausted-budget declarations use the original iterative body.
++# Only their private names differ; generic/public declarations stay unchanged.
++@unsafe
++def j_component_stack_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm, +suffix: String) -> String:
++  "function " ++ j_region_name(dn(d)) ++ suffix ++ "(" ++ j_region_parameters(0, da(d)) ++ "){/* private structural component */" ++
+     j_region_nested_slots(0, da(d)) ++ kc(String, U32.is_eq(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u =>
+       "let $value;$step:{" ++ j_component_emit(book, Nil{}, body, dt(d), j_component_values(0, da(d)), d, 0) ++ "}return $value;}\n", u =>
+     "const $frames=[];let $top=0,$value;$visit:for(;;){$step:{" ++
+@@ -360,6 +369,7 @@
+ 
+ @unsafe
+ def j_component_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +phase: U32) -> String:
++  kc(String, U32.is_eq(phase, 4), u => j_hybrid_finish(book, env, t, ty, d), u =>
+   kc(String, U32.is_eq(j_component_refs([t], dn(d), 1024, 0), 0), u =>
+     kc(String, U32.is_eq(phase, 0), u => "$value=" ++ j_expr(book, env, t, ty, False{}) ++ ";break $step;",
+       u => "return bad('private component continuation invariant');"), u =>
+@@ -368,7 +378,7 @@
+     kc(String, U32.is_eq(phase, 2), u =>
+       "const " ++ j_local(ix(kid(t, 0))) ++ "=$frame.left;const " ++ j_local(ix(kid(t, 1))) ++ "=$value;" ++
+       "$value=" ++ j_expr(book, j_context(book, env, ks(t)), kid(t, 2), ty, False{}) ++ ";", u =>
+-      j_component_enter(book, env, j_call_spine(kid(kid(t, phase), 0), Nil{}), d, phase)))))
++      j_component_enter(book, env, j_call_spine(kid(kid(t, phase), 0), Nil{}), d, phase))))))
+ 
+ @unsafe
+ def j_component_enter(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +d: KDef, +phase: U32) -> String:
+@@ -847,3 +857,49 @@
+   match graph:
+     case Nil{}: Nil{}
+     case Con{d, rest}: Con{kc(KDef, String.eq(dn(d), root), u => lookup(book, root), u => d), j_flat_source_root(book, rest, root)}
++
++
++# A cycle containing a budget-reset component is already refused by its exact
++# full-closure j_component_closed/backedges proof. Direct helpers independently
++# require an acyclic closure; the flat audit covers every emitted consumer.
++# Hence native depth is bounded by source graph depth, not input tree depth.
++# This initial clone accepts only the existing two-child Let leaves; unary,
++# sequential and tail continuations keep the original iterative emitter.
++@unsafe
++def j_hybrid_binary_shape(+t: KTerm, +owner: String, +fuel: U32) -> Bool:
++  +body = j_strip(t)
++  kc(Bool, U32.is_gt(fuel, 0), u =>
++    kc(Bool, String.eq(tg(body), "Lam"),
++      u => j_hybrid_binary_shape(kid(body, 0), owner, U32.sub(fuel, 1)), u =>
++    kc(Bool, String.eq(tg(body), "Mat"),
++      u => j_hybrid_binary_shape(kid(body, 0), owner, U32.sub(fuel, 1)) &&
++        j_hybrid_binary_shape(kid(body, 1), owner, U32.sub(fuel, 1)), u =>
++    kc(Bool, U32.is_eq(j_component_refs([body], owner, 1024, 0), 0), u => True{}, u =>
++      String.eq(tg(body), "Let") && U32.is_eq(terms_len(ks(body)), 3) &&
++      U32.is_eq(j_component_refs([body], owner, 1024, 0), 2) &&
++      String.eq(nm(j_call_spine(kid(kid(body, 0), 0), Nil{})), owner) &&
++      String.eq(nm(j_call_spine(kid(kid(body, 1), 0), Nil{})), owner)))), u => False{})
++
++# Check the budget before any source prefix or field demand. The fallback gets
++# the captured current parameters once, without a new guard or proof extent.
++@unsafe
++def j_hybrid_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm) -> String:
++  +name = j_region_name(dn(d)) ++ "$tree"
++  +args = j_region_parameters(0, da(d))
++  "function " ++ name ++ "(" ++ args ++ "){return " ++ name ++ "$hybrid(" ++ args ++ ",16);}" ++
++  "function " ++ name ++ "$hybrid(" ++ args ++ ",$budget){if($budget===0)return " ++ name ++ "$stack(" ++ args ++ ");" ++
++    j_region_nested_slots(0, da(d)) ++ "let $value;$step:{" ++
++    j_component_emit(book, Nil{}, body, dt(d), j_component_values(0, da(d)), d, 4) ++ "}return $value;}" ++
++    j_component_stack_declaration(book, d, body, "$tree$stack")
++
++# Reuse original typed child arguments and binders. Phase0 child work finishes
++# before phase1 arguments; the combiner sees exactly those two completed values.
++@unsafe
++def j_hybrid_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef) -> String:
++  kc(String, U32.is_eq(j_component_refs([t], dn(d), 1024, 0), 0),
++    u => "$value=" ++ j_expr(book, env, t, ty, False{}) ++ ";break $step;", u =>
++      "const " ++ j_local(ix(kid(t, 0))) ++ "=" ++ j_region_name(dn(d)) ++ "$tree$hybrid(" ++
++        j_apply_args(book, env, ks(j_call_spine(kid(kid(t, 0), 0), Nil{})), dt(d)) ++ "$budget-1);" ++
++      "const " ++ j_local(ix(kid(t, 1))) ++ "=" ++ j_region_name(dn(d)) ++ "$tree$hybrid(" ++
++        j_apply_args(book, env, ks(j_call_spine(kid(kid(t, 1), 0), Nil{})), dt(d)) ++ "$budget-1);" ++
++      "$value=" ++ j_expr(book, j_context(book, env, ks(t)), kid(t, 2), ty, False{}) ++ ";break $step;")

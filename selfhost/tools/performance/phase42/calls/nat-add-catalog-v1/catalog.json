@@ -1,0 +1,56 @@
+{
+  "kind": "bend-program-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Independent native Nat.add exact scalar boundary fixture",
+  "status": "frozen",
+  "sets": {
+    "fast": [
+      "phase42-native-nat-add-fixture"
+    ],
+    "core": [
+      "phase42-native-nat-add-fixture"
+    ],
+    "broad": [
+      "phase42-native-nat-add-fixture"
+    ],
+    "full": [
+      "phase42-native-nat-add-fixture"
+    ]
+  },
+  "cases": [
+    {
+      "id": "phase42-native-nat-add-fixture",
+      "family": "closed-native-Nat",
+      "category": "semantic-fixture",
+      "partition": "development",
+      "description": "Bounded scalar Nat.add root consumes existing structural component",
+      "scope": "Semantic fixture acquisition only",
+      "source": {
+        "path": "nat-add.bend",
+        "bytes": 2441,
+        "sha256": "f23edab94cafb5999ed7745728b4bc16e17d69ae11e77b3427f20e614a7a8999",
+        "provenance": {
+          "kind": "exact-semantic-fixture-copy",
+          "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/calls/fixture-nat-add-v1.bend",
+          "sha256": "f23edab94cafb5999ed7745728b4bc16e17d69ae11e77b3427f20e614a7a8999"
+        }
+      },
+      "point": {
+        "exportName": "sequence.nat.point",
+        "args": [
+          0,
+          1
+        ],
+        "expected": 18
+      },
+      "oracle": "Independent BigInt modulo arithmetic, producer bounded at3nodes",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ]
+    }
+  ]
+}

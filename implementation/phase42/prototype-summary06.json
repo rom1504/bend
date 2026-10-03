@@ -1,0 +1,212 @@
+{
+  "kind": "phase42-checkpoint05-evidence",
+  "at": "2026-10-03T21:06:47.868194+00:00",
+  "installedRelease": "Phase41 checked01; candidate14 not broadly admitted",
+  "observations": [
+    {
+      "path": "selfhost/build/phase42/hybrid-actual14-screen01/report.json",
+      "sha256": "8eb81721e6767f41fccd3a99b9574295dc8ce7dab1a0780773a294e613b645de",
+      "complete": true,
+      "cases": [
+        {
+          "id": "tree-bitonic",
+          "summary": {
+            "original": {
+              "median": 0.647930366795367,
+              "minimum": 0.625979380952381,
+              "maximum": 0.6548551138211379,
+              "samples": [
+                0.625979380952381,
+                0.6548551138211379,
+                0.647930366795367
+              ]
+            },
+            "candidate16": {
+              "median": 0.44221666842105256,
+              "minimum": 0.44175111640211656,
+              "maximum": 0.44796872994652404,
+              "samples": [
+                0.44175111640211656,
+                0.44221666842105256,
+                0.44796872994652404
+              ]
+            },
+            "typescript": {
+              "median": 0.3169524354166666,
+              "minimum": 0.31064812320328555,
+              "maximum": 0.3178905073068893,
+              "samples": [
+                0.3169524354166666,
+                0.31064812320328555,
+                0.3178905073068893
+              ]
+            }
+          }
+        },
+        {
+          "id": "variation-tree-bitonic-6-17",
+          "summary": {
+            "original": {
+              "median": 0.10521342974079126,
+              "minimum": 0.10364882261340552,
+              "maximum": 0.10534223433242511,
+              "samples": [
+                0.10521342974079126,
+                0.10364882261340552,
+                0.10534223433242511
+              ]
+            },
+            "candidate16": {
+              "median": 0.07681515010570822,
+              "minimum": 0.07455308927655205,
+              "maximum": 0.07709373773987205,
+              "samples": [
+                0.07455308927655205,
+                0.07709373773987205,
+                0.07681515010570822
+              ]
+            },
+            "typescript": {
+              "median": 0.038534003101212265,
+              "minimum": 0.03783145279912183,
+              "maximum": 0.038535658124471996,
+              "samples": [
+                0.03783145279912183,
+                0.038534003101212265,
+                0.038535658124471996
+              ]
+            }
+          }
+        },
+        {
+          "id": "variation-tree-bitonic-9-123",
+          "summary": {
+            "original": {
+              "median": 1.3506734333333337,
+              "minimum": 1.344964058823529,
+              "maximum": 1.4412589250000005,
+              "samples": [
+                1.3506734333333337,
+                1.344964058823529,
+                1.4412589250000005
+              ]
+            },
+            "candidate16": {
+              "median": 0.8380082049689439,
+              "minimum": 0.8320556047904194,
+              "maximum": 0.8461934371257485,
+              "samples": [
+                0.8320556047904194,
+                0.8461934371257485,
+                0.8380082049689439
+              ]
+            },
+            "typescript": {
+              "median": 0.6855089,
+              "minimum": 0.6848682718894007,
+              "maximum": 0.6870207853881282,
+              "samples": [
+                0.6870207853881282,
+                0.6855089,
+                0.6848682718894007
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "selfhost/build/phase42/hybrid-actual14-controls",
+      "sha256": "012d8e2cab92a8ffefa7572cccc5cc7174e09ebf13315cf5c5b03ff48b4a2fa7",
+      "complete": true,
+      "aliases": 10,
+      "deep": 2,
+      "depth": 30000
+    },
+    {
+      "path": "selfhost/build/phase42/layout-actual14/report.json",
+      "sha256": "4293d02c7017449e15a6d7e6a0abd82b26e94b2da99adf9cc788979e544cf466",
+      "complete": true,
+      "boundaries": 68
+    },
+    {
+      "path": "selfhost/build/phase42/native-nat-controls13-v2/report.json",
+      "sha256": "dbb258ecbbd839fc21b080143c4e1b1f28e784dd00cbee236aca4d55cc0ea677",
+      "complete": true,
+      "pass": true,
+      "oracles": 10,
+      "boundaries": 9
+    },
+    {
+      "path": "selfhost/build/phase42/compiler-cost-screen13-run/report.json",
+      "sha256": "fbfad98823c530e9e530966bb60f698c222a22d1b22da57c22e3106bbfe2cce6",
+      "complete": true,
+      "requestMs": {
+        "tree-bitonic": {
+          "typescript": {
+            "median": 363.3368919999998,
+            "min": 320.7781249999998,
+            "max": 372.3809659999997,
+            "samples": [
+              320.7781249999998,
+              372.3809659999997,
+              363.3368919999998
+            ]
+          },
+          "baseline": {
+            "median": 2492.636171,
+            "min": 2406.631207,
+            "max": 2529.5623039999996,
+            "samples": [
+              2406.631207,
+              2529.5623039999996,
+              2492.636171
+            ]
+          },
+          "candidate": {
+            "median": 2242.555619,
+            "min": 2204.1428170000004,
+            "max": 2405.576809,
+            "samples": [
+              2204.1428170000004,
+              2242.555619,
+              2405.576809
+            ]
+          }
+        },
+        "coverage-list-pipeline-512": {
+          "typescript": {
+            "median": 429.5447519999998,
+            "min": 427.3468230000003,
+            "max": 430.5603110000002,
+            "samples": [
+              427.3468230000003,
+              430.5603110000002,
+              429.5447519999998
+            ]
+          },
+          "baseline": {
+            "median": 2000.798694,
+            "min": 1982.973985,
+            "max": 2073.0690280000003,
+            "samples": [
+              2000.798694,
+              1982.973985,
+              2073.0690280000003
+            ]
+          },
+          "candidate": {
+            "median": 2241.446633,
+            "min": 2234.7373249999996,
+            "max": 2248.861904,
+            "samples": [
+              2234.7373249999996,
+              2241.446633,
+              2248.861904
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

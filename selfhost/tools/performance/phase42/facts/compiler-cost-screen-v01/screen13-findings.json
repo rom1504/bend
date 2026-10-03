@@ -1,0 +1,223 @@
+{
+  "kind": "phase42-early-two-case-compiler-cost-findings",
+  "complete": true,
+  "pass": true,
+  "timedRows": 18,
+  "report": "selfhost/build/phase42/compiler-cost-screen13-run/report.json",
+  "reportSha256": "fbfad98823c530e9e530966bb60f698c222a22d1b22da57c22e3106bbfe2cce6",
+  "runnerWallSeconds": 131.6594916630129,
+  "rootReportedAcquisitionAndRunnerWallSeconds": 164.57,
+  "rows": [
+    {
+      "case": "tree-bitonic",
+      "requestMs": {
+        "typescript": {
+          "median": 363.3368919999998,
+          "min": 320.7781249999998,
+          "max": 372.3809659999997,
+          "samples": [
+            320.7781249999998,
+            372.3809659999997,
+            363.3368919999998
+          ]
+        },
+        "baseline": {
+          "median": 2492.636171,
+          "min": 2406.631207,
+          "max": 2529.5623039999996,
+          "samples": [
+            2406.631207,
+            2529.5623039999996,
+            2492.636171
+          ]
+        },
+        "candidate": {
+          "median": 2242.555619,
+          "min": 2204.1428170000004,
+          "max": 2405.576809,
+          "samples": [
+            2204.1428170000004,
+            2242.555619,
+            2405.576809
+          ]
+        }
+      },
+      "requestCandidateVsBaselinePercent": -10.032773932654282,
+      "processWallMs": {
+        "typescript": {
+          "median": 5170.059046999086,
+          "min": 4752.775931003271,
+          "max": 5289.321681018919,
+          "samples": [
+            4752.775931003271,
+            5170.059046999086,
+            5289.321681018919
+          ]
+        },
+        "baseline": {
+          "median": 6961.06889800285,
+          "min": 6855.1690070016775,
+          "max": 7118.017009983305,
+          "samples": [
+            6855.1690070016775,
+            7118.017009983305,
+            6961.06889800285
+          ]
+        },
+        "candidate": {
+          "median": 6792.64115501428,
+          "min": 6774.24259998952,
+          "max": 7217.10079498007,
+          "samples": [
+            6792.64115501428,
+            6774.24259998952,
+            7217.10079498007
+          ]
+        }
+      },
+      "peakTreeRssBytes": {
+        "typescript": {
+          "median": 522010624,
+          "min": 521887744,
+          "max": 522141696,
+          "samples": [
+            522141696,
+            521887744,
+            522010624
+          ]
+        },
+        "baseline": {
+          "median": 539156480,
+          "min": 538656768,
+          "max": 539406336,
+          "samples": [
+            538656768,
+            539406336,
+            539156480
+          ]
+        },
+        "candidate": {
+          "median": 543633408,
+          "min": 541569024,
+          "max": 545402880,
+          "samples": [
+            545402880,
+            543633408,
+            541569024
+          ]
+        }
+      },
+      "outputBytes": {
+        "typescript": 10593,
+        "baseline": 109624,
+        "candidate": 127215
+      }
+    },
+    {
+      "case": "coverage-list-pipeline-512",
+      "requestMs": {
+        "typescript": {
+          "median": 429.5447519999998,
+          "min": 427.3468230000003,
+          "max": 430.5603110000002,
+          "samples": [
+            427.3468230000003,
+            430.5603110000002,
+            429.5447519999998
+          ]
+        },
+        "baseline": {
+          "median": 2000.798694,
+          "min": 1982.973985,
+          "max": 2073.0690280000003,
+          "samples": [
+            2000.798694,
+            1982.973985,
+            2073.0690280000003
+          ]
+        },
+        "candidate": {
+          "median": 2241.446633,
+          "min": 2234.7373249999996,
+          "max": 2248.861904,
+          "samples": [
+            2234.7373249999996,
+            2241.446633,
+            2248.861904
+          ]
+        }
+      },
+      "requestCandidateVsBaselinePercent": 12.027593766512123,
+      "processWallMs": {
+        "typescript": {
+          "median": 4956.783372996142,
+          "min": 4937.1768810087815,
+          "max": 4958.808249008143,
+          "samples": [
+            4956.783372996142,
+            4958.808249008143,
+            4937.1768810087815
+          ]
+        },
+        "baseline": {
+          "median": 6448.95878402167,
+          "min": 6406.690538016846,
+          "max": 6670.33407400595,
+          "samples": [
+            6406.690538016846,
+            6448.95878402167,
+            6670.33407400595
+          ]
+        },
+        "candidate": {
+          "median": 6753.47990100272,
+          "min": 6719.11781601375,
+          "max": 6774.353037995752,
+          "samples": [
+            6753.47990100272,
+            6774.353037995752,
+            6719.11781601375
+          ]
+        }
+      },
+      "peakTreeRssBytes": {
+        "typescript": {
+          "median": 534237184,
+          "min": 533860352,
+          "max": 534597632,
+          "samples": [
+            534597632,
+            534237184,
+            533860352
+          ]
+        },
+        "baseline": {
+          "median": 543854592,
+          "min": 541974528,
+          "max": 544604160,
+          "samples": [
+            543854592,
+            541974528,
+            544604160
+          ]
+        },
+        "candidate": {
+          "median": 545865728,
+          "min": 545447936,
+          "max": 548032512,
+          "samples": [
+            545865728,
+            548032512,
+            545447936
+          ]
+        }
+      },
+      "outputBytes": {
+        "typescript": 40351,
+        "baseline": 142134,
+        "candidate": 140319
+      }
+    }
+  ],
+  "scope": "checked41 baseline versus all checked13 changes, own runtime/API/cache/driver and independently acquired exact outputs; pinned TS;18 rotated fresh jobs. Not isolated cache/fusion attribution. No inferential significance claim from3samples. Finalfourcase selectedAPI gate required."
+}

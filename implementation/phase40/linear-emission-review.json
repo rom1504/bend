@@ -1,0 +1,37 @@
+{
+  "kind": "phase40-linear-emission-independent-review",
+  "complete": true,
+  "scope": "Static source/provenance inspection only; no compiler or target execution by reviewer.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/tree.bend",
+      "bytes": 25724,
+      "sha256": "4a02068d2e9070c2daa39ea0ac1233b675eaf63618426cf35c6c1ffe632b4697"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/list-actual-controls01/report.json",
+      "bytes": 7539,
+      "sha256": "b5c28d32fa5fc8d4d834b3240c7c085943fe3b957a9afb538e67004c566b4c51"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/tree-nat-controls04/report.json",
+      "bytes": 2229703,
+      "sha256": "0f853b9f87f9f455f996e863be65ed315c212db1840dc71f323fb73796a25a9c"
+    }
+  ],
+  "failedGates": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/list-actual-controls01/report.json",
+      "complete": false,
+      "error": "ReferenceError: $u2 is not defined",
+      "pass": false
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/tree-nat-controls04/report.json",
+      "complete": false,
+      "error": "ReferenceError: $u2 is not defined",
+      "pass": false
+    }
+  ],
+  "conclusion": "Emission-only saturated self-call recovery follows previously validated unchanged body. Analysis still requires proper @child origin; declarations and callers retain complete pure graph proof. No identified admission weakening; actual successor gates remain pending."
+}

@@ -278,3 +278,47 @@ def j_fold_has(+helpers: List<&2,KDef>) -> Bool:
   match helpers:
     case Nil{}: False{}
     case Con{d, rest}: (String.eq(tg(dv(d)), "JFold") || String.eq(tg(dv(d)), "JProducer")) || j_fold_has(rest)
+
+# Grounded first-order List; every other instantiation retains generic emission.
+@unsafe
+def j_list_ground_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "List") && U32.is_eq(terms_len(ks(ty)), 2) &&
+    List.is_empty(&2, String, rm(ty)) && String.eq(tg(kid(ty, 0)), "Qua") && U32.is_eq(qt(kid(ty, 0)), 2) &&
+    U32.is_eq(terms_len(ks(kid(ty, 0))), 0) && j_primitive_type(book, wnf(book, kid(ty, 1)), "U32")
+
+@unsafe
+def j_list_ground_type(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  +head = wnf(book, ty)
+  +d = lookup(book, "List")
+  kc(Bool, j_list_ground_head(book, head) && String.eq(dk(d), "ADT") && db(d) &&
+    U32.is_eq(dx(d), 0) && U32.is_eq(da(d), 2) && U32.is_eq(j_region_def_count(dc(d)), 2), u =>
+    j_list_ground_kind(wnf(book, j_specialize(book, dt(d), ks(head)))) &&
+      j_list_ground_ctor(book, lookup(dc(d), "Nil"), head, 0) && j_list_ground_ctor(book, lookup(dc(d), "Con"), head, 2), u => False{})
+
+@unsafe
+def j_list_ground_kind(+ty: KTerm) -> Bool:
+  String.eq(tg(ty), "Typ") && U32.is_eq(terms_len(ks(ty)), 1) &&
+    String.eq(tg(kid(ty, 0)), "Qua") && U32.is_eq(qt(kid(ty, 0)), 2)
+
+@unsafe
+def j_list_ground_ctor(+book: List<&2,KDef>, +c: KDef, +ty: KTerm, +fields: U32) -> Bool:
+  kc(Bool, String.eq(dk(c), "Ctr") && db(c) && U32.is_eq(dx(c), 0) && U32.is_eq(da(c), fields), u =>
+    j_list_ground_fields(book, j_specialize(book, dt(c), ks(ty)), fields), u => False{})
+
+@unsafe
+def j_list_ground_fields(+book: List<&2,KDef>, +tel: KTerm, +left: U32) -> Bool:
+  +head = wnf(book, tel)
+  kc(Bool, U32.is_eq(left, 0), u => j_list_ground_head(book, head), u =>
+    kc(Bool, String.eq(tg(head), "All") && U32.is_eq(qt(head), 1) &&
+      kc(Bool, U32.is_eq(left, 2), u => j_primitive_type(book, wnf(book, kid(head, 0)), "U32"),
+        u => j_list_ground_head(book, wnf(book, kid(head, 0)))),
+      u => j_list_ground_fields(book, kid(head, 1), U32.sub(left, 1)), u => False{}))
+
+# Preserve prior type domains; a List comparison always checks the full grounded
+# parameter identity instead of relying on owner spelling.
+@unsafe
+def j_region_same_type(+book: List<&2,KDef>, +a: KTerm, +b: KTerm) -> Bool:
+  +x = wnf(book, a)
+  +y = wnf(book, b)
+  kc(Bool, String.eq(nm(x), "List") || String.eq(nm(y), "List"),
+    u => j_list_ground_head(book, x) && j_list_ground_head(book, y), u => String.eq(nm(x), nm(y)))

@@ -143,7 +143,6 @@ def j_component_plan(+book: List<&2,KDef>, +d: KDef) -> JPure:
   kc(JPure, String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) &&
     U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && String.eq(tg(head), "All"), u =>
     kc(JPure, (String.eq(tg(wnf(book, kid(head, 0))), "ADT") && Bool.not(db(lookup(book, nm(wnf(book, kid(head, 0))))))) ||
-      j_list_ground_type(book, kid(head, 0)) ||
       (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book)), u =>
     kc(JPure, j_u32_bounded([dv(d)], 512) && Bool.not(j_l_deep(dv(d), 0)), u =>
     kc(JPure, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u =>
@@ -214,7 +213,7 @@ def j_component_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty
       +owner = lookup(book, nm(arg))
       +c = lookup(dc(owner), nm(t))
       kc(Bool, String.eq(tg(t), "Mat") && String.eq(j_l_name(t), "") && U32.is_eq(terms_len(ks(t)), 2) &&
-        String.eq(dk(c), "Ctr") && (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
+        String.eq(dk(c), "Ctr") && (j_primitive_type(book, arg, "Bool") || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
         j_component_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_component_fields(origin, da(c), rest), d, U32.inc(depth)) &&
         j_component_prefix(book, env, kid(t, 1), ty, slots, d, U32.inc(depth)), u => False{})
 
@@ -238,7 +237,7 @@ def j_component_leaf(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: 
     kc(Bool, U32.is_eq(calls, 2) && String.eq(tg(t), "Let") && U32.is_eq(terms_len(ks(t)), 3), u =>
       j_nat_loop_bindings(ks(t), 0, Nil{}) && j_component_independent(env, t) &&
       Bool.not(U32.is_eq(qt(kid(t, 0)), 0)) && Bool.not(U32.is_eq(qt(kid(t, 1)), 0)) &&
-      j_component_self(env, kid(kid(t, 0), 0), d) && j_component_self(env, kid(kid(t, 1), 0), d), u => j_linear_leaf(book, env, t, d)))
+      j_component_self(env, kid(kid(t, 0), 0), d) && j_component_self(env, kid(kid(t, 1), 0), d), u => False{}))
 
 # Calls keep the existing generic fallback and require the COMPLETE graph,
 # rather than just the immediate function's descriptor, in the active proof.
@@ -261,7 +260,7 @@ def j_component_declaration(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> Str
     j_region_nested_slots(0, da(d)) ++ "const $frames=[];let $top=0,$value;$visit:for(;;){$step:{" ++
     j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 0) ++ "}" ++
     "while($top){const $frame=$frames[$top-1];" ++ j_component_restore(0, da(d)) ++
-    "if($frame.phase===2){" ++ j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 3) ++ "--$top;}else if($frame.phase===0){$frame.left=$value;$frame.phase=1;" ++
+    "if($frame.phase===0){$frame.left=$value;$frame.phase=1;" ++
     j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 1) ++ "}else{" ++
     j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 2) ++ "--$top;}}return $value;}}\n", u => "")
 
@@ -313,11 +312,10 @@ def j_component_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +t
   kc(String, U32.is_eq(j_component_refs([t], dn(d), 1024, 0), 0), u =>
     kc(String, U32.is_eq(phase, 0), u => "$value=" ++ j_expr(book, env, t, ty, False{}) ++ ";break $step;",
       u => "return bad('private component continuation invariant');"), u =>
-    kc(String, U32.is_eq(j_component_refs([t], dn(d), 1024, 0), 1), u => j_linear_finish(book, env, t, ty, d, phase), u =>
     kc(String, U32.is_eq(phase, 2), u =>
       "const " ++ j_local(ix(kid(t, 0))) ++ "=$frame.left;const " ++ j_local(ix(kid(t, 1))) ++ "=$value;" ++
       "$value=" ++ j_expr(book, j_context(book, env, ks(t)), kid(t, 2), ty, False{}) ++ ";", u =>
-      j_component_enter(book, env, j_call_spine(kid(kid(t, phase), 0), Nil{}), d, phase))))
+      j_component_enter(book, env, j_call_spine(kid(kid(t, phase), 0), Nil{}), d, phase)))
 
 @unsafe
 def j_component_enter(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +d: KDef, +phase: U32) -> String:
@@ -338,87 +336,3 @@ def j_component_independent(+env: List<&2,KTerm>, +t: KTerm) -> Bool:
   String.eq(tg(j_env(env, ix(kid(t, 0)))), "Absent") && String.eq(tg(j_env(env, ix(kid(t, 1)))), "Absent") &&
     U32.is_eq(j_region_counter_uses([kid(kid(t, 0), 0), kid(kid(t, 1), 0)], ix(kid(t, 0)), 0), 0) &&
     U32.is_eq(j_region_counter_uses([kid(kid(t, 0), 0), kid(kid(t, 1), 0)], ix(kid(t, 1)), 0), 0)
-# One structural child: direct tail transfer, or reconstruction through a tagged
-# constructor / saturated known combiner. An inert sequential alias may precede
-# the call; effectful or allocating lets remain generic.
-@unsafe
-def j_linear_alias(+t: KTerm, +name: String) -> Bool:
-  String.eq(tg(t), "Let") && U32.is_eq(terms_len(ks(t)), 2) &&
-    Bool.not(U32.is_eq(qt(kid(t, 0)), 0)) && j_region_field_atom(j_strip(kid(kid(t, 0), 0))) &&
-    U32.is_eq(j_component_refs([kid(t, 0)], name, 1024, 0), 0)
-
-@unsafe
-def j_linear_spine(+t: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(t), "Ctr"), u => kt("Call", nm(t), 0, 0, ks(t)), u => j_call_spine(t, Nil{}))
-
-@unsafe
-def j_linear_tel(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(t), "Ctr"),
-    u => j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty))),
-    u => dt(lookup(book, nm(j_linear_spine(t)))))
-
-@unsafe
-def j_linear_child(+env: List<&2,KTerm>, +args: List<&2,KTerm>, +d: KDef, +at: U32) -> U32:
-  match args:
-    case Nil{}: 32
-    case Con{h, rest}: kc(U32, j_component_self(env, h, d), u => at, u => j_linear_child(env, rest, d, U32.inc(at)))
-
-@unsafe
-def j_linear_leaf(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef) -> Bool:
-  kc(Bool, U32.is_eq(j_component_refs([t], dn(d), 1024, 0), 1), u =>
-    kc(Bool, j_linear_alias(t, dn(d)), u => j_linear_leaf(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), d), u =>
-    kc(Bool, j_component_self(env, t, d), u => True{}, u =>
-      j_linear_combine(book, env, t, d, j_linear_spine(t)))), u => False{})
-
-@unsafe
-def j_linear_combine(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef, +spine: KTerm) -> Bool:
-  +target = lookup(book, nm(spine))
-  (String.eq(tg(t), "Ctr") || (String.eq(tg(spine), "Call") && Bool.not(String.eq(nm(spine), dn(d))) &&
-    Bool.not(j_primitive_call(book, spine)) && U32.is_eq(terms_len(ks(spine)), da(target)))) &&
-    U32.is_lt(j_linear_child(env, ks(spine), d, 0), terms_len(ks(spine)))
-
-@unsafe
-def j_linear_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +phase: U32) -> String:
-  kc(String, j_linear_alias(t, dn(d)), u =>
-    "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++ j_nat_loop_names(ks(t), 0) ++
-    j_linear_finish(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty, d, phase) ++ "}}", u =>
-    kc(String, j_linear_emit_self(t, d), u =>
-      "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(t, Nil{})), dt(d)) ++ "];" ++
-      j_component_assign(0, da(d)) ++ "continue $visit;", u =>
-      j_linear_split(book, env, t, ty, d, phase, j_linear_spine(t))))
-
-@unsafe
-def j_linear_split(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +phase: U32, +spine: KTerm) -> String:
-  +child = j_linear_emit_child(ks(spine), d, 0)
-  +tel = j_linear_tel(book, t, ty)
-  kc(String, U32.is_eq(phase, 3), u =>
-    "$value=" ++ kc(String, String.eq(tg(t), "Ctr"),
-      u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "])",
-      u => j_linear_combiner_emit(book, nm(spine), j_producer_unary_resume(book, env, ks(spine), tel, child, 0))) ++ ";", u =>
-    j_producer_unary_before(book, env, ks(spine), tel, child, 0) ++
-    "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(j_strip(terms_at(ks(spine), child)), Nil{})), dt(d)) ++ "];" ++
-    "let $saved=$top<$frames.length?$frames[$top]:null;if(!$saved)$saved=$frames[$top]={args:null,left:null,phase:0,before:null};" ++
-    "$saved.args=[" ++ j_component_save(0, da(d)) ++ "];$saved.before=[" ++ j_region_vector_names("$u", 0, child) ++
-    "];$saved.phase=2;++$top;" ++ j_component_assign(0, da(d)) ++ "continue $visit;")
-
-@unsafe
-def j_linear_combiner_emit(+book: List<&2,KDef>, +name: String, +args: String) -> String:
-  +d = lookup(book, name)
-  kc(String, j_finite_ready(book, d), u =>
-    "((" ++ j_region_parameters(0, da(d)) ++ ")=>{" ++
-      j_finite_emit(book, Nil{}, dv(d), dt(d), j_finite_slots(0, da(d))) ++ "})(" ++ args ++ ")",
-    u => "callOwned(get(G," ++ j_quote(name) ++ "),[" ++ args ++ "])")
-
-# The preceding analysis proved descendant ownership. Emission's lexical Env
-# carries types and names, not @child provenance, so it uses only the already
-# proved saturated self-call shape to recover the continuation position.
-@unsafe
-def j_linear_emit_self(+t: KTerm, +d: KDef) -> Bool:
-  +spine = j_call_spine(j_strip(t), Nil{})
-  String.eq(tg(spine), "Call") && String.eq(nm(spine), dn(d)) && U32.is_eq(terms_len(ks(spine)), da(d))
-
-@unsafe
-def j_linear_emit_child(+args: List<&2,KTerm>, +d: KDef, +at: U32) -> U32:
-  match args:
-    case Nil{}: 32
-    case Con{h, rest}: kc(U32, j_linear_emit_self(h, d), u => at, u => j_linear_emit_child(rest, d, U32.inc(at)))

@@ -137,14 +137,14 @@ def j_region_root(+book: List<&2,KDef>, +d: KDef) -> String:
           JRegionBuild{atom("Absent"), Nil{}, 32768, True{}})), u => ""), u => ""), u => "")
 
 @unsafe
-def j_region_has_loop(+helpers: List<&2,KDef>) -> Bool:
+def j_region_has_loop(+book: List<&2,KDef>, +helpers: List<&2,KDef>) -> Bool:
   match helpers:
     case Nil{}: False{}
-    case Con{d, rest}: kc(Bool, Bool.not(db(d)) && (String.eq(tg(dv(d)), "Mat") || String.eq(tg(dv(d)), "JFold") || String.eq(tg(dv(d)), "JProducer")), u => True{}, u => j_region_has_loop(rest))
+    case Con{d, rest}: kc(Bool, Bool.not(db(d)) && (String.eq(tg(dv(d)), "Mat") || String.eq(tg(dv(d)), "JFold") || String.eq(tg(dv(d)), "JProducer")), u => True{}, u => kc(Bool, String.eq(tg(dv(d)), "JResidual") && j_pure_valid(j_component_plan(book, lookup(book, dn(d)))), u => True{}, u => j_region_has_loop(book, rest)))
 
 @unsafe
 def j_region_root_done(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> String:
-  kc(String, j_region_valid(s) && j_region_has_loop(j_region_helpers(s)), u =>
+  kc(String, j_region_valid(s) && j_region_has_loop(book, j_region_helpers(s)), u =>
     "(()=>{" ++ j_region_declarations(book, j_region_helpers(s)) ++ "const $guards=[" ++ j_quote(dn(d)) ++ "," ++ j_region_names(j_region_helpers(s)) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){/* private scalar root */" ++ j_nat_loop_slots(da(d), 0) ++
     "if($entered&&" ++ j_fold_root_guard(book, d, j_region_helpers(s)) ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++ "&&localGuard($guards)){" ++
@@ -267,10 +267,10 @@ def j_region_expr(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KT
 @unsafe
 def j_region_expr_on(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tail: String, +active: List<&2,String>, +depth: U32, +level: U32, +s: JRegionBuild) -> JRegionBuild:
   kc(JRegionBuild, String.eq(tg(t), "Ann"), u =>
-    kc(JRegionBuild, j_region_local_type(book, kid(t, 1)) && String.eq(nm(wnf(book, kid(t, 1))), nm(ty)),
+    kc(JRegionBuild, j_region_local_type(book, kid(t, 1)) && j_region_same_type(book, kid(t, 1), ty),
       u => j_region_expr(book, env, kid(t, 0), ty, tail, active, depth, level, s), u => j_region_fail(s)), u =>
   kc(JRegionBuild, String.eq(tg(t), "Var"), u =>
-    kc(JRegionBuild, j_region_local_type(book, j_env(env, ix(t))) && String.eq(nm(wnf(book, j_env(env, ix(t)))), nm(ty)),
+    kc(JRegionBuild, j_region_local_type(book, j_env(env, ix(t))) && j_region_same_type(book, j_env(env, ix(t)), ty),
       u => j_region_result(s, j_region_annotate(j_region_variable(env, t), ty)), u => j_region_fail(s)), u =>
   kc(JRegionBuild, String.eq(tg(t), "Lit"), u =>
     kc(JRegionBuild, String.eq(nm(t), nm(ty)) && (String.eq(nm(t), "U32") || String.eq(nm(t), "Nat") || String.eq(nm(t), "F32")),

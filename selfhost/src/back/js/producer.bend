@@ -115,7 +115,7 @@ def j_producer_unwind(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty
 # Existing Ctr emission preserves the original tag/field-array representation.
 @unsafe
 def j_producer_ctor(+book: List<&2,KDef>, +ty: KTerm, +name: String, +active: List<&2,String>) -> KDef:
-  kc(KDef, has_name(active, "@producer") && j_fold_type(book, ty),
+  kc(KDef, (has_name(active, "@producer") && j_fold_type(book, ty)) || j_list_ground_type(book, ty),
     u => lookup(dc(lookup(book, nm(ty))), name), u => j_region_local_ctor(book, ty))
 
 # One child in a known saturated combiner call. Argument order is split at the

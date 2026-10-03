@@ -1,0 +1,16 @@
+{
+  "kind": "phase40-selected-plan-runner-derivation",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "path": "selfhost/tools/performance/phase35/final-integration-run.py",
+    "bytes": 2845,
+    "sha256": "bbdf2c1738f8323cabac14a77d97ad32d90fbedcba1325728b4a0ed11ef6db39"
+  },
+  "output": {
+    "path": "selfhost/tools/performance/phase40/selected-plan-run.py",
+    "bytes": 4199,
+    "sha256": "afd8b383019341c7876ee877c9fd0f98683690488a60d15915ca543543a378f7"
+  },
+  "changes": "Reuses serial supervised command execution, every-input identity rehash, fresh logs and fail-fast retention. Adds explicit selected-stage/skip/start lists, reports skipped names and preserves plan identity. Preinstall excludes implicit owner replay. Completion scope is selected commands only; no global auditor or promotion."
+}

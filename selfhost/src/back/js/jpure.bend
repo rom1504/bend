@@ -42,7 +42,7 @@ def j_pure_type_check(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>
 def j_pure_type_head(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
   +owner = lookup(book, nm(ty))
   +kind = wnf(book, dt(owner))
-  kc(Maybe<&2,U32>, j_region_scalar(book, ty), u => Some{fuel}, u =>
+  kc(Maybe<&2,U32>, j_region_scalar(book, ty) || j_list_ground_type(book, ty), u => Some{fuel}, u =>
     kc(Maybe<&2,U32>, String.eq(tg(ty), "ADT") && U32.is_eq(terms_len(ks(ty)), 0) && List.is_empty(&2, String, rm(ty)) &&
       String.eq(dk(owner), "ADT") && Bool.not(db(owner)) && U32.is_eq(da(owner), 0) && U32.is_eq(dx(owner), 0) &&
       String.eq(tg(kind), "Typ") && U32.is_eq(terms_len(ks(kind)), 1) && String.eq(tg(kid(kind, 0)), "Qua") && U32.is_eq(qt(kid(kind, 0)), 2), u =>
@@ -185,10 +185,10 @@ def j_pure_expr(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTer
 @unsafe
 def j_pure_expr_on(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +level: U32, +s: JPure) -> JPure:
   kc(JPure, String.eq(tg(t), "Ann"), u =>
-    kc(JPure, j_pure_type(book, kid(t, 1)) && String.eq(nm(wnf(book, kid(t, 1))), nm(ty)), u =>
+    kc(JPure, j_pure_type(book, kid(t, 1)) && j_region_same_type(book, kid(t, 1), ty), u =>
       j_pure_expr(book, env, kid(t, 0), ty, level, s), u => j_pure_fail(s)), u =>
   kc(JPure, String.eq(tg(t), "Var"), u =>
-    kc(JPure, j_pure_type(book, j_env(env, ix(t))) && String.eq(nm(wnf(book, j_env(env, ix(t)))), nm(ty)), u => s, u => j_pure_fail(s)), u =>
+    kc(JPure, j_pure_type(book, j_env(env, ix(t))) && j_region_same_type(book, j_env(env, ix(t)), ty), u => s, u => j_pure_fail(s)), u =>
   kc(JPure, String.eq(tg(t), "Lit"), u =>
     kc(JPure, String.eq(nm(t), nm(ty)) && String.contains("|U32|Nat|F32|", "|" ++ nm(t) ++ "|"), u => s, u => j_pure_fail(s)), u =>
   kc(JPure, String.eq(tg(t), "Ctr"), u => j_pure_constructor(book, env, t, ty, level, s), u =>
@@ -200,7 +200,7 @@ def j_pure_expr_on(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: K
 def j_pure_constructor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +level: U32, +s: JPure) -> JPure:
   +c = lookup(dc(lookup(book, nm(ty))), nm(t))
   kc(JPure, String.eq(dk(c), "Ctr") && U32.is_eq(terms_len(ks(t)), da(c)),
-    u => j_pure_args(book, env, ks(t), dt(c), ty, level, s), u => j_pure_fail(s))
+    u => j_pure_args(book, env, ks(t), j_specialize(book, dt(c), ks(ty)), ty, level, s), u => j_pure_fail(s))
 
 @unsafe
 def j_pure_bindings(+book: List<&2,KDef>, +env: List<&2,KTerm>, +bodyEnv: List<&2,KTerm>, +xs: List<&2,KTerm>, +ty: KTerm, +level: U32, +s: JPure) -> JPure:
@@ -227,7 +227,7 @@ def j_pure_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>,
 def j_pure_args_head(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +head: KTerm, +result: KTerm, +level: U32, +s: JPure) -> JPure:
   match xs:
     case Nil{}:
-      kc(JPure, j_pure_type(book, head) && String.eq(nm(head), nm(result)), u => s, u => j_pure_fail(s))
+      kc(JPure, j_pure_type(book, head) && j_region_same_type(book, head, result), u => s, u => j_pure_fail(s))
     case Con{h, rest}:
       kc(JPure, j_pure_valid(s) && String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) && j_pure_type(book, kid(head, 0)), u =>
         j_pure_args(book, env, rest, j_app_type(head, h), result, level,

@@ -43,7 +43,7 @@ def j_finite_arm(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTe
   +c = lookup(dc(owner), nm(t))
   String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) && String.eq(j_l_name(t), "") &&
     U32.is_eq(terms_len(ks(t)), 2) && String.eq(dk(c), "Ctr") &&
-    (j_primitive_type(book, arg, "Bool") || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
+    (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
     j_finite_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), U32.inc(depth)) &&
     j_finite_prefix(book, env, kid(t, 1), ty, U32.inc(depth))
 
@@ -65,8 +65,8 @@ def j_finite_ctor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KT
   +owner = lookup(book, nm(ty))
   +c = lookup(dc(owner), nm(t))
   String.eq(dk(c), "Ctr") && U32.is_eq(terms_len(ks(t)), da(c)) &&
-    (j_primitive_type(book, ty, "Bool") || (Bool.not(db(owner)) && Bool.not(db(c)))) &&
-    j_finite_values(book, env, ks(t), dt(c), U32.inc(depth))
+    (j_primitive_type(book, ty, "Bool") || j_list_ground_type(book, ty) || (Bool.not(db(owner)) && Bool.not(db(c)))) &&
+    j_finite_values(book, env, ks(t), j_specialize(book, dt(c), ks(ty)), U32.inc(depth))
 
 @unsafe
 def j_finite_primitive(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +depth: U32) -> Bool:

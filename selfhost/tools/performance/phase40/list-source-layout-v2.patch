@@ -1,0 +1,67 @@
+--- a/selfhost/src/back/js/fold.bend
++++ b/selfhost/src/back/js/fold.bend
+@@ -290,7 +290,7 @@
+ def j_list_ground_type(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+   +head = wnf(book, ty)
+   +d = lookup(book, "List")
+-  kc(Bool, j_list_ground_head(book, head) && String.eq(dk(d), "ADT") && Bool.not(db(d)) &&
++  kc(Bool, j_list_ground_head(book, head) && String.eq(dk(d), "ADT") && db(d) &&
+     U32.is_eq(dx(d), 0) && U32.is_eq(da(d), 2) && U32.is_eq(j_region_def_count(dc(d)), 2), u =>
+     j_list_ground_kind(wnf(book, j_specialize(book, dt(d), ks(head)))) &&
+       j_list_ground_ctor(book, lookup(dc(d), "Nil"), head, 0) && j_list_ground_ctor(book, lookup(dc(d), "Con"), head, 2), u => False{})
+@@ -302,14 +302,14 @@
+ 
+ @unsafe
+ def j_list_ground_ctor(+book: List<&2,KDef>, +c: KDef, +ty: KTerm, +fields: U32) -> Bool:
+-  kc(Bool, String.eq(dk(c), "Ctr") && Bool.not(db(c)) && U32.is_eq(dx(c), 0) && U32.is_eq(da(c), fields), u =>
++  kc(Bool, String.eq(dk(c), "Ctr") && db(c) && U32.is_eq(dx(c), 0) && U32.is_eq(da(c), fields), u =>
+     j_list_ground_fields(book, j_specialize(book, dt(c), ks(ty)), fields), u => False{})
+ 
+ @unsafe
+ def j_list_ground_fields(+book: List<&2,KDef>, +tel: KTerm, +left: U32) -> Bool:
+   +head = wnf(book, tel)
+   kc(Bool, U32.is_eq(left, 0), u => j_list_ground_head(book, head), u =>
+-    kc(Bool, String.eq(tg(head), "All") && U32.is_eq(qt(head), 2) &&
++    kc(Bool, String.eq(tg(head), "All") && U32.is_eq(qt(head), 1) &&
+       kc(Bool, U32.is_eq(left, 2), u => j_primitive_type(book, wnf(book, kid(head, 0)), "U32"),
+         u => j_list_ground_head(book, wnf(book, kid(head, 0)))),
+       u => j_list_ground_fields(book, kid(head, 1), U32.sub(left, 1)), u => False{}))
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -143,6 +143,7 @@
+   kc(JPure, String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) &&
+     U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && String.eq(tg(head), "All"), u =>
+     kc(JPure, (String.eq(tg(wnf(book, kid(head, 0))), "ADT") && Bool.not(db(lookup(book, nm(wnf(book, kid(head, 0))))))) ||
++      j_list_ground_type(book, kid(head, 0)) ||
+       (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book)), u =>
+     kc(JPure, j_u32_bounded([dv(d)], 512) && Bool.not(j_l_deep(dv(d), 0)), u =>
+     kc(JPure, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u =>
+@@ -213,7 +214,7 @@
+       +owner = lookup(book, nm(arg))
+       +c = lookup(dc(owner), nm(t))
+       kc(Bool, String.eq(tg(t), "Mat") && String.eq(j_l_name(t), "") && U32.is_eq(terms_len(ks(t)), 2) &&
+-        String.eq(dk(c), "Ctr") && (j_primitive_type(book, arg, "Bool") || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
++        String.eq(dk(c), "Ctr") && (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
+         j_component_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_component_fields(origin, da(c), rest), d, U32.inc(depth)) &&
+         j_component_prefix(book, env, kid(t, 1), ty, slots, d, U32.inc(depth)), u => False{})
+ 
+--- a/selfhost/src/back/js/finite.bend
++++ b/selfhost/src/back/js/finite.bend
+@@ -43,7 +43,7 @@
+   +c = lookup(dc(owner), nm(t))
+   String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) && String.eq(j_l_name(t), "") &&
+     U32.is_eq(terms_len(ks(t)), 2) && String.eq(dk(c), "Ctr") &&
+-    (j_primitive_type(book, arg, "Bool") || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
++    (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
+     j_finite_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), U32.inc(depth)) &&
+     j_finite_prefix(book, env, kid(t, 1), ty, U32.inc(depth))
+ 
+@@ -65,7 +65,7 @@
+   +owner = lookup(book, nm(ty))
+   +c = lookup(dc(owner), nm(t))
+   String.eq(dk(c), "Ctr") && U32.is_eq(terms_len(ks(t)), da(c)) &&
+-    (j_primitive_type(book, ty, "Bool") || (Bool.not(db(owner)) && Bool.not(db(c)))) &&
++    (j_primitive_type(book, ty, "Bool") || j_list_ground_type(book, ty) || (Bool.not(db(owner)) && Bool.not(db(c)))) &&
+     j_finite_values(book, env, ks(t), j_specialize(book, dt(c), ks(ty)), U32.inc(depth))
+ 
+ @unsafe

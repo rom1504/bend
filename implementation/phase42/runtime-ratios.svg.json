@@ -1,0 +1,343 @@
+{
+  "kind": "phase42-runtime-ratio-plot",
+  "complete": true,
+  "input": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/runtime-full45-close.json",
+  "inputSha256": "f3e21c2aa37c2afe70c1a03c6b2b174f24f3b395d43eef1def3f6d03f16e3cde",
+  "catalog": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/catalog.json",
+  "catalogSha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/evidence/plot-ratios.py",
+    "sha256": "7a4bd5701b9b3ce3f9f8287f85a7b343cbfb2d4bd63b6a2a457869e8c31d8100"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase42/runtime-ratios.svg",
+    "sha256": "3f869049454fcfe8a1b0023e25ebdd945f0cb6a83654d4d4f518a04a5dd6af6d"
+  },
+  "roles": {
+    "before": "baseline",
+    "after": "candidate",
+    "reference": "typescript"
+  },
+  "minRatio": 0.1,
+  "maxRatio": 512.0,
+  "clippedValues": 0,
+  "omitted": [],
+  "points": [
+    {
+      "id": "coverage-bst-32",
+      "family": "bst",
+      "before": 197.85793161084376,
+      "after": 8.363863658913905,
+      "y": 148
+    },
+    {
+      "id": "coverage-bst-64",
+      "family": "bst",
+      "before": 179.30324313525816,
+      "after": 6.650717339983287,
+      "y": 177
+    },
+    {
+      "id": "coverage-closures-256",
+      "family": "closures",
+      "before": 8.959171269319432,
+      "after": 9.145314646492805,
+      "y": 231
+    },
+    {
+      "id": "coverage-closures-64",
+      "family": "closures",
+      "before": 8.562739876141592,
+      "after": 8.351483309956437,
+      "y": 260
+    },
+    {
+      "id": "complete-generic-row32",
+      "family": "complete-generic-row32",
+      "before": 57.85330761763474,
+      "after": 57.53891449239038,
+      "y": 314
+    },
+    {
+      "id": "editdist",
+      "family": "editdist",
+      "before": 2.1308056636921666,
+      "after": 2.1668182083915446,
+      "y": 368
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "family": "editdist",
+      "before": 2.142456331587146,
+      "after": 2.1333233775948113,
+      "y": 397
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "family": "editdist",
+      "before": 2.08841120479574,
+      "after": 2.0943935355233667,
+      "y": 426
+    },
+    {
+      "id": "coverage-expression-128",
+      "family": "expression",
+      "before": 4.478329150894353,
+      "after": 4.970236412845099,
+      "y": 480
+    },
+    {
+      "id": "coverage-expression-32",
+      "family": "expression",
+      "before": 9.679663859206013,
+      "after": 8.807434970858365,
+      "y": 509
+    },
+    {
+      "id": "lexer",
+      "family": "lexer",
+      "before": 92.46556780893654,
+      "after": 90.80845418017391,
+      "y": 563
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "family": "lexer",
+      "before": 82.2606194008459,
+      "after": 84.23860922134786,
+      "y": 592
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "family": "lexer",
+      "before": 87.57130743770597,
+      "after": 88.23610173129941,
+      "y": 621
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "family": "list-pipeline",
+      "before": 6.073009602917499,
+      "after": 2.2293134221878614,
+      "y": 675
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "family": "list-pipeline",
+      "before": 4.0180944624305965,
+      "after": 0.6046454879572818,
+      "y": 704
+    },
+    {
+      "id": "local-fold",
+      "family": "local-fold",
+      "before": 2.282110272657389,
+      "after": 2.2901140931183255,
+      "y": 758
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "family": "local-fold",
+      "before": 5.896029013472676,
+      "after": 5.098348837483509,
+      "y": 787
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "family": "local-fold",
+      "before": 1.4090240511829857,
+      "after": 1.414254552805714,
+      "y": 816
+    },
+    {
+      "id": "local-pair",
+      "family": "local-pair",
+      "before": 2.123416479584021,
+      "after": 2.121020493202063,
+      "y": 870
+    },
+    {
+      "id": "mandelbrot",
+      "family": "mandelbrot",
+      "before": 4.06044226274741,
+      "after": 3.7318356283749603,
+      "y": 924
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "family": "mandelbrot",
+      "before": 2.6972482942972342,
+      "after": 2.658379220232341,
+      "y": 953
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "family": "mandelbrot",
+      "before": 1.8053653617395748,
+      "after": 1.7910000443745113,
+      "y": 982
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "family": "map-churn",
+      "before": 92.40479596688316,
+      "after": 91.39061875675016,
+      "y": 1036
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "family": "map-churn",
+      "before": 95.06489700887859,
+      "after": 94.2590796716231,
+      "y": 1065
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "family": "numeric-recurrence",
+      "before": 2.5776736396970814,
+      "after": 2.590261403286267,
+      "y": 1119
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "family": "numeric-recurrence",
+      "before": 6.473826964179639,
+      "after": 6.6204544801632155,
+      "y": 1148
+    },
+    {
+      "id": "raytrace",
+      "family": "raytrace",
+      "before": 20.500372503761145,
+      "after": 19.76323666072865,
+      "y": 1202
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "family": "raytrace",
+      "before": 27.19195729730409,
+      "after": 26.291988618352935,
+      "y": 1231
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "family": "raytrace",
+      "before": 27.531544130042114,
+      "after": 27.722935144771384,
+      "y": 1260
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "family": "record-aggregation",
+      "before": 66.78213944109244,
+      "after": 66.74426051238349,
+      "y": 1314
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "family": "record-aggregation",
+      "before": 69.05236414025936,
+      "after": 69.37598897304645,
+      "y": 1343
+    },
+    {
+      "id": "scalar-region-0",
+      "family": "scalar-region-0",
+      "before": 57.32369173048378,
+      "after": 57.04095354674551,
+      "y": 1397
+    },
+    {
+      "id": "scalar-region-8192",
+      "family": "scalar-region-8192",
+      "before": 1.1548464661337414,
+      "after": 1.1551810610802167,
+      "y": 1451
+    },
+    {
+      "id": "symreg",
+      "family": "symreg",
+      "before": 1.7668540194393036,
+      "after": 1.6792009997875532,
+      "y": 1505
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "family": "symreg",
+      "before": 1.8415422640122976,
+      "after": 1.7693958567896546,
+      "y": 1534
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "family": "symreg",
+      "before": 1.8701637531050732,
+      "after": 1.7233608187552687,
+      "y": 1563
+    },
+    {
+      "id": "test-evening-program",
+      "family": "test-evening-program",
+      "before": 49.23117924645797,
+      "after": 49.14684012793975,
+      "y": 1617
+    },
+    {
+      "id": "test-map-set-ops",
+      "family": "test-map-set-ops",
+      "before": 73.48025302717178,
+      "after": 73.091701453947,
+      "y": 1671
+    },
+    {
+      "id": "test-morning-program",
+      "family": "test-morning-program",
+      "before": 63.51237076129562,
+      "after": 63.312464621633126,
+      "y": 1725
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "family": "test-rle-roundtrip",
+      "before": 68.04728859686503,
+      "after": 70.7590410597703,
+      "y": 1779
+    },
+    {
+      "id": "tree-bitonic",
+      "family": "tree-bitonic",
+      "before": 9.42600370287677,
+      "after": 1.2226234323420986,
+      "y": 1833
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "family": "tree-bitonic",
+      "before": 12.17896303960571,
+      "after": 1.9426182000320726,
+      "y": 1862
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "family": "tree-bitonic",
+      "before": 9.187493784900571,
+      "after": 1.14635330212518,
+      "y": 1891
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "family": "unicode-text",
+      "before": 22.210342786563576,
+      "after": 21.880295298055344,
+      "y": 1945
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "family": "unicode-text",
+      "before": 22.837998898630435,
+      "after": 23.271237654805105,
+      "y": 1974
+    }
+  ],
+  "scope": "Per-point median ratios on log scale. No family aggregate, confidence interval or parity generalization."
+}

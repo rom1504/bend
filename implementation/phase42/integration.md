@@ -53,6 +53,24 @@ bodies. Whole-module identity would be false because of separately qualified
 Nat metadata and guarded helper additions elsewhere. The report records those
 differences explicitly and retains the original Nat-worker refusal requirements.
 
-Installation and composite evidence collection are pending at the time of this
-draft. The final release record and exact closure links will be added after those
-gates complete. No prior image's broad pass is transferred to checked16 by label.
+Checked16 is now installed. Release installation/verification and all 42 ordinary
+and relocated CLI checks pass. The final audit accepts 15/15 groups, no outstanding
+items, and all 227 canonical source bindings. The composite postinstall closure
+accepts all 23 top-level groups, including the 16 new Phase42 owners and inherited
+closures. These counts are nested scopes and must not be summed as distinct tests.
+
+The final semantic recipe is `final-recipe07.json`; runtime measurement ancestry
+remains `final-recipe05.json`. Both bind the same checked16 attempt/API/runtime and
+integration03 acquisition. Later recipes correct evidence-tool path bindings;
+they do not relabel or replace earlier measurements. Exact reports are
+`integration03/postinstall-audit`, `composite-postinstall/report.json`,
+`postinstall-launch/report.json` and the release smoke receipt in `final-plan`.
+The [installed manifest](../../selfhost/dist/release.json) records installation
+at 2026-10-03 23:09:10 UTC. No prior image's broad pass is transferred by label.
+
+The [evidence index](../../selfhost/tools/performance/phase42/evidence/selected-release.json)
+locates these reports within the independently verified raw archive. The portable
+current bundle contains176 preserved members and all 45 points. Standard fast
+replay passes5points/45samples in16.48seconds; the tree/list/BST screen passes
+3points/27samples in9.90seconds. The preserved103 unrelated starting files are
+byte-identical and were not staged.

@@ -9,11 +9,13 @@ a fresh checkout without historical build directories or an upstream checkout.
 Absolute paths inside acquisition receipts describe provenance, not replay inputs.
 The archived pure entry points do not invoke the modules' lazy foreign IO paths.
 
-This guide does not assert that a Phase42 candidate is installed or that a
-`current/` bundle exists. Use a freshly prepared candidate now; after a reviewed
-portable current bundle is published, the same commands accept
-`selfhost/tools/performance/phase42/current/manifest.json`. Compiler installation,
-semantic controls, acquisition, clean timing and profiling are separate steps.
+**Phase42 checked16 is installed.** The verified
+[current bundle](current/manifest.json) contains all 45 points in a1,356,887-byte
+archive. The [release report](../../../../implementation/phase42/README.md) records
+correctness and costs. Its portable five-point fast replay passes in16.48seconds;
+a three-point tree/list/BST replay passes in9.90seconds. These are smoke screens,
+not replacements for the final669-sample comparison. Compiler installation,
+semantic controls, acquisition, clean timing and profiling remain separate.
 
 ## Select a time budget
 
@@ -33,7 +35,7 @@ PHASE42_NODE=/absolute/path/to/node
 PHASE42_CPU=3
 PHASE42_CATALOG=selfhost/tools/performance/phase37/catalog.json
 PHASE42_BASELINE=selfhost/tools/performance/phase42/baseline/manifest.json
-PHASE42_CANDIDATE=selfhost/build/phase42-live/candidate-NEW/manifest.json
+PHASE42_CANDIDATE=selfhost/tools/performance/phase42/current/manifest.json
 
 run42() {
   python3 selfhost/tools/performance/programs/run.py \
@@ -45,6 +47,9 @@ run42() {
 
 run42 --budget 20 --set fast --plan
 run42 --budget 20 --set fast --out selfhost/build/phase42-live/fast-NEW
+# Exercise this phase's changed mechanisms in a quick screen:
+run42 --budget 20 --cases tree-bitonic,coverage-list-pipeline-512,coverage-bst-64 \
+  --out selfhost/build/phase42-live/targets-NEW
 run42 --budget 60 --set core --out selfhost/build/phase42-live/core-NEW
 run42 --budget 300 --set broad --out selfhost/build/phase42-live/broad-NEW
 ```
@@ -155,5 +160,6 @@ folders are separate evidence; a catalog fixed-result timing pass does not repla
 them. Read the [runner guide](../programs/README.md),
 [diagnostics guide](../programs/DIAGNOSTICS.md), and
 [evidence accounting tools](evidence/README.md) for protocol and accounting detail.
-Installation-document updates are drafted separately in
-[INSTALLATION-DOC-UPDATES.md](INSTALLATION-DOC-UPDATES.md).
+The final [results](../../../../implementation/phase42/results.md),
+[profiles](../../../../implementation/phase42/profile-findings.md) and
+[accounting](../../../../implementation/phase42/accounting.md) explain measured outcomes.

@@ -1,33 +1,54 @@
-# Root-run final accounting and ratio figure
+# Phase42 published evidence
 
-Run after timings finish and final inputs freeze. No target program is executed.
-Both tools require fresh outputs. The accounting tool only reads Git/canonical
-source and recorded evidence; it writes its own report artifacts.
+The [release report](../../../../../implementation/phase42/README.md) links the
+results, correctness, profiles, compilation cost and time account.
+[selected-release.json](selected-release.json) indexes the exact chosen reports.
 
-```bash
-python3 selfhost/tools/performance/phase42/evidence/summarize.py --repo . --ledger selfhost/build/phase42/campaign.jsonl --baseline 5ec82b3 --manifest FINAL_FULL_MANIFEST --end CLOSURE_UTC_EPOCH --out selfhost/build/phase42/accounting-final01
-python3 selfhost/tools/performance/phase42/evidence/plot-ratios.py FINAL_RUNTIME_REPORT --catalog selfhost/tools/performance/phase37/catalog.json --max-ratio 64 --out implementation/phase42/runtime-ratios.svg
+## Closed raw campaign
+
+[campaign-archive01/archive.json](campaign-archive01/archive.json) inventories
+**34,982 files**, including successful and failed experiments, source snapshots,
+receipts, generated programs, all samples, profiles and the complete job ledger.
+[raw-campaign.tar.gz](campaign-archive01/raw-campaign.tar.gz) is91,512,582bytes,
+uncompressed659,999,726bytes; SHA256:
+
+`bc1a5ead1eee4cec316e1c21f84ad44890c7ccc457053b9c519cea0ec0cda7a7`
+
+The archive was independently reopened and every member hash checked. Raw-file
+membership and contents were verified unchanged after capture. The
+[writer closure](writers-closed01.json) was declared only after all jobs and raw
+writers stopped. [Publication](publication01.json) took50.03seconds outside the
+closed experiment ledger. All 103 unrelated starting files are unchanged and
+unstaged; `protected-final.json` retains the check.
+
+To inspect raw evidence without writing into a historical campaign directory:
+
+```sh
+mkdir /tmp/phase42-evidence-NEW
+tar -xzf selfhost/tools/performance/phase42/evidence/campaign-archive01/raw-campaign.tar.gz \
+  -C /tmp/phase42-evidence-NEW
 ```
 
-Omit --end for a retrospective through the last ledger record; that is explicitly
-not called campaign closure. Chronological enclosing jobs, categories, failed and
-incomplete status, summed durations, union coverage, overlaps and unclassified
-wall time are retained. --category-map accepts a JSON label-to-category mapping
-for ambiguous jobs. Nested supervision intervals are not separately counted.
-Unclassified time is never labeled idle time, model latency or agent latency.
+The report index uses paths relative to the archive's Phase42 root. Absolute
+paths in old receipts describe the original execution environment. For portable
+performance replay, use the separately verified [baseline](../baseline/manifest.json)
+and [current](../current/manifest.json) bundles, following the [guide](../README.md);
+replay does not require extracting this large raw campaign.
 
-Bend counts follow maintained Phase32/40 definitions: compiler.json module list,
-physical/nonblank lines, bytes, and top-level def/law/type declarations. Baseline
-5ec82b3 must match Phase41's18898lines/2108defs/70modules/71types/640laws.
-Canonical runtime JavaScript counts are separate. Generated program module
-bytes come from exact complete final manifests; multiple --manifest arguments
-are supported and role/path/content counts remain separate.
+## Derived publication files
 
-The SVG shows every complete paired point, grouped by family without a family
-average. Blue is before and orange after; the dashed1x line is pinned TypeScript.
-The axis is logarithmic. Values beyond display bounds have clipping triangles
-and exact numerical ratios at right; omitted incomplete points require an
-explicit --allow-partial flag and are labeled. Source JSON retains ranges/drift;
-the plot makes no confidence interval or general application-parity claim.
+The final per-point table and plot come from the complete669-sample three-batch
+closure. Renderer v2 preserves unavailable drift values as null/NA and records
+missing counts; it never treats missing drift as stability. The 45-point SVG uses
+a0.1×–512×log axis, with zero clipped or omitted points. All paired samples,
+medians and ranges remain in the raw reports and published machine table.
 
-Prepared only; root owns syntax validation and final execution after timing.
+The [accounting tool](summarize.py) records enclosing job intervals without
+adding nested child intervals. The 335 jobs have no recorded overlap. Its explicit
+cutoff precedes archive publication and final documentation/Git delivery.
+Unclassified time is not identified as model latency or idle time.
+
+The raw archive is closed. Do not rewrite receipts or append to its ledger.
+New experiments and any re-rendering must use fresh output paths and retain the
+original producer identities. Documentation written after closure lives outside
+the raw archive and is versioned in Git.

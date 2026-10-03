@@ -2,7 +2,7 @@
 
 This ledger records decisions and links evidence; it does not replace the reports.
 Read [workflow](README.md) and [current strategy](STEERING.md) before a new investigation.
-User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. The current authorized optimization window ends about 20:16 UTC on 2026-09-22.
+User objective: make the Bend compiler written in Bend and its validation loop much faster while preserving correctness. Historical authorization windows are recorded below; current release status and priorities are in [STEERING.md](STEERING.md).
 
 ## Migration checkpoint — 2026-09-22, 17:13 UTC
 
@@ -1536,7 +1536,7 @@ unchanged. Historical large line-reduction goals remain unmet.
 focused loop. Expand bounded backend coverage; the inventory counts2,654execution
 opportunities but only a small subset is observed here. Investigate materialization,
 book walks/updates and dispatch with producer/consumer invariants before a broad
-rewrite. Preserve all failed attempts and the103 unrelated starting paths; the
+rewrite. Preserve all failed attempts and the 103 unrelated starting paths; the
 new evidence capsule reuses Phase23 prerequisites and records exact recovery.
 
 ## P25 — analyze emitted programs before optimizing H (2026-09-30)
@@ -1620,7 +1620,7 @@ seconds without another full self-hosting build.
 Retained source/expectation pilots, initial missing diagnostic-export harness and
 the overly broad documentation-inclusive closure audit. Independent review finds
 no blocker for checked native scalar inputs; arbitrary raw JS object coercions
-and forged native flags remain outside that contract. Capsule recovery and the103
+and forged native flags remain outside that contract. Capsule recovery and the 103
 protected-path audit close preservation; release verification/CLI smoke pass.
 
 **Updated frontier:** test constructor-arm prebinding as a separate call-lowering
@@ -1690,7 +1690,7 @@ All four cases with repeated within-block drift receive a prospectively defined
 longer-warm follow-up using identical bytes/inputs: Mandelbrot1271.44×, tree
 sorting100.38×, morning60.60× and Map/Set82.37×. Residual drift remains in sorting,
 Map/Set and one morning sample; neither protocol proves steady-state convergence.
-All150 timed samples and56 check/calibration processes are retained and independently
+All 150 timed samples and56 check/calibration processes are retained and independently
 audited. Original library screen816.11s; follow-up189.32s. Both rejected Nat wrappers
 and the incorrect CommonJS filename remain in the capsule with their failures.
 
@@ -2440,7 +2440,7 @@ runtime is retained. [Report](../implementation/phase39/README.md),
 [release](../implementation/phase39/release-05.md).
 
 **Checked05 installed:** API04d9ebf4…,42 ordinary/relocated CLI checks,15 post-install
-audit groups and227 canonical files pass. All15+7+3 inherited and4 new semantic
+audit groups and227 canonical files pass. All 15+7+3 inherited and4 new semantic
 owner groups close, plus154 application executions. Frontend3,026+196 exact
 observations and backend69pass/8N/A/4shared failures keep their original scope.
 No new self-emitted fixed point, full backend/GPU or proof-validity claim.
@@ -2469,7 +2469,7 @@ admission mistakes, inherited scalar-counter expectation, distinct TS receipt
 schema/bootstrap relative paths, and sandbox-denied Clang smoke. Reviewed
 successors keep semantic assertions and byte provenance; unchanged smoke retry
 passes42/42. [Closed evidence](../implementation/phase39/evidence/README.md)
-retains failures and successful final-image data. All103 unrelated starting
+retains failures and successful final-image data. All 103 unrelated starting
 files remain unchanged and unstaged. No PR comment is posted.
 
 
@@ -2528,7 +2528,7 @@ Promote checked01 with a documented compiler-cost tradeoff. Three tree points
 improve1.506–1.592× over Phase40 and remain9.33–12.18× slower than TS;42/45
 modules are unchanged. Source adds35 lines/four definitions. The normal tree
 compilation request costs9.46% more; no compiler-throughput gain is claimed.
-All15 final audit groups and42 CLI checks pass. Frontend retains all3222 exact
+All 15 final audit groups and42 CLI checks pass. Frontend retains all3222 exact
 observations and historical shared failures; backend status is unchanged.
 
 Reject transfer-tuple scalarization after a null timing result. Defer lexer
@@ -2560,7 +2560,7 @@ proofs and sequential traversal. Checked13 BST screens improve14.9–28.7× over
 checked07. Actual bounded recursion adds1.37–1.61× to checked14 tree output while
 retaining the iterative fallback; the larger tree is1.22×TS in a short screen.
 Checkpoints04/05 contain points, samples, ranges and comparator identities.
-No final45-point or global parity claim is made yet.
+No final 45-point or global parity claim is made yet.
 
 Native-constructor literals win1.3–1.67× in the last BST discriminator; checked15
 source qualification follows. Transfer arrays add no benefit; Map.bit's isolated
@@ -2570,7 +2570,18 @@ found the standard-at-initialization contract published before this phase. Keep
 that scope correction and unchanged mandatory post-import/Error boundaries.
 
 **Updated frontier:** freeze the actual survivor, run all semantic owners, three
-serial full45 timing batches (669 samples), compiler cost, profiles, installation
+serial full 45 timing batches (669 samples), compiler cost, profiles, installation
 and evidence closure. Checked13 tree compilation improved10.03% but list costs
 12.03% more; assess the final image and record tradeoffs. Source growth and all
 remaining TS deficits remain explicit. No PR comment is posted.
+
+## Phase42 final release — 2026-10-03
+
+Checked16 installed and qualified; see the [report](../implementation/phase42/README.md).
+All 45points/669samples pass. Equal-point geometric slowdown12.57→8.86×TS;
+source-weighted15.40→11.42×. Tree6.27–8.02×, BST23.66–26.96× and list2.72–6.65×
+gains over Phase41; onlylist512beatsTS among45points. Overall parity remains
+unreached. Mixed compiler cost and+1158source lines are explicit tradeoffs.
+All 15postinstall groups,227bindings and42CLI checks pass. Seven owner/review
+roles worked in parallel while root serialized heavy jobs. Failed probes, scope
+repairs and final raw receipts are preserved; no PR comment posted.

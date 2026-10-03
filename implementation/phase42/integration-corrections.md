@@ -77,3 +77,25 @@ and proof cleanup. This is a diagnostic producer correction, with no source or
 algorithm change. The report kind and84/2 contract remain unchanged; new scope
 inventory/counters make activation explicit. Pinned Node syntax passes; fresh
 root execution and collector binding remain necessary before final qualification.
+
+## Final collection and scope corrections
+
+Selected16 also retains successful component, wrapper and owned-value controls
+through lexical-scope-aware instrumentation. Native runtime changes are bound
+to each role's own checked receipt rather than requiring cross-role runtime
+identity. The scalar-island check preserves five complete protected definitions,
+with explicit outside-region differences. All fresh successors pass.
+
+Evidence collection then required exact filename and canonical-path fixes:
+component instrumentation used a different consumed-tool filename; recorded
+commands mix absolute and repository-relative paths; the generic-row observer
+has an adapter receipt pointing to its original checked emission. Failed
+collectors and their versioned successors are retained. No compiler image changed
+for these repairs. A proposed missing `pass` field was a false alarm: rereading
+the complete closer showed the field already set after successful assertions.
+
+The final runtime renderer also encountered legitimate unavailable half-drift
+values for expensive samples. Its successor preserves those nulls, reports the
+known/missing counts and renders missing maxima as NA. Missing drift is not
+interpreted as stable execution. Final semantic recipe07, runtime recipe05 and
+renderer v2 all bind the same selected16 image.

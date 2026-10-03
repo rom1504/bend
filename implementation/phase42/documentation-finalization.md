@@ -80,7 +80,7 @@ python3 selfhost/tools/performance/programs/run.py \
 
 Document that outputs must be fresh, CPU must be available, and Node24+ is required;
 exact diagnostic reproduction uses recorded Node24.18.0. This is a ceiling, not a
-completion or wall-duration promise. Full45 coverage requires three serial15-point
+completion or wall-duration promise. Full 45 coverage requires three serial15-point
 600-second batches: mandatory warmups alone exceed a single600-second ceiling.
 Link the Phase42 guide's batching commands rather than duplicating them. Profiles
 and static analysis remain separate from clean timing. The baseline packages

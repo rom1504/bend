@@ -1,0 +1,317 @@
+{
+  "reviewed": true,
+  "selectedAttemptSha256": "f9ffcd71a338df6f39bfd818021dbc6f73868742fe57789ca834066f8645ca1b",
+  "reviews": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/review/owned-runtime-binding-v2-review.json",
+      "sha256": "c8788c8077ad16ae22da44342784418a1269ae0ac5fbd5e4e2635599e20733b3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/review/same-image-validation-repair-code-review.json",
+      "sha256": "8c1e9b6ed3abfa996e19d5a2315d81dd95b3e514d68c1a187c129206173e91bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/review/phase41-wrapper-v4-review.json",
+      "sha256": "3e1cc79c8e99d2892e3c5e38bbba70409ce9b38403a830ab4cfabdd044058f0f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/review/collector-path-repairs-review.json",
+      "sha256": "3555bcef1a3af8d7b19ab47ee8ba8533b68abbb4625f255f79d773760c3c3192"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/review/owned-fixture-scope-v3-review.json",
+      "sha256": "622a10f108a2c837f62305aa1a79840608b8520cf9917530e1a188ed3c814f04"
+    }
+  ],
+  "freshPaths": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/composite-preinstall/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/composite-postinstall/report.json"
+  ],
+  "stepReplacements": {
+    "composite-preinstall": [
+      {
+        "before": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/close-release-v5.py",
+        "after": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/close-release-v6.py"
+      },
+      {
+        "before": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/final-recipe06.json",
+        "after": "${RECIPE}"
+      }
+    ],
+    "composite-postinstall": [
+      {
+        "before": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/close-release-v5.py",
+        "after": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/close-release-v6.py"
+      },
+      {
+        "before": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/final-recipe06.json",
+        "after": "${RECIPE}"
+      }
+    ]
+  },
+  "ownerPathRewrites": {},
+  "inheritedMappingOverrides": {
+    "component": {
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/inherited-component-v2/report.json",
+      "execution": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/run-inherited-component-v2/run.json",
+      "derivation": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/inherited-component-derived-v2",
+      "tailReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/inherited-component-tail-v2/report.json",
+      "tailExecution": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/run-inherited-component-tail-v2/run.json"
+    }
+  },
+  "inheritedSupplementRequirements": [
+    {
+      "name": "scalar-island-precedence",
+      "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/scalar-island-controls-v2/report.json",
+      "execution": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/run-scalar-island-precedence-v2/run.json",
+      "assertions": {
+        "/kind": "phase42-list-scalar-island-static-controls-v2",
+        "/complete": true,
+        "/pass": true,
+        "/checks": [
+          "protected-scalar-island-regions-byte-identical",
+          {
+            "owner": "colf",
+            "natToScalarRefused": true,
+            "retainedScalarIsland": true,
+            "guards": [
+              "colf",
+              "colf.px",
+              "colf.px.go",
+              "pixel",
+              "clamp01",
+              "clamp01.go",
+              "clamp01.hi",
+              "clamp01.hi.go",
+              "F32.to_u32",
+              "fl",
+              "subray",
+              "trace",
+              "skr",
+              "shade",
+              "fmax0.go",
+              "nearest.t",
+              "fmax0",
+              "nearest",
+              "sr",
+              "sz",
+              "sy",
+              "sx",
+              "isect5",
+              "isect.go",
+              "isect.go2",
+              "isect.t",
+              "isect.t2"
+            ]
+          },
+          {
+            "owner": "rowf",
+            "natToScalarRefused": true,
+            "retainedScalarIsland": true,
+            "guards": [
+              "rowf",
+              "colf",
+              "colf.px",
+              "colf.px.go",
+              "pixel",
+              "clamp01",
+              "clamp01.go",
+              "clamp01.hi",
+              "clamp01.hi.go",
+              "F32.to_u32",
+              "fl",
+              "subray",
+              "trace",
+              "nearest",
+              "sr",
+              "sz",
+              "sy",
+              "sx",
+              "isect5",
+              "isect.go",
+              "isect.go2",
+              "isect.t",
+              "isect.t2",
+              "skr",
+              "shade",
+              "fmax0.go",
+              "nearest.t",
+              "fmax0"
+            ]
+          }
+        ],
+        "/moduleByteIdentical": false,
+        "/protectedRegions": [
+          {
+            "name": "colf",
+            "bytes": 7489,
+            "sha256": "fc44f95eba330529a33da5469479e1e4dd8b1d07d6aa862d9f9e9c4e1647dee9",
+            "byteIdentical": true
+          },
+          {
+            "name": "rowf",
+            "bytes": 3484,
+            "sha256": "5fa8b012c5d8c0accb1272d0a57b5866ad96b5e4713af4d65b45af2f658dc8fd",
+            "byteIdentical": true
+          },
+          {
+            "name": "colf.px",
+            "bytes": 289,
+            "sha256": "b64a23bb3036b398157d8fa0a8b294991ffcc2fb07e65838e7a4a8de2b410cad",
+            "byteIdentical": true
+          },
+          {
+            "name": "colf.px.go",
+            "bytes": 330,
+            "sha256": "bbb2ca9c6c797583eea6a772c4da432a48ebe24ee51e2e2b4715e1e155ccefdd",
+            "byteIdentical": true
+          },
+          {
+            "name": "subray",
+            "bytes": 1310,
+            "sha256": "3a35abfc08b6ce7627a300c002457567dfcfc47e729db6a6993bb782045ce702",
+            "byteIdentical": true
+          }
+        ],
+        "/outsideChanges": {
+          "runtime": "exact inert Nat.add metadata3hunks",
+          "publicSections": [
+            {
+              "name": "sphere",
+              "baselineSha256": "195930dc9dcb127e0b1be9e1369eb550bd6c09a95cd522af8299f72a9c1d0d86",
+              "candidateSha256": "b180bd9f6aac4efdca71719fc94ee62596ff73531f950ec14759dd437fb098e8"
+            },
+            {
+              "name": "isect.t",
+              "baselineSha256": "f42b863a93028794ce4eff870a32fc6a89113201cb4e02c0807a4ae8ce489274",
+              "candidateSha256": "0251b1fac8e9708109b79295fb0cd52c6be373af952fb7d9cea3e8034506b937"
+            },
+            {
+              "name": "isect.go2",
+              "baselineSha256": "1f51f62fcbe2ab3f45e22ebdbb39c9cfa53ef08b1fc884410456f4e00bdb28a7",
+              "candidateSha256": "658e1a81104be2039164a0058c247b95ab44738fc517db8a497565256225df3d"
+            },
+            {
+              "name": "isect.go",
+              "baselineSha256": "5b76067436db21805de71b40734cc14afcd673d6dfa5778b9a533952f911bd42",
+              "candidateSha256": "cb64a646a16e1f16a9d6ad46a72156ecaf4aafe393222088f8b3d7dd01f84682"
+            },
+            {
+              "name": "isect5",
+              "baselineSha256": "d6f62d99720d44bfb10c89a2c77ad2fcff2c289579f9d9c5574822436c33d230",
+              "candidateSha256": "b8b00c3575acbec95358f5bf2b33e64e4f7f8b376d3ff01c76a2a786e1fc16e4"
+            },
+            {
+              "name": "sx",
+              "baselineSha256": "54cee5fda15bd79b090b32f6e0d7693507216baecd622736f5b9a694673eda9d",
+              "candidateSha256": "6690cfd53be7e4e8bb744478aec39df468849229e96d8fc399fd345a03922557"
+            },
+            {
+              "name": "sy",
+              "baselineSha256": "593846c01f4270ed04db5b0743c50d60682fa9c394015f16288a18dc525601f7",
+              "candidateSha256": "536b44981b598fca2bec7d0cb3d9e3b19c0d708d1e1a35ddf99cf011e061a404"
+            },
+            {
+              "name": "sz",
+              "baselineSha256": "df4446059c06b5d083227004a2b1b660f934b84aeedb03a231a3ca23443c8f32",
+              "candidateSha256": "6343725777eedfcab0b23b6eee083ce19242482a9941a7edb798ae7a073288dc"
+            },
+            {
+              "name": "sr",
+              "baselineSha256": "3878fc8f395f2afdb8f3541171e9d6fbca36e963fe3fdc3b01d951ae729d3070",
+              "candidateSha256": "f52ce2b60c46c2ecd997d98e782e5371f4723d7b08c685207b2ac0871a2f3d98"
+            },
+            {
+              "name": "skr",
+              "baselineSha256": "f894dae653bb5e640db06fdca37f9cf1b0bca70465725f705306dfbea7b82948",
+              "candidateSha256": "fe4dccc5084b77cdedac08b439191975799a74c357b8a72d89fd30717c232a21"
+            },
+            {
+              "name": "nearest",
+              "baselineSha256": "9fbd1aeffa3957ccf416d768c2a2c0482b25cd00a699ce0938a5b45fe00bbe78",
+              "candidateSha256": "322f30ac381b1e0ddcc43b4664539d5bb15f871e14fe58a55bfe398ee91efc8b"
+            },
+            {
+              "name": "clamp01.go",
+              "baselineSha256": "d64aca84862f8f0e058a5c99dbb24cecdf0e64fd8dc494c148b77faadd456580",
+              "candidateSha256": "e7e4b6c252556592d83811071f3e4c3094da7e43207042cfe19efb433891dbb2"
+            },
+            {
+              "name": "clamp01",
+              "baselineSha256": "dd74a00c6434728e73c2dd1729aa9a2fc155cc23c4f6a20a0dee83816c268537",
+              "candidateSha256": "dbba5ad37254866322680ffc801c271da10e9a391ddf9777598bd33109a40392"
+            },
+            {
+              "name": "nearest.t",
+              "baselineSha256": "bebd8fdc6c18086becaa1a15898c1554efa1c26f6b6133d4abc3f150e5eecccb",
+              "candidateSha256": "5f5acb1596a437c17a7aeea30cc7e4c7b9106b98df674ac556374a3582fe74d0"
+            },
+            {
+              "name": "trace",
+              "baselineSha256": "2304153a546dbe1b54f9a24cd68ff35bfe792cb80fe7ba951ecadc4c095c0439",
+              "candidateSha256": "c3b186f1c048f6a0ec3b4ed086c71e3a2da7698cafb56dc77126cbf3139b2ef7"
+            },
+            {
+              "name": "pixel",
+              "baselineSha256": "2c54b457388a246b2d2729d72a4527829c3cc96acdb1478f6e1c67fbb392cd7f",
+              "candidateSha256": "384c090c86e39ca1790523e2f09ef30f12d058e31e20782e6c0b764c25e3a517"
+            }
+          ],
+          "normalizedOutsideRegionsByteIdentical": true,
+          "runtimeAndGenericOutsideChangesAreNotProtectedIdentityClaims": true
+        }
+      },
+      "bindings": [
+        {
+          "pointer": "/inputs/0/sha256",
+          "expected": "08064dd26b6ce590790c94f0bee83cd39bec7851848745e3f431b9e33a3e166d"
+        },
+        {
+          "pointer": "/inputs/2/path",
+          "expected": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/scalar-ray.mjs"
+        },
+        {
+          "pointer": "/inputs/2/sha256",
+          "expected": "18f02cc4df92dc2bcf5da421ce7c5cc719ad922c984292e0573961c31f2f4af0"
+        },
+        {
+          "document": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/scalar-ray.mjs.json",
+          "pointer": "/attempt/sha256",
+          "expected": "f9ffcd71a338df6f39bfd818021dbc6f73868742fe57789ca834066f8645ca1b"
+        },
+        {
+          "document": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/scalar-ray.mjs.json",
+          "pointer": "/compiler/api/sha256",
+          "expected": "63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54"
+        },
+        {
+          "document": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/scalar-ray.mjs.json",
+          "pointer": "/compiler/runtime/sha256",
+          "expected": "6dbda18f176702557041530652690601c32b09261327ad49af7bf0cc8e7fb81c"
+        },
+        {
+          "document": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/scalar-ray.mjs.json",
+          "pointer": "/compiler/base/sha256",
+          "expected": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        {
+          "document": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/scalar-ray.mjs.json",
+          "pointer": "/output/sha256",
+          "expected": "18f02cc4df92dc2bcf5da421ce7c5cc719ad922c984292e0573961c31f2f4af0"
+        },
+        {
+          "document": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/scalar-ray.mjs.json",
+          "pointer": "/input/sha256",
+          "expected": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837"
+        }
+      ]
+    }
+  ],
+  "inheritedClosureReport": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/integration03/inherited-close-v2/report.json",
+  "toolInputs": [
+    "selfhost/tools/performance/phase42/validation/close-release-v6.py"
+  ],
+  "remainingRequiredSteps": [
+    "composite-preinstall"
+  ]
+}

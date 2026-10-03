@@ -1,55 +1,59 @@
 # Generated-program performance and the fast development loop
 
 Use the [compiler guide](BEND-IN-BEND.md), the
-[Phase40 report](../implementation/phase40/README.md) and the
-[portable current benchmark guide](../selfhost/tools/performance/phase40/README.md).
-**Phase40 checked06 is installed**, with 42 ordinary/relocated CLI checks and all
-15 postinstallation audit groups passing. The target remains upstream
-`018751270e800bc222a93dad7f257083ee53a5f7`. Ordinary compilation executes Bend.
+[Phase42 report](../implementation/phase42/README.md) and the
+[portable Phase42 benchmark guide](../selfhost/tools/performance/phase42/README.md).
+**[Phase42 checked16 is installed](../implementation/phase42/integration.md).**
+Release verification, all 42 ordinary/relocated CLI checks, the 15-group
+postinstall audit and all 227 canonical source bindings pass. The
+[release manifest](../selfhost/dist/release.json) identifies the installed API;
+Phase41 checked01 is retained as the comparison baseline. The upstream pin
+remains `018751270e800bc222a93dad7f257083ee53a5f7`.
 
-Against Phase39, the two list pipeline points run **9.97–13.11× faster** and
-three tree points **1.83–2.18× faster**. List remains **4.51–6.52× TypeScript time**
-and tree **17.15–21.54×**. The [full table](../implementation/phase40/execution/report.md)
-covers 45 points / 23 sources using 42 retained exact-byte comparisons and three
-fresh corrected ray comparisons. Each keeps its original intact paired rotation
-and protocol. No typical-program speed or parity claim follows.
+The [fresh 45-point results](../implementation/phase42/results.md) pass all 669
+role samples. Point-weighted geometric mean TypeScript-relative time falls from
+12.57× to 8.86×, a 1.42× improvement over Phase41; equal source weighting improves
+1.35×. Tree improves 6.27–8.02×, list 2.72–6.65× and BST 23.66–26.96×. Only one
+of 45 points beats TypeScript; universal parity was not achieved. The
+[full chart](../implementation/phase42/runtime-ratios.svg),
+[compiler-request costs](../implementation/phase42/compiler-cost.md) and
+[source accounting](../implementation/phase42/complexity.md) preserve per-point
+variability and the compilation/complexity tradeoff.
 
-The [admission record](../implementation/phase40/performance-admission.md) keeps
-costs and rejected outcomes: a 2.43× ray regression was corrected before release;
-the smallest Mandelbrot point retains a 9.68% slower median with overlapping
-ranges; 30 final points have identical Phase39/Phase40 bytes. Compilation request
-cost rises **24.45% tree / 19.09% list**, with numeric unchanged and local noisy.
-Four-source requests remain **4.66–8.37× TypeScript**. Source grows **141 lines**,
-with unchanged runtime, module and type counts. The
-[cost report](../implementation/phase40/compiler-cost.md) separates request,
-startup and full-process boundaries.
+The [generated-JavaScript architecture](PHASE42_GENERATED_JS.md) describes the
+selected optimizer's private graphs, layouts, fusion and structural execution.
+The Phase42 report owns results, regressions, compilation costs and source-size
+accounting. Compiler-request throughput, generated execution and sampled profiles
+are separate measurements; no typical-program or universal parity claim follows.
 
-All 18 final diagnostic captures pass on the exact selected modules. Sampled
-allocation per call falls **81.8% list512 / 46.9% tree8**. List hot paths now use
-direct workers; tree still contains residual generic dispatch. Static total call
-sites grow because fallback code remains. The
-[profile report](../implementation/phase40/profile-findings.md) distinguishes
-static sites, dynamically sampled costs and clean execution timing.
-
-Start a portable current comparison from the repository root:
+The maintained catalog has 45 points across 23 sources. The Phase42 baseline
+packages retained Phase41 checked01 and unchanged pinned TypeScript. The
+[current bundle](../selfhost/tools/performance/phase42/current/manifest.json)
+packages selected checked16 modules. Run from the repository root:
 
 ```sh
 python3 selfhost/tools/performance/programs/run.py \
   --catalog selfhost/tools/performance/phase37/catalog.json \
-  --baseline selfhost/tools/performance/phase40/baseline/manifest.json \
-  --candidate selfhost/tools/performance/phase40/current/manifest.json \
-  --budget 20 --set fast --cpu 3 --out selfhost/build/my-phase40-screen
+  --baseline selfhost/tools/performance/phase42/baseline/manifest.json \
+  --candidate selfhost/tools/performance/phase42/current/manifest.json \
+  --node /absolute/path/to/node --cpu 3 \
+  --rss-mib 2048 --available-mib 2048 \
+  --budget 20 --set fast --out selfhost/build/my-phase42-screen-NEW
 ```
 
-Use a new output path. Select cases independently from the 20/60/300/600-second
-presets. The current five-point portable smoke passes in **20.36 seconds**,
-including runner overhead; a preset is not a guarantee of full catalog coverage
-or an exact enclosing wall time. Keep incomplete outcomes explicit. Separate
-profiles/static analysis use `programs/diagnose.py` with the same manifests and
-catalog; see the [guide](../selfhost/tools/performance/phase40/README.md).
+Choose an available CPU and a fresh output path. Node 24+ runs the portable suite;
+exact diagnostics use recorded Node 24.18.0. Select cases independently from the
+20/60/300/600-second ceilings. A ceiling is not a completion or wall-duration
+promise. Complete 45-point coverage needs three serial 15-point 600-second batches:
+mandatory warmups alone exceed one 600-second ceiling. The
+[Phase42 guide](../selfhost/tools/performance/phase42/README.md) provides batching,
+candidate acquisition, archive replay and diagnostic commands. Keep profiles,
+static analysis and other compiler work separate from clean timing.
 
 Historical sections below retain their original Phase39/37 denominators and
-protocols. Their ratios must not be multiplied into a current comparison.
+protocols. [Phase40 results](../implementation/phase40/README.md) retain their own
+selected-module evidence and compiler costs. Ratios from different phases must
+not be multiplied into a current comparison.
 
 ## What to run during optimization
 

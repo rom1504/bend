@@ -1,5 +1,9 @@
 # P42-006: exact closed native data and sequential structural traversal
 
+**Final outcome — Phase42 installed:** Accepted exact native List/Sigma proofs, sequential structural execution, guarded Nat.add metadata and owned native construction under the pre-existing host contract. Checked16 separates strict native equality from older quantity-2 vector equality. FinalBST32/64gains are23.66×/26.96×; Map dispatch experiments regressed and were rejected.
+
+See the [final report](../../implementation/phase42/README.md), [mechanisms](../../implementation/phase42/mechanisms-and-decisions.md), and [complete results](../../implementation/phase42/results.md).
+
 Status update: resumed under the existing published standard-intrinsics-at-init
 contract. The checked-input preimport BigInt witness (proxy26→30; changed-code
 events7→0) lies outside that contract; its exact evidence is retained and the

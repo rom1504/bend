@@ -6,26 +6,36 @@ interpreter and JavaScript/native emitters in Bend. JavaScript handles filesyste
 and process orchestration, primitives and the public-data adapter. Ordinary
 compilation runs Bend code without a TypeScript fallback.
 
-**[Phase41 checked01 is installed](../implementation/phase41/integration.md).** The
-postinstall audit passes 15/15 gates, and all 227 canonical source bindings match. The source adds
-35 physical lines and four definitions; of 45 generated modules, 42 are
-byte-identical to Phase40, with only three tree points changed. Its API SHA256
-is `9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b`. The
-upstream pin is unchanged. Release verification and all 42 ordinary/relocated CLI
-checks pass. The portable current bundle is available at
-[`current/manifest.json`](../selfhost/tools/performance/phase41/current/manifest.json);
-its 5-point fast set passes. See the [Phase41 integration account](../implementation/phase41/integration.md)
-and [results](../implementation/phase41/README.md).
+**[Phase42 checked16 is installed](../implementation/phase42/integration.md).**
+Release verification, all 42 ordinary/relocated CLI checks, the 15-group
+postinstall audit and all 227 canonical source bindings pass. The
+[release manifest](../selfhost/dist/release.json) binds installed API
+`63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54`.
+[Phase41 checked01](../implementation/phase41/integration.md) is retained as the
+comparison baseline.
 
-**Phase40 checked06 is the previous installed release** ([release record](../implementation/phase40/release-06.md)).
-Its release verification, all 42 ordinary/relocated CLI checks and the
-[15-group final audit](../implementation/phase40/final-conformance/gates.md) pass;
-227 canonical files match the selected checked snapshot. Its API SHA256 is
-`630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a`. This is a
-checked B1 derivative, not a new self-emitted fixed point.
-The target remains upstream
+The [Phase42 report](../implementation/phase42/README.md) is the current results
+entry. Its [fresh 45-point comparison](../implementation/phase42/results.md)
+passes all 669 role samples: point-weighted geometric mean improves 1.42× over
+Phase41, from 12.57× to 8.86× pinned TypeScript time. Only one of 45 points beats
+TypeScript. The [full chart](../implementation/phase42/runtime-ratios.svg),
+[compiler costs](../implementation/phase42/compiler-cost.md) and
+[source-size account](../implementation/phase42/complexity.md) preserve remaining
+gaps and tradeoffs.
+
+Read the [generated-JavaScript architecture](PHASE42_GENERATED_JS.md) for covered
+private calls, owned native and flat layouts, total List fusion, sequential
+continuations, bounded recursion and request-local facts. The
+[portable Phase42 guide](../selfhost/tools/performance/phase42/README.md) explains
+45-point comparisons against retained Phase41 and pinned TypeScript, with serial
+bounded batches. The [current bundle](../selfhost/tools/performance/phase42/current/manifest.json)
+packages the selected emitted modules. Historical results below
+retain their original denominators and do not establish current speed ratios.
+
+This remains a checked B1 derivative, not a new self-emitted fixed point. The
+target remains upstream
 [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
-after Bend 2.0.34. The [release manifest](../selfhost/dist/release.json) binds it.
+after Bend 2.0.34.
 
 ## Historical measured results: Phase40
 
@@ -133,12 +143,13 @@ Exact-entry, host-intrinsic and live dependency checks select the fast path;
 unsupported source shapes and changed public descriptors retain ordinary
 execution. There is no new public record, array or Nat representation. See the
 [architecture](../selfhost/docs/ARCHITECTURE.md) and the
-[Phase40 backend rules](../implementation/phase40/backend-rules.md) for current
-proof boundaries and [Phase37 design](../design/phase37/README.md) for its additions.
+[generated-JavaScript architecture](PHASE42_GENERATED_JS.md) for selected
+current proof boundaries, the historical
+[Phase40 backend rules](../implementation/phase40/backend-rules.md), and [Phase37 design](../design/phase37/README.md) for its additions.
 Broad private helper inlining was rejected after regressions, so copying more
 code is not itself an optimization criterion.
 
-Use the portable [Phase40 program loop](../selfhost/tools/performance/phase40/README.md)
+Use the portable [Phase42 program loop](../selfhost/tools/performance/phase42/README.md)
 to select **20, 60, 300 or 600 second** budgets independently from case coverage.
 Prepare checked compiler output once, then reuse those exact modules for short
 screens. An incomplete budgeted run stays incomplete. The
@@ -290,8 +301,8 @@ npm run build -- /absolute/release-config.json /absolute/new-attempt
 Config fields and selection semantics are documented in the
 [maintained workflow guide](PHASE5_DEVELOPMENT.md). Broad conformance and checked
 self-reproduction are release/integration gates, not every small edit's build.
-The [Phase40 release record](../implementation/phase40/release-06.md) records current
-validation status. The historical [Phase32 release report](../implementation/phase32/release-03.md)
+The [Phase42 report](../implementation/phase42/README.md) records current
+qualification and release status. The historical [Phase32 release report](../implementation/phase32/release-03.md)
 retains its own evidence, limits and ordinary/relocated CLI closure.
 
 ## Work on the current source

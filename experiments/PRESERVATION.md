@@ -521,7 +521,7 @@ copies and release/closure verification. Both failed raytrace wrappers and the
 incorrect-extension HVM launch are retained. The per-file receipt independently
 reopens and verifies every archived byte. The unchanged checked compiler comes
 from the explicit Phase27 capsule prerequisite; pinned upstream Git and Node24
-remain external versioned dependencies. All103 unrelated paths remain unchanged.
+remain external versioned dependencies. All 103 unrelated paths remain unchanged.
 
 ## Phase29 generated-program fast loop
 
@@ -536,7 +536,7 @@ The final audit, failed audit combiner, source-admission/recognizer failures,
 CLI smoke expectation failure and corrected installed-release checks remain.
 The capture independently reopens and verifies every archived member. Explicit
 Phase25/27/28 capsules supply prior source/emission/checked-compiler prerequisites;
-pinned Git and Node24.18.0 remain external dependencies. All103 protected starting
+pinned Git and Node24.18.0 remain external dependencies. All 103 protected starting
 paths are unchanged. No earlier experiment material is deleted or silently adopted.
 
 ## Phase30 direct generated code
@@ -668,3 +668,15 @@ checked06 identity, 42 retained exact-byte timing comparisons, three fresh ray
 comparisons and preserved rejected evidence. Original external receipt paths
 retain their meaning; a restored copy does not fabricate relocated provenance.
 Future experiments must use a new raw phase directory.
+
+## Phase42 final campaign
+
+The [published evidence index](../selfhost/tools/performance/phase42/evidence/README.md)
+retains34,982 raw files, including failed proposals, all checked images, final
+45-point/669-sample timing,36 compiler requests,36 profiles,335 job intervals,
+source snapshots and postinstall qualification. Archive SHA256
+`bc1a5ead1eee4cec316e1c21f84ad44890c7ccc457053b9c519cea0ec0cda7a7`;
+91,512,582 compressed bytes, independently reopened and verified. The raw tree
+and ledger are closed. [Portable replay](../selfhost/tools/performance/phase42/README.md)
+uses separate retained Phase41/TypeScript and current checked16 bundles.
+All 103 pre-existing unrelated files remain unchanged and unstaged.

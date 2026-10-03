@@ -1,45 +1,78 @@
-# Phase42: faster generated programs — final qualification in progress
+# Phase42: faster generated programs
 
-The selected compiler is **checked16**, API
-`63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54`.
-Phase41 remains installed until the fresh final semantic, performance, compiler
-cost and installation gates pass. The upstream pin remains
-`018751270e800bc222a93dad7f257083ee53a5f7`. No PR comment has been posted.
+**Phase42 checked16 is installed and qualified.** The campaign implemented the
+[roadmap](../../design/phase42/README.md), used seven parallel owner/review roles,
+compared the complete maintained catalog, and preserved unsuccessful experiments.
+All commits are on `rom1504/bend`, branch `selfhost/bootstrap`. No PR comment was posted.
 
-The [comprehensive roadmap](../../design/phase42/README.md) was committed before
-implementation. Seven agents investigate and review independent mechanisms;
-root serializes compilation, timing and profiling under explicit memory limits.
-[Iteration efficiency](iteration-efficiency.md) records what helped and what
-slowed the campaign. Source checkpoints are pushed throughout.
+The largest gains are substantial, but **overall TypeScript parity was not reached**.
+Fresh same-run measurements compare Phase41, checked16 and pinned TypeScript:
 
-Selected changes remove repeated private dispatch, flatten completely owned tree
-graphs, use bounded native recursion with iterative deep fallback, fuse total list
-pipelines, admit proven native List/tuple components, simplify owned constructors,
-and reuse exact request-local planning facts. [Mechanisms and decisions](mechanisms-and-decisions.md)
-explains the proof domains, causal experiments and rejected alternatives.
+| Workload | Speedup over Phase41 | Current time / TypeScript time |
+| --- | ---: | ---: |
+| Tree, three input sizes | 6.27–8.02× | 1.15–1.94× |
+| BST, two sizes | 23.66–26.96× | 6.65–8.36× |
+| List pipelines, two sizes | 2.72–6.65× | 0.605–2.23× |
+| Full 45, equal-point geometric mean | 1.42× | 8.86×, previously 12.57× |
+| Same catalog, equal-source geometric mean | 1.35× | 11.42×, previously 15.40× |
 
-Short screens show tree execution approaching TypeScript on larger inputs and
-larger fused-list pipelines running faster than TypeScript. BST execution improves
-substantially, but still has a material gap. These are scoped screens with explicit
-adjacent-image denominators, not final 45-point results or universal parity.
-[Checkpoint06](checkpoint06.md) contains the last BST comparison and
-[checkpoint05](checkpoint05.md) the bounded-tree experiment.
+Lower time ratios are better. The list512 point beats TypeScript; no full-catalog
+point reaches half its time. These statistics describe 45 points from 23 source
+programs, not the distribution of arbitrary Bend applications. Maps, lexer,
+records and several other families retain large gaps. The [results](results.md),
+[full table](full-results-table.md), [machine data](full-results.json) and
+[figure](runtime-ratios.svg) preserve every point, sample range and drift metric.
+All 669 fresh samples pass. One expression point's original 10.98% slower median
+and its separate 2.51% slower confirmation remain visible; neither is discarded.
 
-The inherited counter preflight caught a real quantity-2 vector admission
-regression. The five-line checked16 repair restores the established comparison
-policy while preserving strict native-container proofs. The unchanged counter
-controller passes 35 value oracles, five mutation boundaries and all activation/
-refusal requirements; native proof passes all 43 observations.
-[Checkpoint07](checkpoint07.md) and [integration corrections](integration-corrections.md)
-retain the failure and repair. Fresh checked16 tree output is byte-identical to
-checked15, and its inherited full-value and deep controls pass.
+![All 45 runtime points relative to TypeScript](runtime-ratios.svg)
 
-[Complexity](complexity.md): 20,056 compiler lines across 70 modules, an increase
-of 1,158 lines and 141 definitions. Types and laws are unchanged. The runtime adds
-three lines. This is not source simplification. Final four-case compilation cost
-and full45 runtime measurements remain pending and will be reported separately.
+## What changed
 
-Use the [portable performance guide](../../selfhost/tools/performance/phase42/README.md)
-for 20/60/300-second selections and three serial 600-second full-catalog batches.
-Profiling and generated-JavaScript comparison run separately from clean timings.
-The current-bundle publication and installed release remain pending.
+Prove a complete private computation once, then execute ordinary direct JavaScript
+inside it. The retained implementation combines direct helper calls, owned
+constructor literals, private flat tree layouts, bounded native recursion with
+deep iterative fallback, total list-pipeline fusion, native List/product component
+proofs, and exact request-local planning reuse. [Mechanisms and decisions](mechanisms-and-decisions.md)
+explains eligibility, rejected alternatives and causal experiments; the
+[architecture reference](../../docs/PHASE42_GENERATED_JS.md) describes the source.
+
+Profiles support the representation/dispatch finding. Tree sampled allocation is
+now close to TypeScript, and fused lists allocate less. Map, lexer and ray tracing
+still allocate far more and spend substantial time in generic dispatch.
+[Profile findings](profile-findings.md) separates those observations from clean
+timing and identifies the next targets.
+
+## Correctness, cost and usable release
+
+[Integration](integration.md) records 3,026 main and 196 broader frontend
+observations with zero differences, 81 matching backend outcomes, 154 application
+observations, inherited/new optimizer controls, 227 exact canonical bindings,
+42 CLI checks and all 15 postinstall audit groups. The four shared check failures
+and eight nonapplicable backend outcomes remain explicit. This is a checked B1
+derivative, not a new self-emitted fixed point or universal backend proof.
+
+[Compiler request costs](compiler-cost.md) change by −6.17% for tree, −6.03%
+for numeric recurrence, +5.79% for pair and +6.69% for list.
+[Complexity](complexity.md) grows from 18,898 to 20,056 physical Bend lines
+(+1,158), with 141 added definitions and three added runtime lines. There is no
+simplification claim. [Performance admission](performance-admission.md) makes
+these tradeoffs explicit.
+
+The [installed release](../../selfhost/dist/release.json) has API SHA256
+`63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54`, on unchanged
+upstream pin `018751270e800bc222a93dad7f257083ee53a5f7`. Use the
+[compiler guide](../../docs/BEND-IN-BEND.md) and
+[portable benchmark guide](../../selfhost/tools/performance/phase42/README.md).
+The [current bundle](../../selfhost/tools/performance/phase42/current/manifest.json)
+contains all 45 points; short selections, complete three-batch comparisons,
+profiles and side-by-side generated-JavaScript analysis are documented.
+
+The campaign also exposed costly validation plumbing. [Failure lessons](failure-lessons.md),
+[integration corrections](integration-corrections.md), and
+[iteration efficiency](iteration-efficiency.md) distinguish compiler defects from
+invalid fixtures and stale instrumentation. The [time account](accounting.md) records5.08hours through execution closure,
+88.79minutes in335 recorded jobs, and216.27minutes of unclassified time.
+The [evidence index](../../selfhost/tools/performance/phase42/evidence/README.md)
+publishes the independently reopened34,982-file raw archive, including failures.
+All 103 unrelated starting files remain unchanged.

@@ -17,54 +17,32 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 Ordinary compilation runs the Bend implementation without a TypeScript fallback;
 the target remains pinned to **0187512, after Bend 2.0.34**.
 
-**[Phase41 checked01 is installed](implementation/phase41/integration.md).** Its
-postinstall audit passes **15/15 gates**, including all **227 canonical source bindings**.
-The source adds **35 physical lines and four definitions**; among 45 emitted
-modules, **42 remain byte-identical** and only three tree points change. The
-upstream pin is unchanged. Release verification and all **42 ordinary/relocated
-CLI checks** pass. See the [Phase41 integration account](implementation/phase41/integration.md)
-and [results](implementation/phase41/README.md). The portable current bundle is
-available at [current/manifest.json](selfhost/tools/performance/phase41/current/manifest.json);
-its 5-point fast set passes.
+**[Phase42 checked16 is installed](implementation/phase42/integration.md).**
+Release verification, all 42 ordinary/relocated CLI checks, the 15-group
+postinstall audit and all 227 canonical source bindings pass. The
+[release manifest](selfhost/dist/release.json) identifies the installed API;
+[Phase41 checked01](implementation/phase41/integration.md) is the retained baseline.
+This remains a checked B1 derivative, not a new self-emitted fixed point.
 
-**Phase40 checked06 is the previous installed release** ([release record](implementation/phase40/release-06.md)).
-Its release verification and all **42 ordinary/relocated CLI checks** passed. The
-[Phase40 final integration](implementation/phase40/integration.md) closes
-**15 audit groups and 227 canonical/frozen source pairs**. It remains a checked
-B1 derivative, not a new self-emitted fixed point.
+The [fresh 45-point results](implementation/phase42/results.md) pass all 669 role
+samples. The point-weighted geometric mean improves 1.42× over Phase41, from
+12.57× to 8.86× pinned TypeScript time; only one of 45 points beats TypeScript.
+Tree, list and BST workloads improve substantially, while large gaps remain in
+other families. See the [full chart](implementation/phase42/runtime-ratios.svg),
+[compiler-request costs](implementation/phase42/compiler-cost.md) and
+[source-size tradeoff](implementation/phase42/complexity.md).
 
-The [Phase40 report](implementation/phase40/README.md) adds guarded list workers
-and broader structural traversal while retaining tagged values, sharing,
-evaluation order, host mutation and public fallback. Lexer experiments remain
-manual prototypes.
-
-[Selected execution evidence](implementation/phase40/execution/report.md) covers
-**45 points across 23 sources**: **42 complete Phase40 checked05 measurements
-reused by exact module identity, plus three fresh checked06 ray measurements**.
-Relative to starting Phase39, selected list points improve **9.97–13.11×** and
-tree points **1.83–2.18×**. Remaining TypeScript execution gaps are
-**4.51–6.52× for lists** and **17.15–21.54× for trees**. Per-point protocols,
-ranges and drift remain explicit; these are not average-program or parity claims.
-See [profiles](implementation/phase40/profile-findings.md) and the
-[admission decision](implementation/phase40/performance-admission.md).
-
-Normal [compiler-request cost](implementation/phase40/compiler-cost.md) rises
-**24.45% for tree** and **19.09% for list**; checked requests remain
-**4.66–8.37× TypeScript** on the four measured sources. Source grows **141 physical
-Bend lines** to **18,863 lines / 70 modules**, with unchanged types, laws and
-runtime. Runtime gains carry a compiler-cost and source-size tradeoff.
-
-Frontend agreement remains **3,026 main + 196 broader exact observations**.
-Backend outcomes remain **69 pass / 8 not applicable / 4 shared failures**.
-[Integration](implementation/phase40/integration.md) and
-[conformance](selfhost/CONFORMANCE.md) retain their overlapping scopes and limits.
-
-Use the [portable Phase40 benchmark guide](selfhost/tools/performance/phase40/README.md)
-for **20 / 60 / 300 / 600-second presets**, selected cases, CPU/allocation
-profiles and generated-JavaScript comparisons. Its current bundle preserves all
-**45 points** in **1,336,751 bytes**. Its five-point portable smoke passes all
-**45 samples**, with **20.36 seconds** reported wall using the 20-second preset.
-Heavy jobs run serially with explicit memory limits.
+The selected compiler removes repeated dispatch inside proved private graphs,
+uses owned data layouts, fuses eligible total List pipelines, and combines
+bounded native recursion with iterative structural fallback. Read the
+[generated-JavaScript architecture](docs/PHASE42_GENERATED_JS.md) for admission,
+representation and host boundaries. The
+[portable Phase42 benchmark guide](selfhost/tools/performance/phase42/README.md)
+provides 20/60/300-second selections and three serial 600-second full-catalog
+batches against retained Phase41 and pinned TypeScript. The [portable current bundle](selfhost/tools/performance/phase42/current/manifest.json)
+contains the selected emitted modules. Historical
+[Phase40 results](implementation/phase40/README.md) retain their original
+baselines, protocols and limits.
 
 From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
 `npm run build` rebuilds with pinned upstream. The

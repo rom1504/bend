@@ -522,7 +522,7 @@ partial BST activation must not stand in for a runtime-assembled actual winner.
 
 Runtime batching v1 preserves45 catalog IDs and669 fresh samples with unchanged
 per-case warmup/calibration/target/rounds and balanced roles. Closure requires
-complete successful processes, exact identities/protocol and all45 cases once,
+complete successful processes, exact identities/protocol and all 45 cases once,
 and does not infer performance admission. Reviewer found a Node binding gap:
 path-only runtime comparison did not bind the timing executable's hash back to
 the checked attempt. Immutable v2 successors add Node identity to measurement

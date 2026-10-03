@@ -152,3 +152,28 @@ Exact baseline/candidate module hashes are
 `064a1919ff2c0907bdfe8976ace47738f3bd0f511adf0d5e87ac2da0bcd1458c`.
 The control report hash is
 `6cfe1a3d0bf40a7064182009fddc3d95103bbd2ccaa7e2a769cf66405afab022`.
+
+[Strict checked10 proof controls](native-proof-controls10-summary.json) now pass
+all43 assertions, with exact six input identities and five separate activation
+observations. The new native domain and bounded equality work; original bench
+still lacks a full proof, so runtime entry/gain is unproved. Exact isolated
+matched-set source delta is220 net lines/28 functions. This is not the complete
+compiler cost, which must be measured on the final image.
+
+## Executed matched-set stop
+
+The [returning host callback assessment](returning-host-callback-assessment.md)
+records the executed checked07/checked11 BigInt reentry and mutation falsifier.
+That preimport case is outside the published initialization contract; the
+earlier blanket reversal recommendation is superseded.
+Static type controls passed43 assertions, but unsupported preimport callback ownership and dynamic
+G.code parity failed; no BST runtime gain is claimed. Nat.add candidate02
+remains isolated pending supported controls.
+
+Contract clarification: docs/BEND-IN-BEND-PERFORMANCE.md405–416 already
+assumes standard intrinsics at module initialization. The retained preimport
+BigInt witness deliberately violates that assumption; the earlier blanket
+stop is superseded and no rollback is required solely on it. Nat.add
+candidate02 resumes narrow metadata review, with original runtime arithmetic
+and calls unchanged. Bounds and supported postimport mutation/Error-reentry
+controls remain required; arbitrary preimport observer support is not added.

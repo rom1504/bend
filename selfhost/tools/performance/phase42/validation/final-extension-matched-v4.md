@@ -1,0 +1,13 @@
+# Prospective bounded-hybrid matched release v4
+
+Preserves v3 and adds the actual source hybrid:28 commands/fifteen groups, reviewed false pending final checked14/15 selection. Existing matched/native/Nat groups remain exact. Source layout controller advances to v4/catalogv7 and additionally requires four hybrid workers/thirteen private wrapper+hybrid+stack bodies, five logical workers, one flat block, fifteen guards and unchanged five public worker bodies.
+
+Hybrid comparator is the immutable pre-hybrid checked13 `compiler-cost-screen13-candidate/modules/tree-bitonic.mjs`, with its preserved fresh checked receipt. Final candidate uses the final full45 tree module. Derive-v1 confirms checked receipts, identical input/runtime/Base for this mechanism comparison, four hybrid marker/literal16 prefixes with budget-zero before any native work, and four byte-identical original iterative fallback bodies. The full45 Phase41 baseline remains independent and has its own earlier runtime; the mechanism-specific same-runtime check is not a full release runtime equality premise.
+
+Owner contract binds derive complete/checked/actualSourceIntegration, exact budget[16], eight paired worker/body SHA rows, clean/diagnostic original/candidate16 module roles, fixed checked13 baseline attempt and final attempt/API/runtime. Controls-v2 records exact84 complete/warp values, ten aliases, two deep cases/depth30000 and original/candidate records. Candidate native6317/fallback2/minBudget0/deepFallbackDelta2/proofnull prove bounded native activation and actual iterative fallback. Public scalar assertions and independent same-algorithm oracle remain in the original controller. No Number-Nat or alternate algorithm substitution.
+
+Controls write the file `${OUT}/hybrid-derived/report.json` inside the fresh derive directory. The controller accepts an output file, not an output directory; the derive directory already exists and appears as an explicit bounded-control argument. This matches the existing supervisor/collector execution ownership contract without a new wrapper.
+
+Use `prepare-final-v3.py` and `close-release-v2.py`. The latter supports explicit `derivationField: deriveSha256` for this report while retaining the old default derivationSha256 for inherited owners. It still compares the reported digest to the exact fresh derivation file. No count, body, resource or checked identity gate is relaxed.
+
+Successful checked14 hybrid evidence supplied exact schema/values. The future final image must produce its own reports; these earlier passes never close it. Final selected source may still be14 or15; reviewed stays false until root resolves that choice. Only CPU5 static JSON/AST work here, no tool materialization or heavy execution.

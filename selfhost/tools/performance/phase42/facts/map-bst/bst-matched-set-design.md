@@ -1,10 +1,13 @@
 # BST stretch: exact private containers plus sequential continuation
 
-This remains a design and cheap falsifier proposal. No native-domain patch is
-applied or built. The held sequential candidate is independent and cannot
-activate in the unchanged BST benchmark while its root graph refuses native
-containers. Complete scalar-root proof, private type proof and native match
-emission must be evaluated as a matched set before claiming any BST gain.
+> Contract clarification: [the executed preimport BigInt witness](returning-host-callback-assessment.md) falls outside the published standard-intrinsics-at-initialization contract (docs/BEND-IN-BEND-PERFORMANCE.md405–416, pre-Phase42). The earlier blanket promotion stop is superseded; retain the exact witness as boundary evidence. All43 static native-domain assertions passed, but supported postimport mutation, bounds and complete-value controls remain required.
+
+
+The original proposal below was subsequently applied to checked development
+images and acquired static predicate controls. Matched runtime activation is
+reviewed under the published standard-intrinsics-at-initialization contract.
+The preimport observer falsifier is outside that contract; supported mutation
+and complete-value parity still require executed controls.
 
 ## Exact admitted type relation
 
@@ -174,3 +177,12 @@ Current source has a third BookCache payload for layout facts alongside source
 index and plan facts. Any owned namespace must coexist without positional
 assumptions that discard/misread that payload; ordinary caches never imply owned
 proof authority. Initial uncached owned planning is the simpler stretch option.
+
+Source16 compatibility correction: strict closed native equality is now called
+directly by JPure Ann/Var/terminal checks and native-proof controller v02.
+The shared local-region equality policy is restored exactly to Phase41 for
+its existing qty2 vector/Sigma callers, whose layout gates remain separate.
+The original broad shared-equality change caused a real lost-worker regression;
+43 native assertions alone did not cover it. No native qty1/type/field/refusal
+proof is weakened by the split. Frozen v01 evidence and source15 counts remain
+retained as historical artifacts; source16 needs its own actual validation.

@@ -1,0 +1,118 @@
+{
+  "status": "executed-counterexample-promotion-blocked",
+  "report": "selfhost/build/phase42/preimport-bigint-counterexample01/report.json",
+  "reportSha256": "ec89c3762f70de7b1367dee1f920275a381a5036d54afa0b8e4dc055bfb218e7",
+  "producerSha256": "b324d9a0ad8c0faaa7b01a743da01bf2a9480207ef1bab55f1b0bb7d015559b1",
+  "inputs": [
+    {
+      "role": "baseline",
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-sequential-baseline01/modules/sequential.mjs",
+      "sha256": "aa22461ecb3a175be26ba79e027727f016dd6a1f435303f7b407dea8fbe51197",
+      "receiptSha256": "905b3e38ba62735715ed73fd883a333066d36f8d0b9946c111dbd65729cce324"
+    },
+    {
+      "role": "candidate",
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-sequential-candidate11/modules/sequential.mjs",
+      "sha256": "7761bbc1458f726e8ecb6fc6e8cc835b56ad2bbd88dec4049fd18128694e34d0",
+      "receiptSha256": "b597d1116d21d82eb6547152194169a3efd8cb8363192129e6159a6805c8f1cb"
+    }
+  ],
+  "observations": {
+    "rootValues": [
+      47,
+      47,
+      47,
+      47
+    ],
+    "reentrantValues": [
+      26,
+      30
+    ],
+    "mutationCodeEventCounts": [
+      7,
+      0
+    ],
+    "candidateCallbackProofActive": true,
+    "initialHostGuardBoth": true
+  },
+  "comparisons": [
+    {
+      "mode": "reentry",
+      "equal": false,
+      "baseline": {
+        "value": 47,
+        "inner": [
+          {
+            "value": 26
+          }
+        ],
+        "external": [
+          "root.$",
+          "root.a",
+          "left.$",
+          "left.a",
+          "right.$",
+          "right.a",
+          "right.left.$",
+          "right.left.a",
+          "right.right.$",
+          "right.right.a"
+        ],
+        "mutations": []
+      },
+      "candidate": {
+        "value": 47,
+        "inner": [
+          {
+            "value": 30
+          }
+        ],
+        "external": [
+          "root.$",
+          "root.a",
+          "right.$",
+          "right.$",
+          "right.a",
+          "right.a",
+          "right.a",
+          "right.right.$",
+          "right.$",
+          "right.$",
+          "right.a",
+          "right.a",
+          "right.a",
+          "right.left.$",
+          "left.$"
+        ],
+        "mutations": []
+      }
+    },
+    {
+      "mode": "mutation",
+      "equal": false,
+      "baseline": {
+        "value": 47,
+        "inner": [],
+        "external": [],
+        "mutations": [
+          "mutated.fold.code",
+          "mutated.fold.code",
+          "mutated.fold.code",
+          "mutated.fold.code",
+          "mutated.fold.code",
+          "mutated.fold.code",
+          "mutated.fold.code"
+        ]
+      },
+      "candidate": {
+        "value": 47,
+        "inner": [],
+        "external": [],
+        "mutations": []
+      }
+    }
+  ],
+  "classification": "outside-published-standard-intrinsics-at-initialization-contract",
+  "contractSource": "docs/BEND-IN-BEND-PERFORMANCE.md:405-416 (pre-Phase42 commit8582de7)",
+  "rollbackSolelyOnWitness": false
+}

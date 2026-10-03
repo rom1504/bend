@@ -1,0 +1,713 @@
+{
+  "kind": "phase42-Nat-add-source-proof-refusal",
+  "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/report.json",
+  "reportSha256": "4baf79ba9874cee658fe4ec9a946ab9b498f16834041f5a4531867dedbd86f45",
+  "complete": true,
+  "status": "ok",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/consumed-probe.mjs",
+      "sha256": "9f1e914a3288c802b25d8dcba4699d26e311c0207b180a078b6aa338e146e7a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked10/equality/api.mjs",
+      "sha256": "164032c0048485c966e2b7789a95c8f20ee8b69bfc96e3f1442061b25e47f22f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked10/snapshot/src/runtime.mjs",
+      "sha256": "51bb6046a8ac116865e2b1ed94b5587d1257f951aed536da77da3e91338eac49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+      "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f"
+    }
+  ],
+  "definitions": [
+    {
+      "name": "Nat.add",
+      "arity": 2,
+      "native": true,
+      "templates": 0,
+      "body": {
+        "tag": "Mat",
+        "name": "Zero",
+        "id": 0,
+        "quantity": 1,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Lam",
+            "name": "b",
+            "id": 409,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "Var",
+                "name": "b",
+                "id": 409,
+                "quantity": 1,
+                "removed": [],
+                "kids": []
+              }
+            ]
+          },
+          {
+            "tag": "Mat",
+            "name": "Succ",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "Lam",
+                "name": "p",
+                "id": 410,
+                "quantity": 1,
+                "removed": [],
+                "kids": [
+                  {
+                    "tag": "Lam",
+                    "name": "b",
+                    "id": 411,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": [
+                      {
+                        "tag": "Ctr",
+                        "name": "Succ",
+                        "id": 0,
+                        "quantity": 1,
+                        "removed": [],
+                        "kids": [
+                          {
+                            "tag": "App",
+                            "name": "",
+                            "id": 0,
+                            "quantity": 0,
+                            "removed": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "Efq",
+                "name": "",
+                "id": 0,
+                "quantity": 0,
+                "removed": [],
+                "kids": []
+              }
+            ]
+          }
+        ]
+      },
+      "type": {
+        "tag": "All",
+        "name": "a",
+        "id": 407,
+        "quantity": 1,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Ref",
+            "name": "Nat",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "All",
+            "name": "b",
+            "id": 408,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "Ref",
+                "name": "Nat",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "kids": []
+              },
+              {
+                "tag": "Ref",
+                "name": "Nat",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "kids": []
+              }
+            ]
+          }
+        ]
+      },
+      "args": [
+        {
+          "tag": "ADT",
+          "name": "Nat",
+          "id": 0,
+          "quantity": 0,
+          "removed": [],
+          "kids": []
+        },
+        {
+          "tag": "ADT",
+          "name": "Nat",
+          "id": 0,
+          "quantity": 0,
+          "removed": [],
+          "kids": []
+        }
+      ],
+      "result": {
+        "tag": "ADT",
+        "name": "Nat",
+        "id": 0,
+        "quantity": 0,
+        "removed": [],
+        "kids": []
+      },
+      "refs": {
+        "names": [
+          "Nat.add"
+        ],
+        "complete": true
+      },
+      "queries": [
+        {
+          "name": "eligible",
+          "value": false
+        },
+        {
+          "name": "nativeAdmitted",
+          "value": false
+        },
+        {
+          "name": "signature",
+          "value": true
+        },
+        {
+          "name": "captureEligible",
+          "value": false
+        },
+        {
+          "name": "componentPrefix",
+          "value": true
+        },
+        {
+          "name": "selfRefs",
+          "value": 1
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "U32.to_nat",
+      "arity": 1,
+      "native": true,
+      "templates": 0,
+      "body": {
+        "tag": "Mat",
+        "name": "U32",
+        "id": 0,
+        "quantity": 1,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Lam",
+            "name": "w",
+            "id": 1279,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "App",
+                "name": "",
+                "id": 0,
+                "quantity": 0,
+                "removed": [],
+                "kids": [
+                  {
+                    "tag": "App",
+                    "name": "",
+                    "id": 0,
+                    "quantity": 0,
+                    "removed": [],
+                    "kids": [
+                      {
+                        "tag": "Ref",
+                        "name": "Word.to_nat",
+                        "id": 0,
+                        "quantity": 1,
+                        "removed": [],
+                        "kids": []
+                      },
+                      {
+                        "tag": "Lit",
+                        "name": "Nat",
+                        "id": 0,
+                        "quantity": 0,
+                        "removed": [],
+                        "kids": []
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "Var",
+                    "name": "w",
+                    "id": 1279,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "Efq",
+            "name": "",
+            "id": 0,
+            "quantity": 0,
+            "removed": [],
+            "kids": []
+          }
+        ]
+      },
+      "type": {
+        "tag": "All",
+        "name": "a",
+        "id": 1278,
+        "quantity": 1,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Ref",
+            "name": "U32",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Ref",
+            "name": "Nat",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          }
+        ]
+      },
+      "args": [
+        {
+          "tag": "ADT",
+          "name": "U32",
+          "id": 0,
+          "quantity": 0,
+          "removed": [],
+          "kids": []
+        }
+      ],
+      "result": {
+        "tag": "ADT",
+        "name": "Nat",
+        "id": 0,
+        "quantity": 0,
+        "removed": [],
+        "kids": []
+      },
+      "refs": {
+        "names": [
+          "Word.to_nat"
+        ],
+        "complete": true
+      },
+      "queries": [
+        {
+          "name": "eligible",
+          "value": false
+        },
+        {
+          "name": "nativeAdmitted",
+          "value": false
+        },
+        {
+          "name": "signature",
+          "value": true
+        },
+        {
+          "name": "captureEligible",
+          "value": false
+        },
+        {
+          "name": "componentPrefix",
+          "value": false
+        },
+        {
+          "name": "selfRefs",
+          "value": 0
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "bench",
+      "arity": 2,
+      "native": false,
+      "templates": 0,
+      "body": {
+        "tag": "Lam",
+        "name": "size",
+        "id": 3520,
+        "quantity": 1,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Lam",
+            "name": "seed",
+            "id": 3521,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "App",
+                "name": "",
+                "id": 0,
+                "quantity": 0,
+                "removed": [],
+                "kids": [
+                  {
+                    "tag": "App",
+                    "name": "",
+                    "id": 0,
+                    "quantity": 0,
+                    "removed": [],
+                    "kids": [
+                      {
+                        "tag": "Ref",
+                        "name": "inorder",
+                        "id": 0,
+                        "quantity": 1,
+                        "removed": [],
+                        "kids": []
+                      },
+                      {
+                        "tag": "App",
+                        "name": "",
+                        "id": 0,
+                        "quantity": 0,
+                        "removed": [],
+                        "kids": [
+                          {
+                            "tag": "App",
+                            "name": "",
+                            "id": 0,
+                            "quantity": 0,
+                            "removed": []
+                          },
+                          {
+                            "tag": "Ctr",
+                            "name": "BLeaf",
+                            "id": 0,
+                            "quantity": 1,
+                            "removed": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "Lit",
+                    "name": "U32",
+                    "id": 0,
+                    "quantity": 0,
+                    "removed": [],
+                    "kids": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "type": {
+        "tag": "All",
+        "name": "size",
+        "id": 3518,
+        "quantity": 2,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Ref",
+            "name": "U32",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "All",
+            "name": "seed",
+            "id": 3519,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "Ref",
+                "name": "U32",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "kids": []
+              },
+              {
+                "tag": "Ref",
+                "name": "U32",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "kids": []
+              }
+            ]
+          }
+        ]
+      },
+      "args": [
+        {
+          "tag": "ADT",
+          "name": "U32",
+          "id": 0,
+          "quantity": 0,
+          "removed": [],
+          "kids": []
+        },
+        {
+          "tag": "ADT",
+          "name": "U32",
+          "id": 0,
+          "quantity": 0,
+          "removed": [],
+          "kids": []
+        }
+      ],
+      "result": {
+        "tag": "ADT",
+        "name": "U32",
+        "id": 0,
+        "quantity": 0,
+        "removed": [],
+        "kids": []
+      },
+      "refs": {
+        "names": [
+          "Nat.add",
+          "U32.to_nat",
+          "inorder",
+          "p37.bst.build"
+        ],
+        "complete": true
+      },
+      "queries": [
+        {
+          "name": "eligible",
+          "value": true
+        },
+        {
+          "name": "nativeAdmitted",
+          "value": false
+        },
+        {
+          "name": "signature",
+          "value": true
+        },
+        {
+          "name": "captureEligible",
+          "value": true
+        },
+        {
+          "name": "componentPrefix",
+          "value": true
+        },
+        {
+          "name": "selfRefs",
+          "value": 0
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ]
+    }
+  ],
+  "firstFailure": {
+    "root": "bench",
+    "point": {
+      "phase": "expression",
+      "term": {
+        "tag": "App",
+        "name": "",
+        "id": 0,
+        "quantity": 0,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "App",
+            "name": "",
+            "id": 0,
+            "quantity": 0,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "Ref",
+                "name": "Nat.add",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "kids": []
+              },
+              {
+                "tag": "App",
+                "name": "",
+                "id": 0,
+                "quantity": 0,
+                "removed": [],
+                "kids": [
+                  {
+                    "tag": "Ref",
+                    "name": "U32.to_nat",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": []
+                  },
+                  {
+                    "tag": "Var",
+                    "name": "size",
+                    "id": 3520,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "Lit",
+            "name": "Nat",
+            "id": 0,
+            "quantity": 0,
+            "removed": [],
+            "kids": []
+          }
+        ]
+      },
+      "type": {
+        "tag": "Ref",
+        "name": "Nat",
+        "id": 0,
+        "quantity": 1,
+        "removed": [],
+        "kids": []
+      },
+      "level": 4
+    },
+    "state": {
+      "valid": true,
+      "fuel": 32760,
+      "defs": [
+        "p37.bst.build",
+        "inorder"
+      ]
+    },
+    "stack": [
+      "    at $j_pure_fail$ (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/api-diagnostic.mjs:32379:330)",
+      "    at Object.f (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/api-diagnostic.mjs:21140:10)",
+      "    at run_loop (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/api-diagnostic.mjs:138:11)",
+      "    at $j_pure_expr$ (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/api-diagnostic.mjs:32377:174)",
+      "    at Object.f (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/api-diagnostic.mjs:24762:119)",
+      "    at run_loop (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/api-diagnostic.mjs:138:11)",
+      "    at $j_pure_expr$ (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/api-diagnostic.mjs:32377:174)",
+      "    at Object.f (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/api-diagnostic.mjs:24762:119)",
+      "    at run_loop (file:///home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe06/api-diagnostic.mjs:138:11)"
+    ]
+  },
+  "scope": "Executed original checked10 diagnostic. Native-add patches are separate unexecuted candidates; no root activation or runtime gain claim."
+}

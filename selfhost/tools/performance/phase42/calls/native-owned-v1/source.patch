@@ -1,0 +1,40 @@
+--- a/selfhost/src/back/js/emit.bend
++++ b/selfhost/src/back/js/emit.bend
+@@ -715,12 +715,37 @@
+ 
+ @unsafe
+ def j_constructor_literal(book, env, t, ty, literal):
++  +native = j_owned_native_literal(book, env, t, ty)
++  kc(String, Bool.not(String.eq(native, "")), u => native, u =>
+   kc(String, String.eq(literal, ""), u =>
+     kc(String, j_owned_ctor(book, t, ty),
+       u => kc(String, j_flat_data(book, ty),
+         u => "({$:" ++ j_quote(nm(t)) ++ "," ++ j_flat_ctor_args(book, env, ks(t), j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty))), 0) ++ "})",
+         u => "({$:" ++ j_quote(nm(t)) ++ ",a:[" ++ j_ctor_args(book, env, ks(t), j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty)))) ++ "]})"),
+       u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_ctor_args(book, env, ks(t), j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty)))) ++ "])"), u => literal)
++
++# Only owned private eager constructors use canonical closed native layouts.
++# Preserve original typed field emission, erased slots, order and aliases.
++@unsafe
++def j_owned_native_literal(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm) -> String:
++  kc(String, String.eq(tg(t), "Ctr") && has_name(rm(t), "$private.owned.ctor"),
++    u => j_owned_native_head(book, env, t, wnf(book, ty)), u => "")
++
++@unsafe
++def j_owned_native_head(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +head: KTerm) -> String:
++  +c = j_layout_ctor(book, head, nm(t))
++  kc(String, String.eq(nm(t), "Tuple") && U32.is_eq(terms_len(ks(t)), 2) &&
++    j_pure_closed_sigma(book, head) && j_pure_native_ctor(c, "Tuple", 2),
++    u => "[" ++ j_ctor_args(book, env, ks(t), j_specialize(book, dt(c), ks(head))) ++ "]", u =>
++  kc(String, ((String.eq(nm(t), "Nil") && U32.is_eq(terms_len(ks(t)), 0) && j_pure_native_ctor(c, "Nil", 0)) ||
++    (String.eq(nm(t), "Con") && U32.is_eq(terms_len(ks(t)), 2) && j_pure_native_ctor(c, "Con", 2))) &&
++    j_pure_closed_list(book, head),
++    u => "({$:" ++ j_quote(nm(t)) ++ ",a:[" ++ j_ctor_args(book, env, ks(t), j_specialize(book, dt(c), ks(head))) ++ "]})", u =>
++  kc(String, U32.is_eq(terms_len(ks(t)), 0) && j_primitive_type(book, head, "Bool") &&
++    ((String.eq(nm(t), "True") && j_pure_native_ctor(c, "True", 0)) ||
++     (String.eq(nm(t), "False") && j_pure_native_ctor(c, "False", 0))),
++    u => kc(String, String.eq(nm(t), "True"), u => "true", u => "false"), u => "")))
++
+ 
+ law j_io_type:
+   for +book: List<&2, KDef>

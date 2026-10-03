@@ -1,0 +1,68 @@
+--- selfhost/src/back/js/tree.bend
++++ selfhost/src/back/js/tree.bend
+@@ -758,65 +757,3 @@
+   match xs:
+     case Nil{}: ""
+     case Con{h, rest}: "_" ++ U32.show(at) ++ ":" ++ kc(String, U32.is_lt(at, child), u => "$frame.before[" ++ U32.show(at) ++ "]", u => kc(String, U32.is_eq(at, child), u => "$value", u => j_expr(book, env, h, kid(wnf(book, tel), 0), False{}))) ++ "," ++ j_flat_linear_args(book, env, rest, j_app_type(wnf(book, tel), h), child, U32.inc(at))
+-
+-# A sequential structural tail call contains one descendant result in an inert
+-# scalar context. Both calls have independently proved proper-child origins.
+-@unsafe
+-def j_sequence_leaf(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef) -> Bool:
+-  j_component_self(env, t, d) &&
+-    j_sequence_args(book, env, ks(j_call_spine(j_strip(t), Nil{})), d, 32)
+-
+-@unsafe
+-def j_sequence_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +d: KDef, +fuel: U32) -> Bool:
+-  match xs:
+-    case Nil{}: True{}
+-    case Con{h, rest}: j_sequence_context(book, env, j_strip(h), d, fuel) && j_sequence_args(book, env, rest, d, fuel)
+-
+-@unsafe
+-def j_sequence_atoms(+xs: List<&2,KTerm>) -> Bool:
+-  match xs:
+-    case Nil{}: True{}
+-    case Con{h, rest}: j_region_field_atom(j_strip(h)) && j_sequence_atoms(rest)
+-
+-@unsafe
+-def j_sequence_context(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef, +fuel: U32) -> Bool:
+-  +spine = j_call_spine(t, Nil{})
+-  kc(Bool, U32.is_gt(fuel, 0), u =>
+-    kc(Bool, j_region_field_atom(t), u => True{}, u =>
+-    kc(Bool, j_component_self(env, t, d), u =>
+-      U32.is_eq(j_component_refs([t], dn(d), 1024, 0), 1) && j_sequence_atoms(ks(spine)), u =>
+-      j_primitive_call(book, spine) &&
+-        String.contains("|U32.add|U32.sub|U32.mul|U32.and|U32.or|U32.xor|", "|" ++ nm(spine) ++ "|") &&
+-        j_sequence_args(book, env, ks(spine), d, U32.sub(fuel, 1)))), u => False{})
+-
+-# The original source proof establishes the unique descendant hole. The
+-# annotated existing slot preserves typing for the unchanged argument emitter.
+-@unsafe
+-def j_sequence_hole(+book: List<&2,KDef>, +t: KTerm, +d: KDef) -> KTerm:
+-  kc(KTerm, j_linear_emit_self(t, d), u =>
+-    j_region_annotate(kt("JSlot", "", 0, 0, Nil{}), j_fold_root_result(book, dt(d), da(d))), u =>
+-    k_with_children(t, j_sequence_holes(book, ks(t), d)))
+-
+-@unsafe
+-def j_sequence_holes(+book: List<&2,KDef>, +xs: List<&2,KTerm>, +d: KDef) -> List<&2,KTerm>:
+-  match xs:
+-    case Nil{}: Nil{}
+-    case Con{h, rest}: Con{j_sequence_hole(book, h, d), j_sequence_holes(book, rest, d)}
+-
+-@unsafe
+-def j_sequence_find(+todo: List<&2,KTerm>, +d: KDef) -> KTerm:
+-  match todo:
+-    case Nil{}: atom("Absent")
+-    case Con{h, rest}: kc(KTerm, j_linear_emit_self(h, d), u => j_strip(h),
+-      u => j_sequence_find(List.append(&2, KTerm, ks(h), rest), d))
+-
+-@unsafe
+-def j_sequence_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef, +phase: U32) -> String:
+-  +args = ks(j_call_spine(t, Nil{}))
+-  kc(String, U32.is_eq(phase, 3), u =>
+-    "const $p0=$value;const $next=[" ++ j_apply_args(book, env, j_sequence_holes(book, args, d), dt(d)) ++
+-    "];--$top;" ++ j_component_assign(0, da(d)) ++ "continue $visit;", u =>
+-    "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(j_sequence_find(args, d), Nil{})), dt(d)) ++ "];" ++
+-    "let $saved=$top<$frames.length?$frames[$top]:null;if(!$saved)$saved=$frames[$top]={args:null,left:null,phase:2};" ++
+-    "$saved.args=[" ++ j_component_save(0, da(d)) ++ "];$saved.phase=2;++$top;" ++
+-    j_component_assign(0, da(d)) ++ "continue $visit;")

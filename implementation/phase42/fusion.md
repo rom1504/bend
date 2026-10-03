@@ -179,3 +179,66 @@ intrinsics or a different guarded entry design, which exceeds a cheap equivalent
 rewrite. Existing whole-root scopes already amortize guards when several pure
 operations compose beneath one application entry; changing benchmark batching
 would not establish a compiler gain and is not proposed.
+
+Root executed `selfhost/build/phase42/fusion-entry-counterexample01/report.json`
+in0.16s. The report is complete and proves rejection. Both ordinary public
+bench calls return14, but original events are
+`[["nested",14],["nested",14]]`; the no-scope diagnostic events are
+`["changed-dbl","changed-dbl",["nested",14],"changed-dbl","changed-dbl",["nested",14]]`.
+The pre-import Math.imul wrapper mutates public G.dbl and reenters the ordinary
+export, so equal scalar return values do not establish equivalent behavior.
+This converts the prospective rejection above into an executed public
+counterexample. No-scope remains a rejected diagnostic, never a production
+candidate. Root identifies safe core flat09 as the final candidate while native,
+sequence and bridge proposals remain held on their separate actual pre-import
+BigInt ownership counterexample. Further statfold product scalarization is
+unassessed pending fresh root diagnostics; no new framework or optimization
+claim is inferred from this result.
+
+## Post-selection static simplification
+
+Root subsequently traced the q26 host-hook behavior to a pre-Phase42 published
+contract exclusion (documentation lines405–416 and Git blame). The executed
+no-scope event difference remains valid as a diagnostic of the broader host
+environment, but is not evidence that retained core fusion violates the
+published supported contract. No-scope is still unnecessary for the selected
+candidate and no gain has been established for it.
+
+`source-call-spine-simplification.patch` is an unapplied isolated cleanup.
+Each of the five `j_fusion_call` sites already computes the exact call spine
+used for subsequent argument checks. The patch passes that existing spine into
+the same tag/name/arity predicate instead of recomputing it. Producer, map,
+fold, filter-child and U32.to_nat predicates retain identical inputs and tests;
+the emission path and runtime guards are untouched. This removes one source
+line and five repeated planning traversals; no runtime speedup is claimed and
+no build was run. It is suitable for a later already-required rebuild, not a
+fresh timing campaign. A lexical whole-source reference inventory found no
+apparently unused internal j_ helper family; the four singleton names are
+public compiler entry points (`j_program`, `j_library`, `j_roots`,
+`j_compile_error`) and are retained. No large safe deletion is established.
+
+## Inherited list admission audit
+
+A static prediction suggested the Phase40 fixture's ordinary composite bench
+would bypass its global producer/filter/map/fold workers after fusion. Fresh
+checked16 emission disproves that prediction: ground_bench and chain_bench each
+have one actual fusion marker, while composite bench has no marker and emits
+two direct helper pipelines using all eight global stage workers. Therefore
+the inherited ordinary-bench worker-entry assertion remains valid; no gate
+relaxation is justified.
+
+Optional `list-actual-derive-v1.mjs` and `list-actual-controls-v1.mjs` successors
+add coverage while preserving that exact composite obligation. They retain all
+independent full-stage, complete value, alias, deep and public mutation checks.
+Separate ordinary ground/chain roots must each record one actual emitted fused
+loop entry and seven iterations, zero global stage workers and inactive proof
+on exit. An AST audit rejects array/object/new sites, G access and generic calls
+inside those loops; existing primitive Math.imul and immediate scalar arrows
+are allowed. This proves absence of intermediate data construction/generic
+traversal sites, not zero JavaScript heap allocation. A separate diagnostic
+stage witness requires every actual worker to enter. Four admission rows
+replace the previous single row by adding three obligations; composite bench
+still requires its original worker growth plus zero fusion. Refusal checks
+additionally require zero fused entry. Both successors pass pinned Node24.18
+syntax checks on CPU5; semantic execution and adoption are root decisions.
+Original Phase40 tools and evidence remain untouched.

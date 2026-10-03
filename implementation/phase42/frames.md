@@ -216,3 +216,52 @@ while remaining 1.22x TypeScript at tree9, 1.395x at tree8 and 1.99x at tree6.
 These are bounded hybrid continuation gains with unchanged algorithm, BigInt
 Nat and flat layout. Final full boundary/fixture/matched-set gates remain
 root-owned; this screen alone is not their substitute.
+
+Native-owned source15 is a separate valid constructor change. Static source13
+inspection finds exactly one zero-field ctor False and one zero-field ctor True
+in the flat bsort iterative body; the other three framed bodies contain neither.
+Thus the original hybrid-v1 identity test against source13 cannot remain literal
+for that one body after source15. The checked source14 strict four-body witness
+is retained unchanged, as are all frozen earlier producer versions.
+
+`hybrid-actual-derive-v2.mjs`, SHA256
+f921b4e717cfa30d7ae01b812f919c41544aee1bf9945a5d8a55681a1a2c8e8a,
+normalizes only a temporary identity-witness body string. Exactly two baseline
+bsort AST calls must have tags True/False, two arguments and empty field arrays;
+the substitutions are only true/false literals. The complete source15 candidate
+fallback body must equal that expected string, and both literal AST positions,
+values and text must correspond. The other three fallback bodies retain raw
+byte identity. Site offsets, texts and hashes plus before/normalized/actual body
+hashes are recorded. The witness is explicitly derived unchecked, parentChecked,
+and nonexecutable; source13.clean module bytes and executable baseline behavior
+remain unchanged. Existing independent source15 native-header/constructor proof
+and full-value controls cover the separate native optimization.
+
+Read-only actual source15 inspection confirms the predicted bsort comparison:
+raw source13 body 3aaa8da35c3b60519210ee25dd3f12f610ae7ad0bd4f307f777bc118879f155b;
+normalized/actual source15 body
+d83a345707a44867bb1411cee4500738e3133d178f808785939a944e351ede68.
+Root owns the fresh v2 focused execution and final matched-v6 recipe; no test
+assertion is discarded and no fabricated checked compiler baseline is introduced.
+
+Inherited gate inspection found real stale instrumentation after lexical flat
+clones: Phase41's ordinary tree bench bypasses its previously counted global
+warp_node, and Phase40's Nat-flow closure check treated distinct lexical scopes
+as duplicate declarations. Root's checked16 actual Nat fixture confirms one
+global and one lexical natflow.flow, one flat root, and five scalar root markers
+with five proof admissions; the old duplicate-helper failure is retained in
+focused16/run-actual-tree-derive, queue53. The earlier prediction that Phase40's
+ordinary list fixture would fuse was disproved by root's exact emission; its
+original gate remains unchanged.
+
+Frozen owned successors preserve all complete-value, alias, refusal, mutation
+and deep controls: phase41-actual-derive-v3.mjs / phase41-actual-controls-v2.mjs
+count exact global and lexical warp_node declarations, with mandatory ordinary
+lexical activation. phase40-tree-derive-v5.mjs / phase40-tree-controls-v2.mjs
+resolve every worker call to its nearest lexical declaration, reject duplicates
+within the same scope, and count exact global/lexical Nat-flow entries. Ordinary
+bench must increase the lexical counter; owned diagnostics must enter the
+original global worker. Producer/report kinds and checked receipt contracts
+stay unchanged; only additional scope/counter witnesses are added. Earlier tools
+and failed attempts remain immutable. Root/review/validation own fresh focused
+execution and the integration03 matched-v7 recipe.

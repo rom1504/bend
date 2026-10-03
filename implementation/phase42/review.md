@@ -531,3 +531,136 @@ runner's unique Node input identity to match. Static review finds the v2 gap
 resolved. An optional earlier realpath equality check for recipe NODE can fail
 before timing rather than at closure; the latter already rejects mismatch.
 No timing, controller or compiler execution was performed by this reviewer.
+
+Hybrid-flat saved-JS v2 static review found no semantic blocker in the frozen
+four-worker discriminator. Exhaustion delegates before state/match demand and
+passes current arguments to the original iterative body. Recursive branches
+reuse original phase0/phase1/join text, preserve left-right-combine order and
+constructor freshness. The lexical function graph includes helpers and rejects
+cycles; source integration must establish its own source-based bounded DAG proof,
+not derive facts from emitted names. Budget16 resetting across worker edges is
+sound only with bounded acyclic interworker depth. Flat-only activation and
+original public fallback remain required. Independent controls include full
+Tree/St values, uneven/shared arms, aliases and depth30000 iterative fallback.
+This is static prototype review, not approval of an unseen source patch or
+completion of final checked validation. Root reported a positive screen;
+reviewer performed no execution.
+
+Concrete hybrid-source-v1 (+58/-2) static review passes acquisition. Activation
+requires flat-active metadata, positive original self references and binary
+source shape; original typed component admission already proves independent
+proper-child Let3 calls. Covered rewriting preserves own App shells. Phase4
+reuses prefix emission; left finishes before right arguments, the combiner uses
+original typed let binders and context. Existing j_apply_args emits its trailing
+comma, so appending the budget argument is correct. Budget0 delegates before
+nested slot initialization or prefix demand to suffix-only original iterative
+body. Public/tagged declarations and root guard scope remain unchanged.
+
+An additional DAG DFS is unnecessary here: each admitted component's full
+reachable original graph rejects every other definition referring back to its
+owner. Any intercomponent cycle violates that existing proof. JPure graph32 and
+acyclic bounded direct-helper admission bound reset depth independently of input
+tree depth. Actual checked hybrid markers, unary/sequential refusal, complete
+values, and depth30000 budget0 iterative fallback remain mandatory controls.
+
+Final-extension-matched-v3 (26 steps/14 groups) static review passes its existing
+matched13 scope: exact activated BST/seq selected/rootGuard/host lists; strict
+native43 complete observation array and API/runtime/Base/attempt bindings;
+Nat10 oracle/9 boundary controls including8 mutation rows, TypeScript overflow
+ABI and Error observer proofnull/publicalien0/freshroot2. prepare-final-v2 only
+adds selected-attempt runtime/Base substitutions. Recipe remains prospective
+until hybrid selection; accepting hybrid requires an actual source activation
+and exhausted-budget fallback contract in an immutable successor, alongside
+existing layout full-value/deep controls. No execution by reviewer.
+
+Native-owned-v2 (+25 lines, emit-only) static acquisition review passes. Only a
+marked original Ctr can select it. Canonical closed Sigma/native Tuple2 emits a
+fresh dense pair; canonical closed native List Con2/Nil0 emits the same tagged
++a record; native Bool True/False0 emits the original primitive value. Exact
+closed-type proof retains quantities and constructor metadata. Shared original
+specialized j_ctor_args preserves evaluation order, erased slots and aliases.
+Constructor_mode deferred build handling, nonnative owned gate and unary resume
+logic remain unchanged; Nat/String/Array and other native families refuse.
+Public/unmarked expressions cannot activate this path.
+
+Existing BST216 full Tuple/List controls,24 pointer aliases, three deep shapes
+and strict-native43 can validate behavior without a duplicate test framework.
+The final selected source still needs checked private literal activation and
+residual native ctor counts plus unchanged public worker bytes, bound to the
+final attempt. Matched-v4 hybrid contract (28 steps/15 groups) explicitly adds
+actual checked source activation, exact budget16, original iterative body hashes,
+84 values/10 aliases/two deep cases, minBudget0/fallback2 and proof cleanup.
+prepare-final-v3/close-release-v2 add only explicit derivationField selection
+with unchanged exact derivation digest comparison and backward-compatible
+old default. Static review finds no blocker; preserve v4 as a predecessor if
+native15 selection requires a successor. No reviewer execution.
+
+## Final selected15 review
+
+Independent final review approves marking exact final-extension-matched-v5
+reviewed and beginning mandatory final validation. It has29 steps/16 owner
+contracts and all prior native/Nat/flat/hybrid behavioral requirements. New
+native-owned assay assertions exactly match the passing checked15 report:
+Tuple12/Con8/True4/False4 calls become zero; denseTuple12/taggedCon8/Boolfields8
+appear. All bytes outside the six admitted private bodies retain identical
+masked hash87865525935074f022c49597bfb130fe6b589c45b8edd582d27020bdde3f8283.
+Exact file-output execution binding is checked by close-release-v3; preparation
+v4 routes and pins that successor. Fixed selected15 attempt/API bindings prevent
+rebinding this contract to another image.
+
+Ten touched backend/runtime files, including assembled runtime, were independently
+read and byte-compared to checked15 snapshot; all are exact. Evidence is
+review/final15-source-identity.json and review/final-selected15-review.json.
+The latter records draft extension SHA c8a52b9dc731e811e79d88bdabc398a39a90e986dbad368a81b00166dd4d4e1e
+and contract SHA excluding only reviewed flag
+ac3770a909d5565342d49f7cc20486141f6f1ace8a534d92219ac8315152b7f1.
+Validation owner may toggle that flag with contract fields unchanged. Broad,
+performance, compiler-cost, ordinary/relocated CLI and install gates remain root
+execution obligations. This static review is not a claim those gates ran.
+No reviewer compiler/target execution or production edits were performed.
+
+Final prefreeze correction: root found that native-owned15 also changes exactly
+two private flat bsort Bool constructor sites. The raw checked13 iterative body
+therefore differs from checked15 fallback, so v5's inherited strict hybrid raw
+byte-identity assertion is unsatisfiable. The selected15 source review and
+behavioral reports stand; the v5 contract attestation is superseded pending an
+immutable hybrid witness/contract successor. prepare-final01 was materialized
+but no semantic execution began. Preserve v5 and that materialization history.
+
+Reviewer supports exact AST normalization of only zero-argument
+ctor('True',[])/ctor('False',[]) at those two baseline13 bsort body sites for the
+identity witness. Keep executable original13 module byte-identical, so full
+value/alias/deep controls still compare genuine compiler outputs against15.
+Record rawbaseline, normalizedtemporarybody and candidateraw hashes plus exact
+two site positions/kinds; other three fallback bodies remain raw-byte identical.
+Retain the prior strict13->14 fallback witness and exact native Bool header proof.
+This is a controlled semantic normalization, not a claim that raw13==15 or a
+fabricated checked executable comparator. New final contract must bind all
+witness inputs and actual control outputs before renewed reviewed marking.
+
+Hybrid actual-derive-v2 narrow witness review passes. Temporary baseline bsort
+body normalization is exactly one True and one False empty-field ctor call;
+raw baseline3aaa8da35c3b60519210ee25dd3f12f610ae7ad0bd4f307f777bc118879f155b
+normalizes to d83a345707a44867bb1411cee4500738e3133d178f808785939a944e351ede68,
+which equals actual15 fallback raw body. Exact candidate literal AST starts,
+values and text are checked. Other three fallbacks have zero normalized sites
+and raw-body equality. Baseline executable files remain exact originals;
+normalization is explicitly unchecked parentChecked nonexecutable metadata.
+The old console unchangedIterativeBodies4 label counts three raw identities
+plus one controlled witness and must not be read as four raw-byte identities.
+
+Layout actual-source-controls-v5 likewise passes static review. The old v4
+failure came from labeling private global bsort body identity as public worker
+identity. V5 compares that entire private function against only two exact AST
+Bool substitutions; the other four private functions remain raw-byte identical.
+It separately asserts all five actual public G assignments raw-byte identical.
+Baseline execution is untouched and full20/98/68/deep assertions remain.
+This corrects identity accounting without relaxing behavioral gates. Exact
+normalization receipts and new identity flags must enter final contract after
+root's successful v5 control report. Original v4 stderr remains historical.
+
+Final selected15 v6: independently matched exact layout v5 assertions to layout-actual15-retry01 PASS and hybrid v2 bindings to actual15 derivation. Executable baselines are unchanged; exactly two AST-proved zero-field native Bool comparison sites are normalized, whole expected bodies must match, other workers and all actual public bindings retain raw identity. Original checked14 strict witness remains required. V6 supersedes v5 approval; fresh final gates remain mandatory. Attestation: `selfhost/tools/performance/phase42/review/final-selected15-review-v6.json`.
+
+Final inherited vector preflight found real source regression: shared equality routed original Sigma2/2 vector states into the new Sigma1/1 closed head. Thirty-five fallback oracles passing did not discharge mandatory optimized admission. Reviewed exact five-line equality-domain split: restore original Phase41 fold comparison; JPure Ann/Var/call-result use strict closed64 comparison directly. This retains legacy vector policy under original local-type proof and strict new container ownership. Fresh source16 validation required; selected15 receipts remain historical. No controller relaxation. See `review/equality-domains-v1-review.json`.
+
+Final selected16 v7 approved statically after root fresh counter35/5+Number admission, strict native43, and Phase40/41 actual-tree focused passes. Exact5-line equality repair and5 inherited instrumentation replacements reviewed; ten relevant canonical sources byte-identical checked16 snapshot. Native proof successor changes only dedicated equality API and explicit64budget, preserving43 assertions. Historical14/15 normalization/schema witnesses remain labeled historical; fresh selected16 owner closures and all release gates mandatory. Review: `review/final-selected16-review-v7.json`.

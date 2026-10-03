@@ -270,3 +270,88 @@ pass syntax checks; root owns their execution. The prospective
 [P42-006 experiment](../../experiments/phase42/P42-006-closed-native-data.md)
 records activation falsifiers, ownership controls and compiler function-count/
 fresh-request cost requirements; initial root changes remain uninstalled.
+
+Root executed the frozen strict native-proof controls on checked10: all43
+assertions passed in the ~6.6s supervised job. The retained
+[summary](../../selfhost/tools/performance/phase42/facts/map-bst/native-proof-controls10-summary.json)
+hashes raw output, six exact input identities and diagnostic API; it records
+43 expected observations and five separately observed activation rows. New
+Sigma/List positives, independent nested negatives, exact field/quantity/
+terminal metadata refusal, mismatched equality and aggregate alias-DAG fuel
+controls pass. The deep equality64 refusal took35.35ms; the small seven-pair
+product returned Some57. Checked API bytes remain unchanged.
+
+Exact isolated matched-set patch count is220 net lines/28 new source functions:
+closed proof/equality130/17, native emitter27/3, sequential continuation63/8.
+No new runtime or source type/module is introduced. The complete compiler's
+final function count and fresh-request cost still require final-image measure;
+these patch counts are not a timing result. Original bench full proof remains
+false despite all43 domain controls passing. Root is separately investigating
+its scalar/Nat setup and reviewing a finite-root useful-component bridge without
+widening local layout IR; no runtime gain or installation is claimed.
+
+Executed refusal trace06 precisely locates original bench's first failure at
+level4 `Nat.add(U32.to_nat(size),1n)`: Nat.add native flag true/arity2/signature
+valid, but native admission false. The
+[trace summary](../../selfhost/tools/performance/phase42/facts/map-bst/bst-probe06-nat-refusal.json)
+hashes its unchanged diagnostic producer/report. A strict Nat.add-only residual
+header and original runtime wrapper snapshot are proposed without changing
+checkedNat arithmetic, range errors or direct/flat native gates. Candidate01
+was refused for introducing extra preimport scalarCapture host queries.
+Candidate02 uses inert fresh-factory local metadata instead; it is syntax-checked,
+unexecuted and not applied. The
+[held review](../../selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-review.md)
+distinguishes this static proposal from pending actual preimport observer/reentry
+witnesses. Root holds Nat runtime promotion until the independent sequential
+bridge witness and bounds/mutation controls resolve.
+
+Executed promotion stop: the checked07/checked11 preimport BigInt observer
+[counterexample](../../selfhost/tools/performance/phase42/facts/map-bst/returning-host-callback-assessment.md)
+passes its checked-input bindings and demonstrates public proxy reentry26→30
+and seven changed G.code events→zero, despite equal outer result47. The ambient
+proof is active during the candidate callback. Root holds/reverses matched
+activation; no Nat.add runtime candidate was applied. All43 static native-domain
+assertions remain valid evidence of bounded source analysis, not runtime safety.
+Suspending one conversion alone lacks phase-correct dispatch invalidation and
+continuation resumption; the assessment specifies the separate future obligations.
+
+Contract correction: the executed preimport BigInt witness is outside the
+already published standard-intrinsics-at-initialization contract
+(docs/BEND-IN-BEND-PERFORMANCE.md405–416, pre-Phase42 commit8582de7). Its exact
+values/events remain valid boundary evidence, but the earlier blanket stop
+and reversal recommendation are superseded. Matched-set exploration resumes
+under the existing contract; supported postimport controls remain necessary.
+Nat.add candidate02 is an isolated inert metadata proposal preserving original
+checkedNat bounds/errors and ordinary G calls, not new preimport trust.
+
+An early two-case root-run cost screen is prepared in
+[facts/compiler-cost-screen-v01](../../selfhost/tools/performance/phase42/facts/compiler-cost-screen-v01/README.md).
+It uses unchanged normal-library worker/planner/runner and independently
+acquires checked41 baseline and checked13 candidate outputs with their actual
+runtime/API/cache identities, plus pinned TS. Eighteen fresh rotated processes
+measure tree/list three rounds; prior process medians predict105–115s runner
+plus30–45s acquisition/binding, not a promised60–90s total. No jobs were run by
+the facts owner. Its delta covers all checked13 changes and cannot alone
+attributably measure cache reuse; the final four-case selected-image gate remains.
+
+The early checked13 screen completed18/18 exact-output jobs.
+[Findings](../../selfhost/tools/performance/phase42/facts/compiler-cost-screen-v01/screen13-findings.md)
+retain exact ranges: tree request2492.636[2406.631–2529.562]→2242.556
+[2204.143–2405.577]ms (−10.03%); list2000.799[1982.974–2073.069]→2241.447
+[2234.737–2248.862]ms (+12.03%). Netchecked13 changes cannot isolate cache or
+fusion attribution. Static inspection found only one external fusion-root
+planning call, so no obvious duplicated fusion fact warrants a source patch.
+Final four-case cost remains required on the selected hybrid checked image.
+
+Source16 separates equality domains after the legacy qty2 Sigma/vector
+admission regression: shared j_region_same_type restores the Phase41 local
+algorithm policy, while JPure Ann/Var/terminal checks explicitly use strict
+j_pure_same_closed64. Native qty1 proof gates remain unchanged. Frozen
+[native-proof-controls-v02](../../selfhost/tools/performance/phase42/facts/map-bst/native-proof-controls-v02.mjs)
+keeps the same43 assertions, moving its six equality queries directly to
+j_pure_same_closed64; v01 and earlier receipts remain retained. The original
+Phase39 vector fixture controls remain separate; no legacy-domain assertion
+is weakened to claim native equality success. Source16 static complexity
+changes no counts from15 and reduces compiler source22bytes/API137bytes;
+[current complexity](complexity.md) and the retained source15 account bind
+their respective frozen attempts. Actual source16 controls/cost belong to root.

@@ -90,3 +90,30 @@ Readonly check-measurement-bindings-v1.py and final-measurement-v1.md now define
 
 
 Working-v4 updates layout actual controller v3/catalog v5 and adds exact one-row/six-negative context admission probe v4. Optional-bst-v1 adds22-step/twelve-group provisional closure with checked07 comparator explicitly verified by structural derivation v2,216/24 BST and87/0 sequential oracles/aliases, three deep rows and exact boundary relation3*guards+7. Native strict-facts closure is pending and both drafts remain unreviewed. Static only; no root queue interference.
+
+
+Retained working-v5 excludes held matched native/seq/finite bridge and upgrades flat admission probe v5 with exact15 canonical storedCoverage assertions. Prior v4 failed diagnostic and optionalBST draft are preserved. All10 selected contracts remain unreviewed pending final frozen image and core host audit.
+
+
+Static timing review found unavoidable single-full45 deadline exhaustion:669 fresh sample warmups exceed600s. prepare-runtime-batches-v1.py materializes three supported15-case600s serial plans; close-runtime-batches-v1.py requires exact45 coverage/669 complete balanced samples/protocol/identities and never infers admission. Historical runners unchanged. AST only/no hashing or timing execution. Root clarification retains standard builtins-at-init as the documented host contract; matched/native/sequential prospective draft remains separate from ready core+flat v5 pending its remaining controls, not permanently rejected solely by preimport diagnostics.
+
+
+Reviewer found Node drift gap between measurement receipt and timing. Immutable v2 measurement check/batch preparer/closer now retain and rehash frozen attempt Node identity and require exact matching runtime report input hash. Per-role runtime identities remain independently checked, allowing changed candidate runtime while baseline remains Phase41. AST-only/no execution.
+
+
+Matched-v3 completed26steps/fourteen owners with43 exact native observations and Nat controller-v2 ten oracles/nine boundaries/eight mutations/two Error observer roles. Structural guards/rootGuards/mutation ownership/hostControls frozen provisionally from activated checked13 reports. Prepare-final-v2 adds selected runtime/Base SHA placeholders. Final frozen winner still pending; all drafts reviewed false and no heavy execution occurred.
+
+
+Matched-v4 adds actual bounded-hybrid owner28steps/fifteen groups. Exact checked14 schema84/10/2/depth30k, native6317/fallback2/minBudget0/proofnull and exact four original fallbackbody hashes. Actual layout controller v4 requires4hybrid/thirteen private bodies. Prepare-final-v3/close-release-v2 adapt only explicit deriveSha256 field name, retaining exact digest check. Final14/15freeze pending; reviewedfalse/no heavy execution.
+
+
+Phase42 portable freezer exact five-substitution successor created, SHA d36aa493... with adjacent derivation; generic Phase41 freezer behavior otherwise unchanged. Added terminal protected103 checker and streamed raw archival helper with explicit writersClosed declaration, complete membership/input stability/reopen verification and atomic fresh-directory publication. Static AST only; no preservation sweep or archive run. Portable/archive command handoff written.
+
+
+Selected15 matched-v6 binds 29 owner steps/16 groups, layout actual controller-v5/catalog-v8 and hybrid deriver-v2. Exact layout normalization extracted from successful layout-actual15-retry01; hybrid normalization and eight iterative rows extracted from successful hybrid-actual15. Both retain untouched executable baseline bytes; only two AST-proved Bool sites differ. Strict actual14 fallback witness is retained. prepare-final-v4 and close-release-v3 unchanged. V5/final-recipe01 are preserved unexecuted; final-recipe02/integration02 must be freshly materialized after v6 review. Static JSON extraction only, no target/compiler or hash sweep executed here.
+
+
+Prepared rebind-phase41-tree-v1.py for recipe02-to03 same integration02 successor. Exact44 earlier semantic commands remain identical, with replacement restricted to inherited tree derive/control/closure executable paths. New producer paths are pinned and independent review/parent receipts retained. Materialization/selected API/attempt/runtime/baseline/owner assertions unchanged. Root prefix currently runs independently; failed counter preflight preserved for separate owner diagnosis. No recipe rebinding executed by this agent.
+
+
+prepare-final-v5.py adds explicit inheritedInstrumentReplacements to otherwise unchanged v4 materialization, verifying review identity/status and confining successors to Phase42 before pinning them. Draft matched-v7 binds checked16 attempt f9ffcd71.../API63ddb2dd.../source12310608...; native-proof-v02 retains43 observations through dedicated strict equality. Fresh recipe04/integration03 awaits exact reviewed Phase40 list/tree and Phase41 tree adapters plus root focused controls. Integration02 failure remains preserved; no broad result relabeled.

@@ -243,3 +243,39 @@ current source route through `j_flat_source_root` before `j_flat_book`, retains
 all six negative cases, and records canonical stored-definition identity.
 The actual checked09 derivative passed syntax-only inspection in0.355seconds;
 root context execution and source performance acquisition remain pending.
+
+
+`actual-source-controls-v4.mjs` is the hybrid-emitter successor. It captures the
+complete result of the scalar wrapper for bsort/scan, audits each wrapper,
+$hybrid and $stack body for residual generic bridges, and checks the four
+paired hybrid declarations and exact budget16. All existing complete-value,
+public-worker identity, hostile trace and depth30000 tests remain unchanged.
+V3 and its successful checked09 evidence remain retained. V4 has passed only
+pinned Node syntax inspection; root owns its candidate execution.
+
+The Map follow-up is documented in `layout/map-gap-v1.md`. Its unexecuted
+`map-bit-prepare-v1.py`/`map-bit-controls-v1.mjs` discriminator isolates source
+prefix control in Map.bit's 29 saturated edges. It preserves String project
+and constructor observations and returned key/bit, admits only guarded short
+ASCII strings and bounded canonical BigInt positions, and keeps public Map
+functions intact. This is saved-JS research, not compiler admission. Historical
+profiles motivate this experiment; they are not fresh timing measurements.
+
+
+Root reports hybrid source14 actual controls V4 pass20/98/68/deep30000. Map.bit
+saved-JS controls also passed, but paired timing rejected the worker: Map32
+14.630506ms original versus21.028193ms candidate, Map12875.226ms versus97.9323ms.
+Repeated per-edge guards are a hypothesis for the regression, not an isolated
+measurement. No production Map change follows from this experiment.
+
+
+Source15's native owned Bool lowering changes the private global bsort worker
+at exactly two constructor sites, so V4's raw identity check intentionally
+refused before behavioral controls. V5 preserves that failure and compares the
+consumed baseline after an AST-verified identity-only substitution: one empty
+False constructor to false and one empty True constructor to true. Every other
+bsort byte and all four other global structural bodies must remain exact; all
+five actual public G bindings are checked separately for raw byte identity.
+Raw, normalized and candidate hashes and both exact sites are recorded. The
+baseline executable is untouched. V5 retains all existing behavioral checks;
+only pinned Node syntax validation has run locally.

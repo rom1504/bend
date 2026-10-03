@@ -1,0 +1,44 @@
+{
+  "kind": "phase42-map-bit-structural-comparison",
+  "scope": "Controlled saved-JS source-prefix control ablation; exact control-tested modules, default bench exports, no compiler admission",
+  "inputs": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-bit01/preparation.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-bit-controls01/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/layout/map-bit-prepare-v1.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/layout/map-bit-controls-v1.mjs"
+  ],
+  "cases": [
+    {
+      "id": "coverage-map-churn-32",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 2930913555
+      },
+      "modules": {
+        "original": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-bit01/original.mjs",
+        "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-bit01/candidate.mjs",
+        "typescript": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-typescript01.mjs"
+      }
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          123
+        ],
+        "expected": 3714872484
+      },
+      "modules": {
+        "original": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-bit01/original.mjs",
+        "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-bit01/candidate.mjs",
+        "typescript": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-typescript01.mjs"
+      }
+    }
+  ]
+}

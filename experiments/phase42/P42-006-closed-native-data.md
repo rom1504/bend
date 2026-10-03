@@ -1,5 +1,13 @@
 # P42-006: exact closed native data and sequential structural traversal
 
+Status update: resumed under the existing published standard-intrinsics-at-init
+contract. The checked-input preimport BigInt witness (proxy26→30; changed-code
+events7→0) lies outside that contract; its exact evidence is retained and the
+earlier blanket stop is superseded. The
+[assessment](../../selfhost/tools/performance/phase42/facts/map-bst/returning-host-callback-assessment.md)
+records this boundary. Supported postimport mutation, bounds, runtime parity
+and actual entry remain requirements; no gain is claimed.
+
 Prospective status: checked development candidate, not installed; runtime gain
 unknown until actual private entry and complete-value controls pass. The
 [matched-set design](../../selfhost/tools/performance/phase42/facts/map-bst/bst-matched-set-design.md)
@@ -60,3 +68,18 @@ request cost. The complete source-function count and fresh-request compiler cost
 must be measured after the final implementation; cache reuse is not assumed to
 make the new proof free. Historical BST150×-scale gaps motivate investigation
 but provide no expected achieved gain or aggregate parity claim.
+
+Root's strict checked10 native proof controls subsequently passed all43
+assertions; their five activation observations still show original bench proof
+false. Exact isolated matched-set source delta is220 net lines/28 functions,
+with no new runtime/module/type. Domain assertion success does not discharge
+root-entry, complete-value/runtime parity or final compiler-cost requirements.
+
+Contract correction: the executed preimport BigInt witness is outside the
+already published standard-intrinsics-at-initialization contract
+(docs/BEND-IN-BEND-PERFORMANCE.md405–416, pre-Phase42 commit8582de7). Its exact
+values/events remain valid boundary evidence, but the earlier blanket stop
+and reversal recommendation are superseded. Matched-set exploration resumes
+under the existing contract; supported postimport controls remain necessary.
+Nat.add candidate02 is an isolated inert metadata proposal preserving original
+checkedNat bounds/errors and ordinary G calls, not new preimport trust.

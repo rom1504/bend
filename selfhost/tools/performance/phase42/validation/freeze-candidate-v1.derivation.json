@@ -1,0 +1,43 @@
+{
+  "kind": "phase42-candidate-freezer-derivation",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "path": "selfhost/tools/performance/phase41/freeze-candidate.py",
+    "sha256": "b191beb5762e9eb70fb44534bf2020ff7d54d2998a835d6e18d08929e61748ae",
+    "bytes": 12348
+  },
+  "output": {
+    "path": "selfhost/tools/performance/phase42/validation/freeze-candidate-v1.py",
+    "bytes": 12362,
+    "sha256": "d36aa493d1b52c413902271aa13221dd57aa68eae5c53e46c054ff35ae8886c5"
+  },
+  "changes": [
+    {
+      "before": "PROGRAMS = HERE.parent / 'programs'",
+      "after": "PROGRAMS = HERE.parent.parent / 'programs'",
+      "count": 1
+    },
+    {
+      "before": "default=HERE.parent / 'phase37/catalog.json'",
+      "after": "default=HERE.parent.parent / 'phase37/catalog.json'",
+      "count": 1
+    },
+    {
+      "before": "normally phase41/current",
+      "after": "normally phase42/current",
+      "count": 1
+    },
+    {
+      "before": "kind='phase41-frozen-checked-candidate'",
+      "after": "kind='phase42-frozen-checked-candidate'",
+      "count": 1
+    },
+    {
+      "before": "label='Phase41 checked candidate (frozen actual acquisition)'",
+      "after": "label='Phase42 checked candidate (frozen actual acquisition)'",
+      "count": 1
+    }
+  ],
+  "scope": "Exact five textual substitutions only: validation-subdirectory import/defaultcatalog resolution and Phase42 help/provenance/label. All compiler,attempt,runtime,Base,source,Node,acquisition,archive,reopen,inputstability assertions unchanged. In-memory12KB source hash and AST only, no freeze executed."
+}

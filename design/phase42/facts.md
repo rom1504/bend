@@ -94,3 +94,20 @@ It is not yet a source-size simplification or measured throughput gain. The chea
 falsifier is exact checked emission against calls/context alone, followed by a
 fresh request/RSS comparison. Any refusal, order, alias, guard or memory-bound
 regression rejects it independently of runtime benchmark gains.
+
+The later closed native-data matched-set exploration is held after an executed
+[returning-host callback falsifier](../../selfhost/tools/performance/phase42/facts/map-bst/returning-host-callback-assessment.md).
+Its aggregate bounded source facts passed strict controls, but ambient proof
+inheritance allowed foreign proxy reentry and skipped dynamically changed G.code
+calls. Request-local reuse must continue to cache source facts only; a cached
+closed graph cannot authenticate host callbacks or grant ownership to public
+reentrant inputs. This stop does not itself falsify the exact plan-reuse cache.
+
+Contract correction: the executed preimport BigInt witness is outside the
+already published standard-intrinsics-at-initialization contract
+(docs/BEND-IN-BEND-PERFORMANCE.md405–416, pre-Phase42 commit8582de7). Its exact
+values/events remain valid boundary evidence, but the earlier blanket stop
+and reversal recommendation are superseded. Matched-set exploration resumes
+under the existing contract; supported postimport controls remain necessary.
+Nat.add candidate02 is an isolated inert metadata proposal preserving original
+checkedNat bounds/errors and ordinary G calls, not new preimport trust.

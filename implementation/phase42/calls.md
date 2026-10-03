@@ -238,3 +238,153 @@ input/full-dependency guards, force of the original generic body inside try/
 finally and public fallback. Region/u32/flat/fusion priority remains unchanged;
 local type/layout selectors are untouched. No new proof API or recursive IR is
 introduced. Patch review/build/runtime validation remain root-owned.
+
+Root's checked11 bridge builds/emits and all5 independent sequential scalar
+roots admit actual workers. Initial structural controls v2 pass87 oracles, then
+fail at boundary13 because the tool mutated make_left while always invoking
+sequence.right, whose exact graph excludes make_left. This is a tool guard-
+selection error, not evidence of a source guard defect. Frozen v2 is retained.
+[derive v3](../../selfhost/tools/performance/phase42/calls/structural-derive-v3.mjs)
+records every root's exact single complete guard vector and requires independent
+admission for every expected root; [controls v3](../../selfhost/tools/performance/phase42/calls/structural-controls-v3.mjs)
+chooses and records an owning root for each changed dependency. Strict zero-
+entry and exact fallback event/outcome checks remain unchanged, as do all count
+contracts. Only syntax is checked by this owner; fresh execution is root-owned.
+
+Root's v3 retry passes87 sequential oracles and37 pre-host refusals, then fails
+the Array.isArray zero-entry premise: the original runtime does not include that
+global function in regionHostGuard. Its uses are initialization descriptor
+setup, Tuple projection, showing and external conversion; this sequential scalar
+path requires none after initialization. Frozen v3 is retained.
+[controls v4](../../selfhost/tools/performance/phase42/calls/structural-controls-v4.mjs)
+keeps Array.isArray outcome/proof-restoration parity and records callback/entry
+deltas without assuming zero admission. Changed Array.prototype.slice adds a
+meaningful strict protocol refusal alongside push and iterator. Final boundary
+contract becomes3*unionGuardCount+8; all other contracts remain unchanged.
+This is an explicit correction of the tool premise, not a general weakening of
+host controls. Preimport BigInt/iterator observer witnesses remain separate
+root/frames obligations for newly guarded generic execution.
+
+The matched native-container/sequential/finite-root bridge proceeds under the
+published standard-host-intrinsics-at-module-initialization contract
+(`docs/BEND-IN-BEND-PERFORMANCE.md:405–416`). Root's preserved preimport BigInt
+observer diagnostic gives a public proxy result26 versus30 and changed-code
+callbacks7 versus0. This is evidence about broadening that contract, rather than
+a supported-contract release failure. Complete original typed source closure
+alone does not establish safety under arbitrary host replacement before import.
+The initialization premise must remain explicit in acquisition and controls.
+
+[prepared rollback v2](../../selfhost/tools/performance/phase42/calls/held-rollback-v2/source.patch)
+remains unused. It reverses exactly228 net lines (8 bridge,63 sequential,27 native
+emitter,130 closed native proof) against its recorded canonical hashes. The
+frozen v1 reversal failed on adjacent flat-v5 context; v2 reverses each exact
+changed run from the4 owner artifacts once byte-for-byte. Its
+[report](../../selfhost/tools/performance/phase42/calls/held-rollback-v2/report.json)
+records patch/chunk identities and file hashes, with76 retained core function
+bodies unchanged. The rollback predates the separately applied Nat.add metadata
+patch and makes no claim to remove that later patch.
+
+Root reports checked13 BST controls216 oracles/24 aliases and sequential
+controls87 oracles all passing under supported initialization. Nat.add boundary
+controls separately compare exact near-limit arithmetic, overflow, later clean
+reactivation, changed dependency descriptors, and Error-observer proof
+suspension. Their versioned producers bind checked07 baseline and checked13
+candidate acquisitions independently, including intentionally different runtime
+hashes; actual success is established only by root-run reports.
+
+If the contract is broadened to preimport observer replacements, a future design
+must stage original callee selection and observable argument work outside proof,
+preserve demand order, then validate the complete graph plus scalar argument and
+provenance facts before private entry. Refusal must continue with already
+selected callable/arguments: rerunning duplicates effects, and rereading G can
+change the selected callee. Reentry must see null proof, and externally observed
+ADT values cannot inherit ownership. No such future repair is claimed here; the
+outside-contract witness and unused rollback remain preserved.
+
+Native Nat.add v1 actual controls passed at
+`selfhost/build/phase42/native-nat-controls13/report.json`:10 arithmetic/error
+oracles and4 boundaries, with exact guards `Nat.add`, `sequence.fold`,
+`sequence.make_right`, `sequence.nat`. Frozen v2 adds arity/bound/env accessors
+and postimport BigInt/Math.imul mutations, retaining exact trace parity and
+zeroentry obligations. It expects10 oracles/9 boundaries; actual root execution
+must establish those successor claims.
+
+Fresh BST64 checked13 diagnostics show sampled allocation estimates around
+1.873MB/call versus393KB/call pinned TypeScript (about4.76×). The private
+`bst.down` worker dominates sampled allocation and CPU. These are weighted
+sampling estimates, not exact allocation events or throughput ratios. A cheap
+next discriminator is removing only tail-transfer `$next` arrays: evaluate each
+original argument into an ordered temporary before assigning any `$s` state.
+This preserves demand order and stack safety while separating transfer-array
+cost from native pair/list construction and helper IIFEs. No source change is
+justified by this profile alone.
+
+The frozen root-run `bst-ablation-derive-v1.mjs` now produces five variants:
+original/noise, transfer temporaries, native owned Tuple/List/Bool construction,
+and combined. Only private structural worker bodies change. Transfer evaluates
+all original expressions in order before assigning state; native constructors
+keep exactly the existing array product/tagged list ABI and leave Nat untouched.
+Each variant reuses the actual checked13 entry/resume/proof adapter and full
+structural controls; comparison configs require a passing derivative-specific
+report before exposing32/128 points. Saved-JS variants remain explicitly
+unchecked, with checked13 original as mechanism comparator. No timing or target
+execution was run by this owner.
+
+Root subsequently reports Nat.add v2 success (10 oracles/9 boundaries).
+BST ablation v2 refused `inorder` because its transfer array has intervening
+frame bookkeeping before state assignments; this is a real unmatched use
+pattern. Frozen v3 limits transfer removal to the four exact three-argument
+`bst.down` sites and retains consecutive-assignment plus no-later-use checks.
+Sequential result-hole continuation code remains byte-identical. Native
+constructor ablation still touches only private worker bodies.
+
+Root-run BST32/128 screens accepted native constructor discrimination:
+original .202823/1.49189ms, native .156467/.892787ms; transfer .197473/1.344934,
+combined .159583/.905265. Noise .202322/1.486671. Native alone wins roughly
+1.30–1.67×, while transfer adds no gain over native; transfer source promotion
+is declined. All variants passed full semantic controls first.
+
+`native-owned-v2/source.patch` adds25 emitter lines, gated by the existing owned
+marker and original Ctr shape. Exact closed independent Sigma (both quantity1,
+nondependent family) emits a fresh dense two-element array; exact closed
+List quantity2 emits the same tagged `Con`/`Nil` object with a field array;
+exact native Bool nullary constructors emit primitives. Original specialized
+`j_ctor_args` retains quantity erasure, field order, aliases and dynamic
+arguments. Public/unmarked and deferred tail construction remain unchanged;
+Nat/String/other native constructors remain residual. The isolated v1 draft
+had an outer delimiter typo, caught before compiler acquisition, and is retained;
+v2 delimiters are statically balanced. Checked acquisition and source controls
+are root-owned and pending; this is a source proposal, not a checked claim.
+
+Independent reviewer found no static blocker in native-owned-v2's exact gates,
+quantity handling and private scope. `native-owned-assay-v1.mjs` binds actual
+checked13/15 acquisitions and records private worker constructor/literal AST
+counts. It also requires exact module bytes outside private worker bodies and
+explicitly marked private helper arrow bodies; this preserves generic public
+fallbacks while permitting guarded helper branches inside public registrations
+to change. Runtime hash and source input must match. Actual constructor
+activation and full behavioral controls remain separate obligations.
+
+Final integration preflight counter exposed an actual admission regression,
+not an instrumentation rename: checked15 emits no `count.keep`, `count.observe`
+or `count.store` private vector worker, while scalar Number lowering remains.
+All35 value oracles passed through fallback before the structural assertion.
+The established fixture uses `Sigma<&2,&2,...>` states. Closedproof04 changed
+shared `j_region_same_type` to route every Sigma through `j_pure_same_closed`,
+whose independent native Sigma header admits only quantity1. Existing local
+vector admission still supports quantity2, so shared equality incorrectly
+removed that domain. Root/facts/reviewer were notified. The controller must
+remain unchanged; source compatibility repair is a separate reviewed obligation.
+
+The minimal repair proposal is `equality-domains-v1/source.patch`: restore the
+shared region equality body byte-for-byte from Phase41 checked01 and move
+exactly three JPure comparisons (Ann, Var, saturated-result) to explicit
+`j_pure_same_closed(...,64)`. This separates established local vector/List
+admission from the new strict quantity1 Sigma/List ownership proof. Remaining
+shared callers are the original local_type-guarded builder and fusion gates,
+which admit only original fold owners or ground U32 List with scalar fields.
+No new closed native container relies on that regional policy. Five source
+lines change; exact before/after and Phase41 snapshot identities are recorded.
+This preserves all strict JPure shape/quantity/type checks while restoring the
+pre-existing optimized vector domain. No canonical edits or target execution
+were performed by this owner.

@@ -1,0 +1,51 @@
+{
+  "kind": "phase42-independent-final-selected15-v6-review",
+  "complete": true,
+  "staticReviewPassed": true,
+  "reviewedSelection": "checked15",
+  "selectedAttemptSha256": "4beb364821de0c87f82b303a61b37b4f5e95c9db4cfaf0ae8aee9f776d11c051",
+  "selectedApiSha256": "4a5bdf433610d5760a7296aa64d6c2afac5dfba720ea2ebb00a6706cde906d73",
+  "extension": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/final-extension-matched-v6.json",
+    "reviewedFileSha256": "594ca2d677986503ad2ae56e01170ea9a6919600c8aa491ac39be82b7e02147a",
+    "contractSha256ExcludingReviewed": "5553357cb580889b70992c6f94c1d30a08174d1792534eb64806ebef6634279b"
+  },
+  "steps": 29,
+  "owners": 16,
+  "sourceIdentity": "selfhost/tools/performance/phase42/review/final15-source-identity.json",
+  "assay": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/native-owned-assay15.json",
+    "sha256": "1fea625f91a628e3f6c8a62cd3e9f1ae8822e0918ebc2739883d296cab3b217b"
+  },
+  "reviewedAdapters": [
+    "prepare-final-v4.py",
+    "close-release-v3.py",
+    "check-measurement-bindings-v2.py",
+    "prepare-runtime-batches-v2.py",
+    "close-runtime-batches-v2.py"
+  ],
+  "initializationContract": {
+    "document": "docs/BEND-IN-BEND-PERFORMANCE.md",
+    "lines": [
+      405,
+      416
+    ],
+    "priorCommits": [
+      "44a36083",
+      "88619d9c"
+    ],
+    "standardIntrinsicsAtInitialization": true,
+    "preimportWrapperDeltas": "retained out-of-contract diagnostics, never relabeled parity"
+  },
+  "scope": "Exact v6 static approval for selected15. Fresh broad semantics, performance, cost and install admission remain mandatory.",
+  "executedCompilerOrTarget": false,
+  "productionEdits": false,
+  "supersedes": "final-selected15-review.json (v5 attestation)",
+  "witnessAccounting": {
+    "layoutAssertionsMatchFocusedPass": true,
+    "hybridExactBindingsMatchFocusedPass": true,
+    "originalExecutableBaselinesUnchanged": true,
+    "normalizationScope": "Exactly two AST-proved zero-field native Bool sites in each independently bound bsort comparison string. Full expected bodies must match; other bodies raw identity; checked14 strict witness retained.",
+    "actualPublicBindingsRawIdentity": true
+  }
+}

@@ -1,5 +1,8 @@
 # BST closed private data screen
 
+> Contract clarification: [the executed preimport BigInt witness](returning-host-callback-assessment.md) falls outside the published standard-intrinsics-at-initialization contract (docs/BEND-IN-BEND-PERFORMANCE.md405–416, pre-Phase42). The earlier blanket promotion stop is superseded; retain the exact witness as boundary evidence. All43 static native-domain assertions passed, but supported postimport mutation, bounds and complete-value controls remain required.
+
+
 The original benchmark is `phase37/fixtures-new/bst.bend`, retained in the
 Phase41 portable catalog at size/seed 32/0 and 64/17. The historical ~152–209×
 Phase37 gap is motivation, not a new Phase41 measurement. This screen changes

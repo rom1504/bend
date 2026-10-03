@@ -1,0 +1,7 @@
+# Retained final extension v5
+
+Preserves v4 and selects retained core+flat only: ten groups/seventeen steps. No BST/native, sequential or finite bridge owner is selected; optional-bst-v1 remains historical and optional-bst-v2 is the prospective corrected draft. Root clarified standard builtins at initialization are the documented host contract; preimport diagnostics alone do not reject those mechanisms. Exact retained tree/calls/owned/fusion/facts controls still require the frozen final image; a prior checked09 pass cannot substitute for a changed attempt.
+
+Flat actual controller remains v3 and fixture remains v5/controller3. Context probe advances to v5 because v4 diagnostic incorrectly built its context from the annotated graph. V5 obtains identityGraph via the frozen canonical-source-root helper before creating flatBook. Contract is exact one bench active row/marker1, missingcontext false, six named rejected contexts and all15 ordered storedCoverage definitions exacttrue. Candidate API and attempt inputs remain bound. Source-validation catalog v6 retains the source-v4/v5 chain.
+
+Root checked09 context retry report statically shows this exact one-row/fifteen-coverage/six-refusal schema. No Node/hash or controller was run here. Draft reviewed false until root freezes and reviews the selected image and all gate reports. Core preimport host audit may change the accepted release scope.

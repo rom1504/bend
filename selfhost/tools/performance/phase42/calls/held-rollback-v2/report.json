@@ -1,0 +1,219 @@
+{
+  "kind": "unapplied-exact-held-scope-rollback",
+  "complete": true,
+  "canonicalSourceUntouched": true,
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/calls/make-held-rollback-v2.py",
+    "sha256": "57a90247cbb33273166ed357e0c86867ed63bd0782a64ef2ff8f227e9008fbc2"
+  },
+  "patches": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/calls/finite-component-root.patch",
+      "sha256": "1a8afeef97a723882c100c426b5d9369c0074625477f2f245263f0c8a5721b59"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate04/candidate.patch",
+      "sha256": "a24da74768f8915e89a81d21ad0ad3c6a92e3b9236273abe9b0e41377a808c68"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/frames/bst/native-emitter-source.patch",
+      "sha256": "6133e08db0487f0d28bfd9d9b1cd9f1e27498632996febc801bc5665c26fe7d2"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate04/candidate.patch",
+      "sha256": "b0f699813d18ed4cc3178e33376c02b7f63a7cee096e887034af3ac6928bc18d"
+    }
+  ],
+  "reverseReceipts": [
+    {
+      "patch": "selfhost/tools/performance/phase42/calls/finite-component-root.patch",
+      "exactChangedRuns": [
+        {
+          "file": "selfhost/src/back/js/finite.bend",
+          "currentChunkSha256": "d198c4f87010e85cd3d7fcfb11ced435a45b000cc35d657342de52f1ebcdc95c",
+          "restoredChunkSha256": "a3c83b72e7c2fa71d2b306be8bd65ff50b2073c32f437dff762e2bf07a649a3a",
+          "currentLines": 9,
+          "restoredLines": 1
+        }
+      ],
+      "allMatchedOnce": true
+    },
+    {
+      "patch": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate04/candidate.patch",
+      "exactChangedRuns": [
+        {
+          "file": "selfhost/src/back/js/tree.bend",
+          "currentChunkSha256": "b1675730d7f409c3b72e663cee6a2119aedd4748b96f093cd0bf2dfce89afbef",
+          "restoredChunkSha256": "873f7bbeb3a46f9027e8e9aea3dc7bbd557894b7b57e6939759beac94c271d7b",
+          "currentLines": 1,
+          "restoredLines": 1
+        },
+        {
+          "file": "selfhost/src/back/js/tree.bend",
+          "currentChunkSha256": "7840d64ba0d3c4751e10e1e87f7257ec1f990d640ff23348e897a7d245071793",
+          "restoredChunkSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "currentLines": 1,
+          "restoredLines": 0
+        },
+        {
+          "file": "selfhost/src/back/js/tree.bend",
+          "currentChunkSha256": "783f8061b504ed5a15131fe9c32caa10055ba1192357eebfbb0ce1c6d200083a",
+          "restoredChunkSha256": "ba21beea69da02075d4f14b14e44db8e4b58e3aa925d29ee243ccd8d2abdff37",
+          "currentLines": 1,
+          "restoredLines": 1
+        },
+        {
+          "file": "selfhost/src/back/js/tree.bend",
+          "currentChunkSha256": "ac4039fa76f6ce24adbc42d7fb308dedfd81665ba7a9611e498d399182db0814",
+          "restoredChunkSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "currentLines": 62,
+          "restoredLines": 0
+        }
+      ],
+      "allMatchedOnce": true
+    },
+    {
+      "patch": "selfhost/tools/performance/phase42/frames/bst/native-emitter-source.patch",
+      "exactChangedRuns": [
+        {
+          "file": "selfhost/src/back/js/tree.bend",
+          "currentChunkSha256": "989ace025d8958a599dda073a8d2396108165b000e060e31c4496eaf7dc26619",
+          "restoredChunkSha256": "43f5cfc04dcfbd656f0e332d3691505286fce30dc8d0fdcf1abdc77e92c9aebe",
+          "currentLines": 1,
+          "restoredLines": 1
+        },
+        {
+          "file": "selfhost/src/back/js/tree.bend",
+          "currentChunkSha256": "5cd4c6ca6184720796d08d0457b475465c8a5dfb2c70ffa9068a5859e9fd7d0b",
+          "restoredChunkSha256": "353a8a7178f0f06385b0ff6bc0dde109428bec90785abaf399698e8b34e4aa0a",
+          "currentLines": 2,
+          "restoredLines": 1
+        },
+        {
+          "file": "selfhost/src/back/js/tree.bend",
+          "currentChunkSha256": "461ae146252321e3f1247c72c7c9ff6941b3e83821e999a44e10b53ef3b83872",
+          "restoredChunkSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "currentLines": 2,
+          "restoredLines": 0
+        },
+        {
+          "file": "selfhost/src/back/js/tree.bend",
+          "currentChunkSha256": "409ba8826d37113280723f6bb2f6899be1fecaa06b50be619828ec195d5f27d0",
+          "restoredChunkSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "currentLines": 6,
+          "restoredLines": 0
+        },
+        {
+          "file": "selfhost/src/back/js/tree.bend",
+          "currentChunkSha256": "e4ba21056fbf516cfa8fcbfb7752c975730f6c9537404605cb87ce9c55d3fb77",
+          "restoredChunkSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "currentLines": 8,
+          "restoredLines": 0
+        },
+        {
+          "file": "selfhost/src/back/js/finite.bend",
+          "currentChunkSha256": "9730a47455547fe84eab2f275aae0111707923349860cb7ac29829a2c1f83bf4",
+          "restoredChunkSha256": "466e0a82328d435fa26444c7960978f0e632be00ba5065fde49d28c2b898b1f0",
+          "currentLines": 2,
+          "restoredLines": 1
+        },
+        {
+          "file": "selfhost/src/back/js/finite.bend",
+          "currentChunkSha256": "461ae146252321e3f1247c72c7c9ff6941b3e83821e999a44e10b53ef3b83872",
+          "restoredChunkSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "currentLines": 2,
+          "restoredLines": 0
+        },
+        {
+          "file": "selfhost/src/back/js/finite.bend",
+          "currentChunkSha256": "4b13b2f807ac55aeb71a8a24964b73d40ed1f219a6ca9b062c50e6773d0f9127",
+          "restoredChunkSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "currentLines": 6,
+          "restoredLines": 0
+        },
+        {
+          "file": "selfhost/src/back/js/finite.bend",
+          "currentChunkSha256": "6f6471cf2115cbf731b9717109248dcc506cce1364a92fde733a2c561006a181",
+          "restoredChunkSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "currentLines": 1,
+          "restoredLines": 0
+        }
+      ],
+      "allMatchedOnce": true
+    },
+    {
+      "patch": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate04/candidate.patch",
+      "exactChangedRuns": [
+        {
+          "file": "selfhost/src/back/js/jpure.bend",
+          "currentChunkSha256": "c1402308747e4098c23260876f22e75e6290935ab79659372daf52ccbdda008f",
+          "restoredChunkSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "currentLines": 2,
+          "restoredLines": 0
+        },
+        {
+          "file": "selfhost/src/back/js/jpure.bend",
+          "currentChunkSha256": "f92e05e89c92480701ac33ca0aa302c37ed7ff7adb594b170634bcfd0e5ad56c",
+          "restoredChunkSha256": "e491be20bfd5c071a7df69aba4945a509ee155d2b10043d9f3528cd8d7ab9453",
+          "currentLines": 1,
+          "restoredLines": 1
+        },
+        {
+          "file": "selfhost/src/back/js/jpure.bend",
+          "currentChunkSha256": "c6863b26cee08181e519f58727f33e1cedffa599bc8a0e7e9666c3eebc593c71",
+          "restoredChunkSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "currentLines": 128,
+          "restoredLines": 0
+        },
+        {
+          "file": "selfhost/src/back/js/fold.bend",
+          "currentChunkSha256": "fa361c056dc6a58b3821690f0d8bdd1a102b7d1c5a6dcab783288b9d394ece4a",
+          "restoredChunkSha256": "c281682969219263f7e32358bfc2c66d25010c361eab5bb01447d17f5b962491",
+          "currentLines": 2,
+          "restoredLines": 2
+        }
+      ],
+      "allMatchedOnce": true
+    }
+  ],
+  "files": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/finite.bend",
+      "beforeSha256": "2956ba84e3c54200b2261f31b920723918681a79c41aa26277a7d023872384f4",
+      "afterSha256": "1ed85ce48061d310166c653f0e31aabed883afd05c80906665d931c6c8b54ac1",
+      "removedNetLines": 18
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/tree.bend",
+      "beforeSha256": "f8d705f0a38693f39e7f42a0343fe8b3ab12f513e80d0c8f6a916b27ad387791",
+      "afterSha256": "28bdc00314d94e168c5d67fbb1c2880ec2940c80afe7b00ebf4ed6944e65feba",
+      "removedNetLines": 80
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/jpure.bend",
+      "beforeSha256": "25b9f967e652900c8d3b7ee80baebc69d74926c834b7d4150dea1087f70ada2c",
+      "afterSha256": "adec1da6bdbcf054c4e2ae05e90a7a6ab4e013ce15688bc1675c50080c2959a3",
+      "removedNetLines": 130
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/fold.bend",
+      "beforeSha256": "e011910e4f2b8cd09c91fdf50c4e504df225ebdf11eb129aa6a6d8893424f16a",
+      "afterSha256": "6dab24c3c2a77833d72c27b0c1a2b74df9a808971e10589350d1f0cd6a27793f",
+      "removedNetLines": 0
+    }
+  ],
+  "removedNetLines": 228,
+  "retained": [
+    "flat v5 code",
+    "direct calls and expansion budget",
+    "covered owner shape fix",
+    "owned constructors",
+    "fusion",
+    "request facts"
+  ],
+  "natAddCanonicalPresent": false,
+  "executed": [
+    "exact byte-matched reverse changed runs in isolated copies only"
+  ],
+  "compilerOrTargetExecution": false
+}

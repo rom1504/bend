@@ -1,0 +1,7 @@
+# Prospective matched/native/sequential extension v2
+
+Retains core+flat v5 and adds prospective BST/native/sequential groups with structural-derive-v3 and structural-controls-v4. The documented host contract assumes standard builtins at initialization; root clarified that preimport BigInt reentry diagnostics are outside that contract and do not alone reject this mechanism. Actual remaining standard-host controls and strict native facts are still pending, so reviewed remains false. Optional-v1 and its failures are preserved.
+
+Derive-v3 records exact rootGuards and mutation ownership, correcting v2's sequential unionguard/irrelevant-root test. Controls-v4 choose each mutated dependency's actual owning root. isArray mutation requires outcome/proof parity and records metrics because scalar sequence does not guard/use that global function. Push/slice/iterator require strict zero entries; slice adds the fourth host boundary. Both exact boundary relations become3*unionguards+8 (sequential11guards means41). Oracles216/87, aliases24/0, deep3 and checked07 pre-matched comparator identities remain. Final rootGuards/guards/selected/hostControls arrays should be frozen into reviewed exact assertions from the successful selected reports.
+
+Strict-native facts and any accepted Nat.add mechanism must be appended as separately exact owner contracts before full release closure. Twenty-two commands/twelve groups remain provisional; no materialization, Node/hash or controller execution here.

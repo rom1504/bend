@@ -1,0 +1,112 @@
+{
+  "kind": "phase42-structural-mechanism-comparison",
+  "scope": "Exact checked07 mechanism comparator, candidate and pinnedTS; not Phase41 release baseline",
+  "inputs": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/derive.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-controls11-v4/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked07/attempt.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked11/attempt.json"
+  ],
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/calls/structural-compare-config-v1.py",
+    "sha256": "adcb8a590ed03f157dbffc80140adae4b1b212375517975a307d6b4bc9c03086"
+  },
+  "cases": [
+    {
+      "id": "sequence-right-32-17",
+      "point": {
+        "exportName": "sequence.right",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 1057
+      },
+      "modules": {
+        "baseline07": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/original.clean.mjs",
+        "typescript": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/typescript.clean.mjs",
+        "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/candidate.clean.mjs"
+      }
+    },
+    {
+      "id": "sequence-weight-32-17",
+      "point": {
+        "exportName": "sequence.weight",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 3923797281
+      },
+      "modules": {
+        "baseline07": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/original.clean.mjs",
+        "typescript": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/typescript.clean.mjs",
+        "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/candidate.clean.mjs"
+      }
+    },
+    {
+      "id": "sequence-reverse-32-17",
+      "point": {
+        "exportName": "sequence.reverse",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 1
+      },
+      "modules": {
+        "baseline07": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/original.clean.mjs",
+        "typescript": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/typescript.clean.mjs",
+        "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/candidate.clean.mjs"
+      }
+    },
+    {
+      "id": "sequence-right-128-17",
+      "point": {
+        "exportName": "sequence.right",
+        "args": [
+          128,
+          17
+        ],
+        "expected": 10321
+      },
+      "modules": {
+        "baseline07": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/original.clean.mjs",
+        "typescript": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/typescript.clean.mjs",
+        "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/candidate.clean.mjs"
+      }
+    },
+    {
+      "id": "sequence-weight-128-17",
+      "point": {
+        "exportName": "sequence.weight",
+        "args": [
+          128,
+          17
+        ],
+        "expected": 3923797281
+      },
+      "modules": {
+        "baseline07": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/original.clean.mjs",
+        "typescript": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/typescript.clean.mjs",
+        "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/candidate.clean.mjs"
+      }
+    },
+    {
+      "id": "sequence-reverse-128-17",
+      "point": {
+        "exportName": "sequence.reverse",
+        "args": [
+          128,
+          17
+        ],
+        "expected": 4294967249
+      },
+      "modules": {
+        "baseline07": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/original.clean.mjs",
+        "typescript": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/typescript.clean.mjs",
+        "candidate": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/sequential-actual11-retry01/candidate.clean.mjs"
+      }
+    }
+  ]
+}

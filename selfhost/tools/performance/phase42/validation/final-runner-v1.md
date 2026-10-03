@@ -146,3 +146,6 @@ new-report rehash; no further Node/hash execution occurred during root timing.
 
 
 The current selected mechanism draft is `final-extension-working-v3.json` (nine groups/sixteen steps; reviewed false). Layout fixture uses v5, actual controls v2 and fixture controls v3. See `final-measurement-v1.md` for exact full45 runtime/cost/profile root commands and `check-measurement-bindings-v1.py` for queued readonly final image checks. Optional BST/sequential groups remain unselected pending acceptance and exact successor baseline contracts.
+
+
+Correction: single preset600/full cannot complete because669 one-second warmups alone exceed600s. Use runtime-batches-v1.md and the new preparation/summarizer: three serial exact15-case preset600 batches retaining all669 samples, with aggregate full45 closure. Earlier single-full command and35–40min estimate are superseded; reserve roughly45–55min overall.

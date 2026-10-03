@@ -1,0 +1,67 @@
+{
+  "kind": "phase42-native-Nat-add-supported-contract-controls",
+  "status": "prospective-root-run",
+  "initializationContract": "standard host intrinsics at module initialization; postimport mutations tested",
+  "maximum": "281474976710655",
+  "requiredCheckedBindings": [
+    "checked attempt directory verified",
+    "exact original/candidate source bytes",
+    "runtime core/base/API/module hashes",
+    "producer/oracle identities"
+  ],
+  "fixture": "scalar Nat inputs; sum=Nat.add(a,b); bounded tree depth=U32.mod(U32.from_nat(sum),4); useful nonscalar structural component with original G Nat.add call",
+  "cases": [
+    {
+      "name": "maximum-plus-zero",
+      "args": [
+        "281474976710655",
+        "0"
+      ],
+      "expect": "full value parity; original native callback order; actual scalar proof entry and component entry"
+    },
+    {
+      "name": "maximum-minus-one-plus-one",
+      "args": [
+        "281474976710654",
+        "1"
+      ],
+      "expect": "same maximum sum; full value parity and actual entry"
+    },
+    {
+      "name": "overflow",
+      "args": [
+        "281474976710655",
+        "1"
+      ],
+      "expect": "same Error name/message/order a Nat past the largest immediate 2^48-1; no completed traversal"
+    },
+    {
+      "name": "valid-after-overflow",
+      "args": [
+        "1",
+        "2"
+      ],
+      "expect": "proof closed after failure; later valid root activates independently"
+    },
+    {
+      "name": "postimport-Nat.add-binding",
+      "expect": "generic fallback, replacement callbacks equal, zero inherited worker entries"
+    },
+    {
+      "name": "postimport-Nat.add-code",
+      "expect": "generic fallback, changed code callbacks equal, zero inherited worker entries"
+    },
+    {
+      "name": "postimport-Nat.add-accessor",
+      "expect": "generic lookup getter counts/order equal; zero inherited worker entries"
+    },
+    {
+      "name": "postimport-Error-hook-overflow",
+      "expect": "Error observer sees regionProof null; public data-taking function with external proxy uses generic path with same result/field access order; outer error and subsequent valid activation equal"
+    }
+  ],
+  "negativeAssertionRule": "Error callback fresh independently guarded scalar root is allowed; do not require zero fresh scalar root entries",
+  "proofEntryRule": "use emitted original public/root entry; do not manually regionProofOpen in controller to manufacture activation",
+  "preimportWitness": "retained separately, outside established init contract; not included as supported-domain pass/fail",
+  "runtimePreservation": "ordinary G Nat.add checkedNat callback retained; no direct/flat Nat arithmetic inline"
+}

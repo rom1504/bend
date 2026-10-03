@@ -1,5 +1,8 @@
 # Sequential child-result tail continuation (held proposal)
 
+> Contract clarification: [the executed preimport BigInt witness](returning-host-callback-assessment.md) falls outside the published standard-intrinsics-at-initialization contract (docs/BEND-IN-BEND-PERFORMANCE.md405–416, pre-Phase42). The earlier blanket promotion stop is superseded; retain the exact witness as boundary evidence. All43 static native-domain assertions passed, but supported postimport mutation, bounds and complete-value controls remain required.
+
+
 A separate 63-line proposal reuses the existing unary structural phase-2 frame
 for `f(right, U32.add(U32.mul(f(left, acc), 10), value))`. It also admits the
 simpler `f(left, f(right, tail))` shape. Both outer and unique inner self calls

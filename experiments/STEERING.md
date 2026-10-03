@@ -53,3 +53,13 @@ Never claim a current-identity guard proves native origin.
 Frontend3026+196 observations and backend69pass/8N/A/4shared failures remain
 inherited scopes pending final rerun. Full backend/GPU and independent proof
 validity remain unestablished. Checked B1 qualification is not a new fixed point.
+
+## Integration correction: checked16
+
+The inherited counter preflight caught a real quantity-2 Sigma vector admission
+regression in checked15 despite35fallbackvalueoracles passing. A reviewed five-line
+repair restores Phase41 local-vector equality and isolates strict closed equality
+at the three JPure sites. Checked16 builds and the unchanged35oracle/5boundary
+counter control passes. Final admission now targets fresh checked16; source15
+receipts remain historical. Lexical-tree and fused-list instrumentation successors
+preserve behavioral checks. See [checkpoint07](../implementation/phase42/checkpoint07.md).

@@ -1,0 +1,34 @@
+--- a/selfhost/src/back/js/fold.bend
++++ b/selfhost/src/back/js/fold.bend
+@@ -320,5 +320,5 @@
+ def j_region_same_type(+book: List<&2,KDef>, +a: KTerm, +b: KTerm) -> Bool:
+   +x = wnf(book, a)
+   +y = wnf(book, b)
+-  kc(Bool, String.eq(nm(x), "List") || String.eq(nm(y), "List") || String.eq(nm(x), "Sigma") || String.eq(nm(y), "Sigma"),
+-    u => j_pure_same_closed(book, x, y, 64), u => String.eq(nm(x), nm(y)))
++  kc(Bool, String.eq(nm(x), "List") || String.eq(nm(y), "List"),
++    u => j_list_ground_head(book, x) && j_list_ground_head(book, y), u => String.eq(nm(x), nm(y)))
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -187,10 +187,10 @@
+ @unsafe
+ def j_pure_expr_on(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +level: U32, +s: JPure) -> JPure:
+   kc(JPure, String.eq(tg(t), "Ann"), u =>
+-    kc(JPure, j_pure_type(book, kid(t, 1)) && j_region_same_type(book, kid(t, 1), ty), u =>
++    kc(JPure, j_pure_type(book, kid(t, 1)) && j_pure_same_closed(book, kid(t, 1), ty, 64), u =>
+       j_pure_expr(book, env, kid(t, 0), ty, level, s), u => j_pure_fail(s)), u =>
+   kc(JPure, String.eq(tg(t), "Var"), u =>
+-    kc(JPure, j_pure_type(book, j_env(env, ix(t))) && j_region_same_type(book, j_env(env, ix(t)), ty), u => s, u => j_pure_fail(s)), u =>
++    kc(JPure, j_pure_type(book, j_env(env, ix(t))) && j_pure_same_closed(book, j_env(env, ix(t)), ty, 64), u => s, u => j_pure_fail(s)), u =>
+   kc(JPure, String.eq(tg(t), "Lit"), u =>
+     kc(JPure, String.eq(nm(t), nm(ty)) && String.contains("|U32|Nat|F32|", "|" ++ nm(t) ++ "|"), u => s, u => j_pure_fail(s)), u =>
+   kc(JPure, String.eq(tg(t), "Ctr"), u => j_pure_constructor(book, env, t, ty, level, s), u =>
+@@ -229,7 +229,7 @@
+ def j_pure_args_head(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +head: KTerm, +result: KTerm, +level: U32, +s: JPure) -> JPure:
+   match xs:
+     case Nil{}:
+-      kc(JPure, j_pure_type(book, head) && j_region_same_type(book, head, result), u => s, u => j_pure_fail(s))
++      kc(JPure, j_pure_type(book, head) && j_pure_same_closed(book, head, result, 64), u => s, u => j_pure_fail(s))
+     case Con{h, rest}:
+       kc(JPure, j_pure_valid(s) && String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) && j_pure_type(book, kid(head, 0)), u =>
+         j_pure_args(book, env, rest, j_app_type(head, h), result, level,

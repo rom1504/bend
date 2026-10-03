@@ -1,0 +1,5614 @@
+{
+  "kind": "phase42-frozen-source15-static-complexity",
+  "complete": true,
+  "baselineCommit": "5ec82b3a92d92f46547215eca274c5bfecf47796",
+  "attempt": {
+    "file": "selfhost/build/phase42/checked15/attempt.json",
+    "bytes": 208872,
+    "sha256": "4beb364821de0c87f82b303a61b37b4f5e95c9db4cfaf0ae8aee9f776d11c051"
+  },
+  "producer": {
+    "file": "selfhost/tools/performance/phase42/facts/complexity-source15.py",
+    "bytes": 7522,
+    "sha256": "63360c09c38abe45a6d35f0edfbbdedfe6714a5c0199f59e0f45be7fffb5cec8"
+  },
+  "convention": "Maintained Phase32/40/41: physical splitlines, nonblank stripped lines, UTF8 bytes, top-level ^def/^law/^type regex; compiler manifest modules only.",
+  "compiler": {
+    "baseline": {
+      "manifestSha256": "5a7f2fd2efe8bcfe91a935428d0f9241eb629c42eab8ed007eebc2fe0f19d5a3",
+      "counts": {
+        "physicalLines": 18898,
+        "nonblankLines": 16187,
+        "bytes": 777508,
+        "defs": 2108,
+        "laws": 640,
+        "types": 71,
+        "modules": 70
+      },
+      "files": [
+        {
+          "name": "src/core/term.bend",
+          "sha256": "e9ab994bc3ba4fd5a281e25836911bbc29cafcf2ab0c0284dc9bc097e891fa46",
+          "counts": {
+            "physicalLines": 650,
+            "nonblankLines": 563,
+            "bytes": 18285,
+            "defs": 72,
+            "laws": 10,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/core/index.bend",
+          "sha256": "32a4f2772c865f9ed9743f1ece27d5fafd1898724d5f268186590c938b038ea2",
+          "counts": {
+            "physicalLines": 383,
+            "nonblankLines": 338,
+            "bytes": 10197,
+            "defs": 34,
+            "laws": 9,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/core/normalize.bend",
+          "sha256": "4845ff63f3c228abc9a432410ddc8b7e20bfce27e54d6d49412b06608f7ce702",
+          "counts": {
+            "physicalLines": 719,
+            "nonblankLines": 637,
+            "bytes": 22263,
+            "defs": 55,
+            "laws": 32,
+            "types": 3
+          }
+        },
+        {
+          "name": "src/core/graph.bend",
+          "sha256": "85625049b316ede08eeffd7ff509483183624f1197c582c9d1bb2cd8bebf4802",
+          "counts": {
+            "physicalLines": 485,
+            "nonblankLines": 420,
+            "bytes": 14746,
+            "defs": 37,
+            "laws": 22,
+            "types": 5
+          }
+        },
+        {
+          "name": "src/core/reach.bend",
+          "sha256": "086092c688e6cb774da94333826f51b1fdeddc8e85aeaac5be6b15c143b0df27",
+          "counts": {
+            "physicalLines": 254,
+            "nonblankLines": 214,
+            "bytes": 9901,
+            "defs": 27,
+            "laws": 13,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/core/pretty.bend",
+          "sha256": "40b4e6ca55bf11009881b893c7959dd52cc64bbc6cb2dbb607e94dbab69fdedc",
+          "counts": {
+            "physicalLines": 548,
+            "nonblankLines": 469,
+            "bytes": 16800,
+            "defs": 55,
+            "laws": 23,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/check/quantity.bend",
+          "sha256": "b4a8ca1f8dff10f4f64397ea53bbbe272bb32400e993b1077d284ec1d8a70b4d",
+          "counts": {
+            "physicalLines": 177,
+            "nonblankLines": 153,
+            "bytes": 4069,
+            "defs": 16,
+            "laws": 7,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/check/kernel.bend",
+          "sha256": "da7ee29f9755f09acd9f89fcfd37465b52ab8778971200c946c70e50eb5b4132",
+          "counts": {
+            "physicalLines": 1427,
+            "nonblankLines": 1208,
+            "bytes": 49255,
+            "defs": 157,
+            "laws": 60,
+            "types": 4
+          }
+        },
+        {
+          "name": "src/check/specialize.bend",
+          "sha256": "76e0f9249ae15cc0734a8e9d2e75677794e2eb5464c7756a19daff8b8217e7ee",
+          "counts": {
+            "physicalLines": 383,
+            "nonblankLines": 322,
+            "bytes": 16212,
+            "defs": 53,
+            "laws": 5,
+            "types": 3
+          }
+        },
+        {
+          "name": "src/check/prefix.bend",
+          "sha256": "ceabf77fb49b58910d83fa896899061643c4c105f29e70bd87d3f73be873783d",
+          "counts": {
+            "physicalLines": 142,
+            "nonblankLines": 122,
+            "bytes": 3037,
+            "defs": 12,
+            "laws": 7,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/check/annotate.bend",
+          "sha256": "1912e5d177514733e706297fbb53e730c1f7a9edc91ffb06d2b1de7e2547648c",
+          "counts": {
+            "physicalLines": 389,
+            "nonblankLines": 329,
+            "bytes": 10866,
+            "defs": 32,
+            "laws": 26,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/front/lexer.bend",
+          "sha256": "aa9d726b6b284deba84dbccc77a01a8143dd89dab70cf487e1ddc8d589380440",
+          "counts": {
+            "physicalLines": 397,
+            "nonblankLines": 338,
+            "bytes": 13265,
+            "defs": 47,
+            "laws": 9,
+            "types": 4
+          }
+        },
+        {
+          "name": "src/front/contextual.bend",
+          "sha256": "18a1eabd78b224927ebe72c4aa7a295300cc641e20d03d2bc062fdcfd96f62f6",
+          "counts": {
+            "physicalLines": 555,
+            "nonblankLines": 472,
+            "bytes": 29385,
+            "defs": 83,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/parser.bend",
+          "sha256": "c1790685aea7c71430873d65c2d91996778f443aee0098e54c656fe10177ba28",
+          "counts": {
+            "physicalLines": 730,
+            "nonblankLines": 613,
+            "bytes": 32003,
+            "defs": 82,
+            "laws": 37,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/front/declarations.bend",
+          "sha256": "9e2c8da30605c1b8ab732df5f95533da55a3ea0e6c5a0941f1340586db9d36af",
+          "counts": {
+            "physicalLines": 741,
+            "nonblankLines": 640,
+            "bytes": 31635,
+            "defs": 65,
+            "laws": 33,
+            "types": 3
+          }
+        },
+        {
+          "name": "src/front/flatten.bend",
+          "sha256": "d3ba8687f7dcd303dee847a90e3fa92b9a234d97cdcd3893de8242c6d2aa69cf",
+          "counts": {
+            "physicalLines": 189,
+            "nonblankLines": 161,
+            "bytes": 6450,
+            "defs": 15,
+            "laws": 12,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/front/elaborate.bend",
+          "sha256": "8537f483259d48fa1d710915d6e8e09916faa540560379ee550a7077f391dc1e",
+          "counts": {
+            "physicalLines": 242,
+            "nonblankLines": 203,
+            "bytes": 7941,
+            "defs": 26,
+            "laws": 11,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/sugar.bend",
+          "sha256": "d3e3cf5addf0498e8401b9988678eb6ac8ff81571a014b18a1b6fed0a76fb22a",
+          "counts": {
+            "physicalLines": 301,
+            "nonblankLines": 255,
+            "bytes": 14142,
+            "defs": 41,
+            "laws": 4,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/unicode.bend",
+          "sha256": "bfd4407aa83614ae8398c9ce451f729cbcba457f2ef64774fea99f1824b5dd96",
+          "counts": {
+            "physicalLines": 99,
+            "nonblankLines": 79,
+            "bytes": 4481,
+            "defs": 13,
+            "laws": 6,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/front/literals_arrays.bend",
+          "sha256": "7429e8a4e16e30f74fa19911993879e60a982a510f369769e7805d6a6ac34796",
+          "counts": {
+            "physicalLines": 270,
+            "nonblankLines": 220,
+            "bytes": 11903,
+            "defs": 38,
+            "laws": 13,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/parallel.bend",
+          "sha256": "b7c38f74d9f339f21fa00c5194078a0bfc41a948d1adaa907d00df64045c2f1c",
+          "counts": {
+            "physicalLines": 106,
+            "nonblankLines": 88,
+            "bytes": 3238,
+            "defs": 10,
+            "laws": 8,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/fresh_work.bend",
+          "sha256": "043d3b737cef4b932b7de8ef161dc88ba867ba6a8056e3662edfdcf4a2d797ed",
+          "counts": {
+            "physicalLines": 208,
+            "nonblankLines": 201,
+            "bytes": 7736,
+            "defs": 15,
+            "laws": 12,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/front/freshen.bend",
+          "sha256": "d0fed135fe878987770786ef0c50dd09efe2cce390beb7a911bcfc8468d5607d",
+          "counts": {
+            "physicalLines": 57,
+            "nonblankLines": 47,
+            "bytes": 1285,
+            "defs": 5,
+            "laws": 3,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/load/paths.bend",
+          "sha256": "a9fc17a8af04c1958d1f11e8c1c5b7c2d3eb925dd9075e6c77de4bdb3521f2a2",
+          "counts": {
+            "physicalLines": 84,
+            "nonblankLines": 70,
+            "bytes": 2186,
+            "defs": 9,
+            "laws": 4,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/families.bend",
+          "sha256": "22b6e9b1ca132ed2d6f2cf91507e221f09cdda1aeab5931e8cf099e934bc9d2f",
+          "counts": {
+            "physicalLines": 106,
+            "nonblankLines": 88,
+            "bytes": 3849,
+            "defs": 11,
+            "laws": 6,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/validate.bend",
+          "sha256": "62d530ce7ebb6d2abf69f34d37b5b21eed8711c7bdee3bf868aa2c94d699ec5d",
+          "counts": {
+            "physicalLines": 233,
+            "nonblankLines": 193,
+            "bytes": 11354,
+            "defs": 25,
+            "laws": 12,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/load/imports.bend",
+          "sha256": "b878da5169a4a39d35a236ff5128dc42735fea0707195cf621ae651c1f13e9b1",
+          "counts": {
+            "physicalLines": 79,
+            "nonblankLines": 65,
+            "bytes": 4211,
+            "defs": 11,
+            "laws": 1,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/load/graph.bend",
+          "sha256": "9317e9fe5224c447c50e5339469a244dd7036c00801d9750687f8dfe1de5fdb3",
+          "counts": {
+            "physicalLines": 462,
+            "nonblankLines": 409,
+            "bytes": 16909,
+            "defs": 50,
+            "laws": 28,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/load/seed.bend",
+          "sha256": "ca4cb677af632c47c13792ede10d4e791c85b5cc6c756aacf230861d7bfa4c21",
+          "counts": {
+            "physicalLines": 162,
+            "nonblankLines": 140,
+            "bytes": 5224,
+            "defs": 13,
+            "laws": 8,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/load/modules.bend",
+          "sha256": "fed5593033f957a61118a2eff9c2e09bd51af8810cff1db12e655523b82188ea",
+          "counts": {
+            "physicalLines": 258,
+            "nonblankLines": 219,
+            "bytes": 10063,
+            "defs": 31,
+            "laws": 5,
+            "types": 4
+          }
+        },
+        {
+          "name": "src/diagnostic/model.bend",
+          "sha256": "3c699ec70ef36700520658555bc5df025880691c44633cabb9e5719b60fc9c1c",
+          "counts": {
+            "physicalLines": 19,
+            "nonblankLines": 15,
+            "bytes": 754,
+            "defs": 0,
+            "laws": 0,
+            "types": 5
+          }
+        },
+        {
+          "name": "src/diagnostic/render.bend",
+          "sha256": "695f41ace13e08756273c317659a419deee5fc79d413bd58e8711f124370276c",
+          "counts": {
+            "physicalLines": 248,
+            "nonblankLines": 215,
+            "bytes": 7804,
+            "defs": 27,
+            "laws": 5,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/diagnostic/trace.bend",
+          "sha256": "0e03e2827415d082d295976b57564c7b0bd872f7c81229e653d7e0ddda62b10f",
+          "counts": {
+            "physicalLines": 135,
+            "nonblankLines": 112,
+            "bytes": 6819,
+            "defs": 16,
+            "laws": 6,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/diagnostic/produce.bend",
+          "sha256": "9518cb01c0c7636654bfa14dd332ac49756572ba975c7789c865e9cd8cf75c80",
+          "counts": {
+            "physicalLines": 210,
+            "nonblankLines": 176,
+            "bytes": 8073,
+            "defs": 26,
+            "laws": 8,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/diagnostic/frontend.bend",
+          "sha256": "fdd07e6e3df5f999f2d162a4d3186cd8ae13102c8351710edab5291a2f80489f",
+          "counts": {
+            "physicalLines": 249,
+            "nonblankLines": 222,
+            "bytes": 10910,
+            "defs": 24,
+            "laws": 16,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/back/js/foreign.bend",
+          "sha256": "0f397f84a989c6fc9a52eaf962742e673cdba243864c0bbe7c16ce4ffd8eb065",
+          "counts": {
+            "physicalLines": 168,
+            "nonblankLines": 142,
+            "bytes": 5794,
+            "defs": 17,
+            "laws": 9,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/literals.bend",
+          "sha256": "2c4488a4f37010253a54e3745317c685ec77067475d471e577687acfa9a16776",
+          "counts": {
+            "physicalLines": 185,
+            "nonblankLines": 150,
+            "bytes": 5544,
+            "defs": 18,
+            "laws": 16,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/validate.bend",
+          "sha256": "f8fc315bf80dabbf8afd1b6ced8e7c322b8ef96d73859d47e01c4b317afb72a0",
+          "counts": {
+            "physicalLines": 305,
+            "nonblankLines": 258,
+            "bytes": 11066,
+            "defs": 26,
+            "laws": 21,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/choice.bend",
+          "sha256": "b94d76439dc5c4559f38e4e171386823f2fdfc0eac49552ecef3d00f391cbcf3",
+          "counts": {
+            "physicalLines": 97,
+            "nonblankLines": 82,
+            "bytes": 3583,
+            "defs": 9,
+            "laws": 7,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/projection.bend",
+          "sha256": "67cce055248e6a0034a6194a9f5cbd0821c2cf79905759d08033b141231e93ae",
+          "counts": {
+            "physicalLines": 69,
+            "nonblankLines": 59,
+            "bytes": 2597,
+            "defs": 7,
+            "laws": 4,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/u32.bend",
+          "sha256": "40124ab5038efab19004ecaad4d44780e6cdde4611a17f6ac673aede4cd9502b",
+          "counts": {
+            "physicalLines": 110,
+            "nonblankLines": 95,
+            "bytes": 4856,
+            "defs": 15,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/primitive.bend",
+          "sha256": "de137137d7cdd21f3a3a5c6d0bdca7664712fac7b74c46f177b8d3e521017b83",
+          "counts": {
+            "physicalLines": 115,
+            "nonblankLines": 101,
+            "bytes": 7332,
+            "defs": 14,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/local.bend",
+          "sha256": "f662044a56c8f46a66c152ac135e50e49f0eb37b637846220eda0ddb00f75c74",
+          "counts": {
+            "physicalLines": 176,
+            "nonblankLines": 151,
+            "bytes": 9658,
+            "defs": 25,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/jpure.bend",
+          "sha256": "c8c4c81c187224349b6d8e156301883fcf21a23942edfbaa2b07c48ac0cc802f",
+          "counts": {
+            "physicalLines": 269,
+            "nonblankLines": 234,
+            "bytes": 16268,
+            "defs": 35,
+            "laws": 0,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/back/js/region.bend",
+          "sha256": "c12519c4211b252a8d1a809cdfb139a57196056a1167a93740f47862d21e5f6b",
+          "counts": {
+            "physicalLines": 798,
+            "nonblankLines": 689,
+            "bytes": 50331,
+            "defs": 108,
+            "laws": 0,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/back/js/fold.bend",
+          "sha256": "6dab24c3c2a77833d72c27b0c1a2b74df9a808971e10589350d1f0cd6a27793f",
+          "counts": {
+            "physicalLines": 324,
+            "nonblankLines": 283,
+            "bytes": 17723,
+            "defs": 42,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/producer.bend",
+          "sha256": "8c710ccc619fd0a222bcd852d5fc2f341d07e04417171207fcaf830fff1d1173",
+          "counts": {
+            "physicalLines": 281,
+            "nonblankLines": 248,
+            "bytes": 17848,
+            "defs": 34,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/finite.bend",
+          "sha256": "4661b07bc6399968cdd770178691e1f9fadb2f1914b148af6d7f2532d46c97a3",
+          "counts": {
+            "physicalLines": 166,
+            "nonblankLines": 148,
+            "bytes": 9625,
+            "defs": 19,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/worker.bend",
+          "sha256": "575c0e37d255895e8d8ec98ff613b5dd109389f903dbdbac7ee5c03b2a41106f",
+          "counts": {
+            "physicalLines": 357,
+            "nonblankLines": 307,
+            "bytes": 23050,
+            "defs": 50,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/tree.bend",
+          "sha256": "6cc1ccb43d55dc5f883359dcb677e0ce8a699bd69b761058b10e4d21cf398fc7",
+          "counts": {
+            "physicalLines": 462,
+            "nonblankLines": 407,
+            "bytes": 27917,
+            "defs": 56,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/emit.bend",
+          "sha256": "838975e724dc5e1d069d644925832d1ec5477c3769af0520e7b1572623076c29",
+          "counts": {
+            "physicalLines": 1003,
+            "nonblankLines": 847,
+            "bytes": 33801,
+            "defs": 90,
+            "laws": 70,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/ir.bend",
+          "sha256": "dada548b975e325d96735f94b4e65e56d0d47b8e22851bc6815bed7063e0339b",
+          "counts": {
+            "physicalLines": 25,
+            "nonblankLines": 19,
+            "bytes": 929,
+            "defs": 0,
+            "laws": 0,
+            "types": 7
+          }
+        },
+        {
+          "name": "src/back/native/text.bend",
+          "sha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+          "counts": {
+            "physicalLines": 101,
+            "nonblankLines": 83,
+            "bytes": 2533,
+            "defs": 18,
+            "laws": 1,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/identity.bend",
+          "sha256": "8d1c0ad2d35cb5072615ad6e23b99ec7db3c956679c1894d847869608be0e16a",
+          "counts": {
+            "physicalLines": 89,
+            "nonblankLines": 77,
+            "bytes": 2476,
+            "defs": 7,
+            "laws": 5,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/layout.bend",
+          "sha256": "35981acafb07efcf3983baef35fffe573f8dc79707ea3077d9a15d360f05390b",
+          "counts": {
+            "physicalLines": 7,
+            "nonblankLines": 6,
+            "bytes": 135,
+            "defs": 1,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/intrinsic.bend",
+          "sha256": "5b921ebfecb307eddae880edee86ce459751684ecf74543f54c60e2a6f252195",
+          "counts": {
+            "physicalLines": 29,
+            "nonblankLines": 24,
+            "bytes": 4912,
+            "defs": 5,
+            "laws": 0,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/back/native/tables.bend",
+          "sha256": "6b8f36fa9063f35105889d8977aa2345fb01eeceb117e6f641151430d084bbaa",
+          "counts": {
+            "physicalLines": 221,
+            "nonblankLines": 184,
+            "bytes": 8602,
+            "defs": 37,
+            "laws": 1,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/emit.bend",
+          "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a",
+          "counts": {
+            "physicalLines": 111,
+            "nonblankLines": 93,
+            "bytes": 5084,
+            "defs": 19,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/erase.bend",
+          "sha256": "8f536cdfbca91b26bf426b3c8c5f42106fc0e18af7bfd2550ba73e7dab5530ec",
+          "counts": {
+            "physicalLines": 83,
+            "nonblankLines": 71,
+            "bytes": 3528,
+            "defs": 9,
+            "laws": 3,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/bridge.bend",
+          "sha256": "4767f940940660635ec4c80978f8e4abb11c398b4b8f8bccabf05879c59f2a49",
+          "counts": {
+            "physicalLines": 456,
+            "nonblankLines": 382,
+            "bytes": 23327,
+            "defs": 65,
+            "laws": 6,
+            "types": 3
+          }
+        },
+        {
+          "name": "src/back/native/direct.bend",
+          "sha256": "75c5d560b8390263d18c991da8410191a0c5909b4ae0e8ebae193c0d9fd02de5",
+          "counts": {
+            "physicalLines": 88,
+            "nonblankLines": 74,
+            "bytes": 4200,
+            "defs": 14,
+            "laws": 1,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/pattern.bend",
+          "sha256": "279c5967793f8922309b8d45746240db5c45f390ab8724c3b6f87e01ae17c7c4",
+          "counts": {
+            "physicalLines": 141,
+            "nonblankLines": 137,
+            "bytes": 5324,
+            "defs": 13,
+            "laws": 9,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/back/native/show.bend",
+          "sha256": "b79f5ca545788b1c483b65bb6de6000ffacc2728b935553bede2d15d8e0d006d",
+          "counts": {
+            "physicalLines": 152,
+            "nonblankLines": 129,
+            "bytes": 6723,
+            "defs": 19,
+            "laws": 3,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/back/native/parallel.bend",
+          "sha256": "85326099c65dbd478574e480e13492f1d3973625c3c9aa50e286f7f4a38ff722",
+          "counts": {
+            "physicalLines": 94,
+            "nonblankLines": 81,
+            "bytes": 5003,
+            "defs": 12,
+            "laws": 1,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/array.bend",
+          "sha256": "c00f0592299047df582ac0435e1a0423ea62fb48f7c87dda83bf18161b263bd7",
+          "counts": {
+            "physicalLines": 44,
+            "nonblankLines": 39,
+            "bytes": 2813,
+            "defs": 4,
+            "laws": 2,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/validate.bend",
+          "sha256": "d0c1e75c5dbda3d2e65ea227667191252c49f71b63f0765c358c2041a0f484bb",
+          "counts": {
+            "physicalLines": 62,
+            "nonblankLines": 52,
+            "bytes": 2859,
+            "defs": 11,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/foreign.bend",
+          "sha256": "ed7a06662072e73d45d10b1898599936b106dc22956a4fceea8d04ac22fb6d3c",
+          "counts": {
+            "physicalLines": 73,
+            "nonblankLines": 64,
+            "bytes": 4010,
+            "defs": 10,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/book.bend",
+          "sha256": "180ee53af86a59df8efcc131d4f22b0ca6f5f9980dd222259f2941fbef1e11a2",
+          "counts": {
+            "physicalLines": 316,
+            "nonblankLines": 264,
+            "bytes": 14294,
+            "defs": 42,
+            "laws": 9,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/driver/report.bend",
+          "sha256": "15f0985da866b948252490ec2f1b90aed9d36fb24b93eab24826648cc36e6df8",
+          "counts": {
+            "physicalLines": 100,
+            "nonblankLines": 86,
+            "bytes": 2593,
+            "defs": 9,
+            "laws": 6,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/driver/api.bend",
+          "sha256": "5cae856aa306f52042cbead5bf72136da317649a0a09b7d73f8da1be3530d9d3",
+          "counts": {
+            "physicalLines": 124,
+            "nonblankLines": 105,
+            "bytes": 3919,
+            "defs": 15,
+            "laws": 5,
+            "types": 0
+          }
+        }
+      ]
+    },
+    "source15": {
+      "manifestSha256": "5a7f2fd2efe8bcfe91a935428d0f9241eb629c42eab8ed007eebc2fe0f19d5a3",
+      "counts": {
+        "physicalLines": 20056,
+        "nonblankLines": 17198,
+        "bytes": 844206,
+        "defs": 2249,
+        "laws": 640,
+        "types": 71,
+        "modules": 70
+      },
+      "files": [
+        {
+          "name": "src/core/term.bend",
+          "sha256": "e9ab994bc3ba4fd5a281e25836911bbc29cafcf2ab0c0284dc9bc097e891fa46",
+          "counts": {
+            "physicalLines": 650,
+            "nonblankLines": 563,
+            "bytes": 18285,
+            "defs": 72,
+            "laws": 10,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/core/index.bend",
+          "sha256": "32a4f2772c865f9ed9743f1ece27d5fafd1898724d5f268186590c938b038ea2",
+          "counts": {
+            "physicalLines": 383,
+            "nonblankLines": 338,
+            "bytes": 10197,
+            "defs": 34,
+            "laws": 9,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/core/normalize.bend",
+          "sha256": "4845ff63f3c228abc9a432410ddc8b7e20bfce27e54d6d49412b06608f7ce702",
+          "counts": {
+            "physicalLines": 719,
+            "nonblankLines": 637,
+            "bytes": 22263,
+            "defs": 55,
+            "laws": 32,
+            "types": 3
+          }
+        },
+        {
+          "name": "src/core/graph.bend",
+          "sha256": "85625049b316ede08eeffd7ff509483183624f1197c582c9d1bb2cd8bebf4802",
+          "counts": {
+            "physicalLines": 485,
+            "nonblankLines": 420,
+            "bytes": 14746,
+            "defs": 37,
+            "laws": 22,
+            "types": 5
+          }
+        },
+        {
+          "name": "src/core/reach.bend",
+          "sha256": "086092c688e6cb774da94333826f51b1fdeddc8e85aeaac5be6b15c143b0df27",
+          "counts": {
+            "physicalLines": 254,
+            "nonblankLines": 214,
+            "bytes": 9901,
+            "defs": 27,
+            "laws": 13,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/core/pretty.bend",
+          "sha256": "40b4e6ca55bf11009881b893c7959dd52cc64bbc6cb2dbb607e94dbab69fdedc",
+          "counts": {
+            "physicalLines": 548,
+            "nonblankLines": 469,
+            "bytes": 16800,
+            "defs": 55,
+            "laws": 23,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/check/quantity.bend",
+          "sha256": "b4a8ca1f8dff10f4f64397ea53bbbe272bb32400e993b1077d284ec1d8a70b4d",
+          "counts": {
+            "physicalLines": 177,
+            "nonblankLines": 153,
+            "bytes": 4069,
+            "defs": 16,
+            "laws": 7,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/check/kernel.bend",
+          "sha256": "da7ee29f9755f09acd9f89fcfd37465b52ab8778971200c946c70e50eb5b4132",
+          "counts": {
+            "physicalLines": 1427,
+            "nonblankLines": 1208,
+            "bytes": 49255,
+            "defs": 157,
+            "laws": 60,
+            "types": 4
+          }
+        },
+        {
+          "name": "src/check/specialize.bend",
+          "sha256": "76e0f9249ae15cc0734a8e9d2e75677794e2eb5464c7756a19daff8b8217e7ee",
+          "counts": {
+            "physicalLines": 383,
+            "nonblankLines": 322,
+            "bytes": 16212,
+            "defs": 53,
+            "laws": 5,
+            "types": 3
+          }
+        },
+        {
+          "name": "src/check/prefix.bend",
+          "sha256": "ceabf77fb49b58910d83fa896899061643c4c105f29e70bd87d3f73be873783d",
+          "counts": {
+            "physicalLines": 142,
+            "nonblankLines": 122,
+            "bytes": 3037,
+            "defs": 12,
+            "laws": 7,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/check/annotate.bend",
+          "sha256": "1912e5d177514733e706297fbb53e730c1f7a9edc91ffb06d2b1de7e2547648c",
+          "counts": {
+            "physicalLines": 389,
+            "nonblankLines": 329,
+            "bytes": 10866,
+            "defs": 32,
+            "laws": 26,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/front/lexer.bend",
+          "sha256": "aa9d726b6b284deba84dbccc77a01a8143dd89dab70cf487e1ddc8d589380440",
+          "counts": {
+            "physicalLines": 397,
+            "nonblankLines": 338,
+            "bytes": 13265,
+            "defs": 47,
+            "laws": 9,
+            "types": 4
+          }
+        },
+        {
+          "name": "src/front/contextual.bend",
+          "sha256": "18a1eabd78b224927ebe72c4aa7a295300cc641e20d03d2bc062fdcfd96f62f6",
+          "counts": {
+            "physicalLines": 555,
+            "nonblankLines": 472,
+            "bytes": 29385,
+            "defs": 83,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/parser.bend",
+          "sha256": "c1790685aea7c71430873d65c2d91996778f443aee0098e54c656fe10177ba28",
+          "counts": {
+            "physicalLines": 730,
+            "nonblankLines": 613,
+            "bytes": 32003,
+            "defs": 82,
+            "laws": 37,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/front/declarations.bend",
+          "sha256": "9e2c8da30605c1b8ab732df5f95533da55a3ea0e6c5a0941f1340586db9d36af",
+          "counts": {
+            "physicalLines": 741,
+            "nonblankLines": 640,
+            "bytes": 31635,
+            "defs": 65,
+            "laws": 33,
+            "types": 3
+          }
+        },
+        {
+          "name": "src/front/flatten.bend",
+          "sha256": "d3ba8687f7dcd303dee847a90e3fa92b9a234d97cdcd3893de8242c6d2aa69cf",
+          "counts": {
+            "physicalLines": 189,
+            "nonblankLines": 161,
+            "bytes": 6450,
+            "defs": 15,
+            "laws": 12,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/front/elaborate.bend",
+          "sha256": "8537f483259d48fa1d710915d6e8e09916faa540560379ee550a7077f391dc1e",
+          "counts": {
+            "physicalLines": 242,
+            "nonblankLines": 203,
+            "bytes": 7941,
+            "defs": 26,
+            "laws": 11,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/sugar.bend",
+          "sha256": "d3e3cf5addf0498e8401b9988678eb6ac8ff81571a014b18a1b6fed0a76fb22a",
+          "counts": {
+            "physicalLines": 301,
+            "nonblankLines": 255,
+            "bytes": 14142,
+            "defs": 41,
+            "laws": 4,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/unicode.bend",
+          "sha256": "bfd4407aa83614ae8398c9ce451f729cbcba457f2ef64774fea99f1824b5dd96",
+          "counts": {
+            "physicalLines": 99,
+            "nonblankLines": 79,
+            "bytes": 4481,
+            "defs": 13,
+            "laws": 6,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/front/literals_arrays.bend",
+          "sha256": "7429e8a4e16e30f74fa19911993879e60a982a510f369769e7805d6a6ac34796",
+          "counts": {
+            "physicalLines": 270,
+            "nonblankLines": 220,
+            "bytes": 11903,
+            "defs": 38,
+            "laws": 13,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/parallel.bend",
+          "sha256": "b7c38f74d9f339f21fa00c5194078a0bfc41a948d1adaa907d00df64045c2f1c",
+          "counts": {
+            "physicalLines": 106,
+            "nonblankLines": 88,
+            "bytes": 3238,
+            "defs": 10,
+            "laws": 8,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/fresh_work.bend",
+          "sha256": "043d3b737cef4b932b7de8ef161dc88ba867ba6a8056e3662edfdcf4a2d797ed",
+          "counts": {
+            "physicalLines": 208,
+            "nonblankLines": 201,
+            "bytes": 7736,
+            "defs": 15,
+            "laws": 12,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/front/freshen.bend",
+          "sha256": "d0fed135fe878987770786ef0c50dd09efe2cce390beb7a911bcfc8468d5607d",
+          "counts": {
+            "physicalLines": 57,
+            "nonblankLines": 47,
+            "bytes": 1285,
+            "defs": 5,
+            "laws": 3,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/load/paths.bend",
+          "sha256": "a9fc17a8af04c1958d1f11e8c1c5b7c2d3eb925dd9075e6c77de4bdb3521f2a2",
+          "counts": {
+            "physicalLines": 84,
+            "nonblankLines": 70,
+            "bytes": 2186,
+            "defs": 9,
+            "laws": 4,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/families.bend",
+          "sha256": "22b6e9b1ca132ed2d6f2cf91507e221f09cdda1aeab5931e8cf099e934bc9d2f",
+          "counts": {
+            "physicalLines": 106,
+            "nonblankLines": 88,
+            "bytes": 3849,
+            "defs": 11,
+            "laws": 6,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/front/validate.bend",
+          "sha256": "62d530ce7ebb6d2abf69f34d37b5b21eed8711c7bdee3bf868aa2c94d699ec5d",
+          "counts": {
+            "physicalLines": 233,
+            "nonblankLines": 193,
+            "bytes": 11354,
+            "defs": 25,
+            "laws": 12,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/load/imports.bend",
+          "sha256": "b878da5169a4a39d35a236ff5128dc42735fea0707195cf621ae651c1f13e9b1",
+          "counts": {
+            "physicalLines": 79,
+            "nonblankLines": 65,
+            "bytes": 4211,
+            "defs": 11,
+            "laws": 1,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/load/graph.bend",
+          "sha256": "9317e9fe5224c447c50e5339469a244dd7036c00801d9750687f8dfe1de5fdb3",
+          "counts": {
+            "physicalLines": 462,
+            "nonblankLines": 409,
+            "bytes": 16909,
+            "defs": 50,
+            "laws": 28,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/load/seed.bend",
+          "sha256": "ca4cb677af632c47c13792ede10d4e791c85b5cc6c756aacf230861d7bfa4c21",
+          "counts": {
+            "physicalLines": 162,
+            "nonblankLines": 140,
+            "bytes": 5224,
+            "defs": 13,
+            "laws": 8,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/load/modules.bend",
+          "sha256": "fed5593033f957a61118a2eff9c2e09bd51af8810cff1db12e655523b82188ea",
+          "counts": {
+            "physicalLines": 258,
+            "nonblankLines": 219,
+            "bytes": 10063,
+            "defs": 31,
+            "laws": 5,
+            "types": 4
+          }
+        },
+        {
+          "name": "src/diagnostic/model.bend",
+          "sha256": "3c699ec70ef36700520658555bc5df025880691c44633cabb9e5719b60fc9c1c",
+          "counts": {
+            "physicalLines": 19,
+            "nonblankLines": 15,
+            "bytes": 754,
+            "defs": 0,
+            "laws": 0,
+            "types": 5
+          }
+        },
+        {
+          "name": "src/diagnostic/render.bend",
+          "sha256": "695f41ace13e08756273c317659a419deee5fc79d413bd58e8711f124370276c",
+          "counts": {
+            "physicalLines": 248,
+            "nonblankLines": 215,
+            "bytes": 7804,
+            "defs": 27,
+            "laws": 5,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/diagnostic/trace.bend",
+          "sha256": "0e03e2827415d082d295976b57564c7b0bd872f7c81229e653d7e0ddda62b10f",
+          "counts": {
+            "physicalLines": 135,
+            "nonblankLines": 112,
+            "bytes": 6819,
+            "defs": 16,
+            "laws": 6,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/diagnostic/produce.bend",
+          "sha256": "9518cb01c0c7636654bfa14dd332ac49756572ba975c7789c865e9cd8cf75c80",
+          "counts": {
+            "physicalLines": 210,
+            "nonblankLines": 176,
+            "bytes": 8073,
+            "defs": 26,
+            "laws": 8,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/diagnostic/frontend.bend",
+          "sha256": "fdd07e6e3df5f999f2d162a4d3186cd8ae13102c8351710edab5291a2f80489f",
+          "counts": {
+            "physicalLines": 249,
+            "nonblankLines": 222,
+            "bytes": 10910,
+            "defs": 24,
+            "laws": 16,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/back/js/foreign.bend",
+          "sha256": "0f397f84a989c6fc9a52eaf962742e673cdba243864c0bbe7c16ce4ffd8eb065",
+          "counts": {
+            "physicalLines": 168,
+            "nonblankLines": 142,
+            "bytes": 5794,
+            "defs": 17,
+            "laws": 9,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/literals.bend",
+          "sha256": "2c4488a4f37010253a54e3745317c685ec77067475d471e577687acfa9a16776",
+          "counts": {
+            "physicalLines": 185,
+            "nonblankLines": 150,
+            "bytes": 5544,
+            "defs": 18,
+            "laws": 16,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/validate.bend",
+          "sha256": "f8fc315bf80dabbf8afd1b6ced8e7c322b8ef96d73859d47e01c4b317afb72a0",
+          "counts": {
+            "physicalLines": 305,
+            "nonblankLines": 258,
+            "bytes": 11066,
+            "defs": 26,
+            "laws": 21,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/choice.bend",
+          "sha256": "b94d76439dc5c4559f38e4e171386823f2fdfc0eac49552ecef3d00f391cbcf3",
+          "counts": {
+            "physicalLines": 97,
+            "nonblankLines": 82,
+            "bytes": 3583,
+            "defs": 9,
+            "laws": 7,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/projection.bend",
+          "sha256": "67cce055248e6a0034a6194a9f5cbd0821c2cf79905759d08033b141231e93ae",
+          "counts": {
+            "physicalLines": 69,
+            "nonblankLines": 59,
+            "bytes": 2597,
+            "defs": 7,
+            "laws": 4,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/u32.bend",
+          "sha256": "40124ab5038efab19004ecaad4d44780e6cdde4611a17f6ac673aede4cd9502b",
+          "counts": {
+            "physicalLines": 110,
+            "nonblankLines": 95,
+            "bytes": 4856,
+            "defs": 15,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/primitive.bend",
+          "sha256": "de137137d7cdd21f3a3a5c6d0bdca7664712fac7b74c46f177b8d3e521017b83",
+          "counts": {
+            "physicalLines": 115,
+            "nonblankLines": 101,
+            "bytes": 7332,
+            "defs": 14,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/local.bend",
+          "sha256": "f662044a56c8f46a66c152ac135e50e49f0eb37b637846220eda0ddb00f75c74",
+          "counts": {
+            "physicalLines": 176,
+            "nonblankLines": 151,
+            "bytes": 9658,
+            "defs": 25,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/jpure.bend",
+          "sha256": "f21f77544d24dc97592a53ecc7c15d53b864dec5e3414c123a0f72b32d15480f",
+          "counts": {
+            "physicalLines": 527,
+            "nonblankLines": 459,
+            "bytes": 30373,
+            "defs": 67,
+            "laws": 0,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/back/js/region.bend",
+          "sha256": "c30590552cbfa0456803d33c348f68eaa66014acdca0385875187157a4565446",
+          "counts": {
+            "physicalLines": 1040,
+            "nonblankLines": 904,
+            "bytes": 62915,
+            "defs": 135,
+            "laws": 0,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/back/js/fold.bend",
+          "sha256": "e011910e4f2b8cd09c91fdf50c4e504df225ebdf11eb129aa6a6d8893424f16a",
+          "counts": {
+            "physicalLines": 324,
+            "nonblankLines": 283,
+            "bytes": 17757,
+            "defs": 42,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/producer.bend",
+          "sha256": "8c710ccc619fd0a222bcd852d5fc2f341d07e04417171207fcaf830fff1d1173",
+          "counts": {
+            "physicalLines": 281,
+            "nonblankLines": 248,
+            "bytes": 17848,
+            "defs": 34,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/finite.bend",
+          "sha256": "2956ba84e3c54200b2261f31b920723918681a79c41aa26277a7d023872384f4",
+          "counts": {
+            "physicalLines": 350,
+            "nonblankLines": 311,
+            "bytes": 19609,
+            "defs": 40,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/worker.bend",
+          "sha256": "575c0e37d255895e8d8ec98ff613b5dd109389f903dbdbac7ee5c03b2a41106f",
+          "counts": {
+            "physicalLines": 357,
+            "nonblankLines": 307,
+            "bytes": 23050,
+            "defs": 50,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/tree.bend",
+          "sha256": "9239ea83984838827d68b74aa5b80c8dff439edc10e74ca4f9a2448298208cd6",
+          "counts": {
+            "physicalLines": 905,
+            "nonblankLines": 787,
+            "bytes": 55689,
+            "defs": 115,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/js/emit.bend",
+          "sha256": "77f520b43813a6e482b18fc2e10e93ce8dd9df3655f146504488704b5fdab104",
+          "counts": {
+            "physicalLines": 1034,
+            "nonblankLines": 875,
+            "bytes": 36020,
+            "defs": 92,
+            "laws": 70,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/ir.bend",
+          "sha256": "dada548b975e325d96735f94b4e65e56d0d47b8e22851bc6815bed7063e0339b",
+          "counts": {
+            "physicalLines": 25,
+            "nonblankLines": 19,
+            "bytes": 929,
+            "defs": 0,
+            "laws": 0,
+            "types": 7
+          }
+        },
+        {
+          "name": "src/back/native/text.bend",
+          "sha256": "31c1ff5973df46d17ad395070fbefa1d2dc58398b3d12af80c62ed6c5548ff9d",
+          "counts": {
+            "physicalLines": 101,
+            "nonblankLines": 83,
+            "bytes": 2533,
+            "defs": 18,
+            "laws": 1,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/identity.bend",
+          "sha256": "8d1c0ad2d35cb5072615ad6e23b99ec7db3c956679c1894d847869608be0e16a",
+          "counts": {
+            "physicalLines": 89,
+            "nonblankLines": 77,
+            "bytes": 2476,
+            "defs": 7,
+            "laws": 5,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/layout.bend",
+          "sha256": "35981acafb07efcf3983baef35fffe573f8dc79707ea3077d9a15d360f05390b",
+          "counts": {
+            "physicalLines": 7,
+            "nonblankLines": 6,
+            "bytes": 135,
+            "defs": 1,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/intrinsic.bend",
+          "sha256": "5b921ebfecb307eddae880edee86ce459751684ecf74543f54c60e2a6f252195",
+          "counts": {
+            "physicalLines": 29,
+            "nonblankLines": 24,
+            "bytes": 4912,
+            "defs": 5,
+            "laws": 0,
+            "types": 1
+          }
+        },
+        {
+          "name": "src/back/native/tables.bend",
+          "sha256": "6b8f36fa9063f35105889d8977aa2345fb01eeceb117e6f641151430d084bbaa",
+          "counts": {
+            "physicalLines": 221,
+            "nonblankLines": 184,
+            "bytes": 8602,
+            "defs": 37,
+            "laws": 1,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/emit.bend",
+          "sha256": "862af7916a7b26d6801726b48d422f154bb8a34c4c140cccc534c5d0ff21b46a",
+          "counts": {
+            "physicalLines": 111,
+            "nonblankLines": 93,
+            "bytes": 5084,
+            "defs": 19,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/erase.bend",
+          "sha256": "8f536cdfbca91b26bf426b3c8c5f42106fc0e18af7bfd2550ba73e7dab5530ec",
+          "counts": {
+            "physicalLines": 83,
+            "nonblankLines": 71,
+            "bytes": 3528,
+            "defs": 9,
+            "laws": 3,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/bridge.bend",
+          "sha256": "4767f940940660635ec4c80978f8e4abb11c398b4b8f8bccabf05879c59f2a49",
+          "counts": {
+            "physicalLines": 456,
+            "nonblankLines": 382,
+            "bytes": 23327,
+            "defs": 65,
+            "laws": 6,
+            "types": 3
+          }
+        },
+        {
+          "name": "src/back/native/direct.bend",
+          "sha256": "75c5d560b8390263d18c991da8410191a0c5909b4ae0e8ebae193c0d9fd02de5",
+          "counts": {
+            "physicalLines": 88,
+            "nonblankLines": 74,
+            "bytes": 4200,
+            "defs": 14,
+            "laws": 1,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/pattern.bend",
+          "sha256": "279c5967793f8922309b8d45746240db5c45f390ab8724c3b6f87e01ae17c7c4",
+          "counts": {
+            "physicalLines": 141,
+            "nonblankLines": 137,
+            "bytes": 5324,
+            "defs": 13,
+            "laws": 9,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/back/native/show.bend",
+          "sha256": "b79f5ca545788b1c483b65bb6de6000ffacc2728b935553bede2d15d8e0d006d",
+          "counts": {
+            "physicalLines": 152,
+            "nonblankLines": 129,
+            "bytes": 6723,
+            "defs": 19,
+            "laws": 3,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/back/native/parallel.bend",
+          "sha256": "85326099c65dbd478574e480e13492f1d3973625c3c9aa50e286f7f4a38ff722",
+          "counts": {
+            "physicalLines": 94,
+            "nonblankLines": 81,
+            "bytes": 5003,
+            "defs": 12,
+            "laws": 1,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/array.bend",
+          "sha256": "c00f0592299047df582ac0435e1a0423ea62fb48f7c87dda83bf18161b263bd7",
+          "counts": {
+            "physicalLines": 44,
+            "nonblankLines": 39,
+            "bytes": 2813,
+            "defs": 4,
+            "laws": 2,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/validate.bend",
+          "sha256": "d0c1e75c5dbda3d2e65ea227667191252c49f71b63f0765c358c2041a0f484bb",
+          "counts": {
+            "physicalLines": 62,
+            "nonblankLines": 52,
+            "bytes": 2859,
+            "defs": 11,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/foreign.bend",
+          "sha256": "ed7a06662072e73d45d10b1898599936b106dc22956a4fceea8d04ac22fb6d3c",
+          "counts": {
+            "physicalLines": 73,
+            "nonblankLines": 64,
+            "bytes": 4010,
+            "defs": 10,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/back/native/book.bend",
+          "sha256": "180ee53af86a59df8efcc131d4f22b0ca6f5f9980dd222259f2941fbef1e11a2",
+          "counts": {
+            "physicalLines": 316,
+            "nonblankLines": 264,
+            "bytes": 14294,
+            "defs": 42,
+            "laws": 9,
+            "types": 2
+          }
+        },
+        {
+          "name": "src/driver/report.bend",
+          "sha256": "15f0985da866b948252490ec2f1b90aed9d36fb24b93eab24826648cc36e6df8",
+          "counts": {
+            "physicalLines": 100,
+            "nonblankLines": 86,
+            "bytes": 2593,
+            "defs": 9,
+            "laws": 6,
+            "types": 0
+          }
+        },
+        {
+          "name": "src/driver/api.bend",
+          "sha256": "5cae856aa306f52042cbead5bf72136da317649a0a09b7d73f8da1be3530d9d3",
+          "counts": {
+            "physicalLines": 124,
+            "nonblankLines": 105,
+            "bytes": 3919,
+            "defs": 15,
+            "laws": 5,
+            "types": 0
+          }
+        }
+      ]
+    },
+    "delta": {
+      "physicalLines": 1158,
+      "nonblankLines": 1011,
+      "bytes": 66698,
+      "defs": 141,
+      "laws": 0,
+      "types": 0,
+      "modules": 0
+    },
+    "changedFiles": [
+      {
+        "name": "src/back/js/emit.bend",
+        "baseline": {
+          "name": "src/back/js/emit.bend",
+          "sha256": "838975e724dc5e1d069d644925832d1ec5477c3769af0520e7b1572623076c29",
+          "counts": {
+            "physicalLines": 1003,
+            "nonblankLines": 847,
+            "bytes": 33801,
+            "defs": 90,
+            "laws": 70,
+            "types": 0
+          }
+        },
+        "current": {
+          "name": "src/back/js/emit.bend",
+          "sha256": "77f520b43813a6e482b18fc2e10e93ce8dd9df3655f146504488704b5fdab104",
+          "counts": {
+            "physicalLines": 1034,
+            "nonblankLines": 875,
+            "bytes": 36020,
+            "defs": 92,
+            "laws": 70,
+            "types": 0
+          }
+        },
+        "delta": {
+          "physicalLines": 31,
+          "nonblankLines": 28,
+          "bytes": 2219,
+          "defs": 2,
+          "laws": 0,
+          "types": 0
+        }
+      },
+      {
+        "name": "src/back/js/finite.bend",
+        "baseline": {
+          "name": "src/back/js/finite.bend",
+          "sha256": "4661b07bc6399968cdd770178691e1f9fadb2f1914b148af6d7f2532d46c97a3",
+          "counts": {
+            "physicalLines": 166,
+            "nonblankLines": 148,
+            "bytes": 9625,
+            "defs": 19,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        "current": {
+          "name": "src/back/js/finite.bend",
+          "sha256": "2956ba84e3c54200b2261f31b920723918681a79c41aa26277a7d023872384f4",
+          "counts": {
+            "physicalLines": 350,
+            "nonblankLines": 311,
+            "bytes": 19609,
+            "defs": 40,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        "delta": {
+          "physicalLines": 184,
+          "nonblankLines": 163,
+          "bytes": 9984,
+          "defs": 21,
+          "laws": 0,
+          "types": 0
+        }
+      },
+      {
+        "name": "src/back/js/fold.bend",
+        "baseline": {
+          "name": "src/back/js/fold.bend",
+          "sha256": "6dab24c3c2a77833d72c27b0c1a2b74df9a808971e10589350d1f0cd6a27793f",
+          "counts": {
+            "physicalLines": 324,
+            "nonblankLines": 283,
+            "bytes": 17723,
+            "defs": 42,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        "current": {
+          "name": "src/back/js/fold.bend",
+          "sha256": "e011910e4f2b8cd09c91fdf50c4e504df225ebdf11eb129aa6a6d8893424f16a",
+          "counts": {
+            "physicalLines": 324,
+            "nonblankLines": 283,
+            "bytes": 17757,
+            "defs": 42,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        "delta": {
+          "physicalLines": 0,
+          "nonblankLines": 0,
+          "bytes": 34,
+          "defs": 0,
+          "laws": 0,
+          "types": 0
+        }
+      },
+      {
+        "name": "src/back/js/jpure.bend",
+        "baseline": {
+          "name": "src/back/js/jpure.bend",
+          "sha256": "c8c4c81c187224349b6d8e156301883fcf21a23942edfbaa2b07c48ac0cc802f",
+          "counts": {
+            "physicalLines": 269,
+            "nonblankLines": 234,
+            "bytes": 16268,
+            "defs": 35,
+            "laws": 0,
+            "types": 1
+          }
+        },
+        "current": {
+          "name": "src/back/js/jpure.bend",
+          "sha256": "f21f77544d24dc97592a53ecc7c15d53b864dec5e3414c123a0f72b32d15480f",
+          "counts": {
+            "physicalLines": 527,
+            "nonblankLines": 459,
+            "bytes": 30373,
+            "defs": 67,
+            "laws": 0,
+            "types": 1
+          }
+        },
+        "delta": {
+          "physicalLines": 258,
+          "nonblankLines": 225,
+          "bytes": 14105,
+          "defs": 32,
+          "laws": 0,
+          "types": 0
+        }
+      },
+      {
+        "name": "src/back/js/region.bend",
+        "baseline": {
+          "name": "src/back/js/region.bend",
+          "sha256": "c12519c4211b252a8d1a809cdfb139a57196056a1167a93740f47862d21e5f6b",
+          "counts": {
+            "physicalLines": 798,
+            "nonblankLines": 689,
+            "bytes": 50331,
+            "defs": 108,
+            "laws": 0,
+            "types": 2
+          }
+        },
+        "current": {
+          "name": "src/back/js/region.bend",
+          "sha256": "c30590552cbfa0456803d33c348f68eaa66014acdca0385875187157a4565446",
+          "counts": {
+            "physicalLines": 1040,
+            "nonblankLines": 904,
+            "bytes": 62915,
+            "defs": 135,
+            "laws": 0,
+            "types": 2
+          }
+        },
+        "delta": {
+          "physicalLines": 242,
+          "nonblankLines": 215,
+          "bytes": 12584,
+          "defs": 27,
+          "laws": 0,
+          "types": 0
+        }
+      },
+      {
+        "name": "src/back/js/tree.bend",
+        "baseline": {
+          "name": "src/back/js/tree.bend",
+          "sha256": "6cc1ccb43d55dc5f883359dcb677e0ce8a699bd69b761058b10e4d21cf398fc7",
+          "counts": {
+            "physicalLines": 462,
+            "nonblankLines": 407,
+            "bytes": 27917,
+            "defs": 56,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        "current": {
+          "name": "src/back/js/tree.bend",
+          "sha256": "9239ea83984838827d68b74aa5b80c8dff439edc10e74ca4f9a2448298208cd6",
+          "counts": {
+            "physicalLines": 905,
+            "nonblankLines": 787,
+            "bytes": 55689,
+            "defs": 115,
+            "laws": 0,
+            "types": 0
+          }
+        },
+        "delta": {
+          "physicalLines": 443,
+          "nonblankLines": 380,
+          "bytes": 27772,
+          "defs": 59,
+          "laws": 0,
+          "types": 0
+        }
+      }
+    ],
+    "newDefinitionFamilies": {
+      "j_owned": [
+        "j_owned_native_head",
+        "j_owned_native_literal",
+        "j_owned_ctor",
+        "j_owned_ctor_type",
+        "j_owned_term",
+        "j_owned_terms"
+      ],
+      "j_direct": [
+        "j_direct_call_term",
+        "j_direct_checked",
+        "j_direct_covered_term",
+        "j_direct_edges",
+        "j_direct_emit_call",
+        "j_direct_expand_after",
+        "j_direct_expand_def",
+        "j_direct_expand_more",
+        "j_direct_expand_term",
+        "j_direct_expand_terms",
+        "j_direct_guarded",
+        "j_direct_match",
+        "j_direct_named",
+        "j_direct_plan",
+        "j_direct_prefix",
+        "j_direct_result",
+        "j_direct_term",
+        "j_direct_terms",
+        "j_direct_visit",
+        "j_direct_cached"
+      ],
+      "j_finite": [
+        "j_finite_component_work",
+        "j_finite_emit_match_tagged"
+      ],
+      "j_component": [
+        "j_component_cached",
+        "j_component_covered_declaration",
+        "j_component_emit_match_tagged",
+        "j_component_stack_declaration"
+      ],
+      "j_plan": [
+        "j_plan_call",
+        "j_plan_components",
+        "j_plan_context",
+        "j_plan_directs",
+        "j_plan_emitted",
+        "j_plan_fact",
+        "j_plan_index",
+        "j_plan_lookup",
+        "j_plan_needed",
+        "j_plan_payload",
+        "j_plan_prepare",
+        "j_plan_scan"
+      ],
+      "j_pure": [
+        "j_pure_closed_field",
+        "j_pure_closed_fields",
+        "j_pure_closed_fields_head",
+        "j_pure_closed_fields_next",
+        "j_pure_closed_list",
+        "j_pure_closed_sigma",
+        "j_pure_list_check",
+        "j_pure_list_head",
+        "j_pure_nat_native",
+        "j_pure_native_ctor",
+        "j_pure_same_check",
+        "j_pure_same_closed",
+        "j_pure_same_heads",
+        "j_pure_same_next",
+        "j_pure_shape_bound",
+        "j_pure_sigma_check",
+        "j_pure_sigma_head",
+        "j_pure_sigma_kind"
+      ],
+      "j_fusion": [
+        "j_fusion_after",
+        "j_fusion_binder",
+        "j_fusion_call",
+        "j_fusion_cases",
+        "j_fusion_choose",
+        "j_fusion_ctor",
+        "j_fusion_def",
+        "j_fusion_emit",
+        "j_fusion_empty",
+        "j_fusion_env",
+        "j_fusion_expr",
+        "j_fusion_filter",
+        "j_fusion_fold",
+        "j_fusion_has_var",
+        "j_fusion_link",
+        "j_fusion_map",
+        "j_fusion_owner",
+        "j_fusion_pipeline",
+        "j_fusion_pipeline_defs",
+        "j_fusion_producer",
+        "j_fusion_root_bind",
+        "j_fusion_root_body",
+        "j_fusion_root_prefix",
+        "j_fusion_scalar",
+        "j_fusion_scalars",
+        "j_fusion_unlet",
+        "j_fusion_var"
+      ],
+      "j_covered": [
+        "j_covered_app",
+        "j_covered_component",
+        "j_covered_defs",
+        "j_covered_result",
+        "j_covered_shape_app",
+        "j_covered_term",
+        "j_covered_terms"
+      ],
+      "j_flat": [
+        "j_flat_active",
+        "j_flat_app_audit",
+        "j_flat_audit",
+        "j_flat_audits",
+        "j_flat_bindings",
+        "j_flat_book",
+        "j_flat_book_children",
+        "j_flat_call_audit",
+        "j_flat_children",
+        "j_flat_clones",
+        "j_flat_ctor_args",
+        "j_flat_data",
+        "j_flat_def_audit",
+        "j_flat_fields",
+        "j_flat_generic",
+        "j_flat_graph_audit",
+        "j_flat_guarded",
+        "j_flat_linear_args",
+        "j_flat_linear_safe",
+        "j_flat_local_audit",
+        "j_flat_locals",
+        "j_flat_reads",
+        "j_flat_root_emit",
+        "j_flat_root_proof",
+        "j_flat_root_scope",
+        "j_flat_root_select",
+        "j_flat_signature",
+        "j_flat_source_root",
+        "j_flat_term",
+        "j_flat_terms",
+        "j_flat_type",
+        "j_flat_types",
+        "j_flat_unpack"
+      ],
+      "j_hybrid": [
+        "j_hybrid_binary_shape",
+        "j_hybrid_declaration",
+        "j_hybrid_finish"
+      ],
+      "j_native": [
+        "j_native_tuple_fields"
+      ],
+      "j_sequence": [
+        "j_sequence_args",
+        "j_sequence_atoms",
+        "j_sequence_context",
+        "j_sequence_find",
+        "j_sequence_finish",
+        "j_sequence_hole",
+        "j_sequence_holes",
+        "j_sequence_leaf"
+      ]
+    }
+  },
+  "runtime": {
+    "baseline": {
+      "sha256": "51bb6046a8ac116865e2b1ed94b5587d1257f951aed536da77da3e91338eac49",
+      "counts": {
+        "physicalLines": 663,
+        "nonblankLines": 653,
+        "bytes": 53346,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "namedJSFunctionDeclarations": 62
+    },
+    "source15": {
+      "sha256": "6dbda18f176702557041530652690601c32b09261327ad49af7bf0cc8e7fb81c",
+      "counts": {
+        "physicalLines": 666,
+        "nonblankLines": 656,
+        "bytes": 53597,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "namedJSFunctionDeclarations": 62
+    },
+    "delta": {
+      "physicalLines": 3,
+      "nonblankLines": 3,
+      "bytes": 251,
+      "defs": 0,
+      "laws": 0,
+      "types": 0
+    },
+    "namedJSFunctionDeclarationDelta": 0
+  },
+  "runtimeSplitMaintenance": [
+    {
+      "name": "src/runtime/js/base.mjs",
+      "baselineSha256": "1cf66725fbe281a07b502c903cf44fa69abaeca961dd61ed63b3ea1ab97372c0",
+      "source15Sha256": "1cf66725fbe281a07b502c903cf44fa69abaeca961dd61ed63b3ea1ab97372c0",
+      "counts": {
+        "physicalLines": 116,
+        "nonblankLines": 113,
+        "bytes": 16406,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "delta": {
+        "physicalLines": 0,
+        "nonblankLines": 0,
+        "bytes": 0,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      }
+    },
+    {
+      "name": "src/runtime/js/build.mjs",
+      "baselineSha256": "4be85d590521e9453f0e7eb46f7b7d9d35bfd803510089c23db192c09d2b2a12",
+      "source15Sha256": "4be85d590521e9453f0e7eb46f7b7d9d35bfd803510089c23db192c09d2b2a12",
+      "counts": {
+        "physicalLines": 7,
+        "nonblankLines": 7,
+        "bytes": 474,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "delta": {
+        "physicalLines": 0,
+        "nonblankLines": 0,
+        "bytes": 0,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      }
+    },
+    {
+      "name": "src/runtime/js/core.mjs",
+      "baselineSha256": "2db3975c945912eb50fecb79865fe597aefd101b145d8dabb9d91b3df718e4f9",
+      "source15Sha256": "c94110910ac7eab72d5984bbcab0717e12eed2bf27fb4dcb972b922b26ab439c",
+      "counts": {
+        "physicalLines": 328,
+        "nonblankLines": 326,
+        "bytes": 19020,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "delta": {
+        "physicalLines": 3,
+        "nonblankLines": 3,
+        "bytes": 251,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      }
+    },
+    {
+      "name": "src/runtime/js/effects.mjs",
+      "baselineSha256": "5f4951e6d34157769d59267d5803454bad9567859231fb06aad9edc292ca409e",
+      "source15Sha256": "5f4951e6d34157769d59267d5803454bad9567859231fb06aad9edc292ca409e",
+      "counts": {
+        "physicalLines": 101,
+        "nonblankLines": 100,
+        "bytes": 10725,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "delta": {
+        "physicalLines": 0,
+        "nonblankLines": 0,
+        "bytes": 0,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      }
+    },
+    {
+      "name": "src/runtime/js/foreign.mjs",
+      "baselineSha256": "024d917ed34e44d44e889f19576ea05c7db17529dc81e683e8653f8a1ea9ea15",
+      "source15Sha256": "024d917ed34e44d44e889f19576ea05c7db17529dc81e683e8653f8a1ea9ea15",
+      "counts": {
+        "physicalLines": 83,
+        "nonblankLines": 83,
+        "bytes": 4864,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "delta": {
+        "physicalLines": 0,
+        "nonblankLines": 0,
+        "bytes": 0,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      }
+    },
+    {
+      "name": "src/runtime/js/readback.mjs",
+      "baselineSha256": "de7b7930f6e4167b7e44aaef6621b31d53b6d10e23f6e1a93366a214118dee69",
+      "source15Sha256": "de7b7930f6e4167b7e44aaef6621b31d53b6d10e23f6e1a93366a214118dee69",
+      "counts": {
+        "physicalLines": 33,
+        "nonblankLines": 33,
+        "bytes": 2516,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "delta": {
+        "physicalLines": 0,
+        "nonblankLines": 0,
+        "bytes": 0,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      }
+    },
+    {
+      "name": "src/runtime/js/test-apply.mjs",
+      "baselineSha256": "ca8e877deb0db259f9c22bb5dc17bb774a413c1018796d08f63800ca834c82c1",
+      "source15Sha256": "ca8e877deb0db259f9c22bb5dc17bb774a413c1018796d08f63800ca834c82c1",
+      "counts": {
+        "physicalLines": 22,
+        "nonblankLines": 22,
+        "bytes": 1930,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "delta": {
+        "physicalLines": 0,
+        "nonblankLines": 0,
+        "bytes": 0,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      }
+    },
+    {
+      "name": "src/runtime/js/test-phase8.mjs",
+      "baselineSha256": "e6992665eeb60357ae27351b9bd5dc76c07b83619090e0bfcf2f9d1b45b1b0a5",
+      "source15Sha256": "e6992665eeb60357ae27351b9bd5dc76c07b83619090e0bfcf2f9d1b45b1b0a5",
+      "counts": {
+        "physicalLines": 80,
+        "nonblankLines": 80,
+        "bytes": 5798,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "delta": {
+        "physicalLines": 0,
+        "nonblankLines": 0,
+        "bytes": 0,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      }
+    },
+    {
+      "name": "src/runtime/js/test.mjs",
+      "baselineSha256": "abbb1a4a34b8c0a9764966dd47e56bbeddf06d5e19bc626eb91fa3f94a80a440",
+      "source15Sha256": "abbb1a4a34b8c0a9764966dd47e56bbeddf06d5e19bc626eb91fa3f94a80a440",
+      "counts": {
+        "physicalLines": 22,
+        "nonblankLines": 22,
+        "bytes": 3660,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      },
+      "delta": {
+        "physicalLines": 0,
+        "nonblankLines": 0,
+        "bytes": 0,
+        "defs": 0,
+        "laws": 0,
+        "types": 0
+      }
+    }
+  ],
+  "supplemental": {
+    "scope": [
+      "selfhost/tools/performance/phase42",
+      "design/phase42",
+      "implementation/phase42",
+      "experiments/phase42"
+    ],
+    "baselineTrackedFiles": [],
+    "currentGroups": {
+      "documentation-and-review": {
+        "files": 70,
+        "bytes": 514302,
+        "physicalLines": 8923,
+        "nonblankLines": 7987
+      },
+      "tooling-and-config-evidence": {
+        "files": 170,
+        "bytes": 3099653,
+        "physicalLines": 41759,
+        "nonblankLines": 41431
+      },
+      "archived-or-binary-artifacts": {
+        "files": 1,
+        "bytes": 8073553,
+        "physicalLines": 0,
+        "nonblankLines": 0
+      },
+      "controls-oracles-and-probes": {
+        "files": 80,
+        "bytes": 655469,
+        "physicalLines": 7267,
+        "nonblankLines": 7233
+      },
+      "isolated-proposals-and-copied-source": {
+        "files": 92,
+        "bytes": 1482218,
+        "physicalLines": 23267,
+        "nonblankLines": 21135
+      },
+      "fixtures-and-proposed-bend": {
+        "files": 45,
+        "bytes": 308307,
+        "physicalLines": 7410,
+        "nonblankLines": 6135
+      }
+    },
+    "currentFiles": [
+      {
+        "file": "selfhost/tools/performance/phase42/INSTALLATION-DOC-UPDATES.md",
+        "category": "documentation-and-review",
+        "bytes": 2611,
+        "physicalLines": 41,
+        "nonblankLines": 34
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/README.md",
+        "category": "documentation-and-review",
+        "bytes": 7994,
+        "physicalLines": 159,
+        "nonblankLines": 133
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/baseline/manifest.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 45124,
+        "physicalLines": 1145,
+        "nonblankLines": 1145
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/baseline/programs.tar.gz",
+        "category": "archived-or-binary-artifacts",
+        "bytes": 8073553
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/baseline/provenance.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3827,
+        "physicalLines": 84,
+        "nonblankLines": 84
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/actual-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 9249,
+        "physicalLines": 114,
+        "nonblankLines": 114
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/actual-derive.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6996,
+        "physicalLines": 49,
+        "nonblankLines": 49
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/annotation-types.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 1033,
+        "physicalLines": 20,
+        "nonblankLines": 19
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/bst-ablation-compare-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2554,
+        "physicalLines": 40,
+        "nonblankLines": 40
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/bst-ablation-derive-v1.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6010,
+        "physicalLines": 14,
+        "nonblankLines": 14
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/bst-ablation-derive-v2.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6173,
+        "physicalLines": 14,
+        "nonblankLines": 14
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/bst-ablation-derive-v3.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6203,
+        "physicalLines": 14,
+        "nonblankLines": 14
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/bst-oracles.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 1629,
+        "physicalLines": 11,
+        "nonblankLines": 11
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/bst-sequential-catalog-v1/bst-matched.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 3051,
+        "physicalLines": 137,
+        "nonblankLines": 113
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/bst-sequential-catalog-v1/catalog.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2768,
+        "physicalLines": 93,
+        "nonblankLines": 93
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/bst-sequential-catalog-v1/sequential.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2110,
+        "physicalLines": 61,
+        "nonblankLines": 47
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/bst13-compare.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1896,
+        "physicalLines": 48,
+        "nonblankLines": 48
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 9190,
+        "physicalLines": 114,
+        "nonblankLines": 114
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/derive-v1.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 8310,
+        "physicalLines": 74,
+        "nonblankLines": 74
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/derive-v2.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 8785,
+        "physicalLines": 82,
+        "nonblankLines": 82
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/derive.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 8310,
+        "physicalLines": 74,
+        "nonblankLines": 74
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/diagnose.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2610,
+        "physicalLines": 12,
+        "nonblankLines": 12
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/direct-functions-v2.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 6462,
+        "physicalLines": 124,
+        "nonblankLines": 110
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/direct-functions.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 6462,
+        "physicalLines": 124,
+        "nonblankLines": 110
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/expansion-functions.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 1960,
+        "physicalLines": 38,
+        "nonblankLines": 33
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/expansion.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 3005,
+        "physicalLines": 56,
+        "nonblankLines": 55
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/finite-component-root.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 658,
+        "physicalLines": 18,
+        "nonblankLines": 18
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/finite-component-root.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 996,
+        "physicalLines": 19,
+        "nonblankLines": 18
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/fixture-controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7246,
+        "physicalLines": 41,
+        "nonblankLines": 41
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/fixture-controls-v2.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7290,
+        "physicalLines": 41,
+        "nonblankLines": 41
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/fixture-controls-v3.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7290,
+        "physicalLines": 41,
+        "nonblankLines": 41
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/fixture-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7246,
+        "physicalLines": 41,
+        "nonblankLines": 41
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/fixture-nat-add-v1.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2441,
+        "physicalLines": 69,
+        "nonblankLines": 53
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/fixture-renamed-v1.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2353,
+        "physicalLines": 87,
+        "nonblankLines": 68
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/fixture-renamed-v2.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2447,
+        "physicalLines": 90,
+        "nonblankLines": 70
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/fixture-renamed-v3.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2474,
+        "physicalLines": 92,
+        "nonblankLines": 72
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/fixture-renamed.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2353,
+        "physicalLines": 87,
+        "nonblankLines": 68
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/fixture-sequential-v1.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2110,
+        "physicalLines": 61,
+        "nonblankLines": 47
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v1/failure.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 601,
+        "physicalLines": 14,
+        "nonblankLines": 14
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v1/selfhost/src/back/js/finite.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 19119,
+        "physicalLines": 342,
+        "nonblankLines": 304
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v1/selfhost/src/back/js/fold.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 17757,
+        "physicalLines": 324,
+        "nonblankLines": 283
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v1/selfhost/src/back/js/jpure.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 29530,
+        "physicalLines": 515,
+        "nonblankLines": 448
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v1/selfhost/src/back/js/tree.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 51901,
+        "physicalLines": 848,
+        "nonblankLines": 735
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v1/selfhost/src/back/js/tree.bend.orig",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 52071,
+        "physicalLines": 849,
+        "nonblankLines": 736
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v1/selfhost/src/back/js/tree.bend.rej",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 3638,
+        "physicalLines": 68,
+        "nonblankLines": 68
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v2/report.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 9568,
+        "physicalLines": 219,
+        "nonblankLines": 219
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v2/retained-function-audit.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 12500,
+        "physicalLines": 393,
+        "nonblankLines": 393
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v2/selfhost/src/back/js/finite.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 18377,
+        "physicalLines": 332,
+        "nonblankLines": 295
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v2/selfhost/src/back/js/fold.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 17723,
+        "physicalLines": 324,
+        "nonblankLines": 283
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v2/selfhost/src/back/js/jpure.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 21799,
+        "physicalLines": 385,
+        "nonblankLines": 335
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v2/selfhost/src/back/js/tree.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 47609,
+        "physicalLines": 769,
+        "nonblankLines": 667
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/held-rollback-v2/source.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 22070,
+        "physicalLines": 351,
+        "nonblankLines": 342
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/helpers-v1.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 8343,
+        "physicalLines": 149,
+        "nonblankLines": 146
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/helpers-v2.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 8471,
+        "physicalLines": 151,
+        "nonblankLines": 148
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/helpers.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 8343,
+        "physicalLines": 149,
+        "nonblankLines": 146
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/make-held-rollback-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3140,
+        "physicalLines": 37,
+        "nonblankLines": 37
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/make-held-rollback-v2.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3870,
+        "physicalLines": 50,
+        "nonblankLines": 50
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/make-native-owned-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3455,
+        "physicalLines": 45,
+        "nonblankLines": 43
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/make-native-owned-v2.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3455,
+        "physicalLines": 45,
+        "nonblankLines": 43
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/nat-add-catalog-v1/catalog.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1579,
+        "physicalLines": 56,
+        "nonblankLines": 56
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/nat-add-catalog-v1/nat-add.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2441,
+        "physicalLines": 69,
+        "nonblankLines": 53
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/nat-add-controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 6756,
+        "physicalLines": 24,
+        "nonblankLines": 24
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/nat-add-controls-v2.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 8700,
+        "physicalLines": 29,
+        "nonblankLines": 29
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/native-owned-assay-v1.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4871,
+        "physicalLines": 10,
+        "nonblankLines": 10
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/native-owned-v1/emit.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 36019,
+        "physicalLines": 1034,
+        "nonblankLines": 875
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/native-owned-v1/identity.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 595,
+        "physicalLines": 10,
+        "nonblankLines": 10
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/native-owned-v1/source.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 2542,
+        "physicalLines": 40,
+        "nonblankLines": 38
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/native-owned-v2/emit.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 36020,
+        "physicalLines": 1034,
+        "nonblankLines": 875
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/native-owned-v2/identity.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 595,
+        "physicalLines": 10,
+        "nonblankLines": 10
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/native-owned-v2/source.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 2732,
+        "physicalLines": 41,
+        "nonblankLines": 39
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/owned-helper.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 643,
+        "physicalLines": 11,
+        "nonblankLines": 10
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/post-calls-controls-derive.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 3899,
+        "physicalLines": 17,
+        "nonblankLines": 17
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/post-calls-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 9688,
+        "physicalLines": 116,
+        "nonblankLines": 116
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/post-calls-frames.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 10389,
+        "physicalLines": 89,
+        "nonblankLines": 89
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/post-calls-scopes.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4401,
+        "physicalLines": 27,
+        "nonblankLines": 27
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/sequential-oracles.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 1199,
+        "physicalLines": 17,
+        "nonblankLines": 17
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/sequential-review.md",
+        "category": "documentation-and-review",
+        "bytes": 4627,
+        "physicalLines": 72,
+        "nonblankLines": 62
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/sequential11-compare.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4499,
+        "physicalLines": 112,
+        "nonblankLines": 112
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/source.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 14996,
+        "physicalLines": 247,
+        "nonblankLines": 244
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/stack-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 9684,
+        "physicalLines": 117,
+        "nonblankLines": 117
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/stack-derive.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 7456,
+        "physicalLines": 40,
+        "nonblankLines": 40
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-compare-config-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2457,
+        "physicalLines": 40,
+        "nonblankLines": 40
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 12119,
+        "physicalLines": 53,
+        "nonblankLines": 53
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-controls-v2.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 15025,
+        "physicalLines": 65,
+        "nonblankLines": 65
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-controls-v3.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 15269,
+        "physicalLines": 65,
+        "nonblankLines": 65
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-controls-v4.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 15904,
+        "physicalLines": 65,
+        "nonblankLines": 65
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 12119,
+        "physicalLines": 53,
+        "nonblankLines": 53
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-derive-v1.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5918,
+        "physicalLines": 27,
+        "nonblankLines": 27
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-derive-v2.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6244,
+        "physicalLines": 27,
+        "nonblankLines": 27
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-derive-v3.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6515,
+        "physicalLines": 27,
+        "nonblankLines": 27
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-derive-v4.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6624,
+        "physicalLines": 27,
+        "nonblankLines": 27
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/calls/structural-derive.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5918,
+        "physicalLines": 27,
+        "nonblankLines": 27
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/evidence/README.md",
+        "category": "documentation-and-review",
+        "bytes": 2215,
+        "physicalLines": 33,
+        "nonblankLines": 27
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/evidence/plot-ratios.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5968,
+        "physicalLines": 44,
+        "nonblankLines": 42
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/evidence/summarize.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 9267,
+        "physicalLines": 87,
+        "nonblankLines": 81
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/candidate.py",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 3227,
+        "physicalLines": 51,
+        "nonblankLines": 50
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/candidate01/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 2586,
+        "physicalLines": 42,
+        "nonblankLines": 38
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/candidate01/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 438,
+        "physicalLines": 9,
+        "nonblankLines": 9
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/candidate01/tree.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 27909,
+        "physicalLines": 461,
+        "nonblankLines": 406
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/compiler-cost-screen-v01/README.md",
+        "category": "documentation-and-review",
+        "bytes": 1338,
+        "physicalLines": 9,
+        "nonblankLines": 5
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/compiler-cost-screen-v01/commands.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3234,
+        "physicalLines": 97,
+        "nonblankLines": 97
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/compiler-cost-screen-v01/root-run.sh",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1614,
+        "physicalLines": 7,
+        "nonblankLines": 7
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/compiler-cost-screen-v01/screen13-findings.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5853,
+        "physicalLines": 223,
+        "nonblankLines": 223
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/compiler-cost-screen-v01/screen13-findings.md",
+        "category": "documentation-and-review",
+        "bytes": 3076,
+        "physicalLines": 18,
+        "nonblankLines": 11
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/compiler-profile01-owners.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 7052,
+        "physicalLines": 262,
+        "nonblankLines": 262
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/compiler-profile01-owners02.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 13121,
+        "physicalLines": 490,
+        "nonblankLines": 490
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/compiler-profile01-summary.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5478,
+        "physicalLines": 230,
+        "nonblankLines": 230
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/complexity-source15.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 7522,
+        "physicalLines": 69,
+        "nonblankLines": 69
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7015,
+        "physicalLines": 102,
+        "nonblankLines": 96
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/README.md",
+        "category": "documentation-and-review",
+        "bytes": 11202,
+        "physicalLines": 179,
+        "nonblankLines": 155
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/ablation01/baseline.mjs",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 122502,
+        "physicalLines": 844,
+        "nonblankLines": 830
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/ablation01/candidate.mjs",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 123551,
+        "physicalLines": 866,
+        "nonblankLines": 852
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/ablation01/preparation.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 1689,
+        "physicalLines": 45,
+        "nonblankLines": 45
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-closed-data-feasibility.md",
+        "category": "documentation-and-review",
+        "bytes": 9921,
+        "physicalLines": 151,
+        "nonblankLines": 128
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-matched-set-design.md",
+        "category": "documentation-and-review",
+        "bytes": 11393,
+        "physicalLines": 179,
+        "nonblankLines": 149
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-minimal-domain-review.md",
+        "category": "documentation-and-review",
+        "bytes": 7641,
+        "physicalLines": 113,
+        "nonblankLines": 97
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-plan-probe-failed03.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 8299,
+        "physicalLines": 84,
+        "nonblankLines": 84
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-plan-probe-v04.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 8389,
+        "physicalLines": 92,
+        "nonblankLines": 92
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-plan-probe-v05.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 9334,
+        "physicalLines": 103,
+        "nonblankLines": 102
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-plan-probe-v06.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 9569,
+        "physicalLines": 105,
+        "nonblankLines": 104
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-plan-probe-v07.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 11031,
+        "physicalLines": 111,
+        "nonblankLines": 110
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-plan-probe.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 8389,
+        "physicalLines": 92,
+        "nonblankLines": 92
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-probe02-summary.json",
+        "category": "controls-oracles-and-probes",
+        "bytes": 23227,
+        "physicalLines": 1104,
+        "nonblankLines": 1104
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-probe04-abi-summary.json",
+        "category": "controls-oracles-and-probes",
+        "bytes": 9968,
+        "physicalLines": 339,
+        "nonblankLines": 339
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/bst-probe06-nat-refusal.json",
+        "category": "controls-oracles-and-probes",
+        "bytes": 17884,
+        "physicalLines": 713,
+        "nonblankLines": 713
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate01/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 8459,
+        "physicalLines": 133,
+        "nonblankLines": 132
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate01/fold.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 17757,
+        "physicalLines": 324,
+        "nonblankLines": 283
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate01/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 559,
+        "physicalLines": 16,
+        "nonblankLines": 16
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate01/jpure.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 28130,
+        "physicalLines": 488,
+        "nonblankLines": 425
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate02/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 8991,
+        "physicalLines": 144,
+        "nonblankLines": 143
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate02/fold.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 17757,
+        "physicalLines": 324,
+        "nonblankLines": 283
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate02/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 559,
+        "physicalLines": 16,
+        "nonblankLines": 16
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate02/jpure.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 28651,
+        "physicalLines": 499,
+        "nonblankLines": 434
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate03/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 9534,
+        "physicalLines": 156,
+        "nonblankLines": 155
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate03/fold.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 17757,
+        "physicalLines": 324,
+        "nonblankLines": 283
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate03/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 559,
+        "physicalLines": 16,
+        "nonblankLines": 16
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate03/jpure.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 29182,
+        "physicalLines": 511,
+        "nonblankLines": 444
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate04/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 9886,
+        "physicalLines": 160,
+        "nonblankLines": 159
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate04/fold.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 17757,
+        "physicalLines": 324,
+        "nonblankLines": 283
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate04/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 559,
+        "physicalLines": 16,
+        "nonblankLines": 16
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate04/jpure.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 29530,
+        "physicalLines": 515,
+        "nonblankLines": 448
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/closed-types-controls.json",
+        "category": "controls-oracles-and-probes",
+        "bytes": 2856,
+        "physicalLines": 37,
+        "nonblankLines": 37
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 5503,
+        "physicalLines": 89,
+        "nonblankLines": 87
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/map-native-result01.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3917,
+        "physicalLines": 141,
+        "nonblankLines": 141
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-candidate01/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 2478,
+        "physicalLines": 38,
+        "nonblankLines": 36
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-candidate01/core.mjs",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 18787,
+        "physicalLines": 325,
+        "nonblankLines": 323
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-candidate01/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 743,
+        "physicalLines": 19,
+        "nonblankLines": 19
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-candidate01/jpure.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 30373,
+        "physicalLines": 527,
+        "nonblankLines": 459
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-candidate02/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 3611,
+        "physicalLines": 55,
+        "nonblankLines": 53
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-candidate02/core.mjs",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 19020,
+        "physicalLines": 328,
+        "nonblankLines": 326
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-candidate02/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 749,
+        "physicalLines": 19,
+        "nonblankLines": 19
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-candidate02/jpure.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 30373,
+        "physicalLines": 527,
+        "nonblankLines": 459
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-review.md",
+        "category": "documentation-and-review",
+        "bytes": 4421,
+        "physicalLines": 66,
+        "nonblankLines": 59
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-nat-add-supported-controls-v01.json",
+        "category": "controls-oracles-and-probes",
+        "bytes": 2688,
+        "physicalLines": 67,
+        "nonblankLines": 67
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-proof-controls-v01.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 9895,
+        "physicalLines": 103,
+        "nonblankLines": 103
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/native-proof-controls10-summary.json",
+        "category": "controls-oracles-and-probes",
+        "bytes": 11527,
+        "physicalLines": 490,
+        "nonblankLines": 490
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/preimport-bigint-result01.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3026,
+        "physicalLines": 118,
+        "nonblankLines": 118
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/prepare-closed-types.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 9747,
+        "physicalLines": 164,
+        "nonblankLines": 148
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/prepare-native-nat-add.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2925,
+        "physicalLines": 40,
+        "nonblankLines": 40
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/prepare-sequential.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4762,
+        "physicalLines": 90,
+        "nonblankLines": 83
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/prepare.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4834,
+        "physicalLines": 93,
+        "nonblankLines": 92
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/returning-host-callback-assessment.md",
+        "category": "documentation-and-review",
+        "bytes": 5093,
+        "physicalLines": 23,
+        "nonblankLines": 12
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate01/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 5252,
+        "physicalLines": 90,
+        "nonblankLines": 88
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate01/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 281,
+        "physicalLines": 7,
+        "nonblankLines": 7
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate01/tree.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 36537,
+        "physicalLines": 625,
+        "nonblankLines": 548
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate02/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 5265,
+        "physicalLines": 90,
+        "nonblankLines": 88
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate02/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 281,
+        "physicalLines": 7,
+        "nonblankLines": 7
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate02/tree.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 36550,
+        "physicalLines": 625,
+        "nonblankLines": 548
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate03/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 5274,
+        "physicalLines": 90,
+        "nonblankLines": 88
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate03/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 281,
+        "physicalLines": 7,
+        "nonblankLines": 7
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate03/tree.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 36559,
+        "physicalLines": 625,
+        "nonblankLines": 548
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate04/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 5431,
+        "physicalLines": 90,
+        "nonblankLines": 88
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate04/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 281,
+        "physicalLines": 7,
+        "nonblankLines": 7
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-candidate04/tree.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 50338,
+        "physicalLines": 823,
+        "nonblankLines": 714
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/sequential-feasibility.md",
+        "category": "documentation-and-review",
+        "bytes": 5695,
+        "physicalLines": 87,
+        "nonblankLines": 72
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/map-bst/source-scc-feasibility.md",
+        "category": "documentation-and-review",
+        "bytes": 9132,
+        "physicalLines": 141,
+        "nonblankLines": 121
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/prepare.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1815,
+        "physicalLines": 36,
+        "nonblankLines": 35
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/profile-owners.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4022,
+        "physicalLines": 76,
+        "nonblankLines": 75
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/profile-plan01/command.sh",
+        "category": "tooling-and-config-evidence",
+        "bytes": 553,
+        "physicalLines": 1,
+        "nonblankLines": 1
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/profile-plan01/preparation.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1703,
+        "physicalLines": 37,
+        "nonblankLines": 37
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/profile-plan01/request.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 278707,
+        "physicalLines": 3610,
+        "nonblankLines": 3610
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/profile-summary.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2172,
+        "physicalLines": 43,
+        "nonblankLines": 42
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/request-candidate01/candidate.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 10598,
+        "physicalLines": 211,
+        "nonblankLines": 199
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/request-candidate01/identity.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 1589,
+        "physicalLines": 37,
+        "nonblankLines": 37
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/request-candidate01/src/back/js/emit.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 34000,
+        "physicalLines": 1004,
+        "nonblankLines": 848
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/request-candidate01/src/back/js/finite.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 16060,
+        "physicalLines": 290,
+        "nonblankLines": 258
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/request-candidate01/src/back/js/jpure.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 21781,
+        "physicalLines": 385,
+        "nonblankLines": 335
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/request-candidate01/src/back/js/region.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 50319,
+        "physicalLines": 798,
+        "nonblankLines": 689
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/request-candidate01/src/back/js/tree.bend",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 30824,
+        "physicalLines": 517,
+        "nonblankLines": 455
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/request-candidate01-correction.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 543,
+        "physicalLines": 11,
+        "nonblankLines": 10
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/facts/request-facts.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 8176,
+        "physicalLines": 164,
+        "nonblankLines": 145
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/bst/controls.json",
+        "category": "controls-oracles-and-probes",
+        "bytes": 2541,
+        "physicalLines": 28,
+        "nonblankLines": 28
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/bst/emitter-arity-review.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2088,
+        "physicalLines": 90,
+        "nonblankLines": 90
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/bst/emitter-proposal.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 1637,
+        "physicalLines": 27,
+        "nonblankLines": 23
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/bst/make-emitter-patch.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4416,
+        "physicalLines": 68,
+        "nonblankLines": 67
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/bst/native-emitter-source.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 6078,
+        "physicalLines": 87,
+        "nonblankLines": 83
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/bst/representation.md",
+        "category": "documentation-and-review",
+        "bytes": 4667,
+        "physicalLines": 70,
+        "nonblankLines": 61
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/context-source.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 6525,
+        "physicalLines": 96,
+        "nonblankLines": 96
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/derive.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6236,
+        "physicalLines": 55,
+        "nonblankLines": 55
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/hybrid-actual-derive-v1.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5770,
+        "physicalLines": 9,
+        "nonblankLines": 9
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/hybrid-actual-derive-v2.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 8733,
+        "physicalLines": 13,
+        "nonblankLines": 13
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/hybrid-flat-controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 3982,
+        "physicalLines": 8,
+        "nonblankLines": 8
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/hybrid-flat-controls-v2.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 4044,
+        "physicalLines": 8,
+        "nonblankLines": 8
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/hybrid-flat-derive-v1.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 8838,
+        "physicalLines": 20,
+        "nonblankLines": 20
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/hybrid-flat-derive-v2.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 8907,
+        "physicalLines": 20,
+        "nonblankLines": 20
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/hybrid-source-v1-arity.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1771,
+        "physicalLines": 83,
+        "nonblankLines": 83
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/hybrid-source-v1.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 55689,
+        "physicalLines": 905,
+        "nonblankLines": 787
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/hybrid-source-v1.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 5646,
+        "physicalLines": 87,
+        "nonblankLines": 84
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/make-context-patch.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4208,
+        "physicalLines": 76,
+        "nonblankLines": 70
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/make-hybrid-source-patch-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6252,
+        "physicalLines": 98,
+        "nonblankLines": 94
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/make-owned-patch.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3773,
+        "physicalLines": 59,
+        "nonblankLines": 55
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/make-owner-thread-patch-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1817,
+        "physicalLines": 27,
+        "nonblankLines": 26
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/make-owner-thread-patch-v2.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2130,
+        "physicalLines": 30,
+        "nonblankLines": 29
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/make-owner-thread-patch.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1817,
+        "physicalLines": 27,
+        "nonblankLines": 26
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/native15-flat-ctor-static.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 935,
+        "physicalLines": 29,
+        "nonblankLines": 29
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/owned-actual-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 10122,
+        "physicalLines": 116,
+        "nonblankLines": 116
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/owned-actual-derive.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 8343,
+        "physicalLines": 56,
+        "nonblankLines": 56
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/owned-constructor-source.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 4245,
+        "physicalLines": 74,
+        "nonblankLines": 71
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/owned-fixture-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 4194,
+        "physicalLines": 22,
+        "nonblankLines": 22
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/owned-fixture-derive.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 5154,
+        "physicalLines": 36,
+        "nonblankLines": 36
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/owned-fixture.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 1082,
+        "physicalLines": 42,
+        "nonblankLines": 33
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/owner-thread-arity-fix.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 560,
+        "physicalLines": 11,
+        "nonblankLines": 10
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/owner-thread-arity-review.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1359,
+        "physicalLines": 69,
+        "nonblankLines": 69
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/owner-thread-source-v1.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 2718,
+        "physicalLines": 47,
+        "nonblankLines": 43
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/owner-thread-source.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 2718,
+        "physicalLines": 47,
+        "nonblankLines": 43
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/preimport-bigint-counterexample.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6340,
+        "physicalLines": 37,
+        "nonblankLines": 37
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/preimport-safe-core-counterexample-v1.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 7425,
+        "physicalLines": 37,
+        "nonblankLines": 37
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/prepare-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 2125,
+        "physicalLines": 12,
+        "nonblankLines": 12
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/prototype01/controls-derive.json",
+        "category": "controls-oracles-and-probes",
+        "bytes": 3728,
+        "physicalLines": 128,
+        "nonblankLines": 128
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/prototype01/controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7285,
+        "physicalLines": 89,
+        "nonblankLines": 89
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/prototype01/derive.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2426,
+        "physicalLines": 92,
+        "nonblankLines": 92
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/prototype01/live.clean.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 104164,
+        "physicalLines": 809,
+        "nonblankLines": 796
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/prototype01/live.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 106442,
+        "physicalLines": 834,
+        "nonblankLines": 819
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/prototype01/original.clean.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 109624,
+        "physicalLines": 809,
+        "nonblankLines": 796
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/prototype01/original.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 111902,
+        "physicalLines": 834,
+        "nonblankLines": 819
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/prototype01/recursive-ceiling.clean.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 101920,
+        "physicalLines": 809,
+        "nonblankLines": 796
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/prototype01/recursive-ceiling.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 104198,
+        "physicalLines": 834,
+        "nonblankLines": 819
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/frames/tiny-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 792,
+        "physicalLines": 7,
+        "nonblankLines": 7
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/actual-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 13335,
+        "physicalLines": 82,
+        "nonblankLines": 82
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/actual-derive.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3395,
+        "physicalLines": 35,
+        "nonblankLines": 33
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 13303,
+        "physicalLines": 82,
+        "nonblankLines": 82
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/controls-v2.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 13321,
+        "physicalLines": 82,
+        "nonblankLines": 82
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 13321,
+        "physicalLines": 82,
+        "nonblankLines": 82
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/derive-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3875,
+        "physicalLines": 60,
+        "nonblankLines": 58
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/derive-v2.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4356,
+        "physicalLines": 66,
+        "nonblankLines": 64
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/derive.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4356,
+        "physicalLines": 66,
+        "nonblankLines": 64
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/entry-derive.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1759,
+        "physicalLines": 21,
+        "nonblankLines": 20
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/entry-preimport-counterexample.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3072,
+        "physicalLines": 28,
+        "nonblankLines": 28
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-acquisition-recipes.md",
+        "category": "documentation-and-review",
+        "bytes": 2436,
+        "physicalLines": 24,
+        "nonblankLines": 19
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog/calls-fixture-renamed.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2353,
+        "physicalLines": 87,
+        "nonblankLines": 68
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog/catalog.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2905,
+        "physicalLines": 94,
+        "nonblankLines": 94
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog/fusion-fixture-v4.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2920,
+        "physicalLines": 97,
+        "nonblankLines": 79
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v2/calls-fixture-renamed.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2353,
+        "physicalLines": 87,
+        "nonblankLines": 68
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v2/catalog.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4175,
+        "physicalLines": 131,
+        "nonblankLines": 131
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v2/fusion-fixture-v4.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2920,
+        "physicalLines": 97,
+        "nonblankLines": 79
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v2/owned-fixture.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 1082,
+        "physicalLines": 42,
+        "nonblankLines": 33
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v3/calls-fixture-renamed.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2447,
+        "physicalLines": 90,
+        "nonblankLines": 70
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v3/catalog.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4178,
+        "physicalLines": 131,
+        "nonblankLines": 131
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v3/fusion-fixture-v4.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2920,
+        "physicalLines": 97,
+        "nonblankLines": 79
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v3/owned-fixture.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 1082,
+        "physicalLines": 42,
+        "nonblankLines": 33
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v4/calls-fixture-renamed.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2474,
+        "physicalLines": 92,
+        "nonblankLines": 72
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v4/catalog.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4178,
+        "physicalLines": 131,
+        "nonblankLines": 131
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v4/fusion-fixture-v4.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2920,
+        "physicalLines": 97,
+        "nonblankLines": 79
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-catalog-v4/owned-fixture.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 1082,
+        "physicalLines": 42,
+        "nonblankLines": 33
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-controls-v3.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 5993,
+        "physicalLines": 53,
+        "nonblankLines": 53
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-controls-v4.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 8651,
+        "physicalLines": 65,
+        "nonblankLines": 64
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 8651,
+        "physicalLines": 65,
+        "nonblankLines": 64
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-v1.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 1323,
+        "physicalLines": 54,
+        "nonblankLines": 44
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-v2.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 1331,
+        "physicalLines": 54,
+        "nonblankLines": 44
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-v3.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2166,
+        "physicalLines": 75,
+        "nonblankLines": 61
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture-v4.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2920,
+        "physicalLines": 97,
+        "nonblankLines": 79
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/fixture.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2920,
+        "physicalLines": 97,
+        "nonblankLines": 79
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/gate-probe-normalized.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 8064,
+        "physicalLines": 52,
+        "nonblankLines": 50
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/gate-probe-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7069,
+        "physicalLines": 46,
+        "nonblankLines": 45
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/gate-probe-v2.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7691,
+        "physicalLines": 48,
+        "nonblankLines": 47
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/gate-probe.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7691,
+        "physicalLines": 48,
+        "nonblankLines": 47
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/large-screen-oracle.json",
+        "category": "controls-oracles-and-probes",
+        "bytes": 969,
+        "physicalLines": 50,
+        "nonblankLines": 50
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/large-screen-prototype.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3945,
+        "physicalLines": 93,
+        "nonblankLines": 93
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/shape-probe-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 5484,
+        "physicalLines": 31,
+        "nonblankLines": 31
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/shape-probe.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 5484,
+        "physicalLines": 31,
+        "nonblankLines": 31
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/source-additions.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 12756,
+        "physicalLines": 243,
+        "nonblankLines": 217
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/source-call-spine-simplification.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 3486,
+        "physicalLines": 57,
+        "nonblankLines": 50
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/source-v1.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 429,
+        "physicalLines": 10,
+        "nonblankLines": 10
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/source-v1.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 14154,
+        "physicalLines": 259,
+        "nonblankLines": 258
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/source-v2-correction.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 564,
+        "physicalLines": 10,
+        "nonblankLines": 10
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/source-v2-correction.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 1289,
+        "physicalLines": 20,
+        "nonblankLines": 18
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/fusion/v2-correction.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1214,
+        "physicalLines": 28,
+        "nonblankLines": 28
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/actual-flat-controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 9321,
+        "physicalLines": 79,
+        "nonblankLines": 76
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/actual-flat-v1.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 8323,
+        "physicalLines": 52,
+        "nonblankLines": 52
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/actual-flat-v2.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 8825,
+        "physicalLines": 53,
+        "nonblankLines": 53
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/actual-source-controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 14314,
+        "physicalLines": 85,
+        "nonblankLines": 84
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/actual-source-controls-v2.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 14416,
+        "physicalLines": 85,
+        "nonblankLines": 84
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/actual-source-controls-v3.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 14495,
+        "physicalLines": 85,
+        "nonblankLines": 84
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/actual-source-controls-v4.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 15674,
+        "physicalLines": 105,
+        "nonblankLines": 104
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/actual-source-controls-v5.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 17734,
+        "physicalLines": 115,
+        "nonblankLines": 114
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/admission-probe-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 4593,
+        "physicalLines": 18,
+        "nonblankLines": 18
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/admission-probe-v2.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 5340,
+        "physicalLines": 44,
+        "nonblankLines": 44
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/admission-probe-v3.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 6096,
+        "physicalLines": 47,
+        "nonblankLines": 47
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/admission-probe-v4.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7766,
+        "physicalLines": 63,
+        "nonblankLines": 63
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/admission-probe-v5.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 8107,
+        "physicalLines": 65,
+        "nonblankLines": 65
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/complete-ablate-v1.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5062,
+        "physicalLines": 35,
+        "nonblankLines": 35
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/complete-controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 5883,
+        "physicalLines": 51,
+        "nonblankLines": 50
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/complete-controls-v2.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7015,
+        "physicalLines": 59,
+        "nonblankLines": 58
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/complete-controls-v3.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 8925,
+        "physicalLines": 70,
+        "nonblankLines": 68
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/complete-controls-v4.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 9240,
+        "physicalLines": 79,
+        "nonblankLines": 76
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/complete-v1.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5464,
+        "physicalLines": 48,
+        "nonblankLines": 48
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/complete-v2.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5457,
+        "physicalLines": 48,
+        "nonblankLines": 48
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 3179,
+        "physicalLines": 31,
+        "nonblankLines": 31
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/controls.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 4350,
+        "physicalLines": 43,
+        "nonblankLines": 43
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/controls02.json",
+        "category": "controls-oracles-and-probes",
+        "bytes": 294,
+        "physicalLines": 9,
+        "nonblankLines": 9
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/derive.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5320,
+        "physicalLines": 60,
+        "nonblankLines": 60
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/fixture-controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7448,
+        "physicalLines": 41,
+        "nonblankLines": 41
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/fixture-controls-v2.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7448,
+        "physicalLines": 41,
+        "nonblankLines": 41
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/fixture-controls-v3.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 7448,
+        "physicalLines": 41,
+        "nonblankLines": 41
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/fixture-flat-v1.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 4350,
+        "physicalLines": 149,
+        "nonblankLines": 113
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/fixture-flat-v2.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 4349,
+        "physicalLines": 149,
+        "nonblankLines": 113
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/fixture-flat-v3.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 4505,
+        "physicalLines": 152,
+        "nonblankLines": 115
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/fixture-flat-v4.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 4532,
+        "physicalLines": 154,
+        "nonblankLines": 117
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/fixture-flat-v5.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 4532,
+        "physicalLines": 154,
+        "nonblankLines": 117
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/flat-support-v1.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 13488,
+        "physicalLines": 197,
+        "nonblankLines": 166
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/flat-support-v2.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 13647,
+        "physicalLines": 197,
+        "nonblankLines": 166
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/flat-support-v3.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 13646,
+        "physicalLines": 197,
+        "nonblankLines": 166
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/flat-support-v4.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 13638,
+        "physicalLines": 197,
+        "nonblankLines": 166
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/flat-support-v5.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 14187,
+        "physicalLines": 206,
+        "nonblankLines": 174
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/make-source-patch-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4012,
+        "physicalLines": 33,
+        "nonblankLines": 33
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/make-source-patch-v2.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4012,
+        "physicalLines": 33,
+        "nonblankLines": 33
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/make-source-patch-v3.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4012,
+        "physicalLines": 33,
+        "nonblankLines": 33
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/make-source-patch-v4.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4012,
+        "physicalLines": 33,
+        "nonblankLines": 33
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/map-bit-compare-v1.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1693,
+        "physicalLines": 44,
+        "nonblankLines": 44
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/map-bit-controls-v1.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 5561,
+        "physicalLines": 15,
+        "nonblankLines": 15
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/map-bit-prepare-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4532,
+        "physicalLines": 53,
+        "nonblankLines": 53
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/map-gap-v1.md",
+        "category": "documentation-and-review",
+        "bytes": 4669,
+        "physicalLines": 74,
+        "nonblankLines": 65
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared01/derive.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1015,
+        "physicalLines": 32,
+        "nonblankLines": 32
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared01/flat.clean.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 110691,
+        "physicalLines": 821,
+        "nonblankLines": 806
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared01/flat.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 111340,
+        "physicalLines": 826,
+        "nonblankLines": 810
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared01/original.clean.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 109624,
+        "physicalLines": 809,
+        "nonblankLines": 796
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared01/original.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 110273,
+        "physicalLines": 814,
+        "nonblankLines": 800
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared02/derive.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1269,
+        "physicalLines": 40,
+        "nonblankLines": 40
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared02/direct.clean.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 110733,
+        "physicalLines": 823,
+        "nonblankLines": 808
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared02/direct.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 111382,
+        "physicalLines": 828,
+        "nonblankLines": 812
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared02/flat.clean.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 110805,
+        "physicalLines": 823,
+        "nonblankLines": 808
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared02/flat.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 111454,
+        "physicalLines": 828,
+        "nonblankLines": 812
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared02/original.clean.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 109624,
+        "physicalLines": 809,
+        "nonblankLines": 796
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/prepared02/original.mjs",
+        "category": "tooling-and-config-evidence",
+        "bytes": 110273,
+        "physicalLines": 814,
+        "nonblankLines": 800
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-proposal.md",
+        "category": "documentation-and-review",
+        "bytes": 7499,
+        "physicalLines": 128,
+        "nonblankLines": 109
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-v1.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 745,
+        "physicalLines": 15,
+        "nonblankLines": 15
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-v1.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 20337,
+        "physicalLines": 278,
+        "nonblankLines": 272
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-v2.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 745,
+        "physicalLines": 15,
+        "nonblankLines": 15
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-v2.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 20496,
+        "physicalLines": 278,
+        "nonblankLines": 272
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-v3.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 745,
+        "physicalLines": 15,
+        "nonblankLines": 15
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-v3.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 20495,
+        "physicalLines": 278,
+        "nonblankLines": 272
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-v4.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 745,
+        "physicalLines": 15,
+        "nonblankLines": 15
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-v4.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 20487,
+        "physicalLines": 278,
+        "nonblankLines": 272
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-v5.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 687,
+        "physicalLines": 15,
+        "nonblankLines": 15
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-v5.patch",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 1961,
+        "physicalLines": 24,
+        "nonblankLines": 23
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-validation-catalog-v1.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2903,
+        "physicalLines": 72,
+        "nonblankLines": 72
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-validation-catalog-v2.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3471,
+        "physicalLines": 78,
+        "nonblankLines": 78
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-validation-catalog-v3.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3959,
+        "physicalLines": 82,
+        "nonblankLines": 82
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-validation-catalog-v4.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4667,
+        "physicalLines": 94,
+        "nonblankLines": 94
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-validation-catalog-v5.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5038,
+        "physicalLines": 98,
+        "nonblankLines": 98
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-validation-catalog-v6.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5654,
+        "physicalLines": 114,
+        "nonblankLines": 114
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-validation-catalog-v7.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5839,
+        "physicalLines": 117,
+        "nonblankLines": 117
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/layout/source-validation-catalog-v8.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 6281,
+        "physicalLines": 127,
+        "nonblankLines": 127
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/review/final-selected15-review-v6.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2249,
+        "physicalLines": 51,
+        "nonblankLines": 51
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/review/final-selected15-review.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1779,
+        "physicalLines": 43,
+        "nonblankLines": 43
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/review/final15-source-identity.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1821,
+        "physicalLines": 56,
+        "nonblankLines": 56
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/review/fixture-renamed.bend",
+        "category": "fixtures-and-proposed-bend",
+        "bytes": 2353,
+        "physicalLines": 87,
+        "nonblankLines": 68
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/review/oracles.mjs",
+        "category": "controls-oracles-and-probes",
+        "bytes": 2752,
+        "physicalLines": 70,
+        "nonblankLines": 69
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/review/rollback-v2-independent.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 694,
+        "physicalLines": 30,
+        "nonblankLines": 30
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/README.md",
+        "category": "documentation-and-review",
+        "bytes": 6003,
+        "physicalLines": 105,
+        "nonblankLines": 89
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/archive-campaign-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4632,
+        "physicalLines": 52,
+        "nonblankLines": 52
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/bind-recipe-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 7713,
+        "physicalLines": 95,
+        "nonblankLines": 91
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/check-measurement-bindings-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4899,
+        "physicalLines": 59,
+        "nonblankLines": 59
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/check-measurement-bindings-v2.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4914,
+        "physicalLines": 59,
+        "nonblankLines": 59
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/check-protected-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1378,
+        "physicalLines": 16,
+        "nonblankLines": 16
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/checked-config-v1.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 290,
+        "physicalLines": 11,
+        "nonblankLines": 11
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/close-phase41-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3471,
+        "physicalLines": 50,
+        "nonblankLines": 49
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/close-release-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5511,
+        "physicalLines": 59,
+        "nonblankLines": 59
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/close-release-v2.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5539,
+        "physicalLines": 59,
+        "nonblankLines": 59
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/close-release-v3.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5658,
+        "physicalLines": 60,
+        "nonblankLines": 60
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/close-runtime-batches-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4273,
+        "physicalLines": 39,
+        "nonblankLines": 39
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/close-runtime-batches-v2.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 4546,
+        "physicalLines": 41,
+        "nonblankLines": 41
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/facts-checked03-config-v1.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 122,
+        "physicalLines": 5,
+        "nonblankLines": 5
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-matched-v3.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 55870,
+        "physicalLines": 2034,
+        "nonblankLines": 2034
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-matched-v3.md",
+        "category": "documentation-and-review",
+        "bytes": 3463,
+        "physicalLines": 15,
+        "nonblankLines": 8
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-matched-v4.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 63708,
+        "physicalLines": 2280,
+        "nonblankLines": 2280
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-matched-v4.md",
+        "category": "documentation-and-review",
+        "bytes": 2746,
+        "physicalLines": 13,
+        "nonblankLines": 7
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-matched-v5.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 69400,
+        "physicalLines": 2440,
+        "nonblankLines": 2440
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-matched-v6.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 77386,
+        "physicalLines": 2605,
+        "nonblankLines": 2605
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-optional-bst-v1.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 29934,
+        "physicalLines": 1073,
+        "nonblankLines": 1073
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-optional-bst-v1.md",
+        "category": "documentation-and-review",
+        "bytes": 1748,
+        "physicalLines": 9,
+        "nonblankLines": 5
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-optional-bst-v2.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 31497,
+        "physicalLines": 1136,
+        "nonblankLines": 1136
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-optional-bst-v2.md",
+        "category": "documentation-and-review",
+        "bytes": 1496,
+        "physicalLines": 7,
+        "nonblankLines": 4
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-template-v1.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1020,
+        "physicalLines": 23,
+        "nonblankLines": 23
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-working-v1.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 15015,
+        "physicalLines": 558,
+        "nonblankLines": 558
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-working-v1.md",
+        "category": "documentation-and-review",
+        "bytes": 5087,
+        "physicalLines": 72,
+        "nonblankLines": 62
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-working-v2.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 21265,
+        "physicalLines": 754,
+        "nonblankLines": 754
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-working-v2.md",
+        "category": "documentation-and-review",
+        "bytes": 2746,
+        "physicalLines": 45,
+        "nonblankLines": 38
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-working-v3.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 21365,
+        "physicalLines": 754,
+        "nonblankLines": 754
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-working-v3.md",
+        "category": "documentation-and-review",
+        "bytes": 808,
+        "physicalLines": 5,
+        "nonblankLines": 3
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-working-v4.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 23603,
+        "physicalLines": 844,
+        "nonblankLines": 844
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-working-v4.md",
+        "category": "documentation-and-review",
+        "bytes": 1050,
+        "physicalLines": 5,
+        "nonblankLines": 3
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-working-v5.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 25137,
+        "physicalLines": 907,
+        "nonblankLines": 907
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-extension-working-v5.md",
+        "category": "documentation-and-review",
+        "bytes": 1407,
+        "physicalLines": 7,
+        "nonblankLines": 4
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-measurement-v1.md",
+        "category": "documentation-and-review",
+        "bytes": 6485,
+        "physicalLines": 51,
+        "nonblankLines": 38
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/final-runner-v1.md",
+        "category": "documentation-and-review",
+        "bytes": 9797,
+        "physicalLines": 151,
+        "nonblankLines": 127
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/freeze-baseline-v1.derivation.json",
+        "category": "tooling-and-config-evidence",
+        "bytes": 1527,
+        "physicalLines": 43,
+        "nonblankLines": 43
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/freeze-baseline-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5100,
+        "physicalLines": 89,
+        "nonblankLines": 82
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/freeze-candidate-v1.derivation.json",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 1587,
+        "physicalLines": 43,
+        "nonblankLines": 43
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/freeze-candidate-v1.py",
+        "category": "isolated-proposals-and-copied-source",
+        "bytes": 12362,
+        "physicalLines": 226,
+        "nonblankLines": 211
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/materialize-mapping-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3572,
+        "physicalLines": 42,
+        "nonblankLines": 42
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/portable-and-archive-v1.md",
+        "category": "documentation-and-review",
+        "bytes": 5620,
+        "physicalLines": 56,
+        "nonblankLines": 40
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/prepare-final-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5754,
+        "physicalLines": 65,
+        "nonblankLines": 65
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/prepare-final-v2.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5922,
+        "physicalLines": 65,
+        "nonblankLines": 65
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/prepare-final-v3.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5922,
+        "physicalLines": 65,
+        "nonblankLines": 65
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/prepare-final-v4.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 5922,
+        "physicalLines": 65,
+        "nonblankLines": 65
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/prepare-runtime-batches-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2893,
+        "physicalLines": 21,
+        "nonblankLines": 21
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/prepare-runtime-batches-v2.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 3088,
+        "physicalLines": 22,
+        "nonblankLines": 22
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/request-facts-static-review-v1.md",
+        "category": "documentation-and-review",
+        "bytes": 5834,
+        "physicalLines": 95,
+        "nonblankLines": 84
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/run-final-v1.py",
+        "category": "tooling-and-config-evidence",
+        "bytes": 2670,
+        "physicalLines": 23,
+        "nonblankLines": 23
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/runtime-batches-v1.md",
+        "category": "documentation-and-review",
+        "bytes": 4015,
+        "physicalLines": 31,
+        "nonblankLines": 23
+      },
+      {
+        "file": "selfhost/tools/performance/phase42/validation/runtime-batches-v2.md",
+        "category": "documentation-and-review",
+        "bytes": 4344,
+        "physicalLines": 34,
+        "nonblankLines": 24
+      },
+      {
+        "file": "design/phase42/README.md",
+        "category": "documentation-and-review",
+        "bytes": 13954,
+        "physicalLines": 227,
+        "nonblankLines": 186
+      },
+      {
+        "file": "design/phase42/calls.md",
+        "category": "documentation-and-review",
+        "bytes": 5388,
+        "physicalLines": 85,
+        "nonblankLines": 72
+      },
+      {
+        "file": "design/phase42/facts.md",
+        "category": "documentation-and-review",
+        "bytes": 7671,
+        "physicalLines": 113,
+        "nonblankLines": 97
+      },
+      {
+        "file": "design/phase42/frames.md",
+        "category": "documentation-and-review",
+        "bytes": 8630,
+        "physicalLines": 131,
+        "nonblankLines": 113
+      },
+      {
+        "file": "design/phase42/fusion.md",
+        "category": "documentation-and-review",
+        "bytes": 3893,
+        "physicalLines": 58,
+        "nonblankLines": 51
+      },
+      {
+        "file": "design/phase42/layout.md",
+        "category": "documentation-and-review",
+        "bytes": 15353,
+        "physicalLines": 233,
+        "nonblankLines": 204
+      },
+      {
+        "file": "design/phase42/review.md",
+        "category": "documentation-and-review",
+        "bytes": 6516,
+        "physicalLines": 78,
+        "nonblankLines": 66
+      },
+      {
+        "file": "design/phase42/validation.md",
+        "category": "documentation-and-review",
+        "bytes": 7511,
+        "physicalLines": 79,
+        "nonblankLines": 55
+      },
+      {
+        "file": "implementation/phase42/README.md",
+        "category": "documentation-and-review",
+        "bytes": 573,
+        "physicalLines": 9,
+        "nonblankLines": 8
+      },
+      {
+        "file": "implementation/phase42/calls.md",
+        "category": "documentation-and-review",
+        "bytes": 24734,
+        "physicalLines": 366,
+        "nonblankLines": 324
+      },
+      {
+        "file": "implementation/phase42/checkpoint01.md",
+        "category": "documentation-and-review",
+        "bytes": 3111,
+        "physicalLines": 47,
+        "nonblankLines": 41
+      },
+      {
+        "file": "implementation/phase42/checkpoint02.md",
+        "category": "documentation-and-review",
+        "bytes": 3653,
+        "physicalLines": 57,
+        "nonblankLines": 48
+      },
+      {
+        "file": "implementation/phase42/checkpoint03.md",
+        "category": "documentation-and-review",
+        "bytes": 3538,
+        "physicalLines": 56,
+        "nonblankLines": 47
+      },
+      {
+        "file": "implementation/phase42/checkpoint04.md",
+        "category": "documentation-and-review",
+        "bytes": 2933,
+        "physicalLines": 47,
+        "nonblankLines": 39
+      },
+      {
+        "file": "implementation/phase42/checkpoint05.md",
+        "category": "documentation-and-review",
+        "bytes": 2438,
+        "physicalLines": 39,
+        "nonblankLines": 33
+      },
+      {
+        "file": "implementation/phase42/checkpoint06.md",
+        "category": "documentation-and-review",
+        "bytes": 1884,
+        "physicalLines": 31,
+        "nonblankLines": 25
+      },
+      {
+        "file": "implementation/phase42/facts.md",
+        "category": "documentation-and-review",
+        "bytes": 22935,
+        "physicalLines": 344,
+        "nonblankLines": 303
+      },
+      {
+        "file": "implementation/phase42/frames.md",
+        "category": "documentation-and-review",
+        "bytes": 16282,
+        "physicalLines": 245,
+        "nonblankLines": 217
+      },
+      {
+        "file": "implementation/phase42/fusion.md",
+        "category": "documentation-and-review",
+        "bytes": 13730,
+        "physicalLines": 218,
+        "nonblankLines": 186
+      },
+      {
+        "file": "implementation/phase42/layout.md",
+        "category": "documentation-and-review",
+        "bytes": 17828,
+        "physicalLines": 281,
+        "nonblankLines": 243
+      },
+      {
+        "file": "implementation/phase42/mechanisms-and-decisions.md",
+        "category": "documentation-and-review",
+        "bytes": 15737,
+        "physicalLines": 236,
+        "nonblankLines": 204
+      },
+      {
+        "file": "implementation/phase42/prototype-summary01.json",
+        "category": "documentation-and-review",
+        "bytes": 18199,
+        "physicalLines": 574,
+        "nonblankLines": 574
+      },
+      {
+        "file": "implementation/phase42/prototype-summary02.json",
+        "category": "documentation-and-review",
+        "bytes": 12567,
+        "physicalLines": 404,
+        "nonblankLines": 404
+      },
+      {
+        "file": "implementation/phase42/prototype-summary03.json",
+        "category": "documentation-and-review",
+        "bytes": 20728,
+        "physicalLines": 662,
+        "nonblankLines": 662
+      },
+      {
+        "file": "implementation/phase42/prototype-summary04.json",
+        "category": "documentation-and-review",
+        "bytes": 12702,
+        "physicalLines": 409,
+        "nonblankLines": 409
+      },
+      {
+        "file": "implementation/phase42/prototype-summary05.json",
+        "category": "documentation-and-review",
+        "bytes": 6739,
+        "physicalLines": 225,
+        "nonblankLines": 225
+      },
+      {
+        "file": "implementation/phase42/prototype-summary06.json",
+        "category": "documentation-and-review",
+        "bytes": 6347,
+        "physicalLines": 212,
+        "nonblankLines": 212
+      },
+      {
+        "file": "implementation/phase42/prototype-summary07.json",
+        "category": "documentation-and-review",
+        "bytes": 8787,
+        "physicalLines": 294,
+        "nonblankLines": 294
+      },
+      {
+        "file": "implementation/phase42/review.md",
+        "category": "documentation-and-review",
+        "bytes": 44082,
+        "physicalLines": 662,
+        "nonblankLines": 577
+      },
+      {
+        "file": "implementation/phase42/validation.md",
+        "category": "documentation-and-review",
+        "bytes": 9802,
+        "physicalLines": 113,
+        "nonblankLines": 85
+      },
+      {
+        "file": "experiments/phase42/P42-001-direct-component.md",
+        "category": "documentation-and-review",
+        "bytes": 401,
+        "physicalLines": 7,
+        "nonblankLines": 6
+      },
+      {
+        "file": "experiments/phase42/P42-002-compact-continuations.md",
+        "category": "documentation-and-review",
+        "bytes": 406,
+        "physicalLines": 7,
+        "nonblankLines": 6
+      },
+      {
+        "file": "experiments/phase42/P42-003-private-representation.md",
+        "category": "documentation-and-review",
+        "bytes": 407,
+        "physicalLines": 7,
+        "nonblankLines": 6
+      },
+      {
+        "file": "experiments/phase42/P42-004-total-pipeline-fusion.md",
+        "category": "documentation-and-review",
+        "bytes": 406,
+        "physicalLines": 7,
+        "nonblankLines": 6
+      },
+      {
+        "file": "experiments/phase42/P42-005-shared-planner-facts.md",
+        "category": "documentation-and-review",
+        "bytes": 405,
+        "physicalLines": 7,
+        "nonblankLines": 6
+      },
+      {
+        "file": "experiments/phase42/P42-006-closed-native-data.md",
+        "category": "documentation-and-review",
+        "bytes": 5753,
+        "physicalLines": 85,
+        "nonblankLines": 75
+      }
+    ],
+    "scopeLimit": "Descriptive bounded Phase42 evidence volume at accounting time, not frozen compiler inventory; excludes all selfhost/build/raw and these two generated complexity outputs to avoid self-reference; generated compiler source in proposals is never added to canonical compiler count."
+  },
+  "generatedCompilerAPI": {
+    "baseline": {
+      "file": "selfhost/build/phase41/checked01/equality/api.mjs",
+      "bytes": 1233516,
+      "sha256": "9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b",
+      "attempt": "selfhost/build/phase41/checked01/attempt.json"
+    },
+    "source15": {
+      "file": "selfhost/build/phase42/checked15/equality/api.mjs",
+      "bytes": 1333190,
+      "sha256": "4a5bdf433610d5760a7296aa64d6c2afac5dfba720ea2ebb00a6706cde906d73",
+      "attempt": "selfhost/build/phase42/checked15/attempt.json"
+    }
+  },
+  "programGeneratedJS": "No program module aggregate from mixed checked versions: source15 final acquisition/cost gate pending; prior screen13 output bytes recorded separately.",
+  "limitations": [
+    "Static size/definition deltas are not compilation/runtime speed or causal cache attribution.",
+    "Request cache adds definitions and ephemeral retained graphs, removes repeated execution rather than deleting walkers.",
+    "Supplied source15 snapshot/API identity is used; no installed-release or final performance claim."
+  ]
+}

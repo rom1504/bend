@@ -9,12 +9,13 @@ only checked saturated U32 add/sub/mul/and/or/xor can wrap the result hole.
 Original JPure type, closure, field and graph checks are unchanged. A 32-level
 context bound and existing source bounds contain compile-time search.
 
-`sequential-candidate03/candidate.patch` is an unbuilt, unapplied review artifact
+`sequential-candidate04/candidate.patch` is an unbuilt, unapplied review artifact
 against current tree SHA recorded in identity.json. Candidate01 is retained as
 an earlier draft with an unavailable helper name, corrected to existing
-List.append in candidate02. Calls-owner review found that an annotated inner
-self must be stripped before recovering its call spine; candidate03 corrects
-the find return to j_strip(h). Earlier drafts remain retained. No production source was edited.
+List.append in candidate02. Candidate03 explicitly strips the found inner self for normalization.
+An initial review suspicion about Ann was retracted: j_call_spine already
+recursively strips annotations. This is not a demonstrated correctness fix.
+Earlier drafts remain retained. No production source was edited.
 
 Emission descends into the unique inner self call and saves the original prefix
 argument vector in a phase-2 frame. On phase3 resume it binds the result to
@@ -70,3 +71,14 @@ Existing independently accepted parallel-two-child patterns keep their old
 emission; this feature must not reject them. Generic mutation/host/proof-finally
 controls and exact existing family emission/runtime controls remain mandatory.
 Root owns all compiler/target execution; no empirical result is claimed here.
+
+Root probe02 confirms the central expectation: inorder signature/capture and
+pure graph pass (graph ["inorder"], fuel32748), while component prefix and plan
+fail with two self refs. Bench pure graph fails, so this patch alone still
+cannot enter ordinary BST bench. These are actual original-predicate results,
+not execution or validation of the held patch.
+
+Candidate04 additionally reuses the existing leaf self-ref count to call the
+new sequence proof only for exactly two references. It removes the duplicate
+outer ref scan; ordinary single-self leaf admission keeps its original path.
+Earlier candidates remain retained.

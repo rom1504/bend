@@ -1,0 +1,87 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -143,7 +143,7 @@
+   kc(JPure, String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) &&
+     U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && String.eq(tg(head), "All"), u =>
+     kc(JPure, (String.eq(tg(wnf(book, kid(head, 0))), "ADT") && Bool.not(db(lookup(book, nm(wnf(book, kid(head, 0))))))) ||
+-      j_list_ground_type(book, kid(head, 0)) ||
++      j_list_ground_type(book, kid(head, 0)) || j_pure_closed_list(book, kid(head, 0)) ||
+       # Nat-to-scalar workers retain the existing scalar island selection.
+       # The remaining purity proof verifies admitted data result types.
+       (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book) &&
+@@ -250,7 +250,8 @@
+       +owner = lookup(book, nm(arg))
+       +c = lookup(dc(owner), nm(t))
+       kc(Bool, String.eq(tg(t), "Mat") && String.eq(j_l_name(t), "") && U32.is_eq(terms_len(ks(t)), 2) &&
+-        String.eq(dk(c), "Ctr") && (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
++        String.eq(dk(c), "Ctr") && (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
++          j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
+         j_component_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_component_fields(origin, da(c), rest), d, U32.inc(depth)) &&
+         j_component_prefix(book, env, kid(t, 1), ty, slots, d, U32.inc(depth)), u => False{})
+ 
+@@ -334,8 +335,16 @@
+       kc(String, String.eq(tg(body), "Mat"), u => j_component_emit_match(book, env, body, head, arg, rest, d, phase),
+         u => "return bad('private component prefix invariant');"))
+ 
++# Full original JPure coverage plus exact closed native Sigma identity proves
++# the sole Tuple arm. Its owned pair fields are dense slots, not tagged .a.
+ @unsafe
+ def j_component_emit_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>, +d: KDef, +phase: U32) -> String:
++  kc(String, j_pure_closed_sigma(book, wnf(book, kid(ty, 0))) && String.eq(nm(t), "Tuple"),
++    u => "{" ++ j_component_emit(book, env, kid(t, 0), j_arm_type(book, ty, "Tuple"), j_native_tuple_fields(arg, 0, rest), d, phase) ++ "}",
++    u => j_component_emit_match_tagged(book, env, t, ty, arg, rest, d, phase))
++
++@unsafe
++def j_component_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>, +d: KDef, +phase: U32) -> String:
+   +input = wnf(book, kid(ty, 0))
+   +c = lookup(dc(lookup(book, nm(input))), nm(t))
+   "if(" ++ kc(String, j_primitive_type(book, input, "Bool"),
+@@ -758,3 +767,11 @@
+   match xs:
+     case Nil{}: ""
+     case Con{h, rest}: "_" ++ U32.show(at) ++ ":" ++ kc(String, U32.is_lt(at, child), u => "$frame.before[" ++ U32.show(at) ++ "]", u => kc(String, U32.is_eq(at, child), u => "$value", u => j_expr(book, env, h, kid(wnf(book, tel), 0), False{}))) ++ "," ++ j_flat_linear_args(book, env, rest, j_app_type(wnf(book, tel), h), child, U32.inc(at))
++
++
++# This helper is used only after a complete typed native Tuple arm is proved.
++# Preserve binder order and aliases; no shape check or field vector is emitted.
++@unsafe
++def j_native_tuple_fields(+arg: String, +at: U32, +rest: List<&2,String>) -> List<&2,String>:
++  kc(List<&2,String>, U32.is_eq(at, 2), u => rest, u =>
++    Con{"(" ++ arg ++ ")[" ++ U32.show(at) ++ "]", j_native_tuple_fields(arg, U32.inc(at), rest)})
+--- a/selfhost/src/back/js/finite.bend
++++ b/selfhost/src/back/js/finite.bend
+@@ -43,7 +43,8 @@
+   +c = lookup(dc(owner), nm(t))
+   String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) && String.eq(j_l_name(t), "") &&
+     U32.is_eq(terms_len(ks(t)), 2) && String.eq(dk(c), "Ctr") &&
+-    (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
++    (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
++      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
+     j_finite_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), U32.inc(depth)) &&
+     j_finite_prefix(book, env, kid(t, 1), ty, U32.inc(depth))
+ 
+@@ -120,8 +121,16 @@
+       kc(String, String.eq(tg(body), "Mat"), u =>
+         j_finite_emit_match(book, env, body, head, arg, rest), u => "return bad('private finite sum invariant');"))
+ 
++# Full original JPure coverage plus exact closed native Sigma identity proves
++# the sole Tuple arm. Its owned pair fields are dense slots, not tagged .a.
+ @unsafe
+ def j_finite_emit_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
++  kc(String, j_pure_closed_sigma(book, wnf(book, kid(ty, 0))) && String.eq(nm(t), "Tuple"),
++    u => "{" ++ j_finite_emit(book, env, kid(t, 0), j_arm_type(book, ty, "Tuple"), j_native_tuple_fields(arg, 0, rest)) ++ "}",
++    u => j_finite_emit_match_tagged(book, env, t, ty, arg, rest))
++
++@unsafe
++def j_finite_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
+   +input = wnf(book, kid(ty, 0))
+   +c = lookup(dc(lookup(book, nm(input))), nm(t))
+   "if(" ++ kc(String, j_primitive_type(book, input, "Bool"),
+@@ -224,6 +233,7 @@
+   +owner = lookup(book, nm(arg))
+   String.eq(tg(ty), "All") &&
+     (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
++      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) ||
+       (Bool.not(db(owner)) && j_pure_type(book, arg))) &&
+     j_direct_prefix(book, kid(t, 0), j_arm_type(book, ty, nm(t)), depth) &&
+     j_direct_prefix(book, kid(t, 1), ty, depth)

@@ -120,3 +120,9 @@ complete Tree/Stat diagnostic values, freshness/shared/uneven/mismatch cases,
 root proof counters, hostile count and ADT getters, mutation/throw/bounded
 reentry, raw entries and deep stack behavior. Then run an actual saved-module
 array/flat paired screen. Broad gates follow only after this survivor freezes.
+
+Status successor: the readonly estimate above is now implemented as frozen
+`source-v4.patch` (208 additions/9 removals), with `source-v4.json` and
+`source-validation-catalog-v1.json`. Static reviewer accepted V3's exact-frontier
+fix; V4 adds the inactive-context normal fallback. Root still owns checked build,
+complete-value controls, performance acquisition and any source promotion.

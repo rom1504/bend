@@ -170,3 +170,76 @@ array's token boundaries and prefixes labels before the complete expression.
 It now writes candidate source before parsing, so any further parse failure
 retains its exact candidate bytes. Controls are unchanged. No source/control
 algorithm change or owner execution is introduced by this successor.
+
+Frozen source V4 proposal: `source-v4.patch`, SHA256
+`852d73b02ce0b0e4055e46e9bb3f57188730661ec87a8b5b2ed6d9e1a1ccd233`.
+V1/V2/V3 artifacts remain retained. V3 fixes the late local-inline frontier and
+exact call/saturation audits; V4 changes only inactive-context normal fallback.
+The proposal adds208/removes9 physical lines and is not applied by this owner.
+
+[`source-validation-catalog-v1.json`](../../selfhost/tools/performance/phase42/layout/source-validation-catalog-v1.json)
+binds the patch, fixture and controller identities and lists root commands.
+`actual-source-controls-v1.mjs` instruments complete intermediate Tree/Stat
+returns of the exact selected emitted workers, asserts public worker source
+byte identity, then enters private diagnostic workers only from scalar-created
+values under the original full host/local guards. It checks20 full independent
+Tree/Stat/scalar oracles,96 shared/uneven/mismatch flow cases, two freshness/alias
+observations, two depth30000 private-frame cases, and68 fallback boundaries.
+Native Bool's existing zero-field primitive ctor calls are permitted; all
+user-ADT generic constructor/observer bridges inside flat clones are refused.
+Diagnostic returned private values are observations, not public ABI admission.
+
+Independent ReviewTree/ReviewStat `fixture-flat-v3.bend` has two scalar positive
+roots and eight refusal roots. Its controller expects40 independent scalar
+oracles, public complete ReviewTree observations, guarded exact fallback traces,
+and static all-or-nothing admission/refusal. Parse/type diagnosis and checked
+execution are still pending at delivery; syntax checking the controllers alone
+is not checked source evidence. Use the catalog's commands and fresh outputs.
+
+Checked08 successfully built the V4 source proposal but emitted zero flat
+markers for the actual tree fixture. This is an admission failure, not a checked
+optimization. `admission-probe-v1.mjs` retained a generated syntax failure;
+V2 uses readable predicate captures and parses the derived API before invoking
+the driver. A confined syntax-only checked08 derivative passed in0.30seconds.
+Root-run predicate evidence is required before any source correction/build.
+
+Independent fixture V3 failed affine ReviewTree leaf reuse; V4 introduces an
+explicit unrestricted U32 binding. V4 then failed source-order resolution of
+`review.out` because `bench` preceded its filled definition. V5 moves `bench`
+after filled ReviewStat helpers; its type diagnosis is pending. V3/V4 remain
+retained. The V3 fixture controller binds V5; the V2 actual controller binds its
+independent oracle module and broadens the forbidden residual-operation audit.
+Updated commands and identities are in `source-validation-catalog-v3.json`.
+
+Probe03 identifies the sole refusal: all five flat audit gates pass, the cache
+children have the expected exact source/planner/flat shape, and fourteen helper
+definitions pass source identity. The selected annotated root `bench` differs
+from its canonical source definition and fails the identity-only flat context.
+`source-v5.patch` is an incremental correction on the applied V4 source:10
+added/1removed line, SHA256
+`61444cb9acb2e8cbc9149149069f467d85619ff72c097568c6a333289ff804b4`.
+Only after every full-graph gate passes, it stores the exact canonical root in
+the identity-only context; all helper objects, original full graph audit,
+full guard coverage, lexical clone graph and normalized body remain unchanged.
+Exact context checks are not weakened. Static review and checked rebuild are
+root-owned. Fixture V5 now passes pinned TypeScript parse/type diagnosis in
+`flat-fixture-ts-check03.json`; checked candidate emission is still pending.
+
+Checked09 emits one actual flat block with direct fields after V5 repair. The
+first actual control V2 failed before oracles because its static assertion
+required field reads in `bsort`, a producer which has none in either baseline
+or candidate. V3 retains strict byte identity of all five top-level original
+workers and requires tagged-array constructors for `bsort`, tagged-array field
+reads for the four consuming workers. No clone/public scope selection changed.
+`admission-probe-v4.mjs` also asserts missing context remains inactive and six
+invalid metadata contexts refuse (empty reserved name, wrong kind, inactive bit,
+duplicate child, stale root and stale helper). Controls remain root-owned.
+
+Root reports actual checked09 controls V3 pass20/98/68/2 and renamed fixture
+controls V3 pass40 with all positive/negative admission flags. The context V4
+probe used the old uncanonicalized graph when manually reconstructing the new
+context and failed its positive activation assertion. V5 follows the exact
+current source route through `j_flat_source_root` before `j_flat_book`, retains
+all six negative cases, and records canonical stored-definition identity.
+The actual checked09 derivative passed syntax-only inspection in0.355seconds;
+root context execution and source performance acquisition remain pending.

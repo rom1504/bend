@@ -1,0 +1,164 @@
+#!/usr/bin/env python3
+"""Isolated closed native type/equality proposal; canonical source read-only."""
+from pathlib import Path
+import difflib,hashlib,json,sys
+root=Path(__file__).resolve().parents[6]
+helpers='''
+# Exact closed native containers. The root graph proves ownership separately;
+# these predicates never grant public entry and do not change U32 List selectors.
+@unsafe
+def j_pure_native_ctor(+c: KDef, +name: String, +arity: U32) -> Bool:
+  String.eq(dk(c), "Ctr") && db(c) && String.eq(dn(c), name) && U32.is_eq(da(c), arity) && U32.is_eq(dx(c), 0)
+
+@unsafe
+def j_pure_list_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  +owner = lookup(book, "List")
+  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "List") && U32.is_eq(terms_len(ks(ty)), 2) &&
+    List.is_empty(&2, String, rm(ty)) && String.eq(tg(kid(ty, 0)), "Qua") && U32.is_eq(qt(kid(ty, 0)), 2) &&
+    List.is_empty(&2, KTerm, ks(kid(ty, 0))) && String.eq(dk(owner), "ADT") && db(owner) &&
+    U32.is_eq(da(owner), 2) && U32.is_eq(dx(owner), 0) && U32.is_eq(j_region_def_count(dc(owner)), 2) &&
+    j_list_ground_kind(wnf(book, j_specialize(book, dt(owner), ks(ty)))) &&
+    j_pure_native_ctor(lookup(dc(owner), "Nil"), "Nil", 0) && j_pure_native_ctor(lookup(dc(owner), "Con"), "Con", 2)
+
+@unsafe
+def j_pure_shape_bound(+todo: List<&2,KTerm>, +fuel: U32) -> Bool:
+  match todo:
+    case Nil{}: True{}
+    case Con{t, rest}: kc(Bool, U32.is_gt(fuel, 0), u =>
+      j_pure_shape_bound(List.append(&2, KTerm, ks(t), rest), U32.sub(fuel, 1)), u => False{})
+
+@unsafe
+def j_pure_sigma_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  +owner = lookup(book, "Sigma")
+  +family = kid(ty, 3)
+  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Sigma") && U32.is_eq(terms_len(ks(ty)), 4) &&
+    List.is_empty(&2, String, rm(ty)) && String.eq(dk(owner), "ADT") && db(owner) &&
+    U32.is_eq(da(owner), 4) && U32.is_eq(dx(owner), 0) && U32.is_eq(j_region_def_count(dc(owner)), 1) &&
+    String.eq(tg(kid(ty, 0)), "Qua") && U32.is_eq(qt(kid(ty, 0)), 1) && List.is_empty(&2, KTerm, ks(kid(ty, 0))) &&
+    String.eq(tg(kid(ty, 1)), "Qua") && U32.is_eq(qt(kid(ty, 1)), 1) && List.is_empty(&2, KTerm, ks(kid(ty, 1))) &&
+    String.eq(tg(family), "Lam") && U32.is_eq(qt(family), 1) && U32.is_eq(terms_len(ks(family)), 1) &&
+    List.is_empty(&2, String, rm(family)) && j_pure_shape_bound([family], 256) &&
+    U32.is_eq(j_region_counter_uses([kid(family, 0)], ix(family), 0), 0) &&
+    j_pure_sigma_kind(wnf(book, j_specialize(book, dt(owner), ks(ty)))) &&
+    j_pure_native_ctor(lookup(dc(owner), "Tuple"), "Tuple", 2)
+
+@unsafe
+def j_pure_sigma_kind(+ty: KTerm) -> Bool:
+  +q = kid(ty, 0)
+  String.eq(tg(ty), "Typ") && U32.is_eq(terms_len(ks(ty)), 1) &&
+    kc(Bool, String.eq(tg(q), "Qua"), u => U32.is_eq(qt(q), 1) && List.is_empty(&2, KTerm, ks(q)), u =>
+      String.eq(tg(q), "Min") && U32.is_eq(terms_len(ks(q)), 2) &&
+      String.eq(tg(kid(q, 0)), "Qua") && U32.is_eq(qt(kid(q, 0)), 1) && List.is_empty(&2, KTerm, ks(kid(q, 0))) &&
+      String.eq(tg(kid(q, 1)), "Qua") && U32.is_eq(qt(kid(q, 1)), 1) && List.is_empty(&2, KTerm, ks(kid(q, 1))))
+
+@unsafe
+def j_pure_closed_list(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  +head = wnf(book, ty)
+  j_pure_list_head(book, head) && j_pure_type(book, head)
+
+@unsafe
+def j_pure_closed_sigma(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  +head = wnf(book, ty)
+  j_pure_sigma_head(book, head) && j_pure_type(book, head)
+
+# Parameterless canonical user/scalar owners need no alpha comparison. List and
+# independent Sigma compare their complete normalized specialization recursively.
+@unsafe
+def j_pure_same_closed(+book: List<&2,KDef>, +a: KTerm, +b: KTerm, +fuel: U32) -> Bool:
+  j_region_local_ok(j_pure_same_check(book, a, b, fuel))
+
+@unsafe
+def j_pure_same_check(+book: List<&2,KDef>, +a: KTerm, +b: KTerm, +fuel: U32) -> Maybe<&2,U32>:
+  kc(Maybe<&2,U32>, U32.is_gt(fuel, 0), u => j_pure_same_heads(book, wnf(book, a), wnf(book, b), U32.sub(fuel, 1)), u => None{})
+
+@unsafe
+def j_pure_same_heads(+book: List<&2,KDef>, +a: KTerm, +b: KTerm, +fuel: U32) -> Maybe<&2,U32>:
+  kc(Maybe<&2,U32>, String.eq(nm(a), "List") || String.eq(nm(b), "List"), u =>
+    kc(Maybe<&2,U32>, j_pure_list_head(book, a) && j_pure_list_head(book, b), u =>
+      j_pure_same_check(book, kid(a, 1), kid(b, 1), fuel), u => None{}), u =>
+  kc(Maybe<&2,U32>, String.eq(nm(a), "Sigma") || String.eq(nm(b), "Sigma"), u =>
+    kc(Maybe<&2,U32>, j_pure_sigma_head(book, a) && j_pure_sigma_head(book, b), u =>
+      j_pure_same_next(book, kid(kid(a, 3), 0), kid(kid(b, 3), 0),
+        j_pure_same_check(book, kid(a, 2), kid(b, 2), fuel)), u => None{}), u =>
+    kc(Maybe<&2,U32>, String.eq(tg(a), "ADT") && String.eq(tg(b), "ADT") && String.eq(nm(a), nm(b)) &&
+      List.is_empty(&2, KTerm, ks(a)) && List.is_empty(&2, KTerm, ks(b)) &&
+      List.is_empty(&2, String, rm(a)) && List.is_empty(&2, String, rm(b)), u => Some{fuel}, u => None{})))
+
+@unsafe
+def j_pure_same_next(+book: List<&2,KDef>, +a: KTerm, +b: KTerm, +result: Maybe<&2,U32>) -> Maybe<&2,U32>:
+  match result:
+    case Some{fuel}: j_pure_same_check(book, a, b, fuel)
+    case None{}: None{}
+
+# Native constructors retain exact field quantities and complete terminal type.
+# A List tail is checked against its current specialization, not recursively
+# re-expanded. Its element already consumes the shared type-proof budget.
+@unsafe
+def j_pure_closed_fields(+book: List<&2,KDef>, +tel: KTerm, +expected: KTerm, +left: U32, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+  kc(Maybe<&2,U32>, U32.is_gt(fuel, 0), u =>
+    j_pure_closed_fields_head(book, wnf(book, tel), expected, left, active, U32.sub(fuel, 1)), u => None{})
+
+@unsafe
+def j_pure_closed_fields_head(+book: List<&2,KDef>, +tel: KTerm, +expected: KTerm, +left: U32, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+  kc(Maybe<&2,U32>, U32.is_eq(left, 0), u =>
+    kc(Maybe<&2,U32>, j_pure_same_closed(book, tel, expected, 64), u => Some{fuel}, u => None{}), u =>
+  kc(Maybe<&2,U32>, String.eq(tg(tel), "All") && U32.is_eq(qt(tel), 1) &&
+    j_pure_same_closed(book, kid(tel, 0), j_pure_closed_field(expected, left), 64), u =>
+    kc(Maybe<&2,U32>, String.eq(nm(expected), "List") && U32.is_eq(left, 1), u =>
+      kc(Maybe<&2,U32>, j_pure_same_closed(book, kid(tel, 0), expected, 64), u =>
+        j_pure_closed_fields(book, kid(tel, 1), expected, 0, active, fuel), u => None{}), u =>
+      j_pure_closed_fields_next(book, kid(tel, 1), expected, U32.sub(left, 1), active,
+        j_pure_type_check(book, kid(tel, 0), active, fuel))), u => None{}))
+
+@unsafe
+def j_pure_closed_field(+ty: KTerm, +left: U32) -> KTerm:
+  kc(KTerm, String.eq(nm(ty), "List"), u => kc(KTerm, U32.is_eq(left, 2), u => kid(ty, 1), u => ty), u =>
+    kc(KTerm, U32.is_eq(left, 2), u => kid(ty, 2), u => kid(kid(ty, 3), 0)))
+
+@unsafe
+def j_pure_closed_fields_next(+book: List<&2,KDef>, +tel: KTerm, +expected: KTerm, +left: U32, +active: List<&2,String>, +r: Maybe<&2,U32>) -> Maybe<&2,U32>:
+  match r:
+    case Some{fuel}: j_pure_closed_fields(book, tel, expected, left, active, fuel)
+    case None{}: None{}
+
+@unsafe
+def j_pure_list_check(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+  +owner = lookup(book, "List")
+  j_pure_closed_fields_next(book, j_specialize(book, dt(lookup(dc(owner), "Con")), ks(ty)), ty, 2, active,
+    j_pure_closed_fields(book, j_specialize(book, dt(lookup(dc(owner), "Nil")), ks(ty)), ty, 0, active, fuel))
+
+@unsafe
+def j_pure_sigma_check(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+  +owner = lookup(book, "Sigma")
+  j_pure_closed_fields(book, j_specialize(book, dt(lookup(dc(owner), "Tuple")), ks(ty)), ty, 2, active, fuel)
+'''
+source={name:(root/f'selfhost/src/back/js/{name}.bend').read_text() for name in ['jpure','fold']}
+new=dict(source)
+a=source['jpure']
+x='''  kc(Maybe<&2,U32>, j_region_scalar(book, ty) || j_list_ground_type(book, ty), u => Some{fuel}, u =>
+    kc(Maybe<&2,U32>, String.eq(tg(ty), "ADT")'''
+y='''  kc(Maybe<&2,U32>, j_region_scalar(book, ty) || j_list_ground_type(book, ty), u => Some{fuel}, u =>
+    kc(Maybe<&2,U32>, j_pure_list_head(book, ty), u => j_pure_list_check(book, ty, active, fuel), u =>
+    kc(Maybe<&2,U32>, j_pure_sigma_head(book, ty), u => j_pure_sigma_check(book, ty, active, fuel), u =>
+    kc(Maybe<&2,U32>, String.eq(tg(ty), "ADT")'''
+assert a.count(x)==1
+b=a.replace(x,y)
+x='u => None{})), u => None{}))\n\n@unsafe\ndef j_pure_type_ctors'
+y='u => None{})), u => None{}))))\n\n@unsafe\ndef j_pure_type_ctors'
+assert b.count(x)==1
+new['jpure']=b.replace(x,y)+helpers
+x='''  kc(Bool, String.eq(nm(x), "List") || String.eq(nm(y), "List"),
+    u => j_list_ground_head(book, x) && j_list_ground_head(book, y), u => String.eq(nm(x), nm(y)))'''
+y='''  kc(Bool, String.eq(nm(x), "List") || String.eq(nm(y), "List") || String.eq(nm(x), "Sigma") || String.eq(nm(y), "Sigma"),
+    u => j_pure_same_closed(book, x, y, 64), u => String.eq(nm(x), nm(y)))'''
+assert new['fold'].count(x)==1
+new['fold']=new['fold'].replace(x,y)
+out=Path(sys.argv[1]);out.mkdir()
+patch=''
+ident={}
+for n in source:
+ (out/f'{n}.bend').write_text(new[n])
+ patch+=''.join(difflib.unified_diff(source[n].splitlines(True),new[n].splitlines(True),fromfile=f'a/selfhost/src/back/js/{n}.bend',tofile=f'b/selfhost/src/back/js/{n}.bend'))
+ ident[n]={'sourceSha256':hashlib.sha256(source[n].encode()).hexdigest(),'candidateSha256':hashlib.sha256(new[n].encode()).hexdigest(),'addedLines':len(new[n].splitlines())-len(source[n].splitlines())}
+(out/'candidate.patch').write_text(patch)
+(out/'identity.json').write_text(json.dumps({'kind':'unexecuted-closed-native-types-proposal','sources':ident,'noProductionEdits':True},indent=2)+'\n')

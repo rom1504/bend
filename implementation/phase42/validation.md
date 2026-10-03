@@ -84,3 +84,9 @@ timing screen may have interference. Subsequent changes were limited to code
 and docs; all four final adapter ASTs and template JSON pass a tiny CPU5 check.
 Node verification, hash sweeps and collector execution are now queued root
 work and must not overlap root timing. Old reports/raw remain unchanged.
+
+
+Readonly check-measurement-bindings-v1.py and final-measurement-v1.md now define the explicit final full45 measurement transition: frozen Phase42 baseline/Phase41 checked01 versus final recipe checked API, exact all45 emission attempt receipts, and36-request generated cost variants. AST checked only on CPU5; no adapter/hash/Node/cost/runtime execution occurred. Working extension v3 advances layout fixture to v5 and controllers actual-v2/fixture-v3 while preserving v2 and all exact contracts. Reviewed remains false pending focused admission and final frozen image.
+
+
+Working-v4 updates layout actual controller v3/catalog v5 and adds exact one-row/six-negative context admission probe v4. Optional-bst-v1 adds22-step/twelve-group provisional closure with checked07 comparator explicitly verified by structural derivation v2,216/24 BST and87/0 sequential oracles/aliases, three deep rows and exact boundary relation3*guards+7. Native strict-facts closure is pending and both drafts remain unreviewed. Static only; no root queue interference.

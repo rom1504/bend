@@ -1,0 +1,141 @@
+{
+  "kind": "phase42-map-native-headroom-result",
+  "complete": true,
+  "pass": true,
+  "compilerAdmission": false,
+  "raw": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-native-ablation01/preparation.json",
+      "sha256": "c77f32a9e6f75a1e4759c7d6b12ccb43176605380f8e8dafa8dfbf6be215c34e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-native-controls01/report.json",
+      "sha256": "6cfe1a3d0bf40a7064182009fddc3d95103bbd2ccaa7e2a769cf66405afab022"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-native-screen01/report.json",
+      "sha256": "ef98ae06ccd507dad2a29c3a02934d9845125b426ef3f7505e626989fba052a5"
+    }
+  ],
+  "modules": {
+    "baseline": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-native-ablation01/baseline.mjs",
+      "sha256": "b4009e7c90359808ec9bace8debc89f526a0d3ad1fa30c01c0b27103cb4123da"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/map-native-ablation01/candidate.mjs",
+      "sha256": "064a1919ff2c0907bdfe8976ace47738f3bd0f511adf0d5e87ac2da0bcd1458c"
+    }
+  },
+  "controlCounts": {
+    "complete-Unicode-comparison": 12,
+    "complete-map-content": 5,
+    "host-hook-fallback": 3,
+    "dependency-code-fallback": 5
+  },
+  "entries": {
+    "entries": 277,
+    "fallbacks": 8
+  },
+  "rounds": 3,
+  "warmupMs": 350,
+  "targetMs": 150,
+  "cases": [
+    {
+      "id": "coverage-map-churn-32",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 2930913555,
+        "warmupCalls": 3,
+        "warmupMs": 350,
+        "calibrationMs": 50,
+        "targetMs": 150,
+        "maxRepetitions": 1000000
+      },
+      "summary": {
+        "original": {
+          "median": 12.31912418181818,
+          "minimum": 12.24662563636363,
+          "maximum": 12.590418727272725,
+          "samples": [
+            12.590418727272725,
+            12.24662563636363,
+            12.31912418181818
+          ]
+        },
+        "candidate": {
+          "median": 12.252853499999995,
+          "minimum": 12.140910181818175,
+          "maximum": 12.575820083333335,
+          "samples": [
+            12.252853499999995,
+            12.575820083333335,
+            12.140910181818175
+          ]
+        },
+        "typescript": {
+          "median": 0.1412745757271816,
+          "minimum": 0.14059874446680076,
+          "maximum": 0.1533201772151899,
+          "samples": [
+            0.1533201772151899,
+            0.14059874446680076,
+            0.1412745757271816
+          ]
+        }
+      }
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          123
+        ],
+        "expected": 3714872484,
+        "warmupCalls": 3,
+        "warmupMs": 350,
+        "calibrationMs": 50,
+        "targetMs": 150,
+        "maxRepetitions": 1000000
+      },
+      "summary": {
+        "original": {
+          "median": 65.61897666666664,
+          "minimum": 65.35671766666667,
+          "maximum": 65.86592600000002,
+          "samples": [
+            65.35671766666667,
+            65.86592600000002,
+            65.61897666666664
+          ]
+        },
+        "candidate": {
+          "median": 63.61620966666669,
+          "minimum": 63.597347333333346,
+          "maximum": 65.50280099999998,
+          "samples": [
+            63.61620966666669,
+            63.597347333333346,
+            65.50280099999998
+          ]
+        },
+        "typescript": {
+          "median": 0.7867697413793108,
+          "minimum": 0.7859522057142859,
+          "maximum": 0.7891912804878048,
+          "samples": [
+            0.7859522057142859,
+            0.7867697413793108,
+            0.7891912804878048
+          ]
+        }
+      }
+    }
+  ]
+}

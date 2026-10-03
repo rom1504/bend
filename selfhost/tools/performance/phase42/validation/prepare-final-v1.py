@@ -8,7 +8,7 @@ def ident(f):
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--attempt',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--extension',type=Path,required=True);p.add_argument('--recipe',type=Path,required=True);a=p.parse_args()
  assert not a.out.exists() and not a.recipe.exists();extension=json.loads(a.extension.read_text());assert extension['reviewed'] is True and extension['selectedOwners']
- assert len(set(extension['selectedOwners']))==len(extension['selectedOwners']);assert {s['name'] for s in extension['requirements']}==set(extension['selectedOwners'])
+ assert len(set(extension['selectedOwners']))==len(extension['selectedOwners']);assert len(extension['requirements'])==len(extension['selectedOwners']);assert {s['name'] for s in extension['requirements']}==set(extension['selectedOwners'])
  parent=a.recipe.with_suffix('.base.json');assert not parent.exists()
  subprocess.run(['python3',str(HERE/'bind-recipe-v1.py'),'--attempt',str(a.attempt),'--out',str(a.out),'--recipe',str(parent)],check=True)
  recipe=json.loads(parent.read_text());b=recipe['bindings'];b.update(API=recipe['candidateBinding']['api']['file'],API_SHA=recipe['candidateBinding']['api']['sha256'],ATTEMPT_SHA=recipe['candidateBinding']['attempt']['sha256'])
@@ -28,6 +28,10 @@ def main():
   assert len(spec['assertions'])>=3 and spec['bindings'] and spec['execution']
   assert any(x['expected'] in [b['API_SHA'],b['ATTEMPT_SHA']] for x in spec['bindings']),'Every owner needs explicit selected-image identity binding'
   assert spec['report'].startswith(b['OUT']+'/') and spec['execution'].startswith(b['OUT']+'/')
+  for relation in spec.get('relations',[]):
+   assert set(relation)=={'target','lengthOf','multiply','add'}
+   assert relation['target'].startswith('/') and relation['lengthOf'].startswith('/')
+   assert type(relation['multiply'])==int and relation['multiply']>0 and type(relation['add'])==int and relation['add']>=0
  steps=[]
  for step in recipe['steps']:
   step=copy.deepcopy(step);name=step['name']

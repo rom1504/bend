@@ -31,6 +31,10 @@ def main():
    actual=pointer(data,key)
    if isinstance(wanted,dict) and set(wanted)=={'length'}:assert len(actual)==wanted['length'],(spec['name'],key)
    else:assert type(actual)==type(wanted) and actual==wanted,(spec['name'],key,actual,wanted)
+  for relation in spec.get('relations',[]):
+   assert set(relation)=={'target','lengthOf','multiply','add'}
+   actual=pointer(data,relation['target']);assert type(actual)==int
+   assert actual==len(pointer(data,relation['lengthOf']))*relation['multiply']+relation['add'],(spec['name'],'exact observation relation')
   for binding in spec['bindings']:
    doc=report if binding.get('document') is None else Path(binding['document']);d=read(doc);assert pointer(d,binding['pointer'])==binding['expected'],(spec['name'],'selected-image binding');inputs.append(ident(doc))
   e=read(spec['execution']);assert e['complete'] and e['returncode']==0 and not e.get('stoppedFor');verify(e['producer'])

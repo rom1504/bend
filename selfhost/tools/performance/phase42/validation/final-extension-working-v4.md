@@ -1,0 +1,5 @@
+# Working extension v4
+
+Preserves working-v3 and upgrades layout actual controller to actual-source-controls-v3.mjs, metadata source-validation-catalog-v5.json and incremental source-v5 patch SHA61444cb9acb2e8cbc9149149069f467d85619ff72c097568c6a333289ff804b4 on the retained v4 chain. Strict bsort constructor-array checks replace the erroneous assumption that producer-only bsort reads fields. Five global byte-identity, actual field/constructor/marker, complete/deep and hostile boundary contracts remain.
+
+Adds one flat-context group through admission-probe-v4 on the exact catalog tree source: one bench row, active true, one emitted flat marker, missing context inactive and the six exact ordered rejected reserved-empty/wrongkind/inactive/duplicate/staleroot/stalehelper contexts. Inputs bind candidate API and attempt SHA. It runs instrumented compiler analysis, not workload timing, under unchanged bounded120s2GiB CPU3 execution. Ten groups/seventeen steps; reviewed false. Root must establish these exact final-image counts before review.

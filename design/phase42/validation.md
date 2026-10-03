@@ -47,3 +47,8 @@ Phase41 actual tree and wrapper fixture, and the new Phase42 owners. Preserve
 selected performance/compiler-cost admission independently. Installation,
 verification and42 ordinary/relocated CLI checks precede a fresh postinstall
 auditor; the checked B1 derivative makes no new fixed-point claim.
+
+
+## Frozen measurement identity handoff
+
+A final measurement binding check must precede runtime/cost execution in the root serial queue. Runtime uses the already frozen Phase42 baseline (Phase41 checked01 plus the retained pinned TypeScript), the final 45-case acquisition and the selected recipe attempt/API/runtime/Base identities. The historical program runner validates bundle hashes but does not independently know the intended final attempt; a new readonly adapter supplies that missing cross-check. Compiler cost must use a fresh direct Phase41 checked01 acquisition, not the portable archive through the Phase39-only archive branch. The adapter checks the generated cost variants against both checked attempt manifests. Historical runners remain unchanged and own their execution guards. Measurement admission stays an explicit reviewed decision; identity checks cannot imply a performance pass.

@@ -148,7 +148,7 @@ def j_region_root_done(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> Stri
     "(()=>{" ++ j_region_declarations(book, j_region_helpers(s)) ++ "const $guards=[" ++ j_quote(dn(d)) ++ "," ++ j_region_names(j_region_helpers(s)) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){/* private scalar root */" ++ j_nat_loop_slots(da(d), 0) ++
     "if($entered&&" ++ j_fold_root_guard(book, d, j_region_helpers(s)) ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++ "&&localGuard($guards)){" ++
-    j_tree_scope(book, d, j_region_helpers(s), j_fusion_root_body(book, d, j_nat_loop_generic(book, Nil{}, j_region_term(s), dt(d), 0))) ++ "}" ++
+    j_flat_root_scope(book, d, s) ++ "}" ++
     j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()", u => "")
 
 @unsafe
@@ -478,9 +478,8 @@ def j_region_return(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: 
   kc(String, String.eq(tg(t), "Ann"), u => j_region_return(book, env, kid(t, 0), kid(t, 1)), u =>
   kc(String, String.eq(tg(t), "Let"), u => "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++
     j_nat_loop_names(ks(t), 0) ++ j_region_return(book, j_context(book, env, ks(t)), j_body(ks(t)), ty) ++ "}}", u =>
-  kc(String, String.eq(tg(t), "JUnpack"), u => "{const $unpack=$p" ++ U32.show(ix(t)) ++
-    kc(String, j_region_local_vector(book, kid(t, 1)), u => "", u => ".a") ++ ";{" ++
-    j_region_field_bindings(ix(t), 0, qt(t)) ++ j_region_return(book, env, kid(t, 0), ty) ++ "}}", u =>
+  kc(String, String.eq(tg(t), "JUnpack"), u => "{const $unpack=" ++ j_flat_unpack(book, kid(t, 1), "$p" ++ U32.show(ix(t))) ++ ";{" ++
+    j_flat_bindings(book, kid(t, 1), ix(t), 0, qt(t)) ++ j_region_return(book, env, kid(t, 0), ty) ++ "}}", u =>
   kc(String, String.eq(tg(t), "JInline") || String.eq(tg(t), "JInlineRead"), u => j_region_inline_return(book, env, t, ty), u =>
     "return " ++ j_expr(book, env, t, ty, False{}) ++ ";"))))
 

@@ -1,0 +1,37 @@
+{
+  "kind": "phase42-native-closed-proof-control-obligations",
+  "candidate": "closed-types-candidate04/candidate.patch",
+  "executed": false,
+  "normalEmissionExpectation": "Existing grounded U32 List selectors and ordinary algorithm domains unchanged; new exact native data proofs may admit only guarded private workers/root proofs.",
+  "positive": [
+    "BST and BFrame remain admitted",
+    "List<quantity2,BFrame> admitted with exact native Nil/Con quantity1 field ABI",
+    "independent Sigma<quantity1,quantity1,BST,unused-binder->List<BFrame>> admitted with exact native Tuple ABI",
+    "unused Sigma family binder alpha-renaming compares equal",
+    "small duplicate-child alias product compares equal within aggregate fuel",
+    "user recursive Node->List<Node> closes only through pending outer canonical Node constructor proof"
+  ],
+  "negative": [
+    "distinct Sigma first or second field instantiations compare unequal",
+    "List<BST> differs from List<BFrame>",
+    "List quantity0/1, Sigma erased or mismatched quantities refused",
+    "function, Array/U32 vector, dependent Sigma family, open Var and foreign/native observer field refused separately",
+    "single-constructor user records nesting each forbidden function/vector/dependent-Sigma field refused separately",
+    "constructor specialized first/second field type mismatch refused even if both fields otherwise closed",
+    "constructor field quantity, arity, native flag, template count or complete terminal specialization mismatch refused",
+    "removed fields or dependent family binder under nested annotations/type arguments refused",
+    "alias DAG20 aggregate equality fuel64 exhausts as None, without exponential subtree resets",
+    "shared type fuel512 exhaustion cannot hide a forbidden later constructor sibling",
+    "active closed user owner cannot discharge a forbidden sibling and no List/Sigma name-active shortcuts exist"
+  ],
+  "predicateProbe": "bst-plan-probe-v05.mjs CHECKED_ATTEMPT_DIR BST_SOURCE NEW_OUT",
+  "baselineABIProducer": "bst-plan-probe-v04.mjs",
+  "runtimePrerequisites": [
+    "actual scalar root proof opens plus down/up/inorder private-entry and resume counters",
+    "full pair, ordered frame path, complete tree tag/value/alias and U32 outputs against original saved JS",
+    "changed G helper code and Array/prototype protocol controls require zero private entries and generic parity",
+    "public external lazy/proxy ADT values never gain private ownership",
+    "zero/partial/exact fuel states, duplicates, both skew orientations and proof cleanup on throws"
+  ],
+  "scope": "Synthetic malformed-IR predicate controls are independent adversarial diagnostics, not claims that their malformed metadata is TS-valid. Matched source fixture must separately pass pinned TS and ordinary checked compiler acquisition. Root owns execution."
+}

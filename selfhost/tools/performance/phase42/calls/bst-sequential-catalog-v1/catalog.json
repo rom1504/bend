@@ -1,0 +1,93 @@
+{
+  "kind": "bend-program-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Phase42 exact unchanged BST and independent sequential fixture acquisition",
+  "status": "frozen",
+  "sets": {
+    "fast": [
+      "phase42-bst-matched-fixture",
+      "phase42-sequential-fixture"
+    ],
+    "core": [
+      "phase42-bst-matched-fixture",
+      "phase42-sequential-fixture"
+    ],
+    "broad": [
+      "phase42-bst-matched-fixture",
+      "phase42-sequential-fixture"
+    ],
+    "full": [
+      "phase42-bst-matched-fixture",
+      "phase42-sequential-fixture"
+    ]
+  },
+  "cases": [
+    {
+      "id": "phase42-bst-matched-fixture",
+      "family": "closed-structural",
+      "category": "semantic-fixture",
+      "partition": "development",
+      "description": "Exact BST native-container / independent sequential scalar graph",
+      "scope": "Semantic controls; no timing claim",
+      "source": {
+        "path": "bst-matched.bend",
+        "bytes": 3051,
+        "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "provenance": {
+          "kind": "exact-semantic-fixture-copy",
+          "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+          "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          1,
+          17
+        ],
+        "expected": 17
+      },
+      "oracle": "Independent complete integer/tree/zipper controls",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ]
+    },
+    {
+      "id": "phase42-sequential-fixture",
+      "family": "closed-structural",
+      "category": "semantic-fixture",
+      "partition": "development",
+      "description": "Exact BST native-container / independent sequential scalar graph",
+      "scope": "Semantic controls; no timing claim",
+      "source": {
+        "path": "sequential.bend",
+        "bytes": 2110,
+        "sha256": "32b46bec74944a9d80c7b027cc6dffcedef1470e2ad59b6aaf3588fe13bef9bd",
+        "provenance": {
+          "kind": "exact-semantic-fixture-copy",
+          "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/calls/fixture-sequential-v1.bend",
+          "sha256": "32b46bec74944a9d80c7b027cc6dffcedef1470e2ad59b6aaf3588fe13bef9bd"
+        }
+      },
+      "point": {
+        "exportName": "sequence.right",
+        "args": [
+          0,
+          11
+        ],
+        "expected": 11
+      },
+      "oracle": "Independent complete integer/tree/zipper controls",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ]
+    }
+  ]
+}

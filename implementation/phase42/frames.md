@@ -101,3 +101,21 @@ reference-scan exhaustion conservatively refuses replacement. Static read-only
 arity review covered all10 changed definitions/calls, and a search of every
 selfhost source Bend module found no external callers requiring another update.
 No compiler rerun or production edit was performed by this owner.
+
+BST probe02 established the actual pair quantities1/1 (nonerased) and List
+quantity2, superseding any2/2 Sigma assumption. Down prefix already passes,
+Tuple elimination blocks step/insert.fin, and up's mutually exclusive branches
+have single self-tail leaves. Build's computed scalar Let and inorder's sequential
+child calls remain independent structural admission obligations. The representation
+proposal explicitly retains them; it does not claim native layout admission alone
+reaches the manual whole-graph ceiling.
+
+Root/review accepted the simpler logically closed global JPure domain instead
+of a new owned mode/cache hierarchy: source shape proof is not public ownership,
+and every private call still requires the full scalar-root guard/proof. The
+candidate native emitter is `frames/bst/native-emitter-source.patch`, generated
+by `make-emitter-patch.py`, adding27lines over tree/finite sources. It covers
+component and finite/direct helper Tuple projection and closed List admission,
+retains runtime/native constructors and the U32 list algorithm selector, and
+passes a read-only12-occurrence signature/call arity check. Actual checked
+emission, complete values and negative controls remain root/calls-owned pending.

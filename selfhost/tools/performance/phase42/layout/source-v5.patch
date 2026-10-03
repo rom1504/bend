@@ -1,0 +1,24 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -711,7 +711,7 @@
+ def j_flat_root_select(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +normal: String, +graph: List<&2,KDef>, +locals: List<&2,KDef>) -> String:
+   kc(String, j_region_signature(book, dt(d), da(d)) && j_flat_local_audit(book, graph, locals, locals) &&
+     j_flat_guarded(graph, dn(d), j_region_helpers(s)) && j_flat_graph_audit(book, graph, locals, dn(d), graph) && j_flat_audit(book, graph, locals, "", j_flat_term(book, graph, j_region_term(s)), 8192), u =>
+-    j_flat_root_emit(j_flat_book(book, graph), d, graph, locals, normal, j_owned_term(j_flat_term(book, graph, j_region_term(s)))), u => normal)
++    j_flat_root_emit(j_flat_book(book, j_flat_source_root(book, graph, dn(d))), d, graph, locals, normal, j_owned_term(j_flat_term(book, graph, j_region_term(s)))), u => normal)
+ 
+ @unsafe
+ def j_flat_root_emit(+book: List<&2,KDef>, +d: KDef, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +normal: String, +body: KTerm) -> String:
+@@ -758,3 +758,12 @@
+   match xs:
+     case Nil{}: ""
+     case Con{h, rest}: "_" ++ U32.show(at) ++ ":" ++ kc(String, U32.is_lt(at, child), u => "$frame.before[" ++ U32.show(at) ++ "]", u => kc(String, U32.is_eq(at, child), u => "$value", u => j_expr(book, env, h, kid(wnf(book, tel), 0), False{}))) ++ "," ++ j_flat_linear_args(book, env, rest, j_app_type(wnf(book, tel), h), child, U32.inc(at))
++
++# The selected root carries checked annotations; the source index keeps its
++# canonical definition. After the complete normalized audit, record that exact
++# source root in the identity-only context; every other graph object stays exact.
++@unsafe
++def j_flat_source_root(+book: List<&2,KDef>, +graph: List<&2,KDef>, +root: String) -> List<&2,KDef>:
++  match graph:
++    case Nil{}: Nil{}
++    case Con{d, rest}: Con{kc(KDef, String.eq(dn(d), root), u => lookup(book, root), u => d), j_flat_source_root(book, rest, root)}

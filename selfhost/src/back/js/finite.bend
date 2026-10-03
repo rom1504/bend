@@ -43,7 +43,8 @@ def j_finite_arm(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTe
   +c = lookup(dc(owner), nm(t))
   String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) && String.eq(j_l_name(t), "") &&
     U32.is_eq(terms_len(ks(t)), 2) && String.eq(dk(c), "Ctr") &&
-    (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
+    (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
+      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
     j_finite_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), U32.inc(depth)) &&
     j_finite_prefix(book, env, kid(t, 1), ty, U32.inc(depth))
 
@@ -120,14 +121,22 @@ def j_finite_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KT
       kc(String, String.eq(tg(body), "Mat"), u =>
         j_finite_emit_match(book, env, body, head, arg, rest), u => "return bad('private finite sum invariant');"))
 
+# Full original JPure coverage plus exact closed native Sigma identity proves
+# the sole Tuple arm. Its owned pair fields are dense slots, not tagged .a.
 @unsafe
 def j_finite_emit_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
+  kc(String, j_pure_closed_sigma(book, wnf(book, kid(ty, 0))) && String.eq(nm(t), "Tuple"),
+    u => "{" ++ j_finite_emit(book, env, kid(t, 0), j_arm_type(book, ty, "Tuple"), j_native_tuple_fields(arg, 0, rest)) ++ "}",
+    u => j_finite_emit_match_tagged(book, env, t, ty, arg, rest))
+
+@unsafe
+def j_finite_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
   +input = wnf(book, kid(ty, 0))
   +c = lookup(dc(lookup(book, nm(input))), nm(t))
   "if(" ++ kc(String, j_primitive_type(book, input, "Bool"),
     u => "(" ++ arg ++ ")===" ++ kc(String, String.eq(nm(t), "True"), u => "true", u => "false"),
     u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t))) ++ "){" ++
-    j_finite_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_finite_fields(arg, 0, da(c), rest)) ++ "}else{" ++
+    j_finite_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_flat_fields(book, input, arg, 0, da(c), rest)) ++ "}else{" ++
     j_finite_emit(book, env, kid(t, 1), ty, Con{arg, rest}) ++ "}"
 
 # Generic residual functions can use these selectors without a new recursive
@@ -224,6 +233,7 @@ def j_direct_match(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +depth: U32) -> 
   +owner = lookup(book, nm(arg))
   String.eq(tg(ty), "All") &&
     (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
+      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) ||
       (Bool.not(db(owner)) && j_pure_type(book, arg))) &&
     j_direct_prefix(book, kid(t, 0), j_arm_type(book, ty, nm(t)), depth) &&
     j_direct_prefix(book, kid(t, 1), ty, depth)

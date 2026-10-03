@@ -143,3 +143,6 @@ completed19:01:21.686770–19:01:21.830766 UTC,0.2s/noNode. Root was notified to
 label any overlapping timing screen potentially interfered. Current adapters
 subsequently gained explicit manifest/API/runtime/Base/Node rehash and embedded
 new-report rehash; no further Node/hash execution occurred during root timing.
+
+
+The current selected mechanism draft is `final-extension-working-v3.json` (nine groups/sixteen steps; reviewed false). Layout fixture uses v5, actual controls v2 and fixture controls v3. See `final-measurement-v1.md` for exact full45 runtime/cost/profile root commands and `check-measurement-bindings-v1.py` for queued readonly final image checks. Optional BST/sequential groups remain unselected pending acceptance and exact successor baseline contracts.

@@ -1,0 +1,1104 @@
+{
+  "kind": "phase42-bst-probe-read-only-summary",
+  "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe02/report.json",
+  "reportSha256": "e6bbbd561f84f3fae8c848915dc3e4944baceff922300e00020366e54697060c",
+  "complete": true,
+  "checked": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe02/consumed-probe.mjs",
+      "sha256": "25a6f8c670b1c41076e924516fc338c397fa4062d3634549bc08f40e55a33530"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked07/equality/api.mjs",
+      "sha256": "37f2c045e07470016ecbcbcbe3656829b3fedf39e4aa5136fe6058b5d25ea4d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked07/snapshot/src/runtime.mjs",
+      "sha256": "51bb6046a8ac116865e2b1ed94b5587d1257f951aed536da77da3e91338eac49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+      "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f"
+    }
+  ],
+  "definitions": [
+    {
+      "name": "bst.pick",
+      "queries": [
+        {
+          "name": "signature",
+          "value": false
+        },
+        {
+          "name": "captureEligible",
+          "value": false
+        },
+        {
+          "name": "componentPrefix",
+          "value": true
+        },
+        {
+          "name": "selfRefs",
+          "value": 0
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ],
+      "sourceEdges": {
+        "names": [],
+        "complete": true
+      }
+    },
+    {
+      "name": "bst.step",
+      "queries": [
+        {
+          "name": "signature",
+          "value": false
+        },
+        {
+          "name": "captureEligible",
+          "value": false
+        },
+        {
+          "name": "componentPrefix",
+          "value": false
+        },
+        {
+          "name": "selfRefs",
+          "value": 0
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ],
+      "sourceEdges": {
+        "names": [
+          "U32",
+          "U32.is_lt",
+          "bst.pick"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "bst.down",
+      "queries": [
+        {
+          "name": "signature",
+          "value": false
+        },
+        {
+          "name": "captureEligible",
+          "value": false
+        },
+        {
+          "name": "componentPrefix",
+          "value": true
+        },
+        {
+          "name": "selfRefs",
+          "value": 1
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ],
+      "sourceEdges": {
+        "names": [
+          "bst.down",
+          "bst.step"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "bst.up",
+      "queries": [
+        {
+          "name": "signature",
+          "value": false
+        },
+        {
+          "name": "captureEligible",
+          "value": false
+        },
+        {
+          "name": "componentPrefix",
+          "value": false
+        },
+        {
+          "name": "selfRefs",
+          "value": 2
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ],
+      "sourceEdges": {
+        "names": [
+          "bst.up"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "insert.fin",
+      "queries": [
+        {
+          "name": "signature",
+          "value": false
+        },
+        {
+          "name": "captureEligible",
+          "value": false
+        },
+        {
+          "name": "componentPrefix",
+          "value": false
+        },
+        {
+          "name": "selfRefs",
+          "value": 0
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ],
+      "sourceEdges": {
+        "names": [
+          "bst.up"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "insert",
+      "queries": [
+        {
+          "name": "signature",
+          "value": true
+        },
+        {
+          "name": "captureEligible",
+          "value": true
+        },
+        {
+          "name": "componentPrefix",
+          "value": true
+        },
+        {
+          "name": "selfRefs",
+          "value": 0
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ],
+      "sourceEdges": {
+        "names": [
+          "bst.down",
+          "insert.fin"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "inorder",
+      "queries": [
+        {
+          "name": "signature",
+          "value": true
+        },
+        {
+          "name": "captureEligible",
+          "value": true
+        },
+        {
+          "name": "componentPrefix",
+          "value": false
+        },
+        {
+          "name": "selfRefs",
+          "value": 2
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": true,
+            "fuel": 32748,
+            "defs": [
+              "inorder"
+            ]
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ],
+      "sourceEdges": {
+        "names": [
+          "U32.add",
+          "U32.mul",
+          "inorder"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "p37.bst.insert",
+      "queries": [
+        {
+          "name": "signature",
+          "value": true
+        },
+        {
+          "name": "captureEligible",
+          "value": true
+        },
+        {
+          "name": "componentPrefix",
+          "value": true
+        },
+        {
+          "name": "selfRefs",
+          "value": 0
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ],
+      "sourceEdges": {
+        "names": [
+          "bst.down",
+          "insert.fin"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "p37.bst.build",
+      "queries": [
+        {
+          "name": "signature",
+          "value": true
+        },
+        {
+          "name": "captureEligible",
+          "value": true
+        },
+        {
+          "name": "componentPrefix",
+          "value": false
+        },
+        {
+          "name": "selfRefs",
+          "value": 1
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": [
+              "p37.bst.build"
+            ]
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ],
+      "sourceEdges": {
+        "names": [
+          "U32.add",
+          "U32.mod",
+          "U32.mul",
+          "p37.bst.build",
+          "p37.bst.insert"
+        ],
+        "complete": true
+      }
+    },
+    {
+      "name": "bench",
+      "queries": [
+        {
+          "name": "signature",
+          "value": true
+        },
+        {
+          "name": "captureEligible",
+          "value": true
+        },
+        {
+          "name": "componentPrefix",
+          "value": true
+        },
+        {
+          "name": "selfRefs",
+          "value": 0
+        },
+        {
+          "name": "pureGraph",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "componentPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        },
+        {
+          "name": "directPlan",
+          "value": {
+            "valid": false,
+            "fuel": 0,
+            "defs": []
+          }
+        }
+      ],
+      "sourceEdges": {
+        "names": [
+          "Nat.add",
+          "U32.to_nat",
+          "inorder",
+          "p37.bst.build"
+        ],
+        "complete": true
+      }
+    }
+  ],
+  "controls": [
+    {
+      "label": "closedBST",
+      "shape": {
+        "tag": "ADT",
+        "name": "BST",
+        "id": 0,
+        "quantity": 0,
+        "removed": [],
+        "kids": []
+      },
+      "query": {
+        "name": "pureType",
+        "value": true
+      }
+    },
+    {
+      "label": "closedFrame",
+      "shape": {
+        "tag": "ADT",
+        "name": "BFrame",
+        "id": 0,
+        "quantity": 0,
+        "removed": [],
+        "kids": []
+      },
+      "query": {
+        "name": "pureType",
+        "value": true
+      }
+    },
+    {
+      "label": "closedListFrame",
+      "shape": {
+        "tag": "ADT",
+        "name": "List",
+        "id": 0,
+        "quantity": 0,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 2,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "ADT",
+            "name": "BFrame",
+            "id": 0,
+            "quantity": 0,
+            "removed": [],
+            "kids": []
+          }
+        ]
+      },
+      "query": {
+        "name": "pureType",
+        "value": false
+      }
+    },
+    {
+      "label": "closedSigma",
+      "shape": {
+        "tag": "ADT",
+        "name": "Sigma",
+        "id": 0,
+        "quantity": 1,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Ref",
+            "name": "BST",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Lam",
+            "name": "_",
+            "id": 124,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "ADT",
+                "name": "List",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "kids": [
+                  {
+                    "tag": "Qua",
+                    "name": "",
+                    "id": 0,
+                    "quantity": 2,
+                    "removed": [],
+                    "kids": []
+                  },
+                  {
+                    "tag": "Ref",
+                    "name": "BFrame",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "query": {
+        "name": "pureType",
+        "value": false
+      }
+    },
+    {
+      "label": "listFunction",
+      "shape": {
+        "tag": "ADT",
+        "name": "List",
+        "id": 0,
+        "quantity": 0,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 2,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "All",
+            "name": "",
+            "id": 99001,
+            "quantity": 2,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "ADT",
+                "name": "U32",
+                "id": 0,
+                "quantity": 0,
+                "removed": [],
+                "kids": []
+              },
+              {
+                "tag": "ADT",
+                "name": "U32",
+                "id": 0,
+                "quantity": 0,
+                "removed": [],
+                "kids": []
+              }
+            ]
+          }
+        ]
+      },
+      "query": {
+        "name": "pureType",
+        "value": false
+      }
+    },
+    {
+      "label": "listVector",
+      "shape": {
+        "tag": "ADT",
+        "name": "List",
+        "id": 0,
+        "quantity": 0,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 2,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "ADT",
+            "name": "Array",
+            "id": 0,
+            "quantity": 0,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "ADT",
+                "name": "U32",
+                "id": 0,
+                "quantity": 0,
+                "removed": [],
+                "kids": []
+              }
+            ]
+          }
+        ]
+      },
+      "query": {
+        "name": "pureType",
+        "value": false
+      }
+    },
+    {
+      "label": "dependentSigma",
+      "shape": {
+        "tag": "ADT",
+        "name": "Sigma",
+        "id": 0,
+        "quantity": 1,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Ref",
+            "name": "BST",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Lam",
+            "name": "",
+            "id": 99002,
+            "quantity": 2,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "Var",
+                "name": "",
+                "id": 99002,
+                "quantity": 0,
+                "removed": [],
+                "kids": []
+              }
+            ]
+          }
+        ]
+      },
+      "query": {
+        "name": "pureType",
+        "value": false
+      }
+    },
+    {
+      "label": "nestedFunction",
+      "shape": {
+        "tag": "All",
+        "name": "",
+        "id": 99001,
+        "quantity": 2,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "ADT",
+            "name": "U32",
+            "id": 0,
+            "quantity": 0,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "ADT",
+            "name": "U32",
+            "id": 0,
+            "quantity": 0,
+            "removed": [],
+            "kids": []
+          }
+        ]
+      },
+      "query": {
+        "name": "pureType",
+        "value": false
+      }
+    },
+    {
+      "label": "nestedVector",
+      "shape": {
+        "tag": "ADT",
+        "name": "Array",
+        "id": 0,
+        "quantity": 0,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "ADT",
+            "name": "U32",
+            "id": 0,
+            "quantity": 0,
+            "removed": [],
+            "kids": []
+          }
+        ]
+      },
+      "query": {
+        "name": "pureType",
+        "value": false
+      }
+    },
+    {
+      "label": "nestedDependentSigma",
+      "shape": {
+        "tag": "ADT",
+        "name": "Sigma",
+        "id": 0,
+        "quantity": 1,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Ref",
+            "name": "BST",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Lam",
+            "name": "",
+            "id": 99002,
+            "quantity": 2,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "Var",
+                "name": "",
+                "id": 99002,
+                "quantity": 0,
+                "removed": [],
+                "kids": []
+              }
+            ]
+          }
+        ]
+      },
+      "query": {
+        "name": "pureType",
+        "value": false
+      }
+    },
+    {
+      "label": "sameType-mismatched-Sigma-current-quarantine",
+      "left": {
+        "tag": "ADT",
+        "name": "Sigma",
+        "id": 0,
+        "quantity": 1,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Ref",
+            "name": "BST",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Lam",
+            "name": "_",
+            "id": 124,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "ADT",
+                "name": "List",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "kids": [
+                  {
+                    "tag": "Qua",
+                    "name": "",
+                    "id": 0,
+                    "quantity": 2,
+                    "removed": [],
+                    "kids": []
+                  },
+                  {
+                    "tag": "Ref",
+                    "name": "BFrame",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "right": {
+        "tag": "ADT",
+        "name": "Sigma",
+        "id": 0,
+        "quantity": 1,
+        "removed": [],
+        "kids": [
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Qua",
+            "name": "",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "ADT",
+            "name": "BFrame",
+            "id": 0,
+            "quantity": 0,
+            "removed": [],
+            "kids": []
+          },
+          {
+            "tag": "Lam",
+            "name": "_",
+            "id": 124,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "ADT",
+                "name": "List",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "kids": [
+                  {
+                    "tag": "Qua",
+                    "name": "",
+                    "id": 0,
+                    "quantity": 2,
+                    "removed": [],
+                    "kids": []
+                  },
+                  {
+                    "tag": "Ref",
+                    "name": "BFrame",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "query": {
+        "name": "sameType",
+        "value": true
+      }
+    },
+    {
+      "label": "sameType-mismatched-List",
+      "query": {
+        "name": "sameType",
+        "value": false
+      }
+    }
+  ],
+  "scope": "Original API predicates only. New private proof not implemented."
+}

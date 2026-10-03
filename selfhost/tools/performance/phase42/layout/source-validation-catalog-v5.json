@@ -1,0 +1,98 @@
+{
+  "kind": "phase42-flat-source-validation-catalog",
+  "version": 5,
+  "checked": false,
+  "reviewed": false,
+  "identities": {
+    "source-v4.patch": "852d73b02ce0b0e4055e46e9bb3f57188730661ec87a8b5b2ed6d9e1a1ccd233",
+    "source-v4.json": "56b6340eb7acaa9e5e106ea165988ed8475c15c451e616e510ff07e284e8e21b",
+    "flat-support-v4.bend": "e4e60c700f9ed84f046a8177a696ac3dad2f6f820e92e77076c05c5998a45134",
+    "fixture-flat-v3.bend": "54a40ac16ed7e565dda8d76be1e76f970e6b08a1fcf0db24573dd60ec4b5b61d",
+    "fixture-controls-v1.mjs": "0d1090a4adc158e457c9e54d36f62e4e032d6b36384ce5060bd505490ced4177",
+    "actual-source-controls-v1.mjs": "b372a7457c7b8f9220f7385ee1acf1067a2ec5cb6b6eca66d0a86386e2a85d24",
+    "fixture-flat-v4.bend": "75837e44933bbbd25e8d75021cd8ce041cd2e1a6db78870ccbe03c0fa9656360",
+    "fixture-controls-v2.mjs": "0c2532298ed8219613540753ce506141206b83be3605aa17a4fcdc35be3b1785",
+    "admission-probe-v1.mjs": "136df773cdb323ca5d09f469650b16acebc2302385c79ee94e132460c652fed8",
+    "fixture-flat-v5.bend": "be49141a910abe7cde174b2dccbb9a902052f77766351c84b6be4d288dbc012f",
+    "fixture-controls-v3.mjs": "90e7d7cdfce4e2eeb1a0cc8fa3d824ed96a93d9610ed356788d0aecd225d760a",
+    "admission-probe-v2.mjs": "58c364aea1b4bce1aca9296db8a831ff27445cbacbff9dbe5aba6359adb19ed6",
+    "actual-source-controls-v2.mjs": "3995f7e2848d4601e96e11617824a9790d04fa34dd1a3a792de6a3427636c084",
+    "source-v5.patch": "61444cb9acb2e8cbc9149149069f467d85619ff72c097568c6a333289ff804b4",
+    "source-v5.json": "441639ef5aaa29e079ab4eacd9aa680d8aceb37b30202456dd79fc6300154293",
+    "flat-support-v5.bend": "22264cfa6ffdbba60d06e0b896f8d34c34981333a6334da4907520fbb8e1d9e3",
+    "admission-probe-v3.mjs": "5f1267671b0425d8de7e78c10f659a97fc686f1c445b45adddc5eaa63f75989e",
+    "actual-source-controls-v3.mjs": "91c482402a0160820b0f397ee2afc5d89cfaae263ab7c22f3f9aedddd6ea8710",
+    "admission-probe-v4.mjs": "668f30429f7d025aa0a50c3d87b79511129c5d0a05db888b769775e5f60f62fd"
+  },
+  "sourcePatch": {
+    "file": "source-v4.patch",
+    "addedLines": 208,
+    "removedLines": 9,
+    "normalContextFallback": true,
+    "checked08Build": "pass",
+    "checked08Admission": "all five audit gates pass; only annotated root vscanonical source context identity false; v5corrects",
+    "successor": {
+      "file": "source-v5.patch",
+      "incrementalOn": "source-v4 already applied checked08",
+      "addedLines": 10,
+      "removedLines": 1,
+      "correction": "Identity-only context replaces annotated selected root with exact current canonical source; full normalized graph audit/guard/body/clone unchanged",
+      "review": "staticreview no blocker undercheckedselectedroot annotationcontract"
+    },
+    "checked09Admission": "PASS marker1 and realdirectfields; controls pending"
+  },
+  "fixture": {
+    "file": "fixture-flat-v5.bend",
+    "diagnosis": "PASS pinned TS parser/checker: selfhost/build/phase42/flat-fixture-ts-check03.json",
+    "positiveRoots": [
+      "bench",
+      "stat_bench"
+    ],
+    "negativeRoots": [
+      "generic_observer_root",
+      "data_result_root",
+      "data_input_root",
+      "partial_callback_root",
+      "string_crossing_root",
+      "list_crossing_root",
+      "vector_crossing_root",
+      "mutual_backedge_root"
+    ],
+    "expectedMain": 37035,
+    "baselineAttempt": "checked07 or identical pre-flat frozen source attempt",
+    "diagnosisChecked": true
+  },
+  "commands": {
+    "diagnose": "NODE selfhost/tools/performance/phase42/calls/diagnose.mjs PINNED_UPSTREAM selfhost/tools/performance/phase42/layout/fixture-flat-v5.bend NEW_REPORT.json",
+    "actual": "NODE selfhost/tools/performance/phase42/layout/actual-source-controls-v3.mjs BASE_TREE_MODULE CAND_TREE_MODULE CAND_ATTEMPT NEW_OUT_DIR",
+    "fixture": "NODE selfhost/tools/performance/phase42/layout/fixture-controls-v3.mjs BASE_FIXTURE_MODULE CAND_FIXTURE_MODULE CAND_ATTEMPT NEW_OUT_DIR",
+    "admission": "NODE selfhost/tools/performance/phase42/layout/admission-probe-v4.mjs CHECKED08_ATTEMPT TREE_FIXTURE NEW_OUT_DIR"
+  },
+  "actualContract": {
+    "kind": "phase42-actual-flat-source-controls",
+    "complete": true,
+    "checked": true,
+    "completeValues": 20,
+    "ownedOracles": 98,
+    "boundaries": 68,
+    "deepCases": 2,
+    "deepDepth": 30000,
+    "originalFlatBlocks": 0,
+    "candidateFlatBlocks": 1,
+    "privateWorkers": 5,
+    "guardNames": 15,
+    "baselineModule": "selfhost/build/phase42/checked07-preparation/modules/tree-bitonic.mjs",
+    "baselineRestriction": "Exact same global structural worker source bytes and fixture input hash; only root-owned lexical clone graph differs."
+  },
+  "fixtureContract": {
+    "kind": "phase42-flat-fixture-controls",
+    "complete": true,
+    "checked": true,
+    "oracles": 40,
+    "boundaries": "4*bench.guardNames.length+2 (not yet observed)",
+    "positiveCandidateFlat": true,
+    "negativeCandidateFlat": false,
+    "allBaselineFlat": false
+  },
+  "execution": "Pinned Node syntax only; root owns all checked diagnoses, builds, controls, timing and promotion."
+}

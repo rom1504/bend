@@ -72,7 +72,7 @@ recursion shape and is outside the first type-proof experiment.
 4. Thread the private domain to signatures, constructor proof, and exact type
    equality before extending the native match cases. Preserve original ordered
    graph discovery, fuel, failures, wrapper selection and graph coverage guards.
-   Start with down/build; add up only after its List prefix can be proved.
+   Start with down; build may remain generic because its computed alias is separately refused; add up only after its List prefix can be proved.
 5. Keep original tuples/tagged values, field thunks, reconstruction order,
    generic residual helpers and existing private component runtime. No new
    layout, native host operation, mutual recursion IR or public fast API.
@@ -139,3 +139,10 @@ String SCC lowering for initial feasibility because it has no String host-hook
 obstacle and needs no mutual SCC machinery. It has moderate proof/implementation
 risk, a cheap original-predicate probe, and an unmeasured partial runtime payoff.
 No claim covers the full historical BST gap or aggregate parity.
+
+Root probe02 is now complete on checked07. Its original predicates confirm the
+container/type and inorder-prefix findings. Build's prefix also fails on its
+computed scalar alias even though its signature/capture pass; this is a new
+independent obstacle, so the earlier prospective build-worker claim is
+conditional on an additional alias proof. See bst-probe02-summary.json and the
+matched-set design for exact observations and retained activation limitations.

@@ -330,3 +330,95 @@ blocker found by static review; checked exact emission, complete values and
 hostile boundaries remain mandatory. The inactive-context fallback recommendation
 is limited to preserving uncached internal backend behavior, not a claim that
 public program/library routes lack JSPlanContext.
+
+## Global closed-type extension concept audit
+
+A global JPure extension to exactly nondependent native Sigma and native
+List of closed ADTs can reuse the existing ownership invariant. It does not
+require a second runtime proof family: generated values originate in canonical
+scalar inputs, the original entire source graph is checked, the unchanged
+host/dependency gate opens the proof, and the public component wrapper demands
+active proof plus its complete graph coverage. In the finite scalar-root route,
+`force` explicitly runs inside the proof try/finally, including build field
+thunks and global component dispatch. Returning a scalar cannot retain an
+unforced data closure. Ordinary data callers have no proof and retain fallback.
+
+This is conditional on coordinated source changes, not approval of a patch.
+Current `j_region_same_type` compares non-List types solely by owner spelling;
+it would identify differently specialized Sigma payloads. Current List identity
+only accepts the U32 grounded selector. Full normalized parameter and quantity
+identity must precede new type admission. Nondependency must reject use of the
+Sigma first-field binder, and fuel must be shared through both fields and all
+constructor siblings. The active owner-name shortcut remains appropriate only
+for existing zero-parameter custom ADTs; native parameterized containers must
+not gain a name-only recursive success shortcut.
+
+The independent consumers keep additional gates. Structural fold and producer
+admission still requires nonnative zero-parameter owners and U32/self fields.
+Flat lexical cloning recursively rejects parameterized native container fields.
+Finite and direct helper match gates currently refuse native Sigma and nonground
+List even when the surrounding signature could become pure. Retaining those
+refusals is sound; widening them requires updating `j_finite_emit_match`, also
+used for direct helper emission, alongside the component matcher. A Tuple is a
+native array, not a tagged `.a` record. List ground algorithm selection must stay
+unchanged. The component origin proof can descend through native container
+fields only after exact typed matching confirms the recursive first argument's
+owner and parameter identity. No compiler or workload execution was performed
+for this concept audit.
+
+Matched native-container candidate02 static review found an aggregate-work
+blocker in `j_pure_same_closed`. Its fuel64 is decremented by depth, then reused
+independently for both Sigma fields. A compact closed alias family T0=U32 and
+Tn=Sigma<1,1,Tn-1,(_)=>Tn-1> has small raw Ref bodies but normalized equality
+expands both branches at each level. The raw family shape256 test cannot bound
+this alias expansion. Exact-field equality occurs before shared512 type-proof
+descent, so that separate type budget cannot bound the expensive comparison.
+Requested one shared equality budget across siblings, or an equivalent single
+bounded worklist; notified root and facts owner before acquisition.
+
+The accompanying 27-line native emitter patch covers both component workers and
+the shared finite/direct backend. Native Tuple binds dense [0]/[1] slots in
+original order and drops only the impossible alternate arm of the fully proved
+sole constructor; native List retains tagged .a slots. Candidate02 enforces
+List quantity2, Sigma quantities1/1 with an unused family binder, canonical
+constructor metadata, specialized field quantity1, and exact terminal type.
+Sequential candidate04 retains the prior proper-child, exactly-two-self-call,
+inert scalar-context constraints and restores parent arguments through a typed
+unique result slot before popping its continuation. No further semantic blocker
+was found in those matched patches by static review; no execution was performed.
+
+Closed-types candidate03 resolves the equality blocker: `j_pure_same_closed`
+wraps Maybe-returning `j_pure_same_check`; first Sigma field passes its remaining
+fuel through `j_pure_same_next` to the second field. List descent consumes that
+same budget; exhaustion is None. No sibling receives the original parent budget.
+The alias-DAG refusal, unequal sibling, and small positive controls remain root
+execution obligations, but no acquisition blocker remains in this correction.
+
+Layout source-v5 fixes a confirmed identity-only mismatch: all five flat audit
+gates were true and all14 helpers exact, while the annotated selected bench root
+differed from the canonical source index. Only after those gates, v5 refreshes
+the root entry in the metadata graph from canonical lookup. Full graph guards,
+audits, clone bodies and normalized root emission remain unchanged. This is
+sound under the existing compiler contract that the selected root is the current
+request's annotated canonical root; the refresh itself does not establish
+semantic equivalence for an arbitrary forged replacement root. Complete exact
+helper coverage remains mandatory, and stale helper/context refusal must remain.
+No workload or compiler execution was performed by this reviewer.
+
+Candidate04 Sigma kind correction is limited to exact Typ[Qua1] or
+Typ[Min(Qua1,Qua1)], with empty quantity leaves and exact child counts. It
+matches the reported native specialization without broadening quantities or
+dependency; candidate03 shared equality budget remains unchanged.
+
+The proposed scalar-root generic proof bridge fits the existing architecture.
+The current priority is tree worker, region root, U32 worker, then finite root;
+region/flat/fusion successes therefore remain earlier selections. Existing
+`j_finite_root` already verifies scalar input/result, exact entry permission,
+null prior proof, host guard before canonical inputs, full original JPure graph
+and full dependency guard, and forces the original generic body inside proof
+try/finally. Its useful-work predicate can recognize an independently valid
+structural component from that same graph rather than requiring local data IR
+admission. This does not require widening fold/list selectors or private local
+representation checks. Actual controls must prove worker activation, public data
+fallback, complete mutated-dependency refusal, and proof cleanup/reentry; opening
+a proof with no measured useful component is not an activation witness.

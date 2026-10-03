@@ -10,7 +10,7 @@ helpers='''
 # scalar context. Both calls have independently proved proper-child origins.
 @unsafe
 def j_sequence_leaf(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: KDef) -> Bool:
-  j_component_self(env, t, d) && U32.is_eq(j_component_refs([t], dn(d), 1024, 0), 2) &&
+  j_component_self(env, t, d) &&
     j_sequence_args(book, env, ks(j_call_spine(j_strip(t), Nil{})), d, 32)
 
 @unsafe
@@ -70,7 +70,7 @@ def j_sequence_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d:
 '''
 # Existing prefix, pure closure, graph/descriptor guards and coverage stay intact.
 x='u => j_linear_leaf(book, env, t, d)))'
-y='u => j_sequence_leaf(book, env, t, d) || j_linear_leaf(book, env, t, d)))'
+y='u => kc(Bool, U32.is_eq(calls, 2), u => j_sequence_leaf(book, env, t, d), u => j_linear_leaf(book, env, t, d))))'
 assert a.count(x)==1
 b=a.replace(x,y)
 x='''    kc(String, U32.is_eq(phase, 2), u =>

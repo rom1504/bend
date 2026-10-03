@@ -179,3 +179,62 @@ owner is preparing a narrowly scoped worker rewrite that preserves original
 App shape whenever its original subtree references the structural owner.
 This is a correctness fix, not a new optimization; current successful benchmark
 and leaf-control results do not establish complete graph correctness.
+
+Root's isolated [stack screen](../../selfhost/build/phase42/stack-screen01/report.md)
+rejects prune/lazy/combined source promotion: tree8 original.7738ms versus
+lazy.7316/combined.7272, tree6 .12183 versus .11744/.11735, but tree9 original
+1.7628 versus prune1.8399/lazy1.8913/combined1.8897. Largest-point regression
+(~7–10% versus noise) defeats consistent gain. The three saved-JS hypotheses
+remain diagnostic artifacts only. Root audited that the earlier 3s validation
+job ended before the residual screen; a separate0.2s mapping job is noted.
+
+Root reports checked07 owner-shape fix build passed43.3s and fresh fixed-fusion
+controls passed116/79 plus255 independent arithmetic checks; renamed calls
+fixture v3 passed pinnedTS diagnosis and actual controls75/16. These are root
+observations, not executions performed by this owner. The held general
+[sequential review](../../selfhost/tools/performance/phase42/calls/sequential-review.md)
+and [independent fixture](../../selfhost/tools/performance/phase42/calls/fixture-sequential-v1.bend)
+cover closed scalar entry without claiming original BST graph admission.
+
+The [BST/sequential catalog v1](../../selfhost/tools/performance/phase42/calls/bst-sequential-catalog-v1/catalog.json)
+copies the original BST source exactly and the independent sequential fixture.
+Root reports the independent sequential fixture pinnedTS check passes.
+[structural derive v2](../../selfhost/tools/performance/phase42/calls/structural-derive-v2.mjs)
+binds explicit baseline/candidate checked attempt identities; root's baseline
+is checked07, a mechanism comparator rather than the Phase41 reference. Exact
+original/TS/candidate clean files remain byte copies; only diagnostics add
+actual worker/helper/phase2 counters and guarded routes through source workers.
+[controls v2](../../selfhost/tools/performance/phase42/calls/structural-controls-v2.mjs)
+and the independent iterative BigInt/tree/zipper oracles are syntax checked only.
+No target/compiler execution was performed by this owner.
+
+Required bounded contracts are216 BST oracles/24 pointer aliases or87 sequential
+oracles/0 aliases, each3*fullGuardCount+7 refusals and3 deep records. Complete
+BST trees, partial-fuel pairs, ordered zipper frames, reconstruction, duplicates
+and wrapped inorder results are independently compared. Native aliases include
+chosen/other child and path-tail identity plus down(0)/up(Nil) identity. Ordinary
+scalar roots must enter down/up/inorder or all4 sequential folds, with real
+phase2 resumes. Public external ADT calls, full dependency binding/code/getter
+mutations, Array protocol changes and a changed producer supplying proxy fields
+must enter zero private workers. Proxy demand traces match exactly. Deep30000
+BST down/up/right-inorder compares complete results across all roles; left-inner
+continuation candidate success and original/TS outcomes are recorded, with
+changed-inorder deep fallback outcome parity. This distinction avoids claiming
+a generic baseline stack guarantee before execution establishes it.
+
+Checked10 BST derivation correctly refuses before execution: actual emitted bench
+and all5 sequential scalar roots lack $guards/private scalar-root admission,
+despite down/up/inorder and sequential worker declarations. The local region
+argument grammar still rejects3-field recursive ADTs (its fold-layout selector
+admits at most2 ctor fields). Native JPure proof success alone does not establish
+ordinary root entry; no assertion was relaxed.
+
+The [finite component policy patch](../../selfhost/tools/performance/phase42/calls/finite-component-root.patch)
+adds8 lines to the existing finite useful-work gate: a non-scalar full-graph
+callee with an original self reference and a separately admitted canonical
+component plan qualifies. Existing finite-root machinery already performs scalar
+header checks, complete original JPure graph proof, exact entry/null-proof/host/
+input/full-dependency guards, force of the original generic body inside try/
+finally and public fallback. Region/u32/flat/fusion priority remains unchanged;
+local type/layout selectors are untouched. No new proof API or recursive IR is
+introduced. Patch review/build/runtime validation remain root-owned.

@@ -108,3 +108,47 @@ uses existing types and unary frames for the dependent inorder recursion shape.
 It cannot enter the unchanged BST scalar root while its zipper's Sigma/List
 proof fails, so its 63-line candidate02 patch is review-only pending activation
 and headroom evidence. It is not claimed as a BST benchmark improvement.
+
+[Matched-set design](bst-matched-set-design.md) now incorporates root's actual
+checked07 probe02: inorder pure graph valid/prefix refused; whole BST scalar
+root proof refused; Sigma/List-frame type refusal; mismatched Sigma name-only
+equality hazard; and an additional build computed-alias prefix refusal. The
+strict owned mode/type-equality/emitter estimate is 320–520 LOC, not a whitelist.
+[Probe summary](bst-probe02-summary.json) hashes the unchanged root report.
+
+[Independent minimal-domain review](bst-minimal-domain-review.md) supersedes the
+initial recommendation to thread a new owned proof/cache mode. The existing
+scalar-root/fullgraph ownership boundary appears sufficient for a globally
+valid exact closed Sigma/List source proof; public ownership remains unchanged.
+Estimated matched set falls to 250–360 LOC. This is conditional review, pending
+new-predicate negatives, actual private entry and complete-value evidence.
+
+## Executed Map falsifier: hold native String work
+
+Root completed `selfhost/build/phase42/map-native-controls01` and the independent
+three-rotation short screen `map-native-screen01`. The eight saved-JS edge
+replacements passed 12 complete Unicode tuple/error comparisons, five complete
+ordered Map-content cases, three host-hook fallbacks and five dependency-code
+fallbacks. Clean native entries numbered277; fallback entries8; each mutation
+control required zero native entries. This is saved-JS evidence, not compiler
+admission. [Read-only result summary](map-native-result01.json) hashes all raw
+reports and both modules.
+
+| Case | Original ms | Ablation ms | Pinned TS ms |
+| --- | ---: | ---: | ---: |
+| Map32 | 12.3191 | 12.2529 | 0.141275 |
+| Map128 | 65.6190 | 63.6162 | 0.786770 |
+
+The short-screen median reduction is only0.54%/3.05%, with substantial remaining
+gaps. This falsifies String-comparison replacement as the proposed high-payoff
+Map mechanism in these cases; native String production work is not justified.
+No String purity admission, SCC lowering or broad native comparison work follows
+from this experiment. Retain the prior String host counterexample and the
+source-SCC feasibility analysis as negative boundary evidence. No aggregate
+parity is claimed.
+
+Exact baseline/candidate module hashes are
+`b4009e7c90359808ec9bace8debc89f526a0d3ad1fa30c01c0b27103cb4123da` /
+`064a1919ff2c0907bdfe8976ace47738f3bd0f511adf0d5e87ac2da0bcd1458c`.
+The control report hash is
+`6cfe1a3d0bf40a7064182009fddc3d95103bbd2ccaa7e2a769cf66405afab022`.

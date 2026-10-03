@@ -1,0 +1,339 @@
+{
+  "kind": "phase42-bst-native-ABI-summary",
+  "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe04/report.json",
+  "reportSha256": "33c8ab5a656c3a494ec32cd7c4d37ff65fd2d0e21ff0de133a5a7b7515adeb76",
+  "complete": true,
+  "checked": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/bst-plan-probe04/consumed-probe.mjs",
+      "sha256": "66d84f0cfab9d585d6f234e00fee485b6e2819f5cf4f91fa985e6cf5182472ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked07/equality/api.mjs",
+      "sha256": "37f2c045e07470016ecbcbcbe3656829b3fedf39e4aa5136fe6058b5d25ea4d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked07/snapshot/src/runtime.mjs",
+      "sha256": "51bb6046a8ac116865e2b1ed94b5587d1257f951aed536da77da3e91338eac49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/bst.bend",
+      "sha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f"
+    }
+  ],
+  "nativeABI": [
+    {
+      "label": "nativeABI-Sigma",
+      "owner": {
+        "arity": 4,
+        "templates": 0,
+        "native": true,
+        "kind": {
+          "tag": "Typ",
+          "name": "",
+          "id": 0,
+          "quantity": 0,
+          "removed": [],
+          "kids": [
+            {
+              "tag": "Min",
+              "name": "",
+              "id": 0,
+              "quantity": 1,
+              "removed": [],
+              "kids": [
+                {
+                  "tag": "Qua",
+                  "name": "",
+                  "id": 0,
+                  "quantity": 1,
+                  "removed": [],
+                  "kids": []
+                },
+                {
+                  "tag": "Qua",
+                  "name": "",
+                  "id": 0,
+                  "quantity": 1,
+                  "removed": [],
+                  "kids": []
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "ctors": [
+        {
+          "name": "Tuple",
+          "arity": 2,
+          "templates": 0,
+          "native": true,
+          "specialized": {
+            "tag": "All",
+            "name": "fst",
+            "id": 25,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "Ref",
+                "name": "BST",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "kids": []
+              },
+              {
+                "tag": "All",
+                "name": "snd",
+                "id": 26,
+                "quantity": 1,
+                "removed": [],
+                "kids": [
+                  {
+                    "tag": "ADT",
+                    "name": "List",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": [
+                      {
+                        "tag": "Qua",
+                        "name": "",
+                        "id": 0,
+                        "quantity": 2,
+                        "removed": [],
+                        "kids": []
+                      },
+                      {
+                        "tag": "Ref",
+                        "name": "BFrame",
+                        "id": 0,
+                        "quantity": 1,
+                        "removed": [],
+                        "kids": []
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "ADT",
+                    "name": "Sigma",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": [
+                      {
+                        "tag": "Qua",
+                        "name": "",
+                        "id": 0,
+                        "quantity": 1,
+                        "removed": [],
+                        "kids": []
+                      },
+                      {
+                        "tag": "Qua",
+                        "name": "",
+                        "id": 0,
+                        "quantity": 1,
+                        "removed": [],
+                        "kids": []
+                      },
+                      {
+                        "tag": "Ref",
+                        "name": "BST",
+                        "id": 0,
+                        "quantity": 1,
+                        "removed": [],
+                        "kids": []
+                      },
+                      {
+                        "tag": "Lam",
+                        "name": "_",
+                        "id": 124,
+                        "quantity": 1,
+                        "removed": [],
+                        "kids": [
+                          {
+                            "tag": "ADT",
+                            "name": "List",
+                            "id": 0,
+                            "quantity": 1,
+                            "removed": [],
+                            "kids": [
+                              {
+                                "tag": "Qua",
+                                "name": "",
+                                "id": 0,
+                                "quantity": 2,
+                                "removed": []
+                              },
+                              {
+                                "tag": "Ref",
+                                "name": "BFrame",
+                                "id": 0,
+                                "quantity": 1,
+                                "removed": []
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "nativeABI-List",
+      "owner": {
+        "arity": 2,
+        "templates": 0,
+        "native": true,
+        "kind": {
+          "tag": "Typ",
+          "name": "",
+          "id": 0,
+          "quantity": 0,
+          "removed": [],
+          "kids": [
+            {
+              "tag": "Qua",
+              "name": "",
+              "id": 0,
+              "quantity": 2,
+              "removed": [],
+              "kids": []
+            }
+          ]
+        }
+      },
+      "ctors": [
+        {
+          "name": "Nil",
+          "arity": 0,
+          "templates": 0,
+          "native": true,
+          "specialized": {
+            "tag": "ADT",
+            "name": "List",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "Qua",
+                "name": "",
+                "id": 0,
+                "quantity": 2,
+                "removed": [],
+                "kids": []
+              },
+              {
+                "tag": "ADT",
+                "name": "BFrame",
+                "id": 0,
+                "quantity": 0,
+                "removed": [],
+                "kids": []
+              }
+            ]
+          }
+        },
+        {
+          "name": "Con",
+          "arity": 2,
+          "templates": 0,
+          "native": true,
+          "specialized": {
+            "tag": "All",
+            "name": "head",
+            "id": 55,
+            "quantity": 1,
+            "removed": [],
+            "kids": [
+              {
+                "tag": "ADT",
+                "name": "BFrame",
+                "id": 0,
+                "quantity": 0,
+                "removed": [],
+                "kids": []
+              },
+              {
+                "tag": "All",
+                "name": "tail",
+                "id": 56,
+                "quantity": 1,
+                "removed": [],
+                "kids": [
+                  {
+                    "tag": "ADT",
+                    "name": "List",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": [
+                      {
+                        "tag": "Qua",
+                        "name": "",
+                        "id": 0,
+                        "quantity": 2,
+                        "removed": [],
+                        "kids": []
+                      },
+                      {
+                        "tag": "ADT",
+                        "name": "BFrame",
+                        "id": 0,
+                        "quantity": 0,
+                        "removed": [],
+                        "kids": []
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "ADT",
+                    "name": "List",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "kids": [
+                      {
+                        "tag": "Qua",
+                        "name": "",
+                        "id": 0,
+                        "quantity": 2,
+                        "removed": [],
+                        "kids": []
+                      },
+                      {
+                        "tag": "ADT",
+                        "name": "BFrame",
+                        "id": 0,
+                        "quantity": 0,
+                        "removed": [],
+                        "kids": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "producerV04Sha256": "66d84f0cfab9d585d6f234e00fee485b6e2819f5cf4f91fa985e6cf5182472ff",
+  "scope": "Original checked08 API ABI observations only; candidate not executed."
+}

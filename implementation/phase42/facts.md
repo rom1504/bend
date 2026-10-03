@@ -191,3 +191,82 @@ native match checks. The dependent sequential inorder traversal remains outside
 that worker shape. Separate nested-function, vector and dependent-Sigma controls
 are prepared as original-predicate observations; they are not evidence for an
 unimplemented extension. Probe syntax passes; root execution remains pending.
+
+Root's BST probe02 completed on checked07 with status ok/checked true. The
+read-only [summary](../../selfhost/tools/performance/phase42/facts/map-bst/bst-probe02-summary.json)
+records source/report/API identities and exact original predicate observations.
+Inorder's pure graph is valid with fuel32748, but prefix/component admission
+fails. Whole bench proof fails, so the held sequential proposal cannot activate
+in ordinary BST bench alone. Closed BST/BFrame pass; Sigma/List-frame and all
+nested function/vector/dependent-Sigma controls refuse. Distinct Sigma
+specializations currently compare equal by name, requiring exact equality before
+new admission. Build additionally refuses its computed scalar alias prefix.
+The [matched-set stretch design](../../selfhost/tools/performance/phase42/facts/map-bst/bst-matched-set-design.md)
+scopes a stronger container proof to owned scalar roots, preserves ordinary
+predicate/cache contracts, and coordinates unchanged-runtime Tuple/List emission
+with frames owner. Its 320–520 LOC estimate and held sequential candidate04 are
+review artifacts; source promotion awaits actual private entry and complete-value
+controls. No additional compiler or target execution was performed by facts.
+
+An [independent minimal-domain review](../../selfhost/tools/performance/phase42/facts/map-bst/bst-minimal-domain-review.md)
+now supports reusing the existing scalar-root/fullgraph ownership boundary for
+a globally valid strict closed Sigma/List JPure type domain. It supersedes the
+initial explicit owned-mode/cache recommendation: public ownership still comes
+from guarded runtime entry, not type/capture admission. Audited Nat/fold/flat
+selectors retain their independent restrictions, and ordinary generic bodies
+already emit guarded saturated helper callsites. The revised estimate is
+250–360 LOC including native projection and sequential continuation. No concrete
+ownership counterexample was found; this remains conditional design review,
+requiring new-domain negatives and actual-entry complete-value evidence before
+promotion. The grounded List<U32> algorithm selector stays unchanged.
+
+Root's executed Map native-comparison ablation passed all25 independent controls
+(12 Unicode full results/errors, five complete Map-content cases, three host and
+five descriptor fallback cases), with277 clean entries/eight fallbacks. The
+three-rotation short screen reduced Map32 median12.3191→12.2529ms and Map128
+65.6190→63.6162ms, versus pinned TS0.141275/0.786770ms. This near-null0.54%/3.05%
+mechanism screen does not justify native String production work. The owner
+[summary](../../selfhost/tools/performance/phase42/facts/map-bst/map-native-result01.json)
+hashes untouched root raw/module identities. Map String admission remains held.
+
+The isolated [closed native proof candidate04](../../selfhost/tools/performance/phase42/facts/map-bst/closed-types-candidate04/candidate.patch)
+now implements strict List/Sigma source proof and parameter-aware equality;
+canonical compiler source was not edited by facts. Candidate02 was refused by
+review for resetting the equality depth budget at each Sigma sibling, allowing
+an exponential alias DAG. Candidate03 serializes `Maybe<remaining fuel>` through
+both fields; review accepted the bounded total equality correction. Root's
+actual [ABI probe04](../../selfhost/tools/performance/phase42/facts/map-bst/bst-probe04-abi-summary.json)
+then showed Sigma Kind as `Typ(Min(Qua1,Qua1))`, so candidate04 adds that exact
+header form alongside normalized Qua1. Both native Tuple fields are quantity1;
+List uses quantity2 with quantity1 Con fields, as required. All specialized
+field and complete terminal type identities are checked, and the List tail is
+compared to its current specialization rather than recursively expanded.
+
+The first ABI probe03 refused a malformed injected JS parenthesis; failed tool
+bytes are retained. Successor04 uses readable locals and its actual generated
+API passes syntax validation. Its consumed producer is preserved byte-exact as
+`bst-plan-probe-v04.mjs`; the aggregate alias-DAG successor is a separate
+`bst-plan-probe-v05.mjs`. Candidate compiler acquisition, new-domain predicate
+controls and matched-set full-value/runtime execution remain root work. The
+[control obligations](../../selfhost/tools/performance/phase42/facts/map-bst/closed-types-controls.json)
+separate malformed-IR diagnostics from pinned-TS-valid source fixtures.
+
+Root applied the isolated native proof/emitter/sequential candidates after an
+exact-context rebase and acquired checked10. Original probe05 now admits native
+Sigma/ListFrame, rejects all independent old function/vector/dependent controls,
+and returns false for mismatched Sigma equality. AliasDAG20 returns None for
+aggregate equality64 and false for type512. Down/up/inorder component plans pass,
+and build's full pure graph passes while its computed alias prefix remains
+refused. Original bench still fails its full pure graph, so emitted workers and
+source compilation are not runtime activation or gain evidence.
+
+The frozen strict `native-proof-controls-v01.mjs` asserts admission, independent
+negative field/quantity/dependency/metadata/terminal cases, exact boundedness and
+Boolean contracts against a verified checked attempt. Final main graph/component
+flags remain observations pending actual outcomes. `bst-plan-probe-v07.mjs`
+separately traces first Nat.add/bench source refusal points and original native
+flags/eligibility without weakening predicates. Generated diagnostics and tools
+pass syntax checks; root owns their execution. The prospective
+[P42-006 experiment](../../experiments/phase42/P42-006-closed-native-data.md)
+records activation falsifiers, ownership controls and compiler function-count/
+fresh-request cost requirements; initial root changes remain uninstalled.

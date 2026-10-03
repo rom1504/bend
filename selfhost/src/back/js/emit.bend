@@ -242,7 +242,7 @@ def j_expr_private(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: K
   kc(String, String.eq(tg(t), "JNative"), u => j_region_native_emit(book, env, t), u =>
   kc(String, String.eq(tg(t), "JVector"), u => "[" ++ j_ctor_args(book, env, ks(t), j_region_local_fields(book, ty)) ++ "]", u =>
   kc(String, String.eq(tg(t), "JUnpack"), u => "((" ++ j_region_parameters(U32.inc(ix(t)), U32.inc(U32.add(ix(t), qt(t)))) ++ ")=>" ++
-    j_expr(book, env, kid(t, 0), ty, tail) ++ ")(" ++ j_region_field_reads("$p" ++ U32.show(ix(t)) ++ kc(String, j_region_local_vector(book, kid(t, 1)), u => "", u => ".a"), 0, qt(t)) ++ ")", u =>
+    j_expr(book, env, kid(t, 0), ty, tail) ++ ")(" ++ j_flat_reads(book, kid(t, 1), "$p" ++ U32.show(ix(t)), 0, qt(t)) ++ ")", u =>
   kc(String, String.eq(tg(t), "JIf"), u => "(" ++ j_expr(book, env, kid(t, 0), kt("ADT", "Bool", 0, 0, Nil{}), False{}) ++ "?" ++
     j_expr(book, env, kid(t, 1), ty, tail) ++ ":" ++ j_expr(book, env, kid(t, 2), ty, tail) ++ ")", u => j_expr_on(book, env, t, ty, tail, tg(t)))))))))))))))
 
@@ -717,7 +717,9 @@ law j_constructor_literal:
 def j_constructor_literal(book, env, t, ty, literal):
   kc(String, String.eq(literal, ""), u =>
     kc(String, j_owned_ctor(book, t, ty),
-      u => "({$:" ++ j_quote(nm(t)) ++ ",a:[" ++ j_ctor_args(book, env, ks(t), j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty)))) ++ "]})",
+      u => kc(String, j_flat_data(book, ty),
+        u => "({$:" ++ j_quote(nm(t)) ++ "," ++ j_flat_ctor_args(book, env, ks(t), j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty))), 0) ++ "})",
+        u => "({$:" ++ j_quote(nm(t)) ++ ",a:[" ++ j_ctor_args(book, env, ks(t), j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty)))) ++ "]})"),
       u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_ctor_args(book, env, ks(t), j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty)))) ++ "])"), u => literal)
 
 law j_io_type:

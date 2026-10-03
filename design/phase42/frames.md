@@ -95,3 +95,15 @@ foreign/native representation, mixed recursion requiring an unproved worker,
 and missing transitive callees remain refused by the existing owners. An acyclic
 helper graph can add only bounded source depth; it cannot create input-dependent
 native recursive depth. No runtime depth cap substitutes for source proof.
+
+## Stretch BST native product/List proposal
+
+Representation and control ownership moved to `frames/bst/representation.md` and
+`controls.json`. Native Sigma is a dense pair array; List is tagged nodes. The
+prospective `emitter-proposal.bend` contains isolated owned Tuple field/match
+helpers and optional direct-pair construction; it is uninstalled and unchecked.
+Facts owner controls exact closed native type identity/equality. The initial
+explicit owned-mode proposal is superseded by the globally logically closed
+JPure domain under existing scalar-root guard ownership; no new mode/cache
+hierarchy is added. Ordinary grounded-U32 List selectors are not widened. No
+saved-JS BST ablation or execution was performed by this owner.

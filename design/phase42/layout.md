@@ -204,3 +204,30 @@ This avoids global worker ABI changes and reuses exact component/direct facts.
 The initial route rejects vector/read/producer/fusion plans rather than mixing
 those boundaries into layout admission. Estimated160–230 source lines plus
 wiring; no runnable patch is claimed before the all-or-nothing audit exists.
+
+The runnable conservative source proposal now exists as
+[`source-v4.patch`](../../selfhost/tools/performance/phase42/layout/source-v4.patch)
+(208 added lines, 9 removed). It preserves both original BookCache children,
+audits the exact normalized private closure before creating the third scoped
+context, and emits lexical flat clones only inside the existing fully guarded
+scalar proof. V3 bypasses post-audit local inlining; V4 falls back to the original
+normal body when an uncached Book cannot carry the context. No new runtime
+protocol or public representation is introduced. Checked acquisition remains
+root-owned and is required before calling this a source optimization.
+
+The handwritten native-recursion graph is a ceiling: depth8–9 is approximately
+1.05–1.08 times pinned TypeScript. The exact emitted frame-machine ablation is
+slower: flat depth8 .5297ms versus TypeScript .2862ms; depth9 1.3718ms versus
+.6792ms. Its controlled array-clone counterparts are .7496ms and 1.7356ms.
+Thus layout alone yields 1.22–1.42 times improvement with real frames, and does
+not establish parity. The separate Number Nat ablation showed no repeatable
+benefit. Keep BigInt Nat and the existing structural frames in the source route.
+
+The checked source successor has now emitted the private flat region in
+checked09, and root reports complete actual controls pass20/98/68/2 with depth
+30000. Independent renamed ReviewTree/ReviewStat controls pass40 scalar oracles
+and every positive/negative admission flag. The V5 source correction keeps the
+full normalized audit and guard graph, while recording the canonical source
+root in identity metadata after selected-root annotation. No exact helper or
+context comparison is weakened. This is checked semantic evidence; fresh
+paired source timing and the stale-context diagnostic still remain required.

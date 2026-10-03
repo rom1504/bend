@@ -134,3 +134,48 @@ roots, yielding255 admission rows. Complete-stage diagnostics cannot satisfy
 those witnesses. Clean checked modules remain byte-identical. The independent
 integer oracle explicitly wraps multiplication before following subtraction or
 addition. Runtime validation is still pending.
+
+## Small-call entry ceiling (static15-minute investigation)
+
+Checked07 actual controls pass255 independent fixture oracle/admission rows
+and116 benchmark oracle rows with79 hostile boundaries (root evidence). Root
+reports short timing ratios to TypeScript of2.17 at128 and0.581 at512; larger
+points are being timed. These are root-reported observations, not new timing by
+this owner.
+
+For a standalone eligible bench entry, regionHostGuard performs59 descriptor
+queries (4 DataView own-key,40 intrinsic,15 protocol),4 prototype queries and
+2 own-name enumerations. localGuard plus scalarGuard perform77 further
+descriptor queries and18 prototype queries across primitive markers and six
+captured dependencies, before exact-entry/runtime dispatch costs. Descriptor
+results are fresh host objects; several temporary arrays/iterators are also
+formed, although JIT elimination is unmeasured. All list/traversal objects have
+already disappeared from the selected scalar body.
+
+There are redundant Array-prototype/marker checks, but deleting descriptor
+calls or replacing `.every`/iteration with direct predicates changes observable
+pre-import custom host wrappers. Snapshot equality is not a proof that a
+captured host function was the original native function. No safe broad guard
+consolidation is established under the required pre-import semantics.
+
+The tempting no-scope shortcut saves just one null-prototype proof object and
+six name writes, leaving136 guard descriptor queries. It cannot plausibly
+remove most fixed admission work; no multiplier is claimed. More seriously,
+pre-import Math.imul can capture a wrapper which mutates G.dbl and reenters
+bench. Existing scope covers nested dependencies; removing scope forces the
+nested call through the changed dbl and alters its events. Therefore this
+shortcut is rejected prospectively, pending optional root confirmation.
+
+entry-derive.py freezes the exact checked07 emitted module and derives only
+this no-scope diagnostic. entry-preimport-counterexample.mjs uses public G and
+ordinary exports, with no private proof-state inspection, to compare the live
+mutation/reentry events. Pinned Node24 syntax passes on CPU5; no execution or
+timing was run. Root can execute the counterexample after current timing, using
+fresh outputs. No canonical runtime/compiler source changed.
+
+Verdict: keep existing per-call guards and proof scope for this campaign. A
+material further small-call win needs a new explicit proof of inert standard
+intrinsics or a different guarded entry design, which exceeds a cheap equivalent
+rewrite. Existing whole-root scopes already amortize guards when several pure
+operations compose beneath one application entry; changing benchmark batching
+would not establish a compiler gain and is not proposed.

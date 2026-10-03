@@ -1,0 +1,20 @@
+--- a/selfhost/src/back/js/finite.bend
++++ b/selfhost/src/back/js/finite.bend
+@@ -249,12 +249,15 @@
+ @unsafe
+ def j_direct_term(+book: List<&2,KDef>, +t: KTerm) -> KTerm:
+   +spine = j_call_spine(t, Nil{})
++  kc(KTerm, String.eq(tg(t), "Ann"), u =>
++    k_with_children(t, [j_direct_term(book, kid(t, 0)), kid(t, 1)]), u =>
+   kc(KTerm, String.eq(tg(t), "App") && String.eq(tg(spine), "Call") &&
+-    Bool.not(j_primitive_call(book, spine)) &&
++    String.eq(dk(lookup(book, nm(spine))), "Def") &&
++    U32.is_gt(da(lookup(book, nm(spine))), 0) && Bool.not(j_primitive_call(book, spine)) &&
+     U32.is_eq(terms_len(ks(spine)), da(lookup(book, nm(spine)))), u =>
+     j_region_annotate(kt("JDirectCall", nm(spine), 0, 0, j_direct_terms(book, ks(spine))),
+       j_direct_result(book, dt(lookup(book, nm(spine))), ks(spine))), u =>
+-    k_with_children(t, j_direct_terms(book, ks(t))))
++    k_with_children(t, j_direct_terms(book, ks(t)))))
+ 
+ @unsafe
+ def j_direct_terms(+book: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:

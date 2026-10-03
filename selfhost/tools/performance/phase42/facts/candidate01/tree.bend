@@ -149,20 +149,19 @@ def j_component_plan(+book: List<&2,KDef>, +d: KDef) -> JPure:
       (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book) &&
         Bool.not(j_region_scalar(book, j_fold_root_result(book, dt(d), da(d))))), u =>
     kc(JPure, j_u32_bounded([dv(d)], 512) && Bool.not(j_l_deep(dv(d), 0)), u =>
-    kc(JPure, j_component_admit(book, d), u =>
-    kc(JPure, j_region_capture_eligible(book, d) &&
-      j_component_prefix(book, Nil{}, dv(d), dt(d), j_component_slots(0, da(d)), d, 0), u =>
-        j_component_select(book, d, j_component_closed(d, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}}))),
-      u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}}),
+      j_component_admit(book, d, j_component_refs([dv(d)], dn(d), 1024, 0)),
       u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}})
 
 # Preserve recursive admission. Acyclic ADT-first wrappers need a direct
 # reference to an independently admitted recursive component; scalar-first,
 # Nat-first and List wrappers retain their previous selection.
 @unsafe
-def j_component_admit(+book: List<&2,KDef>, +d: KDef) -> Bool:
-  kc(Bool, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u => True{}, u =>
-    j_component_wrapper_arg(book, wnf(book, kid(wnf(book, dt(d)), 0))))
+def j_component_admit(+book: List<&2,KDef>, +d: KDef, +selfRefs: U32) -> JPure:
+  kc(JPure, U32.is_gt(selfRefs, 0) || j_component_wrapper_arg(book, wnf(book, kid(wnf(book, dt(d)), 0))), u =>
+    kc(JPure, j_region_capture_eligible(book, d) &&
+      j_component_prefix(book, Nil{}, dv(d), dt(d), j_component_slots(0, da(d)), d, 0), u =>
+        j_component_select(book, d, selfRefs, j_component_closed(d, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}}))),
+      u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}})
 
 @unsafe
 def j_component_wrapper_arg(+book: List<&2,KDef>, +arg: KTerm) -> Bool:
@@ -170,9 +169,9 @@ def j_component_wrapper_arg(+book: List<&2,KDef>, +arg: KTerm) -> Bool:
 
 # Reuse the already computed complete graph, rather than proving it twice.
 @unsafe
-def j_component_select(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> JPure:
+def j_component_select(+book: List<&2,KDef>, +d: KDef, +selfRefs: U32, +pure: JPure) -> JPure:
   kc(JPure, j_pure_valid(pure), u =>
-    kc(JPure, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u => pure, u =>
+    kc(JPure, U32.is_gt(selfRefs, 0), u => pure, u =>
       kc(JPure, j_component_wrapper_calls(book, d, j_pure_defs(pure)), u => pure,
         u => JPure{Nil{}, 0, False{}})), u => pure)
 
@@ -293,19 +292,16 @@ def j_component_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, 
 @unsafe
 def j_component_declaration(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> String:
   kc(String, j_pure_valid(pure), u =>
-    j_component_covered_declaration(book, d, j_covered_term(book, j_pure_remove(j_pure_defs(pure), dn(d)), dv(d))), u => "")
-
-@unsafe
-def j_component_covered_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm) -> String:
-  "function " ++ j_region_name(dn(d)) ++ "$tree(" ++ j_region_parameters(0, da(d)) ++ "){/* private structural component */" ++
+    "function " ++ j_region_name(dn(d)) ++ "$tree(" ++ j_region_parameters(0, da(d)) ++ "){/* private structural component */" ++
     j_region_nested_slots(0, da(d)) ++ kc(String, U32.is_eq(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u =>
-      "let $value;$step:{" ++ j_component_emit(book, Nil{}, body, dt(d), j_component_values(0, da(d)), d, 0) ++ "}return $value;}\n", u =>
+      "let $value;$step:{" ++ j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 0) ++ "}return $value;}\n", u =>
     "const $frames=[];let $top=0,$value;$visit:for(;;){$step:{" ++
-    j_component_emit(book, Nil{}, body, dt(d), j_component_values(0, da(d)), d, 0) ++ "}" ++
+    j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 0) ++ "}" ++
     "while($top){const $frame=$frames[$top-1];" ++ j_component_restore(0, da(d)) ++
-    "if($frame.phase===2){" ++ j_component_emit(book, Nil{}, body, dt(d), j_component_values(0, da(d)), d, 3) ++ "--$top;}else if($frame.phase===0){$frame.left=$value;$frame.phase=1;" ++
-    j_component_emit(book, Nil{}, body, dt(d), j_component_values(0, da(d)), d, 1) ++ "}else{" ++
-    j_component_emit(book, Nil{}, body, dt(d), j_component_values(0, da(d)), d, 2) ++ "--$top;}}return $value;}}\n")
+    "if($frame.phase===2){" ++ j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 3) ++ "--$top;}else if($frame.phase===0){$frame.left=$value;$frame.phase=1;" ++
+    j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 1) ++ "}else{" ++
+    j_component_emit(book, Nil{}, dv(d), dt(d), j_component_values(0, da(d)), d, 2) ++ "--$top;}}return $value;}}\n"), u => "")
+
 @unsafe
 def j_component_values(+at: U32, +total: U32) -> List<&2,String>:
   kc(List<&2,String>, U32.is_eq(at, total), u => Nil{}, u => Con{"$s" ++ U32.show(at), j_component_values(U32.inc(at), total)})
@@ -463,55 +459,3 @@ def j_linear_emit_child(+args: List<&2,KTerm>, +d: KDef, +at: U32) -> U32:
   match args:
     case Nil{}: 32
     case Con{h, rest}: kc(U32, j_linear_emit_self(h, d), u => at, u => j_linear_emit_child(rest, d, U32.inc(at)))
-
-
-# Inherited proof context is used only for the body of an independently admitted
-# private worker. Its public and generic call boundaries retain the complete
-# graph guard. Exact definitions prevent same-name or stale graph substitution.
-@unsafe
-def j_covered_defs(+book: List<&2,KDef>, +context: List<&2,KDef>, +needed: List<&2,KDef>) -> Bool:
-  match needed:
-    case Nil{}: True{}
-    case Con{d, rest}:
-      +found = lookup(context, dn(d))
-      kc(Bool, String.eq(dk(found), "Def") && exact_def(d, found) && exact_def(d, lookup(book, dn(d))),
-        u => j_covered_defs(book, context, rest), u => False{})
-
-# Annotation preserves original call-result typing for the ordinary shared
-# binder/argument emitter. Lowering plans are never sent back to the checker.
-@unsafe
-def j_covered_result(+ty: KTerm, +args: List<&2,KTerm>) -> KTerm:
-  match args:
-    case Nil{}: ty
-    case Con{h, rest}: j_covered_result(j_app_type(ty, h), rest)
-
-@unsafe
-def j_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(t), "Ann"), u =>
-    k_with_children(t, [j_covered_term(book, context, kid(t, 0)), kid(t, 1)]), u =>
-  kc(KTerm, String.eq(tg(t), "Var") || String.eq(tg(t), "Ref") || String.eq(tg(t), "Lit"), u => t, u =>
-  kc(KTerm, String.eq(tg(t), "App"), u =>
-    j_covered_app(book, context, t, k_with_children(t, j_covered_terms(book, context, ks(t)))), u =>
-    k_with_children(t, j_covered_terms(book, context, ks(t))))))
-
-@unsafe
-def j_covered_terms(+book: List<&2,KDef>, +context: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
-  match ts:
-    case Nil{}: Nil{}
-    case Con{h, rest}: Con{j_covered_term(book, context, h), j_covered_terms(book, context, rest)}
-
-@unsafe
-def j_covered_app(+book: List<&2,KDef>, +context: List<&2,KDef>, +original: KTerm, +rebuilt: KTerm) -> KTerm:
-  +spine = j_call_spine(original, Nil{})
-  +d = lookup(book, nm(spine))
-  kc(KTerm, String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), da(d)) &&
-    String.eq(dk(lookup(context, dn(d))), "Def") && exact_def(d, lookup(context, dn(d))), u =>
-      j_covered_component(book, context, original, rebuilt, d, j_component_plan(book, d)),
-    u => j_direct_call_term(book, context, rebuilt))
-
-@unsafe
-def j_covered_component(+book: List<&2,KDef>, +context: List<&2,KDef>, +original: KTerm, +rebuilt: KTerm, +d: KDef, +pure: JPure) -> KTerm:
-  kc(KTerm, j_pure_valid(pure) && j_covered_defs(book, context, j_pure_defs(pure)), u =>
-    j_region_annotate(kt("JCall", dn(d), 0, 1, ks(j_call_spine(rebuilt, Nil{}))),
-      j_covered_result(dt(d), ks(j_call_spine(original, Nil{})))),
-    u => j_direct_call_term(book, context, rebuilt))

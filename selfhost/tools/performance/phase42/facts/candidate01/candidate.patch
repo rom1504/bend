@@ -1,0 +1,42 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -149,20 +149,19 @@
+       (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book) &&
+         Bool.not(j_region_scalar(book, j_fold_root_result(book, dt(d), da(d))))), u =>
+     kc(JPure, j_u32_bounded([dv(d)], 512) && Bool.not(j_l_deep(dv(d), 0)), u =>
+-    kc(JPure, j_component_admit(book, d), u =>
+-    kc(JPure, j_region_capture_eligible(book, d) &&
+-      j_component_prefix(book, Nil{}, dv(d), dt(d), j_component_slots(0, da(d)), d, 0), u =>
+-        j_component_select(book, d, j_component_closed(d, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}}))),
+-      u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}}),
++      j_component_admit(book, d, j_component_refs([dv(d)], dn(d), 1024, 0)),
+       u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}})
+ 
+ # Preserve recursive admission. Acyclic ADT-first wrappers need a direct
+ # reference to an independently admitted recursive component; scalar-first,
+ # Nat-first and List wrappers retain their previous selection.
+ @unsafe
+-def j_component_admit(+book: List<&2,KDef>, +d: KDef) -> Bool:
+-  kc(Bool, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u => True{}, u =>
+-    j_component_wrapper_arg(book, wnf(book, kid(wnf(book, dt(d)), 0))))
++def j_component_admit(+book: List<&2,KDef>, +d: KDef, +selfRefs: U32) -> JPure:
++  kc(JPure, U32.is_gt(selfRefs, 0) || j_component_wrapper_arg(book, wnf(book, kid(wnf(book, dt(d)), 0))), u =>
++    kc(JPure, j_region_capture_eligible(book, d) &&
++      j_component_prefix(book, Nil{}, dv(d), dt(d), j_component_slots(0, da(d)), d, 0), u =>
++        j_component_select(book, d, selfRefs, j_component_closed(d, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}}))),
++      u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}})
+ 
+ @unsafe
+ def j_component_wrapper_arg(+book: List<&2,KDef>, +arg: KTerm) -> Bool:
+@@ -170,9 +169,9 @@
+ 
+ # Reuse the already computed complete graph, rather than proving it twice.
+ @unsafe
+-def j_component_select(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> JPure:
++def j_component_select(+book: List<&2,KDef>, +d: KDef, +selfRefs: U32, +pure: JPure) -> JPure:
+   kc(JPure, j_pure_valid(pure), u =>
+-    kc(JPure, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u => pure, u =>
++    kc(JPure, U32.is_gt(selfRefs, 0), u => pure, u =>
+       kc(JPure, j_component_wrapper_calls(book, d, j_pure_defs(pure)), u => pure,
+         u => JPure{Nil{}, 0, False{}})), u => pure)
+ 

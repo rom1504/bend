@@ -1,0 +1,128 @@
+{
+  "kind": "phase42-frame-live-continuations",
+  "complete": true,
+  "checked": false,
+  "input": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/integration01/full-preparation/modules/tree-bitonic.mjs",
+    "sha256": "64bfc698048c2ebf92c123111a5ce3fd8ccdb47b2fd8a7488243adbd1c2f6e9d"
+  },
+  "receiptSha256": "52637714630475015426c5792a7f23c102f2896f84d2f9cdd3aae76a09b7ba4d",
+  "producerSha256": "db5e2993bc9f5fb77b9e63ee1af18568e37ba0cf98ab4b7b6422c4c82a875756",
+  "counts": [
+    {
+      "worker": "$R_119_97_114_112$tree",
+      "sites": [
+        {
+          "site": 0,
+          "live": [
+            "x3458",
+            "x3462",
+            "x3463"
+          ],
+          "oldSavedArguments": 3
+        }
+      ],
+      "oldBytes": 4675,
+      "newBytes": 2443
+    },
+    {
+      "worker": "$R_102_108_111_119$tree",
+      "sites": [
+        {
+          "site": 0,
+          "live": [
+            "x3480",
+            "x3481",
+            "x3484"
+          ],
+          "oldSavedArguments": 3
+        }
+      ],
+      "oldBytes": 3930,
+      "newBytes": 1986
+    },
+    {
+      "worker": "$R_98_115_111_114_116$tree",
+      "sites": [
+        {
+          "site": 0,
+          "live": [
+            "x3492",
+            "x3493",
+            "x3494"
+          ],
+          "oldSavedArguments": 3
+        }
+      ],
+      "oldBytes": 2570,
+      "newBytes": 1920
+    },
+    {
+      "worker": "$R_115_99_97_110$tree",
+      "sites": [
+        {
+          "site": 0,
+          "live": [
+            "x3523"
+          ],
+          "oldSavedArguments": 1
+        }
+      ],
+      "oldBytes": 1655,
+      "newBytes": 1021
+    }
+  ],
+  "modules": [
+    {
+      "role": "original",
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/frames/prototype01/original.clean.mjs",
+      "sha256": "64bfc698048c2ebf92c123111a5ce3fd8ccdb47b2fd8a7488243adbd1c2f6e9d"
+    },
+    {
+      "role": "live",
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/frames/prototype01/live.clean.mjs",
+      "sha256": "286106423fd057725d203d62c9fe9fe6e37e2503bac6452e4a5cc11658935dc6"
+    },
+    {
+      "role": "recursive-ceiling",
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/frames/prototype01/recursive-ceiling.clean.mjs",
+      "sha256": "1ebe82e1f8c2dbaa4c3cb0b563dbb8a1debd3f041939211b64e8500d6513557f"
+    },
+    {
+      "role": "original",
+      "diagnostic": true,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/frames/prototype01/original.mjs",
+      "sha256": "22aaeaebc0e5b0dd158655cf281cf418b76c303022f70cde62c20778ddfa5b22"
+    },
+    {
+      "role": "live",
+      "diagnostic": true,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/frames/prototype01/live.mjs",
+      "sha256": "fa538398399623361ad8f7b88c64702309bc3911c8a27e7f4e2603a5fba9bddb"
+    },
+    {
+      "role": "recursive-ceiling",
+      "diagnostic": true,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/frames/prototype01/recursive-ceiling.mjs",
+      "sha256": "c2429a134fca281b1c9685955e9cd3787d1f7193f35b6d50e824f9e68d29154d"
+    }
+  ],
+  "controlOwners": [
+    {
+      "path": "selfhost/tools/performance/phase41/tree/actual-derive-v2.mjs",
+      "sha256": "8e4ee256540bc7faf3f8fbeefb1afcae4ec02cf33bdc9939f4b95294e4dd5a31"
+    },
+    {
+      "path": "selfhost/tools/performance/phase41/tree/actual-controls.mjs",
+      "sha256": "a4c8450fdb889788d7dde865305bae0bba19ecda54f277c529dd1ade0d5a2e6b"
+    }
+  ],
+  "dependencies": [
+    "warp_leaf.go",
+    "Bool.xor",
+    "warp_leaf",
+    "warp_zip",
+    "warp",
+    "warp_node"
+  ]
+}

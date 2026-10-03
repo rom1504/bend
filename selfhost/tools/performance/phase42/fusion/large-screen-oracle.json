@@ -1,0 +1,50 @@
+{
+  "kind": "phase42-large-list-oracle",
+  "checked": false,
+  "timed": false,
+  "inputConfig": "selfhost/build/phase42/fusion-screen01-config.json",
+  "inputConfigSha256": "bbc3d09526d8a1490ee5d5049d1a247b68ff30e7f05d607d76fa8b1ec1045dab",
+  "method": "Independent unbounded Python integer LCG, masking each U32 operation; no cycle shortcut.",
+  "points": [
+    {
+      "exportName": "bench",
+      "args": [
+        1024,
+        4294967295
+      ],
+      "expected": 15232
+    },
+    {
+      "exportName": "bench",
+      "args": [
+        4096,
+        123456789
+      ],
+      "expected": 60928
+    },
+    {
+      "exportName": "bench",
+      "args": [
+        8192,
+        4294967294
+      ],
+      "expected": 121856
+    },
+    {
+      "exportName": "bench",
+      "args": [
+        1025,
+        17
+      ],
+      "expected": 15232
+    },
+    {
+      "exportName": "bench",
+      "args": [
+        4097,
+        123
+      ],
+      "expected": 60950
+    }
+  ]
+}

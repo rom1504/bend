@@ -1,0 +1,74 @@
+# Phase42 frames: implementation status
+
+The saved-output prototype and bounded recursion diagnostic are ready in
+`selfhost/tools/performance/phase42/frames/prototype01/`. The producer records
+input/output SHA256 and exact live variable lists in `derive.json`; all three
+modules pass Acorn syntax parsing. No production source or old evidence changed.
+
+| Worker | Original bytes | Live-continuation bytes | Saved live slots |
+|---|---:|---:|---:|
+| warp | 4675 | 2443 | 3 |
+| flow | 3930 | 1986 | 3 |
+| bsort | 2570 | 1920 | 3 |
+| scan | 1655 | 1021 | 1 |
+
+Total four-worker text shrinks 12830 to7370 bytes. Counts are static code size,
+not executed work or performance. The live role removes two resumed match
+prefixes, parent argument restoration, and per-push saved args array allocation.
+The child `$next` tuple remains unchanged. Original has full original argument
+vectors; live has scalar properties holding needed right/combine lexical values.
+
+`prepare-controls.mjs` derives diagnostic modules and a scoped copy of the
+existing Phase41 independent control owner. It records both owner hashes and
+marks the new derivation `checked:false`. The recursive-ceiling role is excluded
+from deep-stack equivalence; it is diagnostic and nondeployable.
+
+Initial tool attempts failed because node was not in PATH, then because the
+standalone identifier analysis lacked the `$visit` label, then because combine
+extraction repeated prefix declarations. These were corrected before generation;
+no failed candidate was timed. Adapter preparation exposed a syntax typo and a
+missing inherited `all` constant; both were corrected before control execution.
+The observed failures remain in the collaboration transcript; the bounded sanity check subsequently passed.
+
+Correctness: syntax and tiny18bench/6alias controls passed on Node24.12.0 in0.11s; awaiting root reproduction on pinned Node24.18.0 and full controls. Measurement: awaiting root.
+Decision: investigate; source promotion and source.patch depend on a surviving
+mechanism and exact binder/live-use proof. Existing Phase41 proof is reused,
+not weakened. Four-worker fixture restriction is explicit; unary remains excluded.
+
+Root's corrected pinned-node screen reports live continuations only
+1.015/1.018/1.029× faster at the three tree points; the bounded recursion
+ceiling spans0.998–1.083×. This is a final small/null mechanism result, not a
+source promotion. Root retains the exact serial run receipts. The frame rewrite
+is deferred; its syntax tools, original diagnostic artifacts and failed attempts
+remain preserved.
+
+The subsequently assigned inherited-proof context investigation has an independent
+source proposal at `frames/context-source.patch`, generated reproducibly by
+`frames/make-context-patch.py`. It does not install the live-frame rewrite.
+The proposal rewrites only admitted component emission bodies under their complete
+JPure context. A nonself target must have its own valid component plan and every
+transitive definition must match the context and canonical book by `exact_def`.
+Missing, changed or same-name/different-body definitions retain guarded emission.
+The public/runtime entry guard remains untouched. Existing JCall carries a private
+mode bit selecting the already emitted `$tree` function; Ann preserves original
+result typing for ordinary binder inference.
+
+This patch intentionally depends on the calls owner's `j_direct_call_term` fallback
+for acyclic helper lowering. It has not been compiled, timed or integrated here;
+root's serial queue owns those gates. Source review is pending. Original frame
+admission, self-recursive Ref nodes, argument vectors and deep continuation shapes
+remain in the original emitter.
+
+The whole-private-graph followup has a separate source proposal at
+`frames/owned-constructor-source.patch` and generator `frames/make-owned-patch.py`.
+It includes private component activation, direct tagged constructor literals and
+marked unary reconstruction. Calls owner's `calls/owned-helper.patch` activates
+admitted acyclic helpers. This is an uncompiled experimental supplement to the
+already separate calls/context candidate; no constructor timing claim is made.
+
+The final proposal leaves generic deferred `build` lowering unchanged. Closed
+nonnative source types gate same-tag object/field-array construction; native
+constructors remain on their original emitter. The guard and graph proof still
+come from the original terms. Exact field order, fresh root allocation, child
+aliasing and existing structural frames are preserved by construction; root must
+validate the actual checked emission and controls before admission.

@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/js/finite.bend
++++ b/selfhost/src/back/js/finite.bend
+@@ -268,7 +268,7 @@
+   kc(String, db(d), u =>
+     "(($p0,$p1)=>$p0!==$p1)(" ++ j_apply_args(book, env, ks(t), dt(d)) ++ ")", u =>
+     "((" ++ j_region_parameters(0, da(d)) ++ ")=>{/* private acyclic helper */" ++
+-      j_finite_emit(book, Nil{}, j_direct_term(book, dv(d)), dt(d), j_finite_slots(0, da(d))) ++
++      j_finite_emit(book, Nil{}, j_owned_term(j_direct_term(book, dv(d))), dt(d), j_finite_slots(0, da(d))) ++
+       "})(" ++ j_apply_args(book, env, ks(t), dt(d)) ++ ")")
+ 
+ # The worker-context owner has independently established this exact source

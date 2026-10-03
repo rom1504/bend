@@ -1,0 +1,43 @@
+{
+  "kind": "phase42-baseline-freezer-derivation",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "path": "selfhost/tools/performance/phase41/freeze-baseline.py",
+    "bytes": 5096,
+    "sha256": "a30ce01b34ea946653a7a611a89026c3460cb44033b91c24bc5f06eba5da09d8"
+  },
+  "output": {
+    "path": "selfhost/tools/performance/phase42/validation/freeze-baseline-v1.py",
+    "bytes": 5100,
+    "sha256": "104d5bf3f4107311a292c5e37939558c6f1f9fdd3a418d1b7449e8038ac95e80"
+  },
+  "changes": [
+    {
+      "before": "HERE = Path(__file__).resolve().parent",
+      "after": "HERE = Path(__file__).resolve().parents[1]",
+      "count": 1
+    },
+    {
+      "before": "Phase41 starting Phase40 checked06 (retained portable acquisition)",
+      "after": "Phase42 starting Phase41 checked01 (retained portable acquisition)",
+      "count": 1
+    },
+    {
+      "before": "kind='phase41-retained-checked-reference'",
+      "after": "kind='phase42-retained-checked-reference'",
+      "count": 1
+    },
+    {
+      "before": "Repackages exact retained Phase40 checked06 current and pinned TS outputs.",
+      "after": "Repackages exact retained Phase41 checked01 current and pinned TS outputs.",
+      "count": 1
+    },
+    {
+      "before": "HERE.parent/'phase40/freeze-baseline.py'",
+      "after": "HERE.parent/'phase41/freeze-baseline.py'",
+      "count": 1
+    }
+  ],
+  "scope": "Exact path and provenance substitutions only. Bundle loading, expected API, rehash, input stability and archive reopening assertions unchanged."
+}

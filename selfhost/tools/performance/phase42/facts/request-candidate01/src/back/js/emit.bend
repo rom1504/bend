@@ -475,7 +475,7 @@ law j_program_selected:
 
 @unsafe
 def j_program_selected(book, defs):
-  j_program_context(book_context(book), defs)
+  j_program_context(j_plan_context(book_context(book), defs), defs)
 
 law j_program_context:
   for +book: List<&2, KDef>
@@ -767,7 +767,7 @@ law j_library_selected:
 
 @unsafe
 def j_library_selected(book, defs):
-  j_library_context(book_context(book), defs)
+  j_library_context(j_plan_context(book_context(book), defs), defs)
 
 law j_library_context:
   for +book: List<&2, KDef>
@@ -924,7 +924,7 @@ def j_l_def(book, d):
   +worker = j_nat_loop_worker(book, d)
   +component = lookup(book, dn(d))
   kc(String, String.eq(worker, ""), u => j_tree_global(book, d), u => "G[" ++ j_quote(dn(d)) ++ "]=" ++ worker ++ ";\n") ++
-    j_component_declaration(book, component, j_component_plan(book, component))
+    j_component_declaration(book, component, j_component_cached(book, dn(component)))
 
 @unsafe
 def j_l_definition(book, d, t):

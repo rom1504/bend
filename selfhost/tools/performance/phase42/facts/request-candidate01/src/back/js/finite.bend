@@ -178,9 +178,8 @@ def j_direct_plan(+book: List<&2,KDef>, +d: KDef) -> JPure:
 @unsafe
 def j_direct_checked(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> JPure:
   kc(JPure, j_pure_valid(pure), u =>
-    kc(JPure, j_region_local_ok(j_direct_expand_def(book, d, Nil{}, 2048)), u =>
-      kc(JPure, j_direct_visit(book, j_pure_defs(pure), d, Nil{}, 0), u => pure,
-        u => JPure{Nil{}, 0, False{}}), u => JPure{Nil{}, 0, False{}}), u => pure)
+    kc(JPure, j_direct_visit(book, j_pure_defs(pure), d, Nil{}, 0), u => pure,
+      u => JPure{Nil{}, 0, False{}}), u => pure)
 
 # Every path is bounded and refuses a repeated active definition. Completed
 # siblings may share callees; there is no recursive native helper stack.
@@ -230,7 +229,7 @@ def j_direct_match(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +depth: U32) -> 
 
 @unsafe
 def j_direct_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String) -> String:
-  j_direct_guarded(book, env, spine, generic, j_direct_plan(book, lookup(book, nm(spine))))
+  j_direct_guarded(book, env, spine, generic, j_direct_cached(book, nm(spine)))
 
 @unsafe
 def j_direct_guarded(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String, +pure: JPure) -> String:
@@ -250,15 +249,12 @@ def j_direct_result(+book: List<&2,KDef>, +ty: KTerm, +args: List<&2,KTerm>) -> 
 @unsafe
 def j_direct_term(+book: List<&2,KDef>, +t: KTerm) -> KTerm:
   +spine = j_call_spine(t, Nil{})
-  kc(KTerm, String.eq(tg(t), "Ann"), u =>
-    k_with_children(t, [j_direct_term(book, kid(t, 0)), kid(t, 1)]), u =>
   kc(KTerm, String.eq(tg(t), "App") && String.eq(tg(spine), "Call") &&
-    String.eq(dk(lookup(book, nm(spine))), "Def") &&
-    U32.is_gt(da(lookup(book, nm(spine))), 0) && Bool.not(j_primitive_call(book, spine)) &&
+    Bool.not(j_primitive_call(book, spine)) &&
     U32.is_eq(terms_len(ks(spine)), da(lookup(book, nm(spine)))), u =>
     j_region_annotate(kt("JDirectCall", nm(spine), 0, 0, j_direct_terms(book, ks(spine))),
       j_direct_result(book, dt(lookup(book, nm(spine))), ks(spine))), u =>
-    k_with_children(t, j_direct_terms(book, ks(t)))))
+    k_with_children(t, j_direct_terms(book, ks(t))))
 
 @unsafe
 def j_direct_terms(+book: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
@@ -284,7 +280,7 @@ def j_direct_call_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTerm)
     String.eq(dk(lookup(context, nm(spine))), "Def") &&
     exact_def(lookup(context, nm(spine)), lookup(book, nm(spine))) &&
     U32.is_eq(terms_len(ks(spine)), da(lookup(book, nm(spine)))), u =>
-    j_direct_covered_term(book, context, t, spine, j_direct_plan(book, lookup(book, nm(spine)))), u => t)
+    j_direct_covered_term(book, context, t, spine, j_direct_cached(book, nm(spine))), u => t)
 
 @unsafe
 def j_direct_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTerm, +spine: KTerm, +pure: JPure) -> KTerm:
@@ -292,41 +288,3 @@ def j_direct_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTe
     kc(KTerm, j_covered_defs(book, context, j_pure_defs(pure)), u =>
       j_region_annotate(kt("JDirectCall", nm(spine), 0, 0, ks(spine)),
         j_direct_result(book, dt(lookup(book, nm(spine))), ks(spine))), u => t), u => t)
-
-# Count every copied callee body at every call occurrence, rather than unique
-# graph nodes. Fuel bounds total inline expansion and refuses before emission.
-@unsafe
-def j_direct_expand_def(+book: List<&2,KDef>, +d: KDef, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
-  kc(Maybe<&2,U32>, U32.is_gt(fuel, 0) && Bool.not(has_name(active, dn(d))), u =>
-    kc(Maybe<&2,U32>, db(d), u => Some{U32.sub(fuel, 1)},
-      u => j_direct_expand_term(book, dv(d), Con{dn(d), active}, U32.sub(fuel, 1))), u => None{})
-
-@unsafe
-def j_direct_expand_term(+book: List<&2,KDef>, +t: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
-  +spine = j_call_spine(t, Nil{})
-  +d = lookup(book, nm(spine))
-  kc(Maybe<&2,U32>, U32.is_gt(fuel, 0), u =>
-    kc(Maybe<&2,U32>, String.eq(tg(t), "App") && String.eq(tg(spine), "Call") &&
-      String.eq(dk(d), "Def") && U32.is_gt(da(d), 0) &&
-      Bool.not(j_primitive_call(book, spine)) && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
-      j_direct_expand_after(book, d, active,
-        j_direct_expand_terms(book, ks(spine), active, U32.sub(fuel, 1))),
-      u => j_direct_expand_terms(book, ks(t), active, U32.sub(fuel, 1))), u => None{})
-
-@unsafe
-def j_direct_expand_terms(+book: List<&2,KDef>, +ts: List<&2,KTerm>, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
-  match ts:
-    case Nil{}: Some{fuel}
-    case Con{t, rest}: j_direct_expand_more(book, rest, active, j_direct_expand_term(book, t, active, fuel))
-
-@unsafe
-def j_direct_expand_more(+book: List<&2,KDef>, +ts: List<&2,KTerm>, +active: List<&2,String>, +result: Maybe<&2,U32>) -> Maybe<&2,U32>:
-  match result:
-    case None{}: None{}
-    case Some{fuel}: j_direct_expand_terms(book, ts, active, fuel)
-
-@unsafe
-def j_direct_expand_after(+book: List<&2,KDef>, +d: KDef, +active: List<&2,String>, +result: Maybe<&2,U32>) -> Maybe<&2,U32>:
-  match result:
-    case None{}: None{}
-    case Some{fuel}: j_direct_expand_def(book, d, active, fuel)

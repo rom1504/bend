@@ -1,0 +1,37 @@
+{
+  "kind": "phase42-facts-profile-preparation",
+  "executed": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/compiler-cost01/tree-bitonic-0-candidate.request.json",
+      "sha256": "a54900687ab9047d4dd6719295ea7fefc42425e34281a979c2236fde8fe21bd4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase30/library-cost-worker.mjs",
+      "sha256": "f0dea569bdb02df60ed1156b0cead389e197291f1c3a3c6775102c7a03790f42"
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/facts/prepare.py",
+      "sha256": "3f41dbb0348cb5d9bf74f1ba4d65a3c75dada3add7b1237ad132d0d45a56ab79"
+    }
+  ],
+  "command": [
+    "taskset",
+    "-c",
+    "3",
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "--stack-size=4096",
+    "--max-old-space-size=1024",
+    "--cpu-prof",
+    "--cpu-prof-dir=/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/facts/profile-plan01",
+    "--cpu-prof-name=compiler.cpuprofile",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase30/library-cost-worker.mjs",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/facts/profile-plan01/request.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/facts/profile-plan01/result.json"
+  ],
+  "scope": "One normal checked library request. CPU capture includes preflight/import/postflight; requestMs is the maintained worker boundary. Not a timing comparison."
+}

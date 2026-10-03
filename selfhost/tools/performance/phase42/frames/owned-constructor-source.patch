@@ -1,0 +1,74 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -293,7 +293,7 @@
+ @unsafe
+ def j_component_declaration(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> String:
+   kc(String, j_pure_valid(pure), u =>
+-    j_component_covered_declaration(book, d, j_covered_term(book, j_pure_remove(j_pure_defs(pure), dn(d)), dv(d))), u => "")
++    j_component_covered_declaration(book, d, j_owned_term(j_covered_term(book, j_pure_remove(j_pure_defs(pure), dn(d)), dv(d)))), u => "")
+ 
+ @unsafe
+ def j_component_covered_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm) -> String:
+@@ -434,7 +434,7 @@
+   +tel = j_linear_tel(book, t, ty)
+   kc(String, U32.is_eq(phase, 3), u =>
+     "$value=" ++ kc(String, String.eq(tg(t), "Ctr"),
+-      u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "])",
++      u => kc(String, j_owned_ctor(book, t, ty), u => "({$:" ++ j_quote(nm(t)) ++ ",a:[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "]})", u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "])" ),
+       u => j_linear_combiner_emit(book, nm(spine), j_producer_unary_resume(book, env, ks(spine), tel, child, 0))) ++ ";", u =>
+     j_producer_unary_before(book, env, ks(spine), tel, child, 0) ++
+     "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(j_strip(terms_at(ks(spine), child)), Nil{})), dt(d)) ++ "];" ++
+@@ -515,3 +515,39 @@
+     j_region_annotate(kt("JCall", dn(d), 0, 1, ks(j_call_spine(rebuilt, Nil{}))),
+       j_covered_result(dt(d), ks(j_call_spine(original, Nil{})))),
+     u => j_direct_call_term(book, context, rebuilt))
++
++
++# Only independently admitted private bodies invoke this plan transform. Keep
++# original Ctr shape and identity so structural linear reconstruction and shared
++# binder typing still see their original source nodes. No public expression is
++# marked, and no native representation is changed.
++@unsafe
++def j_owned_term(+t: KTerm) -> KTerm:
++  kc(KTerm, String.eq(tg(t), "Ann"), u =>
++    k_with_children(t, [j_owned_term(kid(t, 0)), kid(t, 1)]), u =>
++  kc(KTerm, String.eq(tg(t), "Ctr"), u =>
++    k_rebuild(t, nm(t), ix(t), qt(t), j_owned_terms(ks(t)), Con{"$private.owned.ctor", rm(t)}, kb(t), ke(t)),
++    u => k_with_children(t, j_owned_terms(ks(t)))))
++
++@unsafe
++def j_owned_terms(+ts: List<&2,KTerm>) -> List<&2,KTerm>:
++  match ts:
++    case Nil{}: Nil{}
++    case Con{h, rest}: Con{j_owned_term(h), j_owned_terms(rest)}
++
++# The runtime ctor's nonnative branch is exactly {$:name,a:fields}; it has no
++# registration or ownership side effect. Preserve its tag, field array, field
++# order, fresh root allocation, and shared child references literally.
++@unsafe
++def j_owned_ctor(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm) -> Bool:
++  kc(Bool, has_name(rm(t), "$private.owned.ctor"),
++    u => j_owned_ctor_type(book, t, wnf(book, ty)), u => False{})
++
++@unsafe
++def j_owned_ctor_type(+book: List<&2,KDef>, +t: KTerm, +head: KTerm) -> Bool:
++  +owner = lookup(book, nm(head))
++  +c = j_layout_ctor(book, head, nm(t))
++  String.eq(tg(head), "ADT") &&
++    String.eq(dk(owner), "ADT") && Bool.not(db(owner)) && j_pure_type(book, head) &&
++    String.eq(dk(c), "Ctr") && String.eq(dn(c), nm(t)) && Bool.not(db(c)) &&
++    U32.is_eq(terms_len(ks(t)), da(c))
+--- a/selfhost/src/back/js/emit.bend
++++ b/selfhost/src/back/js/emit.bend
+@@ -715,7 +715,10 @@
+ 
+ @unsafe
+ def j_constructor_literal(book, env, t, ty, literal):
+-  kc(String, String.eq(literal, ""), u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_ctor_args(book, env, ks(t), j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty)))) ++ "])", u => literal)
++  kc(String, String.eq(literal, ""), u =>
++    kc(String, j_owned_ctor(book, t, ty),
++      u => "({$:" ++ j_quote(nm(t)) ++ ",a:[" ++ j_ctor_args(book, env, ks(t), j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty)))) ++ "]})",
++      u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_ctor_args(book, env, ks(t), j_specialize(book, dt(j_layout_ctor(book, wnf(book, ty), nm(t))), ks(wnf(book, ty)))) ++ "])"), u => literal)
+ 
+ law j_io_type:
+   for +book: List<&2, KDef>

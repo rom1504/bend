@@ -1,0 +1,490 @@
+{
+  "kind": "phase42-facts-generated-owner-samples",
+  "samples": 5853,
+  "sampledMicroseconds": 7283027,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/compiler-profile01/compiler.cpuprofile",
+      "sha256": "9c9060cb42c5a6a3f0949636f496f5ff215297a660c54b3d842a30cd3f9b3af9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/checked01/equality/api.mjs",
+      "sha256": "9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b"
+    }
+  ],
+  "scope": "Whole capture. Anonymous API closure lines map to enclosing emitted top-level Bend definition. Stack union for each prefix avoids internal double counting; different prefixes and phase rows overlap. Native tail trampolines can erase logical callers; owner mapping cannot reconstruct them.",
+  "families": [
+    {
+      "prefix": "j_component_",
+      "sampledMicroseconds": 813148,
+      "samples": 658,
+      "wholeCapturePercent": 11.164973025638927
+    },
+    {
+      "prefix": "j_pure_",
+      "sampledMicroseconds": 844827,
+      "samples": 698,
+      "wholeCapturePercent": 11.599943265348323
+    },
+    {
+      "prefix": "component-or-pure",
+      "sampledMicroseconds": 939765,
+      "samples": 767,
+      "wholeCapturePercent": 12.903494659569434
+    },
+    {
+      "prefix": "j_region_",
+      "sampledMicroseconds": 491536,
+      "samples": 420,
+      "wholeCapturePercent": 6.749061894182185
+    },
+    {
+      "prefix": "j_layout_",
+      "sampledMicroseconds": 13758,
+      "samples": 11,
+      "wholeCapturePercent": 0.18890497041957965
+    },
+    {
+      "prefix": "j_",
+      "sampledMicroseconds": 1322393,
+      "samples": 1105,
+      "wholeCapturePercent": 18.157189311532143
+    }
+  ],
+  "analysisSymbols": [
+    {
+      "name": "j_component_plan",
+      "inclusiveMicroseconds": 760218,
+      "wholeCapturePercent": 10.438214769765374
+    },
+    {
+      "name": "j_pure_graph",
+      "inclusiveMicroseconds": 753539,
+      "wholeCapturePercent": 10.346508395478967
+    },
+    {
+      "name": "j_component_named",
+      "inclusiveMicroseconds": 632803,
+      "wholeCapturePercent": 8.688736153250565
+    },
+    {
+      "name": "j_pure_match",
+      "inclusiveMicroseconds": 624347,
+      "wholeCapturePercent": 8.572630583409893
+    },
+    {
+      "name": "j_pure_graph_callees",
+      "inclusiveMicroseconds": 535754,
+      "wholeCapturePercent": 7.356199558233135
+    },
+    {
+      "name": "j_pure_type_check",
+      "inclusiveMicroseconds": 504844,
+      "wholeCapturePercent": 6.931788115024151
+    },
+    {
+      "name": "j_pure_type_head",
+      "inclusiveMicroseconds": 475151,
+      "wholeCapturePercent": 6.524086756783958
+    },
+    {
+      "name": "j_pure_type_ctors",
+      "inclusiveMicroseconds": 380190,
+      "wholeCapturePercent": 5.220219559806657
+    },
+    {
+      "name": "j_pure_args_head",
+      "inclusiveMicroseconds": 365695,
+      "wholeCapturePercent": 5.021195170634408
+    },
+    {
+      "name": "j_pure_type_fields",
+      "inclusiveMicroseconds": 344237,
+      "wholeCapturePercent": 4.726564929664548
+    },
+    {
+      "name": "j_pure_type",
+      "inclusiveMicroseconds": 293450,
+      "wholeCapturePercent": 4.029231252335053
+    },
+    {
+      "name": "j_pure_expr",
+      "inclusiveMicroseconds": 181899,
+      "wholeCapturePercent": 2.497574154263056
+    },
+    {
+      "name": "j_pure_bindings",
+      "inclusiveMicroseconds": 163908,
+      "wholeCapturePercent": 2.2505477461500556
+    },
+    {
+      "name": "j_component_call",
+      "inclusiveMicroseconds": 158229,
+      "wholeCapturePercent": 2.172571926480569
+    },
+    {
+      "name": "j_pure_prefix",
+      "inclusiveMicroseconds": 157903,
+      "wholeCapturePercent": 2.1680957656754534
+    },
+    {
+      "name": "j_component_emit_match",
+      "inclusiveMicroseconds": 156975,
+      "wholeCapturePercent": 2.155353810990952
+    },
+    {
+      "name": "j_component_declaration",
+      "inclusiveMicroseconds": 156975,
+      "wholeCapturePercent": 2.155353810990952
+    },
+    {
+      "name": "j_component_emit",
+      "inclusiveMicroseconds": 154854,
+      "wholeCapturePercent": 2.1262313046484653
+    },
+    {
+      "name": "j_pure_call",
+      "inclusiveMicroseconds": 151612,
+      "wholeCapturePercent": 2.081716846580412
+    },
+    {
+      "name": "j_component_finish",
+      "inclusiveMicroseconds": 149493,
+      "wholeCapturePercent": 2.0526218013471595
+    },
+    {
+      "name": "j_pure_signature",
+      "inclusiveMicroseconds": 117253,
+      "wholeCapturePercent": 1.6099487204976721
+    },
+    {
+      "name": "j_pure_eligible",
+      "inclusiveMicroseconds": 107643,
+      "wholeCapturePercent": 1.477998090629075
+    },
+    {
+      "name": "j_component_select",
+      "inclusiveMicroseconds": 104941,
+      "wholeCapturePercent": 1.4408981320541583
+    },
+    {
+      "name": "j_component_wrapper_calls",
+      "inclusiveMicroseconds": 103640,
+      "wholeCapturePercent": 1.4230346804975458
+    },
+    {
+      "name": "j_pure_args",
+      "inclusiveMicroseconds": 66179,
+      "wholeCapturePercent": 0.9086743739931212
+    },
+    {
+      "name": "j_pure_expr_on",
+      "inclusiveMicroseconds": 60309,
+      "wholeCapturePercent": 0.8280760183918033
+    },
+    {
+      "name": "j_component_enter",
+      "inclusiveMicroseconds": 49777,
+      "wholeCapturePercent": 0.6834658171664062
+    },
+    {
+      "name": "j_pure_constructor",
+      "inclusiveMicroseconds": 29659,
+      "wholeCapturePercent": 0.407234519383218
+    },
+    {
+      "name": "j_component_match",
+      "inclusiveMicroseconds": 26956,
+      "wholeCapturePercent": 0.37012083025368436
+    },
+    {
+      "name": "j_pure_type_field_next",
+      "inclusiveMicroseconds": 13868,
+      "wholeCapturePercent": 0.19041533142744083
+    },
+    {
+      "name": "j_component_leaf",
+      "inclusiveMicroseconds": 13861,
+      "wholeCapturePercent": 0.19031921754512238
+    },
+    {
+      "name": "j_component_prefix",
+      "inclusiveMicroseconds": 10872,
+      "wholeCapturePercent": 0.14927858979514974
+    },
+    {
+      "name": "j_component_independent",
+      "inclusiveMicroseconds": 4796,
+      "wholeCapturePercent": 0.06585173994274633
+    },
+    {
+      "name": "j_pure_native",
+      "inclusiveMicroseconds": 4018,
+      "wholeCapturePercent": 0.055169368450782894
+    },
+    {
+      "name": "j_component_refs",
+      "inclusiveMicroseconds": 3300,
+      "wholeCapturePercent": 0.04531083023583463
+    },
+    {
+      "name": "j_pure_bool_native",
+      "inclusiveMicroseconds": 2960,
+      "wholeCapturePercent": 0.040642441666081976
+    },
+    {
+      "name": "j_component_closed",
+      "inclusiveMicroseconds": 2115,
+      "wholeCapturePercent": 0.029040123014784924
+    },
+    {
+      "name": "j_component_backedges",
+      "inclusiveMicroseconds": 2115,
+      "wholeCapturePercent": 0.029040123014784924
+    },
+    {
+      "name": "j_pure_graph_body",
+      "inclusiveMicroseconds": 2098,
+      "wholeCapturePercent": 0.02880670358629729
+    },
+    {
+      "name": "j_component_self",
+      "inclusiveMicroseconds": 1752,
+      "wholeCapturePercent": 0.024055931688843114
+    },
+    {
+      "name": "j_component_admit",
+      "inclusiveMicroseconds": 1073,
+      "wholeCapturePercent": 0.014732885103954716
+    },
+    {
+      "name": "j_pure_add",
+      "inclusiveMicroseconds": 1057,
+      "wholeCapturePercent": 0.014513196230084003
+    },
+    {
+      "name": "j_pure_tick",
+      "inclusiveMicroseconds": 1049,
+      "wholeCapturePercent": 0.014403351793148646
+    },
+    {
+      "name": "j_pure_remove",
+      "inclusiveMicroseconds": 207,
+      "wholeCapturePercent": 0.002842224805702354
+    }
+  ],
+  "phases": [
+    {
+      "name": "verifyAttempt",
+      "inclusiveMicroseconds": 3022339,
+      "wholeCapturePercent": 41.49839071034612
+    },
+    {
+      "name": "inspectWithMemo",
+      "inclusiveMicroseconds": 2462014,
+      "wholeCapturePercent": 33.80481769462066
+    },
+    {
+      "name": "transformEquality",
+      "inclusiveMicroseconds": 1227507,
+      "wholeCapturePercent": 16.85435190615111
+    },
+    {
+      "name": "transformTailChoices",
+      "inclusiveMicroseconds": 485744,
+      "wholeCapturePercent": 6.669534521840987
+    },
+    {
+      "name": "transformChoices",
+      "inclusiveMicroseconds": 412618,
+      "wholeCapturePercent": 5.665473984924126
+    },
+    {
+      "name": "validatedCache",
+      "inclusiveMicroseconds": 199717,
+      "wholeCapturePercent": 2.742225176427329
+    },
+    {
+      "name": "inspect",
+      "inclusiveMicroseconds": 29603,
+      "wholeCapturePercent": 0.4064656083246705
+    }
+  ],
+  "largestBendSelfOwners": [
+    {
+      "name": "String$starts_with",
+      "sampledMicroseconds": 174710,
+      "wholeCapturePercent": 2.3988651971220207
+    },
+    {
+      "name": "index_find",
+      "sampledMicroseconds": 156197,
+      "wholeCapturePercent": 2.1446714394989885
+    },
+    {
+      "name": "String$contains",
+      "sampledMicroseconds": 111769,
+      "wholeCapturePercent": 1.5346503589784852
+    },
+    {
+      "name": "index_lookup",
+      "sampledMicroseconds": 61323,
+      "wholeCapturePercent": 0.8419988007733598
+    },
+    {
+      "name": "j_pure_type_head",
+      "sampledMicroseconds": 50136,
+      "wholeCapturePercent": 0.6883950862738804
+    },
+    {
+      "name": "lookup",
+      "sampledMicroseconds": 44170,
+      "wholeCapturePercent": 0.6064785974293381
+    },
+    {
+      "name": "ffw_walk_existing",
+      "sampledMicroseconds": 40827,
+      "wholeCapturePercent": 0.5605773533449759
+    },
+    {
+      "name": "j_intrinsic",
+      "sampledMicroseconds": 33546,
+      "wholeCapturePercent": 0.4606051851791844
+    },
+    {
+      "name": "norm_eval",
+      "sampledMicroseconds": 32607,
+      "wholeCapturePercent": 0.4477121943938969
+    },
+    {
+      "name": "j_region_scalar",
+      "sampledMicroseconds": 32540,
+      "wholeCapturePercent": 0.44679224723456334
+    },
+    {
+      "name": "j_list_ground_type",
+      "sampledMicroseconds": 31784,
+      "wholeCapturePercent": 0.4364119479441721
+    },
+    {
+      "name": "check_node",
+      "sampledMicroseconds": 31479,
+      "wholeCapturePercent": 0.43222412878601163
+    },
+    {
+      "name": "j_u32_native_ctor",
+      "sampledMicroseconds": 29478,
+      "wholeCapturePercent": 0.4047492889975555
+    },
+    {
+      "name": "j_pure_type_fields",
+      "sampledMicroseconds": 29282,
+      "wholeCapturePercent": 0.40205810029263933
+    },
+    {
+      "name": "j_u32_native_book",
+      "sampledMicroseconds": 28608,
+      "wholeCapturePercent": 0.3928037064808355
+    },
+    {
+      "name": "j_find_ctor",
+      "sampledMicroseconds": 27526,
+      "wholeCapturePercent": 0.3779472463853285
+    },
+    {
+      "name": "check",
+      "sampledMicroseconds": 26879,
+      "wholeCapturePercent": 0.36906357754818153
+    },
+    {
+      "name": "norm_cmp_loop",
+      "sampledMicroseconds": 25020,
+      "wholeCapturePercent": 0.34353847651532804
+    },
+    {
+      "name": "index_insert",
+      "sampledMicroseconds": 24696,
+      "wholeCapturePercent": 0.3390897768194461
+    },
+    {
+      "name": "j_pure_type_ctors",
+      "sampledMicroseconds": 24093,
+      "wholeCapturePercent": 0.3308102523854436
+    },
+    {
+      "name": "j_pure_type_check",
+      "sampledMicroseconds": 23335,
+      "wholeCapturePercent": 0.32040249198581855
+    },
+    {
+      "name": "j_primitive_type",
+      "sampledMicroseconds": 23137,
+      "wholeCapturePercent": 0.31768384217166845
+    },
+    {
+      "name": "norm_exact_lists",
+      "sampledMicroseconds": 21238,
+      "wholeCapturePercent": 0.29160951895413817
+    },
+    {
+      "name": "missing",
+      "sampledMicroseconds": 17889,
+      "wholeCapturePercent": 0.24562589154207448
+    },
+    {
+      "name": "check_fits",
+      "sampledMicroseconds": 15421,
+      "wholeCapturePercent": 0.21173888274751693
+    },
+    {
+      "name": "infer_node",
+      "sampledMicroseconds": 15278,
+      "wholeCapturePercent": 0.20977541343729744
+    },
+    {
+      "name": "j_list_ground_head",
+      "sampledMicroseconds": 14779,
+      "wholeCapturePercent": 0.20292386668345455
+    },
+    {
+      "name": "ffd_walk",
+      "sampledMicroseconds": 13248,
+      "wholeCapturePercent": 0.18190238756495067
+    },
+    {
+      "name": "index_remove",
+      "sampledMicroseconds": 12877,
+      "wholeCapturePercent": 0.1768083518020735
+    },
+    {
+      "name": "norm_node_min",
+      "sampledMicroseconds": 12755,
+      "wholeCapturePercent": 0.17513322413880933
+    },
+    {
+      "name": "j_pure_signature",
+      "sampledMicroseconds": 11179,
+      "wholeCapturePercent": 0.15349387006254406
+    },
+    {
+      "name": "j_pure_eligible",
+      "sampledMicroseconds": 10676,
+      "wholeCapturePercent": 0.1465874010902335
+    },
+    {
+      "name": "j_arm_type",
+      "sampledMicroseconds": 10655,
+      "wholeCapturePercent": 0.14629905944327817
+    },
+    {
+      "name": "tg",
+      "sampledMicroseconds": 10539,
+      "wholeCapturePercent": 0.1447063151077155
+    },
+    {
+      "name": "kid",
+      "sampledMicroseconds": 10534,
+      "wholeCapturePercent": 0.1446376623346309
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+# A scalar-only use of a closed total producer/filter/map/fold pipeline may erase
+# its private lists. This is selected only after the existing whole-root proof.
+@unsafe
+def j_fusion_var(+t: KTerm, +id: U32) -> Bool:
+  +h = j_strip(t)
+  String.eq(tg(h), "Var") && U32.is_eq(ix(h), id)
+
+@unsafe
+def j_fusion_has_var(+xs: List<&2,KTerm>, +id: U32) -> Bool:
+  match xs:
+    case Nil{}: False{}
+    case Con{h, rest}: U32.is_eq(ix(h), id) || j_fusion_has_var(rest, id)
+
+# No arbitrary JPure calls: these native U32 operations are total under the
+# unchanged numeric host guard. Existing emission owns per-operation wrapping
+# and mod's zero-divisor behavior; this pass does not reassociate arithmetic.
+@unsafe
+def j_fusion_scalar(+book: List<&2,KDef>, +t: KTerm, +vars: List<&2,KTerm>) -> Bool:
+  +h = j_strip(t)
+  +s = j_call_spine(h, Nil{})
+  kc(Bool, String.eq(tg(h), "Var"), u => j_fusion_has_var(vars, ix(h)), u =>
+    kc(Bool, String.eq(tg(h), "Lit"), u => String.eq(nm(h), "U32"), u =>
+      String.eq(tg(s), "Call") && j_primitive_call(book, s) && U32.is_eq(terms_len(ks(s)), 2) &&
+      (String.eq(nm(s), "U32.add") || String.eq(nm(s), "U32.sub") || String.eq(nm(s), "U32.mul") ||
+       String.eq(nm(s), "U32.mod") || String.eq(nm(s), "U32.is_eq") ||
+       String.eq(nm(s), "U32.is_gt") || String.eq(nm(s), "U32.is_lt")) &&
+      j_fusion_scalars(book, ks(s), vars)))
+
+@unsafe
+def j_fusion_scalars(+book: List<&2,KDef>, +xs: List<&2,KTerm>, +vars: List<&2,KTerm>) -> Bool:
+  match xs:
+    case Nil{}: True{}
+    case Con{h, rest}: j_fusion_scalar(book, h, vars) && j_fusion_scalars(book, rest, vars)
+
+@unsafe
+def j_fusion_after(+t: KTerm, +left: U32) -> KTerm:
+  +h = j_strip(t)
+  kc(KTerm, U32.is_eq(left, 0), u => h, u =>
+    kc(KTerm, String.eq(tg(h), "Lam") && U32.is_eq(terms_len(ks(h)), 1),
+      u => j_fusion_after(kid(h, 0), U32.sub(left, 1)), u => atom("Absent")))
+
+@unsafe
+def j_fusion_binder(+t: KTerm, +at: U32) -> KTerm:
+  +h = j_strip(t)
+  kc(KTerm, String.eq(tg(h), "Lam"), u =>
+    kc(KTerm, U32.is_eq(at, 0), u => h, u => j_fusion_binder(kid(h, 0), U32.sub(at, 1))), u => atom("Absent"))
+
+@unsafe
+def j_fusion_unlet(+t: KTerm, +left: U32) -> KTerm:
+  +h = j_strip(t)
+  +b = kid(h, 0)
+  kc(KTerm, U32.is_gt(left, 0) && String.eq(tg(h), "Let") && U32.is_eq(terms_len(ks(h)), 2) &&
+    String.eq(tg(b), "Bind") && Bool.not(U32.is_eq(qt(b), 0)) && U32.is_eq(terms_len(ks(b)), 1) &&
+    String.eq(tg(j_strip(kid(b, 0))), "Var"),
+    u => j_fusion_unlet(subst(kid(h, 1), ix(b), j_strip(kid(b, 0))), U32.sub(left, 1)), u => h)
+
+@unsafe
+def j_fusion_cases(+t: KTerm, +empty: String, +link: String) -> Bool:
+  +h = j_strip(t)
+  +r = j_strip(kid(h, 1))
+  String.eq(tg(h), "Mat") && String.eq(nm(h), empty) && U32.is_eq(terms_len(ks(h)), 2) &&
+    String.eq(tg(r), "Mat") && String.eq(nm(r), link) && U32.is_eq(terms_len(ks(r)), 2) &&
+    String.eq(tg(j_strip(kid(r, 1))), "Efq")
+
+@unsafe
+def j_fusion_empty(+d: KDef) -> KTerm:
+  kid(j_strip(dv(d)), 0)
+
+@unsafe
+def j_fusion_link(+d: KDef) -> KTerm:
+  kid(j_strip(kid(j_strip(dv(d)), 1)), 0)
+
+@unsafe
+def j_fusion_def(+d: KDef, +arity: U32) -> Bool:
+  String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) && U32.is_eq(da(d), arity)
+
+@unsafe
+def j_fusion_ctor(+t: KTerm, +name: String, +fields: U32) -> Bool:
+  +h = j_strip(t)
+  String.eq(tg(h), "Ctr") && String.eq(nm(h), name) && U32.is_eq(terms_len(ks(h)), fields)
+
+@unsafe
+def j_fusion_call(+t: KTerm, +name: String, +arity: U32) -> Bool:
+  +s = j_call_spine(t, Nil{})
+  String.eq(tg(s), "Call") && String.eq(nm(s), name) && U32.is_eq(terms_len(ks(s)), arity)
+
+@unsafe
+def j_fusion_owner(+book: List<&2,KDef>, +ty: KTerm, +empty: String, +link: String) -> Bool:
+  +h = wnf(book, ty)
+  +d = lookup(book, nm(h))
+  +c = lookup(dc(d), link)
+  +z = lookup(dc(d), empty)
+  +tel = wnf(book, j_specialize(book, dt(c), ks(h)))
+  +tail = wnf(book, kid(tel, 1))
+  String.eq(tg(h), "ADT") && (j_fold_type(book, h) || j_list_ground_type(book, h)) &&
+    U32.is_eq(j_region_def_count(dc(d)), 2) && Bool.not(String.eq(empty, link)) &&
+    String.eq(dk(z), "Ctr") && U32.is_eq(da(z), 0) &&
+    String.eq(dk(c), "Ctr") && U32.is_eq(da(c), 2) &&
+    String.eq(tg(tel), "All") && Bool.not(U32.is_eq(qt(tel), 0)) && j_primitive_type(book, kid(tel, 0), "U32") &&
+    String.eq(tg(tail), "All") && Bool.not(U32.is_eq(qt(tail), 0)) && j_region_same_type(book, kid(tail, 0), h) &&
+    j_region_same_type(book, kid(tail, 1), h)
+
+@unsafe
+def j_fusion_producer(+book: List<&2,KDef>, +d: KDef, +empty: String, +link: String) -> Bool:
+  +z = j_fusion_empty(d)
+  +s = j_fusion_link(d)
+  +body = j_fusion_after(s, 2)
+  +call = j_call_spine(kid(body, 1), Nil{})
+  j_fusion_def(d, 2) && j_fusion_cases(dv(d), "Zero", "Succ") &&
+    String.eq(tg(j_fusion_binder(z, 0)), "Lam") && j_fusion_ctor(j_fusion_after(z, 1), empty, 0) &&
+    String.eq(tg(j_fusion_binder(s, 1)), "Lam") && j_fusion_ctor(body, link, 2) &&
+    j_fusion_call(kid(body, 1), dn(d), 2) && j_fusion_var(kid(call, 0), ix(j_fusion_binder(s, 0))) &&
+    j_fusion_scalar(book, kid(body, 0), [j_fusion_binder(s, 1)]) &&
+    j_fusion_scalar(book, kid(call, 1), [j_fusion_binder(s, 1)])
+
+@unsafe
+def j_fusion_map(+book: List<&2,KDef>, +d: KDef, +empty: String, +link: String) -> Bool:
+  +s = j_fusion_link(d)
+  +body = j_fusion_after(s, 2)
+  +call = j_call_spine(kid(body, 1), Nil{})
+  j_fusion_def(d, 1) && j_fusion_cases(dv(d), empty, link) && j_fusion_ctor(j_fusion_empty(d), empty, 0) &&
+    String.eq(tg(j_fusion_binder(s, 1)), "Lam") && j_fusion_ctor(body, link, 2) &&
+    j_fusion_call(kid(body, 1), dn(d), 1) && j_fusion_var(kid(call, 0), ix(j_fusion_binder(s, 1))) &&
+    j_fusion_scalar(book, kid(body, 0), [j_fusion_binder(s, 0)])
+
+@unsafe
+def j_fusion_fold(+book: List<&2,KDef>, +d: KDef, +empty: String, +link: String) -> Bool:
+  +z = j_fusion_empty(d)
+  +s = j_fusion_link(d)
+  +call = j_call_spine(j_fusion_after(s, 3), Nil{})
+  j_fusion_def(d, 2) && j_fusion_cases(dv(d), empty, link) &&
+    String.eq(tg(j_fusion_binder(z, 0)), "Lam") && j_fusion_var(j_fusion_after(z, 1), ix(j_fusion_binder(z, 0))) &&
+    String.eq(tg(j_fusion_binder(s, 2)), "Lam") && j_fusion_call(j_fusion_after(s, 3), dn(d), 2) &&
+    j_fusion_var(kid(call, 0), ix(j_fusion_binder(s, 1))) &&
+    j_fusion_scalar(book, kid(call, 1), [j_fusion_binder(s, 0), j_fusion_binder(s, 2)])
+
+# The selector consumes head, child and Bool; True reconstructs exactly one
+# original node and False returns exactly the child. Arbitrary callbacks refuse.
+@unsafe
+def j_fusion_choose(+d: KDef, +link: String) -> Bool:
+  +t = j_fusion_after(dv(d), 2)
+  +yes = j_strip(kid(t, 0))
+  +no = j_strip(kid(t, 1))
+  j_fusion_def(d, 3) && String.eq(tg(j_fusion_binder(dv(d), 1)), "Lam") &&
+    j_fusion_cases(t, "True", "False") && j_fusion_ctor(yes, link, 2) &&
+    j_fusion_var(kid(yes, 0), ix(j_fusion_binder(dv(d), 0))) &&
+    j_fusion_var(kid(yes, 1), ix(j_fusion_binder(dv(d), 1))) &&
+    j_fusion_var(kid(no, 0), ix(j_fusion_binder(dv(d), 1)))
+
+@unsafe
+def j_fusion_filter(+book: List<&2,KDef>, +d: KDef, +empty: String, +link: String) -> Bool:
+  +s = j_fusion_link(d)
+  +call = j_call_spine(j_fusion_unlet(j_fusion_after(s, 2), 8), Nil{})
+  +child = j_call_spine(kid(call, 1), Nil{})
+  j_fusion_def(d, 1) && j_fusion_cases(dv(d), empty, link) && j_fusion_ctor(j_fusion_empty(d), empty, 0) &&
+    String.eq(tg(j_fusion_binder(s, 1)), "Lam") && String.eq(tg(call), "Call") && U32.is_eq(terms_len(ks(call)), 3) &&
+    j_fusion_choose(lookup(book, nm(call)), link) && j_fusion_var(kid(call, 0), ix(j_fusion_binder(s, 0))) &&
+    j_fusion_call(kid(call, 1), dn(d), 1) && j_fusion_var(kid(child, 0), ix(j_fusion_binder(s, 1))) &&
+    j_fusion_scalar(book, kid(call, 2), [j_fusion_binder(s, 0)])
+
+@unsafe
+def j_fusion_env(+vars: List<&2,KTerm>) -> List<&2,KTerm>:
+  match vars:
+    case Nil{}: Nil{}
+    case Con{h, rest}: Con{kt("Env", "", ix(h), 0, [ref("U32")]), j_fusion_env(rest)}
+
+@unsafe
+def j_fusion_expr(+book: List<&2,KDef>, +t: KTerm, +vars: List<&2,KTerm>) -> String:
+  j_expr(book, j_fusion_env(vars), t, ref("U32"), False{})
+
+@unsafe
+def j_fusion_emit(+book: List<&2,KDef>, +vars: List<&2,KTerm>, +p: KDef, +f: KDef, +m: KDef, +r: KDef, +n: KTerm, +seed: KTerm, +initial: KTerm) -> String:
+  +ps = j_fusion_link(p)
+  +pb = j_fusion_after(ps, 2)
+  +pc = j_call_spine(kid(pb, 1), Nil{})
+  +fs = j_fusion_link(f)
+  +fc = j_call_spine(j_fusion_unlet(j_fusion_after(fs, 2), 8), Nil{})
+  +ms = j_fusion_link(m)
+  +rs = j_fusion_link(r)
+  +rc = j_call_spine(j_fusion_after(rs, 3), Nil{})
+  "/* private total scalar fusion */let $f_n=" ++ j_fusion_expr(book, n, vars) ++
+    ",$f_seed=" ++ j_fusion_expr(book, seed, vars) ++ ",$f_acc=" ++ j_fusion_expr(book, initial, vars) ++ ";" ++
+    "while($f_n!==0){const " ++ j_local(ix(j_fusion_binder(ps, 1))) ++ "=$f_seed;const $f_head=" ++
+    j_fusion_expr(book, kid(pb, 0), [j_fusion_binder(ps, 1)]) ++ ";--$f_n;$f_seed=" ++
+    j_fusion_expr(book, kid(pc, 1), [j_fusion_binder(ps, 1)]) ++ ";{" ++
+    "const " ++ j_local(ix(j_fusion_binder(fs, 0))) ++ "=$f_head;if(" ++
+    j_fusion_expr(book, kid(fc, 2), [j_fusion_binder(fs, 0)]) ++ "){{const " ++
+    j_local(ix(j_fusion_binder(ms, 0))) ++ "=$f_head;const $f_mapped=" ++
+    j_fusion_expr(book, kid(j_fusion_after(ms, 2), 0), [j_fusion_binder(ms, 0)]) ++ ";{" ++
+    "const " ++ j_local(ix(j_fusion_binder(rs, 0))) ++ "=$f_mapped;const " ++
+    j_local(ix(j_fusion_binder(rs, 2))) ++ "=$f_acc;$f_acc=" ++
+    j_fusion_expr(book, kid(rc, 1), [j_fusion_binder(rs, 0), j_fusion_binder(rs, 2)]) ++ ";}}}}}return $f_acc;"
+
+@unsafe
+def j_fusion_pipeline(+book: List<&2,KDef>, +vars: List<&2,KTerm>, +t: KTerm) -> String:
+  +r = j_call_spine(t, Nil{})
+  +m = j_call_spine(kid(r, 0), Nil{})
+  +f = j_call_spine(kid(m, 0), Nil{})
+  +p = j_call_spine(kid(f, 0), Nil{})
+  kc(String, String.eq(tg(r), "Call") && U32.is_eq(terms_len(ks(r)), 2) &&
+    String.eq(tg(m), "Call") && U32.is_eq(terms_len(ks(m)), 1) &&
+    String.eq(tg(f), "Call") && U32.is_eq(terms_len(ks(f)), 1) &&
+    String.eq(tg(p), "Call") && U32.is_eq(terms_len(ks(p)), 2),
+    u => j_fusion_pipeline_defs(book, vars, r, m, f, p, lookup(book, nm(r)), lookup(book, nm(m)), lookup(book, nm(f)), lookup(book, nm(p))), u => "")
+
+@unsafe
+def j_fusion_pipeline_defs(+book: List<&2,KDef>, +vars: List<&2,KTerm>, +rc: KTerm, +mc: KTerm, +fc: KTerm, +pc: KTerm, +r: KDef, +m: KDef, +f: KDef, +p: KDef) -> String:
+  +owner = j_fold_root_result(book, dt(p), da(p))
+  +empty = nm(j_fusion_after(j_fusion_empty(p), 1))
+  +link = nm(j_fusion_after(j_fusion_link(p), 2))
+  +n = j_call_spine(kid(pc, 0), Nil{})
+  kc(String, j_fusion_owner(book, owner, empty, link) &&
+    j_region_same_type(book, kid(wnf(book, dt(r)), 0), owner) &&
+    j_region_same_type(book, kid(wnf(book, dt(m)), 0), owner) && j_region_same_type(book, j_fold_root_result(book, dt(m), da(m)), owner) &&
+    j_region_same_type(book, kid(wnf(book, dt(f)), 0), owner) && j_region_same_type(book, j_fold_root_result(book, dt(f), da(f)), owner) &&
+    j_primitive_type(book, j_fold_root_result(book, dt(r), da(r)), "U32") &&
+    j_fusion_producer(book, p, empty, link) && j_fusion_filter(book, f, empty, link) &&
+    j_fusion_map(book, m, empty, link) && j_fusion_fold(book, r, empty, link) &&
+    j_fusion_call(kid(pc, 0), "U32.to_nat", 1) && j_primitive_call(book, n) &&
+    j_fusion_scalar(book, kid(n, 0), vars) && j_fusion_scalar(book, kid(pc, 1), vars) && j_fusion_scalar(book, kid(rc, 1), vars),
+    u => j_fusion_emit(book, vars, p, f, m, r, kid(n, 0), kid(pc, 1), kid(rc, 1)), u => "")
+
+# Only a nested scalar use is admitted. Let-bound/shared/returned intermediates
+# and non-U32 root inputs refuse before any new code is emitted.
+@unsafe
+def j_fusion_root_prefix(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +vars: List<&2,KTerm>, +at: U32, +left: U32) -> String:
+  +h = j_strip(t)
+  +head = wnf(book, ty)
+  kc(String, U32.is_eq(left, 0), u =>
+    kc(String, j_primitive_type(book, head, "U32"), u => j_fusion_pipeline(book, vars, h), u => ""), u =>
+    kc(String, String.eq(tg(h), "Lam") && String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) &&
+      j_primitive_type(book, kid(head, 0), "U32"), u =>
+      j_fusion_root_bind(h, at, j_fusion_root_prefix(book, kid(h, 0), subst(kid(head, 1), ix(head), var(nm(h), ix(h))),
+        Con{h, vars}, U32.inc(at), U32.sub(left, 1))), u => ""))
+
+@unsafe
+def j_fusion_root_bind(+t: KTerm, +at: U32, +body: String) -> String:
+  kc(String, String.eq(body, ""), u => "", u => "const " ++ j_local(ix(t)) ++ "=$s" ++ U32.show(at) ++ ";" ++ body)
+
+@unsafe
+def j_fusion_root_body(+book: List<&2,KDef>, +d: KDef, +fallback: String) -> String:
+  +body = j_fusion_root_prefix(book, dv(d), dt(d), Nil{}, 0, da(d))
+  kc(String, String.eq(body, ""), u => fallback, u => body)

@@ -186,7 +186,7 @@ def j_component_wrapper_calls(+book: List<&2,KDef>, +d: KDef, +ds: List<&2,KDef>
       # typed graph independently guarantees saturated, first-order calls.
       kc(Bool, U32.is_gt(j_component_refs([dv(callee)], dn(callee), 1024, 0), 0) &&
         U32.is_gt(j_component_refs([dv(d)], dn(callee), 1024, 0), 0), u =>
-        kc(Bool, j_pure_valid(j_component_plan(book, callee)), u => True{}, u =>
+        kc(Bool, j_pure_valid(j_component_cached(book, dn(callee))), u => True{}, u =>
           j_component_wrapper_calls(book, d, rest)), u => j_component_wrapper_calls(book, d, rest))
 
 # Reject mutual backedges into this worker: forcing such a leaf could otherwise
@@ -282,7 +282,7 @@ def j_component_leaf(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: 
 def j_component_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String) -> String:
   +d = lookup(book, nm(spine))
   kc(String, U32.is_eq(terms_len(ks(spine)), da(d)), u =>
-    j_component_call(book, env, spine, generic, j_component_plan(book, d)), u => generic)
+    j_component_call(book, env, spine, generic, j_component_cached(book, dn(d))), u => generic)
 
 @unsafe
 def j_component_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String, +pure: JPure) -> String:
@@ -506,7 +506,7 @@ def j_covered_app(+book: List<&2,KDef>, +context: List<&2,KDef>, +original: KTer
   +d = lookup(book, nm(spine))
   kc(KTerm, String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), da(d)) &&
     String.eq(dk(lookup(context, dn(d))), "Def") && exact_def(d, lookup(context, dn(d))), u =>
-      j_covered_component(book, context, original, rebuilt, d, j_component_plan(book, d)),
+      j_covered_component(book, context, original, rebuilt, d, j_component_cached(book, dn(d))),
     u => j_direct_call_term(book, context, rebuilt))
 
 @unsafe

@@ -1,49 +1,41 @@
-# Phase41 interim results
+# Phase41 final tree results
 
-**Interim, not final admission.** The checked Phase41 source patch passed and
-actual emitted tree output passed focused controls. A supplemental three-point
-screen favors the wrapper candidate against fresh Phase40 checked06 output.
-Integration and broader admission gates remain pending. [Canonical data and
-receipt identities](results.json); [experiment design](../../design/phase41/tree.md).
+The checked Phase41 tree change passes the final postinstall correctness audit and improves all three fresh tree workload comparisons against Phase40 checked06. Across five paired rounds, the candidate is 1.506× faster on `tree-bitonic`, 1.592× on tree depth6, and 1.506× on depth9. It remains 9.33–12.18× slower than pinned TypeScript. The unchanged controls are effectively flat.
 
-The clean emitted wrapper's median execution time was 1.40–1.45× lower than the
-fresh Phase40 output on these points. It remained 11.2–15.4× slower than pinned
-TypeScript. These are narrow generated-module observations, not a catalog-wide
-result or final compiler admission.
+The change costs compiler time: the `tree-bitonic` checked-library request median rises from 2,248.0 ms on Phase40 to 2,460.6 ms on Phase41 (+9.46%), with Phase41 slower in all three paired requests. Other sampled compile sources range from 0.16% faster (`local-pair`) to 6.95% faster (numeric recurrence); no aggregate compiler-speed claim follows from these four sources.
 
-| Point | Phase40 checked06 (ms) | Phase41 checked source wrapper (ms) | TypeScript (ms) | Phase40 / wrapper | Wrapper / TypeScript |
-|---|---:|---:|---:|---:|---:|
-| tree-bitonic | 4.8579 | 3.3718 | 0.2932 | 1.441× | 11.499× |
-| variation-tree-bitonic-6-17 | 0.8154 | 0.5839 | 0.0379 | 1.396× | 15.422× |
-| variation-tree-bitonic-9-123 | 12.4508 | 8.5905 | 0.7662 | 1.449× | 11.212× |
+## Fresh program timings
 
-All three rounds and expected values passed. Focused actual-emission controls
-record 124 oracles, 17 boundary checks, and the 60,002-node / 60,003-leaf deep
-case (`sum=420021`). The exact reports and their hashes are in `results.json`.
+These are clean same-run Phase41 execution measurements, not profiler samples. The maintained runner performed five rotated rounds per point across Phase40 checked06 baseline, Phase41 candidate, and pinned TypeScript. Every one of the 90 process samples passed its expected result. Rows report median and observed range in milliseconds per call. “Half drift” is the observed minimum–maximum split-half drift across rounds; it is not a confidence interval.
 
-## Checked edit-to-screen interval
+| Point | Phase40 median [range] | Phase41 median [range] | TypeScript median [range] | Phase40 / Phase41 | Candidate paired wins | Half drift Phase40 / Phase41 |
+|---|---:|---:|---:|---:|---:|---:|
+| tree-bitonic | 4.223 [4.137–4.638] | 2.804 [2.732–3.337] | 0.2722 [0.2701–0.2836] | 1.506× | 5/5 | −14.43%…+10.03% / −7.68%…+6.85% |
+| tree depth6, seed17 | 0.7147 [0.7060–0.7798] | 0.4490 [0.4383–0.4874] | 0.03687 [0.03677–0.04079] | 1.592× | 5/5 | +1.66%…+11.93% / −5.07%…+6.19% |
+| tree depth9, seed123 | 9.598 [9.481–10.504] | 6.371 [6.332–7.037] | 0.6826 [0.6792–0.7457] | 1.506× | 5/5 | −1.34%…+0.52% / −0.75%…+3.23% |
+| local-pair control | 2.628 [2.605–2.850] | 2.626 [2.619–2.846] | 1.236 [1.225–1.383] | 1.001× | 3/5 | −1.13%…+0.96% / −0.70%…+2.51% |
+| scalar8192 control | 0.1119 [0.1115–0.1238] | 0.1143 [0.1120–0.1217] | 0.09984 [0.09932–0.1095] | 0.979× | 2/5 | −0.77%…+2.31% / −3.34%…+3.14% |
+| numeric1024 control | 0.02028 [0.02014–0.02242] | 0.02042 [0.02010–0.02242] | 0.007911 [0.007692–0.008073] | 0.993× | 3/5 | −0.46%…+2.83% / −1.42%…+0.28% |
 
-From the `checked01` ledger start to the `tree-actual-screen01` ledger finish,
-the observed wall span was **202.652 seconds (3m22.652s)**. The receipt durations
-and the gaps between them are separate below; gaps are not attributed to agent
-effort or model activity.
+The earlier three-round screen used actual checked Phase41 source emission for the tree wrapper against fresh Phase40 outputs. It reported 1.441×, 1.396×, and 1.449× on the same three tree points. The final five-round run uses the actual checked Phase41 emitted modules and pinned Phase40 starting bundle. Its gains are consistent with that screen, with a different measurement protocol and fresh comparisons; the two sets are not pooled. A separate manual saved-output experiment is recorded under `tree-screen01` and is not the screen summarized here.
 
-| Ledger stage | Start UTC | Finish UTC | Tool elapsed (s) | Receipt SHA-256 |
-|---|---|---|---:|---|
-| checked01 | 17:00:41.228 | 17:01:25.890 | 44.661 | `9d19fa107939e98671a81d8aed08818676cd10501c810528c0788e4a26170084` |
-| tree-prepare01 | 17:01:51.491 | 17:01:59.144 | 7.653 | `dfe025311775ac1641617ec821a1c7996f19573422e45eb88184f974ed3f6e36` |
-| tree-actual-derive01 | 17:02:27.418 | 17:02:30.013 | 2.595 | `5d0915e0f18f59753a8bf7209581babfde0d0458c4cf0eacb2aca24be9953f0e` |
-| tree-actual-controls01 | 17:03:23.937 | 17:03:24.624 | 0.686 | `d6259c00e4804892b4288178af36882155590a40d64216b4bcb6d2770cc58ccc` |
-| tree-actual-screen01 | 17:03:40.978 | 17:04:03.880 | 22.902 | `ec511b0cfaa9628831b1bcaea962ff75eacd17b8d5cfe0b202fa9d8383799570` |
+## Compiler cost and source size
 
-The four intervening wall gaps were 25.601s, 28.273s, 53.924s, and 16.354s.
-Two short integration-plan derivation receipts overlap the screen's enclosing
-interval; both are disclosed in the canonical JSON. The root campaign window
-from 16:39:33 UTC through this screen finish was 1,470.881 seconds (24m30.881s),
-an interim observed bound only. The active campaign ledger was not changed for
-this report.
+The normal checked-library cost worker completed all 36 source/sample/role requests: four sources, three rotations, and baseline, candidate, and TypeScript roles. Times below are median [minimum–maximum] request milliseconds. Host import is separate, while normal API loading, inspection, and Base cache behavior remain inside the request measurement. The worker's inner measured wall was 252.734 seconds; its enclosing campaign interval was 253.324 seconds.
 
-The checked attempt API is `9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b`;
-the emitted wrapper module is `64bfc698048c2ebf92c123111a5ce3fd8ccdb47b2fd8a7488243adbd1c2f6e9d`.
-Final source admission still depends on the pending focused and full integration
-gates and review.
+| Source | Phase40 median [range] | Phase41 median [range] | Change | TypeScript median [range] |
+|---|---:|---:|---:|---:|
+| tree-bitonic | 2248.0 [2230.3–2424.3] | 2460.6 [2389.7–2606.8] | +9.46%; slower in 3/3 paired requests | 318.2 [317.7–349.1] |
+| local-pair | 1784.1 [1767.7–1959.1] | 1781.1 [1778.5–1781.4] | −0.16% | 338.2 [337.6–338.7] |
+| numeric recurrence1024 | 1443.8 [1329.4–1482.0] | 1343.4 [1336.0–1347.1] | −6.95% | 266.3 [265.8–299.3] |
+| list pipeline512 | 2000.0 [1975.1–2016.8] | 1993.5 [1980.4–1994.2] | −0.32% | 430.4 [429.9–432.2] |
+
+Source accounting covers 70 selfhost modules. The only source difference is `src/back/js/tree.bend`: +35 physical lines, +31 nonblank lines, +1,963 bytes, and +4 definitions; laws and types are unchanged. The generated tree module grows from 107,990 to 109,624 bytes (+1,634 bytes). The compiler-cost worker took 252.734 seconds; its enclosing campaign interval was 253.324 seconds.
+
+## Correctness and scope
+
+The final runtime report is complete/pass with six selected points, five rounds, and 90/90 validated samples. The final postinstall selected-image audit passes 15/15 gates; Phase41 checked01 is installed, release verification passes, and all 42 ordinary/relocated CLI checks pass. Its frontend owners preserve exact agreement on 3,026 main and 196 broader observations, including the same 497 main and one broader historical observed cases; the independent tree/list/Nat controls and owner closures are recorded in the audit. See the [final integration account](integration.md). Independent release review remains separate.
+
+The earlier screen's focused actual-emission controls recorded 124 oracle cases, 17 boundary checks, and a 60,002-node/60,003-leaf deep input. The final diagnostic run profiles only `tree-bitonic`; its sampled CPU attribution is descriptive and separate from the timing table. See [profile findings](profile-findings.md).
+
+Canonical raw receipts and source counts are summarized in [results.json](results.json). The main sources are [final-runtime01](../../selfhost/build/phase41/final-runtime01/report.json), [compiler-cost01](../../selfhost/build/phase41/compiler-cost01/report.json), [final-diagnostics01](../../selfhost/build/phase41/final-diagnostics01/report.json), and [source-counts01](../../selfhost/build/phase41/source-counts01.json).

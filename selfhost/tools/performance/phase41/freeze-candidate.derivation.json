@@ -1,0 +1,33 @@
+{
+  "kind": "phase41-candidate-freezer-derivation",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "path": "selfhost/tools/performance/phase40/freeze-candidate.py",
+    "bytes": 12348,
+    "sha256": "cf79b7342fb1baa3ae7afade3d16a182cf2f01dda0cacaf895a77d05efdd6712"
+  },
+  "output": {
+    "path": "selfhost/tools/performance/phase41/freeze-candidate.py",
+    "bytes": 12348,
+    "sha256": "b191beb5762e9eb70fb44534bf2020ff7d54d2998a835d6e18d08929e61748ae"
+  },
+  "changes": [
+    {
+      "before": "normally phase40/current",
+      "after": "normally phase41/current",
+      "count": 1
+    },
+    {
+      "before": "kind='phase40-frozen-checked-candidate'",
+      "after": "kind='phase41-frozen-checked-candidate'",
+      "count": 1
+    },
+    {
+      "before": "label='Phase40 checked candidate (frozen actual acquisition)'",
+      "after": "label='Phase41 checked candidate (frozen actual acquisition)'",
+      "count": 1
+    }
+  ],
+  "scope": "Only Phase41 output-directory help, provenance kind, and candidate display label change. The parent import path already resolves from the Phase41 sibling directory through the shared performance/programs parent, so no sys.path change is needed. All identity, checked-emission, archive bounds/reopen, and input stability assertions are preserved. Freezer was not run."
+}

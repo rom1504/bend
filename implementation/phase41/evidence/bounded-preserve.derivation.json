@@ -1,0 +1,23 @@
+{
+  "kind": "phase41-preservation-supervisor-derivation",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "path": "implementation/phase40/evidence/bounded-preserve.py",
+    "bytes": 4334,
+    "sha256": "61da6055b65b950cdde3a739e0b487e4efb70fc0c0f08bad8b349a1e4307b2c9"
+  },
+  "output": {
+    "path": "implementation/phase41/evidence/bounded-preserve.py",
+    "bytes": 4334,
+    "sha256": "dd46228082e21a9d205146ba12ad9d36a97cfa1aa4d3a501c290ae2093373500"
+  },
+  "changes": [
+    {
+      "before": "/tmp/bend-phase40-preservation.lock",
+      "after": "/tmp/bend-phase41-preservation.lock",
+      "count": 1
+    }
+  ],
+  "scope": "Only the outer supervisor lock receives a Phase41-specific path; it remains distinct from the inner shared execution lock used by preserve.py. Resource/deadline checks and receipt behavior are unchanged. Supervisor was not run."
+}

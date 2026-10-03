@@ -1,108 +1,75 @@
-# Phase40 installed: direct recursive components
+# Phase41 installed: guarded acyclic wrappers
 
-Authorization covers design, compiler experiments, reports and commit/push to
+Authorization covers compiler work, design/report and commit/push to
 `rom1504/bend`, branch `selfhost/bootstrap`. No PR comment without an explicit
-new request. Preserve all 103 unrelated starting files and closed raw evidence.
+new request. All 103 unrelated starting files and old closed evidence remain
+unchanged. No persistent Goal is active.
 
-## Installed compiler and scope
+## Current release and measured scope
 
-Phase40 checked06 is installed. Release verification, all 42 ordinary/relocated
-CLI checks and 15 final audit groups pass; 227 canonical files match its checked
-snapshot. API
-`630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a`. Pin
-`018751270e800bc222a93dad7f257083ee53a5f7` remains unchanged. This is a checked
-B1 derivative, not a new self-emitted fixed point. Phase39 is preserved in
-release history.
+Phase41 checked01 is installed. Release verification, all 42 ordinary/relocated
+CLI checks and 15 final audit groups pass; all 227 canonical sources match.
+API `9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b`.
+Pin `018751270e800bc222a93dad7f257083ee53a5f7` is unchanged. This is a checked
+B1 derivative, not a new self-emitted fixed point. Phase40 remains in history.
 
-[Report](../implementation/phase40/README.md) ·
-[Release](../implementation/phase40/release-06.md) ·
-[Admission](../implementation/phase40/performance-admission.md) ·
-[Profiles](../implementation/phase40/profile-findings.md) ·
-[Portable loop](../selfhost/tools/performance/phase40/README.md)
+[Report](../implementation/phase41/README.md) ·
+[Admission](../implementation/phase41/performance-admission.md) ·
+[Integration](../implementation/phase41/integration.md) ·
+[Profiles](../implementation/phase41/profile-findings.md) ·
+[Portable loop](../selfhost/tools/performance/phase41/README.md)
 
-## Results and costs
+Three tree points improve 1.506–1.592× over fresh Phase40 comparisons, all five
+pairs faster with disjoint ranges. Remaining TS gaps are 9.33–12.18×. The other
+42/45 module outputs are byte-identical; three unchanged controls were retimed.
+Do not call this a fresh 45-point timing or typical-program result. Raw within-
+process drift remains explicit. Sampled allocation per tree call falls ~23.5%;
+this is not exact object counting. Generic apply remains visible but smaller.
 
-Lists at 128/512 improve 9.973× / 13.113× over Phase39; trees at 6/8/9 improve
-2.031×/2.176×/1.829×. These points win all five pairs with disjoint ranges, but
-tree internal drift remains explicit. Remaining TS gaps are 4.51–6.52× for lists
-and 17.15–21.54× for trees. Symbolic regression gains 1.069× historically; its
-varied points have overlapping ranges. No typical-program or parity claim.
+All 36 normal checked requests reproduce expected bytes. Tree compilation costs
+9.46% more (about 213 ms) in median, slower in all three pairs. This is an
+explicit admitted cost tradeoff, not neutral cost or compiler throughput gain.
+Source grows 35 physical lines / four definitions to 18,898 lines / 2,108 defs;
+70 modules, 71 types, 640 laws and runtime bytes remain unchanged.
 
-Selected execution covers 45 points / 23 sources: 42 intact checked05
-comparisons whose modules exactly equal fresh checked06 emission, plus three
-fresh checked06 ray rotations. Per-row measurement API and protocol remain
-explicit. Selected samples total 669; rejected checked05 ray rows remain
-preserved. Do not call these 45 fresh checked06 timings. Thirty final points
-equal Phase39 bytes; their timing shifts are negative controls. The smallest
-Mandelbrot point retains a 9.68% slower median with overlapping ranges.
+## Retained decisions
 
-Checked05's 2.426× ray regression was rejected. Its broad Nat rule bypassed an
-existing stronger scalar island. Restricting new Nat-first admission to data
-results restores both ray modules byte-for-byte. Final ray ratios vary about
-−0.6% to +2.5% with overlapping ranges; they are controls, not new improvements.
+The narrow nonrecursive ADT-first wrapper admission reuses the full typed graph,
+no-backedge proof, dependency guards and existing structural workers. It keeps
+fallbacks, aliases, fresh tagged intermediates, evaluation order and deep-stack
+behavior. It adds no runtime or IR. Scalar/Nat/List wrapper admission is unchanged.
 
-All 36 normal checked requests reproduce expected bytes. Request costs rise
-24.45% for tree / 19.09% for list, with disjoint ranges and consistent pairs.
-Local has a noisy 18.44% increase; numeric is flat. Requests remain 4.66–8.37×
-TS on four sources. This release improves selected program execution, not
-compiler throughput. Source adds 141 lines (+0.753%) and 17 definitions,
-reaching 18,863 lines / 2,104 definitions; 70 modules, 71 types, 640 laws and
-runtime bytes remain unchanged. Do not claim simplification.
+Private transfer tuple scalarization was rejected: corrected controls pass, but
+0.23–0.40% shifts are smaller than noise. Lexer String admission was deferred
+because native hooks bypass the numeric-host guard. Preserve all failed tools,
+fixture oracles and host counterexamples; no unproved lexer change is installed.
 
-All 18 diagnostic captures pass. Allocation samples normalized per call fall
-81.8% for list512 / 46.9% for tree8. Static total generic call sites grow
-because fallback code remains; list hot workers contain no generic calls. Tree
-still spends material sampled time in apply/invokeExact/warp and warp_leaf.
+## Next experiments, ranked
 
-## Retained rules and rejected attempts
+1. Profile a normal tree compilation request to locate repeated planner graph
+   work. Test query-local fact reuse with exact source/definition identity before
+   persistent caching. Reverse the measured compilation increase if practical.
+2. Use the fresh tree profile to distinguish invokeExact/warp_leaf dispatch from
+   intrinsic tree allocation. Test one exact saved-output ablation, complete
+   values and hostile boundaries, before a checked source change.
+3. Extend to String/Char/Sigma only with complete native hook, Unicode and
+   demand/error-order obligations. The old ~2× lexer prototype is not installed.
+4. Consolidate stable semantic owners when it can remove work without weakening
+   assertions or provenance. Avoid another renamed phase-specific framework.
 
-Reuse existing structural frames and full typed graph/dependency proof for
-canonical Nat data producers, proper-descendant tail transfers, and one-child
-constructor/known-combiner continuations. Admit only exact built-in
-`List<&2,U32>`. Keep materialized tagged intermediates, aliases, original
-evaluation/error order, public host/dependency fallback and reentry cleanup. No
-fusion, new runtime or new IR.
+The fast-five portable run takes 17 s; actual checked build through first screen
+was 3m23s. Root serializes heavy jobs under memory/deadline bounds. The two-worker
+frontend produced the same 3222 observations in 7m17s versus a historical13m42s;
+that is not a same-image worker A/B. Reuse 20/60/300/600-second presets. Run broad
+semantic gates once after freezing a survivor. The closed campaign raw phase
+lasted78m16s, with34m03s recorded process intervals; residual time is unclassified,
+not measured model latency. See [accounting](../implementation/phase41/accounting.md).
 
-Preserve checked04's missing saved argument, checked05's ray regression and
-inherited diagnostic failures. Versioned counter/decoder/entry-boundary
-corrections keep all semantic assertions and bind successful reports to
-checked06. The lexer complete-component prototype gains roughly 2× but remains
-manual JavaScript; wider String/Char/Sigma proof support is deferred. Do not
-count prototype gains as installed results.
+## Correctness and preservation
 
-## Next investigations
-
-1. Recover tree/list compiler analysis cost. Start with a small normal checked
-   request profile; do not assume slower requests arise solely from pass count.
-2. Integrate a narrow proved lexer component only after independent String/Char/
-   Sigma, Unicode, overflow, mutation and error-order boundaries pass.
-3. Follow tree residual hotspots, then Map/String/BST components, using complete
-   values and exact ordinary fast-path entry before broad timing.
-4. Test fusion only against the new direct-unfused list denominator; the current
-   benchmark is first-order, not evidence for callback specialization.
-5. Simplify inherited diagnostics around stable semantic owners and explicit
-   provenance schemas. Keep assertions and failed artifacts; avoid another
-   phase-specific framework merely to rename or relax old expectations.
-
-Use 20/60/300/600-second presets with independent cases. The portable fast-five
-check passes in 20.36 seconds including overhead; a checked build plus 36
-focused probes takes 45.845 seconds. Full conformance and broad timing are
-release gates. Root alone runs heavy work serially: Node 24.18 / CPU3, a 1 GiB
-heap, 2 GiB tree RSS and free-memory bounds, fresh paths and deadlines. Do not
-nest lock-owning supervisors.
-
-## Correctness and evidence
-
-Frontend agrees on 3,026 main + 196 broader exact observations; preserve 2,525
-pass / 497 observed / 4 shared main failures. The 81 backend outcomes retain 69
-pass / 8 not applicable / 4 shared failures. The 154 expanded application
-observations and 15 + 7 + 3 + 4 inherited owner groups close; new Phase40
-controls cover complete lists, Nat/data, mixed frames and scalar precedence.
-Counts overlap. Full backend/GPU and independent proof validity remain
-unestablished.
-
-The [closed capsule](../implementation/phase40/evidence/README.md) retains
-failures, modules, profiles, costs and release checks. Session accounting
-excludes the long interruption from declared windows and cannot establish a
-causal model-speed multiplier. Future experiments use a new raw phase directory
-after closure.
+Frontend retains 3026 main +196 broader exact agreements, including four shared
+main failures. Backend pilot retains69 pass /8 not applicable /4 shared failures.
+Expanded154 observations, inherited owners and new wrapper/deep/mutation controls
+pass; counts overlap. Full backend/GPU and independent proof validity remain
+unestablished. Closed evidence preserves every Phase41 attempt, including failures.
+No PR comment was posted.

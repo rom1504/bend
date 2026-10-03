@@ -1,0 +1,48 @@
+{
+  "kind": "phase41-evidence-preserver-derivation",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "path": "implementation/phase40/evidence/preserve.py",
+    "bytes": 19196,
+    "sha256": "6d6b41c49a8f25502ebda180a0efa41f9c0ff46f62533f61b6978a615bc4605e"
+  },
+  "output": {
+    "path": "implementation/phase41/evidence/preserve.py",
+    "bytes": 19196,
+    "sha256": "3fddf6132ac89d66a2531507fe44d91f0df2a18016e72d512229005701e7324b"
+  },
+  "changes": [
+    {
+      "before": "Archive closed Phase40 evidence as one verified stream in <=40 MiB volumes.",
+      "after": "Archive closed Phase41 evidence as one verified stream in <=40 MiB volumes.",
+      "count": 1
+    },
+    {
+      "before": "ROOT/'selfhost/build/phase40'",
+      "after": "ROOT/'selfhost/build/phase41'",
+      "count": 1
+    },
+    {
+      "before": "kind='phase40-evidence-capture'",
+      "after": "kind='phase41-evidence-capture'",
+      "count": 1
+    },
+    {
+      "before": "kind='phase40-validation-capsule'",
+      "after": "kind='phase41-validation-capsule'",
+      "count": 1
+    },
+    {
+      "before": "All closed Phase40 builds, failed/superseded producers, observations and diagnostics; no success-only filtering.",
+      "after": "All closed Phase41 builds, failed/superseded producers, observations and diagnostics; no success-only filtering.",
+      "count": 1
+    },
+    {
+      "before": "--closed after all Phase40 writers finish",
+      "after": "--closed after all Phase41 writers finish",
+      "count": 1
+    }
+  ],
+  "scope": "Only Phase41 source root, capture/capsule kinds, scope wording, and close-message label change. Streaming inventory, .pyc/.pyo exclusion, volume cap, hash/reopen verification, source rehash, shared execution lock, and bounds are preserved. Root closure and all writer shutdown are required before capture."
+}

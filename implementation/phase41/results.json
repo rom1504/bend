@@ -1,351 +1,141 @@
 {
-  "kind": "phase41-tree-wrapper-interim-results-v1",
+  "kind": "phase41-final-tree-results",
   "complete": true,
-  "final": false,
-  "decision": "Checked-source wrapper screen passes semantic controls and shows faster generated-module execution in this narrow supplemental cohort. Final admission, integration and broader validation are pending.",
-  "scope": "Checked Phase41 source emission for the tree wrapper experiment. Original role is fresh Phase40 checked06 output; wrapper role is emitted from Phase41 checked01. Supplemental three-point screen; not a compiler release or broad catalog result.",
-  "baseline": {
-    "phase40ApiSha256": "630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a",
-    "originalTreeModuleSha256": "3a5d3c78ebb74aba0cc5a6729547b1ea2892874f07a5c3ccb474c7cb04a2cfd9"
-  },
+  "scope": "Fresh checked Phase41 generated-program execution against Phase40 checked06, normal checked-library request cost, selected-image preinstall correctness, source inventory counts, and separate one-point CPU/allocation diagnostics. This is not a release-installation or independent-release-review result.",
   "candidate": {
-    "checkedAttempt": {
-      "path": "selfhost/build/phase41/checked01/attempt.json",
-      "bytes": 208872,
-      "sha256": "df79fadeab5eff7e405aea636488108a894da3d39bb2dc8207b3def8eae9feba"
-    },
-    "checkedApiSha256": "9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b",
-    "compilerSourceSha256": "ac20ac993e7f1ef6c4726bd8e27e29386ca3a9d7d0b83cb89986cd82f0598e46",
-    "preparedManifest": {
-      "path": "selfhost/build/phase41/tree-preparation01/manifest.json",
-      "bytes": 3668,
-      "sha256": "fcf350b8adc46a2a257faab0607b2779c21d0eb510471f4ea5d49f59463c7e6b"
-    },
-    "derivedWrapperModuleSha256": "64bfc698048c2ebf92c123111a5ce3fd8ccdb47b2fd8a7488243adbd1c2f6e9d"
+    "attempt": "../../selfhost/build/phase41/checked01/attempt.json",
+    "apiSha256": "9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b"
   },
-  "screen": {
+  "runtime": {
+    "report": "../../selfhost/build/phase41/final-runtime01/report.json",
     "complete": true,
-    "passed": true,
-    "rounds": 3,
-    "wallSeconds": 22.833264058019267,
-    "report": {
-      "path": "selfhost/build/phase41/tree-actual-screen01/report.json",
-      "bytes": 199170,
-      "sha256": "f15a5174263e9b4e4940a3a192698ef5efd5298ad77af09eb1660542c79a149f"
+    "pass": true,
+    "protocol": {
+      "roles": ["typescript", "baseline", "candidate"],
+      "roundsPerPoint": 5,
+      "warmupCalls": 3,
+      "warmupMs": 600,
+      "calibrationMs": 50,
+      "targetMs": 250,
+      "cpu": 3,
+      "node": "v24.18.0"
     },
-    "markdown": {
-      "path": "selfhost/build/phase41/tree-actual-screen01/report.md",
-      "bytes": 895,
-      "sha256": "bc62ad441e5a6810966ed88cc6a0e3898703913749828d823ec772c719f32760"
-    },
+    "scope": "Six fixed program points, 90 validated process samples. Ratios are same-run Phase40 checked06 baseline / Phase41 candidate; no Phase40 historical timing is used as a denominator.",
     "cases": [
       {
         "id": "tree-bitonic",
-        "mediansMs": {
-          "phase40Checked06": 4.857880451612903,
-          "phase41CheckedSourceWrapper": 3.371790739130436,
-          "pinnedTypeScript": 0.2932334118773947
-        },
-        "ratios": {
-          "phase40Checked06OverPhase41Wrapper": 1.4407419758397346,
-          "phase41WrapperOverTypeScript": 11.498658074272354
-        },
-        "samplesMs": {
-          "original": [
-            5.080081218749999,
-            4.817649218749999,
-            4.857880451612903
-          ],
-          "wrapper": [
-            3.717565904761903,
-            3.371790739130436,
-            3.3270818181818167
-          ],
-          "typescript": [
-            0.2932334118773947,
-            0.29382874904942974,
-            0.29029519848771285
-          ]
-        }
+        "mediansMs": {"phase40": 4.2232585079, "phase41": 2.8041846413, "typescript": 0.2722066418},
+        "rangesMs": {"phase40": [4.13739575, 4.6378449821], "phase41": [2.7315762366, 3.3369451538], "typescript": [0.2701196717, 0.2835548967]},
+        "phase40OverPhase41": 1.5060557874,
+        "candidatePairedWins": 5,
+        "rounds": 5,
+        "halfDriftPercent": {"phase40": [-14.4287623, 10.0342924], "phase41": [-7.6792593, 6.8528702]}
       },
       {
         "id": "variation-tree-bitonic-6-17",
-        "mediansMs": {
-          "phase40Checked06": 0.8153652637362637,
-          "phase41CheckedSourceWrapper": 0.5839092397003746,
-          "pinnedTypeScript": 0.03786105352731266
-        },
-        "ratios": {
-          "phase40Checked06OverPhase41Wrapper": 1.3963904118980166,
-          "phase41WrapperOverTypeScript": 15.422424504884608
-        },
-        "samplesMs": {
-          "original": [
-            0.8241335303867405,
-            0.8153652637362637,
-            0.8143060329670332
-          ],
-          "wrapper": [
-            0.5766033726937269,
-            0.5867409407407409,
-            0.5839092397003746
-          ],
-          "typescript": [
-            0.03769715660998355,
-            0.03786105352731266,
-            0.03789813636363637
-          ]
-        }
+        "mediansMs": {"phase40": 0.7147455983, "phase41": 0.4489776128, "typescript": 0.0368666903},
+        "rangesMs": {"phase40": [0.7060003917, 0.7798126384], "phase41": [0.4383398489, 0.4873622553], "typescript": [0.0367666127, 0.0407876623]},
+        "phase40OverPhase41": 1.5919403952,
+        "candidatePairedWins": 5,
+        "rounds": 5,
+        "halfDriftPercent": {"phase40": [1.664366, 11.9311176], "phase41": [-5.0691075, 6.1947778]}
       },
       {
         "id": "variation-tree-bitonic-9-123",
-        "mediansMs": {
-          "phase40Checked06": 12.45082236363637,
-          "phase41CheckedSourceWrapper": 8.590518466666671,
-          "pinnedTypeScript": 0.7662099625668447
-        },
-        "ratios": {
-          "phase40Checked06OverPhase41Wrapper": 1.4493679760946478,
-          "phase41WrapperOverTypeScript": 11.211702909588869
-        },
-        "samplesMs": {
-          "original": [
-            12.071572090909088,
-            12.45082236363637,
-            14.506714363636371
-          ],
-          "wrapper": [
-            8.622459812500004,
-            8.590518466666671,
-            7.604896941176475
-          ],
-          "typescript": [
-            0.7662099625668447,
-            0.7414881701030928,
-            0.776784143617021
-          ]
-        }
+        "mediansMs": {"phase40": 9.5977379259, "phase41": 6.3713594, "typescript": 0.6825974399},
+        "rangesMs": {"phase40": [9.4811418519, 10.5043700417], "phase41": [6.33242495, 7.036538697], "typescript": [0.6791636603, 0.7457062448]},
+        "phase40OverPhase41": 1.5063877775,
+        "candidatePairedWins": 5,
+        "rounds": 5,
+        "halfDriftPercent": {"phase40": [-1.3370643, 0.520711], "phase41": [-0.7477438, 3.2303321]}
+      },
+      {
+        "id": "local-pair",
+        "role": "unchanged control",
+        "mediansMs": {"phase40": 2.6283569896, "phase41": 2.6257176042, "typescript": 1.2363452833},
+        "phase40OverPhase41": 1.0010052054,
+        "candidatePairedWins": 3,
+        "rounds": 5,
+        "halfDriftPercent": {"phase40": [-1.1273344, 0.9552956], "phase41": [-0.7043242, 2.5106487]}
+      },
+      {
+        "id": "scalar-region-8192",
+        "role": "unchanged control",
+        "mediansMs": {"phase40": 0.1119089887, "phase41": 0.1142988101, "typescript": 0.0998423621},
+        "phase40OverPhase41": 0.9790914588,
+        "candidatePairedWins": 2,
+        "rounds": 5,
+        "halfDriftPercent": {"phase40": [-0.770656, 2.3050549], "phase41": [-3.3449016, 3.1439202]}
+      },
+      {
+        "id": "coverage-numeric-recurrence-1024",
+        "role": "unchanged control",
+        "mediansMs": {"phase40": 0.0202797335, "phase41": 0.0204214331, "typescript": 0.0079107226},
+        "phase40OverPhase41": 0.9930612313,
+        "candidatePairedWins": 3,
+        "rounds": 5,
+        "halfDriftPercent": {"phase40": [-0.458228, 2.8251136], "phase41": [-1.4237983, 0.2833729]}
       }
-    ]
+    ],
+    "previousScreen": {
+      "report": "../../selfhost/build/phase41/tree-actual-screen01/report.json",
+      "rounds": 3,
+      "candidateRole": "Actual checked Phase41 source emission for the tree wrapper, compared with fresh Phase40 output.",
+      "scope": "Earlier three-round actual-emission screen, kept separate from the final five-round checked-module measurements.",
+      "cases": [
+        {"id": "tree-bitonic", "phase40Ms": 4.8578804516, "phase41WrapperMs": 3.3717907391, "typescriptMs": 0.2932334119, "phase40OverWrapper": 1.4407419758},
+        {"id": "variation-tree-bitonic-6-17", "phase40Ms": 0.8154, "phase41WrapperMs": 0.5839, "typescriptMs": 0.0379, "phase40OverWrapper": 1.396},
+        {"id": "variation-tree-bitonic-9-123", "phase40Ms": 12.4508, "phase41WrapperMs": 8.5905, "typescriptMs": 0.7662, "phase40OverWrapper": 1.449}
+      ]
+    }
   },
-  "semanticControls": {
+  "compilerCost": {
+    "report": "../../selfhost/build/phase41/compiler-cost01/report.json",
+    "config": "../../selfhost/build/phase41/integration01/cost-plan/config.json",
     "complete": true,
-    "checked": true,
-    "oracles": 124,
-    "boundaries": 17,
-    "deep": {
-      "nodes": 60002,
-      "leaves": 60003,
-      "sum": "420021"
-    },
-    "report": {
-      "path": "selfhost/build/phase41/tree-actual-controls01/report.json",
-      "bytes": 1716,
-      "sha256": "6ec063d345033e2401ddc42739c335c488ecc5ef89887fb24d6b593b1126a3a0"
-    }
-  },
-  "editToScreen": {
-    "startedUtc": "2026-10-03T17:00:41.228Z",
-    "finishedUtc": "2026-10-03T17:04:03.880Z",
-    "seconds": 202.65190529823303,
-    "minutes": 3.3775317549705504,
-    "basis": "Ledger interval from checked01 job start to tree-actual-screen01 job finish; elapsed span, not active work estimate.",
-    "stageReceipts": [
-      {
-        "label": "checked01",
-        "sequence": 13,
-        "startedEpoch": 1791046841.2287204,
-        "finishedEpoch": 1791046885.8903885,
-        "startedUtc": "2026-10-03T17:00:41.228Z",
-        "finishedUtc": "2026-10-03T17:01:25.890Z",
-        "toolElapsedSeconds": 44.66127517001587,
-        "complete": true,
-        "returncode": 0,
-        "receipt": {
-          "bytes": 1474,
-          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/checked01/run.json",
-          "sha256": "9d19fa107939e98671a81d8aed08818676cd10501c810528c0788e4a26170084"
-        }
-      },
-      {
-        "label": "tree-prepare01",
-        "sequence": 14,
-        "startedEpoch": 1791046911.4917572,
-        "finishedEpoch": 1791046919.1446958,
-        "startedUtc": "2026-10-03T17:01:51.491Z",
-        "finishedUtc": "2026-10-03T17:01:59.144Z",
-        "toolElapsedSeconds": 7.652559853013372,
-        "complete": true,
-        "returncode": 0,
-        "receipt": {
-          "bytes": 1524,
-          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/tree-prepare01/run.json",
-          "sha256": "dfe025311775ac1641617ec821a1c7996f19573422e45eb88184f974ed3f6e36"
-        }
-      },
-      {
-        "label": "tree-actual-derive01",
-        "sequence": 15,
-        "startedEpoch": 1791046947.4180868,
-        "finishedEpoch": 1791046950.013155,
-        "startedUtc": "2026-10-03T17:02:27.418Z",
-        "finishedUtc": "2026-10-03T17:02:30.013Z",
-        "toolElapsedSeconds": 2.594695118983509,
-        "complete": true,
-        "returncode": 0,
-        "receipt": {
-          "bytes": 1720,
-          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/tree-actual-derive01/run.json",
-          "sha256": "5d0915e0f18f59753a8bf7209581babfde0d0458c4cf0eacb2aca24be9953f0e"
-        }
-      },
-      {
-        "label": "tree-actual-controls01",
-        "sequence": 16,
-        "startedEpoch": 1791047003.9376457,
-        "finishedEpoch": 1791047004.6244378,
-        "startedUtc": "2026-10-03T17:03:23.937Z",
-        "finishedUtc": "2026-10-03T17:03:24.624Z",
-        "toolElapsedSeconds": 0.6863979159970768,
-        "complete": true,
-        "returncode": 0,
-        "receipt": {
-          "bytes": 1553,
-          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/tree-actual-controls01/run.json",
-          "sha256": "d6259c00e4804892b4288178af36882155590a40d64216b4bcb6d2770cc58ccc"
-        }
-      },
-      {
-        "label": "tree-actual-screen01",
-        "sequence": 19,
-        "startedEpoch": 1791047020.9783976,
-        "finishedEpoch": 1791047043.8806257,
-        "startedUtc": "2026-10-03T17:03:40.978Z",
-        "finishedUtc": "2026-10-03T17:04:03.880Z",
-        "toolElapsedSeconds": 22.90180921400315,
-        "complete": true,
-        "returncode": 0,
-        "receipt": {
-          "bytes": 1299,
-          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/tree-actual-screen01/run.json",
-          "sha256": "ec511b0cfaa9628831b1bcaea962ff75eacd17b8d5cfe0b202fa9d8383799570"
-        }
-      }
+    "pass": true,
+    "rows": 36,
+    "scope": "Four fixed source files × three rotations × baseline/candidate/TypeScript, fresh CPU3 processes, unchanged Phase30 checked-library worker. Host import is separate from normal request timing.",
+    "requestMs": [
+      {"source": "tree-bitonic", "phase40": {"median": 2248.000079, "range": [2230.31461, 2424.281306]}, "phase41": {"median": 2460.592802, "range": [2389.672707, 2606.845421]}, "typescript": {"median": 318.153142, "range": [317.743537, 349.114314]}, "phase41ChangePercent": 9.4569713, "pairedPhase41Slower": 3, "pairedRequests": 3, "phase41OutputBytes": 109624, "phase40OutputBytes": 107990},
+      {"source": "local-pair", "phase40": {"median": 1784.067354, "range": [1767.686627, 1959.145832]}, "phase41": {"median": 1781.125076, "range": [1778.525281, 1781.372655]}, "typescript": {"median": 338.192362, "range": [337.609315, 338.657136]}, "phase41ChangePercent": -0.1649197, "phase41OutputBytes": 124927, "phase40OutputBytes": 124927},
+      {"source": "coverage-numeric-recurrence-1024", "phase40": {"median": 1443.755371, "range": [1329.360091, 1481.972774]}, "phase41": {"median": 1343.384026, "range": [1336.011582, 1347.05746]}, "typescript": {"median": 266.322565, "range": [265.793443, 299.325038]}, "phase41ChangePercent": -6.9521019, "phase41OutputBytes": 79458, "phase40OutputBytes": 79458},
+      {"source": "coverage-list-pipeline-512", "phase40": {"median": 2000.009417, "range": [1975.055304, 2016.767185]}, "phase41": {"median": 1993.52379, "range": [1980.366027, 1994.170727]}, "typescript": {"median": 430.406363, "range": [426.70471, 440.805857]}, "phase41ChangePercent": -0.3242798, "phase41OutputBytes": 142134, "phase40OutputBytes": 142134}
     ],
-    "interveningGaps": [
-      {
-        "after": "checked01",
-        "before": "tree-prepare01",
-        "seconds": 25.60136866569519,
-        "classification": "unclassified wall gap; no agent-cost attribution"
-      },
-      {
-        "after": "tree-prepare01",
-        "before": "tree-actual-derive01",
-        "seconds": 28.273391008377075,
-        "classification": "unclassified wall gap; no agent-cost attribution"
-      },
-      {
-        "after": "tree-actual-derive01",
-        "before": "tree-actual-controls01",
-        "seconds": 53.92449069023132,
-        "classification": "unclassified wall gap; no agent-cost attribution"
-      },
-      {
-        "after": "tree-actual-controls01",
-        "before": "tree-actual-screen01",
-        "seconds": 16.353959798812866,
-        "classification": "unclassified wall gap; no agent-cost attribution"
-      }
-    ],
-    "overlappingLedgerJobs": [
-      {
-        "label": "integration01-derive-frontend",
-        "sequence": 17,
-        "startedUtc": "2026-10-03T17:03:42.181Z",
-        "finishedUtc": "2026-10-03T17:03:42.236Z",
-        "toolElapsedSeconds": 0.054390125995269045,
-        "receipt": {
-          "bytes": 1201,
-          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/integration01-derive-frontend/run.json",
-          "sha256": "d1e9560bf8e8bcb728e46e167e6b85a40866325976fabfdfa7d075b445ddcb07"
-        }
-      },
-      {
-        "label": "integration01-derive-current-integration",
-        "sequence": 18,
-        "startedUtc": "2026-10-03T17:03:42.340Z",
-        "finishedUtc": "2026-10-03T17:03:42.395Z",
-        "toolElapsedSeconds": 0.054356391017790884,
-        "receipt": {
-          "bytes": 1225,
-          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/jobs/integration01-derive-current-integration/run.json",
-          "sha256": "c76e474b0f5806b4eeb54ab2f4fe61a86ee6f18b875d5705f39fa4d1db893e8c"
-        }
-      }
-    ]
+    "innerWorkerWallSeconds": 252.7343,
+    "enclosingCampaignWallSeconds": 253.324,
+    "scopeWarning": "These four cases are not an aggregate compiler speed estimate. Tree compile request regressed +9.46% and was slower in all three paired requests."
   },
-  "interimRootWindow": {
-    "startedUtc": "2026-10-03T16:39:33.000Z",
-    "finishedUtc": "2026-10-03T17:04:03.880Z",
-    "seconds": 1470.8806257247925,
-    "basis": "Campaign start to actual checked-source screen receipt finish; interim observation bound, not final campaign duration."
+  "sourceCounts": {
+    "report": "../../selfhost/build/phase41/source-counts01.json",
+    "modules": 70,
+    "changedFile": "src/back/js/tree.bend",
+    "phase40": {"physicalLines": 18863, "nonblankLines": 16156, "bytes": 775545, "defs": 2104, "laws": 640, "types": 71},
+    "phase41": {"physicalLines": 18898, "nonblankLines": 16187, "bytes": 777508, "defs": 2108, "laws": 640, "types": 71},
+    "delta": {"physicalLines": 35, "nonblankLines": 31, "bytes": 1963, "defs": 4, "laws": 0, "types": 0}
   },
-  "sourceArtifacts": [
-    {
-      "path": "selfhost/build/phase41/checked01/attempt.json",
-      "bytes": 208872,
-      "sha256": "df79fadeab5eff7e405aea636488108a894da3d39bb2dc8207b3def8eae9feba"
-    },
-    {
-      "path": "selfhost/build/phase41/checked01/build.json",
-      "bytes": 3593,
-      "sha256": "af2a0d587123472166c8795db5902c92183937bb43b64aa7fdddc267662c5cc2"
-    },
-    {
-      "path": "selfhost/build/phase41/checked01/equality/api.mjs",
-      "bytes": 1233516,
-      "sha256": "9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b"
-    },
-    {
-      "path": "selfhost/build/phase41/tree-preparation01/manifest.json",
-      "bytes": 3668,
-      "sha256": "fcf350b8adc46a2a257faab0607b2779c21d0eb510471f4ea5d49f59463c7e6b"
-    },
-    {
-      "path": "selfhost/build/phase41/tree-preparation01/preparation.json",
-      "bytes": 3278,
-      "sha256": "0faa4e20b077315b6b33be473313154062c630345795f85b0bcbcf91a02982c4"
-    },
-    {
-      "path": "selfhost/build/phase41/tree-actual-derived01/derive.json",
-      "bytes": 2775,
-      "sha256": "5d0e397775dc75b5696f2b4a84e49ab343d5b9cd1113bb67dfd9bb903f76df20"
-    },
-    {
-      "path": "selfhost/build/phase41/tree-actual-derived01/compare.json",
-      "bytes": 2193,
-      "sha256": "4930615ed4491d73edf1c965f77dc3de3d71616a62b8c186733b431fc816efbd"
-    },
-    {
-      "path": "selfhost/build/phase41/tree-actual-controls01/report.json",
-      "bytes": 1716,
-      "sha256": "6ec063d345033e2401ddc42739c335c488ecc5ef89887fb24d6b593b1126a3a0"
-    },
-    {
-      "path": "selfhost/build/phase41/tree-actual-screen01/report.json",
-      "bytes": 199170,
-      "sha256": "f15a5174263e9b4e4940a3a192698ef5efd5298ad77af09eb1660542c79a149f"
-    },
-    {
-      "path": "selfhost/build/phase41/tree-actual-screen01/report.md",
-      "bytes": 895,
-      "sha256": "bc62ad441e5a6810966ed88cc6a0e3898703913749828d823ec772c719f32760"
-    }
-  ],
-  "admission": {
-    "final": false,
-    "integrationPending": true,
-    "requiredNext": "Complete remaining focused and full integration gates, review results and close the campaign before final admission."
+  "correctness": {
+    "postinstallAudit": "../../selfhost/build/phase41/integration01/postinstall-audit/gates.json",
+    "postinstallAuditPass": true,
+    "postinstallGatesPassed": 15,
+    "installedChecked01": true,
+    "releaseVerificationPass": true,
+    "ordinaryAndRelocatedCliChecksPassed": 42,
+    "preinstallAudit": "../../selfhost/build/phase41/integration01/preinstall-audit/gates.json",
+    "preinstallGatesPassed": 14,
+    "frontendMainObservations": 3026,
+    "frontendBroaderObservations": 196,
+    "focusedTreeScreenOracles": 124,
+    "focusedTreeScreenBoundaryChecks": 17,
+    "focusedTreeDeepNodes": 60002,
+    "focusedTreeDeepLeaves": 60003,
+    "scope": "Final selected-image postinstall correctness and installed CLI checks; independent release review remains separate."
+  },
+  "diagnostics": {
+    "report": "../../selfhost/build/phase41/final-diagnostics01/report.json",
+    "profileFindings": "profile-findings.md",
+    "complete": true,
+    "pass": true,
+    "scope": "Separate diagnostic profile for tree-bitonic only; CPU and allocation observations are not clean timing ratios."
   }
 }

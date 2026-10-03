@@ -17,11 +17,21 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 Ordinary compilation runs the Bend implementation without a TypeScript fallback;
 the target remains pinned to **0187512, after Bend 2.0.34**.
 
-**[Phase40 checked06 is installed](implementation/phase40/release-06.md).**
-Release verification and all **42 ordinary/relocated CLI checks** pass. The
-[final integration](implementation/phase40/integration.md) closes **15 audit
-groups and 227 canonical/frozen source pairs**. This is a checked B1 derivative,
-not a new self-emitted fixed point.
+**[Phase41 checked01 is installed](implementation/phase41/integration.md).** Its
+postinstall audit passes **15/15 gates**, including all **227 canonical source bindings**.
+The source adds **35 physical lines and four definitions**; among 45 emitted
+modules, **42 remain byte-identical** and only three tree points change. The
+upstream pin is unchanged. Release verification and all **42 ordinary/relocated
+CLI checks** pass. See the [Phase41 integration account](implementation/phase41/integration.md)
+and [results](implementation/phase41/README.md). The portable current bundle is
+available at [current/manifest.json](selfhost/tools/performance/phase41/current/manifest.json);
+its 5-point fast set passes.
+
+**Phase40 checked06 is the previous installed release** ([release record](implementation/phase40/release-06.md)).
+Its release verification and all **42 ordinary/relocated CLI checks** passed. The
+[Phase40 final integration](implementation/phase40/integration.md) closes
+**15 audit groups and 227 canonical/frozen source pairs**. It remains a checked
+B1 derivative, not a new self-emitted fixed point.
 
 The [Phase40 report](implementation/phase40/README.md) adds guarded list workers
 and broader structural traversal while retaining tagged values, sharing,

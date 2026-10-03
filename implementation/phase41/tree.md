@@ -1,3 +1,7 @@
+# Final outcome
+
+Checked01 is admitted after complete selected-image gates and the final six-point runtime run. Three changed tree points improve 1.506–1.592×; the other42 modules are byte-identical. The independent fixture v3 passes84 complete oracles/two boundaries. The compiler-cost tradeoff and installation status are tracked in [admission](performance-admission.md), [results](results.md), and [integration](integration.md). The sections below preserve chronological investigation checkpoints; pending statements describe those earlier boundaries.
+
 # Tree wrapper dispatch experiment
 
 Status: saved-output and actual checked01 controls/screens pass under root
@@ -161,3 +165,16 @@ its usage label. This is a fixture type correction, not candidate admission or
 relaxed assertions. The successor tool passes syntax checking; its relative
 workflow import statically resolves to the existing tools/development/workflow.mjs.
 Root retries in a fresh fixture02 directory; success remains unclaimed.
+
+Fixture02 baseline/candidate checked emissions both pass (about5.1seconds root
+acquisition). Controls-v2 then fails its first ordinary refusal_check oracle:
+actual14 versus expected7. Independently reading the source confirms
+refusal_check calls wrap.nat (one map, +7 per leaf) and then wrap.scalar (a second
+map, another +7). `fixture-controls-v3.mjs` changes only that oracle to
+score(map(map(t))) and the usage label; fixture/emission bytes remain unchanged.
+Its syntax check passes. Review of the remaining oracle equations confirms bench
+uses one turn/map, forward_check one map, modular seeds and scores match U32,
+and full-shape sharing/direction cases already pass. Preserve failed v2 tools/raw
+output; root may reuse the same checked fixture02 emissions for a fresh controls
+directory without recompilation. This is an oracle correction, not a semantic
+candidate failure or relaxed assertion.

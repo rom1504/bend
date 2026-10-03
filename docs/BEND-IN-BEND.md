@@ -6,17 +6,28 @@ interpreter and JavaScript/native emitters in Bend. JavaScript handles filesyste
 and process orchestration, primitives and the public-data adapter. Ordinary
 compilation runs Bend code without a TypeScript fallback.
 
-**[Phase40 checked06 is installed](../implementation/phase40/release-06.md).**
-Release verification, all 42 ordinary/relocated CLI checks and the
+**[Phase41 checked01 is installed](../implementation/phase41/integration.md).** The
+postinstall audit passes 15/15 gates, and all 227 canonical source bindings match. The source adds
+35 physical lines and four definitions; of 45 generated modules, 42 are
+byte-identical to Phase40, with only three tree points changed. Its API SHA256
+is `9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b`. The
+upstream pin is unchanged. Release verification and all 42 ordinary/relocated CLI
+checks pass. The portable current bundle is available at
+[`current/manifest.json`](../selfhost/tools/performance/phase41/current/manifest.json);
+its 5-point fast set passes. See the [Phase41 integration account](../implementation/phase41/integration.md)
+and [results](../implementation/phase41/README.md).
+
+**Phase40 checked06 is the previous installed release** ([release record](../implementation/phase40/release-06.md)).
+Its release verification, all 42 ordinary/relocated CLI checks and the
 [15-group final audit](../implementation/phase40/final-conformance/gates.md) pass;
-227 canonical files match the selected checked snapshot. The API SHA256 is
-`630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a`.
-This remains a checked B1 derivative, not a new self-emitted fixed point.
+227 canonical files match the selected checked snapshot. Its API SHA256 is
+`630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a`. This is a
+checked B1 derivative, not a new self-emitted fixed point.
 The target remains upstream
 [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
 after Bend 2.0.34. The [release manifest](../selfhost/dist/release.json) binds it.
 
-## Current measured results: Phase40
+## Historical measured results: Phase40
 
 The [report](../implementation/phase40/README.md) compares generated programs
 against Phase39 and pinned TypeScript. Coverage is **45 points / 23 sources**.

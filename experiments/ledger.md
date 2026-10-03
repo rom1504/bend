@@ -2521,3 +2521,26 @@ in 20.36 s using the 20-second preset; a checked build plus 36 probes takes
 [Evidence](../implementation/phase40/evidence/README.md) and
 [workflow](../implementation/phase40/workflow-findings.md) separate
 interruption, recorded jobs and model-attribution limits.
+
+## 2026-10-03 — Phase41: guarded wrappers and bounded validation
+
+Promote checked01 with a documented compiler-cost tradeoff. Three tree points
+improve1.506–1.592× over Phase40 and remain9.33–12.18× slower than TS;42/45
+modules are unchanged. Source adds35 lines/four definitions. The normal tree
+compilation request costs9.46% more; no compiler-throughput gain is claimed.
+All15 final audit groups and42 CLI checks pass. Frontend retains all3222 exact
+observations and historical shared failures; backend status is unchanged.
+
+Reject transfer-tuple scalarization after a null timing result. Defer lexer
+admission after a native String-hook counterexample. Preserve five failed jobs,
+one checked build, all final timings/profiles and independent reviews in the
+[closed report](../implementation/phase41/README.md). The fast portable preset
+passes in17s. Raw campaign closure occurs at78m16s, including34m03s recorded tool
+intervals; [accounting](../implementation/phase41/accounting.md) keeps residual,
+preservation and publication separate.
+
+**Updated frontier:** profile and reduce repeated compiler planner work, then
+isolate remaining tree dispatch/allocation. Require a cheap falsifier and actual
+checked emission before another broad integration. Current
+[steering](STEERING.md) and [portable loop](../selfhost/tools/performance/phase41/README.md)
+replace Phase40 as the starting point; all historical evidence remains retained.

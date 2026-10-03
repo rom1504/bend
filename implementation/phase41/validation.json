@@ -1,0 +1,263 @@
+{
+  "kind": "phase41-observed-two-worker-frontend-workflow-comparison",
+  "complete": true,
+  "frontendPass": true,
+  "finalAuditStatus": "pending at record creation",
+  "controlledSameImageWorkerComparison": false,
+  "claim": "Fresh Phase41 correctness gates pass. Historical Phase40/Phase41 enclosing-wall comparison uses different checked APIs, CPU affinity and worker counts; it does not isolate a causal worker speedup or generated-program performance.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/final-plan02/frontend-main/report.json",
+      "sha256": "dc3d64af864cabc958c9063007b2b3e91265c81c0823c0da2b7d9e5aef3afd78",
+      "bytes": 20190
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/final-plan02/run-frontend-main/run.json",
+      "sha256": "163f8df981f7bac61c965a8dacfd07a0850036126bec6cc498c46e3c8cc19453",
+      "bytes": 1806
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/integration01/final-plan/frontend-main/report.json",
+      "sha256": "3d18d089b7db3f9f103ce45aebea7c08ac7c2ace22c82bdfa4d3760825cc1e72",
+      "bytes": 20561
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/integration01/final-plan/run-frontend-main/run.json",
+      "sha256": "d8b6281c1a4b5102c880a99968c0e89abe5ad0252adb6221192781f9d8795e6e",
+      "bytes": 1836
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/final-plan02/frontend-broader/report.json",
+      "sha256": "40059bab653b6467c3ad27387c8b3deafe533c1349bbde2a731a200fa75daf93",
+      "bytes": 12113
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/final-plan02/run-frontend-broader/run.json",
+      "sha256": "0ae6d62811d46ee0aca027b8384bd012e90c6a0990860a390637903f120c7c6e",
+      "bytes": 1910
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/integration01/final-plan/frontend-broader/report.json",
+      "sha256": "d58b07d7fa0e9d326646254ea2189a64ea4bbc64417e1f7691f3d0e5ad53153f",
+      "bytes": 12484
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/integration01/final-plan/run-frontend-broader/run.json",
+      "sha256": "526c1c93068fb2a37d7b368a3b213ea327176159c2508995946c942137d63f05",
+      "bytes": 1907
+    }
+  ],
+  "scopes": [
+    {
+      "scope": "main",
+      "phase40": {
+        "apiSha256": "630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a",
+        "gate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/final-plan02/frontend-main/report.json",
+          "sha256": "dc3d64af864cabc958c9063007b2b3e91265c81c0823c0da2b7d9e5aef3afd78",
+          "bytes": 20190
+        },
+        "execution": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/final-plan02/run-frontend-main/run.json",
+          "sha256": "163f8df981f7bac61c965a8dacfd07a0850036126bec6cc498c46e3c8cc19453",
+          "bytes": 1806
+        },
+        "wallSeconds": 784.3895743989851,
+        "peakTreeRssBytes": 669409280,
+        "minimumAvailableBytes": 28455550976,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 2147483648,
+        "secondsLimit": 1800,
+        "candidateWorkers": 1,
+        "referenceWorkers": 4,
+        "affinity": "3",
+        "statuses": {
+          "observed": 497,
+          "pass": 2525,
+          "fail": 4
+        },
+        "candidateWorkerStats": [
+          {
+            "starts": 48,
+            "requests": 3026,
+            "recycles": 47,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 438239232
+          }
+        ],
+        "exact": 3026,
+        "differences": 0,
+        "healthPass": true,
+        "boundedComplete": true,
+        "stoppedFor": null
+      },
+      "phase41": {
+        "apiSha256": "9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b",
+        "gate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/integration01/final-plan/frontend-main/report.json",
+          "sha256": "3d18d089b7db3f9f103ce45aebea7c08ac7c2ace22c82bdfa4d3760825cc1e72",
+          "bytes": 20561
+        },
+        "execution": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/integration01/final-plan/run-frontend-main/run.json",
+          "sha256": "d8b6281c1a4b5102c880a99968c0e89abe5ad0252adb6221192781f9d8795e6e",
+          "bytes": 1836
+        },
+        "wallSeconds": 413.6468016010185,
+        "peakTreeRssBytes": 1175924736,
+        "minimumAvailableBytes": 27917000704,
+        "rssLimitBytes": 3221225472,
+        "availableFloorBytes": 2147483648,
+        "secondsLimit": 1200,
+        "candidateWorkers": 2,
+        "referenceWorkers": 4,
+        "affinity": "3,4",
+        "statuses": {
+          "observed": 497,
+          "pass": 2525,
+          "fail": 4
+        },
+        "candidateWorkerStats": [
+          {
+            "starts": 25,
+            "requests": 1591,
+            "recycles": 24,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 481595392
+          },
+          {
+            "starts": 23,
+            "requests": 1435,
+            "recycles": 22,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 453304320
+          }
+        ],
+        "exact": 3026,
+        "differences": 0,
+        "healthPass": true,
+        "boundedComplete": true,
+        "stoppedFor": null
+      },
+      "historicalWallSavedSeconds": 370.7427727979666,
+      "historicalWallReductionPercent": 47.26513264560369,
+      "historicalWallRatio": 1.8962785916946727
+    },
+    {
+      "scope": "broader",
+      "phase40": {
+        "apiSha256": "630879d8f030241a1d2c56e97f18f88b5be2070ac45dd02304afd06b3e3c5c0a",
+        "gate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/final-plan02/frontend-broader/report.json",
+          "sha256": "40059bab653b6467c3ad27387c8b3deafe533c1349bbde2a731a200fa75daf93",
+          "bytes": 12113
+        },
+        "execution": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase40/final-plan02/run-frontend-broader/run.json",
+          "sha256": "0ae6d62811d46ee0aca027b8384bd012e90c6a0990860a390637903f120c7c6e",
+          "bytes": 1910
+        },
+        "wallSeconds": 37.35362792000524,
+        "peakTreeRssBytes": 698281984,
+        "minimumAvailableBytes": 28305960960,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 2147483648,
+        "secondsLimit": 1800,
+        "candidateWorkers": 1,
+        "referenceWorkers": 4,
+        "affinity": "3",
+        "statuses": {
+          "observed": 1,
+          "pass": 195
+        },
+        "candidateWorkerStats": [
+          {
+            "starts": 4,
+            "requests": 196,
+            "recycles": 3,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 264220672
+          }
+        ],
+        "exact": 196,
+        "differences": 0,
+        "healthPass": true,
+        "boundedComplete": true,
+        "stoppedFor": null
+      },
+      "phase41": {
+        "apiSha256": "9900abf49719575db7f7bbee32c6b16e10bcd554f9de22cde0799eb859cc6f0b",
+        "gate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/integration01/final-plan/frontend-broader/report.json",
+          "sha256": "d58b07d7fa0e9d326646254ea2189a64ea4bbc64417e1f7691f3d0e5ad53153f",
+          "bytes": 12484
+        },
+        "execution": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase41/integration01/final-plan/run-frontend-broader/run.json",
+          "sha256": "526c1c93068fb2a37d7b368a3b213ea327176159c2508995946c942137d63f05",
+          "bytes": 1907
+        },
+        "wallSeconds": 23.381616358994506,
+        "peakTreeRssBytes": 978124800,
+        "minimumAvailableBytes": 28210319360,
+        "rssLimitBytes": 3221225472,
+        "availableFloorBytes": 2147483648,
+        "secondsLimit": 1200,
+        "candidateWorkers": 2,
+        "referenceWorkers": 4,
+        "affinity": "3,4",
+        "statuses": {
+          "observed": 1,
+          "pass": 195
+        },
+        "candidateWorkerStats": [
+          {
+            "starts": 2,
+            "requests": 91,
+            "recycles": 1,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 271327232
+          },
+          {
+            "starts": 2,
+            "requests": 105,
+            "recycles": 1,
+            "timeouts": 0,
+            "failures": 0,
+            "maxRssBytes": 271319040
+          }
+        ],
+        "exact": 196,
+        "differences": 0,
+        "healthPass": true,
+        "boundedComplete": true,
+        "stoppedFor": null
+      },
+      "historicalWallSavedSeconds": 13.972011561010731,
+      "historicalWallReductionPercent": 37.40469758635635,
+      "historicalWallRatio": 1.5975639727591346
+    }
+  ],
+  "combined": {
+    "phase40WallSeconds": 821.7432023189904,
+    "phase41WallSeconds": 437.02841796001303,
+    "historicalWallSavedSeconds": 384.71478435897734,
+    "historicalWallReductionPercent": 46.81691108284166
+  },
+  "observations": {
+    "main": 3026,
+    "broader": 196,
+    "mainStatuses": {
+      "pass": 2525,
+      "observed": 497,
+      "fail": 4
+    },
+    "sharedMainFailuresPreserved": true
+  },
+  "resourceFailures": false
+}

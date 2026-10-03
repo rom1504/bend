@@ -1,0 +1,131 @@
+{
+  "kind": "bend-program-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Phase42 independent semantic fixtures. No existing benchmark changed. Exact copied source paths confined to catalog folder.",
+  "status": "frozen",
+  "sets": {
+    "fast": [
+      "phase42-fusion-fixture",
+      "phase42-calls-renamed-fixture",
+      "phase42-owned-fixture"
+    ],
+    "core": [
+      "phase42-fusion-fixture",
+      "phase42-calls-renamed-fixture",
+      "phase42-owned-fixture"
+    ],
+    "broad": [
+      "phase42-fusion-fixture",
+      "phase42-calls-renamed-fixture",
+      "phase42-owned-fixture"
+    ],
+    "full": [
+      "phase42-fusion-fixture",
+      "phase42-calls-renamed-fixture",
+      "phase42-owned-fixture"
+    ]
+  },
+  "cases": [
+    {
+      "id": "phase42-fusion-fixture",
+      "family": "total-scalar-fusion",
+      "category": "semantic-fixture",
+      "partition": "development",
+      "description": "Independent full-width Chain scalar pipeline with overflow and refusal exports",
+      "scope": "Fixture acquisition and semantic controls only",
+      "source": {
+        "path": "fusion-fixture-v4.bend",
+        "bytes": 2920,
+        "sha256": "e2687be0cf1cd833829de53ca5aaa08dd9bfc5eaaf0cd8def46bc7644285daaa",
+        "provenance": {
+          "kind": "exact-phase42-semantic-fixture-copy",
+          "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/fusion/fixture-v4.bend",
+          "sha256": "e2687be0cf1cd833829de53ca5aaa08dd9bfc5eaaf0cd8def46bc7644285daaa"
+        }
+      },
+      "point": {
+        "exportName": "pipeline",
+        "args": [
+          17,
+          4294967295,
+          4294967295
+        ],
+        "expected": 984203780
+      },
+      "oracle": "Independent Python integers, masks after every U32 operation",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ]
+    },
+    {
+      "id": "phase42-calls-renamed-fixture",
+      "family": "closed-calls",
+      "category": "semantic-fixture",
+      "partition": "development",
+      "description": "Independent renamed tree call graph",
+      "scope": "Fixture acquisition and semantic controls only",
+      "source": {
+        "path": "calls-fixture-renamed.bend",
+        "bytes": 2474,
+        "sha256": "629fe073f8ab221efe2ab564ae1fe5360609da40622c77258c36e010cf72817c",
+        "provenance": {
+          "kind": "exact-phase42-semantic-fixture-copy",
+          "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/calls/fixture-renamed-v3.bend",
+          "sha256": "629fe073f8ab221efe2ab564ae1fe5360609da40622c77258c36e010cf72817c"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          17,
+          17
+        ],
+        "expected": 2998899716
+      },
+      "oracle": "Literal independent Python tree/head/key/order/score formulas",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ]
+    },
+    {
+      "id": "phase42-owned-fixture",
+      "family": "owned-constructor",
+      "category": "semantic-fixture",
+      "partition": "development",
+      "description": "Nonnative owned constructor stack plus native refusal exports",
+      "scope": "Fixture acquisition and semantic controls only",
+      "source": {
+        "path": "owned-fixture.bend",
+        "bytes": 1082,
+        "sha256": "089a269974b4dd8858e65b8b67cab3a993436db7c20270f220065adaa8dc8c8e",
+        "provenance": {
+          "kind": "exact-phase42-semantic-fixture-copy",
+          "source": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/frames/owned-fixture.bend",
+          "sha256": "089a269974b4dd8858e65b8b67cab3a993436db7c20270f220065adaa8dc8c8e"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          17,
+          4294967295
+        ],
+        "expected": 135
+      },
+      "oracle": "Independent Python integers, one copied head per depth plus terminal head, mask each seed increment and final sum",
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ]
+    }
+  ]
+}

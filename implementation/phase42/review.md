@@ -235,3 +235,98 @@ does not alter constructor_mode: deferred tail builds remain unchanged, so
 metadata marker forgery cannot turn deferred construction eager. No static
 blocker found; fresh/zero-alias/unary/deep/native/deferred execution remains
 required. No runtime/production edits or execution jobs were done by reviewer.
+
+## Flat lexical-clone architecture review
+
+Reviewed `layout/source-proposal.md` prospectively. No architectural blocker if
+the proposed negative normalized-emission audit is exhaustive and all-or-nothing.
+JPure alone cannot admit layout. Existing j_region_signature indeed requires
+native scalar inputs and result. Scoped metadata as a third BookCache child
+preserves original lookup index, binder identities and cached planner facts;
+fresh j_plan_context currently strips old payloads before preparing the request.
+
+Required holes to close in the concrete patch: inspect actual unary combiner
+emission (`j_linear_combiner_emit` can still emit callOwned/get-G), not merely
+source/body JCall tags; type-directed JUnpack field reads; exact local clone
+resolution for every normalized JCall/JDirectCall and closure; native vector,
+pair/tuple bridge and standalone function refusals. Keeping native List `.a`
+does not suffice if it can contain a flat user ADT; current ground List proof is
+specifically U32-headed. Missing/stale third-child context must stay inactive
+and a context tag alone must not become an admission proof.
+
+Lexical same-name clone functions inside the successful proof try block can
+shadow original helpers safely in emitted ES modules. Every use must remain in
+that block; original declarations outside it and fallback must keep original
+ABI. The matched scalar result cannot carry private ADT representation outside.
+Request-local exact source definitions must be recovered via lookup, not from
+transformed helper bodies. No duplicate full-graph planning is justified.
+
+Sent these requirements to layout owner and root. Suggested independent Tree/
+second Stats record/JUnpack and shared-helper flat/public-root cases, alongside
+the native/data/observer/partial/backedge refusals in the design matrix. The
+corrected renamed helper fixture is calls/fixture-renamed-v2.bend; the original
+review fixture computed-match parser failure remains preserved. Concrete flat
+patch is not yet available; no acquisition/admission or execution result claimed.
+
+## Concrete flat audit and recursive-shell correction
+
+Root reports a real unary keep_gt1 miscompile in checked03/05 complete-stage
+controls: rewriting a combiner containing the worker self call to JDirectCall
+hid the original App spine from j_linear_spine, yielding child32/undefined $u0.
+Earlier tree-only static/acquisition review did not establish unary parity.
+Owner-threaded rewriting preserves every App shell containing the original
+worker reference while recursively lowering independent argument expressions.
+Static review accepts that shape repair. Owner-thread-v1 also omitted the owner
+parameter from j_covered_terms; reviewer flagged the concrete arity/free-variable
+error, owner had already delivered the retained arity-fix successor. Root retains
+the failed checked06 attempt. No successful rerun is asserted here.
+
+Reviewed layout source-v1 SHA256
+`83964233cd5bfea11444130343463fa302baba0e9406bcaaa8de9eaa60df2d2f`.
+Its source graph/type, exact guard coverage, direct closure and structural self
+checks are conservative; unary nonconstructor combiners refuse. Its normal
+proof route matches the actual original j_tree_scope conditions exactly
+(fold-root signature, residual helpers, pure graph valid). A speculative concern
+about a stronger nonexistent j_tree_scope_valid API was withdrawn after direct
+source inspection; no invented scope requirement applies.
+
+Concrete v1 frontier gap: j_flat_local_audit checks normalized locals before
+j_region_declarations calls j_region_inline_defs. That late transform can add
+JInline/JInlineRead/JVirtual after the advertised negative audit. A nonnative
+one-constructor Wrapper containing Tree can pass flat type checks while also
+meeting j_region_local_vector. Even if plain late JInline happens to be
+compatible, that compatibility was not established by the audit.
+
+Owner retained predecessors and supplied source-v3 SHA256
+`527789a02116f7fc5342a583c73b3641b640e7343e12ab835c38236a54b6dcab`.
+V3 emits the exact audited locals through j_region_definitions, bypassing late
+inline_defs. It also requires direct-call exact graph identity and saturation,
+rejects native local JCall targets omitted by declaration emission, and updates
+covered-term calls for the owner-aware API. Static review confirms the identified
+frontier gap is closed. Native containers are rejected recursively; canonical
+native scalar Bool/Nat/U32/F32 remain their original representations.
+
+BookCache child0/child1 and rest retain their original objects/identities; child2
+contains compiler-request-local original KDefs only. Missing/stale metadata
+is inactive. Public program/library entry always prepares JSPlanContext; reviewer
+nevertheless requested inactive flatBook => normal fallback rather than runtime
+flat-context invariant failure to preserve uncached backend helper behavior.
+No mutable representation test or conversion enters emitted user runtime.
+
+Fixture-v2 has the intended native/data/partial/observer/backedge/container
+refusals, but the added ReviewStat is not reached by a positive admitted scalar
+root (bench still calls review.score). Reviewer requested stat_bench exercising
+review.out/stat/map plus full values/entry witness. The observer negative root
+duplicates depth without unrestricted binder; a welltyped refusal fixture needs
+that fixed, while retaining any actual frontend failure. Checked acquisition
+remains contingent on the final successor and these independent controls.
+
+Correction to the preceding fixture concern: direct read of fixture-flat-v2
+lines42–43 confirms bench had already been changed to review.out(review.stat(...)).
+The missing-positive claim was a reviewer inspection error. Fixture-v3 adds
+explicit stat_bench as a second ordinary positive and fixes the actual duplicated
+depth binder issue. Source-v3 acquisition has no remaining concrete semantic
+blocker found by static review; checked exact emission, complete values and
+hostile boundaries remain mandatory. The inactive-context fallback recommendation
+is limited to preserving uncached internal backend behavior, not a claim that
+public program/library routes lack JSPlanContext.

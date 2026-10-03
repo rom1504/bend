@@ -1,0 +1,23 @@
+{
+  "reviewed": false,
+  "selectedOwners": ["request-facts"],
+  "artifacts": [
+    {"path": "${OUT}/facts-config.json", "data": {"candidate": {"api": "${API}"}}}
+  ],
+  "steps": [
+    {
+      "name": "phase42-request-facts",
+      "lockOwner": true,
+      "argv": ["python3", "selfhost/tools/performance/phase32/bounded-run.py", "--seconds", "120", "--rss-mib", "2048", "--available-mib", "2048", "${OUT}/run-request-facts", "--", "taskset", "-c", "3", "${NODE}", "--stack-size=4096", "--max-old-space-size=1024", "selfhost/tools/performance/phase42/facts/controls.mjs", "${OUT}/facts-config.json", "${OUT}/request-facts"]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "request-facts",
+      "report": "${OUT}/request-facts/report.json",
+      "execution": "${OUT}/run-request-facts/run.json",
+      "assertions": {"/kind": "phase42-request-facts-controls", "/complete": true, "/pass": true, "/observations": {"length": 5}},
+      "bindings": [{"pointer": "/inputs/2/sha256", "expected": "${API_SHA}"}]
+    }
+  ]
+}

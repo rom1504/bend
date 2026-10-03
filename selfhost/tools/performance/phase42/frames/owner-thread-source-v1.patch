@@ -1,0 +1,47 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -293,7 +293,7 @@
+ @unsafe
+ def j_component_declaration(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> String:
+   kc(String, j_pure_valid(pure), u =>
+-    j_component_covered_declaration(book, d, j_owned_term(j_covered_term(book, j_pure_remove(j_pure_defs(pure), dn(d)), dv(d)))), u => "")
++    j_component_covered_declaration(book, d, j_owned_term(j_covered_term(book, j_pure_remove(j_pure_defs(pure), dn(d)), dn(d), dv(d)))), u => "")
+ 
+ @unsafe
+ def j_component_covered_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm) -> String:
+@@ -485,20 +485,29 @@
+     case Nil{}: ty
+     case Con{h, rest}: j_covered_result(j_app_type(ty, h), rest)
+ 
+-@unsafe
+-def j_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTerm) -> KTerm:
++# Preserve the original saturated App/Call shell around a structural self call.
++# Unary classification needs that shell to discover its continuation child;
++# inherited proof lowering may still transform independent argument expressions.
++@unsafe
++def j_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +owner: String, +t: KTerm) -> KTerm:
+   kc(KTerm, String.eq(tg(t), "Ann"), u =>
+-    k_with_children(t, [j_covered_term(book, context, kid(t, 0)), kid(t, 1)]), u =>
++    k_with_children(t, [j_covered_term(book, context, owner, kid(t, 0)), kid(t, 1)]), u =>
+   kc(KTerm, String.eq(tg(t), "Var") || String.eq(tg(t), "Ref") || String.eq(tg(t), "Lit"), u => t, u =>
+   kc(KTerm, String.eq(tg(t), "App"), u =>
+-    j_covered_app(book, context, t, k_with_children(t, j_covered_terms(book, context, ks(t)))), u =>
+-    k_with_children(t, j_covered_terms(book, context, ks(t))))))
++    j_covered_shape_app(book, context, owner, t, k_with_children(t, j_covered_terms(book, context, owner, ks(t)))), u =>
++    k_with_children(t, j_covered_terms(book, context, owner, ks(t))))))
+ 
+ @unsafe
+ def j_covered_terms(+book: List<&2,KDef>, +context: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
+   match ts:
+     case Nil{}: Nil{}
+-    case Con{h, rest}: Con{j_covered_term(book, context, h), j_covered_terms(book, context, rest)}
++    case Con{h, rest}: Con{j_covered_term(book, context, owner, h), j_covered_terms(book, context, owner, rest)}
++
++
++@unsafe
++def j_covered_shape_app(+book: List<&2,KDef>, +context: List<&2,KDef>, +owner: String, +original: KTerm, +rebuilt: KTerm) -> KTerm:
++  kc(KTerm, String.eq(owner, "") || U32.is_eq(j_component_refs([original], owner, 8192, 0), 0),
++    u => j_covered_app(book, context, original, rebuilt), u => rebuilt)
+ 
+ @unsafe
+ def j_covered_app(+book: List<&2,KDef>, +context: List<&2,KDef>, +original: KTerm, +rebuilt: KTerm) -> KTerm:

@@ -53,3 +53,33 @@ callee body again with the remaining fuel, including repeated calls to a shared
 helper. Exhaustion or a repeated active name refuses the direct plan before
 emission. This bounds copied plans rather than merely counting unique graph
 definitions. Compilation/source costs still require a fresh checked measurement.
+
+## Residual post-calls discriminator
+
+Actual checked01 remains3.7–4.7x TS on the three tree points. Its private workers
+have14 actual acyclic helper IIFE sites and no remaining worker proof lookups;
+the generated continuations still re-read original typed prefixes after each
+child and preserve full parent argument vectors. The full handwritten graph
+changes representation, scopes and recursion together, so it cannot attribute
+the remaining gap.
+
+Post-calls tools isolate those mechanisms on exact checked01 bytes:
+post-calls-frames.mjs derives live continuation fields and a separate native
+recursive ceiling, retaining identical helpers; post-calls-scopes.mjs hoists
+exact closed helper IIFEs into deduplicated named functions, retaining identical
+workers/stacks. Scope-aware reference analysis distinguishes helper-local binder
+IDs from live caller references, and remaps only lexically free references.
+
+The recursive ceiling is a diagnostic for bounded scalar tree points up to
+12 levels. It must still fail the depth30000 probe with RangeError and restore
+the proof. It cannot be promoted as an unrestricted source worker. The live and
+hoisted roles retain stack-safe owners and must pass the complete inherited
+191 oracle/75 hostile-boundary controls. The controls reuse actual compiler
+adapters and check each derived clean parent's identity.
+
+A helper-hoist survivor can use one private encoded `$direct` declaration per
+admitted original definition, with exact complete closure guard/context and
+source arguments once in order. A continuation survivor can derive lexical
+live fields and continuation arms from the same checked source, retaining
+source child order and deep-stack iteration. Broader graph-native recursion
+requires its own stack-bound and host-boundary evidence.

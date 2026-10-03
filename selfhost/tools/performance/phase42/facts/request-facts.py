@@ -66,7 +66,7 @@ def j_plan_context(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>:
 
 @unsafe
 def j_plan_prepare(+cache: KDef, +rest: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>:
-  +source = Con{cache, rest}
+  +source = {Con{cache, rest} : List<&2,KDef>}
   +components = j_plan_components(source, defs, book_cached(Nil{}, 0))
   +directs = j_plan_directs(source, j_plan_needed(source, defs, book_cached(Nil{}, 0)), book_cached(Nil{}, 0))
   Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache),

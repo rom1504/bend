@@ -57,3 +57,30 @@ wrapper and auditor successors at
 found a Python reserved-keyword syntax error in the new collector; it was
 corrected and all current Python files pass. No correctness/performance or
 release-admission claim follows from these static checks.
+
+## Final orchestration handoff
+
+Added four validation adapters: `prepare-final-v1.py`, `run-final-v1.py`,
+`materialize-mapping-v1.py` and `close-release-v1.py`. The
+[handoff](../../selfhost/tools/performance/phase42/validation/final-runner-v1.md)
+documents exact extension/config/receipt fields, commands, stage boundaries,
+immutable mapping materialization and independent review work. The extension
+template is deliberately unreviewed and facts-only; root supplies the complete
+selected Phase42 mechanism contracts before dispatch.
+
+The materializer turns both inherited manual mapping steps into executable
+commands with copied parents, exact hashes and adjacent derivation receipts.
+The runner reuses unchanged Phase41 recipe-run/job orchestration and accepts
+only complete argv stages. Composite pre/post closure adds exact15+7+3+4,
+Phase41 and new42 owners plus expanded154 to the unchanged inherited auditors.
+Postinstall also requires an explicit selected-image performance/cost admission.
+
+Static checked02 materialization and semantic check-only dispatch passed without
+campaign execution; both mapping shapes passed against readonly historical
+receipts through `/tmp` symlinks. These checks occurred approximately
+19:00:52–19:00:55 UTC and19:01:21.686770–19:01:21.830766 UTC on2026-10-03,
+with inherited/unrecorded CPU affinity. Root was notified that an overlapping
+timing screen may have interference. Subsequent changes were limited to code
+and docs; all four final adapter ASTs and template JSON pass a tiny CPU5 check.
+Node verification, hash sweeps and collector execution are now queued root
+work and must not overlap root timing. Old reports/raw remain unchanged.

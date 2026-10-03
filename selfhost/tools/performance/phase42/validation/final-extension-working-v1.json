@@ -1,0 +1,558 @@
+{
+  "reviewed": false,
+  "scope": "Working complete current Phase42 extension; layout must be appended if selected. No receipt is claimed passing until frozen-image commands execute.",
+  "selectedOwners": [
+    "calls-actual",
+    "calls-fixture",
+    "owned-actual",
+    "owned-fixture",
+    "fusion-actual",
+    "fusion-fixture",
+    "request-facts"
+  ],
+  "artifacts": [
+    {
+      "path": "${OUT}/facts-config.json",
+      "data": {
+        "candidate": {
+          "api": "${API}"
+        }
+      }
+    }
+  ],
+  "steps": [
+    {
+      "name": "phase42-prepare-fixtures-v4",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/programs/prepare.py",
+        "--catalog",
+        "selfhost/tools/performance/phase42/fusion/fixture-catalog-v4/catalog.json",
+        "--attempt",
+        "${ATTEMPT}",
+        "--role",
+        "candidate",
+        "--out",
+        "${OUT}/phase42-fixtures",
+        "--node",
+        "${NODE}",
+        "--cpu",
+        "3",
+        "--heap-mib",
+        "1024",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048"
+      ]
+    },
+    {
+      "name": "phase42-calls-derive",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048",
+        "${OUT}/run-calls-derive",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase42/calls/actual-derive.mjs",
+        "selfhost/build/phase41/integration01/full-preparation/modules/tree-bitonic.mjs",
+        "${OUT}/full-preparation/modules/tree-bitonic.mjs",
+        "selfhost/build/phase37/typescript01/modules/tree-bitonic.mjs",
+        "${ATTEMPT}",
+        "${OUT}/calls-derived"
+      ]
+    },
+    {
+      "name": "phase42-calls-actual",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048",
+        "${OUT}/run-calls-actual",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase42/calls/actual-controls.mjs",
+        "${OUT}/calls-derived",
+        "${OUT}/calls-actual"
+      ]
+    },
+    {
+      "name": "phase42-calls-fixture",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048",
+        "${OUT}/run-calls-fixture",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase42/calls/fixture-controls-v3.mjs",
+        "selfhost/build/phase42/calls-fixture-baseline03/modules/calls-fixture-renamed.mjs",
+        "${OUT}/phase42-fixtures/modules/calls-fixture-renamed.mjs",
+        "${ATTEMPT}",
+        "${OUT}/calls-fixture"
+      ]
+    },
+    {
+      "name": "phase42-owned-derive",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048",
+        "${OUT}/run-owned-derive",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase42/frames/owned-actual-derive.mjs",
+        "selfhost/build/phase42/checked02-focused/focused-preparation/modules/tree-bitonic.mjs",
+        "${OUT}/full-preparation/modules/tree-bitonic.mjs",
+        "selfhost/build/phase37/typescript01/modules/tree-bitonic.mjs",
+        "${ATTEMPT}",
+        "${OUT}/owned-derived"
+      ]
+    },
+    {
+      "name": "phase42-owned-actual",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048",
+        "${OUT}/run-owned-actual",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase42/frames/owned-actual-controls.mjs",
+        "${OUT}/owned-derived",
+        "${OUT}/owned-actual"
+      ]
+    },
+    {
+      "name": "phase42-owned-fixture-derive",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048",
+        "${OUT}/run-owned-fixture-derive",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase42/frames/owned-fixture-derive.mjs",
+        "selfhost/build/phase42/fixtures-owned-baseline02/modules/owned-fixture.mjs",
+        "${OUT}/phase42-fixtures/modules/owned-fixture.mjs",
+        "${OUT}/owned-fixture-derived"
+      ]
+    },
+    {
+      "name": "phase42-owned-fixture",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048",
+        "${OUT}/run-owned-fixture",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase42/frames/owned-fixture-controls.mjs",
+        "${OUT}/owned-fixture-derived",
+        "${OUT}/owned-fixture"
+      ]
+    },
+    {
+      "name": "phase42-fusion-derive",
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase42/fusion/actual-derive.py",
+        "selfhost/build/phase41/integration01/full-preparation/modules/list-pipeline.mjs",
+        "${OUT}/full-preparation/modules/list-pipeline.mjs",
+        "${OUT}/full-preparation/modules/list-pipeline.mjs.json",
+        "${OUT}/fusion-derived"
+      ]
+    },
+    {
+      "name": "phase42-fusion-actual",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048",
+        "${OUT}/run-fusion-actual",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase42/fusion/actual-controls.mjs",
+        "${OUT}/fusion-derived",
+        "${OUT}/fusion-actual"
+      ]
+    },
+    {
+      "name": "phase42-fusion-fixture",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048",
+        "${OUT}/run-fusion-fixture",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase42/fusion/fixture-controls-v4.mjs",
+        "selfhost/build/phase42/fixtures-typescript02/modules/fusion-fixture-v4.mjs",
+        "selfhost/build/phase42/fixtures-baseline01/modules/fusion-fixture-v4.mjs",
+        "${OUT}/phase42-fixtures/modules/fusion-fixture-v4.mjs",
+        "${OUT}/fusion-fixture"
+      ]
+    },
+    {
+      "name": "phase42-request-facts",
+      "lockOwner": true,
+      "argv": [
+        "python3",
+        "selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "120",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "2048",
+        "${OUT}/run-request-facts",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase42/facts/controls.mjs",
+        "${OUT}/facts-config.json",
+        "${OUT}/request-facts"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "calls-actual",
+      "report": "${OUT}/calls-actual/report.json",
+      "execution": "${OUT}/run-calls-actual/run.json",
+      "assertions": {
+        "/kind": "phase42-tree-direct-calls-actual-controls",
+        "/complete": true,
+        "/checked": true,
+        "/oracles": 191,
+        "/boundaries": 75,
+        "/deep": {
+          "nodes": 60002,
+          "leaves": 60003,
+          "sum": "420021"
+        },
+        "/modules": {
+          "length": 4
+        }
+      },
+      "bindings": [
+        {
+          "document": "${OUT}/calls-derived/derive.json",
+          "pointer": "/attempt/sha256",
+          "expected": "${ATTEMPT_SHA}"
+        }
+      ]
+    },
+    {
+      "name": "calls-fixture",
+      "report": "${OUT}/calls-fixture/report.json",
+      "execution": "${OUT}/run-calls-fixture/run.json",
+      "assertions": {
+        "/kind": "phase42-renamed-actual-controls",
+        "/complete": true,
+        "/checked": true,
+        "/oracles": 75,
+        "/boundaries": 16,
+        "/guards": [
+          "bench",
+          "review.make",
+          "review.map",
+          "review.key",
+          "review.pair",
+          "review.flip",
+          "Bool.xor",
+          "review.pair.at",
+          "review.score"
+        ]
+      },
+      "bindings": [
+        {
+          "pointer": "/attempt/sha256",
+          "expected": "${ATTEMPT_SHA}"
+        }
+      ]
+    },
+    {
+      "name": "owned-actual",
+      "report": "${OUT}/owned-actual/report.json",
+      "execution": "${OUT}/run-owned-actual/run.json",
+      "assertions": {
+        "/kind": "phase42-owned-constructors-actual-controls",
+        "/complete": true,
+        "/checked": true,
+        "/oracles": 191,
+        "/boundaries": 75,
+        "/deep": {
+          "nodes": 60002,
+          "leaves": 60003,
+          "sum": "420021"
+        },
+        "/modules": {
+          "length": 4
+        }
+      },
+      "bindings": [
+        {
+          "document": "${OUT}/owned-derived/derive.json",
+          "pointer": "/attempt/sha256",
+          "expected": "${ATTEMPT_SHA}"
+        }
+      ]
+    },
+    {
+      "name": "owned-fixture",
+      "report": "${OUT}/owned-fixture/report.json",
+      "execution": "${OUT}/run-owned-fixture/run.json",
+      "assertions": {
+        "/kind": "phase42-owned-unary-controls",
+        "/complete": true,
+        "/checked": true,
+        "/checks": 31,
+        "/modules": {
+          "length": 4
+        }
+      },
+      "bindings": [
+        {
+          "document": "${OUT}/phase42-fixtures/modules/owned-fixture.mjs.json",
+          "pointer": "/attempt/sha256",
+          "expected": "${ATTEMPT_SHA}"
+        },
+        {
+          "document": "${OUT}/phase42-fixtures/modules/owned-fixture.mjs.json",
+          "pointer": "/compiler/api/sha256",
+          "expected": "${API_SHA}"
+        }
+      ],
+      "producer": "selfhost/tools/performance/phase42/frames/owned-fixture-controls.mjs",
+      "derivation": "${OUT}/owned-fixture-derived/derive.json"
+    },
+    {
+      "name": "fusion-actual",
+      "report": "${OUT}/fusion-actual/report.json",
+      "execution": "${OUT}/run-fusion-actual/run.json",
+      "assertions": {
+        "/kind": "phase42-fusion-controls",
+        "/complete": true,
+        "/controlRevision": 3,
+        "/pass": true,
+        "/oracle": {
+          "length": 116
+        },
+        "/boundaries": {
+          "length": 79
+        },
+        "/admission": {
+          "length": 1
+        },
+        "/oracle/112/kind": "explicit-stack-full-stages",
+        "/oracle/112/n": 30000,
+        "/oracle/113/kind": "explicit-stack-producer",
+        "/oracle/113/n": 30000,
+        "/oracle/114/kind": "ordinary-root-depth",
+        "/oracle/114/n": 30000,
+        "/oracle/114/entryDelta": 0,
+        "/oracle/115/kind": "ordinary-root-depth",
+        "/oracle/115/n": 30000,
+        "/oracle/115/entryDelta": 1
+      },
+      "bindings": [
+        {
+          "document": "${OUT}/full-preparation/modules/list-pipeline.mjs.json",
+          "pointer": "/attempt/sha256",
+          "expected": "${ATTEMPT_SHA}"
+        },
+        {
+          "document": "${OUT}/full-preparation/modules/list-pipeline.mjs.json",
+          "pointer": "/compiler/api/sha256",
+          "expected": "${API_SHA}"
+        }
+      ]
+    },
+    {
+      "name": "fusion-fixture",
+      "report": "${OUT}/fusion-fixture/report.json",
+      "execution": "${OUT}/run-fusion-fixture/run.json",
+      "assertions": {
+        "/kind": "phase42-fusion-fixture-controls",
+        "/complete": true,
+        "/pass": true,
+        "/oracle": {
+          "length": 255
+        },
+        "/admission": {
+          "length": 255
+        },
+        "/oracle/252/kind": "ordinary-large",
+        "/oracle/252/n": 1024,
+        "/oracle/253/n": 4096,
+        "/oracle/254/n": 8192,
+        "/admission/252/kind": "ordinary-large",
+        "/admission/253/kind": "ordinary-large",
+        "/admission/254/kind": "ordinary-large"
+      },
+      "bindings": [
+        {
+          "document": "${OUT}/phase42-fixtures/modules/fusion-fixture-v4.mjs.json",
+          "pointer": "/attempt/sha256",
+          "expected": "${ATTEMPT_SHA}"
+        },
+        {
+          "document": "${OUT}/phase42-fixtures/modules/fusion-fixture-v4.mjs.json",
+          "pointer": "/compiler/api/sha256",
+          "expected": "${API_SHA}"
+        }
+      ]
+    },
+    {
+      "name": "request-facts",
+      "report": "${OUT}/request-facts/report.json",
+      "execution": "${OUT}/run-request-facts/run.json",
+      "assertions": {
+        "/kind": "phase42-request-facts-controls",
+        "/complete": true,
+        "/pass": true,
+        "/observations": {
+          "length": 5
+        }
+      },
+      "bindings": [
+        {
+          "pointer": "/inputs/2/sha256",
+          "expected": "${API_SHA}"
+        }
+      ]
+    }
+  ],
+  "expectedCounts": {
+    "callsActual": [
+      191,
+      75
+    ],
+    "callsFixture": [
+      75,
+      16
+    ],
+    "ownedActual": [
+      191,
+      75
+    ],
+    "ownedFixtureChecks": 31,
+    "fusionActual": [
+      116,
+      79,
+      1
+    ],
+    "fusionFixture": [
+      255,
+      255
+    ],
+    "factsObservations": 5
+  },
+  "baselinePolicy": "Reuse only individually complete checked module receipts; partial preparation failure remains historical failure and is not relabeled complete."
+}

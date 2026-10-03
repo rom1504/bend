@@ -145,3 +145,62 @@ an observation boundary. Actual source work should first produce one checked
 B1 tree emission with static zero-dispatch evidence and complete values, then
 screen stack-safe performance. Named-field layout or range-unboxed Nat follows
 only if its separate ablation justifies a separate representation proof.
+
+## Actual checked graph layout clone
+
+The orthogonal root screen shows a useful representation discriminator: depth8
+flat BigInt0.3113ms versus array BigInt0.5282ms; depth9 flat0.7465ms versus
+array1.3625ms. Number Nat is inconclusive/null. This supports a real emitted
+control experiment rather than immediate source promotion.
+
+`actual-flat-v1.mjs` consumes the checked Phase42 checked01 tree module and its
+checked emission receipt. It requires exactly five private worker declarations
+with zero generic dispatch, G reads or proof checks internally. The fourteen
+acyclic helper IIFEs remain inside those exact workers. It clones those five
+workers plus the local scalar Stat output helper, leaving every original public
+G function and shared worker intact. The existing admitted scalar bench true
+branch selects a private cloned root; the original entry checks, proof lifetime,
+refused body and BigInt remain. There is no native recursion rewrite or depthcap.
+
+Clone-array constructs fresh tagged objects and payload arrays directly;
+clone-flat constructs fresh tagged objects with `_0`... slots and reads them
+directly. Both retain identical continuation stacks, frame arrays, helper IIFEs,
+case order, primitive arithmetic and call routing. No private ADT is passed to
+an original generic matcher. The scalar output helper is also cloned and reads
+flat Stat slots directly, so conversion/repacking is absent from clean modules.
+Full-value/alias adapters are diagnostic-only and never compiled into timings.
+
+Production feasibility: extend the existing covered private emission with an
+explicit closed layout context, rather than changing global constructor/runtime
+behavior or rewriting emitted JS strings. The plan must prove the whole scalar
+root graph closed and select a private declaration suffix for each exact KDef.
+That suffix and layout context propagate through component calls, acyclic helper
+inlining, private finite matches, field bindings and constructors. Known JPure
+nonnative constructor layouts select slot properties; their current arity/type
+proof supplies field order. The existing original worker declarations stay
+available for public/tagged-array paths. Native Bool/Nat/Tuple/List lowering
+keeps its existing classification and contracts. Reject any missing observer,
+unsupported helper or escaping ADT rather than bridging mid-graph.
+
+The flat context needs to reach both `j_component_emit` and finite/acyclic helper
+prefix emission, plus `j_region` scalar output unpacking; changing only ctor
+emission is invalid. A source patch is therefore wider than a constructor tweak
+but needs no runtime membership protocol or new public ABI. Reuse stack machines
+and full checked01 helper planning. Source promotion depends on actual clone
+controls/timing, a checked B1 context implementation, full values/aliases/host
+counterexamples, and broad semantics after freezing a survivor.
+
+Use `actual-flat-v2.mjs`: V1's property labels were inserted at AST expression
+starts rather than complete grouped element starts and failed parsing. V2 uses
+outer array token boundaries; the semantic transformation is unchanged. Failed
+V1 and partial output remain preserved.
+
+The concrete readonly source feasibility review is
+[`source-proposal.md`](../../selfhost/tools/performance/phase42/layout/source-proposal.md).
+It names the existing owners, a cache-preserving third-child scoped context,
+five lowering hooks, and a negative normalized-emission audit. Lexical clones
+belong inside the admitted try block; outside fallback cannot resolve them.
+This avoids global worker ABI changes and reuses exact component/direct facts.
+The initial route rejects vector/read/producer/fusion plans rather than mixing
+those boundaries into layout admission. Estimated160–230 source lines plus
+wiring; no runnable patch is claimed before the all-or-nothing audit exists.

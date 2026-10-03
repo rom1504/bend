@@ -1,0 +1,45 @@
+{
+  "kind": "phase42-saved-map-string-comparison-ablation",
+  "complete": true,
+  "executed": false,
+  "compilerAdmission": false,
+  "originalSha256": "4920a1662f2050c802d69417e032d19905b97160fa7eb5743b2333dbcb16d1e4",
+  "originalBytes": 122329,
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase41/current/manifest.json",
+    "sha256": "839fa96c550e723c671881c9473c7153637e9e9e0dd042e36e16844d1bf05700"
+  },
+  "toolSha256": "552f04f95592112a61b53095f840f5eb7db6e14e5d91fb5b301b1220f07caeaf",
+  "sites": [
+    {
+      "definition": "Map.set.fin",
+      "sites": 1
+    },
+    {
+      "definition": "Map.pop.go",
+      "sites": 6
+    },
+    {
+      "definition": "Map.pop",
+      "sites": 1
+    }
+  ],
+  "dependencies": [
+    "Char.cmp",
+    "String.cmp",
+    "String.cmp.fin",
+    "String.cmp.rec",
+    "U32.cmp"
+  ],
+  "scope": "Eight Map call sites bypass generic String.cmp recursion only for plain strings under postinitialization descriptor/dependency guards. Public descriptors unchanged. Original native String.cmp captured before source override. No proof opened; existing proof means fallback. Preimport host mutation remains a production blocker.",
+  "modules": {
+    "baseline": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/facts/map-bst/ablation01/baseline.mjs",
+      "sha256": "b4009e7c90359808ec9bace8debc89f526a0d3ad1fa30c01c0b27103cb4123da"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/facts/map-bst/ablation01/candidate.mjs",
+      "sha256": "064a1919ff2c0907bdfe8976ace47738f3bd0f511adf0d5e87ac2da0bcd1458c"
+    }
+  }
+}

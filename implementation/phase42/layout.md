@@ -139,3 +139,34 @@ layout; `flat-number` changes only bounded private Nat representation. All
 use the same pure graph and native recursion. Owner has not executed these.
 The source implementation proposal is recorded in the design and coordinated
 with the frame owner; no source patch or production edits exist.
+
+Orthogonal controls pass under root. Its fresh depth8 medians are flatBigInt
+0.3113ms, arrayBigInt0.5282ms, flatNumber0.3052ms and TS0.2935ms. Depth6:
+0.0656/0.0929/0.0617/0.0382ms; depth9:0.7465/1.3625/0.8475/0.7343ms.
+Array versus flat is a material1.7–1.8× difference at depth8/9; Number is null.
+See `selfhost/build/phase42/whole-tree-orthogonal-screen01/report.json`.
+These remain bounded handwritten graph ceilings, not source results.
+
+`actual-flat-v1.mjs` and `actual-flat-controls-v1.mjs` now provide the next
+real-emission control. Derive from
+`selfhost/build/phase42/checked01-preparation/modules/tree-bitonic.mjs`, retaining
+its checked receipt. The two generated subdirectories `clone-array` and
+`clone-flat` share the exact checked worker/control body; only cloned private
+constructors and reads differ. Public original workers stay unchanged. BigInt,
+stack machines and all14 helper IIFEs remain. Run the controls once per
+subdirectory, then root serializes timing. Owner performed static inspection
+only and claims no execution. This is saved-JS research, not a source compiler
+patch; the general lowering context proposal is linked in the design.
+
+Root's first actual clone derivation failed only on the flat clone at Acorn
+line815 column1938. Clone-array artifacts and partial flat-original artifacts
+remain in `selfhost/build/phase42/actual-flat01`; supervision retains the exact
+failure at `supervision/actual-flat-derive01`. V1 inserted object property labels
+at Acorn field AST starts, which exclude leading grouping parentheses/comments.
+The resulting label could appear inside a grouped field expression.
+
+Retain V1 rejected; `actual-flat-v2.mjs` locates element starts at the outer
+array's token boundaries and prefixes labels before the complete expression.
+It now writes candidate source before parsing, so any further parse failure
+retains its exact candidate bytes. Controls are unchanged. No source/control
+algorithm change or owner execution is introduced by this successor.

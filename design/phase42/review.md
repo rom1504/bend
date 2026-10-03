@@ -40,3 +40,29 @@ stack failure. Do not waive a gate for a speed result. Correct an invalid oracle
 only with a derivation, versioned successor and retention of the failed tool/run.
 Freeze source/helper/ABI and clean/diagnostic identities before timing. Compare
 fusion against Phase41 direct-unfused output, not an older generic denominator.
+
+## Flat lexical-clone architecture boundary
+
+JPure proves the source graph, not absence of generic observers in its lowered
+output. Flat admission therefore needs an all-or-nothing negative audit of the
+normalized root, every component clone, every direct helper and every emitted
+unary reconstruction/record-unpack path. Each ADT construction and field read
+must use one scoped representation; any unresolved generic matcher/project,
+callOwned/get-G path, callback, native vector/tuple bridge or standalone function
+reference refuses the entire flat route. Native grounded U32 List may retain
+its original layout; a native container carrying flat user ADTs needs separate
+proof or refusal.
+
+Only native scalar root inputs AND result may admit. Exact complete entry guard
+dominates all local clone declarations and use inside proof try/finally. Outside
+that block, original helpers/workers and generic fallback retain public ABI.
+BookCache third-child metadata must preserve first/second child identities and
+be created only after the audit; absent/stale scope defaults inactive. Fresh
+request preparation strips prior scoped metadata.
+
+Minimum independent cases: a renamed Tree plus second Stats record/JUnpack,
+mixed binary/unary reconstruction, erased fields and multi-scalar parameters;
+shared helper used by both flat scalar and ordinary ADT-output roots; public
+ADT input/output refusals; generic observer, partial callback, mutual backedge,
+String/List/vector refusals; exact host getter/coercion/mutation/throw/bounded
+reentry traces; fresh roots/shared children and iterative depth30000 summary.

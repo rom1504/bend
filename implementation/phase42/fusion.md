@@ -85,3 +85,52 @@ API/runtime/Base/driver/attempt/source/tool identities. Counted adapters only
 change instrumentation; clean role bytes must be exact. Large prospective
 screen points1024,4096,8192,1025,4097 and independent integer expectations are
 frozen in large-screen-prototype.json/large-screen-oracle.json; not yet timed.
+
+## Checked source admission diagnosis and supplemental controls
+
+Root applies reviewed source-v1 and checked02 builds successfully in41.3s.
+Actual list-pipeline emission has zero fusion markers, so this is a failed
+admission attempt and supplies no checked compiler speed claim. Read-only
+fusion-gate-probe02 records annotated selected root versus original source;
+the root-prefix returns empty before reaching pipeline recognition.
+
+Static diagnosis: j_primitive_type requires normalized ADT input. Weak-head
+normalizing an All telescope does not normalize its domain child, which remains
+Ref U32. Source-v1 mistakenly passed that child directly in root-prefix and
+owner head-field checks. source-v2-correction.patch normalizes exactly those two
+domains via existing wnf before the same primitive predicate. It changes no
+semantic gate, no annotation handling and no ownership/totality proof. Correction
+build/emission validation remains pending root execution.
+
+Independent fixture-v4 preserves v3 and adds ordered scalar accumulation
+`acc*3-head` with per-operation U32 wrap, plus U32.mod(head,0) mapping. V4 controls
+compare ordinary stages/public roots across pinned TypeScript, Phase41 and
+candidate; expected admitted roots are pipeline, ordered_pipeline and
+modzero_pipeline. Exact selected marker count is3, and each root retains the
+original complete guards/proof/finally owner. Retained/let/shared/division
+refusal exports remain required. Pinned Node24.18 syntax checks pass for V4,
+actual controls and gate probes on CPU5; no runtime execution by this owner.
+
+fixture-catalog-v2/catalog.json freezes exact copied v4 fusion, renamed calls
+and owned-constructor fixtures. SHA/bytes and original source identities bind
+each confined path; prior two-source catalog remains preserved. Paired checked
+acquisition recipes target Phase41/checked02/pinnedTS and allow fresh later
+candidate attempts. Nine checked emissions are root-owned and not yet run.
+
+Root fusion-gate-probe03 confirms the exact failing source-v1 gate: root
+prefix at0/left2 rejects its unnormalized U32 domain. Root
+fusion-gate-normalized01 runs the diagnostic correction on checked02 and passes
+all owner/stage/scalar/pipeline predicates; selected annotated root and original
+canonical root each generate the same560-byte fusion body. No annotation erasure
+or canonical-source substitution is needed. This is diagnostic planner admission,
+not an actual corrected checked emission. Fresh build/marker/semantic/timing
+confirmation remains root-owned.
+
+V4 independent controls additionally create a byte-bound counted diagnostic
+from actual compiler root lines. Counters are injected only at each root's
+fusion marker inside its original guarded proof try. Every252 bounded point and
+three large points must show exactly one entry for each of the three admitted
+roots, yielding255 admission rows. Complete-stage diagnostics cannot satisfy
+those witnesses. Clean checked modules remain byte-identical. The independent
+integer oracle explicitly wraps multiplication before following subtraction or
+addition. Runtime validation is still pending.

@@ -72,3 +72,32 @@ constructors remain on their original emitter. The guard and graph proof still
 come from the original terms. Exact field order, fresh root allocation, child
 aliasing and existing structural frames are preserved by construction; root must
 validate the actual checked emission and controls before admission.
+
+Actual constructor comparison tools are prepared, unexecuted:
+`frames/owned-actual-derive.mjs` / `owned-actual-controls.mjs` compare checked02
+and checked03 tree modules with clean-byte preservation, full inherited calls
+controls, native ABI checks and exact direct-constructor AST/admission counters.
+The separate `owned-fixture.bend` / `owned-fixture-derive.mjs` /
+`owned-fixture-controls.mjs` cover unary reconstruction, every-node freshness,
+native List/Nat/Bool helpers, generic getter/throw ordering, and unguarded public
+unary depth30000 deferred fallback. The fixture's independent scalar oracle is
+46 at main, and modulo-U32 arithmetic-series totals for the ordinary root grid.
+Root owns parsing/checked emission/control execution; this owner has not run them.
+
+The broader actual list gate exposed a real inherited-context bug: rewriting an
+outer unary combiner App to JDirectCall erased the saturated original spine used
+by structural child-position discovery. The broken keep_gt1 worker emitted an
+empty next vector and invalid resume variables/name. Those failed actual modules
+and source build attempts remain root-owned retained evidence; controls were not
+weakened. `owner-thread-source-v1.patch` preserves the first corrective attempt,
+whose generator omitted the new owner parameter from j_covered_terms due to a
+literal replacement typo. Root's checked06 cheap gate caught that compile blocker.
+
+The correction is `owner-thread-arity-fix.patch`; the reproducible producer is
+`make-owner-thread-patch-v2.py`. The owner is explicit in the existing transform
+family. An App subtree containing the original owner Ref keeps its original
+App/Call shell while independent argument descendants still optimize. Bounded
+reference-scan exhaustion conservatively refuses replacement. Static read-only
+arity review covered all10 changed definitions/calls, and a search of every
+selfhost source Bend module found no external callers requiring another update.
+No compiler rerun or production edit was performed by this owner.

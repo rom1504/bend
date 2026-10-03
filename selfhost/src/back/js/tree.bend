@@ -186,7 +186,7 @@ def j_component_wrapper_calls(+book: List<&2,KDef>, +d: KDef, +ds: List<&2,KDef>
       # typed graph independently guarantees saturated, first-order calls.
       kc(Bool, U32.is_gt(j_component_refs([dv(callee)], dn(callee), 1024, 0), 0) &&
         U32.is_gt(j_component_refs([dv(d)], dn(callee), 1024, 0), 0), u =>
-        kc(Bool, j_pure_valid(j_component_plan(book, callee)), u => True{}, u =>
+        kc(Bool, j_pure_valid(j_component_cached(book, dn(callee))), u => True{}, u =>
           j_component_wrapper_calls(book, d, rest)), u => j_component_wrapper_calls(book, d, rest))
 
 # Reject mutual backedges into this worker: forcing such a leaf could otherwise
@@ -282,7 +282,7 @@ def j_component_leaf(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +d: 
 def j_component_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String) -> String:
   +d = lookup(book, nm(spine))
   kc(String, U32.is_eq(terms_len(ks(spine)), da(d)), u =>
-    j_component_call(book, env, spine, generic, j_component_plan(book, d)), u => generic)
+    j_component_call(book, env, spine, generic, j_component_cached(book, dn(d))), u => generic)
 
 @unsafe
 def j_component_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String, +pure: JPure) -> String:
@@ -293,7 +293,7 @@ def j_component_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, 
 @unsafe
 def j_component_declaration(+book: List<&2,KDef>, +d: KDef, +pure: JPure) -> String:
   kc(String, j_pure_valid(pure), u =>
-    j_component_covered_declaration(book, d, j_covered_term(book, j_pure_remove(j_pure_defs(pure), dn(d)), dv(d))), u => "")
+    j_component_covered_declaration(book, d, j_owned_term(j_covered_term(book, j_pure_remove(j_pure_defs(pure), dn(d)), dn(d), dv(d)))), u => "")
 
 @unsafe
 def j_component_covered_declaration(+book: List<&2,KDef>, +d: KDef, +body: KTerm) -> String:
@@ -434,7 +434,7 @@ def j_linear_split(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: K
   +tel = j_linear_tel(book, t, ty)
   kc(String, U32.is_eq(phase, 3), u =>
     "$value=" ++ kc(String, String.eq(tg(t), "Ctr"),
-      u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "])",
+      u => kc(String, j_owned_ctor(book, t, ty), u => "({$:" ++ j_quote(nm(t)) ++ ",a:[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "]})", u => "ctor(" ++ j_quote(nm(t)) ++ ",[" ++ j_producer_unary_resume(book, env, ks(spine), tel, child, 0) ++ "])" ),
       u => j_linear_combiner_emit(book, nm(spine), j_producer_unary_resume(book, env, ks(spine), tel, child, 0))) ++ ";", u =>
     j_producer_unary_before(book, env, ks(spine), tel, child, 0) ++
     "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(j_strip(terms_at(ks(spine), child)), Nil{})), dt(d)) ++ "];" ++
@@ -485,20 +485,29 @@ def j_covered_result(+ty: KTerm, +args: List<&2,KTerm>) -> KTerm:
     case Nil{}: ty
     case Con{h, rest}: j_covered_result(j_app_type(ty, h), rest)
 
+# Preserve the original saturated App/Call shell around a structural self call.
+# Unary classification needs that shell to discover its continuation child;
+# inherited proof lowering may still transform independent argument expressions.
 @unsafe
-def j_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTerm) -> KTerm:
+def j_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +owner: String, +t: KTerm) -> KTerm:
   kc(KTerm, String.eq(tg(t), "Ann"), u =>
-    k_with_children(t, [j_covered_term(book, context, kid(t, 0)), kid(t, 1)]), u =>
+    k_with_children(t, [j_covered_term(book, context, owner, kid(t, 0)), kid(t, 1)]), u =>
   kc(KTerm, String.eq(tg(t), "Var") || String.eq(tg(t), "Ref") || String.eq(tg(t), "Lit"), u => t, u =>
   kc(KTerm, String.eq(tg(t), "App"), u =>
-    j_covered_app(book, context, t, k_with_children(t, j_covered_terms(book, context, ks(t)))), u =>
-    k_with_children(t, j_covered_terms(book, context, ks(t))))))
+    j_covered_shape_app(book, context, owner, t, k_with_children(t, j_covered_terms(book, context, owner, ks(t)))), u =>
+    k_with_children(t, j_covered_terms(book, context, owner, ks(t))))))
 
 @unsafe
-def j_covered_terms(+book: List<&2,KDef>, +context: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
+def j_covered_terms(+book: List<&2,KDef>, +context: List<&2,KDef>, +owner: String, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
   match ts:
     case Nil{}: Nil{}
-    case Con{h, rest}: Con{j_covered_term(book, context, h), j_covered_terms(book, context, rest)}
+    case Con{h, rest}: Con{j_covered_term(book, context, owner, h), j_covered_terms(book, context, owner, rest)}
+
+
+@unsafe
+def j_covered_shape_app(+book: List<&2,KDef>, +context: List<&2,KDef>, +owner: String, +original: KTerm, +rebuilt: KTerm) -> KTerm:
+  kc(KTerm, String.eq(owner, "") || U32.is_eq(j_component_refs([original], owner, 8192, 0), 0),
+    u => j_covered_app(book, context, original, rebuilt), u => rebuilt)
 
 @unsafe
 def j_covered_app(+book: List<&2,KDef>, +context: List<&2,KDef>, +original: KTerm, +rebuilt: KTerm) -> KTerm:
@@ -506,7 +515,7 @@ def j_covered_app(+book: List<&2,KDef>, +context: List<&2,KDef>, +original: KTer
   +d = lookup(book, nm(spine))
   kc(KTerm, String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), da(d)) &&
     String.eq(dk(lookup(context, dn(d))), "Def") && exact_def(d, lookup(context, dn(d))), u =>
-      j_covered_component(book, context, original, rebuilt, d, j_component_plan(book, d)),
+      j_covered_component(book, context, original, rebuilt, d, j_component_cached(book, dn(d))),
     u => j_direct_call_term(book, context, rebuilt))
 
 @unsafe
@@ -515,3 +524,39 @@ def j_covered_component(+book: List<&2,KDef>, +context: List<&2,KDef>, +original
     j_region_annotate(kt("JCall", dn(d), 0, 1, ks(j_call_spine(rebuilt, Nil{}))),
       j_covered_result(dt(d), ks(j_call_spine(original, Nil{})))),
     u => j_direct_call_term(book, context, rebuilt))
+
+
+# Only independently admitted private bodies invoke this plan transform. Keep
+# original Ctr shape and identity so structural linear reconstruction and shared
+# binder typing still see their original source nodes. No public expression is
+# marked, and no native representation is changed.
+@unsafe
+def j_owned_term(+t: KTerm) -> KTerm:
+  kc(KTerm, String.eq(tg(t), "Ann"), u =>
+    k_with_children(t, [j_owned_term(kid(t, 0)), kid(t, 1)]), u =>
+  kc(KTerm, String.eq(tg(t), "Ctr"), u =>
+    k_rebuild(t, nm(t), ix(t), qt(t), j_owned_terms(ks(t)), Con{"$private.owned.ctor", rm(t)}, kb(t), ke(t)),
+    u => k_with_children(t, j_owned_terms(ks(t)))))
+
+@unsafe
+def j_owned_terms(+ts: List<&2,KTerm>) -> List<&2,KTerm>:
+  match ts:
+    case Nil{}: Nil{}
+    case Con{h, rest}: Con{j_owned_term(h), j_owned_terms(rest)}
+
+# The runtime ctor's nonnative branch is exactly {$:name,a:fields}; it has no
+# registration or ownership side effect. Preserve its tag, field array, field
+# order, fresh root allocation, and shared child references literally.
+@unsafe
+def j_owned_ctor(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm) -> Bool:
+  kc(Bool, has_name(rm(t), "$private.owned.ctor"),
+    u => j_owned_ctor_type(book, t, wnf(book, ty)), u => False{})
+
+@unsafe
+def j_owned_ctor_type(+book: List<&2,KDef>, +t: KTerm, +head: KTerm) -> Bool:
+  +owner = lookup(book, nm(head))
+  +c = j_layout_ctor(book, head, nm(t))
+  String.eq(tg(head), "ADT") &&
+    String.eq(dk(owner), "ADT") && Bool.not(db(owner)) && j_pure_type(book, head) &&
+    String.eq(dk(c), "Ctr") && String.eq(dn(c), nm(t)) && Bool.not(db(c)) &&
+    U32.is_eq(terms_len(ks(t)), da(c))

@@ -114,3 +114,68 @@ preserves the original Ann type child, rewrites only its value child, and restri
 private-call candidates to positive-arity Def headers. It applies cleanly to the
 current source. Retain checked01 as the measured first image; include this
 narrowing and expansion budget in a fresh successor before integration.
+
+Actual [checked01 screen](../../selfhost/build/phase42/checked01-screen/report.md)
+passes fresh comparisons: tree8 medians2.83109ms Phase41/1.21817ms checked01/
+0.287773ms TS; tree6 0.489719/0.175951/0.03773; tree9 6.55377/2.73129/
+0.731186. This is the checked source survivor's generated-program result,
+separate from the earlier manual ablation and the larger combined experiments.
+
+The post-calls residual tools are syntax checked, with execution left to root:
+[frames](../../selfhost/tools/performance/phase42/calls/post-calls-frames.mjs),
+[scopes](../../selfhost/tools/performance/phase42/calls/post-calls-scopes.mjs),
+[diagnostic derivation](../../selfhost/tools/performance/phase42/calls/post-calls-controls-derive.mjs)
+and [controls](../../selfhost/tools/performance/phase42/calls/post-calls-controls.mjs).
+The frame derivative preserves its old owner unchanged, but fixes lexical
+liveness/remapping for reused helper binder IDs and retains shadowing sentinels.
+The native recursive role records its deep RangeError explicitly. No source
+patch or timing claim is made for these residual variants before root execution.
+
+The post-calls [controls](../../selfhost/build/phase42/postcalls-controls01/report.json)
+pass191 oracles/75 boundaries and preserve the native ceiling's depth30000
+RangeError with proof restoration. The [residual screen](../../selfhost/build/phase42/residual-tree-screen01/report.md)
+is provisional while root audits possible validation-process overlap. Its three
+point medians show helper hoisting inconsistent (tree9 slower), live frames weak
+on tree9, and direct owned constructors clearly useful. Hoisting and typed
+liveness source implementation are deferred pending that corrected denominator.
+
+New [stack derivation](../../selfhost/tools/performance/phase42/calls/stack-derive.mjs)
+and [controls](../../selfhost/tools/performance/phase42/calls/stack-controls.mjs)
+are syntax checked. Root supplies exact checked03 saved tree, TS module,
+owned-actual adapter directory and a new output. The tool produces prune/lazy/
+combined variants with exact original/noise controls, checks every frame-phase
+write/initializer is0/1 before pruning, and changes allocation only within the
+four private structural workers. Lazy stack allocation occurs immediately
+before first frame access and unwind checks null explicitly. Expected controls
+are192 oracles/75 boundaries, including eager1/lazy0 allocation on an actual
+warp leaf case; all roles retain depth30000 stack safety. No execution claim yet.
+
+The independent renamed fixture's first baseline compilation failed parsing at
+computed match scrutinee line15, retained in
+[baseline receipt](../../selfhost/build/phase42/fixtures-baseline01/modules/calls-fixture-renamed.mjs.json).
+The exact v1 source/controls remain preserved. Successor
+[fixture v2](../../selfhost/tools/performance/phase42/calls/fixture-renamed-v2.bend)
+extracts review.pair.at and matches its Bool parameter; the pair helper passes
+the computed xor result as a normal argument. Main37035 is unchanged.
+[controls v2](../../selfhost/tools/performance/phase42/calls/fixture-controls-v2.mjs)
+binds the new source and requires pair.at in the full closure. Root must first
+validate pinnedTS parsing/checking before treating these as successful fixtures.
+
+Pinned TS checking rejects fixture v2's original leaf binder because pair/key
+consume x twice. The frozen v2 source/controls remain retained.
+[fixture v3](../../selfhost/tools/performance/phase42/calls/fixture-renamed-v3.bend)
+introduces an explicit typed unrestricted scalar alias before the same pair/key
+expression; [controls v3](../../selfhost/tools/performance/phase42/calls/fixture-controls-v3.mjs)
+binds its identity. No refusal definitions or oracle semantics changed. Only
+controls syntax has been checked here; root owns fixture validation.
+
+Root's complete-stage controls exposed a source-shape regression in checked03
+and checked05: covered-helper rewriting changed an outer unary reconstruction
+App into JDirectCall before the structural emitter discovered its recursive
+child. j_linear_spine then returned an empty spine, sentinel child index32
+produced undefined $u0 captures, and keep_gt1 failed for n>=2 despite benchmark
+checksum success. Existing complete-stage controls remain unchanged. Frames
+owner is preparing a narrowly scoped worker rewrite that preserves original
+App shape whenever its original subtree references the structural owner.
+This is a correctness fix, not a new optimization; current successful benchmark
+and leaf-control results do not establish complete graph correctness.

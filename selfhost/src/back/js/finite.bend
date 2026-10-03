@@ -230,7 +230,7 @@ def j_direct_match(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +depth: U32) -> 
 
 @unsafe
 def j_direct_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String) -> String:
-  j_direct_guarded(book, env, spine, generic, j_direct_plan(book, lookup(book, nm(spine))))
+  j_direct_guarded(book, env, spine, generic, j_direct_cached(book, nm(spine)))
 
 @unsafe
 def j_direct_guarded(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +generic: String, +pure: JPure) -> String:
@@ -272,7 +272,7 @@ def j_direct_emit_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) ->
   kc(String, db(d), u =>
     "(($p0,$p1)=>$p0!==$p1)(" ++ j_apply_args(book, env, ks(t), dt(d)) ++ ")", u =>
     "((" ++ j_region_parameters(0, da(d)) ++ ")=>{/* private acyclic helper */" ++
-      j_finite_emit(book, Nil{}, j_direct_term(book, dv(d)), dt(d), j_finite_slots(0, da(d))) ++
+      j_finite_emit(book, Nil{}, j_owned_term(j_direct_term(book, dv(d))), dt(d), j_finite_slots(0, da(d))) ++
       "})(" ++ j_apply_args(book, env, ks(t), dt(d)) ++ ")")
 
 # The worker-context owner has independently established this exact source
@@ -284,7 +284,7 @@ def j_direct_call_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTerm)
     String.eq(dk(lookup(context, nm(spine))), "Def") &&
     exact_def(lookup(context, nm(spine)), lookup(book, nm(spine))) &&
     U32.is_eq(terms_len(ks(spine)), da(lookup(book, nm(spine)))), u =>
-    j_direct_covered_term(book, context, t, spine, j_direct_plan(book, lookup(book, nm(spine)))), u => t)
+    j_direct_covered_term(book, context, t, spine, j_direct_cached(book, nm(spine))), u => t)
 
 @unsafe
 def j_direct_covered_term(+book: List<&2,KDef>, +context: List<&2,KDef>, +t: KTerm, +spine: KTerm, +pure: JPure) -> KTerm:

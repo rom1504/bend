@@ -1,0 +1,92 @@
+import Base
+
+# Independent renamed graph: no bitonic names, layout, or benchmark constants.
+type ReviewTree is Data:
+  RLeaf{value: U32}
+  RNode{left: ReviewTree, right: ReviewTree}
+
+def review.flip(flag: Bool, order: Bool) -> Bool:
+  Bool.xor(flag, order)
+
+def review.key(x: U32) -> U32:
+  U32.add(U32.mul(x, 1103515245), 12345)
+
+def review.pair.at(+a: U32, +b: U32, flag: Bool) -> ReviewTree:
+  match flag:
+    case False{}: RNode{RLeaf{a}, RLeaf{b}}
+    case True{}: RNode{RLeaf{b}, RLeaf{a}}
+
+def review.pair(+a: U32, +b: U32, flag: Bool) -> ReviewTree:
+  review.pair.at(a, b, review.flip(flag, U32.is_gt(a, b)))
+
+def review.map(tree: ReviewTree, +flag: Bool) -> ReviewTree:
+  match tree:
+    case RLeaf{x0}:
+      +x = {x0:U32}
+      review.pair(x, review.key(x), flag)
+    case RNode{left, right}:
+      a b = review.map(left, flag) review.map(right, flag)
+      RNode{a, b}
+
+def review.make(n: Nat, +seed: U32) -> ReviewTree:
+  match n:
+    case 0n: RLeaf{seed}
+    case 1n+p: RNode{review.make(p, U32.inc(seed)), RLeaf{U32.xor(seed, 91)}}
+
+def review.score(tree: ReviewTree) -> U32:
+  match tree:
+    case RLeaf{x}: x
+    case RNode{left, right}:
+      a b = review.score(left) review.score(right)
+      U32.add(U32.mul(a, 3), b)
+
+# Ordinary scalar entry must enter actual compiler-selected private call sites.
+def bench(depth: U32, +seed: U32) -> U32:
+  review.score(review.map(review.make(U32.to_nat(depth), seed), U32.is_zero(U32.mod(seed, 2))))
+
+# Function-valued bindings and partial references fail the typed pure graph.
+def review.reference(tree: ReviewTree) -> ReviewTree:
+  unused = review.pair
+  tree
+
+def review.partial(tree: ReviewTree) -> ReviewTree:
+  unused = review.pair(7)
+  tree
+
+# Unsupported input representation cannot become a closed private helper.
+def review.text(text: String, tree: ReviewTree) -> ReviewTree:
+  tree
+
+# An acyclic forwarding helper cannot hide a transitive backedge.
+law review.back:
+  for tree: ReviewTree
+  ReviewTree
+
+law review.bridge:
+  for tree: ReviewTree
+  ReviewTree
+
+law review.back_worker:
+  for tree: ReviewTree
+  ReviewTree
+
+@unsafe
+def review.back(tree):
+  review.back_worker(tree)
+
+@unsafe
+def review.bridge(tree):
+  review.back(tree)
+
+@unsafe
+def review.back_worker(tree):
+  match tree:
+    case RLeaf{x}: review.bridge(RLeaf{x})
+    case RNode{left, right}:
+      a b = review.back_worker(left) review.back_worker(right)
+      RNode{a, b}
+
+def main() -> IO(Unit):
+  IO.print(U32.show(bench(0, 0)))
+
+#|37035

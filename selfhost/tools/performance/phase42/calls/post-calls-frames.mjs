@@ -16,7 +16,34 @@ const parse=s=>pm.exports.parse(s,{ecmaVersion:'latest',sourceType:'module'});
 const slice=n=>source.slice(n.start,n.end);
 function walk(n,fn){if(!n||typeof n!=='object')return;fn(n);for(const[k,v]of Object.entries(n))if(!['start','end'].includes(k)){if(Array.isArray(v))v.forEach(x=>walk(x,fn));else if(v&&typeof v==='object')walk(v,fn);}}
 function leaves(n){const found=[];walk(n,b=>{if(b.type==='BlockStatement'&&b.body.some(x=>x.type==='ContinueStatement'&&x.label.name==='$visit'))found.push(b);});return found;}
-function ids(s){const names=new Set(),declared=new Set();walk(parse('function f(){$visit:for(;;){'+s+'}}'),n=>{if(n.type==='Identifier'&&/^x\d+$/.test(n.name))names.add(n.name);if(n.type==='VariableDeclarator'&&n.id.type==='Identifier')declared.add(n.id.name);});return [...names].filter(x=>!declared.has(x)).sort();}
+function ids(s,remap=null){
+ const prefix='function f(){$visit:for(;;){',ast=parse(prefix+s+'}}'),where=new WeakMap(),parents=new WeakMap(),free=new Set(),references=[];
+ const make=(parent,kind)=>({parent,kind,names:new Set()});
+ function bind(n,scope){if(!n)return;if(n.type==='Identifier')scope.names.add(n.name);else if(n.type==='RestElement')bind(n.argument,scope);else if(n.type==='AssignmentPattern')bind(n.left,scope);else if(n.type==='ArrayPattern')n.elements.forEach(x=>bind(x,scope));else if(n.type==='ObjectPattern')n.properties.forEach(x=>bind(x.value??x.argument,scope));}
+ function scan(n,scope,parent=null,key=''){
+  if(!n||typeof n!=='object')return;if(n.type==='FunctionDeclaration'&&n.id)bind(n.id,scope);
+  let own=scope;
+  if(n.type==='Program')own=make(null,'function');
+  else if(['FunctionDeclaration','FunctionExpression','ArrowFunctionExpression'].includes(n.type)){own=make(scope,'function');if(n.id)bind(n.id,own);n.params.forEach(x=>bind(x,own));}
+  else if(n.type==='BlockStatement'||n.type==='CatchClause'){own=make(scope,'block');if(n.param)bind(n.param,own);}
+  where.set(n,own);parents.set(n,{parent,key});
+  if(n.type==='VariableDeclaration'){let target=own;if(n.kind==='var')while(target.parent&&target.kind!=='function')target=target.parent;n.declarations.forEach(d=>bind(d.id,target));}
+  for(const[k,v]of Object.entries(n))if(!['start','end'].includes(k)){if(Array.isArray(v))v.forEach(x=>scan(x,own,n,k));else if(v&&typeof v.type==='string')scan(v,own,n,k);}
+ }
+ scan(ast,make(null,'function'));
+ walk(ast,n=>{if(n.type!=='Identifier'||!/^x\d+$/.test(n.name))return;const{parent,key}=parents.get(n);
+  if((parent.type==='VariableDeclarator'&&key==='id')||(['FunctionDeclaration','FunctionExpression','ArrowFunctionExpression'].includes(parent.type)&&['id','params'].includes(key)))return;
+  if((parent.type==='MemberExpression'&&key==='property'&&!parent.computed)||(parent.type==='Property'&&key==='key'&&!parent.computed&&parent.value!==n)||(['LabeledStatement','ContinueStatement','BreakStatement'].includes(parent.type)&&key==='label'))return;
+  let scope=where.get(n);while(scope&&!scope.names.has(n.name))scope=scope.parent;if(!scope){free.add(n.name);references.push(n);}
+ });
+ if(remap){let result=s;const seen=new Set();for(const n of references.sort((a,b)=>b.start-a.start)){const i=remap.indexOf(n.name),key=n.start+':'+n.end;if(i>=0&&!seen.has(key)){seen.add(key);result=result.slice(0,n.start-prefix.length)+'$frame.f'+i+result.slice(n.end-prefix.length);}}return result;}
+ return [...free].sort();
+}
+// Nested helper binders must not hide a caller's same-spelled free reference.
+assert.deepEqual(ids('const z=((x17)=>x17)(x17);'),['x17']);
+assert.deepEqual(ids('const x17=1;const z=((x17)=>x17)(x17);'),[]);
+assert.deepEqual(ids('const z=(()=>{const x17=1;return x17})();const q=x17;'),['x17']);
+assert.equal(ids('const z=((x17)=>x17)(x17);',['x17']),'const z=((x17)=>x17)($frame.f0);');
 const edits=[],directEdits=[],counts=[];
 for(const fn of parse(source).body.filter(n=>n.type==='FunctionDeclaration'&&slice(n).includes('/* private structural component */')&&slice(n).includes('const $frames=[];'))){
  const loop=fn.body.body.find(n=>n.type==='LabeledStatement'&&n.label.name==='$visit');assert(loop);
@@ -35,7 +62,7 @@ for(const fn of parse(source).body.filter(n=>n.type==='FunctionDeclaration'&&sli
   const next1=b.body.find(n=>n.type==='VariableDeclaration'&&n.declarations[0].id.name==='$next');assert(next1);
   const right=source.slice(next1.start,b.end-1);const joinStart=c.body.find(n=>n.type==='VariableDeclaration'&&n.declarations.some(d=>d.init?.type==='MemberExpression'&&slice(d.init)==='$frame.left'));const join=source.slice(joinStart.start,c.end-1);
   const live=ids(right+join);assert(live.every(x=>new RegExp('const '+x+'=').test(source.slice(first.start,a.end))));
-  const remap=s=>s.replace(/\bx\d+\b/g,x=>live.includes(x)?'$frame.f'+live.indexOf(x):x);
+  const remap=s=>ids(s,live);
   const save='let $saved=$top<$frames.length?$frames[$top]:null;if(!$saved)$saved=$frames[$top]={};'+live.map((x,j)=>'$saved.f'+j+'='+x+';').join('')+'$saved.site='+i+';$saved.left=null;$saved.phase=0;++$top;';
   const transfer=source.slice(a.body.find(n=>n.type==='ExpressionStatement'&&slice(n).startsWith('$s0=$next')).start,a.end-1);
   const replacement='{'+before+slice(next)+save+transfer+'}';

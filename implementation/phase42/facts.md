@@ -162,3 +162,32 @@ discovery exhaustion and nonempty failed graph retention. `node --check` passes;
 the controls have not yet executed and do not substitute for ordinary checked
 module emission or existing runtime proof/host owners. Apply the isolated patch
 instead of copying its source snapshots over a later direct-budget successor.
+
+## First checked-build refusal and correction
+
+Root's Phase42 checked04 bootstrap refused the new `j_plan_prepare` local let
+`+source = Con{cache, rest}`: constructor inference requires an annotated term.
+The original request-candidate01 source/patch remain retained. The isolated
+[correction patch](../../selfhost/tools/performance/phase42/facts/request-candidate01-correction.patch)
+changes only that let to
+`+source = {Con{cache, rest} : List<&2,KDef>}`. The generator now emits the
+annotation. Other new local lets call annotated functions or the established
+`index_first`; no other bare constructor inference let was found. Root owns
+applying the correction and acquiring checked05. No inference failure is
+treated as a correctness or timing result.
+
+The separate [Map/BST roadmap screen](../../selfhost/tools/performance/phase42/facts/map-bst/README.md)
+prepares one guarded saved-JS Map String-comparison edge ablation and full-content
+controls. It performs no target/compiler execution, does not change production
+String admission, and reuses the existing executed String-host counterexample.
+It is independent of the pending cache correction/build.
+
+The [BST read-only feasibility screen](../../selfhost/tools/performance/phase42/facts/map-bst/bst-closed-data-feasibility.md)
+and `bst-plan-probe.mjs` now separate native Sigma/List-frame type refusal from
+component prefix/direct-cycle constraints. No mutual helper cycle exists in the
+benchmark. Down/build and potentially up can reuse existing single-self workers
+only after a scoped closed-data proof, exact specialized type equality and
+native match checks. The dependent sequential inorder traversal remains outside
+that worker shape. Separate nested-function, vector and dependent-Sigma controls
+are prepared as original-predicate observations; they are not evidence for an
+unimplemented extension. Probe syntax passes; root execution remains pending.

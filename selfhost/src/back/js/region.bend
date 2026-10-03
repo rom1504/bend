@@ -140,7 +140,7 @@ def j_region_root(+book: List<&2,KDef>, +d: KDef) -> String:
 def j_region_has_loop(+book: List<&2,KDef>, +helpers: List<&2,KDef>) -> Bool:
   match helpers:
     case Nil{}: False{}
-    case Con{d, rest}: kc(Bool, Bool.not(db(d)) && (String.eq(tg(dv(d)), "Mat") || String.eq(tg(dv(d)), "JFold") || String.eq(tg(dv(d)), "JProducer")), u => True{}, u => kc(Bool, String.eq(tg(dv(d)), "JResidual") && j_pure_valid(j_component_plan(book, lookup(book, dn(d)))), u => True{}, u => j_region_has_loop(book, rest)))
+    case Con{d, rest}: kc(Bool, Bool.not(db(d)) && (String.eq(tg(dv(d)), "Mat") || String.eq(tg(dv(d)), "JFold") || String.eq(tg(dv(d)), "JProducer")), u => True{}, u => kc(Bool, String.eq(tg(dv(d)), "JResidual") && j_pure_valid(j_component_cached(book, dn(d))), u => True{}, u => j_region_has_loop(book, rest)))
 
 @unsafe
 def j_region_root_done(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> String:
@@ -895,7 +895,7 @@ def j_fusion_owner(+book: List<&2,KDef>, +ty: KTerm, +empty: String, +link: Stri
     U32.is_eq(j_region_def_count(dc(d)), 2) && Bool.not(String.eq(empty, link)) &&
     String.eq(dk(z), "Ctr") && U32.is_eq(da(z), 0) &&
     String.eq(dk(c), "Ctr") && U32.is_eq(da(c), 2) &&
-    String.eq(tg(tel), "All") && Bool.not(U32.is_eq(qt(tel), 0)) && j_primitive_type(book, kid(tel, 0), "U32") &&
+    String.eq(tg(tel), "All") && Bool.not(U32.is_eq(qt(tel), 0)) && j_primitive_type(book, wnf(book, kid(tel, 0)), "U32") &&
     String.eq(tg(tail), "All") && Bool.not(U32.is_eq(qt(tail), 0)) && j_region_same_type(book, kid(tail, 0), h) &&
     j_region_same_type(book, kid(tail, 1), h)
 
@@ -1028,7 +1028,7 @@ def j_fusion_root_prefix(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +vars: Lis
   kc(String, U32.is_eq(left, 0), u =>
     kc(String, j_primitive_type(book, head, "U32"), u => j_fusion_pipeline(book, vars, h), u => ""), u =>
     kc(String, String.eq(tg(h), "Lam") && String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) &&
-      j_primitive_type(book, kid(head, 0), "U32"), u =>
+      j_primitive_type(book, wnf(book, kid(head, 0)), "U32"), u =>
       j_fusion_root_bind(h, at, j_fusion_root_prefix(book, kid(h, 0), subst(kid(head, 1), ix(head), var(nm(h), ix(h))),
         Con{h, vars}, U32.inc(at), U32.sub(left, 1))), u => ""))
 

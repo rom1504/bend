@@ -1,0 +1,110 @@
+# Next domain: guarded Map string-comparison component
+
+The Phase41 portable bundle retains real Map churn at 32/128 and BST at 32/64;
+these are distinct families. The earlier Phase37 gaps (Map ~91–106×, BST
+~152–209×) motivate a probe but are **not fresh Phase41 ratios** and do not imply
+aggregate parity. No target or compiler execution was performed for this screen.
+
+The concrete first probe is a saturated `String.cmp` edge inside crit-bit Map.
+The original source comparison recursively compares Unicode scalar heads and
+returns the complete `((left,right),Cmp)` value, rebuilding both strings. Eight
+saved callsites in `Map.set.fin`, `Map.pop.go` and `Map.pop` can replace repeated
+matcher/call/Char comparison dispatch with the already emitted runtime's native
+`String.cmp` worker. Public G descriptors remain unchanged. No Map node, alias,
+key order, value, or tuple representation is replaced.
+
+Preparation reads the exact portable candidate archive and verifies the saved
+module identity `4920a1662f2050c802d69417e032d19905b97160fa7eb5743b2333dbcb16d1e4`
+(122,329 bytes). It preserves a baseline and emits a separate manual-JS ablation.
+It captures the runtime's native comparison descriptor immediately before the
+source override, rewrites eight exact simple-variable callsites, and appends
+diagnostic exports. This is not checked Bend emission or source admission.
+
+The private worker handles plain strings only and preserves the full pair/tag.
+It refuses entry while any existing region proof is open. Guards cover the exact
+five source dependency descriptors (`String.cmp`, `.fin`, `.rec`, `Char.cmp`,
+`U32.cmp`) plus postinitialization String global/prototype/static/method
+descriptors; numeric/array/protocol guards run first with captured intrinsics.
+Changed codePointAt, slice or fromCodePoint must run the original generic path.
+Do not claim this guard closes preimport host mutation or arbitrary realm
+ownership. Those remain production-admission blockers; the saved-JS test uses
+clean initialization and is a cheap mechanism falsifier.
+
+```sh
+python3 selfhost/tools/performance/phase42/facts/map-bst/prepare.py \
+  selfhost/tools/performance/phase41/current/manifest.json NEW_ABLATION
+node --stack-size=4096 --max-old-space-size=1024 \
+  selfhost/tools/performance/phase42/facts/map-bst/controls.mjs NEW_ABLATION NEW_CONTROLS
+```
+
+Root owns resource-supervised execution. `ablation01` is already prepared; use
+new paths for retries. Controls demand clean-path entries and compare complete
+comparison operands/tag or exact errors for empty, prefix, combining, astral,
+U+E000 and lone-surrogate cases. They compare **all ordered Map key/value entries**
+after fill/update/remove against an independently constructed ordinary JS map,
+not merely the portable wrapping digest. Host/dependency mutations require zero
+fast entries and complete generic agreement. Further production controls must
+cover String global/accessor/prototype replacement, marker getters, preimport
+mutations, throws/reentry and unrelated scalar/ADT mixed books; this screen does
+not remove those obligations.
+
+If complete-value controls fail, retain the failure and reject this worker. If
+they pass, the next cheap test is alternating saved baseline/candidate `bench`
+calls at the two portable points with original digest plus full-content checks
+outside timed regions. Guard cost may outweigh comparison dispatch on short
+keys. Use a separate longer-common-prefix control to distinguish the mechanism;
+do not tune the original portable fixture or report that as its result. No
+timing gain is currently claimed.
+
+## Source feasibility and ranking
+
+1. **Map comparison edge:** medium plausible payoff, high admission risk, cheap
+   20-second value screen before timing. Source support needs exact owned native
+   String/Char and nondependent two-field Sigma facts, explicit Unicode demand
+   points and new host ownership checks. Consume reusable exact closed-graph
+   facts; specialize known saturated calls while keeping tagged/tuple results.
+   The original recursion also crosses `String.cmp.fin -> String.cmp`, so
+   `j_component_closed` rejects its helper backedge and `j_direct_visit` refuses
+   its cycle. Type admission alone cannot promote this worker. General source
+   support needs bounded helper contification/SCC handling, or a separate proof
+   of exact native/source equivalence. A name-specific runtime substitution is
+   only this saved-JS experiment.
+2. **BST zipper:** high remaining gap but broader proof work. `bst.down/step/up`
+   pass `BST & List<BFrame>`; native Sigma and List of user records fall outside
+   current JPure coverage. BST has no String boundary, but tuple/List-BFrame
+   closure and demand must be proved before reusing direct-call workers. Avoid
+   a handwritten whole-BST replacement or tuple elimination as a first probe.
+3. **Full Map representation / native JS Map:** highest semantic exposure and
+   weakest cheap transfer. Crit-bit ordering, alias/affine transfer, right-biased
+   union and returned original keys are observable. Defer representation change
+   until a narrow edge survives.
+
+The Phase38 [MLton ordering lesson](../../../../../../design/phase38/research/mlton.md)
+and [Flambda known-call distinction](../../../../../../design/phase38/research/ocaml-flambda.md)
+support known saturated edges before representation work. They supply no Bend
+speedup estimate. The installed Phase41 String admission refusal and
+[executed host counterexample](../../../../../build/phase41/lexer-string-host-counterexample01/report.json)
+already demonstrate that numeric/scalar guards remain true while String hooks
+run callbacks. That negative evidence is reused here; a blanket String purity
+bit remains rejected. A complete source proposal is a dedicated later phase,
+not part of the pending Phase42 cache promotion.
+
+The follow-up [source SCC feasibility analysis](source-scc-feasibility.md)
+records exact split/rebuild counts, descriptor capture order and midcall mutation
+counterexamples. Preserving String intrinsic calls alone does not preserve the
+dispatch/force hooks around them. A credible source successor requires observer
+barriers and captured exact-state generic resume, with explicit limitations for
+stack-sensitive callbacks; it is not an entry-guarded direct project/ctor loop.
+
+The [BST closed private data screen](bst-closed-data-feasibility.md) identifies
+an independent, host-free next mechanism: bounded exact Sigma/List-of-closed-ADT
+proof inside a scalar-root graph, reusing current single-self workers. It records
+all source edges and explains why type admission alone is insufficient and why
+inorder remains rejected. `bst-plan-probe.mjs` is ready for root's observation-only
+compiler API run; no proof predicates are overridden.
+
+A [held sequential structural continuation proposal](sequential-feasibility.md)
+uses existing types and unary frames for the dependent inorder recursion shape.
+It cannot enter the unchanged BST scalar root while its zipper's Sigma/List
+proof fails, so its 63-line candidate02 patch is review-only pending activation
+and headroom evidence. It is not claimed as a BST benchmark improvement.

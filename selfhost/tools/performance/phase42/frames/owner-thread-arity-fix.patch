@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -498,7 +498,7 @@
+     k_with_children(t, j_covered_terms(book, context, owner, ks(t))))))
+ 
+ @unsafe
+-def j_covered_terms(+book: List<&2,KDef>, +context: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
++def j_covered_terms(+book: List<&2,KDef>, +context: List<&2,KDef>, +owner: String, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
+   match ts:
+     case Nil{}: Nil{}
+     case Con{h, rest}: Con{j_covered_term(book, context, owner, h), j_covered_terms(book, context, owner, rest)}

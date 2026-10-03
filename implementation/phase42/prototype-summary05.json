@@ -1,0 +1,225 @@
+{
+  "kind": "phase42-checkpoint04-evidence",
+  "at": "2026-10-03T20:47:57.343549+00:00",
+  "installedRelease": "Phase41 checked01 remains installed; Phase42 candidate not yet broadly admitted",
+  "candidateAttempt": {
+    "path": "selfhost/build/phase42/checked13/attempt.json",
+    "sha256": "181339cbede73cff5f58a0c0597fc0ff3335e71eaa7436c2783e97fb7d4f3f4e"
+  },
+  "priorWorkUnchanged": 103,
+  "observations": [
+    {
+      "path": "selfhost/build/phase42/bst13-screen01/report.json",
+      "sha256": "70d0c1cac4e3a184393c1795900d8846a3443cbcedc1f5a0e2740f6aa48f7981",
+      "complete": true,
+      "cases": [
+        {
+          "id": "bst-matched-32-17",
+          "summary": {
+            "baseline07": {
+              "median": 3.119337288888889,
+              "minimum": 3.11414763265306,
+              "maximum": 3.1929722972972954,
+              "samples": [
+                3.1929722972972954,
+                3.119337288888889,
+                3.11414763265306
+              ]
+            },
+            "typescript": {
+              "median": 0.01360836099773243,
+              "minimum": 0.013513807962102584,
+              "maximum": 0.013693339632878204,
+              "samples": [
+                0.013693339632878204,
+                0.013513807962102584,
+                0.01360836099773243
+              ]
+            },
+            "candidate": {
+              "median": 0.20935595796847628,
+              "minimum": 0.20188778853046588,
+              "maximum": 0.20943537062937073,
+              "samples": [
+                0.20943537062937073,
+                0.20935595796847628,
+                0.20188778853046588
+              ]
+            }
+          }
+        },
+        {
+          "id": "bst-matched-128-17",
+          "summary": {
+            "baseline07": {
+              "median": 42.74734999999998,
+              "minimum": 42.31045766666667,
+              "maximum": 42.8666566666667,
+              "samples": [
+                42.74734999999998,
+                42.8666566666667,
+                42.31045766666667
+              ]
+            },
+            "typescript": {
+              "median": 0.18244390171990169,
+              "minimum": 0.1809948895781638,
+              "maximum": 0.184699396039604,
+              "samples": [
+                0.18244390171990169,
+                0.184699396039604,
+                0.1809948895781638
+              ]
+            },
+            "candidate": {
+              "median": 1.488418435643564,
+              "minimum": 1.4862152800000001,
+              "maximum": 1.5393257052631582,
+              "samples": [
+                1.4862152800000001,
+                1.5393257052631582,
+                1.488418435643564
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "selfhost/build/phase42/bst-controls13/report.json",
+      "sha256": "d6a2a6bfb32c3affce8d1b0769b8d75fadb724361db1b889f3f5540ea392c552",
+      "complete": true,
+      "pass": true,
+      "oracles": 216,
+      "boundaries": 38,
+      "aliases": 24,
+      "deep": [
+        {
+          "name": "right-depth30000-down-up-inorder",
+          "allRoles": true,
+          "nodes": 30000
+        },
+        {
+          "name": "left-depth30000-inner-continuations",
+          "observations": {
+            "original": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "typescript": {
+              "ok": true,
+              "value": 2969360106
+            },
+            "candidate": {
+              "ok": true,
+              "value": 2969360106
+            }
+          }
+        },
+        {
+          "name": "left-depth30000-refused-fallback-parity",
+          "observations": {
+            "original": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "candidate": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "selfhost/build/phase42/sequential-controls13/report.json",
+      "sha256": "002572f82245d87e9fa39b97dcd067601eff2d23264a444e2aefb2e18577e47f",
+      "complete": true,
+      "pass": true,
+      "oracles": 87,
+      "boundaries": 41,
+      "aliases": 0,
+      "deep": [
+        {
+          "name": "sequence.right",
+          "depth": 30000,
+          "observations": {
+            "original": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "typescript": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "candidate": {
+              "ok": true,
+              "value": 450495017
+            }
+          }
+        },
+        {
+          "name": "sequence.left",
+          "depth": 30000,
+          "observations": {
+            "original": {
+              "ok": true,
+              "value": 450495017
+            },
+            "typescript": {
+              "ok": true,
+              "value": 450495017
+            },
+            "candidate": {
+              "ok": true,
+              "value": 450495017
+            }
+          }
+        },
+        {
+          "name": "sequence.weight",
+          "depth": 30000,
+          "observations": {
+            "original": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "typescript": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "candidate": {
+              "ok": true,
+              "value": 3923797281
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "selfhost/build/phase42/core-boundary-tree-BigInt-01/report.json",
+      "sha256": "0a8d3463204692e43376639ec07e17be42b0f69bc84095cf77efab1ee0b7bafd",
+      "complete": true,
+      "promotion": "counterexample-promotion-blocked"
+    },
+    {
+      "path": "selfhost/build/phase42/core-boundary-tree-imul-01/report.json",
+      "sha256": "c06233497aaef780e251d4eba91a1a3565fc52ee2d218c4df9c3f0c2368d58cf",
+      "complete": true,
+      "promotion": "counterexample-promotion-blocked"
+    },
+    {
+      "path": "selfhost/build/phase42/core-boundary-fusion-imul-01/report.json",
+      "sha256": "7a58556e8e5433d4d6008ef7574e7537bd3e17acfb78146ea4a3094772eb6580",
+      "complete": true,
+      "promotion": "counterexample-promotion-blocked"
+    }
+  ]
+}

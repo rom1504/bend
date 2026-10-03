@@ -1,0 +1,55 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -93,7 +93,7 @@
+ @unsafe
+ def j_pure_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
+   +ty = wnf(book, dt(d))
+-  j_pure_bool_native(book, d) || (String.eq(dn(d), "F32.to_u32") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 1) && U32.is_eq(dx(d), 0) &&
++  j_pure_bool_native(book, d) || j_pure_nat_native(book, d) || (String.eq(dn(d), "F32.to_u32") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 1) && U32.is_eq(dx(d), 0) &&
+     Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) &&
+     j_primitive_type(book, wnf(book, kid(ty, 0)), "F32") && j_primitive_type(book, wnf(book, kid(ty, 1)), "U32"))
+ 
+@@ -513,3 +513,15 @@
+ def j_pure_sigma_check(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+   +owner = lookup(book, "Sigma")
+   j_pure_closed_fields(book, j_specialize(book, dt(lookup(dc(owner), "Tuple")), ks(ty)), ty, 2, active, fuel)
++
++# Residual Nat addition keeps its original checkedNat runtime call and range
++# errors. Native registration captures exactly that immutable descriptor; no
++# direct/flat native emitter is widened by this source-signature proof.
++@unsafe
++def j_pure_nat_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
++  +ty = wnf(book, dt(d))
++  +rest = wnf(book, kid(ty, 1))
++  String.eq(dn(d), "Nat.add") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) &&
++    Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && U32.is_eq(qt(ty), 1) &&
++    j_primitive_type(book, wnf(book, kid(ty, 0)), "Nat") && String.eq(tg(rest), "All") && U32.is_eq(qt(rest), 1) &&
++    j_primitive_type(book, wnf(book, kid(rest, 0)), "Nat") && j_primitive_type(book, wnf(book, kid(rest, 1)), "Nat")
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -85,6 +85,7 @@
+ // Scalar regions capture only newly constructed compiler wrappers. Snapshots
+ // stay private; replacement/accessor metadata is inspected without invoking it.
+ const scalarSnapshots=Object.create(null), scalarObjectPrototype=Object.prototype;
++let scalarNatAddSnapshot=null;
+ const scalarFunctionPrototype=Function.prototype, scalarFunctionCall=Function.prototype.call;
+ const scalarPrimitivePrototypes=[Boolean.prototype,Number.prototype,BigInt.prototype];
+ // Conversion for a proved private countdown must not call a replaced global.
+@@ -131,7 +132,7 @@
+   const invoke=Object.getOwnPropertyDescriptor(scalarFunctionPrototype,'call');
+   if(!invoke||!Object.hasOwn(invoke,'value')||invoke.value!==scalarFunctionCall)return false;
+   for(const name of names){
+-    const s=scalarSnapshots[name],g=Object.getOwnPropertyDescriptor(G,name);
++    const s=name==='Nat.add'?scalarNatAddSnapshot:scalarSnapshots[name],g=Object.getOwnPropertyDescriptor(G,name);
+     if(!s||!g||!Object.hasOwn(g,'value')||g.value!==s.original)return false;
+     const f=s.original;
+     if(Object.getPrototypeOf(f)!==scalarObjectPrototype||
+@@ -211,6 +212,8 @@
+ 
+ const native=(name,n,f)=>{
+   const value=fn(n,a=>f(...a));
++  // The factory owns these fresh fields; snapshot without calling host hooks.
++  if(name==='Nat.add')scalarNatAddSnapshot={original:value,arity:n,code:value.code,bound:value.bound};
+   return G[name]=name==='Array.new'||name==='Array.get'||name==='Array.set'||name==='F32.to_u32'||name==='Bool.xor'?scalarCapture(name,value):value;
+ };
+ function get(v,k){if(k in v){const x=v[k];return x?.code&&x.arity===0?call(x,[]):x;}bad('unbound name: '+k)}

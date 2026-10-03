@@ -148,7 +148,15 @@ def j_finite_useful(+book: List<&2,KDef>, +ds: List<&2,KDef>) -> Bool:
     case Nil{}: False{}
     case Con{d, rest}:
       kc(Bool, j_region_signature(book, dt(d), da(d)), u => j_finite_useful(book, rest), u =>
-        kc(Bool, j_finite_ready(book, d), u => True{}, u => j_finite_useful(book, rest)))
+        kc(Bool, j_finite_ready(book, d) || j_finite_component_work(book, d), u => True{}, u => j_finite_useful(book, rest)))
+
+# Policy gate only: the enclosing root still proves its COMPLETE original graph
+# and exact scalar boundary. A recursive admitted non-scalar component makes
+# guarded generic residual calls useful without widening local layout selectors.
+@unsafe
+def j_finite_component_work(+book: List<&2,KDef>, +d: KDef) -> Bool:
+  kc(Bool, U32.is_gt(j_component_refs([dv(d)], dn(d), 8192, 0), 0),
+    u => j_pure_valid(j_component_cached(book, dn(d))), u => False{})
 
 @unsafe
 def j_finite_root(+book: List<&2,KDef>, +d: KDef) -> String:

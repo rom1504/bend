@@ -66,3 +66,13 @@ shared helper used by both flat scalar and ordinary ADT-output roots; public
 ADT input/output refusals; generic observer, partial callback, mutual backedge,
 String/List/vector refusals; exact host getter/coercion/mutation/throw/bounded
 reentry traces; fresh roots/shared children and iterative depth30000 summary.
+
+Initialization scope follows the prior published performance contract:
+[standard host assumptions](../../docs/BEND-IN-BEND-PERFORMANCE.md#why-entry-and-fallback) and
+[supported mutation initialization](../../docs/BEND-IN-BEND-PERFORMANCE.md#why-entry-and-fallback).
+Git blame dates these provisions to44a36083 (2026-09-30) and88619d9c
+(2026-10-01), before this campaign. Arbitrary pre-import BigInt/Math wrappers
+remain useful diagnostic counterexamples and exact observed deltas must be
+retained; they do not represent supported-environment promotion gates. Standard
+initialization followed by mutated host hooks, public data/raw/partial entry,
+G descriptor mutation and Error-hook reentry remain required supported controls.

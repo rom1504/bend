@@ -1,0 +1,57 @@
+--- a/selfhost/src/back/js/region.bend
++++ b/selfhost/src/back/js/region.bend
+@@ -878,8 +878,7 @@
+   String.eq(tg(h), "Ctr") && String.eq(nm(h), name) && U32.is_eq(terms_len(ks(h)), fields)
+ 
+ @unsafe
+-def j_fusion_call(+t: KTerm, +name: String, +arity: U32) -> Bool:
+-  +s = j_call_spine(t, Nil{})
++def j_fusion_call(+s: KTerm, +name: String, +arity: U32) -> Bool:
+   String.eq(tg(s), "Call") && String.eq(nm(s), name) && U32.is_eq(terms_len(ks(s)), arity)
+ 
+ @unsafe
+@@ -907,7 +906,7 @@
+   j_fusion_def(d, 2) && j_fusion_cases(dv(d), "Zero", "Succ") &&
+     String.eq(tg(j_fusion_binder(z, 0)), "Lam") && j_fusion_ctor(j_fusion_after(z, 1), empty, 0) &&
+     String.eq(tg(j_fusion_binder(s, 1)), "Lam") && j_fusion_ctor(body, link, 2) &&
+-    j_fusion_call(kid(body, 1), dn(d), 2) && j_fusion_var(kid(call, 0), ix(j_fusion_binder(s, 0))) &&
++    j_fusion_call(call, dn(d), 2) && j_fusion_var(kid(call, 0), ix(j_fusion_binder(s, 0))) &&
+     j_fusion_scalar(book, kid(body, 0), [j_fusion_binder(s, 1)]) &&
+     j_fusion_scalar(book, kid(call, 1), [j_fusion_binder(s, 1)])
+ 
+@@ -918,7 +917,7 @@
+   +call = j_call_spine(kid(body, 1), Nil{})
+   j_fusion_def(d, 1) && j_fusion_cases(dv(d), empty, link) && j_fusion_ctor(j_fusion_empty(d), empty, 0) &&
+     String.eq(tg(j_fusion_binder(s, 1)), "Lam") && j_fusion_ctor(body, link, 2) &&
+-    j_fusion_call(kid(body, 1), dn(d), 1) && j_fusion_var(kid(call, 0), ix(j_fusion_binder(s, 1))) &&
++    j_fusion_call(call, dn(d), 1) && j_fusion_var(kid(call, 0), ix(j_fusion_binder(s, 1))) &&
+     j_fusion_scalar(book, kid(body, 0), [j_fusion_binder(s, 0)])
+ 
+ @unsafe
+@@ -928,7 +927,7 @@
+   +call = j_call_spine(j_fusion_after(s, 3), Nil{})
+   j_fusion_def(d, 2) && j_fusion_cases(dv(d), empty, link) &&
+     String.eq(tg(j_fusion_binder(z, 0)), "Lam") && j_fusion_var(j_fusion_after(z, 1), ix(j_fusion_binder(z, 0))) &&
+-    String.eq(tg(j_fusion_binder(s, 2)), "Lam") && j_fusion_call(j_fusion_after(s, 3), dn(d), 2) &&
++    String.eq(tg(j_fusion_binder(s, 2)), "Lam") && j_fusion_call(call, dn(d), 2) &&
+     j_fusion_var(kid(call, 0), ix(j_fusion_binder(s, 1))) &&
+     j_fusion_scalar(book, kid(call, 1), [j_fusion_binder(s, 0), j_fusion_binder(s, 2)])
+ 
+@@ -953,7 +952,7 @@
+   j_fusion_def(d, 1) && j_fusion_cases(dv(d), empty, link) && j_fusion_ctor(j_fusion_empty(d), empty, 0) &&
+     String.eq(tg(j_fusion_binder(s, 1)), "Lam") && String.eq(tg(call), "Call") && U32.is_eq(terms_len(ks(call)), 3) &&
+     j_fusion_choose(lookup(book, nm(call)), link) && j_fusion_var(kid(call, 0), ix(j_fusion_binder(s, 0))) &&
+-    j_fusion_call(kid(call, 1), dn(d), 1) && j_fusion_var(kid(child, 0), ix(j_fusion_binder(s, 1))) &&
++    j_fusion_call(child, dn(d), 1) && j_fusion_var(kid(child, 0), ix(j_fusion_binder(s, 1))) &&
+     j_fusion_scalar(book, kid(call, 2), [j_fusion_binder(s, 0)])
+ 
+ @unsafe
+@@ -1014,7 +1013,7 @@
+     j_primitive_type(book, j_fold_root_result(book, dt(r), da(r)), "U32") &&
+     j_fusion_producer(book, p, empty, link) && j_fusion_filter(book, f, empty, link) &&
+     j_fusion_map(book, m, empty, link) && j_fusion_fold(book, r, empty, link) &&
+-    j_fusion_call(kid(pc, 0), "U32.to_nat", 1) && j_primitive_call(book, n) &&
++    j_fusion_call(n, "U32.to_nat", 1) && j_primitive_call(book, n) &&
+     j_fusion_scalar(book, kid(n, 0), vars) && j_fusion_scalar(book, kid(pc, 1), vars) && j_fusion_scalar(book, kid(rc, 1), vars),
+     u => j_fusion_emit(book, vars, p, f, m, r, kid(n, 0), kid(pc, 1), kid(rc, 1)), u => "")
+ 

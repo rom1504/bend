@@ -422,3 +422,112 @@ admission. This does not require widening fold/list selectors or private local
 representation checks. Actual controls must prove worker activation, public data
 fallback, complete mutated-dependency refusal, and proof cleanup/reentry; opening
 a proof with no measured useful component is not an activation witness.
+
+Concrete `calls/finite-component-root.patch` (+8 lines) matches that bridge:
+only the existing non-scalar-signature useful-work branch changes. It admits a
+finite selector or a definition with a positive bounded original self-reference
+count and a valid canonical component cache result. Scalar signatures remain
+excluded by the preceding branch. Root boundaries, graph proof, full guard,
+forcing, finally cleanup and emission priority are byte-unchanged. Static
+acquisition review found no blocker; activation and mutable inner-callee/public
+data refusal remain required execution controls.
+
+Nat.add candidate01 retains exact native Def/db/arity2/dx0/noForeign metadata,
+quantity1 Nat/Nat->Nat signature, ordinary residual dispatch, and the original
+`checkedNat(a+b)` implementation with maximum281474976710655n. It does not widen
+direct or flat native emitters. Its registration change nevertheless has a
+concrete pre-import observation gap: adding Nat.add to generic scalarCapture
+invokes mutable Object.getOwnPropertyDescriptor, Number.isInteger and
+Array.prototype.every during module loading, adding calls relative to the old
+module before any runtime guard can refuse. A tracing Number.isInteger wrapper
+installed before import is a minimum witness. Requested inert metadata from the
+freshly constructed known native wrapper rather than additional mutable-hook
+capture queries; candidate01 remains unapproved pending that issue.
+
+Facts owner also identified initial BigInt wrapper reentry: an arbitrary wrapper
+installed before import can become the guard's captured identity, then execute
+inside an active proof during U32.to_nat. A one-shot callback entering public
+ADT code must not inherit worker permission for foreign input. This requires
+an actual boundary witness, not inference from unchanged intrinsic identity.
+Nat.add itself uses checked primitive BigInt arithmetic without a host call.
+Overflow controls must retain original exact error/order and confirm cleanup.
+`bad` suspends inherited proof before Error hooks; a reentrant public data call
+must fall back, while a fresh fully guarded scalar root may legitimately acquire
+its own separate proof. The latter must not be falsely required to stay generic.
+
+Nat.add candidate02 fixes registration observability using local inert
+scalarNatAddSnapshot from the factory's fresh own code/bound fields; generic
+scalarCapture whitelist and all other native registrations remain unchanged.
+That metadata fix passes static review independently of the ownership failure.
+
+Root actual `preimport-bigint-counterexample01` passed viability and broke
+seq checked11 versus checked07: proxy inner fold26 became30, and mutation of
+G.fold.code observed seven original events versus zero new events. Bridge
+promotion is blocked by this actual failure. Public call suspension alone is
+insufficient: callbacks can use exported raw G code, and an already running
+worker with erased guards can continue stale inherited calls after mutation.
+A general repair requires suspension/invalidation/resume checks at external
+intrinsic boundaries or unforgeable owned-call permissions through generic
+call/bounce paths. Neither is an eight-line policy adjustment.
+
+A narrower scalar prefix staging rule might evaluate host conversions with
+proof null, preserve original callee/argument resolution order and resolved
+bindings, then acquire full proof for an independently checked remaining pure
+pipeline. That requires a concrete new source rule and controls; it cannot be
+assumed from arbitrary generic bodies. Reviewer recommends retaining exact
+failure and withholding matched bridge promotion. Removing only useful-work
+extension may leave new Sigma/List finite selectors activating existing proof
+roots; treat the matched extension set as one experiment unless independent
+activation audit proves narrower retention. Retained core/flat/fusion require
+the same adapted pre-import callback witness before this boundary is claimed.
+
+## Initialization contract classification and reassessment
+
+The preceding unconditional promotion-blocker classification was provisional
+and is superseded by direct inspection of the existing published contract.
+`docs/BEND-IN-BEND-PERFORMANCE.md:405–406` states: “Standard host intrinsics are
+part of the runtime contract; the finite tests do not establish equivalence under
+arbitrary replacement of JavaScript builtins.” Git blame attributes those lines
+to44a36083 on2026-09-30. Lines413–415 state: “The supported mutation controls
+assume standard intrinsics at module initialization”; git blame attributes the
+Phase35 paragraph to88619d9c on2026-10-01. Both predate Phase42; the same text is
+present in the Phase40 release8582de7. This is an existing supported-environment
+boundary, not a newly invented exclusion, weakened gate, or speed waiver.
+
+The executed pre-import BigInt/Math.imul witnesses are viable observations with
+real deltas, retained exactly. They install arbitrary host callbacks before
+module initialization and therefore fall outside that established contract.
+Core-boundary tree BigInt/imul mutation and fusion imul operand-order/dbl deltas
+are diagnostic limits, not supported-contract promotion failures. Their existence
+must remain visible; no report is relabeled as semantic parity. The inert Nat02
+snapshot repair remains useful because it avoids additional registration hooks.
+
+Under standard initialization, successful admitted operations use canonical
+immutable intrinsics and cannot call unknown foreign code. Post-import
+replacement/getters must fail captured host guards before canonical validation
+or proof entry. Nat.add failure retains checkedNat and `bad` suspends proof
+before Error hooks, then exception unwinding leaves no private continuation to
+resume. With that contract, closedproof04, native matcher, seq04, finite bridge
+and inert Nat02 have no remaining static blocker found. Actual supported controls
+remain mandatory: exact component activation/full outputs; limits and error
+order; public data/raw/partial fallback; changed G binding/code/arity/env/bound
+and getters, including Nat.add; post-import host replacement; suspended public
+data reentry through Error; proof cleanup; alias/freshness and deep frames.
+No new native-family inlining or generic data selector widening is approved.
+
+Validation working-v5 and optional-bst-v2 static review confirms prospective
+`reviewed:false` is correct. Optional-v2 still awaits exact strict-native/Nat
+owner contracts and frozen successful selected/rootGuard/hostControl lists;
+partial BST activation must not stand in for a runtime-assembled actual winner.
+
+Runtime batching v1 preserves45 catalog IDs and669 fresh samples with unchanged
+per-case warmup/calibration/target/rounds and balanced roles. Closure requires
+complete successful processes, exact identities/protocol and all45 cases once,
+and does not infer performance admission. Reviewer found a Node binding gap:
+path-only runtime comparison did not bind the timing executable's hash back to
+the checked attempt. Immutable v2 successors add Node identity to measurement
+receipt and batch plan, rehash at materialization/closure and require the actual
+runner's unique Node input identity to match. Static review finds the v2 gap
+resolved. An optional earlier realpath equality check for recipe NODE can fail
+before timing rather than at closure; the latter already rejects mismatch.
+No timing, controller or compiler execution was performed by this reviewer.

@@ -1,0 +1,37 @@
+// Frozen root-run retained-core falsifier. Actual checked modules only; no workers rewritten.
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {spawnSync} from 'node:child_process';import {pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';
+const sha=x=>createHash('sha256').update(x).digest('hex');
+if(process.argv[2]==='--child'){
+ const[moduleArg,kind,hook,mode,outArg]=process.argv.slice(3),nativeBigInt=globalThis.BigInt,nativeImul=Math.imul,events=[],external=[],inner=[],mutations=[],hooks=[];let callback=null,armed=false,mod,saved,target;
+ function invoke(native,args){hooks.push(args.map(x=>typeof x==='bigint'?String(x)+'n':x));if(armed&&callback){armed=false;callback();}return Reflect.apply(native,undefined,args);}
+ function wrappedBigInt(...args){return invoke(nativeBigInt,args);}
+ for(const key of Reflect.ownKeys(nativeBigInt))Object.defineProperty(wrappedBigInt,key,Object.getOwnPropertyDescriptor(nativeBigInt,key));Object.setPrototypeOf(wrappedBigInt,Object.getPrototypeOf(nativeBigInt));
+ function wrappedImul(...args){return invoke(nativeImul,args);}
+ for(const key of Reflect.ownKeys(nativeImul))Object.defineProperty(wrappedImul,key,Object.getOwnPropertyDescriptor(nativeImul,key));Object.setPrototypeOf(wrappedImul,Object.getPrototypeOf(nativeImul));
+ if(hook==='BigInt')globalThis.BigInt=wrappedBigInt;else if(hook==='imul')Math.imul=wrappedImul;else throw Error('hook');
+ mod=await import(pathToFileURL(moduleArg));const initial=mod.p42HostState();hooks.length=0;
+ function alien(tag,fields,label){let reads=0;return new Proxy({$:tag,a:fields},{get(obj,key,receiver){external.push(label+'.'+String(key));if(key==='a'){++reads;const a=fields.slice();if(label==='right'&&tag==='Leaf')a[0]=13+reads;if(label==='tail'&&tag==='Con')a[0]=3+reads;return a;}return Reflect.get(obj,key,receiver);}});}
+ const tree=alien('Node',[alien('Leaf',[7],'left'),alien('Leaf',[13],'right')],'root');
+ const list=alien('Con',[1,alien('Con',[3,alien('Con',[5,alien('Nil',[],'nil')],'last')],'tail')],'list');
+ const encode=x=>JSON.parse(JSON.stringify(x,(_k,v)=>typeof v==='bigint'?String(v)+'n':v));
+ function attempt(name,args){let value,error;try{value=encode(mod.default[name](...args));}catch(e){error=e.message;}inner.push({name,value,error,state:mod.p42HostState()});}
+ callback=()=>{events.push({event:hook+'.callback',state:mod.p42HostState()});if(mode==='reentry'){
+  if(kind==='tree'){attempt('scan',[tree]);attempt('flow',[1n,false,tree]);}
+  else{attempt('keep_gt1',[list]);attempt('suma',[list,5]);attempt('suma',[mod.default.keep_gt1(list),5]);}
+ }else if(mode==='mutation'){
+  const name=kind==='tree'?'key':'dbl';target=mod.G[name];saved=Object.getOwnPropertyDescriptor(target,'code');assert(saved&&typeof saved.value==='function','expected mutable fn code '+name);const original=saved.value;Object.defineProperty(target,'code',{...saved,value:function(...args){mutations.push({event:'mutated.'+name+'.code',proof:mod.p42HostState().proofActive});return Reflect.apply(original,this,args);}});
+ }else throw Error('mode');};
+ armed=true;let value,error;try{value=encode(mod.default.bench(kind==='tree'?3:4,11));}catch(e){error=e.message;}finally{if(saved)Object.defineProperty(target,'code',saved);globalThis.BigInt=nativeBigInt;Math.imul=nativeImul;}
+ fs.writeFileSync(outArg,JSON.stringify({kind,hook,mode,initial,value,error,events,inner,external,mutations,hooks,final:mod.p42HostState()},null,2)+'\n',{flag:'wx'});process.exit(0);
+}
+const[kind,hook,baselineArg,candidateArg,outArg]=process.argv.slice(2);assert(['tree','fusion'].includes(kind)&&['BigInt','imul'].includes(hook)&&outArg,'usage: KIND(tree|fusion) HOOK(BigInt|imul) BASELINE CANDIDATE NEW_OUT');
+const out=path.resolve(outArg);assert(!fs.existsSync(out));fs.mkdirSync(out);const pm={exports:{}};new Function('module','exports',process.binding('natives')['internal/deps/acorn/acorn/dist/acorn'])(pm,pm.exports);const inputs=[],modules=[];let first;
+for(const[role,inputArg]of[['baseline',baselineArg],['candidate',candidateArg]]){
+ const input=fs.realpathSync(inputArg),source=fs.readFileSync(input,'utf8'),receipt=JSON.parse(fs.readFileSync(input+'.json'));assert.equal(receipt.complete,true);assert.equal(receipt.observation.checked,true);assert.equal(receipt.output.sha256,sha(source));if(first)assert.equal(receipt.input.sha256,first.input.sha256,'same frozen source');else first=receipt;
+ const ast=pm.exports.parse(source,{ecmaVersion:'latest',sourceType:'module'}),workers=[];function walk(n){if(!n||typeof n!=='object')return;if(n.type==='FunctionDeclaration'&&n.id.name.endsWith('$tree'))workers.push(n);for(const[k,v]of Object.entries(n))if(k!=='start'&&k!=='end'){if(Array.isArray(v))v.forEach(walk);else if(v&&typeof v==='object')walk(v);}}walk(ast);
+ let diagnostic=source;for(const n of workers.sort((a,b)=>b.body.start-a.body.start))diagnostic=diagnostic.slice(0,n.body.start+1)+'$p42HostWorkers['+JSON.stringify(n.id.name)+']=($p42HostWorkers['+JSON.stringify(n.id.name)+']||0)+1;'+diagnostic.slice(n.body.start+1);
+ diagnostic+='\nconst $p42HostWorkers=Object.create(null);export function p42HostState(){return {proofActive:regionProof!==null,hostGuard:regionHostGuard(),workers:{...$p42HostWorkers}};}\n';pm.exports.parse(diagnostic,{ecmaVersion:'latest',sourceType:'module'});const file=path.join(out,role+'.mjs');fs.writeFileSync(file,diagnostic,{flag:'wx'});modules.push({role,path:file,sha256:sha(diagnostic)});inputs.push({role,path:input,sha256:sha(source),receiptSha256:sha(fs.readFileSync(input+'.json'))});
+}
+const observations=[];for(const mode of['reentry','mutation'])for(const row of modules){const file=path.join(out,row.role+'-'+mode+'.json'),r=spawnSync(process.execPath,['--max-old-space-size=512',import.meta.filename,'--child',row.path,kind,hook,mode,file],{timeout:4000,encoding:'utf8'});assert.equal(r.status,0,JSON.stringify({status:r.status,error:r.error?.message,stderr:r.stderr}));observations.push({role:row.role,...JSON.parse(fs.readFileSync(file))});}
+const semantic=x=>({value:x.value,error:x.error,inner:x.inner.map(y=>({name:y.name,value:y.value,error:y.error})),external:x.external,mutations:x.mutations.map(y=>y.event),hooks:x.hooks});const comparisons=['reentry','mutation'].map(mode=>{const a=observations.find(x=>x.role==='baseline'&&x.mode===mode),b=observations.find(x=>x.role==='candidate'&&x.mode===mode);return {mode,equal:JSON.stringify(semantic(a))===JSON.stringify(semantic(b)),baseline:semantic(a),candidate:semantic(b)};});
+const viable=observations.every(x=>x.initial.hostGuard===true&&x.initial.proofActive===false&&x.events.length<=1)&&observations.some(x=>x.events.length===1);const report={kind:'phase42-preimport-retained-core-host-falsifier',scope:kind,hook,complete:true,checkedInputs:true,viable,promotion:!viable?'harness-invalid':comparisons.every(x=>x.equal)?'not-falsified-by-these-scenarios':'counterexample-promotion-blocked',producerSha256:sha(fs.readFileSync(import.meta.filename)),node:process.version,inputs,modules,observations,comparisons};fs.copyFileSync(import.meta.filename,path.join(out,'consumed-counterexample.mjs'));fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({complete:true,viable,promotion:report.promotion,scope:kind,hook,comparisons:comparisons.map(x=>({mode:x.mode,equal:x.equal})),out}));

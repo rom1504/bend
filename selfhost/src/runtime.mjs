@@ -86,6 +86,7 @@ const callOwned=(f,args)=>force(apply(f,args,true));
 // Scalar regions capture only newly constructed compiler wrappers. Snapshots
 // stay private; replacement/accessor metadata is inspected without invoking it.
 const scalarSnapshots=Object.create(null), scalarObjectPrototype=Object.prototype;
+let scalarNatAddSnapshot=null;
 const scalarFunctionPrototype=Function.prototype, scalarFunctionCall=Function.prototype.call;
 const scalarPrimitivePrototypes=[Boolean.prototype,Number.prototype,BigInt.prototype];
 // Conversion for a proved private countdown must not call a replaced global.
@@ -132,7 +133,7 @@ function scalarGuard(names){
   const invoke=Object.getOwnPropertyDescriptor(scalarFunctionPrototype,'call');
   if(!invoke||!Object.hasOwn(invoke,'value')||invoke.value!==scalarFunctionCall)return false;
   for(const name of names){
-    const s=scalarSnapshots[name],g=Object.getOwnPropertyDescriptor(G,name);
+    const s=name==='Nat.add'?scalarNatAddSnapshot:scalarSnapshots[name],g=Object.getOwnPropertyDescriptor(G,name);
     if(!s||!g||!Object.hasOwn(g,'value')||g.value!==s.original)return false;
     const f=s.original;
     if(Object.getPrototypeOf(f)!==scalarObjectPrototype||
@@ -212,6 +213,8 @@ function regionHostGuard(){
 
 const native=(name,n,f)=>{
   const value=fn(n,a=>f(...a));
+  // The factory owns these fresh fields; snapshot without calling host hooks.
+  if(name==='Nat.add')scalarNatAddSnapshot={original:value,arity:n,code:value.code,bound:value.bound};
   return G[name]=name==='Array.new'||name==='Array.get'||name==='Array.set'||name==='F32.to_u32'||name==='Bool.xor'?scalarCapture(name,value):value;
 };
 function get(v,k){if(k in v){const x=v[k];return x?.code&&x.arity===0?call(x,[]):x;}bad('unbound name: '+k)}

@@ -1,0 +1,294 @@
+{
+  "kind": "phase42-final-selected-candidate-checkpoint",
+  "installed": false,
+  "observations": [
+    {
+      "path": "selfhost/build/phase42/bst15-screen01/report.json",
+      "sha256": "72958395a77510b078a20ec88af88865c02d6de0615613bb020af1d39a5472a6",
+      "cases": [
+        {
+          "id": "bst-matched-32-17",
+          "summary": {
+            "baseline07": {
+              "median": 3.120082369565219,
+              "minimum": 3.1154596249999997,
+              "maximum": 3.1387530217391313,
+              "samples": [
+                3.1387530217391313,
+                3.1154596249999997,
+                3.120082369565219
+              ]
+            },
+            "typescript": {
+              "median": 0.01350321081135293,
+              "minimum": 0.013400593483390816,
+              "maximum": 0.013726484837512447,
+              "samples": [
+                0.013400593483390816,
+                0.013726484837512447,
+                0.01350321081135293
+              ]
+            },
+            "candidate": {
+              "median": 0.15384004663212436,
+              "minimum": 0.1537075932377049,
+              "maximum": 0.1546108686659772,
+              "samples": [
+                0.15384004663212436,
+                0.1546108686659772,
+                0.1537075932377049
+              ]
+            },
+            "pre-native": {
+              "median": 0.20309105683836598,
+              "minimum": 0.20154572678571442,
+              "maximum": 0.2037942491166077,
+              "samples": [
+                0.2037942491166077,
+                0.20309105683836598,
+                0.20154572678571442
+              ]
+            }
+          }
+        },
+        {
+          "id": "bst-matched-128-17",
+          "summary": {
+            "baseline07": {
+              "median": 42.78455966666669,
+              "minimum": 42.50752666666665,
+              "maximum": 43.877933666666685,
+              "samples": [
+                42.78455966666669,
+                43.877933666666685,
+                42.50752666666665
+              ]
+            },
+            "typescript": {
+              "median": 0.1819103829268293,
+              "minimum": 0.18137462804878055,
+              "maximum": 0.1827263382352941,
+              "samples": [
+                0.18137462804878055,
+                0.1819103829268293,
+                0.1827263382352941
+              ]
+            },
+            "candidate": {
+              "median": 0.8912594251497007,
+              "minimum": 0.8908281144578315,
+              "maximum": 0.8991480184049077,
+              "samples": [
+                0.8908281144578315,
+                0.8912594251497007,
+                0.8991480184049077
+              ]
+            },
+            "pre-native": {
+              "median": 1.493757613861387,
+              "minimum": 1.4799311683168312,
+              "maximum": 1.5073186734693875,
+              "samples": [
+                1.4799311683168312,
+                1.5073186734693875,
+                1.493757613861387
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "selfhost/build/phase42/bst-controls15/report.json",
+      "sha256": "6493b0074f1c4e449de243a5a51d2157428e192a125a462536eadb7c60737914",
+      "complete": true,
+      "pass": true,
+      "oracles": 216,
+      "aliases": 24,
+      "boundaries": 38,
+      "deep": [
+        {
+          "name": "right-depth30000-down-up-inorder",
+          "allRoles": true,
+          "nodes": 30000
+        },
+        {
+          "name": "left-depth30000-inner-continuations",
+          "observations": {
+            "original": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "typescript": {
+              "ok": true,
+              "value": 2969360106
+            },
+            "candidate": {
+              "ok": true,
+              "value": 2969360106
+            }
+          }
+        },
+        {
+          "name": "left-depth30000-refused-fallback-parity",
+          "observations": {
+            "original": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "candidate": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            }
+          }
+        }
+      ],
+      "checked": false
+    },
+    {
+      "path": "selfhost/build/phase42/sequential-controls15/report.json",
+      "sha256": "8c201b2401ccc45f360252e22ad15d3f50c7270c6bf85ff982a7eb2b4e7838c6",
+      "complete": true,
+      "pass": true,
+      "oracles": 87,
+      "aliases": 0,
+      "boundaries": 41,
+      "deep": [
+        {
+          "name": "sequence.right",
+          "depth": 30000,
+          "observations": {
+            "original": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "typescript": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "candidate": {
+              "ok": true,
+              "value": 450495017
+            }
+          }
+        },
+        {
+          "name": "sequence.left",
+          "depth": 30000,
+          "observations": {
+            "original": {
+              "ok": true,
+              "value": 450495017
+            },
+            "typescript": {
+              "ok": true,
+              "value": 450495017
+            },
+            "candidate": {
+              "ok": true,
+              "value": 450495017
+            }
+          }
+        },
+        {
+          "name": "sequence.weight",
+          "depth": 30000,
+          "observations": {
+            "original": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "typescript": {
+              "ok": false,
+              "name": "RangeError",
+              "message": "Maximum call stack size exceeded"
+            },
+            "candidate": {
+              "ok": true,
+              "value": 3923797281
+            }
+          }
+        }
+      ],
+      "checked": false
+    },
+    {
+      "path": "selfhost/build/phase42/native-owned-assay15.json",
+      "sha256": "1fea625f91a628e3f6c8a62cd3e9f1ae8822e0918ebc2739883d296cab3b217b",
+      "complete": true,
+      "pass": true,
+      "before": {
+        "names": [
+          "$R_98_115_116_46_100_111_119_110$tree",
+          "$R_98_115_116_46_117_112$tree",
+          "$R_105_110_111_114_100_101_114$tree"
+        ],
+        "counts": {
+          "ctor": {
+            "Tuple": 12,
+            "Con": 8,
+            "Nil": 0,
+            "True": 4,
+            "False": 4
+          },
+          "literal": {
+            "TupleReturn": 0,
+            "Con": 0,
+            "Nil": 0,
+            "BoolArrayField": 0
+          }
+        },
+        "maskedSha256": "87865525935074f022c49597bfb130fe6b589c45b8edd582d27020bdde3f8283",
+        "maskedBytes": 86918,
+        "maskedPrivateBodies": 6
+      },
+      "after": {
+        "names": [
+          "$R_98_115_116_46_100_111_119_110$tree",
+          "$R_98_115_116_46_117_112$tree",
+          "$R_105_110_111_114_100_101_114$tree"
+        ],
+        "counts": {
+          "ctor": {
+            "Tuple": 0,
+            "Con": 0,
+            "Nil": 0,
+            "True": 0,
+            "False": 0
+          },
+          "literal": {
+            "TupleReturn": 12,
+            "Con": 8,
+            "Nil": 0,
+            "BoolArrayField": 8
+          }
+        },
+        "maskedSha256": "87865525935074f022c49597bfb130fe6b589c45b8edd582d27020bdde3f8283",
+        "maskedBytes": 86918,
+        "maskedPrivateBodies": 6
+      }
+    },
+    {
+      "path": "selfhost/build/phase42/checked15/attempt.json",
+      "sha256": "4beb364821de0c87f82b303a61b37b4f5e95c9db4cfaf0ae8aee9f776d11c051",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked15/equality/api.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked15/equality/api.mjs",
+        "sha256": "4a5bdf433610d5760a7296aa64d6c2afac5dfba720ea2ebb00a6706cde906d73"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked15/snapshot/src/runtime.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase42/checked15/snapshot/src/runtime.mjs",
+        "sha256": "6dbda18f176702557041530652690601c32b09261327ad49af7bf0cc8e7fb81c"
+      },
+      "artifactKind": "derived-b1",
+      "checked": true
+    }
+  ]
+}

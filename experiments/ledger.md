@@ -2544,3 +2544,33 @@ isolate remaining tree dispatch/allocation. Require a cheap falsifier and actual
 checked emission before another broad integration. Current
 [steering](STEERING.md) and [portable loop](../selfhost/tools/performance/phase41/README.md)
 replace Phase40 as the starting point; all historical evidence remains retained.
+
+
+## 2026-10-03 — Phase42 checkpoints, final admission pending
+
+The [roadmap](../design/phase42/README.md) and plan commit ef83a07 precede source
+changes. Checkpoints c7165a6,d20232c,929445e,7d9424a,3b64bc5 preserve the evolving
+source and evidence. Phase41 remains installed while the Phase42 survivor is
+qualified. Seven mechanism/review/documentation agents share static work; root
+serializes heavy compilation, semantic jobs and timing under resource caps.
+
+Actual outputs retain inherited direct calls, owned constructors, request-local
+planner facts, private flat graphs, total list fusion, exact native List/Sigma
+proofs and sequential traversal. Checked13 BST screens improve14.9–28.7× over
+checked07. Actual bounded recursion adds1.37–1.61× to checked14 tree output while
+retaining the iterative fallback; the larger tree is1.22×TS in a short screen.
+Checkpoints04/05 contain points, samples, ranges and comparator identities.
+No final45-point or global parity claim is made yet.
+
+Native-constructor literals win1.3–1.67× in the last BST discriminator; checked15
+source qualification follows. Transfer arrays add no benefit; Map.bit's isolated
+dispatch prototype is30–44% slower despite passing controls. Preserve failures.
+Pre-import hooks expose actual universal-equivalence failures; subsequent review
+found the standard-at-initialization contract published before this phase. Keep
+that scope correction and unchanged mandatory post-import/Error boundaries.
+
+**Updated frontier:** freeze the actual survivor, run all semantic owners, three
+serial full45 timing batches (669 samples), compiler cost, profiles, installation
+and evidence closure. Checked13 tree compilation improved10.03% but list costs
+12.03% more; assess the final image and record tradeoffs. Source growth and all
+remaining TS deficits remain explicit. No PR comment is posted.

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Independent positive-arity roots and private Number-Nat loop, complete all-branch primitive provenance; supported post-import mutations only, no timing claim",
+  "cases": [
+    {
+      "id": "capability-positive-viridian",
+      "family": "general-primitive-capability",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/primitive-capabilities-positive-v1.bend",
+        "sha256": "8a8985b0b32da9012d6db523cda60186e6f054faa486fc6797b3394dd0050bef",
+        "bytes": 582,
+        "provenance": {
+          "kind": "phase45-independent-positive-primitive-capability-fixture"
+        }
+      },
+      "point": {
+        "exportName": "viridian",
+        "args": [
+          17
+        ],
+        "expected": 38272
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python integer recurrence modulo 2^32"
+    },
+    {
+      "id": "capability-positive-amber",
+      "family": "general-primitive-capability",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/primitive-capabilities-positive-v1.bend",
+        "sha256": "8a8985b0b32da9012d6db523cda60186e6f054faa486fc6797b3394dd0050bef",
+        "bytes": 582,
+        "provenance": {
+          "kind": "phase45-independent-positive-primitive-capability-fixture"
+        }
+      },
+      "point": {
+        "exportName": "amber",
+        "args": [
+          0
+        ],
+        "expected": 73
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python integer recurrence modulo 2^32"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "capability-positive-viridian",
+      "capability-positive-amber"
+    ],
+    "core": [
+      "capability-positive-viridian",
+      "capability-positive-amber"
+    ],
+    "broad": [
+      "capability-positive-viridian",
+      "capability-positive-amber"
+    ],
+    "full": [
+      "capability-positive-viridian",
+      "capability-positive-amber"
+    ]
+  }
+}

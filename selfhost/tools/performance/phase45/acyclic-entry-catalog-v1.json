@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Untimed renamed acyclic source graph for candidate20 admission and public boundary comparison.",
+  "cases": [
+    {
+      "id": "acyclic-low",
+      "family": "acyclic-public-entry",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/acyclic-entry-v1.bend",
+        "sha256": "ef357e96c56b5208e380708d3e83d61b1e0a1c79fa10dee626994cb3a504ef17",
+        "bytes": 310,
+        "provenance": {
+          "kind": "phase45-independent-acyclic-entry-control",
+          "scope": "Two source functions, scalar operations, no recursion or erased context; no timing claim"
+        }
+      },
+      "point": {
+        "exportName": "glint",
+        "args": [
+          0,
+          9
+        ],
+        "expected": 7
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent modulo-2^32 branch arithmetic"
+    },
+    {
+      "id": "acyclic-high",
+      "family": "acyclic-public-entry",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/acyclic-entry-v1.bend",
+        "sha256": "ef357e96c56b5208e380708d3e83d61b1e0a1c79fa10dee626994cb3a504ef17",
+        "bytes": 310,
+        "provenance": {
+          "kind": "phase45-independent-acyclic-entry-control",
+          "scope": "Two source functions, scalar operations, no recursion or erased context; no timing claim"
+        }
+      },
+      "point": {
+        "exportName": "glint",
+        "args": [
+          17,
+          4
+        ],
+        "expected": 1
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent modulo-2^32 branch arithmetic"
+    },
+    {
+      "id": "acyclic-wrap",
+      "family": "acyclic-public-entry",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/acyclic-entry-v1.bend",
+        "sha256": "ef357e96c56b5208e380708d3e83d61b1e0a1c79fa10dee626994cb3a504ef17",
+        "bytes": 310,
+        "provenance": {
+          "kind": "phase45-independent-acyclic-entry-control",
+          "scope": "Two source functions, scalar operations, no recursion or erased context; no timing claim"
+        }
+      },
+      "point": {
+        "exportName": "glint",
+        "args": [
+          4294967295,
+          0
+        ],
+        "expected": 4294967293
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent modulo-2^32 branch arithmetic"
+    },
+    {
+      "id": "acyclic-equal",
+      "family": "acyclic-public-entry",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/acyclic-entry-v1.bend",
+        "sha256": "ef357e96c56b5208e380708d3e83d61b1e0a1c79fa10dee626994cb3a504ef17",
+        "bytes": 310,
+        "provenance": {
+          "kind": "phase45-independent-acyclic-entry-control",
+          "scope": "Two source functions, scalar operations, no recursion or erased context; no timing claim"
+        }
+      },
+      "point": {
+        "exportName": "glint",
+        "args": [
+          9,
+          9
+        ],
+        "expected": 6
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent modulo-2^32 branch arithmetic"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "acyclic-low",
+      "acyclic-high",
+      "acyclic-wrap",
+      "acyclic-equal"
+    ],
+    "core": [
+      "acyclic-low",
+      "acyclic-high",
+      "acyclic-wrap",
+      "acyclic-equal"
+    ],
+    "broad": [
+      "acyclic-low",
+      "acyclic-high",
+      "acyclic-wrap",
+      "acyclic-equal"
+    ],
+    "full": [
+      "acyclic-low",
+      "acyclic-high",
+      "acyclic-wrap",
+      "acyclic-equal"
+    ]
+  }
+}

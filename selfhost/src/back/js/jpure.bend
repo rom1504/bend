@@ -1235,7 +1235,7 @@ def j_instance_root_guarded(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>
 @unsafe
 def j_instance_root_guarded_mode(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +at: U32, +pure: JPure,
   +declarations: String, +numberNat: Bool) -> String:
-    "(()=>{" ++ declarations ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_primitive_guards() ++ j_instance_native_guards(j_pure_defs(pure)) ++ "];return " ++
+    "(()=>{" ++ declarations ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_primitive_capabilities(rows, pure) ++ j_instance_native_guards(j_pure_defs(pure)) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){" ++ j_nat_loop_slots(da(d), 0) ++
     "if($entered&&regionProof===null&&regionHostGuard()&&stringHostGuard()&&" ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++
     "&&localGuard($guards)){/* private contextual instances */" ++
@@ -1477,3 +1477,49 @@ def j_instance_child_fields(+env: List<&2,KTerm>, +ts: List<&2,KTerm>) -> Bool:
   match ts:
     case Nil{}: True{}
     case Con{t, rest}: String.eq(tg(j_strip(t)), "Var") && String.eq(j_component_origin(env, ix(j_strip(t))), "@child") && j_instance_child_fields(env, rest)
+
+# Primitive fences come from the complete successful source graph, before IR
+# folding or private capture rewriting can remove operation provenance. Original
+# contextual source bodies are scanned too; erased/type references may overfence.
+# Every child/branch is visited once under one aggregate budget. Uncertainty keeps
+# the historical all-family fence; native, source and host guards are unchanged.
+@unsafe
+def j_instance_primitive_capabilities(+rows: List<&2,KDef>, +pure: JPure) -> String:
+  kc(String, j_pure_valid(pure) && Bool.not(List.is_empty(&2,KDef, j_pure_defs(pure))), u =>
+    j_instance_primitive_cap_result(j_instance_primitive_cap_scan(
+      List.append(&2,KTerm, j_instance_primitive_cap_sources(rows), j_instance_primitive_cap_bodies(j_pure_defs(pure))),
+      Nil{}, 131072)), u => j_instance_primitive_guards())
+
+@unsafe
+def j_instance_primitive_cap_sources(+rows: List<&2,KDef>) -> List<&2,KTerm>:
+  match rows:
+    case Nil{}: Nil{}
+    case Con{fact, rest}: Con{dv(j_instance_original(fact)), j_instance_primitive_cap_sources(rest)}
+
+@unsafe
+def j_instance_primitive_cap_bodies(+defs: List<&2,KDef>) -> List<&2,KTerm>:
+  match defs:
+    case Nil{}: Nil{}
+    case Con{d, rest}: Con{dv(d), j_instance_primitive_cap_bodies(rest)}
+
+@unsafe
+def j_instance_primitive_cap_scan(+todo: List<&2,KTerm>, +names: List<&2,String>, +fuel: U32) -> Maybe<&2,List<&2,String>>:
+  match todo:
+    case Nil{}: Some{List.reverse(&2,String, names)}
+    case Con{t, rest}:
+      kc(Maybe<&2,List<&2,String>>, U32.is_gt(fuel, 0), u =>
+        j_instance_primitive_cap_scan(List.append(&2,KTerm, ks(t), rest),
+          kc(List<&2,String>, j_primitive_known(nm(t)) && Bool.not(has_name(names, nm(t))),
+            u => Con{nm(t), names}, u => names), U32.sub(fuel, 1)), u => None{})
+
+@unsafe
+def j_instance_primitive_cap_result(+r: Maybe<&2,List<&2,String>>) -> String:
+  match r:
+    case None{}: j_instance_primitive_guards()
+    case Some{names}: j_instance_primitive_cap_print(names)
+
+@unsafe
+def j_instance_primitive_cap_print(+names: List<&2,String>) -> String:
+  match names:
+    case Nil{}: ""
+    case Con{name, rest}: j_quote(name) ++ "," ++ j_instance_primitive_cap_print(rest)

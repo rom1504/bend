@@ -1,6 +1,6 @@
 # P45-018: require repeatable work for a new alias-only public worker
 
-Status: isolated candidate over frozen worker17b. Independent static review passes; checked build and performance qualification are pending. No runtime or public ABI change is proposed.
+Status: isolated candidate over frozen worker17b. Independent static review, checked build, eight maintained suites and the first 21 screened points pass; full selected-image qualification is still pending. No runtime or public ABI change is proposed.
 
 ## Falsifier from the full comparison
 
@@ -39,3 +39,11 @@ All existing source/type, exact-call, public-prefix, graph, ownership, layout, c
 Run the maintained **fast five canaries first**, including the complete generic row, before the broader feature screen or another long comparison. The prior feature-focused screen omitted this already maintained canary; the long run caught a regression that a cheap default screen should have rejected. Keep that failure as evidence and change the order of validation.
 
 First verify that the generic-row helper and complete module recover their prior forms, while large recursive workers remain selected. Then check recursive self and mutual components, acyclic contextual specialization, and acyclic callees inside recursive roots. Activation controls for formerly admitted acyclic public roots must reflect the new conservative policy without dropping their value, mutation or ABI observations. Continue with the key lexer/Map/record/ray gains, all representative points, maintained semantic suites and final selected-image qualification. No speed recovery is claimed before those results exist.
+
+## Worker18 screened outcome
+
+The checked API is `f4bb7903b1f8f74b49591ed47413e90c9cdbda6ed6a2a219010ca7068635e201`. The eight maintained suites pass in `qualify-worker18/report.json`. The fast-five canaries ran first and all passed in 35.57s; the generic-row generated module recovers the Phase44 bytes. Its fresh baseline/candidate ratio is 0.9597× and candidate/TypeScript is 60.35×: the major introduced regression is removed, while the preexisting generic execution deficit remains.
+
+Four further four-point screens passed, for 21 screened points in total. Fresh baseline/candidate ratios include 16.623× Map, 47.770× records, 16.353× active ray and 4.943× lexer. Their candidate/TypeScript ratios are 1.754×, 1.668×, 1.693× and 1.549× respectively. These are short-screen results from `runtime-worker18-fast-canaries` and `runtime-worker18-screen1` through `screen4`; they are not a completed 45-point result and are not pooled with the interrupted 17b qualification.
+
+The observed outcome supports retaining the general recursion profitability gate. Subsequent primitive-fence work is isolated in [P45-019](P45-019-used-primitive-fences.md), leaving this successful predecessor available for comparison.

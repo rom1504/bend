@@ -1,242 +1,241 @@
 # Phase43: complete-operation direct execution
 
-Work in progress, 2026-10-04. This report distinguishes saved-JavaScript
-experiments from compiler-emitted improvements and the installed release.
-The [prospective design](../../design/phase43/README.md) was committed before
-production changes. The installed compiler remains Phase42 checked16 until
-the final candidate passes qualification. No PR comment is authorized or posted.
+Phase43 checked14 improves the maintained 45-point generated-program corpus by
+1.441 times over Phase42 checked16. Its point-weighted geometric time relative to
+pinned TypeScript falls from 8.876 to 6.161 times. Lexer, Map, known scalar
+callbacks and BST improve substantially; 20 points have slower medians, and
+complete applications still retain large gaps. Compiler requests become more
+expensive on several sources, and production source grows 6.9%.
 
-## Baseline and protocol
+**Release pending:** all 669 final runtime samples are complete and the raw
+semantic controllers pass. Final semantic aggregation is still correcting exact
+execution-path bindings; final closure and installation are not yet claimed.
+Checked14 is the selected image, with API
+`222902e565253ae20c628301a9191c6d71e47b211f1dc463da4e8eb1b51c86eb`.
+The installed artifact remains governed by the
+[release manifest](../../selfhost/dist/release.json). This paragraph must be
+updated only after root completes closure and installation verification.
 
-Pinned upstream: `018751270e800bc222a93dad7f257083ee53a5f7`. Baseline release:
-`714c5f5`, API `63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54`.
-Phase42's full 45-point generated-program ratio was 8.862 times TypeScript
-with equal point weighting and 11.421 with equal source weighting. These
-describe the maintained corpus, not all Bend programs.
+The previous release is Phase42 checked16, commit `714c5f5`, API
+`63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54`.
+Upstream remains `018751270e800bc222a93dad7f257083ee53a5f7`. The compiler source
+and selected API are a checked B1 derivative, not a new self-emitted fixed point.
+The human-written language checker and closed historical evidence are preserved.
 
-Experiments use Node24.18.0, CPU3, serialized execution, a 1GiB heap ceiling,
-2GiB process-tree RSS ceiling and 2GiB available-memory floor. The inherited
-full frontend gate retains its reviewed two-worker/3GiB combined supervisor
-as an explicit documented exception, with no concurrent heavy job. Controls and
-profiles are separate from clean runtime measurements. Each timing screen
-includes a fresh baseline and pinned TypeScript role. Phase42 raw evidence
-remains closed. The 103 unrelated starting files are protected.
+## Final generated-program results
 
-Raw evidence: `selfhost/build/phase43/`. `campaign.jsonl` records enclosing
-job intervals and consumed tools. Timing budgets exclude source acquisition
-and semantic controls. The ledger began after initial setup/delegation;
-unclassified wall time must not be described as idle time or model latency.
+The [complete results](results.md) and [machine-readable evidence](results.json)
+cover 45 points across 23 sources, with 669 fresh-process samples from three
+serial batches. No saved-JavaScript experiment or exploratory screen is pooled
+with this comparison.
 
-## Evidence so far
+| Geometric time relative to TypeScript | Phase42 | Phase43 | Phase42 / Phase43 |
+|---|---:|---:|---:|
+| Equal point weighting | 8.875959× | 6.161075× | 1.440651× |
+| Equal family weighting | 11.533923× | 8.543621× | 1.350004× |
+| Equal source weighting | 11.430604× | 8.433917× | 1.355314× |
 
-| Experiment | Selected fresh result | Status |
-|---|---|---|
-| Lexer, complete materialized direct graph | 10.91–12.66 times faster; still 7.00–7.39 times TS | Actual checked08; 439 value checks, 113 boundaries and 3 admission checks pass |
-| Map operation graph | About 2.7 times faster; still 28–33 times TS | Saved-JS experiment; actual typed-instance admission remains under investigation |
-| Known closures, private materialized environments | 1.77–4.70 times faster; 4.58/1.73 times TS on 64/256 | Actual checked08; 22 oracle groups, 32 boundaries and independent 85-observation fixture pass |
-| Closure guard restricted to exact U32 proof | 4.13/9.07 times baseline speed; 2.14/0.941 times TS on 64/256 | Controlled ablation of actual08; 22 oracle groups/39 boundaries pass; checked09 source integration pending actual qualification |
-| BST, scalar prefixes, wrappers and private pair state | 2.44/2.66 times faster; 3.42/2.33 times TS on 32/64 | Actual checked08; full pair/path/tree and alias checks pass with executed private pair worker |
-| U32-specific fusion host checks | 1.21/1.05 times baseline speed on list128/512; 2.00/0.556 times TS | Actual checked06 screen; checked08 passes all 82 guard controls |
-| Repeating a scalar guard after a full host guard | Only 3–4% improvement | Deferred; duplicate machinery not integrated |
+There are 25 strict median wins, 20 regressions and no exact ties against
+checked16. Closure256 and list512 are faster than TypeScript. These counts are
+descriptive: small median differences do not establish statistical significance.
+The corpus is exposed development coverage, not an unseen application
+population; these results do not establish general TypeScript parity.
 
-Results above come from short screens and different, explicitly recorded
-experiments. They are not additive and do not establish a new full-corpus
-ratio. See [Strings](strings.md), [Map](map.md), [products](products.md),
-[callbacks](callbacks.md), [guards](guards.md),
-[validation](validation.md) and [independent review](review.md).
+![Every corpus point relative to TypeScript](corpus.svg)
 
-## Integration findings
+The [family chart](families.svg), [win/regression chart](family-wins.svg) and
+[full table](results.md) retain every point, absolute time, paired-round range
+and half drift. Greater-than-one candidate/TS ratios mean slower execution.
+Selected changed-family results are:
 
-The first computed-prefix predicate used conjunctions around recursive
-arguments. Bend evaluates those arguments even when the preceding shape
-check fails. A malformed/nonmatching term therefore branched recursively
-and made BST compilation exceed 180 seconds. Explicit conditional branches
-fixed termination. The failure and original source patch are retained.
-Checked02 compiles the BST source in seconds. A separate refusal probe now
-checks malformed and unrelated terms at fuel128, including the original
-failure shape.
+| Family | Points | Geometric gain over Phase42 | Phase43 / TS geometric time |
+|---|---:|---:|---:|
+| Lexer | 3 | 12.295× | 7.223× |
+| Map churn | 2 | 3.620× | 26.477× |
+| Known closures | 2 | 9.440× | 0.911× |
+| BST | 2 | 2.486× | 2.728× |
+| List pipeline | 2 | 1.129× | 1.051× |
 
-Checked03 caught a duplicate helper name in the combined String patch;
-checked04 caught missing list type annotations in the callback patch.
-Both failed attempts remain recorded. Checked05 builds in 42.24 seconds,
-peaks at about 1.30GB process-tree RSS, and passes all 36 focused strict
-checks. It acquires five representative source modules in 36.72 seconds.
+The closure geometric mean hides a meaningful input difference: size64 takes
+1.728 times TS and size256 takes 0.480 times TS. Map32/128 improves 3.381/3.875
+times and remains 29.790/23.532 times TS. Earlier checked14 screens measured the
+larger closure at 0.422 times TS and Map gains of 1.862/3.088 times; those screens
+remain evidence but do not replace these final same-run results. The actual
+checked08 lexer screen exceeded ten times baseline speed; its saved manual
+prototype was closer to five times TS. Only final compiler output determines
+the delivered ratios above.
 
-Actual BST controls pass for full and partial results, fallback and deep
-trees. The additional scalar-first wrapper closes the remaining hot generic
-edge: BST64 uses two generic dispatches, compared with 775 in Phase42.
-A fresh four-point screen (`checked05-screen02`) measures BST32 at 0.106914ms
-versus baseline0.195543ms and TS0.0253603ms; BST64 at 0.170532ms
-versus baseline0.347646ms and TS0.054142ms. List controls stay close.
-The first screen request used an incorrect manifest path and failed before
-measurement; its report is retained.
+Regressions remain visible. The complete generic row is 5.8% slower by median;
+the zero-work scalar entry is 14.6% slower. Other families have smaller mixed
+changes and overlapping paired ranges. All 45 full modules change because they
+embed runtime support, so a changed hash alone does not establish a new executed
+optimizer path or explain a timing difference.
 
-Lexer checked05 agrees on 375 initial value observations but fails its
-mandatory ordinary-entry activation check; the closure module likewise
-lacks the proposed private-environment body. These are admission failures,
-not delivered speedups, and are being investigated before broad measurement.
+## Seven implementation findings
 
-The first integrated attempts also exposed a build-step omission: edited
-`runtime/js/core.mjs` fragments were snapshotted alongside the previous
-assembled `runtime.mjs`. Checked05 therefore uses the previous runtime, and
-its evidence does not qualify the new String or U32 host guards. The bundle
-was regenerated before the next attempt; final preflight will require exact
-fragment/bundle agreement.
+1. **String operations need complete typed and host coverage.** Exact native
+   String/Char layouts, alias-normalized types and nested data fields establish
+   the required host family. Ordinary lexer entries execute a complete private
+   graph while retaining materialized strings, Unicode projections, intermediate
+   values and constructor order. Exact literal-only nullary definitions are
+   admitted; computed nullary bodies remain generic.
 
-## Subsequent actual-source qualification
+2. **Map needs contextual typed instances.** Specializing erased arguments
+   creates private workers without replacing public definitions, full arity or
+   fallback. Exact Map, Maybe, comparison and tuple proofs retain quantities and
+   canonical layouts. Source-emitted library functions can be native-marked;
+   runtime intrinsic overrides require a different admission rule. A native flag
+   alone identifies neither case.
 
-Checked06 exposed two actual-source failures after admission opened: lexer prefix
-validation did not recognize its already-lowered direct call, and a callback
-private source binder shadowed its public input. Both failures were retained and
-fixed before checked08. String admission also needed a narrowly proved Bool.and
-source path, because the emitter retains that source body despite its native flag.
-The fixes preserve original type/body proof and eager argument evaluation.
+3. **Known scalar callbacks can remove an intermediate graph.** Under exact
+   total-U32 and no-escape proofs, construction and application fuse into private
+   execution. Captured values and noncommutative composition order remain explicit;
+   unknown or escaping functions use the original behavior.
 
-Checked07 rejected a missing KDef local annotation in the Map prototype. Checked08
-builds and passes the 36 focused checks in 54.12 seconds, peaking at 1.34GB tree RSS.
-Six sources / eleven points acquire in 45.51 seconds. Its lexer, callback, tree,
-list and independent fixture controls now execute the intended implementations.
-The first pair fixtures instead selected the existing stronger scalar worker;
-they are now explicit precedence controls, with separate positive pair fixtures.
-The actual BST control independently proves the new down worker executes.
+4. **Numeric countdowns require a range proof.** Eligible callback loops use
+   Number arithmetic for proved U32 counts, with the original BigInt countdown
+   outside that domain. Both paths are tested; arbitrary-precision Nat semantics
+   are unchanged.
 
-Map diagnostics found a real admission error: native-marked Map definitions are
-source-emitted by this backend but were excluded by a blanket native predicate.
-The candidate now follows the emitter's exact source-definition rule and still
-excludes runtime intrinsic overrides. Checked09 includes that repair and the
-reviewed U32 callback guard capability; it builds and passes 36 focused checks in
-53.66 seconds at 1.371GB tree RSS. Actual source controls remain pending for it.
+5. **Pair state can stay private while escaping data retains its layout.**
+   Eligible loops hold two local state slots, return the original value at zero
+   iterations and reconstruct fresh positive state. Both right-hand sides run
+   before either update. Tree/path aliases and stronger scalar-worker selection
+   keep their existing behavior.
 
-Evidence includes checked08-screen01, checked08-lexer-screen02,
-callback-string-scope-screen01, strings-controls08-v4, callback-actual-controls08,
-callback-source-fixture08, products-pair-real08 and run-guard-actual-controls08.
-Earlier failed attempts and superseded controller versions remain recorded.
+6. **Guard costs follow capabilities.** Exact U32 callback and fusion proofs
+   select a smaller integer host check; String graphs retain String checks.
+   Dependencies remain live at entry. Success is not cached across public calls,
+   and errors/reentry cannot inherit unearned permission.
 
-## Follow-up experiments and current source
+7. **Proof and emission must agree on transformed terms.** Explicit conditional
+   branches fence recursive proofs because Bend evaluates Boolean operands
+   eagerly. Lowered direct calls preserve the original source proof and recursive
+   App shells needed by continuations. Scope-aware audits reject unresolved
+   private calls, empty argument vectors and unbound saved temporaries.
 
-Checked09's fresh four-point screen (`checked09-screen01`) confirms the guarded
-closure environment change: size64 is 4.208 times faster than checked16 and
-2.075 times TS; size256 is 8.069 times faster and 1.0105 times TS. Tree32/64
-remain 2.185/2.534 times faster than checked16 and 3.803/2.516 times TS in
-that same screen. Short-screen variation is retained rather than selecting the
-best denominator from previous runs.
+These changes extend existing checked terms, bounded plans and request-local
+facts rather than adding another general intermediate representation. Unsupported
+shapes or exhausted proofs refuse optimization. The
+[technical overview](../../docs/PHASE43_DIRECT_EXECUTION.md),
+[prospective design](../../design/phase43/README.md) and
+[independent review](review.md) describe the shared boundaries. Family detail is
+in [Strings](strings.md), [Map](map.md), [callbacks](callbacks.md),
+[products](products.md) and [guards](guards.md).
 
-A further source-generic callback experiment fuses construction and application
-under the existing exact total-U32/no-escape proof, removing the private
-environment graph. Independent noncommutative composition and host controls
-pass. Its fresh saved-JS screen gives 1.080/1.452 times the materialized09 speed;
-the larger point takes 0.6585 times TS. The emitter change removes two lines.
-Checked11 builds with it in 55.30 seconds at 1.350GB peak tree RSS and passes
-36 focused checks. Genuine checked11 output passes 22 oracle groups/39
-boundaries plus the independent 85-observation fixture. These fresh semantic
-receipts are separate from the saved-JS timing. A bounded numeric countdown
-experiment is being evaluated independently; it is not yet source-integrated.
+## Semantic evidence and its limits
 
-Map's compiler integration has exposed four overly conservative or misplaced
-checks: a native/source distinction, Cmp node metadata versus nominal type
-identity, normalized closed kind compatibility, and traversal of erased type
-arguments as runtime calls. Checked11's full diagnostic now collects 24 typed
-instances and 28 ordinary sources, passes exact replay, and reaches the shared
-purity proof. Its next missing rule is the existing native String.append ABI.
-The diagnostic overlay and native signature controls are separate from actual
-compiler activation, which remains pending.
+The selected frontend agrees exactly on 3,026 main and 196 broader observations,
+with zero result or extra-field differences. Four shared main-corpus raw checking
+failures remain failures; agreement does not relabel them as accepted programs.
+Selected backend renewal has 81 exact paired observations, with retained shared
+failures and unavailable platforms. Expanded application/catalog/small correctness
+passes 154 untimed observations. Counts overlap and must not be summed into a
+unique-test total. The [semantic summary](semantic-summary-draft.md),
+[validation report](validation.md) and [conformance scope](../../selfhost/CONFORMANCE.md)
+retain the exact distinctions; final aggregate binding is still pending.
 
-Dead lexer resume work is a smaller hypothesis. Both-prefix-and-projection and
-separate variants pass the full source controls and 48 additional fenced
-Unicode/host observations. The two-point attribution screen is uneven: prefix
-removal alone barely changes lexer8, while removing dead String projections
-improves it roughly 16%; lexer6 does not reproduce a consistent combined gain.
-No broad liveness machinery is integrated on this evidence. A direct-wrapper
-experiment also passes controls but regresses around 1–2% with a repeated inner
-guard; its failure is retained before trying an enclosing-proof variant.
+Focused controls require actual private worker execution through ordinary public
+roots, full values and aliases, partial application, dependency and post-import
+host mutation, error callbacks/reentry, demand order and deep stack behavior.
+The standard host at initialization contract persists. Pure source admission
+alone does not grant permission to bypass observable boundaries.
 
-The independent tree pair controls are now settled. `products-source-pair08`
-proves ordinary private pair activation on the existing renamed prefix source.
-`pair-bst-ignored10-controls` passes seven ordinary results and six private
-value/alias/deep controls on a separate source that discards old pair fields.
-The plain scalar fixtures remain explicit old-scalar-precedence controls; their
-failed positive-activation attempts were not relabeled as passes.
+The main actual Map profile checks 16 value groups, six aliases, 699 boundaries
+and three ABI controls; each independent annotated literal/renamed fixture checks
+19 values, six aliases, 645 boundaries and three ABI controls. Ordinary owned
+2,048-element execution and a separate 12,000-depth private probe qualify distinct
+paths. Numeric callbacks retain 22 oracle groups, 40 boundaries and 85 independent
+fixture observations. String controls retain 439 values, 113 boundaries and three
+admission checks, plus independent renamed, literal and computed-nullary fixtures.
+Inherited owners remain mandatory alongside these new controls.
 
-Checkpoint `6cbd0a1` is pushed. Later experiment and source work is still under
-qualification. Production source has grown overall; the shorter callback rule
-does not justify claiming that the whole compiler became smaller.
+## Compiler and complexity costs
 
-## Bounded numeric callbacks and actual Map admission
+The [compiler-cost report](compiler-cost.md) compares eight sources, three roles
+and three fresh-process samples per source/role: 72 requests. Normal request
+cost includes checking/emission and ordinary lazy API/Base handling; host import
+and whole process wall time are reported separately. It is not emitter-only
+attribution or generated-program timing.
 
-The saved numeric countdown screen (`callback-number-screen01`) measures the
-larger closure point at 0.4455 times TypeScript and 1.576 times the checked11
-BigInt-loop speed. Its independent fixture has 85 observations; 22 oracle
-groups and 40 boundaries include the original BigInt fallback. The first source
-proposal rebuilt synthetic Call nodes that the expression emitter does not
-accept. Static review rejected it before a compiler build. The corrected v8
-preserves App shells; `callback-number-lowering12` confirms exact emitted U32
-expressions across boundary predecessors and records the rejected null output.
-Actual compiler-emitted numeric qualification remains pending.
+Core request medians rise 8.7% for local pair, 21.1% for tree and 14.0% for list;
+numeric recurrence is approximately unchanged at +0.8%. Changed-family request
+medians rise 71.5% for lexer, 310.5% for Map and 31.0% for BST; closures are
+approximately unchanged at +0.7%. Map's request rises from 2.302 to 9.450 seconds,
+while complete process time rises from 7.301 to 14.240 seconds. These are explicit
+costs of the selected rules, not compiler-throughput improvements.
 
-Checked12 builds in 50.64 seconds and passes 36 focused checks. Exact native
-String.append signature proof and canonical kind headers let the actual Map
-operation activate, with no diagnostic semantic overlay. The compiler proof
-controller passes 71 signature, quantity, malformed-header and kind observations.
-Both independent scalar and renamed Map fixtures compile. Their first two fixture
-versions were invalid against the pinned Map.get ABI/parser and remain failures.
+The same maintained 70-module production graph grows from 20,056 to 21,440
+physical lines and from 2,249 to 2,413 definitions: +1,384 lines (+6.9%) and
++164 definitions. The selected equality-derivative API grows from 1,333,053 to
+1,460,868 bytes (+9.6%). Map's full generated module grows from 122,580 to
+271,639 bytes; lexer grows from 107,625 to 176,148 bytes. Runtime fragment and
+assembled bundle inventories are not counted twice. The
+[accounting report](accounting.md) separates source, tools, emitted images and
+recorded campaign intervals; unclassified wall time is not model or idle time.
 
-Actual Map execution then exposes a lowering bug: a private call around a
-recursive child loses the shell needed by the iterative continuation emitter.
-The resulting undefined temporary is a real compiler defect, recorded in
-`run-map-actual12-controls`. Review also identified missing identity guards for
-inlined primitive dependencies. A conservative complete primitive-family fence
-is applied, but execution and mutation controls must pass before Map is measured
-or selected. Activation and type proof alone do not qualify generated execution.
+## Surviving gaps and next experiments
 
-The final lexer wrapper experiment passes controls but has mixed timing:
-about 7% faster on lexer8 and 3% slower on lexer6. Both optional lexer follow-ups
-are deferred; their source patches are not integrated.
+[Profiles](profile-findings.md) sample Map128 allocations at about 105.78 MB per
+call in Phase42, 29.10 MB in checked14 and 2.18 MB in TS. Generic applies fall
+from 259,965 to 49,807, but wrappers, mutual recursion and continuation storage
+remain significant. Closure256 samples about 441.90 kB, 8.69 kB and 159.37 kB
+respectively; after removing its environment graph, entry guards dominate more
+of the residual cost. These are sampled allocation estimates, not retained heap,
+exact allocation counts or a forecast of further speedup.
 
-## Checked13–14 correctness checkpoint
+Complete applications have not inherited the same benefits. Morning takes
+62.19 times TS and RLE roundtrip 69.02 times TS in the final comparison. Static
+[application analysis](application-gap.md) finds ordinary generic roots: private
+workers exist but lack an enclosing entry proof. Readback is a primitive string
+or number, not a separate serialization traversal. The smallest next falsifier
+is ordinary-entry instrumentation, then separate controlled experiments for
+entry dispatch, enclosing graph execution, representation and bounded Nat
+arithmetic. Do not cache or constant-fold the nullary fixture result.
 
-Checked13 builds in 54.77 seconds at 1.373GB peak tree RSS. Its genuine numeric
-callback emission passes all 22 oracle groups and 40 boundary controls, including
-the original BigInt branch. Map now reaches execution but fails on an unbound
-private instance name; this confirms the independent review's continuation-call
-finding. The next repair keeps recursive App shells and emits a lexical call only
-for an independently admitted private target. Unsupported ancestor shapes make
-the complete plan refuse; they cannot fall through to a nonexistent public name.
+For Map, investigate residual mutually recursive String/bit edges and private
+continuation/projection arrays separately, retaining mutable dependency boundaries
+and deep fallback. For small closures, isolate exact guard capabilities and
+fixed entry cost. Instrument first, change one mechanism, run complete controls,
+then measure actual compiler output before broad integration.
 
-Checked14 builds in 54.27 seconds at 1.370GB tree RSS and passes 36 focused checks.
-Its actual execution qualification is running. New AST audits reject unresolved
-private calls, empty continuation argument vectors and unbound saved temporaries.
-The unannotated independent Map fixture is retained as a conservative purity
-refusal. A separate explicit-annotation fixture tests the supported domain without
-expanding the compiler's type-inference machinery.
+Optional lexer dead-resume prefix/projection removal and the extra wrapper remain
+deferred after mixed timings. Repeating scalar checks after a full host guard
+provided only a small gain and duplicated machinery. The earlier per-edge Map
+guard experiment regressed 30–44%; it is not selected.
 
-## Actual checked14 source qualification and fresh screen
+Failures remain preserved: eager recursive predicate timeout, stale runtime
+assembly, duplicate helpers/annotations, missing ordinary activation, lowered
+prefix and continuation defects, binder shadowing and invalid affine fixtures.
+Reviewed inherited-controller successors retain old behavioral assertions while
+qualifying the intended four-owner fold inventory and exact literal0 admission.
+Per-root dependency controls permit independently safe nested roots while still
+requiring every affected root to refuse and full event/value parity. Historical
+checkpoints, frozen tool versions and raw failures are retained rather than
+rewritten as successful outcomes.
 
-All three Map source profiles pass: the main operation has16 value groups,
-6 alias controls,699 boundaries and3 ABI controls; each independent annotated
-literal/renamed fixture has19 values,6 aliases,645 boundaries and3 ABI controls.
-Actual private Map workers execute through ordinary roots, including the owned
-2048-element case and12000-depth private probe. The numeric callback source
-passes22 oracle groups/40 boundaries and its independent85 observations.
+## Reproduction and release completion
 
-The fresh four-point `checked14-map-callback-screen01` compares the actual compiler
-against checked16 and pinned TS in the same run. Map32/128 improves1.862/3.088 times
-and remains44.47/28.55 times TS. Closure64/256 improves4.519/19.222 times and takes
-1.929/0.422 times TS. Map's large within-process half drift makes this a preliminary
-screen, not the final steady-state result. The complete45-point protocol remains
-required. [Profiles](profile-findings.md) explain the remaining allocation and
-dispatch gap; [accounting](accounting.md) separates production growth and experiment
-history. The production module graph grows20,056 to21,440 lines, a6.9% increase.
+Use the [portable Phase43 guide](../../selfhost/tools/performance/phase43/README.md)
+and [validation commands](../../selfhost/tools/performance/phase43/validation/README.md).
+The final protocol uses Node 24.18.0, CPU3, serial fresh processes, a 1 GiB heap,
+a 2 GiB ordinary process-tree RSS cap and a 2 GiB free-memory floor. The inherited
+full frontend retains its reviewed two-worker CPU3/4, 3 GiB combined supervisor
+exception and runs alone. Regenerate the runtime from its fragments before
+building and verify exact selected-snapshot agreement.
 
-The runtime assembly matches its fragments exactly. Independent scalar review
-confirms the five protected executable scalar bodies are unchanged; the explicit
-frozen contract classifies every other registration-envelope change. Current
-source is checkpoint `b0770fc`, pushed with the rejected attempts and fixes.
+Budgets are **20, 60, 300 and 600 seconds**, independent of case selection. Use a
+small changed-family falsifier and complete activation/boundary controls before
+larger timing. Full45 uses three serial 15-point preset600 batches, retaining
+669 samples and the frozen warmup/round design; one 600-second full run cannot
+fit the cumulative warmup floors. Acquisition, semantic controls, compiler cost,
+profiles and runtime measurement stay separate. The final
+[results JSON](results.json) preserves final corpus identities and samples.
+Portable [selected-release evidence](evidence/selected-release.json) will bind
+the runtime closure, exact selected modules, semantic owners and installed
+release without requiring the original build directory; its final release
+status remains pending.
 
-## Release status
-
-No new release is installed yet. Remaining work includes actual activation
-and independent fixture controls, a bounded Map source experiment, source
-freeze, inherited and new semantic gates, full 45-point runtime comparisons,
-compiler-cost and complexity accounting, documentation and portable release
-evidence. The final report will state rejected ideas and remaining gaps as
-well as gains.
+Final work is aggregate semantic binding, release closure, installation,
+ordinary/relocated CLI verification and portable smoke. The report will add their
+exact receipts and status after completion. No PR comment is authorized or posted.

@@ -1,0 +1,11 @@
+--- a/src/back/js/ir/worker-nat.bend
++++ b/src/back/js/ir/worker-nat.bend
+@@ -29,7 +29,7 @@
+     case JWPrimitive{name, args}: j_primitive_known(name) && jw_nat_values_valid(args)
+     case JWConstruct{layout, name, fields}: jw_nat_values_valid(fields)
+     case JWNative{name, args}:
+-      (jw_nat_native(name) || String.contains("|U32.cmp|Bool.xor|Bool.and|F32.to_u32|String.append|", "|" ++ name ++ "|")) && jw_nat_values_valid(args)
++      (jw_nat_native(name) || String.contains("|U32.cmp|Bool.xor|Bool.and|F32.to_u32|String.append|String.eq|", "|" ++ name ++ "|")) && jw_nat_values_valid(args)
+     case JWNumberOp{op, args}: False{}
+ 
+ @unsafe

@@ -2665,3 +2665,64 @@ support investigating those costs, without proving a specific optimization gain.
 The [evidence index](../selfhost/tools/performance/phase44/evidence/selected-release.json)
 and [accounting](../implementation/phase44/accounting.md) retain selected identities,
 failed attempts, validation scope and time use. No PR comment is posted.
+
+
+## Phase45 selected release — 2026-10-04
+
+Worker23 is installed, verified and pushed in `ab74ece`. The
+[report](../implementation/phase45/README.md),
+[full execution comparison](../implementation/phase45/results.md),
+[profiles](../implementation/phase45/diagnostics.md) and
+[portable benchmark guide](../selfhost/tools/performance/phase45/README.md)
+record the selected implementation and its separate qualification boundaries.
+
+General typed private calls, SCC partitioning, bounded native recursion with a
+continuation fallback, tail loops, named fields, native constructors and exact
+Number Nats reduce argument-vector and descriptor allocation. Typed root ranking
+preserves better existing plans. Whole-graph primitive fences, nullary ABI
+preservation, canonical Unit and inert exact-entry preflight complete the selected
+changes. The backend remains partially unified; this is a checked B1 derivative.
+
+All 45 runtime points / 23 sources / 669 fresh samples pass. Equal-point slowdown
+falls **6.0867× → 3.0787× TypeScript time**, a **1.9771× speedup**. Equal-source
+slowdown falls 8.2713× → 4.1467×; equal-family 8.4316× → 4.7340×. Thirty-two
+medians improve and 13 regress; the largest observed regression is 4.93%.
+Two points beat TypeScript. Records improve 41–43× and Map128 improves 15×.
+Profiles show sampled allocation reductions of 33.07× and 10.11× respectively.
+Neither this maintained corpus nor its geometric mean establishes universal
+program speed or parity.
+
+Fresh frontend agreement is exact on 3,026 main and 196 broader observations.
+All 81 backend observations agree: 69 execution passes, eight not applicable and
+four shared failures. Eight maintained suites, composition, seven freshly acquired
+mechanism families/twelve controls and focused nullary/Unit/host-hook checks pass.
+Release verification and all 42 ordinary/relocated CLI checks pass, followed by
+27 fresh portable smoke samples. Four existing main failures remain shared;
+a separate Number-Nat parse-diagnostic probe still fails strict comparison and
+receives no qualification credit. Historical owner campaigns are not relabeled.
+
+Tradeoffs remain explicit: source grows 1,194 physical Bend lines (5.47%) to
+23,007 lines, 2,594 definitions and 85 modules. All 36 compiler-cost requests pass,
+but request medians increase 8.62% local-pair, 28.55% lexer, 1.32% Map and 1.20%
+closures. Runtime allocation gains do not establish compiler-throughput gains.
+
+Rejected17b's 10.77× generic-row regression and stopped full campaign are retained.
+An exact SCC profitability rule fixes that selection error; a later acyclic
+readmission still regresses 5.15× and is rejected. Six post-import preflight hook
+differences were reproduced on22 and corrected in23. The separate inherited
+WeakSet.add observation is a static, unexecuted audit proposal. Failed fixtures,
+controllers and publication preflights remain preserved with their successors.
+
+The final [native equality study](../implementation/phase45/native-string-equality.md)
+retains24/25 as **unselected prototypes**. The one-line Number-Nat admission
+composition passes its expanded controls but adds no useful short-screen gain
+by itself. Combined23→25 confirmation improves Map/Set 1.378×, still 41.336×
+TypeScript with within-sample drift and 56.4% more generated JavaScript. Unrelated
+sampled modules remain byte-identical. This narrow result is not included in the
+selected45-point score, and neither prototype has full release qualification.
+
+Next work should address private function values/closures, typed Array and result
+boundaries, shared proof facts and shared private component emission. Preserve
+known public mutation boundaries, the five-canary rejection loop and all failed
+evidence. No PR comment is posted. Final raw writer closure and archive capture
+are recorded separately in the preservation index.

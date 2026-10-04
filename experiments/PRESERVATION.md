@@ -680,3 +680,34 @@ source snapshots and postinstall qualification. Archive SHA256
 and ledger are closed. [Portable replay](../selfhost/tools/performance/phase42/README.md)
 uses separate retained Phase41/TypeScript and current checked16 bundles.
 All 103 pre-existing unrelated files remain unchanged and unstaged.
+
+
+## Phase45 final campaign
+
+The [published evidence index](../selfhost/tools/performance/phase45/evidence/selected-release.json)
+and [restoration guide](../selfhost/tools/performance/phase45/evidence/README.md)
+preserve **55,014 raw files / 1,194,248,393 logical bytes**. The closed source
+inventory and all archive members were rehashed and verified. Capture took
+135.654 seconds, peaking at 183,271,424 process-tree bytes under a 1 GiB cap.
+
+The 173,957,843-byte gzip stream is published in five parts of at most 40 MiB.
+The [parts manifest](../selfhost/tools/performance/phase45/evidence/raw/parts.json)
+records each hash and verifies their concatenation against the original archive:
+`3ab22dcd35b5b1158f35d518c46914185a5df6affb7cb8b83ff253541df3c703`.
+The reconstructed unsplit archive is locally ignored; its original metadata is
+retained unchanged. Nothing was removed from the closed campaign to fit hosting.
+
+All checked images, failed fixtures/controllers, rejected 17b timing and retained
+portable identities, selection regressions, 25 experiment families, full selected23
+qualification and timings, 36 compiler requests, profiles, installation checks,
+314 ledger sequences and final accounting remain. Candidates24/25 are unselected
+prototypes; archival membership does not confer qualification or promotion.
+The failed strict Number-Nat diagnostic probe remains failed. All 103 unrelated
+starting files are unchanged and unstaged. No raw files or ledger events may be
+added after writer closure at 2026-10-04T19:41:12.717914+00:00.
+
+The [portable benchmark guide](../selfhost/tools/performance/phase45/README.md)
+uses separate frozen Phase44/TypeScript and selected23 bundles without restoring
+the full capsule. Old17b is retained with six original-path-plus-hash mappings;
+Phase44 and earlier evidence keep their original scope and remain prerequisites
+where their receipts are referenced.

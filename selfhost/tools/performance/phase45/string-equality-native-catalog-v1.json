@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Isolated unexecuted native String.eq proposal controls",
+  "cases": [
+    {
+      "id": "native-string-equal",
+      "family": "native-string-equality",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/string-equality-native-v1.bend",
+        "bytes": 852,
+        "sha256": "0b2b8d8fb178f3798eecd04bb27be69b1493cd232f917a332aadb297ecdda2b9",
+        "provenance": {
+          "kind": "phase45-independent-native-string-equality",
+          "scope": "Untimed source; compiler patch proposal not executed"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          false
+        ],
+        "expected": true
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Unicode/error cases in string-equality-native-controls-v1.mjs"
+    },
+    {
+      "id": "native-string-different",
+      "family": "native-string-equality",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/string-equality-native-v1.bend",
+        "bytes": 852,
+        "sha256": "0b2b8d8fb178f3798eecd04bb27be69b1493cd232f917a332aadb297ecdda2b9",
+        "provenance": {
+          "kind": "phase45-independent-native-string-equality",
+          "scope": "Untimed source; compiler patch proposal not executed"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          true
+        ],
+        "expected": false
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Unicode/error cases in string-equality-native-controls-v1.mjs"
+    },
+    {
+      "id": "native-string-scalar-equal",
+      "family": "native-string-equality",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/string-equality-native-v1.bend",
+        "bytes": 852,
+        "sha256": "0b2b8d8fb178f3798eecd04bb27be69b1493cd232f917a332aadb297ecdda2b9",
+        "provenance": {
+          "kind": "phase45-independent-native-string-equality",
+          "scope": "Untimed source; compiler patch proposal not executed"
+        }
+      },
+      "point": {
+        "exportName": "scalar",
+        "args": [
+          120
+        ],
+        "expected": true
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Unicode/error cases in string-equality-native-controls-v1.mjs"
+    },
+    {
+      "id": "native-string-scalar-different",
+      "family": "native-string-equality",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/string-equality-native-v1.bend",
+        "bytes": 852,
+        "sha256": "0b2b8d8fb178f3798eecd04bb27be69b1493cd232f917a332aadb297ecdda2b9",
+        "provenance": {
+          "kind": "phase45-independent-native-string-equality",
+          "scope": "Untimed source; compiler patch proposal not executed"
+        }
+      },
+      "point": {
+        "exportName": "scalar",
+        "args": [
+          121
+        ],
+        "expected": false
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Unicode/error cases in string-equality-native-controls-v1.mjs"
+    },
+    {
+      "id": "native-string-public-empty",
+      "family": "native-string-equality",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/string-equality-native-v1.bend",
+        "bytes": 852,
+        "sha256": "0b2b8d8fb178f3798eecd04bb27be69b1493cd232f917a332aadb297ecdda2b9",
+        "provenance": {
+          "kind": "phase45-independent-native-string-equality",
+          "scope": "Untimed source; compiler patch proposal not executed"
+        }
+      },
+      "point": {
+        "exportName": "public_eq",
+        "args": [
+          "",
+          ""
+        ],
+        "expected": true
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Unicode/error cases in string-equality-native-controls-v1.mjs"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "native-string-equal",
+      "native-string-different",
+      "native-string-scalar-equal",
+      "native-string-scalar-different",
+      "native-string-public-empty"
+    ],
+    "core": [
+      "native-string-equal",
+      "native-string-different",
+      "native-string-scalar-equal",
+      "native-string-scalar-different",
+      "native-string-public-empty"
+    ],
+    "broad": [
+      "native-string-equal",
+      "native-string-different",
+      "native-string-scalar-equal",
+      "native-string-scalar-different",
+      "native-string-public-empty"
+    ],
+    "full": [
+      "native-string-equal",
+      "native-string-different",
+      "native-string-scalar-equal",
+      "native-string-scalar-different",
+      "native-string-public-empty"
+    ]
+  }
+}

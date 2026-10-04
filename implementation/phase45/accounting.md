@@ -1,82 +1,101 @@
-# Phase45 time and resource accounting
+# Phase45 final time and resource accounting
 
-**Provisional through campaign sequence 223 and the two completed/stopped worker17b qualification reports. No selected release is claimed.** This update ends at **2026-10-04 17:38:13.910 UTC**. The observed campaign starts at **14:08:59.451 UTC**, giving **209.24 minutes (3h 29m 14s)** elapsed. Design commit `0339d08` was recorded at 14:13:16; its hash is not a time. Later worker21 work is outside this cutoff.
+The final measured target-work cutoff is **2026-10-04 19:32:05.733 UTC**, ledger sequence 314 (`job-candidate25-vs23-confirmation`). The campaign began at **14:08:59.451 UTC**: **323.10 minutes, or 5h23m6s**, of observed elapsed time. Design commit `0339d08` was recorded at 14:13:16; its hash is not a time. Subsequent archive/index publication and commit/push time are outside this measured cutoff.
 
-The 222 enclosing ledger job receipts total **62.16 minutes**. Two separately launched qualification batches add **7.69 minutes**, giving **69.85 minutes of measured enclosing wall time**. These are wall durations, not CPU time or agent reasoning time. The ledger cannot apportion the rest of the session among implementation, analysis, coordination, review, documentation, waiting or uninstrumented gaps.
+After nested-job deduplication, the ledger contains **294 enclosing jobs totaling 130.11 minutes**. Two unledgered historical runtime batches add 7.69 minutes and two measured data-only preflights add 0.36 minutes: **138.15 minutes (2h18m9s) of measured wall-duration sums**. This is not CPU time, exact merged occupancy or agent reasoning time. The receipts cannot apportion the rest of the session among implementation, analysis, review, coordination, writing, waiting or uninstrumented work; it must not be labeled idle time.
 
-## Measured ledger work
+Worker23 is the installed, qualified version. Its complete runtime, semantic and compiler-cost checks, 12 profiles, 42 CLI checks and 27 portable smoke samples passed. Workers24 and25 were measured as unselected prototypes; their work remains included in the accounting. Neither narrow screen was promoted into the selected 45-point performance aggregate.
 
-| Category | Enclosing jobs | Wall seconds | Wall minutes |
+## Enclosing ledger work
+
+| Category | Counted jobs | Wall seconds | Wall minutes |
 | --- | ---: | ---: | ---: |
-| Checked compiler builds | 25 | 1,115.08 | 18.58 |
-| Program and fixture acquisition | 69 | 1,356.88 | 22.61 |
-| Execution timing screens | 35 | 851.21 | 14.19 |
-| Focused semantic and boundary controls | 71 | 114.25 | 1.90 |
-| Eight-suite maintained gates | 14 | 210.98 | 3.52 |
-| CPU and allocation profiles | 5 | 80.31 | 1.34 |
-| Read-only artifact preparation | 3 | 0.99 | 0.02 |
-| **Ledger subtotal** | **222** | **3,729.70** | **62.16** |
+| Source and artifact preparation | 13 | 2.61 | 0.04 |
+| Checked compiler builds | 30 | 1,372.45 | 22.87 |
+| Program and fixture acquisition | 88 | 2,013.44 | 33.56 |
+| Execution timing screens | 46 | 1,163.58 | 19.39 |
+| Focused semantic and boundary controls | 81 | 135.70 | 2.26 |
+| Eight-suite maintained gates | 19 | 292.27 | 4.87 |
+| CPU and allocation profiles | 6 | 100.26 | 1.67 |
+| Selected-image mechanism qualification | 1 | 70.41 | 1.17 |
+| Selected-image full runtime | 3 | 1,144.19 | 19.07 |
+| Selected-image full semantics | 1 | 1,096.10 | 18.27 |
+| Selected-image compiler-cost preparation and run | 1 | 348.73 | 5.81 |
+| Selected-image qualification closure | 1 | 3.96 | 0.07 |
+| Installation, release and portable smoke | 4 | 62.93 | 1.05 |
+| **Deduplicated ledger total** | **294** | **7,806.63** | **130.11** |
 
-Every campaign event's command, start/finish, status and wall time agrees with its rehashed `phase43/job.py` receipt. Count each enclosing job once. Do not additionally sum its compiler bootstrap, supervisor, preparation children, suite subprocesses or execution samples.
+Every ledger event was checked against its rehashed enclosing receipt: command, start/finish, status and wall time must agree. The original ledger has 313 job events. `job-mechanisms23` at sequence 275 encloses 19 acquisition/control jobs at sequences 256–274. Count its 70.409s once and exclude their 67.817s from the sum. Their successful detailed receipts remain evidence, not extra elapsed work. A naive sum of all ledger rows would overcount by that 67.817s.
 
-The three read-only artifact derivations total 0.986s. Two briefly overlap acquisition, for 0.150s and 0.370s. No recorded target-job intervals overlap. Ledger-only merged occupancy is **62.16 minutes**; it differs slightly from monotonic wall sums because of timestamp/receipt overhead and those overlaps.
+Compiler builds and program/fixture acquisition together consume 56.43 minutes. The 30 builds include 28 successful builds averaging 48.68s and two early failures. The table places selected-image mechanism acquisitions inside their enclosing mechanism category, and cost preparation inside its enclosing cost category; those children are not silently added to the acquisition column.
 
-Builds plus program/fixture acquisition account for **41.20 minutes**, or **66.30%** of measured ledger target time. The 25 builds comprise 23 successful builds and two early failures. Their successful build mean is 48.08s. The full worker16/17b/18 source acquisitions take 155.79/162.48/160.38s; most focused boundary controls take about one or two seconds. Profiling totals only 1.34 minutes.
+## Full selected-image validation costs
 
-## Full-comparison cost outside the ledger
+| Stage | Enclosing measured seconds | Nested detail, already included |
+| --- | ---: | --- |
+| Final 45-point runtime | 1,144.187 | Three runner reports total 1,143.510s; 669 samples |
+| Full semantics | 1,096.102 | Frontend 781.293s, broader frontend 38.155s, backend 268.932s, plus composition/acquisition/overhead |
+| Compiler-cost preparation and run | 348.730 | Runner 309.599s, including 36 requests and their child processes |
+| Mechanism qualification | 70.409 | Nineteen ledger children total 67.817s |
+| Final CPU/allocation diagnostics | 19.948 | Inner 12-profile report 19.708s |
+| Installation/verification/CLI/portable smoke | 62.925 | Four enclosing jobs; 42 CLI checks and 27 portable samples |
 
-The worker17b runtime stage was launched directly from `final17-plan/02-runtime.sh`. Its enclosing report durations must be added separately:
+These stage values explain the serial validation cost; they are not additional totals to add to the ledger table. In particular, compiler-cost request time totals 95.298s and its child-process time 267.376s inside the 309.599s runner. The generated-program runtime comparison and compiler request comparison remain separate metrics.
 
-| Qualification batch | State | Retained sample entries | Enclosing seconds |
+Workers24 and25 add 15 and 12 ledger jobs totaling 197.074s and 190.703s respectively. Candidate25's final enclosing confirmation job is 49.625s; its internal 30-sample runtime report is 49.550s. The selected release remains23 because the narrow prototype improvements came with substantial code growth and lacked broad qualification, not because their successful work disappeared from the time accounting.
+
+## Work outside the ledger
+
+The rejected worker17b runtime stage was launched directly from `final17-plan/02-runtime.sh`:
+
+| Historical batch | State | Retained sample entries | Enclosing seconds |
 | --- | --- | ---: | ---: |
-| `qualification17b/runtime-0` | 15 points completed; values pass; major performance regression found | 219 | 377.136 |
-| `qualification17b/runtime-1` | Stopped by root after that regression; incomplete | 52 | 84.205 |
+| `qualification17b/runtime-0` | 15 points completed; values passed; major row regression found | 219 | 377.136 |
+| `qualification17b/runtime-1` | Deliberately stopped after that regression; incomplete | 52 | 84.205 |
 | `qualification17b/runtime-2` | Not launched | 0 | 0 |
-| **Additional measured wall** | | | **461.342** |
+| **Additional historical runtime wall** | | | **461.342** |
 
-The 271 sample processes consume 435.638s *inside* those batches; their time is not added again. Their timestamps do not overlap any ledger target interval. Together with ledger job intervals they establish at least **69.42 minutes** of timestamped occupancy; batch setup/report overhead has no separate enclosing absolute timestamps and is included only in the measured wall total. Therefore a precise full-session merged-occupancy percentage is not asserted.
+The 271 nested sample processes total 435.638s inside those batches and are not added again. Their timestamps do not overlap ledger target intervals. The stopped batch records `stoppedFor: "signal"` and returncode−9 in its final child; this was root's deliberate stop, not an OOM or failed language-value test. Partial samples are not pooled into a completed comparison.
 
-The stopped batch's final child records `stoppedFor: "signal"`, returncode −9, and a peak of 62,156,800 bytes. It was deliberately stopped following the regression, not reported as an OOM or failed language-value test. Its partial samples are never pooled into a completed benchmark. The generic-row regression was repaired by worker18; worker20's later 14.841s probe rejected reopening acyclic admission without another long run. See [selection evidence](../../experiments/phase45/P45-018-acyclic-root-profitability.md) and [the causal ablation](../../experiments/phase45/P45-020-acyclic-reentry-ablation.md).
+Two later CPU0 data-only preflights have separate duration receipts: publication validation 20.835s and index validation 0.472s. Their reports explicitly record no compiler or generated-program execution. They add **21.307s** to measured wall-duration sums, but have no absolute start/finish timestamps. Earlier failed publisher preflights and the first index-wrapper error are preserved without reliable measured durations; no seconds are invented for them.
 
-## Failed jobs and rejected ideas
+Ledger intervals plus the timestamped 17b sample processes establish at least **137.37 minutes of known occupancy**. This is a lower bound: the 17b setup/report overhead and data-only preflights lack enclosing absolute intervals. Wall-duration sums, known timestamped occupancy and the 323.10-minute elapsed campaign are different quantities. No exact full-session occupancy percentage or breakdown of the remaining elapsed gap is asserted.
 
-Eleven enclosing ledger jobs returned nonzero status, totaling **28.481s**. The separately stopped qualification batch above is additional work, not hidden in this total.
+## Failures, rejected proposals and concurrency
 
-| Nonzero-exit job | Wall seconds |
+Fourteen counted ledger jobs returned nonzero status, totaling **39.471s**:
+
+| Nonzero-exit job | Enclosing seconds |
 | --- | ---: |
-| `diagnose-worker02` | 0.059 |
-| `checked-worker04` | 4.112 |
-| `qualify-worker09` | 0.415 |
-| `number-nat-controls11` | 0.599 |
-| `runtime-worker10` | 2.649 |
-| `monomorphic-controls13` | 1.067 |
-| `record-controls16` | 0.583 |
-| `checked-worker17` | 5.216 |
-| `number-nat-refusal17b` | 6.596 |
-| `number-nat-refusal18` | 6.296 |
-| `primitive-positive-controls19` | 0.890 |
+| `job-diagnose-worker02` | 0.059 |
+| `job-checked-worker04` | 4.112 |
+| `job-qualify-worker09` | 0.415 |
+| `job-number-nat-controls11` | 0.599 |
+| `job-runtime-worker10` | 2.649 |
+| `job-monomorphic-controls13` | 1.067 |
+| `job-record-controls16` | 0.583 |
+| `job-checked-worker17` | 5.216 |
+| `job-number-nat-refusal17b` | 6.596 |
+| `job-number-nat-refusal18` | 6.296 |
+| `job-primitive-positive-controls19` | 0.890 |
+| `job-nullary21-baseline` | 3.606 |
+| `job-exact-entry-hooks22` | 0.985 |
+| `job-number-nat-refusal23` | 6.399 |
 
-These include source acquisition errors, manifest/control mismatches and behavioral failures. Worker04 hit a source-match restriction; the isolated worker10 predecessor omitted the shared budget declaration; the first alias-admission control exposed a matcher-prefix ABI mismatch; worker17 needed a local constructor annotation. Primitive-positive v1 selected a different preexisting backend and correctly failed its activation assertion; the new v2 source later passed 40 observations. The Nat-refusal jobs have nonzero statuses and are not relabeled as passed here; their diagnosis belongs to the semantic qualification report.
+These include source/harness failures and real semantic findings. Examples include the missing shared recursion-budget declaration in the first 10 isolation, the public matcher-prefix bug in13, a required constructor annotation in17, and the six reproduced host-hook differences in22. The nullary fixture's first acquisition needed a Nat annotation. The separate large-Nat rejection probes returned nonzero because strict diagnostic text differed; expected rejection is not relabeled successful exact conformance.
 
-Nonzero exits are **not the entire cost of rejected ideas**. Successful builds/acquisition/timings for later-rejected nullary, primitive-guard or acyclic-entry proposals stay in their ordinary categories. A completed timing probe can correctly reject an optimization. Prepared but unexecuted fixture files contribute no measured target time.
+Nonzero-exit time is not the cost of every rejected idea. Successful builds, acquisitions, profiles and timings for proposals subsequently rejected stay in their normal categories. Prepared but unexecuted fixtures have no target execution time. The intentionally stopped 17b batch and unmetered publication failures are separate from the 14-job failure sum.
 
-## Concurrency and resources
+Nine agent slots were available, including root. Independent IR, lowering, representation, review, control-fixture, capability, documentation and publication tasks overlapped root-owned heavy execution. No per-agent active-time, token-cost or reasoning ledger exists, so none is estimated and nine slots are not presented as nine continuously busy agents.
 
-Nine agent slots were available, including root. Actual parallel task roles included IR/model work, worker lowering/emission, analysis and representation, independent review, fixture/controller validation, and primitive-capability investigation. This is not a claim that all nine slots were occupied continuously. No per-agent active-time, token-cost or reasoning ledger is available, so none is estimated.
+After removing nested mechanism children, the only ledger interval overlaps are the previously recorded source/artifact derivations with acquisition: 0.150s and 0.370s. No ledger target-job intervals overlap. **Root also documented CPU0 publisher work overlapping candidate24's first focused timing screen.** No reliable absolute interval/duration receipt establishes that overlap's length. That screen is retained as exploratory; a later clean repeat supplies the candidate24 comparison. Different CPU affinity does not make overlapping publication work a controlled benchmark. The overlap is disclosed without inventing elapsed time or pooling the exploratory run into selected23 metrics.
 
-Agents overlapped source work, analysis, documentation and static review with root-owned target execution. Builds, profiles, benchmarks and heavy validation stayed serialized. Extra agents can shorten independent development and review; they do not divide this serial validation path by their count.
+## Resources, evidence and lessons
 
-Policy was CPU3, Node24.18.0, 1,024MiB Node heap, 2,048MiB process-tree RSS cap and 2,048MiB available-memory floor. The largest observed supervised peak remains **1,449,525,248 bytes** (**1,382.375MiB; 1.45GB**), from `run-checked-worker13b/run.json`. Tree RSS can double-count shared pages; it is not exact private heap. No recorded failure here was attributed to the RSS limit.
+Policy was CPU 3 for target jobs, Node 24.18.0, 1024MiB Node heap, 2048MiB process-tree RSS cap and 2048MiB available-memory floor. The largest observed supervised peak remains **1,449,525,248 bytes (1,382.375MiB; 1.45GB)** at `run-checked-worker13b/run.json`. Resource receipts from 294 raw files were inspected without adding their nested durations. Tree RSS can double-count shared pages and is not exact private heap. No recorded failure in this campaign was attributed to the RSS limit.
 
-## Evidence and remaining qualification
+The frozen data-only producer is `selfhost/build/phase45/accounting-final01.py`, SHA-256 `6fbdaa0be9a53e5243be61eeae2ca1ea026b4224329b8d3afb16642df06b3eeb`. It was preserved before being run on CPU0 and executes no compiler or generated programs. The final data receipt is `selfhost/build/phase45/accounting-final01.json`, SHA-256 `6bc2119e857f65141d24e78185c24a51dd38a9e79d96d9d3659ebe73831ede31`. It binds the full 314-row ledger, 294 resource input identities, excluded nested jobs, additional duration receipts, failures and overlap scope. The ledger is 430,846 bytes, SHA-256 `422e75da832431401b0c8e09bf2d51a8bf4baaaa8a368483324938b777d74e3c`.
 
-The updated ledger prefix is 308,194 bytes through sequence 223, SHA-256 `624eac6b175ab0a401a93f6b597b93714b3702dbf3a52ec0c92f17a2447aa2e3`. Its raw path is `selfhost/build/phase45/campaign.jsonl`; later appends are outside this cutoff. Completed/stopped runtime report hashes are:
+The earlier `accounting-provisional01.json` remains unchanged and describes its earlier cutoff only. Raw paths are preserved evidence, not links to ignored GitHub files. Final archival/index/commit work follows this target-work cutoff and receives no guessed duration here.
 
-- Batch0: `6b4e5b529c63cafaf1105f4f6a71398a645f9f6defcff4082d266438f65aa814`.
-- Batch1: `1b58f36c73af3b30bbcb876acb39bdfa2ad9db18fe2084afd0e7d2de8e9b5eaf`.
-
-The earlier data-only `selfhost/build/phase45/accounting-provisional01.json` remains unchanged. It describes only the earlier sequence 193 cutoff, 49.71 minutes of ledger jobs, and then-pending final batches. It is historical accounting, not the latest total. All raw paths will be preserved in the final evidence archive; they are not GitHub links to ignored files.
-
-Full frontend, broader frontend, backend, final mixed-feature composition, compiler-cost comparison and a completed fresh 45-point runtime comparison still require the eventual selected image. Reusing an existing same-image maintained-suite receipt must not count its gate twice. A future stage is accounted either by its enclosing job or by disjoint child reports, never both.
-
-The largest measured efficiency opportunity is exact artifact reuse and smaller first acquisition screens. Run all maintained fast canaries before broader feature screens: omitting the generic row allowed its regression to reach the expensive long run. Full representative validation remains necessary, but successful fast falsifiers should stop bad candidates before it.
+The largest measured opportunities for a shorter future campaign are reducing repeated acquisition/build work through exact artifact reuse, running every fast canary before feature-focused screens, and reserving full semantic/representative qualification for a concrete survivor. The generic-row regression demonstrates why a broad cheap falsifier saves time. Parallel agents shorten independent implementation/review; they do not divide the serial final validation path by their count.

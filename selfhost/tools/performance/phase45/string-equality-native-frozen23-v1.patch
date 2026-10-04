@@ -1,0 +1,37 @@
+--- a/src/back/js/jpure.bend
++++ b/src/back/js/jpure.bend
+@@ -1457,22 +1457,23 @@
+       kc(Bool, String.eq(dn(d), "Nat.is_lt"), u => j_primitive_type(book, wnf(book, kid(rest, 1)), "Bool"), u =>
+       String.eq(dn(d), "Nat.divmod") && j_map_native_divmod_result(book, wnf(book, kid(rest, 1))))))
+ 
+-# Residual String.append keeps runtime fn/call ABI and native snapshot guards.
++# Residual String natives keep runtime fn/call ABI and native snapshot guards.
+ @unsafe
+ def j_map_native_string(+book: List<&2,KDef>, +d: KDef) -> Bool:
+-  kc(Bool, String.eq(dn(d), "String.append") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) &&
++  kc(Bool, (String.eq(dn(d), "String.append") || String.eq(dn(d), "String.eq")) && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) &&
+     Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")),
+-    u => j_map_native_string_signature(book, wnf(book, dt(d))), u => False{})
+-
+-@unsafe
+-def j_map_native_string_signature(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
++    u => j_map_native_string_signature(book, wnf(book, dt(d)), String.eq(dn(d), "String.eq")), u => False{})
++
++@unsafe
++def j_map_native_string_signature(+book: List<&2,KDef>, +ty: KTerm, +equality: Bool) -> Bool:
+   kc(Bool, String.eq(tg(ty), "All") && U32.is_eq(qt(ty), 1) && j_string_string(book, wnf(book, kid(ty, 0))),
+-    u => j_map_native_string_result(book, wnf(book, kid(ty, 1))), u => False{})
+-
+-@unsafe
+-def j_map_native_string_result(+book: List<&2,KDef>, +rest: KTerm) -> Bool:
++    u => j_map_native_string_result(book, wnf(book, kid(ty, 1)), equality), u => False{})
++
++@unsafe
++def j_map_native_string_result(+book: List<&2,KDef>, +rest: KTerm, +equality: Bool) -> Bool:
+   String.eq(tg(rest), "All") && U32.is_eq(qt(rest), 1) &&
+-    j_string_string(book, wnf(book, kid(rest, 0))) && j_string_string(book, wnf(book, kid(rest, 1)))
++    j_string_string(book, wnf(book, kid(rest, 0))) &&
++    kc(Bool, equality, u => j_primitive_type(book, wnf(book, kid(rest, 1)), "Bool"), u => j_string_string(book, wnf(book, kid(rest, 1))))
+ 
+ @unsafe
+ def j_map_native_divmod_result(+book: List<&2,KDef>, +ty: KTerm) -> Bool:

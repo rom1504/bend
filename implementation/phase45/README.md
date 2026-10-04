@@ -1,6 +1,6 @@
 # Phase45: private execution graphs and composable backend selection
 
-**Phase45 worker23 is installed; final selected qualification, release verification and all 42 CLI checks pass.** The exact-image closure verifies 8,755 assertions and 3,203 input identities across frontend/backend agreement, eight maintained suites, independent composition controls, all 669 execution samples and 36 compiler requests. Fresh nullary-demand/metadata, Unit/Map and six post-import host-hook controls also pass. Portable publication and closed evidence archival remain pending. This report consolidates the [design](../../design/phase45/README.md), experiments, qualified results and installed-image status.
+**Phase45 worker23 is installed; final selected qualification, release verification and all 42 CLI checks pass.** The exact-image closure verifies 8,755 assertions and 3,203 input identities across frontend/backend agreement, eight maintained suites, independent composition controls, all 669 execution samples and 36 compiler requests. Fresh nullary-demand/metadata, Unit/Map and six post-import host-hook controls also pass. The selected portable bundle and 14 curated evidence receipts are published; the closed raw archive is verified and published in five bounded parts. This report consolidates the [design](../../design/phase45/README.md), experiments, qualified results and installed-image status.
 
 The complete runtime comparison shows **about 2× overall improvement, with TypeScript parity still unmet**. Fresh equal-point time falls from 6.0867× TypeScript for Phase44 to 3.0787× for worker23; equal-source time falls from 8.2713× to 4.1467×. Map128 improves 15.04× to 1.538× TypeScript, records256 improves 41.47× to 1.605×, active ray256 improves 13.89× to 1.843×, and lexer improves 4.85× to 1.472×. Smaller or generic paths remain much slower. All 45 medians and a logarithmic before/after diagram are in [the complete execution report](results.md).
 
@@ -336,7 +336,8 @@ from Phase44, including the frontend. The selected23 standard frontend/backend
 inventory now passes exact agreement; this additional out-of-inventory probe
 still records two diagnostic mismatches and receives no passing credit.
 Normal installation, release verification and all 42 CLI checks now pass on
-worker23. Evidence publication and raw archive closure remain separate.
+worker23. Curated evidence and the selected portable bundle are published; raw archive
+closure is complete and separately preserves the selected and rejected scopes.
 
 Several failures changed the implementation or harness and remain visible:
 
@@ -344,7 +345,11 @@ Several failures changed the implementation or harness and remain visible:
   a direct candidate-manifest input. Diagnostics correctly consumed a completed
   runtime report through `--from-run`. The failed preflight wrote no publication
   products. Its successor verifies the full diagnostic → timed module → checked
-  acquisition/attempt chain; the original script and failure identities remain.
+  acquisition/attempt chain. A second preflight found catalog-relative source
+  paths being resolved at repository root. V3 binds each source to its verified
+  catalog and emission receipts to their report directory. Its complete read-only
+  preflight passed 3,620 input checks before the successful 14-copy publication;
+  both failed scripts and their exact input identities remain preserved.
 - Candidate13 returned a function descriptor instead of a scalar after a real
   helper getter mutation. Its public wrapper used declared arity across a matcher
   boundary. 13b requires exactly that many consecutive leading lambdas; partial
@@ -388,7 +393,9 @@ Several failures changed the implementation or harness and remain visible:
 | [020 acyclic readmission](../../experiments/phase45/P45-020-acyclic-reentry-ablation.md) | Rejected: generic row 5.1548× slower than 19 despite the smaller primitive fence; independent renamed fixture prepared but unexecuted |
 | [021 nullary ABI](../../experiments/phase45/P45-021-nullary-abi.md) | Retained after demand/metadata controls and eleven-point screen;23 subsequently repairs newly exposed preflight hook observations |
 | [022 canonical Unit](../../experiments/phase45/P45-022-canonical-unit.md) | Retained coverage extension after independent activation/value/public-boundary controls; existing corpus files unchanged, no timing gain attributed |
-| [023 exact-entry preflight](../../experiments/phase45/P45-023-exact-entry-preflight.md) | Six supported post-import hook differences reproduced on22 and repaired; fresh23 nullary/Unit/hook controls pass, full qualification pending |
+| [023 exact-entry preflight](../../experiments/phase45/P45-023-exact-entry-preflight.md) | Six supported post-import hook differences reproduced on22 and repaired; fresh23 nullary/Unit/hook controls and full selected qualification pass |
+| [024 native String equality](../../experiments/phase45/P45-024-native-string-equality.md) | Unselected prototype: independent controls and unchanged-module checks pass; short Map/Set benefit has substantial drift and emitted code grows 56.5% |
+| [025 equality with Number Nat](../../experiments/phase45/P45-025-string-equality-number-nat.md) | Unselected prototype: representation passes compose correctly; no useful isolated short-screen gain. Combined23→25 longer Map/Set comparison improves 1.378×, still 41.336× TypeScript, with 56.4% more emitted code and remaining drift |
 
 The pre-import guard counterexample remains valid for that broader domain. The
 later audit established that standard host intrinsics at module initialization
@@ -485,7 +492,7 @@ Historical screens, rejected/stopped attempts, checked module identities and
 per-job commands remain under `selfhost/build/phase45`, indexed by
 `campaign.jsonl`. The completed 17b first long batch and deliberately interrupted
 second batch remain separate from all successful complete comparisons. Earlier
-raw campaigns stay closed; final archive closure is pending.
+raw campaigns stay closed. The [final evidence index](../../selfhost/tools/performance/phase45/evidence/selected-release.json) binds all 55,014 archived files, exact release identities and protected-input checks.
 
 | Final release result | Status |
 | --- | --- |
@@ -496,12 +503,17 @@ raw campaigns stay closed; final archive closure is pending.
 | Controlled compiler-request comparison | PASS: all 36 expected bytes; request medians regress 1.20–28.55%, detailed per-source cost reported separately |
 | Final source/module/line counts | Complete: exact frozen23 joins; 23,007 physical / 18,983 code lines, 2,594 definitions, 87 types, 85 modules |
 | Installation and CLI release validation | PASS: normal install, release verification and all 42 ordinary/relocated smoke checks |
-| Portable publication and closed evidence archive | Pending final publication and root-owned writer/archive closure |
+| Portable publication and curated evidence | PASS: selected23 portable exchange, 14 exact report copies, six retained17b path/hash identities |
+| Closed raw evidence archive | PASS: 55,014 files, 1,194,248,393 logical bytes; 173,957,843 compressed bytes in five verified parts; all 103 protected files unchanged/unstaged |
 
 Run the maintained fast-five canaries before feature-focused and full screens.
 Keep the major private-graph gains and the recovered stronger existing plans.
 Use new profiles to choose between remaining private allocation/frame traffic,
 function-valued calls, supported data boundaries and entry cost. The selected Unit/Map and nullary coverage must remain bound to complete23
 qualification; reopening acyclic public entry without new evidence would repeat
-the rejected20 experiment. Any candidate24 experiment remains separate and
-unexecuted at this checkpoint; it contributes no worker23 release evidence.
+the rejected20 experiment. The [final native-equality study](native-string-equality.md)
+retains candidates24/25 as uninstalled prototypes. Their local benefit is separate
+from the selected45-point score; neither has full qualification or a controlled
+compiler-cost comparison. Shared proof facts and shared private component
+emission are the next architectural candidates for reducing repeated analysis and
+code growth while extending coverage.

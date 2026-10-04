@@ -64,14 +64,19 @@ Worker23 API is e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c
 runtime is 4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26.
 Worker22 shares the API but not the runtime: require both identities and the
 exact checked attempt. Rejected 17b is retained separately, including its stopped
-long run and original portable bundle. Current raw Phase45 writers remain open
-until the isolated 24 experiment and final evidence capture finish.
+long run and original portable bundle. The raw campaign is closed: all 55,014 files are preserved in a verified
+173,957,843-byte capsule published as five parts. All 103 protected files remain
+unchanged and unstaged. Both native String.eq experiments remain uninstalled;
+they do not change the selected runtime result.
 
 ## Next investigations
 
-1. Finish the isolated [native String.eq probe](phase45/P45-024-native-string-equality.md)
-   on renamed correctness controls and five mandatory canaries before its focused
-   Map/Set–Unicode screen. It is not installed and has no release credit.
+1. Retain the [native String.eq experiments](phase45/P45-025-string-equality-number-nat.md)
+   as unselected prototypes. Admission plus Number-Nat compatibility improves
+   Map/Set 1.378× in a five-round comparison, with remaining drift and 56.4%
+   more emitted JavaScript. Number-Nat alone has no useful short-screen gain.
+   Revisit shared private components and proof facts before promoting this
+   narrow benefit through another complete qualification campaign.
 2. Extend shared call-target and escape facts for private function values and
    closures. Morning and other higher-order graphs remain important gaps. Keep
    mutable public descriptors and public results as explicit boundaries.

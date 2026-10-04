@@ -13,58 +13,38 @@ That's Bend - and nothing else.
 ## Compiler written in Bend
 
 This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
-`selfhost/bootstrap`. Start with the [compiler guide](docs/BEND-IN-BEND.md).
-The [Phase43 release report](implementation/phase43/README.md) and
-[complete-operation architecture](docs/PHASE43_DIRECT_EXECUTION.md) document the
-latest generated-program changes. Ordinary compilation runs the Bend
-implementation without a TypeScript fallback; the target remains pinned to
-**0187512, after Bend 2.0.34**.
+`selfhost/bootstrap`. Ordinary compilation runs the Bend implementation without a
+TypeScript fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-**[Phase43 checked14 is installed](implementation/phase43/README.md).**
-Release verification, all 42 ordinary/relocated CLI checks, the 15-group postinstall
-audit and 227 canonical source bindings pass. The selected 34 mechanism owners and
-41-group composite postinstall closure pass. The
-[release manifest](selfhost/dist/release.json) identifies the installed API.
-[Phase42 checked16](implementation/phase42/README.md) is the retained baseline.
-The [portable current bundle](selfhost/tools/performance/phase43/current/manifest.json)
-is complete: all 45 points were frozen and reopened byte-exact. Portable smoke replays and
-evidence archive closure pass. This remains a checked B1 derivative,
-not a new self-emitted fixed point.
+**Phase44 checked04 is installed; release verification and all 42 CLI checks pass.** The
+[phase report](implementation/phase44/README.md) records the compiler, qualification
+and measured tradeoffs; the [release manifest](selfhost/dist/release.json)
+identifies the installed artifact. This remains a checked B1 derivative.
 
-The release's [final 45-point results](implementation/phase43/results.md) contain
-669 fresh role samples over 23 sources. Against a fresh Phase42 baseline, the
-point-weighted geometric slowdown falls from **8.875959× to 6.161075× TypeScript**,
-a **1.44065× execution gain**. Release medians improve on 25 points and regress
-on 20; two beat TypeScript. This is a maintained regression corpus, including
-workloads used during optimization, not universal parity or untouched holdout
-validation. Lexer, Map, closures and BST improve while substantial gaps remain.
+The [JavaScript IR guide](selfhost/docs/JAVASCRIPT_IR.md) explains the new modular
+lowering, lexical facts, general simplifications and expression/statement emission.
+Fifteen obsolete helpers were removed. Private layouts and guarded call plans
+retain explicit compatibility boundaries. The same transformations apply by
+operation and scope across programs; they contain no benchmark-name selectors.
 
-The selected compiler proves complete operation graphs, emits lexical contextual Map
-calls, fuses eligible callback construction/application, and reduces private pair
-state temporaries. Public identity, host mutation, aliases and generic fallback
-remain guarded. The maintained source graph grows by 1,384 lines and 164 definitions
-to **21,440 lines, 2,413 definitions and 70 modules**. Normal checked-library
-requests cost about 21.1% more for tree and 14.0% more for list. Separate full-source
-acquisition shows Map compilation rising 4.105× (2.302s→9.450s), its emitted module
-growing 2.216×, and lexer compilation costing 1.715×. No compiler-throughput
-improvement is claimed. The [report](implementation/phase43/README.md) separates
-runtime gains, compiler cost, source growth and qualification.
+See the [execution results](implementation/phase44/results.md),
+[compiler request costs](implementation/phase44/compiler-cost.md) and
+[conformance record](selfhost/CONFORMANCE.md) for their separate measured scopes.
+The maintained execution corpus has 45 points across 23 sources. It does not
+establish universal or typical-program performance. The known-call dispatch
+prototype showed no broad benefit and was rejected for production.
 
-The [portable Phase43 guide](selfhost/tools/performance/phase43/README.md) provides
-20/60/300-second selections, three serial 600-second full-corpus batches and
-separate profiles against retained Phase42 and pinned TypeScript. Historical
-[Phase42](implementation/phase42/README.md) and
-[Phase40](implementation/phase40/README.md) retain their original releases,
-baselines, protocols and limits.
+The [portable benchmark guide](selfhost/tools/performance/phase44/README.md)
+provides 20/60/300-second selections and three serial 600-second full-corpus
+batches, comparing Phase44 with Phase43 and pinned TypeScript. Historical
+[Phase43](implementation/phase43/README.md) and earlier reports retain their
+original baselines and qualification scopes.
 
 From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
-`npm run build` rebuilds with pinned upstream. The
+Use the [compiler guide](docs/BEND-IN-BEND.md),
 [checked workflow](docs/PHASE5_DEVELOPMENT.md),
 [performance guide](docs/BEND-IN-BEND-PERFORMANCE.md),
-[experiment ledger](experiments/ledger.md) and
-[current strategy](experiments/STEERING.md) explain the workflow.
-[Phase39](implementation/phase39/README.md) and earlier results retain their
-original baselines and scopes.
+[experiment ledger](experiments/ledger.md) and [current strategy](experiments/STEERING.md).
 
 ## Bend runs FAST
 

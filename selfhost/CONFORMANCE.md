@@ -1,8 +1,40 @@
 # Compiler validation
 
-## Phase43 installed checked14 validation
+## Phase44 installed checked04 validation
 
-**Phase43 checked14 is installed and verified.** All 42 ordinary/relocated CLI
+**Phase44 checked04 is installed; release verification and all 42 CLI checks pass.** Its API SHA256 is
+`0d3325425139c59ac81c4f1bca19fa09e9f977062aa3b202c0ef1c8c7b56b0ea`.
+The upstream pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+This is a checked B1 derivative, not a new self-emitted fixed point.
+
+Fresh candidate observations agree exactly on 3,026 main and 196 broader frontend
+inputs, with zero result or extra-field differences. Main outcomes remain
+2,525 pass / 497 observed / four shared failures; broader remains 195 pass / one
+observed. Backend qualification agrees on all 81 retained observations: 69
+execution passes, eight unavailable or not-applicable cases and four shared check
+failures. Only verified pinned TypeScript reference observations are reused.
+Agreement does not convert shared failures into passes.
+
+All eight maintained suites pass: IR contracts, basic emission, global
+initializers, choices, matcher arms, primitive guards, constructor provenance and
+foreign boundaries. These include 37 IR controls with transformation activation,
+1,129 primitive admission assertions, 25 primitive order/ABI observations and ten
+user constructors with primitive names. A freshly compiled independent composition
+fixture passes 35 scalar oracles, four mixed-feature points, eleven public boundary
+observations and 26 higher-order observations. These scopes overlap and are not
+summed into a unique-test total.
+
+The [Phase44 report](../implementation/phase44/README.md) records exact selected
+artifacts, source changes, experiment failures and remaining compatibility nodes.
+Phase43's 34-owner and composite postinstall campaigns below are historical
+qualification; they are not relabeled as freshly run Phase44 gates. Generated
+program timing and compiler cost remain separate from conformance. Full backend/
+GPU execution, universal host equivalence and independent proof validity remain
+unestablished; `--verdict` is unsupported.
+
+## Historical Phase43 installed checked14 validation
+
+**Phase43 checked14 was installed and verified.** All 42 ordinary/relocated CLI
 checks, 15 postinstallation integration gates and 227 canonical source bindings
 pass. The selected API SHA256 is
 `222902e565253ae20c628301a9191c6d71e47b211f1dc463da4e8eb1b51c86eb`;

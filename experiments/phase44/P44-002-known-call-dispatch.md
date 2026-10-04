@@ -25,7 +25,7 @@ Phase43: the equal-point geometric execution gain was **0.98978×**, over 54 fre
 samples in 46.15 seconds. Individual baseline/candidate ratios were lexer 0.9910,
 Map128 1.0016, BST64 1.0004, list512 0.9912, records256 0.9995 and closures256
 0.9558. This short screen supports no speedup claim. Its
-[raw report](../../selfhost/build/phase44/runtime-screen04/report.json) motivates
+raw report (`selfhost/build/phase44/runtime-screen04/report.json`) motivates
 testing the remaining dispatch cost rather than assuming local IR simplification
 will close the gap.
 
@@ -75,7 +75,7 @@ limitation, not permission to silently change the production ABI. Matchers and
 ## Controlled setup and decision
 
 The parent is the checked04
-[full preparation manifest](../../selfhost/build/phase44/full-preparation04/manifest.json),
+full preparation manifest (`selfhost/build/phase44/full-preparation04/manifest.json`),
 covering the maintained 45 points. The tool verifies every consumed module hash
 and records parent/output identities, selected functions, rewritten sites and
 refusals. It neither compiles Bend nor executes target programs.
@@ -114,3 +114,29 @@ Preserve this pre-execution design, the exact consumed tool, input manifest,
 derivation receipt, all outputs and all timing attempts. Record outcomes in the
 Phase44 implementation report and ledger; leave the original checked04 modules
 and earlier negative or neutral results unchanged.
+
+## Outcome — reject production promotion
+
+The completed derivation (`selfhost/build/phase44/known-call-derive04/derive.json`)
+covered all 45 points, producing 24 module artifacts and rewriting **1,465 static
+call sites**. This establishes static coverage of the rewrite, not how many hot
+calls executed or used its captured-code branch. The
+prototype manifest (`selfhost/build/phase44/known-call-prototype04/manifest.json`)
+remains explicitly unchecked.
+
+The fresh six-point screen (`selfhost/build/phase44/known-call-screen04/report.json`)
+completed all **54 samples in 46.167 seconds**, using unchanged checked04 output
+as its baseline and unchanged pinned TypeScript output as the third role. The
+equal-point geometric ratio **checked04 time / prototype time was 0.991918×**:
+effectively flat, with a small aggregate slowdown in this screen. Per-point
+ratios were lexer **0.9719×**, Map128 **0.9601×**, BST64 **0.9916×**, list512
+**0.9972×**, records256 **0.9528×**, and closures256 **1.0834×**.
+
+**Decision:** stop this prototype and do not promote it into the compiler. The
+single closure improvement does not establish the required broad benefit; no
+additional qualification campaign is justified. The result does not prove that
+general devirtualization cannot help. It fails to support this specific
+invocation-site intervention, which still retains generic dispatch. Additional
+helper dispatch may offset any specialization benefit, but that is an inference,
+not a measured attribution. The [implementation report](../../implementation/phase44/known-call-dispatch.md)
+records the comparison scope and exact receipts.

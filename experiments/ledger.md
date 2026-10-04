@@ -2634,3 +2634,34 @@ remain subsequent investigations. Preserve the 103 unrelated files and Phase42
 evidence; no PR comment is posted. Current [steering](STEERING.md) records installation,
 the verified portable bundle and remaining smoke/evidence closure. The [raw installed composite](../selfhost/build/phase43/integration01/composite-postinstall/report.json)
 binds the successful selected-image closure.
+
+
+## Phase44 final release outcome — 2026-10-04
+
+Checked04 is installed and verified; all 42 ordinary/relocated CLI checks pass.
+The [report](../implementation/phase44/README.md) records the typed ordinary runtime
+IR and its separate lowering, lexical facts, transformations and emission modules.
+Fifteen old helpers are removed. The migration remains partial at private layouts
+and source-dependent guarded call plans. Source grows 373 lines to 21,813 lines,
+2,452 definitions and 78 modules.
+
+Fresh frontend agreement is exact on 3,026 main and 196 broader observations.
+All 81 backend observations agree (69 execution passes, eight not applicable,
+four shared failures); eight maintained suites and independent composition
+controls pass. Shared failures remain failures; historical Phase43 owner and
+composite postinstall campaigns are not rebranded as Phase44 gates.
+
+All 45 execution points / 669 samples pass. The [full result](../implementation/phase44/results.md)
+is effectively flat: 6.1214× → 6.0832× TypeScript time against freshly sampled
+Phase43. Twenty medians improve and 25 regress. Map compiler requests improve
+15.61%; three other probes regress 2.81–3.57%. The saved-JavaScript known-call
+helper prototype is rejected after its six-point screen shows no broad gain.
+[P44-001](phase44/P44-001-composable-ir.md) and
+[P44-002](phase44/P44-002-known-call-dispatch.md) preserve both outcomes.
+
+Next work should migrate call/value representations into the IR and establish
+shared legality facts for allocation and dispatch removal. [Profiles](../implementation/phase44/diagnostics.md)
+support investigating those costs, without proving a specific optimization gain.
+The [evidence index](../selfhost/tools/performance/phase44/evidence/selected-release.json)
+and [accounting](../implementation/phase44/accounting.md) retain selected identities,
+failed attempts, validation scope and time use. No PR comment is posted.

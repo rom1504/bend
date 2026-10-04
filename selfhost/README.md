@@ -1,33 +1,30 @@
 # Bend2 compiler port in Bend2
 
-Use the [compiler guide](../docs/BEND-IN-BEND.md) and the
-[Phase43 release report](../implementation/phase43/README.md).
-**[Phase43 checked14 is installed](../implementation/phase43/README.md).**
-Release verification, all 42 ordinary/relocated CLI checks, the 15-group postinstall
-audit and 227 canonical source bindings pass. All 34 selected mechanism owners and
-the 41-group composite postinstall closure pass. The [release manifest](dist/release.json)
-identifies API `222902e565253ae20c628301a9191c6d71e47b211f1dc463da4e8eb1b51c86eb`.
-Phase42 checked16 is the retained comparison baseline. The
-[portable current bundle](tools/performance/phase43/current/manifest.json) is complete:
-all 45 points were frozen and reopened byte-exact. Portable smoke replays and evidence
-archive closure pass.
+Use the [compiler guide](../docs/BEND-IN-BEND.md),
+[Phase44 report](../implementation/phase44/README.md) and
+[JavaScript IR architecture](docs/JAVASCRIPT_IR.md).
+**Phase44 checked04 is installed; release verification and all 42 CLI checks pass.** The
+[release manifest](dist/release.json) identifies the installed artifact.
 
-The release's [final results](../implementation/phase43/results.md) pass all
-45 points and 669 fresh role samples over 23 sources. The point-weighted geometric
-slowdown falls from 8.875959× to 6.161075× pinned TypeScript time, a 1.44065× gain
-over a fresh Phase42 baseline. Medians improve on 25 points and regress on 20;
-two beat TypeScript. This maintained regression corpus informed optimization;
-it does not establish universal parity or independent untouched holdout coverage.
+The selected compiler introduces a runtime IR with separate lowering, lexical
+facts, general transformations and emission. Its ordinary code uses copy
+propagation, exact identity-binding elimination, literal U32 folding and lexical
+statement emission. Fifteen replaced helpers were removed; private layouts and
+source-dependent guarded call selection remain explicit migration boundaries.
 
-The maintained compiler graph grows by 1,384 lines and 164 definitions to
-21,440 lines, 2,413 definitions and 70 modules. Normal checked-library request
-medians increase about 21.1% for tree, 14.0% for list and 8.7% for local-pair;
-numeric changes about 0.8%. Separate full-source acquisition shows Map compilation
-rising 4.105× (2.302s→9.450s), its module growing 2.216×, and lexer compilation
-costing 1.715×. These request/acquisition measures do not establish universal
-compiler throughput or isolate emission cost. The
-[report](../implementation/phase43/README.md) retains source and compiler-cost
-tradeoffs alongside generated execution gains.
+Fresh qualification agrees on 3,026 main and 196 broader frontend observations
+and all 81 retained backend observations. Eight maintained semantic suites and
+independent feature-composition controls pass. The
+[conformance record](CONFORMANCE.md) retains the shared failures and scope limits.
+The source graph contains 21,813 physical Bend lines, 2,452 definitions and
+78 modules, a net increase of 373 lines for this architectural change.
+
+The [full execution results](../implementation/phase44/results.md) and
+[compiler costs](../implementation/phase44/compiler-cost.md) are separate evidence.
+Map compiler request time improves 15.61%; the other three measured request
+medians regress 2.81–3.57%. The full 45-point runtime comparison is effectively flat: 6.1214× → 6.0832×
+TypeScript time. The known-call prototype is rejected. These are finite
+measurements, not universal performance or independent untouched holdout coverage.
 
 Ordinary compilation executes the Bend implementation without a TypeScript
 fallback. The target remains upstream
@@ -56,15 +53,15 @@ npm run build
 ```
 
 Use the [checked workflow](../docs/PHASE5_DEVELOPMENT.md) for compiler edits and
-the [portable Phase43 suite](tools/performance/phase43/README.md) for generated
-execution comparisons against retained Phase42 and pinned TypeScript. Its 45-point
-catalog supports 20/60/300-second selections and three serial 600-second batches;
-a ceiling does not promise coverage. The current bundle contains all 45 verified
-points; compact20, full-fast60 and targeted60 smoke replays pass.
-Separate [diagnostics](tools/performance/programs/DIAGNOSTICS.md) provide CPU and
-sampled allocation profiles plus JavaScript analysis. Heavy jobs run serially with
-explicit memory and deadline bounds. Compiler-request cost and generated execution
-remain separate evidence.
+the [portable Phase44 suite](tools/performance/phase44/README.md) for generated
+execution comparisons against retained Phase43 and pinned TypeScript. Its
+45-point catalog supports 20/60/300-second selections and three serial 600-second
+batches; a ceiling does not promise coverage. The
+[current bundle](tools/performance/phase44/current/manifest.json) contains all
+45 verified points. Separate [diagnostics](tools/performance/programs/DIAGNOSTICS.md)
+provide CPU and sampled allocation profiles plus JavaScript analysis. Heavy jobs
+run serially with explicit memory and deadline bounds. Compiler request costs and
+generated execution remain separate evidence.
 
 Historical [Phase40](../implementation/phase40/README.md) and
 [Phase39](../implementation/phase39/README.md) results retain their original

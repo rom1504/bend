@@ -1,62 +1,51 @@
 # Generated-program performance and the fast development loop
 
-Phase43 checked14 is installed and verified. The final 45-point runtime
-comparison is complete. Its installed API is
-`222902e565253ae20c628301a9191c6d71e47b211f1dc463da4e8eb1b51c86eb`.
+**Phase44 checked04 is installed; release verification and all 42 CLI checks pass.** Its installed API is
+`0d3325425139c59ac81c4f1bca19fa09e9f977062aa3b202c0ef1c8c7b56b0ea`.
 Use the [compiler guide](BEND-IN-BEND.md) and
-[Phase43 report](../implementation/phase43/README.md) for qualification status.
+[Phase44 report](../implementation/phase44/README.md) for qualification status.
 The [release manifest](../selfhost/dist/release.json) identifies the installed
-artifact. All 42 ordinary/relocated CLI checks, 15 postinstall gates and 227
-canonical source bindings pass, with 41 groups in the composite postinstall
-closure.
+artifact; historical release checks are not new Phase44 qualification.
 
-The final [comparison](../implementation/phase43/results.md) covers 45 points
-across 23 sources and all 669 fresh samples in three serial 15-point batches,
-with Phase42 checked16 and unchanged pinned TypeScript. The point-weighted
-geometric TypeScript-relative ratio falls from 8.875959 to 6.161075 times,
-a 1.440651 times gain over checked16. Equal-family ratios fall from 11.533923
-to 8.543621 times; equal-source ratios fall from 11.430604 to 8.433917 times.
-There are 25 strict median wins and 20 regressions against checked16, with two
-candidate points faster than TypeScript. Strict median comparisons are descriptive;
-they do not establish statistical significance or universal parity.
+The [Phase44 runtime results](../implementation/phase44/results.md) are the
+authoritative comparison against freshly executed Phase43 checked14 and pinned
+TypeScript. Coverage remains **45 points across 23 sources**, with 669 samples
+for a complete three-batch run. Short screens, compiler costs and profiling
+remain separate measurements. This regression corpus does not establish the
+speed of every Bend program or universal TypeScript parity.
 
-The [portable guide](../selfhost/tools/performance/phase43/README.md) provides
-reproduction instructions. The
-[current bundle](../selfhost/tools/performance/phase43/current/manifest.json)
-contains all 45 points and has passed reopened archive verification and
-byte-exact agreement with the selected emissions. Portable timing smoke remains
-a separate check and is not claimed here. The
-[validation guide](../selfhost/tools/performance/phase43/validation/README.md)
-records checked acquisition and release qualification. Short screens remain
-separate from the complete corpus result.
+Phase44 adds a [typed JavaScript IR](../selfhost/docs/JAVASCRIPT_IR.md), safe local
+alias propagation, identity-binding removal, nine literal U32 folds and statement
+printing. These are general expression transformations. The final 45-point comparison
+shows no broad gain; the separate [known-call dispatch prototype](../implementation/phase44/known-call-dispatch.md)
+was rejected. Private `Legacy` forms and source-dependent `CallPlan` selection
+remain, so this is a partial migration. Existing
+[complete-operation guards](PHASE43_DIRECT_EXECUTION.md) and
+[private execution layouts](PHASE42_GENERATED_JS.md) retain their original
+observation and fallback contracts.
 
-The [complete-operation architecture](PHASE43_DIRECT_EXECUTION.md) explains typed
-String/Map graphs, fused known scalar callbacks, bounded numeric countdowns,
-private pair state and exact capability guards. The inherited
-[generated-JavaScript architecture](PHASE42_GENERATED_JS.md) explains earlier
-private layouts and structural execution. Ordinary entry activation, complete
-values, aliases, Unicode/demand order and mutable host/dependency fallback are
-required alongside purity proofs. Dead emitted workers are not measured gains.
+The production graph has **21,813 physical Bend lines, 2,452 definitions and
+78 modules**. Eight IR modules account for 524 lines; fifteen old emission
+helpers were retired. [Compiler request costs](../implementation/phase44/compiler-cost.md)
+report the cost of producing programs separately from their execution. The
+selected compiler remains a checked B1 derivative. The upstream pin is unchanged
+at `018751270e800bc222a93dad7f257083ee53a5f7`.
 
-[Compiler request costs](../implementation/phase43/compiler-cost.md),
-[sampled profiles](../implementation/phase43/profile-findings.md) and
-[source accounting](../implementation/phase43/accounting.md) measure different
-things. The maintained production graph is 21,440 physical lines and 2,413
-definitions in 70 modules, up 1,384 lines and 164 definitions from Phase42.
-The selected source/API remains a checked B1 derivative, not a new fixed point.
-The upstream pin is unchanged at `018751270e800bc222a93dad7f257083ee53a5f7`.
-
-Run a portable current-release screen from the repository root:
+The [portable Phase44 guide](../selfhost/tools/performance/phase44/README.md)
+documents the [baseline](../selfhost/tools/performance/phase44/baseline/manifest.json)
+and [selected candidate](../selfhost/tools/performance/phase44/current/manifest.json)
+bundles, complete batching and diagnostic commands. Run a portable screen from
+the repository root:
 
 ```sh
 python3 selfhost/tools/performance/programs/run.py \
   --catalog selfhost/tools/performance/phase37/catalog.json \
-  --baseline selfhost/tools/performance/phase43/baseline/manifest.json \
-  --candidate selfhost/tools/performance/phase43/current/manifest.json \
+  --baseline selfhost/tools/performance/phase44/baseline/manifest.json \
+  --candidate selfhost/tools/performance/phase44/current/manifest.json \
   --node /absolute/path/to/node --cpu 3 \
   --rss-mib 2048 --available-mib 2048 \
   --budget 20 --cases local-pair,scalar-region-8192,complete-generic-row32 \
-  --out selfhost/build/my-phase43-screen-NEW
+  --out selfhost/build/my-phase44-screen-NEW
 ```
 
 This command reuses the verified portable modules without a compiler rebuild
@@ -64,13 +53,22 @@ or the original raw acquisition directories. Choose a fresh output directory and
 an available CPU. Node 24+ runs the portable suite; exact comparisons and diagnostics
 use recorded Node 24.18.0. Select cases independently from the **20, 60, 300 and
 600 second** ceilings. A ceiling does not guarantee completion. For all five fast cases,
-use `--budget 60 --set fast`. A `--budget 20 --set fast` request is optional
-budget-limited coverage: the retained portablefast01 run exhausted its budget
-after four of five measured cases in 21.206 seconds; this is an incomplete
-measurement, not a demonstrated semantic failure. Complete coverage
+use `--budget 60 --set fast`. A `--budget 20 --set fast` request may stop before
+all cases complete; retain that incomplete result. Complete coverage
 requires three serial 15-point preset600 batches; mandatory warmup floors alone
 exceed one full-corpus 600-second ceiling. Stop competing compilation, execution,
 profiling and compression during clean timing.
+
+## Historical release results: Phase43
+
+[Phase43 checked14](../implementation/phase43/README.md) used Phase42 checked16
+as its comparison baseline. Its [runtime results](../implementation/phase43/results.md),
+[compiler costs](../implementation/phase43/compiler-cost.md),
+[sampled profiles](../implementation/phase43/profile-findings.md) and
+[source accounting](../implementation/phase43/accounting.md) retain their original
+protocols and release scope. The [portable guide](../selfhost/tools/performance/phase43/README.md)
+and [bundle](../selfhost/tools/performance/phase43/current/manifest.json) remain
+reproducible historical evidence; their ratios are not fresh Phase44 measurements.
 
 ## Historical release results: Phase42
 
@@ -268,7 +266,7 @@ of existing proof machinery, not a source-reduction result.
 
 ## Inherited backend mechanisms
 
-The mechanisms below describe the Phase29–37 foundation retained by Phase43.
+The mechanisms below describe the Phase29–37 foundation retained by Phase44.
 The [complete-operation architecture](PHASE43_DIRECT_EXECUTION.md) specifies the
 new typed graph, callback and pair admission rules; older per-plan limits below
 do not replace those separate bounded contextual-instance rules.

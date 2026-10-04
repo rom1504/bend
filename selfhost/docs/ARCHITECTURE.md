@@ -5,9 +5,9 @@ checker, normalizer and emitters. The original single-file compiler remains
 available as a historical regression baseline.
 
 The compiler targets upstream
-`018751270e800bc222a93dad7f257083ee53a5f7`, after Bend2 2.0.34. Phase35 extends
-bounded private JavaScript regions with scalar loop state, residual pure calls
-and structural folds. The [current report](../../implementation/phase35/README.md)
+`018751270e800bc222a93dad7f257083ee53a5f7`, after Bend2 2.0.34. Phase44 introduces
+a typed runtime IR and shared transformations for ordinary JavaScript emission,
+alongside the existing guarded private regions. The [current report](../../implementation/phase44/README.md)
 records checked candidates and their release status; the
 [conformance record](../CONFORMANCE.md) separates installation, fresh execution
 and unchanged-input reuse. It retains the
@@ -43,6 +43,23 @@ Raw fixture verdicts and backend/kernel capability claims remain separate.
 
 These components are implemented. Their measured compatibility is recorded
 separately in the conformance report.
+
+## Ordinary JavaScript lowering
+
+The ordinary backend uses `checked KTerm -> lower -> simplify -> emit`.
+Lowering resolves runtime operations, erasure, demand and application chunks;
+bounded simplification propagates safe lexical aliases, removes exact identity
+bindings and folds nine literal U32 operations. Expression and statement printers
+consume the resulting `JIRExpr` nodes while preserving parallel binding scope,
+delayed fields, evaluation order and the public runtime ABI. See the
+[JavaScript IR guide](JAVASCRIPT_IR.md) for module boundaries and pass contracts.
+
+This is a partial migration. Private layouts, compressed constructor literals
+and deep closure factories retain the opaque `JIRLegacy` adapter. Guarded
+`JIRCallPlan` emission still consumes source facts and retains a structured
+generic fallback. The pipeline has no general effect/escape analysis or new
+direct-call convention; its introduction does not establish broad execution
+gains. The existing private analyses below retain their own admission proofs.
 
 ## Private JavaScript regions
 

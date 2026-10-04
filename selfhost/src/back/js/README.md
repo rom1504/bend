@@ -40,24 +40,28 @@ constructor fields and curried functions; runtime marshalling converts layouts
 iteratively and preserves trusted inbound values, including opaque fields on
 values passed directly between foreign functions.
 
-The bootstrap-only integration tests use `build/js-backend.mjs`, built with
-`tools/assemble.mjs` from `src/core/term.bend`, `src/core/index.bend`,
-`src/core/normalize.bend`, `src/core/pretty.bend`, `src/back/js/foreign.bend`,
-`src/back/js/literals.bend`, `src/back/js/validate.bend`,
-`src/back/js/choice.bend`, `src/back/js/projection.bend`,
-`src/back/js/u32.bend`, `src/back/js/primitive.bend`, `src/back/js/local.bend`, `src/back/js/region.bend`,
-`src/back/js/worker.bend`, `src/back/js/tree.bend`, and `src/back/js/emit.bend`, then
-`tools/stage0-library.mjs` exporting `j_program j_expr j_descriptor j_library
-j_modules j_compile_error j_io_type book_cached j_layout_error`. Run `node src/back/js/test.mjs`,
-`node src/back/js/test-foreign.mjs`, and `node src/back/js/test-validation.mjs`
-from the project root. `survey.mjs` exercises actual upstream source files
-through the checked compiler pipeline and records the compiler API hash.
+Use the complete module graph in `src/compiler.json` when building a checked
+compiler. The maintained tests can bind its API through `BEND_TYPED_API` and
+`tools/backend-test-api.mjs`; `build/js-backend.mjs` is a legacy bootstrap test
+input, not the module list for the current backend. The Phase44 qualification
+launcher binds a passed attempt, verifies its host dependencies, and runs eight
+semantic suites serially with explicit CPU, memory and deadline limits. From the
+repository root, with a fresh output directory:
+
+```sh
+python3 selfhost/tools/performance/phase44/qualify.py \
+  selfhost/build/phase44/checked04 selfhost/build/phase44-local/qualification-NEW
+```
+
+`survey.mjs` exercises actual upstream source files through the checked compiler
+pipeline and records the compiler API hash.
 `test-layout.mjs` checks the shared layout gate using the configured typed API;
 `test-string-eq.mjs` compares the equality intrinsic with a pinned Base oracle.
 
 The emitter uses lexical JavaScript variables for core binder IDs. Parallel
-`Let` right-hand sides remain outside the arrow function that introduces the
-new bindings. Consecutive leading lambdas share one closure; application
+`Let` right-hand sides use the outer scope: expression emission evaluates arrow
+arguments before binding, while return-position statement emission evaluates
+temporaries before opening the source-binding block. Consecutive leading lambdas share one closure; application
 batching stops at the proven leading-lambda arity so intermediate computation
 still precedes later argument evaluation. Computed globals remain reevaluated thunks; leading lambdas, top-level matcher wrappers and proven record projections share one closure.
 `u32.bend` recognizes native U32-to-U32 ordered decision trees with closed literal
@@ -112,8 +116,9 @@ selects the report path. `BEND_TYPED_API` selects the baseline compiler API.
 
 Definitions with more than 32 nested closures use flat closure factories with
 explicit lexical captures, keeping emitted JavaScript within parser stack
-limits. Below-threshold emission is unchanged; `BEND_JS_REFERENCE` optionally
-checks byte-equivalence against a prior backend API in `test.mjs`. The deep
+limits. `BEND_JS_REFERENCE` optionally checks byte-equivalence against a prior
+backend API in `test.mjs`; use it for migrations intended to preserve printing,
+not transformations that deliberately change emitted expressions. The deep
 capture fixture and upstream `flatten/literal_rows_cubic.bend` cover the new
 path. Benchmark and promotion evidence lives in `experiments/`.
 

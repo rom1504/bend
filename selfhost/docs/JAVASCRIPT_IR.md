@@ -165,7 +165,7 @@ fresh output directory:
 
 ```sh
 node --max-old-space-size=1024 src/back/js/ir/test.mjs \
-  build/phase44/checked03 build/phase44/ir-local-check01 \
+  build/phase44/checked04 build/phase44/ir-local-check01 \
   --expect-statements --expect-folds
 ```
 

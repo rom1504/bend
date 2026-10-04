@@ -1,6 +1,6 @@
 # Phase45: private execution graphs and composable backend selection
 
-**Worker23 is the current development candidate; final release qualification remains pending.** Phase44 checked04 remains installed. Worker23 freshly passes eight maintained suites, nullary-demand/metadata controls, Unit/Map controls and six post-import host-hook checks. Its complete representative execution comparison now passes all 669 samples across 45 points; frontend/backend, compiler-cost and release closure remain separate pending work. This report consolidates the [design](../../design/phase45/README.md), experiments and intermediate results without claiming release promotion.
+**Phase45 worker23 is installed; final selected qualification, release verification and all 42 CLI checks pass.** The exact-image closure verifies 8,755 assertions and 3,203 input identities across frontend/backend agreement, eight maintained suites, independent composition controls, all 669 execution samples and 36 compiler requests. Fresh nullary-demand/metadata, Unit/Map and six post-import host-hook controls also pass. Portable publication and closed evidence archival remain pending. This report consolidates the [design](../../design/phase45/README.md), experiments, qualified results and installed-image status.
 
 The complete runtime comparison shows **about 2× overall improvement, with TypeScript parity still unmet**. Fresh equal-point time falls from 6.0867× TypeScript for Phase44 to 3.0787× for worker23; equal-source time falls from 8.2713× to 4.1467×. Map128 improves 15.04× to 1.538× TypeScript, records256 improves 41.47× to 1.605×, active ray256 improves 13.89× to 1.843×, and lexer improves 4.85× to 1.472×. Smaller or generic paths remain much slower. All 45 medians and a logarithmic before/after diagram are in [the complete execution report](results.md).
 
@@ -94,8 +94,8 @@ The new modules cooperate in one lowering pipeline:
    public inputs/results; unsupported operations retain the BigInt graph.
    Exact Bool/String/Char/Tuple constructors emit their existing native operation
    directly. Generic constructors and public layouts remain unchanged.
-5. **Select a completed optimization.** Worker17b carries `JRootPlan{code,strong}`
-   from the actual planner. Successful complete fusion, a region without residual
+5. **Select a completed optimization.** The planner carries `JRootPlan{code,strong}`,
+   introduced in worker17b, from its actual completed result. Successful complete fusion, a region without residual
    generic calls, or a successfully audited flat graph can outrank the new worker.
    A partial region does not. Trusted Base roots require a real contextual
    specialization, declining purely alias-based public workers. They remain eligible as private callees in larger
@@ -161,6 +161,16 @@ Worker11 sampled allocation estimates fall to 3.86 MB/call for Map and
 diagnostic campaign. These are sampling estimates, not exact allocations or
 retained heap. They compare multiple compiler changes and do not isolate Nat.
 Profiles and counter derivatives never supply clean timing samples.
+
+The fresh [worker23 diagnostics](diagnostics.md) pass all 12 CPU/allocation
+profiles on Map and records. Sampled candidate allocation is 2.914 MB/call for
+Map and 3.786 MB/call for records, versus TypeScript's 2.184 and 2.729 MB/call
+(1.334× and 1.388×). Against the same diagnostic Phase44 controls, allocation
+falls 10.11× and 33.07×. Exclusive CPU samples in `apply`, `invokeExact`, `force`
+and `callOwned` fall from 31.0% to 4.6% for Map and 42.6% to 8.3% for records.
+Private String/Map components are now prominent residual costs. These samples
+support the changed cost distribution; they do not measure clean throughput or
+prove a causal share for each transformation.
 
 ## Historical worker17b screen and selection failure
 
@@ -249,17 +259,31 @@ The Base-only profitability gate therefore missed the same structural problem in
 a user helper. Worker18 corrects this through a typed recursive-component fact for new alias-only public entries, while preserving contextual specialization and private helpers. Worker20 confirms that smaller primitive fences alone do not make repeated acyclic public entry profitable. Neither selection rule uses program or helper names.
 Static evidence is preserved in `local-row-analysis17b.json`, SHA-256
 `47ee708bf39d9b1bc1924e67483c97646fd6c85742a605e8bd3f47dc0d95e1a1`.
-Worker17b remains a rejected historical candidate. The repaired descendants still require a completed fresh broad comparison.
+Worker17b remains a rejected historical candidate. Worker23 now has the completed
+fresh broad comparison and semantic closure above, followed by normal
+installation, release verification and all 42 CLI smoke checks.
 
 ## Correctness evidence and preserved failures
+
+Worker23's standard selected-image closure passes 8,755 assertions over 3,203
+bound inputs. Frontend observations agree exactly on 3,026 main and 196 broader
+inputs, with no result or extra-field differences. The main outcomes retain
+2,525 passes, 497 observations and four shared failures; broader retains 195
+passes and one observation. All 81 backend rows agree: 69 execution passes,
+eight unavailable/not-applicable outcomes and four shared check failures.
+Agreement does not convert the shared failures into successes. The independent
+composition fixture also passes, and all 36 measured compiler requests reproduce
+their expected output bytes. These artifact and repeated-execution counts are
+not additional unique language-conformance tests.
 
 Worker23 freshly passes all eight maintained suites. Its nullary controller
 passes six oracles, 39 boundary observations, six activation observations and
 nine descriptor-metadata comparisons. Its Unit controller passes 27 numeric
 oracles, ten mutation boundaries, four activation observations and two public
 ABI/object bundles. Six post-import hook traces agree with ordinary source
-invocation. These focused counts have different scopes; they do not establish
-full frontend/backend or final composition qualification.
+invocation. These focused scopes overlap and remain distinct from the standard
+frontend/backend/composition closure; they do not establish universal backend
+or host-observation equivalence.
 
 Historical worker21's fixture first failed acquisition because a Nat literal
 needed a type annotation. A new fixture version corrected only that annotation,
@@ -308,11 +332,19 @@ location; selfhost reports an invalid or unsupported numeric literal. This is
 one fixture with two diagnostic mismatches, not successful typechecking, two
 accepted invalid programs, or a full conformance result. No expectation or gate
 was weakened. All 54 manifest modules outside the JavaScript backend are unchanged
-from Phase44, including the frontend. Full frontend/backend qualification and
-installed-release closure remain pending for the final survivor.
+from Phase44, including the frontend. The selected23 standard frontend/backend
+inventory now passes exact agreement; this additional out-of-inventory probe
+still records two diagnostic mismatches and receives no passing credit.
+Normal installation, release verification and all 42 CLI checks now pass on
+worker23. Evidence publication and raw archive closure remain separate.
 
 Several failures changed the implementation or harness and remain visible:
 
+- The first selected23 receipt publisher refused diagnostics because it required
+  a direct candidate-manifest input. Diagnostics correctly consumed a completed
+  runtime report through `--from-run`. The failed preflight wrote no publication
+  products. Its successor verifies the full diagnostic → timed module → checked
+  acquisition/attempt chain; the original script and failure identities remain.
 - Candidate13 returned a function descriptor instead of a scalar after a real
   helper getter mutation. Its public wrapper used declared arity across a matcher
   boundary. 13b requires exactly that many consecutive leading lambdas; partial
@@ -368,29 +400,41 @@ falls back to all primitive dependencies if analysis is incomplete. Forty fresh
 supported post-import mutation observations pass. Host function identity alone
 still does not establish native provenance under hostile pre-import shims.
 
-## Historical source complexity and pending compiler-cost comparison
+## Selected worker23 source complexity and compiler cost
 
-The frozen 17b counts below precede the later selection, primitive-fence and nullary changes; final candidate counts are pending. The new backend improves execution mechanisms but **does not simplify the total
-compiler by line count**. Counts enumerate each frozen compiler manifest, excluding
-runtime, host tooling, tests, documentation and unlisted files. Code lines omit
-blank lines and whole-line comments; declarations are syntactic proxies.
+The final source accounting binds the frozen worker23 manifest, every listed
+original/frozen source pair, checked attempt, API and runtime. The compiler has
+**23,007 physical / 18,983 code Bend lines, 2,594 definitions, 87 types and
+85 modules**. It adds 1,194 physical lines (5.47%) over Phase44; execution improved,
+but **the total compiler did not become shorter**. Counts exclude runtime, host
+tooling, tests, documentation, generated images and unlisted files. Code lines
+omit blanks and whole-line comments; declaration counts are syntactic proxies,
+not a count of semantic concepts.
 
-| Maintained compiler measure | Phase44 checked04 | Worker16 | Worker17b |
-| --- | ---: | ---: | ---: |
-| Physical Bend lines | 21,813 | 22,871 | 22,898 |
-| Nonblank/noncomment lines | 18,025 | 18,887 | 18,902 |
-| Definitions | 2,452 | 2,579 | 2,582 |
-| Type declarations | 75 | 86 | 87 |
-| Law declarations | 629 | 629 | 629 |
-| Manifest modules | 78 | 85 | 85 |
-| JavaScript backend lines | 7,800 | 8,858 | 8,885 |
-| Selected generated compiler API bytes | 1,487,170 | 1,569,902 | 1,570,842 |
+| Compiler measure | Phase44 checked04 | Historical worker16 | Historical worker17b | Worker23 |
+| --- | ---: | ---: | ---: | ---: |
+| Physical Bend lines | 21,813 | 22,871 | 22,898 | 23,007 |
+| Nonblank/noncomment lines | 18,025 | 18,887 | 18,902 | 18,983 |
+| Definitions | 2,452 | 2,579 | 2,582 | 2,594 |
+| Type declarations | 75 | 86 | 87 | 87 |
+| Law declarations | 629 | 629 | 629 | 629 |
+| Manifest modules | 78 | 85 | 85 | 85 |
+| JavaScript backend lines | 7,800 | 8,858 | 8,885 | 8,994 |
+| Selected generated compiler API bytes | 1,487,170 | 1,569,902 | 1,570,842 | 1,577,688 |
 
-Phase44 → 17b adds 1,085 lines (4.97%), 130 definitions and seven modules. The new
-shared projection module has 52 lines; six worker modules have 971. Existing modules
-add 62 net lines. Worker17b retires five obsolete global-selection/fusion wrappers while
-introducing the typed plan result; its net addition over 16 is 27 lines. These
-figures neither count semantic concepts mechanically nor establish maintainability.
+Phase44 → worker23 adds 958 code lines, 142 definitions, 12 types and seven
+modules. The shared projection module has 52 physical lines and the six worker
+modules have 989; existing modules add 153 net lines. These changes account for
+all 1,194 additional manifest-listed Bend lines. The runtime is separately bound
+and contains 56,140 bytes; it is excluded from the Bend source totals.
+
+The historical17b snapshot added 1,085 lines (4.97%), 130 definitions and seven
+modules over Phase44. Its shared projection module had 52 lines and six worker
+modules had 971; existing modules added 62 net lines. It retired five obsolete
+global-selection/fusion wrappers while introducing the typed plan result,
+adding 27 net lines over16. Later selection, primitive-fence, nullary and Unit
+changes bring worker23 to the final totals above. No earlier snapshot is
+relabeled as the selected source.
 
 The major added concepts are explicit private calls/values, exact SCC planning,
 bounded native/machine execution, private tagged/native layouts, whole-graph Nat
@@ -403,9 +447,14 @@ migrate into shared IR passes, rather than merely deleting a faster existing pla
 The compiler is still written in Bend. Its selected **compiler API** is generated
 JavaScript produced through the checked B1/equality-derivation workflow; it compiles
 user programs whose **execution** the timing tables measure. This is not a newly
-self-emitted fixed point. The generated-program runtime was byte-identical to Phase44 through worker20. Worker21 adds a nullary exact-code wrapper, and worker23 repairs private entry bookkeeping; the final runtime has a distinct identity. No fresh controlled compiler-request comparison has yet established
-Phase45 compiler-throughput or end-to-end iteration-speed improvement. Build and
-acquisition durations must not be relabeled as either metric.
+self-emitted fixed point. The generated-program runtime was byte-identical to Phase44 through worker20. Worker21 adds a nullary exact-code wrapper, and worker23 repairs private entry bookkeeping; the final runtime has a distinct identity. The controlled compiler-request comparison now passes all 36 expected-byte
+checks across four sources, three rotated processes and three compiler roles.
+The [compiler-cost report](compiler-cost.md) finds request medians **8.62% slower
+for local pair, 28.55% slower for lexer, 1.32% slower for Map and 1.20% slower for
+closures** than fresh Phase44 controls. Candidate/TypeScript request ratios are
+6.160×, 11.684×, 15.957× and 4.547× respectively. There is no compiler-throughput
+gain in this four-source comparison. Request, import and process boundaries
+remain distinct; build/acquisition durations do not replace controlled timing.
 
 ## Evidence, status and next decisions
 
@@ -414,8 +463,12 @@ checked API SHA-256 is
 `e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c`,
 with emitted runtime
 `4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26`.
-The historical 17b size receipt remains
-`selfhost/build/phase45/complexity17b-draft.json`, SHA-256
+Selected source accounting is
+`selfhost/build/phase45/complexity23-draft.json`, SHA-256
+`75ef2f9ed6c80e029aee4910b7416b79a9718746a166668f68b300f902b6b7b2`.
+Despite the retained `draft` filename, its source/API/runtime joins and counts
+are complete; release qualification is a separate decision. Historical17b remains
+in `complexity17b-draft.json`, SHA-256
 `0f005c1c84a3a7fb5149c6687b537c1810b2fff2eeedabdb39815c6d4c495602`.
 
 Raw campaign paths are local evidence, not public downloadable artifacts.
@@ -424,9 +477,10 @@ Current correctness results are `qualify-worker23/report.json`,
 `exact-entry-hooks23/report.json`; the failed predecessor is
 `exact-entry-hooks22/report.json`. The historical21 timing reports remain
 `runtime-worker21-{fast,nullary,map-record}/report.json`. Complete23 timing uses
-`qualification23/runtime-{0,1,2}/report.json` and the validated
-`qualification23/runtime-preview.json`; the final workflow summary must match
-that preview before its path replaces the report link.
+`qualification23/runtime-{0,1,2}/report.json` and the final
+`qualification23/runtime-summary.json`, which exactly matches the earlier
+validated preview. `qualification23/selected-qualification.json` closes the
+standard semantic/runtime/cost gates before installation.
 Historical screens, rejected/stopped attempts, checked module identities and
 per-job commands remain under `selfhost/build/phase45`, indexed by
 `campaign.jsonl`. The completed 17b first long batch and deliberately interrupted
@@ -435,16 +489,19 @@ raw campaigns stay closed; final archive closure is pending.
 
 | Final release result | Status |
 | --- | --- |
-| Exact selected compiler, runtime and manifest | Worker23 development candidate; final qualification pending |
+| Exact selected compiler, runtime and manifest | PASS: worker23 selected qualification, 8,755 assertions / 3,203 input identities |
 | Fresh 45-point execution comparison, point/source weighting | PASS: 669 samples, 3.0787× TypeScript equal-point and 4.1467× equal-source |
-| Frontend, broader frontend and backend qualification | Pending for selected image |
-| Focused mixed-feature and boundary composition | Pending final image; fresh23 focused evidence and historical controls retained |
-| Controlled compiler-request comparison | Pending |
-| Final source/module/line counts | Pending; 17b historical counts above |
-| Installation, portable evidence archive and release closure | Pending; Phase44 checked04 remains installed |
+| Frontend, broader frontend and backend qualification | PASS: 3,026 main + 196 broader exact observations; all 81 backend rows agree, shared failures retained |
+| Focused mixed-feature and boundary composition | PASS: fresh selected composition and separate23 focused controls; historical controls retain their original scopes |
+| Controlled compiler-request comparison | PASS: all 36 expected bytes; request medians regress 1.20–28.55%, detailed per-source cost reported separately |
+| Final source/module/line counts | Complete: exact frozen23 joins; 23,007 physical / 18,983 code lines, 2,594 definitions, 87 types, 85 modules |
+| Installation and CLI release validation | PASS: normal install, release verification and all 42 ordinary/relocated smoke checks |
+| Portable publication and closed evidence archive | Pending final publication and root-owned writer/archive closure |
 
 Run the maintained fast-five canaries before feature-focused and full screens.
 Keep the major private-graph gains and the recovered stronger existing plans.
 Use new profiles to choose between remaining private allocation/frame traffic,
-function-valued calls, supported data boundaries and entry cost. The selected Unit/Map and nullary coverage must pass complete23 qualification; reopening
-acyclic public entry without new evidence would repeat the rejected 20 experiment.
+function-valued calls, supported data boundaries and entry cost. The selected Unit/Map and nullary coverage must remain bound to complete23
+qualification; reopening acyclic public entry without new evidence would repeat
+the rejected20 experiment. Any candidate24 experiment remains separate and
+unexecuted at this checkpoint; it contributes no worker23 release evidence.

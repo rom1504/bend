@@ -6,49 +6,66 @@ Bend. JavaScript handles filesystem and process orchestration, primitives and
 the public-data adapter. Ordinary compilation runs Bend code without a
 TypeScript fallback.
 
-**Phase44 checked04 is installed; release verification and all 42 CLI checks pass.** Its installed API is
-`0d3325425139c59ac81c4f1bca19fa09e9f977062aa3b202c0ef1c8c7b56b0ea`.
-The [Phase44 report](../implementation/phase44/README.md) records qualification
-and release status. The [release manifest](../selfhost/dist/release.json)
-identifies the installed artifact. Current selected-image qualification is
-recorded below; historical release checks retain their original scope.
+**Phase45 worker23 is installed; release verification and all 42 CLI checks pass.**
+Installed API: `e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c`.
+Installed runtime: `4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26`.
+The [Phase45 report](../implementation/phase45/README.md),
+[release manifest](../selfhost/dist/release.json) and
+[selected evidence](../selfhost/tools/performance/phase45/evidence/selected-qualification.json)
+bind qualification to this exact API/runtime pair. API identity alone is
+insufficient: worker22 and worker23 share their compiler API but use different
+runtimes.
 
-Phase44 introduces a typed JavaScript IR for ordinary expressions, calls,
-constructors, primitives and control flow. Separate lowering, simplification
-and printing passes preserve evaluation order, erasure, delayed fields and
-public runtime observations. General passes remove identity bindings, propagate
-safe local aliases, fold nine literal U32 operations and print statement bodies
-without nested binding IIFEs. See the
-[JavaScript IR guide](../selfhost/docs/JAVASCRIPT_IR.md) for contracts and extension
-instructions.
+The general private backend lowers proved first-order graphs to explicit calls,
+cases, projections and returns. It partitions recursive components, emits direct
+acyclic functions, keeps tail calls in scalar loops and uses bounded native
+recursion with the same continuation machine at exhaustion. Private tagged
+fields, exact Number Nats and native constructors reduce allocation. Complete
+dependency, representation and host proofs preserve ordinary public fallback;
+unsupported graphs retain the existing implementation.
+The [JavaScript IR guide](../selfhost/docs/JAVASCRIPT_IR.md) documents the
+modular lowering, transformations and emission contracts. Existing opaque
+compatibility boundaries remain; this is not a complete removal of historical
+backend paths. General backend selection preserves stronger existing scalar
+paths and refuses unproved graphs.
 
-This is a partial migration. Private representations and deep closure factories
-still cross an opaque `Legacy` boundary; `CallPlan` retains source-based guarded
-selection. The inherited [complete-operation](PHASE43_DIRECT_EXECUTION.md) and
-[generated-JavaScript](PHASE42_GENERATED_JS.md) architectures remain relevant.
-The maintained production graph contains **21,813 physical Bend lines, 2,452
-definitions and 78 modules**, including **eight IR modules with 524 lines**.
-Fifteen old emission helpers were retired. These counts exclude generated images
-and experiment tools.
+The production manifest lists **23,007 physical / 18,983 code Bend lines,
+2,594 definitions, 87 types and 85 modules**. This is a net increase of 1,194
+physical lines over Phase44. Counts exclude runtime, host tools, documentation,
+tests and generated images; declarations are syntactic complexity proxies.
 
-The [runtime comparison](../implementation/phase44/results.md) is the authoritative
-generated-program performance record; [compiler request costs](../implementation/phase44/compiler-cost.md)
-measure a separate boundary. The final 45-point comparison shows no broad gain from the new passes. A [saved-JavaScript known-call experiment](../implementation/phase44/known-call-dispatch.md)
-was rejected after its screen failed to show broad benefit. The architectural
-change is not a claim of universal speedup or TypeScript parity.
+The [execution comparison](../implementation/phase45/results.md),
+[compiler costs](../implementation/phase45/compiler-cost.md) and
+[diagnostics](../selfhost/tools/performance/phase45/evidence/diagnostics.json)
+record separate measurement boundaries.
+The 45-point / 23-source comparison measures **3.0787× TypeScript time**
+with equal-point weighting and **4.1467×** with equal-source weighting.
+Across four fresh compiler-cost probes, request medians increase 1.20–28.55% over Phase44. These finite measurements do not establish typical
+program speed or universal parity; the corpus informed optimization and is not
+an untouched holdout. Compiler request cost and generated execution are separate
+measurements.
 
 The [conformance record](../selfhost/CONFORMANCE.md) retains exact tested scope,
-shared failures, unavailable platforms and proof-trust limits. Selected source
-and API remain a checked B1 derivative, not a new self-emitted fixed point.
-The upstream target remains
+shared failures, unavailable platforms and proof-trust limits. This remains a
+checked B1 derivative, not a new self-emitted fixed point. The target remains
 [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
 after Bend 2.0.34.
 
-Use the [portable Phase44 guide](../selfhost/tools/performance/phase44/README.md)
-to compare selected checked04 output with Phase43 checked14 and pinned
-TypeScript. Its [current program bundle](../selfhost/tools/performance/phase44/current/manifest.json)
-retains the 45-point / 23-source inventory. Select case coverage independently
-from the 20, 60, 300 and 600 second execution ceilings.
+Use the [portable Phase45 guide](../selfhost/tools/performance/phase45/README.md)
+for selected worker23 outputs against Phase44 checked04 and pinned TypeScript.
+Its [current bundle](../selfhost/tools/performance/phase45/current/manifest.json)
+retains all 45 points / 23 sources. Choose coverage separately from 20, 60, 300
+and 600 second execution ceilings.
+
+## Historical release results: Phase44
+
+[Phase44 checked04](../implementation/phase44/README.md) introduced the ordinary
+JavaScript IR and general local simplification passes. Its
+[execution comparison](../implementation/phase44/results.md),
+[compiler costs](../implementation/phase44/compiler-cost.md) and
+[portable bundle](../selfhost/tools/performance/phase44/current/manifest.json)
+retain their original Phase43 baseline and validation scopes. Its known-call
+saved-output prototype was rejected; the measured broad execution effect was flat.
 
 ## Historical release results: Phase43
 
@@ -185,7 +202,7 @@ proof boundaries, the historical
 Broad private helper inlining was rejected after regressions, so copying more
 code is not itself an optimization criterion.
 
-Use the [Phase44 portable guide](../selfhost/tools/performance/phase44/README.md)
+Use the [Phase45 portable guide](../selfhost/tools/performance/phase45/README.md)
 and the maintained program runner to select **20, 60, 300 or 600 second** budgets independently from case coverage.
 Prepare checked compiler output once, then reuse those exact modules for short
 screens. An incomplete budgeted run stays incomplete. The
@@ -271,7 +288,7 @@ repeated traversal of shared terms: two depth-32 checks that previously exhauste
 a 1 GiB heap now complete within that limit. Its historical ordinary-checking
 comparison was around three times the pinned TypeScript compiler. That scope
 differs from the historical Phase32 library compile requests and the current
-[Phase44 compiler-cost study](../implementation/phase44/compiler-cost.md);
+[Phase45 compiler-cost study](../implementation/phase45/compiler-cost.md);
 these ratios must not be substituted for each other.
 
 The backend now supports all nine `Array.atomic` operations in its existing
@@ -337,7 +354,7 @@ npm run build -- /absolute/release-config.json /absolute/new-attempt
 Config fields and selection semantics are documented in the
 [maintained workflow guide](PHASE5_DEVELOPMENT.md). Broad conformance and checked
 self-reproduction are release/integration gates, not every small edit's build.
-The [Phase44 report](../implementation/phase44/README.md) records current
+The [Phase45 report](../implementation/phase45/README.md) records current
 qualification and installation status. The historical [Phase32 release report](../implementation/phase32/release-03.md)
 retains its own evidence, limits and ordinary/relocated CLI closure.
 

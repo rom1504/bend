@@ -1,49 +1,47 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase44 report](../implementation/phase44/README.md) and
+[Phase45 report](../implementation/phase45/README.md) and
 [JavaScript IR architecture](docs/JAVASCRIPT_IR.md).
-**Phase44 checked04 is installed; release verification and all 42 CLI checks pass.** The
-[release manifest](dist/release.json) identifies the installed artifact.
+**Phase45 worker23 is installed; release verification and all 42 CLI checks pass.**
+The [release manifest](dist/release.json) and
+[selected evidence](tools/performance/phase45/evidence/selected-qualification.json)
+identify this checked B1 derivative.
 
-The selected compiler introduces a runtime IR with separate lowering, lexical
-facts, general transformations and emission. Its ordinary code uses copy
-propagation, exact identity-binding elimination, literal U32 folding and lexical
-statement emission. Fifteen replaced helpers were removed; private layouts and
-source-dependent guarded call selection remain explicit migration boundaries.
+The general private backend lowers proved first-order graphs to explicit calls,
+cases, projections and returns. It partitions recursive components, emits direct
+acyclic functions, keeps tail calls in scalar loops and uses bounded native
+recursion with the same continuation machine at exhaustion. Private tagged
+fields, exact Number Nats and native constructors reduce allocation. Complete
+dependency, representation and host proofs preserve ordinary public fallback;
+unsupported graphs retain the existing implementation.
 
 Fresh qualification agrees on 3,026 main and 196 broader frontend observations
-and all 81 retained backend observations. Eight maintained semantic suites and
-independent feature-composition controls pass. The
-[conformance record](CONFORMANCE.md) retains the shared failures and scope limits.
-The source graph contains 21,813 physical Bend lines, 2,452 definitions and
-78 modules, a net increase of 373 lines for this architectural change.
+and all 81 retained backend observations. Eight maintained suites, independent
+composition controls, seven freshly acquired mechanism families and separate
+nullary, Unit and exact-entry host observations pass. Their scopes overlap;
+[conformance](CONFORMANCE.md) preserves shared failures and limits.
+The source graph contains **23,007 physical / 18,983 code Bend lines, 2,594
+definitions, 87 types and 85 modules**: 1,194 more physical lines than Phase44.
+These manifest-listed source counts exclude runtimes, generated images and tools;
+declaration counts are syntactic proxies, not a measure of conceptual complexity.
 
-The [full execution results](../implementation/phase44/results.md) and
-[compiler costs](../implementation/phase44/compiler-cost.md) are separate evidence.
-Map compiler request time improves 15.61%; the other three measured request
-medians regress 2.81–3.57%. The full 45-point runtime comparison is effectively flat: 6.1214× → 6.0832×
-TypeScript time. The known-call prototype is rejected. These are finite
-measurements, not universal performance or independent untouched holdout coverage.
+The [full execution results](../implementation/phase45/results.md),
+[compiler costs](../implementation/phase45/compiler-cost.md) and
+[diagnostics](tools/performance/phase45/evidence/diagnostics.json) are separate evidence.
+The 45-point / 23-source comparison measures **3.0787× TypeScript time**
+with equal-point weighting and **4.1467×** with equal-source weighting.
+Across four fresh compiler-cost probes, request medians increase 1.20–28.55% over Phase44. These finite measurements do not establish typical
+program speed or universal parity; the corpus informed optimization and is not
+an untouched holdout. Compiler request cost and generated execution are separate
+measurements.
 
 Ordinary compilation executes the Bend implementation without a TypeScript
 fallback. The target remains upstream
 [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
 after Bend 2.0.34. This is a checked B1 derivative, not a new self-emitted fixed
 point. Full backend/GPU execution and independent proof validity remain
-unestablished; `--verdict` is unsupported. See [conformance](CONFORMANCE.md) for
-retained shared failures and unavailable platforms.
-
-The [complete-operation architecture](../docs/PHASE43_DIRECT_EXECUTION.md) explains
-lexical contextual Map calls, callback construction/application fusion, bounded
-Number counters with original BigInt fallback, private pair state and exact source
-proofs. The [Phase42 architecture](../docs/PHASE42_GENERATED_JS.md) retains earlier
-owned layouts, List fusion, structural fallback and request-local facts. Public data, host mutation, evaluation order,
-sharing and generic fallback remain explicit proof boundaries.
-
-The [JavaScript IR architecture](docs/JAVASCRIPT_IR.md) documents the modular
-runtime representation, composable passes, semantic contracts and remaining
-compatibility boundaries introduced during Phase44 development.
+unestablished; `--verdict` is unsupported.
 
 ```sh
 # From selfhost/, with Node.js 24 or newer:
@@ -53,20 +51,18 @@ npm run build
 ```
 
 Use the [checked workflow](../docs/PHASE5_DEVELOPMENT.md) for compiler edits and
-the [portable Phase44 suite](tools/performance/phase44/README.md) for generated
-execution comparisons against retained Phase43 and pinned TypeScript. Its
-45-point catalog supports 20/60/300-second selections and three serial 600-second
-batches; a ceiling does not promise coverage. The
-[current bundle](tools/performance/phase44/current/manifest.json) contains all
-45 verified points. Separate [diagnostics](tools/performance/programs/DIAGNOSTICS.md)
-provide CPU and sampled allocation profiles plus JavaScript analysis. Heavy jobs
-run serially with explicit memory and deadline bounds. Compiler request costs and
-generated execution remain separate evidence.
+the [portable Phase45 suite](tools/performance/phase45/README.md) to compare
+selected outputs against Phase44 and pinned TypeScript. Its
+[current bundle](tools/performance/phase45/current/manifest.json) retains the
+45-point / 23-source corpus, with case coverage independent of 20/60/300-second
+ceilings and three serial 600-second full batches. Separate
+[diagnostics](tools/performance/programs/DIAGNOSTICS.md) provide CPU/allocation
+profiles and generated-JavaScript comparisons. Profiled durations are not timing
+ratios. Heavy jobs run serially with explicit memory and deadline bounds.
 
-Historical [Phase40](../implementation/phase40/README.md) and
-[Phase39](../implementation/phase39/README.md) results retain their original
-baselines and validation scopes. The [ledger](../experiments/ledger.md),
-[strategy](../experiments/STEERING.md) and
+Historical [Phase44](../implementation/phase44/README.md) and earlier reports
+retain their own baselines and validation scopes. The
+[ledger](../experiments/ledger.md), [strategy](../experiments/STEERING.md) and
 [preservation index](../experiments/PRESERVATION.md) retain failures and decisions.
 
 ## Use the typed compiler

@@ -16,29 +16,38 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs the Bend implementation without a
 TypeScript fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-**Phase44 checked04 is installed; release verification and all 42 CLI checks pass.** The
-[phase report](implementation/phase44/README.md) records the compiler, qualification
-and measured tradeoffs; the [release manifest](selfhost/dist/release.json)
-identifies the installed artifact. This remains a checked B1 derivative.
+**Phase45 worker23 is installed; release verification and all 42 CLI checks pass.**
+The [Phase45 report](implementation/phase45/README.md),
+[release manifest](selfhost/dist/release.json) and
+[selected evidence](selfhost/tools/performance/phase45/evidence/selected-qualification.json)
+identify the installed checked B1 derivative and its qualification.
 
-The [JavaScript IR guide](selfhost/docs/JAVASCRIPT_IR.md) explains the new modular
-lowering, lexical facts, general simplifications and expression/statement emission.
-Fifteen obsolete helpers were removed. Private layouts and guarded call plans
-retain explicit compatibility boundaries. The same transformations apply by
-operation and scope across programs; they contain no benchmark-name selectors.
+The general private backend lowers proved first-order graphs to explicit calls,
+cases, projections and returns. It partitions recursive components, emits direct
+acyclic functions, keeps tail calls in scalar loops and uses bounded native
+recursion with the same continuation machine at exhaustion. Private tagged
+fields, exact Number Nats and native constructors reduce allocation. Complete
+dependency, representation and host proofs preserve ordinary public fallback;
+unsupported graphs retain the existing implementation.
+See the [JavaScript IR guide](selfhost/docs/JAVASCRIPT_IR.md) for the modular
+pipeline and its public compatibility boundaries.
 
-See the [execution results](implementation/phase44/results.md),
-[compiler request costs](implementation/phase44/compiler-cost.md) and
-[conformance record](selfhost/CONFORMANCE.md) for their separate measured scopes.
-The maintained execution corpus has 45 points across 23 sources. It does not
-establish universal or typical-program performance. The known-call dispatch
-prototype showed no broad benefit and was rejected for production.
+The [execution results](implementation/phase45/results.md),
+[compiler request costs](implementation/phase45/compiler-cost.md),
+[diagnostics](selfhost/tools/performance/phase45/evidence/diagnostics.json) and
+[conformance record](selfhost/CONFORMANCE.md) retain their separate measured scopes.
+The 45-point / 23-source comparison measures **3.0787× TypeScript time**
+with equal-point weighting and **4.1467×** with equal-source weighting.
+Across four fresh compiler-cost probes, request medians increase 1.20–28.55% over Phase44. These finite measurements do not establish typical
+program speed or universal parity; the corpus informed optimization and is not
+an untouched holdout. Compiler request cost and generated execution are separate
+measurements.
 
-The [portable benchmark guide](selfhost/tools/performance/phase44/README.md)
+The [portable benchmark guide](selfhost/tools/performance/phase45/README.md)
 provides 20/60/300-second selections and three serial 600-second full-corpus
-batches, comparing Phase44 with Phase43 and pinned TypeScript. Historical
-[Phase43](implementation/phase43/README.md) and earlier reports retain their
-original baselines and qualification scopes.
+batches against Phase44 and pinned TypeScript. Historical
+[Phase44](implementation/phase44/README.md) and earlier reports preserve their
+original artifacts, baselines and qualification scopes.
 
 From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
 Use the [compiler guide](docs/BEND-IN-BEND.md),

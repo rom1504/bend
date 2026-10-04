@@ -39,8 +39,30 @@ Worker17b's long comparison exposed a major regression from wrapping a two-funct
 
 The useful next direction is broader complete-graph coverage behind one guarded entry: local-function applications, Array/native operations and owned result reconstruction, each with refusal, mutation, demand and aliasing controls. Public reconstruction must preserve identity/sharing and externally mutable layouts. Admission alone is insufficient: use the maintained fast-five canaries first, then representative screens, then a complete comparison.
 
-Worker23 preserves the profitability repair and fixes six supported post-import host-hook observations found on22. That correctness repair retains public `.code`, `.call` and `.env` observations while making internal bookkeeping private. It does not remove the source/native/host guards that authorize private execution.
+Worker23 preserves the profitability repair and fixes six supported post-import host-hook observations found on22. That correctness repair retains public `.code`, `.call` and `.env` observations while making `invokeExact` preflight use private captured intrinsics. It does not remove the source/native/host guards that authorize private execution.
 
 Thirty-two final medians improve and 13 regress; the largest increases are generic row 4.93%, one Mandelbrot-grid point 4.12% and bitonic 3.15%. No statistical-significance claim is made. Two points—closures256 and list-pipeline512—already beat TypeScript at 0.477× and 0.572×, but that does not establish overall parity. These maintained fixtures informed development, half-window drift remains, and their distribution is not every Bend program.
 
 Evidence: [complete execution report](results.md), [typed selection](../../experiments/phase45/P45-016-root-plan-ranking.md), [acyclic policy](../../experiments/phase45/P45-018-acyclic-root-profitability.md), [rejected readmission](../../experiments/phase45/P45-020-acyclic-reentry-ablation.md), [nullary ABI](../../experiments/phase45/P45-021-nullary-abi.md), [Unit coverage](../../experiments/phase45/P45-022-canonical-unit.md), [exact-entry repair](../../experiments/phase45/P45-023-exact-entry-preflight.md).
+
+## Existing wrapper-registration boundary: static finding only
+
+`exactCode` still calls live `exactCodes.add(code)` in
+[runtime core](../../selfhost/src/runtime/js/core.mjs). That statement is unchanged
+in frozen workers19,22 and23 and already appears in commit `6cbd0a1`.
+[The inherited worker emitter](../../selfhost/src/back/js/worker.bend)
+creates some exact wrappers after import: `j_nat_loop_wrapper` does so inside a
+delayed `Succ` arm (line135), and `j_nat_branch_public_prefix` does so when
+returning a final Bool function (line334). An ordinary `fn` allocation is a plain
+descriptor object and does not itself register with a WeakSet.
+
+The actual worker23 `numeric-recurrence.mjs` has this delayed wrapper for
+`p37.numeric`. A minimal next probe is a legal staged call
+`call(G['p37.numeric'], [1n])` after replacing `WeakSet.prototype.add` with a
+recording native delegate, restoring the property in `finally`; compare the
+partial descriptor and events with Phase44 output, then separately try a
+throwing sentinel. Static inspection predicts a registration hook before the
+new wrapper's body guard in both versions. This probe has **not run**: no runtime
+failure, new worker23 regression or release blocker is claimed. The six executed
+worker23 preflight controls establish their stated scope, not universal
+equivalence under every host mutation.

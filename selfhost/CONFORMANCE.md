@@ -1,8 +1,48 @@
 # Compiler validation
 
-## Phase44 installed checked04 validation
+## Phase45 installed worker23 validation
 
-**Phase44 checked04 is installed; release verification and all 42 CLI checks pass.** Its API SHA256 is
+**Phase45 worker23 is installed; release verification and all 42 CLI checks pass.**
+API SHA256: `e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c`.
+Runtime SHA256: `4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26`.
+The pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+This is a checked B1 derivative, not a new self-emitted fixed point. Worker22
+shares the API hash but has a different runtime; selected-image receipts bind
+both hashes and the exact checked attempt.
+
+Fresh selected observations agree exactly on 3,026 main and 196 broader frontend
+inputs with zero result or extra-field differences. Main outcomes remain
+2,525 pass / 497 observed / four shared failures; broader remains 195 pass / one
+observed. All 81 retained backend observations agree: 69 execution passes, eight
+unavailable or not-applicable outcomes and four shared check failures. Verified
+pinned TypeScript reference observations are reused; agreement does not turn
+shared failures into passes.
+
+The eight maintained suites and fresh Phase44 composition fixture pass. The
+selected Phase45 mechanism queue freshly acquires seven fixture families and
+runs twelve controls, including five separate 50,000-depth worker roots at the
+default 984KiB Node stack. Coverage includes cyclic/acyclic calls, bounded fallback,
+tail transfer, Number-Nat arithmetic/overflow, mutable public descriptors,
+immutable results, actual records and used/unused primitive guards. Separate
+fresh nullary controls cover six value oracles, 39 boundaries, six activation
+observations and nine metadata bundles; Unit controls cover 27 oracles, four
+activation observations, ten boundaries and two public ABI bundles. Six exact-entry
+host-hook observations agree with ordinary source invocation. Their scopes
+intentionally overlap and must not be summed as unique language tests.
+
+The [Phase45 report](../implementation/phase45/README.md) and
+[selected qualification](tools/performance/phase45/evidence/selected-qualification.json)
+record standard gates; [fresh mechanisms](tools/performance/phase45/evidence/selected-mechanisms.json)
+and separate focused receipts retain their own scopes. A preserved failed
+Number-Nat probe remains counter-evidence and receives no qualification credit.
+Historical Phase44/43 owner campaigns below are not relabeled as fresh Phase45 checks.
+Generated execution, compiler cost and CLI installation remain separate evidence.
+Full backend/GPU execution, universal host equivalence and independent proof
+validity remain unestablished; `--verdict` is unsupported.
+
+## Historical Phase44 installed checked04 validation
+
+**Phase44 checked04 was installed; release verification and all 42 CLI checks passed.** Its API SHA256 is
 `0d3325425139c59ac81c4f1bca19fa09e9f977062aa3b202c0ef1c8c7b56b0ea`.
 The upstream pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
 This is a checked B1 derivative, not a new self-emitted fixed point.

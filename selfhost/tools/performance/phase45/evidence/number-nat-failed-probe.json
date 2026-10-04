@@ -1,0 +1,234 @@
+{
+  "kind": "bend-development-validation",
+  "version": 1,
+  "started": "2026-10-04T18:19:05.681Z",
+  "complete": true,
+  "pass": false,
+  "artifactKind": "derived-b1",
+  "attempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/checked-worker23/attempt.json",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/checked-worker23/attempt.json",
+    "sha256": "d58b4fe1499803ec0df9bc6b79c76493d90d1a6d8f55e246ecaec31e24f9b5d4"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/checked-worker23/equality/api.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/checked-worker23/equality/api.mjs",
+    "sha256": "e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c"
+  },
+  "launcher": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+      "sha256": "1158d3e7fb28ebcf37caba0d32f34cbcb762d0987bff472c385a375bbeb793ff",
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/launcher/workflow.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/launcher/workflow.mjs",
+        "sha256": "1158d3e7fb28ebcf37caba0d32f34cbcb762d0987bff472c385a375bbeb793ff"
+      }
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/process.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/process.mjs",
+      "sha256": "fe6afbc8964f695e3b7bfe8c636b6da6295fd7265fcdebbf58839f3eafce4989",
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/launcher/process.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/launcher/process.mjs",
+        "sha256": "fe6afbc8964f695e3b7bfe8c636b6da6295fd7265fcdebbf58839f3eafce4989"
+      }
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/conformance/inventory.mjs",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/tools/conformance/inventory.mjs",
+      "sha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308",
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/launcher/inventory.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/launcher/inventory.mjs",
+        "sha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308"
+      }
+    }
+  ],
+  "scope": "Selected paired probes; no full-language conformance inferred.",
+  "phases": [
+    {
+      "name": "prepare-base",
+      "execution": {
+        "command": "taskset",
+        "args": [
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/checked-worker23/snapshot/tools/typed-driver.mjs",
+          "--prepare-base"
+        ],
+        "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/prepare-base/stdout",
+        "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/prepare-base/stderr",
+        "timeoutMs": 180000,
+        "maxBytes": 16777216,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "timedOut": false,
+        "overflow": false,
+        "logBytes": 101,
+        "wallMs": 287.18017799999984
+      }
+    },
+    {
+      "name": "selected",
+      "execution": {
+        "command": "taskset",
+        "args": [
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/checked-worker23/snapshot/tools/conformance/target.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/target.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/selected"
+        ],
+        "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/selected-command/stdout",
+        "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/selected-command/stderr",
+        "timeoutMs": 900000,
+        "maxBytes": 16777216,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "timedOut": false,
+        "overflow": false,
+        "logBytes": 192,
+        "wallMs": 2229.63999
+      }
+    }
+  ],
+  "selection": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal11-selection.json",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal11-selection.json",
+    "sha256": "7cccda9a03ff0156221023ac26ac6073f5415993f247af27775a67160b0491b1"
+  },
+  "cache": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/checked-worker23/snapshot/build/typed/cache/base-e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db.json",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/checked-worker23/snapshot/build/typed/cache/base-e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db.json",
+    "sha256": "ed68e08f7610a5ec314bd0e414cc93c08c90d16c8ca0acc1dcd5a5398f520b78"
+  },
+  "selected": {
+    "file": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/selected/paired.json",
+      "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase45/number-nat-refusal23/selected/paired.json",
+      "sha256": "49b5b0f1f18d43c94852f2114af5a402de35c2fb6184dd20b44ab343772fce03"
+    },
+    "selectedComplete": true,
+    "exactDifferences": 2,
+    "discrepancies": 2,
+    "reference": {
+      "tests": 1,
+      "allTests": 1513,
+      "externalTests": 1,
+      "excludedTests": 1513,
+      "probes": 2,
+      "statuses": {
+        "pass": 2
+      },
+      "lanes": {
+        "parse": {
+          "pass": 1
+        },
+        "check": {
+          "pass": 1
+        },
+        "interpreter": {},
+        "js": {},
+        "native": {},
+        "metal": {},
+        "cuda": {}
+      },
+      "namespaces": {
+        "base": {},
+        "check": {},
+        "compile": {},
+        "comptime": {},
+        "cost": {},
+        "eval": {},
+        "flatten": {},
+        "gfx": {},
+        "grade": {},
+        "halt": {},
+        "import": {},
+        "io": {},
+        "page": {},
+        "parse": {},
+        "printer": {},
+        "proof": {},
+        "reg": {},
+        "rfc": {},
+        "run": {},
+        "show": {},
+        "spec": {},
+        "state": {},
+        "stats": {},
+        "stuck": {}
+      },
+      "checkerRejections": 0,
+      "proofTrustRejections": 0,
+      "frontendRejections": 2,
+      "uncheckedExecutions": 0
+    },
+    "candidate": {
+      "tests": 1,
+      "allTests": 1513,
+      "externalTests": 1,
+      "excludedTests": 1513,
+      "probes": 2,
+      "statuses": {
+        "pass": 2
+      },
+      "lanes": {
+        "parse": {
+          "pass": 1
+        },
+        "check": {
+          "pass": 1
+        },
+        "interpreter": {},
+        "js": {},
+        "native": {},
+        "metal": {},
+        "cuda": {}
+      },
+      "namespaces": {
+        "base": {},
+        "check": {},
+        "compile": {},
+        "comptime": {},
+        "cost": {},
+        "eval": {},
+        "flatten": {},
+        "gfx": {},
+        "grade": {},
+        "halt": {},
+        "import": {},
+        "io": {},
+        "page": {},
+        "parse": {},
+        "printer": {},
+        "proof": {},
+        "reg": {},
+        "rfc": {},
+        "run": {},
+        "show": {},
+        "spec": {},
+        "state": {},
+        "stats": {},
+        "stuck": {}
+      },
+      "checkerRejections": 0,
+      "proofTrustRejections": 0,
+      "frontendRejections": 2,
+      "uncheckedExecutions": 0
+    }
+  },
+  "strictExact": true,
+  "finished": "2026-10-04T18:19:10.015Z"
+}

@@ -98,7 +98,7 @@ Maximum absolute half-window drift is 47.9% for Phase44, 52.3% for worker23 and 
 
 ## Bound evidence
 
-All paths below are local raw receipts preserved for the final evidence archive; they are not links to ignored GitHub paths. Summary `selfhost/build/phase45/qualification23/runtime-preview.json` has SHA-256 `da0e85bb7f80497ba4c76054001b76065b8268e8ec27e54158f1ec6dc1493934`. The three consumed report hashes are:
+All paths below are local raw receipts preserved for the final evidence archive; they are not links to ignored GitHub paths. Summary `selfhost/build/phase45/qualification23/runtime-summary.json` has SHA-256 `da0e85bb7f80497ba4c76054001b76065b8268e8ec27e54158f1ec6dc1493934`. The three consumed report hashes are:
 
 - `selfhost/build/phase45/qualification23/runtime-0/report.json`: `5f28b423506840077943a7181d73beed93c0024a764e2577f98dd8ff9529a900`.
 - `selfhost/build/phase45/qualification23/runtime-1/report.json`: `8e28cdec3fd52090f38ee3ed7db34d8fcab44e2f36ddb1e7cc3f0aaca64927c6`.
@@ -107,3 +107,5 @@ All paths below are local raw receipts preserved for the final evidence archive;
 Worker23 API is `e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c`; runtime is `4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26`. See the [phase report](README.md) for separate semantic, host-observation, compiler-cost, complexity and release status.
 
 Renderer `selfhost/build/phase45/render-runtime-report23-v4.py` SHA-256: `d4bc45877ac67752c90e94e9376db9d243c01c760f2c09b05ce557ce97b902bf`.
+
+The final workflow summary is byte-identical to the earlier validated preview; its path was updated only after direct byte comparison.

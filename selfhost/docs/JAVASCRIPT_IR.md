@@ -16,11 +16,13 @@ new self-emitted fixed point. Worker21 changes the runtime exact-entry wrapper
 for admitted nullary definitions while preserving their public function metadata;
 compiler source and the selected runtime must be qualified together.
 
-This guide describes maintained worker23 (`2893882`), including the worker22
-canonical-Unit extension and worker23 exact-entry repair. Fresh hook, nullary and
-Unit controls pass; complete selected-image qualification remains pending.
-Phase44 checked04 remains installed at this checkpoint;
-[`dist/release.json`](../dist/release.json) identifies the actual release.
+This guide describes installed worker23 (compiler/runtime changes through
+`2893882`), including the worker22 canonical-Unit extension and worker23
+exact-entry repair. Selected frontend/backend, composition, mechanism and
+runtime gates pass; release verification and all 42 CLI checks pass.
+[`dist/release.json`](../dist/release.json) identifies the actual release and
+the [qualification receipt](../tools/performance/phase45/evidence/selected-qualification.json)
+records its tested scope, including shared reference failures.
 See the [Phase45 design](../../design/phase45/README.md),
 [worker design](../../design/phase45/general-workers.md) and
 [implementation report](../../implementation/phase45/README.md) for decisions,

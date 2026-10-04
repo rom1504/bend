@@ -4,6 +4,13 @@ Decision note, 2026-10-04. Baseline: selected Phase45 worker23; architecture
 survey committed in `8961ca3`. This records a recommendation and proposed
 experiment, not a target migration, implementation change or new measurement.
 
+**Follow-up:** the bounded [Phase46 experiment](../../implementation/phase46/README.md)
+is now complete. All72 fixed-work timing samples pass. Our C is slower than our
+JS on five selected workloads and roughly tied on closures, while upstream C wins
+on all six. Allocation/continuation diagnostics support improving high-level
+lowering first. Native IO.args has a reproduced compatibility gap. Keep JS primary;
+these six batch workloads do not replace the maintained45-point JS result.
+
 **Keep JavaScript as the maintained primary target. Evaluate the existing C
 backend in a bounded comparison before reallocating the optimization effort.
 Defer direct LLVM IR and machine-code generation until a measured limitation

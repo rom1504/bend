@@ -1,0 +1,5271 @@
+{
+  "kind": "phase46-backend-comparison-summary",
+  "complete": true,
+  "generated": 1791152854.515365,
+  "producer": {
+    "path": "selfhost/tools/performance/phase46/summarize.py",
+    "sha256": "78ecd6b6295bcb1a4144ae327ae1a340d18decb2f3bde8adbcd585e013a56eac",
+    "bytes": 6134
+  },
+  "inputs": [
+    {
+      "path": "selfhost/build/phase46/timing01/report.json",
+      "sha256": "4e887f6868ec850aa430417bd67a6d555c0d2a593617e599ed8f4beb6fc4d317",
+      "bytes": 162151
+    },
+    {
+      "path": "selfhost/build/phase46/cold01/report.json",
+      "sha256": "533c49c228f9cdd72239b15f79281a3d1451812a3fea2392ba733706c0e39a7a",
+      "bytes": 130022
+    },
+    {
+      "path": "selfhost/build/phase46/batch03/report.json",
+      "sha256": "bcf21c22e3c7613c8177b4a7e082a9f39c5f7d16f77d839753fdc132237b4eb1",
+      "bytes": 63401
+    },
+    {
+      "path": "selfhost/build/phase46/pilot02/report.json",
+      "sha256": "9bb65c23b546cdb49ed11716b18558926d0dd53f4aeebff3044f8e635ea40cb6",
+      "bytes": 20259
+    },
+    {
+      "path": "selfhost/build/phase46/expansion01/report.json",
+      "sha256": "7138776e449a6ec98b25a35802f4ce82663be6eefd961ac9b301e5c5b0e7ae14",
+      "bytes": 39773
+    },
+    {
+      "path": "selfhost/build/phase46/diagnostics01/report.json",
+      "sha256": "040fc603689c6307a75cb2ad07c05c5e4f1a4603c9370920a8498bed30970415",
+      "bytes": 50330
+    },
+    {
+      "path": "selfhost/build/phase46/oracles.json",
+      "sha256": "acddea0fcd157f223798ab9b0ecd81c28472461a4a2de8c5535dcfddf1f345a0",
+      "bytes": 14292
+    },
+    {
+      "path": "selfhost/build/phase46/timing-plan01.json",
+      "sha256": "898137f3192f094f6224facd3516fcf824528d6060b8cf22f88ae2e8c7229ca5",
+      "bytes": 2543
+    },
+    {
+      "path": "selfhost/build/phase46/environment.json",
+      "sha256": "2ecc7f8f18a2953d7f74802378102e8763bd695a236ba8d1dd4ed5ae1e69ec30",
+      "bytes": 13497
+    }
+  ],
+  "timingSamples": 72,
+  "coldSamples": 72,
+  "pureCorrectness": 24,
+  "batchFeasibility": 24,
+  "independentCycleOracles": 96,
+  "rows": [
+    {
+      "case": "numeric",
+      "cells": {
+        "upstream-js": {
+          "repetitions": 68272,
+          "warmups": 68272,
+          "batchMs": [
+            527,
+            517,
+            519
+          ],
+          "medianBatchMs": 519,
+          "medianMicrosecondsPerInvocation": 7.601945160534333,
+          "spreadPercent": 1.9267822736030826,
+          "coldMs": [
+            34.26328598288819,
+            30.901224992703646,
+            36.910004972014576
+          ],
+          "medianColdMs": 34.26328598288819,
+          "maxExecutionRssKiB": 57664,
+          "batchEmissionSeconds": 0.8389625779818743,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 0.6169657179852948,
+          "pureClangSeconds": 0,
+          "emittedBytes": 26931,
+          "emittedLines": 1035
+        },
+        "selfhost-js": {
+          "repetitions": 68272,
+          "warmups": 68272,
+          "batchMs": [
+            697,
+            647,
+            644
+          ],
+          "medianBatchMs": 647,
+          "medianMicrosecondsPerInvocation": 9.476798687602532,
+          "spreadPercent": 8.191653786707882,
+          "coldMs": [
+            56.02010199800134,
+            56.3697749748826,
+            60.54621801013127
+          ],
+          "medianColdMs": 56.3697749748826,
+          "maxExecutionRssKiB": 67908,
+          "batchEmissionSeconds": 3.330794823996257,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 2.5226154470001347,
+          "pureClangSeconds": 0,
+          "emittedBytes": 120061,
+          "emittedLines": 809
+        },
+        "upstream-c": {
+          "repetitions": 68272,
+          "warmups": 68272,
+          "batchMs": [
+            222,
+            221,
+            221
+          ],
+          "medianBatchMs": 221,
+          "medianMicrosecondsPerInvocation": 3.237051792828685,
+          "spreadPercent": 0.4524886877828055,
+          "coldMs": [
+            1.8784720450639725,
+            1.8607730162329972,
+            1.880628988146782
+          ],
+          "medianColdMs": 1.8784720450639725,
+          "maxExecutionRssKiB": 6940,
+          "batchEmissionSeconds": 1.085365882026963,
+          "batchClangSeconds": 0.8435215590288863,
+          "pureEmissionSeconds": 0.6171613719779998,
+          "pureClangSeconds": 1.371377463976387,
+          "emittedBytes": 116054,
+          "emittedLines": 4569
+        },
+        "selfhost-c": {
+          "repetitions": 68272,
+          "warmups": 68272,
+          "batchMs": [
+            3246,
+            3262,
+            3257
+          ],
+          "medianBatchMs": 3257,
+          "medianMicrosecondsPerInvocation": 47.706233887977504,
+          "spreadPercent": 0.49124961621123736,
+          "coldMs": [
+            1.9301470019854605,
+            1.8956949934363365,
+            1.9289390183985233
+          ],
+          "medianColdMs": 1.9289390183985233,
+          "maxExecutionRssKiB": 6912,
+          "batchEmissionSeconds": 3.7803800079855137,
+          "batchClangSeconds": 16.18371339899022,
+          "pureEmissionSeconds": 2.2884371310356073,
+          "pureClangSeconds": 0.7189793280558661,
+          "emittedBytes": 1972136,
+          "emittedLines": 58948
+        }
+      },
+      "ratios": {
+        "selfJsOverUpstreamJs": 1.2466281310211946,
+        "selfCOverUpstreamC": 14.737556561085972,
+        "selfCOverSelfJs": 5.034003091190108,
+        "upstreamJsOverUpstreamC": 2.3484162895927603
+      }
+    },
+    {
+      "case": "closures",
+      "cells": {
+        "upstream-js": {
+          "repetitions": 45520,
+          "warmups": 45520,
+          "batchMs": [
+            1018,
+            1017,
+            1035
+          ],
+          "medianBatchMs": 1018,
+          "medianMicrosecondsPerInvocation": 22.363796133567664,
+          "spreadPercent": 1.768172888015717,
+          "coldMs": [
+            29.34235899010673,
+            29.379312007222325,
+            28.614573006052524
+          ],
+          "medianColdMs": 29.34235899010673,
+          "maxExecutionRssKiB": 63636,
+          "batchEmissionSeconds": 0.7577884690253995,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 0.6142317699850537,
+          "pureClangSeconds": 0,
+          "emittedBytes": 26643,
+          "emittedLines": 1028
+        },
+        "selfhost-js": {
+          "repetitions": 45520,
+          "warmups": 45520,
+          "batchMs": [
+            533,
+            542,
+            530
+          ],
+          "medianBatchMs": 533,
+          "medianMicrosecondsPerInvocation": 11.709138840070299,
+          "spreadPercent": 2.25140712945591,
+          "coldMs": [
+            48.53367496980354,
+            48.87280095135793,
+            52.07287997473031
+          ],
+          "medianColdMs": 48.87280095135793,
+          "maxExecutionRssKiB": 69548,
+          "batchEmissionSeconds": 3.3506471139844507,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 2.472700754995458,
+          "pureClangSeconds": 0,
+          "emittedBytes": 112626,
+          "emittedLines": 808
+        },
+        "upstream-c": {
+          "repetitions": 45520,
+          "warmups": 45520,
+          "batchMs": [
+            199,
+            197,
+            196
+          ],
+          "medianBatchMs": 197,
+          "medianMicrosecondsPerInvocation": 4.327768014059754,
+          "spreadPercent": 1.5228426395939088,
+          "coldMs": [
+            1.8234659801237285,
+            1.869241998065263,
+            1.905187964439392
+          ],
+          "medianColdMs": 1.869241998065263,
+          "maxExecutionRssKiB": 6944,
+          "batchEmissionSeconds": 1.0428405560087413,
+          "batchClangSeconds": 0.9246960220043547,
+          "pureEmissionSeconds": 0.6144878960330971,
+          "pureClangSeconds": 0.41329032194335014,
+          "emittedBytes": 123233,
+          "emittedLines": 4796
+        },
+        "selfhost-c": {
+          "repetitions": 45520,
+          "warmups": 45520,
+          "batchMs": [
+            542,
+            542,
+            540
+          ],
+          "medianBatchMs": 542,
+          "medianMicrosecondsPerInvocation": 11.906854130052723,
+          "spreadPercent": 0.36900369003690037,
+          "coldMs": [
+            1.9030109979212284,
+            1.8530149827711284,
+            1.882946991827339
+          ],
+          "medianColdMs": 1.882946991827339,
+          "maxExecutionRssKiB": 6948,
+          "batchEmissionSeconds": 3.840208076988347,
+          "batchClangSeconds": 16.575452513003256,
+          "pureEmissionSeconds": 2.5539687770069577,
+          "pureClangSeconds": 0.6385559579939581,
+          "emittedBytes": 1953495,
+          "emittedLines": 58429
+        }
+      },
+      "ratios": {
+        "selfJsOverUpstreamJs": 0.5235756385068763,
+        "selfCOverUpstreamC": 2.751269035532995,
+        "selfCOverSelfJs": 1.0168855534709194,
+        "upstreamJsOverUpstreamC": 5.16751269035533
+      }
+    },
+    {
+      "case": "tree",
+      "cells": {
+        "upstream-js": {
+          "repetitions": 1360,
+          "warmups": 1360,
+          "batchMs": [
+            634,
+            633,
+            634
+          ],
+          "medianBatchMs": 634,
+          "medianMicrosecondsPerInvocation": 466.1764705882353,
+          "spreadPercent": 0.15772870662460567,
+          "coldMs": [
+            30.648570973426104,
+            31.545692996587604,
+            31.909434008412063
+          ],
+          "medianColdMs": 31.545692996587604,
+          "maxExecutionRssKiB": 88696,
+          "batchEmissionSeconds": 0.7773589210119098,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 0.6549538029939868,
+          "pureClangSeconds": 0,
+          "emittedBytes": 34338,
+          "emittedLines": 1174
+        },
+        "selfhost-js": {
+          "repetitions": 1360,
+          "warmups": 1360,
+          "batchMs": [
+            1984,
+            1974,
+            1984
+          ],
+          "medianBatchMs": 1984,
+          "medianMicrosecondsPerInvocation": 1458.8235294117646,
+          "spreadPercent": 0.5040322580645161,
+          "coldMs": [
+            66.42368598841131,
+            62.14907800313085,
+            61.12939497688785
+          ],
+          "medianColdMs": 62.14907800313085,
+          "maxExecutionRssKiB": 95740,
+          "batchEmissionSeconds": 5.699903536995407,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 4.351769867993426,
+          "pureClangSeconds": 0,
+          "emittedBytes": 223979,
+          "emittedLines": 840
+        },
+        "upstream-c": {
+          "repetitions": 1360,
+          "warmups": 1360,
+          "batchMs": [
+            202,
+            202,
+            202
+          ],
+          "medianBatchMs": 202,
+          "medianMicrosecondsPerInvocation": 148.52941176470588,
+          "spreadPercent": 0.0,
+          "coldMs": [
+            1.9041110062971711,
+            1.9510830170474946,
+            1.9391630194149911
+          ],
+          "medianColdMs": 1.9391630194149911,
+          "maxExecutionRssKiB": 6944,
+          "batchEmissionSeconds": 1.2470211519976147,
+          "batchClangSeconds": 1.357307548983954,
+          "pureEmissionSeconds": 0.6757687919889577,
+          "pureClangSeconds": 0.6995789330103435,
+          "emittedBytes": 152362,
+          "emittedLines": 5623
+        },
+        "selfhost-c": {
+          "repetitions": 1360,
+          "warmups": 1360,
+          "batchMs": [
+            2406,
+            2545,
+            2577
+          ],
+          "medianBatchMs": 2545,
+          "medianMicrosecondsPerInvocation": 1871.3235294117646,
+          "spreadPercent": 6.7190569744597255,
+          "coldMs": [
+            4.331009986344725,
+            4.313805955462158,
+            4.4084779801778495
+          ],
+          "medianColdMs": 4.331009986344725,
+          "maxExecutionRssKiB": 59768,
+          "batchEmissionSeconds": 4.8213325290125795,
+          "batchClangSeconds": 21.875657858967315,
+          "pureEmissionSeconds": 2.759581184014678,
+          "pureClangSeconds": 4.110496944980696,
+          "emittedBytes": 2331250,
+          "emittedLines": 68794
+        }
+      },
+      "ratios": {
+        "selfJsOverUpstreamJs": 3.1293375394321767,
+        "selfCOverUpstreamC": 12.599009900990099,
+        "selfCOverSelfJs": 1.2827620967741935,
+        "upstreamJsOverUpstreamC": 3.1386138613861387
+      }
+    },
+    {
+      "case": "array",
+      "cells": {
+        "upstream-js": {
+          "repetitions": 40960,
+          "warmups": 40960,
+          "batchMs": [
+            2210,
+            2151,
+            2267
+          ],
+          "medianBatchMs": 2210,
+          "medianMicrosecondsPerInvocation": 53.955078125,
+          "spreadPercent": 5.248868778280543,
+          "coldMs": [
+            38.66536600980908,
+            30.694034998305142,
+            32.87806798471138
+          ],
+          "medianColdMs": 32.87806798471138,
+          "maxExecutionRssKiB": 65580,
+          "batchEmissionSeconds": 0.7780575799988583,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 0.6354005280300044,
+          "pureClangSeconds": 0,
+          "emittedBytes": 27419,
+          "emittedLines": 1045
+        },
+        "selfhost-js": {
+          "repetitions": 40960,
+          "warmups": 40960,
+          "batchMs": [
+            3367,
+            3738,
+            3395
+          ],
+          "medianBatchMs": 3395,
+          "medianMicrosecondsPerInvocation": 82.8857421875,
+          "spreadPercent": 10.927835051546392,
+          "coldMs": [
+            52.67578997882083,
+            54.94914704468101,
+            52.68632498336956
+          ],
+          "medianColdMs": 52.68632498336956,
+          "maxExecutionRssKiB": 68092,
+          "batchEmissionSeconds": 3.4972597950254567,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 2.6159405229846016,
+          "pureClangSeconds": 0,
+          "emittedBytes": 130570,
+          "emittedLines": 816
+        },
+        "upstream-c": {
+          "repetitions": 40960,
+          "warmups": 40960,
+          "batchMs": [
+            112,
+            112,
+            125
+          ],
+          "medianBatchMs": 112,
+          "medianMicrosecondsPerInvocation": 2.734375,
+          "spreadPercent": 11.607142857142858,
+          "coldMs": [
+            1.8761800020001829,
+            1.8681450164876878,
+            1.909521990455687
+          ],
+          "medianColdMs": 1.8761800020001829,
+          "maxExecutionRssKiB": 6932,
+          "batchEmissionSeconds": 1.104766873002518,
+          "batchClangSeconds": 0.8829370259772986,
+          "pureEmissionSeconds": 0.6348190229618922,
+          "pureClangSeconds": 0.392527584976051,
+          "emittedBytes": 117740,
+          "emittedLines": 4676
+        },
+        "selfhost-c": {
+          "repetitions": 40960,
+          "warmups": 40960,
+          "batchMs": [
+            15060,
+            14365,
+            14675
+          ],
+          "medianBatchMs": 14675,
+          "medianMicrosecondsPerInvocation": 358.2763671875,
+          "spreadPercent": 4.735945485519591,
+          "coldMs": [
+            2.208939054980874,
+            2.2856059949845076,
+            2.299047017004341
+          ],
+          "medianColdMs": 2.2856059949845076,
+          "maxExecutionRssKiB": 6948,
+          "batchEmissionSeconds": 3.861605028039776,
+          "batchClangSeconds": 16.821705275971908,
+          "pureEmissionSeconds": 2.3506668109912425,
+          "pureClangSeconds": 0.9867157789994963,
+          "emittedBytes": 2009905,
+          "emittedLines": 59990
+        }
+      },
+      "ratios": {
+        "selfJsOverUpstreamJs": 1.5361990950226245,
+        "selfCOverUpstreamC": 131.02678571428572,
+        "selfCOverSelfJs": 4.322533136966126,
+        "upstreamJsOverUpstreamC": 19.732142857142858
+      }
+    },
+    {
+      "case": "map",
+      "cells": {
+        "upstream-js": {
+          "repetitions": 544,
+          "warmups": 544,
+          "batchMs": [
+            414,
+            409,
+            407
+          ],
+          "medianBatchMs": 409,
+          "medianMicrosecondsPerInvocation": 751.8382352941177,
+          "spreadPercent": 1.7114914425427872,
+          "coldMs": [
+            47.93073900509626,
+            44.88656099420041,
+            44.989684014581144
+          ],
+          "medianColdMs": 44.989684014581144,
+          "maxExecutionRssKiB": 79784,
+          "batchEmissionSeconds": 0.8814624740043655,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 0.797900939011015,
+          "pureClangSeconds": 0,
+          "emittedBytes": 63555,
+          "emittedLines": 1940
+        },
+        "selfhost-js": {
+          "repetitions": 544,
+          "warmups": 544,
+          "batchMs": [
+            592,
+            584,
+            583
+          ],
+          "medianBatchMs": 584,
+          "medianMicrosecondsPerInvocation": 1073.5294117647059,
+          "spreadPercent": 1.5410958904109588,
+          "coldMs": [
+            90.78398201381788,
+            85.0717070279643,
+            87.08907302934676
+          ],
+          "medianColdMs": 87.08907302934676,
+          "maxExecutionRssKiB": 83756,
+          "batchEmissionSeconds": 12.975851403025445,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 12.134231254982296,
+          "pureClangSeconds": 0,
+          "emittedBytes": 385920,
+          "emittedLines": 860
+        },
+        "upstream-c": {
+          "repetitions": 544,
+          "warmups": 544,
+          "batchMs": [
+            187,
+            186,
+            193
+          ],
+          "medianBatchMs": 187,
+          "medianMicrosecondsPerInvocation": 343.75,
+          "spreadPercent": 3.7433155080213902,
+          "coldMs": [
+            2.1826159791089594,
+            2.194544009398669,
+            2.2535810130648315
+          ],
+          "medianColdMs": 2.194544009398669,
+          "maxExecutionRssKiB": 6940,
+          "batchEmissionSeconds": 1.5127303559565917,
+          "batchClangSeconds": 2.0498597160330974,
+          "pureEmissionSeconds": 1.1450237769749947,
+          "pureClangSeconds": 1.68134164204821,
+          "emittedBytes": 322090,
+          "emittedLines": 11381
+        },
+        "selfhost-c": {
+          "repetitions": 544,
+          "warmups": 544,
+          "batchMs": [
+            1546,
+            1549,
+            1565
+          ],
+          "medianBatchMs": 1549,
+          "medianMicrosecondsPerInvocation": 2847.426470588235,
+          "spreadPercent": 1.2265978050355069,
+          "coldMs": [
+            4.85554599436,
+            5.052530963439494,
+            4.91613702615723
+          ],
+          "medianColdMs": 4.91613702615723,
+          "maxExecutionRssKiB": 6888,
+          "batchEmissionSeconds": 5.721298835997004,
+          "batchClangSeconds": 39.2798400450265,
+          "pureEmissionSeconds": 3.9435493490309455,
+          "pureClangSeconds": 22.436143508995883,
+          "emittedBytes": 4032802,
+          "emittedLines": 119413
+        }
+      },
+      "ratios": {
+        "selfJsOverUpstreamJs": 1.4278728606356967,
+        "selfCOverUpstreamC": 8.283422459893048,
+        "selfCOverSelfJs": 2.6523972602739727,
+        "upstreamJsOverUpstreamC": 2.1871657754010694
+      }
+    },
+    {
+      "case": "lexer",
+      "cells": {
+        "upstream-js": {
+          "repetitions": 432,
+          "warmups": 432,
+          "batchMs": [
+            988,
+            989,
+            1012
+          ],
+          "medianBatchMs": 989,
+          "medianMicrosecondsPerInvocation": 2289.3518518518517,
+          "spreadPercent": 2.4266936299292214,
+          "coldMs": [
+            47.26503795245662,
+            47.49502398772165,
+            49.27912598941475
+          ],
+          "medianColdMs": 47.49502398772165,
+          "maxExecutionRssKiB": 67948,
+          "batchEmissionSeconds": 0.7987420949502848,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 0.6554065750096925,
+          "pureClangSeconds": 0,
+          "emittedBytes": 38072,
+          "emittedLines": 1280
+        },
+        "selfhost-js": {
+          "repetitions": 432,
+          "warmups": 432,
+          "batchMs": [
+            1561,
+            1547,
+            1725
+          ],
+          "medianBatchMs": 1561,
+          "medianMicrosecondsPerInvocation": 3613.425925925926,
+          "spreadPercent": 11.402946828955796,
+          "coldMs": [
+            89.33356503257528,
+            88.64657196681947,
+            90.42463498190045
+          ],
+          "medianColdMs": 89.33356503257528,
+          "maxExecutionRssKiB": 71860,
+          "batchEmissionSeconds": 7.374714850971941,
+          "batchClangSeconds": 0,
+          "pureEmissionSeconds": 6.007458103005774,
+          "pureClangSeconds": 0,
+          "emittedBytes": 293695,
+          "emittedLines": 853
+        },
+        "upstream-c": {
+          "repetitions": 432,
+          "warmups": 432,
+          "batchMs": [
+            203,
+            204,
+            202
+          ],
+          "medianBatchMs": 203,
+          "medianMicrosecondsPerInvocation": 469.9074074074074,
+          "spreadPercent": 0.9852216748768473,
+          "coldMs": [
+            2.048373979050666,
+            2.147822000551969,
+            2.0959850517101586
+          ],
+          "medianColdMs": 2.0959850517101586,
+          "maxExecutionRssKiB": 6944,
+          "batchEmissionSeconds": 1.247503220976796,
+          "batchClangSeconds": 1.0065978079801425,
+          "pureEmissionSeconds": 0.7366690050112084,
+          "pureClangSeconds": 0.5769280340173282,
+          "emittedBytes": 145011,
+          "emittedLines": 5594
+        },
+        "selfhost-c": {
+          "repetitions": 432,
+          "warmups": 432,
+          "batchMs": [
+            4412,
+            4522,
+            4463
+          ],
+          "medianBatchMs": 4463,
+          "medianMicrosecondsPerInvocation": 10331.018518518518,
+          "spreadPercent": 2.4647098364328928,
+          "coldMs": [
+            9.493924037087709,
+            9.68416198156774,
+            9.756821964401752
+          ],
+          "medianColdMs": 9.68416198156774,
+          "maxExecutionRssKiB": 10688,
+          "batchEmissionSeconds": 4.473841093014926,
+          "batchClangSeconds": 21.568979586998466,
+          "pureEmissionSeconds": 3.044293820974417,
+          "pureClangSeconds": 5.161676577001344,
+          "emittedBytes": 2513437,
+          "emittedLines": 74090
+        }
+      },
+      "ratios": {
+        "selfJsOverUpstreamJs": 1.5783619817997978,
+        "selfCOverUpstreamC": 21.985221674876847,
+        "selfCOverSelfJs": 2.8590647021140296,
+        "upstreamJsOverUpstreamC": 4.87192118226601
+      }
+    }
+  ],
+  "nativeCounts": [
+    {
+      "case": "numeric",
+      "role": "upstream",
+      "extraBenchCalls": 16,
+      "delta": {
+        "heapAllocCalls": 2,
+        "requestedWords": 3,
+        "hostSegmentEntries": 3,
+        "genericClosureEntries": 0,
+        "allocationClassCounts": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "case": "numeric",
+      "role": "selfhost",
+      "extraBenchCalls": 16,
+      "delta": {
+        "heapAllocCalls": 32821,
+        "requestedWords": 49234,
+        "hostSegmentEntries": 558426,
+        "genericClosureEntries": 49277,
+        "allocationClassCounts": [
+          16410,
+          16410,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "case": "array",
+      "role": "upstream",
+      "extraBenchCalls": 16,
+      "delta": {
+        "heapAllocCalls": 18,
+        "requestedWords": 1027,
+        "hostSegmentEntries": 3,
+        "genericClosureEntries": 0,
+        "allocationClassCounts": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "case": "array",
+      "role": "selfhost",
+      "extraBenchCalls": 16,
+      "delta": {
+        "heapAllocCalls": 393340,
+        "requestedWords": 657590,
+        "hostSegmentEntries": 2885057,
+        "genericClosureEntries": 327842,
+        "allocationClassCounts": [
+          131108,
+          262215,
+          1,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "case": "numeric",
+      "role": "upstream",
+      "samples": 980,
+      "topFrames": [
+        {
+          "function": "$p46$loop$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-upstream-js/program.cjs",
+          "line": 343,
+          "hits": 497,
+          "fraction": 0.5071428571428571
+        },
+        {
+          "function": "$p46$loop$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-upstream-js/program.cjs",
+          "line": 343,
+          "hits": 480,
+          "fraction": 0.4897959183673469
+        },
+        {
+          "function": "io_run",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-upstream-js/program.cjs",
+          "line": 980,
+          "hits": 1,
+          "fraction": 0.0010204081632653062
+        },
+        {
+          "function": "compileForInternalLoader",
+          "url": "node:internal/bootstrap/realm",
+          "line": 383,
+          "hits": 1,
+          "fraction": 0.0010204081632653062
+        },
+        {
+          "function": "f",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-upstream-js/program.cjs",
+          "line": 130,
+          "hits": 1,
+          "fraction": 0.0010204081632653062
+        },
+        {
+          "function": "(root)",
+          "url": "",
+          "line": 0,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "(program)",
+          "url": "",
+          "line": 0,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "",
+          "url": "node:internal/main/run_main_module",
+          "line": 1,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "executeUserEntryPoint",
+          "url": "node:internal/modules/run_main",
+          "line": 140,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "wrapModuleLoad",
+          "url": "node:internal/modules/cjs/loader",
+          "line": 238,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "",
+          "url": "node:internal/modules/cjs/loader",
+          "line": 1267,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "",
+          "url": "node:internal/modules/cjs/loader",
+          "line": 1579,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "",
+          "url": "node:internal/modules/cjs/loader",
+          "line": 1967,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "",
+          "url": "node:internal/modules/cjs/loader",
+          "line": 1823,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-upstream-js/program.cjs",
+          "line": 1,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "io_exit",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-upstream-js/program.cjs",
+          "line": 814,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "f",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-upstream-js/program.cjs",
+          "line": 130,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "run_loop",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-upstream-js/program.cjs",
+          "line": 136,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-upstream-js/program.cjs",
+          "line": 230,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "$$$$047phase37$047fixtures$045new$047numeric$045recurrence$bench$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-upstream-js/program.cjs",
+          "line": 287,
+          "hits": 0,
+          "fraction": 0.0
+        }
+      ]
+    },
+    {
+      "case": "numeric",
+      "role": "selfhost",
+      "samples": 1290,
+      "topFrames": [
+        {
+          "function": "$R_112_52_54_46_108_111_111_112",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-selfhost-js/program.mjs",
+          "line": 805,
+          "hits": 620,
+          "fraction": 0.4806201550387597
+        },
+        {
+          "function": "$R_112_52_54_46_108_111_111_112",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-selfhost-js/program.mjs",
+          "line": 805,
+          "hits": 615,
+          "fraction": 0.47674418604651164
+        },
+        {
+          "function": "$R_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_110_101_119_47_110_117_109_101_114_105_99_45_114_101_99_117_114_114_101_110_99_101_46_112_51_55_46_110_117_109_101_114_105_99",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-selfhost-js/program.mjs",
+          "line": 805,
+          "hits": 14,
+          "fraction": 0.010852713178294573
+        },
+        {
+          "function": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "hits": 3,
+          "fraction": 0.002325581395348837
+        },
+        {
+          "function": "$R_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_110_101_119_47_110_117_109_101_114_105_99_45_114_101_99_117_114_114_101_110_99_101_46_112_51_55_46_110_117_109_101_114_105_99",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/numeric-selfhost-js/program.mjs",
+          "line": 800,
+          "hits": 3,
+          "fraction": 0.002325581395348837
+        },
+        {
+          "function": "(program)",
+          "url": "",
+          "line": 0,
+          "hits": 2,
+          "fraction": 0.0015503875968992248
+        },
+        {
+          "function": "compileForInternalLoader",
+          "url": "node:internal/bootstrap/realm",
+          "line": 383,
+          "hits": 2,
+          "fraction": 0.0015503875968992248
+        },
+        {
+          "function": "normalizeString",
+          "url": "node:path",
+          "line": 92,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "resolve",
+          "url": "node:path",
+          "line": 1245,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "syncLink",
+          "url": "node:internal/modules/esm/module_job",
+          "line": 147,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "resolveSync",
+          "url": "node:internal/modules/esm/loader",
+          "line": 737,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "#updateContext",
+          "url": "node:internal/url",
+          "line": 916,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "compileForInternalLoader",
+          "url": "node:internal/bootstrap/realm",
+          "line": 383,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "compileForInternalLoader",
+          "url": "node:internal/bootstrap/realm",
+          "line": 383,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "compileForInternalLoader",
+          "url": "node:internal/bootstrap/realm",
+          "line": 383,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "makeBitMapDescriptor",
+          "url": "node:internal/streams/writable",
+          "line": 126,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "WritableState",
+          "url": "node:internal/streams/writable",
+          "line": 302,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "channel",
+          "url": "node:diagnostics_channel",
+          "line": 239,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "",
+          "url": "node:internal/crypto/webcrypto",
+          "line": 1,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        },
+        {
+          "function": "",
+          "url": "node:internal/crypto/keys",
+          "line": 1,
+          "hits": 1,
+          "fraction": 0.0007751937984496124
+        }
+      ]
+    },
+    {
+      "case": "array",
+      "role": "upstream",
+      "samples": 4383,
+      "topFrames": [
+        {
+          "function": "$p46$loop$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 339,
+          "hits": 1976,
+          "fraction": 0.4508327629477527
+        },
+        {
+          "function": "$p46$loop$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 339,
+          "hits": 1779,
+          "fraction": 0.405886379192334
+        },
+        {
+          "function": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "hits": 490,
+          "fraction": 0.11179557380789414
+        },
+        {
+          "function": "$$$$047phase37$047fixtures$045historical$047local$045fold$fold$step$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 579,
+          "hits": 24,
+          "fraction": 0.0054757015742642025
+        },
+        {
+          "function": "$$$$047phase37$047fixtures$045historical$047local$045fold$fold$loop$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 320,
+          "hits": 19,
+          "fraction": 0.004334930412959161
+        },
+        {
+          "function": "array_new",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 101,
+          "hits": 19,
+          "fraction": 0.004334930412959161
+        },
+        {
+          "function": "$$$$047phase37$047fixtures$045historical$047local$045fold$fold$cell$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 462,
+          "hits": 14,
+          "fraction": 0.0031941592516541184
+        },
+        {
+          "function": "$$$$047phase37$047fixtures$045historical$047local$045fold$fold$step$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 579,
+          "hits": 12,
+          "fraction": 0.0027378507871321013
+        },
+        {
+          "function": "array_new",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 101,
+          "hits": 12,
+          "fraction": 0.0027378507871321013
+        },
+        {
+          "function": "$$$$047phase37$047fixtures$045historical$047local$045fold$fold$cell$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 462,
+          "hits": 11,
+          "fraction": 0.0025096965548710927
+        },
+        {
+          "function": "$$$$047phase37$047fixtures$045historical$047local$045fold$bench$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 287,
+          "hits": 8,
+          "fraction": 0.0018252338580880675
+        },
+        {
+          "function": "$$$$047phase37$047fixtures$045historical$047local$045fold$fold$step$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 579,
+          "hits": 8,
+          "fraction": 0.0018252338580880675
+        },
+        {
+          "function": "$$$$047phase37$047fixtures$045historical$047local$045fold$fold$cell$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 462,
+          "hits": 6,
+          "fraction": 0.0013689253935660506
+        },
+        {
+          "function": "run_loop",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 136,
+          "hits": 1,
+          "fraction": 0.00022815423226100844
+        },
+        {
+          "function": "$p46$batch$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 291,
+          "hits": 1,
+          "fraction": 0.00022815423226100844
+        },
+        {
+          "function": "$$$$047phase37$047fixtures$045historical$047local$045fold$fold$step$",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 579,
+          "hits": 1,
+          "fraction": 0.00022815423226100844
+        },
+        {
+          "function": "f",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-upstream-js/program.cjs",
+          "line": 130,
+          "hits": 1,
+          "fraction": 0.00022815423226100844
+        },
+        {
+          "function": "compileForInternalLoader",
+          "url": "node:internal/bootstrap/realm",
+          "line": 383,
+          "hits": 1,
+          "fraction": 0.00022815423226100844
+        },
+        {
+          "function": "(root)",
+          "url": "",
+          "line": 0,
+          "hits": 0,
+          "fraction": 0.0
+        },
+        {
+          "function": "(program)",
+          "url": "",
+          "line": 0,
+          "hits": 0,
+          "fraction": 0.0
+        }
+      ]
+    },
+    {
+      "case": "array",
+      "role": "selfhost",
+      "samples": 6609,
+      "topFrames": [
+        {
+          "function": "$R_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_46_102_111_108_100_46_108_111_111_112",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-selfhost-js/program.mjs",
+          "line": 812,
+          "hits": 3111,
+          "fraction": 0.47072174307762144
+        },
+        {
+          "function": "$R_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_46_102_111_108_100_46_108_111_111_112",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-selfhost-js/program.mjs",
+          "line": 812,
+          "hits": 3060,
+          "fraction": 0.46300499319110305
+        },
+        {
+          "function": "$R_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_46_98_101_110_99_104",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-selfhost-js/program.mjs",
+          "line": 812,
+          "hits": 130,
+          "fraction": 0.019670146769556664
+        },
+        {
+          "function": "$R_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_46_98_101_110_99_104",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-selfhost-js/program.mjs",
+          "line": 812,
+          "hits": 122,
+          "fraction": 0.018459676199122407
+        },
+        {
+          "function": "(garbage collector)",
+          "url": "",
+          "line": 0,
+          "hits": 107,
+          "fraction": 0.016190043879558177
+        },
+        {
+          "function": "arrayfill",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-selfhost-js/program.mjs",
+          "line": 428,
+          "hits": 16,
+          "fraction": 0.002420941140868513
+        },
+        {
+          "function": "$R_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_46_102_111_108_100_46_108_111_111_112",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-selfhost-js/program.mjs",
+          "line": 812,
+          "hits": 15,
+          "fraction": 0.0022696323195642307
+        },
+        {
+          "function": "arrayfill",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-selfhost-js/program.mjs",
+          "line": 428,
+          "hits": 13,
+          "fraction": 0.0019670146769556664
+        },
+        {
+          "function": "$R_112_52_54_46_108_111_111_112",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-selfhost-js/program.mjs",
+          "line": 812,
+          "hits": 6,
+          "fraction": 0.0009078529278256923
+        },
+        {
+          "function": "$R_112_52_54_46_108_111_111_112",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-selfhost-js/program.mjs",
+          "line": 812,
+          "hits": 3,
+          "fraction": 0.00045392646391284613
+        },
+        {
+          "function": "$R_46_46_47_112_104_97_115_101_51_55_47_102_105_120_116_117_114_101_115_45_104_105_115_116_111_114_105_99_97_108_47_108_111_99_97_108_45_102_111_108_100_46_102_111_108_100_46_108_111_111_112",
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase46/batch03/array-selfhost-js/program.mjs",
+          "line": 807,
+          "hits": 2,
+          "fraction": 0.0003026176426085641
+        },
+        {
+          "function": "getOwn",
+          "url": "node:internal/bootstrap/realm",
+          "line": 202,
+          "hits": 1,
+          "fraction": 0.00015130882130428205
+        },
+        {
+          "function": "channel",
+          "url": "node:diagnostics_channel",
+          "line": 239,
+          "hits": 1,
+          "fraction": 0.00015130882130428205
+        },
+        {
+          "function": "",
+          "url": "node:internal/crypto/webcrypto",
+          "line": 1,
+          "hits": 1,
+          "fraction": 0.00015130882130428205
+        },
+        {
+          "function": "compileForInternalLoader",
+          "url": "node:internal/bootstrap/realm",
+          "line": 383,
+          "hits": 1,
+          "fraction": 0.00015130882130428205
+        },
+        {
+          "function": "",
+          "url": "node:internal/crypto/keys",
+          "line": 1,
+          "hits": 1,
+          "fraction": 0.00015130882130428205
+        },
+        {
+          "function": "",
+          "url": "node:internal/crypto/util",
+          "line": 129,
+          "hits": 1,
+          "fraction": 0.00015130882130428205
+        },
+        {
+          "function": "",
+          "url": "node:internal/crypto/cipher",
+          "line": 1,
+          "hits": 1,
+          "fraction": 0.00015130882130428205
+        },
+        {
+          "function": "",
+          "url": "node:internal/perf/observe",
+          "line": 1,
+          "hits": 1,
+          "fraction": 0.00015130882130428205
+        },
+        {
+          "function": "syncLink",
+          "url": "node:internal/modules/esm/module_job",
+          "line": 147,
+          "hits": 1,
+          "fraction": 0.00015130882130428205
+        }
+      ]
+    }
+  ],
+  "accounting": {
+    "supervisedJobs": 375,
+    "summedJobSeconds": 743.5466126226238,
+    "occupiedIntervalSeconds": 743.5442862510681,
+    "maxTreeRssBytes": 974065664,
+    "minimumAvailableBytes": 27499528192,
+    "receipts": [
+      {
+        "path": "selfhost/build/phase46/batch01/array-selfhost-c/emission/process.json",
+        "started": 1791151675.783131,
+        "finished": 1791151677.1943793,
+        "wallSeconds": 1.411252374004107,
+        "complete": false,
+        "peakTreeRssBytes": 289742848,
+        "minimumAvailableBytes": 28179996672,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/array-selfhost-js/emission/process.json",
+        "started": 1791151673.108291,
+        "finished": 1791151674.4988859,
+        "wallSeconds": 1.3905966469901614,
+        "complete": false,
+        "peakTreeRssBytes": 293208064,
+        "minimumAvailableBytes": 28178837504,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/array-upstream-c/emission/process.json",
+        "started": 1791151674.938255,
+        "finished": 1791151675.389759,
+        "wallSeconds": 0.4515064859879203,
+        "complete": false,
+        "peakTreeRssBytes": 110882816,
+        "minimumAvailableBytes": 28370067456,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/array-upstream-js/emission/process.json",
+        "started": 1791151672.2632985,
+        "finished": 1791151672.6939902,
+        "wallSeconds": 0.4306952939950861,
+        "complete": false,
+        "peakTreeRssBytes": 114941952,
+        "minimumAvailableBytes": 28361007104,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/closures-selfhost-c/emission/process.json",
+        "started": 1791151664.9939024,
+        "finished": 1791151666.3841193,
+        "wallSeconds": 1.3902212539687753,
+        "complete": false,
+        "peakTreeRssBytes": 290140160,
+        "minimumAvailableBytes": 28175564800,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/closures-selfhost-js/emission/process.json",
+        "started": 1791151662.2714627,
+        "finished": 1791151663.6618292,
+        "wallSeconds": 1.3903682730160654,
+        "complete": false,
+        "peakTreeRssBytes": 292753408,
+        "minimumAvailableBytes": 28172070912,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/closures-upstream-c/emission/process.json",
+        "started": 1791151664.1048262,
+        "finished": 1791151664.5564244,
+        "wallSeconds": 0.4516017120331526,
+        "complete": false,
+        "peakTreeRssBytes": 113631232,
+        "minimumAvailableBytes": 28361580544,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/closures-upstream-js/emission/process.json",
+        "started": 1791151661.403613,
+        "finished": 1791151661.8345897,
+        "wallSeconds": 0.43097828002646565,
+        "complete": false,
+        "peakTreeRssBytes": 114069504,
+        "minimumAvailableBytes": 28363558912,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/lexer-selfhost-c/emission/process.json",
+        "started": 1791151686.7343245,
+        "finished": 1791151688.226728,
+        "wallSeconds": 1.492406496021431,
+        "complete": false,
+        "peakTreeRssBytes": 292950016,
+        "minimumAvailableBytes": 28175831040,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/lexer-selfhost-js/emission/process.json",
+        "started": 1791151683.764125,
+        "finished": 1791151685.2771988,
+        "wallSeconds": 1.5130766400252469,
+        "complete": false,
+        "peakTreeRssBytes": 294014976,
+        "minimumAvailableBytes": 28177952768,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/lexer-upstream-c/emission/process.json",
+        "started": 1791151685.8761094,
+        "finished": 1791151686.3070333,
+        "wallSeconds": 0.43092907301615924,
+        "complete": false,
+        "peakTreeRssBytes": 114679808,
+        "minimumAvailableBytes": 28365918208,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/lexer-upstream-js/emission/process.json",
+        "started": 1791151682.9214883,
+        "finished": 1791151683.3525124,
+        "wallSeconds": 0.4310254749725573,
+        "complete": false,
+        "peakTreeRssBytes": 115245056,
+        "minimumAvailableBytes": 28367032320,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/map-selfhost-c/emission/process.json",
+        "started": 1791151681.1204412,
+        "finished": 1791151682.510527,
+        "wallSeconds": 1.3900888100033626,
+        "complete": false,
+        "peakTreeRssBytes": 292229120,
+        "minimumAvailableBytes": 28178894848,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/map-selfhost-js/emission/process.json",
+        "started": 1791151678.4682095,
+        "finished": 1791151679.8582013,
+        "wallSeconds": 1.3899931729538366,
+        "complete": false,
+        "peakTreeRssBytes": 290213888,
+        "minimumAvailableBytes": 28179628032,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/map-upstream-c/emission/process.json",
+        "started": 1791151680.295161,
+        "finished": 1791151680.7264116,
+        "wallSeconds": 0.43125324399443343,
+        "complete": false,
+        "peakTreeRssBytes": 112709632,
+        "minimumAvailableBytes": 28369334272,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/map-upstream-js/emission/process.json",
+        "started": 1791151677.6079667,
+        "finished": 1791151678.0387142,
+        "wallSeconds": 0.43074953102041036,
+        "complete": false,
+        "peakTreeRssBytes": 113123328,
+        "minimumAvailableBytes": 28368416768,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/numeric-selfhost-c/emission/process.json",
+        "started": 1791151659.6049292,
+        "finished": 1791151660.9542587,
+        "wallSeconds": 1.3493325060117058,
+        "complete": false,
+        "peakTreeRssBytes": 292610048,
+        "minimumAvailableBytes": 28172783616,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/numeric-selfhost-js/emission/process.json",
+        "started": 1791151656.9252386,
+        "finished": 1791151658.2746506,
+        "wallSeconds": 1.3494131559855305,
+        "complete": false,
+        "peakTreeRssBytes": 290189312,
+        "minimumAvailableBytes": 28144975872,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/numeric-upstream-c/emission/process.json",
+        "started": 1791151658.7346177,
+        "finished": 1791151659.165645,
+        "wallSeconds": 0.4310321459779516,
+        "complete": false,
+        "peakTreeRssBytes": 112414720,
+        "minimumAvailableBytes": 28302864384,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/numeric-upstream-js/emission/process.json",
+        "started": 1791151656.0834248,
+        "finished": 1791151656.5146127,
+        "wallSeconds": 0.4311858990113251,
+        "complete": false,
+        "peakTreeRssBytes": 114085888,
+        "minimumAvailableBytes": 28332933120,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/tree-selfhost-c/emission/process.json",
+        "started": 1791151670.423763,
+        "finished": 1791151671.8955634,
+        "wallSeconds": 1.4718050319934264,
+        "complete": false,
+        "peakTreeRssBytes": 290426880,
+        "minimumAvailableBytes": 28174950400,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/tree-selfhost-js/emission/process.json",
+        "started": 1791151667.5882356,
+        "finished": 1791151669.1213093,
+        "wallSeconds": 1.5330750449793413,
+        "complete": false,
+        "peakTreeRssBytes": 291106816,
+        "minimumAvailableBytes": 28174966784,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/tree-upstream-c/emission/process.json",
+        "started": 1791151669.5853639,
+        "finished": 1791151670.056685,
+        "wallSeconds": 0.47132588998647407,
+        "complete": false,
+        "peakTreeRssBytes": 115347456,
+        "minimumAvailableBytes": 28361498624,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch01/tree-upstream-js/emission/process.json",
+        "started": 1791151666.756945,
+        "finished": 1791151667.1879876,
+        "wallSeconds": 0.4310439200489782,
+        "complete": false,
+        "peakTreeRssBytes": 113496064,
+        "minimumAvailableBytes": 28363182080,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/closures-selfhost-c/emission/process.json",
+        "started": 1791151746.1225166,
+        "finished": 1791151750.0163066,
+        "wallSeconds": 3.893792901013512,
+        "complete": true,
+        "peakTreeRssBytes": 373297152,
+        "minimumAvailableBytes": 28093370368,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/closures-selfhost-c/execution/process.json",
+        "started": 1791151766.3552318,
+        "finished": 1791151766.3793352,
+        "wallSeconds": 0.024111840990372002,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28423872512,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/closures-selfhost-c/toolchain/process.json",
+        "started": 1791151750.0181744,
+        "finished": 1791151766.3532732,
+        "wallSeconds": 16.335107946011703,
+        "complete": true,
+        "peakTreeRssBytes": 396349440,
+        "minimumAvailableBytes": 28147273728,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/closures-selfhost-js/emission/process.json",
+        "started": 1791151739.7347739,
+        "finished": 1791151743.0858212,
+        "wallSeconds": 3.351048037991859,
+        "complete": true,
+        "peakTreeRssBytes": 315109376,
+        "minimumAvailableBytes": 28148924416,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/closures-selfhost-js/execution/process.json",
+        "started": 1791151743.1140304,
+        "finished": 1791151743.1991687,
+        "wallSeconds": 0.08514787297463045,
+        "complete": true,
+        "peakTreeRssBytes": 55418880,
+        "minimumAvailableBytes": 28406628352,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/closures-upstream-c/emission/process.json",
+        "started": 1791151743.6142566,
+        "finished": 1791151744.657514,
+        "wallSeconds": 1.043260381964501,
+        "complete": true,
+        "peakTreeRssBytes": 155635712,
+        "minimumAvailableBytes": 28321619968,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/closures-upstream-c/execution/process.json",
+        "started": 1791151745.7115343,
+        "finished": 1791151745.7354681,
+        "wallSeconds": 0.023943128006067127,
+        "complete": true,
+        "peakTreeRssBytes": 516096,
+        "minimumAvailableBytes": 28424495104,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/closures-upstream-c/toolchain/process.json",
+        "started": 1791151744.6806848,
+        "finished": 1791151745.7096562,
+        "wallSeconds": 1.0289812090341002,
+        "complete": true,
+        "peakTreeRssBytes": 144560128,
+        "minimumAvailableBytes": 28403163136,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/closures-upstream-js/emission/process.json",
+        "started": 1791151738.5228465,
+        "finished": 1791151739.280281,
+        "wallSeconds": 0.7574354279786348,
+        "complete": true,
+        "peakTreeRssBytes": 143601664,
+        "minimumAvailableBytes": 28327976960,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/closures-upstream-js/execution/process.json",
+        "started": 1791151739.2975683,
+        "finished": 1791151739.3417573,
+        "wallSeconds": 0.04419804998906329,
+        "complete": true,
+        "peakTreeRssBytes": 33812480,
+        "minimumAvailableBytes": 28412243968,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/numeric-selfhost-c/emission/process.json",
+        "started": 1791151717.2158306,
+        "finished": 1791151721.1592336,
+        "wallSeconds": 3.943405901954975,
+        "complete": true,
+        "peakTreeRssBytes": 370827264,
+        "minimumAvailableBytes": 28096266240,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/numeric-selfhost-c/execution/process.json",
+        "started": 1791151738.0948386,
+        "finished": 1791151738.118557,
+        "wallSeconds": 0.023727396968752146,
+        "complete": true,
+        "peakTreeRssBytes": 516096,
+        "minimumAvailableBytes": 28419747840,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/numeric-selfhost-c/toolchain/process.json",
+        "started": 1791151721.1797304,
+        "finished": 1791151738.092883,
+        "wallSeconds": 16.913162309967447,
+        "complete": true,
+        "peakTreeRssBytes": 400031744,
+        "minimumAvailableBytes": 28130328576,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/numeric-selfhost-js/emission/process.json",
+        "started": 1791151710.8168883,
+        "finished": 1791151714.1482701,
+        "wallSeconds": 3.3313806380028836,
+        "complete": true,
+        "peakTreeRssBytes": 310804480,
+        "minimumAvailableBytes": 28158607360,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/numeric-selfhost-js/execution/process.json",
+        "started": 1791151714.150156,
+        "finished": 1791151714.2354503,
+        "wallSeconds": 0.0853032250306569,
+        "complete": true,
+        "peakTreeRssBytes": 57729024,
+        "minimumAvailableBytes": 28409778176,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/numeric-upstream-c/emission/process.json",
+        "started": 1791151714.6706812,
+        "finished": 1791151715.8364155,
+        "wallSeconds": 1.1657377619994804,
+        "complete": true,
+        "peakTreeRssBytes": 159936512,
+        "minimumAvailableBytes": 28316979200,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/numeric-upstream-c/execution/process.json",
+        "started": 1791151716.7852752,
+        "finished": 1791151716.8093271,
+        "wallSeconds": 0.02406064298702404,
+        "complete": true,
+        "peakTreeRssBytes": 524288,
+        "minimumAvailableBytes": 28425785344,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/numeric-upstream-c/toolchain/process.json",
+        "started": 1791151715.8383212,
+        "finished": 1791151716.7832234,
+        "wallSeconds": 0.9449114099843428,
+        "complete": true,
+        "peakTreeRssBytes": 142684160,
+        "minimumAvailableBytes": 28405600256,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/numeric-upstream-js/emission/process.json",
+        "started": 1791151709.595212,
+        "finished": 1791151710.3727663,
+        "wallSeconds": 0.7775537139968947,
+        "complete": true,
+        "peakTreeRssBytes": 145907712,
+        "minimumAvailableBytes": 28331544576,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch02/numeric-upstream-js/execution/process.json",
+        "started": 1791151710.3907988,
+        "finished": 1791151710.4346344,
+        "wallSeconds": 0.04384120902977884,
+        "complete": true,
+        "peakTreeRssBytes": 41017344,
+        "minimumAvailableBytes": 28415758336,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/array-selfhost-c/emission/process.json",
+        "started": 1791151941.6404939,
+        "finished": 1791151945.5020967,
+        "wallSeconds": 3.861605028039776,
+        "complete": true,
+        "peakTreeRssBytes": 368197632,
+        "minimumAvailableBytes": 28049764352,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/array-selfhost-c/execution/process.json",
+        "started": 1791151962.3715444,
+        "finished": 1791151962.395727,
+        "wallSeconds": 0.02419213199755177,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28379000832,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/array-selfhost-c/toolchain/process.json",
+        "started": 1791151945.5042827,
+        "finished": 1791151962.3259795,
+        "wallSeconds": 16.821705275971908,
+        "complete": true,
+        "peakTreeRssBytes": 406523904,
+        "minimumAvailableBytes": 28075622400,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/array-selfhost-js/emission/process.json",
+        "started": 1791151935.1117208,
+        "finished": 1791151938.60898,
+        "wallSeconds": 3.4972597950254567,
+        "complete": true,
+        "peakTreeRssBytes": 311500800,
+        "minimumAvailableBytes": 28112519168,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/array-selfhost-js/execution/process.json",
+        "started": 1791151938.680583,
+        "finished": 1791151938.7865386,
+        "wallSeconds": 0.10596675699343905,
+        "complete": true,
+        "peakTreeRssBytes": 55631872,
+        "minimumAvailableBytes": 28366790656,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/array-upstream-c/emission/process.json",
+        "started": 1791151939.1917822,
+        "finished": 1791151940.296546,
+        "wallSeconds": 1.104766873002518,
+        "complete": true,
+        "peakTreeRssBytes": 156426240,
+        "minimumAvailableBytes": 28264722432,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/array-upstream-c/execution/process.json",
+        "started": 1791151941.2151496,
+        "finished": 1791151941.2391841,
+        "wallSeconds": 0.024042731965892017,
+        "complete": true,
+        "peakTreeRssBytes": 524288,
+        "minimumAvailableBytes": 28377427968,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/array-upstream-c/toolchain/process.json",
+        "started": 1791151940.3303866,
+        "finished": 1791151941.2133138,
+        "wallSeconds": 0.8829370259772986,
+        "complete": true,
+        "peakTreeRssBytes": 143261696,
+        "minimumAvailableBytes": 28348952576,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/array-upstream-js/emission/process.json",
+        "started": 1791151933.864377,
+        "finished": 1791151934.6424341,
+        "wallSeconds": 0.7780575799988583,
+        "complete": true,
+        "peakTreeRssBytes": 147865600,
+        "minimumAvailableBytes": 28286623744,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/array-upstream-js/execution/process.json",
+        "started": 1791151934.6443214,
+        "finished": 1791151934.708878,
+        "wallSeconds": 0.06456485000671819,
+        "complete": true,
+        "peakTreeRssBytes": 53387264,
+        "minimumAvailableBytes": 28370886656,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/closures-selfhost-c/emission/process.json",
+        "started": 1791151875.2965477,
+        "finished": 1791151879.136753,
+        "wallSeconds": 3.840208076988347,
+        "complete": true,
+        "peakTreeRssBytes": 371113984,
+        "minimumAvailableBytes": 28081459200,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/closures-selfhost-c/execution/process.json",
+        "started": 1791151895.7797108,
+        "finished": 1791151895.8038948,
+        "wallSeconds": 0.024193576944526285,
+        "complete": true,
+        "peakTreeRssBytes": 581632,
+        "minimumAvailableBytes": 28410236928,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/closures-selfhost-c/toolchain/process.json",
+        "started": 1791151879.1597502,
+        "finished": 1791151895.7351935,
+        "wallSeconds": 16.575452513003256,
+        "complete": true,
+        "peakTreeRssBytes": 399433728,
+        "minimumAvailableBytes": 28107767808,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/closures-selfhost-js/emission/process.json",
+        "started": 1791151869.0048692,
+        "finished": 1791151872.3555152,
+        "wallSeconds": 3.3506471139844507,
+        "complete": true,
+        "peakTreeRssBytes": 314429440,
+        "minimumAvailableBytes": 28140052480,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/closures-selfhost-js/execution/process.json",
+        "started": 1791151872.357443,
+        "finished": 1791151872.4425912,
+        "wallSeconds": 0.08515737898414955,
+        "complete": true,
+        "peakTreeRssBytes": 57405440,
+        "minimumAvailableBytes": 28395053056,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/closures-upstream-c/emission/process.json",
+        "started": 1791151872.8716109,
+        "finished": 1791151873.914449,
+        "wallSeconds": 1.0428405560087413,
+        "complete": true,
+        "peakTreeRssBytes": 155430912,
+        "minimumAvailableBytes": 28309897216,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/closures-upstream-c/execution/process.json",
+        "started": 1791151874.8699875,
+        "finished": 1791151874.8935914,
+        "wallSeconds": 0.0236117800232023,
+        "complete": true,
+        "peakTreeRssBytes": 516096,
+        "minimumAvailableBytes": 28411973632,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/closures-upstream-c/toolchain/process.json",
+        "started": 1791151873.9434764,
+        "finished": 1791151874.8681636,
+        "wallSeconds": 0.9246960220043547,
+        "complete": true,
+        "peakTreeRssBytes": 143548416,
+        "minimumAvailableBytes": 28391268352,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/closures-upstream-js/emission/process.json",
+        "started": 1791151867.7632124,
+        "finished": 1791151868.521,
+        "wallSeconds": 0.7577884690253995,
+        "complete": true,
+        "peakTreeRssBytes": 144961536,
+        "minimumAvailableBytes": 28319649792,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/closures-upstream-js/execution/process.json",
+        "started": 1791151868.5397758,
+        "finished": 1791151868.5844133,
+        "wallSeconds": 0.044646369002293795,
+        "complete": true,
+        "peakTreeRssBytes": 36179968,
+        "minimumAvailableBytes": 28404785152,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/lexer-selfhost-c/emission/process.json",
+        "started": 1791152039.323341,
+        "finished": 1791152043.7971783,
+        "wallSeconds": 4.473841093014926,
+        "complete": true,
+        "peakTreeRssBytes": 416415744,
+        "minimumAvailableBytes": 27997761536,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/lexer-selfhost-c/execution/process.json",
+        "started": 1791152065.4544203,
+        "finished": 1791152065.4773824,
+        "wallSeconds": 0.022967853001318872,
+        "complete": true,
+        "peakTreeRssBytes": 520192,
+        "minimumAvailableBytes": 28376879104,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/lexer-selfhost-c/toolchain/process.json",
+        "started": 1791152043.839455,
+        "finished": 1791152065.4084246,
+        "wallSeconds": 21.568979586998466,
+        "complete": true,
+        "peakTreeRssBytes": 519970816,
+        "minimumAvailableBytes": 27981209600,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/lexer-selfhost-js/emission/process.json",
+        "started": 1791152028.6055176,
+        "finished": 1791152035.9802308,
+        "wallSeconds": 7.374714850971941,
+        "complete": true,
+        "peakTreeRssBytes": 331522048,
+        "minimumAvailableBytes": 28082212864,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/lexer-selfhost-js/execution/process.json",
+        "started": 1791152036.0067372,
+        "finished": 1791152036.1736434,
+        "wallSeconds": 0.16691601101774722,
+        "complete": true,
+        "peakTreeRssBytes": 68698112,
+        "minimumAvailableBytes": 28355272704,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/lexer-upstream-c/emission/process.json",
+        "started": 1791152036.5986404,
+        "finished": 1791152037.8461404,
+        "wallSeconds": 1.247503220976796,
+        "complete": true,
+        "peakTreeRssBytes": 201756672,
+        "minimumAvailableBytes": 28226195456,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/lexer-upstream-c/execution/process.json",
+        "started": 1791152038.8817663,
+        "finished": 1791152038.905448,
+        "wallSeconds": 0.0236896249698475,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28377063424,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/lexer-upstream-c/toolchain/process.json",
+        "started": 1791152037.8732994,
+        "finished": 1791152038.8798883,
+        "wallSeconds": 1.0065978079801425,
+        "complete": true,
+        "peakTreeRssBytes": 144175104,
+        "minimumAvailableBytes": 28354641920,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/lexer-upstream-js/emission/process.json",
+        "started": 1791152027.288797,
+        "finished": 1791152028.0875385,
+        "wallSeconds": 0.7987420949502848,
+        "complete": true,
+        "peakTreeRssBytes": 151945216,
+        "minimumAvailableBytes": 28278808576,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/lexer-upstream-js/execution/process.json",
+        "started": 1791152028.0893965,
+        "finished": 1791152028.1544003,
+        "wallSeconds": 0.06501218699850142,
+        "complete": true,
+        "peakTreeRssBytes": 54968320,
+        "minimumAvailableBytes": 28362231808,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/map-selfhost-c/emission/process.json",
+        "started": 1791151981.7882245,
+        "finished": 1791151987.5095205,
+        "wallSeconds": 5.721298835997004,
+        "complete": true,
+        "peakTreeRssBytes": 500838400,
+        "minimumAvailableBytes": 27910504448,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/map-selfhost-c/execution/process.json",
+        "started": 1791152026.8380513,
+        "finished": 1791152026.862321,
+        "wallSeconds": 0.024278583005070686,
+        "complete": true,
+        "peakTreeRssBytes": 520192,
+        "minimumAvailableBytes": 28376797184,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/map-selfhost-c/toolchain/process.json",
+        "started": 1791151987.5299158,
+        "finished": 1791152026.8097463,
+        "wallSeconds": 39.2798400450265,
+        "complete": true,
+        "peakTreeRssBytes": 974065664,
+        "minimumAvailableBytes": 27499528192,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/map-selfhost-js/emission/process.json",
+        "started": 1791151964.2176108,
+        "finished": 1791151977.1934612,
+        "wallSeconds": 12.975851403025445,
+        "complete": true,
+        "peakTreeRssBytes": 324968448,
+        "minimumAvailableBytes": 28098625536,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/map-selfhost-js/execution/process.json",
+        "started": 1791151977.213005,
+        "finished": 1791151977.3596466,
+        "wallSeconds": 0.14665091602364555,
+        "complete": true,
+        "peakTreeRssBytes": 70574080,
+        "minimumAvailableBytes": 28358885376,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/map-upstream-c/emission/process.json",
+        "started": 1791151977.763749,
+        "finished": 1791151979.2764769,
+        "wallSeconds": 1.5127303559565917,
+        "complete": true,
+        "peakTreeRssBytes": 208904192,
+        "minimumAvailableBytes": 28222763008,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/map-upstream-c/execution/process.json",
+        "started": 1791151981.34806,
+        "finished": 1791151981.3723183,
+        "wallSeconds": 0.02426617097808048,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28379013120,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/map-upstream-c/toolchain/process.json",
+        "started": 1791151979.2963145,
+        "finished": 1791151981.3461647,
+        "wallSeconds": 2.0498597160330974,
+        "complete": true,
+        "peakTreeRssBytes": 155160576,
+        "minimumAvailableBytes": 28343775232,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/map-upstream-js/emission/process.json",
+        "started": 1791151962.8131943,
+        "finished": 1791151963.6946566,
+        "wallSeconds": 0.8814624740043655,
+        "complete": true,
+        "peakTreeRssBytes": 153571328,
+        "minimumAvailableBytes": 28278030336,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/map-upstream-js/execution/process.json",
+        "started": 1791151963.721393,
+        "finished": 1791151963.786534,
+        "wallSeconds": 0.06514996499754488,
+        "complete": true,
+        "peakTreeRssBytes": 51773440,
+        "minimumAvailableBytes": 28364025856,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/numeric-selfhost-c/emission/process.json",
+        "started": 1791151847.25804,
+        "finished": 1791151851.0384173,
+        "wallSeconds": 3.7803800079855137,
+        "complete": true,
+        "peakTreeRssBytes": 368136192,
+        "minimumAvailableBytes": 28081631232,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/numeric-selfhost-c/execution/process.json",
+        "started": 1791151867.3213966,
+        "finished": 1791151867.3455431,
+        "wallSeconds": 0.02415599796222523,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28411461632,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/numeric-selfhost-c/toolchain/process.json",
+        "started": 1791151851.0992138,
+        "finished": 1791151867.2829173,
+        "wallSeconds": 16.18371339899022,
+        "complete": true,
+        "peakTreeRssBytes": 398159872,
+        "minimumAvailableBytes": 28123992064,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/numeric-selfhost-js/emission/process.json",
+        "started": 1791151840.9360025,
+        "finished": 1791151844.2667987,
+        "wallSeconds": 3.330794823996257,
+        "complete": true,
+        "peakTreeRssBytes": 313151488,
+        "minimumAvailableBytes": 28138663936,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/numeric-selfhost-js/execution/process.json",
+        "started": 1791151844.2966316,
+        "finished": 1791151844.4033582,
+        "wallSeconds": 0.1067412500269711,
+        "complete": true,
+        "peakTreeRssBytes": 64700416,
+        "minimumAvailableBytes": 28390682624,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/numeric-upstream-c/emission/process.json",
+        "started": 1791151844.8445768,
+        "finished": 1791151845.9299402,
+        "wallSeconds": 1.085365882026963,
+        "complete": true,
+        "peakTreeRssBytes": 157245440,
+        "minimumAvailableBytes": 28303355904,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/numeric-upstream-c/execution/process.json",
+        "started": 1791151846.803397,
+        "finished": 1791151846.8276558,
+        "wallSeconds": 0.0242658460047096,
+        "complete": true,
+        "peakTreeRssBytes": 581632,
+        "minimumAvailableBytes": 28409806848,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/numeric-upstream-c/toolchain/process.json",
+        "started": 1791151845.9578133,
+        "finished": 1791151846.8013263,
+        "wallSeconds": 0.8435215590288863,
+        "complete": true,
+        "peakTreeRssBytes": 142671872,
+        "minimumAvailableBytes": 28389621760,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/numeric-upstream-js/emission/process.json",
+        "started": 1791151839.5374389,
+        "finished": 1791151840.376404,
+        "wallSeconds": 0.8389625779818743,
+        "complete": true,
+        "peakTreeRssBytes": 144248832,
+        "minimumAvailableBytes": 28316823552,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/numeric-upstream-js/execution/process.json",
+        "started": 1791151840.4631207,
+        "finished": 1791151840.5280094,
+        "wallSeconds": 0.06489577400498092,
+        "complete": true,
+        "peakTreeRssBytes": 53080064,
+        "minimumAvailableBytes": 28395503616,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/tree-selfhost-c/emission/process.json",
+        "started": 1791151906.739854,
+        "finished": 1791151911.5611842,
+        "wallSeconds": 4.8213325290125795,
+        "complete": true,
+        "peakTreeRssBytes": 367951872,
+        "minimumAvailableBytes": 28050178048,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/tree-selfhost-c/execution/process.json",
+        "started": 1791151933.4399638,
+        "finished": 1791151933.4628425,
+        "wallSeconds": 0.02288384799612686,
+        "complete": true,
+        "peakTreeRssBytes": 581632,
+        "minimumAvailableBytes": 28379856896,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/tree-selfhost-c/toolchain/process.json",
+        "started": 1791151911.5630655,
+        "finished": 1791151933.4387138,
+        "wallSeconds": 21.875657858967315,
+        "complete": true,
+        "peakTreeRssBytes": 496631808,
+        "minimumAvailableBytes": 28007682048,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/tree-selfhost-js/emission/process.json",
+        "started": 1791151897.4336698,
+        "finished": 1791151903.1335716,
+        "wallSeconds": 5.699903536995407,
+        "complete": true,
+        "peakTreeRssBytes": 323100672,
+        "minimumAvailableBytes": 28080500736,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/tree-selfhost-js/execution/process.json",
+        "started": 1791151903.1544144,
+        "finished": 1791151903.2590737,
+        "wallSeconds": 0.10466469899984077,
+        "complete": true,
+        "peakTreeRssBytes": 61337600,
+        "minimumAvailableBytes": 28364722176,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/tree-upstream-c/emission/process.json",
+        "started": 1791151903.6799536,
+        "finished": 1791151904.926972,
+        "wallSeconds": 1.2470211519976147,
+        "complete": true,
+        "peakTreeRssBytes": 159346688,
+        "minimumAvailableBytes": 28274855936,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/tree-upstream-c/execution/process.json",
+        "started": 1791151906.3138728,
+        "finished": 1791151906.3379138,
+        "wallSeconds": 0.02404914901126176,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28383739904,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/tree-upstream-c/toolchain/process.json",
+        "started": 1791151904.954712,
+        "finished": 1791151906.3120098,
+        "wallSeconds": 1.357307548983954,
+        "complete": true,
+        "peakTreeRssBytes": 144990208,
+        "minimumAvailableBytes": 28360450048,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/tree-upstream-js/emission/process.json",
+        "started": 1791151896.2216716,
+        "finished": 1791151896.9990282,
+        "wallSeconds": 0.7773589210119098,
+        "complete": true,
+        "peakTreeRssBytes": 154206208,
+        "minimumAvailableBytes": 28308176896,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/batch03/tree-upstream-js/execution/process.json",
+        "started": 1791151897.0164464,
+        "finished": 1791151897.0592391,
+        "wallSeconds": 0.042796986002940685,
+        "complete": true,
+        "peakTreeRssBytes": 35753984,
+        "minimumAvailableBytes": 28402311168,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration-array02/array-selfhost-c-r0/process.json",
+        "started": 1791152163.9180577,
+        "finished": 1791152169.7518568,
+        "wallSeconds": 5.833805615955498,
+        "complete": true,
+        "peakTreeRssBytes": 14188544,
+        "minimumAvailableBytes": 28336414720,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration-array02/array-selfhost-js-r0/process.json",
+        "started": 1791152162.24013,
+        "finished": 1791152163.7741132,
+        "wallSeconds": 1.5339837429928593,
+        "complete": true,
+        "peakTreeRssBytes": 78680064,
+        "minimumAvailableBytes": 28326551552,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration-array02/array-upstream-c-r0/process.json",
+        "started": 1791152163.8005335,
+        "finished": 1791152163.9062505,
+        "wallSeconds": 0.10572118498384953,
+        "complete": true,
+        "peakTreeRssBytes": 14336000,
+        "minimumAvailableBytes": 28347015168,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration-array02/array-upstream-js-r0/process.json",
+        "started": 1791152161.0767949,
+        "finished": 1791152162.2232015,
+        "wallSeconds": 1.1464098319993354,
+        "complete": true,
+        "peakTreeRssBytes": 70475776,
+        "minimumAvailableBytes": 28330823680,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/array-selfhost-c-r0/process.json",
+        "started": 1791152097.5437632,
+        "finished": 1791152097.6900766,
+        "wallSeconds": 0.1463204039609991,
+        "complete": true,
+        "peakTreeRssBytes": 14372864,
+        "minimumAvailableBytes": 28358991872,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/array-selfhost-js-r0/process.json",
+        "started": 1791152097.3333273,
+        "finished": 1791152097.4803748,
+        "wallSeconds": 0.14705228799721226,
+        "complete": true,
+        "peakTreeRssBytes": 76361728,
+        "minimumAvailableBytes": 28342894592,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/array-upstream-c-r0/process.json",
+        "started": 1791152097.487592,
+        "finished": 1791152097.531861,
+        "wallSeconds": 0.044275783002376556,
+        "complete": true,
+        "peakTreeRssBytes": 9670656,
+        "minimumAvailableBytes": 28363636736,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/array-upstream-js-r0/process.json",
+        "started": 1791152097.1992164,
+        "finished": 1791152097.3256817,
+        "wallSeconds": 0.1264706249930896,
+        "complete": true,
+        "peakTreeRssBytes": 67481600,
+        "minimumAvailableBytes": 28347813888,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/closures-selfhost-c-r0/process.json",
+        "started": 1791152094.4055448,
+        "finished": 1791152094.5526333,
+        "wallSeconds": 0.1470943409949541,
+        "complete": true,
+        "peakTreeRssBytes": 14323712,
+        "minimumAvailableBytes": 28358160384,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/closures-selfhost-js-r0/process.json",
+        "started": 1791152093.973377,
+        "finished": 1791152094.284355,
+        "wallSeconds": 0.3109824520070106,
+        "complete": true,
+        "peakTreeRssBytes": 81051648,
+        "minimumAvailableBytes": 28337500160,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/closures-upstream-c-r0/process.json",
+        "started": 1791152094.306613,
+        "finished": 1791152094.3921905,
+        "wallSeconds": 0.08558234595693648,
+        "complete": true,
+        "peakTreeRssBytes": 14233600,
+        "minimumAvailableBytes": 28358168576,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/closures-upstream-js-r0/process.json",
+        "started": 1791152093.5582383,
+        "finished": 1791152093.9501126,
+        "wallSeconds": 0.39187879097880796,
+        "complete": true,
+        "peakTreeRssBytes": 66969600,
+        "minimumAvailableBytes": 28346343424,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/lexer-selfhost-c-r0/process.json",
+        "started": 1791152100.8966393,
+        "finished": 1791152103.578457,
+        "wallSeconds": 2.681823491002433,
+        "complete": true,
+        "peakTreeRssBytes": 18632704,
+        "minimumAvailableBytes": 28356190208,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/lexer-selfhost-js-r0/process.json",
+        "started": 1791152099.4938447,
+        "finished": 1791152100.7048814,
+        "wallSeconds": 1.2110431360197254,
+        "complete": true,
+        "peakTreeRssBytes": 85688320,
+        "minimumAvailableBytes": 28335828992,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/lexer-upstream-c-r0/process.json",
+        "started": 1791152100.7125127,
+        "finished": 1791152100.8788803,
+        "wallSeconds": 0.16637242899741977,
+        "complete": true,
+        "peakTreeRssBytes": 14229504,
+        "minimumAvailableBytes": 28360404992,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/lexer-upstream-js-r0/process.json",
+        "started": 1791152098.6955547,
+        "finished": 1791152099.4540846,
+        "wallSeconds": 0.7585348970023915,
+        "complete": true,
+        "peakTreeRssBytes": 70148096,
+        "minimumAvailableBytes": 28346421248,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/map-selfhost-c-r0/process.json",
+        "started": 1791152098.459349,
+        "finished": 1791152098.687376,
+        "wallSeconds": 0.22803360997932032,
+        "complete": true,
+        "peakTreeRssBytes": 14344192,
+        "minimumAvailableBytes": 28359917568,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/map-selfhost-js-r0/process.json",
+        "started": 1791152097.9735425,
+        "finished": 1791152098.3462973,
+        "wallSeconds": 0.37276040395954624,
+        "complete": true,
+        "peakTreeRssBytes": 83554304,
+        "minimumAvailableBytes": 28336648192,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/map-upstream-c-r0/process.json",
+        "started": 1791152098.3549678,
+        "finished": 1791152098.420737,
+        "wallSeconds": 0.06577479297993705,
+        "complete": true,
+        "peakTreeRssBytes": 14155776,
+        "minimumAvailableBytes": 28359688192,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/map-upstream-js-r0/process.json",
+        "started": 1791152097.694246,
+        "finished": 1791152097.9633129,
+        "wallSeconds": 0.2690683439723216,
+        "complete": true,
+        "peakTreeRssBytes": 78544896,
+        "minimumAvailableBytes": 28337737728,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/numeric-selfhost-c-r0/process.json",
+        "started": 1791152093.3812897,
+        "finished": 1791152093.5480144,
+        "wallSeconds": 0.16672952903900295,
+        "complete": true,
+        "peakTreeRssBytes": 14176256,
+        "minimumAvailableBytes": 28355952640,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/numeric-selfhost-js-r0/process.json",
+        "started": 1791152093.1330252,
+        "finished": 1791152093.3000622,
+        "wallSeconds": 0.16704240499529988,
+        "complete": true,
+        "peakTreeRssBytes": 78553088,
+        "minimumAvailableBytes": 28337250304,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/numeric-upstream-c-r0/process.json",
+        "started": 1791152093.3049686,
+        "finished": 1791152093.3698359,
+        "wallSeconds": 0.06487083598040044,
+        "complete": true,
+        "peakTreeRssBytes": 11264000,
+        "minimumAvailableBytes": 28358283264,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/numeric-upstream-js-r0/process.json",
+        "started": 1791152092.9648025,
+        "finished": 1791152093.0896869,
+        "wallSeconds": 0.12488754099467769,
+        "complete": true,
+        "peakTreeRssBytes": 65990656,
+        "minimumAvailableBytes": 28344623104,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/tree-selfhost-c-r0/process.json",
+        "started": 1791152096.1181467,
+        "finished": 1791152097.1001718,
+        "wallSeconds": 0.9820313479867764,
+        "complete": true,
+        "peakTreeRssBytes": 33140736,
+        "minimumAvailableBytes": 28340113408,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/tree-selfhost-js-r0/process.json",
+        "started": 1791152094.9401915,
+        "finished": 1791152095.887133,
+        "wallSeconds": 0.9469466260052286,
+        "complete": true,
+        "peakTreeRssBytes": 95367168,
+        "minimumAvailableBytes": 28324343808,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/tree-upstream-c-r0/process.json",
+        "started": 1791152095.9763796,
+        "finished": 1791152096.1027396,
+        "wallSeconds": 0.12636457302141935,
+        "complete": true,
+        "peakTreeRssBytes": 14245888,
+        "minimumAvailableBytes": 28360085504,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/calibration01/tree-upstream-js-r0/process.json",
+        "started": 1791152094.5590708,
+        "finished": 1791152094.9325607,
+        "wallSeconds": 0.37349470000481233,
+        "complete": true,
+        "peakTreeRssBytes": 82964480,
+        "minimumAvailableBytes": 28331388928,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-selfhost-c-r0/process.json",
+        "started": 1791152719.5437062,
+        "finished": 1791152719.5876982,
+        "wallSeconds": 0.04400095000164583,
+        "complete": true,
+        "peakTreeRssBytes": 10063872,
+        "minimumAvailableBytes": 28371496960,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-selfhost-c-r1/process.json",
+        "started": 1791152719.7996395,
+        "finished": 1791152719.844306,
+        "wallSeconds": 0.044673795986454934,
+        "complete": true,
+        "peakTreeRssBytes": 9662464,
+        "minimumAvailableBytes": 28370460672,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-selfhost-c-r2/process.json",
+        "started": 1791152720.0071716,
+        "finished": 1791152720.051671,
+        "wallSeconds": 0.044508654973469675,
+        "complete": true,
+        "peakTreeRssBytes": 9977856,
+        "minimumAvailableBytes": 28370096128,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-selfhost-js-r0/process.json",
+        "started": 1791152719.3749325,
+        "finished": 1791152719.4804497,
+        "wallSeconds": 0.10552650800673291,
+        "complete": true,
+        "peakTreeRssBytes": 61734912,
+        "minimumAvailableBytes": 28355948544,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-selfhost-js-r1/process.json",
+        "started": 1791152719.6295412,
+        "finished": 1791152719.7355905,
+        "wallSeconds": 0.10605790495174006,
+        "complete": true,
+        "peakTreeRssBytes": 73330688,
+        "minimumAvailableBytes": 28351705088,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-selfhost-js-r2/process.json",
+        "started": 1791152720.1582434,
+        "finished": 1791152720.2637854,
+        "wallSeconds": 0.10555017599835992,
+        "complete": true,
+        "peakTreeRssBytes": 62873600,
+        "minimumAvailableBytes": 28354990080,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-upstream-c-r0/process.json",
+        "started": 1791152719.4899879,
+        "finished": 1791152719.5339956,
+        "wallSeconds": 0.04401606699684635,
+        "complete": true,
+        "peakTreeRssBytes": 10006528,
+        "minimumAvailableBytes": 28371238912,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-upstream-c-r1/process.json",
+        "started": 1791152719.7455163,
+        "finished": 1791152719.789472,
+        "wallSeconds": 0.04396413400536403,
+        "complete": true,
+        "peakTreeRssBytes": 10006528,
+        "minimumAvailableBytes": 28371173376,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-upstream-c-r2/process.json",
+        "started": 1791152719.9526076,
+        "finished": 1791152719.9965713,
+        "wallSeconds": 0.04397232102928683,
+        "complete": true,
+        "peakTreeRssBytes": 10051584,
+        "minimumAvailableBytes": 28370661376,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-upstream-js-r0/process.json",
+        "started": 1791152719.2797394,
+        "finished": 1791152719.365534,
+        "wallSeconds": 0.08580324600916356,
+        "complete": true,
+        "peakTreeRssBytes": 57020416,
+        "minimumAvailableBytes": 28357300224,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-upstream-js-r1/process.json",
+        "started": 1791152719.857003,
+        "finished": 1791152719.9426627,
+        "wallSeconds": 0.08566955203423277,
+        "complete": true,
+        "peakTreeRssBytes": 42405888,
+        "minimumAvailableBytes": 28363096064,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/array-upstream-js-r2/process.json",
+        "started": 1791152720.0622838,
+        "finished": 1791152720.1474955,
+        "wallSeconds": 0.08522131101926789,
+        "complete": true,
+        "peakTreeRssBytes": 38588416,
+        "minimumAvailableBytes": 28356796416,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-selfhost-c-r0/process.json",
+        "started": 1791152717.6892447,
+        "finished": 1791152717.7332823,
+        "wallSeconds": 0.044045783986803144,
+        "complete": true,
+        "peakTreeRssBytes": 9990144,
+        "minimumAvailableBytes": 28371103744,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-selfhost-c-r1/process.json",
+        "started": 1791152717.9030497,
+        "finished": 1791152717.9475422,
+        "wallSeconds": 0.044500843971036375,
+        "complete": true,
+        "peakTreeRssBytes": 10055680,
+        "minimumAvailableBytes": 28370845696,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-selfhost-c-r2/process.json",
+        "started": 1791152718.0975277,
+        "finished": 1791152718.1419718,
+        "wallSeconds": 0.04445204301737249,
+        "complete": true,
+        "peakTreeRssBytes": 9969664,
+        "minimumAvailableBytes": 28370030592,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-selfhost-js-r0/process.json",
+        "started": 1791152717.5263574,
+        "finished": 1791152717.6321435,
+        "wallSeconds": 0.10579425399191678,
+        "complete": true,
+        "peakTreeRssBytes": 62861312,
+        "minimumAvailableBytes": 28355129344,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-selfhost-js-r1/process.json",
+        "started": 1791152717.7399864,
+        "finished": 1791152717.8453143,
+        "wallSeconds": 0.10533657600171864,
+        "complete": true,
+        "peakTreeRssBytes": 62676992,
+        "minimumAvailableBytes": 28354924544,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-selfhost-js-r2/process.json",
+        "started": 1791152718.2415178,
+        "finished": 1791152718.3475773,
+        "wallSeconds": 0.10606927896151319,
+        "complete": true,
+        "peakTreeRssBytes": 57638912,
+        "minimumAvailableBytes": 28358279168,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-upstream-c-r0/process.json",
+        "started": 1791152717.638428,
+        "finished": 1791152717.6829422,
+        "wallSeconds": 0.044522086973302066,
+        "complete": true,
+        "peakTreeRssBytes": 9719808,
+        "minimumAvailableBytes": 28370350080,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-upstream-c-r1/process.json",
+        "started": 1791152717.8521678,
+        "finished": 1791152717.8962917,
+        "wallSeconds": 0.044132378010544926,
+        "complete": true,
+        "peakTreeRssBytes": 9986048,
+        "minimumAvailableBytes": 28371062784,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-upstream-c-r2/process.json",
+        "started": 1791152718.0462234,
+        "finished": 1791152718.0903833,
+        "wallSeconds": 0.044168359017930925,
+        "complete": true,
+        "peakTreeRssBytes": 10006528,
+        "minimumAvailableBytes": 28370546688,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-upstream-js-r0/process.json",
+        "started": 1791152717.4358351,
+        "finished": 1791152717.5206249,
+        "wallSeconds": 0.08479855000041425,
+        "complete": true,
+        "peakTreeRssBytes": 38821888,
+        "minimumAvailableBytes": 28366315520,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-upstream-js-r1/process.json",
+        "started": 1791152717.9544475,
+        "finished": 1791152718.0394356,
+        "wallSeconds": 0.08499669103184715,
+        "complete": true,
+        "peakTreeRssBytes": 40759296,
+        "minimumAvailableBytes": 28364214272,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/closures-upstream-js-r2/process.json",
+        "started": 1791152718.1491609,
+        "finished": 1791152718.2340777,
+        "wallSeconds": 0.08492529898649082,
+        "complete": true,
+        "peakTreeRssBytes": 40947712,
+        "minimumAvailableBytes": 28365770752,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-selfhost-c-r0/process.json",
+        "started": 1791152721.7989392,
+        "finished": 1791152721.8637364,
+        "wallSeconds": 0.06480694602942094,
+        "complete": true,
+        "peakTreeRssBytes": 11354112,
+        "minimumAvailableBytes": 28367937536,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-selfhost-c-r1/process.json",
+        "started": 1791152722.0967913,
+        "finished": 1791152722.16133,
+        "wallSeconds": 0.06454575201496482,
+        "complete": true,
+        "peakTreeRssBytes": 11440128,
+        "minimumAvailableBytes": 28367679488,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-selfhost-c-r2/process.json",
+        "started": 1791152722.3557525,
+        "finished": 1791152722.4204311,
+        "wallSeconds": 0.06468727596802637,
+        "complete": true,
+        "peakTreeRssBytes": 11370496,
+        "minimumAvailableBytes": 28366839808,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-selfhost-js-r0/process.json",
+        "started": 1791152721.544656,
+        "finished": 1791152721.6914387,
+        "wallSeconds": 0.14679130696458742,
+        "complete": true,
+        "peakTreeRssBytes": 76423168,
+        "minimumAvailableBytes": 28346089472,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-selfhost-js-r1/process.json",
+        "started": 1791152721.8777444,
+        "finished": 1791152722.0242894,
+        "wallSeconds": 0.1465520199853927,
+        "complete": true,
+        "peakTreeRssBytes": 74723328,
+        "minimumAvailableBytes": 28348444672,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-selfhost-js-r2/process.json",
+        "started": 1791152722.5571792,
+        "finished": 1791152722.7036016,
+        "wallSeconds": 0.14643168699694797,
+        "complete": true,
+        "peakTreeRssBytes": 73965568,
+        "minimumAvailableBytes": 28347023360,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-upstream-c-r0/process.json",
+        "started": 1791152721.7053988,
+        "finished": 1791152721.750599,
+        "wallSeconds": 0.04520857898751274,
+        "complete": true,
+        "peakTreeRssBytes": 10006528,
+        "minimumAvailableBytes": 28369743872,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-upstream-c-r1/process.json",
+        "started": 1791152722.0385332,
+        "finished": 1791152722.082602,
+        "wallSeconds": 0.04407712002284825,
+        "complete": true,
+        "peakTreeRssBytes": 10092544,
+        "minimumAvailableBytes": 28369485824,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-upstream-c-r2/process.json",
+        "started": 1791152722.2955432,
+        "finished": 1791152722.3399868,
+        "wallSeconds": 0.044451683992519975,
+        "complete": true,
+        "peakTreeRssBytes": 9764864,
+        "minimumAvailableBytes": 28368642048,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-upstream-js-r0/process.json",
+        "started": 1791152721.4249575,
+        "finished": 1791152721.530881,
+        "wallSeconds": 0.10593258898006752,
+        "complete": true,
+        "peakTreeRssBytes": 59924480,
+        "minimumAvailableBytes": 28355072000,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-upstream-js-r1/process.json",
+        "started": 1791152722.1765063,
+        "finished": 1791152722.2821214,
+        "wallSeconds": 0.10562368400860578,
+        "complete": true,
+        "peakTreeRssBytes": 60116992,
+        "minimumAvailableBytes": 28354314240,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/lexer-upstream-js-r2/process.json",
+        "started": 1791152722.4361794,
+        "finished": 1791152722.541937,
+        "wallSeconds": 0.10576488898368552,
+        "complete": true,
+        "peakTreeRssBytes": 58183680,
+        "minimumAvailableBytes": 28354031616,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-selfhost-c-r0/process.json",
+        "started": 1791152720.6193392,
+        "finished": 1791152720.6637845,
+        "wallSeconds": 0.04445394704816863,
+        "complete": true,
+        "peakTreeRssBytes": 10059776,
+        "minimumAvailableBytes": 28369268736,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-selfhost-c-r1/process.json",
+        "started": 1791152720.8900354,
+        "finished": 1791152720.9341128,
+        "wallSeconds": 0.04408697702456266,
+        "complete": true,
+        "peakTreeRssBytes": 10096640,
+        "minimumAvailableBytes": 28369223680,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-selfhost-c-r2/process.json",
+        "started": 1791152721.1185415,
+        "finished": 1791152721.1629498,
+        "wallSeconds": 0.04441683302866295,
+        "complete": true,
+        "peakTreeRssBytes": 9621504,
+        "minimumAvailableBytes": 28369301504,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-selfhost-js-r0/process.json",
+        "started": 1791152720.393505,
+        "finished": 1791152720.5407145,
+        "wallSeconds": 0.14721824397565797,
+        "complete": true,
+        "peakTreeRssBytes": 72876032,
+        "minimumAvailableBytes": 28348710912,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-selfhost-js-r1/process.json",
+        "started": 1791152720.6863196,
+        "finished": 1791152720.8124888,
+        "wallSeconds": 0.1261778409825638,
+        "complete": true,
+        "peakTreeRssBytes": 70963200,
+        "minimumAvailableBytes": 28349030400,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-selfhost-js-r2/process.json",
+        "started": 1791152721.2844105,
+        "finished": 1791152721.4105153,
+        "wallSeconds": 0.1261131289647892,
+        "complete": true,
+        "peakTreeRssBytes": 71016448,
+        "minimumAvailableBytes": 28349308928,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-upstream-c-r0/process.json",
+        "started": 1791152720.5542376,
+        "finished": 1791152720.5986273,
+        "wallSeconds": 0.044397887017112225,
+        "complete": true,
+        "peakTreeRssBytes": 10162176,
+        "minimumAvailableBytes": 28370042880,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-upstream-c-r1/process.json",
+        "started": 1791152720.82641,
+        "finished": 1791152720.87082,
+        "wallSeconds": 0.04441921302350238,
+        "complete": true,
+        "peakTreeRssBytes": 10002432,
+        "minimumAvailableBytes": 28369297408,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-upstream-c-r2/process.json",
+        "started": 1791152721.0530515,
+        "finished": 1791152721.0970304,
+        "wallSeconds": 0.043987407989334315,
+        "complete": true,
+        "peakTreeRssBytes": 10067968,
+        "minimumAvailableBytes": 28369301504,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-upstream-js-r0/process.json",
+        "started": 1791152720.2750168,
+        "finished": 1791152720.3804493,
+        "wallSeconds": 0.10544104204745963,
+        "complete": true,
+        "peakTreeRssBytes": 54816768,
+        "minimumAvailableBytes": 28358610944,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-upstream-js-r1/process.json",
+        "started": 1791152720.955252,
+        "finished": 1791152721.040368,
+        "wallSeconds": 0.08512476802570745,
+        "complete": true,
+        "peakTreeRssBytes": 58642432,
+        "minimumAvailableBytes": 28353826816,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/map-upstream-js-r2/process.json",
+        "started": 1791152721.18438,
+        "finished": 1791152721.2699182,
+        "wallSeconds": 0.08554645301774144,
+        "complete": true,
+        "peakTreeRssBytes": 58675200,
+        "minimumAvailableBytes": 28354170880,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-selfhost-c-r0/process.json",
+        "started": 1791152716.7674441,
+        "finished": 1791152716.8101325,
+        "wallSeconds": 0.04269210295751691,
+        "complete": true,
+        "peakTreeRssBytes": 10153984,
+        "minimumAvailableBytes": 28369424384,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-selfhost-c-r1/process.json",
+        "started": 1791152716.9751167,
+        "finished": 1791152717.0196095,
+        "wallSeconds": 0.044500648975372314,
+        "complete": true,
+        "peakTreeRssBytes": 10162176,
+        "minimumAvailableBytes": 28369842176,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-selfhost-c-r2/process.json",
+        "started": 1791152717.165138,
+        "finished": 1791152717.2096314,
+        "wallSeconds": 0.04450124897994101,
+        "complete": true,
+        "peakTreeRssBytes": 9969664,
+        "minimumAvailableBytes": 28369043456,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-selfhost-js-r0/process.json",
+        "started": 1791152716.6160543,
+        "finished": 1791152716.7203255,
+        "wallSeconds": 0.10427509801229462,
+        "complete": true,
+        "peakTreeRssBytes": 70815744,
+        "minimumAvailableBytes": 28350980096,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-selfhost-js-r1/process.json",
+        "started": 1791152716.8151016,
+        "finished": 1791152716.9207025,
+        "wallSeconds": 0.10560925398021936,
+        "complete": true,
+        "peakTreeRssBytes": 70893568,
+        "minimumAvailableBytes": 28352004096,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-selfhost-js-r2/process.json",
+        "started": 1791152717.304437,
+        "finished": 1791152717.429603,
+        "wallSeconds": 0.12516996799968183,
+        "complete": true,
+        "peakTreeRssBytes": 75182080,
+        "minimumAvailableBytes": 28346269696,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-upstream-c-r0/process.json",
+        "started": 1791152716.7224607,
+        "finished": 1791152716.7651823,
+        "wallSeconds": 0.042725228995550424,
+        "complete": true,
+        "peakTreeRssBytes": 10166272,
+        "minimumAvailableBytes": 28369084416,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-upstream-c-r1/process.json",
+        "started": 1791152716.9259026,
+        "finished": 1791152716.9699242,
+        "wallSeconds": 0.04402944998582825,
+        "complete": true,
+        "peakTreeRssBytes": 10010624,
+        "minimumAvailableBytes": 28369801216,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-upstream-c-r2/process.json",
+        "started": 1791152717.1151166,
+        "finished": 1791152717.1595767,
+        "wallSeconds": 0.04446830495726317,
+        "complete": true,
+        "peakTreeRssBytes": 10051584,
+        "minimumAvailableBytes": 28369825792,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-upstream-js-r0/process.json",
+        "started": 1791152716.5042098,
+        "finished": 1791152716.5881681,
+        "wallSeconds": 0.08396153699140996,
+        "complete": true,
+        "peakTreeRssBytes": 54923264,
+        "minimumAvailableBytes": 28356472832,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-upstream-js-r1/process.json",
+        "started": 1791152717.0248926,
+        "finished": 1791152717.1098425,
+        "wallSeconds": 0.08495849400060251,
+        "complete": true,
+        "peakTreeRssBytes": 38567936,
+        "minimumAvailableBytes": 28365615104,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/numeric-upstream-js-r2/process.json",
+        "started": 1791152717.2153301,
+        "finished": 1791152717.3006148,
+        "wallSeconds": 0.08529466897016391,
+        "complete": true,
+        "peakTreeRssBytes": 54980608,
+        "minimumAvailableBytes": 28346826752,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-selfhost-c-r0/process.json",
+        "started": 1791152718.6018643,
+        "finished": 1791152718.6453798,
+        "wallSeconds": 0.04352110001491383,
+        "complete": true,
+        "peakTreeRssBytes": 10063872,
+        "minimumAvailableBytes": 28371054592,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-selfhost-c-r1/process.json",
+        "started": 1791152718.814036,
+        "finished": 1791152718.8573864,
+        "wallSeconds": 0.04335444496246055,
+        "complete": true,
+        "peakTreeRssBytes": 10014720,
+        "minimumAvailableBytes": 28371030016,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-selfhost-c-r2/process.json",
+        "started": 1791152719.0150175,
+        "finished": 1791152719.0590248,
+        "wallSeconds": 0.04401636403053999,
+        "complete": true,
+        "peakTreeRssBytes": 10014720,
+        "minimumAvailableBytes": 28371677184,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-selfhost-js-r0/process.json",
+        "started": 1791152718.4420137,
+        "finished": 1791152718.5472727,
+        "wallSeconds": 0.10526487196329981,
+        "complete": true,
+        "peakTreeRssBytes": 66936832,
+        "minimumAvailableBytes": 28354158592,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-selfhost-js-r1/process.json",
+        "started": 1791152718.6519532,
+        "finished": 1791152718.7565322,
+        "wallSeconds": 0.10458512301556766,
+        "complete": true,
+        "peakTreeRssBytes": 68034560,
+        "minimumAvailableBytes": 28352319488,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-selfhost-js-r2/process.json",
+        "started": 1791152719.1640375,
+        "finished": 1791152719.2695944,
+        "wallSeconds": 0.10556550696492195,
+        "complete": true,
+        "peakTreeRssBytes": 65794048,
+        "minimumAvailableBytes": 28355051520,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-upstream-c-r0/process.json",
+        "started": 1791152718.5527244,
+        "finished": 1791152718.5958705,
+        "wallSeconds": 0.04315150500042364,
+        "complete": true,
+        "peakTreeRssBytes": 10055680,
+        "minimumAvailableBytes": 28371611648,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-upstream-c-r1/process.json",
+        "started": 1791152718.7642298,
+        "finished": 1791152718.8077326,
+        "wallSeconds": 0.04350808804156259,
+        "complete": true,
+        "peakTreeRssBytes": 10096640,
+        "minimumAvailableBytes": 28370763776,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-upstream-c-r2/process.json",
+        "started": 1791152718.9607084,
+        "finished": 1791152719.004699,
+        "wallSeconds": 0.04399905004538596,
+        "complete": true,
+        "peakTreeRssBytes": 10006528,
+        "minimumAvailableBytes": 28371668992,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-upstream-js-r0/process.json",
+        "started": 1791152718.3526433,
+        "finished": 1791152718.4366229,
+        "wallSeconds": 0.08398497296730056,
+        "complete": true,
+        "peakTreeRssBytes": 41603072,
+        "minimumAvailableBytes": 28364644352,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-upstream-js-r1/process.json",
+        "started": 1791152718.8673122,
+        "finished": 1791152718.9522278,
+        "wallSeconds": 0.08492434601066634,
+        "complete": true,
+        "peakTreeRssBytes": 38850560,
+        "minimumAvailableBytes": 28366651392,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/cold01/tree-upstream-js-r2/process.json",
+        "started": 1791152719.0691974,
+        "finished": 1791152719.154159,
+        "wallSeconds": 0.08497053198516369,
+        "complete": true,
+        "peakTreeRssBytes": 38596608,
+        "minimumAvailableBytes": 28367425536,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/array-selfhost-counts/compile/process.json",
+        "started": 1791152674.2533514,
+        "finished": 1791152691.518416,
+        "wallSeconds": 17.26507262699306,
+        "complete": true,
+        "peakTreeRssBytes": 410730496,
+        "minimumAvailableBytes": 28084494336,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/array-selfhost-counts/run1/process.json",
+        "started": 1791152691.5212147,
+        "finished": 1791152691.546241,
+        "wallSeconds": 0.025041096028871834,
+        "complete": true,
+        "peakTreeRssBytes": 520192,
+        "minimumAvailableBytes": 28371070976,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/array-selfhost-counts/run17/process.json",
+        "started": 1791152691.5484376,
+        "finished": 1791152691.5922737,
+        "wallSeconds": 0.04384052800014615,
+        "complete": true,
+        "peakTreeRssBytes": 2994176,
+        "minimumAvailableBytes": 28368797696,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/array-selfhost-derive/process.json",
+        "started": 1791152674.1051953,
+        "finished": 1791152674.2513933,
+        "wallSeconds": 0.1462018649908714,
+        "complete": true,
+        "peakTreeRssBytes": 21004288,
+        "minimumAvailableBytes": 28358283264,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/array-selfhost-profile/process.json",
+        "started": 1791152647.9880047,
+        "finished": 1791152655.063388,
+        "wallSeconds": 7.075389256002381,
+        "complete": true,
+        "peakTreeRssBytes": 70807552,
+        "minimumAvailableBytes": 28343730176,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/array-upstream-counts/compile/process.json",
+        "started": 1791152673.1204267,
+        "finished": 1791152674.0450509,
+        "wallSeconds": 0.9246336139622144,
+        "complete": true,
+        "peakTreeRssBytes": 144437248,
+        "minimumAvailableBytes": 28349984768,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/array-upstream-counts/run1/process.json",
+        "started": 1791152674.0469787,
+        "finished": 1791152674.0710661,
+        "wallSeconds": 0.02409691398497671,
+        "complete": true,
+        "peakTreeRssBytes": 520192,
+        "minimumAvailableBytes": 28370735104,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/array-upstream-counts/run17/process.json",
+        "started": 1791152674.0733225,
+        "finished": 1791152674.0973976,
+        "wallSeconds": 0.02407917199889198,
+        "complete": true,
+        "peakTreeRssBytes": 520192,
+        "minimumAvailableBytes": 28370661376,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/array-upstream-derive/process.json",
+        "started": 1791152673.054121,
+        "finished": 1791152673.118463,
+        "wallSeconds": 0.06434563605580479,
+        "complete": true,
+        "peakTreeRssBytes": 14491648,
+        "minimumAvailableBytes": 28365279232,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/array-upstream-profile/process.json",
+        "started": 1791152643.1725137,
+        "finished": 1791152647.8931496,
+        "wallSeconds": 4.720638076949399,
+        "complete": true,
+        "peakTreeRssBytes": 70152192,
+        "minimumAvailableBytes": 28343111680,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/numeric-selfhost-counts/compile/process.json",
+        "started": 1791152656.2918153,
+        "finished": 1791152672.9950013,
+        "wallSeconds": 16.703194583998993,
+        "complete": true,
+        "peakTreeRssBytes": 399081472,
+        "minimumAvailableBytes": 28085637120,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/numeric-selfhost-counts/run1/process.json",
+        "started": 1791152672.9969177,
+        "finished": 1791152673.0206187,
+        "wallSeconds": 0.023710326000582427,
+        "complete": true,
+        "peakTreeRssBytes": 516096,
+        "minimumAvailableBytes": 28369776640,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/numeric-selfhost-counts/run17/process.json",
+        "started": 1791152673.0228915,
+        "finished": 1791152673.0468473,
+        "wallSeconds": 0.023960489023011178,
+        "complete": true,
+        "peakTreeRssBytes": 520192,
+        "minimumAvailableBytes": 28370423808,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/numeric-selfhost-derive/process.json",
+        "started": 1791152656.1644022,
+        "finished": 1791152656.289856,
+        "wallSeconds": 0.12545817595673725,
+        "complete": true,
+        "peakTreeRssBytes": 24166400,
+        "minimumAvailableBytes": 28354260992,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/numeric-selfhost-profile/process.json",
+        "started": 1791152641.677142,
+        "finished": 1791152643.0998402,
+        "wallSeconds": 1.4226993880001828,
+        "complete": true,
+        "peakTreeRssBytes": 72134656,
+        "minimumAvailableBytes": 28344111104,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/numeric-upstream-counts/compile/process.json",
+        "started": 1791152655.1829066,
+        "finished": 1791152656.1061456,
+        "wallSeconds": 0.9232431129785255,
+        "complete": true,
+        "peakTreeRssBytes": 142925824,
+        "minimumAvailableBytes": 28349341696,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/numeric-upstream-counts/run1/process.json",
+        "started": 1791152656.1080172,
+        "finished": 1791152656.1315348,
+        "wallSeconds": 0.023526197008322924,
+        "complete": true,
+        "peakTreeRssBytes": 520192,
+        "minimumAvailableBytes": 28369494016,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/numeric-upstream-counts/run17/process.json",
+        "started": 1791152656.1337395,
+        "finished": 1791152656.1574237,
+        "wallSeconds": 0.02368826704332605,
+        "complete": true,
+        "peakTreeRssBytes": 524288,
+        "minimumAvailableBytes": 28369510400,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/numeric-upstream-derive/process.json",
+        "started": 1791152655.117772,
+        "finished": 1791152655.181687,
+        "wallSeconds": 0.06391984899528325,
+        "complete": true,
+        "peakTreeRssBytes": 14544896,
+        "minimumAvailableBytes": 28363587584,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/numeric-upstream-profile/process.json",
+        "started": 1791152640.5046303,
+        "finished": 1791152641.6227608,
+        "wallSeconds": 1.1181348779937252,
+        "complete": true,
+        "peakTreeRssBytes": 63295488,
+        "minimumAvailableBytes": 28340228096,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/diagnostics01/perf-capability/process.json",
+        "started": 1791152640.4669962,
+        "finished": 1791152640.4894211,
+        "wallSeconds": 0.022426768962759525,
+        "complete": false,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28367806464,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/array-selfhost-c/emission/process.json",
+        "started": 1791151515.3965807,
+        "finished": 1791151517.7472427,
+        "wallSeconds": 2.3506668109912425,
+        "complete": true,
+        "peakTreeRssBytes": 304164864,
+        "minimumAvailableBytes": 28112347136,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/array-selfhost-c/execution/process.json",
+        "started": 1791151518.7848613,
+        "finished": 1791151518.8089077,
+        "wallSeconds": 0.024054053996223956,
+        "complete": true,
+        "peakTreeRssBytes": 524288,
+        "minimumAvailableBytes": 28374601728,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/array-selfhost-c/toolchain/process.json",
+        "started": 1791151517.7963192,
+        "finished": 1791151518.7830257,
+        "wallSeconds": 0.9867157789994963,
+        "complete": true,
+        "peakTreeRssBytes": 145649664,
+        "minimumAvailableBytes": 28350820352,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/array-selfhost-js/emission/process.json",
+        "started": 1791151510.7299619,
+        "finished": 1791151513.3458982,
+        "wallSeconds": 2.6159405229846016,
+        "complete": true,
+        "peakTreeRssBytes": 303755264,
+        "minimumAvailableBytes": 28109996032,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/array-selfhost-js/execution/process.json",
+        "started": 1791151513.387749,
+        "finished": 1791151513.4519856,
+        "wallSeconds": 0.06424244400113821,
+        "complete": true,
+        "peakTreeRssBytes": 52043776,
+        "minimumAvailableBytes": 28357992448,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/array-upstream-c/emission/process.json",
+        "started": 1791151513.87148,
+        "finished": 1791151514.5062943,
+        "wallSeconds": 0.6348190229618922,
+        "complete": true,
+        "peakTreeRssBytes": 132034560,
+        "minimumAvailableBytes": 28291244032,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/array-upstream-c/execution/process.json",
+        "started": 1791151514.9547126,
+        "finished": 1791151514.9789393,
+        "wallSeconds": 0.02423634403385222,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28370497536,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/array-upstream-c/toolchain/process.json",
+        "started": 1791151514.5215683,
+        "finished": 1791151514.9140842,
+        "wallSeconds": 0.392527584976051,
+        "complete": true,
+        "peakTreeRssBytes": 140042240,
+        "minimumAvailableBytes": 28354248704,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/array-upstream-js/emission/process.json",
+        "started": 1791151509.6551697,
+        "finished": 1791151510.2905655,
+        "wallSeconds": 0.6354005280300044,
+        "complete": true,
+        "peakTreeRssBytes": 130605056,
+        "minimumAvailableBytes": 28297187328,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/array-upstream-js/execution/process.json",
+        "started": 1791151510.3042996,
+        "finished": 1791151510.347407,
+        "wallSeconds": 0.04311152995796874,
+        "complete": true,
+        "peakTreeRssBytes": 36130816,
+        "minimumAvailableBytes": 28366958592,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/lexer-selfhost-c/emission/process.json",
+        "started": 1791151572.8911514,
+        "finished": 1791151575.9354408,
+        "wallSeconds": 3.044293820974417,
+        "complete": true,
+        "peakTreeRssBytes": 330891264,
+        "minimumAvailableBytes": 28100182016,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/lexer-selfhost-c/execution/process.json",
+        "started": 1791151581.2046325,
+        "finished": 1791151581.2283258,
+        "wallSeconds": 0.02370088902534917,
+        "complete": true,
+        "peakTreeRssBytes": 589824,
+        "minimumAvailableBytes": 28387045376,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/lexer-selfhost-c/toolchain/process.json",
+        "started": 1791151576.0411432,
+        "finished": 1791151581.2028077,
+        "wallSeconds": 5.161676577001344,
+        "complete": true,
+        "peakTreeRssBytes": 187613184,
+        "minimumAvailableBytes": 28295606272,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/lexer-selfhost-js/emission/process.json",
+        "started": 1791151564.6033094,
+        "finished": 1791151570.610765,
+        "wallSeconds": 6.007458103005774,
+        "complete": true,
+        "peakTreeRssBytes": 322383872,
+        "minimumAvailableBytes": 28108681216,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/lexer-selfhost-js/execution/process.json",
+        "started": 1791151570.6296368,
+        "finished": 1791151570.7353768,
+        "wallSeconds": 0.10574979899683967,
+        "complete": true,
+        "peakTreeRssBytes": 66899968,
+        "minimumAvailableBytes": 28366954496,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/lexer-upstream-c/emission/process.json",
+        "started": 1791151571.1245427,
+        "finished": 1791151571.861207,
+        "wallSeconds": 0.7366690050112084,
+        "complete": true,
+        "peakTreeRssBytes": 143896576,
+        "minimumAvailableBytes": 28296929280,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/lexer-upstream-c/execution/process.json",
+        "started": 1791151572.4586442,
+        "finished": 1791151572.482831,
+        "wallSeconds": 0.024194825964514166,
+        "complete": true,
+        "peakTreeRssBytes": 581632,
+        "minimumAvailableBytes": 28388425728,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/lexer-upstream-c/toolchain/process.json",
+        "started": 1791151571.879754,
+        "finished": 1791151572.4566724,
+        "wallSeconds": 0.5769280340173282,
+        "complete": true,
+        "peakTreeRssBytes": 142065664,
+        "minimumAvailableBytes": 28369854464,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/lexer-upstream-js/emission/process.json",
+        "started": 1791151563.4916272,
+        "finished": 1791151564.1470313,
+        "wallSeconds": 0.6554065750096925,
+        "complete": true,
+        "peakTreeRssBytes": 132972544,
+        "minimumAvailableBytes": 28299567104,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/lexer-upstream-js/execution/process.json",
+        "started": 1791151564.166442,
+        "finished": 1791151564.2313075,
+        "wallSeconds": 0.06487621500855312,
+        "complete": true,
+        "peakTreeRssBytes": 52822016,
+        "minimumAvailableBytes": 28366725120,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/map-selfhost-c/emission/process.json",
+        "started": 1791151536.6183193,
+        "finished": 1791151540.5618637,
+        "wallSeconds": 3.9435493490309455,
+        "complete": true,
+        "peakTreeRssBytes": 369745920,
+        "minimumAvailableBytes": 28048982016,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/map-selfhost-c/execution/process.json",
+        "started": 1791151563.0713444,
+        "finished": 1791151563.0950184,
+        "wallSeconds": 0.02368222997756675,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28380749824,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/map-selfhost-c/toolchain/process.json",
+        "started": 1791151540.5929124,
+        "finished": 1791151563.0290465,
+        "wallSeconds": 22.436143508995883,
+        "complete": true,
+        "peakTreeRssBytes": 481284096,
+        "minimumAvailableBytes": 27998056448,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/map-selfhost-js/emission/process.json",
+        "started": 1791151520.6631975,
+        "finished": 1791151532.7974257,
+        "wallSeconds": 12.134231254982296,
+        "complete": true,
+        "peakTreeRssBytes": 323821568,
+        "minimumAvailableBytes": 28093599744,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/map-selfhost-js/execution/process.json",
+        "started": 1791151532.82134,
+        "finished": 1791151532.9267874,
+        "wallSeconds": 0.10545702400850132,
+        "complete": true,
+        "peakTreeRssBytes": 67424256,
+        "minimumAvailableBytes": 28356505600,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/map-upstream-c/emission/process.json",
+        "started": 1791151533.3549564,
+        "finished": 1791151534.4999757,
+        "wallSeconds": 1.1450237769749947,
+        "complete": true,
+        "peakTreeRssBytes": 175980544,
+        "minimumAvailableBytes": 28250451968,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/map-upstream-c/execution/process.json",
+        "started": 1791151536.1844485,
+        "finished": 1791151536.2077506,
+        "wallSeconds": 0.023306194983888417,
+        "complete": true,
+        "peakTreeRssBytes": 524288,
+        "minimumAvailableBytes": 28381536256,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/map-upstream-c/toolchain/process.json",
+        "started": 1791151534.5018651,
+        "finished": 1791151536.183196,
+        "wallSeconds": 1.68134164204821,
+        "complete": true,
+        "peakTreeRssBytes": 152948736,
+        "minimumAvailableBytes": 28307861504,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/map-upstream-js/emission/process.json",
+        "started": 1791151519.3686252,
+        "finished": 1791151520.166523,
+        "wallSeconds": 0.797900939011015,
+        "complete": true,
+        "peakTreeRssBytes": 151715840,
+        "minimumAvailableBytes": 28275445760,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/map-upstream-js/execution/process.json",
+        "started": 1791151520.1879723,
+        "finished": 1791151520.2529635,
+        "wallSeconds": 0.06500068202149123,
+        "complete": true,
+        "peakTreeRssBytes": 48668672,
+        "minimumAvailableBytes": 28360990720,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/tree-selfhost-c/emission/process.json",
+        "started": 1791151502.279762,
+        "finished": 1791151505.0393379,
+        "wallSeconds": 2.759581184014678,
+        "complete": true,
+        "peakTreeRssBytes": 322199552,
+        "minimumAvailableBytes": 28093898752,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/tree-selfhost-c/execution/process.json",
+        "started": 1791151509.1836414,
+        "finished": 1791151509.2079165,
+        "wallSeconds": 0.024285271007101983,
+        "complete": true,
+        "peakTreeRssBytes": 516096,
+        "minimumAvailableBytes": 28373696512,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/tree-selfhost-c/toolchain/process.json",
+        "started": 1791151505.0713186,
+        "finished": 1791151509.1818066,
+        "wallSeconds": 4.110496944980696,
+        "complete": true,
+        "peakTreeRssBytes": 171425792,
+        "minimumAvailableBytes": 28299116544,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/tree-selfhost-js/emission/process.json",
+        "started": 1791151495.6220913,
+        "finished": 1791151499.9738572,
+        "wallSeconds": 4.351769867993426,
+        "complete": true,
+        "peakTreeRssBytes": 313221120,
+        "minimumAvailableBytes": 28102664192,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/tree-selfhost-js/execution/process.json",
+        "started": 1791151500.0046217,
+        "finished": 1791151500.0686066,
+        "wallSeconds": 0.0639914619969204,
+        "complete": true,
+        "peakTreeRssBytes": 53047296,
+        "minimumAvailableBytes": 28360593408,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/tree-upstream-c/emission/process.json",
+        "started": 1791151500.4798572,
+        "finished": 1791151501.155621,
+        "wallSeconds": 0.6757687919889577,
+        "complete": true,
+        "peakTreeRssBytes": 131600384,
+        "minimumAvailableBytes": 28298522624,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/tree-upstream-c/execution/process.json",
+        "started": 1791151501.8721652,
+        "finished": 1791151501.8953128,
+        "wallSeconds": 0.0231550459866412,
+        "complete": true,
+        "peakTreeRssBytes": 516096,
+        "minimumAvailableBytes": 28378861568,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/tree-upstream-c/toolchain/process.json",
+        "started": 1791151501.1713753,
+        "finished": 1791151501.870944,
+        "wallSeconds": 0.6995789330103435,
+        "complete": true,
+        "peakTreeRssBytes": 142024704,
+        "minimumAvailableBytes": 28357885952,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/tree-upstream-js/emission/process.json",
+        "started": 1791151494.4699113,
+        "finished": 1791151495.1248639,
+        "wallSeconds": 0.6549538029939868,
+        "complete": true,
+        "peakTreeRssBytes": 127094784,
+        "minimumAvailableBytes": 28299886592,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/expansion01/tree-upstream-js/execution/process.json",
+        "started": 1791151495.1800482,
+        "finished": 1791151495.225051,
+        "wallSeconds": 0.045017419033683836,
+        "complete": true,
+        "peakTreeRssBytes": 34250752,
+        "minimumAvailableBytes": 28367970304,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/closures-selfhost-c/emission/process.json",
+        "started": 1791151403.222226,
+        "finished": 1791151405.531692,
+        "wallSeconds": 2.3094754969934,
+        "complete": true,
+        "peakTreeRssBytes": 304513024,
+        "minimumAvailableBytes": 28123557888,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/closures-selfhost-c/toolchain/process.json",
+        "started": 1791151405.533642,
+        "finished": 1791151405.72082,
+        "wallSeconds": 0.18718711601104587,
+        "complete": false,
+        "peakTreeRssBytes": 120029184,
+        "minimumAvailableBytes": 28370108416,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/closures-selfhost-js/emission/process.json",
+        "started": 1791151399.0599494,
+        "finished": 1791151401.5125492,
+        "wallSeconds": 2.4526027719839476,
+        "complete": true,
+        "peakTreeRssBytes": 301871104,
+        "minimumAvailableBytes": 28127449088,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/closures-selfhost-js/execution/process.json",
+        "started": 1791151401.5595822,
+        "finished": 1791151401.6245537,
+        "wallSeconds": 0.06498190696584061,
+        "complete": true,
+        "peakTreeRssBytes": 51810304,
+        "minimumAvailableBytes": 28375040000,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/closures-upstream-c/emission/process.json",
+        "started": 1791151402.034792,
+        "finished": 1791151402.6497457,
+        "wallSeconds": 0.6149589649867266,
+        "complete": true,
+        "peakTreeRssBytes": 126455808,
+        "minimumAvailableBytes": 28311678976,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/closures-upstream-c/toolchain/process.json",
+        "started": 1791151402.6712205,
+        "finished": 1791151402.8170354,
+        "wallSeconds": 0.14582189702196047,
+        "complete": false,
+        "peakTreeRssBytes": 118575104,
+        "minimumAvailableBytes": 28370411520,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/closures-upstream-js/emission/process.json",
+        "started": 1791151397.9727104,
+        "finished": 1791151398.5883076,
+        "wallSeconds": 0.6156079789507203,
+        "complete": true,
+        "peakTreeRssBytes": 128192512,
+        "minimumAvailableBytes": 28314529792,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/closures-upstream-js/execution/process.json",
+        "started": 1791151398.604676,
+        "finished": 1791151398.6493795,
+        "wallSeconds": 0.044712166010867804,
+        "complete": false,
+        "peakTreeRssBytes": 35098624,
+        "minimumAvailableBytes": 28383625216,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/numeric-selfhost-c/emission/process.json",
+        "started": 1791151395.0051343,
+        "finished": 1791151397.273798,
+        "wallSeconds": 2.2686707570101134,
+        "complete": true,
+        "peakTreeRssBytes": 305565696,
+        "minimumAvailableBytes": 28124446720,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/numeric-selfhost-c/toolchain/process.json",
+        "started": 1791151397.2931492,
+        "finished": 1791151397.5012221,
+        "wallSeconds": 0.2080819410039112,
+        "complete": false,
+        "peakTreeRssBytes": 120602624,
+        "minimumAvailableBytes": 28372074496,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/numeric-selfhost-js/emission/process.json",
+        "started": 1791151389.9493651,
+        "finished": 1791151392.4834452,
+        "wallSeconds": 2.5340829170309007,
+        "complete": true,
+        "peakTreeRssBytes": 305029120,
+        "minimumAvailableBytes": 28125728768,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/numeric-selfhost-js/execution/process.json",
+        "started": 1791151392.5101645,
+        "finished": 1791151392.5752833,
+        "wallSeconds": 0.06512808601837605,
+        "complete": true,
+        "peakTreeRssBytes": 52994048,
+        "minimumAvailableBytes": 28374618112,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/numeric-upstream-c/emission/process.json",
+        "started": 1791151392.9883003,
+        "finished": 1791151393.6030254,
+        "wallSeconds": 0.6147299510193989,
+        "complete": true,
+        "peakTreeRssBytes": 132198400,
+        "minimumAvailableBytes": 28308279296,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/numeric-upstream-c/toolchain/process.json",
+        "started": 1791151393.6214042,
+        "finished": 1791151394.5382416,
+        "wallSeconds": 0.9168477250495926,
+        "complete": false,
+        "peakTreeRssBytes": 118378496,
+        "minimumAvailableBytes": 28373213184,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/numeric-upstream-js/emission/process.json",
+        "started": 1791151388.841597,
+        "finished": 1791151389.4583323,
+        "wallSeconds": 0.6167350150062703,
+        "complete": true,
+        "peakTreeRssBytes": 128782336,
+        "minimumAvailableBytes": 28311678976,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot01/numeric-upstream-js/execution/process.json",
+        "started": 1791151389.5103385,
+        "finished": 1791151389.5550199,
+        "wallSeconds": 0.04469040397088975,
+        "complete": false,
+        "peakTreeRssBytes": 40914944,
+        "minimumAvailableBytes": 28377804800,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/closures-selfhost-c/emission/process.json",
+        "started": 1791151468.5215113,
+        "finished": 1791151471.0754757,
+        "wallSeconds": 2.5539687770069577,
+        "complete": true,
+        "peakTreeRssBytes": 304185344,
+        "minimumAvailableBytes": 28119486464,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/closures-selfhost-c/execution/process.json",
+        "started": 1791151471.8131342,
+        "finished": 1791151471.8371973,
+        "wallSeconds": 0.024071060004644096,
+        "complete": true,
+        "peakTreeRssBytes": 524288,
+        "minimumAvailableBytes": 28380909568,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/closures-selfhost-c/toolchain/process.json",
+        "started": 1791151471.1727962,
+        "finished": 1791151471.8113418,
+        "wallSeconds": 0.6385559579939581,
+        "complete": true,
+        "peakTreeRssBytes": 141713408,
+        "minimumAvailableBytes": 28361265152,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/closures-selfhost-js/emission/process.json",
+        "started": 1791151464.0242016,
+        "finished": 1791151466.4968994,
+        "wallSeconds": 2.472700754995458,
+        "complete": true,
+        "peakTreeRssBytes": 301494272,
+        "minimumAvailableBytes": 28123152384,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/closures-selfhost-js/execution/process.json",
+        "started": 1791151466.581482,
+        "finished": 1791151466.6466677,
+        "wallSeconds": 0.06519605900393799,
+        "complete": true,
+        "peakTreeRssBytes": 50995200,
+        "minimumAvailableBytes": 28370018304,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/closures-upstream-c/emission/process.json",
+        "started": 1791151467.0565372,
+        "finished": 1791151467.6710205,
+        "wallSeconds": 0.6144878960330971,
+        "complete": true,
+        "peakTreeRssBytes": 127913984,
+        "minimumAvailableBytes": 28306018304,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/closures-upstream-c/execution/process.json",
+        "started": 1791151468.1048083,
+        "finished": 1791151468.1288896,
+        "wallSeconds": 0.024089761020150036,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28381609984,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/closures-upstream-c/toolchain/process.json",
+        "started": 1791151467.6896627,
+        "finished": 1791151468.1029432,
+        "wallSeconds": 0.41329032194335014,
+        "complete": true,
+        "peakTreeRssBytes": 139948032,
+        "minimumAvailableBytes": 28364275712,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/closures-upstream-js/emission/process.json",
+        "started": 1791151463.015281,
+        "finished": 1791151463.6295078,
+        "wallSeconds": 0.6142317699850537,
+        "complete": true,
+        "peakTreeRssBytes": 125825024,
+        "minimumAvailableBytes": 28309872640,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/closures-upstream-js/execution/process.json",
+        "started": 1791151463.6305382,
+        "finished": 1791151463.6735218,
+        "wallSeconds": 0.04298753704642877,
+        "complete": true,
+        "peakTreeRssBytes": 40992768,
+        "minimumAvailableBytes": 28370989056,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/numeric-selfhost-c/emission/process.json",
+        "started": 1791151459.5248845,
+        "finished": 1791151461.8133166,
+        "wallSeconds": 2.2884371310356073,
+        "complete": true,
+        "peakTreeRssBytes": 306089984,
+        "minimumAvailableBytes": 28121026560,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/numeric-selfhost-c/execution/process.json",
+        "started": 1791151462.581529,
+        "finished": 1791151462.6056464,
+        "wallSeconds": 0.024144189024809748,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28384096256,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/numeric-selfhost-c/toolchain/process.json",
+        "started": 1791151461.839949,
+        "finished": 1791151462.5589228,
+        "wallSeconds": 0.7189793280558661,
+        "complete": true,
+        "peakTreeRssBytes": 143171584,
+        "minimumAvailableBytes": 28363386880,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/numeric-selfhost-js/emission/process.json",
+        "started": 1791151454.04938,
+        "finished": 1791151456.571993,
+        "wallSeconds": 2.5226154470001347,
+        "complete": true,
+        "peakTreeRssBytes": 307855360,
+        "minimumAvailableBytes": 28118642688,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/numeric-selfhost-js/execution/process.json",
+        "started": 1791151456.598828,
+        "finished": 1791151456.6637025,
+        "wallSeconds": 0.06488591502420604,
+        "complete": true,
+        "peakTreeRssBytes": 51720192,
+        "minimumAvailableBytes": 28372144128,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/numeric-upstream-c/emission/process.json",
+        "started": 1791151457.0799353,
+        "finished": 1791151457.6970918,
+        "wallSeconds": 0.6171613719779998,
+        "complete": true,
+        "peakTreeRssBytes": 129118208,
+        "minimumAvailableBytes": 28308234240,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/numeric-upstream-c/execution/process.json",
+        "started": 1791151459.0885901,
+        "finished": 1791151459.1127958,
+        "wallSeconds": 0.024214136006776243,
+        "complete": true,
+        "peakTreeRssBytes": 585728,
+        "minimumAvailableBytes": 28384493568,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/numeric-upstream-c/toolchain/process.json",
+        "started": 1791151457.7154047,
+        "finished": 1791151459.0867724,
+        "wallSeconds": 1.371377463976387,
+        "complete": true,
+        "peakTreeRssBytes": 138842112,
+        "minimumAvailableBytes": 28367515648,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/numeric-upstream-js/emission/process.json",
+        "started": 1791151452.960576,
+        "finished": 1791151453.5775416,
+        "wallSeconds": 0.6169657179852948,
+        "complete": true,
+        "peakTreeRssBytes": 129155072,
+        "minimumAvailableBytes": 28303142912,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/pilot02/numeric-upstream-js/execution/process.json",
+        "started": 1791151453.6129963,
+        "finished": 1791151453.6577353,
+        "wallSeconds": 0.04474812303669751,
+        "complete": true,
+        "peakTreeRssBytes": 34312192,
+        "minimumAvailableBytes": 28371333120,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-selfhost-c-r0/process.json",
+        "started": 1791152337.7320426,
+        "finished": 1791152368.2669044,
+        "wallSeconds": 30.534867346985266,
+        "complete": true,
+        "peakTreeRssBytes": 14209024,
+        "minimumAvailableBytes": 28337905664,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-selfhost-c-r1/process.json",
+        "started": 1791152376.25296,
+        "finished": 1791152405.0389817,
+        "wallSeconds": 28.786026860005222,
+        "complete": true,
+        "peakTreeRssBytes": 14303232,
+        "minimumAvailableBytes": 28301840384,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-selfhost-c-r2/process.json",
+        "started": 1791152409.9787202,
+        "finished": 1791152439.3497894,
+        "wallSeconds": 29.37107231502887,
+        "complete": true,
+        "peakTreeRssBytes": 14319616,
+        "minimumAvailableBytes": 28333682688,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-selfhost-js-r0/process.json",
+        "started": 1791152330.5476882,
+        "finished": 1791152337.413645,
+        "wallSeconds": 6.865963871998247,
+        "complete": true,
+        "peakTreeRssBytes": 79671296,
+        "minimumAvailableBytes": 28321103872,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-selfhost-js-r1/process.json",
+        "started": 1791152368.3311844,
+        "finished": 1791152375.9328346,
+        "wallSeconds": 7.601656653045211,
+        "complete": true,
+        "peakTreeRssBytes": 79409152,
+        "minimumAvailableBytes": 28299423744,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-selfhost-js-r2/process.json",
+        "started": 1791152444.303721,
+        "finished": 1791152451.217636,
+        "wallSeconds": 6.913917639001738,
+        "complete": true,
+        "peakTreeRssBytes": 79626240,
+        "minimumAvailableBytes": 28322881536,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-upstream-c-r0/process.json",
+        "started": 1791152337.448855,
+        "finished": 1791152337.7167816,
+        "wallSeconds": 0.2679293690016493,
+        "complete": true,
+        "peakTreeRssBytes": 14258176,
+        "minimumAvailableBytes": 28339871744,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-upstream-c-r1/process.json",
+        "started": 1791152375.9646256,
+        "finished": 1791152376.2336156,
+        "wallSeconds": 0.2689951789798215,
+        "complete": true,
+        "peakTreeRssBytes": 14336000,
+        "minimumAvailableBytes": 28337967104,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-upstream-c-r2/process.json",
+        "started": 1791152409.6776233,
+        "finished": 1791152409.9662766,
+        "wallSeconds": 0.28865645901532844,
+        "complete": true,
+        "peakTreeRssBytes": 14233600,
+        "minimumAvailableBytes": 28345548800,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-upstream-js-r0/process.json",
+        "started": 1791152325.9524653,
+        "finished": 1791152330.5190957,
+        "wallSeconds": 4.566634456976317,
+        "complete": true,
+        "peakTreeRssBytes": 78258176,
+        "minimumAvailableBytes": 28319891456,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-upstream-js-r1/process.json",
+        "started": 1791152405.0955696,
+        "finished": 1791152409.622659,
+        "wallSeconds": 4.527100895007607,
+        "complete": true,
+        "peakTreeRssBytes": 76173312,
+        "minimumAvailableBytes": 28325421056,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/array-upstream-js-r2/process.json",
+        "started": 1791152439.4640968,
+        "finished": 1791152444.2751675,
+        "wallSeconds": 4.811078476021066,
+        "complete": true,
+        "peakTreeRssBytes": 78106624,
+        "minimumAvailableBytes": 28319232000,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-selfhost-c-r0/process.json",
+        "started": 1791152280.4845726,
+        "finished": 1791152281.608806,
+        "wallSeconds": 1.1242397079477087,
+        "complete": true,
+        "peakTreeRssBytes": 14184448,
+        "minimumAvailableBytes": 28345929728,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-selfhost-c-r1/process.json",
+        "started": 1791152283.4281342,
+        "finished": 1791152284.5533783,
+        "wallSeconds": 1.1252500159898773,
+        "complete": true,
+        "peakTreeRssBytes": 14340096,
+        "minimumAvailableBytes": 28346007552,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-selfhost-c-r2/process.json",
+        "started": 1791152287.3531628,
+        "finished": 1791152288.477427,
+        "wallSeconds": 1.1242709279758856,
+        "complete": true,
+        "peakTreeRssBytes": 14266368,
+        "minimumAvailableBytes": 28346314752,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-selfhost-js-r0/process.json",
+        "started": 1791152278.6331208,
+        "finished": 1791152279.9043343,
+        "wallSeconds": 1.2712158960057423,
+        "complete": true,
+        "peakTreeRssBytes": 82432000,
+        "minimumAvailableBytes": 28325072896,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-selfhost-js-r1/process.json",
+        "started": 1791152281.6168592,
+        "finished": 1791152282.90882,
+        "wallSeconds": 1.2919663460343145,
+        "complete": true,
+        "peakTreeRssBytes": 80756736,
+        "minimumAvailableBytes": 28326776832,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-selfhost-js-r2/process.json",
+        "started": 1791152290.805052,
+        "finished": 1791152292.1380327,
+        "wallSeconds": 1.3329862490063533,
+        "complete": true,
+        "peakTreeRssBytes": 81121280,
+        "minimumAvailableBytes": 28327071744,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-upstream-c-r0/process.json",
+        "started": 1791152279.977283,
+        "finished": 1791152280.4697964,
+        "wallSeconds": 0.4925169110065326,
+        "complete": true,
+        "peakTreeRssBytes": 14102528,
+        "minimumAvailableBytes": 28346396672,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-upstream-c-r1/process.json",
+        "started": 1791152282.945863,
+        "finished": 1791152283.3979979,
+        "wallSeconds": 0.45213994005462155,
+        "complete": true,
+        "peakTreeRssBytes": 14127104,
+        "minimumAvailableBytes": 28345929728,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-upstream-c-r2/process.json",
+        "started": 1791152286.8707285,
+        "finished": 1791152287.322758,
+        "wallSeconds": 0.4520344960037619,
+        "complete": true,
+        "peakTreeRssBytes": 14254080,
+        "minimumAvailableBytes": 28346179584,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-upstream-js-r0/process.json",
+        "started": 1791152276.2900686,
+        "finished": 1791152278.5677044,
+        "wallSeconds": 2.277641673979815,
+        "complete": true,
+        "peakTreeRssBytes": 75264000,
+        "minimumAvailableBytes": 28326596608,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-upstream-js-r1/process.json",
+        "started": 1791152284.6043792,
+        "finished": 1791152286.8624809,
+        "wallSeconds": 2.258107641013339,
+        "complete": true,
+        "peakTreeRssBytes": 75370496,
+        "minimumAvailableBytes": 28327600128,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/closures-upstream-js-r2/process.json",
+        "started": 1791152288.5038326,
+        "finished": 1791152290.7793474,
+        "wallSeconds": 2.27552043099422,
+        "complete": true,
+        "peakTreeRssBytes": 75485184,
+        "minimumAvailableBytes": 28327395328,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-selfhost-c-r0/process.json",
+        "started": 1791152476.618516,
+        "finished": 1791152485.5080538,
+        "wallSeconds": 8.889544373028912,
+        "complete": true,
+        "peakTreeRssBytes": 20623360,
+        "minimumAvailableBytes": 28334166016,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-selfhost-c-r1/process.json",
+        "started": 1791152489.4550593,
+        "finished": 1791152498.5522597,
+        "wallSeconds": 9.097206275037024,
+        "complete": true,
+        "peakTreeRssBytes": 20656128,
+        "minimumAvailableBytes": 28334112768,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-selfhost-c-r2/process.json",
+        "started": 1791152501.3614104,
+        "finished": 1791152510.3525317,
+        "wallSeconds": 8.991127991990652,
+        "complete": true,
+        "peakTreeRssBytes": 20705280,
+        "minimumAvailableBytes": 28335501312,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-selfhost-js-r0/process.json",
+        "started": 1791152472.6862452,
+        "finished": 1791152476.078609,
+        "wallSeconds": 3.39237066503847,
+        "complete": true,
+        "peakTreeRssBytes": 83365888,
+        "minimumAvailableBytes": 28317872128,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-selfhost-js-r1/process.json",
+        "started": 1791152485.543141,
+        "finished": 1791152488.9160178,
+        "wallSeconds": 3.372884165029973,
+        "complete": true,
+        "peakTreeRssBytes": 83537920,
+        "minimumAvailableBytes": 28318285824,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-selfhost-js-r2/process.json",
+        "started": 1791152512.6216686,
+        "finished": 1791152516.3629208,
+        "wallSeconds": 3.74125828203978,
+        "complete": true,
+        "peakTreeRssBytes": 83841024,
+        "minimumAvailableBytes": 28316098560,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-upstream-c-r0/process.json",
+        "started": 1791152476.1177592,
+        "finished": 1791152476.569713,
+        "wallSeconds": 0.45195922401035205,
+        "complete": true,
+        "peakTreeRssBytes": 14348288,
+        "minimumAvailableBytes": 28340449280,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-upstream-c-r1/process.json",
+        "started": 1791152488.9602726,
+        "finished": 1791152489.4130292,
+        "wallSeconds": 0.45276231999741867,
+        "complete": true,
+        "peakTreeRssBytes": 14213120,
+        "minimumAvailableBytes": 28340801536,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-upstream-c-r2/process.json",
+        "started": 1791152500.8454893,
+        "finished": 1791152501.3183372,
+        "wallSeconds": 0.472853576997295,
+        "complete": true,
+        "peakTreeRssBytes": 14225408,
+        "minimumAvailableBytes": 28341936128,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-upstream-js-r0/process.json",
+        "started": 1791152470.4847856,
+        "finished": 1791152472.6533813,
+        "wallSeconds": 2.168601776007563,
+        "complete": true,
+        "peakTreeRssBytes": 74256384,
+        "minimumAvailableBytes": 28323729408,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-upstream-js-r1/process.json",
+        "started": 1791152498.584922,
+        "finished": 1791152500.755001,
+        "wallSeconds": 2.170085110992659,
+        "complete": true,
+        "peakTreeRssBytes": 80621568,
+        "minimumAvailableBytes": 28312408064,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/lexer-upstream-js-r2/process.json",
+        "started": 1791152510.394987,
+        "finished": 1791152512.5862415,
+        "wallSeconds": 2.1912609559949487,
+        "complete": true,
+        "peakTreeRssBytes": 70037504,
+        "minimumAvailableBytes": 28325515264,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-selfhost-c-r0/process.json",
+        "started": 1791152454.4312446,
+        "finished": 1791152457.5942357,
+        "wallSeconds": 3.162998065992724,
+        "complete": true,
+        "peakTreeRssBytes": 14491648,
+        "minimumAvailableBytes": 28342231040,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-selfhost-c-r1/process.json",
+        "started": 1791152459.6959145,
+        "finished": 1791152462.9026766,
+        "wallSeconds": 3.2067678379826248,
+        "complete": true,
+        "peakTreeRssBytes": 14458880,
+        "minimumAvailableBytes": 28341510144,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-selfhost-c-r2/process.json",
+        "started": 1791152464.5919802,
+        "finished": 1791152467.7746408,
+        "wallSeconds": 3.182668404013384,
+        "complete": true,
+        "peakTreeRssBytes": 14536704,
+        "minimumAvailableBytes": 28339015680,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-selfhost-js-r0/process.json",
+        "started": 1791152452.3638694,
+        "finished": 1791152453.9189465,
+        "wallSeconds": 1.5550829190178774,
+        "complete": true,
+        "peakTreeRssBytes": 94453760,
+        "minimumAvailableBytes": 28309295104,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-selfhost-js-r1/process.json",
+        "started": 1791152457.6271083,
+        "finished": 1791152459.1707015,
+        "wallSeconds": 1.5435993249993771,
+        "complete": true,
+        "peakTreeRssBytes": 96227328,
+        "minimumAvailableBytes": 28306767872,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-selfhost-js-r2/process.json",
+        "started": 1791152468.9011624,
+        "finished": 1791152470.445559,
+        "wallSeconds": 1.5444033169769682,
+        "complete": true,
+        "peakTreeRssBytes": 93515776,
+        "minimumAvailableBytes": 28306694144,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-upstream-c-r0/process.json",
+        "started": 1791152453.9546793,
+        "finished": 1791152454.3879173,
+        "wallSeconds": 0.43324416695395485,
+        "complete": true,
+        "peakTreeRssBytes": 14245888,
+        "minimumAvailableBytes": 28342874112,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-upstream-c-r1/process.json",
+        "started": 1791152459.20027,
+        "finished": 1791152459.6316683,
+        "wallSeconds": 0.4314039209857583,
+        "complete": true,
+        "peakTreeRssBytes": 14422016,
+        "minimumAvailableBytes": 28342013952,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-upstream-c-r2/process.json",
+        "started": 1791152464.096358,
+        "finished": 1791152464.5298402,
+        "wallSeconds": 0.43348732095910236,
+        "complete": true,
+        "peakTreeRssBytes": 14262272,
+        "minimumAvailableBytes": 28340277248,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-upstream-js-r0/process.json",
+        "started": 1791152451.249666,
+        "finished": 1791152452.348586,
+        "wallSeconds": 1.0989257369656116,
+        "complete": true,
+        "peakTreeRssBytes": 92528640,
+        "minimumAvailableBytes": 28307337216,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-upstream-js-r1/process.json",
+        "started": 1791152462.9249122,
+        "finished": 1791152463.9987082,
+        "wallSeconds": 1.073801405960694,
+        "complete": true,
+        "peakTreeRssBytes": 91111424,
+        "minimumAvailableBytes": 28307836928,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/map-upstream-js-r2/process.json",
+        "started": 1791152467.8124804,
+        "finished": 1791152468.8840659,
+        "wallSeconds": 1.0715878939954564,
+        "complete": true,
+        "peakTreeRssBytes": 89038848,
+        "minimumAvailableBytes": 28306128896,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-selfhost-c-r0/process.json",
+        "started": 1791152250.0822992,
+        "finished": 1791152256.6488502,
+        "wallSeconds": 6.566557247017045,
+        "complete": true,
+        "peakTreeRssBytes": 14237696,
+        "minimumAvailableBytes": 28340568064,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-selfhost-c-r1/process.json",
+        "started": 1791152258.6775947,
+        "finished": 1791152265.303458,
+        "wallSeconds": 6.625868837989401,
+        "complete": true,
+        "peakTreeRssBytes": 14307328,
+        "minimumAvailableBytes": 28313591808,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-selfhost-c-r2/process.json",
+        "started": 1791152267.01931,
+        "finished": 1791152273.5856583,
+        "wallSeconds": 6.566353903035633,
+        "complete": true,
+        "peakTreeRssBytes": 14405632,
+        "minimumAvailableBytes": 28342837248,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-selfhost-js-r0/process.json",
+        "started": 1791152248.0244746,
+        "finished": 1791152249.5571933,
+        "wallSeconds": 1.5327256600139663,
+        "complete": true,
+        "peakTreeRssBytes": 78876672,
+        "minimumAvailableBytes": 28321243136,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-selfhost-js-r1/process.json",
+        "started": 1791152256.697716,
+        "finished": 1791152258.130022,
+        "wallSeconds": 1.4323124199872836,
+        "complete": true,
+        "peakTreeRssBytes": 79003648,
+        "minimumAvailableBytes": 28321349632,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-selfhost-js-r2/process.json",
+        "started": 1791152274.787514,
+        "finished": 1791152276.218335,
+        "wallSeconds": 1.4308266239822842,
+        "complete": true,
+        "peakTreeRssBytes": 76824576,
+        "minimumAvailableBytes": 28327542784,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-upstream-c-r0/process.json",
+        "started": 1791152249.5599375,
+        "finished": 1791152250.0515878,
+        "wallSeconds": 0.49165122804697603,
+        "complete": true,
+        "peakTreeRssBytes": 14151680,
+        "minimumAvailableBytes": 28341706752,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-upstream-c-r1/process.json",
+        "started": 1791152258.1541808,
+        "finished": 1791152258.6483815,
+        "wallSeconds": 0.4942093940335326,
+        "complete": true,
+        "peakTreeRssBytes": 14192640,
+        "minimumAvailableBytes": 28342890496,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-upstream-c-r2/process.json",
+        "started": 1791152266.4954243,
+        "finished": 1791152266.9885383,
+        "wallSeconds": 0.4931191409705207,
+        "complete": true,
+        "peakTreeRssBytes": 14221312,
+        "minimumAvailableBytes": 28345126912,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-upstream-js-r0/process.json",
+        "started": 1791152246.6476028,
+        "finished": 1791152247.811842,
+        "wallSeconds": 1.1642414620146155,
+        "complete": true,
+        "peakTreeRssBytes": 66084864,
+        "minimumAvailableBytes": 28328161280,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-upstream-js-r1/process.json",
+        "started": 1791152265.3440278,
+        "finished": 1791152266.4680054,
+        "wallSeconds": 1.1239833160070702,
+        "complete": true,
+        "peakTreeRssBytes": 69779456,
+        "minimumAvailableBytes": 28331298816,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/numeric-upstream-js-r2/process.json",
+        "started": 1791152273.6259124,
+        "finished": 1791152274.7511914,
+        "wallSeconds": 1.1252839230000973,
+        "complete": true,
+        "peakTreeRssBytes": 68284416,
+        "minimumAvailableBytes": 28330586112,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-selfhost-c-r0/process.json",
+        "started": 1791152298.288796,
+        "finished": 1791152303.1836424,
+        "wallSeconds": 4.894852917990647,
+        "complete": true,
+        "peakTreeRssBytes": 70930432,
+        "minimumAvailableBytes": 28288008192,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-selfhost-c-r1/process.json",
+        "started": 1791152307.880108,
+        "finished": 1791152313.019308,
+        "wallSeconds": 5.139205716026481,
+        "complete": true,
+        "peakTreeRssBytes": 70963200,
+        "minimumAvailableBytes": 28287569920,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-selfhost-c-r2/process.json",
+        "started": 1791152315.0144348,
+        "finished": 1791152320.2144566,
+        "wallSeconds": 5.2000274489982985,
+        "complete": true,
+        "peakTreeRssBytes": 70942720,
+        "minimumAvailableBytes": 28287406080,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-selfhost-js-r0/process.json",
+        "started": 1791152293.583561,
+        "finished": 1791152297.7793326,
+        "wallSeconds": 4.195777448010631,
+        "complete": true,
+        "peakTreeRssBytes": 107876352,
+        "minimumAvailableBytes": 28295454720,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-selfhost-js-r1/process.json",
+        "started": 1791152303.1944447,
+        "finished": 1791152307.3459692,
+        "wallSeconds": 4.151530391012784,
+        "complete": true,
+        "peakTreeRssBytes": 109068288,
+        "minimumAvailableBytes": 28295270400,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-selfhost-js-r2/process.json",
+        "started": 1791152321.7065604,
+        "finished": 1791152325.8991673,
+        "wallSeconds": 4.192612934974022,
+        "complete": true,
+        "peakTreeRssBytes": 107872256,
+        "minimumAvailableBytes": 28295892992,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-upstream-c-r0/process.json",
+        "started": 1791152297.8049035,
+        "finished": 1791152298.2569299,
+        "wallSeconds": 0.4520311880041845,
+        "complete": true,
+        "peakTreeRssBytes": 14229504,
+        "minimumAvailableBytes": 28343525376,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-upstream-c-r1/process.json",
+        "started": 1791152307.3966305,
+        "finished": 1791152307.849305,
+        "wallSeconds": 0.4526797590078786,
+        "complete": true,
+        "peakTreeRssBytes": 14258176,
+        "minimumAvailableBytes": 28344639488,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-upstream-c-r2/process.json",
+        "started": 1791152314.5287209,
+        "finished": 1791152314.982059,
+        "wallSeconds": 0.4533430080045946,
+        "complete": true,
+        "peakTreeRssBytes": 14102528,
+        "minimumAvailableBytes": 28342644736,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-upstream-js-r0/process.json",
+        "started": 1791152292.148225,
+        "finished": 1791152293.5719109,
+        "wallSeconds": 1.4236927889869548,
+        "complete": true,
+        "peakTreeRssBytes": 101470208,
+        "minimumAvailableBytes": 28299022336,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-upstream-js-r1/process.json",
+        "started": 1791152313.0466857,
+        "finished": 1791152314.4941213,
+        "wallSeconds": 1.4474446079693735,
+        "complete": true,
+        "peakTreeRssBytes": 101621760,
+        "minimumAvailableBytes": 28298153984,
+        "stoppedFor": null
+      },
+      {
+        "path": "selfhost/build/phase46/timing01/tree-upstream-js-r2/process.json",
+        "started": 1791152320.2444677,
+        "finished": 1791152321.6683612,
+        "wallSeconds": 1.4238989540026523,
+        "complete": true,
+        "peakTreeRssBytes": 101539840,
+        "minimumAvailableBytes": 28296937472,
+        "stoppedFor": null
+      },
+      {
+        "path": "implementation/phase46/evidence/feasibility-numeric-upstream-js/process.json",
+        "started": 1791151320.3417768,
+        "finished": 1791151320.4054868,
+        "wallSeconds": 0.06371596798999235,
+        "complete": false,
+        "peakTreeRssBytes": 52289536,
+        "minimumAvailableBytes": 28358930432,
+        "stoppedFor": null
+      },
+      {
+        "path": "implementation/phase46/evidence/feasibility-numeric-upstream-js02/process.json",
+        "started": 1791151345.0255513,
+        "finished": 1791151345.6400273,
+        "wallSeconds": 0.6144776960136369,
+        "complete": true,
+        "peakTreeRssBytes": 127430656,
+        "minimumAvailableBytes": 28317437952,
+        "stoppedFor": null
+      }
+    ],
+    "scope": "Supervised execution only. Reading, reasoning, agent coordination, source writing, review, publication and most data-only reporting are not individually timed; do not call the remainder idle."
+  },
+  "limitations": [
+    "Six selected mechanisms; not full corpus or universal speed.",
+    "New Bend batch boundary, not Phase45 host library protocol.",
+    "Different native runtimes and different optimizers; not single-factor causal ablation.",
+    "Fixed warmup counts and three cyclic rotations, not demonstrated JIT stationarity or fully position-balanced ordering.",
+    "Whole-process instrumented profiles/counters are separate from unmodified timing; counters can inhibit optimization.",
+    "Cold process includes one complete workload/readback; it does not isolate startup.",
+    "Compilation costs have one acquisition each and include checking, verification and orchestration."
+  ]
+}

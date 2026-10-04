@@ -1,5 +1,15 @@
 # Current compiler: Phase45 worker23
 
+The [Phase46 JS/C investigation](../implementation/phase46/README.md) is complete
+without changing this release. Six common batch workloads pass72 timing samples;
+our C is1.28–5.03× slower than our JS on five and roughly tied on closures.
+Upstream C is faster, but our allocation/continuation transport defeats that
+potential. Keep JS primary and prioritize shared ownership/use/effect facts;
+the next cheap consumer is proven-private array-view hoisting. Known-call and
+aggregate elimination remain especially important for native lowering.
+Native IO.args omits the program name; its reproduced mismatch remains unfixed.
+The new batch ratios do not replace the45-point JS-library score below.
+
 Worker23 is installed. Release verification and all 42 ordinary/relocated CLI
 checks pass. The [report](../implementation/phase45/README.md),
 [IR guide](../selfhost/docs/JAVASCRIPT_IR.md),

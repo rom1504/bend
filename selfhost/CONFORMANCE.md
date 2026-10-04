@@ -1,5 +1,19 @@
 # Compiler validation
 
+## Phase46 native diagnostic boundary
+
+The [four-way backend investigation](../implementation/phase46/README.md) changes
+no installed compiler. It adds24 exact one-shot and24 final batch-wrapper
+observations,72 checked timing samples and72 checked cold observations on six
+sources. These overlap and are not additional unique language-test counts.
+
+It reproduces a native IO.args mismatch: the retained selfhost C runtime omits
+the executable name, while pinned upstream and both JS products include it.
+The common performance wrapper reads the final two arguments to avoid that
+difference; this does not repair or qualify the native API. Failed wrapper
+observations are retained. Native help-option differences are a separate static,
+unexecuted observation. Broad native/GPU conformance remains unestablished.
+
 ## Phase45 installed worker23 validation
 
 **Phase45 worker23 is installed; release verification and all 42 CLI checks pass.**

@@ -39,6 +39,9 @@ compares seven reference implementations and supports the
 [ranked remaining opportunities](docs/remaining_opportunities/README.md).
 The [parallel validation plan](docs/self_hosted/parallel-validation.md) describes
 a proposed faster development loop; it has not changed the active execution policy.
+The [Phase46 JavaScript/C comparison](implementation/phase46/README.md) retains
+JS as the primary target: native diagnostics point to allocation and call-lowering
+work, and expose a native argument-API gap. No compiler change was installed.
 
 The [execution results](implementation/phase45/results.md),
 [compiler request costs](implementation/phase45/compiler-cost.md),

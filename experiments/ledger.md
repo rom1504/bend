@@ -2726,3 +2726,35 @@ boundaries, shared proof facts and shared private component emission. Preserve
 known public mutation boundaries, the five-canary rejection loop and all failed
 evidence. No PR comment is posted. Final raw writer closure and archive capture
 are recorded separately in the preservation index.
+
+## Phase46 backend investigation — 2026-10-04
+
+[P46-001](phase46/P46-001-backend-comparison.md) completed the frozen four-way
+experiment without changing the installed Phase45 worker23 compiler. The
+[report](../implementation/phase46/README.md), [source findings](../implementation/phase46/source-findings.md)
+and [summary](../implementation/phase46/evidence/summary.json) retain six workloads,
+24 exact pure and24 final wrapper observations,96 independent input-cycle
+oracles,72 checked timing samples and72 checked cold observations. These scopes
+overlap; they are not a count of unique conformance tests.
+
+Our C is1.28–5.03× slower than our JS on five workloads and roughly tied on
+closures. Upstream C is2.19–19.73× faster than upstream JS; our native gap ranges
+2.75–131.03× upstream C. Separate native counters show repeated small allocation,
+curried-call and continuation transport where upstream retains scalar loops.
+Whole-array copying is not supported as the primary cause of the array gap.
+Instrumented counts are not untouched-binary allocation counts or timing shares.
+
+Native cold turnaround/RSS improve, but checked emission plus Clang makes the
+batch development loop substantially slower. The runtime also reproduces an
+IO.args program-name mismatch. The common final benchmark wrapper avoids that
+boundary; no native repair or broader conformance claim is made. Failed setup,
+parse and argument-boundary attempts, an unavailable perf probe, all calibrations,
+profiles and native counter derivatives are retained in the capsule.
+
+**Updated frontier:** keep JS primary; defer LLVM/assembly. Test caching a proven
+fresh private array's backing view/length using the existing IR and new shared
+ownership/use/effect facts. Preserve host conversion, alias and demand/error
+boundaries; use a saved-output causal screen before another compiler campaign.
+Known-call normalization and aggregate elimination are stronger native needs.
+The maintained45-point JS score is unchanged; this common Bend batch has a
+separate context and input schedule. No PR comment is posted.

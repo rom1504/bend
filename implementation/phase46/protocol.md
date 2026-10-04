@@ -40,8 +40,12 @@ SelfhostJS IO.now uses Date.now; upstreamJS uses performance.now; native uses
 CLOCK_MONOTONIC. All truncate to milliseconds. The harness rejects nonpositive
 or implausible timing intervals and retains them without precise speed credit.
 
-Calibration selects a shared count targeting120ms for the fastest observed cell,
+Calibration selects a shared count initially targeting120ms for the fastest observed cell,
 with an8-second predicted slow-cell cap. It uses the same count for warmup.
+The frozen final plan raises the usual target to200ms. Array calibration was
+below1ms initially; a larger calibration justified40960 repetitions and a
+15-second slow-cell allowance to reach at least100ms in upstream C. One array
+sample took15.060seconds, within the45-second process deadline.
 Three fresh-process rounds rotate the four roles. This measures fixed-warmup
 batch performance, not a proof of V8 steady state. All calibrations, clock
 limitations, variation and failed samples remain visible.

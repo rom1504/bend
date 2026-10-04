@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Untimed canonical Unit admission in closed Map/List/Maybe graphs, plus public ABI and refusal controls.",
+  "cases": [
+    {
+      "id": "unit-map-empty",
+      "family": "canonical-unit-map-admission",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/unit-map-workers-v1.bend",
+        "sha256": "972adbedfb8b776f019e3510cd2b999df42873ba34e25fa9444456d3c351949d",
+        "bytes": 1330,
+        "provenance": {
+          "kind": "phase45-independent-unit-map-control",
+          "scope": "Unsafe renamed backend control with typed locals; no timing or termination-proof claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          0,
+          7
+        ],
+        "expected": 7
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent fixed Set cardinality and modulo-2^32 counting in unit-map-workers-controls-v1.mjs"
+    },
+    {
+      "id": "unit-map-set",
+      "family": "canonical-unit-map-admission",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/unit-map-workers-v1.bend",
+        "sha256": "972adbedfb8b776f019e3510cd2b999df42873ba34e25fa9444456d3c351949d",
+        "bytes": 1330,
+        "provenance": {
+          "kind": "phase45-independent-unit-map-control",
+          "scope": "Unsafe renamed backend control with typed locals; no timing or termination-proof claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          7
+        ],
+        "expected": 9
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent fixed Set cardinality and modulo-2^32 counting in unit-map-workers-controls-v1.mjs"
+    },
+    {
+      "id": "unit-map-boxed",
+      "family": "canonical-unit-map-admission",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/unit-map-workers-v1.bend",
+        "sha256": "972adbedfb8b776f019e3510cd2b999df42873ba34e25fa9444456d3c351949d",
+        "bytes": 1330,
+        "provenance": {
+          "kind": "phase45-independent-unit-map-control",
+          "scope": "Unsafe renamed backend control with typed locals; no timing or termination-proof claim"
+        }
+      },
+      "point": {
+        "exportName": "boxed",
+        "args": [
+          7
+        ],
+        "expected": 10
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent fixed Set cardinality and modulo-2^32 counting in unit-map-workers-controls-v1.mjs"
+    },
+    {
+      "id": "unit-map-boxed-wrap",
+      "family": "canonical-unit-map-admission",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/unit-map-workers-v1.bend",
+        "sha256": "972adbedfb8b776f019e3510cd2b999df42873ba34e25fa9444456d3c351949d",
+        "bytes": 1330,
+        "provenance": {
+          "kind": "phase45-independent-unit-map-control",
+          "scope": "Unsafe renamed backend control with typed locals; no timing or termination-proof claim"
+        }
+      },
+      "point": {
+        "exportName": "boxed",
+        "args": [
+          4294967295
+        ],
+        "expected": 2
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent fixed Set cardinality and modulo-2^32 counting in unit-map-workers-controls-v1.mjs"
+    },
+    {
+      "id": "unit-map-custom-payload",
+      "family": "canonical-unit-map-admission",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/unit-map-workers-v1.bend",
+        "sha256": "972adbedfb8b776f019e3510cd2b999df42873ba34e25fa9444456d3c351949d",
+        "bytes": 1330,
+        "provenance": {
+          "kind": "phase45-independent-unit-map-control",
+          "scope": "Unsafe renamed backend control with typed locals; no timing or termination-proof claim"
+        }
+      },
+      "point": {
+        "exportName": "foreign_payload",
+        "args": [
+          7
+        ],
+        "expected": 8
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent fixed Set cardinality and modulo-2^32 counting in unit-map-workers-controls-v1.mjs"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "unit-map-empty",
+      "unit-map-set",
+      "unit-map-boxed",
+      "unit-map-boxed-wrap",
+      "unit-map-custom-payload"
+    ],
+    "core": [
+      "unit-map-empty",
+      "unit-map-set",
+      "unit-map-boxed",
+      "unit-map-boxed-wrap",
+      "unit-map-custom-payload"
+    ],
+    "broad": [
+      "unit-map-empty",
+      "unit-map-set",
+      "unit-map-boxed",
+      "unit-map-boxed-wrap",
+      "unit-map-custom-payload"
+    ],
+    "full": [
+      "unit-map-empty",
+      "unit-map-set",
+      "unit-map-boxed",
+      "unit-map-boxed-wrap",
+      "unit-map-custom-payload"
+    ]
+  }
+}

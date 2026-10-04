@@ -42,7 +42,7 @@ def j_pure_type_check(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>
 def j_pure_type_head(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
   +owner = lookup(book, nm(ty))
   +kind = wnf(book, dt(owner))
-  kc(Maybe<&2,U32>, j_region_scalar(book, ty) || j_map_cmp_type(book, ty) || j_list_ground_type(book, ty) || j_string_char_type(book, ty) || j_string_string(book, ty), u => Some{fuel}, u =>
+  kc(Maybe<&2,U32>, j_region_scalar(book, ty) || j_map_cmp_type(book, ty) || j_list_ground_type(book, ty) || j_string_char_type(book, ty) || j_string_string(book, ty) || j_pure_unit_type(book, ty), u => Some{fuel}, u =>
     kc(Maybe<&2,U32>, j_map_maybe_head(book, ty), u => j_map_maybe_check(book, ty, active, fuel), u =>
     kc(Maybe<&2,U32>, j_pure_map_head(book, ty), u => j_pure_map_check(book, ty, active, fuel), u =>
     kc(Maybe<&2,U32>, j_pure_list_head(book, ty), u => j_pure_list_check(book, ty, active, fuel), u =>
@@ -670,14 +670,14 @@ def j_string_family_ctors(+book: List<&2,KDef>, +cs: List<&2,KDef>, +args: List<
     case Nil{}: todo
     case Con{c, rest}: Con{j_specialize(book, dt(c), args), j_string_family_ctors(book, rest, args, todo)}
 
-# Exact native Map<&2,scalar> specialization. Constructor rows are validated;
+# Exact native Map<&2,scalar-or-Unit> specialization. Constructor rows are validated;
 # owner names alone never grant shape/ownership or public argument permission.
 @unsafe
 def j_pure_map_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
   +owner = lookup(book, "Map")
   String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Map") && U32.is_eq(terms_len(ks(ty)), 2) &&
     List.is_empty(&2, String, rm(ty)) && String.eq(tg(kid(ty, 0)), "Qua") && U32.is_eq(qt(kid(ty, 0)), 2) &&
-    List.is_empty(&2, KTerm, ks(kid(ty, 0))) && j_region_scalar(book, kid(ty, 1)) &&
+    List.is_empty(&2, KTerm, ks(kid(ty, 0))) && (j_region_scalar(book, kid(ty, 1)) || j_pure_unit_type(book, kid(ty, 1))) &&
     String.eq(dk(owner), "ADT") && db(owner) && U32.is_eq(da(owner), 2) && U32.is_eq(dx(owner), 0) &&
     U32.is_eq(j_region_def_count(dc(owner)), 3) && j_list_ground_kind(wnf(book, j_specialize(book, dt(owner), ks(ty)))) &&
     j_pure_native_ctor(lookup(dc(owner), "MTip"), "MTip", 0) &&
@@ -1547,3 +1547,14 @@ def j_instance_primitive_cap_print(+names: List<&2,String>) -> String:
   match names:
     case Nil{}: ""
     case Con{name, rest}: j_quote(name) ++ "," ++ j_instance_primitive_cap_print(rest)
+
+# Unit stays an internal nullary tagged value. This exact native owner proof
+# neither widens scalar public roots nor admits arbitrary Map payload ADTs.
+@unsafe
+def j_pure_unit_type(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  kc(Bool, j_string_owner(book, wnf(book, ty), "Unit", 1), u =>
+    j_pure_unit_constructor(book, lookup(dc(lookup(book, "Unit")), "Unit")), u => False{})
+
+@unsafe
+def j_pure_unit_constructor(+book: List<&2,KDef>, +c: KDef) -> Bool:
+  j_pure_native_ctor(c, "Unit", 0) && j_string_owner(book, wnf(book, dt(c)), "Unit", 1)

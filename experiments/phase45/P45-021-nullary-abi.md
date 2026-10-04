@@ -68,7 +68,7 @@ The 60-second-preset screen has eleven complete points (three serial runs,
 actual combined wall 84.1 seconds). Relative to freshly sampled Phase44, RLE
 improves 1.5315× and Map/Set 1.4317×; they still take 53.40× and 66.71× TypeScript
 time. Morning/evening are effectively unchanged. The five maintained fast
-canaries have no large regression; the row median regresses 3.52%. Map128 and
+canaries have no large regression; the row median regresses 3.65%. Map128 and
 records256 retain the campaign gains: 16.31×/52.68× faster than Phase44 and
 1.721×/1.551× TypeScript time. These latter figures measure the combined candidate,
 not the isolated nullary change.

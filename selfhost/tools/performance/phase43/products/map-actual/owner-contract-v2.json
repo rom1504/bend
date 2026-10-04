@@ -1,0 +1,47 @@
+{
+  "kind": "phase43-map-actual-owner-contract",
+  "version": 2,
+  "status": "frozen-before-first-execution",
+  "tools": {
+    "derive": {
+      "file": "derive-v4.mjs",
+      "sha256": "36f2ff411f39ac97e4900d57fa71274cf9bb3d9fcbf5b37516a45e0485de60d2"
+    },
+    "oracle": {
+      "file": "oracle-v2.mjs",
+      "sha256": "56ebc1fc3b0444c23c14ce1265a7f30d7219d285881968b682280b5226fc6091"
+    }
+  },
+  "report": {
+    "kind": "phase43-map-actual-controls",
+    "requiredFlags": [
+      "complete",
+      "passed",
+      "sourceActivation"
+    ],
+    "mainCounts": {
+      "values": 16,
+      "aliases": 6,
+      "abi": 3,
+      "checked12Boundaries": 699
+    },
+    "scalarCounts": {
+      "values": 19,
+      "aliases": 6,
+      "abi": 3
+    },
+    "boundaryFormula": "6 * cardinality(unique(original guardNames union frozen54 primitive-family-guards-v1.names)) + 27"
+  },
+  "roots": {
+    "main": "bench",
+    "literal": "p43.map.scalar",
+    "renamed": "branch.fresh.scalar"
+  },
+  "sourceCatalog": "selfhost/tools/performance/phase43/map/fixture-catalog-v3.json",
+  "activation": "ordinary contextual gate > 0; nonzero main and every scalar row executes a genuinely emitted Map instance worker; every entry has regionProof null; nonzero main generic apply strictly below baseline",
+  "privateProbes": "complete Map/Maybe/native Sigma representation, six retained-input alias witnesses, depth128 baseline and12000 candidate; handles never qualify root entry or ownership",
+  "sourceOwnedStress": "main ordinary bench(2048,37), privateMapworker and contextual gate actually execute; independent JSMap digest",
+  "boundaryPolicy": "each source guard and all54 primitive family dependencies binding/code/codegetter/getter/throw/reentry; native String hooks return/throw/reentry; six String prototype markers get/throw/reentry; results and observable events equal generic baseline, no contextual or cloned worker entry, proof cleanup",
+  "abiPolicy": "raw root code no contextual entry; partial root no permission before saturation; public null-erasure Map.set on retained external Map never enters contextual clone; external input unchanged",
+  "lineage": "candidate and baseline checked receipts with identical source; candidate source/API/runtime/Base hashes joined to sibling trace inputs.json; every actual lexical instance matched exact contextualRows original/private name and original/erased/live arity; trace itself grants no proof; trace overlay none, full complete/exact/valid/pureValid/activated and four independent type/header controls true; producer and consumed producer identity are included"
+}

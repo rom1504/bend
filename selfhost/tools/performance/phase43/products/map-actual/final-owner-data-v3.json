@@ -1,0 +1,249 @@
+{
+  "kind": "phase43-map-final-owner-data",
+  "version": 3,
+  "stableTools": true,
+  "profilesComplete": false,
+  "node": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+  "tools": [
+    {
+      "path": "selfhost/tools/performance/phase43/products/map-actual/derive-v6.mjs",
+      "sha256": "1ea08b476e93e4f060f6916fad30f0cae721c2ca1e8b034a84714251618b053f"
+    },
+    {
+      "path": "selfhost/tools/performance/phase43/products/map-actual/oracle-v2.mjs",
+      "sha256": "56ebc1fc3b0444c23c14ce1265a7f30d7219d285881968b682280b5226fc6091"
+    },
+    {
+      "path": "selfhost/tools/performance/phase43/map/trace-instances-v11.mjs",
+      "sha256": "6e5769ca5eade999156c7a30891770f564362d21fb00daad2307e6cd6a566a4b"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "map-main",
+      "source": {
+        "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+        "sha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e"
+      },
+      "root": "bench",
+      "steps": [
+        {
+          "id": "map-main-candidate",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/programs/emit-worker.mjs",
+            "${ATTEMPT}",
+            "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+            "${OUT}/new-owner-modules/map-main.mjs",
+            "selfhost/tools/performance/phase37/catalog.json"
+          ]
+        },
+        {
+          "id": "map-main-trace",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/phase43/map/trace-instances-v11.mjs",
+            "${ATTEMPT}",
+            "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+            "bench",
+            "${OUT}/trace-map-main",
+            "full",
+            "none"
+          ]
+        },
+        {
+          "id": "map-main-derive",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/phase43/products/map-actual/derive-v6.mjs",
+            "${OUT}/new-owner-modules/map-main.mjs",
+            "selfhost/build/phase42/integration03/full-preparation/modules/map-churn.mjs",
+            "${OUT}/trace-map-main/report.json",
+            "${OUT}/derive-map-main",
+            "bench"
+          ]
+        },
+        {
+          "id": "map-main-controls",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/phase43/products/map-actual/oracle-v2.mjs",
+            "${OUT}/derive-map-main",
+            "${OUT}/raw-map-main"
+          ]
+        }
+      ],
+      "expected": {
+        "kind": "phase43-map-actual-controls",
+        "complete": true,
+        "passed": true,
+        "sourceActivation": true,
+        "counts": {
+          "values": 16,
+          "aliases": 6,
+          "abi": 3,
+          "dependencies": 112,
+          "boundaries": 699
+        }
+      },
+      "inventoryStatus": "main pre-control checked12 inventory frozen; final selected AST must confirm 112dependencies"
+    },
+    {
+      "id": "map-scalar",
+      "source": {
+        "path": "selfhost/tools/performance/phase43/map/scalar-fixture-v3.bend",
+        "sha256": "447b6202d5edd7c2b3d68c0f21805ef5e1cb829e115196a3454c6b8c29bf0d36"
+      },
+      "root": "p43.map.scalar",
+      "steps": [
+        {
+          "id": "map-scalar-baseline",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/programs/emit-worker.mjs",
+            "selfhost/build/phase42/checked16",
+            "selfhost/tools/performance/phase43/map/scalar-fixture-v3.bend",
+            "${OUT}/new-owner-modules/map-scalar-checked16.mjs",
+            "selfhost/tools/performance/phase43/map/fixture-catalog-v3.json"
+          ]
+        },
+        {
+          "id": "map-scalar-candidate",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/programs/emit-worker.mjs",
+            "${ATTEMPT}",
+            "selfhost/tools/performance/phase43/map/scalar-fixture-v3.bend",
+            "${OUT}/new-owner-modules/map-scalar.mjs",
+            "selfhost/tools/performance/phase43/map/fixture-catalog-v3.json"
+          ]
+        },
+        {
+          "id": "map-scalar-trace",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/phase43/map/trace-instances-v11.mjs",
+            "${ATTEMPT}",
+            "selfhost/tools/performance/phase43/map/scalar-fixture-v3.bend",
+            "p43.map.scalar",
+            "${OUT}/trace-map-scalar",
+            "full",
+            "none"
+          ]
+        },
+        {
+          "id": "map-scalar-derive",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/phase43/products/map-actual/derive-v6.mjs",
+            "${OUT}/new-owner-modules/map-scalar.mjs",
+            "${OUT}/new-owner-modules/map-scalar-checked16.mjs",
+            "${OUT}/trace-map-scalar/report.json",
+            "${OUT}/derive-map-scalar",
+            "p43.map.scalar"
+          ]
+        },
+        {
+          "id": "map-scalar-controls",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/phase43/products/map-actual/oracle-v2.mjs",
+            "${OUT}/derive-map-scalar",
+            "${OUT}/raw-map-scalar"
+          ]
+        }
+      ],
+      "expected": {
+        "kind": "phase43-map-actual-controls",
+        "complete": true,
+        "passed": true,
+        "sourceActivation": true,
+        "counts": {
+          "values": 19,
+          "aliases": 6,
+          "abi": 3
+        }
+      },
+      "inventoryStatus": "BLOCKED: checked12 source has no contextual marker; requires genuine source activation and frozen AST guard inventory before final configuration"
+    },
+    {
+      "id": "map-scalar-renamed",
+      "source": {
+        "path": "selfhost/tools/performance/phase43/map/scalar-renamed-fixture-v3.bend",
+        "sha256": "0e358a78a130275ea7714283111caf979132f2fc5119ad3758daa4ba17608565"
+      },
+      "root": "branch.fresh.scalar",
+      "steps": [
+        {
+          "id": "map-scalar-renamed-baseline",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/programs/emit-worker.mjs",
+            "selfhost/build/phase42/checked16",
+            "selfhost/tools/performance/phase43/map/scalar-renamed-fixture-v3.bend",
+            "${OUT}/new-owner-modules/map-scalar-renamed-checked16.mjs",
+            "selfhost/tools/performance/phase43/map/fixture-catalog-v3.json"
+          ]
+        },
+        {
+          "id": "map-scalar-renamed-candidate",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/programs/emit-worker.mjs",
+            "${ATTEMPT}",
+            "selfhost/tools/performance/phase43/map/scalar-renamed-fixture-v3.bend",
+            "${OUT}/new-owner-modules/map-scalar-renamed.mjs",
+            "selfhost/tools/performance/phase43/map/fixture-catalog-v3.json"
+          ]
+        },
+        {
+          "id": "map-scalar-renamed-trace",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/phase43/map/trace-instances-v11.mjs",
+            "${ATTEMPT}",
+            "selfhost/tools/performance/phase43/map/scalar-renamed-fixture-v3.bend",
+            "branch.fresh.scalar",
+            "${OUT}/trace-map-scalar-renamed",
+            "full",
+            "none"
+          ]
+        },
+        {
+          "id": "map-scalar-renamed-derive",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/phase43/products/map-actual/derive-v6.mjs",
+            "${OUT}/new-owner-modules/map-scalar-renamed.mjs",
+            "${OUT}/new-owner-modules/map-scalar-renamed-checked16.mjs",
+            "${OUT}/trace-map-scalar-renamed/report.json",
+            "${OUT}/derive-map-scalar-renamed",
+            "branch.fresh.scalar"
+          ]
+        },
+        {
+          "id": "map-scalar-renamed-controls",
+          "command": [
+            "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+            "selfhost/tools/performance/phase43/products/map-actual/oracle-v2.mjs",
+            "${OUT}/derive-map-scalar-renamed",
+            "${OUT}/raw-map-scalar-renamed"
+          ]
+        }
+      ],
+      "expected": {
+        "kind": "phase43-map-actual-controls",
+        "complete": true,
+        "passed": true,
+        "sourceActivation": true,
+        "counts": {
+          "values": 19,
+          "aliases": 6,
+          "abi": 3
+        }
+      },
+      "inventoryStatus": "BLOCKED: checked12 source has no contextual marker; requires genuine source activation and frozen AST guard inventory before final configuration"
+    }
+  ],
+  "staticCountsPolicy": "Boundary count is frozen from actual selected emitted AST guard inventory union exact54 before controls, never inferred from passing raw results. Independent absent marker is admission failure, not a negative substitute."
+}

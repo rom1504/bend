@@ -4,7 +4,7 @@
 def j_map_cmp_type(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
   +owner = lookup(book, "Cmp")
   +kind = wnf(book, dt(owner))
-  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Cmp") && List.is_empty(&2,KTerm, ks(ty)) && List.is_empty(&2,String, rm(ty)) &&
+  j_map_cmp_nominal(ty) &&
     String.eq(dk(owner), "ADT") && db(owner) && U32.is_eq(da(owner), 0) && U32.is_eq(dx(owner), 0) &&
     U32.is_eq(j_region_def_count(dc(owner)), 3) && String.eq(tg(kind), "Typ") && U32.is_eq(terms_len(ks(kind)), 1) &&
     String.eq(tg(kid(kind, 0)), "Qua") && U32.is_eq(qt(kid(kind, 0)), 2) &&
@@ -12,9 +12,18 @@ def j_map_cmp_type(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
     j_map_cmp_ctor(book, lookup(dc(owner), "EQ"), "EQ", ty) &&
     j_map_cmp_ctor(book, lookup(dc(owner), "GT"), "GT", ty)
 
+# ADT quant0/1 is source-node metadata, not a Cmp quantity parameter. The
+# canonical owner has no parameters; constructors must terminate at this exact
+# nominal zeroarity type. No recursive type proof or metadata-erasing rewrite.
+@unsafe
+def j_map_cmp_nominal(+ty: KTerm) -> Bool:
+  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Cmp") && U32.is_eq(ix(ty), 0) &&
+    (U32.is_eq(qt(ty), 0) || U32.is_eq(qt(ty), 1)) &&
+    List.is_empty(&2,KTerm, ks(ty)) && List.is_empty(&2,String, rm(ty))
+
 @unsafe
 def j_map_cmp_ctor(+book: List<&2,KDef>, +c: KDef, +name: String, +ty: KTerm) -> Bool:
-  j_pure_native_ctor(c, name, 0) && exact_term(wnf(book, dt(c)), ty)
+  j_pure_native_ctor(c, name, 0) && j_map_cmp_nominal(ty) && j_map_cmp_nominal(wnf(book, dt(c)))
 
 @unsafe
 def j_map_maybe_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:

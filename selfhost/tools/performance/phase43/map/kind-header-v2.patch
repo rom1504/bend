@@ -1,0 +1,18 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -815,12 +815,13 @@
+ 
+ @unsafe
+ def j_erased_closed_kind(+book: List<&2,KDef>, +ty: KTerm, +q: U32) -> Bool:
+-  kc(Bool, String.eq(tg(ty), "Typ") && U32.is_eq(terms_len(ks(ty)), 1) && List.is_empty(&2,String, rm(ty)),
++  kc(Bool, String.eq(tg(ty), "Typ") && String.eq(nm(ty), "") && U32.is_eq(ix(ty), 0) && U32.is_eq(qt(ty), 0) &&
++    U32.is_eq(terms_len(ks(ty)), 1) && List.is_empty(&2,String, rm(ty)),
+     u => j_erased_kind_quantity(wnf(book, kid(ty, 0)), q), u => False{})
+ 
+ @unsafe
+ def j_erased_kind_quantity(+q: KTerm, +expected: U32) -> Bool:
+-  String.eq(tg(q), "Qua") && U32.is_eq(qt(q), expected) &&
++  String.eq(tg(q), "Qua") && String.eq(nm(q), "") && U32.is_eq(ix(q), 0) && U32.is_eq(qt(q), expected) &&
+     List.is_empty(&2,KTerm, ks(q)) && List.is_empty(&2,String, rm(q))
+ 
+ @unsafe

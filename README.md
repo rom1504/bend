@@ -14,6 +14,9 @@ That's Bend - and nothing else.
 
 This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Start with the [compiler guide](docs/BEND-IN-BEND.md).
+The current [Phase43 investigation](implementation/phase43/README.md) and
+[complete-operation architecture](docs/PHASE43_DIRECT_EXECUTION.md) document
+ongoing generated-program improvements.
 Ordinary compilation runs the Bend implementation without a TypeScript fallback;
 the target remains pinned to **0187512, after Bend 2.0.34**.
 

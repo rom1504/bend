@@ -1,6 +1,7 @@
 # P43-003: direct BST build versus temporary products
 
-Status: investigate, prequalification. Owner products; root serializes execution.
+Status: prototype source qualification passes; selected final image owner execution pending.
+Owner products; root serializes execution.
 
 Falsifiable claim: residual generic build/insertion is material at BST64, and
 private zipper Tuple/BF/List allocation remains material after direct calls. These
@@ -13,12 +14,12 @@ Tools, exact commands, rejected selector and source candidate:
 Starting evidence: [checked16 profiles](../../implementation/phase42/profile-findings.md).
 
 Saved-JS oracle and two-point screen02 pass; exact values/ranges and semantic scope
-are recorded in the linked implementation report. Actual compiler qualification
-remains pending. Tiny actual-source oracle must pass complete
+are recorded in the linked implementation report. Actual compiler qualification now passes the later source controls below; final
+selected-image owner execution remains pending. Tiny actual-source oracle must pass complete
 intermediate values, aliases/fresh shells, exact fuel/duplicate order, host fallback,
 ordinary activation/generic-call reduction and deep iterative insertion before timing.
 Root preserves failures and actual commands under selfhost/build/phase43. No Phase42
-raw output is written. Saved-JS measurement valid for the two recorded points; source promotion not proposed.
+raw output is written. Saved-JS measurement valid for the two recorded points; Saved-output kernels are not promoted; the general source lane is qualified below.
 
 Checked01 source integration exposed a compiler-demand bug and180s acquisition
 failure; strict `&&` did not fence recursive malformed-term visits. Root corrected
@@ -55,3 +56,28 @@ Checked08 full BST source oracle and scalar-wrapper activation pass; BST64 apply
 scalar slot workers, so newpair marker activation assertion failed correctly.
 Separate binary-observer target fixtures now await acquisition; old fixtures
 remain explicit stronger-selector negative controls. No scalar rule broadened.
+
+Actual BST pair proof passes products-pair-real08 with ordinary selected marker
+activation, full down values and alias controls. Original pair/ignored precedence
+controls pass and remain negatives. Binary targetv1 source-order failure retained;
+v2 moves filled observer beforeconsumers and awaits root checking. Exact final
+owner recipes/reportclauses delivered to validationowner.
+
+Independent prefix pair proof products-source-pair08 and ignored-field BST
+derivative pair-bst-ignored10 now pass genuine ordinary selected pair activation.
+Original scalar controls remain negative pair-activation controls that prove
+retained scalar execution.
+Failed target09 observer fixtures are retained; final config drops redundant
+plain-target positive and requires prefixpairState plus distinct ignoredBST owner.
+Final newly selected image execution remains required.
+
+Parallel Map source qualification support is now owned under products/map-actual.
+The frozen derive-v5/oracle-v2 pair joins exact checked source/API/runtime/Base
+receipts to full, overlay-none contextual facts and instruments genuine ordinary
+entry plus lexical workers. Main checked12 has58 original guards and112 distinct
+dependencies after the frozen54 primitive family union:699 boundary controls,
+16 value rows, six retained-input alias witnesses, three ABI controls. Actual
+checked12 first ordinary execution failed emitted undeclared $u0; raw evidence
+is retained in run-map-actual12-controls. Independent v3 scalar and renamed
+modules currently have no contextual marker, so their positive inventories are
+unresolved. No Map semantic pass or promotion is claimed from admission traces.

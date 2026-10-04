@@ -14,14 +14,14 @@ commit714c5f5, upstream0187512. Historic phase42 artifacts are read-only.
 [derive](../../selfhost/tools/performance/phase43/strings/derive.mjs),
 [controls](../../selfhost/tools/performance/phase43/strings/controls.mjs).
 
-Current evidence: root-run saved-JS controls passed, and two paired small points
-showed 17.67–18.84× over selected checked16. Actual source qualification remains
-pending: checked05 failed complete activation; checked06 failed ident covered
-prefix emission. Reviewed fixes are integrated in checked08; static emitted
-prefix/outer guard inspection passes. No actual source performance result or
-installation claim is made. Frozen actual source owner requires ordinary complete
-outer root activation, complete intermediate values, host mutation/demand/Error
-boundaries and deep stack behavior; dead emitted workers cannot qualify.
+Current evidence: actual checked08 source passes439 oracle rows,113 boundaries and
+3 activation observations. All positive/refusal String fixtures and59 compiler
+proof probes pass. Its paired two-point screen gives10.911–12.658× checked16 gain,
+with7.003–7.392× remaining TypeScript gap. Earlier saved-JS prototype17.67–18.84×
+gain and approximately5× TS qualifies only that prototype. Prior actual-source,
+controller and affine-fixture failures remain preserved. Decision: retain reviewed
+source implementation for final mandatory-owner integration; no install or full
+steady-state conformance/performance claim yet.
 
 Original/noise same complete bytes quantify same-run variation. Guard, class,
 step and lexical-consumer complete ablations precede full producer+consumer.
@@ -125,3 +125,29 @@ Source controllerv3 baseline-only positive-witness failure is preserved; v4 make
 positive graph witnesses candidate-specific while enforcing any existing baseline
 root dependency refusal. Reviewer approved the independent-root interpretation.
 Complete final owner remains instrumentv5/controlv4,439oracle/113boundaries/3admission.
+
+
+Checked08 final source evidence (root-run, preserved):
+
+- selfhost/build/phase43/strings-controls08-v4/report.json: complete/pass,439oracle,
+  113boundaries,3admission; instrumentv5/controlv4.
+- selfhost/build/phase43/strings-native08/report.json: complete/pass,59proof probes.
+- selfhost/build/phase43/string-fixture-controls08-typed-components-v3/report.json:
+  9values/30boundaries/2activation, complete/pass.
+- selfhost/build/phase43/string-fixture-controls08-typed-components-renamed-v3/report.json:
+  9values/30boundaries/2activation, complete/pass.
+- selfhost/build/phase43/string-fixture-controls08-negative-literal0-v3/report.json:
+  9values/24boundaries/2activation, complete/pass; outer bench/rows stays generic.
+- selfhost/build/phase43/checked08-lexer-screen02/report.json and report.md:
+  paired three rounds, lexer8 baseline151.524ms/source13.8871ms/TS1.98298ms
+  (gain10.911×;source/TS7.003×), lexer6 baseline40.7852ms/source3.22199ms/
+  TS0.435891ms (gain12.658×;source/TS7.392×). Short screens are not full
+  steady-state evidence.
+
+Residual source waste identified statically with guards owner: ident/num repeat
+puretotal PRNG prefixes during phase2 resume; gen repeats native String/Char
+projections even when continuation uses only saved fields and returned value. A
+future typed continuation plan can track postchild binder/field liveness and omit
+only proven dead total work under the same captured graph/host guards, preserving
+all required reconstruction allocations and original generic fallback. No new
+optimization is implemented or measured by this observation.

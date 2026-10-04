@@ -1,0 +1,18 @@
+--- a/selfhost/src/back/js/region.bend
++++ b/selfhost/src/back/js/region.bend
+@@ -1160,11 +1160,9 @@
+   +leaf = j_strip(kid(call, 3))
+   +capture_env = {[kt("Env", "", ix(p), 0, [ref("Nat")])] : List<&2,KTerm>}
+-  "/* private materialized callback environment */const $cb_pending=[];let $cb_n=BigInt(" ++ j_fusion_expr(book, count, vars) ++ ");" ++
++  "/* private total-U32 callback construction/application fusion */let $cb_n=BigInt(" ++ j_fusion_expr(book, count, vars) ++ ");let $cb_value=" ++ j_fusion_expr(book, seed, vars) ++ ";" ++
+     "while($cb_n!==0n){const " ++ j_local(ix(p)) ++ "=$cb_n-1n;const $cb_capture=" ++
+-    j_expr(book, capture_env, kid(binding, 0), ref("U32"), False{}) ++ ";$cb_pending.push({tag:1,capture:$cb_capture});$cb_n=" ++ j_local(ix(p)) ++ ";}" ++
+-    "let $cb_environment={tag:0};while($cb_pending.length){$cb_environment={tag:2,left:$cb_pending.pop(),right:$cb_environment};}" ++
+-    "let $cb_value=" ++ j_fusion_expr(book, seed, vars) ++ ";while($cb_environment.tag===2){const " ++ j_local(ix(binding)) ++
+-    "=$cb_environment.left.capture;const " ++ j_local(ix(leaf)) ++ "=$cb_value;$cb_value=" ++
+-    j_fusion_expr(book, kid(leaf, 0), [binding, leaf]) ++ ";$cb_environment=$cb_environment.right;}return $cb_value;"
++    j_expr(book, capture_env, kid(binding, 0), ref("U32"), False{}) ++ ";const " ++ j_local(ix(binding)) ++ "=$cb_capture;const " ++
++    j_local(ix(leaf)) ++ "=$cb_value;$cb_value=" ++ j_fusion_expr(book, kid(leaf, 0), [binding, leaf]) ++
++    ";$cb_n=" ++ j_local(ix(p)) ++ ";}return $cb_value;"
+ 
+ @unsafe

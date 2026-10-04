@@ -1,0 +1,36 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -483,11 +483,31 @@
+     Bool.not(j_primitive_call(book, spine)) && U32.is_eq(terms_len(ks(spine)), da(target)))) &&
+     U32.is_lt(j_linear_child(env, ks(spine), d, 0), terms_len(ks(spine)))
+ 
++# Resume only: total prefix aliases used solely in saved pre-child fields or
++# child arguments are dead. Keep aliases used by post-child reconstruction.
++@unsafe
++def j_linear_resume_prefix_dead(+t: KTerm, +d: KDef) -> Bool:
++  +body = j_strip(kid(t, 1))
++  +spine = j_linear_spine(body)
++  +child = j_linear_emit_child(ks(spine), d, 0)
++  kc(Bool, String.eq(tg(body), "Ctr") && U32.is_lt(child, terms_len(ks(spine))), u =>
++    j_linear_resume_suffix_dead(ks(spine), child, 0, ix(kid(t, 0))), u => False{})
++
++@unsafe
++def j_linear_resume_suffix_dead(+args: List<&2,KTerm>, +child: U32, +at: U32, +binder: U32) -> Bool:
++  match args:
++    case Nil{}: True{}
++    case Con{h, rest}:
++      kc(Bool, U32.is_gt(at, child), u => U32.is_eq(j_region_counter_uses([h], binder, 0), 0), u => True{}) &&
++        j_linear_resume_suffix_dead(rest, child, U32.inc(at), binder)
++
+ @unsafe
+ def j_linear_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +phase: U32) -> String:
+   kc(String, j_linear_prefix_alias(book, env, t, dn(d)), u =>
+-    "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++ j_nat_loop_names(ks(t), 0) ++
+-    j_linear_finish(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty, d, phase) ++ "}}", u =>
++    kc(String, U32.is_eq(phase, 3) && j_linear_resume_prefix_dead(t, d), u =>
++      j_linear_finish(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty, d, phase), u =>
++      "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++ j_nat_loop_names(ks(t), 0) ++
++      j_linear_finish(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty, d, phase) ++ "}}"), u =>
+     kc(String, j_linear_emit_self(t, d), u =>
+       "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(t, Nil{})), dt(d)) ++ "];" ++
+       j_component_assign(0, da(d)) ++ "continue $visit;", u =>

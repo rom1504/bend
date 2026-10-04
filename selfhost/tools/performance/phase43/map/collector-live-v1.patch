@@ -1,0 +1,14 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -929,9 +929,9 @@
+     case None{}: j_instances_fail(s)
+     case Some{fact}:
+       kc(JInstances, j_instances_has(j_instances_rows(s), fact), u =>
+-        j_instances_collect(book, List.append(&2,KTerm, ks(spine), rest), s), u =>
++        j_instances_collect(book, List.append(&2,KTerm, j_instance_drop(ks(spine), da(fact)), rest), s), u =>
+         kc(JInstances, U32.is_lt(j_region_def_count(j_instances_rows(s)), 32), u =>
+-          j_instances_collect(book, Con{dv(fact), List.append(&2,KTerm, ks(spine), rest)},
++          j_instances_collect(book, Con{dv(fact), List.append(&2,KTerm, j_instance_drop(ks(spine), da(fact)), rest)},
+             JInstances{Con{fact, j_instances_rows(s)}, j_instances_sources(s), j_instances_fuel(s), True{}}), u => j_instances_fail(s)))
+ 
+ # Source book remains canonical. A separate, explicitly audited analysis view

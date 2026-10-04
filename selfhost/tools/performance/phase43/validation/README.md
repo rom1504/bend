@@ -180,7 +180,7 @@ selected emission. Failures retain raw evidence and write incomplete failed wrap
 reports; no failed raw report can become PASS. The extension adds these groups to
 all16 inherited owners, without changing their controls.
 
-Frozen counts include source-v2 String439/113/3; renamed9/30/2 and negative9/24/2;
+Frozen counts include source-v4 String439/113/3; renamed9/30/2 and negative9/24/2;
 fast-v7 compiler proof59; actual callback22/32; noncommutative-v2 fixture85;
 admission refusal11; BST7results and pair15results/exact10controls. Actual U32
 oracle requires82 cases in order (27 fixed +40 frozen baseline numeric hooks +15
@@ -208,7 +208,7 @@ inherited counter/vector equality remains unchanged. The validation-owned smalle
 selected stronger57 successor. Final native ABI/alias/runtime controls remain
 mandatory separately.
 
-String actual-source policy now selects source-controls-v3 plus scope-aware
+String actual-source policy now selects source-controls-v4 plus scope-aware
 source-instrument-v5 (same439/113/3). Guard refusal is checked for the exact lexical
 root whose dependency guard contains the mutated binding; independently safe nested
 roots may activate. Complete outer activation, full values/events, intermediate
@@ -217,7 +217,7 @@ controller failure remains evidence. Final owner config/controller versions need
 independent review before publication.
 
 Final product profiles select the frozen actual-oracle-v2, pair-source-oracle-v3
-and pair-ignored-oracle-v2 tools. Ordinary BST qualification requires `pairState`
+and pair-ignored-oracle-v3 tools. Ordinary BST qualification requires `pairState`
 and `scalarWrapper` true and positive build/insert/fin/down worker counts for each
 nonzero-size row. Pair target qualification requires `precedenceControl:false`
 and actual global pair worker activation; original stronger scalar fixtures use
@@ -234,3 +234,63 @@ source is selected, use callbacks-environment-numeric-guard (actual-guard-contro
 22oracles/39boundaries); the previously qualified32-boundary profile remains
 historical and does not replace new guard-specific String/Float/public callback
 controls. Independent final config/count/controller review remains required.
+
+The concrete `final-owner-config-v1.json` now contains37 supervised acquisition,
+derivation and raw-control steps for15 new owners. It selects callback guard22/39
+without duplicating the old32 profile, retains independent callback85/admission11,
+and includes both ordinary and renamed literal String fixture graphs. Every path
+except the supported `${ATTEMPT}`, `${OUT}`, `${NODE}` bindings is concrete.
+Fresh checked16 baseline emissions for the pair targetv2 sources are included;
+preserved failed v1 acquisitions cannot replace them. Ignored-field pair-v3
+reports actual per-row fresh-pair/scalar counts, checked independently by the
+wrapper as positive activation or original scalar precedence.
+
+This config remains `reviewed:false` pending independent final configuration
+review. The assembler `create-final-owner-config-v1.py` executes no targets and
+must not be used to overwrite a subsequently reviewed immutable config. Once
+reviewed, root can freeze a versioned configuration with `reviewed:true`, then run:
+
+```sh
+python3 selfhost/tools/performance/phase43/validation/build-extension-v1.py \
+  --config FINAL_REVIEWED_CONFIG.json --attempt FINAL_ATTEMPT \
+  --campaign selfhost/build/phase43/integration01 \
+  --contracts selfhost/build/phase43/owner-contracts01 \
+  --extension selfhost/build/phase43/owner-extension01.json
+```
+
+No owner is qualified by this static configuration. Map's actual-source gate must
+be added through a reviewed successor when its frozen source controller is ready;
+all inherited16 owners remain mandatory on the final selected image.
+
+`final-owner-config-v2.json` is the pending successor after ordinary activation
+failures in the independent plain pair target fixtures. It retains those failures
+and uses the independently checked prefix BST fixture's actual `bst.down$tree`
+pair path, with `--fixture --scalar-wrapper --pair-state`. Its report must have
+fixture/scalarWrapper/pairState true and7 rows. Every ordinary row, including zero,
+must execute the prefix build worker; every nonzero row must execute prefix insert,
+insert.fin and bst.down. Existing ordinary BST qualification remains separate.
+Original pair and ignored-field fixtures remain scalar precedence controls.
+Use the matching v2 catalogue/wrapper/extension builder; v1 review inputs survive
+unchanged. Map and an independent ignored-field BST derivative are still pending
+actual-source controllers. The v2 config remains reviewed false.
+
+The v2 successor now contains34steps14owners, including the frozen independent
+ignored-field BST derivative. `products-bst-pair-ignored` binds exact controller
+SHA, pairState/worker/marker,7 ordinary rows and all6 alias/freshness/conditional
+retention/deep12000 private control records. Its wrapper requires actual build
+activation on every row and actual insert/fin/down activation for every nonzero
+row. Both source roles are freshly emitted against their explicit checked attempt,
+with the baseline fixed to checked16. Original ignored-field scalar precedence
+remains a separate owner. Map remains pending; no static config counts as a runtime
+qualification.
+
+The pending v3 configuration retains34steps14owners while replacing materialized
+callback routes with actual-source fusion controls22/39 and independent fusion
+fixture85. Admission11 remains unchanged, including malformed Type0/2 refusals.
+The matching v3 catalogue pins both controller hashes; its wrapper additionally
+requires the exact authentic actual-source-fusion derivation kind, complete and
+certified. Fresh checked source modules precede this derivation. Historical saved
+fusion performance and prior guard graph controls do not qualify the selected
+source image. Use `build-extension-v3.py` with the eventually frozen reviewed
+configuration; older v1/v2 inputs and review receipts remain intact. Independent
+v3 static review is recorded, but final image/Map/fresh closures/cost are pending.

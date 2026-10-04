@@ -110,6 +110,103 @@ callback-string-scope-screen01, strings-controls08-v4, callback-actual-controls0
 callback-source-fixture08, products-pair-real08 and run-guard-actual-controls08.
 Earlier failed attempts and superseded controller versions remain recorded.
 
+## Follow-up experiments and current source
+
+Checked09's fresh four-point screen (`checked09-screen01`) confirms the guarded
+closure environment change: size64 is 4.208 times faster than checked16 and
+2.075 times TS; size256 is 8.069 times faster and 1.0105 times TS. Tree32/64
+remain 2.185/2.534 times faster than checked16 and 3.803/2.516 times TS in
+that same screen. Short-screen variation is retained rather than selecting the
+best denominator from previous runs.
+
+A further source-generic callback experiment fuses construction and application
+under the existing exact total-U32/no-escape proof, removing the private
+environment graph. Independent noncommutative composition and host controls
+pass. Its fresh saved-JS screen gives 1.080/1.452 times the materialized09 speed;
+the larger point takes 0.6585 times TS. The emitter change removes two lines.
+Checked11 builds with it in 55.30 seconds at 1.350GB peak tree RSS and passes
+36 focused checks. Genuine checked11 output passes 22 oracle groups/39
+boundaries plus the independent 85-observation fixture. These fresh semantic
+receipts are separate from the saved-JS timing. A bounded numeric countdown
+experiment is being evaluated independently; it is not yet source-integrated.
+
+Map's compiler integration has exposed four overly conservative or misplaced
+checks: a native/source distinction, Cmp node metadata versus nominal type
+identity, normalized closed kind compatibility, and traversal of erased type
+arguments as runtime calls. Checked11's full diagnostic now collects 24 typed
+instances and 28 ordinary sources, passes exact replay, and reaches the shared
+purity proof. Its next missing rule is the existing native String.append ABI.
+The diagnostic overlay and native signature controls are separate from actual
+compiler activation, which remains pending.
+
+Dead lexer resume work is a smaller hypothesis. Both-prefix-and-projection and
+separate variants pass the full source controls and 48 additional fenced
+Unicode/host observations. The two-point attribution screen is uneven: prefix
+removal alone barely changes lexer8, while removing dead String projections
+improves it roughly 16%; lexer6 does not reproduce a consistent combined gain.
+No broad liveness machinery is integrated on this evidence. A direct-wrapper
+experiment also passes controls but regresses around 1–2% with a repeated inner
+guard; its failure is retained before trying an enclosing-proof variant.
+
+The independent tree pair controls are now settled. `products-source-pair08`
+proves ordinary private pair activation on the existing renamed prefix source.
+`pair-bst-ignored10-controls` passes seven ordinary results and six private
+value/alias/deep controls on a separate source that discards old pair fields.
+The plain scalar fixtures remain explicit old-scalar-precedence controls; their
+failed positive-activation attempts were not relabeled as passes.
+
+Checkpoint `6cbd0a1` is pushed. Later experiment and source work is still under
+qualification. Production source has grown overall; the shorter callback rule
+does not justify claiming that the whole compiler became smaller.
+
+## Bounded numeric callbacks and actual Map admission
+
+The saved numeric countdown screen (`callback-number-screen01`) measures the
+larger closure point at 0.4455 times TypeScript and 1.576 times the checked11
+BigInt-loop speed. Its independent fixture has 85 observations; 22 oracle
+groups and 40 boundaries include the original BigInt fallback. The first source
+proposal rebuilt synthetic Call nodes that the expression emitter does not
+accept. Static review rejected it before a compiler build. The corrected v8
+preserves App shells; `callback-number-lowering12` confirms exact emitted U32
+expressions across boundary predecessors and records the rejected null output.
+Actual compiler-emitted numeric qualification remains pending.
+
+Checked12 builds in 50.64 seconds and passes 36 focused checks. Exact native
+String.append signature proof and canonical kind headers let the actual Map
+operation activate, with no diagnostic semantic overlay. The compiler proof
+controller passes 71 signature, quantity, malformed-header and kind observations.
+Both independent scalar and renamed Map fixtures compile. Their first two fixture
+versions were invalid against the pinned Map.get ABI/parser and remain failures.
+
+Actual Map execution then exposes a lowering bug: a private call around a
+recursive child loses the shell needed by the iterative continuation emitter.
+The resulting undefined temporary is a real compiler defect, recorded in
+`run-map-actual12-controls`. Review also identified missing identity guards for
+inlined primitive dependencies. A conservative complete primitive-family fence
+is applied, but execution and mutation controls must pass before Map is measured
+or selected. Activation and type proof alone do not qualify generated execution.
+
+The final lexer wrapper experiment passes controls but has mixed timing:
+about 7% faster on lexer8 and 3% slower on lexer6. Both optional lexer follow-ups
+are deferred; their source patches are not integrated.
+
+## Checked13–14 correctness checkpoint
+
+Checked13 builds in 54.77 seconds at 1.373GB peak tree RSS. Its genuine numeric
+callback emission passes all 22 oracle groups and 40 boundary controls, including
+the original BigInt branch. Map now reaches execution but fails on an unbound
+private instance name; this confirms the independent review's continuation-call
+finding. The next repair keeps recursive App shells and emits a lexical call only
+for an independently admitted private target. Unsupported ancestor shapes make
+the complete plan refuse; they cannot fall through to a nonexistent public name.
+
+Checked14 builds in 54.27 seconds at 1.370GB tree RSS and passes 36 focused checks.
+Its actual execution qualification is running. New AST audits reject unresolved
+private calls, empty continuation argument vectors and unbound saved temporaries.
+The unannotated independent Map fixture is retained as a conservative purity
+refusal. A separate explicit-annotation fixture tests the supported domain without
+expanding the compiler's type-inference machinery.
+
 ## Release status
 
 No new release is installed yet. Remaining work includes actual activation

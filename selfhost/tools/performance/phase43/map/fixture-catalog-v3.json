@@ -1,0 +1,73 @@
+{
+  "kind": "bend-program-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "status": "frozen",
+  "scope": "Pinned Base Map.get Sigma ABI with typed parameter helper; generic literal and renamed scalar admission controls",
+  "sets": {
+    "fast": [
+      "map-scalar",
+      "map-scalar-renamed"
+    ],
+    "full": [
+      "map-scalar",
+      "map-scalar-renamed"
+    ]
+  },
+  "cases": [
+    {
+      "id": "map-scalar",
+      "category": "phase43-map-control",
+      "description": "Fresh crit-bit Map replace/delete/get returns seed+2 modulo2^32",
+      "scope": "Generic scalar enclosing request with grounded erased Map calls",
+      "source": {
+        "path": "scalar-fixture-v3.bend",
+        "sha256": "447b6202d5edd7c2b3d68c0f21805ef5e1cb829e115196a3454c6b8c29bf0d36",
+        "bytes": 616
+      },
+      "point": {
+        "args": [
+          4294967295
+        ],
+        "expected": 1,
+        "exportName": "p43.map.scalar"
+      },
+      "oracle": "Independent U32 addition: (seed+2) modulo2^32",
+      "sets": [
+        "fast",
+        "full"
+      ],
+      "partition": "phase43-control",
+      "family": "phase43-map",
+      "outerRoot": "p43.map.scalar",
+      "expectOuterActivation": true
+    },
+    {
+      "id": "map-scalar-renamed",
+      "category": "phase43-map-control",
+      "description": "Fresh crit-bit Map replace/delete/get returns seed+2 modulo2^32",
+      "scope": "Generic scalar enclosing request with grounded erased Map calls",
+      "source": {
+        "path": "scalar-renamed-fixture-v3.bend",
+        "sha256": "0e358a78a130275ea7714283111caf979132f2fc5119ad3758daa4ba17608565",
+        "bytes": 631
+      },
+      "point": {
+        "args": [
+          4294967295
+        ],
+        "expected": 1,
+        "exportName": "branch.fresh.scalar"
+      },
+      "oracle": "Independent U32 addition: (seed+2) modulo2^32",
+      "sets": [
+        "fast",
+        "full"
+      ],
+      "partition": "phase43-control",
+      "family": "phase43-map",
+      "outerRoot": "branch.fresh.scalar",
+      "expectOuterActivation": true
+    }
+  ]
+}

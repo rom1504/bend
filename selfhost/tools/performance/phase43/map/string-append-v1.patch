@@ -1,0 +1,30 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -95,7 +95,7 @@
+ @unsafe
+ def j_pure_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
+   +ty = wnf(book, dt(d))
+-  j_pure_bool_native(book, d) || j_pure_nat_native(book, d) || j_map_native_binary(book, d) || (String.eq(dn(d), "F32.to_u32") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 1) && U32.is_eq(dx(d), 0) &&
++  j_pure_bool_native(book, d) || j_pure_nat_native(book, d) || j_map_native_binary(book, d) || j_map_native_string(book, d) || (String.eq(dn(d), "F32.to_u32") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 1) && U32.is_eq(dx(d), 0) &&
+     Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) &&
+     j_primitive_type(book, wnf(book, kid(ty, 0)), "F32") && j_primitive_type(book, wnf(book, kid(ty, 1)), "U32"))
+ 
+@@ -1358,6 +1358,18 @@
+       kc(Bool, String.eq(dn(d), "Nat.is_lt"), u => j_primitive_type(book, wnf(book, kid(rest, 1)), "Bool"), u =>
+       String.eq(dn(d), "Nat.divmod") && j_map_native_divmod_result(book, wnf(book, kid(rest, 1))))))
+ 
++
++# Residual String.append keeps runtime fn/call ABI and native snapshot guards.
++@unsafe
++def j_map_native_string(+book: List<&2,KDef>, +d: KDef) -> Bool:
++  +ty = wnf(book, dt(d))
++  +rest = wnf(book, kid(ty, 1))
++  String.eq(dn(d), "String.append") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) &&
++    Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) &&
++    String.eq(tg(ty), "All") && U32.is_eq(qt(ty), 1) && String.eq(tg(rest), "All") && U32.is_eq(qt(rest), 1) &&
++    j_string_string(book, wnf(book, kid(ty, 0))) && j_string_string(book, wnf(book, kid(rest, 0))) &&
++    j_string_string(book, wnf(book, kid(rest, 1)))
++
+ @unsafe
+ def j_map_native_divmod_result(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+   j_pure_closed_sigma(book, ty) && j_primitive_type(book, wnf(book, kid(ty, 2)), "Nat") &&

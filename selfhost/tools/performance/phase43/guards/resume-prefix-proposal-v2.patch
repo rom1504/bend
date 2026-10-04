@@ -1,0 +1,27 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -483,11 +483,22 @@
+     Bool.not(j_primitive_call(book, spine)) && U32.is_eq(terms_len(ks(spine)), da(target)))) &&
+     U32.is_lt(j_linear_child(env, ks(spine), d, 0), terms_len(ks(spine)))
+ 
++# Complete-JPure String producer resume only. The exact native SCon tail is
++# the final child; its head was saved before descent, so a total prefix is dead.
++@unsafe
++def j_linear_string_resume_dead(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +d: KDef) -> Bool:
++  +body = j_strip(kid(t, 1))
++  kc(Bool, j_string_string(book, wnf(book, ty)) && String.eq(tg(body), "Ctr") &&
++    String.eq(nm(body), "SCon") && U32.is_eq(terms_len(ks(body)), 2), u =>
++      U32.is_eq(j_linear_emit_child(ks(body), d, 0), 1), u => False{})
++
+ @unsafe
+ def j_linear_finish(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +phase: U32) -> String:
+   kc(String, j_linear_prefix_alias(book, env, t, dn(d)), u =>
+-    "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++ j_nat_loop_names(ks(t), 0) ++
+-    j_linear_finish(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty, d, phase) ++ "}}", u =>
++    kc(String, U32.is_eq(phase, 3) && j_linear_string_resume_dead(book, t, ty, d), u =>
++      j_linear_finish(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty, d, phase), u =>
++      "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++ j_nat_loop_names(ks(t), 0) ++
++      j_linear_finish(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty, d, phase) ++ "}}"), u =>
+     kc(String, j_linear_emit_self(t, d), u =>
+       "const $next=[" ++ j_apply_args(book, env, ks(j_call_spine(t, Nil{})), dt(d)) ++ "];" ++
+       j_component_assign(0, da(d)) ++ "continue $visit;", u =>

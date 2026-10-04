@@ -156,3 +156,75 @@ selection and final source assignment snapshots. Qualification remains pending.
 Handed-off trace-v2 is restored byte-for-byte from consumed job input; subsequent
 Sigma ABI witnesses are frozen in trace-v3. Every handed-off tool version is now
 immutable. Prior consumed raw output and all source03/04/05 snapshots remain intact.
+
+Actual checked11 full trace-v7 completes in 15.8s with 24 grounded erased facts,
+28 ordinary source aliases, a valid collector and exact replay of every canonical
+original. The collector now visits only live call slots after proving the complete
+erased prefix; type-level Pair arguments are excluded from operational traversal.
+The rewriter already strips that same prefix once. `collector-live-v1.patch`
+records both collector sites without changing source fact identity or public ABI.
+
+The actual JPure graph still refuses, so compiler activation and source semantics
+remain unqualified. Frozen trace-v9 identifies its first concrete refusal as
+String.append inside p37.map.key, with 130941 proof fuel remaining. The staged
+`string-append-v1.patch` admits only its exact closed binary String signature as a
+residual native call; original G snapshots and native call semantics remain in
+force. Trace-v10's named `--string-overlay` is diagnostic only. Versions v8 onward
+include ordered contextualRows provenance for the separate actual-source semantic
+controller, plus four independent checker-kind witnesses and fourteen malformed
+kind controls. `kind-header-v2.patch` tightens the normalized literal Typ/Qua
+headers; it does not alter callback formal universe admission. Raw output from
+all earlier versions is preserved.
+
+Diagnostic trace-v10 completes with a valid raw JPure graph and an activated final
+root after its explicit String.append-only overlay. It does not qualify a compiler
+artifact. The emitted-ready scope includes crit-bit seek/put/ins/pop, public Map
+set/del wrappers, traversal and bit workers. String comparison/difference, decimal
+conversion and msb helper SCCs still use original generic residual calls. An
+intermediate speculative JPure refusal can occur while testing an emission plan;
+final root activation is reported separately and is the relevant outcome.
+
+The pinned Base Map.get ABI is `Map.get(V, default, map, key) -> Map & V`.
+Version1 scalar fixtures accidentally assumed a Maybe ABI and are preserved as
+invalid source controls. Frozen fixture-catalog-v2.json points to corrected literal
+and renamed v2 sources using a Sigma destructure; their independent scalar oracle
+remains `(seed + 2) >>> 0`. Positive qualification must use version2. The full
+structural fixture's Map.to_list ABI was already correct.
+
+Selected compiler proof gate: pinned Node runs
+`compiler-proof-controls-v1.mjs ATTEMPT scalar-fixture-v2.bend p43.map.scalar NEW_OUT`.
+It permits no diagnostic semantic overlay and intercepts selected-library processing
+before graph collection/emission. Its actual typed API must pass exactly 71 rows:
+17 append, 14 malformed kind, four primary kind comparisons, 26 Cmp, four Sigma
+quantity positives and six quantity negatives. Actual kind-helper outputs must
+independently match all four primary comparisons. `report.json` requires kind
+`phase43-map-compiler-proof-controls`, compilerOnly true, complete true, passed
+true and the fixed exactCounts object. `inputs.json` seals the actual attempt API,
+runtime, Base, source and consumed controller plus generated diagnostic bytes;
+`completion.json` must record the expected sentinel stop. This qualifies compiler
+proof predicates only; the actual Map module requires its separate executable
+semantic, mutation, ABI, deep-stack and activation controller.
+
+Actual checked12 now emits one genuine contextual Map entry in map-churn.mjs.
+Its overlay-free trace-v11 full pass completes in 21.35s: collector valid, exact
+fact replay true, raw JPure valid and final emitted root activated. Emission is
+138698 bytes. Append, primary kind, malformed kind and Cmp controls pass; the
+executable semantic controller and timing remain separate pending gates.
+
+Version2 scalar sources fix the Map.get ABI but use a computed pair match that
+the pinned parser rejects. Frozen version3 and fixture-catalog-v3.json move that
+match into a preceding typed ROOT.value parameter helper. The enclosing root calls
+the helper with Map.get(U32,0,map,"a"); the scalar oracle stays seed+2. Proof71
+and positive literal/renamed acquisition must use version3; both earlier versions
+remain preserved as unsuccessful source evidence.
+
+Post-activation static review found an additional dependency fence gap: JPure's
+primitive-call branch proves and inlines scalar operations without adding their
+Defs to the residual graph. Checked12's contextual guard array therefore omitted
+U32.add/xor/and and other inline primitive bindings. `primitive-family-guards-v1`
+is a conservative staged repair: append all 54 authoritative j_primitive_known
+names to the single contextual entry guard. Their runtime native factories already
+capture descriptor snapshots. Exact used primitive types remain proved; a mutation
+of an unrelated primitive also refuses the private path and keeps ordinary generic
+behavior. Actual primitive binding/code/getter mutation controls are mandatory;
+checked12 activation alone does not qualify this uncovered behavior.

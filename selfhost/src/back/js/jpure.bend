@@ -95,7 +95,7 @@ def j_pure_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> Bool:
 @unsafe
 def j_pure_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
   +ty = wnf(book, dt(d))
-  j_pure_bool_native(book, d) || j_pure_nat_native(book, d) || j_map_native_binary(book, d) || (String.eq(dn(d), "F32.to_u32") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 1) && U32.is_eq(dx(d), 0) &&
+  j_pure_bool_native(book, d) || j_pure_nat_native(book, d) || j_map_native_binary(book, d) || j_map_native_string(book, d) || (String.eq(dn(d), "F32.to_u32") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 1) && U32.is_eq(dx(d), 0) &&
     Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) &&
     j_primitive_type(book, wnf(book, kid(ty, 0)), "F32") && j_primitive_type(book, wnf(book, kid(ty, 1)), "U32"))
 
@@ -803,13 +803,34 @@ def j_erased_instance_step(+book: List<&2,KDef>, +env: List<&2,KTerm>, +original
       U32.is_eq(terms_len(args), U32.sub(da(original), prefix)), u =>
       Some{KDef{dn(original), "JErasedInstance", prefix, da(original), head, body, Con{original, slots}, True{}, False{}}}, u => None{}))
 
+# check_fits uses compare(actual, expected, True); norm_cmp_kind allows Data
+# (Qua2) to fit Type (Qua1). Only closed, normalized literal kind quantities are
+# admitted here, with reverse1->2 refused. Ground argument/value proofs stay exact.
+@unsafe
+def j_erased_kind_fits(+book: List<&2,KDef>, +actual: KTerm, +expected: KTerm) -> Bool:
+  exact_term(actual, expected) ||
+    (j_erased_closed_kind(book, actual, 2) && j_erased_closed_kind(book, expected, 1)) ||
+    (j_erased_closed_kind(book, actual, 1) && j_erased_closed_kind(book, expected, 1)) ||
+    (j_erased_closed_kind(book, actual, 2) && j_erased_closed_kind(book, expected, 2))
+
+@unsafe
+def j_erased_closed_kind(+book: List<&2,KDef>, +ty: KTerm, +q: U32) -> Bool:
+  kc(Bool, String.eq(tg(ty), "Typ") && String.eq(nm(ty), "") && U32.is_eq(ix(ty), 0) && U32.is_eq(qt(ty), 0) &&
+    U32.is_eq(terms_len(ks(ty)), 1) && List.is_empty(&2,String, rm(ty)),
+    u => j_erased_kind_quantity(wnf(book, kid(ty, 0)), q), u => False{})
+
+@unsafe
+def j_erased_kind_quantity(+q: KTerm, +expected: U32) -> Bool:
+  String.eq(tg(q), "Qua") && String.eq(nm(q), "") && U32.is_eq(ix(q), 0) && U32.is_eq(qt(q), expected) &&
+    List.is_empty(&2,KTerm, ks(q)) && List.is_empty(&2,String, rm(q))
+
 @unsafe
 def j_erased_instance_arg(+book: List<&2,KDef>, +env: List<&2,KTerm>, +original: KDef, +body: KTerm, +ty: KTerm, +args: List<&2,KTerm>, +slots: List<&2,KDef>, +prefix: U32, +fuel: U32) -> Maybe<&2,KDef>:
   match args:
     case Nil{}: None{}
     case Con{h, rest}:
       kc(Maybe<&2,KDef>, j_erased_closed_arg(book, h) &&
-        exact_term(wnf(book, j_erased_arg_type(book, wnf(book, h))), wnf(book, kid(ty, 0))), u =>
+        j_erased_kind_fits(book, wnf(book, j_erased_arg_type(book, wnf(book, h))), wnf(book, kid(ty, 0))), u =>
         j_erased_instance_scanned(book, env, original, body, ty, wnf(book, h), rest, slots, prefix,
           j_erased_runtime_scan(book, [kid(body, 0)], ix(body), U32.sub(fuel, 1))), u => None{})
 
@@ -909,9 +930,9 @@ def j_instances_fact(+book: List<&2,KDef>, +spine: KTerm, +rest: List<&2,KTerm>,
     case None{}: j_instances_fail(s)
     case Some{fact}:
       kc(JInstances, j_instances_has(j_instances_rows(s), fact), u =>
-        j_instances_collect(book, List.append(&2,KTerm, ks(spine), rest), s), u =>
+        j_instances_collect(book, List.append(&2,KTerm, j_instance_drop(ks(spine), da(fact)), rest), s), u =>
         kc(JInstances, U32.is_lt(j_region_def_count(j_instances_rows(s)), 32), u =>
-          j_instances_collect(book, Con{dv(fact), List.append(&2,KTerm, ks(spine), rest)},
+          j_instances_collect(book, Con{dv(fact), List.append(&2,KTerm, j_instance_drop(ks(spine), da(fact)), rest)},
             JInstances{Con{fact, j_instances_rows(s)}, j_instances_sources(s), j_instances_fuel(s), True{}}), u => j_instances_fail(s)))
 
 # Source book remains canonical. A separate, explicitly audited analysis view
@@ -1095,7 +1116,9 @@ def j_instance_cover_app(+view: List<&2,KDef>, +defs: List<&2,KDef>, +owner: Str
     kc(KTerm, String.starts_with(nm(spine), "$instance."), u =>
       kc(KTerm, exact_def(d, known) && String.eq(dk(index_first(dc(d))), "JErasedInstance"), u =>
         kc(KTerm, String.eq(nm(spine), owner), u => j_region_app(ref(owner), args), u =>
-          kc(KTerm, j_instance_emit_ready(view, d), u => j_region_annotate(kt("JCall", nm(spine), 0, 1, args), j_covered_result(dt(d), args)), u => j_instance_residual(view, d, args))), u => atom("Absent")), u =>
+          kc(KTerm, U32.is_gt(j_component_refs(ks(spine), owner, 8192, 0), 0), u =>
+            kc(KTerm, j_instance_emit_ready(view, d), u => j_region_app(ref(nm(spine)), args), u => atom("Absent")), u =>
+          kc(KTerm, j_instance_emit_ready(view, d), u => j_region_annotate(kt("JCall", nm(spine), 0, 1, args), j_covered_result(dt(d), args)), u => j_instance_residual(view, d, args)))), u => atom("Absent")), u =>
       j_region_app(ref(nm(spine)), args)), u => atom("Absent"))
 
 @unsafe
@@ -1172,7 +1195,7 @@ def j_instance_root_view(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +
 @unsafe
 def j_instance_root_emit(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +defs: List<&2,KDef>, +at: U32) -> String:
   kc(String, U32.is_eq(at, 4294967295) || Bool.not(j_instance_emit_ready(view, lookup(view, j_instance_name(at)))), u => "", u =>
-    "(()=>{" ++ j_instance_declarations(view, defs, defs) ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_native_guards(j_pure_defs(j_pure_graph(view, lookup(view, j_instance_name(at)), JPure{Nil{}, 131072, True{}}))) ++ "];return " ++
+    "(()=>{" ++ j_instance_declarations(view, defs, defs) ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_primitive_guards() ++ j_instance_native_guards(j_pure_defs(j_pure_graph(view, lookup(view, j_instance_name(at)), JPure{Nil{}, 131072, True{}}))) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){" ++ j_nat_loop_slots(da(d), 0) ++
     "if($entered&&regionProof===null&&regionHostGuard()&&stringHostGuard()&&" ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++
     "&&localGuard($guards)){/* private contextual instances */return " ++ j_region_name(j_instance_name(at)) ++ "$tree(" ++ j_region_vector_names("$s", 0, da(d)) ++ ");}" ++
@@ -1190,6 +1213,13 @@ def j_instance_residual(+view: List<&2,KDef>, +d: KDef, +args: List<&2,KTerm>) -
   +original = j_instance_original(fact)
   +full = List.append(&2,KTerm, j_instance_slot_args(j_instance_tail_defs(dc(fact))), args)
   j_region_annotate(kt("JGeneric", dn(original), 0, 0, full), j_covered_result(dt(original), full))
+
+# Conservative complete inline primitive-family fence. Exact used call types
+# are still proved by j_primitive_definition; irrelevant native mutations may
+# refuse the private entry and retain ordinary generic behavior.
+@unsafe
+def j_instance_primitive_guards() -> String:
+  "\"U32.add\",\"U32.sub\",\"U32.mul\",\"U32.div\",\"U32.mod\",\"U32.and\",\"U32.or\",\"U32.xor\",\"U32.inc\",\"U32.not\",\"U32.shl\",\"U32.shr\",\"U32.shln\",\"U32.shrn\",\"U32.is_zero\",\"U32.is_eq\",\"U32.is_ne\",\"U32.is_lt\",\"U32.is_le\",\"U32.is_gt\",\"U32.is_ge\",\"U32.to_nat\",\"U32.from_nat\",\"U32.to_f32\",\"F32.add\",\"F32.sub\",\"F32.mul\",\"F32.div\",\"F32.mod\",\"F32.neg\",\"F32.is_eq\",\"F32.is_ne\",\"F32.is_lt\",\"F32.is_le\",\"F32.is_gt\",\"F32.is_ge\",\"F32.sqrt\",\"F32.exp\",\"F32.log\",\"F32.log2\",\"F32.log10\",\"F32.sin\",\"F32.cos\",\"F32.tan\",\"F32.asin\",\"F32.acos\",\"F32.atan\",\"F32.sinh\",\"F32.cosh\",\"F32.tanh\",\"F32.floor\",\"F32.ceil\",\"F32.trunc\",\"F32.abs\","
 
 @unsafe
 def j_instance_native_guards(+graph: List<&2,KDef>) -> String:
@@ -1259,7 +1289,7 @@ def j_instance_root_raw(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +r
 def j_map_cmp_type(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
   +owner = lookup(book, "Cmp")
   +kind = wnf(book, dt(owner))
-  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Cmp") && List.is_empty(&2,KTerm, ks(ty)) && List.is_empty(&2,String, rm(ty)) &&
+  j_map_cmp_nominal(ty) &&
     String.eq(dk(owner), "ADT") && db(owner) && U32.is_eq(da(owner), 0) && U32.is_eq(dx(owner), 0) &&
     U32.is_eq(j_region_def_count(dc(owner)), 3) && String.eq(tg(kind), "Typ") && U32.is_eq(terms_len(ks(kind)), 1) &&
     String.eq(tg(kid(kind, 0)), "Qua") && U32.is_eq(qt(kid(kind, 0)), 2) &&
@@ -1267,9 +1297,18 @@ def j_map_cmp_type(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
     j_map_cmp_ctor(book, lookup(dc(owner), "EQ"), "EQ", ty) &&
     j_map_cmp_ctor(book, lookup(dc(owner), "GT"), "GT", ty)
 
+# ADT quant0/1 is source-node metadata, not a Cmp quantity parameter. The
+# canonical owner has no parameters; constructors must terminate at this exact
+# nominal zeroarity type. No recursive type proof or metadata-erasing rewrite.
+@unsafe
+def j_map_cmp_nominal(+ty: KTerm) -> Bool:
+  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Cmp") && U32.is_eq(ix(ty), 0) &&
+    (U32.is_eq(qt(ty), 0) || U32.is_eq(qt(ty), 1)) &&
+    List.is_empty(&2,KTerm, ks(ty)) && List.is_empty(&2,String, rm(ty))
+
 @unsafe
 def j_map_cmp_ctor(+book: List<&2,KDef>, +c: KDef, +name: String, +ty: KTerm) -> Bool:
-  j_pure_native_ctor(c, name, 0) && exact_term(wnf(book, dt(c)), ty)
+  j_pure_native_ctor(c, name, 0) && j_map_cmp_nominal(ty) && j_map_cmp_nominal(wnf(book, dt(c)))
 
 @unsafe
 def j_map_maybe_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
@@ -1328,6 +1367,23 @@ def j_map_native_binary(+book: List<&2,KDef>, +d: KDef) -> Bool:
       kc(Bool, String.eq(dn(d), "Nat.sub"), u => j_primitive_type(book, wnf(book, kid(rest, 1)), "Nat"), u =>
       kc(Bool, String.eq(dn(d), "Nat.is_lt"), u => j_primitive_type(book, wnf(book, kid(rest, 1)), "Bool"), u =>
       String.eq(dn(d), "Nat.divmod") && j_map_native_divmod_result(book, wnf(book, kid(rest, 1))))))
+
+# Residual String.append keeps runtime fn/call ABI and native snapshot guards.
+@unsafe
+def j_map_native_string(+book: List<&2,KDef>, +d: KDef) -> Bool:
+  kc(Bool, String.eq(dn(d), "String.append") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) &&
+    Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")),
+    u => j_map_native_string_signature(book, wnf(book, dt(d))), u => False{})
+
+@unsafe
+def j_map_native_string_signature(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  kc(Bool, String.eq(tg(ty), "All") && U32.is_eq(qt(ty), 1) && j_string_string(book, wnf(book, kid(ty, 0))),
+    u => j_map_native_string_result(book, wnf(book, kid(ty, 1))), u => False{})
+
+@unsafe
+def j_map_native_string_result(+book: List<&2,KDef>, +rest: KTerm) -> Bool:
+  String.eq(tg(rest), "All") && U32.is_eq(qt(rest), 1) &&
+    j_string_string(book, wnf(book, kid(rest, 0))) && j_string_string(book, wnf(book, kid(rest, 1)))
 
 @unsafe
 def j_map_native_divmod_result(+book: List<&2,KDef>, +ty: KTerm) -> Bool:

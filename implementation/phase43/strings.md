@@ -1,14 +1,15 @@
 # Phase43 String handoff
 
-The saved-JS complete lexer mechanism passed root-run value/host/alias controls
-and showed 17.67–18.84× improvement over selected checked16 at two small points.
-These measurements qualify the saved-JS mechanism only. Actual source checked05
-failed complete activation (Bool.and proof missing); checked06 failed at ident's
-covered prefix emission. Both failures remain preserved. The reviewed source
-corrections are integrated in checked08, whose emitted ident/num prefix and
-bench/batch guard sites pass static inspection; source controls have validated ordinary complete activation and intermediate
-values but failed a blanket mutation-count assertion; revised complete controls
-remain pending root execution. No source performance or installation claim is made.
+Actual checked08 lexer source now passes the full semantic owner:439 oracle rows,
+113 host/demand/Error/mutation boundaries, and3 activation observations, including
+ordinary complete bench/batch entry and full owned String/Mode/Tuple intermediates.
+All three renamed/alias/custom-field/literal-refusal fixture controllers also pass;
+compiler type/admission controls pass59 probes. Raw reports retain prior failures.
+
+The paired source screen improves checked16 by10.911× at depth8 and12.658× at depth6;
+the remaining gap is7.003–7.392× TypeScript. The earlier saved-JS prototype showed
+17.67–18.84× gain and roughly5× TypeScript. Prototype results do not describe the
+actual compiler. No installation or full steady-state result is claimed here.
 
 Latest frozen tools: source-instrument-v5.mjs, source-controls-v4.mjs,
 type-controls-fast-v7.mjs (59 compiler proof probes), fixture-catalog-v4.json and
@@ -214,3 +215,29 @@ preserved. source-controls-v4 requires that positive witness only for candidate,
 while still refusing every affected baseline root if present. Full value/event
 parity and no proof leakage remain mandatory. source-instrument-v5 is unchanged.
 Exact final controller totals remain439oracle/113boundaries/3admission.
+
+
+Checked08 final source evidence (root-run, preserved):
+
+- selfhost/build/phase43/strings-controls08-v4/report.json: complete/pass,439oracle,
+  113boundaries,3admission; instrumentv5/controlv4.
+- selfhost/build/phase43/strings-native08/report.json: complete/pass,59proof probes.
+- selfhost/build/phase43/string-fixture-controls08-typed-components-v3/report.json:
+  9values/30boundaries/2activation, complete/pass.
+- selfhost/build/phase43/string-fixture-controls08-typed-components-renamed-v3/report.json:
+  9values/30boundaries/2activation, complete/pass.
+- selfhost/build/phase43/string-fixture-controls08-negative-literal0-v3/report.json:
+  9values/24boundaries/2activation, complete/pass; outer bench/rows stays generic.
+- selfhost/build/phase43/checked08-lexer-screen02/report.json and report.md:
+  paired three rounds, lexer8 baseline151.524ms/source13.8871ms/TS1.98298ms
+  (gain10.911×;source/TS7.003×), lexer6 baseline40.7852ms/source3.22199ms/
+  TS0.435891ms (gain12.658×;source/TS7.392×). Short screens are not full
+  steady-state evidence.
+
+Residual source waste identified statically with guards owner: ident/num repeat
+puretotal PRNG prefixes during phase2 resume; gen repeats native String/Char
+projections even when continuation uses only saved fields and returned value. A
+future typed continuation plan can track postchild binder/field liveness and omit
+only proven dead total work under the same captured graph/host guards, preserving
+all required reconstruction allocations and original generic fallback. No new
+optimization is implemented or measured by this observation.

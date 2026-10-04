@@ -1,12 +1,16 @@
 # Phase43 products implementation status
 
-Correctness: root-run saved-JS products-ablation02 oracle passes complete values,
-aliases, host fallback, demand order, activation and deep12000 insertion. This is
-not checked compiler-source qualification. Decision: investigate; no production edits.
+Current status: root integrated general direct-dispatch gates and the private pair
+lane. Actual BST pair proof, independent prefix source pair proof, ignored-field
+BST derivative and original scalar-precedence controls pass. Root's checked08
+BST screen gains2.441x/2.660x versus baseline at32/64. Final promotion still
+requires freshly emitted owner modules from the selected final image through
+validation/final-owner-config-v2.json; prototype reports cannot substitute.
+This agent edits only staged tools/docs; root owns production and execution.
 
 Tools in `selfhost/tools/performance/phase43/products/`:
 
-- `derive.mjs`: exact AST saved-output transformation, original/direct/products clean
+- `derive.mjs`: exact AST saved-output transformation, original/direct/pairs/products clean
   and instrumented variants, hashes, producer/parser identity and copied producer.
 - `oracle.mjs`: complete tree values, duplicate/zero/limited fuel and U32 wrapping,
   fresh output shells/shared siblings, public zipper values and ordered frames,
@@ -278,3 +282,55 @@ FunctionDeclarations were instrumented. New v3 instruments both exact names;
 prior versions are preserved. Validation owner received exact producer hashes,
 reportfields and positive/negative clauses. Original precedence controls cannot
 satisfy pair activation requirements. Handed-off files remain immutable.
+
+## Final source evidence and owner handoff
+
+Root products-pair-real08 report passes with pairState:true/scalarWrapper:true,
+seven full control rows: global BST down fresh-state marker is exercised through
+ordinary bench, not merely emitted. Original pair-precedence08-v3 (15rows) and
+ignored-precedence08-v2 (8rows) pass with precedenceControl:true; these establish
+retained scalar activation and cannot count as positive structural-pair fixtures.
+
+Both binary target v1 baseline acquisitions fail at source checking because the
+observer's filled definition came after its consumers. Original source/catalog
+v1 retained unchanged. NEW target-controls-v2 sources move exact observer type
+and body before all consumers; catalog-v2 hashes and all source call-site prior
+definition visibility pass. Source checking/positive activation await root.
+
+final-owner-data-v1.json supplies exact six candidate emission commands, two
+target checked16 baseline preparations, existing baseline identities, canonical
+modules, report paths and predicates. Validation owner received it. Latest frozen
+identities final-oracle-tools-v4.json retain actual-v2/source-v3 and add ignored-v3,
+which only records freshPairEntries/scalarEntries in each result row for the
+validator. Every positive ignored row needs freshPairEntries>0; negative rows
+need freshPairEntries0 plus scalarEntries>0. No assertion is removed.
+
+Root products-source-pair08 passes in0.906s with fixture:true, scalarWrapper:true,
+pairState:true: renamed prefix build ordinary root executes real BST pair worker.
+This already supplies the independent ordinary positive; no new target required.
+Target09 consumer fixtures still retained old local scalar loops independently of
+the binary observer and correctly failed positive activation; all attempts/raw
+remain preserved. The redundant fragile plain positive owner is removed.
+
+Root pair-bst-ignored10 baseline/candidate acquisition and controls pass in0.705s.
+Report kind phase43-actual-bst-pair-ignored-fields, pairState:true, selectedWorker
+$R_98_115_116_46_100_111_119_110$tree and exact fresh-pair marker; seven ordinary
+rows and six complete private controls pass. Conditional leaf branch reconstructs
+both ignored fields; other branch retains sibling/tail aliases; zero aliases,
+positive freshness, frozen old inputs, full baseline equality, dependency fallback
+and depth12000 are preserved. This is distinct successor products-bst-pair-ignored.
+
+Static final-owner-config-v2 product commands reviewed: correct exact source/tool
+versions, CLI positions, flag clauses, checked16 baseline and selected ${ATTEMPT}
+emissions. Final candidate modules must be newly emitted from that image; source
+proof status above is prototype qualification, not a sealed final-run claim.
+
+Products also supplies Map qualification tooling under products/map-actual.
+Final owner recipes use derive-v5/oracle-v2 with source-specific checked
+emissions and full overlay-none traces. Exact provenance is required alongside
+ordinary contextual and lexical worker execution; private handles never grant
+ownership. All54 primitive-family bindings, native String hosts, source original
+guards, Error/reentry, full native container representations, retained aliases,
+raw/partial/public erasure ABI and source-owned stress are checked. Private depth
+12000 is a correctness probe only. final-owner-data-v2.json preserves unresolved
+independent fixture activation explicitly rather than inventing positive proof.

@@ -1,0 +1,56 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -188,18 +188,32 @@
+       kc(JPure, j_component_wrapper_calls(book, d, j_pure_defs(pure)), u => pure,
+         u => JPure{Nil{}, 0, False{}})), u => pure)
+ 
++# One extra acyclic hop only. Nested planner calls still target positive-self
++# components, so wrapper chains cannot introduce unbounded recursive planning.
+ @unsafe
+ def j_component_wrapper_calls(+book: List<&2,KDef>, +d: KDef, +ds: List<&2,KDef>) -> Bool:
++  j_component_wrapper_scan(book, d, ds, ds)
++
++@unsafe
++def j_component_wrapper_scan(+book: List<&2,KDef>, +d: KDef, +ds: List<&2,KDef>, +anchors: List<&2,KDef>) -> Bool:
+   match ds:
+     case Nil{}: False{}
+     case Con{callee, rest}:
+-      # Only positive-self-reference candidates reach the nested planner, so
+-      # planning never follows an acyclic wrapper chain recursively. The full
+-      # typed graph independently guarantees saturated, first-order calls.
++      kc(Bool, U32.is_gt(j_component_refs([dv(d)], dn(callee), 1024, 0), 0), u =>
++        kc(Bool, U32.is_gt(j_component_refs([dv(callee)], dn(callee), 1024, 0), 0), u =>
++          kc(Bool, j_pure_valid(j_component_cached(book, dn(callee))), u => True{}, u => j_component_wrapper_scan(book, d, rest, anchors)),
++          u => kc(Bool, j_component_wrapper_anchor(book, callee, anchors), u => True{}, u => j_component_wrapper_scan(book, d, rest, anchors))),
++        u => j_component_wrapper_scan(book, d, rest, anchors))
++
++@unsafe
++def j_component_wrapper_anchor(+book: List<&2,KDef>, +d: KDef, +ds: List<&2,KDef>) -> Bool:
++  match ds:
++    case Nil{}: False{}
++    case Con{callee, rest}:
+       kc(Bool, U32.is_gt(j_component_refs([dv(callee)], dn(callee), 1024, 0), 0) &&
+         U32.is_gt(j_component_refs([dv(d)], dn(callee), 1024, 0), 0), u =>
+-        kc(Bool, j_pure_valid(j_component_cached(book, dn(callee))), u => True{}, u =>
+-          j_component_wrapper_calls(book, d, rest)), u => j_component_wrapper_calls(book, d, rest))
++          kc(Bool, j_pure_valid(j_component_cached(book, dn(callee))), u => True{}, u => j_component_wrapper_anchor(book, d, rest)),
++        u => j_component_wrapper_anchor(book, d, rest))
+ 
+ # Reject mutual backedges into this worker: forcing such a leaf could otherwise
+ # nest native worker calls instead of remaining in the runtime tail trampoline.
+@@ -513,7 +527,14 @@
+   kc(String, j_finite_ready(book, d), u =>
+     "((" ++ j_region_parameters(0, da(d)) ++ ")=>{" ++
+       j_finite_emit(book, Nil{}, dv(d), dt(d), j_finite_slots(0, da(d))) ++ "})(" ++ args ++ ")",
+-    u => "callOwned(get(G," ++ j_quote(name) ++ "),[" ++ args ++ "])")
++    u => j_linear_component_combiner(book, name, args, j_component_cached(book, name)))
++
++@unsafe
++def j_linear_component_combiner(+book: List<&2,KDef>, +name: String, +args: String, +pure: JPure) -> String:
++  +generic = "callOwned(get(G," ++ j_quote(name) ++ "),[" ++ args ++ "])"
++  kc(String, j_pure_valid(pure), u =>
++    "(regionProof!==null&&regionProofCovers([" ++ j_region_names(j_pure_defs(pure)) ++ "])?" ++
++      j_region_name(name) ++ "$tree(" ++ args ++ "):" ++ generic ++ ")", u => generic)
+ 
+ # The preceding analysis proved descendant ownership. Emission's lexical Env
+ # carries types and names, not @child provenance, so it uses only the already

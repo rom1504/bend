@@ -1,0 +1,33 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -1115,9 +1115,10 @@
+   kc(KTerm, String.eq(tg(spine), "Call") && U32.is_eq(terms_len(args), da(d)), u =>
+     kc(KTerm, String.starts_with(nm(spine), "$instance."), u =>
+       kc(KTerm, exact_def(d, known) && String.eq(dk(index_first(dc(d))), "JErasedInstance"), u =>
+-        kc(KTerm, String.eq(nm(spine), owner) || U32.is_gt(j_component_refs(ks(spine), owner, 8192, 0), 0),
+-          u => j_region_app(ref(nm(spine)), args), u =>
+-          kc(KTerm, j_instance_emit_ready(view, d), u => j_region_annotate(kt("JCall", nm(spine), 0, 1, args), j_covered_result(dt(d), args)), u => j_instance_residual(view, d, args))), u => atom("Absent")), u =>
++        kc(KTerm, String.eq(nm(spine), owner), u => j_region_app(ref(owner), args), u =>
++          kc(KTerm, U32.is_gt(j_component_refs(ks(spine), owner, 8192, 0), 0), u =>
++            kc(KTerm, j_instance_emit_ready(view, d), u => j_region_app(ref(nm(spine)), args), u => atom("Absent")), u =>
++          kc(KTerm, j_instance_emit_ready(view, d), u => j_region_annotate(kt("JCall", nm(spine), 0, 1, args), j_covered_result(dt(d), args)), u => j_instance_residual(view, d, args)))), u => atom("Absent")), u =>
+       j_region_app(ref(nm(spine)), args)), u => atom("Absent"))
+ 
+ @unsafe
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -510,10 +510,13 @@
+ @unsafe
+ def j_linear_combiner_emit(+book: List<&2,KDef>, +name: String, +args: String) -> String:
+   +d = lookup(book, name)
++  kc(String, String.starts_with(name, "$instance."), u =>
++    kc(String, String.eq(dk(d), "Def") && String.eq(dk(index_first(dc(d))), "JErasedInstance") && j_instance_emit_ready(book, d),
++      u => j_region_name(name) ++ "$tree(" ++ args ++ ")", u => "bad('private contextual combiner invariant')"), u =>
+   kc(String, j_finite_ready(book, d), u =>
+     "((" ++ j_region_parameters(0, da(d)) ++ ")=>{" ++
+       j_finite_emit(book, Nil{}, dv(d), dt(d), j_finite_slots(0, da(d))) ++ "})(" ++ args ++ ")",
+-    u => "callOwned(get(G," ++ j_quote(name) ++ "),[" ++ args ++ "])")
++    u => "callOwned(get(G," ++ j_quote(name) ++ "),[" ++ args ++ "])"))
+ 
+ # The preceding analysis proved descendant ownership. Emission's lexical Env
+ # carries types and names, not @child provenance, so it uses only the already

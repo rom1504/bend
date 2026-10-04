@@ -40,10 +40,33 @@ actual proposal and obtain its independent review before executing the new gate.
 Final framework additions include exact snapshot fragment/bundle agreement before
 recipe materialization and every stage, canonical actual-source owner wrappers,
 frozen owner/controller snapshots and extension generation. Counts come from
-controller source and owner review, including stronger String source-v2 and
+controller source and owner review, including stronger String source-v4 and
 compiler proof-v7 controls. Wrappers retain raw failures, require the exact
 bounded supervisor and frozen Node, canonical raw output, actual checked emitter
 and selected snapshot driver, and actual source/derivation identities. Independent
 code-level review does not approve final selected-image fingerprints/configuration;
 root must freeze and review those separately. Superseded checked05 scalar proposal
 and stale-runtime failure remain evidence.
+
+The concrete final new-owner configuration now has37 supervised commands for15
+owners. It uses supported attempt/output/Node bindings, retained checked16
+baseline modules and fresh checked16 pair targetv2 references. Callback guard22/39
+replaces the duplicate32 profile; independent85 and admission11 remain mandatory.
+Both String fixture naming graphs and the computed-nullary refusal are retained.
+Actual BST qualification requires pairState and scalarWrapper activation; global
+pair positives remain separate from scalar precedence negatives. Ignored-field
+pair-v3 adds retained per-row counters, independently checked as positive fresh
+pair activation or exact zero fresh-pair/positive scalar precedence. Python AST,
+JSON, argument/input/output and existing-path checks pass; no target was executed.
+The configuration remains unreviewed pending independent final review, and Map
+requires a later actual-source owner addition before the final source is qualified.
+
+The reviewed v2 draft replaces unresolved plain pair positive fixtures with actual
+ordinary and independent prefix BST pair activation, and a separate ignored-field
+BST derivative. It preserves v1 review inputs and failed raw evidence. The v2
+catalogue removes superseded callback32/plain pair positive profiles; its wrapper
+requires build activation even at size zero and insert/fin/down activation at
+nonzero sizes. Ignored-field qualification binds all6 fixed private alias/reset/
+conditional retention/deep12000 records and all7 ordinary rows. Independent static
+review pins34steps14owners and the matching v2 builder/catalogue/wrapper. Map and
+final selected-image fresh qualification remain pending.

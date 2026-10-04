@@ -200,3 +200,65 @@ and no G residual before fallback in ordinary and both independent kernels.
 U32 host subset retains Number/BigInt and Math.imul, protocol and dependency
 checks. Static qualification approved; fresh final-image controls and costs
 remain mandatory. No target execution by this reviewer.
+
+Cmp terminal correction is a nominal zero-parameter metadata normalization:
+only ADT node quantity0/1 is accepted, with exact native owner/kind and three
+zero-field native constructors. Sigma parameter quantities remain exact. Map
+Type1 versus instantiated Data2 universe mismatch is not approved without
+checker subsumption evidence.
+
+Callback capture/application fusion retains original scalar expression emission
+and descending predecessor application. Existing total U32/noescape admission
+makes seed motion across capture generation and interleaved application
+unobservable under retained primitive/global/protocol guards. No closed form
+replacement introduced; fresh actual source controls remain mandatory.
+
+Owner configuration v2 replaces inactive plain pair positive topology with
+independent ordinary prefix BST activation and ignored-field BST controls. It
+retains original scalar-precedence pair controls and their private simultaneous
+RHS/nested/shared/alias/Error/deep observations. Failed old acquisitions stay
+preserved. Static34-step14-owner configuration qualified; final Map profile,
+selected source/runtime identities and fresh closures/costs remain pending.
+
+Map residual String.append admission is exact native name/header and two qty1
+String arguments/result. Header fence precedes normalization. Existing native
+factory captures String.append; Map entry retains full String host inventory
+and dependency identity guard. Runtime a+b body and public fn/call ABI remain
+unchanged. Closed kind headers now match canonical Typ/Qua metadata. Instance
+collector drops only replayed formal-erased prefix arguments after original
+saturation/closed proof; runtime erasure and live-call rewriting use the same
+slots. Static qualification recorded; diagnostic overlays do not establish
+actual compiler admission.
+
+Numeric callback v8 preserves original App IR during capture rewriting; v7
+synthetic Call rejection remains retained. Only exact from_nat(predecessor) is
+replaced, under integer Number count0..2^32-1; every decrement/predecessor is
+exact and U32 source operations wrap unchanged. Count/seed evaluate once and
+original BigInt source/Nat environment remains the fallback. Genuine emitted
+source controls/no-null lowering proof remain required.
+
+Map primitive guard fix conservatively includes exact54 j_primitive_known
+family names, covering inlined primitive references omitted from JPure defs.
+Native factory captures all; irrelevant changed primitives also cause refusal.
+Owner draft v5 freezes numeric activation plus original BigInt branch and71
+actual compiler predicate observations. Diagnostic mode has overlay none and
+compilerQualification false; actual Map runtime/graph qualification is separate
+and still pending.
+
+Recursive Map shell repair restores original App for owner-containing call
+arguments, allowing unary child discovery. Static review remains blocked for
+nonfinite private ancestor combiners: phase3 j_linear_combiner_emit uses
+get(G,private-instance-name) after finite admission fails, while instances are
+lexical only. A nine-live-argument acyclic component is emit-ready but exceeds
+finite arity8, establishing a concrete general counterexample. Emission must
+route through exact instance provenance/current-view lexical worker or original
+full residual ABI, or refuse this shape. Source noAbsent is insufficient; an
+actual AST closure/no-private-G witness is also required.
+
+Recursive-shell v2 closes the nonfinite private ancestor blocker. Exact covered
+ancestor must be emit-ready or yields Absent and whole-root refusal; private
+combiner emission validates instance provenance/ready metadata and calls its
+lexical tree worker before the legacy finite/generic path. Ordinary identifiers
+cannot forge synthetic dollar-prefixed names. Derive-v5 adds actual private G
+lookup and unresolved lexical clone rejection. Prior failed review preserved;
+static qualification cleared, fresh actual emission/semantics still required.

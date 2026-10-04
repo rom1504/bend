@@ -1,0 +1,276 @@
+{
+  "kind": "phase43-callback-number-count-final-owner-data",
+  "complete": true,
+  "executed": false,
+  "qualification": "Numeric saved ablation PASS22/40+85; genuine fresh checked bounded-Number/BigInt source acquisition pending. v7 rejected syntheticCall lowering, corrected v8 source pending lowering probe/build.",
+  "owners": [
+    {
+      "owner": "callbacks-number-count",
+      "rawReport": "${OUT}/raw-callbacks-number-count/report.json",
+      "rawExecution": "${OUT}/run-raw-callbacks-number-count/run.json",
+      "rawCommandInput": "${OUT}/derive-callbacks-environment",
+      "emittedModules": [
+        "${OUT}/new-owner-modules/closures.mjs"
+      ],
+      "derivations": [
+        "${OUT}/derive-callbacks-environment/derive.json"
+      ],
+      "auxiliaryInputs": []
+    },
+    {
+      "owner": "callbacks-number-count-noncommutative",
+      "rawReport": "${OUT}/raw-callbacks-number-count-noncommutative/report.json",
+      "rawExecution": "${OUT}/run-raw-callbacks-number-count-noncommutative/run.json",
+      "rawCommandInput": "${OUT}/new-owner-modules/callbacks-noncommutative.mjs",
+      "emittedModules": [
+        "${OUT}/new-owner-modules/callbacks-noncommutative.mjs"
+      ],
+      "derivations": [],
+      "auxiliaryInputs": [
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/noncommutative-catalog.json"
+      ]
+    },
+    {
+      "owner": "callbacks-admission",
+      "rawReport": "${OUT}/raw-callbacks-admission/report.json",
+      "rawExecution": "${OUT}/run-raw-callbacks-admission/run.json",
+      "rawCommandInput": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+      "emittedModules": [],
+      "derivations": [],
+      "auxiliaryInputs": [
+        "${OUT}/raw-callbacks-admission/inputs.json",
+        "${OUT}/raw-callbacks-admission/completion.json"
+      ]
+    }
+  ],
+  "rawCommands": [
+    {
+      "name": "phase43-raw-callbacks-number-count",
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/actual-number-count-controls-v1.mjs",
+        "${OUT}/derive-callbacks-environment",
+        "${OUT}/raw-callbacks-number-count"
+      ],
+      "secondsEstimate": 3,
+      "requiredAssertions": {
+        "/kind": "phase43-actual-source-callback-number-count-controls",
+        "/complete": true,
+        "/pass": true,
+        "/oracles": {
+          "length": 22
+        },
+        "/boundaries": {
+          "length": 40
+        }
+      },
+      "controller": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/actual-number-count-controls-v1.mjs",
+        "sha256": "7a26f2bcf572e0c5b675e862c1f26c8effd0ccfb3c5b420fe1f4ae64ec0018b4",
+        "bytes": 11324
+      }
+    },
+    {
+      "name": "phase43-raw-callbacks-number-count-noncommutative",
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/source-number-count-fixture-controls-v1.mjs",
+        "${OUT}/new-owner-modules/callbacks-noncommutative.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/callback-fixture-baseline01/modules/noncommutative-fixture.mjs",
+        "${OUT}/raw-callbacks-number-count-noncommutative"
+      ],
+      "secondsEstimate": 3,
+      "requiredAssertions": {
+        "/kind": "phase43-actual-noncommutative-callback-number-count-fixture",
+        "/complete": true,
+        "/pass": true,
+        "/observations": {
+          "length": 85
+        },
+        "/selected": [
+          "affine_result",
+          "reverse_result"
+        ],
+        "/refused": [
+          "live_result",
+          "seeded_result",
+          "retained"
+        ]
+      },
+      "controller": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/source-number-count-fixture-controls-v1.mjs",
+        "sha256": "349784ddc3e5f827e783a8cd48b9e2998e787b7e41c4acda6a8047865431aea7",
+        "bytes": 4987
+      }
+    },
+    {
+      "name": "phase43-raw-callbacks-admission",
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/admission-controls.mjs",
+        "${ATTEMPT}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+        "bench",
+        "${OUT}/raw-callbacks-admission"
+      ],
+      "secondsEstimate": 10,
+      "requiredAssertions": {
+        "/kind": "phase43-callback-admission-negative-controls",
+        "/complete": true,
+        "/checks/controls": {
+          "length": 11
+        }
+      },
+      "controller": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/admission-controls.mjs",
+        "sha256": "ee1d0fcc047924334134d30e68318b19c42af1fcd6c83cb359a612780f7e94db",
+        "bytes": 6242
+      }
+    }
+  ],
+  "derivationCommand": {
+    "name": "phase43-derive-callbacks-environment",
+    "argv": [
+      "${NODE}",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/actual-number-count-derive-v1.mjs",
+      "${OUT}/new-owner-modules/closures.mjs",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/closures01",
+      "${OUT}/derive-callbacks-environment"
+    ],
+    "producer": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/actual-number-count-derive-v1.mjs",
+      "sha256": "e5aa1943406e1486fe886ca4260ddc97d0b82f38f3780e88b90c5824bf029311",
+      "bytes": 5452
+    },
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/closures01/derive.json",
+      "sha256": "22ef26c5aafe020ecafda20b9607af870c0efab44b1702dcf6cea8e672e6bae4",
+      "bytes": 3378
+    },
+    "secondsEstimate": 1
+  },
+  "emissions": [
+    {
+      "module": "${OUT}/new-owner-modules/closures.mjs",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+        "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "bytes": 1392
+      },
+      "catalog": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/catalog.json",
+        "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+        "bytes": 83389
+      },
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/emit-worker.mjs",
+        "${ATTEMPT}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+        "${OUT}/new-owner-modules/closures.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/catalog.json"
+      ]
+    },
+    {
+      "module": "${OUT}/new-owner-modules/callbacks-noncommutative.mjs",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/noncommutative-fixture.bend",
+        "sha256": "fef4d3a4bb98e26934f162d6de03decafe1f64b9ece7dc8dee16f232e530918e",
+        "bytes": 2201
+      },
+      "catalog": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/noncommutative-catalog.json",
+        "sha256": "999b9b69e3999d20f04642a06b185f0360eb7eeb53743f2ddcf6c00f51064b5a",
+        "bytes": 91567
+      },
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/emit-worker.mjs",
+        "${ATTEMPT}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/noncommutative-fixture.bend",
+        "${OUT}/new-owner-modules/callbacks-noncommutative.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/noncommutative-catalog.json"
+      ]
+    }
+  ],
+  "referenceFixture": {
+    "module": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/callback-fixture-baseline01/modules/noncommutative-fixture.mjs",
+      "sha256": "9da5d04d76b901b9241c5c76d35f77a6e8879caab70957bed3effe9389984b04",
+      "bytes": 79335
+    },
+    "receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/callback-fixture-baseline01/modules/noncommutative-fixture.mjs.json",
+      "sha256": "1acfdf794ec26ae9ec61e04343fb230eb6bf82e5a6a9c36ec498541d3e532fec",
+      "bytes": 4634
+    }
+  },
+  "staticReview": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/review/map-source-callback-guard-static-v1.json",
+    "sha256": "c01e9780f6f30962b4bbf6d527c05d7598cea98c7b1e8a83e50264cb43d9c586",
+    "bytes": 1858
+  },
+  "notes": [
+    "Emission output parent directory must exist; validation owns campaign directory setup.",
+    "Wrap raw controllers in maintained bounded-run with frozen Node/taskset CPU3; memory2048MiB/floor2048MiB and seconds<=180.",
+    "Admission command intentionally stops library emission with error sentinel but exits successfully; inputs.json binds selected API/runtime/base/source.",
+    "Reference fixture checked16 is immutable comparison evidence, never selected-image evidence.",
+    "Derivation root/callback identities derive structurally from frozen source; no benchmark source-name admission in compiler.",
+    "Fusion profile requires zero private pending/environment graphs, complete ordered fresh scalar capture traces and real ordinary-entry proof activation; public retained closures/demand/errors and host scope remain mandatory.",
+    "No saved-JS derivative or certified:false manifest can satisfy actual-fusion profile; candidate clean source bytes are unchanged checked emission.",
+    "Exactnumericcountguard integer0..0xffffffff, copied originalBigInt branch retained, actualNumber/BigInt counters mandatory; forced smallcount originalBigInt branch proof witness is explicit diagnostic only."
+  ],
+  "profiles": {
+    "callbacks-number-count": {
+      "controller": "selfhost/tools/performance/phase43/callbacks/actual-number-count-controls-v1.mjs",
+      "assertions": {
+        "/kind": "phase43-actual-source-callback-number-count-controls",
+        "/complete": true,
+        "/pass": true,
+        "/oracles": {
+          "length": 22
+        },
+        "/boundaries": {
+          "length": 40
+        }
+      },
+      "derivationController": "selfhost/tools/performance/phase43/callbacks/actual-number-count-derive-v1.mjs",
+      "derivationAssertions": {
+        "/kind": "phase43-actual-source-callback-number-count",
+        "/complete": true,
+        "/certified": true
+      }
+    },
+    "callbacks-number-count-noncommutative": {
+      "controller": "selfhost/tools/performance/phase43/callbacks/source-number-count-fixture-controls-v1.mjs",
+      "assertions": {
+        "/kind": "phase43-actual-noncommutative-callback-number-count-fixture",
+        "/complete": true,
+        "/pass": true,
+        "/observations": {
+          "length": 85
+        },
+        "/selected": [
+          "affine_result",
+          "reverse_result"
+        ],
+        "/refused": [
+          "live_result",
+          "seeded_result",
+          "retained"
+        ]
+      }
+    },
+    "callbacks-admission": {
+      "controller": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/admission-controls.mjs",
+      "assertions": {
+        "/kind": "phase43-callback-admission-negative-controls",
+        "/complete": true,
+        "/checks/controls": {
+          "length": 11
+        }
+      },
+      "compilerOnly": true
+    }
+  }
+}

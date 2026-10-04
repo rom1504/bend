@@ -74,3 +74,23 @@ range uniformly. Reject/defer AfterHost duplicate scalarGuard for only3–4% gai
 The survivor is the minimal U32 domain parameter (12 net runtime lines), leaving
 scalarGuard/String checks intact. Checked07 or the final selected API/runtime must
 rerun actual receipt-bound qualification before promotion.
+
+## Optional lexer follow-up closed without promotion
+
+Saved dead-resume and acyclic gen.at wrapper tools/proposals are retained, but
+production wrapper-hop, prefix and projection changes are deferred. Wrapper v1
+passes439/113/3 semantic/observer/activation groups plus48 Unicode cases yet
+regresses both points1–2%. Removing its redundant per-edge dependency check in
+v2 preserves all controls and gains1.0696× on lexer8, while lexer6 regresses3.06%.
+Resume attribution suggests projection work dominates the larger case; sample
+ranges and smaller-case behavior prevent a robust family gain claim. See the
+[owned implementation report](../../implementation/phase43/guards.md) for all
+medians and raw evidence paths.
+
+Any future direct-wrapper lowering must prove exact target dependency inclusion
+in an independently admitted caller graph at compile time, using existing
+`j_covered_defs`; nonnull proof authority alone is insufficient. Public wrapper,
+mutation refusal, host/Error suspension, ownership and reentry boundaries remain
+mandatory. Mixed small gains do not justify new emitter/proof complexity and
+possible quadratic component scans in this release. No further experiments are
+scheduled; retain the hypotheses for future profiling.

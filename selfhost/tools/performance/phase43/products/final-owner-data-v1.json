@@ -1,0 +1,523 @@
+{
+  "kind": "phase43-products-final-owner-data",
+  "version": 1,
+  "stable": true,
+  "node": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+  "placeholders": [
+    "${OUT}",
+    "${ATTEMPT}"
+  ],
+  "baselineInputs": [
+    {
+      "path": "selfhost/build/phase42/integration03/full-preparation/modules/bst.mjs",
+      "sha256": "cde65c7c74cc22a4d00a25dae5823130d49ff56f6648a51232a1cf31457b3a9a"
+    },
+    {
+      "path": "selfhost/build/phase43/product-fixture-baseline04/modules/prefix-controls.mjs",
+      "sha256": "78ba104fd951fed5285d24124d45a9c0dc577062ee1f4f8164f822e3ac03a73a"
+    },
+    {
+      "path": "selfhost/build/phase43/product-fixture-baseline04/modules/pair-controls.mjs",
+      "sha256": "e5a3f5842d02f0ebcfecfae6cebb7485a24aece5953b4ac8b57999b21e182d2e"
+    },
+    {
+      "path": "selfhost/build/phase43/product-ignored-baseline02/modules/pair-ignored-controls.mjs",
+      "sha256": "bae75f2fb5a6c17734ac4b8cb3e7786df1943e9668c4d1a9688632295c711645"
+    }
+  ],
+  "baselinePreparations": [
+    {
+      "id": "pair-target",
+      "catalog": {
+        "path": "selfhost/tools/performance/phase43/products/pair-target-catalog-v2.json",
+        "sha256": "381596ad0e13b81d77ed293cd0c0fc70432382f5848219362a153dd8b11df4ff"
+      },
+      "command": [
+        "python3",
+        "selfhost/tools/performance/programs/prepare.py",
+        "--attempt",
+        "selfhost/build/phase42/checked16",
+        "--catalog",
+        "selfhost/tools/performance/phase43/products/pair-target-catalog-v2.json",
+        "--set",
+        "full",
+        "--role",
+        "baseline",
+        "--out",
+        "${OUT}/owner-baselines/pair-target",
+        "--node",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--cpu",
+        "3",
+        "--timeout",
+        "90"
+      ],
+      "module": "${OUT}/owner-baselines/pair-target/modules/pair-target-controls-v2.mjs"
+    },
+    {
+      "id": "pair-ignored-target",
+      "catalog": {
+        "path": "selfhost/tools/performance/phase43/products/pair-ignored-target-catalog-v2.json",
+        "sha256": "bf4d4cc73a0b1a92b6b56d5eb0fc4115070f3695b25da378eb36d5f5c208b5cd"
+      },
+      "command": [
+        "python3",
+        "selfhost/tools/performance/programs/prepare.py",
+        "--attempt",
+        "selfhost/build/phase42/checked16",
+        "--catalog",
+        "selfhost/tools/performance/phase43/products/pair-ignored-target-catalog-v2.json",
+        "--set",
+        "full",
+        "--role",
+        "baseline",
+        "--out",
+        "${OUT}/owner-baselines/pair-ignored-target",
+        "--node",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--cpu",
+        "3",
+        "--timeout",
+        "90"
+      ],
+      "module": "${OUT}/owner-baselines/pair-ignored-target/modules/pair-ignored-target-controls-v2.mjs"
+    }
+  ],
+  "emissions": [
+    {
+      "owner": "products-bst",
+      "catalog": {
+        "path": "selfhost/tools/performance/phase37/catalog.json",
+        "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c"
+      },
+      "command": [
+        "python3",
+        "selfhost/tools/performance/programs/prepare.py",
+        "--attempt",
+        "${ATTEMPT}",
+        "--catalog",
+        "selfhost/tools/performance/phase37/catalog.json",
+        "--role",
+        "candidate",
+        "--out",
+        "${OUT}/owner-preparations/products-bst",
+        "--node",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--cpu",
+        "3",
+        "--timeout",
+        "90",
+        "--cases",
+        "coverage-bst-32,coverage-bst-64"
+      ],
+      "emittedModule": "${OUT}/owner-preparations/products-bst/modules/bst.mjs",
+      "emissionReceipt": "${OUT}/owner-preparations/products-bst/modules/bst.mjs.json",
+      "canonicalModule": "${OUT}/new-owner-modules/bst.mjs"
+    },
+    {
+      "owner": "products-fixture",
+      "catalog": {
+        "path": "selfhost/tools/performance/phase43/products/fixture-catalog-v4.json",
+        "sha256": "0a1528a8bbe6ce8ef8796ade376ba08c7bb7595fd4e7c7118bb013c94935ef59"
+      },
+      "command": [
+        "python3",
+        "selfhost/tools/performance/programs/prepare.py",
+        "--attempt",
+        "${ATTEMPT}",
+        "--catalog",
+        "selfhost/tools/performance/phase43/products/fixture-catalog-v4.json",
+        "--role",
+        "candidate",
+        "--out",
+        "${OUT}/owner-preparations/products-fixture",
+        "--node",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--cpu",
+        "3",
+        "--timeout",
+        "90",
+        "--cases",
+        "products-bench-0-0"
+      ],
+      "emittedModule": "${OUT}/owner-preparations/products-fixture/modules/prefix-controls.mjs",
+      "emissionReceipt": "${OUT}/owner-preparations/products-fixture/modules/prefix-controls.mjs.json",
+      "canonicalModule": "${OUT}/new-owner-modules/products-fixture.mjs"
+    },
+    {
+      "owner": "products-pair",
+      "catalog": {
+        "path": "selfhost/tools/performance/phase43/products/pair-target-catalog-v2.json",
+        "sha256": "381596ad0e13b81d77ed293cd0c0fc70432382f5848219362a153dd8b11df4ff"
+      },
+      "command": [
+        "python3",
+        "selfhost/tools/performance/programs/prepare.py",
+        "--attempt",
+        "${ATTEMPT}",
+        "--catalog",
+        "selfhost/tools/performance/phase43/products/pair-target-catalog-v2.json",
+        "--role",
+        "candidate",
+        "--out",
+        "${OUT}/owner-preparations/products-pair",
+        "--node",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--cpu",
+        "3",
+        "--timeout",
+        "90",
+        "--set",
+        "full"
+      ],
+      "emittedModule": "${OUT}/owner-preparations/products-pair/modules/pair-target-controls-v2.mjs",
+      "emissionReceipt": "${OUT}/owner-preparations/products-pair/modules/pair-target-controls-v2.mjs.json",
+      "canonicalModule": "${OUT}/new-owner-modules/pair-target.mjs"
+    },
+    {
+      "owner": "products-pair-precedence",
+      "catalog": {
+        "path": "selfhost/tools/performance/phase43/products/fixture-catalog-v4.json",
+        "sha256": "0a1528a8bbe6ce8ef8796ade376ba08c7bb7595fd4e7c7118bb013c94935ef59"
+      },
+      "command": [
+        "python3",
+        "selfhost/tools/performance/programs/prepare.py",
+        "--attempt",
+        "${ATTEMPT}",
+        "--catalog",
+        "selfhost/tools/performance/phase43/products/fixture-catalog-v4.json",
+        "--role",
+        "candidate",
+        "--out",
+        "${OUT}/owner-preparations/products-pair-precedence",
+        "--node",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--cpu",
+        "3",
+        "--timeout",
+        "90",
+        "--cases",
+        "products-p43-pair-result-0-0,products-p43-pair-shared-result-0-0,products-p43-pair-escape-result-0-0,products-p43-pair-result-1-17,products-p43-pair-shared-result-1-17,products-p43-pair-escape-result-1-17,products-p43-pair-result-7-17,products-p43-pair-shared-result-7-17,products-p43-pair-escape-result-7-17,products-p43-pair-result-32-4294967295,products-p43-pair-shared-result-32-4294967295,products-p43-pair-escape-result-32-4294967295"
+      ],
+      "emittedModule": "${OUT}/owner-preparations/products-pair-precedence/modules/pair-controls.mjs",
+      "emissionReceipt": "${OUT}/owner-preparations/products-pair-precedence/modules/pair-controls.mjs.json",
+      "canonicalModule": "${OUT}/new-owner-modules/pair-precedence.mjs"
+    },
+    {
+      "owner": "products-pair-ignored",
+      "catalog": {
+        "path": "selfhost/tools/performance/phase43/products/pair-ignored-target-catalog-v2.json",
+        "sha256": "bf4d4cc73a0b1a92b6b56d5eb0fc4115070f3695b25da378eb36d5f5c208b5cd"
+      },
+      "command": [
+        "python3",
+        "selfhost/tools/performance/programs/prepare.py",
+        "--attempt",
+        "${ATTEMPT}",
+        "--catalog",
+        "selfhost/tools/performance/phase43/products/pair-ignored-target-catalog-v2.json",
+        "--role",
+        "candidate",
+        "--out",
+        "${OUT}/owner-preparations/products-pair-ignored",
+        "--node",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--cpu",
+        "3",
+        "--timeout",
+        "90",
+        "--set",
+        "full"
+      ],
+      "emittedModule": "${OUT}/owner-preparations/products-pair-ignored/modules/pair-ignored-target-controls-v2.mjs",
+      "emissionReceipt": "${OUT}/owner-preparations/products-pair-ignored/modules/pair-ignored-target-controls-v2.mjs.json",
+      "canonicalModule": "${OUT}/new-owner-modules/pair-ignored-target.mjs"
+    },
+    {
+      "owner": "products-pair-ignored-precedence",
+      "catalog": {
+        "path": "selfhost/tools/performance/phase43/products/pair-ignored-catalog-v2.json",
+        "sha256": "ad10106abc5f07408044e9c51bae930147d70ece2fd4bb323d298016e312c068"
+      },
+      "command": [
+        "python3",
+        "selfhost/tools/performance/programs/prepare.py",
+        "--attempt",
+        "${ATTEMPT}",
+        "--catalog",
+        "selfhost/tools/performance/phase43/products/pair-ignored-catalog-v2.json",
+        "--role",
+        "candidate",
+        "--out",
+        "${OUT}/owner-preparations/products-pair-ignored-precedence",
+        "--node",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--cpu",
+        "3",
+        "--timeout",
+        "90",
+        "--set",
+        "full"
+      ],
+      "emittedModule": "${OUT}/owner-preparations/products-pair-ignored-precedence/modules/pair-ignored-controls.mjs",
+      "emissionReceipt": "${OUT}/owner-preparations/products-pair-ignored-precedence/modules/pair-ignored-controls.mjs.json",
+      "canonicalModule": "${OUT}/new-owner-modules/pair-ignored-precedence.mjs"
+    }
+  ],
+  "owners": {
+    "products-bst": {
+      "controller": {
+        "path": "selfhost/tools/performance/phase43/products/actual-oracle-v2.mjs",
+        "sha256": "c5a38221224c40f3a2ecc7c521581110f154877d574c647aabb1edd393e3f029"
+      },
+      "command": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase43/products/actual-oracle-v2.mjs",
+        "${OUT}/new-owner-modules/bst.mjs",
+        "selfhost/build/phase42/integration03/full-preparation/modules/bst.mjs",
+        "${OUT}/raw-products-bst",
+        "--scalar-wrapper",
+        "--pair-state"
+      ],
+      "baselineModule": "selfhost/build/phase42/integration03/full-preparation/modules/bst.mjs",
+      "rawOutput": "${OUT}/raw-products-bst",
+      "report": "${OUT}/raw-products-bst/report.json",
+      "supervisor": "${OUT}/run-raw-products-bst/run.json",
+      "assertions": {
+        "kind": "phase43-actual-products-oracle",
+        "passed": true,
+        "fixture": false,
+        "scalarWrapper": true,
+        "pairState": true,
+        "resultsLength": 7
+      },
+      "clauses": [
+        {
+          "field": "results[*].candidate.$R_98_115_116_46_100_111_119_110$tree",
+          "when": "size>0",
+          "comparison": ">0"
+        },
+        {
+          "field": "results[*].candidate.apply",
+          "when": "size64 seed17",
+          "comparison": "equals2"
+        },
+        {
+          "sourceMarker": "/* private fresh pair state */",
+          "worker": "$R_98_115_116_46_100_111_119_110$tree"
+        }
+      ],
+      "positivePairActivation": true,
+      "negativePrecedence": false
+    },
+    "products-fixture": {
+      "controller": {
+        "path": "selfhost/tools/performance/phase43/products/actual-oracle-v2.mjs",
+        "sha256": "c5a38221224c40f3a2ecc7c521581110f154877d574c647aabb1edd393e3f029"
+      },
+      "command": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase43/products/actual-oracle-v2.mjs",
+        "${OUT}/new-owner-modules/products-fixture.mjs",
+        "selfhost/build/phase43/product-fixture-baseline04/modules/prefix-controls.mjs",
+        "${OUT}/raw-products-fixture",
+        "--fixture",
+        "--scalar-wrapper",
+        "--pair-state"
+      ],
+      "baselineModule": "selfhost/build/phase43/product-fixture-baseline04/modules/prefix-controls.mjs",
+      "rawOutput": "${OUT}/raw-products-fixture",
+      "report": "${OUT}/raw-products-fixture/report.json",
+      "supervisor": "${OUT}/run-raw-products-fixture/run.json",
+      "assertions": {
+        "kind": "phase43-actual-products-oracle",
+        "passed": true,
+        "fixture": true,
+        "scalarWrapper": true,
+        "pairState": true,
+        "resultsLength": 7
+      },
+      "clauses": [
+        {
+          "field": "results[*].candidate.$R_98_115_116_46_100_111_119_110$tree",
+          "when": "size>0",
+          "comparison": ">0"
+        },
+        {
+          "field": "results[*].candidate.apply",
+          "when": "size64 seed17",
+          "comparison": "equals2"
+        },
+        {
+          "sourceMarker": "/* private fresh pair state */",
+          "worker": "$R_98_115_116_46_100_111_119_110$tree"
+        }
+      ],
+      "positivePairActivation": true,
+      "negativePrecedence": false
+    },
+    "products-pair": {
+      "controller": {
+        "path": "selfhost/tools/performance/phase43/products/pair-source-oracle-v3.mjs",
+        "sha256": "7ce4015520fc825ddfaba8a90e9c8764caa195fbc4745dc3b50b55d32c2f1ea5"
+      },
+      "command": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase43/products/pair-source-oracle-v3.mjs",
+        "${OUT}/new-owner-modules/pair-target.mjs",
+        "${OUT}/owner-baselines/pair-target/modules/pair-target-controls-v2.mjs",
+        "${OUT}/raw-products-pair"
+      ],
+      "baselineModule": "${OUT}/owner-baselines/pair-target/modules/pair-target-controls-v2.mjs",
+      "rawOutput": "${OUT}/raw-products-pair",
+      "report": "${OUT}/raw-products-pair/report.json",
+      "supervisor": "${OUT}/run-raw-products-pair/run.json",
+      "assertions": {
+        "kind": "phase43-actual-pair-source-oracle",
+        "passed": true,
+        "precedenceControl": false,
+        "resultsLength": 15
+      },
+      "clauses": [
+        {
+          "field": "results[*].counts.$R_112_52_51_46_112_97_105_114_46_108_111_111_112$tree",
+          "comparison": ">0"
+        },
+        {
+          "field": "results[*].counts.$R_112_52_51_46_112_97_105_114_46_115_104_97_114_101_100$tree",
+          "comparison": ">0"
+        }
+      ],
+      "positivePairActivation": true,
+      "negativePrecedence": false
+    },
+    "products-pair-precedence": {
+      "controller": {
+        "path": "selfhost/tools/performance/phase43/products/pair-source-oracle-v3.mjs",
+        "sha256": "7ce4015520fc825ddfaba8a90e9c8764caa195fbc4745dc3b50b55d32c2f1ea5"
+      },
+      "command": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase43/products/pair-source-oracle-v3.mjs",
+        "${OUT}/new-owner-modules/pair-precedence.mjs",
+        "selfhost/build/phase43/product-fixture-baseline04/modules/pair-controls.mjs",
+        "${OUT}/raw-products-pair-precedence",
+        "--precedence-control"
+      ],
+      "baselineModule": "selfhost/build/phase43/product-fixture-baseline04/modules/pair-controls.mjs",
+      "rawOutput": "${OUT}/raw-products-pair-precedence",
+      "report": "${OUT}/raw-products-pair-precedence/report.json",
+      "supervisor": "${OUT}/run-raw-products-pair-precedence/run.json",
+      "assertions": {
+        "kind": "phase43-actual-pair-source-oracle",
+        "passed": true,
+        "precedenceControl": true,
+        "resultsLength": 15
+      },
+      "clauses": [
+        {
+          "field": "results[*].counts.$R_112_52_51_46_112_97_105_114_46_108_111_111_112$tree",
+          "comparison": "equals0"
+        },
+        {
+          "field": "results[*].counts.$R_112_52_51_46_112_97_105_114_46_115_104_97_114_101_100$tree",
+          "comparison": "equals0"
+        },
+        {
+          "field": "results[*].counts.$R_112_52_51_46_112_97_105_114_46_108_111_111_112",
+          "comparison": ">0"
+        },
+        {
+          "field": "results[*].counts.$R_112_52_51_46_112_97_105_114_46_115_104_97_114_101_100",
+          "comparison": ">0"
+        }
+      ],
+      "positivePairActivation": false,
+      "negativePrecedence": true
+    },
+    "products-pair-ignored": {
+      "controller": {
+        "path": "selfhost/tools/performance/phase43/products/pair-ignored-oracle-v3.mjs",
+        "sha256": "eda554a98e1c1b59ddee648d2bd8b95e6bfee1cf56e3909c60425cce102faa2d"
+      },
+      "command": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase43/products/pair-ignored-oracle-v3.mjs",
+        "${OUT}/new-owner-modules/pair-ignored-target.mjs",
+        "${OUT}/owner-baselines/pair-ignored-target/modules/pair-ignored-target-controls-v2.mjs",
+        "${OUT}/raw-products-pair-ignored"
+      ],
+      "baselineModule": "${OUT}/owner-baselines/pair-ignored-target/modules/pair-ignored-target-controls-v2.mjs",
+      "rawOutput": "${OUT}/raw-products-pair-ignored",
+      "report": "${OUT}/raw-products-pair-ignored/report.json",
+      "supervisor": "${OUT}/run-raw-products-pair-ignored/run.json",
+      "assertions": {
+        "kind": "phase43-actual-pair-ignored-fields",
+        "passed": true,
+        "precedenceControl": false,
+        "resultsLength": 8
+      },
+      "clauses": [
+        {
+          "field": "results[*].freshPairEntries",
+          "comparison": ">0"
+        },
+        {
+          "field": "results[*].scalarEntries",
+          "comparison": "not-required"
+        }
+      ],
+      "positivePairActivation": true,
+      "negativePrecedence": false
+    },
+    "products-pair-ignored-precedence": {
+      "controller": {
+        "path": "selfhost/tools/performance/phase43/products/pair-ignored-oracle-v3.mjs",
+        "sha256": "eda554a98e1c1b59ddee648d2bd8b95e6bfee1cf56e3909c60425cce102faa2d"
+      },
+      "command": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase43/products/pair-ignored-oracle-v3.mjs",
+        "${OUT}/new-owner-modules/pair-ignored-precedence.mjs",
+        "selfhost/build/phase43/product-ignored-baseline02/modules/pair-ignored-controls.mjs",
+        "${OUT}/raw-products-pair-ignored-precedence",
+        "--precedence-control"
+      ],
+      "baselineModule": "selfhost/build/phase43/product-ignored-baseline02/modules/pair-ignored-controls.mjs",
+      "rawOutput": "${OUT}/raw-products-pair-ignored-precedence",
+      "report": "${OUT}/raw-products-pair-ignored-precedence/report.json",
+      "supervisor": "${OUT}/run-raw-products-pair-ignored-precedence/run.json",
+      "assertions": {
+        "kind": "phase43-actual-pair-ignored-fields",
+        "passed": true,
+        "precedenceControl": true,
+        "resultsLength": 8
+      },
+      "clauses": [
+        {
+          "field": "results[*].freshPairEntries",
+          "comparison": "equals0"
+        },
+        {
+          "field": "results[*].scalarEntries",
+          "comparison": ">0"
+        }
+      ],
+      "positivePairActivation": false,
+      "negativePrecedence": true
+    }
+  }
+}

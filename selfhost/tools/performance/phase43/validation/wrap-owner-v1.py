@@ -52,6 +52,12 @@ def main():
      global_count=row['counts'].get(encoded(name),0)
      if precedence:assert global_count==0 and row['counts'].get(encoded(name)[:-5],0)>0,'exact original scalar precedence required'
      else:assert global_count>0,'ordinary target global pair worker required'
+  if c['owner'] in ['products-pair-ignored','products-pair-ignored-precedence']:
+   precedence=c['owner'].endswith('-precedence')
+   for row in raw['results']:
+    assert type(row['freshPairEntries']) is int and type(row['scalarEntries']) is int
+    if precedence:assert row['freshPairEntries']==0 and row['scalarEntries']>0,'ordinary ignored-field scalar precedence required'
+    else:assert row['freshPairEntries']>0,'ordinary ignored-field positive pair activation required'
   if c['owner']=='callbacks-admission':
    for row in raw['checks']['controls']:
     if 'expected' in row:assert row['accepted']==row['expected']

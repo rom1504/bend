@@ -1,7 +1,8 @@
 # Phase43 products: residual BST dispatch versus zipper allocation
 
-Owner: products. Domain: emitted user-program JavaScript. Source integration is a
-separate decision. Checked16 BST64 is 6.651× TypeScript with 2.77× sampled allocation;
+Owner: products. Domain: emitted user-program JavaScript. Root integrated the
+general direct-dispatch and fresh pair-state lane; full compact zipper triples
+remain a saved-output opportunity ceiling. Checked16 BST64 is 6.651× TypeScript with 2.77× sampled allocation;
 `apply` is 19.65% self CPU and `bst.down` is 72.27% sampled allocation. These motivate
 separate ablations, not an inferred causal speedup.
 
@@ -43,3 +44,12 @@ Tuple destructure preventing buffer escape. It preserves all source field/path
 allocations; full compact zipper fusion remains a separate proof. Compiler-side
 boolean shape gates must use `kc` before recursion: strict `&&` caused a preserved
 180-second source acquisition failure in the initial prefix proposal.
+
+Final proof boundary: positive source workers execute from ordinary owned roots
+in actual BST, renamed prefix build, and conditional ignored-field BST derivative.
+Original standalone U32/ADT pair examples retain stronger scalar slot workers and
+are explicit negative pair-activation controls. A binary consumer alone cannot
+disable that independent helper selection; do not change precedence to force it.
+The general lane preserves all path BF/Con/List and leaf construction, allocates
+a fresh outer pair only for positive countdown, and keeps source field aliases.
+Final promotion requires fresh selected-image owner execution and measured gain.

@@ -73,3 +73,26 @@ reject/defer; minimal U32 parameter remains survivor. Final checked07 pending
 Map/pair integration must rerun the bound actual gate and selected runtime screen.
 See [current owned report](../../implementation/phase43/guards.md) for identities,
 exact commands, preserved failures and scoped evidence.
+
+Optional lexer follow-up: combined dead-resume saved ablation passes439/113/3
+groups and improves lexer8 by1.2197×, with no lexer6 gain. A saved gen.at
+private wrapper with redundant9-name
+per-edge proof also passes439/113/3 plus48 Unicode cases, but regresses both
+sizes by1–2% (13.91665→14.1166ms;3.38926→3.46221ms). Preserve this negative
+result; do not integrate `wrapper-hop-proposal-v1.patch` on that evidence.
+New frozen `derive-wrapper-v2.py` removes only that redundant edge check within
+the already-guarded private gen graph. It preserves the public gen.at wrapper,
+asserts complete caller dependency coverage, and requires unchanged full controls
+including mutated gen.at plus48 Unicode cases. Root qualification passes439/113/3
+plus48; the fresh screen gives14.0942→13.1775ms at lexer8 (1.0696× gain), but
+3.30329→3.40436ms at lexer6 (3.06% regression). See
+`selfhost/build/phase43/lexer-wrapper-screen02/report.md` and the matching
+`run-lexer-wrapper02-{controls,unicode}/stdout.log` receipts. This is a hand-derived
+diagnostic, not a checked compiler candidate.
+
+Resume attribution completed in `lexer-resume-attribution-screen01/report.md`:
+lexer8 original/prefix/projections/both14.03/13.8789/12.0611/11.5488ms;
+lexer6 3.69813/3.24402/3.17258/3.33614ms with wide sample ranges. Root decision:
+defer all production wrapper-hop/prefix/projection work. Mixed small gains do not
+justify emitter/proof complexity or possible O(graph²) compile cost. Preserve
+frozen hypotheses for a future profile; no more experiments in this follow-up.

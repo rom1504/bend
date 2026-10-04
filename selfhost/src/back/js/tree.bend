@@ -510,10 +510,13 @@ def j_linear_split(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: K
 @unsafe
 def j_linear_combiner_emit(+book: List<&2,KDef>, +name: String, +args: String) -> String:
   +d = lookup(book, name)
+  kc(String, String.starts_with(name, "$instance."), u =>
+    kc(String, String.eq(dk(d), "Def") && String.eq(dk(index_first(dc(d))), "JErasedInstance") && j_instance_emit_ready(book, d),
+      u => j_region_name(name) ++ "$tree(" ++ args ++ ")", u => "bad('private contextual combiner invariant')"), u =>
   kc(String, j_finite_ready(book, d), u =>
     "((" ++ j_region_parameters(0, da(d)) ++ ")=>{" ++
       j_finite_emit(book, Nil{}, dv(d), dt(d), j_finite_slots(0, da(d))) ++ "})(" ++ args ++ ")",
-    u => "callOwned(get(G," ++ j_quote(name) ++ "),[" ++ args ++ "])")
+    u => "callOwned(get(G," ++ j_quote(name) ++ "),[" ++ args ++ "])"))
 
 # The preceding analysis proved descendant ownership. Emission's lexical Env
 # carries types and names, not @child provenance, so it uses only the already

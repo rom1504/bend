@@ -104,3 +104,13 @@ emission. Original source files remain frozen. New *-v2.bend files explicitly us
 +seed where both recursive branches consume it; fixture-catalog-v3.json pins these
 new identities with unchanged independent expected values. Preparation/catalog
 failures are not correctness passes or performance results.
+
+
+Actual source checked08 qualifies complete ordinary lexer activation and full
+materialized value/observer/alias/error/demand controls. Two short paired screens
+show10.911–12.658× checked16 gain, leaving7.003–7.392× TypeScript; the saved-JS
+prototype's roughly5× TS gap is separate. The remaining repeated resume-only
+PRNG/projection work motivates a typed continuation layout with explicit live
+postchild binders/fields. This extends the shared plan idea without introducing
+new ambient ownership or changing public ABI. Final mandatory-owner integration
+and installation remain parent-owned.

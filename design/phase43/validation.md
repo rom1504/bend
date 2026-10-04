@@ -59,3 +59,15 @@ useful for rejection but supports only a screen claim. Reducing the final sample
 protocol requires a separately frozen comparison design and clearly changed
 claims; it cannot reuse the669-sample closure. Measure compiler costs separately
 on the four retained sources and document growth, regressions and uncertainty.
+
+Final pair admission must follow an actual ordinary source root. Plain independent
+pair fixture roots retained the older stronger scalar selector, so their emitted
+global marker alone cannot establish positive pair activation. Their failed
+positive receipts remain evidence. The reviewed successor uses the independent
+prefix BST fixture, whose complete source graph reaches the actual fresh-pair
+bst.down worker, and adds a source derivative whose leaf step ignores both prior
+state fields. Qualification requires exact public values, actual ordinary worker
+entries, private zero alias/positive freshness/conditional retained alias controls,
+and mutation/ownership refusal. Original pair and ignored-field fixtures remain
+separate stronger-scalar precedence negatives. An unused global marker or a
+passing precedence controller cannot discharge the positive pair obligation.

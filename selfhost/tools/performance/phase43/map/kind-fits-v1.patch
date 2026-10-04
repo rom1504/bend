@@ -1,0 +1,37 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -803,13 +803,33 @@
+       U32.is_eq(terms_len(args), U32.sub(da(original), prefix)), u =>
+       Some{KDef{dn(original), "JErasedInstance", prefix, da(original), head, body, Con{original, slots}, True{}, False{}}}, u => None{}))
+ 
++# check_fits uses compare(actual, expected, True); norm_cmp_kind allows Data
++# (Qua2) to fit Type (Qua1). Only closed, normalized literal kind quantities are
++# admitted here, with reverse1->2 refused. Ground argument/value proofs stay exact.
++@unsafe
++def j_erased_kind_fits(+book: List<&2,KDef>, +actual: KTerm, +expected: KTerm) -> Bool:
++  exact_term(actual, expected) ||
++    (j_erased_closed_kind(book, actual, 2) && j_erased_closed_kind(book, expected, 1)) ||
++    (j_erased_closed_kind(book, actual, 1) && j_erased_closed_kind(book, expected, 1)) ||
++    (j_erased_closed_kind(book, actual, 2) && j_erased_closed_kind(book, expected, 2))
++
++@unsafe
++def j_erased_closed_kind(+book: List<&2,KDef>, +ty: KTerm, +q: U32) -> Bool:
++  kc(Bool, String.eq(tg(ty), "Typ") && U32.is_eq(terms_len(ks(ty)), 1) && List.is_empty(&2,String, rm(ty)),
++    u => j_erased_kind_quantity(wnf(book, kid(ty, 0)), q), u => False{})
++
++@unsafe
++def j_erased_kind_quantity(+q: KTerm, +expected: U32) -> Bool:
++  String.eq(tg(q), "Qua") && U32.is_eq(qt(q), expected) &&
++    List.is_empty(&2,KTerm, ks(q)) && List.is_empty(&2,String, rm(q))
++
+ @unsafe
+ def j_erased_instance_arg(+book: List<&2,KDef>, +env: List<&2,KTerm>, +original: KDef, +body: KTerm, +ty: KTerm, +args: List<&2,KTerm>, +slots: List<&2,KDef>, +prefix: U32, +fuel: U32) -> Maybe<&2,KDef>:
+   match args:
+     case Nil{}: None{}
+     case Con{h, rest}:
+       kc(Maybe<&2,KDef>, j_erased_closed_arg(book, h) &&
+-        exact_term(wnf(book, j_erased_arg_type(book, wnf(book, h))), wnf(book, kid(ty, 0))), u =>
++        j_erased_kind_fits(book, wnf(book, j_erased_arg_type(book, wnf(book, h))), wnf(book, kid(ty, 0))), u =>
+         j_erased_instance_scanned(book, env, original, body, ty, wnf(book, h), rest, slots, prefix,
+           j_erased_runtime_scan(book, [kid(body, 0)], ix(body), U32.sub(fuel, 1))), u => None{})
+ 

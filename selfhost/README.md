@@ -3,6 +3,10 @@
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
 [Phase45 report](../implementation/phase45/README.md) and
 [JavaScript IR architecture](docs/JAVASCRIPT_IR.md).
+The [source-based architecture survey](../docs/self_hosted/README.md) includes
+the current optimization inventory, prior-work audit and parallelization plan;
+[remaining opportunities](../docs/remaining_opportunities/README.md) compares
+these with seven compiler implementations and ranks proposed next work.
 **Phase45 worker23 is installed; release verification and all 42 CLI checks pass.**
 The [release manifest](dist/release.json) and
 [selected evidence](tools/performance/phase45/evidence/selected-qualification.json)

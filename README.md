@@ -32,6 +32,14 @@ unsupported graphs retain the existing implementation.
 See the [JavaScript IR guide](selfhost/docs/JAVASCRIPT_IR.md) for the modular
 pipeline and its public compatibility boundaries.
 
+The [current architecture and optimization survey](docs/self_hosted/README.md)
+maps implemented capabilities and prior experiments. Its
+[compiler-source research](research/compilers_architecture_and_techniques/README.md)
+compares seven reference implementations and supports the
+[ranked remaining opportunities](docs/remaining_opportunities/README.md).
+The [parallel validation plan](docs/self_hosted/parallel-validation.md) describes
+a proposed faster development loop; it has not changed the active execution policy.
+
 The [execution results](implementation/phase45/results.md),
 [compiler request costs](implementation/phase45/compiler-cost.md),
 [diagnostics](selfhost/tools/performance/phase45/evidence/diagnostics.json) and

@@ -1217,10 +1217,19 @@ def j_instance_root_emit(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +
 # guard. Only declaration lowering differs; a private machine adds no new entry.
 @unsafe
 def j_instance_root_guarded(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +at: U32, +pure: JPure, +declarations: String) -> String:
+  j_instance_root_guarded_mode(book, d, rows, at, pure, declarations, False{})
+
+@unsafe
+def j_instance_root_guarded_mode(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +at: U32, +pure: JPure,
+  +declarations: String, +numberNat: Bool) -> String:
     "(()=>{" ++ declarations ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_primitive_guards() ++ j_instance_native_guards(j_pure_defs(pure)) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){" ++ j_nat_loop_slots(da(d), 0) ++
     "if($entered&&regionProof===null&&regionHostGuard()&&stringHostGuard()&&" ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++
-    "&&localGuard($guards)){/* private contextual instances */return " ++ j_region_name(j_instance_name(at)) ++ "$tree(" ++ j_region_vector_names("$s", 0, da(d)) ++ ");}" ++
+    "&&localGuard($guards)){/* private contextual instances */" ++
+      kc(String, numberNat, u => jw_nat_inputs(book, dt(d), 0, da(d)), u => "") ++ "return " ++
+      kc(String, numberNat && jw_nat_result(book, dt(d), da(d)), u => "BigInt(", u => "") ++
+      j_region_name(j_instance_name(at)) ++ "$tree(" ++ j_region_vector_names("$s", 0, da(d)) ++ ")" ++
+      kc(String, numberNat && jw_nat_result(book, dt(d), da(d)), u => ")", u => "") ++ ";}" ++
     j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()"
 
 
@@ -1305,13 +1314,16 @@ def j_instance_root_raw(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +r
   +at = j_instance_source_index(rows, d, 0)
   +pure = j_pure_graph(view, lookup(view, j_instance_name(at)), JPure{Nil{}, 131072, True{}})
   kc(String, j_pure_valid(pure) && Bool.not(U32.is_eq(at, 4294967295)), u =>
-    j_instance_root_workers(book, view, d, rows, raw, at, pure, j_worker_declarations(view, raw)), u => "")
+    j_instance_root_workers(book, view, d, rows, raw, at, pure, j_worker_emission(view, raw)), u => "")
 
 @unsafe
 def j_instance_root_workers(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +raw: List<&2,KDef>,
-  +at: U32, +pure: JPure, +declarations: String) -> String:
-  kc(String, Bool.not(String.eq(declarations, "")), u => j_instance_root_guarded(book, d, rows, at, pure, declarations),
-    u => j_instance_root_view(book, d, rows, j_instance_caps(view, raw)))
+  +at: U32, +pure: JPure, +emission: JWEmission) -> String:
+  match emission:
+    case JWEmission{declarations, numberNat}:
+      kc(String, Bool.not(String.eq(declarations, "")),
+        u => j_instance_root_guarded_mode(book, d, rows, at, pure, declarations, numberNat),
+        u => j_instance_root_view(book, d, rows, j_instance_caps(view, raw)))
 
 # Exact native scalar-key components needed by closed Map graphs. These proof
 # rows do not create public argument admission or change residual native code.

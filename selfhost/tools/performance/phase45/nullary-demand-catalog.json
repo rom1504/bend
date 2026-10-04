@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "One independently authored source for computed-nullary demand controls. error_check Nat export is exercised separately with BigInt host arguments.",
+  "cases": [
+    {
+      "id": "nullary-bench",
+      "family": "nullary-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand.bend",
+        "sha256": "8c0f3198e134c3965126ad536a5533e8de26247990e2870e4b766fb121564256",
+        "bytes": 1220,
+        "provenance": {
+          "kind": "phase45-independent-nullary-demand",
+          "scope": "Correctness fixture; no timing or representative-performance claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [],
+        "expected": 81
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit modular arithmetic/String construction; demand and mutation controls are untimed"
+    },
+    {
+      "id": "nullary-ordered",
+      "family": "nullary-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand.bend",
+        "sha256": "8c0f3198e134c3965126ad536a5533e8de26247990e2870e4b766fb121564256",
+        "bytes": 1220,
+        "provenance": {
+          "kind": "phase45-independent-nullary-demand",
+          "scope": "Correctness fixture; no timing or representative-performance claim"
+        }
+      },
+      "point": {
+        "exportName": "ordered",
+        "args": [],
+        "expected": 5
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit modular arithmetic/String construction; demand and mutation controls are untimed"
+    },
+    {
+      "id": "nullary-text",
+      "family": "nullary-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand.bend",
+        "sha256": "8c0f3198e134c3965126ad536a5533e8de26247990e2870e4b766fb121564256",
+        "bytes": 1220,
+        "provenance": {
+          "kind": "phase45-independent-nullary-demand",
+          "scope": "Correctness fixture; no timing or representative-performance claim"
+        }
+      },
+      "point": {
+        "exportName": "text",
+        "args": [],
+        "expected": "αβαβ"
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit modular arithmetic/String construction; demand and mutation controls are untimed"
+    },
+    {
+      "id": "nullary-inside",
+      "family": "nullary-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand.bend",
+        "sha256": "8c0f3198e134c3965126ad536a5533e8de26247990e2870e4b766fb121564256",
+        "bytes": 1220,
+        "provenance": {
+          "kind": "phase45-independent-nullary-demand",
+          "scope": "Correctness fixture; no timing or representative-performance claim"
+        }
+      },
+      "point": {
+        "exportName": "inside",
+        "args": [],
+        "expected": 18
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit modular arithmetic/String construction; demand and mutation controls are untimed"
+    },
+    {
+      "id": "nullary-positive",
+      "family": "nullary-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand.bend",
+        "sha256": "8c0f3198e134c3965126ad536a5533e8de26247990e2870e4b766fb121564256",
+        "bytes": 1220,
+        "provenance": {
+          "kind": "phase45-independent-nullary-demand",
+          "scope": "Correctness fixture; no timing or representative-performance claim"
+        }
+      },
+      "point": {
+        "exportName": "positive",
+        "args": [
+          5
+        ],
+        "expected": 14
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit modular arithmetic/String construction; demand and mutation controls are untimed"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "nullary-bench",
+      "nullary-ordered",
+      "nullary-text",
+      "nullary-inside",
+      "nullary-positive"
+    ],
+    "core": [
+      "nullary-bench",
+      "nullary-ordered",
+      "nullary-text",
+      "nullary-inside",
+      "nullary-positive"
+    ],
+    "broad": [
+      "nullary-bench",
+      "nullary-ordered",
+      "nullary-text",
+      "nullary-inside",
+      "nullary-positive"
+    ],
+    "full": [
+      "nullary-bench",
+      "nullary-ordered",
+      "nullary-text",
+      "nullary-inside",
+      "nullary-positive"
+    ]
+  }
+}

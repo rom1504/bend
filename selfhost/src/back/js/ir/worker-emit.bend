@@ -5,12 +5,28 @@ def jw_emit_value(+v: JWValue, +direct: Bool) -> String:
   match v:
     case JWSlot{slot}: jw_emit_slot(slot, direct)
     case JWLiteral{code}: code
-    case JWGlobal{name}: "get(G," ++ j_quote(name) ++ ")"
+    case JWNat{number}: U32.show(number) ++ "n"
+    case JWGlobal{name, layout}: "get(G," ++ j_quote(name) ++ ")"
     case JWProject{layout, input, index}: jw_emit_project(layout, jw_emit_value(input, direct), index)
     case JWPrimitive{name, args}:
       j_primitive_code(name, "(" ++ jw_emit_at(args, 0, direct) ++ ")", "(" ++ jw_emit_at(args, 1, direct) ++ ")")
-    case JWConstruct{name, fields}: "ctor(" ++ j_quote(name) ++ ",[" ++ jw_emit_values(fields, direct) ++ "])"
+    case JWConstruct{layout, name, fields}: jw_emit_construct(layout, name, fields, direct)
     case JWNative{name, args}: "callOwned(get(G," ++ j_quote(name) ++ "),[" ++ jw_emit_values(args, direct) ++ "])"
+    case JWNumberOp{op, args}: jw_number_code(op, "(" ++ jw_emit_at(args, 0, direct) ++ ")", "(" ++ jw_emit_at(args, 1, direct) ++ ")")
+
+# Native layouts keep the runtime constructor. Closed private tagged values use
+# one fresh object; fields were evaluated in order before this IR instruction.
+@unsafe
+def jw_emit_construct(+layout: String, +name: String, +fields: List<&2,JWValue>, +direct: Bool) -> String:
+  kc(String, String.eq(layout, "tagged"), u =>
+    "({$:" ++ j_quote(name) ++ "," ++ jw_emit_fields(fields, direct, 0) ++ "})", u =>
+    "ctor(" ++ j_quote(name) ++ ",[" ++ jw_emit_values(fields, direct) ++ "])")
+
+@unsafe
+def jw_emit_fields(+fields: List<&2,JWValue>, +direct: Bool, +at: U32) -> String:
+  match fields:
+    case Nil{}: ""
+    case Con{value, rest}: "_" ++ U32.show(at) ++ ":" ++ jw_emit_value(value, direct) ++ "," ++ jw_emit_fields(rest, direct, U32.inc(at))
 
 @unsafe
 def jw_emit_slot(+slot: U32, +direct: Bool) -> String:
@@ -30,18 +46,22 @@ def jw_emit_at(+values: List<&2,JWValue>, +at: U32, +direct: Bool) -> String:
 
 @unsafe
 def jw_emit_project(+layout: String, +input: String, +index: U32) -> String:
-  kc(String, String.eq(layout, "nat"), u => "(" ++ input ++ "-1n)", u =>
+  kc(String, String.eq(layout, "nat") || String.eq(layout, "nat-number"),
+    u => "(" ++ input ++ kc(String, String.eq(layout, "nat"), u => "-1n)", u => "-1)"), u =>
   kc(String, String.eq(layout, "tuple"), u => "(" ++ input ++ ")[" ++ U32.show(index) ++ "]", u =>
   kc(String, String.eq(layout, "char"), u => "(typeof " ++ input ++ "==='string'?" ++ input ++ ".codePointAt(0):" ++ input ++ ")", u =>
   kc(String, String.eq(layout, "string"), u => kc(String, U32.is_eq(index, 0),
     u => input ++ ".codePointAt(0)", u => input ++ ".slice(" ++ input ++ ".codePointAt(0)>65535?2:1)"),
-    u => "(" ++ input ++ ").a[" ++ U32.show(index) ++ "]"))))
+     u => kc(String, String.eq(layout, "tagged"), u => "(" ++ input ++ ")._" ++ U32.show(index),
+       u => "(" ++ input ++ ").a[" ++ U32.show(index) ++ "]")))))
 
 @unsafe
 def jw_emit_condition(+layout: String, +name: String, +input: JWValue, +direct: Bool) -> String:
   +value = jw_emit_value(input, direct)
   kc(String, String.eq(layout, "bool"), u => value ++ "===" ++ kc(String, String.eq(name, "True"), u => "true", u => "false"), u =>
-  kc(String, String.eq(layout, "nat"), u => value ++ kc(String, String.eq(name, "Zero"), u => "===0n", u => "!==0n"), u =>
+  kc(String, String.eq(layout, "nat") || String.eq(layout, "nat-number"),
+    u => value ++ kc(String, String.eq(name, "Zero"), u => "===0", u => "!==0") ++
+      kc(String, String.eq(layout, "nat"), u => "n", u => ""), u =>
   kc(String, String.eq(layout, "string"), u => value ++ kc(String, String.eq(name, "SNil"), u => "===''", u => "!==''"), u =>
   kc(String, String.eq(layout, "char") || String.eq(layout, "tuple"), u => "true",
     u => "(" ++ value ++ ").$===" ++ j_quote(name)))))
@@ -133,8 +153,52 @@ def jw_wrappers(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at: U32, 
     case Nil{}: ""
     case Con{JWFunction{name, arity, code, valid}, rest}:
       kc(String, jw_context_same(ctx, at), u =>
-        "function " ++ j_region_name(name) ++ "$tree(" ++ j_region_parameters(0, arity) ++ "){return $worker" ++ U32.show(group) ++ "(" ++
-          U32.show(at) ++ ",[" ++ j_region_vector_names("$p", 0, arity) ++ "]);}", u => "") ++ jw_wrappers(ctx, rest, U32.inc(at), group)
+        "function " ++ j_region_name(name) ++ "$tree(" ++ j_region_parameters(0, arity) ++ "){if($workerBudget===0)return $worker" ++ U32.show(group) ++ "(" ++
+          U32.show(at) ++ ",[" ++ j_region_vector_names("$p", 0, arity) ++ "]);--$workerBudget;try{" ++
+          "return $native" ++ U32.show(group) ++ "(" ++ U32.show(at) ++ "," ++ j_region_vector_names("$p", 0, arity) ++ ");" ++
+          "}finally{++$workerBudget;}}", u => "") ++ jw_wrappers(ctx, rest, U32.inc(at), group)
+
+# Native recursion uses the same scalar frame for exact tail transfers. Every
+# argument is captured before any slot is overwritten, including permutations.
+@unsafe
+def jw_native_capture(+args: List<&2,JWValue>, +at: U32) -> String:
+  match args:
+    case Nil{}: ""
+    case Con{value, rest}: "const $next" ++ U32.show(at) ++ "=" ++ jw_emit_value(value, True{}) ++ ";" ++ jw_native_capture(rest, U32.inc(at))
+
+@unsafe
+def jw_native_store(+args: List<&2,JWValue>, +at: U32) -> String:
+  match args:
+    case Nil{}: ""
+    case Con{value, rest}: "$v" ++ U32.show(at) ++ "=$next" ++ U32.show(at) ++ ";" ++ jw_native_store(rest, U32.inc(at))
+
+@unsafe
+def jw_native_tail(+args: List<&2,JWValue>, +target: U32) -> String:
+  jw_native_capture(args, 0) ++ jw_native_store(args, 0) ++ "$pc=" ++ U32.show(target) ++ ";continue;"
+
+# The native function shares only scalar storage between entries of one SCC.
+# Each invocation owns a new frame; non-tail calls still use budgeted wrappers.
+@unsafe
+def jw_component_bound(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at: U32, +registers: Bool) -> U32:
+  match functions:
+    case Nil{}: 0
+    case Con{JWFunction{name, arity, code, valid}, rest}:
+      U32.max(kc(U32, jw_context_same(ctx, at), u => kc(U32, registers, u => jw_register_bound(code, arity), u => arity), u => 0),
+        jw_component_bound(ctx, rest, U32.inc(at), registers))
+
+@unsafe
+def jw_native_entries(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +at: U32) -> String:
+  match functions:
+    case Nil{}: ""
+    case Con{JWFunction{name, arity, code, valid}, rest}:
+      kc(String, jw_context_same(ctx, at), u => "case " ++ U32.show(at) ++ ":{" ++ jw_emit_direct(ctx, code) ++ "}", u => "") ++
+        jw_native_entries(ctx, rest, U32.inc(at))
+
+@unsafe
+def jw_native_component(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +group: U32, +arity: U32, +bound: U32) -> String:
+  "function $native" ++ U32.show(group) ++ "($pc," ++ j_region_vector_names("$v", 0, arity) ++ "){/* private first-order native component */" ++
+    jw_direct_locals(arity, 0, bound) ++ "for(;;){switch($pc){" ++ jw_native_entries(ctx, functions, 0) ++
+    "default:return bad('private native pc invariant');}}}"
 
 # Direct edges between different SCCs cannot grow with recursive input: their
 # condensation graph is a DAG. Acyclic singleton functions need neither register
@@ -186,8 +250,10 @@ def jw_emit_direct(+ctx: JWEmitContext, +code: List<&2,JWInstruction>) -> String
     case Con{instruction, rest}:
       match instruction:
         case JWAssign{slot, value}: jw_emit_slot(slot, True{}) ++ "=" ++ jw_emit_value(value, True{}) ++ ";" ++ jw_emit_direct(ctx, rest)
-        case JWDirectCall{slot, target, args}: jw_emit_slot(slot, True{}) ++ "=" ++ jw_context_name(ctx, target) ++
-          "(" ++ jw_emit_values(args, True{}) ++ ");" ++ jw_emit_direct(ctx, rest)
+        case JWDirectCall{slot, target, args}:
+          kc(String, jw_context_same(ctx, target) && jw_tail_result(rest, slot), u => jw_native_tail(args, target), u =>
+            jw_emit_slot(slot, True{}) ++ "=" ++ jw_context_name(ctx, target) ++
+              "(" ++ jw_emit_values(args, True{}) ++ ");" ++ jw_emit_direct(ctx, rest))
         case JWCase{layout, name, input, yes, no}:
           "if(" ++ jw_emit_condition(layout, name, input, True{}) ++ "){" ++ jw_emit_direct(ctx, yes) ++ "}else{" ++ jw_emit_direct(ctx, no) ++ "}"
         case JWReturn{value}: "return " ++ jw_emit_value(value, True{}) ++ ";"
@@ -209,21 +275,29 @@ def jw_emit_component(+ctx: JWEmitContext, +functions: List<&2,JWFunction>, +nam
   kc(String, recursive, u =>
     "function $worker" ++ U32.show(group) ++ "($pc,$r){/* private first-order continuation component */let $value,$top=0;const $returns=[],$registers=[];for(;;){switch($pc){" ++
       jw_printed_code(jw_emit_functions(ctx, functions, 0, total)) ++ "default:return bad('private worker pc invariant');}}}" ++
+      jw_native_component(ctx, functions, group, jw_component_bound(ctx, functions, 0, False{}), jw_component_bound(ctx, functions, 0, True{})) ++
       jw_wrappers(ctx, functions, 0, group), u =>
     "function " ++ j_region_name(name) ++ "$tree(" ++ j_region_parameters(0, arity) ++ "){/* private first-order acyclic function */" ++
       jw_direct_locals(0, arity, jw_register_bound(code, arity)) ++ jw_emit_direct(ctx, code) ++ "}")
 
 @unsafe
-def j_worker_declarations(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
-  j_worker_declarations_done(defs, jw_simplify_functions(jw_functions(book, defs, defs)))
+def j_worker_emission(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> JWEmission:
+  j_worker_emission_done(defs, jw_simplify_functions(jw_functions(book, defs, defs)))
 
 @unsafe
-def j_worker_declarations_done(+defs: List<&2,KDef>, +functions: List<&2,JWFunction>) -> String:
-  kc(String, Bool.not(List.is_empty(&2,KDef, defs)) && jw_all_valid(functions), u =>
-    jw_declarations_components(functions, j_region_def_count(defs), jw_components(functions)), u => "")
+def j_worker_emission_done(+defs: List<&2,KDef>, +functions: List<&2,JWFunction>) -> JWEmission:
+  kc(JWEmission, Bool.not(List.is_empty(&2,KDef, defs)) && jw_all_valid(functions), u =>
+    jw_emission_mode(functions, j_region_def_count(defs), jw_nat_functions_valid(functions)), u => JWEmission{"", False{}})
 
 @unsafe
-def jw_declarations_components(+functions: List<&2,JWFunction>, +total: U32, +plan: Maybe<&2,List<&2,U32>>) -> String:
+def jw_emission_mode(+functions: List<&2,JWFunction>, +total: U32, +numberNat: Bool) -> JWEmission:
+  JWEmission{jw_declarations_components(kc(List<&2,JWFunction>, numberNat, u => jw_nat_functions(functions), u => functions),
+    total, jw_components(functions), numberNat), numberNat}
+
+@unsafe
+def jw_declarations_components(+functions: List<&2,JWFunction>, +total: U32, +plan: Maybe<&2,List<&2,U32>>, +numberNat: Bool) -> String:
   match plan:
     case None{}: ""
-    case Some{components}: jw_emit_components(functions, components, functions, 0, total)
+    case Some{components}:
+      kc(String, numberNat, u => jw_nat_declarations(), u => "") ++
+        "let $workerBudget=32;" ++ jw_emit_components(functions, components, functions, 0, total)

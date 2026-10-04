@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Independent renamed nullary roots, all-branch primitive dependencies; no timing claim",
+  "cases": [
+    {
+      "id": "capability-verdant",
+      "family": "general-primitive-capability",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/primitive-capabilities-v1.bend",
+        "sha256": "ba22fa2b1d311f0cd3e25f236478784af9f2b456417a7d8a03367b055325a3ec",
+        "bytes": 481,
+        "provenance": {
+          "kind": "phase45-independent-renamed-primitive-capability-fixture"
+        }
+      },
+      "point": {
+        "exportName": "verdant",
+        "args": [],
+        "expected": 38272
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python integer recurrence modulo 2^32"
+    },
+    {
+      "id": "capability-ochre",
+      "family": "general-primitive-capability",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/primitive-capabilities-v1.bend",
+        "sha256": "ba22fa2b1d311f0cd3e25f236478784af9f2b456417a7d8a03367b055325a3ec",
+        "bytes": 481,
+        "provenance": {
+          "kind": "phase45-independent-renamed-primitive-capability-fixture"
+        }
+      },
+      "point": {
+        "exportName": "ochre",
+        "args": [],
+        "expected": 73
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python integer recurrence modulo 2^32"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "capability-verdant",
+      "capability-ochre"
+    ],
+    "core": [
+      "capability-verdant",
+      "capability-ochre"
+    ],
+    "broad": [
+      "capability-verdant",
+      "capability-ochre"
+    ],
+    "full": [
+      "capability-verdant",
+      "capability-ochre"
+    ]
+  }
+}

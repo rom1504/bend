@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Checked acquisition of independent private Number-Nat boundary fixture. Untimed controller supplies BigInt arguments/results and error controls; this single numeric catalog point only anchors acquisition.",
+  "cases": [
+    {
+      "id": "number-nat-boundaries",
+      "family": "general-worker-number-nat",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/number-nat.bend",
+        "sha256": "49b590964a737d633090830ba9c9016afe6b81c707b5ebca07cf64ad8b346f8b",
+        "bytes": 2117,
+        "provenance": {
+          "kind": "phase45-independent-number-nat",
+          "scope": "Compact-literal, runtime Nat, native tuple and public ABI boundaries; no timing claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          7
+        ],
+        "expected": 6
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "(4294967295 + value) modulo 2^32; larger Nat and error cases require the untimed controller."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "number-nat-boundaries"
+    ],
+    "core": [
+      "number-nat-boundaries"
+    ],
+    "broad": [
+      "number-nat-boundaries"
+    ],
+    "full": [
+      "number-nat-boundaries"
+    ]
+  }
+}

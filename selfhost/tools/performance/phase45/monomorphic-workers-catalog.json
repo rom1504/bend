@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Untimed monomorphic first-order graph admission control; candidate-only depth50000 checked separately.",
+  "cases": [
+    {
+      "id": "monomorphic-nontail",
+      "family": "monomorphic-worker-admission",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/monomorphic-workers.bend",
+        "sha256": "648ec58805723d188a2b8f4f3f7ca7d39c63d5f7ad8241bd4ae2dbb6bb76430c",
+        "bytes": 902,
+        "provenance": {
+          "kind": "phase45-independent-monomorphic-worker-control",
+          "scope": "Unsafe mutual-recursion backend fixture; no erased conduit, timing or termination-proof claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          7
+        ],
+        "expected": 1133
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent iterative modulo-2^32 arithmetic in monomorphic-workers-controls.mjs"
+    },
+    {
+      "id": "monomorphic-tail",
+      "family": "monomorphic-worker-admission",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/monomorphic-workers.bend",
+        "sha256": "648ec58805723d188a2b8f4f3f7ca7d39c63d5f7ad8241bd4ae2dbb6bb76430c",
+        "bytes": 902,
+        "provenance": {
+          "kind": "phase45-independent-monomorphic-worker-control",
+          "scope": "Unsafe mutual-recursion backend fixture; no erased conduit, timing or termination-proof claim"
+        }
+      },
+      "point": {
+        "exportName": "tail_check",
+        "args": [
+          3,
+          7
+        ],
+        "expected": 30
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent iterative modulo-2^32 arithmetic in monomorphic-workers-controls.mjs"
+    },
+    {
+      "id": "monomorphic-literal",
+      "family": "monomorphic-worker-admission",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/monomorphic-workers.bend",
+        "sha256": "648ec58805723d188a2b8f4f3f7ca7d39c63d5f7ad8241bd4ae2dbb6bb76430c",
+        "bytes": 902,
+        "provenance": {
+          "kind": "phase45-independent-monomorphic-worker-control",
+          "scope": "Unsafe mutual-recursion backend fixture; no erased conduit, timing or termination-proof claim"
+        }
+      },
+      "point": {
+        "exportName": "plain_literal",
+        "args": [],
+        "expected": 19
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent iterative modulo-2^32 arithmetic in monomorphic-workers-controls.mjs"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "monomorphic-nontail",
+      "monomorphic-tail",
+      "monomorphic-literal"
+    ],
+    "core": [
+      "monomorphic-nontail",
+      "monomorphic-tail",
+      "monomorphic-literal"
+    ],
+    "broad": [
+      "monomorphic-nontail",
+      "monomorphic-tail",
+      "monomorphic-literal"
+    ],
+    "full": [
+      "monomorphic-nontail",
+      "monomorphic-tail",
+      "monomorphic-literal"
+    ]
+  }
+}

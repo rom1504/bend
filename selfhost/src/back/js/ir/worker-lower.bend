@@ -105,15 +105,21 @@ def jw_expr(+book: List<&2,KDef>, +defs: List<&2,KDef>, +env: List<&2,JWBinding>
   kc(JWLower, U32.is_lt(depth, 128), u =>
   kc(JWLower, String.eq(tg(body), "Var"), u => jw_lookup(env, ix(body), next), u =>
   kc(JWLower, core_literal(body), u =>
-    kc(JWLower, j_literal_owner(book, wnf(book, ty)), u => JWLower{Nil{}, JWLiteral{jir_emit(book, jir_lower_literal(body))}, next, True{}}, u => jw_fail()), u =>
+    kc(JWLower, j_literal_owner(book, wnf(book, ty)), u => JWLower{Nil{}, jw_literal(book, body), next, True{}}, u => jw_fail()), u =>
   kc(JWLower, String.eq(tg(body), "Ref") && Bool.not(String.starts_with(nm(body), "$instance.")) && j_string_literal(book, lookup(book, nm(body))), u =>
-    jw_store(Nil{}, JWGlobal{nm(body)}, next, True{}), u =>
+    jw_store(Nil{}, JWGlobal{nm(body), jw_layout(book, wnf(book, dt(lookup(book, nm(body)))))}, next, True{}), u =>
   kc(JWLower, String.eq(tg(body), "Let"), u =>
     jw_bindings(book, defs, env, env, ks(body), ty, next, U32.inc(depth)), u =>
   kc(JWLower, String.eq(tg(body), "Ctr"), u =>
     jw_construct(book, defs, env, body, wnf(book, ty), next, U32.inc(depth)), u =>
   kc(JWLower, String.eq(tg(body), "App"), u =>
     jw_call(book, defs, env, j_call_spine(body, Nil{}), next, U32.inc(depth)), u => jw_fail())))))), u => jw_fail())
+
+# Both parsers bound compact Nat literal payloads to U32. Larger runtime Nats
+# remain computations, so the typed leaf neither parses text nor narrows them.
+@unsafe
+def jw_literal(+book: List<&2,KDef>, +t: KTerm) -> JWValue:
+  kc(JWValue, core_nat(t), u => JWNat{kl_number(t)}, u => JWLiteral{jir_emit(book, jir_lower_literal(t))})
 
 @unsafe
 def jw_store(+code: List<&2,JWInstruction>, +value: JWValue, +next: U32, +valid: Bool) -> JWLower:
@@ -123,19 +129,36 @@ def jw_store(+code: List<&2,JWInstruction>, +value: JWValue, +next: U32, +valid:
 def jw_construct(+book: List<&2,KDef>, +defs: List<&2,KDef>, +env: List<&2,JWBinding>, +t: KTerm, +ty: KTerm,
   +next: U32, +depth: U32) -> JWLower:
   +c = lookup(dc(lookup(book, nm(ty))), nm(t))
-  jw_construct_done(nm(t), jw_args(book, defs, env, ks(t), j_specialize(book, dt(c), ks(ty)), next, depth))
+  jw_construct_done(jw_layout(book, ty), nm(t), jw_args(book, defs, env, ks(t), j_specialize(book, dt(c), ks(ty)), next, depth))
 
 @unsafe
-def jw_construct_done(+name: String, +r: JWArgs) -> JWLower:
+def jw_construct_done(+layout: String, +name: String, +r: JWArgs) -> JWLower:
   match r:
-    case JWArgs{code, values, next, valid}: jw_store(code, JWConstruct{name, values}, next, valid)
+    case JWArgs{code, values, next, valid}: jw_store(code, JWConstruct{layout, name, values}, next, valid)
+
+# Private tagged fields cannot enter an ordinary native ABI. The only tagged
+# native result admitted here is exact Cmp: every constructor is nullary and its
+# public .$ tag is compatible. Nat.divmod retains its native scalar pair.
+# Keep this fence even if the broader JPure native whitelist is later extended.
+@unsafe
+def jw_native_boundary(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> Bool:
+  +head = wnf(book, ty)
+  kc(Bool, U32.is_eq(left, 0), u =>
+    jw_native_scalar(book, head) || j_map_cmp_type(book, head) || j_map_native_divmod_result(book, head), u =>
+    String.eq(tg(head), "All") && jw_native_scalar(book, wnf(book, kid(head, 0))) &&
+      jw_native_boundary(book, kid(head, 1), U32.sub(left, 1)))
+
+@unsafe
+def jw_native_scalar(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  j_region_scalar(book, ty) || j_string_string(book, ty) || j_string_char_type(book, ty)
 
 @unsafe
 def jw_call(+book: List<&2,KDef>, +defs: List<&2,KDef>, +env: List<&2,JWBinding>, +spine: KTerm,
   +next: U32, +depth: U32) -> JWLower:
   +d = lookup(book, nm(spine))
   kc(JWLower, String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
-    jw_call_done(nm(spine), jw_target(defs, nm(spine), 0), j_primitive_call(book, spine), db(d),
+    jw_call_done(nm(spine), jw_target(defs, nm(spine), 0), j_primitive_call(book, spine),
+      db(d) && jw_native_boundary(book, dt(d), da(d)),
       jw_args(book, defs, env, ks(spine), dt(d), next, depth)), u => jw_fail())
 
 @unsafe

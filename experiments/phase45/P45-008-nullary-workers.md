@@ -1,6 +1,13 @@
-# P45-006: demanded nullary private calls
+# P45-008: demanded nullary private calls
 
-Status: design and implementation in progress; no activation or timing result yet.
+Status: rejected after the isolated worker07 screen; maintained admission reverted.
+The snapshot, design and correctness fixtures remain as experiment evidence.
+
+The four library points all regressed in the 28.5-second screen: baseline/candidate
+ratios were 0.7621 for RLE, 0.9150 for Map/Set, 0.9826 for morning and 0.9574 for
+evening. RLE remained 115.3× and Map/Set 77.86× slower than pinned TypeScript.
+The added complete-entry proof cost outweighed the small admitted computation;
+this slice is not promoted. Positive-arity worker work continues independently.
 
 Closed computations are currently excluded before the existing worker proof runs:
 root admission requires positive arity and an erased call, the collector requires
@@ -14,6 +21,8 @@ existing scalar or exact native String. Positive-arity roots retain their curren
 erased-call prefilter and requirement for contextual rows. A zero-argument root
 may instead use a complete graph of exact source aliases. Existing source identity,
 purity, type/layout, graph-size, literal-provenance and host proofs remain required.
+Existing literal globals keep their simple wrappers and guarded public loads;
+this avoids adding a whole-graph entry guard to ordinary constant access.
 
 Collection follows a runtime Ref to a known source definition with arity zero,
 including its body in the same bounded graph. Rewriting renames the Ref through

@@ -3,14 +3,17 @@
 type JWValue is Data:
   JWSlot{+slot: U32}
   JWLiteral{+code: String}
-  JWGlobal{+name: String}
+  JWNat{+number: U32}
+  JWGlobal{+name: String, +layout: String}
   JWProject{+layout: String, +input: JWValue, +index: U32}
   JWPrimitive{+name: String, +args: List<&2,JWValue>}
-  JWConstruct{+name: String, +fields: List<&2,JWValue>}
+  JWConstruct{+layout: String, +name: String, +fields: List<&2,JWValue>}
   JWNative{+name: String, +args: List<&2,JWValue>}
+  JWNumberOp{+op: String, +args: List<&2,JWValue>}
 
-# Values contain no private calls. Each such call is an explicit instruction;
-# the printer must transfer through its PC loop, never native JS recursion.
+# Values contain no private calls. Each such call is explicit. Cyclic edges
+# retain a PC-loop fallback; direct recursive entries consume one shared budget,
+# and cross-component edges follow the proved acyclic condensation graph.
 type JWInstruction is Data:
   JWAssign{+slot: U32, +value: JWValue}
   JWDirectCall{+slot: U32, +target: U32, +args: List<&2,JWValue>}

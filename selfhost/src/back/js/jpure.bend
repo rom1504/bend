@@ -1171,9 +1171,20 @@ def j_instance_has_erased_node(+book: List<&2,KDef>, +t: KTerm, +rest: List<&2,K
     u => True{}, u => j_instance_has_erased(book, List.append(&2,KTerm, ks(t), rest), U32.sub(fuel, 1)))
 
 @unsafe
+def j_instance_root_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> Bool:
+  +head = wnf(book, ty)
+  kc(Bool, U32.is_eq(left, 0), u => j_region_scalar(book, head) || j_string_string(book, head), u =>
+    kc(Bool, String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) &&
+      j_region_scalar(book, kid(head, 0)),
+      u => j_instance_root_signature(book, kid(head, 1), U32.sub(left, 1)), u => False{}))
+
+# Native String results are immutable values already produced by the private
+# component emitter. Arguments remain scalar; object/array/closure results do
+# not enter through this boundary. Graph, layout and host guards still apply.
+@unsafe
 def j_instance_root(+book: List<&2,KDef>, +d: KDef) -> String:
   kc(String, j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) &&
-    j_region_signature(book, dt(d), da(d)) && j_region_scalar(book, j_fold_root_result(book, dt(d), da(d))) &&
+    j_instance_root_signature(book, dt(d), da(d)) &&
     j_instance_has_erased(book, [dv(d)], 2048), u =>
       j_instance_root_collect(book, d, j_instances_collect(book, [dv(d)], JInstances{Nil{}, [d], 1048576, True{}})), u => "")
 
@@ -1200,11 +1211,17 @@ def j_instance_root_view(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +
 @unsafe
 def j_instance_root_emit(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +defs: List<&2,KDef>, +at: U32, +pure: JPure) -> String:
   kc(String, U32.is_eq(at, 4294967295) || Bool.not(j_instance_emit_ready(view, lookup(view, j_instance_name(at)))), u => "", u =>
-    "(()=>{" ++ j_instance_declarations(view, defs, defs) ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_primitive_guards() ++ j_instance_native_guards(j_pure_defs(pure)) ++ "];return " ++
+    j_instance_root_guarded(book, d, rows, at, pure, j_instance_declarations(view, defs, defs)))
+
+# Both private backends share the identical public wrapper and complete graph
+# guard. Only declaration lowering differs; a private machine adds no new entry.
+@unsafe
+def j_instance_root_guarded(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +at: U32, +pure: JPure, +declarations: String) -> String:
+    "(()=>{" ++ declarations ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_primitive_guards() ++ j_instance_native_guards(j_pure_defs(pure)) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){" ++ j_nat_loop_slots(da(d), 0) ++
     "if($entered&&regionProof===null&&regionHostGuard()&&stringHostGuard()&&" ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++
     "&&localGuard($guards)){/* private contextual instances */return " ++ j_region_name(j_instance_name(at)) ++ "$tree(" ++ j_region_vector_names("$s", 0, da(d)) ++ ");}" ++
-    j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()")
+    j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()"
 
 
 @unsafe
@@ -1285,8 +1302,16 @@ def j_instance_caps(+view: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>
 @unsafe
 def j_instance_root_raw(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +raw: List<&2,KDef>) -> String:
   +view = List.append(&2,KDef, raw, j_instance_attach(book, rows, [d]))
-  kc(String, j_pure_valid(j_pure_graph(view, lookup(view, j_instance_name(j_instance_source_index(rows, d, 0))), JPure{Nil{}, 131072, True{}})), u =>
-    j_instance_root_view(book, d, rows, j_instance_caps(view, raw)), u => "")
+  +at = j_instance_source_index(rows, d, 0)
+  +pure = j_pure_graph(view, lookup(view, j_instance_name(at)), JPure{Nil{}, 131072, True{}})
+  kc(String, j_pure_valid(pure) && Bool.not(U32.is_eq(at, 4294967295)), u =>
+    j_instance_root_workers(book, view, d, rows, raw, at, pure, j_worker_declarations(view, raw)), u => "")
+
+@unsafe
+def j_instance_root_workers(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +raw: List<&2,KDef>,
+  +at: U32, +pure: JPure, +declarations: String) -> String:
+  kc(String, Bool.not(String.eq(declarations, "")), u => j_instance_root_guarded(book, d, rows, at, pure, declarations),
+    u => j_instance_root_view(book, d, rows, j_instance_caps(view, raw)))
 
 # Exact native scalar-key components needed by closed Map graphs. These proof
 # rows do not create public argument admission or change residual native code.

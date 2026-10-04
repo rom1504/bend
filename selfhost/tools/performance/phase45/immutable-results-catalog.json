@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Checked acquisition catalog for immutable-results-controls.mjs only. The returned-closure point needs its explicit custom observer; do not pass this catalog to the scalar timing runner.",
+  "cases": [
+    {
+      "id": "immutable-empty",
+      "family": "immutable-result-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Exact output control for list/Maybe composition and generic root refusal",
+      "source": {
+        "path": "fixtures/immutable-results.bend",
+        "sha256": "0352afa233b55d0f6a22a03b3461ac219502edb2c26bef022099b657518a3c22",
+        "bytes": 1249,
+        "provenance": {
+          "kind": "phase45-independent-immutable-result-control",
+          "scope": "Correctness fixture; no representative performance claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          0,
+          7
+        ],
+        "expected": ""
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit literal derived from list reversal, decimal U32 rendering, and modular addition"
+    },
+    {
+      "id": "immutable-singleton",
+      "family": "immutable-result-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Exact output control for list/Maybe composition and generic root refusal",
+      "source": {
+        "path": "fixtures/immutable-results.bend",
+        "sha256": "0352afa233b55d0f6a22a03b3461ac219502edb2c26bef022099b657518a3c22",
+        "bytes": 1249,
+        "provenance": {
+          "kind": "phase45-independent-immutable-result-control",
+          "scope": "Correctness fixture; no representative performance claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          1,
+          7
+        ],
+        "expected": "λ7;"
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit literal derived from list reversal, decimal U32 rendering, and modular addition"
+    },
+    {
+      "id": "immutable-reverse",
+      "family": "immutable-result-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Exact output control for list/Maybe composition and generic root refusal",
+      "source": {
+        "path": "fixtures/immutable-results.bend",
+        "sha256": "0352afa233b55d0f6a22a03b3461ac219502edb2c26bef022099b657518a3c22",
+        "bytes": 1249,
+        "provenance": {
+          "kind": "phase45-independent-immutable-result-control",
+          "scope": "Correctness fixture; no representative performance claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          7
+        ],
+        "expected": "λ9;λ8;λ7;"
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit literal derived from list reversal, decimal U32 rendering, and modular addition"
+    },
+    {
+      "id": "immutable-wraparound",
+      "family": "immutable-result-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Exact output control for list/Maybe composition and generic root refusal",
+      "source": {
+        "path": "fixtures/immutable-results.bend",
+        "sha256": "0352afa233b55d0f6a22a03b3461ac219502edb2c26bef022099b657518a3c22",
+        "bytes": 1249,
+        "provenance": {
+          "kind": "phase45-independent-immutable-result-control",
+          "scope": "Correctness fixture; no representative performance claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          4294967295
+        ],
+        "expected": "λ1;λ0;λ4294967295;"
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit literal derived from list reversal, decimal U32 rendering, and modular addition"
+    },
+    {
+      "id": "immutable-none",
+      "family": "immutable-result-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Exact output control for list/Maybe composition and generic root refusal",
+      "source": {
+        "path": "fixtures/immutable-results.bend",
+        "sha256": "0352afa233b55d0f6a22a03b3461ac219502edb2c26bef022099b657518a3c22",
+        "bytes": 1249,
+        "provenance": {
+          "kind": "phase45-independent-immutable-result-control",
+          "scope": "Correctness fixture; no representative performance claim"
+        }
+      },
+      "point": {
+        "exportName": "selected",
+        "args": [
+          false,
+          7
+        ],
+        "expected": "empty"
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit literal derived from list reversal, decimal U32 rendering, and modular addition"
+    },
+    {
+      "id": "immutable-unicode",
+      "family": "immutable-result-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Exact output control for list/Maybe composition and generic root refusal",
+      "source": {
+        "path": "fixtures/immutable-results.bend",
+        "sha256": "0352afa233b55d0f6a22a03b3461ac219502edb2c26bef022099b657518a3c22",
+        "bytes": 1249,
+        "provenance": {
+          "kind": "phase45-independent-immutable-result-control",
+          "scope": "Correctness fixture; no representative performance claim"
+        }
+      },
+      "point": {
+        "exportName": "selected",
+        "args": [
+          true,
+          7
+        ],
+        "expected": "🧭7"
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit literal derived from list reversal, decimal U32 rendering, and modular addition"
+    },
+    {
+      "id": "immutable-generic-string-input",
+      "family": "immutable-result-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Exact output control for list/Maybe composition and generic root refusal",
+      "source": {
+        "path": "fixtures/immutable-results.bend",
+        "sha256": "0352afa233b55d0f6a22a03b3461ac219502edb2c26bef022099b657518a3c22",
+        "bytes": 1249,
+        "provenance": {
+          "kind": "phase45-independent-immutable-result-control",
+          "scope": "Correctness fixture; no representative performance claim"
+        }
+      },
+      "point": {
+        "exportName": "non_scalar_input",
+        "args": [
+          "kept"
+        ],
+        "expected": "kept"
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit literal derived from list reversal, decimal U32 rendering, and modular addition"
+    },
+    {
+      "id": "immutable-returned-closure",
+      "family": "immutable-result-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Exact output control for list/Maybe composition and generic root refusal",
+      "source": {
+        "path": "fixtures/immutable-results.bend",
+        "sha256": "0352afa233b55d0f6a22a03b3461ac219502edb2c26bef022099b657518a3c22",
+        "bytes": 1249,
+        "provenance": {
+          "kind": "phase45-independent-immutable-result-control",
+          "scope": "Correctness fixture; no representative performance claim"
+        }
+      },
+      "point": {
+        "exportName": "returned_closure",
+        "args": [
+          10
+        ],
+        "expected": "17"
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Explicit literal derived from list reversal, decimal U32 rendering, and modular addition",
+      "observer": {
+        "kind": "returned-closure",
+        "args": [
+          7
+        ]
+      }
+    }
+  ],
+  "sets": {
+    "fast": [
+      "immutable-empty",
+      "immutable-singleton",
+      "immutable-reverse",
+      "immutable-wraparound",
+      "immutable-none",
+      "immutable-unicode",
+      "immutable-generic-string-input",
+      "immutable-returned-closure"
+    ],
+    "core": [
+      "immutable-empty",
+      "immutable-singleton",
+      "immutable-reverse",
+      "immutable-wraparound",
+      "immutable-none",
+      "immutable-unicode",
+      "immutable-generic-string-input",
+      "immutable-returned-closure"
+    ],
+    "broad": [
+      "immutable-empty",
+      "immutable-singleton",
+      "immutable-reverse",
+      "immutable-wraparound",
+      "immutable-none",
+      "immutable-unicode",
+      "immutable-generic-string-input",
+      "immutable-returned-closure"
+    ],
+    "full": [
+      "immutable-empty",
+      "immutable-singleton",
+      "immutable-reverse",
+      "immutable-wraparound",
+      "immutable-none",
+      "immutable-unicode",
+      "immutable-generic-string-input",
+      "immutable-returned-closure"
+    ]
+  }
+}

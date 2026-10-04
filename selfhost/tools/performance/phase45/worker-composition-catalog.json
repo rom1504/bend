@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Checked acquisition of one independent worker composition source; untimed controller additionally tests all small inputs, returned trees and candidate-only deep recursion.",
+  "cases": [
+    {
+      "id": "worker-bench",
+      "family": "general-worker-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/worker-composition.bend",
+        "sha256": "6dc77839166f85e7ec41b2cb86fc09462e5aea382b9dae367c68d4374b470709",
+        "bytes": 2870,
+        "provenance": {
+          "kind": "phase45-independent-worker-composition",
+          "scope": "Unsafe recursive backend correctness fixture; no termination-proof or timing claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          7
+        ],
+        "expected": 437
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent iterative modular arithmetic; full grids/deep controls in worker-composition-controls.mjs"
+    },
+    {
+      "id": "worker-tail-check",
+      "family": "general-worker-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/worker-composition.bend",
+        "sha256": "6dc77839166f85e7ec41b2cb86fc09462e5aea382b9dae367c68d4374b470709",
+        "bytes": 2870,
+        "provenance": {
+          "kind": "phase45-independent-worker-composition",
+          "scope": "Unsafe recursive backend correctness fixture; no termination-proof or timing claim"
+        }
+      },
+      "point": {
+        "exportName": "tail_check",
+        "args": [
+          3,
+          7
+        ],
+        "expected": 31
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent iterative modular arithmetic; full grids/deep controls in worker-composition-controls.mjs"
+    },
+    {
+      "id": "worker-tree-check",
+      "family": "general-worker-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/worker-composition.bend",
+        "sha256": "6dc77839166f85e7ec41b2cb86fc09462e5aea382b9dae367c68d4374b470709",
+        "bytes": 2870,
+        "provenance": {
+          "kind": "phase45-independent-worker-composition",
+          "scope": "Unsafe recursive backend correctness fixture; no termination-proof or timing claim"
+        }
+      },
+      "point": {
+        "exportName": "tree_check",
+        "args": [
+          3,
+          7
+        ],
+        "expected": 148
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent iterative modular arithmetic; full grids/deep controls in worker-composition-controls.mjs"
+    },
+    {
+      "id": "worker-scope-check",
+      "family": "general-worker-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/worker-composition.bend",
+        "sha256": "6dc77839166f85e7ec41b2cb86fc09462e5aea382b9dae367c68d4374b470709",
+        "bytes": 2870,
+        "provenance": {
+          "kind": "phase45-independent-worker-composition",
+          "scope": "Unsafe recursive backend correctness fixture; no termination-proof or timing claim"
+        }
+      },
+      "point": {
+        "exportName": "scope_check",
+        "args": [
+          3,
+          7
+        ],
+        "expected": 474
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent iterative modular arithmetic; full grids/deep controls in worker-composition-controls.mjs"
+    },
+    {
+      "id": "worker-sibling-check",
+      "family": "general-worker-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/worker-composition.bend",
+        "sha256": "6dc77839166f85e7ec41b2cb86fc09462e5aea382b9dae367c68d4374b470709",
+        "bytes": 2870,
+        "provenance": {
+          "kind": "phase45-independent-worker-composition",
+          "scope": "Unsafe recursive backend correctness fixture; no termination-proof or timing claim"
+        }
+      },
+      "point": {
+        "exportName": "sibling_check",
+        "args": [
+          3,
+          7
+        ],
+        "expected": 4294967291
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent iterative modular arithmetic; full grids/deep controls in worker-composition-controls.mjs"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "worker-bench",
+      "worker-tail-check",
+      "worker-tree-check",
+      "worker-scope-check",
+      "worker-sibling-check"
+    ],
+    "core": [
+      "worker-bench",
+      "worker-tail-check",
+      "worker-tree-check",
+      "worker-scope-check",
+      "worker-sibling-check"
+    ],
+    "broad": [
+      "worker-bench",
+      "worker-tail-check",
+      "worker-tree-check",
+      "worker-scope-check",
+      "worker-sibling-check"
+    ],
+    "full": [
+      "worker-bench",
+      "worker-tail-check",
+      "worker-tree-check",
+      "worker-scope-check",
+      "worker-sibling-check"
+    ]
+  }
+}

@@ -370,19 +370,20 @@ def j_component_emit_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm
 def j_component_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>, +d: KDef, +phase: U32) -> String:
   +input = wnf(book, kid(ty, 0))
   +c = lookup(dc(lookup(book, nm(input))), nm(t))
-  +native = j_string_match_condition(book, input, arg, nm(t))
+  +projection = jir_projection_plan(book, input, nm(t))
+  +native = jir_projection_condition(projection, arg)
   +slot = "$native" ++ nm(t) ++ U32.show(terms_len(env))
   "if(" ++ kc(String, Bool.not(String.eq(native, "")), u => native, u => kc(String, j_primitive_type(book, input, "Bool"),
     u => "(" ++ arg ++ ")===" ++ kc(String, String.eq(nm(t), "True"), u => "true", u => "false"),
     u => kc(String, j_primitive_type(book, input, "Nat"),
       u => "(" ++ arg ++ ")" ++ kc(String, String.eq(nm(t), "Zero"), u => "===0n", u => "!==0n"),
       u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t))))) ++ "){" ++
-    kc(String, String.eq(native, ""), u => "", u => "const " ++ slot ++ "=project(" ++ j_quote(nm(t)) ++ "," ++ arg ++ ");") ++
+    jir_projection_bindings(projection, arg, slot) ++
     j_component_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)),
       kc(List<&2,String>, j_primitive_type(book, input, "Nat"),
         u => kc(List<&2,String>, String.eq(nm(t), "Zero"), u => rest, u => Con{"(" ++ arg ++ "-1n)", rest}),
         u => kc(List<&2,String>, String.eq(native, ""), u => j_flat_fields(book, input, arg, 0, da(c), rest),
-          u => j_string_match_fields(slot, 0, da(c), rest))), d, phase) ++ "}else{" ++
+          u => jir_projection_fields(projection, slot, rest))), d, phase) ++ "}else{" ++
     j_component_emit(book, env, kid(t, 1), ty, Con{arg, rest}, d, phase) ++ "}"
 
 @unsafe

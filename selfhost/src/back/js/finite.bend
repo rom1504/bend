@@ -133,14 +133,15 @@ def j_finite_emit_match(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +
 def j_finite_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
   +input = wnf(book, kid(ty, 0))
   +c = lookup(dc(lookup(book, nm(input))), nm(t))
-  +native = j_string_match_condition(book, input, arg, nm(t))
+  +projection = jir_projection_plan(book, input, nm(t))
+  +native = jir_projection_condition(projection, arg)
   +slot = "$native" ++ nm(t) ++ U32.show(terms_len(env))
   "if(" ++ kc(String, Bool.not(String.eq(native, "")), u => native, u => kc(String, j_primitive_type(book, input, "Bool"),
     u => "(" ++ arg ++ ")===" ++ kc(String, String.eq(nm(t), "True"), u => "true", u => "false"),
     u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t)))) ++ "){" ++
-    kc(String, String.eq(native, ""), u => "", u => "const " ++ slot ++ "=project(" ++ j_quote(nm(t)) ++ "," ++ arg ++ ");") ++
+    jir_projection_bindings(projection, arg, slot) ++
     j_finite_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), kc(List<&2,String>, String.eq(native, ""), u => j_flat_fields(book, input, arg, 0, da(c), rest),
-      u => j_string_match_fields(slot, 0, da(c), rest))) ++ "}else{" ++
+      u => jir_projection_fields(projection, slot, rest))) ++ "}else{" ++
     j_finite_emit(book, env, kid(t, 1), ty, Con{arg, rest}) ++ "}"
 
 # Generic residual functions can use these selectors without a new recursive
@@ -352,15 +353,3 @@ def j_direct_expand_after(+book: List<&2,KDef>, +d: KDef, +active: List<&2,Strin
   match result:
     case None{}: None{}
     case Some{fuel}: j_direct_expand_def(book, d, active, fuel)
-
-# These helpers are used only after exact type/JPure/source ownership admission.
-@unsafe
-def j_string_match_condition(+book: List<&2,KDef>, +input: KTerm, +arg: String, +name: String) -> String:
-  kc(String, j_string_string(book, input) && (String.eq(name, "SNil") || String.eq(name, "SCon")),
-    u => "(" ++ arg ++ ")" ++ kc(String, String.eq(name, "SNil"), u => "===\"\"", u => "!==\"\""), u =>
-  kc(String, j_string_char_type(book, input) && String.eq(name, "Chr"), u => "true", u => ""))
-
-@unsafe
-def j_string_match_fields(+slot: String, +at: U32, +total: U32, +rest: List<&2,String>) -> List<&2,String>:
-  kc(List<&2,String>, U32.is_eq(at, total), u => rest, u =>
-    Con{slot ++ "[" ++ U32.show(at) ++ "]", j_string_match_fields(slot, U32.inc(at), total, rest)})

@@ -1,0 +1,56 @@
+{
+  "kind": "phase47-first-screen",
+  "complete": true,
+  "compilerChanged": false,
+  "installed": "phase45-worker23",
+  "inputs": [
+    {
+      "file": "selfhost/build/phase47/array-probe01/manifest.json",
+      "sha256": "029fb929d81e7e86190d1dbcc0823f2faefaeee1adce97e93bffa39a22832e52",
+      "bytes": 9699
+    },
+    {
+      "file": "selfhost/build/phase47/array-check01/report.json",
+      "sha256": "08a9ce9bb3d76099cea73fa924797b3cf7fcccdc2f3d8c1b2635ec8f55e010e0",
+      "bytes": 23578
+    },
+    {
+      "file": "selfhost/build/phase47/array-timing01/report.json",
+      "sha256": "e3a66761be1b3c0c86891f82c477ffc5a6248013fb74411e2906a99383bfbe46",
+      "bytes": 73176
+    },
+    {
+      "file": "selfhost/build/phase47/compiler-census01/lexer-library.json",
+      "sha256": "b955afbb75edf462cfeb8e8ca4a2a96229199945ec6e331093977d7ac1f0a1ae",
+      "bytes": 6192
+    }
+  ],
+  "array": {
+    "correctnessSamples": 4,
+    "timingSamples": 20,
+    "allCorrect": true,
+    "repetitions": 8192,
+    "warmups": 8192,
+    "rounds": 5,
+    "mediansMs": {
+      "original": 680,
+      "shell": 683,
+      "view": 186,
+      "length": 186
+    },
+    "speedupOriginalOverVariant": {
+      "original": 1.0,
+      "shell": 0.9956076134699854,
+      "view": 3.6559139784946235,
+      "length": 3.6559139784946235
+    },
+    "productionSafe": false,
+    "scope": "Saved-output diagnostic only; no new compiler/corpus result"
+  },
+  "compilerCensus": {
+    "scope": "First request instrumented cold API; includes Base preparation; not clean timing",
+    "typeQueries": 21664,
+    "exactIdentityRepeats": 11005,
+    "memoImplemented": false
+  }
+}

@@ -1,0 +1,32 @@
+// Saved-API diagnostic producer only. Does not invoke a compiler or a target.
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {verifyAttempt} from '../../development/workflow.mjs';
+
+const [attemptArg,sourceArg,outArg]=process.argv.slice(2);
+assert(attemptArg&&sourceArg&&outArg,'usage: compiler-probe.mjs ATTEMPT SOURCE_BEND NEW_OUT');
+const out=path.resolve(outArg);assert(!fs.existsSync(out),'output must be fresh');
+const identity=file=>({file:fs.realpathSync(file),sha256:createHash('sha256').update(fs.readFileSync(file)).digest('hex'),bytes:fs.statSync(file).size});
+const attempt=await verifyAttempt(path.resolve(attemptArg));
+const original=fs.readFileSync(attempt.api.file,'utf8');
+const names=['check_program_diagnostic','dg_check_world','dg_check_events','check_definition_world','sp_assembled',
+  'norm_max_book','annotate_selected','j_layout_error','j_plan_context','j_component_plan','j_direct_checked',
+  'j_instance_root','j_instances_collect','j_instance_all_exact','j_instance_fact_replay','j_pure_graph',
+  'j_pure_type','j_worker_emission','jw_functions','jw_components','jw_nat_functions_valid'];
+const bindings=names.map(name=>({name,binding:'$'+name+'$'}));
+for(const {binding} of bindings)assert(original.includes('function '+binding+'('),'missing exact function anchor '+binding);
+fs.mkdirSync(out);
+let overlay=`\n// Phase47 diagnostic: calls and raw immutable-identity pairs, no memoization/extra forcing.\nconst $p47Counts=Object.create(null),$p47Ids=new WeakMap(),$p47Pairs=new Set();\nlet $p47Next=1,$p47NonObject=0,$p47PairCalls=0,$p47PairRepeats=0,$p47Truncated=false;\nfunction $p47Id(x){if(x===null||(typeof x!=='object'&&typeof x!=='function'))return 0;let id=$p47Ids.get(x);if(!id){id=$p47Next++;$p47Ids.set(x,id);}return id;}\nfunction $p47TypePair(book,ty){$p47PairCalls++;if($p47Truncated)return;const b=$p47Id(book),t=$p47Id(ty);if(!b||!t){$p47NonObject++;return;}const key=b+':'+t;if($p47Pairs.has(key))$p47PairRepeats++;else if($p47Pairs.size<40000)$p47Pairs.add(key);else $p47Truncated=true;}\n`;
+for(const {name,binding} of bindings){
+  overlay+=`const $p47Old_${name}=${binding};\n${binding}=function(...args){$p47Counts[${JSON.stringify(name)}]=($p47Counts[${JSON.stringify(name)}]||0)+1;${name==='j_pure_type'?'$p47TypePair(args[0],args[1]);':''}return $p47Old_${name}(...args);};\n`;
+}
+overlay+=`export function phase47CompilerCensus(){return {calls:{...$p47Counts},typePairs:{calls:$p47PairCalls,repeatedExactRawPairs:$p47PairRepeats,distinctPairs:$p47Pairs.size,nonObjectPairs:$p47NonObject,truncated:$p47Truncated,identityScope:'raw book and type arguments; no normalization or forcing; repeats are a lower bound on structurally equal queries'}};}\n`;
+const diagnostic=path.join(out,'api-census.mjs');fs.writeFileSync(diagnostic,original+overlay,{flag:'wx'});
+const driver=fs.realpathSync(new URL('../../typed-driver.mjs',import.meta.url));
+const apiFile=JSON.stringify(diagnostic),driverFile=JSON.stringify(driver);
+const runner=`import fs from 'node:fs';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {pathToFileURL} from 'node:url';\nconst [input,mode,report]=process.argv.slice(2);assert(input&&['parse','check','library'].includes(mode)&&report);assert(!fs.existsSync(report));\nprocess.env.BEND_TYPED_API=${apiFile};process.env.BEND_TYPED_RUNTIME=${JSON.stringify(attempt.runtime.file)};process.env.BEND_BASE=${JSON.stringify(attempt.base.file)};\nconst frozenInputs=${JSON.stringify([attempt.api.file,attempt.runtime.file,attempt.base.file,path.resolve(sourceArg),diagnostic,driver,fs.realpathSync(new URL('../../compiler-abi.mjs',import.meta.url)),fs.realpathSync(import.meta.filename)].map(identity))};\nconst hash=f=>createHash('sha256').update(fs.readFileSync(f)).digest('hex');for(const i of frozenInputs)assert.equal(hash(i.file),i.sha256);assert.equal(fs.realpathSync(input),${JSON.stringify(fs.realpathSync(sourceArg))});\nconst namespace=await import(pathToFileURL(${apiFile}));const {inspect,loadApi}=await import(pathToFileURL(${driverFile}));const api=await loadApi();const stages=Object.create(null);\nconst wrapped=new Proxy(api,{get(target,key){const value=target[key];if(typeof value!=='function')return value;return(...args)=>{const start=performance.now();try{return value(...args);}finally{const row=stages[key]??={calls:0,publicCallMs:0};row.calls++;row.publicCallMs+=performance.now()-start;}};}});\nconst start=performance.now();const result=await inspect(input,{mode,api:wrapped});const requestMs=performance.now()-start;\nconst output=result.code;const observation={...result};delete observation.code;\nfor(const i of frozenInputs)assert.equal(hash(i.file),i.sha256);\nconst r={kind:'phase47-compiler-query-census',complete:result.status==='ok',diagnosticOnly:true,scope:'Counters never memoize or force. Public API synchronous times are instrumented attribution, not baseline stage or speedup timings. Imports excluded; request includes normal Base handling. Full imported source graph identities need host acquisition receipt.',input:fs.realpathSync(input),mode,inputs:frozenInputs,observation,outputSha256:output===undefined?null:createHash('sha256').update(output).digest('hex'),outputBytes:output===undefined?null:Buffer.byteLength(output),requestMs,publicStages:stages,census:namespace.phase47CompilerCensus(),maxRssKiB:process.resourceUsage().maxRSS};fs.writeFileSync(report,JSON.stringify(r,null,2)+'\\n',{flag:'wx'});console.log(JSON.stringify({complete:r.complete,mode,census:r.census}));if(!r.complete)process.exitCode=1;\n`;
+const runnerFile=path.join(out,'run-census.mjs');fs.writeFileSync(runnerFile,runner,{flag:'wx'});
+fs.writeFileSync(path.join(out,'derive.json'),JSON.stringify({kind:'phase47-compiler-census-derivation',complete:true,diagnosticOnly:true,attempt:path.resolve(attemptArg),inputs:[attempt.api.file,attempt.runtime.file,attempt.base.file,path.resolve(sourceArg),driver,fs.realpathSync(new URL('../../compiler-abi.mjs',import.meta.url)),fs.realpathSync(import.meta.filename)].map(identity),anchors:bindings,derived:[diagnostic,runnerFile].map(identity),scope:'Counter overlay only; no compiler execution and no checked-image/output equivalence claim. Runner must be scheduled by root.'},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({complete:true,diagnostic,runner:runnerFile}));

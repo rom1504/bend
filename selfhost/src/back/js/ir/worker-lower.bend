@@ -108,12 +108,15 @@ def jw_expr(+book: List<&2,KDef>, +defs: List<&2,KDef>, +env: List<&2,JWBinding>
     kc(JWLower, j_literal_owner(book, wnf(book, ty)), u => JWLower{Nil{}, jw_literal(book, body), next, True{}}, u => jw_fail()), u =>
   kc(JWLower, String.eq(tg(body), "Ref") && Bool.not(String.starts_with(nm(body), "$instance.")) && j_string_literal(book, lookup(book, nm(body))), u =>
     jw_store(Nil{}, JWGlobal{nm(body), jw_layout(book, wnf(book, dt(lookup(book, nm(body)))))}, next, True{}), u =>
+  kc(JWLower, String.eq(tg(body), "Ref") && String.starts_with(nm(body), "$instance.") &&
+    String.eq(dk(lookup(defs, nm(body))), "Def") && U32.is_eq(da(lookup(defs, nm(body))), 0),
+    u => jw_call(book, defs, env, kt("Call", nm(body), 0, 0, Nil{}), next, U32.inc(depth)), u =>
   kc(JWLower, String.eq(tg(body), "Let"), u =>
     jw_bindings(book, defs, env, env, ks(body), ty, next, U32.inc(depth)), u =>
   kc(JWLower, String.eq(tg(body), "Ctr"), u =>
     jw_construct(book, defs, env, body, wnf(book, ty), next, U32.inc(depth)), u =>
   kc(JWLower, String.eq(tg(body), "App"), u =>
-    jw_call(book, defs, env, j_call_spine(body, Nil{}), next, U32.inc(depth)), u => jw_fail())))))), u => jw_fail())
+    jw_call(book, defs, env, j_call_spine(body, Nil{}), next, U32.inc(depth)), u => jw_fail()))))))), u => jw_fail())
 
 # Both parsers bound compact Nat literal payloads to U32. Larger runtime Nats
 # remain computations, so the typed leaf neither parses text nor narrows them.

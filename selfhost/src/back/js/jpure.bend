@@ -150,10 +150,10 @@ def j_pure_bool_and_identity(+t: KTerm) -> Bool:
 
 @unsafe
 def j_pure_eligible(+book: List<&2,KDef>, +d: KDef) -> Bool:
-  j_string_literal(book, d) || (String.eq(dk(d), "Def") && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) && U32.is_eq(dx(d), 0) &&
+  j_string_literal(book, d) || (String.eq(dk(d), "Def") && U32.is_le(da(d), 32) && U32.is_eq(dx(d), 0) &&
     j_pure_signature(book, dt(d), da(d)) &&
     kc(Bool, db(d), u => j_pure_native(book, d), u =>
-      (String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat")) && j_u32_bounded([dv(d)], 8192)))
+      (U32.is_eq(da(d), 0) || String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat")) && j_u32_bounded([dv(d)], 8192)))
 
 @unsafe
 def j_pure_add(+d: KDef, +s: JPure) -> JPure:
@@ -232,7 +232,9 @@ def j_pure_expr_on(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: K
   kc(JPure, String.eq(tg(t), "Var"), u =>
     kc(JPure, j_pure_type(book, j_env(env, ix(t))) && j_pure_same_closed(book, j_env(env, ix(t)), ty, 64), u => s, u => j_pure_fail(s)), u =>
   kc(JPure, String.eq(tg(t), "Ref"), u =>
-    kc(JPure, j_string_literal(book, lookup(book, nm(t))) && j_pure_same_closed(book, dt(lookup(book, nm(t))), ty, 64), u => j_pure_add(lookup(book, nm(t)), s), u => j_pure_fail(s)), u =>
+    kc(JPure, j_string_literal(book, lookup(book, nm(t))) && j_pure_same_closed(book, dt(lookup(book, nm(t))), ty, 64),
+      u => j_pure_add(lookup(book, nm(t)), s),
+      u => j_pure_call(book, env, kt("Call", nm(t), 0, 0, Nil{}), ty, level, s)), u =>
   kc(JPure, String.eq(tg(t), "Lit"), u =>
     kc(JPure, String.eq(nm(t), nm(ty)) && String.contains("|U32|Nat|F32|String|Char|", "|" ++ nm(t) ++ "|"), u => s, u => j_pure_fail(s)), u =>
   kc(JPure, String.eq(tg(t), "Ctr"), u => j_pure_constructor(book, env, t, ty, level, s), u =>
@@ -259,7 +261,7 @@ def j_pure_bindings(+book: List<&2,KDef>, +env: List<&2,KTerm>, +bodyEnv: List<&
 @unsafe
 def j_pure_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +ty: KTerm, +level: U32, +s: JPure) -> JPure:
   +d = lookup(book, nm(spine))
-  kc(JPure, String.eq(tg(spine), "Call") && (U32.is_gt(da(d), 0) || j_string_literal(book, d)) && U32.is_le(da(d), 32) && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
+  kc(JPure, String.eq(tg(spine), "Call") && U32.is_le(da(d), 32) && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
     kc(JPure, j_primitive_call(book, spine), u => j_pure_args(book, env, ks(spine), dt(d), ty, level, s), u =>
       kc(JPure, j_pure_eligible(book, d), u => j_pure_args(book, env, ks(spine), dt(d), ty, level, j_pure_add(d, s)), u => j_pure_fail(s))), u => j_pure_fail(s))
 
@@ -908,7 +910,14 @@ def j_instances_collect(+book: List<&2,KDef>, +todo: List<&2,KTerm>, +s: JInstan
 def j_instances_node(+book: List<&2,KDef>, +t: KTerm, +rest: List<&2,KTerm>, +s: JInstances) -> JInstances:
   kc(JInstances, String.eq(tg(t), "Ann"), u => j_instances_collect(book, Con{kid(t, 0), rest}, s), u =>
     kc(JInstances, String.eq(tg(t), "App"), u => j_instances_call(book, j_call_spine(t, Nil{}), rest, s), u =>
-      j_instances_collect(book, List.append(&2,KTerm, ks(t), rest), s)))
+      kc(JInstances, String.eq(tg(t), "Ref") && j_instance_nullary_source(book, lookup(book, nm(t))),
+        u => j_instances_call(book, kt("Call", nm(t), 0, 0, Nil{}), rest, s),
+        u => j_instances_collect(book, List.append(&2,KTerm, ks(t), rest), s))))
+
+# A nonliteral zero-arity source Ref is a demanded computation, not a closure.
+@unsafe
+def j_instance_nullary_source(+book: List<&2,KDef>, +d: KDef) -> Bool:
+  U32.is_eq(da(d), 0) && j_instance_source_definition(d) && Bool.not(j_string_literal(book, d))
 
 @unsafe
 def j_instances_call(+book: List<&2,KDef>, +spine: KTerm, +rest: List<&2,KTerm>, +s: JInstances) -> JInstances:
@@ -1004,7 +1013,9 @@ def j_instance_drop(+args: List<&2,KTerm>, +left: U32) -> List<&2,KTerm>:
 def j_instance_rewrite(+book: List<&2,KDef>, +rows: List<&2,KDef>, +t: KTerm) -> KTerm:
   kc(KTerm, String.eq(tg(t), "Ann"), u => k_with_children(t, [j_instance_rewrite(book, rows, kid(t, 0)), kid(t, 1)]), u =>
     kc(KTerm, String.eq(tg(t), "App"), u => j_instance_rewrite_call(book, rows, t, j_call_spine(t, Nil{})), u =>
-      k_with_children(t, j_instance_rewrites(book, rows, ks(t)))))
+      kc(KTerm, String.eq(tg(t), "Ref") && j_instance_nullary_source(book, lookup(book, nm(t))),
+        u => j_instance_rewrite_call(book, rows, t, kt("Call", nm(t), 0, 0, Nil{})),
+        u => k_with_children(t, j_instance_rewrites(book, rows, ks(t))))))
 
 @unsafe
 def j_instance_rewrites(+book: List<&2,KDef>, +rows: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
@@ -1169,9 +1180,10 @@ def j_instance_has_graph_call(+book: List<&2,KDef>, +todo: List<&2,KTerm>, +fuel
 @unsafe
 def j_instance_has_graph_call_node(+book: List<&2,KDef>, +t: KTerm, +rest: List<&2,KTerm>, +fuel: U32, +spine: KTerm) -> Bool:
   +d = lookup(book, nm(spine))
-  kc(Bool, String.eq(tg(t), "App") && String.eq(tg(spine), "Call") && String.eq(dk(d), "Def") &&
+  kc(Bool, (String.eq(tg(t), "App") || (String.eq(tg(t), "Ref") && j_instance_nullary_source(book, d))) &&
+    String.eq(tg(spine), "Call") && String.eq(dk(d), "Def") &&
     U32.is_eq(terms_len(ks(spine)), da(d)) &&
-    ((j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32)) ||
+    ((j_instance_source_definition(d) && U32.is_le(da(d), 32)) ||
       (String.eq(tg(wnf(book, dt(d))), "All") && U32.is_eq(qt(wnf(book, dt(d))), 0))),
     u => True{}, u => j_instance_has_graph_call(book, List.append(&2,KTerm, ks(t), rest), U32.sub(fuel, 1)))
 
@@ -1191,9 +1203,9 @@ def j_instance_root_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> B
 # original public descriptor/demand boundary, but may still be a private callee.
 @unsafe
 def j_instance_root(+book: List<&2,KDef>, +d: KDef) -> String:
-  kc(String, j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) &&
+  kc(String, j_instance_source_definition(d) && U32.is_le(da(d), 8) &&
     U32.is_eq(j_lambda_count(dv(d)), da(d)) && j_instance_root_signature(book, dt(d), da(d)) &&
-    j_instance_has_graph_call(book, [dv(d)], 2048), u =>
+    Bool.not(j_string_literal(book, d)) && j_instance_has_graph_call(book, [dv(d)], 2048), u =>
       j_instance_root_collect(book, d, j_instances_collect(book, [dv(d)], JInstances{Nil{}, [d], 1048576, True{}})), u => "")
 
 @unsafe
@@ -1243,7 +1255,8 @@ def j_instance_root_guarded_mode(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,
       kc(String, numberNat && jw_nat_result(book, dt(d), da(d)), u => "BigInt(", u => "") ++
       j_region_name(j_instance_name(at)) ++ "$tree(" ++ j_region_vector_names("$s", 0, da(d)) ++ ")" ++
       kc(String, numberNat && jw_nat_result(book, dt(d), da(d)), u => ")", u => "") ++ ";}" ++
-    j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()"
+    j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}" ++
+    kc(String, U32.is_eq(da(d), 0), u => ",false,true", u => "") ++ "));})()"
 
 
 @unsafe
@@ -1337,7 +1350,18 @@ def j_instance_root_workers(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef
       kc(String, recursive || j_instance_has_contextual_rows(rows), u =>
         kc(String, Bool.not(String.eq(declarations, "")),
           u => j_instance_root_guarded_mode(book, d, rows, at, pure, declarations, numberNat),
-          u => j_instance_root_view(book, d, rows, j_instance_caps(view, raw))), u => "")
+          u => kc(String, j_instance_has_computed_nullary(rows), u => "",
+            u => j_instance_root_view(book, d, rows, j_instance_caps(view, raw)))), u => "")
+
+# Legacy coverage handles App spines only. Refused workers with any nullary
+# source row keep ordinary source emission, never private G loads.
+@unsafe
+def j_instance_has_computed_nullary(+rows: List<&2,KDef>) -> Bool:
+  match rows:
+    case Nil{}: False{}
+    case Con{row, rest}:
+      +original = j_instance_original(row)
+      U32.is_eq(da(original), 0) || j_instance_has_computed_nullary(rest)
 
 # Alias rows have an erased prefix of zero; real contextual rows have consumed
 # at least one erased argument. Their historical admission remains unchanged.
@@ -1457,8 +1481,8 @@ def j_map_native_divmod_result(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
 
 @unsafe
 def j_instance_public_capture(+d: KDef) -> Bool:
-  j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) &&
-    (String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat"))
+  j_instance_source_definition(d) && U32.is_le(da(d), 32) &&
+    (U32.is_eq(da(d), 0) || String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat"))
 
 @unsafe
 def j_instance_pure_capacity(+d: KDef, +ds: List<&2,KDef>) -> U32:

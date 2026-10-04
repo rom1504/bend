@@ -1,0 +1,142 @@
+--- a/src/back/js/jpure.bend
++++ b/src/back/js/jpure.bend
+@@ -150,10 +150,10 @@
+ 
+ @unsafe
+ def j_pure_eligible(+book: List<&2,KDef>, +d: KDef) -> Bool:
+-  j_string_literal(book, d) || (String.eq(dk(d), "Def") && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) && U32.is_eq(dx(d), 0) &&
++  j_string_literal(book, d) || (String.eq(dk(d), "Def") && U32.is_le(da(d), 32) && U32.is_eq(dx(d), 0) &&
+     j_pure_signature(book, dt(d), da(d)) &&
+     kc(Bool, db(d), u => j_pure_native(book, d), u =>
+-      (String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat")) && j_u32_bounded([dv(d)], 8192)))
++      (U32.is_eq(da(d), 0) || String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat")) && j_u32_bounded([dv(d)], 8192)))
+ 
+ @unsafe
+ def j_pure_add(+d: KDef, +s: JPure) -> JPure:
+@@ -232,7 +232,9 @@
+   kc(JPure, String.eq(tg(t), "Var"), u =>
+     kc(JPure, j_pure_type(book, j_env(env, ix(t))) && j_pure_same_closed(book, j_env(env, ix(t)), ty, 64), u => s, u => j_pure_fail(s)), u =>
+   kc(JPure, String.eq(tg(t), "Ref"), u =>
+-    kc(JPure, j_string_literal(book, lookup(book, nm(t))) && j_pure_same_closed(book, dt(lookup(book, nm(t))), ty, 64), u => j_pure_add(lookup(book, nm(t)), s), u => j_pure_fail(s)), u =>
++    kc(JPure, j_string_literal(book, lookup(book, nm(t))) && j_pure_same_closed(book, dt(lookup(book, nm(t))), ty, 64),
++      u => j_pure_add(lookup(book, nm(t)), s),
++      u => j_pure_call(book, env, kt("Call", nm(t), 0, 0, Nil{}), ty, level, s)), u =>
+   kc(JPure, String.eq(tg(t), "Lit"), u =>
+     kc(JPure, String.eq(nm(t), nm(ty)) && String.contains("|U32|Nat|F32|String|Char|", "|" ++ nm(t) ++ "|"), u => s, u => j_pure_fail(s)), u =>
+   kc(JPure, String.eq(tg(t), "Ctr"), u => j_pure_constructor(book, env, t, ty, level, s), u =>
+@@ -259,7 +261,7 @@
+ @unsafe
+ def j_pure_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +ty: KTerm, +level: U32, +s: JPure) -> JPure:
+   +d = lookup(book, nm(spine))
+-  kc(JPure, String.eq(tg(spine), "Call") && (U32.is_gt(da(d), 0) || j_string_literal(book, d)) && U32.is_le(da(d), 32) && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
++  kc(JPure, String.eq(tg(spine), "Call") && U32.is_le(da(d), 32) && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
+     kc(JPure, j_primitive_call(book, spine), u => j_pure_args(book, env, ks(spine), dt(d), ty, level, s), u =>
+       kc(JPure, j_pure_eligible(book, d), u => j_pure_args(book, env, ks(spine), dt(d), ty, level, j_pure_add(d, s)), u => j_pure_fail(s))), u => j_pure_fail(s))
+ 
+@@ -908,7 +910,14 @@
+ def j_instances_node(+book: List<&2,KDef>, +t: KTerm, +rest: List<&2,KTerm>, +s: JInstances) -> JInstances:
+   kc(JInstances, String.eq(tg(t), "Ann"), u => j_instances_collect(book, Con{kid(t, 0), rest}, s), u =>
+     kc(JInstances, String.eq(tg(t), "App"), u => j_instances_call(book, j_call_spine(t, Nil{}), rest, s), u =>
+-      j_instances_collect(book, List.append(&2,KTerm, ks(t), rest), s)))
++      kc(JInstances, String.eq(tg(t), "Ref") && j_instance_nullary_source(book, lookup(book, nm(t))),
++        u => j_instances_call(book, kt("Call", nm(t), 0, 0, Nil{}), rest, s),
++        u => j_instances_collect(book, List.append(&2,KTerm, ks(t), rest), s))))
++
++# A nonliteral zero-arity source Ref is a demanded computation, not a closure.
++@unsafe
++def j_instance_nullary_source(+book: List<&2,KDef>, +d: KDef) -> Bool:
++  U32.is_eq(da(d), 0) && j_instance_source_definition(d) && Bool.not(j_string_literal(book, d))
+ 
+ @unsafe
+ def j_instances_call(+book: List<&2,KDef>, +spine: KTerm, +rest: List<&2,KTerm>, +s: JInstances) -> JInstances:
+@@ -1004,7 +1013,9 @@
+ def j_instance_rewrite(+book: List<&2,KDef>, +rows: List<&2,KDef>, +t: KTerm) -> KTerm:
+   kc(KTerm, String.eq(tg(t), "Ann"), u => k_with_children(t, [j_instance_rewrite(book, rows, kid(t, 0)), kid(t, 1)]), u =>
+     kc(KTerm, String.eq(tg(t), "App"), u => j_instance_rewrite_call(book, rows, t, j_call_spine(t, Nil{})), u =>
+-      k_with_children(t, j_instance_rewrites(book, rows, ks(t)))))
++      kc(KTerm, String.eq(tg(t), "Ref") && j_instance_nullary_source(book, lookup(book, nm(t))),
++        u => j_instance_rewrite_call(book, rows, t, kt("Call", nm(t), 0, 0, Nil{})),
++        u => k_with_children(t, j_instance_rewrites(book, rows, ks(t))))))
+ 
+ @unsafe
+ def j_instance_rewrites(+book: List<&2,KDef>, +rows: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
+@@ -1191,9 +1202,9 @@
+ # original public descriptor/demand boundary, but may still be a private callee.
+ @unsafe
+ def j_instance_root(+book: List<&2,KDef>, +d: KDef) -> String:
+-  kc(String, j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) &&
++  kc(String, j_instance_source_definition(d) && U32.is_le(da(d), 8) &&
+     U32.is_eq(j_lambda_count(dv(d)), da(d)) && j_instance_root_signature(book, dt(d), da(d)) &&
+-    j_instance_has_graph_call(book, [dv(d)], 2048), u =>
++    Bool.not(j_string_literal(book, d)) && j_instance_has_graph_call(book, [dv(d)], 2048), u =>
+       j_instance_root_collect(book, d, j_instances_collect(book, [dv(d)], JInstances{Nil{}, [d], 1048576, True{}})), u => "")
+ 
+ @unsafe
+@@ -1243,7 +1254,8 @@
+       kc(String, numberNat && jw_nat_result(book, dt(d), da(d)), u => "BigInt(", u => "") ++
+       j_region_name(j_instance_name(at)) ++ "$tree(" ++ j_region_vector_names("$s", 0, da(d)) ++ ")" ++
+       kc(String, numberNat && jw_nat_result(book, dt(d), da(d)), u => ")", u => "") ++ ";}" ++
+-    j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()"
++    j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}" ++
++    kc(String, U32.is_eq(da(d), 0), u => ",false,true", u => "") ++ "));})()"
+ 
+ 
+ @unsafe
+@@ -1457,8 +1469,8 @@
+ 
+ @unsafe
+ def j_instance_public_capture(+d: KDef) -> Bool:
+-  j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) &&
+-    (String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat"))
++  j_instance_source_definition(d) && U32.is_le(da(d), 32) &&
++    (U32.is_eq(da(d), 0) || String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat"))
+ 
+ @unsafe
+ def j_instance_pure_capacity(+d: KDef, +ds: List<&2,KDef>) -> U32:
+--- a/src/back/js/ir/worker-lower.bend
++++ b/src/back/js/ir/worker-lower.bend
+@@ -108,12 +108,15 @@
+     kc(JWLower, j_literal_owner(book, wnf(book, ty)), u => JWLower{Nil{}, jw_literal(book, body), next, True{}}, u => jw_fail()), u =>
+   kc(JWLower, String.eq(tg(body), "Ref") && Bool.not(String.starts_with(nm(body), "$instance.")) && j_string_literal(book, lookup(book, nm(body))), u =>
+     jw_store(Nil{}, JWGlobal{nm(body), jw_layout(book, wnf(book, dt(lookup(book, nm(body)))))}, next, True{}), u =>
++  kc(JWLower, String.eq(tg(body), "Ref") && String.starts_with(nm(body), "$instance.") &&
++    String.eq(dk(lookup(defs, nm(body))), "Def") && U32.is_eq(da(lookup(defs, nm(body))), 0),
++    u => jw_call(book, defs, env, kt("Call", nm(body), 0, 0, Nil{}), next, U32.inc(depth)), u =>
+   kc(JWLower, String.eq(tg(body), "Let"), u =>
+     jw_bindings(book, defs, env, env, ks(body), ty, next, U32.inc(depth)), u =>
+   kc(JWLower, String.eq(tg(body), "Ctr"), u =>
+     jw_construct(book, defs, env, body, wnf(book, ty), next, U32.inc(depth)), u =>
+   kc(JWLower, String.eq(tg(body), "App"), u =>
+-    jw_call(book, defs, env, j_call_spine(body, Nil{}), next, U32.inc(depth)), u => jw_fail())))))), u => jw_fail())
++    jw_call(book, defs, env, j_call_spine(body, Nil{}), next, U32.inc(depth)), u => jw_fail()))))))), u => jw_fail())
+ 
+ # Both parsers bound compact Nat literal payloads to U32. Larger runtime Nats
+ # remain computations, so the typed leaf neither parses text nor narrows them.
+--- a/src/runtime/js/core.mjs
++++ b/src/runtime/js/core.mjs
+@@ -30,8 +30,9 @@
+   if(entered)entry.used=true;
+   return inner(a,entered);
+ }
+-function exactCode(inner,arrow=false){
+-  const code=arrow?(0,(a)=>enterExact(code,inner,a)):
++function exactCode(inner,arrow=false,nullary=false){
++  const code=arrow?(0,(a)=>enterExact(code,inner,a)):nullary?
++    (0,function(){return enterExact(code,inner,arguments[0])}):
+     (0,function(a){return enterExact(code,inner,a)});
+   exactCodes.add(code);
+   hasExactCodes=true;
+--- a/src/runtime.mjs
++++ b/src/runtime.mjs
+@@ -31,8 +31,9 @@
+   if(entered)entry.used=true;
+   return inner(a,entered);
+ }
+-function exactCode(inner,arrow=false){
+-  const code=arrow?(0,(a)=>enterExact(code,inner,a)):
++function exactCode(inner,arrow=false,nullary=false){
++  const code=arrow?(0,(a)=>enterExact(code,inner,a)):nullary?
++    (0,function(){return enterExact(code,inner,arguments[0])}):
+     (0,function(a){return enterExact(code,inner,a)});
+   exactCodes.add(code);
+   hasExactCodes=true;

@@ -30,8 +30,9 @@ function enterExact(code,inner,a){
   if(entered)entry.used=true;
   return inner(a,entered);
 }
-function exactCode(inner,arrow=false){
-  const code=arrow?(0,(a)=>enterExact(code,inner,a)):
+function exactCode(inner,arrow=false,nullary=false){
+  const code=arrow?(0,(a)=>enterExact(code,inner,a)):nullary?
+    (0,function(){return enterExact(code,inner,arguments.length===0?undefined:arguments[0])}):
     (0,function(a){return enterExact(code,inner,a)});
   exactCodes.add(code);
   hasExactCodes=true;

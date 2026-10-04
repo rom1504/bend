@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Independent nullary21 descriptor ABI and computed-demand correctness fixture; never timing evidence",
+  "cases": [
+    {
+      "id": "nullary21-bench",
+      "family": "nullary21-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand21-v1.bend",
+        "sha256": "e21afd598d629476435975d8456ea9b9538f40eaa8a1388e2968c3eab9ce5d22",
+        "bytes": 2082,
+        "provenance": {
+          "kind": "phase45-independent-nullary21-abi",
+          "scope": "Correctness only; no execution-speed claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [],
+        "expected": 81
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent arithmetic/String expectation; overflow and public ABI assessed separately"
+    },
+    {
+      "id": "nullary21-ordered",
+      "family": "nullary21-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand21-v1.bend",
+        "sha256": "e21afd598d629476435975d8456ea9b9538f40eaa8a1388e2968c3eab9ce5d22",
+        "bytes": 2082,
+        "provenance": {
+          "kind": "phase45-independent-nullary21-abi",
+          "scope": "Correctness only; no execution-speed claim"
+        }
+      },
+      "point": {
+        "exportName": "ordered",
+        "args": [],
+        "expected": 5
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent arithmetic/String expectation; overflow and public ABI assessed separately"
+    },
+    {
+      "id": "nullary21-text",
+      "family": "nullary21-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand21-v1.bend",
+        "sha256": "e21afd598d629476435975d8456ea9b9538f40eaa8a1388e2968c3eab9ce5d22",
+        "bytes": 2082,
+        "provenance": {
+          "kind": "phase45-independent-nullary21-abi",
+          "scope": "Correctness only; no execution-speed claim"
+        }
+      },
+      "point": {
+        "exportName": "text",
+        "args": [],
+        "expected": "αβαβ"
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent arithmetic/String expectation; overflow and public ABI assessed separately"
+    },
+    {
+      "id": "nullary21-inside",
+      "family": "nullary21-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand21-v1.bend",
+        "sha256": "e21afd598d629476435975d8456ea9b9538f40eaa8a1388e2968c3eab9ce5d22",
+        "bytes": 2082,
+        "provenance": {
+          "kind": "phase45-independent-nullary21-abi",
+          "scope": "Correctness only; no execution-speed claim"
+        }
+      },
+      "point": {
+        "exportName": "inside",
+        "args": [],
+        "expected": 18
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent arithmetic/String expectation; overflow and public ABI assessed separately"
+    },
+    {
+      "id": "nullary21-plain",
+      "family": "nullary21-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand21-v1.bend",
+        "sha256": "e21afd598d629476435975d8456ea9b9538f40eaa8a1388e2968c3eab9ce5d22",
+        "bytes": 2082,
+        "provenance": {
+          "kind": "phase45-independent-nullary21-abi",
+          "scope": "Correctness only; no execution-speed claim"
+        }
+      },
+      "point": {
+        "exportName": "plain",
+        "args": [],
+        "expected": 7
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent arithmetic/String expectation; overflow and public ABI assessed separately"
+    },
+    {
+      "id": "nullary21-positive",
+      "family": "nullary21-demand",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/nullary-demand21-v1.bend",
+        "sha256": "e21afd598d629476435975d8456ea9b9538f40eaa8a1388e2968c3eab9ce5d22",
+        "bytes": 2082,
+        "provenance": {
+          "kind": "phase45-independent-nullary21-abi",
+          "scope": "Correctness only; no execution-speed claim"
+        }
+      },
+      "point": {
+        "exportName": "positive",
+        "args": [
+          5
+        ],
+        "expected": 14
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent arithmetic/String expectation; overflow and public ABI assessed separately"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "nullary21-bench",
+      "nullary21-ordered",
+      "nullary21-text",
+      "nullary21-inside",
+      "nullary21-plain",
+      "nullary21-positive"
+    ],
+    "core": [
+      "nullary21-bench",
+      "nullary21-ordered",
+      "nullary21-text",
+      "nullary21-inside",
+      "nullary21-plain",
+      "nullary21-positive"
+    ],
+    "broad": [
+      "nullary21-bench",
+      "nullary21-ordered",
+      "nullary21-text",
+      "nullary21-inside",
+      "nullary21-plain",
+      "nullary21-positive"
+    ],
+    "full": [
+      "nullary21-bench",
+      "nullary21-ordered",
+      "nullary21-text",
+      "nullary21-inside",
+      "nullary21-plain",
+      "nullary21-positive"
+    ]
+  }
+}

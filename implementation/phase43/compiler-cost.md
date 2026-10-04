@@ -10,7 +10,7 @@ Baseline API: `63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54`
 
 ## Core four
 
-Raw report: [report.json](/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/compiler-cost/report.json).
+Raw report: `integration01/compiler-cost/report.json` in the [published raw evidence](../../selfhost/tools/performance/phase43/evidence/selected-release.json).
 
 ### requestMs
 
@@ -50,7 +50,7 @@ Raw report: [report.json](/home/ai/bend2/build/publish/bend/selfhost/build/phase
 
 ## Changed families four
 
-Raw report: [report.json](/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/compiler-cost-families/report.json).
+Raw report: `integration01/compiler-cost-families/report.json` in the [published raw evidence](../../selfhost/tools/performance/phase43/evidence/selected-release.json).
 
 ### requestMs
 

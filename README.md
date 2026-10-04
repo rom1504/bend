@@ -14,37 +14,47 @@ That's Bend - and nothing else.
 
 This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Start with the [compiler guide](docs/BEND-IN-BEND.md).
-The current [Phase43 investigation](implementation/phase43/README.md) and
-[complete-operation architecture](docs/PHASE43_DIRECT_EXECUTION.md) document
-ongoing generated-program improvements.
-Ordinary compilation runs the Bend implementation without a TypeScript fallback;
-the target remains pinned to **0187512, after Bend 2.0.34**.
+The [Phase43 release report](implementation/phase43/README.md) and
+[complete-operation architecture](docs/PHASE43_DIRECT_EXECUTION.md) document the
+latest generated-program changes. Ordinary compilation runs the Bend
+implementation without a TypeScript fallback; the target remains pinned to
+**0187512, after Bend 2.0.34**.
 
-**[Phase42 checked16 is installed](implementation/phase42/integration.md).**
-Release verification, all 42 ordinary/relocated CLI checks, the 15-group
-postinstall audit and all 227 canonical source bindings pass. The
-[release manifest](selfhost/dist/release.json) identifies the installed API;
-[Phase41 checked01](implementation/phase41/integration.md) is the retained baseline.
-This remains a checked B1 derivative, not a new self-emitted fixed point.
+**[Phase43 checked14 is installed](implementation/phase43/README.md).**
+Release verification, all 42 ordinary/relocated CLI checks, the 15-group postinstall
+audit and 227 canonical source bindings pass. The selected 34 mechanism owners and
+41-group composite postinstall closure pass. The
+[release manifest](selfhost/dist/release.json) identifies the installed API.
+[Phase42 checked16](implementation/phase42/README.md) is the retained baseline.
+The [portable current bundle](selfhost/tools/performance/phase43/current/manifest.json)
+is complete: all 45 points were frozen and reopened byte-exact. Portable smoke replays and
+evidence archive closure pass. This remains a checked B1 derivative,
+not a new self-emitted fixed point.
 
-The [fresh 45-point results](implementation/phase42/results.md) pass all 669 role
-samples. The point-weighted geometric mean improves 1.42× over Phase41, from
-12.57× to 8.86× pinned TypeScript time; only one of 45 points beats TypeScript.
-Tree, list and BST workloads improve substantially, while large gaps remain in
-other families. See the [full chart](implementation/phase42/runtime-ratios.svg),
-[compiler-request costs](implementation/phase42/compiler-cost.md) and
-[source-size tradeoff](implementation/phase42/complexity.md).
+The release's [final 45-point results](implementation/phase43/results.md) contain
+669 fresh role samples over 23 sources. Against a fresh Phase42 baseline, the
+point-weighted geometric slowdown falls from **8.875959× to 6.161075× TypeScript**,
+a **1.44065× execution gain**. Release medians improve on 25 points and regress
+on 20; two beat TypeScript. This is a maintained regression corpus, including
+workloads used during optimization, not universal parity or untouched holdout
+validation. Lexer, Map, closures and BST improve while substantial gaps remain.
 
-The selected compiler removes repeated dispatch inside proved private graphs,
-uses owned data layouts, fuses eligible total List pipelines, and combines
-bounded native recursion with iterative structural fallback. Read the
-[generated-JavaScript architecture](docs/PHASE42_GENERATED_JS.md) for admission,
-representation and host boundaries. The
-[portable Phase42 benchmark guide](selfhost/tools/performance/phase42/README.md)
-provides 20/60/300-second selections and three serial 600-second full-catalog
-batches against retained Phase41 and pinned TypeScript. The [portable current bundle](selfhost/tools/performance/phase42/current/manifest.json)
-contains the selected emitted modules. Historical
-[Phase40 results](implementation/phase40/README.md) retain their original
+The selected compiler proves complete operation graphs, emits lexical contextual Map
+calls, fuses eligible callback construction/application, and reduces private pair
+state temporaries. Public identity, host mutation, aliases and generic fallback
+remain guarded. The maintained source graph grows by 1,384 lines and 164 definitions
+to **21,440 lines, 2,413 definitions and 70 modules**. Normal checked-library
+requests cost about 21.1% more for tree and 14.0% more for list. Separate full-source
+acquisition shows Map compilation rising 4.105× (2.302s→9.450s), its emitted module
+growing 2.216×, and lexer compilation costing 1.715×. No compiler-throughput
+improvement is claimed. The [report](implementation/phase43/README.md) separates
+runtime gains, compiler cost, source growth and qualification.
+
+The [portable Phase43 guide](selfhost/tools/performance/phase43/README.md) provides
+20/60/300-second selections, three serial 600-second full-corpus batches and
+separate profiles against retained Phase42 and pinned TypeScript. Historical
+[Phase42](implementation/phase42/README.md) and
+[Phase40](implementation/phase40/README.md) retain their original releases,
 baselines, protocols and limits.
 
 From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.

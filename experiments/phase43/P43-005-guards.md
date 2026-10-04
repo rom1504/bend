@@ -1,5 +1,9 @@
 # P43-005 — Cheaper equivalent entry guard
 
+**Final outcome:** selected changes are installed in Phase43 checked14. See the
+[final release report](../../implementation/phase43/README.md); the notes below
+preserve the experiment sequence and earlier pending or rejected states.
+
 Owner: phase43_guards. Domain: generated JS runtime entry proof. Correctness:
 syntax checked, semantic root execution pending. Measurement: not run. Decision:
 investigate, no promotion. Plan: [design](../../design/phase43/guards.md).
@@ -96,3 +100,30 @@ lexer6 3.69813/3.24402/3.17258/3.33614ms with wide sample ranges. Root decision:
 defer all production wrapper-hop/prefix/projection work. Mixed small gains do not
 justify emitter/proof complexity or possible O(graph²) compile cost. Preserve
 frozen hypotheses for a future profile; no more experiments in this follow-up.
+
+
+Final installed outcome
+
+Selected checked14 outcomes use the complete 45-point/669-sample campaign, not
+exploratory screens. The [final table](../../implementation/phase43/results.md),
+[raw aggregation](../../selfhost/build/phase43/final-results01/report.json) and
+[raw runtime closure](../../selfhost/build/phase43/integration01/runtime-full45-close.json)
+retain all observations. The [release report](../../implementation/phase43/README.md)
+keeps compiler cost, source growth and release status separate. Checked14 is
+installed; all 34 mechanism owners, 42 CLI checks, 15 postinstall groups,
+227 source bindings and the 41-group composite installed closure pass. The corpus was
+used during optimization; its historical holdout labels do not establish unseen
+validation or universal TypeScript parity. Phase42 remains the comparison
+baseline. The [portable current bundle](../../selfhost/tools/performance/phase43/current/manifest.json)
+is complete: all 45 points were frozen and reopened byte-exact. Compact20,
+full-fast60 and targeted60 smoke replays pass; all raw evidence is archived and
+reopened with exact hashes, including the incomplete budget20 five-case attempt.
+
+The list-pipeline family gains 1.12877× geometrically and remains 1.0508× TS;
+list128 gains 1.22810× while list512 gains 1.03748×. Large lexer/Map/callback/BST
+changes belong to their separate mechanism owners, not this guard alone. The
+[selected U32 guard closure](../../selfhost/build/phase43/integration01/phase43-close-u32-guards/report.json)
+retains exact scalar proof, shared integer host checks, public/default metadata,
+mutation/Error and String/Float boundary refusals. Deferred duplicate-guard,
+resume and wrapper-hop experiments are not delivered source optimizations. No
+new nullary-entry implementation is promoted; P43-006 remains a proposal.

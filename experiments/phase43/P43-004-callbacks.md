@@ -1,5 +1,9 @@
 # P43-004 known callbacks with explicit captures
 
+**Final outcome:** selected changes are installed in Phase43 checked14. See the
+[final release report](../../implementation/phase43/README.md); the notes below
+preserve the experiment sequence and earlier pending or rejected states.
+
 Owner: callback agent; executor/integrator: root. Started2026-10-04.
 Saved-output correctness: PASS; environment screen: 3.72/8.29× original at64/256.
 Actual-source correctness: checked13 numeric source PASS22/40; independent numeric85 pending; checked11 fusion22/39+85 and checked06 TDZ preserved.
@@ -245,3 +249,30 @@ identify source13. V7 syntheticCall/null lowering remains rejected history;
 actual13 uses preserved App-shell v8 lowering. Independent fresh numeric
 noncommutative85 is queued after Map14; finalselected repeat still required.
 No fresh actual numeric source timing claim follows from saved .4455×TS screen.
+
+
+Final installed outcome
+
+Selected checked14 outcomes use the complete 45-point/669-sample campaign, not
+exploratory screens. The [final table](../../implementation/phase43/results.md),
+[raw aggregation](../../selfhost/build/phase43/final-results01/report.json) and
+[raw runtime closure](../../selfhost/build/phase43/integration01/runtime-full45-close.json)
+retain all observations. The [release report](../../implementation/phase43/README.md)
+keeps compiler cost, source growth and release status separate. Checked14 is
+installed; all 34 mechanism owners, 42 CLI checks, 15 postinstall groups,
+227 source bindings and the 41-group composite installed closure pass. The corpus was
+used during optimization; its historical holdout labels do not establish unseen
+validation or universal TypeScript parity. Phase42 remains the comparison
+baseline. The [portable current bundle](../../selfhost/tools/performance/phase43/current/manifest.json)
+is complete: all 45 points were frozen and reopened byte-exact. Compact20,
+full-fast60 and targeted60 smoke replays pass; all raw evidence is archived and
+reopened with exact hashes, including the incomplete budget20 five-case attempt.
+
+Both closure points improve: family geometric gain 9.43965×, geometric 0.910829×
+TS. Size 64 gains 4.88238× and still costs 1.72809× TS; size 256 gains 18.2507× and
+costs 0.480073× TS. Actual source fuses construction/application and removes the
+unescaped environment graph; bounded Number countdown retains original BigInt
+fallback and exact noncommutative application order. [Selected numeric closure](../../selfhost/build/phase43/integration01/phase43-close-callbacks-number-count/report.json)
+and independent 85/admission 11 owners retain host, Error/reentry, retained public
+callback and exact source/type controls. These results do not qualify escaping
+closures or change public callback ownership.

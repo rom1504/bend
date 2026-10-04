@@ -1,67 +1,97 @@
 # Generated-program performance and the fast development loop
 
-Use the [compiler guide](BEND-IN-BEND.md), the
-[Phase42 report](../implementation/phase42/README.md) and the
-[portable Phase42 benchmark guide](../selfhost/tools/performance/phase42/README.md).
-**[Phase42 checked16 is installed](../implementation/phase42/integration.md).**
-Release verification, all 42 ordinary/relocated CLI checks, the 15-group
-postinstall audit and all 227 canonical source bindings pass. The
-[release manifest](../selfhost/dist/release.json) identifies the installed API;
-Phase41 checked01 is retained as the comparison baseline. The upstream pin
-remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+Phase43 checked14 is installed and verified. The final 45-point runtime
+comparison is complete. Its installed API is
+`222902e565253ae20c628301a9191c6d71e47b211f1dc463da4e8eb1b51c86eb`.
+Use the [compiler guide](BEND-IN-BEND.md) and
+[Phase43 report](../implementation/phase43/README.md) for qualification status.
+The [release manifest](../selfhost/dist/release.json) identifies the installed
+artifact. All 42 ordinary/relocated CLI checks, 15 postinstall gates and 227
+canonical source bindings pass, with 41 groups in the composite postinstall
+closure.
 
-The [fresh 45-point results](../implementation/phase42/results.md) pass all 669
-role samples. Point-weighted geometric mean TypeScript-relative time falls from
-12.57× to 8.86×, a 1.42× improvement over Phase41; equal source weighting improves
-1.35×. Tree improves 6.27–8.02×, list 2.72–6.65× and BST 23.66–26.96×. Only one
-of 45 points beats TypeScript; universal parity was not achieved. The
-[full chart](../implementation/phase42/runtime-ratios.svg),
-[compiler-request costs](../implementation/phase42/compiler-cost.md) and
-[source accounting](../implementation/phase42/complexity.md) preserve per-point
-variability and the compilation/complexity tradeoff.
+The final [comparison](../implementation/phase43/results.md) covers 45 points
+across 23 sources and all 669 fresh samples in three serial 15-point batches,
+with Phase42 checked16 and unchanged pinned TypeScript. The point-weighted
+geometric TypeScript-relative ratio falls from 8.875959 to 6.161075 times,
+a 1.440651 times gain over checked16. Equal-family ratios fall from 11.533923
+to 8.543621 times; equal-source ratios fall from 11.430604 to 8.433917 times.
+There are 25 strict median wins and 20 regressions against checked16, with two
+candidate points faster than TypeScript. Strict median comparisons are descriptive;
+they do not establish statistical significance or universal parity.
 
-The [generated-JavaScript architecture](PHASE42_GENERATED_JS.md) describes the
-selected optimizer's private graphs, layouts, fusion and structural execution.
-The Phase42 report owns results, regressions, compilation costs and source-size
-accounting. Compiler-request throughput, generated execution and sampled profiles
-are separate measurements; no typical-program or universal parity claim follows.
+The [portable guide](../selfhost/tools/performance/phase43/README.md) provides
+reproduction instructions. The
+[current bundle](../selfhost/tools/performance/phase43/current/manifest.json)
+contains all 45 points and has passed reopened archive verification and
+byte-exact agreement with the selected emissions. Portable timing smoke remains
+a separate check and is not claimed here. The
+[validation guide](../selfhost/tools/performance/phase43/validation/README.md)
+records checked acquisition and release qualification. Short screens remain
+separate from the complete corpus result.
 
-The maintained catalog has 45 points across 23 sources. The Phase42 baseline
-packages retained Phase41 checked01 and unchanged pinned TypeScript. The
-[current bundle](../selfhost/tools/performance/phase42/current/manifest.json)
-packages selected checked16 modules. Run from the repository root:
+The [complete-operation architecture](PHASE43_DIRECT_EXECUTION.md) explains typed
+String/Map graphs, fused known scalar callbacks, bounded numeric countdowns,
+private pair state and exact capability guards. The inherited
+[generated-JavaScript architecture](PHASE42_GENERATED_JS.md) explains earlier
+private layouts and structural execution. Ordinary entry activation, complete
+values, aliases, Unicode/demand order and mutable host/dependency fallback are
+required alongside purity proofs. Dead emitted workers are not measured gains.
+
+[Compiler request costs](../implementation/phase43/compiler-cost.md),
+[sampled profiles](../implementation/phase43/profile-findings.md) and
+[source accounting](../implementation/phase43/accounting.md) measure different
+things. The maintained production graph is 21,440 physical lines and 2,413
+definitions in 70 modules, up 1,384 lines and 164 definitions from Phase42.
+The selected source/API remains a checked B1 derivative, not a new fixed point.
+The upstream pin is unchanged at `018751270e800bc222a93dad7f257083ee53a5f7`.
+
+Run a portable current-release screen from the repository root:
 
 ```sh
 python3 selfhost/tools/performance/programs/run.py \
   --catalog selfhost/tools/performance/phase37/catalog.json \
-  --baseline selfhost/tools/performance/phase42/baseline/manifest.json \
-  --candidate selfhost/tools/performance/phase42/current/manifest.json \
+  --baseline selfhost/tools/performance/phase43/baseline/manifest.json \
+  --candidate selfhost/tools/performance/phase43/current/manifest.json \
   --node /absolute/path/to/node --cpu 3 \
   --rss-mib 2048 --available-mib 2048 \
-  --budget 20 --set fast --out selfhost/build/my-phase42-screen-NEW
+  --budget 20 --cases local-pair,scalar-region-8192,complete-generic-row32 \
+  --out selfhost/build/my-phase43-screen-NEW
 ```
 
-Choose an available CPU and a fresh output path. Node 24+ runs the portable suite;
-exact diagnostics use recorded Node 24.18.0. Select cases independently from the
-20/60/300/600-second ceilings. A ceiling is not a completion or wall-duration
-promise. Complete 45-point coverage needs three serial 15-point 600-second batches:
-mandatory warmups alone exceed one 600-second ceiling. The
-[Phase42 guide](../selfhost/tools/performance/phase42/README.md) provides batching,
-candidate acquisition, archive replay and diagnostic commands. Keep profiles,
-static analysis and other compiler work separate from clean timing.
+This command reuses the verified portable modules without a compiler rebuild
+or the original raw acquisition directories. Choose a fresh output directory and
+an available CPU. Node 24+ runs the portable suite; exact comparisons and diagnostics
+use recorded Node 24.18.0. Select cases independently from the **20, 60, 300 and
+600 second** ceilings. A ceiling does not guarantee completion. For all five fast cases,
+use `--budget 60 --set fast`. A `--budget 20 --set fast` request is optional
+budget-limited coverage: the retained portablefast01 run exhausted its budget
+after four of five measured cases in 21.206 seconds; this is an incomplete
+measurement, not a demonstrated semantic failure. Complete coverage
+requires three serial 15-point preset600 batches; mandatory warmup floors alone
+exceed one full-corpus 600-second ceiling. Stop competing compilation, execution,
+profiling and compression during clean timing.
 
-Historical sections below retain their original Phase39/37 denominators and
-protocols. [Phase40 results](../implementation/phase40/README.md) retain their own
-selected-module evidence and compiler costs. Ratios from different phases must
-not be multiplied into a current comparison.
+## Historical release results: Phase42
+
+[Phase42 checked16](../implementation/phase42/integration.md) passed 42 CLI checks,
+15 postinstall groups and 227 canonical source bindings. Its
+[45-point comparison](../implementation/phase42/results.md) passed 669 samples
+and measured an 8.86 times TypeScript point-weighted ratio, with one point faster
+than TypeScript. The denominator was Phase41, unlike the Phase43 comparison.
+Its [guide](../selfhost/tools/performance/phase42/README.md) and
+[current bundle](../selfhost/tools/performance/phase42/current/manifest.json)
+remain historical reproducible evidence. Ratios from different phases must not
+be multiplied into a current comparison.
 
 ## What to run during optimization
 
 The maintained [program execution loop](../selfhost/tools/performance/programs/README.md)
-provides portable compiled references and four wall budgets: **20 seconds** for
-five local cases, **60 seconds** for eight core cases, **300 seconds** for fourteen
-broad cases, and **600 seconds** for all fifteen points including raytrace.
-Use `--set` or `--cases` to select coverage independently of the budget. Prepare a
+provides portable compiled references and four wall budgets: **20, 60, 300 and
+600 seconds**. Use `--set` or `--cases` to select coverage independently. The
+original catalogue has five local, eight core and fourteen broad cases, with
+fifteen total including raytrace; these counts do not promise completion within
+a particular budget. Prepare a
 checked compiler candidate once, then reuse its modules for execution comparisons.
 These are maximum budgets; incomplete coverage is retained and exits nonzero.
 The [Phase33 report](../implementation/phase33/README.md) records validation of
@@ -236,7 +266,12 @@ normal checked requests separately: medians increase 2.47% local, 6.40% tree and
 types or laws. The generated API grows 16,972 bytes. This is a bounded extension
 of existing proof machinery, not a source-reduction result.
 
-## What the backend optimizes
+## Inherited backend mechanisms
+
+The mechanisms below describe the Phase29–37 foundation retained by Phase43.
+The [complete-operation architecture](PHASE43_DIRECT_EXECUTION.md) specifies the
+new typed graph, callback and pair admission rules; older per-plan limits below
+do not replace those separate bounded contextual-instance rules.
 
 The JavaScript backend retains ordinary function descriptors, partial calls,
 constructor matching and a trampoline as its general path. Supported native

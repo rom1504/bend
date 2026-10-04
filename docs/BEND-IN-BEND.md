@@ -1,41 +1,70 @@
 # The Bend compiler written in Bend
 
-The compiler in [`selfhost/`](../selfhost/README.md), on branch
-`selfhost/bootstrap`, implements the frontend, dependent checker, normalizer,
-interpreter and JavaScript/native emitters in Bend. JavaScript handles filesystem
-and process orchestration, primitives and the public-data adapter. Ordinary
-compilation runs Bend code without a TypeScript fallback.
+The compiler in [`selfhost/`](../selfhost/README.md) implements the frontend,
+dependent checker, normalizer, interpreter and JavaScript/native emitters in
+Bend. JavaScript handles filesystem and process orchestration, primitives and
+the public-data adapter. Ordinary compilation runs Bend code without a
+TypeScript fallback.
 
-**[Phase42 checked16 is installed](../implementation/phase42/integration.md).**
-Release verification, all 42 ordinary/relocated CLI checks, the 15-group
-postinstall audit and all 227 canonical source bindings pass. The
-[release manifest](../selfhost/dist/release.json) binds installed API
-`63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54`.
-[Phase41 checked01](../implementation/phase41/integration.md) is retained as the
+**Phase43 checked14 is installed and verified.** Its installed API is
+`222902e565253ae20c628301a9191c6d71e47b211f1dc463da4e8eb1b51c86eb`.
+The [Phase43 report](../implementation/phase43/README.md) records qualification
+and release status. The [release manifest](../selfhost/dist/release.json)
+binds the installed artifact. All 42 ordinary/relocated CLI checks, 15
+postinstall gates and 227 canonical source bindings pass; the composite
+postinstall closure covers 41 groups. Phase42 checked16 is the retained
 comparison baseline.
 
-The [Phase42 report](../implementation/phase42/README.md) is the current results
-entry. Its [fresh 45-point comparison](../implementation/phase42/results.md)
-passes all 669 role samples: point-weighted geometric mean improves 1.42× over
-Phase41, from 12.57× to 8.86× pinned TypeScript time. Only one of 45 points beats
-TypeScript. The [full chart](../implementation/phase42/runtime-ratios.svg),
-[compiler costs](../implementation/phase42/compiler-cost.md) and
-[source-size account](../implementation/phase42/complexity.md) preserve remaining
-gaps and tradeoffs.
+Phase43 extends guarded direct execution across complete String and typed Map
+operations, known scalar callback construction/application, bounded numeric
+countdowns and private pair state. Exact typed admission and live dependency/host
+checks preserve generic fallback. See the
+[complete-operation architecture](PHASE43_DIRECT_EXECUTION.md) and the inherited
+[generated-JavaScript architecture](PHASE42_GENERATED_JS.md).
 
-Read the [generated-JavaScript architecture](PHASE42_GENERATED_JS.md) for covered
-private calls, owned native and flat layouts, total List fusion, sequential
-continuations, bounded recursion and request-local facts. The
-[portable Phase42 guide](../selfhost/tools/performance/phase42/README.md) explains
-45-point comparisons against retained Phase41 and pinned TypeScript, with serial
-bounded batches. The [current bundle](../selfhost/tools/performance/phase42/current/manifest.json)
-packages the selected emitted modules. Historical results below
-retain their original denominators and do not establish current speed ratios.
-
-This remains a checked B1 derivative, not a new self-emitted fixed point. The
-target remains upstream
+The final selected frontend agrees on 3,026 main and 196 broader observations,
+with zero result or extra-field differences. This is a measured conformance
+scope, not proof of all language behavior or native/device coverage. The
+[conformance record](../selfhost/CONFORMANCE.md) retains shared failures,
+unavailable platforms and proof-trust limits. Source and API remain a checked
+B1 derivative, not a new self-emitted fixed point. The upstream target remains
 [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
 after Bend 2.0.34.
+
+The maintained production graph contains **21,440 physical Bend lines, 2,413
+definitions and 70 modules**. Relative to Phase42's same graph, this adds 1,384
+lines and 164 definitions. These counts exclude generated images and experiment
+tools. The [accounting report](../implementation/phase43/accounting.md) records
+complexity and campaign costs; the [compiler request costs](../implementation/phase43/compiler-cost.md)
+are separate from generated-program speed.
+
+The final [45-point / 23-source comparison](../implementation/phase43/results.md)
+completes all 669 fresh samples on the selected image. The point-weighted
+geometric ratio to TypeScript improves from 8.876 to 6.161 times, a 1.441 times
+gain over checked16. Equal-family ratios improve from 11.534 to 8.544 times;
+equal-source ratios improve from 11.431 to 8.434 times. There are 25 strict
+median wins and 20 regressions against checked16; two points beat TypeScript.
+These descriptive results retain variation and do not establish statistical
+significance, typical-program speed or universal parity.
+
+The [portable Phase43 guide](../selfhost/tools/performance/phase43/README.md)
+explains reproduction. The
+[current program bundle](../selfhost/tools/performance/phase43/current/manifest.json)
+contains all 45 points, with reopened archive verification and byte-exact
+agreement with the selected emissions. Portable timing smoke is a separate
+check and is not claimed here. Use the
+[validation guide](../selfhost/tools/performance/phase43/validation/README.md)
+for the checked-attempt and release workflow.
+
+## Historical release results: Phase42
+
+[Phase42 checked16](../implementation/phase42/integration.md) passed its installed
+release verification, 42 ordinary/relocated CLI checks, 15 postinstall groups and
+227 canonical source bindings. Its [45-point results](../implementation/phase42/results.md)
+record a point-weighted ratio of 8.86 times pinned TypeScript, with one point
+faster than TypeScript. These are historical Phase42 results with Phase41 as
+baseline, not Phase43 measurements. Their [portable bundle](../selfhost/tools/performance/phase42/current/manifest.json)
+and raw receipts remain preserved.
 
 ## Historical measured results: Phase40
 
@@ -76,7 +105,7 @@ selected image. Counts overlap; [conformance](../selfhost/CONFORMANCE.md) retain
 shared failures, unavailable platforms and proof-trust limits. Full backend/GPU
 and independent proof validity remain unestablished; `--verdict` is unsupported.
 
-## What Phase40 changes
+## Historical Phase40 implementation
 
 The existing structural frame engine now supports canonical Nat producers with
 data results, proper-descendant tail transfers, and one-child constructor or
@@ -88,7 +117,8 @@ admission excludes scalar results to preserve existing stronger scalar islands.
 Read the [backend rules](../implementation/phase40/backend-rules.md) before
 extending these boundaries.
 
-Source contains 18,863 physical / 16,156 nonblank Bend lines in 70 modules,
+The historical Phase40 source snapshot contains 18,863 physical / 16,156
+nonblank Bend lines in 70 modules,
 2,104 definitions, 71 types and 640 laws. That adds 141 lines and 17 definitions
 to Phase39, with unchanged runtime/modules/types/laws. The
 [admission decision](../implementation/phase40/performance-admission.md) records
@@ -143,14 +173,15 @@ Exact-entry, host-intrinsic and live dependency checks select the fast path;
 unsupported source shapes and changed public descriptors retain ordinary
 execution. There is no new public record, array or Nat representation. See the
 [architecture](../selfhost/docs/ARCHITECTURE.md) and the
+[complete-operation architecture](PHASE43_DIRECT_EXECUTION.md) and
 [generated-JavaScript architecture](PHASE42_GENERATED_JS.md) for selected
-current proof boundaries, the historical
+proof boundaries, the historical
 [Phase40 backend rules](../implementation/phase40/backend-rules.md), and [Phase37 design](../design/phase37/README.md) for its additions.
 Broad private helper inlining was rejected after regressions, so copying more
 code is not itself an optimization criterion.
 
-Use the portable [Phase42 program loop](../selfhost/tools/performance/phase42/README.md)
-to select **20, 60, 300 or 600 second** budgets independently from case coverage.
+Use the [Phase43 validation guide](../selfhost/tools/performance/phase43/validation/README.md)
+and the maintained program runner to select **20, 60, 300 or 600 second** budgets independently from case coverage.
 Prepare checked compiler output once, then reuse those exact modules for short
 screens. An incomplete budgeted run stays incomplete. The
 [diagnostics guide](../selfhost/tools/performance/programs/DIAGNOSTICS.md) adds
@@ -235,7 +266,7 @@ repeated traversal of shared terms: two depth-32 checks that previously exhauste
 a 1 GiB heap now complete within that limit. Its historical ordinary-checking
 comparison was around three times the pinned TypeScript compiler. That scope
 differs from the historical Phase32 library compile requests and the current
-[Phase40 compiler-cost study](../implementation/phase40/compiler-cost.md);
+[Phase43 compiler-cost study](../implementation/phase43/compiler-cost.md);
 these ratios must not be substituted for each other.
 
 The backend now supports all nine `Array.atomic` operations in its existing
@@ -301,8 +332,8 @@ npm run build -- /absolute/release-config.json /absolute/new-attempt
 Config fields and selection semantics are documented in the
 [maintained workflow guide](PHASE5_DEVELOPMENT.md). Broad conformance and checked
 self-reproduction are release/integration gates, not every small edit's build.
-The [Phase42 report](../implementation/phase42/README.md) records current
-qualification and release status. The historical [Phase32 release report](../implementation/phase32/release-03.md)
+The [Phase43 report](../implementation/phase43/README.md) records current
+qualification and installed-release status. The historical [Phase32 release report](../implementation/phase32/release-03.md)
 retains its own evidence, limits and ordinary/relocated CLI closure.
 
 ## Work on the current source
@@ -460,7 +491,7 @@ request histories, native/JavaScript execution and installed/relocated CLI check
 Counts overlap; the four raw frontend failures expect errors at later emission.
 Read [conformance](../selfhost/CONFORMANCE.md) for the precise verdicts and limits.
 
-Phase39 source contains **18,722 physical / 16,031 nonblank Bend lines, 2,087
+The historical Phase39 source snapshot contains **18,722 physical / 16,031 nonblank Bend lines, 2,087
 definitions, 640 laws, 71 types and 70 modules**. Relative to Phase37, that adds
 364 physical lines (1.98%), 322 nonblank lines and 42 definitions; module, type,
 law and runtime counts remain unchanged. The

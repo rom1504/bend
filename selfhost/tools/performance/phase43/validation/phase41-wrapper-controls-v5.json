@@ -1,0 +1,71 @@
+{
+  "kind": "phase43-source14-wrapper-control-successor",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/fusion/phase41-wrapper-controls-v4.mjs",
+    "sha256": "c21acbdf60debfe09dc84c5018237708de6371552bf9b60e62dabe01729a7bed"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/validation/phase41-wrapper-controls-v5.mjs",
+    "sha256": "7e7986bd851680e637f78874b96e73d5e1e227b2ec9cf99ee088019544e72927"
+  },
+  "changes": [
+    {
+      "before": "usage: phase41-wrapper-controls-v4.mjs",
+      "after": "usage: phase41-wrapper-controls-v5.mjs",
+      "count": 1
+    },
+    {
+      "before": "refused=['wrap.empty','wrap.scalar','wrap.nat','wrap.reference'",
+      "after": "newlyAdmitted=['wrap.scalar','wrap.nat'],refused=['wrap.empty','wrap.reference'",
+      "count": 1
+    },
+    {
+      "before": "activationInventory={};",
+      "after": "activationInventory={},newActivationInventory={},ordinaryNewActivation=[],newBoundaries=[],newPublicInputs=[];",
+      "count": 1
+    },
+    {
+      "before": " for(const name of refused)",
+      "after": " for(const name of newlyAdmitted)assert.equal(workers.filter(n=>n.id.name===encoded(name)).length,role==='wrapper'?1:0,'new source14 admission '+name);\n for(const name of refused)",
+      "count": 1
+    },
+    {
+      "before": " assert.equal(selected.length,role==='wrapper'?6:0);",
+      "after": " const newSelected=[];\n if(role==='wrapper'){\n  for(const name of newlyAdmitted){const worker=workers.find(n=>n.id.name===encoded(name));assert.equal(worker.params.length,2);newSelected.push({node:worker,key:'global:'+name});}\n  const owners=all.filter(n=>n.type==='AssignmentExpression'&&n.left.type==='MemberExpression'&&n.left.object.name==='G'&&n.left.property.value==='refusal_check');assert.equal(owners.length,1);\n  const owner=owners[0],marker=source.indexOf('/* private flat closed graph */',owner.start);assert(marker>owner.start&&marker<owner.end);\n  const ownerText=source.slice(owner.start,owner.end);assert(ownerText.includes('$entered&&regionHostGuard()'),'ordinary wrapper entered and full host guard');\n  for(const slot of ['$s0','$s1'])assert(ownerText.includes('(typeof '+slot+'===\"number\"&&Number.isInteger('+slot+')&&'+slot+'>=0&&'+slot+'<=4294967295)'),'canonical ordinary U32 slot '+slot);\n  assert(ownerText.includes('localGuard($guards)'));const opened=source.indexOf('regionProofOpen($guards)',owner.start),closed=source.indexOf('finally{regionProofClose($previousProof);}',marker);assert(opened>owner.start&&opened<marker&&closed>marker&&closed<owner.end,'proof lifetime encloses private flat graph');\n  const guardDecl=all.filter(n=>n.type==='VariableDeclarator'&&n.id.name==='$guards'&&owner.start<n.start&&n.end<owner.end);assert.equal(guardDecl.length,1);assert.equal(guardDecl[0].init.type,'ArrayExpression');assert.deepEqual(guardDecl[0].init.elements.map(n=>n.value),['refusal_check','wrap.make','wrap.nat','wrap.scalar','wrap.map','wrap.score']);\n  for(const [name,key,workerName] of [['wrap.scalar','lexical-flat:wrap.scalar',encoded('wrap.scalar').slice(0,-5)],['wrap.nat','lexical-tree:wrap.nat',encoded('wrap.nat')]]){\n   const found=all.filter(n=>n.type==='FunctionDeclaration'&&n.id.name===workerName&&marker<n.start&&n.end<owner.end);assert.equal(found.length,1,'exact live newly admitted helper '+name);assert.equal(found[0].params.length,2);newSelected.push({node:found[0],key});\n  }\n }\n assert.equal(newSelected.length,role==='wrapper'?4:0);newActivationInventory[role]=newSelected.map(({node,key})=>({key,name:node.id.name,start:node.start,end:node.end}));\n assert.equal(selected.length,role==='wrapper'?6:0);",
+      "count": 1
+    },
+    {
+      "before": " for(const {node:worker,key}of selected.sort((a,b)=>b.node.body.start-a.node.body.start)){",
+      "after": " for(const {node:worker,key,isNew}of [...selected.map(x=>({...x,isNew:false})),...newSelected.map(x=>({...x,isNew:true}))].sort((a,b)=>b.node.body.start-a.node.body.start)){",
+      "count": 1
+    },
+    {
+      "before": "+'++$fixtureEntries;++$fixtureScopeEntries['+JSON.stringify(key)+'];'+",
+      "after": "+(isNew?'++$newFixtureScopeEntries[':'++$fixtureEntries;++$fixtureScopeEntries[')+JSON.stringify(key)+'];'+",
+      "count": 1
+    },
+    {
+      "before": "const $fixtureNames=['wrap.map'",
+      "after": "const $newFixtureScopeEntries=${JSON.stringify(Object.fromEntries(newSelected.map(({key})=>[key,0])))};\nexport function newFixtureScopeCounts(){return {...$newFixtureScopeEntries};}\nconst $fixtureNames=['wrap.map'",
+      "count": 1
+    },
+    {
+      "before": "assert.equal(mod.default.refusal_check(d,seed),score(map(map(t))));",
+      "after": "const newBefore=mod.newFixtureScopeCounts();assert.equal(mod.default.refusal_check(d,seed),score(map(map(t))));const newAfter=mod.newFixtureScopeCounts();\n if(role==='wrapper'){for(const key of ['lexical-flat:wrap.scalar','lexical-tree:wrap.nat'])assert.equal(newAfter[key]-newBefore[key],1,'ordinary newly admitted live '+key);for(const key of ['global:wrap.scalar','global:wrap.nat'])assert.equal(newAfter[key],newBefore[key],'ordinary must not fake global admission');ordinaryNewActivation.push({depth:d,seed,before:newBefore,after:newAfter});}",
+      "count": 1
+    },
+    {
+      "before": "const report={kind:'phase41-wrapper-fixture-controls'",
+      "after": "\n// Frozen source14 guard inventory. Instrument only exact live lexical helpers;\n// mutation must refuse those helpers, including bounded callbacks and errors.\nconst newGuardNames=['refusal_check','wrap.make','wrap.nat','wrap.scalar','wrap.map','wrap.score'];\nfor(const name of newGuardNames)for(const mode of ['binding','code','getter','throw','reentry']){\n const observations=[];\n for(const role of roles){const mod=mods[role],gdesc=Object.getOwnPropertyDescriptor(mod.G,name),f=gdesc.value,cdesc=Object.getOwnPropertyDescriptor(f,'code'),code=f.code,events=[],before=mod.newFixtureScopeCounts();let value,error,once=false;\n  const observe=()=>{events.push(mode+':'+name);if(mode==='throw')throw Error('new wrapper sentinel');if(mode==='reentry'&&!once){once=true;assert.equal(mod.fixtureProofActive(),false);events.push(['reentry',mod.default.refusal_check(0,1),mod.fixtureProofActive()]);}return code;};\n  if(mode==='binding')Object.defineProperty(mod.G,name,{configurable:true,enumerable:true,get(){events.push('binding:'+name);return f;}});\n  else if(mode==='code')Object.defineProperty(f,'code',{...cdesc,value:function(a){events.push('code:'+name);return Reflect.apply(code,this,[a]);}});\n  else Object.defineProperty(f,'code',{configurable:true,enumerable:cdesc.enumerable,get:observe});\n  try{value=mod.default.refusal_check(3,17);}catch(e){error={name:e.name,message:e.message};}finally{Object.defineProperty(mod.G,name,gdesc);Object.defineProperty(f,'code',cdesc);}\n  assert.deepEqual(mod.newFixtureScopeCounts(),before,'newly admitted helper refusal '+name+':'+mode);assert.equal(mod.fixtureProofActive(),false);observations.push({value,error,events});\n }\n assert.deepEqual(observations[0],observations[1],'new wrapper guard parity '+name+':'+mode);newBoundaries.push({name,mode,observations});\n}\nfunction publicTree(mod,events,mode){\n const shared=mod.ctor('WLeaf',[17]),tree=mod.ctor('WNode',[shared,shared]);\n if(mode==='tag-getter')Object.defineProperty(tree,'$',{get(){events.push('tag');return 'WNode';}});\n if(mode==='field-getter')Object.defineProperty(tree.a,'0',{get(){events.push('field:0');return shared;}});\n if(mode==='field-throw')Object.defineProperty(tree.a,'0',{get(){events.push('field:0');throw Error('public field sentinel');}});\n return {tree,shared};\n}\nfunction publicObservation(mod,name,mode,events){\n const {tree,shared}=publicTree(mod,events,mode);let result,error,topology;\n try{result=mod.call(mod.G[name],[name==='wrap.scalar'?false:0n,tree]);topology={value:decode(result),sharesChildren:result.a[0]===result.a[1],aliasesInput:result===tree,aliasesChild:result.a[0]===shared};}catch(e){error={name:e.name,message:e.message};}\n const inputUnchanged=tree.a[1]===shared&&shared.a[0]===17;\n return {topology,error,inputUnchanged,events};\n}\nfor(const name of newlyAdmitted)for(const mode of ['retained-shared','tag-getter','field-getter','field-throw']){\n const observations=[];\n for(const role of roles){const mod=mods[role],events=[],before=mod.newFixtureScopeCounts();observations.push(publicObservation(mod,name,mode,events));assert.deepEqual(mod.newFixtureScopeCounts(),before,'public input never gets private wrapper permission');assert.equal(mod.fixtureProofActive(),false);}\n assert.deepEqual(observations[0],observations[1],'public new wrapper parity '+name+':'+mode);assert.equal(observations[0].inputUnchanged,true);newPublicInputs.push({name,mode,observations});\n}\nassert.equal(ordinaryNewActivation.length,12);assert.equal(newBoundaries.length,30);assert.equal(newPublicInputs.length,8);\n\nconst report={kind:'phase41-wrapper-fixture-controls'",
+      "count": 1
+    },
+    {
+      "before": "modules,admitted,refused,oracles,boundaries,activationInventory,",
+      "after": "modules,admitted,newlyAdmitted,refused,oracles,boundaries,activationInventory,newActivationInventory,ordinaryNewActivation,newBoundaries,newPublicInputs,newGuardNames,newScopeEntries:Object.fromEntries(roles.map(role=>[role,mods[role].newFixtureScopeCounts()])),",
+      "count": 1
+    }
+  ],
+  "scope": "Retain original84/2 and six-key scope witnesses. Separate exact newly admitted scalar/Nat acyclic wrappers, actual live ordinary helper entries, all six guarded source dependencies, bounded reentry/Error parity and public input getter/alias refusal. Seven unsupported wrappers still refused."
+}

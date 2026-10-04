@@ -1,0 +1,41 @@
+{
+  "kind": "phase43-source14-phase41-close-successor",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/close-phase41-v4.py",
+    "sha256": "84268373e2726da72696bf4248753321ab8abc57a65c4f971def47484274c47c"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/validation/close-phase41-v5.py",
+    "sha256": "1c8ea00a621e4c037ae72a6d66de3384392318fde0a0f860f1335b63d278b5ad"
+  },
+  "changes": [
+    {
+      "before": "selfhost/tools/performance/phase42/fusion/phase41-wrapper-controls-v4.mjs",
+      "after": "selfhost/tools/performance/phase43/validation/phase41-wrapper-controls-v5.mjs",
+      "count": 1
+    },
+    {
+      "before": "phase41-wrapper-controls-v4/report.json",
+      "after": "phase41-wrapper-controls-v5/report.json",
+      "count": 1
+    },
+    {
+      "before": "run-phase41-wrapper-control-v4/run.json",
+      "after": "run-phase41-wrapper-control-v5/run.json",
+      "count": 1
+    },
+    {
+      "before": "['wrap.empty','wrap.scalar','wrap.nat','wrap.reference'",
+      "after": "['wrap.empty','wrap.reference'",
+      "count": 1
+    },
+    {
+      "before": "   assert {row['key'] for row in inventory['wrapper']}==set(expected)",
+      "after": "   assert {row['key'] for row in inventory['wrapper']}==set(expected)\n   assert r['newlyAdmitted']==['wrap.scalar','wrap.nat']\n   newexpected={'global:wrap.scalar':0,'global:wrap.nat':0,'lexical-flat:wrap.scalar':12,'lexical-tree:wrap.nat':12}\n   assert r['newScopeEntries']=={'original':{},'wrapper':newexpected}\n   newinventory=r['newActivationInventory'];assert newinventory['original']==[] and len(newinventory['wrapper'])==4\n   assert {row['key'] for row in newinventory['wrapper']}==set(newexpected)\n   points=[(d,seed) for d in [0,1,3,5] for seed in [0,17,4294967295]]\n   assert [(row['depth'],row['seed']) for row in r['ordinaryNewActivation']]==points\n   for row in r['ordinaryNewActivation']:\n    assert set(row['before'])==set(row['after'])==set(newexpected)\n    for key in ['global:wrap.scalar','global:wrap.nat']:assert row['before'][key]==row['after'][key]==0\n    for key in ['lexical-flat:wrap.scalar','lexical-tree:wrap.nat']:assert row['after'][key]-row['before'][key]==1\n   guards=['refusal_check','wrap.make','wrap.nat','wrap.scalar','wrap.map','wrap.score'];assert r['newGuardNames']==guards\n   assert [(row['name'],row['mode']) for row in r['newBoundaries']]==[(name,mode) for name in guards for mode in ['binding','code','getter','throw','reentry']]\n   assert [(row['name'],row['mode']) for row in r['newPublicInputs']]==[(name,mode) for name in ['wrap.scalar','wrap.nat'] for mode in ['retained-shared','tag-getter','field-getter','field-throw']]\n   for row in r['newBoundaries']+r['newPublicInputs']:assert len(row['observations'])==2 and row['observations'][0]==row['observations'][1]\n   for row in r['newPublicInputs']:assert all(observation['inputUnchanged'] for observation in row['observations'])\n",
+      "count": 1
+    }
+  ],
+  "scope": "Preserve original tree124/17 and wrapper84/2, six old activation keys. Require separate source14 newly admitted wrapper inventory, live ordinary helper counts, exact30 mutation/Error/reentry and8 public/alias refusal rows; same120s/2GiB bounded executions."
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "phase43-hybrid-execution-output-static-review",
+  "complete": true,
+  "staticReviewPassed": true,
+  "executed": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/validation/prepare-execution-output-successor-v1.py",
+    "sha256": "d930c50bb44acccb7c8b9508171c3216f09ddb153b032cbd4f40d66b91ec694f",
+    "bytes": 3910
+  },
+  "preflight": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/validation/recipe05-closure-preflight-v1.json",
+    "sha256": "109d6adc82fe221f9467d1d488cb30f9d5655c144131a8d906e3974bcf86d14f",
+    "bytes": 76385
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/hybrid-controls-successor01.json",
+    "sha256": "ad1f502c15bfaaef9f2e0e17a0197158b112f0dfad6a07498c040d5f7081249e",
+    "bytes": 994
+  },
+  "execution": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/run-hybrid-control-successor01/run.json",
+    "sha256": "de4baff51b41f31580d8d82d3a393612520f1edf94e75da5e5e53777f30c26fc",
+    "bytes": 1622
+  },
+  "failedJob": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/final-jobs01/final-semantic11-close-phase42/run.json",
+    "sha256": "be42e66790caa84e426b0e0a8833d25997fc2e28cd52d6fcffd4042f66f06a62",
+    "bytes": 1367
+  },
+  "failedStderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/final-jobs01/final-semantic11-close-phase42/stderr.log",
+    "sha256": "00a660258e0e40400959bb2fecb9db264e40ea63380e8b8f8396c512f16e5709",
+    "bytes": 539
+  },
+  "scope": "Hybrid controller has always accepted an explicit report FILE. Fresh successful unchanged execution argv contains exact absolute hybrid-controls-successor01.json, not its parent directory. Declare only this owner executionOutput=file so unchanged strict collector gate binds exact existing file. No canonicalization or directory/substring waiver, no target rerun, no assertion/resource/image/controller change. All other33 new owner output paths already satisfy original gate.",
+  "adapterAssessment": "Requires exact reviewed producer/preflight/report/execution/failed-job hashes, one exact preflight issue among643 conditions, successful hybrid execution and actual failed aggregation stderr. Sets only absent executionOutput field to file, redirects failed aggregation to fresh successor02 and self-recipe references; preserves all selected34 owners/tool/evidence pins and old failures.",
+  "remaining": [
+    "Root rerun failed aggregation only into fresh output.",
+    "Preinstall and postinstall audits, admission and installation closures remain mandatory; unrun audit stages are not claimed passed."
+  ]
+}

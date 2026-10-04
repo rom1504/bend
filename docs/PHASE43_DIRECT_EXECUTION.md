@@ -18,7 +18,8 @@ and guards. Unsupported shapes and changed dependencies use the original body.
 The public runtime remains observable: function identity, partial application,
 mutable bindings, host hooks, errors and reentry all matter. A source purity proof
 alone does not authorize caching mutable facts across invocations. Each entry
-establishes its own permission, and `finally` restores the previous proof scope.
+checks its dependency and host assumptions. Routes that open a proof scope restore
+the previous scope in `finally`; lexical contextual routes do not open that scope.
 
 ## Shared source and type facts
 
@@ -55,11 +56,20 @@ it; independently safe nested roots may still run.
 
 ## Captured functions and temporary pairs
 
-Eligible known callbacks use private environments instead of repeatedly invoking
-generic closure descriptors. Admission checks the authoritative erased formal,
-the raw source binder and its absence from runtime use. Captured values and
-noncommutative composition order remain explicit. Unknown or escaping functions
-retain the existing behavior.
+Eligible known callbacks fuse construction with application. Instead of allocating
+an unescaped closure/environment graph and traversing it afterward, the worker
+computes each captured scalar and applies its leaf operation in the proved
+application order. Noncommutative composition stays ordered. This requires an exact
+total-U32 grammar that excludes capture escape, foreign calls, observable errors
+and retained callbacks; purity alone does not justify interleaving the two stages.
+Public or escaping functions retain their descriptors and generic behavior.
+
+The fused countdown evaluates its count and seed once. Counts that are JavaScript
+Number integers in 0..4,294,967,295 use exact Number decrement and the proven U32
+image of the predecessor. Other counts keep the original BigInt countdown and
+capture expressions. This removes BigInt work only within the proved bound;
+it introduces no closed-form sum or unchecked Nat conversion. Number, BigInt,
+Number.isInteger and required arithmetic host identities remain guarded.
 
 An exact closed-U32 callback proof permits the smaller shared integer host guard
 and a private capability that avoids unrelated String checks. It does not change
@@ -71,6 +81,30 @@ return the original value; positive iterations create fresh state. Right-hand
 sides are evaluated before either field is replaced. Escaping trees, path lists
 and their alias relationships retain their layouts. Existing stronger scalar
 workers keep selection precedence.
+
+## Map source calls
+
+A scalar enclosing request can construct a fresh Map and use exact contextual
+instances of source-defined Map helpers. Erased type and quantity arguments are
+proved closed, substituted into the source, and removed only from private live
+parameter slots. The emitted workers and recursive continuations refer to lexical
+clones; they never look up private instance names through public G. Unsupported
+combiner shapes refuse the complete plan. Public Map methods retain their original
+erasure/null-prefix ABI, and public data arguments do not acquire ownership merely
+because their type is closed.
+
+Ordinary entry must execute the selected contextual branch and actual Map workers.
+This route does not open regionProof. Complete native Map, Maybe and Sigma values,
+sharing, fresh shells, externally retained inputs and deep source operations are
+checked separately from final checksums. Some helpers remain generic residuals;
+contextual lowering does not imply that every application in the request vanished.
+
+Numeric intrinsic lowering bypasses ordinary G calls, so the enclosing guard also
+records conservative identity dependencies for the whole known U32/F32 primitive
+family. Even a changed primitive that this request does not use can force fallback.
+Source binding/code identities, native String hosts, errors and reentry remain
+observable and guarded. The conservative fence trades some entry-check cost for
+the original generic behavior under mutation.
 
 ## Reproducing and qualifying changes
 
@@ -87,6 +121,8 @@ reported separately from execution time.
 
 Final qualification includes the inherited frontend/backend/application/release
 checks, new mechanism controls, scalar selection precedence, compiler request
-costs and the complete maintained 45-point performance corpus. All measurements
-use one CPU and memory-bounded serial processes. The report records source growth,
+costs and the complete maintained 45-point regression corpus. These workloads
+informed optimization, including historically named holdout partitions; qualification does
+not establish universal TypeScript parity or independent unseen-workload coverage.
+All measurements use one CPU and memory-bounded serial processes. The report records source growth,
 failed experiments and remaining gaps alongside gains.

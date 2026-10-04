@@ -1,8 +1,38 @@
 # Compiler validation
 
-## Phase40 installed06 validation
+## Phase43 installed checked14 validation
 
-**Phase40 checked06 is installed; release verification and all 42 ordinary and
+**Phase43 checked14 is installed and verified.** All 42 ordinary/relocated CLI
+checks, 15 postinstallation integration gates and 227 canonical source bindings
+pass. The selected API SHA256 is
+`222902e565253ae20c628301a9191c6d71e47b211f1dc463da4e8eb1b51c86eb`;
+upstream remains pinned to `018751270e800bc222a93dad7f257083ee53a5f7`.
+This is a checked B1 derivative, not a new self-emitted fixed point.
+
+Fresh frontend observations agree exactly on 3,026 main and 196 broader inputs,
+with zero result or extra-field differences. Main outcomes remain 2,525 pass /
+497 observed / four shared failures; broader outcomes remain 195 pass / one
+observed. Selected backend renewal retains 69 execution passes, eight unavailable
+or not-applicable outcomes and four shared failures in 81 rows. Agreement does
+not convert the shared failures into passes or establish full backend/GPU support.
+
+All 34 selected mechanism owners pass, alongside inherited owner closures and
+154 untimed expanded application observations. Exact selected-image controls
+cover ordinary activation, values, aliases, partial application, hostile host
+mutation, callback/error order, fallback and deep execution. Their scopes overlap;
+these counts must not be added into a unique-test total. See the
+[Phase43 integration report](../implementation/phase43/integration.md) and
+[portable evidence index](tools/performance/phase43/evidence/selected-release.json).
+
+The 45-point/669-sample generated-program comparison is separate performance
+evidence, not additional language conformance. Compiler-cost and source-growth
+regressions are explicitly accepted in the [release report](../implementation/phase43/README.md).
+Historical qualifications below retain their original identities and scopes.
+
+
+## Historical Phase40 installed06 validation
+
+**Phase40 checked06 was installed; release verification and all 42 ordinary and
 relocated CLI checks pass.** The [release record](../implementation/phase40/release-06.md)
 and [final audit](../implementation/phase40/final-conformance/gates.md) close
 15 postinstallation groups and verify 227 canonical source files. API SHA256:

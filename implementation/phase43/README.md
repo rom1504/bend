@@ -7,14 +7,12 @@ callbacks and BST improve substantially; 20 points have slower medians, and
 complete applications still retain large gaps. Compiler requests become more
 expensive on several sources, and production source grows 6.9%.
 
-**Release pending:** all 669 final runtime samples are complete and the raw
-semantic controllers pass. Final semantic aggregation is still correcting exact
-execution-path bindings; final closure and installation are not yet claimed.
-Checked14 is the selected image, with API
+**Installed and verified:** checked14 is the current release, API
 `222902e565253ae20c628301a9191c6d71e47b211f1dc463da4e8eb1b51c86eb`.
-The installed artifact remains governed by the
-[release manifest](../../selfhost/dist/release.json). This paragraph must be
-updated only after root completes closure and installation verification.
+All 34 selected mechanism owners, 15 installed integration gates, 227 canonical
+source bindings and 42 ordinary/relocated CLI checks pass. The
+[release manifest](../../selfhost/dist/release.json) and
+[integration report](integration.md) identify the exact artifact and scope.
 
 The previous release is Phase42 checked16, commit `714c5f5`, API
 `63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54`.
@@ -131,9 +129,9 @@ failures remain failures; agreement does not relabel them as accepted programs.
 Selected backend renewal has 81 exact paired observations, with retained shared
 failures and unavailable platforms. Expanded application/catalog/small correctness
 passes 154 untimed observations. Counts overlap and must not be summed into a
-unique-test total. The [semantic summary](semantic-summary-draft.md),
+unique-test total. The [integration report](integration.md),
 [validation report](validation.md) and [conformance scope](../../selfhost/CONFORMANCE.md)
-retain the exact distinctions; final aggregate binding is still pending.
+retain the exact distinctions; final preinstall and postinstall aggregation passes.
 
 Focused controls require actual private worker execution through ordinary public
 roots, full values and aliases, partial application, dependency and post-import
@@ -214,7 +212,7 @@ requiring every affected root to refuse and full event/value parity. Historical
 checkpoints, frozen tool versions and raw failures are retained rather than
 rewritten as successful outcomes.
 
-## Reproduction and release completion
+## Reproduction and release evidence
 
 Use the [portable Phase43 guide](../../selfhost/tools/performance/phase43/README.md)
 and [validation commands](../../selfhost/tools/performance/phase43/validation/README.md).
@@ -231,11 +229,10 @@ larger timing. Full45 uses three serial 15-point preset600 batches, retaining
 fit the cumulative warmup floors. Acquisition, semantic controls, compiler cost,
 profiles and runtime measurement stay separate. The final
 [results JSON](results.json) preserves final corpus identities and samples.
-Portable [selected-release evidence](evidence/selected-release.json) will bind
+Portable [selected-release evidence](../../selfhost/tools/performance/phase43/evidence/selected-release.json) binds
 the runtime closure, exact selected modules, semantic owners and installed
-release without requiring the original build directory; its final release
-status remains pending.
+release without requiring the original build directory.
 
-Final work is aggregate semantic binding, release closure, installation,
-ordinary/relocated CLI verification and portable smoke. The report will add their
-exact receipts and status after completion. No PR comment is authorized or posted.
+Installation and ordinary/relocated CLI verification are complete. Portable bundle
+verification and smoke receipts are indexed with the final evidence. No PR comment
+was posted.

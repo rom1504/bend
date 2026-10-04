@@ -1,0 +1,44 @@
+{
+  "complete": true,
+  "command": [
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "selfhost/tools/performance/phase42/validation/archive-campaign-v1.py",
+    "--raw",
+    "selfhost/build/phase43",
+    "--writers-closed",
+    "selfhost/tools/performance/phase43/evidence/writers-closed01.json",
+    "--protected-final",
+    "selfhost/build/phase43/protected-final.json",
+    "--out",
+    "selfhost/tools/performance/phase43/evidence/campaign-archive01"
+  ],
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+    "bytes": 4339,
+    "sha256": "860b59bce0b8c38e2e548368b14c51825bd62d8da1da200e2049737f1e0e383d"
+  },
+  "secondsLimit": 900,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 2147483648,
+  "started": 1791089138.5490022,
+  "peakTreeRssBytes": 130048000,
+  "minimumAvailableBytes": 28341219328,
+  "scope": "Supervised acquisition; RSS sums may double-count shared pages. No throughput claim.",
+  "returncode": 0,
+  "wallSeconds": 51.54713119304506,
+  "finished": 1791089190.096759,
+  "stdout": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/evidence/run-publication01/stdout.log",
+    "bytes": 229,
+    "sha256": "308b74f72af601a0a83cf8e4b6b936c7948ea03556aa91ee3083b47fc6f409ef"
+  },
+  "stderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/evidence/run-publication01/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

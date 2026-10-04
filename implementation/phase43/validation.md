@@ -1,4 +1,10 @@
-# Phase43 validation tooling handoff
+# Phase43 validation preparation and execution log
+
+**Final status:** selected checked14 is installed and verified. All 34 mechanism
+owners, 15 installed gates, 227 source bindings and 42 CLI checks pass. The
+[integration report](integration.md) gives final results, retained failures and
+portable replay status. The chronological preparation notes below preserve what
+was pending at each earlier checkpoint; they do not describe an open release gate.
 
 Prepared reusable checked workflow configuration, repaired-recipe adaptor,
 portable baseline freezer, measurement binder and exact three-batch runtime
@@ -93,17 +99,51 @@ required beyond focused qualification. No target or timing was run by this owner
 ## First final integration attempt
 
 The frozen checked14 recipe01 begins with fresh counter and fold acquisitions.
-Counters pass. Fold results and50000-depth execution pass, then the inherited
+Counters pass. Fold results and 50,000-depth execution pass, then the inherited
 Phase40 structural controller refuses the new module because it expects exactly
 one private structural producer. The new computed-prefix/wrapper admissions emit
-three additional nonrecursive wrappers: fold.share, fold.order.make andbenchRecord.
+three additional nonrecursive wrappers: fold.share, fold.order.make and benchRecord.
 The failed report is retained at integration01/preflight-fold. A separately
 reviewed successor must check the exact four-owner inventory and retain every
 prior value, host, demand, alias and admission assertion before that gate can pass.
-Independent unary controls and all45 source acquisitions already complete;
+Independent unary controls and all 45 source acquisitions already complete;
 remaining independent owners continue while the structural contract is reviewed.
 
 The inherited full frontend gate retains its reviewed two-worker CPU3,4 pool and
-3GiB combined RSS supervisor with1GiB heap per worker,5GiB prelaunch headroom and
-the2GiB free-memory floor. This explicit exception to ordinary2GiB experiments
+3GiB combined RSS supervisor with 1 GiB heap per worker, 5 GiB prelaunch headroom and
+the 2 GiB free-memory floor. This explicit exception to ordinary 2 GiB experiments
 runs alone; no timing or other heavy job overlaps it.
+
+## Reviewed successors and frontend result
+
+Recipe02's fresh fold successor passes all original behavioral controls and the
+exact four-owner inventory. Recipe03's purity successor passes 47 probes: the
+original 37 retain their order and every refusal except the explicitly supported
+zero-argument literal; ten additional checks cover malformed/effectful/nonliteral
+values and captured literal dependencies. All 15 current Phase35 owner groups
+close successfully. The failed launch and failed original assertions remain in
+the raw campaign, with explicit reviewed successors rather than rewritten files.
+
+The final selected checked14 frontend agrees exactly on 3,026 main and 196 broader
+observations, with zero result or extra-field differences. Main takes 468.63 seconds
+and peaks at 1.172 GB tree RSS; broader takes 26.92 seconds and peaks at 0.997 GB. These
+are validation costs, not compiler throughput benchmark results. Backend and
+remaining inherited/new optimization owners are still running.
+
+The reviewed recipe04 adapter preserves the successful recipe03 acquisitions and
+seventeen v6 new-owner closures, and binds only the failed relative-catalog closure
+to v7. Its inherited wrapper successor separates the two newly admitted acyclic
+Bool/Nat wrappers from the original admission/refusal inventory: exact live lexical
+helper entries, six source dependencies, reentry/errors and public shared/getter
+inputs remain independently checked. Exact outer scalarCapture false metadata
+normalization preserves complete executable binding bytes; hybrid runtime joins
+remain role-specific.
+
+Native retention no longer claims the historical single-change whole-program
+isolation. The three retained scoped workers coexist with seven selected global
+structural workers. Constructor removal remains exact, while supplied fresh pair
+destinations replace the old array-return physical witness; zero-alias, positive
+freshness, simultaneous writes, retained fields and deep behavior remain backed
+by four fresh semantic reports. Role-specific outside fingerprints are retained
+as identities, never interpreted as cross-role equality. The old failed isolation
+assay and its original successful historical evidence remain untouched.

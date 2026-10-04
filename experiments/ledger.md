@@ -2585,3 +2585,52 @@ unreached. Mixed compiler cost and+1158source lines are explicit tradeoffs.
 All 15postinstall groups,227bindings and42CLI checks pass. Seven owner/review
 roles worked in parallel while root serialized heavy jobs. Failed probes, scope
 repairs and final raw receipts are preserved; no PR comment posted.
+
+## Phase43 final release outcome — 2026-10-04
+
+Checked14 is installed after selected-image admission. All 34 mechanism owners,
+42 CLI checks, 15 postinstall audit groups, 227 source bindings and the 41-group
+composite installed closure pass. Phase42 checked16 is retained as baseline;
+the [portable current bundle](../selfhost/tools/performance/phase43/current/manifest.json)
+is complete, with all 45 points frozen and reopened byte-exact. Compact20,
+full-fast60 and targeted60 smoke replays pass; raw writers are closed and all
+35,665 raw files are archived and reopened with exact hashes.
+The [report](../implementation/phase43/README.md) links actual-source controls,
+[final results](../implementation/phase43/results.md) and profiles. Raw selected
+runtime closure is [integration01/runtime-full45-close.json](../selfhost/build/phase43/integration01/runtime-full45-close.json);
+[final-results01/report.json](../selfhost/build/phase43/final-results01/report.json)
+retains all 45 points, 23 sources and 669 fresh role samples.
+
+Equal-point geometric slowdown improves 8.875959→6.161075× pinned TypeScript time,
+a 1.44065× gain over the fresh Phase42 baseline. Medians improve on 25 points and
+regress on 20; two beat TypeScript. Lexer, Map-churn, closures and BST family gains
+are 12.2953×, 3.61984×, 9.43965× and 2.48645×. This is a regression corpus used
+during optimization, not universal parity or untouched holdout validation.
+
+Delivered mechanisms are complete typed String graphs, lexical contextual Map
+calls with conservative primitive identity fences, callback construction/application
+fusion that removes the unescaped environment graph, bounded Number countdown
+with original BigInt fallback, and private pair state with original scalar-worker
+precedence. Failed source ABI/parse/purity probes, eager-recursion compile blowup,
+Map continuation defects and narrowly reviewed controller repairs remain retained.
+[P43-001](phase43/P43-001-strings.md), [P43-002](phase43/P43-002-map.md),
+[P43-003](phase43/P43-003-products.md), [P43-004](phase43/P43-004-callbacks.md)
+and [P43-005](phase43/P43-005-guards.md) link outcomes; P43-006 remains proposal only.
+
+The maintained graph grows 1,384 lines/164 definitions to 21,440 lines,
+2,413 definitions and 70 modules. The [normal checked-library cost report](../selfhost/build/phase43/integration01/compiler-cost/report.json)
+passes all 36 requests but candidate request medians increase 8.72% local-pair,
+21.14% tree, 14.01% list and 0.76% numeric; candidate requests remain 4.92–8.68×
+TS across these four sources. No compiler-throughput or source-simplification gain
+is claimed. Full-source acquisition additionally records Map compilation
+2.302s→9.450s (4.105×) and module growth 2.216×, plus lexer compilation 1.715×.
+Runtime and compiler costs are separate evidence.
+
+**Updated frontier:** release closure is complete. Next investigate
+[P43-006](phase43/P43-006-nullary-entry.md) with ordinary-entry and private-worker
+activation counters before any new proof grant. It remains a proposal without an
+executed prototype or causal speedup. Planner cost and residual Map/String/allocation
+remain subsequent investigations. Preserve the 103 unrelated files and Phase42
+evidence; no PR comment is posted. Current [steering](STEERING.md) records installation,
+the verified portable bundle and remaining smoke/evidence closure. The [raw installed composite](../selfhost/build/phase43/integration01/composite-postinstall/report.json)
+binds the successful selected-image closure.

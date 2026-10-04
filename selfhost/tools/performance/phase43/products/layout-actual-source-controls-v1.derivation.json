@@ -1,0 +1,53 @@
+{
+  "kind": "phase43-layout-actual-controller-derivation",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "path": "selfhost/tools/performance/phase42/layout/actual-source-controls-v5.mjs",
+    "bytes": 17734,
+    "sha256": "29d10ba8e0a171b58d560116a91e1449cb982aafa96d8a446c10d3b8f129c185"
+  },
+  "output": {
+    "path": "selfhost/tools/performance/phase43/products/layout-actual-source-controls-v1.mjs",
+    "bytes": 19133,
+    "sha256": "b29aae40cace70691338b878979b1594e295e7cd7a2629cbe59b0f955d7bb341"
+  },
+  "changes": [
+    {
+      "before": "from '../review/oracles.mjs'",
+      "after": "from '../../phase42/review/oracles.mjs'",
+      "count": 1
+    },
+    {
+      "before": "new URL('../review/oracles.mjs',import.meta.url)",
+      "after": "new URL('../../phase42/review/oracles.mjs',import.meta.url)",
+      "count": 1
+    },
+    {
+      "before": "const publicBindings=new Map();walk(ast,n=>{if(n.type==='AssignmentExpression'&&n.left.type==='MemberExpression'&&n.left.object?.name==='G'&&workers.includes(n.left.property?.value))publicBindings.set(n.left.property.value,source.slice(n.start,n.end));});",
+      "after": "const publicBindings=new Map(),publicCaptureMetadata=[];walk(ast,n=>{if(n.type==='AssignmentExpression'&&n.left.type==='MemberExpression'&&n.left.object?.name==='G'&&workers.includes(n.left.property?.value)){const name=n.left.property.value,capture=n.right;assert.equal(capture.type,'CallExpression','exact public scalarCapture '+name);assert.equal(capture.callee.type,'Identifier');assert.equal(capture.callee.name,'scalarCapture');assert.equal(capture.arguments[0]?.type,'Literal');assert.equal(capture.arguments[0].value,name);const raw=source.slice(n.start,n.end);let normalized=raw;if(role==='original')assert.equal(capture.arguments.length,2,'original public capture has unchanged two arguments '+name);else{assert.equal(capture.arguments.length,3,'selected public capture has explicit capability metadata '+name);const flag=capture.arguments[2],body=capture.arguments[1];assert.equal(flag.type,'Literal');assert.equal(flag.value,false,'only false capability metadata is admitted');assert.equal(source.slice(body.end,flag.end),',false','exact metadata bytes only');normalized=source.slice(n.start,body.end)+source.slice(flag.end,n.end);publicCaptureMetadata.push({name,metadata:false,removed:',false',rawCandidateSha256:sha(raw),normalizedCandidateSha256:sha(normalized)});}publicBindings.set(name,normalized);}});if(role==='complete')assert.equal(publicCaptureMetadata.length,workers.length,'all five public captures disable scalar capability');",
+      "count": 1
+    },
+    {
+      "before": "'actual public G binding byte identity '+name",
+      "after": "'actual public G executable binding byte identity after exact false metadata '+name",
+      "count": 1
+    },
+    {
+      "before": "actualPublicBindingByteIdentity:true,flatBlocks:",
+      "after": "actualPublicBindingByteIdentity:role==='original',actualPublicBindingExecutableByteIdentity:true,publicCaptureMetadata,flatBlocks:",
+      "count": 1
+    },
+    {
+      "before": "'consumed-actual-source-controls-v5.mjs'",
+      "after": "'consumed-layout-actual-source-controls-v1.mjs'",
+      "count": 1
+    },
+    {
+      "before": "unchanged actual public G bindings and global array structural workers exact except",
+      "after": "actual public G executable bindings exact except explicit scalarCapture false metadata, and global array structural workers exact except",
+      "count": 1
+    }
+  ],
+  "scope": "Import relocation and exact public scalarCapture false-metadata AST normalization only. All executable binding bytes, global/private worker proof, independent values, ownership/alias/mutation/Error/deep controls and expected counts retained."
+}

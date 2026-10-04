@@ -1,5 +1,9 @@
 # P43-001 — Full owned native-String lexer component
 
+**Final outcome:** selected changes are installed in Phase43 checked14. See the
+[final release report](../../implementation/phase43/README.md); the notes below
+preserve the experiment sequence and earlier pending or rejected states.
+
 Hypothesis: one exact public entry guard plus full typed lexical component
 removes generic generator/lexer dispatch and yields >=2× checked16 lexer runtime,
 while preserving complete String/Char, Slot/Cls/Mode/Sigma, demand, host and alias
@@ -151,3 +155,28 @@ future typed continuation plan can track postchild binder/field liveness and omi
 only proven dead total work under the same captured graph/host guards, preserving
 all required reconstruction allocations and original generic fallback. No new
 optimization is implemented or measured by this observation.
+
+
+Final installed outcome
+
+Selected checked14 outcomes use the complete 45-point/669-sample campaign, not
+exploratory screens. The [final table](../../implementation/phase43/results.md),
+[raw aggregation](../../selfhost/build/phase43/final-results01/report.json) and
+[raw runtime closure](../../selfhost/build/phase43/integration01/runtime-full45-close.json)
+retain all observations. The [release report](../../implementation/phase43/README.md)
+keeps compiler cost, source growth and release status separate. Checked14 is
+installed; all 34 mechanism owners, 42 CLI checks, 15 postinstall groups,
+227 source bindings and the 41-group composite installed closure pass. The corpus was
+used during optimization; its historical holdout labels do not establish unseen
+validation or universal TypeScript parity. Phase42 remains the comparison
+baseline. The [portable current bundle](../../selfhost/tools/performance/phase43/current/manifest.json)
+is complete: all 45 points were frozen and reopened byte-exact. Compact20,
+full-fast60 and targeted60 smoke replays pass; all raw evidence is archived and
+reopened with exact hashes, including the incomplete budget20 five-case attempt.
+
+All three lexer points improve: family geometric gain 12.2953×, while execution
+remains 7.22307× TS. Point gains are 11.6081–13.0698×. Complete typed String graphs
+are delivered; optional resume-liveness and wrapper-hop follow-ups remain deferred
+after mixed/null timing. Selected-source value/host/admission controls are linked
+from [phase43-close-strings-source](../../selfhost/build/phase43/integration01/phase43-close-strings-source/report.json),
+with independent literal, renamed and refused graph controls retained separately.

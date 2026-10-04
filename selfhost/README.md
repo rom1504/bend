@@ -1,22 +1,33 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md) and the
-[Phase42 report](../implementation/phase42/README.md).
-**[Phase42 checked16 is installed](../implementation/phase42/integration.md).**
-Release verification, all 42 ordinary/relocated CLI checks, the 15-group
-postinstall audit and all 227 canonical source bindings pass. The
-[release manifest](dist/release.json) identifies API
-`63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54`.
-[Phase41 checked01](../implementation/phase41/integration.md) is the retained
-comparison baseline.
+[Phase43 release report](../implementation/phase43/README.md).
+**[Phase43 checked14 is installed](../implementation/phase43/README.md).**
+Release verification, all 42 ordinary/relocated CLI checks, the 15-group postinstall
+audit and 227 canonical source bindings pass. All 34 selected mechanism owners and
+the 41-group composite postinstall closure pass. The [release manifest](dist/release.json)
+identifies API `222902e565253ae20c628301a9191c6d71e47b211f1dc463da4e8eb1b51c86eb`.
+Phase42 checked16 is the retained comparison baseline. The
+[portable current bundle](tools/performance/phase43/current/manifest.json) is complete:
+all 45 points were frozen and reopened byte-exact. Portable smoke replays and evidence
+archive closure pass.
 
-The [fresh 45-point results](../implementation/phase42/results.md) pass all 669
-role samples. Point-weighted geometric mean execution improves 1.42× over
-Phase41, while remaining 8.86× pinned TypeScript time; only one point beats
-TypeScript. The [full chart](../implementation/phase42/runtime-ratios.svg),
-[compiler costs](../implementation/phase42/compiler-cost.md) and
-[source accounting](../implementation/phase42/complexity.md) retain the gains,
-remaining gaps and tradeoffs.
+The release's [final results](../implementation/phase43/results.md) pass all
+45 points and 669 fresh role samples over 23 sources. The point-weighted geometric
+slowdown falls from 8.875959× to 6.161075× pinned TypeScript time, a 1.44065× gain
+over a fresh Phase42 baseline. Medians improve on 25 points and regress on 20;
+two beat TypeScript. This maintained regression corpus informed optimization;
+it does not establish universal parity or independent untouched holdout coverage.
+
+The maintained compiler graph grows by 1,384 lines and 164 definitions to
+21,440 lines, 2,413 definitions and 70 modules. Normal checked-library request
+medians increase about 21.1% for tree, 14.0% for list and 8.7% for local-pair;
+numeric changes about 0.8%. Separate full-source acquisition shows Map compilation
+rising 4.105× (2.302s→9.450s), its module growing 2.216×, and lexer compilation
+costing 1.715×. These request/acquisition measures do not establish universal
+compiler throughput or isolate emission cost. The
+[report](../implementation/phase43/README.md) retains source and compiler-cost
+tradeoffs alongside generated execution gains.
 
 Ordinary compilation executes the Bend implementation without a TypeScript
 fallback. The target remains upstream
@@ -26,9 +37,11 @@ point. Full backend/GPU execution and independent proof validity remain
 unestablished; `--verdict` is unsupported. See [conformance](CONFORMANCE.md) for
 retained shared failures and unavailable platforms.
 
-The [generated-JavaScript architecture](../docs/PHASE42_GENERATED_JS.md) explains
-private graph coverage, owned layouts, List fusion, bounded structural execution
-and exact request-local facts. Public data, host mutation, evaluation order,
+The [complete-operation architecture](../docs/PHASE43_DIRECT_EXECUTION.md) explains
+lexical contextual Map calls, callback construction/application fusion, bounded
+Number counters with original BigInt fallback, private pair state and exact source
+proofs. The [Phase42 architecture](../docs/PHASE42_GENERATED_JS.md) retains earlier
+owned layouts, List fusion, structural fallback and request-local facts. Public data, host mutation, evaluation order,
 sharing and generic fallback remain explicit proof boundaries.
 
 ```sh
@@ -39,14 +52,15 @@ npm run build
 ```
 
 Use the [checked workflow](../docs/PHASE5_DEVELOPMENT.md) for compiler edits and
-the [portable Phase42 suite](tools/performance/phase42/README.md) for generated
-execution comparisons against retained Phase41 and pinned TypeScript. Its
-45-point catalog supports independent case selection and bounded serial batches;
-a time ceiling does not promise complete coverage. The [current bundle](tools/performance/phase42/current/manifest.json) packages
-the selected emitted modules. Separate [diagnostics](tools/performance/programs/DIAGNOSTICS.md) provide
-profiles and JavaScript analysis. Heavy jobs run serially with explicit memory
-and deadline bounds. Compiler-request cost and generated execution are reported
-separately in the Phase42 report.
+the [portable Phase43 suite](tools/performance/phase43/README.md) for generated
+execution comparisons against retained Phase42 and pinned TypeScript. Its 45-point
+catalog supports 20/60/300-second selections and three serial 600-second batches;
+a ceiling does not promise coverage. The current bundle contains all 45 verified
+points; compact20, full-fast60 and targeted60 smoke replays pass.
+Separate [diagnostics](tools/performance/programs/DIAGNOSTICS.md) provide CPU and
+sampled allocation profiles plus JavaScript analysis. Heavy jobs run serially with
+explicit memory and deadline bounds. Compiler-request cost and generated execution
+remain separate evidence.
 
 Historical [Phase40](../implementation/phase40/README.md) and
 [Phase39](../implementation/phase39/README.md) results retain their original
@@ -151,7 +165,7 @@ have the same names.
 Historical self-emitted distributions and their original reproduction reports
 remain in `dist/selfhost/`; the [preservation index](../experiments/PRESERVATION.md)
 and [experiment ledger](../experiments/ledger.md) identify their exact scope.
-They are not alternate defaults. The installed Phase39 image passes its own
+They are not alternate defaults. The historical Phase39 image passes its own
 [42 ordinary/relocated CLI checks](../implementation/phase39/release-05.md),
 including relocation without an upstream checkout. The earlier
 [Phase36 release](../implementation/phase36/release-03.md) retains its separate evidence.

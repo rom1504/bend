@@ -1,5 +1,9 @@
 # P43-003: direct BST build versus temporary products
 
+**Final outcome:** selected changes are installed in Phase43 checked14. See the
+[final release report](../../implementation/phase43/README.md); the notes below
+preserve the experiment sequence and earlier pending or rejected states.
+
 Status: prototype source qualification passes; selected final image owner execution pending.
 Owner products; root serializes execution.
 
@@ -95,3 +99,30 @@ AST inventories contain39 lexical workers,105 guard entries and103 distinct
 dependencies; main has43 workers and112 distinct guards. Final-owner-data-v5
 and checked14-inventory-v1 bind exact source/tool/shape clauses before final
 selected-image execution. Saved handwritten Map passes are not used as evidence.
+
+
+Final installed outcome
+
+Selected checked14 outcomes use the complete 45-point/669-sample campaign, not
+exploratory screens. The [final table](../../implementation/phase43/results.md),
+[raw aggregation](../../selfhost/build/phase43/final-results01/report.json) and
+[raw runtime closure](../../selfhost/build/phase43/integration01/runtime-full45-close.json)
+retain all observations. The [release report](../../implementation/phase43/README.md)
+keeps compiler cost, source growth and release status separate. Checked14 is
+installed; all 34 mechanism owners, 42 CLI checks, 15 postinstall groups,
+227 source bindings and the 41-group composite installed closure pass. The corpus was
+used during optimization; its historical holdout labels do not establish unseen
+validation or universal TypeScript parity. Phase42 remains the comparison
+baseline. The [portable current bundle](../../selfhost/tools/performance/phase43/current/manifest.json)
+is complete: all 45 points were frozen and reopened byte-exact. Compact20,
+full-fast60 and targeted60 smoke replays pass; all raw evidence is archived and
+reopened with exact hashes, including the incomplete budget20 five-case attempt.
+
+Both BST points improve: family geometric gain 2.48645×, remaining 2.72785× TS;
+point gains 2.38882× at 32 and 2.58807× at 64. The delivered scalar-prefix/wrapper
+and fresh private pair state retain alias/order/zero semantics and stronger
+scalar precedence. [Selected BST closure](../../selfhost/build/phase43/integration01/phase43-close-products-bst/report.json)
+and independent prefix/ignored-field/precedence owners qualify actual worker
+execution. The handwritten compact zipper remains an ablation ceiling, not a
+promoted source kernel. Raytrace/record family ratios remain 24.2776×/68.8366× TS
+with mixed small changes; no broad container-layout win is claimed.

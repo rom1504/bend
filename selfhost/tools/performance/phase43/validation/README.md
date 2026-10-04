@@ -1,296 +1,144 @@
-# Phase43 checked validation commands
+# Phase43 validation
 
-Run from repository root. Root schedules every command serially, under the
-campaign ledger/resource lock. Fresh paths only; keep all old tools and raw
-Phase42 evidence immutable. These helpers create no compiler source changes.
+The selected image is `selfhost/build/phase43/checked14`. The reviewed owner
+configuration is `final-owner-config-v6-reviewed.json`: 49 acquisition/control
+steps and 18 new owners, alongside all 16 inherited owners. The final semantic recipe
+successor is `selfhost/build/phase43/recipe06.json`; its campaign remains
+`selfhost/build/phase43/integration01`.
 
-## Checked attempt
+Root schedules every target, compiler-cost and timing command serially through
+the campaign ledger. Existing output directories are immutable. Resume only
+unfinished named steps; retain original failures, recipes and successful reports.
+The helpers in this directory do not modify compiler source.
+
+## Build and provenance
+
+For a future fresh checked attempt, assemble the runtime before building:
 
 ```sh
 PHASE43_NODE=/home/ai/.nvm/versions/node/v24.18.0/bin/node
-PHASE43_ATTEMPT=$PWD/selfhost/build/phase43/checked01
-PHASE43_OUT=$PWD/selfhost/build/phase43/integration01
-PHASE43_RECIPE=$PWD/selfhost/build/phase43/recipe01.json
+"$PHASE43_NODE" selfhost/src/runtime/js/build.mjs
 python3 selfhost/tools/performance/phase32/bounded-run.py --seconds 900 \
-  --rss-mib 2048 --available-mib 2048 selfhost/build/phase43/run-checked01 -- \
+  --rss-mib 2048 --available-mib 2048 FRESH_BUILD_SUPERVISOR -- \
   taskset -c 3 "$PHASE43_NODE" --stack-size=4096 --max-old-space-size=1024 \
   selfhost/tools/development/workflow.mjs run \
-  selfhost/tools/performance/phase43/validation/checked-config-v1.json \
-  "$PHASE43_ATTEMPT"
-python3 selfhost/tools/performance/phase43/validation/prepare-recipe-v1.py \
-  --attempt "$PHASE43_ATTEMPT" --out "$PHASE43_OUT" --recipe "$PHASE43_RECIPE"
+  selfhost/tools/performance/phase43/validation/checked-config-v1.json FRESH_ATTEMPT
 ```
 
-Config retains equality derivative, strictExact, default36 focused frontend,
-one worker/CPU3/heap1024. Build supervisor cap900s is a resource limit. The
-adaptor verifies maintained attempt integrity but executes no compiler/target.
-It pins the repaired Phase42 recipe07 and fresh checked-image provenance. It
-creates OUT only for the fresh facts configuration. Recipe lies outside OUT.
+The configuration retains the checked equality derivative, strict exact checks,
+one worker, CPU3 and 1GiB heap. `runtime-agreement-v1.py` checks the exact generated
+bundle against the five consumed fragments and builder before semantic,
+cost-preparation and postinstallation stages. Do not rebuild the frozen checked14
+attempt or import earlier PASS reports as fresh qualification.
 
-For final integration supply `--extension` with a reviewed JSON object containing
-`reviewed:true`, `steps` and `requirements`. Step names start `phase43-` and use
-concrete argv or `${ATTEMPT}`, `${OUT}`, `${API}`, `${API_SHA}`, `${ATTEMPT_SHA}`,
-`${RUNTIME_SHA}` bindings. Requirements follow unchanged close-release-v6 schema:
-name/report/execution/assertions/bindings and optional producer/derivation/relations.
-Require `/complete:true`, `/pass:true`, exact semantic totals/refusals and explicit
-selected API/attempt binding. New owners cannot duplicate the inherited16 names.
-The extension adds controls before close-phase42; the old collector's kind is
-historical lineage. Final postinstall refuses a recipe lacking fresh new owners.
+The initial reviewed acquisition uses `build-extension-v6.py` with the reviewed
+v6 configuration, followed by `prepare-recipe-v1.py` with the extension, selected14
+scalar contract/review and native-proof57 review. These artifacts are already
+materialized for integration01. Source, API, runtime, Base, Node, controller,
+checked-emission receipt and raw execution identities remain mandatory. Manual
+JavaScript, diagnostic overlays and favorable earlier attempts cannot qualify an
+actual-source owner.
 
-`run-recipe-v1.py RECIPE --stage semantic --check-only --ledger LEDGER --jobs JOBS
---prefix CHECK` audits recipe/tool provenance without executing its stages. To run
-all semantic stages, omit `--check-only`. Individual affected steps can be queued
-through Phase41 recipe-run.py using the exact recipe step names and fresh outputs.
-Use `derive-frontend,derive-current-integration` before consumers of derived tools.
-Prototype controls need no broad frontend sweep. Record all remaining obligations.
+## Current qualification and continuation
 
-The adaptor retains old output-specific assertions. A changed runtime/emission can
-fail scalar outside-region assertions or shape-sensitive owners. Retain failures;
-freeze a reviewed successor after inspecting the actual code. Automatic output
-hash acceptance is unsupported. Parent materialization/same-image repair receipts
-remain historical provenance, never candidate PASS receipts.
+Recipe04 is derived from recipe03 by `prepare-qualification-successor-v1.py`
+and the six explicit review receipts. It preserves all raw controls and the 17
+successful v6 owner closures. Only the failed noncommutative closure uses v7,
+which resolves the two declared auxiliary-catalog identity slots at that
+catalog's directory and retains every hash and semantic check.
 
-## Retained baseline
+The inherited wrapper successor preserves its original 84 oracles, two boundaries
+and six activation keys, and separately requires 12 ordinary scalar/Nat helper
+activations, 30 dependency fallback controls and eight public-input/alias controls.
+Fusion and hybrid successors bind the selected runtime/guard policy without
+changing their semantic inventories. Layout permits only five exact outer
+`,false` capability metadata edits and requires byte-identical executable public
+bindings. The native constructor assay reports `wholeProgramIsolation:false`:
+three retained worker owners coexist with a seven-worker selected inventory and
+new pair destinations. Role-specific fingerprints, exact constructor removal,
+positive literal/pair evidence and four fresh behavioral/alias/deep reports remain
+required. Historical single-change isolation is retained as historical evidence.
+
+Recipe05 changes only two reviewed BST aggregation expectations: the exact selected
+worker inventory grows from three to six, and the nondependency Array.isArray
+activity observation changes from 92 to 30. All semantic, alias, deep, guard and
+zero-entry refusal checks remain intact. A read-only pass checked 472 assertions,
+bindings and relations across 45 reports and found only those two mismatches.
+The failed prior closure remains immutable; the successor uses a fresh closure
+output. Runtime measurement continues to bind recipe04 and the same checked14
+image; semantic aggregation uses recipe06. Neither requires a target rerun.
+
+Recipe06 adds only the missing `executionOutput:"file"` declaration for the
+successful hybrid controller. It retains exact output-path matching and redirects
+the failed aggregation to a fresh closure directory. Static preflight checked 643
+closure invariants; every other check passed. The recipe06 closure now passes all
+34 owners, the preinstall audit passes 14 gates and 227 source bindings, and the
+preinstall composite passes 41 groups. Final runtime passes 45 points/669 samples;
+root performance/cost admission is complete/pass. Postinstall install/verify/42-CLI smoke now completes with all commands returning
+zero. The installed audit passes 15 gates and 227 source bindings with no
+outstanding gates, and the postinstall composite passes 41 groups. Portable freeze/plan and the selected smoke replays now pass. Protected-file
+verification and archive/writer closure also pass as separate release stages.
+
+Run an explicitly selected unfinished list through the ledger, for example:
 
 ```sh
-python3 selfhost/tools/performance/phase43/validation/freeze-baseline-v1.py \
-  --current selfhost/tools/performance/phase42/current/manifest.json \
-  --reference selfhost/tools/performance/phase42/baseline/manifest.json \
-  --catalog selfhost/tools/performance/phase37/catalog.json \
-  --out selfhost/tools/performance/phase43/baseline \
-  --expected-api 63ddb2dd35554aafafc26dbdff4aba86b5d3774cd0d99a9509ccf237d210ba54
+python3 selfhost/tools/performance/phase41/recipe-run.py \
+  selfhost/build/phase43/recipe06.json COMMA_SEPARATED_UNFINISHED_NAMES \
+  --ledger selfhost/build/phase43/campaign.jsonl \
+  --jobs FRESH_JOBS_DIRECTORY --prefix FRESH_JOB_PREFIX
 ```
 
-Root queues this archive/hash work away from timing. It retains current checked16
-and reference pinned TS portable acquisition triplets; no recursive raw copy.
-Full module/source/catalog validation and archive reopening remain intact.
+Full source/refusal/frontend checks, all 34 owner clauses and final composite
+closure remain mandatory. The inherited frontend runs serially with two workers
+on CPU3,4, 1GiB heap each, 3GiB combined RSS, a 5GiB available-memory preflight and
+2GiB floor. This is an explicit bounded exception to the usual CPU3/2GiB campaign
+protocol; no other heavy job overlaps it.
 
-## Clean final timing after semantic survival
+## Runtime, compiler cost and release
+
+`check-measurement-bindings-v1.py` binds the compact preserved Phase42 baseline,
+pinned TypeScript and fresh selected45 candidate acquisition. Then
+`prepare-runtime-batches-v1.py RECIPE --binding BINDING --plan FRESH_PLAN`
+creates three serial 15-point preset600 batches. `close-runtime-batches-v1.py`
+requires all 45 points and 669 fresh samples with the unchanged warmup,
+calibration, target, role ordering and module identities. Short screens are
+reported separately and cannot replace the final runtime protocol.
+
+The existing Phase39 compiler-cost planner and Phase35 runner measure three
+rotated fresh samples for TypeScript, checked16 and checked14. Keep the inherited
+four controls and four changed-family sources (`lexer`,
+`coverage-map-churn-128`, `coverage-closures-256`, `coverage-bst-64`) as two separate
+36-request reports. Report normal checked-library request time, host import,
+process time, memory, output bytes and sample ranges; runtime ratios and compiler
+costs are separate evidence.
+
+After a complete preinstall composite and explicit root performance/cost
+admission, the postinstallation command is:
 
 ```sh
 python3 selfhost/tools/performance/phase43/validation/run-recipe-v1.py \
-  "$PHASE43_RECIPE" --stage cost-prepare --ledger "$LEDGER" --jobs "$JOBS" \
-  --prefix final-cost-prepare
-python3 selfhost/tools/performance/phase43/validation/check-measurement-bindings-v1.py \
-  "$PHASE43_RECIPE" --cost --receipt "$PHASE43_OUT/measurement-bindings.json"
-python3 selfhost/tools/performance/phase43/validation/prepare-runtime-batches-v1.py \
-  "$PHASE43_RECIPE" --binding "$PHASE43_OUT/measurement-bindings.json" \
-  --plan "$PHASE43_OUT/runtime-batches.json"
-python3 selfhost/tools/performance/phase41/recipe-run.py \
-  "$PHASE43_OUT/runtime-batches.json" runtime-batch1-plan,runtime-batch2-plan,runtime-batch3-plan \
-  --ledger "$LEDGER" --jobs "$JOBS" --prefix final-runtime-plan
-python3 selfhost/tools/performance/phase41/recipe-run.py \
-  "$PHASE43_OUT/runtime-batches.json" runtime-batch1,runtime-batch2,runtime-batch3 \
-  --ledger "$LEDGER" --jobs "$JOBS" --prefix final-runtime
-python3 selfhost/tools/performance/phase43/validation/close-runtime-batches-v1.py \
-  "$PHASE43_OUT/runtime-batches.json" "$PHASE43_OUT/runtime-full45-close.json"
+  selfhost/build/phase43/recipe06.json --stage postinstall \
+  --admission selfhost/build/phase43/integration01/performance-admission.json \
+  --ledger selfhost/build/phase43/campaign.jsonl \
+  --jobs FRESH_POSTINSTALL_JOBS --prefix FRESH_POSTINSTALL_PREFIX
 ```
 
-All45 points retain preset600 and669 balanced fresh samples, Node24.18 identity,
-selected attempt/module receipts and checked16 baseline. Run compiler-cost
-requests separately from runtime timing; no profiling overlap. One frozen release
-integration is appropriate. A full45 single600s run cannot finish:669 one-second
-warmup floors alone exceed its deadline. Three15-point serial batches retain the
-published sampling protocol; allow about15–20min for runtime. Reducing warmup or
-rounds would require a new frozen statistical design and changed claims.
+Admission must be complete/pass and bind the selected attempt and API; it records
+runtime regressions, both cost reports, source-size growth and the accepted scope.
+Postinstall launch, installed audit and composite reports live under integration01.
+Portable freeze and plan pass for the current 45-point bundle. Compact20 replay
+passes three cases in 11.6977 s; target60 BST/Map/numeric passes three in
+25.8144 s; fast02 with budget60 passes five in 41.9259 s. These are separate smoke
+receipts and do not add samples to the final 669. Fast01 with budget20 fails at
+its budget after 21.2061 s with four of five cases completed; retain that failure
+beside the later completed replay. Portable smoke precedes writer closure and
+archive publication; final accounting/protected/archive stages now pass.
+Use
+[the release handoff](../products/portability/release-handoff-v1.md) for those
+commands and the protected103-file check.
 
-For a quick changed-family screen use programs/run.py `--budget20 --cases IDs`
-with Phase43 baseline and a freshly prepared candidate. Candidate-bearing fixtures
-must be re-emitted by the selected attempt. Changed String/Map/components need
-independent TS and fallback/callback/error boundaries beyond pure numeric points.
-Run broad qualification only after smallest falsifiers pass; the final mandatory
-inherited gates remain pending until actually closed on the selected image.
-
-## Frozen scalar precedence successor
-
-Queue a static proposal after an early actual raytrace emission:
-
-```sh
-"$PHASE43_NODE" selfhost/tools/performance/phase43/validation/scalar-precedence-v1.mjs \
-  propose selfhost/build/phase42/integration03/scalar-ray.mjs \
-  EARLY_CANDIDATE_RAYTRACE.mjs "$PHASE43_ATTEMPT/attempt.json" \
-  selfhost/build/phase43/scalar-contract-proposal01.json
-```
-
-The proposal pins both roles' checked emission receipts, exact selected snapshot
-runtime fingerprints, Node/Acorn and every outside changed section. It remains
-`reviewed:false` and changed-section classifications remain PENDING. Independently
-inspect those changes, freeze a successor contract with explicit classifications,
-and obtain a separate review JSON with `complete:true`, `staticReviewPassed:true`,
-`contractSha256`, `producerSha256`, `approvedChangedSections` and
-`approvedProtectedEnvelopeEdits`. Both approval lists must exactly match the
-contract/source observations, including empty lists. No unknown output hash is
-learned during a PASS gate.
-
-Pass `--scalar-contract FROZEN_CONTRACT --scalar-review REVIEW` to recipe
-preparation. This replaces only inherited scalar precedence step/collector
-supplement. Final check reads the **canonical fresh** OUT/scalar-ray.mjs and its
-own receipt; early proposal output must match its module SHA but cannot substitute
-for canonical final acquisition. Both selected-image paths are checked.
-
-Runtime comparison removes only exact consumed snapshot prefixes, with every AST
-statement entirely inside/outside that boundary. Program differences must match
-frozen reviewed section hashes exactly. Five protected executable scalar bodies
-remain byte-identical. The sole permitted metadata envelope change is an exact
-third literalfalse argument to `scalarCapture(name,unchangedBody,false)`; it is
-recorded by owner and unchanged body SHA, with independent approval. Original
-Nat refusal, private scalar leaf helper, dependency guards, proof entry/restoration,
-host entry and scalar-root refusal remain mandatory. The report is `checked:false`
-for the non-executable comparison; normalized code is never imported or emitted.
-Existing actual activation/mutation/Error owners remain separate mandatory gates.
-
-The runtime sum collector also pins the exact Phase43 batch-planner and
-measurement-binder producers and the repaired recipe07 ancestry SHA; a merely
-matching kind string cannot replace producer/recipe lineage.
-
-## Actual new-owner wrappers and extension builder
-
-Use `owner-extension-template-v1.json` as a configuration outline. It is deliberately
-unreviewed and contains placeholders. Select only implemented mechanisms; supply
-all applicable source/refusal/fixture owners. `steps` contains the root's exact
-`phase43-*` acquisition/derivation/controller argv commands, each with its own
-existing supervisor. `owners` names fixed policies from `owner-catalogue-v1.json`.
-For each row provide canonical rawReport/rawExecution/rawCommandInput paths,
-actual selected emittedModules and derivation manifests. Guards emit their raw JSON
-to supervisor stdout: use that exact stdout file as rawReport. Compiler-only type
-and admission proof controls require no emittedModules; admission requires its
-inputs.json in auxiliaryInputs to bind the untouched selected API. This is a
-proof-refusal scope, with emission explicitly suppressed.
-
-```sh
-python3 selfhost/tools/performance/phase43/validation/build-extension-v1.py \
-  --config FINAL_REVIEWED_OWNER_CONFIG.json --attempt "$PHASE43_ATTEMPT" \
-  --campaign "$PHASE43_OUT" --contracts selfhost/build/phase43/owner-contracts01 \
-  --extension selfhost/build/phase43/owner-extension01.json
-python3 selfhost/tools/performance/phase43/validation/prepare-recipe-v1.py \
-  --attempt "$PHASE43_ATTEMPT" --out "$PHASE43_OUT" --recipe "$PHASE43_RECIPE" \
-  --extension selfhost/build/phase43/owner-extension01.json \
-  --scalar-contract FINAL_SCALAR_CONTRACT.json --scalar-review FINAL_SCALAR_REVIEW.json
-```
-
-The builder runs no target/compiler and freezes policy/controller snapshots plus
-selected attempt identity. Contract directory lies outside absent campaign OUT.
-It appends bounded canonical wrappers after raw controller steps. Each wrapper
-requires the exact controller tool in a successful bounded raw execution receipt,
-canonical controller input, exact source-policy counts/statuses, selected actual
-checked source emission receipts, and actual derivation linkage. Derivation
-manifests must pin the reviewed actual instrumentation tool; module/file hashes
-are rechecked. A manually patched favorable module cannot substitute for genuine
-selected emission. Failures retain raw evidence and write incomplete failed wrapper
-reports; no failed raw report can become PASS. The extension adds these groups to
-all16 inherited owners, without changing their controls.
-
-Frozen counts include source-v4 String439/113/3; renamed9/30/2 and negative9/24/2;
-fast-v7 compiler proof59; actual callback22/32; noncommutative-v2 fixture85;
-admission refusal11; BST7results and pair15results/exact10controls. Actual U32
-oracle requires82 cases in order (27 fixed +40 frozen baseline numeric hooks +15
-protocol hooks), exact equality and clean proof for every case. Products use their
-actual `passed` status rather than inventing raw complete/pass fields; wrapper
-completion follows those exact assertions and provenance. New controller variants
-or changed source policy need an independently reviewed catalogue successor.
-
-Runtime preflight now mirrors the exact retained build.mjs concatenation of
-core/base/effects/readback/foreign plus its header/newlines. Recipe preparation and
-every stage reject selected snapshot fragment/bundle divergence; postinstall
-therefore checks before the installation launch. The check reads fragments and
-compares bytes; it does not execute runtime code. Check current source explicitly
-with `runtime-agreement-v1.py --attempt ATTEMPT --current-src selfhost/src --receipt
-NEW_REPORT` when root freezes the final source.
-
-When the selected source includes mixed quantity(1/2) native Sigma admission, add
-`--native-proof-review selfhost/tools/performance/phase43/review/native-proof-controls-v1-review.json`
-to recipe preparation. This selects the independently reviewed **57-control**
-successor, preserving the original43 order except the explicit Sigma(2,1) admission
-and adding four exact admissions/four self-equalities/six quantity-distinct
-refusals. Exact source/review/witness hashes and quantityDomain are required;
-inherited counter/vector equality remains unchanged. The validation-owned smaller
-43-control draft is unused retained investigation material; execute only the
-selected stronger57 successor. Final native ABI/alias/runtime controls remain
-mandatory separately.
-
-String actual-source policy now selects source-controls-v4 plus scope-aware
-source-instrument-v5 (same439/113/3). Guard refusal is checked for the exact lexical
-root whose dependency guard contains the mutated binding; independently safe nested
-roots may activate. Complete outer activation, full values/events, intermediate
-owned trace and absence of ambient proof leakage remain required. Superseded actual08
-controller failure remains evidence. Final owner config/controller versions need
-independent review before publication.
-
-Final product profiles select the frozen actual-oracle-v2, pair-source-oracle-v3
-and pair-ignored-oracle-v3 tools. Ordinary BST qualification requires `pairState`
-and `scalarWrapper` true and positive build/insert/fin/down worker counts for each
-nonzero-size row. Pair target qualification requires `precedenceControl:false`
-and actual global pair worker activation; original stronger scalar fixtures use
-separate precedence owners requiring `true`, global pair zero and scoped scalar
-activation. They cannot satisfy positive pair owners. Ignored-field targets and
-precedence controls likewise use separate exact flag profiles. All input modules
-still require selected checked emission/source/API/runtime/driver provenance.
-
-String source-v4 supersedes v3's false baseline witness requirement (same439/113/3,
-instrumentv5). Candidate affected roots must refuse their own mutated dependency;
-a baseline root has the same obligation when present. Full value/event equivalence
-and complete outer activation remain unchanged. If callback integer-host guard
-source is selected, use callbacks-environment-numeric-guard (actual-guard-controls-v2,
-22oracles/39boundaries); the previously qualified32-boundary profile remains
-historical and does not replace new guard-specific String/Float/public callback
-controls. Independent final config/count/controller review remains required.
-
-The concrete `final-owner-config-v1.json` now contains37 supervised acquisition,
-derivation and raw-control steps for15 new owners. It selects callback guard22/39
-without duplicating the old32 profile, retains independent callback85/admission11,
-and includes both ordinary and renamed literal String fixture graphs. Every path
-except the supported `${ATTEMPT}`, `${OUT}`, `${NODE}` bindings is concrete.
-Fresh checked16 baseline emissions for the pair targetv2 sources are included;
-preserved failed v1 acquisitions cannot replace them. Ignored-field pair-v3
-reports actual per-row fresh-pair/scalar counts, checked independently by the
-wrapper as positive activation or original scalar precedence.
-
-This config remains `reviewed:false` pending independent final configuration
-review. The assembler `create-final-owner-config-v1.py` executes no targets and
-must not be used to overwrite a subsequently reviewed immutable config. Once
-reviewed, root can freeze a versioned configuration with `reviewed:true`, then run:
-
-```sh
-python3 selfhost/tools/performance/phase43/validation/build-extension-v1.py \
-  --config FINAL_REVIEWED_CONFIG.json --attempt FINAL_ATTEMPT \
-  --campaign selfhost/build/phase43/integration01 \
-  --contracts selfhost/build/phase43/owner-contracts01 \
-  --extension selfhost/build/phase43/owner-extension01.json
-```
-
-No owner is qualified by this static configuration. Map's actual-source gate must
-be added through a reviewed successor when its frozen source controller is ready;
-all inherited16 owners remain mandatory on the final selected image.
-
-`final-owner-config-v2.json` is the pending successor after ordinary activation
-failures in the independent plain pair target fixtures. It retains those failures
-and uses the independently checked prefix BST fixture's actual `bst.down$tree`
-pair path, with `--fixture --scalar-wrapper --pair-state`. Its report must have
-fixture/scalarWrapper/pairState true and7 rows. Every ordinary row, including zero,
-must execute the prefix build worker; every nonzero row must execute prefix insert,
-insert.fin and bst.down. Existing ordinary BST qualification remains separate.
-Original pair and ignored-field fixtures remain scalar precedence controls.
-Use the matching v2 catalogue/wrapper/extension builder; v1 review inputs survive
-unchanged. Map and an independent ignored-field BST derivative are still pending
-actual-source controllers. The v2 config remains reviewed false.
-
-The v2 successor now contains34steps14owners, including the frozen independent
-ignored-field BST derivative. `products-bst-pair-ignored` binds exact controller
-SHA, pairState/worker/marker,7 ordinary rows and all6 alias/freshness/conditional
-retention/deep12000 private control records. Its wrapper requires actual build
-activation on every row and actual insert/fin/down activation for every nonzero
-row. Both source roles are freshly emitted against their explicit checked attempt,
-with the baseline fixed to checked16. Original ignored-field scalar precedence
-remains a separate owner. Map remains pending; no static config counts as a runtime
-qualification.
-
-The pending v3 configuration retains34steps14owners while replacing materialized
-callback routes with actual-source fusion controls22/39 and independent fusion
-fixture85. Admission11 remains unchanged, including malformed Type0/2 refusals.
-The matching v3 catalogue pins both controller hashes; its wrapper additionally
-requires the exact authentic actual-source-fusion derivation kind, complete and
-certified. Fresh checked source modules precede this derivation. Historical saved
-fusion performance and prior guard graph controls do not qualify the selected
-source image. Use `build-extension-v3.py` with the eventually frozen reviewed
-configuration; older v1/v2 inputs and review receipts remain intact. Independent
-v3 static review is recorded, but final image/Map/fresh closures/cost are pending.
+Detailed rationale and historical repairs are in
+[design validation](../../../../../design/phase43/validation.md),
+[implementation validation](../../../../../implementation/phase43/validation.md)
+and the immutable [review receipts](../review/). No earlier failed raw evidence is
+removed or relabeled as passing.

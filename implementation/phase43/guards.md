@@ -183,3 +183,48 @@ demand/admission checks remain. Source syntax and static actual inventory/alias
 checks pass; root owns target qualification. The integration01 failure remains
 at `selfhost/build/phase43/integration01/preflight-fold/fold-controls/report.json`.
 No production change is proposed for this controller correction.
+
+## Checked14 hybrid and native retention successors
+
+The original hybrid derivation refuses checked14 because it assumes the old and
+new runtime digests must match. Frozen `hybrid-actual-derive-v3.mjs` independently
+binds the exact old checked13 baseline and checked14 candidate module/receipt/
+API/source/runtime/attempt identities. Same input/Base, all four exact iterative
+fallback bodies, the two native Bool comparison witnesses,16-budget checks and
+clean executable copies remain mandatory. The unchanged hybrid-flat controls
+remain the behavior gate. Independent runtime-binding review passes; root owns
+the successor execution with fresh outputs.
+
+The old native constructor assay is a historical single-change isolation proof.
+That scope is inapplicable to checked14: runtime and public capability scaffolding
+change, four additional workers are admitted, and bst.down's fresh pair destination
+replaces returned tuple arrays. Its failed report is preserved. Frozen
+`native-owned-retention-v2.mjs` with companion binding and explicit assertion map
+claims actual-emission retention only: crossRoleRuntimeIdentical:false and
+wholeProgramIsolation:false. The original three worker owners remain an exact
+scope within the exact seven-owner candidate inventory. Scoped Tuple/Con/True/
+False ctor counts12/8/4/4 become0; Con and Bool field literals0→2 remain positive.
+TupleReturn stays0→0, honestly superseded by a fresh pair-buffer/destination
+witness. Zero returns the original input before allocation; both destination RHS
+temporaries finish before either paired write, and the input pair is never written.
+
+Nine runtime declaration bodies (ctor/build/force/project/fn/call/callOwned/get/bad)
+remain byte-identical, checked at exact AST boundaries under each separately pinned
+runtime. This does not claim the entire runtime is unchanged. The retention assay
+requires hashes and successful assertions from selected bst-controls (38boundaries,
+24aliases,3deep), products BST, product fixture, and six pair-ignored zero/fresh/
+alias/deep witnesses. Masked hashes are independent per-role fingerprints only;
+there is no broad normalizer or cross-role masked equality. Static syntax/inventory
+checks pass; independent review and root qualification remain the promotion gates.
+
+Independent native retention review now approves the immutable producer, binding
+and explicit assertion map: `review/native-owned-retention-v1-review.json`,
+SHA5c970d3bc9cd0e41240e4f2101a24c837920ee0c841d62d3eb0df53d512a8c53.
+The separately required root executions and semantic closures remain distinct.
+
+For final accounting, frozen `source-accounting-binding-v1.py` emits a read-only
+JSON identity receipt for checked14's maintained70-module graph, manifest, nine
+canonical runtime modules and assembled runtime against the current checkout.
+It pins attempt/API/runtime and all frozen provenance hashes, asserts exact
+selected counts, and performs no checker/program execution or raw writes.
+`accounting-v2.py` remains immutable; root runs both final steps after job closure.

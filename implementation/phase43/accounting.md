@@ -1,14 +1,15 @@
-# Phase43 complexity and elapsed-time accounting draft
+# Phase43 complexity and elapsed-time accounting
 
-Read-only snapshot refreshed 2026-10-04T03:00:07.379796+00:00.
-Protected baseline `714c5f5dbdc9a434e7272c21b6216c3a70f5a33c`; current checkout HEAD `b0770fcc65073f6b4de22941a11d3733162539fd` plus current working
-source. This is a draft before final source freeze, not a final selected-image cost
-claim. Refresh after freeze with `python3 selfhost/tools/performance/phase43/guards/accounting-v2.py`.
+Read-only snapshot refreshed 2026-10-04T04:45:04.103376+00:00.
+Protected baseline `714c5f5dbdc9a434e7272c21b6216c3a70f5a33c`; current checkout HEAD `0b97c465814cafa67f7b6822b462051bea3abd73` plus the selected checked14 source. The maintained 70-module compiler graph and
+runtime are verified byte-for-byte against the canonical checkout by the selected
+source binding. Other repository and tooling inventories describe this accounting
+cutoff; later publication files are outside that inventory.
 Generated compiler/module images and `selfhost/build` artifacts are excluded from
 source/tool growth. Physical lines include blank lines/comments; Bend definitions
 count declarations beginning `def` at column zero, not compiler AST nodes.
 
-## Production source inventory
+## Repository source inventory and maintained production graph
 
 | Scope | Baseline files | Current files | Baseline lines | Current lines | Net lines | Baseline defs | Current defs |
 |---|---|---|---|---|---|---|---|
@@ -48,8 +49,8 @@ They are unchanged at this snapshot. Parser/lexer production modules remain
 included by both scopes. No source decline or new exclusion is claimed: the
 same maintained graph grows by the same1,384lines/164defs as the full inventory.
 Counts follow Phase42's physical/nonblank/UTF8 and column-zero ^def/^type/^law
-conventions. This live graph comparison is a prefreeze draft; final refresh must
-bind the selected frozen source and verify no graph membership change.
+conventions. This maintained 70-module graph is bound to the selected checked14 snapshot,
+with unchanged membership, by `source-accounting-binding-final01.json`.
 
 Changed production files (git diff additions/deletions include replacements):
 
@@ -119,29 +120,30 @@ Protected commit contains 0 files in the Phase43 tool subtree.
 
 | Tool family | Files | Physical lines | Bytes |
 |---|---|---|---|
-| (orchestration) | 2 | 64 | 3355 |
+| (orchestration) | 3 | 191 | 10077 |
 | baseline | 3 | 1229 | 10158158 |
-| callbacks | 55 | 5977 | 437690 |
-| guards | 26 | 1562 | 134671 |
+| callbacks | 59 | 6157 | 454274 |
+| current | 3 | 2896 | 1550276 |
+| guards | 34 | 2165 | 193611 |
 | map | 116 | 30844 | 1909381 |
-| products | 90 | 12107 | 605569 |
-| review | 18 | 1401 | 69044 |
-| strings | 76 | 12060 | 855656 |
-| validation | 43 | 13042 | 552875 |
+| products | 101 | 13380 | 681904 |
+| review | 31 | 1917 | 101083 |
+| strings | 81 | 12377 | 879190 |
+| validation | 57 | 18719 | 764432 |
 
 | File extension | Files | Physical lines | Bytes |
 |---|---|---|---|
 | .bend | 104 | 34270 | 1913582 |
-| .gz | 1 | 0 | 10109189 |
+| .gz | 2 | 0 | 11530115 |
 | .js | 2 | 27 | 3518 |
-| .json | 90 | 27552 | 925393 |
-| .md | 9 | 684 | 41856 |
-| .mjs | 113 | 5883 | 1015241 |
+| .json | 122 | 36917 | 1271037 |
+| .md | 16 | 1296 | 72345 |
+| .mjs | 120 | 6454 | 1106028 |
 | .patch | 54 | 6296 | 397550 |
-| .py | 55 | 3568 | 319619 |
+| .py | 67 | 4609 | 407760 |
 | .txt | 1 | 6 | 451 |
 
-Non-baseline experiment inventory totals: 426 files, 77057 text lines, 4568241 bytes. This includes fixtures and copied reference sources; it is not a claim that every line was newly authored.
+Non-baseline experiment inventory totals: 485 files, 88646 text lines, 6544228 bytes. This includes fixtures and copied reference sources; it is not a claim that every line was newly authored.
 
 The refresh script itself is included. Tool inventory can grow through reporting
 without changing compiler code. Version counts are intentionally not deduplicated:
@@ -150,24 +152,24 @@ frozen versions and rejected variants are part of the retained research cost.
 ## Recorded enclosing job time
 
 Ledger `selfhost/build/phase43/campaign.jsonl`, SHA256
-`ad32f7260f6a667311c6a6ca9668bcaa13d0ceefa91f58aa8a97808ede37a3d7`, 226 complete JSON records;
-latest sequence 226.
+`e87d49b832fd7cc0d62a306e73541f10277d7687d7d76f10ac803b9630ab8851`, 410 complete JSON records;
+latest sequence 410.
 Clock scope begins at the ledger's explicit setup start (2026-10-04T00:20:05.124281+00:00); earlier
 conversation/delegation is outside this clock. Cutoff is the latest ledger
-recorded timestamp (2026-10-04T02:58:34.490923+00:00), not the time this document was generated.
+recorded timestamp (2026-10-04T04:44:37.691865+00:00), not the time this document was generated.
 
 | Quantity | Value |
 |---|---|
-| Completed enclosing interval records | 225 |
-| Successful recorded jobs | 188 |
-| Failed/incomplete recorded jobs | 37 |
-| Sum of failed/incomplete intervals | 270.565s (4.51min) |
-| Sum of enclosing wall intervals | 2479.511s (41.33min) |
-| Union of enclosing wall intervals | 2479.511s (41.33min) |
+| Completed enclosing interval records | 409 |
+| Successful recorded jobs | 360 |
+| Failed/incomplete recorded jobs | 49 |
+| Sum of failed/incomplete intervals | 453.566s (7.56min) |
+| Sum of enclosing wall intervals | 6642.165s (110.70min) |
+| Union of enclosing wall intervals | 6642.165s (110.70min) |
 | Sum minus union (overlap) | 0.000s (0.00min) |
-| Recorded wall span | 9509.367s (158.49min) |
-| Wall span outside recorded interval union; unclassified | 7029.855s (117.16min) |
-| Sum of reported toolElapsedSeconds | 2479.164s (41.32min) |
+| Recorded wall span | 15872.568s (264.54min) |
+| Wall span outside recorded interval union; unclassified | 9230.402s (153.84min) |
+| Sum of reported toolElapsedSeconds | 6641.697s (110.69min) |
 
 Each ledger event is an enclosing job interval. Nested child durations are not
 added again. The sum counts overlapping enclosing intervals more than once; the
@@ -220,10 +222,28 @@ Failed/incomplete enclosing records:
 | 191 | job-map-fixture12-baseline | 1 | 2.749 |
 | 197 | job-map-actual12-controls | 1 | 0.414 |
 | 202 | job-map-actual13-controls | 1 | 0.390 |
+| 231 | final-semantic-preflight-fold | 1 | 13.948 |
+| 237 | final-independent01-remaining-phase35-owners | 1 | 140.057 |
+| 277 | final-semantic03-phase41-wrapper-control | 1 | 2.657 |
+| 286 | final-semantic04-phase42-fusion-derive | 1 | 0.062 |
+| 288 | final-semantic05-phase42-layout-actual | 1 | 2.551 |
+| 302 | final-semantic06-phase42-hybrid-derive | 1 | 0.634 |
+| 303 | final-semantic07-phase42-native-owned-assay | 1 | 0.200 |
+| 354 | final-semantic08-phase43-close-callbacks-number-count-noncommutative | 1 | 1.093 |
+| 388 | final-semantic10-close-phase42 | 1 | 0.178 |
+| 395 | job-inventory-recipe05 | 1 | 0.084 |
+| 397 | final-semantic11-close-phase42 | 1 | 0.218 |
+| 407 | job-portable-fast01 | 1 | 21.318 |
 
 Repeated enclosing labels: []. Invalid/inverted intervals: none (asserted).
 
-Final refresh must bind the selected source snapshot and completed release ledger.
+The selected source binding and completed ledger cutoff are recorded above;
+later publication activity is outside this receipt.
 Compiler-cost measurements, full timing/profiles and qualification decisions belong
 in their respective receipts/reports; this accounting does not infer those costs
 from line counts or elapsed job intervals.
+
+The exact generated accounting snapshot and source binding are retained as
+`accounting-final01.md` and `source-accounting-binding-final01.json` in the
+[published raw evidence](../../selfhost/tools/performance/phase43/evidence/selected-release.json).
+This document changes only final-status wording from that frozen generated snapshot.

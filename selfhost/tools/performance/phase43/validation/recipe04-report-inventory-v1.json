@@ -1,0 +1,176 @@
+{
+  "kind": "phase43-recipe04-readonly-report-inventory",
+  "complete": true,
+  "executedTargets": false,
+  "recipe": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/recipe04.json",
+  "checks": 472,
+  "documentsRead": 45,
+  "mismatches": [
+    {
+      "group": "newOwnerRequirements",
+      "owner": "bst-structural",
+      "document": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/bst-controls/report.json",
+      "pointer": "/selected",
+      "expected": [
+        "inorder",
+        "bst.up",
+        "bst.down"
+      ],
+      "actual": [
+        "inorder",
+        "bst.up",
+        "insert.fin",
+        "bst.down",
+        "p37.bst.insert",
+        "p37.bst.build"
+      ]
+    },
+    {
+      "group": "newOwnerRequirements",
+      "owner": "bst-structural",
+      "document": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/bst-controls/report.json",
+      "pointer": "/hostControls",
+      "expected": [
+        {
+          "key": "isArray",
+          "requiresZeroEntry": false,
+          "premise": "Array.isArray checks descriptor setup during initialization and is not a regionHostGuard dependency; this scalar body/container path does not require the changed global function",
+          "metrics": [
+            {
+              "role": "original",
+              "callbacks": 0,
+              "entries": 0
+            },
+            {
+              "role": "candidate",
+              "callbacks": 0,
+              "entries": 92
+            }
+          ]
+        },
+        {
+          "key": "push",
+          "requiresZeroEntry": true,
+          "premise": "Actual guarded Array protocol used by generic application/container traversal",
+          "metrics": [
+            {
+              "role": "original",
+              "callbacks": 105,
+              "entries": 0
+            },
+            {
+              "role": "candidate",
+              "callbacks": 105,
+              "entries": 0
+            }
+          ]
+        },
+        {
+          "key": "slice",
+          "requiresZeroEntry": true,
+          "premise": "Actual guarded Array protocol used by generic application/container traversal",
+          "metrics": [
+            {
+              "role": "original",
+              "callbacks": 681,
+              "entries": 0
+            },
+            {
+              "role": "candidate",
+              "callbacks": 681,
+              "entries": 0
+            }
+          ]
+        },
+        {
+          "key": "Symbol.iterator",
+          "requiresZeroEntry": true,
+          "premise": "Actual guarded Array protocol used by generic application/container traversal",
+          "metrics": [
+            {
+              "role": "original",
+              "callbacks": 459,
+              "entries": 0
+            },
+            {
+              "role": "candidate",
+              "callbacks": 459,
+              "entries": 0
+            }
+          ]
+        }
+      ],
+      "actual": [
+        {
+          "key": "isArray",
+          "requiresZeroEntry": false,
+          "premise": "Array.isArray checks descriptor setup during initialization and is not a regionHostGuard dependency; this scalar body/container path does not require the changed global function",
+          "metrics": [
+            {
+              "role": "original",
+              "callbacks": 0,
+              "entries": 0
+            },
+            {
+              "role": "candidate",
+              "callbacks": 0,
+              "entries": 30
+            }
+          ]
+        },
+        {
+          "key": "push",
+          "requiresZeroEntry": true,
+          "premise": "Actual guarded Array protocol used by generic application/container traversal",
+          "metrics": [
+            {
+              "role": "original",
+              "callbacks": 105,
+              "entries": 0
+            },
+            {
+              "role": "candidate",
+              "callbacks": 105,
+              "entries": 0
+            }
+          ]
+        },
+        {
+          "key": "slice",
+          "requiresZeroEntry": true,
+          "premise": "Actual guarded Array protocol used by generic application/container traversal",
+          "metrics": [
+            {
+              "role": "original",
+              "callbacks": 681,
+              "entries": 0
+            },
+            {
+              "role": "candidate",
+              "callbacks": 681,
+              "entries": 0
+            }
+          ]
+        },
+        {
+          "key": "Symbol.iterator",
+          "requiresZeroEntry": true,
+          "premise": "Actual guarded Array protocol used by generic application/container traversal",
+          "metrics": [
+            {
+              "role": "original",
+              "callbacks": 459,
+              "entries": 0
+            },
+            {
+              "role": "candidate",
+              "callbacks": 459,
+              "entries": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "missing": []
+}

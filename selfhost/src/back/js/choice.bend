@@ -19,9 +19,6 @@ law j_choice_leaf:
   for +binder: U32
   Bool
 
-
-
-
 @unsafe
 def j_choice_call(
   +book: List<&2, KDef>,
@@ -50,12 +47,3 @@ def j_choice_arm(t, first):
 def j_choice_leaf(t, binder):
   String.eq(tg(t), "App") && String.eq(tg(j_strip(kid(t, 0))), "Var") && U32.is_eq(ix(j_strip(kid(t, 0))), binder) &&
   String.eq(tg(j_strip(kid(t, 1))), "Ctr") && String.eq(nm(j_strip(kid(t, 1))), "Unit") && U32.is_eq(terms_len(ks(j_strip(kid(t, 1)))), 0)
-
-@unsafe
-def j_choice_emit(
-  +book: List<&2, KDef>,
-  +env: List<&2, KTerm>,
-  +spine: KTerm,
-  +tail: Bool,
-) -> String:
-  jir_compile(book, jir_lower_choice(book, env, spine, tail))

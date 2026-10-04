@@ -28,14 +28,20 @@ checked, annotated KTerm
 | [`model.bend`](../src/back/js/ir/model.bend) | Typed operation and parameter definitions. |
 | [`lower.bend`](../src/back/js/ir/lower.bend) | Type/provenance checks, erased slots, call chunks, literals and constructors. |
 | [`control.bend`](../src/back/js/ir/control.bend) | Lower already admitted Boolean choices into ordered condition/branch operations. |
-| [`facts.bend`](../src/back/js/ir/facts.bend) | Structural coverage, invocation and closure counts, plus conservative copy facts. |
+| [`facts.bend`](../src/back/js/ir/facts.bend) | The bounded `JIRCopy` environment, including lookup, admission and scope invalidation. |
+| [`constants.bend`](../src/back/js/ir/constants.bend) | Fold nine admitted U32 operations on integer literal operands. |
 | [`simplify.bend`](../src/back/js/ir/simplify.bend) | Bounded local alias propagation and exact identity-binding elimination. |
 | [`emit.bend`](../src/back/js/ir/emit.bend) | Print the operations already selected by lowering. |
 | [`statement.bend`](../src/back/js/ir/statement.bend) | Emit return-position bindings and branches as lexical blocks. |
 
-The facts module currently provides structural facts. It is not a general effect,
-escape or ownership analysis. A counted syntactically known lambda call does not
-authorize bypassing its runtime descriptor.
+The production entry is `j_expr -> jir_lower -> jir_compile`; `jir_compile`
+runs `jir_simplify` before `jir_emit`. Lambda bodies use `jir_emit_return` for
+statement emission. Compatibility entry points use the same compile schedule.
+
+The facts module contains the lexical value environment actually consumed by
+simplification. It is not a general effect, escape or ownership analysis. There
+is no production structural-count visitor. Known target and arity alone do not
+authorize bypassing a function's runtime descriptor.
 
 ## Operation contracts
 
@@ -89,6 +95,13 @@ An exact singleton `let x = value; x` becomes the same RHS node. The RHS is stil
 evaluated once in the outer scope, with its original demand. Other bindings stay
 present because an opaque compatibility node may still refer to them.
 
+Constant folding covers `U32.add`, `sub`, `and`, `or`, `xor`, `inc`, `not`, `shl`
+and `shr` only when their already admitted IR operands are integer literal words.
+The 32-line pass preserves modulo-2^32 arithmetic. It does not fold floating-point
+words, mutable host functions such as `Math.imul`, or expressions involving
+nonliteral operands. It introduces no general algebraic identity that could
+discard an evaluation or coercion.
+
 Statement emission removes immediate function calls around return-position
 bindings. It first evaluates RHSs into reserved temporaries in one block, then
 opens a nested block containing the source bindings and body. The two scopes are
@@ -113,10 +126,9 @@ fallback. The plan still consumes source facts during emission; the new printer
 is therefore not yet completely independent of the checked book. Rewriting its
 fallback does not authorize dropping binders referenced by the retained plan.
 
-Coverage counters count these boundaries explicitly. An opaque source subtree is
-not reported as analyzed merely because its enclosing expression has an IR node.
-Migrating an adapter should remove the replaced implementation, not add a second
-unused path.
+An opaque source subtree is not analyzed merely because its enclosing expression
+has an IR node. Migrating an adapter should remove the replaced implementation,
+not add a second unused path.
 
 The exported library exposes mutable function descriptors and global bindings.
 Known target and arity alone do not permit bypassing `code`, `env`, `bound`,
@@ -132,8 +144,9 @@ explicit; a closed executable contract cannot silently replace the library ABI.
 2. Resolve source/type facts in lowering. Add one structured node only when the
    operation needs a distinct contract. Keep optimization passes independent of
    source definition names and JavaScript text.
-3. Update every relevant traversal: facts, simplification, expression emission
-   and statement emission. Unsupported forms remain explicit boundaries.
+3. Update simplification, expression emission and statement emission; update
+   lexical fact rules if the node introduces scope or a substitutable value.
+   Unsupported forms remain explicit boundaries.
 4. First compare unchanged emission with a frozen compiler. Then test the
    transformation using combinations of features, renamed helpers, shadowing,
    erasure, delayed effects, host mutation and deep stacks. Existing backend tests
@@ -146,3 +159,17 @@ The first Phase44 migration produced byte-identical output for the maintained
 45-point, 23-source corpus and passed independent composition and backend
 observations. That establishes a checked starting point for those artifacts;
 subsequent transformations require their own qualification.
+
+Run the focused IR contract suite from `selfhost/` with a checked attempt and a
+fresh output directory:
+
+```sh
+node --max-old-space-size=1024 src/back/js/ir/test.mjs \
+  build/phase44/checked03 build/phase44/ir-local-check01 \
+  --expect-statements --expect-folds
+```
+
+The suite uses the real `j_library` entry and selected runtime; its synthetic
+KDefs isolate backend contracts and do not replace checked-source conformance.
+Both flags require actual transformation activation. Change the attempt path
+when qualifying a successor and retain each previous output directory.

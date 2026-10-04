@@ -49,10 +49,6 @@ def j_primitive_call(+book: List<&2,KDef>, +spine: KTerm) -> Bool:
   kc(Bool, String.eq(tg(spine), "Call") && j_primitive_known(nm(spine)),
     u => j_primitive_definition(book, lookup(book, nm(spine)), terms_len(ks(spine))), u => False{})
 
-@unsafe
-def j_primitive_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm) -> String:
-  jir_compile(book, jir_lower_primitive(book, env, spine))
-
 # A large literal shift still evaluates its left operand, without coercing it.
 @unsafe
 def j_primitive_shift_literal(+name: String, +a: String, +count: U32) -> String:

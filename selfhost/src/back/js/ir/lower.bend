@@ -1,5 +1,5 @@
 # Lower checked expressions once into explicit runtime operations. This pass
-# preserves the existing demand boundaries; optimization belongs in passes.bend.
+# preserves the existing demand boundaries; optimization belongs in shared passes.
 @unsafe
 def jir_lower(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tail: Bool) -> JIRExpr:
   kc(JIRExpr, (String.eq(tg(t), "Lam") || String.eq(tg(t), "Mat")) && Bool.not(String.eq(j_l_name(t), "")),

@@ -1,9 +1,6 @@
 # Nat representation is a whole private-graph choice. These semantic IR facts
 # come from the existing closed-type/literal/native proof, never emitted text.
 # A refused boundary keeps every original BigInt instruction and public ABI.
-type JWEmission is Data:
-  JWEmission{+code: String, +numberNat: Bool}
-
 @unsafe
 def jw_nat_functions_valid(+functions: List<&2,JWFunction>) -> Bool:
   match functions:

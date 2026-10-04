@@ -1,5 +1,8 @@
 # Emit straight-line basic blocks. Only branches and suspended private calls
 # change the PC; arithmetic and construction do not dispatch through an evaluator.
+type JWEmission is Data:
+  JWEmission{+code: String, +numberNat: Bool, +recursive: Bool}
+
 @unsafe
 def jw_emit_value(+v: JWValue, +direct: Bool) -> String:
   match v:
@@ -340,17 +343,32 @@ def j_worker_emission(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> JWEmission:
 @unsafe
 def j_worker_emission_done(+defs: List<&2,KDef>, +functions: List<&2,JWFunction>) -> JWEmission:
   kc(JWEmission, Bool.not(List.is_empty(&2,KDef, defs)) && jw_all_valid(functions), u =>
-    jw_emission_mode(functions, j_region_def_count(defs), jw_nat_functions_valid(functions)), u => JWEmission{"", False{}})
+    jw_emission_mode(functions, j_region_def_count(defs), jw_nat_functions_valid(functions)), u => JWEmission{"", False{}, False{}})
 
 @unsafe
 def jw_emission_mode(+functions: List<&2,JWFunction>, +total: U32, +numberNat: Bool) -> JWEmission:
-  JWEmission{jw_declarations_components(kc(List<&2,JWFunction>, numberNat, u => jw_nat_functions(functions), u => functions),
-    total, jw_components(functions), numberNat), numberNat}
+  jw_declarations_components(kc(List<&2,JWFunction>, numberNat, u => jw_nat_functions(functions), u => functions),
+    total, jw_components(functions), numberNat)
+
+# The successful SCC labels already prove all private edges. A non-canonical
+# member proves a mutual cycle; singleton recursion is an explicit self-call.
+# This bounded fact ranks public entries, never excludes private acyclic helpers.
+@unsafe
+def jw_graph_recursive(+functions: List<&2,JWFunction>, +components: List<&2,U32>, +at: U32) -> Bool:
+  match functions:
+    case Nil{}: False{}
+    case Con{JWFunction{name, arity, code, valid}, rest}:
+      match components:
+        case Nil{}: False{}
+        case Con{group, remaining}:
+          Bool.not(U32.is_eq(group, at)) || jw_calls_target(code, at) ||
+            jw_graph_recursive(rest, remaining, U32.inc(at))
 
 @unsafe
-def jw_declarations_components(+functions: List<&2,JWFunction>, +total: U32, +plan: Maybe<&2,List<&2,U32>>, +numberNat: Bool) -> String:
+def jw_declarations_components(+functions: List<&2,JWFunction>, +total: U32, +plan: Maybe<&2,List<&2,U32>>, +numberNat: Bool) -> JWEmission:
   match plan:
-    case None{}: ""
+    case None{}: JWEmission{"", False{}, False{}}
     case Some{components}:
-      kc(String, numberNat, u => jw_nat_declarations(), u => "") ++
-        "let $workerBudget=32;" ++ jw_emit_components(functions, components, functions, 0, total)
+      JWEmission{kc(String, numberNat, u => jw_nat_declarations(), u => "") ++
+        "let $workerBudget=32;" ++ jw_emit_components(functions, components, functions, 0, total),
+        numberNat, jw_graph_recursive(functions, components, 0)}

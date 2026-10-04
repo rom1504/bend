@@ -1333,10 +1333,20 @@ def j_instance_root_raw(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +r
 def j_instance_root_workers(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +raw: List<&2,KDef>,
   +at: U32, +pure: JPure, +emission: JWEmission) -> String:
   match emission:
-    case JWEmission{declarations, numberNat}:
-      kc(String, Bool.not(String.eq(declarations, "")),
-        u => j_instance_root_guarded_mode(book, d, rows, at, pure, declarations, numberNat),
-        u => j_instance_root_view(book, d, rows, j_instance_caps(view, raw)))
+    case JWEmission{declarations, numberNat, recursive}:
+      kc(String, recursive || j_instance_has_contextual_rows(rows), u =>
+        kc(String, Bool.not(String.eq(declarations, "")),
+          u => j_instance_root_guarded_mode(book, d, rows, at, pure, declarations, numberNat),
+          u => j_instance_root_view(book, d, rows, j_instance_caps(view, raw))), u => "")
+
+# Alias rows have an erased prefix of zero; real contextual rows have consumed
+# at least one erased argument. Their historical admission remains unchanged.
+# A new alias-only public guard requires recursive work to amortize its entry.
+@unsafe
+def j_instance_has_contextual_rows(+rows: List<&2,KDef>) -> Bool:
+  match rows:
+    case Nil{}: False{}
+    case Con{row, rest}: U32.is_gt(da(row), 0) || j_instance_has_contextual_rows(rest)
 
 # Exact native scalar-key components needed by closed Map graphs. These proof
 # rows do not create public argument admission or change residual native code.

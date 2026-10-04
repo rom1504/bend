@@ -13,6 +13,7 @@ The survey changes documentation only; it does not qualify a new compiler.
 | [Parallel validation plan](parallel-validation.md) | Bounded parallel correctness work, isolated timings, artifact reuse and better accounting. |
 | [External compiler research](../../research/compilers_architecture_and_techniques/README.md) | Source-based Rust, Go, Zig, LLVM, V8, Lean and pinned Bend TypeScript comparisons. |
 | [Remaining opportunities](../remaining_opportunities/README.md) | Cross-compiler comparison, ranked proposals and the next discriminating experiments. |
+| [Backend strategy](../remaining_opportunities/backend-strategy.md) | JavaScript, existing C/Clang, direct LLVM IR and custom machine-code tradeoffs. |
 
 For everyday usage, use the [compiler guide](../BEND-IN-BEND.md). For exact
 JavaScript node and ABI contracts, use the maintained
@@ -54,7 +55,7 @@ The [parallelization document](parallel-validation.md) is a proposal: the curren
 production policy remains serial until its scheduler/resource/isolation pilot is
 implemented and validated. A larger `jobs` value alone is not that implementation.
 
-For this documentation change, the source survey and recommendations received
+For the initial architecture-survey commit `8961ca3`, the source survey and recommendations received
 independent technical review. The manifest counts were reproduced, all 328 local
 links across the 16 new Markdown documents resolved, and whitespace/reference
 checks passed. External chapters identify their actual inspected revisions and

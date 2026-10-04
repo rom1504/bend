@@ -12,6 +12,10 @@ measured speedup. The supporting documents are the
 [prior-work audit](../self_hosted/prior-experiments.md),
 [seven compiler studies](../../research/compilers_architecture_and_techniques/README.md),
 [comparison matrix](comparison.md) and [experiment plan](experiment-plan.md).
+The separate [backend strategy](backend-strategy.md) recommends retaining JS
+as primary and testing the existing C path before considering LLVM IR or a
+custom machine-code backend. Compiler execution target and user-program output
+target are distinct decisions.
 
 ## What changed our recommendation
 

@@ -1,0 +1,181 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -43,6 +43,7 @@
+   +owner = lookup(book, nm(ty))
+   +kind = wnf(book, dt(owner))
+   kc(Maybe<&2,U32>, j_region_scalar(book, ty) || j_list_ground_type(book, ty), u => Some{fuel}, u =>
++    kc(Maybe<&2,U32>, j_pure_map_head(book, ty), u => j_pure_map_check(book, ty, active, fuel), u =>
+     kc(Maybe<&2,U32>, j_pure_list_head(book, ty), u => j_pure_list_check(book, ty, active, fuel), u =>
+     kc(Maybe<&2,U32>, j_pure_sigma_head(book, ty), u => j_pure_sigma_check(book, ty, active, fuel), u =>
+     kc(Maybe<&2,U32>, String.eq(tg(ty), "ADT") && U32.is_eq(terms_len(ks(ty)), 0) && List.is_empty(&2, String, rm(ty)) &&
+@@ -50,7 +51,7 @@
+       String.eq(tg(kind), "Typ") && U32.is_eq(terms_len(ks(kind)), 1) && String.eq(tg(kid(kind, 0)), "Qua") && U32.is_eq(qt(kid(kind, 0)), 2), u =>
+       kc(Maybe<&2,U32>, has_name(active, nm(ty)), u => Some{fuel}, u =>
+         kc(Maybe<&2,U32>, Bool.not(List.is_empty(&2, KDef, dc(owner))) && U32.is_le(j_region_def_count(dc(owner)), 32), u =>
+-          j_pure_type_ctors(book, dc(owner), nm(ty), Con{nm(ty), active}, fuel), u => None{})), u => None{}))))
++          j_pure_type_ctors(book, dc(owner), nm(ty), Con{nm(ty), active}, fuel), u => None{})), u => None{})))))
+ 
+ @unsafe
+ def j_pure_type_ctors(+book: List<&2,KDef>, +cs: List<&2,KDef>, +owner: String, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+@@ -455,6 +456,9 @@
+ 
+ @unsafe
+ def j_pure_same_heads(+book: List<&2,KDef>, +a: KTerm, +b: KTerm, +fuel: U32) -> Maybe<&2,U32>:
++  kc(Maybe<&2,U32>, String.eq(nm(a), "Map") || String.eq(nm(b), "Map"), u =>
++    kc(Maybe<&2,U32>, j_pure_map_head(book, a) && j_pure_map_head(book, b), u =>
++      j_pure_same_check(book, kid(a, 1), kid(b, 1), fuel), u => None{}), u =>
+   kc(Maybe<&2,U32>, String.eq(nm(a), "List") || String.eq(nm(b), "List"), u =>
+     kc(Maybe<&2,U32>, j_pure_list_head(book, a) && j_pure_list_head(book, b), u =>
+       j_pure_same_check(book, kid(a, 1), kid(b, 1), fuel), u => None{}), u =>
+@@ -464,7 +468,7 @@
+         j_pure_same_check(book, kid(a, 2), kid(b, 2), fuel)), u => None{}), u =>
+     kc(Maybe<&2,U32>, String.eq(tg(a), "ADT") && String.eq(tg(b), "ADT") && String.eq(nm(a), nm(b)) &&
+       List.is_empty(&2, KTerm, ks(a)) && List.is_empty(&2, KTerm, ks(b)) &&
+-      List.is_empty(&2, String, rm(a)) && List.is_empty(&2, String, rm(b)), u => Some{fuel}, u => None{})))
++      List.is_empty(&2, String, rm(a)) && List.is_empty(&2, String, rm(b)), u => Some{fuel}, u => None{}))))
+ 
+ @unsafe
+ def j_pure_same_next(+book: List<&2,KDef>, +a: KTerm, +b: KTerm, +result: Maybe<&2,U32>) -> Maybe<&2,U32>:
+@@ -525,3 +529,71 @@
+     Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && U32.is_eq(qt(ty), 1) &&
+     j_primitive_type(book, wnf(book, kid(ty, 0)), "Nat") && String.eq(tg(rest), "All") && U32.is_eq(qt(rest), 1) &&
+     j_primitive_type(book, wnf(book, kid(rest, 0)), "Nat") && j_primitive_type(book, wnf(book, kid(rest, 1)), "Nat")
++
++# Exact native Map<&2,scalar> specialization. Constructor rows are validated;
++# owner names alone never grant shape/ownership or public argument permission.
++@unsafe
++def j_pure_map_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
++  +owner = lookup(book, "Map")
++  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Map") && U32.is_eq(terms_len(ks(ty)), 2) &&
++    List.is_empty(&2, String, rm(ty)) && String.eq(tg(kid(ty, 0)), "Qua") && U32.is_eq(qt(kid(ty, 0)), 2) &&
++    List.is_empty(&2, KTerm, ks(kid(ty, 0))) && j_region_scalar(book, kid(ty, 1)) &&
++    String.eq(dk(owner), "ADT") && db(owner) && U32.is_eq(da(owner), 2) && U32.is_eq(dx(owner), 0) &&
++    U32.is_eq(j_region_def_count(dc(owner)), 3) && j_list_ground_kind(wnf(book, j_specialize(book, dt(owner), ks(ty)))) &&
++    j_pure_native_ctor(lookup(dc(owner), "MTip"), "MTip", 0) &&
++    j_pure_native_ctor(lookup(dc(owner), "MLeaf"), "MLeaf", 2) &&
++    j_pure_native_ctor(lookup(dc(owner), "MNode"), "MNode", 3)
++
++@unsafe
++def j_pure_closed_map(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
++  +head = wnf(book, ty)
++  j_pure_map_head(book, head) && j_pure_type(book, head)
++
++@unsafe
++def j_pure_map_fields(+book: List<&2,KDef>, +tel: KTerm, +expected: KTerm, +fields: List<&2,KTerm>, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
++  kc(Maybe<&2,U32>, U32.is_gt(fuel, 0), u =>
++    j_pure_map_fields_head(book, wnf(book, tel), expected, fields, active, U32.sub(fuel, 1)), u => None{})
++
++@unsafe
++def j_pure_map_fields_head(+book: List<&2,KDef>, +tel: KTerm, +expected: KTerm, +fields: List<&2,KTerm>, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
++  match fields:
++    case Nil{}:
++      kc(Maybe<&2,U32>, j_pure_same_closed(book, tel, expected, 64), u => Some{fuel}, u => None{})
++    case Con{h, rest}:
++      kc(Maybe<&2,U32>, String.eq(tg(tel), "All") && U32.is_eq(qt(tel), 1) &&
++        j_pure_same_closed(book, kid(tel, 0), h, 64), u =>
++        kc(Maybe<&2,U32>, j_pure_same_closed(book, h, expected, 64), u =>
++          j_pure_map_fields(book, kid(tel, 1), expected, rest, active, fuel), u =>
++          j_pure_map_fields_next(book, kid(tel, 1), expected, rest, active,
++            j_pure_type_check(book, h, active, fuel))), u => None{})
++
++@unsafe
++def j_pure_map_fields_next(+book: List<&2,KDef>, +tel: KTerm, +expected: KTerm, +fields: List<&2,KTerm>, +active: List<&2,String>, +r: Maybe<&2,U32>) -> Maybe<&2,U32>:
++  match r:
++    case None{}: None{}
++    case Some{fuel}: j_pure_map_fields(book, tel, expected, fields, active, fuel)
++
++@unsafe
++def j_pure_map_check(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
++  +cs = dc(lookup(book, "Map"))
++  j_pure_map_leaf(book, ty, active,
++    j_pure_map_fields(book, j_specialize(book, dt(lookup(cs, "MTip")), ks(ty)), ty, Nil{}, active, fuel))
++
++@unsafe
++def j_pure_map_leaf(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +r: Maybe<&2,U32>) -> Maybe<&2,U32>:
++  match r:
++    case None{}: None{}
++    case Some{fuel}:
++      +c = lookup(dc(lookup(book, "Map")), "MLeaf")
++      j_pure_map_node(book, ty, active,
++        j_pure_map_fields(book, j_specialize(book, dt(c), ks(ty)), ty,
++          [kt("ADT", "String", 0, 0, Nil{}), kid(ty, 1)], active, fuel))
++
++@unsafe
++def j_pure_map_node(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +r: Maybe<&2,U32>) -> Maybe<&2,U32>:
++  match r:
++    case None{}: None{}
++    case Some{fuel}:
++      +c = lookup(dc(lookup(book, "Map")), "MNode")
++      j_pure_map_fields(book, j_specialize(book, dt(c), ks(ty)), ty,
++        [kt("ADT", "Nat", 0, 0, Nil{}), ty, ty], active, fuel)
+--- a/selfhost/src/back/js/local.bend
++++ b/selfhost/src/back/js/local.bend
+@@ -82,7 +82,7 @@
+ def j_region_local_check_head(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+   kc(Maybe<&2,U32>, j_region_scalar(book, ty), u => Some{fuel}, u =>
+     kc(Maybe<&2,U32>, j_region_local_array(book, ty), u => Some{fuel}, u =>
+-    kc(Maybe<&2,U32>, j_fold_type(book, ty) || j_list_ground_type(book, ty), u => Some{fuel}, u =>
++    kc(Maybe<&2,U32>, j_fold_type(book, ty) || j_list_ground_type(book, ty) || j_pure_closed_map(book, ty), u => Some{fuel}, u =>
+     kc(Maybe<&2,U32>, Bool.not(has_name(active, nm(ty))), u =>
+       j_region_local_record_check(book, ty, j_region_local_ctor_head(book, ty),
+         kc(List<&2,String>, j_region_local_sigma(book, ty), u => active, u => Con{nm(ty), active}), fuel), u => None{}))))
+--- a/selfhost/src/back/js/finite.bend
++++ b/selfhost/src/back/js/finite.bend
+@@ -44,7 +44,7 @@
+   String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) && String.eq(j_l_name(t), "") &&
+     U32.is_eq(terms_len(ks(t)), 2) && String.eq(dk(c), "Ctr") &&
+     (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
+-      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
++      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || j_pure_closed_map(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
+     j_finite_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), U32.inc(depth)) &&
+     j_finite_prefix(book, env, kid(t, 1), ty, U32.inc(depth))
+ 
+@@ -241,7 +241,7 @@
+   +owner = lookup(book, nm(arg))
+   String.eq(tg(ty), "All") &&
+     (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
+-      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) ||
++      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || j_pure_closed_map(book, arg) ||
+       (Bool.not(db(owner)) && j_pure_type(book, arg))) &&
+     j_direct_prefix(book, kid(t, 0), j_arm_type(book, ty, nm(t)), depth) &&
+     j_direct_prefix(book, kid(t, 1), ty, depth)
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -143,7 +143,7 @@
+   kc(JPure, String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) &&
+     U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && String.eq(tg(head), "All"), u =>
+     kc(JPure, (String.eq(tg(wnf(book, kid(head, 0))), "ADT") && Bool.not(db(lookup(book, nm(wnf(book, kid(head, 0))))))) ||
+-      j_list_ground_type(book, kid(head, 0)) || j_pure_closed_list(book, kid(head, 0)) ||
++      j_list_ground_type(book, kid(head, 0)) || j_pure_closed_list(book, kid(head, 0)) || j_pure_closed_map(book, kid(head, 0)) ||
+       # Nat-to-scalar workers retain the existing scalar island selection.
+       # The remaining purity proof verifies admitted data result types.
+       (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book) &&
+@@ -167,7 +167,7 @@
+ 
+ @unsafe
+ def j_component_wrapper_arg(+book: List<&2,KDef>, +arg: KTerm) -> Bool:
+-  String.eq(tg(arg), "ADT") && Bool.not(db(lookup(book, nm(arg))))
++  String.eq(tg(arg), "ADT") && (Bool.not(db(lookup(book, nm(arg)))) || j_pure_closed_map(book, arg))
+ 
+ # Reuse the already computed complete graph, rather than proving it twice.
+ @unsafe
+@@ -252,7 +252,7 @@
+       +c = lookup(dc(owner), nm(t))
+       kc(Bool, String.eq(tg(t), "Mat") && String.eq(j_l_name(t), "") && U32.is_eq(terms_len(ks(t)), 2) &&
+         String.eq(dk(c), "Ctr") && (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
+-          j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
++          j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || j_pure_closed_map(book, arg) || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
+         j_component_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_component_fields(origin, da(c), rest), d, U32.inc(depth)) &&
+         j_component_prefix(book, env, kid(t, 1), ty, slots, d, U32.inc(depth)), u => False{})
+ 
+--- a/selfhost/src/back/js/producer.bend
++++ b/selfhost/src/back/js/producer.bend
+@@ -115,7 +115,7 @@
+ # Existing Ctr emission preserves the original tag/field-array representation.
+ @unsafe
+ def j_producer_ctor(+book: List<&2,KDef>, +ty: KTerm, +name: String, +active: List<&2,String>) -> KDef:
+-  kc(KDef, (has_name(active, "@producer") && j_fold_type(book, ty)) || j_list_ground_type(book, ty),
++  kc(KDef, (has_name(active, "@producer") && j_fold_type(book, ty)) || j_list_ground_type(book, ty) || j_pure_closed_map(book, ty),
+     u => lookup(dc(lookup(book, nm(ty))), name), u => j_region_local_ctor(book, ty))
+ 
+ # One child in a known saturated combiner call. Argument order is split at the

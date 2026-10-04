@@ -1,0 +1,44 @@
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -210,6 +210,41 @@
+   return true;
+ }
+ 
++// Full total-U32 fusion only: no floating validation, literals or residual code.
++// Keep broad dispatch/protocol/global identities; narrow only numeric operations.
++const regionU32FusionHooks=[];
++for(let i=0;i<regionNumericHooks.length;i++){
++  const p=regionNumericHooks[i];
++  if(p[0]===regionDataViewPrototype||(p[0]===Math&&p[1]!=='imul')||
++      (p[0]===Number&&(p[1]==='isNaN'||p[1]==='isFinite')))continue;
++  regionU32FusionHooks[regionU32FusionHooks.length]=p;
++}
++function regionHostGuardU32Fusion(){
++  if(regionProof!==null)return true;
++  for(let i=0;i<regionU32FusionHooks.length;i++){
++    const p=regionU32FusionHooks[i],d=regionGetDescriptor(p[0],p[1]);
++    if(!d||!regionOwn(d,'value')||d.value!==p[2])return false;
++  }
++  if(regionGetPrototype(localArrayPrototype)!==scalarObjectPrototype||regionGetPrototype(regionIteratorPrototype)!==regionIteratorParent||
++      regionGetPrototype(regionIteratorParent)!==scalarObjectPrototype)return false;
++  // An inherited numeric setter could run while a proved pure residual builds
++  // a value. Reject added/deleted prototype keys before entering that region.
++  for(let i=0;i<2;i++){
++    const names=regionGetNames(i===0?localArrayPrototype:scalarObjectPrototype),old=regionPrototypeNames[i];
++    if(names.length!==old.length)return false;
++    for(let j=0;j<names.length;j++)if(names[j]!==old[j])return false;
++  }
++  for(let i=0;i<regionProtocolPairs.length;i++){
++    const p=regionProtocolPairs[i],old=regionProtocolDescriptors[i],d=regionGetDescriptor(p[0],p[1]);
++    if(!old){if(d)return false;continue;}
++    if(!d||d.enumerable!==old.enumerable||d.configurable!==old.configurable)return false;
++    const value=regionOwn(old,'value');if(value!==regionOwn(d,'value'))return false;
++    if(value){if(d.value!==old.value||d.writable!==old.writable)return false;}
++    else if(d.get!==old.get||d.set!==old.set)return false;
++  }
++  return true;
++}
++
+ const native=(name,n,f)=>{
+   const value=fn(n,a=>f(...a));
+   // The factory owns these fresh fields; snapshot without calling host hooks.

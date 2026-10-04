@@ -1,0 +1,12 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -162,7 +162,8 @@
+ @unsafe
+ def j_component_admit(+book: List<&2,KDef>, +d: KDef) -> Bool:
+   kc(Bool, U32.is_gt(j_component_refs([dv(d)], dn(d), 1024, 0), 0), u => True{}, u =>
+-    j_component_wrapper_arg(book, wnf(book, kid(wnf(book, dt(d)), 0))))
++    (j_component_wrapper_arg(book, wnf(book, kid(wnf(book, dt(d)), 0))) ||
++      j_primitive_type(book, wnf(book, kid(wnf(book, dt(d)), 0)), "Nat")))
+ 
+ @unsafe
+ def j_component_wrapper_arg(+book: List<&2,KDef>, +arg: KTerm) -> Bool:

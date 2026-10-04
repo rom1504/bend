@@ -1,0 +1,158 @@
+# Held general private pair-state lowering. No public descriptor or type proof changes.
+# Called only from an already admitted complete-JPure component declaration.
+@unsafe
+def j_pair_loop_shape(+book: List<&2,KDef>, +d: KDef) -> Bool:
+  +body = j_strip(dv(d))
+  +ty = wnf(book, dt(d))
+  +zero = j_strip(kid(body, 0))
+  +alt = j_strip(kid(body, 1))
+  +succ = j_strip(kid(alt, 0))
+  +result = j_fold_root_result(book, dt(d), da(d))
+  U32.is_ge(da(d), 2) && U32.is_le(da(d), 8) && j_u32_bounded([dv(d)], 512) &&
+    String.eq(tg(body), "Mat") && String.eq(nm(body), "Zero") && String.eq(tg(alt), "Mat") && String.eq(nm(alt), "Succ") &&
+    String.eq(tg(j_strip(kid(alt, 1))), "Efq") && j_primitive_type(book, wnf(book, kid(ty, 0)), "Nat") &&
+    j_pure_closed_sigma(book, result) &&
+    j_pair_loop_signature(book, dt(d), da(d), result, 0) &&
+    U32.is_eq(j_nat_loop_count(zero, 0), U32.sub(da(d), 1)) && U32.is_eq(j_nat_loop_count(succ, 0), da(d)) &&
+    String.eq(tg(j_nat_loop_unwrap(zero)), "Var") &&
+    U32.is_eq(ix(j_nat_loop_unwrap(zero)), ix(j_fusion_binder(zero, U32.sub(da(d), 2)))) &&
+    j_pair_loop_tail(book, d, succ, j_call_spine(j_nat_loop_unwrap(succ), Nil{}), result)
+
+@unsafe
+def j_pair_loop_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32, +result: KTerm, +at: U32) -> Bool:
+  +h = wnf(book, ty)
+  kc(Bool, U32.is_eq(left, 0), u => j_pure_same_closed(book, h, result, 64), u =>
+    String.eq(tg(h), "All") && Bool.not(U32.is_eq(qt(h), 0)) &&
+    kc(Bool, U32.is_eq(left, 1), u => j_pure_same_closed(book, kid(h, 0), result, 64),
+      u => j_nat_loop_scalar(book, kid(h, 0))) &&
+    j_pair_loop_signature(book, kid(h, 1), U32.sub(left, 1), result, U32.inc(at)))
+
+@unsafe
+def j_pair_loop_tail(+book: List<&2,KDef>, +d: KDef, +succ: KTerm, +spine: KTerm, +result: KTerm) -> Bool:
+  +update = j_call_spine(j_strip(terms_at(ks(spine), U32.sub(da(d), 1))), Nil{})
+  +helper = lookup(book, nm(update))
+  String.eq(tg(spine), "Call") && String.eq(nm(spine), dn(d)) && U32.is_eq(terms_len(ks(spine)), da(d)) &&
+    j_pair_loop_same_args(succ, ks(spine), 0, U32.sub(da(d), 1)) &&
+    String.eq(tg(update), "Call") && U32.is_eq(terms_len(ks(update)), da(helper)) &&
+    U32.is_gt(da(helper), 0) && U32.is_le(da(helper), 8) &&
+    j_pair_loop_update_args(book, dt(helper), ks(update), succ, da(helper), U32.sub(da(d), 1), result) &&
+    j_pair_helper_safe(book, helper, result, 128)
+
+# Scalar loop arguments are invariant, and the countdown is its proper predecessor.
+@unsafe
+def j_pair_loop_same_args(+succ: KTerm, +args: List<&2,KTerm>, +at: U32, +stop: U32) -> Bool:
+  kc(Bool, U32.is_eq(at, stop), u => True{}, u =>
+    String.eq(tg(j_strip(terms_at(args, at))), "Var") &&
+    U32.is_eq(ix(j_strip(terms_at(args, at))), ix(j_fusion_binder(succ, at))) &&
+    j_pair_loop_same_args(succ, args, U32.inc(at), stop))
+
+# The sole whole-buffer use is the final, immediately destructured helper input.
+@unsafe
+def j_pair_loop_update_args(+book: List<&2,KDef>, +ty: KTerm, +args: List<&2,KTerm>, +succ: KTerm, +left: U32, +slot: U32, +result: KTerm) -> Bool:
+  +h = wnf(book, ty)
+  kc(Bool, U32.is_eq(left, 0), u => List.is_empty(&2, KTerm, args) && j_pure_same_closed(book, h, result, 64), u =>
+    String.eq(tg(h), "All") && kc(Bool, U32.is_eq(left, 1), u =>
+      j_pure_same_closed(book, kid(h, 0), result, 64) &&
+      String.eq(tg(j_strip(terms_at(args, 0))), "Var") &&
+      U32.is_eq(ix(j_strip(terms_at(args, 0))), ix(j_fusion_binder(succ, slot))), u =>
+      j_nat_loop_scalar(book, kid(h, 0)) && j_region_field_atom(j_strip(terms_at(args, 0))) &&
+      U32.is_eq(j_region_counter_uses([terms_at(args, 0)], ix(j_fusion_binder(succ, slot)), 0), 0)) &&
+    j_pair_loop_update_args(book, kid(h, 1), List.tail(&2, KTerm, args), succ, U32.sub(left, 1), slot, result))
+
+@unsafe
+def j_pair_helper_safe(+book: List<&2,KDef>, +d: KDef, +result: KTerm, +fuel: U32) -> Bool:
+  String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) &&
+    U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && U32.is_gt(fuel, 0) &&
+    j_pure_valid(j_direct_cached(book, dn(d))) &&
+    j_pure_same_closed(book, j_fold_root_result(book, dt(d), da(d)), result, 64) &&
+    j_pair_prefix_safe(book, Nil{}, dv(d), dt(d), result, U32.sub(fuel, 1))
+
+# A pair parameter may only enter the sole Tuple match. No whole-shell Var is
+# introduced, so the fresh destination cannot become a field or saved alias.
+@unsafe
+def j_pair_prefix_safe(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +result: KTerm, +fuel: U32) -> Bool:
+  +body = j_strip(t)
+  +h = wnf(book, ty)
+  kc(Bool, U32.is_gt(fuel, 0), u =>
+    kc(Bool, String.eq(tg(body), "Lam"), u =>
+      String.eq(tg(h), "All") && Bool.not(j_pure_closed_sigma(book, wnf(book, kid(h, 0)))) &&
+      j_pair_prefix_safe(book, Con{kt("Env", "", ix(body), 0, [kid(h, 0)]), env}, kid(body, 0),
+        subst(kid(h, 1), ix(h), var(nm(body), ix(body))), result, U32.sub(fuel, 1)), u =>
+    kc(Bool, String.eq(tg(body), "Mat"), u =>
+      j_finite_arm(book, env, body, h, 0) &&
+      j_pair_prefix_safe(book, env, kid(body, 0), j_arm_type(book, h, nm(body)), result, U32.sub(fuel, 1)) &&
+      kc(Bool, j_pure_closed_sigma(book, wnf(book, kid(h, 0))), u => String.eq(nm(body), "Tuple"),
+        u => j_pair_prefix_safe(book, env, kid(body, 1), h, result, U32.sub(fuel, 1))), u =>
+    kc(Bool, String.eq(tg(body), "Efq"), u => True{}, u =>
+      Bool.not(String.eq(tg(h), "All")) && j_pair_leaf_safe(book, env, body, result, U32.sub(fuel, 1))))), u => False{})
+
+@unsafe
+def j_pair_leaf_safe(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +result: KTerm, +fuel: U32) -> Bool:
+  +body = j_strip(t)
+  +spine = j_call_spine(body, Nil{})
+  kc(Bool, U32.is_gt(fuel, 0), u =>
+    kc(Bool, String.eq(tg(body), "Ctr"), u => String.eq(nm(body), "Tuple") && U32.is_eq(terms_len(ks(body)), 2), u =>
+    kc(Bool, j_linear_prefix_alias(book, env, body, ""), u =>
+      j_pair_leaf_safe(book, j_context(book, env, ks(body)), kid(body, 1), result, U32.sub(fuel, 1)), u =>
+      String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), da(lookup(book, nm(spine)))) &&
+      j_pair_helper_safe(book, lookup(book, nm(spine)), result, U32.sub(fuel, 1)))), u => False{})
+
+@unsafe
+def j_pair_loop_declaration(+book: List<&2,KDef>, +d: KDef) -> String:
+  +last = U32.sub(da(d), 1)
+  +body = j_strip(kid(j_strip(kid(j_strip(dv(d)), 1)), 0))
+  "function " ++ j_region_name(dn(d)) ++ "$tree(" ++ j_region_parameters(0, da(d)) ++ "){/* private fresh pair state */" ++
+    "if($p0===0n)return $p" ++ U32.show(last) ++ ";const $pairState=[$p" ++ U32.show(last) ++ "[0],$p" ++ U32.show(last) ++ "[1]];let $pairFuel=$p0;" ++
+    "while($pairFuel!==0n){" ++ j_pair_loop_emit(book, Nil{}, body, j_arm_type(book, wnf(book, dt(d)), "Succ"), d, 0) ++
+    "$pairFuel-=1n;}return $pairState;}\n"
+
+@unsafe
+def j_pair_loop_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +d: KDef, +at: U32) -> String:
+  +body = j_strip(t)
+  +h = wnf(book, ty)
+  kc(String, U32.is_eq(at, da(d)), u =>
+    j_pair_call_emit(book, env, j_call_spine(terms_at(ks(j_call_spine(body, Nil{})), U32.sub(da(d), 1)), Nil{})) ++ ";", u =>
+    "const " ++ j_local(ix(body)) ++ "=" ++ kc(String, U32.is_eq(at, 0), u => "($pairFuel-1n)", u =>
+      kc(String, U32.is_eq(at, U32.sub(da(d), 1)), u => "$pairState", u => "$p" ++ U32.show(at))) ++ ";" ++
+    j_pair_loop_emit(book, Con{kt("Env", "", ix(body), 0, [kid(h, 0)]), env}, kid(body, 0),
+      subst(kid(h, 1), ix(h), var(nm(body), ix(body))), d, U32.inc(at)))
+
+@unsafe
+def j_pair_call_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm) -> String:
+  +d = lookup(book, nm(spine))
+  "((" ++ j_region_parameters(0, da(d)) ++ ")=>{/* private pair destination helper */" ++
+    j_pair_prefix_emit(book, Nil{}, j_owned_term(dv(d)), dt(d), j_finite_slots(0, da(d))) ++ "})(" ++
+    j_apply_args(book, env, ks(spine), dt(d)) ++ ")"
+
+@unsafe
+def j_pair_prefix_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +args: List<&2,String>) -> String:
+  match args:
+    case Nil{}: j_pair_leaf_emit(book, env, j_strip(t), wnf(book, ty))
+    case Con{arg, rest}:
+      +body = j_strip(t)
+      +h = wnf(book, ty)
+      kc(String, String.eq(tg(body), "Lam"), u => "const " ++ j_local(ix(body)) ++ "=" ++ arg ++ ";" ++
+        j_pair_prefix_emit(book, Con{kt("Env", "", ix(body), 0, [kid(h, 0)]), env}, kid(body, 0),
+          subst(kid(h, 1), ix(h), var(nm(body), ix(body))), rest), u =>
+        j_pair_match_emit(book, env, body, h, arg, rest))
+
+@unsafe
+def j_pair_match_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
+  +input = wnf(book, kid(ty, 0))
+  +c = lookup(dc(lookup(book, nm(input))), nm(t))
+  kc(String, j_pure_closed_sigma(book, input), u => "{" ++
+    j_pair_prefix_emit(book, env, kid(t, 0), j_arm_type(book, ty, "Tuple"), j_native_tuple_fields(arg, 0, rest)) ++ "}", u =>
+    "if(" ++ kc(String, j_primitive_type(book, input, "Bool"), u => "(" ++ arg ++ ")===" ++
+      kc(String, String.eq(nm(t), "True"), u => "true", u => "false"), u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t))) ++ "){" ++
+      j_pair_prefix_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_flat_fields(book, input, arg, 0, da(c), rest)) ++ "}else{" ++
+      j_pair_prefix_emit(book, env, kid(t, 1), ty, Con{arg, rest}) ++ "}")
+
+@unsafe
+def j_pair_leaf_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm) -> String:
+  kc(String, String.eq(tg(t), "Ctr"), u =>
+    "const $pairLeft=" ++ j_expr(book, env, terms_at(ks(t), 0), j_region_local_sigma_left(book, ty), False{}) ++ ";" ++
+    "const $pairRight=" ++ j_expr(book, env, terms_at(ks(t), 1), j_region_local_sigma_right(book, ty), False{}) ++ ";" ++
+    "$pairState[0]=$pairLeft;$pairState[1]=$pairRight;return $pairState;", u =>
+    kc(String, String.eq(tg(t), "Let"), u => "{" ++ j_nat_loop_values(book, env, ks(t), 0) ++ "{" ++
+      j_nat_loop_names(ks(t), 0) ++ j_pair_leaf_emit(book, j_context(book, env, ks(t)), j_strip(kid(t, 1)), ty) ++ "}}", u =>
+      "return " ++ j_pair_call_emit(book, env, j_call_spine(t, Nil{})) ++ ";"))

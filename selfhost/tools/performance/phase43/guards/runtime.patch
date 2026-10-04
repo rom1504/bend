@@ -1,0 +1,51 @@
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -147,6 +147,36 @@
+   }
+   return true;
+ }
++function scalarGuardAfterHost(names){
++  if(regionProofCovers(names))return true;
++  // Generic forcing/matching observes these hooks even on primitive values.
++  if(Object.getPrototypeOf(scalarObjectPrototype)!==null||
++      Object.getPrototypeOf(scalarFunctionPrototype)!==scalarObjectPrototype)return false;
++  // The dominating host guard proved Object.prototype marker absence.
++  for(let i=0;i<scalarPrimitivePrototypes.length;i++){
++    const p=scalarPrimitivePrototypes[i];
++    if(Object.getPrototypeOf(p)!==scalarObjectPrototype||
++       Object.getOwnPropertyDescriptor(p,'request')||Object.getOwnPropertyDescriptor(p,'bounce')||
++       Object.getOwnPropertyDescriptor(p,'build')||Object.getOwnPropertyDescriptor(p,'code'))return false;
++  }
++  const invoke=Object.getOwnPropertyDescriptor(scalarFunctionPrototype,'call');
++  if(!invoke||!Object.hasOwn(invoke,'value')||invoke.value!==scalarFunctionCall)return false;
++  for(const name of names){
++    const s=name==='Nat.add'?scalarNatAddSnapshot:scalarSnapshots[name],g=Object.getOwnPropertyDescriptor(G,name);
++    if(!s||!g||!Object.hasOwn(g,'value')||g.value!==s.original)return false;
++    const f=s.original;
++    if(Object.getPrototypeOf(f)!==scalarObjectPrototype||
++        Object.getPrototypeOf(s.code)!==scalarFunctionPrototype||
++        Object.getOwnPropertyDescriptor(s.code,'call'))return false;
++    if(Object.getOwnPropertyDescriptor(f,'io')||Object.getOwnPropertyDescriptor(f,'typeName'))return false;
++    const a=Object.getOwnPropertyDescriptor(f,'arity'),c=Object.getOwnPropertyDescriptor(f,'code');
++    const e=Object.getOwnPropertyDescriptor(f,'env'),b=Object.getOwnPropertyDescriptor(f,'bound');
++    if(!a||!c||!e||!b||!Object.hasOwn(a,'value')||!Object.hasOwn(c,'value')||!Object.hasOwn(e,'value')||!Object.hasOwn(b,'value')||
++        a.value!==s.arity||c.value!==s.code||e.value!==null||b.value!==s.bound||
++        Object.getOwnPropertyDescriptor(s.bound,'length').value!==0)return false;
++  }
++  return true;
++}
+ // Local arrays may alias, but their standard prototype must not run marker
+ // callbacks while forcing tuple results inside an admitted private region.
+ const localArrayPrototype=Array.prototype;
+@@ -155,6 +185,11 @@
+   if(Object.getPrototypeOf(localArrayPrototype)!==scalarObjectPrototype)return false;
+   for(const k of ['request','bounce','build','code'])if(Object.getOwnPropertyDescriptor(localArrayPrototype,k))return false;
+   return scalarGuard(names);
++}
++// Only an emitted guard clause after regionHostGuard and inert canonical-input
++// tests may call this helper. No mutable state carries success across invocations.
++function localGuardAfterHost(names){
++  return regionProofCovers(names)||scalarGuardAfterHost(names);
+ }
+ // New floating regions may skip generic dispatch between native operations.
+ // Snapshot standard host intrinsics once; reject changed/getter hooks before

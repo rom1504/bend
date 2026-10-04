@@ -1,0 +1,96 @@
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -144,6 +144,7 @@
+     U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) && String.eq(tg(head), "All"), u =>
+     kc(JPure, (String.eq(tg(wnf(book, kid(head, 0))), "ADT") && Bool.not(db(lookup(book, nm(wnf(book, kid(head, 0))))))) ||
+       j_list_ground_type(book, kid(head, 0)) || j_pure_closed_list(book, kid(head, 0)) ||
++      j_string_string(book, wnf(book, kid(head, 0))) ||
+       # Nat-to-scalar workers retain the existing scalar island selection.
+       # The remaining purity proof verifies admitted data result types.
+       (j_primitive_type(book, wnf(book, kid(head, 0)), "Nat") && j_nat_loop_native(book) &&
+@@ -252,7 +253,7 @@
+       +c = lookup(dc(owner), nm(t))
+       kc(Bool, String.eq(tg(t), "Mat") && String.eq(j_l_name(t), "") && U32.is_eq(terms_len(ks(t)), 2) &&
+         String.eq(dk(c), "Ctr") && (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
+-          j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
++          j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || j_string_string(book, arg) || j_string_char(book, arg) || (j_primitive_type(book, arg, "Nat") && j_nat_loop_native(book)) || (Bool.not(db(owner)) && Bool.not(db(c)))), u =>
+         j_component_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_component_fields(origin, da(c), rest), d, U32.inc(depth)) &&
+         j_component_prefix(book, env, kid(t, 1), ty, slots, d, U32.inc(depth)), u => False{})
+ 
+@@ -357,15 +358,19 @@
+ def j_component_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>, +d: KDef, +phase: U32) -> String:
+   +input = wnf(book, kid(ty, 0))
+   +c = lookup(dc(lookup(book, nm(input))), nm(t))
+-  "if(" ++ kc(String, j_primitive_type(book, input, "Bool"),
++  +native = j_string_match_condition(book, input, arg, nm(t))
++  +slot = "$native" ++ nm(t) ++ U32.show(terms_len(env))
++  "if(" ++ kc(String, Bool.not(String.eq(native, "")), u => native, u => kc(String, j_primitive_type(book, input, "Bool"),
+     u => "(" ++ arg ++ ")===" ++ kc(String, String.eq(nm(t), "True"), u => "true", u => "false"),
+     u => kc(String, j_primitive_type(book, input, "Nat"),
+       u => "(" ++ arg ++ ")" ++ kc(String, String.eq(nm(t), "Zero"), u => "===0n", u => "!==0n"),
+-      u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t)))) ++ "){" ++
++      u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t))))) ++ "){" ++
++    kc(String, String.eq(native, ""), u => "", u => "const " ++ slot ++ "=project(" ++ j_quote(nm(t)) ++ "," ++ arg ++ ");") ++
+     j_component_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)),
+       kc(List<&2,String>, j_primitive_type(book, input, "Nat"),
+         u => kc(List<&2,String>, String.eq(nm(t), "Zero"), u => rest, u => Con{"(" ++ arg ++ "-1n)", rest}),
+-        u => j_flat_fields(book, input, arg, 0, da(c), rest)), d, phase) ++ "}else{" ++
++        u => kc(List<&2,String>, String.eq(native, ""), u => j_flat_fields(book, input, arg, 0, da(c), rest),
++          u => j_string_match_fields(slot, 0, da(c), rest))), d, phase) ++ "}else{" ++
+     j_component_emit(book, env, kid(t, 1), ty, Con{arg, rest}, d, phase) ++ "}"
+ 
+ @unsafe
+--- a/selfhost/src/back/js/finite.bend
++++ b/selfhost/src/back/js/finite.bend
+@@ -44,7 +44,7 @@
+   String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) && String.eq(j_l_name(t), "") &&
+     U32.is_eq(terms_len(ks(t)), 2) && String.eq(dk(c), "Ctr") &&
+     (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
+-      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
++      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || j_string_string(book, arg) || j_string_char(book, arg) || (Bool.not(db(owner)) && Bool.not(db(c)) && j_pure_type(book, arg))) &&
+     j_finite_prefix(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), U32.inc(depth)) &&
+     j_finite_prefix(book, env, kid(t, 1), ty, U32.inc(depth))
+ 
+@@ -133,10 +133,14 @@
+ def j_finite_emit_match_tagged(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +arg: String, +rest: List<&2,String>) -> String:
+   +input = wnf(book, kid(ty, 0))
+   +c = lookup(dc(lookup(book, nm(input))), nm(t))
+-  "if(" ++ kc(String, j_primitive_type(book, input, "Bool"),
++  +native = j_string_match_condition(book, input, arg, nm(t))
++  +slot = "$native" ++ nm(t) ++ U32.show(terms_len(env))
++  "if(" ++ kc(String, Bool.not(String.eq(native, "")), u => native, u => kc(String, j_primitive_type(book, input, "Bool"),
+     u => "(" ++ arg ++ ")===" ++ kc(String, String.eq(nm(t), "True"), u => "true", u => "false"),
+-    u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t))) ++ "){" ++
+-    j_finite_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), j_flat_fields(book, input, arg, 0, da(c), rest)) ++ "}else{" ++
++    u => "(" ++ arg ++ ").$===" ++ j_quote(nm(t)))) ++ "){" ++
++    kc(String, String.eq(native, ""), u => "", u => "const " ++ slot ++ "=project(" ++ j_quote(nm(t)) ++ "," ++ arg ++ ");") ++
++    j_finite_emit(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), kc(List<&2,String>, String.eq(native, ""), u => j_flat_fields(book, input, arg, 0, da(c), rest),
++      u => j_string_match_fields(slot, 0, da(c), rest))) ++ "}else{" ++
+     j_finite_emit(book, env, kid(t, 1), ty, Con{arg, rest}) ++ "}"
+ 
+ # Generic residual functions can use these selectors without a new recursive
+@@ -241,7 +244,7 @@
+   +owner = lookup(book, nm(arg))
+   String.eq(tg(ty), "All") &&
+     (j_primitive_type(book, arg, "Bool") || j_list_ground_type(book, arg) ||
+-      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) ||
++      j_pure_closed_list(book, arg) || j_pure_closed_sigma(book, arg) || j_string_string(book, arg) || j_string_char(book, arg) ||
+       (Bool.not(db(owner)) && j_pure_type(book, arg))) &&
+     j_direct_prefix(book, kid(t, 0), j_arm_type(book, ty, nm(t)), depth) &&
+     j_direct_prefix(book, kid(t, 1), ty, depth)
+@@ -348,3 +351,15 @@
+   match result:
+     case None{}: None{}
+     case Some{fuel}: j_direct_expand_def(book, d, active, fuel)
++
++# These helpers are used only after exact type/JPure/source ownership admission.
++@unsafe
++def j_string_match_condition(+book: List<&2,KDef>, +input: KTerm, +arg: String, +name: String) -> String:
++  kc(String, j_string_string(book, input) && (String.eq(name, "SNil") || String.eq(name, "SCon")),
++    u => "(" ++ arg ++ ")" ++ kc(String, String.eq(name, "SNil"), u => "===\"\"", u => "!==\"\""), u =>
++  kc(String, j_string_char(book, input) && String.eq(name, "Chr"), u => "true", u => ""))
++
++@unsafe
++def j_string_match_fields(+slot: String, +at: U32, +total: U32, +rest: List<&2,String>) -> List<&2,String>:
++  kc(List<&2,String>, U32.is_eq(at, total), u => rest, u =>
++    Con{slot ++ "[" ++ U32.show(at) ++ "]", j_string_match_fields(slot, U32.inc(at), total, rest)})

@@ -1,0 +1,26 @@
+// Saved-output causal ablation only. Never installs or compiles a compiler.
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const [input,outArg]=process.argv.slice(2);assert(input&&outArg,'usage: derive.mjs CHECKED16_BST_MODULE NEW_OUT');
+const out=path.resolve(outArg);assert(!fs.existsSync(out));
+const source=fs.readFileSync(input,'utf8'),sha=s=>createHash('sha256').update(s).digest('hex');
+const parser=process.binding('natives')['internal/deps/acorn/acorn/dist/acorn'],pm={exports:{}};new Function('module','exports',parser)(pm,pm.exports);
+const parse=s=>pm.exports.parse(s,{ecmaVersion:'latest',sourceType:'module'});
+function walk(n,f){if(!n||typeof n!=='object')return;f(n);for(const [k,v]of Object.entries(n))if(k!=='start'&&k!=='end'){if(Array.isArray(v))v.forEach(x=>walk(x,f));else if(v&&typeof v==='object')walk(v,f);}}
+const ast=parse(source),bench=ast.body.find(n=>n.type==='ExpressionStatement'&&source.slice(n.start,n.start+11)==='G["bench"]='),branches=[];assert(bench);
+walk(bench,n=>{if(n.type==='IfStatement'&&source.slice(n.test.start,n.test.end).includes('regionHostGuard()'))branches.push(n);});assert.equal(branches.length,1);
+function spine(n){if(n?.type!=='CallExpression'||n.callee.name!=='callOwned')return null;const [f,a]=n.arguments;if(a?.type!=='ArrayExpression')return null;const old=spine(f);if(old)return {name:old.name,args:[...old.args,...a.elements]};if(f?.type==='CallExpression'&&f.callee.name==='get'&&f.arguments[0]?.name==='G')return {name:f.arguments[1]?.value,args:a.elements};return null;}
+const calls=[];walk(branches[0].consequent,n=>{const p=spine(n);if(p?.name==='p37.bst.build'&&p.args.length===5)calls.push({n,p});});assert.equal(calls.length,1);
+const down='$R_98_115_116_46_100_111_119_110$tree',up='$R_98_115_116_46_117_112$tree';assert(ast.body.some(n=>n.id?.name===down)&&ast.body.some(n=>n.id?.name===up));
+const common=`
+function $p43Fin(x,st){const t=st[0],p=st[1];if(t.$==='BLeaf')return ${up}(p,{$:'BNode',a:[{$:'BLeaf',a:[]},x,{$:'BLeaf',a:[]}]});if(t.$==='BNode')return ${up}(p,{$:'BNode',a:[t.a[0],t.a[1],t.a[2]]});return bad('p43 fin invariant');}
+function $p43Build(n,fuel,i,seed,t){while(n!==0n){const x=(((Math.imul(i,((Math.imul(seed,2)>>>0)+1)>>>0)>>>0)+seed)>>>0)%257;t=$p43Insert(fuel,x,t);i=(i+1)>>>0;n-=1n;}return t;}
+`;
+const direct=`function $p43Insert(fuel,x,t){return $p43Fin(x,${down}(fuel,x,[t,{$:'Nil',a:[]}]));}\n`;
+const compact=`function $p43Insert(fuel,x,t){const path=[];let at=t;while(fuel!==0n){if(at.$==='BNode'){const l=at.a[0],v=at.a[1],r=at.a[2],left=x<v;path.push(v,left?r:l,left);at=left?l:r;}else if(at.$!=='BLeaf')return bad('p43 down invariant');fuel-=1n;}let acc;if(at.$==='BLeaf')acc={$:'BNode',a:[{$:'BLeaf',a:[]},x,{$:'BLeaf',a:[]}]};else acc={$:'BNode',a:[at.a[0],at.a[1],at.a[2]]};while(path.length){const left=path.pop(),other=path.pop(),v=path.pop();acc={$:'BNode',a:left?[acc,v,other]:[other,v,acc]};}return acc;}\n`;
+function instrument(s){s=s.replace('function apply(', 'function apply(');const edits=[],a=parse(s);for(const name of ['apply','invokeExact','force','enterExact','callOwned','$p43Build','$p43Insert',down,up]){const f=a.body.find(n=>n.type==='FunctionDeclaration'&&n.id.name===name);if(f)edits.push({at:f.body.start+1,text:`$p43Counters[${JSON.stringify(name)}]=($p43Counters[${JSON.stringify(name)}]??0)+1;`});}for(const e of edits.sort((a,b)=>b.at-a.at))s=s.slice(0,e.at)+e.text+s.slice(e.at);return `const $p43Counters=Object.create(null);\n`+s+`\nfunction $p43ProofActive(){return regionProof!==null;}\nexport {$p43Counters,$p43ProofActive};\n`+(s.includes('function $p43Build(')?'export {$p43Build,$p43Insert};\n':'');}
+fs.mkdirSync(out);const report={kind:'phase43-products-saved-js',checked:false,parentChecked:true,parent:{path:fs.realpathSync(input),sha256:sha(source)},producer:{path:fs.realpathSync(import.meta.filename),sha256:sha(fs.readFileSync(import.meta.filename))},parserSha256:sha(parser),variants:[]};
+for(const variant of ['original','direct','products']){let s=source;if(variant!=='original'){const {n,p}=calls[0],replacement='$p43Build('+p.args.map(x=>source.slice(x.start,x.end)).join(',')+')';s=s.slice(0,n.start)+replacement+s.slice(n.end)+common+(variant==='direct'?direct:compact);}parse(s);const diag=instrument(s);parse(diag);const file=path.join(out,variant+'.mjs'),diagnostic=path.join(out,variant+'.diagnostic.mjs');fs.writeFileSync(file,s,{flag:'wx'});fs.writeFileSync(diagnostic,diag,{flag:'wx'});report.variants.push({variant,path:file,sha256:sha(s),diagnostic,diagnosticSha256:sha(diag),changedRootSites:variant==='original'?0:1});}
+fs.copyFileSync(import.meta.filename,path.join(out,'consumed-derive.mjs'));fs.writeFileSync(path.join(out,'derive.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report));

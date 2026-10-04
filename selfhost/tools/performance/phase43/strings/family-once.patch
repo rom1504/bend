@@ -1,0 +1,6 @@
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -129,1 +129,2 @@
+-  for(let i=0;i<names.length;i++){const snapshot=scalarSnapshots[names[i]];if(snapshot?.stringFamily&&!stringHostGuard())return false;}
++  let needsString=false;for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
++  if(needsString&&!stringHostGuard())return false;

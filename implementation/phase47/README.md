@@ -2,6 +2,21 @@
 
 Campaign in progress, 2026-10-04. Installed compiler remains Phase45 worker23.
 No promotion or new representative-corpus result is claimed by this checkpoint.
+
+Update: the first source candidate passed its focused gate and independent
+24-oracle/39-boundary array controls. Public-call ablations show that ordered
+write statements are also needed: worker23 takes90.854 microseconds/call,
+raw backing alone84.207, and raw backing with explicit writes63.809. The latter
+is still a diagnostic derivative, pending source validation. See the
+[V8 analysis](v8-analysis.md) and [public screen](evidence/array-public-screen.json).
+The earlier batch result uses a different call context and is not multiplied
+with this public-call gain.
+
+The405-line worker cleanup is deferred and preserved as an experimental patch: it
+does not remove the intended aggregate shells and its small preliminary gains
+do not justify shipping that complexity. See the [outcome](worker-outcome.md).
+The separate compiler memo diagnostic reduced one lexer request median6.64%;
+[its outcome](compiler-memo-outcome.md) does not authorize a production cache.
 [Design](../../design/phase47/research-guided-optimization.md),
 [first-screen evidence](evidence/first-screen.json).
 

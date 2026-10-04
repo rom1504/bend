@@ -1,0 +1,429 @@
+--- a/selfhost/src/back/js/ir/worker-emit.bend
++++ b/selfhost/src/back/js/ir/worker-emit.bend
+@@ -338,7 +338,7 @@
+ 
+ @unsafe
+ def j_worker_emission(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> JWEmission:
+-  j_worker_emission_done(defs, jw_simplify_functions(jw_functions(book, defs, defs)))
++  j_worker_emission_done(defs, jw_optimize_functions(jw_simplify_functions(jw_functions(book, defs, defs))))
+ 
+ @unsafe
+ def j_worker_emission_done(+defs: List<&2,KDef>, +functions: List<&2,JWFunction>) -> JWEmission:
+--- /dev/null
++++ b/selfhost/src/back/js/ir/worker-optimize.bend
+@@ -0,0 +1,405 @@
++# Bounded transformations of an already proved private graph. Function indices,
++# source dependencies and public entry guards are not changed by this pass.
++type JWOptInline is Data:
++  JWOptInline{+code: List<&2,JWInstruction>, +next: U32, +left: U32}
++
++type JWOptFact is Data:
++  JWOptFact{+slot: U32, +value: JWValue}
++
++# Incomplete use information means every slot is live. A capacity refusal never
++# becomes permission to remove a computation.
++type JWOptUses is Data:
++  JWOptUses{+slots: List<&2,U32>, +complete: Bool}
++
++type JWOptClean is Data:
++  JWOptClean{+code: List<&2,JWInstruction>, +uses: JWOptUses}
++
++@unsafe
++def jw_optimize_functions(+functions: List<&2,JWFunction>) -> List<&2,JWFunction>:
++  jw_optimize_each(functions, functions)
++
++@unsafe
++def jw_optimize_each(+original: List<&2,JWFunction>, +todo: List<&2,JWFunction>) -> List<&2,JWFunction>:
++  match todo:
++    case Nil{}: Nil{}
++    case Con{JWFunction{name, arity, code, valid}, rest}:
++      Con{JWFunction{name, arity,
++        kc(List<&2,JWInstruction>, valid, u => jw_optimize_code(original, code, jw_register_bound(code, arity)), u => code), valid},
++        jw_optimize_each(original, rest)}
++
++@unsafe
++def jw_optimize_code(+functions: List<&2,JWFunction>, +code: List<&2,JWInstruction>, +next: U32) -> List<&2,JWInstruction>:
++  jw_optimize_expanded(jw_opt_expand(functions, code, next, 32))
++
++@unsafe
++def jw_optimize_expanded(+r: JWOptInline) -> List<&2,JWInstruction>:
++  match r:
++    case JWOptInline{expanded, after, left}:
++      jw_optimize_cleaned(jw_opt_clean(jw_opt_forward(expanded, Nil{}), JWOptUses{Nil{}, True{}}))
++
++@unsafe
++def jw_optimize_cleaned(+r: JWOptClean) -> List<&2,JWInstruction>:
++  match r:
++    case JWOptClean{cleaned, uses}: cleaned
++
++# Candidates have one exit, no calls and no branches. Their original bodies are
++# used throughout this sweep, so expansion cannot recursively grow templates.
++@unsafe
++def jw_opt_candidate(+code: List<&2,JWInstruction>, +left: U32) -> Bool:
++  match code:
++    case Con{JWReturn{value}, Nil{}}: U32.is_gt(left, 0) && jw_opt_inline_value(value)
++    case Con{JWAssign{slot, value}, rest}:
++      kc(Bool, U32.is_gt(left, 1) && jw_opt_inline_value(value), u => jw_opt_candidate(rest, U32.sub(left, 1)), u => False{})
++    case other: False{}
++
++@unsafe
++def jw_opt_inline_value(+value: JWValue) -> Bool:
++  match value:
++    case JWSlot{slot}: True{}
++    case JWNat{number}: True{}
++    # Opaque literal evaluation is retained; this is not a discardable fact.
++    case JWLiteral{code}: True{}
++    case JWProject{layout, input, index}: jw_opt_aggregate_layout(layout) && jw_opt_stable(input)
++    case JWConstruct{layout, name, fields}: jw_opt_shell(layout, name, fields) && jw_opt_inline_values(fields)
++    case JWPrimitive{name, args}:
++      String.contains("|U32.add|U32.sub|U32.and|U32.or|U32.xor|U32.inc|U32.not|U32.shl|U32.shr|", "|" ++ name ++ "|") && jw_opt_inline_values(args)
++    case other: False{}
++
++@unsafe
++def jw_opt_inline_values(+values: List<&2,JWValue>) -> Bool:
++  match values:
++    case Nil{}: True{}
++    case Con{value, rest}: jw_opt_inline_value(value) && jw_opt_inline_values(rest)
++
++@unsafe
++def jw_opt_length(+code: List<&2,JWInstruction>) -> U32:
++  match code:
++    case Nil{}: 0
++    case Con{instruction, rest}: U32.inc(jw_opt_length(rest))
++
++@unsafe
++def jw_opt_arg_count(+args: List<&2,JWValue>) -> U32:
++  match args:
++    case Nil{}: 0
++    case Con{value, rest}: U32.inc(jw_opt_arg_count(rest))
++
++@unsafe
++def jw_opt_target(+functions: List<&2,JWFunction>, +at: U32) -> JWFunction:
++  match functions:
++    case Nil{}: JWFunction{"", 0, Nil{}, False{}}
++    case Con{f, rest}: kc(JWFunction, U32.is_eq(at, 0), u => f, u => jw_opt_target(rest, U32.sub(at, 1)))
++
++@unsafe
++def jw_opt_expand(+functions: List<&2,JWFunction>, +code: List<&2,JWInstruction>, +next: U32, +left: U32) -> JWOptInline:
++  match code:
++    case Nil{}: JWOptInline{Nil{}, next, left}
++    case Con{JWDirectCall{slot, target, args}, rest}:
++      jw_opt_expand_call(functions, rest, next, left, slot, target, args, jw_opt_target(functions, target))
++    case Con{JWCase{layout, name, input, yes, no}, rest}:
++      jw_opt_expand_yes(functions, layout, name, input, no, rest, jw_opt_expand(functions, yes, next, left))
++    case Con{instruction, rest}: jw_opt_expand_prepend([instruction], jw_opt_expand(functions, rest, next, left))
++
++@unsafe
++def jw_opt_expand_yes(+functions: List<&2,JWFunction>, +layout: String, +name: String, +input: JWValue,
++  +no: List<&2,JWInstruction>, +rest: List<&2,JWInstruction>, +r: JWOptInline) -> JWOptInline:
++    match r:
++      case JWOptInline{yes, next, left}:
++        jw_opt_expand_no(functions, layout, name, input, yes, rest, jw_opt_expand(functions, no, next, left))
++
++@unsafe
++def jw_opt_expand_no(+functions: List<&2,JWFunction>, +layout: String, +name: String, +input: JWValue,
++  +yes: List<&2,JWInstruction>, +rest: List<&2,JWInstruction>, +r: JWOptInline) -> JWOptInline:
++    match r:
++      case JWOptInline{no, next, left}:
++        jw_opt_expand_prepend([JWCase{layout, name, input, yes, no}], jw_opt_expand(functions, rest, next, left))
++
++@unsafe
++def jw_opt_expand_prepend(+prefix: List<&2,JWInstruction>, +r: JWOptInline) -> JWOptInline:
++  match r:
++    case JWOptInline{code, next, left}: JWOptInline{List.append(&2,JWInstruction, prefix, code), next, left}
++
++@unsafe
++def jw_opt_expand_call(+functions: List<&2,JWFunction>, +rest: List<&2,JWInstruction>, +next: U32, +left: U32,
++  +slot: U32, +target: U32, +args: List<&2,JWValue>, +callee: JWFunction) -> JWOptInline:
++    match callee:
++      case JWFunction{name, arity, body, valid}:
++        kc(JWOptInline, valid && U32.is_eq(jw_opt_arg_count(args), arity) && jw_opt_candidate(body, 12), u =>
++          jw_opt_expand_ready(functions, rest, next, left, slot, target, args, body,
++            jw_register_bound(body, arity), U32.add(arity, jw_opt_length(body))), u =>
++          jw_opt_expand_prepend([JWDirectCall{slot, target, args}], jw_opt_expand(functions, rest, next, left)))
++
++@unsafe
++def jw_opt_expand_ready(+functions: List<&2,JWFunction>, +rest: List<&2,JWInstruction>, +next: U32, +left: U32,
++  +slot: U32, +target: U32, +args: List<&2,JWValue>, +body: List<&2,JWInstruction>, +width: U32, +cost: U32) -> JWOptInline:
++    kc(JWOptInline, U32.is_le(cost, left) && U32.is_le(width, U32.sub(4294967295, next)), u =>
++      jw_opt_expand_prepend(List.append(&2,JWInstruction, jw_opt_parameters(args, next), jw_opt_clone(body, next, slot)),
++        jw_opt_expand(functions, rest, U32.add(next, width), U32.sub(left, cost))), u =>
++      jw_opt_expand_prepend([JWDirectCall{slot, target, args}], jw_opt_expand(functions, rest, next, left)))
++
++# Materialize every actual exactly once, in order, including unused formals.
++@unsafe
++def jw_opt_parameters(+args: List<&2,JWValue>, +at: U32) -> List<&2,JWInstruction>:
++  match args:
++    case Nil{}: Nil{}
++    case Con{value, rest}: Con{JWAssign{at, value}, jw_opt_parameters(rest, U32.inc(at))}
++
++@unsafe
++def jw_opt_clone(+code: List<&2,JWInstruction>, +offset: U32, +result: U32) -> List<&2,JWInstruction>:
++  match code:
++    case Con{JWAssign{slot, value}, rest}: Con{JWAssign{U32.add(offset, slot), jw_opt_shift(value, offset)}, jw_opt_clone(rest, offset, result)}
++    case Con{JWReturn{value}, Nil{}}: [JWAssign{result, jw_opt_shift(value, offset)}]
++    case other: code
++
++@unsafe
++def jw_opt_shift(+value: JWValue, +offset: U32) -> JWValue:
++  match value:
++    case JWSlot{slot}: JWSlot{U32.add(offset, slot)}
++    case JWProject{layout, input, index}: JWProject{layout, jw_opt_shift(input, offset), index}
++    case JWConstruct{layout, name, fields}: JWConstruct{layout, name, jw_opt_shifts(fields, offset)}
++    case JWPrimitive{name, args}: JWPrimitive{name, jw_opt_shifts(args, offset)}
++    case other: value
++
++@unsafe
++def jw_opt_shifts(+values: List<&2,JWValue>, +offset: U32) -> List<&2,JWValue>:
++  match values:
++    case Nil{}: Nil{}
++    case Con{value, rest}: Con{jw_opt_shift(value, offset), jw_opt_shifts(rest, offset)}
++
++@unsafe
++def jw_opt_aggregate_layout(+layout: String) -> Bool:
++  String.eq(layout, "tuple") || String.eq(layout, "tagged")
++
++@unsafe
++def jw_opt_shell(+layout: String, +name: String, +fields: List<&2,JWValue>) -> Bool:
++  String.eq(layout, "tagged") ||
++    (String.eq(layout, "tuple") && String.eq(name, "Tuple") && U32.is_eq(jw_opt_arg_count(fields), 2))
++
++@unsafe
++def jw_opt_stable(+value: JWValue) -> Bool:
++  match value:
++    case JWSlot{slot}: True{}
++    case JWNat{number}: True{}
++    case other: False{}
++
++@unsafe
++def jw_opt_stables(+values: List<&2,JWValue>) -> Bool:
++  match values:
++    case Nil{}: True{}
++    case Con{value, rest}: jw_opt_stable(value) && jw_opt_stables(rest)
++
++# This is a sufficient discard permission, not a claim that other operations
++# are effectful. In particular strings, checked constructors, opaque literals,
++# native calls and global demand are deliberately not classified as inert.
++@unsafe
++def jw_opt_discardable(+value: JWValue) -> Bool:
++  match value:
++    case JWConstruct{layout, name, fields}: jw_opt_shell(layout, name, fields) && jw_opt_stables(fields)
++    case other: jw_opt_stable(value)
++
++@unsafe
++def jw_opt_fact(+facts: List<&2,JWOptFact>, +slot: U32) -> JWValue:
++  match facts:
++    case Nil{}: JWSlot{slot}
++    case Con{JWOptFact{key, value}, rest}: kc(JWValue, U32.is_eq(slot, key), u => value, u => jw_opt_fact(rest, slot))
++
++@unsafe
++def jw_opt_field(+fields: List<&2,JWValue>, +index: U32, +otherwise: JWValue) -> JWValue:
++  match fields:
++    case Nil{}: otherwise
++    case Con{value, rest}: kc(JWValue, U32.is_eq(index, 0), u => value, u => jw_opt_field(rest, U32.sub(index, 1), otherwise))
++
++@unsafe
++def jw_opt_value(+value: JWValue, +facts: List<&2,JWOptFact>) -> JWValue:
++  match value:
++    case JWSlot{slot}: jw_opt_copy_value(value, jw_opt_fact(facts, slot))
++    case JWProject{layout, input, index}: jw_opt_project(layout, jw_opt_value(input, facts), index, facts)
++    case JWConstruct{layout, name, fields}: JWConstruct{layout, name, jw_opt_values(fields, facts)}
++    case JWPrimitive{name, args}: JWPrimitive{name, jw_opt_values(args, facts)}
++    case JWNative{name, args}: JWNative{name, jw_opt_values(args, facts)}
++    case JWNumberOp{op, args}: JWNumberOp{op, jw_opt_values(args, facts)}
++    case other: value
++
++@unsafe
++def jw_opt_copy_value(+original: JWValue, +known: JWValue) -> JWValue:
++  match known:
++    case JWSlot{source}: JWSlot{source}
++    case other: original
++
++@unsafe
++def jw_opt_project(+layout: String, +input: JWValue, +index: U32, +facts: List<&2,JWOptFact>) -> JWValue:
++  jw_opt_project_input(layout, input, index, facts, JWProject{layout, input, index})
++
++@unsafe
++def jw_opt_project_input(+layout: String, +input: JWValue, +index: U32, +facts: List<&2,JWOptFact>, +original: JWValue) -> JWValue:
++  match input:
++    case JWSlot{slot}: jw_opt_project_known(layout, index, original, jw_opt_fact(facts, slot))
++    case other: original
++
++@unsafe
++def jw_opt_project_known(+layout: String, +index: U32, +original: JWValue, +fact: JWValue) -> JWValue:
++  match fact:
++    case JWConstruct{known, name, fields}:
++      kc(JWValue, String.eq(layout, known) && jw_opt_aggregate_layout(layout),
++        u => jw_opt_field(fields, index, original), u => original)
++    case other: original
++
++@unsafe
++def jw_opt_values(+values: List<&2,JWValue>, +facts: List<&2,JWOptFact>) -> List<&2,JWValue>:
++  match values:
++    case Nil{}: Nil{}
++    case Con{value, rest}: Con{jw_opt_value(value, facts), jw_opt_values(rest, facts)}
++
++@unsafe
++def jw_opt_reads(+value: JWValue, +slot: U32) -> Bool:
++  match value:
++    case JWSlot{key}: U32.is_eq(slot, key)
++    case JWConstruct{layout, name, fields}: jw_opt_read_values(fields, slot)
++    case other: False{}
++
++@unsafe
++def jw_opt_read_values(+values: List<&2,JWValue>, +slot: U32) -> Bool:
++  match values:
++    case Nil{}: False{}
++    case Con{value, rest}: jw_opt_reads(value, slot) || jw_opt_read_values(rest, slot)
++
++@unsafe
++def jw_opt_forget(+facts: List<&2,JWOptFact>, +slot: U32) -> List<&2,JWOptFact>:
++  match facts:
++    case Nil{}: Nil{}
++    case Con{JWOptFact{key, value}, rest}:
++      kc(List<&2,JWOptFact>, U32.is_eq(slot, key) || jw_opt_reads(value, slot), u => jw_opt_forget(rest, slot),
++        u => Con{JWOptFact{key, value}, jw_opt_forget(rest, slot)})
++
++@unsafe
++def jw_opt_take(+facts: List<&2,JWOptFact>, +left: U32) -> List<&2,JWOptFact>:
++  match facts:
++    case Nil{}: Nil{}
++    case Con{fact, rest}: kc(List<&2,JWOptFact>, U32.is_eq(left, 0), u => Nil{}, u => Con{fact, jw_opt_take(rest, U32.sub(left, 1))})
++
++@unsafe
++def jw_opt_bind(+facts: List<&2,JWOptFact>, +slot: U32, +value: JWValue) -> List<&2,JWOptFact>:
++  +clean = jw_opt_forget(facts, slot)
++  kc(List<&2,JWOptFact>, jw_opt_discardable(value) && Bool.not(jw_opt_reads(value, slot)),
++    u => Con{JWOptFact{slot, value}, jw_opt_take(clean, 63)}, u => clean)
++
++@unsafe
++def jw_opt_forward(+code: List<&2,JWInstruction>, +facts: List<&2,JWOptFact>) -> List<&2,JWInstruction>:
++  match code:
++    case Nil{}: Nil{}
++    case Con{JWAssign{slot, value}, rest}:
++      jw_opt_forward_assign(slot, jw_opt_value(value, facts), rest, facts)
++    case Con{JWDirectCall{slot, target, args}, rest}:
++      Con{JWDirectCall{slot, target, jw_opt_values(args, facts)}, jw_opt_forward(rest, jw_opt_forget(facts, slot))}
++    case Con{JWCase{layout, name, input, yes, no}, rest}:
++      # Branches reuse numerical slot IDs. Never export either branch's facts.
++      Con{JWCase{layout, name, jw_opt_value(input, facts), jw_opt_forward(yes, facts), jw_opt_forward(no, facts)},
++        jw_opt_forward(rest, Nil{})}
++    case Con{JWReturn{value}, rest}: Con{JWReturn{jw_opt_value(value, facts)}, jw_opt_forward(rest, Nil{})}
++    case Con{instruction, rest}: Con{instruction, jw_opt_forward(rest, Nil{})}
++
++@unsafe
++def jw_opt_forward_assign(+slot: U32, +value: JWValue, +rest: List<&2,JWInstruction>, +facts: List<&2,JWOptFact>) -> List<&2,JWInstruction>:
++  Con{JWAssign{slot, value}, jw_opt_forward(rest, jw_opt_bind(facts, slot, value))}
++
++@unsafe
++def jw_opt_has(+slots: List<&2,U32>, +slot: U32) -> Bool:
++  match slots:
++    case Nil{}: False{}
++    case Con{key, rest}: U32.is_eq(slot, key) || jw_opt_has(rest, slot)
++
++@unsafe
++def jw_opt_slot_count(+slots: List<&2,U32>) -> U32:
++  match slots:
++    case Nil{}: 0
++    case Con{slot, rest}: U32.inc(jw_opt_slot_count(rest))
++
++@unsafe
++def jw_opt_use(+uses: JWOptUses, +slot: U32) -> JWOptUses:
++  match uses:
++    case JWOptUses{slots, complete}:
++      kc(JWOptUses, Bool.not(complete) || jw_opt_has(slots, slot), u => uses, u =>
++        kc(JWOptUses, U32.is_lt(jw_opt_slot_count(slots), 64), u => JWOptUses{Con{slot, slots}, True{}}, u => JWOptUses{Nil{}, False{}}))
++
++@unsafe
++def jw_opt_live(+uses: JWOptUses, +slot: U32) -> Bool:
++  match uses:
++    case JWOptUses{slots, complete}: Bool.not(complete) || jw_opt_has(slots, slot)
++
++@unsafe
++def jw_opt_remove_slot(+slots: List<&2,U32>, +slot: U32) -> List<&2,U32>:
++  match slots:
++    case Nil{}: Nil{}
++    case Con{key, rest}: kc(List<&2,U32>, U32.is_eq(slot, key), u => jw_opt_remove_slot(rest, slot), u => Con{key, jw_opt_remove_slot(rest, slot)})
++
++@unsafe
++def jw_opt_kill(+uses: JWOptUses, +slot: U32) -> JWOptUses:
++  match uses:
++    case JWOptUses{slots, complete}: JWOptUses{jw_opt_remove_slot(slots, slot), complete}
++
++@unsafe
++def jw_opt_use_value(+value: JWValue, +uses: JWOptUses) -> JWOptUses:
++  match value:
++    case JWSlot{slot}: jw_opt_use(uses, slot)
++    case JWProject{layout, input, index}: jw_opt_use_value(input, uses)
++    case JWConstruct{layout, name, fields}: jw_opt_use_values(fields, uses)
++    case JWPrimitive{name, args}: jw_opt_use_values(args, uses)
++    case JWNative{name, args}: jw_opt_use_values(args, uses)
++    case JWNumberOp{op, args}: jw_opt_use_values(args, uses)
++    case other: uses
++
++@unsafe
++def jw_opt_use_values(+values: List<&2,JWValue>, +uses: JWOptUses) -> JWOptUses:
++  match values:
++    case Nil{}: uses
++    case Con{value, rest}: jw_opt_use_values(rest, jw_opt_use_value(value, uses))
++
++@unsafe
++def jw_opt_union(+a: JWOptUses, +b: JWOptUses) -> JWOptUses:
++  match a:
++    case JWOptUses{slots, complete}: kc(JWOptUses, complete, u => jw_opt_union_slots(slots, b), u => a)
++
++@unsafe
++def jw_opt_union_slots(+slots: List<&2,U32>, +uses: JWOptUses) -> JWOptUses:
++  match slots:
++    case Nil{}: uses
++    case Con{slot, rest}: jw_opt_union_slots(rest, jw_opt_use(uses, slot))
++
++# One backwards bounded-use walk. Retained effectful assignments stay in place;
++# dead shell removal cannot remove the earlier computations of their fields.
++@unsafe
++def jw_opt_clean(+code: List<&2,JWInstruction>, +after: JWOptUses) -> JWOptClean:
++  match code:
++    case Nil{}: JWOptClean{Nil{}, after}
++    case Con{instruction, rest}: jw_opt_clean_tail(instruction, jw_opt_clean(rest, after))
++
++@unsafe
++def jw_opt_clean_tail(+instruction: JWInstruction, +r: JWOptClean) -> JWOptClean:
++  match r:
++    case JWOptClean{tail, uses}: jw_opt_clean_instruction(instruction, tail, uses)
++
++@unsafe
++def jw_opt_clean_instruction(+instruction: JWInstruction, +rest: List<&2,JWInstruction>, +uses: JWOptUses) -> JWOptClean:
++  match instruction:
++    case JWAssign{slot, value}:
++      kc(JWOptClean, Bool.not(jw_opt_live(uses, slot)) && jw_opt_discardable(value), u => JWOptClean{rest, uses}, u =>
++        JWOptClean{Con{instruction, rest}, jw_opt_use_value(value, jw_opt_kill(uses, slot))})
++    case JWDirectCall{slot, target, args}:
++      JWOptClean{Con{instruction, rest}, jw_opt_use_values(args, jw_opt_kill(uses, slot))}
++    case JWReturn{value}: JWOptClean{Con{instruction, rest}, jw_opt_use_value(value, uses)}
++    case JWCase{layout, name, input, yes, no}:
++      jw_opt_clean_yes(layout, name, input, no, rest, uses, jw_opt_clean(yes, uses))
++    case JWImpossible{}: JWOptClean{Con{instruction, rest}, uses}
++
++@unsafe
++def jw_opt_clean_yes(+layout: String, +name: String, +input: JWValue, +no: List<&2,JWInstruction>,
++  +rest: List<&2,JWInstruction>, +uses: JWOptUses, +r: JWOptClean) -> JWOptClean:
++    match r:
++      case JWOptClean{yes, before}:
++        jw_opt_clean_no(layout, name, input, yes, rest, before, jw_opt_clean(no, uses))
++
++@unsafe
++def jw_opt_clean_no(+layout: String, +name: String, +input: JWValue, +yes: List<&2,JWInstruction>,
++  +rest: List<&2,JWInstruction>, +uses: JWOptUses, +r: JWOptClean) -> JWOptClean:
++    match r:
++      case JWOptClean{no, before}:
++        JWOptClean{Con{JWCase{layout, name, input, yes, no}, rest}, jw_opt_use_value(input, jw_opt_union(uses, before))}
+--- a/selfhost/src/compiler.json
++++ b/selfhost/src/compiler.json
+@@ -63,6 +63,7 @@
+     "src/back/js/ir/worker-model.bend",
+     "src/back/js/ir/worker-lower.bend",
+     "src/back/js/ir/worker-simplify.bend",
++    "src/back/js/ir/worker-optimize.bend",
+     "src/back/js/ir/worker-graph.bend",
+     "src/back/js/ir/worker-nat.bend",
+     "src/back/js/ir/worker-emit.bend",

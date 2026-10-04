@@ -1,0 +1,50 @@
+{
+  "kind": "phase47-completed-proof-memo-screen",
+  "complete": true,
+  "diagnosticOnly": true,
+  "installedCompilerChanged": false,
+  "source": "lexer",
+  "rounds": 5,
+  "publicResultAndOutputAllEqual": true,
+  "medians": {
+    "baseline": {
+      "requestMs": 4510.211654,
+      "maxRssKiB": 314580,
+      "emissionMs": 3033.870986
+    },
+    "memo": {
+      "requestMs": 4210.781645,
+      "maxRssKiB": 313764,
+      "emissionMs": 2732.853089
+    }
+  },
+  "requestMs": {
+    "baseline": [
+      5087.488717,
+      4510.211654,
+      4489.579689,
+      4514.754404,
+      4483.765492
+    ],
+    "memo": [
+      4357.253531,
+      4550.237167,
+      4197.274388,
+      4205.519491999999,
+      4210.781645
+    ]
+  },
+  "scope": "One input, independently primed disk Base cache, fresh process per request. Exact-key WeakMap diagnostic only; not a maintained Bend implementation. Public-call timer overhead same in both variants; import/startup separate.",
+  "baselineOverMemo": 1.0711103149591126,
+  "requestReductionPercent": 6.63893475452404,
+  "derive.json": {
+    "file": "selfhost/build/phase47/compiler-memo01/derive.json",
+    "sha256": "fbe360d9bab7b57a730e26f87cb9dbebef9c64fab062137ace2cd0ba1aa9313a",
+    "bytes": 174386
+  },
+  "jobs-plan01.json": {
+    "file": "selfhost/build/phase47/compiler-memo01/jobs-plan01.json",
+    "sha256": "d090a579001bb1a8f6adcf8d311793983dd00591b5984360df8415e190636406",
+    "bytes": 15383
+  }
+}

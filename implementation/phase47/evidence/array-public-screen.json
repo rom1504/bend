@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "complete": true,
+  "scope": "Single maintained local-fold public call 4096,17. Three rotated fresh-process rounds,8192warmups+8192calls. Diagnostic derivatives; not production correctness or representative-corpus result.",
+  "raw": "selfhost/build/phase47/array-public-timing01/report.json",
+  "rawSha256": "8cae8ac8c0aca867022d0f16c252f296e6fadc8c6f7f89a1ea503bfd0a497325",
+  "results": [
+    {
+      "variant": "baseline",
+      "samplesUs": [
+        90.85412573242188,
+        90.50247888183594,
+        91.19139782714844
+      ],
+      "medianUs": 90.85412573242188,
+      "allCorrect": true
+    },
+    {
+      "variant": "original",
+      "samplesUs": [
+        85.50761767578128,
+        83.41944677734372,
+        84.20677233886717
+      ],
+      "medianUs": 84.20677233886717,
+      "allCorrect": true
+    },
+    {
+      "variant": "write-inline",
+      "samplesUs": [
+        63.437374023437506,
+        64.78984814453126,
+        63.809102661132805
+      ],
+      "medianUs": 63.809102661132805,
+      "allCorrect": true
+    },
+    {
+      "variant": "invariant-alias",
+      "samplesUs": [
+        84.05338867187501,
+        86.68018627929686,
+        93.86858093261719
+      ],
+      "medianUs": 86.68018627929686,
+      "allCorrect": true
+    },
+    {
+      "variant": "combined",
+      "samplesUs": [
+        63.75724475097656,
+        63.986284790039065,
+        64.36303527832033
+      ],
+      "medianUs": 63.986284790039065,
+      "allCorrect": true
+    },
+    {
+      "variant": "guard-bypass",
+      "samplesUs": [
+        73.93602832031252,
+        73.6937224121094,
+        72.31687365722655
+      ],
+      "medianUs": 73.6937224121094,
+      "allCorrect": true
+    }
+  ],
+  "parentAndToolIdentities": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/run-array-public-jobs01.py",
+      "sha256": "5ca3d8158a64ac7457554e1b8e7425633bbf1a872c394962c07f41ed928e0b77",
+      "bytes": 2614
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/array-checked-probe01/manifest.json",
+      "sha256": "0ac19c939414d1b174967708fdd5b68b21ea1a2b0cbd9406b6b0184597078b64",
+      "bytes": 7400
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase47/v8-probe.mjs",
+      "sha256": "593a57dcc87af18a7acd7f887df98f0bbc38c85b45217e0312a23bd3e0b6c00c",
+      "bytes": 7052
+    },
+    {
+      "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/array-checked-probe01/original/program.mjs",
+      "sha256": "a6ec676a1ed5d3a2027c8d0341f7ef9156ede0c8e2d37ace7aabcac9c1b4e753",
+      "bytes": 91192
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/array-checked-probe01/write-inline/program.mjs",
+      "sha256": "57e7f67cb0ccdced82b81a26fbb9d43d177b2dbde742a6cff2400b69f661eb9c",
+      "bytes": 91217
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/array-checked-probe01/invariant-alias/program.mjs",
+      "sha256": "2fa863d0cb0763dd5769f1dad331b9b33ea9fa95486acb5f39a183af1ee6e425",
+      "bytes": 91184
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/array-checked-probe01/combined/program.mjs",
+      "sha256": "4f8d1688a7a9bf310c7c5497b8add1464994136aac8083c1d80dec01e3677aca",
+      "bytes": 91209
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/array-checked-probe01/guard-bypass/program.mjs",
+      "sha256": "9bf9e4ee4e85b2b3a821cf2b26dc22c09c97c10f5fd0ae5f66556b55eb44d5e9",
+      "bytes": 91176
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/worker02-fast/modules/local-fold.mjs",
+      "sha256": "f07852cf5e5147f37d006f5d36e202e67f23d33b979e064f0de29e26cbf3c990",
+      "bytes": 86853
+    }
+  ],
+  "decision": "Integrate ordered writes in the proven private raw-array context. Do not add invariant pointer cache or remove host guard based on this diagnostic."
+}

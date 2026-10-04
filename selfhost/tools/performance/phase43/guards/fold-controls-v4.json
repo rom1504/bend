@@ -1,0 +1,24 @@
+{
+  "kind": "phase40-fold-control-successor-derivation",
+  "complete": true,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/fold-controls-v3.mjs",
+    "sha256": "04d05cf02e1879026e9e753e7415054e92df69c1839ec493f6fb98c56955db04"
+  },
+  "parentDerivation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase40/fold-controls-v3.json",
+    "sha256": "67c2e521d094baf98d293deda6d5d57bc5c1116589cd8c616de72fc1dd19fc85"
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/guards/fold-controls-v4.mjs",
+    "sha256": "e7799b073ca986f905ed49f87ecad4507f586a2f79f3831a43edb3b1df22fd0c"
+  },
+  "changes": [
+    {
+      "before": " assert.equal((source.match(/function \\$R_[0-9_]+\\$tree\\(/g)??[]).length,1,'no unrelated structural producer');",
+      "after": " // Phase43's admitted nonrecursive wrappers are distinct structural owners.\n // Preserve an exact decoded inventory, never a permissive module-wide count.\n const structuralOwners=[...source.matchAll(/function \\$R_([0-9_]+)\\$tree\\(/g)].map(m=>m[1].split('_').map(n=>String.fromCodePoint(Number(n))).join(''));\n assert.deepEqual(structuralOwners,['fold.make','fold.share','fold.order.make','benchRecord'],'exact structural owner inventory');\n const structuralLine=name=>{const marker='function '+privateName(name)+'$tree(',at=source.indexOf(marker);assert(at>=0);return source.slice(at,source.indexOf('\\n',at));};\n for(const name of structuralOwners){const body=structuralLine(name);assert(body.includes('/* private structural component */'));report.structure.push({name,kind:name==='fold.make'?'recursive-producer':'nonrecursive-wrapper',sha256:createHash('sha256').update(body).digest('hex')});}\n for(const name of ['fold.share','fold.order.make','benchRecord']){const body=structuralLine(name);assert(!body.includes('$visit:for(;;)'),'nonrecursive wrapper '+name);assert.equal(body.split(producerName+'(').length,2,'one producer invocation in '+name);}\n assert(/\\(\\((x\\d+),\\)=>\\(\\{\\$:\"Two\",a:\\[\\1,\\1,\\]\\}\\)\\)/.test(structuralLine('fold.share')),'private shared child binder preserved');\n assert(structuralLine('fold.order.make').includes('({$:\"Tip\",a:[17,]})'),'private order wrapper retains Tip17');\n assert(structuralLine('benchRecord').includes('get(G,\"fold.value\")'),'private record wrapper retains generic fold residual');\n assert(structuralLine('benchRecord').includes('Math.imul(')&&structuralLine('benchRecord').includes('(65599)'),'private record wrapper retains weighted field');",
+      "count": 1
+    }
+  ],
+  "scope": "Preserve all Phase40 v3 value/depth/public/mutation/host/demand/admission gates. Replace brittle global single-owner assertion with exact actual Phase43 four-owner inventory and additional wrapper/alias/residual audits. No production changes or controller execution."
+}

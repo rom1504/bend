@@ -262,3 +262,32 @@ lexical tree worker before the legacy finite/generic path. Ordinary identifiers
 cannot forge synthetic dollar-prefixed names. Derive-v5 adds actual private G
 lookup and unresolved lexical clone rejection. Prior failed review preserved;
 static qualification cleared, fresh actual emission/semantics still required.
+
+Frozen checked14 scalar contract independently classifies all35 changed public
+sections with exact before/after executable payload equality: seven new true
+family capture wrappers, two new false literal wrappers, twenty-five existing
+false family arguments and one existing true argument. Protected colf/rowf
+whole bodies stay raw identical; colf.px/colf.px.go/subray add only the exact false
+metadata argument. Frozen reviewed contract and approval arrays bind selected
+attempt74253f..., API222902..., runtimee62cf9..., ray module339a03... and retained
+checked16 baseline. Proposal14 is unchanged; all canonical fresh scalar/runtime
+controls and complete release closure remain mandatory.
+
+Final checked14 owner configuration v6 is approved for fresh final semantic
+materialization:49 acquisition/control steps and18 new owners, in addition to
+all inherited16 gates. Independently matched actual14 focused Map reports to
+all three frozen catalogue policies, exact lexical worker shapes and guard
+arrays: main43 workers/112 unique dependencies and independent39 workers/103
+unique dependencies each. Main16 values/6 aliases/699 boundaries/3 ABI and
+independent19/6/645/3 are mandatory. Source-owned2048 admission is separate from
+private12000 correctness. Compiler proof71 remains explicitly non-emission
+qualification. Numeric final branch/captures, String complete graph, products
+actual pair and old precedence, U32 capability and native57 gates retained.
+
+The approval authorizes only the reviewed flag transition of frozen v6 and
+fresh recipe materialization for selected attempt74253f...; no final execution
+or promotion is asserted. Canonical fresh full closure, compiler cost, complete
+45-point runtime acquisition, resource/Node/image bindings and postinstall
+audit remain required. This reviewer ran no compiler, target or benchmark.
+
+The fold preflight successor review is recorded in `selfhost/tools/performance/phase43/review/fold-control-successor-v1-review.json`. The controller changes exactly one old whole-module count to the exact four-owner inventory and adds wrapper alias/residual checks; all original semantic, depth, host, mutation and activation assertions remain unchanged. The unchanged synthetic guard controller and exact-count recipe adapter are pinned. This static approval authorizes a fresh supervised fold gate and recipe02 materialization, not a final semantic PASS claim.

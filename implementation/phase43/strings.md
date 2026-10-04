@@ -241,3 +241,10 @@ future typed continuation plan can track postchild binder/field liveness and omi
 only proven dead total work under the same captured graph/host guards, preserving
 all required reconstruction allocations and original generic fallback. No new
 optimization is implemented or measured by this observation.
+
+
+Final report helper is frozen as final-corpus-charts-v1.py/.md in the owned String
+tool directory. It independently rederives full45/669-sample role medians and
+paired ratios from final closure batches, emits portable corpus/family/count SVGs
+and JSON/Markdown, and rejects screen/partial/mixed inputs. No final chart has
+been rendered before root supplies the final runtime closure.

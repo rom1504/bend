@@ -15,7 +15,9 @@ with equal point weighting and 11.421 with equal source weighting. These
 describe the maintained corpus, not all Bend programs.
 
 Experiments use Node24.18.0, CPU3, serialized execution, a 1GiB heap ceiling,
-2GiB process-tree RSS ceiling and 2GiB available-memory floor. Controls and
+2GiB process-tree RSS ceiling and 2GiB available-memory floor. The inherited
+full frontend gate retains its reviewed two-worker/3GiB combined supervisor
+as an explicit documented exception, with no concurrent heavy job. Controls and
 profiles are separate from clean runtime measurements. Each timing screen
 includes a fresh baseline and pinned TypeScript role. Phase42 raw evidence
 remains closed. The 103 unrelated starting files are protected.
@@ -206,6 +208,29 @@ private calls, empty continuation argument vectors and unbound saved temporaries
 The unannotated independent Map fixture is retained as a conservative purity
 refusal. A separate explicit-annotation fixture tests the supported domain without
 expanding the compiler's type-inference machinery.
+
+## Actual checked14 source qualification and fresh screen
+
+All three Map source profiles pass: the main operation has16 value groups,
+6 alias controls,699 boundaries and3 ABI controls; each independent annotated
+literal/renamed fixture has19 values,6 aliases,645 boundaries and3 ABI controls.
+Actual private Map workers execute through ordinary roots, including the owned
+2048-element case and12000-depth private probe. The numeric callback source
+passes22 oracle groups/40 boundaries and its independent85 observations.
+
+The fresh four-point `checked14-map-callback-screen01` compares the actual compiler
+against checked16 and pinned TS in the same run. Map32/128 improves1.862/3.088 times
+and remains44.47/28.55 times TS. Closure64/256 improves4.519/19.222 times and takes
+1.929/0.422 times TS. Map's large within-process half drift makes this a preliminary
+screen, not the final steady-state result. The complete45-point protocol remains
+required. [Profiles](profile-findings.md) explain the remaining allocation and
+dispatch gap; [accounting](accounting.md) separates production growth and experiment
+history. The production module graph grows20,056 to21,440 lines, a6.9% increase.
+
+The runtime assembly matches its fragments exactly. Independent scalar review
+confirms the five protected executable scalar bodies are unchanged; the explicit
+frozen contract classifies every other registration-envelope change. Current
+source is checkpoint `b0770fc`, pushed with the rejected attempts and fixes.
 
 ## Release status
 

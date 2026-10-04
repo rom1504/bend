@@ -81,3 +81,17 @@ checked12 first ordinary execution failed emitted undeclared $u0; raw evidence
 is retained in run-map-actual12-controls. Independent v3 scalar and renamed
 modules currently have no contextual marker, so their positive inventories are
 unresolved. No Map semantic pass or promotion is claimed from admission traces.
+
+Checked14 genuine Map source controls now pass for main, literal and renamed
+roots with frozen derive-v6/oracle-v2. Main map-actual14-controls reports16
+values, six aliases,699 boundaries and three ABI controls; ordinary workers
+execute under proofnull, and apply counts fall48407→10854 at32 and259965→49807
+at128. Source-owned2048 and private correctness depth12000 pass. Independent
+v4 sources make seven Map let types explicit, retaining v3 inferred-Absent
+purity refusal. map-scalar14v4-controls and map-renamed14v4-controls each pass
+19 values, six aliases,645 boundaries and three ABI controls, with nine actual
+ordinary entries and proofnull. Zero-seed apply775→269 for both. Their frozen
+AST inventories contain39 lexical workers,105 guard entries and103 distinct
+dependencies; main has43 workers and112 distinct guards. Final-owner-data-v5
+and checked14-inventory-v1 bind exact source/tool/shape clauses before final
+selected-image execution. Saved handwritten Map passes are not used as evidence.

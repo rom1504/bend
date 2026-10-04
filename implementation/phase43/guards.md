@@ -168,3 +168,18 @@ Root defers all wrapper-hop, prefix and projection source work because the mixed
 small gains do not justify additional emitter/proof complexity and possible
 quadratic compiler work. Frozen tools, proposals and negative evidence remain for
 future profiling. This follow-up does not change the U32 guard release decision.
+
+## Fold preflight controller successor
+
+Integration01's unchanged Phase40 fold controller fails its whole-module
+single structural-owner assertion after27 value/depth oracle rows pass. Actual
+Phase43 emits exactly `fold.make`, `fold.share`, `fold.order.make`, `benchRecord`
+structural workers. The three additional workers are nonrecursive wrappers;
+ordinary record deferred construction and public shared-child construction remain.
+`fold-controls-v4.mjs` with companion derivation replaces only that brittle count
+with the exact owner inventory, per-owner hashes and additional private shared
+alias/order/record residual audits. All previous value/deep/public/mutation/host/
+demand/admission checks remain. Source syntax and static actual inventory/alias
+checks pass; root owns target qualification. The integration01 failure remains
+at `selfhost/build/phase43/integration01/preflight-fold/fold-controls/report.json`.
+No production change is proposed for this controller correction.

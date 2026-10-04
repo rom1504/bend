@@ -70,3 +70,40 @@ nonzero sizes. Ignored-field qualification binds all6 fixed private alias/reset/
 conditional retention/deep12000 records and all7 ordinary rows. Independent static
 review pins34steps14owners and the matching v2 builder/catalogue/wrapper. Map and
 final selected-image fresh qualification remain pending.
+
+The final selected14 v6 configuration freezes49 acquisition/control steps and18
+new owner clauses. Its Map main and two independent source profiles require
+actual checked emission, source-specific full/no-overlay traces, the reviewed
+private-closure AST audit, independent values/aliases/ABI/deep controls, and exact
+dependency fallback inventories. Main retains43 private worker declarations and
+112 distinct guards (699 boundaries); each independent source retains39 workers,
+105 guard-array entries with103 distinct guards (645 boundaries). These inventories
+were frozen from emitted AST before the corresponding control execution. Callback
+Number and forced original BigInt states both include the single public generic
+apply entry before the private loop. Compiler-only Map71 remains a distinct owner
+and cannot substitute source activation.
+
+The v6 draft remains immutable with reviewed:false. The selected14 reviewer
+approves only a separately named copy changing that flag to true; all v1–v5
+drafts, prior controller failures, and old runtime/source evidence remain retained.
+Inherited16 owners, complete frontend/refusal checks, fresh45-point runtime
+measurement and compiler-cost admission, installation and portable smoke remain
+required beyond focused qualification. No target or timing was run by this owner.
+
+## First final integration attempt
+
+The frozen checked14 recipe01 begins with fresh counter and fold acquisitions.
+Counters pass. Fold results and50000-depth execution pass, then the inherited
+Phase40 structural controller refuses the new module because it expects exactly
+one private structural producer. The new computed-prefix/wrapper admissions emit
+three additional nonrecursive wrappers: fold.share, fold.order.make andbenchRecord.
+The failed report is retained at integration01/preflight-fold. A separately
+reviewed successor must check the exact four-owner inventory and retain every
+prior value, host, demand, alias and admission assertion before that gate can pass.
+Independent unary controls and all45 source acquisitions already complete;
+remaining independent owners continue while the structural contract is reviewed.
+
+The inherited full frontend gate retains its reviewed two-worker CPU3,4 pool and
+3GiB combined RSS supervisor with1GiB heap per worker,5GiB prelaunch headroom and
+the2GiB free-memory floor. This explicit exception to ordinary2GiB experiments
+runs alone; no timing or other heavy job overlaps it.

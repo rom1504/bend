@@ -334,3 +334,11 @@ guards, Error/reentry, full native container representations, retained aliases,
 raw/partial/public erasure ABI and source-owned stress are checked. Private depth
 12000 is a correctness probe only. final-owner-data-v2.json preserves unresolved
 independent fixture activation explicitly rather than inventing positive proof.
+
+Map checked14 source qualification now passes main plus typed literal/renamed
+v4 fixtures. Exact owner handoff is map-actual/final-owner-data-v5.json with
+checked14-inventory-v1.json; tools are frozen derive-v6 and oracle-v2. Main
+699/16/6/3 boundary/value/alias/ABI counts and independent645/19/6/3 are fixed.
+The two prior emitted recursive-shell defects and unsupported unannotated v3
+fixture remain preserved refusal/failure evidence. Newly emitted final modules
+must reproduce worker and guard inventories and rerun all controls.

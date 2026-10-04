@@ -228,3 +228,30 @@ capture descriptor snapshots. Exact used primitive types remain proved; a mutati
 of an unrelated primitive also refuses the private path and keeps ordinary generic
 behavior. Actual primitive binding/code/getter mutation controls are mandatory;
 checked12 activation alone does not qualify this uncovered behavior.
+
+Actual executable controls expose two emitter defects before qualification:
+checked12 lowered a recursive ancestor combiner into JCall, losing its App shell
+and producing child index32/empty next-vector/undefined `$u0`; checked13 preserves
+the shell but its nonfinite private combiner incorrectly targets public
+G[$instance.19]. `recursive-shell-v2.patch` preserves ready recursive ancestors,
+invokes their lexical tree targets, and refuses unsupported nonready recursive
+reconstruction before emission. Nonrecursive residual calls retain original public
+names and complete erased-prefix ABI. A zero-private-G emitted witness is required.
+
+Scalar version3 additionally refuses purity because an inlined nullary MTip in an
+unannotated let has no inferred grounded Map type. This is a supported-domain
+limitation, not a reason to widen inference. Frozen literal/renamed version4 and
+fixture-catalog-v4.json annotate every Map binding explicitly; they retain the same
+key sequence, operations and seed+2 oracle. Final compiler proof71 uses the stable
+map-churn.bend/bench source, independent of scalar fixture versions.
+
+Checked14 actual main Map controls pass: 16 value controls, six alias controls,
+699 boundary controls and three ABI controls. Genuine root and lexical-worker
+activation is observed with regionProof null. Owned-source stress reaches 2048;
+the separate direct-private correctness probe reaches depth12000 and does not
+claim public ownership admission. Actual emitted guard names are 112 unique,
+including the complete conservative primitive fence. Static emitted inspection
+finds no G[$instance.*], empty G lookup or undefined-child `$u31` sentinel.
+Scalar version4's independent actual trace is valid/exact/pure/activated without
+an overlay or proof refusal. Its independent executable controls remain root's
+next gate. Timing and final selected-image qualification remain separate.

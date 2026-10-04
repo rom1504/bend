@@ -172,3 +172,13 @@ Plans live here, hypothesis records in `experiments/phase43`, outcomes in
 `implementation/phase43`, maintained tools in `selfhost/tools/performance/phase43`,
 and new raw outputs in `selfhost/build/phase43`. Commit this design first, then
 experiment checkpoints and validated changes, and push to `origin/selfhost/bootstrap`.
+
+## Final integration resource clarification
+
+Runtime comparisons, compiler experiments and all independent heavy jobs remain
+serialized on CPU3 with the 2GiB tree limit. The inherited, reviewed full frontend
+gate is an explicit exception: it uses its existing two-worker CPU3,4 pool,
+1GiB heap per worker and3GiB combined tree-RSS supervisor, with5GiB prelaunch
+headroom and the2GiB available-memory floor. No other heavy job runs alongside it.
+This preserves the existing frontend/auditor protocol and avoids new validation
+framework changes solely to change worker count; the host has about28GiB free.

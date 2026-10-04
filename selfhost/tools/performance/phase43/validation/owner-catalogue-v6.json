@@ -1,0 +1,1647 @@
+{
+  "strings-source": {
+    "controller": "selfhost/tools/performance/phase43/strings/source-controls-v4.mjs",
+    "assertions": {
+      "/kind": "phase43-source-lexer-controls-v4",
+      "/complete": true,
+      "/pass": true,
+      "/oracle": {
+        "length": 439
+      },
+      "/boundaries": {
+        "length": 113
+      },
+      "/admission": {
+        "length": 3
+      }
+    },
+    "derivationController": "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs"
+  },
+  "strings-renamed": {
+    "controller": "selfhost/tools/performance/phase43/strings/fixture-controls-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-string-fixture-controls",
+      "/complete": true,
+      "/pass": true,
+      "/fixture": "renamed",
+      "/values": {
+        "length": 9
+      },
+      "/activation": {
+        "length": 2
+      },
+      "/boundaries": {
+        "length": 30
+      }
+    },
+    "derivationController": "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs"
+  },
+  "strings-negative-literal0": {
+    "controller": "selfhost/tools/performance/phase43/strings/fixture-controls-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-string-fixture-controls",
+      "/complete": true,
+      "/pass": true,
+      "/fixture": "negative-literal0",
+      "/values": {
+        "length": 9
+      },
+      "/activation": {
+        "length": 2
+      },
+      "/boundaries": {
+        "length": 24
+      }
+    },
+    "derivationController": "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs"
+  },
+  "strings-types": {
+    "controller": "selfhost/tools/performance/phase43/strings/type-controls-fast-v7.mjs",
+    "assertions": {
+      "/kind": "phase43-string-type-controls-fast-signatures",
+      "/complete": true,
+      "/pass": true,
+      "/observations": {
+        "length": 59
+      },
+      "/emissionSuppressed": true,
+      "/sourceGraphAssertions": false,
+      "/sourceGraph": {
+        "length": 10
+      }
+    },
+    "compilerOnly": true
+  },
+  "products-bst": {
+    "controller": "selfhost/tools/performance/phase43/products/actual-oracle-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-products-oracle",
+      "/passed": true,
+      "/fixture": false,
+      "/scalarWrapper": true,
+      "/results": {
+        "length": 7
+      },
+      "/pairState": true
+    },
+    "controllerSha256": "c5a38221224c40f3a2ecc7c521581110f154877d574c647aabb1edd393e3f029"
+  },
+  "products-fixture": {
+    "controller": "selfhost/tools/performance/phase43/products/actual-oracle-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-products-oracle",
+      "/passed": true,
+      "/fixture": true,
+      "/scalarWrapper": true,
+      "/results": {
+        "length": 7
+      },
+      "/pairState": true
+    },
+    "controllerSha256": "c5a38221224c40f3a2ecc7c521581110f154877d574c647aabb1edd393e3f029"
+  },
+  "u32-guards": {
+    "controller": "selfhost/tools/performance/phase43/guards/oracle-actual-v1.mjs",
+    "assertions": {
+      "/complete": true,
+      "/cases": {
+        "length": 82
+      }
+    },
+    "fixedCases": [
+      "canonical",
+      "canonical-grid",
+      "complete-stages",
+      "input-refusal",
+      "argument-getter-reentry",
+      "raw-entry",
+      "partial-entry",
+      "Error-reentry",
+      "binding-replacement",
+      "binding-getter",
+      "code-replacement",
+      "code-getter",
+      "arity-getter",
+      "env-getter",
+      "bound-getter",
+      "bound-length",
+      "code-own-call",
+      "wrapper-io",
+      "primitive-bounce",
+      "object-bounce",
+      "array-bounce",
+      "array-every",
+      "array-iterator",
+      "array-numeric-setter",
+      "host-descriptor-getter",
+      "host-descriptor-replacement",
+      "view-own-method"
+    ],
+    "eachAssertions": [
+      {
+        "array": "/cases",
+        "assertions": {
+          "/equal": true,
+          "/observation/proofClean": true
+        }
+      }
+    ],
+    "derivationController": "selfhost/tools/performance/phase43/guards/derive-actual-v1.py"
+  },
+  "callbacks-admission": {
+    "controller": "selfhost/tools/performance/phase43/callbacks/admission-controls.mjs",
+    "compilerOnly": true,
+    "assertions": {
+      "/kind": "phase43-callback-admission-negative-controls",
+      "/complete": true,
+      "/checks/controls": {
+        "length": 11
+      }
+    }
+  },
+  "products-pair-precedence": {
+    "controller": "selfhost/tools/performance/phase43/products/pair-source-oracle-v3.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-pair-source-oracle",
+      "/passed": true,
+      "/results": {
+        "length": 15
+      },
+      "/controls": [
+        "ordinary activation",
+        "simultaneous RHS",
+        "nested helper",
+        "zero alias",
+        "positive freshness",
+        "shared ADT fields",
+        "whole-pair binder refusal",
+        "mutation fallback",
+        "host error reentry",
+        "12000-deep loop"
+      ],
+      "/precedenceControl": true
+    },
+    "controllerSha256": "7ce4015520fc825ddfaba8a90e9c8764caa195fbc4745dc3b50b55d32c2f1ea5"
+  },
+  "products-pair-ignored-precedence": {
+    "controller": "selfhost/tools/performance/phase43/products/pair-ignored-oracle-v3.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-pair-ignored-fields",
+      "/passed": true,
+      "/results": {
+        "length": 8
+      },
+      "/precedenceControl": true
+    },
+    "controllerSha256": "eda554a98e1c1b59ddee648d2bd8b95e6bfee1cf56e3909c60425cce102faa2d"
+  },
+  "strings-literal-graph": {
+    "controller": "selfhost/tools/performance/phase43/strings/fixture-controls-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-string-fixture-controls",
+      "/complete": true,
+      "/pass": true,
+      "/fixture": "renamed",
+      "/values": {
+        "length": 9
+      },
+      "/activation": {
+        "length": 2
+      },
+      "/boundaries": {
+        "length": 30
+      }
+    },
+    "derivationController": "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs"
+  },
+  "products-bst-pair-ignored": {
+    "controller": "selfhost/tools/performance/phase43/products/pair-bst-ignored-oracle-v1.mjs",
+    "controllerSha256": "8bd8acdd7a4ccd52a5aa29d6d44a0b6599a306a9fcbc1d8ff4ff002825a74ed3",
+    "assertions": {
+      "/kind": "phase43-actual-bst-pair-ignored-fields",
+      "/passed": true,
+      "/pairState": true,
+      "/selectedWorker": "$R_98_115_116_46_100_111_119_110$tree",
+      "/selectedMarker": "private fresh pair state",
+      "/results": {
+        "length": 7
+      },
+      "/privateControls": [
+        {
+          "kind": "ignoredLeafFields",
+          "fuel": 0,
+          "zeroAlias": true,
+          "positiveFresh": false,
+          "inputUnchanged": true
+        },
+        {
+          "kind": "ignoredLeafFields",
+          "fuel": 1,
+          "zeroAlias": false,
+          "positiveFresh": true,
+          "inputUnchanged": true
+        },
+        {
+          "kind": "ignoredLeafFields",
+          "fuel": 2,
+          "zeroAlias": false,
+          "positiveFresh": true,
+          "inputUnchanged": true
+        },
+        {
+          "kind": "ignoredLeafFields",
+          "fuel": 7,
+          "zeroAlias": false,
+          "positiveFresh": true,
+          "inputUnchanged": true
+        },
+        {
+          "kind": "conditionalRetainedAliases",
+          "siblingRetained": true,
+          "tailRetained": true,
+          "secondLeafReset": true
+        },
+        {
+          "kind": "deep",
+          "depth": 12000,
+          "inputUnchanged": true
+        }
+      ]
+    }
+  },
+  "map-compiler-proof": {
+    "controller": "selfhost/tools/performance/phase43/map/compiler-proof-controls-v1.mjs",
+    "controllerSha256": "39062fa177327730713b502716d577d4c5899eb339974ba96cb500359f50b96a",
+    "compilerOnly": true,
+    "assertions": {
+      "/kind": "phase43-map-compiler-proof-controls",
+      "/compilerOnly": true,
+      "/compilerQualification": false,
+      "/overlay": "none",
+      "/mode": "quick",
+      "/complete": true,
+      "/passed": true,
+      "/exactCounts": {
+        "append": 17,
+        "kindMalformed": 14,
+        "kindPrimary": 4,
+        "cmp": 26,
+        "sigmaPositive": 4,
+        "sigmaNegative": 6,
+        "total": 71
+      },
+      "/appendResults": {
+        "length": 17
+      },
+      "/malformedKindResults": {
+        "length": 14
+      },
+      "/kindResults": {
+        "length": 4
+      },
+      "/cmpResults": {
+        "length": 26
+      },
+      "/sigmaHeads": {
+        "length": 4
+      },
+      "/sigmaNegatives": {
+        "length": 6
+      },
+      "/actualKindHelperAvailable": true,
+      "/actualKindResults": [
+        {
+          "actual": 1,
+          "expected": 1,
+          "admitted": true
+        },
+        {
+          "actual": 2,
+          "expected": 2,
+          "admitted": true
+        },
+        {
+          "actual": 2,
+          "expected": 1,
+          "admitted": true
+        },
+        {
+          "actual": 1,
+          "expected": 2,
+          "admitted": false
+        }
+      ],
+      "/appendControlsPassed": true,
+      "/malformedKindControlsPassed": true,
+      "/kindControlsPassed": true,
+      "/cmpControlsPassed": true
+    }
+  },
+  "callbacks-number-count": {
+    "controller": "selfhost/tools/performance/phase43/callbacks/actual-number-count-controls-v1.mjs",
+    "controllerSha256": "7a26f2bcf572e0c5b675e862c1f26c8effd0ccfb3c5b420fe1f4ae64ec0018b4",
+    "assertions": {
+      "/kind": "phase43-actual-source-callback-number-count-controls",
+      "/complete": true,
+      "/pass": true,
+      "/oracles": {
+        "length": 22
+      },
+      "/boundaries": {
+        "length": 40
+      }
+    },
+    "derivationController": "selfhost/tools/performance/phase43/callbacks/actual-number-count-derive-v1.mjs",
+    "derivationAssertions": {
+      "/kind": "phase43-actual-source-callback-number-count",
+      "/complete": true,
+      "/certified": true
+    }
+  },
+  "callbacks-number-count-noncommutative": {
+    "controller": "selfhost/tools/performance/phase43/callbacks/source-number-count-fixture-controls-v1.mjs",
+    "controllerSha256": "349784ddc3e5f827e783a8cd48b9e2998e787b7e41c4acda6a8047865431aea7",
+    "assertions": {
+      "/kind": "phase43-actual-noncommutative-callback-number-count-fixture",
+      "/complete": true,
+      "/pass": true,
+      "/observations": {
+        "length": 85
+      },
+      "/selected": [
+        "affine_result",
+        "reverse_result"
+      ],
+      "/refused": [
+        "live_result",
+        "seeded_result",
+        "retained"
+      ]
+    }
+  },
+  "map-main": {
+    "controller": "selfhost/tools/performance/phase43/products/map-actual/oracle-v2.mjs",
+    "controllerSha256": "56ebc1fc3b0444c23c14ce1265a7f30d7219d285881968b682280b5226fc6091",
+    "derivationController": "selfhost/tools/performance/phase43/products/map-actual/derive-v6.mjs",
+    "derivationAssertions": {
+      "/kind": "phase43-map-actual-derivation",
+      "/complete": true,
+      "/root": "bench",
+      "/contextualEntries": 1,
+      "/guardNames": [
+        "p37.map.string",
+        "p37.map.digest",
+        "p37.map.remove",
+        "p37.map.update",
+        "U32.show.fin",
+        "U32.show.go",
+        "U32.show.if",
+        "U32.show",
+        "p37.map.key",
+        "Char.cmp",
+        "String.cmp.rec",
+        "String.cmp.fin",
+        "String.cmp",
+        "Map.msb.u.if",
+        "Map.msb.u",
+        "Map.diff.chr",
+        "Map.diff.step",
+        "Map.diff.fin",
+        "Map.diff",
+        "Map.bit.go.rec",
+        "Map.bit.u",
+        "Map.bit.chr",
+        "Map.bit.go.chr",
+        "Map.bit.go",
+        "Map.bit.at",
+        "Map.bit",
+        "p37.map.fill",
+        "bench",
+        "Map.to_list.go",
+        "Map.to_list",
+        "Map.pop.lo",
+        "Map.pop.hi",
+        "Map.pop.go",
+        "Map.pop.leaf",
+        "Map.pop",
+        "Map.del.fin",
+        "Map.del",
+        "Map.new",
+        "Map.lo",
+        "Map.hi",
+        "Map.seek.go",
+        "Map.seek",
+        "Map.ins.go",
+        "Map.ins.splice.bit",
+        "Map.ins.splice",
+        "Map.ins",
+        "Map.put.go",
+        "Map.put",
+        "Map.set.fin.go",
+        "Map.set.fin",
+        "Map.set.go",
+        "Map.set",
+        "U32.add",
+        "U32.sub",
+        "U32.mul",
+        "U32.div",
+        "U32.mod",
+        "U32.and",
+        "U32.or",
+        "U32.xor",
+        "U32.inc",
+        "U32.not",
+        "U32.shl",
+        "U32.shr",
+        "U32.shln",
+        "U32.shrn",
+        "U32.is_zero",
+        "U32.is_eq",
+        "U32.is_ne",
+        "U32.is_lt",
+        "U32.is_le",
+        "U32.is_gt",
+        "U32.is_ge",
+        "U32.to_nat",
+        "U32.from_nat",
+        "U32.to_f32",
+        "F32.add",
+        "F32.sub",
+        "F32.mul",
+        "F32.div",
+        "F32.mod",
+        "F32.neg",
+        "F32.is_eq",
+        "F32.is_ne",
+        "F32.is_lt",
+        "F32.is_le",
+        "F32.is_gt",
+        "F32.is_ge",
+        "F32.sqrt",
+        "F32.exp",
+        "F32.log",
+        "F32.log2",
+        "F32.log10",
+        "F32.sin",
+        "F32.cos",
+        "F32.tan",
+        "F32.asin",
+        "F32.acos",
+        "F32.atan",
+        "F32.sinh",
+        "F32.cosh",
+        "F32.tanh",
+        "F32.floor",
+        "F32.ceil",
+        "F32.trunc",
+        "F32.abs",
+        "Nat.is_lt",
+        "Nat.add",
+        "U32.cmp",
+        "Nat.sub",
+        "Nat.divmod",
+        "String.append"
+      ],
+      "/observed": {
+        "length": 43
+      }
+    },
+    "mapWorkerShapes": [
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_48$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_54$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_55$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_56$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_57$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_48$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_53$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_54$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_57$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_48$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_49$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_50$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_51$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_52$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_53$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_54$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_55$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_56$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_57$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_48$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_49$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_50$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_51$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_52$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_53$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_54$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_56$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_57$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_48$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_49$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_50$tree",
+        "arity": 5
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_51$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_52$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_53$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_54$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_55$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_56$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_57$tree",
+        "arity": 5
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_53_48$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_53_49$tree",
+        "arity": 3
+      }
+    ],
+    "assertions": {
+      "/kind": "phase43-map-actual-controls",
+      "/complete": true,
+      "/passed": true,
+      "/sourceActivation": true,
+      "/root": "bench",
+      "/values": {
+        "length": 16
+      },
+      "/aliases": {
+        "length": 6
+      },
+      "/abi": {
+        "length": 3
+      },
+      "/boundaries": {
+        "length": 699
+      },
+      "/expectedCounts": {
+        "values": 16,
+        "aliases": 6,
+        "boundaries": 699,
+        "abi": 3
+      },
+      "/guards": [
+        "p37.map.string",
+        "p37.map.digest",
+        "p37.map.remove",
+        "p37.map.update",
+        "U32.show.fin",
+        "U32.show.go",
+        "U32.show.if",
+        "U32.show",
+        "p37.map.key",
+        "Char.cmp",
+        "String.cmp.rec",
+        "String.cmp.fin",
+        "String.cmp",
+        "Map.msb.u.if",
+        "Map.msb.u",
+        "Map.diff.chr",
+        "Map.diff.step",
+        "Map.diff.fin",
+        "Map.diff",
+        "Map.bit.go.rec",
+        "Map.bit.u",
+        "Map.bit.chr",
+        "Map.bit.go.chr",
+        "Map.bit.go",
+        "Map.bit.at",
+        "Map.bit",
+        "p37.map.fill",
+        "bench",
+        "Map.to_list.go",
+        "Map.to_list",
+        "Map.pop.lo",
+        "Map.pop.hi",
+        "Map.pop.go",
+        "Map.pop.leaf",
+        "Map.pop",
+        "Map.del.fin",
+        "Map.del",
+        "Map.new",
+        "Map.lo",
+        "Map.hi",
+        "Map.seek.go",
+        "Map.seek",
+        "Map.ins.go",
+        "Map.ins.splice.bit",
+        "Map.ins.splice",
+        "Map.ins",
+        "Map.put.go",
+        "Map.put",
+        "Map.set.fin.go",
+        "Map.set.fin",
+        "Map.set.go",
+        "Map.set",
+        "U32.add",
+        "U32.sub",
+        "U32.mul",
+        "U32.div",
+        "U32.mod",
+        "U32.and",
+        "U32.or",
+        "U32.xor",
+        "U32.inc",
+        "U32.not",
+        "U32.shl",
+        "U32.shr",
+        "U32.shln",
+        "U32.shrn",
+        "U32.is_zero",
+        "U32.is_eq",
+        "U32.is_ne",
+        "U32.is_lt",
+        "U32.is_le",
+        "U32.is_gt",
+        "U32.is_ge",
+        "U32.to_nat",
+        "U32.from_nat",
+        "U32.to_f32",
+        "F32.add",
+        "F32.sub",
+        "F32.mul",
+        "F32.div",
+        "F32.mod",
+        "F32.neg",
+        "F32.is_eq",
+        "F32.is_ne",
+        "F32.is_lt",
+        "F32.is_le",
+        "F32.is_gt",
+        "F32.is_ge",
+        "F32.sqrt",
+        "F32.exp",
+        "F32.log",
+        "F32.log2",
+        "F32.log10",
+        "F32.sin",
+        "F32.cos",
+        "F32.tan",
+        "F32.asin",
+        "F32.acos",
+        "F32.atan",
+        "F32.sinh",
+        "F32.cosh",
+        "F32.tanh",
+        "F32.floor",
+        "F32.ceil",
+        "F32.trunc",
+        "F32.abs",
+        "Nat.is_lt",
+        "Nat.add",
+        "U32.cmp",
+        "Nat.sub",
+        "Nat.divmod",
+        "String.append"
+      ],
+      "/deepPrivateProbe": 12000,
+      "/deepOwnedSource": 2048
+    }
+  },
+  "map-scalar": {
+    "controller": "selfhost/tools/performance/phase43/products/map-actual/oracle-v2.mjs",
+    "controllerSha256": "56ebc1fc3b0444c23c14ce1265a7f30d7219d285881968b682280b5226fc6091",
+    "derivationController": "selfhost/tools/performance/phase43/products/map-actual/derive-v6.mjs",
+    "derivationAssertions": {
+      "/kind": "phase43-map-actual-derivation",
+      "/complete": true,
+      "/root": "p43.map.scalar",
+      "/contextualEntries": 1,
+      "/guardNames": [
+        "p43.map.scalar.value",
+        "Char.cmp",
+        "String.cmp.rec",
+        "String.cmp.fin",
+        "String.cmp",
+        "Map.msb.u.if",
+        "Map.msb.u",
+        "Map.diff.chr",
+        "Map.diff.step",
+        "Map.diff.fin",
+        "Map.diff",
+        "Map.bit.go.rec",
+        "Map.bit.u",
+        "Map.bit.chr",
+        "Map.bit.go.chr",
+        "Map.bit.go",
+        "Map.bit.at",
+        "Map.bit",
+        "p43.map.scalar",
+        "Map.lo",
+        "Map.hi",
+        "Map.get.go",
+        "Map.get.leaf",
+        "Map.get",
+        "Map.pop.lo",
+        "Map.pop.hi",
+        "Map.pop.go",
+        "Map.pop.leaf",
+        "Map.pop",
+        "Map.del.fin",
+        "Map.del",
+        "Map.lo",
+        "Map.hi",
+        "Map.seek.go",
+        "Map.seek",
+        "Map.ins.go",
+        "Map.ins.splice.bit",
+        "Map.ins.splice",
+        "Map.ins",
+        "Map.put.go",
+        "Map.put",
+        "Map.set.fin.go",
+        "Map.set.fin",
+        "Map.set.go",
+        "Map.set",
+        "Map.new",
+        "U32.add",
+        "U32.sub",
+        "U32.mul",
+        "U32.div",
+        "U32.mod",
+        "U32.and",
+        "U32.or",
+        "U32.xor",
+        "U32.inc",
+        "U32.not",
+        "U32.shl",
+        "U32.shr",
+        "U32.shln",
+        "U32.shrn",
+        "U32.is_zero",
+        "U32.is_eq",
+        "U32.is_ne",
+        "U32.is_lt",
+        "U32.is_le",
+        "U32.is_gt",
+        "U32.is_ge",
+        "U32.to_nat",
+        "U32.from_nat",
+        "U32.to_f32",
+        "F32.add",
+        "F32.sub",
+        "F32.mul",
+        "F32.div",
+        "F32.mod",
+        "F32.neg",
+        "F32.is_eq",
+        "F32.is_ne",
+        "F32.is_lt",
+        "F32.is_le",
+        "F32.is_gt",
+        "F32.is_ge",
+        "F32.sqrt",
+        "F32.exp",
+        "F32.log",
+        "F32.log2",
+        "F32.log10",
+        "F32.sin",
+        "F32.cos",
+        "F32.tan",
+        "F32.asin",
+        "F32.acos",
+        "F32.atan",
+        "F32.sinh",
+        "F32.cosh",
+        "F32.tanh",
+        "F32.floor",
+        "F32.ceil",
+        "F32.trunc",
+        "F32.abs",
+        "Nat.is_lt",
+        "Nat.add",
+        "U32.cmp",
+        "Nat.sub",
+        "Nat.divmod"
+      ],
+      "/observed": {
+        "length": 39
+      }
+    },
+    "mapWorkerShapes": [
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_48$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_55$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_56$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_49$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_50$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_51$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_52$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_53$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_54$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_55$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_56$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_57$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_48$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_49$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_50$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_51$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_52$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_53$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_54$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_55$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_56$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_57$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_48$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_49$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_50$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_51$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_52$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_53$tree",
+        "arity": 5
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_54$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_55$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_56$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_57$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_48$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_49$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_50$tree",
+        "arity": 5
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_51$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_52$tree",
+        "arity": 3
+      }
+    ],
+    "assertions": {
+      "/kind": "phase43-map-actual-controls",
+      "/complete": true,
+      "/passed": true,
+      "/sourceActivation": true,
+      "/root": "p43.map.scalar",
+      "/values": {
+        "length": 19
+      },
+      "/aliases": {
+        "length": 6
+      },
+      "/abi": {
+        "length": 3
+      },
+      "/boundaries": {
+        "length": 645
+      },
+      "/expectedCounts": {
+        "values": 19,
+        "aliases": 6,
+        "boundaries": 645,
+        "abi": 3
+      },
+      "/guards": [
+        "p43.map.scalar.value",
+        "Char.cmp",
+        "String.cmp.rec",
+        "String.cmp.fin",
+        "String.cmp",
+        "Map.msb.u.if",
+        "Map.msb.u",
+        "Map.diff.chr",
+        "Map.diff.step",
+        "Map.diff.fin",
+        "Map.diff",
+        "Map.bit.go.rec",
+        "Map.bit.u",
+        "Map.bit.chr",
+        "Map.bit.go.chr",
+        "Map.bit.go",
+        "Map.bit.at",
+        "Map.bit",
+        "p43.map.scalar",
+        "Map.lo",
+        "Map.hi",
+        "Map.get.go",
+        "Map.get.leaf",
+        "Map.get",
+        "Map.pop.lo",
+        "Map.pop.hi",
+        "Map.pop.go",
+        "Map.pop.leaf",
+        "Map.pop",
+        "Map.del.fin",
+        "Map.del",
+        "Map.seek.go",
+        "Map.seek",
+        "Map.ins.go",
+        "Map.ins.splice.bit",
+        "Map.ins.splice",
+        "Map.ins",
+        "Map.put.go",
+        "Map.put",
+        "Map.set.fin.go",
+        "Map.set.fin",
+        "Map.set.go",
+        "Map.set",
+        "Map.new",
+        "U32.add",
+        "U32.sub",
+        "U32.mul",
+        "U32.div",
+        "U32.mod",
+        "U32.and",
+        "U32.or",
+        "U32.xor",
+        "U32.inc",
+        "U32.not",
+        "U32.shl",
+        "U32.shr",
+        "U32.shln",
+        "U32.shrn",
+        "U32.is_zero",
+        "U32.is_eq",
+        "U32.is_ne",
+        "U32.is_lt",
+        "U32.is_le",
+        "U32.is_gt",
+        "U32.is_ge",
+        "U32.to_nat",
+        "U32.from_nat",
+        "U32.to_f32",
+        "F32.add",
+        "F32.sub",
+        "F32.mul",
+        "F32.div",
+        "F32.mod",
+        "F32.neg",
+        "F32.is_eq",
+        "F32.is_ne",
+        "F32.is_lt",
+        "F32.is_le",
+        "F32.is_gt",
+        "F32.is_ge",
+        "F32.sqrt",
+        "F32.exp",
+        "F32.log",
+        "F32.log2",
+        "F32.log10",
+        "F32.sin",
+        "F32.cos",
+        "F32.tan",
+        "F32.asin",
+        "F32.acos",
+        "F32.atan",
+        "F32.sinh",
+        "F32.cosh",
+        "F32.tanh",
+        "F32.floor",
+        "F32.ceil",
+        "F32.trunc",
+        "F32.abs",
+        "Nat.is_lt",
+        "Nat.add",
+        "U32.cmp",
+        "Nat.sub",
+        "Nat.divmod"
+      ],
+      "/deepPrivateProbe": 12000,
+      "/deepOwnedSource": null
+    }
+  },
+  "map-scalar-renamed": {
+    "controller": "selfhost/tools/performance/phase43/products/map-actual/oracle-v2.mjs",
+    "controllerSha256": "56ebc1fc3b0444c23c14ce1265a7f30d7219d285881968b682280b5226fc6091",
+    "derivationController": "selfhost/tools/performance/phase43/products/map-actual/derive-v6.mjs",
+    "derivationAssertions": {
+      "/kind": "phase43-map-actual-derivation",
+      "/complete": true,
+      "/root": "branch.fresh.scalar",
+      "/contextualEntries": 1,
+      "/guardNames": [
+        "branch.fresh.scalar.value",
+        "Char.cmp",
+        "String.cmp.rec",
+        "String.cmp.fin",
+        "String.cmp",
+        "Map.msb.u.if",
+        "Map.msb.u",
+        "Map.diff.chr",
+        "Map.diff.step",
+        "Map.diff.fin",
+        "Map.diff",
+        "Map.bit.go.rec",
+        "Map.bit.u",
+        "Map.bit.chr",
+        "Map.bit.go.chr",
+        "Map.bit.go",
+        "Map.bit.at",
+        "Map.bit",
+        "branch.fresh.scalar",
+        "Map.lo",
+        "Map.hi",
+        "Map.get.go",
+        "Map.get.leaf",
+        "Map.get",
+        "Map.pop.lo",
+        "Map.pop.hi",
+        "Map.pop.go",
+        "Map.pop.leaf",
+        "Map.pop",
+        "Map.del.fin",
+        "Map.del",
+        "Map.lo",
+        "Map.hi",
+        "Map.seek.go",
+        "Map.seek",
+        "Map.ins.go",
+        "Map.ins.splice.bit",
+        "Map.ins.splice",
+        "Map.ins",
+        "Map.put.go",
+        "Map.put",
+        "Map.set.fin.go",
+        "Map.set.fin",
+        "Map.set.go",
+        "Map.set",
+        "Map.new",
+        "U32.add",
+        "U32.sub",
+        "U32.mul",
+        "U32.div",
+        "U32.mod",
+        "U32.and",
+        "U32.or",
+        "U32.xor",
+        "U32.inc",
+        "U32.not",
+        "U32.shl",
+        "U32.shr",
+        "U32.shln",
+        "U32.shrn",
+        "U32.is_zero",
+        "U32.is_eq",
+        "U32.is_ne",
+        "U32.is_lt",
+        "U32.is_le",
+        "U32.is_gt",
+        "U32.is_ge",
+        "U32.to_nat",
+        "U32.from_nat",
+        "U32.to_f32",
+        "F32.add",
+        "F32.sub",
+        "F32.mul",
+        "F32.div",
+        "F32.mod",
+        "F32.neg",
+        "F32.is_eq",
+        "F32.is_ne",
+        "F32.is_lt",
+        "F32.is_le",
+        "F32.is_gt",
+        "F32.is_ge",
+        "F32.sqrt",
+        "F32.exp",
+        "F32.log",
+        "F32.log2",
+        "F32.log10",
+        "F32.sin",
+        "F32.cos",
+        "F32.tan",
+        "F32.asin",
+        "F32.acos",
+        "F32.atan",
+        "F32.sinh",
+        "F32.cosh",
+        "F32.tanh",
+        "F32.floor",
+        "F32.ceil",
+        "F32.trunc",
+        "F32.abs",
+        "Nat.is_lt",
+        "Nat.add",
+        "U32.cmp",
+        "Nat.sub",
+        "Nat.divmod"
+      ],
+      "/observed": {
+        "length": 39
+      }
+    },
+    "mapWorkerShapes": [
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_48$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_55$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_56$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_49$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_50$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_51$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_52$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_53$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_54$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_55$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_56$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_49_57$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_48$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_49$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_50$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_51$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_52$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_53$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_54$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_55$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_56$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_50_57$tree",
+        "arity": 1
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_48$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_49$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_50$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_51$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_52$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_53$tree",
+        "arity": 5
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_54$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_55$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_56$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_51_57$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_48$tree",
+        "arity": 3
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_49$tree",
+        "arity": 4
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_50$tree",
+        "arity": 5
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_51$tree",
+        "arity": 2
+      },
+      {
+        "name": "$R_36_105_110_115_116_97_110_99_101_46_52_52$tree",
+        "arity": 3
+      }
+    ],
+    "assertions": {
+      "/kind": "phase43-map-actual-controls",
+      "/complete": true,
+      "/passed": true,
+      "/sourceActivation": true,
+      "/root": "branch.fresh.scalar",
+      "/values": {
+        "length": 19
+      },
+      "/aliases": {
+        "length": 6
+      },
+      "/abi": {
+        "length": 3
+      },
+      "/boundaries": {
+        "length": 645
+      },
+      "/expectedCounts": {
+        "values": 19,
+        "aliases": 6,
+        "boundaries": 645,
+        "abi": 3
+      },
+      "/guards": [
+        "branch.fresh.scalar.value",
+        "Char.cmp",
+        "String.cmp.rec",
+        "String.cmp.fin",
+        "String.cmp",
+        "Map.msb.u.if",
+        "Map.msb.u",
+        "Map.diff.chr",
+        "Map.diff.step",
+        "Map.diff.fin",
+        "Map.diff",
+        "Map.bit.go.rec",
+        "Map.bit.u",
+        "Map.bit.chr",
+        "Map.bit.go.chr",
+        "Map.bit.go",
+        "Map.bit.at",
+        "Map.bit",
+        "branch.fresh.scalar",
+        "Map.lo",
+        "Map.hi",
+        "Map.get.go",
+        "Map.get.leaf",
+        "Map.get",
+        "Map.pop.lo",
+        "Map.pop.hi",
+        "Map.pop.go",
+        "Map.pop.leaf",
+        "Map.pop",
+        "Map.del.fin",
+        "Map.del",
+        "Map.seek.go",
+        "Map.seek",
+        "Map.ins.go",
+        "Map.ins.splice.bit",
+        "Map.ins.splice",
+        "Map.ins",
+        "Map.put.go",
+        "Map.put",
+        "Map.set.fin.go",
+        "Map.set.fin",
+        "Map.set.go",
+        "Map.set",
+        "Map.new",
+        "U32.add",
+        "U32.sub",
+        "U32.mul",
+        "U32.div",
+        "U32.mod",
+        "U32.and",
+        "U32.or",
+        "U32.xor",
+        "U32.inc",
+        "U32.not",
+        "U32.shl",
+        "U32.shr",
+        "U32.shln",
+        "U32.shrn",
+        "U32.is_zero",
+        "U32.is_eq",
+        "U32.is_ne",
+        "U32.is_lt",
+        "U32.is_le",
+        "U32.is_gt",
+        "U32.is_ge",
+        "U32.to_nat",
+        "U32.from_nat",
+        "U32.to_f32",
+        "F32.add",
+        "F32.sub",
+        "F32.mul",
+        "F32.div",
+        "F32.mod",
+        "F32.neg",
+        "F32.is_eq",
+        "F32.is_ne",
+        "F32.is_lt",
+        "F32.is_le",
+        "F32.is_gt",
+        "F32.is_ge",
+        "F32.sqrt",
+        "F32.exp",
+        "F32.log",
+        "F32.log2",
+        "F32.log10",
+        "F32.sin",
+        "F32.cos",
+        "F32.tan",
+        "F32.asin",
+        "F32.acos",
+        "F32.atan",
+        "F32.sinh",
+        "F32.cosh",
+        "F32.tanh",
+        "F32.floor",
+        "F32.ceil",
+        "F32.trunc",
+        "F32.abs",
+        "Nat.is_lt",
+        "Nat.add",
+        "U32.cmp",
+        "Nat.sub",
+        "Nat.divmod"
+      ],
+      "/deepPrivateProbe": 12000,
+      "/deepOwnedSource": null
+    }
+  }
+}

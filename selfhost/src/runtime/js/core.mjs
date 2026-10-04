@@ -23,6 +23,11 @@ const build=(name,fields)=>({build:true,name,fields});
 // with the same vector, but cannot reuse this token or forge one with extra args.
 const exactCodes=new WeakSet(), exactPrototype=Function.prototype;
 const exactCall=Function.prototype.call;
+// Private entry bookkeeping must not observe mutable host reflection before
+// the body guard. These standard initialization intrinsics are never exported.
+const exactApply=Reflect.apply,exactHas=WeakSet.prototype.has.bind(exactCodes);
+const exactGetPrototype=Object.getPrototypeOf,exactDescriptor=Object.getOwnPropertyDescriptor;
+const exactOwn=Object.hasOwn;
 let exactEntry=null,hasExactCodes=false;
 function enterExact(code,inner,a){
   const entry=exactEntry;
@@ -40,16 +45,16 @@ function exactCode(inner,arrow=false,nullary=false){
 }
 function invokeExact(f,all){
   const code=f.code;
-  if(!hasExactCodes||!exactCodes.has(code)||Object.getPrototypeOf(code)!==exactPrototype||
-      Object.getOwnPropertyDescriptor(code,'call'))return code.call(f.env,all);
-  const callProperty=Object.getOwnPropertyDescriptor(exactPrototype,'call');
-  if(!callProperty||!Object.hasOwn(callProperty,'value')||callProperty.value!==exactCall)
+  if(!hasExactCodes||!exactHas(code)||exactGetPrototype(code)!==exactPrototype||
+      exactDescriptor(code,'call'))return code.call(f.env,all);
+  const callProperty=exactDescriptor(exactPrototype,'call');
+  if(!callProperty||!exactOwn(callProperty,'value')||callProperty.value!==exactCall)
     return code.call(f.env,all);
   // Resolve .call before env, as the original invocation does. Environment
   // getters may reenter; permission is installed only after they have returned.
   const invoke=code.call,env=f.env,previous=exactEntry;
   exactEntry={code,args:all,used:false};
-  try{return Reflect.apply(code,env,[all]);}
+  try{return exactApply(code,env,[all]);}
   finally{exactEntry=previous;}
 }
 function force(x){

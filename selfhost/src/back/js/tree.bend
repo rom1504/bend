@@ -2,12 +2,6 @@
 # matcher entry and every refused shape keep the original generic evaluation.
 
 @unsafe
-def j_tree_global(+book: List<&2,KDef>, +d: KDef) -> String:
-  +worker = j_tree_worker(book, d)
-  kc(String, String.eq(worker, ""), u => j_region_global(book, d),
-    u => "G[" ++ j_quote(dn(d)) ++ "]=" ++ worker ++ ";\n")
-
-@unsafe
 def j_tree_worker(+book: List<&2,KDef>, +d: KDef) -> String:
   kc(String, j_nat_scalar_shape(book, d), u =>
     kc(String, j_region_signature(book, dt(d), da(d)), u =>
@@ -768,26 +762,28 @@ def j_flat_clones(+book: List<&2,KDef>, +ds: List<&2,KDef>) -> String:
     case Con{d, rest}: kc(String, j_pure_valid(j_component_cached(book, dn(d))), u => j_component_declaration(book, d, j_component_cached(book, dn(d))), u => "") ++ j_flat_clones(book, rest)
 
 @unsafe
-def j_flat_root_scope(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> String:
-  +normal = j_fusion_root_body(book, d, j_nat_loop_generic(book, Nil{}, j_region_term(s), dt(d), 0))
-  kc(String, j_fold_root_signature(book, dt(d), da(d)) && j_region_has_residual(j_region_helpers(s)), u =>
+def j_flat_root_scope(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> JRootPlan:
+  # The only caller already tried and refused full root fusion.
+  +residual = j_region_has_residual(j_region_helpers(s))
+  +normal: JRootPlan = JRootPlan{j_nat_loop_generic(book, Nil{}, j_region_term(s), dt(d), 0), Bool.not(residual)}
+  kc(JRootPlan, j_fold_root_signature(book, dt(d), da(d)) && residual, u =>
     j_flat_root_proof(book, d, s, normal, j_pure_graph(book, d, JPure{Nil{}, 32768, True{}})), u => normal)
 
 @unsafe
-def j_flat_root_proof(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +normal: String, +pure: JPure) -> String:
-  kc(String, j_pure_valid(pure), u => "const $previousProof=regionProofOpen($guards);try{" ++
-    j_flat_root_select(book, d, s, normal, j_pure_defs(pure), j_flat_locals(book, j_pure_defs(pure), j_region_helpers(s))) ++
-    "}finally{regionProofClose($previousProof);}", u => normal)
+def j_flat_root_proof(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +normal: JRootPlan, +pure: JPure) -> JRootPlan:
+  kc(JRootPlan, j_pure_valid(pure), u => j_root_plan_wrap("const $previousProof=regionProofOpen($guards);try{",
+    j_flat_root_select(book, d, s, normal, j_pure_defs(pure), j_flat_locals(book, j_pure_defs(pure), j_region_helpers(s))),
+    "}finally{regionProofClose($previousProof);}"), u => normal)
 
 @unsafe
-def j_flat_root_select(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +normal: String, +graph: List<&2,KDef>, +locals: List<&2,KDef>) -> String:
-  kc(String, j_region_signature(book, dt(d), da(d)) && j_flat_local_audit(book, graph, locals, locals) &&
+def j_flat_root_select(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +normal: JRootPlan, +graph: List<&2,KDef>, +locals: List<&2,KDef>) -> JRootPlan:
+  kc(JRootPlan, j_region_signature(book, dt(d), da(d)) && j_flat_local_audit(book, graph, locals, locals) &&
     j_flat_guarded(graph, dn(d), j_region_helpers(s)) && j_flat_graph_audit(book, graph, locals, dn(d), graph) && j_flat_audit(book, graph, locals, "", j_flat_term(book, graph, j_region_term(s)), 8192), u =>
     j_flat_root_emit(j_flat_book(book, j_flat_source_root(book, graph, dn(d))), d, graph, locals, normal, j_owned_term(j_flat_term(book, graph, j_region_term(s)))), u => normal)
 
 @unsafe
-def j_flat_root_emit(+book: List<&2,KDef>, +d: KDef, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +normal: String, +body: KTerm) -> String:
-  kc(String, j_flat_active(book), u => "{/* private flat closed graph */" ++ j_flat_clones(book, graph) ++ j_region_definitions(book, locals) ++ j_nat_loop_generic(book, Nil{}, body, dt(d), 0) ++ "}", u => normal)
+def j_flat_root_emit(+book: List<&2,KDef>, +d: KDef, +graph: List<&2,KDef>, +locals: List<&2,KDef>, +normal: JRootPlan, +body: KTerm) -> JRootPlan:
+  kc(JRootPlan, j_flat_active(book), u => JRootPlan{"{/* private flat closed graph */" ++ j_flat_clones(book, graph) ++ j_region_definitions(book, locals) ++ j_nat_loop_generic(book, Nil{}, body, dt(d), 0) ++ "}", True{}}, u => normal)
 
 @unsafe
 def j_flat_fields(+book: List<&2,KDef>, +ty: KTerm, +value: String, +at: U32, +total: U32, +rest: List<&2,String>) -> List<&2,String>:

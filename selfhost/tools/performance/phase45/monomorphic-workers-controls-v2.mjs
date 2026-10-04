@@ -5,9 +5,9 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 const [baseline,candidate,typescript,output]=process.argv.slice(2);
-assert(output,'monomorphic-workers-controls.mjs BASELINE11 CANDIDATE13 TYPESCRIPT NEW_OUT');
+assert(output,'monomorphic-workers-controls-v2.mjs BASELINE11 CANDIDATE13B TYPESCRIPT NEW_OUT');
 const out=path.resolve(output);fs.mkdirSync(out);
-const report={kind:'phase45-monomorphic-worker-controls',complete:false,pass:false,inputs:[],modules:[],oracles:[],activation:[],boundaries:[],
+const report={kind:'phase45-monomorphic-worker-controls',controllerVersion:2,complete:false,pass:false,inputs:[],modules:[],oracles:[],activation:[],boundaries:[],abi:[],
   scope:'Independent monomorphic positive-arity graph; clean small three-role values, candidate deep50k, and observable post-import public helper mutation. No timing, arbitrary hostile-preimport, termination-proof or universal conformance claim.'};
 const identity=p=>{const file=fs.realpathSync(p),bytes=fs.readFileSync(file);return {path:file,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')};};
 const pinned=new Map();
@@ -36,6 +36,20 @@ function observe(m,mode){const f=m.G.cedar,code=f.code,events=[],objects=[m.G,f,
   }catch(e){error={name:e.name,message:e.message};}finally{
     for(const [o,descriptors]of saved){for(const key of Reflect.ownKeys(o))if(!Object.hasOwn(descriptors,key))delete o[key];Object.defineProperties(o,descriptors);}
   }return {value,error,events};}
+function describe(f){return {arity:f.arity,env:f.env,bound:f.bound.map(v=>typeof v==='bigint'?String(v)+'n':v),codeType:typeof f.code,codeLength:f.code.length};}
+function publicAbi(m){
+  assert.equal(m.G.cedar.arity,1);assert.equal(m.G.bench.arity,2);
+  const first=m.call(m.G.cedar,[3n]),firstDescriptor=describe(first),value=m.call(first,[7]);assert.equal(value,1133);
+  const original=Object.getOwnPropertyDescriptor(m.G,'cedar'),events=[];let partial,partialDescriptor,staged;
+  try{Object.defineProperty(m.G,'cedar',{configurable:true,get(){events.push('G');return original.value;}});
+    partial=m.call(m.G.bench,[3]);partialDescriptor=describe(partial);assert.deepEqual(events,[],'Partial bench must not demand helper');
+    staged=m.call(partial,[7]);assert.equal(staged,1133);assert.deepEqual(events,['G','G']);
+  }finally{Object.defineProperty(m.G,'cedar',original);}
+  const raw=m.call(Reflect.apply(m.G.bench.code,null,[[3,7]]),[]);assert.equal(raw,1133);
+  let overapplication;try{m.call(m.G.bench,[3,7,0]);}catch(error){overapplication={name:error.name,message:error.message};}
+  assert.deepEqual(overapplication,{name:'Error',message:'attempt to call non-function 1133'});
+  return {cedar:describe(m.G.cedar),bench:describe(m.G.bench),firstDescriptor,value,partialDescriptor,staged,events,raw,overapplication};
+}
 try{
   pin(import.meta.filename);pin(process.execPath);
   const catalogFile=path.join(import.meta.dirname,'monomorphic-workers-catalog.json'),catalogId=pin(catalogFile),catalog=JSON.parse(fs.readFileSync(catalogFile,'utf8'));
@@ -46,7 +60,7 @@ try{
     assert.equal(emission.kind,'bend-program-checked-emission');assert.equal(emission.complete,true);assert.equal(emission.observation.checked,true);assert.equal(emission.observation.status,'ok');
     assert.equal(emission.input.sha256,source.sha256);assert.equal(emission.output.sha256,module.sha256);assert.equal(emission.catalog.sha256,catalogId.sha256);
     assert.equal(emission.compiler.kind,i===2?'checked-pinned-typescript':'checked-development-attempt');assert.equal(emission.compiler.upstreamCommit,catalog.upstreamCommit);audit(emission);
-    report.modules.push({role:['baseline11','candidate13','typescript'][i],module,receipt,compiler:emission.compiler});
+    report.modules.push({role:['baseline11','candidate13b','typescript'][i],module,receipt,compiler:emission.compiler});
     texts.push(fs.readFileSync(module.path,'utf8'));modules.push(await import(pathToFileURL(module.path)));
   }
   for(const row of catalog.cases){const p=row.point;for(const m of modules)assert.equal(m.default[p.exportName](...p.args),p.expected,row.id);}
@@ -81,6 +95,10 @@ try{
     const before=witness.p45MonoCounts(),observed=observe(witness,mode),after=witness.p45MonoCounts();assert.deepEqual(observed,values[1],mode+' derivative');assert.deepEqual(after,before,mode+' contextual refusal');
     report.boundaries.push({...report.current,countsBefore:before,countsAfter:after});delete report.current;
   }
+  const abi=modules.slice(0,2).map(publicAbi);assert.deepEqual(abi[1],abi[0],'Public arity, staged demand, raw code and overapplication');
+  const abiBefore=witness.p45MonoCounts(),abiWitness=publicAbi(witness),abiAfter=witness.p45MonoCounts();
+  assert.deepEqual(abiWitness,abi[1]);assert.deepEqual(abiAfter,abiBefore,'Partial/refused/raw/oversaturated calls do not enter contextual root');
+  report.abi.push({observations:abi,countsBefore:abiBefore,countsAfter:abiAfter});
   for(const row of pinned.values())assert.deepEqual(identity(row.path),row,'Changed input');assert.deepEqual(identity(derivativeFile),report.derivative.module);report.complete=report.pass=true;
 }catch(error){report.error=error.stack;process.exitCode=1;}
 fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});

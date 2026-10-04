@@ -6,6 +6,17 @@ type JRegion is Data:
 type JRegionBuild is Data:
   JRegionBuild{+term: KTerm, +helpers: List<&2,KDef>, +fuel: U32, +valid: Bool}
 
+# A selected root carries its emitted code and the optimization already proved.
+# Strong plans remove intermediate values or close every residual source call.
+# This is selection metadata, not an additional legality analysis.
+type JRootPlan is Data:
+  JRootPlan{+code: String, +strong: Bool}
+
+@unsafe
+def j_root_plan_wrap(+prefix: String, +plan: JRootPlan, +suffix: String) -> JRootPlan:
+  match plan:
+    case JRootPlan{code, strong}: JRootPlan{prefix ++ code ++ suffix, strong}
+
 @unsafe
 def j_region_term(+s: JRegionBuild) -> KTerm:
   match s:
@@ -129,12 +140,12 @@ def j_region_def_count(+ds: List<&2,KDef>) -> U32:
 # Ordinary roots reuse the same analysis. Require a nested countdown so trivial
 # scalar wrappers do not pay a closure guard without measured useful work.
 @unsafe
-def j_region_root(+book: List<&2,KDef>, +d: KDef) -> String:
-  kc(String, j_region_capture_eligible(book, d) && j_fold_root_signature(book, dt(d), da(d)) && String.eq(tg(j_strip(dv(d))), "Lam"), u =>
-    kc(String, j_u32_bounded([dv(d)], 8192) && U32.is_eq(j_nat_loop_count(dv(d), 0), da(d)), u =>
-      kc(String, j_nat_loop_distinct(dv(d), Nil{}) && Bool.not(j_l_deep(dv(d), 0)), u =>
+def j_region_root_plan(+book: List<&2,KDef>, +d: KDef) -> JRootPlan:
+  kc(JRootPlan, j_region_capture_eligible(book, d) && j_fold_root_signature(book, dt(d), da(d)) && String.eq(tg(j_strip(dv(d))), "Lam"), u =>
+    kc(JRootPlan, j_u32_bounded([dv(d)], 8192) && U32.is_eq(j_nat_loop_count(dv(d), 0), da(d)), u =>
+      kc(JRootPlan, j_nat_loop_distinct(dv(d), Nil{}) && Bool.not(j_l_deep(dv(d), 0)), u =>
         j_region_root_done(book, d, j_region_prefix(book, Nil{}, dv(d), dt(d), 0, da(d), True{}, "@root-return", [dn(d)], 0,
-          JRegionBuild{atom("Absent"), Nil{}, 32768, True{}})), u => ""), u => ""), u => "")
+          JRegionBuild{atom("Absent"), Nil{}, 32768, True{}})), u => JRootPlan{"", False{}}), u => JRootPlan{"", False{}}), u => JRootPlan{"", False{}})
 
 @unsafe
 def j_region_has_loop(+book: List<&2,KDef>, +helpers: List<&2,KDef>) -> Bool:
@@ -143,27 +154,21 @@ def j_region_has_loop(+book: List<&2,KDef>, +helpers: List<&2,KDef>) -> Bool:
     case Con{d, rest}: kc(Bool, Bool.not(db(d)) && (String.eq(tg(dv(d)), "Mat") || String.eq(tg(dv(d)), "JFold") || String.eq(tg(dv(d)), "JProducer")), u => True{}, u => kc(Bool, String.eq(tg(dv(d)), "JResidual") && j_pure_valid(j_component_cached(book, dn(d))), u => True{}, u => j_region_has_loop(book, rest)))
 
 @unsafe
-def j_region_root_done(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> String:
-  kc(String, j_region_valid(s) && j_region_has_loop(book, j_region_helpers(s)), u =>
-    j_region_root_selected(book, d, s, j_fusion_root_prefix(book, dv(d), dt(d), Nil{}, 0, da(d))), u => "")
+def j_region_root_done(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> JRootPlan:
+  kc(JRootPlan, j_region_valid(s) && j_region_has_loop(book, j_region_helpers(s)), u =>
+    j_region_root_selected(book, d, s, j_fusion_root_prefix(book, dv(d), dt(d), Nil{}, 0, da(d))), u => JRootPlan{"", False{}})
 
 # The guard domain and selected body share the very same successful full proof.
-# Empty proof preserves existing generic/flat selection and full host validation.
+# The successful plan also supplies rank; no second proof or emitted-text scan.
 @unsafe
-def j_region_root_selected(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +fusion: String) -> String:
+def j_region_root_selected(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +fusion: String) -> JRootPlan:
+  j_root_plan_wrap(
     "(()=>{" ++ j_region_declarations(book, j_region_helpers(s)) ++ "const $guards=[" ++ j_quote(dn(d)) ++ "," ++ j_region_names(j_region_helpers(s)) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){/* private scalar root */" ++ j_nat_loop_slots(da(d), 0) ++
-    "if($entered&&" ++ kc(String, String.eq(fusion, ""), u => j_fold_root_guard(book, d, j_region_helpers(s)), u => "regionHostGuard(true)&&") ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++ "&&localGuard($guards)){" ++
-    kc(String, String.eq(fusion, ""), u => j_flat_root_scope(book, d, s), u =>
-      "const $previousProof=regionProofOpen($guards);try{" ++ fusion ++ "}finally{regionProofClose($previousProof);}") ++ "}" ++
-    j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()"
-
-@unsafe
-def j_region_global(+book: List<&2,KDef>, +d: KDef) -> String:
-  +callback = j_callback_root(book, d)
-  +worker = kc(String, String.eq(callback, ""), u => j_region_root(book, d), u => callback)
-  kc(String, String.eq(worker, ""), u => j_u32_global(book, d, j_u32_worker(book, d)),
-    u => j_l_global_worker(book, d, dv(d), worker))
+    "if($entered&&" ++ kc(String, String.eq(fusion, ""), u => j_fold_root_guard(book, d, j_region_helpers(s)), u => "regionHostGuard(true)&&") ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++ "&&localGuard($guards)){",
+    kc(JRootPlan, String.eq(fusion, ""), u => j_flat_root_scope(book, d, s), u =>
+      JRootPlan{"const $previousProof=regionProofOpen($guards);try{" ++ fusion ++ "}finally{regionProofClose($previousProof);}", True{}}),
+    "}" ++ j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()")
 
 @unsafe
 def j_region_plan(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm, +total: U32) -> Maybe<&2,JRegion>:
@@ -1041,11 +1046,6 @@ def j_fusion_root_prefix(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +vars: Lis
 @unsafe
 def j_fusion_root_bind(+t: KTerm, +at: U32, +body: String) -> String:
   kc(String, String.eq(body, ""), u => "", u => "const " ++ j_local(ix(t)) ++ "=$s" ++ U32.show(at) ++ ";" ++ body)
-
-@unsafe
-def j_fusion_root_body(+book: List<&2,KDef>, +d: KDef, +fallback: String) -> String:
-  +body = j_fusion_root_prefix(book, dv(d), dt(d), Nil{}, 0, da(d))
-  kc(String, String.eq(body, ""), u => fallback, u => body)
 
 # Candidate source fragment for region.bend. No source-name specialization.
 # Not checked: root owns acquisition and qualified integration.

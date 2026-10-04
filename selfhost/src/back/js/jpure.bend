@@ -1155,20 +1155,25 @@ def j_instance_capture(+rows: List<&2,KDef>) -> String:
     case Nil{}: ""
     case Con{fact, rest}: "scalarCapture(" ++ j_quote(dn(j_instance_original(fact))) ++ ",G[" ++ j_quote(dn(j_instance_original(fact))) ++ "]);" ++ j_instance_capture(rest)
 
+# Profitability prefilter only: keep existing erased calls, also consider exact
+# source-call edges. Primitive/literal-only leaves do not duplicate private graphs.
+# Exact source aliases still pass the complete collector, provenance and JPure gates.
 @unsafe
-def j_instance_has_erased(+book: List<&2,KDef>, +todo: List<&2,KTerm>, +fuel: U32) -> Bool:
+def j_instance_has_graph_call(+book: List<&2,KDef>, +todo: List<&2,KTerm>, +fuel: U32) -> Bool:
   match todo:
     case Nil{}: False{}
     case Con{t, rest}:
       kc(Bool, U32.is_gt(fuel, 0), u =>
-        j_instance_has_erased_node(book, t, rest, fuel, j_call_spine(t, Nil{})), u => False{})
+        j_instance_has_graph_call_node(book, t, rest, fuel, j_call_spine(t, Nil{})), u => False{})
 
 @unsafe
-def j_instance_has_erased_node(+book: List<&2,KDef>, +t: KTerm, +rest: List<&2,KTerm>, +fuel: U32, +spine: KTerm) -> Bool:
+def j_instance_has_graph_call_node(+book: List<&2,KDef>, +t: KTerm, +rest: List<&2,KTerm>, +fuel: U32, +spine: KTerm) -> Bool:
   +d = lookup(book, nm(spine))
   kc(Bool, String.eq(tg(t), "App") && String.eq(tg(spine), "Call") && String.eq(dk(d), "Def") &&
-    U32.is_eq(terms_len(ks(spine)), da(d)) && String.eq(tg(wnf(book, dt(d))), "All") && U32.is_eq(qt(wnf(book, dt(d))), 0),
-    u => True{}, u => j_instance_has_erased(book, List.append(&2,KTerm, ks(t), rest), U32.sub(fuel, 1)))
+    U32.is_eq(terms_len(ks(spine)), da(d)) &&
+    ((j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32)) ||
+      (String.eq(tg(wnf(book, dt(d))), "All") && U32.is_eq(qt(wnf(book, dt(d))), 0))),
+    u => True{}, u => j_instance_has_graph_call(book, List.append(&2,KTerm, ks(t), rest), U32.sub(fuel, 1)))
 
 @unsafe
 def j_instance_root_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> Bool:
@@ -1181,16 +1186,24 @@ def j_instance_root_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> B
 # Native String results are immutable values already produced by the private
 # component emitter. Arguments remain scalar; object/array/closure results do
 # not enter through this boundary. Graph, layout and host guards still apply.
+# The public fixed-arity wrapper and its generic fallback both consume exactly
+# the contiguous leading lambda prefix. A matcher between arguments keeps its
+# original public descriptor/demand boundary, but may still be a private callee.
 @unsafe
 def j_instance_root(+book: List<&2,KDef>, +d: KDef) -> String:
   kc(String, j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) &&
-    j_instance_root_signature(book, dt(d), da(d)) &&
-    j_instance_has_erased(book, [dv(d)], 2048), u =>
+    U32.is_eq(j_lambda_count(dv(d)), da(d)) && j_instance_root_signature(book, dt(d), da(d)) &&
+    j_instance_has_graph_call(book, [dv(d)], 2048), u =>
       j_instance_root_collect(book, d, j_instances_collect(book, [dv(d)], JInstances{Nil{}, [d], 1048576, True{}})), u => "")
 
 @unsafe
 def j_instance_root_collect(+book: List<&2,KDef>, +d: KDef, +s: JInstances) -> String:
-  kc(String, j_instances_valid(s) && Bool.not(List.is_empty(&2,KDef, j_instances_rows(s))), u =>
+  # Native-source public roots require real contextual specialization.
+  # New alias-only public wrappers need non-native provenance; their guarded
+  # entry cost is unsuitable for small reusable prelude helpers. Such helpers
+  # remain eligible as private callees within every complete worker graph.
+  kc(String, j_instances_valid(s) && Bool.not(List.is_empty(&2,KDef, j_instances_sources(s))) &&
+    (Bool.not(db(d)) || Bool.not(List.is_empty(&2,KDef, j_instances_rows(s)))), u =>
     j_instance_root_rows(book, d, j_instance_aliases(j_instances_sources(s), j_instances_rows(s))), u => "")
 
 @unsafe

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Checked acquisition; separate controller proves native tail execution at shared budget zero under pending non-tail frames.",
+  "cases": [
+    {
+      "id": "exhausted-tail",
+      "family": "general-worker-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "fixtures/exhausted-tail.bend",
+        "sha256": "6b6b9779dc68962f6144180d9e5b4d68de8c936c959f67092061c4ef632569cf",
+        "bytes": 659,
+        "provenance": {
+          "kind": "phase45-exhausted-tail-component",
+          "scope": "Independent unsafe backend correctness fixture; no timing or termination-proof claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          5,
+          7
+        ],
+        "expected": 316
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent iterative outer-seed sum plus exact BigInt modular tail increment."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "exhausted-tail"
+    ],
+    "core": [
+      "exhausted-tail"
+    ],
+    "broad": [
+      "exhausted-tail"
+    ],
+    "full": [
+      "exhausted-tail"
+    ]
+  }
+}

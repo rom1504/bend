@@ -851,12 +851,38 @@ def j_l_marks(ts, path, depth, at):
 
 @unsafe
 def j_l_def(book, d):
-  +instance = j_instance_root(book, lookup(book, dn(d)))
   +worker = j_nat_loop_worker(book, d)
+  kc(String, String.eq(worker, ""), u => j_l_def_tree(book, d, j_tree_worker(book, d)),
+    u => j_l_def_selected(book, d, "G[" ++ j_quote(dn(d)) ++ "]=" ++ worker ++ ";\n"))
+
+@unsafe
+def j_l_def_tree(+book: List<&2,KDef>, +d: KDef, +worker: String) -> String:
+  kc(String, String.eq(worker, ""), u => j_l_def_callback(book, d, j_callback_root(book, d)),
+    u => j_l_def_selected(book, d, "G[" ++ j_quote(dn(d)) ++ "]=" ++ worker ++ ";\n"))
+
+@unsafe
+def j_l_def_callback(+book: List<&2,KDef>, +d: KDef, +worker: String) -> String:
+  kc(String, String.eq(worker, ""), u => j_l_def_region(book, d, j_region_root_plan(book, d)),
+    u => j_l_def_selected(book, d, j_l_global_worker(book, d, dv(d), worker)))
+
+@unsafe
+def j_l_def_region(+book: List<&2,KDef>, +d: KDef, +plan: JRootPlan) -> String:
+  match plan:
+    case JRootPlan{code, strong}:
+      kc(String, strong, u => j_l_def_selected(book, d, j_l_global_worker(book, d, dv(d), code)),
+        u => j_l_def_instance(book, d, code, j_instance_root(book, lookup(book, dn(d)))))
+
+@unsafe
+def j_l_def_instance(+book: List<&2,KDef>, +d: KDef, +region: String, +instance: String) -> String:
+  kc(String, String.eq(instance, ""), u =>
+    j_l_def_selected(book, d, kc(String, String.eq(region, ""), u => j_u32_global(book, d, j_u32_worker(book, d)),
+      u => j_l_global_worker(book, d, dv(d), region))),
+    u => j_l_global_worker(book, d, dv(d), instance))
+
+@unsafe
+def j_l_def_selected(+book: List<&2,KDef>, +d: KDef, +code: String) -> String:
   +component = lookup(book, dn(d))
-  kc(String, Bool.not(String.eq(instance, "")), u => j_l_global_worker(book, d, dv(d), instance), u =>
-  kc(String, String.eq(worker, ""), u => j_tree_global(book, d), u => "G[" ++ j_quote(dn(d)) ++ "]=" ++ worker ++ ";\n") ++
-    j_component_declaration(book, component, j_component_cached(book, dn(component))))
+  code ++ j_component_declaration(book, component, j_component_cached(book, dn(component)))
 
 @unsafe
 def j_l_definition(book, d, t):

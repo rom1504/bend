@@ -12,7 +12,15 @@ def verify(row):
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('plan',type=Path);p.add_argument('out',type=Path);a=p.parse_args();assert not a.out.exists();plan=json.loads(a.plan.read_text());assert plan['kind']=='phase43-full45-serial-runtime-batches' and plan['complete'] and plan['bound'] and not plan['executed']
  for k in ['producer','parent','measurementBinding','attempt','api','nodeIdentity','baseline','candidate','catalog']:verify(plan[k])
+ here=Path(__file__).resolve().parent
+ assert verify(plan['producer'])==ident(here/'prepare-runtime-batches-v1.py'),'exact batch planner producer required'
+ recipe=json.loads(Path(plan['parent']['file']).read_text());assert recipe.get('phase43Lineage') and recipe['bound'] and recipe['complete']
+ assert recipe['candidateBinding']['attempt']['sha256']==plan['attempt']['sha256'] and recipe['candidateBinding']['api']==plan['api']
+ assert recipe['materialization']['producer']['file']==str(here/'prepare-recipe-v1.py')
+ verify(recipe['materialization']['producer']);verify(recipe['materialization']['parent'])
+ assert recipe['materialization']['parent']['sha256']=='ddae5d9f1a600515083c51252a41a35f07aac23d62ab6b45241ddf9f5c8e3cd8'
  b=json.loads(Path(plan['measurementBinding']['file']).read_text());candidate=json.loads(Path(plan['candidate']['file']).read_text());baseline=json.loads(Path(plan['baseline']['file']).read_text())
+ assert b['kind']=='phase43-frozen-measurement-bindings' and verify(b['producer'])==ident(here/'check-measurement-bindings-v1.py')
  assert b['complete'] and b['attempt']['sha256']==plan['attempt']['sha256'] and b['api']==plan['api'] and b['node']==plan['nodeIdentity'];assert plan['expectedSamples']==669
  catalog=json.loads(Path(plan['catalog']['file']).read_text());points={x['id']:x['point'] for x in catalog['cases']}
  assert plan['selectedIds']==catalog['sets']['full']

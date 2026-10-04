@@ -1,0 +1,30 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -103,7 +103,7 @@
+ def j_pure_bool_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
+   +ty = wnf(book, dt(d))
+   +rest = wnf(book, kid(ty, 1))
+-  String.eq(dn(d), "Bool.xor") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) &&
++  (String.eq(dn(d), "Bool.xor") || String.eq(dn(d), "Bool.and")) && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) &&
+     Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) &&
+     j_primitive_type(book, wnf(book, kid(ty, 0)), "Bool") && String.eq(tg(rest), "All") && Bool.not(U32.is_eq(qt(rest), 0)) &&
+     j_primitive_type(book, wnf(book, kid(rest, 0)), "Bool") && j_primitive_type(book, wnf(book, kid(rest, 1)), "Bool")
+--- a/selfhost/src/back/js/finite.bend
++++ b/selfhost/src/back/js/finite.bend
+@@ -292,7 +292,7 @@
+ def j_direct_emit_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> String:
+   +d = lookup(book, nm(t))
+   kc(String, db(d), u =>
+-    "(($p0,$p1)=>$p0!==$p1)(" ++ j_apply_args(book, env, ks(t), dt(d)) ++ ")", u =>
++    "(($p0,$p1)=>" ++ kc(String, String.eq(dn(d), "Bool.and"), u => "$p0&&$p1", u => "$p0!==$p1") ++ ")(" ++ j_apply_args(book, env, ks(t), dt(d)) ++ ")", u =>
+     "((" ++ j_region_parameters(0, da(d)) ++ ")=>{/* private acyclic helper */" ++
+       j_finite_emit(book, Nil{}, j_owned_term(j_direct_term(book, dv(d))), dt(d), j_finite_slots(0, da(d))) ++
+       "})(" ++ j_apply_args(book, env, ks(t), dt(d)) ++ ")")
+--- a/selfhost/src/back/js/projection.bend
++++ b/selfhost/src/back/js/projection.bend
+@@ -66,4 +66,4 @@
+ 
+ @unsafe
+ def j_l_capture_scalar(+book: List<&2,KDef>, +d: KDef, +code: String) -> String:
+-  kc(String, j_region_capture_eligible(book, d) || j_callback_capture_eligible(book, d), u => "scalarCapture(" ++ j_quote(dn(d)) ++ "," ++ code ++ "," ++ kc(String, j_string_uses([dt(d), dv(d)], 8192) || j_string_family(book, [dt(d)], Nil{}, 512), u => "true", u => "false") ++ ")", u => code)
++  kc(String, j_region_capture_eligible(book, d) || j_callback_capture_eligible(book, d) || j_pure_bool_native(book, d), u => "scalarCapture(" ++ j_quote(dn(d)) ++ "," ++ code ++ "," ++ kc(String, j_string_uses([dt(d), dv(d)], 8192) || j_string_family(book, [dt(d)], Nil{}, 512), u => "true", u => "false") ++ ")", u => code)

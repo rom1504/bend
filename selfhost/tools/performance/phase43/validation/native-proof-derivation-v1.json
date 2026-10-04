@@ -1,0 +1,30 @@
+{
+  "kind": "phase43-native-mixed-sigma-controller-derivation",
+  "complete": true,
+  "reviewed": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/facts/map-bst/native-proof-controls-v02.mjs",
+    "sha256": "5367f2598c6750d57c4bcc36ea5239d5e68e18307ee14ba2ddbba758104ffb57"
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/validation/native-proof-controls-v1.mjs",
+    "sha256": "620e1f80b43d6eb728e8f54bf2c4cbaa50e81bc7f8df06d72c94e98d77af89bf"
+  },
+  "changes": [
+    {
+      "before": "])bool('reject-'+name,api.j_pure_type(book,ty),false);",
+      "after": "])bool(name==='SigmaQty2'?'admit-SigmaMixed21':'reject-'+name,api.j_pure_type(book,ty),name==='SigmaQty2');"
+    },
+    {
+      "before": "'../../../../development/workflow.mjs'",
+      "after": "'../../../development/workflow.mjs'"
+    }
+  ],
+  "semanticChange": {
+    "name": "reject-SigmaQty2",
+    "afterName": "admit-SigmaMixed21",
+    "beforeExpected": false,
+    "afterExpected": true
+  },
+  "scope": "Only mixed(2,1) native Sigma admission changes. Original other43-scope controls and strict closed equality/quantity mismatches/vector refusals unchanged. Requires explicit independent review; original controller immutable."
+}

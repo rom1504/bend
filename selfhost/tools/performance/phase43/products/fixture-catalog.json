@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Authored source qualification; not prevalence or timing evidence",
+  "cases": [
+    {
+      "id": "products-bench-0-0",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/prefix-controls.bend",
+        "sha256": "55f37b87b1fd0451192f1b6bded242585bf3b734bb7e5d2ead0e4c39a38fa7bc",
+        "bytes": 4557,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          0,
+          0
+        ],
+        "expected": 0
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-result-0-0",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.result",
+        "args": [
+          0,
+          0
+        ],
+        "expected": 1
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-shared-result-0-0",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.shared.result",
+        "args": [
+          0,
+          0
+        ],
+        "expected": 1
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-escape-result-0-0",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.escape.result",
+        "args": [
+          0,
+          0
+        ],
+        "expected": 1
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-result-1-17",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.result",
+        "args": [
+          1,
+          17
+        ],
+        "expected": 900
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-shared-result-1-17",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.shared.result",
+        "args": [
+          1,
+          17
+        ],
+        "expected": 34
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-escape-result-1-17",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.escape.result",
+        "args": [
+          1,
+          17
+        ],
+        "expected": 290
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-result-7-17",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.result",
+        "args": [
+          7,
+          17
+        ],
+        "expected": 1045760
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-shared-result-7-17",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.shared.result",
+        "args": [
+          7,
+          17
+        ],
+        "expected": 34
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-escape-result-7-17",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.escape.result",
+        "args": [
+          7,
+          17
+        ],
+        "expected": 290
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-result-32-4294967295",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.result",
+        "args": [
+          32,
+          4294967295
+        ],
+        "expected": 0
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-shared-result-32-4294967295",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.shared.result",
+        "args": [
+          32,
+          4294967295
+        ],
+        "expected": 4294967280
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    },
+    {
+      "id": "products-p43-pair-escape-result-32-4294967295",
+      "family": "products-source-controls",
+      "category": "diagnostic",
+      "partition": "development",
+      "description": "Independent Phase43 source admission/refusal and pair ordering controls",
+      "source": {
+        "path": "fixtures/pair-controls.bend",
+        "sha256": "67408b8152701e0ccb44e59de4e08e17e23828fd69e3b2a068aa2791e0e5586b",
+        "bytes": 1756,
+        "provenance": {
+          "kind": "phase43-authored-products-control",
+          "design": "design/phase43/products.md"
+        }
+      },
+      "point": {
+        "exportName": "p43.pair.escape.result",
+        "args": [
+          32,
+          4294967295
+        ],
+        "expected": 4294967280
+      },
+      "sets": [
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python ordered U32 recurrence and explicit zero BST checksum"
+    }
+  ],
+  "oracleProducer": {
+    "path": "make-fixture-catalog.py",
+    "sha256": "eb463e2211beac32da54a80087f01cea83c302f39ccf1e8f2afaad40d8063d82"
+  }
+}

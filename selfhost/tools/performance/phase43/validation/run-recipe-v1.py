@@ -2,6 +2,9 @@
 """Run reviewed frozen argv stages serially through the existing campaign ledger."""
 import argparse,hashlib,json,subprocess
 from pathlib import Path
+import importlib.util
+def runtime_agreement(attempt):
+ f=Path(__file__).resolve().parent/'runtime-agreement-v1.py';spec=importlib.util.spec_from_file_location('phase43_runtime_agreement',f);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module.verify_attempt(attempt)
 ROOT=Path(__file__).resolve().parents[5]
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('recipe',type=Path);p.add_argument('--stage',choices=['semantic','cost-prepare','postinstall'],required=True);p.add_argument('--ledger',type=Path,required=True);p.add_argument('--jobs',type=Path,required=True);p.add_argument('--prefix',required=True);p.add_argument('--admission',type=Path);p.add_argument('--check-only',action='store_true');a=p.parse_args();r=json.loads(a.recipe.read_text())
@@ -10,6 +13,7 @@ def main():
  for key in ['parent','extension','producer','mappingTemplate']:
   row=r['materialization'][key];assert hashlib.sha256(Path(row['file']).read_bytes()).hexdigest()==row['sha256']
  for row in r['materialization']['artifacts']:assert hashlib.sha256(Path(row['file']).read_bytes()).hexdigest()==row['sha256']
+ agreement=runtime_agreement(Path(r['bindings']['ATTEMPT']));assert agreement==r['runtimeAgreement'],'Runtime agreement receipt drift'
  binding=r['candidateBinding'];manifest=json.loads(Path(binding['attempt']['path']).read_text());assert hashlib.sha256(Path(binding['attempt']['path']).read_bytes()).hexdigest()==binding['attempt']['sha256'] and manifest['api']==binding['api']
  for key in ['api','runtime','base','node']:
   row=binding[key];assert manifest[key]==row and hashlib.sha256(Path(row['file']).read_bytes()).hexdigest()==row['sha256']

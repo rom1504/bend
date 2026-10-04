@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "fixtures": [
+    {
+      "id": "typed-components",
+      "source": "selfhost/tools/performance/phase43/strings/typed-components.bend",
+      "sha256": "88a895669c0dce2a12660d8d6d63726cc1b022ab452282704a52ade977bc360d",
+      "entry": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expectedU32": 1412342859,
+      "oracle": "Independent integer modulo 2^32 fold over Unicode code points",
+      "controlKind": "renamed",
+      "outerRoot": "branch.lines",
+      "expectOuterActivation": true
+    },
+    {
+      "id": "typed-components-renamed",
+      "source": "selfhost/tools/performance/phase43/strings/typed-components-renamed.bend",
+      "sha256": "c7d33e2b1636500e2f969523ea2dbc1192777219e4de7d4457d9f175f9efaf9b",
+      "entry": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expectedU32": 1412342859,
+      "oracle": "Independent integer modulo 2^32 fold over Unicode code points",
+      "controlKind": "renamed",
+      "outerRoot": "sum.jobs",
+      "expectOuterActivation": true
+    },
+    {
+      "id": "negative-literal0",
+      "source": "selfhost/tools/performance/phase43/strings/negative-literal0.bend",
+      "sha256": "47e23fc17b91c6ab5bbecd024ac7f4ff222b42c9e719316a03497461a11a58bc",
+      "entry": "bench",
+      "args": [
+        0,
+        0
+      ],
+      "expectedU32": 154,
+      "oracle": "Independent integer sum of a and 9 code points",
+      "controlKind": "negative-literal0",
+      "outerRoot": "rows",
+      "expectOuterActivation": false
+    }
+  ],
+  "instrumenter": "selfhost/tools/performance/phase43/strings/source-instrument-v4.mjs",
+  "controls": "selfhost/tools/performance/phase43/strings/fixture-controls-v2.mjs"
+}

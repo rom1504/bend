@@ -1,0 +1,24 @@
+--- a/selfhost/src/back/js/region.bend
++++ b/selfhost/src/back/js/region.bend
+@@ -145,11 +145,18 @@
+ @unsafe
+ def j_region_root_done(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> String:
+   kc(String, j_region_valid(s) && j_region_has_loop(book, j_region_helpers(s)), u =>
++    j_region_root_selected(book, d, s, j_fusion_root_prefix(book, dv(d), dt(d), Nil{}, 0, da(d))), u => "")
++
++# The guard domain and selected body share the very same successful full proof.
++# Empty proof preserves existing generic/flat selection and full host validation.
++@unsafe
++def j_region_root_selected(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +fusion: String) -> String:
+     "(()=>{" ++ j_region_declarations(book, j_region_helpers(s)) ++ "const $guards=[" ++ j_quote(dn(d)) ++ "," ++ j_region_names(j_region_helpers(s)) ++ "];return " ++
+     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){/* private scalar root */" ++ j_nat_loop_slots(da(d), 0) ++
+-    "if($entered&&" ++ j_fold_root_guard(book, d, j_region_helpers(s)) ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++ "&&localGuard($guards)){" ++
+-    j_flat_root_scope(book, d, s) ++ "}" ++
+-    j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()", u => "")
++    "if($entered&&" ++ kc(String, String.eq(fusion, ""), u => j_fold_root_guard(book, d, j_region_helpers(s)), u => "regionHostGuard(true)&&") ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++ "&&localGuard($guards)){" ++
++    kc(String, String.eq(fusion, ""), u => j_flat_root_scope(book, d, s), u =>
++      "const $previousProof=regionProofOpen($guards);try{" ++ fusion ++ "}finally{regionProofClose($previousProof);}") ++ "}" ++
++    j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()"
+ 
+ @unsafe
+ def j_region_global(+book: List<&2,KDef>, +d: KDef) -> String:

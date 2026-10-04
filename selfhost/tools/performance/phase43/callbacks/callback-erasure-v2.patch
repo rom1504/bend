@@ -1,0 +1,46 @@
+--- a/selfhost/src/back/js/region.bend
++++ b/selfhost/src/back/js/region.bend
+@@ -1094,7 +1094,8 @@
+   +t = j_strip(body)
+   kc(Bool, U32.is_eq(left, 0), u => True{}, u =>
+     String.eq(tg(h), "All") && U32.is_eq(qt(h), 0) && j_callback_type_domain(book, kid(h, 0)) &&
+-    String.eq(tg(t), "Lam") && U32.is_eq(qt(t), 0) && U32.is_eq(terms_len(ks(t)), 1) &&
++    String.eq(tg(t), "Lam") && U32.is_eq(qt(t), 1) && U32.is_eq(terms_len(ks(t)), 1) &&
++    j_callback_runtime_absent(kid(t, 0), ix(t), 2048) &&
+     j_callback_erased_prefix(book, kid(h, 1), kid(t, 0), U32.sub(left, 1)))
+ 
+ @unsafe
+@@ -1197,8 +1198,8 @@
+ # full new proof on every unrelated emitted definition.
+ @unsafe
+ def j_callback_capture_eligible(+book: List<&2,KDef>, +d: KDef) -> Bool:
+-  kc(Bool, j_fusion_def(d, 1) && String.eq(tg(j_strip(dv(d))), "Mat"), u => j_callback_factory(book, d), u =>
+-    kc(Bool, j_fusion_def(d, 5) && String.eq(tg(j_strip(dv(d))), "Lam"), u => j_callback_compose(book, d), u => False{}))
++  kc(Bool, j_fusion_def(d, 1) && String.eq(tg(j_strip(dv(d))), "Mat"), u => j_callback_factory(book, lookup(book, dn(d))), u =>
++    kc(Bool, j_fusion_def(d, 5) && String.eq(tg(j_strip(dv(d))), "Lam"), u => j_callback_compose(book, lookup(book, dn(d))), u => False{}))
+ 
+ @unsafe
+ def j_callback_compose(+book: List<&2,KDef>, +d: KDef) -> Bool:
+@@ -1209,3 +1210,22 @@
+ def j_callback_factory(+book: List<&2,KDef>, +d: KDef) -> Bool:
+   kc(Bool, j_fusion_def(d, 1) && String.eq(tg(j_strip(dv(d))), "Mat"),
+     u => kc(Bool, j_u32_bounded([dt(d), dv(d)], 4096), u => j_callback_factory_on(book, d), u => False{}), u => False{})
++
++# Original checked source book and annotated emitter defs have distinct Lam
++# metadata. The formal All telescope owns erasure (as j_lambda_bind does).
++# This route admits only the original source Lam q1 spelling and proves its
++# erased binder never occurs in runtime syntax; Ann type children are ignored.
++@unsafe
++def j_callback_runtime_absent(+t: KTerm, +id: U32, +fuel: U32) -> Bool:
++  kc(Bool, U32.is_gt(fuel, 0), u =>
++    kc(Bool, String.eq(tg(t), "Ann"), u => j_callback_runtime_absent(kid(t, 0), id, U32.sub(fuel, 1)), u =>
++      kc(Bool, String.eq(tg(t), "Var"), u => Bool.not(U32.is_eq(ix(t), id)),
++        u => j_callback_runtime_absent_terms(ks(t), id, U32.sub(fuel, 1)))), u => False{})
++
++@unsafe
++def j_callback_runtime_absent_terms(+ts: List<&2,KTerm>, +id: U32, +fuel: U32) -> Bool:
++  match ts:
++    case Nil{}: True{}
++    case Con{h, rest}:
++      kc(Bool, j_callback_runtime_absent(h, id, fuel),
++        u => j_callback_runtime_absent_terms(rest, id, fuel), u => False{})

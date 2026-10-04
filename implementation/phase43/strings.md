@@ -1,10 +1,20 @@
 # Phase43 String handoff
 
-Runnable saved-JS full-component ablation and selected full-value/host/alias/
-activation oracle are prepared. No execution measurement, correctness pass,
-source qualification or installation is claimed. Static node --check passes
-for derive.mjs and controls.mjs. The source proposal is in the
-[design](../../design/phase43/strings.md).
+The saved-JS complete lexer mechanism passed root-run value/host/alias controls
+and showed 17.67–18.84× improvement over selected checked16 at two small points.
+These measurements qualify the saved-JS mechanism only. Actual source checked05
+failed complete activation (Bool.and proof missing); checked06 failed at ident's
+covered prefix emission. Both failures remain preserved. The reviewed source
+corrections are integrated in checked08, whose emitted ident/num prefix and
+bench/batch guard sites pass static inspection; source controls have validated ordinary complete activation and intermediate
+values but failed a blanket mutation-count assertion; revised complete controls
+remain pending root execution. No source performance or installation claim is made.
+
+Latest frozen tools: source-instrument-v5.mjs, source-controls-v4.mjs,
+type-controls-fast-v7.mjs (59 compiler proof probes), fixture-catalog-v4.json and
+fixture-controls-v2.mjs. Exact current preparation commands are in
+selfhost/tools/performance/phase43/strings/fixture-handoff-v4.md. Earlier commands
+below document historical consumed versions and must not replace this handoff.
 
 Root executes serially from repository root, using fresh Phase43 output paths:
 
@@ -96,3 +106,111 @@ or budget exhaustion conservatively requests the String guard. Prefix admission
 checks original all-U32 telescope, acyclic direct plan, bounded total U32 primitive
 syntax and canonical arguments; no allocation/container/effect helper prefix is
 added. Root alone applies/builds/tests the integration.
+
+Root applied combinedv4; checked03 composition failed immediately because the
+proposed j_string_char predicate collided with an existing literal helper of
+that name. Root renamed the new exact ABI predicate to j_string_char_type in
+production's finite/jpure/tree consumers, preserving the literal helper. The
+original failed proposal remains unchanged. type-controls-v2.mjs exposes the
+correct renamed predicate; use it with the actual source catalog lexer fixture
+at selfhost/tools/performance/phase37/fixtures-historical/lexer.bend. checked04
+integration is running under root ownership; no successful source qualification
+is yet claimed here.
+
+Actual checked05 qualification did not activate an owned root. Source acquisition
+completed in6.69s; fast ABI/refusal controls passed45observations (5.8s including
+checked-source capture). Scope-aware actual instrumenter passed; source-controls
+then failed ordinary-root activation after375value observations. No host boundary
+groups ran. Static emitted inspection confirms generic G.bench/G.batch and only
+ident/num/expand/gen structural workers; no lex component. New emitted workers
+are therefore not a delivered execution improvement. Fast-v4 signature diagnostics
+were prepared to report exact normalized parameter/result quantity and graph
+refusals without requiring library emission.
+
+Root also found runtime composition had not been refreshed: checked05 snapshot
+runtime.mjs retained the old runtime although core.mjs had changed. The375early
+observations do not qualify the new String-family host guard. Root will regenerate
+runtime before the next checked derivative. Proposed predicate-fences-v5 adds
+explicit kc rejection before irrelevant native-owner lookup, nullary body/type
+proof and expensive recursive purity calls; the old failed proposals stay saved.
+
+
+Checked05 signature diagnostic (strings-graph05) identifies Bool.and as the
+remaining immediate lexer graph blocker: both Bool parameters/results are admitted,
+step.at/direct are valid, and lex's Sigma parameter is admitted, but Bool.and is
+native=true and refused by the XOR-only native purity validator. This corrects the
+earlier assumption that emitted matcher code implied a nonnative source definition.
+Frozen bool-and-v1.patch preserves the emitted public matcher and fallback ABI,
+captures its final descriptor, and selects && (with both invocation arguments
+evaluated in source order) instead of the XOR emitter's !==. Root/reviewer own
+integration and qualification; no new source activation pass is claimed here.
+
+Frozen fixture-catalog-v1.json pins three source identities and independent
+bench(0,0) outputs (1412342859,1412342859,154). fixture-controls-v2.mjs requires actual
+complete outer graph activation for renamed cases, and refuses bench/rows activation
+for computed nullary; isolated inner worker activation is permitted. Commands are in
+selfhost/tools/performance/phase43/strings/fixture-handoff-v1.md. Node24 static syntax
+check passed; root runs checked preparation and controls.
+
+Consumed fixture-catalog-v1 failed preparation immediately (missing standard catalog
+sets). It is preserved. fixture-catalog-v2.json now has complete standard
+kind/schemaVersion/upstreamCommit/sets/cases/source identity/point shape, with
+source paths confined to the catalog directory. Frozen handoff-v2 supplies exact
+preparation and instrumentation commands. bool-and-v2.patch similarly preserves v1
+and adds cheap name/header fences before telescope normalization; reviewer pending.
+
+
+The checked Bool.and body is now pinned structurally by bool-and-v3.patch rather
+than admitted from name/signature alone. Its False arm returns False, True arm
+returns the exact second argument binder, final arm is Efq; quantities, child
+counts and empty removed lists are exact. Private && evaluates both source
+arguments left to right before invocation and preserves the public source matcher.
+type-controls-fast-v6.mjs adds canonical positive and eight altered-body/native
+refusals. git apply --check succeeds against current production; Node24 syntax
+checks pass for the controls. Parent/reviewer integration still pending.
+
+Baseline fixture preparation found affine seed reuse in the branch roots before
+emission. Original source files remain frozen. New *-v2.bend files explicitly use
++seed where both recursive branches consume it; fixture-catalog-v3.json pins these
+new identities with unchanged independent expected values. Preparation/catalog
+failures are not correctness passes or performance results.
+
+
+Actual checked06 source controls failed after363 oracle rows with undefined $u0
+in ident's emitted worker. The deeper cause was original Let(prng) admission vs
+covered Ann(JDirectCall) prefix refusal, which selected a wrong continuation
+combiner (child sentinel32, empty next args, G[""], and u0..31). Frozen
+prefix-lowered-v1.patch normalizes only lowered JDirectCall to its Call name/args
+for the existing exact U32 helper proof, preserving all type/body/direct checks.
+Reviewer statically approved Bool.and-v3 and prefix-lowered-v1 for source testing.
+No source correctness/activation pass is claimed until root's next actual run.
+
+Frozen source-controls-v2.mjs uses source-specific report kind and requires actual
+ordinary complete outer entry root:bench or root:batch as well as all gen/lex/
+ident/num/step workers. Exact final counts439oracle/113boundaries/3admission.
+type-controls-fast-v7 adds five original/covered prefix proof and refusal probes
+(total59), while retaining suppressed compiler emission. Fixture-catalog-v4 pins
+fresh *-v3 sources with +depth and +seed; original failed files remain frozen.
+
+
+Actual08 source-controls-v2 passed438 oracle rows including complete ordinary
+outer activation, full materialized generated String and every native Mode/Tuple
+intermediate, then reached69 boundary rows before a controller-only batch mutation
+failure. The compiler correctly refuses bench/batch whose guard includes mutated
+batch while generic fallback calls independently guarded line roots. Blanket
+all-fast-counts-zero is valid for the earlier single manual flag but overrestricts
+source independent roots. Frozen source-instrument-v5 derives exact lexical
+$guards for each guarded root via AST scopes, records site dependencies and exports
+sourceGuards. source-controls-v3 forbids only roots whose own dependency list
+contains the mutated binding, requires a witness root and no ambient proof leak,
+and retains complete value/event comparison. Total final counts remain439oracle,
+113boundaries and3admission. No final source qualification pass is claimed yet.
+
+
+The independent-root mutation contract passed reviewer static review. Frozen
+source-controls-v3 initially demanded a positive affected-root witness from the
+original baseline, which has no qualified full graph; this controller failure is
+preserved. source-controls-v4 requires that positive witness only for candidate,
+while still refusing every affected baseline root if present. Full value/event
+parity and no proof leakage remain mandatory. source-instrument-v5 is unchanged.
+Exact final controller totals remain439oracle/113boundaries/3admission.

@@ -100,3 +100,137 @@ must be re-emitted by the selected attempt. Changed String/Map/components need
 independent TS and fallback/callback/error boundaries beyond pure numeric points.
 Run broad qualification only after smallest falsifiers pass; the final mandatory
 inherited gates remain pending until actually closed on the selected image.
+
+## Frozen scalar precedence successor
+
+Queue a static proposal after an early actual raytrace emission:
+
+```sh
+"$PHASE43_NODE" selfhost/tools/performance/phase43/validation/scalar-precedence-v1.mjs \
+  propose selfhost/build/phase42/integration03/scalar-ray.mjs \
+  EARLY_CANDIDATE_RAYTRACE.mjs "$PHASE43_ATTEMPT/attempt.json" \
+  selfhost/build/phase43/scalar-contract-proposal01.json
+```
+
+The proposal pins both roles' checked emission receipts, exact selected snapshot
+runtime fingerprints, Node/Acorn and every outside changed section. It remains
+`reviewed:false` and changed-section classifications remain PENDING. Independently
+inspect those changes, freeze a successor contract with explicit classifications,
+and obtain a separate review JSON with `complete:true`, `staticReviewPassed:true`,
+`contractSha256`, `producerSha256`, `approvedChangedSections` and
+`approvedProtectedEnvelopeEdits`. Both approval lists must exactly match the
+contract/source observations, including empty lists. No unknown output hash is
+learned during a PASS gate.
+
+Pass `--scalar-contract FROZEN_CONTRACT --scalar-review REVIEW` to recipe
+preparation. This replaces only inherited scalar precedence step/collector
+supplement. Final check reads the **canonical fresh** OUT/scalar-ray.mjs and its
+own receipt; early proposal output must match its module SHA but cannot substitute
+for canonical final acquisition. Both selected-image paths are checked.
+
+Runtime comparison removes only exact consumed snapshot prefixes, with every AST
+statement entirely inside/outside that boundary. Program differences must match
+frozen reviewed section hashes exactly. Five protected executable scalar bodies
+remain byte-identical. The sole permitted metadata envelope change is an exact
+third literalfalse argument to `scalarCapture(name,unchangedBody,false)`; it is
+recorded by owner and unchanged body SHA, with independent approval. Original
+Nat refusal, private scalar leaf helper, dependency guards, proof entry/restoration,
+host entry and scalar-root refusal remain mandatory. The report is `checked:false`
+for the non-executable comparison; normalized code is never imported or emitted.
+Existing actual activation/mutation/Error owners remain separate mandatory gates.
+
+The runtime sum collector also pins the exact Phase43 batch-planner and
+measurement-binder producers and the repaired recipe07 ancestry SHA; a merely
+matching kind string cannot replace producer/recipe lineage.
+
+## Actual new-owner wrappers and extension builder
+
+Use `owner-extension-template-v1.json` as a configuration outline. It is deliberately
+unreviewed and contains placeholders. Select only implemented mechanisms; supply
+all applicable source/refusal/fixture owners. `steps` contains the root's exact
+`phase43-*` acquisition/derivation/controller argv commands, each with its own
+existing supervisor. `owners` names fixed policies from `owner-catalogue-v1.json`.
+For each row provide canonical rawReport/rawExecution/rawCommandInput paths,
+actual selected emittedModules and derivation manifests. Guards emit their raw JSON
+to supervisor stdout: use that exact stdout file as rawReport. Compiler-only type
+and admission proof controls require no emittedModules; admission requires its
+inputs.json in auxiliaryInputs to bind the untouched selected API. This is a
+proof-refusal scope, with emission explicitly suppressed.
+
+```sh
+python3 selfhost/tools/performance/phase43/validation/build-extension-v1.py \
+  --config FINAL_REVIEWED_OWNER_CONFIG.json --attempt "$PHASE43_ATTEMPT" \
+  --campaign "$PHASE43_OUT" --contracts selfhost/build/phase43/owner-contracts01 \
+  --extension selfhost/build/phase43/owner-extension01.json
+python3 selfhost/tools/performance/phase43/validation/prepare-recipe-v1.py \
+  --attempt "$PHASE43_ATTEMPT" --out "$PHASE43_OUT" --recipe "$PHASE43_RECIPE" \
+  --extension selfhost/build/phase43/owner-extension01.json \
+  --scalar-contract FINAL_SCALAR_CONTRACT.json --scalar-review FINAL_SCALAR_REVIEW.json
+```
+
+The builder runs no target/compiler and freezes policy/controller snapshots plus
+selected attempt identity. Contract directory lies outside absent campaign OUT.
+It appends bounded canonical wrappers after raw controller steps. Each wrapper
+requires the exact controller tool in a successful bounded raw execution receipt,
+canonical controller input, exact source-policy counts/statuses, selected actual
+checked source emission receipts, and actual derivation linkage. Derivation
+manifests must pin the reviewed actual instrumentation tool; module/file hashes
+are rechecked. A manually patched favorable module cannot substitute for genuine
+selected emission. Failures retain raw evidence and write incomplete failed wrapper
+reports; no failed raw report can become PASS. The extension adds these groups to
+all16 inherited owners, without changing their controls.
+
+Frozen counts include source-v2 String439/113/3; renamed9/30/2 and negative9/24/2;
+fast-v7 compiler proof59; actual callback22/32; noncommutative-v2 fixture85;
+admission refusal11; BST7results and pair15results/exact10controls. Actual U32
+oracle requires82 cases in order (27 fixed +40 frozen baseline numeric hooks +15
+protocol hooks), exact equality and clean proof for every case. Products use their
+actual `passed` status rather than inventing raw complete/pass fields; wrapper
+completion follows those exact assertions and provenance. New controller variants
+or changed source policy need an independently reviewed catalogue successor.
+
+Runtime preflight now mirrors the exact retained build.mjs concatenation of
+core/base/effects/readback/foreign plus its header/newlines. Recipe preparation and
+every stage reject selected snapshot fragment/bundle divergence; postinstall
+therefore checks before the installation launch. The check reads fragments and
+compares bytes; it does not execute runtime code. Check current source explicitly
+with `runtime-agreement-v1.py --attempt ATTEMPT --current-src selfhost/src --receipt
+NEW_REPORT` when root freezes the final source.
+
+When the selected source includes mixed quantity(1/2) native Sigma admission, add
+`--native-proof-review selfhost/tools/performance/phase43/review/native-proof-controls-v1-review.json`
+to recipe preparation. This selects the independently reviewed **57-control**
+successor, preserving the original43 order except the explicit Sigma(2,1) admission
+and adding four exact admissions/four self-equalities/six quantity-distinct
+refusals. Exact source/review/witness hashes and quantityDomain are required;
+inherited counter/vector equality remains unchanged. The validation-owned smaller
+43-control draft is unused retained investigation material; execute only the
+selected stronger57 successor. Final native ABI/alias/runtime controls remain
+mandatory separately.
+
+String actual-source policy now selects source-controls-v3 plus scope-aware
+source-instrument-v5 (same439/113/3). Guard refusal is checked for the exact lexical
+root whose dependency guard contains the mutated binding; independently safe nested
+roots may activate. Complete outer activation, full values/events, intermediate
+owned trace and absence of ambient proof leakage remain required. Superseded actual08
+controller failure remains evidence. Final owner config/controller versions need
+independent review before publication.
+
+Final product profiles select the frozen actual-oracle-v2, pair-source-oracle-v3
+and pair-ignored-oracle-v2 tools. Ordinary BST qualification requires `pairState`
+and `scalarWrapper` true and positive build/insert/fin/down worker counts for each
+nonzero-size row. Pair target qualification requires `precedenceControl:false`
+and actual global pair worker activation; original stronger scalar fixtures use
+separate precedence owners requiring `true`, global pair zero and scoped scalar
+activation. They cannot satisfy positive pair owners. Ignored-field targets and
+precedence controls likewise use separate exact flag profiles. All input modules
+still require selected checked emission/source/API/runtime/driver provenance.
+
+String source-v4 supersedes v3's false baseline witness requirement (same439/113/3,
+instrumentv5). Candidate affected roots must refuse their own mutated dependency;
+a baseline root has the same obligation when present. Full value/event equivalence
+and complete outer activation remain unchanged. If callback integer-host guard
+source is selected, use callbacks-environment-numeric-guard (actual-guard-controls-v2,
+22oracles/39boundaries); the previously qualified32-boundary profile remains
+historical and does not replace new guard-specific String/Float/public callback
+controls. Independent final config/count/controller review remains required.

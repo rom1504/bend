@@ -64,3 +64,13 @@ full body in the proof try/finally. An empty fusion result retains ordinary full
 host guard and `j_flat_root_scope` path. Do not select a narrow guard by searching
 emitted comments, by graph purity alone, or by having some U32 helpers. Reuse the
 same proof result to avoid a second analysis and forbid mixed residual/float bodies.
+
+## Evidence cutoff after actual checked06
+
+The [owned implementation report](../../implementation/phase43/guards.md) records
+82 passing actual-source controls and fresh two-point gains1.206×/1.049×. Preserve
+the initial1.2–2× forecast above as a hypothesis; the screen does not support that
+range uniformly. Reject/defer AfterHost duplicate scalarGuard for only3–4% gain.
+The survivor is the minimal U32 domain parameter (12 net runtime lines), leaving
+scalarGuard/String checks intact. Checked07 or the final selected API/runtime must
+rerun actual receipt-bound qualification before promotion.

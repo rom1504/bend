@@ -1,0 +1,110 @@
+{
+  "kind": "bend-program-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "status": "frozen",
+  "scope": "Three native String admission/renamed graph/refusal controls; no execution claims",
+  "sets": {
+    "fast": [
+      "typed-components",
+      "typed-components-renamed",
+      "negative-literal0"
+    ],
+    "full": [
+      "typed-components",
+      "typed-components-renamed",
+      "negative-literal0"
+    ]
+  },
+  "cases": [
+    {
+      "id": "typed-components",
+      "category": "phase43-string-control",
+      "description": "Independent integer modulo 2^32 fold over Unicode code points",
+      "scope": "Scalar complete native String graph/outer activation control",
+      "source": {
+        "path": "typed-components.bend",
+        "sha256": "88a895669c0dce2a12660d8d6d63726cc1b022ab452282704a52ade977bc360d",
+        "bytes": 1033
+      },
+      "point": {
+        "args": [
+          0,
+          0
+        ],
+        "expected": 1412342859,
+        "exportName": "bench"
+      },
+      "oracle": "Independent integer modulo 2^32 fold over Unicode code points",
+      "sets": [
+        "fast",
+        "full"
+      ],
+      "partition": "phase43-control",
+      "family": "phase43-strings",
+      "controlKind": "renamed",
+      "outerRoot": "branch.lines",
+      "expectOuterActivation": true
+    },
+    {
+      "id": "typed-components-renamed",
+      "category": "phase43-string-control",
+      "description": "Independent integer modulo 2^32 fold over Unicode code points",
+      "scope": "Scalar complete native String graph/outer activation control",
+      "source": {
+        "path": "typed-components-renamed.bend",
+        "sha256": "c7d33e2b1636500e2f969523ea2dbc1192777219e4de7d4457d9f175f9efaf9b",
+        "bytes": 1048
+      },
+      "point": {
+        "args": [
+          0,
+          0
+        ],
+        "expected": 1412342859,
+        "exportName": "bench"
+      },
+      "oracle": "Independent integer modulo 2^32 fold over Unicode code points",
+      "sets": [
+        "fast",
+        "full"
+      ],
+      "partition": "phase43-control",
+      "family": "phase43-strings",
+      "controlKind": "renamed",
+      "outerRoot": "sum.jobs",
+      "expectOuterActivation": true
+    },
+    {
+      "id": "negative-literal0",
+      "category": "phase43-string-control",
+      "description": "Independent integer sum of a and 9 code points",
+      "scope": "Scalar complete native String graph/outer activation control",
+      "source": {
+        "path": "negative-literal0.bend",
+        "sha256": "47e23fc17b91c6ab5bbecd024ac7f4ff222b42c9e719316a03497461a11a58bc",
+        "bytes": 639
+      },
+      "point": {
+        "args": [
+          0,
+          0
+        ],
+        "expected": 154,
+        "exportName": "bench"
+      },
+      "oracle": "Independent integer sum of a and 9 code points",
+      "sets": [
+        "fast",
+        "full"
+      ],
+      "partition": "phase43-control",
+      "family": "phase43-strings",
+      "controlKind": "negative-literal0",
+      "outerRoot": "rows",
+      "expectOuterActivation": false
+    }
+  ],
+  "instrumenter": "source-instrument-v4.mjs",
+  "controls": "fixture-controls-v2.mjs"
+}

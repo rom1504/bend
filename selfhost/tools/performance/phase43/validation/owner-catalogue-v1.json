@@ -1,0 +1,283 @@
+{
+  "strings-source": {
+    "controller": "selfhost/tools/performance/phase43/strings/source-controls-v4.mjs",
+    "assertions": {
+      "/kind": "phase43-source-lexer-controls-v4",
+      "/complete": true,
+      "/pass": true,
+      "/oracle": {
+        "length": 439
+      },
+      "/boundaries": {
+        "length": 113
+      },
+      "/admission": {
+        "length": 3
+      }
+    },
+    "derivationController": "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs"
+  },
+  "strings-renamed": {
+    "controller": "selfhost/tools/performance/phase43/strings/fixture-controls-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-string-fixture-controls",
+      "/complete": true,
+      "/pass": true,
+      "/fixture": "renamed",
+      "/values": {
+        "length": 9
+      },
+      "/activation": {
+        "length": 2
+      },
+      "/boundaries": {
+        "length": 30
+      }
+    },
+    "derivationController": "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs"
+  },
+  "strings-negative-literal0": {
+    "controller": "selfhost/tools/performance/phase43/strings/fixture-controls-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-string-fixture-controls",
+      "/complete": true,
+      "/pass": true,
+      "/fixture": "negative-literal0",
+      "/values": {
+        "length": 9
+      },
+      "/activation": {
+        "length": 2
+      },
+      "/boundaries": {
+        "length": 24
+      }
+    },
+    "derivationController": "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs"
+  },
+  "strings-types": {
+    "controller": "selfhost/tools/performance/phase43/strings/type-controls-fast-v7.mjs",
+    "assertions": {
+      "/kind": "phase43-string-type-controls-fast-signatures",
+      "/complete": true,
+      "/pass": true,
+      "/observations": {
+        "length": 59
+      },
+      "/emissionSuppressed": true,
+      "/sourceGraphAssertions": false,
+      "/sourceGraph": {
+        "length": 10
+      }
+    },
+    "compilerOnly": true
+  },
+  "callbacks-environment": {
+    "controller": "selfhost/tools/performance/phase43/callbacks/actual-controls.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-source-callback-controls",
+      "/complete": true,
+      "/pass": true,
+      "/oracles": {
+        "length": 22
+      },
+      "/boundaries": {
+        "length": 32
+      }
+    },
+    "derivationController": "selfhost/tools/performance/phase43/callbacks/actual-derive.mjs"
+  },
+  "callbacks-noncommutative": {
+    "controller": "selfhost/tools/performance/phase43/callbacks/source-fixture-controls-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-noncommutative-callback-fixture",
+      "/complete": true,
+      "/pass": true,
+      "/observations": {
+        "length": 85
+      },
+      "/selected": [
+        "affine_result",
+        "reverse_result"
+      ],
+      "/refused": [
+        "live_result",
+        "seeded_result",
+        "retained"
+      ]
+    }
+  },
+  "products-bst": {
+    "controller": "selfhost/tools/performance/phase43/products/actual-oracle-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-products-oracle",
+      "/passed": true,
+      "/fixture": false,
+      "/scalarWrapper": true,
+      "/results": {
+        "length": 7
+      },
+      "/pairState": true
+    },
+    "controllerSha256": "c5a38221224c40f3a2ecc7c521581110f154877d574c647aabb1edd393e3f029"
+  },
+  "products-fixture": {
+    "controller": "selfhost/tools/performance/phase43/products/actual-oracle-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-products-oracle",
+      "/passed": true,
+      "/fixture": true,
+      "/scalarWrapper": true,
+      "/results": {
+        "length": 7
+      }
+    },
+    "controllerSha256": "c5a38221224c40f3a2ecc7c521581110f154877d574c647aabb1edd393e3f029"
+  },
+  "products-pair": {
+    "controller": "selfhost/tools/performance/phase43/products/pair-source-oracle-v3.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-pair-source-oracle",
+      "/passed": true,
+      "/results": {
+        "length": 15
+      },
+      "/controls": [
+        "ordinary activation",
+        "simultaneous RHS",
+        "nested helper",
+        "zero alias",
+        "positive freshness",
+        "shared ADT fields",
+        "whole-pair binder refusal",
+        "mutation fallback",
+        "host error reentry",
+        "12000-deep loop"
+      ],
+      "/precedenceControl": false
+    },
+    "controllerSha256": "7ce4015520fc825ddfaba8a90e9c8764caa195fbc4745dc3b50b55d32c2f1ea5"
+  },
+  "u32-guards": {
+    "controller": "selfhost/tools/performance/phase43/guards/oracle-actual-v1.mjs",
+    "assertions": {
+      "/complete": true,
+      "/cases": {
+        "length": 82
+      }
+    },
+    "fixedCases": [
+      "canonical",
+      "canonical-grid",
+      "complete-stages",
+      "input-refusal",
+      "argument-getter-reentry",
+      "raw-entry",
+      "partial-entry",
+      "Error-reentry",
+      "binding-replacement",
+      "binding-getter",
+      "code-replacement",
+      "code-getter",
+      "arity-getter",
+      "env-getter",
+      "bound-getter",
+      "bound-length",
+      "code-own-call",
+      "wrapper-io",
+      "primitive-bounce",
+      "object-bounce",
+      "array-bounce",
+      "array-every",
+      "array-iterator",
+      "array-numeric-setter",
+      "host-descriptor-getter",
+      "host-descriptor-replacement",
+      "view-own-method"
+    ],
+    "eachAssertions": [
+      {
+        "array": "/cases",
+        "assertions": {
+          "/equal": true,
+          "/observation/proofClean": true
+        }
+      }
+    ],
+    "derivationController": "selfhost/tools/performance/phase43/guards/derive-actual-v1.py"
+  },
+  "callbacks-admission": {
+    "controller": "selfhost/tools/performance/phase43/callbacks/admission-controls.mjs",
+    "compilerOnly": true,
+    "assertions": {
+      "/kind": "phase43-callback-admission-negative-controls",
+      "/complete": true,
+      "/checks/controls": {
+        "length": 11
+      }
+    }
+  },
+  "products-pair-ignored": {
+    "controller": "selfhost/tools/performance/phase43/products/pair-ignored-oracle-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-pair-ignored-fields",
+      "/passed": true,
+      "/results": {
+        "length": 8
+      },
+      "/precedenceControl": false
+    },
+    "controllerSha256": "535d38480c3de8310bfbab8855ec63380646a3fff354db0c3696157162416da5"
+  },
+  "products-pair-precedence": {
+    "controller": "selfhost/tools/performance/phase43/products/pair-source-oracle-v3.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-pair-source-oracle",
+      "/passed": true,
+      "/results": {
+        "length": 15
+      },
+      "/controls": [
+        "ordinary activation",
+        "simultaneous RHS",
+        "nested helper",
+        "zero alias",
+        "positive freshness",
+        "shared ADT fields",
+        "whole-pair binder refusal",
+        "mutation fallback",
+        "host error reentry",
+        "12000-deep loop"
+      ],
+      "/precedenceControl": true
+    },
+    "controllerSha256": "7ce4015520fc825ddfaba8a90e9c8764caa195fbc4745dc3b50b55d32c2f1ea5"
+  },
+  "products-pair-ignored-precedence": {
+    "controller": "selfhost/tools/performance/phase43/products/pair-ignored-oracle-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-pair-ignored-fields",
+      "/passed": true,
+      "/results": {
+        "length": 8
+      },
+      "/precedenceControl": true
+    },
+    "controllerSha256": "535d38480c3de8310bfbab8855ec63380646a3fff354db0c3696157162416da5"
+  },
+  "callbacks-environment-numeric-guard": {
+    "controller": "selfhost/tools/performance/phase43/callbacks/actual-guard-controls-v2.mjs",
+    "assertions": {
+      "/kind": "phase43-actual-source-callback-guard-controls",
+      "/complete": true,
+      "/pass": true,
+      "/oracles": {
+        "length": 22
+      },
+      "/boundaries": {
+        "length": 39
+      }
+    },
+    "derivationController": "selfhost/tools/performance/phase43/callbacks/actual-derive.mjs"
+  }
+}

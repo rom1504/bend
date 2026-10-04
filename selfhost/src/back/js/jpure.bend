@@ -42,7 +42,9 @@ def j_pure_type_check(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>
 def j_pure_type_head(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
   +owner = lookup(book, nm(ty))
   +kind = wnf(book, dt(owner))
-  kc(Maybe<&2,U32>, j_region_scalar(book, ty) || j_list_ground_type(book, ty), u => Some{fuel}, u =>
+  kc(Maybe<&2,U32>, j_region_scalar(book, ty) || j_map_cmp_type(book, ty) || j_list_ground_type(book, ty) || j_string_char_type(book, ty) || j_string_string(book, ty), u => Some{fuel}, u =>
+    kc(Maybe<&2,U32>, j_map_maybe_head(book, ty), u => j_map_maybe_check(book, ty, active, fuel), u =>
+    kc(Maybe<&2,U32>, j_pure_map_head(book, ty), u => j_pure_map_check(book, ty, active, fuel), u =>
     kc(Maybe<&2,U32>, j_pure_list_head(book, ty), u => j_pure_list_check(book, ty, active, fuel), u =>
     kc(Maybe<&2,U32>, j_pure_sigma_head(book, ty), u => j_pure_sigma_check(book, ty, active, fuel), u =>
     kc(Maybe<&2,U32>, String.eq(tg(ty), "ADT") && U32.is_eq(terms_len(ks(ty)), 0) && List.is_empty(&2, String, rm(ty)) &&
@@ -50,7 +52,7 @@ def j_pure_type_head(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>,
       String.eq(tg(kind), "Typ") && U32.is_eq(terms_len(ks(kind)), 1) && String.eq(tg(kid(kind, 0)), "Qua") && U32.is_eq(qt(kid(kind, 0)), 2), u =>
       kc(Maybe<&2,U32>, has_name(active, nm(ty)), u => Some{fuel}, u =>
         kc(Maybe<&2,U32>, Bool.not(List.is_empty(&2, KDef, dc(owner))) && U32.is_le(j_region_def_count(dc(owner)), 32), u =>
-          j_pure_type_ctors(book, dc(owner), nm(ty), Con{nm(ty), active}, fuel), u => None{})), u => None{}))))
+          j_pure_type_ctors(book, dc(owner), nm(ty), Con{nm(ty), active}, fuel), u => None{})), u => None{}))))))
 
 @unsafe
 def j_pure_type_ctors(+book: List<&2,KDef>, +cs: List<&2,KDef>, +owner: String, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
@@ -93,7 +95,7 @@ def j_pure_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> Bool:
 @unsafe
 def j_pure_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
   +ty = wnf(book, dt(d))
-  j_pure_bool_native(book, d) || j_pure_nat_native(book, d) || (String.eq(dn(d), "F32.to_u32") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 1) && U32.is_eq(dx(d), 0) &&
+  j_pure_bool_native(book, d) || j_pure_nat_native(book, d) || j_map_native_binary(book, d) || (String.eq(dn(d), "F32.to_u32") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 1) && U32.is_eq(dx(d), 0) &&
     Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) &&
     j_primitive_type(book, wnf(book, kid(ty, 0)), "F32") && j_primitive_type(book, wnf(book, kid(ty, 1)), "U32"))
 
@@ -101,24 +103,62 @@ def j_pure_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
 # and immutable captured descriptor can participate in a private root proof.
 @unsafe
 def j_pure_bool_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
-  +ty = wnf(book, dt(d))
-  +rest = wnf(book, kid(ty, 1))
-  String.eq(dn(d), "Bool.xor") && String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) &&
-    Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) &&
-    j_primitive_type(book, wnf(book, kid(ty, 0)), "Bool") && String.eq(tg(rest), "All") && Bool.not(U32.is_eq(qt(rest), 0)) &&
-    j_primitive_type(book, wnf(book, kid(rest, 0)), "Bool") && j_primitive_type(book, wnf(book, kid(rest, 1)), "Bool")
+  kc(Bool, (String.eq(dn(d), "Bool.xor") || String.eq(dn(d), "Bool.and")) &&
+    String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) &&
+    Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")),
+    u => kc(Bool, String.eq(dn(d), "Bool.xor"),
+      u => j_pure_bool_native_signature(book, wnf(book, dt(d))),
+      u => kc(Bool, j_pure_bool_and_body(j_strip(dv(d))),
+        u => j_pure_bool_native_signature(book, wnf(book, dt(d))), u => False{})), u => False{})
+
+@unsafe
+def j_pure_bool_native_signature(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  kc(Bool, String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)) &&
+    j_primitive_type(book, wnf(book, kid(ty, 0)), "Bool"),
+    u => j_pure_bool_native_result(book, wnf(book, kid(ty, 1))), u => False{})
+
+@unsafe
+def j_pure_bool_native_result(+book: List<&2,KDef>, +rest: KTerm) -> Bool:
+  kc(Bool, String.eq(tg(rest), "All") && Bool.not(U32.is_eq(qt(rest), 0)),
+    u => j_primitive_type(book, wnf(book, kid(rest, 0)), "Bool") &&
+      j_primitive_type(book, wnf(book, kid(rest, 1)), "Bool"), u => False{})
+
+@unsafe
+def j_pure_bool_and_node(+t: KTerm, +tag: String, +name: String, +arity: U32, +quantity: U32) -> Bool:
+  String.eq(tg(t), tag) && String.eq(nm(t), name) && U32.is_eq(qt(t), quantity) &&
+    U32.is_eq(terms_len(ks(t)), arity) && List.is_empty(&2, String, rm(t))
+
+@unsafe
+def j_pure_bool_and_body(+t: KTerm) -> Bool:
+  kc(Bool, j_pure_bool_and_node(t, "Mat", "False", 2, 1),
+    u => j_pure_bool_and_false(j_strip(kid(t, 0))) && j_pure_bool_and_true(j_strip(kid(t, 1))), u => False{})
+
+@unsafe
+def j_pure_bool_and_false(+t: KTerm) -> Bool:
+  kc(Bool, String.eq(tg(t), "Lam") && U32.is_eq(qt(t), 1) && U32.is_eq(terms_len(ks(t)), 1) && List.is_empty(&2, String, rm(t)),
+    u => j_pure_bool_and_node(j_strip(kid(t, 0)), "Ctr", "False", 0, 1), u => False{})
+
+@unsafe
+def j_pure_bool_and_true(+t: KTerm) -> Bool:
+  kc(Bool, j_pure_bool_and_node(t, "Mat", "True", 2, 1),
+    u => j_pure_bool_and_identity(j_strip(kid(t, 0))) && j_pure_bool_and_node(j_strip(kid(t, 1)), "Efq", "", 0, 0), u => False{})
+
+@unsafe
+def j_pure_bool_and_identity(+t: KTerm) -> Bool:
+  kc(Bool, String.eq(tg(t), "Lam") && U32.is_eq(qt(t), 1) && U32.is_eq(terms_len(ks(t)), 1) && List.is_empty(&2, String, rm(t)),
+    u => j_pure_bool_and_node(j_strip(kid(t, 0)), "Var", nm(t), 0, 1) && U32.is_eq(ix(j_strip(kid(t, 0))), ix(t)), u => False{})
 
 @unsafe
 def j_pure_eligible(+book: List<&2,KDef>, +d: KDef) -> Bool:
-  String.eq(dk(d), "Def") && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) && U32.is_eq(dx(d), 0) &&
+  j_string_literal(book, d) || (String.eq(dk(d), "Def") && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) && U32.is_eq(dx(d), 0) &&
     j_pure_signature(book, dt(d), da(d)) &&
     kc(Bool, db(d), u => j_pure_native(book, d), u =>
-      (String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat")) && j_u32_bounded([dv(d)], 8192))
+      (String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat")) && j_u32_bounded([dv(d)], 8192)))
 
 @unsafe
 def j_pure_add(+d: KDef, +s: JPure) -> JPure:
   kc(JPure, String.eq(dk(lookup(j_pure_defs(s), dn(d))), "Def"), u => s, u =>
-    kc(JPure, U32.is_lt(j_region_def_count(j_pure_defs(s)), 32),
+    kc(JPure, U32.is_lt(j_region_def_count(j_pure_defs(s)), j_instance_pure_capacity(d, j_pure_defs(s))),
       u => JPure{Con{d, j_pure_defs(s)}, j_pure_fuel(s), j_pure_valid(s)}, u => j_pure_fail(s)))
 
 # Validate the complete own body into a separate callee list before reserving
@@ -191,12 +231,14 @@ def j_pure_expr_on(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: K
       j_pure_expr(book, env, kid(t, 0), ty, level, s), u => j_pure_fail(s)), u =>
   kc(JPure, String.eq(tg(t), "Var"), u =>
     kc(JPure, j_pure_type(book, j_env(env, ix(t))) && j_pure_same_closed(book, j_env(env, ix(t)), ty, 64), u => s, u => j_pure_fail(s)), u =>
+  kc(JPure, String.eq(tg(t), "Ref"), u =>
+    kc(JPure, j_string_literal(book, lookup(book, nm(t))) && j_pure_same_closed(book, dt(lookup(book, nm(t))), ty, 64), u => j_pure_add(lookup(book, nm(t)), s), u => j_pure_fail(s)), u =>
   kc(JPure, String.eq(tg(t), "Lit"), u =>
-    kc(JPure, String.eq(nm(t), nm(ty)) && String.contains("|U32|Nat|F32|", "|" ++ nm(t) ++ "|"), u => s, u => j_pure_fail(s)), u =>
+    kc(JPure, String.eq(nm(t), nm(ty)) && String.contains("|U32|Nat|F32|String|Char|", "|" ++ nm(t) ++ "|"), u => s, u => j_pure_fail(s)), u =>
   kc(JPure, String.eq(tg(t), "Ctr"), u => j_pure_constructor(book, env, t, ty, level, s), u =>
   kc(JPure, String.eq(tg(t), "Let"), u =>
     j_pure_bindings(book, env, j_context(book, env, ks(t)), ks(t), ty, level, s), u =>
-  kc(JPure, String.eq(tg(t), "App"), u => j_pure_call(book, env, j_call_spine(t, Nil{}), ty, level, s), u => j_pure_fail(s)))))))
+  kc(JPure, String.eq(tg(t), "App"), u => j_pure_call(book, env, j_call_spine(t, Nil{}), ty, level, s), u => j_pure_fail(s))))))))
 
 @unsafe
 def j_pure_constructor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +level: U32, +s: JPure) -> JPure:
@@ -217,7 +259,7 @@ def j_pure_bindings(+book: List<&2,KDef>, +env: List<&2,KTerm>, +bodyEnv: List<&
 @unsafe
 def j_pure_call(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm, +ty: KTerm, +level: U32, +s: JPure) -> JPure:
   +d = lookup(book, nm(spine))
-  kc(JPure, String.eq(tg(spine), "Call") && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
+  kc(JPure, String.eq(tg(spine), "Call") && (U32.is_gt(da(d), 0) || j_string_literal(book, d)) && U32.is_le(da(d), 32) && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
     kc(JPure, j_primitive_call(book, spine), u => j_pure_args(book, env, ks(spine), dt(d), ty, level, s), u =>
       kc(JPure, j_pure_eligible(book, d), u => j_pure_args(book, env, ks(spine), dt(d), ty, level, j_pure_add(d, s)), u => j_pure_fail(s))), u => j_pure_fail(s))
 
@@ -416,12 +458,12 @@ def j_pure_sigma_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
   String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Sigma") && U32.is_eq(terms_len(ks(ty)), 4) &&
     List.is_empty(&2, String, rm(ty)) && String.eq(dk(owner), "ADT") && db(owner) &&
     U32.is_eq(da(owner), 4) && U32.is_eq(dx(owner), 0) && U32.is_eq(j_region_def_count(dc(owner)), 1) &&
-    String.eq(tg(kid(ty, 0)), "Qua") && U32.is_eq(qt(kid(ty, 0)), 1) && List.is_empty(&2, KTerm, ks(kid(ty, 0))) &&
-    String.eq(tg(kid(ty, 1)), "Qua") && U32.is_eq(qt(kid(ty, 1)), 1) && List.is_empty(&2, KTerm, ks(kid(ty, 1))) &&
+    String.eq(tg(kid(ty, 0)), "Qua") && (U32.is_eq(qt(kid(ty, 0)), 1) || U32.is_eq(qt(kid(ty, 0)), 2)) && List.is_empty(&2, KTerm, ks(kid(ty, 0))) &&
+    String.eq(tg(kid(ty, 1)), "Qua") && (U32.is_eq(qt(kid(ty, 1)), 1) || U32.is_eq(qt(kid(ty, 1)), 2)) && List.is_empty(&2, KTerm, ks(kid(ty, 1))) &&
     String.eq(tg(family), "Lam") && U32.is_eq(qt(family), 1) && U32.is_eq(terms_len(ks(family)), 1) &&
     List.is_empty(&2, String, rm(family)) && j_pure_shape_bound([family], 256) &&
     U32.is_eq(j_region_counter_uses([kid(family, 0)], ix(family), 0), 0) &&
-    j_pure_sigma_kind(wnf(book, j_specialize(book, dt(owner), ks(ty)))) &&
+    j_map_sigma_kind(wnf(book, j_specialize(book, dt(owner), ks(ty))), qt(kid(ty, 0)), qt(kid(ty, 1))) &&
     j_pure_native_ctor(lookup(dc(owner), "Tuple"), "Tuple", 2)
 
 @unsafe
@@ -455,16 +497,23 @@ def j_pure_same_check(+book: List<&2,KDef>, +a: KTerm, +b: KTerm, +fuel: U32) ->
 
 @unsafe
 def j_pure_same_heads(+book: List<&2,KDef>, +a: KTerm, +b: KTerm, +fuel: U32) -> Maybe<&2,U32>:
+  kc(Maybe<&2,U32>, String.eq(nm(a), "Maybe") || String.eq(nm(b), "Maybe"), u =>
+    kc(Maybe<&2,U32>, j_map_maybe_head(book, a) && j_map_maybe_head(book, b), u =>
+      j_pure_same_check(book, kid(a, 1), kid(b, 1), fuel), u => None{}), u =>
+  kc(Maybe<&2,U32>, String.eq(nm(a), "Map") || String.eq(nm(b), "Map"), u =>
+    kc(Maybe<&2,U32>, j_pure_map_head(book, a) && j_pure_map_head(book, b), u =>
+      j_pure_same_check(book, kid(a, 1), kid(b, 1), fuel), u => None{}), u =>
   kc(Maybe<&2,U32>, String.eq(nm(a), "List") || String.eq(nm(b), "List"), u =>
     kc(Maybe<&2,U32>, j_pure_list_head(book, a) && j_pure_list_head(book, b), u =>
       j_pure_same_check(book, kid(a, 1), kid(b, 1), fuel), u => None{}), u =>
   kc(Maybe<&2,U32>, String.eq(nm(a), "Sigma") || String.eq(nm(b), "Sigma"), u =>
-    kc(Maybe<&2,U32>, j_pure_sigma_head(book, a) && j_pure_sigma_head(book, b), u =>
+    kc(Maybe<&2,U32>, j_pure_sigma_head(book, a) && j_pure_sigma_head(book, b) &&
+      U32.is_eq(qt(kid(a, 0)), qt(kid(b, 0))) && U32.is_eq(qt(kid(a, 1)), qt(kid(b, 1))), u =>
       j_pure_same_next(book, kid(kid(a, 3), 0), kid(kid(b, 3), 0),
         j_pure_same_check(book, kid(a, 2), kid(b, 2), fuel)), u => None{}), u =>
     kc(Maybe<&2,U32>, String.eq(tg(a), "ADT") && String.eq(tg(b), "ADT") && String.eq(nm(a), nm(b)) &&
       List.is_empty(&2, KTerm, ks(a)) && List.is_empty(&2, KTerm, ks(b)) &&
-      List.is_empty(&2, String, rm(a)) && List.is_empty(&2, String, rm(b)), u => Some{fuel}, u => None{})))
+      List.is_empty(&2, String, rm(a)) && List.is_empty(&2, String, rm(b)), u => Some{fuel}, u => None{})))))
 
 @unsafe
 def j_pure_same_next(+book: List<&2,KDef>, +a: KTerm, +b: KTerm, +result: Maybe<&2,U32>) -> Maybe<&2,U32>:
@@ -525,3 +574,785 @@ def j_pure_nat_native(+book: List<&2,KDef>, +d: KDef) -> Bool:
     Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(ty), "All") && U32.is_eq(qt(ty), 1) &&
     j_primitive_type(book, wnf(book, kid(ty, 0)), "Nat") && String.eq(tg(rest), "All") && U32.is_eq(qt(rest), 1) &&
     j_primitive_type(book, wnf(book, kid(rest, 0)), "Nat") && j_primitive_type(book, wnf(book, kid(rest, 1)), "Nat")
+
+# Proposed exact proofs; integrate only with all runtime/capture consumers.
+@unsafe
+def j_string_owner(+book: List<&2,KDef>, +ty: KTerm, +name: String, +count: U32) -> Bool:
+  kc(Bool, String.eq(tg(ty), "ADT") && String.eq(nm(ty), name) && List.is_empty(&2, KTerm, ks(ty)) && List.is_empty(&2, String, rm(ty)),
+    u => j_string_owner_header(book, name, count), u => False{})
+
+@unsafe
+def j_string_owner_header(+book: List<&2,KDef>, +name: String, +count: U32) -> Bool:
+  +owner = lookup(book, name)
+  +kind = wnf(book, dt(owner))
+  String.eq(dk(owner), "ADT") && db(owner) && U32.is_eq(da(owner), 0) && U32.is_eq(dx(owner), 0) &&
+    U32.is_eq(j_region_def_count(dc(owner)), count) && String.eq(tg(kind), "Typ") && U32.is_eq(terms_len(ks(kind)), 1) &&
+    String.eq(tg(kid(kind, 0)), "Qua") && U32.is_eq(qt(kid(kind, 0)), 2) && List.is_empty(&2, KTerm, ks(kid(kind, 0)))
+
+@unsafe
+def j_string_char_type(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  kc(Bool, j_string_owner(book, ty, "Char", 1), u => j_string_char_type_fields(book), u => False{})
+
+@unsafe
+def j_string_char_type_fields(+book: List<&2,KDef>) -> Bool:
+  +c = lookup(dc(lookup(book, "Char")), "Chr")
+  +tel = wnf(book, dt(c))
+  j_pure_native_ctor(c, "Chr", 1) &&
+    String.eq(tg(tel), "All") && U32.is_eq(qt(tel), 1) && U32.is_eq(terms_len(ks(tel)), 2) &&
+    j_primitive_type(book, wnf(book, kid(tel, 0)), "U32") && j_string_owner(book, wnf(book, kid(tel, 1)), "Char", 1)
+
+@unsafe
+def j_string_string(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  kc(Bool, j_string_owner(book, ty, "String", 2), u => j_string_string_fields(book), u => False{})
+
+@unsafe
+def j_string_string_fields(+book: List<&2,KDef>) -> Bool:
+  +cs = dc(lookup(book, "String"))
+  +nil = lookup(cs, "SNil")
+  +con = lookup(cs, "SCon")
+  +tel = wnf(book, dt(con))
+  +rest = wnf(book, kid(tel, 1))
+  j_pure_native_ctor(nil, "SNil", 0) && j_pure_native_ctor(con, "SCon", 2) &&
+    j_string_owner(book, wnf(book, dt(nil)), "String", 2) && String.eq(tg(tel), "All") && U32.is_eq(qt(tel), 1) &&
+    U32.is_eq(terms_len(ks(tel)), 2) && j_string_char_type(book, wnf(book, kid(tel, 0))) &&
+    String.eq(tg(rest), "All") && U32.is_eq(qt(rest), 1) && U32.is_eq(terms_len(ks(rest)), 2) &&
+    j_string_owner(book, wnf(book, kid(rest, 0)), "String", 2) && j_string_owner(book, wnf(book, kid(rest, 1)), "String", 2)
+
+@unsafe
+def j_string_literal(+book: List<&2,KDef>, +d: KDef) -> Bool:
+  kc(Bool, String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(da(d), 0) && U32.is_eq(dx(d), 0),
+    u => j_string_literal_body(book, d), u => False{})
+
+@unsafe
+def j_string_literal_body(+book: List<&2,KDef>, +d: KDef) -> Bool:
+  +body = j_strip(dv(d))
+  +head = wnf(book, dt(d))
+  kc(Bool, String.eq(tg(body), "Lit") && String.eq(nm(body), nm(head)) &&
+    String.contains("|U32|Nat|F32|String|Char|", "|" ++ nm(body) ++ "|") && j_u32_bounded([body], 256),
+      u => j_pure_type(book, head), u => False{})
+
+# Conservatively mark every syntactic String/Char/native constructor occurrence;
+# unknown/fuel exhaustion marks the host family too, never silently ignores it.
+@unsafe
+def j_string_uses(+todo: List<&2,KTerm>, +fuel: U32) -> Bool:
+  match todo:
+    case Nil{}: False{}
+    case Con{t, rest}:
+      kc(Bool, U32.is_eq(fuel, 0) || String.contains("|String|Char|SNil|SCon|Chr|", "|" ++ nm(t) ++ "|"), u => True{}, u =>
+        j_string_uses(List.append(&2, KTerm, ks(t), rest), U32.sub(fuel, 1)))
+
+# Bounded normalized typed-family walk. The flat queue shares one work budget;
+# the seen owner set avoids recursive/copy expansion. Unknown/exhaustion=>true.
+@unsafe
+def j_string_family(+book: List<&2,KDef>, +todo: List<&2,KTerm>, +seen: List<&2,String>, +fuel: U32) -> Bool:
+  match todo:
+    case Nil{}: False{}
+    case Con{ty, rest}:
+      kc(Bool, U32.is_eq(fuel, 0), u => True{}, u =>
+        j_string_family_head(book, wnf(book, ty), rest, seen, U32.sub(fuel, 1)))
+
+@unsafe
+def j_string_family_head(+book: List<&2,KDef>, +ty: KTerm, +todo: List<&2,KTerm>, +seen: List<&2,String>, +fuel: U32) -> Bool:
+  kc(Bool, String.eq(nm(ty), "String") || String.eq(nm(ty), "Char"), u => True{}, u =>
+  kc(Bool, j_region_scalar(book, ty), u => j_string_family(book, todo, seen, fuel), u =>
+  kc(Bool, String.eq(tg(ty), "All"), u => j_string_family(book, Con{kid(ty, 0), Con{kid(ty, 1), todo}}, seen, fuel), u =>
+  kc(Bool, String.eq(tg(ty), "Qua") && List.is_empty(&2, KTerm, ks(ty)), u => j_string_family(book, todo, seen, fuel), u =>
+  kc(Bool, String.eq(tg(ty), "Lam") && U32.is_eq(terms_len(ks(ty)), 1), u => j_string_family(book, Con{kid(ty, 0), todo}, seen, fuel), u =>
+  kc(Bool, String.eq(tg(ty), "ADT") && String.eq(dk(lookup(book, nm(ty))), "ADT"), u =>
+    kc(Bool, has_name(seen, nm(ty)), u => j_string_family(book, List.append(&2, KTerm, ks(ty), todo), seen, fuel), u =>
+      j_string_family(book, j_string_family_ctors(book, dc(lookup(book, nm(ty))), ks(ty), List.append(&2, KTerm, ks(ty), todo)), Con{nm(ty), seen}, fuel)), u => True{}))))))
+
+@unsafe
+def j_string_family_ctors(+book: List<&2,KDef>, +cs: List<&2,KDef>, +args: List<&2,KTerm>, +todo: List<&2,KTerm>) -> List<&2,KTerm>:
+  match cs:
+    case Nil{}: todo
+    case Con{c, rest}: Con{j_specialize(book, dt(c), args), j_string_family_ctors(book, rest, args, todo)}
+
+# Exact native Map<&2,scalar> specialization. Constructor rows are validated;
+# owner names alone never grant shape/ownership or public argument permission.
+@unsafe
+def j_pure_map_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  +owner = lookup(book, "Map")
+  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Map") && U32.is_eq(terms_len(ks(ty)), 2) &&
+    List.is_empty(&2, String, rm(ty)) && String.eq(tg(kid(ty, 0)), "Qua") && U32.is_eq(qt(kid(ty, 0)), 2) &&
+    List.is_empty(&2, KTerm, ks(kid(ty, 0))) && j_region_scalar(book, kid(ty, 1)) &&
+    String.eq(dk(owner), "ADT") && db(owner) && U32.is_eq(da(owner), 2) && U32.is_eq(dx(owner), 0) &&
+    U32.is_eq(j_region_def_count(dc(owner)), 3) && j_list_ground_kind(wnf(book, j_specialize(book, dt(owner), ks(ty)))) &&
+    j_pure_native_ctor(lookup(dc(owner), "MTip"), "MTip", 0) &&
+    j_pure_native_ctor(lookup(dc(owner), "MLeaf"), "MLeaf", 2) &&
+    j_pure_native_ctor(lookup(dc(owner), "MNode"), "MNode", 3)
+
+@unsafe
+def j_pure_closed_map(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  +head = wnf(book, ty)
+  j_pure_map_head(book, head) && j_pure_type(book, head)
+
+@unsafe
+def j_pure_map_fields(+book: List<&2,KDef>, +tel: KTerm, +expected: KTerm, +fields: List<&2,KTerm>, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+  kc(Maybe<&2,U32>, U32.is_gt(fuel, 0), u =>
+    j_pure_map_fields_head(book, wnf(book, tel), expected, fields, active, U32.sub(fuel, 1)), u => None{})
+
+@unsafe
+def j_pure_map_fields_head(+book: List<&2,KDef>, +tel: KTerm, +expected: KTerm, +fields: List<&2,KTerm>, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+  match fields:
+    case Nil{}:
+      kc(Maybe<&2,U32>, j_pure_same_closed(book, tel, expected, 64), u => Some{fuel}, u => None{})
+    case Con{h, rest}:
+      kc(Maybe<&2,U32>, String.eq(tg(tel), "All") && U32.is_eq(qt(tel), 1) &&
+        j_pure_same_closed(book, kid(tel, 0), h, 64), u =>
+        kc(Maybe<&2,U32>, j_pure_same_closed(book, h, expected, 64), u =>
+          j_pure_map_fields(book, kid(tel, 1), expected, rest, active, fuel), u =>
+          j_pure_map_fields_next(book, kid(tel, 1), expected, rest, active,
+            j_pure_type_check(book, h, active, fuel))), u => None{})
+
+@unsafe
+def j_pure_map_fields_next(+book: List<&2,KDef>, +tel: KTerm, +expected: KTerm, +fields: List<&2,KTerm>, +active: List<&2,String>, +r: Maybe<&2,U32>) -> Maybe<&2,U32>:
+  match r:
+    case None{}: None{}
+    case Some{fuel}: j_pure_map_fields(book, tel, expected, fields, active, fuel)
+
+@unsafe
+def j_pure_map_check(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+  +cs = dc(lookup(book, "Map"))
+  j_pure_map_leaf(book, ty, active,
+    j_pure_map_fields(book, j_specialize(book, dt(lookup(cs, "MTip")), ks(ty)), ty, Nil{}, active, fuel))
+
+@unsafe
+def j_pure_map_leaf(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +r: Maybe<&2,U32>) -> Maybe<&2,U32>:
+  match r:
+    case None{}: None{}
+    case Some{fuel}:
+      +c = lookup(dc(lookup(book, "Map")), "MLeaf")
+      j_pure_map_node(book, ty, active,
+        j_pure_map_fields(book, j_specialize(book, dt(c), ks(ty)), ty,
+          [kt("ADT", "String", 0, 0, Nil{}), kid(ty, 1)], active, fuel))
+
+@unsafe
+def j_pure_map_node(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +r: Maybe<&2,U32>) -> Maybe<&2,U32>:
+  match r:
+    case None{}: None{}
+    case Some{fuel}:
+      +c = lookup(dc(lookup(book, "Map")), "MNode")
+      j_pure_map_fields(book, j_specialize(book, dt(c), ks(ty)), ty,
+        [kt("ADT", "Nat", 0, 0, Nil{}), ty, ty], active, fuel)
+
+# Staged bounded contextual specialization. Facts remain separate from source
+# KDefs/JPure; no fact is accepted by ordinary exact_def or name-only lookup.
+# da=frozen erased-prefix length; dx=original runtime arity. The eventual clone
+# adapter analyzes dx-da live slots; the unchanged public ABI keeps null prefix slots.
+@unsafe
+def j_erased_closed_arg(+book: List<&2,KDef>, +arg: KTerm) -> Bool:
+  +head = wnf(book, arg)
+  kc(Bool, String.eq(tg(head), "Qua"), u =>
+    (U32.is_eq(qt(head), 1) || U32.is_eq(qt(head), 2)) && List.is_empty(&2,KTerm, ks(head)) && List.is_empty(&2,String, rm(head)), u =>
+    j_pure_type(book, head) && j_pure_shape_bound([head], 256))
+
+@unsafe
+def j_erased_runtime_scan(+book: List<&2,KDef>, +todo: List<&2,KTerm>, +binder: U32, +fuel: U32) -> Maybe<&2,U32>:
+  match todo:
+    case Nil{}: Some{fuel}
+    case Con{t, rest}:
+      kc(Maybe<&2,U32>, U32.is_gt(fuel, 0) && Bool.not(String.eq(tg(t), "Var") && U32.is_eq(ix(t), binder)), u =>
+        kc(Maybe<&2,U32>, String.eq(tg(t), "Ann"), u =>
+          j_erased_runtime_scan(book, Con{kid(t, 0), rest}, binder, U32.sub(fuel, 1)), u =>
+        kc(Maybe<&2,U32>, String.eq(tg(t), "App"), u =>
+          j_erased_runtime_call(book, j_call_spine(t, Nil{}), rest, binder, U32.sub(fuel, 1)), u =>
+          j_erased_runtime_scan(book, List.append(&2,KTerm, ks(t), rest), binder, U32.sub(fuel, 1)))), u => None{})
+
+@unsafe
+def j_erased_runtime_call(+book: List<&2,KDef>, +spine: KTerm, +rest: List<&2,KTerm>, +binder: U32, +fuel: U32) -> Maybe<&2,U32>:
+  +d = lookup(book, nm(spine))
+  kc(Maybe<&2,U32>, String.eq(tg(spine), "Call") && String.eq(dk(d), "Def") && U32.is_eq(terms_len(ks(spine)), da(d)) && U32.is_le(da(d), 32), u =>
+    j_erased_runtime_args(book, ks(spine), dt(d), rest, binder, fuel), u => None{})
+
+@unsafe
+def j_erased_runtime_args(+book: List<&2,KDef>, +args: List<&2,KTerm>, +ty: KTerm, +todo: List<&2,KTerm>, +binder: U32, +fuel: U32) -> Maybe<&2,U32>:
+  match args:
+    case Nil{}: j_erased_runtime_scan(book, todo, binder, fuel)
+    case Con{h, rest}:
+      +head = wnf(book, ty)
+      kc(Maybe<&2,U32>, U32.is_gt(fuel, 0) && String.eq(tg(head), "All"), u =>
+        j_erased_runtime_args(book, rest, j_app_type(head, h),
+          kc(List<&2,KTerm>, U32.is_eq(qt(head), 0), u => todo, u => Con{h, todo}), binder, U32.sub(fuel, 1)), u => None{})
+
+# Match j_def's unconditional source-emission path. Native intrinsics may retain
+# a runtime override; they are not source-body instances or source aliases.
+@unsafe
+def j_instance_source_definition(+d: KDef) -> Bool:
+  String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
+    Bool.not(String.eq(tg(dv(d)), "Absent")) && Bool.not(String.eq(tg(dv(d)), "Foreign")) &&
+    (Bool.not(db(d)) || Bool.not(j_intrinsic(dn(d))))
+
+@unsafe
+def j_erased_instance(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm) -> Maybe<&2,KDef>:
+  +d = lookup(book, nm(spine))
+  kc(Maybe<&2,KDef>, String.eq(tg(spine), "Call") && j_instance_source_definition(d) &&
+    U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) && U32.is_eq(terms_len(ks(spine)), da(d)) && j_u32_bounded([dv(d)], 4096), u =>
+    j_erased_instance_step(book, env, d, dv(d), dt(d), ks(spine), Nil{}, 0, 8192), u => None{})
+
+@unsafe
+def j_erased_instance_step(+book: List<&2,KDef>, +env: List<&2,KTerm>, +original: KDef, +body: KTerm, +ty: KTerm, +args: List<&2,KTerm>, +slots: List<&2,KDef>, +prefix: U32, +fuel: U32) -> Maybe<&2,KDef>:
+  # The typed All determines erasure; the library pipeline normalizes Lam qty.
+  # Runtime absence below proves that substituting this binder is type-only.
+  +head = wnf(book, ty)
+  +term = j_strip(body)
+  kc(Maybe<&2,KDef>, String.eq(tg(head), "All") && U32.is_eq(qt(head), 0), u =>
+    kc(Maybe<&2,KDef>, U32.is_lt(prefix, 4) && U32.is_gt(fuel, 0) && String.eq(tg(term), "Lam") && String.eq(j_l_name(term), ""), u =>
+      j_erased_instance_arg(book, env, original, term, head, args, slots, prefix, fuel), u => None{}), u =>
+    kc(Maybe<&2,KDef>, U32.is_gt(prefix, 0) && j_pure_signature(book, head, U32.sub(da(original), prefix)) &&
+      U32.is_eq(terms_len(args), U32.sub(da(original), prefix)), u =>
+      Some{KDef{dn(original), "JErasedInstance", prefix, da(original), head, body, Con{original, slots}, True{}, False{}}}, u => None{}))
+
+@unsafe
+def j_erased_instance_arg(+book: List<&2,KDef>, +env: List<&2,KTerm>, +original: KDef, +body: KTerm, +ty: KTerm, +args: List<&2,KTerm>, +slots: List<&2,KDef>, +prefix: U32, +fuel: U32) -> Maybe<&2,KDef>:
+  match args:
+    case Nil{}: None{}
+    case Con{h, rest}:
+      kc(Maybe<&2,KDef>, j_erased_closed_arg(book, h) &&
+        exact_term(wnf(book, j_erased_arg_type(book, wnf(book, h))), wnf(book, kid(ty, 0))), u =>
+        j_erased_instance_scanned(book, env, original, body, ty, wnf(book, h), rest, slots, prefix,
+          j_erased_runtime_scan(book, [kid(body, 0)], ix(body), U32.sub(fuel, 1))), u => None{})
+
+@unsafe
+def j_erased_instance_scanned(+book: List<&2,KDef>, +env: List<&2,KTerm>, +original: KDef, +body: KTerm, +ty: KTerm, +arg: KTerm, +rest: List<&2,KTerm>, +slots: List<&2,KDef>, +prefix: U32, +r: Maybe<&2,U32>) -> Maybe<&2,KDef>:
+  match r:
+    case None{}: None{}
+    case Some{fuel}:
+      +slot: KDef = KDef{"", "JErasedSlot", ix(ty), ix(body), kid(ty, 0), arg, Nil{}, False{}, False{}}
+      j_erased_instance_step(book, env, original, subst(kid(body, 0), ix(body), arg), j_app_type(ty, arg), rest,
+        List.append(&2,KDef, slots, [slot]), U32.inc(prefix), fuel)
+
+@unsafe
+def j_erased_instance_same(+a: KDef, +b: KDef) -> Bool:
+  String.eq(dk(a), "JErasedInstance") && String.eq(dk(b), "JErasedInstance") &&
+    U32.is_eq(da(a), da(b)) && U32.is_eq(dx(a), dx(b)) && exact_defs(dc(a), dc(b)) &&
+    exact_term(dt(a), dt(b)) && exact_term(dv(a), dv(b))
+
+
+@unsafe
+def j_erased_arg_type(+book: List<&2,KDef>, +arg: KTerm) -> KTerm:
+  kc(KTerm, String.eq(tg(arg), "Qua"), u => atom("Qnt"), u =>
+    kc(KTerm, String.eq(tg(arg), "ADT"), u => tele_fill(book, dt(lookup(book, nm(arg))), ks(arg)), u => atom("Absent")))
+
+# Request-local contextual rows. These are not source definitions and never
+# participate in ordinary lookup/exact_def. Each row retains its source Def.
+type JInstances is Data:
+  JInstances{+rows: List<&2,KDef>, +sources: List<&2,KDef>, +fuel: U32, +valid: Bool}
+
+@unsafe
+def j_instances_rows(+s: JInstances) -> List<&2,KDef>:
+  match s:
+    case JInstances{rows, sources, fuel, valid}: rows
+
+@unsafe
+def j_instances_sources(+s: JInstances) -> List<&2,KDef>:
+  match s:
+    case JInstances{rows, sources, fuel, valid}: sources
+
+@unsafe
+def j_instances_fuel(+s: JInstances) -> U32:
+  match s:
+    case JInstances{rows, sources, fuel, valid}: fuel
+
+@unsafe
+def j_instances_valid(+s: JInstances) -> Bool:
+  match s:
+    case JInstances{rows, sources, fuel, valid}: valid
+
+@unsafe
+def j_instances_fail(+s: JInstances) -> JInstances:
+  JInstances{j_instances_rows(s), j_instances_sources(s), 0, False{}}
+
+@unsafe
+def j_instances_has(+rows: List<&2,KDef>, +fact: KDef) -> Bool:
+  match rows:
+    case Nil{}: False{}
+    case Con{h, rest}: j_erased_instance_same(h, fact) || j_instances_has(rest, fact)
+
+@unsafe
+def j_instances_source_has(+ds: List<&2,KDef>, +d: KDef) -> Bool:
+  match ds:
+    case Nil{}: False{}
+    case Con{h, rest}: exact_def(h, d) || j_instances_source_has(rest, d)
+
+@unsafe
+def j_instances_collect(+book: List<&2,KDef>, +todo: List<&2,KTerm>, +s: JInstances) -> JInstances:
+  match todo:
+    case Nil{}: s
+    case Con{t, rest}:
+      kc(JInstances, j_instances_valid(s) && U32.is_gt(j_instances_fuel(s), 0), u =>
+        j_instances_node(book, t, rest, JInstances{j_instances_rows(s), j_instances_sources(s), U32.sub(j_instances_fuel(s), 1), True{}}), u => j_instances_fail(s))
+
+@unsafe
+def j_instances_node(+book: List<&2,KDef>, +t: KTerm, +rest: List<&2,KTerm>, +s: JInstances) -> JInstances:
+  kc(JInstances, String.eq(tg(t), "Ann"), u => j_instances_collect(book, Con{kid(t, 0), rest}, s), u =>
+    kc(JInstances, String.eq(tg(t), "App"), u => j_instances_call(book, j_call_spine(t, Nil{}), rest, s), u =>
+      j_instances_collect(book, List.append(&2,KTerm, ks(t), rest), s)))
+
+@unsafe
+def j_instances_call(+book: List<&2,KDef>, +spine: KTerm, +rest: List<&2,KTerm>, +s: JInstances) -> JInstances:
+  +d = lookup(book, nm(spine))
+  +head = wnf(book, dt(d))
+  kc(JInstances, String.eq(tg(spine), "Call") && String.eq(dk(d), "Def") && U32.is_eq(terms_len(ks(spine)), da(d)) && U32.is_le(da(d), 32), u =>
+    kc(JInstances, String.eq(tg(head), "All") && U32.is_eq(qt(head), 0), u =>
+      kc(JInstances, U32.is_gt(j_instances_fuel(s), 8192), u =>
+        j_instances_fact(book, spine, rest, JInstances{j_instances_rows(s), j_instances_sources(s), U32.sub(j_instances_fuel(s), 8192), True{}}, j_erased_instance(book, Nil{}, spine)), u => j_instances_fail(s)), u =>
+      kc(JInstances, Bool.not(j_instance_source_definition(d)) || j_instances_source_has(j_instances_sources(s), d), u =>
+        j_instances_collect(book, List.append(&2,KTerm, ks(spine), rest), s), u =>
+        kc(JInstances, j_pure_signature(book, dt(d), da(d)) && U32.is_lt(j_region_def_count(j_instances_sources(s)), 64), u =>
+          j_instances_collect(book, Con{dv(d), List.append(&2,KTerm, ks(spine), rest)},
+            JInstances{j_instances_rows(s), Con{d, j_instances_sources(s)}, j_instances_fuel(s), True{}}), u => j_instances_fail(s)))), u => j_instances_fail(s))
+
+@unsafe
+def j_instances_fact(+book: List<&2,KDef>, +spine: KTerm, +rest: List<&2,KTerm>, +s: JInstances, +r: Maybe<&2,KDef>) -> JInstances:
+  match r:
+    case None{}: j_instances_fail(s)
+    case Some{fact}:
+      kc(JInstances, j_instances_has(j_instances_rows(s), fact), u =>
+        j_instances_collect(book, List.append(&2,KTerm, ks(spine), rest), s), u =>
+        kc(JInstances, U32.is_lt(j_region_def_count(j_instances_rows(s)), 32), u =>
+          j_instances_collect(book, Con{dv(fact), List.append(&2,KTerm, ks(spine), rest)},
+            JInstances{Con{fact, j_instances_rows(s)}, j_instances_sources(s), j_instances_fuel(s), True{}}), u => j_instances_fail(s)))
+
+# Source book remains canonical. A separate, explicitly audited analysis view
+# contains uniquely named private definitions with exact instance provenance.
+# All private calls use LIVE argument slots; original/null-prefix ABI survives
+# solely in the unchanged generic/public path and boundary facts.
+@unsafe
+def j_instance_original(+fact: KDef) -> KDef:
+  index_first(dc(fact))
+
+@unsafe
+def j_instance_name(+at: U32) -> String:
+  "$instance." ++ U32.show(at)
+
+@unsafe
+def j_instance_alias(+d: KDef) -> KDef:
+  KDef{dn(d), "JErasedInstance", 0, da(d), dt(d), dv(d), [d], True{}, False{}}
+
+@unsafe
+def j_instance_aliases(+ds: List<&2,KDef>, +tail: List<&2,KDef>) -> List<&2,KDef>:
+  match ds:
+    case Nil{}: tail
+    case Con{d, rest}: Con{j_instance_alias(d), j_instance_aliases(rest, tail)}
+
+@unsafe
+def j_instance_fact_exact(+book: List<&2,KDef>, +fact: KDef) -> Bool:
+  +original = j_instance_original(fact)
+  String.eq(dk(fact), "JErasedInstance") && db(fact) &&
+    exact_def(original, lookup(book, dn(original))) && U32.is_eq(dx(fact), da(original)) && U32.is_le(da(fact), dx(fact)) &&
+    kc(Bool, U32.is_eq(da(fact), 0), u => exact_def(fact, j_instance_alias(original)), u =>
+      j_instance_fact_replay(book, fact, j_erased_instance(book, Nil{},
+        kt("Call", dn(original), 0, 0, List.append(&2,KTerm, j_instance_slot_args(j_instance_tail_defs(dc(fact))), j_instance_placeholders(U32.sub(da(original), da(fact))))))))
+
+@unsafe
+def j_instance_fact_replay(+book: List<&2,KDef>, +fact: KDef, +r: Maybe<&2,KDef>) -> Bool:
+  match r:
+    case None{}: False{}
+    case Some{again}: j_erased_instance_same(fact, again)
+
+@unsafe
+def j_instance_slot_args(+slots: List<&2,KDef>) -> List<&2,KTerm>:
+  match slots:
+    case Nil{}: Nil{}
+    case Con{slot, rest}: Con{dv(slot), j_instance_slot_args(rest)}
+
+@unsafe
+def j_instance_placeholders(+left: U32) -> List<&2,KTerm>:
+  kc(List<&2,KTerm>, U32.is_eq(left, 0), u => Nil{}, u => Con{atom("Absent"), j_instance_placeholders(U32.sub(left, 1))})
+
+@unsafe
+def j_instance_fact_index(+rows: List<&2,KDef>, +fact: KDef, +at: U32) -> U32:
+  match rows:
+    case Nil{}: 4294967295
+    case Con{h, rest}: kc(U32, j_erased_instance_same(h, fact), u => at, u => j_instance_fact_index(rest, fact, U32.inc(at)))
+
+@unsafe
+def j_instance_source_index(+rows: List<&2,KDef>, +d: KDef, +at: U32) -> U32:
+  match rows:
+    case Nil{}: 4294967295
+    case Con{h, rest}: kc(U32, U32.is_eq(da(h), 0) && exact_def(j_instance_original(h), d), u => at,
+      u => j_instance_source_index(rest, d, U32.inc(at)))
+
+@unsafe
+def j_instance_drop(+args: List<&2,KTerm>, +left: U32) -> List<&2,KTerm>:
+  kc(List<&2,KTerm>, U32.is_eq(left, 0), u => args, u =>
+    kc(List<&2,KTerm>, List.is_empty(&2,KTerm, args), u => Nil{}, u => j_instance_drop(j_instance_tail_terms(args), U32.sub(left, 1))))
+
+@unsafe
+def j_instance_rewrite(+book: List<&2,KDef>, +rows: List<&2,KDef>, +t: KTerm) -> KTerm:
+  kc(KTerm, String.eq(tg(t), "Ann"), u => k_with_children(t, [j_instance_rewrite(book, rows, kid(t, 0)), kid(t, 1)]), u =>
+    kc(KTerm, String.eq(tg(t), "App"), u => j_instance_rewrite_call(book, rows, t, j_call_spine(t, Nil{})), u =>
+      k_with_children(t, j_instance_rewrites(book, rows, ks(t)))))
+
+@unsafe
+def j_instance_rewrites(+book: List<&2,KDef>, +rows: List<&2,KDef>, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
+  match ts:
+    case Nil{}: Nil{}
+    case Con{t, rest}: Con{j_instance_rewrite(book, rows, t), j_instance_rewrites(book, rows, rest)}
+
+@unsafe
+def j_instance_rewrite_call(+book: List<&2,KDef>, +rows: List<&2,KDef>, +original: KTerm, +spine: KTerm) -> KTerm:
+  +d = lookup(book, nm(spine))
+  kc(KTerm, String.eq(tg(spine), "Call") && String.eq(dk(d), "Def") && U32.is_eq(terms_len(ks(spine)), da(d)), u =>
+    kc(KTerm, U32.is_eq(qt(wnf(book, dt(d))), 0) && String.eq(tg(wnf(book, dt(d))), "All"), u =>
+      j_instance_rewrite_fact(book, rows, spine, j_erased_instance(book, Nil{}, spine)), u =>
+      j_instance_rewrite_live(book, rows, spine, j_instance_source_index(rows, d, 0), 0)), u => atom("Absent"))
+
+@unsafe
+def j_instance_rewrite_fact(+book: List<&2,KDef>, +rows: List<&2,KDef>, +spine: KTerm, +r: Maybe<&2,KDef>) -> KTerm:
+  match r:
+    case None{}: atom("Absent")
+    case Some{fact}:
+      +at = j_instance_fact_index(rows, fact, 0)
+      kc(KTerm, U32.is_eq(at, 4294967295), u => atom("Absent"), u =>
+        kc(KTerm, U32.is_eq(da(fact), dx(fact)), u =>
+          kc(KTerm, U32.is_eq(terms_len(ks(j_strip(dv(fact)))), 0) &&
+            (String.eq(tg(j_strip(dv(fact))), "Ctr") || String.eq(tg(j_strip(dv(fact))), "Lit")),
+            u => dv(fact), u => atom("Absent")), u =>
+          j_instance_rewrite_live(book, rows, spine, at, da(fact))))
+
+@unsafe
+def j_instance_rewrite_live(+book: List<&2,KDef>, +rows: List<&2,KDef>, +spine: KTerm, +at: U32, +prefix: U32) -> KTerm:
+  +args = j_instance_rewrites(book, rows, j_instance_drop(ks(spine), prefix))
+  kc(KTerm, U32.is_eq(at, 4294967295), u => j_region_app(ref(nm(spine)), args), u => j_region_app(ref(j_instance_name(at)), args))
+
+@unsafe
+def j_instance_view_defs(+book: List<&2,KDef>, +rows: List<&2,KDef>, +todo: List<&2,KDef>, +at: U32) -> List<&2,KDef>:
+  match todo:
+    case Nil{}: Nil{}
+    case Con{fact, rest}:
+      Con{KDef{j_instance_name(at), "Def", U32.sub(dx(fact), da(fact)), 0, dt(fact),
+        j_instance_rewrite(book, rows, dv(fact)), [fact, j_instance_edge_row(j_instance_rewrite(book, rows, dv(fact)))], False{}, du(j_instance_original(fact))},
+        j_instance_view_defs(book, rows, rest, U32.inc(at))}
+
+@unsafe
+def j_instance_tail_defs(+ds: List<&2,KDef>) -> List<&2,KDef>:
+  match ds:
+    case Nil{}: Nil{}
+    case Con{h, rest}: rest
+
+@unsafe
+def j_instance_tail_terms(+ts: List<&2,KTerm>) -> List<&2,KTerm>:
+  match ts:
+    case Nil{}: Nil{}
+    case Con{h, rest}: rest
+
+@unsafe
+def j_instance_attach(+book: List<&2,KDef>, +rows: List<&2,KDef>, +sources: List<&2,KDef>) -> List<&2,KDef>:
+  match book:
+    case Nil{}: book
+    case Con{cache, rest}:
+      kc(List<&2,KDef>, String.eq(dk(cache), "BookCache"), u =>
+        Con{KDef{dn(cache), dk(cache), da(cache), dx(cache), dt(cache), dv(cache),
+          [index_first(dc(cache)), KDef{"$js.plans", "JSPlanContext", 0, 0, atom("Absent"), atom("Absent"),
+            [missing(), missing(), KDef{"$js.instances", "JSInstanceContext", 0, 0, atom("Absent"), atom("Absent"),
+              [KDef{"rows", "JSInstanceRows", 0, 0, atom("Absent"), atom("Absent"), rows, True{}, False{}},
+               KDef{"sources", "JSInstanceSources", 0, 0, atom("Absent"), atom("Absent"), sources, True{}, False{}}], True{}, False{}}], False{}, False{}}], db(cache), du(cache)}, rest}, u => book)
+
+@unsafe
+def j_instance_all_exact(+book: List<&2,KDef>, +rows: List<&2,KDef>) -> Bool:
+  match rows:
+    case Nil{}: True{}
+    case Con{fact, rest}: j_instance_fact_exact(book, fact) && j_instance_all_exact(book, rest)
+
+@unsafe
+def j_instance_view_context(+view: List<&2,KDef>, +d: KDef, +pure: JPure) -> Bool:
+  j_pure_valid(pure) && j_component_prefix(view, Nil{}, dv(d), dt(d), j_component_slots(0, da(d)), d, 0)
+
+@unsafe
+def j_instance_clones_ready(+view: List<&2,KDef>, +defs: List<&2,KDef>) -> Bool:
+  match defs:
+    case Nil{}: True{}
+    case Con{d, rest}:
+      kc(Bool, U32.is_eq(da(d), 0), u =>
+        U32.is_eq(terms_len(ks(j_strip(dv(d)))), 0) &&
+          (String.eq(tg(j_strip(dv(d))), "Ctr") || String.eq(tg(j_strip(dv(d))), "Lit")) && j_instance_clones_ready(view, rest), u =>
+        j_pure_valid(j_pure_graph(view, d, JPure{Nil{}, 131072, True{}})) && j_instance_clones_ready(view, rest))
+
+# Covered emission requires exact Def membership in the private view plus a
+# provenance fact. Uncovered private instance names become Absent and fail the
+# pre-emission audit; there is no G[private-name] fallback.
+@unsafe
+def j_instance_cover(+view: List<&2,KDef>, +defs: List<&2,KDef>, +owner: String, +t: KTerm) -> KTerm:
+  kc(KTerm, String.eq(tg(t), "Ann"), u => k_with_children(t, [j_instance_cover(view, defs, owner, kid(t, 0)), kid(t, 1)]), u =>
+    kc(KTerm, String.eq(tg(t), "App"), u =>
+      j_instance_cover_app(view, defs, owner, j_call_spine(t, Nil{})), u =>
+      k_with_children(t, j_instance_covers(view, defs, owner, ks(t)))))
+
+@unsafe
+def j_instance_covers(+view: List<&2,KDef>, +defs: List<&2,KDef>, +owner: String, +ts: List<&2,KTerm>) -> List<&2,KTerm>:
+  match ts:
+    case Nil{}: Nil{}
+    case Con{t, rest}: Con{j_instance_cover(view, defs, owner, t), j_instance_covers(view, defs, owner, rest)}
+
+@unsafe
+def j_instance_cover_app(+view: List<&2,KDef>, +defs: List<&2,KDef>, +owner: String, +spine: KTerm) -> KTerm:
+  +d = lookup(view, nm(spine))
+  +known = lookup(defs, nm(spine))
+  +args = j_instance_covers(view, defs, owner, ks(spine))
+  kc(KTerm, String.eq(tg(spine), "Call") && U32.is_eq(terms_len(args), da(d)), u =>
+    kc(KTerm, String.starts_with(nm(spine), "$instance."), u =>
+      kc(KTerm, exact_def(d, known) && String.eq(dk(index_first(dc(d))), "JErasedInstance"), u =>
+        kc(KTerm, String.eq(nm(spine), owner), u => j_region_app(ref(owner), args), u =>
+          kc(KTerm, j_instance_emit_ready(view, d), u => j_region_annotate(kt("JCall", nm(spine), 0, 1, args), j_covered_result(dt(d), args)), u => j_instance_residual(view, d, args))), u => atom("Absent")), u =>
+      j_region_app(ref(nm(spine)), args)), u => atom("Absent"))
+
+@unsafe
+def j_instance_no_absent(+todo: List<&2,KTerm>, +fuel: U32) -> Bool:
+  match todo:
+    case Nil{}: True{}
+    case Con{t, rest}: kc(Bool, U32.is_gt(fuel, 0) && Bool.not(String.eq(tg(t), "Absent")),
+      u => j_instance_no_absent(List.append(&2,KTerm, ks(t), rest), U32.sub(fuel, 1)), u => False{})
+
+@unsafe
+def j_instance_covered_audit(+view: List<&2,KDef>, +defs: List<&2,KDef>, +rest: List<&2,KDef>) -> Bool:
+  match rest:
+    case Nil{}: True{}
+    case Con{d, more}: j_instance_no_absent([j_instance_cover(view, defs, dn(d), dv(d))], 16384) && j_instance_covered_audit(view, defs, more)
+
+@unsafe
+def j_instance_declarations(+view: List<&2,KDef>, +defs: List<&2,KDef>, +rest: List<&2,KDef>) -> String:
+  match rest:
+    case Nil{}: ""
+    case Con{d, more}: kc(String, j_instance_emit_ready(view, d), u =>
+      j_component_stack_declaration(view, d, j_owned_term(j_instance_cover(view, defs, dn(d), dv(d))), "$tree"), u => "") ++
+      j_instance_declarations(view, defs, more)
+
+@unsafe
+def j_instance_guards(+rows: List<&2,KDef>) -> String:
+  match rows:
+    case Nil{}: ""
+    case Con{fact, rest}: j_quote(dn(j_instance_original(fact))) ++ "," ++ j_instance_guards(rest)
+
+@unsafe
+def j_instance_capture(+rows: List<&2,KDef>) -> String:
+  match rows:
+    case Nil{}: ""
+    case Con{fact, rest}: "scalarCapture(" ++ j_quote(dn(j_instance_original(fact))) ++ ",G[" ++ j_quote(dn(j_instance_original(fact))) ++ "]);" ++ j_instance_capture(rest)
+
+@unsafe
+def j_instance_has_erased(+book: List<&2,KDef>, +todo: List<&2,KTerm>, +fuel: U32) -> Bool:
+  match todo:
+    case Nil{}: False{}
+    case Con{t, rest}:
+      kc(Bool, U32.is_gt(fuel, 0), u =>
+        j_instance_has_erased_node(book, t, rest, fuel, j_call_spine(t, Nil{})), u => False{})
+
+@unsafe
+def j_instance_has_erased_node(+book: List<&2,KDef>, +t: KTerm, +rest: List<&2,KTerm>, +fuel: U32, +spine: KTerm) -> Bool:
+  +d = lookup(book, nm(spine))
+  kc(Bool, String.eq(tg(t), "App") && String.eq(tg(spine), "Call") && String.eq(dk(d), "Def") &&
+    U32.is_eq(terms_len(ks(spine)), da(d)) && String.eq(tg(wnf(book, dt(d))), "All") && U32.is_eq(qt(wnf(book, dt(d))), 0),
+    u => True{}, u => j_instance_has_erased(book, List.append(&2,KTerm, ks(t), rest), U32.sub(fuel, 1)))
+
+@unsafe
+def j_instance_root(+book: List<&2,KDef>, +d: KDef) -> String:
+  kc(String, j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) &&
+    j_region_signature(book, dt(d), da(d)) && j_region_scalar(book, j_fold_root_result(book, dt(d), da(d))) &&
+    j_instance_has_erased(book, [dv(d)], 2048), u =>
+      j_instance_root_collect(book, d, j_instances_collect(book, [dv(d)], JInstances{Nil{}, [d], 1048576, True{}})), u => "")
+
+@unsafe
+def j_instance_root_collect(+book: List<&2,KDef>, +d: KDef, +s: JInstances) -> String:
+  kc(String, j_instances_valid(s) && Bool.not(List.is_empty(&2,KDef, j_instances_rows(s))), u =>
+    j_instance_root_rows(book, d, j_instance_aliases(j_instances_sources(s), j_instances_rows(s))), u => "")
+
+@unsafe
+def j_instance_root_rows(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>) -> String:
+  kc(String, j_instance_all_exact(book, rows) && U32.is_le(j_region_def_count(rows), 96), u =>
+    j_instance_root_raw(book, d, rows, j_instance_view_defs(book, rows, rows, 0)), u => "")
+
+@unsafe
+def j_instance_root_view(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
+  +view = List.append(&2,KDef, defs, j_instance_attach(book, rows, j_instances_sources(JInstances{Nil{}, [d], 0, True{}})))
+  kc(String, j_pure_valid(j_pure_graph(view, lookup(view, j_instance_name(j_instance_source_index(rows, d, 0))), JPure{Nil{}, 131072, True{}})) && j_instance_covered_audit(view, defs, defs) && j_instance_erased_emitted(view, defs), u =>
+    j_instance_root_emit(book, view, d, rows, defs, j_instance_source_index(rows, d, 0)), u => "")
+
+@unsafe
+def j_instance_root_emit(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +defs: List<&2,KDef>, +at: U32) -> String:
+  kc(String, U32.is_eq(at, 4294967295) || Bool.not(j_instance_emit_ready(view, lookup(view, j_instance_name(at)))), u => "", u =>
+    "(()=>{" ++ j_instance_declarations(view, defs, defs) ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_native_guards(j_pure_defs(j_pure_graph(view, lookup(view, j_instance_name(at)), JPure{Nil{}, 131072, True{}}))) ++ "];return " ++
+    "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){" ++ j_nat_loop_slots(da(d), 0) ++
+    "if($entered&&regionProof===null&&regionHostGuard()&&stringHostGuard()&&" ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++
+    "&&localGuard($guards)){/* private contextual instances */return " ++ j_region_name(j_instance_name(at)) ++ "$tree(" ++ j_region_vector_names("$s", 0, da(d)) ++ ");}" ++
+    j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()")
+
+
+@unsafe
+def j_instance_emit_ready(+view: List<&2,KDef>, +d: KDef) -> Bool:
+  +cap = index_first(j_instance_tail_defs(j_instance_tail_defs(dc(d))))
+  String.eq(dn(cap), "$js.instance.emission") && String.eq(dk(cap), "JSInstanceEmission") && db(cap)
+
+@unsafe
+def j_instance_residual(+view: List<&2,KDef>, +d: KDef, +args: List<&2,KTerm>) -> KTerm:
+  +fact = index_first(dc(d))
+  +original = j_instance_original(fact)
+  +full = List.append(&2,KTerm, j_instance_slot_args(j_instance_tail_defs(dc(fact))), args)
+  j_region_annotate(kt("JGeneric", dn(original), 0, 0, full), j_covered_result(dt(original), full))
+
+@unsafe
+def j_instance_native_guards(+graph: List<&2,KDef>) -> String:
+  match graph:
+    case Nil{}: ""
+    case Con{d, rest}: kc(String, String.starts_with(dn(d), "$instance."), u => "", u => j_quote(dn(d)) ++ ",") ++ j_instance_native_guards(rest)
+
+@unsafe
+def j_instance_erased_emitted(+view: List<&2,KDef>, +defs: List<&2,KDef>) -> Bool:
+  match defs:
+    case Nil{}: False{}
+    case Con{d, rest}: (U32.is_gt(da(index_first(dc(d))), 0) && j_instance_emit_ready(view, d)) || j_instance_erased_emitted(view, rest)
+
+
+@unsafe
+def j_instance_edge_row(+body: KTerm) -> KDef:
+  KDef{"$js.instance.edges", "JSInstanceEdges", 0, 0, atom("Absent"), atom("Absent"), j_instance_edges([body], Nil{}, 16384), True{}, False{}}
+
+@unsafe
+def j_instance_edges(+todo: List<&2,KTerm>, +names: List<&2,KDef>, +fuel: U32) -> List<&2,KDef>:
+  match todo:
+    case Nil{}: names
+    case Con{t, rest}:
+      kc(List<&2,KDef>, U32.is_gt(fuel, 0), u =>
+        j_instance_edges(List.append(&2,KTerm, ks(t), rest),
+          kc(List<&2,KDef>, String.eq(tg(t), "Ref") && String.starts_with(nm(t), "$instance.") && String.eq(dk(lookup(names, nm(t))), "Absent"),
+            u => Con{KDef{nm(t), "JSInstanceEdge", 0, 0, atom("Absent"), atom("Absent"), Nil{}, True{}, False{}}, names}, u => names), U32.sub(fuel, 1)), u => [missing()])
+
+# Metadata occupies fixed slots after provenance; original source names cannot
+# shadow rows. Unexpected rows fail closed as an invalid graph edge.
+@unsafe
+def j_instance_edges_checked(+d: KDef) -> List<&2,KDef>:
+  +row = index_first(j_instance_tail_defs(dc(d)))
+  kc(List<&2,KDef>, String.eq(dn(row), "$js.instance.edges") && String.eq(dk(row), "JSInstanceEdges"),
+    u => dc(row), u => [missing()])
+
+@unsafe
+def j_instance_cycle(+view: List<&2,KDef>, +todo: List<&2,KDef>, +root: String, +seen: List<&2,String>, +fuel: U32) -> Bool:
+  match todo:
+    case Nil{}: False{}
+    case Con{edge, rest}:
+      kc(Bool, U32.is_eq(fuel, 0) || Bool.not(String.eq(dk(edge), "JSInstanceEdge")) || String.eq(dn(edge), root), u => True{}, u =>
+        kc(Bool, has_name(seen, dn(edge)), u => j_instance_cycle(view, rest, root, seen, U32.sub(fuel, 1)), u =>
+          j_instance_cycle(view, List.append(&2,KDef, j_instance_edges_checked(lookup(view, dn(edge))), rest), root,
+            Con{dn(edge), seen}, U32.sub(fuel, 1))))
+
+@unsafe
+def j_instance_caps(+view: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>:
+  match defs:
+    case Nil{}: Nil{}
+    case Con{d, rest}:
+      +ready = U32.is_gt(da(d), 0) && j_component_prefix(view, Nil{}, dv(d), dt(d), j_component_slots(0, da(d)), d, 0) &&
+        Bool.not(j_instance_cycle(view, index_remove(j_instance_edges_checked(d), dn(d)), dn(d), Nil{}, 8192))
+      Con{KDef{dn(d), dk(d), da(d), dx(d), dt(d), dv(d),
+        List.append(&2,KDef, dc(d), [KDef{"$js.instance.emission", "JSInstanceEmission", 0, 0, atom("Absent"), atom("Absent"), Nil{}, ready, False{}}]), db(d), du(d)},
+        j_instance_caps(view, rest)}
+
+@unsafe
+def j_instance_root_raw(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +raw: List<&2,KDef>) -> String:
+  +view = List.append(&2,KDef, raw, j_instance_attach(book, rows, [d]))
+  kc(String, j_pure_valid(j_pure_graph(view, lookup(view, j_instance_name(j_instance_source_index(rows, d, 0))), JPure{Nil{}, 131072, True{}})), u =>
+    j_instance_root_view(book, d, rows, j_instance_caps(view, raw)), u => "")
+
+# Exact native scalar-key components needed by closed Map graphs. These proof
+# rows do not create public argument admission or change residual native code.
+@unsafe
+def j_map_cmp_type(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  +owner = lookup(book, "Cmp")
+  +kind = wnf(book, dt(owner))
+  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Cmp") && List.is_empty(&2,KTerm, ks(ty)) && List.is_empty(&2,String, rm(ty)) &&
+    String.eq(dk(owner), "ADT") && db(owner) && U32.is_eq(da(owner), 0) && U32.is_eq(dx(owner), 0) &&
+    U32.is_eq(j_region_def_count(dc(owner)), 3) && String.eq(tg(kind), "Typ") && U32.is_eq(terms_len(ks(kind)), 1) &&
+    String.eq(tg(kid(kind, 0)), "Qua") && U32.is_eq(qt(kid(kind, 0)), 2) &&
+    j_map_cmp_ctor(book, lookup(dc(owner), "LT"), "LT", ty) &&
+    j_map_cmp_ctor(book, lookup(dc(owner), "EQ"), "EQ", ty) &&
+    j_map_cmp_ctor(book, lookup(dc(owner), "GT"), "GT", ty)
+
+@unsafe
+def j_map_cmp_ctor(+book: List<&2,KDef>, +c: KDef, +name: String, +ty: KTerm) -> Bool:
+  j_pure_native_ctor(c, name, 0) && exact_term(wnf(book, dt(c)), ty)
+
+@unsafe
+def j_map_maybe_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  +owner = lookup(book, "Maybe")
+  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Maybe") && U32.is_eq(terms_len(ks(ty)), 2) && List.is_empty(&2,String, rm(ty)) &&
+    String.eq(tg(kid(ty, 0)), "Qua") && U32.is_eq(qt(kid(ty, 0)), 2) && List.is_empty(&2,KTerm, ks(kid(ty, 0))) &&
+    String.eq(dk(owner), "ADT") && db(owner) && U32.is_eq(da(owner), 2) && U32.is_eq(dx(owner), 0) &&
+    U32.is_eq(j_region_def_count(dc(owner)), 2) && j_list_ground_kind(wnf(book, j_specialize(book, dt(owner), ks(ty)))) &&
+    j_pure_native_ctor(lookup(dc(owner), "None"), "None", 0) && j_pure_native_ctor(lookup(dc(owner), "Some"), "Some", 1)
+
+@unsafe
+def j_map_maybe_check(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +fuel: U32) -> Maybe<&2,U32>:
+  +cs = dc(lookup(book, "Maybe"))
+  j_map_maybe_some(book, ty, active,
+    j_pure_map_fields(book, j_specialize(book, dt(lookup(cs, "None")), ks(ty)), ty, Nil{}, active, fuel))
+
+@unsafe
+def j_map_maybe_some(+book: List<&2,KDef>, +ty: KTerm, +active: List<&2,String>, +r: Maybe<&2,U32>) -> Maybe<&2,U32>:
+  match r:
+    case None{}: None{}
+    case Some{fuel}:
+      +c = lookup(dc(lookup(book, "Maybe")), "Some")
+      j_pure_map_fields(book, j_specialize(book, dt(c), ks(ty)), ty, [kid(ty, 1)], active, fuel)
+
+@unsafe
+def j_map_closed_maybe(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  +head = wnf(book, ty)
+  j_map_maybe_head(book, head) && j_pure_type(book, head)
+
+@unsafe
+def j_map_sigma_quantity(+ty: KTerm) -> U32:
+  kc(U32, U32.is_eq(qt(kid(ty, 0)), 1) || U32.is_eq(qt(kid(ty, 1)), 1), u => 1, u => 2)
+
+@unsafe
+def j_map_sigma_kind(+ty: KTerm, +qa: U32, +qb: U32) -> Bool:
+  +q = kid(ty, 0)
+  String.eq(tg(ty), "Typ") && U32.is_eq(terms_len(ks(ty)), 1) &&
+    kc(Bool, String.eq(tg(q), "Qua"), u => U32.is_eq(qt(q), kc(U32, U32.is_eq(qa, 1) || U32.is_eq(qb, 1), u => 1, u => 2)) && List.is_empty(&2,KTerm, ks(q)), u =>
+      String.eq(tg(q), "Min") && U32.is_eq(terms_len(ks(q)), 2) && String.eq(tg(kid(q, 0)), "Qua") && U32.is_eq(qt(kid(q, 0)), qa) &&
+      List.is_empty(&2,KTerm, ks(kid(q, 0))) && String.eq(tg(kid(q, 1)), "Qua") && U32.is_eq(qt(kid(q, 1)), qb) && List.is_empty(&2,KTerm, ks(kid(q, 1))))
+
+@unsafe
+def j_map_closed_field_quantity(+ty: KTerm, +left: U32) -> U32:
+  # Canonical Tuple fields are affine binders; the type parameters affect kind.
+  1
+
+@unsafe
+def j_map_native_binary(+book: List<&2,KDef>, +d: KDef) -> Bool:
+  +ty = wnf(book, dt(d))
+  +rest = wnf(book, kid(ty, 1))
+  String.eq(dk(d), "Def") && db(d) && U32.is_eq(da(d), 2) && U32.is_eq(dx(d), 0) && Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) &&
+    String.eq(tg(ty), "All") && U32.is_eq(qt(ty), 1) && String.eq(tg(rest), "All") && U32.is_eq(qt(rest), 1) &&
+    kc(Bool, String.eq(dn(d), "U32.cmp"), u =>
+      j_primitive_type(book, wnf(book, kid(ty, 0)), "U32") && j_primitive_type(book, wnf(book, kid(rest, 0)), "U32") && j_map_cmp_type(book, wnf(book, kid(rest, 1))), u =>
+    j_primitive_type(book, wnf(book, kid(ty, 0)), "Nat") && j_primitive_type(book, wnf(book, kid(rest, 0)), "Nat") &&
+      kc(Bool, String.eq(dn(d), "Nat.sub"), u => j_primitive_type(book, wnf(book, kid(rest, 1)), "Nat"), u =>
+      kc(Bool, String.eq(dn(d), "Nat.is_lt"), u => j_primitive_type(book, wnf(book, kid(rest, 1)), "Bool"), u =>
+      String.eq(dn(d), "Nat.divmod") && j_map_native_divmod_result(book, wnf(book, kid(rest, 1))))))
+
+@unsafe
+def j_map_native_divmod_result(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+  j_pure_closed_sigma(book, ty) && j_primitive_type(book, wnf(book, kid(ty, 2)), "Nat") &&
+    j_primitive_type(book, wnf(book, kid(kid(ty, 3), 0)), "Nat")
+
+@unsafe
+def j_instance_public_capture(+d: KDef) -> Bool:
+  j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) &&
+    (String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat"))
+
+@unsafe
+def j_instance_pure_capacity(+d: KDef, +ds: List<&2,KDef>) -> U32:
+  kc(U32, String.eq(dk(index_first(dc(d))), "JErasedInstance") || j_instance_pure_rows(ds), u => 128, u => 32)
+
+@unsafe
+def j_instance_pure_rows(+ds: List<&2,KDef>) -> Bool:
+  match ds:
+    case Nil{}: False{}
+    case Con{d, rest}: String.eq(dk(index_first(dc(d))), "JErasedInstance") || j_instance_pure_rows(rest)
+
+# A source child reconstructed from inert projected fields remains private.
+# Full graph/type proof independently validates constructor identity and fields.
+@unsafe
+def j_instance_child_fields(+env: List<&2,KTerm>, +ts: List<&2,KTerm>) -> Bool:
+  match ts:
+    case Nil{}: True{}
+    case Con{t, rest}: String.eq(tg(j_strip(t)), "Var") && String.eq(j_component_origin(env, ix(j_strip(t))), "@child") && j_instance_child_fields(env, rest)

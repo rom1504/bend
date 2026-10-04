@@ -44,3 +44,25 @@ calls and proof cleanup. Error construction can reenter: a private active flag
 alone is insufficient. The corrected edge requires the current nonnull proof
 object to equal its captured token; foreign callback reentry during suspension
 must use generic code. Counter modules are never timed. Root owns execution.
+
+The complete construction discriminator survived root's controls and screen:
+materialized first-order environment improves3.72/8.29×original at64/256, still
+2.32/1.057×TS. A generic source candidate is therefore justified, with exact
+Type&1/q0 erasure proofs, live U32 callback signatures and bounded lazy-gated
+admission. Two noncommutative source fixtures qualify arithmetic order. The
+changing-capture factory, live-prefix composition and escaped function roots
+remain explicit refusal controls. No promotion follows from saved output alone.
+
+Fresh checked09 source with scoped String capability and existing total-U32 host
+subset is now runtime-qualified: callback-actual09 derivation PASS;
+callback-actual-controls09 PASS22 oracle groups/39 boundaries with real ordinary
+activation, complete materialized environment, fresh captures and aliases, all
+source/dependency/entry/host/Error refusals, ignored String/Float host hooks and
+live foreign String callback demand. Independent callback-source-fixture09
+PASS85 groups; selected affine_result/reverse_result, refused live_result/
+seeded_result/retained. Receipts bind checked09 API
+bff9f65506c078a5234d759ba837bb85556b1af7aa15b63acca499541fb9618b and runtime
+e62cf92d8b600fdc2eb44029b1945f288c81bf878931f883a1b6f4fb5774aaeb.
+These are actual checked-source results, distinct from prior saved ablation.
+Fresh checked09 timing and final selected-image owner acquisition/freeze remain
+pending; earlier PASS reports cannot stand in for final release closure.

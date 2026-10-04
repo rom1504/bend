@@ -166,3 +166,21 @@ def p43.prefix.alloc(n: Nat, tree: BST) -> BST:
 
 def p43.prefix.alloc.root(size: U32, seed: U32) -> U32:
   inorder(p43.prefix.alloc(U32.to_nat(size), BNode{BLeaf{}, seed, BLeaf{}}), 0)
+
+# Scalar-first acyclic wrappers use the same independently admitted traversal.
+def p43.prefix.u32.wrap(+ignored: U32, tree: BST) -> BST:
+  bst.up(Nil{}, tree)
+
+def p43.prefix.bool.wrap(flag: Bool, tree: BST) -> BST:
+  match flag:
+    case True{}:
+      bst.up(Nil{}, tree)
+    case False{}:
+      bst.up(Nil{}, tree)
+
+def p43.prefix.f32.wrap(+ignored: F32, tree: BST) -> BST:
+  bst.up(Nil{}, tree)
+
+def p43.prefix.wrappers.root(+size: U32, +seed: U32) -> U32:
+  tree = p43.prefix.build(U32.to_nat(size), Nat.add(U32.to_nat(size), 1n), 0, seed, BLeaf{})
+  inorder(p43.prefix.u32.wrap(seed, p43.prefix.bool.wrap(True{}, p43.prefix.f32.wrap(0.0, tree))), 0)

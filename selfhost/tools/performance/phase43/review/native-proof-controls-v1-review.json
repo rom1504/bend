@@ -1,0 +1,32 @@
+{
+  "kind": "phase43-native-quantity-controller-static-review",
+  "complete": true,
+  "staticReviewPassed": true,
+  "executed": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/facts/map-bst/native-proof-controls-v02.mjs",
+    "sha256": "5367f2598c6750d57c4bcc36ea5239d5e68e18307ee14ba2ddbba758104ffb57",
+    "bytes": 9982
+  },
+  "successor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/review/native-proof-controls-v1.mjs",
+    "sha256": "45509e186fa34d14e9c866111b1057e9da14b541cd27660079f80bfab094c318",
+    "bytes": 11162
+  },
+  "independentWitness": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/map/sigma-witness.bend",
+    "sha256": "d0126530a5e43303b2067305adf997c244470cf890edbcdda9d1f26539bfa29a",
+    "bytes": 1114
+  },
+  "scope": "Explicit reviewed semantic domain extension, not hash waiver. Original43 controls preserved except Sigma(2,1) is now admitted; fourteen independent quantity observations added.",
+  "changes": [
+    "Controller location/imports and report kind/version comment.",
+    "Original reject-SigmaQty2 becomes admit-SigmaQty2 true at the same observation position.",
+    "Four exact quantity admissions, four self-equalities and six distinct-pair equality refusals matching Map witness."
+  ],
+  "remaining": [
+    "Root-run all57 on final checked image.",
+    "Native tuple/List/Map runtime ABI, ownership/alias/mutation/Error/deep controls remain separate mandatory owners.",
+    "Final recipe catalogue and controller pins must select this successor explicitly."
+  ]
+}

@@ -1,0 +1,32 @@
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -182,12 +182,24 @@
+ const regionDataViewPrototype=DataView.prototype;
+ const regionDataViewKeys=['setUint32','getFloat32','setFloat32','getUint32'];
+ for(const key of regionDataViewKeys)regionNumericHooks.push([regionDataViewPrototype,key,regionDataViewPrototype[key]]);
+-function regionHostGuard(){
++// Full total-U32 fusion needs integer hooks; all current descriptors are still
++// checked afresh at each entry. This private set contains immutable dependencies.
++const regionU32FusionHooks=[];
++for(let i=0;i<regionNumericHooks.length;i++){
++  const p=regionNumericHooks[i];
++  if(p[0]===regionDataViewPrototype||(p[0]===Math&&p[1]!=='imul')||
++      (p[0]===Number&&(p[1]==='isNaN'||p[1]==='isFinite')))continue;
++  regionU32FusionHooks[regionU32FusionHooks.length]=p;
++}
++function regionHostGuard(u32Fusion=false){
+   if(regionProof!==null)return true;
+-  if(regionGetPrototype(floatView)!==regionDataViewPrototype)return false;
+-  for(let i=0;i<regionDataViewKeys.length;i++)if(regionGetDescriptor(floatView,regionDataViewKeys[i]))return false;
+-  for(let i=0;i<regionNumericHooks.length;i++){
+-    const p=regionNumericHooks[i],d=regionGetDescriptor(p[0],p[1]);
++  if(!u32Fusion){
++    if(regionGetPrototype(floatView)!==regionDataViewPrototype)return false;
++    for(let i=0;i<regionDataViewKeys.length;i++)if(regionGetDescriptor(floatView,regionDataViewKeys[i]))return false;
++  }
++  const hooks=u32Fusion?regionU32FusionHooks:regionNumericHooks;
++  for(let i=0;i<hooks.length;i++){
++    const p=hooks[i],d=regionGetDescriptor(p[0],p[1]);
+     if(!d||!regionOwn(d,'value')||d.value!==p[2])return false;
+   }
+   if(regionGetPrototype(localArrayPrototype)!==scalarObjectPrototype||regionGetPrototype(regionIteratorPrototype)!==regionIteratorParent||

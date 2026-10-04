@@ -1,0 +1,12 @@
+--- a/selfhost/src/back/js/region.bend
++++ b/selfhost/src/back/js/region.bend
+@@ -1191,7 +1191,8 @@
+   kc(String, Bool.not(String.eq(body, "")), u =>
+     "(()=>{const $guards=[" ++ j_quote(dn(d)) ++ "," ++ j_region_names(helpers) ++ "];return fn(2,exactCode(function(a,$entered){" ++
+     j_nat_loop_slots(2, 0) ++ "if($entered&&regionHostGuard()&&" ++ j_region_inputs(book, dt(d), 0, 2, False{}) ++ "&&localGuard($guards)){" ++
+-    "const $previousProof=regionProofOpen($guards);try{" ++ body ++ "}finally{regionProofClose($previousProof);}}" ++
++    "const $previousProof=regionProofOpen($guards);try{const " ++ j_local(ix(j_fusion_binder(dv(d), 0))) ++ "=$s0;const " ++
++    j_local(ix(j_fusion_binder(dv(d), 1))) ++ "=$s1;" ++ body ++ "}finally{regionProofClose($previousProof);}}" ++
+     j_nat_loop_generic(book, Nil{}, dv(d), dt(d), 0) ++ "}));})()", u => "")
+ 
+ # Snapshot only cheap structurally eligible callable families; do not rerun the

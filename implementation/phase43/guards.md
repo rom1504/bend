@@ -1,75 +1,100 @@
-# P43-005 implementation packet
+# P43-005 — Entry guard evidence
 
-Tools: `selfhost/tools/performance/phase43/guards/derive.py`, `runtime.patch`,
-`oracle.mjs`. Root owns execution, measurement and production integration.
+Checked06's actual emitted total-U32 list fusion passes the 82-case semantic
+oracle. A fresh short screen improves list128 by1.206× and list512 by1.049× over
+Phase42. These are two-point screen results, not final throughput qualification.
+Checked07 remains pending; its selected API/runtime must rerun the bound gate.
 
-Run from repository root:
+## Selected mechanism
+
+The survivor uses `regionHostGuard(u32Fusion=false)` with a private precomputed
+15-hook dependency subset. Every descriptor is read anew on each public entry;
+no mutable host facts survive calls. Full successful `j_fusion_root_prefix` proves
+all inputs/result U32 and the entire producer/filter/map/fold scalar whitelist.
+The exact successful body selects the narrow guard and is emitted under the
+original proof try/finally. Empty proof retains full host validation and existing
+flat/generic selection. Other worker/region guards retain the full default.
+
+The narrow domain skips25 floating numeric-hook descriptor checks, four own
+floatView method descriptors and one floatView prototype query. Global Object,
+Reflect, WeakSet, Math, Number, BigInt and Array identities, Object/Array/iterator
+protocol/key inventories, Number.isInteger, Math.imul and every callable dependency
+identity/metadata/bound check remain. ScalarGuard is unchanged, including the new
+String-family gate. Runtime grows12 net lines rather than duplicating the guard.
+
+## Actual checked06 identities and semantic evidence
+
+[Derivation](../../selfhost/build/phase43/guards-actual06/derivation.json) binds the
+actual checked module receipt, all compiler/tool/source pointers and immutable
+source snapshot. Clean candidate and control are byte-identical copies; only
+paired diagnostic copies add counters/exports. No guard flag or body is rewritten.
+
+| Identity | SHA256 |
+| --- | --- |
+| API | `37877ddcb1b9e7d1bc6020c328217e02050b8d1a857188ccb4c6537a3e94c16f` |
+| Runtime | `21969475eff26c16725c18e2c3d151d610fee02148bb5dbb494a94ba207d519f` |
+| Actual list module | `ebc078b638b0d219b2501d4d2b5783be78f52a77df858e9c22e83b763e5b01ed` |
+| Unmodified Phase42 list control | `661f268bef195c0fecb034697f09818229e1bcbe953caf97a481769084b38d1c` |
+
+[Actual controls](../../selfhost/build/phase43/run-guard-actual-controls06/stdout.log)
+pass82 cases in10.67s. Canonical entry activates actual full fusion. Controls cover
+G binding/code/arity/env/bound mutations and getters, own call/io markers, every
+captured numeric/protocol descriptor, Array/Object/primitive marker/iterator/every
+hooks, F32 view methods, Error observation reentry, noncanonical input refusal,
+raw code entry refusal, partial saturation and argument getter reentry. Complete
+value/error/demand traces match control; omitted floating mutations may activate
+fusion only while preserving all observable results/traces. Proof cleanup passes.
+
+The canonical grid includes24 combinations of sizes0,1,2,8,128,512 and seeds
+0,17,123,U32max, compared to an independent BigInt recurrence. Complete stages at
+8,17 are producer `[1,12,11,14,5,0,15,2]`, filter `[12,11,14,5,15,2]`, map
+`[24,22,28,10,30,4]`, sum118; producer root is fresh and source stays unchanged.
+This is the named semantic scope, not universal compiler correctness.
+
+## Short measurement
+
+[Checked06 screen](../../selfhost/build/phase43/checked06-screen01/report.json):
+
+| Point | Phase42 | Checked06 | TypeScript | Gain | Checked06/TS |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| list128,17 | .0158975 | .0131847 | .00660089 | 1.206× | 1.997× |
+| list512,123 | .0176413 | .0168155 | .0302283 | 1.049× | .556× |
+
+Root owns all timing. Point512's small gain needs final balanced qualification;
+there is no general1.2–2× claim. The initial hypothetical target was not uniformly
+reached. Final selected-image results belong to the root report.
+
+## Preserved attempts and failures
+
+Exact AfterHost duplication passed76 semantic cases
+([receipt](../../selfhost/build/phase43/run-guards-oracle04/stdout.log)), but its
+3–4% short-screen gain did not justify a duplicated scalar guard; root rejects or
+defers it. Standalone scalarGuard optimization was rejected before execution
+because it could remove observable Array.every/iterator hooks without a dominating
+host guard. Source scalarGuard remains unchanged.
+
+U32 whole-guard clone v1 passed its saved-output oracle; short-screen gains were
+1.134×/1.106×. Minimal parameter v2 passed78 cases including grid/stages
+([receipt](../../selfhost/build/phase43/run-guards-u32-oracle02/stdout.log)).
+All versioned tools and patches remain in the owned guard directory.
+
+Initial oracle empty stdout/JSON failure and diagnosed child-spawn EPERM receipts
+are preserved under `run-guards-oracle01` and `run-guards-oracle03`; outside-sandbox
+successor retained the same caps. Checked05 exposed an assembled-runtime omission:
+the emitted true flag had the old runtime guard. Root regenerated runtime.mjs and
+built checked06; the actual controller explicitly rejects that missing parameter/
+subset implementation. Checked05 is not successful domain activation evidence.
+
+## Reproduction and remaining gate
 
 ```sh
-python3 selfhost/tools/performance/phase43/guards/derive.py --out selfhost/build/phase43/guards01
-/home/ai/.nvm/versions/node/v24.18.0/bin/node selfhost/tools/performance/phase43/guards/oracle.mjs selfhost/build/phase43/guards01 > selfhost/build/phase43/guards01/oracle.json
+python3 selfhost/tools/performance/phase43/guards/derive-actual-v1.py --candidate ACTUAL_LIST.mjs --baseline selfhost/build/phase43/guards03/control.mjs --out OUT
+/home/ai/.nvm/versions/node/v24.18.0/bin/node selfhost/tools/performance/phase43/guards/oracle-actual-v1.mjs OUT
 ```
 
-Derivation reads the preserved Phase42 current archive and manifest and checks
-its exact SHA256. Default input is the list512 point's saved module, shared with
-list128 (`661f268bef195c0fecb034697f09818229e1bcbe953caf97a481769084b38d1c`).
-It refuses a runtime mismatch. It writes an unmodified control, a clean candidate,
-identical instrumentation copies, source runtime patch and SHA256 manifest.
-One actual list root entry clause changes from localGuard to
-localGuardAfterHost after host guard and canonical U32 tests. The saved source
-root body and public ABI remain unchanged.
-
-The oracle compares control and candidate in isolated serial child processes:
-canonical result/activation, G binding replacement/getter, code replacement/getter,
-arity/env/bound accessors, bound length, code.call, wrapper io, primitive/Object/
-Array markers, Array.every/iterator/numeric setter, every captured numeric host
-hook and every protocol descriptor, F32 view own method and Error reentry.
-It records entire traces, result/errors, restored-entry result, host refusal and
-proof cleanup. Error hook reentry must see no borrowed proof, then unwind to its
-previous proof. Instrumentation counts actual fusion body entry. Clean timing
-modules contain neither counters nor extra oracle exports.
-
-Syntax checks passed on the Python derivation and Node24 oracle/candidate. No
-semantic or throughput run performed by this owner; root queues them. The first
-runnable derivation was produced within fifteen minutes. Reviewer was asked to
-check exact host dominance and preserved proof lifetime.
-
-Integration must add the runtime helpers and make the corresponding compiler
-emitter decision for each host-guarded clause, retaining the old local guard when
-host guard is absent. A saved-module regex is an experiment, not a source proof.
-Existing shared host guard semantic owners are still mandatory before promotion.
-
-Initial root oracle receipt `selfhost/build/phase43/run-guards-oracle01` is a
-harness failure (empty child stdout, JSON parse error), not a semantic pass or
-counterexample. The successor preserves v1 and emits complete child diagnostics.
-Re-derive after tool updates; guard packet identity must come from the selected
-run, not an earlier guards01 folder.
-
-P43-005b independent domain tools are versioned `derive-u32-v1.py`,
-`oracle-u32-v1.mjs`, `runtime-u32-v1.patch` and `source-hook-u32-v1.patch`.
-The source hook is an unbuilt proposal in the owned tool directory; it does not
-edit production source. It threads the same successful complete fusion body into
-host guard choice and the actual body, retaining canonical checks, dependency
-checks and proof try/finally. Other regions/workers retain their old guard. A
-future compiler-cost follow-up can avoid rechecking failed fusion in the fallback
-flat planner; this packet does not claim a compiler cost gain.
-
-Frozen equivalents of the latest exact-guard tools are `derive-v2.py` and
-`oracle-v2.mjs`. U32 domain derivation invokes this frozen v2. Root's guards03
-oracle failed before execution because sandbox child spawning returned EPERM on
-canonical control; that is a harness/environment blocker, not a counterexample.
-Root reruns with the same resource caps outside that sandbox.
-
-Exact AfterHost root semantic run passed all 76 cases:
-`selfhost/build/phase43/run-guards-oracle04/stdout.log`. Canonical fusion executes
-once and returns118; Error observation reentry sees coverage false, returns0,
-restores the previous proof during unwind and leaves no proof after close.
-All host/dependency/protocol mutation result/error/traces agree with the exact
-unmodified control. This is the listed semantic scope, not a universal proof or
-measurement. Earlier sandbox failures remain preserved.
-
-Optional frozen `oracle-u32-v2.mjs` extends v1 with24 canonical U32/grid cases
-including zero and U32max seed, checked against an independent BigInt recurrence.
-It compares complete public producer/filter/map lists and sum, confirms producer
-fresh root allocation and unchanged source. v1 is retained. v2 syntax passed;
-root must execute the selected version and bind its identity before qualification.
+Candidate receipt defaults to module path plus `.json`. Explicit candidate/
+baseline receipts are supported. Without a baseline receipt its exact Phase42
+manifest identity/source is mandatory. The controller binds proof to the receipt's
+immutable snapshot and verifies the real true guard and full emitted U32 kernel.
+Run again on checked07 or the final selected image; checked06 success does not
+qualify a later API/runtime. Root schedules all semantic and performance execution.

@@ -1,6 +1,7 @@
 # P43-002: guarded Map component
 
-Status: saved-JS hypothesis, not checked compiler admission. Phase42 Map32/128
+Status: saved-JS controls and supplemental mechanism screen passed; source
+prototype awaits checked compiler admission. Phase42 Map32/128
 remain approximately91× TypeScript with about48× sampled allocation; the isolated
 per-edge Map.bit rewrite regressed44%/30%. That experiment does not identify how
 much cost came from repeated guards.
@@ -48,3 +49,12 @@ and timing survive.
 Literal source fixture: [fixture.bend](../../selfhost/tools/performance/phase43/map/fixture.bend).
 It intentionally returns complete content; it is a correctness fixture, not the
 scalar enclosing-boundary timing fixture.
+
+The saved discriminator now meets its family hypothesis: root measured 2.64× and
+2.76× whole-Map speedups over original at32/128. The residual 33.0×/28.2× gap
+to TypeScript prevents claiming that Map control alone solves the application.
+The coherent source prototype specializes erased prefixes only at saturated known
+calls, retaining original definition identity and exact slot facts in request-local
+JSPlanContext. Its separate analysis view proves live specialized signatures with
+JPure and emits lexical workers using existing explicit component stacks. Exact
+original guards and native String family obligations remain boundary conditions.

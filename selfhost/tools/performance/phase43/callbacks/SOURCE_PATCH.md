@@ -97,3 +97,27 @@ integrate only the smallest proved grammar whose actual clean callback-family
 result survives. If construction dominates and direct invocation remains null,
 stop; composition fusion or factory elimination is a separately named mechanism
 with materialized direct emission as comparator.
+
+## Implemented bounded source successor
+
+`callback-candidate.bend` and `callback-source.patch` now implement the first
+right-spine structural factory grammar as source code. They reuse the existing
+scalar entry helpers and exactCode/fallback/proof-finally boundary, with no new
+runtime/cache layer. This narrower implementation precedes general finite
+lambda-set flow analysis.
+
+Exact source facts distinguish KDef arity5 from its six-lambda composition body.
+Three erased Type&1/q0 arguments are checked before U32 specialization, then
+live f/g/x q1 argument types and U32 result are checked. Factory captures are
+proved bounded total scalar expressions in the Nat predecessor; leaf expressions
+are emitted directly from source with capture/argument bindings. Construction
+materializes every fresh leaf, base identity and composition node in original
+order before invocation. Function-bearing public types remain outside JPure.
+
+The candidate is source-reviewed but unchecked. An early draft lacked complete
+erasure/type proof; another used strict&& around recursive scalar checks and
+would have explored absent children exponentially. Both are repaired and recorded
+in the implementation report. Lazy kc admission/size/valid-call/child-success
+fences precede recursive proof. Source qualification, actual-path activation and
+clean timing are required before integration. The independent noncommutative
+fixture tests order and same-arity live-prefix refusal.

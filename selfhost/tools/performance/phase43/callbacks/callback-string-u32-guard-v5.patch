@@ -1,0 +1,51 @@
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -121,5 +121,7 @@
+ 
+-function scalarGuard(names){
++// Exact closed-U32 callback capability; public String-family snapshots stay guarded.
++const callbackU32Guard={__proto__:null};
++function scalarGuard(names,capability=null){
+   if(regionProofCovers(names))return true;
+-  let needsString=false;for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
++  let needsString=false;if(capability!==callbackU32Guard)for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
+   if(needsString&&!stringHostGuard())return false;
+@@ -154,3 +156,3 @@
+ const localArrayPrototype=Array.prototype;
+-function localGuard(names){
++function localGuard(names,capability=null){
+   if(regionProofCovers(names))return true;
+@@ -158,3 +160,3 @@
+   for(const k of ['request','bounce','build','code'])if(Object.getOwnPropertyDescriptor(localArrayPrototype,k))return false;
+-  return scalarGuard(names);
++  return scalarGuard(names,capability);
+ }
+--- a/selfhost/src/runtime.mjs
++++ b/selfhost/src/runtime.mjs
+@@ -122,5 +122,7 @@
+ 
+-function scalarGuard(names){
++// Exact closed-U32 callback capability; public String-family snapshots stay guarded.
++const callbackU32Guard={__proto__:null};
++function scalarGuard(names,capability=null){
+   if(regionProofCovers(names))return true;
+-  let needsString=false;for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
++  let needsString=false;if(capability!==callbackU32Guard)for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
+   if(needsString&&!stringHostGuard())return false;
+@@ -155,3 +157,3 @@
+ const localArrayPrototype=Array.prototype;
+-function localGuard(names){
++function localGuard(names,capability=null){
+   if(regionProofCovers(names))return true;
+@@ -159,3 +161,3 @@
+   for(const k of ['request','bounce','build','code'])if(Object.getOwnPropertyDescriptor(localArrayPrototype,k))return false;
+-  return scalarGuard(names);
++  return scalarGuard(names,capability);
+ }
+--- a/selfhost/src/back/js/region.bend
++++ b/selfhost/src/back/js/region.bend
+@@ -1192,3 +1192,3 @@
+     "(()=>{const $guards=[" ++ j_quote(dn(d)) ++ "," ++ j_region_names(helpers) ++ "];return fn(2,exactCode(function(a,$entered){" ++
+-    j_nat_loop_slots(2, 0) ++ "if($entered&&regionHostGuard()&&" ++ j_region_inputs(book, dt(d), 0, 2, False{}) ++ "&&localGuard($guards)){" ++
++    j_nat_loop_slots(2, 0) ++ "if($entered&&regionHostGuard(true)&&" ++ j_region_inputs(book, dt(d), 0, 2, False{}) ++ "&&localGuard($guards,callbackU32Guard)){" ++
+     "const $previousProof=regionProofOpen($guards);try{const " ++ j_local(ix(j_fusion_binder(dv(d), 0))) ++ "=$s0;const " ++

@@ -1,0 +1,186 @@
+# a binary search tree: insert then in-order fold -- ctor churn plus
+# ordered traversal, a different data-shape from lists and arrays
+# ported from bend3: the x < v dispatch rides a fueled zipper (descend
+# collecting frames, insert at the leaf, rebuild) -- a computed-match
+# branch cannot hold the recursion any more; compared words +U32
+# binders
+import Base
+
+type BST is Data:
+  BLeaf{}
+  BNode{l: BST, v: U32, r: BST}
+
+type BFrame is Data:
+  BF{v: U32, other: BST, left: Bool}
+
+law bst.pick:
+  for l    : BST
+  for v    : U32
+  for r    : BST
+  for path : List<&2, BFrame>
+  for z    : Bool
+  BST & List<&2, BFrame>
+
+def bst.pick(l, v, r, path, z):
+  match z:
+    case True{}:
+      (l, BF{v, r, True{}} <> path)
+    case False{}:
+      (r, BF{v, l, False{}} <> path)
+
+law bst.step:
+  for +x : U32
+  for st : BST & List<&2, BFrame>
+  BST & List<&2, BFrame>
+
+def bst.step(x, st):
+  match st:
+    case (BLeaf{}, path):
+      (BLeaf{}, path)
+    case (BNode{l, v0, r}, path):
+      +v = {v0 : U32}
+      bst.pick(l, v, r, path, U32.is_lt(x, v))
+
+law bst.down:
+  for fuel : Nat
+  for +x   : U32
+  for st   : BST & List<&2, BFrame>
+  BST & List<&2, BFrame>
+
+def bst.down(fuel, x, st):
+  match fuel:
+    case 0n:
+      st
+    case 1n+f:
+      bst.down(f, x, bst.step(x, st))
+
+law bst.up:
+  for path : List<&2, BFrame>
+  for acc  : BST
+  BST
+
+def bst.up(path, acc):
+  match path:
+    case Nil{}:
+      acc
+    case BF{v, other, True{}} <> rest:
+      bst.up(rest, BNode{acc, v, other})
+    case BF{v, other, False{}} <> rest:
+      bst.up(rest, BNode{other, v, acc})
+
+law insert.fin:
+  for +x : U32
+  for st : BST & List<&2, BFrame>
+  BST
+
+def insert.fin(x, st):
+  match st:
+    case (BLeaf{}, path):
+      bst.up(path, BNode{BLeaf{}, x, BLeaf{}})
+    case (BNode{l, v, r}, path):
+      bst.up(path, BNode{l, v, r})
+
+law insert:
+  for +x: U32
+  for  t: BST
+  BST
+
+def insert(x, t):
+  insert.fin(x, bst.down(8n, x, (t, Nil{})))
+
+law inorder:
+  for t   : BST
+  for acc : U32
+  U32
+
+def inorder(t, acc):
+  match t:
+    case BLeaf{}:
+      acc
+    case BNode{l, v, r}:
+      inorder(r, U32.add(U32.mul(inorder(l, acc), 10), v))
+
+law main.out:
+  U32
+
+def main.out():
+  t0 = {BLeaf{} : BST}
+  t1 = insert(5, t0)
+  t2 = insert(2, t1)
+  t3 = insert(8, t2)
+  t4 = insert(1, t3)
+  t5 = insert(9, t4)
+  inorder(t5, 0)
+
+law main:
+  IO(Unit)
+
+def main():
+  IO.print(U32.show(main.out()))
+
+#|12589
+
+# Phase37 wrapper: upstream body above is unchanged.
+# Dynamic fuel is sufficient for either a skewed or irregular insertion tree.
+def p43.prefix.insert(+fuel: Nat, +x: U32, tree: BST) -> BST:
+  insert.fin(x, bst.down(fuel, x, (tree, Nil{})))
+
+def p43.prefix.build(n: Nat, +fuel: Nat, +i: U32, +seed: U32, tree: BST) -> BST:
+  match n:
+    case 0n:
+      tree
+    case 1n+p:
+      x = U32.mod(U32.add(U32.mul(i, U32.add(U32.mul(seed, 2), 1)), seed), 257)
+      p43.prefix.build(p, fuel, U32.add(i, 1), seed, p43.prefix.insert(fuel, x, tree))
+
+def bench(+size: U32, seed: U32) -> U32:
+  inorder(p43.prefix.build(U32.to_nat(size), Nat.add(U32.to_nat(size), 1n), 0, seed, BLeaf{}), 0)
+
+# Scalar Nat result stays in the established scalar-island selector.
+def p43.scalar.sum(n: Nat, +acc: U32) -> U32:
+  match n:
+    case 0n:
+      acc
+    case 1n+p:
+      next = U32.add(U32.mul(acc, 3), 1)
+      p43.scalar.sum(p, next)
+
+def p43.scalar.root(size: U32, seed: U32) -> U32:
+  p43.scalar.sum(U32.to_nat(size), seed)
+
+# An allocating helper prefix is not admitted by the new U32 grammar.
+def p43.prefix.rebox(tree: BST) -> BST:
+  match tree:
+    case BLeaf{}:
+      BLeaf{}
+    case BNode{l, v, r}:
+      BNode{l, v, r}
+
+def p43.prefix.alloc(n: Nat, tree: BST) -> BST:
+  match n:
+    case 0n:
+      tree
+    case 1n+p:
+      boxed = p43.prefix.rebox(tree)
+      p43.prefix.alloc(p, boxed)
+
+def p43.prefix.alloc.root(size: U32, seed: U32) -> U32:
+  inorder(p43.prefix.alloc(U32.to_nat(size), BNode{BLeaf{}, seed, BLeaf{}}), 0)
+
+# Scalar-first acyclic wrappers use the same independently admitted traversal.
+def p43.prefix.u32.wrap(+ignored: U32, tree: BST) -> BST:
+  bst.up(Nil{}, tree)
+
+def p43.prefix.bool.wrap(flag: Bool, tree: BST) -> BST:
+  match flag:
+    case True{}:
+      bst.up(Nil{}, tree)
+    case False{}:
+      bst.up(Nil{}, tree)
+
+def p43.prefix.f32.wrap(+ignored: F32, tree: BST) -> BST:
+  bst.up(Nil{}, tree)
+
+def p43.prefix.wrappers.root(size: U32, seed: U32) -> U32:
+  tree = p43.prefix.build(U32.to_nat(size), Nat.add(U32.to_nat(size), 1n), 0, seed, BLeaf{})
+  inorder(p43.prefix.u32.wrap(seed, p43.prefix.bool.wrap(True{}, p43.prefix.f32.wrap(0.0, tree))), 0)

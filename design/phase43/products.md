@@ -35,3 +35,11 @@ owners. Raytrace already has scalar islands in nearest/rowf; preserve their prec
 A blanket closed-native graph extension risks replacing working float islands and
 requires a separate complete floating-point result/order proof. Neither family is
 covered by this BST experiment.
+
+The surviving saved-JS screen establishes useful separate dispatch and container
+headroom (exact results/ranges in implementation report). A general smaller
+pair-state prototype now exists, with positive-entry fresh buffer and immediate
+Tuple destructure preventing buffer escape. It preserves all source field/path
+allocations; full compact zipper fusion remains a separate proof. Compiler-side
+boolean shape gates must use `kc` before recursion: strict `&&` caused a preserved
+180-second source acquisition failure in the initial prefix proposal.

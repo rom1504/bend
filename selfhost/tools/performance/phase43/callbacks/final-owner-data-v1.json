@@ -1,0 +1,260 @@
+{
+  "kind": "phase43-callback-final-owner-data",
+  "complete": true,
+  "executed": false,
+  "qualification": "Pending fresh selected source image; prior actual08 guard and saved v5 ablation cannot satisfy this acquisition.",
+  "owners": [
+    {
+      "owner": "callbacks-environment",
+      "rawReport": "${OUT}/raw-callbacks-environment/report.json",
+      "rawExecution": "${OUT}/run-raw-callbacks-environment/run.json",
+      "rawCommandInput": "${OUT}/derive-callbacks-environment",
+      "emittedModules": [
+        "${OUT}/new-owner-modules/closures.mjs"
+      ],
+      "derivations": [
+        "${OUT}/derive-callbacks-environment/derive.json"
+      ],
+      "auxiliaryInputs": []
+    },
+    {
+      "owner": "callbacks-environment-numeric-guard",
+      "rawReport": "${OUT}/raw-callbacks-environment-numeric-guard/report.json",
+      "rawExecution": "${OUT}/run-raw-callbacks-environment-numeric-guard/run.json",
+      "rawCommandInput": "${OUT}/derive-callbacks-environment",
+      "emittedModules": [
+        "${OUT}/new-owner-modules/closures.mjs"
+      ],
+      "derivations": [
+        "${OUT}/derive-callbacks-environment/derive.json"
+      ],
+      "auxiliaryInputs": []
+    },
+    {
+      "owner": "callbacks-noncommutative",
+      "rawReport": "${OUT}/raw-callbacks-noncommutative/report.json",
+      "rawExecution": "${OUT}/run-raw-callbacks-noncommutative/run.json",
+      "rawCommandInput": "${OUT}/new-owner-modules/callbacks-noncommutative.mjs",
+      "emittedModules": [
+        "${OUT}/new-owner-modules/callbacks-noncommutative.mjs"
+      ],
+      "derivations": [],
+      "auxiliaryInputs": [
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/noncommutative-catalog.json"
+      ]
+    },
+    {
+      "owner": "callbacks-admission",
+      "rawReport": "${OUT}/raw-callbacks-admission/report.json",
+      "rawExecution": "${OUT}/run-raw-callbacks-admission/run.json",
+      "rawCommandInput": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+      "emittedModules": [],
+      "derivations": [],
+      "auxiliaryInputs": [
+        "${OUT}/raw-callbacks-admission/inputs.json",
+        "${OUT}/raw-callbacks-admission/completion.json"
+      ]
+    }
+  ],
+  "rawCommands": [
+    {
+      "name": "phase43-raw-callbacks-environment",
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/actual-controls.mjs",
+        "${OUT}/derive-callbacks-environment",
+        "${OUT}/raw-callbacks-environment"
+      ],
+      "secondsEstimate": 3,
+      "requiredAssertions": {
+        "/kind": "phase43-actual-source-callback-controls",
+        "/complete": true,
+        "/pass": true,
+        "/oracles": {
+          "length": 22
+        },
+        "/boundaries": {
+          "length": 32
+        }
+      },
+      "controller": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/actual-controls.mjs",
+        "sha256": "1a9fd5642b13ce5b4520b84668e8e021ee78030bd67881d522a026c076edd9fb",
+        "bytes": 9392
+      }
+    },
+    {
+      "name": "phase43-raw-callbacks-environment-numeric-guard",
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/actual-guard-controls-v2.mjs",
+        "${OUT}/derive-callbacks-environment",
+        "${OUT}/raw-callbacks-environment-numeric-guard"
+      ],
+      "secondsEstimate": 3,
+      "requiredAssertions": {
+        "/kind": "phase43-actual-source-callback-guard-controls",
+        "/complete": true,
+        "/pass": true,
+        "/oracles": {
+          "length": 22
+        },
+        "/boundaries": {
+          "length": 39
+        }
+      },
+      "controller": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/actual-guard-controls-v2.mjs",
+        "sha256": "0139dea32dc33a07a61e0460e340e08887bee0f26d53cb42954ebebbce4f37a3",
+        "bytes": 10812
+      }
+    },
+    {
+      "name": "phase43-raw-callbacks-noncommutative",
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/source-fixture-controls-v2.mjs",
+        "${OUT}/new-owner-modules/callbacks-noncommutative.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/callback-fixture-baseline01/modules/noncommutative-fixture.mjs",
+        "${OUT}/raw-callbacks-noncommutative"
+      ],
+      "secondsEstimate": 3,
+      "requiredAssertions": {
+        "/kind": "phase43-actual-noncommutative-callback-fixture",
+        "/complete": true,
+        "/pass": true,
+        "/observations": {
+          "length": 85
+        },
+        "/selected": [
+          "affine_result",
+          "reverse_result"
+        ],
+        "/refused": [
+          "live_result",
+          "seeded_result",
+          "retained"
+        ]
+      },
+      "controller": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/source-fixture-controls-v2.mjs",
+        "sha256": "11082b060c19ab3df44144098cd44d6eec514e0722f02933bda3b375c1d66208",
+        "bytes": 4957
+      }
+    },
+    {
+      "name": "phase43-raw-callbacks-admission",
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/admission-controls.mjs",
+        "${ATTEMPT}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+        "bench",
+        "${OUT}/raw-callbacks-admission"
+      ],
+      "secondsEstimate": 10,
+      "requiredAssertions": {
+        "/kind": "phase43-callback-admission-negative-controls",
+        "/complete": true,
+        "/checks/controls": {
+          "length": 11
+        }
+      },
+      "controller": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/admission-controls.mjs",
+        "sha256": "ee1d0fcc047924334134d30e68318b19c42af1fcd6c83cb359a612780f7e94db",
+        "bytes": 6242
+      }
+    }
+  ],
+  "derivationCommand": {
+    "name": "phase43-derive-callbacks-environment",
+    "argv": [
+      "${NODE}",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/actual-derive.mjs",
+      "${OUT}/new-owner-modules/closures.mjs",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/closures01",
+      "${OUT}/derive-callbacks-environment"
+    ],
+    "producer": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/actual-derive.mjs",
+      "sha256": "cce10d15a97937f804884b3965d0e4271bf360ab5513eb921e5f0e051f51e0dd",
+      "bytes": 5414
+    },
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/closures01/derive.json",
+      "sha256": "22ef26c5aafe020ecafda20b9607af870c0efab44b1702dcf6cea8e672e6bae4",
+      "bytes": 3378
+    },
+    "secondsEstimate": 1
+  },
+  "emissions": [
+    {
+      "module": "${OUT}/new-owner-modules/closures.mjs",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+        "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "bytes": 1392
+      },
+      "catalog": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/catalog.json",
+        "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+        "bytes": 83389
+      },
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/emit-worker.mjs",
+        "${ATTEMPT}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+        "${OUT}/new-owner-modules/closures.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/catalog.json"
+      ]
+    },
+    {
+      "module": "${OUT}/new-owner-modules/callbacks-noncommutative.mjs",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/noncommutative-fixture.bend",
+        "sha256": "fef4d3a4bb98e26934f162d6de03decafe1f64b9ece7dc8dee16f232e530918e",
+        "bytes": 2201
+      },
+      "catalog": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/noncommutative-catalog.json",
+        "sha256": "999b9b69e3999d20f04642a06b185f0360eb7eeb53743f2ddcf6c00f51064b5a",
+        "bytes": 91567
+      },
+      "argv": [
+        "${NODE}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/emit-worker.mjs",
+        "${ATTEMPT}",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/noncommutative-fixture.bend",
+        "${OUT}/new-owner-modules/callbacks-noncommutative.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/callbacks/noncommutative-catalog.json"
+      ]
+    }
+  ],
+  "referenceFixture": {
+    "module": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/callback-fixture-baseline01/modules/noncommutative-fixture.mjs",
+      "sha256": "9da5d04d76b901b9241c5c76d35f77a6e8879caab70957bed3effe9389984b04",
+      "bytes": 79335
+    },
+    "receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/callback-fixture-baseline01/modules/noncommutative-fixture.mjs.json",
+      "sha256": "1acfdf794ec26ae9ec61e04343fb230eb6bf82e5a6a9c36ec498541d3e532fec",
+      "bytes": 4634
+    }
+  },
+  "staticReview": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/review/map-source-callback-guard-static-v1.json",
+    "sha256": "c01e9780f6f30962b4bbf6d527c05d7598cea98c7b1e8a83e50264cb43d9c586",
+    "bytes": 1858
+  },
+  "notes": [
+    "Emission output parent directory must exist; validation owns campaign directory setup.",
+    "Wrap raw controllers in maintained bounded-run with frozen Node/taskset CPU3; memory2048MiB/floor2048MiB and seconds<=180.",
+    "Admission command intentionally stops library emission with error sentinel but exits successfully; inputs.json binds selected API/runtime/base/source.",
+    "callbacks-environment-numeric-guard is required for v5 scope controls; inherited22/32 profile alone cannot qualify v5.",
+    "Reference fixture checked16 is immutable comparison evidence, never selected-image evidence.",
+    "Derivation root/callback identities derive structurally from frozen source; no benchmark source-name admission in compiler."
+  ]
+}

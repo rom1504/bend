@@ -1,0 +1,49 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -775,10 +775,18 @@
+         j_erased_runtime_args(book, rest, j_app_type(head, h),
+           kc(List<&2,KTerm>, U32.is_eq(qt(head), 0), u => todo, u => Con{h, todo}), binder, U32.sub(fuel, 1)), u => None{})
+ 
++# Match j_def's unconditional source-emission path. Native intrinsics may retain
++# a runtime override; they are not source-body instances or source aliases.
++@unsafe
++def j_instance_source_definition(+d: KDef) -> Bool:
++  String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
++    Bool.not(String.eq(tg(dv(d)), "Absent")) && Bool.not(String.eq(tg(dv(d)), "Foreign")) &&
++    (Bool.not(db(d)) || Bool.not(j_intrinsic(dn(d))))
++
+ @unsafe
+ def j_erased_instance(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm) -> Maybe<&2,KDef>:
+   +d = lookup(book, nm(spine))
+-  kc(Maybe<&2,KDef>, String.eq(tg(spine), "Call") && String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) &&
++  kc(Maybe<&2,KDef>, String.eq(tg(spine), "Call") && j_instance_source_definition(d) &&
+     U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) && U32.is_eq(terms_len(ks(spine)), da(d)) && j_u32_bounded([dv(d)], 4096), u =>
+     j_erased_instance_step(book, env, d, dv(d), dt(d), ks(spine), Nil{}, 0, 8192), u => None{})
+ 
+@@ -889,7 +897,7 @@
+     kc(JInstances, String.eq(tg(head), "All") && U32.is_eq(qt(head), 0), u =>
+       kc(JInstances, U32.is_gt(j_instances_fuel(s), 8192), u =>
+         j_instances_fact(book, spine, rest, JInstances{j_instances_rows(s), j_instances_sources(s), U32.sub(j_instances_fuel(s), 8192), True{}}, j_erased_instance(book, Nil{}, spine)), u => j_instances_fail(s)), u =>
+-      kc(JInstances, db(d) || j_instances_source_has(j_instances_sources(s), d), u =>
++      kc(JInstances, Bool.not(j_instance_source_definition(d)) || j_instances_source_has(j_instances_sources(s), d), u =>
+         j_instances_collect(book, List.append(&2,KTerm, ks(spine), rest), s), u =>
+         kc(JInstances, j_pure_signature(book, dt(d), da(d)) && U32.is_lt(j_region_def_count(j_instances_sources(s)), 64), u =>
+           j_instances_collect(book, Con{dv(d), List.append(&2,KTerm, ks(spine), rest)},
+@@ -1140,7 +1148,7 @@
+ 
+ @unsafe
+ def j_instance_root(+book: List<&2,KDef>, +d: KDef) -> String:
+-  kc(String, String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) &&
++  kc(String, j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 8) &&
+     j_region_signature(book, dt(d), da(d)) && j_region_scalar(book, j_fold_root_result(book, dt(d), da(d))) &&
+     j_instance_has_erased(book, [dv(d)], 2048), u =>
+       j_instance_root_collect(book, d, j_instances_collect(book, [dv(d)], JInstances{Nil{}, [d], 1048576, True{}})), u => "")
+@@ -1328,7 +1336,7 @@
+ 
+ @unsafe
+ def j_instance_public_capture(+d: KDef) -> Bool:
+-  String.eq(dk(d), "Def") && Bool.not(db(d)) && U32.is_eq(dx(d), 0) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) &&
++  j_instance_source_definition(d) && U32.is_gt(da(d), 0) && U32.is_le(da(d), 32) &&
+     (String.eq(tg(j_strip(dv(d))), "Lam") || String.eq(tg(j_strip(dv(d))), "Mat"))
+ 
+ @unsafe

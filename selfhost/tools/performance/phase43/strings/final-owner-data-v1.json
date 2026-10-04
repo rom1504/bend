@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase43-strings-final-owner-handoff",
+  "catalog": {
+    "path": "selfhost/tools/performance/phase43/strings/fixture-catalog-v4.json",
+    "sha256": "bad2c44637dbb9c7110b1a145fcca50399b460995c6b03072132624441e4a6a5"
+  },
+  "instrumenter": {
+    "path": "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs",
+    "sha256": "4c9c93095a75b21018c60981724e33942aaac9f41754847df87421010eb61ef5"
+  },
+  "controllers": [
+    {
+      "path": "selfhost/tools/performance/phase43/strings/source-controls-v4.mjs",
+      "sha256": "feb87374b32645f93837585a56a941c0fca578625528893ac9c27cc03b7e1ea1"
+    },
+    {
+      "path": "selfhost/tools/performance/phase43/strings/fixture-controls-v2.mjs",
+      "sha256": "a129b5885c8819011ffd7887fc08b9e19a953bb2cad0b1e381abae4461ec2e09"
+    },
+    {
+      "path": "selfhost/tools/performance/phase43/strings/type-controls-fast-v7.mjs",
+      "sha256": "8a638fd79268fac5125949290b760c9a3c8077f80677b3fa6182d14143de3501"
+    }
+  ],
+  "owners": [
+    {
+      "owner": "strings-source",
+      "source": {
+        "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+      },
+      "baseline": {
+        "path": "selfhost/build/phase42/integration03/full-preparation/modules/lexer.mjs",
+        "sha256": "25cbe7951d310528850ad1efe6000f709f3598b29e61d8f5d048f87462563187"
+      },
+      "baselineReceipt": {
+        "path": "selfhost/build/phase42/integration03/full-preparation/modules/lexer.mjs.json",
+        "sha256": "ae222fe0c21a62ff0c988d643d30b34f51e85f7eb45fad8b4d7706af64ac576c"
+      },
+      "actualModule": "${OUT}/new-owner-modules/lexer.mjs",
+      "actualReceipt": "${OUT}/new-owner-modules/lexer.mjs.json",
+      "emissionCommand": [
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/programs/emit-worker.mjs",
+        "${ATTEMPT}",
+        "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "${OUT}/new-owner-modules/lexer.mjs",
+        "selfhost/tools/performance/phase43/strings/fixture-catalog-v4.json"
+      ],
+      "instrumentCommand": [
+        "${NODE}",
+        "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs",
+        "selfhost/build/phase42/integration03/full-preparation/modules/lexer.mjs",
+        "${OUT}/new-owner-modules/lexer.mjs",
+        "${OUT}/derive-strings-source"
+      ],
+      "controlCommand": [
+        "${NODE}",
+        "selfhost/tools/performance/phase43/strings/source-controls-v4.mjs",
+        "${OUT}/derive-strings-source",
+        "${OUT}/raw-strings-source"
+      ],
+      "deriveManifest": "${OUT}/derive-strings-source/derive.json",
+      "rawReport": "${OUT}/raw-strings-source/report.json",
+      "supervisor": "${OUT}/run-raw-strings-source/run.json",
+      "reportKind": "phase43-source-lexer-controls-v4",
+      "expectedCounts": {
+        "oracle": 439,
+        "boundaries": 113,
+        "admission": 3
+      }
+    },
+    {
+      "owner": "strings-renamed",
+      "source": {
+        "path": "selfhost/tools/performance/phase43/strings/typed-components-renamed-v3.bend",
+        "sha256": "94b347ff8155cefa55be8545d6c53b98b2ea97eac5fa9bdb034a928172dcf0fa"
+      },
+      "baseline": {
+        "path": "selfhost/build/phase43/string-fixture-baseline04/modules/typed-components-renamed-v3.mjs",
+        "sha256": "952cd7f5447ff7163b07f7f49a5af95b70c6477dfba12454cdeefa32e9fb9355"
+      },
+      "baselineReceipt": {
+        "path": "selfhost/build/phase43/string-fixture-baseline04/modules/typed-components-renamed-v3.mjs.json",
+        "sha256": "7e635acb9403c0acd43719eb8fb8802d21f78f3bf70d5bf3655f325538cab753"
+      },
+      "actualModule": "${OUT}/new-owner-modules/strings-renamed.mjs",
+      "actualReceipt": "${OUT}/new-owner-modules/strings-renamed.mjs.json",
+      "emissionCommand": [
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/programs/emit-worker.mjs",
+        "${ATTEMPT}",
+        "selfhost/tools/performance/phase43/strings/typed-components-renamed-v3.bend",
+        "${OUT}/new-owner-modules/strings-renamed.mjs",
+        "selfhost/tools/performance/phase43/strings/fixture-catalog-v4.json"
+      ],
+      "instrumentCommand": [
+        "${NODE}",
+        "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs",
+        "selfhost/build/phase43/string-fixture-baseline04/modules/typed-components-renamed-v3.mjs",
+        "${OUT}/new-owner-modules/strings-renamed.mjs",
+        "${OUT}/derive-strings-renamed"
+      ],
+      "controlCommand": [
+        "${NODE}",
+        "selfhost/tools/performance/phase43/strings/fixture-controls-v2.mjs",
+        "${OUT}/derive-strings-renamed/original.mjs",
+        "${OUT}/derive-strings-renamed/full.mjs",
+        "renamed",
+        "${OUT}/raw-strings-renamed"
+      ],
+      "deriveManifest": "${OUT}/derive-strings-renamed/derive.json",
+      "rawReport": "${OUT}/raw-strings-renamed/report.json",
+      "supervisor": "${OUT}/run-raw-strings-renamed/run.json",
+      "reportKind": "phase43-string-fixture-controls",
+      "expectedCounts": {
+        "values": 9,
+        "boundaries": 30,
+        "activation": 2
+      }
+    },
+    {
+      "owner": "strings-negative-literal0",
+      "source": {
+        "path": "selfhost/tools/performance/phase43/strings/negative-literal0-v3.bend",
+        "sha256": "ad06ac636cd906eed34ab3f686fb8937cae63b8a99ec735656b5c2fdf6869cdd"
+      },
+      "baseline": {
+        "path": "selfhost/build/phase43/string-fixture-baseline04/modules/negative-literal0-v3.mjs",
+        "sha256": "e048a30be5f58141ab5b01eafb855c9059962e8f76e014bcbc7c1a330b4916ee"
+      },
+      "baselineReceipt": {
+        "path": "selfhost/build/phase43/string-fixture-baseline04/modules/negative-literal0-v3.mjs.json",
+        "sha256": "52fc48c4c46d2f59370ddb11027d990dd3e889620a5ce0ea68afc533a8b02d45"
+      },
+      "actualModule": "${OUT}/new-owner-modules/strings-negative-literal0.mjs",
+      "actualReceipt": "${OUT}/new-owner-modules/strings-negative-literal0.mjs.json",
+      "emissionCommand": [
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/programs/emit-worker.mjs",
+        "${ATTEMPT}",
+        "selfhost/tools/performance/phase43/strings/negative-literal0-v3.bend",
+        "${OUT}/new-owner-modules/strings-negative-literal0.mjs",
+        "selfhost/tools/performance/phase43/strings/fixture-catalog-v4.json"
+      ],
+      "instrumentCommand": [
+        "${NODE}",
+        "selfhost/tools/performance/phase43/strings/source-instrument-v5.mjs",
+        "selfhost/build/phase43/string-fixture-baseline04/modules/negative-literal0-v3.mjs",
+        "${OUT}/new-owner-modules/strings-negative-literal0.mjs",
+        "${OUT}/derive-strings-negative-literal0"
+      ],
+      "controlCommand": [
+        "${NODE}",
+        "selfhost/tools/performance/phase43/strings/fixture-controls-v2.mjs",
+        "${OUT}/derive-strings-negative-literal0/original.mjs",
+        "${OUT}/derive-strings-negative-literal0/full.mjs",
+        "negative-literal0",
+        "${OUT}/raw-strings-negative-literal0"
+      ],
+      "deriveManifest": "${OUT}/derive-strings-negative-literal0/derive.json",
+      "rawReport": "${OUT}/raw-strings-negative-literal0/report.json",
+      "supervisor": "${OUT}/run-raw-strings-negative-literal0/run.json",
+      "reportKind": "phase43-string-fixture-controls",
+      "expectedCounts": {
+        "values": 9,
+        "boundaries": 24,
+        "activation": 2
+      }
+    },
+    {
+      "owner": "strings-types",
+      "source": {
+        "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+      },
+      "controlCommand": [
+        "${NODE}",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "selfhost/tools/performance/phase43/strings/type-controls-fast-v7.mjs",
+        "${ATTEMPT}",
+        "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "${OUT}/raw-strings-types"
+      ],
+      "rawReport": "${OUT}/raw-strings-types/report.json",
+      "supervisor": "${OUT}/run-raw-strings-types/run.json",
+      "reportKind": "phase43-string-type-controls-fast-signatures",
+      "expectedCounts": {
+        "observations": 59,
+        "sourceGraph": 10
+      },
+      "emissionSuppressed": true,
+      "sourceGraphAssertions": false
+    }
+  ],
+  "sourcePolicy": "Actual checked module receipt complete/checked/statusok/outputSHA, exact captured input/API/runtime/Base/driver identities. Mandatory ordinary complete outer graph activation and complete intermediate String/Mode/Tuple values. Per-root literal guard dependencies exclude mutated binding roots; independent safe roots may run, regionProof must close. No handwritten replacement qualifies.",
+  "extraPositiveFixture": {
+    "source": {
+      "path": "selfhost/tools/performance/phase43/strings/typed-components-v3.bend",
+      "sha256": "63df4c04f977772ab75ff04d9c0f597c91b0e3d95949d0d1b38947eac009614c"
+    },
+    "baseline": {
+      "path": "selfhost/build/phase43/string-fixture-baseline04/modules/typed-components-v3.mjs",
+      "sha256": "f2152b9e5d09cbcab69a1475163a05e8b388081d9585b9099e9ba9f87020e018"
+    },
+    "controlKind": "renamed",
+    "expectedCounts": {
+      "values": 9,
+      "boundaries": 30,
+      "activation": 2
+    },
+    "note": "Catalog includes second positive graph naming; root should preserve its existing candidate fixture control receipt too."
+  }
+}

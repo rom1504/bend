@@ -10,7 +10,7 @@
    kc(String, String.eq(worker, ""), u => j_u32_global(book, d, j_u32_worker(book, d)),
      u => j_l_global_worker(book, d, dv(d), worker))
  
-@@ -1038,3 +1039,123 @@
+@@ -1038,3 +1039,166 @@
  def j_fusion_root_body(+book: List<&2,KDef>, +d: KDef, +fallback: String) -> String:
    +body = j_fusion_root_prefix(book, dv(d), dt(d), Nil{}, 0, da(d))
    kc(String, String.eq(body, ""), u => fallback, u => body)
@@ -20,7 +20,7 @@
 +@unsafe
 +def j_callback_fun_type(+book: List<&2,KDef>, +ty: KTerm, +arg: String) -> Bool:
 +  +h = wnf(book, ty)
-+  String.eq(tg(h), "All") && Bool.not(U32.is_eq(qt(h), 0)) &&
++  String.eq(tg(h), "All") && U32.is_eq(qt(h), 1) &&
 +    j_primitive_type(book, wnf(book, kid(h, 0)), arg) &&
 +    j_primitive_type(book, wnf(book, kid(h, 1)), "U32")
 +
@@ -40,27 +40,60 @@
 +      kc(Bool, String.eq(tg(h), "Lit"), u => String.eq(nm(h), "U32"), u =>
 +        kc(Bool, j_fusion_call(s, "U32.from_nat", 1) && j_primitive_call(book, s),
 +          u => j_fusion_var(kid(s, 0), pred), u =>
-+          String.eq(tg(s), "Call") && j_primitive_call(book, s) && U32.is_eq(terms_len(ks(s)), 2) &&
-+          (String.eq(nm(s), "U32.add") || String.eq(nm(s), "U32.sub") || String.eq(nm(s), "U32.mul") || String.eq(nm(s), "U32.mod")) &&
-+          j_callback_scalar(book, kid(s, 0), vars, pred, U32.sub(fuel, 1)) &&
-+          j_callback_scalar(book, kid(s, 1), vars, pred, U32.sub(fuel, 1))))), u => False{})
++          kc(Bool, String.eq(tg(s), "Call") && U32.is_eq(terms_len(ks(s)), 2) &&
++            (String.eq(nm(s), "U32.add") || String.eq(nm(s), "U32.sub") || String.eq(nm(s), "U32.mul") || String.eq(nm(s), "U32.mod")) &&
++            j_primitive_call(book, s), u =>
++            kc(Bool, j_callback_scalar(book, kid(s, 0), vars, pred, U32.sub(fuel, 1)),
++              u => j_callback_scalar(book, kid(s, 1), vars, pred, U32.sub(fuel, 1)), u => False{}), u => False{})))), u => False{})
++
++# The exact generic composition domain is Type&1, with three erased q0
++# binders. Type&2 native U32 is specialized only after that formal proof.
++@unsafe
++def j_callback_type_domain(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
++  +h = wnf(book, ty)
++  String.eq(tg(h), "Typ") && String.eq(nm(h), "") && U32.is_eq(ix(h), 0) && U32.is_eq(qt(h), 0) &&
++    List.is_empty(&2, String, rm(h)) && U32.is_eq(terms_len(ks(h)), 1) &&
++    String.eq(tg(kid(h, 0)), "Qua") && String.eq(nm(kid(h, 0)), "") && U32.is_eq(ix(kid(h, 0)), 0) &&
++    U32.is_eq(qt(kid(h, 0)), 1) && List.is_empty(&2, String, rm(kid(h, 0))) && U32.is_eq(terms_len(ks(kid(h, 0))), 0)
++
++@unsafe
++def j_callback_erased_prefix(+book: List<&2,KDef>, +ty: KTerm, +body: KTerm, +left: U32) -> Bool:
++  +h = wnf(book, ty)
++  +t = j_strip(body)
++  kc(Bool, U32.is_eq(left, 0), u => True{}, u =>
++    String.eq(tg(h), "All") && U32.is_eq(qt(h), 0) && j_callback_type_domain(book, kid(h, 0)) &&
++    String.eq(tg(t), "Lam") && U32.is_eq(qt(t), 0) && U32.is_eq(terms_len(ks(t)), 1) &&
++    j_callback_erased_prefix(book, kid(h, 1), kid(t, 0), U32.sub(left, 1)))
++
++@unsafe
++def j_callback_live_compose_type(+book: List<&2,KDef>, +ty: KTerm, +body: KTerm, +left: U32) -> Bool:
++  +h = wnf(book, ty)
++  +t = j_strip(body)
++  kc(Bool, U32.is_eq(left, 0), u => j_primitive_type(book, h, "U32"), u =>
++    String.eq(tg(h), "All") && U32.is_eq(qt(h), 1) && String.eq(tg(t), "Lam") &&
++    U32.is_eq(qt(t), 1) && U32.is_eq(terms_len(ks(t)), 1) &&
++    kc(Bool, U32.is_eq(left, 1), u => j_primitive_type(book, wnf(book, kid(h, 0)), "U32"),
++      u => j_callback_fun_type(book, kid(h, 0), "U32")) &&
++    j_callback_live_compose_type(book, kid(h, 1), kid(t, 0), U32.sub(left, 1)))
 +
 +# Check exact composition lambda binders, including erased prefix positions.
 +@unsafe
-+def j_callback_compose(+book: List<&2,KDef>, +d: KDef) -> Bool:
++def j_callback_compose_on(+book: List<&2,KDef>, +d: KDef) -> Bool:
 +  +f = j_fusion_binder(dv(d), 3)
 +  +g = j_fusion_binder(dv(d), 4)
 +  +x = j_fusion_binder(dv(d), 5)
 +  +body = j_fusion_after(dv(d), 6)
 +  +inner = j_strip(kid(body, 1))
-+  j_fusion_def(d, 6) && j_u32_bounded([dt(d), dv(d)], 2048) &&
++  j_fusion_def(d, 5) && j_u32_bounded([dt(d), dv(d)], 2048) &&
++    j_callback_erased_prefix(book, dt(d), dv(d), 3) &&
++    j_callback_live_compose_type(book, j_specialize(book, dt(d), [ref("U32"), ref("U32"), ref("U32")]), j_fusion_after(dv(d), 3), 3) &&
 +    String.eq(tg(f), "Lam") && String.eq(tg(g), "Lam") && String.eq(tg(x), "Lam") &&
 +    String.eq(tg(body), "App") && U32.is_eq(terms_len(ks(body)), 2) &&
 +    j_fusion_var(kid(body, 0), ix(g)) && String.eq(tg(inner), "App") && U32.is_eq(terms_len(ks(inner)), 2) &&
 +    j_fusion_var(kid(inner, 0), ix(f)) && j_fusion_var(kid(inner, 1), ix(x))
 +
 +@unsafe
-+def j_callback_factory(+book: List<&2,KDef>, +d: KDef) -> Bool:
++def j_callback_factory_on(+book: List<&2,KDef>, +d: KDef) -> Bool:
 +  +z = j_strip(j_fusion_empty(d))
 +  +s = j_fusion_link(d)
 +  +p = j_fusion_binder(s, 0)
@@ -133,7 +166,17 @@
 +@unsafe
 +def j_callback_capture_eligible(+book: List<&2,KDef>, +d: KDef) -> Bool:
 +  kc(Bool, j_fusion_def(d, 1) && String.eq(tg(j_strip(dv(d))), "Mat"), u => j_callback_factory(book, d), u =>
-+    kc(Bool, j_fusion_def(d, 6) && String.eq(tg(j_strip(dv(d))), "Lam"), u => j_callback_compose(book, d), u => False{}))
++    kc(Bool, j_fusion_def(d, 5) && String.eq(tg(j_strip(dv(d))), "Lam"), u => j_callback_compose(book, d), u => False{}))
++
++@unsafe
++def j_callback_compose(+book: List<&2,KDef>, +d: KDef) -> Bool:
++  kc(Bool, j_fusion_def(d, 5) && String.eq(tg(j_strip(dv(d))), "Lam"),
++    u => kc(Bool, j_u32_bounded([dt(d), dv(d)], 2048), u => j_callback_compose_on(book, d), u => False{}), u => False{})
++
++@unsafe
++def j_callback_factory(+book: List<&2,KDef>, +d: KDef) -> Bool:
++  kc(Bool, j_fusion_def(d, 1) && String.eq(tg(j_strip(dv(d))), "Mat"),
++    u => kc(Bool, j_u32_bounded([dt(d), dv(d)], 4096), u => j_callback_factory_on(book, d), u => False{}), u => False{})
 --- a/selfhost/src/back/js/projection.bend
 +++ b/selfhost/src/back/js/projection.bend
 @@ -66,4 +66,4 @@

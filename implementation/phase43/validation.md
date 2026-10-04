@@ -27,3 +27,23 @@ Commands and protocol are in the adjacent
 [validation guide](../../selfhost/tools/performance/phase43/validation/README.md).
 Runtime helper successors retain every previous preset600,45point,669sample,
 Node/provenance/role/receipt assertion while changing the baseline to checked16.
+
+A static scalar precedence successor now supports independently frozen exact
+runtime/source fingerprints, Acorn-bounded consumed runtime prefixes and canonical
+fresh emission receipts. Protected scalar executable bodies remain unchanged;
+only exact third literalfalse scalarCapture metadata envelopes may differ, with
+explicit independent approval. New recipe options bind this reviewed successor.
+The runtime sum collector now requires exact producer and repaired-recipe ancestry
+identities. JavaScript syntax and Python AST checks pass; root must generate the
+actual proposal and obtain its independent review before executing the new gate.
+
+Final framework additions include exact snapshot fragment/bundle agreement before
+recipe materialization and every stage, canonical actual-source owner wrappers,
+frozen owner/controller snapshots and extension generation. Counts come from
+controller source and owner review, including stronger String source-v2 and
+compiler proof-v7 controls. Wrappers retain raw failures, require the exact
+bounded supervisor and frozen Node, canonical raw output, actual checked emitter
+and selected snapshot driver, and actual source/derivation identities. Independent
+code-level review does not approve final selected-image fingerprints/configuration;
+root must freeze and review those separately. Superseded checked05 scalar proposal
+and stale-runtime failure remain evidence.

@@ -88,3 +88,19 @@ host-family obligations, saturation/escape flags, structural resume plan and
 valid/fuel. It must not grant ambient ownership. Region entry opens existing
 proof only after all plan obligations pass; records and callbacks can later add
 strategies without inventing a second ownership mechanism.
+
+
+The checked Bool.and body is now pinned structurally by bool-and-v3.patch rather
+than admitted from name/signature alone. Its False arm returns False, True arm
+returns the exact second argument binder, final arm is Efq; quantities, child
+counts and empty removed lists are exact. Private && evaluates both source
+arguments left to right before invocation and preserves the public source matcher.
+type-controls-fast-v6.mjs adds canonical positive and eight altered-body/native
+refusals. git apply --check succeeds against current production; Node24 syntax
+checks pass for the controls. Parent/reviewer integration still pending.
+
+Baseline fixture preparation found affine seed reuse in the branch roots before
+emission. Original source files remain frozen. New *-v2.bend files explicitly use
++seed where both recursive branches consume it; fixture-catalog-v3.json pins these
+new identities with unchanged independent expected values. Preparation/catalog
+failures are not correctness passes or performance results.

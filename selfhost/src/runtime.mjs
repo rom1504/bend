@@ -91,13 +91,13 @@ const scalarFunctionPrototype=Function.prototype, scalarFunctionCall=Function.pr
 const scalarPrimitivePrototypes=[Boolean.prototype,Number.prototype,BigInt.prototype];
 // Conversion for a proved private countdown must not call a replaced global.
 const regionCounterNumber=Number;
-function scalarCapture(name,f){
+function scalarCapture(name,f,stringFamily=false){
   const a=Object.getOwnPropertyDescriptor(f,'arity'),c=Object.getOwnPropertyDescriptor(f,'code');
   const e=Object.getOwnPropertyDescriptor(f,'env'),b=Object.getOwnPropertyDescriptor(f,'bound');
   if(a&&c&&e&&b&&[a,c,e,b].every(d=>Object.hasOwn(d,'value'))&&
-      Number.isInteger(a.value)&&a.value>0&&typeof c.value==='function'&&e.value===null&&
+      Number.isInteger(a.value)&&a.value>=0&&typeof c.value==='function'&&e.value===null&&
       Array.isArray(b.value)&&Object.getOwnPropertyDescriptor(b.value,'length').value===0){
-    scalarSnapshots[name]={original:f,arity:a.value,code:c.value,bound:b.value};
+    scalarSnapshots[name]={original:f,arity:a.value,code:c.value,bound:b.value,stringFamily};
   }else delete scalarSnapshots[name];
   return f;
 }
@@ -120,8 +120,12 @@ function regionProofOpen(names){
 }
 function regionProofClose(previous){regionProof=previous;}
 
-function scalarGuard(names){
+// Exact closed-U32 callback capability; public String-family snapshots stay guarded.
+const callbackU32Guard={__proto__:null};
+function scalarGuard(names,capability=null){
   if(regionProofCovers(names))return true;
+  let needsString=false;if(capability!==callbackU32Guard)for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
+  if(needsString&&!stringHostGuard())return false;
   // Generic forcing/matching observes these hooks even on primitive values.
   if(Object.getPrototypeOf(scalarObjectPrototype)!==null||
       Object.getPrototypeOf(scalarFunctionPrototype)!==scalarObjectPrototype)return false;
@@ -151,11 +155,11 @@ function scalarGuard(names){
 // Local arrays may alias, but their standard prototype must not run marker
 // callbacks while forcing tuple results inside an admitted private region.
 const localArrayPrototype=Array.prototype;
-function localGuard(names){
+function localGuard(names,capability=null){
   if(regionProofCovers(names))return true;
   if(Object.getPrototypeOf(localArrayPrototype)!==scalarObjectPrototype)return false;
   for(const k of ['request','bounce','build','code'])if(Object.getOwnPropertyDescriptor(localArrayPrototype,k))return false;
-  return scalarGuard(names);
+  return scalarGuard(names,capability);
 }
 // New floating regions may skip generic dispatch between native operations.
 // Snapshot standard host intrinsics once; reject changed/getter hooks before
@@ -183,12 +187,24 @@ for(let i=0;i<regionProtocolPairs.length;i++)regionProtocolDescriptors[i]=Object
 const regionDataViewPrototype=DataView.prototype;
 const regionDataViewKeys=['setUint32','getFloat32','setFloat32','getUint32'];
 for(const key of regionDataViewKeys)regionNumericHooks.push([regionDataViewPrototype,key,regionDataViewPrototype[key]]);
-function regionHostGuard(){
+// Full total-U32 fusion needs integer hooks; all current descriptors are still
+// checked afresh at each entry. This private set contains immutable dependencies.
+const regionU32FusionHooks=[];
+for(let i=0;i<regionNumericHooks.length;i++){
+  const p=regionNumericHooks[i];
+  if(p[0]===regionDataViewPrototype||(p[0]===Math&&p[1]!=='imul')||
+      (p[0]===Number&&(p[1]==='isNaN'||p[1]==='isFinite')))continue;
+  regionU32FusionHooks[regionU32FusionHooks.length]=p;
+}
+function regionHostGuard(u32Fusion=false){
   if(regionProof!==null)return true;
-  if(regionGetPrototype(floatView)!==regionDataViewPrototype)return false;
-  for(let i=0;i<regionDataViewKeys.length;i++)if(regionGetDescriptor(floatView,regionDataViewKeys[i]))return false;
-  for(let i=0;i<regionNumericHooks.length;i++){
-    const p=regionNumericHooks[i],d=regionGetDescriptor(p[0],p[1]);
+  if(!u32Fusion){
+    if(regionGetPrototype(floatView)!==regionDataViewPrototype)return false;
+    for(let i=0;i<regionDataViewKeys.length;i++)if(regionGetDescriptor(floatView,regionDataViewKeys[i]))return false;
+  }
+  const hooks=u32Fusion?regionU32FusionHooks:regionNumericHooks;
+  for(let i=0;i<hooks.length;i++){
+    const p=hooks[i],d=regionGetDescriptor(p[0],p[1]);
     if(!d||!regionOwn(d,'value')||d.value!==p[2])return false;
   }
   if(regionGetPrototype(localArrayPrototype)!==scalarObjectPrototype||regionGetPrototype(regionIteratorPrototype)!==regionIteratorParent||
@@ -211,11 +227,23 @@ function regionHostGuard(){
   return true;
 }
 
+// Standard host initialization is the established runtime premise.
+const stringHostOwnKeys=Reflect.ownKeys;
+const stringHostConstructor=String,stringHostPrototype=String.prototype;
+const stringHostGlobal=regionGetDescriptor(globalThis,'String');
+const stringHostRows=[stringHostConstructor,stringHostPrototype].map(object=>({object,parent:regionGetPrototype(object),keys:stringHostOwnKeys(object),descriptors:Object.getOwnPropertyDescriptors(object)}));
+function stringHostDescriptor(a,b){if(!a||!b)return a===b;if(a.configurable!==b.configurable||a.enumerable!==b.enumerable)return false;
+ const av=regionOwn(a,'value'),bv=regionOwn(b,'value');return av===bv&&(av?a.value===b.value&&a.writable===b.writable:a.get===b.get&&a.set===b.set);}
+function stringHostGuard(){if(!stringHostDescriptor(regionGetDescriptor(globalThis,'String'),stringHostGlobal))return false;
+ for(let i=0;i<stringHostRows.length;i++){const row=stringHostRows[i];if(regionGetPrototype(row.object)!==row.parent)return false;const keys=stringHostOwnKeys(row.object);if(keys.length!==row.keys.length)return false;
+  for(let k=0;k<keys.length;k++)if(keys[k]!==row.keys[k]||!stringHostDescriptor(regionGetDescriptor(row.object,keys[k]),row.descriptors[keys[k]]))return false;}
+ return true;}
+
 const native=(name,n,f)=>{
   const value=fn(n,a=>f(...a));
   // The factory owns these fresh fields; snapshot without calling host hooks.
   if(name==='Nat.add')scalarNatAddSnapshot={original:value,arity:n,code:value.code,bound:value.bound};
-  return G[name]=name==='Array.new'||name==='Array.get'||name==='Array.set'||name==='F32.to_u32'||name==='Bool.xor'?scalarCapture(name,value):value;
+  return G[name]=scalarCapture(name,value);
 };
 function get(v,k){if(k in v){const x=v[k];return x?.code&&x.arity===0?call(x,[]):x;}bad('unbound name: '+k)}
 function ctor(k,a){

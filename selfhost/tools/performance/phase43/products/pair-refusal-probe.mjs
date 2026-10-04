@@ -1,0 +1,14 @@
+// Small compiler predicate regression discriminator; root executes under limits.
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';import {verifyAttempt} from '../../../development/workflow.mjs';
+const[attemptArg,outArg]=process.argv.slice(2);assert(attemptArg&&outArg,'usage: pair-refusal-probe.mjs CHECKED_ATTEMPT NEW_OUT');const out=path.resolve(outArg);assert(!fs.existsSync(out));fs.mkdirSync(out);const attempt=await verifyAttempt(path.resolve(attemptArg)),source=fs.readFileSync(attempt.api.file,'utf8'),sha=s=>createHash('sha256').update(s).digest('hex');assert(source.includes('$j_pair_prefix_safe$'),'candidate must contain general pair planner');
+const addition=`
+export function phase43PairRefusals(){
+ const nil={$:'Nil'};const term=(tag,name='',kids=[],id=0,quant=0)=>({$:'KTerm',tag,name,id,quant,kids:kids.reduceRight((tail,head)=>({$:'Con',head,tail}),nil),removed:nil,originBegin:0,originEnd:0});
+ const absent=term('Absent'),var0=term('Var','',[],990001),ref=term('Ref','U32.add'),lit=term('Lit','U32',[],1),oneArg=term('App','',[ref,lit]);
+ const rows=[];for(const[label,t,ty,fuel]of[['pairAbsent128',absent,absent,128],['pairAbsent0',absent,absent,0],['pairMalformedLam128',term('Lam','',[absent],990003,1),absent,128],['pairMalformedMat128',term('Mat','Tuple',[absent,absent]),absent,128]]){const begin=performance.now(),value=run_loop($j_pair_prefix_safe$(nil,nil,t,ty,absent,fuel));rows.push({label,value,milliseconds:performance.now()-begin});}
+ for(const[label,t]of[['pairLeafAbsent128',absent],['pairLeafWrongArity128',oneArg]]){const begin=performance.now(),value=run_loop($j_pair_leaf_safe$(nil,nil,t,absent,128));rows.push({label,value,milliseconds:performance.now()-begin});}
+ const d=run_loop($lookup$(nil,'p43.missing'));for(const[label,fuel]of[['pairMissingHelper128',128],['pairMissingHelper0',0]]){const begin=performance.now(),value=run_loop($j_pair_helper_safe$(nil,d,absent,fuel));rows.push({label,value,milliseconds:performance.now()-begin});}
+ return rows;
+}
+`;
+const diagnostic=path.join(out,'api-pair-refusals.mjs');fs.writeFileSync(diagnostic,source+addition,{flag:'wx'});fs.copyFileSync(import.meta.filename,path.join(out,'consumed-pair-refusal.mjs'));const api=await import(pathToFileURL(diagnostic)),rows=api.phase43PairRefusals();for(const r of rows){assert.equal(r.value,false,r.label);assert(r.milliseconds<1000,'fast refusal: '+r.label);}const report={kind:'phase43-pair-predicate-refusals',passed:true,scope:'tiny compiler predicate regression; empty-book malformed inputs cannot acquire native proof',api:{path:fs.realpathSync(attempt.api.file),sha256:sha(source)},diagnostic:{path:diagnostic,sha256:sha(source+addition)},rows};fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify(report));

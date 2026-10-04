@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -810,7 +810,7 @@
+   match r:
+     case None{}: None{}
+     case Some{fuel}:
+-      +slot = KDef{"", "JErasedSlot", ix(ty), ix(body), kid(ty, 0), arg, Nil{}, False{}, False{}}
++      +slot: KDef = KDef{"", "JErasedSlot", ix(ty), ix(body), kid(ty, 0), arg, Nil{}, False{}, False{}}
+       j_erased_instance_step(book, env, original, subst(kid(body, 0), ix(body), arg), j_app_type(ty, arg), rest,
+         List.append(&2,KDef, slots, [slot]), U32.inc(prefix), fuel)
+ 

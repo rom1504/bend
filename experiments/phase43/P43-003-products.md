@@ -19,3 +19,39 @@ intermediate values, aliases/fresh shells, exact fuel/duplicate order, host fall
 ordinary activation/generic-call reduction and deep iterative insertion before timing.
 Root preserves failures and actual commands under selfhost/build/phase43. No Phase42
 raw output is written. Saved-JS measurement valid for the two recorded points; source promotion not proposed.
+
+Checked01 source integration exposed a compiler-demand bug and180s acquisition
+failure; strict `&&` did not fence recursive malformed-term visits. Root corrected
+`kc` shape fences in checked02. Actual build/insert source oracle now passes with
+BST64 executed apply775→258. Exact evidence and rejected initial patch are linked
+in implementation. Scalar-first acyclic wrapper and fresh pair-state patches are
+separate held follow-ups; each needs actual worker activation/semantic controls
+and fresh measurement before promotion. No handwritten kernel is installed.
+
+Root products-pairs01 passes: preserving per-step BLeaf and BF/Con layout,
+removing only intermediate pair states improves saved direct by1.575x/1.359x
+atBST32/64. Exact role medians/ranges are in implementation. The169-line general
+source candidate now has explicit strict-Boolean fences and independent source
+controls, awaiting compiler/oracle qualification. Catalog v1 API failure before
+acquisition is preserved; v2 passes maintained prepare selector/hash checks.
+
+Baseline fixture source checker refused duplicated affine wrapper-root size/seed
+in catalog v2. Original source retained; exact scalar +binders corrected and
+catalog v3 records new hash. No semantic qualification passed at that point.
+
+All independent reviewers approve revised169-line pair candidate for source
+qualification; root applies it for build07. Prefix baseline03 passes; pair fixture
+computed-scrutinee parse failure preserved and corrected by named parameter
+finishing helpers. Catalog v4 selector/hash checks pass; source checking pending.
+
+Baseline04 now passes prefix+pair sources and13 independent points. Separate
+ignored-control source rejected affine invariant flag duplication; originalv1
+retained and corrected with exact +Bool binder in source/catalogv2. Runtime
+qualification follows root build08.
+
+Checked08 full BST source oracle and scalar-wrapper activation pass; BST64 apply
+775→2. Fresh screen reports2.441x/2.660x combined source gain versus baseline,
+3.417x/2.326x TypeScript at32/64. Original independent pair roots retained older
+scalar slot workers, so newpair marker activation assertion failed correctly.
+Separate binary-observer target fixtures now await acquisition; old fixtures
+remain explicit stronger-selector negative controls. No scalar rule broadened.

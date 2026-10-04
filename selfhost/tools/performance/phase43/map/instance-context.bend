@@ -59,8 +59,9 @@ def j_instances_call(+book: List<&2,KDef>, +spine: KTerm, +rest: List<&2,KTerm>,
   +head = wnf(book, dt(d))
   kc(JInstances, String.eq(tg(spine), "Call") && String.eq(dk(d), "Def") && U32.is_eq(terms_len(ks(spine)), da(d)) && U32.is_le(da(d), 32), u =>
     kc(JInstances, String.eq(tg(head), "All") && U32.is_eq(qt(head), 0), u =>
-      j_instances_fact(book, spine, rest, s, j_erased_instance(book, Nil{}, spine)), u =>
-      kc(JInstances, db(d) || j_instances_source_has(j_instances_sources(s), d), u =>
+      kc(JInstances, U32.is_gt(j_instances_fuel(s), 8192), u =>
+        j_instances_fact(book, spine, rest, JInstances{j_instances_rows(s), j_instances_sources(s), U32.sub(j_instances_fuel(s), 8192), True{}}, j_erased_instance(book, Nil{}, spine)), u => j_instances_fail(s)), u =>
+      kc(JInstances, Bool.not(j_instance_source_definition(d)) || j_instances_source_has(j_instances_sources(s), d), u =>
         j_instances_collect(book, List.append(&2,KTerm, ks(spine), rest), s), u =>
         kc(JInstances, j_pure_signature(book, dt(d), da(d)) && U32.is_lt(j_region_def_count(j_instances_sources(s)), 64), u =>
           j_instances_collect(book, Con{dv(d), List.append(&2,KTerm, ks(spine), rest)},

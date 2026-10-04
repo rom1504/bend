@@ -1,14 +1,20 @@
 # Phase45: private execution graphs and composable backend selection
 
-**Worker23 is the current development candidate; final release qualification remains pending.** Phase44 checked04 remains installed. Worker23 freshly passes eight maintained suites, nullary-demand/metadata controls, Unit/Map controls and six post-import host-hook checks. Its full representative acquisition and qualification are underway. This report consolidates the [design](../../design/phase45/README.md), experiments and intermediate results without claiming release promotion.
+**Worker23 is the current development candidate; final release qualification remains pending.** Phase44 checked04 remains installed. Worker23 freshly passes eight maintained suites, nullary-demand/metadata controls, Unit/Map controls and six post-import host-hook checks. Its complete representative execution comparison now passes all 669 samples across 45 points; frontend/backend, compiler-cost and release closure remain separate pending work. This report consolidates the [design](../../design/phase45/README.md), experiments and intermediate results without claiming release promotion.
 
-The main finding is that complete private call graphs, suitable data representations and careful backend selection produce much larger gains than local expression cleanup. In the earlier worker21 screen, Map 128 takes 1.398 ms against Phase44's 22.803 ms and record aggregation takes 1.965 ms against 103.511 ms: **16.31× and 52.68× faster**, with remaining pinned TypeScript gaps of **1.721× and 1.551×**. These are combined-candidate results, not isolated nullary gains. Two tiny library programs also improve, but substantial generic-execution gaps remain.
+The complete runtime comparison shows **about 2× overall improvement, with TypeScript parity still unmet**. Fresh equal-point time falls from 6.0867× TypeScript for Phase44 to 3.0787× for worker23; equal-source time falls from 8.2713× to 4.1467×. Map128 improves 15.04× to 1.538× TypeScript, records256 improves 41.47× to 1.605×, active ray256 improves 13.89× to 1.843×, and lexer improves 4.85× to 1.472×. Smaller or generic paths remain much slower. All 45 medians and a logarithmic before/after diagram are in [the complete execution report](results.md).
 
 The broader comparison mattered. Worker17b's first long batch exposed a 10.77× generic-row regression missed by the earlier selected screen. Worker18 restored the old output through a general alias-only entry profitability gate. Worker20 retested acyclic admission with fewer primitive guards and still slowed that row by 5.15×, so it was rejected. Worker23 preserves the corrected selection policy. It also fixes a supported post-import runtime observation discovered on worker22; the failed and passing observations remain separate evidence.
 
-**There is no completed Phase45 aggregate or parity claim yet.** The preceding qualified 45-point result remains Phase44's 6.0832× TypeScript time with equal-point weighting and 8.3015× with equal-source weighting. Selected Phase45 screens cannot replace that result or predict typical application speed. These maintained workloads informed optimization; they are not untouched holdouts.
+The fresh full comparison has 32 lower and 13 higher candidate medians; the largest slowdown is 4.93% on generic row. Two points beat TypeScript. These are descriptive medians, not significance tests or typical-application predictions. The maintained workloads informed development and are not untouched holdouts. Historical screen values below are retained as experiment history and are not pooled into the completed comparison.
 
-## Historical worker21 screen; worker23 full comparison pending
+| Full45 weighting | Fresh Phase44 / TypeScript | Worker23 / TypeScript | Geometric improvement |
+| --- | ---: | ---: | ---: |
+| Equal point | 6.0867× | 3.0787× | 1.9771× |
+| Equal source | 8.2713× | 4.1467× | 1.9947× |
+| Equal family | 8.4316× | 4.7340× | 1.7811× |
+
+## Historical worker21 focused screen
 
 Three serial 60-second-preset runs cover eleven points and 99 fresh samples in 84.14 seconds. Each point has three rotated rounds per role; all expected values pass. Baseline and TypeScript are freshly executed saved outputs, and the candidate is freshly acquired from the checked worker21 API/runtime. All numbers measure warmed repeated execution, excluding compilation, import and first call; even the tiny cases are warmed measurements. The protocol uses CPU 3, Node 24.18.0, 1 GiB heap, 2 GiB tree RSS cap, 350 ms warmup and a 150 ms target per sample.
 
@@ -51,8 +57,8 @@ The separate Unit extension in22 admits proved canonical Unit payloads in comple
 private graphs and has independently demonstrated activation. Its nine-point
 corpus screen earned no speedup claim: all ten emitted files were byte-identical
 to21. Worker23 retains that coverage with the corrected runtime. Its complete
-performance table and chart will appear in [the final execution report](results.md)
-only after all three fresh batches and their identity-bound summary complete.
+performance table and chart are in [the execution report](results.md), derived
+from three passing fresh batches and their identity-bound summary.
 
 ## What the new backend does
 
@@ -417,8 +423,10 @@ Current correctness results are `qualify-worker23/report.json`,
 `nullary23-controls-v3/report.json`, `unit23-controls-v1/report.json` and
 `exact-entry-hooks23/report.json`; the failed predecessor is
 `exact-entry-hooks22/report.json`. The historical21 timing reports remain
-`runtime-worker21-{fast,nullary,map-record}/report.json`. Complete23 timing will
-use `qualification23/runtime-{0,1,2}/report.json` and its summary.
+`runtime-worker21-{fast,nullary,map-record}/report.json`. Complete23 timing uses
+`qualification23/runtime-{0,1,2}/report.json` and the validated
+`qualification23/runtime-preview.json`; the final workflow summary must match
+that preview before its path replaces the report link.
 Historical screens, rejected/stopped attempts, checked module identities and
 per-job commands remain under `selfhost/build/phase45`, indexed by
 `campaign.jsonl`. The completed 17b first long batch and deliberately interrupted
@@ -428,7 +436,7 @@ raw campaigns stay closed; final archive closure is pending.
 | Final release result | Status |
 | --- | --- |
 | Exact selected compiler, runtime and manifest | Worker23 development candidate; final qualification pending |
-| Fresh 45-point execution comparison, point/source weighting | Pending; no Phase45 aggregate claimed |
+| Fresh 45-point execution comparison, point/source weighting | PASS: 669 samples, 3.0787× TypeScript equal-point and 4.1467× equal-source |
 | Frontend, broader frontend and backend qualification | Pending for selected image |
 | Focused mixed-feature and boundary composition | Pending final image; fresh23 focused evidence and historical controls retained |
 | Controlled compiler-request comparison | Pending |

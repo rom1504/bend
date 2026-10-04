@@ -1,5 +1,10 @@
 # JavaScript backend
 
+Read the [runtime IR architecture](../../../docs/JAVASCRIPT_IR.md) for the
+ordinary lowering pipeline, pass contracts and remaining compatibility adapters.
+Its Bend modules live in `ir/`; the established private planners below remain
+explicit migration boundaries.
+
 `emit.bend`, `choice.bend`, `projection.bend`, `u32.bend`, `region.bend`,
 `local.bend`, `primitive.bend`, `worker.bend`, `tree.bend`, `foreign.bend`, `literals.bend`, and
 `validate.bend` are Bend2 source. Their input is the checked,

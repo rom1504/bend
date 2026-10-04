@@ -180,6 +180,10 @@ def j_literal_typed(
   kc(String, String.eq(literal, ""), u => "", u => j_literal_provenance(book, wnf(book, ty), literal))
 
 @unsafe
-def j_literal_provenance(book, ty, literal):
+def j_literal_owner(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
   +d = lookup(book, nm(ty))
-  kc(String, String.eq(tg(ty), "ADT") && String.eq(dk(d), "ADT") && Bool.not(db(d)), u => "", u => literal)
+  Bool.not(String.eq(tg(ty), "ADT") && String.eq(dk(d), "ADT") && Bool.not(db(d)))
+
+@unsafe
+def j_literal_provenance(book, ty, literal):
+  kc(String, j_literal_owner(book, ty), u => literal, u => "")

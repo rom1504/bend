@@ -44,6 +44,10 @@ proofs. The [Phase42 architecture](../docs/PHASE42_GENERATED_JS.md) retains earl
 owned layouts, List fusion, structural fallback and request-local facts. Public data, host mutation, evaluation order,
 sharing and generic fallback remain explicit proof boundaries.
 
+The [JavaScript IR architecture](docs/JAVASCRIPT_IR.md) documents the modular
+runtime representation, composable passes, semantic contracts and remaining
+compatibility boundaries introduced during Phase44 development.
+
 ```sh
 # From selfhost/, with Node.js 24 or newer:
 npm run verify:release

@@ -51,15 +51,7 @@ def j_primitive_call(+book: List<&2,KDef>, +spine: KTerm) -> Bool:
 
 @unsafe
 def j_primitive_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +spine: KTerm) -> String:
-  +name = nm(spine)
-  +a = j_expr(book, env, kid(spine, 0), kt("ADT", j_primitive_input(name, 0), 0, 0, Nil{}), False{})
-  +b = kc(String, U32.is_eq(j_primitive_arity(name), 2),
-    u => j_expr(book, env, kid(spine, 1), kt("ADT", j_primitive_input(name, 1), 0, 0, Nil{}), False{}), u => "")
-  +count = j_strip(kid(spine, 1))
-  "(/* primitive */" ++ kc(String,
-    (String.eq(name, "U32.shln") || String.eq(name, "U32.shrn")) && core_nat(count),
-    u => j_primitive_shift_literal(name, "(" ++ a ++ ")", kl_number(count)),
-    u => j_primitive_code(name, "(" ++ a ++ ")", "(" ++ b ++ ")")) ++ ")"
+  jir_compile(book, jir_lower_primitive(book, env, spine))
 
 # A large literal shift still evaluates its left operand, without coercing it.
 @unsafe

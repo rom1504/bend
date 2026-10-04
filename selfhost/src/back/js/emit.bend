@@ -222,6 +222,10 @@ law j_expr:
 
 @unsafe
 def j_expr(book, env, t, ty, tail):
+  jir_compile(book, jir_lower(book, env, t, ty, tail))
+
+@unsafe
+def j_expr_legacy(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tail: Bool) -> String:
   kc(String, String.eq(tg(t), "JDirectCall"), u => j_direct_emit_call(book, env, t), u =>
   kc(String, (String.eq(tg(t), "Lam") || String.eq(tg(t), "Mat")) && Bool.not(String.eq(j_l_name(t), "")), u => "F[" ++ j_quote(j_l_name(t)) ++ "](" ++ j_l_capture(env, Nil{}) ++ ")", u => j_expr_private(book, env, t, ty, tail)))
 
@@ -266,18 +270,7 @@ law j_expr_on:
 
 @unsafe
 def j_expr_on(book, env, t, ty, tail, key):
-  kc(String, String.eq(key, "Var"), u => j_local(ix(t)), u => kc(String, String.eq(key, "Ref"), u => "get(G," ++ j_quote(nm(t)) ++ ")", u => kc(String, String.eq(key, "App"), u => j_apply(book, env, t, tail, wnf(book, j_type(book, env, kid(t, 0)))), u => kc(String, String.eq(key, "Ctr") || core_literal(t), u => j_constructor_mode(book, env, t, ty, tail), u => kc(String, String.eq(key, "Ann"), u => j_expr(book, env, kid(t, 0), kid(t, 1), tail), u => kc(String, String.eq(key, "Lam"), u => j_lambda(book, env, t, wnf(book, ty)), u => kc(String, String.eq(key, "Mat"), u => j_match(book, env, t, wnf(book, ty)), u => kc(String, String.eq(key, "Let"), u => j_let(book, env, ks(t), ty, tail), u => kc(String, String.eq(key, "Rwt"), u => j_expr(book, env, kid(t, 2), ty, tail), u => kc(String, String.eq(key, "Efq"), u => "fn(1,()=>bad(\"an absurd elimination\"))", u => kc(String, String.eq(key, "Hol"), u => "bad(\"cannot compile a hole\")", u => kc(String, String.eq(key, "ADT"), u => "({typeName:" ++ j_quote(nm(t)) ++ ",typeArgs:[" ++ j_exprs(book, env, ks(t)) ++ "]})", u => kc(String, String.eq(key, "Qua"), u => "({typeName:" ++ j_quote("&" ++ U32.show(qt(t))) ++ "})", u => kc(String, String.eq(key, "Typ"), u => "({typeName:\"Type\"})", u => kc(String, String.eq(key, "Rfl"), u => "({proof:true})", u => "null")))))))))))))))
-
-law j_lambda:
-  for +book: List<&2, KDef>
-  for +env: List<&2, KTerm>
-  for +t: KTerm
-  for +ty: KTerm
-  String
-
-@unsafe
-def j_lambda(book, env, t, ty):
-  "fn(" ++ U32.show(j_lambda_count(t)) ++ ",function(a){" ++ j_lambda_code(book, env, t, ty, 0) ++ "})"
+  kc(String, String.eq(key, "Var"), u => j_local(ix(t)), u => kc(String, String.eq(key, "Ref"), u => "get(G," ++ j_quote(nm(t)) ++ ")", u => kc(String, String.eq(key, "App"), u => j_apply(book, env, t, tail, wnf(book, j_type(book, env, kid(t, 0)))), u => kc(String, String.eq(key, "Ctr") || core_literal(t), u => j_constructor_mode(book, env, t, ty, tail), u => kc(String, String.eq(key, "Ann"), u => j_expr(book, env, kid(t, 0), kid(t, 1), tail), u => kc(String, String.eq(key, "Lam"), u => jir_compile(book, jir_lower_lambdas(book, env, t, wnf(book, ty), Nil{})), u => kc(String, String.eq(key, "Mat"), u => jir_compile(book, jir_lower_match(book, env, t, wnf(book, ty))), u => kc(String, String.eq(key, "Let"), u => jir_compile(book, jir_lower_let(book, env, ks(t), ty, tail)), u => kc(String, String.eq(key, "Rwt"), u => j_expr(book, env, kid(t, 2), ty, tail), u => kc(String, String.eq(key, "Efq"), u => "fn(1,()=>bad(\"an absurd elimination\"))", u => kc(String, String.eq(key, "Hol"), u => "bad(\"cannot compile a hole\")", u => kc(String, String.eq(key, "ADT"), u => "({typeName:" ++ j_quote(nm(t)) ++ ",typeArgs:[" ++ j_exprs(book, env, ks(t)) ++ "]})", u => kc(String, String.eq(key, "Qua"), u => "({typeName:" ++ j_quote("&" ++ U32.show(qt(t))) ++ "})", u => kc(String, String.eq(key, "Typ"), u => "({typeName:\"Type\"})", u => kc(String, String.eq(key, "Rfl"), u => "({proof:true})", u => "null")))))))))))))))
 
 law j_lambda_count:
   for +t: KTerm
@@ -323,16 +316,6 @@ law j_apply:
 def j_apply(book, env, t, tail, fty):
   j_apply_spine(book, env, t, tail, fty, j_call_spine(t, Nil{}))
 
-@unsafe
-def j_apply_one(
-  +book: List<&2, KDef>,
-  +env: List<&2, KTerm>,
-  +t: KTerm,
-  +tail: Bool,
-  +fty: KTerm,
-) -> String:
-  kc(String, tail, u => "jump(", u => "callOwned(") ++ j_expr(book, env, kid(t, 0), fty, False{}) ++ ",[" ++ kc(String, String.eq(tg(fty), "All") && U32.is_eq(qt(fty), 0), u => "null", u => j_expr(book, env, kid(t, 1), kid(fty, 0), False{})) ++ "])"
-
 law j_call_spine:
   for +t: KTerm
   for +args: List<&2, KTerm>
@@ -366,11 +349,7 @@ law j_apply_regular:
 
 @unsafe
 def j_apply_regular(book, env, t, tail, fty, spine):
-  j_finite_call(book, env, spine, j_apply_generic(book, env, t, tail, fty, spine))
-
-@unsafe
-def j_apply_generic(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +tail: Bool, +fty: KTerm, +spine: KTerm) -> String:
-  kc(String, String.eq(tg(spine), "Call") && U32.is_gt(terms_len(ks(spine)), 1) && U32.is_le(terms_len(ks(spine)), j_call_arity(lookup(book, nm(spine)))), u => kc(String, tail, u => "jump(", u => "callOwned(") ++ "get(G," ++ j_quote(nm(spine)) ++ "),[" ++ j_apply_args(book, env, ks(spine), dt(lookup(book, nm(spine)))) ++ "])", u => j_apply_one(book, env, t, tail, fty))
+  jir_compile(book, jir_lower_call_plan(env, spine, jir_lower_apply_generic(book, env, t, tail, fty, spine)))
 
 law j_call_arity:
   for +d: KDef
@@ -485,34 +464,6 @@ law j_program_context:
 @unsafe
 def j_program_context(book, defs):
   j_ctor_metadata(defs) ++ j_schemas(book, defs) ++ j_defs(book, defs) ++ "\nawait runmain(" ++ j_descriptor(book, dt(lookup(book, "main")), 64) ++ "," ++ kc(String, j_io_type(book, dt(lookup(book, "main"))), u => "true", u => "false") ++ ");\n"
-
-law j_let:
-  for +book: List<&2, KDef>
-  for +env: List<&2, KTerm>
-  for +xs: List<&2, KTerm>
-  for +ty: KTerm
-  for +tail: Bool
-  String
-
-@unsafe
-def j_let(book, env, xs, ty, tail):
-  "((" ++ j_bindings(book, env, xs) ++ ")=>" ++ j_expr(book, j_context(book, env, xs), j_body(xs), ty, tail) ++ ")(" ++ j_let_values(book, env, xs) ++ ")"
-
-law j_bindings:
-  for +book: List<&2, KDef>
-  for +env: List<&2, KTerm>
-  for +xs: List<&2, KTerm>
-  String
-
-@unsafe
-def j_bindings(book, env, xs):
-  match xs:
-    case Nil{}:
-      ""
-    case Con{h, Nil{}}:
-      ""
-    case Con{h, rest}:
-      j_local(ix(h)) ++ "," ++ j_bindings(book, env, rest)
 
 law j_context:
   for +book: List<&2, KDef>
@@ -848,19 +799,6 @@ def j_stops(
       kc(List<&2, String>, db(d) && j_intrinsic(dn(d)), u => Con{dn(d), j_stops(rest)}, u => j_stops(rest))
 # A checked residual datatype with one remaining constructor needs projection,
 # not another tag test. This also preserves the foreign JS lane's trusted values.
-law j_match:
-  for +book: List<&2, KDef>
-  for +env: List<&2, KTerm>
-  for +t: KTerm
-  for +ty: KTerm
-  String
-
-@unsafe
-def j_match(book, env, t, ty):
-  kc(String, U32.is_eq(j_constructor_count(book, wnf(book, kid(ty, 0))), 1),
-    u => "matcher1(" ++ j_quote(nm(t)) ++ ",()=>" ++ j_expr(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), False{}) ++ ")",
-    u => "matcher(" ++ j_quote(nm(t)) ++ ",()=>" ++ j_expr(book, env, kid(t, 0), j_arm_type(book, ty, nm(t)), False{}) ++ ",()=>" ++ j_expr(book, env, kid(t, 1), ty, False{}) ++ ")")
-
 law j_constructor_count:
   for +book: List<&2, KDef>
   for +ty: KTerm
@@ -882,21 +820,6 @@ def j_count_constructors(ctors, removed):
       0
     case Con{d, rest}:
       U32.add(kc(U32, has_name(removed, dn(d)), u => 0, u => 1), j_count_constructors(rest, removed))
-
-# Parallel RHSs are evaluated outside the scope introducing their binders.
-law j_let_values:
-  for +book: List<&2, KDef>
-  for +env: List<&2, KTerm>
-  for +xs: List<&2, KTerm>
-  String
-
-@unsafe
-def j_let_values(book, env, xs):
-  match xs:
-    case Nil{}: ""
-    case Con{h, Nil{}}: ""
-    case Con{h, rest}:
-      kc(String, U32.is_eq(qt(h), 0), u => "null", u => j_expr(book, env, kid(h, 0), atom("Absent"), False{})) ++ "," ++ j_let_values(book, env, rest)
 
 # Deep closures use flat factories with explicit lexical captures.
 @unsafe

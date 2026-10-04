@@ -1043,8 +1043,9 @@ def j_instance_view_defs(+book: List<&2,KDef>, +rows: List<&2,KDef>, +todo: List
   match todo:
     case Nil{}: Nil{}
     case Con{fact, rest}:
+      +body = j_instance_rewrite(book, rows, dv(fact))
       Con{KDef{j_instance_name(at), "Def", U32.sub(dx(fact), da(fact)), 0, dt(fact),
-        j_instance_rewrite(book, rows, dv(fact)), [fact, j_instance_edge_row(j_instance_rewrite(book, rows, dv(fact)))], False{}, du(j_instance_original(fact))},
+        body, [fact, j_instance_edge_row(body)], False{}, du(j_instance_original(fact))},
         j_instance_view_defs(book, rows, rest, U32.inc(at))}
 
 @unsafe
@@ -1189,13 +1190,17 @@ def j_instance_root_rows(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>) -
 @unsafe
 def j_instance_root_view(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
   +view = List.append(&2,KDef, defs, j_instance_attach(book, rows, j_instances_sources(JInstances{Nil{}, [d], 0, True{}})))
-  kc(String, j_pure_valid(j_pure_graph(view, lookup(view, j_instance_name(j_instance_source_index(rows, d, 0))), JPure{Nil{}, 131072, True{}})) && j_instance_covered_audit(view, defs, defs) && j_instance_erased_emitted(view, defs), u =>
-    j_instance_root_emit(book, view, d, rows, defs, j_instance_source_index(rows, d, 0)), u => "")
+  +at = j_instance_source_index(rows, d, 0)
+  +pure = j_pure_graph(view, lookup(view, j_instance_name(at)), JPure{Nil{}, 131072, True{}})
+  kc(String, j_pure_valid(pure) && j_instance_covered_audit(view, defs, defs) && j_instance_erased_emitted(view, defs), u =>
+    j_instance_root_emit(book, view, d, rows, defs, at, pure), u => "")
 
+# Guard dependencies consume the same successful proof used for admission.
+# The raw-view proof remains separate because emission metadata changes its book.
 @unsafe
-def j_instance_root_emit(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +defs: List<&2,KDef>, +at: U32) -> String:
+def j_instance_root_emit(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +defs: List<&2,KDef>, +at: U32, +pure: JPure) -> String:
   kc(String, U32.is_eq(at, 4294967295) || Bool.not(j_instance_emit_ready(view, lookup(view, j_instance_name(at)))), u => "", u =>
-    "(()=>{" ++ j_instance_declarations(view, defs, defs) ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_primitive_guards() ++ j_instance_native_guards(j_pure_defs(j_pure_graph(view, lookup(view, j_instance_name(at)), JPure{Nil{}, 131072, True{}}))) ++ "];return " ++
+    "(()=>{" ++ j_instance_declarations(view, defs, defs) ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_primitive_guards() ++ j_instance_native_guards(j_pure_defs(pure)) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){" ++ j_nat_loop_slots(da(d), 0) ++
     "if($entered&&regionProof===null&&regionHostGuard()&&stringHostGuard()&&" ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++
     "&&localGuard($guards)){/* private contextual instances */return " ++ j_region_name(j_instance_name(at)) ++ "$tree(" ++ j_region_vector_names("$s", 0, da(d)) ++ ");}" ++

@@ -19,30 +19,8 @@ law j_choice_leaf:
   for +binder: U32
   Bool
 
-law j_choice_after_type:
-  for +book: List<&2, KDef>
-  for +env: List<&2, KTerm>
-  for +args: List<&2, KTerm>
-  for +tail: Bool
-  for +ty: KTerm
-  String
 
-law j_choice_after_bool:
-  for +book: List<&2, KDef>
-  for +env: List<&2, KTerm>
-  for +args: List<&2, KTerm>
-  for +tail: Bool
-  for +condition: String
-  for +ty: KTerm
-  String
 
-law j_choice_branch:
-  for +book: List<&2, KDef>
-  for +env: List<&2, KTerm>
-  for +t: KTerm
-  for +ty: KTerm
-  for +tail: Bool
-  String
 
 @unsafe
 def j_choice_call(
@@ -80,18 +58,4 @@ def j_choice_emit(
   +spine: KTerm,
   +tail: Bool,
 ) -> String:
-  j_choice_after_type(book, env, ks(spine), tail, wnf(book, j_app_type(wnf(book, dt(lookup(book, nm(spine)))), kid(spine, 0))))
-
-@unsafe
-def j_choice_after_type(book, env, args, tail, ty):
-  j_choice_after_bool(book, env, args, tail, j_expr(book, env, terms_at(args, 1), kid(ty, 0), False{}), wnf(book, j_app_type(ty, terms_at(args, 1))))
-
-@unsafe
-def j_choice_after_bool(book, env, args, tail, condition, ty):
-  "(/* choice */" ++ condition ++ "?" ++ j_choice_branch(book, env, j_strip(terms_at(args, 2)), wnf(book, kid(ty, 0)), tail) ++ ":" ++
-  j_choice_branch(book, env, j_strip(terms_at(args, 3)), wnf(book, kid(wnf(book, j_app_type(ty, terms_at(args, 2))), 0)), tail) ++ ")"
-
-@unsafe
-def j_choice_branch(book, env, t, ty, tail):
-  "((" ++ j_local(ix(t)) ++ ")=>" ++ j_expr(book, Con{kt("Env", "", ix(t), 0, [kid(ty, 0)]), env}, kid(t, 0), subst(kid(ty, 1), ix(ty), var(nm(t), ix(t))), tail) ++ ")(" ++
-  kc(String, U32.is_eq(qt(ty), 0), u => "null", u => "ctor(\"Unit\",[])") ++ ")"
+  jir_compile(book, jir_lower_choice(book, env, spine, tail))

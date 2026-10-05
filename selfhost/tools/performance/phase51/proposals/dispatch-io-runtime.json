@@ -1,0 +1,64 @@
+{
+  "kind": "phase51-dispatch-io-source-proposal",
+  "status": "unselected-proposal",
+  "productionEdited": false,
+  "recipeReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase51/dispatch-evening-io01/receipt.json",
+    "bytes": 4219,
+    "sha256": "da36e5737f7bd0c45eed53312008f39cae97817a4516a88e2cf06c9a21962987"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase51/dispatch-evening-io01/receipt.json",
+      "bytes": 4219,
+      "sha256": "da36e5737f7bd0c45eed53312008f39cae97817a4516a88e2cf06c9a21962987"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase51/dispatch-prepare-io.py",
+      "bytes": 3979,
+      "sha256": "a7b1ed718340f3a4361a0d5e3c458e3d3f14931875465562b4d089a25f541c3f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/core.mjs",
+      "bytes": 22619,
+      "sha256": "d427d2433cee7585d002ea178a694e552deb7cbf8e21ce4caaf9804a1463e971"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "bytes": 57196,
+      "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+    }
+  ],
+  "patch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase51/proposals/dispatch-io-runtime.patch",
+    "bytes": 1648,
+    "sha256": "344abe483062b997eeae0f3e9e3513ed91f3936d3b862f2ce7bf6c8a1ba77ec7"
+  },
+  "files": [
+    {
+      "path": "selfhost/src/runtime/js/core.mjs",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/core.mjs",
+        "bytes": 22619,
+        "sha256": "d427d2433cee7585d002ea178a694e552deb7cbf8e21ce4caaf9804a1463e971"
+      },
+      "afterSha256": "24a968a2e484e9c9b1240a4cb9e8c93abc18bdd96aa778ad80ef70ed2169b4a0",
+      "beforeLines": 377,
+      "afterLines": 380,
+      "byteDelta": 54
+    },
+    {
+      "path": "selfhost/src/runtime.mjs",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+        "bytes": 57196,
+        "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+      },
+      "afterSha256": "ece2981b163022a958fb4ca7137a6f227f22b591ead96f025bc7c0a634aa14b6",
+      "beforeLines": 715,
+      "afterLines": 718,
+      "byteDelta": 54
+    }
+  ],
+  "scope": "Exact IO-only helper extraction; core plus deterministic same replacement in assembled bundle, no other function edits. Root must regenerate/verify assembly before integration."
+}

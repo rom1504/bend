@@ -72,10 +72,13 @@ function force(x){
     else{pending.pop();x=ctor(frame.node.name,frame.values)}
   }
 }
+function applyIO(f,args){
+  return apply(fn(2,a=>Object.hasOwn(f,'pureValue')?call(a[1],[f.pureValue]):{request:true,action:f,k:a[1]}),args);
+}
 function apply(f,args,owned=false){
   if(f===null)return null;
   if(f?.io&&args.length===0)return f;
-  if(f?.io)return apply(fn(2,a=>Object.hasOwn(f,'pureValue')?call(a[1],[f.pureValue]):{request:true,action:f,k:a[1]}),args);
+  if(f?.io)return applyIO(f,args);
   if(f?.typeName)return {typeName:f.typeName,typeArgs:[...(f.typeArgs||[]),...args]};
   if(!f?.code){if(!args.length)return f;bad('attempt to call non-function '+String(f));}
   const all=f.bound.length?f.bound.concat(args):owned?args:args.slice();
@@ -128,9 +131,12 @@ function regionProofClose(previous){regionProof=previous;}
 
 // Exact closed-U32 callback capability; public String-family snapshots stay guarded.
 const callbackU32Guard={__proto__:null};
+// Contextual roots pass this only after fresh host/String checks and cached scalar inputs.
+// It reuses permission within that entry; it never caches permission across calls.
+const stringHostChecked={__proto__:null};
 function scalarGuard(names,capability=null){
   if(regionProofCovers(names))return true;
-  let needsString=false;if(capability!==callbackU32Guard)for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
+  let needsString=false;if(capability!==callbackU32Guard&&capability!==stringHostChecked)for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
   if(needsString&&!stringHostGuard())return false;
   // Generic forcing/matching observes these hooks even on primitive values.
   if(Object.getPrototypeOf(scalarObjectPrototype)!==null||

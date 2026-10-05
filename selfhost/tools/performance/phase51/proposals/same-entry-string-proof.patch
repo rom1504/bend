@@ -1,0 +1,35 @@
+--- a/selfhost/src/runtime/js/core.mjs
++++ b/selfhost/src/runtime/js/core.mjs
+@@ -127,9 +127,12 @@
+ 
+ // Exact closed-U32 callback capability; public String-family snapshots stay guarded.
+ const callbackU32Guard={__proto__:null};
++// Contextual roots pass this only after fresh host/String checks and cached scalar inputs.
++// It reuses permission within that entry; it never caches permission across calls.
++const stringHostChecked={__proto__:null};
+ function scalarGuard(names,capability=null){
+   if(regionProofCovers(names))return true;
+-  let needsString=false;if(capability!==callbackU32Guard)for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
++  let needsString=false;if(capability!==callbackU32Guard&&capability!==stringHostChecked)for(let i=0;i<names.length;i++)if(scalarSnapshots[names[i]]?.stringFamily){needsString=true;break;}
+   if(needsString&&!stringHostGuard())return false;
+   // Generic forcing/matching observes these hooks even on primitive values.
+   if(Object.getPrototypeOf(scalarObjectPrototype)!==null||
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -1244,13 +1244,15 @@
+ def j_instance_root_guarded(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +at: U32, +pure: JPure, +declarations: String) -> String:
+   j_instance_root_guarded_mode(book, d, rows, at, pure, declarations, False{})
+ 
++# Slots are read before the fresh host/String fence; only inert scalar input checks
++# intervene before localGuard, so its String-family scan may reuse that entry proof.
+ @unsafe
+ def j_instance_root_guarded_mode(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +at: U32, +pure: JPure,
+   +declarations: String, +numberNat: Bool) -> String:
+     "(()=>{" ++ declarations ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_primitive_capabilities(rows, pure) ++ j_instance_native_guards(j_pure_defs(pure)) ++ "];return " ++
+     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){" ++ j_nat_loop_slots(da(d), 0) ++
+     "if($entered&&regionProof===null&&regionHostGuard()&&stringHostGuard()&&" ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++
+-    "&&localGuard($guards)){/* private contextual instances */" ++
++    "&&localGuard($guards,stringHostChecked)){/* private contextual instances */" ++
+       kc(String, numberNat, u => jw_nat_inputs(book, dt(d), 0, da(d)), u => "") ++ "return " ++
+       kc(String, numberNat && jw_nat_result(book, dt(d), da(d)), u => "BigInt(", u => "") ++
+       j_region_name(j_instance_name(at)) ++ "$tree(" ++ j_region_vector_names("$s", 0, da(d)) ++ ")" ++

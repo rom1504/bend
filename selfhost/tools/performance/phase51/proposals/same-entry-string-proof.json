@@ -1,0 +1,30 @@
+{
+  "kind": "phase51-proposed-same-entry-string-proof",
+  "applied": false,
+  "selected": false,
+  "files": [
+    {
+      "path": "selfhost/src/runtime/js/core.mjs",
+      "beforeSha256": "d427d2433cee7585d002ea178a694e552deb7cbf8e21ce4caaf9804a1463e971",
+      "afterSha256": "3d938c026483e89c6ebe4e3b0c2ce0aac3297dda57668429758f3002c41ee1b7",
+      "beforeBytes": 22619,
+      "afterBytes": 22869
+    },
+    {
+      "path": "selfhost/src/back/js/jpure.bend",
+      "beforeSha256": "35f560d88a507f71694b6a9020b268ca3c91897322c3e0708c654657ba7ac3e3",
+      "afterSha256": "f625c524b34144d80330327ae9da0016c4bc171ed1f93e1679e43579ba21b71b",
+      "beforeBytes": 88250,
+      "afterBytes": 88437
+    }
+  ],
+  "patch": {
+    "path": "selfhost/tools/performance/phase51/proposals/same-entry-string-proof.patch",
+    "sha256": "b0190f7052259b20298c8d04d51e26ddace5388f7a77798ef18322e05bc59a94"
+  },
+  "consumedMethodCurrentHashes": {
+    "guards-token-derive.py": "aac7b2858410479be16c56ed487a322fd6f9eb04f61925a24b747748467107b6",
+    "guards-token-controls.mjs": "91a3098b7067ebe4394ae873104daf81f744bdf5b9039c61ac2719b6c87ca2ba"
+  },
+  "proof": "j_nat_loop_slots reads all a[i] before full regionHostGuard and stringHostGuard. j_region_inputs thereafter uses only typeof-protected U32/Bool/Nat/F32 predicates on cached slots. The full host fence validates their native functions; no callback can invalidate String before localGuard. Only the second String-family check is suppressed; existing source/prototype/call/refusal checks remain. No cross-entry cache."
+}

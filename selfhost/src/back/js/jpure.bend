@@ -1244,13 +1244,15 @@ def j_instance_root_emit(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +
 def j_instance_root_guarded(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +at: U32, +pure: JPure, +declarations: String) -> String:
   j_instance_root_guarded_mode(book, d, rows, at, pure, declarations, False{})
 
+# Slots are read before the fresh host/String fence; only inert scalar input checks
+# intervene before localGuard, so its String-family scan may reuse that entry proof.
 @unsafe
 def j_instance_root_guarded_mode(+book: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +at: U32, +pure: JPure,
   +declarations: String, +numberNat: Bool) -> String:
     "(()=>{" ++ declarations ++ "const $guards=[" ++ j_instance_guards(rows) ++ j_instance_primitive_capabilities(rows, pure) ++ j_instance_native_guards(j_pure_defs(pure)) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){" ++ j_nat_loop_slots(da(d), 0) ++
     "if($entered&&regionProof===null&&regionHostGuard()&&stringHostGuard()&&" ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++
-    "&&localGuard($guards)){/* private contextual instances */" ++
+    "&&localGuard($guards,stringHostChecked)){/* private contextual instances */" ++
       kc(String, numberNat, u => jw_nat_inputs(book, dt(d), 0, da(d)), u => "") ++ "return " ++
       kc(String, numberNat && jw_nat_result(book, dt(d), da(d)), u => "BigInt(", u => "") ++
       j_region_name(j_instance_name(at)) ++ "$tree(" ++ j_region_vector_names("$s", 0, da(d)) ++ ")" ++

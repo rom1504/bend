@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Corrected reusable Lantern.left field after preserved v1 affine-use failure. Checked source anchor; controls remain unexecuted.",
+  "cases": [
+    {
+      "id": "jw-optimize-independent",
+      "family": "private-worker-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "jw-optimize-v2.bend",
+        "sha256": "4e5a87a4d2f6560575544aa94bb319a324c3a3b463c566f32f0bed056fdd2c69",
+        "bytes": 2242,
+        "provenance": {
+          "kind": "phase47-independent-worker-controls",
+          "scope": "Known-call/aggregate/scoping/error/public-boundary controls; no performance claim",
+          "correction": "v1 fails because Lantern.left is consumed twice; v2 marks only that field reusable."
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          5,
+          3
+        ],
+        "expected": 321
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Iterate x=((x+1) mod2^32) XOR (3*x mod2^32)."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "jw-optimize-independent"
+    ],
+    "core": [
+      "jw-optimize-independent"
+    ],
+    "broad": [
+      "jw-optimize-independent"
+    ],
+    "full": [
+      "jw-optimize-independent"
+    ]
+  }
+}

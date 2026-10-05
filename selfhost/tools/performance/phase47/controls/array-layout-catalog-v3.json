@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Checked anchor for independent two/four-array record transitions. Untimed controller separately checks role rotation, shared storage, public escape/refusal and ordered writes. No timing or execution claim.",
+  "cases": [
+    {
+      "id": "array-layout-independent",
+      "family": "array-record-layout",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "array-layout-v3.bend",
+        "sha256": "c31156043e63385e92eda9ca3c799dba68fd62690eed37baef4f03b09ed3cf76",
+        "bytes": 4255,
+        "provenance": {
+          "kind": "phase47-independent-controls",
+          "scope": "Renamed custom records and small independent transition oracle; no performance selector"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          9,
+          3
+        ],
+        "expected": 5220
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent Python repeated read-two/write-two/swap recurrence; JavaScript controller supplies full state and alias oracles."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "array-layout-independent"
+    ],
+    "core": [
+      "array-layout-independent"
+    ],
+    "broad": [
+      "array-layout-independent"
+    ],
+    "full": [
+      "array-layout-independent"
+    ]
+  }
+}

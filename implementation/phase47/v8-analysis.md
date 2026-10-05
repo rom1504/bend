@@ -1,4 +1,4 @@
-# Phase47: raw-array discrepancy and V8 discriminator
+# Phase 47: raw-array discrepancy and V8 discriminator
 
 Status: root executed the clean public-call screen described below. This agent
 read its evidence and performed only static source analysis and Node v24.18.0
@@ -8,17 +8,17 @@ this agent. The consumed driver remains frozen at SHA256
 
 ## Observations and comparability
 
-The saved diagnostic Phase46 batch ablation has five rotated rounds in
+The saved diagnostic Phase 46 batch ablation has five rotated rounds in
 `selfhost/build/phase47/array-timing01/report.json`: median original 680 ms,
 inline store 683 ms, invariant backing view 186 ms, invariant view plus length
 186 ms. The view ratio is 3.656x. These rewritten modules are explicitly
 `productionSafe: false`; this establishes a mechanism opportunity on that
 saved workload, not a safe compiler implementation or a library speed forecast.
 
-The initial checked Phase47 array01 local-fold canary improved roughly
+The initial checked Phase 47 array01 local-fold canary improved roughly
 90 to 85 microseconds, 1.057x; the replicated public-call screen below
 supersedes that preliminary timing. This result is distinct from the
-saved batch ablation. Their boundaries and inputs differ: the Phase46 Bend
+saved batch ablation. Their boundaries and inputs differ: the Phase 46 Bend
 batch calls bench internally with alternating lengths and 16 seeds, whereas
 the maintained library caller repeatedly calls public bench(4096,17).
 The batch can amortize admission across its internal calls.
@@ -157,7 +157,7 @@ still applies: output equality and speed do not certify a compiler transform.
 | Entry guard bypass | 73.694 | 72.317–73.936 |
 
 Write-inline improves the unchanged checked array01 median by 1.320x
-(20.398 us/call), and the Phase45 bytes by 1.424x. Combined offers no further
+(20.398 us/call), and the Phase 45 bytes by 1.424x. Combined offers no further
 observed gain. Invariant-alias alone does not improve these samples; one of
 its three observations is slower. Guard bypass improves original by 1.143x
 (10.513 us/call) but is weaker than write-inline and unsafe as a production
@@ -167,10 +167,10 @@ The narrow supported mechanism is emitted write shape on the already raw
 backing array. Pointer identity alone is not supported as the principal
 limitation in this checked public-call context.
 
-The saved Phase46 batch gave a different ordering: shell inline 683 ms
+The saved Phase 46 batch gave a different ordering: shell inline 683 ms
 versus original 680 ms, while raw backing view was 186 ms. These experiments
 start from different modules and transformations, and use different call
-boundaries and input sequences. The Phase46 store inline retained its
+boundaries and input sequences. The Phase 46 store inline retained its
 original descriptor/backing-data path; the checked array01 write-inline
 operates inside an already raw-array residual. Effect interactions, call
 context, feedback, and code layout are possible explanations. Neither
@@ -288,3 +288,56 @@ No further execution is needed for this bounded investigation. A safe
 compiler emission change should be judged by its semantic controls and
 clean repeated canaries; proving an exact V8 allocation or machine-code
 mechanism would be a separate, heavier diagnostic task.
+
+## Array04 generic-row screen and confirmation
+
+The short three-round canary initially showed complete-generic-row32 medians
+0.378669 ms baseline versus 0.434411 ms candidate, approximately 14.7% slower.
+Baseline samples were [0.421411, 0.377871, 0.378669]; candidate samples were
+[0.442355, 0.387945, 0.434411]. Root then ran the separate five-round confirmation
+`selfhost/build/phase47/array04-row-confirmation/report.json`, with 1000-ms
+warmup, 50-ms calibration and 300-ms measurement targets. It passed:
+0.377530 versus 0.383429 ms medians, 1.56% slower. Baseline range
+0.371679–0.428078 overlaps candidate 0.379318–0.395353; candidate half-drift
+values are all mildly negative, approximately -0.13% to -1.69%.
+The large initial slowdown was not reproduced. The remaining small difference
+and overlapping ranges do not establish that all variation is noise or that
+no regression exists. Broader qualification is root's separate next gate.
+
+Read-only generated-byte comparison used these exact observed modules:
+
+- Baseline: `selfhost/build/phase45/full-preparation-worker23/modules/local-row-observed.mjs`,
+  130300 bytes, SHA256 `00272df61c2eadb4fdf702e1f145de7c5df463d2fcb18d8e1f78982870c94686`.
+- Array04: `selfhost/build/phase47/array04-fast/modules/local-row-observed.mjs`,
+  148762 bytes, SHA256 `1244bb2ab31757cc8f5adf372924ea0f33ded13669ba2e1e97e77f79df0c2fe7`.
+
+The 18462-byte increase separates exactly into the 820-byte dedicated
+array-view runtime guard addition and 17642 bytes added inside `G["pair"]`.
+Removing only that runtime addition makes the prefix byte-identical.
+Both modules have 31 G definitions with the same names and order; pair is
+its only changed definition. The pair change consists of a 17446-byte private
+body declaration and 196-byte guarded entry. Its original helper declarations,
+old selected path and generic fallback are retained. The private body contains
+23 helper function declarations plus its returned root function. That extra
+lexical construction occurs at module initialization, not during row.probe.
+The two new captured host descriptors are also module-initialization work.
+
+Following literal `get(G, name)` references transitively from row.probe gives
+Array.get, Array.new, Array.set, b2u, cell, cell.f1–cell.f4, gen, init, prng,
+row, row.probe, umin and umin.go. Every one of these definitions is byte-identical
+between the two modules. Only batch references pair, and batch is not reached
+from row.probe. Public observation is unchanged as well: the same wrapper calls
+row.probe, maps its returned descriptor fields to backing arrays, and serializes
+them with JSON.stringify. The unobserved local-row modules have the same two
+changed sections and unchanged row.probe graph.
+
+The ordinary runtime dispatch/forcing helpers are unchanged. Guard iteration
+uses the requested names, not a whole-G scan; adding the private pair body
+introduces no extra per-row call to arrayViewHostGuard or pair. On this static
+call boundary there is no changed emitted operation reachable during row.probe.
+This is stronger evidence against a directly added row-body/guard cost than
+against incidental module-wide effects. The larger source, initialized private
+closure graph, and shifted source positions are real differences, but neither
+byte comparison nor the row timing establishes a JIT, GC, code-layout or
+feedback cause. No such cause is assigned here. This investigation executed
+no generated target, build, trace or profile for the row comparison.

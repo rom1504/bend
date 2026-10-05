@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "One checked acquisition anchor; untimed controller adds24 scalar oracles and31 host boundaries. Not executed or activation-qualified.",
+  "cases": [
+    {
+      "id": "array-view-independent",
+      "family": "array-storage-lifetime",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "array-view-v1.bend",
+        "sha256": "11f73cbc0f834fafacc9db4df27e0dba71b92db76cc7873e450fdfb67f1e1a6a",
+        "bytes": 2054,
+        "provenance": {
+          "kind": "phase47-independent-controls",
+          "scope": "Four-cell recurrence, public array/alias/opaque callback boundaries; no timing claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          9,
+          3
+        ],
+        "expected": 84
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent repeated read/add-one/write recurrence; host controls supplied separately."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "array-view-independent"
+    ],
+    "core": [
+      "array-view-independent"
+    ],
+    "broad": [
+      "array-view-independent"
+    ],
+    "full": [
+      "array-view-independent"
+    ]
+  }
+}

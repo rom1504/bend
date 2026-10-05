@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Checked source anchor; separate untimed controller covers field evaluation, scoping and public boundaries. Not executed.",
+  "cases": [
+    {
+      "id": "jw-optimize-independent",
+      "family": "private-worker-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "jw-optimize-v1.bend",
+        "sha256": "15a152ceeeab1bd69c67b6358bc59d48565ae547d292c42098240a6f42cb59d3",
+        "bytes": 2241,
+        "provenance": {
+          "kind": "phase47-independent-worker-controls",
+          "scope": "Known-call/aggregate/scoping/error/public-boundary controls; no performance claim"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          5,
+          3
+        ],
+        "expected": 321
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Iterate x=((x+1) mod2^32) XOR (3*x mod2^32)."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "jw-optimize-independent"
+    ],
+    "core": [
+      "jw-optimize-independent"
+    ],
+    "broad": [
+      "jw-optimize-independent"
+    ],
+    "full": [
+      "jw-optimize-independent"
+    ]
+  }
+}

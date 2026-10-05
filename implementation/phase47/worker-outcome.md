@@ -1,12 +1,12 @@
 # Bounded worker optimization: defer the first implementation
 
 2026-10-04. **Decision: retain worker02 as a tested experiment; do not select or
-promote the405-line pass.** The coordinator will preserve its independent
-source patch and checked snapshot, then remove its integration from maintained
-compiler source. No replacement pass is implemented in this report.
+promote the 405-line pass.** Its independent source patch and checked snapshot
+are preserved, and its integration has been removed from maintained compiler
+source. No replacement pass is implemented in this report.
 
 The measured change is small leaf-call expansion, with no demonstrated aggregate
-elimination in the two timed corpus programs. Preliminary2–4% speed differences
+elimination in the two timed corpus programs. Preliminary 2–4% speed differences
 do not justify shipping the current amount of additional compiler machinery.
 Compiler cost has not been measured in a controlled comparison. There is no
 full-corpus qualification or promotion claim.
@@ -15,19 +15,19 @@ full-corpus qualification or promotion claim.
 
 This report reads saved JSON and parses generated JavaScript as data. It does
 not import or execute an emitted program or compiler. Before/after modules are
-the exact selected23 baseline and checked worker02 modules joined by the
+the exact selected worker23 baseline and checked worker02 modules joined by the
 screen's manifest and timing receipt.
 
 | Receipt under `selfhost/build/phase47/` | Scope / SHA256 |
 | --- | --- |
 | `checked-worker02/attempt.json` | Checked derivative; `36b965e7bd1423a64fd92f1e438efc3a1496e721f7aa59888906501eb03bc00c`. |
-| `worker02-ir-controls/report.json` |18 independent finite-IR controls pass; `4b26c640d0d8a4c991141749e85ddd4801bf5b655b3b08a9b1f07e0e39094398`. |
-| `jw-worker02-controls/observations/report.json` |72 source oracles and11 public/error boundary controls pass; `1419909d9d3c58601c1057abb4dbb572fc8289fdd742446c47ae2abd22e65836`. |
+| `worker02-ir-controls/report.json` | 18 independent finite-IR controls pass; `4b26c640d0d8a4c991141749e85ddd4801bf5b655b3b08a9b1f07e0e39094398`. |
+| `jw-worker02-controls/observations/report.json` | 72 source oracles and 11 public/error boundary controls pass; `1419909d9d3c58601c1057abb4dbb572fc8289fdd742446c47ae2abd22e65836`. |
 | `worker02-canaries/report.json` | Five canaries pass; `99b97fa8a29692c63ce38f3319813b92608cec9487641a6e2bcba4feb721fd46`. |
 | `worker02-screen/manifest.json` | Six compiled source modules; `3d33ba29f7961b6a1fac5e6c171376a9464a5d0ecd2041a527ad29f4413c450c`. |
 | `worker02-timing/report.json` | Two-case execution screen; `cbb5f12960a8c74467bd3020beece75290a81cac494746089a0d56f77d881b6e`. |
 
-These controls establish their stated finite scopes. The18 IR cases include
+These controls establish their stated finite scopes. The 18 IR cases include
 actual call/projection reduction on a synthetic witness; that does not mean
 the same allocation-elimination mechanism activated in the corpus.
 
@@ -37,24 +37,24 @@ scrutinees and has source-module hash
 Its immutable source is in `source-worker02/src/back/js/ir/worker-optimize.bend`
 under the same build directory. The candidate API is
 `6991c98ae87bf471250237ab1ebb5caa1d83a40c4cd6ec3ed4b2ef9530f07d8e`;
-the runtime is unchanged from selected23.
+the runtime is unchanged from selected worker23.
 
 ## The short timing result
 
 Both programs pass their independent expected outputs. The screen uses three
-balanced rounds,350ms warmup,40ms calibration and150ms target samples, on CPU3.
-Its total wall time is15.2317s. These are generated-program execution timings,
+balanced rounds, 350 ms warmup, 40 ms calibration and 150 ms target samples, on CPU 3.
+Its total wall time is 15.2317 s. These are generated-program execution timings,
 excluding checking, emission, compiler build and JavaScript import.
 
-| Program and input | Selected23 median | Worker02 median | Baseline / candidate | Candidate / pinned TS |
+| Program and input | Selected worker23 median | Worker02 median | Baseline / candidate | Candidate / pinned TS |
 | --- | ---: | ---: | ---: | ---: |
-| Map churn `(128,123)` |1.441868ms |1.386127ms |1.04021× |1.75038× |
-| Records `(256,123)` |1.971195ms |1.933893ms |1.01929× |1.53186× |
+| Map churn `(128,123)` | 1.441868 ms | 1.386127 ms | 1.04021× | 1.75038× |
+| Records `(256,123)` | 1.971195 ms | 1.933893 ms | 1.01929× | 1.53186× |
 
-The corresponding median time reductions are3.87% and1.89%. The screen is
+The corresponding median time reductions are 3.87% and 1.89%. The screen is
 preliminary, not a stable improvement estimate: Map candidate second-half
-drift ranges from−22.93% to−10.79%, versus−6.46% to−5.27% for baseline. Records
-ranges from−10.56% to+27.62% for candidate and−14.76% to+19.30% for baseline.
+drift ranges from −22.93% to −10.79%, versus −6.46% to −5.27% for baseline. Records
+ranges from −10.56% to +27.62% for candidate and −14.76% to +19.30% for baseline.
 These drift magnitudes exceed the proposed benefit. A longer confirmation was
 not run for this pass.
 
@@ -71,15 +71,15 @@ all private helper declarations remain, including those whose calls expanded.
 
 | Static emitted measure | Map before → after | Records before → after |
 | --- | ---: | ---: |
-| Module bytes |246,492 →246,942 (+450;0.183%) |239,842 →240,762 (+920;0.384%) |
-| Physical lines |879 →879 |876 →876 |
-| Function declarations inside `bench` |81 →81 |82 →82 |
-| Calls to private `$R…$tree` helpers |243 →234 (−9) |245 →229 (−16) |
-| Array literal sites inside `bench` |197 →205 (+8) |205 →221 (+16) |
-| Tagged object literal sites |550 →558 (+8) |564 →580 (+16) |
-| Numeric field reads excluding machine-register indexing |198 →216 (+18) |202 →234 (+32) |
-| Private named-field reads `._N` |217 →217 |222 →222 |
-| Assignment expressions |2,281 →2,306 (+25) |2,341 →2,389 (+48) |
+| Module bytes | 246,492 → 246,942 (+450; 0.183%) | 239,842 → 240,762 (+920; 0.384%) |
+| Physical lines | 879 → 879 | 876 → 876 |
+| Function declarations inside `bench` | 81 → 81 | 82 → 82 |
+| Calls to private `$R…$tree` helpers | 243 → 234 (−9) | 245 → 229 (−16) |
+| Array literal sites inside `bench` | 197 → 205 (+8) | 205 → 221 (+16) |
+| Tagged object literal sites | 550 → 558 (+8) | 564 → 580 (+16) |
+| Numeric field reads excluding machine-register indexing | 198 → 216 (+18) | 202 → 234 (+32) |
+| Private named-field reads `._N` | 217 → 217 | 222 → 222 |
+| Assignment expressions | 2,281 → 2,306 (+25) | 2,341 → 2,389 (+48) |
 
 These are static syntax counts, not dynamic allocation counts or sampled CPU
 shares. In particular, copying a helper into a caller adds literal sites while
@@ -93,15 +93,15 @@ array identifies the original source helper:
 
 | Module | Private instance / source helper | Static calls before → after |
 | --- | --- | ---: |
-| Map |35 / `Map.del.fin` |1 →0 |
-| Map |38 / `Map.lo` |6 →2 |
-| Map |39 / `Map.hi` |6 →2 |
-| Records |31 / `Map.lo` |12 →8 |
-| Records |32 / `Map.hi` |12 →8 |
-| Records |36 / `Map.lo` |6 →2 |
-| Records |37 / `Map.hi` |6 →2 |
+| Map | 35 / `Map.del.fin` | 1 → 0 |
+| Map | 38 / `Map.lo` | 6 → 2 |
+| Map | 39 / `Map.hi` | 6 → 2 |
+| Records | 31 / `Map.lo` | 12 → 8 |
+| Records | 32 / `Map.hi` | 12 → 8 |
+| Records | 36 / `Map.lo` | 6 → 2 |
+| Records | 37 / `Map.hi` | 6 → 2 |
 
-Map's changed emitted functions are private instance36, `$worker40` and
+Map's changed emitted functions are private instance 36, `$worker40` and
 `$native40`. Records changes `$worker33`, `$native33`, `$worker38` and
 `$native38`. Native and continuation-machine bodies duplicate source edges;
 their static counts must not be added as executed calls on one input.
@@ -145,7 +145,7 @@ String reconstruction helpers and branchy RLE work lie outside this first slice.
 
 ## Could a smaller pass be worthwhile?
 
-**Do not retain405 lines merely as enabling infrastructure.** Preserve the
+**Do not retain 405 lines merely as enabling infrastructure.** Preserve the
 implementation, test witnesses and refusal counterexamples for reuse when a
 consumer demonstrates a benefit. They are useful experiment outputs, but they
 are not performance or simplification credit for the installed compiler.
@@ -189,8 +189,8 @@ function-valued signatures.
 
 | Module | Baseline SHA256 | Worker02 SHA256 |
 | --- | --- | --- |
-| Map churn |`652574426a7a8c234dbda91841ec3505dd655da08b5c357451d67ed3aa7ac998` |`1eb928b356babd50d9770aa79b212831a301683ecfeb0fd730e1eb76d32f2254` |
-| Records |`5ba71c4ff05b1c9af4f3af39cac5fbc36a0b276511a0c46a5d0c51e6795c6c94` |`c2f084c3a40f9d9884fd8c2f93194a02dc412857cd952fc885d898c314fe0140` |
+| Map churn | `652574426a7a8c234dbda91841ec3505dd655da08b5c357451d67ed3aa7ac998` | `1eb928b356babd50d9770aa79b212831a301683ecfeb0fd730e1eb76d32f2254` |
+| Records | `5ba71c4ff05b1c9af4f3af39cac5fbc36a0b276511a0c46a5d0c51e6795c6c94` | `c2f084c3a40f9d9884fd8c2f93194a02dc412857cd952fc885d898c314fe0140` |
 
 Candidate modules are in `worker02-screen/modules/`. Exact extracted baseline
 modules are in `worker02-timing/modules/baseline/baseline/modules/<SHA256>.mjs`,

@@ -458,7 +458,13 @@ function renderDiagnostic(api,detailed,diagnostic,loadTrace,graph) {
   } catch(error) {trace('diagnostic rendering unavailable: '+error.message);return 'Error: '+diagnostic;}
 }
 
-async function inspectWithMemo(input,{mode='check',backend='js',api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false}={},memo=null) {
+// Explicit 'js' retains the descriptor ABI used by compiler images and old callers.
+export function javascriptBackendForMode(mode='check',backend) {
+  return backend??(['compile','library','interpreter'].includes(mode)?'direct':'js');
+}
+
+async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false}={},memo=null) {
+  backend=javascriptBackendForMode(mode,backend);
   api??=await loadApi();
   let phase='load';
   try {
@@ -620,7 +626,7 @@ async function inspectWithMemo(input,{mode='check',backend='js',api,args=[],time
   }
 }
 
-export async function execute(input,{workdir,timeoutMs=5000,args=[],api,backend='js',combinedOutput=false,withReport=false}={}) {
+export async function execute(input,{workdir,timeoutMs=5000,args=[],api,backend='direct',combinedOutput=false,withReport=false}={}) {
   const compiled=await inspect(input,{mode:['js','direct'].includes(backend)?'compile':'native',backend:backend==='direct'?'direct':'js',api,withReport});
   if(compiled.status!=='ok') return compiled;
   return {...await executeCompiled(compiled,{workdir,timeoutMs,args,backend,combinedOutput,programName:path.basename(input,'.bend')}),typeAccepted:true,proofTrust:compiled.proofTrust,kernelChecked:false,verdict:compiled.verdict};
@@ -664,8 +670,8 @@ export async function main(args) {
   if(args[0]==='--prepare-base') {const result=await prepareBase();console.log('Base checked by generated Bend API: '+result.baseSha256);return;}
   if(args.length===1&&['version','--version'].includes(args[0])) {console.log('Bend2 port targeting '+compilerTarget.targetVersion);return;}
   const optionArgs=args.slice(0,args.includes('--')?args.indexOf('--'):args.length);
-  if(!args.length||optionArgs.includes('--help')||optionArgs.includes('-h')) {console.log('node cli.mjs FILE.bend [ARGS] [--check-only | --checkup | --interpret | --run | --library]\n  [-o OUTPUT]... [--direct-js | --native | --cpu | --metal | --cuda]\nDefault: check, then interpret main; .js/.mjs output emits JavaScript, .c emits C, other output builds a binary.\n--direct-js selects the upstream-compatible JavaScript interface for --library and --run.\nnode tools/typed-driver.mjs --bootstrap');if(!args.length)process.exitCode=1;return;}
-  let input,mode='interpreter',programArgs=[],library=false,backend='js',jsBackend='js',checkup=false,only=false;
+  if(!args.length||optionArgs.includes('--help')||optionArgs.includes('-h')) {console.log('node cli.mjs FILE.bend [ARGS] [--check-only | --checkup | --interpret | --run | --library]\n  [-o OUTPUT]... [--legacy-js | --direct-js | --native | --cpu | --metal | --cuda]\nDefault: check, then interpret main; .js/.mjs output emits JavaScript, .c emits C, other output builds a binary.\nJavaScript output and --run use the upstream-compatible callable interface by default.\n--legacy-js retains the descriptor JavaScript interface; --direct-js explicitly selects the default.\nnode tools/typed-driver.mjs --bootstrap');if(!args.length)process.exitCode=1;return;}
+  let input,mode='interpreter',programArgs=[],library=false,backend='js',jsBackend='direct',explicitJsBackend=null,checkup=false,only=false;
   const outputs=[];
   while(args.length) {
     const arg=args.shift();
@@ -675,7 +681,11 @@ export async function main(args) {
     else if(arg==='--interpret') mode='interpreter';
     else if(arg==='--run') mode='run';
     else if(arg==='--library') {mode='library';library=true;}
-    else if(arg==='--direct-js')jsBackend='direct';
+    else if(arg==='--direct-js'||arg==='--legacy-js') {
+      const selected=arg==='--direct-js'?'direct':'js';
+      if(explicitJsBackend&&explicitJsBackend!==selected)throw Error('--direct-js and --legacy-js are mutually exclusive');
+      jsBackend=selected;explicitJsBackend=selected;
+    }
     else if(['--native','--cpu','--metal','--cuda'].includes(arg))backend=arg.slice(2);
     else if(arg==='-o'&&args.length)outputs.push(path.resolve(args.shift()));
     else if(arg==='--') {programArgs=args;break;}
@@ -688,7 +698,7 @@ export async function main(args) {
   if(checkup&&(outputs.length||library))throw Error('--checkup takes no -o or --library');
   if(programArgs.length&&(outputs.length||mode==='check'||checkup||library))throw Error('Arguments go to a run');
   if(backend!=='js'&&library)throw Error('--library currently supports JavaScript only');
-  if(jsBackend==='direct'&&(backend!=='js'||outputs.some(output=>!['.js','.mjs'].includes(path.extname(output)))))throw Error('--direct-js requires JavaScript output');
+  if(explicitJsBackend&&(backend!=='js'||outputs.some(output=>!['.js','.mjs'].includes(path.extname(output)))))throw Error('Explicit JavaScript backend selection requires JavaScript output');
   if(checkup) {
     const api=await loadApi();
     await prepareBase(api);
@@ -717,7 +727,7 @@ export async function main(args) {
       const extension=path.extname(output),binary=!library&&!['.js','.mjs','.c'].includes(extension);
       const emission=library?'library':backend!=='js'||extension==='.c'||binary?'native':'compile';
       let result=compiled.get(emission);
-      if(!result){result=await inspect(input,{mode:emission,backend:jsBackend,timeoutMs:120000,withReport:true});compiled.set(emission,result);}
+      if(!result){result=await inspect(input,{mode:emission,backend:emission==='native'?'js':jsBackend,timeoutMs:120000,withReport:true});compiled.set(emission,result);}
       if(result.status!=='ok'){printResult(result);process.exitCode=result.exitCode??1;return;}
       const target=fs.existsSync(output)?fs.realpathSync(output):output;
       if(fs.existsSync(output)&&fs.statSync(output).isDirectory())throw Error('Output is a directory');
@@ -738,7 +748,7 @@ export async function main(args) {
     process.exitCode=0;return;
   }
   if(library)mode='library';
-  const result=mode==='run'?await execute(input,{args:programArgs,timeoutMs:120000,backend:jsBackend==='direct'?'direct':backend,withReport:true}):await inspect(input,{mode,backend:jsBackend,args:programArgs,timeoutMs:120000,withReport:true,proofOnly:only});
+  const result=mode==='run'?await execute(input,{args:programArgs,timeoutMs:120000,backend:backend==='js'?jsBackend:backend,withReport:true}):await inspect(input,{mode,backend:jsBackend,args:programArgs,timeoutMs:120000,withReport:true,proofOnly:only});
   if(result.status==='ok'&&mode==='library')process.stdout.write(result.code);
   else printResult(result);
   process.exitCode=result.exitCode??(result.status==='ok'?0:1);

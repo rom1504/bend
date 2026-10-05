@@ -65,7 +65,12 @@ function f32_show(x) {
 }
 
 function f32_bits(x) {
-  return new Uint32Array(new Float32Array([x]).buffer)[0];
+  // Avoid an intermediate JS array: its cold element-kind transition can
+  // canonicalize a Number NaN and discard a payload on only one conversion.
+  // Fresh storage keeps nested host coercions independent; the store coerces once.
+  const f = new Float32Array(1);
+  f[0] = x;
+  return new Uint32Array(f.buffer)[0];
 }
 
 function f32_from_bits(u) {

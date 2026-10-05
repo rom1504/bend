@@ -8,7 +8,7 @@ export async function createPrivateSession(image) {
  const D=await import(pathToFileURL(path.join(root,'host/tools/typed-driver.mjs'))),api=await D.loadApi();
  return {manifestIdentity:before.manifestIdentity,async inspect(value,directory){
   const request=validateInspectRequest(value),out=fs.realpathSync(directory),started=performance.now(),audit=auditReads({cacheDirectory:path.join(root,'host/build/typed/cache')});
-  let result,inputs;try{result=await D.inspect(request.input,{api,mode:request.mode,withReport:request.withReport});inputs=audit.finish();}finally{audit.stop();}
+  let result,inputs;try{result=await D.inspect(request.input,{api,backend:'js',mode:request.mode,withReport:request.withReport});inputs=audit.finish();}finally{audit.stop();}
   const report={kind:'bend-private-compiler-request',version:1,complete:true,request,result,requestMs:performance.now()-started,inputs,proofStatus:manifest.proofStatus,imageManifest:before.manifestIdentity,
    node:{file:process.execPath,version:process.version,args:process.execArgv,identityVerifiedBy:'batch supervisor before/after this worker lifetime'}};
   if(result.code!==undefined){

@@ -15,7 +15,7 @@ process.env.BEND_TYPED_API=path.join(root,'image.mjs');process.env.BEND_TYPED_RU
 const D=await import(pathToFileURL(path.join(root,'host/tools/typed-driver.mjs'))),api=await D.loadApi();
 const started=performance.now(),audit=auditReads({cacheDirectory:path.join(root,'host/build/typed/cache')});
 let result,inputs;
-try{result=await D.inspect(request.input,{api,mode:request.mode,withReport:request.withReport});inputs=audit.finish();}finally{audit.stop();}
+try{result=await D.inspect(request.input,{api,backend:'js',mode:request.mode,withReport:request.withReport});inputs=audit.finish();}finally{audit.stop();}
 const requestMs=performance.now()-started;
 verifyIdentity(before.manifestIdentity);verifyImage(root);verifyIdentity(requestIdentity);
 const report={kind:'bend-private-compiler-request',version:1,complete:true,request,result,requestMs,inputs,proofStatus:manifest.proofStatus,

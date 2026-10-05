@@ -7,7 +7,7 @@ const before=verifyImage(directory),node={...identity(process.execPath),version:
 process.env.BEND_TYPED_API=path.join(root,variant==='public'?'provenance/public-api.mjs':'provenance/initial-compiler.mjs');process.env.BEND_TYPED_RUNTIME=path.join(root,'runtime.mjs');process.env.BEND_BASE=manifest.base.file;delete process.env.BEND_TYPED_TRACE;
 const D=await import(pathToFileURL(path.join(root,'host/tools/typed-driver.mjs'))),api=await D.loadApi(),rows=[];
 for(const [i,{request}] of requests.entries()){
- const start=performance.now(),result=await D.inspect(request.input,{api,mode:request.mode,withReport:request.withReport}),row={index:i,request,result,requestMs:performance.now()-start};
+ const start=performance.now(),result=await D.inspect(request.input,{api,backend:'js',mode:request.mode,withReport:request.withReport}),row={index:i,request,result,requestMs:performance.now()-start};
  if(result.code!==undefined){const file=path.join(out,String(i)+'.mjs');fs.writeFileSync(file,result.code,{flag:'wx'});row.emitted={file,sha256:digest(result.code),bytes:Buffer.byteLength(result.code)};delete result.code;}
  rows.push(row);
 }

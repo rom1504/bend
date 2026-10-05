@@ -2912,3 +2912,16 @@ about 14 minutes after the raw start. Source/review/docs time is separate.
 The [diagnostic guide](../selfhost/tools/performance/phase49/README.md) and complete
 closed evidence make these probes reusable. The 103 unrelated files remain intact;
 no PR comment was posted.
+
+## Phase50 information-only guard survey — 2026-10-05
+
+[Report](../implementation/phase50/README.md): all 45 RNFA04 points profiled with
+full result checks. Guard ancestry exceeds 50% in 11 points and is below 5% in
+16. Morning/Evening have zero named-guard samples; generic application/matching
+plus roughly 28–30× TS sampled allocation dominate these and much of MapSet.
+Pinned V8 identifies `apply` bytecode-size inlining refusals; all six trace
+measurement windows have zero bailouts. Expression transport is another distinct
+cost. 63 serial jobs pass, 137.40 s target occupancy, 200.04 MiB maximum tree RSS.
+No fixes, bypasses, compiler rebuilds, new clean ratios or release changes.
+**Updated frontier:** distinguish guard-heavy optimized paths from generic
+dispatch and materialized producer/consumer paths; investigate each independently.

@@ -1,4 +1,4 @@
-# Current compiler: Phase48 RNFA04; latest investigation: Phase49
+# Current compiler: Phase48 RNFA04; latest investigation: Phase50
 
 RNFA04 is installed. Release verification, all 42 ordinary/relocated CLI checks
 and portable replay pass. The [report](../implementation/phase48/README.md),
@@ -62,7 +62,16 @@ outputs, but median requests regress **3.274% Evening / 4.411% lexer**. This
 two-source screen is separate from program execution and self-compilation. No
 source simplification or compiler-throughput improvement is claimed.
 
-## Next experiments after Phase49 V8 diagnosis
+## Next experiments after Phase49/50 V8 diagnosis
+
+The [Phase50 all-point CPU survey](../implementation/phase50/README.md) adds a
+necessary split: guards dominate 11/45 points but are below 5% in 16. Morning
+and Evening instead pay generic dispatch/matcher transport; these and MapSet
+allocate roughly 28–30× TS bytes per call. V8 refuses to inline `apply` because
+of its bytecode size, despite optimizing it; no measured-window deopts occur in
+six selected traces. Investigate a smaller common dispatcher separately from
+narrower guards. Expression producer/evaluator transport is a third hypothesis.
+This phase collects information only and leaves the installed compiler unchanged.
 
 The [Phase49 investigation](../implementation/phase49/README.md) changes the
 priority. Installed RNFA04's RLE output is byte-identical to retained array06.

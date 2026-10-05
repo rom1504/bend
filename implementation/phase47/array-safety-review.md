@@ -220,3 +220,98 @@ dispatch through a public descriptor with a raw backing argument. Arguments of
 the retained self-tail call still normalize recursively, so nested private work
 uses the same layout. No new recursion admission, public ABI or fallback change
 was found. This verdict is static and precedes root-owned array04 execution.
+
+## Follow-up: a nested private tree bypasses the optimized public root
+
+Read-only inspection of checked array04's emitted `editdist.mjs` falsifies the
+proposed explanation that an inherited `regionProof` alone prevents the
+positive-depth workload from improving. `G.bench` calls `G.batch`. The latter's
+private scalar-tree body calls its own handle-based private `pair` helper; its
+complete assignment contains neither `regionProofOpen` nor an array-view guard
+or raw-root marker. The separate public `G.pair` assignment does contain one raw
+root. Changing only the nested-proof guard cannot affect that private tree leaf.
+This is structural evidence, not an executed activation or timing result.
+
+Fresh nested admission is a separate possible extension. It would require both
+the full host capability and source dependencies to be checked afresh, in the
+order host capability, original scalar input validation, source guard, body.
+An explicit fresh mode in the host/local/scalar guard functions can bypass only
+their inherited-proof shortcuts. Temporarily clearing proof solely around the
+local guard is also defensible after a complete fresh host check, provided a
+`finally` restores it before both body and fallback. The remaining checks then
+use verified native reflection on fixed original objects; accessor or Proxy
+replacements fail identity checks before traversal. Checking fresh host state
+while still accepting `regionProofCovers` for source dependencies is insufficient.
+Neither extension was implemented or executed by this review.
+
+## Composition at the existing private tree entry
+
+The proposed adapter and its subsequent two-file implementation pass independent
+static review. The shared audit now accepts an explicit list of already-checked
+terms: the tree's zero arm and successor/combiner. Its original complete helper
+list is audited as before. The root is added only to the allowed-call lookup,
+so the existing tree proof authorizes its two saturated self children without
+adding an unchecked source body to the helper set.
+
+The additional lexical closure shares the existing tree frame emitter. It
+normalizes every private helper and both checked arms consistently, retaining
+the root self Apps that the frame emitter consumes. The wrapper passes the same
+Succ predecessor; only the original `j_tree_body` adds one to restore the current
+depth. Parallel children, saved parent arguments and left/right unwind order
+therefore retain their existing implementation. The combiner remains restricted
+to the two child results, with no parent capture.
+
+Entry uses fresh array host permission, original scalar/predecessor validation,
+the original predecessor bound `<32n`, and the original full dependency guard.
+The zero matcher and complete old tree/generic path are retained. No inherited
+proof shortcut is relaxed, no proof is opened by the new branch, and the runtime
+is unchanged. As with the ordinary raw-array root, unsupported nodes or audit
+fuel exhaustion refuse the representation change. Extra lexical declarations
+increase generated size and compiler work; this review establishes no speed gain.
+
+| Reviewed file | SHA256 |
+| --- | --- |
+| `src/back/js/array-view.bend` | `7509f9d5f27c888064b5927bc958d74a5b1c0492619ab576ee878a7bef56ea95` |
+| `src/back/js/tree.bend` | `4936fad0f0ea6e49200e21c9751d5c3fa52c139732cacf19dd79aee88a325b2c` |
+
+The separately prepared counter producer also passes static review: exact
+whole-module hashes justify its fixed assignment anchors, and its observations
+are explicitly ineligible for timing or host-introspection claims. The renamed
+v4 fixture was corrected before consumption to combine only child results. Its
+159 finite oracles, separate raw-tree/leaf counters, zero-depth control and ten
+host/source mutation scenarios supplement the existing public-storage and
+reflection controls. This review executed no target program.
+
+## Integer-only host guard subtype
+
+The subsequent five-file guard refinement passes static review against frozen
+array05. It retains full host checking whenever the canonical root signature,
+original root type/body, either checked tree arm, or any helper's canonical
+signature/type/body contains floating use. `j_region_float_signature` normalizes
+parameter types before testing them, so an unused aliased F32 argument still
+requires the full guard before its Math.fround/Number.isNaN input predicate.
+
+For an admitted integer-only graph, the existing reduced host set still checks
+global identities, reflection, WeakSet operations, array protocols and prototype
+keys, Number.isInteger and Math.imul. The new separate captured Math.floor data
+descriptor check covers U32.div. Number/BigInt conversions and existing exact
+Array.fill/Number.isSafeInteger checks cover the remaining native operations.
+The closed-array audit refuses F32 literals, F32 operations, U32.to_f32 and
+unknown native operations; none of the omitted DataView/floating methods is
+reachable from this subtype. No assumption is made that an unused floating
+parameter is absent merely because its body ignores it.
+
+Global Math identity is checked before reading its floor descriptor through
+captured reflection, so a replacement/accessor cannot run during admission.
+Non-null inherited proof still refuses. Both entry routes keep the original
+host-before-input-before-dependency ordering and complete fallback. Full mode
+retains its previous emitted guard spelling; the two runtime copies contain the
+same change. This is a static safety result, not an executed performance result.
+
+| Reviewed file | SHA256 |
+| --- | --- |
+| `src/back/js/array-view.bend` | `f1774c1b289c3707a010a89757b166180e54d77bc06304615b5004af1fccbb18` |
+| `src/back/js/region.bend` | `6ee245756d76d5dfc285b5da5af9f974ef93bcd13e62b308491c16d2a675526d` |
+| `src/back/js/tree.bend` | `d5862f37796aee0908bc623492e54a9ece7a7ab4f34072e080e483402955798b` |
+| `src/runtime/js/core.mjs` | `d427d2433cee7585d002ea178a694e552deb7cbf8e21ce4caaf9804a1463e971` |
+| `src/runtime.mjs` | `880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b` |

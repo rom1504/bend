@@ -152,9 +152,23 @@ Base validation and compilation; the resource runner's verification/process
 wall is reported separately. This is a small compilation cost, not a compiler
 speedup.
 
-Final full-corpus runtime, source/output accounting, installation and durable
-publication are pending. No new aggregate ratio or release claim is made here
-until those receipts complete. The maintained comparison uses 45 points over 23
+The complete array04 reference run passed all 45 points and 669 samples.
+The equal-point geometric mean is 3.00678× TypeScript versus the freshly paired
+worker23's 3.08744×: a 1.02683× improvement. Equal-source means are 4.07916× and
+4.16198× respectively. This is a modest aggregate result, despite larger gains
+on the targeted paths. [Exact reference results](evidence/corpus-array04.json).
+
+The run exposed two composition/cost issues. Positive-depth edit distance still
+used a separate handle-based private tree helper and showed no improvement; an
+untimed four-case counter experiment confirms that it bypasses the public raw
+entry. A 32-line shared tree adapter now passes the checked build, the previous
+controls, eight semantic suites, and 159 independent recursive scalar oracles
+plus 11 boundaries. Its performance remains to be measured. Separately, the
+128-step fold regresses from 7.705 to 16.362 microseconds per call, while the
+8192-step variation improves from 173.065 to 110.662 microseconds. A guard-cost
+ablation is pending; neither observation is hidden by the aggregate.
+
+Final candidate selection, installation and durable publication are pending. The maintained comparison uses 45 points over 23
 sources and 669 rotated role samples against exact worker23 and pinned TypeScript.
 See [remaining work](remaining-work.md) for the next unvalidated opportunities.
 

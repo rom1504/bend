@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Independent checked anchor for composition of private scalar-tree recursion with fresh two-array leaf state. Proposal only; no execution or performance claim.",
+  "cases": [
+    {
+      "id": "array-tree-independent",
+      "family": "array-private-tree-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "array-tree-v4.bend",
+        "sha256": "05c6dba9678b6733bfb4585e8a77392f1d126f7d8a17d4e2236c00ca17c3afea",
+        "bytes": 2240,
+        "provenance": {
+          "kind": "phase47-independent-controls",
+          "scope": "Renamed binary Nat recursion plus two-array role-swapping leaf, specified independently of emitted code"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          7
+        ],
+        "expected": 33135
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent recursive Python oracle with fresh arrays per leaf, U32 wrapping, right-seed offset and left/right result mix."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "array-tree-independent"
+    ],
+    "core": [
+      "array-tree-independent"
+    ],
+    "broad": [
+      "array-tree-independent"
+    ],
+    "full": [
+      "array-tree-independent"
+    ]
+  }
+}

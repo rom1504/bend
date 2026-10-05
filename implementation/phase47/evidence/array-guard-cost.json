@@ -1,0 +1,221 @@
+{
+  "kind": "phase47-array04-guard-cost-recomputed",
+  "complete": true,
+  "dataOnly": true,
+  "sourceReports": [
+    {
+      "path": "selfhost/build/phase47/array04-guard-timing01/report.json",
+      "sha256": "048abf9f1cf26788b11524654a86aa85d056f431ec5287fc25bccfa5802283cc"
+    },
+    {
+      "path": "selfhost/build/phase47/corpus-array04/runtime-1/report.json",
+      "sha256": "3bc54f05bd72d0abb8465b04d7ffe153262b678fe1c865f3ac7f5f280e98b598"
+    }
+  ],
+  "sampleCount": 45,
+  "protocol": {
+    "rounds": 5,
+    "cpu": 3,
+    "warmupMs": 1000,
+    "targetMs": 200,
+    "calibrationMs": 50,
+    "scope": "Guard-only derivatives; canonical input and localGuard preserved."
+  },
+  "ablation": [
+    {
+      "point": "128-0",
+      "variant": "original",
+      "samplesUs": [
+        15.810685786521287,
+        15.984294339622641,
+        17.49413902657025,
+        15.83484452352708,
+        15.879460577923648
+      ],
+      "medianUs": 15.879460577923648,
+      "minUs": 15.810685786521287,
+      "maxUs": 17.49413902657025,
+      "savingVsOriginalUs": 0.0
+    },
+    {
+      "point": "128-0",
+      "variant": "integer-only",
+      "samplesUs": [
+        14.014993113342907,
+        13.891670884276374,
+        14.074526319488369,
+        16.100589475431608,
+        14.13812801967307
+      ],
+      "medianUs": 14.074526319488369,
+      "minUs": 13.891670884276374,
+      "maxUs": 16.100589475431608,
+      "savingVsOriginalUs": 1.8049342584352797
+    },
+    {
+      "point": "128-0",
+      "variant": "bypass-array-host",
+      "samplesUs": [
+        6.022412229391542,
+        6.224319501828017,
+        6.23459145559235,
+        6.255065029979416,
+        6.3854628109338
+      ],
+      "medianUs": 6.23459145559235,
+      "minUs": 6.022412229391542,
+      "maxUs": 6.3854628109338,
+      "savingVsOriginalUs": 9.644869122331299
+    },
+    {
+      "point": "4096-17",
+      "variant": "original",
+      "samplesUs": [
+        61.872602503912354,
+        62.06136062015503,
+        62.58344320643762,
+        61.605705918809996,
+        62.29238950962137
+      ],
+      "medianUs": 62.06136062015503,
+      "minUs": 61.605705918809996,
+      "maxUs": 62.58344320643762,
+      "savingVsOriginalUs": 0.0
+    },
+    {
+      "point": "4096-17",
+      "variant": "integer-only",
+      "samplesUs": [
+        60.336490804944184,
+        59.970882740053845,
+        63.533932355881426,
+        60.34824887014161,
+        60.38287966305658
+      ],
+      "medianUs": 60.34824887014161,
+      "minUs": 59.970882740053845,
+      "maxUs": 63.533932355881426,
+      "savingVsOriginalUs": 1.713111750013418
+    },
+    {
+      "point": "4096-17",
+      "variant": "bypass-array-host",
+      "samplesUs": [
+        52.93013282880998,
+        53.0549992142483,
+        52.894523621008226,
+        54.200474947257405,
+        53.359469549169525
+      ],
+      "medianUs": 53.0549992142483,
+      "minUs": 52.894523621008226,
+      "maxUs": 54.200474947257405,
+      "savingVsOriginalUs": 9.00636140590673
+    },
+    {
+      "point": "8192-123",
+      "variant": "original",
+      "samplesUs": [
+        112.15292169657424,
+        112.39037337662337,
+        121.38357781753129,
+        112.61350324324322,
+        112.3155830618892
+      ],
+      "medianUs": 112.39037337662337,
+      "minUs": 112.15292169657424,
+      "maxUs": 121.38357781753129,
+      "savingVsOriginalUs": 0.0
+    },
+    {
+      "point": "8192-123",
+      "variant": "integer-only",
+      "samplesUs": [
+        109.98861930010611,
+        114.77659129967778,
+        110.35456991525423,
+        110.31497109207707,
+        110.58172415669209
+      ],
+      "medianUs": 110.35456991525423,
+      "minUs": 109.98861930010611,
+      "maxUs": 114.77659129967778,
+      "savingVsOriginalUs": 2.0358034613691416
+    },
+    {
+      "point": "8192-123",
+      "variant": "bypass-array-host",
+      "samplesUs": [
+        99.06480643402398,
+        99.36643294614572,
+        113.16793356047692,
+        105.41332484472052,
+        100.82913621964107
+      ],
+      "medianUs": 100.82913621964107,
+      "minUs": 99.06480643402398,
+      "maxUs": 113.16793356047692,
+      "savingVsOriginalUs": 11.561237156982301
+    }
+  ],
+  "fullCorpusContrast": [
+    {
+      "id": "variation-local-fold-128-0",
+      "roles": {
+        "baseline": {
+          "medianUs": 7.704816879337366,
+          "samplesUs": [
+            7.688810528141959,
+            7.391165730060139,
+            7.766727204276783,
+            7.704816879337366,
+            7.73195458541609
+          ]
+        },
+        "candidate": {
+          "medianUs": 16.36198992416609,
+          "samplesUs": [
+            16.495600908847898,
+            16.36198992416609,
+            15.715168612054326,
+            16.434191152012417,
+            15.678814156431804
+          ]
+        }
+      },
+      "candidateOverBaseline": 2.1236052952855204
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "roles": {
+        "baseline": {
+          "medianUs": 173.0647279538904,
+          "samplesUs": [
+            173.0647279538904,
+            172.59930693641616,
+            174.75717993079593,
+            190.67785209003213,
+            172.58838808559858
+          ]
+        },
+        "candidate": {
+          "medianUs": 110.66240542495474,
+          "samplesUs": [
+            110.35715390147428,
+            110.53440941768511,
+            110.88996097386321,
+            110.89759255242228,
+            110.66240542495474
+          ]
+        }
+      },
+      "candidateOverBaseline": 0.6394278414399871
+    }
+  ],
+  "productionSafe": false,
+  "caveats": [
+    "Integer-only diagnostic lacks general no-F32 proof and excludes Math.floor needed by U32.div.",
+    "Bypass disables the array host proof and is never a production proposal.",
+    "Separate-run medians are not a paired fixed-cost measurement."
+  ]
+}

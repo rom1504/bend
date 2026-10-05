@@ -1,0 +1,62 @@
+--- a/selfhost/src/back/js/array-effects.bend
++++ b/selfhost/src/back/js/array-effects.bend
+@@ -9,14 +9,15 @@
+ 
+ @unsafe
+ def j_array_effect_array(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
+-  String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Array") &&
++  kc(Bool, String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Array") &&
+     U32.is_eq(terms_len(ks(ty)), 1) && List.is_empty(&2, String, rm(ty)) &&
+-    j_u32_native_ctor(book, "Array", "ALeaf") && j_u32_native_ctor(book, "Array", "ANode") &&
+-    Bool.not(String.eq(j_array_effect_element(book, kid(ty, 0)), ""))
++    j_u32_native_ctor(book, "Array", "ALeaf") && j_u32_native_ctor(book, "Array", "ANode"),
++    u => Bool.not(String.eq(j_array_effect_element(book, kid(ty, 0)), "")), u => False{})
+ 
+ @unsafe
+ def j_array_effect_array_of(+book: List<&2,KDef>, +ty: KTerm, +element: String) -> Bool:
+-  j_array_effect_array(book, ty) && String.eq(j_array_effect_element(book, kid(ty, 0)), element)
++  kc(Bool, j_array_effect_array(book, ty),
++    u => String.eq(j_array_effect_element(book, kid(ty, 0)), element), u => False{})
+ 
+ @unsafe
+ def j_array_effect_known(+name: String) -> Bool:
+@@ -31,20 +32,28 @@
+ def j_array_effect_native(+book: List<&2,KDef>, +spine: KTerm) -> Bool:
+   kc(Bool, String.eq(nm(spine), "F32.to_u32"), u =>
+     String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), 1) && j_pure_native(book, lookup(book, nm(spine))), u =>
+-    String.eq(tg(spine), "Call") && j_array_effect_known(nm(spine)) &&
+-      U32.is_eq(terms_len(ks(spine)), j_array_effect_arity(nm(spine))) &&
+-      j_array_effect_definition(book, lookup(book, nm(spine)), kid(spine, 0)))
++    kc(Bool, String.eq(tg(spine), "Call") && j_array_effect_known(nm(spine)) &&
++      U32.is_eq(terms_len(ks(spine)), j_array_effect_arity(nm(spine))),
++      u => j_array_effect_definition(book, lookup(book, nm(spine)), kid(spine, 0)), u => False{}))
+ 
+ @unsafe
+ def j_array_effect_definition(+book: List<&2,KDef>, +d: KDef, +element: KTerm) -> Bool:
+-  +head = wnf(book, dt(d))
+-  +name = j_array_effect_element(book, element)
+-  kc(Bool, Bool.not(String.eq(name, "")) && String.eq(dk(d), "Def") && db(d) &&
+-    U32.is_eq(dx(d), 0) && U32.is_eq(da(d), j_array_effect_arity(dn(d))) &&
+-    Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) &&
+-    String.eq(tg(head), "All") && U32.is_eq(qt(head), 0), u =>
+-    j_array_effect_kind(book, kid(head, 0), dn(d)) &&
+-      j_array_effect_telescope(book, j_app_type(head, element), dn(d), name, 1, da(d)), u => False{})
++  kc(Bool, String.eq(dk(d), "Def") && db(d) && U32.is_eq(dx(d), 0) &&
++    U32.is_eq(da(d), j_array_effect_arity(dn(d))) &&
++    Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")),
++    u => j_array_effect_definition_head(book, d, element, wnf(book, dt(d))), u => False{})
++
++# Bool.and evaluates both operands. Reject nonnative/live argument positions
++# before asking normalization to interpret the erased element as a type.
++@unsafe
++def j_array_effect_definition_head(+book: List<&2,KDef>, +d: KDef, +element: KTerm, +head: KTerm) -> Bool:
++  kc(Bool, String.eq(tg(head), "All") && U32.is_eq(qt(head), 0),
++    u => j_array_effect_definition_element(book, d, element, head, j_array_effect_element(book, element)), u => False{})
++
++@unsafe
++def j_array_effect_definition_element(+book: List<&2,KDef>, +d: KDef, +element: KTerm, +head: KTerm, +name: String) -> Bool:
++  kc(Bool, Bool.not(String.eq(name, "")), u => j_array_effect_kind(book, kid(head, 0), dn(d)) &&
++    j_array_effect_telescope(book, j_app_type(head, element), dn(d), name, 1, da(d)), u => False{})
+ 
+ @unsafe
+ def j_array_effect_kind(+book: List<&2,KDef>, +ty: KTerm, +name: String) -> Bool:

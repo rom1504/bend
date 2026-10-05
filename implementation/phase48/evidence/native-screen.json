@@ -1,0 +1,637 @@
+{
+  "kind": "phase48-native-string-append-fresh-screen-summary",
+  "complete": true,
+  "passed": true,
+  "summaryOnly": true,
+  "reports": [
+    {
+      "path": "selfhost/build/phase48/native-screen01/report.json",
+      "sha256": "08b2b1362948cb550e5f74a8e4905eb5c22a4145664b1388957f542138061730",
+      "bytes": 315365
+    },
+    {
+      "path": "selfhost/build/phase48/native-corpus-controls01/report.json",
+      "sha256": "ac5dac5f8a15f87184771e1df922e9d8697818dfdf3ee0fd17e179f0069c152f",
+      "bytes": 6959
+    }
+  ],
+  "samples": 27,
+  "wallSeconds": 21.423021360998973,
+  "protocol": {
+    "kind": "bend-program-execution-plan",
+    "version": 1,
+    "budgetSeconds": 60,
+    "selectedSet": null,
+    "selectedIds": [
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "test-morning-program"
+    ],
+    "roles": [
+      "typescript",
+      "baseline",
+      "candidate"
+    ],
+    "protocol": {
+      "defaultSet": "core",
+      "rounds": 3,
+      "warmupCalls": 3,
+      "warmupMs": 350,
+      "calibrationMs": 40,
+      "targetMs": 150
+    },
+    "cpu": 3,
+    "node": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "heapMiB": 1024,
+    "rssMiB": 2048,
+    "availableMiB": 4096,
+    "expensivePointPolicy": "raytrace: one warmup call; at most three fresh rounds. Other points: three warmup calls. All also require preset warmup milliseconds.",
+    "comparison": "Same-run execution only; prototype bundles retain explicit labels. No compiler or compilation timing.",
+    "variants": {
+      "baseline": {
+        "label": "Phase48 starting Phase47 array06 (retained verified portable acquisition)",
+        "compiler": {
+          "kind": "checked-development-attempt",
+          "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+          "sourceSha256": "5aaa1595fbada3687d1d92731749252ef547f6af52da0816bb84a17c09bd8a18",
+          "artifact": "derived-b1",
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+            "sha256": "28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f"
+          },
+          "runtime": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+            "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+          },
+          "base": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+          },
+          "driver": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+            "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+          }
+        }
+      },
+      "typescript": {
+        "label": "Pinned upstream TypeScript 018751270e800bc222a93dad7f257083ee53a5f7 (retained checked outputs)",
+        "compiler": {
+          "kind": "checked-pinned-typescript",
+          "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+          "sources": [
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "sha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd"
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee"
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            }
+          ]
+        }
+      },
+      "candidate": {
+        "label": "Prepared checked candidate",
+        "compiler": {
+          "kind": "checked-development-attempt",
+          "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+          "sourceSha256": "392aae0346825cd240011f62768b18143d2c35dfbf669c18d267d8d55d7937ef",
+          "artifact": "derived-b1",
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-native01/equality/api.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-native01/equality/api.mjs",
+            "sha256": "ea62fafd65cd04b173015e09e786fbeede7b4485fa79a842a57a5f5a1eaa1eeb"
+          },
+          "runtime": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-native01/snapshot/src/runtime.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-native01/snapshot/src/runtime.mjs",
+            "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+          },
+          "base": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+          },
+          "driver": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-native01/snapshot/tools/typed-driver.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-native01/snapshot/tools/typed-driver.mjs",
+            "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+          }
+        }
+      }
+    }
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/run.py",
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e",
+      "bytes": 21467
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/execute.mjs",
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+      "bytes": 5572
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/catalog.json",
+      "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+      "bytes": 83389
+    },
+    {
+      "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+      "sha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+      "bytes": 5277
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/unicode-text.bend",
+      "sha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+      "bytes": 5277
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+      "sha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+      "bytes": 3077
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/baseline/manifest.json",
+      "sha256": "81368e9c69f75b27b8ec4daf742ba0f8dcc24fc984ba1941827340cdd2240d85",
+      "bytes": 45243
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/baseline/programs.tar.gz",
+      "sha256": "95edd343120196bb1d1c9628fb52dc1fe1cde3d116701db067bff65ba314b059",
+      "bytes": 6910221
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-runtime01/manifest.json",
+      "sha256": "db8c44414535ce8cb416002208cd1bff8f6507b06a0c719f9ec58bcd6975919f",
+      "bytes": 6720
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-runtime01/modules/unicode-text.mjs",
+      "sha256": "37932cd299d8e6bac26535b979c64e3dea964dba80f2630b68e91cd25cac2f36",
+      "bytes": 155455
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-runtime01/modules/test-morning-program.mjs",
+      "sha256": "f6e11b080d14cb9ba2dd32a5e758909be521eac13adf21c71028cb7b5bffc41e",
+      "bytes": 131051
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/modules/baseline/baseline/modules/5f4122ac532c654690156bdbeba335a964a444010927904a8869ed469c326e1d.mjs",
+      "sha256": "5f4122ac532c654690156bdbeba335a964a444010927904a8869ed469c326e1d",
+      "bytes": 155511
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/modules/baseline/typescript/modules/ab955a289baef45d1c73b7e05051c052b0c1ccc573d574f8ba88b73e363f5d62.mjs",
+      "sha256": "ab955a289baef45d1c73b7e05051c052b0c1ccc573d574f8ba88b73e363f5d62",
+      "bytes": 15109
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/modules/baseline/baseline/modules/f6e11b080d14cb9ba2dd32a5e758909be521eac13adf21c71028cb7b5bffc41e.mjs",
+      "sha256": "f6e11b080d14cb9ba2dd32a5e758909be521eac13adf21c71028cb7b5bffc41e",
+      "bytes": 131051
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/modules/baseline/typescript/modules/faff88b122b84d0d18698210c66233cae52493e3cc68c92d95e0c639e20990ad.mjs",
+      "sha256": "faff88b122b84d0d18698210c66233cae52493e3cc68c92d95e0c639e20990ad",
+      "bytes": 48892
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/modules/candidate/modules/unicode-text.mjs",
+      "sha256": "37932cd299d8e6bac26535b979c64e3dea964dba80f2630b68e91cd25cac2f36",
+      "bytes": 155455
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/modules/candidate/modules/test-morning-program.mjs",
+      "sha256": "f6e11b080d14cb9ba2dd32a5e758909be521eac13adf21c71028cb7b5bffc41e",
+      "bytes": 131051
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/consumed-execute.mjs",
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+      "bytes": 5572
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/consumed-run.py",
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e",
+      "bytes": 21467
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/consumed-support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "path": "/usr/bin/python3.9",
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af",
+      "bytes": 5451288
+    },
+    {
+      "path": "/usr/bin/taskset",
+      "sha256": "bee8f79f39982b43a3738973f467ed2433b6064b077123ff25652129d26e71af",
+      "bytes": 35048
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-16/0-typescript/point.json",
+      "sha256": "89ac05adb4f19c95d347a694a0739875dc4da1c6bb3e9abe66e66b92f8866702",
+      "bytes": 751
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-16/0-baseline/point.json",
+      "sha256": "89ac05adb4f19c95d347a694a0739875dc4da1c6bb3e9abe66e66b92f8866702",
+      "bytes": 751
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-16/0-candidate/point.json",
+      "sha256": "89ac05adb4f19c95d347a694a0739875dc4da1c6bb3e9abe66e66b92f8866702",
+      "bytes": 751
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-64/0-typescript/point.json",
+      "sha256": "c14bd8b3af3fe478a55632e8979cf40d77f43e24c4053fa67e5ad9eea38af8e8",
+      "bytes": 2592
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-64/0-baseline/point.json",
+      "sha256": "c14bd8b3af3fe478a55632e8979cf40d77f43e24c4053fa67e5ad9eea38af8e8",
+      "bytes": 2592
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-64/0-candidate/point.json",
+      "sha256": "c14bd8b3af3fe478a55632e8979cf40d77f43e24c4053fa67e5ad9eea38af8e8",
+      "bytes": 2592
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/test-morning-program/0-typescript/point.json",
+      "sha256": "973b3641d1859f71d8a5ec0e50e1f8287b8e1862761833ee7049297138b1e11c",
+      "bytes": 173
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/test-morning-program/0-baseline/point.json",
+      "sha256": "973b3641d1859f71d8a5ec0e50e1f8287b8e1862761833ee7049297138b1e11c",
+      "bytes": 173
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/test-morning-program/0-candidate/point.json",
+      "sha256": "973b3641d1859f71d8a5ec0e50e1f8287b8e1862761833ee7049297138b1e11c",
+      "bytes": 173
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-16/1-baseline/point.json",
+      "sha256": "89ac05adb4f19c95d347a694a0739875dc4da1c6bb3e9abe66e66b92f8866702",
+      "bytes": 751
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-16/1-candidate/point.json",
+      "sha256": "89ac05adb4f19c95d347a694a0739875dc4da1c6bb3e9abe66e66b92f8866702",
+      "bytes": 751
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-16/1-typescript/point.json",
+      "sha256": "89ac05adb4f19c95d347a694a0739875dc4da1c6bb3e9abe66e66b92f8866702",
+      "bytes": 751
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-64/1-baseline/point.json",
+      "sha256": "c14bd8b3af3fe478a55632e8979cf40d77f43e24c4053fa67e5ad9eea38af8e8",
+      "bytes": 2592
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-64/1-candidate/point.json",
+      "sha256": "c14bd8b3af3fe478a55632e8979cf40d77f43e24c4053fa67e5ad9eea38af8e8",
+      "bytes": 2592
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-64/1-typescript/point.json",
+      "sha256": "c14bd8b3af3fe478a55632e8979cf40d77f43e24c4053fa67e5ad9eea38af8e8",
+      "bytes": 2592
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/test-morning-program/1-baseline/point.json",
+      "sha256": "973b3641d1859f71d8a5ec0e50e1f8287b8e1862761833ee7049297138b1e11c",
+      "bytes": 173
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/test-morning-program/1-candidate/point.json",
+      "sha256": "973b3641d1859f71d8a5ec0e50e1f8287b8e1862761833ee7049297138b1e11c",
+      "bytes": 173
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/test-morning-program/1-typescript/point.json",
+      "sha256": "973b3641d1859f71d8a5ec0e50e1f8287b8e1862761833ee7049297138b1e11c",
+      "bytes": 173
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-16/2-candidate/point.json",
+      "sha256": "89ac05adb4f19c95d347a694a0739875dc4da1c6bb3e9abe66e66b92f8866702",
+      "bytes": 751
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-16/2-typescript/point.json",
+      "sha256": "89ac05adb4f19c95d347a694a0739875dc4da1c6bb3e9abe66e66b92f8866702",
+      "bytes": 751
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-16/2-baseline/point.json",
+      "sha256": "89ac05adb4f19c95d347a694a0739875dc4da1c6bb3e9abe66e66b92f8866702",
+      "bytes": 751
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-64/2-candidate/point.json",
+      "sha256": "c14bd8b3af3fe478a55632e8979cf40d77f43e24c4053fa67e5ad9eea38af8e8",
+      "bytes": 2592
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-64/2-typescript/point.json",
+      "sha256": "c14bd8b3af3fe478a55632e8979cf40d77f43e24c4053fa67e5ad9eea38af8e8",
+      "bytes": 2592
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/coverage-unicode-text-64/2-baseline/point.json",
+      "sha256": "c14bd8b3af3fe478a55632e8979cf40d77f43e24c4053fa67e5ad9eea38af8e8",
+      "bytes": 2592
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/test-morning-program/2-candidate/point.json",
+      "sha256": "973b3641d1859f71d8a5ec0e50e1f8287b8e1862761833ee7049297138b1e11c",
+      "bytes": 173
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/test-morning-program/2-typescript/point.json",
+      "sha256": "973b3641d1859f71d8a5ec0e50e1f8287b8e1862761833ee7049297138b1e11c",
+      "bytes": 173
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/native-screen01/samples/test-morning-program/2-baseline/point.json",
+      "sha256": "973b3641d1859f71d8a5ec0e50e1f8287b8e1862761833ee7049297138b1e11c",
+      "bytes": 173
+    }
+  ],
+  "rows": [
+    {
+      "id": "coverage-unicode-text-16",
+      "stats": {
+        "baseline": {
+          "medianUs": 91.21314519056264,
+          "minUs": 90.65732114564287,
+          "maxUs": 92.60432292317306,
+          "samplesUs": [
+            91.21314519056264,
+            92.60432292317306,
+            90.65732114564287
+          ],
+          "halfDriftPercent": [
+            -0.1433376401380526,
+            0.24754471651200483,
+            -1.0785142132913483
+          ],
+          "peakRssKiB": [
+            77024,
+            77920,
+            77408
+          ]
+        },
+        "candidate": {
+          "medianUs": 75.09950518276051,
+          "minUs": 74.86106384015596,
+          "maxUs": 75.33582552981765,
+          "samplesUs": [
+            74.86106384015596,
+            75.33582552981765,
+            75.09950518276051
+          ],
+          "halfDriftPercent": [
+            -3.331973368587615,
+            -3.580089339522896,
+            3.4410788858100005
+          ],
+          "peakRssKiB": [
+            74768,
+            73152,
+            73528
+          ]
+        },
+        "typescript": {
+          "medianUs": 22.193591022056534,
+          "minUs": 21.789699864803968,
+          "maxUs": 23.54814348219675,
+          "samplesUs": [
+            23.54814348219675,
+            22.193591022056534,
+            21.789699864803968
+          ],
+          "halfDriftPercent": [
+            -5.700625785281909,
+            -3.2809909769965007,
+            -0.9761496746528264
+          ],
+          "peakRssKiB": [
+            65308,
+            67344,
+            65372
+          ]
+        }
+      },
+      "gain": 1.2145638638841671,
+      "candidateOverTS": 3.383837482997897,
+      "activation": {
+        "id": "coverage-unicode-text-16",
+        "args": [
+          16,
+          17
+        ],
+        "expectedSha256": "1d2120ffef986ecd1158008e8f9257de063c6c49fb06bf7193fe95886ebbe4cc",
+        "valueSha256": "1d2120ffef986ecd1158008e8f9257de063c6c49fb06bf7193fe95886ebbe4cc",
+        "codeUnits": 192,
+        "executedAppendCount": 178,
+        "staticSites": 14,
+        "positiveRequired": true,
+        "proofNull": true
+      }
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "stats": {
+        "baseline": {
+          "medianUs": 239.57091653786708,
+          "minUs": 238.9541537267081,
+          "maxUs": 242.84599069767447,
+          "samplesUs": [
+            238.9541537267081,
+            239.57091653786708,
+            242.84599069767447
+          ],
+          "halfDriftPercent": [
+            -5.1945593274148045,
+            -4.861874919338371,
+            -4.760320903384285
+          ],
+          "peakRssKiB": [
+            98404,
+            97460,
+            99600
+          ]
+        },
+        "candidate": {
+          "medianUs": 157.580109947644,
+          "minUs": 155.76075777202087,
+          "maxUs": 159.04768364611266,
+          "samplesUs": [
+            159.04768364611266,
+            157.580109947644,
+            155.76075777202087
+          ],
+          "halfDriftPercent": [
+            -1.7369579211400032,
+            -0.2671030550620124,
+            -1.3245943130007043
+          ],
+          "peakRssKiB": [
+            98180,
+            99472,
+            100468
+          ]
+        },
+        "typescript": {
+          "medianUs": 86.69608939828083,
+          "minUs": 86.14448177676536,
+          "maxUs": 86.80709512893984,
+          "samplesUs": [
+            86.80709512893984,
+            86.69608939828083,
+            86.14448177676536
+          ],
+          "halfDriftPercent": [
+            2.548853149348229,
+            2.0451885097158895,
+            3.254375417593147
+          ],
+          "peakRssKiB": [
+            65916,
+            66568,
+            68020
+          ]
+        }
+      },
+      "gain": 1.5203119011496091,
+      "candidateOverTS": 1.817614970194593,
+      "activation": {
+        "id": "coverage-unicode-text-64",
+        "args": [
+          64,
+          123
+        ],
+        "expectedSha256": "158b27b92db1b14ba5b00ca3a05e6739a4e4ce8e1e7badf55fce585ce0601c10",
+        "valueSha256": "158b27b92db1b14ba5b00ca3a05e6739a4e4ce8e1e7badf55fce585ce0601c10",
+        "codeUnits": 832,
+        "executedAppendCount": 706,
+        "staticSites": 14,
+        "positiveRequired": true,
+        "proofNull": true
+      }
+    },
+    {
+      "id": "test-morning-program",
+      "stats": {
+        "baseline": {
+          "medianUs": 236.63122903629525,
+          "minUs": 234.50090964590964,
+          "maxUs": 237.50920871862607,
+          "samplesUs": [
+            234.50090964590964,
+            236.63122903629525,
+            237.50920871862607
+          ],
+          "halfDriftPercent": [
+            -36.7203962714473,
+            -33.501219676231116,
+            -9.44985661229567
+          ],
+          "peakRssKiB": [
+            74408,
+            73548,
+            73244
+          ]
+        },
+        "candidate": {
+          "medianUs": 231.98033453670266,
+          "minUs": 231.17139709443103,
+          "maxUs": 233.2289573170732,
+          "samplesUs": [
+            233.2289573170732,
+            231.98033453670266,
+            231.17139709443103
+          ],
+          "halfDriftPercent": [
+            -35.32212244419374,
+            -35.780500401258955,
+            -36.2043412073197
+          ],
+          "peakRssKiB": [
+            73600,
+            75344,
+            75304
+          ]
+        },
+        "typescript": {
+          "medianUs": 3.3435263856971185,
+          "minUs": 3.191513452441291,
+          "maxUs": 3.361035474937104,
+          "samplesUs": [
+            3.361035474937104,
+            3.3435263856971185,
+            3.191513452441291
+          ],
+          "halfDriftPercent": [
+            -10.970676001410062,
+            -10.56491447829886,
+            3.4342817133977688
+          ],
+          "peakRssKiB": [
+            67548,
+            69460,
+            69776
+          ]
+        }
+      },
+      "gain": 1.0200486584730601,
+      "candidateOverTS": 69.3819362482271,
+      "activation": {
+        "id": "test-morning-program",
+        "args": [],
+        "expectedSha256": "ce2d2748348efc55c0cebad45ad3710b5aef43dd31b4eed28763ad91d929f7ab",
+        "valueSha256": "ce2d2748348efc55c0cebad45ad3710b5aef43dd31b4eed28763ad91d929f7ab",
+        "codeUnits": 29,
+        "executedAppendCount": 0,
+        "staticSites": 0,
+        "positiveRequired": false,
+        "proofNull": true
+      }
+    }
+  ],
+  "installed": false,
+  "scope": "three-case corpus screen; no universal speedup or combined Phase48 result",
+  "verification": "27 medians/ranges recomputed; complete first values and successful sample status match exact catalog point"
+}

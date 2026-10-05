@@ -243,11 +243,12 @@ the table records interfaces and obligations, not unexecuted PASS claims.
 
 | Change | Independent gate and interpretation |
 | --- | --- |
-| Aggregate argument/result transport (V) | [JW values control](../../selfhost/tools/performance/phase48/controls/jw-values-controls-v1.mjs), plus [aggregate source control](../../selfhost/tools/performance/phase48/controls/aggregate-transport-controls-v1.mjs). The first calls the actual checked `jw_values_functions` pass through one appended diagnostic export. It interprets `JWCallValues`/`JWReturnValues` independently, checks explicit values/events/aliases and counts logical tuple shells. The source gate separately checks real emission, recursive caller state, persistent children, field demand, errors, public mutation and reentry. Neither replaces the other. |
+| Aggregate argument/result transport (V) | [JW values v2](../../selfhost/tools/performance/phase48/controls/jw-values-controls-v2.mjs), plus the matching reviewed [aggregate source v3](../../selfhost/tools/performance/phase48/controls/aggregate-transport-controls-v3.mjs). The first calls the actual checked `jw_values_functions` pass through one appended diagnostic export. It interprets `JWCallValues`/`JWReturnValues` independently, checks explicit values/events/aliases and counts logical tuple shells. The source gate separately checks real emission, recursive caller state, persistent children, field demand, errors, public mutation and reentry. Neither replaces the actual-emission control below. |
 | Finite function flow (H) | Fresh selected acquisition of the reviewed `function-flow` catalog and its owner's final controller: factory/capture flow, callback demand/order, partial calls, identity and host refusal. Fixture v1/v2 are distinct identities; use the reviewed matching cohort. Do not infer general closure support from scalar output agreement. |
-| Typed-array operations (A) | [Array effects](../../selfhost/tools/performance/phase48/controls/array-effects-controls-v1.mjs) and, if literal lowering is selected, [Array literals](../../selfhost/tools/performance/phase48/controls/array-literals-controls-v1.mjs). Include F32 rounding/NaN/signed zero, conversion counts, swaps, aliases, error identity and executed private-path witnesses. |
+| Typed-array operations (A) | [Array effects v3](../../selfhost/tools/performance/phase48/controls/array-effects-controls-v3.mjs), using source/catalog v2, and, if literal lowering is selected, [Array literals](../../selfhost/tools/performance/phase48/controls/array-literals-controls-v1.mjs). Include F32 rounding/NaN/signed zero, conversion counts, swaps, aliases, error identity and executed private-path witnesses. Effects v3 adds the late Array.fill helper-mutation contract; retain earlier versions and use this gate with the matching guard fix. |
 | Public composite results (R) | Reviewed [composite v3](../../selfhost/tools/performance/phase48/controls/composite-results-v3.mjs) against array06: every field/backing array, freshness, intentional aliases, mutations and actual materialization/fallback counters. Earlier v1/v2 results remain historical. |
 | Native value lowering | [Native String controls](../../selfhost/tools/performance/phase48/controls/native-values-v1.mjs) only when that production change is selected. Its baseline deliberately has no private String-append sites. The saved numeric-constant ablation controller is a finite diagnostic experiment, **not** qualification of general native arithmetic or mutable Number/BigInt hooks. |
+| Finite F32 literals | [Production-source v2](../../selfhost/tools/performance/phase48/controls/private-float-controls-v2.mjs) plus [checked literal-bit control](../../selfhost/tools/performance/phase48/controls/private-float-ir-v1.mjs). The latter covers22 authentic payloads including signed zero, subnormals, largest finite values and exact Inf/NaN refusal, plus4 type/nonliteral refusals. Its DataView oracle checks numeric values and retained buffer bits; detached buffers must still throw. It supplies no public-guard claim, which remains the source controller's separate obligation. |
 | Entry profitability | The owner's exact checked guard controls, including short-fold128 and zero-trip boundaries alongside a larger affected case. Saved-JS ablation timing does not qualify production guard changes. Preserve descriptor/raw-code/bounce demand and host/reflection reentry. |
 
 The JW control has 26 synthetic graphs. Its positive examples require both a
@@ -261,6 +262,27 @@ real native/machine depth and exception unwinding belong to source controls.
 The branch-join case with instructions after `JWCase` is a deliberately
 noncanonical conservative fact/refusal control; the production emitter's cases
 are terminal, so that case supplies no production-emitter evidence.
+
+The first v1 run exposed precisely that conservative branch-join failure; retain
+its unchanged controller and failed receipt. The separate
+[`jw-values-controls-v2.mjs`](../../selfhost/tools/performance/phase48/controls/jw-values-controls-v2.mjs)
+keeps all26 graphs and assertions and collects every case failure in one run,
+returning a failing exit if any case fails. This avoids repeated whole-controller
+invocations to uncover one failure at a time. It does not relax the failed case.
+
+The additional [actual-emission control](../../selfhost/tools/performance/phase48/controls/jw-values-emission-v1.mjs)
+takes the same `CHECKED_ATTEMPT NEW_OUT` arguments. It calls both real checked
+passes and executes canonical same-SCC recursive producers returning two and four
+scalar values. Independent arithmetic oracles cover depths0/1/31/32/40/513 and
+both pair branches. A separately parsed derivative demonstrates native calls,
+machine fallback, suspended caller frames, return-register commit/capture and
+balanced budget restoration. Genuine emitted `JWImpossible` errors and a
+controlled global-value callback exercise reentry at exhausted budget, followed
+by a normal replay. If the emitter clears captured return registers, the control
+also checks that none remains retained after return/error/replay. It preserves
+the unmodified emitted text separately from diagnostic counters and exposes no
+new production ABI. These injected private dependencies test protocol mechanics;
+they do not establish public source admission or mutable-host equivalence.
 
 Run a standalone controller through the existing supervisor, for example:
 
@@ -298,6 +320,11 @@ because an old directory exists. If the new transformation intentionally replace
 an old mechanism, require a reviewed versioned control with the same observable
 semantics and a positive witness for the replacement.
 
+The Array-effects source's initial acquisition exposed a parser restriction;
+the reviewed matching successor is `array-effects-v2.bend`,
+`array-effects-catalog-v2.json` and `array-effects-controls-v2.mjs`. Retain v1
+as the failed preparation's exact historical input, not as a passing source gate.
+
 For integrated H/V or broad native emission changes, run the retained **81-outcome
 backend census once** after focused controls and the eight suites. Rebind the
 historical `phase43/integration01/final-plan/tools/backend-run.py` pilot to fresh
@@ -309,6 +336,40 @@ frontend checking does not require repeating3026+196 frontend cases here. Report
 any remaining backend exclusions explicitly and keep the installed/42-CLI gates
 as separate release checks.
 
+The [backend-plan factory](../../selfhost/tools/performance/phase48/backend-plan.py)
+is a data-only subset of the prior final-config preparation. It preserves and
+rechecks the entire historical pilot input set and exact expected rows, binds the
+selected checked attempt/runtime/snapshot and focused PASS, and changes only the
+selected attempt and fresh batch destinations. It does not recreate frontend
+layouts or execute the census. The runner and helper remain byte-identical to the
+retained Phase43 methods. Root's commands are:
+
+```sh
+python3 selfhost/tools/performance/phase48/backend-plan.py \
+  selfhost/build/phase48/checked-SELECTED \
+  selfhost/build/phase48/backend-SELECTED
+python3 selfhost/tools/performance/phase46/job.py \
+  --out selfhost/build/phase48/job-backend-SELECTED --seconds 930 -- \
+  python3 selfhost/build/phase43/integration01/final-plan/tools/backend-run.py \
+  selfhost/build/phase48/backend-SELECTED/pilot.json
+```
+
+Here the outer job owns the single ExecutionGuard; the historical backend runner
+does not acquire it. The campaign keeps its900-second internal deadline and
+three-second termination grace; the outer930 seconds allow final receipt writes.
+Seven one-worker batches use checked snapshot adapters and the pinned native
+toolchain, with 1GiB per-worker heap and CPU3. The supervisor enforces the current
+2GiB process-tree RSS ceiling and4GiB available-memory floor. Require outer
+successful completion and inner `complete:true`, `agreementComplete:true`,81 exact
+accepted outcomes with no unexecuted/incomplete rows. The original selected output
+trees are packed and rehashed by the unchanged helper; that compression is inside
+this semantic campaign and must not overlap any timing campaign.
+
+The selected compiler request recipe is documented separately in
+[compiler-cost-plan.md](compiler-cost-plan.md). Its planner/measurement own the
+shared guard themselves, so the backend launch pattern must not be copied onto
+those commands.
+
 Root checks the original 103-file inventory before work and before final staging
 using `phase42/validation/check-protected-v1.py` and read-only
 `selfhost/build/phase45/protected-start.json`; outputs belong under Phase48.
@@ -317,3 +378,89 @@ and Phase45/46 capsules unchanged. Record commands, source/API/runtime identitie
 durations, failures and decisions as work completes; do not infer waiting time
 from aggregate wall time. No target job or raw acquisition was run while authoring
 this plan.
+
+## Recorded isolated outcomes
+
+These are completed root-owned tests of specific experimental checked images,
+not qualification or promotion of an integrated Phase48 release. The reports,
+their recorded input hashes and their actual supervisor receipts were inspected
+read-only. All16 recorded inputs for the JW-emission run and all9 for the float-IR
+run still matched at this readback. Their shared runtime was unchanged array06
+`880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
+
+| Test | Exact outcome and execution scope |
+| --- | --- |
+| [`jw-emission03`](../../selfhost/build/phase48/jw-emission03/report.json) | PASS,2 canonical graphs and30 observations on checked-values03. Actual checked tuple transport and emitter; original and transformed emitted code agree with independent arithmetic. Counter derivatives prove two/four result transport, native/machine transitions, throw/reentry and cleanup. |
+| [`float-ir01`](../../selfhost/build/phase48/float-ir01/report.json) | PASS,22 explicit payloads and4 non-F32/nonliteral refusals on checked-float01. Finite expressions preserve numeric values, signed zero and exact buffer bits; Inf/NaN retain the original literal and decoder; detached writes still throw. |
+
+At depth513, each ordinary pair branch recorded32 native entries and32 restorations,
+one machine entry and481 saved continuation frames. Its514 extra-result commits,
+captures and clears matched; the four-result graph recorded1542 of each. Both
+normal branches, global-value reentry at exhausted budget, actual emitted errors,
+error-time reentry and subsequent shallow replay passed. The checked emitter had
+clear sites, so all three scratch result registers were explicitly required to
+be `undefined` after the initial return/error and replay. These are protocol and
+state observations, not measured heap allocations or a general GC claim.
+
+The [JW supervisor](../../selfhost/build/phase48/job-jw-emission03/process.json)
+completed in3.2465 seconds and the
+[float supervisor](../../selfhost/build/phase48/job-float-ir01/process.json)
+in3.1428 seconds, both exit0. Both used CPU3, Node24.18.0, stack4096 and1GiB heap
+under the2GiB RSS/4GiB available-memory policy. Accordingly this is **not** a
+default-stack result. It also supplies no generated-program timing, public-host
+equivalence, source-frontend conformance or installation claim. The independently
+acquired source and integrated-release gates remain separate obligations.
+
+Exact SHA256 bindings:
+
+| Artifact | SHA256 |
+| --- | --- |
+| JW result report | `1f4fed5b1344fb47bf465600c7357cae6d3eed1e8e8f55332f83d447c3731ece` |
+| JW controller | `f59e140c9836d27cc4c83e9da104ee418131592adb4f319a554124bfd71f3e9e` |
+| checked-values03 attempt | `0be2459189c6df32da956e4f01b0eb6e41429b216ab3001ceba9c2db670dd6d0` |
+| checked-values03 API | `af34a35a2974998b4b82c1355799b512deeb043f10aa03dae2283c95c88dccea` |
+| JW supervisor receipt | `cbf54f89e59473f046310319b0c32b5135dfb4b6c952c4dcae0edabb86845bc2` |
+| Float result report | `834bd33c89116eea91ed3e87bf9d48917a7ae8b03a3f02b69bdf67238c4b24e8` |
+| Float controller | `013add7d88c2ab6a4c72a0dff69e0acf3a074be539bf60a3ff559e683edc5c01` |
+| checked-float01 attempt | `8223196968a5a7a5d6e21d6e7f9e4a315c266b6418c1d78293e8724884bb05e8` |
+| checked-float01 API | `265fb79712bef04acba399478826f09f1fff51f69ea49f846e686fb72fcb7612` |
+| Float supervisor receipt | `d0823f93ff4468edcc46f8ec7523f793dee80e855c9cbb1c41c27e464edcc556` |
+
+## Time accounting preparation
+
+The [data-only accounting tool](../../selfhost/tools/performance/phase48/time-use.py)
+reuses Phase47's timestamp and process-record readers. It scans only finished
+`process.json` intervals, collapses duplicate command/start/finish copies and
+counts each enclosing supervisor interval once. Embedded copies in other reports
+are not summed. Where a guarded compiler build encloses its own child receipts,
+the outer build owns that wall interval. Unwrapped `prepare.py`/`run.py` record
+their individual guarded acquisition/timing children, which remain separately
+visible when there is no enclosing supervisor receipt.
+
+Categories are build, acquisition, control, timing, compiler cost and
+qualification, plus explicit preparation/profile/release/other buckets. Partially
+overlapping top-level jobs of different categories go to an `overlap-mixed`
+bucket rather than being charged twice. Temporal enclosure is declared as such;
+it is not proof of a PID ancestry relationship. Failures and peak RSS remain
+visible for all records, while nested durations never inflate elapsed totals.
+
+Root may create a provisional snapshot after a timing campaign finishes:
+
+```sh
+python3 selfhost/tools/performance/phase48/time-use.py \
+  --out selfhost/build/phase48/time-use-snapshot01.json
+```
+
+For final accounting, pass `--end EXACT_UTC_CUTOFF` and a fresh output path only
+after the recorded target work ends. The campaign start comes from Phase48's
+`start.json`; an explicit cutoff alone does not establish writer closure. If a
+receipt changes during collection, the output is incomplete and exits nonzero.
+Review `otherRecords` and, where the command needs human interpretation, use
+`--categories PREFIX_MAP.json` with explicit relative receipt-path prefixes and
+one of the documented categories. Preserve that map as another input.
+
+Report the union of recorded wall intervals separately from total campaign time.
+The remainder mixes analysis, coding, review, documentation, orchestration,
+unrecorded operations and possible idle time. It is not a waiting-time estimate
+or an agent CPU-utilization measurement. No accounting snapshot or target job
+was executed while authoring this tool; the raw campaign remains open.

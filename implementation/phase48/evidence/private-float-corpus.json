@@ -1,0 +1,674 @@
+{
+  "kind": "phase48-private-finite-f32-corpus-activation-summary",
+  "scope": "Four exact corpus points; twelve original three-role observations and four separate counter-derivative full output checks. No timing on derivatives.",
+  "complete": true,
+  "report": {
+    "path": "selfhost/build/phase48/float-corpus01/report.json",
+    "sha256": "6b26faf43f8120c45fa68b28d1c9fa2f8be013ea51003af5f40ae311bdad3b6c",
+    "bytes": 28357
+  },
+  "verifiedInputCount": 69,
+  "cases": [
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          256,
+          17
+        ],
+        "expected": 2747714257
+      },
+      "observations": [
+        {
+          "role": "baseline",
+          "value": 2747714257
+        },
+        {
+          "role": "candidate",
+          "value": 2747714257
+        },
+        {
+          "role": "typescript",
+          "value": 2747714257
+        }
+      ],
+      "baselineEqualsCandidate": false,
+      "modules": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852.mjs",
+          "sha256": "ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852",
+          "bytes": 83393
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/candidate/modules/numeric-recurrence.mjs",
+          "sha256": "2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44",
+          "bytes": 83830
+        },
+        "typescript": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/typescript/modules/0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee.mjs",
+          "sha256": "0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee",
+          "bytes": 4699
+        }
+      },
+      "derivative": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-corpus01/activation-2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44.mjs",
+        "sha256": "8065a0cfe83ce86f300916e85b434fd85dad11f394c837c87ffecbf9917c1dbb",
+        "bytes": 84085
+      },
+      "staticSites": 7,
+      "siteCounts": [
+        0,
+        0,
+        0,
+        256,
+        256,
+        256,
+        1
+      ],
+      "rootCounts": {
+        "p37.numeric": 0,
+        "bench": 769
+      },
+      "totalWrites": 769,
+      "counterValue": 2747714257
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          1024,
+          123
+        ],
+        "expected": 1376326140
+      },
+      "observations": [
+        {
+          "role": "baseline",
+          "value": 1376326140
+        },
+        {
+          "role": "candidate",
+          "value": 1376326140
+        },
+        {
+          "role": "typescript",
+          "value": 1376326140
+        }
+      ],
+      "baselineEqualsCandidate": false,
+      "modules": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852.mjs",
+          "sha256": "ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852",
+          "bytes": 83393
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/candidate/modules/numeric-recurrence.mjs",
+          "sha256": "2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44",
+          "bytes": 83830
+        },
+        "typescript": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/typescript/modules/0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee.mjs",
+          "sha256": "0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee",
+          "bytes": 4699
+        }
+      },
+      "derivative": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-corpus01/activation-2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44.mjs",
+        "sha256": "8065a0cfe83ce86f300916e85b434fd85dad11f394c837c87ffecbf9917c1dbb",
+        "bytes": 84085
+      },
+      "staticSites": 7,
+      "siteCounts": [
+        0,
+        0,
+        0,
+        1024,
+        1024,
+        1024,
+        1
+      ],
+      "rootCounts": {
+        "p37.numeric": 0,
+        "bench": 3073
+      },
+      "totalWrites": 3073,
+      "counterValue": 1376326140
+    },
+    {
+      "id": "mandelbrot",
+      "point": {
+        "args": [
+          2,
+          0
+        ],
+        "expected": 887240761,
+        "exportName": "bench"
+      },
+      "observations": [
+        {
+          "role": "baseline",
+          "value": 887240761
+        },
+        {
+          "role": "candidate",
+          "value": 887240761
+        },
+        {
+          "role": "typescript",
+          "value": 887240761
+        }
+      ],
+      "baselineEqualsCandidate": true,
+      "modules": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3.mjs",
+          "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+          "bytes": 172093
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/candidate/modules/mandelbrot.mjs",
+          "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+          "bytes": 172093
+        },
+        "typescript": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/typescript/modules/037f070e948ab7701364b7413c624bca4327db0bc6171ac4523b906d2ae9e222.mjs",
+          "sha256": "037f070e948ab7701364b7413c624bca4327db0bc6171ac4523b906d2ae9e222",
+          "bytes": 15442
+        }
+      },
+      "derivative": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-corpus01/activation-7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3.mjs",
+        "sha256": "cd37ca2e5863cdd87d134c72760688b2ae3c12e5a60aff8d1ec3c643f7cc2af6",
+        "bytes": 172181
+      },
+      "staticSites": 0,
+      "siteCounts": [],
+      "rootCounts": {},
+      "totalWrites": 0,
+      "counterValue": 887240761
+    },
+    {
+      "id": "symreg",
+      "point": {
+        "args": [
+          6,
+          42
+        ],
+        "expected": 2490246820,
+        "exportName": "bench"
+      },
+      "observations": [
+        {
+          "role": "baseline",
+          "value": 2490246820
+        },
+        {
+          "role": "candidate",
+          "value": 2490246820
+        },
+        {
+          "role": "typescript",
+          "value": 2490246820
+        }
+      ],
+      "baselineEqualsCandidate": true,
+      "modules": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c.mjs",
+          "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+          "bytes": 158399
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/candidate/modules/symreg.mjs",
+          "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+          "bytes": 158399
+        },
+        "typescript": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/typescript/modules/545d6112dbbb0cc66074407a0daf7076b148f9d311e7e9bbffff3376f8e00651.mjs",
+          "sha256": "545d6112dbbb0cc66074407a0daf7076b148f9d311e7e9bbffff3376f8e00651",
+          "bytes": 12815
+        }
+      },
+      "derivative": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-corpus01/activation-fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c.mjs",
+        "sha256": "5b18cf13d9dc9cb87ac79cedf55cb78355d67b82bdef2ed6c4ba8a949e70a4f1",
+        "bytes": 158487
+      },
+      "staticSites": 0,
+      "siteCounts": [],
+      "rootCounts": {},
+      "totalWrites": 0,
+      "counterValue": 2490246820
+    }
+  ],
+  "modules": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/candidate/modules/numeric-recurrence.mjs",
+        "sha256": "2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44",
+        "bytes": 83830
+      },
+      "derivative": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-corpus01/activation-2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44.mjs",
+        "sha256": "8065a0cfe83ce86f300916e85b434fd85dad11f394c837c87ffecbf9917c1dbb",
+        "bytes": 84085
+      },
+      "sites": [
+        {
+          "root": "p37.numeric",
+          "bits": 1081081856,
+          "offset": 80599
+        },
+        {
+          "root": "p37.numeric",
+          "bits": 1065353216,
+          "offset": 80726
+        },
+        {
+          "root": "p37.numeric",
+          "bits": 1232348160,
+          "offset": 81009
+        },
+        {
+          "root": "bench",
+          "bits": 1081081856,
+          "offset": 82082
+        },
+        {
+          "root": "bench",
+          "bits": 1065353216,
+          "offset": 82209
+        },
+        {
+          "root": "bench",
+          "bits": 1232348160,
+          "offset": 82492
+        },
+        {
+          "root": "bench",
+          "bits": 1120403456,
+          "offset": 83291
+        }
+      ],
+      "timingEligible": false
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/candidate/modules/mandelbrot.mjs",
+        "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+        "bytes": 172093
+      },
+      "derivative": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-corpus01/activation-7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3.mjs",
+        "sha256": "cd37ca2e5863cdd87d134c72760688b2ae3c12e5a60aff8d1ec3c643f7cc2af6",
+        "bytes": 172181
+      },
+      "sites": [],
+      "timingEligible": false
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/candidate/modules/symreg.mjs",
+        "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+        "bytes": 158399
+      },
+      "derivative": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-corpus01/activation-fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c.mjs",
+        "sha256": "5b18cf13d9dc9cb87ac79cedf55cb78355d67b82bdef2ed6c4ba8a949e70a4f1",
+        "bytes": 158487
+      },
+      "sites": [],
+      "timingEligible": false
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/controls/private-float-corpus-v1.mjs",
+      "sha256": "7b298665b213cc472dbe672e4fc0d99aba7fb160fd3f84da4e18d1b0b5fc502d",
+      "bytes": 7135
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/catalog.json",
+      "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+      "bytes": 83389
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/report.json",
+      "sha256": "b7e92295bac5b4c16aacfc4b439f94157ebe624f9e672bddf8160026a9ddeaa9",
+      "bytes": 350377
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/run.py",
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e",
+      "bytes": 21467
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/execute.mjs",
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+      "bytes": 5572
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+      "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "bytes": 556
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+      "sha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+      "bytes": 6576
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+      "sha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "bytes": 5406
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/baseline/manifest.json",
+      "sha256": "81368e9c69f75b27b8ec4daf742ba0f8dcc24fc984ba1941827340cdd2240d85",
+      "bytes": 45243
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/baseline/programs.tar.gz",
+      "sha256": "95edd343120196bb1d1c9628fb52dc1fe1cde3d116701db067bff65ba314b059",
+      "bytes": 6910221
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-runtime01/manifest.json",
+      "sha256": "c4a0668d0210ddd1689e83d3b983e2d7745729b34c02f762b3f8b491e90a9926",
+      "bytes": 4205
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-runtime01/modules/numeric-recurrence.mjs",
+      "sha256": "2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44",
+      "bytes": 83830
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-runtime01/modules/mandelbrot.mjs",
+      "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+      "bytes": 172093
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-runtime01/modules/symreg.mjs",
+      "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+      "bytes": 158399
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852.mjs",
+      "sha256": "ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852",
+      "bytes": 83393
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/typescript/modules/0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee.mjs",
+      "sha256": "0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee",
+      "bytes": 4699
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3.mjs",
+      "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+      "bytes": 172093
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/typescript/modules/037f070e948ab7701364b7413c624bca4327db0bc6171ac4523b906d2ae9e222.mjs",
+      "sha256": "037f070e948ab7701364b7413c624bca4327db0bc6171ac4523b906d2ae9e222",
+      "bytes": 15442
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c.mjs",
+      "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+      "bytes": 158399
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/baseline/typescript/modules/545d6112dbbb0cc66074407a0daf7076b148f9d311e7e9bbffff3376f8e00651.mjs",
+      "sha256": "545d6112dbbb0cc66074407a0daf7076b148f9d311e7e9bbffff3376f8e00651",
+      "bytes": 12815
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/candidate/modules/numeric-recurrence.mjs",
+      "sha256": "2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44",
+      "bytes": 83830
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/candidate/modules/mandelbrot.mjs",
+      "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+      "bytes": 172093
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/modules/candidate/modules/symreg.mjs",
+      "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+      "bytes": 158399
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/consumed-execute.mjs",
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+      "bytes": 5572
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/consumed-run.py",
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e",
+      "bytes": 21467
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/consumed-support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af",
+      "bytes": 5451288
+    },
+    {
+      "file": "/usr/bin/taskset",
+      "sha256": "bee8f79f39982b43a3738973f467ed2433b6064b077123ff25652129d26e71af",
+      "bytes": 35048
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-typescript/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-baseline/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-candidate/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-typescript/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-baseline/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-candidate/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/mandelbrot/0-typescript/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/mandelbrot/0-baseline/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/mandelbrot/0-candidate/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/symreg/0-typescript/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/symreg/0-baseline/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/symreg/0-candidate/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-baseline/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-candidate/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-typescript/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-baseline/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-candidate/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-typescript/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/mandelbrot/1-baseline/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/mandelbrot/1-candidate/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/mandelbrot/1-typescript/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/symreg/1-baseline/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/symreg/1-candidate/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/symreg/1-typescript/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-candidate/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-typescript/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-baseline/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-candidate/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-typescript/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-baseline/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/mandelbrot/2-candidate/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/mandelbrot/2-typescript/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/mandelbrot/2-baseline/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/symreg/2-candidate/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/symreg/2-typescript/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-screen01/samples/symreg/2-baseline/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-corpus01/activation-2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44.mjs",
+      "sha256": "8065a0cfe83ce86f300916e85b434fd85dad11f394c837c87ffecbf9917c1dbb",
+      "bytes": 84085
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-corpus01/activation-7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3.mjs",
+      "sha256": "cd37ca2e5863cdd87d134c72760688b2ae3c12e5a60aff8d1ec3c643f7cc2af6",
+      "bytes": 172181
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/float-corpus01/activation-fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c.mjs",
+      "sha256": "5b18cf13d9dc9cb87ac79cedf55cb78355d67b82bdef2ed6c4ba8a949e70a4f1",
+      "bytes": 158487
+    }
+  ]
+}

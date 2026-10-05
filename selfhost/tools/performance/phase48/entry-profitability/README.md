@@ -91,3 +91,27 @@ This source has not been parsed/typechecked yet. A failed acquisition or missing
 ordinary activation must be preserved and diagnosed; static marker presence is
 insufficient. Neither counted modules nor saved guard derivatives can qualify
 the real compiler's performance or substitute for maintained semantic gates.
+
+## Current outcome
+
+The first raw guard diagnostic is complete and deferred from production.
+The guarded audit passed; 45 clean timing samples show only 1.039× at 128 steps,
+0.993× at 4096 and 1.002× at 8192. See
+[the measured outcome](../../../../../implementation/phase48/entry-profitability.md)
+for ranges and the adverse midpoint. The unsafe bypass remains an upper bound.
+No runtime/source patch was promoted. The unexecuted fresh-region v2 derivative
+is also deferred pending a reason to expect material improvement.
+
+The independent checked-source String.append controls passed 7 ordinary points,
+1372 complete values and 18 boundary controls. The
+[native outcome](../../../../../implementation/phase48/native-values.md)
+keeps actual Unicode acquisition/execution/timing qualification separate.
+`../controls/native-corpus-probe-v1.mjs` is the new root-only three-case probe;
+it checks full acquired catalog results and actual ordinary Unicode concat
+execution while retaining Morning as a neutral control. It does not time output.
+
+The separate real corpus probe and clean native screen are now complete:
+Unicode16/64 execute 178/706 private concats and improve 1.215×/1.520× against
+array06; Morning executes zero and is a neutral mechanism control. Full values,
+fresh sample ranges and drift remain in the native outcome and its hash-bound
+screen summary. Broad integrated release qualification remains pending.

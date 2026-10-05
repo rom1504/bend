@@ -1,0 +1,27 @@
+--- a/selfhost/src/back/js/ir/worker-emit.bend
++++ b/selfhost/src/back/js/ir/worker-emit.bend
+@@ -442,6 +442,15 @@
+     case Con{slot, rest}: kc(String, U32.is_eq(at, 0), u => "", u =>
+       "const $result" ++ U32.show(at) ++ "=$workerValue" ++ U32.show(at) ++ ";") ++ jw_values_read(rest, U32.inc(at))
+ 
++# Caller locals now own every result. Do not retain the last aggregate child
++# in the long-lived root closure after its transport register was consumed.
++@unsafe
++def jw_values_clear(+slots: List<&2,U32>, +at: U32) -> String:
++  match slots:
++    case Nil{}: ""
++    case Con{slot, rest}: kc(String, U32.is_eq(at, 0), u => "", u =>
++      "$workerValue" ++ U32.show(at) ++ "=undefined;") ++ jw_values_clear(rest, U32.inc(at))
++
+ @unsafe
+ def jw_values_store(+slots: List<&2,U32>, +direct: Bool, +at: U32) -> String:
+   match slots:
+@@ -450,7 +459,7 @@
+ 
+ @unsafe
+ def jw_values_capture(+slots: List<&2,U32>, +first: String, +direct: Bool) -> String:
+-  "{const $result0=" ++ first ++ ";" ++ jw_values_read(slots, 0) ++ jw_values_store(slots, direct, 0) ++ "}"
++  "{const $result0=" ++ first ++ ";" ++ jw_values_read(slots, 0) ++ jw_values_clear(slots, 0) ++ jw_values_store(slots, direct, 0) ++ "}"
+ 
+ @unsafe
+ def jw_emit_values_call_block(+ctx: JWEmitContext, +rest: List<&2,JWInstruction>, +label: U32, +next: U32, +prefix: String,

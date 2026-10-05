@@ -1,0 +1,89 @@
+--- a/selfhost/src/back/js/region.bend
++++ b/selfhost/src/back/js/region.bend
+@@ -295,7 +295,7 @@
+       u => j_region_result(s, j_region_annotate(j_region_variable(env, t), ty)), u => j_region_fail(s)), u =>
+   kc(JRegionBuild, String.eq(tg(t), "Lit"), u =>
+     kc(JRegionBuild, String.eq(nm(t), nm(ty)) && (String.eq(nm(t), "U32") || String.eq(nm(t), "Nat") || String.eq(nm(t), "F32")),
+-      u => j_region_result(s, j_region_annotate(t, ty)), u => j_region_fail(s)), u =>
++      u => j_region_result(s, j_region_annotate(j_private_float_plan(t), ty)), u => j_region_fail(s)), u =>
+   kc(JRegionBuild, String.eq(tg(t), "Ctr"), u =>
+     kc(JRegionBuild, String.eq(nm(ty), "Bool") && U32.is_eq(terms_len(ks(t)), 0) && (String.eq(nm(t), "True") || String.eq(nm(t), "False")),
+       u => j_region_result(s, j_region_annotate(t, ty)), u => j_region_constructor(book, env, t, ty, String.eq(tail, "@root-return"), active, depth, level, s)), u =>
+--- a/selfhost/src/back/js/emit.bend
++++ b/selfhost/src/back/js/emit.bend
+@@ -233,6 +233,7 @@
+ # types, arithmetic, arguments and parallel lets retain their shared emitter.
+ @unsafe
+ def j_expr_private(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tail: Bool) -> String:
++  kc(String, String.eq(tg(t), "JF32"), u => j_private_float_code(ix(t)), u =>
+   kc(String, String.eq(tg(t), "JVirtual"), u => "[" ++ j_region_vector_names("$w", 0, ix(t)) ++ "]", u =>
+   kc(String, String.eq(tg(t), "JInline") || String.eq(tg(t), "JInlineRead"), u => "(()=>{" ++ j_region_inline_return(book, env, t, ty) ++ "})()", u =>
+   kc(String, String.eq(tg(t), "JLoopSlot"), u => "$s" ++ U32.show(ix(t)), u =>
+@@ -248,7 +249,7 @@
+   kc(String, String.eq(tg(t), "JUnpack"), u => "((" ++ j_region_parameters(U32.inc(ix(t)), U32.inc(U32.add(ix(t), qt(t)))) ++ ")=>" ++
+     j_expr(book, env, kid(t, 0), ty, tail) ++ ")(" ++ j_flat_reads(book, kid(t, 1), "$p" ++ U32.show(ix(t)), 0, qt(t)) ++ ")", u =>
+   kc(String, String.eq(tg(t), "JIf"), u => "(" ++ j_expr(book, env, kid(t, 0), kt("ADT", "Bool", 0, 0, Nil{}), False{}) ++ "?" ++
+-    j_expr(book, env, kid(t, 1), ty, tail) ++ ":" ++ j_expr(book, env, kid(t, 2), ty, tail) ++ ")", u => j_expr_on(book, env, t, ty, tail, tg(t)))))))))))))))
++    j_expr(book, env, kid(t, 1), ty, tail) ++ ":" ++ j_expr(book, env, kid(t, 2), ty, tail) ++ ")", u => j_expr_on(book, env, t, ty, tail, tg(t))))))))))))))))
+ 
+ @unsafe
+ def j_region_read_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +args: List<&2,KTerm>, +ty: KTerm) -> String:
+--- a/selfhost/src/back/js/tree.bend
++++ b/selfhost/src/back/js/tree.bend
+@@ -715,7 +715,7 @@
+   kc(Bool, String.eq(tg(t), "JCall"), u => j_flat_call_audit(book, graph, locals, t) && j_flat_audits(book, graph, locals, self, ks(t), U32.sub(fuel, 1)), u =>
+   kc(Bool, String.eq(tg(t), "JDirectCall"), u => U32.is_eq(terms_len(ks(t)), da(lookup(book, nm(t)))) && exact_def(lookup(graph, nm(t)), lookup(book, nm(t))) && j_pure_valid(j_direct_cached(book, nm(t))) && j_covered_defs(book, graph, j_pure_defs(j_direct_cached(book, nm(t)))) &&
+     j_flat_audits(book, graph, locals, self, ks(t), U32.sub(fuel, 1)), u =>
+-    String.contains("|Lam|Mat|Ctr|Let|Bind|Var|Lit|JUnpack|JSlot|JLoopSlot|JNatRest|JNatCase|JIf|Efq|", "|" ++ tg(t) ++ "|") &&
++    String.contains("|Lam|Mat|Ctr|Let|Bind|Var|Lit|JF32|JUnpack|JSlot|JLoopSlot|JNatRest|JNatCase|JIf|Efq|", "|" ++ tg(t) ++ "|") &&
+     j_flat_audits(book, graph, locals, self, kc(List<&2,KTerm>, String.eq(tg(t), "JUnpack"), u => [kid(t, 0)], u => ks(t)), U32.sub(fuel, 1)))))), u => False{})
+ 
+ @unsafe
+--- a/selfhost/src/compiler.json
++++ b/selfhost/src/compiler.json
+@@ -38,6 +38,7 @@
+     "src/diagnostic/frontend.bend",
+     "src/back/js/foreign.bend",
+     "src/back/js/literals.bend",
++    "src/back/js/private-float.bend",
+     "src/back/js/validate.bend",
+     "src/back/js/choice.bend",
+     "src/back/js/projection.bend",
+--- /dev/null
++++ b/selfhost/src/back/js/private-float.bend
+@@ -0,0 +1,35 @@
++# Only the typed private-region planner creates this leaf. The complete plan
++# must still succeed before emission; its F32 name retains the full host guard.
++# Ordinary literals and every nonfinite payload keep their original decoder.
++@unsafe
++def j_private_float_plan(+t: KTerm) -> KTerm:
++  kc(KTerm, core_literal(t) && String.eq(nm(t), "F32") && j_private_float_finite(kl_number(t)),
++    u => kt("JF32", "F32", kl_number(t), 0, Nil{}), u => t)
++
++@unsafe
++def j_private_float_finite(+bits: U32) -> Bool:
++  Bool.not(U32.is_eq(U32.and(U32.shrn(bits, 23n), 255), 255))
++
++# Retain the original shared-view write, including its position and exceptions.
++# Under the unchanged full host proof, the following native read is inert. All
++# finite binary32 values are exact binary64 dyadics; no Math helper is needed.
++@unsafe
++def j_private_float_code(+bits: U32) -> String:
++  kc(String, j_private_float_finite(bits), u =>
++    "(/* private finite F32 */floatView.setUint32(0," ++ U32.show(bits) ++ ",true)," ++
++    kc(String, U32.is_eq(U32.and(bits, 2147483648), 0),
++      u => j_private_float_magnitude(bits), u => "-(" ++ j_private_float_magnitude(bits) ++ ")") ++ ")",
++    u => "bitsFloat(" ++ U32.show(bits) ++ ")")
++
++@unsafe
++def j_private_float_magnitude(+bits: U32) -> String:
++  +exponent = U32.and(U32.shrn(bits, 23n), 255)
++  +fraction = U32.and(bits, 8388607)
++  kc(String, U32.is_eq(exponent, 0),
++    u => kc(String, U32.is_eq(fraction, 0), u => "0", u => "(" ++ U32.show(fraction) ++ "*2**(-149))"),
++    u => "(" ++ U32.show(U32.add(fraction, 8388608)) ++ "*2**(" ++ j_private_float_power(exponent) ++ "))")
++
++@unsafe
++def j_private_float_power(+exponent: U32) -> String:
++  kc(String, U32.is_ge(exponent, 150), u => U32.show(U32.sub(exponent, 150)),
++    u => "-" ++ U32.show(U32.sub(150, exponent)))

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "v2 source uses formal tuple matches; independent aggregate transport controls, unexecuted.",
+  "cases": [
+    {
+      "id": "aggregate-transport-independent",
+      "family": "private-tuple-transport",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "aggregate-transport-v2.bend",
+        "sha256": "00b8f6dc596fba6f3176a260b75e05822f76ab7fa957e4cbcc29acb8b2d1677d",
+        "bytes": 3290,
+        "provenance": {
+          "kind": "phase48-independent-renamed-state-and-record-controls",
+          "scope": "Untimed values, allocation witnesses, exceptions, persistent alias and ABI",
+          "correction": "v1 contains forbidden computed tuple matches; v2 uses formal matches and a non-tail scalar caller consuming multi-result pair helpers. Same-SCC multi-result producer emission is covered independently by synthetic IR."
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          8,
+          3
+        ],
+        "expected": 8089
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Build consecutive U32 values mod5; run encoding preserves sum and run count. Initial zero-length run merges with first value."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "aggregate-transport-independent"
+    ],
+    "core": [
+      "aggregate-transport-independent"
+    ],
+    "broad": [
+      "aggregate-transport-independent"
+    ],
+    "full": [
+      "aggregate-transport-independent"
+    ]
+  }
+}

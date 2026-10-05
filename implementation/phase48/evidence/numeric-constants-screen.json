@@ -1,0 +1,519 @@
+{
+  "kind": "phase48-numeric-constants-screen-evidence",
+  "scope": "Data-only recomputation of root-executed saved-output comparison; no production qualification",
+  "rawReport": {
+    "path": "selfhost/build/phase48/numeric-screen01/report.json",
+    "sha256": "7969b8ca9fe7a3cab4675dad380efa0949e13ce8ad4e42792d335380e1b16f2a",
+    "bytes": 417595
+  },
+  "complete": true,
+  "passed": true,
+  "controls": 105,
+  "samples": 45,
+  "wallSeconds": 107.10141105897492,
+  "protocol": {
+    "rounds": 5,
+    "roles": [
+      "original",
+      "write-preserved",
+      "constants"
+    ],
+    "warmupMs": 1000,
+    "warmupCalls": 3,
+    "calibrationMs": 50,
+    "targetMs": 300,
+    "minimumMeasuredMs": 100,
+    "cpu": 3,
+    "heapMiB": 1024,
+    "rssMiB": 2048,
+    "availableMiB": 4096,
+    "stackKiB": 4096
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/numeric-measure.py",
+      "sha256": "fa6e203dd2cd64738cf84a1eb10fe7a2266e054eb77c513f0835b5539be66690",
+      "bytes": 6717
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/numeric-controls.mjs",
+      "sha256": "ef0342ac9ab610429062ef9bd37be326702ec9d6f82d0741ed4e3046ca3c8a70",
+      "bytes": 1571
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/execute.mjs",
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+      "bytes": 5572
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-constants01/manifest.json",
+      "sha256": "356b2da4a3249a6b2b9eabdd43e49c2f6b857852674d0c1587f1449e2bc757ba",
+      "bytes": 8203
+    },
+    {
+      "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "path": "/usr/bin/python3.9",
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af",
+      "bytes": 5451288
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/numeric-constants-derive.mjs",
+      "sha256": "a76c7dc6ca98da6fb5c7e14a61ee717cac0465dec5e4a76b2fe0661dbb720211",
+      "bytes": 5401
+    },
+    {
+      "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase47/current/manifest.json",
+      "sha256": "c608b2259502e2a151a8a5286b0761f6c9836110eafd918f8b8344266ceb3483",
+      "bytes": 32652
+    },
+    {
+      "path": "/tmp/phase48-frontier/coverage-numeric-recurrence-256.candidate.mjs",
+      "sha256": "ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852",
+      "bytes": 83393
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-constants01/original.mjs",
+      "sha256": "ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852",
+      "bytes": 83393
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-constants01/write-preserved.mjs",
+      "sha256": "89ada744533ad69cc0842324c6c139ba42b721ff2f96903924cf8c5f1bbc56a5",
+      "bytes": 83465
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-constants01/constants.mjs",
+      "sha256": "82fb380c8ac9c5173ff1f3f7328dd8378d91ec5f529e2b5c9ed2397ae167fd0e",
+      "bytes": 83342
+    }
+  ],
+  "summary": [
+    {
+      "args": [
+        256,
+        123
+      ],
+      "mediansMs": {
+        "original": 0.013702382486849662,
+        "write-preserved": 0.012964138536714211,
+        "constants": 0.013820595053753933
+      },
+      "originalOverVariant": {
+        "original": 1.0,
+        "write-preserved": 1.0569450833963827,
+        "constants": 0.9914466369613976
+      },
+      "samples": {
+        "original": [
+          0.0132196198970536,
+          0.013884249730735333,
+          0.013678861122271332,
+          0.0143113632651123,
+          0.013702382486849662
+        ],
+        "write-preserved": [
+          0.01294280704360744,
+          0.014409104095563136,
+          0.012964138536714211,
+          0.013327376777763366,
+          0.012868846244336006
+        ],
+        "constants": [
+          0.014344097947571634,
+          0.014511682054872443,
+          0.013624091334790167,
+          0.013820595053753933,
+          0.012839496629113817
+        ]
+      },
+      "halfDriftPercent": {
+        "original": [
+          0.031406180685800145,
+          -5.8025052852827,
+          -6.722546801074514,
+          -4.827279238391958,
+          -7.070266399779546
+        ],
+        "write-preserved": [
+          -0.12819959413683524,
+          -0.6868262009262938,
+          -0.6423473175022898,
+          -7.391025703263332,
+          -0.3712579135473071
+        ],
+        "constants": [
+          0.563852712304147,
+          6.426786535530038,
+          -7.151340971510967,
+          -12.66934479951215,
+          -0.036242733639557656
+        ]
+      }
+    },
+    {
+      "args": [
+        1024,
+        123
+      ],
+      "mediansMs": {
+        "original": 0.02035781878501917,
+        "write-preserved": 0.01981441703807462,
+        "constants": 0.019411155787751
+      },
+      "originalOverVariant": {
+        "original": 1.0,
+        "write-preserved": 1.027424563937479,
+        "constants": 1.0487690175494622
+      },
+      "samples": {
+        "original": [
+          0.02035781878501917,
+          0.02189136347284676,
+          0.02028953172226005,
+          0.020164185671519928,
+          0.020431064589981965
+        ],
+        "write-preserved": [
+          0.019950600809394283,
+          0.01943936949238257,
+          0.01981441703807462,
+          0.018976157546337167,
+          0.02097228223485646
+        ],
+        "constants": [
+          0.019563078979189203,
+          0.018933628888322288,
+          0.018887302939679315,
+          0.019411155787751,
+          0.020326103886721573
+        ]
+      },
+      "halfDriftPercent": {
+        "original": [
+          -0.17214630070564452,
+          -7.394356154093562,
+          -0.38551749344688524,
+          0.1420049681446489,
+          1.0880719541936035
+        ],
+        "write-preserved": [
+          0.28757893013822144,
+          3.5194293971307022,
+          7.5192074311743795,
+          -0.6772837945273724,
+          1.4991066333289949
+        ],
+        "constants": [
+          4.543840604680338,
+          -0.08851919859050872,
+          -0.507807630018331,
+          5.017609719367266,
+          -13.551682561281797
+        ]
+      }
+    },
+    {
+      "args": [
+        8192,
+        123
+      ],
+      "mediansMs": {
+        "original": 0.09061961990668738,
+        "write-preserved": 0.07681415621031239,
+        "constants": 0.07802645111054374
+      },
+      "originalOverVariant": {
+        "original": 1.0,
+        "write-preserved": 1.1797255138568012,
+        "constants": 1.1613961498556726
+      },
+      "samples": {
+        "original": [
+          0.08840460945498349,
+          0.0910058532295271,
+          0.08858877750906893,
+          0.09271027407140278,
+          0.09061961990668738
+        ],
+        "write-preserved": [
+          0.07675087064549181,
+          0.07653071081622435,
+          0.07860211810817876,
+          0.07681415621031239,
+          0.08530926246793955
+        ],
+        "constants": [
+          0.07727496098302508,
+          0.07802645111054374,
+          0.08361235019241335,
+          0.07728899669127,
+          0.07956956157505289
+        ]
+      },
+      "halfDriftPercent": {
+        "original": [
+          3.8157088344784595,
+          1.3959842572498937,
+          1.2062416017967204,
+          -2.463455456906738,
+          -1.6270906290029252
+        ],
+        "write-preserved": [
+          -2.6416043518267207,
+          -2.9998897005230285,
+          2.9216181399960517,
+          -1.896269088001612,
+          4.93568085599414
+        ],
+        "constants": [
+          -1.9278286243938791,
+          -2.492570007516215,
+          4.5860322190905745,
+          -2.004847200940474,
+          2.5435917452480084
+        ]
+      }
+    }
+  ],
+  "sampleIdentities": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r0-original/sample.json",
+      "sha256": "ac0f815e41e9f6cf807bd3029f5bc949fc281efb450f05e1194406aba61f63ec",
+      "bytes": 5701
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r0-write-preserved/sample.json",
+      "sha256": "53509eaa653e6d078ddb30561d7bc4299f55c8fa49d1531aa872dfa2bda0fd68",
+      "bytes": 5692
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r0-constants/sample.json",
+      "sha256": "5662ec524b957b8ca5f691fe442c2dd790ea00a58ffe7e9868491370d238a58b",
+      "bytes": 5697
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r1-write-preserved/sample.json",
+      "sha256": "95c0831c123cd246c0f0ed2b49e4399a0a175b8b41da59c87fb7683880637b0a",
+      "bytes": 5706
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r1-constants/sample.json",
+      "sha256": "20b615bfbb9e878baae91f4c0f1e36bbff4ed5792721c7feb61d4b58b06da47a",
+      "bytes": 5704
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r1-original/sample.json",
+      "sha256": "cbf1d49eee6278013f5e36c13d37c6b69f9d896cc3dbf372e6488c0996f999b8",
+      "bytes": 5676
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r2-constants/sample.json",
+      "sha256": "35ea7165e323f7adfa400cb92cc2e10ebe2c2f98099077255d775562b5bfc1e7",
+      "bytes": 5698
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r2-original/sample.json",
+      "sha256": "8480d2b5c2486a5f6190c1bae1baefff3193deff43df0745e820494b27a4e666",
+      "bytes": 5695
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r2-write-preserved/sample.json",
+      "sha256": "b493a4e6205e32548e1eed8d512fea83ce843ba04591a8c35edd38a7abc197e1",
+      "bytes": 5687
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r3-original/sample.json",
+      "sha256": "c8f787f181dd68b5232428a3e2f911ddc68eb0d147855f48283a7f96a82da519",
+      "bytes": 5702
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r3-write-preserved/sample.json",
+      "sha256": "efd520651bca27ec3bb3faaecf2d3c4585380238361635d1372700e5357b20b8",
+      "bytes": 5703
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r3-constants/sample.json",
+      "sha256": "ee8329e43b439efa2d61d621c6da921422d3b1e6ceeb84c3875ae5919728e7fa",
+      "bytes": 5700
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r4-write-preserved/sample.json",
+      "sha256": "71dc77a6240bd2dce7f9a8e50d7ff4ae75f00b92caa7075d2c5254c047468cfd",
+      "bytes": 5696
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r4-constants/sample.json",
+      "sha256": "4d2be4902334240b8e53c6aebaaea80db1f8fdf2eea9c5d1b3e38f47db5e2337",
+      "bytes": 5695
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n256-r4-original/sample.json",
+      "sha256": "293ce433743cdef95d06b668e4d081313ae9e0beb032857b7cb60003b9736450",
+      "bytes": 5706
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r0-original/sample.json",
+      "sha256": "d0a27fb7cc54c84f8bd858656dcf46152f4bdf60f9e098517d5a84116d52bdfc",
+      "bytes": 5696
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r0-write-preserved/sample.json",
+      "sha256": "ec5c6bb35738136e8d27e005fb01aa47a2d2ba26828f69e208423479524d6e97",
+      "bytes": 5705
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r0-constants/sample.json",
+      "sha256": "45dcdd7fd19a1ce5fe551d8e4f6dc48fa00c5b1428f6df951510589999f1fa2f",
+      "bytes": 5681
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r1-write-preserved/sample.json",
+      "sha256": "9db27ca51193061f1862f3a5f17a26ff512c8ef4b9deca3c8961132e870c34d5",
+      "bytes": 5682
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r1-constants/sample.json",
+      "sha256": "81e4cd286c968e85b6296e88e52da66be177497351eb92c4e3e1253d74fa407d",
+      "bytes": 5680
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r1-original/sample.json",
+      "sha256": "3db9359b541d01d54bb1a9896a4bbe2d2d8cb2ca56b17d02f388303178e4841f",
+      "bytes": 5683
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r2-constants/sample.json",
+      "sha256": "3d4a3348a3ce7212449757970307d5eb8fbd206143155f4859f974db4f8ed890",
+      "bytes": 5696
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r2-original/sample.json",
+      "sha256": "c243327a2398fffa2329d61f75c7c4855531eb9c137f50f4599e7735b225cd49",
+      "bytes": 5700
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r2-write-preserved/sample.json",
+      "sha256": "0cfab11b668e2d958d4a0e461973e106ce4d5732c1382e536edda244ddb6e93c",
+      "bytes": 5686
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r3-original/sample.json",
+      "sha256": "b67b6c0fd9131ff6b41f19ac0f889586dbf97df276df6d6dd2977abe1b878d94",
+      "bytes": 5693
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r3-write-preserved/sample.json",
+      "sha256": "d6bc91e791b817cebf49ceb3773e8bee0f8daf04e0da33cdf6c48d5ab2273885",
+      "bytes": 5693
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r3-constants/sample.json",
+      "sha256": "fce80edcc81620027923e77e07caf6214009e95cd1afaafe2f9d799147be7822",
+      "bytes": 5689
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r4-write-preserved/sample.json",
+      "sha256": "55216ec63b8150fb8da6f83b8a0826d5104109452ccd1f24164deac18932bbcb",
+      "bytes": 5675
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r4-constants/sample.json",
+      "sha256": "5ec3b4b7f8abaa99932ed80e7359ac7966e4e628f03b59a08022fcb4dc939e28",
+      "bytes": 5680
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n1024-r4-original/sample.json",
+      "sha256": "ea29506fc390b4659f6227ff306136478d283d32e96faadbf974ff6f68fcd4c1",
+      "bytes": 5687
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r0-original/sample.json",
+      "sha256": "eb83392560d7321f8fc489f26ae2de5fcd6282d10f2728fd01c40afd636fca65",
+      "bytes": 5080
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r0-write-preserved/sample.json",
+      "sha256": "670d89a372ebf870e978a2d8edbd30ee35902127a1827c238113fa64a50fc7d0",
+      "bytes": 5081
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r0-constants/sample.json",
+      "sha256": "0393bbfe72d50b50cacebe75a9af42a90d944195bf4222fbed22b9265e2c967f",
+      "bytes": 5081
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r1-write-preserved/sample.json",
+      "sha256": "1cd83c76205dd363a3f291284e78a6e9d7e32fe1a1b75f39bfc9336bf9b67b3f",
+      "bytes": 5104
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r1-constants/sample.json",
+      "sha256": "30b9beaecdfb2db69cbd8f078f57e1fc50aa6a2bb7ac8b4b5f38a10f446656d0",
+      "bytes": 5086
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r1-original/sample.json",
+      "sha256": "3e9faadfbaf4b1664b14a6cb27fbec1a981ae7da6803c6366c369030c4525802",
+      "bytes": 5096
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r2-constants/sample.json",
+      "sha256": "fd81b77bc2f56d10e2bcc223c689b8abebc464ba32fba82c0065266e3681d60a",
+      "bytes": 5088
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r2-original/sample.json",
+      "sha256": "32d5d400fb279d8a0bfa6c1853121a61bdd9f42b3a930fee6ddd69162748fe14",
+      "bytes": 5089
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r2-write-preserved/sample.json",
+      "sha256": "a838637c9dffcb169c970c808dac04c771d33a01b8b96971950af7602a10c48d",
+      "bytes": 5081
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r3-original/sample.json",
+      "sha256": "7e04a688c55855947baba7a56ba281be0c74b21960ece33b60d5f11fb9de94fb",
+      "bytes": 4802
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r3-write-preserved/sample.json",
+      "sha256": "5281dbfbdd374bc0dad5a7f76c0ff7305c5e676b7a38d7a6d9be704ff7ca808f",
+      "bytes": 5089
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r3-constants/sample.json",
+      "sha256": "ed8b1747a893a7e606596de9af4eaa89370d65632764442ae2ce73282e197068",
+      "bytes": 5077
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r4-write-preserved/sample.json",
+      "sha256": "f9e3f88e0826660a813a0b2533fe99b425efc9e65eea93c3374446fc3335987a",
+      "bytes": 5089
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r4-constants/sample.json",
+      "sha256": "f6f86f18fd73211b8eb9945903d37e091b8899a3d91d2d027be1b80fedac3630",
+      "bytes": 5086
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/numeric-screen01/n8192-r4-original/sample.json",
+      "sha256": "32b24c26c09a994cb7ab08172858b12d079baa24282d1ba73d0334410a9cbfe0",
+      "bytes": 5083
+    }
+  ]
+}

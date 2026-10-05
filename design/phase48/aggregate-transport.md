@@ -45,6 +45,11 @@ source definitions remain the input to all dependency and host guards.
    fresh slots at the original construction point. Replace projections with
    those slots. Repeated bounded cleanup handles nested tuples.
 
+This first return-shape analysis is local to a function: a helper-forwarded
+return does not acquire its callee's shape. Recursive producers expressed through
+such forwarding may therefore stay boxed; synthetic emitted-IR controls must
+cover the new multi-result SCC protocol independently.
+
 Tuple decomposition preserves field references. It does not copy, mutate or
 discard a persistent child. Tagged records remain materialized in this slice;
 tuple results containing records can lose their transport shell.
@@ -62,8 +67,10 @@ An exhausted budget stops further decomposition. No source names select programs
 The first result uses the JavaScript return value. Additional results use private
 lexical scalar return registers in the root closure. The producer evaluates all
 result leaves into local temporaries before committing those registers; the
-caller immediately captures them into its own local slots before another call
-or host-visible operation. This is a register calling convention, not shared
+caller immediately captures them into its own lexical locals, clears the
+consumed extra return registers, and only then stores caller slots. No call or
+host-visible operation may intervene. Clearing avoids retaining the last
+aggregate child in a module-lived root closure. This is a register calling convention, not shared
 mutable aggregate storage.
 
 All recursive and continuation paths must implement the same protocol. A

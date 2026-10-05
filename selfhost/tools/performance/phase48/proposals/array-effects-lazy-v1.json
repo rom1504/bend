@@ -1,0 +1,22 @@
+{
+  "kind": "phase48-array-effects-lazy-admission-overlay",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "path": "selfhost/build/phase48/source-combined-rnfa02/src/back/js/array-effects.bend",
+    "sha256": "bbae40d6a1929b83189d5ad8942a66857a967a305aa1f5d87bcbfe16e6d3b04d",
+    "bytes": 7359
+  },
+  "overlay": {
+    "path": "selfhost/tools/performance/phase48/proposals/array-effects-lazy-v1.bend",
+    "sha256": "e74844cc241cc3185363ccea6c477a3fcd6c58012a59244aaad805c6c1b41abd",
+    "bytes": 7989
+  },
+  "patch": {
+    "path": "selfhost/tools/performance/phase48/proposals/array-effects-lazy-v1.patch",
+    "sha256": "5068211d382fbb2b8eeba816b334e9c0d5f4f01fcce9fdba36bd09a0fe50fc10",
+    "bytes": 3670
+  },
+  "scope": "Only rejection evaluation order changes. All canonical native type/arity/element and runtime host guards remain. Bool.and is eager; kc delays normalization until shape/native owner/erased telescope admission.",
+  "cause": "Concrete eager live-argument normalization bug; attribution of RNFA02 OOM remains unproved because the retained stage trace had no typed-driver entries."
+}

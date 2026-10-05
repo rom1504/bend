@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "kind": "phase48-evening-adverse-screen-evidence",
+  "scope": "Focused actual consumer correctness plus one three-round screen; not release qualification or a guard-only causal measurement.",
+  "reports": [
+    {
+      "path": "selfhost/build/phase48/literals-evening02/report.json",
+      "sha256": "16d7394d9873152ac16d352a74098d2998783e60eb5c194633e4b04172092a32",
+      "bytes": 38452
+    },
+    {
+      "path": "selfhost/build/phase48/arrays-screen02/report.json",
+      "sha256": "75f5c764a57c153a22a141fd921ad84c155a94091c5d31402d3aad0ab321eadb",
+      "bytes": 192045
+    }
+  ],
+  "actualEvening": {
+    "root": "actual-evening/fpart",
+    "entries": 2,
+    "values": [
+      8,
+      81111
+    ]
+  },
+  "checkedModules": [
+    {
+      "path": "selfhost/build/phase47/array06-full/modules/test-evening-program.mjs",
+      "sha256": "b21b0bbd4e40873907038838d89c559ef73d6c7e599f87e63e94b9f5be77f8b7",
+      "bytes": 177066
+    },
+    {
+      "path": "selfhost/build/phase48/arrays-runtime02/modules/test-evening-program.mjs",
+      "sha256": "b67afedbacb274617512fab203affa39ba44a6dd4128ee992e49d18f51e490b6",
+      "bytes": 178676
+    }
+  ],
+  "compilerIdentities": [
+    {
+      "kind": "checked-development-attempt",
+      "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "sourceSha256": "f8a2b0c6ca5fabaed82e81f9797f01b058c31fdd62c30546b773700eb613cec7",
+      "artifact": "derived-b1",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-arrays02/equality/api.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-arrays02/equality/api.mjs",
+        "sha256": "9bdeb7bb69e0291ad46c320f30b71fd65feb503a9fefe05ddc2987b03c1331f3"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-arrays02/snapshot/src/runtime.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-arrays02/snapshot/src/runtime.mjs",
+        "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-arrays02/snapshot/tools/typed-driver.mjs",
+        "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-arrays02/snapshot/tools/typed-driver.mjs",
+        "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+      }
+    }
+  ],
+  "timings": [
+    {
+      "id": "test-evening-program",
+      "point": {
+        "args": [],
+        "expected": 81111,
+        "exportName": "main.out"
+      },
+      "roles": {
+        "baseline": {
+          "medianMicroseconds": 157.64828961748626,
+          "sampleMicroseconds": [
+            156.78654831460676,
+            157.64828961748626,
+            167.79142790697688
+          ],
+          "halfDriftPercent": [
+            19.101556554368027,
+            17.082505243493106,
+            -19.095042174624655
+          ],
+          "moduleSha256": "b21b0bbd4e40873907038838d89c559ef73d6c7e599f87e63e94b9f5be77f8b7"
+        },
+        "candidate": {
+          "medianMicroseconds": 212.68624608501125,
+          "sampleMicroseconds": [
+            206.96092989417983,
+            212.68624608501125,
+            223.57476695437725
+          ],
+          "halfDriftPercent": [
+            -5.914325421015098,
+            -11.109873021368056,
+            -7.343438815291503
+          ],
+          "moduleSha256": "b67afedbacb274617512fab203affa39ba44a6dd4128ee992e49d18f51e490b6"
+        },
+        "typescript": {
+          "medianMicroseconds": 2.959881041923016,
+          "sampleMicroseconds": [
+            2.959881041923016,
+            2.817671988414295,
+            3.2936471841120616
+          ],
+          "halfDriftPercent": [
+            2.942888518521536,
+            9.138308920863736,
+            -0.7708769438183438
+          ],
+          "moduleSha256": "0c1d34b107501041c6e5a3bb5b896e91b8ab56b8826c3f616ea6b4e3a3e1d6d0"
+        }
+      },
+      "candidateOverBaseline": 1.3491186399869461,
+      "candidateOverTypescript": 71.8563493169409
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          0
+        ],
+        "expected": 0
+      },
+      "roles": {
+        "baseline": {
+          "medianMicroseconds": 14.303029349295237,
+          "sampleMicroseconds": [
+            14.230102455055096,
+            14.303029349295237,
+            14.393823274905698
+          ],
+          "halfDriftPercent": [
+            -0.03794278060256229,
+            -1.2801885681257952,
+            -2.9292360264360884
+          ],
+          "moduleSha256": "3284d06870f99bb51c82e390eb740c4a1c4b26975d601bf0a4926eb93a90a5b9"
+        },
+        "candidate": {
+          "medianMicroseconds": 14.607398138272089,
+          "sampleMicroseconds": [
+            14.552844998527542,
+            14.607398138272089,
+            16.402298314014757
+          ],
+          "halfDriftPercent": [
+            -1.9478018545284193,
+            -3.390350915933771,
+            -0.19247912826898528
+          ],
+          "moduleSha256": "412d6b0381f2fac65e94dafe2ebbc09e927928946b59634e753ad0f645750107"
+        },
+        "typescript": {
+          "medianMicroseconds": 1.6563314715314212,
+          "sampleMicroseconds": [
+            1.5710831468869206,
+            1.7539267190370456,
+            1.6563314715314212
+          ],
+          "halfDriftPercent": [
+            -9.265778534327374,
+            -12.243657344856185,
+            -0.39022869907252566
+          ],
+          "moduleSha256": "591c3e3a895f4092a80eac58fef2ea4ecd15f59c01433fc69ce09143055e2444"
+        }
+      },
+      "candidateOverBaseline": 1.0212800226821774,
+      "candidateOverTypescript": 8.819127324053252
+    }
+  ],
+  "structuralDifference": {
+    "onlyChangedDefinition": "fpart",
+    "allOtherBytesIdentical": true,
+    "baselineAssignmentBytes": 250,
+    "candidateAssignmentBytes": 1860,
+    "addedModuleBytes": 1610,
+    "oldPrivateGuards": 0,
+    "newHostGuardCalls": 1,
+    "newDependencyNames": 5,
+    "newPairHelpers": 2,
+    "newUnusedReadHelperVariants": 2
+  },
+  "diagnosticProducer": {
+    "path": "selfhost/tools/performance/phase48/array-literal-generic-probe.py",
+    "sha256": "a6ca10c8e730bfc5b9a83b47fd6f4a6f15f89a058a4b2678f536d26798811a3e",
+    "bytes": 5854
+  },
+  "diagnosticState": "prepared; no producer or target executed by report author"
+}

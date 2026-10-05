@@ -92,3 +92,29 @@ Only the root runs checked builds/acquisition/controls. Measure maintained
 programs after activation and semantic gates. A proof extension with no corpus
 activation is a capability result; it is not a runtime improvement or full
 conformance gain. Unsupported boundaries and any failed attempts stay recorded.
+
+## Full permission on newly admitted handle fallbacks
+
+Review of the complete entry ladder exposed a second obligation: refusing a raw
+entry must not pass a newly admitted F32/swap/size graph to the old weaker private
+handle guard. `regionHostGuard` omits Array.fill and Number.isSafeInteger. A fill
+callback could change a source helper after the dependency check, while a direct
+private call would bypass the replacement. The correction therefore strengthens
+both scalar/tree and flat-record handle entry guards for the new effect domain.
+
+The initial 53-line proposal distinguished new F32/swap/size graphs from old U32
+new/get/set graphs. Independent review confirmed the same late allocation
+callback hole applies to the old domain. Preserving that admission would retain
+the known unsoundness. The unused scoped proposal is preserved with its hash in
+`selfhost/tools/performance/phase48/proposals/array-effect-guards-scoped.bend`.
+
+The selected correction is eleven lines: every graph with a proved native Array
+helper requires the existing fresh array host guard on its handle path. Both
+ordinary/tree and flat-record entry selectors apply it before inputs/dependency
+reads. No runtime cache or new hook snapshot is introduced. Controller v3 changes
+Array.fill to replace `wash.step.code` with a throwing callback. A separate old
+U32-domain fixture changes fill or isSafeInteger to replace `river.read.code`.
+It compares the candidate against ordinary ungranted source execution in both
+images, and records a historical public-path mismatch separately instead of
+preserving the bug as an oracle. This remains a source-audit finding until the
+root executes the retained old/new candidate controls.

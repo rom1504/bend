@@ -52,3 +52,29 @@ and event controls, retain the old Phase45 nullary boundary methodology, then
 attempt acquisition and activation on the actual maintained Evening source.
 The root alone executes checked builds and programs. Capability, correctness,
 runtime measurements and promotion are recorded separately.
+
+## Loop-qualified follow-on after the adverse acyclic result
+
+Arrays02 established actual Evening entry and correct values, but the first
+screen made Evening 34.91% slower. Its entire generated module differs only in
+the new small `fpart` adapter. Preserve that candidate and its controls/results;
+do not weaken its required host proof to rescue timing.
+
+The next candidate adds the existing `j_region_has_loop` predicate to completed
+literal-root plans. This is the same admission used by ordinary region roots,
+not a new cost score, source name or trip-count threshold. Tuple consumers have
+already lowered to JUnpack and do not qualify as countdown Mat helpers. The
+full array host guard, source dependencies, nullary ABI and generic fallback
+remain identical for admitted roots. This is a profitability heuristic, not a
+proof that every loop is profitable: a zero/short loop can still pay excess
+entry cost and must stay in the measurements.
+
+New v2 controls preserve the acyclic examples as explicit marker-absence and
+ordinary-fallback cases. A renamed countdown carries a literal Array<F32> and
+an F32 accumulator through ordered swap operations. Positive-arity and demanded
+nullary roots test actual private entry; independent rounding oracles cover
+zero, short, nonfinite and long inputs. Mutated helpers, swap/Number/DataView
+hooks and thrown errors must refuse entry and agree with ordinary source.
+Separate diagnostic points at 0/1/128/8192 iterations measure amortization without
+changing the maintained 45-point corpus. The actual Evening fpart should return
+to ordinary emission and continue to produce 8 and 81111, with no new marker.

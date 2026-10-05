@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Universal fresh Array host permission, historical baseline differential recorded separately; unexecuted.",
+  "cases": [
+    {
+      "id": "array-fill-boundary-independent",
+      "family": "array-allocation-host-boundary",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "array-fill-boundary-v1.bend",
+        "sha256": "032a5b8fb0926e3ca9903dcc742fb6e8c3da3130036b9b7c91de590252241514",
+        "bytes": 720,
+        "provenance": {
+          "kind": "phase48-independent-controls",
+          "scope": "Previously admitted U32 get/set allocation graph; ordinary execution distinguishes a historical late callback bug"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          2
+        ],
+        "expected": 6
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Three distinct cells of initial value2 contribute exactly6; changed allocator must observe and propagate the later helper sentinel."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "array-fill-boundary-independent"
+    ],
+    "core": [
+      "array-fill-boundary-independent"
+    ],
+    "broad": [
+      "array-fill-boundary-independent"
+    ],
+    "full": [
+      "array-fill-boundary-independent"
+    ]
+  }
+}

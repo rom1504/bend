@@ -1,0 +1,8 @@
+--- a/selfhost/src/back/js/ir/function-flow-root.bend
++++ b/selfhost/src/back/js/ir/function-flow-root.bend
+@@ -128,4 +128,4 @@
+ @unsafe
+ def j_function_flow_worker(+book: List<&2,KDef>, +defs: List<&2,KDef>, +entry: U32) -> JWEmission:
+   kc(JWEmission, U32.is_eq(entry, 0),
+-    u => j_worker_emission(book, defs), u => JWEmission{"", False{}, False{}})
++    u => j_worker_emission(book, defs, entry), u => JWEmission{"", False{}, False{}})

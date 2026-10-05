@@ -1,0 +1,122 @@
+{
+  "kind": "phase48-entry-profitability-measured-summary",
+  "complete": true,
+  "passed": true,
+  "decision": "defer-production",
+  "productionIntegrated": false,
+  "summaryOnly": true,
+  "reports": [
+    {
+      "path": "selfhost/build/phase48/entry-profitability01-timing/report.json",
+      "sha256": "ab61b67f771863c8ba3c548dd970477a30206f90f56bc875ca3e7aa680e2e31d",
+      "bytes": 393304
+    },
+    {
+      "path": "selfhost/build/phase48/entry-profitability01-audit/report.json",
+      "sha256": "59d3c5577056c51a65f8b17ae28c7b68f4dd49a881af6ee91bad038de502fe9a",
+      "bytes": 57865
+    }
+  ],
+  "wallSeconds": 69.73982591996901,
+  "samples": 45,
+  "rows": [
+    {
+      "point": "128-0",
+      "variants": {
+        "original": {
+          "medianUs": 14.196584554880227,
+          "minUs": 14.063515883283024,
+          "maxUs": 15.900994720080458,
+          "samples": 5
+        },
+        "allocation-free": {
+          "medianUs": 13.660589092118402,
+          "minUs": 13.024894172806425,
+          "maxUs": 15.019183700682412,
+          "samples": 5
+        },
+        "unsafe-admission-bypass": {
+          "medianUs": 1.2046109173283142,
+          "minUs": 1.1203105503764796,
+          "maxUs": 1.3095870095119406,
+          "samples": 5
+        }
+      },
+      "safeGain": 1.0392366287535193
+    },
+    {
+      "point": "4096-17",
+      "variants": {
+        "original": {
+          "medianUs": 61.05094294294293,
+          "minUs": 60.811837666263614,
+          "maxUs": 69.16946033333336,
+          "samples": 5
+        },
+        "allocation-free": {
+          "medianUs": 61.500035681610264,
+          "minUs": 60.08069380425019,
+          "maxUs": 68.21161269070728,
+          "samples": 5
+        },
+        "unsafe-admission-bypass": {
+          "medianUs": 48.68174214755296,
+          "minUs": 47.73310558105819,
+          "maxUs": 53.83687589309342,
+          "samples": 5
+        }
+      },
+      "safeGain": 0.9926976832827819
+    },
+    {
+      "point": "8192-123",
+      "variants": {
+        "original": {
+          "medianUs": 111.52297243243244,
+          "minUs": 111.10022330097088,
+          "maxUs": 123.36759158986172,
+          "samples": 5
+        },
+        "allocation-free": {
+          "medianUs": 111.33873582887702,
+          "minUs": 110.37310945802348,
+          "maxUs": 115.31623674138876,
+          "samples": 5
+        },
+        "unsafe-admission-bypass": {
+          "medianUs": 105.88876484018265,
+          "minUs": 93.99324555659493,
+          "maxUs": 109.02052634408598,
+          "samples": 5
+        }
+      },
+      "safeGain": 1.001654739495503
+    }
+  ],
+  "protocol": {
+    "cpu": 3,
+    "heapMiB": 1024,
+    "rssMiB": 2048,
+    "availableMiB": 4096,
+    "mode": "timing",
+    "rounds": 5,
+    "points": [
+      "128-0",
+      "4096-17",
+      "8192-123"
+    ],
+    "variants": [
+      "original",
+      "allocation-free",
+      "unsafe-admission-bypass"
+    ],
+    "warmupMs": 1000,
+    "calibrationMs": 50,
+    "targetMs": 200,
+    "secondsPerJob": 15,
+    "totalSeconds": 240,
+    "scope": "Clean saved-output public calls; full admission bypass is an unsafe upper bound."
+  },
+  "auditWallSeconds": 0.6374969039461575,
+  "unsafeVariant": "admission bypass is not semantically qualified and gives only an upper bound"
+}

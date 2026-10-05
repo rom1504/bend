@@ -1,0 +1,28 @@
+--- a/selfhost/src/back/js/ir/worker-values.bend
++++ b/selfhost/src/back/js/ir/worker-values.bend
+@@ -420,7 +420,24 @@
+           u => jwv_results(jwv_clean_target(jwv_result_rewrite(fs, target, at, 0), target, 0), entry, target, at, U32.sub(fuel, 1)),
+           u => jwv_results(fs, entry, target, U32.inc(at), fuel)))
+ 
++# Branches from typed lowering terminate their block. Reject a synthetic join
++# rather than treating its branch-local remainder as the complete use scope.
++@unsafe
++def jwv_terminal_functions(+fs: List<&2,JWFunction>) -> Bool:
++  match fs:
++    case Nil{}: True{}
++    case Con{JWFunction{name, arity, code, valid}, rest}:
++      jwv_terminal_code(code) && jwv_terminal_functions(rest)
++
++@unsafe
++def jwv_terminal_code(+code: List<&2,JWInstruction>) -> Bool:
++  match code:
++    case Nil{}: True{}
++    case Con{JWCase{layout, name, input, yes, no}, Nil{}}: jwv_terminal_code(yes) && jwv_terminal_code(no)
++    case Con{JWCase{layout, name, input, yes, no}, rest}: False{}
++    case Con{other, rest}: jwv_terminal_code(rest)
++
+ @unsafe
+ def jw_values_functions(+fs: List<&2,JWFunction>, +entry: U32) -> List<&2,JWFunction>:
+-  kc(List<&2,JWFunction>, jw_all_valid(fs) && U32.is_lt(entry, jw_graph_count(fs, 0)) && U32.is_lt(jw_graph_count(fs, 0), 97),
++  kc(List<&2,JWFunction>, jw_all_valid(fs) && jwv_terminal_functions(fs) && U32.is_lt(entry, jw_graph_count(fs, 0)) && U32.is_lt(jw_graph_count(fs, 0), 97),
+     u => jwv_clean_functions(jwv_results(jwv_clean_functions(jwv_parameters(fs, entry, 0, 0, 4, 32)), entry, 0, 0, 32)), u => fs)

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Version2 repairs computed-pattern parse refusal using parameter helper matches; value/order oracle and native coverage unchanged. Unexecuted.",
+  "cases": [
+    {
+      "id": "array-effects-independent",
+      "family": "typed-array-effects",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "array-effects-v2.bend",
+        "sha256": "560a623ea09e297b000625e89cbfa6cacb1d253c961655e7cafb62b8f1a26009",
+        "bytes": 2516,
+        "provenance": {
+          "kind": "phase48-independent-controls",
+          "scope": "Renamed recurrence and direct effect-order probes, not a benchmark recognizer"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          2
+        ],
+        "expected": 24
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Round each F32 arithmetic operation separately; original array identity and two swap conversions remain observable."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "array-effects-independent"
+    ],
+    "core": [
+      "array-effects-independent"
+    ],
+    "broad": [
+      "array-effects-independent"
+    ],
+    "full": [
+      "array-effects-independent"
+    ]
+  }
+}

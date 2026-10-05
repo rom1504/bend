@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Six diagnostic scale points from the exact reviewed v4 source. Never appended to, reweighted into, or substituted for the unchanged primary 45-point corpus.",
+  "producer": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/controls/aggregate-scale-catalog-v1.py",
+    "sha256": "a00026dc6f407e15a9fe5f4fd4b80268deff77d511f450bb576920bb5a2efb2c",
+    "bytes": 3982
+  },
+  "semanticCatalog": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/controls/aggregate-transport-catalog-v4.json",
+    "sha256": "0a4ccf87a1179f0bbef691bbd58a83a203583a3584100a61062eb1a67352f9ca",
+    "bytes": 1768
+  },
+  "cases": [
+    {
+      "id": "aggregate-bench-32",
+      "family": "private-tuple-transport-scale",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "aggregate-transport-v4.bend",
+        "sha256": "51febd83c9f780dfd99252b73621a8c032a022c445f579fbd2000ce41789ec66",
+        "bytes": 3506,
+        "provenance": {
+          "kind": "phase48-independent-renamed-state-and-record-controls",
+          "scope": "Untimed values, allocation witnesses, exceptions, persistent alias and ABI",
+          "correction": "v3 parsed but reusable List element tuple shorthand has Kind Type, not Data. v4 uses the maintained RLE explicit Sigma<&2,&2,...> alias for list elements, retains transport tuple types, annotates local inferred Data values, and makes twice-used public_shared x reusable. Value/allocation oracles unchanged."
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          3
+        ],
+        "expected": 32355
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Direct run-count and weighted-value model, cross-checked against periodic sum"
+    },
+    {
+      "id": "aggregate-bench-256",
+      "family": "private-tuple-transport-scale",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "aggregate-transport-v4.bend",
+        "sha256": "51febd83c9f780dfd99252b73621a8c032a022c445f579fbd2000ce41789ec66",
+        "bytes": 3506,
+        "provenance": {
+          "kind": "phase48-independent-renamed-state-and-record-controls",
+          "scope": "Untimed values, allocation witnesses, exceptions, persistent alias and ABI",
+          "correction": "v3 parsed but reusable List element tuple shorthand has Kind Type, not Data. v4 uses the maintained RLE explicit Sigma<&2,&2,...> alias for list elements, retains transport tuple types, annotates local inferred Data values, and makes twice-used public_shared x reusable. Value/allocation oracles unchanged."
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          256,
+          3
+        ],
+        "expected": 258817
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Direct run-count and weighted-value model, cross-checked against periodic sum"
+    },
+    {
+      "id": "aggregate-bench-1024",
+      "family": "private-tuple-transport-scale",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "aggregate-transport-v4.bend",
+        "sha256": "51febd83c9f780dfd99252b73621a8c032a022c445f579fbd2000ce41789ec66",
+        "bytes": 3506,
+        "provenance": {
+          "kind": "phase48-independent-renamed-state-and-record-controls",
+          "scope": "Untimed values, allocation witnesses, exceptions, persistent alias and ABI",
+          "correction": "v3 parsed but reusable List element tuple shorthand has Kind Type, not Data. v4 uses the maintained RLE explicit Sigma<&2,&2,...> alias for list elements, retains transport tuple types, annotates local inferred Data values, and makes twice-used public_shared x reusable. Value/allocation oracles unchanged."
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          1024,
+          3
+        ],
+        "expected": 1035264
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Direct run-count and weighted-value model, cross-checked against periodic sum"
+    },
+    {
+      "id": "aggregate-deep-32",
+      "family": "private-tuple-transport-scale",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "aggregate-transport-v4.bend",
+        "sha256": "51febd83c9f780dfd99252b73621a8c032a022c445f579fbd2000ce41789ec66",
+        "bytes": 3506,
+        "provenance": {
+          "kind": "phase48-independent-renamed-state-and-record-controls",
+          "scope": "Untimed values, allocation witnesses, exceptions, persistent alias and ABI",
+          "correction": "v3 parsed but reusable List element tuple shorthand has Kind Type, not Data. v4 uses the maintained RLE explicit Sigma<&2,&2,...> alias for list elements, retains transport tuple types, annotates local inferred Data values, and makes twice-used public_shared x reusable. Value/allocation oracles unchanged."
+        }
+      },
+      "point": {
+        "exportName": "deep",
+        "args": [
+          32,
+          9
+        ],
+        "expected": 1960
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent finite U32 sum of n+1 XOR leaves"
+    },
+    {
+      "id": "aggregate-deep-256",
+      "family": "private-tuple-transport-scale",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "aggregate-transport-v4.bend",
+        "sha256": "51febd83c9f780dfd99252b73621a8c032a022c445f579fbd2000ce41789ec66",
+        "bytes": 3506,
+        "provenance": {
+          "kind": "phase48-independent-renamed-state-and-record-controls",
+          "scope": "Untimed values, allocation witnesses, exceptions, persistent alias and ABI",
+          "correction": "v3 parsed but reusable List element tuple shorthand has Kind Type, not Data. v4 uses the maintained RLE explicit Sigma<&2,&2,...> alias for list elements, retains transport tuple types, annotates local inferred Data values, and makes twice-used public_shared x reusable. Value/allocation oracles unchanged."
+        }
+      },
+      "point": {
+        "exportName": "deep",
+        "args": [
+          256,
+          9
+        ],
+        "expected": 72856
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent finite U32 sum of n+1 XOR leaves"
+    },
+    {
+      "id": "aggregate-deep-1024",
+      "family": "private-tuple-transport-scale",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "aggregate-transport-v4.bend",
+        "sha256": "51febd83c9f780dfd99252b73621a8c032a022c445f579fbd2000ce41789ec66",
+        "bytes": 3506,
+        "provenance": {
+          "kind": "phase48-independent-renamed-state-and-record-controls",
+          "scope": "Untimed values, allocation witnesses, exceptions, persistent alias and ABI",
+          "correction": "v3 parsed but reusable List element tuple shorthand has Kind Type, not Data. v4 uses the maintained RLE explicit Sigma<&2,&2,...> alias for list elements, retains transport tuple types, annotates local inferred Data values, and makes twice-used public_shared x reusable. Value/allocation oracles unchanged."
+        }
+      },
+      "point": {
+        "exportName": "deep",
+        "args": [
+          1024,
+          9
+        ],
+        "expected": 1077784
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent finite U32 sum of n+1 XOR leaves"
+    }
+  ],
+  "sets": {
+    "fast": [
+      "aggregate-bench-32",
+      "aggregate-bench-256",
+      "aggregate-bench-1024",
+      "aggregate-deep-32",
+      "aggregate-deep-256",
+      "aggregate-deep-1024"
+    ],
+    "core": [
+      "aggregate-bench-32",
+      "aggregate-bench-256",
+      "aggregate-bench-1024",
+      "aggregate-deep-32",
+      "aggregate-deep-256",
+      "aggregate-deep-1024"
+    ],
+    "broad": [
+      "aggregate-bench-32",
+      "aggregate-bench-256",
+      "aggregate-bench-1024",
+      "aggregate-deep-32",
+      "aggregate-deep-256",
+      "aggregate-deep-1024"
+    ],
+    "full": [
+      "aggregate-bench-32",
+      "aggregate-bench-256",
+      "aggregate-bench-1024",
+      "aggregate-deep-32",
+      "aggregate-deep-256",
+      "aggregate-deep-1024"
+    ]
+  }
+}

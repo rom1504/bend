@@ -1,0 +1,22 @@
+--- a/selfhost/src/back/js/array-view.bend
++++ b/selfhost/src/back/js/array-view.bend
+@@ -65,7 +65,7 @@
+   kc(Bool, String.eq(tag, "Mat"),
+     u => (String.eq(nm(t), "Zero") || String.eq(nm(t), "Succ")) &&
+       j_array_view_terms_mode(book, helpers, List.append(&2, KTerm, ks(t), rest), fuel, handles), u =>
+-  kc(Bool, String.eq(tag, "Lit"),
++  kc(Bool, String.eq(tag, "Lit") || String.eq(tag, "JF32"),
+     u => j_array_view_terms_mode(book, helpers, rest, fuel, handles), u =>
+     String.contains("|Var|Lam|Let|Bind|Efq|JSlot|JNatRest|JLoopSlot|JVector|JIf|JNatCase|", "|" ++ tag ++ "|") &&
+       j_array_view_terms_mode(book, helpers, List.append(&2, KTerm, ks(t), rest), fuel, handles)))))))))
+--- a/selfhost/src/back/js/array-literals.bend
++++ b/selfhost/src/back/js/array-literals.bend
+@@ -16,7 +16,7 @@
+           u => j_array_literal_fields(Con{kid(t, 0), rest}, U32.sub(fuel, 1)), u =>
+         kc(Bool, String.eq(tg(t), "Ctr") && j_array_literal_name(nm(t)),
+           u => j_array_literal_fields(List.append(&2,KTerm, ks(t), rest), U32.sub(fuel, 1)), u =>
+-          String.contains("|Var|JSlot|Lit|", "|" ++ tg(t) ++ "|") &&
++          String.contains("|Var|JSlot|Lit|JF32|", "|" ++ tg(t) ++ "|") &&
+             j_array_literal_fields(rest, U32.sub(fuel, 1)))), u => False{})
+ 
+ # Called by the shared constructor planner; its ordinary typed argument walk

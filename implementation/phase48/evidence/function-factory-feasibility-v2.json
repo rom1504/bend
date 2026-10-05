@@ -1,0 +1,859 @@
+{
+  "kind": "phase48-factory-feasibility-evidence-v2",
+  "complete": true,
+  "scope": "Read-only synthesis of root-run original checked source diagnostics. No admission, escape-analysis, transformed graph or performance qualification. Named owners identify observed evidence; they are not compiler selectors.",
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/function-factory-facts02/report.json",
+    "sha256": "8a48f783e2fda1ac193be0defd27811ae74341dbe9fdd34fb26effe5b8fe74be",
+    "bytes": 1950
+  },
+  "facts": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/function-factory-facts02/factory-facts.json",
+    "sha256": "c404d741874cf557207a32cba4a7d1c3ae8e37269745c9b667ee4ec3e5b5617e",
+    "bytes": 878833
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/function-flow-factory-facts-v2.mjs",
+    "sha256": "78cf59f204926786a28ec8e2dbbde54c6bfb3ed1bb886fdbb2f819d1b7e361e7",
+    "bytes": 9557
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/fixtures-historical/test-morning-program.bend",
+    "sha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+    "bytes": 3077
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+    "sha256": "28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f",
+    "bytes": 1598192
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+    "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b",
+    "bytes": 57196
+  },
+  "observation": {
+    "status": "error",
+    "checked": true,
+    "diagnostic": "Error: PHASE48_FACTORY_FACTS_COMPLETE"
+  },
+  "bounds": {
+    "definitionNodes": 4096,
+    "aggregateNodes": 150000,
+    "depth": 128,
+    "siteCaptureNodes": 2048,
+    "aggregateCaptureNodes": 65536,
+    "sites": 256,
+    "shapeNodes": 512
+  },
+  "counts": {
+    "definitions": 14,
+    "runtimeNodes": 266,
+    "captureNodes": 542,
+    "lambdaSites": 28,
+    "errors": 0,
+    "truncated": false
+  },
+  "terminalFactorySites": [
+    {
+      "owner": "Str.split",
+      "binder": 3444,
+      "arm": "SNil",
+      "family": "split-separator",
+      "path": [
+        "ann",
+        "arm:SNil",
+        "ann"
+      ],
+      "bodyQuantity": 1,
+      "formalQuantity": 1,
+      "functionType": {
+        "tag": "All",
+        "name": "_",
+        "id": 3443,
+        "quantity": 1,
+        "removed": [],
+        "children": [
+          {
+            "tag": "Ref",
+            "name": "Char",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": []
+          },
+          {
+            "tag": "ADT",
+            "name": "List",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": [
+              {
+                "tag": "Qua",
+                "name": "",
+                "id": 0,
+                "quantity": 2,
+                "removed": [],
+                "children": []
+              },
+              {
+                "tag": "Ref",
+                "name": "String",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "captureGraph": {
+        "captures": [],
+        "originalReferences": [],
+        "truncated": false
+      }
+    },
+    {
+      "owner": "Str.split",
+      "binder": 3447,
+      "arm": "SCon",
+      "family": "split-separator",
+      "path": [
+        "ann",
+        "remaining-arms",
+        "ann",
+        "arm:SCon",
+        "ann",
+        "lambda-body",
+        "ann",
+        "lambda-body",
+        "ann"
+      ],
+      "bodyQuantity": 1,
+      "formalQuantity": 1,
+      "functionType": {
+        "tag": "All",
+        "name": "_",
+        "id": 3443,
+        "quantity": 1,
+        "removed": [],
+        "children": [
+          {
+            "tag": "Ref",
+            "name": "Char",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": []
+          },
+          {
+            "tag": "ADT",
+            "name": "List",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": [
+              {
+                "tag": "Qua",
+                "name": "",
+                "id": 0,
+                "quantity": 2,
+                "removed": [],
+                "children": []
+              },
+              {
+                "tag": "Ref",
+                "name": "String",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "captureGraph": {
+        "captures": [
+          {
+            "id": 3445,
+            "inScope": true,
+            "type": {
+              "tag": "Ref",
+              "name": "Char",
+              "id": 0,
+              "quantity": 1,
+              "removed": [],
+              "children": []
+            }
+          },
+          {
+            "id": 3446,
+            "inScope": true,
+            "type": {
+              "tag": "Ref",
+              "name": "String",
+              "id": 0,
+              "quantity": 1,
+              "removed": [],
+              "children": []
+            }
+          }
+        ],
+        "originalReferences": [
+          "Char.eq",
+          "Str.split",
+          "Str.split.fin"
+        ],
+        "truncated": false
+      }
+    },
+    {
+      "owner": "Str.join.go",
+      "binder": 3466,
+      "arm": "Nil",
+      "family": "join-bound-separator",
+      "path": [
+        "ann",
+        "arm:Nil",
+        "ann",
+        "lambda-body",
+        "ann"
+      ],
+      "bodyQuantity": 1,
+      "formalQuantity": 1,
+      "functionType": {
+        "tag": "All",
+        "name": "_",
+        "id": 3464,
+        "quantity": 1,
+        "removed": [],
+        "children": [
+          {
+            "tag": "Ref",
+            "name": "String",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": []
+          },
+          {
+            "tag": "Ref",
+            "name": "String",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": []
+          }
+        ]
+      },
+      "captureGraph": {
+        "captures": [
+          {
+            "id": 3465,
+            "inScope": true,
+            "type": {
+              "tag": "Ref",
+              "name": "String",
+              "id": 0,
+              "quantity": 1,
+              "removed": [],
+              "children": []
+            }
+          }
+        ],
+        "originalReferences": [],
+        "truncated": false
+      }
+    },
+    {
+      "owner": "Str.join.go",
+      "binder": 3470,
+      "arm": "Con",
+      "family": "join-bound-separator",
+      "path": [
+        "ann",
+        "remaining-arms",
+        "ann",
+        "arm:Con",
+        "ann",
+        "lambda-body",
+        "ann",
+        "lambda-body",
+        "ann",
+        "lambda-body",
+        "ann"
+      ],
+      "bodyQuantity": 1,
+      "formalQuantity": 1,
+      "functionType": {
+        "tag": "All",
+        "name": "_",
+        "id": 3464,
+        "quantity": 1,
+        "removed": [],
+        "children": [
+          {
+            "tag": "Ref",
+            "name": "String",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": []
+          },
+          {
+            "tag": "Ref",
+            "name": "String",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": []
+          }
+        ]
+      },
+      "captureGraph": {
+        "captures": [
+          {
+            "id": 3467,
+            "inScope": true,
+            "type": {
+              "tag": "Ref",
+              "name": "String",
+              "id": 0,
+              "quantity": 1,
+              "removed": [],
+              "children": []
+            }
+          },
+          {
+            "id": 3468,
+            "inScope": true,
+            "type": {
+              "tag": "ADT",
+              "name": "List",
+              "id": 0,
+              "quantity": 1,
+              "removed": [],
+              "children": [
+                {
+                  "tag": "Qua",
+                  "name": "",
+                  "id": 0,
+                  "quantity": 2,
+                  "removed": [],
+                  "children": []
+                },
+                {
+                  "tag": "Ref",
+                  "name": "String",
+                  "id": 0,
+                  "quantity": 1,
+                  "removed": [],
+                  "children": []
+                }
+              ]
+            }
+          },
+          {
+            "id": 3469,
+            "inScope": true,
+            "type": {
+              "tag": "Ref",
+              "name": "String",
+              "id": 0,
+              "quantity": 1,
+              "removed": [],
+              "children": []
+            }
+          }
+        ],
+        "originalReferences": [
+          "Str.join.fin",
+          "Str.join.go"
+        ],
+        "truncated": false
+      }
+    }
+  ],
+  "helperCallbackFormals": [
+    {
+      "owner": "Str.split.fin",
+      "formalIndex": 0,
+      "originalBodyBinder": 3437,
+      "signature": {
+        "tag": "All",
+        "name": "rec",
+        "id": 3434,
+        "quantity": 1,
+        "removed": [],
+        "children": [
+          {
+            "tag": "All",
+            "name": "_",
+            "id": 3435,
+            "quantity": 1,
+            "removed": [],
+            "children": [
+              {
+                "tag": "Ref",
+                "name": "Char",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": []
+              },
+              {
+                "tag": "ADT",
+                "name": "List",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": [
+                  {
+                    "tag": "Qua",
+                    "name": "",
+                    "id": 0,
+                    "quantity": 2,
+                    "removed": [],
+                    "children": []
+                  },
+                  {
+                    "tag": "Ref",
+                    "name": "String",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "All",
+            "name": "w",
+            "id": 3436,
+            "quantity": 1,
+            "removed": [],
+            "children": [
+              {
+                "tag": "App",
+                "name": "",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": [
+                  {
+                    "tag": "App",
+                    "name": "",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": [
+                      {
+                        "tag": "Ref",
+                        "name": "Pair",
+                        "id": 0,
+                        "quantity": 1,
+                        "removed": [],
+                        "children": []
+                      },
+                      {
+                        "tag": "App",
+                        "name": "",
+                        "id": 0,
+                        "quantity": 1,
+                        "removed": [],
+                        "children": [
+                          {
+                            "tag": "App",
+                            "name": "",
+                            "id": 0,
+                            "quantity": 1,
+                            "removed": [],
+                            "children": [
+                              {
+                                "tag": "Ref",
+                                "name": "Pair",
+                                "id": 0,
+                                "quantity": 1,
+                                "removed": [],
+                                "children": []
+                              },
+                              {
+                                "tag": "Ref",
+                                "name": "Char",
+                                "id": 0,
+                                "quantity": 1,
+                                "removed": [],
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "Ref",
+                            "name": "Char",
+                            "id": 0,
+                            "quantity": 1,
+                            "removed": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "Ref",
+                    "name": "Bool",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "ADT",
+                "name": "List",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": [
+                  {
+                    "tag": "Qua",
+                    "name": "",
+                    "id": 0,
+                    "quantity": 2,
+                    "removed": [],
+                    "children": []
+                  },
+                  {
+                    "tag": "Ref",
+                    "name": "String",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "owner": "Str.join.fin",
+      "formalIndex": 1,
+      "originalBodyBinder": 3457,
+      "signature": {
+        "tag": "All",
+        "name": "h",
+        "id": 3452,
+        "quantity": 1,
+        "removed": [],
+        "children": [
+          {
+            "tag": "Ref",
+            "name": "String",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": []
+          },
+          {
+            "tag": "All",
+            "name": "rec",
+            "id": 3453,
+            "quantity": 1,
+            "removed": [],
+            "children": [
+              {
+                "tag": "All",
+                "name": "_",
+                "id": 3454,
+                "quantity": 1,
+                "removed": [],
+                "children": [
+                  {
+                    "tag": "Ref",
+                    "name": "String",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": []
+                  },
+                  {
+                    "tag": "Ref",
+                    "name": "String",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "tag": "All",
+                "name": "sep",
+                "id": 3455,
+                "quantity": 2,
+                "removed": [],
+                "children": [
+                  {
+                    "tag": "Ref",
+                    "name": "String",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": []
+                  },
+                  {
+                    "tag": "Ref",
+                    "name": "String",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "otherObservedSignatures": [
+    {
+      "owner": "Str.split",
+      "arity": 1,
+      "leadingLambdas": 0,
+      "type": {
+        "tag": "All",
+        "name": "s",
+        "id": 3442,
+        "quantity": 1,
+        "removed": [],
+        "children": [
+          {
+            "tag": "Ref",
+            "name": "String",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": []
+          },
+          {
+            "tag": "All",
+            "name": "_",
+            "id": 3443,
+            "quantity": 1,
+            "removed": [],
+            "children": [
+              {
+                "tag": "Ref",
+                "name": "Char",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": []
+              },
+              {
+                "tag": "ADT",
+                "name": "List",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": [
+                  {
+                    "tag": "Qua",
+                    "name": "",
+                    "id": 0,
+                    "quantity": 2,
+                    "removed": [],
+                    "children": []
+                  },
+                  {
+                    "tag": "Ref",
+                    "name": "String",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "owner": "Str.join.go",
+      "arity": 2,
+      "leadingLambdas": 0,
+      "type": {
+        "tag": "All",
+        "name": "xs",
+        "id": 3462,
+        "quantity": 1,
+        "removed": [],
+        "children": [
+          {
+            "tag": "ADT",
+            "name": "List",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": [
+              {
+                "tag": "Qua",
+                "name": "",
+                "id": 0,
+                "quantity": 2,
+                "removed": [],
+                "children": []
+              },
+              {
+                "tag": "Ref",
+                "name": "String",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "tag": "All",
+            "name": "h",
+            "id": 3463,
+            "quantity": 1,
+            "removed": [],
+            "children": [
+              {
+                "tag": "Ref",
+                "name": "String",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": []
+              },
+              {
+                "tag": "All",
+                "name": "_",
+                "id": 3464,
+                "quantity": 1,
+                "removed": [],
+                "children": [
+                  {
+                    "tag": "Ref",
+                    "name": "String",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": []
+                  },
+                  {
+                    "tag": "Ref",
+                    "name": "String",
+                    "id": 0,
+                    "quantity": 1,
+                    "removed": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "owner": "Str.join",
+      "arity": 2,
+      "leadingLambdas": 0,
+      "type": {
+        "tag": "All",
+        "name": "xs",
+        "id": 3473,
+        "quantity": 1,
+        "removed": [],
+        "children": [
+          {
+            "tag": "ADT",
+            "name": "List",
+            "id": 0,
+            "quantity": 1,
+            "removed": [],
+            "children": [
+              {
+                "tag": "Qua",
+                "name": "",
+                "id": 0,
+                "quantity": 2,
+                "removed": [],
+                "children": []
+              },
+              {
+                "tag": "Ref",
+                "name": "String",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "tag": "All",
+            "name": "sep",
+            "id": 3474,
+            "quantity": 1,
+            "removed": [],
+            "children": [
+              {
+                "tag": "Ref",
+                "name": "String",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": []
+              },
+              {
+                "tag": "Ref",
+                "name": "String",
+                "id": 0,
+                "quantity": 1,
+                "removed": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "owner": "main.out",
+      "arity": 0,
+      "leadingLambdas": 0,
+      "type": {
+        "tag": "Ref",
+        "name": "String",
+        "id": 0,
+        "quantity": 1,
+        "removed": [],
+        "children": []
+      }
+    }
+  ],
+  "nextScope": "Split: matched producer -> unary apply. Join: matched producer -> known partial h binding -> unary separator apply. Specialize callback helper parameters on private family types, preserve original dependencies, retain cycles as named graphs. No function-valued terminal capture, but helper rec variables require contextual family conversion. Full graph and escape proof remain unimplemented.",
+  "researchPatch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/function-flow-integration/function-flow-isolated-h-v2.patch",
+    "sha256": "cc32519ce4541020fc6b5639acaa2a3008af78b9039e949f3d166ecc177d14b2",
+    "bytes": 21452
+  }
+}

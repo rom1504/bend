@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Loop-qualified literal-array source. Acyclic roots retained as fallback controls; execution pending.",
+  "cases": [
+    {
+      "id": "array-literals-independent",
+      "family": "literal-array-handle-entry",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "array-literals-v2.bend",
+        "sha256": "00832788f6f71126bb84b5959cd69a2cd5f2c73566a5ee226f239fb7ef3e10d4",
+        "bytes": 2198,
+        "provenance": {
+          "kind": "phase48-independent-controls",
+          "scope": "Renamed literal-array countdown, F32 effects and nullary entry; retained acyclic refusal controls"
+        }
+      },
+      "point": {
+        "exportName": "loop_bench",
+        "args": [
+          128,
+          3
+        ],
+        "expected": 206
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Two-cell independent swap recurrence with fround at each source F32 operation, then checked F32-to-U32 conversion."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "array-literals-independent"
+    ],
+    "core": [
+      "array-literals-independent"
+    ],
+    "broad": [
+      "array-literals-independent"
+    ],
+    "full": [
+      "array-literals-independent"
+    ]
+  }
+}

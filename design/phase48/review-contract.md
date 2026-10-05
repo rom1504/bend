@@ -248,3 +248,99 @@ Reviewed follow-on files:
 - `selfhost/tools/performance/phase48/controls/jw-values-controls-v1.mjs`: SHA256 `a3ed57037376baea771f729bfa0374a7368db39dcc926aa1636877159575c552`.
 - `selfhost/tools/performance/phase48/controls/aggregate-transport-controls-v1.mjs`: SHA256 `b97cead60d22e9812d4e7e3c19830d12fe458f83e030a78e85e8f62cbe54f05c`.
 - `selfhost/tools/performance/phase48/controls/array-literals-controls-v1.mjs`: SHA256 `5a4e1e69fabcd69f977d5e2b0abc3f6c4c8427fcff6ecddeef04c71ea69399dc`.
+
+## Subsequent counterexamples and corrections
+
+The first aggregate run found that a nonterminal `JWCase` could leave a common
+continuation using a tuple whose branch-local shell cleanup had removed it.
+The successor refuses the entire transformation when any Case has a following
+continuation. Compiler-produced terminal branches retain their ordinary
+admission. This is a conservative analysis boundary, not a claim that branch
+joins are generally impossible. Separate actual-emitter controls exercise two
+and four scalar results through recursive native and machine continuations,
+including throw, reentry at exhausted budget, and replay.
+
+After all multiple-result values have been captured into caller-local constants,
+the emitter clears the consumed closure-scoped extra-result registers before
+destination stores. The clearing is lexical and cannot invoke a host hook. It
+prevents the compiler module from retaining the last aggregate child after the
+transport is complete. The machine restores the parent register frame before
+committing the result; no observer can run between commit and capture.
+
+Review found an allocation-hook hole in the ordinary private Array handle path:
+a raw-layout entry can refuse a replaced `Array.prototype.fill`, then fall
+through to a weaker handle entry whose allocation invokes that hook after its
+source dependency proof. The hook can replace a later source helper. The same
+mechanism applies to existing U32 new/get/set graphs; it is not specific to the
+new F32, swap or size support. Root approved a fresh complete Array host fence
+for every private Array-effect graph. Keeping an old unsafe private result is
+not a correctness requirement. The v3 late-fill control changes a helper to
+throw a sentinel during allocation, then requires the ordinary error and event
+sequence. The reviewed 11-line successor now selects the fresh fence whenever
+the complete helper plan contains a canonical native Array operation. A separate
+U32 fill/isSafeInteger control compares corrected public calls with ordinary
+ungranted source execution, while recording historical private mismatches
+separately. Integration and execution remain root-owned; no old-runtime failure
+is claimed from static reasoning alone.
+
+Finite private F32 literal realization passes static review. The typed planner
+alone creates `JF32`; its `F32` name preserves full float host-guard discovery.
+The printer keeps the original shared DataView write, at the original demand
+site, and replaces only the subsequent native read with an exact finite binary32
+dyadic expression. Negative zero is explicit. Exponent-255 payloads and ordinary
+or JW literal paths retain the original decoder. Controls separately cover
+retained shared views, detached writes, method/getter mutation, reentry, zero
+demand and otherwise source-unexpressible infinity/NaN payloads. Array
+composition remains subject to the fresh allocation fence above.
+
+The known-function controller initially required every Error-hook case to refuse
+private entry. That expectation is incorrect: the runtime deliberately suspends
+its proof before constructing an Error, and can admit a nested ordinary call.
+Its correction must compare the ordinary error/event sequence and balanced
+proof restoration while explicitly witnessing the outer and nested entries.
+This is a controller correction, not evidence of a production failure.
+
+Additional reviewed source hashes:
+
+- `selfhost/src/back/js/ir/worker-values.bend`: SHA256 `d7d0ddf8e02243c09dc995affa39ff2b8f6cb7134eb7efe51a49ad58b71785fe`.
+- `selfhost/src/back/js/ir/worker-emit.bend`: SHA256 `e92932f6209557bb2170fde4fc7c08e71abe5ca2e291b13481b39ecebb78bff7`.
+- `selfhost/src/back/js/private-float.bend`: SHA256 `07155fa45b6dde83a158843cc25b8c586c796a891c7ff0931bbcb59333de29b9`.
+- `selfhost/tools/performance/phase48/controls/jw-values-emission-v1.mjs`: SHA256 `f59e140c9836d27cc4c83e9da104ee418131592adb4f319a554124bfd71f3e9e`.
+- `selfhost/tools/performance/phase48/controls/private-float-controls-v2.mjs`: SHA256 `1bf03684fafc2aebc2c73ce4a235ae87cfc2cec6b551b37001c2ef6d1571c039`.
+- `selfhost/src/back/js/array-effect-guards.bend`: SHA256 `c024d8969c275d66d00a8483b0e7d35e882e5af50d5d14bc985fadd9870c7580`.
+- `selfhost/tools/performance/phase48/controls/array-fill-boundary-controls-v1.mjs`: SHA256 `bbf47cf75b1563a8acbc133605450b0bfcfda5d990798beb9e38b5d714034c2c`.
+
+## Reviewed composition and transport alternative
+
+The isolated flat-vector return alternative preserves the same typed tuple
+analysis and public guards. Each return creates one private vector, evaluating
+its leaves left-to-right before native return or machine-frame restoration.
+The caller captures that vector once and reads its guaranteed own indexed
+fields. It introduces no shared return state. Its independent witnesses retain
+all semantic observations but expect fewer removed array expressions than the
+scalar-register variant: `n+2` in the renamed state fixture and 15→8 in the
+maintained RLE fixture. These are diagnostic syntax counts, not physical heap
+allocation or a speed prediction. The reviewed isolated emitter SHA256 is
+`fed5a70f12b6784b7deb7257ffae1185c30af8ece6ce02261a3107676578ce4a`.
+
+The literal adapter's loop-qualified successor narrows admission using the
+existing `j_region_has_loop` fact. Its scalar/nullary boundary, fresh full guard,
+ordinary Array handles and fallback remain intact. Acyclic witnesses remain
+ordinary. The new looping nullary fixture can throw during ordinary tuple
+forcing under a getter-only inherited numeric property; controller v3 records
+that shared TypeError, restores the property before assertions and still
+requires zero getter reads and private refusal. Requiring a successful bounce
+for that particular source was an incorrect controller expectation.
+
+Static review of `source-combined-rnfa02` confirms the R/N/F/A composition.
+Existing strong plans keep their priority; the composite adapter is attempted
+only when the prior plan is empty, and the loop-qualified literal adapter is a
+later fallback. Fresh Array guards cover the ordinary handle/fold/tree paths.
+JF32 remains an ordered write under the full float proof, including both array
+audits. Native String append stays within the separate proved JW domain.
+Data-only inspection verified all 14 recorded output identities, 92 unique
+present modules, absence of patch backup/reject files and unchanged runtime
+bytes. Composition receipt SHA256:
+`ba6737ace4aefab4a230d338f0e151cce743626d9fe758c0eb32f1c676ce9135`.
+These checks do not replace the root's combined compilation, execution or
+measurement gates.

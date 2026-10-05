@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "v3 keeps parameter/field matches before local bindings, following maintained RLE and body_flatten rules.",
+  "cases": [
+    {
+      "id": "aggregate-transport-independent",
+      "family": "private-tuple-transport",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "aggregate-transport-v3.bend",
+        "sha256": "a85dd181080177ea535bdd9181db2e3747065cc20f267fa60577510138d49b9f",
+        "bytes": 3290,
+        "provenance": {
+          "kind": "phase48-independent-renamed-state-and-record-controls",
+          "scope": "Untimed values, allocation witnesses, exceptions, persistent alias and ABI",
+          "correction": "v2 first local alias consumed remaining parameter state before its tuple match. v3 only moves the state match before the local alias, matching the maintained RLE source. All v2 oracles and transport gates preserved."
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          8,
+          3
+        ],
+        "expected": 8089
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Build consecutive U32 values mod5; run encoding preserves sum and run count. Initial zero-length run merges with first value."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "aggregate-transport-independent"
+    ],
+    "core": [
+      "aggregate-transport-independent"
+    ],
+    "broad": [
+      "aggregate-transport-independent"
+    ],
+    "full": [
+      "aggregate-transport-independent"
+    ]
+  }
+}

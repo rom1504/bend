@@ -1,0 +1,1458 @@
+{
+  "kind": "phase48-production-private-float-screen",
+  "scope": "Four-point production screen, separate from prior saved-output ablation. Medians/drift from36fresh samples; no significance/stationarity or whole-corpus claim.",
+  "complete": true,
+  "report": {
+    "path": "selfhost/build/phase48/float-screen01/report.json",
+    "sha256": "b7e92295bac5b4c16aacfc4b439f94157ebe624f9e672bddf8160026a9ddeaa9",
+    "bytes": 350377
+  },
+  "wallSeconds": 28.23500765004428,
+  "protocol": {
+    "defaultSet": "core",
+    "rounds": 3,
+    "warmupCalls": 3,
+    "warmupMs": 350,
+    "calibrationMs": 40,
+    "targetMs": 150
+  },
+  "roles": {
+    "baseline": {
+      "label": "Phase48 starting Phase47 array06 (retained verified portable acquisition)",
+      "compiler": {
+        "kind": "checked-development-attempt",
+        "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "sourceSha256": "5aaa1595fbada3687d1d92731749252ef547f6af52da0816bb84a17c09bd8a18",
+        "artifact": "derived-b1",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+          "sha256": "28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+          "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+          "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+        }
+      }
+    },
+    "typescript": {
+      "label": "Pinned upstream TypeScript 018751270e800bc222a93dad7f257083ee53a5f7 (retained checked outputs)",
+      "compiler": {
+        "kind": "checked-pinned-typescript",
+        "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "sources": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+            "sha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+            "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+          }
+        ]
+      }
+    },
+    "candidate": {
+      "label": "Prepared checked candidate",
+      "compiler": {
+        "kind": "checked-development-attempt",
+        "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "sourceSha256": "642b98d8eba25794d32f5ffdf80414ee7467f882a7f78c6b44d6788b2a895272",
+        "artifact": "derived-b1",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-float01/equality/api.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-float01/equality/api.mjs",
+          "sha256": "265fb79712bef04acba399478826f09f1fff51f69ea49f846e686fb72fcb7612"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-float01/snapshot/src/runtime.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-float01/snapshot/src/runtime.mjs",
+          "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-float01/snapshot/tools/typed-driver.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-float01/snapshot/tools/typed-driver.mjs",
+          "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+        }
+      }
+    }
+  },
+  "points": [
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          256,
+          17
+        ],
+        "expected": 2747714257
+      },
+      "roles": {
+        "baseline": {
+          "medianMs": 0.013160411244190208,
+          "minMs": 0.013066193505574236,
+          "maxMs": 0.013251801271717724,
+          "halfDriftPercent": [
+            -0.831972137996384,
+            -0.49032773898609605,
+            0.378962318246967
+          ],
+          "maxAbsoluteHalfDriftPercent": 0.831972137996384
+        },
+        "candidate": {
+          "medianMs": 0.013031212190209309,
+          "minMs": 0.01278561166579085,
+          "maxMs": 0.013070626558549132,
+          "halfDriftPercent": [
+            -1.9873686484108588,
+            -2.439278908597098,
+            -0.5033983512417906
+          ],
+          "maxAbsoluteHalfDriftPercent": 2.439278908597098
+        },
+        "typescript": {
+          "medianMs": 0.0019877801188045293,
+          "minMs": 0.0019863983913502095,
+          "maxMs": 0.0021326061216593063,
+          "halfDriftPercent": [
+            -12.532161984566725,
+            1.0610674061130476,
+            -0.7145385911419444
+          ],
+          "maxAbsoluteHalfDriftPercent": 12.532161984566725
+        }
+      },
+      "samples": [
+        {
+          "role": "baseline",
+          "round": 0,
+          "msPerCall": 0.013251801271717724,
+          "halfDriftPercent": -0.831972137996384,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-baseline/sample.json",
+            "sha256": "a8bd028e6471f884ab48cc44b57e288f15c9493e4404111fadfd8a102bb00716",
+            "bytes": 5743
+          }
+        },
+        {
+          "role": "baseline",
+          "round": 1,
+          "msPerCall": 0.013160411244190208,
+          "halfDriftPercent": -0.49032773898609605,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-baseline/sample.json",
+            "sha256": "419763a30f99f79bde0628d936e46e2f8411ec91878e71ca1aaf1ece7888af07",
+            "bytes": 5750
+          }
+        },
+        {
+          "role": "baseline",
+          "round": 2,
+          "msPerCall": 0.013066193505574236,
+          "halfDriftPercent": 0.378962318246967,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-baseline/sample.json",
+            "sha256": "71824fdb247ba1acc0a36c1e4777b12a81d897fefb4d52842a60471b2a4b3d28",
+            "bytes": 5743
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 0,
+          "msPerCall": 0.013070626558549132,
+          "halfDriftPercent": -1.9873686484108588,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-candidate/sample.json",
+            "sha256": "83faefc21074a1c4f6be879dd6f00fa7611abb3f93aaae07b494fdc4cae2d13f",
+            "bytes": 5701
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 1,
+          "msPerCall": 0.013031212190209309,
+          "halfDriftPercent": -2.439278908597098,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-candidate/sample.json",
+            "sha256": "81315cc63e0e7be333f6fe098a06c5d99ea3e7380dde2f14a785513e4d44b016",
+            "bytes": 5691
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 2,
+          "msPerCall": 0.01278561166579085,
+          "halfDriftPercent": -0.5033983512417906,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-candidate/sample.json",
+            "sha256": "107d19d9a13a9c1742f80378d79118464a00061a92d56212637ee5605fa846aa",
+            "bytes": 5692
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 0,
+          "msPerCall": 0.0021326061216593063,
+          "halfDriftPercent": -12.532161984566725,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-typescript/sample.json",
+            "sha256": "617c36f9835305a9e2c581fe0e885c994645ad6c915a658dfd5594e2c68646b0",
+            "bytes": 6648
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 1,
+          "msPerCall": 0.0019863983913502095,
+          "halfDriftPercent": 1.0610674061130476,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-typescript/sample.json",
+            "sha256": "5e04b481280e7a8c34ac7eb64e559016932dd48537d8e0443ba708635b6a2d33",
+            "bytes": 6652
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 2,
+          "msPerCall": 0.0019877801188045293,
+          "halfDriftPercent": -0.7145385911419444,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-typescript/sample.json",
+            "sha256": "b3ca7b57356b0f042b7623014d24aa42a93d875498603e89f59326ac65094cfa",
+            "bytes": 6639
+          }
+        }
+      ],
+      "baselineOverCandidate": 1.009914584468049,
+      "candidateOverTypescript": 6.5556607931295785,
+      "timeChangePercent": -0.9817250508637132,
+      "candidateModuleSha256": "2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44"
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          1024,
+          123
+        ],
+        "expected": 1376326140
+      },
+      "roles": {
+        "baseline": {
+          "medianMs": 0.020449512065563825,
+          "minMs": 0.02030717898891756,
+          "maxMs": 0.02054883764741921,
+          "halfDriftPercent": [
+            -1.2799715496650599,
+            -2.6970496028548285,
+            -2.18759830505606
+          ],
+          "maxAbsoluteHalfDriftPercent": 2.6970496028548285
+        },
+        "candidate": {
+          "medianMs": 0.01891588376068376,
+          "minMs": 0.018904737444123066,
+          "maxMs": 0.019067163873861988,
+          "halfDriftPercent": [
+            -1.679217034013436,
+            -0.00029611428827847064,
+            -1.015879416307408
+          ],
+          "maxAbsoluteHalfDriftPercent": 1.679217034013436
+        },
+        "typescript": {
+          "medianMs": 0.008108732393652082,
+          "minMs": 0.007631833757119607,
+          "maxMs": 0.008111833409727527,
+          "halfDriftPercent": [
+            -9.788348649627665,
+            -10.787287992856399,
+            0.29723435471176174
+          ],
+          "maxAbsoluteHalfDriftPercent": 10.787287992856399
+        }
+      },
+      "samples": [
+        {
+          "role": "baseline",
+          "round": 0,
+          "msPerCall": 0.020449512065563825,
+          "halfDriftPercent": -1.2799715496650599,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-baseline/sample.json",
+            "sha256": "81bb2ebfeeb860c17400c4da2484764bc3c4652f5eb99ae24aedc96df1f4be6a",
+            "bytes": 5439
+          }
+        },
+        {
+          "role": "baseline",
+          "round": 1,
+          "msPerCall": 0.02054883764741921,
+          "halfDriftPercent": -2.6970496028548285,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-baseline/sample.json",
+            "sha256": "4534950c6c81dbc9e6c88f321556ff532c6121b275de6ea8b905b317811fccc9",
+            "bytes": 5442
+          }
+        },
+        {
+          "role": "baseline",
+          "round": 2,
+          "msPerCall": 0.02030717898891756,
+          "halfDriftPercent": -2.18759830505606,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-baseline/sample.json",
+            "sha256": "aef56b59ab52e0a2bd257718f52adde6efab1b784bc80a0aa6003c711d4af8cf",
+            "bytes": 5424
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 0,
+          "msPerCall": 0.01891588376068376,
+          "halfDriftPercent": -1.679217034013436,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-candidate/sample.json",
+            "sha256": "7a5d37cef4750ba22e5c5d4ba70a7b6c40782c1e62859e6fc9c2a0c9a195ca5b",
+            "bytes": 5388
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 1,
+          "msPerCall": 0.019067163873861988,
+          "halfDriftPercent": -0.00029611428827847064,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-candidate/sample.json",
+            "sha256": "d0cacf13c2babd813ff3329e09d67ce3a2c2b8f118bea9e19c8ade7ba6a7dc98",
+            "bytes": 5376
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 2,
+          "msPerCall": 0.018904737444123066,
+          "halfDriftPercent": -1.015879416307408,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-candidate/sample.json",
+            "sha256": "b6bc9da8bf210b8d36089779bb32d9e6b04425ffe2eda3837a7c9529866806ca",
+            "bytes": 5385
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 0,
+          "msPerCall": 0.008111833409727527,
+          "halfDriftPercent": -9.788348649627665,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-typescript/sample.json",
+            "sha256": "8ac86f3ea2d51268667142c9455fd625374d8d28adc40de9e9f5e0f675e0f9a2",
+            "bytes": 6035
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 1,
+          "msPerCall": 0.008108732393652082,
+          "halfDriftPercent": -10.787287992856399,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-typescript/sample.json",
+            "sha256": "bedf81142a8654c33160dd802e8f3b0d52db594bbd38073e29a6e746fe1ca12c",
+            "bytes": 6044
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 2,
+          "msPerCall": 0.007631833757119607,
+          "halfDriftPercent": 0.29723435471176174,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-typescript/sample.json",
+            "sha256": "361430784d9a8f14b804d0cce41d9a0f77572a3a15503323dd2c640f15c16399",
+            "bytes": 6041
+          }
+        }
+      ],
+      "baselineOverCandidate": 1.0810762174415385,
+      "candidateOverTypescript": 2.33277938429588,
+      "timeChangePercent": -7.499583852969449,
+      "candidateModuleSha256": "2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44"
+    },
+    {
+      "id": "mandelbrot",
+      "point": {
+        "args": [
+          2,
+          0
+        ],
+        "expected": 887240761,
+        "exportName": "bench"
+      },
+      "roles": {
+        "baseline": {
+          "medianMs": 0.12192292338387865,
+          "minMs": 0.12096912730184142,
+          "maxMs": 0.12346941200324406,
+          "halfDriftPercent": [
+            -1.6233587364527735,
+            -0.5072601592612802,
+            -1.721248463315228
+          ],
+          "maxAbsoluteHalfDriftPercent": 1.721248463315228
+        },
+        "candidate": {
+          "medianMs": 0.12224017788461539,
+          "minMs": 0.12140575641025637,
+          "maxMs": 0.13868801463414637,
+          "halfDriftPercent": [
+            -2.205335506648387,
+            18.207290520625374,
+            -0.24649809751396967
+          ],
+          "maxAbsoluteHalfDriftPercent": 18.207290520625374
+        },
+        "typescript": {
+          "medianMs": 0.04774479125000001,
+          "minMs": 0.04723089578915481,
+          "maxMs": 0.04793239285714284,
+          "halfDriftPercent": [
+            -2.1433679952034157,
+            -1.9730634968161853,
+            -2.6869754780556088
+          ],
+          "maxAbsoluteHalfDriftPercent": 2.6869754780556088
+        }
+      },
+      "samples": [
+        {
+          "role": "baseline",
+          "round": 0,
+          "msPerCall": 0.12192292338387865,
+          "halfDriftPercent": -1.6233587364527735,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-baseline/sample.json",
+            "sha256": "88e0e753f68b5e8e9a77940fa81b2312f61aa66625d8ecf252347b7de478e959",
+            "bytes": 4830
+          }
+        },
+        {
+          "role": "baseline",
+          "round": 1,
+          "msPerCall": 0.12346941200324406,
+          "halfDriftPercent": -0.5072601592612802,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-baseline/sample.json",
+            "sha256": "5c39148fd22ab00e978cd1aa15790d6a9b162869c08e9259a7c505b5c8e149b4",
+            "bytes": 4835
+          }
+        },
+        {
+          "role": "baseline",
+          "round": 2,
+          "msPerCall": 0.12096912730184142,
+          "halfDriftPercent": -1.721248463315228,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-baseline/sample.json",
+            "sha256": "c6c7137c4b826d52fe401ced58c09b2e11bdf1296113cf1387e41ff83a2ccdd9",
+            "bytes": 4835
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 0,
+          "msPerCall": 0.12140575641025637,
+          "halfDriftPercent": -2.205335506648387,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-candidate/sample.json",
+            "sha256": "1a82d1187e21f714d23c81bfca04c7fee73a96ba07f77e7578b59703fab24410",
+            "bytes": 4764
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 1,
+          "msPerCall": 0.13868801463414637,
+          "halfDriftPercent": 18.207290520625374,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-candidate/sample.json",
+            "sha256": "7c3e8b9f13502c91a8b24de3e5c0c4cef64cc0262b927306ca18342372fcb18c",
+            "bytes": 4764
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 2,
+          "msPerCall": 0.12224017788461539,
+          "halfDriftPercent": -0.24649809751396967,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-candidate/sample.json",
+            "sha256": "890752c0411342743f88124cf70e5b80eabe8791561c9c707138ec9a8ed22702",
+            "bytes": 4748
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 0,
+          "msPerCall": 0.04793239285714284,
+          "halfDriftPercent": -2.1433679952034157,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-typescript/sample.json",
+            "sha256": "37e45a74120da0dc49965757b993ef50a50d961ab7b6f951ecf804d0fc21d269",
+            "bytes": 5122
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 1,
+          "msPerCall": 0.04774479125000001,
+          "halfDriftPercent": -1.9730634968161853,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-typescript/sample.json",
+            "sha256": "e0a1437fc6a901890473418834fd916c225d40f0ba25d668f5ffbdbcd89f5256",
+            "bytes": 5118
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 2,
+          "msPerCall": 0.04723089578915481,
+          "halfDriftPercent": -2.6869754780556088,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-typescript/sample.json",
+            "sha256": "89de00e217686897b139b5358119d39504bac5aa0040b895a8b25591fa7570b7",
+            "bytes": 5138
+          }
+        }
+      ],
+      "baselineOverCandidate": 0.9974046626385296,
+      "candidateOverTypescript": 2.56028301065439,
+      "timeChangePercent": 0.2602090664590273,
+      "candidateModuleSha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3"
+    },
+    {
+      "id": "symreg",
+      "point": {
+        "args": [
+          6,
+          42
+        ],
+        "expected": 2490246820,
+        "exportName": "bench"
+      },
+      "roles": {
+        "baseline": {
+          "medianMs": 1.4552382571428575,
+          "minMs": 1.4529322692307693,
+          "maxMs": 1.4574093047619043,
+          "halfDriftPercent": [
+            -0.4515212414672787,
+            1.0515363989820115,
+            1.0783514729326482
+          ],
+          "maxAbsoluteHalfDriftPercent": 1.0783514729326482
+        },
+        "candidate": {
+          "medianMs": 1.4465306730769225,
+          "minMs": 1.4437272307692302,
+          "maxMs": 1.4467464368932044,
+          "halfDriftPercent": [
+            -0.04562171868049969,
+            0.1647039418049001,
+            -0.09194240350967053
+          ],
+          "maxAbsoluteHalfDriftPercent": 0.1647039418049001
+        },
+        "typescript": {
+          "medianMs": 1.1020329112903222,
+          "minMs": 1.101045153225807,
+          "maxMs": 1.104785314516129,
+          "halfDriftPercent": [
+            1.0435565453719597,
+            0.8286176994322547,
+            0.7688370777727993
+          ],
+          "maxAbsoluteHalfDriftPercent": 1.0435565453719597
+        }
+      },
+      "samples": [
+        {
+          "role": "baseline",
+          "round": 0,
+          "msPerCall": 1.4529322692307693,
+          "halfDriftPercent": -0.4515212414672787,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-baseline/sample.json",
+            "sha256": "83646ab03b23e33e9bc8789c8eae37071ddb1244cb4e58f239d828cd62c73f00",
+            "bytes": 3651
+          }
+        },
+        {
+          "role": "baseline",
+          "round": 1,
+          "msPerCall": 1.4574093047619043,
+          "halfDriftPercent": 1.0515363989820115,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-baseline/sample.json",
+            "sha256": "a5eebb2e526c132c0718f8daa7f8ba9af88c9f9306ca40aaaeabefd55642b13e",
+            "bytes": 3643
+          }
+        },
+        {
+          "role": "baseline",
+          "round": 2,
+          "msPerCall": 1.4552382571428575,
+          "halfDriftPercent": 1.0783514729326482,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-baseline/sample.json",
+            "sha256": "244dcb8e95d831ddaf8dff319ee13b884cc48847ca3515f3267bf5562767aabb",
+            "bytes": 3650
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 0,
+          "msPerCall": 1.4467464368932044,
+          "halfDriftPercent": -0.04562171868049969,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-candidate/sample.json",
+            "sha256": "1747e294e74d8a2e87436bb1d8ba45ea7542ba67f4db64f6c2ce052bbf3d73f7",
+            "bytes": 3578
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 1,
+          "msPerCall": 1.4437272307692302,
+          "halfDriftPercent": 0.1647039418049001,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-candidate/sample.json",
+            "sha256": "79e9d265693e6c8a4eccabf61c76d57e7cdd8af4df5156a10364fae067b8ea39",
+            "bytes": 3582
+          }
+        },
+        {
+          "role": "candidate",
+          "round": 2,
+          "msPerCall": 1.4465306730769225,
+          "halfDriftPercent": -0.09194240350967053,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-candidate/sample.json",
+            "sha256": "7f806b34fab69f38450b2436ed63ff291470f154a753439ca5fd6b62d492740f",
+            "bytes": 3566
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 0,
+          "msPerCall": 1.101045153225807,
+          "halfDriftPercent": 1.0435565453719597,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-typescript/sample.json",
+            "sha256": "36a9d7223c47f25e229be22151f846afb21bc44ed4932481dbfd21fdf52a0f9e",
+            "bytes": 3934
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 1,
+          "msPerCall": 1.104785314516129,
+          "halfDriftPercent": 0.8286176994322547,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-typescript/sample.json",
+            "sha256": "69a76d69e7f65443e377315f26f5554892b11beb8b6448cdeeec1f5cff8b27f1",
+            "bytes": 3912
+          }
+        },
+        {
+          "role": "typescript",
+          "round": 2,
+          "msPerCall": 1.1020329112903222,
+          "halfDriftPercent": 0.7688370777727993,
+          "leaf": {
+            "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-typescript/sample.json",
+            "sha256": "4ba3ec9e9ccf71dc3be37757762a23b1a64c8ace66a794dee6afea7be665f488",
+            "bytes": 3940
+          }
+        }
+      ],
+      "baselineOverCandidate": 1.0060196332010112,
+      "candidateOverTypescript": 1.3126020632026705,
+      "timeChangePercent": -0.5983614039278384,
+      "candidateModuleSha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c"
+    }
+  ],
+  "moduleShapes": [
+    {
+      "baseline": {
+        "path": "selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852.mjs",
+        "sha256": "ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852",
+        "bytes": 83393
+      },
+      "candidate": {
+        "path": "selfhost/build/phase48/float-screen01/modules/candidate/modules/numeric-recurrence.mjs",
+        "sha256": "2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44",
+        "bytes": 83830
+      },
+      "byteIdentical": false,
+      "changedGlobalAssignmentLines": [
+        "bench",
+        "p37.numeric"
+      ],
+      "replacingThoseCompleteGeneratedLinesRestoresBaselineExactly": true,
+      "markerSites": 7,
+      "markersByGlobal": {
+        "p37.numeric": 3,
+        "bench": 4
+      },
+      "method": "Saved generated module lines, with exact whole-module reconstruction; AST-scoped/executed counter evidence is a separate pending probe."
+    },
+    {
+      "baseline": {
+        "path": "selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3.mjs",
+        "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+        "bytes": 172093
+      },
+      "candidate": {
+        "path": "selfhost/build/phase48/float-screen01/modules/candidate/modules/mandelbrot.mjs",
+        "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+        "bytes": 172093
+      },
+      "byteIdentical": true,
+      "changedGlobalAssignmentLines": [],
+      "replacingThoseCompleteGeneratedLinesRestoresBaselineExactly": true,
+      "markerSites": 0,
+      "markersByGlobal": {},
+      "method": "Saved generated module lines, with exact whole-module reconstruction; AST-scoped/executed counter evidence is a separate pending probe."
+    },
+    {
+      "baseline": {
+        "path": "selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c.mjs",
+        "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+        "bytes": 158399
+      },
+      "candidate": {
+        "path": "selfhost/build/phase48/float-screen01/modules/candidate/modules/symreg.mjs",
+        "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+        "bytes": 158399
+      },
+      "byteIdentical": true,
+      "changedGlobalAssignmentLines": [],
+      "replacingThoseCompleteGeneratedLinesRestoresBaselineExactly": true,
+      "markerSites": 0,
+      "markersByGlobal": {},
+      "method": "Saved generated module lines, with exact whole-module reconstruction; AST-scoped/executed counter evidence is a separate pending probe."
+    }
+  ],
+  "verifiedInputs": [
+    {
+      "path": "selfhost/tools/performance/programs/run.py",
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e",
+      "bytes": 21467
+    },
+    {
+      "path": "selfhost/tools/performance/programs/support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "path": "selfhost/tools/performance/programs/execute.mjs",
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+      "bytes": 5572
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/catalog.json",
+      "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+      "bytes": 83389
+    },
+    {
+      "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/fixtures-new/numeric-recurrence.bend",
+      "sha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "bytes": 556
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+      "sha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+      "bytes": 6576
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/symreg.bend",
+      "sha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "bytes": 5406
+    },
+    {
+      "path": "selfhost/build/phase48/baseline/manifest.json",
+      "sha256": "81368e9c69f75b27b8ec4daf742ba0f8dcc24fc984ba1941827340cdd2240d85",
+      "bytes": 45243
+    },
+    {
+      "path": "selfhost/build/phase48/baseline/programs.tar.gz",
+      "sha256": "95edd343120196bb1d1c9628fb52dc1fe1cde3d116701db067bff65ba314b059",
+      "bytes": 6910221
+    },
+    {
+      "path": "selfhost/build/phase48/float-runtime01/manifest.json",
+      "sha256": "c4a0668d0210ddd1689e83d3b983e2d7745729b34c02f762b3f8b491e90a9926",
+      "bytes": 4205
+    },
+    {
+      "path": "selfhost/build/phase48/float-runtime01/modules/numeric-recurrence.mjs",
+      "sha256": "2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44",
+      "bytes": 83830
+    },
+    {
+      "path": "selfhost/build/phase48/float-runtime01/modules/mandelbrot.mjs",
+      "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+      "bytes": 172093
+    },
+    {
+      "path": "selfhost/build/phase48/float-runtime01/modules/symreg.mjs",
+      "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+      "bytes": 158399
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852.mjs",
+      "sha256": "ba9f1105312a5b14c7b23f8f2ab96333df9ea87319ff534a736f0040c03b2852",
+      "bytes": 83393
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/modules/baseline/typescript/modules/0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee.mjs",
+      "sha256": "0db5da6a8ec741b4c9996fd4f4feb0693fe8f10bf089927daf5132ecdf3b65ee",
+      "bytes": 4699
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3.mjs",
+      "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+      "bytes": 172093
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/modules/baseline/typescript/modules/037f070e948ab7701364b7413c624bca4327db0bc6171ac4523b906d2ae9e222.mjs",
+      "sha256": "037f070e948ab7701364b7413c624bca4327db0bc6171ac4523b906d2ae9e222",
+      "bytes": 15442
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/modules/baseline/baseline/modules/fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c.mjs",
+      "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+      "bytes": 158399
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/modules/baseline/typescript/modules/545d6112dbbb0cc66074407a0daf7076b148f9d311e7e9bbffff3376f8e00651.mjs",
+      "sha256": "545d6112dbbb0cc66074407a0daf7076b148f9d311e7e9bbffff3376f8e00651",
+      "bytes": 12815
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/modules/candidate/modules/numeric-recurrence.mjs",
+      "sha256": "2feb8098b8006fec155b42edd5149dd80808cb7ced5ad34b7216350002de4b44",
+      "bytes": 83830
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/modules/candidate/modules/mandelbrot.mjs",
+      "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+      "bytes": 172093
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/modules/candidate/modules/symreg.mjs",
+      "sha256": "fdbad78e5126678658c3bd0832372e7ea75bcdc3fa542f6f9a99f3c3418f183c",
+      "bytes": 158399
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/consumed-execute.mjs",
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+      "bytes": 5572
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/consumed-run.py",
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e",
+      "bytes": 21467
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/consumed-support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "path": "/usr/bin/python3.9",
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af",
+      "bytes": 5451288
+    },
+    {
+      "path": "/usr/bin/taskset",
+      "sha256": "bee8f79f39982b43a3738973f467ed2433b6064b077123ff25652129d26e71af",
+      "bytes": 35048
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-typescript/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-baseline/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-candidate/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-typescript/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-baseline/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-candidate/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-typescript/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-baseline/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-candidate/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-typescript/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-baseline/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-candidate/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-baseline/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-candidate/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-typescript/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-baseline/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-candidate/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-typescript/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-baseline/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-candidate/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-typescript/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-baseline/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-candidate/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-typescript/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-candidate/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-typescript/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-baseline/point.json",
+      "sha256": "c52a03f03f54f7517dee0b4809f081c69e88c05e9ab693e04f67fe01134552d9",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-candidate/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-typescript/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-baseline/point.json",
+      "sha256": "b699e673998e7c5395dd435f968013588bfe08fe025fccb15f5d595a36024306",
+      "bytes": 170
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-candidate/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-typescript/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-baseline/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-candidate/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-typescript/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-baseline/point.json",
+      "sha256": "daf3bec7e8cd5a550348f6491ce99261b608f75787cab0f0c413da009cd3892d",
+      "bytes": 166
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-baseline/sample.json",
+      "sha256": "a8bd028e6471f884ab48cc44b57e288f15c9493e4404111fadfd8a102bb00716",
+      "bytes": 5743
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-baseline/process/process.json",
+      "sha256": "97dbe6b16ec6dec44c4f8e7b4780e42c1a8581cb327750960aeb943338313966",
+      "bytes": 1015
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-baseline/sample.json",
+      "sha256": "419763a30f99f79bde0628d936e46e2f8411ec91878e71ca1aaf1ece7888af07",
+      "bytes": 5750
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-baseline/process/process.json",
+      "sha256": "330864c9385a8d082d3255cf4f9b5209362a88d7896c385feb3c8505f5ba43a7",
+      "bytes": 1014
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-baseline/sample.json",
+      "sha256": "71824fdb247ba1acc0a36c1e4777b12a81d897fefb4d52842a60471b2a4b3d28",
+      "bytes": 5743
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-baseline/process/process.json",
+      "sha256": "7dd78d8f062bd24fd2c167cbc7bd11cc7cac92ad9a8d9876039e17fd0370b2ee",
+      "bytes": 1015
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-candidate/sample.json",
+      "sha256": "83faefc21074a1c4f6be879dd6f00fa7611abb3f93aaae07b494fdc4cae2d13f",
+      "bytes": 5701
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-candidate/process/process.json",
+      "sha256": "352f962e6122cf962bc4ee11ce21fddd6ab952cfe45f6c5cd2fe511ca138e490",
+      "bytes": 963
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-candidate/sample.json",
+      "sha256": "81315cc63e0e7be333f6fe098a06c5d99ea3e7380dde2f14a785513e4d44b016",
+      "bytes": 5691
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-candidate/process/process.json",
+      "sha256": "b3de4e32abbf28c19021d7b34b296ffaa9ade71dc10981ce0a8f9933b1c09268",
+      "bytes": 963
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-candidate/sample.json",
+      "sha256": "107d19d9a13a9c1742f80378d79118464a00061a92d56212637ee5605fa846aa",
+      "bytes": 5692
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-candidate/process/process.json",
+      "sha256": "515f45575ba6b4a9a682c16cb4c1245ada18de1082ab0f8e954eb3ea81391137",
+      "bytes": 962
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-typescript/sample.json",
+      "sha256": "617c36f9835305a9e2c581fe0e885c994645ad6c915a658dfd5594e2c68646b0",
+      "bytes": 6648
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/0-typescript/process/process.json",
+      "sha256": "7e249d2b6a57d473f81c3e011adeb62f247390ac9a4377e82b4b56237522cd0e",
+      "bytes": 1018
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-typescript/sample.json",
+      "sha256": "5e04b481280e7a8c34ac7eb64e559016932dd48537d8e0443ba708635b6a2d33",
+      "bytes": 6652
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/1-typescript/process/process.json",
+      "sha256": "b6050f837cc5a987626646a2f1493c0b5da978bb9b69194ffc28df75da2a2a31",
+      "bytes": 1021
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-typescript/sample.json",
+      "sha256": "b3ca7b57356b0f042b7623014d24aa42a93d875498603e89f59326ac65094cfa",
+      "bytes": 6639
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-256/2-typescript/process/process.json",
+      "sha256": "8e08a394c0127014cb7c900a01b60f4071fb1262bc4b855c6ce9eb3b41c12884",
+      "bytes": 1021
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-baseline/sample.json",
+      "sha256": "81bb2ebfeeb860c17400c4da2484764bc3c4652f5eb99ae24aedc96df1f4be6a",
+      "bytes": 5439
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-baseline/process/process.json",
+      "sha256": "35781d493a484f1124c91e50b705eef70d65ad8f7e0ca1ddb2af335397b52cb0",
+      "bytes": 1016
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-baseline/sample.json",
+      "sha256": "4534950c6c81dbc9e6c88f321556ff532c6121b275de6ea8b905b317811fccc9",
+      "bytes": 5442
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-baseline/process/process.json",
+      "sha256": "a565445c46b9b9d8a5785fe180173c03dec643e7b494abd3c675ea078552335c",
+      "bytes": 1017
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-baseline/sample.json",
+      "sha256": "aef56b59ab52e0a2bd257718f52adde6efab1b784bc80a0aa6003c711d4af8cf",
+      "bytes": 5424
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-baseline/process/process.json",
+      "sha256": "6268f15ddaf964b8f81171051a7c0af8c4aaca3aa4253e20697e8523f4039eeb",
+      "bytes": 1017
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-candidate/sample.json",
+      "sha256": "7a5d37cef4750ba22e5c5d4ba70a7b6c40782c1e62859e6fc9c2a0c9a195ca5b",
+      "bytes": 5388
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-candidate/process/process.json",
+      "sha256": "d93dd6cdf82d6495565c46cbf47a1afe9e9f14dc1119d3adffd61f5eb4aadcaa",
+      "bytes": 964
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-candidate/sample.json",
+      "sha256": "d0cacf13c2babd813ff3329e09d67ce3a2c2b8f118bea9e19c8ade7ba6a7dc98",
+      "bytes": 5376
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-candidate/process/process.json",
+      "sha256": "2d8dc728bf1f218baa20f99024fba56a651ac5d3b2a240fb4d0af71e7406c10e",
+      "bytes": 964
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-candidate/sample.json",
+      "sha256": "b6bc9da8bf210b8d36089779bb32d9e6b04425ffe2eda3837a7c9529866806ca",
+      "bytes": 5385
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-candidate/process/process.json",
+      "sha256": "0fd2b287dc683a1b118f3d6c99d6e8e074c4d96ec7927e8b76bac02090580014",
+      "bytes": 964
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-typescript/sample.json",
+      "sha256": "8ac86f3ea2d51268667142c9455fd625374d8d28adc40de9e9f5e0f675e0f9a2",
+      "bytes": 6035
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/0-typescript/process/process.json",
+      "sha256": "756734275dbc659f5064c9507f39872a23da2c06157e5aae9fdb2faca6c18418",
+      "bytes": 1023
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-typescript/sample.json",
+      "sha256": "bedf81142a8654c33160dd802e8f3b0d52db594bbd38073e29a6e746fe1ca12c",
+      "bytes": 6044
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/1-typescript/process/process.json",
+      "sha256": "78d0c0c24245eba63ff538f2804dbccd1ec54312b27b1353b6c12fc877fff708",
+      "bytes": 1023
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-typescript/sample.json",
+      "sha256": "361430784d9a8f14b804d0cce41d9a0f77572a3a15503323dd2c640f15c16399",
+      "bytes": 6041
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/coverage-numeric-recurrence-1024/2-typescript/process/process.json",
+      "sha256": "7714933480a21bcc80bc044e8560bddc112256169e74ccfe534b2c78f34b0051",
+      "bytes": 1023
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-baseline/sample.json",
+      "sha256": "88e0e753f68b5e8e9a77940fa81b2312f61aa66625d8ecf252347b7de478e959",
+      "bytes": 4830
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-baseline/process/process.json",
+      "sha256": "bf1321bdcb3c9e86ac2b0a0d4f27e6b222167f4420ec5a8d9784ae99bcd05b5e",
+      "bytes": 972
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-baseline/sample.json",
+      "sha256": "5c39148fd22ab00e978cd1aa15790d6a9b162869c08e9259a7c505b5c8e149b4",
+      "bytes": 4835
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-baseline/process/process.json",
+      "sha256": "d4cafff088c9a3fbea9d5775070570ffa199d3ea2fdd8057271b35d50a0f741f",
+      "bytes": 972
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-baseline/sample.json",
+      "sha256": "c6c7137c4b826d52fe401ced58c09b2e11bdf1296113cf1387e41ff83a2ccdd9",
+      "bytes": 4835
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-baseline/process/process.json",
+      "sha256": "dee3a6c8ba2b0ce47e669e194acdd5f1f9bd4f000ec570da9d27a5b80567d89a",
+      "bytes": 971
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-candidate/sample.json",
+      "sha256": "1a82d1187e21f714d23c81bfca04c7fee73a96ba07f77e7578b59703fab24410",
+      "bytes": 4764
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-candidate/process/process.json",
+      "sha256": "846a90874167c523aed70a58a47d76bbcdb8aee69c243cb0f33ec62aa312c9d0",
+      "bytes": 913
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-candidate/sample.json",
+      "sha256": "7c3e8b9f13502c91a8b24de3e5c0c4cef64cc0262b927306ca18342372fcb18c",
+      "bytes": 4764
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-candidate/process/process.json",
+      "sha256": "59e64724cdfecc0464926025966955bad23e5fb3038f8e123589d62ca8826454",
+      "bytes": 913
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-candidate/sample.json",
+      "sha256": "890752c0411342743f88124cf70e5b80eabe8791561c9c707138ec9a8ed22702",
+      "bytes": 4748
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-candidate/process/process.json",
+      "sha256": "a67e6c8d06b8711349cb8d63f0ddfa341787a00532e3f4f0cd479d29beeb0bf4",
+      "bytes": 913
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-typescript/sample.json",
+      "sha256": "37e45a74120da0dc49965757b993ef50a50d961ab7b6f951ecf804d0fc21d269",
+      "bytes": 5122
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/0-typescript/process/process.json",
+      "sha256": "47c0a9f093988633c0c355e093f69484c1f7152880a261237581c35fafe4fd0e",
+      "bytes": 978
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-typescript/sample.json",
+      "sha256": "e0a1437fc6a901890473418834fd916c225d40f0ba25d668f5ffbdbcd89f5256",
+      "bytes": 5118
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/1-typescript/process/process.json",
+      "sha256": "0847ead9f287a6784b73b50902adb7ecc6535a6959114be14e72835a50047fb8",
+      "bytes": 977
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-typescript/sample.json",
+      "sha256": "89de00e217686897b139b5358119d39504bac5aa0040b895a8b25591fa7570b7",
+      "bytes": 5138
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/mandelbrot/2-typescript/process/process.json",
+      "sha256": "b6476f6739d4289a5fe7a03e3a4d95d1144ec9912cd748bbe17042c68eb8c643",
+      "bytes": 977
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-baseline/sample.json",
+      "sha256": "83646ab03b23e33e9bc8789c8eae37071ddb1244cb4e58f239d828cd62c73f00",
+      "bytes": 3651
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-baseline/process/process.json",
+      "sha256": "9ac79dfc7a8cf9fea4431b328b92c604bfc0e6d75ec5b158086e6c4feb3082f6",
+      "bytes": 965
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-baseline/sample.json",
+      "sha256": "a5eebb2e526c132c0718f8daa7f8ba9af88c9f9306ca40aaaeabefd55642b13e",
+      "bytes": 3643
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-baseline/process/process.json",
+      "sha256": "802ca23b2a8374ad7d180f0c458d11f459a7a23160dd83d25b45909edc6ac63d",
+      "bytes": 964
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-baseline/sample.json",
+      "sha256": "244dcb8e95d831ddaf8dff319ee13b884cc48847ca3515f3267bf5562767aabb",
+      "bytes": 3650
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-baseline/process/process.json",
+      "sha256": "1f624e9c9dc8e5d3ce206a7bb78d8dba588a76fd48689c84235d3a3cdb3fc53d",
+      "bytes": 965
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-candidate/sample.json",
+      "sha256": "1747e294e74d8a2e87436bb1d8ba45ea7542ba67f4db64f6c2ce052bbf3d73f7",
+      "bytes": 3578
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-candidate/process/process.json",
+      "sha256": "3a56635442a878742a46193a6e1232cde68164e6ec752c6588f47a8fb196e45a",
+      "bytes": 900
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-candidate/sample.json",
+      "sha256": "79e9d265693e6c8a4eccabf61c76d57e7cdd8af4df5156a10364fae067b8ea39",
+      "bytes": 3582
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-candidate/process/process.json",
+      "sha256": "c83d2c69fe0d570bdefd8637ea7753c24e2ba6507536cd744bd87947ca67f775",
+      "bytes": 900
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-candidate/sample.json",
+      "sha256": "7f806b34fab69f38450b2436ed63ff291470f154a753439ca5fd6b62d492740f",
+      "bytes": 3566
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-candidate/process/process.json",
+      "sha256": "26c784d8c10ec75bec8144d0859b43181a10dfe84976d756fbaa3bab93d565ce",
+      "bytes": 900
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-typescript/sample.json",
+      "sha256": "36a9d7223c47f25e229be22151f846afb21bc44ed4932481dbfd21fdf52a0f9e",
+      "bytes": 3934
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/0-typescript/process/process.json",
+      "sha256": "8e2a3891c127e7f3e96ff32e361c51d133453b87890240834ba0a04484b27686",
+      "bytes": 971
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-typescript/sample.json",
+      "sha256": "69a76d69e7f65443e377315f26f5554892b11beb8b6448cdeeec1f5cff8b27f1",
+      "bytes": 3912
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/1-typescript/process/process.json",
+      "sha256": "4f345bc2e3ac7d4d1cd8521e3d126c164f88cf5ba5d13b3291e6f6348e2ed143",
+      "bytes": 971
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-typescript/sample.json",
+      "sha256": "4ba3ec9e9ccf71dc3be37757762a23b1a64c8ace66a794dee6afea7be665f488",
+      "bytes": 3940
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/samples/symreg/2-typescript/process/process.json",
+      "sha256": "e16dbe9a76af9abe56fd727cdbaba93f3d00d780cd09bb5f537a5492637c6d1a",
+      "bytes": 971
+    },
+    {
+      "path": "selfhost/build/phase48/float-screen01/report.json",
+      "sha256": "b7e92295bac5b4c16aacfc4b439f94157ebe624f9e672bddf8160026a9ddeaa9",
+      "bytes": 350377
+    }
+  ]
+}

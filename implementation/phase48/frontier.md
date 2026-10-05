@@ -90,10 +90,17 @@ checks the view's prototype/own methods and the canonical prototype methods.
 A prior generic hook may retain the view, so removing its writes is not an
 observationally neutral literal substitution.
 
-The prepared derivative therefore compares original code, write-preserving
-literal decoding, and a separately labeled pure-literal upper bound. All
-`Math.fround` operations remain. The producer/controller are ready for root-run
-controls and timing; this census supplies **no execution result** for them.
+The derivative compares original code, write-preserving literal decoding, and a
+separately labeled pure-literal upper bound. All `Math.fround` operations remain.
+The subsequent root-run screen passes 105 finite checks and 45 fresh samples:
+write-preserving gains are 1.05695×/1.02742×/1.17973× at 256/1024/8192 steps.
+This is a diagnostic result, not production qualification or a whole-corpus gain.
+[P48-007](../../experiments/phase48/P48-007-private-f32-literals.md) records exact
+times, drift limitations and the 35-line private-plan implementation. Its isolated
+checked build, synthetic literal tests and generated boundary controls now pass;
+[the production screen](private-f32-literals.md) finds a 1.08108× numeric1024 gain.
+Mandelbrot and Symreg emit identical baseline/candidate modules: the separate
+JW worker path does not yet receive this specialization.
 
 Current literal printing goes through `j_word_text` in
 [literals.bend](../../selfhost/src/back/js/literals.bend), also used by ordinary
@@ -194,10 +201,10 @@ useful work; it does not identify every microsecond or authorize stale proofs.
 
 ## Status and next evidence
 
-Only saved data was consumed for this census. No target, profiler, compiler,
-conformance suite or release check ran. The numeric derivative has a separate
-root-owned execution handoff; no result is anticipated here. Other owners have
-the exact closure, Array/composite, product and native-dispatch findings above.
+Only saved data was consumed by the census author. No target, profiler, compiler,
+conformance suite or release check ran as part of the census. The subsequent
+numeric screen was executed separately by root and is scoped above. Other owners
+have the exact closure, Array/composite, product and native-dispatch findings.
 
 Use the next independent controls to establish the general mechanism, then
 counter derivatives to establish activation, and clean timing to establish

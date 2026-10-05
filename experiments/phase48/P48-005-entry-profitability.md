@@ -14,3 +14,14 @@ removal of executed work; unfavorable runtime/compiler/size tradeoff on independ
 sources. Diagnostic ablations do not qualify compiler source changes.
 
 Outcome and receipts will be appended with their original attempt identities.
+
+## Measured outcome
+
+The allocation-free raw-entry diagnostic passed its independent mutation/reentry
+and ordinary-value audit. Its 45-sample screen gains 1.039× at 128 steps, is
+adverse at 4096 (0.993×), and nearly neutral at 8192 (1.002×). Production
+integration is deferred; the unsafe admission-bypass result remains only an
+upper bound. [Outcome and exact ranges](../../implementation/phase48/entry-profitability.md).
+The optimized-body-only host-footprint idea was rejected: original generic
+invocation/forcing can observe omitted protocols even when the private body
+cannot. No safe mask derivative was released or executed.

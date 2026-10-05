@@ -14,7 +14,7 @@ def jw_emit_value(+v: JWValue, +direct: Bool) -> String:
     case JWPrimitive{name, args}:
       j_primitive_code(name, "(" ++ jw_emit_at(args, 0, direct) ++ ")", "(" ++ jw_emit_at(args, 1, direct) ++ ")")
     case JWConstruct{layout, name, fields}: jw_emit_construct(layout, name, fields, direct)
-    case JWNative{name, args}: "callOwned(get(G," ++ j_quote(name) ++ "),[" ++ jw_emit_values(args, direct) ++ "])"
+    case JWNative{name, args}: jw_emit_native_value(name, args, direct)
     case JWNumberOp{op, args}: jw_number_code(op, "(" ++ jw_emit_at(args, 0, direct) ++ ")", "(" ++ jw_emit_at(args, 1, direct) ++ ")")
 
 # Exact native layouts remove constructor dispatch and its temporary vector.

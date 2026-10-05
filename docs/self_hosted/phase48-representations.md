@@ -1,11 +1,11 @@
-# Phase48 private representations: candidate checkpoint
+# Phase48 private representations
 
-Phase48 is in progress. The likely RNFA candidate is frozen in
-`selfhost/build/phase48/source-combined-rnfa02`; final combined gates and release
-selection are pending. Phase47 array06 remains the installed baseline.
-The [campaign checkpoint](../../implementation/phase48/README.md) preserves its
-metrics and separates completed isolated outcomes from combined qualification.
-This document explains source mechanisms, not an installed-release guarantee.
+Phase48 RNFA04 is installed and qualified. Its live source exactly matches
+`selfhost/build/phase48/checked-combined-rnfa04/snapshot/src`.
+The [final report](../../implementation/phase48/README.md) separates full-corpus
+performance, semantic gates, compiler costs and deferred experiments. Phase47
+array06 remains the fresh comparison baseline. This document explains the
+selected source mechanisms and their retained boundaries.
 
 ## One boundary contract, four contained extensions
 
@@ -53,8 +53,10 @@ equality to the incorrect historical optimized path.
 Canonical literal array handles are a separate admission. They preserve lazy
 backing realization and repeated nullary demand. The first acyclic Evening
 adapter was correct but slower. The successor requires existing loop work,
-so it keeps that acyclic source on its old route without a benchmark-name or
-input-size rule. Literal handles do not establish raw backing escape permission.
+so it keeps that acyclic source on its old route without a benchmark-name rule.
+RNFA04 additionally declines exactly trivial direct countdowns of zero or one,
+using the structural proof described below. Literal handles do not establish
+raw backing escape permission.
 
 ## Observable operations must remain observable
 
@@ -84,7 +86,8 @@ Isolated checks establish actual ordinary execution separately from marker
 presence. Unicode16/64 execute 178/706 private concatenations and show
 1.215×/1.520× gains in a three-round screen. Numeric256/1024 execute 769/3073
 finite writes; the latter gains 1.081×. Generic row executes the composite path
-and improves 12.586× in its short screen. These are different isolated images
+and improves 12.586× in its isolated short screen; the separate RNFA03 core8
+screen finds 13.431× while remaining 4.074× TypeScript time. These are different isolated images
 and workloads; their gains cannot be multiplied into a combined result.
 
 Private transport and fewer tuple constructors do not imply zero allocation.
@@ -104,3 +107,72 @@ exact inputs, control scopes, drift, adverse attempts and remaining decisions.
 Final source/size/compiler-request costs and full-corpus measurements remain
 separate release gates. Historical conformance and the checked B1 derivative
 status do not become a new self-emitted fixed point from these transformations.
+
+## RNFA04 selection and compiler predicate demand
+
+Root selection retains the existing natural-loop/tree/callback choices. If the
+ordinary region root returns no code, the composite-result planner can supply a
+strong plan. Only a non-strong empty region then reaches the literal-handle
+adapter; existing nonempty plans keep their selection priority. This ordering
+composes the contained mechanisms without adding a generic JW aggregate pass.
+
+A compiler predicate must also preserve demand. Bend `Bool.and` is eager;
+writing shape checks followed by `&& normalize(firstArgument)` does not delay
+normalization until those checks pass. RNFA02 incorrectly normalized an ordinary
+call's first live argument as though it were an erased Array element type. The
+RNFA03 correction fences native kind/name/arity, native definition ownership,
+and erased telescope using `kc` before normalization. Array/array-of predicates
+likewise reject wrong shapes before element demand. Same-source acquisition
+that exhausted RNFA02's 1 GiB heap succeeds after this single-file correction;
+see [the preserved diagnosis](../../implementation/phase48/combined-rnfa-oom-static.md).
+This is a compiler rejection-order repair, not a runtime guard relaxation.
+
+RNFA04 changes only literal entry profitability relative to RNFA03. After a
+successful typed plan, a bounded fact walk recognizes one direct countdown
+helper and one root primitive binder. It accepts a direct Nat binder or exact
+canonical U32.to_nat of a U32 binder, with one direct planned helper call. Aliased,
+computed, indirectly forwarded, constant or multiple counts retain the earlier
+policy. Limits are 256 planned nodes, 32 helpers and 32 root binders; no helper
+expansion or wrapper substitution is performed. Exhaustion emits no predicate.
+
+For a recognized U32 slot, the added entry conjunct is
+`!(typeof $sN === "number" && ($sN === 0 || $sN === 1))`; Nat uses bigint and
+0n/1n. Negative zero declines too. This introduces no conversion, property read,
+global call or coercion, and grants no new entry permission. A declined call
+executes the complete existing generic body, preserving mutated dependencies,
+errors and reentry. Larger/unknown calls still require the full fresh guard.
+This is a policy for structurally trivial countdown work, not an empirical
+threshold or a promise that all small public calls become inexpensive.
+
+The RNFA04 four-point supplementary screen recovers most of the earlier large
+zero/one overhead while retaining large-loop gains. It still leaves zero/one
+slower than their fresh baseline and leaves 8192 steps 2.315× TypeScript time.
+These points are not added to the maintained 45-point aggregate. The actual
+Evening module under RNFA03 is entirely byte-identical to array06; the new
+countdown predicate does not admit its acyclic fpart. Exact RNFA04 output and
+final campaign decisions remain tied to root's qualification reports.
+
+## Qualified composition and unchanged runtime
+
+Independent source-v2 composite-F32 controls pass 50 complete value observations
+and five paired boundaries against checked array06. Both Array<F32> fields keep
+original handle identity and the public result shell, with signedzero/subnormal
+values, distinct backing arrays, fresh repeated returns and post-return mutation.
+An untimed derivative proves actual composite entry and exact finite write demand:
+zero writes initial +0 once; one iteration writes +0,0.25,0.125 each once.
+Host/injected boundaries execute fallback with no new private finite writes.
+Shared-handle injection tests fallback identity; it is not evidence that affine
+source duplicated an owned handle. The failed first affine fixture is preserved.
+See [the independent controls](../../implementation/phase48/composite-float-controls.md).
+
+No runtime fragment changes are part of RNFA04. Its checked API is
+`6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100`;
+runtime remains
+`880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
+These exact identities are installed and joined by the
+[selected qualification](../../selfhost/tools/performance/phase48/evidence/selected-qualification.json):
+all eight maintained suites, 81 backend outcomes, 42 CLI checks and portable
+replay pass within their separately stated scopes. See the
+[final report](../../implementation/phase48/README.md) for gains and regressions.
+The [remaining opportunities](../../implementation/phase48/remaining-opportunities.md)
+prioritize unresolved main-program work and the next bounded factory experiment.

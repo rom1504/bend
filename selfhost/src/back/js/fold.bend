@@ -246,7 +246,7 @@ def j_fold_root_result(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> KTerm:
 
 @unsafe
 def j_fold_root_guard(+book: List<&2,KDef>, +d: KDef, +helpers: List<&2,KDef>) -> String:
-  kc(String, j_region_record(book, j_fold_root_result(book, dt(d), da(d))), u => "regionHostGuard()&&",
+  kc(String, j_region_record(book, j_fold_root_result(book, dt(d), da(d))), u => j_array_effect_guard(book, d, helpers, "regionHostGuard()&&"),
     u => j_region_host_guard(book, d, helpers))
 
 # The @root-return context is confined to a top-level root's final expression.

@@ -14,69 +14,87 @@ def j_array_view_plan_terms(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +t
     j_array_view_terms(book, kc(List<&2,KDef>, recursive, u => Con{d, j_region_helpers(s)}, u => j_region_helpers(s)), terms, 8192) &&
     j_array_view_helpers(book, j_region_helpers(s), j_region_helpers(s))
 
+# Raw consumers never opt into handle constructors. The separate literal-array
+# adapter uses the same closed-graph walk with an explicit representation mode.
 @unsafe
 def j_array_view_helpers(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +todo: List<&2,KDef>) -> Bool:
+  j_array_view_helpers_mode(book, helpers, todo, False{})
+
+@unsafe
+def j_array_view_terms(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +todo: List<&2,KTerm>, +fuel: U32) -> Bool:
+  j_array_view_terms_mode(book, helpers, todo, fuel, False{})
+
+@unsafe
+def j_array_view_helpers_mode(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +todo: List<&2,KDef>, +handles: Bool) -> Bool:
   match todo:
     case Nil{}: True{}
     case Con{d, rest}:
-      kc(Bool, db(d), u => String.contains("|Array.new|Array.get|Array.set|", "|" ++ dn(d) ++ "|"),
-        u => j_array_view_terms(book, helpers, [dv(d)], 8192)) && j_array_view_helpers(book, helpers, rest)
+      kc(Bool, db(d), u => j_array_effect_known(dn(d)) || String.eq(dn(d), "F32.to_u32"),
+        u => j_array_view_terms_mode(book, helpers, [dv(d)], 8192, handles)) && j_array_view_helpers_mode(book, helpers, rest, handles)
 
 # Ann and unpack carry type terms as metadata; only their executable child is
-# visited. Native Array nodes have one already-checked erased U32 argument.
+# visited. Array nodes have one already-checked erased U32/F32 element argument.
 @unsafe
-def j_array_view_terms(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +todo: List<&2,KTerm>, +fuel: U32) -> Bool:
+def j_array_view_terms_mode(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +todo: List<&2,KTerm>, +fuel: U32, +handles: Bool) -> Bool:
   match todo:
     case Nil{}: True{}
     case Con{t, rest}:
       kc(Bool, U32.is_gt(fuel, 0), u =>
-        j_array_view_node(book, helpers, t, rest, U32.sub(fuel, 1), tg(t)), u => False{})
+        j_array_view_node_mode(book, helpers, t, rest, U32.sub(fuel, 1), tg(t), handles), u => False{})
 
 @unsafe
-def j_array_view_node(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +t: KTerm, +rest: List<&2,KTerm>, +fuel: U32, +tag: String) -> Bool:
+def j_array_view_node_mode(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +t: KTerm, +rest: List<&2,KTerm>, +fuel: U32, +tag: String, +handles: Bool) -> Bool:
   kc(Bool, String.eq(tag, "Ann"),
-    u => j_array_view_terms(book, helpers, Con{kid(t, 0), rest}, fuel), u =>
+    u => j_array_view_terms_mode(book, helpers, Con{kid(t, 0), rest}, fuel, handles), u =>
   kc(Bool, String.eq(tag, "JUnpack"),
-    u => Bool.not(j_region_local_array(book, kid(t, 1))) && j_array_view_terms(book, helpers, Con{kid(t, 0), rest}, fuel), u =>
+    u => Bool.not(j_region_local_array(book, kid(t, 1))) && j_array_view_terms_mode(book, helpers, Con{kid(t, 0), rest}, fuel, handles), u =>
   kc(Bool, String.eq(tag, "JNative"),
-    u => String.contains("|Array.new|Array.get|Array.set|", "|" ++ nm(t) ++ "|") &&
-      j_array_view_native_args(book, helpers, ks(t), rest, fuel), u =>
+    u => j_array_effect_native(book, kt("Call", nm(t), 0, 0, ks(t))) &&
+      j_array_view_native_args_mode(book, helpers, nm(t), ks(t), rest, fuel, handles), u =>
   kc(Bool, String.eq(tag, "App"),
-    u => j_array_view_app(book, helpers, j_call_spine(t, Nil{}), rest, fuel), u =>
+    u => j_array_view_app_mode(book, helpers, j_call_spine(t, Nil{}), rest, fuel, handles), u =>
   kc(Bool, String.contains("|JCall|JReadCall|JInline|JInlineRead|", "|" ++ tag ++ "|"),
     u => String.eq(dk(lookup(helpers, nm(t))), "Def") && Bool.not(db(lookup(helpers, nm(t)))) &&
-      j_array_view_terms(book, helpers, List.append(&2, KTerm, ks(t), rest), fuel), u =>
+      j_array_view_terms_mode(book, helpers, List.append(&2, KTerm, ks(t), rest), fuel, handles), u =>
   kc(Bool, String.eq(tag, "Ctr"),
-    u => (Bool.not(db(lookup(book, nm(t)))) || String.contains("|True|False|Zero|Succ|", "|" ++ nm(t) ++ "|")) &&
-      Bool.not(String.eq(nm(t), "ALeaf") || String.eq(nm(t), "ANode")) &&
-      j_array_view_terms(book, helpers, List.append(&2, KTerm, ks(t), rest), fuel), u =>
+    u => kc(Bool, handles && j_array_literal_name(nm(t)),
+      u => j_u32_native_ctor(book, "Array", nm(t)) && j_array_literal_fields([t], 256), u =>
+      (Bool.not(db(lookup(book, nm(t)))) || String.contains("|True|False|Zero|Succ|", "|" ++ nm(t) ++ "|")) &&
+      Bool.not(j_array_literal_name(nm(t)))) &&
+      j_array_view_terms_mode(book, helpers, List.append(&2, KTerm, ks(t), rest), fuel, handles), u =>
   kc(Bool, String.eq(tag, "Mat"),
     u => (String.eq(nm(t), "Zero") || String.eq(nm(t), "Succ")) &&
-      j_array_view_terms(book, helpers, List.append(&2, KTerm, ks(t), rest), fuel), u =>
-  kc(Bool, String.eq(tag, "Lit"),
-    u => Bool.not(String.eq(nm(t), "F32")) && j_array_view_terms(book, helpers, rest, fuel), u =>
+      j_array_view_terms_mode(book, helpers, List.append(&2, KTerm, ks(t), rest), fuel, handles), u =>
+  kc(Bool, String.eq(tag, "Lit") || String.eq(tag, "JF32"),
+    u => j_array_view_terms_mode(book, helpers, rest, fuel, handles), u =>
     String.contains("|Var|Lam|Let|Bind|Efq|JSlot|JNatRest|JLoopSlot|JVector|JIf|JNatCase|", "|" ++ tag ++ "|") &&
-      j_array_view_terms(book, helpers, List.append(&2, KTerm, ks(t), rest), fuel)))))))))
+      j_array_view_terms_mode(book, helpers, List.append(&2, KTerm, ks(t), rest), fuel, handles)))))))))
 
 @unsafe
-def j_array_view_native_args(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +args: List<&2,KTerm>, +rest: List<&2,KTerm>, +fuel: U32) -> Bool:
+def j_array_view_native_args_mode(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +name: String, +args: List<&2,KTerm>, +rest: List<&2,KTerm>, +fuel: U32, +handles: Bool) -> Bool:
+  kc(Bool, String.eq(name, "F32.to_u32"),
+    u => j_array_view_terms_mode(book, helpers, List.append(&2, KTerm, args, rest), fuel, handles),
+    u => j_array_view_erased_args_mode(book, helpers, args, rest, fuel, handles))
+
+@unsafe
+def j_array_view_erased_args_mode(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +args: List<&2,KTerm>, +rest: List<&2,KTerm>, +fuel: U32, +handles: Bool) -> Bool:
   match args:
-    case Con{erased, live}: j_array_view_terms(book, helpers, List.append(&2, KTerm, live, rest), fuel)
+    case Con{erased, live}: j_array_view_terms_mode(book, helpers, List.append(&2, KTerm, live, rest), fuel, handles)
     case Nil{}: False{}
 
 @unsafe
-def j_array_view_app(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +spine: KTerm, +rest: List<&2,KTerm>, +fuel: U32) -> Bool:
+def j_array_view_app_mode(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +spine: KTerm, +rest: List<&2,KTerm>, +fuel: U32, +handles: Bool) -> Bool:
   kc(Bool, j_array_view_native_app(book, helpers, spine),
-    u => j_array_view_native_args(book, helpers, ks(spine), rest, fuel), u => String.eq(tg(spine), "Call") &&
-    ((j_primitive_call(book, spine) && String.starts_with(nm(spine), "U32.") && Bool.not(String.eq(nm(spine), "U32.to_f32"))) ||
+    u => j_array_view_native_args_mode(book, helpers, nm(spine), ks(spine), rest, fuel, handles), u => String.eq(tg(spine), "Call") &&
+    (j_primitive_call(book, spine) ||
       j_array_view_helper_app(helpers, spine)) &&
-    j_array_view_terms(book, helpers, List.append(&2, KTerm, ks(spine), rest), fuel))
+    j_array_view_terms_mode(book, helpers, List.append(&2, KTerm, ks(spine), rest), fuel, handles))
 
 # Source Apps can remain inside otherwise typed region plans. Reuse the exact
 # native telescope/owner proof, and require its original dependency guard too.
 @unsafe
 def j_array_view_native_app(+book: List<&2,KDef>, +helpers: List<&2,KDef>, +spine: KTerm) -> Bool:
-  String.eq(tg(spine), "Call") && String.contains("|Array.new|Array.get|Array.set|", "|" ++ nm(spine) ++ "|") &&
+  String.eq(tg(spine), "Call") && (j_array_effect_known(nm(spine)) || String.eq(nm(spine), "F32.to_u32")) &&
     String.eq(dk(lookup(helpers, nm(spine))), "Def") && db(lookup(helpers, nm(spine))) &&
     j_region_local_native(book, spine)
 
@@ -160,10 +178,7 @@ def j_array_view_data(+book: List<&2,KDef>, +value: String) -> String:
 
 @unsafe
 def j_array_view_native(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> String:
-  kc(String, String.eq(nm(t), "Array.new"), u => "((_t,d,v)=>arrayfill(v,d,'^').array)(", u =>
-    kc(String, String.eq(nm(t), "Array.get"), u => "((_t,a,i)=>[a,a[Number(i)%a.length]])(",
-      u => "((_t,a,i,v)=>{a[Number(i)%a.length]=v;return a;})(")) ++
-    j_apply_args(book, env, ks(t), dt(lookup(book, nm(t)))) ++ ")"
+  j_array_effect_emit(book, env, t, True{})
 
 # Keep the original root's guards and handle-based path intact. The new private
 # closure is allocated once, and its raw helpers cannot reach the old fallback.

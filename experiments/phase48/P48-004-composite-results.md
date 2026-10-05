@@ -39,3 +39,7 @@ Next narrow coverage candidate is canonical flat Sigma/Tuple results with only
 scalar/Array fields and exact native public Tuple layout. It is unimplemented;
 require its own dependent/nested refusal, alias/mutation and executed-entry
 controls rather than extending raw escape or assuming another gain.
+
+## Final selection
+
+Selected in the installed RNFA04 combination. The [final report](../../implementation/phase48/README.md) records independently qualified correctness, all 45 primary points, compiler costs and remaining regressions. Isolated results above retain their original scope.

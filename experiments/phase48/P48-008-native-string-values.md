@@ -48,3 +48,7 @@ and full first-result identities were recomputed read-only.
 Promotion remains separate: qualify the combined image and its costs/broad
 corpus before release. Other native leaves and the deferred entry-guard work
 cannot inherit these passes or gains.
+
+## Final selection
+
+Selected in the installed RNFA04 combination. The [final report](../../implementation/phase48/README.md) records independently qualified correctness, all 45 primary points, compiler costs and remaining regressions. Isolated results above retain their original scope.

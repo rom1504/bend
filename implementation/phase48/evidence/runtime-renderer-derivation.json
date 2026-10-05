@@ -1,0 +1,44 @@
+{
+  "kind": "phase48-runtime-renderer-derivation",
+  "parent": {
+    "path": "implementation/phase47/evidence/render-runtime-results.py",
+    "sha256": "238d5ae23faae97bb90c99bed0d7244e157b1e9f05568c9020b3cdfa597c0898"
+  },
+  "derived": {
+    "path": "selfhost/tools/performance/phase48/render-results.py",
+    "sha256": "3c30a322a0ae0e7598beb37a9887a7f654e32ee0b4af7390b676fa7680226d0c"
+  },
+  "retained": "Phase47 input hashing, raw leaf/process equality,135 median/ratio recomputation, all3 grouping weights, interval and final hash checks.",
+  "changes": [
+    [
+      "\"\"\"Data-only Phase47 report; rehash evidence and recompute saved observations.\"\"\"",
+      "\"\"\"Phase48 derivative of the pinned Phase47 saved-data runtime renderer.\"\"\""
+    ],
+    [
+      "HERE = Path(__file__).resolve().parent\nREPO = HERE.parents[2]\nsource = Path(sys.argv[1]).resolve()",
+      "REPO = Path(__file__).resolve().parents[4]\nHERE = REPO / 'implementation/phase48/evidence'\nPARENT = REPO / 'implementation/phase47/evidence/render-runtime-results.py'\nPARENT_SHA = '238d5ae23faae97bb90c99bed0d7244e157b1e9f05568c9020b3cdfa597c0898'\nassert hashlib.sha256(PARENT.read_bytes()).hexdigest() == PARENT_SHA\nassert len(sys.argv) == 5, 'render-results.py SUMMARY EXPECTED_API EXPECTED_RUNTIME CANDIDATE_LABEL'\nsource = Path(sys.argv[1]).resolve()\ncandidate_label = sys.argv[4]\nassert not (HERE / 'runtime-summary.json').exists() and not (HERE.parent / 'results.md').exists()"
+    ],
+    [
+      "assert 'checked-array06' in summary['plan']['variants']['candidate']['compiler']['api']['file']",
+      "assert summary['plan']['variants']['candidate']['compiler']['api']['sha256'] == sys.argv[2]\nassert summary['plan']['variants']['candidate']['compiler']['runtime']['sha256'] == sys.argv[3]\nassert summary['plan']['variants']['baseline']['compiler']['api']['sha256'] == '28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f'\nassert summary['plan']['variants']['baseline']['compiler']['runtime']['sha256'] == '880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b'"
+    ],
+    [
+      "producer = identity(__file__)",
+      "producer = identity(__file__)\nparent_identity = verify(identity(PARENT))"
+    ],
+    [
+      "assert summary['medianChanges'] == dict(wins=wins, regressions=45-wins, ties=0)",
+      "regressions = sum(r['mediansMs']['candidate'] > r['mediansMs']['baseline'] for r in rows)\nassert summary['medianChanges'] == dict(wins=wins, regressions=regressions, ties=45-wins-regressions)"
+    ],
+    [
+      "kind='phase47-complete-runtime-evidence'",
+      "kind='phase48-complete-runtime-evidence'"
+    ],
+    [
+      "authoritativeSummary=summary_identity, producer=producer,",
+      "authoritativeSummary=summary_identity, producer=producer, parent=parent_identity,"
+    ]
+  ],
+  "prose": "New data-driven Phase48 tables/interpretation; no inherited fixed performance conclusions; explicit API/runtime and baseline binding; allows actual ties; refuses existing outputs.",
+  "executed": false
+}

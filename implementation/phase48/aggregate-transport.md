@@ -84,8 +84,9 @@ renamed source alone does not qualify it.
 
 This change adds more compiler code than the rejected 405-line local cleanup.
 It is justified only if actual across-call allocation removal, correctness and
-useful runtime benefit survive measurement. Compilation cost, generated size,
-representative benefit and regressions are all currently unknown. A failed
+useful runtime benefit survive measurement. At that initial checkpoint, compilation cost, generated size, representative
+benefit and regressions were unknown. The later screens and byte accounting
+below provide adverse evidence; controlled compiler cost remains unmeasured. A failed
 activation witness or negligible benefit should lead to a narrowed or deferred
 patch, not a claim of architectural progress alone.
 
@@ -287,6 +288,16 @@ Receipts:
 - Vector source controls pass **74 oracles / 13 boundaries / four activation
   checks**: `selfhost/build/phase48/values-vector-source01/report.json`, SHA-256
   `97b8755506e7005b47bc3ecb70b9d9c42d2f1bba09687162f386b7ae157f4c4d`.
+
+The standalone vector actual-emitter gate also passes **two graphs /
+30 observations**. It checks pair and four-field recursion, native/machine
+returns, fresh complete result vectors captured exactly once, frame/budget
+restoration, errors, reentry and replay. Receipt:
+`selfhost/build/phase48/jw-vector01/report.json`, SHA-256
+`3537f62013398fb0ee2ed2e5615511d13df496e3b9505be2ae95568452b6d610`.
+The alternate historical RLE **15→8** counter remains an **unexecuted expected
+witness**, not an observed result. No additional vector four-point corpus screen
+was run. The weak scaled result is sufficient to defer further qualification.
 
 Root reports the vector checked build passing in 51.30s. This, like scalar03's
 50.59s build, is acquisition wall time, not a controlled compiler-cost comparison.

@@ -1,6 +1,59 @@
 # Phase48 validation and fast iteration
 
-Start from installed Phase47 array06, not worker23. Root alone runs compiler,
+## Completed RNFA04 qualification
+
+RNFA04 is the installed, qualified Phase48 compiler. The published
+[selected qualification](../../selfhost/tools/performance/phase48/evidence/selected-qualification.json)
+joins the completed semantic, execution, compiler-request, installation and
+portable-replay evidence for one exact checked B1 derivative. It is not a new
+self-hosted fixed point.
+
+| Gate | Completed result and scope |
+| --- | --- |
+| [Semantic qualification](../../selfhost/tools/performance/phase48/evidence/semantic-qualification.json) | All 28 planned entries resolved. One entry explicitly reuses the earlier **same RNFA04 image** count-control execution: 43 value cases, 13 boundaries and 56 activation/refusal observations. It is not claimed as a second execution. The other 27 entries completed in the final queue, including acquisition and data-only preparation jobs. |
+| Maintained suites | All eight passed on RNFA04 after source reconciliation. |
+| Backend inventory | Exact agreement for all 81 historical outcomes: **69 execution passes, eight not applicable and four shared failures**. This does not mean 81 passing tests or full backend conformance. |
+| [Source reconciliation](../../selfhost/tools/performance/phase48/evidence/source-reconciliation.json) | All 188 selected source files match the checked snapshot; 16 preimages were preserved before 13 replacements and three deferred H/V removals. The final compiler manifest has 92 modules. |
+| Full generated-program comparison | All 45 points across 23 sources completed, with 669 samples across candidate, array06 baseline and pinned TypeScript, and passing output checks. |
+| Compiler-request comparison | All 18 checked requests completed with output agreement. This separately measures compiler work; disk Base-cache priming is excluded. |
+| [Installed release](../../selfhost/tools/performance/phase48/evidence/installed-release.json) | Installation and verification passed; all **42 ordinary/relocated CLI checks** passed on the exact installed image. |
+| Portable replay | All three selected cases passed across all three roles, with 27 fresh samples. The nominal 20-second profile completed in 10.0622 seconds; the preset is not a hard deadline. |
+| [Protected files](../../selfhost/tools/performance/phase48/evidence/protected-final.json) | All 103 starting files remain unchanged, with no protected path staged. |
+
+The full comparison's point-weighted candidate/TypeScript geometric mean is
+**2.67894×**, against **2.90244×** for the freshly measured array06 baseline.
+The equal-source ratios are **3.67925×** and **3.97892×**, respectively. There
+were 23 lower and 22 higher candidate medians, so aggregate improvement does
+not imply every program improved. The [published selection receipt](../../selfhost/tools/performance/phase48/evidence/selected-qualification.json)
+binds the underlying runtime, 18-request cost and portable-smoke reports;
+these are distinct measurements, not extra semantic-test counts.
+
+| Selected identity | SHA-256 |
+| --- | --- |
+| Checked RNFA04 attempt | `59dd57e733b27de66db5ef85181c1303ade7cbf6cb9f7430d49e283d00853764` |
+| Assembled compiler source | `bb98f20f281b1a0cfa7171afd3e2f8d5977f0391a3edcc222add3d9d1c574283` |
+| Installed equality API | `6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100` |
+| Runtime | `880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b` |
+
+Counts overlap and should not be summed into one conformance total. Frontend
+3026/196 evidence remains historical; this phase makes no new proof-validity,
+broad GPU or fixed-point claim, and native `IO.args` remains unresolved.
+The earlier semantic receipt deliberately retains its then-unjoined release
+slots; the later selected and installed receipts above establish completion.
+Archive closure and campaign accounting are separate evidence.
+
+The qualified source's trailing blank line was retained. The final whitespace
+check passed with `git -c core.whitespace=-blank-at-eof diff --check`; source
+formatting was not changed after qualification to satisfy a cosmetic check.
+
+## Historical starting point and working plan
+
+The remainder preserves the original plan, intermediate RNFA03 observations,
+failed controls and diagnostic experiments. Its prospective commands and pending
+statuses describe those earlier checkpoints, not unfinished RNFA04 release work.
+Consumed outputs must remain intact; reruns require fresh output paths.
+
+The campaign started from installed Phase47 array06, not worker23. Root alone runs compiler,
 generated-program and timing jobs. Agents author source, independent controls and
 reviewed tools. No Phase45/46/47 raw directory or consumed tool is writable scratch.
 This plan reuses the maintained checked workflow, benchmark protocol and eight
@@ -464,3 +517,101 @@ The remainder mixes analysis, coding, review, documentation, orchestration,
 unrecorded operations and possible idle time. It is not a waiting-time estimate
 or an agent CPU-utilization measurement. No accounting snapshot or target job
 was executed while authoring this tool; the raw campaign remains open.
+
+## Vector transport alternative: executed private-emitter controls
+
+The separate [vector controller](../../selfhost/tools/performance/phase48/controls/jw-values-emission-vector-v1.mjs)
+preserves the scalar transport controller's two graphs and 30 independent value,
+error, reentry and replay observations. It changes the protocol checks to match
+actual flat-vector returns: width two/four, every index owned, one capture per
+return and a fresh vector identity on each capture. Shared return registers must
+be absent. These are private-emitter checks; source admission remains a separate
+gate and passing does not select the alternative for release.
+
+Root's [jw-vector01 report](../../selfhost/build/phase48/jw-vector01/report.json)
+passed all two graphs and 30 observations on checked-values-vector01. At depth
+513, each ordinary pair branch recorded 32 native entries/restorations, one
+machine entry, 481 saved frames, 32 native vectors, 482 machine vectors and 514
+captures. Throw/reentry and subsequent shallow replay retained the same semantic
+oracles. All 17 recorded input identities were independently rehashed after the
+run. Report SHA256 is
+`3537f62013398fb0ee2ed2e5615511d13df496e3b9505be2ae95568452b6d610`;
+controller SHA256 is
+`e7797c1f4497605167bd0676199cbe9ff743046e77a7ba2d92a74e58c5b3880e`.
+The [supervisor](../../selfhost/build/phase48/job-jw-vector01/process.json)
+completed in 3.2248 seconds with a 347,029,504-byte sampled process-tree peak.
+It used stack4096 and the unchanged 1GiB heap/2GiB RSS/4GiB headroom policy;
+this is not a default-stack or program-speed measurement.
+
+## Final RNFA semantic command plan
+
+The [data-only plan writer](../../selfhost/tools/performance/phase48/final-qualification-plan.py)
+accepts the final chosen checked attempt; it does not assume the latest candidate
+has been selected. It writes ordered commands and expected receipt fields, and
+executes nothing:
+
+```sh
+python3 selfhost/tools/performance/phase48/final-qualification-plan.py \
+  selfhost/build/phase48/CHOSEN_CHECKED_ATTEMPT \
+  selfhost/build/phase48/final-semantics01 \
+  --program-preparation selfhost/build/phase48/CHOSEN_FULL_PREPARATION/manifest.json \
+  --prior-arrays
+```
+
+Without the optional flags there are 16 serial jobs: fresh selected emissions and
+controllers for composite results, String.append, finite F32, typed-array effects,
+loop-qualified literal arrays and late Array.fill mutation; the internal F32
+payload controller; maintained eight suites; and backend81 plan preparation/run.
+The six source baselines remain the exact array06 acquisitions. The optional
+`--prior-arrays` adds eight acquisition/control jobs renewing Phase47 view, layout,
+tree and integer-host controls against their original predecessors. In particular,
+tree-v4 retains its pre-array04 baseline rather than silently replacing that
+negative-control image with array06. Optional selected full preparation binds the
+actual Evening ordinary-path witness without an extra acquisition.
+
+Root must stop after the focused controls and integrate the chosen source into
+the live tree before the plan's `after-live-integration` jobs. The unchanged
+maintained runner checks compiler-manifest and host-tool equality with the checked
+snapshot; the plan does not bypass those assertions. Acquisition and maintained
+runners already own the shared guard. Standalone Node controllers and backend81
+use the existing Phase46 guard once, never a nested guard. Check every command's
+exit status, report contract and exact selected attempt/API/runtime/source binding;
+the JSON plan itself is not a qualification result. H/V, frontend3026, compiler
+request cost, generated-program timing, installation and publication remain
+separate decisions or gates.
+
+## Renewed historical array boundaries on RNFA03
+
+The predecessor controls exposed differences in private-entry bookkeeping under
+mutable host hooks. We retained each failed run and introduced named ordinary-source
+oracles instead of accepting an unexplained predecessor/candidate mismatch.
+
+| Control | Fresh result | Explicit historical difference |
+| --- | --- | --- |
+| [view v4](../../selfhost/build/phase48/final-qualification03/control-prior-view-v4/report.json) | PASS: 24 value cases, 39 boundaries, four positive entries, 39 hook refusals and three public-root refusals. | `Number-getter-closed`: historical public execution reads the getter 10 times; both ordinary executions and candidate public read it eight times, all returning 9. `reflection-self-restores`: historical public triggers its mutation and five replacement-helper calls; both ordinary executions and candidate public have no hook events or mutation, all returning `[16,16]`. |
+| [tree v6](../../selfhost/build/phase48/final-qualification03/control-prior-tree-v6/report.json) | PASS: 159 value cases, 11 boundaries, 30 private tree/leaf observations, ten hook refusals and public-storage refusal. | `Number-getter`: historical public execution reads the getter 69 times; both ordinary graphs and candidate public read it 67 times, all returning 1245. |
+
+View's ordinary oracle calls the ungranted raw `bench` code. Tree requires a
+different mechanism: `canopy` begins with a unary matcher, so passing four arguments
+directly to its raw code does not execute the whole source function. The v6 tree
+controller instead saves two diagnostic modules, each with exactly one AST-verified
+change: `enterExact` passes `false` to its inner body. Public currying and every
+source-body byte remain unchanged, while private-entry permission is withheld
+throughout each ordinary graph. Both graphs must agree before candidate public
+behavior can pass. These derivatives are parsed, hashed and checked again after
+use; they are excluded from performance measurements.
+
+The original [view run](../../selfhost/build/phase48/final-qualification03/control-prior-view/report.json)
+and [tree run](../../selfhost/build/phase48/final-qualification03/control-prior-tree/report.json)
+retain the getter mismatches. [View v3](../../selfhost/build/phase48/final-qualification03/control-prior-view-v3/report.json)
+confirmed the Number oracle, then failed its historical expectation that the
+reflection hook must mutate a helper. [Tree v5](../../selfhost/build/phase48/final-qualification03/control-prior-tree-v5/report.json)
+failed because its raw unary-matcher call was an invalid ordinary-source adapter.
+That was a harness error, not a compiler execution result. The successors retain
+the historical traces explicitly and keep all other differential and activation
+checks. These RNFA03 results do not qualify a later image automatically.
+
+Successful view-report SHA256:
+`a426ee8b6b6746ada35afb06ad61632fb0f9ff2e26e48ba237a91cb11464e1af`.
+Successful tree-report SHA256:
+`81e3ec16a47a9caf751d47bce3acccbafb91d8f6defeb2cc9a9a4a996c2b4991`.

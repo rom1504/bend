@@ -5,12 +5,38 @@ checker, normalizer and emitters. The original single-file compiler remains
 available as a historical regression baseline.
 
 The compiler targets upstream
-`018751270e800bc222a93dad7f257083ee53a5f7`, after Bend2 2.0.34. Phase44 introduces
-a typed runtime IR and shared transformations for ordinary JavaScript emission,
-alongside the existing guarded private regions. The [current report](../../implementation/phase44/README.md)
-records checked candidates and their release status; the
+`018751270e800bc222a93dad7f257083ee53a5f7`, after Bend2 2.0.34. The installed
+compiler is Phase48 RNFA04, a checked B1 derivative. Release verification,
+42 ordinary/relocated CLI checks and portable replay pass. The
+[current report](../../implementation/phase48/README.md) records its selected
+source, validation and release identities; the
 [conformance record](../CONFORMANCE.md) separates installation, fresh execution
-and unchanged-input reuse. It retains the
+and unchanged-input reuse.
+
+Phase44 established the typed ordinary JavaScript IR and shared transformations;
+that [foundation report](../../implementation/phase44/README.md) remains
+historical. The separate private worker IR and guarded region analyses now
+compose with Phase47 array storage and Phase48 composite-result adaptation,
+native String concatenation, finite F32 literals and typed array effects.
+Bounded zero/one-trip literal-entry refusal avoids some unprofitable private
+entries. These changes preserve the ordinary mutable library ABI and its
+fallbacks; the runtime is byte-identical to Phase47. See the
+[JavaScript IR guide](JAVASCRIPT_IR.md) for ordinary/private pass boundaries and
+the [Phase48 representation guide](../../docs/self_hosted/phase48-representations.md)
+for the new admission and result-boundary contracts. Higher-order function flow
+and private aggregate-transport experiments were deferred and are not installed.
+
+Architecture and speed are separate evidence. The
+[45-point comparison](../../implementation/phase48/results.md) measures 2.6789×
+pinned TypeScript execution time with equal point weighting, an 8.34% speedup
+over its fresh array06 baseline. Most net gain comes from generic row; this does
+not establish broad parity. The [compiler request comparison](../../implementation/phase48/compiler-cost-final.md)
+instead records 3.27% / 4.41% higher median request cost for Evening / lexer.
+The selected source has 23,660 physical Bend lines across 92 modules; its
+[accounting](../../implementation/phase48/accounting.md) separates source growth,
+generated size and runtime costs.
+
+The compiler retains the
 Phase22 contextual frontend and load ABI2, reuses the existing graph evaluator
 for shared-term conversion, and adds array atomics over the uniform runtime
 representation. The [Phase23 report](../../implementation/phase23/upstream-graph-conversion.md)

@@ -2801,3 +2801,79 @@ address public-entry profitability and ownership/materialization boundaries,
 with shared call/representation facts rather than a larger unmeasured inliner.
 Release/publication receipts and terminal closure are linked from the phase report.
 No PR comment was posted.
+
+## Phase48 selected representations and remaining frontier — 2026-10-05
+
+RNFA04 is installed and release-verified. All 42 ordinary/relocated CLI checks
+and portable replay pass. The [report](../implementation/phase48/README.md),
+[complete runtime comparison](../implementation/phase48/results.md),
+[static accounting](../implementation/phase48/accounting.md) and
+[portable guide](../selfhost/tools/performance/phase48/README.md) bind the selected
+compiler and its separate measurement scopes. The API is
+`6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100`; the runtime
+is byte-identical to array06. The upstream pin is unchanged.
+
+The selected R/N/F/A slices preserve array handles across public composite
+results, remove proved native String dispatch, specialize finite private F32
+literals while retaining observable shared-view writes, and share typed Array
+effects/literal-handle facts. Direct zero/one countdowns can decline the literal
+path before its full guard. These are source/type-based mechanisms, with existing
+selector ranking, host/dependency checks and ordinary fallbacks retained.
+
+All **45 runtime points / 23 sources / 669 fresh samples** pass. Fresh equal-point
+slowdown improves **2.9024375× → 2.6789370× TypeScript**, or **1.08343×**: 8.34%
+faster / 7.70% less time. Equal-source improves 3.9789231× → 3.6792514×, and
+equal-family 4.4796607× → 3.9120521×. The full three-batch protocol takes
+1,132.24 seconds. Previous phase ratios are context, not pooled denominators.
+
+Generic row improves **13.467×**, from 55.728× to 4.138× TypeScript, while checking
+all four returned arrays. Unicode16/64 improve **1.257× / 1.462×**; numeric1024
+improves **1.062×**. Generic row contributes **72.1% of net equal-point logarithmic
+gain**; the other 44 points collectively improve **1.0231×**. This is a concentrated
+benefit in a finite, optimization-informed corpus, not broad parity. Morning,
+scalar-zero, RLE, Map/Set and Evening remain approximately 49–62× TypeScript time.
+
+Twenty-three medians improve and 22 regress. Closures64 (+3.25%), lists512
+(+2.49%) and tree-bitonic (+2.31%) have unchanged output bytes. Short fold has
+changed output and regresses 2.12%; no executed guard cost or JIT cause is proved.
+The final report retains drift and all observed regressions without classifying
+them collectively as noise. Three points beat TypeScript. The separate literal
+diagnostic retains **30.63% / 18.64%** zero/one-trip overhead, despite 16.372× /
+71.831× gains at 128/8192; those points are not added to the primary weighting.
+
+All focused controls and eight maintained suites pass. Fresh backend agreement
+covers **81 outcomes: 69 execution passes, eight N/A and four shared failures**.
+The 3,026-main / 196-broader frontend inventories remain historical unchanged-
+frontend evidence. Control categories overlap; no fabricated total or newly
+self-emitted fixed point is claimed. Native IO.args and broader native/GPU
+qualification remain separate gaps.
+
+The compiler grows **406 physical Bend lines (+1.75%)** to 23,660, with 19,489
+code lines, 2,673 definitions, 87 types and 92 modules. Generated libraries grow
+0.72% across the 24 distinct source/output pairs. All **18 compiler requests**
+match expected output, but fresh request medians regress **3.274% on Evening**
+and **4.411% on lexer**. That two-source compilation screen does not measure
+self-compilation or establish a general compiler-throughput gain.
+
+The RNFA02 local-row acquisition's bounded compiler heap OOM is preserved. The
+successor rejects wrong call shapes before expensive normalization and completes
+the same acquisition within the unchanged heap limit. Bend's eager conjunction
+did not supply the presumed short circuit; the explicit branch repair retains
+the intended admission contract. This failure and its correction are distinct
+from successful runtime qualification, not evidence of a system/session OOM.
+
+**Updated frontier:** prioritize a general bounded matched-family H experiment
+with staged/partial captures and actual Morning entry witnesses. H02's fixture
+success did not change its real corpus targets, so it remains unselected. Carry
+shared effect, use, ownership and representation facts through calls and result
+boundaries; test a demonstrated aggregate consumer before widening conventions.
+V's scalar/vector alternatives remove constructors but fail to demonstrate useful
+broad gains and remain preserved, unselected prototypes. Measure actual public
+entry work before changing guards; do not cache mutable permission or omit
+generic-path host observations. [Remaining opportunities](../implementation/phase48/remaining-opportunities.md)
+and [steering](STEERING.md) record the next falsifiers.
+
+Keep JS primary, exact full-output oracles, renamed controls, actual activation
+counters and the nominal core8 screen before another full campaign. Preserve all
+103 unrelated files and historical evidence. Final writer closure and archive
+publication are separate receipts. No PR comment was posted.

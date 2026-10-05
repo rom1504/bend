@@ -295,7 +295,7 @@ def j_region_expr_on(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty:
       u => j_region_result(s, j_region_annotate(j_region_variable(env, t), ty)), u => j_region_fail(s)), u =>
   kc(JRegionBuild, String.eq(tg(t), "Lit"), u =>
     kc(JRegionBuild, String.eq(nm(t), nm(ty)) && (String.eq(nm(t), "U32") || String.eq(nm(t), "Nat") || String.eq(nm(t), "F32")),
-      u => j_region_result(s, j_region_annotate(t, ty)), u => j_region_fail(s)), u =>
+      u => j_region_result(s, j_region_annotate(j_private_float_plan(t), ty)), u => j_region_fail(s)), u =>
   kc(JRegionBuild, String.eq(tg(t), "Ctr"), u =>
     kc(JRegionBuild, String.eq(nm(ty), "Bool") && U32.is_eq(terms_len(ks(t)), 0) && (String.eq(nm(t), "True") || String.eq(nm(t), "False")),
       u => j_region_result(s, j_region_annotate(t, ty)), u => j_region_constructor(book, env, t, ty, String.eq(tail, "@root-return"), active, depth, level, s)), u =>
@@ -306,7 +306,7 @@ def j_region_expr_on(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty:
 
 @unsafe
 def j_region_constructor(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +root: Bool, +active: List<&2,String>, +depth: U32, +level: U32, +s: JRegionBuild) -> JRegionBuild:
-  +c = j_producer_ctor(book, ty, nm(t), active)
+  +c = j_array_literal_ctor(book, t, ty, active)
   kc(JRegionBuild, j_region_local_type(book, ty) && String.eq(dk(c), "Ctr") && String.eq(dn(c), nm(t)) &&
     U32.is_eq(terms_len(ks(t)), da(c)) &&
     kc(Bool, j_fold_type(book, ty), u => j_producer_fields(book, ks(t), da(c), active), u =>
@@ -402,7 +402,7 @@ def j_region_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +args: List<&2,KTe
       +head = wnf(book, ty)
       kc(JRegionBuild, j_region_valid(s) && String.eq(tg(head), "All"), u =>
         kc(JRegionBuild, U32.is_eq(qt(head), 0), u =>
-          kc(JRegionBuild, j_primitive_type(book, wnf(book, h), "U32"),
+          kc(JRegionBuild, Bool.not(String.eq(j_array_effect_element(book, h), "")),
             u => j_region_arg_first(book, env, rest, j_app_type(head, h), active, depth, level, j_region_result(s, h)), u => j_region_fail(s)), u =>
           kc(JRegionBuild, j_region_local_type(book, kid(head, 0)), u =>
             j_region_arg_first(book, env, rest, j_app_type(head, h), active, depth, level,
@@ -765,7 +765,7 @@ def j_region_float_helpers(+book: List<&2,KDef>, +helpers: List<&2,KDef>) -> Boo
 
 @unsafe
 def j_region_host_guard(+book: List<&2,KDef>, +d: KDef, +helpers: List<&2,KDef>) -> String:
-  kc(String, j_fold_has(helpers) || j_region_has_residual(helpers) || j_region_float_signature(book, dt(d), da(d)) || j_region_float_terms([dt(d), dv(d)]) || j_region_float_helpers(book, helpers), u => "regionHostGuard()&&", u => "")
+  j_array_effect_guard(book, d, helpers, kc(String, j_fold_has(helpers) || j_region_has_residual(helpers) || j_region_float_signature(book, dt(d), da(d)) || j_region_float_terms([dt(d), dv(d)]) || j_region_float_helpers(book, helpers), u => "regionHostGuard()&&", u => ""))
 
 # Alias normalization is essential even for an unused floating input: its
 # canonical-input test calls Math.fround before any body expression executes.

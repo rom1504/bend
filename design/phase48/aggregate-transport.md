@@ -1,5 +1,8 @@
 # Private aggregate transport
 
+Status: deferred after measured scalar-register and flat-vector variants failed
+to justify their complexity; see the [report](../../implementation/phase48/aggregate-transport.md).
+
 Date: 2026-10-05. Baseline: installed array06, `ee54723`.
 Status: implementation proposal; no correctness or performance claim yet.
 

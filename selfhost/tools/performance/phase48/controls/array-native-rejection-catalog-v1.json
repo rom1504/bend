@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Bounded rejection-cost regression; recursive runtime payload must not be normalized by Array native admission. Source acquisition and execution are separate from the sentinel predicate unit control.",
+  "cases": [
+    {
+      "id": "array-native-rejection",
+      "family": "native-admission",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "array-native-rejection-v1.bend",
+        "sha256": "4960413d7b1fa4f157786f5ec4f81cd24b3f755f64c235f54edfc9e5b3601aa8",
+        "bytes": 549,
+        "provenance": {
+          "kind": "phase48-independent-regression",
+          "scope": "Ordinary scalar consumer of renamed recursive argument"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3
+        ],
+        "expected": 36865
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "At depth12, binary recursion sums4096*seed+4096*12/2; consumer adds1."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "array-native-rejection"
+    ],
+    "core": [
+      "array-native-rejection"
+    ],
+    "broad": [
+      "array-native-rejection"
+    ],
+    "full": [
+      "array-native-rejection"
+    ]
+  }
+}

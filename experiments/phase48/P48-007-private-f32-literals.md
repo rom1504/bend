@@ -132,3 +132,7 @@ compiler's maintained source-dependency mutation suites. Root owns checked
 builds, generated controls and clean timing.
 The earlier diagnostic ratios are not attributed to the compiled source change.
 Historical conformance counts and closed Phase45–47 evidence remain unchanged.
+
+## Final selection
+
+Selected in the installed RNFA04 combination. The [final report](../../implementation/phase48/README.md) records independently qualified correctness, all 45 primary points, compiler costs and remaining regressions. Isolated results above retain their original scope.

@@ -1,0 +1,41 @@
+{
+  "kind": "phase48-evening-exact-byte-comparison",
+  "targetExecuted": false,
+  "complete": true,
+  "inputs": {
+    "array06": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/array06-full/modules/test-evening-program.mjs",
+      "bytes": 177066,
+      "sha256": "b21b0bbd4e40873907038838d89c559ef73d6c7e599f87e63e94b9f5be77f8b7"
+    },
+    "arrays02": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/arrays-runtime02/modules/test-evening-program.mjs",
+      "bytes": 178676,
+      "sha256": "b67afedbacb274617512fab203affa39ba44a6dd4128ee992e49d18f51e490b6"
+    },
+    "rnfa03": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/combined-rnfa03-full/modules/test-evening-program.mjs",
+      "bytes": 177066,
+      "sha256": "b21b0bbd4e40873907038838d89c559ef73d6c7e599f87e63e94b9f5be77f8b7"
+    }
+  },
+  "rnfa03EntireModuleIdenticalToArray06": true,
+  "definitionCount": 85,
+  "rnfa03ChangedDefinitions": [],
+  "arrays02ChangedDefinitions": [
+    {
+      "name": "fpart",
+      "baselineBytes": 249,
+      "arrays02Bytes": 1859,
+      "baselineSha256": "b205f71ee90e2109ffadf4702b8bd622cef21783cb6a2fa0b2eb06ac8f36e556",
+      "arrays02Sha256": "dbf584e7fe4d30498a6ebaf1be766adcb331016ef0c2a294215a9580a4d48c95",
+      "arrays02LiteralAdapterMarkers": 1
+    }
+  ],
+  "fpart": {
+    "rnfa03IdenticalToBaseline": true,
+    "rnfa03LiteralAdapterMarkers": 0,
+    "rnfa03FiniteF32Markers": 0
+  },
+  "rangeMethod": "Complete G assignment statements: emitted start-line G[name]= boundary followed by balanced parentheses/braces/brackets scanner respecting quoted strings and comments, ending first depth-zero semicolon. Entire-module byte equality is independent of range extraction."
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Independent untimed literal-count entry mapping and fallback controls; unchanged loop oracle, no performance claim.",
+  "cases": [
+    {
+      "id": "array-count-mapping",
+      "family": "literal-count-profitability",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "array-counts-v1.bend",
+        "sha256": "6dbb344ed09bd06dab5b5e638cec3a202805e4dcaf03fb72ec9bb493c35ca580",
+        "bytes": 1550,
+        "provenance": {
+          "kind": "phase48-independent-count-mapping",
+          "loopBasis": "Exact reviewed array-literals-v2 helpers renamed countwork; new direct U32, relocated U32, Nat, computed and constant roots."
+        }
+      },
+      "point": {
+        "exportName": "direct",
+        "args": [
+          2,
+          3
+        ],
+        "expected": 1.75
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Two cells [seed,0.5]; each turn swaps cell i%2 with fround(i%7+0.25), accumulates fround(score+fround(old*0.5))."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "array-count-mapping"
+    ],
+    "core": [
+      "array-count-mapping"
+    ],
+    "broad": [
+      "array-count-mapping"
+    ],
+    "full": [
+      "array-count-mapping"
+    ]
+  }
+}

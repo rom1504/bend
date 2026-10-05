@@ -1,0 +1,1793 @@
+{
+  "kind": "phase48-rnfa04-literal-checkpoint",
+  "complete": true,
+  "passed": true,
+  "report": {
+    "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/report.json",
+    "bytes": 383134,
+    "sha256": "af2df2f6ad3c8a3fcdaebf4f35cba78dc147af7450bd18b186a51120901f8af2"
+  },
+  "protocol": {
+    "kind": "bend-program-execution-plan",
+    "version": 1,
+    "budgetSeconds": 60,
+    "selectedSet": "full",
+    "selectedIds": [
+      "array-literals-loop-0",
+      "array-literals-loop-1",
+      "array-literals-loop-128",
+      "array-literals-loop-8192"
+    ],
+    "roles": [
+      "typescript",
+      "baseline",
+      "candidate"
+    ],
+    "protocol": {
+      "defaultSet": "core",
+      "rounds": 3,
+      "warmupCalls": 3,
+      "warmupMs": 350,
+      "calibrationMs": 40,
+      "targetMs": 150
+    },
+    "cpu": 3,
+    "node": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "heapMiB": 1024,
+    "rssMiB": 2048,
+    "availableMiB": 4096,
+    "expensivePointPolicy": "raytrace: one warmup call; at most three fresh rounds. Other points: three warmup calls. All also require preset warmup milliseconds.",
+    "comparison": "Same-run execution only; prototype bundles retain explicit labels. No compiler or compilation timing.",
+    "variants": {
+      "baseline": {
+        "label": "Prepared checked baseline",
+        "compiler": {
+          "kind": "checked-development-attempt",
+          "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+          "sourceSha256": "5aaa1595fbada3687d1d92731749252ef547f6af52da0816bb84a17c09bd8a18",
+          "artifact": "derived-b1",
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+            "sha256": "28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f"
+          },
+          "runtime": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+            "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+          },
+          "base": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+          },
+          "driver": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+            "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+          }
+        }
+      },
+      "typescript": {
+        "label": "Pinned upstream TypeScript",
+        "compiler": {
+          "kind": "checked-pinned-typescript",
+          "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+          "sources": [
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+              "sha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd"
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+              "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee"
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            }
+          ]
+        }
+      },
+      "candidate": {
+        "label": "Prepared checked candidate",
+        "compiler": {
+          "kind": "checked-development-attempt",
+          "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+          "sourceSha256": "bb98f20f281b1a0cfa7171afd3e2f8d5977f0391a3edcc222add3d9d1c574283",
+          "artifact": "derived-b1",
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa04/equality/api.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa04/equality/api.mjs",
+            "sha256": "6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100"
+          },
+          "runtime": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa04/snapshot/src/runtime.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa04/snapshot/src/runtime.mjs",
+            "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+          },
+          "base": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+            "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+          },
+          "driver": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa04/snapshot/tools/typed-driver.mjs",
+            "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa04/snapshot/tools/typed-driver.mjs",
+            "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+          }
+        }
+      }
+    }
+  },
+  "points": [
+    {
+      "id": "array-literals-loop-0",
+      "point": {
+        "exportName": "loop_bench",
+        "args": [
+          0,
+          3
+        ],
+        "expected": 0
+      },
+      "statsMs": {
+        "typescript": {
+          "median": 0.0002490813004259424,
+          "min": 0.0002430160726909494,
+          "max": 0.00026606112793368345,
+          "samples": [
+            0.0002430160726909494,
+            0.00026606112793368345,
+            0.0002490813004259424
+          ]
+        },
+        "baseline": {
+          "median": 0.001346690780116306,
+          "min": 0.0011778457809018727,
+          "max": 0.0014861869385389504,
+          "samples": [
+            0.0011778457809018727,
+            0.0014861869385389504,
+            0.001346690780116306
+          ]
+        },
+        "candidate": {
+          "median": 0.0017591650760529355,
+          "min": 0.001617044202401548,
+          "max": 0.0017852566095043834,
+          "samples": [
+            0.001617044202401548,
+            0.0017852566095043834,
+            0.0017591650760529355
+          ]
+        }
+      },
+      "halfDriftPercent": {
+        "typescript": [
+          -7.268165624737033,
+          -11.190081817863472,
+          1.126368867027372
+        ],
+        "baseline": [
+          -1.0159064143757779,
+          -11.190633730863276,
+          -0.42128983143434606
+        ],
+        "candidate": [
+          -6.520832653069986,
+          -11.858550980739569,
+          -10.574815760568413
+        ]
+      },
+      "baselineOverCandidate": 0.7655283739135476,
+      "candidateOverTypescript": 7.062613986054629,
+      "candidateChangePercent": 30.628730962352503
+    },
+    {
+      "id": "array-literals-loop-1",
+      "point": {
+        "exportName": "loop_bench",
+        "args": [
+          1,
+          3
+        ],
+        "expected": 1
+      },
+      "statsMs": {
+        "typescript": {
+          "median": 0.00027510263462761613,
+          "min": 0.0002511411888577283,
+          "max": 0.0002795342413281855,
+          "samples": [
+            0.0002511411888577283,
+            0.0002795342413281855,
+            0.00027510263462761613
+          ]
+        },
+        "baseline": {
+          "median": 0.004993282154838291,
+          "min": 0.004976825797747167,
+          "max": 0.005582751530776671,
+          "samples": [
+            0.004976825797747167,
+            0.005582751530776671,
+            0.004993282154838291
+          ]
+        },
+        "candidate": {
+          "median": 0.00592396409890632,
+          "min": 0.005427438785896039,
+          "max": 0.006507253112198225,
+          "samples": [
+            0.005427438785896039,
+            0.00592396409890632,
+            0.006507253112198225
+          ]
+        }
+      },
+      "halfDriftPercent": {
+        "typescript": [
+          0.5555625626223248,
+          -1.4820924520493772,
+          6.765270757873054
+        ],
+        "baseline": [
+          -11.165374887533696,
+          -12.258909710997845,
+          -12.4184925400456
+        ],
+        "candidate": [
+          -0.7534768277674186,
+          2.165315618061281,
+          -11.43569415735305
+        ]
+      },
+      "baselineOverCandidate": 0.8428954111589145,
+      "candidateOverTypescript": 21.533650911504733,
+      "candidateChangePercent": 18.638681236273325
+    },
+    {
+      "id": "array-literals-loop-128",
+      "point": {
+        "exportName": "loop_bench",
+        "args": [
+          128,
+          3
+        ],
+        "expected": 206
+      },
+      "statsMs": {
+        "typescript": {
+          "median": 0.0019449811578934617,
+          "min": 0.0019317093013391505,
+          "max": 0.0020564694709521818,
+          "samples": [
+            0.0019317093013391505,
+            0.0020564694709521818,
+            0.0019449811578934617
+          ]
+        },
+        "baseline": {
+          "median": 0.2965064657534245,
+          "min": 0.2924127829457364,
+          "max": 0.3304570674157304,
+          "samples": [
+            0.2965064657534245,
+            0.3304570674157304,
+            0.2924127829457364
+          ]
+        },
+        "candidate": {
+          "median": 0.018110819902721176,
+          "min": 0.017793012990455995,
+          "max": 0.021473681352776917,
+          "samples": [
+            0.017793012990455995,
+            0.021473681352776917,
+            0.018110819902721176
+          ]
+        }
+      },
+      "halfDriftPercent": {
+        "typescript": [
+          -12.17553284392815,
+          1.6157084707907554,
+          -9.030076163742839
+        ],
+        "baseline": [
+          1.1937890824200048,
+          6.551391055842992,
+          1.360117080464307
+        ],
+        "candidate": [
+          -0.5468656512020331,
+          13.85807100320342,
+          -2.1840408935411504
+        ]
+      },
+      "baselineOverCandidate": 16.37178589075771,
+      "candidateOverTypescript": 9.311565733796797,
+      "candidateChangePercent": -93.8919308701409
+    },
+    {
+      "id": "array-literals-loop-8192",
+      "point": {
+        "exportName": "loop_bench",
+        "args": [
+          8192,
+          3
+        ],
+        "expected": 13310
+      },
+      "statsMs": {
+        "typescript": {
+          "median": 0.11654429315707618,
+          "min": 0.11638909659969096,
+          "max": 0.12902300810081008,
+          "samples": [
+            0.11654429315707618,
+            0.12902300810081008,
+            0.11638909659969096
+          ]
+        },
+        "baseline": {
+          "median": 19.3821535,
+          "min": 19.13618837499999,
+          "max": 22.169274428571416,
+          "samples": [
+            19.3821535,
+            22.169274428571416,
+            19.13618837499999
+          ]
+        },
+        "candidate": {
+          "median": 0.2698294151624549,
+          "min": 0.26937801805054146,
+          "max": 0.2988486617954071,
+          "samples": [
+            0.2698294151624549,
+            0.2988486617954071,
+            0.26937801805054146
+          ]
+        }
+      },
+      "halfDriftPercent": {
+        "typescript": [
+          -0.2815172565550972,
+          4.414646200049299,
+          -0.26316670419231913
+        ],
+        "baseline": [
+          -0.5778531190357539,
+          0.27361923910584895,
+          0.16898920109926774
+        ],
+        "candidate": [
+          0.10691125147872516,
+          6.321037397515439,
+          -0.29968827280749677
+        ]
+      },
+      "baselineOverCandidate": 71.83113630636112,
+      "candidateOverTypescript": 2.315252062997061,
+      "candidateChangePercent": -98.60784605197532
+    }
+  ],
+  "samples": 36,
+  "wallSeconds": 29.336428724054713,
+  "controls": {
+    "report": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/array-counts-controls04/report.json",
+      "bytes": 34888,
+      "sha256": "4501411cb7066ccda3d374f1d3b170be4107f6b2dbcc90cc53990a6fc5bca163"
+    },
+    "counts": {
+      "oracles": 43,
+      "boundaries": 13,
+      "activation": 56
+    },
+    "scope": "Direct U32 and Nat root-count mapping, relocated slot, constant/computed unknown policy, ordinary object-count coercion. Values and host traces on untouched modules; entry counters on a separate derivative. No timing.",
+    "activation": [
+      {
+        "root": "direct",
+        "args": [
+          0,
+          0
+        ],
+        "entries": 0
+      },
+      {
+        "root": "direct",
+        "args": [
+          0,
+          3
+        ],
+        "entries": 0
+      },
+      {
+        "root": "direct",
+        "args": [
+          "-0",
+          0
+        ],
+        "entries": 0
+      },
+      {
+        "root": "direct",
+        "args": [
+          "-0",
+          3
+        ],
+        "entries": 0
+      },
+      {
+        "root": "direct",
+        "args": [
+          1,
+          0
+        ],
+        "entries": 0
+      },
+      {
+        "root": "direct",
+        "args": [
+          1,
+          3
+        ],
+        "entries": 0
+      },
+      {
+        "root": "direct",
+        "args": [
+          2,
+          0
+        ],
+        "entries": 1
+      },
+      {
+        "root": "direct",
+        "args": [
+          2,
+          3
+        ],
+        "entries": 1
+      },
+      {
+        "root": "direct",
+        "args": [
+          37,
+          0
+        ],
+        "entries": 1
+      },
+      {
+        "root": "direct",
+        "args": [
+          37,
+          3
+        ],
+        "entries": 1
+      },
+      {
+        "root": "direct",
+        "args": [
+          128,
+          0
+        ],
+        "entries": 1
+      },
+      {
+        "root": "direct",
+        "args": [
+          128,
+          3
+        ],
+        "entries": 1
+      },
+      {
+        "root": "shifted",
+        "args": [
+          0,
+          0
+        ],
+        "entries": 0
+      },
+      {
+        "root": "shifted",
+        "args": [
+          3,
+          0
+        ],
+        "entries": 0
+      },
+      {
+        "root": "shifted",
+        "args": [
+          0,
+          "-0"
+        ],
+        "entries": 0
+      },
+      {
+        "root": "shifted",
+        "args": [
+          3,
+          "-0"
+        ],
+        "entries": 0
+      },
+      {
+        "root": "shifted",
+        "args": [
+          0,
+          1
+        ],
+        "entries": 0
+      },
+      {
+        "root": "shifted",
+        "args": [
+          3,
+          1
+        ],
+        "entries": 0
+      },
+      {
+        "root": "shifted",
+        "args": [
+          0,
+          2
+        ],
+        "entries": 1
+      },
+      {
+        "root": "shifted",
+        "args": [
+          3,
+          2
+        ],
+        "entries": 1
+      },
+      {
+        "root": "shifted",
+        "args": [
+          0,
+          37
+        ],
+        "entries": 1
+      },
+      {
+        "root": "shifted",
+        "args": [
+          3,
+          37
+        ],
+        "entries": 1
+      },
+      {
+        "root": "shifted",
+        "args": [
+          0,
+          128
+        ],
+        "entries": 1
+      },
+      {
+        "root": "shifted",
+        "args": [
+          3,
+          128
+        ],
+        "entries": 1
+      },
+      {
+        "root": "natural",
+        "args": [
+          {
+            "$bigint": "0"
+          },
+          0
+        ],
+        "entries": 0
+      },
+      {
+        "root": "natural",
+        "args": [
+          {
+            "$bigint": "0"
+          },
+          3
+        ],
+        "entries": 0
+      },
+      {
+        "root": "natural",
+        "args": [
+          {
+            "$bigint": "1"
+          },
+          0
+        ],
+        "entries": 0
+      },
+      {
+        "root": "natural",
+        "args": [
+          {
+            "$bigint": "1"
+          },
+          3
+        ],
+        "entries": 0
+      },
+      {
+        "root": "natural",
+        "args": [
+          {
+            "$bigint": "2"
+          },
+          0
+        ],
+        "entries": 1
+      },
+      {
+        "root": "natural",
+        "args": [
+          {
+            "$bigint": "2"
+          },
+          3
+        ],
+        "entries": 1
+      },
+      {
+        "root": "natural",
+        "args": [
+          {
+            "$bigint": "37"
+          },
+          0
+        ],
+        "entries": 1
+      },
+      {
+        "root": "natural",
+        "args": [
+          {
+            "$bigint": "37"
+          },
+          3
+        ],
+        "entries": 1
+      },
+      {
+        "root": "natural",
+        "args": [
+          {
+            "$bigint": "128"
+          },
+          0
+        ],
+        "entries": 1
+      },
+      {
+        "root": "natural",
+        "args": [
+          {
+            "$bigint": "128"
+          },
+          3
+        ],
+        "entries": 1
+      },
+      {
+        "root": "computed",
+        "args": [
+          0,
+          0
+        ],
+        "entries": 1
+      },
+      {
+        "root": "computed",
+        "args": [
+          0,
+          3
+        ],
+        "entries": 1
+      },
+      {
+        "root": "computed",
+        "args": [
+          1,
+          0
+        ],
+        "entries": 1
+      },
+      {
+        "root": "computed",
+        "args": [
+          1,
+          3
+        ],
+        "entries": 1
+      },
+      {
+        "root": "computed",
+        "args": [
+          2,
+          0
+        ],
+        "entries": 1
+      },
+      {
+        "root": "computed",
+        "args": [
+          2,
+          3
+        ],
+        "entries": 1
+      },
+      {
+        "root": "computed",
+        "args": [
+          37,
+          0
+        ],
+        "entries": 1
+      },
+      {
+        "root": "computed",
+        "args": [
+          37,
+          3
+        ],
+        "entries": 1
+      },
+      {
+        "root": "constant",
+        "args": [],
+        "entries": 1
+      },
+      {
+        "refusal": "object-count",
+        "name": "direct",
+        "value": 0,
+        "throws": false,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "direct",
+        "value": 1,
+        "throws": false,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "direct",
+        "value": 2,
+        "throws": false,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "shifted",
+        "value": 0,
+        "throws": false,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "shifted",
+        "value": 1,
+        "throws": false,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "shifted",
+        "value": 2,
+        "throws": false,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "computed",
+        "value": 0,
+        "throws": false,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "computed",
+        "value": 1,
+        "throws": false,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "computed",
+        "value": 2,
+        "throws": false,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "direct",
+        "value": 0,
+        "throws": true,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "shifted",
+        "value": 0,
+        "throws": true,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "object-count",
+        "name": "computed",
+        "value": 0,
+        "throws": true,
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      },
+      {
+        "refusal": "helper-replacement",
+        "before": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        },
+        "after": {
+          "direct": 6,
+          "shifted": 6,
+          "natural": 6,
+          "computed": 8,
+          "constant": 1
+        }
+      }
+    ]
+  },
+  "historicalComparison": {
+    "path": "/home/ai/bend2/build/publish/bend/implementation/phase48/evidence/rnfa03-checkpoint.json",
+    "bytes": 124883,
+    "sha256": "6acf287b17c918f1170c180caba2378014cc0f738260a917a8b863d341bd1a4d"
+  },
+  "scope": "Fresh RNFA04 screen, separate from RNFA03 and the primary 45-point corpus. No target execution.",
+  "method": {
+    "path": "/home/ai/bend2/build/publish/bend/implementation/phase48/evidence/derive-literal-rnfa04-v2.py",
+    "bytes": 4644,
+    "sha256": "7282e06de6ce826fdbddd6af5dfc06083fb860cb80f5e3919caedfb675f1f8ff"
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/report.json",
+      "bytes": 383134,
+      "sha256": "af2df2f6ad3c8a3fcdaebf4f35cba78dc147af7450bd18b186a51120901f8af2"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+      "bytes": 1598192,
+      "sha256": "28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+      "bytes": 57196,
+      "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "bytes": 71530,
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+      "bytes": 48273,
+      "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+      "bytes": 137347,
+      "sha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+      "bytes": 185444,
+      "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa04/equality/api.mjs",
+      "bytes": 1628716,
+      "sha256": "6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa04/snapshot/src/runtime.mjs",
+      "bytes": 57196,
+      "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa04/snapshot/tools/typed-driver.mjs",
+      "bytes": 48273,
+      "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/run.py",
+      "bytes": 21467,
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "bytes": 6779,
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/execute.mjs",
+      "bytes": 5572,
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/controls/array-literals-scaled-catalog-v2.json",
+      "bytes": 4442,
+      "sha256": "57a008a8f78eb4af4c793a72b6cd1b57019960d5e681d1323929e3157d86ba45"
+    },
+    {
+      "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "bytes": 123655872,
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/controls/array-literals-v2.bend",
+      "bytes": 2198,
+      "sha256": "00832788f6f71126bb84b5959cd69a2cd5f2c73566a5ee226f239fb7ef3e10d4"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-reference03/manifest.json",
+      "bytes": 6604,
+      "sha256": "f25fa1d29ef19bb14f6e4ec0ac3836886d093c821d127c3fbe24e0ecf93e2ac1"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-reference03/programs.tar.gz",
+      "bytes": 64252,
+      "sha256": "0b91c289fc7f5c5c976db14a3be8712b08b42a4ce76a385521c2e3769d926b5b"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-candidate-rnfa04/manifest.json",
+      "bytes": 4264,
+      "sha256": "0ff650e47935ced00654ef0f7caacdc625109b9704b5ff7e31da675480536491"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-candidate-rnfa04/modules/array-literals-v2.mjs",
+      "bytes": 93809,
+      "sha256": "d45fdf6b152ee002412a02d71ad5a1d0f21b91b190657a86d637693cceea8078"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/modules/baseline/baseline/modules/array-literals-v2.mjs",
+      "bytes": 85334,
+      "sha256": "762684ac2aaf0a1ecb0eec52fd11b3cd16be7f905d416b20402c2497cc6d42b0"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/modules/baseline/typescript/modules/array-literals-v2.mjs",
+      "bytes": 8544,
+      "sha256": "e0b3ea37a97ba5e5933bd3ee9b61da7c9d3838e79215e363e47af9c9d471f189"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/modules/candidate/modules/array-literals-v2.mjs",
+      "bytes": 93809,
+      "sha256": "d45fdf6b152ee002412a02d71ad5a1d0f21b91b190657a86d637693cceea8078"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/consumed-execute.mjs",
+      "bytes": 5572,
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/consumed-run.py",
+      "bytes": 21467,
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/consumed-support.py",
+      "bytes": 6779,
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef"
+    },
+    {
+      "path": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "path": "/usr/bin/taskset",
+      "bytes": 35048,
+      "sha256": "bee8f79f39982b43a3738973f467ed2433b6064b077123ff25652129d26e71af"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/0-typescript/point.json",
+      "bytes": 161,
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/0-baseline/point.json",
+      "bytes": 161,
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/0-candidate/point.json",
+      "bytes": 161,
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/0-typescript/point.json",
+      "bytes": 161,
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/0-baseline/point.json",
+      "bytes": 161,
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/0-candidate/point.json",
+      "bytes": 161,
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/0-typescript/point.json",
+      "bytes": 165,
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/0-baseline/point.json",
+      "bytes": 165,
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/0-candidate/point.json",
+      "bytes": 165,
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/0-typescript/point.json",
+      "bytes": 168,
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/0-baseline/point.json",
+      "bytes": 168,
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/0-candidate/point.json",
+      "bytes": 168,
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/1-baseline/point.json",
+      "bytes": 161,
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/1-candidate/point.json",
+      "bytes": 161,
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/1-typescript/point.json",
+      "bytes": 161,
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/1-baseline/point.json",
+      "bytes": 161,
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/1-candidate/point.json",
+      "bytes": 161,
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/1-typescript/point.json",
+      "bytes": 161,
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/1-baseline/point.json",
+      "bytes": 165,
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/1-candidate/point.json",
+      "bytes": 165,
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/1-typescript/point.json",
+      "bytes": 165,
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/1-baseline/point.json",
+      "bytes": 168,
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/1-candidate/point.json",
+      "bytes": 168,
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/1-typescript/point.json",
+      "bytes": 168,
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/2-candidate/point.json",
+      "bytes": 161,
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/2-typescript/point.json",
+      "bytes": 161,
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/2-baseline/point.json",
+      "bytes": 161,
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/2-candidate/point.json",
+      "bytes": 161,
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/2-typescript/point.json",
+      "bytes": 161,
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/2-baseline/point.json",
+      "bytes": 161,
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/2-candidate/point.json",
+      "bytes": 165,
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/2-typescript/point.json",
+      "bytes": 165,
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/2-baseline/point.json",
+      "bytes": 165,
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/2-candidate/point.json",
+      "bytes": 168,
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/2-typescript/point.json",
+      "bytes": 168,
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/2-baseline/point.json",
+      "bytes": 168,
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/array-counts-controls04/report.json",
+      "bytes": 34888,
+      "sha256": "4501411cb7066ccda3d374f1d3b170be4107f6b2dbcc90cc53990a6fc5bca163"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/controls/array-counts-controls-v1.mjs",
+      "bytes": 9105,
+      "sha256": "96e2b9b5b097ab1b940f617f045a9450e0f7a38536c973fa1c388f4d5306038e"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/controls/array-literals-controls-v3.mjs",
+      "bytes": 22662,
+      "sha256": "3cdbd0c4d68ceee7bcd5644031736de7debcd6e78ecceaee7b78359b25a7164b"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/controls/array-counts-catalog-v1.json",
+      "bytes": 1382,
+      "sha256": "8e22ebeb974e3eb8e3bef7cc82e4c854ca28515377f627112acd423238e2ccf9"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase48/controls/array-counts-v1.bend",
+      "bytes": 1550,
+      "sha256": "6dbb344ed09bd06dab5b5e638cec3a202805e4dcaf03fb72ec9bb493c35ca580"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/array-counts-baseline01/modules/array-counts-v1.mjs",
+      "bytes": 83217,
+      "sha256": "062ed0d1bc7ee91c7135abfc214733134f329d3571b93e24fdb00d1921f0f637"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/array-counts-baseline01/modules/array-counts-v1.mjs.json",
+      "bytes": 4642,
+      "sha256": "b715754c694b0f47ac82dfee67bc50687ebd0e4542d78908ffb442f775758f09"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/emit-worker.mjs",
+      "bytes": 5821,
+      "sha256": "b03ae6d62cb4419fbe5ba9e2e268afa4db76a7de33c7b6087d98edae922f0f11"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/workflow.mjs",
+      "bytes": 18124,
+      "sha256": "1158d3e7fb28ebcf37caba0d32f34cbcb762d0987bff472c385a375bbeb793ff"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/release.mjs",
+      "bytes": 12981,
+      "sha256": "da2c88a9cc1b641d03dddfbe2c39fc5a3ea5c724e14993c9d68fa971727809a0"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/attempt.json",
+      "bytes": 247719,
+      "sha256": "aa7ba55b538cf9fa129c310f3e0c9907810c3595ce76bb62ebf997d7ed9200bf"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/array-counts-candidate04/modules/array-counts-v1.mjs",
+      "bytes": 105422,
+      "sha256": "26e79bc7e3095144f5e3a6e1f6781d93246e92df1888b8ce2a802e50c5d84400"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/array-counts-candidate04/modules/array-counts-v1.mjs.json",
+      "bytes": 4702,
+      "sha256": "4b362e1a58b989d77ff883dcb3a060a2258f754e9fc540159e3fc21365c1afc8"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa04/attempt.json",
+      "bytes": 265495,
+      "sha256": "59dd57e733b27de66db5ef85181c1303ade7cbf6cb9f7430d49e283d00853764"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/array-counts-controls04/candidate-counter.mjs",
+      "bytes": 105723,
+      "sha256": "7cef9d509d0ff797766b84592ffbb62772c3c00341aec226b1247efe094fb60c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/0-typescript/sample.json",
+      "bytes": 7369,
+      "sha256": "6735f27e478d70ca1cb5730819a196f315d48f8fcf5b74a8f84eb26eb58e278c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/0-typescript/process/process.json",
+      "bytes": 1006,
+      "sha256": "406cd5719b6a248d6c2771aa5e85119b2aa05041dd47864015e28f0bfc07b2bc"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/0-baseline/sample.json",
+      "bytes": 6736,
+      "sha256": "e606633f561dd57e4fe54db10ae8d4c172f54ae4b18e9b3873fb18b118b81a39"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/0-baseline/process/process.json",
+      "bytes": 1000,
+      "sha256": "33d678961fab4a7d47322be2f06424a875a74da84a78a3b25aa3cc64f59bb8a5"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/0-candidate/sample.json",
+      "bytes": 6441,
+      "sha256": "1026677291f28418d9914028b40827eda708b81de97e90def54c29944a01e0b0"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/0-candidate/process/process.json",
+      "bytes": 994,
+      "sha256": "4a4c90b15b958a25d721a6ce859f1ce59928ca15d53e8aeb0ff01c58818d0571"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/1-baseline/sample.json",
+      "bytes": 6462,
+      "sha256": "438a4466e9481754a9a0aaa1fc336d7f77ccc3dd01ce9b7a58ab5024fbc20ec3"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/1-baseline/process/process.json",
+      "bytes": 1000,
+      "sha256": "476b4ab2d723fd6bca8021b0a76c809abaa646d79ef3259273e16da06379aad2"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/1-candidate/sample.json",
+      "bytes": 6450,
+      "sha256": "ad49299e7f5df4c2e6e0e2230e05ab6d5b4b75e5b9120c27ea3474a316929289"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/1-candidate/process/process.json",
+      "bytes": 994,
+      "sha256": "8ed8a15ab4bf3ce1bc03a042a0c148ed2a6e7a60ffe0d6d132db877487116035"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/1-typescript/sample.json",
+      "bytes": 7361,
+      "sha256": "af17b72cbccde40dccb6700679d09982855f1c7e77cf58de50e65b43231d7de3"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/1-typescript/process/process.json",
+      "bytes": 1006,
+      "sha256": "e4ca2ccd26b320f8f54caaf9530d1f09d478e8ab67e351d2ff6ec251dad401dc"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/2-candidate/sample.json",
+      "bytes": 6444,
+      "sha256": "8e6add659daeb4dec9cf8f498b57cab986d5dfe7b0e9e412a2c668dfa0c76181"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/2-candidate/process/process.json",
+      "bytes": 993,
+      "sha256": "008000d1a66bc6eb18c283a6f2e600758ca9a4289e6bcda4026d8c270f920b35"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/2-typescript/sample.json",
+      "bytes": 7361,
+      "sha256": "93b14e7af6dd2ee20e60ea76bfa09d0c6eb9a3a14510c9128b99303e5d834f40"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/2-typescript/process/process.json",
+      "bytes": 1006,
+      "sha256": "8abb3680d2392fb9a18d60f699465fbeaf889f36821c96cc1a316ee30d08f525"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/2-baseline/sample.json",
+      "bytes": 6462,
+      "sha256": "e2e837b56221d6c80ef10f24d2cd36a4e754bb4e66df7e8ffc23a4bb01b76b69"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-0/2-baseline/process/process.json",
+      "bytes": 1000,
+      "sha256": "1c72f880e91565940d3cf256e4dbceaad473586d80bb57598be2af08cb3c8a10"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/0-typescript/sample.json",
+      "bytes": 7405,
+      "sha256": "712578f7fa81336167cfad212f0ef1e023ff059336b763e2815961f7993ea90b"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/0-typescript/process/process.json",
+      "bytes": 1005,
+      "sha256": "0e937119a286115e4589568cdb4fdbf6c0c7be202f870d60aa8b6ae2104a69cc"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/0-baseline/sample.json",
+      "bytes": 6182,
+      "sha256": "a390d5fe0b8e14b02a2a93678cd61fe8e2b6ee68c7057fa3aa6fe1dcb5643d45"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/0-baseline/process/process.json",
+      "bytes": 999,
+      "sha256": "ee70593713b5ba91bfecc16c9dae2e735cf473a01a25b879d3c41b5b8e34ee5d"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/0-candidate/sample.json",
+      "bytes": 5889,
+      "sha256": "8fceca2fe1636e86990405c6e88d04bb6d8e9ca2a522bb702d81aeff3cfc9656"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/0-candidate/process/process.json",
+      "bytes": 993,
+      "sha256": "e6c35818023d461e31ba161b5ac2d6753de232a68a89e8288ee17441fa761d91"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/1-baseline/sample.json",
+      "bytes": 5853,
+      "sha256": "1140bf4403bfc5b94fa2052a3c9ffbbfe50ac935f3e0b60929d15daa1579cc42"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/1-baseline/process/process.json",
+      "bytes": 1000,
+      "sha256": "4eb98b509c021a347c207e8c83e0980971580c8bfee3e69a3eb86180975e0567"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/1-candidate/sample.json",
+      "bytes": 5890,
+      "sha256": "24dc0a2a508ebbbfe913f36d3b68496f8c7bbc32e159b99efc46df418e4e63c9"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/1-candidate/process/process.json",
+      "bytes": 993,
+      "sha256": "479a49821518d3bd867d6be51783d3c085a8ea0ffbbc5bb7031d5ececaeb7775"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/1-typescript/sample.json",
+      "bytes": 7398,
+      "sha256": "8f0de7b141d54d5929d566c97762079ec7258bf8a3c96fa370d00ef8b7912581"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/1-typescript/process/process.json",
+      "bytes": 1006,
+      "sha256": "de6fd12c2315440923a237770900c0aa5b8a4592348457ce0946655284ab6d6b"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/2-candidate/sample.json",
+      "bytes": 5876,
+      "sha256": "478a0d416a3f99b84bceb475ab995a26bbb6aa75a430b77b0747f493500dd49a"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/2-candidate/process/process.json",
+      "bytes": 992,
+      "sha256": "8aa247ed9ff1b2bfcea565491e32ead2fe8e6b3871ddba97aed997b0c43e403b"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/2-typescript/sample.json",
+      "bytes": 7403,
+      "sha256": "7c8c321580e95c0e7c2d154499f84663532ae96ebd3f092a17eaf66cfe63cefb"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/2-typescript/process/process.json",
+      "bytes": 1006,
+      "sha256": "4976fd9740018412c1b079c30d85f35dd60b05e8dace8c65719108b377579e35"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/2-baseline/sample.json",
+      "bytes": 6188,
+      "sha256": "11d70016634f503350ea4da1316a17191fcbd1a124d36ebd94468230750fe1e5"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-1/2-baseline/process/process.json",
+      "bytes": 1000,
+      "sha256": "7a093a0787d0eff12c8007387efc3fb29d9178aca38569a99f347824e0c9785a"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/0-typescript/sample.json",
+      "bytes": 6545,
+      "sha256": "c4a9297d158ff3f91c61af114f534ea8187e251b8ff4447b40fcd07db48428fc"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/0-typescript/process/process.json",
+      "bytes": 1010,
+      "sha256": "00dec09ba2fea3a82bb5ad5a677117d43b28c5a2eadc6af168fd65a75b0c3c34"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/0-baseline/sample.json",
+      "bytes": 4425,
+      "sha256": "ea661242df2a5d3a2caf0c951ec6fc5b09f7b35bd9fcc9fc04ee0dd4c98c2cb7"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/0-baseline/process/process.json",
+      "bytes": 1003,
+      "sha256": "42a1d39b4fecfa1842c406afaf2c5d1006780eb4a1ffc4c0b413e87ff90f3299"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/0-candidate/sample.json",
+      "bytes": 5585,
+      "sha256": "a27b4d7510f49bd0a697b84ddc463b4aa3a462a57de9ef5478e7dae9b3904f4e"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/0-candidate/process/process.json",
+      "bytes": 998,
+      "sha256": "c4cbd9fa4df9105a6c27a2b9dae704f0ba56d73343e104a602fc1ee3daaa87fa"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/1-baseline/sample.json",
+      "bytes": 4141,
+      "sha256": "4f31b7feb21a6fd363eaecb78f540b879cae49b3e14092fc769ab8bdb14dbd14"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/1-baseline/process/process.json",
+      "bytes": 1003,
+      "sha256": "e96c3fb81b4a63e2883fc47c1a9ba628ce1150ce37a52e176dcf8abb6bcc3d1c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/1-candidate/sample.json",
+      "bytes": 5315,
+      "sha256": "0c7529f191edf1d0a77a243beb15358d1865a1e539689ded4b46440d5fc3de2c"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/1-candidate/process/process.json",
+      "bytes": 998,
+      "sha256": "5435580d39d31da342e9e34ac8a9e4815e3ceb07a131e7c3550ce3d643ce3d74"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/1-typescript/sample.json",
+      "bytes": 6531,
+      "sha256": "d92d237ef6eba794212f855f0fdbb0d925d2b269458992636ae9e7af036d3569"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/1-typescript/process/process.json",
+      "bytes": 1010,
+      "sha256": "cf0f64d0beaac3cf07dd166fc9bcd4cd1cfa872d4d73cad4cae291c088c564da"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/2-candidate/sample.json",
+      "bytes": 5587,
+      "sha256": "0c84c544cd4e30d11eb4d9a7b412208923287d8081d1b2d9c6c3a3959d91d16b"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/2-candidate/process/process.json",
+      "bytes": 997,
+      "sha256": "591437fc036b39a8c940aa4e94b67e1940159f1d7aa696c7500ab9915f033bab"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/2-typescript/sample.json",
+      "bytes": 6546,
+      "sha256": "c783994db572e0cf3aeb49294187ae2f207dce2cb081c5a43ed283b53be08cca"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/2-typescript/process/process.json",
+      "bytes": 1010,
+      "sha256": "d4cb7bd24260746f4930b03440521d9c4c6c61997332c593528d42f3c6f70cc3"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/2-baseline/sample.json",
+      "bytes": 4417,
+      "sha256": "37e8b6ef7651c7845d05fe6e58301f83e58fedc54e14f2df64e075cecbbe030e"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-128/2-baseline/process/process.json",
+      "bytes": 1003,
+      "sha256": "c1ea5e954eb2630ecfeaa2137a31cac62077693109296e294cebf028800a5a37"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/0-typescript/sample.json",
+      "bytes": 4760,
+      "sha256": "6f8bffbea627e8947d524852574f3800521186a9df05c8e9281e69b32ccbbd0f"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/0-typescript/process/process.json",
+      "bytes": 1011,
+      "sha256": "af49a1dcade5f6c8c9f24c6692782eb5a04a59a5e0ca8e3ebb64166ada29d67e"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/0-baseline/sample.json",
+      "bytes": 2699,
+      "sha256": "10cfe6c0666f307e05497c605123f93909b97ae748bdc51d654859459116c843"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/0-baseline/process/process.json",
+      "bytes": 1005,
+      "sha256": "a5ce4646c6ae439fa6084882f3d84b23399a7c505c8266e4e5ec1adb42d76614"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/0-candidate/sample.json",
+      "bytes": 4430,
+      "sha256": "114028041b77a178a8d576ae791760b47aa6229b70333774d65bbfe035614976"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/0-candidate/process/process.json",
+      "bytes": 1000,
+      "sha256": "9502f81a2677bff36d86e13287757e7b7b64db105d90c68506ef12e3f3712ac0"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/1-baseline/sample.json",
+      "bytes": 2432,
+      "sha256": "138f3739817e013dcb452ded53594d0b2d05376853ebcb9ff4b5c409c95bb212"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/1-baseline/process/process.json",
+      "bytes": 1005,
+      "sha256": "e1cf02df31c9fc62fbd703009f7d1e62f37e98e1db85bc0c3a5cd1da7b3d7736"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/1-candidate/sample.json",
+      "bytes": 4164,
+      "sha256": "ff7b90536a308f9001c884116e5026a683c69e7acc1736e1814efb097a99bdf1"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/1-candidate/process/process.json",
+      "bytes": 999,
+      "sha256": "5f37577c60e74ee3dd6f0b9334932adba1aa8e6c39ee2f273fcf6e11449cfa9a"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/1-typescript/sample.json",
+      "bytes": 4744,
+      "sha256": "6d1171ced05dbe63d19b08fdd0ef5038e3b462a77e98bb20c2daafd8e95cca74"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/1-typescript/process/process.json",
+      "bytes": 1011,
+      "sha256": "499e98eadeaf655ade189d86d0eb04ba8aed643a1ab5a9ae90ebbf264b478850"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/2-candidate/sample.json",
+      "bytes": 4446,
+      "sha256": "7014b5416f5a0bddb8f0711675497bc449a84f2247c4deb8a6393510c625c743"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/2-candidate/process/process.json",
+      "bytes": 998,
+      "sha256": "f93af9f5b392784132d03353f5dc3fe8d9ed6db15c1b8bc00ba794780fd4cd4f"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/2-typescript/sample.json",
+      "bytes": 4741,
+      "sha256": "8f9eab1e3e2c9d2986a7157d6b3e999fe07f2ae6b408cbecec5e1555af188992"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/2-typescript/process/process.json",
+      "bytes": 1012,
+      "sha256": "90f433ffe9fa62f79490f6bf86fc9ef20f3c792fe3c0b3d41c089aa0c1891978"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/2-baseline/sample.json",
+      "bytes": 2704,
+      "sha256": "507b535488c7df680e4fb950cad30d9a78a6848f339fe6455cfd3cd6c0070b16"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/literal-scale-screen-rnfa04/samples/array-literals-loop-8192/2-baseline/process/process.json",
+      "bytes": 1006,
+      "sha256": "2a63818e3269a23bbeb117cc23c00d14205b47a1a47ce95a3ad3454be67e424a"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/implementation/phase48/evidence/rnfa03-checkpoint.json",
+      "bytes": 124883,
+      "sha256": "6acf287b17c918f1170c180caba2378014cc0f738260a917a8b863d341bd1a4d"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/implementation/phase48/evidence/derive-literal-rnfa04-v2.py",
+      "bytes": 4644,
+      "sha256": "7282e06de6ce826fdbddd6af5dfc06083fb860cb80f5e3919caedfb675f1f8ff"
+    }
+  ]
+}

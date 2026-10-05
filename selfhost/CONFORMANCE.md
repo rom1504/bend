@@ -1,10 +1,54 @@
 # Compiler validation
 
-## Phase47 array06 validation
+## Current Phase48 RNFA04 validation
 
-The final candidate passes the checked B1 build and focused strict gate with zero
-exact differences. Array06 is installed; release verification and all 42 CLI
-checks pass. All 45 runtime points and 669 fresh role samples pass their oracles.
+RNFA04 (`checked-combined-rnfa04`) is installed. The checked B1 build, release
+verification and all 42 ordinary/relocated CLI checks pass. Portable replay also
+passes all 27 samples across three cases.
+API SHA256: `6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100`.
+Runtime SHA256: `880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
+The upstream pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+
+The [selected semantic receipt](tools/performance/phase48/evidence/semantic-qualification.json)
+joins all 28 planned gates against this exact compiler image and reconciled
+source. All focused controls and all eight maintained suites pass. The renewed
+backend census agrees on all 81 retained outcomes: **69 execution passes,
+eight unavailable/not-applicable outcomes and four shared check failures**.
+Agreement does not convert shared failures into passes. The earlier count
+control is explicitly reused from an execution on the same selected image.
+
+Focused coverage includes complete composite results and aliases, native String
+concatenation, finite F32 literals, typed array effects and literal storage,
+zero/one-trip entry refusal, relocated U32/Nat count arguments, and retained
+view/tree/integer boundaries. Controls exercise demand and error order, helper
+and host mutation, public fallback, reentry and activation. These inventories
+overlap; their counts are not additional unique language tests. The
+[phase report](../implementation/phase48/README.md) and
+[installed-release receipt](tools/performance/phase48/evidence/installed-release.json)
+record the selected mechanisms and release identities. Higher-order and private
+aggregate-transport prototypes remain excluded.
+
+All 669 fresh generated-program samples pass their oracles across the unchanged
+45-point, 23-source corpus. Equal-point execution time is **2.6789× pinned
+TypeScript**, versus 2.9024× for the fresh array06 baseline: a 1.0834× speedup.
+This is separate performance evidence, not broader conformance or typical-program
+parity. The [complete results](../implementation/phase48/results.md) retain every
+point and regression. All 18 [compiler requests](../implementation/phase48/compiler-cost-final.md)
+pass output checks, while median request time increases 3.27% for Evening and
+4.41% for lexer; emitted-program gains do not establish faster compilation.
+
+The full 3,026-main / 196-broader frontend inventory remains historical
+unchanged-frontend evidence from worker23, not a fresh RNFA04 execution. Native
+IO.args remains a known gap. Full native/GPU conformance, universal host
+equivalence and independent proof validity remain unestablished; `--verdict`
+is unsupported. RNFA04 is a checked B1 derivative, not a new self-emitted fixed
+point.
+
+## Historical Phase47 array06 validation
+
+At its release, array06 passed the checked B1 build and focused strict gate with
+zero exact differences. Installation, release verification and all 42 CLI
+checks passed. All 45 runtime points and 669 fresh role samples passed their oracles.
 API SHA256: `28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f`.
 Runtime SHA256: `880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
 The upstream pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.

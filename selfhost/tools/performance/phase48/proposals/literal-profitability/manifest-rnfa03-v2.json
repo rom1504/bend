@@ -1,0 +1,37 @@
+{
+  "kind": "phase48-literal-count-decline-rnfa03-source-overlay",
+  "complete": true,
+  "sourceQualified": false,
+  "executed": false,
+  "parent": {
+    "path": "selfhost/build/phase48/source-combined-rnfa03/src/back/js/array-literals.bend",
+    "sha256": "9bd9568c55f00f0ed177b95903fac89807934191982b3e3c271ddd89c65b7485",
+    "bytes": 5395
+  },
+  "helper": {
+    "path": "selfhost/tools/performance/phase48/proposals/literal-profitability/literal-count-v1.bend",
+    "sha256": "9d1215250f08aa281111ef133fca52685b4bd14fcc13a9b9ebf6bac555f98607",
+    "bytes": 4758
+  },
+  "outputs": [
+    {
+      "path": "selfhost/tools/performance/phase48/proposals/literal-profitability/array-literals-rnfa03-v2.bend",
+      "sha256": "b687c9f66939c6072ed94cefdf5ef449b9ecdfc241446146fb727e91d4c7b91c",
+      "bytes": 10203
+    },
+    {
+      "path": "selfhost/tools/performance/phase48/proposals/literal-profitability/literal-count-rnfa03-v2.patch",
+      "sha256": "6613c81c8c2f09214ddb2ac1076d9b85ccf0fc4698c4ff07f2e8bd7e69af45e2",
+      "bytes": 6101
+    }
+  ],
+  "limits": {
+    "helpers": 32,
+    "planNodes": 256,
+    "rootSlots": 32,
+    "helperExpansion": 0,
+    "directCountCalls": 1
+  },
+  "preservation": "RNFA03 parent, including its JF32 literal whitelist, is retained byte-for-byte except one emission conjunct and appended89helperlines",
+  "integration": "Fresh RNFA03 snapshot + exact replaced array-literals-rnfa03-v2.bend; do not modify frozen03 or apply baseline795 overlay to composed image"
+}

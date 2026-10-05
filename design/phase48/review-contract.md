@@ -344,3 +344,56 @@ bytes. Composition receipt SHA256:
 `ba6737ace4aefab4a230d338f0e151cce743626d9fe758c0eb32f1c676ce9135`.
 These checks do not replace the root's combined compilation, execution or
 measurement gates.
+
+## Compiler demand during rejection
+
+The combined RNFA02 acquisition later exhausted its 1 GiB heap. Inspection found
+a concrete compiler-demand regression missed by the initial composition review:
+Bend's `&&` evaluates both operands. The new Array predicate used it to combine
+cheap call-name checks with normalization of the first argument as an element
+type. Consequently an unrelated call such as `consume(dp(...))` could normalize
+its live program argument while merely asking whether it was an Array native.
+The observed OOM and this source-level mechanism are distinct evidence; the
+same-workload corrected acquisition is needed to establish their causal link.
+
+The reviewed lazy overlay, SHA256
+`e74844cc241cc3185363ccea6c477a3fcd6c58012a59244aaad805c6c1b41abd`,
+uses explicit `kc` branches before each potentially inappropriate demand: call
+kind/name/arity, native source ownership, erased first telescope, and canonical
+Array shape/owner. Successful element/telescope admission remains unchanged.
+Six bounded diagnostic cases intercept normalization of one exact live AST
+object before any recursive payload executes. The old predicate must visit it;
+the corrected predicate must return false without visiting it. Structural U32
+and F32 positives prevent a blanket-refusal fix. These are internal predicate
+controls, separate from real checked-source acquisition and runtime oracles.
+
+## Ordinary oracles for historical guard observations
+
+Renewing the original Array controls exposed observations introduced by old
+private-entry checks themselves. A global Number accessor was called twice by
+the old root's two `Number.isInteger` input predicates before a host fence; the
+new fresh fence refuses it before those reads. The same early fence prevents a
+self-restoring reflection hook from mutating a dependency during `localGuard`.
+Neither difference may be dismissed by broadly ignoring event traces. The
+successor controls require candidate public execution to equal ordinary source
+execution on both images, and separately retain the exact historical extra
+reads or mutation trace. All other differential observations remain exact.
+
+The scalar bench can use its ungranted raw code as the ordinary oracle. A
+matcher-leading tree root cannot: its public descriptor has arity one, so
+passing all four source arguments directly returns a closure instead of running
+the source. The corrected tree oracle preserves ordinary curried dispatch and
+all source bytes, changing only the uniquely AST-verified `enterExact` grant
+argument to false in separate diagnostic modules. It reparses, proves exact
+byte inversion and rehashes those modules. This is an untimed semantic oracle,
+not another compiler or a performance derivative.
+
+The proposed literal-loop profitability refinement is decline-only. After a
+successful existing plan, it recognizes one direct root scalar countdown using
+bounded helper, executable-node and parameter scans. Unknown, ambiguous or
+exhausted analysis keeps the original policy. Its runtime predicate reads only
+already-loaded lexical scalar slots using `typeof` and strict zero/one equality;
+it cannot coerce values, call hooks or grant new private permission. Canonical
+conversion/type inspection uses explicit `kc` gates. The RNFA03 rebase preserves
+the finite-F32 whitelist and all existing fast-body/fallback text. Actual
+activation, compilation cost and performance remain separate gates.

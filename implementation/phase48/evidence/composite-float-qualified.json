@@ -1,0 +1,164 @@
+{
+  "kind": "phase48-composite-float-qualified-summary",
+  "complete": true,
+  "passed": true,
+  "targetExecutedByThisSummary": false,
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/composite-float-controls03v2/report.json",
+    "sha256": "5058cc0ddf95d71980e7fd686e6d5d9f2ca295f6042dc0affc1223e26d3b6c7d"
+  },
+  "checkedScalarObservations": 50,
+  "pairedBoundaries": 5,
+  "rehashedInputRows": 31,
+  "activation": [
+    {
+      "label": "same-handle",
+      "before": {
+        "fast": 2,
+        "fallback": 0,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      },
+      "after": {
+        "fast": 2,
+        "fallback": 1,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      }
+    },
+    {
+      "label": "same-backing",
+      "before": {
+        "fast": 2,
+        "fallback": 1,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      },
+      "after": {
+        "fast": 2,
+        "fallback": 2,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      }
+    },
+    {
+      "label": "native-getter",
+      "before": {
+        "fast": 2,
+        "fallback": 2,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      },
+      "after": {
+        "fast": 2,
+        "fallback": 3,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      }
+    },
+    {
+      "label": "fill-throw",
+      "before": {
+        "fast": 2,
+        "fallback": 3,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      },
+      "after": {
+        "fast": 2,
+        "fallback": 4,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      }
+    },
+    {
+      "label": "fill-reentry",
+      "before": {
+        "fast": 2,
+        "fallback": 4,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      },
+      "after": {
+        "fast": 2,
+        "fallback": 7,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      }
+    },
+    {
+      "label": "clean-zero-and-one",
+      "before": {
+        "fast": 0,
+        "fallback": 0,
+        "floatWrites": 0,
+        "bits": {}
+      },
+      "zero": {
+        "fast": 1,
+        "fallback": 0,
+        "floatWrites": 1,
+        "bits": {
+          "0": 1
+        }
+      },
+      "one": {
+        "fast": 2,
+        "fallback": 0,
+        "floatWrites": 4,
+        "bits": {
+          "0": 2,
+          "1040187392": 1,
+          "1048576000": 1
+        }
+      },
+      "floatSites": 8,
+      "derivative": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/composite-float-controls03v2/activation-derivative.mjs",
+        "sha256": "63dc71d126767be51e352ff1f7ae96a1b062d379f0cb854f7e62e4ac0c81e8de",
+        "timingEligible": false
+      }
+    }
+  ],
+  "scope": "Exact checked modules supply semantic comparisons; altered derivative supplies untimed counters. Affine v1 source failure preserved; v2 forwards old once to reusable scalar formal."
+}

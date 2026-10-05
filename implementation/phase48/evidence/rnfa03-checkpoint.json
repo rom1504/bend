@@ -1,0 +1,2848 @@
+{
+  "kind": "phase48-rnfa03-provisional-screen-checkpoint",
+  "complete": true,
+  "scope": "Saved-data identity/leaf validation and median recomputation only. RNFA03 is provisional; no primary45 aggregate or final selection claim. Screens remain separate and are not pooled.",
+  "reports": [
+    {
+      "report": {
+        "path": "selfhost/build/phase48/combined-rnfa03-core8/report.json",
+        "sha256": "e0cf7ecd9a53410510b0e6d5614520dd3184806726f2179f9cc6b897dc044600",
+        "bytes": 700459
+      },
+      "scope": "Eight selected points from the primary45 corpus; no new aggregate weighting.",
+      "points": 8,
+      "samples": 72,
+      "wallSeconds": 58.243879261019174,
+      "protocol": {
+        "defaultSet": "core",
+        "rounds": 3,
+        "warmupCalls": 3,
+        "warmupMs": 350,
+        "calibrationMs": 40,
+        "targetMs": 150
+      },
+      "roles": {
+        "baseline": {
+          "label": "Phase48 starting Phase47 array06 (retained verified portable acquisition)",
+          "compiler": {
+            "kind": "checked-development-attempt",
+            "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "sourceSha256": "5aaa1595fbada3687d1d92731749252ef547f6af52da0816bb84a17c09bd8a18",
+            "artifact": "derived-b1",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+              "sha256": "28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f"
+            },
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+              "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+              "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+            }
+          }
+        },
+        "typescript": {
+          "label": "Pinned upstream TypeScript 018751270e800bc222a93dad7f257083ee53a5f7 (retained checked outputs)",
+          "compiler": {
+            "kind": "checked-pinned-typescript",
+            "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "sources": [
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+                "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+                "sha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd"
+              },
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+                "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+                "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee"
+              },
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+                "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+                "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+              }
+            ]
+          }
+        },
+        "candidate": {
+          "label": "Prepared checked candidate",
+          "compiler": {
+            "kind": "checked-development-attempt",
+            "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "sourceSha256": "c90da91e7d9fbbfaf9186b9d5f236da8923ce8cdb2258cff4738d5cd623069e0",
+            "artifact": "derived-b1",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/equality/api.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/equality/api.mjs",
+              "sha256": "a64c4dceb00f60c7cdb9994afb864564f4ff9a9c8b1c143b066db793b9ba738b"
+            },
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/snapshot/src/runtime.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/snapshot/src/runtime.mjs",
+              "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/snapshot/tools/typed-driver.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/snapshot/tools/typed-driver.mjs",
+              "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+            }
+          }
+        }
+      },
+      "cases": [
+        {
+          "id": "local-pair",
+          "point": {
+            "exportName": "pair",
+            "args": [
+              0
+            ],
+            "expected": 1866542166
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 1.2580591951219517,
+              "sampleMs": [
+                1.2788558499999998,
+                1.2360190247933887,
+                1.2580591951219517
+              ],
+              "halfDriftPercent": [
+                -0.8468868669168739,
+                -4.917903818824176,
+                -1.43582492127996
+              ],
+              "maxAbsoluteHalfDriftPercent": 4.917903818824176
+            },
+            "baseline": {
+              "medianMs": 1.4290695754716978,
+              "sampleMs": [
+                1.4286688857142855,
+                1.4312473207547172,
+                1.4290695754716978
+              ],
+              "halfDriftPercent": [
+                -0.2030259401140766,
+                0.5164411655150136,
+                0.09526029944186831
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.5164411655150136
+            },
+            "candidate": {
+              "medianMs": 1.4398493809523805,
+              "sampleMs": [
+                1.4398493809523805,
+                1.426593952830189,
+                1.4403893904761909
+              ],
+              "halfDriftPercent": [
+                0.8814879812230059,
+                0.10046696361851737,
+                -0.03484166456682036
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.8814879812230059
+            }
+          },
+          "baselineOverCandidate": 0.9925132408824926,
+          "candidateOverBaseline": 1.0075432334896113,
+          "candidateOverTypescript": 1.144500502468651,
+          "candidateChangePercent": 0.7543233489611278
+        },
+        {
+          "id": "local-fold",
+          "point": {
+            "exportName": "bench",
+            "args": [
+              4096,
+              17
+            ],
+            "expected": 2339999928
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 0.06328845784641068,
+              "sampleMs": [
+                0.06328845784641068,
+                0.0641111878453039,
+                0.06312915068493151
+              ],
+              "halfDriftPercent": [
+                0.6316640452217026,
+                0.08783167185983931,
+                -0.7900785834859647
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.7900785834859647
+            },
+            "baseline": {
+              "medianMs": 0.060788876717865786,
+              "sampleMs": [
+                0.06128981123502687,
+                0.06076994365626266,
+                0.060788876717865786
+              ],
+              "halfDriftPercent": [
+                -0.2663598770296094,
+                0.09414949847288412,
+                -0.4893080573702746
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.4893080573702746
+            },
+            "candidate": {
+              "medianMs": 0.06085397609400322,
+              "sampleMs": [
+                0.06085397609400322,
+                0.060815320274636486,
+                0.06229964805825247
+              ],
+              "halfDriftPercent": [
+                -0.248237474042301,
+                0.25214962023716314,
+                -2.3987215571895315
+              ],
+              "maxAbsoluteHalfDriftPercent": 2.3987215571895315
+            }
+          },
+          "baselineOverCandidate": 0.9989302362751635,
+          "candidateOverBaseline": 1.0010709093448062,
+          "candidateOverTypescript": 0.96153355864168,
+          "candidateChangePercent": 0.10709093448062479
+        },
+        {
+          "id": "scalar-region-0",
+          "point": {
+            "exportName": "bench",
+            "args": [
+              0,
+              524800
+            ],
+            "expected": 0
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 6.704530299999999e-05,
+              "sampleMs": [
+                6.685020899999995e-05,
+                6.704530299999999e-05,
+                6.908122300000003e-05
+              ],
+              "halfDriftPercent": [
+                0.05329284098920528,
+                0.2386921184381663,
+                0.058990606971498494
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.2386921184381663
+            },
+            "baseline": {
+              "medianMs": 0.00436361700380478,
+              "sampleMs": [
+                0.004151160009889024,
+                0.004373808817503893,
+                0.00436361700380478
+              ],
+              "halfDriftPercent": [
+                -0.9064161817238237,
+                -10.183956220983681,
+                -10.690749478769423
+              ],
+              "maxAbsoluteHalfDriftPercent": 10.690749478769423
+            },
+            "candidate": {
+              "medianMs": 0.004233038310386314,
+              "sampleMs": [
+                0.004233038310386314,
+                0.0040410726668826955,
+                0.004285168485176662
+              ],
+              "halfDriftPercent": [
+                -10.799025015060293,
+                1.0274001402425847,
+                -11.077195847962596
+              ],
+              "maxAbsoluteHalfDriftPercent": 11.077195847962596
+            }
+          },
+          "baselineOverCandidate": 1.0308475104272206,
+          "candidateOverBaseline": 0.9700755833280945,
+          "candidateOverTypescript": 63.13698530658164,
+          "candidateChangePercent": -2.9924416671905485
+        },
+        {
+          "id": "scalar-region-8192",
+          "point": {
+            "exportName": "bench",
+            "args": [
+              8192,
+              524800
+            ],
+            "expected": 8192
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 0.0997554615384615,
+              "sampleMs": [
+                0.09997296077127658,
+                0.0997554615384615,
+                0.09964427483443708
+              ],
+              "halfDriftPercent": [
+                -0.26953108742816534,
+                0.5801739845918918,
+                -0.7884854683070208
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.7884854683070208
+            },
+            "baseline": {
+              "medianMs": 0.11224522754491015,
+              "sampleMs": [
+                0.1123413196659074,
+                0.11196098507462682,
+                0.11224522754491015
+              ],
+              "halfDriftPercent": [
+                -0.5609347713746549,
+                0.11279024670383109,
+                0.329711773731467
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.5609347713746549
+            },
+            "candidate": {
+              "medianMs": 0.11354300686498854,
+              "sampleMs": [
+                0.11354300686498854,
+                0.11216331371087924,
+                0.11404420733532927
+              ],
+              "halfDriftPercent": [
+                -1.667671606343124,
+                0.19461227296260208,
+                2.12696692756138
+              ],
+              "maxAbsoluteHalfDriftPercent": 2.12696692756138
+            }
+          },
+          "baselineOverCandidate": 0.9885701519106187,
+          "candidateOverBaseline": 1.0115619999929097,
+          "candidateOverTypescript": 1.138213438280882,
+          "candidateChangePercent": 1.1561999992909744
+        },
+        {
+          "id": "complete-generic-row32",
+          "point": {
+            "exportName": "bench",
+            "args": [
+              32,
+              17
+            ],
+            "expected": "[[0,2,1,1,0,0,0,1,1,0,0,2,3,1,3,1,0,1,0,0,2,1,0,0,0,2,0,2,1,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,0,1,0,1,2,0,0,0,0,2,0,0,3,0,1,2,0,1,2,0,0,1,3,3,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]"
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 0.0070086815686618955,
+              "sampleMs": [
+                0.007223266020932795,
+                0.0070086815686618955,
+                0.006952441190548713
+              ],
+              "halfDriftPercent": [
+                6.855512711334488,
+                -11.944593860888642,
+                -11.375177471919029
+              ],
+              "maxAbsoluteHalfDriftPercent": 11.944593860888642
+            },
+            "baseline": {
+              "medianMs": 0.3834609467005077,
+              "sampleMs": [
+                0.3834609467005077,
+                0.3796580353535355,
+                0.3853744
+              ],
+              "halfDriftPercent": [
+                1.271013265657217,
+                1.2049929301815032,
+                1.4645530355212877
+              ],
+              "maxAbsoluteHalfDriftPercent": 1.4645530355212877
+            },
+            "candidate": {
+              "medianMs": 0.028550240023134763,
+              "sampleMs": [
+                0.028847938802083323,
+                0.028387059204961953,
+                0.028550240023134763
+              ],
+              "halfDriftPercent": [
+                -0.8488273980604699,
+                -0.4556050819204627,
+                -6.189852291359443
+              ],
+              "maxAbsoluteHalfDriftPercent": 6.189852291359443
+            }
+          },
+          "baselineOverCandidate": 13.431093622672963,
+          "candidateOverBaseline": 0.07445410091639187,
+          "candidateOverTypescript": 4.073553598267641,
+          "candidateChangePercent": -92.55458990836081
+        },
+        {
+          "id": "mandelbrot",
+          "point": {
+            "args": [
+              2,
+              0
+            ],
+            "expected": 887240761,
+            "exportName": "bench"
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 0.04763373108728944,
+              "sampleMs": [
+                0.04787699479166665,
+                0.04763373108728944,
+                0.047505295051924266
+              ],
+              "halfDriftPercent": [
+                -1.3542783909370693,
+                -3.4350046428279324,
+                -2.9263138707459557
+              ],
+              "maxAbsoluteHalfDriftPercent": 3.4350046428279324
+            },
+            "baseline": {
+              "medianMs": 0.12158167840000006,
+              "sampleMs": [
+                0.1214919039231385,
+                0.12321414943457192,
+                0.12158167840000006
+              ],
+              "halfDriftPercent": [
+                -1.7667797071296842,
+                -3.8572800132586904,
+                -1.7068356072691193
+              ],
+              "maxAbsoluteHalfDriftPercent": 3.8572800132586904
+            },
+            "candidate": {
+              "medianMs": 0.12199499999999998,
+              "sampleMs": [
+                0.13098993116634794,
+                0.12199499999999998,
+                0.12123780384307446
+              ],
+              "halfDriftPercent": [
+                -8.933724074109028,
+                -1.8492550912396322,
+                -2.0455811722539075
+              ],
+              "maxAbsoluteHalfDriftPercent": 8.933724074109028
+            }
+          },
+          "baselineOverCandidate": 0.9966119791794752,
+          "candidateOverBaseline": 1.0033995385278374,
+          "candidateOverTypescript": 2.5611052759323543,
+          "candidateChangePercent": 0.33995385278373647
+        },
+        {
+          "id": "editdist",
+          "point": {
+            "args": [
+              2,
+              0
+            ],
+            "expected": 2065873279,
+            "exportName": "bench"
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 5.035220999999997,
+              "sampleMs": [
+                5.0051677,
+                5.064532483870971,
+                5.035220999999997
+              ],
+              "halfDriftPercent": [
+                -4.749056756259085,
+                0.46425617885914594,
+                -1.5692234143741768
+              ],
+              "maxAbsoluteHalfDriftPercent": 4.749056756259085
+            },
+            "baseline": {
+              "medianMs": 5.633923185185183,
+              "sampleMs": [
+                5.61606388888889,
+                5.633923185185183,
+                5.64525051851852
+              ],
+              "halfDriftPercent": [
+                -0.014505755556792899,
+                -0.2777464685130737,
+                -0.2503707501409047
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.2777464685130737
+            },
+            "candidate": {
+              "medianMs": 5.659440259259259,
+              "sampleMs": [
+                5.621735777777779,
+                5.662768925925927,
+                5.659440259259259
+              ],
+              "halfDriftPercent": [
+                -0.25739498927552784,
+                -0.7309649271942886,
+                0.14256377764532147
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.7309649271942886
+            }
+          },
+          "baselineOverCandidate": 0.9954912371356286,
+          "candidateOverBaseline": 1.0045291838804575,
+          "candidateOverTypescript": 1.1239705783041622,
+          "candidateChangePercent": 0.45291838804575324
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "point": {
+            "args": [],
+            "expected": 11,
+            "exportName": "main.out"
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 0.0005467897668355404,
+              "sampleMs": [
+                0.000581545825418196,
+                0.0005422428160286624,
+                0.0005467897668355404
+              ],
+              "halfDriftPercent": [
+                -12.33127185701165,
+                -0.1384133066312354,
+                0.3717700863847817
+              ],
+              "maxAbsoluteHalfDriftPercent": 12.33127185701165
+            },
+            "baseline": {
+              "medianMs": 0.03175158840937115,
+              "sampleMs": [
+                0.03175158840937115,
+                0.031581713019936015,
+                0.031946440443896426
+              ],
+              "halfDriftPercent": [
+                -0.6351868923438309,
+                -1.0418144515359273,
+                0.5397037669080396
+              ],
+              "maxAbsoluteHalfDriftPercent": 1.0418144515359273
+            },
+            "candidate": {
+              "medianMs": 0.031564302963507214,
+              "sampleMs": [
+                0.03219548626577582,
+                0.03118792777508482,
+                0.031564302963507214
+              ],
+              "halfDriftPercent": [
+                -0.8925815805575499,
+                0.17719064646966043,
+                -0.791195944285561
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.8925815805575499
+            }
+          },
+          "baselineOverCandidate": 1.0059334573641772,
+          "candidateOverBaseline": 0.9941015408914577,
+          "candidateOverTypescript": 57.7265795338136,
+          "candidateChangePercent": -0.5898459108542253
+        }
+      ]
+    },
+    {
+      "report": {
+        "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/report.json",
+        "sha256": "3d10c2d1758ca8e163f8ae44ba41ff52b6ed35fd8f5c9b2aefd405c13dfa260a",
+        "bytes": 380448
+      },
+      "scope": "Independent literal-array scaling fixture; supplementary diagnostic points outside primary45 weighting.",
+      "points": 4,
+      "samples": 36,
+      "wallSeconds": 29.45317170699127,
+      "protocol": {
+        "defaultSet": "core",
+        "rounds": 3,
+        "warmupCalls": 3,
+        "warmupMs": 350,
+        "calibrationMs": 40,
+        "targetMs": 150
+      },
+      "roles": {
+        "baseline": {
+          "label": "Prepared checked baseline",
+          "compiler": {
+            "kind": "checked-development-attempt",
+            "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "sourceSha256": "5aaa1595fbada3687d1d92731749252ef547f6af52da0816bb84a17c09bd8a18",
+            "artifact": "derived-b1",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/equality/api.mjs",
+              "sha256": "28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f"
+            },
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/src/runtime.mjs",
+              "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase47/checked-array06/snapshot/tools/typed-driver.mjs",
+              "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+            }
+          }
+        },
+        "typescript": {
+          "label": "Pinned upstream TypeScript",
+          "compiler": {
+            "kind": "checked-pinned-typescript",
+            "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "sources": [
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+                "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+                "sha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd"
+              },
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+                "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+                "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee"
+              },
+              {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+                "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+                "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+              }
+            ]
+          }
+        },
+        "candidate": {
+          "label": "Prepared checked candidate",
+          "compiler": {
+            "kind": "checked-development-attempt",
+            "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "sourceSha256": "c90da91e7d9fbbfaf9186b9d5f236da8923ce8cdb2258cff4738d5cd623069e0",
+            "artifact": "derived-b1",
+            "api": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/equality/api.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/equality/api.mjs",
+              "sha256": "a64c4dceb00f60c7cdb9994afb864564f4ff9a9c8b1c143b066db793b9ba738b"
+            },
+            "runtime": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/snapshot/src/runtime.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/snapshot/src/runtime.mjs",
+              "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+            },
+            "base": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+              "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+            },
+            "driver": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/snapshot/tools/typed-driver.mjs",
+              "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-combined-rnfa03/snapshot/tools/typed-driver.mjs",
+              "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+            }
+          }
+        }
+      },
+      "cases": [
+        {
+          "id": "array-literals-loop-0",
+          "point": {
+            "exportName": "loop_bench",
+            "args": [
+              0,
+              3
+            ],
+            "expected": 0
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 0.00023264271476309284,
+              "sampleMs": [
+                0.00023264271476309284,
+                0.0002354749537726361,
+                0.00021903650683705242
+              ],
+              "halfDriftPercent": [
+                12.915919454587744,
+                -11.598637546601974,
+                0.10348882921409341
+              ],
+              "maxAbsoluteHalfDriftPercent": 12.915919454587744
+            },
+            "baseline": {
+              "medianMs": 0.001251637992581752,
+              "sampleMs": [
+                0.0011632161428107156,
+                0.0012536576056019527,
+                0.001251637992581752
+              ],
+              "halfDriftPercent": [
+                -0.40669046255298325,
+                6.120362653108358,
+                6.856371273825879
+              ],
+              "maxAbsoluteHalfDriftPercent": 6.856371273825879
+            },
+            "candidate": {
+              "medianMs": 0.013008178946447322,
+              "sampleMs": [
+                0.012938644347826093,
+                0.013338660942316163,
+                0.013008178946447322
+              ],
+              "halfDriftPercent": [
+                0.09402090493546567,
+                -2.0203170382991242,
+                -0.18910032465617732
+              ],
+              "maxAbsoluteHalfDriftPercent": 2.0203170382991242
+            }
+          },
+          "baselineOverCandidate": 0.09621930923110403,
+          "candidateOverBaseline": 10.392924330792619,
+          "candidateOverTypescript": 55.914834727122,
+          "candidateChangePercent": 939.2924330792619
+        },
+        {
+          "id": "array-literals-loop-1",
+          "point": {
+            "exportName": "loop_bench",
+            "args": [
+              1,
+              3
+            ],
+            "expected": 1
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 0.00026802029715068513,
+              "sampleMs": [
+                0.0002476132520076787,
+                0.00026923395433062734,
+                0.00026802029715068513
+              ],
+              "halfDriftPercent": [
+                -0.014569619437021508,
+                -12.247468845415954,
+                -12.938547183972249
+              ],
+              "maxAbsoluteHalfDriftPercent": 12.938547183972249
+            },
+            "baseline": {
+              "medianMs": 0.0050163094271963755,
+              "sampleMs": [
+                0.005048559761897263,
+                0.0050163094271963755,
+                0.004698948144683503
+              ],
+              "halfDriftPercent": [
+                -11.343993001241415,
+                -11.037799446554308,
+                -1.1393047243279053
+              ],
+              "maxAbsoluteHalfDriftPercent": 11.343993001241415
+            },
+            "candidate": {
+              "medianMs": 0.01370065060577819,
+              "sampleMs": [
+                0.01370065060577819,
+                0.013791296542185336,
+                0.013642869340232863
+              ],
+              "halfDriftPercent": [
+                0.3450545777414993,
+                -1.9101863086459003,
+                0.31914968098045726
+              ],
+              "maxAbsoluteHalfDriftPercent": 1.9101863086459003
+            }
+          },
+          "baselineOverCandidate": 0.36613658515463265,
+          "candidateOverBaseline": 2.731221190522832,
+          "candidateOverTypescript": 51.11795916738154,
+          "candidateChangePercent": 173.12211905228318
+        },
+        {
+          "id": "array-literals-loop-128",
+          "point": {
+            "exportName": "loop_bench",
+            "args": [
+              128,
+              3
+            ],
+            "expected": 206
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 0.0018065018158487278,
+              "sampleMs": [
+                0.001806360995048907,
+                0.0018065018158487278,
+                0.0019230525748604496
+              ],
+              "halfDriftPercent": [
+                -0.06352206067322674,
+                -0.006149064391314241,
+                -11.473262348225244
+              ],
+              "maxAbsoluteHalfDriftPercent": 11.473262348225244
+            },
+            "baseline": {
+              "medianMs": 0.29504577690802336,
+              "sampleMs": [
+                0.29504577690802336,
+                0.29563031589147293,
+                0.29132909248554933
+              ],
+              "halfDriftPercent": [
+                1.6778707101481327,
+                1.2300110766061634,
+                1.4062362238757675
+              ],
+              "maxAbsoluteHalfDriftPercent": 1.6778707101481327
+            },
+            "candidate": {
+              "medianMs": 0.01810773931567034,
+              "sampleMs": [
+                0.01901685207588671,
+                0.01810773931567034,
+                0.01804758783422461
+              ],
+              "halfDriftPercent": [
+                -11.759730696660075,
+                -1.1665191855902646,
+                0.7453733725410361
+              ],
+              "maxAbsoluteHalfDriftPercent": 11.759730696660075
+            }
+          },
+          "baselineOverCandidate": 16.29390459871997,
+          "candidateOverBaseline": 0.06137264361291025,
+          "candidateOverTypescript": 10.023648554797047,
+          "candidateChangePercent": -93.86273563870897
+        },
+        {
+          "id": "array-literals-loop-8192",
+          "point": {
+            "exportName": "loop_bench",
+            "args": [
+              8192,
+              3
+            ],
+            "expected": 13310
+          },
+          "roles": {
+            "typescript": {
+              "medianMs": 0.1160071696779262,
+              "sampleMs": [
+                0.11574854510408635,
+                0.1160071696779262,
+                0.11973277006172832
+              ],
+              "halfDriftPercent": [
+                0.29098680430599266,
+                0.1317179061930629,
+                4.494589043794095
+              ],
+              "maxAbsoluteHalfDriftPercent": 4.494589043794095
+            },
+            "baseline": {
+              "medianMs": 19.145372749999993,
+              "sampleMs": [
+                19.677913625000002,
+                19.114859874999993,
+                19.145372749999993
+              ],
+              "halfDriftPercent": [
+                0.07536888482604365,
+                -0.029908224976360476,
+                -0.7402028824689544
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.7402028824689544
+            },
+            "candidate": {
+              "medianMs": 0.26908199640933583,
+              "sampleMs": [
+                0.2684940035906642,
+                0.26908199640933583,
+                0.26968375535714295
+              ],
+              "halfDriftPercent": [
+                -0.1351398597163711,
+                0.002218025634403986,
+                -0.10251317244561742
+              ],
+              "maxAbsoluteHalfDriftPercent": 0.1351398597163711
+            }
+          },
+          "baselineOverCandidate": 71.15070129357693,
+          "candidateOverBaseline": 0.014054675243099455,
+          "candidateOverTypescript": 2.319529018390806,
+          "candidateChangePercent": -98.59453247569006
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/report.json",
+      "sha256": "e0cf7ecd9a53410510b0e6d5614520dd3184806726f2179f9cc6b897dc044600",
+      "bytes": 700459
+    },
+    {
+      "path": "selfhost/tools/performance/programs/run.py",
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e",
+      "bytes": 21467
+    },
+    {
+      "path": "selfhost/tools/performance/programs/support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "path": "selfhost/tools/performance/programs/execute.mjs",
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+      "bytes": 5572
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/catalog.json",
+      "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+      "bytes": 83389
+    },
+    {
+      "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+      "sha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "bytes": 6245
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+      "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "bytes": 768
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/scalar-region.bend",
+      "sha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+      "bytes": 1496
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/mandelbrot.bend",
+      "sha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+      "bytes": 6576
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/editdist.bend",
+      "sha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "bytes": 5874
+    },
+    {
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/test-rle-roundtrip.bend",
+      "sha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+      "bytes": 2743
+    },
+    {
+      "path": "selfhost/build/phase48/baseline/manifest.json",
+      "sha256": "81368e9c69f75b27b8ec4daf742ba0f8dcc24fc984ba1941827340cdd2240d85",
+      "bytes": 45243
+    },
+    {
+      "path": "selfhost/build/phase48/baseline/programs.tar.gz",
+      "sha256": "95edd343120196bb1d1c9628fb52dc1fe1cde3d116701db067bff65ba314b059",
+      "bytes": 6910221
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-full/manifest.json",
+      "sha256": "8f2efc02ba17496a010b8f8ba6c73f2dbe878a9ccbf608abe3cadc424e1c1aeb",
+      "bytes": 29406
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-full/modules/local-row.mjs",
+      "sha256": "822156fcf6deec02d910fd5e8e042616e600ff42d09386693d0efa0f92a4cb15",
+      "bytes": 182250
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-full/modules/local-fold.mjs",
+      "sha256": "412d6b0381f2fac65e94dafe2ebbc09e927928946b59634e753ad0f645750107",
+      "bytes": 91543
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-full/modules/scalar-region.mjs",
+      "sha256": "a238ebf0194de9515f46d6dfbbadd704fbad30b43c715dee7eb0d59fc4cc7bac",
+      "bytes": 95574
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-full/modules/local-row-observed.mjs",
+      "sha256": "5e41f465abba3420b3942ea3d7fdcd5c71a2920ed31d72c5589809e99ee034c6",
+      "bytes": 182403
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-full/modules/mandelbrot.mjs",
+      "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+      "bytes": 172093
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-full/modules/editdist.mjs",
+      "sha256": "2e9159858b0781c671860e2708559e4a8c773be8e69bb39189d1b209742ce84a",
+      "bytes": 166624
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-full/modules/test-rle-roundtrip.mjs",
+      "sha256": "d62ccfa7e27ef5124877c736b6ed4d39ee507b049b4a86e10b03c0c6b8530c4a",
+      "bytes": 114274
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/baseline/modules/de06a075357c9f1f519c3336d6bbe8649426557f6ec9734768aff68e5193c1a1.mjs",
+      "sha256": "de06a075357c9f1f519c3336d6bbe8649426557f6ec9734768aff68e5193c1a1",
+      "bytes": 167491
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/typescript/modules/e303d7add56bca3c62ab3a7d636f01b65007556f5a80d43d59f94018b4154de6.mjs",
+      "sha256": "e303d7add56bca3c62ab3a7d636f01b65007556f5a80d43d59f94018b4154de6",
+      "bytes": 12457
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/baseline/modules/3284d06870f99bb51c82e390eb740c4a1c4b26975d601bf0a4926eb93a90a5b9.mjs",
+      "sha256": "3284d06870f99bb51c82e390eb740c4a1c4b26975d601bf0a4926eb93a90a5b9",
+      "bytes": 91521
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/typescript/modules/591c3e3a895f4092a80eac58fef2ea4ecd15f59c01433fc69ce09143055e2444.mjs",
+      "sha256": "591c3e3a895f4092a80eac58fef2ea4ecd15f59c01433fc69ce09143055e2444",
+      "bytes": 5191
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/baseline/modules/a238ebf0194de9515f46d6dfbbadd704fbad30b43c715dee7eb0d59fc4cc7bac.mjs",
+      "sha256": "a238ebf0194de9515f46d6dfbbadd704fbad30b43c715dee7eb0d59fc4cc7bac",
+      "bytes": 95574
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/typescript/modules/752a5711b92b0ba8b0e146f41e70ac3934e50965f77950d009b5e738320b594a.mjs",
+      "sha256": "752a5711b92b0ba8b0e146f41e70ac3934e50965f77950d009b5e738320b594a",
+      "bytes": 6552
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/baseline/modules/bea782e3c4c526f6bf5e95ef6495d1287c5270f5212b5bce1c926f76aac3e30c.mjs",
+      "sha256": "bea782e3c4c526f6bf5e95ef6495d1287c5270f5212b5bce1c926f76aac3e30c",
+      "bytes": 167644
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/typescript/modules/34116f36cf0eb5089e5041abb10f2d0786051e8bd3f9afe350d97aad8303ae10.mjs",
+      "sha256": "34116f36cf0eb5089e5041abb10f2d0786051e8bd3f9afe350d97aad8303ae10",
+      "bytes": 12616
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/baseline/modules/7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3.mjs",
+      "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+      "bytes": 172093
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/typescript/modules/037f070e948ab7701364b7413c624bca4327db0bc6171ac4523b906d2ae9e222.mjs",
+      "sha256": "037f070e948ab7701364b7413c624bca4327db0bc6171ac4523b906d2ae9e222",
+      "bytes": 15442
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/baseline/modules/80c074f9e6165225a07322469a088ca8354fa9f0ce871802144feb2291104839.mjs",
+      "sha256": "80c074f9e6165225a07322469a088ca8354fa9f0ce871802144feb2291104839",
+      "bytes": 166580
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/typescript/modules/33721b7770aa4e367896cf1b842cc8ec309dced3a2608e25c5709217474eabc6.mjs",
+      "sha256": "33721b7770aa4e367896cf1b842cc8ec309dced3a2608e25c5709217474eabc6",
+      "bytes": 11907
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/baseline/modules/d62ccfa7e27ef5124877c736b6ed4d39ee507b049b4a86e10b03c0c6b8530c4a.mjs",
+      "sha256": "d62ccfa7e27ef5124877c736b6ed4d39ee507b049b4a86e10b03c0c6b8530c4a",
+      "bytes": 114274
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/baseline/typescript/modules/f21a8eb4239ff0db7fbfda6121f24b04b48c5478fe6de5798660ca5b417c80a8.mjs",
+      "sha256": "f21a8eb4239ff0db7fbfda6121f24b04b48c5478fe6de5798660ca5b417c80a8",
+      "bytes": 8728
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/candidate/modules/local-row.mjs",
+      "sha256": "822156fcf6deec02d910fd5e8e042616e600ff42d09386693d0efa0f92a4cb15",
+      "bytes": 182250
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/candidate/modules/local-fold.mjs",
+      "sha256": "412d6b0381f2fac65e94dafe2ebbc09e927928946b59634e753ad0f645750107",
+      "bytes": 91543
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/candidate/modules/scalar-region.mjs",
+      "sha256": "a238ebf0194de9515f46d6dfbbadd704fbad30b43c715dee7eb0d59fc4cc7bac",
+      "bytes": 95574
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/candidate/modules/local-row-observed.mjs",
+      "sha256": "5e41f465abba3420b3942ea3d7fdcd5c71a2920ed31d72c5589809e99ee034c6",
+      "bytes": 182403
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/candidate/modules/mandelbrot.mjs",
+      "sha256": "7fb1cc8b7215c9bc19fb4d387bbc433b5b6dce94bb4c2450201a2496add454b3",
+      "bytes": 172093
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/candidate/modules/editdist.mjs",
+      "sha256": "2e9159858b0781c671860e2708559e4a8c773be8e69bb39189d1b209742ce84a",
+      "bytes": 166624
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/modules/candidate/modules/test-rle-roundtrip.mjs",
+      "sha256": "d62ccfa7e27ef5124877c736b6ed4d39ee507b049b4a86e10b03c0c6b8530c4a",
+      "bytes": 114274
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/consumed-execute.mjs",
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+      "bytes": 5572
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/consumed-run.py",
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e",
+      "bytes": 21467
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/consumed-support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "path": "/usr/bin/python3.9",
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af",
+      "bytes": 5451288
+    },
+    {
+      "path": "/usr/bin/taskset",
+      "sha256": "bee8f79f39982b43a3738973f467ed2433b6064b077123ff25652129d26e71af",
+      "bytes": 35048
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/0-typescript/point.json",
+      "sha256": "667e07c47fea04c31a01cc92bfb3b7614c4da5e6304dfe209cd6071c06acf838",
+      "bytes": 157
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/0-baseline/point.json",
+      "sha256": "667e07c47fea04c31a01cc92bfb3b7614c4da5e6304dfe209cd6071c06acf838",
+      "bytes": 157
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/0-candidate/point.json",
+      "sha256": "667e07c47fea04c31a01cc92bfb3b7614c4da5e6304dfe209cd6071c06acf838",
+      "bytes": 157
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/0-typescript/point.json",
+      "sha256": "7cddb1b7747f0618cdfd2f892e6178bdfc28fcc1d5593558cb4f19edbc23f995",
+      "bytes": 169
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/0-baseline/point.json",
+      "sha256": "7cddb1b7747f0618cdfd2f892e6178bdfc28fcc1d5593558cb4f19edbc23f995",
+      "bytes": 169
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/0-candidate/point.json",
+      "sha256": "7cddb1b7747f0618cdfd2f892e6178bdfc28fcc1d5593558cb4f19edbc23f995",
+      "bytes": 169
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/0-typescript/point.json",
+      "sha256": "9a7ff1eb1e2590800d5f88b9f6f501c245bd41e751d6b1f6408033809774997f",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/0-baseline/point.json",
+      "sha256": "9a7ff1eb1e2590800d5f88b9f6f501c245bd41e751d6b1f6408033809774997f",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/0-candidate/point.json",
+      "sha256": "9a7ff1eb1e2590800d5f88b9f6f501c245bd41e751d6b1f6408033809774997f",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/0-typescript/point.json",
+      "sha256": "2e9e44d89d9b1715244fecaacd4028ada4b91268d8b346a2eb1c2b3b34c4f649",
+      "bytes": 167
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/0-baseline/point.json",
+      "sha256": "2e9e44d89d9b1715244fecaacd4028ada4b91268d8b346a2eb1c2b3b34c4f649",
+      "bytes": 167
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/0-candidate/point.json",
+      "sha256": "2e9e44d89d9b1715244fecaacd4028ada4b91268d8b346a2eb1c2b3b34c4f649",
+      "bytes": 167
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/0-typescript/point.json",
+      "sha256": "50b4cbf82338f0e8aa1e807d2564e4b2853f6f129ec835615e6adb2b9df00509",
+      "bytes": 1237
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/0-baseline/point.json",
+      "sha256": "50b4cbf82338f0e8aa1e807d2564e4b2853f6f129ec835615e6adb2b9df00509",
+      "bytes": 1237
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/0-candidate/point.json",
+      "sha256": "50b4cbf82338f0e8aa1e807d2564e4b2853f6f129ec835615e6adb2b9df00509",
+      "bytes": 1237
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/0-typescript/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/0-baseline/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/0-candidate/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/0-typescript/point.json",
+      "sha256": "36762819180b55c3470937de7e8d2bc071031c5e98302d0e21b8bff3c1dc79cf",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/0-baseline/point.json",
+      "sha256": "36762819180b55c3470937de7e8d2bc071031c5e98302d0e21b8bff3c1dc79cf",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/0-candidate/point.json",
+      "sha256": "36762819180b55c3470937de7e8d2bc071031c5e98302d0e21b8bff3c1dc79cf",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/0-typescript/point.json",
+      "sha256": "fe3464e2afc0f2e6c76c523d408aac2bc00532b51bbcb94a59be20974f61b885",
+      "bytes": 144
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/0-baseline/point.json",
+      "sha256": "fe3464e2afc0f2e6c76c523d408aac2bc00532b51bbcb94a59be20974f61b885",
+      "bytes": 144
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/0-candidate/point.json",
+      "sha256": "fe3464e2afc0f2e6c76c523d408aac2bc00532b51bbcb94a59be20974f61b885",
+      "bytes": 144
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/1-baseline/point.json",
+      "sha256": "667e07c47fea04c31a01cc92bfb3b7614c4da5e6304dfe209cd6071c06acf838",
+      "bytes": 157
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/1-candidate/point.json",
+      "sha256": "667e07c47fea04c31a01cc92bfb3b7614c4da5e6304dfe209cd6071c06acf838",
+      "bytes": 157
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/1-typescript/point.json",
+      "sha256": "667e07c47fea04c31a01cc92bfb3b7614c4da5e6304dfe209cd6071c06acf838",
+      "bytes": 157
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/1-baseline/point.json",
+      "sha256": "7cddb1b7747f0618cdfd2f892e6178bdfc28fcc1d5593558cb4f19edbc23f995",
+      "bytes": 169
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/1-candidate/point.json",
+      "sha256": "7cddb1b7747f0618cdfd2f892e6178bdfc28fcc1d5593558cb4f19edbc23f995",
+      "bytes": 169
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/1-typescript/point.json",
+      "sha256": "7cddb1b7747f0618cdfd2f892e6178bdfc28fcc1d5593558cb4f19edbc23f995",
+      "bytes": 169
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/1-baseline/point.json",
+      "sha256": "9a7ff1eb1e2590800d5f88b9f6f501c245bd41e751d6b1f6408033809774997f",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/1-candidate/point.json",
+      "sha256": "9a7ff1eb1e2590800d5f88b9f6f501c245bd41e751d6b1f6408033809774997f",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/1-typescript/point.json",
+      "sha256": "9a7ff1eb1e2590800d5f88b9f6f501c245bd41e751d6b1f6408033809774997f",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/1-baseline/point.json",
+      "sha256": "2e9e44d89d9b1715244fecaacd4028ada4b91268d8b346a2eb1c2b3b34c4f649",
+      "bytes": 167
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/1-candidate/point.json",
+      "sha256": "2e9e44d89d9b1715244fecaacd4028ada4b91268d8b346a2eb1c2b3b34c4f649",
+      "bytes": 167
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/1-typescript/point.json",
+      "sha256": "2e9e44d89d9b1715244fecaacd4028ada4b91268d8b346a2eb1c2b3b34c4f649",
+      "bytes": 167
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/1-baseline/point.json",
+      "sha256": "50b4cbf82338f0e8aa1e807d2564e4b2853f6f129ec835615e6adb2b9df00509",
+      "bytes": 1237
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/1-candidate/point.json",
+      "sha256": "50b4cbf82338f0e8aa1e807d2564e4b2853f6f129ec835615e6adb2b9df00509",
+      "bytes": 1237
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/1-typescript/point.json",
+      "sha256": "50b4cbf82338f0e8aa1e807d2564e4b2853f6f129ec835615e6adb2b9df00509",
+      "bytes": 1237
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/1-baseline/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/1-candidate/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/1-typescript/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/1-baseline/point.json",
+      "sha256": "36762819180b55c3470937de7e8d2bc071031c5e98302d0e21b8bff3c1dc79cf",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/1-candidate/point.json",
+      "sha256": "36762819180b55c3470937de7e8d2bc071031c5e98302d0e21b8bff3c1dc79cf",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/1-typescript/point.json",
+      "sha256": "36762819180b55c3470937de7e8d2bc071031c5e98302d0e21b8bff3c1dc79cf",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/1-baseline/point.json",
+      "sha256": "fe3464e2afc0f2e6c76c523d408aac2bc00532b51bbcb94a59be20974f61b885",
+      "bytes": 144
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/1-candidate/point.json",
+      "sha256": "fe3464e2afc0f2e6c76c523d408aac2bc00532b51bbcb94a59be20974f61b885",
+      "bytes": 144
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/1-typescript/point.json",
+      "sha256": "fe3464e2afc0f2e6c76c523d408aac2bc00532b51bbcb94a59be20974f61b885",
+      "bytes": 144
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/2-candidate/point.json",
+      "sha256": "667e07c47fea04c31a01cc92bfb3b7614c4da5e6304dfe209cd6071c06acf838",
+      "bytes": 157
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/2-typescript/point.json",
+      "sha256": "667e07c47fea04c31a01cc92bfb3b7614c4da5e6304dfe209cd6071c06acf838",
+      "bytes": 157
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/2-baseline/point.json",
+      "sha256": "667e07c47fea04c31a01cc92bfb3b7614c4da5e6304dfe209cd6071c06acf838",
+      "bytes": 157
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/2-candidate/point.json",
+      "sha256": "7cddb1b7747f0618cdfd2f892e6178bdfc28fcc1d5593558cb4f19edbc23f995",
+      "bytes": 169
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/2-typescript/point.json",
+      "sha256": "7cddb1b7747f0618cdfd2f892e6178bdfc28fcc1d5593558cb4f19edbc23f995",
+      "bytes": 169
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/2-baseline/point.json",
+      "sha256": "7cddb1b7747f0618cdfd2f892e6178bdfc28fcc1d5593558cb4f19edbc23f995",
+      "bytes": 169
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/2-candidate/point.json",
+      "sha256": "9a7ff1eb1e2590800d5f88b9f6f501c245bd41e751d6b1f6408033809774997f",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/2-typescript/point.json",
+      "sha256": "9a7ff1eb1e2590800d5f88b9f6f501c245bd41e751d6b1f6408033809774997f",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/2-baseline/point.json",
+      "sha256": "9a7ff1eb1e2590800d5f88b9f6f501c245bd41e751d6b1f6408033809774997f",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/2-candidate/point.json",
+      "sha256": "2e9e44d89d9b1715244fecaacd4028ada4b91268d8b346a2eb1c2b3b34c4f649",
+      "bytes": 167
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/2-typescript/point.json",
+      "sha256": "2e9e44d89d9b1715244fecaacd4028ada4b91268d8b346a2eb1c2b3b34c4f649",
+      "bytes": 167
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/2-baseline/point.json",
+      "sha256": "2e9e44d89d9b1715244fecaacd4028ada4b91268d8b346a2eb1c2b3b34c4f649",
+      "bytes": 167
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/2-candidate/point.json",
+      "sha256": "50b4cbf82338f0e8aa1e807d2564e4b2853f6f129ec835615e6adb2b9df00509",
+      "bytes": 1237
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/2-typescript/point.json",
+      "sha256": "50b4cbf82338f0e8aa1e807d2564e4b2853f6f129ec835615e6adb2b9df00509",
+      "bytes": 1237
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/2-baseline/point.json",
+      "sha256": "50b4cbf82338f0e8aa1e807d2564e4b2853f6f129ec835615e6adb2b9df00509",
+      "bytes": 1237
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/2-candidate/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/2-typescript/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/2-baseline/point.json",
+      "sha256": "e4d07629b37f9049dc8e0556321c8d92ebc072f15ffa1a97b543f19eaa4a31b0",
+      "bytes": 164
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/2-candidate/point.json",
+      "sha256": "36762819180b55c3470937de7e8d2bc071031c5e98302d0e21b8bff3c1dc79cf",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/2-typescript/point.json",
+      "sha256": "36762819180b55c3470937de7e8d2bc071031c5e98302d0e21b8bff3c1dc79cf",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/2-baseline/point.json",
+      "sha256": "36762819180b55c3470937de7e8d2bc071031c5e98302d0e21b8bff3c1dc79cf",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/2-candidate/point.json",
+      "sha256": "fe3464e2afc0f2e6c76c523d408aac2bc00532b51bbcb94a59be20974f61b885",
+      "bytes": 144
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/2-typescript/point.json",
+      "sha256": "fe3464e2afc0f2e6c76c523d408aac2bc00532b51bbcb94a59be20974f61b885",
+      "bytes": 144
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/2-baseline/point.json",
+      "sha256": "fe3464e2afc0f2e6c76c523d408aac2bc00532b51bbcb94a59be20974f61b885",
+      "bytes": 144
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/0-typescript/sample.json",
+      "sha256": "c4e69266b5735ab4905824f180c34c75a3ccd43ff8672c03619724941ced7df7",
+      "bytes": 3655
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/0-typescript/process/process.json",
+      "sha256": "22b7013f1fd52807e2ec04f4a601213de5b3afa19690739fb46a8926154f15b2",
+      "bytes": 1006
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/1-typescript/sample.json",
+      "sha256": "ccbd7a2e40bd050cafb6a092e94b5e29fed70bc9986187035b75e9ee6086887e",
+      "bytes": 3944
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/1-typescript/process/process.json",
+      "sha256": "1b5dac48feb97660c9ef964a5af13520cfb3f050903b519413d0823fda324dec",
+      "bytes": 1007
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/2-typescript/sample.json",
+      "sha256": "222c90c509c0f854b66cbabbc41759506101a83e48af9c481c0b180124426c48",
+      "bytes": 3935
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/2-typescript/process/process.json",
+      "sha256": "527964944a303e395928755596b4b82b0cbe6f7b2cad0a830147877bc92a956c",
+      "bytes": 1006
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/0-baseline/sample.json",
+      "sha256": "0a8a8f3df6a7b5b7ff30cbc2f0370870016ee1130052ff14fe9ab4941ebf2987",
+      "bytes": 3641
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/0-baseline/process/process.json",
+      "sha256": "21caf6112a091e19f7bcfdba5e0c629a308d82abf6970b00e8df9f08280ccb02",
+      "bytes": 1000
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/1-baseline/sample.json",
+      "sha256": "0834f9d09bdd32cce9acbbc4219b2880bcc2ca51f0935fdfc3dc62cadc5658ac",
+      "bytes": 3646
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/1-baseline/process/process.json",
+      "sha256": "1dffa967c8451f5e14a8c5e84edee40f95703a9ca741ad8f425d74d971e7faff",
+      "bytes": 1001
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/2-baseline/sample.json",
+      "sha256": "a6b9811beef69e7dc32e40190f9b86ff9383f77c84e2a3ee6f70e1564bffd6b5",
+      "bytes": 3655
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/2-baseline/process/process.json",
+      "sha256": "310fae69d22645435222669b14b8e222b9a31a02983947ccee29925a2a8ae041",
+      "bytes": 1000
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/0-candidate/sample.json",
+      "sha256": "ed586b7a9848d87486bb3cef76397201eee0f4bfd83bad02fc331b9edd6bda55",
+      "bytes": 3569
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/0-candidate/process/process.json",
+      "sha256": "e6632de938bbca849a577c4fe41dd35adbad0cb6c2adf99b89045ff58100a5b4",
+      "bytes": 939
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/1-candidate/sample.json",
+      "sha256": "65ec2fda76d2f1f6e28b52f4babe749b663ba121b5367050b5a03622afc6577a",
+      "bytes": 3584
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/1-candidate/process/process.json",
+      "sha256": "cd1b1e0d2d616eccaf591fffc7eaf3e56e1f322116451229f6fb6c06d8e284f3",
+      "bytes": 940
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/2-candidate/sample.json",
+      "sha256": "37f9e53297eff4e86cc976d564d457fcd4fdc0cc0e6901aa6f18644eb66c1bcc",
+      "bytes": 3601
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-pair/2-candidate/process/process.json",
+      "sha256": "5d4c4517013abe8057cd8e6db924d82b78fdb2490e73823f6c48731911a37034",
+      "bytes": 940
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/0-typescript/sample.json",
+      "sha256": "c17eeeb82ff12757ffc21ad864af92d94fda6d0994196ba88a3ed038572cbc3a",
+      "bytes": 5134
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/0-typescript/process/process.json",
+      "sha256": "7f2644c239087988a6f5001f30c5e91fdc765b7bb82eed4c5355b0a219a7f74c",
+      "bytes": 1006
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/1-typescript/sample.json",
+      "sha256": "74c14c01f772381917d48b14212335c9c4b6304ce637d087e2a49b7e4e53c849",
+      "bytes": 5132
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/1-typescript/process/process.json",
+      "sha256": "7b6d1bc163df91ecb845263c2f0cfb56de728373fd2d4349edff9ca99ce20929",
+      "bytes": 1006
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/2-typescript/sample.json",
+      "sha256": "eef69ebd93f287422cb601200f721fccaec946dda8e1bb3a61426d49a35f615f",
+      "bytes": 5112
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/2-typescript/process/process.json",
+      "sha256": "80030807eda4be5f68dc1889878e9f408b8be8b881fbcc391da2c8dc4b02fa6f",
+      "bytes": 1007
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/0-baseline/sample.json",
+      "sha256": "8bf0d1a5bd4f0c7e6a3734fc7aed00fa5fa7605a83ae6c9d23503f2475f0258c",
+      "bytes": 5137
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/0-baseline/process/process.json",
+      "sha256": "fabaf85e10edad3a85db68271bbcdfd488cd3da0da288ce94e1a1bd96338728f",
+      "bytes": 999
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/1-baseline/sample.json",
+      "sha256": "7cfb11a671c0327074c1a5c2ec5363b467c6d407e8c760cbf089df40f9d3188a",
+      "bytes": 5146
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/1-baseline/process/process.json",
+      "sha256": "bdc5f3ae77865cf78c188bdc68d15f0c6d4ac996ded558cc0b0beca28e4c4aa8",
+      "bytes": 1001
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/2-baseline/sample.json",
+      "sha256": "06a16c337725261b6ce50207de74411322164b9381c2c9cb957fe0ececb06ec1",
+      "bytes": 5133
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/2-baseline/process/process.json",
+      "sha256": "b2231ff9ca82f956be16b7b4d7db2d988cd65576d9b0e0b316a9ed085715312a",
+      "bytes": 1001
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/0-candidate/sample.json",
+      "sha256": "73341c9dfb4a196fdd8d1b8f9b9aa5d6884c2e33d4c3c6255c4c9db5b5687b3d",
+      "bytes": 5083
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/0-candidate/process/process.json",
+      "sha256": "cad7e021dc17e390191c0e35eb9e3d43008507a8d5523ca9037b342941d35e5c",
+      "bytes": 941
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/1-candidate/sample.json",
+      "sha256": "e8e7fd4d126f8d80d088c392783943de1fda02de339acdbc0addf48f7a483513",
+      "bytes": 5078
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/1-candidate/process/process.json",
+      "sha256": "bc60fd1494198fcf3a10cba2fd7f1c8b4c500a0f4f27d1edf4b60f1d0b55c948",
+      "bytes": 939
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/2-candidate/sample.json",
+      "sha256": "e46087005bfd47d41b21e322f83c5fe53b04d301dc23427a4709393bd97d6ea4",
+      "bytes": 5076
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/local-fold/2-candidate/process/process.json",
+      "sha256": "f44438566fc3ec5044b1547913502269050975b5e8dfae8f0da7c2c4f950ad56",
+      "bytes": 940
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/0-typescript/sample.json",
+      "sha256": "4cfc5fc045dc21d8d9a06c5ef325e0ed63840ec37629e06766e990fca47ba7c2",
+      "bytes": 7988
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/0-typescript/process/process.json",
+      "sha256": "4ceea0cc2033197ffcde0d80f2edec51edbb5987a56f78de37701d4c7891ce41",
+      "bytes": 1017
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/1-typescript/sample.json",
+      "sha256": "10480a9e8878f7ef3733e1b05790b7f7842486f79d391047b4da046a64652241",
+      "bytes": 8011
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/1-typescript/process/process.json",
+      "sha256": "1ac5996f51648ac984534c95ae7c8f8bd91cfb2f11fa019de913aa45721b7fbb",
+      "bytes": 1016
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/2-typescript/sample.json",
+      "sha256": "f9e2d5e58f8c21abe8733523ca1e189bd15abebbb1ba6e7c2ce5d72aa7702dd7",
+      "bytes": 8001
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/2-typescript/process/process.json",
+      "sha256": "86828eaa937378667e1f01b99e0a34f1a1043b388267d5c4e54b1b34bf1d39f0",
+      "bytes": 1017
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/0-baseline/sample.json",
+      "sha256": "2bcca720698356aa404ac5907e9f9b1b004f0a770f8325923b7ce00396d2eff5",
+      "bytes": 6182
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/0-baseline/process/process.json",
+      "sha256": "1c936021151ede70e61ef390017a30de286f0ead1dc1293e6e365161bd98679d",
+      "bytes": 1011
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/1-baseline/sample.json",
+      "sha256": "18d88d1c5c39f55e8b25ea8090f2e5a609a1b915ac131b91968b6c615246104b",
+      "bytes": 6179
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/1-baseline/process/process.json",
+      "sha256": "99f587cf4e0c4806fc7837ddb5dd93b71a1f19664faaa09649206a9d2886b356",
+      "bytes": 1010
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/2-baseline/sample.json",
+      "sha256": "ab8f8606a35c1fd8f359c35ea295fdae97d1f8b16f0cd2a51df59273e912152d",
+      "bytes": 6200
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/2-baseline/process/process.json",
+      "sha256": "87ea2227f6271cfb456c56f2cf57f44b076fe8dd42341dbd2a4b71509baa3132",
+      "bytes": 1008
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/0-candidate/sample.json",
+      "sha256": "ff6e069ff681108bae8108f8e41c6b5eb6406adb81f492b4ec3d75090c4c7506",
+      "bytes": 6140
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/0-candidate/process/process.json",
+      "sha256": "d919c4a0833510aea13ddc9cb04d8cb15f9f4f4781b8ed57e01d8ddc8f73c6f8",
+      "bytes": 954
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/1-candidate/sample.json",
+      "sha256": "bd9eb048f593333991c0bfb040eb1e33222e5ca7fb19c8f387b5c4c6538fa83c",
+      "bytes": 6130
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/1-candidate/process/process.json",
+      "sha256": "f66197a146b5603ff958ae8b0fb67d230cad3204462e1945d061e043533747ad",
+      "bytes": 954
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/2-candidate/sample.json",
+      "sha256": "478c590fe4c5f39a3716f70525ce2ad24dc23764ef2902200987e17721df7131",
+      "bytes": 6114
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-0/2-candidate/process/process.json",
+      "sha256": "ad33a3bfde23a635955171b29d1b981ff0df1edaa38fd8c754a6d908b88b8d5d",
+      "bytes": 953
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/0-typescript/sample.json",
+      "sha256": "ded589489533069ab8a0f2efd4e641ce73b11d98e593a0c9b42a08ee5f9d0a3f",
+      "bytes": 4790
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/0-typescript/process/process.json",
+      "sha256": "00925724cd9231ba66a2dacc4573478978d1566e18158e4170f733cf7f121c3d",
+      "bytes": 1023
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/1-typescript/sample.json",
+      "sha256": "f207d8c12cca8e14e4e8d2bec38ce63b866a54f0e6312403ea4377d85cfb51ba",
+      "bytes": 4782
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/1-typescript/process/process.json",
+      "sha256": "5dcf778f9d48af4e72f078aa0a4f5a98a9abd33139338b46ae93680de9829b00",
+      "bytes": 1022
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/2-typescript/sample.json",
+      "sha256": "164453e2aab06defc46373474e7ea9d12ea0435c3e952aed707d413e670f0444",
+      "bytes": 4790
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/2-typescript/process/process.json",
+      "sha256": "04684482c476a44dcb54c85849b0486f49f2849f9f34727c5148878309681863",
+      "bytes": 1023
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/0-baseline/sample.json",
+      "sha256": "8017a8fdc0477928b39ee28c4e9fbe35044b1870ddccfc0eb4f569a2bd059f8c",
+      "bytes": 4785
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/0-baseline/process/process.json",
+      "sha256": "c4224ff42752b9182042c956afe98f8eccabaa0704b899fb75e3191451ce1211",
+      "bytes": 1016
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/1-baseline/sample.json",
+      "sha256": "fed873347aa0f0b76b22030f611cd4da4ff5ec229241964e0a1a9429cd6bc7cc",
+      "bytes": 4795
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/1-baseline/process/process.json",
+      "sha256": "97941aa00d68639e71aa989156711357357ddbef285770df5cc340bf564210fe",
+      "bytes": 1016
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/2-baseline/sample.json",
+      "sha256": "48f00030e3846c3a297533e2e579971681d470aa615f3c86ae019f29d4df8096",
+      "bytes": 4789
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/2-baseline/process/process.json",
+      "sha256": "cde69fc547ec859fa30cb081178316a131f8cfbfadbb9c48a866fb098081be9d",
+      "bytes": 1017
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/0-candidate/sample.json",
+      "sha256": "e482fa761b4173816b505f0c95ffe23ddb6e2930ed2e5c76686516aeb4510db2",
+      "bytes": 4720
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/0-candidate/process/process.json",
+      "sha256": "19f15f82f48f7b42ca9b05476f058d83f7511f3f3ccc66fc46d6cfb820d65324",
+      "bytes": 959
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/1-candidate/sample.json",
+      "sha256": "3b6a26d83bbeb456641c0e501b2c4c80c7da4230bdc331405755249786167943",
+      "bytes": 4723
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/1-candidate/process/process.json",
+      "sha256": "9aa32402a40926c3d2f071e700bc686c3e4fd42432771f01f874d885af0055de",
+      "bytes": 959
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/2-candidate/sample.json",
+      "sha256": "db44eff844200b0f5d14189108f0f7a3e6f1923e7b57c8909313a1f2e6412db6",
+      "bytes": 4728
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/scalar-region-8192/2-candidate/process/process.json",
+      "sha256": "81f296b3937c2acd7d5c0fb089f6c2c21f10a6c4308bbad2cb844a61020f0257",
+      "bytes": 960
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/0-typescript/sample.json",
+      "sha256": "8d9648e7420f3b5a8a201f302fa7490eed6753c26d8a6d11b30c6f727251f19f",
+      "bytes": 8118
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/0-typescript/process/process.json",
+      "sha256": "6eb7ab642d665e77bc9777d4fadad41862b2d89dfcd585f1b3437273d29caddf",
+      "bytes": 1030
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/1-typescript/sample.json",
+      "sha256": "33ef17894e063fb9483ad8eb3d89c39843fff9f000b04c925e658eace1366c64",
+      "bytes": 8148
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/1-typescript/process/process.json",
+      "sha256": "ac6594786be242463d4bcfafe105b6622301ebc460503e86a69296018e5c70d5",
+      "bytes": 1030
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/2-typescript/sample.json",
+      "sha256": "8cc1901cb6c5e606c6ed4637b74502f9b6de12f3dca756a9ffd46727561a8751",
+      "bytes": 8129
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/2-typescript/process/process.json",
+      "sha256": "d4e13a2b82afd99e10fbb90aeddcceec39d6993305c90e25a64b98b404131ff2",
+      "bytes": 1031
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/0-baseline/sample.json",
+      "sha256": "96ce053882db5006ab3c714adec8907d8f793854085261a3d8537441866f8e79",
+      "bytes": 6337
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/0-baseline/process/process.json",
+      "sha256": "7b187b5535d0599867c784a1260d2d95567a607f8c2f6fc89c4098dd58c362ed",
+      "bytes": 1023
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/1-baseline/sample.json",
+      "sha256": "55c6c7f313e2b1b1d3075df3de4db62c5092a0bc941ccd618e34f270e263ea4a",
+      "bytes": 6347
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/1-baseline/process/process.json",
+      "sha256": "ecada749ee6b409eb21aedcd3468e5fcfc2341a3d0b3f12878b53e0971605cb4",
+      "bytes": 1025
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/2-baseline/sample.json",
+      "sha256": "91cb34e5d4677762dac447fa90578c45c7706dce3b59f0021ef58c1024d4683d",
+      "bytes": 6310
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/2-baseline/process/process.json",
+      "sha256": "c71d7eec461800588fcabb61c5cfed668c8b0cf7f347b8592d766d000138f05e",
+      "bytes": 1025
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/0-candidate/sample.json",
+      "sha256": "5b0a7bcc4c20ef83804ddfe1fcaf2349b50f4cdc3249cc66f1251c33da9d0707",
+      "bytes": 7202
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/0-candidate/process/process.json",
+      "sha256": "01db096b35ff03bffc8eebbd574e78d9af11874fc63d48da6de40956c02eb86a",
+      "bytes": 973
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/1-candidate/sample.json",
+      "sha256": "b8e49a0b1a1df9b6aa97d289c0f8224e3246d8bcd71c81cde56f1e179776610f",
+      "bytes": 7178
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/1-candidate/process/process.json",
+      "sha256": "dd582d4592a1cd2294f7edff5f9387c509b56771bd1723062d300e4e4b3c5745",
+      "bytes": 973
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/2-candidate/sample.json",
+      "sha256": "4be1c4324677e35d2994dc322d2a1f4be6ae6b06321ae6c608ae7e5fb1b6bd84",
+      "bytes": 7481
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/complete-generic-row32/2-candidate/process/process.json",
+      "sha256": "bcf6e211d80892d4f4a942378be61433d045826819f5975319a9db719757d239",
+      "bytes": 971
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/0-typescript/sample.json",
+      "sha256": "bdd707121a7552537e60349298bed53071f8221dbb2ca9567ea3fa5a1455dd09",
+      "bytes": 5142
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/0-typescript/process/process.json",
+      "sha256": "1c9ca8a8c2d5c1ca5de26f3fdd810264390529a59a05679f7c057bdf30d7dc10",
+      "bytes": 1007
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/1-typescript/sample.json",
+      "sha256": "df831c41e32f6479be702e23ed58f2c81bcb1c438bc600c289d97d5cbda6da29",
+      "bytes": 5133
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/1-typescript/process/process.json",
+      "sha256": "792691b86b1560a98ecce4652c67eddfc0e56768c627541211be3f3ebb365a57",
+      "bytes": 1006
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/2-typescript/sample.json",
+      "sha256": "33c457c1e82baf0e033ab3dc0c1135b99c2d701c172bedc772587c6ae494a3ab",
+      "bytes": 5140
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/2-typescript/process/process.json",
+      "sha256": "580227369b3f83ac33ff0f865e718996ce4d25dca6dfd8c0be507b3b6533f0bd",
+      "bytes": 1007
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/0-baseline/sample.json",
+      "sha256": "af0766ddcb6e1754bc3a2eece6e0a264d1efdd9bf69e023f2b70eedb87024079",
+      "bytes": 4847
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/0-baseline/process/process.json",
+      "sha256": "48a96115d91d1cd9f0b99a18e1008a060d02bde743dda28009e729d93d715bbf",
+      "bytes": 1001
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/1-baseline/sample.json",
+      "sha256": "369a7ca3251b9ed0b3c895ec4b0656f7680da06db9c4f46da2e14f2869d584b7",
+      "bytes": 4826
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/1-baseline/process/process.json",
+      "sha256": "855073f276c74800f68db40349a9053cc9621846b833408d9649801a14f7178a",
+      "bytes": 1000
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/2-baseline/sample.json",
+      "sha256": "0507a2380b331c861d4a61c2db0e8ec1aacf75143bd464e1cd3c72477e7e1218",
+      "bytes": 4817
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/2-baseline/process/process.json",
+      "sha256": "2d459e13d22b1f39668af14ae9c2889e46ffdf96296b496f93c77ef8693c1db0",
+      "bytes": 1001
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/0-candidate/sample.json",
+      "sha256": "b243b9c3fecdd08a989649b3e72ede65dd90941ff0e12b1815b6e45743cab00d",
+      "bytes": 4790
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/0-candidate/process/process.json",
+      "sha256": "0fbd9e3aa788f5ac16d6f7a0135077d481e94a57e1a266b3335ed5d09ea8c3f3",
+      "bytes": 941
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/1-candidate/sample.json",
+      "sha256": "22361a857f11ad50e74864af1cfbfd56f7e104e2982e3315324519818fde2f1d",
+      "bytes": 4776
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/1-candidate/process/process.json",
+      "sha256": "666c02c4769611d0d5527ad898b24ee8da3689153a4bc6cb5f41c1a3c4f3bcbe",
+      "bytes": 941
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/2-candidate/sample.json",
+      "sha256": "a97d457f16d746b809ce34483b546f9a17f6db8cf1ba946cdbdb37e62372e9ab",
+      "bytes": 4756
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/mandelbrot/2-candidate/process/process.json",
+      "sha256": "c7451f2195b1a167e270e329c764c826046934e94bc8799bbaf65fdb36a4a36c",
+      "bytes": 940
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/0-typescript/sample.json",
+      "sha256": "8b01827a5cfc0343d278a37f377e7ac68e589b8f76575fc84e135e6be223d15f",
+      "bytes": 3308
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/0-typescript/process/process.json",
+      "sha256": "cccfa3d6ab73be90f3550678ebfddcdbb7dcece445ad34a582cc8626c1c3b18c",
+      "bytes": 1003
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/1-typescript/sample.json",
+      "sha256": "16694caf332ecc823519dacf9b36016bae73d91e975e12a9d3112f2ef59d2eb0",
+      "bytes": 3355
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/1-typescript/process/process.json",
+      "sha256": "0af11ad20f4877274717493dc3ae79993e6f98d4f5fe589ac48d468a1f20eda9",
+      "bytes": 1001
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/2-typescript/sample.json",
+      "sha256": "9abff78ade1f82f1f9102b476f625d17368fdd02d3c787e386254dfac2355326",
+      "bytes": 3354
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/2-typescript/process/process.json",
+      "sha256": "d7ddc6ac9a004cc0fb67e3092c84122fb6ba41d78f868c8a14fed3d033d129f4",
+      "bytes": 1002
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/0-baseline/sample.json",
+      "sha256": "ee70ec8f276789329021bbcb551e6dc43751b5fc0e8181c6b30879ad831f2505",
+      "bytes": 3066
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/0-baseline/process/process.json",
+      "sha256": "7204af08aca75f7d68cbb6b0feaa751a208a3c350ee4230feace69de46d92654",
+      "bytes": 997
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/1-baseline/sample.json",
+      "sha256": "c4b2281f6eb9cb7161350f64637c1e69b55dc5992a35516e3e58c448ea07a156",
+      "bytes": 3075
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/1-baseline/process/process.json",
+      "sha256": "47e05d15b851c8f41933fd22f7d7300d7e4e324409e278d2c70677d84274960f",
+      "bytes": 994
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/2-baseline/sample.json",
+      "sha256": "927552e5fbd250e283e2662064a96672c3ff04deeacec0a8243ecbc73d686963",
+      "bytes": 3076
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/2-baseline/process/process.json",
+      "sha256": "8e85253c41aac2aa4ca8270185697a29bf5d78b14ebf8c78217ea55347ea1492",
+      "bytes": 995
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/0-candidate/sample.json",
+      "sha256": "1690e593100de1dbee7ec0350b1d2b8ecba872586c26a0be6f4eef37513ed02f",
+      "bytes": 3012
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/0-candidate/process/process.json",
+      "sha256": "ee9228293457dbde814b801a9f8c99e774216b499f73cb56cc7878745ae965a3",
+      "bytes": 935
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/1-candidate/sample.json",
+      "sha256": "36d2edfe7278d5d0a36dc64e3991343903190bbf633ffba44e18013649a80669",
+      "bytes": 3010
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/1-candidate/process/process.json",
+      "sha256": "30d38a4eb7d6da3a08df97590f30e153ffd37bacf8edfb20c6635ae000f9309c",
+      "bytes": 934
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/2-candidate/sample.json",
+      "sha256": "c10841810c40ac59a781fc7db2de5d017f108d2d912194c996ae2cca14501497",
+      "bytes": 2994
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/editdist/2-candidate/process/process.json",
+      "sha256": "de57caf6560cf9ee21597066209dc2604e7ccffc17e4f48aa9867d0a49334f3d",
+      "bytes": 935
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/0-typescript/sample.json",
+      "sha256": "a9a7fcdcdc9ab44d650220e5e5cbf5d2b723a37248c8392c31ea748d21be2caf",
+      "bytes": 7149
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/0-typescript/process/process.json",
+      "sha256": "7c7ede6dc2ee277e07d3c8f8e273194e6da06ba0af1d133052c8adaa08db05ae",
+      "bytes": 1022
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/1-typescript/sample.json",
+      "sha256": "c2c227a996d4d82293709384879d10a314442dda221605e1643476fd1589a4e6",
+      "bytes": 7144
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/1-typescript/process/process.json",
+      "sha256": "205e6b1a26568939d9359e6f352c739cf07bcf9fa4fe151cbc7f801ae2db5201",
+      "bytes": 1022
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/2-typescript/sample.json",
+      "sha256": "defc072e9aae56ca4dd8365cf8cd605c55274b7843e3e50daec2693bdbca70af",
+      "bytes": 7140
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/2-typescript/process/process.json",
+      "sha256": "ba4e71bea77b2c94be22a2833fdb25da603d401e40d50e14a653a1a679520464",
+      "bytes": 1021
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/0-baseline/sample.json",
+      "sha256": "9098d36e299f0b080d175bd73b6182d8c066e25cbf986ee7d85d06c9765260bf",
+      "bytes": 5294
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/0-baseline/process/process.json",
+      "sha256": "dbf6918b0a95049f247b84f9e69051623ae0000c95710cfefdc63b3c25045df6",
+      "bytes": 1015
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/1-baseline/sample.json",
+      "sha256": "26316d8d86d9646381351d57c57ab08ff79342d6d802331c41e5c16ab13cc7a4",
+      "bytes": 5322
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/1-baseline/process/process.json",
+      "sha256": "7c3e743a7abbb3dcf3f0441811dc308ec22181664411709dae888daa6639c6af",
+      "bytes": 1017
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/2-baseline/sample.json",
+      "sha256": "eaa9e230242a047fec8c501d66cbcef92ad5ad1b5ec1855b7648e33c6f0abde7",
+      "bytes": 5308
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/2-baseline/process/process.json",
+      "sha256": "b9619ff36aafbd4a66157df9c4f7aaa9341a1e0b25a38646b93ffe16989135fe",
+      "bytes": 1017
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/0-candidate/sample.json",
+      "sha256": "936033dc9282383cadbff0c28df7c63e44943e7b181560a7b08e5b2c6ed592ee",
+      "bytes": 5245
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/0-candidate/process/process.json",
+      "sha256": "990fd15345f54c99a89d9c576641e61f6b71699af9d3d79f078eeaeb1d5974e6",
+      "bytes": 964
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/1-candidate/sample.json",
+      "sha256": "cc578cd4054f482ee2e14e13419620721b3923b14daea096aabf64dd099e38fa",
+      "bytes": 5237
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/1-candidate/process/process.json",
+      "sha256": "a2dfb9c366280052cc0d9bb10719cc044478ae5a7373218c9ec4933c57b8dbeb",
+      "bytes": 965
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/2-candidate/sample.json",
+      "sha256": "672544072f7bab9338e02a562e7f05357f5d2ec5e2fa6952219d14530b31eee7",
+      "bytes": 5253
+    },
+    {
+      "path": "selfhost/build/phase48/combined-rnfa03-core8/samples/test-rle-roundtrip/2-candidate/process/process.json",
+      "sha256": "811a5abf1550164e6578f4b15e7fce2486aade8bbef505661bf6d1f55d5866d0",
+      "bytes": 965
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/report.json",
+      "sha256": "3d10c2d1758ca8e163f8ae44ba41ff52b6ed35fd8f5c9b2aefd405c13dfa260a",
+      "bytes": 380448
+    },
+    {
+      "path": "selfhost/tools/performance/phase48/controls/array-literals-scaled-catalog-v2.json",
+      "sha256": "57a008a8f78eb4af4c793a72b6cd1b57019960d5e681d1323929e3157d86ba45",
+      "bytes": 4442
+    },
+    {
+      "path": "selfhost/tools/performance/phase48/controls/array-literals-v2.bend",
+      "sha256": "00832788f6f71126bb84b5959cd69a2cd5f2c73566a5ee226f239fb7ef3e10d4",
+      "bytes": 2198
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-reference03/manifest.json",
+      "sha256": "f25fa1d29ef19bb14f6e4ec0ac3836886d093c821d127c3fbe24e0ecf93e2ac1",
+      "bytes": 6604
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-reference03/programs.tar.gz",
+      "sha256": "0b91c289fc7f5c5c976db14a3be8712b08b42a4ce76a385521c2e3769d926b5b",
+      "bytes": 64252
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-candidate-rnfa03/manifest.json",
+      "sha256": "ed4668dc6591b62622f89645c25dee69ee2463da540065964509d68a8c25a6c4",
+      "bytes": 4264
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-candidate-rnfa03/modules/array-literals-v2.mjs",
+      "sha256": "95cae0ccfe6edf967f720caa0885db0f4153063e342ec2e19caef99e9ca82895",
+      "bytes": 93763
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/modules/baseline/baseline/modules/array-literals-v2.mjs",
+      "sha256": "762684ac2aaf0a1ecb0eec52fd11b3cd16be7f905d416b20402c2497cc6d42b0",
+      "bytes": 85334
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/modules/baseline/typescript/modules/array-literals-v2.mjs",
+      "sha256": "e0b3ea37a97ba5e5933bd3ee9b61da7c9d3838e79215e363e47af9c9d471f189",
+      "bytes": 8544
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/modules/candidate/modules/array-literals-v2.mjs",
+      "sha256": "95cae0ccfe6edf967f720caa0885db0f4153063e342ec2e19caef99e9ca82895",
+      "bytes": 93763
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/consumed-execute.mjs",
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+      "bytes": 5572
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/consumed-run.py",
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e",
+      "bytes": 21467
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/consumed-support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/0-typescript/point.json",
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/0-baseline/point.json",
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/0-candidate/point.json",
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/0-typescript/point.json",
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/0-baseline/point.json",
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/0-candidate/point.json",
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/0-typescript/point.json",
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/0-baseline/point.json",
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/0-candidate/point.json",
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/0-typescript/point.json",
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/0-baseline/point.json",
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/0-candidate/point.json",
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/1-baseline/point.json",
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/1-candidate/point.json",
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/1-typescript/point.json",
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/1-baseline/point.json",
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/1-candidate/point.json",
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/1-typescript/point.json",
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/1-baseline/point.json",
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/1-candidate/point.json",
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/1-typescript/point.json",
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/1-baseline/point.json",
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/1-candidate/point.json",
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/1-typescript/point.json",
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/2-candidate/point.json",
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/2-typescript/point.json",
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/2-baseline/point.json",
+      "sha256": "a8da405b56c71e7515c2982caae545fb19a31ac44b7913dc119857ef23d09362",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/2-candidate/point.json",
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/2-typescript/point.json",
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/2-baseline/point.json",
+      "sha256": "c50c9936c793eb0b313c1b92da4c3753933c15ab30727c77cb46424977afacab",
+      "bytes": 161
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/2-candidate/point.json",
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/2-typescript/point.json",
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/2-baseline/point.json",
+      "sha256": "08a0aa5902c211dac0dc35d8b2757a4cf04b98b44f4f51911f85878881cd423c",
+      "bytes": 165
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/2-candidate/point.json",
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/2-typescript/point.json",
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/2-baseline/point.json",
+      "sha256": "8b4b9af70af7e427f0d80c7b6a0b7ae7aa63cc39e4b37eed1ebda978229e73c8",
+      "bytes": 168
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/0-typescript/sample.json",
+      "sha256": "e5b8f5222c123b2f1f080482655cb6e225718c1be297e4dd5988320f289f80f7",
+      "bytes": 7346
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/0-typescript/process/process.json",
+      "sha256": "74d4823a3268628c1ff0af7efd56afb968693e2cf30e8319f7c443ad786ecd27",
+      "bytes": 1006
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/1-typescript/sample.json",
+      "sha256": "b96330fa2604ec087e58b16f1484173903f6dc96f6413c12296ee54eae11b3ed",
+      "bytes": 7346
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/1-typescript/process/process.json",
+      "sha256": "435d697ac4f758f1dffbacf444a920b2a42dc92ef2403e9aa4c9b0d9df8a533f",
+      "bytes": 1005
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/2-typescript/sample.json",
+      "sha256": "5c4f71ab328a0b0a5a3674f33f7259b879992ff54a07627dfaf83e9f30eded93",
+      "bytes": 7385
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/2-typescript/process/process.json",
+      "sha256": "c50dcfd67f402a0cd883f6dd6a8bb38848ff730de499d41733b8a7c618505075",
+      "bytes": 1006
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/0-baseline/sample.json",
+      "sha256": "27f73297ffe25958e6076f7e20308a2ce716f25c8fa66f3be5767c71101fc037",
+      "bytes": 6764
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/0-baseline/process/process.json",
+      "sha256": "1dc9c20ad44e10c42235eb4d73a7b87a6f6b28d91d19740b3baaa7cd56feffb2",
+      "bytes": 1000
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/1-baseline/sample.json",
+      "sha256": "50c9af7433d8437d262c628a22941db4458dc8d514591c0fc483901e3aa45bd7",
+      "bytes": 6709
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/1-baseline/process/process.json",
+      "sha256": "2410d9e4567d349c4dc81f767b1ef20bba830524305619fce704929cd3535842",
+      "bytes": 1000
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/2-baseline/sample.json",
+      "sha256": "c9299c7081db9f54a7ac63760e5a6b2a2d09f29099761a69807771abc0473a3a",
+      "bytes": 6749
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/2-baseline/process/process.json",
+      "sha256": "985afbf727052ecb760e0413c7623d0fad80757d20f862fca47fd0340af76fb1",
+      "bytes": 997
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/0-candidate/sample.json",
+      "sha256": "fbacda793a801236e29fb7a9a47901b78d83bdf881ade01d509d170bcbcfbf9b",
+      "bytes": 5535
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/0-candidate/process/process.json",
+      "sha256": "b74147451f6d64534ead4556219919461ee9dcdbffaf3b41f24bdce147543abb",
+      "bytes": 994
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/1-candidate/sample.json",
+      "sha256": "f77830ab61b26c9f96feb211a06350c50b6df282f72b6b77c1d6388bf32bd0ba",
+      "bytes": 5559
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/1-candidate/process/process.json",
+      "sha256": "a8fef65859bdcf574744401bd7e111a1c7fbae4f86b9194a7507252e23a8dcb2",
+      "bytes": 993
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/2-candidate/sample.json",
+      "sha256": "723bb7952a7829937a077e2d19ff59087d62fea3a372663da613aed071d88083",
+      "bytes": 5551
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-0/2-candidate/process/process.json",
+      "sha256": "600876b5b6a6ba8008747eeaba515ed9575d7e97a4aedea2a4ab745e51b51201",
+      "bytes": 994
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/0-typescript/sample.json",
+      "sha256": "d53cbce94c352f4b34408f6b9f258b069c4102a40d3bc4759ce76a6c8382a597",
+      "bytes": 7395
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/0-typescript/process/process.json",
+      "sha256": "0cbfa9b42be7bae39223b035ff51953b573320d8ceac47c7fe7a01f01c7a0883",
+      "bytes": 1005
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/1-typescript/sample.json",
+      "sha256": "62c36577ead33a456723736a5bbaf354b4523e3c631427184dcda90e4fd798ba",
+      "bytes": 7410
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/1-typescript/process/process.json",
+      "sha256": "cf38f4e71820d7b56263af00126a4db826ead33e1a6625fc448743ef2bab3daa",
+      "bytes": 1005
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/2-typescript/sample.json",
+      "sha256": "82638420c631c5fdbc67bdb8db9722386ddad0a606cce7b20ab78d6d9a4506c1",
+      "bytes": 7397
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/2-typescript/process/process.json",
+      "sha256": "481adb6e97b03c70409b0def4e96235829fb8b9b820622992b9ba56dd52b838d",
+      "bytes": 1005
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/0-baseline/sample.json",
+      "sha256": "577254b36b4f469729916a2be2a965b381b0a44725d922e6d8b841c5e11e9dc9",
+      "bytes": 6177
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/0-baseline/process/process.json",
+      "sha256": "ff998743b2085c8fa6c3eafdb847c1eefc41f642688ac3920545d45c9904693a",
+      "bytes": 1000
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/1-baseline/sample.json",
+      "sha256": "4f8fee013a4d38f8918e75c53bdd5ffaedd023db33a7a228cf663f2854651634",
+      "bytes": 6194
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/1-baseline/process/process.json",
+      "sha256": "b244ab2c6a298338c6fc0616d139ddd218b715db67739060f625c2481d6a7b69",
+      "bytes": 999
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/2-baseline/sample.json",
+      "sha256": "cfc82ff095085a09797feac2a06d191cb71ed7a0085b720f2b345cafed92febc",
+      "bytes": 6180
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/2-baseline/process/process.json",
+      "sha256": "ab7887f8f3efa2acf9fb22eb15695ca6be1e39881bb67cc157c75d5cb669d747",
+      "bytes": 999
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/0-candidate/sample.json",
+      "sha256": "09c0f1a75f438fe3d1c6978b01b30010c9e3d55f51d55fd9c51075dd02e1a263",
+      "bytes": 5587
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/0-candidate/process/process.json",
+      "sha256": "839563f8847e3e6d8885c4ab3b00a92f095bc0be344bde242e52a2aba869d183",
+      "bytes": 992
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/1-candidate/sample.json",
+      "sha256": "833e42f394a547e5d0fd12a9e2209b994a4ead35d2685a55a3e754993e2fbf9c",
+      "bytes": 5586
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/1-candidate/process/process.json",
+      "sha256": "2b91d9e16b5e912bd7c5188b6a612f9e8f5aba1ffdc18127ab5ed9b5720800ea",
+      "bytes": 994
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/2-candidate/sample.json",
+      "sha256": "1016c5dd29d974cf5fd6467237dfca73b248ee2459597c51505d9d069d974201",
+      "bytes": 5577
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-1/2-candidate/process/process.json",
+      "sha256": "1d031198a28ec08554c9df2fc376651cae556b562afe42019289cea599c173cc",
+      "bytes": 994
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/0-typescript/sample.json",
+      "sha256": "12b6cded855d0ba438a312dfcadcb380e23344d5e49fecc7a97cc5016ea975c8",
+      "bytes": 6545
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/0-typescript/process/process.json",
+      "sha256": "bd9bbd42e448e1ffc2ca8b7792c7d12e3b52966674982e3c7eebcdf9032845a0",
+      "bytes": 1008
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/1-typescript/sample.json",
+      "sha256": "1fa2bdb5394abba5d3963fa35ca5ad800e037206599876df2cf7663f03905eaa",
+      "bytes": 6538
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/1-typescript/process/process.json",
+      "sha256": "83f201cb6dbaea0c86059eeccdbd89a6e84bcc4701f66466e97497b73f6adef3",
+      "bytes": 1009
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/2-typescript/sample.json",
+      "sha256": "4172e086fc83797b06fd05bdad81b6aa24507e2051a5877101c2f2e03ba13223",
+      "bytes": 6512
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/2-typescript/process/process.json",
+      "sha256": "89b256028ff2439b71cc5a3822ff03771d0ae1f9607ea8f27e3cd5c6fa2f3a9d",
+      "bytes": 1009
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/0-baseline/sample.json",
+      "sha256": "c0764b1cff7341aa55e364b37c55c678f926e34f257f409a94a02ec9f376f07b",
+      "bytes": 4431
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/0-baseline/process/process.json",
+      "sha256": "26191703ab15eb6f1821f245dd38c0a4490601793fe4352464cbe98eb94cfdba",
+      "bytes": 1001
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/1-baseline/sample.json",
+      "sha256": "817c57ddee25e59b9fc3e54f3a360c0cffef264474ff5bdfb0f7ea3da3cff7c8",
+      "bytes": 4417
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/1-baseline/process/process.json",
+      "sha256": "4553d578d330ec3e43b32a2a47b28b7d24e9fc06ce0218dc11fa0921d78ce5f1",
+      "bytes": 1004
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/2-baseline/sample.json",
+      "sha256": "aa04508f3ca241f798a3410995e8790d486403cafc1da3638819ce95e316c57b",
+      "bytes": 4418
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/2-baseline/process/process.json",
+      "sha256": "78a051c6cafffbe09a367c2bd663dcf380e4596d29105981f4b2b1c35651b239",
+      "bytes": 1004
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/0-candidate/sample.json",
+      "sha256": "6c1538140385ccc270753917bc36dbb8e992c109574ede2e97ab5380c94a7472",
+      "bytes": 5322
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/0-candidate/process/process.json",
+      "sha256": "4255829ba7b686730dfdcd206276b71f85a225599437647034908c7cb04ff803",
+      "bytes": 998
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/1-candidate/sample.json",
+      "sha256": "21c9fe2b17c6707391e64ab50806930f5a97ee0fd82277e72e9df56fb2194b82",
+      "bytes": 5603
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/1-candidate/process/process.json",
+      "sha256": "a7b88614eb3dac9c799a453549a46e532675addbbda8a5d35f4c1cb0919b0a8d",
+      "bytes": 997
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/2-candidate/sample.json",
+      "sha256": "c9a1bf69556d26640777c9b34a66d2ffcac7a2341aa39d036ad8647b17b30d7c",
+      "bytes": 5596
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-128/2-candidate/process/process.json",
+      "sha256": "73def7e6ce5759aadc4cee7dab0ad62d1f3283807fbc11a0d3682e2b1f2d096e",
+      "bytes": 998
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/0-typescript/sample.json",
+      "sha256": "71f72905194eb43c3259a21fe80148fa2abc5a8a02eff66386bfe797f70148a8",
+      "bytes": 4764
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/0-typescript/process/process.json",
+      "sha256": "de3b961ad2a7a7b421b68c69835638083232ac036ba80440f3f7bb99b5af22ab",
+      "bytes": 1010
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/1-typescript/sample.json",
+      "sha256": "53d3301287b90f0414867d92d90a37ee31d8d00321700e7b9473a09249129fe8",
+      "bytes": 4759
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/1-typescript/process/process.json",
+      "sha256": "e791cd7534e14091071139bfe82a4934276bc1d030f6d5400ff41a5e841f135e",
+      "bytes": 1011
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/2-typescript/sample.json",
+      "sha256": "acafa88d62551a6ac3a7493a55f28f7601103f84d4eafe0be90dcc2b6c53b67d",
+      "bytes": 4749
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/2-typescript/process/process.json",
+      "sha256": "a51330f55f3c88f391807caeef5629f22da4a0af5823ee4e668206829f4bc267",
+      "bytes": 1011
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/0-baseline/sample.json",
+      "sha256": "d3f65da98ae907af8c5cb2d8bde174b789ddb7dcbb78797747654a61fe1face3",
+      "bytes": 2724
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/0-baseline/process/process.json",
+      "sha256": "d286abcb2c35e1dada72eac3100e698d4b02b2dc1841d1c331b6d7014b7c5c71",
+      "bytes": 1006
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/1-baseline/sample.json",
+      "sha256": "a2faa1530cd873b4301cc8a38fab69682bf760e96110453cf1887048c640bdcd",
+      "bytes": 2713
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/1-baseline/process/process.json",
+      "sha256": "4db1ccbb9ee8bad0608ec01a8ef96cd4bbc7bff5dd8b1a091b3adb3f9d395d09",
+      "bytes": 1005
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/2-baseline/sample.json",
+      "sha256": "a681d01528fed16488ca46d1d438aa8fad494e95d01801f8f6c4787326987785",
+      "bytes": 2697
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/2-baseline/process/process.json",
+      "sha256": "10968dad0772cef85b8d6572d52697ab905abf60f60e7d4b4515af4474cdf7a4",
+      "bytes": 1006
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/0-candidate/sample.json",
+      "sha256": "5db45b55b6710c30e1fbb1d291c5d0b6460e0f9a44fbd1ccfcf7bc1107cf1640",
+      "bytes": 4437
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/0-candidate/process/process.json",
+      "sha256": "bc648033f94cd0117aca574912062ed7f10a3b2cad8299df74bc8c0db9fedd82",
+      "bytes": 1000
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/1-candidate/sample.json",
+      "sha256": "909cad18f5924026456826f4fb5fd37b08cf7d5f3d76e24f3d162badf2684253",
+      "bytes": 4431
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/1-candidate/process/process.json",
+      "sha256": "f96e257f90c9ce8dc40326960d5d833570a0a514b305ee5c6cf963a5d05cde25",
+      "bytes": 998
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/2-candidate/sample.json",
+      "sha256": "0c659a4ddf81b584d7d5eabd7ff41ebce4e3081b6983c44379f8af685ddd9a60",
+      "bytes": 4443
+    },
+    {
+      "path": "selfhost/build/phase48/literal-scale-screen-rnfa03/samples/array-literals-loop-8192/2-candidate/process/process.json",
+      "sha256": "e56a73ff74409ba1c902d95d8617685e55140a5d967623532615f6bac0d164d3",
+      "bytes": 1000
+    }
+  ]
+}

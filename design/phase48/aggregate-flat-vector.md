@@ -1,6 +1,11 @@
 # Flat private results as an alternative physical convention
 
-Date: 2026-10-05. Status: isolated proposal; no target execution or timing result.
+Date: 2026-10-05. Status: deferred after a weak six-point scale screen. Source controls and the
+actual-emitter two-graph / 30-observation gate pass. The historical RLE15→8
+count below remains an unexecuted expected witness; no additional corpus timing
+or qualification is planned for this variant.
+The original proposal below is retained; see the
+[outcome](../../implementation/phase48/aggregate-transport.md).
 Parent: checked values03. Installed compiler remains Phase47 array06.
 
 The values03 pass demonstrably removes transient state construction from the

@@ -233,6 +233,7 @@ def j_expr_legacy(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KT
 # types, arithmetic, arguments and parallel lets retain their shared emitter.
 @unsafe
 def j_expr_private(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tail: Bool) -> String:
+  kc(String, String.eq(tg(t), "JF32"), u => j_private_float_code(ix(t)), u =>
   kc(String, String.eq(tg(t), "JVirtual"), u => "[" ++ j_region_vector_names("$w", 0, ix(t)) ++ "]", u =>
   kc(String, String.eq(tg(t), "JInline") || String.eq(tg(t), "JInlineRead"), u => "(()=>{" ++ j_region_inline_return(book, env, t, ty) ++ "})()", u =>
   kc(String, String.eq(tg(t), "JLoopSlot"), u => "$s" ++ U32.show(ix(t)), u =>
@@ -248,7 +249,7 @@ def j_expr_private(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: K
   kc(String, String.eq(tg(t), "JUnpack"), u => "((" ++ j_region_parameters(U32.inc(ix(t)), U32.inc(U32.add(ix(t), qt(t)))) ++ ")=>" ++
     j_expr(book, env, kid(t, 0), ty, tail) ++ ")(" ++ j_flat_reads(book, kid(t, 1), "$p" ++ U32.show(ix(t)), 0, qt(t)) ++ ")", u =>
   kc(String, String.eq(tg(t), "JIf"), u => "(" ++ j_expr(book, env, kid(t, 0), kt("ADT", "Bool", 0, 0, Nil{}), False{}) ++ "?" ++
-    j_expr(book, env, kid(t, 1), ty, tail) ++ ":" ++ j_expr(book, env, kid(t, 2), ty, tail) ++ ")", u => j_expr_on(book, env, t, ty, tail, tg(t)))))))))))))))
+    j_expr(book, env, kid(t, 1), ty, tail) ++ ":" ++ j_expr(book, env, kid(t, 2), ty, tail) ++ ")", u => j_expr_on(book, env, t, ty, tail, tg(t))))))))))))))))
 
 @unsafe
 def j_region_read_args(+book: List<&2,KDef>, +env: List<&2,KTerm>, +args: List<&2,KTerm>, +ty: KTerm) -> String:
@@ -862,15 +863,22 @@ def j_l_def_tree(+book: List<&2,KDef>, +d: KDef, +worker: String) -> String:
 
 @unsafe
 def j_l_def_callback(+book: List<&2,KDef>, +d: KDef, +worker: String) -> String:
-  kc(String, String.eq(worker, ""), u => j_l_def_region(book, d, j_region_root_plan(book, d)),
+  kc(String, String.eq(worker, ""), u => j_l_def_composite(book, d, j_region_root_plan(book, d)),
     u => j_l_def_selected(book, d, j_l_global_worker(book, d, dv(d), worker)))
+
+@unsafe
+def j_l_def_composite(+book: List<&2,KDef>, +d: KDef, +plan: JRootPlan) -> String:
+  match plan:
+    case JRootPlan{code, strong}:
+      j_l_def_region(book, d, kc(JRootPlan, String.eq(code, ""),
+        u => j_array_result_root_plan(book, d), u => plan))
 
 @unsafe
 def j_l_def_region(+book: List<&2,KDef>, +d: KDef, +plan: JRootPlan) -> String:
   match plan:
     case JRootPlan{code, strong}:
       kc(String, strong, u => j_l_def_selected(book, d, j_l_global_worker(book, d, dv(d), code)),
-        u => j_l_def_instance(book, d, code, j_instance_root(book, lookup(book, dn(d)))))
+        u => j_l_def_array_literal(book, d, code))
 
 @unsafe
 def j_l_def_instance(+book: List<&2,KDef>, +d: KDef, +region: String, +instance: String) -> String:
@@ -940,23 +948,8 @@ def j_l_global(book, d, t):
 
 @unsafe
 def j_region_native_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> String:
-  kc(String, j_array_view_active(book), u => j_array_view_native(book, env, t), u =>
-  kc(String, String.eq(nm(t), "F32.to_u32"), u => "regionF32ToU32(" ++ j_apply_args(book, env, ks(t), dt(lookup(book, nm(t)))) ++ ")", u =>
-  kc(String, String.eq(nm(t), "Array.new"), u => "((_t,d,v)=>arrayfill(v,d,'^'))(" ++ j_apply_args(book, env, ks(t), dt(lookup(book, nm(t)))) ++ ")", u =>
-    j_region_native_array(book, env, t, ks(t)))))
+  j_array_effect_emit(book, env, t, j_array_view_active(book))
 
-# The checked native plan erases its U32 type argument. The remaining arguments
-# keep their original left-to-right order without an intermediate closure.
-@unsafe
-def j_region_native_array(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +args: List<&2,KTerm>) -> String:
-  match args:
-    case Nil{}: "undefined"
-    case Con{h, rest}:
-      kc(String, String.eq(nm(t), "Array.get"), u => "arrayget(", u => "arrayset(") ++
-        j_apply_args(book, env, rest, j_app_type(wnf(book, dt(lookup(book, nm(t)))), h)) ++ ")"
-
-# The plan retains the proved input type. Immutable private field vectors cannot
-# escape; argument evaluation snapshots every field before the arm's effects.
 @unsafe
 def j_region_field_reads(+base: String, +at: U32, +total: U32) -> String:
   kc(String, U32.is_eq(at, total), u => "", u => base ++ "[" ++ U32.show(at) ++ "]" ++

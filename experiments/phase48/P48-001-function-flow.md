@@ -1,6 +1,6 @@
 # P48-001: Known target/capture transport
 
-Status: investigation; no measurement or promotion claimed.
+Status: completed and deferred; representative acquired modules are unchanged.
 
 Hypothesis: A renamed factory/helper/callback chain becomes first-order while prefix demand and capture aliasing remain exact.
 
@@ -13,4 +13,10 @@ Falsifier: changed observable value/error/order/alias; no actual private entry o
 removal of executed work; unfavorable runtime/compiler/size tradeoff on independent
 sources. Diagnostic ablations do not qualify compiler source changes.
 
-Outcome and receipts will be appended with their original attempt identities.
+H02 passed 26 complete oracles and 39 boundary observations. Actual Morning and
+closure acquisitions emitted byte-identical array06 modules with no H entries,
+so a further timing campaign was unnecessary. The 406-line prototype is preserved
+outside selected source. Factory diagnostics identify matched recursion and a
+partial-binding stage as the missing general admission, not an implemented win.
+See the [outcome](../../implementation/phase48/higher-order.md) and
+[next bounded experiment](../../implementation/phase48/remaining-opportunities.md).

@@ -1,6 +1,7 @@
 # P48-005: Entry checks and profitability
 
-Status: investigation; no measurement or promotion claimed.
+Status: completed; allocation-free guard deferred, scoped literal-loop policy
+selected for RNFA04 qualification. Release status is in the phase report.
 
 Hypothesis: Reduce temporary guard allocation or reject unprofitable source shapes while retaining every required host observation.
 
@@ -14,6 +15,12 @@ removal of executed work; unfavorable runtime/compiler/size tradeoff on independ
 sources. Diagnostic ablations do not qualify compiler source changes.
 
 Outcome and receipts will be appended with their original attempt identities.
+
+The separate [literal-entry policy](../../design/phase48/literal-entry-profitability.md)
+declines directly mapped primitive zero/one counts without coercion. Its selected04
+controls pass, and large-loop gains survive. Tiny inputs still regress 30.63% and
+18.64%; this is not a complete solution to public-entry overhead. See the
+[RNFA04 checkpoint](../../implementation/phase48/rnfa04-checkpoint.md).
 
 ## Measured outcome
 

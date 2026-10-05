@@ -27,15 +27,24 @@ The original guarded handle-based and public fallbacks remain available. See the
 [Phase47 report](../../implementation/phase47/README.md) for selection status,
 measured costs and the short-call regression.
 
-This guide describes the worker23 foundation plus installed Phase47 array06.
+This guide describes the worker23/array06 foundations plus installed Phase48 RNFA04.
 Release verification and all 42 CLI checks pass. The
 [`release manifest`](../dist/release.json),
-[qualification receipt](../tools/performance/phase47/evidence/selected-qualification.json)
-and [Phase47 report](../../implementation/phase47/README.md) bind the selected
+[qualification receipt](../tools/performance/phase48/evidence/selected-qualification.json)
+and [Phase48 report](../../implementation/phase48/README.md) bind the selected
 compiler/runtime and exact fresh scope. The
 [Phase45 worker design](../../design/phase45/general-workers.md) and
 [Phase44 ordinary IR design](../../design/phase44/README.md) retain their original
 decisions and qualification boundaries.
+
+The Phase48 RNFA04 compiler extends this foundation without a new general JW
+pass: original-handle flat composite results, canonical String.append values,
+typed U32/F32 Array effects, and finite F32 leaves inside successful private
+region plans. The complete contracts, corrected strict-predicate demand and
+bounded zero/one literal-entry policy are documented in
+[private representations](../../docs/self_hosted/phase48-representations.md).
+The selected release is installed and verified; the campaign report separates
+its fresh qualification and performance evidence from historical foundation checks.
 
 ```text
 checked, annotated KTerm
@@ -479,3 +488,38 @@ Worker, SCC, native-boundary and deep-stack controls are listed with their actua
 checked artifacts in the [Phase45 report](../../implementation/phase45/README.md).
 They supplement this ordinary IR suite; they do not turn a bounded private backend
 into a universal conformance or ownership proof.
+
+## Phase48 adapters and their IR domains
+
+| Source module | Consumed facts and representation |
+| --- | --- |
+| back/js/array-result.bend | Exact flat scalar/Array field telescope and closed scalar-input graph; private vector returns original Array handles, final ordinary ctor restores public record ABI. |
+| back/js/array-effects.bend | Canonical erased U32/F32 element and native telescope; shared ordered printers for public handles and proven raw backing. |
+| back/js/array-effect-guards.bend | Fresh complete host permission for native Array graphs, including retained handle/fold/tree routes. |
+| back/js/array-literals.bend | Explicit constructor-handle context and loop witness; lazy arraydata remains public. Bounded direct-count facts may decline trivial entry, never grant permission. |
+| back/js/private-float.bend | Compact finite F32 KTerm becomes private JF32 leaf; original shared DataView write followed by exact dyadic value. |
+| back/js/ir/native-values.bend | Already admitted JWNative String.append with two String operands emits ordered primitive concatenation; other names/arities keep dispatch. |
+
+JF32 is private typed-plan metadata, not a new ordinary JIRWord contract or a
+JW constant-folding rule. The typed region creates it only for canonical finite
+F32 literals; nm stays F32 so floating host requirements remain. Flat-tree and
+closed-array audit whitelists recognize the leaf, while the ordinary public
+fallback preserves bitsFloat. Nonfinite compact payloads retain decoding.
+
+Raw-array mode and handle mode are separate facts. A result containing Array
+handles can be publicly returned without reconstructing them, but does not
+permit raw backing escape. Public container inputs, nested/dependent composite
+results, unknown helper effects and escaped factories still refuse the new
+adapters. Array stores retain source rounding rather than introducing a new
+rounding convention; writes/conversions and self-tail updates keep their order.
+
+Do not implement admission fences with eager Bool.and when rejected inputs
+could trigger normalization, coercion or expansion. Use kc before demanding a
+live argument as a type. Facts have bounded visitors and conservative absence;
+a failed proof or exhausted budget keeps the original emission.
+
+The deferred H function-flow and V aggregate-return conventions are archived
+experiments. Their fixture passes and constructor counters do not put them in
+RNFA04. See [remaining opportunities](../../implementation/phase48/remaining-opportunities.md)
+for actual unsupported matched factories, persistent output and public-entry
+costs. Selected layouts and counters alone establish no parity or speed claim.

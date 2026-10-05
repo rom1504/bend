@@ -5,51 +5,61 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-**Phase47 array06 is installed; release verification and all 42 CLI checks pass.**
-API: `28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f`.
+**Phase48 RNFA04 is installed; release verification and all 42 CLI checks pass.**
+API: `6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100`.
 Runtime: `880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
-The [report](../implementation/phase47/README.md),
+The [report](../implementation/phase48/README.md),
 [release manifest](../selfhost/dist/release.json) and
-[selected evidence](../selfhost/tools/performance/phase47/evidence/selected-qualification.json)
+[selected evidence](../selfhost/tools/performance/phase48/evidence/selected-qualification.json)
 bind both identities and the exact checked attempt.
 
-The general private backend retains explicit calls, branches, layouts, tail
-loops, bounded recursion and continuation fallback. Phase47 adds a closed
-Array<U32> representation contract to the existing typed-region and scalar-tree
-paths. It normalizes known calls consistently and emits ordered stores. Complete
-host, dependency, ownership and type checks preserve the original public fallback.
-An integer-only guard still checks Math.floor; unused F32 inputs retain full
-checking. See the [IR guide](../selfhost/docs/JAVASCRIPT_IR.md) and
-[Array mechanism](self_hosted/private-array-regions.md). Historical specialized
-paths and opaque compatibility boundaries remain; this is not one unified IR.
+The general private backend retains calls, branches, layouts, tail loops,
+bounded recursion and continuation fallback. Phase48 adds public composite-result
+adaptation, direct proved String values, private finite F32 literals and typed
+Array effects. Original handles, sharing, field demand and ordered stores remain
+observable. Full guards retain the ordinary fallback. A bounded profitability
+rule declines directly mapped zero/one counts without coercion or cached host
+permission. See the [IR guide](../selfhost/docs/JAVASCRIPT_IR.md) and
+[representation contracts](self_hosted/phase48-representations.md). Historical
+specialized paths and opaque compatibility boundaries remain.
 
-The [source graph](../implementation/phase47/accounting.md) contains **23,254
-physical / 19,175 code Bend lines, 2,622 definitions, 87 types and 86 modules**:
-247 more physical lines (1.07%) than worker23. Counts exclude runtimes, tools,
-tests and generated images; declarations are complexity proxies. Generated
-libraries grow 2.58%, partly because optimized helpers coexist with fallbacks.
+The [source graph](../implementation/phase48/accounting.md) contains **23,660
+physical / 19,489 code Bend lines, 2,673 definitions, 87 types and 92 modules**:
+406 more physical lines (1.75%) than array06. These counts exclude runtimes, tools,
+tests and generated images; declarations are complexity proxies. The runtime is
+unchanged, and summed library bytes across distinct source/output pairs grow 0.72%.
 
-The [full execution results](../implementation/phase47/results.md) cover 45
-points / 23 sources / 669 samples. Equal-point slowdown improves **3.0851× →
-2.9194× pinned TypeScript time**; equal-source slowdown improves 4.1699× →
-3.9958×. Edit distance improves 1.85–1.86×, while the short fold regresses 1.93×.
-[Compiler request cost](../implementation/phase47/compiler-cost-final.md) increases
-0.87–3.75% on three separately measured inputs. This maintained corpus informed
-optimization and is not an untouched holdout or a universal speed estimate.
+The [full execution results](../implementation/phase48/results.md) cover 45
+points / 23 sources / 669 fresh samples. Equal-point slowdown improves
+**2.9024× → 2.6789× pinned TypeScript time**; equal-source slowdown improves
+3.9789× → 3.6793×. Generic row improves 13.47× and Unicode improves 1.26–1.46×.
+The other 44 points collectively improve 1.0231×; the largest primary regression
+is 3.25%. [Compiler requests](../implementation/phase48/compiler-cost-final.md)
+increase 3.27–4.41% on two inputs. Supplementary tiny literal loops still regress.
+The maintained corpus informed optimization and is not a universal speed estimate.
 
-[Conformance](../selfhost/CONFORMANCE.md) records fresh Array/host controls and
-eight maintained suites. The larger frontend and 81-backend inventories remain
-historical worker23 evidence. This is a checked B1 derivative, not a new
-self-emitted fixed point. The pin remains
-[`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
+[Conformance](../selfhost/CONFORMANCE.md) records fresh selected controls, eight
+maintained suites and exact agreement on 81 backend outcomes: 69 execution
+passes, eight N/A and four shared failures. The larger frontend inventory remains
+historical. This is a checked B1 derivative, not a new self-emitted fixed point.
+The pin remains [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
 after Bend 2.0.34. Native IO.args remains a known gap; GPU/proof validity is not
-established by these JS checks.
+established by these checks.
 
-Use the [portable Phase47 guide](../selfhost/tools/performance/phase47/README.md)
-and [current bundle](../selfhost/tools/performance/phase47/current/manifest.json)
-for selected array06 against worker23 and pinned TypeScript. Start with compact
-20-second rejection checks; the nominal 60-second core set also covers the
-private tree path. Full coverage uses three serial 600-second batches.
+Use the [portable Phase48 guide](../selfhost/tools/performance/phase48/README.md)
+and [current bundle](../selfhost/tools/performance/phase48/current/manifest.json)
+for RNFA04 against array06 and pinned TypeScript. Start with a 20-second rejection
+screen; core8 includes the private tree path. Full coverage uses three serial
+600-second batches. Profiles and generated-JavaScript comparison run separately.
+
+## Historical release results: Phase47
+
+[Array06](../implementation/phase47/README.md) extended closed Array<U32> storage
+across calls and scalar-tree leaves. Its own campaign measured 2.9194× TypeScript
+time; Phase48 uses a fresh paired baseline instead of dividing historical ratios.
+The [results](../implementation/phase47/results.md) and
+[portable bundle](../selfhost/tools/performance/phase47/current/manifest.json)
+retain their original worker23 denominator and qualification scope.
 
 ## Historical release results: Phase45
 

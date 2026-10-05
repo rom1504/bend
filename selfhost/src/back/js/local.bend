@@ -10,10 +10,7 @@ def j_region_local_ok(+result: Maybe<&2,U32>) -> Bool:
 
 @unsafe
 def j_region_local_array(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
-  kc(Bool, String.eq(tg(ty), "ADT") && String.eq(nm(ty), "Array") &&
-    U32.is_eq(terms_len(ks(ty)), 1) && List.is_empty(&2, String, rm(ty)), u =>
-    j_u32_native_ctor(book, "Array", "ALeaf") && j_u32_native_ctor(book, "Array", "ANode") &&
-    j_primitive_type(book, wnf(book, kid(ty, 0)), "U32"), u => False{})
+  j_array_effect_array(book, ty)
 
 @unsafe
 def j_region_local_sigma(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
@@ -113,7 +110,7 @@ def j_region_local_fields_next(+book: List<&2,KDef>, +tel: KTerm, +owner: String
     case None{}: None{}
 
 # Erased parameters are not admitted for ordinary private helpers. Only the
-# three explicitly validated native operations below have an erased U32 slot.
+# explicitly validated native Array operations have an erased element slot.
 @unsafe
 def j_region_local_signature(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> Bool:
   kc(Bool, U32.is_le(left, 32), u => j_region_local_signature_head(book, wnf(book, ty), left), u => False{})
@@ -126,51 +123,9 @@ def j_region_local_signature_head(+book: List<&2,KDef>, +ty: KTerm, +left: U32) 
 
 @unsafe
 def j_region_local_native(+book: List<&2,KDef>, +spine: KTerm) -> Bool:
-  +name = nm(spine)
-  kc(Bool, String.eq(name, "F32.to_u32"),
-    u => String.eq(tg(spine), "Call") && U32.is_eq(terms_len(ks(spine)), 1) && j_pure_native(book, lookup(book, name)), u =>
-  kc(Bool, String.eq(tg(spine), "Call") && String.contains("|Array.new|Array.get|Array.set|", "|" ++ name ++ "|") &&
-    U32.is_eq(terms_len(ks(spine)), kc(U32, String.eq(name, "Array.set"), u => 4, u => 3)), u =>
-    kc(Bool, j_primitive_type(book, wnf(book, kid(spine, 0)), "U32"), u =>
-      j_region_local_native_def(book, lookup(book, name), kid(spine, 0), terms_len(ks(spine))), u => False{}), u => False{}))
-
-@unsafe
-def j_region_local_native_def(+book: List<&2,KDef>, +d: KDef, +element: KTerm, +arity: U32) -> Bool:
-  +head = wnf(book, dt(d))
-  kc(Bool, String.eq(dk(d), "Def") && db(d) && U32.is_eq(dx(d), 0) && U32.is_eq(da(d), arity) &&
-    Bool.not(String.eq(tg(j_strip(dv(d))), "Foreign")) && String.eq(tg(head), "All") && U32.is_eq(qt(head), 0), u =>
-    kc(Bool, j_region_local_element_kind(book, kid(head, 0), dn(d)), u =>
-      j_region_local_native_args(book, j_app_type(head, element), dn(d), 1, arity), u => False{}), u => False{})
-
-@unsafe
-def j_region_local_element_kind(+book: List<&2,KDef>, +ty: KTerm, +name: String) -> Bool:
-  +head = wnf(book, ty)
-  String.eq(tg(head), "Typ") && U32.is_eq(terms_len(ks(head)), 1) && String.eq(tg(kid(head, 0)), "Qua") &&
-  U32.is_eq(qt(kid(head, 0)), kc(U32, String.eq(name, "Array.set"), u => 1, u => 2))
-
-@unsafe
-def j_region_local_native_args(+book: List<&2,KDef>, +ty: KTerm, +name: String, +at: U32, +total: U32) -> Bool:
-  +head = wnf(book, ty)
-  kc(Bool, U32.is_eq(at, total), u =>
-    kc(Bool, String.eq(name, "Array.get"), u => j_region_local_pair(book, head), u => j_region_local_array(book, head)), u =>
-    kc(Bool, String.eq(tg(head), "All") && Bool.not(U32.is_eq(qt(head), 0)) &&
-      j_region_local_native_input(book, wnf(book, kid(head, 0)), name, at), u =>
-      j_region_local_native_args(book, kid(head, 1), name, U32.inc(at), total), u => False{}))
-
-@unsafe
-def j_region_local_native_input(+book: List<&2,KDef>, +ty: KTerm, +name: String, +at: U32) -> Bool:
-  kc(Bool, U32.is_eq(at, 1), u =>
-    kc(Bool, String.eq(name, "Array.new"), u => j_primitive_type(book, ty, "Nat"), u => j_region_local_array(book, ty)),
-    u => j_primitive_type(book, ty, "U32"))
+  j_array_effect_native(book, spine)
 
 @unsafe
 def j_region_local_pair(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
-  kc(Bool, j_region_local_sigma(book, ty), u =>
-    j_region_local_pair_fields(book, wnf(book, j_region_local_fields(book, ty))), u => False{})
+  j_array_effect_pair(book, ty)
 
-@unsafe
-def j_region_local_pair_fields(+book: List<&2,KDef>, +tel: KTerm) -> Bool:
-  +rest = wnf(book, kid(tel, 1))
-  String.eq(tg(tel), "All") && Bool.not(U32.is_eq(qt(tel), 0)) && j_region_local_array(book, wnf(book, kid(tel, 0))) &&
-  String.eq(tg(rest), "All") && Bool.not(U32.is_eq(qt(rest), 0)) && j_primitive_type(book, wnf(book, kid(rest, 0)), "U32") &&
-  String.eq(tg(wnf(book, kid(rest, 1))), "ADT") && String.eq(nm(wnf(book, kid(rest, 1))), "Sigma")

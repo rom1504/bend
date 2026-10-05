@@ -715,7 +715,7 @@ def j_flat_audit(+book: List<&2,KDef>, +graph: List<&2,KDef>, +locals: List<&2,K
   kc(Bool, String.eq(tg(t), "JCall"), u => j_flat_call_audit(book, graph, locals, t) && j_flat_audits(book, graph, locals, self, ks(t), U32.sub(fuel, 1)), u =>
   kc(Bool, String.eq(tg(t), "JDirectCall"), u => U32.is_eq(terms_len(ks(t)), da(lookup(book, nm(t)))) && exact_def(lookup(graph, nm(t)), lookup(book, nm(t))) && j_pure_valid(j_direct_cached(book, nm(t))) && j_covered_defs(book, graph, j_pure_defs(j_direct_cached(book, nm(t)))) &&
     j_flat_audits(book, graph, locals, self, ks(t), U32.sub(fuel, 1)), u =>
-    String.contains("|Lam|Mat|Ctr|Let|Bind|Var|Lit|JUnpack|JSlot|JLoopSlot|JNatRest|JNatCase|JIf|Efq|", "|" ++ tg(t) ++ "|") &&
+    String.contains("|Lam|Mat|Ctr|Let|Bind|Var|Lit|JF32|JUnpack|JSlot|JLoopSlot|JNatRest|JNatCase|JIf|Efq|", "|" ++ tg(t) ++ "|") &&
     j_flat_audits(book, graph, locals, self, kc(List<&2,KTerm>, String.eq(tg(t), "JUnpack"), u => [kid(t, 0)], u => ks(t)), U32.sub(fuel, 1)))))), u => False{})
 
 @unsafe

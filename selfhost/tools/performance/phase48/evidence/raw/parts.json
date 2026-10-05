@@ -1,0 +1,45 @@
+{
+  "kind": "phase48-verified-archive-parts",
+  "version": 1,
+  "complete": true,
+  "producer": {
+    "path": "publish-archive-parts.py",
+    "bytes": 2776,
+    "sha256": "293d357272828822116b823f8e7cfbc5dec7e2bd6ea21b3ec925214f5498bdda"
+  },
+  "derivation": {
+    "parent": "selfhost/tools/performance/phase47/evidence/publish-archive-parts.py",
+    "parentSha256": "20f92ae81c6d1a0857c843183848880780ee2f28d1553837694999771fa43327",
+    "changes": "Phase48 identity/destination; require >40 MiB before splitting; explicit capsule-name gate. Original byte/reopen/concatenation checks retained."
+  },
+  "archiveMetadata": {
+    "path": "archive.json",
+    "bytes": 3575624,
+    "sha256": "2072b8bd2900908a8035023330eccccd31f44b8fda981990e14f6e0e55fd38f4"
+  },
+  "archive": {
+    "path": "raw-campaign.tar.gz",
+    "bytes": 84284137,
+    "sha256": "62aa86a48512a6ed13ff437f21e1bbdecce2004cd78e0ca4b32f453a11d21785"
+  },
+  "maxPartBytes": 41943040,
+  "parts": [
+    {
+      "path": "raw-campaign.tar.gz.part-000",
+      "bytes": 41943040,
+      "sha256": "7b90ea9eafc355c3e45a7f877cf99c2d4a430322ef01ff25b28f2d30daed5710"
+    },
+    {
+      "path": "raw-campaign.tar.gz.part-001",
+      "bytes": 41943040,
+      "sha256": "5c49ee45395435527088be46e201839af35d7ac2faeaa41a5d29dc81ecdc17b5"
+    },
+    {
+      "path": "raw-campaign.tar.gz.part-002",
+      "bytes": 398057,
+      "sha256": "7d1ae3d7d9c4690bae13a5f41acb30ac9270666e7cd22291aa87b1c11b0b033a"
+    }
+  ],
+  "concatenationVerified": true,
+  "scope": "Byte-identical publication of the previously reopened and source-verified closed Phase48 full raw capsule. Reassemble ordered parts to the original archive path before using archive.json. No raw input changes or release qualification."
+}

@@ -110,3 +110,22 @@ Candidate API is `f26fbeee36fea7025bc731e4c79a28822a16d246b23f890ba8df00793fede6
 The [hash evidence](../../implementation/phase48/array-literal-evidence03.json)
 separates this qualified correction from the original failure. Scaled runtime
 and actual arrays03 Evening equivalence are still pending.
+
+## Combined-candidate eager proof regression
+
+RNFA02's first actual local-row acquisition exhausted its unchanged 1 GiB heap.
+The new native admission used eager Bool.and to combine a failed operation-name
+test with element normalization, so unrelated live arguments could be reduced
+as types. The preceding implementation had an explicit kc gate. This is a new
+candidate bug caught before promotion, distinct from the older U32 host bug.
+
+The isolated lazy-admission overlay restores shape/native-owner/erased-header
+gates before normalization and preserves every proof and runtime guard. RNFA03
+then compiles the exact failing source in 6.126 seconds at 553 MB peak RSS, versus
+RNFA02's failed 35.784-second run at 1.19 GB. Do not turn that failed duration
+into a speedup ratio. The [report](../../implementation/phase48/array-admission-cost.md)
+records source identities, rejection controls and the scope of the causal claim.
+
+## Final selection
+
+Selected in the installed RNFA04 combination. The [final report](../../implementation/phase48/README.md) records independently qualified correctness, all 45 primary points, compiler costs and remaining regressions. Isolated results above retain their original scope.

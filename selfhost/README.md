@@ -1,35 +1,38 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase47 report](../implementation/phase47/README.md) and
+[Phase48 report](../implementation/phase48/README.md) and
 [JavaScript IR architecture](docs/JAVASCRIPT_IR.md).
-**Phase47 array06 is installed; release verification and all 42 CLI checks pass.**
+**Phase48 RNFA04 is installed; release verification and all 42 CLI checks pass.**
 The [release manifest](dist/release.json) and
-[selected evidence](tools/performance/phase47/evidence/selected-qualification.json)
+[selected evidence](tools/performance/phase48/evidence/selected-qualification.json)
 identify the exact checked B1 compiler/runtime pair.
 
-The private backend combines typed calls, cases, projections, tail loops and
-bounded recursion with an ordinary fallback. The new
-[Array contract](../docs/self_hosted/private-array-regions.md) keeps local backing
-storage across known calls and scalar-tree leaves, with ordered writes and
-complete host/dependency guards. A no-F32 proof narrows the guard without
-omitting Math.floor. Historical specialized paths remain; this is not a fully
-unified backend.
+The private backend combines typed calls, cases, projections, tail loops,
+bounded recursion and an ordinary fallback. Phase48 extends composite result
+boundaries, native String values, finite F32 literals and typed Array effects.
+Public array handles, aliases, write order and mutable-host contracts remain.
+See the [representation guide](../docs/self_hosted/phase48-representations.md).
+Historical specialized paths remain; this is not a fully unified backend.
 
-Fresh validation covers four independent Array control groups and eight
-maintained semantic suites. The 3,026-main / 196-broader frontend and 81-backend
-inventories were last run on worker23; [conformance](CONFORMANCE.md) distinguishes
-those historical results, shared failures and unsupported platforms. Source has
-**23,254 physical / 19,175 code Bend lines, 2,622 definitions, 87 types and 86
-modules**: +247 physical lines over worker23. See [accounting](../implementation/phase47/accounting.md).
+All focused controls, eight maintained semantic suites and the fresh backend
+census pass their agreement checks: **69 execution passes, eight N/A and four
+shared failures** among 81 outcomes. The 3,026-main / 196-broader frontend inventory
+remains historical. [Conformance](CONFORMANCE.md) keeps those scopes separate.
 
-The [45-point / 23-source comparison](../implementation/phase47/results.md)
-improves from **3.0851× to 2.9194× TypeScript time** with equal-point weighting;
-equal-source weighting improves 4.1699× → 3.9958×. Edit distance improves
-1.85–1.86×, but the short fold regresses 1.93×. The corpus informed optimization
-and does not establish typical-program speed or universal parity. Separate
-[compiler requests](../implementation/phase47/compiler-cost-final.md) cost
-0.87–3.75% more across three inputs.
+Source has **23,660 physical / 19,489 code Bend lines, 2,673 definitions, 87 types
+and 92 modules**: +406 physical lines over array06. See
+[accounting](../implementation/phase48/accounting.md). Deferred function-flow
+and aggregate-transport prototypes are preserved outside maintained source.
+
+The [45-point / 23-source comparison](../implementation/phase48/results.md)
+improves **2.9024× → 2.6789× TypeScript time** by equal point and
+3.9789× → 3.6793× by equal source. Generic row gains 13.47×; other 44 points
+collectively gain 1.0231×. The largest primary regression is 3.25%.
+The corpus informed optimization and does not establish universal parity.
+Separate [compiler requests](../implementation/phase48/compiler-cost-final.md)
+cost 3.27–4.41% more on two inputs. Supplementary zero/one-trip array calls retain
+30.63% / 18.64% overhead despite large-loop gains.
 
 Ordinary compilation runs Bend code without a TypeScript fallback. The target is
 [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
@@ -45,17 +48,16 @@ npm run build
 ```
 
 Use the [checked workflow](../docs/PHASE5_DEVELOPMENT.md) for edits and the
-[portable Phase47 suite](tools/performance/phase47/README.md) for 20/60/300-second
+[portable Phase48 suite](tools/performance/phase48/README.md) for 20/60/300-second
 screens and three serial 600-second full batches. Its
-[current bundle](tools/performance/phase47/current/manifest.json) retains all 45
-points. Private-backend changes should include core8 and separate activation
-controls before a full run. [Diagnostics](tools/performance/programs/DIAGNOSTICS.md)
-provide CPU/allocation profiles and generated-JavaScript comparisons separately
-from clean timing. Target jobs run serially with memory/deadline limits.
+[current bundle](tools/performance/phase48/current/manifest.json) retains all 45
+points. Include core8 and separate activation controls before a full run.
+[Diagnostics](tools/performance/programs/DIAGNOSTICS.md) provide CPU/allocation
+profiles and generated-JavaScript comparisons separately from clean timing.
 
 The [architecture survey](../docs/self_hosted/README.md),
 [research comparison](../docs/remaining_opportunities/README.md),
-[remaining work](../implementation/phase47/remaining-work.md),
+[remaining work](../implementation/phase48/remaining-opportunities.md),
 [ledger](../experiments/ledger.md) and [strategy](../experiments/STEERING.md)
 retain decisions and failures. Historical reports preserve their own baselines.
 

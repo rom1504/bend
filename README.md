@@ -16,37 +16,39 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
 fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-**Phase47 array06 is installed; release verification and all 42 CLI checks pass.**
-The [phase report](implementation/phase47/README.md),
+**Phase48 RNFA04 is installed; release verification and all 42 CLI checks pass.**
+The [phase report](implementation/phase48/README.md),
 [release manifest](selfhost/dist/release.json) and
-[selected evidence](selfhost/tools/performance/phase47/evidence/selected-qualification.json)
+[selected evidence](selfhost/tools/performance/phase48/evidence/selected-qualification.json)
 identify the exact checked B1 compiler and runtime.
 
-A closed private Array<U32> representation now composes with the existing typed
-regions and scalar-tree emitter. Known calls retain that representation, ordered
-stores preserve effects, and complete host/dependency guards retain the original
-fallback. See the [compiler guide](docs/BEND-IN-BEND.md),
+Private composite results now retain array handles across the public boundary;
+proved String operations, finite F32 literals and typed Array operations compose
+with existing private regions. See the [compiler guide](docs/BEND-IN-BEND.md),
 [JavaScript IR guide](selfhost/docs/JAVASCRIPT_IR.md) and
-[private Array contract](docs/self_hosted/private-array-regions.md).
+[representation contracts](docs/self_hosted/phase48-representations.md).
 
-The [45-point / 23-source execution comparison](implementation/phase47/results.md)
-improves from **3.0851× to 2.9194× TypeScript time** with equal-point weighting;
-equal-source weighting improves from 4.1699× to 3.9958×. Edit distance improves
-1.85–1.86×, but the short fold regresses 1.93×. The corpus informed optimization;
-these measurements do not establish typical-program speed or universal parity.
-[Compiler request costs](implementation/phase47/compiler-cost-final.md) increase
-0.87–3.75% on three inputs. [Source accounting](implementation/phase47/accounting.md)
-records 23,254 physical Bend lines (+247). [Conformance](selfhost/CONFORMANCE.md)
-separates fresh semantic controls from historical frontend/backend inventories.
+The [45-point / 23-source comparison](implementation/phase48/results.md) improves
+from **2.9024× to 2.6789× TypeScript execution time** against a freshly paired
+array06 baseline: **8.34% faster**, or 7.70% less time. Generic row improves
+13.47× and Unicode improves 1.26–1.46×. Excluding generic row, the other 44 points
+improve 2.31% collectively. The largest observed primary regression is 3.25%.
+This corpus informed optimization; it does not establish typical-program speed
+or universal parity.
 
-Use the [portable benchmark guide](selfhost/tools/performance/phase47/README.md)
-for 20/60/300-second selections and three serial 600-second full batches.
+[Compiler requests](implementation/phase48/compiler-cost-final.md) cost
+3.27–4.41% more on two inputs. [Source accounting](implementation/phase48/accounting.md)
+records 23,660 physical Bend lines (+406). [Conformance](selfhost/CONFORMANCE.md)
+separates fresh semantic/backend observations from historical frontend evidence.
+
+Use the [portable benchmark guide](selfhost/tools/performance/phase48/README.md)
+for 20/60/300-second selections, full batches, profiles and generated-code analysis.
 The [architecture survey](docs/self_hosted/README.md),
 [compiler research](research/compilers_architecture_and_techniques/README.md),
-[remaining work](implementation/phase47/remaining-work.md) and
-[parallel validation plan](docs/self_hosted/parallel-validation.md) explain the
-next opportunities. The [Phase46 JS/C study](implementation/phase46/README.md)
-keeps JS primary and retains its native API gap; historical reports remain intact.
+[remaining work](implementation/phase48/remaining-opportunities.md) and
+[parallel validation plan](docs/self_hosted/parallel-validation.md) retain the
+next experiments. The [Phase46 JS/C study](implementation/phase46/README.md)
+keeps JS primary and records its native API gap.
 
 From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
 Use the [checked workflow](docs/PHASE5_DEVELOPMENT.md),

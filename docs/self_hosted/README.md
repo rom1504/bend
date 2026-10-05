@@ -1,5 +1,9 @@
 # Self-hosted compiler: current architecture and development
 
+For the latest compiler work, see the [Phase48 report](../../implementation/phase48/README.md)
+and [representation extensions](phase48-representations.md). The source survey
+below remains a dated Phase45 baseline; its counts and timings are historical.
+
 This survey describes the selected **Phase45 worker23** compiler at repository
 commit `55e5b79dc9ac3e02436a712e34722f2eb519e5df`, inspected on 2026-10-04.
 It separates implemented behavior, historical experiments and proposed work.
@@ -10,7 +14,7 @@ The survey changes documentation only; it does not qualify a new compiler.
 | [Architecture](architecture.md) | Source organization, representations, compiler pipeline, runtime/host boundaries and current complexity. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |
 | [Private array regions](private-array-regions.md) | Phase47 closed-array representation, ordered operations, host guards and research limits; separate from release qualification. |
-| [Phase48 representation candidate](phase48-representations.md) | In-progress RNFA mechanisms, isolated evidence and original-path mutation contracts; final selection pending. |
+| [Phase48 representations](phase48-representations.md) | RNFA04 mechanisms, composition controls and original-path mutation contracts; the phase report records release status. |
 | [Prior experiments](prior-experiments.md) | What we already tried, what failed, and the genuinely new scope of familiar ideas. |
 | [Parallel validation plan](parallel-validation.md) | Bounded parallel correctness work, isolated timings, artifact reuse and better accounting. |
 | [External compiler research](../../research/compilers_architecture_and_techniques/README.md) | Source-based Rust, Go, Zig, LLVM, V8, Lean and pinned Bend TypeScript comparisons. |

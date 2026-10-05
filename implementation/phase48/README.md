@@ -1,12 +1,52 @@
-# Phase48: composable representations — final candidate qualification in progress
+# Phase48: efficient values across calls and public boundaries
 
-The installed baseline remains Phase47 array06 at
-`ee54723f87db81cce64b9f762fdd116805068c8a`. Phase48 is not yet selected,
-installed or released. The likely candidate is the frozen
-`selfhost/build/phase48/source-combined-rnfa02`, combining composite result
-boundaries (R), native String values (N), private finite-F32 literals (F), and
-typed array effects (A). Final combined semantic gates, compiler costs and corpus
-measurements remain pending; isolated passes are not combined-image passes.
+The selected compiler is RNFA04 (`checked-combined-rnfa04`), combining composite result boundaries (R),
+native String values (N), finite F32 literals (F), typed array effects (A), and
+bounded rejection of unprofitable zero/one-trip literal entry. All focused gates
+and all eight maintained suites pass. The fresh backend census agrees on all
+81 outcomes: 69 execution passes, eight N/A and four shared failures.
+
+The live source exactly matches the frozen checked snapshot; H/V prototypes are
+preserved separately. Installation, release verification, all 42 ordinary/relocated CLI
+checks and the three-point/27-sample portable replay pass. The
+[selected qualification](../../selfhost/tools/performance/phase48/evidence/selected-qualification.json)
+joins the exact installed image and independent evidence. The [RNFA04 checkpoint](rnfa04-checkpoint.md),
+[compiler costs](compiler-cost-final.md) and [accounting](accounting.md) record
+measured benefits and costs without claiming parity.
+
+## Final generated-program comparison
+
+All **669 fresh samples pass across 45 points and 23 sources**. The unchanged
+three-batch protocol took 1,132.24 seconds (18m52s). Compilation, profiles and
+instrumented counters are excluded from these execution medians.
+
+| Geometric weighting | Fresh array06 / TypeScript | RNFA04 / TypeScript | Speedup |
+| --- | ---: | ---: | ---: |
+| Equal point | 2.9024× | **2.6789×** | **1.0834×** |
+| Equal source | 3.9789× | 3.6793× | 1.0814× |
+| Equal family | 4.4797× | 3.9121× | 1.1451× |
+
+The point result is **7.70% less execution time**, or an 8.34% speedup. Generic
+row improves **13.467×** (55.728× → 4.138× TypeScript), Unicode16/64 improve
+**1.257× / 1.462×**, and numeric1024 improves **1.062×**. Generic row contributes
+72.1% of the net equal-point logarithmic gain; the other 44 points collectively
+improve **1.0231×**. This concentration matters: it is not a large speedup for
+most programs, despite the general source/type-based mechanisms.
+
+Twenty-three medians improve and 22 regress; these signs are not significance
+tests. The largest regression is closures64, **3.25%**, followed by lists512
+**2.49%** and tree-bitonic **2.31%**, all with byte-identical output. The short
+fold has changed output and regresses **2.12%** (14.191 → 14.491 µs). Its ordinary
+fallback guard gained an `arrayViewHostGuard` check; that static difference does
+not prove the check ran in the timing path. No regression is silently discarded.
+
+The candidate beats TypeScript on three points. Morning, scalar-zero, RLE,
+Map/Set and Evening still cost approximately **49–62× TypeScript time**.
+Maximum half-window drift reaches 36.15% for the baseline and 47.87% for the
+candidate on Evening; small effects require care. The
+[complete results](results.md) retain all medians, ranges, drift, identities and
+weightings. This corpus informed development; it is not an untouched holdout or
+a claim of typical-program or universal parity.
 
 The [initial design](../../design/phase48/composable-representations.md) was
 committed and pushed as `bb9480c` before new target execution. Root integrates
@@ -67,8 +107,8 @@ already select the older specialized path. A fixture pass does not justify
 Private aggregate V03 passes synthetic and source controls and actually removes
 RLE tuple constructions. Its four-point screen is mixed and mostly flat or
 slower; fewer shells carry wider scalar transport and continuation frames.
-It is excluded from RNFA, along with the separate unmeasured flat-vector
-alternative. See [aggregate transport](aggregate-transport.md).
+It is excluded from RNFA, along with the separately measured flat-vector
+alternative, which also failed to demonstrate useful gains. See [aggregate transport](aggregate-transport.md).
 
 The allocation-free raw-entry guard passes its audit, but gains only 1.039× at
 128 steps, is adverse at 4096 (0.993×), and is nearly neutral at 8192 (1.002×).
@@ -77,35 +117,113 @@ the original generic call/forcing path may observe the omitted hooks. No mutable
 host permission is cached and no input-specific threshold is introduced.
 See [entry outcome](entry-profitability.md).
 
-## Combined acquisition failure: checkpoint remains unselected
+## Preserved combined acquisition failure
 
 The combined RNFA02 checked build passed, but its first maintained local-row
 corpus acquisition failed with a Node 1 GiB heap OOM after 35.78 seconds.
 The process reached approximately 1.19 GB RSS while system available memory
 remained approximately 26.8 GB. This was a bounded compiler-process heap OOM,
 not a system/session OOM; the campaign nevertheless includes a real OOM attempt.
-The installed compiler remains unchanged. No combined corpus pass follows from
+The installed compiler remained unchanged at that checkpoint. No combined corpus pass followed from
 the successful build or the isolated component controls.
 
-The array owner found an eager `Bool.and` native-predicate admission bug: it
-normalizes an ordinary live argument as a type unconditionally. A `kc` admission
-fence is being prepared. This is a suspected cause of the acquisition failure,
-not a demonstrated diagnosis until a corrected combined candidate acquires and
-passes its controls. The 20-second trace diagnostic produced no output because
-emit-worker clears `BEND_*` environment variables; it provides no planner trace
-or evidence of where the heap grew. Preserve the failed attempt and diagnostic.
+The corrected RNFA03/04 source rejects non-array/non-erased calls before type
+normalization. The same local-row acquisition now completes in 6.13 seconds under
+the unchanged heap limit, and direct rejection controls preserve the distinction.
+The failed RNFA02 build product and empty-trace diagnostic are retained in
+[array admission cost](array-admission-cost.md). This was a bounded subprocess
+heap failure, not a system/session OOM.
 
-## Final admission remains separate
+## Selected semantic qualification
 
-The frozen RNFA composition retains selector precedence and original fallbacks;
-two narrow F32 leaf audit admissions permit the already-proved array graph to
-compose with finite literals. Preparation/source review establishes provenance,
-not execution correctness. The combined image must independently pass actual
-entry, mutation, shared-view demand, handle identity and maintained suites
-before its cost/corpus evidence can support release selection.
+RNFA04 retains selector precedence and original fallbacks. Two narrow F32 leaf
+admissions let the proved array graph compose with finite literals. The
+[selected semantic receipt](../../selfhost/tools/performance/phase48/evidence/semantic-qualification.json)
+now joins all 28 planned qualification entries. It explicitly reuses the earlier count control
+executed on the same selected image; it does not relabel another image's result.
 
-Raw evidence remains under `selfhost/build/phase48`; consumed inputs and failed
-attempts stay intact. Compiler source growth, generated-program execution,
-compiler request cost and elapsed work will be reported separately. The initial
-preservation audit found all 103 unrelated files unchanged and unstaged; final
-closure must verify that again. No PR comment is authorized or posted.
+All focused controls and all eight maintained suites pass. The fresh backend
+census agrees on 81 outcomes: **69 execution passes, eight N/A and four shared
+check failures**. The full 3,026-main / 196-broader frontend inventory remains
+historical unchanged-frontend evidence. These overlapping inventories are not
+added into a fabricated conformance total. Native IO.args remains a known gap;
+GPU execution and independent proof validity remain unestablished. This is a
+checked B1 derivative, not a new self-emitted fixed point.
+
+The [source reconciliation](source-reconciliation.md) preserves all 16 affected
+live preimages and restores the exact 188-file selected source tree. Installation,
+42 ordinary/relocated CLI checks and portable replay follow the separate
+[release recipe](release-plan.md).
+
+## Costs and lessons
+
+The selected compiler contains **23,660 physical / 19,489 code Bend lines,
+2,673 definitions, 87 types and 92 modules**. Relative to array06 that is +406
+physical lines (1.75%), +314 code lines and six modules; declared types are
+unchanged. The runtime remains byte-identical. Generated libraries change on
+16/45 points from seven sources; summed bytes across the 24 distinct source/output
+pairs grow 0.72%. See [accounting](accounting.md).
+
+All 18 [compiler requests](compiler-cost-final.md) produce the expected output.
+Median requests regress **3.27% for Evening and 4.41% for lexer**. Those two-source
+compilation costs are separate from emitted-program execution and establish no
+self-compilation speed improvement.
+
+The [RNFA04 literal-loop diagnostic](rnfa04-checkpoint.md) gains **16.372× at 128
+iterations and 71.831× at 8,192**. Zero/one calls still regress **30.63% / 18.64%**,
+or 0.412 / 0.931 microseconds. The severe prior regressions were reduced, not
+eliminated. This additional fixture uses three short rounds and does not change
+the primary corpus or its weighting.
+
+The central finding is that a representation must remain useful across calls
+and at its public result boundary. Composite-result adaptation unlocks the
+existing fast region for generic row; the whole result, including all four
+arrays, remains observed. The aggregate-transport experiments also show why
+constructor counts alone are insufficient: fewer tuple constructions did not
+produce a useful runtime gain after transport and continuation costs.
+
+The admission failure supplies a separate compiler-speed lesson: reject wrong
+shapes before expensive normalization. Bend's eager Boolean conjunction did not
+provide the short circuit the original predicate assumed. The explicit branch
+repair retains the same admitted type contract and passes direct rejection and
+positive controls.
+
+The [remaining opportunities](remaining-opportunities.md) prioritize bounded
+matched recursive factories with actual hot-entry witnesses, then a demonstrated
+aggregate consumer and admissible entry-cost reductions. Broader speculative
+passes remain preserved experiments rather than maintained source.
+
+Consumed inputs and failed attempts are retained with the raw campaign.
+Compiler source growth, generated-program execution, compiler request cost and
+elapsed work are reported separately. The final protection audit confirms all
+103 unrelated files remain unchanged and unstaged. No PR comment was posted.
+
+## Published compiler, evidence and time use
+
+RNFA04 is installed with checked API
+`6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100`
+and unchanged runtime
+`880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
+The [selected qualification](../../selfhost/tools/performance/phase48/evidence/selected-qualification.json)
+joins the exact source/image, semantic gates, 45/669 comparison, 18 compiler
+requests, source accounting, 42 CLI checks and portable replay. This remains a
+checked B1 derivative, not a new self-emitted fixed point.
+
+The [benchmark guide](../../selfhost/tools/performance/phase48/README.md) provides
+20/60/300-second selections, full-corpus batches and separate profiling/static
+analysis commands. Both published bundles reopen for all 45 points; the actual
+published pair passes the three-point/27-sample smoke.
+
+The [time report](time-use.md) accounts for 3h09m through the final measurement
+cutoff, including 60.37 minutes of recorded process occupancy. Unclassified time
+includes source work, review, orchestration and documentation; it is not a
+waiting-time estimate. Final archive/publication work follows that cutoff.
+
+All raw writers stopped at `2026-10-05T05:10:45.526361+00:00`. The
+[verified archive and recovery guide](../../selfhost/tools/performance/phase48/evidence/README.md)
+preserve **18,935 files / 454,085,159 logical bytes** in an 84,284,137-byte gzip
+stream published in three parts. Every member and the complete original
+inventory were rehashed; the ordered parts reproduce the original stream.
+The [evidence index](../../selfhost/tools/performance/phase48/evidence/index.json)
+binds the immutable receipts, portable bundles and predecessor evidence.
+New experiments must use fresh directories, never append to this closed phase.

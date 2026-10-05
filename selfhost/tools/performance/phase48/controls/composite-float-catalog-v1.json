@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Checked acquisition anchor only; composite result semantics and activation are checked by the separate untimed controller. No target execution or qualification yet.",
+  "cases": [
+    {
+      "id": "composite-float-independent",
+      "family": "composite-float-composition",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "composite-float-v1.bend",
+        "sha256": "f0524f2661535f6cce619b710946862d2fea8ab26e3be757d1d57ea33449895c",
+        "bytes": 958,
+        "provenance": {
+          "kind": "phase48-independent-controls",
+          "scope": "Original-handle output sharing, mutation, order, guard refusal"
+        }
+      },
+      "point": {
+        "exportName": "main",
+        "args": [],
+        "expected": 0
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Scalar acquisition anchor only; separate independent fround recurrence and actual composite/F32 activation controls."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "composite-float-independent"
+    ],
+    "core": [
+      "composite-float-independent"
+    ],
+    "broad": [
+      "composite-float-independent"
+    ],
+    "full": [
+      "composite-float-independent"
+    ]
+  }
+}

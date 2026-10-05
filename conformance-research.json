@@ -1,0 +1,874 @@
+{
+  "schemaVersion": 1,
+  "evidenceThrough": {
+    "phase": 45,
+    "commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+    "publishedAt": "2026-10-04T19:21:20Z",
+    "source": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation",
+    "evidenceCommit": "91af94475b48494482b3417ef8066f35ef49afbb"
+  },
+  "currentHeadObserved": "91af94475b48494482b3417ef8066f35ef49afbb",
+  "metric": {
+    "title": "Exact frontend agreement",
+    "unit": "parse/check observations",
+    "description": "Complete recorded parse and check results compared with pinned TypeScript, including acceptance/refusal, error phase, diagnostics and other result fields. Each main fixture contributes two observations.",
+    "preferredPlot": "Remaining exact differences, with disconnected segments at upstream target changes.",
+    "dateMeaning": "Commit publication time, not necessarily the exact test execution time.",
+    "phaseSpacing": "Phase labels denote selected recorded milestones; intermediate phases are not interpolated measurements."
+  },
+  "segments": [
+    {
+      "id": "6018e28",
+      "label": "Original target",
+      "target": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+      "targetUrl": "https://github.com/bendlang/bend/commit/6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+      "total": 2756,
+      "fixtures": 1378,
+      "connectToPrevious": false,
+      "points": [
+        {
+          "phase": 3,
+          "label": "P3",
+          "commit": "0683552638431e26701a74abb603bbe98dddc604",
+          "commitUrl": "https://github.com/rom1504/bend/commit/0683552638431e26701a74abb603bbe98dddc604",
+          "date": "2026-09-22T06:54:49+00:00",
+          "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+          "total": 2756,
+          "exact": 2196,
+          "different": 560,
+          "exactPercent": 79.68069666182873,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase3/frontend-final.md#L1",
+          "sourcePath": "implementation/phase3/frontend-final.md",
+          "notes": "All 1,378 final check acceptance/refusal statuses already agree. The 560 exact differences include 20 parse acceptance differences, 30 phase differences and 510 diagnostic/report differences."
+        },
+        {
+          "phase": 5,
+          "label": "P5",
+          "commit": "7babeb068f924930af020e6aeddc12c0a38f63fb",
+          "commitUrl": "https://github.com/rom1504/bend/commit/7babeb068f924930af020e6aeddc12c0a38f63fb",
+          "date": "2026-09-23T00:47:07+00:00",
+          "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+          "total": 2756,
+          "exact": 2312,
+          "different": 444,
+          "exactPercent": 83.88969521044993,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase5/final-conformance.md#L1",
+          "sourcePath": "implementation/phase5/final-conformance.md",
+          "notes": "Grammar and source-origin repairs add 116 exact matches with none lost; all 919 positive fixtures remain accepted."
+        },
+        {
+          "phase": 7,
+          "label": "P7",
+          "commit": "22f6e8e21be5390d50831f9cbe4aab1147ff217d",
+          "commitUrl": "https://github.com/rom1504/bend/commit/22f6e8e21be5390d50831f9cbe4aab1147ff217d",
+          "date": "2026-09-26T21:32:52+00:00",
+          "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+          "total": 2756,
+          "exact": 2312,
+          "different": 444,
+          "exactPercent": 83.88969521044993,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase7/s4-report.md#L182",
+          "sourcePath": "implementation/phase7/s4-report.md",
+          "notes": "Source simplification preserves every earlier frontend result."
+        }
+      ]
+    },
+    {
+      "id": "b2111cf",
+      "label": "Expanded target",
+      "target": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "targetUrl": "https://github.com/bendlang/bend/commit/b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 2996,
+      "fixtures": 1498,
+      "connectToPrevious": false,
+      "points": [
+        {
+          "phase": 8,
+          "label": "P8",
+          "commit": "bc322d9eb742cad0e42bdc2e923335fd2149c121",
+          "commitUrl": "https://github.com/rom1504/bend/commit/bc322d9eb742cad0e42bdc2e923335fd2149c121",
+          "date": "2026-09-28T02:24:08+00:00",
+          "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+          "total": 2996,
+          "exact": 2262,
+          "different": 734,
+          "exactPercent": 75.50066755674233,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase8/frontend-conformance.md#L1",
+          "sourcePath": "implementation/phase8/frontend-conformance.md",
+          "notes": "New upstream target and suite: 121 added paths, one removed path and 510 changed common files. This is a new baseline."
+        },
+        {
+          "phase": 9,
+          "label": "P9",
+          "commit": "f21e9f0a7bf098b48405fc300d8a676be28adae9",
+          "commitUrl": "https://github.com/rom1504/bend/commit/f21e9f0a7bf098b48405fc300d8a676be28adae9",
+          "date": "2026-09-28T06:38:54+00:00",
+          "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+          "total": 2996,
+          "exact": 2265,
+          "different": 731,
+          "exactPercent": 75.60080106809079,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase9/checker_speed.md#L170",
+          "sourcePath": "implementation/phase9/checker_speed.md",
+          "notes": "Compact natural numbers and descent repairs resolve deep-literal failures and the negative timeout. 1,000 of 1,001 positives accept; all 482 validation negatives reject."
+        },
+        {
+          "phase": 11,
+          "label": "P11",
+          "commit": "1101206b62532ffce0e85b7f451d1c6d5fd6b0ac",
+          "commitUrl": "https://github.com/rom1504/bend/commit/1101206b62532ffce0e85b7f451d1c6d5fd6b0ac",
+          "date": "2026-09-28T09:05:07+00:00",
+          "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+          "total": 2996,
+          "exact": 2266,
+          "different": 730,
+          "exactPercent": 75.63417890520694,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase11/known_work.md#L123",
+          "sourcePath": "implementation/phase11/known_work.md",
+          "notes": "Reducing call and closure overhead removes the final positive long-string stack overflow. All 1,001 positives accept and all 482 validation negatives reject."
+        },
+        {
+          "phase": 12,
+          "label": "P12",
+          "commit": "9a4e1098043ef32a080a41440aa84728078d0d7b",
+          "commitUrl": "https://github.com/rom1504/bend/commit/9a4e1098043ef32a080a41440aa84728078d0d7b",
+          "date": "2026-09-28T16:35:33+00:00",
+          "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+          "total": 2996,
+          "exact": 2266,
+          "different": 730,
+          "exactPercent": 75.63417890520694,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase12/avoidable_work.md#L123",
+          "sourcePath": "implementation/phase12/avoidable_work.md",
+          "notes": "The performance release preserves the exact frontend result vector."
+        },
+        {
+          "phase": 14,
+          "label": "P14",
+          "commit": "abb200fedffbef08a119535ca907cdcca071b146",
+          "commitUrl": "https://github.com/rom1504/bend/commit/abb200fedffbef08a119535ca907cdcca071b146",
+          "date": "2026-09-28T22:49:30+00:00",
+          "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+          "total": 2996,
+          "exact": 2393,
+          "different": 603,
+          "exactPercent": 79.8731642189586,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase14/conformance_and_dispatch.md#L89",
+          "sourcePath": "implementation/phase14/conformance_and_dispatch.md",
+          "notes": "Imported-law context, checker source carets and unsafe-name ordering add 127 exact matches with none lost."
+        },
+        {
+          "phase": 15,
+          "label": "P15",
+          "commit": "a383163b821e38510967849fdb791ff914031b62",
+          "commitUrl": "https://github.com/rom1504/bend/commit/a383163b821e38510967849fdb791ff914031b62",
+          "date": "2026-09-29T00:41:15+00:00",
+          "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+          "total": 2996,
+          "exact": 2537,
+          "different": 459,
+          "exactPercent": 84.67957276368492,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase15/exact-differences.md#L1",
+          "sourcePath": "implementation/phase15/exact-differences.md",
+          "notes": "Shared diagnostic rendering and missing-import context add 144 exact matches with none lost."
+        },
+        {
+          "phase": 16,
+          "label": "P16",
+          "commit": "0b51d965e2638048b5526b351047daae0c61ed7c",
+          "commitUrl": "https://github.com/rom1504/bend/commit/0b51d965e2638048b5526b351047daae0c61ed7c",
+          "date": "2026-09-29T07:09:22+00:00",
+          "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+          "total": 2996,
+          "exact": 2994,
+          "different": 2,
+          "exactPercent": 99.93324432576769,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase16/consolidation.md#L102",
+          "sourcePath": "implementation/phase16/consolidation.md",
+          "notes": "Authoritative source origins, explicit parser/checker checkpoints and compact literals add 457 exact matches with none lost."
+        },
+        {
+          "phase": 22,
+          "label": "P22",
+          "commit": "1e640798c7b74c32a1d3f3335727d7be918795b9",
+          "commitUrl": "https://github.com/rom1504/bend/commit/1e640798c7b74c32a1d3f3335727d7be918795b9",
+          "date": "2026-09-29T17:32:19+00:00",
+          "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+          "total": 2996,
+          "exact": 2996,
+          "different": 0,
+          "exactPercent": 100.0,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase22/contextual-conformance.md#L1",
+          "sourcePath": "implementation/phase22/contextual-conformance.md",
+          "notes": "Contextual parsing and staged materialization close the last two main differences and the final 57 broader differences."
+        }
+      ]
+    },
+    {
+      "id": "0187512",
+      "label": "Current pinned target",
+      "target": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "targetUrl": "https://github.com/bendlang/bend/commit/018751270e800bc222a93dad7f257083ee53a5f7",
+      "total": 3026,
+      "fixtures": 1513,
+      "connectToPrevious": false,
+      "points": [
+        {
+          "phase": 23,
+          "label": "P23",
+          "commit": "8eb2cc01145041ce7c0dce199daaf7087038e962",
+          "commitUrl": "https://github.com/rom1504/bend/commit/8eb2cc01145041ce7c0dce199daaf7087038e962",
+          "date": "2026-09-29T20:08:44+00:00",
+          "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+          "total": 3026,
+          "exact": 3026,
+          "different": 0,
+          "exactPercent": 100.0,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase23/frontend-validation.md#L1",
+          "sourcePath": "implementation/phase23/frontend-validation.md",
+          "notes": "An upstream update adds 15 fixtures and 30 frontend observations while retaining complete exact agreement."
+        },
+        {
+          "phase": 24,
+          "label": "P24",
+          "commit": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+          "commitUrl": "https://github.com/rom1504/bend/commit/5350b2fec8f6f8484c7a689e915b359d7ce86847",
+          "date": "2026-09-29T22:04:13+00:00",
+          "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+          "total": 3026,
+          "exact": 3026,
+          "different": 0,
+          "exactPercent": 100.0,
+          "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/profile-and-coverage.md#L113",
+          "sourcePath": "implementation/phase24/profile-and-coverage.md",
+          "notes": "Lookup and membership improvements preserve frontend agreement; a separate backend pilot discovers and repairs two emission bug categories."
+        },
+        {
+          "phase": 36,
+          "label": "P36",
+          "commit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+          "commitUrl": "https://github.com/rom1504/bend/commit/dfa5e03f02692d60b212b1d7e852213634fcfd93",
+          "date": "2026-10-01T06:55:01Z",
+          "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+          "different": 0,
+          "exactPercent": 100.0,
+          "source": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/selfhost/CONFORMANCE.md#phase36-installed03-validation",
+          "sourcePath": "selfhost/CONFORMANCE.md",
+          "notes": "The installed checked03 candidate retains exact agreement with an identity-verified frozen TypeScript reference. This is fresh candidate execution, not a new TypeScript acquisition.",
+          "total": 3026,
+          "exact": 3026,
+          "rawOutcomes": {
+            "pass": 2525,
+            "observed": 497,
+            "fail": 4
+          }
+        },
+        {
+          "phase": 45,
+          "label": "P45",
+          "commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+          "commitUrl": "https://github.com/rom1504/bend/commit/ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+          "date": "2026-10-04T19:21:20Z",
+          "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+          "different": 0,
+          "exactPercent": 100.0,
+          "source": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation",
+          "sourcePath": "selfhost/CONFORMANCE.md",
+          "notes": "Fresh selected worker23 observations agree exactly against verified pinned TypeScript reference observations. Shared failures retain their raw outcome category; Phase44/43 owner campaigns are not relabelled as new Phase45 checks.",
+          "total": 3026,
+          "exact": 3026,
+          "rawOutcomes": {
+            "pass": 2525,
+            "observed": 497,
+            "fail": 4
+          }
+        }
+      ]
+    }
+  ],
+  "mainSeries": [
+    {
+      "phase": 3,
+      "label": "P3",
+      "commit": "0683552638431e26701a74abb603bbe98dddc604",
+      "commitUrl": "https://github.com/rom1504/bend/commit/0683552638431e26701a74abb603bbe98dddc604",
+      "date": "2026-09-22T06:54:49+00:00",
+      "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+      "total": 2756,
+      "exact": 2196,
+      "different": 560,
+      "exactPercent": 79.68069666182873,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase3/frontend-final.md#L1",
+      "sourcePath": "implementation/phase3/frontend-final.md",
+      "notes": "All 1,378 final check acceptance/refusal statuses already agree. The 560 exact differences include 20 parse acceptance differences, 30 phase differences and 510 diagnostic/report differences."
+    },
+    {
+      "phase": 5,
+      "label": "P5",
+      "commit": "7babeb068f924930af020e6aeddc12c0a38f63fb",
+      "commitUrl": "https://github.com/rom1504/bend/commit/7babeb068f924930af020e6aeddc12c0a38f63fb",
+      "date": "2026-09-23T00:47:07+00:00",
+      "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+      "total": 2756,
+      "exact": 2312,
+      "different": 444,
+      "exactPercent": 83.88969521044993,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase5/final-conformance.md#L1",
+      "sourcePath": "implementation/phase5/final-conformance.md",
+      "notes": "Grammar and source-origin repairs add 116 exact matches with none lost; all 919 positive fixtures remain accepted."
+    },
+    {
+      "phase": 7,
+      "label": "P7",
+      "commit": "22f6e8e21be5390d50831f9cbe4aab1147ff217d",
+      "commitUrl": "https://github.com/rom1504/bend/commit/22f6e8e21be5390d50831f9cbe4aab1147ff217d",
+      "date": "2026-09-26T21:32:52+00:00",
+      "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+      "total": 2756,
+      "exact": 2312,
+      "different": 444,
+      "exactPercent": 83.88969521044993,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase7/s4-report.md#L182",
+      "sourcePath": "implementation/phase7/s4-report.md",
+      "notes": "Source simplification preserves every earlier frontend result."
+    },
+    {
+      "phase": 8,
+      "label": "P8",
+      "commit": "bc322d9eb742cad0e42bdc2e923335fd2149c121",
+      "commitUrl": "https://github.com/rom1504/bend/commit/bc322d9eb742cad0e42bdc2e923335fd2149c121",
+      "date": "2026-09-28T02:24:08+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 2996,
+      "exact": 2262,
+      "different": 734,
+      "exactPercent": 75.50066755674233,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase8/frontend-conformance.md#L1",
+      "sourcePath": "implementation/phase8/frontend-conformance.md",
+      "notes": "New upstream target and suite: 121 added paths, one removed path and 510 changed common files. This is a new baseline."
+    },
+    {
+      "phase": 9,
+      "label": "P9",
+      "commit": "f21e9f0a7bf098b48405fc300d8a676be28adae9",
+      "commitUrl": "https://github.com/rom1504/bend/commit/f21e9f0a7bf098b48405fc300d8a676be28adae9",
+      "date": "2026-09-28T06:38:54+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 2996,
+      "exact": 2265,
+      "different": 731,
+      "exactPercent": 75.60080106809079,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase9/checker_speed.md#L170",
+      "sourcePath": "implementation/phase9/checker_speed.md",
+      "notes": "Compact natural numbers and descent repairs resolve deep-literal failures and the negative timeout. 1,000 of 1,001 positives accept; all 482 validation negatives reject."
+    },
+    {
+      "phase": 11,
+      "label": "P11",
+      "commit": "1101206b62532ffce0e85b7f451d1c6d5fd6b0ac",
+      "commitUrl": "https://github.com/rom1504/bend/commit/1101206b62532ffce0e85b7f451d1c6d5fd6b0ac",
+      "date": "2026-09-28T09:05:07+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 2996,
+      "exact": 2266,
+      "different": 730,
+      "exactPercent": 75.63417890520694,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase11/known_work.md#L123",
+      "sourcePath": "implementation/phase11/known_work.md",
+      "notes": "Reducing call and closure overhead removes the final positive long-string stack overflow. All 1,001 positives accept and all 482 validation negatives reject."
+    },
+    {
+      "phase": 12,
+      "label": "P12",
+      "commit": "9a4e1098043ef32a080a41440aa84728078d0d7b",
+      "commitUrl": "https://github.com/rom1504/bend/commit/9a4e1098043ef32a080a41440aa84728078d0d7b",
+      "date": "2026-09-28T16:35:33+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 2996,
+      "exact": 2266,
+      "different": 730,
+      "exactPercent": 75.63417890520694,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase12/avoidable_work.md#L123",
+      "sourcePath": "implementation/phase12/avoidable_work.md",
+      "notes": "The performance release preserves the exact frontend result vector."
+    },
+    {
+      "phase": 14,
+      "label": "P14",
+      "commit": "abb200fedffbef08a119535ca907cdcca071b146",
+      "commitUrl": "https://github.com/rom1504/bend/commit/abb200fedffbef08a119535ca907cdcca071b146",
+      "date": "2026-09-28T22:49:30+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 2996,
+      "exact": 2393,
+      "different": 603,
+      "exactPercent": 79.8731642189586,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase14/conformance_and_dispatch.md#L89",
+      "sourcePath": "implementation/phase14/conformance_and_dispatch.md",
+      "notes": "Imported-law context, checker source carets and unsafe-name ordering add 127 exact matches with none lost."
+    },
+    {
+      "phase": 15,
+      "label": "P15",
+      "commit": "a383163b821e38510967849fdb791ff914031b62",
+      "commitUrl": "https://github.com/rom1504/bend/commit/a383163b821e38510967849fdb791ff914031b62",
+      "date": "2026-09-29T00:41:15+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 2996,
+      "exact": 2537,
+      "different": 459,
+      "exactPercent": 84.67957276368492,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase15/exact-differences.md#L1",
+      "sourcePath": "implementation/phase15/exact-differences.md",
+      "notes": "Shared diagnostic rendering and missing-import context add 144 exact matches with none lost."
+    },
+    {
+      "phase": 16,
+      "label": "P16",
+      "commit": "0b51d965e2638048b5526b351047daae0c61ed7c",
+      "commitUrl": "https://github.com/rom1504/bend/commit/0b51d965e2638048b5526b351047daae0c61ed7c",
+      "date": "2026-09-29T07:09:22+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 2996,
+      "exact": 2994,
+      "different": 2,
+      "exactPercent": 99.93324432576769,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase16/consolidation.md#L102",
+      "sourcePath": "implementation/phase16/consolidation.md",
+      "notes": "Authoritative source origins, explicit parser/checker checkpoints and compact literals add 457 exact matches with none lost."
+    },
+    {
+      "phase": 22,
+      "label": "P22",
+      "commit": "1e640798c7b74c32a1d3f3335727d7be918795b9",
+      "commitUrl": "https://github.com/rom1504/bend/commit/1e640798c7b74c32a1d3f3335727d7be918795b9",
+      "date": "2026-09-29T17:32:19+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 2996,
+      "exact": 2996,
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase22/contextual-conformance.md#L1",
+      "sourcePath": "implementation/phase22/contextual-conformance.md",
+      "notes": "Contextual parsing and staged materialization close the last two main differences and the final 57 broader differences."
+    },
+    {
+      "phase": 23,
+      "label": "P23",
+      "commit": "8eb2cc01145041ce7c0dce199daaf7087038e962",
+      "commitUrl": "https://github.com/rom1504/bend/commit/8eb2cc01145041ce7c0dce199daaf7087038e962",
+      "date": "2026-09-29T20:08:44+00:00",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "total": 3026,
+      "exact": 3026,
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase23/frontend-validation.md#L1",
+      "sourcePath": "implementation/phase23/frontend-validation.md",
+      "notes": "An upstream update adds 15 fixtures and 30 frontend observations while retaining complete exact agreement."
+    },
+    {
+      "phase": 24,
+      "label": "P24",
+      "commit": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+      "commitUrl": "https://github.com/rom1504/bend/commit/5350b2fec8f6f8484c7a689e915b359d7ce86847",
+      "date": "2026-09-29T22:04:13+00:00",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "total": 3026,
+      "exact": 3026,
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/profile-and-coverage.md#L113",
+      "sourcePath": "implementation/phase24/profile-and-coverage.md",
+      "notes": "Lookup and membership improvements preserve frontend agreement; a separate backend pilot discovers and repairs two emission bug categories."
+    },
+    {
+      "phase": 36,
+      "label": "P36",
+      "commit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "commitUrl": "https://github.com/rom1504/bend/commit/dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "date": "2026-10-01T06:55:01Z",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/selfhost/CONFORMANCE.md#phase36-installed03-validation",
+      "sourcePath": "selfhost/CONFORMANCE.md",
+      "notes": "The installed checked03 candidate retains exact agreement with an identity-verified frozen TypeScript reference. This is fresh candidate execution, not a new TypeScript acquisition.",
+      "total": 3026,
+      "exact": 3026,
+      "rawOutcomes": {
+        "pass": 2525,
+        "observed": 497,
+        "fail": 4
+      }
+    },
+    {
+      "phase": 45,
+      "label": "P45",
+      "commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+      "commitUrl": "https://github.com/rom1504/bend/commit/ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+      "date": "2026-10-04T19:21:20Z",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation",
+      "sourcePath": "selfhost/CONFORMANCE.md",
+      "notes": "Fresh selected worker23 observations agree exactly against verified pinned TypeScript reference observations. Shared failures retain their raw outcome category; Phase44/43 owner campaigns are not relabelled as new Phase45 checks.",
+      "total": 3026,
+      "exact": 3026,
+      "rawOutcomes": {
+        "pass": 2525,
+        "observed": 497,
+        "fail": 4
+      }
+    }
+  ],
+  "broaderSeries": [
+    {
+      "phase": 17,
+      "label": "P17",
+      "commit": "fddfc84b3f48aecc77c2424ddc8227cd7f63251f",
+      "commitUrl": "https://github.com/rom1504/bend/commit/fddfc84b3f48aecc77c2424ddc8227cd7f63251f",
+      "date": "2026-09-29T07:46:07+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 196,
+      "exact": 128,
+      "different": 68,
+      "exactPercent": 65.3061224489796,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase17/group-boundary.md#L27",
+      "sourcePath": "implementation/phase17/group-boundary.md",
+      "notes": "First acquisition of the broader selection establishes 128/196 exact. An uninstalled marker experiment adds no gains."
+    },
+    {
+      "phase": 19,
+      "label": "P19",
+      "commit": "fd9e8b28c906dff13471fab9afc6975fd5574edd",
+      "commitUrl": "https://github.com/rom1504/bend/commit/fd9e8b28c906dff13471fab9afc6975fd5574edd",
+      "date": "2026-09-29T09:35:25+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 196,
+      "exact": 128,
+      "different": 68,
+      "exactPercent": 65.3061224489796,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase19/live-checker-release.md#L86",
+      "sourcePath": "implementation/phase19/live-checker-release.md",
+      "notes": "Shared live checking removes a duplicate semantic visitor; this frozen broader selection remains 128/196 exact."
+    },
+    {
+      "phase": 20,
+      "label": "P20",
+      "commit": "c385d3913e9f10c6c4d9c5cfef3f34bc0682d351",
+      "commitUrl": "https://github.com/rom1504/bend/commit/c385d3913e9f10c6c4d9c5cfef3f34bc0682d351",
+      "date": "2026-09-29T10:35:01+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 196,
+      "exact": 136,
+      "different": 60,
+      "exactPercent": 69.38775510204081,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase20/declaration-checkpoints-release.md#L37",
+      "sourcePath": "implementation/phase20/declaration-checkpoints-release.md",
+      "notes": "Declaration and match checkpoints add eight exact observations with none lost."
+    },
+    {
+      "phase": 21,
+      "label": "P21",
+      "commit": "df94915c7369a1bed0aa943d8267b4e178401c8e",
+      "commitUrl": "https://github.com/rom1504/bend/commit/df94915c7369a1bed0aa943d8267b4e178401c8e",
+      "date": "2026-09-29T11:26:25+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 196,
+      "exact": 139,
+      "different": 57,
+      "exactPercent": 70.91836734693878,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase21/group-range-release.md#L1",
+      "sourcePath": "implementation/phase21/group-range-release.md",
+      "notes": "Preserved grouped source origins add three exact observations with none lost."
+    },
+    {
+      "phase": 22,
+      "label": "P22",
+      "commit": "1e640798c7b74c32a1d3f3335727d7be918795b9",
+      "commitUrl": "https://github.com/rom1504/bend/commit/1e640798c7b74c32a1d3f3335727d7be918795b9",
+      "date": "2026-09-29T17:32:19+00:00",
+      "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+      "total": 196,
+      "exact": 196,
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase22/contextual-conformance.md#L18",
+      "sourcePath": "implementation/phase22/contextual-conformance.md",
+      "notes": "Contextual parsing closes the remaining 57 differences."
+    },
+    {
+      "phase": 23,
+      "label": "P23",
+      "commit": "8eb2cc01145041ce7c0dce199daaf7087038e962",
+      "commitUrl": "https://github.com/rom1504/bend/commit/8eb2cc01145041ce7c0dce199daaf7087038e962",
+      "date": "2026-09-29T20:08:44+00:00",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "total": 196,
+      "exact": 196,
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase23/frontend-validation.md#L1",
+      "sourcePath": "implementation/phase23/frontend-validation.md",
+      "notes": "All 196 observations remain exact after the upstream update."
+    },
+    {
+      "phase": 24,
+      "label": "P24",
+      "commit": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+      "commitUrl": "https://github.com/rom1504/bend/commit/5350b2fec8f6f8484c7a689e915b359d7ce86847",
+      "date": "2026-09-29T22:04:13+00:00",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "total": 196,
+      "exact": 196,
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/profile-and-coverage.md#L113",
+      "sourcePath": "implementation/phase24/profile-and-coverage.md",
+      "notes": "Fresh candidate acquisition remains exact; the pinned reference is reused after identity verification."
+    },
+    {
+      "phase": 36,
+      "label": "P36",
+      "commit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "commitUrl": "https://github.com/rom1504/bend/commit/dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "date": "2026-10-01T06:55:01Z",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/selfhost/CONFORMANCE.md#phase36-installed03-validation",
+      "sourcePath": "selfhost/CONFORMANCE.md",
+      "notes": "The installed checked03 candidate retains exact agreement with an identity-verified frozen TypeScript reference. This is fresh candidate execution, not a new TypeScript acquisition.",
+      "total": 196,
+      "exact": 196,
+      "rawOutcomes": {
+        "pass": 195,
+        "observed": 1
+      }
+    },
+    {
+      "phase": 45,
+      "label": "P45",
+      "commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+      "commitUrl": "https://github.com/rom1504/bend/commit/ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+      "date": "2026-10-04T19:21:20Z",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "different": 0,
+      "exactPercent": 100.0,
+      "source": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation",
+      "sourcePath": "selfhost/CONFORMANCE.md",
+      "notes": "Fresh selected worker23 observations agree exactly against verified pinned TypeScript reference observations. Shared failures retain their raw outcome category; Phase44/43 owner campaigns are not relabelled as new Phase45 checks.",
+      "total": 196,
+      "exact": 196,
+      "rawOutcomes": {
+        "pass": 195,
+        "observed": 1
+      }
+    }
+  ],
+  "current": {
+    "mainExact": 3026,
+    "mainTotal": 3026,
+    "broaderExact": 196,
+    "broaderTotal": 196,
+    "cliPass": 42,
+    "cliTotal": 42,
+    "installedApiSha256": "e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c",
+    "newFixedPoint": false,
+    "referenceAcquisition": "Verified pinned TypeScript reference observations reused; selected worker23 candidate observations are fresh.",
+    "phase": 45,
+    "candidate": "Phase45 worker23",
+    "installedRuntimeSha256": "4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26",
+    "maintainedSuites": 8,
+    "mechanismFixtureFamilies": 7,
+    "mechanismControls": 12,
+    "source": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation"
+  },
+  "backendPilot": {
+    "phase": 45,
+    "total": 81,
+    "exact": 81,
+    "rawOutcomes": {
+      "pass": 69,
+      "notApplicable": 8,
+      "sharedFailures": 4
+    },
+    "scope": "All retained selected backend outcomes agree: 69 execution passes, eight unavailable or not-applicable outcomes, four shared check failures. These categories are not all fixture passes.",
+    "source": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation",
+    "historicalPhase24": {
+      "total": 81,
+      "beforeExact": 78,
+      "afterExact": 81,
+      "positiveExecutionAcquired": 67,
+      "positiveExecutionEligible": 2644,
+      "expectedErrorExecutionAcquired": 10,
+      "expectedErrorExecutionEligible": 10,
+      "checkBoundaryRows": 4,
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/backend-census.md#L16"
+    },
+    "pending": "Full backend/GPU coverage and the optional 811-case JavaScript expansion remain uncompleted."
+  },
+  "findings": [
+    {
+      "id": "grammar-and-errors",
+      "title": "Exact comparisons made progress measurable",
+      "phase": 5,
+      "metric": "560 → 444 differences",
+      "body": "The comparison records the entire parse or check result: whether the program is accepted, where an error occurs, its phase and its diagnostics. Grammar and source-origin repairs closed 116 differences while keeping every previous match and all 919 positive programs. That makes the graph useful for tracking both everyday usability and language behavior.",
+      "sources": [
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase5/final-conformance.md"
+      ]
+    },
+    {
+      "id": "representation-and-robustness",
+      "title": "Smaller values also made checking more reliable",
+      "phase": 11,
+      "metric": "1,001 / 1,001 positive accepts",
+      "body": "Compact natural numbers and simpler descent eliminated deep-literal failures and a negative-test timeout. Avoiding extra call wrappers then removed a long-string stack overflow under the same resource limits. The exact-match curve moves only four rows across these releases, but those rows represent programs that changed from failing or timing out to the intended result.",
+      "sources": [
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase9/checker_speed.md",
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase11/known_work.md"
+      ]
+    },
+    {
+      "id": "shared-diagnostics",
+      "title": "Shared error rendering improved the developer experience",
+      "phase": 15,
+      "metric": "603 → 459 differences",
+      "body": "One diagnostic renderer restored source carets consistently, and missing-import handling retained the right error context. Together with malformed-binder handling, the release added 144 exact matches without losing an earlier match. These improvements make errors easier to locate and keep the Bend compiler familiar to users of the reference implementation.",
+      "sources": [
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase15/exact-differences.md"
+      ]
+    },
+    {
+      "id": "authoritative-origins",
+      "title": "Keeping source information early avoided guessing later",
+      "phase": 16,
+      "metric": "459 → 2 differences",
+      "body": "The compiler attached source origins when terms were created and carried them through later transformations. Parser and checker checkpoints also became explicit. This let the compiler select the same error at the same point as the reference, closing 457 differences with no lost matches. Compact literal representation kept this richer information affordable.",
+      "sources": [
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase16/consolidation.md"
+      ]
+    },
+    {
+      "id": "contextual-frontend",
+      "title": "One contextual frontend closed the remaining gaps",
+      "phase": 22,
+      "metric": "2 → 0 main; 57 → 0 broader differences",
+      "body": "Parsing now carries lexical scope, aliases, namespaces and fresh-name state when they are needed. A shared materializer performs semantic work at the correct early or deferred checkpoint. This replaces reconstruction paths that could choose the wrong error or scope. It closes the final main-suite differences and every remaining difference in the frozen broader selection.",
+      "sources": [
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase22/contextual-conformance.md",
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase19/live-checker-release.md"
+      ]
+    },
+    {
+      "id": "broader-tests",
+      "title": "Nearby examples turned a near-perfect score into stronger evidence",
+      "phase": 22,
+      "metric": "128 → 196 exact broader observations",
+      "body": "When the main corpus was already 99.93% exact, targeted neighboring examples still exposed scope, grouping and declaration-order gaps. Keeping that 196-observation selection separate made those weaknesses visible. Fixes raised it from 128 to 136, then 139, then 196 exact observations, improving behavior beyond the original headline score.",
+      "sources": [
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase17/group-boundary.md",
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase20/declaration-checkpoints-release.md",
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase21/group-range-release.md",
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase22/contextual-conformance.md"
+      ]
+    },
+    {
+      "id": "upstream-migration",
+      "title": "Exactness survived an expanded upstream target",
+      "phase": 23,
+      "metric": "3,026 / 3,026 exact frontend observations",
+      "body": "The next upstream update added 15 fixtures, including deep shared-equality regressions. Graph-conversion, Base and backend migration retained exact main and broader frontend results. The larger denominator therefore marks added coverage, and the later release continues to match the same pinned target.",
+      "sources": [
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase23/frontend-validation.md",
+        "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/selfhost/CONFORMANCE.md#phase36-installed03-validation"
+      ]
+    },
+    {
+      "id": "backend-discovery",
+      "title": "Execution checks found bugs that frontend checks could not see",
+      "phase": 24,
+      "metric": "78 → 81 exact pilot outcomes",
+      "body": "A separate execution pilot exposed foreign/constructor name collisions and distinct source names colliding in emitted C. A shared emission check and unambiguous native identifiers repaired those implementation defects. Keeping execution coverage separate let the project improve generated code even after frontend comparisons had reached zero differences.",
+      "sources": [
+        "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/backend-census.md"
+      ]
+    },
+    {
+      "id": "retained-conformance",
+      "title": "Performance work now ships with preserved behavior",
+      "phase": 36,
+      "metric": "3,026 main + 196 broader observations retained",
+      "body": "The installed Phase36 compiler keeps exact frontend agreement and passes all 42 ordinary and relocated CLI checks. Seven new control groups exercise scoped proof reuse, callback reentry, produced trees, aliases and selectors. These checks bind the latest optimizations to actual emitted programs and complement the inherited execution and library controls.",
+      "sources": [
+        "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/selfhost/CONFORMANCE.md#phase36-installed03-validation",
+        "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/release-03.md",
+        "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/owner-closure-protocol.md"
+      ]
+    },
+    {
+      "id": "private-backend-conformance",
+      "title": "The private backend retains the tested frontend contract",
+      "phase": 45,
+      "metric": "3,026 main + 196 broader exact; 42 CLI checks pass",
+      "body": "Installed worker23 keeps exact frontend agreement and all 81 retained backend outcomes, including the original shared failures and unavailable cases. Eight maintained suites and fresh composition controls pass; separate mechanism controls cover bounded fallback, tail transfer, Number-Nat bounds, mutable public descriptors and immutable results. These overlapping finite checks support the installed optimization without turning selected coverage into universal conformance.",
+      "sources": [
+        "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation",
+        "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/README.md"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "phase": 8,
+      "title": "New upstream target and corpus",
+      "description": "Target changes from 6018e28 to b2111cf. The suite adds 121 paths, removes one and changes 510 common files; the observation count grows from 2,756 to 2,996. The apparent jump from 444 to 734 differences is a new baseline, not a fixed-corpus regression.",
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase8/upstream_and_conformance.md"
+    },
+    {
+      "phase": 23,
+      "title": "Another upstream update",
+      "description": "Target changes to 0187512, adding 15 direct fixtures and 30 parse/check observations. The new total is 3,026.",
+      "source": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase23/frontend-validation.md"
+    },
+    {
+      "title": "Agreement and fixture passes are different measures",
+      "description": "The current main results are 2,525 passes, 497 observations and four shared failures. Those four fixtures expect later emission errors; both frontends accept them at the earlier check stage. Exact comparison does not turn those raw failures into fixture passes.",
+      "source": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation"
+    },
+    {
+      "title": "Separate scopes",
+      "description": "Main, broader, focused and owner-control selections overlap. Do not sum them into a unique-program count. Exact frontend agreement does not establish universal language equivalence, full backend/device conformance or independent proof-kernel validation.",
+      "source": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md#phase45-installed-worker23-validation"
+    },
+    {
+      "title": "Artifact identity",
+      "description": "Phase45 worker23 is a checked B1 derivative. Historical self-emitted fixed points remain separate evidence; Phase45 does not claim a new fixed point. API and runtime hashes jointly identify the selected artifact.",
+      "source": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/README.md"
+    }
+  ],
+  "sources": {
+    "historicalResearchFiles": [
+      "pr1207-review/research/conformance.json",
+      "pr1207-review/research/conformance.md",
+      "pr1207-review/publication/comment.md",
+      "pr1207-review/chart-data.json"
+    ],
+    "historicalThrough": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+    "currentReadme": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/README.md",
+    "currentConformance": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md",
+    "currentGates": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase45/evidence/selected-qualification.json",
+    "sourceNote": "Phase45 selected worker23 validation binds the exact API/runtime pair, fresh candidate observations and reused identity-verified TypeScript reference. Historical reports and source points retain their original scopes."
+  },
+  "successorIssue": {
+    "url": "https://github.com/rom1504/bend/issues/1",
+    "title": "Self hosting work",
+    "createdAt": "2026-10-04T00:29:17Z",
+    "commentsAtRead": 0,
+    "checkedOn": "2026-10-04",
+    "note": "Issue body links the original PR and contains no additional measurements; current Phase45 values come from pinned repository reports."
+  }
+}

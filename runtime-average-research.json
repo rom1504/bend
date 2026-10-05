@@ -1,0 +1,3264 @@
+{
+  "schemaVersion": 1,
+  "metric": "Compiled program speed",
+  "researchedAt": "2026-10-04",
+  "sourceCommit": "91af94475b48494482b3417ef8066f35ef49afbb",
+  "referenceCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "headline": {
+    "phase": 45,
+    "release": "worker23",
+    "commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+    "date": "2026-10-04T19:21:20Z",
+    "averageRatio": 3.0786510397833515,
+    "previousAverageRatio": 6.086717306747411,
+    "speedupVsPrevious": 1.9770728244587734,
+    "pointCount": 45,
+    "sourceCount": 23,
+    "sampleCount": 669,
+    "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md",
+    "dataUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase45/evidence/runtime-summary.json",
+    "label": "3.08\u00d7 TypeScript execution time",
+    "explanation": "Geometric mean of 45 same-point warmed execution-time ratios across 23 source files. 1\u00d7 is parity; lower is better."
+  },
+  "aggregation": {
+    "method": "geometric mean",
+    "formula": "exp(sum(log(selfhost_median_ms / typescript_median_ms)) / 45)",
+    "unit": "TypeScript execution time (\u00d7)",
+    "lowerIsBetter": true,
+    "reference": 1,
+    "weighting": "equal point",
+    "equalSourceRatio": 4.146656918089279,
+    "equalFamilyRatio": 4.7339943958848725,
+    "note": "Every one of the 45 benchmark points gets equal weight. A source may contribute multiple inputs; equal-source weighting would give 4.15\u00d7. The corpus is maintained and informed development; it does not describe all Bend programs."
+  },
+  "history": [
+    {
+      "phase": 37,
+      "measuredInPhase": 37,
+      "role": "candidate",
+      "ratio": 18.88087802658851,
+      "sourcePath": "implementation/phase37/execution/report.json",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase37/execution/report.json",
+      "sourceBlob": "bf1f57fec904036a8486c1558f7c4c7c817a7e1e",
+      "label": "Phase 37",
+      "commit": "9391ebe91ceeb73f69e4d02f1cdb67aa32a0c6a7",
+      "date": "2026-10-01T17:00:35Z",
+      "averageRatio": 18.88087802658851,
+      "pointCount": 45,
+      "sourceCount": 23,
+      "suiteId": "full45-phase37-catalog",
+      "protocolGroup": "mixed-600-1000ms-warmup",
+      "notes": "Historical/variation points:1,000ms warmup/300ms target. New families:600ms warmup/250ms target."
+    },
+    {
+      "phase": 39,
+      "measuredInPhase": 39,
+      "role": "candidate",
+      "ratio": 16.84196966918692,
+      "sourcePath": "implementation/phase39/execution/report.json",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase39/execution/report.json",
+      "sourceBlob": "4437ded9e9127286b255064cd2c8a303ccedd53a",
+      "label": "Phase 39",
+      "commit": "e95b1c9ed2542d34ede62f85a757e4f3adc0f1fc",
+      "date": "2026-10-01T21:10:07Z",
+      "averageRatio": 16.84196966918692,
+      "pointCount": 45,
+      "sourceCount": 23,
+      "suiteId": "full45-phase37-catalog",
+      "protocolGroup": "mixed-600-1000ms-warmup",
+      "notes": "Historical/variation points:1,000ms warmup/300ms target. New families:600ms warmup/250ms target."
+    },
+    {
+      "phase": 40,
+      "measuredInPhase": 40,
+      "role": "candidate",
+      "ratio": 14.21003616536438,
+      "sourcePath": "implementation/phase40/execution/report.json",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase40/execution/report.json",
+      "sourceBlob": "b55785dfa912211ec5ddb13307bfe0dea12512e3",
+      "label": "Phase 40",
+      "commit": "8582de71687b95f7a87c4c17f74e04b76bd7582c",
+      "date": "2026-10-03T08:31:50Z",
+      "averageRatio": 14.21003616536438,
+      "pointCount": 45,
+      "sourceCount": 23,
+      "suiteId": "full45-phase37-catalog",
+      "protocolGroup": "mixed-600-1000ms-warmup",
+      "notes": "42 exact-output comparisons reused; three fresh comparisons."
+    },
+    {
+      "phase": 41,
+      "measuredInPhase": 42,
+      "role": "baseline",
+      "ratio": 12.569165346885258,
+      "sourcePath": "implementation/phase42/full-results.json",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase42/full-results.json",
+      "sourceBlob": "0eff607465649cfd271e48937724e660a6c3d825",
+      "label": "Phase 41",
+      "commit": "5ec82b3a92d92f46547215eca274c5bfecf47796",
+      "date": "2026-10-03T18:03:39Z",
+      "averageRatio": 12.569165346885258,
+      "pointCount": 45,
+      "sourceCount": 23,
+      "suiteId": "full45-phase37-catalog",
+      "protocolGroup": "full45-1000ms-warmup",
+      "notes": "Phase41 image measured as same-run baseline in Phase42."
+    },
+    {
+      "phase": 42,
+      "measuredInPhase": 42,
+      "role": "candidate",
+      "ratio": 8.861832936795805,
+      "sourcePath": "implementation/phase42/full-results.json",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase42/full-results.json",
+      "sourceBlob": "0eff607465649cfd271e48937724e660a6c3d825",
+      "label": "Phase 42",
+      "commit": "714c5f5dbdc9a434e7272c21b6216c3a70f5a33c",
+      "date": "2026-10-03T23:30:39Z",
+      "averageRatio": 8.861832936795805,
+      "pointCount": 45,
+      "sourceCount": 23,
+      "suiteId": "full45-phase37-catalog",
+      "protocolGroup": "full45-1000ms-warmup",
+      "notes": "1,000ms warmup/300ms target."
+    },
+    {
+      "phase": 43,
+      "measuredInPhase": 43,
+      "role": "candidate",
+      "ratio": 6.161075258658915,
+      "sourcePath": "implementation/phase43/results.json",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase43/results.json",
+      "sourceBlob": "caf78fbdfb560a553510413da1b2a6ab8d11cbbf",
+      "label": "Phase 43",
+      "commit": "69d8c70e47c6cd1c89ea1af44f46aa5a47fe58c2",
+      "date": "2026-10-04T04:51:32Z",
+      "averageRatio": 6.161075258658915,
+      "pointCount": 45,
+      "sourceCount": 23,
+      "suiteId": "full45-phase37-catalog",
+      "protocolGroup": "full45-1000ms-warmup",
+      "notes": "1,000ms warmup/300ms target."
+    },
+    {
+      "phase": 44,
+      "measuredInPhase": 44,
+      "role": "candidate",
+      "ratio": 6.083199160183174,
+      "sourcePath": "selfhost/tools/performance/phase44/evidence/runtime-summary.json",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase44/evidence/runtime-summary.json",
+      "sourceBlob": "b3137ef3a5cb310539c8df77708ea89d4286db7f",
+      "label": "Phase 44",
+      "commit": "8f57b1be8093a54b9e6ad665245e167470270ba4",
+      "date": "2026-10-04T09:05:57Z",
+      "averageRatio": 6.083199160183174,
+      "pointCount": 45,
+      "sourceCount": 23,
+      "suiteId": "full45-phase37-catalog",
+      "protocolGroup": "full45-1000ms-warmup",
+      "notes": "1,000ms warmup/300ms target."
+    },
+    {
+      "phase": 45,
+      "label": "Phase 45",
+      "release": "worker23",
+      "commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+      "date": "2026-10-04T19:21:20Z",
+      "averageRatio": 3.0786510397833515,
+      "ratio": 3.0786510397833515,
+      "pointCount": 45,
+      "sourceCount": 23,
+      "suiteId": "full45-phase37-catalog",
+      "protocolGroup": "full45-1000ms-warmup",
+      "sourcePath": "selfhost/tools/performance/phase45/evidence/runtime-summary.json",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase45/evidence/runtime-summary.json",
+      "measuredInPhase": 45,
+      "role": "candidate",
+      "notes": "Same-run previous Phase44 average:6.086717\u00d7; latest/previous pair improves1.977073\u00d7."
+    }
+  ],
+  "latest": {
+    "phase": 45,
+    "release": "worker23",
+    "baseline": "Phase44 checked04",
+    "programCount": 23,
+    "pointCount": 45,
+    "sampleCount": 669,
+    "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md",
+    "dataUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase45/evidence/runtime-summary.json",
+    "protocol": "Node 24.18.0, CPU3, 1GiB heap; 1,000ms warmup and300ms target; five fresh rotated rounds per role except full raytrace three. Compilation, module import and first call are excluded. Ranges are observed extrema, not confidence intervals.",
+    "apiSha256": "e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c",
+    "runtimeSha256": "4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26",
+    "points": [
+      {
+        "id": "local-pair",
+        "label": "Edit-distance pair",
+        "family": "local-pair",
+        "category": "diagnostic",
+        "description": "Complete one-pair edit distance",
+        "scope": "256 by 256 grid, input generation, rows and checksum; same point as Phase32",
+        "args": [
+          0
+        ],
+        "expected": 1866542166,
+        "sourceSha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "sourcePath": "fixtures-historical/local-row.bend",
+        "baseline": {
+          "medianMs": 2.6311843185840713,
+          "minMs": 2.6304508867924534,
+          "maxMs": 2.644656548672568,
+          "samplesMs": [
+            2.6336787946428575,
+            2.6304508867924534,
+            2.6311843185840713,
+            2.6307260535714283,
+            2.644656548672568
+          ]
+        },
+        "candidate": {
+          "medianMs": 2.629966198198198,
+          "minMs": 2.6231401785714286,
+          "maxMs": 2.6617296964285697,
+          "samplesMs": [
+            2.6231401785714286,
+            2.6388260353982296,
+            2.6617296964285697,
+            2.629966198198198,
+            2.625027353982301
+          ]
+        },
+        "reference": {
+          "medianMs": 1.2323408983739836,
+          "minMs": 1.223344914285715,
+          "maxMs": 1.2368615637860083,
+          "samplesMs": [
+            1.223344914285715,
+            1.2297023677685956,
+            1.2323408983739836,
+            1.2368615637860083,
+            1.2339695291666668
+          ]
+        },
+        "ratioToTypeScript": 2.134122304687214,
+        "baselineRatioToTypeScript": 2.135110765256429,
+        "speedupVsBaseline": 1.000463169597658,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "local-fold",
+        "label": "Array fold",
+        "family": "local-fold",
+        "category": "diagnostic",
+        "description": "Array read/write and accumulator fold",
+        "scope": "4096 elements, seed17; generation, loop and final scalar checksum",
+        "args": [
+          4096,
+          17
+        ],
+        "expected": 2339999928,
+        "sourceSha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "sourcePath": "fixtures-historical/local-fold.bend",
+        "baseline": {
+          "medianMs": 0.08940881387827107,
+          "minMs": 0.08901777922848665,
+          "maxMs": 0.08971526261434055,
+          "samplesMs": [
+            0.08923030380868024,
+            0.08901777922848665,
+            0.08946962090163939,
+            0.08940881387827107,
+            0.08971526261434055
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.08944084872705749,
+          "minMs": 0.08907504254694831,
+          "maxMs": 0.08967825547013603,
+          "samplesMs": [
+            0.08967825547013603,
+            0.08945463625627398,
+            0.08907504254694831,
+            0.08944084872705749,
+            0.08911358626760564
+          ]
+        },
+        "reference": {
+          "medianMs": 0.039704585585585594,
+          "minMs": 0.03890862004785962,
+          "maxMs": 0.04129035069259454,
+          "samplesMs": [
+            0.039058704788657056,
+            0.04129035069259454,
+            0.040004826920386156,
+            0.039704585585585594,
+            0.03890862004785962
+          ]
+        },
+        "ratioToTypeScript": 2.2526579086000638,
+        "baselineRatioToTypeScript": 2.251851078650476,
+        "speedupVsBaseline": 0.9996418320125273,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "scalar-region-0",
+        "label": "Scalar region \u00b7 zero work",
+        "family": "scalar-region-0",
+        "category": "canary",
+        "description": "Scalar closed-region guard and loop",
+        "scope": "Initial-zero guard cost",
+        "args": [
+          0,
+          524800
+        ],
+        "expected": 0,
+        "sourceSha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+        "sourcePath": "fixtures-historical/scalar-region.bend",
+        "baseline": {
+          "medianMs": 0.004113200481056692,
+          "minMs": 0.004064776955288396,
+          "maxMs": 0.004184052851294937,
+          "samplesMs": [
+            0.004164496018343081,
+            0.004113200481056692,
+            0.004184052851294937,
+            0.004064776955288396,
+            0.004076455188295854
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.004042911485857404,
+          "minMs": 0.003958113585215387,
+          "maxMs": 0.004552118635948566,
+          "samplesMs": [
+            0.004088842898030787,
+            0.003981566596894704,
+            0.004042911485857404,
+            0.003958113585215387,
+            0.004552118635948566
+          ]
+        },
+        "reference": {
+          "medianMs": 6.725117799999998e-05,
+          "minMs": 6.675956599999995e-05,
+          "maxMs": 6.801323200000002e-05,
+          "samplesMs": [
+            6.801323200000002e-05,
+            6.675956599999995e-05,
+            6.733130599999982e-05,
+            6.725117799999998e-05,
+            6.687821899999994e-05
+          ]
+        },
+        "ratioToTypeScript": 60.11658986638726,
+        "baselineRatioToTypeScript": 61.161761078098785,
+        "speedupVsBaseline": 1.0173857368495864,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "scalar-region-8192",
+        "label": "Scalar region \u00b7 8,192 iterations",
+        "family": "scalar-region-8192",
+        "category": "canary",
+        "description": "Scalar closed-region guard and loop",
+        "scope": "8192 scalar iterations; boundary guards included",
+        "args": [
+          8192,
+          524800
+        ],
+        "expected": 8192,
+        "sourceSha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+        "sourcePath": "fixtures-historical/scalar-region.bend",
+        "baseline": {
+          "medianMs": 0.116207518144407,
+          "minMs": 0.11510927373887245,
+          "maxMs": 0.126897309252218,
+          "samplesMs": [
+            0.11510927373887245,
+            0.11992749193245783,
+            0.126897309252218,
+            0.116207518144407,
+            0.11548525689783738
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.11521565410447762,
+          "minMs": 0.1148666485981308,
+          "maxMs": 0.11564701237809456,
+          "samplesMs": [
+            0.11521565410447762,
+            0.11530590997385134,
+            0.11564701237809456,
+            0.11496280847076462,
+            0.1148666485981308
+          ]
+        },
+        "reference": {
+          "medianMs": 0.09972756632302406,
+          "minMs": 0.09945088896528013,
+          "maxMs": 0.10892521164437449,
+          "samplesMs": [
+            0.09945088896528013,
+            0.09972756632302406,
+            0.10892521164437449,
+            0.0997330367823995,
+            0.099700425951087
+          ]
+        },
+        "ratioToTypeScript": 1.155303978152707,
+        "baselineRatioToTypeScript": 1.1652497140861064,
+        "speedupVsBaseline": 1.0086087610892696,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "complete-generic-row32",
+        "label": "Generic array row",
+        "family": "complete-generic-row32",
+        "category": "canary",
+        "description": "Complete generic edit-distance row and serialized state",
+        "scope": "n32 seed17, setup, one row and all four128-slot arrays; JSON serialization included",
+        "args": [
+          32,
+          17
+        ],
+        "expected": "[[0,2,1,1,0,0,0,1,1,0,0,2,3,1,3,1,0,1,0,0,2,1,0,0,0,2,0,2,1,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,0,1,0,1,2,0,0,0,0,2,0,0,3,0,1,2,0,1,2,0,0,1,3,3,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]",
+        "sourceSha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "sourcePath": "fixtures-historical/local-row.bend",
+        "baseline": {
+          "medianMs": 0.3760716955974844,
+          "minMs": 0.37398727448453634,
+          "maxMs": 0.42523833148405,
+          "samplesMs": [
+            0.3749467229381445,
+            0.37398727448453634,
+            0.4210590187050362,
+            0.42523833148405,
+            0.3760716955974844
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.394598937254902,
+          "minMs": 0.3841125773195878,
+          "maxMs": 0.43717293277310926,
+          "samplesMs": [
+            0.3841125773195878,
+            0.3904744896640827,
+            0.434895738095238,
+            0.43717293277310926,
+            0.394598937254902
+          ]
+        },
+        "reference": {
+          "medianMs": 0.0067822254583505956,
+          "minMs": 0.006521291353796162,
+          "maxMs": 0.0076408010420822865,
+          "samplesMs": [
+            0.006753944893556752,
+            0.0067822254583505956,
+            0.0076408010420822865,
+            0.006806341081210848,
+            0.006521291353796162
+          ]
+        },
+        "ratioToTypeScript": 58.1813358576945,
+        "baselineRatioToTypeScript": 55.44960100588328,
+        "speedupVsBaseline": 0.9530479180042761,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "mandelbrot",
+        "label": "Mandelbrot",
+        "family": "mandelbrot",
+        "category": "original",
+        "description": "Integer render, histogram, recolor",
+        "scope": "hd=size; iters=7; seed unused",
+        "args": [
+          2,
+          0
+        ],
+        "expected": 887240761,
+        "sourceSha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+        "sourcePath": "fixtures-historical/mandelbrot.bend",
+        "baseline": {
+          "medianMs": 0.16994108226077223,
+          "minMs": 0.16713600391061448,
+          "maxMs": 0.19139746388542964,
+          "samplesMs": [
+            0.16789870898876402,
+            0.16713600391061448,
+            0.189417868289638,
+            0.19139746388542964,
+            0.16994108226077223
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.13469442501153664,
+          "minMs": 0.12509952377147424,
+          "maxMs": 0.14593461056247312,
+          "samplesMs": [
+            0.12509952377147424,
+            0.13469442501153664,
+            0.13500260963066849,
+            0.1339796858590511,
+            0.14593461056247312
+          ]
+        },
+        "reference": {
+          "medianMs": 0.05167649106847504,
+          "minMs": 0.04528585346142117,
+          "maxMs": 0.05291150198150596,
+          "samplesMs": [
+            0.045561057495806016,
+            0.04528585346142117,
+            0.05291150198150596,
+            0.05167649106847504,
+            0.05284332596484869
+          ]
+        },
+        "ratioToTypeScript": 2.606493247249642,
+        "baselineRatioToTypeScript": 3.2885569191528146,
+        "speedupVsBaseline": 1.2616786644749156,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "editdist",
+        "label": "Edit distance",
+        "family": "editdist",
+        "category": "original",
+        "description": "Mutable-array Levenshtein dynamic programming",
+        "scope": "batch depth=size (2^size pairs); first index=seed; length=256",
+        "args": [
+          2,
+          0
+        ],
+        "expected": 2065873279,
+        "sourceSha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "sourcePath": "fixtures-historical/editdist.bend",
+        "baseline": {
+          "medianMs": 11.553599037037033,
+          "minMs": 10.504453655172412,
+          "maxMs": 12.097653074074069,
+          "samplesMs": [
+            10.504453655172412,
+            10.538770655172412,
+            11.553599037037033,
+            12.097653074074069,
+            11.632351961538461
+          ]
+        },
+        "candidate": {
+          "medianMs": 10.499040448275865,
+          "minMs": 10.452124655172415,
+          "maxMs": 11.641678925925927,
+          "samplesMs": [
+            10.452124655172415,
+            10.499040448275865,
+            11.641678925925927,
+            10.488313586206898,
+            10.54080651724138
+          ]
+        },
+        "reference": {
+          "medianMs": 4.944452524590167,
+          "minMs": 4.900164548387095,
+          "maxMs": 5.412721214285715,
+          "samplesMs": [
+            4.900164548387095,
+            4.916071557377049,
+            5.412721214285715,
+            5.368249357142856,
+            4.944452524590167
+          ]
+        },
+        "ratioToTypeScript": 2.123397968948262,
+        "baselineRatioToTypeScript": 2.336679132740724,
+        "speedupVsBaseline": 1.1004433304125756,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "tree-bitonic",
+        "label": "Tree bitonic sort",
+        "family": "tree-bitonic",
+        "category": "original",
+        "description": "Tree bitonic sort and sortedness verification",
+        "scope": "tree depth=size (2^size leaves); first index=seed",
+        "args": [
+          8,
+          0
+        ],
+        "expected": 971629740,
+        "sourceSha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "sourcePath": "fixtures-historical/tree-bitonic.bend",
+        "baseline": {
+          "medianMs": 0.3502052078977932,
+          "minMs": 0.33758107424071987,
+          "maxMs": 0.38339682997481084,
+          "samplesMs": [
+            0.3502052078977932,
+            0.33758107424071987,
+            0.34194162452107274,
+            0.38339682997481084,
+            0.36180772228989033
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.36122825631768957,
+          "minMs": 0.3519274836065576,
+          "maxMs": 0.39656789659863945,
+          "samplesMs": [
+            0.36122825631768957,
+            0.3519274836065576,
+            0.39656789659863945,
+            0.3520981086448597,
+            0.3661531810449573
+          ]
+        },
+        "reference": {
+          "medianMs": 0.2836624902325582,
+          "minMs": 0.27772145601436277,
+          "maxMs": 0.3071520255885362,
+          "samplesMs": [
+            0.2836624902325582,
+            0.2891912334883721,
+            0.3071520255885362,
+            0.27772145601436277,
+            0.28201052518656705
+          ]
+        },
+        "ratioToTypeScript": 1.2734438593609603,
+        "baselineRatioToTypeScript": 1.2345841271106397,
+        "speedupVsBaseline": 0.9694845344263381,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "lexer",
+        "label": "Lexer",
+        "family": "lexer",
+        "category": "original",
+        "description": "Generated-string tokenizer",
+        "scope": "batch depth=size (2^size lines); first index=seed",
+        "args": [
+          8,
+          0
+        ],
+        "expected": 1822208108,
+        "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "sourcePath": "fixtures-historical/lexer.bend",
+        "baseline": {
+          "medianMs": 11.923401038461538,
+          "minMs": 11.808669653846149,
+          "maxMs": 11.940917040000004,
+          "samplesMs": [
+            11.808669653846149,
+            11.939313576923077,
+            11.923401038461538,
+            11.899691576923077,
+            11.940917040000004
+          ]
+        },
+        "candidate": {
+          "medianMs": 2.459971413223141,
+          "minMs": 2.4396420909090897,
+          "maxMs": 2.496802466666666,
+          "samplesMs": [
+            2.4396420909090897,
+            2.4537096280991726,
+            2.4634166611570243,
+            2.459971413223141,
+            2.496802466666666
+          ]
+        },
+        "reference": {
+          "medianMs": 1.670755574585635,
+          "minMs": 1.6651643611111113,
+          "maxMs": 1.6956369613259659,
+          "samplesMs": [
+            1.6730344767441854,
+            1.6956369613259659,
+            1.6651643611111113,
+            1.6691556629834259,
+            1.670755574585635
+          ]
+        },
+        "ratioToTypeScript": 1.472370615212964,
+        "baselineRatioToTypeScript": 7.136532249140433,
+        "speedupVsBaseline": 4.846967316111645,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "symreg",
+        "label": "Symbolic regression",
+        "family": "symreg",
+        "category": "original",
+        "description": "Expression-tree symbolic regression",
+        "scope": "population depth=size (2^size programs); initial seed=seed; rounds=32; points=16",
+        "args": [
+          6,
+          42
+        ],
+        "expected": 2490246820,
+        "sourceSha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "sourcePath": "fixtures-historical/symreg.bend",
+        "baseline": {
+          "medianMs": 1.9559562402597404,
+          "minMs": 1.9518529741935489,
+          "maxMs": 2.1701811574803145,
+          "samplesMs": [
+            1.9559562402597404,
+            1.9518529741935489,
+            2.1701811574803145,
+            1.9708068896103899,
+            1.9520144545454545
+          ]
+        },
+        "candidate": {
+          "medianMs": 1.47129655882353,
+          "minMs": 1.4591036570048308,
+          "maxMs": 1.5126967718446598,
+          "samplesMs": [
+            1.47129655882353,
+            1.4591036570048308,
+            1.5126967718446598,
+            1.4999907874396132,
+            1.4659802238805975
+          ]
+        },
+        "reference": {
+          "medianMs": 1.1059407408759125,
+          "minMs": 1.0980236678832116,
+          "maxMs": 1.2393298617886181,
+          "samplesMs": [
+            1.102812076642335,
+            1.0980236678832116,
+            1.2339693501945521,
+            1.1059407408759125,
+            1.2393298617886181
+          ]
+        },
+        "ratioToTypeScript": 1.3303574996778338,
+        "baselineRatioToTypeScript": 1.7685904569449262,
+        "speedupVsBaseline": 1.3294099197946545,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "test-morning-program",
+        "label": "Morning mixed program",
+        "family": "test-morning-program",
+        "category": "original",
+        "description": "mixed strings, Map, arithmetic and formatting",
+        "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+        "args": [],
+        "expected": "a-bb-ccc 8 1877 42 lo hello 3",
+        "sourceSha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+        "sourcePath": "fixtures-historical/test-morning-program.bend",
+        "baseline": {
+          "medianMs": 0.19771808813559322,
+          "minMs": 0.19578582418191903,
+          "maxMs": 0.22327984654731453,
+          "samplesMs": [
+            0.19771808813559322,
+            0.19711956853932586,
+            0.22327984654731453,
+            0.19578582418191903,
+            0.22291177304075227
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.19877851252847387,
+          "minMs": 0.1955676967167501,
+          "maxMs": 0.2211886939961265,
+          "samplesMs": [
+            0.19649855041782727,
+            0.19877851252847387,
+            0.2211886939961265,
+            0.1955676967167501,
+            0.1992971020408163
+          ]
+        },
+        "reference": {
+          "medianMs": 0.0032793933726302355,
+          "minMs": 0.003139255764755661,
+          "maxMs": 0.0034675227165221322,
+          "samplesMs": [
+            0.0032896894086727984,
+            0.0032382220874674584,
+            0.0034675227165221322,
+            0.0032793933726302355,
+            0.003139255764755661
+          ]
+        },
+        "ratioToTypeScript": 60.61441551583172,
+        "baselineRatioToTypeScript": 60.29105559148384,
+        "speedupVsBaseline": 0.9946652966691822,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "test-evening-program",
+        "label": "Evening mixed program",
+        "family": "test-evening-program",
+        "category": "original",
+        "description": "mixed float array, Map/Set, number parsing and tuple reuse",
+        "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+        "args": [],
+        "expected": 81111,
+        "sourceSha256": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+        "sourcePath": "fixtures-historical/test-evening-program.bend",
+        "baseline": {
+          "medianMs": 0.13035454394197948,
+          "minMs": 0.12942177633851476,
+          "maxMs": 0.18470703769401325,
+          "samplesMs": [
+            0.13017367931034476,
+            0.13035454394197948,
+            0.18470703769401325,
+            0.13172619653679657,
+            0.12942177633851476
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.13000590103092785,
+          "minMs": 0.12826054235845044,
+          "maxMs": 0.22561201590909108,
+          "samplesMs": [
+            0.12915702569593146,
+            0.12826054235845044,
+            0.22561201590909108,
+            0.1304765572052402,
+            0.13000590103092785
+          ]
+        },
+        "reference": {
+          "medianMs": 0.0026355491348702565,
+          "minMs": 0.002598472899506561,
+          "maxMs": 0.002876093950030974,
+          "samplesMs": [
+            0.0026249046091128964,
+            0.002598472899506561,
+            0.0028289484198342333,
+            0.002876093950030974,
+            0.0026355491348702565
+          ]
+        },
+        "ratioToTypeScript": 49.32782292344848,
+        "baselineRatioToTypeScript": 49.46010765547599,
+        "speedupVsBaseline": 1.0026817468152365,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "test-rle-roundtrip",
+        "label": "RLE roundtrip",
+        "family": "test-rle-roundtrip",
+        "category": "original",
+        "description": "original six-element compression and decompression test",
+        "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+        "args": [],
+        "expected": 11,
+        "sourceSha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+        "sourcePath": "fixtures-historical/test-rle-roundtrip.bend",
+        "baseline": {
+          "medianMs": 0.03631491288114498,
+          "minMs": 0.03612578708637996,
+          "maxMs": 0.042063657821229054,
+          "samplesMs": [
+            0.03617350310250681,
+            0.03631491288114498,
+            0.042063657821229054,
+            0.03612578708637996,
+            0.03760630238660503
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.03177614861245044,
+          "minMs": 0.03136806716417912,
+          "maxMs": 0.03580315338793745,
+          "samplesMs": [
+            0.03177614861245044,
+            0.03168814988520825,
+            0.03580315338793745,
+            0.03136806716417912,
+            0.03200573372528061
+          ]
+        },
+        "reference": {
+          "medianMs": 0.0005632615640402494,
+          "minMs": 0.0005431391951925382,
+          "maxMs": 0.000627189174544168,
+          "samplesMs": [
+            0.0005433376824088091,
+            0.0005431391951925382,
+            0.000627189174544168,
+            0.0005652279124597141,
+            0.0005632615640402494
+          ]
+        },
+        "ratioToTypeScript": 56.41455167741534,
+        "baselineRatioToTypeScript": 64.472556267926,
+        "speedupVsBaseline": 1.1428355690316785,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "test-map-set-ops",
+        "label": "Map / Set operations",
+        "family": "test-map-set-ops",
+        "category": "original",
+        "description": "original Map/Set feature composition checks",
+        "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+        "args": [],
+        "expected": 11111,
+        "sourceSha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+        "sourcePath": "fixtures-historical/test-map-set-ops.bend",
+        "baseline": {
+          "medianMs": 1.4873724398148152,
+          "minMs": 1.4808041751152081,
+          "maxMs": 1.5617074700460831,
+          "samplesMs": [
+            1.4838474285714283,
+            1.4873724398148152,
+            1.4808041751152081,
+            1.5617074700460831,
+            1.4884120462962966
+          ]
+        },
+        "candidate": {
+          "medianMs": 1.1664255420875422,
+          "minMs": 1.1638733457627117,
+          "maxMs": 1.1698919527027025,
+          "samplesMs": [
+            1.1698919527027025,
+            1.1664255420875422,
+            1.1663692939068098,
+            1.1665280067114094,
+            1.1638733457627117
+          ]
+        },
+        "reference": {
+          "medianMs": 0.020515075104502158,
+          "minMs": 0.02043818456213222,
+          "maxMs": 0.020841298758990268,
+          "samplesMs": [
+            0.020515075104502158,
+            0.020841298758990268,
+            0.02046884766988298,
+            0.020763371124577226,
+            0.02043818456213222
+          ]
+        },
+        "ratioToTypeScript": 56.85699594789995,
+        "baselineRatioToTypeScript": 72.50143771047674,
+        "speedupVsBaseline": 1.2751542092887274,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "raytrace",
+        "label": "Ray tracing",
+        "family": "raytrace",
+        "category": "original",
+        "description": "F32 recursive sphere ray tracing",
+        "scope": "rows=6; width=size; seed unused",
+        "args": [
+          80,
+          0
+        ],
+        "expected": 402971,
+        "sourceSha256": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+        "sourcePath": "fixtures-historical/raytrace.bend",
+        "baseline": {
+          "medianMs": 630.4249249999998,
+          "minMs": 628.2134310000001,
+          "maxMs": 633.0524019999998,
+          "samplesMs": [
+            628.2134310000001,
+            630.4249249999998,
+            633.0524019999998
+          ]
+        },
+        "candidate": {
+          "medianMs": 59.552787333333335,
+          "minMs": 59.46645216666665,
+          "maxMs": 59.934866166666666,
+          "samplesMs": [
+            59.552787333333335,
+            59.46645216666665,
+            59.934866166666666
+          ]
+        },
+        "reference": {
+          "medianMs": 34.20636433333331,
+          "minMs": 34.07887244444444,
+          "maxMs": 34.315377,
+          "samplesMs": [
+            34.20636433333331,
+            34.315377,
+            34.07887244444444
+          ]
+        },
+        "ratioToTypeScript": 1.740985588325168,
+        "baselineRatioToTypeScript": 18.430047661793314,
+        "speedupVsBaseline": 10.585985194468531,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-editdist-0-17",
+        "label": "Edit distance \u00b7 0 / 17",
+        "family": "editdist",
+        "category": "coverage",
+        "description": "Mutable-array Levenshtein dynamic programming; additional fixed input",
+        "scope": "2^depth complete 256\u00d7256 pairs, starting at the selected index; input generation and checksum included",
+        "args": [
+          0,
+          17
+        ],
+        "expected": 226010650,
+        "sourceSha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "sourcePath": "fixtures-historical/editdist.bend",
+        "baseline": {
+          "medianMs": 2.6457212142857145,
+          "minMs": 2.627199088495576,
+          "maxMs": 3.0102064190476194,
+          "samplesMs": [
+            2.6457212142857145,
+            2.6540456228070175,
+            2.6340658750000006,
+            3.0102064190476194,
+            2.627199088495576
+          ]
+        },
+        "candidate": {
+          "medianMs": 2.6361178938053094,
+          "minMs": 2.6336778750000014,
+          "maxMs": 2.6639323982300884,
+          "samplesMs": [
+            2.644375937499999,
+            2.6349610526315783,
+            2.6336778750000014,
+            2.6639323982300884,
+            2.6361178938053094
+          ]
+        },
+        "reference": {
+          "medianMs": 1.2318287272727275,
+          "minMs": 1.2290682081632653,
+          "maxMs": 1.3849443096234313,
+          "samplesMs": [
+            1.2315874166666665,
+            1.3849443096234313,
+            1.2408416652892558,
+            1.2318287272727275,
+            1.2290682081632653
+          ]
+        },
+        "ratioToTypeScript": 2.140003586084311,
+        "baselineRatioToTypeScript": 2.1477995728702877,
+        "speedupVsBaseline": 1.0036429783747427,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-editdist-3-123",
+        "label": "Edit distance \u00b7 3 / 123",
+        "family": "editdist",
+        "category": "coverage",
+        "description": "Mutable-array Levenshtein dynamic programming; additional fixed input",
+        "scope": "2^depth complete 256\u00d7256 pairs, starting at the selected index; input generation and checksum included",
+        "args": [
+          3,
+          123
+        ],
+        "expected": 4131746436,
+        "sourceSha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "sourcePath": "fixtures-historical/editdist.bend",
+        "baseline": {
+          "medianMs": 21.08431666666667,
+          "minMs": 21.009045600000004,
+          "maxMs": 22.065056214285715,
+          "samplesMs": [
+            21.009045600000004,
+            22.065056214285715,
+            21.801012999999994,
+            21.0490628,
+            21.08431666666667
+          ]
+        },
+        "candidate": {
+          "medianMs": 20.868340800000002,
+          "minMs": 20.83803746666666,
+          "maxMs": 20.999566600000012,
+          "samplesMs": [
+            20.987157733333333,
+            20.850083399999995,
+            20.868340800000002,
+            20.83803746666666,
+            20.999566600000012
+          ]
+        },
+        "reference": {
+          "medianMs": 9.946376999999998,
+          "minMs": 9.877638645161289,
+          "maxMs": 10.1766752,
+          "samplesMs": [
+            9.924957999999995,
+            10.1766752,
+            9.973481599999998,
+            9.877638645161289,
+            9.946376999999998
+          ]
+        },
+        "ratioToTypeScript": 2.0980846392611103,
+        "baselineRatioToTypeScript": 2.119798663037473,
+        "speedupVsBaseline": 1.0103494508133903,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-lexer-6-17",
+        "label": "Lexer \u00b7 6 / 17",
+        "family": "lexer",
+        "category": "coverage",
+        "description": "Generated-string tokenizer; additional fixed input",
+        "scope": "2^depth generated lines with changed first index; original short ASCII template remains",
+        "args": [
+          6,
+          17
+        ],
+        "expected": 3462121268,
+        "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "sourcePath": "fixtures-historical/lexer.bend",
+        "baseline": {
+          "medianMs": 3.024852562499999,
+          "minMs": 2.984593656250001,
+          "maxMs": 3.0575017731958773,
+          "samplesMs": [
+            3.024852562499999,
+            2.984593656250001,
+            3.0575017731958773,
+            3.0327664479166665,
+            2.989507010309278
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.639664991507431,
+          "minMs": 0.6352654661016948,
+          "maxMs": 0.7197757458033576,
+          "samplesMs": [
+            0.6352654661016948,
+            0.7197757458033576,
+            0.6369760106609809,
+            0.639664991507431,
+            0.6792366795698928
+          ]
+        },
+        "reference": {
+          "medianMs": 0.4097449276773299,
+          "minMs": 0.40883627913279136,
+          "maxMs": 0.4577675548961427,
+          "samplesMs": [
+            0.40909191847826065,
+            0.4577675548961427,
+            0.40883627913279136,
+            0.4097449276773299,
+            0.41137149105914694
+          ]
+        },
+        "ratioToTypeScript": 1.5611297377942426,
+        "baselineRatioToTypeScript": 7.382281898269259,
+        "speedupVsBaseline": 4.728807426793279,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-lexer-10-123",
+        "label": "Lexer \u00b7 10 / 123",
+        "family": "lexer",
+        "category": "coverage",
+        "description": "Generated-string tokenizer; additional fixed input",
+        "scope": "2^depth generated lines with changed first index; original short ASCII template remains",
+        "args": [
+          10,
+          123
+        ],
+        "expected": 3601667849,
+        "sourceSha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "sourcePath": "fixtures-historical/lexer.bend",
+        "baseline": {
+          "medianMs": 46.12568,
+          "minMs": 45.693163428571424,
+          "maxMs": 51.47596233333335,
+          "samplesMs": [
+            51.47596233333335,
+            46.12457299999999,
+            47.02053471428572,
+            46.12568,
+            45.693163428571424
+          ]
+        },
+        "candidate": {
+          "medianMs": 9.943015387096773,
+          "minMs": 9.815516870967743,
+          "maxMs": 11.03434746428571,
+          "samplesMs": [
+            10.034381071428575,
+            11.03434746428571,
+            9.815516870967743,
+            9.827388516129032,
+            9.943015387096773
+          ]
+        },
+        "reference": {
+          "medianMs": 6.620280021739132,
+          "minMs": 6.579286466666665,
+          "maxMs": 7.390064777777777,
+          "samplesMs": [
+            7.390064777777777,
+            7.342503023809524,
+            6.579286466666665,
+            6.613101652173915,
+            6.620280021739132
+          ]
+        },
+        "ratioToTypeScript": 1.5019025410476166,
+        "baselineRatioToTypeScript": 6.967330664040838,
+        "speedupVsBaseline": 4.639003180047183,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-tree-bitonic-6-17",
+        "label": "Tree bitonic sort \u00b7 6 / 17",
+        "family": "tree-bitonic",
+        "category": "coverage",
+        "description": "Tree bitonic sort and sortedness verification; additional fixed input",
+        "scope": "2^depth leaves over a seed-dependent key interval; full sort and order-sensitive verification",
+        "args": [
+          6,
+          17
+        ],
+        "expected": 2700561448,
+        "sourceSha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "sourcePath": "fixtures-historical/tree-bitonic.bend",
+        "baseline": {
+          "medianMs": 0.0718908347867075,
+          "minMs": 0.07132253468140137,
+          "maxMs": 0.07960490714098872,
+          "samplesMs": [
+            0.07145633121019107,
+            0.07960490714098872,
+            0.07340261868932041,
+            0.0718908347867075,
+            0.07132253468140137
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.07309373848009648,
+          "minMs": 0.07213207014997582,
+          "maxMs": 0.07889443914807302,
+          "samplesMs": [
+            0.07213207014997582,
+            0.07889443914807302,
+            0.07309373848009648,
+            0.07214566713914482,
+            0.07401396003851708
+          ]
+        },
+        "reference": {
+          "medianMs": 0.03707011617834393,
+          "minMs": 0.03667999261849263,
+          "maxMs": 0.040699577700348426,
+          "samplesMs": [
+            0.03707011617834393,
+            0.040699577700348426,
+            0.03667999261849263,
+            0.037860215544567,
+            0.036855612014224014
+          ]
+        },
+        "ratioToTypeScript": 1.9717698786926723,
+        "baselineRatioToTypeScript": 1.9393204607409773,
+        "speedupVsBaseline": 0.983542999463401,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-tree-bitonic-9-123",
+        "label": "Tree bitonic sort \u00b7 9 / 123",
+        "family": "tree-bitonic",
+        "category": "coverage",
+        "description": "Tree bitonic sort and sortedness verification; additional fixed input",
+        "scope": "2^depth leaves over a seed-dependent key interval; full sort and order-sensitive verification",
+        "args": [
+          9,
+          123
+        ],
+        "expected": 2950706516,
+        "sourceSha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "sourcePath": "fixtures-historical/tree-bitonic.bend",
+        "baseline": {
+          "medianMs": 0.8998676207865169,
+          "minMs": 0.8044543333333335,
+          "maxMs": 0.9282879766763845,
+          "samplesMs": [
+            0.8940271774647883,
+            0.9282879766763845,
+            0.8044543333333335,
+            0.90035484,
+            0.8998676207865169
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.8184233687943262,
+          "minMs": 0.801269731034483,
+          "maxMs": 0.8975432974504248,
+          "samplesMs": [
+            0.8184233687943262,
+            0.8051539726027401,
+            0.801269731034483,
+            0.890820443502825,
+            0.8975432974504248
+          ]
+        },
+        "reference": {
+          "medianMs": 0.7319055347721822,
+          "minMs": 0.6950013129251704,
+          "maxMs": 0.7472068554216866,
+          "samplesMs": [
+            0.7319055347721822,
+            0.6996789636363634,
+            0.6950013129251704,
+            0.7472068554216866,
+            0.7407822211538464
+          ]
+        },
+        "ratioToTypeScript": 1.1182090173004007,
+        "baselineRatioToTypeScript": 1.2294860170262487,
+        "speedupVsBaseline": 1.099513595404994,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-symreg-4-17",
+        "label": "Symbolic regression \u00b7 4 / 17",
+        "family": "symreg",
+        "category": "coverage",
+        "description": "Expression-tree symbolic regression; additional fixed input",
+        "scope": "2^depth population with changed initial seed; AST depth5,32 mutation rounds and16 data points remain fixed",
+        "args": [
+          4,
+          17
+        ],
+        "expected": 2759212979,
+        "sourceSha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "sourcePath": "fixtures-historical/symreg.bend",
+        "baseline": {
+          "medianMs": 0.9826676219512198,
+          "minMs": 0.9768287570850203,
+          "maxMs": 1.0022828811475413,
+          "samplesMs": [
+            0.97789597983871,
+            0.9768287570850203,
+            0.9826676219512198,
+            1.0022828811475413,
+            0.9887462716049389
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.776624118556701,
+          "minMs": 0.7740493746770025,
+          "maxMs": 0.7849291388174805,
+          "samplesMs": [
+            0.7780574322916672,
+            0.7849291388174805,
+            0.776436184491979,
+            0.7740493746770025,
+            0.776624118556701
+          ]
+        },
+        "reference": {
+          "medianMs": 0.5502344567219152,
+          "minMs": 0.5492347356746765,
+          "maxMs": 0.5542184636363634,
+          "samplesMs": [
+            0.5493537683823533,
+            0.552418496309963,
+            0.5492347356746765,
+            0.5542184636363634,
+            0.5502344567219152
+          ]
+        },
+        "ratioToTypeScript": 1.4114421753656217,
+        "baselineRatioToTypeScript": 1.785907098231497,
+        "speedupVsBaseline": 1.2653065987410173,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-symreg-7-123",
+        "label": "Symbolic regression \u00b7 7 / 123",
+        "family": "symreg",
+        "category": "coverage",
+        "description": "Expression-tree symbolic regression; additional fixed input",
+        "scope": "2^depth population with changed initial seed; AST depth5,32 mutation rounds and16 data points remain fixed",
+        "args": [
+          7,
+          123
+        ],
+        "expected": 3769601746,
+        "sourceSha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "sourcePath": "fixtures-historical/symreg.bend",
+        "baseline": {
+          "medianMs": 3.2264168172043,
+          "minMs": 3.206604680851064,
+          "maxMs": 3.2592091318681318,
+          "samplesMs": [
+            3.2264168172043,
+            3.206604680851064,
+            3.234118565217391,
+            3.2592091318681318,
+            3.212457234042554
+          ]
+        },
+        "candidate": {
+          "medianMs": 2.495686032258066,
+          "minMs": 2.489538219512195,
+          "maxMs": 2.503073025210083,
+          "samplesMs": [
+            2.489538219512195,
+            2.492956379032258,
+            2.503073025210083,
+            2.495686032258066,
+            2.496143764227643
+          ]
+        },
+        "reference": {
+          "medianMs": 1.8670776296296285,
+          "minMs": 1.8667502249999999,
+          "maxMs": 1.8837833500000003,
+          "samplesMs": [
+            1.8837833500000003,
+            1.8670776296296285,
+            1.87647601863354,
+            1.8667502249999999,
+            1.866862826086956
+          ]
+        },
+        "ratioToTypeScript": 1.3366803782835395,
+        "baselineRatioToTypeScript": 1.728057133780947,
+        "speedupVsBaseline": 1.292797561672883,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-local-fold-128-0",
+        "label": "Array fold \u00b7 128 / 0",
+        "family": "local-fold",
+        "category": "coverage",
+        "description": "Array read/write and accumulator fold; additional fixed input",
+        "scope": "128-slot array; size read/accumulate/write steps, cyclic indexing and final scalar checksum",
+        "args": [
+          128,
+          0
+        ],
+        "expected": 0,
+        "sourceSha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "sourcePath": "fixtures-historical/local-fold.bend",
+        "baseline": {
+          "medianMs": 0.0075904492853452726,
+          "minMs": 0.007557544804354726,
+          "maxMs": 0.007704355781004022,
+          "samplesMs": [
+            0.007608269794205589,
+            0.007573030338330629,
+            0.0075904492853452726,
+            0.007557544804354726,
+            0.007704355781004022
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.007463924976470004,
+          "minMs": 0.007416091314358498,
+          "maxMs": 0.0076750711919273676,
+          "samplesMs": [
+            0.0074482894028511624,
+            0.007624382706599837,
+            0.007416091314358498,
+            0.007463924976470004,
+            0.0076750711919273676
+          ]
+        },
+        "reference": {
+          "medianMs": 0.0014426792073614064,
+          "minMs": 0.001400136523584774,
+          "maxMs": 0.001604156179492234,
+          "samplesMs": [
+            0.001451625240367827,
+            0.001604156179492234,
+            0.001400136523584774,
+            0.0014426792073614064,
+            0.001439588266770896
+          ]
+        },
+        "ratioToTypeScript": 5.173655334037273,
+        "baselineRatioToTypeScript": 5.261356264521101,
+        "speedupVsBaseline": 1.0169514443505443,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-local-fold-8192-123",
+        "label": "Array fold \u00b7 8192 / 123",
+        "family": "local-fold",
+        "category": "coverage",
+        "description": "Array read/write and accumulator fold; additional fixed input",
+        "scope": "128-slot array; size read/accumulate/write steps, cyclic indexing and final scalar checksum",
+        "args": [
+          8192,
+          123
+        ],
+        "expected": 805701512,
+        "sourceSha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "sourcePath": "fixtures-historical/local-fold.bend",
+        "baseline": {
+          "medianMs": 0.17534728184438034,
+          "minMs": 0.17225558242389424,
+          "maxMs": 0.1901506938502675,
+          "samplesMs": [
+            0.17534728184438034,
+            0.1901506938502675,
+            0.18991853585147236,
+            0.17225558242389424,
+            0.17299321061742637
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.17333091806116566,
+          "minMs": 0.17225816685845804,
+          "maxMs": 0.19174072992227978,
+          "samplesMs": [
+            0.17225816685845804,
+            0.19174072992227978,
+            0.17307530317002878,
+            0.1735718699654775,
+            0.17333091806116566
+          ]
+        },
+        "reference": {
+          "medianMs": 0.11704292345679018,
+          "minMs": 0.1145611075268817,
+          "maxMs": 0.13800060026385222,
+          "samplesMs": [
+            0.1145611075268817,
+            0.13800060026385222,
+            0.136650195054945,
+            0.11546909146590446,
+            0.11704292345679018
+          ]
+        },
+        "ratioToTypeScript": 1.4809175381299822,
+        "baselineRatioToTypeScript": 1.4981450963937595,
+        "speedupVsBaseline": 1.0116330300777796,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-mandelbrot-grid-4-7",
+        "label": "Mandelbrot \u00b7 4 / 7",
+        "family": "mandelbrot",
+        "category": "coverage",
+        "description": "Integer render, histogram, recolor; additional fixed input",
+        "scope": "16\u00d716 center samples spread across the complete4096\u00d74096 viewport; original pix function and wrapping position-weighted sum; no histogram/recolor passes",
+        "args": [
+          4,
+          7
+        ],
+        "expected": 3135859970,
+        "sourceSha256": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+        "sourcePath": "fixtures-variants/mandelbrot-grid.bend",
+        "baseline": {
+          "medianMs": 0.04286847862129144,
+          "minMs": 0.04255924614713579,
+          "maxMs": 0.04970718348778434,
+          "samplesMs": [
+            0.04255924614713579,
+            0.04929561131105397,
+            0.04970718348778434,
+            0.04286847862129144,
+            0.04283750445786598
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.042457389561707054,
+          "minMs": 0.04221729593147752,
+          "maxMs": 0.04721924476625217,
+          "samplesMs": [
+            0.04223225147630709,
+            0.04221729593147752,
+            0.04721924476625217,
+            0.042800359879032274,
+            0.042457389561707054
+          ]
+        },
+        "reference": {
+          "medianMs": 0.01572881382789015,
+          "minMs": 0.01535064379018267,
+          "maxMs": 0.017476239565715534,
+          "samplesMs": [
+            0.01564575378079005,
+            0.01572881382789015,
+            0.017476239565715534,
+            0.0157859045670741,
+            0.01535064379018267
+          ]
+        },
+        "ratioToTypeScript": 2.6993382988882546,
+        "baselineRatioToTypeScript": 2.7254743485664226,
+        "speedupVsBaseline": 1.0096823913063924,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-mandelbrot-grid-5-31",
+        "label": "Mandelbrot \u00b7 5 / 31",
+        "family": "mandelbrot",
+        "category": "coverage",
+        "description": "Integer render, histogram, recolor; additional fixed input",
+        "scope": "32\u00d732 center samples spread across the complete4096\u00d74096 viewport; original pix function and wrapping position-weighted sum; no histogram/recolor passes",
+        "args": [
+          5,
+          31
+        ],
+        "expected": 2471659814,
+        "sourceSha256": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+        "sourcePath": "fixtures-variants/mandelbrot-grid.bend",
+        "baseline": {
+          "medianMs": 0.42015497625698306,
+          "minMs": 0.419559459269663,
+          "maxMs": 0.4280376934097423,
+          "samplesMs": [
+            0.4280376934097423,
+            0.4205999234042554,
+            0.419559459269663,
+            0.42015497625698306,
+            0.4200169438990184
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.43748283615819206,
+          "minMs": 0.41693523347398037,
+          "maxMs": 0.46536270193740703,
+          "samplesMs": [
+            0.43748283615819206,
+            0.41693523347398037,
+            0.46536270193740703,
+            0.4592775605815834,
+            0.41818126404494377
+          ]
+        },
+        "reference": {
+          "medianMs": 0.23231569715603378,
+          "minMs": 0.23066369892473115,
+          "maxMs": 0.253028089673913,
+          "samplesMs": [
+            0.23066369892473115,
+            0.2329178285714286,
+            0.253028089673913,
+            0.23177653964588152,
+            0.23231569715603378
+          ]
+        },
+        "ratioToTypeScript": 1.8831393724736503,
+        "baselineRatioToTypeScript": 1.8085518172058253,
+        "speedupVsBaseline": 0.9603919091926538,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-ray-active-64-2440",
+        "label": "Ray tracing \u00b7 64 / 2440",
+        "family": "raytrace",
+        "category": "coverage",
+        "description": "F32 recursive sphere ray tracing; additional fixed input",
+        "scope": "64 consecutive active pixels in the original80\u00d764 small viewport, starting at linear index2440; four subrays each, original geometry/shadow/bounce code, ordered output digest, no inactive probes",
+        "args": [
+          64,
+          2440
+        ],
+        "expected": 1457676559,
+        "sourceSha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "sourcePath": "fixtures-variants/raytrace-active.bend",
+        "baseline": {
+          "medianMs": 7.528297097560975,
+          "minMs": 7.448134268292684,
+          "maxMs": 8.57838783870968,
+          "samplesMs": [
+            7.596805170731708,
+            7.448134268292684,
+            8.57838783870968,
+            7.5181718292682955,
+            7.528297097560975
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.5600130037105748,
+          "minMs": 0.5573354290976057,
+          "maxMs": 0.5717951360153257,
+          "samplesMs": [
+            0.5717951360153257,
+            0.5573354290976057,
+            0.5600130037105748,
+            0.5575598388888887,
+            0.5603924944444442
+          ]
+        },
+        "reference": {
+          "medianMs": 0.30149340643863176,
+          "minMs": 0.300410551654965,
+          "maxMs": 0.31716288559754857,
+          "samplesMs": [
+            0.31716288559754857,
+            0.300410551654965,
+            0.30149340643863176,
+            0.3010391910000001,
+            0.30206661785356087
+          ]
+        },
+        "ratioToTypeScript": 1.8574635191053974,
+        "baselineRatioToTypeScript": 24.97002235136224,
+        "speedupVsBaseline": 13.443075513745997,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "variation-ray-active-256-2240",
+        "label": "Ray tracing \u00b7 256 / 2240",
+        "family": "raytrace",
+        "category": "coverage",
+        "description": "F32 recursive sphere ray tracing; additional fixed input",
+        "scope": "256 consecutive active pixels in the original80\u00d764 small viewport, starting at linear index2240; four subrays each, original geometry/shadow/bounce code, ordered output digest, no inactive probes",
+        "args": [
+          256,
+          2240
+        ],
+        "expected": 2166930202,
+        "sourceSha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "sourcePath": "fixtures-variants/raytrace-active.bend",
+        "baseline": {
+          "medianMs": 31.864051599999993,
+          "minMs": 31.7050915,
+          "maxMs": 34.41733339999998,
+          "samplesMs": [
+            34.41733339999998,
+            31.7050915,
+            31.7620455,
+            32.01164099999998,
+            31.864051599999993
+          ]
+        },
+        "candidate": {
+          "medianMs": 2.2947577482517474,
+          "minMs": 2.194163125000001,
+          "maxMs": 2.4858408492063484,
+          "samplesMs": [
+            2.4149457194244603,
+            2.214467284722223,
+            2.4858408492063484,
+            2.194163125000001,
+            2.2947577482517474
+          ]
+        },
+        "reference": {
+          "medianMs": 1.2451247024793386,
+          "minMs": 1.240142400826446,
+          "maxMs": 1.3870257570093465,
+          "samplesMs": [
+            1.2451247024793386,
+            1.240142400826446,
+            1.3870257570093465,
+            1.2402195103734441,
+            1.2475353347107443
+          ]
+        },
+        "ratioToTypeScript": 1.842994315093372,
+        "baselineRatioToTypeScript": 25.591052475748903,
+        "speedupVsBaseline": 13.885584055343315,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-closures-64",
+        "label": "Captured closures \u00b7 64",
+        "family": "closures",
+        "category": "coverage",
+        "description": "Build and apply captured closure composition chains",
+        "scope": "size captured affine closures; generated chain and invocation both timed",
+        "args": [
+          64,
+          17
+        ],
+        "expected": 2097,
+        "sourceSha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "sourcePath": "fixtures-new/closures.bend",
+        "baseline": {
+          "medianMs": 0.009445647874423601,
+          "minMs": 0.009356094851706773,
+          "maxMs": 0.011016753790025502,
+          "samplesMs": [
+            0.011016753790025502,
+            0.009526530829243738,
+            0.009356094851706773,
+            0.009445647874423601,
+            0.009440452691271384
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.00971943509428082,
+          "minMs": 0.009424531067228473,
+          "maxMs": 0.010687586901139344,
+          "samplesMs": [
+            0.010687586901139344,
+            0.009424531067228473,
+            0.0098338864818844,
+            0.00971943509428082,
+            0.009523351624571056
+          ]
+        },
+        "reference": {
+          "medianMs": 0.005623842337120332,
+          "minMs": 0.00542644387967197,
+          "maxMs": 0.005677811781665173,
+          "samplesMs": [
+            0.005623842337120332,
+            0.005677811781665173,
+            0.005672081766365584,
+            0.00542644387967197,
+            0.005545507195493651
+          ]
+        },
+        "ratioToTypeScript": 1.728255258887222,
+        "baselineRatioToTypeScript": 1.6795719560054756,
+        "speedupVsBaseline": 0.971830953424616,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-closures-256",
+        "label": "Captured closures \u00b7 256",
+        "family": "closures",
+        "category": "coverage",
+        "description": "Build and apply captured closure composition chains",
+        "scope": "size captured affine closures; generated chain and invocation both timed",
+        "args": [
+          256,
+          123
+        ],
+        "expected": 33019,
+        "sourceSha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "sourcePath": "fixtures-new/closures.bend",
+        "baseline": {
+          "medianMs": 0.009873022549668875,
+          "minMs": 0.009659635058398399,
+          "maxMs": 0.01000085101572845,
+          "samplesMs": [
+            0.009873022549668875,
+            0.009679932353890863,
+            0.009659635058398399,
+            0.01000085101572845,
+            0.009903929877365436
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.00990783358373557,
+          "minMs": 0.009635459388083736,
+          "maxMs": 0.010024577245237865,
+          "samplesMs": [
+            0.009991789411342428,
+            0.009872632981284706,
+            0.009635459388083736,
+            0.010024577245237865,
+            0.00990783358373557
+          ]
+        },
+        "reference": {
+          "medianMs": 0.020757071391310826,
+          "minMs": 0.020486602126044036,
+          "maxMs": 0.021129056658922285,
+          "samplesMs": [
+            0.020757071391310826,
+            0.020580236455050274,
+            0.021129056658922285,
+            0.021066901138986075,
+            0.020486602126044036
+          ]
+        },
+        "ratioToTypeScript": 0.4773232888664205,
+        "baselineRatioToTypeScript": 0.4756462201985704,
+        "speedupVsBaseline": 0.9964865140524928,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-list-pipeline-128",
+        "label": "List pipeline \u00b7 128",
+        "family": "list-pipeline",
+        "category": "coverage",
+        "description": "Generate, filter, map and fold a word list",
+        "scope": "size LCG words; remove 0/1, double remaining words, sum all retained elements",
+        "args": [
+          128,
+          17
+        ],
+        "expected": 1904,
+        "sourceSha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+        "sourcePath": "fixtures-new/list-pipeline.bend",
+        "baseline": {
+          "medianMs": 0.012681552898581236,
+          "minMs": 0.012212110210630237,
+          "maxMs": 0.012699686094955238,
+          "samplesMs": [
+            0.012681552898581236,
+            0.012266086089413323,
+            0.012699686094955238,
+            0.012684491387461454,
+            0.012212110210630237
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.012689798262748847,
+          "minMs": 0.012308426772504356,
+          "maxMs": 0.01281268690861684,
+          "samplesMs": [
+            0.012308426772504356,
+            0.012689905833298928,
+            0.012586108194277667,
+            0.01281268690861684,
+            0.012689798262748847
+          ]
+        },
+        "reference": {
+          "medianMs": 0.0064197012375878425,
+          "minMs": 0.006272784151973131,
+          "maxMs": 0.006432546002953842,
+          "samplesMs": [
+            0.0064210866748090345,
+            0.006396346126647381,
+            0.006432546002953842,
+            0.006272784151973131,
+            0.0064197012375878425
+          ]
+        },
+        "ratioToTypeScript": 1.9766960786974177,
+        "baselineRatioToTypeScript": 1.9754116942903468,
+        "speedupVsBaseline": 0.9993502367810042,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-list-pipeline-512",
+        "label": "List pipeline \u00b7 512",
+        "family": "list-pipeline",
+        "category": "coverage",
+        "description": "Generate, filter, map and fold a word list",
+        "scope": "size LCG words; remove 0/1, double remaining words, sum all retained elements",
+        "args": [
+          512,
+          123
+        ],
+        "expected": 7616,
+        "sourceSha256": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+        "sourcePath": "fixtures-new/list-pipeline.bend",
+        "baseline": {
+          "medianMs": 0.015601285193621868,
+          "minMs": 0.015132222312786546,
+          "maxMs": 0.015870775800711744,
+          "samplesMs": [
+            0.015601285193621868,
+            0.015870775800711744,
+            0.015132222312786546,
+            0.01563559500891265,
+            0.015237441113161125
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.01586703412424726,
+          "minMs": 0.01575192160984363,
+          "maxMs": 0.01782247424197822,
+          "samplesMs": [
+            0.01782247424197822,
+            0.015917444283870975,
+            0.015847736324019483,
+            0.01575192160984363,
+            0.01586703412424726
+          ]
+        },
+        "reference": {
+          "medianMs": 0.027720237400530503,
+          "minMs": 0.027600601333583785,
+          "maxMs": 0.027893285404283426,
+          "samplesMs": [
+            0.02772097345962676,
+            0.027893285404283426,
+            0.027720237400530503,
+            0.027600601333583785,
+            0.02762658632044405
+          ]
+        },
+        "ratioToTypeScript": 0.5723989262784452,
+        "baselineRatioToTypeScript": 0.5628121061229907,
+        "speedupVsBaseline": 0.9832515056976346,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-unicode-text-16",
+        "label": "Unicode text \u00b7 16",
+        "family": "unicode-text",
+        "category": "coverage",
+        "description": "Build, split and join mixed-script Unicode text",
+        "scope": "size blocks containing Greek, supplementary-plane emoji, CJK, decimal seed and separators; complete string observed",
+        "args": [
+          16,
+          17
+        ],
+        "expected": "\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|",
+        "sourceSha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+        "sourcePath": "fixtures-new/unicode-text.bend",
+        "baseline": {
+          "medianMs": 0.46411547692307664,
+          "minMs": 0.46334705598755827,
+          "maxMs": 0.4653642206790125,
+          "samplesMs": [
+            0.46334705598755827,
+            0.46411547692307664,
+            0.46394331066460576,
+            0.46492584210526294,
+            0.4653642206790125
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.09165386537150645,
+          "minMs": 0.09083790401940402,
+          "maxMs": 0.09268180171232872,
+          "samplesMs": [
+            0.09200002373685996,
+            0.09165386537150645,
+            0.09268180171232872,
+            0.09161856796593519,
+            0.09083790401940402
+          ]
+        },
+        "reference": {
+          "medianMs": 0.021316536244292243,
+          "minMs": 0.021038183135425496,
+          "maxMs": 0.022583782652981263,
+          "samplesMs": [
+            0.022583782652981263,
+            0.021316536244292243,
+            0.021204029390783283,
+            0.021038183135425496,
+            0.021354480011483528
+          ]
+        },
+        "ratioToTypeScript": 4.299660335109456,
+        "baselineRatioToTypeScript": 21.77255589764726,
+        "speedupVsBaseline": 5.063785090152475,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-unicode-text-64",
+        "label": "Unicode text \u00b7 64",
+        "family": "unicode-text",
+        "category": "coverage",
+        "description": "Build, split and join mixed-script Unicode text",
+        "scope": "size blocks containing Greek, supplementary-plane emoji, CJK, decimal seed and separators; complete string observed",
+        "args": [
+          64,
+          123
+        ],
+        "expected": "\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|",
+        "sourceSha256": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+        "sourcePath": "fixtures-new/unicode-text.bend",
+        "baseline": {
+          "medianMs": 1.933961122580645,
+          "minMs": 1.9257173717948721,
+          "maxMs": 1.947146535031847,
+          "samplesMs": [
+            1.930706851612903,
+            1.947146535031847,
+            1.936265415584416,
+            1.933961122580645,
+            1.9257173717948721
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.23037159267734544,
+          "minMs": 0.22989832250580042,
+          "maxMs": 0.25189623764906305,
+          "samplesMs": [
+            0.22989832250580042,
+            0.25189623764906305,
+            0.23037159267734544,
+            0.23273420295489902,
+            0.23012772790161412
+          ]
+        },
+        "reference": {
+          "medianMs": 0.08597890862510671,
+          "minMs": 0.08574933333333329,
+          "maxMs": 0.09408012213467049,
+          "samplesMs": [
+            0.08588492747001712,
+            0.09408012213467049,
+            0.08574933333333329,
+            0.08597890862510671,
+            0.08610675356125358
+          ]
+        },
+        "ratioToTypeScript": 2.679396567847043,
+        "baselineRatioToTypeScript": 22.493436512590353,
+        "speedupVsBaseline": 8.39496354608842,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-map-churn-32",
+        "label": "Map updates \u00b7 32",
+        "family": "map-churn",
+        "category": "coverage",
+        "description": "Build, replace, delete and traverse a larger string-key map",
+        "scope": "size distinct keys; replace every third key; delete every fourth; digest every remaining ordered key and value",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 2930913555,
+        "sourceSha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+        "sourcePath": "fixtures-new/map-churn.bend",
+        "baseline": {
+          "medianMs": 3.9851651791044747,
+          "minMs": 3.9633974571428587,
+          "maxMs": 4.44955688,
+          "samplesMs": [
+            3.9819061714285713,
+            4.44955688,
+            3.9965723023255793,
+            3.9851651791044747,
+            3.9633974571428587
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.27750554949121176,
+          "minMs": 0.27545662453874536,
+          "maxMs": 0.3106196256517206,
+          "samplesMs": [
+            0.27552615193370167,
+            0.3106196256517206,
+            0.27750554949121176,
+            0.27545662453874536,
+            0.27794462708719847
+          ]
+        },
+        "reference": {
+          "medianMs": 0.1425991919961887,
+          "minMs": 0.14170790695488727,
+          "maxMs": 0.15999515660074828,
+          "samplesMs": [
+            0.1425991919961887,
+            0.15999515660074828,
+            0.14249234089834512,
+            0.14345268049594662,
+            0.14170790695488727
+          ]
+        },
+        "ratioToTypeScript": 1.9460527483117067,
+        "baselineRatioToTypeScript": 27.946618233369705,
+        "speedupVsBaseline": 14.36066841333809,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "label": "Map updates \u00b7 128",
+        "family": "map-churn",
+        "category": "coverage",
+        "description": "Build, replace, delete and traverse a larger string-key map",
+        "scope": "size distinct keys; replace every third key; delete every fourth; digest every remaining ordered key and value",
+        "args": [
+          128,
+          123
+        ],
+        "expected": 3714872484,
+        "sourceSha256": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+        "sourcePath": "fixtures-new/map-churn.bend",
+        "baseline": {
+          "medianMs": 17.602431421052632,
+          "minMs": 17.48613857894737,
+          "maxMs": 19.77031382352941,
+          "samplesMs": [
+            17.48613857894737,
+            19.77031382352941,
+            17.54029826315789,
+            17.728566263157887,
+            17.602431421052632
+          ]
+        },
+        "candidate": {
+          "medianMs": 1.1703682091254757,
+          "minMs": 1.163415640151515,
+          "maxMs": 1.3060711759656651,
+          "samplesMs": [
+            1.2051882433460077,
+            1.3060711759656651,
+            1.163415640151515,
+            1.1703682091254757,
+            1.1677194160305344
+          ]
+        },
+        "reference": {
+          "medianMs": 0.7608250579345088,
+          "minMs": 0.7566457884130985,
+          "maxMs": 0.8486255167173253,
+          "samplesMs": [
+            0.7608250579345088,
+            0.8486255167173253,
+            0.7566457884130985,
+            0.7595031620253164,
+            0.7869193753501403
+          ]
+        },
+        "ratioToTypeScript": 1.53828820031611,
+        "baselineRatioToTypeScript": 23.135977499005868,
+        "speedupVsBaseline": 15.040079937070017,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-numeric-recurrence-256",
+        "label": "Numeric recurrence \u00b7 256",
+        "family": "numeric-recurrence",
+        "category": "coverage",
+        "description": "F32 nonlinear recurrence with wrapping word observation",
+        "scope": "size logistic recurrence steps; round each operation to binary32; incorporate every intermediate value into U32 digest",
+        "args": [
+          256,
+          17
+        ],
+        "expected": 2747714257,
+        "sourceSha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "sourcePath": "fixtures-new/numeric-recurrence.bend",
+        "baseline": {
+          "medianMs": 0.01375133195242549,
+          "minMs": 0.013272804782842783,
+          "maxMs": 0.015473318513506985,
+          "samplesMs": [
+            0.01375133195242549,
+            0.015473318513506985,
+            0.013748796676616033,
+            0.013272804782842783,
+            0.013761701333452264
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.013712995571822331,
+          "minMs": 0.013617979102752212,
+          "maxMs": 0.015495353935246124,
+          "samplesMs": [
+            0.013617979102752212,
+            0.013841706678013162,
+            0.013712995571822331,
+            0.013692073911681802,
+            0.015495353935246124
+          ]
+        },
+        "reference": {
+          "medianMs": 0.0019840957069479645,
+          "minMs": 0.00197859739884013,
+          "maxMs": 0.002050398769976362,
+          "samplesMs": [
+            0.002047186617056384,
+            0.0019840957069479645,
+            0.001979904784600312,
+            0.00197859739884013,
+            0.002050398769976362
+          ]
+        },
+        "ratioToTypeScript": 6.911458718347991,
+        "baselineRatioToTypeScript": 6.930780558755645,
+        "speedupVsBaseline": 1.0027956240780775,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-numeric-recurrence-1024",
+        "label": "Numeric recurrence \u00b7 1024",
+        "family": "numeric-recurrence",
+        "category": "coverage",
+        "description": "F32 nonlinear recurrence with wrapping word observation",
+        "scope": "size logistic recurrence steps; round each operation to binary32; incorporate every intermediate value into U32 digest",
+        "args": [
+          1024,
+          123
+        ],
+        "expected": 1376326140,
+        "sourceSha256": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "sourcePath": "fixtures-new/numeric-recurrence.bend",
+        "baseline": {
+          "medianMs": 0.02045276667346524,
+          "minMs": 0.02024942725974291,
+          "maxMs": 0.020690302492577504,
+          "samplesMs": [
+            0.020690302492577504,
+            0.020655939096267194,
+            0.02045276667346524,
+            0.020321969243331517,
+            0.02024942725974291
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.020573792099649015,
+          "minMs": 0.02023279011841568,
+          "maxMs": 0.022488386880856758,
+          "samplesMs": [
+            0.022488386880856758,
+            0.02023279011841568,
+            0.020573792099649015,
+            0.02052165436080423,
+            0.02069487005299745
+          ]
+        },
+        "reference": {
+          "medianMs": 0.007628244547811497,
+          "minMs": 0.007601194333333332,
+          "maxMs": 0.007881019691626556,
+          "samplesMs": [
+            0.007881019691626556,
+            0.007630902116537693,
+            0.007601194333333332,
+            0.007628244547811497,
+            0.007626663258591891
+          ]
+        },
+        "ratioToTypeScript": 2.6970546068232077,
+        "baselineRatioToTypeScript": 2.681189170755286,
+        "speedupVsBaseline": 0.9941174954234208,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-bst-32",
+        "label": "Binary search tree \u00b7 32",
+        "family": "bst",
+        "category": "coverage",
+        "description": "Zipper insertion and traversal of skewed or irregular BSTs",
+        "scope": "size insertion values modulo257; seed0 is ascending/skewed, seed17 is irregular; fuel=size+1",
+        "args": [
+          32,
+          0
+        ],
+        "expected": 1802825775,
+        "sourceSha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "sourcePath": "fixtures-new/bst.bend",
+        "baseline": {
+          "medianMs": 0.07633882564622406,
+          "minMs": 0.0762689148504815,
+          "maxMs": 0.08358840110957004,
+          "samplesMs": [
+            0.08358840110957004,
+            0.07627546453900709,
+            0.0762689148504815,
+            0.07669209745547072,
+            0.07633882564622406
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.060613991556091665,
+          "minMs": 0.060098041683447415,
+          "maxMs": 0.0674808900534759,
+          "samplesMs": [
+            0.0674808900534759,
+            0.06276155392371767,
+            0.060125029811924774,
+            0.060098041683447415,
+            0.060613991556091665
+          ]
+        },
+        "reference": {
+          "medianMs": 0.021954674652469676,
+          "minMs": 0.021819042819305485,
+          "maxMs": 0.023716155541153604,
+          "samplesMs": [
+            0.023716155541153604,
+            0.021819042819305485,
+            0.02210063428991906,
+            0.021954674652469676,
+            0.021935465740261666
+          ]
+        },
+        "ratioToTypeScript": 2.7608694966141623,
+        "baselineRatioToTypeScript": 3.477110312706762,
+        "speedupVsBaseline": 1.2594258138499388,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-bst-64",
+        "label": "Binary search tree \u00b7 64",
+        "family": "bst",
+        "category": "coverage",
+        "description": "Zipper insertion and traversal of skewed or irregular BSTs",
+        "scope": "size insertion values modulo257; seed0 is ascending/skewed, seed17 is irregular; fuel=size+1",
+        "args": [
+          64,
+          17
+        ],
+        "expected": 861157620,
+        "sourceSha256": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "sourcePath": "fixtures-new/bst.bend",
+        "baseline": {
+          "medianMs": 0.11730350602863596,
+          "minMs": 0.11614726830249397,
+          "maxMs": 0.11809259406684187,
+          "samplesMs": [
+            0.11614726830249397,
+            0.11730350602863596,
+            0.11743579680000002,
+            0.11663674895872775,
+            0.11809259406684187
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.10340289679126702,
+          "minMs": 0.10233950625823454,
+          "maxMs": 0.10485742572641207,
+          "samplesMs": [
+            0.10233950625823454,
+            0.10442534765496883,
+            0.10340289679126702,
+            0.10263714961679445,
+            0.10485742572641207
+          ]
+        },
+        "reference": {
+          "medianMs": 0.05078877569628649,
+          "minMs": 0.050624097771865655,
+          "maxMs": 0.05499919737309193,
+          "samplesMs": [
+            0.05499919737309193,
+            0.050624097771865655,
+            0.05078877569628649,
+            0.0541561529431217,
+            0.05077125823079483
+          ]
+        },
+        "ratioToTypeScript": 2.0359399369972904,
+        "baselineRatioToTypeScript": 2.309634450141172,
+        "speedupVsBaseline": 1.134431526279474,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-expression-32",
+        "label": "Expression evaluation \u00b7 32",
+        "family": "expression",
+        "category": "coverage",
+        "description": "Construct and interpret an unbalanced arithmetic expression AST",
+        "scope": "size nested expression layers; variable Add/Mul/Sub dispatch and small side trees; U32 wrapping",
+        "args": [
+          32,
+          17
+        ],
+        "expected": 2928000,
+        "sourceSha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "sourcePath": "fixtures-new/expression.bend",
+        "baseline": {
+          "medianMs": 0.01886632308078589,
+          "minMs": 0.018759775743564102,
+          "maxMs": 0.01985100240491109,
+          "samplesMs": [
+            0.01985100240491109,
+            0.018759775743564102,
+            0.019137882108626204,
+            0.01886632308078589,
+            0.018838512799339388
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.019008065181726395,
+          "minMs": 0.018608751868552726,
+          "maxMs": 0.021927734744312786,
+          "samplesMs": [
+            0.021927734744312786,
+            0.019119347149930174,
+            0.019008065181726395,
+            0.018608751868552726,
+            0.018800395152659733
+          ]
+        },
+        "reference": {
+          "medianMs": 0.0020887484468433415,
+          "minMs": 0.0020245462344448645,
+          "maxMs": 0.0021724031674116625,
+          "samplesMs": [
+            0.0020315304564405214,
+            0.0020887484468433415,
+            0.002131012820424925,
+            0.0020245462344448645,
+            0.0021724031674116625
+          ]
+        },
+        "ratioToTypeScript": 9.100217506063343,
+        "baselineRatioToTypeScript": 9.032357682562473,
+        "speedupVsBaseline": 0.9925430547725198,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-expression-128",
+        "label": "Expression evaluation \u00b7 128",
+        "family": "expression",
+        "category": "coverage",
+        "description": "Construct and interpret an unbalanced arithmetic expression AST",
+        "scope": "size nested expression layers; variable Add/Mul/Sub dispatch and small side trees; U32 wrapping",
+        "args": [
+          128,
+          123
+        ],
+        "expected": 3393903617,
+        "sourceSha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "sourcePath": "fixtures-new/expression.bend",
+        "baseline": {
+          "medianMs": 0.04056512685745732,
+          "minMs": 0.04038493809327281,
+          "maxMs": 0.04487407494375706,
+          "samplesMs": [
+            0.041213376712328754,
+            0.04038493809327281,
+            0.04056512685745732,
+            0.04039865668798477,
+            0.04487407494375706
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.040738510461410554,
+          "minMs": 0.04060282957219991,
+          "maxMs": 0.04510804052369077,
+          "samplesMs": [
+            0.04075076448520216,
+            0.04060282957219991,
+            0.040738510461410554,
+            0.04065887113759178,
+            0.04510804052369077
+          ]
+        },
+        "reference": {
+          "medianMs": 0.008972903402662954,
+          "minMs": 0.008647801384544084,
+          "maxMs": 0.009453600922301107,
+          "samplesMs": [
+            0.008647801384544084,
+            0.008972903402662954,
+            0.008707355835173772,
+            0.008990622317847839,
+            0.009453600922301107
+          ]
+        },
+        "ratioToTypeScript": 4.540170403408142,
+        "baselineRatioToTypeScript": 4.5208473820657105,
+        "speedupVsBaseline": 0.9957439876424183,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-record-aggregation-64",
+        "label": "Record aggregation \u00b7 64",
+        "family": "record-aggregation",
+        "category": "coverage",
+        "description": "Generate textual records, parse amounts, aggregate and render a report",
+        "scope": "size records;16 Unicode department keys; decimal parsing; whole ordered report observed; in-memory, not CSV or IO throughput",
+        "args": [
+          64,
+          17
+        ],
+        "expected": "\u90e8\u95800=1840;\u90e8\u95801=1620;\u90e8\u958010=1952;\u90e8\u958011=2100;\u90e8\u958012=1248;\u90e8\u958013=1396;\u90e8\u958014=1544;\u90e8\u958015=1692;\u90e8\u95802=1768;\u90e8\u95803=1916;\u90e8\u95804=2064;\u90e8\u95805=2212;\u90e8\u95806=2360;\u90e8\u95807=1508;\u90e8\u95808=1656;\u90e8\u95809=1804;",
+        "sourceSha256": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+        "sourcePath": "fixtures-new/record-aggregation.bend",
+        "baseline": {
+          "medianMs": 20.68618894117648,
+          "minMs": 20.339804235294114,
+          "maxMs": 20.76449752941177,
+          "samplesMs": [
+            20.68618894117648,
+            20.76449752941177,
+            20.511793058823528,
+            20.744602647058827,
+            20.339804235294114
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.48186934760273975,
+          "minMs": 0.47676606643952313,
+          "maxMs": 0.4876884453781514,
+          "samplesMs": [
+            0.48525785034013597,
+            0.48186934760273975,
+            0.4804991573604063,
+            0.47676606643952313,
+            0.4876884453781514
+          ]
+        },
+        "reference": {
+          "medianMs": 0.2976627571008815,
+          "minMs": 0.29546552352941174,
+          "maxMs": 0.2993292227722771,
+          "samplesMs": [
+            0.29645179391560356,
+            0.29546552352941174,
+            0.29865625271470886,
+            0.2993292227722771,
+            0.2976627571008815
+          ]
+        },
+        "ratioToTypeScript": 1.6188432583772259,
+        "baselineRatioToTypeScript": 69.49538848142053,
+        "speedupVsBaseline": 42.92904091967784,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      },
+      {
+        "id": "coverage-record-aggregation-256",
+        "label": "Record aggregation \u00b7 256",
+        "family": "record-aggregation",
+        "category": "coverage",
+        "description": "Generate textual records, parse amounts, aggregate and render a report",
+        "scope": "size records;16 Unicode department keys; decimal parsing; whole ordered report observed; in-memory, not CSV or IO throughput",
+        "args": [
+          256,
+          123
+        ],
+        "expected": "\u90e8\u95800=6968;\u90e8\u95801=7560;\u90e8\u958010=7888;\u90e8\u958011=7008;\u90e8\u958012=7600;\u90e8\u958013=8192;\u90e8\u958014=7784;\u90e8\u958015=7376;\u90e8\u95802=8152;\u90e8\u95803=7744;\u90e8\u95804=7336;\u90e8\u95805=6928;\u90e8\u95806=7520;\u90e8\u95807=8112;\u90e8\u95808=8704;\u90e8\u95809=8296;",
+        "sourceSha256": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+        "sourcePath": "fixtures-new/record-aggregation.bend",
+        "baseline": {
+          "medianMs": 80.11805099999998,
+          "minMs": 79.9503315,
+          "maxMs": 80.42506674999998,
+          "samplesMs": [
+            80.13405499999999,
+            79.9503315,
+            80.11805099999998,
+            80.10531550000002,
+            80.42506674999998
+          ]
+        },
+        "candidate": {
+          "medianMs": 1.9318014886363633,
+          "minMs": 1.9206167011494255,
+          "maxMs": 1.936150925714285,
+          "samplesMs": [
+            1.936150925714285,
+            1.9318014886363633,
+            1.9206167011494255,
+            1.9244464571428568,
+            1.9334624767441864
+          ]
+        },
+        "reference": {
+          "medianMs": 1.2034944705882356,
+          "minMs": 1.19567322868217,
+          "maxMs": 1.2093753517786565,
+          "samplesMs": [
+            1.201789380392157,
+            1.2093753517786565,
+            1.19567322868217,
+            1.2034944705882356,
+            1.2088458379446643
+          ]
+        },
+        "ratioToTypeScript": 1.6051602527863305,
+        "baselineRatioToTypeScript": 66.57118329828342,
+        "speedupVsBaseline": 41.473231836338634,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
+      }
+    ],
+    "programs": [
+      {
+        "id": "bst",
+        "label": "Binary search tree",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-bst-32",
+          "coverage-bst-64"
+        ],
+        "ratioToTypeScript": 2.3708573278445875,
+        "baselineRatio": 2.833876102649634,
+        "speedupVsBaseline": 1.1952959249665143
+      },
+      {
+        "id": "closures",
+        "label": "Captured closures",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-closures-64",
+          "coverage-closures-256"
+        ],
+        "ratioToTypeScript": 0.9082601412440908,
+        "baselineRatio": 0.8938020208220185,
+        "speedupVsBaseline": 0.9840815205187048
+      },
+      {
+        "id": "complete-generic-row32",
+        "label": "Generic array row",
+        "pointCount": 1,
+        "pointIds": [
+          "complete-generic-row32"
+        ],
+        "ratioToTypeScript": 58.18133585769449,
+        "baselineRatio": 55.44960100588326,
+        "speedupVsBaseline": 0.9530479180042761
+      },
+      {
+        "id": "editdist",
+        "label": "Edit distance",
+        "pointCount": 3,
+        "pointIds": [
+          "editdist",
+          "variation-editdist-0-17",
+          "variation-editdist-3-123"
+        ],
+        "ratioToTypeScript": 2.1204252523176303,
+        "baselineRatio": 2.1993574325967207,
+        "speedupVsBaseline": 1.0372246935810716
+      },
+      {
+        "id": "expression",
+        "label": "Expression evaluation",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-expression-32",
+          "coverage-expression-128"
+        ],
+        "ratioToTypeScript": 6.42779419284761,
+        "baselineRatio": 6.390141671598031,
+        "speedupVsBaseline": 0.9941422329153792
+      },
+      {
+        "id": "lexer",
+        "label": "Lexer",
+        "pointCount": 3,
+        "pointIds": [
+          "lexer",
+          "variation-lexer-6-17",
+          "variation-lexer-10-123"
+        ],
+        "ratioToTypeScript": 1.5113531773589286,
+        "baselineRatio": 7.160028648595277,
+        "speedupVsBaseline": 4.7374953491065135
+      },
+      {
+        "id": "list-pipeline",
+        "label": "List pipeline",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-list-pipeline-128",
+          "coverage-list-pipeline-512"
+        ],
+        "ratioToTypeScript": 1.0637004808804098,
+        "baselineRatio": 1.054412450667923,
+        "speedupVsBaseline": 0.9912681902664939
+      },
+      {
+        "id": "local-fold",
+        "label": "Array fold",
+        "pointCount": 3,
+        "pointIds": [
+          "local-fold",
+          "variation-local-fold-128-0",
+          "variation-local-fold-8192-123"
+        ],
+        "ratioToTypeScript": 2.584289746744471,
+        "baselineRatio": 2.608537500173361,
+        "speedupVsBaseline": 1.0093827534081408
+      },
+      {
+        "id": "local-pair",
+        "label": "Edit-distance pair",
+        "pointCount": 1,
+        "pointIds": [
+          "local-pair"
+        ],
+        "ratioToTypeScript": 2.134122304687214,
+        "baselineRatio": 2.135110765256429,
+        "speedupVsBaseline": 1.000463169597658
+      },
+      {
+        "id": "mandelbrot",
+        "label": "Mandelbrot",
+        "pointCount": 3,
+        "pointIds": [
+          "mandelbrot",
+          "variation-mandelbrot-grid-4-7",
+          "variation-mandelbrot-grid-5-31"
+        ],
+        "ratioToTypeScript": 2.3662763408251117,
+        "baselineRatio": 2.530809597784493,
+        "speedupVsBaseline": 1.0695325622458824
+      },
+      {
+        "id": "map-churn",
+        "label": "Map updates",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-map-churn-32",
+          "coverage-map-churn-128"
+        ],
+        "ratioToTypeScript": 1.7301994046700613,
+        "baselineRatio": 25.427786585162085,
+        "speedupVsBaseline": 14.696448580740903
+      },
+      {
+        "id": "numeric-recurrence",
+        "label": "Numeric recurrence",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-numeric-recurrence-256",
+          "coverage-numeric-recurrence-1024"
+        ],
+        "ratioToTypeScript": 4.317473980950999,
+        "baselineRatio": 4.310769511237744,
+        "speedupVsBaseline": 0.9984471314146106
+      },
+      {
+        "id": "raytrace",
+        "label": "Ray tracing",
+        "pointCount": 3,
+        "pointIds": [
+          "raytrace",
+          "variation-ray-active-64-2440",
+          "variation-ray-active-256-2240"
+        ],
+        "ratioToTypeScript": 1.8130640842424448,
+        "baselineRatio": 22.751559935526025,
+        "speedupVsBaseline": 12.548679405908773
+      },
+      {
+        "id": "record-aggregation",
+        "label": "Record aggregation",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-record-aggregation-64",
+          "coverage-record-aggregation-256"
+        ],
+        "ratioToTypeScript": 1.6119872374923552,
+        "baselineRatio": 68.01757306007075,
+        "speedupVsBaseline": 42.194858295454274
+      },
+      {
+        "id": "scalar-region-0",
+        "label": "Scalar region \u00b7 zero work",
+        "pointCount": 1,
+        "pointIds": [
+          "scalar-region-0"
+        ],
+        "ratioToTypeScript": 60.11658986638725,
+        "baselineRatio": 61.16176107809878,
+        "speedupVsBaseline": 1.0173857368495864
+      },
+      {
+        "id": "scalar-region-8192",
+        "label": "Scalar region \u00b7 8,192 iterations",
+        "pointCount": 1,
+        "pointIds": [
+          "scalar-region-8192"
+        ],
+        "ratioToTypeScript": 1.155303978152707,
+        "baselineRatio": 1.1652497140861064,
+        "speedupVsBaseline": 1.0086087610892696
+      },
+      {
+        "id": "symreg",
+        "label": "Symbolic regression",
+        "pointCount": 3,
+        "pointIds": [
+          "symreg",
+          "variation-symreg-4-17",
+          "variation-symreg-7-123"
+        ],
+        "ratioToTypeScript": 1.3590006836214354,
+        "baselineRatio": 1.760683979680355,
+        "speedupVsBaseline": 1.2955725489324426
+      },
+      {
+        "id": "test-evening-program",
+        "label": "Evening mixed program",
+        "pointCount": 1,
+        "pointIds": [
+          "test-evening-program"
+        ],
+        "ratioToTypeScript": 49.32782292344847,
+        "baselineRatio": 49.460107655475994,
+        "speedupVsBaseline": 1.0026817468152365
+      },
+      {
+        "id": "test-map-set-ops",
+        "label": "Map / Set operations",
+        "pointCount": 1,
+        "pointIds": [
+          "test-map-set-ops"
+        ],
+        "ratioToTypeScript": 56.85699594789994,
+        "baselineRatio": 72.50143771047672,
+        "speedupVsBaseline": 1.2751542092887274
+      },
+      {
+        "id": "test-morning-program",
+        "label": "Morning mixed program",
+        "pointCount": 1,
+        "pointIds": [
+          "test-morning-program"
+        ],
+        "ratioToTypeScript": 60.61441551583175,
+        "baselineRatio": 60.291055591483826,
+        "speedupVsBaseline": 0.9946652966691822
+      },
+      {
+        "id": "test-rle-roundtrip",
+        "label": "RLE roundtrip",
+        "pointCount": 1,
+        "pointIds": [
+          "test-rle-roundtrip"
+        ],
+        "ratioToTypeScript": 56.41455167741533,
+        "baselineRatio": 64.47255626792601,
+        "speedupVsBaseline": 1.1428355690316785
+      },
+      {
+        "id": "tree-bitonic",
+        "label": "Tree bitonic sort",
+        "pointCount": 3,
+        "pointIds": [
+          "tree-bitonic",
+          "variation-tree-bitonic-6-17",
+          "variation-tree-bitonic-9-123"
+        ],
+        "ratioToTypeScript": 1.41075957706064,
+        "baselineRatio": 1.4331708099798317,
+        "speedupVsBaseline": 1.015885933566289
+      },
+      {
+        "id": "unicode-text",
+        "label": "Unicode text",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-unicode-text-16",
+          "coverage-unicode-text-64"
+        ],
+        "ratioToTypeScript": 3.3941854906295768,
+        "baselineRatio": 22.130061088947617,
+        "speedupVsBaseline": 6.519991659278107
+      }
+    ],
+    "sourceGroups": [
+      {
+        "id": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-map-churn-32",
+          "coverage-map-churn-128"
+        ],
+        "ratioToTypeScript": 1.7301994046700613,
+        "baselineRatio": 25.427786585162085,
+        "speedupVsBaseline": 14.696448580740903,
+        "label": "Map updates \u00b7 2 inputs",
+        "sourcePath": "fixtures-new/map-churn.bend"
+      },
+      {
+        "id": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-numeric-recurrence-256",
+          "coverage-numeric-recurrence-1024"
+        ],
+        "ratioToTypeScript": 4.317473980950999,
+        "baselineRatio": 4.310769511237744,
+        "speedupVsBaseline": 0.9984471314146106,
+        "label": "Numeric recurrence \u00b7 2 inputs",
+        "sourcePath": "fixtures-new/numeric-recurrence.bend"
+      },
+      {
+        "id": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "pointCount": 2,
+        "pointIds": [
+          "local-pair",
+          "complete-generic-row32"
+        ],
+        "ratioToTypeScript": 11.142983737330132,
+        "baselineRatio": 10.880764680703056,
+        "speedupVsBaseline": 0.976467787909569,
+        "label": "local row",
+        "sourcePath": "fixtures-historical/local-row.bend"
+      },
+      {
+        "id": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+        "pointCount": 1,
+        "pointIds": [
+          "raytrace"
+        ],
+        "ratioToTypeScript": 1.740985588325168,
+        "baselineRatio": 18.430047661793317,
+        "speedupVsBaseline": 10.58598519446853,
+        "label": "Ray tracing",
+        "sourcePath": "fixtures-historical/raytrace.bend"
+      },
+      {
+        "id": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "pointCount": 2,
+        "pointIds": [
+          "variation-ray-active-64-2440",
+          "variation-ray-active-256-2240"
+        ],
+        "ratioToTypeScript": 1.8502147729938212,
+        "baselineRatio": 25.27863034886056,
+        "speedupVsBaseline": 13.662538380859088,
+        "label": "Ray tracing \u00b7 2 inputs",
+        "sourcePath": "fixtures-variants/raytrace-active.bend"
+      },
+      {
+        "id": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+        "pointCount": 2,
+        "pointIds": [
+          "scalar-region-0",
+          "scalar-region-8192"
+        ],
+        "ratioToTypeScript": 8.33384277663143,
+        "baselineRatio": 8.442080585333057,
+        "speedupVsBaseline": 1.0129877430619558,
+        "label": "scalar region",
+        "sourcePath": "fixtures-historical/scalar-region.bend"
+      },
+      {
+        "id": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "pointCount": 3,
+        "pointIds": [
+          "lexer",
+          "variation-lexer-6-17",
+          "variation-lexer-10-123"
+        ],
+        "ratioToTypeScript": 1.5113531773589286,
+        "baselineRatio": 7.160028648595277,
+        "speedupVsBaseline": 4.7374953491065135,
+        "label": "Lexer \u00b7 3 inputs",
+        "sourcePath": "fixtures-historical/lexer.bend"
+      },
+      {
+        "id": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+        "pointCount": 1,
+        "pointIds": [
+          "test-map-set-ops"
+        ],
+        "ratioToTypeScript": 56.85699594789994,
+        "baselineRatio": 72.50143771047672,
+        "speedupVsBaseline": 1.2751542092887274,
+        "label": "Map / Set operations",
+        "sourcePath": "fixtures-historical/test-map-set-ops.bend"
+      },
+      {
+        "id": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-expression-32",
+          "coverage-expression-128"
+        ],
+        "ratioToTypeScript": 6.42779419284761,
+        "baselineRatio": 6.390141671598031,
+        "speedupVsBaseline": 0.9941422329153792,
+        "label": "Expression evaluation \u00b7 2 inputs",
+        "sourcePath": "fixtures-new/expression.bend"
+      },
+      {
+        "id": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-record-aggregation-64",
+          "coverage-record-aggregation-256"
+        ],
+        "ratioToTypeScript": 1.6119872374923552,
+        "baselineRatio": 68.01757306007075,
+        "speedupVsBaseline": 42.194858295454274,
+        "label": "Record aggregation \u00b7 2 inputs",
+        "sourcePath": "fixtures-new/record-aggregation.bend"
+      },
+      {
+        "id": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+        "pointCount": 1,
+        "pointIds": [
+          "test-morning-program"
+        ],
+        "ratioToTypeScript": 60.61441551583175,
+        "baselineRatio": 60.291055591483826,
+        "speedupVsBaseline": 0.9946652966691822,
+        "label": "Morning mixed program",
+        "sourcePath": "fixtures-historical/test-morning-program.bend"
+      },
+      {
+        "id": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "pointCount": 3,
+        "pointIds": [
+          "tree-bitonic",
+          "variation-tree-bitonic-6-17",
+          "variation-tree-bitonic-9-123"
+        ],
+        "ratioToTypeScript": 1.41075957706064,
+        "baselineRatio": 1.4331708099798317,
+        "speedupVsBaseline": 1.015885933566289,
+        "label": "Tree bitonic sort \u00b7 3 inputs",
+        "sourcePath": "fixtures-historical/tree-bitonic.bend"
+      },
+      {
+        "id": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+        "pointCount": 1,
+        "pointIds": [
+          "test-evening-program"
+        ],
+        "ratioToTypeScript": 49.32782292344847,
+        "baselineRatio": 49.460107655475994,
+        "speedupVsBaseline": 1.0026817468152365,
+        "label": "Evening mixed program",
+        "sourcePath": "fixtures-historical/test-evening-program.bend"
+      },
+      {
+        "id": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-list-pipeline-128",
+          "coverage-list-pipeline-512"
+        ],
+        "ratioToTypeScript": 1.0637004808804098,
+        "baselineRatio": 1.054412450667923,
+        "speedupVsBaseline": 0.9912681902664939,
+        "label": "List pipeline \u00b7 2 inputs",
+        "sourcePath": "fixtures-new/list-pipeline.bend"
+      },
+      {
+        "id": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-closures-64",
+          "coverage-closures-256"
+        ],
+        "ratioToTypeScript": 0.9082601412440908,
+        "baselineRatio": 0.8938020208220185,
+        "speedupVsBaseline": 0.9840815205187048,
+        "label": "Captured closures \u00b7 2 inputs",
+        "sourcePath": "fixtures-new/closures.bend"
+      },
+      {
+        "id": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "pointCount": 3,
+        "pointIds": [
+          "symreg",
+          "variation-symreg-4-17",
+          "variation-symreg-7-123"
+        ],
+        "ratioToTypeScript": 1.3590006836214354,
+        "baselineRatio": 1.760683979680355,
+        "speedupVsBaseline": 1.2955725489324426,
+        "label": "Symbolic regression \u00b7 3 inputs",
+        "sourcePath": "fixtures-historical/symreg.bend"
+      },
+      {
+        "id": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+        "pointCount": 1,
+        "pointIds": [
+          "mandelbrot"
+        ],
+        "ratioToTypeScript": 2.606493247249642,
+        "baselineRatio": 3.288556919152814,
+        "speedupVsBaseline": 1.2616786644749156,
+        "label": "Mandelbrot",
+        "sourcePath": "fixtures-historical/mandelbrot.bend"
+      },
+      {
+        "id": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+        "pointCount": 1,
+        "pointIds": [
+          "test-rle-roundtrip"
+        ],
+        "ratioToTypeScript": 56.41455167741533,
+        "baselineRatio": 64.47255626792601,
+        "speedupVsBaseline": 1.1428355690316785,
+        "label": "RLE roundtrip",
+        "sourcePath": "fixtures-historical/test-rle-roundtrip.bend"
+      },
+      {
+        "id": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "pointCount": 3,
+        "pointIds": [
+          "local-fold",
+          "variation-local-fold-128-0",
+          "variation-local-fold-8192-123"
+        ],
+        "ratioToTypeScript": 2.584289746744471,
+        "baselineRatio": 2.608537500173361,
+        "speedupVsBaseline": 1.0093827534081408,
+        "label": "Array fold \u00b7 3 inputs",
+        "sourcePath": "fixtures-historical/local-fold.bend"
+      },
+      {
+        "id": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-bst-32",
+          "coverage-bst-64"
+        ],
+        "ratioToTypeScript": 2.3708573278445875,
+        "baselineRatio": 2.833876102649634,
+        "speedupVsBaseline": 1.1952959249665143,
+        "label": "Binary search tree \u00b7 2 inputs",
+        "sourcePath": "fixtures-new/bst.bend"
+      },
+      {
+        "id": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+        "pointCount": 2,
+        "pointIds": [
+          "coverage-unicode-text-16",
+          "coverage-unicode-text-64"
+        ],
+        "ratioToTypeScript": 3.3941854906295768,
+        "baselineRatio": 22.130061088947617,
+        "speedupVsBaseline": 6.519991659278107,
+        "label": "Unicode text \u00b7 2 inputs",
+        "sourcePath": "fixtures-new/unicode-text.bend"
+      },
+      {
+        "id": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+        "pointCount": 2,
+        "pointIds": [
+          "variation-mandelbrot-grid-4-7",
+          "variation-mandelbrot-grid-5-31"
+        ],
+        "ratioToTypeScript": 2.2546020115005927,
+        "baselineRatio": 2.2201715217180102,
+        "speedupVsBaseline": 0.9847287948795599,
+        "label": "Mandelbrot \u00b7 2 inputs",
+        "sourcePath": "fixtures-variants/mandelbrot-grid.bend"
+      },
+      {
+        "id": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "pointCount": 3,
+        "pointIds": [
+          "editdist",
+          "variation-editdist-0-17",
+          "variation-editdist-3-123"
+        ],
+        "ratioToTypeScript": 2.1204252523176303,
+        "baselineRatio": 2.1993574325967207,
+        "speedupVsBaseline": 1.0372246935810716,
+        "label": "Edit distance \u00b7 3 inputs",
+        "sourcePath": "fixtures-historical/editdist.bend"
+      }
+    ],
+    "groupingNote": "programs groups the45 points by the23 catalog benchmark families and uses a geometric mean within each. Family groups and exact-source groups are distinct; the headline remains equal point."
+  },
+  "scopeNotes": [
+    "Latest repository campaigns46/47 retain installed Phase45 worker23; no newer representative full45 result was claimed in those reports at the pinned source head.",
+    "Historical15-case Phase36 data must not be joined to full45 averages as the suite expanded in Phase37.",
+    "Latest32 medians lower and13 higher than previous release;2 points beat TypeScript. Descriptive results, not statistical significance claims.",
+    "Largest remaining ratios occur on tiny/generic paths: morning60.61\u00d7, zero-work scalar60.12\u00d7, generic row58.18\u00d7, Map/Set56.86\u00d7, RLE56.41\u00d7. Keep these in breakdown."
+  ],
+  "evidence": {
+    "runtimeSummarySha256": "da0e85bb7f80497ba4c76054001b76065b8268e8ec27e54158f1ec6dc1493934",
+    "catalogSha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+    "installedReleaseUrl": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase45/evidence/installed-release.json",
+    "sourceStatuses": [
+      "implementation/phase46/README.md",
+      "implementation/phase47/README.md"
+    ]
+  },
+  "historyNotes": [
+    "Descriptive snapshot index, not a workload-population estimate or statistically established improvement between historical runs.",
+    "No multiplication of incremental improvements; every value is computed directly against same-run pinned TypeScript.",
+    "P37/P39/P40 use historical/variation 1000ms warmup 300ms sample blocks and new application 600ms warmup 250ms blocks; later full-suite batches use1000ms warmup 300ms blocks.",
+    "P40 selects42 exact-byte reused comparisons and3 fresh checked06 raytrace comparisons.",
+    "P41 value is freshly measured as baseline in P42 report; its original phase report covers only6 inputs."
+  ],
+  "cohort": {
+    "points": 45,
+    "sources": 23,
+    "catalogSha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+    "sameIdsAcrossAllSnapshots": true
+  },
+  "historyTitle": "Progress across commits \u00b7 same 45 benchmark points",
+  "historyCaption": "Historical benchmark snapshots, normalized to the same pinned TypeScript compiler. The45 inputs stay fixed; early warmup/sample windows differ. Commit dates identify compiler releases, not precise measurement times.",
+  "historyProtocolBoundary": {
+    "beforePhase": 41,
+    "label": "Full45 timing protocol",
+    "detail": "Phases37\u201340 used600/250ms windows for new application families and1,000/300ms for others. Phase41 onward uses1,000/300ms throughout."
+  }
+}

@@ -1,0 +1,1567 @@
+{
+  "schema": 1,
+  "scope": "Read-only historical extraction for separate progress website; no compiler execution or compiler checkout writes.",
+  "historicalHead": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+  "latestHead": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+  "latestCommitDate": "2026-10-04T19:21:20Z",
+  "compilerChecking": {
+    "title": "Compiler checking cost",
+    "unit": "seconds",
+    "boundary": "Ordinary check-and-trust; no emission. Paired old/new compiler runs use identical frozen sources within each release window.",
+    "series": [
+      {
+        "phase": 8,
+        "label": "P8",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 205.26,
+        "typescript_process_seconds": 2.804,
+        "bend_to_typescript_process_ratio": 73.20256776034238,
+        "same_window_predecessor_seconds": null,
+        "same_window_predecessor_ratio": null,
+        "process_time_reduction_percent": null,
+        "bend_request_seconds": 204.2,
+        "typescript_request_seconds": 1.805,
+        "finding": "New upstream and check-only baseline; ordinary checked B1",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "bc322d9eb742cad0e42bdc2e923335fd2149c121",
+        "commit_date": "2026-09-28T02:24:08+00:00",
+        "commit_title": "Consolidate upstream migration results and reproducible evidence",
+        "commit_url": "https://github.com/rom1504/bend/commit/bc322d9eb742cad0e42bdc2e923335fd2149c121",
+        "source_path": "implementation/phase8/checking-cost.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase8/checking-cost.md"
+      },
+      {
+        "phase": 9,
+        "label": "P9",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 66.844,
+        "typescript_process_seconds": 2.94,
+        "bend_to_typescript_process_ratio": 22.736054421768706,
+        "same_window_predecessor_seconds": 208.224,
+        "same_window_predecessor_ratio": 70.82448979591837,
+        "process_time_reduction_percent": 67.9,
+        "bend_request_seconds": 65.681,
+        "typescript_request_seconds": 1.873,
+        "finding": "Cache chronological binder bound; avoid repeated whole-book scans",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "f21e9f0a7bf098b48405fc300d8a676be28adae9",
+        "commit_date": "2026-09-28T06:38:54+00:00",
+        "commit_title": "Accelerate selfhost checking and release compact Nat literals",
+        "commit_url": "https://github.com/rom1504/bend/commit/f21e9f0a7bf098b48405fc300d8a676be28adae9",
+        "source_path": "implementation/phase9/checker_speed.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase9/checker_speed.md"
+      },
+      {
+        "phase": 10,
+        "label": "P10",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 51.751,
+        "typescript_process_seconds": 2.887,
+        "bend_to_typescript_process_ratio": 17.925528229996534,
+        "same_window_predecessor_seconds": 67.045,
+        "same_window_predecessor_ratio": 23.223068929684793,
+        "process_time_reduction_percent": 22.8,
+        "bend_request_seconds": 50.556,
+        "typescript_request_seconds": 1.808,
+        "finding": "Avoid unchanged-alias membership work, cheaper index traversal, known constructor layouts",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "5f561c45e2e86c1e35e0ede8c73ab4342ae50e61",
+        "commit_date": "2026-09-28T07:46:57+00:00",
+        "commit_title": "Reduce repeated loader, index and layout work in selfhost compiler",
+        "commit_url": "https://github.com/rom1504/bend/commit/5f561c45e2e86c1e35e0ede8c73ab4342ae50e61",
+        "source_path": "implementation/phase10/repeated_work.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase10/repeated_work.md"
+      },
+      {
+        "phase": 11,
+        "label": "P11",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 29.729,
+        "typescript_process_seconds": 2.785,
+        "bend_to_typescript_process_ratio": 10.67468581687612,
+        "same_window_predecessor_seconds": 51.443,
+        "same_window_predecessor_ratio": 18.47145421903052,
+        "process_time_reduction_percent": 42.21,
+        "bend_request_seconds": 28.598,
+        "typescript_request_seconds": 1.736,
+        "finding": "Avoid generated Boolean branch wrappers; reuse checked constructor telescope; lazy scope guard",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "1101206b62532ffce0e85b7f451d1c6d5fd6b0ac",
+        "commit_date": "2026-09-28T09:05:07+00:00",
+        "commit_title": "Avoid branch wrappers and compact native Nat reconstruction",
+        "commit_url": "https://github.com/rom1504/bend/commit/1101206b62532ffce0e85b7f451d1c6d5fd6b0ac",
+        "source_path": "implementation/phase11/known_work.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase11/known_work.md"
+      },
+      {
+        "phase": 12,
+        "label": "P12",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 26.897,
+        "typescript_process_seconds": 2.855,
+        "bend_to_typescript_process_ratio": 9.421015761821366,
+        "same_window_predecessor_seconds": 29.558,
+        "same_window_predecessor_ratio": 10.353064798598949,
+        "process_time_reduction_percent": 9.0,
+        "bend_request_seconds": 25.775,
+        "typescript_request_seconds": null,
+        "finding": "Narrow call lowering, typed constructor lookup and literal reuse",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "9a4e1098043ef32a080a41440aa84728078d0d7b",
+        "commit_date": "2026-09-28T16:35:33+00:00",
+        "commit_title": "Improve selfhost emission and guarded call performance",
+        "commit_url": "https://github.com/rom1504/bend/commit/9a4e1098043ef32a080a41440aa84728078d0d7b",
+        "source_path": "implementation/phase12/avoidable_work.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase12/avoidable_work.md"
+      },
+      {
+        "phase": 14,
+        "label": "P14",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 24.9781,
+        "typescript_process_seconds": 2.8118,
+        "bend_to_typescript_process_ratio": 8.883313180169287,
+        "same_window_predecessor_seconds": 27.3956,
+        "same_window_predecessor_ratio": 9.743082722811012,
+        "process_time_reduction_percent": 8.82,
+        "bend_request_seconds": 23.8499,
+        "typescript_request_seconds": 1.7633,
+        "finding": "Direct source dispatch while fixing imported laws and exact diagnostics",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "abb200fedffbef08a119535ca907cdcca071b146",
+        "commit_date": "2026-09-28T22:49:30+00:00",
+        "commit_title": "Release imported-law fixes, exact checker carets and faster source dispatch",
+        "commit_url": "https://github.com/rom1504/bend/commit/abb200fedffbef08a119535ca907cdcca071b146",
+        "source_path": "implementation/phase14/conformance_and_dispatch.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase14/conformance_and_dispatch.md"
+      },
+      {
+        "phase": 15,
+        "label": "P15",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 24.1023,
+        "typescript_process_seconds": 2.8858,
+        "bend_to_typescript_process_ratio": 8.35203409799709,
+        "same_window_predecessor_seconds": 25.078,
+        "same_window_predecessor_ratio": 8.690137916695543,
+        "process_time_reduction_percent": 3.89,
+        "bend_request_seconds": 22.9768,
+        "typescript_request_seconds": 1.8265,
+        "finding": "Boolean-parameter lookup workers lower to mutual tail loops",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "a383163b821e38510967849fdb791ff914031b62",
+        "commit_date": "2026-09-29T00:41:15+00:00",
+        "commit_title": "Release Phase15 parser conformance and faster lookup compiler",
+        "commit_url": "https://github.com/rom1504/bend/commit/a383163b821e38510967849fdb791ff914031b62",
+        "source_path": "implementation/phase15/parser_conformance_and_speed.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase15/parser_conformance_and_speed.md"
+      },
+      {
+        "phase": 16,
+        "label": "P16",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 12.357,
+        "typescript_process_seconds": 3.6108,
+        "bend_to_typescript_process_ratio": 3.422233300099701,
+        "same_window_predecessor_seconds": 30.5837,
+        "same_window_predecessor_ratio": 8.47006203611388,
+        "process_time_reduction_percent": 59.6,
+        "bend_request_seconds": 11.2655,
+        "typescript_request_seconds": 2.3597,
+        "finding": "Compact literal representation avoids expansion, copying and freshening",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "0b51d965e2638048b5526b351047daae0c61ed7c",
+        "commit_date": "2026-09-29T07:09:22+00:00",
+        "commit_title": "Install compact Phase16 compiler with exact semantic and release gates",
+        "commit_url": "https://github.com/rom1504/bend/commit/0b51d965e2638048b5526b351047daae0c61ed7c",
+        "source_path": "implementation/phase16/consolidation.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase16/consolidation.md"
+      },
+      {
+        "phase": 17,
+        "label": "P17",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 11.6255,
+        "typescript_process_seconds": 3.3998,
+        "bend_to_typescript_process_ratio": 3.419465850932408,
+        "same_window_predecessor_seconds": 12.4407,
+        "same_window_predecessor_ratio": 3.6592446614506735,
+        "process_time_reduction_percent": 6.55,
+        "bend_request_seconds": 10.5307,
+        "typescript_request_seconds": 2.3313,
+        "finding": "Frontend lookup worker avoids per-miss trampoline allocations",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "fddfc84b3f48aecc77c2424ddc8227cd7f63251f",
+        "commit_date": "2026-09-29T07:46:07+00:00",
+        "commit_title": "Install direct frontend lookup loop and record remaining chronology gaps",
+        "commit_url": "https://github.com/rom1504/bend/commit/fddfc84b3f48aecc77c2424ddc8227cd7f63251f",
+        "source_path": "implementation/phase17/find-worker.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase17/find-worker.md"
+      },
+      {
+        "phase": 19,
+        "label": "P19",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 11.057018,
+        "typescript_process_seconds": 3.482922,
+        "bend_to_typescript_process_ratio": 3.174638421417419,
+        "same_window_predecessor_seconds": 11.57056,
+        "same_window_predecessor_ratio": 3.3220841580718723,
+        "process_time_reduction_percent": 4.44,
+        "bend_request_seconds": 9.956728,
+        "typescript_request_seconds": 2.405262,
+        "finding": "One live checker state replaces duplicate ownership",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "fd9e8b28c906dff13471fab9afc6975fd5574edd",
+        "commit_date": "2026-09-29T09:35:25+00:00",
+        "commit_title": "Unify live instance checking and install the validated compiler",
+        "commit_url": "https://github.com/rom1504/bend/commit/fd9e8b28c906dff13471fab9afc6975fd5574edd",
+        "source_path": "implementation/phase19/live-checker-release.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase19/live-checker-release.md"
+      },
+      {
+        "phase": 20,
+        "label": "P20",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 10.9412,
+        "typescript_process_seconds": 3.4463,
+        "bend_to_typescript_process_ratio": 3.174767141572121,
+        "same_window_predecessor_seconds": 10.9727,
+        "same_window_predecessor_ratio": 3.183907378928126,
+        "process_time_reduction_percent": 0.29,
+        "bend_request_seconds": 9.837,
+        "typescript_request_seconds": 2.3723,
+        "finding": "Declaration checkpoint conformance; neutral cost screen",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "c385d3913e9f10c6c4d9c5cfef3f34bc0682d351",
+        "commit_date": "2026-09-29T10:35:01+00:00",
+        "commit_title": "Fix declaration grammar and install a checked conformance release",
+        "commit_url": "https://github.com/rom1504/bend/commit/c385d3913e9f10c6c4d9c5cfef3f34bc0682d351",
+        "source_path": "implementation/phase20/declaration-checkpoints-release.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase20/declaration-checkpoints-release.md"
+      },
+      {
+        "phase": 21,
+        "label": "P21",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 10.9547,
+        "typescript_process_seconds": 3.4364,
+        "bend_to_typescript_process_ratio": 3.18784192759865,
+        "same_window_predecessor_seconds": 11.006,
+        "same_window_predecessor_ratio": 3.2027703410545922,
+        "process_time_reduction_percent": 0.47,
+        "bend_request_seconds": 9.8612,
+        "typescript_request_seconds": 2.3647,
+        "finding": "Grouped source origins; neutral cost screen",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "df94915c7369a1bed0aa943d8267b4e178401c8e",
+        "commit_date": "2026-09-29T11:26:25+00:00",
+        "commit_title": "Preserve grouped local and typed annotation source origins",
+        "commit_url": "https://github.com/rom1504/bend/commit/df94915c7369a1bed0aa943d8267b4e178401c8e",
+        "source_path": "implementation/phase21/group-range-release.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase21/group-range-release.md"
+      },
+      {
+        "phase": 22,
+        "label": "P22",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 10.6991,
+        "typescript_process_seconds": 3.3833,
+        "bend_to_typescript_process_ratio": 3.1623267224307625,
+        "same_window_predecessor_seconds": 11.0168,
+        "same_window_predecessor_ratio": 3.2562291254101026,
+        "process_time_reduction_percent": 2.88,
+        "bend_request_seconds": 9.5968,
+        "typescript_request_seconds": null,
+        "finding": "Unified contextual frontend; recover regressions through guarded scans and constructor index",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Same Phase21 frozen compiler source, SHA256 fac061286a2683914244178eb1f9b4dc2fbc2d393560739663e8bd08bbc12996; each bundle retains its actual host, runtime, Base and pin.",
+        "commit": "1e640798c7b74c32a1d3f3335727d7be918795b9",
+        "commit_date": "2026-09-29T17:32:19+00:00",
+        "commit_title": "Consolidate contextual frontend with exact pinned conformance",
+        "commit_url": "https://github.com/rom1504/bend/commit/1e640798c7b74c32a1d3f3335727d7be918795b9",
+        "source_path": "implementation/phase22/contextual-conformance.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase22/contextual-conformance.md"
+      },
+      {
+        "phase": 23,
+        "label": "P23",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 11.013468514,
+        "typescript_process_seconds": 3.551767431,
+        "bend_to_typescript_process_ratio": 3.1008416874015756,
+        "same_window_predecessor_seconds": 10.970780344,
+        "same_window_predecessor_ratio": 3.0888228345827184,
+        "process_time_reduction_percent": -0.389107872562,
+        "bend_request_seconds": 9.7930655795,
+        "typescript_request_seconds": 2.358905585,
+        "finding": "Upstream migration and shared graph conversion; near-neutral ordinary cost",
+        "samples_per_image": 2,
+        "pin": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "source_policy": "Same Phase21 frozen compiler source, SHA256 fac061286a2683914244178eb1f9b4dc2fbc2d393560739663e8bd08bbc12996; each bundle retains its actual host, runtime, Base and pin.",
+        "commit": "8eb2cc01145041ce7c0dce199daaf7087038e962",
+        "commit_date": "2026-09-29T20:08:44+00:00",
+        "commit_title": "Document Phase23 migration, measured costs, and independently recovered experiment evidence",
+        "commit_url": "https://github.com/rom1504/bend/commit/8eb2cc01145041ce7c0dce199daaf7087038e962",
+        "source_path": "implementation/phase23/upstream-graph-conversion.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase23/upstream-graph-conversion.md"
+      },
+      {
+        "phase": 24,
+        "label": "P24",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 11.1564692943,
+        "typescript_process_seconds": 3.7370016687,
+        "bend_to_typescript_process_ratio": 2.9854065594198755,
+        "same_window_predecessor_seconds": 11.730024555,
+        "same_window_predecessor_ratio": 3.138886624870187,
+        "process_time_reduction_percent": 4.88963393024,
+        "bend_request_seconds": 9.8205275387,
+        "typescript_request_seconds": 2.4290411627,
+        "finding": "Negative scope-index guard and membership Boolean worker",
+        "samples_per_image": 3,
+        "pin": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "source_policy": "Same Phase21 frozen compiler source, SHA256 fac061286a2683914244178eb1f9b4dc2fbc2d393560739663e8bd08bbc12996; each bundle retains its actual host, runtime, Base and pin.",
+        "commit": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+        "commit_date": "2026-09-29T22:04:13+00:00",
+        "commit_title": "selfhost: reduce lookup overhead and fix emission name collisions",
+        "commit_url": "https://github.com/rom1504/bend/commit/5350b2fec8f6f8484c7a689e915b359d7ce86847",
+        "source_path": "implementation/phase24/profile-and-coverage.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/profile-and-coverage.md"
+      }
+    ],
+    "selectedPairs": [
+      {
+        "phase": 9,
+        "label": "P9",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 66.844,
+        "typescript_process_seconds": 2.94,
+        "bend_to_typescript_process_ratio": 22.736054421768706,
+        "same_window_predecessor_seconds": 208.224,
+        "same_window_predecessor_ratio": 70.82448979591837,
+        "process_time_reduction_percent": 67.9,
+        "bend_request_seconds": 65.681,
+        "typescript_request_seconds": 1.873,
+        "finding": "Cache chronological binder bound; avoid repeated whole-book scans",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "f21e9f0a7bf098b48405fc300d8a676be28adae9",
+        "commit_date": "2026-09-28T06:38:54+00:00",
+        "commit_title": "Accelerate selfhost checking and release compact Nat literals",
+        "commit_url": "https://github.com/rom1504/bend/commit/f21e9f0a7bf098b48405fc300d8a676be28adae9",
+        "source_path": "implementation/phase9/checker_speed.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase9/checker_speed.md"
+      },
+      {
+        "phase": 11,
+        "label": "P11",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 29.729,
+        "typescript_process_seconds": 2.785,
+        "bend_to_typescript_process_ratio": 10.67468581687612,
+        "same_window_predecessor_seconds": 51.443,
+        "same_window_predecessor_ratio": 18.47145421903052,
+        "process_time_reduction_percent": 42.21,
+        "bend_request_seconds": 28.598,
+        "typescript_request_seconds": 1.736,
+        "finding": "Avoid generated Boolean branch wrappers; reuse checked constructor telescope; lazy scope guard",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "1101206b62532ffce0e85b7f451d1c6d5fd6b0ac",
+        "commit_date": "2026-09-28T09:05:07+00:00",
+        "commit_title": "Avoid branch wrappers and compact native Nat reconstruction",
+        "commit_url": "https://github.com/rom1504/bend/commit/1101206b62532ffce0e85b7f451d1c6d5fd6b0ac",
+        "source_path": "implementation/phase11/known_work.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase11/known_work.md"
+      },
+      {
+        "phase": 16,
+        "label": "P16",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 12.357,
+        "typescript_process_seconds": 3.6108,
+        "bend_to_typescript_process_ratio": 3.422233300099701,
+        "same_window_predecessor_seconds": 30.5837,
+        "same_window_predecessor_ratio": 8.47006203611388,
+        "process_time_reduction_percent": 59.6,
+        "bend_request_seconds": 11.2655,
+        "typescript_request_seconds": 2.3597,
+        "finding": "Compact literal representation avoids expansion, copying and freshening",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Each release matrix uses an identical frozen source across its lanes, usually that release final assembled source; source changes between phases.",
+        "commit": "0b51d965e2638048b5526b351047daae0c61ed7c",
+        "commit_date": "2026-09-29T07:09:22+00:00",
+        "commit_title": "Install compact Phase16 compiler with exact semantic and release gates",
+        "commit_url": "https://github.com/rom1504/bend/commit/0b51d965e2638048b5526b351047daae0c61ed7c",
+        "source_path": "implementation/phase16/consolidation.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase16/consolidation.md"
+      },
+      {
+        "phase": 22,
+        "label": "P22",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 10.6991,
+        "typescript_process_seconds": 3.3833,
+        "bend_to_typescript_process_ratio": 3.1623267224307625,
+        "same_window_predecessor_seconds": 11.0168,
+        "same_window_predecessor_ratio": 3.2562291254101026,
+        "process_time_reduction_percent": 2.88,
+        "bend_request_seconds": 9.5968,
+        "typescript_request_seconds": null,
+        "finding": "Unified contextual frontend; recover regressions through guarded scans and constructor index",
+        "samples_per_image": 2,
+        "pin": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "source_policy": "Same Phase21 frozen compiler source, SHA256 fac061286a2683914244178eb1f9b4dc2fbc2d393560739663e8bd08bbc12996; each bundle retains its actual host, runtime, Base and pin.",
+        "commit": "1e640798c7b74c32a1d3f3335727d7be918795b9",
+        "commit_date": "2026-09-29T17:32:19+00:00",
+        "commit_title": "Consolidate contextual frontend with exact pinned conformance",
+        "commit_url": "https://github.com/rom1504/bend/commit/1e640798c7b74c32a1d3f3335727d7be918795b9",
+        "source_path": "implementation/phase22/contextual-conformance.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase22/contextual-conformance.md"
+      },
+      {
+        "phase": 24,
+        "label": "P24",
+        "kind": "ordinary_check_and_trust_no_emission",
+        "bend_process_seconds": 11.1564692943,
+        "typescript_process_seconds": 3.7370016687,
+        "bend_to_typescript_process_ratio": 2.9854065594198755,
+        "same_window_predecessor_seconds": 11.730024555,
+        "same_window_predecessor_ratio": 3.138886624870187,
+        "process_time_reduction_percent": 4.88963393024,
+        "bend_request_seconds": 9.8205275387,
+        "typescript_request_seconds": 2.4290411627,
+        "finding": "Negative scope-index guard and membership Boolean worker",
+        "samples_per_image": 3,
+        "pin": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "source_policy": "Same Phase21 frozen compiler source, SHA256 fac061286a2683914244178eb1f9b4dc2fbc2d393560739663e8bd08bbc12996; each bundle retains its actual host, runtime, Base and pin.",
+        "commit": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+        "commit_date": "2026-09-29T22:04:13+00:00",
+        "commit_title": "selfhost: reduce lookup overhead and fix emission name collisions",
+        "commit_url": "https://github.com/rom1504/bend/commit/5350b2fec8f6f8484c7a689e915b359d7ce86847",
+        "source_path": "implementation/phase24/profile-and-coverage.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/profile-and-coverage.md"
+      }
+    ],
+    "historicalSeparateScope": [
+      {
+        "label": "Original seed: tree+IO",
+        "bend_seconds": 44.495,
+        "typescript_seconds": 0.359,
+        "ratio": 123.94150417827298,
+        "scope": "Self-emitted H full checked JS emission, uncached pipeline time; startup/output execution excluded.",
+        "samples_per_image": 3,
+        "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+        "commit": "88d509fbd819cef691b04e708c8936317532833e",
+        "commit_date": "2026-09-21T04:00:59+00:00",
+        "commit_title": "Record controlled compiler performance baseline",
+        "commit_url": "https://github.com/rom1504/bend/commit/88d509fbd819cef691b04e708c8936317532833e",
+        "source_path": "selfhost/docs/PERFORMANCE-BASELINE.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/selfhost/docs/PERFORMANCE-BASELINE.md"
+      },
+      {
+        "label": "Phase1 full-source old control",
+        "bend_seconds": 4922.363,
+        "typescript_seconds": 48.718,
+        "ratio": 101.03787101276735,
+        "scope": "H full checked library emission on archived1391-definition548538-byte source, warm Bend Base cache vs uncached TS; different export policy.",
+        "samples_per_image": 1,
+        "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+        "commit": "f0f2fd2e576d59e0152cc2d45a8fe6f4bf00a580",
+        "commit_date": "2026-09-21T08:01:11+00:00",
+        "commit_title": "Record completed phase one full-build and cache comparisons",
+        "commit_url": "https://github.com/rom1504/bend/commit/f0f2fd2e576d59e0152cc2d45a8fe6f4bf00a580",
+        "source_path": "implementation/phase1/report.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase1/report.md"
+      },
+      {
+        "label": "Phase1 full-source candidate",
+        "bend_seconds": 2157.11,
+        "typescript_seconds": 48.718,
+        "ratio": 44.27747444476374,
+        "scope": "H full checked library emission on same archived source; TS separately sampled. Historical approximate40x claim belongs around here, not current check-only series.",
+        "samples_per_image": 1,
+        "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+        "commit": "f0f2fd2e576d59e0152cc2d45a8fe6f4bf00a580",
+        "commit_date": "2026-09-21T08:01:11+00:00",
+        "commit_title": "Record completed phase one full-build and cache comparisons",
+        "commit_url": "https://github.com/rom1504/bend/commit/f0f2fd2e576d59e0152cc2d45a8fe6f4bf00a580",
+        "source_path": "implementation/phase1/report.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase1/report.md"
+      },
+      {
+        "label": "Phase1 rapid: tree+IO",
+        "bend_seconds": 14.51,
+        "typescript_seconds": 0.41,
+        "ratio": 35.390243902439025,
+        "scope": "Complete self-emitted H checked JS emission, uncached;3 rotating samples.",
+        "samples_per_image": 3,
+        "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+        "commit": "8414b542eb6c8144ee10fd24e24759a2a2d095e5",
+        "commit_date": "2026-09-21T08:46:48+00:00",
+        "commit_title": "Measure the verified compiler against pinned TypeScript on two workloads",
+        "commit_url": "https://github.com/rom1504/bend/commit/8414b542eb6c8144ee10fd24e24759a2a2d095e5",
+        "source_path": "implementation/phase1/rapid_performance_experiments.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase1/rapid_performance_experiments.md"
+      },
+      {
+        "label": "Phase5 installed compiler full source",
+        "bend_seconds": 363.392,
+        "typescript_seconds": 60.248,
+        "ratio": 6.031602708803612,
+        "scope": "Maintained guarded checked-B1 derivative full compilation/library emission. Distinct artifact from self-emitted H; do not conflate this6.03x with later check-only metric.",
+        "samples_per_image": 2,
+        "pin": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+        "commit": "307962c6bc9d17f6b38770ea8cdcef77ecc43510",
+        "commit_date": "2026-09-23T02:01:20+00:00",
+        "commit_title": "Record audited final-source timings and diagnostic counterexample",
+        "commit_url": "https://github.com/rom1504/bend/commit/307962c6bc9d17f6b38770ea8cdcef77ecc43510",
+        "source_path": "implementation/phase5/full-source-comparison.md",
+        "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase5/full-source-comparison.md"
+      }
+    ],
+    "notes": [
+      "Each phase has a different source/compiler generation/harness window; do not connect historical ratios as a controlled speedup or compound reductions.",
+      "Bend uses validated Base caches while TypeScript checks Base. Process includes startup and provenance hashing; request has a different boundary.",
+      "Most historical windows contain two samples per image, latest P24 has three; single machine descriptive measurements.",
+      "P24 is the latest saved compiler-source check-only point. The current P42–45 four-program checked-library request average measures a different workload and includes emission."
+    ]
+  },
+  "latestCompilation": {
+    "phase": "P36",
+    "baseline": "Phase35 checked09",
+    "candidate": "Phase36 checked03",
+    "boundary": "Normal checked-library requests: selfhost inspect/Base; TS book_load/valid/js_lib. Host import separate; lazy API load and ordinary Base handling inside request.",
+    "sourceURL": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/compiler-cost.md",
+    "admissionURL": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/performance-admission.md",
+    "pin": "018751270e800bc222a93dad7f257083ee53a5f7",
+    "compilerAPIHash": "93e55ad7ee456eebb5fa3dd9606c2cf262ea386c6f66bfd891ffe187d8f50a75",
+    "baselineAPIHash": "467bc7dec2751a94cb677c5eb2da22a8fb69ee3522c6e164cb2bfcc147a78d82",
+    "workerHash": "f0dea569bdb02df60ed1156b0cead389e197291f1c3a3c6775102c7a03790f42",
+    "points": [
+      {
+        "workload": "local-pair",
+        "baseline_ms": 1721.342,
+        "candidate_ms": 1694.482,
+        "typescript_ms": 313.149,
+        "baseline_range_ms": [
+          1696.855,
+          1805.775
+        ],
+        "candidate_range_ms": [
+          1694.429,
+          1707.228
+        ],
+        "typescript_range_ms": [
+          300.737,
+          329.037
+        ],
+        "candidate_change_percent": -1.5604104239599126,
+        "candidate_to_typescript": 5.4111046179294835,
+        "samplesPerRole": 3,
+        "rangesOverlap": true
+      },
+      {
+        "workload": "Mandelbrot",
+        "baseline_ms": 1856.294,
+        "candidate_ms": 1864.166,
+        "typescript_ms": 327.156,
+        "baseline_range_ms": [
+          1852.309,
+          1897.044
+        ],
+        "candidate_range_ms": [
+          1863.099,
+          1897.602
+        ],
+        "typescript_range_ms": [
+          327.002,
+          331.747
+        ],
+        "candidate_change_percent": 0.42407075603325683,
+        "candidate_to_typescript": 5.69809509836286,
+        "samplesPerRole": 3,
+        "rangesOverlap": true
+      },
+      {
+        "workload": "symreg",
+        "baseline_ms": 1985.074,
+        "candidate_ms": 2074.394,
+        "typescript_ms": 289.42,
+        "baseline_range_ms": [
+          1975.44,
+          2160.115
+        ],
+        "candidate_range_ms": [
+          2062.266,
+          2083.194
+        ],
+        "typescript_range_ms": [
+          287.769,
+          316.18
+        ],
+        "candidate_change_percent": 4.499580368288525,
+        "candidate_to_typescript": 7.167417593808305,
+        "samplesPerRole": 3,
+        "rangesOverlap": true
+      },
+      {
+        "workload": "raytrace",
+        "baseline_ms": 2586.862,
+        "candidate_ms": 2690.923,
+        "typescript_ms": 409.436,
+        "baseline_range_ms": [
+          2531.902,
+          2882.163
+        ],
+        "candidate_range_ms": [
+          2685.013,
+          2746.018
+        ],
+        "typescript_range_ms": [
+          405.834,
+          410.103
+        ],
+        "candidate_change_percent": 4.022673030103641,
+        "candidate_to_typescript": 6.572267704842759,
+        "samplesPerRole": 3,
+        "rangesOverlap": true
+      }
+    ],
+    "notes": [
+      "36/36 requests match independently acquired checked outputs. Three rotated fresh processes per role/source, no outlier removal.",
+      "All four request ranges overlap; this does not establish neutral compilation cost. P36 accepts possible compile costs for large runtime gains.",
+      "Node24.18.0, serial CPU3, 1GiB Node heap, 2GiB process-tree RSS cap and 2GiB available-memory floor.",
+      "The separate eleven-line preflight experiment was rejected; its cost savings are not part of the installed release."
+    ]
+  },
+  "simplicity": {
+    "title": "Compiler source size and shared responsibilities",
+    "series": [
+      {
+        "commit": "d238fc985c36c4d609c6ac85e6f9719e4d1d8d69",
+        "shortCommit": "d238fc9",
+        "date": "2026-09-21",
+        "subject": "Add supplied typed self-hosting compiler snapshot",
+        "label": "Initial snapshot",
+        "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+        "modules": 57,
+        "sourceLink": "https://github.com/rom1504/bend/blob/d238fc985c36c4d609c6ac85e6f9719e4d1d8d69/selfhost/src/compiler.json",
+        "physicalLines": 14950,
+        "nonblankLines": 12450,
+        "bytes": 457428,
+        "defs": 1391,
+        "laws": 1145,
+        "types": 63,
+        "chartLabel": "Initial"
+      },
+      {
+        "commit": "a6459af179d646ddcfec5136495dd844f2829ab7",
+        "shortCommit": "a6459af",
+        "date": "2026-09-23",
+        "subject": "Finish consolidated compiler handoff with native scaling and H experiment evidence",
+        "label": "Phase5 / simplification baseline",
+        "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+        "modules": 59,
+        "sourceLink": "https://github.com/rom1504/bend/blob/a6459af179d646ddcfec5136495dd844f2829ab7/selfhost/src/compiler.json",
+        "physicalLines": 16509,
+        "nonblankLines": 13803,
+        "bytes": 509937,
+        "defs": 1526,
+        "laws": 1280,
+        "types": 66,
+        "chartLabel": "P5"
+      },
+      {
+        "commit": "af3c639f4d52d1f2b36e1057d90e1e5a0ce2c90d",
+        "shortCommit": "af3c639",
+        "date": "2026-09-26",
+        "subject": "Retire obsolete compiler paths and publish validated 15961-line source",
+        "label": "S1 obsolete paths",
+        "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+        "modules": 59,
+        "sourceLink": "https://github.com/rom1504/bend/blob/af3c639f4d52d1f2b36e1057d90e1e5a0ce2c90d/selfhost/src/compiler.json",
+        "physicalLines": 15961,
+        "nonblankLines": 13343,
+        "bytes": 494957,
+        "defs": 1473,
+        "laws": 1245,
+        "types": 61,
+        "chartLabel": "P7 / S1"
+      },
+      {
+        "commit": "22f6e8e21be5390d50831f9cbe4aab1147ff217d",
+        "shortCommit": "22f6e8e",
+        "date": "2026-09-26",
+        "subject": "refactor(selfhost): consolidate declarations and frontend operations",
+        "label": "S4 frontend consolidation",
+        "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+        "modules": 59,
+        "sourceLink": "https://github.com/rom1504/bend/blob/22f6e8e21be5390d50831f9cbe4aab1147ff217d/selfhost/src/compiler.json",
+        "physicalLines": 14667,
+        "nonblankLines": 12505,
+        "bytes": 470062,
+        "defs": 1433,
+        "laws": 789,
+        "types": 61,
+        "chartLabel": "P7 / S4"
+      },
+      {
+        "commit": "bc322d9eb742cad0e42bdc2e923335fd2149c121",
+        "shortCommit": "bc322d9",
+        "date": "2026-09-28",
+        "subject": "Consolidate upstream migration results and reproducible evidence",
+        "label": "Phase8 upstream2.0.32",
+        "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "modules": 59,
+        "sourceLink": "https://github.com/rom1504/bend/blob/bc322d9eb742cad0e42bdc2e923335fd2149c121/selfhost/src/compiler.json",
+        "physicalLines": 14977,
+        "nonblankLines": 12779,
+        "bytes": 489150,
+        "defs": 1470,
+        "laws": 790,
+        "types": 62,
+        "chartLabel": "P8"
+      },
+      {
+        "commit": "a383163b821e38510967849fdb791ff914031b62",
+        "shortCommit": "a383163",
+        "date": "2026-09-29",
+        "subject": "Release Phase15 parser conformance and faster lookup compiler",
+        "label": "Phase15",
+        "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "modules": 59,
+        "sourceLink": "https://github.com/rom1504/bend/blob/a383163b821e38510967849fdb791ff914031b62/selfhost/src/compiler.json",
+        "physicalLines": 15288,
+        "nonblankLines": 13059,
+        "bytes": 503048,
+        "defs": 1499,
+        "laws": 790,
+        "types": 63,
+        "chartLabel": "P15"
+      },
+      {
+        "commit": "0b51d965e2638048b5526b351047daae0c61ed7c",
+        "shortCommit": "0b51d96",
+        "date": "2026-09-29",
+        "subject": "Install compact Phase16 compiler with exact semantic and release gates",
+        "label": "Phase16 compact release",
+        "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "modules": 59,
+        "sourceLink": "https://github.com/rom1504/bend/blob/0b51d965e2638048b5526b351047daae0c61ed7c/selfhost/src/compiler.json",
+        "physicalLines": 16345,
+        "nonblankLines": 13947,
+        "bytes": 581177,
+        "defs": 1656,
+        "laws": 775,
+        "types": 66,
+        "chartLabel": "P16"
+      },
+      {
+        "commit": "fd9e8b28c906dff13471fab9afc6975fd5574edd",
+        "shortCommit": "fd9e8b2",
+        "date": "2026-09-29",
+        "subject": "Unify live instance checking and install the validated compiler",
+        "label": "Phase19 shared live checker",
+        "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "modules": 59,
+        "sourceLink": "https://github.com/rom1504/bend/blob/fd9e8b28c906dff13471fab9afc6975fd5574edd/selfhost/src/compiler.json",
+        "physicalLines": 15880,
+        "nonblankLines": 13527,
+        "bytes": 575893,
+        "defs": 1659,
+        "laws": 719,
+        "types": 67,
+        "chartLabel": "P19"
+      },
+      {
+        "commit": "1e640798c7b74c32a1d3f3335727d7be918795b9",
+        "shortCommit": "1e64079",
+        "date": "2026-09-29",
+        "subject": "Consolidate contextual frontend with exact pinned conformance",
+        "label": "Phase22 contextual frontend",
+        "upstream": "b2111cf43244e65f76ddc278ee695e669f720cbf",
+        "modules": 60,
+        "sourceLink": "https://github.com/rom1504/bend/blob/1e640798c7b74c32a1d3f3335727d7be918795b9/selfhost/src/compiler.json",
+        "physicalLines": 15600,
+        "nonblankLines": 13305,
+        "bytes": 580464,
+        "defs": 1691,
+        "laws": 638,
+        "types": 68,
+        "chartLabel": "P22"
+      },
+      {
+        "commit": "8eb2cc01145041ce7c0dce199daaf7087038e962",
+        "shortCommit": "8eb2cc0",
+        "date": "2026-09-29",
+        "subject": "Document Phase23 migration, measured costs, and independently recovered experiment evidence",
+        "label": "Phase23 upstream2.0.34",
+        "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "modules": 60,
+        "sourceLink": "https://github.com/rom1504/bend/blob/8eb2cc01145041ce7c0dce199daaf7087038e962/selfhost/src/compiler.json",
+        "physicalLines": 15748,
+        "nonblankLines": 13442,
+        "bytes": 586637,
+        "defs": 1700,
+        "laws": 640,
+        "types": 68,
+        "chartLabel": "P23"
+      },
+      {
+        "commit": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+        "shortCommit": "5350b2f",
+        "date": "2026-09-29",
+        "subject": "selfhost: reduce lookup overhead and fix emission name collisions",
+        "label": "Phase24",
+        "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "modules": 60,
+        "sourceLink": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/selfhost/src/compiler.json",
+        "physicalLines": 15776,
+        "nonblankLines": 13467,
+        "bytes": 588084,
+        "defs": 1703,
+        "laws": 640,
+        "types": 68,
+        "chartLabel": "P24"
+      },
+      {
+        "commit": "88619d9cc58fae12ef6f9675141122d3dbc11dd8",
+        "shortCommit": "88619d9",
+        "date": "2026-10-01",
+        "label": "P35 checked release",
+        "chartLabel": "P35",
+        "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "modules": 68,
+        "sourceLink": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/compiler-cost.md",
+        "physicalLines": 18050,
+        "nonblankLines": 15436,
+        "bytes": 725068,
+        "defs": 2008,
+        "laws": 640,
+        "types": 71,
+        "scope": "Frozen checked snapshot from P36 paired source census; generated images, reports and experimental tools excluded."
+      },
+      {
+        "commit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+        "shortCommit": "dfa5e03",
+        "date": "2026-10-01",
+        "label": "P36 checked release",
+        "chartLabel": "P36",
+        "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "modules": 69,
+        "sourceLink": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/compiler-cost.md",
+        "physicalLines": 18174,
+        "nonblankLines": 15545,
+        "bytes": 733685,
+        "defs": 2024,
+        "laws": 640,
+        "types": 71,
+        "scope": "Frozen checked snapshot from P36 paired source census; generated images, reports and experimental tools excluded."
+      },
+      {
+        "commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+        "shortCommit": "ab74ece",
+        "date": "2026-10-04",
+        "subject": "Install and document qualified Phase45 compiler with portable runtime benchmarks",
+        "label": "P45 installed worker23",
+        "chartLabel": "P45",
+        "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "modules": 85,
+        "sourceLink": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/README.md",
+        "physicalLines": 23007,
+        "nonblankLines": null,
+        "codeLines": 18983,
+        "bytes": null,
+        "defs": 2594,
+        "laws": 629,
+        "types": 87,
+        "scope": "Frozen worker23 manifest-listed Bend source, original/frozen identities joined to checked attempt, API and runtime. Excludes runtime, host tools, tests, documentation, generated images and unlisted files. Code lines omit blanks and whole-line comments; the historical nonblank count is not reported."
+      }
+    ],
+    "baseline": {
+      "commit": "a6459af179d646ddcfec5136495dd844f2829ab7",
+      "shortCommit": "a6459af",
+      "date": "2026-09-23",
+      "subject": "Finish consolidated compiler handoff with native scaling and H experiment evidence",
+      "label": "Phase5 / simplification baseline",
+      "upstream": "6018e28ecc67cf1fffc0c20c64b11023474c2df8",
+      "modules": 59,
+      "sourceLink": "https://github.com/rom1504/bend/blob/a6459af179d646ddcfec5136495dd844f2829ab7/selfhost/src/compiler.json",
+      "physicalLines": 16509,
+      "nonblankLines": 13803,
+      "bytes": 509937,
+      "defs": 1526,
+      "laws": 1280,
+      "types": 66
+    },
+    "method": {
+      "membership": "Exactly each historical revision selfhost/src/compiler.json modules, counted once. Excludes host/runtime, generated code, tools, tests, documentation. Dynamic historical membership intentionally includes new implemented compiler responsibilities.",
+      "physicalLines": "len(decoded UTF-8 text.splitlines()), includes comments and blank lines",
+      "nonblankLines": "Nonempty str.strip() lines",
+      "declarations": "Anchored ^def, ^law, ^type heads, not concept counts",
+      "historyScope": "Every first-parent commit touching selfhost/src plus selected phase checkpoints; measurements are immutable Git blobs, ignoring working-tree edits.",
+      "dates": "Commit committer dates; many phases share one day; use phases/commit order for chart.",
+      "scriptSha256": "07580351981df7bb8449c9fce86a5bfc3668f473b29e9f0f42918617ed5f176c",
+      "codeLines": "Latest P45 report: nonblank, noncomment lines; not interchangeable with historical nonblankLines. Unreported nonblank counts remain null."
+    },
+    "cleanup": {
+      "before": 16509,
+      "after": 14667,
+      "physicalReductionPercent": 11.157550427039798,
+      "nonblankReductionPercent": 9.403752807360718,
+      "bytesReductionPercent": 7.82077158550675
+    },
+    "latest": {
+      "commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+      "shortCommit": "ab74ece",
+      "date": "2026-10-04",
+      "subject": "Install and document qualified Phase45 compiler with portable runtime benchmarks",
+      "label": "P45 installed worker23",
+      "chartLabel": "P45",
+      "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+      "modules": 85,
+      "sourceLink": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/README.md",
+      "physicalLines": 23007,
+      "nonblankLines": null,
+      "codeLines": 18983,
+      "bytes": null,
+      "defs": 2594,
+      "laws": 629,
+      "types": 87,
+      "scope": "Frozen worker23 manifest-listed Bend source, original/frozen identities joined to checked attempt, API and runtime. Excludes runtime, host tools, tests, documentation, generated images and unlisted files. Code lines omit blanks and whole-line comments; the historical nonblank count is not reported."
+    },
+    "notes": [
+      "The series is not monotonic: scope and conformance work added code after the dedicated cleanup.",
+      "Latest P45 has 23,007 physical lines, above both the initial 14,950 and the 16,509 cleanup baseline.",
+      "P45 adds 1,194 physical lines (+5.47%) over Phase44, with 958 more code lines, 142 definitions, 12 types and seven modules; the source grew while execution became faster.",
+      "P36 adds 124 physical lines (+0.687%), 109 nonblank lines, 16 definitions, one module, no types/laws; an accepted cost for execution speed.",
+      "Declaration counts are structural proxies; law declarations often serve as forward signatures, not mathematical proofs.",
+      "Do not use stale upstream 2.0.21 TypeScript LOC as a current 2.0.34 baseline.",
+      "Simplicity means fewer competing responsibilities; no invented concept score.",
+      "Use a zero-based physical LOC axis. Historical nonblank counts end at P36; P45 code lines exclude comments and must not be joined to that series. Module membership grows from 57 to 85."
+    ]
+  },
+  "findings": [
+    {
+      "id": "repeated-work",
+      "title": "Compute the bound once, not for every declaration",
+      "summary": "Repeated whole-book work explained a large part of checking time.",
+      "mechanism": "Chronological law fills repeatedly scanned all preceding definitions to compute a fresh binder bound. Computing that bound once removed repeated scans while preserving declaration visibility as a separate semantic responsibility.",
+      "impact": [
+        {
+          "metric": "compiler checking process time",
+          "before": 208.224,
+          "after": 66.844,
+          "unit": "s",
+          "reductionPercent": 67.9,
+          "scope": "P9 same-window release comparison"
+        },
+        {
+          "metric": "whole-book scans",
+          "before": [
+            5,
+            9,
+            17
+          ],
+          "after": [
+            1,
+            1,
+            1
+          ],
+          "unit": "scans",
+          "scope": "4/8/16-fill mechanism probes"
+        }
+      ],
+      "phases": [
+        "P9"
+      ],
+      "sources": [
+        {
+          "title": "P9 checker speed",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase9/checker_speed.md"
+        }
+      ],
+      "limits": [
+        "Timing measures the combined P9 release, including smaller checking/equality repairs; it is not isolated attribution to one helper.",
+        "The source differs between phase benchmark windows."
+      ],
+      "visual": {
+        "type": "repeat-collapse",
+        "before": "Every fill → scan the book again",
+        "after": "Compute one bound → reuse it",
+        "callout": "17 scans → 1 on the 16-fill probe"
+      }
+    },
+    {
+      "id": "compact-literals",
+      "title": "Keep literals compact until structure is needed",
+      "summary": "A smaller representation prevents copying, freshening and serialization work from being created.",
+      "mechanism": "Expanded numeric and string literals created constructor trees that downstream passes repeatedly traversed. Compact literal nodes retain the value and provide an on-demand constructor view, with quantity presence, literal/constructor identity and specialization keys preserved.",
+      "impact": [
+        {
+          "metric": "compiler checking process time",
+          "before": 30.5837,
+          "after": 12.357,
+          "unit": "s",
+          "reductionPercent": 59.6,
+          "scope": "P16 same-window final release comparison"
+        },
+        {
+          "metric": "peak RSS",
+          "reductionPercent": 62.7,
+          "scope": "P16 same-window final release comparison"
+        },
+        {
+          "metric": "freshened terms",
+          "before": 2171045,
+          "after": 152620,
+          "unit": "terms",
+          "scope": "separate same-source structural census"
+        },
+        {
+          "metric": "constructor/list JSON",
+          "before": 337,
+          "after": 25.3,
+          "unit": "MB",
+          "scope": "structural census, separate from final release timing"
+        }
+      ],
+      "phases": [
+        "P16"
+      ],
+      "sources": [
+        {
+          "title": "P16 compact representation",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase16/consolidation.md"
+        }
+      ],
+      "limits": [
+        "The structural census and final timing use separately identified source snapshots; they are not the same run.",
+        "The P16 release also integrates frontend changes; source grows by 1,057 physical lines from P15."
+      ],
+      "visual": {
+        "type": "representation",
+        "before": "Literal → large constructor tree → repeated copies",
+        "after": "Compact literal → constructor view only on demand",
+        "callout": "2.17M → 153K freshened terms"
+      }
+    },
+    {
+      "id": "source-shape",
+      "title": "Write the loop the existing emitter can see",
+      "summary": "Equivalent source shapes can have very different allocation costs.",
+      "mechanism": "Passing a Boolean to a small lookup worker lets recursive membership and lookup lower into a mutual tail loop. This avoids per-miss branch closures and trampoline messages. Reusing already checked constructor structure removes further work.",
+      "impact": [
+        {
+          "metric": "compiler checking process time",
+          "before": 51.443,
+          "after": 29.729,
+          "unit": "s",
+          "reductionPercent": 42.21,
+          "scope": "combined P11 release"
+        },
+        {
+          "metric": "compiler checking process time",
+          "before": 25.078,
+          "after": 24.1023,
+          "unit": "s",
+          "reductionPercent": 3.89,
+          "scope": "combined P15 release"
+        },
+        {
+          "metric": "compiler checking process time",
+          "before": 12.4407,
+          "after": 11.6255,
+          "unit": "s",
+          "reductionPercent": 6.55,
+          "scope": "P17 lookup-worker release"
+        }
+      ],
+      "phases": [
+        "P11",
+        "P15",
+        "P17"
+      ],
+      "sources": [
+        {
+          "title": "P11 known work",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase11/known_work.md"
+        },
+        {
+          "title": "P15 lookup lowering",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase15/parser_conformance_and_speed.md"
+        },
+        {
+          "title": "P17 direct lookup worker",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase17/find-worker.md"
+        }
+      ],
+      "limits": [
+        "Combined release effects do not isolate one helper.",
+        "This is a reproducible source-shape finding, not proof of an upstream emitter bug.",
+        "The larger P13 selector prototype was deferred despite its 10.6% screen gain."
+      ],
+      "visual": {
+        "type": "allocation",
+        "before": "miss → closure → trampoline → next item",
+        "after": "miss → next loop iteration",
+        "callout": "Fewer allocations, same lookup meaning"
+      }
+    },
+    {
+      "id": "one-owner",
+      "title": "Give each semantic result one owner",
+      "summary": "Sharing existing mechanisms reduced maintenance burden without inventing a new abstraction layer.",
+      "mechanism": "The cleanup removed obsolete algorithms, reused the real loader trace for provenance, and returned one structured checker result instead of replaying a failure. P19 then routed ordinary code and live instances through one checker and one source-event order.",
+      "impact": [
+        {
+          "metric": "physical compiler lines",
+          "before": 16509,
+          "after": 14667,
+          "unit": "lines",
+          "reductionPercent": 11.15755,
+          "scope": "P5 baseline → P7 dedicated cleanup"
+        },
+        {
+          "metric": "nonblank compiler lines",
+          "before": 13803,
+          "after": 12505,
+          "unit": "lines",
+          "reductionPercent": 9.40375,
+          "scope": "same cleanup"
+        },
+        {
+          "metric": "obsolete algorithm removal",
+          "removed": 548,
+          "unit": "lines",
+          "scope": "S1; selected generated API byte-identical"
+        },
+        {
+          "metric": "shared provenance removal",
+          "removed": 135,
+          "unit": "lines",
+          "scope": "S2"
+        },
+        {
+          "metric": "structured checker removal",
+          "removed": 139,
+          "unit": "Bend lines",
+          "scope": "S3; adds two host lines"
+        },
+        {
+          "metric": "shared live checker removal",
+          "removed": 475,
+          "unit": "lines",
+          "scope": "P19 vs immediately preceding prefix repair"
+        },
+        {
+          "metric": "compiler checking process time",
+          "before": 11.57056,
+          "after": 11.057018,
+          "unit": "s",
+          "reductionPercent": 4.44,
+          "scope": "P19 same-window release"
+        }
+      ],
+      "phases": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "P19"
+      ],
+      "sources": [
+        {
+          "title": "S1 obsolete paths",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase7/s1-report.md"
+        },
+        {
+          "title": "S2 shared provenance",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase7/s2-report.md"
+        },
+        {
+          "title": "S3 authoritative checker",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase7/s3-report.md"
+        },
+        {
+          "title": "S4 cleanup summary",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase7/s4-report.md"
+        },
+        {
+          "title": "P19 shared live checker",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase19/live-checker-release.md"
+        }
+      ],
+      "limits": [
+        "Line count is a size proxy, not a score for conceptual complexity.",
+        "S4 removed 830 physical lines of duplicate law/fill declarations; 405 were blank separators.",
+        "P19 removes 475 lines vs its immediate installed predecessor, or 473 vs the selected P17/18 checkpoint.",
+        "Later correctness and performance work added source; latest P36 has 18,174 lines."
+      ],
+      "visual": {
+        "type": "merge",
+        "before": [
+          "loader + provenance replay",
+          "check result + diagnostic recheck",
+          "ordinary checker + live-instance checker"
+        ],
+        "after": [
+          "one loader trace",
+          "one structured checker result",
+          "one shared checking traversal"
+        ],
+        "callout": "Fewer competing mechanisms"
+      }
+    },
+    {
+      "id": "contextual-frontend",
+      "title": "Parse with the context the language actually needs",
+      "summary": "One contextual frontend closed the remaining measured gaps and retired duplicate scope reconstruction.",
+      "mechanism": "The reference parser needs lexical information at specific points. A mostly context-free parse followed by scope and alias replay could change which error appears first. Actual lexical state and one materializer align semantic checkpoints and preserve error order.",
+      "impact": [
+        {
+          "metric": "physical compiler lines",
+          "before": 15900,
+          "after": 15600,
+          "unit": "lines",
+          "reductionPercent": 1.88679,
+          "scope": "P21 → P22 canonical compiler"
+        },
+        {
+          "metric": "broader exact frontend comparisons",
+          "before": 139,
+          "after": 196,
+          "total": 196,
+          "unit": "comparisons",
+          "scope": "P22 release"
+        },
+        {
+          "metric": "main exact frontend differences",
+          "before": 2,
+          "after": 0,
+          "total": 2996,
+          "unit": "differences",
+          "scope": "P22 release"
+        },
+        {
+          "metric": "compiler checking process time",
+          "before": 11.0168,
+          "after": 10.6991,
+          "unit": "s",
+          "reductionPercent": 2.88,
+          "scope": "P22 final comparison"
+        }
+      ],
+      "phases": [
+        "P22"
+      ],
+      "sources": [
+        {
+          "title": "P22 contextual conformance",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase22/contextual-conformance.md"
+        }
+      ],
+      "limits": [
+        "The first candidate was 32.8% slower; profiling, guarded lookups and a constructor index recovered that regression.",
+        "977 gross retired block lines are not the net saving: the whole compiler shrank by 300 lines, while bytes increased 0.57%.",
+        "Exact finite frontend comparison does not prove universal language equivalence."
+      ],
+      "visual": {
+        "type": "pipeline",
+        "before": "parse → reconstruct scope → replay completion",
+        "after": "contextual parse → one materializer",
+        "callout": "196 / 196 broader observations exact"
+      }
+    },
+    {
+      "id": "negative-index-guard",
+      "title": "Use the index to prove work is unnecessary",
+      "summary": "An index can skip absent-name scans while preserving chronological lookup semantics.",
+      "mechanism": "A scope-index miss proves a local name absent, so the original scan can be skipped. An index hit retains the original first-event lookup because indexes can pick different duplicate-name winners. A direct Boolean membership worker removes additional per-miss overhead.",
+      "impact": [
+        {
+          "metric": "compiler checking process time",
+          "before": 11.730024555,
+          "after": 11.1564692943,
+          "unit": "s",
+          "reductionPercent": 4.88963393024,
+          "scope": "P24 same-window release"
+        },
+        {
+          "metric": "physical compiler lines",
+          "before": 15748,
+          "after": 15776,
+          "unit": "lines",
+          "scope": "P23 → P24"
+        }
+      ],
+      "phases": [
+        "P24"
+      ],
+      "sources": [
+        {
+          "title": "P24 measured release",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/profile-and-coverage.md"
+        },
+        {
+          "title": "P24 lookup invariants review",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/profile-review.md"
+        }
+      ],
+      "limits": [
+        "The release adds 28 lines and three helpers; it introduces no new representation, cache or module.",
+        "Three observations per image on one machine are not general speed guarantees."
+      ],
+      "visual": {
+        "type": "guard",
+        "before": "every lookup → full local scan",
+        "after": "index miss → skip; index hit → preserve original scan",
+        "callout": "Skip only work proven unnecessary"
+      }
+    },
+    {
+      "id": "fast-validation",
+      "title": "Keep the investigation loop short",
+      "summary": "A checked bootstrap and focused differential controls made small hypotheses practical to test.",
+      "mechanism": "Full self-reproduction remained an integration exercise. Routine edits instead built a checked bootstrap compiler and ran focused comparison cases, keeping feedback in tens of seconds while broad suites and self-reproduction supplied separate evidence.",
+      "impact": [
+        {
+          "metric": "historical self-emitted fixed-point stage",
+          "value": 2366.759,
+          "unit": "s",
+          "scope": "P1; different task from focused loop"
+        },
+        {
+          "metric": "checked bootstrap + focused cases",
+          "value": 40.467,
+          "cases": 21,
+          "unit": "s",
+          "scope": "P2 shared-host observation"
+        },
+        {
+          "metric": "checked bootstrap + Base + focused cases",
+          "value": 27.61,
+          "cases": 36,
+          "unit": "s",
+          "scope": "P24 concurrent observation"
+        },
+        {
+          "metric": "checked acquisition + focused cases",
+          "value": 42.3,
+          "cases": 36,
+          "unit": "s",
+          "scope": "P36 reported observation"
+        }
+      ],
+      "phases": [
+        "P1",
+        "P2",
+        "P24",
+        "P36"
+      ],
+      "sources": [
+        {
+          "title": "P2 fast workflow",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase2/report.md"
+        },
+        {
+          "title": "P24 measured workflow",
+          "url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/profile-and-coverage.md"
+        },
+        {
+          "title": "P36 release overview",
+          "url": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/README.md"
+        }
+      ],
+      "limits": [
+        "39.45 minutes for self-reproduction versus tens of seconds for a focused loop changes the validation task; it is not a same-task 90× speedup.",
+        "These development observations are not an exclusive controlled timing series."
+      ],
+      "visual": {
+        "type": "loop",
+        "before": "edit → full self-reproduction",
+        "after": "edit → checked bootstrap → focused comparisons",
+        "callout": "Focused feedback in tens of seconds"
+      }
+    }
+  ],
+  "developerLoopObservations": [
+    {
+      "phase": 1,
+      "seconds": 2366.759,
+      "focused_cases": null,
+      "scope": "Actual self-emitted H fixed-point second stage;39.45minutes. Different task from focused development loop.",
+      "commit": "04cc0a32481bc90d5bcc126924b359a18e40aff9",
+      "commit_date": "2026-09-21T06:47:03+00:00",
+      "commit_title": "Archive the checked phase 1 compiler fixed point as an experimental build",
+      "commit_url": "https://github.com/rom1504/bend/commit/04cc0a32481bc90d5bcc126924b359a18e40aff9",
+      "source_path": "implementation/phase1/report.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase1/report.md"
+    },
+    {
+      "phase": 2,
+      "seconds": 40.467,
+      "focused_cases": 21,
+      "scope": "Fully checked upstream bootstrap +21 live differential witnesses, candidate Base initially absent; one shared-host observation.",
+      "commit": "4a1421b35bbe74711f0bcca6e412bf7ad3864737",
+      "commit_date": "2026-09-21T15:26:51+00:00",
+      "commit_title": "Validate native graph expansion and measure the complete fast edit loop",
+      "commit_url": "https://github.com/rom1504/bend/commit/4a1421b35bbe74711f0bcca6e412bf7ad3864737",
+      "source_path": "implementation/phase2/report.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase2/report.md"
+    },
+    {
+      "phase": 3,
+      "seconds": 36.35,
+      "focused_cases": 21,
+      "scope": "Checked B1 build+focused paired cases; already assembled input, Node startup excluded, one observation.",
+      "commit": "89e2c83cde9df75d83f407c9ce30fec78838a802",
+      "commit_date": "2026-09-22T07:01:58+00:00",
+      "commit_title": "Record verified phase 3 self-reproduction and final performance results",
+      "commit_url": "https://github.com/rom1504/bend/commit/89e2c83cde9df75d83f407c9ce30fec78838a802",
+      "source_path": "implementation/phase3/report.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase3/report.md"
+    },
+    {
+      "phase": 4,
+      "seconds": 37.218,
+      "focused_cases": 21,
+      "scope": "20.735s checked rebuild+16.483s cold focused command; sum of two observations, not paired loop measurement.",
+      "commit": "7d69850b9943ab5c66e573ebd69a2ce289626b12",
+      "commit_date": "2026-09-22T20:12:52+00:00",
+      "commit_title": "Complete six-hour optimization report with controlled 1.85x full-source B1 gain",
+      "commit_url": "https://github.com/rom1504/bend/commit/7d69850b9943ab5c66e573ebd69a2ce289626b12",
+      "source_path": "implementation/phase4/report.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase4/report.md"
+    },
+    {
+      "phase": 7,
+      "seconds": 35,
+      "focused_cases": 21,
+      "scope": "Controlled S3/S4 edit loop approximately35s; two opposite-order ratios0.99289/1.00723; no measured speed gain.",
+      "commit": "22f6e8e21be5390d50831f9cbe4aab1147ff217d",
+      "commit_date": "2026-09-26T21:32:52+00:00",
+      "commit_title": "refactor(selfhost): consolidate declarations and frontend operations",
+      "commit_url": "https://github.com/rom1504/bend/commit/22f6e8e21be5390d50831f9cbe4aab1147ff217d",
+      "source_path": "implementation/phase7/s4-report.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase7/s4-report.md"
+    },
+    {
+      "phase": 8,
+      "seconds": 26.94,
+      "focused_cases": 21,
+      "scope": "One migration attempt checked bootstrap+paired controls; not full self-checking.",
+      "commit": "bc322d9eb742cad0e42bdc2e923335fd2149c121",
+      "commit_date": "2026-09-28T02:24:08+00:00",
+      "commit_title": "Consolidate upstream migration results and reproducible evidence",
+      "commit_url": "https://github.com/rom1504/bend/commit/bc322d9eb742cad0e42bdc2e923335fd2149c121",
+      "source_path": "implementation/phase8/checking-cost.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase8/checking-cost.md"
+    },
+    {
+      "phase": 11,
+      "seconds": 23.54,
+      "focused_cases": 21,
+      "scope": "One final genuine checked-build+focused control span.",
+      "commit": "1101206b62532ffce0e85b7f451d1c6d5fd6b0ac",
+      "commit_date": "2026-09-28T09:05:07+00:00",
+      "commit_title": "Avoid branch wrappers and compact native Nat reconstruction",
+      "commit_url": "https://github.com/rom1504/bend/commit/1101206b62532ffce0e85b7f451d1c6d5fd6b0ac",
+      "source_path": "implementation/phase11/known_work.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase11/known_work.md"
+    },
+    {
+      "phase": 12,
+      "seconds": 27.591,
+      "focused_cases": 22,
+      "scope": "One final genuine checked-build+focused control span;22cases not21.",
+      "commit": "9a4e1098043ef32a080a41440aa84728078d0d7b",
+      "commit_date": "2026-09-28T16:35:33+00:00",
+      "commit_title": "Improve selfhost emission and guarded call performance",
+      "commit_url": "https://github.com/rom1504/bend/commit/9a4e1098043ef32a080a41440aa84728078d0d7b",
+      "source_path": "implementation/phase12/avoidable_work.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase12/avoidable_work.md"
+    },
+    {
+      "phase": 20,
+      "seconds": 34.68,
+      "focused_cases": 36,
+      "scope": "Build start through focused validation; observed concurrent development.",
+      "commit": "c385d3913e9f10c6c4d9c5cfef3f34bc0682d351",
+      "commit_date": "2026-09-29T10:35:01+00:00",
+      "commit_title": "Fix declaration grammar and install a checked conformance release",
+      "commit_url": "https://github.com/rom1504/bend/commit/c385d3913e9f10c6c4d9c5cfef3f34bc0682d351",
+      "source_path": "implementation/phase20/declaration-checkpoints-release.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase20/declaration-checkpoints-release.md"
+    },
+    {
+      "phase": 21,
+      "seconds": 35.17,
+      "focused_cases": 36,
+      "scope": "One observed checked-build+focused-control loop; concurrent environment.",
+      "commit": "df94915c7369a1bed0aa943d8267b4e178401c8e",
+      "commit_date": "2026-09-29T11:26:25+00:00",
+      "commit_title": "Preserve grouped local and typed annotation source origins",
+      "commit_url": "https://github.com/rom1504/bend/commit/df94915c7369a1bed0aa943d8267b4e178401c8e",
+      "source_path": "implementation/phase21/group-range-release.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase21/group-range-release.md"
+    },
+    {
+      "phase": 23,
+      "seconds": 31,
+      "focused_cases": 36,
+      "scope": "Rough phase sum: bootstrap13.52s+Base2.18s+focused15.3s; concurrent observation.",
+      "commit": "8eb2cc01145041ce7c0dce199daaf7087038e962",
+      "commit_date": "2026-09-29T20:08:44+00:00",
+      "commit_title": "Document Phase23 migration, measured costs, and independently recovered experiment evidence",
+      "commit_url": "https://github.com/rom1504/bend/commit/8eb2cc01145041ce7c0dce199daaf7087038e962",
+      "source_path": "implementation/phase23/upstream-graph-conversion.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase23/upstream-graph-conversion.md"
+    },
+    {
+      "phase": 24,
+      "seconds": 27.61,
+      "focused_cases": 36,
+      "scope": "Phase sum11.26sbootstrap+2.07sBase+14.28sfocused; concurrent observation, not controlled loop comparison.",
+      "commit": "5350b2fec8f6f8484c7a689e915b359d7ce86847",
+      "commit_date": "2026-09-29T22:04:13+00:00",
+      "commit_title": "selfhost: reduce lookup overhead and fix emission name collisions",
+      "commit_url": "https://github.com/rom1504/bend/commit/5350b2fec8f6f8484c7a689e915b359d7ce86847",
+      "source_path": "implementation/phase24/profile-and-coverage.md",
+      "source_url": "https://github.com/rom1504/bend/blob/5350b2fec8f6f8484c7a689e915b359d7ce86847/implementation/phase24/profile-and-coverage.md"
+    }
+  ],
+  "evidenceHead": "91af94475b48494482b3417ef8066f35ef49afbb",
+  "latestPhase": 45,
+  "latestSourceURL": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/README.md"
+}

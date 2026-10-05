@@ -1,0 +1,833 @@
+{
+  "schema": 1,
+  "evidence_head": "91af94475b48494482b3417ef8066f35ef49afbb",
+  "evidence_head_commit_date": "2026-10-04T23:18:02Z",
+  "latest_phase": 45,
+  "latest_commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+  "latest_commit_date": "2026-10-04T19:21:20Z",
+  "average": 8.50069562903474,
+  "latest_average": 8.50069562903474,
+  "unit": "Bend request time / TypeScript request time",
+  "baseline": 1,
+  "lower_is_better": true,
+  "aggregation": "Equal-source geometric mean of four per-program Bend/TypeScript ratios, with each ratio dividing three-sample request medians. Derived for this website from published measurements.",
+  "formula": "exp(mean(log(median(Bend request ms) / median(TypeScript request ms))))",
+  "cohort": [
+    {
+      "id": "local-pair",
+      "name": "Local pair",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+      "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+      "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b"
+    },
+    {
+      "id": "lexer",
+      "name": "Lexer",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+      "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+      "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b"
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "name": "Map churn",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+      "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+      "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b"
+    },
+    {
+      "id": "coverage-closures-256",
+      "name": "Known closures",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+      "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+      "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b"
+    }
+  ],
+  "cohort_size": 4,
+  "measurement_boundary": "Normal checked-library request, including parsing/loading, checking and JavaScript library emission; Bend lazy API loading and normal Base-cache handling remain inside inspect. TypeScript book_load/book_valid/js_lib. Host import timed separately and excluded. Excludes full process startup, validation harness, generated program execution and self-compilation.",
+  "history": [
+    {
+      "phase": 42,
+      "label": "P42",
+      "commit": "714c5f5dbdc9a434e7272c21b6216c3a70f5a33c",
+      "commit_date": "2026-10-03T23:30:39Z",
+      "commit_title": "phase42: release checked16 with full runtime results and reproducible evidence",
+      "commit_url": "https://github.com/rom1504/bend/commit/714c5f5dbdc9a434e7272c21b6216c3a70f5a33c",
+      "ratio": 5.24095886100437,
+      "programs": [
+        {
+          "id": "local-pair",
+          "name": "Local pair",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 2053.073667,
+          "typescript_ms": 363.17418399999997,
+          "ratio": 5.653137688333046,
+          "baseline_ms": null,
+          "baseline_ratio": null,
+          "change_percent": null,
+          "request_samples_ms": [
+            2064.3731129999996,
+            2053.073667,
+            2047.6301669999998
+          ],
+          "typescript_request_samples_ms": [
+            363.17418399999997,
+            357.363253,
+            363.6807020000001
+          ],
+          "baseline_request_samples_ms": null,
+          "import_and_request_ms": 2056.911995,
+          "typescript_import_and_request_ms": 586.1659720000002,
+          "process_wall_ms": 6842.721377965063,
+          "typescript_process_wall_ms": 5230.746368994005
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 2285.9849919999997,
+          "typescript_ms": 379.3627160000001,
+          "ratio": 6.025855719569446,
+          "baseline_ms": null,
+          "baseline_ratio": null,
+          "change_percent": null,
+          "request_samples_ms": [
+            2297.6629989999997,
+            2285.9849919999997,
+            2158.681428
+          ],
+          "typescript_request_samples_ms": [
+            382.09513700000025,
+            350.34674799999993,
+            379.3627160000001
+          ],
+          "baseline_request_samples_ms": null,
+          "import_and_request_ms": 2290.4570099999996,
+          "typescript_import_and_request_ms": 597.8468720000001,
+          "process_wall_ms": 7216.697730997112,
+          "typescript_process_wall_ms": 5474.312898004428
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "name": "Map churn",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 2302.1248549999996,
+          "typescript_ms": 509.48763899999994,
+          "ratio": 4.518509731695374,
+          "baseline_ms": null,
+          "baseline_ratio": null,
+          "change_percent": null,
+          "request_samples_ms": [
+            2302.1248549999996,
+            2221.2977890000006,
+            2452.3385609999996
+          ],
+          "typescript_request_samples_ms": [
+            493.5321479999998,
+            510.217905,
+            509.48763899999994
+          ],
+          "baseline_request_samples_ms": null,
+          "import_and_request_ms": 2305.9339879999993,
+          "typescript_import_and_request_ms": 723.3387890000004,
+          "process_wall_ms": 7300.645334995352,
+          "typescript_process_wall_ms": 5396.04846900329
+        },
+        {
+          "id": "coverage-closures-256",
+          "name": "Known closures",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 1498.609657,
+          "typescript_ms": 305.7377309999997,
+          "ratio": 4.901618299116642,
+          "baseline_ms": null,
+          "baseline_ratio": null,
+          "change_percent": null,
+          "request_samples_ms": [
+            1513.83543,
+            1469.838883,
+            1498.609657
+          ],
+          "typescript_request_samples_ms": [
+            305.7377309999997,
+            304.4981950000001,
+            317.18755899999996
+          ],
+          "baseline_request_samples_ms": null,
+          "import_and_request_ms": 1502.533038,
+          "typescript_import_and_request_ms": 524.1359870000001,
+          "process_wall_ms": 6441.031310008839,
+          "typescript_process_wall_ms": 5272.82643300714
+        }
+      ],
+      "report_phase": 43,
+      "report_role": "baseline",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase43/compiler-cost.md",
+      "data_source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase43/compiler-cost.json",
+      "same_run_baseline_phase": null,
+      "same_run_baseline_ratio": null,
+      "same_run_change_percent": null,
+      "boundary": "normal_checked_library_request",
+      "samples_per_program_per_role": 3,
+      "note": "Phase42 release remeasured as the fresh baseline in the Phase43 campaign; its x-position is the release commit date, not the later measurement date."
+    },
+    {
+      "phase": 43,
+      "label": "P43",
+      "commit": "69d8c70e47c6cd1c89ea1af44f46aa5a47fe58c2",
+      "commit_date": "2026-10-04T04:51:32Z",
+      "commit_title": "Release Phase43 direct execution compiler with full validation and portable evidence",
+      "commit_url": "https://github.com/rom1504/bend/commit/69d8c70e47c6cd1c89ea1af44f46aa5a47fe58c2",
+      "ratio": 8.732177876579042,
+      "programs": [
+        {
+          "id": "local-pair",
+          "name": "Local pair",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 2232.17958,
+          "typescript_ms": 363.17418399999997,
+          "ratio": 6.146305762746617,
+          "baseline_ms": 2053.073667,
+          "baseline_ratio": 5.653137688333046,
+          "change_percent": 8.723793786791578,
+          "request_samples_ms": [
+            2237.2671600000003,
+            2199.3269259999997,
+            2232.17958
+          ],
+          "typescript_request_samples_ms": [
+            363.17418399999997,
+            357.363253,
+            363.6807020000001
+          ],
+          "baseline_request_samples_ms": [
+            2064.3731129999996,
+            2053.073667,
+            2047.6301669999998
+          ],
+          "import_and_request_ms": 2236.3255879999997,
+          "typescript_import_and_request_ms": 586.1659720000002,
+          "process_wall_ms": 7139.479485980701,
+          "typescript_process_wall_ms": 5230.746368994005
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 3920.4653100000005,
+          "typescript_ms": 379.3627160000001,
+          "ratio": 10.334345323487192,
+          "baseline_ms": 2285.9849919999997,
+          "baseline_ratio": 6.025855719569446,
+          "change_percent": 71.50004587606675,
+          "request_samples_ms": [
+            3920.4653100000005,
+            4275.076263,
+            3869.5849960000005
+          ],
+          "typescript_request_samples_ms": [
+            382.09513700000025,
+            350.34674799999993,
+            379.3627160000001
+          ],
+          "baseline_request_samples_ms": [
+            2297.6629989999997,
+            2285.9849919999997,
+            2158.681428
+          ],
+          "import_and_request_ms": 3924.4620330000007,
+          "typescript_import_and_request_ms": 597.8468720000001,
+          "process_wall_ms": 8936.474811984226,
+          "typescript_process_wall_ms": 5474.312898004428
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "name": "Map churn",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 9450.057439,
+          "typescript_ms": 509.48763899999994,
+          "ratio": 18.54815841567454,
+          "baseline_ms": 2302.1248549999996,
+          "baseline_ratio": 4.518509731695374,
+          "change_percent": 310.4928287653626,
+          "request_samples_ms": [
+            9450.057439,
+            9451.343971,
+            9405.093779
+          ],
+          "typescript_request_samples_ms": [
+            493.5321479999998,
+            510.217905,
+            509.48763899999994
+          ],
+          "baseline_request_samples_ms": [
+            2302.1248549999996,
+            2221.2977890000006,
+            2452.3385609999996
+          ],
+          "import_and_request_ms": 9454.035172,
+          "typescript_import_and_request_ms": 723.3387890000004,
+          "process_wall_ms": 14239.64890401112,
+          "typescript_process_wall_ms": 5396.04846900329
+        },
+        {
+          "id": "coverage-closures-256",
+          "name": "Known closures",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 1508.833806,
+          "typescript_ms": 305.7377309999997,
+          "ratio": 4.935059212564123,
+          "baseline_ms": 1498.609657,
+          "baseline_ratio": 4.901618299116642,
+          "change_percent": 0.6822423005379052,
+          "request_samples_ms": [
+            1541.3093640000002,
+            1459.385171,
+            1508.833806
+          ],
+          "typescript_request_samples_ms": [
+            305.7377309999997,
+            304.4981950000001,
+            317.18755899999996
+          ],
+          "baseline_request_samples_ms": [
+            1513.83543,
+            1469.838883,
+            1498.609657
+          ],
+          "import_and_request_ms": 1513.0334230000003,
+          "typescript_import_and_request_ms": 524.1359870000001,
+          "process_wall_ms": 6376.8203929648735,
+          "typescript_process_wall_ms": 5272.82643300714
+        }
+      ],
+      "report_phase": 43,
+      "report_role": "candidate",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase43/compiler-cost.md",
+      "data_source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase43/compiler-cost.json",
+      "same_run_baseline_phase": 42,
+      "same_run_baseline_ratio": 5.24095886100437,
+      "same_run_change_percent": 66.61412745578433,
+      "boundary": "normal_checked_library_request",
+      "samples_per_program_per_role": 3,
+      "note": "P43 combines local-pair from the core campaign and lexer/Map/closures from its changed-families campaign; same method and three rotated fresh-process samples per role."
+    },
+    {
+      "phase": 44,
+      "label": "P44",
+      "commit": "8f57b1be8093a54b9e6ad665245e167470270ba4",
+      "commit_date": "2026-10-04T09:05:57Z",
+      "commit_title": "Release Phase44 composable IR compiler with measured outcomes and closed evidence",
+      "commit_url": "https://github.com/rom1504/bend/commit/8f57b1be8093a54b9e6ad665245e167470270ba4",
+      "ratio": 8.370738272441493,
+      "programs": [
+        {
+          "id": "local-pair",
+          "name": "Local pair",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 2175.4912289999997,
+          "typescript_ms": 362.108201,
+          "ratio": 6.007848546352033,
+          "baseline_ms": 2104.895312,
+          "baseline_ratio": 5.81289047358527,
+          "change_percent": 3.353892072329323,
+          "request_samples_ms": [
+            2219.00544,
+            2175.4912289999997,
+            2112.4412930000003
+          ],
+          "typescript_request_samples_ms": [
+            358.2242849999998,
+            385.4606899999999,
+            362.108201
+          ],
+          "baseline_request_samples_ms": [
+            2104.895312,
+            2173.122244,
+            2052.315533
+          ],
+          "import_and_request_ms": 2179.3418899999997,
+          "typescript_import_and_request_ms": 573.0053849999999,
+          "process_wall_ms": 7010.187761974521,
+          "typescript_process_wall_ms": 5159.566268965136
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 3517.2642220000002,
+          "typescript_ms": 349.952413,
+          "ratio": 10.05069286949023,
+          "baseline_ms": 3396.081911,
+          "baseline_ratio": 9.704410613679638,
+          "change_percent": 3.5682976493437213,
+          "request_samples_ms": [
+            3525.0155510000004,
+            3517.2642220000002,
+            3430.9112219999997
+          ],
+          "typescript_request_samples_ms": [
+            348.95824700000003,
+            390.63772800000015,
+            349.952413
+          ],
+          "baseline_request_samples_ms": [
+            3396.081911,
+            3755.198869,
+            3375.718667
+          ],
+          "import_and_request_ms": 3521.2041430000004,
+          "typescript_import_and_request_ms": 559.3020300000003,
+          "process_wall_ms": 8180.987680039834,
+          "typescript_process_wall_ms": 5037.679015018512
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "name": "Map churn",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 7538.974087999999,
+          "typescript_ms": 443.53069000000005,
+          "ratio": 16.997637949247657,
+          "baseline_ms": 8933.886121,
+          "baseline_ratio": 20.142656015528484,
+          "change_percent": -15.613720771760441,
+          "request_samples_ms": [
+            7538.974087999999,
+            7319.330016,
+            7783.633149
+          ],
+          "typescript_request_samples_ms": [
+            446.9723449999997,
+            443.53069000000005,
+            442.22684400000026
+          ],
+          "baseline_request_samples_ms": [
+            9934.798044,
+            8933.886121,
+            8925.655968
+          ],
+          "import_and_request_ms": 7544.8225539999985,
+          "typescript_import_and_request_ms": 653.382646,
+          "process_wall_ms": 12444.640553032514,
+          "typescript_process_wall_ms": 5140.485471987631
+        },
+        {
+          "id": "coverage-closures-256",
+          "name": "Known closures",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 1486.650119,
+          "typescript_ms": 310.783011,
+          "ratio": 4.783563021081612,
+          "baseline_ms": 1446.0420299999996,
+          "baseline_ratio": 4.652899221701664,
+          "change_percent": 2.8082232851835087,
+          "request_samples_ms": [
+            1635.6951839999997,
+            1483.7240269999998,
+            1486.650119
+          ],
+          "typescript_request_samples_ms": [
+            310.66565000000037,
+            344.76619900000014,
+            310.783011
+          ],
+          "baseline_request_samples_ms": [
+            1443.8449529999998,
+            1446.0420299999996,
+            1450.421871
+          ],
+          "import_and_request_ms": 1490.4887229999995,
+          "typescript_import_and_request_ms": 524.8487729999997,
+          "process_wall_ms": 6121.731268009171,
+          "typescript_process_wall_ms": 5017.535024031531
+        }
+      ],
+      "report_phase": 44,
+      "report_role": "candidate",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase44/compiler-cost.md",
+      "data_source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase44/evidence/compiler-cost.json",
+      "same_run_baseline_phase": 43,
+      "same_run_baseline_ratio": 8.527081651853507,
+      "same_run_change_percent": -1.8334922285871191,
+      "boundary": "normal_checked_library_request",
+      "samples_per_program_per_role": 3,
+      "measured_start": "2026-10-04T08:27:10.998Z",
+      "measured_end": "2026-10-04T08:32:20.793Z"
+    },
+    {
+      "phase": 45,
+      "label": "P45",
+      "commit": "ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+      "commit_date": "2026-10-04T19:21:20Z",
+      "commit_title": "Install and document qualified Phase45 compiler with portable runtime benchmarks",
+      "commit_url": "https://github.com/rom1504/bend/commit/ab74ece868c7c27a65aaf9378009b6eff8a9354a",
+      "ratio": 8.50069562903474,
+      "programs": [
+        {
+          "id": "local-pair",
+          "name": "Local pair",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 2282.0832049999995,
+          "typescript_ms": 370.4924310000001,
+          "ratio": 6.159594674688506,
+          "baseline_ms": 2100.956226,
+          "baseline_ratio": 5.670712949058868,
+          "change_percent": 8.62116862590927,
+          "request_samples_ms": [
+            2277.32122,
+            2282.0832049999995,
+            2296.9647879999998
+          ],
+          "typescript_request_samples_ms": [
+            371.6971360000002,
+            369.90936999999985,
+            370.4924310000001
+          ],
+          "baseline_request_samples_ms": [
+            2090.946086,
+            2100.956226,
+            2145.7297169999997
+          ],
+          "import_and_request_ms": 2285.9155609999993,
+          "typescript_import_and_request_ms": 581.3048370000001,
+          "process_wall_ms": 7081.289137015119,
+          "typescript_process_wall_ms": 5121.249231975526
+        },
+        {
+          "id": "lexer",
+          "name": "Lexer",
+          "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 4421.598867000001,
+          "typescript_ms": 378.43345199999976,
+          "ratio": 11.683953529034223,
+          "baseline_ms": 3439.4804299999996,
+          "baseline_ratio": 9.088732541540756,
+          "change_percent": 28.554267337407158,
+          "request_samples_ms": [
+            4403.191197,
+            4446.572997,
+            4421.598867000001
+          ],
+          "typescript_request_samples_ms": [
+            369.86954400000013,
+            398.36638700000003,
+            378.43345199999976
+          ],
+          "baseline_request_samples_ms": [
+            3514.3176750000002,
+            3438.343811,
+            3439.4804299999996
+          ],
+          "import_and_request_ms": 4425.528435,
+          "typescript_import_and_request_ms": 590.9185959999995,
+          "process_wall_ms": 9248.152318003122,
+          "typescript_process_wall_ms": 5141.825739003252
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "name": "Map churn",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 7460.675890999999,
+          "typescript_ms": 467.54426399999966,
+          "ratio": 15.957154146585797,
+          "baseline_ms": 7363.732561,
+          "baseline_ratio": 15.749808366807395,
+          "change_percent": 1.3164971595170716,
+          "request_samples_ms": [
+            7122.052656000001,
+            7460.675890999999,
+            7957.231082
+          ],
+          "typescript_request_samples_ms": [
+            466.2491580000001,
+            469.85925199999974,
+            467.54426399999966
+          ],
+          "baseline_request_samples_ms": [
+            7365.168167000001,
+            7363.732561,
+            7360.939173000001
+          ],
+          "import_and_request_ms": 7464.489422999999,
+          "typescript_import_and_request_ms": 678.3502399999998,
+          "process_wall_ms": 12331.646158010699,
+          "typescript_process_wall_ms": 5222.794603963848
+        },
+        {
+          "id": "coverage-closures-256",
+          "name": "Known closures",
+          "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+          "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+          "bend_ms": 1515.445659,
+          "typescript_ms": 333.2881699999998,
+          "ratio": 4.546953043667889,
+          "baseline_ms": 1497.447314,
+          "baseline_ratio": 4.492950691889247,
+          "change_percent": 1.2019351086164365,
+          "request_samples_ms": [
+            1515.445659,
+            1512.886427,
+            1604.0327979999997
+          ],
+          "typescript_request_samples_ms": [
+            333.2881699999998,
+            360.80751899999996,
+            330.7821899999999
+          ],
+          "baseline_request_samples_ms": [
+            1503.8689510000004,
+            1489.7567210000002,
+            1497.447314
+          ],
+          "import_and_request_ms": 1519.2708160000002,
+          "typescript_import_and_request_ms": 546.65366,
+          "process_wall_ms": 6245.052151964046,
+          "typescript_process_wall_ms": 5123.118497023825
+        }
+      ],
+      "report_phase": 45,
+      "report_role": "candidate",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/compiler-cost.md",
+      "data_source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase45/evidence/compiler-cost.json",
+      "same_run_baseline_phase": 44,
+      "same_run_baseline_ratio": 7.771180178948716,
+      "same_run_change_percent": 9.387447379771242,
+      "boundary": "normal_checked_library_request",
+      "samples_per_program_per_role": 3,
+      "measured_start": "2026-10-04T18:58:06.907Z",
+      "measured_end": "2026-10-04T19:03:14.850Z"
+    }
+  ],
+  "programs": [
+    {
+      "id": "local-pair",
+      "name": "Local pair",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+      "source_hash": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+      "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+      "bend_ms": 2282.0832049999995,
+      "typescript_ms": 370.4924310000001,
+      "ratio": 6.159594674688506,
+      "baseline_ms": 2100.956226,
+      "baseline_ratio": 5.670712949058868,
+      "change_percent": 8.62116862590927,
+      "request_samples_ms": [
+        2277.32122,
+        2282.0832049999995,
+        2296.9647879999998
+      ],
+      "typescript_request_samples_ms": [
+        371.6971360000002,
+        369.90936999999985,
+        370.4924310000001
+      ],
+      "baseline_request_samples_ms": [
+        2090.946086,
+        2100.956226,
+        2145.7297169999997
+      ],
+      "import_and_request_ms": 2285.9155609999993,
+      "typescript_import_and_request_ms": 581.3048370000001,
+      "process_wall_ms": 7081.289137015119,
+      "typescript_process_wall_ms": 5121.249231975526
+    },
+    {
+      "id": "lexer",
+      "name": "Lexer",
+      "path": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+      "source_hash": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+      "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+      "bend_ms": 4421.598867000001,
+      "typescript_ms": 378.43345199999976,
+      "ratio": 11.683953529034223,
+      "baseline_ms": 3439.4804299999996,
+      "baseline_ratio": 9.088732541540756,
+      "change_percent": 28.554267337407158,
+      "request_samples_ms": [
+        4403.191197,
+        4446.572997,
+        4421.598867000001
+      ],
+      "typescript_request_samples_ms": [
+        369.86954400000013,
+        398.36638700000003,
+        378.43345199999976
+      ],
+      "baseline_request_samples_ms": [
+        3514.3176750000002,
+        3438.343811,
+        3439.4804299999996
+      ],
+      "import_and_request_ms": 4425.528435,
+      "typescript_import_and_request_ms": 590.9185959999995,
+      "process_wall_ms": 9248.152318003122,
+      "typescript_process_wall_ms": 5141.825739003252
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "name": "Map churn",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+      "source_hash": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/map-churn.bend",
+      "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+      "bend_ms": 7460.675890999999,
+      "typescript_ms": 467.54426399999966,
+      "ratio": 15.957154146585797,
+      "baseline_ms": 7363.732561,
+      "baseline_ratio": 15.749808366807395,
+      "change_percent": 1.3164971595170716,
+      "request_samples_ms": [
+        7122.052656000001,
+        7460.675890999999,
+        7957.231082
+      ],
+      "typescript_request_samples_ms": [
+        466.2491580000001,
+        469.85925199999974,
+        467.54426399999966
+      ],
+      "baseline_request_samples_ms": [
+        7365.168167000001,
+        7363.732561,
+        7360.939173000001
+      ],
+      "import_and_request_ms": 7464.489422999999,
+      "typescript_import_and_request_ms": 678.3502399999998,
+      "process_wall_ms": 12331.646158010699,
+      "typescript_process_wall_ms": 5222.794603963848
+    },
+    {
+      "id": "coverage-closures-256",
+      "name": "Known closures",
+      "path": "selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+      "source_hash": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/tools/performance/phase37/fixtures-new/closures.bend",
+      "last_source_change_commit": "68b60f9188f8b0a64f5ed5d85f7ecd3e35cd1c1b",
+      "bend_ms": 1515.445659,
+      "typescript_ms": 333.2881699999998,
+      "ratio": 4.546953043667889,
+      "baseline_ms": 1497.447314,
+      "baseline_ratio": 4.492950691889247,
+      "change_percent": 1.2019351086164365,
+      "request_samples_ms": [
+        1515.445659,
+        1512.886427,
+        1604.0327979999997
+      ],
+      "typescript_request_samples_ms": [
+        333.2881699999998,
+        360.80751899999996,
+        330.7821899999999
+      ],
+      "baseline_request_samples_ms": [
+        1503.8689510000004,
+        1489.7567210000002,
+        1497.447314
+      ],
+      "import_and_request_ms": 1519.2708160000002,
+      "typescript_import_and_request_ms": 546.65366,
+      "process_wall_ms": 6245.052151964046,
+      "typescript_process_wall_ms": 5123.118497023825
+    }
+  ],
+  "same_run_change_percent": 9.387447379771242,
+  "same_run_baseline_average": 7.771180178948716,
+  "typescript_commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "protocol": "Node24.18.0,CPU3,three serial fresh processes per compiler/source,rotated roles;1GiB heap,2GiB process-tree RSS ceiling. Every output matched independently acquired role-specific JS hash.",
+  "limitations": [
+    "This is the measured four-source compilation sample, not average arbitrary-application compiler throughput.",
+    "Each phase divides by its campaign's fresh TypeScript measurements; cross-phase changes include measurement variability. The latest P45 vs P44 same-run average regression is9.387%, not the1.55% difference between separately measured published P44 andP45 points.",
+    "P42 was remeasured in the P43 campaign, and all graph x-positions are release commit dates.",
+    "P43 local pair and the other3sources were timed in separate campaigns under the same protocol.",
+    "Earlier P8–24 ordinary check-and-trust measurements concern a single compiler source without emission; do not connect them to this average.",
+    "Earlier P35–36 four-source measurements used pair,Mandelbrot,symbolic regression,ray;P39–42 core measurements used pair,tree,numeric,list. Neither cohort is this latest4source series.",
+    "Host import has asymmetric cost: Bend loads its large API lazily inside the request, while TypeScript loads compiler modules in the separately timed import. Import-plus-request is a separate useful metric and must not silently replace request timing.",
+    "Only three samples per role; small differences do not establish significance."
+  ],
+  "source_refs": [
+    {
+      "title": "Phase43 compiler request costs",
+      "url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase43/compiler-cost.md"
+    },
+    {
+      "title": "Phase44 compiler request costs",
+      "url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase44/compiler-cost.md"
+    },
+    {
+      "title": "Phase45 compiler request costs",
+      "url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/compiler-cost.md"
+    }
+  ],
+  "latest_release_summary": {
+    "source_url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/README.md",
+    "physical_bend_lines": 23007,
+    "code_bend_lines": 18983,
+    "definitions": 2594,
+    "types": 87,
+    "laws": 629,
+    "modules": 85,
+    "previous_phase_physical_lines": 21813,
+    "main_frontend_exact_observations": 3026,
+    "broader_frontend_exact_observations": 196,
+    "backend_matching_rows": 81,
+    "backend_pass": 69,
+    "backend_not_applicable": 8,
+    "backend_shared_failures": 4,
+    "cli_checks": 42,
+    "selected_qualification_assertions": 8755,
+    "selected_qualification_input_identities": 3203
+  }
+}
+

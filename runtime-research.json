@@ -1,0 +1,1112 @@
+{
+  "schemaVersion": 1,
+  "title": "Bend generated-program performance research",
+  "researchedAt": "2026-10-04",
+  "sourceCommit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+  "referenceCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "context": {
+    "pr": "https://github.com/bendlang/bend/pull/1207",
+    "successorIssue": "https://github.com/rom1504/bend/issues/1",
+    "successorIssueStatus": "No comments at read time.",
+    "scope": "Sequential generated JavaScript on Node 24.18.0; fixed selected inputs. This is program execution, separate from compiler throughput.",
+    "ratioDefinition": "selfhost-generated execution time / pinned TypeScript-generated execution time; 1× means parity; lower is better.",
+    "gainDefinition": "Previous release execution time / candidate execution time within the same measurement campaign; higher is better."
+  },
+  "recommendedCharts": {
+    "overview": "Use eight selected same-window gain bars: all pairedGains except Phase26 (which can appear in findings). Label before and after ms and exact predecessor. Log scale 1× reference. Never connect or multiply gains from distinct windows.",
+    "latest": "Show all 15 latest cases as horizontal log-scale bars, 1× TypeScript reference, explicit diagnostic/canary/original categories; include slow remaining cases.",
+    "historicalWarning": "Do not compute cumulative speedups by dividing or multiplying measurements from different windows. Phase33 maintained-protocol boundary differs from earlier Phase28–32 protocols."
+  },
+  "pairedGains": [
+    {
+      "phase": 26,
+      "id": "dense-table",
+      "label": "Direct U32 decisions · dense table",
+      "before": 2.730264,
+      "after": 0.231448,
+      "ts": 0.001893,
+      "reported": 11.8,
+      "source": "implementation/phase26/direct-u32-decisions.md",
+      "baseline": "Phase25 output",
+      "candidate": "Phase26",
+      "context": "Diagnostic numeric table loop (256,18); original report in µs, converted to ms.",
+      "unit": "milliseconds per complete exported call",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase26/direct-u32-decisions.md",
+      "sourceCommit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "beforeMs": 2.730264,
+      "afterMs": 0.231448,
+      "typeScriptMs": 0.001893,
+      "speedup": 11.7964467180533,
+      "reportedSpeedup": 11.8,
+      "ratioToTypeScript": 122.26518753301637
+    },
+    {
+      "phase": 29,
+      "id": "mandelbrot",
+      "label": "Inline arithmetic + private loops · Mandelbrot",
+      "before": 62.041,
+      "after": 21.11,
+      "ts": 0.04538,
+      "reported": 2.94,
+      "source": "implementation/phase29/generated-program-fast-loop.md",
+      "baseline": "Phase27 checked02 (Phase28 suite)",
+      "candidate": "Phase29",
+      "context": "Original transfer protocol. Five fresh processes, ≥3 calls and 1s warmup, 300ms target.",
+      "unit": "milliseconds per complete exported call",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase29/generated-program-fast-loop.md",
+      "sourceCommit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "beforeMs": 62.041,
+      "afterMs": 21.11,
+      "typeScriptMs": 0.04538,
+      "speedup": 2.938938891520606,
+      "reportedSpeedup": 2.94,
+      "ratioToTypeScript": 465.1828999559277
+    },
+    {
+      "phase": 30,
+      "id": "mandelbrot",
+      "label": "Direct scalar regions · Mandelbrot",
+      "before": 21.37905,
+      "after": 0.212798,
+      "ts": 0.04595,
+      "reported": 100.47,
+      "source": "implementation/phase30/final-timing-17.md",
+      "baseline": "Phase29",
+      "candidate": "Phase30 checked17",
+      "context": "Same unchanged source and input; candidate range 0.210200–0.214148 ms, baseline 21.265637–21.603949 ms. Disjoint ranges.",
+      "unit": "milliseconds per complete exported call",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase30/final-timing-17.md",
+      "sourceCommit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "beforeMs": 21.37905,
+      "afterMs": 0.212798,
+      "typeScriptMs": 0.04595,
+      "speedup": 100.46640475944324,
+      "reportedSpeedup": 100.47,
+      "ratioToTypeScript": 4.63107725788901
+    },
+    {
+      "phase": 31,
+      "id": "editdist",
+      "label": "Closed local data · edit distance",
+      "before": 1900.374599,
+      "after": 70.817425,
+      "ts": 4.95995,
+      "reported": 26.83,
+      "source": "implementation/phase31/final-measurements.md",
+      "baseline": "Phase30 checked17",
+      "candidate": "Phase31 checked07",
+      "context": "Full original four-pair program, four 256×256 pairs; candidate range 67.314–71.742 ms, baseline 1895.980–1918.316 ms. Disjoint ranges.",
+      "unit": "milliseconds per complete exported call",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase31/final-measurements.md",
+      "sourceCommit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "beforeMs": 1900.374599,
+      "afterMs": 70.817425,
+      "typeScriptMs": 4.95995,
+      "speedup": 26.83484465864157,
+      "reportedSpeedup": 26.83,
+      "ratioToTypeScript": 14.277850583171201
+    },
+    {
+      "phase": 32,
+      "id": "editdist",
+      "label": "Cheaper private values · edit distance",
+      "before": 72.2661,
+      "after": 20.3976,
+      "ts": 4.98795,
+      "reported": 3.543,
+      "source": "implementation/phase32/final-measurements/measurements.md",
+      "baseline": "Phase31 checked07",
+      "candidate": "Phase32 checked03",
+      "context": "Full original four-pair program. Kept separate from earlier phase's timing window.",
+      "unit": "milliseconds per complete exported call",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase32/final-measurements/measurements.md",
+      "sourceCommit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "beforeMs": 72.2661,
+      "afterMs": 20.3976,
+      "typeScriptMs": 4.98795,
+      "speedup": 3.542872690904812,
+      "reportedSpeedup": 3.543,
+      "ratioToTypeScript": 4.08937539470123
+    },
+    {
+      "phase": 35,
+      "id": "symreg",
+      "label": "Private state + structural folds · symbolic regression",
+      "before": 106.608508,
+      "after": 15.528781,
+      "ts": 1.107533,
+      "reported": 6.865,
+      "source": "implementation/phase35/README.md",
+      "baseline": "Phase32 checked03",
+      "candidate": "Phase35 checked09",
+      "context": "Final maintained full suite; disjoint observed ranges. Phase33/34 introduced maintained protocol and diagnostics, no compiler change.",
+      "unit": "milliseconds per complete exported call",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase35/README.md",
+      "sourceCommit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "beforeMs": 106.608508,
+      "afterMs": 15.528781,
+      "typeScriptMs": 1.107533,
+      "speedup": 6.865220650609986,
+      "reportedSpeedup": 6.865,
+      "ratioToTypeScript": 14.021054903104467
+    },
+    {
+      "phase": 35,
+      "id": "raytrace",
+      "label": "Larger direct regions · ray tracing",
+      "before": 10291.413844,
+      "after": 1879.844851,
+      "ts": 34.315384,
+      "reported": 5.475,
+      "source": "implementation/phase35/README.md",
+      "baseline": "Phase32 checked03",
+      "candidate": "Phase35 checked09",
+      "context": "Unchanged full ray point. Three fresh rotations for this expensive point; disjoint observed ranges.",
+      "unit": "milliseconds per complete exported call",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase35/README.md",
+      "sourceCommit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "beforeMs": 10291.413844,
+      "afterMs": 1879.844851,
+      "typeScriptMs": 34.315384,
+      "speedup": 5.474608097857327,
+      "reportedSpeedup": 5.475,
+      "ratioToTypeScript": 54.78140215478865
+    },
+    {
+      "phase": 36,
+      "id": "symreg",
+      "label": "Private tree production · symbolic regression",
+      "before": 15.581745,
+      "after": 4.265036,
+      "ts": 1.112363,
+      "reported": 3.653,
+      "source": "implementation/phase36/execution-findings.md",
+      "baseline": "Phase35 checked09",
+      "candidate": "Phase36 checked03",
+      "context": "Final maintained full suite; candidate and baseline ranges disjoint.",
+      "unit": "milliseconds per complete exported call",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-findings.md",
+      "sourceCommit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "beforeMs": 15.581745,
+      "afterMs": 4.265036,
+      "typeScriptMs": 1.112363,
+      "speedup": 3.653367755864194,
+      "reportedSpeedup": 3.653,
+      "ratioToTypeScript": 3.8342123928969234
+    },
+    {
+      "phase": 36,
+      "id": "raytrace",
+      "label": "Scoped guard reuse · ray tracing",
+      "before": 1859.589096,
+      "after": 801.893428,
+      "ts": 34.16173,
+      "reported": 2.319,
+      "source": "implementation/phase36/execution-findings.md",
+      "baseline": "Phase35 checked09",
+      "candidate": "Phase36 checked03",
+      "context": "Final maintained full suite; candidate and baseline ranges disjoint.",
+      "unit": "milliseconds per complete exported call",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-findings.md",
+      "sourceCommit": "dfa5e03f02692d60b212b1d7e852213634fcfd93",
+      "beforeMs": 1859.589096,
+      "afterMs": 801.893428,
+      "typeScriptMs": 34.16173,
+      "speedup": 2.318997800790057,
+      "reportedSpeedup": 2.319,
+      "ratioToTypeScript": 23.47344317749716
+    }
+  ],
+  "latest": {
+    "phase": 36,
+    "release": "checked03",
+    "baseline": "Phase35 checked09",
+    "candidateApiSha256": "93e55ad7ee456eebb5fa3dd9606c2cf262ea386c6f66bfd891ffe187d8f50a75",
+    "programCount": 15,
+    "processes": 219,
+    "elapsedSeconds": 401.551,
+    "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md",
+    "protocol": "Serial fresh rotated processes on CPU3, Node 24.18.0. Same-run baseline, candidate and TypeScript. 1,000ms warmup, 300ms target; five rotations except full raytrace three. Exact result validation/checksums included; import and first call separate. Ranges are observed extrema, not confidence intervals.",
+    "points": [
+      {
+        "id": "local-pair",
+        "label": "Complete edit-distance pair",
+        "category": "diagnostic",
+        "baseline": {
+          "medianMs": 3.77907,
+          "minMs": 3.76958,
+          "maxMs": 4.06303
+        },
+        "candidate": {
+          "medianMs": 3.79972,
+          "minMs": 3.77229,
+          "maxMs": 3.81968
+        },
+        "reference": {
+          "medianMs": 1.24329,
+          "minMs": 1.23622,
+          "maxMs": 1.26144
+        },
+        "speedupVsBaseline": 0.9946,
+        "ratioToTypeScript": 3.0562,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "local-fold",
+        "label": "Array fold",
+        "category": "diagnostic",
+        "baseline": {
+          "medianMs": 0.13945,
+          "minMs": 0.138767,
+          "maxMs": 0.166472
+        },
+        "candidate": {
+          "medianMs": 0.139151,
+          "minMs": 0.138864,
+          "maxMs": 0.149122
+        },
+        "reference": {
+          "medianMs": 0.0397857,
+          "minMs": 0.0397088,
+          "maxMs": 0.0432558
+        },
+        "speedupVsBaseline": 1.0022,
+        "ratioToTypeScript": 3.4975,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "scalar-region-0",
+        "label": "Scalar: zero iterations",
+        "category": "canary",
+        "baseline": {
+          "medianMs": 0.00461244,
+          "minMs": 0.00459957,
+          "maxMs": 0.00510294
+        },
+        "candidate": {
+          "medianMs": 0.00461236,
+          "minMs": 0.00456769,
+          "maxMs": 0.00508566
+        },
+        "reference": {
+          "medianMs": 0.0000937076,
+          "minMs": 0.0000922789,
+          "maxMs": 0.000100094
+        },
+        "speedupVsBaseline": 1,
+        "ratioToTypeScript": 49.2208,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "scalar-region-8192",
+        "label": "Scalar: 8,192 iterations",
+        "category": "canary",
+        "baseline": {
+          "medianMs": 0.140183,
+          "minMs": 0.139944,
+          "maxMs": 0.141911
+        },
+        "candidate": {
+          "medianMs": 0.141157,
+          "minMs": 0.139414,
+          "maxMs": 0.156348
+        },
+        "reference": {
+          "medianMs": 0.100176,
+          "minMs": 0.0990047,
+          "maxMs": 0.112203
+        },
+        "speedupVsBaseline": 0.9931,
+        "ratioToTypeScript": 1.4091,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "complete-generic-row32",
+        "label": "Complete generic row",
+        "category": "canary",
+        "baseline": {
+          "medianMs": 0.456905,
+          "minMs": 0.456765,
+          "maxMs": 0.462099
+        },
+        "candidate": {
+          "medianMs": 0.456277,
+          "minMs": 0.454027,
+          "maxMs": 0.463623
+        },
+        "reference": {
+          "medianMs": 0.00822931,
+          "minMs": 0.0081433,
+          "maxMs": 0.00888655
+        },
+        "speedupVsBaseline": 1.0014,
+        "ratioToTypeScript": 55.4454,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "mandelbrot",
+        "label": "Mandelbrot",
+        "category": "original",
+        "baseline": {
+          "medianMs": 0.206087,
+          "minMs": 0.204433,
+          "maxMs": 0.256256
+        },
+        "candidate": {
+          "medianMs": 0.205817,
+          "minMs": 0.203656,
+          "maxMs": 0.229824
+        },
+        "reference": {
+          "medianMs": 0.045577,
+          "minMs": 0.0453699,
+          "maxMs": 0.053088
+        },
+        "speedupVsBaseline": 1.0013,
+        "ratioToTypeScript": 4.5158,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "editdist",
+        "label": "Original edit distance",
+        "category": "original",
+        "baseline": {
+          "medianMs": 15.1448,
+          "minMs": 14.9866,
+          "maxMs": 16.1006
+        },
+        "candidate": {
+          "medianMs": 15.1086,
+          "minMs": 15.0792,
+          "maxMs": 16.2365
+        },
+        "reference": {
+          "medianMs": 4.98277,
+          "minMs": 4.95863,
+          "maxMs": 5.51387
+        },
+        "speedupVsBaseline": 1.0024,
+        "ratioToTypeScript": 3.0322,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "tree-bitonic",
+        "label": "Tree bitonic sort",
+        "category": "original",
+        "baseline": {
+          "medianMs": 23.0723,
+          "minMs": 22.9845,
+          "maxMs": 26.923
+        },
+        "candidate": {
+          "medianMs": 22.6844,
+          "minMs": 22.5924,
+          "maxMs": 25.3216
+        },
+        "reference": {
+          "medianMs": 0.281382,
+          "minMs": 0.272894,
+          "maxMs": 0.286051
+        },
+        "speedupVsBaseline": 1.0171,
+        "ratioToTypeScript": 80.6181,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "lexer",
+        "label": "Lexer",
+        "category": "original",
+        "baseline": {
+          "medianMs": 170.429,
+          "minMs": 170.247,
+          "maxMs": 171.461
+        },
+        "candidate": {
+          "medianMs": 172.054,
+          "minMs": 169.924,
+          "maxMs": 177.573
+        },
+        "reference": {
+          "medianMs": 1.92499,
+          "minMs": 1.91895,
+          "maxMs": 2.02582
+        },
+        "speedupVsBaseline": 0.9906,
+        "ratioToTypeScript": 89.3792,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "symreg",
+        "label": "Symbolic regression",
+        "category": "original",
+        "baseline": {
+          "medianMs": 15.5817,
+          "minMs": 15.4386,
+          "maxMs": 15.6763
+        },
+        "candidate": {
+          "medianMs": 4.26504,
+          "minMs": 4.20943,
+          "maxMs": 4.28601
+        },
+        "reference": {
+          "medianMs": 1.11236,
+          "minMs": 1.10558,
+          "maxMs": 1.9924
+        },
+        "speedupVsBaseline": 3.6534,
+        "ratioToTypeScript": 3.8342,
+        "meaningfulGain": true,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "test-morning-program",
+        "label": "Morning mixed test",
+        "category": "original",
+        "baseline": {
+          "medianMs": 0.22958,
+          "minMs": 0.228342,
+          "maxMs": 0.231848
+        },
+        "candidate": {
+          "medianMs": 0.230694,
+          "minMs": 0.213334,
+          "maxMs": 0.232155
+        },
+        "reference": {
+          "medianMs": 0.00370064,
+          "minMs": 0.00359387,
+          "maxMs": 0.00400258
+        },
+        "speedupVsBaseline": 0.9952,
+        "ratioToTypeScript": 62.3389,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "test-evening-program",
+        "label": "Evening mixed test",
+        "category": "original",
+        "baseline": {
+          "medianMs": 0.232321,
+          "minMs": 0.177089,
+          "maxMs": 0.253215
+        },
+        "candidate": {
+          "medianMs": 0.234162,
+          "minMs": 0.145749,
+          "maxMs": 0.249193
+        },
+        "reference": {
+          "medianMs": 0.00301596,
+          "minMs": 0.002989,
+          "maxMs": 0.00345727
+        },
+        "speedupVsBaseline": 0.9921,
+        "ratioToTypeScript": 77.6409,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "test-rle-roundtrip",
+        "label": "RLE roundtrip",
+        "category": "original",
+        "baseline": {
+          "medianMs": 0.0466495,
+          "minMs": 0.0462653,
+          "maxMs": 0.0530753
+        },
+        "candidate": {
+          "medianMs": 0.0469775,
+          "minMs": 0.0459757,
+          "maxMs": 0.0526956
+        },
+        "reference": {
+          "medianMs": 0.000599611,
+          "minMs": 0.000573134,
+          "maxMs": 0.000631368
+        },
+        "speedupVsBaseline": 0.993,
+        "ratioToTypeScript": 78.3466,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "test-map-set-ops",
+        "label": "Map/set operations",
+        "category": "original",
+        "baseline": {
+          "medianMs": 1.59093,
+          "minMs": 1.56866,
+          "maxMs": 2.13437
+        },
+        "candidate": {
+          "medianMs": 1.64168,
+          "minMs": 1.57214,
+          "maxMs": 2.11228
+        },
+        "reference": {
+          "medianMs": 0.0235146,
+          "minMs": 0.0220853,
+          "maxMs": 0.0252606
+        },
+        "speedupVsBaseline": 0.9691,
+        "ratioToTypeScript": 69.8152,
+        "meaningfulGain": false,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      },
+      {
+        "id": "raytrace",
+        "label": "Ray tracing",
+        "category": "original",
+        "baseline": {
+          "medianMs": 1859.59,
+          "minMs": 1855.94,
+          "maxMs": 1898.32
+        },
+        "candidate": {
+          "medianMs": 801.893,
+          "minMs": 790.98,
+          "maxMs": 896.052
+        },
+        "reference": {
+          "medianMs": 34.1617,
+          "minMs": 34.1439,
+          "maxMs": 34.5434
+        },
+        "speedupVsBaseline": 2.319,
+        "ratioToTypeScript": 23.4734,
+        "meaningfulGain": true,
+        "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-table.md"
+      }
+    ]
+  },
+  "workloads": [
+    {
+      "id": "mandelbrot",
+      "label": "Mandelbrot",
+      "category": "original",
+      "description": "Integer render, histogram, recolor",
+      "scope": "hd=size; iters=7; seed unused",
+      "point": {
+        "args": [
+          2,
+          0
+        ],
+        "expected": 887240761,
+        "exportName": "bench"
+      },
+      "source": {
+        "path": "fixtures/mandelbrot.bend",
+        "sha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+        "bytes": 6576,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/mandelbrot/main.bend",
+            "gitBlob": "8effae68e308c8ae63c3ec8af66f0e4a4e59f282",
+            "sha256": "400b94705df43c5f6506ecba640db11ae91b24f74d58e39a5e5f7f56dcbabcfa",
+            "bytes": 6427
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  rend(U32.to_nat(size), 7n)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C."
+    },
+    {
+      "id": "editdist",
+      "label": "Original edit distance",
+      "category": "original",
+      "description": "Mutable-array Levenshtein dynamic programming",
+      "scope": "batch depth=size (2^size pairs); first index=seed; length=256",
+      "point": {
+        "args": [
+          2,
+          0
+        ],
+        "expected": 2065873279,
+        "exportName": "bench"
+      },
+      "source": {
+        "path": "fixtures/editdist.bend",
+        "sha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "bytes": 5874,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/editdist/main.bend",
+            "gitBlob": "b3bcc627dde4eccd3f1b96e659a8e1df33ef231c",
+            "sha256": "466891a27b87119b5593209eb98aa0d687ff88b6ff28cc2ca339e248907a3959",
+            "bytes": 5722
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  batch(U32.to_nat(size), seed)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C."
+    },
+    {
+      "id": "tree-bitonic",
+      "label": "Tree bitonic sort",
+      "category": "original",
+      "description": "Tree bitonic sort and sortedness verification",
+      "scope": "tree depth=size (2^size leaves); first index=seed",
+      "point": {
+        "args": [
+          8,
+          0
+        ],
+        "expected": 971629740,
+        "exportName": "bench"
+      },
+      "source": {
+        "path": "fixtures/tree-bitonic.bend",
+        "sha256": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "bytes": 4633,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/tree-bitonic/main.bend",
+            "gitBlob": "00be9f2845778f113d6e00da7926ec33150686dd",
+            "sha256": "1d79c448bae41dff127ff05b6c6a13d010a9a0ebc5c4dcf19da7d6d4641a7d2c",
+            "bytes": 4456
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  stat_out(scan(bsort(U32.to_nat(size), False{}, seed)))\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C."
+    },
+    {
+      "id": "lexer",
+      "label": "Lexer",
+      "category": "original",
+      "description": "Generated-string tokenizer",
+      "scope": "batch depth=size (2^size lines); first index=seed",
+      "point": {
+        "args": [
+          8,
+          0
+        ],
+        "expected": 1822208108,
+        "exportName": "bench"
+      },
+      "source": {
+        "path": "fixtures/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "bytes": 7134,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/lexer/main.bend",
+            "gitBlob": "a789f9eee9944492da022e6146c75920769a32d9",
+            "sha256": "5187685d61672de9434f3902e06c427af4f2fa5648723fd869a8c26ab311fcf6",
+            "bytes": 6982
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  batch(U32.to_nat(size), seed)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C."
+    },
+    {
+      "id": "symreg",
+      "label": "Symbolic regression",
+      "category": "original",
+      "description": "Expression-tree symbolic regression",
+      "scope": "population depth=size (2^size programs); initial seed=seed; rounds=32; points=16",
+      "point": {
+        "args": [
+          6,
+          42
+        ],
+        "expected": 2490246820,
+        "exportName": "bench"
+      },
+      "source": {
+        "path": "fixtures/symreg.bend",
+        "sha256": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+        "bytes": 5406,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/symreg/main.bend",
+            "gitBlob": "8da2a12b5d970226826e9b894559ff570e55bead",
+            "sha256": "5aafee4856cde2259dd2efac84ed02fe1d999e68ab026d975d1a3593b430fbf0",
+            "bytes": 5246
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  run(U32.to_nat(size), seed, 32n, 16n)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C."
+    },
+    {
+      "id": "test-morning-program",
+      "label": "Morning mixed test",
+      "category": "original",
+      "description": "mixed strings, Map, arithmetic and formatting",
+      "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+      "point": {
+        "args": [],
+        "expected": "a-bb-ccc 8 1877 42 lo hello 3",
+        "exportName": "main.out"
+      },
+      "source": {
+        "path": "fixtures/test-morning-program.bend",
+        "sha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+        "bytes": 3077,
+        "provenance": {
+          "kind": "unchanged-pinned-upstream",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/morning_program.bend",
+            "sha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a"
+          },
+          "record": "selfhost/tools/performance/phase28/application-cases.json"
+        }
+      },
+      "oracle": "upstream #| golden, full main.out value"
+    },
+    {
+      "id": "test-evening-program",
+      "label": "Evening mixed test",
+      "category": "original",
+      "description": "mixed float array, Map/Set, number parsing and tuple reuse",
+      "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+      "point": {
+        "args": [],
+        "expected": 81111,
+        "exportName": "main.out"
+      },
+      "source": {
+        "path": "fixtures/test-evening-program.bend",
+        "sha256": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+        "bytes": 2152,
+        "provenance": {
+          "kind": "unchanged-pinned-upstream",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/evening_program.bend",
+            "sha256": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71"
+          },
+          "record": "selfhost/tools/performance/phase28/application-cases.json"
+        }
+      },
+      "oracle": "upstream #| golden, full main.out value"
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "label": "RLE roundtrip",
+      "category": "original",
+      "description": "original six-element compression and decompression test",
+      "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+      "point": {
+        "args": [],
+        "expected": 11,
+        "exportName": "main.out"
+      },
+      "source": {
+        "path": "fixtures/test-rle-roundtrip.bend",
+        "sha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+        "bytes": 2743,
+        "provenance": {
+          "kind": "unchanged-pinned-upstream",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/rle_roundtrip.bend",
+            "sha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989"
+          },
+          "record": "selfhost/tools/performance/phase28/application-cases.json"
+        }
+      },
+      "oracle": "upstream #| golden, full main.out value"
+    },
+    {
+      "id": "test-map-set-ops",
+      "label": "Map/set operations",
+      "category": "original",
+      "description": "original Map/Set feature composition checks",
+      "scope": "original smoke-size test; repeated unchanged complete computation, no scaling claim",
+      "point": {
+        "args": [],
+        "expected": 11111,
+        "exportName": "main.out"
+      },
+      "source": {
+        "path": "fixtures/test-map-set-ops.bend",
+        "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+        "bytes": 5266,
+        "provenance": {
+          "kind": "unchanged-pinned-upstream",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/map_set_ops.bend",
+            "sha256": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6"
+          },
+          "record": "selfhost/tools/performance/phase28/application-cases.json"
+        }
+      },
+      "oracle": "upstream #| golden, full main.out value"
+    },
+    {
+      "id": "raytrace",
+      "label": "Ray tracing",
+      "category": "original",
+      "description": "F32 recursive sphere ray tracing",
+      "scope": "rows=6; width=size; seed unused",
+      "point": {
+        "args": [
+          80,
+          0
+        ],
+        "expected": 402971,
+        "exportName": "bench"
+      },
+      "source": {
+        "path": "fixtures/raytrace.bend",
+        "sha256": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+        "bytes": 14223,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/raytrace/main.bend",
+            "gitBlob": "9f42fcc64fe86dabd21d4e94c69a90224f6ae0f4",
+            "sha256": "6c4918b2012696146144c2c7ccc1daad042dbb87df444ca1334cf8d51bebee5f",
+            "bytes": 13929
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; documented small raytrace input.\ndef bench(+size: U32, seed: U32) -> U32:\n  +rr = U32.to_nat(6)\n  hw = U32.to_f32(U32.div(size, 2))\n  hh = U32.to_f32(U32.div(U32.shln(1, rr), 2))\n  hm = U32.sub(U32.shln(1, rr), 1)\n  rowf(rr, 0, hm, size, hw, hh)\n",
+          "record": "selfhost/tools/performance/phase28/raytrace-typed-retry.json"
+        }
+      },
+      "oracle": "Documented small checksum in pinned original Bend source, itself documented as verified against C."
+    },
+    {
+      "id": "local-pair",
+      "label": "Complete edit-distance pair",
+      "category": "diagnostic",
+      "description": "Complete one-pair edit distance",
+      "scope": "256 by 256 grid, input generation, rows and checksum; same point as Phase32",
+      "point": {
+        "exportName": "pair",
+        "args": [
+          0
+        ],
+        "expected": 1866542166
+      },
+      "source": {
+        "path": "fixtures/local-row.bend",
+        "sha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "bytes": 6245,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/build/phase31/local-data-source-01/row.bend",
+          "description": "Original edit-distance fixture plus row.probe; preserves complete pair and exposes a complete generic row.",
+          "record": "selfhost/tools/performance/phase31/local-data-derive.py"
+        }
+      },
+      "oracle": "Maintained independent pair controls, implementation/phase32/review-local-gates.json; not a universal semantic proof."
+    },
+    {
+      "id": "local-fold",
+      "label": "Array fold",
+      "category": "diagnostic",
+      "description": "Array read/write and accumulator fold",
+      "scope": "4096 elements, seed17; generation, loop and final scalar checksum",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          4096,
+          17
+        ],
+        "expected": 2339999928
+      },
+      "source": {
+        "path": "fixtures/local-fold.bend",
+        "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "bytes": 768,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/tools/performance/phase31/local-data-fold.bend",
+          "record": "selfhost/tools/performance/phase31/local-data-fold-controls.mjs"
+        }
+      },
+      "oracle": "Independent fold oracle in maintained Phase31/32 controls."
+    },
+    {
+      "id": "scalar-region-0",
+      "label": "Scalar: zero iterations",
+      "category": "canary",
+      "description": "Scalar closed-region guard and loop",
+      "scope": "Initial-zero guard cost",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          0,
+          524800
+        ],
+        "expected": 0
+      },
+      "source": {
+        "path": "fixtures/scalar-region.bend",
+        "sha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+        "bytes": 1496,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/tools/performance/phase29/fixture-mandelbrot.bend",
+          "description": "Copied pinned Mandelbrot scalar helpers with bounded scalar bench entry."
+        }
+      },
+      "oracle": "Unchanged maintained scalar point; checked both compilers in Phase32."
+    },
+    {
+      "id": "scalar-region-8192",
+      "label": "Scalar: 8,192 iterations",
+      "category": "canary",
+      "description": "Scalar closed-region guard and loop",
+      "scope": "8192 scalar iterations; boundary guards included",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          8192,
+          524800
+        ],
+        "expected": 8192
+      },
+      "source": {
+        "path": "fixtures/scalar-region.bend",
+        "sha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+        "bytes": 1496,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/tools/performance/phase29/fixture-mandelbrot.bend",
+          "description": "Copied pinned Mandelbrot scalar helpers with bounded scalar bench entry."
+        }
+      },
+      "oracle": "Unchanged maintained scalar point; checked both compilers in Phase32."
+    },
+    {
+      "id": "complete-generic-row32",
+      "label": "Complete generic row",
+      "category": "canary",
+      "description": "Complete generic edit-distance row and serialized state",
+      "scope": "n32 seed17, setup, one row and all four128-slot arrays; JSON serialization included",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          17
+        ],
+        "expected": "[[0,2,1,1,0,0,0,1,1,0,0,2,3,1,3,1,0,1,0,0,2,1,0,0,0,2,0,2,1,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,0,1,0,1,2,0,0,0,0,2,0,0,3,0,1,2,0,1,2,0,0,1,3,3,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]"
+      },
+      "source": {
+        "path": "fixtures/local-row.bend",
+        "sha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "bytes": 6245,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/build/phase31/local-data-source-01/row.bend",
+          "description": "Original edit-distance fixture plus row.probe; preserves complete pair and exposes a complete generic row.",
+          "record": "selfhost/tools/performance/phase31/local-data-derive.py"
+        }
+      },
+      "oracle": "Independent complete-array oracle; selfhost and TypeScript representation adapters observe all four arrays."
+    }
+  ],
+  "findings": [
+    {
+      "phase": 26,
+      "title": "Stop turning numbers into linked data to inspect their bits",
+      "explanation": "Eligible checked U32 decision functions now operate directly on the original unsigned number. Previously each U32 projection built 32 linked word nodes, then traversed generic matchers and partial applications. The compiler follows the existing ordered tree and emits bit tests, while unsupported result shapes retain the generic path.",
+      "impact": "Dense-table execution improved 11.80× and direct numeric decisions improved 50.25× in their own measured window. Dense-table constructor calls fell from 8,481 to zero per benchmark call. The generated pop definition shrank 86.7%.",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase26/direct-u32-decisions.md",
+      "limits": "Diagnostic kernels only; this did not establish whole-compiler improvement. Added 110 Bend lines."
+    },
+    {
+      "phase": 29,
+      "title": "Turn ordinary arithmetic and countdowns into ordinary JavaScript",
+      "explanation": "Saturated native scalar operations become JavaScript expressions. Eligible Nat countdown functions run in private local-variable loops while retaining the public callable descriptors and fallback behavior.",
+      "impact": "Same-window original Mandelbrot improved 2.94×; lexer 1.52× and raytrace 1.67×. Instrumentation on the focused fixture showed 99.2% fewer counted partial descriptors in the combined prototype.",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase29/generated-program-fast-loop.md",
+      "limits": "The original evening mixed-test window regressed 27.4%; a longer-warm window improved, and both remain. Added 263 lines and 36 definitions. These were not universal speedups."
+    },
+    {
+      "phase": 30,
+      "title": "Optimize a complete private region, not each tiny call in isolation",
+      "explanation": "Guarded scalar regions combine private entry, lexical helpers, direct branches and loops, constant scalar shifts, terminal records and bounded iterative trees. Fresh owned argument vectors avoid copying, reused frames avoid allocation across sibling tree visits, and helper lets become statements.",
+      "impact": "Original Mandelbrot dropped from 21.379050 to 0.212798 ms (100.47×). An 8,192-iteration scalar helper improved 186.39× and reached 1.376× TypeScript time. Broader testing also led to removing redundant arm prebinding: 64 implementation lines, eight functions and one obsolete module removed.",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase30/README.md",
+      "measurementUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase30/final-timing-17.md",
+      "limits": "Zero-work scalar entry became 2.70× more expensive, RLE remained 2.70% slower than Phase29, and ordinary compiler checking cost 4.86% more. Earlier Phase27 prebinding gains should not be advertised as still-retained implementation."
+    },
+    {
+      "phase": 31,
+      "title": "Keep temporary local data private",
+      "explanation": "A checked closed-region boundary lets the compiler use direct private data workers while preserving public representations, demand order and aliases. A complete edit-distance computation can avoid repeatedly sending its internal records and arrays through generic call machinery.",
+      "impact": "Original four-pair edit distance dropped from 1900.374599 to 70.817425 ms (26.83×). Separate complete-pair and fold diagnostics improved 29.09× and 17.67× in their own window.",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase31/README.md",
+      "measurementUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase31/final-measurements.md",
+      "limits": "Adds 236 Bend lines and 34 definitions. Edit-distance compilation request cost increased 6.90%. Zero-work entry and generic-row canaries regressed 4.01% and 5.04%; these are accepted explicit tradeoffs."
+    },
+    {
+      "phase": 32,
+      "title": "Remove the wrappers around immediately used values",
+      "explanation": "Statement unpacking, typed immediate-read bridges and private field vectors eliminate unnecessary wrappers inside the proved region. The runtime and driver stay unchanged; public boxed records, aliases and ordered array events remain covered by controls.",
+      "impact": "Original edit distance fell from 72.2661 to 20.3976 ms (3.543×), reaching 4.089× TypeScript time in that run. Complete pair improved 3.76×; array fold 1.98×.",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase32/README.md",
+      "measurementUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase32/final-measurements/measurements.md",
+      "limits": "Added only 57 Bend lines, six functions and two private plan tags. Mandelbrot compilation was 1.91% slower. Cache/memoization investigations failed their criteria; no production cache or new IR was added."
+    },
+    {
+      "phase": 33,
+      "title": "Make useful experiments fast and reusable",
+      "explanation": "Compilation becomes a separate one-time preparation step. The maintained execution suite checks all inputs and output identities, runs fresh rotated processes, and offers independent workload selection with strict time and memory budgets. Phase34 adds CPU/allocation profiles and paired source inspection.",
+      "impact": "A five-point, three-role screen completed in 16.39 seconds; broader 14-point coverage in 259.40 seconds. Portable references validate independently from the original checkout. This made targeted runtime experiments cheaper and comparable.",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase33/README.md",
+      "additionalSourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase34/README.md",
+      "limits": "Engineering workflow improvement, not a new compiled-program speedup; compiler stayed at Phase32."
+    },
+    {
+      "phase": 35,
+      "title": "Measure allocation, then eliminate the temporary state",
+      "explanation": "Selective vector inlining replaces immediately consumed vector fields with loop slots; private countdowns and array accesses remove proved erased work. Larger F32/Nat/Boolean regions and independently checked purity support direct execution. Closed structural folds consume tagged trees with an explicit postorder stack.",
+      "impact": "Symbolic regression improved 6.865×; full ray tracing 5.475×; array fold 2.360×; pair kernel 1.324×; original edit distance 1.278× in the final same-run suite. Sampled allocations per call fell about 73× for pair, 17× for fold, 8.4× for symbolic regression and 9.5× for ray tracing.",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase35/README.md",
+      "limits": "Compiler source grew 979 physical lines (5.73%), and some compile requests rose 8–34%. Broad inlining was rejected after severe regressions. All fifteen final workloads still trailed TypeScript. Allocation samples are diagnostic estimates, not exact heap counts."
+    },
+    {
+      "phase": 36,
+      "title": "Pay for a guard once, and compile the producer too",
+      "explanation": "A proof of the complete call graph permits covered nested calls to reuse guard checks inside a private scope, restored with finally. Error construction suspends that proof to preserve mutable-hook reentry. Private tree producers use continuation frames for ordered children and selectors, preserving tagged values and sharing.",
+      "impact": "Ray tracing dropped from 1859.589096 to 801.893428 ms (2.319×). Symbolic regression dropped from 15.581745 to 4.265036 ms (3.653×). Separate CPU profiles show ray guard ancestry falling 50.12→0.44% and symbolic-regression producer ancestry 63.92→12.30%.",
+      "sourceUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/README.md",
+      "measurementUrl": "https://github.com/rom1504/bend/blob/dfa5e03f02692d60b212b1d7e852213634fcfd93/implementation/phase36/execution-findings.md",
+      "limits": "Other thirteen points had overlapping ranges; no decisive gain claimed. Added 124 lines (0.687%). Symreg/ray compilation request medians increased 4.50%/4.02%, with overlapping three-sample ranges. Profile ancestry is not clean timing and cannot be added or interpreted as exclusive shares."
+    }
+  ],
+  "cautions": [
+    "Selected workload suite is not representative production performance; do not report a universal average.",
+    "No C/GPU/parallel backend speed or full conformance claim follows.",
+    "Every paired speedup keeps the same input and protocol within its own campaign.",
+    "Warmup and first-call behavior matter; older windows are not pooled with the maintained suite.",
+    "Phase36 all fifteen outputs agree. All final workloads remain slower than TypeScript, with major lexer and tree gaps.",
+    "Phase36 map/set full-run median slowed 3.190%; separate unchanged-protocol follow-up was 0.523% faster with overlapping ranges. Both remain; no regression fix claimed.",
+    "The reports are already committed evidence. No compiler, benchmark or build was run for this research."
+  ]
+}

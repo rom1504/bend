@@ -2877,3 +2877,38 @@ Keep JS primary, exact full-output oracles, renamed controls, actual activation
 counters and the nominal core8 screen before another full campaign. Preserve all
 103 unrelated files and historical evidence. Final writer closure and archive
 publication are separate receipts. No PR comment was posted.
+
+## Phase49 V8-aware diagnosis — 2026-10-05
+
+The [design](../design/phase49/v8-aware-diagnostics.md) was pushed before targets;
+[report](../implementation/phase49/README.md) and
+[optimizer findings](../implementation/phase49/v8-ir.md) explain the failed tuple
+pass without changing the installed compiler. Retained array06 RLE is byte-identical
+to RNFA04's current output. All 63 public-call jobs pass their exact result/digest;
+one initial TS graph is invalid JSON and is separately retained with a complete
+fresh longer-run successor. No compiler build or conformance expansion is claimed.
+
+Fresh five-process medians are 39.343µs baseline, 39.365µs rejected values03 and
+0.589µs TS. Named guards contribute 79.44%/76.55% CPU self weight. Sampled allocation
+is roughly 33 KB/call, dominated by descriptor reflection. Unsafe one-condition
+bypasses produce 0.804µs baseline/0.836µs candidate; String-only omission 22.370µs.
+The 49× diagnostic intervention changes JIT context as well as omitted work; it
+is neither a safe compiler optimization nor a new corpus/typical-program result.
+
+Both RLE loops reach TurboFan before measurement and inline the step, with no
+measured bailouts. Baseline allocation sites survive escape analysis; the pass
+reduces 16→8 but adds 6 context loads / 6 stores, lexical initialization checks and
+barrier paths. Code grows 2,448→2,516 B and 16→17 stack slots. With guards bypassed,
+the candidate allocates 2,549→1,770 estimated B/call but is 3.88% slower. These static
+mechanisms and samples constrain explanations, not exact instruction causality.
+
+**Updated frontier:** prove smaller guard requirements from full original-source
+and runtime observations; test cheaper equivalent fresh checks. Do not infer safe
+String omission from dependency names or cache mutable permission across calls.
+Test caller-local transport before another broad product pass. Preserve clean
+counterfactuals separately from semantic qualification. Root ran 63 serial jobs,
+136.81 s observed process occupancy, 205.9 MiB maximum tree RSS; measurement ended
+about 14 minutes after the raw start. Source/review/docs time is separate.
+The [diagnostic guide](../selfhost/tools/performance/phase49/README.md) and complete
+closed evidence make these probes reusable. The 103 unrelated files remain intact;
+no PR comment was posted.

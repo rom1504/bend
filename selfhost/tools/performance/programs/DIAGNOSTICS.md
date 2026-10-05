@@ -1,5 +1,10 @@
 # Generated-program profiles and code comparison
 
+For optimization tiers, inlining decisions and filtered V8 IR/assembly, see the
+[Phase49 V8-aware diagnostic guide](../phase49/README.md). Its RLE investigation
+combines these tools with CPU/allocation profiles and explicitly unsafe guard
+ablations; it does not change the installed compiler or production benchmark.
+
 Use diagnostics to investigate a measured slowdown in the JavaScript emitted by
 the TypeScript and Bend compilers. The [timing loop](README.md) measures execution
 without a profiler. Diagnostics run afterward, or independently against the same

@@ -1,4 +1,4 @@
-# Current compiler: Phase48 RNFA04
+# Current compiler: Phase48 RNFA04; latest investigation: Phase49
 
 RNFA04 is installed. Release verification, all 42 ordinary/relocated CLI checks
 and portable replay pass. The [report](../implementation/phase48/README.md),
@@ -62,39 +62,40 @@ outputs, but median requests regress **3.274% Evening / 4.411% lexer**. This
 two-source screen is separate from program execution and self-compilation. No
 source simplification or compiler-throughput improvement is claimed.
 
-## Next experiments
+## Next experiments after Phase49 V8 diagnosis
 
-Prioritize **general matched recursive function families and staged captures**,
-with Morning as a coverage check rather than a source selector. H02's finite
-controls pass, but its real Morning/closure modules are unchanged; its 406-line
-prototype is preserved and unselected. Test a bounded matched-family mechanism
-on an independently renamed recursive source, including partial head binding,
-unequal captures, prefix demand, escape/refusal and native/machine stack behavior.
-Require executed family-entry witnesses on the actual main before timing.
+The [Phase49 investigation](../implementation/phase49/README.md) changes the
+priority. Installed RNFA04's RLE output is byte-identical to retained array06.
+Five named guard routines account for 79.44% of sampled baseline self time, and
+reflection dominates roughly 33KB of estimated allocation per public call.
+A controlled but unsafe guard bypass changes 39.343µs to 0.804µs, against 0.589µs
+for TS. String-check omission alone reaches 22.370µs. These are one fixed
+six-element source's diagnostics, not legal optimizations or a new corpus ratio.
 
-Propagate shared call, use/effect, ownership and representation facts across
-selected emitters and public result boundaries. Test one demonstrated consumer:
-for example, expression's tree producer followed by its fold. Preserve child
-order, demand/errors and public sharing. RLE's persistent output has two consumers;
-single-consumer fusion is not justified there. The V scalar/vector conventions
-remove tuple constructions but show no useful broad gain and remain deferred.
-Fewer shells alone do not justify wider transport or continuation frames.
+First derive **required guard effects from complete original-source and runtime
+observations**, including forcing, errors, mutation and reentry. Test one omitted
+category with adversarial controls before implementing a compiler pass. Static
+absence of String operations among 17 dependencies is not enough. Preserve fresh
+validation where needed; do not cache permission across public calls or assume
+immutable host prototypes. Also investigate cheaper checks retaining the same
+coverage and safe amortization inside a genuinely established region.
 
-Measure hot public entries before changing permission checks. A clean benchmark
-does not make mutable host identities cacheable, and optimized-body-only hook
-narrowing can miss observations in the original generic path. Preserve early
-host capture and original fallback behavior. For compiler cost, reject wrong
-shapes before expensive normalization and reuse exact bounded facts where a
-measured repeated query justifies it; do not install a blind cache. The bounded
-RNFA02 compiler heap OOM and its corrected successor remain preserved.
+V8 already inlines the RLE step and optimizes both loops before measurement.
+The rejected tuple pass removes real allocation sites but adds shared-context
+loads/stores, initialization and barrier paths. In the bypass pair it allocates
+about 2,549→1,770B/call yet is 3.88% slower. Test caller-local scalar transport with
+one saved-output ablation before building another broad convention. Do not infer
+speed from fewer IR nodes or constructors.
 
-Use the nominal 60-second **core8** screen and actual private-entry witnesses
-before the approximately 19-minute full campaign. Retain 20-second rejection
-screens and separate semantic, timing, profiling and publication jobs. Root owns
-serial CPU 3 execution with a 1 GiB heap, 2 GiB RSS and 4 GiB available-memory
-floor; agents work concurrently on independent source, controls and review.
-[Remaining opportunities](../implementation/phase48/remaining-opportunities.md)
-records precise coverage gaps and falsifiers.
+Matched recursive function families, expression producer/fold fusion and larger
+program admission remain open, as documented in
+[Phase48 opportunities](../implementation/phase48/remaining-opportunities.md).
+Require actual hot-path activation and cheap clean speed evidence before a
+checked compiler implementation. The new
+[V8-aware guide](../selfhost/tools/performance/phase49/README.md) complements the
+20/60/300-second benchmark selections with separate profiles, inlining traces and
+filtered optimizer/code dumps. No compiler build or full-corpus rerun was needed
+for Phase49. All unsafe derivatives remain uninstalled.
 
 Keep JS primary. The preserved [Phase46 JS/C study](../implementation/phase46/README.md)
 shows allocation and curried-call/continuation transport must improve before

@@ -61,6 +61,11 @@ The [architecture survey](../docs/self_hosted/README.md),
 [ledger](../experiments/ledger.md) and [strategy](../experiments/STEERING.md)
 retain decisions and failures. Historical reports preserve their own baselines.
 
+The [Phase49 V8 investigation](../implementation/phase49/README.md) explains why
+entry validation dominates one slow generated program. Its
+[V8-aware profiling guide](tools/performance/phase49/README.md) adds inlining,
+optimizer-graph and machine-code inspection; no new compiler release is implied.
+
 ## Use the typed compiler
 
 Node.js 24 or newer runs the supplied generated API. The host shell handles

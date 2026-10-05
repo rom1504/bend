@@ -1,0 +1,23 @@
+{
+  "kind": "phase49-v8-graphs-probe-derivation",
+  "complete": true,
+  "executed": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase49/v8-probe.mjs",
+    "sha256": "5fac486cdac4f5d246b10cb9005041f5b43bcde7e665b28473a7bdf0850139b5",
+    "bytes": 9637
+  },
+  "derived": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase49/v8-probe-graphs.mjs",
+    "sha256": "55eeac50d918271251ed535bda43eb909a7bf7425ed0597b14151e95f76300e0",
+    "bytes": 11360
+  },
+  "transformation": "Exact byte copy except one trace flag-validation block replacement. No target, call, digest, profile or timing logic changed.",
+  "constraints": [
+    "Trace-only diagnostic flags; no forced optimization or escape debug flags.",
+    "One literal bounded function name per graph/code filter; duplicate options refused.",
+    "Absolute normalized paths; CFG must be inside the precreated graph dump directory. The outer runner establishes directory freshness before Node can open trace output.",
+    "Dump directory may be outside the probe output directory; root owns isolated job directory and log bounds."
+  ],
+  "delta": "--- v8-probe.mjs\n+++ v8-probe-graphs.mjs\n@@ -51,12 +51,39 @@\n   assert.equal(process.version, 'v24.18.0', 'requires the pinned Node version');\n   assert.ok(!process.env.NODE_OPTIONS, 'NODE_OPTIONS must be empty for an explicit runtime configuration');\n   assert.ok(['clean', 'trace', 'cpu', 'allocation'].includes(mode), 'invalid mode');\n-  const traces = new Set(['--trace-opt', '--trace-deopt', '--trace-gc', '--trace-gc-nvp', '--trace-turbo-inlining']);\n-  for (const flag of process.execArgv) assert.ok(\n-    /^--(?:stack-size|max-old-space-size)=\\d+$/.test(flag) || (mode === 'trace' && traces.has(flag)),\n-    `unsupported or mixed instrumentation flag: ${flag}`);\n-  if (mode === 'trace') assert.ok(process.execArgv.includes('--trace-opt')\n-    && process.execArgv.includes('--trace-deopt'), 'trace mode requires --trace-opt --trace-deopt');\n+  const traces = new Set(['--trace-opt', '--trace-deopt', '--trace-gc', '--trace-gc-nvp', '--trace-turbo-inlining',\n+    '--trace-turbo', '--trace-turbo-graph', '--print-opt-code']);\n+  const diagnosticOptions = new Map();\n+  for (const flag of process.execArgv) {\n+    const option = /^--(trace-turbo-filter|trace-turbo-path|trace-turbo-cfg-file|print-opt-code-filter)=(.+)$/.exec(flag);\n+    assert.ok(/^--(?:stack-size|max-old-space-size)=\\d+$/.test(flag)\n+      || (mode === 'trace' && (traces.has(flag) || option)),\n+      `unsupported or mixed instrumentation flag: ${flag}`);\n+    if (option) {\n+      const [, key, value] = option;\n+      assert.ok(!diagnosticOptions.has(key), `duplicate diagnostic option: ${key}`);\n+      if (key.endsWith('-filter')) assert.ok(value.length <= 160 && /^[A-Za-z_$][A-Za-z0-9_$.]*$/.test(value),\n+        `require one bounded literal function name: ${key}`);\n+      else assert.ok(path.isAbsolute(value) && path.normalize(value) === value\n+        && !/[\\0\\r\\n*?]/.test(value), `require an absolute normalized diagnostic path: ${key}`);\n+      diagnosticOptions.set(key, value);\n+    }\n+  }\n+  if (mode === 'trace') {\n+    assert.ok(process.execArgv.includes('--trace-opt') && process.execArgv.includes('--trace-deopt'),\n+      'trace mode requires --trace-opt --trace-deopt');\n+    if (process.execArgv.includes('--trace-turbo') || process.execArgv.includes('--trace-turbo-graph')) {\n+      for (const key of ['trace-turbo-filter', 'trace-turbo-path', 'trace-turbo-cfg-file'])\n+        assert.ok(diagnosticOptions.has(key), `graph diagnostics require ${key}`);\n+      const dumps = diagnosticOptions.get('trace-turbo-path'), cfg = diagnosticOptions.get('trace-turbo-cfg-file');\n+      assert.ok(fs.statSync(dumps).isDirectory(), 'graph dump directory must exist');\n+      assert.ok(path.dirname(cfg) === dumps, 'CFG output must be inside graph dump directory');\n+      // The runner reserves a fresh directory before Node starts: V8 can open\n+      // its CFG output before this JavaScript configuration check executes.\n+    }\n+    if (process.execArgv.includes('--print-opt-code')) assert.ok(diagnosticOptions.has('print-opt-code-filter'),\n+      'optimized code diagnostics require an exact function filter');\n+  }\n   assert.ok(typeof exportName === 'string' && exportName.length > 0 && Array.isArray(args));\n   assert.ok(typeof expected === 'number' && Number.isFinite(expected), 'expected must be a finite number');\n   numericJson(args);\n"
+}

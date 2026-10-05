@@ -1,0 +1,898 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "cases": [
+    {
+      "id": "direct-contract",
+      "source": {
+        "path": "fixtures/direct-contract-v2.bend",
+        "sha256": "ab6c6253e9af697a0bbea999add8a4048c379019c451176e6f4c4b246200fb22"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "adt-owned-result",
+          "exportName": "pack",
+          "groups": [
+            [
+              35
+            ]
+          ],
+          "expected": {
+            "$": "Packet",
+            "payload": 35,
+            "count": 7
+          }
+        },
+        {
+          "id": "adt-named-input",
+          "exportName": "unpack",
+          "groups": [
+            [
+              {
+                "$": "Packet",
+                "payload": 35,
+                "count": 7
+              }
+            ]
+          ],
+          "expected": 42,
+          "inputUnchanged": true
+        },
+        {
+          "id": "adt-getter-order",
+          "exportName": "unpack",
+          "groups": [
+            [
+              {
+                "$getters": {
+                  "payload": {
+                    "value": 35
+                  },
+                  "count": {
+                    "value": 7
+                  }
+                },
+                "value": {
+                  "$": "Packet"
+                }
+              }
+            ]
+          ],
+          "expected": 42
+        },
+        {
+          "id": "adt-getter-throw",
+          "exportName": "unpack",
+          "groups": [
+            [
+              {
+                "$getters": {
+                  "payload": {
+                    "throw": "payload-first"
+                  },
+                  "count": {
+                    "throw": "count-second"
+                  }
+                },
+                "value": {
+                  "$": "Packet"
+                }
+              }
+            ]
+          ],
+          "expectedError": "payload-first"
+        },
+        {
+          "id": "saturated",
+          "exportName": "add",
+          "groups": [
+            [
+              7,
+              11
+            ]
+          ],
+          "expected": 18
+        },
+        {
+          "id": "curried",
+          "exportName": "add",
+          "groups": [
+            [
+              7
+            ],
+            [
+              11
+            ]
+          ],
+          "expected": 18
+        },
+        {
+          "id": "empty-underapplication",
+          "exportName": "add",
+          "groups": [
+            [],
+            [
+              7
+            ],
+            [],
+            [
+              11
+            ]
+          ],
+          "expected": 18
+        },
+        {
+          "id": "public-extra-argument",
+          "exportName": "add",
+          "groups": [
+            [
+              7,
+              11,
+              99
+            ]
+          ],
+          "expected": 18
+        },
+        {
+          "id": "capturing-factory",
+          "exportName": "capture",
+          "groups": [
+            [
+              35
+            ],
+            [
+              7
+            ]
+          ],
+          "expected": 42
+        },
+        {
+          "id": "matched-recursive-factory",
+          "exportName": "factory",
+          "groups": [
+            [
+              {
+                "$bigint": "16"
+              },
+              19
+            ],
+            [
+              7
+            ]
+          ],
+          "expected": 42
+        },
+        {
+          "id": "matched-zero-factory",
+          "exportName": "factory",
+          "groups": [
+            [
+              {
+                "$bigint": "0"
+              },
+              35
+            ],
+            [
+              7
+            ]
+          ],
+          "expected": 42
+        },
+        {
+          "id": "erased-JS-slot",
+          "exportName": "keep",
+          "groups": [
+            [
+              42
+            ]
+          ],
+          "expected": 42
+        },
+        {
+          "id": "tail-50000",
+          "exportName": "tail",
+          "groups": [
+            [
+              {
+                "$bigint": "50000"
+              },
+              17
+            ]
+          ],
+          "expected": 50017
+        },
+        {
+          "id": "nat-0-0",
+          "exportName": "nat.add",
+          "groups": [
+            [
+              0,
+              0
+            ]
+          ],
+          "expected": 0
+        },
+        {
+          "id": "nat-1-2",
+          "exportName": "nat.add",
+          "groups": [
+            [
+              1,
+              2
+            ]
+          ],
+          "expected": 3
+        },
+        {
+          "id": "nat-281474976710654-1",
+          "exportName": "nat.add",
+          "groups": [
+            [
+              281474976710654,
+              1
+            ]
+          ],
+          "expected": 281474976710655
+        },
+        {
+          "id": "nat-overflow",
+          "exportName": "nat.add",
+          "groups": [
+            [
+              281474976710655,
+              1
+            ]
+          ],
+          "expectedError": "a Nat past the largest immediate 2^48-1"
+        },
+        {
+          "id": "nat-rejected-host",
+          "exportName": "nat.add",
+          "groups": [
+            [
+              {
+                "$bigint": "9007199254740993"
+              },
+              1
+            ]
+          ],
+          "expectedError": "a Nat past the largest immediate 2^48-1"
+        },
+        {
+          "id": "f32-18",
+          "exportName": "fl.add",
+          "groups": [
+            [
+              16777216,
+              1
+            ]
+          ],
+          "expected": 16777216.0
+        },
+        {
+          "id": "f32-19",
+          "exportName": "fl.add",
+          "groups": [
+            [
+              0.1,
+              0.2
+            ]
+          ],
+          "expected": 0.30000001192092896
+        },
+        {
+          "id": "f32-20",
+          "exportName": "fl.add",
+          "groups": [
+            [
+              {
+                "$number": "-0"
+              },
+              {
+                "$number": "-0"
+              }
+            ]
+          ],
+          "expected": {
+            "$number": "-0"
+          }
+        },
+        {
+          "id": "f32-21",
+          "exportName": "fl.add",
+          "groups": [
+            [
+              3.5,
+              -1.25
+            ]
+          ],
+          "expected": 2.25
+        },
+        {
+          "id": "f32-nan",
+          "exportName": "fl.add",
+          "groups": [
+            [
+              {
+                "$number": "NaN"
+              },
+              1
+            ]
+          ],
+          "expected": {
+            "$number": "NaN"
+          }
+        },
+        {
+          "id": "f32-infinity",
+          "exportName": "fl.add",
+          "groups": [
+            [
+              {
+                "$number": "Infinity"
+              },
+              1
+            ]
+          ],
+          "expected": {
+            "$number": "Infinity"
+          }
+        },
+        {
+          "id": "f32-floor",
+          "exportName": "fl.floor",
+          "groups": [
+            [
+              -1.5
+            ]
+          ],
+          "expected": -2
+        },
+        {
+          "id": "char-astral",
+          "exportName": "char.make",
+          "groups": [
+            [
+              128512
+            ]
+          ],
+          "expected": "\ud83d\ude00"
+        },
+        {
+          "id": "char-surrogate",
+          "exportName": "char.make",
+          "groups": [
+            [
+              55296
+            ]
+          ],
+          "expectedError": "55296 is not a Unicode scalar value"
+        },
+        {
+          "id": "order-stage-before-argument",
+          "exportName": "order.check",
+          "groups": [
+            []
+          ],
+          "expectedError": "55296 is not a Unicode scalar value"
+        },
+        {
+          "id": "string-unicode",
+          "exportName": "text.join",
+          "groups": [
+            [
+              "a\ud83d\ude00",
+              "\u00e9\ud800"
+            ]
+          ],
+          "expected": "a\ud83d\ude00\u00e9\ud800"
+        },
+        {
+          "id": "hook-Math-floor-passthrough",
+          "exportName": "fl.floor",
+          "groups": [
+            [
+              -1.5
+            ]
+          ],
+          "mutation": {
+            "target": "Math.floor",
+            "style": "passthrough"
+          }
+        },
+        {
+          "id": "hook-Math-floor-getter",
+          "exportName": "fl.floor",
+          "groups": [
+            [
+              -1.5
+            ]
+          ],
+          "mutation": {
+            "target": "Math.floor",
+            "style": "getter"
+          }
+        },
+        {
+          "id": "hook-Math-floor-throw",
+          "exportName": "fl.floor",
+          "groups": [
+            [
+              -1.5
+            ]
+          ],
+          "mutation": {
+            "target": "Math.floor",
+            "style": "throw"
+          }
+        },
+        {
+          "id": "hook-Math-fround-passthrough",
+          "exportName": "fl.add",
+          "groups": [
+            [
+              0.1,
+              0.2
+            ]
+          ],
+          "mutation": {
+            "target": "Math.fround",
+            "style": "passthrough"
+          }
+        },
+        {
+          "id": "hook-Math-fround-getter",
+          "exportName": "fl.add",
+          "groups": [
+            [
+              0.1,
+              0.2
+            ]
+          ],
+          "mutation": {
+            "target": "Math.fround",
+            "style": "getter"
+          }
+        },
+        {
+          "id": "hook-Math-fround-throw",
+          "exportName": "fl.add",
+          "groups": [
+            [
+              0.1,
+              0.2
+            ]
+          ],
+          "mutation": {
+            "target": "Math.fround",
+            "style": "throw"
+          }
+        },
+        {
+          "id": "hook-String-fromCodePoint-passthrough",
+          "exportName": "char.make",
+          "groups": [
+            [
+              128512
+            ]
+          ],
+          "mutation": {
+            "target": "String.fromCodePoint",
+            "style": "passthrough"
+          }
+        },
+        {
+          "id": "hook-String-fromCodePoint-getter",
+          "exportName": "char.make",
+          "groups": [
+            [
+              128512
+            ]
+          ],
+          "mutation": {
+            "target": "String.fromCodePoint",
+            "style": "getter"
+          }
+        },
+        {
+          "id": "hook-String-fromCodePoint-throw",
+          "exportName": "char.make",
+          "groups": [
+            [
+              128512
+            ]
+          ],
+          "mutation": {
+            "target": "String.fromCodePoint",
+            "style": "throw"
+          }
+        },
+        {
+          "id": "hook-Array-isArray-passthrough",
+          "exportName": "unpack",
+          "groups": [
+            [
+              {
+                "$": "Packet",
+                "payload": 35,
+                "count": 7
+              }
+            ]
+          ],
+          "mutation": {
+            "target": "Array.isArray",
+            "style": "passthrough"
+          }
+        },
+        {
+          "id": "hook-Array-isArray-getter",
+          "exportName": "unpack",
+          "groups": [
+            [
+              {
+                "$": "Packet",
+                "payload": 35,
+                "count": 7
+              }
+            ]
+          ],
+          "mutation": {
+            "target": "Array.isArray",
+            "style": "getter"
+          }
+        },
+        {
+          "id": "hook-Array-isArray-throw",
+          "exportName": "unpack",
+          "groups": [
+            [
+              {
+                "$": "Packet",
+                "payload": 35,
+                "count": 7
+              }
+            ]
+          ],
+          "mutation": {
+            "target": "Array.isArray",
+            "style": "throw"
+          }
+        },
+        {
+          "id": "public-callable-callback",
+          "exportName": "invoke",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              35
+            ]
+          ],
+          "expected": 42
+        }
+      ]
+    },
+    {
+      "id": "erased_partial_closure",
+      "source": {
+        "path": "fixtures/erased_partial_closure.bend",
+        "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 3
+        }
+      ]
+    },
+    {
+      "id": "closure_partial_app",
+      "source": {
+        "path": "fixtures/closure_partial_app.bend",
+        "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 17
+        }
+      ]
+    },
+    {
+      "id": "erased_recursive_arg",
+      "source": {
+        "path": "fixtures/erased_recursive_arg.bend",
+        "sha256": "3f13bbac34471cc80e86b4916fdd8a17a2c156f1ced84857149c45dba8e5750d"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 9
+        }
+      ]
+    },
+    {
+      "id": "erased_apply",
+      "source": {
+        "path": "fixtures/erased_apply.bend",
+        "sha256": "a8a84fa45f5b979d21acbc729e06f4bbbe627c8a0f0ac29bc8a9d24751da24c7"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 4
+        }
+      ]
+    },
+    {
+      "id": "over_application",
+      "source": {
+        "path": "fixtures/over_application.bend",
+        "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 42
+        }
+      ]
+    },
+    {
+      "id": "eta_closure_body",
+      "source": {
+        "path": "fixtures/eta_closure_body.bend",
+        "sha256": "f00a373b52647541f8e62bb59f95acdb6998fc1ad1be47dd73f2743aa92bef2a"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 42
+        }
+      ]
+    },
+    {
+      "id": "eta_ctor_arm",
+      "source": {
+        "path": "fixtures/eta_ctor_arm.bend",
+        "sha256": "25510e2abd182476e08a4c3b0b22eda204f24b90b820909d237f8b8bdf339fb6"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 100
+        }
+      ]
+    },
+    {
+      "id": "array_dynamic_closure",
+      "source": {
+        "path": "fixtures/array_dynamic_closure.bend",
+        "sha256": "07e1f36a063002409bc231bb8ca918e0ea5814b129854f4389669a00d67a5a1f"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 9
+        }
+      ]
+    },
+    {
+      "id": "float_accumulation",
+      "source": {
+        "path": "fixtures/float_accumulation.bend",
+        "sha256": "93e0e625cf6a742d8f3a47701f8280111a989ebb76f563695437c67ab3da4297"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 2775
+        }
+      ]
+    },
+    {
+      "id": "float_builtin_agreement",
+      "source": {
+        "path": "fixtures/float_builtin_agreement.bend",
+        "sha256": "598bf5de2c2b221a2d8f72b34298c40b4ee311fbdba6802c53b27272beb28536"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": "-2 -1 -1 1.5"
+        }
+      ]
+    },
+    {
+      "id": "float_roundtrip",
+      "source": {
+        "path": "fixtures/float_roundtrip.bend",
+        "sha256": "7fc6dbd7a533f781d0a72632f38129be0591b7754cbfded2d8a644cc0933bfd4"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 45
+        }
+      ]
+    },
+    {
+      "id": "marshal_erased_binders",
+      "source": {
+        "path": "fixtures/marshal_erased_binders.bend",
+        "sha256": "434bfa849bd88393922f0d8ee2012775e40af9220f6f3ec0a5403ed4c21907f3"
+      },
+      "auxiliary": [
+        {
+          "path": "fixtures/marshal_erased_binders.js",
+          "sha256": "3469a2e3cb9f5872b9f4bed2d473271a979e3270c57674c53edecec84bb7af51"
+        }
+      ],
+      "mode": "program",
+      "tests": [
+        {
+          "id": "independent-stdout",
+          "stdout": "121\n8\n",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "id": "shared_module_state",
+      "source": {
+        "path": "fixtures/shared_module_state.bend",
+        "sha256": "e6aa3a59587d40c9a473e75cf66180b36045309a6c1af17a9746f1810ee60af2"
+      },
+      "auxiliary": [
+        {
+          "path": "fixtures/shared_module_state.js",
+          "sha256": "d42ae5de0b56d7cba8835d7b00e50ee1565b8f6d3c97db5012d41816348e5123"
+        }
+      ],
+      "mode": "program",
+      "tests": [
+        {
+          "id": "independent-stdout",
+          "stdout": "1\n2\n2\n",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "id": "foreign_arrow_arity",
+      "source": {
+        "path": "fixtures/foreign_arrow_arity.bend",
+        "sha256": "fae4838a694a354cb061ff422981d16b65a508dd287faa12562cae1cfb72fd56"
+      },
+      "auxiliary": [
+        {
+          "path": "fixtures/foreign_arrow_arity.js",
+          "sha256": "de87179b5f9d27b8b1f0387795a049547c4b00bd64597dec0b629468302376ed"
+        }
+      ],
+      "mode": "program",
+      "tests": [
+        {
+          "id": "independent-stdout",
+          "stdout": "42\n",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "id": "marshal_nat_bigint",
+      "source": {
+        "path": "fixtures/marshal_nat_bigint.bend",
+        "sha256": "a99628e48b2258c70b71a4f1d3b707b7e18e0a2abbf6a9279e8e06e7c5ac50f3"
+      },
+      "auxiliary": [
+        {
+          "path": "fixtures/marshal_nat_bigint.js",
+          "sha256": "f10cbe24f0a29ae3ca3d2e53d53eb953eeb0152f4087efabf92086354bf0c607"
+        }
+      ],
+      "mode": "program",
+      "tests": [
+        {
+          "id": "independent-stdout",
+          "stdout": "zero\nsucc\nsucc\n",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "id": "array_swap_header",
+      "source": {
+        "path": "fixtures/array_swap_header.bend",
+        "sha256": "e16438d4138cbf1700473d0f1a1805194787c107b39af819c0dbdeed752d7f87"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 2337
+        }
+      ]
+    },
+    {
+      "id": "tail_pin",
+      "source": {
+        "path": "fixtures/tail_pin.bend",
+        "sha256": "9501546a5f125a2cb82609f23c517e62dffe4eeb603f3e6cc991c4477bb78cd9"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 3
+        }
+      ]
+    }
+  ],
+  "status": "frozen v3 independent plan; adds simultaneous tail Array swap and discarded call continuation; unexecuted"
+}

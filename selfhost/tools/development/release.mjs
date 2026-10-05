@@ -35,6 +35,10 @@ export function verifyRelease(root=project){
  assert.equal(bootstrap.sourceSha256,manifest.sourceSha256);assert.equal(bootstrap.baseSha256,files['dist/base.bend'].sha256);
  assert.equal(bootstrap.revision,manifest.lineage.upstreamRevision);
  assert.equal(manifest.checkout.find(x=>x.path==='src/runtime.mjs')?.sha256,manifest.runtimeSha256);
+ if(bootstrap.modules.some(x=>x.file==='src/back/js/direct/core.bend')) {
+  assert.equal(typeof manifest.directRuntimeSha256,'string','Direct backend runtime must be bound to the release');
+  assert.equal(manifest.checkout.find(x=>x.path==='src/runtime/js/direct.mjs')?.sha256,manifest.directRuntimeSha256);
+ }
  if(checked){
   assert.equal(api.sha256,parent.sha256,'Checked default differs from checked API');
   assert.equal(manifest.lineage.checkedApiSha256,parent.sha256);
@@ -83,6 +87,8 @@ export async function installAttempt(directory,derivationFile){
  }
  for(const name of [...hostNames,...(derived?[]:['stage0-library'])]){const file=path.join(project,'tools',name+'.mjs');assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,'tools',name+'.mjs')).sha256);checkout.push(record(file));}
  for(const name of ['src/compiler.json','src/runtime.mjs']){const file=path.join(project,name);assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,name)).sha256);checkout.push(record(file));}
+ const hasDirect=bootstrap.modules.some(x=>x.file==='src/back/js/direct/core.bend');
+ if(hasDirect){const name='src/runtime/js/direct.mjs',file=path.join(project,name);assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,name)).sha256);checkout.push(record(file));}
  const walk=directory=>fs.readdirSync(directory,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(directory,e.name)):[path.join(directory,e.name)]);
  for(const file of walk(path.join(project,'src/runtime/native'))){assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,relative(file))).sha256);checkout.push(record(file));}
  checkout.push(record(path.join(project,'cli.mjs')));
@@ -104,6 +110,7 @@ export async function installAttempt(directory,derivationFile){
   for(const name of ['typed-api.mjs.bootstrap.json','typed-bootstrap-report.json',...(derived?[]:['release-lineage/derivation.json','release-lineage/equality.mjs'])])fs.rmSync(path.join(dist,name),{force:true});
   const manifest={kind:derived?'bend-default-equality-release':'bend-default-checked-release',version:1,newBootstrap:false,installed:new Date().toISOString(),
    artifact:derived?'equality-derived-b1':'checked-b1',sourceSha256:bootstrap.sourceSha256,runtimeSha256:attempt.runtime.sha256,
+   ...(hasDirect?{directRuntimeSha256:identity(path.join(project,'src/runtime/js/direct.mjs')).sha256,javascriptBackends:['js','direct']}:{}),
    files:names.map(name=>record(path.join(dist,name))),checkout,
    lineage:{...(derived?{checkedParentSha256:attempt.checkedApi.sha256,derivationSha256:identity(derived.report).sha256}:{checkedApiSha256:attempt.checkedApi.sha256,bootstrapSha256:attempt.bootstrapReport.sha256}),upstreamRevision:bootstrap.revision},
    provenanceScope:derived?'Original checked bootstrap and derivation reports are preserved byte-for-byte with historical paths. Local verification checks relative installed/checkout identities and exact transformation replay; it does not create or relocate bootstrap provenance.':'The installed API is byte-identical to the genuine checked attempt. Its original bootstrap report is retained byte-for-byte with historical paths; relocated verification binds local source, recipe, Base and runtime identities without creating new bootstrap provenance.',

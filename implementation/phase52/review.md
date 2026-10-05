@@ -171,5 +171,40 @@ Program and foreign output now have a Node `createRequire` prologue. The separat
 acquisition-v2 tools accept exactly that optional prologue followed by the pinned
 direct runtime; consumed prototype tools remain preserved. A proof-valued `Rfl`
 expression was separately flagged as missing from the core emitter despite
-readback supporting equality values. Root and the core owner control its next
-checkpoint; it is not silently treated as supported by this review.
+readback supporting equality values. The 05 successor adds `Rfl` to the null-valued
+proof/type expression branch; static review of this correction passed.
+## Emission-based runtime reachability
+
+The 05 successor received static approval for its `JD_REF` reachability pass.
+Named calls, partial-call bodies and overapplication heads share the marked call
+emitter. Same-component loop transfers emit the same metadata before unchanged
+parallel argument captures and stores. Library roots match the host export
+predicate; programs root `main`. Export wrappers therefore do not need separate
+metadata edges to their already selected roots.
+
+The scanner accepts reserved comments only after a physical newline, and encoded
+names cannot contain comment delimiters. Quoted source strings cannot forge those
+lines. Unknown marker names and definition, edge or character budget exhaustion
+refuse the whole result. The initial annotated context remains available for
+checking and code generation; filtering removes only unreachable runtime `Def`
+entries. Dead-let and erased-argument demand follow actual emitted code. Foreign
+source checks and selection now occur after this direct-only filtering; the
+legacy ordering is unchanged. This is a static completeness check, not execution
+of the independent dead-foreign initializer witness.
+
+The proposed 26-row direct conformance gate correctly requires both unchanged
+fixture judges and all paired semantic observations to pass, while reporting
+exact diagnostic agreement separately. Review identified a harness precondition
+issue: recursively rehashing snapshot `original` paths also required the mutable
+live compiler to remain identical to an older frozen attempt. The owner was
+asked to bind consumed frozen identities while retaining original paths as
+provenance. The unconsumed correction received static approval: original and
+frozen recorded hashes must agree, while only consumed frozen paths are rehashed.
+This issue does not constitute a direct-runtime semantic failure.
+
+The 05 native-Nat matcher correction also received static approval. Its shared
+rows reproduce pinned `mat_nats`: strict comparisons use the original held
+scrutinee, the last arm is unconditional, and predecessor subtraction occurs
+only when the selected arm uses that view. This preserves deferred failure for
+invalid host Nat values across literal alternatives. Call analysis consumes the
+same typed rows and field counts, avoiding a second fallback traversal.

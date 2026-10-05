@@ -1,0 +1,71 @@
+{
+  "kind": "phase52-public-nat-oracle-and-program-host-correction",
+  "complete": true,
+  "executed": false,
+  "parents": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v3.json",
+      "sha256": "fcdeb15a5cf61382452ec73f0f9b5012bcb31b441054068f9428a052999f5814"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls02/report.json",
+      "sha256": "ebe2f2e6a460d5bf771b5db0a0bb4e33dcea103dd8a4ee0929e90ec50c1ced28"
+    }
+  ],
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v4.json",
+    "sha256": "1221f4c56fabc4685a44993b086c15568439ea00297bcc19cde950f1f56c8f59"
+  },
+  "changes": [
+    {
+      "fixture": "direct-contract",
+      "test": "nat-0-0",
+      "before": 0,
+      "after": {
+        "$bigint": "0"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-1-2",
+      "before": 3,
+      "after": {
+        "$bigint": "3"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-281474976710654-1",
+      "before": 281474976710655,
+      "after": {
+        "$bigint": "281474976710655"
+      }
+    },
+    {
+      "fixture": "erased_apply",
+      "test": "independent-main-out",
+      "before": 4,
+      "after": {
+        "$bigint": "4"
+      }
+    },
+    {
+      "fixture": "tail_pin",
+      "test": "independent-main-out",
+      "before": 3,
+      "after": {
+        "$bigint": "3"
+      }
+    }
+  ],
+  "semanticsJustification": {
+    "source": "bend2/comp.ts js_marshal: t.k===Nat returns out?BigInt:nat_host; js_host marshals output. Internal Number48 and external BigInt are separate domains. No numeric answers changed.",
+    "programHost": "Maintained selfhost/tools/conformance/adapters/upstream.mjs executes C.js_book bytes as .cjs. semantic-program-worker-v2 executes identical source with Node CommonJS Module._compile, supplying require/module/exports/__filename/__dirname; same helper for TS and candidate. Original .mjs/require failures retained."
+  },
+  "programAdapter": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+    "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+  },
+  "candidateExecuted": false,
+  "remaining": "Corrected reference59 and candidate differential selected scope pending root target slot."
+}

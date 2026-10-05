@@ -194,3 +194,22 @@ ratios rather than pooling historical timings. Separate clean timing from
 profiles, import/first-call cost from repeated execution, and generated-program
 speed from compiler request latency. Broad conformance and release installation
 remain separate decisions after the prototype value gate.
+
+## Concrete host-observation limit from the source audit
+
+The direct prototype does not yet implement the pinned backend's closed numeric
+match tables. Upstream `comp.ts` functions `emit_row`/`emit_tab` (lines 2730–2775)
+can replace a Nat or U32 match with `TAB_[Math.min(scrutinee, last)]`;
+`tests/compile/nat_table_months.bend` is an existing source witness. Direct
+branch lowering can agree for canonical source values while observing no
+`Math.min` call. A post-import `Math.min` replacement therefore distinguishes the
+two outputs. Invalid host Nat values may also demand their deferred coercion at
+different points. This is a known, unimplemented optimization and observation
+boundary, not a passing differential test or evidence of universal host-hook
+equivalence. A focused expected-mismatch control has been requested separately.
+
+This limitation is separate from native Nat row flattening: a String-valued
+literal match avoids numeric tables, and must preserve upstream's comparisons
+against the original scrutinee without prematurely demanding predecessors.
+The shared Nat row repair and its independent deferred-Nat control are being
+prepared for that specific demand issue; they do not establish table parity.

@@ -1,0 +1,196 @@
+{
+  "kind": "phase52-semantic-static-successor-freeze",
+  "complete": true,
+  "executed": false,
+  "fixtures": 28,
+  "scenarios": 90,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v6.json",
+      "sha256": "b965257e20ffc83265704883b970e9e60116724470c3907e1f5886d97544a7f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+      "sha256": "f268e91ae93a3960731e5e0ff317315135af3dbccce46174c279faf5a7248254"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-runner-v8.mjs",
+      "sha256": "c48347333a8be1f189075427463d696224536485a7456f7649309b95a2f1bd0d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-full-join-v2.py",
+      "sha256": "199952cf70d0de23ceddd060bb1772c31333a5dbd235c0e972234fc328a7c021"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-nan-host-oracle-v1.mjs",
+      "sha256": "53b073fa84b43bffff69173a3348019d6d0edbe16bc317ff00b3c25c3481eb3c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+      "sha256": "d726b3561c692bd9b584c3667553cb48d7b82366710394aca2fcc2ce1b20872e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+      "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-direct-program-worker-v1.mjs",
+      "sha256": "26d454c2dc7ba2767e4271128075b8d1f6048f1f51cfbfbc9e85096f7c9b52a6"
+    }
+  ],
+  "sources": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/direct-contract-v2.bend",
+      "sha256": "ab6c6253e9af697a0bbea999add8a4048c379019c451176e6f4c4b246200fb22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_partial_closure.bend",
+      "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/closure_partial_app.bend",
+      "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_recursive_arg.bend",
+      "sha256": "3f13bbac34471cc80e86b4916fdd8a17a2c156f1ced84857149c45dba8e5750d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_apply.bend",
+      "sha256": "a8a84fa45f5b979d21acbc729e06f4bbbe627c8a0f0ac29bc8a9d24751da24c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/over_application.bend",
+      "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_closure_body.bend",
+      "sha256": "f00a373b52647541f8e62bb59f95acdb6998fc1ad1be47dd73f2743aa92bef2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_ctor_arm.bend",
+      "sha256": "25510e2abd182476e08a4c3b0b22eda204f24b90b820909d237f8b8bdf339fb6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_dynamic_closure.bend",
+      "sha256": "07e1f36a063002409bc231bb8ca918e0ea5814b129854f4389669a00d67a5a1f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_accumulation.bend",
+      "sha256": "93e0e625cf6a742d8f3a47701f8280111a989ebb76f563695437c67ab3da4297"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_builtin_agreement.bend",
+      "sha256": "598bf5de2c2b221a2d8f72b34298c40b4ee311fbdba6802c53b27272beb28536"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_roundtrip.bend",
+      "sha256": "7fc6dbd7a533f781d0a72632f38129be0591b7754cbfded2d8a644cc0933bfd4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_erased_binders.bend",
+      "sha256": "434bfa849bd88393922f0d8ee2012775e40af9220f6f3ec0a5403ed4c21907f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_erased_binders.js",
+      "sha256": "3469a2e3cb9f5872b9f4bed2d473271a979e3270c57674c53edecec84bb7af51"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/shared_module_state.bend",
+      "sha256": "e6aa3a59587d40c9a473e75cf66180b36045309a6c1af17a9746f1810ee60af2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/shared_module_state.js",
+      "sha256": "d42ae5de0b56d7cba8835d7b00e50ee1565b8f6d3c97db5012d41816348e5123"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/foreign_arrow_arity.bend",
+      "sha256": "fae4838a694a354cb061ff422981d16b65a508dd287faa12562cae1cfb72fd56"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/foreign_arrow_arity.js",
+      "sha256": "de87179b5f9d27b8b1f0387795a049547c4b00bd64597dec0b629468302376ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_nat_bigint.bend",
+      "sha256": "a99628e48b2258c70b71a4f1d3b707b7e18e0a2abbf6a9279e8e06e7c5ac50f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_nat_bigint.js",
+      "sha256": "f10cbe24f0a29ae3ca3d2e53d53eb953eeb0152f4087efabf92086354bf0c607"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_swap_header.bend",
+      "sha256": "e16438d4138cbf1700473d0f1a1805194787c107b39af819c0dbdeed752d7f87"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/tail_pin.bend",
+      "sha256": "9501546a5f125a2cb82609f23c517e62dffe4eeb603f3e6cc991c4477bb78cd9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/f32_read_round_once.bend",
+      "sha256": "a30385f044fe1ff66a6cb3c45537c1d773eff1aced492480b2f62305ce08fb82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/f32_table_nan_bits.bend",
+      "sha256": "31831beb2bf79da469bfca1e65448bb8c0a48082d966e0059165e4b569864d0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/f32_literal_word.bend",
+      "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_specials.bend",
+      "sha256": "e5cfe83f9550847dac7b9cf7f10abb444df2fa872c195455f58c335c089051d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/nat-row-demand-v1.bend",
+      "sha256": "6dc2ba1a0edb0062e1130f0f4089e895c950274b9dc046896d37dd0f9a5fefbd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/mutual-capture-v1.bend",
+      "sha256": "127114bc8cba6c44e62c17bcc69fec9bda5a277482a12cf27eff1fa14c315b8b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.bend",
+      "sha256": "ee8997e9fe6129b806e54348ab73261316fc06e8fe1c77e6163f14a970feef43"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.js",
+      "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased-foreign-v1.bend",
+      "sha256": "79976e0437a229479c6136883828a59bb7090dc9d5274c8323856c74a0331e22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.js",
+      "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.bend",
+      "sha256": "1be4e6b6b783f6dc2ba73b7477b08b66b144db814a3954b035aa43ef368489e3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.js",
+      "sha256": "b017d6bc7c9848922266d4d13e7648665cc641c65a1dd4177831cc518de101d4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/proof-main-v1.bend",
+      "sha256": "cb92fd49e05cb60149fc48258847a00bc1678c67d0382c0b69bc3ac11f2c0981"
+    }
+  ],
+  "parentCatalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v5.json",
+    "sha256": "4c875cea92c265ed33e7b661aade7c9c3f2c9c6e619164e61816107c87a7fca7"
+  },
+  "priorFull04Report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct04-controls01/report.json",
+    "sha256": "97401191d543e5a8d4eb9a52d51d08f1ac382a1fbd6b39cee13abf99134e1a93"
+  },
+  "priorNaNCandidateObservation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct04-nan-observation01.json",
+    "sha256": "3cbe00c5194c6aefddfd89144a40ff6943e9b5c0158ec89f594383f7790d0802"
+  },
+  "scope": "Static freeze only. Full04 actual63/64 plus independently observed NaN source-golden failure candidate39/TS1 versus40; unchanged expected40 retained. New6 Bend sources unacquired, no qualification claimed. Both-role failure capture strengthens diagnostic completeness without lowering any pass requirement."
+}

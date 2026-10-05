@@ -18,6 +18,7 @@ export const nodeResourceArgsPath=fileURLToPath(new URL('./node-resource-args.mj
 export const project=path.resolve(import.meta.dirname,'..');
 export const apiPath=path.resolve(process.env.BEND_TYPED_API||path.join(project,'dist/typed-api.mjs'));
 export const runtimePath=path.resolve(process.env.BEND_TYPED_RUNTIME||path.join(project,'src/runtime.mjs'));
+export const directRuntimePath=path.join(project,'src/runtime/js/direct.mjs');
 const bundledBasePath=path.join(project,'dist/base.bend');
 export const basePath=path.resolve(process.env.BEND_BASE||bundledBasePath);
 const roots=['f_path_join','f_path_dir','check_book','annotate_book','j_program','j_library','j_expr','j_descriptor','j_io_type','j_modules','driver_has_main','driver_is_io','driver_interpret','driver_todos','driver_emit_owned'];
@@ -113,6 +114,9 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   if(files.includes('src/core/reach.bend'))exports.push('reach_book','j_roots','j_stops','annotate_except','kf_source');
   if(fs.readFileSync(path.join(project,'src/check/annotate.bend'),'utf8').includes('law annotate_selected:'))exports.push('annotate_selected');
   if(fs.readFileSync(path.join(project,'src/back/js/emit.bend'),'utf8').includes('law j_program_selected:'))exports.push('j_program_selected','j_library_selected');
+  if(files.includes('src/back/js/direct/core.bend'))exports.push('jd_library_selected','jd_stops');
+  if(files.includes('src/back/js/direct/program.bend'))exports.push('jd_program_selected','jd_modules','jd_roots','jd_foreign_paths','jd_foreign_error');
+  if(files.includes('src/back/js/direct/reach.bend'))exports.push('jd_reach_selected','jd_reach_defs','jd_reach_error');
   if(files.includes('src/back/js/foreign.bend'))exports.push('j_foreign_paths','j_foreign_error');
   const snapshots=files.map(file=>({file,bytes:fs.readFileSync(path.join(nativeSnapshot&&file.startsWith('src/back/native/')?path.resolve(nativeSnapshot):project,file))}));
   const fingerprint=crypto.createHash('sha256');
@@ -434,10 +438,11 @@ function renderDiagnostic(api,detailed,diagnostic,loadTrace,graph) {
   } catch(error) {trace('diagnostic rendering unavailable: '+error.message);return 'Error: '+diagnostic;}
 }
 
-async function inspectWithMemo(input,{mode='check',api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false}={},memo=null) {
+async function inspectWithMemo(input,{mode='check',backend='js',api,args=[],timeoutMs=5000,combinedOutput=false,withReport=false,proofOnly=false}={},memo=null) {
   api??=await loadApi();
   let phase='load';
   try {
+    if(!['js','direct'].includes(backend))throw Error('Unknown JavaScript backend: '+backend);
     trace('discover '+input);
     requireLoaderApi(api);
     const info=baseCacheInfo(api);
@@ -507,6 +512,8 @@ async function inspectWithMemo(input,{mode='check',api,args=[],timeoutMs=5000,co
       }
     }
     phase='compile';
+    if(backend==='direct'&&['jd_library_selected','jd_stops','jd_roots','jd_modules','jd_foreign_paths','jd_foreign_error','jd_reach_selected','jd_reach_defs','jd_reach_error',...(mode==='library'?[]:['jd_program_selected'])].some(name=>typeof api[name]!=='function'))
+      throw Error('Selected compiler does not support the complete direct JavaScript backend');
     const emitOwned=api.driver_emit_owned?api.driver_emit_owned(book):'';
     if(emitOwned)return {status:'error',phase,diagnostic:'Error: '+emitOwned,exitCode:1,checked:true};
     if(mode!=='library'&&api.j_compile_error) {
@@ -514,15 +521,16 @@ async function inspectWithMemo(input,{mode='check',api,args=[],timeoutMs=5000,co
       if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
     }
     const contextBook=mode!=='native'&&api.book_context?api.book_context(book):book;
-    const roots=api.j_roots?.(contextBook,mode==='library');
-    const stops=mode!=='native'?api.j_stops?.(contextBook):null;
+    const roots=backend==='direct'?api.jd_roots(contextBook,mode==='library'):api.j_roots?.(contextBook,mode==='library');
+    const stops=mode!=='native'?(backend==='direct'?api.jd_stops?.(contextBook):api.j_stops?.(contextBook)):null;
     const selectedEmission=mode!=='native'&&api.reach_book&&api.annotate_selected&&api.j_program_selected&&api.j_library_selected;
     if(selectedEmission) {
       trace('prune reachable definitions');
       book=api.reach_book(contextBook,roots,stops);
     }
-    if(mode!=='native'&&api.j_foreign_error) {
-      const error=api.j_foreign_error(book);
+    const foreignError=backend==='direct'?api.jd_foreign_error:api.j_foreign_error;
+    if(mode!=='native'&&backend!=='direct'&&foreignError) {
+      const error=foreignError(book);
       if(error)return {status:'error',phase,diagnostic:error.startsWith('Error:')?error:'Error: '+error,exitCode:1,checked:true};
     }
     trace('annotate book');
@@ -532,7 +540,16 @@ async function inspectWithMemo(input,{mode='check',api,args=[],timeoutMs=5000,co
       const selected=api.reach_book(contextBook,list(['main']),stops);
       layoutDefs=api.annotate_selected(contextBook,selected,stops);layoutStops=stops;
       book=api.nc_annotated_context(contextBook,layoutDefs);
-    } else book=selectedEmission?api.annotate_selected(contextBook,book,api.j_stops(contextBook)):api.annotate_book(book);
+    } else book=selectedEmission?api.annotate_selected(contextBook,book,stops):api.annotate_book(book);
+    if(backend==='direct') {
+      trace('prune direct runtime dependencies');
+      const reachable=api.jd_reach_selected(contextBook,book,roots);
+      const error=api.jd_reach_error(reachable);
+      if(error)throw Error(error);
+      book=api.jd_reach_defs(reachable);
+      const foreign=api.jd_foreign_error(book);
+      if(foreign)return {status:'error',phase,diagnostic:foreign.startsWith('Error:')?foreign:'Error: '+foreign,exitCode:1,checked:true};
+    }
     if(api.j_layout_error) {
       trace('validate runtime layouts');
       const error=api.j_layout_error(contextBook,layoutDefs||book,roots,layoutStops||stops);
@@ -560,7 +577,17 @@ async function inspectWithMemo(input,{mode='check',api,args=[],timeoutMs=5000,co
       return {status:'ok',phase,code:native.source,verdict,exitCode:0,checked:true,files:nativeInputs};
     }
     trace('emit '+mode);
-    const jsPaths=api.j_foreign_paths?array(api.j_foreign_paths(book)):null;
+    const jsPaths=backend==='direct'?array(api.jd_foreign_paths(book)):api.j_foreign_paths?array(api.j_foreign_paths(book)):null;
+    if(backend==='direct') {
+      const modules=api.jd_modules(book,foreignSources(graph,'.js',jsPaths,api,contextBook,book));
+      const emitted=mode==='library'?api.jd_library_selected(contextBook,book):api.jd_program_selected(contextBook,book);
+      if(emitted.includes('\n/*JD_UNSUPPORTED:'))throw Error('Direct JavaScript backend encountered an unsupported construct: '+emitted.split('\n').find(line=>line.startsWith('/*JD_UNSUPPORTED:')));
+      const host=mode!=='library'||jsPaths.length?'import {createRequire as $jdCreateRequire} from "node:module";\nconst require=$jdCreateRequire(import.meta.url);\n':'';
+      const code=host+fs.readFileSync(directRuntimePath,'utf8')+'\n'+modules+'\n'+emitted;
+      trace('emitted direct '+Buffer.byteLength(code)+' bytes');
+      if(interpreterIO)return {...await executeCompiled({status:'ok',code},{timeoutMs,args:['--',...args],backend:'direct',combinedOutput,programName:path.basename(input,'.bend')}),verdict};
+      return {status:'ok',phase,code,backend:'direct',interface:'upstream-callable',verdict,exitCode:0,checked:true,files:[...graph.files,...jsPaths,directRuntimePath]};
+    }
     const emitted=selectedEmission?(mode==='library'?api.j_library_selected(contextBook,book):api.j_program_selected(contextBook,book)):(mode==='library'?api.j_library(book):api.j_program(book));
     const code=fs.readFileSync(runtimePath,'utf8')+'\n'+api.j_modules(book,foreignSources(graph,'.js',jsPaths,api,contextBook,book))+'\n'+emitted;
     trace('emitted '+Buffer.byteLength(code)+' bytes');
@@ -573,7 +600,7 @@ async function inspectWithMemo(input,{mode='check',api,args=[],timeoutMs=5000,co
 }
 
 export async function execute(input,{workdir,timeoutMs=5000,args=[],api,backend='js',combinedOutput=false,withReport=false}={}) {
-  const compiled=await inspect(input,{mode:backend==='js'?'compile':'native',api,withReport});
+  const compiled=await inspect(input,{mode:['js','direct'].includes(backend)?'compile':'native',backend:backend==='direct'?'direct':'js',api,withReport});
   if(compiled.status!=='ok') return compiled;
   return {...await executeCompiled(compiled,{workdir,timeoutMs,args,backend,combinedOutput,programName:path.basename(input,'.bend')}),typeAccepted:true,proofTrust:compiled.proofTrust,kernelChecked:false,verdict:compiled.verdict};
 }
@@ -582,11 +609,12 @@ async function executeCompiled(compiled,{workdir,timeoutMs=5000,args=[],backend=
   const own=!workdir;
   workdir??=fs.mkdtempSync(path.join(os.tmpdir(),'bend-typed-run-'));
   try {
-    const file=path.join(workdir,programName+(backend==='js'?'.mjs':'.c'));fs.writeFileSync(file,compiled.code);
-    const runtimeNodeArgs=backend==='js'?nodeResourceArgs():[];
+    const javascript=['js','direct'].includes(backend);
+    const file=path.join(workdir,programName+(javascript?'.mjs':'.c'));fs.writeFileSync(file,compiled.code);
+    const runtimeNodeArgs=javascript?nodeResourceArgs():[];
     let command=process.execPath,commandArgs=[...runtimeNodeArgs,file,...args];
     let built=null;
-    if(backend!=='js') {
+    if(!javascript) {
       const binary=path.join(workdir,programName);
       built=buildNative({source:compiled.code,file,binary,target:backend==='native'?'auto':backend,cwd:workdir,timeoutMs});
       if(built.status!=='ok')return built;
@@ -615,8 +643,8 @@ export async function main(args) {
   if(args[0]==='--prepare-base') {const result=await prepareBase();console.log('Base checked by generated Bend API: '+result.baseSha256);return;}
   if(args.length===1&&['version','--version'].includes(args[0])) {console.log('Bend2 port targeting '+compilerTarget.targetVersion);return;}
   const optionArgs=args.slice(0,args.includes('--')?args.indexOf('--'):args.length);
-  if(!args.length||optionArgs.includes('--help')||optionArgs.includes('-h')) {console.log('node cli.mjs FILE.bend [ARGS] [--check-only | --checkup | --interpret | --run | --library]\n  [-o OUTPUT]... [--native | --cpu | --metal | --cuda]\nDefault: check, then interpret main; .js/.mjs output emits JavaScript, .c emits C, other output builds a binary.\nnode tools/typed-driver.mjs --bootstrap');if(!args.length)process.exitCode=1;return;}
-  let input,mode='interpreter',programArgs=[],library=false,backend='js',checkup=false,only=false;
+  if(!args.length||optionArgs.includes('--help')||optionArgs.includes('-h')) {console.log('node cli.mjs FILE.bend [ARGS] [--check-only | --checkup | --interpret | --run | --library]\n  [-o OUTPUT]... [--direct-js | --native | --cpu | --metal | --cuda]\nDefault: check, then interpret main; .js/.mjs output emits JavaScript, .c emits C, other output builds a binary.\n--direct-js selects the upstream-compatible JavaScript interface for --library and --run.\nnode tools/typed-driver.mjs --bootstrap');if(!args.length)process.exitCode=1;return;}
+  let input,mode='interpreter',programArgs=[],library=false,backend='js',jsBackend='js',checkup=false,only=false;
   const outputs=[];
   while(args.length) {
     const arg=args.shift();
@@ -626,6 +654,7 @@ export async function main(args) {
     else if(arg==='--interpret') mode='interpreter';
     else if(arg==='--run') mode='run';
     else if(arg==='--library') {mode='library';library=true;}
+    else if(arg==='--direct-js')jsBackend='direct';
     else if(['--native','--cpu','--metal','--cuda'].includes(arg))backend=arg.slice(2);
     else if(arg==='-o'&&args.length)outputs.push(path.resolve(args.shift()));
     else if(arg==='--') {programArgs=args;break;}
@@ -638,6 +667,7 @@ export async function main(args) {
   if(checkup&&(outputs.length||library))throw Error('--checkup takes no -o or --library');
   if(programArgs.length&&(outputs.length||mode==='check'||checkup||library))throw Error('Arguments go to a run');
   if(backend!=='js'&&library)throw Error('--library currently supports JavaScript only');
+  if(jsBackend==='direct'&&(backend!=='js'||outputs.some(output=>!['.js','.mjs'].includes(path.extname(output)))))throw Error('--direct-js requires JavaScript output');
   if(checkup) {
     const api=await loadApi();
     await prepareBase(api);
@@ -666,11 +696,11 @@ export async function main(args) {
       const extension=path.extname(output),binary=!library&&!['.js','.mjs','.c'].includes(extension);
       const emission=library?'library':backend!=='js'||extension==='.c'||binary?'native':'compile';
       let result=compiled.get(emission);
-      if(!result){result=await inspect(input,{mode:emission,timeoutMs:120000,withReport:true});compiled.set(emission,result);}
+      if(!result){result=await inspect(input,{mode:emission,backend:jsBackend,timeoutMs:120000,withReport:true});compiled.set(emission,result);}
       if(result.status!=='ok'){printResult(result);process.exitCode=result.exitCode??1;return;}
       const target=fs.existsSync(output)?fs.realpathSync(output):output;
       if(fs.existsSync(output)&&fs.statSync(output).isDirectory())throw Error('Output is a directory');
-      if([input,...(result.files||[]),apiPath,basePath,runtimePath].some(f=>(fs.existsSync(f)?fs.realpathSync(f):path.resolve(f))===target))throw Error('Output would overwrite a compiler or program input');
+      if([input,...(result.files||[]),apiPath,basePath,runtimePath,...(jsBackend==='direct'?[directRuntimePath]:[])].some(f=>(fs.existsSync(f)?fs.realpathSync(f):path.resolve(f))===target))throw Error('Output would overwrite a compiler or program input');
       const temporary=output+'.tmp-'+process.pid;
       try {
         if(binary) {
@@ -687,7 +717,7 @@ export async function main(args) {
     process.exitCode=0;return;
   }
   if(library)mode='library';
-  const result=mode==='run'?await execute(input,{args:programArgs,timeoutMs:120000,backend,withReport:true}):await inspect(input,{mode,args:programArgs,timeoutMs:120000,withReport:true,proofOnly:only});
+  const result=mode==='run'?await execute(input,{args:programArgs,timeoutMs:120000,backend:jsBackend==='direct'?'direct':backend,withReport:true}):await inspect(input,{mode,backend:jsBackend,args:programArgs,timeoutMs:120000,withReport:true,proofOnly:only});
   if(result.status==='ok'&&mode==='library')process.stdout.write(result.code);
   else printResult(result);
   process.exitCode=result.exitCode??(result.status==='ok'?0:1);

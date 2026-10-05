@@ -1,0 +1,34 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "cases": [
+    {
+      "id": "dead-foreign-let",
+      "source": {
+        "path": "fixtures/dead-foreign-let-v1.bend",
+        "sha256": "ee8997e9fe6129b806e54348ab73261316fc06e8fe1c77e6163f14a970feef43"
+      },
+      "auxiliary": [
+        {
+          "path": "fixtures/dead-foreign-let-v1.js",
+          "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936"
+        }
+      ],
+      "mode": "program",
+      "tests": [
+        {
+          "id": "unused-request-omits-source",
+          "exitCode": 0,
+          "stdout": "alive\n"
+        }
+      ]
+    }
+  ],
+  "status": "Staticsource/oraclefromterm_kidsdeadLetpolicy; notacquired/notexecuted; unsupportedsourcecheckmustremainfailure",
+  "selectedScope": {
+    "kind": "phase52-dead-foreign-reachability-witness",
+    "selectedFixtures": 1,
+    "selectedScenarios": 1
+  }
+}

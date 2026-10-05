@@ -940,9 +940,10 @@ def j_l_global(book, d, t):
 
 @unsafe
 def j_region_native_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> String:
+  kc(String, j_array_view_active(book), u => j_array_view_native(book, env, t), u =>
   kc(String, String.eq(nm(t), "F32.to_u32"), u => "regionF32ToU32(" ++ j_apply_args(book, env, ks(t), dt(lookup(book, nm(t)))) ++ ")", u =>
   kc(String, String.eq(nm(t), "Array.new"), u => "((_t,d,v)=>arrayfill(v,d,'^'))(" ++ j_apply_args(book, env, ks(t), dt(lookup(book, nm(t)))) ++ ")", u =>
-    j_region_native_array(book, env, t, ks(t))))
+    j_region_native_array(book, env, t, ks(t)))))
 
 # The checked native plan erases its U32 type argument. The remaining arguments
 # keep their original left-to-right order without an intermediate closure.

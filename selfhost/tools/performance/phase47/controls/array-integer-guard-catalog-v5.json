@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Independent additive probes for integer-only raw-array host guards, unused direct/aliased F32 inputs, U32.div floor observations and late callbacks. Proposed, not executed.",
+  "cases": [
+    {
+      "id": "array-integer-guard-independent",
+      "family": "array-integer-host-contract",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "array-integer-guard-v5.bend",
+        "sha256": "7cb1b57cf09c773e8d331f5542338ac46ecc460d92b6cf81e365d89067182e75",
+        "bytes": 2148,
+        "provenance": {
+          "kind": "phase47-independent-controls",
+          "scope": "Integer division inside a fresh-array recurrence plus unused floating signature counterexamples; no benchmark selector"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          9,
+          17
+        ],
+        "expected": 8
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent exact integer floor division with divisor-zero handling and U32-wrapped sum before each write."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "array-integer-guard-independent"
+    ],
+    "core": [
+      "array-integer-guard-independent"
+    ],
+    "broad": [
+      "array-integer-guard-independent"
+    ],
+    "full": [
+      "array-integer-guard-independent"
+    ]
+  }
+}

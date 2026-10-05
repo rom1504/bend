@@ -233,6 +233,21 @@ function regionHostGuard(u32Fusion=false){
   return true;
 }
 
+// A closed raw-array region needs a fresh proof even inside another region.
+// Existing region guards omit these allocation hooks. Inspect descriptors with
+// captured reflection, before ordinary input/dependency checks can run hooks.
+const arrayViewFill=regionGetDescriptor(localArrayPrototype,'fill').value;
+const arrayViewSafeInteger=regionGetDescriptor(regionCounterNumber,'isSafeInteger').value;
+const arrayViewFloor=regionGetDescriptor(Math,'floor').value;
+function arrayViewHostGuard(integerOnly=false){
+  if(regionProof!==null||!regionHostGuard(integerOnly)||regionGetPrototype(scalarObjectPrototype)!==null)return false;
+  if(integerOnly){const floor=regionGetDescriptor(Math,'floor');if(!floor||!regionOwn(floor,'value')||floor.value!==arrayViewFloor)return false;}
+  const fill=regionGetDescriptor(localArrayPrototype,'fill');
+  const safe=regionGetDescriptor(regionCounterNumber,'isSafeInteger');
+  return !!fill&&regionOwn(fill,'value')&&fill.value===arrayViewFill&&
+    !!safe&&regionOwn(safe,'value')&&safe.value===arrayViewSafeInteger;
+}
+
 // Standard host initialization is the established runtime premise.
 const stringHostOwnKeys=Reflect.ownKeys;
 const stringHostConstructor=String,stringHostPrototype=String.prototype;

@@ -2,60 +2,64 @@
 
 The compiler in [`selfhost/`](../selfhost/README.md) implements the frontend,
 dependent checker, normalizer, interpreter and JavaScript/native emitters in
-Bend. JavaScript handles filesystem and process orchestration, primitives and
-the public-data adapter. Ordinary compilation runs Bend code without a
-TypeScript fallback.
+Bend. JavaScript handles filesystem/process orchestration, primitives and public
+adapters. Ordinary compilation has no TypeScript fallback.
 
-**Phase45 worker23 is installed; release verification and all 42 CLI checks pass.**
-Installed API: `e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c`.
-Installed runtime: `4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26`.
-The [Phase45 report](../implementation/phase45/README.md),
+**Phase47 array06 is installed; release verification and all 42 CLI checks pass.**
+API: `28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f`.
+Runtime: `880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
+The [report](../implementation/phase47/README.md),
 [release manifest](../selfhost/dist/release.json) and
-[selected evidence](../selfhost/tools/performance/phase45/evidence/selected-qualification.json)
-bind qualification to this exact API/runtime pair. API identity alone is
-insufficient: worker22 and worker23 share their compiler API but use different
-runtimes.
+[selected evidence](../selfhost/tools/performance/phase47/evidence/selected-qualification.json)
+bind both identities and the exact checked attempt.
 
-The general private backend lowers proved first-order graphs to explicit calls,
-cases, projections and returns. It partitions recursive components, emits direct
-acyclic functions, keeps tail calls in scalar loops and uses bounded native
-recursion with the same continuation machine at exhaustion. Private tagged
-fields, exact Number Nats and native constructors reduce allocation. Complete
-dependency, representation and host proofs preserve ordinary public fallback;
-unsupported graphs retain the existing implementation.
-The [JavaScript IR guide](../selfhost/docs/JAVASCRIPT_IR.md) documents the
-modular lowering, transformations and emission contracts. Existing opaque
-compatibility boundaries remain; this is not a complete removal of historical
-backend paths. General backend selection preserves stronger existing scalar
-paths and refuses unproved graphs.
+The general private backend retains explicit calls, branches, layouts, tail
+loops, bounded recursion and continuation fallback. Phase47 adds a closed
+Array<U32> representation contract to the existing typed-region and scalar-tree
+paths. It normalizes known calls consistently and emits ordered stores. Complete
+host, dependency, ownership and type checks preserve the original public fallback.
+An integer-only guard still checks Math.floor; unused F32 inputs retain full
+checking. See the [IR guide](../selfhost/docs/JAVASCRIPT_IR.md) and
+[Array mechanism](self_hosted/private-array-regions.md). Historical specialized
+paths and opaque compatibility boundaries remain; this is not one unified IR.
 
-The production manifest lists **23,007 physical / 18,983 code Bend lines,
-2,594 definitions, 87 types and 85 modules**. This is a net increase of 1,194
-physical lines over Phase44. Counts exclude runtime, host tools, documentation,
-tests and generated images; declarations are syntactic complexity proxies.
+The [source graph](../implementation/phase47/accounting.md) contains **23,254
+physical / 19,175 code Bend lines, 2,622 definitions, 87 types and 86 modules**:
+247 more physical lines (1.07%) than worker23. Counts exclude runtimes, tools,
+tests and generated images; declarations are complexity proxies. Generated
+libraries grow 2.58%, partly because optimized helpers coexist with fallbacks.
 
-The [execution comparison](../implementation/phase45/results.md),
-[compiler costs](../implementation/phase45/compiler-cost.md) and
-[diagnostics](../selfhost/tools/performance/phase45/evidence/diagnostics.json)
-record separate measurement boundaries.
-The 45-point / 23-source comparison measures **3.0787× TypeScript time**
-with equal-point weighting and **4.1467×** with equal-source weighting.
-Across four fresh compiler-cost probes, request medians increase 1.20–28.55% over Phase44. These finite measurements do not establish typical
-program speed or universal parity; the corpus informed optimization and is not
-an untouched holdout. Compiler request cost and generated execution are separate
-measurements.
+The [full execution results](../implementation/phase47/results.md) cover 45
+points / 23 sources / 669 samples. Equal-point slowdown improves **3.0851× →
+2.9194× pinned TypeScript time**; equal-source slowdown improves 4.1699× →
+3.9958×. Edit distance improves 1.85–1.86×, while the short fold regresses 1.93×.
+[Compiler request cost](../implementation/phase47/compiler-cost-final.md) increases
+0.87–3.75% on three separately measured inputs. This maintained corpus informed
+optimization and is not an untouched holdout or a universal speed estimate.
 
-The [conformance record](../selfhost/CONFORMANCE.md) retains exact tested scope,
-shared failures, unavailable platforms and proof-trust limits. This remains a
-checked B1 derivative, not a new self-emitted fixed point. The target remains
+[Conformance](../selfhost/CONFORMANCE.md) records fresh Array/host controls and
+eight maintained suites. The larger frontend and 81-backend inventories remain
+historical worker23 evidence. This is a checked B1 derivative, not a new
+self-emitted fixed point. The pin remains
 [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
-after Bend 2.0.34.
+after Bend 2.0.34. Native IO.args remains a known gap; GPU/proof validity is not
+established by these JS checks.
 
-Use the [portable Phase45 guide](../selfhost/tools/performance/phase45/README.md)
-for selected worker23 outputs against Phase44 checked04 and pinned TypeScript.
-Its [current bundle](../selfhost/tools/performance/phase45/current/manifest.json)
-retains all 45 points / 23 sources. Choose coverage separately from 20, 60, 300
-and 600 second execution ceilings.
+Use the [portable Phase47 guide](../selfhost/tools/performance/phase47/README.md)
+and [current bundle](../selfhost/tools/performance/phase47/current/manifest.json)
+for selected array06 against worker23 and pinned TypeScript. Start with compact
+20-second rejection checks; the nominal 60-second core set also covers the
+private tree path. Full coverage uses three serial 600-second batches.
+
+## Historical release results: Phase45
+
+[Worker23](../implementation/phase45/README.md) introduced the general private
+backend and measured 3.0787× TypeScript time in its own 45-point campaign.
+Its [results](../implementation/phase45/results.md),
+[costs](../implementation/phase45/compiler-cost.md) and
+[portable bundle](../selfhost/tools/performance/phase45/current/manifest.json)
+retain their original Phase44 denominator and qualification scope. Phase47's
+freshly paired worker23 timings, not that historical score, are its denominator.
 
 ## Historical release results: Phase44
 

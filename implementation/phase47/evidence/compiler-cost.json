@@ -1,0 +1,706 @@
+{
+  "kind": "phase47-normal-checked-library-cost-summary",
+  "complete": true,
+  "pass": true,
+  "summaryOnly": true,
+  "targetExecutedBySummary": false,
+  "report": {
+    "file": "selfhost/build/phase47/compiler-cost-array04/report.json",
+    "sha256": "fbde8a9930382878cac10922e3931894d46633522dc22d37a55fefb1d2b2abff",
+    "bytes": 407455
+  },
+  "config": {
+    "file": "selfhost/build/phase47/compiler-cost-array04-plan/config.json",
+    "sha256": "5cf8956c4f4f0edc69706f550c8b828eb8ab36fc13ad47016d80eb030a01359c",
+    "bytes": 781234
+  },
+  "producer": {
+    "file": "selfhost/tools/performance/phase35/compiler-cost-run.py",
+    "sha256": "546248ca8eb8eae88c5ddf45f084fc0f08dd7630aa0617c2c39bb400d7335c1d"
+  },
+  "worker": {
+    "file": "selfhost/build/phase47/compiler-cost-array04-plan/worker.mjs",
+    "sha256": "f0dea569bdb02df60ed1156b0cead389e197291f1c3a3c6775102c7a03790f42"
+  },
+  "node": {
+    "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c"
+  },
+  "requestCount": 27,
+  "samplesPerSourceAndVariant": 3,
+  "wallSeconds": 214.17433993000304,
+  "scope": "Worker23 versus selected Phase47 checked candidate and pinned TypeScript. Unchanged Phase30 fresh-process worker, request boundary, output equality and before/after verification. Disk Base-cache priming excluded; ordinary cache handling remains inside inspect.",
+  "resources": {
+    "cpu": 3,
+    "heapMiB": 1024,
+    "rssMiB": 2048,
+    "availableMiB": 4096,
+    "secondsPerRequest": 60,
+    "totalSeconds": 240
+  },
+  "timingBoundary": "Normal checked-library request. Host import separate; Bend lazy API loading and normal Base cache handling remain inside inspect. No emission-only attribution.",
+  "measurementExclusions": [
+    "Disk Base-cache priming",
+    "Preflight and postflight identity/attempt/cache verification",
+    "Output file writing and expected-output digest checking",
+    "Separate host imports"
+  ],
+  "variants": {
+    "baseline": {
+      "attempt": "selfhost/build/phase45/checked-worker23",
+      "api": {
+        "file": "selfhost/build/phase45/checked-worker23/equality/api.mjs",
+        "sha256": "e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c"
+      },
+      "runtime": {
+        "file": "selfhost/build/phase45/checked-worker23/snapshot/src/runtime.mjs",
+        "sha256": "4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26"
+      },
+      "base": {
+        "file": "selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "driver": {
+        "file": "selfhost/build/phase45/checked-worker23/snapshot/tools/typed-driver.mjs",
+        "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+      },
+      "cache": {
+        "file": "selfhost/build/phase45/checked-worker23/snapshot/build/typed/cache/base-e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db.json",
+        "sha256": "ed68e08f7610a5ec314bd0e414cc93c08c90d16c8ca0acc1dcd5a5398f520b78"
+      }
+    },
+    "candidate": {
+      "attempt": "selfhost/build/phase47/checked-array04",
+      "api": {
+        "file": "selfhost/build/phase47/checked-array04/equality/api.mjs",
+        "sha256": "1accfefd906c6bcfd25b2e3f65788cf083c7f14a6f2cefc8165c6073731416a7"
+      },
+      "runtime": {
+        "file": "selfhost/build/phase47/checked-array04/snapshot/src/runtime.mjs",
+        "sha256": "82781f5c8cecb14df370112a210974f55d52e32fa34cd71bfb03caec5e4c1fc5"
+      },
+      "base": {
+        "file": "selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "driver": {
+        "file": "selfhost/build/phase47/checked-array04/snapshot/tools/typed-driver.mjs",
+        "sha256": "43c4df618476ba6ae6057d468d7147af0a85be0cd4f84e18f5f124f58d7f47c3"
+      },
+      "cache": {
+        "file": "selfhost/build/phase47/checked-array04/snapshot/build/typed/cache/base-1accfefd906c6bcfd25b2e3f65788cf083c7f14a6f2cefc8165c6073731416a7-c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661-c04628cbf4595eb7fcc0fafe90e6e555f95b4b4691a19005149f3206f3d3f7db.json",
+        "sha256": "adf25bde840591ad2ce98d562ae4a42a9661639d530740bd795a3f944cc7b32a"
+      }
+    },
+    "typescript": {
+      "modules": [
+        {
+          "file": "selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "sha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd"
+        },
+        {
+          "file": "selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee"
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "local-fold",
+      "source": {
+        "file": "selfhost/tools/performance/phase37/fixtures-historical/local-fold.bend",
+        "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a"
+      },
+      "variants": {
+        "typescript": {
+          "requestMs": {
+            "median": 303.6249939999998,
+            "min": 303.5526329999998,
+            "max": 307.040383,
+            "samples": [
+              307.040383,
+              303.5526329999998,
+              303.6249939999998
+            ]
+          },
+          "hostImportMs": {
+            "median": 214.54072600000018,
+            "min": 213.1879439999998,
+            "max": 217.01332100000036,
+            "samples": [
+              213.1879439999998,
+              214.54072600000018,
+              217.01332100000036
+            ]
+          },
+          "importAndRequestMs": {
+            "median": 520.2283269999998,
+            "min": 518.093359,
+            "max": 520.6383150000001,
+            "samples": [
+              520.2283269999998,
+              518.093359,
+              520.6383150000001
+            ]
+          },
+          "maxRssKiB": {
+            "median": 541996,
+            "min": 541788,
+            "max": 542388,
+            "samples": [
+              541788,
+              542388,
+              541996
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 554790912,
+            "min": 554733568,
+            "max": 555405312,
+            "samples": [
+              554790912,
+              555405312,
+              554733568
+            ]
+          },
+          "outputBytes": 5191,
+          "expectedOutput": {
+            "file": "selfhost/build/phase47/compiler-cost-array04-plan/bundle-typescript/modules/local-fold.mjs",
+            "sha256": "591c3e3a895f4092a80eac58fef2ea4ecd15f59c01433fc69ce09143055e2444"
+          },
+          "acquisitionReceipt": {
+            "file": "selfhost/build/phase37/typescript01/modules/local-fold.mjs.json",
+            "sha256": "dfd620b5ecb8a0c5006456b800025a778309f6b82db2b8921db0a2618546433d"
+          },
+          "allThreeExpectedOutputsMatch": true
+        },
+        "baseline": {
+          "requestMs": {
+            "median": 1602.97181,
+            "min": 1598.141278,
+            "max": 1610.280866,
+            "samples": [
+              1610.280866,
+              1598.141278,
+              1602.97181
+            ]
+          },
+          "hostImportMs": {
+            "median": 3.8531279999997423,
+            "min": 3.811901999999918,
+            "max": 3.9991509999999835,
+            "samples": [
+              3.811901999999918,
+              3.8531279999997423,
+              3.9991509999999835
+            ]
+          },
+          "importAndRequestMs": {
+            "median": 1606.970961,
+            "min": 1601.9944059999998,
+            "max": 1614.092768,
+            "samples": [
+              1614.092768,
+              1601.9944059999998,
+              1606.970961
+            ]
+          },
+          "maxRssKiB": {
+            "median": 538180,
+            "min": 537540,
+            "max": 540040,
+            "samples": [
+              540040,
+              537540,
+              538180
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 550825984,
+            "min": 550170624,
+            "max": 552714240,
+            "samples": [
+              552714240,
+              550170624,
+              550825984
+            ]
+          },
+          "outputBytes": 86853,
+          "expectedOutput": {
+            "file": "selfhost/build/phase47/compiler-cost-array04-plan/bundle-baseline/modules/local-fold.mjs",
+            "sha256": "f07852cf5e5147f37d006f5d36e202e67f23d33b979e064f0de29e26cbf3c990"
+          },
+          "acquisitionReceipt": {
+            "file": "selfhost/build/phase47/compiler-cost-baseline23/modules/local-fold.mjs.json",
+            "sha256": "b5b63b5d3e810da46c7f5daa5e652d9bb3c32698f226161791415142de8f71f2"
+          },
+          "allThreeExpectedOutputsMatch": true
+        },
+        "candidate": {
+          "requestMs": {
+            "median": 1650.5165120000001,
+            "min": 1620.9595119999994,
+            "max": 1652.548502,
+            "samples": [
+              1652.548502,
+              1620.9595119999994,
+              1650.5165120000001
+            ]
+          },
+          "hostImportMs": {
+            "median": 3.9892500000000837,
+            "min": 3.9025760000004084,
+            "max": 4.011504000000059,
+            "samples": [
+              3.9025760000004084,
+              4.011504000000059,
+              3.9892500000000837
+            ]
+          },
+          "importAndRequestMs": {
+            "median": 1654.5057620000002,
+            "min": 1624.9710159999995,
+            "max": 1656.4510780000005,
+            "samples": [
+              1656.4510780000005,
+              1624.9710159999995,
+              1654.5057620000002
+            ]
+          },
+          "maxRssKiB": {
+            "median": 538460,
+            "min": 536860,
+            "max": 538976,
+            "samples": [
+              538976,
+              538460,
+              536860
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 551096320,
+            "min": 549474304,
+            "max": 551641088,
+            "samples": [
+              551641088,
+              551096320,
+              549474304
+            ]
+          },
+          "outputBytes": 91281,
+          "expectedOutput": {
+            "file": "selfhost/build/phase47/compiler-cost-array04-plan/bundle-candidate/modules/local-fold.mjs",
+            "sha256": "939da9e9644487fcc8cef3b34436a529a796adbab352403c4bd2a7af002a5387"
+          },
+          "acquisitionReceipt": {
+            "file": "selfhost/build/phase47/array04-full/modules/local-fold.mjs.json",
+            "sha256": "7eaf9ab4a35847fc4c44b4eac99e8b9edbcd7d8dd7cfe6edce1d0b552e7cb084"
+          },
+          "allThreeExpectedOutputsMatch": true
+        }
+      },
+      "candidateRequestChangePercent": 2.9660348175430507
+    },
+    {
+      "id": "local-pair",
+      "source": {
+        "file": "selfhost/tools/performance/phase37/fixtures-historical/local-row.bend",
+        "sha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4"
+      },
+      "variants": {
+        "typescript": {
+          "requestMs": {
+            "median": 341.6657479999999,
+            "min": 339.7120130000003,
+            "max": 341.727746,
+            "samples": [
+              339.7120130000003,
+              341.727746,
+              341.6657479999999
+            ]
+          },
+          "hostImportMs": {
+            "median": 215.34058700000014,
+            "min": 214.5606969999999,
+            "max": 216.15373199999976,
+            "samples": [
+              215.34058700000014,
+              214.5606969999999,
+              216.15373199999976
+            ]
+          },
+          "importAndRequestMs": {
+            "median": 556.2884429999999,
+            "min": 555.0526000000004,
+            "max": 557.8194799999997,
+            "samples": [
+              555.0526000000004,
+              556.2884429999999,
+              557.8194799999997
+            ]
+          },
+          "maxRssKiB": {
+            "median": 540088,
+            "min": 539792,
+            "max": 541960,
+            "samples": [
+              541960,
+              540088,
+              539792
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 552779776,
+            "min": 552747008,
+            "max": 554696704,
+            "samples": [
+              554696704,
+              552779776,
+              552747008
+            ]
+          },
+          "outputBytes": 12457,
+          "expectedOutput": {
+            "file": "selfhost/build/phase47/compiler-cost-array04-plan/bundle-typescript/modules/local-row.mjs",
+            "sha256": "e303d7add56bca3c62ab3a7d636f01b65007556f5a80d43d59f94018b4154de6"
+          },
+          "acquisitionReceipt": {
+            "file": "selfhost/build/phase37/typescript01/modules/local-row.mjs.json",
+            "sha256": "004a65797eb4a9e282d38cc70f75f6eb8d8699a0631a7abf31c2e742752abbf6"
+          },
+          "allThreeExpectedOutputsMatch": true
+        },
+        "baseline": {
+          "requestMs": {
+            "median": 2279.5101479999994,
+            "min": 2275.790103,
+            "max": 2317.1955510000003,
+            "samples": [
+              2275.790103,
+              2317.1955510000003,
+              2279.5101479999994
+            ]
+          },
+          "hostImportMs": {
+            "median": 3.8134319999999207,
+            "min": 3.8064289999997527,
+            "max": 3.899334000000181,
+            "samples": [
+              3.899334000000181,
+              3.8064289999997527,
+              3.8134319999999207
+            ]
+          },
+          "importAndRequestMs": {
+            "median": 2283.3235799999993,
+            "min": 2279.689437,
+            "max": 2321.00198,
+            "samples": [
+              2279.689437,
+              2321.00198,
+              2283.3235799999993
+            ]
+          },
+          "maxRssKiB": {
+            "median": 539648,
+            "min": 539428,
+            "max": 541840,
+            "samples": [
+              539428,
+              539648,
+              541840
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 552329216,
+            "min": 552103936,
+            "max": 554557440,
+            "samples": [
+              552103936,
+              552329216,
+              554557440
+            ]
+          },
+          "outputBytes": 130147,
+          "expectedOutput": {
+            "file": "selfhost/build/phase47/compiler-cost-array04-plan/bundle-baseline/modules/local-row.mjs",
+            "sha256": "3c6d89a2e9df2d745ed87ae3e05f6691bed9e9adfd94d13b0e18910a9aa4566b"
+          },
+          "acquisitionReceipt": {
+            "file": "selfhost/build/phase47/compiler-cost-baseline23/modules/local-row.mjs.json",
+            "sha256": "fa6ccef6cf5c6cca3c1e3b71c2940d46950288a5c5d7df3611cdbf1e1f5cc507"
+          },
+          "allThreeExpectedOutputsMatch": true
+        },
+        "candidate": {
+          "requestMs": {
+            "median": 2342.012754,
+            "min": 2337.134538,
+            "max": 2373.9981760000005,
+            "samples": [
+              2373.9981760000005,
+              2337.134538,
+              2342.012754
+            ]
+          },
+          "hostImportMs": {
+            "median": 3.8515150000002905,
+            "min": 3.8217930000000706,
+            "max": 3.8617600000002312,
+            "samples": [
+              3.8515150000002905,
+              3.8617600000002312,
+              3.8217930000000706
+            ]
+          },
+          "importAndRequestMs": {
+            "median": 2345.834547,
+            "min": 2340.996298,
+            "max": 2377.849691000001,
+            "samples": [
+              2377.849691000001,
+              2340.996298,
+              2345.834547
+            ]
+          },
+          "maxRssKiB": {
+            "median": 541104,
+            "min": 540488,
+            "max": 541676,
+            "samples": [
+              541104,
+              541676,
+              540488
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 553549824,
+            "min": 552919040,
+            "max": 554676224,
+            "samples": [
+              553549824,
+              554676224,
+              552919040
+            ]
+          },
+          "outputBytes": 148609,
+          "expectedOutput": {
+            "file": "selfhost/build/phase47/compiler-cost-array04-plan/bundle-candidate/modules/local-row.mjs",
+            "sha256": "7c4189c223634ad528b31c2d21f5d0e3ab4dca2cd5de13170d5e59237f482c63"
+          },
+          "acquisitionReceipt": {
+            "file": "selfhost/build/phase47/array04-full/modules/local-row.mjs.json",
+            "sha256": "879c03a79b774cd045402675f52dc8a410da056b92189bd204ea8961854e1ba4"
+          },
+          "allThreeExpectedOutputsMatch": true
+        }
+      },
+      "candidateRequestChangePercent": 2.741931465180758
+    },
+    {
+      "id": "lexer",
+      "source": {
+        "file": "selfhost/tools/performance/phase37/fixtures-historical/lexer.bend",
+        "sha256": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+      },
+      "variants": {
+        "typescript": {
+          "requestMs": {
+            "median": 339.4276869999999,
+            "min": 336.5617830000001,
+            "max": 340.8127169999998,
+            "samples": [
+              336.5617830000001,
+              340.8127169999998,
+              339.4276869999999
+            ]
+          },
+          "hostImportMs": {
+            "median": 217.1586500000003,
+            "min": 214.94009000000005,
+            "max": 217.20782199999985,
+            "samples": [
+              214.94009000000005,
+              217.20782199999985,
+              217.1586500000003
+            ]
+          },
+          "importAndRequestMs": {
+            "median": 556.5863370000002,
+            "min": 551.5018730000002,
+            "max": 558.0205389999996,
+            "samples": [
+              551.5018730000002,
+              558.0205389999996,
+              556.5863370000002
+            ]
+          },
+          "maxRssKiB": {
+            "median": 541836,
+            "min": 541664,
+            "max": 545544,
+            "samples": [
+              541836,
+              541664,
+              545544
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 554840064,
+            "min": 554663936,
+            "max": 558358528,
+            "samples": [
+              554840064,
+              554663936,
+              558358528
+            ]
+          },
+          "outputBytes": 14110,
+          "expectedOutput": {
+            "file": "selfhost/build/phase47/compiler-cost-array04-plan/bundle-typescript/modules/lexer.mjs",
+            "sha256": "2d9378dfdcacc5904f4b2ac65fd90ba1dcc4a51d9c68b00f6042c42aaeadbbba"
+          },
+          "acquisitionReceipt": {
+            "file": "selfhost/build/phase37/typescript01/modules/lexer.mjs.json",
+            "sha256": "a030e4eb04a181d99fa190c1a94208ab30daabd83eea0c8cf41160d935245d6e"
+          },
+          "allThreeExpectedOutputsMatch": true
+        },
+        "baseline": {
+          "requestMs": {
+            "median": 4370.259753,
+            "min": 4368.299938,
+            "max": 4377.246727,
+            "samples": [
+              4370.259753,
+              4377.246727,
+              4368.299938
+            ]
+          },
+          "hostImportMs": {
+            "median": 3.8286299999999756,
+            "min": 3.793333000000075,
+            "max": 3.842243999999937,
+            "samples": [
+              3.8286299999999756,
+              3.793333000000075,
+              3.842243999999937
+            ]
+          },
+          "importAndRequestMs": {
+            "median": 4374.088383,
+            "min": 4372.142182,
+            "max": 4381.040059999999,
+            "samples": [
+              4374.088383,
+              4381.040059999999,
+              4372.142182
+            ]
+          },
+          "maxRssKiB": {
+            "median": 547376,
+            "min": 545928,
+            "max": 547904,
+            "samples": [
+              545928,
+              547904,
+              547376
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 560242688,
+            "min": 559030272,
+            "max": 560783360,
+            "samples": [
+              559030272,
+              560783360,
+              560242688
+            ]
+          },
+          "outputBytes": 208893,
+          "expectedOutput": {
+            "file": "selfhost/build/phase47/compiler-cost-array04-plan/bundle-baseline/modules/lexer.mjs",
+            "sha256": "a288fb4c6a8dd2309c961f1632e3e9e0e51bc3d9237973507b2b3c22b8fb89c2"
+          },
+          "acquisitionReceipt": {
+            "file": "selfhost/build/phase47/compiler-cost-baseline23/modules/lexer.mjs.json",
+            "sha256": "fba7efdae669f6d0d71a4ba47a4903d6800850785e0b97c153437e98aca62dcb"
+          },
+          "allThreeExpectedOutputsMatch": true
+        },
+        "candidate": {
+          "requestMs": {
+            "median": 4443.548535,
+            "min": 4430.935176,
+            "max": 4466.408222,
+            "samples": [
+              4443.548535,
+              4430.935176,
+              4466.408222
+            ]
+          },
+          "hostImportMs": {
+            "median": 3.8197250000002896,
+            "min": 3.7891779999999926,
+            "max": 4.019217000000026,
+            "samples": [
+              4.019217000000026,
+              3.7891779999999926,
+              3.8197250000002896
+            ]
+          },
+          "importAndRequestMs": {
+            "median": 4447.567752,
+            "min": 4434.724354,
+            "max": 4470.227947,
+            "samples": [
+              4447.567752,
+              4434.724354,
+              4470.227947
+            ]
+          },
+          "maxRssKiB": {
+            "median": 547756,
+            "min": 547668,
+            "max": 550784,
+            "samples": [
+              547756,
+              547668,
+              550784
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 560631808,
+            "min": 560541696,
+            "max": 563191808,
+            "samples": [
+              560631808,
+              560541696,
+              563191808
+            ]
+          },
+          "outputBytes": 209713,
+          "expectedOutput": {
+            "file": "selfhost/build/phase47/compiler-cost-array04-plan/bundle-candidate/modules/lexer.mjs",
+            "sha256": "f5ec1f9c0178cebde23f9277d6616956cd259b72861e4cf0b0c08a8f6730700f"
+          },
+          "acquisitionReceipt": {
+            "file": "selfhost/build/phase47/array04-full/modules/lexer.mjs.json",
+            "sha256": "70348c5a7a7615862a7dc65708c08800969821f755674966d8a9bade2f7a0c11"
+          },
+          "allThreeExpectedOutputsMatch": true
+        }
+      },
+      "candidateRequestChangePercent": 1.6769891526399627
+    }
+  ],
+  "checks": {
+    "all27CompletedAndPassed": true,
+    "all27OutputsMatchTheirIndependentVariantAcquisition": true,
+    "allNineGroupsHaveThreeSamples": true,
+    "reportedMediansRecomputedFromRows": true,
+    "crossVariantOutputByteEqualityClaimed": false,
+    "memoDiagnosticCombinedWithThisStudy": false
+  }
+}

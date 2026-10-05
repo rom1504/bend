@@ -1,5 +1,40 @@
 # Compiler validation
 
+## Phase47 array06 validation
+
+The final candidate passes the checked B1 build and focused strict gate with zero
+exact differences. Array06 is installed; release verification and all 42 CLI
+checks pass. All 45 runtime points and 669 fresh role samples pass their oracles.
+API SHA256: `28f9eb983b2ba3603a9af703d832d4a301efe32182b468e090db6b728a47d12f`.
+Runtime SHA256: `880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
+The upstream pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+
+Fresh independent controls cover private Array storage and its composition with
+existing recursive trees:
+
+- V2: 24 scalar oracles and 39 host/public boundaries.
+- V3: 77 scalar oracles, 56 public-state/alias observations and seven demand/order
+  boundaries, with activation and public-escape refusal witnesses.
+- V4: 159 scalar oracles and 11 boundaries, plus exact private-tree/leaf counters
+  at depths zero through four. The original zero branch remains unchanged.
+- V5: 153 scalar oracles and 46 boundary comparisons, with guard-mode witnesses
+  for integer division and unused direct/aliased F32 inputs. Integer paths retain
+  Math.floor; changed hooks preserve the original fallback observations.
+
+All eight maintained suites pass: IR, backend, global initializers, choice, arm,
+primitive guards, provenance and foreign calls. They include 37 IR checks,
+1,129 primitive guards, 25 related observations and ten provenance constructors.
+These groups overlap; their counts must not be added as unique language tests.
+The [phase report](../implementation/phase47/README.md) and
+[control record](../implementation/phase47/control-plan.md) retain exact scope.
+
+The full 3,026-main / 196-broader frontend inventory and 81-backend inventory
+below were last run on worker23. They are historical evidence, not fresh array06
+observations. This phase changes JS lowering and does not establish broader
+native/GPU conformance, independent proof validity or a new self-emitted fixed
+point. The Phase46 native IO.args mismatch remains unresolved. The separate
+worker-cleanup and proof-memo experiments are not installed compiler changes.
+
 ## Phase46 native diagnostic boundary
 
 The [four-way backend investigation](../implementation/phase46/README.md) changes
@@ -14,9 +49,9 @@ difference; this does not repair or qualify the native API. Failed wrapper
 observations are retained. Native help-option differences are a separate static,
 unexecuted observation. Broad native/GPU conformance remains unestablished.
 
-## Phase45 installed worker23 validation
+## Historical Phase45 worker23 validation
 
-**Phase45 worker23 is installed; release verification and all 42 CLI checks pass.**
+At its release, worker23 passed release verification and all 42 CLI checks.
 API SHA256: `e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c`.
 Runtime SHA256: `4f057842e476d01be5cfa06ad7984fea55ad2537b2fe6e861965a782e8b94c26`.
 The pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.

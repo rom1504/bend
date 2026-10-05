@@ -341,3 +341,47 @@ closure graph, and shifted source positions are real differences, but neither
 byte comparison nor the row timing establishes a JIT, GC, code-layout or
 feedback cause. No such cause is assigned here. This investigation executed
 no generated target, build, trace or profile for the row comparison.
+
+## Array04 short-fold fixed entry cost
+
+Five-round evidence in `selfhost/build/phase47/corpus-array04/runtime-1/report.json`
+shows local-fold(128,0) median 7.705 us baseline versus 16.362 us candidate,
+2.124x slower; their observed ranges, 7.391–7.767 and 15.679–16.496 us, do
+not overlap. Local-fold(8192,123) instead improves from 173.065 to 110.662 us,
+1.564x. These are measured input-specific results, not an inference about JIT.
+
+Exact full local-fold array04 module SHA256 is
+`939da9e9644487fcc8cef3b34436a529a796adbab352403c4bd2a7af002a5387`.
+Both roots call their existing exact entry wrapper. Baseline's selected path
+checks its two U32 inputs and localGuard once. Array04's successful raw path
+adds arrayViewHostGuard before those same checks, and returns its private
+body directly; it does not execute the subsequent old-path checks on success.
+The host guard performs the full fixed descriptor/prototype/name audit
+already enumerated above, once per invocation regardless of loop count.
+The raw loop still evaluates Number and length for each demanded read/write;
+its ordered statement store replaces the original write IIFE. Extra entry
+proof cost can outweigh body savings on the short input. Source and these
+measurements support that hypothesis but do not quantify its components yet.
+
+Prepared guard-only diagnostic producer `array-guard-probe.py` and controller
+`array-guard-measure.py` under `selfhost/tools/performance/phase47`. They are
+unexecuted by this agent and frozen pending root consumption. Derivatives are
+original, regionHostGuard(true), and bypass of only the array host guard;
+all entry canonical-input and localGuard checks remain. Independent scalar
+oracles cover (128,0), (4096,17), (8192,123). Five rotated fresh-process rounds
+use 1000-ms warmup, 50-ms calibration and 200-ms target. Forty-five processes
+require roughly 60–90 seconds; this is not a 30-second plan.
+
+The integer-only diagnostic is not a general safe compiler proposal. Although
+array admission rejects F32 literals/operations, it can admit an unused F32
+public input whose validation calls Math.fround and Number.isNaN. Reuse of
+alias-normalizing root/helper float-signature checks is therefore necessary
+before choosing a narrower integer guard. Also, `j_primitive_u32` in
+`primitive.bend` emits U32.div using Math.floor: the existing
+regionU32FusionHooks retains imul but excludes floor. A general guard cannot
+reuse that list unchanged merely because no F32 is present. It must retain
+Math.floor as well, with complete primitive/entry/allocation dependency review.
+Keep the fresh permission refusal, captured reflection, fill/isSafeInteger,
+protocol/prototype checks and original fallback. No input threshold, source-name
+rule, or unproved persistent permission is proposed. The diagnostic bypass
+remains unsafe regardless of output equality or timing.

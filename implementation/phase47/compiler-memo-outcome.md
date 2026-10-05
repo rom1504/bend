@@ -1,7 +1,7 @@
 # Completed type-query memo: lexer screen outcome
 
 Recorded 2026-10-04. **Useful diagnostic signal; no production cache shipped.**
-The installed compiler remains Phase45 worker23. This experiment changes only a
+The installed compiler remains Phase 45 worker23. This experiment changes only a
 saved compiler API used to measure compiler requests, not generated target execution.
 
 Five alternating, fresh-process lexer library requests per clean variant give:

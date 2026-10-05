@@ -81,3 +81,25 @@ reach the private body actually executed by an outer optimization. Changing only
 the separate public root had left positive-depth trees unchanged. Guard-cost work
 remains independent and the original short-fold regression is not resolved by
 these tree results.
+
+## Final outcome — installed array06, 2026-10-05
+
+The shared tree adapter is included in installed array06. Independent v4 controls
+pass 159 scalar oracles and 11 boundary comparisons; separate counters establish
+entry into the actual private tree closure and exactly `2^depth` raw-array leaf
+calls at positive depths, unchanged zero behavior and refusal under mutated
+hooks. These witnesses exercise composition rather than only a public leaf.
+[Control evidence](../../implementation/phase47/control-plan.md#array-tree-v4-private-leaf-composition).
+
+The final full-corpus run measures 1.850–1.863× gains on the two positive-depth
+edit-distance points relative to freshly paired worker23, reaching about 1.14×
+TypeScript time. This is the final combined array06 result; the earlier tree05
+screen remains a separate campaign. Checked build, eight maintained suites,
+installed verification, all 42 CLI checks and portable replay pass.
+[Final results](../../implementation/phase47/results.md),
+[selected qualification](../../selfhost/tools/performance/phase47/evidence/selected-qualification.json).
+
+The five initial canaries had missed this enclosing private path. Future changes
+use the existing core8 timing screen, including positive edit distance, alongside
+the independent activation controls before spending a full-corpus pass. Neither
+the timing screen nor output equality alone proves private-path admission.

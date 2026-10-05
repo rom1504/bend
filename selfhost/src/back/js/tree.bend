@@ -68,12 +68,20 @@ def j_tree_combine(+t: KTerm, +ty: KTerm, +left: KTerm, +right: KTerm, +s: JRegi
 @unsafe
 def j_tree_done(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm, +fastZero: KTerm, +s: JRegionBuild) -> String:
   kc(String, j_region_valid(s), u =>
-    "scalarCapture(" ++ j_quote(dn(d)) ++ ",(()=>{" ++ j_region_declarations(book, j_region_helpers(s)) ++
+    j_tree_done_array(book, d, zero, succ, fastZero, s,
+      kc(List<&2,KDef>, j_array_view_plan_terms(book, d, s, [fastZero, j_region_term(s)], True{}),
+        u => j_array_view_book(book), u => book)), u => "")
+
+@unsafe
+def j_tree_done_array(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +succ: KTerm, +fastZero: KTerm, +s: JRegionBuild, +private: List<&2,KDef>) -> String:
+  "scalarCapture(" ++ j_quote(dn(d)) ++ ",(()=>{" ++ j_region_declarations(book, j_region_helpers(s)) ++
+    kc(String, j_array_view_active(private), u => j_array_view_tree_declaration(private, d, fastZero, s), u => "") ++
     "const $guards=[" ++ j_quote(dn(d)) ++ kc(String, List.is_empty(&2, KDef, j_region_helpers(s)), u => "", u => "," ++ j_region_names(j_region_helpers(s))) ++ "];return " ++
     j_nat_loop_wrapper(book, d, zero, da(d),
+      kc(String, j_array_view_active(private), u => j_array_view_tree_entry(book, d, fastZero, s), u => "") ++
       "if($entered&&" ++ j_region_host_guard(book, d, j_region_helpers(s)) ++ j_region_inputs(book, j_arm_type(book, wnf(book, dt(d)), "Succ"), 0, da(d), True{}) ++ "&&$s0<32n&&localGuard($guards)){/* private scalar tree */" ++
       j_tree_scope(book, d, j_region_helpers(s), j_tree_body(book, d, fastZero, j_region_term(s))) ++ "}" ++
-      j_nat_loop_generic(book, Nil{}, succ, j_arm_type(book, wnf(book, dt(d)), "Succ"), 0)) ++ ";})())", u => "")
+      j_nat_loop_generic(book, Nil{}, succ, j_arm_type(book, wnf(book, dt(d)), "Succ"), 0)) ++ ";})())"
 
 # Share a complete checked entry only inside a scalar-input, independently pure
 # residual graph. Delayed results and exceptions leave the proof in finally.

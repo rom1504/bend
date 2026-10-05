@@ -120,3 +120,24 @@ Mat calls, helper-mediated record transfer, Bool selection, and array-returning
 stores; replay them on this candidate. At this source checkpoint, checked build,
 activation, semantic replay, and timing are pending. Neither successful static
 reasoning nor earlier candidate controls count as the new candidate's result.
+
+## Final outcome — installed array06, 2026-10-05
+
+The complete representation, ordered-store and call-normalization contract is
+installed in array06, together with the separately recorded tree composition
+and integer guard. Final checked emission, four independent Array control groups
+and eight maintained suites pass. Exact installed source/API/runtime verification,
+all 42 ordinary/relocated CLI checks and a separate 27-sample portable replay
+also pass. The [installed-release receipt](../../selfhost/tools/performance/phase47/evidence/installed-release.json)
+binds those identities; this does not assign later results to earlier snapshots.
+
+The final 45-point/669-sample run improves equal-point execution from 3.085148×
+to 2.919418× pinned TypeScript time. Fold at 8192 improves 1.583× to 0.956×
+TypeScript, but the 128-step fold is 1.930× slower than worker23. The combined
+source grows 247 physical Bend lines; generated libraries grow 100,476 bytes.
+This is a qualified speed/size tradeoff with explicit small-workload overhead,
+not a general simplification or all-program speedup. See
+[full results](../../implementation/phase47/results.md),
+[accounting](../../implementation/phase47/accounting.md),
+[P47-005](P47-005-tree-array-composition.md) and
+[P47-006](P47-006-integer-array-guard.md).

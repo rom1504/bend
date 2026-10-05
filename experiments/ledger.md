@@ -2758,3 +2758,46 @@ boundaries; use a saved-output causal screen before another compiler campaign.
 Known-call normalization and aggregate elimination are stronger native needs.
 The maintained45-point JS score is unchanged; this common Bend batch has a
 separate context and input schedule. No PR comment is posted.
+
+## Phase47 research-guided private arrays — 2026-10-05
+
+[P47-001](phase47/P47-001-array-view.md) and
+[P47-004](phase47/P47-004-private-array-layout.md) led to a closed Array<U32>
+representation contract, ordered writes and consistent known-call normalization.
+The [report](../implementation/phase47/README.md) connects the Go, Rust/LLVM,
+Lean, Zig, V8 and upstream lessons to measured decisions. The array length cache
+and invariant pointer alias added no useful gain. The 405-line worker cleanup
+[P47-002](phase47/P47-002-worker-value-cleanup.md) is deferred: its small observed
+gains did not remove the intended aggregates. The separate proof-query memo
+[P47-003](phase47/P47-003-compiler-proof-census.md) measured 6.64% on one saved-JS
+request; no production cache is shipped and its result is not combined here.
+
+The first full array04 run exposed a private-tree composition gap. P47-005 reused
+the existing checked tree emitter with the same array contract, adding 32 lines;
+P47-006 retained a complete integer hook proof, including Math.floor, while
+omitting irrelevant floating hooks. Independent finite controls verify aliases,
+actual private entries, both tree children, zero paths, unused F32 aliases,
+mutation, reentry and demand. All eight maintained suites also pass. Full
+frontend and 81-backend inventories remain historical worker23 evidence.
+
+Final array06 passes all 45 points / 23 sources / 669 fresh samples. Point-weighted
+slowdown changes 3.08515×→2.91942× TypeScript (1.05677× gain); equal-source
+4.16985×→3.99581×. Tree edit distance improves 1.85–1.86× and local pair 1.75×.
+The large fold reaches 0.956× TypeScript, but the 128-step fold regresses 1.93×
+(7.603→14.671µs). Tree-bitonic's default case regresses 4.17% despite unchanged
+program-body bytes; the JIT cause is unresolved. Sixteen medians improve and 29
+regress; signs do not establish statistical significance or universal speed.
+
+Source grows 247 physical Bend lines (+1.07%) to 23,254, with 19,175 code lines,
+2,622 definitions, 87 types and 86 modules. Generated libraries grow 100,476 bytes
+(+2.58%). All 27 compiler-cost requests match expected output; median request
+cost rises 1.21% fold /3.75% editdist /0.87% lexer. This is a speed/size/entry-cost
+tradeoff, not a conformance-count, simplification or compiler-throughput gain.
+
+The fast-loop correction is concrete: use the existing core8 screen and separate
+private-entry witnesses before a full campaign. Preserve the 103 unrelated files,
+all failed attempts and historical capsules. Keep JS primary; next work should
+address public-entry profitability and ownership/materialization boundaries,
+with shared call/representation facts rather than a larger unmeasured inliner.
+Release/publication receipts and terminal closure are linked from the phase report.
+No PR comment was posted.

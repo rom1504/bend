@@ -16,18 +16,26 @@ new self-emitted fixed point. Worker21 changes the runtime exact-entry wrapper
 for admitted nullary definitions while preserving their public function metadata;
 compiler source and the selected runtime must be qualified together.
 
-This guide describes installed worker23 (compiler/runtime changes through
-`2893882`), including the worker22 canonical-Unit extension and worker23
-exact-entry repair. Selected frontend/backend, composition, mechanism and
-runtime gates pass; release verification and all 42 CLI checks pass.
-[`dist/release.json`](../dist/release.json) identifies the actual release and
-the [qualification receipt](../tools/performance/phase45/evidence/selected-qualification.json)
-records its tested scope, including shared reference failures.
-See the [Phase45 design](../../design/phase45/README.md),
-[worker design](../../design/phase45/general-workers.md) and
-[implementation report](../../implementation/phase45/README.md) for decisions,
-measurements and qualification status. The
-[Phase44 design](../../design/phase44/README.md) records the ordinary IR migration.
+The Phase47 [private Array contract](../../docs/self_hosted/private-array-regions.md)
+composes with the inherited typed-region and scalar-tree paths. A bounded audit
+proves local Array<U32> origin, scalar public boundaries and a closed helper
+graph. Consistent private-call normalization carries raw backing arrays through
+helpers; existing statement destinations preserve ordered stores. The tree
+adapter shares the same contract and existing frame emitter. A canonical no-F32
+proof chooses a narrower host guard while retaining Math.floor for U32 division.
+The original guarded handle-based and public fallbacks remain available. See the
+[Phase47 report](../../implementation/phase47/README.md) for selection status,
+measured costs and the short-call regression.
+
+This guide describes the worker23 foundation plus installed Phase47 array06.
+Release verification and all 42 CLI checks pass. The
+[`release manifest`](../dist/release.json),
+[qualification receipt](../tools/performance/phase47/evidence/selected-qualification.json)
+and [Phase47 report](../../implementation/phase47/README.md) bind the selected
+compiler/runtime and exact fresh scope. The
+[Phase45 worker design](../../design/phase45/general-workers.md) and
+[Phase44 ordinary IR design](../../design/phase44/README.md) retain their original
+decisions and qualification boundaries.
 
 ```text
 checked, annotated KTerm

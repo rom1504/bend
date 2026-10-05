@@ -20,3 +20,19 @@ effect proof plus controls for aliases, resizing, replacement and reentry.
 
 Results will be recorded in [Phase47](../../implementation/phase47/README.md);
 do not overwrite this pre-execution plan with a retrospective success claim.
+
+## Final outcome — 2026-10-05
+
+The saved-output screen supported backing-view reuse: five rotated rounds
+measured a 680→186 ms batch median (3.656×), with all 20 value/digest checks and
+four short controls passing. Expanding only the write helper gave 683 ms; adding
+length reuse to backing reuse stayed at 186 ms. These are diagnostic derivatives
+in a batch context, not safe public-boundary or installed-compiler results.
+
+The follow-up public-call screen found a separate ordered-write gain and did
+not support an invariant pointer cache. The installed array06 implementation
+therefore retains fresh host/ownership proofs and demanded length reads, with
+no backing registry or length cache. Its independently qualified production
+outcome is recorded in [P47-004](P47-004-private-array-layout.md) and the
+[phase report](../../implementation/phase47/README.md). The initial 3.656× result
+must not be multiplied by those later gains or treated as a universal speedup.

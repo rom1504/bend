@@ -240,3 +240,85 @@ spelling check. The receipt is
 These are focused correctness and activation results; broader qualification
 and performance selection remain separate. The consumed v3 source, catalog and
 controller are frozen.
+
+### Array tree v4: private leaf composition
+
+The [v4 source](../../selfhost/tools/performance/phase47/controls/array-tree-v4.bend),
+[catalog](../../selfhost/tools/performance/phase47/controls/array-tree-catalog-v4.json)
+and [controller](../../selfhost/tools/performance/phase47/controls/array-tree-controls-v4.mjs)
+test a different entry context. `canopy` uses binary Nat recursion; each leaf
+allocates two arrays and applies the renamed role-swapping recurrence before
+returning a scalar checksum. Parent nodes combine only their left/right results,
+as required by the existing private-tree continuation contract. The 2,240-byte
+source has independent anchor `bench(3,7) = 33135`.
+
+The controller passed on array05 and again on array06: 159 finite oracles
+(120 tree, 24 standalone leaf and 15 public bench cases) and 11 boundary
+comparisons. The inputs cover depths 0–4, zero/one/several leaf iterations,
+both swap choices and U32 wrapping. Boundaries include Number replacement,
+getter and throw; fill replacement, throw and reentry; a fill hook installing
+later Number-driven resizing; source/native replacements; and transport of a
+public array handle that must remain undemanded.
+
+Activation is checked inside the complete `canopy` assignment. The predecessor
+must use the existing private scalar-tree emitter. A diagnostic successor
+counts the new tree entry and the private leaf inside its separate
+`$arrayViewTreeBody` closure, excluding the ordinary helper copy and public leaf
+wrapper. All 30 input checks passed: positive depth enters once and executes
+exactly `2^depth` leaves in that closure, while depth zero uses the unchanged
+old arm and records no new entry or raw leaf. Ten hooked scenarios refuse both
+counters, and the public storage wrapper has no raw-array entry. This establishes
+composition on the independent witness; optimizing only the public leaf would
+not pass.
+
+The completed receipts are
+`selfhost/build/phase47/array05-tree-controls/observations-v4/report.json`
+and
+`selfhost/build/phase47/array06-tree-controls/observations-v4/report.json`.
+V4 supplements the v2/v3 setter, reflection, alias and public-record controls.
+Its counter derivatives are untimed and provide no speed estimate.
+
+### Integer guard v5: typed dependencies and late host changes
+
+The [v5 source](../../selfhost/tools/performance/phase47/controls/array-integer-guard-v5.bend),
+[catalog](../../selfhost/tools/performance/phase47/controls/array-integer-guard-catalog-v5.json)
+and [controller](../../selfhost/tools/performance/phase47/controls/array-integer-guard-controls-v5.mjs)
+isolate the proposed reduction in host checks. The 2,148-byte source includes an
+integer array recurrence through an annotated U32 division helper, an integer
+tree consumer, unused direct and aliased F32 inputs, ordinary division, and a
+public callback evaluated before an array read and division. Its independent
+anchor is `bench(9,17) = 8`.
+
+The array06 run passed all 153 finite oracles and 46 boundary comparisons.
+Complete-assignment AST inspection verified integer-only mode for `integer`
+and `binary`, and full mode for `floating` and `aliased`. Four clean entry
+witnesses passed, including the unused F32 signatures. Two additional
+noncanonical-F32 inputs refused those full entries; their ordinary fallback
+could still call the separately eligible integer root.
+
+The 46 instrumented boundary checks also passed. Unrelated `Number.isNaN` and
+`Math.fround` replacements/getters may leave integer-only entries enabled, but
+must refuse F32 entries. Floating hook observations are compared against the
+predecessor rather than assigned an assumed call count. `Math.floor` remains
+observable for U32 division in ordinary, private-array and private-tree paths;
+replacement, getter and throwing versions refuse the new raw entries. Fill
+hooks that change floor or floating hooks after allocation also preserve the
+old behavior. Public callbacks can install hooks, reenter scalar roots, or throw
+before storage demand; thrown sentinel identity and event order are checked.
+
+Counters distinguish refusal of an F32 entry from a later valid integer call.
+In the callback/F32 mutation case, array06 recorded two integer entries: the
+floating wrapper's ordinary fallback and the explicit integer reentry. F32 and
+tree counters remained zero. This is permitted composition, not failure to
+refuse the floating entry. Floor and fill mutations retain the stricter
+all-zero requirement for new raw entries.
+
+The completed receipt is
+`selfhost/build/phase47/array06-integer-controls/observations-v5/report.json`.
+The unchanged v2 and v3 controls were also replayed successfully at
+`selfhost/build/phase47/array06-controls/observations-v2/report.json`
+and
+`selfhost/build/phase47/array06-layout-controls/observations-v3/report.json`.
+All consumed v4/v5 sources, catalogs and controllers remain frozen. These
+focused results do not replace the maintained suites, corpus timing or compiler
+cost comparison, and they do not establish release selection.

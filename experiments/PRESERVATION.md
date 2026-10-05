@@ -711,3 +711,25 @@ uses separate frozen Phase44/TypeScript and selected23 bundles without restoring
 the full capsule. Old17b is retained with six original-path-plus-hash mappings;
 Phase44 and earlier evidence keep their original scope and remain prerequisites
 where their receipts are referenced.
+
+## Phase47 private array regions
+
+The [published evidence guide](../selfhost/tools/performance/phase47/evidence/README.md)
+retains **16,355 files / 314,323,510 logical bytes** from the complete closed raw
+campaign. Every member was reopened and hashed, the original inventory rechecked,
+and two ordered parts verified against the **51,899,688-byte** gzip stream:
+`7d312239ed0ebec6aa535da7fb711f0e58fea44a9c3352a09019e6c9a68332da`.
+
+All candidate attempts, rejected broad inlining, unsafe diagnostic ablations,
+failed fixture/producer runs, full array04 and selected array06 measurements,
+compiler-request costs, controls, profiles, installation and the corrected v2
+release receipt remain. The archive grants no qualification to rejected attempts.
+The [selected receipt](../selfhost/tools/performance/phase47/evidence/selected-qualification.json)
+separately binds installed array06, eight maintained suites, 42 CLI checks and
+45-point/669-sample performance evidence. No fresh full frontend inventory or
+new self-emitted fixed point is claimed.
+
+The [portable guide](../selfhost/tools/performance/phase47/README.md) provides
+separate worker23/TypeScript and selected array06 bundles for fast iteration.
+All 103 unrelated starting files remain unchanged and unstaged. Writers closed
+at `2026-10-05T01:32:22.046438+00:00`; future experiments use a fresh directory.

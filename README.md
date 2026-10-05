@@ -13,57 +13,43 @@ That's Bend - and nothing else.
 ## Compiler written in Bend
 
 This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
-`selfhost/bootstrap`. Ordinary compilation runs the Bend implementation without a
-TypeScript fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
+`selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
+fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-**Phase45 worker23 is installed; release verification and all 42 CLI checks pass.**
-The [Phase45 report](implementation/phase45/README.md),
+**Phase47 array06 is installed; release verification and all 42 CLI checks pass.**
+The [phase report](implementation/phase47/README.md),
 [release manifest](selfhost/dist/release.json) and
-[selected evidence](selfhost/tools/performance/phase45/evidence/selected-qualification.json)
-identify the installed checked B1 derivative and its qualification.
+[selected evidence](selfhost/tools/performance/phase47/evidence/selected-qualification.json)
+identify the exact checked B1 compiler and runtime.
 
-The general private backend lowers proved first-order graphs to explicit calls,
-cases, projections and returns. It partitions recursive components, emits direct
-acyclic functions, keeps tail calls in scalar loops and uses bounded native
-recursion with the same continuation machine at exhaustion. Private tagged
-fields, exact Number Nats and native constructors reduce allocation. Complete
-dependency, representation and host proofs preserve ordinary public fallback;
-unsupported graphs retain the existing implementation.
-See the [JavaScript IR guide](selfhost/docs/JAVASCRIPT_IR.md) for the modular
-pipeline and its public compatibility boundaries.
+A closed private Array<U32> representation now composes with the existing typed
+regions and scalar-tree emitter. Known calls retain that representation, ordered
+stores preserve effects, and complete host/dependency guards retain the original
+fallback. See the [compiler guide](docs/BEND-IN-BEND.md),
+[JavaScript IR guide](selfhost/docs/JAVASCRIPT_IR.md) and
+[private Array contract](docs/self_hosted/private-array-regions.md).
 
-The [current architecture and optimization survey](docs/self_hosted/README.md)
-maps implemented capabilities and prior experiments. Its
-[compiler-source research](research/compilers_architecture_and_techniques/README.md)
-compares seven reference implementations and supports the
-[ranked remaining opportunities](docs/remaining_opportunities/README.md).
-The [parallel validation plan](docs/self_hosted/parallel-validation.md) describes
-a proposed faster development loop; it has not changed the active execution policy.
-The [Phase46 JavaScript/C comparison](implementation/phase46/README.md) retains
-JS as the primary target: native diagnostics point to allocation and call-lowering
-work, and expose a native argument-API gap. No compiler change was installed.
+The [45-point / 23-source execution comparison](implementation/phase47/results.md)
+improves from **3.0851× to 2.9194× TypeScript time** with equal-point weighting;
+equal-source weighting improves from 4.1699× to 3.9958×. Edit distance improves
+1.85–1.86×, but the short fold regresses 1.93×. The corpus informed optimization;
+these measurements do not establish typical-program speed or universal parity.
+[Compiler request costs](implementation/phase47/compiler-cost-final.md) increase
+0.87–3.75% on three inputs. [Source accounting](implementation/phase47/accounting.md)
+records 23,254 physical Bend lines (+247). [Conformance](selfhost/CONFORMANCE.md)
+separates fresh semantic controls from historical frontend/backend inventories.
 
-The [execution results](implementation/phase45/results.md),
-[compiler request costs](implementation/phase45/compiler-cost.md),
-[diagnostics](selfhost/tools/performance/phase45/evidence/diagnostics.json) and
-[conformance record](selfhost/CONFORMANCE.md) retain their separate measured scopes.
-The 45-point / 23-source comparison measures **3.0787× TypeScript time**
-with equal-point weighting and **4.1467×** with equal-source weighting.
-Across four fresh compiler-cost probes, request medians increase 1.20–28.55% over Phase44. These finite measurements do not establish typical
-program speed or universal parity; the corpus informed optimization and is not
-an untouched holdout. Compiler request cost and generated execution are separate
-measurements.
-
-The [portable benchmark guide](selfhost/tools/performance/phase45/README.md)
-provides 20/60/300-second selections and three serial 600-second full-corpus
-batches against Phase44 and pinned TypeScript. Historical
-[Phase44](implementation/phase44/README.md) and earlier reports preserve their
-original artifacts, baselines and qualification scopes.
+Use the [portable benchmark guide](selfhost/tools/performance/phase47/README.md)
+for 20/60/300-second selections and three serial 600-second full batches.
+The [architecture survey](docs/self_hosted/README.md),
+[compiler research](research/compilers_architecture_and_techniques/README.md),
+[remaining work](implementation/phase47/remaining-work.md) and
+[parallel validation plan](docs/self_hosted/parallel-validation.md) explain the
+next opportunities. The [Phase46 JS/C study](implementation/phase46/README.md)
+keeps JS primary and retains its native API gap; historical reports remain intact.
 
 From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
-Use the [compiler guide](docs/BEND-IN-BEND.md),
-[checked workflow](docs/PHASE5_DEVELOPMENT.md),
-[performance guide](docs/BEND-IN-BEND-PERFORMANCE.md),
+Use the [checked workflow](docs/PHASE5_DEVELOPMENT.md),
 [experiment ledger](experiments/ledger.md) and [current strategy](experiments/STEERING.md).
 
 ## Bend runs FAST

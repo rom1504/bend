@@ -162,9 +162,17 @@ def j_region_root_done(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> JRoo
 # The successful plan also supplies rank; no second proof or emitted-text scan.
 @unsafe
 def j_region_root_selected(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +fusion: String) -> JRootPlan:
+  j_region_root_array(book, d, s, fusion,
+    kc(List<&2,KDef>, String.eq(fusion, "") && j_array_view_plan(book, d, s), u => j_array_view_book(book), u => book))
+
+@unsafe
+def j_region_root_array(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild, +fusion: String, +private: List<&2,KDef>) -> JRootPlan:
   j_root_plan_wrap(
-    "(()=>{" ++ j_region_declarations(book, j_region_helpers(s)) ++ "const $guards=[" ++ j_quote(dn(d)) ++ "," ++ j_region_names(j_region_helpers(s)) ++ "];return " ++
+    "(()=>{" ++ j_region_declarations(book, j_region_helpers(s)) ++
+    kc(String, j_array_view_active(private), u => j_array_view_declaration(private, d, s), u => "") ++
+    "const $guards=[" ++ j_quote(dn(d)) ++ "," ++ j_region_names(j_region_helpers(s)) ++ "];return " ++
     "fn(" ++ U32.show(da(d)) ++ ",exactCode(function(a,$entered){/* private scalar root */" ++ j_nat_loop_slots(da(d), 0) ++
+    kc(String, j_array_view_active(private), u => "if($entered){" ++ j_array_view_entry(book, d, s) ++ "}", u => "") ++
     "if($entered&&" ++ kc(String, String.eq(fusion, ""), u => j_fold_root_guard(book, d, j_region_helpers(s)), u => "regionHostGuard(true)&&") ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++ "&&localGuard($guards)){",
     kc(JRootPlan, String.eq(fusion, ""), u => j_flat_root_scope(book, d, s), u =>
       JRootPlan{"const $previousProof=regionProofOpen($guards);try{" ++ fusion ++ "}finally{regionProofClose($previousProof);}", True{}}),
@@ -481,7 +489,7 @@ def j_region_read_definition(+book: List<&2,KDef>, +d: KDef) -> String:
   kc(String, j_region_read_consumer(book, d), u =>
     "function " ++ j_region_name(dn(d)) ++ "$get(" ++ j_region_parameters(0, U32.sub(da(d), 1)) ++
     kc(String, U32.is_gt(da(d), 1), u => ",", u => "") ++ "_t,$array,$index){" ++
-    "const $p" ++ U32.show(da(d)) ++ "=$array;const $data=arraydata($array);const $p" ++ U32.show(U32.inc(da(d))) ++
+    "const $p" ++ U32.show(da(d)) ++ "=$array;const $data=" ++ j_array_view_data(book, "$array") ++ ";const $p" ++ U32.show(U32.inc(da(d))) ++
     "=$data[Number($index)%$data.length];" ++ j_region_return(book, Nil{}, kid(j_strip(dv(d)), 0), kid(dv(d), 1)) ++ "}", u => "")
 
 # Private callers already demand the result before the next source operation.
@@ -494,7 +502,7 @@ def j_region_return(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: 
   kc(String, String.eq(tg(t), "JUnpack"), u => "{const $unpack=" ++ j_flat_unpack(book, kid(t, 1), "$p" ++ U32.show(ix(t))) ++ ";{" ++
     j_flat_bindings(book, kid(t, 1), ix(t), 0, qt(t)) ++ j_region_return(book, env, kid(t, 0), ty) ++ "}}", u =>
   kc(String, String.eq(tg(t), "JInline") || String.eq(tg(t), "JInlineRead"), u => j_region_inline_return(book, env, t, ty), u =>
-    "return " ++ j_expr(book, env, t, ty, False{}) ++ ";"))))
+    j_array_view_statement(book, env, t, ty, "return ")))))
 
 # Capture the input outside the field-binding scope. Nested unpacking may reuse
 # the temporary, while parallel lets and initial-zero rebinding keep their scope.
@@ -613,7 +621,7 @@ def j_region_inline_output(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm
   "{" ++ j_region_inline_values(book, env, j_region_inline_args(t), dt(lookup(book, nm(t))), 0, read, virtual) ++ "{" ++
   j_region_inline_bind(0, kc(U32, read || virtual, u => U32.sub(ix(t), 1), u => ix(t))) ++
   kc(String, read, u => "const $array=$i" ++ U32.show(ix(t)) ++ ";const $index=$i" ++ U32.show(U32.inc(ix(t))) ++
-    ";const $p" ++ U32.show(ix(t)) ++ "=$array;const $data=arraydata($array);const $p" ++ U32.show(U32.inc(ix(t))) ++
+    ";const $p" ++ U32.show(ix(t)) ++ "=$array;const $data=" ++ j_array_view_data(book, "$array") ++ ";const $p" ++ U32.show(U32.inc(ix(t))) ++
     "=$data[Number($index)%$data.length];", u => "") ++
   kc(String, virtual, u => j_region_inline_virtual_bind(ix(t), 0, qt(j_strip(kid(t, 0)))), u => "") ++
   j_region_emit_output(book, Nil{}, kc(KTerm, virtual, u => kid(j_strip(kid(t, 0)), 0), u => kid(t, 0)), ty, out, fields) ++ "}}"
@@ -720,7 +728,7 @@ def j_region_vector_values(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List
     case Nil{}: ""
     case Con{h, rest}:
       +head = wnf(book, ty)
-      out ++ U32.show(at) ++ "=" ++ j_expr(book, env, h, kid(head, 0), False{}) ++ ";" ++
+      j_array_view_statement(book, env, h, kid(head, 0), out ++ U32.show(at) ++ "=") ++
       j_region_vector_values(book, env, rest, j_app_type(head, h), out, U32.inc(at))
 
 @unsafe

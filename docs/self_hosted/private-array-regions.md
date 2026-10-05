@@ -2,8 +2,10 @@
 
 Phase47 adds a narrowly proved representation choice to the existing typed
 JavaScript region lowering. This chapter describes the source mechanism and
-its research lessons. It makes no installed-release or qualified-performance
-claim; selection and release evidence belong to the Phase47 qualification record.
+its research lessons. The mechanism is installed in the selected array06 release;
+the [Phase47 report](../../implementation/phase47/README.md) and
+[installed-release receipt](../../selfhost/tools/performance/phase47/evidence/installed-release.json)
+record its exact qualification and release scope.
 
 ## Ownership and admission
 
@@ -88,6 +90,50 @@ native recursive calls, move a zero-trip read, or change which tuple field is
 demanded first. Error construction may reenter, but the failing computation does
 not resume its private body; a nested invocation must establish fresh permission.
 
+## Composition with private scalar trees
+
+The Phase47 source also lets the existing scalar-tree emitter consume these
+array facts. `j_array_view_plan_terms` audits both checked tree arms, permits
+only their already proved self-call target, and audits the original collected
+helpers. Complete normalization supplies raw helpers and arms to the existing
+`j_tree_body` frame emitter; it does not replace the continuation machine with
+native non-tail recursion. Countdown helpers retain their self-tail transfers.
+
+The separate `$arrayViewTreeBody` entry keeps the existing scalar/predecessor
+input checks and `$s0<32n` bound, adds fresh array-host admission, and retains
+all original dependency guards. The Zero matcher path is unchanged. On refusal,
+the entire old tree/generic selection remains. This avoids assuming that a
+public raw pair entry is reached when a tree uses its own local pair helper.
+An inherited region proof still causes raw-array refusal; tree composition does
+not add a permission-sharing exception. See the
+[composition diagnosis](../../implementation/phase47/nested-array-entry.md).
+
+The frozen array06 source implements a narrower guard with final static review
+passed. Its checked build, four independent control groups, eight maintained
+semantic suites, full-corpus measurement and installation checks also pass.
+`j_array_view_host_guard` selects `arrayViewHostGuard(true)` only when
+alias-normalized root signatures, source types/body, both relevant checked arms,
+and collected helper signatures/bodies contain no F32. Otherwise it retains the
+full floating guard. This includes an unused public F32 input, whose canonical
+validation still needs Math.fround and Number.isNaN.
+
+The integer branch retains the existing integer host hooks and adds a captured
+Math.floor descriptor check for U32.div. Both branches retain fill/isSafeInteger,
+protocol/prototype checks, active-proof refusal, canonical inputs, full source
+dependencies and the unchanged fallback. See the frozen
+[selector](../../selfhost/build/phase47/source-array06/src/back/js/array-view.bend)
+and [runtime guard](../../selfhost/build/phase47/source-array06/src/runtime.mjs).
+This is a proof-based selection, with no workload name or iteration threshold.
+
+The measured `regionHostGuard(true)` diagnostic lacked the general no-F32 proof
+and floor check; the full bypass lacked array host permission entirely. Neither
+derivative is the array06 implementation or a shipping permission. Its roughly
+2-us diagnostic narrowing cannot account for the entire short-fold regression,
+and does not establish array06 performance. The
+[guard-cost record](../../implementation/phase47/array-guard-cost.md) preserves
+those distinct observations. Source implementation and static review do not
+replace checked-emission, semantic, runtime or release qualification.
+
 ## Research lessons and limits
 
 The [diagnostic record](../../implementation/phase47/v8-analysis.md) distinguishes
@@ -119,3 +165,19 @@ Host-mutation/refusal controls, independent alias-sensitive values, checked
 emission, maintained canaries and broader qualification are separate obligations.
 The [safety contract](../../implementation/phase47/array-safety-plan.md) records
 them; diagnostic derivatives and passing output oracles alone do not satisfy them.
+
+## Measured release scope
+
+The final paired comparison passes all 45 points and 669 fresh samples. Array06
+takes 2.919418× pinned TypeScript time with equal-point weighting, versus a fresh
+worker23 baseline of 3.085148×; equal-source ratios are 3.995808× and 4.169855×.
+The short 128-step fold still regresses 1.930× against worker23. These are corpus
+results for the combined representation, ordered writes, tree composition and
+guard changes, not an isolated guard speedup or universal program estimate.
+[Full results and regressions](../../implementation/phase47/results.md).
+
+The installed release passes all 42 ordinary/relocated CLI checks, and the
+portable bundles pass a separate 27-sample replay screen. The
+[selected qualification](../../selfhost/tools/performance/phase47/evidence/selected-qualification.json)
+and [portable guide](../../selfhost/tools/performance/phase47/README.md) bind the
+identities and repeatable commands. Archival closure is tracked separately.

@@ -27,3 +27,22 @@ tree call-site updates add no lines. Runtime syntax, Bend delimiter, and diff
 checks pass. Independent v5 controls cover floor/division and unused F32 guard
 selection alongside the prior host/public-boundary controls. Qualification and
 clean timing are root-owned and pending at this checkpoint.
+
+## Final outcome — installed array06, 2026-10-05
+
+The reviewed integer-only selector and exact Math.floor permission are installed
+in array06. The checked build and focused strict gate pass. Independent v5
+controls pass 153 scalar oracles and 46 boundary comparisons, including division,
+unused/aliased F32, mutable host hooks, structural guard mode and runtime entry
+witnesses. The previous Array controls and all eight maintained suites also pass.
+[Final control scope](../../implementation/phase47/control-plan.md#integer-guard-v5-typed-dependencies-and-late-host-changes).
+
+The final combined implementation passes all 45 runtime points/669 samples,
+installed source/API/runtime verification, all 42 CLI checks and a 27-sample
+portable replay. Its equal-point ratio is 2.919418× TypeScript versus freshly
+paired worker23's 3.085148×. This aggregate includes representation, ordered
+writes and tree composition; it is not an isolated causal estimate of the guard
+refinement. The short fold remains 1.930× slower than worker23, so the narrower
+guard does not resolve that regression.
+[Results and limitations](../../implementation/phase47/results.md),
+[installed release](../../selfhost/tools/performance/phase47/evidence/installed-release.json).

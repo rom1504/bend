@@ -1,0 +1,50 @@
+{
+  "kind": "phase47-evidence-selection-proposal",
+  "version": 1,
+  "proposed": true,
+  "complete": false,
+  "writersClosed": false,
+  "archiveCreated": false,
+  "logicalRawRoot": "selfhost/build/phase47",
+  "documentationRoots": ["experiments/phase47", "implementation/phase47"],
+  "producerRoot": "selfhost/tools/performance/phase47",
+  "cutoff": "root must declare after all target and receipt writers finish",
+  "inventory": "all regular files, including later attempts; reject or explicitly handle symlinks",
+  "requiredRetention": [
+    "all plans, commands, observations, provenance and resource receipts",
+    "all consumed source/tool versions and independent control fixtures",
+    "all failed, refused, corrected, stopped and uninstalled attempt records",
+    "all prime/check/counted and ten clean compiler-memo request reports",
+    "one retained content object per distinct executed API/module digest, unless explicitly regeneration-only"
+  ],
+  "failureExamplesAtProposal": [
+    "array-producer-failed01.json",
+    "checked-worker01/build.json",
+    "job-checked-worker01"
+  ],
+  "uninstalledAttemptExamplesAtProposal": [
+    "array01-canaries",
+    "array01-fast"
+  ],
+  "memoExamplesAtProposal": [
+    "compiler-census01",
+    "compiler-memo01/derive.json",
+    "compiler-memo01/jobs-plan01.json",
+    "compiler-memo01/run-memo.mjs",
+    "run-memo-jobs01.py"
+  ],
+  "pathStates": ["stored-member", "verified-exact-alias", "prior-durable-capsule-member", "regeneration-only", "missing"],
+  "deduplication": "exact bytes by final verified digest; logical paths and statuses remain in complete inventory",
+  "priorCapsule": {
+    "metadata": "selfhost/tools/performance/phase45/evidence/raw/archive.json",
+    "partsManifest": "selfhost/tools/performance/phase45/evidence/raw/parts.json",
+    "archiveSha256": "3ab22dcd35b5b1158f35d518c46914185a5df6affb7cb8b83ff253541df3c703",
+    "worker23ApiMember": "checked-worker23/equality/api.mjs",
+    "worker23ApiSha256": "e77c504a9c91d9ae9d43e52f4f4899711eb7a8ebe707ee565348df2708488b4c",
+    "requirement": "verify exact member recovery at closure before assigning external retained-byte status"
+  },
+  "reuseProducer": "selfhost/tools/performance/phase42/validation/archive-campaign-v1.py",
+  "producerLimit": "archives every supplied-root member; selection requires reviewed materialization first",
+  "publication": "outside closed raw root; ordered parts at most 40 MiB, reopened concatenation verified",
+  "claims": "No final member hashes/counts, archive durability, executable retention, installation or performance promotion established by this proposal. Digest plus source recipe means regeneration-only unless exact retained bytes are recoverable."
+}

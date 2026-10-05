@@ -1,0 +1,27 @@
+--- a/selfhost/tools/development/release.mjs
++++ b/selfhost/tools/development/release.mjs
+@@ -38,6 +38,16 @@
+  if(bootstrap.modules.some(x=>x.file==='src/back/js/direct/core.bend')) {
+   assert.equal(typeof manifest.directRuntimeSha256,'string','Direct backend runtime must be bound to the release');
+   assert.equal(manifest.checkout.find(x=>x.path==='src/runtime/js/direct.mjs')?.sha256,manifest.directRuntimeSha256);
++  const effects=read(local('src/runtime/js/effs/manifest.json',root));
++  assert.equal(effects.revision,bootstrap.revision,'Effect source pin differs');
++  assert.equal(effects.base.sha256,files['dist/base.bend'].sha256,'Vendored effect Base differs');
++  assert.ok(manifest.checkout.some(x=>x.path==='src/runtime/js/effs/manifest.json'),'Unbound JS effect manifest');
++  assert.equal(effects.files.length,37);assert.equal(new Set(effects.files.map(x=>x.path)).size,37);
++  for(const item of effects.files){
++   assert.ok(/^[a-z0-9_]+\.js$/.test(item.path),'Invalid vendored effect name');
++   const entry=manifest.checkout.find(x=>x.path==='src/runtime/js/effs/'+item.path);
++   assert.equal(entry?.sha256,item.sha256,'Unbound vendored effect: '+item.path);assert.equal(entry?.bytes,item.bytes);
++  }
+  }
+  if(checked){
+   assert.equal(api.sha256,parent.sha256,'Checked default differs from checked API');
+@@ -90,6 +100,7 @@
+  const hasDirect=bootstrap.modules.some(x=>x.file==='src/back/js/direct/core.bend');
+  if(hasDirect){const name='src/runtime/js/direct.mjs',file=path.join(project,name);assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,name)).sha256);checkout.push(record(file));}
+  const walk=directory=>fs.readdirSync(directory,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(directory,e.name)):[path.join(directory,e.name)]);
++ if(hasDirect)for(const file of walk(path.join(project,'src/runtime/js/effs'))){assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,relative(file))).sha256);checkout.push(record(file));}
+  for(const file of walk(path.join(project,'src/runtime/native'))){assert.equal(identity(file).sha256,identity(path.join(attempt.snapshot.root,relative(file))).sha256);checkout.push(record(file));}
+  checkout.push(record(path.join(project,'cli.mjs')));
+  const stage=fs.mkdtempSync(path.join(dist,'.release-'));

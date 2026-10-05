@@ -399,24 +399,12 @@ function foreignSources(graph,extension,required=null,api=null,book=null,scope=b
 }
 
 
-// Resolve Base effects only for the exact pinned Base and listed JS names.
-// Custom BEND_BASE providers and user foreign sources retain their own bytes.
-// The resolver is request-local; no Base-content decision survives a request.
-function directForeignResolver(paths) {
-  if(!paths.length)return {resolve:file=>path.resolve(file),inputs:[]};
-  const effects=path.join(project,'src/runtime/js/effs'),manifestPath=path.join(effects,'manifest.json');
-  const manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
-  if(manifest.kind!=='phase52-pinned-upstream-js-effects'||manifest.version!==1||
-    !/^[0-9a-f]{64}$/.test(manifest.base?.sha256??''))throw Error('Invalid pinned JS effect manifest');
-  const names=new Set(manifest.files.map(item=>item.path));
-  if(names.size!==37||manifest.files.length!==37||[...names].some(name=>! /^[a-z0-9_]+\.js$/.test(name)))
-    throw Error('Invalid pinned JS effect inventory');
-  const canonicalBase=fs.realpathSync(basePath),pinned=hash(canonicalBase)===manifest.base.sha256;
-  return {inputs:[manifestPath],resolve:file=>{
-    const resolved=path.resolve(file);
-    return pinned&&path.dirname(resolved)===path.join(path.dirname(canonicalBase),'effs')&&names.has(path.basename(resolved))
-      ?path.join(effects,path.basename(resolved)):resolved;
-  }};
+// Base effect imports retain original names for kf_source namespace resolution.
+// Only the actual byte source is relocated; user foreign paths are unchanged.
+function directForeignPath(file) {
+  const resolved=path.resolve(file);
+  return path.dirname(resolved)===path.join(path.dirname(basePath),'effs')
+    ?path.join(project,'src/runtime/js/effs',path.basename(resolved)):resolved;
 }
 
 export async function inspect(input,options={}) {
@@ -599,15 +587,15 @@ async function inspectWithMemo(input,{mode='check',backend='js',api,args=[],time
     trace('emit '+mode);
     const jsPaths=backend==='direct'?array(api.jd_foreign_paths(book)):api.j_foreign_paths?array(api.j_foreign_paths(book)):null;
     if(backend==='direct') {
-      const foreign=directForeignResolver(jsPaths),directInputs=jsPaths.map(foreign.resolve);
-      const modules=api.jd_modules(book,foreignSources(graph,'.js',jsPaths,api,contextBook,book,foreign.resolve));
+      const directInputs=jsPaths.map(directForeignPath);
+      const modules=api.jd_modules(book,foreignSources(graph,'.js',jsPaths,api,contextBook,book,directForeignPath));
       const emitted=mode==='library'?api.jd_library_selected(contextBook,book):api.jd_program_selected(contextBook,book);
       if(emitted.includes('\n/*JD_UNSUPPORTED:'))throw Error('Direct JavaScript backend encountered an unsupported construct: '+emitted.split('\n').find(line=>line.startsWith('/*JD_UNSUPPORTED:')));
       const host=mode!=='library'||jsPaths.length?'import {createRequire as $jdCreateRequire} from "node:module";\nconst require=$jdCreateRequire(import.meta.url);\n':'';
       const code=host+fs.readFileSync(directRuntimePath,'utf8')+'\n'+modules+'\n'+emitted;
       trace('emitted direct '+Buffer.byteLength(code)+' bytes');
       if(interpreterIO)return {...await executeCompiled({status:'ok',code},{timeoutMs,args:['--',...args],backend:'direct',combinedOutput,programName:path.basename(input,'.bend')}),verdict};
-      return {status:'ok',phase,code,backend:'direct',interface:'upstream-callable',verdict,exitCode:0,checked:true,files:[...graph.files,...directInputs,...foreign.inputs,directRuntimePath]};
+      return {status:'ok',phase,code,backend:'direct',interface:'upstream-callable',verdict,exitCode:0,checked:true,files:[...graph.files,...directInputs,directRuntimePath]};
     }
     const emitted=selectedEmission?(mode==='library'?api.j_library_selected(contextBook,book):api.j_program_selected(contextBook,book)):(mode==='library'?api.j_library(book):api.j_program(book));
     const code=fs.readFileSync(runtimePath,'utf8')+'\n'+api.j_modules(book,foreignSources(graph,'.js',jsPaths,api,contextBook,book))+'\n'+emitted;

@@ -1,0 +1,79 @@
+{
+  "kind": "phase52-semantic-qualified-scope",
+  "complete": true,
+  "fullPass": false,
+  "counts": {
+    "passCount": 89,
+    "failCount": 1,
+    "total": 90
+  },
+  "candidate": "checked-direct05",
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v7.json",
+    "sha256": "bb73a5ea0f8128941c3f90372f3aca021d1ec31da1d20c4908bdadad66c7cc9a",
+    "bytes": 32247
+  },
+  "runner": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-runner-v8.mjs",
+    "sha256": "c48347333a8be1f189075427463d696224536485a7456f7649309b95a2f1bd0d",
+    "bytes": 7550
+  },
+  "joinProducer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-full-join-v3.py",
+    "sha256": "2c78818d52d66e63284bcbffc6d8ed5091def1d5138ad3d45d8b0682575a1424",
+    "bytes": 2811
+  },
+  "receipts": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-controls01/report.json",
+      "sha256": "b366375483a4dbd77650846ed0aeab0bb4afe7fd5668dfe83b674e56afa46bec",
+      "bytes": 79142
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-controls01-supervisor/run.json",
+      "sha256": "f864d974114b92a7bcc9a2f80c790921369775518857ac3541bbd349b60c1e38",
+      "bytes": 1502
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/manifest.json",
+      "sha256": "f1f217ea8e7ff4b7404e740a5618b82467aed09859ce03456d1e8c00acb1e2d0",
+      "bytes": 86513
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-join01.json",
+      "sha256": "dcbda6c48df1c563a0feccdc3f9231c2f8ec119e54699345d5247e76cb748b14",
+      "bytes": 10923
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/manifest.json",
+      "sha256": "ba156855fb0b6c4c9cd4e8fe1e2cc43306333eec2d9dcaed46f31befcfebd40d",
+      "bytes": 20406
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/report.json",
+      "sha256": "8d21ca92bba6072483b22e9f6deaa7ea16cc0dcfba72b30d7f6599476b5faf37",
+      "bytes": 35298
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-nan-host01.json",
+      "sha256": "73ec40b633bd3f23de225f97c5e5ab906f1c4b1d7f5a675e37cac60154bbadb3",
+      "bytes": 786
+    }
+  ],
+  "newReferenceCounts": {
+    "passCount": 26,
+    "failCount": 0,
+    "total": 26
+  },
+  "checkedCandidateFixtures": 28,
+  "limitation": {
+    "fixture": "f32_table_nan_bits",
+    "test": "nan-table-bits",
+    "sourceGolden": 40,
+    "typescript": 1,
+    "direct": 39,
+    "observedValueAgreement": false,
+    "waived": false
+  },
+  "scope": "Independent default-callable library and explicit CommonJS-reference/ESM-candidate program semantics. All28 source emissions checked;89 matching oracle-qualified scenarios. Signaling-NaN payload source golden and differential remain failing, not normalized or excluded. No universal conformance/performance claim."
+}

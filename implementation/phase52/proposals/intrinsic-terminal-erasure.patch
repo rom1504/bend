@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/js/direct/calls.bend
++++ b/selfhost/src/back/js/direct/calls.bend
+@@ -144,7 +144,7 @@
+ def jd_calls_saturated_next(+book: List<&2,KDef>, +d: KDef, +xs: List<&2,KTerm>, +ty: KTerm, +left: U32, +s: JDCallScan) -> JDCallScan:
+   match xs:
+     case Nil{}: kc(JDCallScan, U32.is_eq(jd_live_arity(book, ty, left), 0),
+-      u => jd_calls_edge(s, dn(d)), u => s)
++      u => kc(JDCallScan, jd_native_known(book, d), v => s, v => jd_calls_edge(s, dn(d))), u => s)
+     case Con{x, rest}: kc(JDCallScan, String.eq(tg(ty), "All"), u =>
+       jd_calls_saturated(book, d, rest, j_app_type(ty, x), U32.sub(left, 1), s), u => jd_calls_bad(s))
+ 

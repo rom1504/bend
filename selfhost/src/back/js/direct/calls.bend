@@ -135,7 +135,8 @@ def jd_calls_named(+book: List<&2,KDef>, +d: KDef, +xs: List<&2,KTerm>, +s: JDCa
 @unsafe
 def jd_calls_saturated(+book: List<&2,KDef>, +d: KDef, +xs: List<&2,KTerm>, +ty: KTerm, +left: U32, +s: JDCallScan) -> JDCallScan:
   kc(JDCallScan, U32.is_eq(left, 0), u =>
-    kc(JDCallScan, List.is_empty(&2,KTerm, xs), v => jd_calls_edge(s, dn(d)),
+    kc(JDCallScan, List.is_empty(&2,KTerm, xs),
+      v => kc(JDCallScan, jd_native_known(book, d), w => s, w => jd_calls_edge(s, dn(d))),
       v => jd_calls_extra(book, xs, ty, s)),
     u => jd_calls_saturated_next(book, d, xs, wnf(book, ty), left, s))
 
@@ -143,7 +144,7 @@ def jd_calls_saturated(+book: List<&2,KDef>, +d: KDef, +xs: List<&2,KTerm>, +ty:
 def jd_calls_saturated_next(+book: List<&2,KDef>, +d: KDef, +xs: List<&2,KTerm>, +ty: KTerm, +left: U32, +s: JDCallScan) -> JDCallScan:
   match xs:
     case Nil{}: kc(JDCallScan, U32.is_eq(jd_live_arity(book, ty, left), 0),
-      u => jd_calls_edge(s, dn(d)), u => s)
+      u => kc(JDCallScan, jd_native_known(book, d), v => s, v => jd_calls_edge(s, dn(d))), u => s)
     case Con{x, rest}: kc(JDCallScan, String.eq(tg(ty), "All"), u =>
       jd_calls_saturated(book, d, rest, j_app_type(ty, x), U32.sub(left, 1), s), u => jd_calls_bad(s))
 

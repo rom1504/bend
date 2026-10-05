@@ -1,7 +1,7 @@
 # Direct JavaScript output
 
-**Phase52 candidate documentation; full qualification and release installation
-are pending.** The installed Phase51 compiler remains the compatibility release.
+**Checked Phase52 candidate05; release installation and the full45 performance
+comparison are pending.** The installed Phase51 compiler remains the compatibility release.
 The commands below describe the candidate driver interface, not a guarantee that
 an older installed compiler supports it. Check the
 [Phase52 report](../../implementation/phase52/README.md) and release manifest
@@ -98,16 +98,16 @@ stack for non-tail recursion or all recursive host marshalling.
 
 The candidate full-program emitter checks and lowers `main`. Pure results use
 typed readback and the pinned printing format. IO results use the direct CPS
-scheduler. Libraries select ordinary source callable exports; native definitions,
-foreign definitions and IO-result exports are not exposed as ordinary pure host
-functions.
+scheduler. Libraries select ordinary source callable exports. Native and foreign
+definitions and whole-IO-type definitions are excluded; source functions
+returning IO remain callable, following the pinned export predicate.
 
 The full-stage implementation resolves foreign JavaScript source paths, rewrites
 source constructor/function IDs to resolved names, registers effects in the
 direct registry, and transports typed arguments and continuations in `$FFI`
-messages. Missing effect registrations fail explicitly. This integration remains
-subject to checked semantic qualification; including scheduler helpers in the
-runtime alone does not establish working FFI.
+messages. Missing effect registrations fail explicitly. Candidate05 has exercised the selected program and FFI scenarios. This is
+bounded coverage; including scheduler helpers does not establish every effect
+or host configuration.
 
 Generated Node modules provide an ESM `createRequire` binding when needed.
 System-call/polling paths retain the pinned runtime's Bun FFI assumptions or an
@@ -137,3 +137,22 @@ same screen. This is a short, selected prototype result, not full-corpus parity,
 universal speed, compilation-latency improvement or complete language/IO
 conformance. Follow the [current report](../../implementation/phase52/README.md)
 for subsequent checked semantic, full-corpus and release outcomes.
+
+## Candidate05 qualification and known limit
+
+The checked candidate05 differential controller completed90 scenarios;89 passed.
+Its report remains **failed**, with the exceptional case retained rather than
+removed from the denominator. The selected pure/IO program and library scenarios
+are exercised; this is not universal conformance.
+
+`tests/compile/f32_table_nan_bits.bend` expects40. Under the pinned Node host,
+upstream returns1 and direct returns39; **neither passes the source oracle**.
+Upstream folds its F32 table to bare `NaN` literals, losing payload bits, whereas
+direct currently performs dynamic conversions. JavaScript NaN payload transport
+and first-use conversion behavior remain an unresolved boundary. Direct also
+lacks upstream's numeric match-table lowering: upstream table reads use
+`Math.min`, while direct branches can perform different comparisons/coercions.
+Post-import `Math.min`, coercion and conversion hook traces can therefore differ.
+No universal arbitrary-global-hook equivalence or
+NaN-payload correction is claimed. See the
+[remaining work](../../implementation/phase52/remaining-work.md).

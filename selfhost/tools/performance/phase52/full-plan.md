@@ -1,10 +1,23 @@
 # Final direct-backend comparison and publication plan
 
-Status: prepared, not executed by this plan. The lead selects one checked image
-only after its independent semantics pass. `checked-direct05` is the prospective
-label below; change every05 attempt/output suffix together if a later image is
-selected. Never reuse the direct03 timing rows as measurements of that image.
+Status: the lead authorized execution on frozen `checked-direct05`. Its separate
+semantic suite passed89/90 scenarios; one F32 NaN-payload scenario remains failed
+(pinned TypeScript returns1, direct returns39, independent source oracle40).
+That failure is preserved and prevents any blanket semantic/full-conformance
+claim. It does not waive any benchmark oracle: all45 selected benchmark cases
+must pass before their scoped performance comparison can complete. Direct mode
+remains explicit and has this known semantic limit. If another image is selected,
+change every05 attempt/output suffix together. Never reuse the direct03 timing
+rows as measurements of that image.
 The Phase51/TypeScript reference remains the frozen `reference01` bundle.
+
+Execution checkpoint: direct05 checked acquisition and smoke passed all45 points.
+Batch0 completed15 points/219 samples in368.268s; batch1 completed15 points/225
+samples in380.042s. At the lead's request, batch2 was held before starting while
+a general primitive-lowering successor is considered. Thus only30/45 points and
+444 samples are measured for05 at this checkpoint. No full45 aggregate, final
+chart, or portable-final compression has run. Both completed reports remain
+unaltered; the commands below describe the full procedure, not completed work.
 
 The public contract is `upstream-compatible-direct-v1`, not the additional
 legacy mutable-G interface. Selected API, direct runtime, frozen driver, Base,

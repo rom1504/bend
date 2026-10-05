@@ -1,0 +1,235 @@
+{
+  "kind": "phase52-atomic-intrinsic-inline-screen",
+  "schemaVersion": 1,
+  "catalog": {
+    "path": "../phase37/catalog.json",
+    "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c"
+  },
+  "callingContract": "upstream-compatible-direct-v1",
+  "baselineAttempt": "selfhost/build/phase52/checked-direct05",
+  "cases": [
+    {
+      "id": "mandelbrot",
+      "source": {
+        "path": "fixtures-historical/mandelbrot.bend",
+        "sha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+        "bytes": 6576,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/mandelbrot/main.bend",
+            "gitBlob": "8effae68e308c8ae63c3ec8af66f0e4a4e59f282",
+            "sha256": "400b94705df43c5f6506ecba640db11ae91b24f74d58e39a5e5f7f56dcbabcfa",
+            "bytes": 6427
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  rend(U32.to_nat(size), 7n)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "args": [
+          2,
+          0
+        ],
+        "expected": 887240761,
+        "exportName": "bench"
+      }
+    },
+    {
+      "id": "local-pair",
+      "source": {
+        "path": "fixtures-historical/local-row.bend",
+        "sha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+        "bytes": 6245,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/build/phase31/local-data-source-01/row.bend",
+          "description": "Original edit-distance fixture plus row.probe; preserves complete pair and exposes a complete generic row.",
+          "record": "selfhost/tools/performance/phase31/local-data-derive.py"
+        }
+      },
+      "point": {
+        "exportName": "pair",
+        "args": [
+          0
+        ],
+        "expected": 1866542166
+      }
+    },
+    {
+      "id": "editdist",
+      "source": {
+        "path": "fixtures-historical/editdist.bend",
+        "sha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+        "bytes": 5874,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "bench/runtime/editdist/main.bend",
+            "gitBlob": "b3bcc627dde4eccd3f1b96e659a8e1df33ef231c",
+            "sha256": "466891a27b87119b5593209eb98aa0d687ff88b6ff28cc2ca339e248907a3959",
+            "bytes": 5722
+          },
+          "wrapper": "\n# Phase28: original source above is unchanged; dynamic documented-small input.\ndef bench(size: U32, seed: U32) -> U32:\n  batch(U32.to_nat(size), seed)\n",
+          "record": "selfhost/tools/performance/phase28/six-cases.json"
+        }
+      },
+      "point": {
+        "args": [
+          2,
+          0
+        ],
+        "expected": 2065873279,
+        "exportName": "bench"
+      }
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "source": {
+        "path": "fixtures-variants/raytrace-active.bend",
+        "sha256": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+        "bytes": 14680,
+        "provenance": {
+          "kind": "unchanged-historical-fixture-with-coverage-wrapper",
+          "parent": {
+            "path": "fixtures-historical/raytrace.bend",
+            "sha256": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+            "bytes": 14223,
+            "provenance": {
+              "kind": "pinned-upstream-with-wrapper",
+              "original": {
+                "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+                "path": "bench/runtime/raytrace/main.bend",
+                "gitBlob": "9f42fcc64fe86dabd21d4e94c69a90224f6ae0f4",
+                "sha256": "6c4918b2012696146144c2c7ccc1daad042dbb87df444ca1334cf8d51bebee5f",
+                "bytes": 13929
+              },
+              "wrapper": "\n# Phase28: original source above is unchanged; documented small raytrace input.\ndef bench(+size: U32, seed: U32) -> U32:\n  +rr = U32.to_nat(6)\n  hw = U32.to_f32(U32.div(size, 2))\n  hh = U32.to_f32(U32.div(U32.shln(1, rr), 2))\n  hm = U32.sub(U32.shln(1, rr), 1)\n  rowf(rr, 0, hm, size, hw, hh)\n",
+              "record": "selfhost/tools/performance/phase28/raytrace-typed-retry.json"
+            }
+          },
+          "wrapper": "\n# Phase37: original source above unchanged; every sampled position traces rays.\ndef coverage.active.loop(n: Nat, +at: U32, acc: U32) -> U32:\n  match n:\n    case 0n:\n      acc\n    case 1n+p:\n      v = pixel(U32.mod(at, 80), U32.div(at, 80), U32.to_f32(40), U32.to_f32(32))\n      coverage.active.loop(p, U32.inc(at), U32.add(U32.mul(acc, 16777619), v))\n\ndef coverage.active(count: U32, first: U32) -> U32:\n  coverage.active.loop(U32.to_nat(count), first, 0)\n",
+          "record": "design/phase37/coverage.md"
+        }
+      },
+      "point": {
+        "exportName": "coverage.active",
+        "args": [
+          64,
+          2440
+        ],
+        "expected": 1457676559
+      }
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "source": {
+        "path": "fixtures-historical/local-fold.bend",
+        "sha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+        "bytes": 768,
+        "provenance": {
+          "kind": "maintained-diagnostic",
+          "originalPath": "selfhost/tools/performance/phase31/local-data-fold.bend",
+          "record": "selfhost/tools/performance/phase31/local-data-fold-controls.mjs"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          8192,
+          123
+        ],
+        "expected": 805701512
+      }
+    },
+    {
+      "id": "test-morning-program",
+      "source": {
+        "path": "fixtures-historical/test-morning-program.bend",
+        "sha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+        "bytes": 3077,
+        "provenance": {
+          "kind": "unchanged-pinned-upstream",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/morning_program.bend",
+            "sha256": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a"
+          },
+          "record": "selfhost/tools/performance/phase28/application-cases.json"
+        }
+      },
+      "point": {
+        "args": [],
+        "expected": "a-bb-ccc 8 1877 42 lo hello 3",
+        "exportName": "main.out"
+      }
+    },
+    {
+      "id": "coverage-expression-128",
+      "source": {
+        "path": "fixtures-new/expression.bend",
+        "sha256": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "bytes": 1522,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/expr_interpreter.bend",
+            "gitBlob": "0a7b6a511c26f42d0732347d932e0524b50d0e80",
+            "sha256": "74bdcbabe870bff14d0e9247a44a5687671e7d26ba17543198ccb222d9217d4e",
+            "bytes": 881
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Non-balanced expression tree: one recursive child and one varying shallow arm.\ndef p37.expr.pick(op: Nat, e: Expr, +seed: U32) -> Expr:\n  match op:\n    case 0n:\n      Add{e, Mul{Lit{seed}, Lit{3}}}\n    case 1n+0n:\n      Mul{e, Add{Lit{U32.mod(seed, 5)}, Lit{1}}}\n    case 1n+1n+p:\n      Sub{e, Add{Lit{seed}, Lit{7}}}\n\ndef p37.expr(n: Nat, +seed: U32) -> Expr:\n  match n:\n    case 0n:\n      Lit{seed}\n    case 1n+p:\n      p37.expr.pick(U32.to_nat(U32.mod(seed, 3)), p37.expr(p, U32.add(seed, 1)), seed)\n\ndef bench(size: U32, seed: U32) -> U32:\n  eval(p37.expr(U32.to_nat(size), seed))\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          128,
+          123
+        ],
+        "expected": 3393903617
+      }
+    },
+    {
+      "id": "coverage-closures-64",
+      "source": {
+        "path": "fixtures-new/closures.bend",
+        "sha256": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+        "bytes": 1392,
+        "provenance": {
+          "kind": "pinned-upstream-with-wrapper",
+          "original": {
+            "commit": "018751270e800bc222a93dad7f257083ee53a5f7",
+            "path": "tests/run/closures_hof.bend",
+            "gitBlob": "015235618ee5d528d4301d56d4a7d5c5571ba932",
+            "sha256": "995334f3b7925f6d12a19cc84d1353db05736d9ebde158accdf9c9621991f059",
+            "bytes": 1202
+          },
+          "wrapper": "\n# Phase37 wrapper: upstream body above is unchanged.\n# Build and execute a dynamically sized captured closure chain.\ndef bench(size: U32, seed: U32) -> U32:\n  chain(U32.to_nat(size))(seed)\n"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          64,
+          17
+        ],
+        "expected": 2097
+      }
+    }
+  ],
+  "protocol": {
+    "preset": 60,
+    "rounds": 3,
+    "roles": [
+      "typescript",
+      "baseline",
+      "candidate"
+    ],
+    "expectedSamples": 72
+  },
+  "scope": "Frozen before successor build. Baseline is checked direct05, not legacy Phase51. All exact oracles and samples retained; no silent case substitution or role relabeling of old timing reports."
+}

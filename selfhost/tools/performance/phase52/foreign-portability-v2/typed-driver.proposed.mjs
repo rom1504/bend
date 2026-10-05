@@ -411,10 +411,10 @@ function directForeignResolver(paths) {
   const names=new Set(manifest.files.map(item=>item.path));
   if(names.size!==37||manifest.files.length!==37||[...names].some(name=>! /^[a-z0-9_]+\.js$/.test(name)))
     throw Error('Invalid pinned JS effect inventory');
-  const canonicalBase=fs.realpathSync(basePath),pinned=hash(canonicalBase)===manifest.base.sha256;
+  const pinned=hash(basePath)===manifest.base.sha256;
   return {inputs:[manifestPath],resolve:file=>{
     const resolved=path.resolve(file);
-    return pinned&&path.dirname(resolved)===path.join(path.dirname(canonicalBase),'effs')&&names.has(path.basename(resolved))
+    return pinned&&path.dirname(resolved)===path.join(path.dirname(basePath),'effs')&&names.has(path.basename(resolved))
       ?path.join(effects,path.basename(resolved)):resolved;
   }};
 }

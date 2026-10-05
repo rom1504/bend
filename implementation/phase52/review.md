@@ -208,3 +208,61 @@ scrutinee, the last arm is unconditional, and predecessor subtraction occurs
 only when the selected arm uses that view. This preserves deferred failure for
 invalid host Nat values across literal alternatives. Call analysis consumes the
 same typed rows and field counts, avoiding a second fallback traversal.
+
+## Final-tool and release-path static review
+
+The corrected full45 aggregator and both portable freezers received static
+approval. Timed sample configurations join the complete catalog oracle; selected
+attempt, API, direct runtime, driver and checked source emissions remain bound.
+Candidate packaging verifies the named-field row observer and reopens the archive
+to verify every member. Baseline packaging retains Phase51 and pinned TypeScript
+bytes and identifies its candidate-to-baseline role relabel. The tools do not
+claim installation or full-language compatibility from benchmark success.
+
+The release change binds `src/runtime/js/direct.mjs` to its selected frozen copy,
+adds it to the relative checkout inventory, and records `directRuntimeSha256`.
+Verification requires that identity whenever the checked compiler includes
+`direct/core.bend`. The existing relocation copier consumes the entire checkout
+inventory, so the direct runtime travels with the compiler and is verified at
+its relocated path. This establishes the static packaging path; actual installed
+and relocated execution remains the lead's separate gate.
+
+Ordinary direct compilation requires the complete direct API and rejects
+unsupported markers. Missing compiler artifacts report an explicit bootstrap
+instruction; they do not trigger TypeScript compilation. The direct branch does
+not switch to compatibility output. Default compatibility mode remains selected
+unless the user explicitly requests direct output.
+
+Review requested two documentation corrections before publication: describe
+whole-type IO export filtering precisely, and expose the known numeric-table
+host-observation limitation rather than implying universal upstream hook parity.
+The ABI document's former pure-only Foreign-stub description has been separated
+as prototype history. No target jobs, compilation or compression were performed
+by this reviewer.
+
+## Candidate06 proposals
+
+Static review approved the isolated atomic-intrinsic proposal. It recognizes
+only complete compiler-generated local/constant forms, including an exact
+`JD_USE` marker whose ID matches its local. Views, projections and compound
+expressions retain the named wrapper. Native declaration/arity proof remains
+with the existing intrinsic gate. Local reads are inert even when the values
+later undergo coercion, and usage metadata survives substitution. Eliminating
+tail-analysis edges to terminal native primitives is compatible with independent
+`JD_REF` retention of every surviving named call. This approval does not imply
+that the proposed derivative has been built or measured.
+
+Static review also approved the second Base-effect portability proposal.
+Request-local resolution uses the selected Base content hash, its exact effect
+directory and the 37-file allowlist. Different Base content and other paths keep
+their original providers. Namespace resolution receives the original source
+name; emitted-input receipts receive the actual provider paths and resolver
+manifest. All 37 provider files (18,042 bytes) and their license were independently
+read and found byte-identical to the pinned checkout and recorded manifest.
+The existing snapshot includes the full source tree; proposed release checks
+bind the entire vendored effect inventory for relocation.
+
+The proposed 18-step direct release smoke received static approval for ordinary
+and relocated pure execution, emitted ESM, partial callable exports without `G`,
+actual IO printing, and a precise direct-runtime tamper rejection followed by
+restoration and re-verification. Only the lead may run those target steps.

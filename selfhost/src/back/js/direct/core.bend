@@ -96,9 +96,54 @@ def jd_eta_head(+book: List<&2,KDef>, +owner: String, +name: String, +values: Li
 
 @unsafe
 def jd_call(+book: List<&2,KDef>, +owner: String, +name: String, +values: List<&2,String>, +tail: Bool) -> String:
+  kc(String, jd_inline_atoms(values),
+    u => jd_call_inline(book, owner, name, values, tail, jd_intrinsic(book, name, values)),
+    u => jd_call_plain(book, owner, name, values, tail))
+
+@unsafe
+def jd_call_inline(+book: List<&2,KDef>, +owner: String, +name: String, +values: List<&2,String>, +tail: Bool, +code: String) -> String:
+  kc(String, String.eq(code, ""), u => jd_call_plain(book, owner, name, values, tail),
+    u => "(" ++ code ++ ")")
+
+@unsafe
+def jd_call_plain(+book: List<&2,KDef>, +owner: String, +name: String, +values: List<&2,String>, +tail: Bool) -> String:
   "(" ++ jd_ref(name) ++ kc(String, Bool.not(tail) && jd_may_bounce(book, name),
       u => "jd_run(" ++ jd_name(name) ++ "(" ++ jd_join(values) ++ "))",
       u => jd_name(name) ++ "(" ++ jd_join(values) ++ ")") ++ ")"
+
+# A bounded experimental classifier for exact emitter-owned operand forms.
+# Views, projections, calls, globals and compound expressions remain calls.
+# Keep the original strings: their JD_USE metadata still controls local demand.
+@unsafe
+def jd_inline_atoms(+values: List<&2,String>) -> Bool:
+  match values:
+    case Nil{}: True{}
+    case Con{x, rest}: kc(Bool, jd_inline_atom(x), u => jd_inline_atoms(rest), u => False{})
+
+@unsafe
+def jd_inline_atom(+value: String) -> Bool:
+  kc(Bool, String.starts_with(value, "(\n/*JD_USE:"),
+    u => jd_inline_marked(String.drop(value, 11n), ""), u =>
+  kc(Bool, String.starts_with(value, "$eta"), u => jd_inline_digits(String.drop(value, 4n)), u =>
+  kc(Bool, String.starts_with(value, "$a"), u => jd_inline_digits(String.drop(value, 2n)), u =>
+    String.eq(value, "true") || String.eq(value, "false") || String.eq(value, "null") || jd_inline_digits(value))))
+
+@unsafe
+def jd_inline_marked(+text: String, +id: String) -> Bool:
+  match text:
+    case SNil{}: False{}
+    case SCon{h, rest}:
+      kc(Bool, U32.is_ge(Char.to_u32(h), 48) && U32.is_le(Char.to_u32(h), 57),
+        u => jd_inline_marked(rest, id ++ SCon{h, SNil{}}),
+        u => Bool.not(String.eq(id, "")) && String.eq(text, "*/$x" ++ id ++ ")"))
+
+@unsafe
+def jd_inline_digits(+text: String) -> Bool:
+  match text:
+    case SNil{}: False{}
+    case SCon{h, rest}:
+      kc(Bool, U32.is_ge(Char.to_u32(h), 48) && U32.is_le(Char.to_u32(h), 57),
+        u => kc(Bool, String.eq(rest, ""), v => True{}, v => jd_inline_digits(rest)), u => False{})
 
 @unsafe
 def jd_over(+book: List<&2,KDef>, +env: List<&2,KTerm>, +value: String, +xs: List<&2,KTerm>, +ty: KTerm, +tail: Bool) -> String:

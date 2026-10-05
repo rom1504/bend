@@ -1,0 +1,290 @@
+{
+  "kind": "phase52-direct-semantic-catalog-draft",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "cases": [
+    {
+      "id": "erased_partial_closure",
+      "source": {
+        "path": "fixtures/erased_partial_closure.bend",
+        "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 3
+        }
+      ]
+    },
+    {
+      "id": "closure_partial_app",
+      "source": {
+        "path": "fixtures/closure_partial_app.bend",
+        "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 17
+        }
+      ]
+    },
+    {
+      "id": "erased_recursive_arg",
+      "source": {
+        "path": "fixtures/erased_recursive_arg.bend",
+        "sha256": "3f13bbac34471cc80e86b4916fdd8a17a2c156f1ced84857149c45dba8e5750d"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 9
+        }
+      ]
+    },
+    {
+      "id": "erased_apply",
+      "source": {
+        "path": "fixtures/erased_apply.bend",
+        "sha256": "a8a84fa45f5b979d21acbc729e06f4bbbe627c8a0f0ac29bc8a9d24751da24c7"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 4
+        }
+      ]
+    },
+    {
+      "id": "over_application",
+      "source": {
+        "path": "fixtures/over_application.bend",
+        "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 42
+        }
+      ]
+    },
+    {
+      "id": "eta_closure_body",
+      "source": {
+        "path": "fixtures/eta_closure_body.bend",
+        "sha256": "f00a373b52647541f8e62bb59f95acdb6998fc1ad1be47dd73f2743aa92bef2a"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 42
+        }
+      ]
+    },
+    {
+      "id": "eta_ctor_arm",
+      "source": {
+        "path": "fixtures/eta_ctor_arm.bend",
+        "sha256": "25510e2abd182476e08a4c3b0b22eda204f24b90b820909d237f8b8bdf339fb6"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 100
+        }
+      ]
+    },
+    {
+      "id": "array_dynamic_closure",
+      "source": {
+        "path": "fixtures/array_dynamic_closure.bend",
+        "sha256": "07e1f36a063002409bc231bb8ca918e0ea5814b129854f4389669a00d67a5a1f"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 9
+        }
+      ]
+    },
+    {
+      "id": "float_accumulation",
+      "source": {
+        "path": "fixtures/float_accumulation.bend",
+        "sha256": "93e0e625cf6a742d8f3a47701f8280111a989ebb76f563695437c67ab3da4297"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 2775
+        }
+      ]
+    },
+    {
+      "id": "float_builtin_agreement",
+      "source": {
+        "path": "fixtures/float_builtin_agreement.bend",
+        "sha256": "598bf5de2c2b221a2d8f72b34298c40b4ee311fbdba6802c53b27272beb28536"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": "-2 -1 -1 1.5"
+        }
+      ]
+    },
+    {
+      "id": "float_roundtrip",
+      "source": {
+        "path": "fixtures/float_roundtrip.bend",
+        "sha256": "7fc6dbd7a533f781d0a72632f38129be0591b7754cbfded2d8a644cc0933bfd4"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "independent-main-out",
+          "exportName": "main.out",
+          "groups": [
+            []
+          ],
+          "expected": 45
+        }
+      ]
+    },
+    {
+      "id": "marshal_erased_binders",
+      "source": {
+        "path": "fixtures/marshal_erased_binders.bend",
+        "sha256": "434bfa849bd88393922f0d8ee2012775e40af9220f6f3ec0a5403ed4c21907f3"
+      },
+      "auxiliary": [
+        {
+          "path": "fixtures/marshal_erased_binders.js",
+          "sha256": "3469a2e3cb9f5872b9f4bed2d473271a979e3270c57674c53edecec84bb7af51"
+        }
+      ],
+      "mode": "program",
+      "tests": [
+        {
+          "id": "independent-stdout",
+          "stdout": "121\n8\n",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "id": "shared_module_state",
+      "source": {
+        "path": "fixtures/shared_module_state.bend",
+        "sha256": "e6aa3a59587d40c9a473e75cf66180b36045309a6c1af17a9746f1810ee60af2"
+      },
+      "auxiliary": [
+        {
+          "path": "fixtures/shared_module_state.js",
+          "sha256": "d42ae5de0b56d7cba8835d7b00e50ee1565b8f6d3c97db5012d41816348e5123"
+        }
+      ],
+      "mode": "program",
+      "tests": [
+        {
+          "id": "independent-stdout",
+          "stdout": "1\n2\n2\n",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "id": "foreign_arrow_arity",
+      "source": {
+        "path": "fixtures/foreign_arrow_arity.bend",
+        "sha256": "fae4838a694a354cb061ff422981d16b65a508dd287faa12562cae1cfb72fd56"
+      },
+      "auxiliary": [
+        {
+          "path": "fixtures/foreign_arrow_arity.js",
+          "sha256": "de87179b5f9d27b8b1f0387795a049547c4b00bd64597dec0b629468302376ed"
+        }
+      ],
+      "mode": "program",
+      "tests": [
+        {
+          "id": "independent-stdout",
+          "stdout": "42\n",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "id": "marshal_nat_bigint",
+      "source": {
+        "path": "fixtures/marshal_nat_bigint.bend",
+        "sha256": "a99628e48b2258c70b71a4f1d3b707b7e18e0a2abbf6a9279e8e06e7c5ac50f3"
+      },
+      "auxiliary": [
+        {
+          "path": "fixtures/marshal_nat_bigint.js",
+          "sha256": "f10cbe24f0a29ae3ca3d2e53d53eb953eeb0152f4087efabf92086354bf0c607"
+        }
+      ],
+      "mode": "program",
+      "tests": [
+        {
+          "id": "independent-stdout",
+          "stdout": "zero\nsucc\nsucc\n",
+          "exitCode": 0
+        }
+      ]
+    }
+  ],
+  "status": "static fixtures only; selected checked acquisition pending"
+}

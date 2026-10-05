@@ -1,0 +1,336 @@
+{
+  "kind": "phase52-upstream-only-semantic-oracle-controls",
+  "complete": true,
+  "pass": true,
+  "executed": true,
+  "candidateExecuted": false,
+  "differentialObservations": 0,
+  "selectedScope": {
+    "kind": "new-reference-sources-only",
+    "fixtures": 1,
+    "scenarios": 6,
+    "reason": "Acquire only one new native-inline source; retain all previous28 checkedTSsource modules."
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/manifest.json",
+      "sha256": "f11a8c7cec87fdc33c1f46014bbe82e1673d4ba37a23ebf40391602bb57f50aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-native-reference-v1.json",
+      "sha256": "2ce0f3b41d3ee14680e6f007b1b3bbd114772d6669bd49a67b41ae2530c199dd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-reference-runner-v5.mjs",
+      "sha256": "cf15f976dc6459ce03ce4e834712e1a38a48170deb40611a373250e10e8540a7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v4.mjs",
+      "sha256": "545f4c93a7c155b7c11445a4b79e473dc93ee51673479ee23a3180b7e21be7d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+      "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/native-inline-order-v1.bend",
+      "sha256": "f79e281b9b7d8869ae2628484c978d502a11357e77710cd2782ffce4fc1ace86"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/modules/native-inline-order.mjs",
+      "sha256": "eee1b658942c4a03c895262091bc53a601d306767514f4357ebb63901df639ad"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/modules/native-inline-order.mjs.json",
+      "sha256": "979eafad007b879f8427454a6530966f14a36c9177f6559d6f8ee5c43343c4de"
+    }
+  ],
+  "observations": [
+    {
+      "fixture": "native-inline-order",
+      "test": "complex-getter-order",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v4.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/modules/native-inline-order.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--complex-getter-order.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--complex-getter-order.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "complex-getter-order",
+        "events": [
+          [
+            "callback",
+            35
+          ],
+          [
+            "builtin-get",
+            "Math.imul"
+          ],
+          [
+            "builtin",
+            "Math.imul",
+            [
+              42,
+              3
+            ]
+          ]
+        ],
+        "value": 126,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "prior-let-getter-order",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v4.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/modules/native-inline-order.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--prior-let-getter-order.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--prior-let-getter-order.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "prior-let-getter-order",
+        "events": [
+          [
+            "callback",
+            35
+          ],
+          [
+            "builtin-get",
+            "Math.imul"
+          ],
+          [
+            "builtin",
+            "Math.imul",
+            [
+              42,
+              3
+            ]
+          ]
+        ],
+        "value": 126,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "complex-throw-after-callback",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v4.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/modules/native-inline-order.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--complex-throw-after-callback.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--complex-throw-after-callback.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "complex-throw-after-callback",
+        "events": [
+          [
+            "callback",
+            35
+          ],
+          [
+            "builtin",
+            "Math.imul",
+            [
+              42,
+              3
+            ]
+          ]
+        ],
+        "outcome": "throw",
+        "error": {
+          "type": "object",
+          "name": "Error",
+          "message": "phase52-hook:Math.imul"
+        }
+      }
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "double-repeat-coercion",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v4.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/modules/native-inline-order.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--double-repeat-coercion.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--double-repeat-coercion.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "double-repeat-coercion",
+        "events": [
+          [
+            "callback",
+            0
+          ],
+          [
+            "coercion",
+            "default",
+            1
+          ],
+          [
+            "coercion",
+            "default",
+            2
+          ]
+        ],
+        "value": {
+          "$bigint": "6"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "double-second-coercion-error",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v4.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/modules/native-inline-order.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--double-second-coercion-error.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--double-second-coercion-error.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "double-second-coercion-error",
+        "events": [
+          [
+            "callback",
+            0
+          ],
+          [
+            "coercion",
+            "default",
+            1
+          ],
+          [
+            "coercion",
+            "default",
+            2
+          ]
+        ],
+        "outcome": "throw",
+        "error": {
+          "type": "object",
+          "name": "Error",
+          "message": "phase52-second-coercion"
+        }
+      }
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "aliased-array-complete-state",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v4.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/modules/native-inline-order.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--aliased-array-complete-state.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/native-inline-order--aliased-array-complete-state.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "aliased-array-complete-state",
+        "events": [],
+        "resultInputAlias": true,
+        "inputs": [
+          [
+            [
+              11,
+              22,
+              99,
+              44
+            ],
+            6,
+            99
+          ]
+        ],
+        "value": [
+          11,
+          22,
+          99,
+          44
+        ],
+        "outcome": "return"
+      }
+    }
+  ],
+  "programAdapter": {
+    "identity": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+      "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+    },
+    "code": "// Upstream executes js_book as CommonJS (.cjs). Compile identical bytes with that host.\nimport assert from 'node:assert/strict';\nimport fs from 'node:fs';\nimport path from 'node:path';\nimport Module from 'node:module';\nconst [argument,...args]=process.argv.slice(2);assert(argument);\nconst file=fs.realpathSync(argument);process.argv=[process.execPath,file,...args];\nconst program=new Module(file);program.filename=file;program.paths=Module._nodeModulePaths(path.dirname(file));\nprogram._compile(fs.readFileSync(file,'utf8'),file);\n"
+  },
+  "scope": "Pinned TypeScript only. Frozen independent fixture values/errors and observed hook/getter traces. No candidate, differential or performance qualification.",
+  "counts": {
+    "pass": 6,
+    "fail": 0,
+    "total": 6
+  }
+}

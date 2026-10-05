@@ -1,0 +1,28 @@
+{
+  "id": "double-second-coercion-error",
+  "exportName": "doubled",
+  "groups": [
+    [
+      {
+        "$callback": "coerceThrow2"
+      }
+    ]
+  ],
+  "expectedError": "phase52-second-coercion",
+  "expectedEvents": [
+    [
+      "callback",
+      0
+    ],
+    [
+      "coercion",
+      "default",
+      1
+    ],
+    [
+      "coercion",
+      "default",
+      2
+    ]
+  ]
+}

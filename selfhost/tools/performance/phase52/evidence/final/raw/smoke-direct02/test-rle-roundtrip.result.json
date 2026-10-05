@@ -1,0 +1,85 @@
+{
+  "kind": "program-execution-v1",
+  "complete": true,
+  "pass": true,
+  "stage": "done",
+  "node": "v24.18.0",
+  "execArgv": [
+    "--max-old-space-size=1024"
+  ],
+  "calibration": [
+    {
+      "repetitions": 1,
+      "executionMs": 0.19069199999999853,
+      "checksum": 11,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 0.17470600000000047
+        }
+      ]
+    }
+  ],
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/prepared-direct02/modules/test-rle-roundtrip.mjs",
+    "sha256": "674ae8ca4e1fee732c42a0b8c92fa533e9046a59467ec2f0dc2ba7312620f1e7"
+  },
+  "config": {
+    "args": [],
+    "expected": 11,
+    "exportName": "main.out",
+    "warmupCalls": 0,
+    "warmupMs": 0,
+    "calibrationMs": 0,
+    "targetMs": 1,
+    "maxRepetitions": 1
+  },
+  "configSha256": "38c33b69d15f252a188c48a0a9a2e25c7eae55deefc9eb85f30076c4a398ef8e",
+  "toolSha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+  "affinity": "Cpus_allowed_list:\t3",
+  "importMs": 2.2034160000000043,
+  "firstResult": 11,
+  "firstCallMs": 0.7271440000000027,
+  "warmup": {
+    "calls": 0,
+    "ms": 0.007228999999995267
+  },
+  "repetitions": 1,
+  "executionMs": 0.15709400000000073,
+  "checksum": 11,
+  "halves": [
+    {
+      "calls": 1,
+      "ms": 0.14914199999999767
+    }
+  ],
+  "msPerCall": 0.15709400000000073,
+  "halfDriftPercent": null,
+  "wallMs": 5.222847000000002,
+  "resourceUsage": {
+    "userCPUTime": 33836,
+    "systemCPUTime": 7519,
+    "maxRSS": 54192,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 3632,
+    "majorPageFault": 0,
+    "swappedOut": 0,
+    "fsRead": 0,
+    "fsWrite": 8,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 47,
+    "involuntaryContextSwitches": 43
+  },
+  "peakRssKiB": 54192,
+  "memory": {
+    "rss": 55492608,
+    "heapTotal": 8105984,
+    "heapUsed": 5335416,
+    "external": 2355929,
+    "arrayBuffers": 143647
+  }
+}

@@ -2952,3 +2952,50 @@ counterexamples and clean screens. One checked build 53.48s, full45 comparison
 19m03s. At the accounting cutoff 73m26s elapsed, observed process occupancy 36m02s;
 other time includes code/review/docs/orchestration, not simply waiting. All 103
 unrelated files and failed receipts remain preserved. No PR comment was posted.
+
+
+## Phase52 direct JavaScript backend — 2026-10-05
+
+[Design](../design/phase52/direct-javascript.md),
+[report](../implementation/phase52/README.md),
+[results and all-point chart](../implementation/phase52/results.md).
+The prototype gate passed within one hour: eight points measured1.03522× TS
+versus same-run Phase51's5.23997×. Expansion produced a Bend-written direct
+backend with native callable/data layout, tail cycles, erasure/partial calls,
+program output, IO and FFI. It is explicit `--direct-js`; the legacy mutable-G
+contract and default mode remain available.
+
+Selected direct06 passes all45 benchmark points and669 fresh samples. Equal-point
+execution time improves **2.630605× → 1.123799× TS**, a **2.340815× speedup**.
+Equal-source weighting improves3.582113× →1.129112×. Twenty-nine points lie within
+10% of TS. Seven Phase51 regressions and three drift/spread flags remain in the
+aggregate; two older specialized paths already beat TS. Historical campaign
+ratios are not reused as denominators. Generated module bytes decrease about75%;
+Bend source grows9.0% because both backends remain, adding1,746 code lines in
+nine modules while preserving all92 original modules.
+
+The atomic-intrinsic screen gains7.4%, below its prewritten10% target; retention
+is explicitly a separate scoped decision. Exact byte reconstruction accounts
+for375 expansions and52 wrapper removals. Computed-operand IIFEs then lose25.75%
+and are rejected; the precise V8 cause is unestablished. The original incomplete
+direct05 timing, parse/harness/permission failures and all rejected images remain
+preserved. Direct06 is installed; release verification,42 legacy CLI checks,18 direct CLI
+checks and the final3-case/27-sample portable replay pass. Sandbox Clang/Node
+refusals and a test-controller output-directory collision are separately preserved
+with successful retries; no compiler change was required to resolve them.
+
+Independent semantic qualification is **95/96**, not full conformance: the NaN
+source oracle40 differs from both TS1 and direct39. The direct26-row JS census
+and eight maintained suites pass. Legacy core8 emits exactly Phase51 bytes and
+passes its fresh120-sample gate after a separate20s budget-exhausted attempt.
+Compiler throughput, arbitrary host-hook parity and a new self-emitted fixed
+point are not established. Analysis limits, including512 selected definitions,
+are explicit refusals. Native/frontend broader inventories remain historical.
+
+**Updated frontier:** use ordered statement-prefix/value lowering for a small
+causal arithmetic experiment; keep NaN/raw-bit and numeric-table work separate.
+Investigate general reuse of legacy optimizations that already beat TS, then
+scale graph analysis before compiler-sized self-emission. A narrow checked
+build/emission/timing iteration is roughly three minutes of target work; full45
+costs about22 minutes including acquisition. Preserve scoped correctness and
+exact output checks. No PR comment was posted.

@@ -1,0 +1,5932 @@
+{
+  "kind": "phase29-independent-primitive-guards",
+  "complete": true,
+  "pass": true,
+  "node": "v24.18.0",
+  "args": [
+    "--stack-size=4096",
+    "--max-old-space-size=1024"
+  ],
+  "affinity": "Cpus_allowed_list:\t3",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/equality/api.mjs",
+      "sha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/tools/typed-driver.mjs",
+      "sha256": "ba2bbe9baba59b2f781750fdec2a46b4c0a1cb2553e8e89c3c168c42762fc7f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/src/runtime.mjs",
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/maintained06/arm-config.json",
+      "sha256": "cd1aa1fa3f94a24834b58fd71b35d9ff365259a81d6b62045a647a538888ff8c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase29/controls-guards.mjs",
+      "sha256": "ade5a668dbc139fb3d10d59d44875dbe4873d26a75f2908e77bbaefb31a30a68"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase29/controls-operations.json",
+      "sha256": "67d191c47a2d27f1e334185ebee9d4d959d6227a9743288365318dc817e0ce09"
+    }
+  ],
+  "scope": "Synthetic KDefs; recognizer refusal, emitted code ABI and host-observable argument order. No timing or checked-source claim.",
+  "guards": [
+    {
+      "name": "U32.add-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.add-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.add-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.sub-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.sub-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.mul-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mul-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.div-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.div-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.mod-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.mod-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.and-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.and-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.or-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.or-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.xor-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.xor-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.inc-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.inc-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.not-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.not-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.shl-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shl-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.shr-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shr-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.shln-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shln-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.shrn-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.shrn-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.is_zero-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_zero-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.is_eq-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_eq-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.is_ne-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ne-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.is_lt-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_lt-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.is_le-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_le-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.is_gt-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_gt-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.is_ge-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.is_ge-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.to_nat-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_nat-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.from_nat-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.from_nat-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "U32.to_f32-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32.to_f32-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.add-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.add-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.sub-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sub-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.mul-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mul-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.div-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.div-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.mod-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.mod-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.is_eq-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_eq-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.is_ne-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ne-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.is_lt-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_lt-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.is_le-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_le-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.is_gt-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_gt-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.is_ge-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-arguments-3",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-argument-1-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-argument-1-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-argument-1-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-argument-1-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.is_ge-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.neg-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.neg-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.sqrt-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sqrt-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.exp-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.exp-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.log-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.log2-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log2-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.log10-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.log10-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.sin-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sin-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.cos-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cos-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.tan-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tan-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.asin-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.asin-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.acos-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.acos-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.atan-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.atan-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.sinh-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.sinh-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.cosh-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.cosh-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.tanh-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.tanh-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.floor-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.floor-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.ceil-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.ceil-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.trunc-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.trunc-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-accepted",
+      "expected": true,
+      "got": true
+    },
+    {
+      "name": "F32.abs-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-template",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-annotated-foreign",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-wrong-arity-low",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-wrong-arity-high",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-arguments-0",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-arguments-2",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-argument-0-erased",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-argument-0-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-argument-0-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-argument-0-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-result-wrong-type",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-result-parameterized",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-result-removed",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32.abs-result-extra-all",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32-owner-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32-owner-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32-owner-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32/U32-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32/U32-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "U32/U32-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Nil-owner-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Nil-owner-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Nil-owner-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Nil/WNil-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Nil/WNil-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Nil/WNil-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Con-owner-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Con-owner-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Con-owner-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Con/WCon-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Con/WCon-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Word.Con/WCon-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Bool-owner-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Bool-owner-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Bool-owner-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Bool/True-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Bool/True-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Bool/True-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Bool/False-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Bool/False-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Bool/False-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Nat-owner-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Nat-owner-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Nat-owner-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Nat/Zero-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Nat/Zero-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Nat/Zero-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Nat/Succ-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Nat/Succ-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "Nat/Succ-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32-owner-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32-owner-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32-owner-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32/F32-non-native",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32/F32-wrong-kind",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "F32/F32-missing",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "unsupported-U32.addx",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "unsupported-xU32.add",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "unsupported-Nat.add",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "unsupported-F32.pow",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "unsupported-F32.to_u32",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "non-call-tag",
+      "expected": false,
+      "got": false
+    },
+    {
+      "name": "absent-definition",
+      "expected": false,
+      "got": false
+    }
+  ],
+  "observations": [
+    {
+      "name": "U32.add",
+      "fail": "none",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true,
+      "result": 13
+    },
+    {
+      "name": "U32.add",
+      "fail": "left",
+      "trace": [
+        "left"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.add",
+      "fail": "right",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.div",
+      "fail": "none",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true,
+      "result": 0
+    },
+    {
+      "name": "U32.div",
+      "fail": "left",
+      "trace": [
+        "left"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.div",
+      "fail": "right",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.mod",
+      "fail": "none",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true,
+      "result": 13
+    },
+    {
+      "name": "U32.mod",
+      "fail": "left",
+      "trace": [
+        "left"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.mod",
+      "fail": "right",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.shln",
+      "fail": "none",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true,
+      "result": 0
+    },
+    {
+      "name": "U32.shln",
+      "fail": "left",
+      "trace": [
+        "left"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.shln",
+      "fail": "right",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.shrn",
+      "fail": "none",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true,
+      "result": 0
+    },
+    {
+      "name": "U32.shrn",
+      "fail": "left",
+      "trace": [
+        "left"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.shrn",
+      "fail": "right",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.mul",
+      "fail": "none",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true,
+      "result": 0
+    },
+    {
+      "name": "U32.mul",
+      "fail": "left",
+      "trace": [
+        "left"
+      ],
+      "pass": true
+    },
+    {
+      "name": "U32.mul",
+      "fail": "right",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true
+    },
+    {
+      "name": "F32.add",
+      "fail": "none",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true,
+      "result": 3.5
+    },
+    {
+      "name": "F32.add",
+      "fail": "left",
+      "trace": [
+        "left"
+      ],
+      "pass": true
+    },
+    {
+      "name": "F32.add",
+      "fail": "right",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true
+    },
+    {
+      "name": "F32.div",
+      "fail": "none",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true,
+      "result": null
+    },
+    {
+      "name": "F32.div",
+      "fail": "left",
+      "trace": [
+        "left"
+      ],
+      "pass": true
+    },
+    {
+      "name": "F32.div",
+      "fail": "right",
+      "trace": [
+        "left",
+        "right"
+      ],
+      "pass": true
+    },
+    {
+      "name": "public-partial-descriptor",
+      "arity": 2,
+      "env": null,
+      "bound": [
+        4294967295
+      ],
+      "result": 1,
+      "pass": true
+    }
+  ],
+  "diagnostic": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/maintained06/primitive-guards/diagnostic-api.mjs",
+    "sha256": "018ac60039d06afeed4a216a1af86a506d2c6c8664537375fa56354fd433b0cd",
+    "parentSha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a",
+    "appendOnly": true,
+    "unchangedPrefixBytes": 1790409
+  },
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/maintained06/primitive-guards/controls.mjs",
+    "sha256": "6b7649aac572954dda8b977097405d30c4ad44d8b7f655a1c457318bce4c69dd"
+  },
+  "emission": {
+    "primitiveMarkers": 8
+  },
+  "changedInputs": []
+}

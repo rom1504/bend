@@ -1,0 +1,1136 @@
+{
+  "kind": "phase27-selected-arm-controls",
+  "complete": true,
+  "pass": true,
+  "node": "v24.18.0",
+  "args": [
+    "--stack-size=4096",
+    "--max-old-space-size=1024"
+  ],
+  "affinity": "Cpus_allowed_list:\t3",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/equality/api.mjs",
+      "sha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/tools/typed-driver.mjs",
+      "sha256": "ba2bbe9baba59b2f781750fdec2a46b4c0a1cb2553e8e89c3c168c42762fc7f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/src/runtime.mjs",
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/js/test-arm.mjs",
+      "sha256": "6fd15b932738169fee1c357052cf4d294f45f64ee48693065a98206253072077"
+    }
+  ],
+  "observations": [
+    {
+      "name": "direct-descriptor-arity",
+      "value": 4
+    },
+    {
+      "name": "direct-descriptor-env",
+      "value": null
+    },
+    {
+      "name": "direct-descriptor-bound",
+      "value": [
+        "7n",
+        "9n"
+      ]
+    },
+    {
+      "name": "direct-descriptor",
+      "value": {
+        "keys": [
+          "arity",
+          "code",
+          "env",
+          "bound"
+        ],
+        "arity": 4,
+        "env": null,
+        "bound": [
+          "7n",
+          "9n"
+        ],
+        "boundOwnIndices": [
+          true,
+          true
+        ],
+        "codeType": "function",
+        "codeName": "",
+        "codeLength": 1,
+        "codeSha256": "c4a8e1935f022a14ab0b15a4cb29ca3980063a762c48fafc5b5c7c124f6c60b8",
+        "attributes": {
+          "arity": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          },
+          "code": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          },
+          "env": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          },
+          "bound": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          }
+        }
+      }
+    },
+    {
+      "name": "field-snapshot-owned",
+      "value": [
+        "7n",
+        "9n"
+      ]
+    },
+    {
+      "name": "partial-original-unmodified",
+      "value": [
+        "7n",
+        "9n"
+      ]
+    },
+    {
+      "name": "partial-next-bound",
+      "value": [
+        "7n",
+        "9n",
+        "11n"
+      ]
+    },
+    {
+      "name": "staged-field-argument-order",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "7n",
+          "9n",
+          "11n",
+          "13n"
+        ]
+      }
+    },
+    {
+      "name": "saturated-field-argument-order",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "2n",
+          "3n",
+          "5n",
+          "7n"
+        ]
+      }
+    },
+    {
+      "name": "higher-order-partial",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "7n",
+          "9n",
+          "11n",
+          "17n"
+        ]
+      }
+    },
+    {
+      "name": "captured-env-null",
+      "value": null
+    },
+    {
+      "name": "captured-descriptor",
+      "value": {
+        "keys": [
+          "arity",
+          "code",
+          "env",
+          "bound"
+        ],
+        "arity": 4,
+        "env": null,
+        "bound": [
+          "29n",
+          "31n"
+        ],
+        "boundOwnIndices": [
+          true,
+          true
+        ],
+        "codeType": "function",
+        "codeName": "",
+        "codeLength": 1,
+        "codeSha256": "f3bbc1cba148ac046e22747cbca41f2defde0ceeb88696f1477ebbd7abbf35c9",
+        "attributes": {
+          "arity": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          },
+          "code": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          },
+          "env": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          },
+          "bound": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          }
+        }
+      }
+    },
+    {
+      "name": "captured-value-order",
+      "value": {
+        "$": "ArmCap",
+        "a": [
+          "23n",
+          "29n",
+          "31n",
+          "37n",
+          "41n"
+        ]
+      }
+    },
+    {
+      "name": "annotated-arm",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "43n",
+          "47n",
+          "53n",
+          "59n"
+        ]
+      }
+    },
+    {
+      "name": "eta-short-overapplication",
+      "value": "62n"
+    },
+    {
+      "name": "function-result-overapplication",
+      "value": "72n"
+    },
+    {
+      "name": "function-field-called-values",
+      "value": [
+        "61n",
+        "71n"
+      ]
+    },
+    {
+      "name": "partial-does-not-run-body",
+      "value": [
+        "4n"
+      ]
+    },
+    {
+      "name": "second-partial-does-not-run-body",
+      "value": [
+        "4n"
+      ]
+    },
+    {
+      "name": "late-body-result",
+      "value": "4n"
+    },
+    {
+      "name": "late-body-once",
+      "value": [
+        "4n"
+      ]
+    },
+    {
+      "name": "effectful-arm-evaluated-at-match",
+      "value": [
+        "0n"
+      ]
+    },
+    {
+      "name": "effectful-arm-descriptor",
+      "value": 4
+    },
+    {
+      "name": "effectful-arm-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "73n",
+          "79n",
+          "83n",
+          "89n"
+        ]
+      }
+    },
+    {
+      "name": "erased-slot-suppressed",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          null,
+          "101n",
+          "103n",
+          "107n"
+        ]
+      }
+    },
+    {
+      "name": "equal-arity-arm",
+      "value": {
+        "$": "ArmPairOut",
+        "a": [
+          "109n",
+          "113n"
+        ]
+      }
+    },
+    {
+      "name": "zero-field-descriptor",
+      "value": 2
+    },
+    {
+      "name": "zero-field-result",
+      "value": {
+        "$": "ArmPairOut",
+        "a": [
+          "127n",
+          "131n"
+        ]
+      }
+    },
+    {
+      "name": "lifted-field-and-argument-order",
+      "value": "137n"
+    },
+    {
+      "name": "lifted-descriptor",
+      "value": {
+        "keys": [
+          "arity",
+          "code",
+          "env",
+          "bound"
+        ],
+        "arity": 35,
+        "env": null,
+        "bound": [
+          "137n",
+          "139n"
+        ],
+        "boundOwnIndices": [
+          true,
+          true
+        ],
+        "codeType": "function",
+        "codeName": "",
+        "codeLength": 1,
+        "codeSha256": "deac9ce2f26804e61d031f2d918dfa6fc13e8d0b07572beabeb5d4c9a2257f08",
+        "attributes": {
+          "arity": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          },
+          "code": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          },
+          "env": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          },
+          "bound": {
+            "enumerable": true,
+            "writable": true,
+            "configurable": true
+          }
+        }
+      }
+    },
+    {
+      "name": "trusted-foreign-tag",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "151n",
+          "157n",
+          "163n",
+          "167n"
+        ]
+      }
+    },
+    {
+      "name": "named-fields-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "173n",
+          "179n",
+          "181n",
+          "191n"
+        ]
+      }
+    },
+    {
+      "name": "named-fields-order",
+      "value": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "field-getter-order",
+      "value": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "field-getter-snapshot",
+      "value": [
+        "193n",
+        "194n"
+      ]
+    },
+    {
+      "name": "frozen-field-vector",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "197n",
+          "199n",
+          "211n",
+          "223n"
+        ]
+      }
+    },
+    {
+      "name": "sparse-snapshot-holes",
+      "value": [
+        false,
+        true
+      ]
+    },
+    {
+      "name": "sparse-snapshot-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          null,
+          "227n",
+          "229n",
+          "233n"
+        ]
+      }
+    },
+    {
+      "name": "length-0-descriptor-bound",
+      "value": []
+    },
+    {
+      "name": "length-0-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "251n",
+          "252n",
+          "253n",
+          "254n"
+        ]
+      }
+    },
+    {
+      "name": "length-1-descriptor-bound",
+      "value": [
+        "239n"
+      ]
+    },
+    {
+      "name": "length-1-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "239n",
+          "251n",
+          "252n",
+          "253n"
+        ]
+      }
+    },
+    {
+      "name": "length-2-descriptor-bound",
+      "value": [
+        "239n",
+        "240n"
+      ]
+    },
+    {
+      "name": "length-2-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "239n",
+          "240n",
+          "251n",
+          "252n"
+        ]
+      }
+    },
+    {
+      "name": "length-3-descriptor-bound",
+      "value": [
+        "239n",
+        "240n",
+        "241n"
+      ]
+    },
+    {
+      "name": "length-3-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "239n",
+          "240n",
+          "241n",
+          "251n"
+        ]
+      }
+    },
+    {
+      "name": "length-four-eager-saturation",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "239n",
+          "240n",
+          "241n",
+          "242n"
+        ]
+      }
+    },
+    {
+      "name": "long-fields-overapply",
+      "value": {
+        "name": "Error",
+        "message": "attempt to call non-function [object Object]"
+      }
+    },
+    {
+      "name": "custom-slice-0-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "271n",
+          "271n",
+          "271n",
+          "271n"
+        ]
+      }
+    },
+    {
+      "name": "custom-slice-0-trace",
+      "value": [
+        "source.length",
+        "source.slice",
+        [
+          "slice-call-this",
+          true,
+          "args",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "custom-slice-1-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "263n",
+          "271n",
+          "271n",
+          "271n"
+        ]
+      }
+    },
+    {
+      "name": "custom-slice-1-trace",
+      "value": [
+        "source.length",
+        "source.slice",
+        [
+          "slice-call-this",
+          true,
+          "args",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "custom-slice-2-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "263n",
+          "264n",
+          "271n",
+          "271n"
+        ]
+      }
+    },
+    {
+      "name": "custom-slice-2-trace",
+      "value": [
+        "source.length",
+        "source.slice",
+        [
+          "slice-call-this",
+          true,
+          "args",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "custom-slice-four-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "263n",
+          "264n",
+          "265n",
+          "266n"
+        ]
+      }
+    },
+    {
+      "name": "custom-slice-4-trace",
+      "value": [
+        "source.length",
+        "source.slice",
+        [
+          "slice-call-this",
+          true,
+          "args",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "custom-slice-five-overapply",
+      "value": {
+        "name": "Error",
+        "message": "attempt to call non-function [object Object]"
+      }
+    },
+    {
+      "name": "custom-slice-five-trace",
+      "value": [
+        "source.length",
+        "source.slice",
+        [
+          "slice-call-this",
+          true,
+          "args",
+          0
+        ]
+      ]
+    },
+    {
+      "name": "array-proxy-trace-before-descriptor",
+      "value": [
+        "record.a",
+        [
+          "get",
+          "length"
+        ],
+        [
+          "get",
+          "slice"
+        ],
+        [
+          "get",
+          "length"
+        ],
+        [
+          "get",
+          "constructor"
+        ],
+        [
+          "has",
+          "0"
+        ],
+        [
+          "get",
+          "0"
+        ],
+        [
+          "has",
+          "1"
+        ],
+        [
+          "get",
+          "1"
+        ]
+      ]
+    },
+    {
+      "name": "array-proxy-trace",
+      "value": [
+        "record.a",
+        [
+          "get",
+          "length"
+        ],
+        [
+          "get",
+          "slice"
+        ],
+        [
+          "get",
+          "length"
+        ],
+        [
+          "get",
+          "constructor"
+        ],
+        [
+          "has",
+          "0"
+        ],
+        [
+          "get",
+          "0"
+        ],
+        [
+          "has",
+          "1"
+        ],
+        [
+          "get",
+          "1"
+        ]
+      ]
+    },
+    {
+      "name": "returned-vector-proxy-trace-before-descriptor",
+      "value": [
+        "record.a",
+        "source.length",
+        "source.slice-call",
+        [
+          "result-get",
+          "length"
+        ],
+        [
+          "result-get",
+          "length"
+        ]
+      ]
+    },
+    {
+      "name": "returned-vector-proxy-trace",
+      "value": [
+        "record.a",
+        "source.length",
+        "source.slice-call",
+        [
+          "result-get",
+          "length"
+        ],
+        [
+          "result-get",
+          "length"
+        ]
+      ]
+    },
+    {
+      "name": "throwing-slice",
+      "value": {
+        "name": "Error",
+        "message": "slice-sentinel"
+      }
+    },
+    {
+      "name": "throwing-slice-trace",
+      "value": [
+        "record.a",
+        "slice-throw"
+      ]
+    },
+    {
+      "name": "throwing-field",
+      "value": {
+        "name": "Error",
+        "message": "field-sentinel"
+      }
+    },
+    {
+      "name": "throwing-field-trace",
+      "value": [
+        "record.a",
+        "field0",
+        "field1"
+      ]
+    },
+    {
+      "name": "zero-length-no-slice-trace-before-descriptor",
+      "value": [
+        "record.a",
+        "zero.length"
+      ]
+    },
+    {
+      "name": "zero-length-no-slice-trace",
+      "value": [
+        "record.a",
+        "zero.length"
+      ]
+    },
+    {
+      "name": "changing-source-length-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "317n",
+          "337n",
+          "347n",
+          "349n"
+        ]
+      }
+    },
+    {
+      "name": "changing-source-length-trace",
+      "value": [
+        [
+          "length",
+          2
+        ],
+        [
+          "length",
+          1
+        ]
+      ]
+    },
+    {
+      "name": "changing-copied-length-result",
+      "value": {
+        "$": "ArmOut",
+        "a": [
+          "353n",
+          "359n",
+          "367n",
+          "373n"
+        ]
+      }
+    },
+    {
+      "name": "changing-copied-length-trace",
+      "value": [
+        [
+          "length",
+          3
+        ],
+        [
+          "length",
+          4
+        ],
+        [
+          "length",
+          4
+        ],
+        [
+          "length",
+          1
+        ]
+      ]
+    }
+  ],
+  "scope": "Synthetic KDefs emitted using unchanged production j_library; not checked source or a new production export. No timing claim.",
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/maintained06/arm/program.mjs",
+    "sha256": "432db273174d56488afe3c92012bef58a1d4c255d218c45173dfeeb4753f100b"
+  },
+  "runtimePrefixSha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+  "emission": [
+    {
+      "name": "direct",
+      "prebound": false,
+      "bytes": 194
+    },
+    {
+      "name": "annotated",
+      "prebound": false,
+      "bytes": 200
+    },
+    {
+      "name": "captured",
+      "prebound": false,
+      "bytes": 248
+    },
+    {
+      "name": "lateEffect",
+      "prebound": false,
+      "bytes": 180
+    },
+    {
+      "name": "effectfulArm",
+      "prebound": false,
+      "bytes": 109
+    },
+    {
+      "name": "erased",
+      "prebound": false,
+      "bytes": 193
+    },
+    {
+      "name": "etaShort",
+      "prebound": false,
+      "bytes": 112
+    },
+    {
+      "name": "functionResult",
+      "prebound": false,
+      "bytes": 152
+    },
+    {
+      "name": "equalArity",
+      "prebound": false,
+      "bytes": 164
+    },
+    {
+      "name": "equalAnnotated",
+      "prebound": false,
+      "bytes": 172
+    },
+    {
+      "name": "equalCaptured",
+      "prebound": false,
+      "bytes": 213
+    },
+    {
+      "name": "equalFunction",
+      "prebound": false,
+      "bytes": 170
+    },
+    {
+      "name": "equalEffect",
+      "prebound": false,
+      "bytes": 154
+    },
+    {
+      "name": "zeroFields",
+      "prebound": false,
+      "bytes": 162
+    },
+    {
+      "name": "lifted",
+      "prebound": false,
+      "bytes": 682
+    }
+  ],
+  "exactObservations": [
+    {
+      "name": "annotated-exact",
+      "value": {
+        "$": "ArmPairOut",
+        "a": [
+          "379n",
+          "383n"
+        ]
+      }
+    },
+    {
+      "name": "captured-exact",
+      "value": {
+        "$": "ArmPairOut",
+        "a": [
+          "389n",
+          "401n"
+        ]
+      }
+    },
+    {
+      "name": "function-return-not-forced",
+      "value": [
+        "421n"
+      ]
+    },
+    {
+      "name": "function-result-overapply",
+      "value": "422n"
+    },
+    {
+      "name": "function-result-called-once",
+      "value": [
+        "421n"
+      ]
+    },
+    {
+      "name": "exact-short-0-arity",
+      "value": 2
+    },
+    {
+      "name": "exact-short-0-bound",
+      "value": []
+    },
+    {
+      "name": "exact-short-0-completion",
+      "value": {
+        "$": "ArmPairOut",
+        "a": [
+          "439n",
+          "439n"
+        ]
+      }
+    },
+    {
+      "name": "exact-short-1-arity",
+      "value": 2
+    },
+    {
+      "name": "exact-short-1-bound",
+      "value": [
+        "431n"
+      ]
+    },
+    {
+      "name": "exact-short-1-completion",
+      "value": {
+        "$": "ArmPairOut",
+        "a": [
+          "431n",
+          "439n"
+        ]
+      }
+    },
+    {
+      "name": "exact-two-fields",
+      "value": {
+        "$": "ArmPairOut",
+        "a": [
+          "431n",
+          "432n"
+        ]
+      }
+    },
+    {
+      "name": "exact-copy-0-completion",
+      "value": {
+        "$": "ArmPairOut",
+        "a": [
+          "449n",
+          "449n"
+        ]
+      }
+    },
+    {
+      "name": "exact-copy-0-trace",
+      "value": [
+        "length",
+        "slice"
+      ]
+    },
+    {
+      "name": "exact-copy-1-completion",
+      "value": {
+        "$": "ArmPairOut",
+        "a": [
+          "443n",
+          "449n"
+        ]
+      }
+    },
+    {
+      "name": "exact-copy-1-trace",
+      "value": [
+        "length",
+        "slice"
+      ]
+    },
+    {
+      "name": "exact-copy-two",
+      "value": {
+        "$": "ArmPairOut",
+        "a": [
+          "443n",
+          "444n"
+        ]
+      }
+    },
+    {
+      "name": "exact-copy-2-trace",
+      "value": [
+        "length",
+        "slice"
+      ]
+    },
+    {
+      "name": "exact-changing-copy-result",
+      "value": "461n"
+    },
+    {
+      "name": "exact-changing-copy-order",
+      "value": [
+        "slice",
+        [
+          "length",
+          3
+        ],
+        [
+          "length",
+          2
+        ],
+        [
+          "length",
+          2
+        ],
+        [
+          "length",
+          1
+        ],
+        [
+          "tick",
+          "461n"
+        ]
+      ]
+    },
+    {
+      "name": "exact-field-error",
+      "value": "exact-field-sentinel"
+    },
+    {
+      "name": "exact-field-read-order",
+      "value": [
+        0,
+        1
+      ]
+    }
+  ],
+  "changedInputs": []
+}

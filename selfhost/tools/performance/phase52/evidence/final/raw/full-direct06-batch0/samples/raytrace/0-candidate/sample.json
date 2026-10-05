@@ -1,0 +1,92 @@
+{
+  "kind": "program-execution-v1",
+  "complete": true,
+  "pass": true,
+  "stage": "done",
+  "node": "v24.18.0",
+  "execArgv": [
+    "--stack-size=4096",
+    "--max-old-space-size=1024"
+  ],
+  "calibration": [
+    {
+      "repetitions": 1,
+      "executionMs": 57.18530400000009,
+      "checksum": 402971,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 57.15556300000003
+        }
+      ]
+    }
+  ],
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/full-direct06-batch0/modules/candidate/modules/raytrace.mjs",
+    "sha256": "15a989ed5e5edb5d37c323f0ec5d5352ec459f95af0f07ed1f8d611693f270a5"
+  },
+  "config": {
+    "args": [
+      80,
+      0
+    ],
+    "expected": 402971,
+    "exportName": "bench",
+    "warmupCalls": 1,
+    "warmupMs": 1000,
+    "calibrationMs": 50,
+    "targetMs": 300
+  },
+  "configSha256": "9cc76ab8531a2dd0b03f6c7d794206294557ec8c3a52b622a8cc751fc3cba18f",
+  "toolSha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+  "affinity": "Cpus_allowed_list:\t3",
+  "importMs": 2.7559380000000004,
+  "firstResult": 402971,
+  "firstCallMs": 136.72600899999998,
+  "warmup": {
+    "calls": 18,
+    "ms": 1043.408827
+  },
+  "repetitions": 6,
+  "executionMs": 344.3482789999998,
+  "checksum": 2417826,
+  "halves": [
+    {
+      "calls": 3,
+      "ms": 172.38340599999992
+    },
+    {
+      "calls": 3,
+      "ms": 171.94367499999998
+    }
+  ],
+  "msPerCall": 57.3913798333333,
+  "halfDriftPercent": -0.25508893820089806,
+  "wallMs": 1586.848757,
+  "resourceUsage": {
+    "userCPUTime": 1628691,
+    "systemCPUTime": 16019,
+    "maxRSS": 69036,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 6617,
+    "majorPageFault": 0,
+    "swappedOut": 0,
+    "fsRead": 0,
+    "fsWrite": 8,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 313,
+    "involuntaryContextSwitches": 317
+  },
+  "peakRssKiB": 69036,
+  "memory": {
+    "rss": 70066176,
+    "heapTotal": 10727424,
+    "heapUsed": 6281432,
+    "external": 2342280,
+    "arrayBuffers": 195534
+  }
+}

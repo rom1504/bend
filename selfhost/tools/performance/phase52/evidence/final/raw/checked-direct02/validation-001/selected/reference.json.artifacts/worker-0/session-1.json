@@ -1,0 +1,2004 @@
+{
+  "version": 2,
+  "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+  "adapterSha256": "da556bcef52ee52bee06afc68d42599c4789a016efd1fc63f6ece5ece0aa2cde",
+  "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+  "identitySha256": "5fadaf45392c9d8569c2a1241c8395914feb57f60ddc6767f7adec42b36fdead",
+  "workerNodeArgs": [
+    "--stack-size=4096",
+    "--max-old-space-size=1024"
+  ],
+  "worker": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/persistent-worker.mjs",
+  "workerCanonical": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/persistent-worker.mjs",
+  "workerSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+  "queueDirectory": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/queue-1",
+  "recycleAfter": 64,
+  "rssLimitMb": 1024,
+  "started": "2026-10-05T15:18:14.616Z",
+  "closed": true,
+  "requests": [
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "check/string_literal_long.bend",
+          "namespace": "check",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/check/string_literal_long.bend",
+          "sha256": "81c6ce02d4f618d30188c41506e2e2023f0359e61b3968e52b596eeaa86a7947",
+          "bytes": 6416,
+          "expected": "n => Nat.add(n, 6000n)",
+          "negative": false,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/0",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/0/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 0
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/0/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/0/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/0/worker.stderr"
+      },
+      "requestDigest": "2de80e876079b4900e342379c3b9b9160539fa5ccc97f3f64b03845635c079f8",
+      "resultDigest": "057048d0f767e1dd62704f17f5bda8b969046e4494fdc1162cd02856fbcf8612",
+      "status": "ok",
+      "prefixDigest": "28c93fd277f7e8040b1e1d1a1c9e1db521085c0c1939e8df039975f0635c40da"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "law-fill-changed-type",
+          "namespace": "law-fill-changed-type",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/law-fill-changed-type.bend",
+          "sha256": "c719b4e236725a698a2092eeab3915ab3d0da56a236e6666407386e3523d348f",
+          "bytes": 52,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "proof-or-law"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/1",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/1/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 1
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/1/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/1/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/1/worker.stderr"
+      },
+      "requestDigest": "2a728386ad5672eb9d2631301b21cbdf29170582117219df026e9e7e29fed681",
+      "resultDigest": "da40564f0654d2bd90becd76d6e8d76ebd9ffbd8afb68da4f19f2a52dbf02214",
+      "status": "error",
+      "prefixDigest": "a1391597ae3b90b0f209234d6d9bfb3e7529b57efd4376561b1e048be73dd9f8"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "law-fill-same-type",
+          "namespace": "law-fill-same-type",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/law-fill-same-type.bend",
+          "sha256": "8fadb0c13d1a05420ebb32ab5817aa886c7cbec9778ed9361e1c2d53c99d5855",
+          "bytes": 51,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "proof-or-law"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/2",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/2/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 2
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/2/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/2/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/2/worker.stderr"
+      },
+      "requestDigest": "9ec64af1c249c1f7ad456a74e91dcf5d861d1ae728a529f0447c162bbfd1112b",
+      "resultDigest": "80e8bf0d5fea0ae14b2cbd0b5729e570fea8c6b540f4869393e07e52bd91f8dc",
+      "status": "error",
+      "prefixDigest": "f361a46caa02a5562004f4e87777e75f5cb251dae35c369e45888170178dc0d0"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "law-fill-plain",
+          "namespace": "law-fill-plain",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/law-fill-plain.bend",
+          "sha256": "40b70a9a39dfcf734b37fa7494d09826cef22c01e2ff7deea37bf8426516eaa2",
+          "bytes": 44,
+          "expected": "",
+          "negative": false,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "proof-or-law"
+          ],
+          "oracle": "acceptance",
+          "accept": true,
+          "rejectPhase": null
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/3",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/3/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 3
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/3/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/3/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/3/worker.stderr"
+      },
+      "requestDigest": "8a5ee4c1c8993af8f6bb86491a0dae0d08edc9b18cf5476a8d5a1b56cb828e57",
+      "resultDigest": "057048d0f767e1dd62704f17f5bda8b969046e4494fdc1162cd02856fbcf8612",
+      "status": "ok",
+      "prefixDigest": "5e760b8c39858177fc5b5812653e6fe4a3a43a2dd13a6a5d2d204e3f744972b1"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "new-typed-definition",
+          "namespace": "new-typed-definition",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/new-typed-definition.bend",
+          "sha256": "b72769b7d7875aae09f79b29fd9dd995493baeb595bd4dd1b2cc2b6e21575b8d",
+          "bytes": 35,
+          "expected": "",
+          "negative": false,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": true,
+          "rejectPhase": null
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/4",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/4/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 4
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/4/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/4/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/4/worker.stderr"
+      },
+      "requestDigest": "645144f6abc4561d0be4020cda3c70bdd14d0e9ba5353b34b7e985718a403252",
+      "resultDigest": "057048d0f767e1dd62704f17f5bda8b969046e4494fdc1162cd02856fbcf8612",
+      "status": "ok",
+      "prefixDigest": "0cd41f657fad051b888cc6cc75e0eac5099fe865360249aecd384ed205f09b0a"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "law-template-late",
+          "namespace": "law-template-late",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/law-template-late.bend",
+          "sha256": "c173e8f11d2165d854bc92d2272898fb68b661f7e293b844695ee7de92360ee1",
+          "bytes": 113,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "proof-or-law",
+            "comptime"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/5",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/5/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 5
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/5/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/5/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/5/worker.stderr"
+      },
+      "requestDigest": "0fe3223ab3fcd3c7e12915b555fea7268c968f796258acfaa37e12ef459048b0",
+      "resultDigest": "cdef96b5ed5e0a0208d264092986be28e6b1a735f07b2507c9a95fe8f2e59af9",
+      "status": "error",
+      "prefixDigest": "5c69cb6310fdcf2d67960ee0e3f1e3575b044d3b6d8b4098ac965b2dab68894e"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "law-template-after-erased",
+          "namespace": "law-template-after-erased",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/law-template-after-erased.bend",
+          "sha256": "c3843c1538a7a98376bb4936e8201a5c9296f5b30f5802bbd8e02796e36892c1",
+          "bytes": 136,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "proof-or-law",
+            "quantity",
+            "comptime"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/6",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/6/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 6
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/6/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/6/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/6/worker.stderr"
+      },
+      "requestDigest": "2ec89fd8cf4eb8510c0bb50ab9ece55e769cc44cabd0a69103f3b23548c26c92",
+      "resultDigest": "bfd84ea213395aefce5ab79fa90ae6b347b69d296c5295fb241f18faf4813d8d",
+      "status": "error",
+      "prefixDigest": "79f3f504822a010c26698fd875b8aac79b00110792591d6b98225f7aec3301d3"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "law-template-leading",
+          "namespace": "law-template-leading",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/law-template-leading.bend",
+          "sha256": "c2ef204c77987824e50370f57f1332df6c352c372d2b375f7e1e32f55ff086ff",
+          "bytes": 125,
+          "expected": "",
+          "negative": false,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "proof-or-law",
+            "comptime"
+          ],
+          "oracle": "acceptance",
+          "accept": true,
+          "rejectPhase": null
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/7",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/7/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 7
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/7/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/7/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/7/worker.stderr"
+      },
+      "requestDigest": "fd75e42b9a085f630395b060030cc4ef951c321f453cdcc3a8d959cfc058b9a0",
+      "resultDigest": "057048d0f767e1dd62704f17f5bda8b969046e4494fdc1162cd02856fbcf8612",
+      "status": "ok",
+      "prefixDigest": "a23dafcb6f1c3842d37799f018a06217cfc5c022535e331eb51f8486ccdbcfe3"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "local-call-pattern",
+          "namespace": "local-call-pattern",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/local-call-pattern.bend",
+          "sha256": "4ba62de772333ae470894293d71a45c567ab1f07c1f993ff335d9ab1a563115f",
+          "bytes": 80,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/8",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/8/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 8
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/8/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/8/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/8/worker.stderr"
+      },
+      "requestDigest": "3d96a9a2d49176de2123387025b42bc7ebf4dd1ae272ca81d57b062c6537fc8f",
+      "resultDigest": "093fdf39d04f870f6da21baed8fd8b41db7b578ea18c7ef6af7d3857ed68cf6c",
+      "status": "error",
+      "prefixDigest": "821bcb4196e9cfe197486625b54127de7e85559bc6b1d706ccb2690d74c0cb84"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "local-binder",
+          "namespace": "local-binder",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/local-binder.bend",
+          "sha256": "851b83d46b20d760c68393bb2328217182417482c10fc593131d69d21daeab72",
+          "bytes": 51,
+          "expected": "",
+          "negative": false,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": true,
+          "rejectPhase": null
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/9",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/9/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 9
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/9/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/9/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/9/worker.stderr"
+      },
+      "requestDigest": "cbb3495d05f2a18661298b45f58f7cae3365a1c47355e25bd98c4045e3be4fd5",
+      "resultDigest": "057048d0f767e1dd62704f17f5bda8b969046e4494fdc1162cd02856fbcf8612",
+      "status": "ok",
+      "prefixDigest": "2921182a3f31e930dbcd1ae0a07ea7d0561bce8598f6d190af7ae99a2c44c71f"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "local-constructor",
+          "namespace": "local-constructor",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/local-constructor.bend",
+          "sha256": "3a3489939f779fe0075a2eae76baa54fb4993a043eebe212da745af5f174944b",
+          "bytes": 126,
+          "expected": "",
+          "negative": false,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": true,
+          "rejectPhase": null
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/10",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/10/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 10
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/10/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/10/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/10/worker.stderr"
+      },
+      "requestDigest": "2813a32cdc7f62631011431c6ba84310e1754b33fb61908a68d2840c005c442d",
+      "resultDigest": "057048d0f767e1dd62704f17f5bda8b969046e4494fdc1162cd02856fbcf8612",
+      "status": "ok",
+      "prefixDigest": "492f8a061789ca84663c0cefb3371e84ed36893e1c0970c93e2d6192a9ad9601"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import-late-existing",
+          "namespace": "import-late-existing",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/import-late-existing.bend",
+          "sha256": "870dfa8d35ceea10fe849dd4a6066860b26acea86d456d6cf72661a938cd7a77",
+          "bytes": 73,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/11",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/11/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 11
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/11/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/11/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/11/worker.stderr"
+      },
+      "requestDigest": "1db4a6866648555c2da92c6c61de3b15c7848a76cc57f639e6d3b8b79812aff5",
+      "resultDigest": "f64cad74aca5bbeec5f593b7dd28acf15c461cc79024135703c58819fde30b5f",
+      "status": "error",
+      "prefixDigest": "5672e394ff0b86889580653a34b2903caf1fdf3ff858d90e5071745bfce9e2f3"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import-leading",
+          "namespace": "import-leading",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/import-leading.bend",
+          "sha256": "4a3a4e459750cec9a619cb3fe294d7d4f62adde78b3b278e408821283fa3086c",
+          "bytes": 109,
+          "expected": "",
+          "negative": false,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": true,
+          "rejectPhase": null
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/12",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/12/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 12
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/12/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/12/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/12/worker.stderr"
+      },
+      "requestDigest": "ac228b48af1671bb22f22cc15c3eacac374ed92490442fcbf6ee335a1141f428",
+      "resultDigest": "057048d0f767e1dd62704f17f5bda8b969046e4494fdc1162cd02856fbcf8612",
+      "status": "ok",
+      "prefixDigest": "de33bcbc5347611c0833b5d24cbc0628b48a6d7010cbb8bb920ba9ed1c7f5761"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import-after-law",
+          "namespace": "import-after-law",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/import-after-law.bend",
+          "sha256": "b72b619379747e1009145d9106d5c7e54f60abe2b611be6778d44d147802a842",
+          "bytes": 82,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "proof-or-law"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/13",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/13/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 13
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/13/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/13/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/13/worker.stderr"
+      },
+      "requestDigest": "82fd89ffe0aeea9f1602af0a2af08a8e78139d6cb8c3dab5d5254b8349ad00ca",
+      "resultDigest": "61d8f90ce12b1e917976523e682ad818c8eb26041050cba7baa7392b157a7211",
+      "status": "error",
+      "prefixDigest": "66531faf8730f46ed9713af35bde7793859270e0a5bba82bfb6dd68b70410094"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import-after-type",
+          "namespace": "import-after-type",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/import-after-type.bend",
+          "sha256": "3ae3c5aa9a0517ea10968b2dd69341260f2e3da04dd6070c0d7a3ad5fc39be80",
+          "bytes": 72,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/14",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/14/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 14
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/14/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/14/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/14/worker.stderr"
+      },
+      "requestDigest": "2f9c300989a0a59cba1fe96ea64f01e4ec018d4774ca95136af4cf0d09ea456e",
+      "resultDigest": "d3f44405b07eab91ef095164cf425f023e016cf59cdcc5d561ad44000b47cf71",
+      "status": "error",
+      "prefixDigest": "c2271382e82ee5152b05adb02f07b027e3dedac5ab129aeb91ef36f82172a86a"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import-after-decorator",
+          "namespace": "import-after-decorator",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/import-after-decorator.bend",
+          "sha256": "bdd2c2bc69553d0be990e689f624bde0f077ef81b2e146e4f0d07c16d3551280",
+          "bytes": 43,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/15",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/15/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 15
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/15/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/15/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/15/worker.stderr"
+      },
+      "requestDigest": "abb4afa5db0c1ff69e527369efa0e8ef52a3503a8bb32c5f8f2497a418f10836",
+      "resultDigest": "6cf76dcf9c676ac6957bc1973bfc324233c50ffcde3c023e614eb451c85b2dfd",
+      "status": "error",
+      "prefixDigest": "3c9015593a2c83653fee387958e48828cbc8f58971260906810852cd61b84f64"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import-after-foreign",
+          "namespace": "import-after-foreign",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/import-after-foreign.bend",
+          "sha256": "bc277ab2983d26123b30f74b54ec7ebb9cab5e5554696c86450b29aef71bbcc2",
+          "bytes": 90,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [
+            {
+              "path": "unused.js",
+              "backend": "js"
+            }
+          ],
+          "backends": [
+            "js"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "foreign-effect"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/16",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/16/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 16
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/16/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/16/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/16/worker.stderr"
+      },
+      "requestDigest": "f20555f70dcb8ce814e84616ccca0d5e174c04426c3fa5a903d5cad61ebca0ab",
+      "resultDigest": "90ae8a4dc33cea3d482a6cca3f2f0de245e3703e67d5a76e2c90ac9de9ed30c2",
+      "status": "error",
+      "prefixDigest": "39216786b6b54f84aa7af0b614aaf941b78b85a768b83ee23a2c37e52a12566b"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import-leading-repeated",
+          "namespace": "import-leading-repeated",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/import-leading-repeated.bend",
+          "sha256": "5f7f073543a0ee23f6a0920df913483a2ed0a35fbef5fd387dd65720cc3550ac",
+          "bytes": 93,
+          "expected": "",
+          "negative": false,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": true,
+          "rejectPhase": null
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/17",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/17/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 17
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/17/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/17/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/17/worker.stderr"
+      },
+      "requestDigest": "f03e35df90e1638040997d6dc2c6a054299555f03d4567d7a256d9adfb26fb02",
+      "resultDigest": "057048d0f767e1dd62704f17f5bda8b969046e4494fdc1162cd02856fbcf8612",
+      "status": "ok",
+      "prefixDigest": "96502a7bc7eeb15756fd0ad3a092b22a65de37e6def78fc2a216aeea1e3ca194"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "leading-unsafe-definition",
+          "namespace": "leading-unsafe-definition",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/leading-unsafe-definition.bend",
+          "sha256": "122726c03542cbeb5a89c8416bc413e2d133564ed37ffe4562974c5f61dde6fb",
+          "bytes": 43,
+          "expected": "",
+          "negative": false,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": true,
+          "rejectPhase": null
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/18",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/18/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 18
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/18/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/18/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/18/worker.stderr"
+      },
+      "requestDigest": "097825ac949b0d7f6b02956a2c3ff5b5bc6bae4da9868eee1bf970ec91a4d57d",
+      "resultDigest": "738bec02479a25f8fa2971eb8dbec8867c3763df9051c3c9d1ddd1086905c8a3",
+      "status": "ok",
+      "prefixDigest": "76c5ac2658b43530912244af53875f816238bc18c2f9db12bcb2821dec830a51"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "local-constructor-nested",
+          "namespace": "local-constructor-nested",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/local-constructor-nested.bend",
+          "sha256": "4079feafc7e1381e53286fb50dada25103f074151655c233318f147264e9c219",
+          "bytes": 182,
+          "expected": "",
+          "negative": false,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": true,
+          "rejectPhase": null
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/19",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/19/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 19
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/19/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/19/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/19/worker.stderr"
+      },
+      "requestDigest": "fa143ddb442fda78616fb50b96aeb482792cb675050037c38f38efac839f7b28",
+      "resultDigest": "057048d0f767e1dd62704f17f5bda8b969046e4494fdc1162cd02856fbcf8612",
+      "status": "ok",
+      "prefixDigest": "5e94ca123b4b8c9ad68d10d85a2628f81bed7e8200094cc081f44550634e0057"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "local-constructor-braces-required",
+          "namespace": "local-constructor-braces-required",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/local-constructor-braces-required.bend",
+          "sha256": "881e307e4e3fad2c6ae669be412f238733d50803863ed0e218a3eef7bc2a2f12",
+          "bytes": 77,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/20",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/20/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 20
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/20/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/20/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/20/worker.stderr"
+      },
+      "requestDigest": "a54717b4f804c526930dc02072661f2a4114f23baaad96cd0fc6b9b4770725b2",
+      "resultDigest": "b5d4d8fc8799d7f28ee107ed0f409fcf91702814d322d56d686219272868867b",
+      "status": "error",
+      "prefixDigest": "7807755a0b89c248d46d4978b99f53066bac7fbd0fc5138f7e7f37df845063fe"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "local-constructor-field-count",
+          "namespace": "local-constructor-field-count",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/local-constructor-field-count.bend",
+          "sha256": "a359dd1c2e9f90639253064a65f5ba30ae72c8ce5bc560ee28d5b0e9040e7484",
+          "bytes": 117,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/21",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/21/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 21
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/21/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/21/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/21/worker.stderr"
+      },
+      "requestDigest": "c81fcee470e415eebd5d528d9a02cad87bd48153da5a7be663d53fab559ed4c9",
+      "resultDigest": "336f568fb769342874c71a8d32ba98ac660d158735c6c0db0ac206a4eeeb8a98",
+      "status": "error",
+      "prefixDigest": "68a886d8e62f378d480aa624ebf543a8250d5b46efa6b53a753358a2970f01d8"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import/unsafe_law_derived.bend",
+          "namespace": "import",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/import/unsafe_law_derived.bend",
+          "sha256": "a58e979159ac69e9bb610171dffed136e92a29b1afa7c1110f6df0a9b8646e4b",
+          "bytes": 361,
+          "expected": "SOME PROOFS FAIL\nError: 3 defs rely on unsafe or foreign code:\n- unsafe-law/laws.false_law\n- unsafe-law/succ.succ_is_id\n- unsafe-law/derived.boom\nexit 1",
+          "negative": true,
+          "failureKind": "proof-trust",
+          "main": false,
+          "base": true,
+          "imports": [
+            {
+              "path": "./unsafe-law/derived.bend",
+              "alias": "D"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "negative",
+            "module-import",
+            "proof-or-law"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/22",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/22/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 22
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/22/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/22/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/22/worker.stderr"
+      },
+      "requestDigest": "f4b92dbef532426151bf1089d1f9693614bdc13dbc74f9a18024d0510c0cbeeb",
+      "resultDigest": "b1d0c7762dac56024fda31f168bdcfcdf2916c164811a0ba38610ed0dceffbfc",
+      "status": "error",
+      "prefixDigest": "289a958e52f363ea7730f10cbd907188306f2a6b82b66e65a82dd3d5dbfdedbd"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import/unsafe_law_fill.bend",
+          "namespace": "import",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/import/unsafe_law_fill.bend",
+          "sha256": "55e70319f24fe34b38800cef4ba2c73213b7a003cb0955986ed6ac9255cb407e",
+          "bytes": 297,
+          "expected": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- unsafe-law/laws.false_law\nexit 1",
+          "negative": true,
+          "failureKind": "proof-trust",
+          "main": false,
+          "base": true,
+          "imports": [
+            {
+              "path": "./unsafe-law/fill.bend",
+              "alias": "F"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "negative",
+            "module-import",
+            "proof-or-law"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/23",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/23/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 23
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/23/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/23/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/23/worker.stderr"
+      },
+      "requestDigest": "936524a11a7f710a6a4f34136fa6b4dea040d98a26e6f2972e54b72ffbb908d9",
+      "resultDigest": "8a8ad6e8083f63b21c45ab2c8e8999137ac92696ad7ae03979f4271d01352e20",
+      "status": "error",
+      "prefixDigest": "14b4740ababd9e551dd198e2f810fab1b29ab3555ce3cafe97317732c9edae16"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import/unsafe_law_own.bend",
+          "namespace": "import",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/import/unsafe_law_own.bend",
+          "sha256": "4fd8d6fa5928ab132902e44c6ae65e11156d40860455400135df58a62b534a24",
+          "bytes": 269,
+          "expected": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- unsafe-law/laws.false_law\nexit 1",
+          "negative": true,
+          "failureKind": "proof-trust",
+          "main": false,
+          "base": true,
+          "imports": [
+            {
+              "path": "./unsafe-law/laws.bend",
+              "alias": "Laws"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "negative",
+            "module-import",
+            "proof-or-law"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/24",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/24/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 24
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/24/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/24/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/24/worker.stderr"
+      },
+      "requestDigest": "25b6421a5ff885cb686f35f515a79189ac09e1dcbf862ee4e5751325a3c213f6",
+      "resultDigest": "8a8ad6e8083f63b21c45ab2c8e8999137ac92696ad7ae03979f4271d01352e20",
+      "status": "error",
+      "prefixDigest": "404e5025b1fc0665e11c25778639e6e423949711978399abcd5f899cd29cd8f3"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import/unsafe_law_unused.bend",
+          "namespace": "import",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/import/unsafe_law_unused.bend",
+          "sha256": "7b14a150520ab800cb204b2be6a64f2fa5a1f8427f3b53acab5b0a5ab32617cd",
+          "bytes": 292,
+          "expected": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- unsafe-law/safe.spin\nexit 1",
+          "negative": true,
+          "failureKind": "proof-trust",
+          "main": false,
+          "base": true,
+          "imports": [
+            {
+              "path": "./unsafe-law/safe.bend",
+              "alias": "S"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "negative",
+            "module-import",
+            "proof-or-law"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/25",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/25/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 25
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/25/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/25/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/25/worker.stderr"
+      },
+      "requestDigest": "6e4b738c074f770dcec5ae38e72be89086598972b605923e50d6a54b6e28dbf6",
+      "resultDigest": "9569ae8172a274868b940d047a23f35a592e7c3af1584a3b531861ff444088ac",
+      "status": "error",
+      "prefixDigest": "c76f46feb218a551c68c68c00cfaa5a0f129adcf11f5a4ff38bd3cfcf10dcefe"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import/cross_file_io.bend",
+          "namespace": "import",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/import/cross_file_io.bend",
+          "sha256": "f13cd9d76733eee7d115608eb821b91dcaedb132a098ceb63d6c5600bb428afd",
+          "bytes": 462,
+          "expected": "SOME PROOFS FAIL\nError:\n- message  : no such file: /shared/io_tree.bend\nLocation:\n4 | import Base\n5>| import /shared/io_tree.bend as T\n  |        ^\n6 |\nexit 1",
+          "negative": true,
+          "failureKind": "validation",
+          "main": true,
+          "base": true,
+          "imports": [
+            {
+              "path": "/shared/io_tree.bend",
+              "alias": "T"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "negative",
+            "module-import",
+            "proof-or-law"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/26",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/26/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 26
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/26/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/26/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/26/worker.stderr"
+      },
+      "requestDigest": "c6997d008103e7bb168ec586bc4b31d2d042a86a32b01215107ee4db062cd51c",
+      "resultDigest": "1194a52bdcf8f3b4ca863f2b5c1ed4cb926c33f5b31b7568c1595554cd273bbe",
+      "status": "error",
+      "prefixDigest": "4000b9647612dbea28fb66830e341ebefa00068b65cd2baafef13257fe77a700"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import/cross_file_proof.bend",
+          "namespace": "import",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/import/cross_file_proof.bend",
+          "sha256": "eb9da826aafea1ef3cb196709c0d2aa6139728f3771c6cd8f38b6acc16d8376b",
+          "bytes": 432,
+          "expected": "SOME PROOFS FAIL\nError:\n- message  : no such file: /shared/proof_chain.bend\nLocation:\n4 | import Base\n5>| import /shared/proof_chain.bend as P\n  |        ^\n6 |\nexit 1",
+          "negative": true,
+          "failureKind": "validation",
+          "main": true,
+          "base": true,
+          "imports": [
+            {
+              "path": "/shared/proof_chain.bend",
+              "alias": "P"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "negative",
+            "module-import",
+            "proof-or-law"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/27",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/27/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 27
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/27/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/27/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/27/worker.stderr"
+      },
+      "requestDigest": "a901c1c8df1c0f243dc6d009960530ac040333f8f0fdcac09bb1f261afdcd54a",
+      "resultDigest": "11a9355783c485628881a55a8b6e3238caebfbbecc2de02c8f2bcacf06db2e84",
+      "status": "error",
+      "prefixDigest": "e1a07cda1729b786eb4e00f18d91ffb72c15cbe5dc5d75549b0b19e78e80a8c1"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import/cycle_terminates.bend",
+          "namespace": "import",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/import/cycle_terminates.bend",
+          "sha256": "8ebf68a43889ef6b1943ff6cc9c80f5e6ea2ea98f7f8ab1de844d9cc344c30aa",
+          "bytes": 524,
+          "expected": "SOME PROOFS FAIL\nError:\n- message  : no such file: /cycle/other_half.bend\nLocation:\n5 | import Base\n6>| import /cycle/other_half.bend as C\n  |        ^\n7 |\nexit 1",
+          "negative": true,
+          "failureKind": "validation",
+          "main": true,
+          "base": true,
+          "imports": [
+            {
+              "path": "/cycle/other_half.bend",
+              "alias": "C"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "negative",
+            "module-import",
+            "proof-or-law"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/28",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/28/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 28
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/28/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/28/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/28/worker.stderr"
+      },
+      "requestDigest": "e976d670e0510ae64f565473fbc275c2fdcac10666f31b9e551cd68d7f51d103",
+      "resultDigest": "938daa63365cb20d0b46979e364dfbb63d179d9ab80953e111a1e6f4ccb8938d",
+      "status": "error",
+      "prefixDigest": "e75d0de1fb6e4cc8ceff00280b97c66249ae8e7d1d0f299f583d02042e8d592b"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import/diamond_dedup.bend",
+          "namespace": "import",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/import/diamond_dedup.bend",
+          "sha256": "773eb1822cc16b8a29ffdc85413b0986f0d8c92300bbf1aba3f67bb9550f6aef",
+          "bytes": 464,
+          "expected": "SOME PROOFS FAIL\nError:\n- message  : no such file: /diamond/top.bend\nLocation:\n5 | import Base\n6>| import /diamond/top.bend as D\n  |        ^\n7 |\nexit 1",
+          "negative": true,
+          "failureKind": "validation",
+          "main": true,
+          "base": true,
+          "imports": [
+            {
+              "path": "/diamond/top.bend",
+              "alias": "D"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "negative",
+            "module-import",
+            "proof-or-law"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/29",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/29/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 29
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/29/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/29/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/29/worker.stderr"
+      },
+      "requestDigest": "d3d957458dead308d9df2c46ca2019fbf04e34fafb1d47eda7739a8fcbaf6f9e",
+      "resultDigest": "d7c465e41a83184b23d8205db2f3e417fcdfb7954ad2da970d1ad4719ead785e",
+      "status": "error",
+      "prefixDigest": "b404f57d9221c0017d59159fc084e7fab6d7a79052576de6e02c70846192516f"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "phase15-dotted_path",
+          "namespace": "phase15-dotted_path",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/phase15-dotted_path.bend",
+          "sha256": "53d55ab7e742550d379646277993632d8438af3a548278eb60684bfe97df5a53",
+          "bytes": 344,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [
+            {
+              "path": "./LAWS.Nat.bend",
+              "alias": "H"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "module-import"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/30",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/30/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 30
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/30/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/30/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/30/worker.stderr"
+      },
+      "requestDigest": "0b9c4638d5abfe77a1307126b2368d8abc220adf90b76809b5636ace0530ef86",
+      "resultDigest": "3bb4e517880fac85c408feae570c3aa4b77c7df97b122cf7b523cbd123bd238a",
+      "status": "error",
+      "prefixDigest": "83785e557c348a280296b749ed9a838dd80473e6f1c22e4fa51b5b0198a7a2e4"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "phase15-hub_head_local",
+          "namespace": "phase15-hub_head_local",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/phase15-hub_head_local.bend",
+          "sha256": "495cc9a428f6b59e55b178f2412896685a07b1f529d0b92eda7b137372171e03",
+          "bytes": 310,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [
+            {
+              "path": "./0x0123456789abcdef0123456789abcdef/f.bend",
+              "alias": "F"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "module-import"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/31",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/31/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 31
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/31/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/31/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/31/worker.stderr"
+      },
+      "requestDigest": "affbcb78601f80f2d3bcd7908d155e97dfc6a3e3603ef49b634ec47168896822",
+      "resultDigest": "bcdae7a59c70a732fece2d60d967a9728cf565cfd168adbfed48d323c1f2dd7c",
+      "status": "error",
+      "prefixDigest": "96a3a5a38b241ef431e024f9c90e75db63d98e39cfee60efbb4506373538052e"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "phase15-hub_head_path",
+          "namespace": "phase15-hub_head_path",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/phase15-hub_head_path.bend",
+          "sha256": "a5653b0cd3e3fb6d6a901aa471250e718999b678a7dcad1bdc0c0b8b13a456cc",
+          "bytes": 355,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [
+            {
+              "path": "../0x0123456789abcdef0123456789abcdef/f.bend",
+              "alias": "F"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "module-import"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/32",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/32/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 32
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/32/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/32/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/32/worker.stderr"
+      },
+      "requestDigest": "1656c75b07299c090c7af350cb76984f9ec691d892a8c1927488ae41eef06d4f",
+      "resultDigest": "b0ea588551f2847b94d123f987d795224fcc45f66cfd6552f2973d9d101ac7d6",
+      "status": "error",
+      "prefixDigest": "efd440609e46fd45342ab9e50bdb94ee662551afedb677efefc0e168fbc35b22"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "import/path_canonical.bend",
+          "namespace": "import",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/import/path_canonical.bend",
+          "sha256": "059c28f12da73c01b18f6bc137fe50499cf0382c73a1559071b6fb4424c33fca",
+          "bytes": 457,
+          "expected": "SOME PROOFS FAIL\nError:\n- message  : no such file: /mods/canonical.bend\nLocation:\n4 | import Base\n5>| import /mods/canonical.bend as C\n  |        ^\n6 |\nexit 1",
+          "negative": true,
+          "failureKind": "validation",
+          "main": true,
+          "base": true,
+          "imports": [
+            {
+              "path": "/mods/canonical.bend",
+              "alias": "C"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "negative",
+            "module-import",
+            "proof-or-law"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/33",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/33/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 33
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/33/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/33/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/33/worker.stderr"
+      },
+      "requestDigest": "44c8d1bdffd0ba9f9738d5d6863bb26a5339bd8528c0830f9cd860fdaa756592",
+      "resultDigest": "d5be0da905d3c5e1b0e44b0643ef51ea1b1eb99aff8abad8bc3b61cbf6385a04",
+      "status": "error",
+      "prefixDigest": "6fbbd8b5b381ce28e41449c9b40cd49250cfb9009acb4355232c308590d49794"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "phase15-tilde_path",
+          "namespace": "phase15-tilde_path",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot/tests/frontend/phase2-rules/phase15-tilde_path.bend",
+          "sha256": "90aff6bc6a4b19904e43c9e7ef6e1e4ec0a8f1cea49ce5063c0d1bb60af67f16",
+          "bytes": 348,
+          "expected": "",
+          "negative": true,
+          "failureKind": null,
+          "main": true,
+          "base": true,
+          "imports": [
+            {
+              "path": "./law.k~B.bend",
+              "alias": "E"
+            }
+          ],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": false,
+          "gpuCandidate": false,
+          "tags": [
+            "positive",
+            "module-import",
+            "proof-or-law",
+            "comptime"
+          ],
+          "oracle": "acceptance",
+          "accept": false,
+          "rejectPhase": "parse"
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/34",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/34/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 34
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/34/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/34/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/34/worker.stderr"
+      },
+      "requestDigest": "7f0237e1ae66b62bae60e8aee752eb949713b3be6866e00dc73f226682833b18",
+      "resultDigest": "e4f2c8556841a1799c2adffc3602c15bac5f7fbf1d6de2e062370e4b09cd82fb",
+      "status": "error",
+      "prefixDigest": "65a9213ae84b2ff569f1a1f72c3355e6b4176ecad4c215fd19a9cd8c0487e5b7"
+    },
+    {
+      "request": {
+        "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "test": {
+          "id": "parse/prefix_operator_dead.bend",
+          "namespace": "parse",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/parse/prefix_operator_dead.bend",
+          "sha256": "6cdef2c036e10fbf9a2c6cf50071584ff010540b137869d5d20db8bb31e7dea8",
+          "bytes": 363,
+          "expected": "SOME PROOFS FAIL\nError:\n- expected : a name\n- observed : '5'\nLocation:\n 9 | def main():\n10>|   -5\n   |    ^\n11 |\nexit 1",
+          "negative": true,
+          "failureKind": "validation",
+          "main": true,
+          "base": true,
+          "imports": [],
+          "foreign": [],
+          "backends": [
+            "js",
+            "c"
+          ],
+          "hasExpectation": true,
+          "gpuCandidate": false,
+          "tags": [
+            "negative",
+            "proof-or-law"
+          ]
+        },
+        "lane": "check",
+        "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/snapshot",
+        "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/35",
+        "timeoutMs": 120000,
+        "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/35/response.json",
+        "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/identity.json",
+        "workerNodeArgs": [
+          "--stack-size=4096",
+          "--max-old-space-size=1024"
+        ],
+        "workerSession": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/worker-0/session-1.json",
+          "index": 35
+        },
+        "done": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/35/worker.done",
+        "workerStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/35/worker.stdout",
+        "workerStderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct02/validation-001/selected/reference.json.artifacts/35/worker.stderr"
+      },
+      "requestDigest": "1fa51e04114403e586bb79caef76d1b9a9f00ae0cd0da0db3ea6944cea8c4c18",
+      "resultDigest": "8fb2c6af90e61303fb29ead857c9758192187a86790f7f7e071c337e8f32059b",
+      "status": "error",
+      "prefixDigest": "adb68d0343c566a4a83514c571bc5afe8f97ce44fdaf55f459a57e462ee2cc0f"
+    }
+  ],
+  "closeReason": "closed",
+  "finished": "2026-10-05T15:18:18.976Z"
+}

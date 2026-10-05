@@ -1,0 +1,238 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "cases": [
+    {
+      "id": "native-inline-order",
+      "source": {
+        "path": "fixtures/native-inline-order-v1.bend",
+        "sha256": "f79e281b9b7d8869ae2628484c978d502a11357e77710cd2782ffce4fc1ace86"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "complex-getter-order",
+          "exportName": "multiply.complex",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              35
+            ]
+          ],
+          "expected": 126,
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              35
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                42,
+                3
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "prior-let-getter-order",
+          "exportName": "multiply.prior",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              35
+            ]
+          ],
+          "expected": 126,
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              35
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                42,
+                3
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "complex-throw-after-callback",
+          "exportName": "multiply.complex",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              35
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul",
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              35
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                42,
+                3
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "double-repeat-coercion",
+          "exportName": "doubled",
+          "groups": [
+            [
+              {
+                "$callback": "coerce3"
+              }
+            ]
+          ],
+          "expected": {
+            "$bigint": "6"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              0
+            ],
+            [
+              "coercion",
+              "default",
+              1
+            ],
+            [
+              "coercion",
+              "default",
+              2
+            ]
+          ]
+        },
+        {
+          "id": "double-second-coercion-error",
+          "exportName": "doubled",
+          "groups": [
+            [
+              {
+                "$callback": "coerceThrow2"
+              }
+            ]
+          ],
+          "expectedError": "phase52-second-coercion",
+          "expectedEvents": [
+            [
+              "callback",
+              0
+            ],
+            [
+              "coercion",
+              "default",
+              1
+            ],
+            [
+              "coercion",
+              "default",
+              2
+            ]
+          ]
+        },
+        {
+          "id": "aliased-array-complete-state",
+          "exportName": "store",
+          "groups": [
+            [
+              [
+                11,
+                22,
+                33,
+                44
+              ],
+              6,
+              99
+            ]
+          ],
+          "expected": [
+            11,
+            22,
+            99,
+            44
+          ],
+          "expectedInputs": [
+            [
+              [
+                11,
+                22,
+                99,
+                44
+              ],
+              6,
+              99
+            ]
+          ],
+          "resultInputAlias": {
+            "group": 0,
+            "slot": 0
+          },
+          "expectedEvents": []
+        }
+      ]
+    }
+  ],
+  "status": "frozen22fixtures64scenario fullsuccessorplan; notexecuted",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v4.json",
+    "sha256": "1221f4c56fabc4685a44993b086c15568439ea00297bcc19cde950f1f56c8f59"
+  },
+  "selectedScope": {
+    "kind": "new-reference-sources-only",
+    "fixtures": 1,
+    "scenarios": 6,
+    "reason": "Acquire only one new native-inline source; retain all previous28 checkedTSsource modules."
+  },
+  "parentCatalog": {
+    "path": "semantic-catalog-v8.json",
+    "sha256": "6b4148bdea58feb31db614879203f8cb48fa588723d8e079bdd9f0562727c46a"
+  },
+  "fixtureCorrection": {
+    "reason": "Upstream checker refused affine acc duplicated across next-state argument and escaping closure. Explicit +acc multiplicity is required on both capture SCC members; no algorithm, arguments or expected values change.",
+    "priorSource": {
+      "path": "fixtures/mutual-capture-v1.bend",
+      "sha256": "127114bc8cba6c44e62c17bcc69fec9bda5a277482a12cf27eff1fa14c315b8b"
+    },
+    "diagnostic": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-mutual-diagnostic01.json"
+  }
+}

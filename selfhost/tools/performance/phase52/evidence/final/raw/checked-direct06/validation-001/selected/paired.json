@@ -1,0 +1,1413 @@
+{
+  "kind": "targeted-paired-conformance",
+  "started": "2026-10-05T16:35:04.953Z",
+  "complete": false,
+  "selectedComplete": true,
+  "config": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/validation-001/target.json",
+    "sha256": "e75fe2799a221cdeb059d787f048beb5d02c8e5e17e699f4b356d4a82d284921"
+  },
+  "artifacts": {
+    "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+    "candidateAdapter": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/tools/conformance/adapters/typed.mjs",
+      "sha256": "0ad9c892b45c2fb2a111817e6bea2f232c20f1197f495801a2fb4499498ba3d2"
+    }
+  },
+  "environment": {
+    "BEND_UPSTREAM": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+    "BEND_BASE": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend"
+  },
+  "harnessSources": [
+    {
+      "file": "run.mjs",
+      "sourceSha256": "b60ef10fb90960ef4007f3599c1c9507c50a94870843291ca857903b549a82eb",
+      "consumedSha256": "93d5daf7dd331c08d9d8721aedfa4b3cc5710487386a5a4dc11cafdf2b24b6bf"
+    },
+    {
+      "file": "worker.mjs",
+      "sourceSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4",
+      "consumedSha256": "efeca16d731c8e37c671c7f82dddb66c9fc8792db7e31b652acfd3a0ab0e60e4"
+    },
+    {
+      "file": "inventory.mjs",
+      "sourceSha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308",
+      "consumedSha256": "91a1bd7be11e6e66a68c94251814286c9d0173d94a38b445240123bc558bc308"
+    },
+    {
+      "file": "judge.mjs",
+      "sourceSha256": "af05b8926bc14fdedf764f2187029363b1f01db2baf5f89787083e3a41395fbb",
+      "consumedSha256": "af05b8926bc14fdedf764f2187029363b1f01db2baf5f89787083e3a41395fbb"
+    },
+    {
+      "file": "selection.mjs",
+      "sourceSha256": "ecdb5a8c451554c3d2dce4ca5e7725e299fa9b63c042e2cf2f7f9c440b2baa7d",
+      "consumedSha256": "ecdb5a8c451554c3d2dce4ca5e7725e299fa9b63c042e2cf2f7f9c440b2baa7d"
+    },
+    {
+      "file": "run-probe.mjs",
+      "sourceSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c",
+      "consumedSha256": "3dfea3af1e901b9e4850482f3ee5fdee8f0a2f463714022d397ae5282263d77c"
+    },
+    {
+      "file": "replay.mjs",
+      "sourceSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94",
+      "consumedSha256": "412f24d8b26ce78c1fca5584ee2a36d8d5e416bd2d58c5711427f37b171fec94"
+    },
+    {
+      "file": "persistent-probe.mjs",
+      "sourceSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225",
+      "consumedSha256": "b7f152f6656ed2fd461b9376092a44f85443b9aa85161a22e4b7aeaf86005225"
+    },
+    {
+      "file": "persistent-worker.mjs",
+      "sourceSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d",
+      "consumedSha256": "ccf069cc069171becf0d5564e50a14b3aa4d652b5147f0ef8593c1668689918d"
+    },
+    {
+      "file": "adapters/upstream.mjs",
+      "sourceSha256": "da556bcef52ee52bee06afc68d42599c4789a016efd1fc63f6ece5ece0aa2cde",
+      "consumedSha256": "da556bcef52ee52bee06afc68d42599c4789a016efd1fc63f6ece5ece0aa2cde"
+    },
+    {
+      "file": "src/compiler.json",
+      "sourceSha256": "7b81d4baf16656ce5a8ebc0b17f88ab311c8500c691ea4115aadacb1d1fc3b12",
+      "consumedSha256": "7b81d4baf16656ce5a8ebc0b17f88ab311c8500c691ea4115aadacb1d1fc3b12"
+    }
+  ],
+  "targetSourceSha256": "e2ac5403100458239cc65cbc5da77605fbfb108a54d6ae337190dd467e0e0f50",
+  "cpu": null,
+  "attempts": {
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/validation-001/selected/reference.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/validation-001/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "--timeout",
+        "120000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "1024",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "1024",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/validation-001/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/validation-001/selected/harness/tools/conformance/adapters/upstream.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/validation-001/selected/reference.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "4a454b99f142f9911acfab902b9dd3111923d3bab06607c1cf2aa60934019570"
+    },
+    "candidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/validation-001/selected/candidate.json",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/validation-001/selected/harness/tools/conformance/run.mjs",
+        "--upstream",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "--timeout",
+        "120000",
+        "--jobs",
+        "1",
+        "--worker-mode",
+        "persistent",
+        "--recycle-after",
+        "64",
+        "--rss-limit-mb",
+        "1024",
+        "--stack-kb",
+        "4096",
+        "--heap-mb",
+        "1024",
+        "--retain",
+        "failed",
+        "--selected-exit",
+        "1",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/validation-001/selected/selection.json",
+        "--adapter",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/tools/conformance/adapters/typed.mjs",
+        "--output",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/validation-001/selected/candidate.json"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "sha256": "50bd3a59e78bc12a319287a7d8b0c3a42acca14c1c420d258c4a410205447dee"
+    }
+  },
+  "rows": [
+    {
+      "id": "check/string_literal_long.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "import-after-decorator",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'i'\nLocation:\n1 | @unsafe\n2>| import Base\n  | ^\n3 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'i'\nLocation:\n1 | @unsafe\n2>| import Base\n  | ^\n3 | def main() -> U32:",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-after-foreign",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : '\"'\n- observed : 'B'\nLocation:\n3 |   import \"unused.js\"\n4>| import Base\n  |        ^\n5 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : '\"'\n- observed : 'B'\nLocation:\n3 |   import \"unused.js\"\n4>| import Base\n  |        ^\n5 | def main() -> U32:",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-after-law",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   U32\n4>| import Base\n  | ^\n5 | def zero():",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   U32\n4>| import Base\n  | ^\n5 | def zero():",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-after-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : a name (got the keyword 'import')\n- observed : 'import'\nLocation:\n3 |   On{}\n4>| import Base\n  | ^^^^^^\n5 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : a name (got the keyword 'import')\n- observed : 'import'\nLocation:\n3 |   On{}\n4>| import Base\n  | ^^^^^^\n5 | def main() -> U32:",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-late-existing",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   0\n4>| import Base\n  | ^\n5 | def main() -> U32:",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : 'def', 'type' or 'law'\n- observed : 'i'\nLocation:\n3 |   0\n4>| import Base\n  | ^\n5 | def main() -> U32:",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import-leading",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "import-leading-repeated",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "import/cross_file_io.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : no such file: /shared/io_tree.bend\nLocation:\n4 | import Base\n5>| import /shared/io_tree.bend as T\n  |        ^\n6 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : no such file: /shared/io_tree.bend\nLocation:\n4 | import Base\n5>| import /shared/io_tree.bend as T\n  |        ^\n6 | ",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import/cross_file_proof.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : no such file: /shared/proof_chain.bend\nLocation:\n4 | import Base\n5>| import /shared/proof_chain.bend as P\n  |        ^\n6 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : no such file: /shared/proof_chain.bend\nLocation:\n4 | import Base\n5>| import /shared/proof_chain.bend as P\n  |        ^\n6 | ",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import/cycle_terminates.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : no such file: /cycle/other_half.bend\nLocation:\n5 | import Base\n6>| import /cycle/other_half.bend as C\n  |        ^\n7 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : no such file: /cycle/other_half.bend\nLocation:\n5 | import Base\n6>| import /cycle/other_half.bend as C\n  |        ^\n7 | ",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import/diamond_dedup.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : no such file: /diamond/top.bend\nLocation:\n5 | import Base\n6>| import /diamond/top.bend as D\n  |        ^\n7 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : no such file: /diamond/top.bend\nLocation:\n5 | import Base\n6>| import /diamond/top.bend as D\n  |        ^\n7 | ",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import/path_canonical.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : no such file: /mods/canonical.bend\nLocation:\n4 | import Base\n5>| import /mods/canonical.bend as C\n  |        ^\n6 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : no such file: /mods/canonical.bend\nLocation:\n4 | import Base\n5>| import /mods/canonical.bend as C\n  |        ^\n6 | ",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "import/unsafe_law_derived.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "verdict",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [
+          "unsafe-law/laws.false_law",
+          "unsafe-law/succ.succ_is_id",
+          "unsafe-law/derived.boom"
+        ],
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError: 3 defs rely on unsafe or foreign code:\n- unsafe-law/laws.false_law\n- unsafe-law/succ.succ_is_id\n- unsafe-law/derived.boom\n",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "verdict",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [
+          "unsafe-law/laws.false_law",
+          "unsafe-law/succ.succ_is_id",
+          "unsafe-law/derived.boom"
+        ],
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError: 3 defs rely on unsafe or foreign code:\n- unsafe-law/laws.false_law\n- unsafe-law/succ.succ_is_id\n- unsafe-law/derived.boom\n",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "proof-trust-rejection",
+      "candidateEvidence": "proof-trust-rejection"
+    },
+    {
+      "id": "import/unsafe_law_fill.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "verdict",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [
+          "unsafe-law/laws.false_law"
+        ],
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- unsafe-law/laws.false_law\n",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "verdict",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [
+          "unsafe-law/laws.false_law"
+        ],
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- unsafe-law/laws.false_law\n",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "proof-trust-rejection",
+      "candidateEvidence": "proof-trust-rejection"
+    },
+    {
+      "id": "import/unsafe_law_own.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "verdict",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [
+          "unsafe-law/laws.false_law"
+        ],
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- unsafe-law/laws.false_law\n",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "verdict",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [
+          "unsafe-law/laws.false_law"
+        ],
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- unsafe-law/laws.false_law\n",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "proof-trust-rejection",
+      "candidateEvidence": "proof-trust-rejection"
+    },
+    {
+      "id": "import/unsafe_law_unused.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "verdict",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [
+          "unsafe-law/safe.spin"
+        ],
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- unsafe-law/safe.spin\n",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "verdict",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [
+          "unsafe-law/safe.spin"
+        ],
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- unsafe-law/safe.spin\n",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "proof-trust-rejection",
+      "candidateEvidence": "proof-trust-rejection"
+    },
+    {
+      "id": "law-fill-changed-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : ':'\n- observed : '-'\nLocation:\n3 |   U32\n4>| def main() -> Nat:\n  |            ^\n5 |   0n",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : ':'\n- observed : '-'\nLocation:\n3 |   U32\n4>| def main() -> Nat:\n  |            ^\n5 |   0n",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-fill-plain",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "law-fill-same-type",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : ':'\n- observed : '-'\nLocation:\n3 |   U32\n4>| def main() -> U32:\n  |            ^\n5 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : ':'\n- observed : '-'\nLocation:\n3 |   U32\n4>| def main() -> U32:\n  |            ^\n5 |   0",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-template-after-erased",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for -A: Type\n4>|   for ~n: U32\n  |       ^\n5 |   for x: U32",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for -A: Type\n4>|   for ~n: U32\n  |       ^\n5 |   for x: U32",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-template-late",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for x: U32\n4>|   for ~n: U32\n  |       ^\n5 |   U32",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : a plain clause (only leading clauses take ~)\n- observed : '~'\nLocation:\n3 |   for x: U32\n4>|   for ~n: U32\n  |       ^\n5 |   U32",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "law-template-leading",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "leading-unsafe-definition",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [
+          "main"
+        ],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "failed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [
+          "main"
+        ],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "SOME PROOFS FAIL\nError: 1 def relies on unsafe or foreign code:\n- main\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "local-binder",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "local-call-pattern",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : a pattern (a binder or a constructor)\n- observed : f(1)\nLocation:\n4 | def main() -> U32:\n5>|   f(1) = {3 : U32}\n  |   ^^^^\n6 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : a pattern (a binder or a constructor)\n- observed : f(1)\nLocation:\n4 | def main() -> U32:\n5>|   f(1) = {3 : U32}\n  |   ^^^^\n6 |   0",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "local-constructor",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "local-constructor-braces-required",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On = {3 : U32}\n  |   ^^\n6 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : a braced constructor pattern (On is a constructor: write On{}, or rename the binder)\nLocation:\n4 | def main() -> U32:\n5>|   On = {3 : U32}\n  |   ^^\n6 |   0",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "local-constructor-field-count",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : a Box pattern with 1 field\nLocation:\n4 | def unbox(b: Box) -> U32:\n5>|   Box{x, y} = b\n  |   ^^^^^^^^^\n6 |   0",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- message  : a Box pattern with 1 field\nLocation:\n4 | def unbox(b: Box) -> U32:\n5>|   Box{x, y} = b\n  |   ^^^^^^^^^\n6 |   0",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "local-constructor-nested",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "new-typed-definition",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "candidate": {
+        "status": "ok",
+        "phase": "check",
+        "checked": true,
+        "typeAccepted": true,
+        "proofTrust": "passed",
+        "kernelChecked": false,
+        "unsafeDefinitions": [],
+        "exitCode": 0,
+        "diagnostic": null,
+        "output": "ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n"
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "checker-acceptance",
+      "candidateEvidence": "checker-acceptance"
+    },
+    {
+      "id": "parse/prefix_operator_dead.bend",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : a name\n- observed : '5'\nLocation:\n 9 | def main():\n10>|   -5\n   |    ^\n11 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : a name\n- observed : '5'\nLocation:\n 9 | def main():\n10>|   -5\n   |    ^\n11 | ",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase15-dotted_path",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : an import path of plain names (letters, digits, _ and -; the hub's files import the hub's)\n- observed : './LAWS.Nat.bend'\nLocation:\n5 | import Base\n6>| import ./LAWS.Nat.bend as H\n  |        ^\n7 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : an import path of plain names (letters, digits, _ and -; the hub's files import the hub's)\n- observed : './LAWS.Nat.bend'\nLocation:\n5 | import Base\n6>| import ./LAWS.Nat.bend as H\n  |        ^\n7 | ",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase15-hub_head_local",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : an import path of plain names (letters, digits, _ and -; the hub's files import the hub's)\n- observed : './0x0123456789abcdef0123456789abcdef/f.bend'\nLocation:\n4 | import Base\n5>| import ./0x0123456789abcdef0123456789abcdef/f.bend as F\n  |        ^\n6 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : an import path of plain names (letters, digits, _ and -; the hub's files import the hub's)\n- observed : './0x0123456789abcdef0123456789abcdef/f.bend'\nLocation:\n4 | import Base\n5>| import ./0x0123456789abcdef0123456789abcdef/f.bend as F\n  |        ^\n6 | ",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase15-hub_head_path",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : an import path of plain names (letters, digits, _ and -; the hub's files import the hub's)\n- observed : '../0x0123456789abcdef0123456789abcdef/f.bend'\nLocation:\n5 | import Base\n6>| import ../0x0123456789abcdef0123456789abcdef/f.bend as F\n  |        ^\n7 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : an import path of plain names (letters, digits, _ and -; the hub's files import the hub's)\n- observed : '../0x0123456789abcdef0123456789abcdef/f.bend'\nLocation:\n5 | import Base\n6>| import ../0x0123456789abcdef0123456789abcdef/f.bend as F\n  |        ^\n7 | ",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    },
+    {
+      "id": "phase15-tilde_path",
+      "lane": "check",
+      "referenceVerdict": "pass",
+      "candidateVerdict": "pass",
+      "reference": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : an import path of plain names (letters, digits, _ and -; the hub's files import the hub's)\n- observed : './law.k~B.bend'\nLocation:\n5 | import Base\n6>| import ./law.k~B.bend as E\n  |        ^\n7 | ",
+        "output": null
+      },
+      "candidate": {
+        "status": "error",
+        "phase": "parse",
+        "checked": false,
+        "typeAccepted": false,
+        "proofTrust": "not-assessed",
+        "kernelChecked": false,
+        "unsafeDefinitions": null,
+        "exitCode": 1,
+        "diagnostic": "SOME PROOFS FAIL\nError:\n- expected : an import path of plain names (letters, digits, _ and -; the hub's files import the hub's)\n- observed : './law.k~B.bend'\nLocation:\n5 | import Base\n6>| import ./law.k~B.bend as E\n  |        ^\n7 | ",
+        "output": null
+      },
+      "exactAgreement": true,
+      "semanticAgreement": true,
+      "referenceEvidence": "frontend-rejection",
+      "candidateEvidence": "frontend-rejection"
+    }
+  ],
+  "missing": [],
+  "discrepancies": [],
+  "referenceSelectedComplete": true,
+  "candidateSelectedComplete": true,
+  "scope": "Selected probes only. Exact fixture or explicit acceptance oracles and compiler agreement are separate. Complete full-suite conformance is never inferred.",
+  "wallMs": 16785.683752999998,
+  "finished": "2026-10-05T16:35:21.743Z"
+}

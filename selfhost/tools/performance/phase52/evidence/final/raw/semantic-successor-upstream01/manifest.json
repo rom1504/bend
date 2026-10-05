@@ -1,0 +1,433 @@
+{
+  "kind": "phase52-semantic-acquisition",
+  "complete": true,
+  "passed": false,
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+    "sha256": "f268e91ae93a3960731e5e0ff317315135af3dbccce46174c279faf5a7248254"
+  },
+  "roles": {
+    "typescript": {
+      "modules": {
+        "nat-row-demand": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/nat-row-demand.mjs",
+        "dead-foreign-let": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/dead-foreign-let.mjs",
+        "erased-foreign": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/erased-foreign.mjs",
+        "live-foreign": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/live-foreign.mjs",
+        "proof-main": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/proof-main.mjs"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/acquire-semantics-v2.py",
+      "sha256": "7fa1d11d31a6c0fbc2e25c54d19d40a0959c5bf310dea54b80cac78a6683a99a",
+      "bytes": 6199
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+      "sha256": "f268e91ae93a3960731e5e0ff317315135af3dbccce46174c279faf5a7248254",
+      "bytes": 9276
+    },
+    {
+      "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+      "sha256": "f730abcde7203c61339f4eafefa144bc5c01031d5a1936c88d493afd5fe2d4a1",
+      "bytes": 8556
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/acquire-semantics.py",
+      "sha256": "d3a8f6922d37f6304f1a2379d8d38410cc92f412116a421a69d8bb8e0da6e0a2",
+      "bytes": 6009
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/nat-row-demand-v1.bend",
+      "sha256": "6dc2ba1a0edb0062e1130f0f4089e895c950274b9dc046896d37dd0f9a5fefbd",
+      "bytes": 241
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/mutual-capture-v1.bend",
+      "sha256": "127114bc8cba6c44e62c17bcc69fec9bda5a277482a12cf27eff1fa14c315b8b",
+      "bytes": 839
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.bend",
+      "sha256": "ee8997e9fe6129b806e54348ab73261316fc06e8fe1c77e6163f14a970feef43",
+      "bytes": 191
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.js",
+      "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936",
+      "bytes": 174
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased-foreign-v1.bend",
+      "sha256": "79976e0437a229479c6136883828a59bb7090dc9d5274c8323856c74a0331e22",
+      "bytes": 225
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.js",
+      "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936",
+      "bytes": 174
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.bend",
+      "sha256": "1be4e6b6b783f6dc2ba73b7477b08b66b144db814a3954b035aa43ef368489e3",
+      "bytes": 235
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.js",
+      "sha256": "b017d6bc7c9848922266d4d13e7648665cc641c65a1dd4177831cc518de101d4",
+      "bytes": 80
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/proof-main-v1.bend",
+      "sha256": "cb92fd49e05cb60149fc48258847a00bc1678c67d0382c0b69bc3ac11f2c0981",
+      "bytes": 222
+    }
+  ],
+  "jobs": [
+    {
+      "id": "nat-row-demand",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+        "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/nat-row-demand-v1.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/nat-row-demand.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+          "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/nat-row-demand-v1.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/nat-row-demand.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791216158.2308652,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 131813376,
+        "minimumAvailableBytes": 27803226112,
+        "returncode": 0,
+        "wallSeconds": 0.6347947769681923,
+        "finished": 1791216158.8656583
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/nat-row-demand.mjs.json",
+        "sha256": "c6ae4009932a2133699ebbed7a2e02d4064bc3f2b2128287009ee098ee5c3d5a",
+        "bytes": 4346
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/nat-row-demand.mjs",
+        "sha256": "bc56f6d5ffd833e1db29f095a247fa11fadcc3ba61f27023e584e6ce3e092313",
+        "bytes": 4100
+      }
+    },
+    {
+      "id": "mutual-capture",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+        "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/mutual-capture-v1.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/mutual-capture.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": false,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+          "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/mutual-capture-v1.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791216158.8975422,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 125001728,
+        "minimumAvailableBytes": 27813101568,
+        "returncode": 1,
+        "wallSeconds": 0.6160650810343213,
+        "finished": 1791216159.5135977
+      },
+      "passed": false,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/mutual-capture.mjs.json",
+        "sha256": "18a0583b4ac99a4ef3ea7d6a511964a470d1749238358a74057525e8881d9e42",
+        "bytes": 3747
+      },
+      "error": "[object Object]"
+    },
+    {
+      "id": "dead-foreign-let",
+      "mode": "compile",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+        "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/dead-foreign-let.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+        "direct",
+        "compile"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+          "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/dead-foreign-let.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+          "direct",
+          "compile"
+        ],
+        "started": 1791216159.538631,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 136298496,
+        "minimumAvailableBytes": 27804278784,
+        "returncode": 0,
+        "wallSeconds": 0.6364028719835915,
+        "finished": 1791216160.175024
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/dead-foreign-let.mjs.json",
+        "sha256": "7713336d6686766738291b2f39c17c0745aad5d26386400ae29a624e751ea335",
+        "bytes": 4347
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/dead-foreign-let.mjs",
+        "sha256": "c76df9420e67a15a2092b8cde9955ca8f7ceb9db2c0e48855547fe5a39490e60",
+        "bytes": 12661
+      }
+    },
+    {
+      "id": "erased-foreign",
+      "mode": "compile",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+        "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased-foreign-v1.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/erased-foreign.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+        "direct",
+        "compile"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+          "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased-foreign-v1.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/erased-foreign.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+          "direct",
+          "compile"
+        ],
+        "started": 1791216160.180783,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 131878912,
+        "minimumAvailableBytes": 27807174656,
+        "returncode": 0,
+        "wallSeconds": 0.7181713320314884,
+        "finished": 1791216160.8989398
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/erased-foreign.mjs.json",
+        "sha256": "5728579226a16466e489fb807d7824c71cbad63783da93daf598721ccafc985b",
+        "bytes": 4338
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/erased-foreign.mjs",
+        "sha256": "b331375d530f0a794fad54979cd353354fe4e89ed8c4b2e0c97bbbf89c76b595",
+        "bytes": 12708
+      }
+    },
+    {
+      "id": "live-foreign",
+      "mode": "compile",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+        "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/live-foreign.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+        "direct",
+        "compile"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+          "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/live-foreign.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+          "direct",
+          "compile"
+        ],
+        "started": 1791216160.922765,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 135176192,
+        "minimumAvailableBytes": 27801759744,
+        "returncode": 0,
+        "wallSeconds": 0.7176264310255647,
+        "finished": 1791216161.6403813
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/live-foreign.mjs.json",
+        "sha256": "075cffa393bdf7d5b027ecd0cdd6549fc96805ed6065f508a1f01848abe6925e",
+        "bytes": 4331
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/live-foreign.mjs",
+        "sha256": "d9b7786f45f5dd5f9f8f1d2949844351e345a701f2b47608de3bc4a8cf09137d",
+        "bytes": 14951
+      }
+    },
+    {
+      "id": "proof-main",
+      "mode": "compile",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+        "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/proof-main-v1.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/proof-main.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+        "direct",
+        "compile"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker-v2.mjs",
+          "upstream:/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/proof-main-v1.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/proof-main.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v1.json",
+          "direct",
+          "compile"
+        ],
+        "started": 1791216161.6461594,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 130445312,
+        "minimumAvailableBytes": 27805589504,
+        "returncode": 0,
+        "wallSeconds": 0.6362042890395969,
+        "finished": 1791216162.2823546
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/proof-main.mjs.json",
+        "sha256": "ad5b8e48b01c54e6d4d69219a69e4ffb8a62a22e22b3f2943af3074636c65ae7",
+        "bytes": 4323
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream01/modules/proof-main.mjs",
+        "sha256": "2b1df45761ba31089a3cc1ee4483d36b4189144537a1970b99b62fdfeef3fc75",
+        "bytes": 12214
+      }
+    }
+  ],
+  "scope": "Checked emission only, no emitted-program execution or semantic PASS. All failures are retained; no case is silently dropped.",
+  "inputsUnchanged": true
+}

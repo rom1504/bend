@@ -1,0 +1,85 @@
+{
+  "kind": "program-execution-v1",
+  "complete": true,
+  "pass": true,
+  "stage": "done",
+  "node": "v24.18.0",
+  "execArgv": [
+    "--max-old-space-size=1024"
+  ],
+  "calibration": [
+    {
+      "repetitions": 1,
+      "executionMs": 0.2750899999999987,
+      "checksum": 29,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 0.25951199999999375
+        }
+      ]
+    }
+  ],
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/prepared-direct06-intrinsics/modules/test-morning-program.mjs",
+    "sha256": "7dfe50ae12164193ebedff560dc8306538fdfebb1c3630c0c09f1c2b5450ef51"
+  },
+  "config": {
+    "args": [],
+    "expected": "a-bb-ccc 8 1877 42 lo hello 3",
+    "exportName": "main.out",
+    "warmupCalls": 0,
+    "warmupMs": 0,
+    "calibrationMs": 0,
+    "targetMs": 1,
+    "maxRepetitions": 1
+  },
+  "configSha256": "90852449e8c46048351fae6f8090fdb1e6f65cb311ef20c33476fc0e45d06e07",
+  "toolSha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+  "affinity": "Cpus_allowed_list:\t3",
+  "importMs": 3.3360160000000008,
+  "firstResult": "a-bb-ccc 8 1877 42 lo hello 3",
+  "firstCallMs": 2.588834999999996,
+  "warmup": {
+    "calls": 0,
+    "ms": 0.008166000000002782
+  },
+  "repetitions": 1,
+  "executionMs": 0.24397799999999847,
+  "checksum": 29,
+  "halves": [
+    {
+      "calls": 1,
+      "ms": 0.2359920000000031
+    }
+  ],
+  "msPerCall": 0.24397799999999847,
+  "halfDriftPercent": null,
+  "wallMs": 8.846783000000002,
+  "resourceUsage": {
+    "userCPUTime": 39513,
+    "systemCPUTime": 11853,
+    "maxRSS": 54072,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 3684,
+    "majorPageFault": 0,
+    "swappedOut": 0,
+    "fsRead": 0,
+    "fsWrite": 8,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 51,
+    "involuntaryContextSwitches": 47
+  },
+  "peakRssKiB": 54072,
+  "memory": {
+    "rss": 55640064,
+    "heapTotal": 7843840,
+    "heapUsed": 5575976,
+    "external": 2462097,
+    "arrayBuffers": 315351
+  }
+}

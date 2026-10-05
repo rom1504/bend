@@ -1,0 +1,18 @@
+{
+  "kind": "phase52-direct-release-controller-directory-fix",
+  "parent": {
+    "file": "selfhost/tools/performance/phase52/direct-release-smoke.mjs",
+    "sha256": "f1a11422df2d9522b7c92cb2c585b0ca05e36f2faf613f0b33a1f5dee5b49555"
+  },
+  "successor": {
+    "file": "selfhost/tools/performance/phase52/direct-release-smoke-v2.mjs",
+    "sha256": "f52ff1b41037f7abb599f0beba779c498782c5106bf40279f80168867fd206a0"
+  },
+  "exactReplacement": {
+    "from": "const dir=path.join(out,mode);fs.mkdirSync(dir);",
+    "to": "const dir=path.join(out,'outputs-'+mode);fs.mkdirSync(dir);"
+  },
+  "reason": "out/relocated was already the copied release root; generated fixture outputs now use outputs-MODE",
+  "gatesChanged": false,
+  "executed": false
+}

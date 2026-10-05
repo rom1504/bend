@@ -1,0 +1,85 @@
+{
+  "kind": "phase52-direct-ordered-intrinsic-comparison",
+  "complete": true,
+  "passed": true,
+  "callingContract": "upstream-compatible-direct-v1",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/compare-ordered.py",
+      "bytes": 5917,
+      "sha256": "41b6faa989b581eb7f381e37d6a92692a660cbe8547a8ba6749ca0c5d2c60677"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/run.py",
+      "bytes": 21467,
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/execute.mjs",
+      "bytes": 5572,
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "bytes": 6779,
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/ordered-reference06/manifest.json",
+      "bytes": 10899,
+      "sha256": "ce26b2a45a74ee843443db59f4a0af798f9e60fe5744d3f0ccae4c930d94358f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/prepared-direct07-ordered/manifest.json",
+      "bytes": 6911,
+      "sha256": "fe5a941e108295475808ccd7a641562bc79ad844453260410aef4146bab60e4c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/catalog.json",
+      "bytes": 83389,
+      "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/intrinsic-profile-v1.json",
+      "bytes": 9618,
+      "sha256": "11e41bca09263752a3bec9500d0cc8e99731bd614398d3631a8206cdf9f637d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/compare.py",
+      "bytes": 4265,
+      "sha256": "d58e0cdd16cb55005ed0907e3b3176ed271af64a90538d620a79d6c39559986c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/ordered-reference06/provenance.json",
+      "bytes": 9212,
+      "sha256": "8d42e4977568c5e64fb7095d1a6aac1458e199752ffb1afae1163fb455b0cf2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/compare-intrinsics.py",
+      "bytes": 5601,
+      "sha256": "bb4a6cedfb08a78c9f659a169319e50e18b68362c79ef05a22136f48307141b9"
+    }
+  ],
+  "precommittedThreshold": {
+    "minimumGeometricSpeedup": 1.05,
+    "maximumPointSlowdown": 1.1,
+    "requiredCases": 8,
+    "requiredSamples": 72
+  },
+  "scope": "Precommitted eight-source intrinsic screen: same Bend sources, points, exact result oracles and unchanged timing protocol. Baseline means direct06, not Phase51. Candidate and direct06 use the same upstream-compatible default callable/record contract; legacy G/descriptor mutation compatibility is not claimed. Compilation is excluded; saved historical timings are not denominators.",
+  "roles": {
+    "baseline": "Phase52 checked direct06 predecessor, exact saved outputs explicitly relabeled baseline",
+    "candidate": "Checked ordered-intrinsic successor, same direct callable contract",
+    "typescript": "Pinned upstream checked JavaScript outputs"
+  },
+  "outputObservation": "All scalar outputs checked on every invocation. Generic row observes all four arrays using each backend public layout; observer work remains timed.",
+  "methodReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/screen-direct07-ordered/report.json",
+    "bytes": 682622,
+    "sha256": "88acd5d687389b8cd62400eb3e4dcf75a8cf124f691b1e00b02a0544a6f4665e"
+  },
+  "selectedCases": 8,
+  "measuredCases": 8,
+  "status": "measured",
+  "inputsUnchanged": true
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "bend-program-bundle",
+  "schemaVersion": 1,
+  "complete": true,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "catalogSha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+  "roles": {
+    "candidate": {
+      "label": "Prepared checked candidate",
+      "compiler": {
+        "kind": "checked-development-attempt",
+        "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+        "sourceSha256": "3c5671579628de5c113907403188df17e3d35a15dd520bc1d20b6dc3263d3513",
+        "artifact": "derived-b1",
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/equality/api.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/equality/api.mjs",
+          "sha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/src/runtime.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        },
+        "base": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+          "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+        },
+        "driver": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/tools/typed-driver.mjs",
+          "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/tools/typed-driver.mjs",
+          "sha256": "ba2bbe9baba59b2f781750fdec2a46b4c0a1cb2553e8e89c3c168c42762fc7f9"
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "local-pair",
+      "sourceSha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "point": {
+        "exportName": "pair",
+        "args": [
+          0
+        ],
+        "expected": 1866542166
+      },
+      "modules": {
+        "candidate": {
+          "path": "modules/local-row.mjs",
+          "sha256": "d901c96e2991f39610eb879102602dab306049e87fb4862de672d65bf9e780c4",
+          "bytes": 182554
+        }
+      }
+    },
+    {
+      "id": "local-fold",
+      "sourceSha256": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          4096,
+          17
+        ],
+        "expected": 2339999928
+      },
+      "modules": {
+        "candidate": {
+          "path": "modules/local-fold.mjs",
+          "sha256": "9b5c34d06db7f27fc254cea3faafbc3091b146cf2f37c38087621828139c94c0",
+          "bytes": 91847
+        }
+      }
+    },
+    {
+      "id": "scalar-region-0",
+      "sourceSha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          0,
+          524800
+        ],
+        "expected": 0
+      },
+      "modules": {
+        "candidate": {
+          "path": "modules/scalar-region.mjs",
+          "sha256": "65c32171277acc80f9fb9bdcaedca1bdbc3134dd84f22fc85f2a646f69336a3a",
+          "bytes": 95878
+        }
+      }
+    },
+    {
+      "id": "scalar-region-8192",
+      "sourceSha256": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          8192,
+          524800
+        ],
+        "expected": 8192
+      },
+      "modules": {
+        "candidate": {
+          "path": "modules/scalar-region.mjs",
+          "sha256": "65c32171277acc80f9fb9bdcaedca1bdbc3134dd84f22fc85f2a646f69336a3a",
+          "bytes": 95878
+        }
+      }
+    },
+    {
+      "id": "complete-generic-row32",
+      "sourceSha256": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "point": {
+        "exportName": "bench",
+        "args": [
+          32,
+          17
+        ],
+        "expected": "[[0,2,1,1,0,0,0,1,1,0,0,2,3,1,3,1,0,1,0,0,2,1,0,0,0,2,0,2,1,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,0,1,0,1,2,0,0,0,0,2,0,0,3,0,1,2,0,1,2,0,0,1,3,3,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]"
+      },
+      "modules": {
+        "candidate": {
+          "path": "modules/local-row-observed.mjs",
+          "sha256": "c0d10ea7bae696c8a654e48ec646bffe1ab510935fc4b76f23abac1ccf13ab01",
+          "bytes": 182707
+        }
+      }
+    },
+    {
+      "id": "mandelbrot",
+      "sourceSha256": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+      "point": {
+        "args": [
+          2,
+          0
+        ],
+        "expected": 887240761,
+        "exportName": "bench"
+      },
+      "modules": {
+        "candidate": {
+          "path": "modules/mandelbrot.mjs",
+          "sha256": "7fe18eb8281f510185932cceaf75b599ab80de45c2b29c689f87a9064b2eb1e4",
+          "bytes": 172433
+        }
+      }
+    },
+    {
+      "id": "editdist",
+      "sourceSha256": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "point": {
+        "args": [
+          2,
+          0
+        ],
+        "expected": 2065873279,
+        "exportName": "bench"
+      },
+      "modules": {
+        "candidate": {
+          "path": "modules/editdist.mjs",
+          "sha256": "b931f50c41fea7dd0d39a144503ec94b2760ad757e2692f48d86754fd4e829a5",
+          "bytes": 166928
+        }
+      }
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "sourceSha256": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+      "point": {
+        "args": [],
+        "expected": 11,
+        "exportName": "main.out"
+      },
+      "modules": {
+        "candidate": {
+          "path": "modules/test-rle-roundtrip.mjs",
+          "sha256": "dc032575c9194560e49cf6a1571f2458fc22ba135296d4e620015a4c4b8397d5",
+          "bytes": 114596
+        }
+      }
+    }
+  ],
+  "preparation": {
+    "path": "preparation.json",
+    "sha256": "bc0df7eff541ac92e90852e1dd9925eeeab60e0cd185196b6bb2ef170c1533e3",
+    "bytes": 11798
+  }
+}

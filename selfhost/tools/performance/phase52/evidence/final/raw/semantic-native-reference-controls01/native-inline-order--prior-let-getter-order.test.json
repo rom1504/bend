@@ -1,0 +1,35 @@
+{
+  "id": "prior-let-getter-order",
+  "exportName": "multiply.prior",
+  "groups": [
+    [
+      {
+        "$callback": "plus7"
+      },
+      35
+    ]
+  ],
+  "expected": 126,
+  "mutation": {
+    "target": "Math.imul",
+    "style": "getter"
+  },
+  "expectedEvents": [
+    [
+      "callback",
+      35
+    ],
+    [
+      "builtin-get",
+      "Math.imul"
+    ],
+    [
+      "builtin",
+      "Math.imul",
+      [
+        42,
+        3
+      ]
+    ]
+  ]
+}

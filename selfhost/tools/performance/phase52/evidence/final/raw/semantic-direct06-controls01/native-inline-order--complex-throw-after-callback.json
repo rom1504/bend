@@ -1,0 +1,31 @@
+{
+  "id": "complex-throw-after-callback",
+  "exportName": "multiply.complex",
+  "groups": [
+    [
+      {
+        "$callback": "plus7"
+      },
+      35
+    ]
+  ],
+  "expectedError": "phase52-hook:Math.imul",
+  "mutation": {
+    "target": "Math.imul",
+    "style": "throw"
+  },
+  "expectedEvents": [
+    [
+      "callback",
+      35
+    ],
+    [
+      "builtin",
+      "Math.imul",
+      [
+        42,
+        3
+      ]
+    ]
+  ]
+}

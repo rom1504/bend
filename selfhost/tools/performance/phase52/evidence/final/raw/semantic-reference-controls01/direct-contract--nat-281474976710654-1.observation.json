@@ -1,0 +1,16 @@
+{
+  "kind": "phase52-direct-semantic-observation",
+  "complete": false,
+  "test": "nat-281474976710654-1",
+  "events": [],
+  "value": {
+    "$bigint": "281474976710655"
+  },
+  "outcome": "throw",
+  "error": {
+    "type": "object",
+    "name": "AssertionError",
+    "message": "independent expected value\n+ actual - expected\n\n+ {\n+   '$bigint': '281474976710655'\n+ }\n- 281474976710655\n"
+  },
+  "failure": "AssertionError [ERR_ASSERTION]: independent expected value\n+ actual - expected\n\n+ {\n+   '$bigint': '281474976710655'\n+ }\n- 281474976710655\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v2.mjs:46:38"
+}

@@ -1,0 +1,265 @@
+{
+  "kind": "phase52-selected06-scoped-qualification",
+  "complete": true,
+  "dataOnly": true,
+  "selectedAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/attempt.json",
+    "bytes": 283726,
+    "sha256": "cf2e8ea55f70aef6796b10ebbda65ffa2367428e50afb6d6f9ae0f59b7730835"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/equality/api.mjs",
+    "bytes": 1790409,
+    "sha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a"
+  },
+  "sourceSha256": "3c5671579628de5c113907403188df17e3d35a15dd520bc1d20b6dc3263d3513",
+  "installedRelease": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/release.json",
+    "sha256": "5068640f10e4165976d502259b497824891c9414f3954e9e3fc500aecdcd27bb",
+    "bytes": 34736
+  },
+  "directRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/direct.mjs",
+    "sha256": "417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a",
+    "bytes": 12952
+  },
+  "backend": "direct",
+  "defaultBackend": "legacy",
+  "optInFlag": "--direct-js",
+  "independentSemantics": {
+    "fullPass": false,
+    "passCount": 95,
+    "failCount": 1,
+    "total": 96,
+    "limitation": {
+      "fixture": "f32_table_nan_bits",
+      "test": "nan-table-bits",
+      "sourceGolden": 40,
+      "typescript": 1,
+      "direct": 39,
+      "observedValueAgreement": false,
+      "waived": false
+    }
+  },
+  "maintainedCompatibility": {
+    "passGate": true,
+    "suites": 8
+  },
+  "directCensus": {
+    "passGate": true,
+    "agreementRows": 26,
+    "runtimePasses": 18,
+    "expectedRejections": 4,
+    "notApplicable": 4
+  },
+  "benchmark": {
+    "passGate": true,
+    "points": 45,
+    "sources": 23,
+    "samples": 669,
+    "equalPointGeometricMeans": {
+      "baseline/typescript": 2.6306050606387426,
+      "candidate/typescript": 1.12379876593628,
+      "baseline/candidate": 2.340815046586286
+    },
+    "equalSourceGeometricMeans": {
+      "baseline/typescript": 3.582112941557087,
+      "candidate/typescript": 1.1291123208922558,
+      "baseline/candidate": 3.172503634294241
+    }
+  },
+  "legacyCompatibility": {
+    "passGate": true,
+    "exactByteIdenticalCases": 8,
+    "deeperSamples": 120,
+    "original20SecondAttempt": "budget-exhausted; retained"
+  },
+  "releaseInterface": {
+    "passGate": true,
+    "legacyChecks": 42,
+    "directChecks": 18,
+    "relocatedWithoutUpstream": true,
+    "tamperRejectedAndRestored": true
+  },
+  "portable": {
+    "passGate": true,
+    "exactModuleMappings": 135,
+    "replayCases": 3,
+    "replaySamples": 27
+  },
+  "receipts": {
+    "semantics": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-qualified-scope-v2.json",
+      "bytes": 3634,
+      "sha256": "72bbdd7aa856a5122743f638fe5b5502f247c9b4d1f83c6eed576308e7f664cb"
+    },
+    "maintained": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/maintained06/report.json",
+      "bytes": 58270,
+      "sha256": "36766ac5a5f435d2448803adcc8e1ffa653e29a32b2529fe6933ba5d2e3edbf8"
+    },
+    "directCensus": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/direct-conformance06/report.json",
+      "bytes": 170948,
+      "sha256": "d72b393a43b564970cc83aa357ff41ec39eadc0f11f1ffc0192fdcfdbae2417c"
+    },
+    "benchmark": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/full-direct06-aggregate/report.json",
+      "bytes": 337705,
+      "sha256": "9e3debe07b378a48e1b3f1850b61f15fbd2b34a79f5d6abca114eb037bec150b"
+    },
+    "legacy": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-legacy-core-checkpoint-v2.json",
+      "bytes": 2699,
+      "sha256": "831adbb406aa47baed55f305ab4f4b3bdfe2d2080a8858e1b5caafcb5905356f"
+    },
+    "release": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06-final01/report.json",
+      "bytes": 11076,
+      "sha256": "c7cdb03ecace6531e3bf75e1c66ad1a8c5c1db96db629f59c510900165aadc58"
+    },
+    "portableIdentity": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/portable-verification06.json",
+      "bytes": 47330,
+      "sha256": "012278f03c9ecf97790fdaaa719382624b36ebe1b120735e4ba555adbff6952d"
+    },
+    "portableReplay": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/portable-replay06/report.json",
+      "bytes": 258657,
+      "sha256": "850a7f34afeb31e52e1eed400c2b15eec28ac5049aa328b07247c43c710b3efd"
+    },
+    "accounting": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/accounting-final06.json",
+      "bytes": 217301,
+      "sha256": "a1da53ff3f07678957830703e6d763eeef8c2befd30c48def9b8320331253e93"
+    },
+    "time": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/time-use-final.json",
+      "bytes": 3363537,
+      "sha256": "dd28f397fd7d1bc0b2de570f88c3d0cab57cf457894d6bd4736b64e73d4939f9"
+    }
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/close-selected06.py",
+    "bytes": 5308,
+    "sha256": "b35b22feca2350f11f7bf25947dce2459d93c8cf7477fd79cc8e2c1e4209be17"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/attempt.json",
+      "bytes": 283726,
+      "sha256": "cf2e8ea55f70aef6796b10ebbda65ffa2367428e50afb6d6f9ae0f59b7730835"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/equality/api.mjs",
+      "bytes": 1790409,
+      "sha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/typed-api.mjs",
+      "bytes": 1790409,
+      "sha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-qualified-scope-v2.json",
+      "bytes": 3634,
+      "sha256": "72bbdd7aa856a5122743f638fe5b5502f247c9b4d1f83c6eed576308e7f664cb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/maintained06/report.json",
+      "bytes": 58270,
+      "sha256": "36766ac5a5f435d2448803adcc8e1ffa653e29a32b2529fe6933ba5d2e3edbf8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/direct-conformance06/report.json",
+      "bytes": 170948,
+      "sha256": "d72b393a43b564970cc83aa357ff41ec39eadc0f11f1ffc0192fdcfdbae2417c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/full-direct06-aggregate/report.json",
+      "bytes": 337705,
+      "sha256": "9e3debe07b378a48e1b3f1850b61f15fbd2b34a79f5d6abca114eb037bec150b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-legacy-core-checkpoint-v2.json",
+      "bytes": 2699,
+      "sha256": "831adbb406aa47baed55f305ab4f4b3bdfe2d2080a8858e1b5caafcb5905356f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06-final01/report.json",
+      "bytes": 11076,
+      "sha256": "c7cdb03ecace6531e3bf75e1c66ad1a8c5c1db96db629f59c510900165aadc58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/portable-verification06.json",
+      "bytes": 47330,
+      "sha256": "012278f03c9ecf97790fdaaa719382624b36ebe1b120735e4ba555adbff6952d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/portable-replay06/report.json",
+      "bytes": 258657,
+      "sha256": "850a7f34afeb31e52e1eed400c2b15eec28ac5049aa328b07247c43c710b3efd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/accounting-final06.json",
+      "bytes": 217301,
+      "sha256": "a1da53ff3f07678957830703e6d763eeef8c2befd30c48def9b8320331253e93"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/time-use-final.json",
+      "bytes": 3363537,
+      "sha256": "dd28f397fd7d1bc0b2de570f88c3d0cab57cf457894d6bd4736b64e73d4939f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-controls01/report.json",
+      "bytes": 85885,
+      "sha256": "5357c24a5a1c9623bb25278e0b60e6d4b79b377653a841db08ba088f47485bf8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-controls01-supervisor/run.json",
+      "bytes": 1503,
+      "sha256": "8215db764ab15d55d62f28691423249e5a1e2695afca5ae7bf8d4011b7669017"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/manifest.json",
+      "bytes": 89493,
+      "sha256": "07e9c6d278c3a20d319afff8f68126c1673680d5e6f3b8eac334c0ab311c44ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-join01.json",
+      "bytes": 11588,
+      "sha256": "2c9c40fc55cdbec00248a538e1ff18ad59ad68a5f821a503e05c8af54d7b6b3a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/manifest.json",
+      "bytes": 4902,
+      "sha256": "f11a8c7cec87fdc33c1f46014bbe82e1673d4ba37a23ebf40391602bb57f50aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/report.json",
+      "bytes": 12206,
+      "sha256": "478e9b9181dfc4bcda32e43cfcff45a6003f2e43d07037bc68abe743495b1995"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/screen-legacy06-core-deep01/report.json",
+      "bytes": 1170216,
+      "sha256": "c2eddf0f9c2e69152bbf70350c65cbbf5fcee3ba7d9c9a98e7d11f23f0329ee0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/release.json",
+      "bytes": 34736,
+      "sha256": "5068640f10e4165976d502259b497824891c9414f3954e9e3fc500aecdcd27bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/direct.mjs",
+      "bytes": 12952,
+      "sha256": "417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/close-selected06.py",
+      "bytes": 5308,
+      "sha256": "b35b22feca2350f11f7bf25947dce2459d93c8cf7477fd79cc8e2c1e4209be17"
+    }
+  ],
+  "scope": "Scoped evidence join, not a universal conformance pass. The unwaived NaN payload failure remains. No compiler-throughput, direct self-emitted fixed-point, untouched-holdout or per-program performance-dominance claim."
+}

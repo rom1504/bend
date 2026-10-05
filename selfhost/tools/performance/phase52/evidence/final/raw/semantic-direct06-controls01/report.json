@@ -1,0 +1,2876 @@
+{
+  "kind": "phase52-independent-direct-differential-semantics",
+  "complete": true,
+  "pass": false,
+  "executed": true,
+  "selectedScope": {
+    "kind": "full-independent-plan",
+    "fixtures": 29,
+    "scenarios": 96,
+    "parentFixtures": 28,
+    "parentScenarios": 90,
+    "reason": "Exactly six independent native-call evaluation-order/coercion/public-array-state scenarios; all previous90 and failing NaN golden remain required."
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-join01.json",
+      "sha256": "2c9c40fc55cdbec00248a538e1ff18ad59ad68a5f821a503e05c8af54d7b6b3a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v8.json",
+      "sha256": "6b4148bdea58feb31db614879203f8cb48fa588723d8e079bdd9f0562727c46a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-runner-v9.mjs",
+      "sha256": "9e9d4d542f770798808a760fff4e96fa4e38a68030f220ee9657036c508e8da4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v4.mjs",
+      "sha256": "545f4c93a7c155b7c11445a4b79e473dc93ee51673479ee23a3180b7e21be7d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+      "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-direct-program-worker-v1.mjs",
+      "sha256": "26d454c2dc7ba2767e4271128075b8d1f6048f1f51cfbfbc9e85096f7c9b52a6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/direct-contract-v2.bend",
+      "sha256": "ab6c6253e9af697a0bbea999add8a4048c379019c451176e6f4c4b246200fb22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+      "sha256": "b5b86a73416d32a82970101bfe320af8d45ebecd1b89215e420fb4b142c70198"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs.json",
+      "sha256": "66baa6953f9b425d14f6cf826fec628802022fbe6400db76adebb024296cc9fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/direct-contract.mjs",
+      "sha256": "97c39c16852136462b1fcba3d2c3463fbc4f6cdb93a77c7472cb6acee8aaa8ea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/direct-contract.mjs.json",
+      "sha256": "97c7dad7b58324b4508cc5ea017148bca526860b07addaf5d014c0caa19add32"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_partial_closure.bend",
+      "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_partial_closure.mjs",
+      "sha256": "8939cb9be4111121ddcc258e77c07afb4193971394e3032b09e184eea69c51db"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_partial_closure.mjs.json",
+      "sha256": "b8bcce8b68b036b9aa68a0fa1ad0e07046cbcbf14672ff6349c9eeb52ea2d367"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/erased_partial_closure.mjs",
+      "sha256": "ae6a3f70a8befd1d2a86d4e7539f231aedd86e4f2c73e9d13c8ea048ffa3d89e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/erased_partial_closure.mjs.json",
+      "sha256": "d6f760f2287fb78e434f16d9ebc5c8d6b3648b18a8b5564999956440b39a7d41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/closure_partial_app.bend",
+      "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/closure_partial_app.mjs",
+      "sha256": "70a51142026a81f4e64e74a88e967f123fb55863300ab6f8f255e6de8812bc54"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/closure_partial_app.mjs.json",
+      "sha256": "43e1df74ef18286ee452746962169fb1d5a42eb0ba1468c1dd062dfa16355c0f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/closure_partial_app.mjs",
+      "sha256": "13ba151ceee83b59d3db27044c202cd1ab0dfdd851a27740d6873293005c3285"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/closure_partial_app.mjs.json",
+      "sha256": "b5e78962c2b5befdab089223439fba11ab67c87e029ed13859c23f81b33f6d16"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_recursive_arg.bend",
+      "sha256": "3f13bbac34471cc80e86b4916fdd8a17a2c156f1ced84857149c45dba8e5750d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_recursive_arg.mjs",
+      "sha256": "224e1610dc128843d69f01c28bf6ea87d2d082307a587890058ecb911c587b27"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_recursive_arg.mjs.json",
+      "sha256": "c84dd9665cc88213571058e0988f0c9ab024614cc2890d38adf9ef90bca4c1b1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/erased_recursive_arg.mjs",
+      "sha256": "402aa0422424faa64020f8a0ea5d4bfefcdbf2c4c5c81ab5081334909ba8bb54"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/erased_recursive_arg.mjs.json",
+      "sha256": "c238547fbf55fd97691734cca3c408cfe65567eca3df8abae325ebf96f0d0675"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_apply.bend",
+      "sha256": "a8a84fa45f5b979d21acbc729e06f4bbbe627c8a0f0ac29bc8a9d24751da24c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_apply.mjs",
+      "sha256": "ca642ea9fdb3c7a74e33c45a2af48ef665e8c08a1c6706d3bbaf11debc9d817b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_apply.mjs.json",
+      "sha256": "35e3cde70a7b298ab6eef2bba4b145de3cf221871f19ddccf6d408e7a4234140"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/erased_apply.mjs",
+      "sha256": "4f4770fb4b66b15847b9c07e742c2e6fc7c721042f6e628c0f007394f9ed76c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/erased_apply.mjs.json",
+      "sha256": "1d76fb3400071936c17e963c99c88ebe72855013dea84c9f21f2cc50568ac142"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/over_application.bend",
+      "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/over_application.mjs",
+      "sha256": "73979cc63eb9e207435d71721a335c58bca607f9ef6cbb245f18edbad58afd34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/over_application.mjs.json",
+      "sha256": "083cd655f375ed1aae25d1a77bd630e2d9213b8bb01663f474acd13c42de5844"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/over_application.mjs",
+      "sha256": "0fb85382b31e10da7cc20fa749c57f9d42d61e3b9fbaa3d95c7b353100fb0d9e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/over_application.mjs.json",
+      "sha256": "dc9c6eb4a698b23cc324d63e55f816090503a70c1aa49e9382deb6261274e9c2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_closure_body.bend",
+      "sha256": "f00a373b52647541f8e62bb59f95acdb6998fc1ad1be47dd73f2743aa92bef2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_closure_body.mjs",
+      "sha256": "532eb1bbdde75fb7558586b8289eb9dafcd49be241ce9735b11b1aed46723711"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_closure_body.mjs.json",
+      "sha256": "8b9eeee9e59cb844bed132d6bfb5148254117ddb9bc371ae6a8f5a7d5810f6f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/eta_closure_body.mjs",
+      "sha256": "6cce8c0dc2c6e4866667893a9c760cf908090179a3d9da0e89d3dd2463823a6b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/eta_closure_body.mjs.json",
+      "sha256": "d18685759f89555b15bdde353c7ac68dc9bc515d27910d323fad736a25e58640"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_ctor_arm.bend",
+      "sha256": "25510e2abd182476e08a4c3b0b22eda204f24b90b820909d237f8b8bdf339fb6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_ctor_arm.mjs",
+      "sha256": "8a3611237b4966ce56ae02c94d91fa21af0d7001e11f10376b02dd57646d5de1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_ctor_arm.mjs.json",
+      "sha256": "61ed4fd54ca34d6cf77c8152c1a5380bdf0d090b23ab3f6190193a10fcdc070c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/eta_ctor_arm.mjs",
+      "sha256": "da0e3d342c102ed124d84ae7638036b9acdec6aa157d8dab3294b99dd7272180"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/eta_ctor_arm.mjs.json",
+      "sha256": "761117d0c5c4b93d0511deaa700a2156e36327bc09625a8a0f2dc7dce0209bc8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_dynamic_closure.bend",
+      "sha256": "07e1f36a063002409bc231bb8ca918e0ea5814b129854f4389669a00d67a5a1f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_dynamic_closure.mjs",
+      "sha256": "c9e6db9de642c8a5a8b7da4d1755d4c9b67a592f9feca79309fdf3592d15ab0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_dynamic_closure.mjs.json",
+      "sha256": "73780a7aff75c9a61137db7233ed5215830b92622f8c7bf464c7058caa674eb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/array_dynamic_closure.mjs",
+      "sha256": "7e2f71647618297abea3ebc233e70d40ee8a286274fbb32b7b91f28f554473dd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/array_dynamic_closure.mjs.json",
+      "sha256": "bd0adedec32aa738bc9613bdfa91b70855dfa694a66abfee95e596b8746b493a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_accumulation.bend",
+      "sha256": "93e0e625cf6a742d8f3a47701f8280111a989ebb76f563695437c67ab3da4297"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_accumulation.mjs",
+      "sha256": "8f8b5b6f1b316b06a34142d1ceeae492a68391dd2a669a3815e100d70876dfd1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_accumulation.mjs.json",
+      "sha256": "dbd111b9d5bb79dde2891270a8e6dfa9f6198eb2a1fe551bf24b89824f1d2db9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/float_accumulation.mjs",
+      "sha256": "1b024b3be9480ef814aa1f9e42844cddccae164e7c7a88e0f0c7471b3628e628"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/float_accumulation.mjs.json",
+      "sha256": "b99ed04fa84b109ca8fce4aebc3c2d3e65875c13a41419a3ce2efc735ba10cd2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_builtin_agreement.bend",
+      "sha256": "598bf5de2c2b221a2d8f72b34298c40b4ee311fbdba6802c53b27272beb28536"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_builtin_agreement.mjs",
+      "sha256": "75c5c099515edcd125f12e2f450d8547fb6d697008d05aba2f5aaa6bed3c52db"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_builtin_agreement.mjs.json",
+      "sha256": "eed9cb340eea3382ac1b2e48d395c5f6b252d1eb8cbb917b4029b9120994e8a9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/float_builtin_agreement.mjs",
+      "sha256": "cd3571a133aaf8e354bd2106555c5429b5b73c41e3e132b93830ab89594f5183"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/float_builtin_agreement.mjs.json",
+      "sha256": "3c98d1a334a995b4f7b5f511687a11ad477a8ca7d13b5bba2005300303318100"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_roundtrip.bend",
+      "sha256": "7fc6dbd7a533f781d0a72632f38129be0591b7754cbfded2d8a644cc0933bfd4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_roundtrip.mjs",
+      "sha256": "720e7d1e37ca3b0b7614898dea58541e6ef7dd9e76f88a2929d2053ced147408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_roundtrip.mjs.json",
+      "sha256": "5acb5b21da92c61efa43621489c2b9de78799918595c65e011735e38e561c1fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/float_roundtrip.mjs",
+      "sha256": "1384b2a9c3346798c941b784cb6a579052683e0cfa40292cb88f5dd278fa0ca3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/float_roundtrip.mjs.json",
+      "sha256": "54ec1d2977a2bcea7429b1f72bfb78c572242e746cc7992f72a8dd3dc1b98c5f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_erased_binders.bend",
+      "sha256": "434bfa849bd88393922f0d8ee2012775e40af9220f6f3ec0a5403ed4c21907f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_erased_binders.js",
+      "sha256": "3469a2e3cb9f5872b9f4bed2d473271a979e3270c57674c53edecec84bb7af51"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_erased_binders.mjs",
+      "sha256": "b7f5ea0212b1973c2e81ada530db93f6e33b2073d80eba87fea0967d538c4c34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_erased_binders.mjs.json",
+      "sha256": "56c5a8e99a068c7764bcac907d8951afe686c17eaf0ffe37db1fcecad557d097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/marshal_erased_binders.mjs",
+      "sha256": "ff1b4fadb31f900de315390d5561fb2e017f4935c75a39803d6599e19a3c5006"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/marshal_erased_binders.mjs.json",
+      "sha256": "8f95c5d69a190dd5430b0b53b1d410b1140455a7ee1a01de26c81f39dc6d0e83"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/shared_module_state.bend",
+      "sha256": "e6aa3a59587d40c9a473e75cf66180b36045309a6c1af17a9746f1810ee60af2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/shared_module_state.js",
+      "sha256": "d42ae5de0b56d7cba8835d7b00e50ee1565b8f6d3c97db5012d41816348e5123"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/shared_module_state.mjs",
+      "sha256": "118c6791abd8176e43d072503d206141611d48da9eff421af35c17b6dc693f37"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/shared_module_state.mjs.json",
+      "sha256": "96463a338e34e93e8d333476025b03e0eb105975c10f3d9dd23de94fb8096922"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/shared_module_state.mjs",
+      "sha256": "a41c27bd989343f6f42e815a0b1ac0ef39b3ef66ff7304f87606e15f2803c54c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/shared_module_state.mjs.json",
+      "sha256": "5d2434f1dda4dbb27dd1ff1971f43165912bfd7b764bcfcabde7559978a6b9b0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/foreign_arrow_arity.bend",
+      "sha256": "fae4838a694a354cb061ff422981d16b65a508dd287faa12562cae1cfb72fd56"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/foreign_arrow_arity.js",
+      "sha256": "de87179b5f9d27b8b1f0387795a049547c4b00bd64597dec0b629468302376ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/foreign_arrow_arity.mjs",
+      "sha256": "6e7e416574492a3b82175e4508a700e28e0519be3921188f5ea1b76f251504bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/foreign_arrow_arity.mjs.json",
+      "sha256": "9fdbe651b18294bbe6c78907a5e440ad8d80cdc8669cfb6dd8dca79ca4a318bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/foreign_arrow_arity.mjs",
+      "sha256": "504f5bfcb123767b8a66293aa2bb539f1898f160cd05555ed16603132e74ca9f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/foreign_arrow_arity.mjs.json",
+      "sha256": "9cef540ef931fca7a54d1ac5b5efd57cf37ee67978b8e6c06dbd44b06a00a02f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_nat_bigint.bend",
+      "sha256": "a99628e48b2258c70b71a4f1d3b707b7e18e0a2abbf6a9279e8e06e7c5ac50f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_nat_bigint.js",
+      "sha256": "f10cbe24f0a29ae3ca3d2e53d53eb953eeb0152f4087efabf92086354bf0c607"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_nat_bigint.mjs",
+      "sha256": "005563adf058cf4505270c9ff4d62264d44c09f0f2bd1f0ebdd12b0ae855a882"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_nat_bigint.mjs.json",
+      "sha256": "2bf47161678d3bd00742bc288c37497313aa7f59c2e8e5178890f3510160c1f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/marshal_nat_bigint.mjs",
+      "sha256": "aed4c88774477d3d5d905c436539447e4bc13640fbb3e4ec4db98f42accc68a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/marshal_nat_bigint.mjs.json",
+      "sha256": "183561f4a5b7b2a7dbed25176ee011525227d84420a125af72993d2b3c466e4a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_swap_header.bend",
+      "sha256": "e16438d4138cbf1700473d0f1a1805194787c107b39af819c0dbdeed752d7f87"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_swap_header.mjs",
+      "sha256": "11dc9aef808b8d6f299c4df5559a33f065228f416abf48ea4e1247158d6737e2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_swap_header.mjs.json",
+      "sha256": "540c31a8b4745599f4e0addb86bbd29e7bf9cc6c9aa1a38caec2fb05d805fe79"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/array_swap_header.mjs",
+      "sha256": "5b7b24a3153e05bf1b6983711888c0d9e5adcc2d94b33da427af20aec9d467f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/array_swap_header.mjs.json",
+      "sha256": "31ed6f487e4a5a2ac26b29cbb4c3a61ce274e278139ab8c814233be7a10feafb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/tail_pin.bend",
+      "sha256": "9501546a5f125a2cb82609f23c517e62dffe4eeb603f3e6cc991c4477bb78cd9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/tail_pin.mjs",
+      "sha256": "10bc9be273d2264e5a9be1f6dd54003f64a09afd3cc9946cbc31ed13fa41a5f6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/tail_pin.mjs.json",
+      "sha256": "da3afb98f9da1a7ce223ec6b0fdbbf54072126a4f9853d0ca3729af6510ebd02"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/tail_pin.mjs",
+      "sha256": "7b5380c5759916e7ed2fa8aa9479f356cfe00fed4ed479534778625d52d91e59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/tail_pin.mjs.json",
+      "sha256": "399212f24de6ab9d4aae625dfd62780dc86a03c691d9bb26a18d7b53134f8e7b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/f32_read_round_once.bend",
+      "sha256": "a30385f044fe1ff66a6cb3c45537c1d773eff1aced492480b2f62305ce08fb82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_read_round_once.mjs",
+      "sha256": "2e5c40b2552bb0be87d11f69efc19b140aea839d37d8ef8b1e51ff6e091a0474"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_read_round_once.mjs.json",
+      "sha256": "9d62ef311d9408df502d9800f6c3278e64e15714fe078b6e25f607da1528aadf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/f32_read_round_once.mjs",
+      "sha256": "b295083712fd026ca9400f1bd602f4c09958f5f863f95bef31faa305f6285fc3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/f32_read_round_once.mjs.json",
+      "sha256": "ffab9b26504582c742b70414a0d8cafe9bfd3fb60fdc8b283187ebebc62d4a50"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/f32_table_nan_bits.bend",
+      "sha256": "31831beb2bf79da469bfca1e65448bb8c0a48082d966e0059165e4b569864d0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_table_nan_bits.mjs",
+      "sha256": "992a87c7c42ba131d9b7ee626723a41fa2c10a4a81aa35200f1d342035449c30"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_table_nan_bits.mjs.json",
+      "sha256": "c101f941b09982ccfbb4b07977e03477d1895de9a2bb4d3b62fedc87da8c658b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/f32_table_nan_bits.mjs",
+      "sha256": "c937450a8078873370610182dc078813123b208693b2d03f1793dc83e0e08d63"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/f32_table_nan_bits.mjs.json",
+      "sha256": "028f72827fea130a2e6f66ea93e1ade3f13f577416f79a7b4155ccaa7d551324"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/f32_literal_word.bend",
+      "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_literal_word.mjs",
+      "sha256": "d053b9194b63c5f0d5dcf1307437373bc8699770d9ea6b34b199e0bc187d449f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_literal_word.mjs.json",
+      "sha256": "bd2fb56afe0a6d12db924f562f5be3060fb4a564d22ba958928129620a4b6a53"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/f32_literal_word.mjs",
+      "sha256": "8adb5e3a9f3594af0d2d452966d48f044bb2f48af40d13d1faf6bb6a71f551c5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/f32_literal_word.mjs.json",
+      "sha256": "08e5a8e8bd3d7375b6ff9197dac4e9568279c2bac6d16d7db69c140bdb82f288"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_specials.bend",
+      "sha256": "e5cfe83f9550847dac7b9cf7f10abb444df2fa872c195455f58c335c089051d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/float_specials.mjs",
+      "sha256": "2bda19820f196710026ae4db4d920aa0e8560547429d6899b5a8400e7767379b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/float_specials.mjs.json",
+      "sha256": "6c90a5404d3b01545d107c3bfd09fe1851e551d1a45223d8f04538460aaf94f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/float_specials.mjs",
+      "sha256": "6082fcfa948fb0683cf7364c8b9c443ad02b420dc31eebc575f61e806b4f1478"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/float_specials.mjs.json",
+      "sha256": "f932e42de850e32a6105ee1bd62a30a53b01ec7fdf847046d117540936208e03"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/nat-row-demand-v1.bend",
+      "sha256": "6dc2ba1a0edb0062e1130f0f4089e895c950274b9dc046896d37dd0f9a5fefbd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+      "sha256": "bc56f6d5ffd833e1db29f095a247fa11fadcc3ba61f27023e584e6ce3e092313"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs.json",
+      "sha256": "b6a85848a8f25751ed332cf98d1abbc83b360b12cc17444fe53640c4a59880aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/nat-row-demand.mjs",
+      "sha256": "0a34f7eddba44254a1b50c2084f45bd5d4636d25d6fa14adbebb7764206c40ca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/nat-row-demand.mjs.json",
+      "sha256": "033cdac0d21415169ef72b9eed6c7405da12deb9596cd98e764db9db233ca891"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/mutual-capture-v2.bend",
+      "sha256": "b6079e486bc2ff14623d2da26ab48f687bc13a2a538aabce5e3fe607a0a1c4e8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+      "sha256": "a41c302fcfd55d15a869e7bd93e86087be983d81f93bcd514774ae188fae9524"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs.json",
+      "sha256": "06c0daf1ada1418e8cbefb1262e4b7083bf2a883da84fbcdce274bf0f23be4cf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/mutual-capture.mjs",
+      "sha256": "0fc139370fe1a2d564876d0f8f029145dcebe498a6d0c0025d8401d52a5a7433"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/mutual-capture.mjs.json",
+      "sha256": "c0dff45eb68eda1ab5890637429b8b421b275b2fc77777ac02573ad66e100052"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.bend",
+      "sha256": "ee8997e9fe6129b806e54348ab73261316fc06e8fe1c77e6163f14a970feef43"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.js",
+      "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/dead-foreign-let.mjs",
+      "sha256": "c76df9420e67a15a2092b8cde9955ca8f7ceb9db2c0e48855547fe5a39490e60"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/dead-foreign-let.mjs.json",
+      "sha256": "05c12b8ba2517d50105f2eb1ab304a9b98e8e769b68a7523767af43f9b37f4cf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/dead-foreign-let.mjs",
+      "sha256": "3512042856ec76b893eb6e186fccd62b2b0a9f4aac7ff9d60efde30e41aa4867"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/dead-foreign-let.mjs.json",
+      "sha256": "188045c2422800fa3eb033230b9109c513c0ebd1343e5739d8b2892964a4acb4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased-foreign-v1.bend",
+      "sha256": "79976e0437a229479c6136883828a59bb7090dc9d5274c8323856c74a0331e22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.js",
+      "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/erased-foreign.mjs",
+      "sha256": "b331375d530f0a794fad54979cd353354fe4e89ed8c4b2e0c97bbbf89c76b595"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/erased-foreign.mjs.json",
+      "sha256": "4f3eb87763593d39c4495419a76d2bc33670a80a0d946390f172a589cef47110"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/erased-foreign.mjs",
+      "sha256": "e87d5f6ecc42f6df41187da8b620b6917ea0ea215e8c9bad399bb50802112d00"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/erased-foreign.mjs.json",
+      "sha256": "b9fde413de37c5cfae24608e59658b992dfec42b004347384eba63bdb02b2e25"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.bend",
+      "sha256": "1be4e6b6b783f6dc2ba73b7477b08b66b144db814a3954b035aa43ef368489e3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.js",
+      "sha256": "b017d6bc7c9848922266d4d13e7648665cc641c65a1dd4177831cc518de101d4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/live-foreign.mjs",
+      "sha256": "d9b7786f45f5dd5f9f8f1d2949844351e345a701f2b47608de3bc4a8cf09137d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/live-foreign.mjs.json",
+      "sha256": "fda57431ba1f75a7496cf22a772798d81e22e1256db156790b8aedf2b2131e96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/live-foreign.mjs",
+      "sha256": "1b9e7c6c3da11f632223b5f84e650d9d0cb1ba6b1a28acd8d5ced69a599e2c6f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/live-foreign.mjs.json",
+      "sha256": "183298361718fef01f8e853654798a0acf830731dd953bafe376853eb3d63218"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/proof-main-v1.bend",
+      "sha256": "cb92fd49e05cb60149fc48258847a00bc1678c67d0382c0b69bc3ac11f2c0981"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/proof-main.mjs",
+      "sha256": "2b1df45761ba31089a3cc1ee4483d36b4189144537a1970b99b62fdfeef3fc75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/proof-main.mjs.json",
+      "sha256": "0e1ab90b0caf427ec98a2e12702515417a00643b60ec813ba4d0c2d8ada21762"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/proof-main.mjs",
+      "sha256": "ce5a40facc1985ccc1699b2b444163418965b16cb95b3f2c9ca997357d0dc271"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/proof-main.mjs.json",
+      "sha256": "9f0224f961bf582d780dcda4751eadc80482ef8085e441b2e92cc47d561794e8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/native-inline-order-v1.bend",
+      "sha256": "f79e281b9b7d8869ae2628484c978d502a11357e77710cd2782ffce4fc1ace86"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/modules/native-inline-order.mjs",
+      "sha256": "eee1b658942c4a03c895262091bc53a601d306767514f4357ebb63901df639ad"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/modules/native-inline-order.mjs.json",
+      "sha256": "979eafad007b879f8427454a6530966f14a36c9177f6559d6f8ee5c43343c4de"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/native-inline-order.mjs",
+      "sha256": "d7bef93824f7ec1b079ac45f2e390261945ae02ea76baec646337fc6aaea626e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct06-acquisition01/modules/native-inline-order.mjs.json",
+      "sha256": "f4b56d10fceca65e5a523310934a2481df24362ba37bfa61e843d45872b1be29"
+    }
+  ],
+  "observations": [
+    {
+      "fixture": "direct-contract",
+      "test": "adt-owned-result",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$": "Packet",
+            "payload": 35,
+            "count": 7
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$": "Packet",
+            "payload": 35,
+            "count": 7
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "adt-named-input",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "adt-getter-order",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "get",
+              "payload"
+            ],
+            [
+              "get",
+              "count"
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "get",
+              "payload"
+            ],
+            [
+              "get",
+              "count"
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "adt-getter-throw",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "payload-first"
+          },
+          "events": [
+            [
+              "get",
+              "payload"
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "payload-first"
+          },
+          "events": [
+            [
+              "get",
+              "payload"
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "saturated",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "curried",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "empty-underapplication",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "public-extra-argument",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "capturing-factory",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "matched-recursive-factory",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "matched-zero-factory",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "erased-JS-slot",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "tail-50000",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 50017,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 50017,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-0-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "0"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "0"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-1-2",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-281474976710654-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "281474976710655"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "281474976710655"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-overflow",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-rejected-host",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-18",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 16777216,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 16777216,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-19",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-20",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$number": "-0"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$number": "-0"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-21",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 2.25,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 2.25,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-nan",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$number": "NaN"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$number": "NaN"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-infinity",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$number": "Infinity"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$number": "Infinity"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-floor",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": -2,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": -2,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "char-astral",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "😀",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "😀",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "char-surrogate",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: 55296 is not a Unicode scalar value"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: 55296 is not a Unicode scalar value"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "order-stage-before-argument",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: 55296 is not a Unicode scalar value"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: 55296 is not a Unicode scalar value"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "string-unicode",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "a😀é\ud800",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "a😀é\ud800",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-floor-passthrough",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": -2,
+          "events": [
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": -2,
+          "events": [
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-floor-getter",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": -2,
+          "events": [
+            [
+              "builtin-get",
+              "Math.floor"
+            ],
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": -2,
+          "events": [
+            [
+              "builtin-get",
+              "Math.floor"
+            ],
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-floor-throw",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:Math.floor"
+          },
+          "events": [
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:Math.floor"
+          },
+          "events": [
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-fround-passthrough",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": [
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": [
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-fround-getter",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": [
+            [
+              "builtin-get",
+              "Math.fround"
+            ],
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": [
+            [
+              "builtin-get",
+              "Math.fround"
+            ],
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-fround-throw",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:Math.fround"
+          },
+          "events": [
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:Math.fround"
+          },
+          "events": [
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-String-fromCodePoint-passthrough",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "😀",
+          "events": [
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "😀",
+          "events": [
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-String-fromCodePoint-getter",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "😀",
+          "events": [
+            [
+              "builtin-get",
+              "String.fromCodePoint"
+            ],
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "😀",
+          "events": [
+            [
+              "builtin-get",
+              "String.fromCodePoint"
+            ],
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-String-fromCodePoint-throw",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:String.fromCodePoint"
+          },
+          "events": [
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:String.fromCodePoint"
+          },
+          "events": [
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Array-isArray-passthrough",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Array-isArray-getter",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Array-isArray-throw",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "public-callable-callback",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "callback",
+              35
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "callback",
+              35
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "erased_partial_closure",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 3,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 3,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "closure_partial_app",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 17,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 17,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "erased_recursive_arg",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 9,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 9,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "erased_apply",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "4"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "4"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "over_application",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "eta_closure_body",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "eta_ctor_arm",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 100,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 100,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "array_dynamic_closure",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 9,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 9,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "float_accumulation",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 2775,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 2775,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "float_builtin_agreement",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "-2 -1 -1 1.5",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "-2 -1 -1 1.5",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "float_roundtrip",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 45,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 45,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "marshal_erased_binders",
+      "test": "independent-stdout",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "121\n8\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "121\n8\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "shared_module_state",
+      "test": "independent-stdout",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "1\n2\n2\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "1\n2\n2\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "foreign_arrow_arity",
+      "test": "independent-stdout",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "marshal_nat_bigint",
+      "test": "independent-stdout",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "zero\nsucc\nsucc\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "zero\nsucc\nsucc\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "array_swap_header",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 2337,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 2337,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "tail_pin",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "f32_read_round_once",
+      "test": "read-once",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "1065353215 1065353217 1266679808 2139095039 2139095040 1 3212836863",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "1065353215 1065353217 1266679808 2139095039 2139095040 1 3212836863",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "f32_read_round_once",
+      "test": "literal-once",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "1065353215 1065353217 1266679808 2139095039 1",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "1065353215 1065353217 1266679808 2139095039 1",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "f32_table_nan_bits",
+      "test": "nan-table-bits",
+      "roles": {},
+      "rawObservations": {
+        "typescript": {
+          "kind": "phase52-direct-semantic-observation",
+          "complete": false,
+          "test": "nan-table-bits",
+          "events": [],
+          "value": 1,
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "AssertionError",
+            "message": "independent expected value\n\n1 !== 40\n"
+          },
+          "failure": "AssertionError [ERR_ASSERTION]: independent expected value\n\n1 !== 40\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v4.mjs:47:38"
+        },
+        "direct": {
+          "kind": "phase52-direct-semantic-observation",
+          "complete": false,
+          "test": "nan-table-bits",
+          "events": [],
+          "value": 39,
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "AssertionError",
+            "message": "independent expected value\n\n39 !== 40\n"
+          },
+          "failure": "AssertionError [ERR_ASSERTION]: independent expected value\n\n39 !== 40\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v4.mjs:47:38"
+        }
+      },
+      "roleFailures": [
+        {
+          "role": "typescript",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-runner-v9.mjs:40:18\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+        },
+        {
+          "role": "direct",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-runner-v9.mjs:40:18\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+        }
+      ],
+      "observedValues": {
+        "typescript": 1,
+        "direct": 39
+      },
+      "observedValueAgreement": false,
+      "limitation": "Both roles observed independently; source golden40 retained. Upstream JS literal NaN table loses signaling payload distinctions; host JS NaN conversion is not the C golden contract. This classification never converts an oracle or differential failure to PASS.",
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: one or more role source oracles failed\n\n2 !== 0\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-runner-v9.mjs:43:713\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "fixture": "f32_literal_word",
+      "test": "literal-pattern-program",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "4 10\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "4 10\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "float_specials",
+      "test": "ieee-specials",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 12,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 12,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "zero",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "zero",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "one",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "one",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused-2",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "many",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "many",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused--3",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "many",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "many",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "demand-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "0"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "0"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "demand-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "1"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "1"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "demand-5",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "negative-demand",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 209,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 209,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 910,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 910,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-2",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 316,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 316,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-3",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 1611,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 1611,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-4",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 423,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 423,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-50000",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 2675209,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 2675209,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 5,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 5,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 11,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 11,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-2",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 19,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 19,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-3",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 28,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 28,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-16",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 285,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 285,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-128",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 12997,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 12997,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "callback-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "callback",
+              35
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "callback",
+              35
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "callback-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 78,
+          "events": [
+            [
+              "callback",
+              71
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 78,
+          "events": [
+            [
+              "callback",
+              71
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "dead-foreign-let",
+      "test": "program",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "alive\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "alive\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "erased-foreign",
+      "test": "program",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "erased\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "erased\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "live-foreign",
+      "test": "program",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "phase52-live-initializer\n123\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "phase52-live-initializer\n123\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "proof-main",
+      "test": "program",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "{==}\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "{==}\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "complex-getter-order",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 126,
+          "events": [
+            [
+              "callback",
+              35
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                42,
+                3
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 126,
+          "events": [
+            [
+              "callback",
+              35
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                42,
+                3
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "prior-let-getter-order",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 126,
+          "events": [
+            [
+              "callback",
+              35
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                42,
+                3
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 126,
+          "events": [
+            [
+              "callback",
+              35
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                42,
+                3
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "complex-throw-after-callback",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:Math.imul"
+          },
+          "events": [
+            [
+              "callback",
+              35
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                42,
+                3
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:Math.imul"
+          },
+          "events": [
+            [
+              "callback",
+              35
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                42,
+                3
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "double-repeat-coercion",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "6"
+          },
+          "events": [
+            [
+              "callback",
+              0
+            ],
+            [
+              "coercion",
+              "default",
+              1
+            ],
+            [
+              "coercion",
+              "default",
+              2
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "6"
+          },
+          "events": [
+            [
+              "callback",
+              0
+            ],
+            [
+              "coercion",
+              "default",
+              1
+            ],
+            [
+              "coercion",
+              "default",
+              2
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "double-second-coercion-error",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-second-coercion"
+          },
+          "events": [
+            [
+              "callback",
+              0
+            ],
+            [
+              "coercion",
+              "default",
+              1
+            ],
+            [
+              "coercion",
+              "default",
+              2
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-second-coercion"
+          },
+          "events": [
+            [
+              "callback",
+              0
+            ],
+            [
+              "coercion",
+              "default",
+              1
+            ],
+            [
+              "coercion",
+              "default",
+              2
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "native-inline-order",
+      "test": "aliased-array-complete-state",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": [
+            11,
+            22,
+            99,
+            44
+          ],
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": [
+            11,
+            22,
+            99,
+            44
+          ],
+          "events": []
+        }
+      },
+      "pass": true
+    }
+  ],
+  "programAdapters": {
+    "typescript": {
+      "moduleForm": "CommonJS",
+      "identity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+        "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+      },
+      "code": "// Upstream executes js_book as CommonJS (.cjs). Compile identical bytes with that host.\nimport assert from 'node:assert/strict';\nimport fs from 'node:fs';\nimport path from 'node:path';\nimport Module from 'node:module';\nconst [argument,...args]=process.argv.slice(2);assert(argument);\nconst file=fs.realpathSync(argument);process.argv=[process.execPath,file,...args];\nconst program=new Module(file);program.filename=file;program.paths=Module._nodeModulePaths(path.dirname(file));\nprogram._compile(fs.readFileSync(file,'utf8'),file);\n"
+    },
+    "direct": {
+      "moduleForm": "ESM",
+      "identity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-direct-program-worker-v1.mjs",
+        "sha256": "26d454c2dc7ba2767e4271128075b8d1f6048f1f51cfbfbc9e85096f7c9b52a6"
+      },
+      "code": "// Direct program output is ESM and binds its own createRequire prologue.\n// Execute unchanged bytes; do not inject CommonJS globals into the direct backend.\nimport assert from 'node:assert/strict';\nimport fs from 'node:fs';\nimport {pathToFileURL} from 'node:url';\nconst [argument,...args]=process.argv.slice(2);assert(argument);\nconst file=fs.realpathSync(argument);process.argv=[process.execPath,file,...args];\nawait import(pathToFileURL(file));\n"
+    }
+  },
+  "scope": "Default callable library and selected CLI effects. Independent value/error oracles plus exact TS differential results/events; no legacy G obligations or universal conformance claim.",
+  "counts": {
+    "pass": 95,
+    "fail": 1,
+    "total": 96
+  }
+}

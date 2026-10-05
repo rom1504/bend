@@ -191,9 +191,43 @@ All paths in the next table are relative to `selfhost/build/phase52/`:
 ## Remaining qualification at this checkpoint
 
 The 06 maintained-eight suite and 26-row JavaScript census are complete and
-passing, separately from the 95/96 semantic verdict. Any later selected source
+passing, separately from the 95/96 semantic verdict. Checked07 was rejected
+on its performance screen and received no semantic acquisition. The source was
+restored to the exact selected06 image; its existing qualification is retained. Any later selected source
 image requires its own fresh qualification. The independent NaN failure remains open. Legacy
 regression suites, full-corpus runtime measurements and installation checks are
 separate gates owned by the phase report. Counts overlap and must not be summed
 as unique tests. No full-conformance, installation or promotion claim follows
 from the successful 26-row checkpoint.
+
+Selected06 legacy acquisition completed all eight core points, and their
+emitted modules matched the Phase51 current bundle exactly by bytes. The
+unchanged 20-second core screen exhausted its budget after 20.505 seconds: one
+of eight measured cases completed, with no reported oracle failure. The screen
+remains partial and failing; no eight-case runtime pass follows from it. The
+[legacy checkpoint](../../selfhost/tools/performance/phase52/semantic-legacy-core-checkpoint-v1.json)
+pins acquisition, exact-byte evidence, the preserved archived-bundle adapter
+failure and the partial screen. Release/install checks were still pending at that checkpoint; this
+evidence does not change the 95/96 direct semantic scope or waive NaN failure.
+
+A separately authorized fresh 300-second legacy core comparison subsequently
+completed in **143.677 seconds**, passing all eight points, all five balanced
+rotations per point and all **120 exact samples**. It reused the same checked
+acquisition, preserved RNFA baseline and unchanged runner. The successful
+[legacy successor checkpoint](../../selfhost/tools/performance/phase52/semantic-legacy-core-checkpoint-v2.json)
+retains the failed 20-second screen as history; it does not relabel that failure
+or claim a new performance improvement. Release/install checks remain separate.
+
+## Final installed qualification
+
+Selected direct06 is now installed. Release integrity verification and all
+**42 legacy + 18 direct interface checks pass**, including relocation without
+the upstream checkout and runtime tamper rejection/restoration. All 45 benchmark
+points pass 669 fresh timing samples; portable replay passes three cases and
+27 samples. These are separate qualifications, not additional unique semantic
+tests. The independent **95/96** result and unwaived NaN mismatch remain.
+
+The [selected qualification receipt](../../selfhost/tools/performance/phase52/evidence/final/raw/selected-qualification06.json)
+joins their exact identities and preserves these distinct scopes. Initial sandbox
+permission failures and the path-only release-controller repair remain visible
+in the final evidence; neither changed compiler source or test assertions.

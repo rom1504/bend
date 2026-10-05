@@ -1,0 +1,43 @@
+{
+  "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/direct-conformance04/selected/harness/tools/conformance/adapters/upstream.mjs",
+  "test": {
+    "id": "io/effect_ctr_name.bend",
+    "namespace": "io",
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/effect_ctr_name.bend",
+    "sha256": "f9dbf73934d5494c9e5c9ef48b2cbb5d585eb42730f3ccc92eee6bb41dd507ed",
+    "bytes": 420,
+    "expected": "Error: Tick names both a constructor and a foreign def: name one apart\nexit 1",
+    "negative": true,
+    "failureKind": "error",
+    "main": true,
+    "base": true,
+    "imports": [],
+    "foreign": [
+      {
+        "path": "./effect_ctr_name.js",
+        "backend": "js"
+      }
+    ],
+    "backends": [
+      "js"
+    ],
+    "hasExpectation": true,
+    "gpuCandidate": false,
+    "tags": [
+      "negative",
+      "foreign-effect",
+      "io"
+    ]
+  },
+  "lane": "js",
+  "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+  "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct04/snapshot",
+  "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/direct-conformance04/selected/reference.json.artifacts/1",
+  "timeoutMs": 30000,
+  "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/direct-conformance04/selected/reference.json.artifacts/1/response.json",
+  "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/direct-conformance04/selected/reference.json.artifacts/identity.json",
+  "workerNodeArgs": [
+    "--stack-size=4096",
+    "--max-old-space-size=1024"
+  ]
+}

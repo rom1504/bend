@@ -1,8 +1,40 @@
 # Compiler validation
 
-## Current Phase51 validation
+## Current Phase52 validation
 
-Phase51 is installed. The checked B1 strict gate, release verification, all 42
+Selected direct06 is installed. Integrity verification and all **42 legacy plus
+18 direct ordinary/relocated CLI checks pass**. Failed sandbox/controller attempts
+and their exact successful successors are preserved. [Report](../implementation/phase52/README.md),
+[semantic details](../implementation/phase52/conformance.md), and
+[direct interface](docs/direct-javascript.md) distinguish the new opt-in backend
+from retained default compatibility mode.
+
+- All 29 independent direct fixtures check successfully; **95/96** runtime
+  scenarios pass. `f32_table_nan_bits.bend` expects40, while pinned TypeScript
+  returns1 and direct returns39. This failure is unwaived; no full-conformance
+  claim follows from the other controls.
+- The maintained direct JS census agrees on all26 rows: **18 runtime passes,
+  four expected compilation rejections and four N/A**. These are distinct from
+  the broader historical native/frontend inventories.
+- All eight maintained compatibility suites pass. All eight freshly emitted
+  default-JS core modules are byte-identical to Phase51. The initial20s screen
+  exhausted its budget and remains failed; its separate300-preset successor
+  passes all8 cases and120 fresh samples.
+- The direct performance corpus passes all45 output checks and669 fresh timing
+  samples. Equal-point time is1.123799× TypeScript; speed is separate from
+  semantic qualification.
+
+API: `472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a`.
+Direct runtime: `417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a`.
+Compatibility runtime remains `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
+This is a checked B1 derivative. New fixed-point, full native/GPU/proof validity,
+exact NaN payloads and arbitrary global-hook parity remain unestablished.
+The original92 modules and upstream pin remain unchanged. Counts above overlap
+and must not be added as distinct language tests.
+
+## Historical Phase51 validation
+
+Phase51 was installed at its checkpoint. The checked B1 strict gate, release verification, all 42
 ordinary/relocated CLI checks and the 27-sample portable replay pass. The
 [phase report](../implementation/phase51/README.md) and
 [selected evidence](tools/performance/phase51/evidence/selected-qualification.json)

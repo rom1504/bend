@@ -1,0 +1,88 @@
+{
+  "kind": "program-execution-v1",
+  "complete": true,
+  "pass": true,
+  "stage": "done",
+  "node": "v24.18.0",
+  "execArgv": [
+    "--max-old-space-size=1024"
+  ],
+  "calibration": [
+    {
+      "repetitions": 1,
+      "executionMs": 13.112965000000003,
+      "checksum": 1457676559,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 13.085339000000005
+        }
+      ]
+    }
+  ],
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/prepared-direct05-full/modules/raytrace-active.mjs",
+    "sha256": "ec29725d659eb8634e7a4d895dc80c931469308f4d9fcd82619b849c4784a97f"
+  },
+  "config": {
+    "exportName": "coverage.active",
+    "args": [
+      64,
+      2440
+    ],
+    "expected": 1457676559,
+    "warmupCalls": 0,
+    "warmupMs": 0,
+    "calibrationMs": 0,
+    "targetMs": 1,
+    "maxRepetitions": 1
+  },
+  "configSha256": "88e5f1e0c8b2e6268396e48e1ac3eeafe9a3861d12d2de3657cc3c2b350aacf4",
+  "toolSha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+  "affinity": "Cpus_allowed_list:\t3",
+  "importMs": 2.821481999999996,
+  "firstResult": 1457676559,
+  "firstCallMs": 14.844749,
+  "warmup": {
+    "calls": 0,
+    "ms": 0.010984000000000549
+  },
+  "repetitions": 1,
+  "executionMs": 4.653132999999997,
+  "checksum": 1457676559,
+  "halves": [
+    {
+      "calls": 1,
+      "ms": 4.640740000000008
+    }
+  ],
+  "msPerCall": 4.653132999999997,
+  "halfDriftPercent": null,
+  "wallMs": 37.806419000000005,
+  "resourceUsage": {
+    "userCPUTime": 52639,
+    "systemCPUTime": 20246,
+    "maxRSS": 67516,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 5296,
+    "majorPageFault": 0,
+    "swappedOut": 0,
+    "fsRead": 0,
+    "fsWrite": 8,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 192,
+    "involuntaryContextSwitches": 184
+  },
+  "peakRssKiB": 67516,
+  "memory": {
+    "rss": 69136384,
+    "heapTotal": 8630272,
+    "heapUsed": 6556128,
+    "external": 2350387,
+    "arrayBuffers": 203641
+  }
+}

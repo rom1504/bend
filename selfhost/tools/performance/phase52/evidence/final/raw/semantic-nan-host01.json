@@ -1,0 +1,29 @@
+{
+  "kind": "phase52-nan-payload-host-diagnostic",
+  "complete": true,
+  "passGate": false,
+  "sourceGolden": 40,
+  "hostTableOracle": 1,
+  "node": "v24.18.0",
+  "rows": [
+    {
+      "index": 0,
+      "payload": 2139095041,
+      "literalBits": 2143289344,
+      "convertedBits": 2143289345
+    },
+    {
+      "index": 1,
+      "payload": 2139095042,
+      "literalBits": 2143289344,
+      "convertedBits": 2143289346
+    },
+    {
+      "index": 2,
+      "payload": 2139095043,
+      "literalBits": 2143289344,
+      "convertedBits": 2143289347
+    }
+  ],
+  "scope": "Independent host operations mirror upstream JS literal NaN table lowering. NaN payload representation is implementation-dependent; this diagnostic never changes or satisfies the source golden or differential gate."
+}

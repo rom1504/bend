@@ -1,13 +1,13 @@
-# Phase52 source accounting: checked direct05
+# Phase52 source accounting: selected direct06
 
-The frozen direct05 compiler adds **2,082 physical Bend lines (+8.80%)**,
-**1,709 nonblank/non-comment lines (+8.77%)**, and **278 definitions** to Phase51.
+The selected direct06 compiler adds **2,128 physical Bend lines (+8.99%)**,
+**1,746 nonblank/non-comment lines (+8.96%)**, and **284 definitions** to Phase51.
 All 92 pre-existing manifest modules are byte-identical; nine direct-backend
 modules are added. The whole compiler is larger. The new mode provides a simpler
 execution representation while retaining the compatibility and native backends;
-this is not a 2,082-line standalone compiler or a reduction in total source.
+this is not a 2,128-line standalone compiler or a reduction in total source.
 
-These counts describe `checked-direct05`, independently of later qualification,
+These counts describe `checked-direct06`, independently of later qualification,
 timing or installation. See the [phase report](README.md) for their status and
 the [contract comparison](parity-contract.md) for the explicit interface split.
 
@@ -22,38 +22,46 @@ character is `#`. Definitions, laws and types count declaration lines beginning
 with `def`, `law` and `type`. These are syntactic counts, not a complexity score.
 
 The data-only comparison ran on CPU 0. It checked the recorded hashes of all
-manifest modules, manifests, attempts and compiler images, then rehashed all 205
+manifest modules, manifests, attempts and compiler images, then rehashed all 395
 inputs consumed by the snapshot helper. The additional frozen direct-runtime and
 driver files were checked against their snapshot records. It did not execute a
 compiler or generated program, write historical evidence, or count the mutable
 working tree as the candidate.
 
+The fresh receipt is `selfhost/build/phase52/accounting-final06.json`, SHA-256
+`a1da53ff3f07678957830703e6d763eeef8c2befd30c48def9b8320331253e93`.
+It separately verifies that all 101 live manifest modules match selected direct06,
+including restored `core.bend` SHA-256
+`35da873a876469bdfbeb97b755f23eb2b6ba5bb90083ace2e4532da4ff623c58`.
+The manifest, driver, both runtimes and all 40 vendored FFI package files also
+match their selected snapshot. This establishes source agreement, not installation.
+
 | Artifact | SHA-256 |
 | --- | --- |
 | Phase51 attempt | `c3d4ff1ad83127a8651849e57b9b6d020d4473e7b705770d3445d9bd6fef9e53` |
-| Direct05 attempt | `4b988ca6471d4f46994beb8ab8d21d4f26be7550dcead7caf8a04e68605c770a` |
+| Direct06 attempt | `cf2e8ea55f70aef6796b10ebbda65ffa2367428e50afb6d6f9ae0f59b7730835` |
 | Phase51 source manifest | `598d2563fecc08f64d7081501478c35dce20998b0e46f67e68b3290847779704` |
-| Direct05 source manifest | `7b81d4baf16656ce5a8ebc0b17f88ab311c8500c691ea4115aadacb1d1fc3b12` |
+| Direct06 source manifest | `7b81d4baf16656ce5a8ebc0b17f88ab311c8500c691ea4115aadacb1d1fc3b12` |
 | Phase51 derived B1 API | `c15718cbf3e744e47c0795d7d78db6351a61c21983f53ec9c722272782dba061` |
-| Direct05 derived B1 API | `ab23e1f04f13112fe38e5fd7a74893c5056e926e18d6ab8fc79d26680fa8d2b5` |
+| Direct06 derived B1 API | `472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a` |
 | New direct runtime | `417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a` |
 
 The exact inputs are `selfhost/build/phase51/checked-candidate01/attempt.json`
-and `selfhost/build/phase52/checked-direct05/attempt.json`; each identifies its
+and `selfhost/build/phase52/checked-direct06/attempt.json`; each identifies its
 immutable source snapshot. Both target upstream commit
 `018751270e800bc222a93dad7f257083ee53a5f7`.
 
 ## Manifest-listed Bend source
 
-| Metric | Phase51 | Direct05 | Change |
+| Metric | Phase51 | Direct06 | Change |
 | --- | ---: | ---: | ---: |
-| Physical lines | 23,662 | 25,744 | +2,082 |
-| Nonblank/non-comment lines | 19,489 | 21,198 | +1,709 |
-| Definitions | 2,673 | 2,951 | +278 |
+| Physical lines | 23,662 | 25,790 | +2,128 |
+| Nonblank/non-comment lines | 19,489 | 21,235 | +1,746 |
+| Definitions | 2,673 | 2,957 | +284 |
 | Laws | 629 | 629 | 0 |
 | Type declarations | 87 | 95 | +8 |
 | Modules | 92 | 101 | +9 |
-| Source bytes | 1,047,916 | 1,153,946 | +106,030 |
+| Source bytes | 1,047,916 | 1,156,193 | +108,277 |
 
 The following partition uses directory ownership, not an assertion that every
 file in a backend directory is exclusive to that backend.
@@ -63,7 +71,7 @@ file in a backend directory is exclusive to that backend.
 | Shared frontend, checker, loader, diagnostics and driver | 37 | 11,921 | 9,974 | 1,257 | 51 |
 | Existing JavaScript backend and shared JS helpers | 38 | 9,649 | 7,770 | 1,130 | 19 |
 | Existing native backend | 17 | 2,092 | 1,745 | 286 | 17 |
-| New direct JavaScript backend | 9 | 2,082 | 1,709 | 278 | 8 |
+| New direct JavaScript backend | 9 | 2,128 | 1,746 | 284 | 8 |
 
 All nine additions are under `selfhost/src/back/js/direct/`:
 
@@ -74,11 +82,11 @@ All nine additions are under `selfhost/src/back/js/direct/`:
 | `constructors.bend` | 176 | 144 | 21 | 0 |
 | `pattern.bend` | 272 | 223 | 36 | 2 |
 | `host.bend` | 324 | 269 | 44 | 0 |
-| `calls.bend` | 340 | 274 | 50 | 2 |
-| `core.bend` | 303 | 251 | 43 | 0 |
+| `calls.bend` | 341 | 275 | 50 | 2 |
+| `core.bend` | 348 | 287 | 49 | 0 |
 | `program.bend` | 175 | 142 | 27 | 1 |
 | `reach.bend` | 102 | 82 | 12 | 1 |
-| **Total** | **2,082** | **1,709** | **278** | **8** |
+| **Total** | **2,128** | **1,746** | **284** | **8** |
 
 The direct emitter still depends on the existing parser, checked specialization,
 annotation, kernel terms, indexes and type normalization. It also reuses JS
@@ -90,16 +98,18 @@ hidden by describing the new directory as the complete implementation.
 
 ## Runtime, driver and images are separate
 
-| Artifact | Phase51 | Direct05 | Change |
+| Artifact | Phase51 | Direct06 | Change |
 | --- | ---: | ---: | ---: |
 | Compatibility runtime core, physical lines | 383 | 383 | 0; byte-identical |
 | Compatibility runtime bundle, bytes | 57,500 | 57,500 | 0; byte-identical |
 | Direct runtime, physical lines | — | 466 | +466 |
 | Direct runtime, bytes | — | 12,952 | +12,952 |
-| Host driver, physical lines | 700 | 730 | +30 |
-| Host driver, bytes | 48,273 | 51,612 | +3,339 |
-| Derived B1 API, bytes | 1,628,734 | 1,786,857 | +158,123 (+9.71%) |
-| Checked bootstrap API, bytes | 1,608,575 | 1,763,825 | +155,250 |
+| Vendored FFI providers, JS files / physical lines | — | 37 / 731 | +37 / +731 |
+| Vendored FFI providers, JS bytes | — | 18,042 | +18,042 |
+| Host driver, physical lines | 700 | 751 | +51 |
+| Host driver, bytes | 48,273 | 53,086 | +4,813 |
+| Derived B1 API, bytes | 1,628,734 | 1,790,409 | +161,675 (+9.93%) |
+| Checked bootstrap API, bytes | 1,608,575 | 1,767,260 | +158,685 |
 
 The 466-line [direct runtime](../../selfhost/src/runtime/js/direct.mjs) is a
 separately attributed static adaptation of the pinned TypeScript compiler's
@@ -108,6 +118,12 @@ not run the TypeScript compiler to generate program bodies. The existing
 compatibility runtime is retained for the compiler host and compatibility output;
 direct output embeds the new runtime. These runtime lines are not Bend source
 and are not added to the manifest's line total.
+
+The standalone FFI package also contains a manifest, license and README. All 40
+files together total 38,508 bytes and 1,194 physical lines, including the 37 JS
+providers above. These attributed provider sources are a separate maintained
+input closure, not part of the 466-line core runtime or the nine Bend modules.
+The evidence collector preserves their exact selected bytes and attribution.
 
 The host-driver changes select the explicit direct interface, route runtime and
 foreign-source output, and integrate exact emitted-definition reachability.
@@ -147,7 +163,7 @@ has several views of a definition: typed source, tail facts, emitted body and
 reachability metadata. Reusing shared match rows prevents independent pruning
 algorithms, but does not remove every repeated traversal.
 
-In direct05, exact live reachability temporarily emits each reached definition
+In direct06, exact live reachability temporarily emits each reached definition
 and scans its reserved metadata; final output emits again and rebuilds call facts
 on the retained graph. This is a concrete compiler-work cost of the narrow
 correctness repair. A later structured emission result could share code and
@@ -156,11 +172,11 @@ or cost for that future change is claimed here.
 
 ## Development-loop observation
 
-The supervised direct05 checked build and its focused gate completed successfully
-in **59.536 seconds**, with peak summed process-tree RSS **1,402.76 MiB** under
+The supervised direct06 checked build and its focused gate completed successfully
+in **59.008 seconds**, with peak summed process-tree RSS **1,405.93 MiB** under
 a 2 GiB cap. The receipt is
-`selfhost/build/phase52/build-guard05/run.json`, SHA-256
-`2a82f9fa71426de725764660d6650372982020ac30c4d1673fb55eba18193c78`.
+`selfhost/build/phase52/build-guard06/run.json`, SHA-256
+`b9e535297fce916444a41a6656f8d784ecadbc9fda53e72ab75ccc8f2bd445a0`.
 RSS sums can count shared pages more than once.
 
 This is one development-workflow observation, including build/qualification work.
@@ -169,11 +185,11 @@ TypeScript, a bootstrap fixed point, or the time for the whole Phase52 campaign.
 Generated-program execution measurements and semantic qualification remain
 separate from source size and this build time.
 
-## Direct06 checkpoint; final selection pending
+## Preserved direct05 checkpoint and rejected direct07
 
 Direct06 adds caller-side expansion for already evaluated intrinsic arguments.
-The direct05 tables above remain its exact historical source inventory; they are
-not silently relabeled as a newer image. The same frozen counting method gives:
+The table below preserves its predecessor's exact historical source inventory.
+The same frozen counting method gives:
 
 | Metric | Phase51 | Direct05 | Direct06 |
 | --- | ---: | ---: | ---: |
@@ -198,20 +214,22 @@ its derived API is
 `472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a`.
 Its manifest and compatibility runtime identities are unchanged from direct05.
 The supervised build took 59.008 seconds, again a development-workflow observation.
-Any direct07 successor must be counted from its own frozen manifest after final
-selection; no prospective count or installation claim is included here.
+Direct07 is **not selected**. Its eight-point short screen measured a candidate/
+direct06 geometric time ratio of **1.257466×**, or **25.75% slower**. The original
+`screen-direct07-ordered/report.json` and rejected image remain preserved. That
+rejection screen does not replace the selected direct06 full-corpus measurement.
 
-## Final evidence collection plan
+## Final evidence publication
 
 The [compact evidence collector](../../selfhost/tools/performance/phase52/collect-evidence.py)
-is prepared but has not been executed. After final selection, portable bundle
-publication and closure of all raw writers, it will copy reports, command/resource
+completed after final selection, portable bundle publication and closure of all
+raw writers. It copied reports, command/resource
 receipts, failed observations, catalogs, methods, fixtures and the selected frozen
-source graph verbatim into a fresh evidence directory. Its index records original
+source graph verbatim into the final evidence directory. Its index records original
 paths, hashes and copy paths. The existing 39-file prototype packet stays intact.
 
 The collector requires the selected attempt, an explicit writer-closure receipt
-and the final 103-file protection audit. It verifies the selected API/direct
+and the passing final 103-file protection audit. It verified the selected API/direct
 runtime against the portable candidate and preserves the Phase51 reference
 identity. It retains failure outcomes as recorded; it does not reinterpret a
 known mismatch as a pass. Its 8 MiB file / 128 MiB packet bounds make oversized
@@ -219,10 +237,27 @@ omissions explicit, with hashes and a requirement for the full raw capsule.
 
 Runnable benchmark artifacts use the existing Phase52
 [candidate](../../selfhost/tools/performance/phase52/freeze-candidate.py) and
-[baseline](../../selfhost/tools/performance/phase52/freeze-baseline.py) freezers,
+[baseline](../../selfhost/tools/performance/phase52/freeze-baseline-v2.py) freezers,
 with archive reopening and member verification. The complete raw campaign uses
 the existing [streamed terminal archiver](../../selfhost/tools/performance/phase42/validation/archive-campaign-v1.py)
-only after writer closure. That separate archive must preserve omitted compiler
-images, historical snapshots, large logs and all failed receipts. The compact
-packet explicitly does not claim that archive has been joined or verified.
-No compression, large copying or publication runs concurrently with clean timing.
+after writer closure. That separate archive preserves compiler images,
+historical snapshots, large logs and all failed receipts. It reopened and verified
+every member, then rechecked the complete raw input inventory and hashes.
+No compression, large copying or publication ran concurrently with clean timing.
+
+The [publication receipt](../../selfhost/tools/performance/phase52/publication.json)
+joins both artifacts and rehashes all compact copies. The review packet contains
+13,930 files / 106,115,555 bytes, with no oversized omissions; its index is
+separate. The complete archive contains 18,396 files / 265,448,514 uncompressed
+bytes and occupies 36,902,819 compressed bytes. Its SHA-256 is
+`fc788dd884d808cff8b564e4266df99f8cbfe1a8f0bcfd53b62dfba4c5b6d016`.
+These evidence sizes are not compiler source or generated-program sizes.
+
+All 103 inherited unrelated files retained their original bytes and remained
+unstaged. The selected installed API equals the measured and qualified direct06
+image. Publication does not strengthen the scoped 95/96 semantic result.
+
+The staged whitespace check passes outside the verbatim evidence packet. Its
+11 reported trailing blank lines belong to copied pre-existing source and a
+captured test log; their exact bytes are intentionally retained. All packet files,
+including 19 files matched by broad repository ignore rules, are included in Git.

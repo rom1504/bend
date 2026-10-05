@@ -1,158 +1,195 @@
 # Direct JavaScript output
 
-**Checked Phase52 candidate05; release installation and the full45 performance
-comparison are pending.** The installed Phase51 compiler remains the compatibility release.
-The commands below describe the candidate driver interface, not a guarantee that
-an older installed compiler supports it. Check the
-[Phase52 report](../../implementation/phase52/README.md) and release manifest
-before relying on this mode.
+**Selected checked Phase52 candidate 06 is installed and verified.** The default
+JavaScript interface retains the legacy compatibility contract; direct output
+remains an explicit opt-in. Installed and relocated checks passed all 42 legacy
+and 18 direct steps, including IO print and runtime tamper rejection/restoration.
+The independent 95/96 semantic limitation below remains unresolved. The final
+45-point runtime comparison completed all 669 samples; those are scoped corpus
+results, not universal correctness or speed claims. See the
+[Phase52 report](../../implementation/phase52/README.md) and release manifest for
+selected identities and final measurements.
 
-## Select the interface explicitly
+## Choose the JavaScript contract
 
-From `selfhost/`, with Node.js 24 or newer:
+From `selfhost/`, using Node.js 24 or newer:
 
 ```sh
-# Check and emit an executable ES module (candidate full-program interface).
+# Default compatibility output: existing mutable G/descriptor interface.
+node cli.mjs example.bend --library -o compatibility.mjs
+
+# Direct output: upstream-style callable library exports.
+node cli.mjs example.bend --direct-js --library -o direct.mjs
+
+# Direct program: emit an ES module, then execute it.
 node cli.mjs example.bend --direct-js -o example.mjs
 node example.mjs -- argument
 
-# Check, compile and execute main (candidate full-program interface).
+# Or check, compile and run main in one command.
 node cli.mjs example.bend --direct-js --run -- argument
-
-# Emit a library using the upstream callable interface.
-node cli.mjs example.bend --direct-js --library -o example-library.mjs
 ```
 
-Use `.mjs` for unambiguous ES-module loading. `.js` output also requires an ESM
-host configuration. `--direct-js` selects JavaScript only; it cannot be combined
-with native/GPU output or non-JavaScript output suffixes. Runtime arguments go
-to a run, not an output-writing or library command. Without `--run`, `--library`
-or `-o`, the normal default remains checking followed by interpretation;
-`--direct-js` does not turn that default into a compiled run.
+Use `.mjs` for unambiguous ES-module loading. `.js` also needs an ESM host
+configuration. Direct mode cannot be combined with native/GPU output or a
+non-JavaScript output suffix. Runtime arguments belong to a run, not to a library
+or output-writing command. Without `--run`, `--library`, or `-o`, the normal
+check-then-interpret default remains; `--direct-js` does not imply a compiled run.
 
-A generated library has a default object of source callable exports:
+Default JavaScript retains `G` and function descriptors with `code`, `env`,
+`arity`, and `bound`. Its guards preserve supported mutations and fallback
+behavior. Direct output uses lexical functions, native closures, and named
+constructor fields. It exports no G table or legacy `call`, `list`, or `ctor`
+machinery. Replacing an exported callable does not replace lexical internal
+callees. Clients that inspect or mutate legacy internals should keep the default
+contract. See the [parity contract](../../implementation/phase52/parity-contract.md).
+
+The reference is Bend's TypeScript-written compiler at fixed commit
+[`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/rom1504/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7).
+“Upstream-compatible” names that JavaScript interface, not Microsoft's TypeScript
+compiler or an unverified latest release. It remains a scoped qualification goal;
+the known mismatch below prevents a blanket equivalence claim.
+
+## Callable library example
+
+Save this as `add.bend`:
+
+```bend
+import Base
+
+def demo.add(+a: U32, +b: U32) -> U32:
+  U32.add(a, b)
+```
+
+Emit it with `node cli.mjs add.bend --direct-js --library -o add.mjs`. A JavaScript
+client can call or partially apply its default exports:
 
 ```js
-import bend from './example-library.mjs';
-const answer = bend['namespace.function'](input);
+import bend from './add.mjs';
+console.log(bend['demo.add'](20, 22)); // 42
+console.log(bend['demo.add'](20)(22)); // 42
 ```
 
-Names are the resolved source names in that loading book. Exported wrappers
-accept live arguments; erased type arguments are omitted. Partial application
-uses the pinned upstream `run_lib` convention. Functions returned by source
-code are native callable closures. Consult the
-[ABI notes](../tools/performance/phase52/ABI.md) for typed boundary details;
-these are not legacy descriptor calls.
+Export names are resolved source names in the loading book. Wrappers accept live
+arguments and omit erased type arguments. Partial application follows pinned
+`run_lib`; source function results are native callable closures. Ordinary filled,
+nonnative, nontemplate definitions are exported, excluding Foreign definitions
+and definitions whose original whole type is `IO<A>`. A function with type
+`U32 -> IO<Unit>` remains callable. See [ABI.md](../tools/performance/phase52/ABI.md)
+for typed conversions and the precise export predicate.
 
-## Why this is a separate mode
+## Pure and IO programs
 
-The direct target is Bend's compiler implemented in TypeScript at fixed commit
-[`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7).
-“Upstream-compatible” refers to that compiler's JavaScript calling and value
-contract, not to Microsoft's TypeScript compiler or an unverified latest release.
-Compatibility is a qualification goal; the prototype does not establish every
-part of that goal.
+A pure `main` is printed in the pinned Bend format. For example:
 
-Default JavaScript output retains the mutable `G` table and function descriptors
-with `code`, `env`, `arity` and `bound`. Its guards preserve supported mutations,
-getters and fallback behavior. Direct output instead uses lexical functions,
-native closures and named constructor fields. It does not export `G` or the
-legacy `call`, `list` and `ctor` machinery. Replacing an exported callable does
-not replace its module's lexical internal callees.
+```bend
+import Base
 
-This explicit choice permits different internal machinery without weakening the
-existing backend. It is not permission to ignore effects: property reads,
-conversions, argument evaluation, array mutations, failures and foreign callbacks
-performed by the pinned interface still have observable order. Direct output
-is not a drop-in replacement for clients inspecting or mutating legacy internals.
-See the [parity contract](../../implementation/phase52/parity-contract.md).
+def main() -> U32:
+  U32.add(20, 22)
+```
 
-## Values and supported lowering
+`node cli.mjs example.bend --direct-js --run` prints `42`. An IO example is:
 
-U32/F32 use JavaScript numbers, Bool uses booleans, and String/Char use strings.
-Nat uses Number internally and typed BigInt conversion at the public boundary,
-following the pinned arithmetic and host-conversion rules. The immediate
-arithmetic limit and host-input conversion boundary are distinct; do not infer
-that all BigInts are accepted because public Nat values use BigInt.
+```bend
+import Base
 
-Ordinary constructors use named fields and resolved constructor tags. Unit is
-`{$: 'Unit'}`; tuples use `{$: 'Tuple', fst, snd}`. Arrays use native JavaScript
-storage. Nat-containing arrays are converted in place at typed host boundaries;
-recursive records and function arguments/results receive typed conversion where
-required. Aliasing and mutation are part of the interface, not just final values.
+def main() -> IO(Unit):
+  IO.print("hello")
+```
 
-A supported primitive lowers to its direct template only when the checked book
-identifies the actual native definition. A same-spelled user definition does not
-acquire primitive behavior. An operation without a direct template can retain
-its checked source implementation. That is ordinary direct lowering, not a
-fallback to TypeScript or legacy `G` execution.
+The same command prints `hello` through the direct CPS scheduler. Emitting an
+`.mjs` program preserves that behavior when executed with Node. Main must be a
+filled definition, and a build needs Base. Pure printing uses a Bend-built type
+schema and the pinned display helper; an unprintable main type fails explicitly.
 
-Unsupported constructs, missing foreign sources and exhausted proof/emission
-budgets must fail explicitly. The driver rejects emitted `JD_UNSUPPORTED`
-markers rather than accepting a delayed failure as a working artifact. There
-is no silent switch to the legacy backend. Some recursive shapes still use
-native JavaScript stack space; tail-call support does not imply an unlimited
-stack for non-tail recursion or all recursive host marshalling.
+Foreign JavaScript sources register typed `$FFI` operations with arguments and a
+continuation. Registry reads, argument evaluation, conversions, mutations,
+failures, and callback order remain observable parts of this contract. Missing
+sources, invalid source identifiers, and missing registrations fail explicitly;
+there is no delegation to legacy execution or the TypeScript implementation.
 
-## Programs, IO and foreign JavaScript
+The 37 pinned Base JS effect sources are
+[vendored byte-for-byte](../src/runtime/js/effs/README.md). Mapping requires exact
+pinned Base content and listed filenames beside that Base. Custom Base providers
+and user effect paths retain their original resolution. Generated modules provide
+an ESM `createRequire` binding when needed. Some syscall/polling paths still need
+the pinned Bun FFI facilities or a suitable `globalThis.BEND_SYS` provider;
+successful Node printing does not establish every system/asynchronous effect.
+Foreign source code must be trusted by the caller.
 
-The candidate full-program emitter checks and lowers `main`. Pure results use
-typed readback and the pinned printing format. IO results use the direct CPS
-scheduler. Libraries select ordinary source callable exports. Native and foreign
-definitions and whole-IO-type definitions are excluded; source functions
-returning IO remain callable, following the pinned export predicate.
+## Native values and compiler bounds
 
-The full-stage implementation resolves foreign JavaScript source paths, rewrites
-source constructor/function IDs to resolved names, registers effects in the
-direct registry, and transports typed arguments and continuations in `$FFI`
-messages. Missing effect registrations fail explicitly. Candidate05 has exercised the selected program and FFI scenarios. This is
-bounded coverage; including scheduler helpers does not establish every effect
-or host configuration.
+U32/F32 use JavaScript numbers; Bool uses booleans; String/Char use strings. Nat
+uses Number internally and typed BigInt conversion at public boundaries. The
+pinned immediate arithmetic limit is `2^48 - 1`; `nat_host` separately accepts
+nonnegative integer Number/BigInt inputs through `2^53`. Invalid host inputs use
+a deferred throwing value, so conversion acceptance does not promise arithmetic
+will succeed. These are distinct bounds, not arbitrary-precision Nat arithmetic.
 
-Generated Node modules provide an ESM `createRequire` binding when needed.
-System-call/polling paths retain the pinned runtime's Bun FFI assumptions or an
-explicit `globalThis.BEND_SYS` provider. Successful printing or pure execution
-under Node does not establish every asynchronous/system effect on Node. Foreign
-sources are executable host code and must be trusted by the caller.
+Constructors use resolved tags and named fields. Unit is `{$: 'Unit'}`; tuples
+use `{$: 'Tuple', fst, snd}`. Arrays use native JS storage. Nat-containing arrays
+are converted in place at typed boundaries; recursive records and function
+arguments/results receive typed conversion when needed. Aliasing, mutation, and
+error timing matter alongside complete final values. Some non-tail recursion and
+branching host conversions still consume native JS stack space.
 
-## Runtime integrity and evidence
+Supported primitives require the checked native declaration; same-spelled user
+functions do not acquire primitive behavior. Operations without a direct template
+can retain their checked source implementation. Tail-call analysis and lexical
+SCC dispatch support the admitted recursive call graph without a mutable global
+callee registry. Analysis is bounded:
 
-Parsing, elaboration, checking and emission run the compiler written in Bend.
-Ordinary user compilation does not invoke the upstream TypeScript compiler.
-The [direct runtime](../src/runtime/js/direct.mjs) is a standalone, attributed
-port of the pinned runtime helpers and is embedded in generated output; generated
-modules do not import the TypeScript implementation or legacy runtime.
+- At most 512 selected emitted definitions in call/reachability analysis.
+- At most 8192 scanned tail nodes per definition and 65536 queued edges per
+  reachability walk.
+- At most 1024 type-worklist visits for Nat conversion discovery and 64 levels
+  for marshaller construction/field telescopes.
+- At most 4096 type nodes for pure-main readback schemas.
 
-Use a checked compiler artifact with its matching Base, driver and direct runtime.
-The direct runtime is an emission input and must be included in artifact/release
-identity checks. A successful source check does not by itself qualify the new
-emitter, and a candidate build is not an installed release or a new self-emitted
-fixed point. Root release verification remains a separate gate.
+These are compiler-analysis bounds, not limits on ordinary loop iteration counts.
+Exhausted analyses and unsupported emission fail explicitly. The driver rejects
+`JD_UNSUPPORTED` source rather than accepting a delayed throw as qualification.
+There is no silent switch to the default backend. Raising these limits requires
+separate scaling and refusal evidence.
 
-The [Phase52 comparison guide](../tools/performance/phase52/README.md) preserves
-the unchanged 45-point / 23-source catalog and labels the changed calling
-contract explicitly. The passing direct03 eight-point screen reports 1.03522×
-pinned-upstream execution time, versus 5.23997× for unchanged Phase51 in that
-same screen. This is a short, selected prototype result, not full-corpus parity,
-universal speed, compilation-latency improvement or complete language/IO
-conformance. Follow the [current report](../../implementation/phase52/README.md)
-for subsequent checked semantic, full-corpus and release outcomes.
+## Selected 06 evidence and known limit
 
-## Candidate05 qualification and known limit
+The independent selected-06 controller completed **95/96** scenarios across 29
+fixtures; its aggregate report remains **failed**. The retained exception is
+`tests/compile/f32_table_nan_bits.bend`: the source oracle expects 40, pinned
+upstream returns 1, and direct returns 39 under the selected Node host. Neither
+implementation passes that oracle. NaN payload transport and first-use conversion
+remain unresolved; this release candidate does not claim a correction.
 
-The checked candidate05 differential controller completed90 scenarios;89 passed.
-Its report remains **failed**, with the exceptional case retained rather than
-removed from the denominator. The selected pure/IO program and library scenarios
-are exercised; this is not universal conformance.
+Direct also lacks upstream numeric match-table lowering. Upstream table reads
+use `Math.min`, while direct branches can have different comparisons/coercions.
+Arbitrary post-import Math/conversion hook equivalence is not established. The
+selected pure, IO, FFI, Array, closure, and evaluation-order controls cover their
+recorded scenarios, not every possible host hook. The maintained 26-row JS census
+agreed on all observations (22 passes/four unchanged not-applicable rows), and
+maintained validation passed. See [remaining work](../../implementation/phase52/remaining-work.md)
+and [conformance](../../implementation/phase52/conformance.md) for the scopes.
 
-`tests/compile/f32_table_nan_bits.bend` expects40. Under the pinned Node host,
-upstream returns1 and direct returns39; **neither passes the source oracle**.
-Upstream folds its F32 table to bare `NaN` literals, losing payload bits, whereas
-direct currently performs dynamic conversions. JavaScript NaN payload transport
-and first-use conversion behavior remain an unresolved boundary. Direct also
-lacks upstream's numeric match-table lowering: upstream table reads use
-`Math.min`, while direct branches can perform different comparisons/coercions.
-Post-import `Math.min`, coercion and conversion hook traces can therefore differ.
-No universal arbitrary-global-hook equivalence or
-NaN-payload correction is claimed. See the
-[remaining work](../../implementation/phase52/remaining-work.md).
+Candidate 07's ordered-argument successor was rejected after its eight-point
+screen was 25.75% slower than 06; selected 06 source was restored. Its receipts
+remain retained. That small screen is separate from the final 45-point comparison
+against Phase51 and pinned TypeScript.
+
+## Release integrity and measurement scope
+
+Ordinary compilation runs the checked compiler written in Bend. The standalone
+[direct runtime](../src/runtime/js/direct.mjs) is an attributed pinned helper port
+embedded in output; generated modules import neither the upstream compiler nor
+the legacy runtime. Use its matching Base, driver, provider bundle, and runtime.
+Release verification binds those files, and the completed
+[installed/relocated qualification](../tools/performance/phase52/release-qualification.md)
+checks both interfaces and deliberate copied-runtime tampering.
+
+This installation is a checked B1 release, not a new self-emitted fixed point. Generated-program runtime measurements do not measure compiler throughput
+or request latency. The unchanged 45-point/23-source catalog is a regression
+corpus, not an untouched holdout or universal speed/parity evidence. Follow the
+[tools guide](../tools/performance/phase52/README.md) and
+[current report](../../implementation/phase52/README.md) for final corpus and
+installed-release results. The [release interface receipt](../build/phase52/release-qualification06-final01/report.json)
+joins successful verification and 42/18 checks with preserved sandbox and harness
+failures; its pass does not change the failed 95/96 semantic aggregate.

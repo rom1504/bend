@@ -1,8 +1,10 @@
 # Self-hosted compiler: current architecture and development
 
-For the latest compiler work, see the [Phase51 report](../../implementation/phase51/README.md)
-and [V8-guided runtime](v8-guided-runtime.md). The source survey
-below remains a dated Phase45 baseline; its counts and timings are historical.
+For the latest compiler work, see the [Phase52 report](../../implementation/phase52/README.md)
+and [direct JavaScript backend guide](../../selfhost/docs/direct-javascript.md).
+The [Phase51 V8-guided runtime](v8-guided-runtime.md) describes the retained
+compatibility mode. The source survey below remains a dated Phase45 baseline;
+its counts and timings are historical.
 
 This survey describes the selected **Phase45 worker23** compiler at repository
 commit `55e5b79dc9ac3e02436a712e34722f2eb519e5df`, inspected on 2026-10-04.
@@ -11,6 +13,7 @@ The survey changes documentation only; it does not qualify a new compiler.
 
 | Document | Read it for |
 | --- | --- |
+| [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Phase52 native callable/data interface, modular lowering, qualification and explicit limits. |
 | [Architecture](architecture.md) | Source organization, representations, compiler pipeline, runtime/host boundaries and current complexity. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |
 | [Private array regions](private-array-regions.md) | Phase47 closed-array representation, ordered operations, host guards and research limits; separate from release qualification. |

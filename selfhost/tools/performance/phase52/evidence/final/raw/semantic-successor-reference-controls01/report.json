@@ -1,0 +1,859 @@
+{
+  "kind": "phase52-upstream-only-semantic-oracle-controls",
+  "complete": true,
+  "pass": true,
+  "executed": true,
+  "candidateExecuted": false,
+  "differentialObservations": 0,
+  "selectedScope": {
+    "kind": "new-reference-sources-only",
+    "fixtures": 6,
+    "scenarios": 26,
+    "reason": "Acquire only six new05 control sources; retained22 full04 checked TypeScript modules keep their exact identities."
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/manifest.json",
+      "sha256": "ba156855fb0b6c4c9cd4e8fe1e2cc43306333eec2d9dcaed46f31befcfebd40d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-successor-reference-v2.json",
+      "sha256": "0abb5183874ab03634ac383c7e0673c344a5a86e48be49daf965c766203f7a31"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-reference-runner-v4.mjs",
+      "sha256": "bd9777fab31a9868b89b0461d00164d02470860ed61950935d324e99932dccd4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+      "sha256": "d726b3561c692bd9b584c3667553cb48d7b82366710394aca2fcc2ce1b20872e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+      "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/nat-row-demand-v1.bend",
+      "sha256": "6dc2ba1a0edb0062e1130f0f4089e895c950274b9dc046896d37dd0f9a5fefbd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+      "sha256": "bc56f6d5ffd833e1db29f095a247fa11fadcc3ba61f27023e584e6ce3e092313"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs.json",
+      "sha256": "b6a85848a8f25751ed332cf98d1abbc83b360b12cc17444fe53640c4a59880aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/mutual-capture-v2.bend",
+      "sha256": "b6079e486bc2ff14623d2da26ab48f687bc13a2a538aabce5e3fe607a0a1c4e8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+      "sha256": "a41c302fcfd55d15a869e7bd93e86087be983d81f93bcd514774ae188fae9524"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs.json",
+      "sha256": "06c0daf1ada1418e8cbefb1262e4b7083bf2a883da84fbcdce274bf0f23be4cf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.js",
+      "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.bend",
+      "sha256": "ee8997e9fe6129b806e54348ab73261316fc06e8fe1c77e6163f14a970feef43"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/dead-foreign-let.mjs",
+      "sha256": "c76df9420e67a15a2092b8cde9955ca8f7ceb9db2c0e48855547fe5a39490e60"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/dead-foreign-let.mjs.json",
+      "sha256": "05c12b8ba2517d50105f2eb1ab304a9b98e8e769b68a7523767af43f9b37f4cf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.js",
+      "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased-foreign-v1.bend",
+      "sha256": "79976e0437a229479c6136883828a59bb7090dc9d5274c8323856c74a0331e22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/erased-foreign.mjs",
+      "sha256": "b331375d530f0a794fad54979cd353354fe4e89ed8c4b2e0c97bbbf89c76b595"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/erased-foreign.mjs.json",
+      "sha256": "4f3eb87763593d39c4495419a76d2bc33670a80a0d946390f172a589cef47110"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.js",
+      "sha256": "b017d6bc7c9848922266d4d13e7648665cc641c65a1dd4177831cc518de101d4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.bend",
+      "sha256": "1be4e6b6b783f6dc2ba73b7477b08b66b144db814a3954b035aa43ef368489e3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/live-foreign.mjs",
+      "sha256": "d9b7786f45f5dd5f9f8f1d2949844351e345a701f2b47608de3bc4a8cf09137d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/live-foreign.mjs.json",
+      "sha256": "fda57431ba1f75a7496cf22a772798d81e22e1256db156790b8aedf2b2131e96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/proof-main-v1.bend",
+      "sha256": "cb92fd49e05cb60149fc48258847a00bc1678c67d0382c0b69bc3ac11f2c0981"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/proof-main.mjs",
+      "sha256": "2b1df45761ba31089a3cc1ee4483d36b4189144537a1970b99b62fdfeef3fc75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/proof-main.mjs.json",
+      "sha256": "0e1ab90b0caf427ec98a2e12702515417a00643b60ec813ba4d0c2d8ada21762"
+    }
+  ],
+  "observations": [
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused-0",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--unused-0.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--unused-0.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "unused-0",
+        "events": [],
+        "value": "zero",
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused-1",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--unused-1.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--unused-1.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "unused-1",
+        "events": [],
+        "value": "one",
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused-2",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--unused-2.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--unused-2.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "unused-2",
+        "events": [],
+        "value": "many",
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused--3",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--unused--3.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--unused--3.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "unused--3",
+        "events": [],
+        "value": "many",
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "demand-0",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--demand-0.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--demand-0.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "demand-0",
+        "events": [],
+        "value": {
+          "$bigint": "0"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "demand-1",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--demand-1.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--demand-1.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "demand-1",
+        "events": [],
+        "value": {
+          "$bigint": "1"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "demand-5",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--demand-5.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--demand-5.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "demand-5",
+        "events": [],
+        "value": {
+          "$bigint": "3"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "negative-demand",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--negative-demand.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/nat-row-demand--negative-demand.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "negative-demand",
+        "events": [],
+        "outcome": "throw",
+        "error": {
+          "type": "string",
+          "name": null,
+          "message": "bend: a Nat past the largest immediate 2^48-1"
+        }
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-0",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-0.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-0.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "permutation-0",
+        "events": [],
+        "value": 209,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-1",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-1.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-1.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "permutation-1",
+        "events": [],
+        "value": 910,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-2",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-2.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-2.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "permutation-2",
+        "events": [],
+        "value": 316,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-3",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-3.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-3.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "permutation-3",
+        "events": [],
+        "value": 1611,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-4",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-4.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-4.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "permutation-4",
+        "events": [],
+        "value": 423,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-50000",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-50000.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--permutation-50000.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "permutation-50000",
+        "events": [],
+        "value": 2675209,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-0",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-0.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-0.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "capture-0",
+        "events": [],
+        "value": 5,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-1",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-1.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-1.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "capture-1",
+        "events": [],
+        "value": 11,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-2",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-2.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-2.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "capture-2",
+        "events": [],
+        "value": 19,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-3",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-3.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-3.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "capture-3",
+        "events": [],
+        "value": 28,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-16",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-16.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-16.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "capture-16",
+        "events": [],
+        "value": 285,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-128",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-128.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--capture-128.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "capture-128",
+        "events": [],
+        "value": 12997,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "callback-0",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--callback-0.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--callback-0.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "callback-0",
+        "events": [
+          [
+            "callback",
+            35
+          ]
+        ],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "callback-1",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--callback-1.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/mutual-capture--callback-1.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "callback-1",
+        "events": [
+          [
+            "callback",
+            71
+          ]
+        ],
+        "value": 78,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "dead-foreign-let",
+      "test": "program",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/dead-foreign-let.mjs"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "stdout": "alive\n",
+        "stderr": ""
+      }
+    },
+    {
+      "fixture": "erased-foreign",
+      "test": "program",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/erased-foreign.mjs"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "stdout": "erased\n",
+        "stderr": ""
+      }
+    },
+    {
+      "fixture": "live-foreign",
+      "test": "program",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/live-foreign.mjs"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "stdout": "phase52-live-initializer\n123\n",
+        "stderr": ""
+      }
+    },
+    {
+      "fixture": "proof-main",
+      "test": "program",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/proof-main.mjs"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "stdout": "{==}\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "programAdapter": {
+    "identity": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+      "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+    },
+    "code": "// Upstream executes js_book as CommonJS (.cjs). Compile identical bytes with that host.\nimport assert from 'node:assert/strict';\nimport fs from 'node:fs';\nimport path from 'node:path';\nimport Module from 'node:module';\nconst [argument,...args]=process.argv.slice(2);assert(argument);\nconst file=fs.realpathSync(argument);process.argv=[process.execPath,file,...args];\nconst program=new Module(file);program.filename=file;program.paths=Module._nodeModulePaths(path.dirname(file));\nprogram._compile(fs.readFileSync(file,'utf8'),file);\n"
+  },
+  "scope": "Pinned TypeScript only. Frozen independent fixture values/errors and observed hook/getter traces. No candidate, differential or performance qualification.",
+  "counts": {
+    "pass": 26,
+    "fail": 0,
+    "total": 26
+  }
+}

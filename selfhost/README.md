@@ -1,72 +1,59 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase51 report](../implementation/phase51/README.md) and
-[JavaScript IR architecture](docs/JAVASCRIPT_IR.md).
-The [direct JavaScript guide](docs/direct-javascript.md) documents the Phase52
-candidate and its explicit upstream-compatible interface; see the
-[live qualification report](../implementation/phase52/README.md).
-**Phase51 is installed; release verification and all 42 CLI checks pass.**
-The [release manifest](dist/release.json) and
-[selected evidence](tools/performance/phase51/evidence/selected-qualification.json)
-identify the checked B1 compiler/runtime pair.
+[Phase52 report](../implementation/phase52/README.md), and
+[direct JavaScript guide](docs/direct-javascript.md).
+**Direct06 is installed; integrity verification and all 42 legacy plus 18 direct
+ordinary/relocated CLI checks pass.** The [release manifest](dist/release.json) identifies the checked B1
+compiler. Ordinary compilation runs Bend code without a TypeScript fallback.
 
-The private backend retains typed calls, cases, layouts, tail loops, native
-representations and ordinary fallback. Phase51 adds a small IO helper and reuses
-an already-completed String check within one synchronous contextual entry.
-Dependency checks, argument-read order, host mutation and fallback behavior remain.
-See the [runtime guide](../docs/self_hosted/v8-guided-runtime.md) and
-[representation contracts](../docs/self_hosted/phase48-representations.md).
+The new `--direct-js` mode emits lexical functions, native closures and native
+data layouts. It includes self/mutual tail loops, erased/partial calls, program
+output, IO and foreign JavaScript. The original mutable-descriptor backend stays
+the default compatibility mode; its [IR guide](docs/JAVASCRIPT_IR.md) and
+[Phase51 runtime guide](../docs/self_hosted/v8-guided-runtime.md) remain applicable.
 
-Focused controls and all eight maintained suites pass. The resolved backend
-census has **69 execution passes, eight N/A and four shared failures** among
-81 outcomes. A targeted native retry resolves a sandbox Clang refusal; failed
-receipts remain. The 3,026-main / 196-broader frontend inventory remains historical.
-[Conformance](CONFORMANCE.md) keeps those scopes separate.
+The [full 45-point / 23-source comparison](../implementation/phase52/results.md)
+passes all 669 fresh samples and improves **2.631× → 1.124× TypeScript time**,
+a **2.34× speedup**. Equal-source weighting gives 1.129× TypeScript. Twenty-nine
+points are within 10%; seven regress against Phase51. The
+[all-point chart](../implementation/phase52/ratios.svg) includes every point.
+Historical ratios from other runs are not the denominator.
 
-The source has **23,662 physical / 19,489 code Bend lines, 2,673 definitions,
-87 types and 92 modules**. Code-line and definition counts are unchanged; the
-runtime adds six physical lines. See [accounting](../implementation/phase51/accounting.md).
+[Conformance](CONFORMANCE.md) keeps distinct scopes: the direct 26-row JS census
+and all eight maintained compatibility suites pass; independent direct semantics
+pass **95/96** scenarios across 29 checked fixtures. One NaN-payload fixture fails
+its source oracle in both pinned TypeScript and direct output, differently.
+Direct mode has explicit analysis bounds, including 512 selected definitions in
+call analysis. Full language/host-hook conformance, a new self-emitted fixed point
+and compiler-throughput parity are not established. The pin remains
+`018751270e800bc222a93dad7f257083ee53a5f7`, after Bend 2.0.34.
 
-The [fresh 45-point / 23-source comparison](../implementation/phase51/results.md)
-improves **3.008× → 2.928× TypeScript time**, or 2.66% less execution time.
-Equal-source slowdown improves 4.078× → 3.929×. The largest median regression is
-2.65%, and Evening's gain is warmup-sensitive. The historical RNFA04 2.679× ratio
-is not this comparison's denominator. The corpus is not a universal speed estimate.
-Use the [portable replay guide](tools/performance/phase51/README.md) for fast loops.
-Compiler throughput was not newly measured.
-
-Ordinary compilation runs Bend code without a TypeScript fallback. The target is
-[`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
-after Bend 2.0.34. This is a checked B1 derivative, not a new self-emitted fixed
-point. Native/GPU conformance and independent proof validity remain incomplete;
-`--verdict` is unsupported.
+The source now has **25,790 physical / 21,235 code Bend lines, 2,957 definitions,
+95 types and 101 modules**. The new backend adds 1,746 code lines in nine modules;
+all 92 original modules are byte-identical. See
+[accounting](../implementation/phase52/accounting.md) for runtimes, host tools and
+generated artifacts separately. Retaining compatibility grows source by 9.0%.
 
 ```sh
 # From selfhost/, with Node.js 24 or newer:
 npm run verify:release
+node cli.mjs tests/conformance/typed-smoke/base-u32.bend --direct-js --run
 node cli.mjs tests/conformance/typed-smoke/base-u32.bend --run
-npm run build
 ```
 
-Use the [checked workflow](../docs/PHASE5_DEVELOPMENT.md) for edits and the
-[portable Phase48 suite](tools/performance/phase48/README.md) for 20/60/300-second
-screens and three serial 600-second full batches. Its
-[current bundle](tools/performance/phase48/current/manifest.json) retains all 45
-points. Include core8 and separate activation controls before a full run.
-[Diagnostics](tools/performance/programs/DIAGNOSTICS.md) provide CPU/allocation
-profiles and generated-JavaScript comparisons separately from clean timing.
+The [benchmark guide](tools/performance/phase52/README.md) documents fresh checked
+acquisition, fast screens and three serial full batches. CPU/allocation/V8
+[diagnostics](tools/performance/programs/DIAGNOSTICS.md) remain separate from clean
+timing. A checked build is about 59 seconds; an eight-point build/emission/timing
+iteration used about three minutes of target work. Full45 takes about 22 minutes
+including acquisition. Compiler throughput was not newly measured.
 
-The [architecture survey](../docs/self_hosted/README.md),
-[research comparison](../docs/remaining_opportunities/README.md),
-[remaining work](../implementation/phase48/remaining-opportunities.md),
-[ledger](../experiments/ledger.md) and [strategy](../experiments/STEERING.md)
-retain decisions and failures. Historical reports preserve their own baselines.
-
-The [Phase49 V8 investigation](../implementation/phase49/README.md) explains why
-entry validation dominates one slow generated program. Its
-[V8-aware profiling guide](tools/performance/phase49/README.md) adds inlining,
-optimizer-graph and machine-code inspection; no new compiler release is implied.
+The [remaining work](../implementation/phase52/remaining-work.md),
+[architecture survey](../docs/self_hosted/README.md),
+[compiler research](../research/compilers_architecture_and_techniques/README.md),
+[ledger](../experiments/ledger.md), [strategy](../experiments/STEERING.md) and
+[checked workflow](../docs/PHASE5_DEVELOPMENT.md) retain the development context.
 
 ## Use the typed compiler
 

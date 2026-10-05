@@ -5,47 +5,53 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-**Phase51 is installed; release verification and all 42 CLI checks pass.**
-API: `c15718cbf3e744e47c0795d7d78db6351a61c21983f53ec9c722272782dba061`.
-Runtime: `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
-The [report](../implementation/phase51/README.md),
-[release manifest](../selfhost/dist/release.json) and
-[selected evidence](../selfhost/tools/performance/phase51/evidence/selected-qualification.json)
-bind both identities and the checked attempt.
+Phase52 adds the [direct JavaScript backend](../selfhost/docs/direct-javascript.md).
+Use `node cli.mjs FILE --direct-js --run` from `selfhost/`, or
+`node cli.mjs FILE --library --direct-js -o module.mjs` for callable exports.
+Default JavaScript retains the legacy mutable-descriptor interface. Direct06 is
+installed; integrity verification and all 42 legacy plus 18 direct ordinary/relocated
+CLI checks pass.
 
-Existing typed private calls, branches, layouts, tail loops, bounded recursion,
-composite boundaries, native values and Array effects remain. Phase51 extracts
-only the IO application body and reuses one String proof within a synchronous
-entry. It caches no permission across public calls. See the
-[runtime guide](self_hosted/v8-guided-runtime.md),
-[IR guide](../selfhost/docs/JAVASCRIPT_IR.md) and
-[representation contracts](self_hosted/phase48-representations.md).
+The [report](../implementation/phase52/README.md),
+[release manifest](../selfhost/dist/release.json),
+[conformance record](../selfhost/CONFORMANCE.md) and
+[benchmark guide](../selfhost/tools/performance/phase52/README.md) define its scope.
+The actual installed API is
+`472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a`;
+the separate direct runtime is
+`417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a`.
 
-[Source accounting](../implementation/phase51/accounting.md) records **23,662
-physical / 19,489 code Bend lines, 2,673 definitions, 87 types and 92 modules**.
-Code-line and definition counts are unchanged. The runtime adds six lines/304
-bytes, including comments. Tests, experiment tools and generated images are separate.
+The [45-point / 23-source execution comparison](../implementation/phase52/results.md)
+passes all 669 samples and improves **2.631× → 1.124× TypeScript time**, a **2.34×
+speedup**. Equal-source weighting gives 1.129× TypeScript. Twenty-nine points are
+within 10%; seven regress against the previous release. Historical ratios are
+not this fresh paired denominator. This is a maintained-corpus result, not
+universal parity or a compiler-throughput measurement.
 
-The [full execution comparison](../implementation/phase51/results.md) covers 45
-points / 23 sources / 669 fresh samples. Equal-point slowdown improves
-**3.008× → 2.928× pinned TypeScript time**; equal-source slowdown improves
-4.078× → 3.929×. Unicode improves 24%/8%; the largest median regression is 2.65%.
-Evening is warmup-sensitive and sampled allocation remains unchanged. The prior
-RNFA04 2.679× ratio is historical; it is not the fresh denominator. These are
-maintained-corpus measurements, not universal parity or a compiler-throughput gain.
+The direct semantic controls pass **95/96** scenarios; the NaN-payload fixture
+still fails its source oracle, and pinned TypeScript fails it differently.
+The maintained direct JS census has 18 runtime passes, four expected compilation
+rejections and four N/A; all eight compatibility suites pass. Analysis limits
+and the numeric-table/global-hook boundary are documented in the direct guide.
+This remains a checked B1 derivative, not a new self-emitted fixed point. Native
+IO.args, broader native/GPU conformance and independent proof validity remain open.
+The upstream pin is unchanged at `018751270e800bc222a93dad7f257083ee53a5f7`.
 
-[Conformance](../selfhost/CONFORMANCE.md) records focused controls, eight maintained
-suites and 81 backend outcomes: 69 passes, eight N/A and four shared failures.
-The native batch was retried after an environment refusal. Larger frontend
-inventories remain historical. This is a checked B1 derivative, not a new fixed
-point. The pin remains `018751270e800bc222a93dad7f257083ee53a5f7`, after Bend2.0.34.
-Native IO.args and broader native/GPU/proof validity remain open.
+[Source accounting](../implementation/phase52/accounting.md) records **25,790
+physical / 21,235 code Bend lines, 2,957 definitions, 95 types and 101 modules**.
+The new backend adds 1,746 code lines; all 92 old modules are unchanged. Runtimes,
+host tools, experiments and generated images are counted separately.
 
-Use the [portable Phase51 guide](../selfhost/tools/performance/phase51/README.md)
-for 20/60/300-second selections and three serial full-corpus batches. Profiles
-and generated-JavaScript comparison run separately. The
-[Phase48 report](../implementation/phase48/README.md) preserves earlier compiler
-request, representation and runtime measurements with their original denominators.
+## Historical release results: Phase51
+
+[Phase51](../implementation/phase51/README.md) extracted a small IO helper and
+reused one String proof within a synchronous entry. Its own full campaign measured
+2.928× TypeScript time; Phase52 re-executes its exact output for a fresh baseline.
+The [runtime guide](self_hosted/v8-guided-runtime.md),
+[IR guide](../selfhost/docs/JAVASCRIPT_IR.md), and
+[representation contracts](self_hosted/phase48-representations.md) describe the
+retained compatibility backend. Existing permissions, mutation checks and
+fallback behavior remain in that interface.
 
 ## Historical release results: Phase47
 
@@ -363,7 +369,7 @@ npm run build -- /absolute/release-config.json /absolute/new-attempt
 Config fields and selection semantics are documented in the
 [maintained workflow guide](PHASE5_DEVELOPMENT.md). Broad conformance and checked
 self-reproduction are release/integration gates, not every small edit's build.
-The [Phase45 report](../implementation/phase45/README.md) records current
+The [Phase52 report](../implementation/phase52/README.md) records current
 qualification and installation status. The historical [Phase32 release report](../implementation/phase32/release-03.md)
 retains its own evidence, limits and ordinary/relocated CLI closure.
 

@@ -1,0 +1,48 @@
+{
+  "adapter": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/direct-conformance04/direct-conformance-adapter.mjs",
+  "test": {
+    "id": "io/main_foreign.bend",
+    "namespace": "io",
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/tests/io/main_foreign.bend",
+    "sha256": "32aa7c013e1d7a8b0f30c1ff05ed2e6deff5617c1b86b248429aa5db63bde1c9",
+    "bytes": 917,
+    "expected": "Error: main must be a filled def: a foreign main cannot anchor IO\nexit 1",
+    "negative": true,
+    "failureKind": "error",
+    "main": true,
+    "base": true,
+    "imports": [],
+    "foreign": [
+      {
+        "path": "./main_foreign.c",
+        "backend": "c"
+      },
+      {
+        "path": "./main_foreign.js",
+        "backend": "js"
+      }
+    ],
+    "backends": [
+      "js",
+      "c"
+    ],
+    "hasExpectation": true,
+    "gpuCandidate": false,
+    "tags": [
+      "negative",
+      "foreign-effect",
+      "proof-or-law"
+    ]
+  },
+  "lane": "js",
+  "upstream": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23",
+  "project": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct04/snapshot",
+  "workdir": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/direct-conformance04/selected/candidate.json.artifacts/2",
+  "timeoutMs": 30000,
+  "response": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/direct-conformance04/selected/candidate.json.artifacts/2/response.json",
+  "identityFile": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/direct-conformance04/selected/candidate.json.artifacts/identity.json",
+  "workerNodeArgs": [
+    "--stack-size=4096",
+    "--max-old-space-size=1024"
+  ]
+}

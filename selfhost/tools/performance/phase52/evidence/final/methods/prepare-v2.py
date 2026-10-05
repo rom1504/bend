@@ -1,0 +1,214 @@
+#!/usr/bin/env python3
+"""Acquire checked modules before the execution-time budget starts."""
+import argparse
+import json
+import os
+from pathlib import Path
+import shutil
+import sys
+import time
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'programs'))
+from support import ExecutionGuard, identity, save
+
+HERE = Path(__file__).resolve().parent
+CATALOG = HERE.parent / 'phase37/catalog.json'
+SUPPORT = HERE.parent / 'programs/support.py'
+
+
+def select(catalog, set_name, cases):
+    ids = cases.split(',') if cases else catalog['sets'][set_name]
+    if not ids or len(set(ids)) != len(ids):
+        raise ValueError('Case selection must be nonempty and contain no duplicates')
+    lookup = {c['id']: c for c in catalog['cases']}
+    if any(key not in lookup for key in ids):
+        raise ValueError('Unknown case; inspect catalog.json or run.py --list')
+    return [lookup[key] for key in ids]
+
+
+def checked_source(case, catalog=CATALOG):
+    item = case['source']
+    relative = Path(item['path'])
+    if relative.is_absolute() or '..' in relative.parts:
+        raise ValueError('Invalid catalog source path')
+    root = Path(catalog).resolve().parent
+    requested = root / relative
+    source = requested.resolve()
+    if not source.is_relative_to(root) or any((root / Path(*relative.parts[:i])).is_symlink()
+                                             for i in range(1, len(relative.parts) + 1)):
+        raise ValueError('Source must remain inside the catalog directory without symlinks')
+    actual = identity(source)
+    if any(actual[k] != item[k] for k in ['sha256', 'bytes']):
+        raise ValueError('Changed catalog source: ' + str(source))
+    return source
+
+
+def observe_row(source, typescript=False):
+    """The unchanged Phase30 complete-row observer; its work stays timed."""
+    marker = 'export default '
+    if source.count(marker) != 1:
+        raise ValueError('Expected one ordinary generated-library default export')
+    observed = 'JSON.stringify([st.a,st.b,st.prev,st.cur])' if typescript else 'JSON.stringify(st.a.map(x=>x.array))'
+    return (source.replace(marker, 'const $Owned_exports = ', 1)
+            + '\nexport default {...$Owned_exports,bench:(n,seed)=>{const st=$Owned_exports["row.probe"](n,seed);return '
+            + observed + ';}};\n')
+
+
+def relative_identity(file, root):
+    item = identity(file)
+    item['path'] = str(Path(file).relative_to(root))
+    return item
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--out', type=Path, required=True, help='New directory; existing output is never overwritten')
+    compiler_group = parser.add_mutually_exclusive_group()
+    compiler_group.add_argument('--attempt', type=Path, help='Checked development attempt; default verifies installed release')
+    compiler_group.add_argument('--upstream', type=Path, help='Clean checkout at catalog pin; requires --role typescript')
+    parser.add_argument('--set', choices=['fast', 'core', 'broad', 'full'], default='fast')
+    parser.add_argument('--cases', help='Comma-separated case IDs, overriding --set')
+    parser.add_argument('--catalog', type=Path, default=CATALOG,
+                        help='Catalog; fixture paths are confined to its directory without symlinks')
+    parser.add_argument('--backend', choices=['direct','legacy'], default='direct',
+                        help='Direct uses the upstream-compatible default callable/record contract; legacy retains old public ABI')
+    parser.add_argument('--role', choices=['candidate', 'baseline', 'typescript'], default='candidate')
+    parser.add_argument('--node', default=shutil.which('node'))
+    parser.add_argument('--cpu', type=int, default=min(os.sched_getaffinity(0)))
+    parser.add_argument('--heap-mib', type=int, default=1024)
+    parser.add_argument('--rss-mib', type=int, default=1600)
+    parser.add_argument('--available-mib', type=int, default=2048)
+    parser.add_argument('--timeout', type=int, default=180, help='Maximum seconds per checked emission')
+    args = parser.parse_args()
+    if bool(args.upstream) != (args.role == 'typescript'):
+        parser.error('--upstream and --role typescript must be supplied together')
+    if not args.node or not 128 <= args.heap_mib <= 2048 or not 256 <= args.rss_mib <= 4096:
+        parser.error('Node is required; heap must be 128..2048 MiB and RSS 256..4096 MiB')
+    if args.available_mib < 1024 or not 1 <= args.timeout <= 1800 or args.cpu not in os.sched_getaffinity(0):
+        parser.error('Require available-memory floor >=1024 MiB, timeout 1..1800, and an allowed CPU')
+    catalog_file = args.catalog.resolve()
+    catalog = json.loads(catalog_file.read_text())
+    selected = select(catalog, args.set, args.cases)
+    sources = {case['source']['path']: checked_source(case, catalog_file) for case in selected}
+    expected_sources = {case['source']['path']: case['source'] for case in selected}
+    if len({source.stem for source in sources.values()}) != len(sources):
+        parser.error('Different source paths must have distinct stems for module output names')
+    verifiers = [HERE.parents[1] / 'development' / name for name in ['workflow.mjs', 'release.mjs']]
+    node = Path(args.node).resolve()
+    if not node.is_file():
+        parser.error('Node executable does not exist')
+    out = args.out.resolve()
+    emission_backend = 'upstream' if args.role == 'typescript' else args.backend
+    calling_contract = ('legacy-selfhost-public-v1' if emission_backend == 'legacy'
+                        else 'upstream-compatible-direct-v1')
+    manifest = dict(kind='bend-program-bundle', schemaVersion=1, complete=False,
+                    upstreamCommit=catalog['upstreamCommit'], catalogSha256=identity(catalog_file)['sha256'],
+                    roles={}, cases=[])
+    receipt = dict(kind='bend-program-preparation', schemaVersion=1, complete=False,
+                   scope='Serial checked acquisition only; excluded from all execution-time budgets.',
+                   producer=identity(__file__), worker=identity(HERE / 'emit-worker-v2.mjs'),
+                   supervisor=identity(SUPPORT), backend=emission_backend,
+                   parentProducer=identity(HERE.parent / 'programs/prepare.py'),
+                   previousProducer=identity(HERE / 'prepare.py'),
+                   callingContract=calling_contract, catalog=identity(catalog_file), node=identity(node),
+                   verifiers=[identity(file) for file in verifiers],
+                   cpu=args.cpu, heapMiB=args.heap_mib, sources=[], adapters=[])
+    if receipt['parentProducer']['sha256'] != '0ecb4e405f377965e62cfba407785370fa7ee83cb81b6e0c24e1d5384b0faa4d':
+        raise RuntimeError('Unexpected parent preparation method')
+    assert receipt['previousProducer']['sha256'] == 'e5b93b7b967f9a777936d1ce555434ae5d45cbf37ecb782fb653629f919cbdb5'
+    with ExecutionGuard(rss_mib=args.rss_mib, available_mib=args.available_mib) as guard:
+        out.mkdir(parents=True, exist_ok=False)
+        (out / 'modules').mkdir()
+        (out / 'consumed').mkdir()
+        for name in [Path(__file__).name, 'emit-worker-v2.mjs']:
+            shutil.copyfile(HERE / name, out / 'consumed' / name)
+        shutil.copyfile(SUPPORT, out / 'consumed/support.py')
+        shutil.copyfile(catalog_file, out / 'consumed' / 'catalog.json')
+        for file in verifiers:
+            shutil.copyfile(file, out / 'consumed' / ('verifier-' + file.name))
+        save(out / 'manifest.json', manifest)
+        save(out / 'preparation.json', receipt)
+        try:
+            modules = {}
+            compiler = None
+            for index, (name, source) in enumerate(sources.items()):
+                if guard.interrupted:
+                    raise RuntimeError('Preparation interrupted')
+                target = out / 'modules' / (source.stem + '.mjs')
+                command = ['taskset', '-c', str(args.cpu), str(node), '--stack-size=4096',
+                           '--max-old-space-size=' + str(args.heap_mib), str(HERE / 'emit-worker-v2.mjs'),
+                           ('upstream:' + str(args.upstream.resolve())) if args.upstream else
+                           str(args.attempt.resolve()) if args.attempt else 'installed', str(source), str(target),
+                           str(catalog_file), args.backend]
+                process = guard.run(command, out / ('emit-' + str(index).zfill(2)), time.monotonic() + args.timeout)
+                row = dict(source=identity(source), process=process)
+                receipt['sources'].append(row)
+                save(out / 'preparation.json', receipt)
+                if not process['complete']:
+                    raise RuntimeError('Checked emission failed: ' + str(source))
+                emitted = json.loads(Path(str(target) + '.json').read_text())
+                if not emitted['complete'] or not emitted['observation']['checked']:
+                    raise RuntimeError('Unchecked or incomplete emission')
+                if (emitted['backend'] != emission_backend or emitted['callingContract'] != calling_contract
+                        or emitted['compiler']['backend'] != emission_backend
+                        or emitted['compiler']['callingContract'] != calling_contract):
+                    raise RuntimeError('Emission backend/calling contract mismatch')
+                expected = expected_sources[name]
+                if (any(emitted['input'].get(k) != expected[k] or identity(source)[k] != expected[k]
+                        for k in ['sha256', 'bytes'])
+                        or emitted['output']['sha256'] != identity(target)['sha256']):
+                    raise RuntimeError('Emission identity mismatch')
+                if [item['sha256'] for item in emitted['verifiers']] != [item['sha256'] for item in receipt['verifiers']]:
+                    raise RuntimeError('Verifier changed before emission')
+                if compiler is None:
+                    compiler = emitted['compiler']
+                if compiler != emitted['compiler']:
+                    raise RuntimeError('Compiler changed during acquisition')
+                row['emission'] = relative_identity(Path(str(target) + '.json'), out)
+                modules[name] = target
+                print(json.dumps(dict(source=source.name, complete=True)), flush=True)
+            for case in selected:
+                checked_source(case, catalog_file)
+                target = modules[case['source']['path']]
+                if case.get('adapter'):
+                    if case['adapter'] != 'generic-row':
+                        raise ValueError('Unknown observer')
+                    adapted = out / 'modules' / (target.stem + '-observed.mjs')
+                    adapted.write_text(observe_row(target.read_text(), typescript=args.role == 'typescript' or args.backend == 'direct'))
+                    receipt['adapters'].append(dict(kind='complete-generic-row-serialization',
+                        raw=relative_identity(target, out), adapted=relative_identity(adapted, out),
+                        producer=receipt['producer'], callableContract=receipt['callingContract'], historicalProducer='selfhost/tools/performance/phase30/prototype-owned-derive.py'))
+                    target = adapted
+                manifest['cases'].append(dict(id=case['id'], sourceSha256=case['source']['sha256'],
+                    point=case['point'], modules={args.role:relative_identity(target, out)}))
+            if identity(catalog_file)['sha256'] != manifest['catalogSha256']:
+                raise RuntimeError('Catalog changed during acquisition')
+            if identity(out / 'consumed' / 'catalog.json')['sha256'] != manifest['catalogSha256']:
+                raise RuntimeError('Consumed catalog changed during acquisition')
+            for name in [Path(__file__).name, 'emit-worker-v2.mjs', 'support.py']:
+                original = SUPPORT if name == 'support.py' else HERE / name
+                if identity(original)['sha256'] != identity(out / 'consumed' / name)['sha256']:
+                    raise RuntimeError('Preparation producer changed during acquisition: ' + name)
+            if identity(node) != receipt['node']:
+                raise RuntimeError('Node changed during acquisition')
+            for file, expected in zip(verifiers, receipt['verifiers']):
+                if identity(file) != expected or identity(out / 'consumed' / ('verifier-' + file.name))['sha256'] != expected['sha256']:
+                    raise RuntimeError('Verifier changed during acquisition: ' + str(file))
+            manifest['roles'][args.role] = dict(label='Phase52 checked ' + emission_backend + ' ' + args.role, compiler=compiler, callingContract=receipt['callingContract'])
+            manifest['comparisonContract'] = receipt['callingContract']
+            if identity(HERE.parent / 'programs/prepare.py') != receipt['parentProducer']:
+                raise RuntimeError('Parent preparation method changed')
+            assert identity(HERE / 'prepare.py') == receipt['previousProducer']
+            manifest['complete'] = receipt['complete'] = True
+        except Exception as error:
+            receipt['error'] = repr(error)
+            raise
+        finally:
+            save(out / 'preparation.json', receipt)
+            manifest['preparation'] = relative_identity(out / 'preparation.json', out)
+            save(out / 'manifest.json', manifest)
+    print(json.dumps(dict(complete=True, manifest=str(out / 'manifest.json'), cases=len(selected))))
+
+
+if __name__ == '__main__':
+    main()

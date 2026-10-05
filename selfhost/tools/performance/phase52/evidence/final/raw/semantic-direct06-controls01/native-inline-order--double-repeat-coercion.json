@@ -1,0 +1,30 @@
+{
+  "id": "double-repeat-coercion",
+  "exportName": "doubled",
+  "groups": [
+    [
+      {
+        "$callback": "coerce3"
+      }
+    ]
+  ],
+  "expected": {
+    "$bigint": "6"
+  },
+  "expectedEvents": [
+    [
+      "callback",
+      0
+    ],
+    [
+      "coercion",
+      "default",
+      1
+    ],
+    [
+      "coercion",
+      "default",
+      2
+    ]
+  ]
+}

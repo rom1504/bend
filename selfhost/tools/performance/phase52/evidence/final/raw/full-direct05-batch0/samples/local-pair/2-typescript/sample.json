@@ -1,0 +1,181 @@
+{
+  "kind": "program-execution-v1",
+  "complete": true,
+  "pass": true,
+  "stage": "done",
+  "node": "v24.18.0",
+  "execArgv": [
+    "--stack-size=4096",
+    "--max-old-space-size=1024"
+  ],
+  "calibration": [
+    {
+      "repetitions": 1,
+      "executionMs": 1.1896820000001753,
+      "checksum": 1866542166,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 1.1675450000000183
+        }
+      ]
+    },
+    {
+      "repetitions": 2,
+      "executionMs": 2.50879000000009,
+      "checksum": 3733084332,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 1.32583499999987
+        },
+        {
+          "calls": 1,
+          "ms": 1.1730660000000626
+        }
+      ]
+    },
+    {
+      "repetitions": 4,
+      "executionMs": 5.078544999999849,
+      "checksum": 3171201368,
+      "halves": [
+        {
+          "calls": 2,
+          "ms": 2.5277320000000145
+        },
+        {
+          "calls": 2,
+          "ms": 2.5366579999999885
+        }
+      ]
+    },
+    {
+      "repetitions": 8,
+      "executionMs": 10.262482999999975,
+      "checksum": 2047435440,
+      "halves": [
+        {
+          "calls": 4,
+          "ms": 5.111736999999948
+        },
+        {
+          "calls": 4,
+          "ms": 5.1178809999998975
+        }
+      ]
+    },
+    {
+      "repetitions": 16,
+      "executionMs": 19.763212000000067,
+      "checksum": 4094870880,
+      "halves": [
+        {
+          "calls": 8,
+          "ms": 9.883346999999958
+        },
+        {
+          "calls": 8,
+          "ms": 9.84477099999981
+        }
+      ]
+    },
+    {
+      "repetitions": 32,
+      "executionMs": 39.51747,
+      "checksum": 3894774464,
+      "halves": [
+        {
+          "calls": 16,
+          "ms": 19.751146999999946
+        },
+        {
+          "calls": 16,
+          "ms": 19.737975000000006
+        }
+      ]
+    },
+    {
+      "repetitions": 64,
+      "executionMs": 79.343212,
+      "checksum": 3494581632,
+      "halves": [
+        {
+          "calls": 32,
+          "ms": 39.55585700000006
+        },
+        {
+          "calls": 32,
+          "ms": 39.773639
+        }
+      ]
+    }
+  ],
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/full-direct05-batch0/modules/baseline/modules/e303d7add56bca3c62ab3a7d636f01b65007556f5a80d43d59f94018b4154de6.mjs",
+    "sha256": "e303d7add56bca3c62ab3a7d636f01b65007556f5a80d43d59f94018b4154de6"
+  },
+  "config": {
+    "exportName": "pair",
+    "args": [
+      0
+    ],
+    "expected": 1866542166,
+    "warmupCalls": 3,
+    "warmupMs": 1000,
+    "calibrationMs": 50,
+    "targetMs": 300
+  },
+  "configSha256": "b7b2de2691c1516c507db43564e8a3735b8cfe0f9cd424aabd2ccc49fcc5b22a",
+  "toolSha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+  "affinity": "Cpus_allowed_list:\t3",
+  "importMs": 1.1152980000000028,
+  "firstResult": 1866542166,
+  "firstCallMs": 17.026301000000004,
+  "warmup": {
+    "calls": 771,
+    "ms": 1000.512796
+  },
+  "repetitions": 242,
+  "executionMs": 299.46025499999996,
+  "checksum": 731638092,
+  "halves": [
+    {
+      "calls": 121,
+      "ms": 149.00415900000007
+    },
+    {
+      "calls": 121,
+      "ms": 150.4411399999999
+    }
+  ],
+  "msPerCall": 1.2374390702479336,
+  "halfDriftPercent": 0.9643898597486933,
+  "wallMs": 1478.12562,
+  "resourceUsage": {
+    "userCPUTime": 1531550,
+    "systemCPUTime": 4011,
+    "maxRSS": 79524,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 9092,
+    "majorPageFault": 0,
+    "swappedOut": 0,
+    "fsRead": 0,
+    "fsWrite": 8,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 421,
+    "involuntaryContextSwitches": 422
+  },
+  "peakRssKiB": 79524,
+  "memory": {
+    "rss": 80683008,
+    "heapTotal": 24358912,
+    "heapUsed": 13723392,
+    "external": 2290393,
+    "arrayBuffers": 143647
+  }
+}

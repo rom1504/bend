@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "source": "type Flag is Data:\n  Up{}\n  Down{}\n\ntype Foo is Data:\n  True{+value: Flag}\n  False{+value: Flag}\n  Zero{+value: Flag}\n  Succ{+value: Flag}\n  SNil{+value: Flag}\n  SCon{+value: Flag}\n  Chr{+value: Flag}\n  Tuple{+value: Flag}\n  ALeaf{+value: Flag}\n  ANode{+value: Flag}\n\ndef pick(f: Foo) -> Flag:\n  match f:\n    case True{value}: value\n    case False{value}: value\n    case Zero{value}: value\n    case Succ{value}: value\n    case SNil{value}: value\n    case SCon{value}: value\n    case Chr{value}: value\n    case Tuple{value}: value\n    case ALeaf{value}: value\n    case ANode{value}: value\n\ndef make0() -> Foo:\n  True{Up{}}\n\ndef make1() -> Foo:\n  False{Up{}}\n\ndef make2() -> Foo:\n  Zero{Up{}}\n\ndef make3() -> Foo:\n  Succ{Up{}}\n\ndef make4() -> Foo:\n  SNil{Up{}}\n\ndef make5() -> Foo:\n  SCon{Up{}}\n\ndef make6() -> Foo:\n  Chr{Up{}}\n\ndef make7() -> Foo:\n  Tuple{Up{}}\n\ndef make8() -> Foo:\n  ALeaf{Up{}}\n\ndef make9() -> Foo:\n  ANode{Up{}}\n",
+  "constructors": [
+    "True",
+    "False",
+    "Zero",
+    "Succ",
+    "SNil",
+    "SCon",
+    "Chr",
+    "Tuple",
+    "ALeaf",
+    "ANode"
+  ],
+  "checked": true
+}

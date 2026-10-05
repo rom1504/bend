@@ -1,0 +1,22 @@
+{
+  "id": "adt-getter-throw",
+  "exportName": "unpack",
+  "groups": [
+    [
+      {
+        "$getters": {
+          "payload": {
+            "throw": "payload-first"
+          },
+          "count": {
+            "throw": "count-second"
+          }
+        },
+        "value": {
+          "$": "Packet"
+        }
+      }
+    ]
+  ],
+  "expectedError": "payload-first"
+}

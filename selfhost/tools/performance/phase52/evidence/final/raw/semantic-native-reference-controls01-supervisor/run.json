@@ -1,0 +1,40 @@
+{
+  "complete": true,
+  "command": [
+    "taskset",
+    "-c",
+    "3",
+    "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "--max-old-space-size=1024",
+    "--stack-size=4096",
+    "selfhost/tools/performance/phase52/semantic-reference-runner-v5.mjs",
+    "selfhost/build/phase52/semantic-native-upstream01/manifest.json",
+    "selfhost/build/phase52/semantic-native-reference-controls01"
+  ],
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+    "bytes": 4339,
+    "sha256": "860b59bce0b8c38e2e548368b14c51825bd62d8da1da200e2049737f1e0e383d"
+  },
+  "secondsLimit": 60,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 4294967296,
+  "started": 1791218579.0582054,
+  "peakTreeRssBytes": 103882752,
+  "minimumAvailableBytes": 27833253888,
+  "scope": "Supervised acquisition; RSS sums may double-count shared pages. No throughput claim.",
+  "returncode": 0,
+  "wallSeconds": 0.5046152300201356,
+  "finished": 1791218579.563391,
+  "stdout": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01-supervisor/stdout.log",
+    "bytes": 69,
+    "sha256": "a559f8a60f675475a3f79ec86567a0802152b4f0503663b9408a13018b65a4e3"
+  },
+  "stderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01-supervisor/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

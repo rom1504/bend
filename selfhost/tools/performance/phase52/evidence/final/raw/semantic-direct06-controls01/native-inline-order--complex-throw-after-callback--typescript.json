@@ -1,0 +1,25 @@
+{
+  "kind": "phase52-direct-semantic-observation",
+  "complete": true,
+  "test": "complex-throw-after-callback",
+  "events": [
+    [
+      "callback",
+      35
+    ],
+    [
+      "builtin",
+      "Math.imul",
+      [
+        42,
+        3
+      ]
+    ]
+  ],
+  "outcome": "throw",
+  "error": {
+    "type": "object",
+    "name": "Error",
+    "message": "phase52-hook:Math.imul"
+  }
+}

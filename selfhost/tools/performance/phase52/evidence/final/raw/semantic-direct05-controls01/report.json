@@ -1,0 +1,2570 @@
+{
+  "kind": "phase52-independent-direct-differential-semantics",
+  "complete": true,
+  "pass": false,
+  "executed": true,
+  "selectedScope": {
+    "kind": "full-independent-plan",
+    "fixtures": 28,
+    "scenarios": 90,
+    "parentFixtures": 22,
+    "parentScenarios": 64,
+    "reason": "Add independent Nat match demand, mixed-arity mutual tail updates and closure snapshots, dead/erased/live FFI registration, and proof-valued program output. Signaling NaN source golden40 remains unchanged and known04 mismatch is not waived."
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-join01.json",
+      "sha256": "dcbda6c48df1c563a0feccdc3f9231c2f8ec119e54699345d5247e76cb748b14"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v7.json",
+      "sha256": "bb73a5ea0f8128941c3f90372f3aca021d1ec31da1d20c4908bdadad66c7cc9a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-runner-v8.mjs",
+      "sha256": "c48347333a8be1f189075427463d696224536485a7456f7649309b95a2f1bd0d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+      "sha256": "d726b3561c692bd9b584c3667553cb48d7b82366710394aca2fcc2ce1b20872e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+      "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-direct-program-worker-v1.mjs",
+      "sha256": "26d454c2dc7ba2767e4271128075b8d1f6048f1f51cfbfbc9e85096f7c9b52a6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/direct-contract-v2.bend",
+      "sha256": "ab6c6253e9af697a0bbea999add8a4048c379019c451176e6f4c4b246200fb22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+      "sha256": "b5b86a73416d32a82970101bfe320af8d45ebecd1b89215e420fb4b142c70198"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs.json",
+      "sha256": "66baa6953f9b425d14f6cf826fec628802022fbe6400db76adebb024296cc9fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/direct-contract.mjs",
+      "sha256": "ca13677994acd2fb777b2be0bfeb07751495a3d06c0d4465c0c992786dc81385"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/direct-contract.mjs.json",
+      "sha256": "8d50e5c63551dfe1f1323d8c63b07b9cc4e1bfa0f502a1b1ece43f54c825054a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_partial_closure.bend",
+      "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_partial_closure.mjs",
+      "sha256": "8939cb9be4111121ddcc258e77c07afb4193971394e3032b09e184eea69c51db"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_partial_closure.mjs.json",
+      "sha256": "b8bcce8b68b036b9aa68a0fa1ad0e07046cbcbf14672ff6349c9eeb52ea2d367"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/erased_partial_closure.mjs",
+      "sha256": "ae6a3f70a8befd1d2a86d4e7539f231aedd86e4f2c73e9d13c8ea048ffa3d89e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/erased_partial_closure.mjs.json",
+      "sha256": "bfd0c4c794a7862a3fecbbf6ac56bc204d8e04443ade98e960d37f7a8c0bda8e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/closure_partial_app.bend",
+      "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/closure_partial_app.mjs",
+      "sha256": "70a51142026a81f4e64e74a88e967f123fb55863300ab6f8f255e6de8812bc54"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/closure_partial_app.mjs.json",
+      "sha256": "43e1df74ef18286ee452746962169fb1d5a42eb0ba1468c1dd062dfa16355c0f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/closure_partial_app.mjs",
+      "sha256": "dade7dfba23a72a076723b5155fb10bb27f6cc27304cc34c719d97b6375e5449"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/closure_partial_app.mjs.json",
+      "sha256": "326deb64d714383401f479779e1b20f358a233a8b36efae9a1f88552217cde7a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_recursive_arg.bend",
+      "sha256": "3f13bbac34471cc80e86b4916fdd8a17a2c156f1ced84857149c45dba8e5750d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_recursive_arg.mjs",
+      "sha256": "224e1610dc128843d69f01c28bf6ea87d2d082307a587890058ecb911c587b27"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_recursive_arg.mjs.json",
+      "sha256": "c84dd9665cc88213571058e0988f0c9ab024614cc2890d38adf9ef90bca4c1b1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/erased_recursive_arg.mjs",
+      "sha256": "402aa0422424faa64020f8a0ea5d4bfefcdbf2c4c5c81ab5081334909ba8bb54"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/erased_recursive_arg.mjs.json",
+      "sha256": "b46668e8906a00ef7483f5d0a0b1fb5e2e4f25d9a9254b5a4196f37a40754c3f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_apply.bend",
+      "sha256": "a8a84fa45f5b979d21acbc729e06f4bbbe627c8a0f0ac29bc8a9d24751da24c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_apply.mjs",
+      "sha256": "ca642ea9fdb3c7a74e33c45a2af48ef665e8c08a1c6706d3bbaf11debc9d817b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_apply.mjs.json",
+      "sha256": "35e3cde70a7b298ab6eef2bba4b145de3cf221871f19ddccf6d408e7a4234140"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/erased_apply.mjs",
+      "sha256": "4f4770fb4b66b15847b9c07e742c2e6fc7c721042f6e628c0f007394f9ed76c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/erased_apply.mjs.json",
+      "sha256": "7a4098ae66eb5157f39a89fca1e0563c19a9885f9b7dc075be54e201d7379fd7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/over_application.bend",
+      "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/over_application.mjs",
+      "sha256": "73979cc63eb9e207435d71721a335c58bca607f9ef6cbb245f18edbad58afd34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/over_application.mjs.json",
+      "sha256": "083cd655f375ed1aae25d1a77bd630e2d9213b8bb01663f474acd13c42de5844"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/over_application.mjs",
+      "sha256": "2eb1c9f58b2dfdfa54620871dae1e569c9755e3f04b0e07280c5d2fb6b16273a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/over_application.mjs.json",
+      "sha256": "d311913b69e19e8c18d29799c2669bc6096d9e4c617710e983dbf68903575acb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_closure_body.bend",
+      "sha256": "f00a373b52647541f8e62bb59f95acdb6998fc1ad1be47dd73f2743aa92bef2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_closure_body.mjs",
+      "sha256": "532eb1bbdde75fb7558586b8289eb9dafcd49be241ce9735b11b1aed46723711"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_closure_body.mjs.json",
+      "sha256": "8b9eeee9e59cb844bed132d6bfb5148254117ddb9bc371ae6a8f5a7d5810f6f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/eta_closure_body.mjs",
+      "sha256": "f34d3df5af2945246bdc291775acfebf98c70771329c368d9a15b986a0e12e27"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/eta_closure_body.mjs.json",
+      "sha256": "c0ae68434e92a2e9e6e8453a54c1ce7edca002a48fda23706bac6e47320056e1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_ctor_arm.bend",
+      "sha256": "25510e2abd182476e08a4c3b0b22eda204f24b90b820909d237f8b8bdf339fb6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_ctor_arm.mjs",
+      "sha256": "8a3611237b4966ce56ae02c94d91fa21af0d7001e11f10376b02dd57646d5de1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_ctor_arm.mjs.json",
+      "sha256": "61ed4fd54ca34d6cf77c8152c1a5380bdf0d090b23ab3f6190193a10fcdc070c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/eta_ctor_arm.mjs",
+      "sha256": "da0e3d342c102ed124d84ae7638036b9acdec6aa157d8dab3294b99dd7272180"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/eta_ctor_arm.mjs.json",
+      "sha256": "23c7e72ea5b30b31c7758ba0032313ec81353384a63ec5da1e36ccdbf49ceaab"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_dynamic_closure.bend",
+      "sha256": "07e1f36a063002409bc231bb8ca918e0ea5814b129854f4389669a00d67a5a1f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_dynamic_closure.mjs",
+      "sha256": "c9e6db9de642c8a5a8b7da4d1755d4c9b67a592f9feca79309fdf3592d15ab0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_dynamic_closure.mjs.json",
+      "sha256": "73780a7aff75c9a61137db7233ed5215830b92622f8c7bf464c7058caa674eb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/array_dynamic_closure.mjs",
+      "sha256": "0e88a4769d4139937d6e35c2c978363f23aa126f8d7b184b3aecfbd09dbea1cf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/array_dynamic_closure.mjs.json",
+      "sha256": "40f302a2175196c5f3ffbe09fe5d2d7a58c220d2f726713ca531a21a0d515796"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_accumulation.bend",
+      "sha256": "93e0e625cf6a742d8f3a47701f8280111a989ebb76f563695437c67ab3da4297"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_accumulation.mjs",
+      "sha256": "8f8b5b6f1b316b06a34142d1ceeae492a68391dd2a669a3815e100d70876dfd1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_accumulation.mjs.json",
+      "sha256": "dbd111b9d5bb79dde2891270a8e6dfa9f6198eb2a1fe551bf24b89824f1d2db9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/float_accumulation.mjs",
+      "sha256": "4f508550ccfeb1a35d7b100e8ed030041dcb4a9cf4bf481527eb471925f42b6d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/float_accumulation.mjs.json",
+      "sha256": "938772e04c741b42a122c36b25f4e44137ce25bb0abc24b3c63092318828cc1b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_builtin_agreement.bend",
+      "sha256": "598bf5de2c2b221a2d8f72b34298c40b4ee311fbdba6802c53b27272beb28536"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_builtin_agreement.mjs",
+      "sha256": "75c5c099515edcd125f12e2f450d8547fb6d697008d05aba2f5aaa6bed3c52db"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_builtin_agreement.mjs.json",
+      "sha256": "eed9cb340eea3382ac1b2e48d395c5f6b252d1eb8cbb917b4029b9120994e8a9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/float_builtin_agreement.mjs",
+      "sha256": "cd3571a133aaf8e354bd2106555c5429b5b73c41e3e132b93830ab89594f5183"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/float_builtin_agreement.mjs.json",
+      "sha256": "267b50bdb4f35a93f38d550c568d586e464d9f3eabc970db5261531dbbbef23f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_roundtrip.bend",
+      "sha256": "7fc6dbd7a533f781d0a72632f38129be0591b7754cbfded2d8a644cc0933bfd4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_roundtrip.mjs",
+      "sha256": "720e7d1e37ca3b0b7614898dea58541e6ef7dd9e76f88a2929d2053ced147408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_roundtrip.mjs.json",
+      "sha256": "5acb5b21da92c61efa43621489c2b9de78799918595c65e011735e38e561c1fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/float_roundtrip.mjs",
+      "sha256": "dc88b06bb38cb49ec88e8fc9da637401f4f49e609b84a86d598befd0fd218f2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/float_roundtrip.mjs.json",
+      "sha256": "e0754fb284b4cb9da08f8b00b5be50bedabbacb1f5b3c991ff109e6b5966bf8f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_erased_binders.bend",
+      "sha256": "434bfa849bd88393922f0d8ee2012775e40af9220f6f3ec0a5403ed4c21907f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_erased_binders.js",
+      "sha256": "3469a2e3cb9f5872b9f4bed2d473271a979e3270c57674c53edecec84bb7af51"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_erased_binders.mjs",
+      "sha256": "b7f5ea0212b1973c2e81ada530db93f6e33b2073d80eba87fea0967d538c4c34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_erased_binders.mjs.json",
+      "sha256": "56c5a8e99a068c7764bcac907d8951afe686c17eaf0ffe37db1fcecad557d097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/marshal_erased_binders.mjs",
+      "sha256": "e15c6d5f6b8221017e956153671f0461873ff4d3c7e3d9407b090345801e908d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/marshal_erased_binders.mjs.json",
+      "sha256": "bb411179d2c16f9d673abd1aa1b79f56a2d38bfefd2f083caa3985b9bab2f8b2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/shared_module_state.bend",
+      "sha256": "e6aa3a59587d40c9a473e75cf66180b36045309a6c1af17a9746f1810ee60af2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/shared_module_state.js",
+      "sha256": "d42ae5de0b56d7cba8835d7b00e50ee1565b8f6d3c97db5012d41816348e5123"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/shared_module_state.mjs",
+      "sha256": "118c6791abd8176e43d072503d206141611d48da9eff421af35c17b6dc693f37"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/shared_module_state.mjs.json",
+      "sha256": "96463a338e34e93e8d333476025b03e0eb105975c10f3d9dd23de94fb8096922"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/shared_module_state.mjs",
+      "sha256": "940f86de31cad627d3af0a33b9fa7f205650f4238422cfcaad33998045658b36"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/shared_module_state.mjs.json",
+      "sha256": "58dda7e4e9738eb7127f3afc533751e0fb2de0dce618df841b971ba7e2c864db"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/foreign_arrow_arity.bend",
+      "sha256": "fae4838a694a354cb061ff422981d16b65a508dd287faa12562cae1cfb72fd56"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/foreign_arrow_arity.js",
+      "sha256": "de87179b5f9d27b8b1f0387795a049547c4b00bd64597dec0b629468302376ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/foreign_arrow_arity.mjs",
+      "sha256": "6e7e416574492a3b82175e4508a700e28e0519be3921188f5ea1b76f251504bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/foreign_arrow_arity.mjs.json",
+      "sha256": "9fdbe651b18294bbe6c78907a5e440ad8d80cdc8669cfb6dd8dca79ca4a318bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/foreign_arrow_arity.mjs",
+      "sha256": "9552b4c2c8be743944a8ba54e958cd22686c519ed1187d5ad7d629f63d54829b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/foreign_arrow_arity.mjs.json",
+      "sha256": "f825daa3b4c6c8652678ca61fdf822434706fb2b4196c66bc3c5baa4c7ef8801"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_nat_bigint.bend",
+      "sha256": "a99628e48b2258c70b71a4f1d3b707b7e18e0a2abbf6a9279e8e06e7c5ac50f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_nat_bigint.js",
+      "sha256": "f10cbe24f0a29ae3ca3d2e53d53eb953eeb0152f4087efabf92086354bf0c607"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_nat_bigint.mjs",
+      "sha256": "005563adf058cf4505270c9ff4d62264d44c09f0f2bd1f0ebdd12b0ae855a882"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_nat_bigint.mjs.json",
+      "sha256": "2bf47161678d3bd00742bc288c37497313aa7f59c2e8e5178890f3510160c1f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/marshal_nat_bigint.mjs",
+      "sha256": "aed4c88774477d3d5d905c436539447e4bc13640fbb3e4ec4db98f42accc68a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/marshal_nat_bigint.mjs.json",
+      "sha256": "52ce48aef9f2be3e7535f12cd9324e47f847a1a605a6f3a99b8f24afa728d987"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_swap_header.bend",
+      "sha256": "e16438d4138cbf1700473d0f1a1805194787c107b39af819c0dbdeed752d7f87"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_swap_header.mjs",
+      "sha256": "11dc9aef808b8d6f299c4df5559a33f065228f416abf48ea4e1247158d6737e2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_swap_header.mjs.json",
+      "sha256": "540c31a8b4745599f4e0addb86bbd29e7bf9cc6c9aa1a38caec2fb05d805fe79"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/array_swap_header.mjs",
+      "sha256": "237a4708ea623b38b700b76520b7ce1f15604b15127e779e906b91f6d0bba71a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/array_swap_header.mjs.json",
+      "sha256": "395fe6fa8b668418abe6825559e7807c7c63ea6509d68f7d2dc38728c69e508e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/tail_pin.bend",
+      "sha256": "9501546a5f125a2cb82609f23c517e62dffe4eeb603f3e6cc991c4477bb78cd9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/tail_pin.mjs",
+      "sha256": "10bc9be273d2264e5a9be1f6dd54003f64a09afd3cc9946cbc31ed13fa41a5f6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/tail_pin.mjs.json",
+      "sha256": "da3afb98f9da1a7ce223ec6b0fdbbf54072126a4f9853d0ca3729af6510ebd02"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/tail_pin.mjs",
+      "sha256": "7b5380c5759916e7ed2fa8aa9479f356cfe00fed4ed479534778625d52d91e59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/tail_pin.mjs.json",
+      "sha256": "54df3d8ac9688bf8a0a1276582154643e7b3ec9d607dfd3b38fe6ce805db24cb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/f32_read_round_once.bend",
+      "sha256": "a30385f044fe1ff66a6cb3c45537c1d773eff1aced492480b2f62305ce08fb82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_read_round_once.mjs",
+      "sha256": "2e5c40b2552bb0be87d11f69efc19b140aea839d37d8ef8b1e51ff6e091a0474"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_read_round_once.mjs.json",
+      "sha256": "9d62ef311d9408df502d9800f6c3278e64e15714fe078b6e25f607da1528aadf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/f32_read_round_once.mjs",
+      "sha256": "44828dc65a7eb79a875a0bf391174d337c68d3373eb2a53e9aa52514bdc7d410"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/f32_read_round_once.mjs.json",
+      "sha256": "be1642deb9a03d8c5f9b92830e5b8205777e0c7a1429905b1974c85842e47abe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/f32_table_nan_bits.bend",
+      "sha256": "31831beb2bf79da469bfca1e65448bb8c0a48082d966e0059165e4b569864d0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_table_nan_bits.mjs",
+      "sha256": "992a87c7c42ba131d9b7ee626723a41fa2c10a4a81aa35200f1d342035449c30"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_table_nan_bits.mjs.json",
+      "sha256": "c101f941b09982ccfbb4b07977e03477d1895de9a2bb4d3b62fedc87da8c658b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/f32_table_nan_bits.mjs",
+      "sha256": "194e17f649397d372b1f8398a6772ed77dd6b925328fb777fe79402cc3661e29"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/f32_table_nan_bits.mjs.json",
+      "sha256": "2464970f024364f5134d95c201e15fb6cd004d65aa0b2fcb1f73d5e3db890b89"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/f32_literal_word.bend",
+      "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_literal_word.mjs",
+      "sha256": "d053b9194b63c5f0d5dcf1307437373bc8699770d9ea6b34b199e0bc187d449f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/f32_literal_word.mjs.json",
+      "sha256": "bd2fb56afe0a6d12db924f562f5be3060fb4a564d22ba958928129620a4b6a53"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/f32_literal_word.mjs",
+      "sha256": "c46cb71f7f29a5af55147c3b6b4701d8b63711a2aa33c9adcbea0f8ef6d5117c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/f32_literal_word.mjs.json",
+      "sha256": "978a4e74d9881deca97baccd4f33789d88099f82791b89d3f38ecf2724e5e72b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_specials.bend",
+      "sha256": "e5cfe83f9550847dac7b9cf7f10abb444df2fa872c195455f58c335c089051d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/float_specials.mjs",
+      "sha256": "2bda19820f196710026ae4db4d920aa0e8560547429d6899b5a8400e7767379b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/modules/float_specials.mjs.json",
+      "sha256": "6c90a5404d3b01545d107c3bfd09fe1851e551d1a45223d8f04538460aaf94f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/float_specials.mjs",
+      "sha256": "ae91ba6767e635b8bf7b8f239bc119a21ad9e43eba15ae41668ce35de2ea7263"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/float_specials.mjs.json",
+      "sha256": "7bdc0d0dfba455a34f22d8da2743fef4d1c4fccaea3050436a0076b4c6ba4998"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/nat-row-demand-v1.bend",
+      "sha256": "6dc2ba1a0edb0062e1130f0f4089e895c950274b9dc046896d37dd0f9a5fefbd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs",
+      "sha256": "bc56f6d5ffd833e1db29f095a247fa11fadcc3ba61f27023e584e6ce3e092313"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/nat-row-demand.mjs.json",
+      "sha256": "b6a85848a8f25751ed332cf98d1abbc83b360b12cc17444fe53640c4a59880aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/nat-row-demand.mjs",
+      "sha256": "0a34f7eddba44254a1b50c2084f45bd5d4636d25d6fa14adbebb7764206c40ca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/nat-row-demand.mjs.json",
+      "sha256": "922664122471b8557ec570facad0b0818e60e7a16c2f355748329fe1ceda7d91"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/mutual-capture-v2.bend",
+      "sha256": "b6079e486bc2ff14623d2da26ab48f687bc13a2a538aabce5e3fe607a0a1c4e8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs",
+      "sha256": "a41c302fcfd55d15a869e7bd93e86087be983d81f93bcd514774ae188fae9524"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/mutual-capture.mjs.json",
+      "sha256": "06c0daf1ada1418e8cbefb1262e4b7083bf2a883da84fbcdce274bf0f23be4cf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/mutual-capture.mjs",
+      "sha256": "c85ca83318cc96a012aae22d6e793038bccc4ed0e80fd0b863a0bcc01531fb4d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/mutual-capture.mjs.json",
+      "sha256": "c8aaab5aabf43a9af172220f301c1134fbd3ba260f0b045493a1d2363844bca7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.bend",
+      "sha256": "ee8997e9fe6129b806e54348ab73261316fc06e8fe1c77e6163f14a970feef43"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.js",
+      "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/dead-foreign-let.mjs",
+      "sha256": "c76df9420e67a15a2092b8cde9955ca8f7ceb9db2c0e48855547fe5a39490e60"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/dead-foreign-let.mjs.json",
+      "sha256": "05c12b8ba2517d50105f2eb1ab304a9b98e8e769b68a7523767af43f9b37f4cf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/dead-foreign-let.mjs",
+      "sha256": "3512042856ec76b893eb6e186fccd62b2b0a9f4aac7ff9d60efde30e41aa4867"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/dead-foreign-let.mjs.json",
+      "sha256": "26007c2917d7b712e9a9469f008121475230a6365ae864bdf40446b282d372a4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased-foreign-v1.bend",
+      "sha256": "79976e0437a229479c6136883828a59bb7090dc9d5274c8323856c74a0331e22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/dead-foreign-let-v1.js",
+      "sha256": "39f62a4dee820d0204a47c06efa494366861293b8d40e3efb69ffc8a5fd87936"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/erased-foreign.mjs",
+      "sha256": "b331375d530f0a794fad54979cd353354fe4e89ed8c4b2e0c97bbbf89c76b595"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/erased-foreign.mjs.json",
+      "sha256": "4f3eb87763593d39c4495419a76d2bc33670a80a0d946390f172a589cef47110"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/erased-foreign.mjs",
+      "sha256": "e87d5f6ecc42f6df41187da8b620b6917ea0ea215e8c9bad399bb50802112d00"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/erased-foreign.mjs.json",
+      "sha256": "3ac06b61c9ef7dd82c3e8b071f88b649e4b8483a679e4b54a7bbdf573457962a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.bend",
+      "sha256": "1be4e6b6b783f6dc2ba73b7477b08b66b144db814a3954b035aa43ef368489e3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/live-foreign-v1.js",
+      "sha256": "b017d6bc7c9848922266d4d13e7648665cc641c65a1dd4177831cc518de101d4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/live-foreign.mjs",
+      "sha256": "d9b7786f45f5dd5f9f8f1d2949844351e345a701f2b47608de3bc4a8cf09137d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/live-foreign.mjs.json",
+      "sha256": "fda57431ba1f75a7496cf22a772798d81e22e1256db156790b8aedf2b2131e96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/live-foreign.mjs",
+      "sha256": "6f8877b10d5ba22d822844bf09fbc9025f44a799dc13803448dea4f3892207d4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/live-foreign.mjs.json",
+      "sha256": "cfb02e2e8406d3b3a79b974f93757028dfe4e312137e9a032f09b5a9fb9375ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/proof-main-v1.bend",
+      "sha256": "cb92fd49e05cb60149fc48258847a00bc1678c67d0382c0b69bc3ac11f2c0981"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/proof-main.mjs",
+      "sha256": "2b1df45761ba31089a3cc1ee4483d36b4189144537a1970b99b62fdfeef3fc75"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/modules/proof-main.mjs.json",
+      "sha256": "0e1ab90b0caf427ec98a2e12702515417a00643b60ec813ba4d0c2d8ada21762"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/proof-main.mjs",
+      "sha256": "ce5a40facc1985ccc1699b2b444163418965b16cb95b3f2c9ca997357d0dc271"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct05-acquisition01/modules/proof-main.mjs.json",
+      "sha256": "64b77d28618f7a2c593c97d6e7aadd5a9d52d2efb6ff468b547c3e0e98333f04"
+    }
+  ],
+  "observations": [
+    {
+      "fixture": "direct-contract",
+      "test": "adt-owned-result",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$": "Packet",
+            "payload": 35,
+            "count": 7
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$": "Packet",
+            "payload": 35,
+            "count": 7
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "adt-named-input",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "adt-getter-order",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "get",
+              "payload"
+            ],
+            [
+              "get",
+              "count"
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "get",
+              "payload"
+            ],
+            [
+              "get",
+              "count"
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "adt-getter-throw",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "payload-first"
+          },
+          "events": [
+            [
+              "get",
+              "payload"
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "payload-first"
+          },
+          "events": [
+            [
+              "get",
+              "payload"
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "saturated",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "curried",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "empty-underapplication",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "public-extra-argument",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 18,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "capturing-factory",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "matched-recursive-factory",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "matched-zero-factory",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "erased-JS-slot",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "tail-50000",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 50017,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 50017,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-0-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "0"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "0"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-1-2",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-281474976710654-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "281474976710655"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "281474976710655"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-overflow",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-rejected-host",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-18",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 16777216,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 16777216,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-19",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-20",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$number": "-0"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$number": "-0"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-21",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 2.25,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 2.25,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-nan",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$number": "NaN"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$number": "NaN"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-infinity",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$number": "Infinity"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$number": "Infinity"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-floor",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": -2,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": -2,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "char-astral",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "😀",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "😀",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "char-surrogate",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: 55296 is not a Unicode scalar value"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: 55296 is not a Unicode scalar value"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "order-stage-before-argument",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: 55296 is not a Unicode scalar value"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: 55296 is not a Unicode scalar value"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "string-unicode",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "a😀é\ud800",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "a😀é\ud800",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-floor-passthrough",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": -2,
+          "events": [
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": -2,
+          "events": [
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-floor-getter",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": -2,
+          "events": [
+            [
+              "builtin-get",
+              "Math.floor"
+            ],
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": -2,
+          "events": [
+            [
+              "builtin-get",
+              "Math.floor"
+            ],
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-floor-throw",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:Math.floor"
+          },
+          "events": [
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:Math.floor"
+          },
+          "events": [
+            [
+              "builtin",
+              "Math.floor",
+              [
+                -1.5
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-fround-passthrough",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": [
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": [
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-fround-getter",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": [
+            [
+              "builtin-get",
+              "Math.fround"
+            ],
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 0.30000001192092896,
+          "events": [
+            [
+              "builtin-get",
+              "Math.fround"
+            ],
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-fround-throw",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:Math.fround"
+          },
+          "events": [
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:Math.fround"
+          },
+          "events": [
+            [
+              "builtin",
+              "Math.fround",
+              [
+                0.30000000000000004
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-String-fromCodePoint-passthrough",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "😀",
+          "events": [
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "😀",
+          "events": [
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-String-fromCodePoint-getter",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "😀",
+          "events": [
+            [
+              "builtin-get",
+              "String.fromCodePoint"
+            ],
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "😀",
+          "events": [
+            [
+              "builtin-get",
+              "String.fromCodePoint"
+            ],
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-String-fromCodePoint-throw",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:String.fromCodePoint"
+          },
+          "events": [
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "Error",
+            "message": "phase52-hook:String.fromCodePoint"
+          },
+          "events": [
+            [
+              "builtin",
+              "String.fromCodePoint",
+              [
+                128512
+              ]
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Array-isArray-passthrough",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Array-isArray-getter",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Array-isArray-throw",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "public-callable-callback",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "callback",
+              35
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "callback",
+              35
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "erased_partial_closure",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 3,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 3,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "closure_partial_app",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 17,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 17,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "erased_recursive_arg",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 9,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 9,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "erased_apply",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "4"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "4"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "over_application",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "eta_closure_body",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "eta_ctor_arm",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 100,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 100,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "array_dynamic_closure",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 9,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 9,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "float_accumulation",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 2775,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 2775,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "float_builtin_agreement",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "-2 -1 -1 1.5",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "-2 -1 -1 1.5",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "float_roundtrip",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 45,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 45,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "marshal_erased_binders",
+      "test": "independent-stdout",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "121\n8\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "121\n8\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "shared_module_state",
+      "test": "independent-stdout",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "1\n2\n2\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "1\n2\n2\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "foreign_arrow_arity",
+      "test": "independent-stdout",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "42\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "marshal_nat_bigint",
+      "test": "independent-stdout",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "zero\nsucc\nsucc\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "zero\nsucc\nsucc\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "array_swap_header",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 2337,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 2337,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "tail_pin",
+      "test": "independent-main-out",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "f32_read_round_once",
+      "test": "read-once",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "1065353215 1065353217 1266679808 2139095039 2139095040 1 3212836863",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "1065353215 1065353217 1266679808 2139095039 2139095040 1 3212836863",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "f32_read_round_once",
+      "test": "literal-once",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "1065353215 1065353217 1266679808 2139095039 1",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "1065353215 1065353217 1266679808 2139095039 1",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "f32_table_nan_bits",
+      "test": "nan-table-bits",
+      "roles": {},
+      "rawObservations": {
+        "typescript": {
+          "kind": "phase52-direct-semantic-observation",
+          "complete": false,
+          "test": "nan-table-bits",
+          "events": [],
+          "value": 1,
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "AssertionError",
+            "message": "independent expected value\n\n1 !== 40\n"
+          },
+          "failure": "AssertionError [ERR_ASSERTION]: independent expected value\n\n1 !== 40\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs:46:38"
+        },
+        "direct": {
+          "kind": "phase52-direct-semantic-observation",
+          "complete": false,
+          "test": "nan-table-bits",
+          "events": [],
+          "value": 39,
+          "outcome": "throw",
+          "error": {
+            "type": "object",
+            "name": "AssertionError",
+            "message": "independent expected value\n\n39 !== 40\n"
+          },
+          "failure": "AssertionError [ERR_ASSERTION]: independent expected value\n\n39 !== 40\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs:46:38"
+        }
+      },
+      "roleFailures": [
+        {
+          "role": "typescript",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-runner-v8.mjs:40:18\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+        },
+        {
+          "role": "direct",
+          "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-runner-v8.mjs:40:18\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+        }
+      ],
+      "observedValues": {
+        "typescript": 1,
+        "direct": 39
+      },
+      "observedValueAgreement": false,
+      "limitation": "Both roles observed independently; source golden40 retained. Upstream JS literal NaN table loses signaling payload distinctions; host JS NaN conversion is not the C golden contract. This classification never converts an oracle or differential failure to PASS.",
+      "pass": false,
+      "error": "AssertionError [ERR_ASSERTION]: one or more role source oracles failed\n\n2 !== 0\n\n    at file:///home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-runner-v8.mjs:43:713\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+    },
+    {
+      "fixture": "f32_literal_word",
+      "test": "literal-pattern-program",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "4 10\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "4 10\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "float_specials",
+      "test": "ieee-specials",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 12,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 12,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "zero",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "zero",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "one",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "one",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused-2",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "many",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "many",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "unused--3",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": "many",
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": "many",
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "demand-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "0"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "0"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "demand-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "1"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "1"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "demand-5",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": {
+            "$bigint": "3"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "nat-row-demand",
+      "test": "negative-demand",
+      "roles": {
+        "typescript": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        },
+        "direct": {
+          "outcome": "throw",
+          "error": {
+            "type": "string",
+            "name": null,
+            "message": "bend: a Nat past the largest immediate 2^48-1"
+          },
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 209,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 209,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 910,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 910,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-2",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 316,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 316,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-3",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 1611,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 1611,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-4",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 423,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 423,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "permutation-50000",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 2675209,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 2675209,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 5,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 5,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 11,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 11,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-2",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 19,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 19,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-3",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 28,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 28,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-16",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 285,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 285,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "capture-128",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 12997,
+          "events": []
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 12997,
+          "events": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "callback-0",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "callback",
+              35
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 42,
+          "events": [
+            [
+              "callback",
+              35
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "mutual-capture",
+      "test": "callback-1",
+      "roles": {
+        "typescript": {
+          "outcome": "return",
+          "value": 78,
+          "events": [
+            [
+              "callback",
+              71
+            ]
+          ]
+        },
+        "direct": {
+          "outcome": "return",
+          "value": 78,
+          "events": [
+            [
+              "callback",
+              71
+            ]
+          ]
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "dead-foreign-let",
+      "test": "program",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "alive\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "alive\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "erased-foreign",
+      "test": "program",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "erased\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "erased\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "live-foreign",
+      "test": "program",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "phase52-live-initializer\n123\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "phase52-live-initializer\n123\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    },
+    {
+      "fixture": "proof-main",
+      "test": "program",
+      "roles": {
+        "typescript": {
+          "status": 0,
+          "stdout": "{==}\n",
+          "stderr": ""
+        },
+        "direct": {
+          "status": 0,
+          "stdout": "{==}\n",
+          "stderr": ""
+        }
+      },
+      "pass": true
+    }
+  ],
+  "programAdapters": {
+    "typescript": {
+      "moduleForm": "CommonJS",
+      "identity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+        "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+      },
+      "code": "// Upstream executes js_book as CommonJS (.cjs). Compile identical bytes with that host.\nimport assert from 'node:assert/strict';\nimport fs from 'node:fs';\nimport path from 'node:path';\nimport Module from 'node:module';\nconst [argument,...args]=process.argv.slice(2);assert(argument);\nconst file=fs.realpathSync(argument);process.argv=[process.execPath,file,...args];\nconst program=new Module(file);program.filename=file;program.paths=Module._nodeModulePaths(path.dirname(file));\nprogram._compile(fs.readFileSync(file,'utf8'),file);\n"
+    },
+    "direct": {
+      "moduleForm": "ESM",
+      "identity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-direct-program-worker-v1.mjs",
+        "sha256": "26d454c2dc7ba2767e4271128075b8d1f6048f1f51cfbfbc9e85096f7c9b52a6"
+      },
+      "code": "// Direct program output is ESM and binds its own createRequire prologue.\n// Execute unchanged bytes; do not inject CommonJS globals into the direct backend.\nimport assert from 'node:assert/strict';\nimport fs from 'node:fs';\nimport {pathToFileURL} from 'node:url';\nconst [argument,...args]=process.argv.slice(2);assert(argument);\nconst file=fs.realpathSync(argument);process.argv=[process.execPath,file,...args];\nawait import(pathToFileURL(file));\n"
+    }
+  },
+  "scope": "Default callable library and selected CLI effects. Independent value/error oracles plus exact TS differential results/events; no legacy G obligations or universal conformance claim.",
+  "counts": {
+    "pass": 89,
+    "fail": 1,
+    "total": 90
+  }
+}

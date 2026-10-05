@@ -1,0 +1,88 @@
+{
+  "kind": "program-execution-v1",
+  "complete": true,
+  "pass": true,
+  "stage": "done",
+  "node": "v24.18.0",
+  "execArgv": [
+    "--max-old-space-size=1024"
+  ],
+  "calibration": [
+    {
+      "repetitions": 1,
+      "executionMs": 4.531556999999999,
+      "checksum": 2339999928,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 4.509439999999998
+        }
+      ]
+    }
+  ],
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/prepared-direct06-full/modules/local-fold.mjs",
+    "sha256": "adbd1d834fc0bc915a3fac9bebc551e9abd07810ed11e567400e5c5ee13b56fc"
+  },
+  "config": {
+    "exportName": "bench",
+    "args": [
+      4096,
+      17
+    ],
+    "expected": 2339999928,
+    "warmupCalls": 0,
+    "warmupMs": 0,
+    "calibrationMs": 0,
+    "targetMs": 1,
+    "maxRepetitions": 1
+  },
+  "configSha256": "bea670597c055eca3bf394ffff594ccab0553cbab6de57bc07b7b62a4f670131",
+  "toolSha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+  "affinity": "Cpus_allowed_list:\t3",
+  "importMs": 1.134338999999997,
+  "firstResult": 2339999928,
+  "firstCallMs": 7.0555340000000015,
+  "warmup": {
+    "calls": 0,
+    "ms": 0.010790999999997553
+  },
+  "repetitions": 1,
+  "executionMs": 0.0723430000000036,
+  "checksum": 2339999928,
+  "halves": [
+    {
+      "calls": 1,
+      "ms": 0.06411500000000103
+    }
+  ],
+  "msPerCall": 0.0723430000000036,
+  "halfDriftPercent": null,
+  "wallMs": 14.730874,
+  "resourceUsage": {
+    "userCPUTime": 58319,
+    "systemCPUTime": 4200,
+    "maxRSS": 63236,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 4241,
+    "majorPageFault": 0,
+    "swappedOut": 0,
+    "fsRead": 0,
+    "fsWrite": 8,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 85,
+    "involuntaryContextSwitches": 81
+  },
+  "peakRssKiB": 63236,
+  "memory": {
+    "rss": 64753664,
+    "heapTotal": 8368128,
+    "heapUsed": 5688560,
+    "external": 2290393,
+    "arrayBuffers": 143647
+  }
+}

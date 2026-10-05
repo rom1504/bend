@@ -1,0 +1,181 @@
+{
+  "kind": "program-execution-v1",
+  "complete": true,
+  "pass": true,
+  "stage": "done",
+  "node": "v24.18.0",
+  "execArgv": [
+    "--stack-size=4096",
+    "--max-old-space-size=1024"
+  ],
+  "calibration": [
+    {
+      "repetitions": 1,
+      "executionMs": 1.290366000000006,
+      "checksum": 1866542166,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 1.2646100000000047
+        }
+      ]
+    },
+    {
+      "repetitions": 2,
+      "executionMs": 2.581795999999997,
+      "checksum": 3733084332,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 1.3062489999999798
+        },
+        {
+          "calls": 1,
+          "ms": 1.2626809999999864
+        }
+      ]
+    },
+    {
+      "repetitions": 4,
+      "executionMs": 4.999983000000043,
+      "checksum": 3171201368,
+      "halves": [
+        {
+          "calls": 2,
+          "ms": 2.515341000000035
+        },
+        {
+          "calls": 2,
+          "ms": 2.4674400000000105
+        }
+      ]
+    },
+    {
+      "repetitions": 8,
+      "executionMs": 9.878092999999978,
+      "checksum": 2047435440,
+      "halves": [
+        {
+          "calls": 4,
+          "ms": 4.949253999999996
+        },
+        {
+          "calls": 4,
+          "ms": 4.9010000000000105
+        }
+      ]
+    },
+    {
+      "repetitions": 16,
+      "executionMs": 20.01862299999999,
+      "checksum": 4094870880,
+      "halves": [
+        {
+          "calls": 8,
+          "ms": 9.982084999999984
+        },
+        {
+          "calls": 8,
+          "ms": 10.004333000000031
+        }
+      ]
+    },
+    {
+      "repetitions": 32,
+      "executionMs": 39.32046600000001,
+      "checksum": 3894774464,
+      "halves": [
+        {
+          "calls": 16,
+          "ms": 19.551918999999998
+        },
+        {
+          "calls": 16,
+          "ms": 19.739678999999967
+        }
+      ]
+    },
+    {
+      "repetitions": 64,
+      "executionMs": 78.78176799999994,
+      "checksum": 3494581632,
+      "halves": [
+        {
+          "calls": 32,
+          "ms": 39.150577
+        },
+        {
+          "calls": 32,
+          "ms": 39.61658299999999
+        }
+      ]
+    }
+  ],
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/screen-direct06-intrinsics/modules/baseline/modules/typescript-e303d7add56bca3c62ab3a7d636f01b65007556f5a80d43d59f94018b4154de6.mjs",
+    "sha256": "e303d7add56bca3c62ab3a7d636f01b65007556f5a80d43d59f94018b4154de6"
+  },
+  "config": {
+    "exportName": "pair",
+    "args": [
+      0
+    ],
+    "expected": 1866542166,
+    "warmupCalls": 3,
+    "warmupMs": 350,
+    "calibrationMs": 40,
+    "targetMs": 150
+  },
+  "configSha256": "667e07c47fea04c31a01cc92bfb3b7614c4da5e6304dfe209cd6071c06acf838",
+  "toolSha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+  "affinity": "Cpus_allowed_list:\t3",
+  "importMs": 1.1828390000000013,
+  "firstResult": 1866542166,
+  "firstCallMs": 16.753825,
+  "warmup": {
+    "calls": 259,
+    "ms": 350.087252
+  },
+  "repetitions": 122,
+  "executionMs": 150.64419799999996,
+  "checksum": 84877564,
+  "halves": [
+    {
+      "calls": 61,
+      "ms": 77.15804700000001
+    },
+    {
+      "calls": 61,
+      "ms": 73.471409
+    }
+  ],
+  "msPerCall": 1.234788508196721,
+  "halfDriftPercent": -4.7780343636743545,
+  "wallMs": 677.901619,
+  "resourceUsage": {
+    "userCPUTime": 722639,
+    "systemCPUTime": 15969,
+    "maxRSS": 77696,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 8719,
+    "majorPageFault": 0,
+    "swappedOut": 0,
+    "fsRead": 0,
+    "fsWrite": 8,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 371,
+    "involuntaryContextSwitches": 371
+  },
+  "peakRssKiB": 77696,
+  "memory": {
+    "rss": 79560704,
+    "heapTotal": 24358912,
+    "heapUsed": 7282944,
+    "external": 2290393,
+    "arrayBuffers": 143647
+  }
+}

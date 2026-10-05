@@ -1,0 +1,212 @@
+{
+  "kind": "program-execution-v1",
+  "complete": true,
+  "pass": true,
+  "stage": "done",
+  "node": "v24.18.0",
+  "execArgv": [
+    "--stack-size=4096",
+    "--max-old-space-size=1024"
+  ],
+  "calibration": [
+    {
+      "repetitions": 1,
+      "executionMs": 0.3053659999998217,
+      "checksum": 971629740,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 0.2807149999998728
+        }
+      ]
+    },
+    {
+      "repetitions": 2,
+      "executionMs": 0.5508830000001126,
+      "checksum": 1943259480,
+      "halves": [
+        {
+          "calls": 1,
+          "ms": 0.2656929999998283
+        },
+        {
+          "calls": 1,
+          "ms": 0.27294899999992595
+        }
+      ]
+    },
+    {
+      "repetitions": 4,
+      "executionMs": 1.0772699999999986,
+      "checksum": 3886518960,
+      "halves": [
+        {
+          "calls": 2,
+          "ms": 0.5361780000000635
+        },
+        {
+          "calls": 2,
+          "ms": 0.5307130000001052
+        }
+      ]
+    },
+    {
+      "repetitions": 8,
+      "executionMs": 2.400517000000036,
+      "checksum": 3478070624,
+      "halves": [
+        {
+          "calls": 4,
+          "ms": 1.2968720000001213
+        },
+        {
+          "calls": 4,
+          "ms": 1.0837850000000344
+        }
+      ]
+    },
+    {
+      "repetitions": 16,
+      "executionMs": 4.5262310000000525,
+      "checksum": 2661173952,
+      "halves": [
+        {
+          "calls": 8,
+          "ms": 2.3382830000000467
+        },
+        {
+          "calls": 8,
+          "ms": 2.163099999999986
+        }
+      ]
+    },
+    {
+      "repetitions": 32,
+      "executionMs": 8.972386999999799,
+      "checksum": 1027380608,
+      "halves": [
+        {
+          "calls": 16,
+          "ms": 4.584446999999955
+        },
+        {
+          "calls": 16,
+          "ms": 4.363191999999799
+        }
+      ]
+    },
+    {
+      "repetitions": 64,
+      "executionMs": 18.09760200000005,
+      "checksum": 2054761216,
+      "halves": [
+        {
+          "calls": 32,
+          "ms": 9.046493000000055
+        },
+        {
+          "calls": 32,
+          "ms": 9.034497999999985
+        }
+      ]
+    },
+    {
+      "repetitions": 128,
+      "executionMs": 35.790993999999955,
+      "checksum": 4109522432,
+      "halves": [
+        {
+          "calls": 64,
+          "ms": 17.662555999999995
+        },
+        {
+          "calls": 64,
+          "ms": 18.112887999999884
+        }
+      ]
+    },
+    {
+      "repetitions": 256,
+      "executionMs": 71.00930800000015,
+      "checksum": 3924077568,
+      "halves": [
+        {
+          "calls": 128,
+          "ms": 35.458849999999984
+        },
+        {
+          "calls": 128,
+          "ms": 35.534447
+        }
+      ]
+    }
+  ],
+  "module": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/full-direct06-batch0/modules/baseline/modules/c24fff66dd20c4579b7912b42450f1574e4c0b7a84e5d8b2d3d1d1345ef2b159.mjs",
+    "sha256": "c24fff66dd20c4579b7912b42450f1574e4c0b7a84e5d8b2d3d1d1345ef2b159"
+  },
+  "config": {
+    "args": [
+      8,
+      0
+    ],
+    "expected": 971629740,
+    "exportName": "bench",
+    "warmupCalls": 3,
+    "warmupMs": 1000,
+    "calibrationMs": 50,
+    "targetMs": 300
+  },
+  "configSha256": "ad49d55c8c01c6078972ca5c88ad2fafcf89085c02cb87894326ce13a7ae7d78",
+  "toolSha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+  "affinity": "Cpus_allowed_list:\t3",
+  "importMs": 1.1502979999999994,
+  "firstResult": 971629740,
+  "firstCallMs": 4.994169999999997,
+  "warmup": {
+    "calls": 3417,
+    "ms": 1000.221192
+  },
+  "repetitions": 1082,
+  "executionMs": 304.38547100000005,
+  "checksum": 3331358456,
+  "halves": [
+    {
+      "calls": 541,
+      "ms": 153.89641000000006
+    },
+    {
+      "calls": 541,
+      "ms": 150.4729769999999
+    }
+  ],
+  "msPerCall": 0.2813174408502773,
+  "halfDriftPercent": -2.224504782145431,
+  "wallMs": 1455.922409,
+  "resourceUsage": {
+    "userCPUTime": 1502532,
+    "systemCPUTime": 11988,
+    "maxRSS": 97688,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 12829,
+    "majorPageFault": 0,
+    "swappedOut": 0,
+    "fsRead": 0,
+    "fsWrite": 8,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 512,
+    "involuntaryContextSwitches": 458
+  },
+  "peakRssKiB": 97688,
+  "memory": {
+    "rss": 100032512,
+    "heapTotal": 39825408,
+    "heapUsed": 9920264,
+    "external": 2290393,
+    "arrayBuffers": 143647
+  }
+}

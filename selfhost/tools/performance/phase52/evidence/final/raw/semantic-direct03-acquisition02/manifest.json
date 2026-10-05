@@ -1,0 +1,923 @@
+{
+  "kind": "phase52-semantic-acquisition",
+  "complete": true,
+  "passed": true,
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+    "sha256": "ce27c1705bd854881e6aa4bd9649c3519781025b862e4b69e746e9ca738224e4"
+  },
+  "roles": {
+    "direct": {
+      "modules": {
+        "direct-contract": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/direct-contract.mjs",
+        "erased_partial_closure": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_partial_closure.mjs",
+        "closure_partial_app": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/closure_partial_app.mjs",
+        "erased_recursive_arg": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_recursive_arg.mjs",
+        "erased_apply": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_apply.mjs",
+        "over_application": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/over_application.mjs",
+        "eta_closure_body": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/eta_closure_body.mjs",
+        "eta_ctor_arm": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/eta_ctor_arm.mjs",
+        "array_dynamic_closure": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/array_dynamic_closure.mjs",
+        "float_accumulation": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_accumulation.mjs",
+        "float_builtin_agreement": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_builtin_agreement.mjs",
+        "float_roundtrip": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_roundtrip.mjs",
+        "array_swap_header": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/array_swap_header.mjs",
+        "tail_pin": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/tail_pin.mjs"
+      },
+      "attempt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct03/attempt.json",
+        "sha256": "28cf736d943b9470e28a4b545a06365a99e9e8f27665ea0d457c756039dee534"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/acquire-semantics.py",
+      "sha256": "d3a8f6922d37f6304f1a2379d8d38410cc92f412116a421a69d8bb8e0da6e0a2",
+      "bytes": 6009
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+      "sha256": "ce27c1705bd854881e6aa4bd9649c3519781025b862e4b69e746e9ca738224e4",
+      "bytes": 19037
+    },
+    {
+      "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+      "sha256": "e65c61bd002a326435693fb47614e030c5dce472cce73b848588c86e7145f739",
+      "bytes": 7856
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef",
+      "bytes": 6779
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/direct-contract-v2.bend",
+      "sha256": "ab6c6253e9af697a0bbea999add8a4048c379019c451176e6f4c4b246200fb22",
+      "bytes": 1666
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_partial_closure.bend",
+      "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114",
+      "bytes": 565
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/closure_partial_app.bend",
+      "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94",
+      "bytes": 510
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_recursive_arg.bend",
+      "sha256": "3f13bbac34471cc80e86b4916fdd8a17a2c156f1ced84857149c45dba8e5750d",
+      "bytes": 535
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_apply.bend",
+      "sha256": "a8a84fa45f5b979d21acbc729e06f4bbbe627c8a0f0ac29bc8a9d24751da24c7",
+      "bytes": 1028
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/over_application.bend",
+      "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96",
+      "bytes": 544
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_closure_body.bend",
+      "sha256": "f00a373b52647541f8e62bb59f95acdb6998fc1ad1be47dd73f2743aa92bef2a",
+      "bytes": 473
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_ctor_arm.bend",
+      "sha256": "25510e2abd182476e08a4c3b0b22eda204f24b90b820909d237f8b8bdf339fb6",
+      "bytes": 518
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_dynamic_closure.bend",
+      "sha256": "07e1f36a063002409bc231bb8ca918e0ea5814b129854f4389669a00d67a5a1f",
+      "bytes": 837
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_accumulation.bend",
+      "sha256": "93e0e625cf6a742d8f3a47701f8280111a989ebb76f563695437c67ab3da4297",
+      "bytes": 674
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_builtin_agreement.bend",
+      "sha256": "598bf5de2c2b221a2d8f72b34298c40b4ee311fbdba6802c53b27272beb28536",
+      "bytes": 458
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_roundtrip.bend",
+      "sha256": "7fc6dbd7a533f781d0a72632f38129be0591b7754cbfded2d8a644cc0933bfd4",
+      "bytes": 430
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_swap_header.bend",
+      "sha256": "e16438d4138cbf1700473d0f1a1805194787c107b39af819c0dbdeed752d7f87",
+      "bytes": 969
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/tail_pin.bend",
+      "sha256": "9501546a5f125a2cb82609f23c517e62dffe4eeb603f3e6cc991c4477bb78cd9",
+      "bytes": 944
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct03/attempt.json",
+      "sha256": "28cf736d943b9470e28a4b545a06365a99e9e8f27665ea0d457c756039dee534",
+      "bytes": 251572
+    }
+  ],
+  "jobs": [
+    {
+      "id": "direct-contract",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/direct-contract-v2.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/direct-contract.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/direct-contract-v2.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214770.8261678,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 566235136,
+        "minimumAvailableBytes": 27359162368,
+        "returncode": 0,
+        "wallSeconds": 5.123911008005962,
+        "finished": 1791214775.950076
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/direct-contract.mjs.json",
+        "sha256": "8a501f3c89b3887363e77af1f63e8078d78d35c5ed9969c35be88e0f3289214b",
+        "bytes": 6857
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/direct-contract.mjs",
+        "sha256": "5b1bbf8c473bedc3426a72b01d6bb4c3406bdf329e226b4f8a2477add35b82cd",
+        "bytes": 27741
+      }
+    },
+    {
+      "id": "erased_partial_closure",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_partial_closure.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_partial_closure.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_partial_closure.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_partial_closure.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214776.5641303,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 565792768,
+        "minimumAvailableBytes": 27367464960,
+        "returncode": 0,
+        "wallSeconds": 5.004172721004579,
+        "finished": 1791214781.5683
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_partial_closure.mjs.json",
+        "sha256": "8fcfbe0b464ebc61dd40494b7b67845de5d90acb3c4d68b922a455884904367c",
+        "bytes": 6890
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_partial_closure.mjs",
+        "sha256": "ffcc6b263f5d966109cce4b0e319362ba8a9feba6975bbca4d35aef374600fdf",
+        "bytes": 23805
+      }
+    },
+    {
+      "id": "closure_partial_app",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/closure_partial_app.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/closure_partial_app.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/closure_partial_app.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/closure_partial_app.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214781.6078222,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 563884032,
+        "minimumAvailableBytes": 27362934784,
+        "returncode": 0,
+        "wallSeconds": 4.901680367998779,
+        "finished": 1791214786.509492
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/closure_partial_app.mjs.json",
+        "sha256": "cf0a6eeb6a05158b50d007acf256322578fbc2abf189ded5c8c7cb91ec205920",
+        "bytes": 6869
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/closure_partial_app.mjs",
+        "sha256": "fc24282fdaaea0220732dae382be5dc3eac197392bf61f8a9662af29be005a2e",
+        "bytes": 23885
+      }
+    },
+    {
+      "id": "erased_recursive_arg",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_recursive_arg.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_recursive_arg.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_recursive_arg.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_recursive_arg.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214786.5153344,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 567091200,
+        "minimumAvailableBytes": 27364831232,
+        "returncode": 0,
+        "wallSeconds": 4.861903108016122,
+        "finished": 1791214791.3772275
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_recursive_arg.mjs.json",
+        "sha256": "f21054c6589026a372b64ab8142c786852528e2d36b109c0a3f214b03df1c2ed",
+        "bytes": 6876
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_recursive_arg.mjs",
+        "sha256": "9ac46165f852ad3c9bc653c0f95be77b90747a965fee08ab8c04d972f8187bfc",
+        "bytes": 23897
+      }
+    },
+    {
+      "id": "erased_apply",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_apply.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_apply.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_apply.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_apply.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214791.4238615,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 564842496,
+        "minimumAvailableBytes": 27365715968,
+        "returncode": 0,
+        "wallSeconds": 4.90305784100201,
+        "finished": 1791214796.3269129
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_apply.mjs.json",
+        "sha256": "db3590e5cda2f3985cd121a719089b00becf91d49b80954278b0d8daaf342595",
+        "bytes": 6821
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/erased_apply.mjs",
+        "sha256": "0dd37d888da5ce10d794421373046d515464b334faa171af1501f67ac992e907",
+        "bytes": 23864
+      }
+    },
+    {
+      "id": "over_application",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/over_application.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/over_application.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/over_application.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/over_application.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214796.424288,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 564146176,
+        "minimumAvailableBytes": 27361021952,
+        "returncode": 0,
+        "wallSeconds": 4.8815070040291175,
+        "finished": 1791214801.305784
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/over_application.mjs.json",
+        "sha256": "803ce7e0803101597891a08a1afaf0a24651d2126c008481e3f3f9d9f65abe89",
+        "bytes": 6848
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/over_application.mjs",
+        "sha256": "7e6dd881cb078e1680d0fa2d91fabb05eba0473bb3a7b85924d17ba1efb439ce",
+        "bytes": 23728
+      }
+    },
+    {
+      "id": "eta_closure_body",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_closure_body.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/eta_closure_body.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_closure_body.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/eta_closure_body.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214801.30886,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 564404224,
+        "minimumAvailableBytes": 27363393536,
+        "returncode": 0,
+        "wallSeconds": 4.899345351033844,
+        "finished": 1791214806.208203
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/eta_closure_body.mjs.json",
+        "sha256": "9e359f42c96f25f52db610a7521470ba21d60e3cad0c20cee1ae58fd7a72732e",
+        "bytes": 6848
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/eta_closure_body.mjs",
+        "sha256": "d73165c064245499a66e0536de340a62b8d99cdb1b13f0a276992718ec244bf9",
+        "bytes": 24022
+      }
+    },
+    {
+      "id": "eta_ctor_arm",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_ctor_arm.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/eta_ctor_arm.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_ctor_arm.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/eta_ctor_arm.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214806.2145855,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 564240384,
+        "minimumAvailableBytes": 27362238464,
+        "returncode": 0,
+        "wallSeconds": 5.0023881460074335,
+        "finished": 1791214811.2169633
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/eta_ctor_arm.mjs.json",
+        "sha256": "740ed0318616ab6c4705bc8d72cd0ff455ea146d236f4f356f0d037347388cde",
+        "bytes": 6820
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/eta_ctor_arm.mjs",
+        "sha256": "337265f9ad15f24fe700520b39f82fc63c99fdbbfaf133f19ffc431a8df16451",
+        "bytes": 23866
+      }
+    },
+    {
+      "id": "array_dynamic_closure",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_dynamic_closure.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/array_dynamic_closure.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_dynamic_closure.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/array_dynamic_closure.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214811.2234144,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 564146176,
+        "minimumAvailableBytes": 27360071680,
+        "returncode": 0,
+        "wallSeconds": 5.0241306310053915,
+        "finished": 1791214816.2475364
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/array_dynamic_closure.mjs.json",
+        "sha256": "0234cde59c5584bc239ba0a9788a6e4ffaaa6ddb7889766b0c11fde676c71dfd",
+        "bytes": 6889
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/array_dynamic_closure.mjs",
+        "sha256": "f7b45140e53dcc349ee86259a2c939602a353d1d47660a60d86e9a662ebed860",
+        "bytes": 24446
+      }
+    },
+    {
+      "id": "float_accumulation",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_accumulation.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_accumulation.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_accumulation.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_accumulation.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214816.3247733,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 563470336,
+        "minimumAvailableBytes": 27363061760,
+        "returncode": 0,
+        "wallSeconds": 4.963866052974481,
+        "finished": 1791214821.2886283
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_accumulation.mjs.json",
+        "sha256": "40f1e972161edeef50685b78d5a387340eace3a4bfcb76aefa77f6f939d5b551",
+        "bytes": 6868
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_accumulation.mjs",
+        "sha256": "e10c015126fa3bac17465526e391dd9419699f31243803ea1616189c439f9e57",
+        "bytes": 24541
+      }
+    },
+    {
+      "id": "float_builtin_agreement",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_builtin_agreement.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_builtin_agreement.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_builtin_agreement.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_builtin_agreement.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214821.3217897,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 562139136,
+        "minimumAvailableBytes": 27358638080,
+        "returncode": 0,
+        "wallSeconds": 4.899332940985914,
+        "finished": 1791214826.2211194
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_builtin_agreement.mjs.json",
+        "sha256": "1ddc41780c6d0de76d922e399d12e0441dc17a4253010297cb8a345a1980f82b",
+        "bytes": 6903
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_builtin_agreement.mjs",
+        "sha256": "b3d5620e7bc1ab64e0638fc3cd0887f8740f0dc444485560bb7173c797dfff29",
+        "bytes": 22805
+      }
+    },
+    {
+      "id": "float_roundtrip",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_roundtrip.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_roundtrip.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_roundtrip.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_roundtrip.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214826.2279787,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 564985856,
+        "minimumAvailableBytes": 27360710656,
+        "returncode": 0,
+        "wallSeconds": 4.859435144986492,
+        "finished": 1791214831.087396
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_roundtrip.mjs.json",
+        "sha256": "bacc2db2180512e6016e0826faf5a04ca7a595bb18a3e87a5a182c0e47bb3018",
+        "bytes": 6841
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/float_roundtrip.mjs",
+        "sha256": "edff2defb70b19c5c3482e5329df7cd93d6c6c8a949ae13ca435b6bfcf777496",
+        "bytes": 23866
+      }
+    },
+    {
+      "id": "array_swap_header",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_swap_header.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/array_swap_header.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_swap_header.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/array_swap_header.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214831.0906532,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 548376576,
+        "minimumAvailableBytes": 27375484928,
+        "returncode": 0,
+        "wallSeconds": 5.457352477009408,
+        "finished": 1791214836.5480025
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/array_swap_header.mjs.json",
+        "sha256": "b831a20e6f0ce6eabffe3a999de6ebc847e11ced364501e75138d7ee1072dcb2",
+        "bytes": 6855
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/array_swap_header.mjs",
+        "sha256": "34fd8d3e1f25eacf31d5b35a9fbe574416b5d809ea34f6546b97f6c4a21aa748",
+        "bytes": 24733
+      }
+    },
+    {
+      "id": "tail_pin",
+      "mode": "library",
+      "command": [
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+        "selfhost/build/phase52/checked-direct03",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/tail_pin.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/tail_pin.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+        "direct",
+        "library"
+      ],
+      "process": {
+        "complete": true,
+        "command": [
+          "taskset",
+          "-c",
+          "3",
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/emit-worker.mjs",
+          "selfhost/build/phase52/checked-direct03",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/tail_pin.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/tail_pin.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-library-v1.json",
+          "direct",
+          "library"
+        ],
+        "started": 1791214836.5549707,
+        "rssLimitBytes": 2147483648,
+        "availableFloorBytes": 4294967296,
+        "peakTreeRssBytes": 566947840,
+        "minimumAvailableBytes": 27354804224,
+        "returncode": 0,
+        "wallSeconds": 5.286620180995669,
+        "finished": 1791214841.8415794
+      },
+      "passed": true,
+      "emission": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/tail_pin.mjs.json",
+        "sha256": "307bed55ae73925970a3e76b709c351471bb1dda014d2683c2780877b1869041",
+        "bytes": 6792
+      },
+      "module": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-direct03-acquisition02/modules/tail_pin.mjs",
+        "sha256": "1caa028759357230a3ba168c587c736eccba282f67671f45c6be6befcb888481",
+        "bytes": 23876
+      }
+    }
+  ],
+  "scope": "Checked emission only, no emitted-program execution or semantic PASS. All failures are retained; no case is silently dropped.",
+  "inputsUnchanged": true
+}

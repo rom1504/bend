@@ -1,4 +1,11 @@
-# Current compiler: Phase51; next work should target remaining mechanisms
+# Current compiler: Phase51; Phase52 direct backend in progress
+
+On 2026-10-05 the user authorized the [Phase52 direct-backend prototype](../design/phase52/direct-javascript.md),
+then full implementation if the value is demonstrated. The one-hour prototype
+and three-hour full implementation are requested planning checkpoints. Keep the
+existing compatibility backend available and make the upstream-compatible direct
+interface explicit. The [live report](../implementation/phase52/README.md) records
+its gates. The prototype eight-point screen is 1.03522× TS versus same-run Phase51 5.23997×; full-corpus and semantic qualification are pending. No promotion yet.
 
 Phase51 is installed; release verification, 42 CLI checks and portable replay
 pass. See the [report](../implementation/phase51/README.md),
@@ -6,8 +13,8 @@ pass. See the [report](../implementation/phase51/README.md),
 [runtime proof guide](../docs/self_hosted/v8-guided-runtime.md) and
 [portable benchmark guide](../selfhost/tools/performance/phase51/README.md).
 Preserve all 103 unrelated starting files and closed historical evidence.
-No PR comment is authorized. This phase is complete; no further timed campaign
-or autonomous budget is implied by this frontier.
+No PR comment is authorized. Phase51 is complete and its raw evidence is closed;
+new work and target output belong exclusively to Phase52.
 
 API: `c15718cbf3e744e47c0795d7d78db6351a61c21983f53ec9c722272782dba061`.
 Runtime: `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.

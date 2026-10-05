@@ -1,0 +1,2066 @@
+{
+  "kind": "phase52-upstream-only-semantic-oracle-controls",
+  "complete": true,
+  "pass": true,
+  "executed": true,
+  "candidateExecuted": false,
+  "differentialObservations": 0,
+  "selectedScope": {
+    "fixtures": 18,
+    "scenarios": 59,
+    "kind": "full-independent-plan"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-reference-manifest-v1.json",
+      "sha256": "69960471271fe1595c422a51998fb2ff32fbf03ea3745905d70d4cb2ea7ae983"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v4.json",
+      "sha256": "1221f4c56fabc4685a44993b086c15568439ea00297bcc19cde950f1f56c8f59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-reference-runner-v4.mjs",
+      "sha256": "bd9777fab31a9868b89b0461d00164d02470860ed61950935d324e99932dccd4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+      "sha256": "d726b3561c692bd9b584c3667553cb48d7b82366710394aca2fcc2ce1b20872e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+      "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/direct-contract-v2.bend",
+      "sha256": "ab6c6253e9af697a0bbea999add8a4048c379019c451176e6f4c4b246200fb22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+      "sha256": "b5b86a73416d32a82970101bfe320af8d45ebecd1b89215e420fb4b142c70198"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs.json",
+      "sha256": "66baa6953f9b425d14f6cf826fec628802022fbe6400db76adebb024296cc9fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_partial_closure.bend",
+      "sha256": "6cd012e49a9622ccf1026e9333cae84318f4f84bd7997580a384cb9d5c3ba114"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_partial_closure.mjs",
+      "sha256": "8939cb9be4111121ddcc258e77c07afb4193971394e3032b09e184eea69c51db"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_partial_closure.mjs.json",
+      "sha256": "b8bcce8b68b036b9aa68a0fa1ad0e07046cbcbf14672ff6349c9eeb52ea2d367"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/closure_partial_app.bend",
+      "sha256": "a5db1896b19521ea737bd80b3d76304ba9bcd75ac7ce67c5cf6da4011f529d94"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/closure_partial_app.mjs",
+      "sha256": "70a51142026a81f4e64e74a88e967f123fb55863300ab6f8f255e6de8812bc54"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/closure_partial_app.mjs.json",
+      "sha256": "43e1df74ef18286ee452746962169fb1d5a42eb0ba1468c1dd062dfa16355c0f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_recursive_arg.bend",
+      "sha256": "3f13bbac34471cc80e86b4916fdd8a17a2c156f1ced84857149c45dba8e5750d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_recursive_arg.mjs",
+      "sha256": "224e1610dc128843d69f01c28bf6ea87d2d082307a587890058ecb911c587b27"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_recursive_arg.mjs.json",
+      "sha256": "c84dd9665cc88213571058e0988f0c9ab024614cc2890d38adf9ef90bca4c1b1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/erased_apply.bend",
+      "sha256": "a8a84fa45f5b979d21acbc729e06f4bbbe627c8a0f0ac29bc8a9d24751da24c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_apply.mjs",
+      "sha256": "ca642ea9fdb3c7a74e33c45a2af48ef665e8c08a1c6706d3bbaf11debc9d817b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_apply.mjs.json",
+      "sha256": "35e3cde70a7b298ab6eef2bba4b145de3cf221871f19ddccf6d408e7a4234140"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/over_application.bend",
+      "sha256": "cf14db87224d84b118a5797c72c24c4418a2ae85268a5fc322883f0f14efde96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/over_application.mjs",
+      "sha256": "73979cc63eb9e207435d71721a335c58bca607f9ef6cbb245f18edbad58afd34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/over_application.mjs.json",
+      "sha256": "083cd655f375ed1aae25d1a77bd630e2d9213b8bb01663f474acd13c42de5844"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_closure_body.bend",
+      "sha256": "f00a373b52647541f8e62bb59f95acdb6998fc1ad1be47dd73f2743aa92bef2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_closure_body.mjs",
+      "sha256": "532eb1bbdde75fb7558586b8289eb9dafcd49be241ce9735b11b1aed46723711"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_closure_body.mjs.json",
+      "sha256": "8b9eeee9e59cb844bed132d6bfb5148254117ddb9bc371ae6a8f5a7d5810f6f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/eta_ctor_arm.bend",
+      "sha256": "25510e2abd182476e08a4c3b0b22eda204f24b90b820909d237f8b8bdf339fb6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_ctor_arm.mjs",
+      "sha256": "8a3611237b4966ce56ae02c94d91fa21af0d7001e11f10376b02dd57646d5de1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_ctor_arm.mjs.json",
+      "sha256": "61ed4fd54ca34d6cf77c8152c1a5380bdf0d090b23ab3f6190193a10fcdc070c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_dynamic_closure.bend",
+      "sha256": "07e1f36a063002409bc231bb8ca918e0ea5814b129854f4389669a00d67a5a1f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_dynamic_closure.mjs",
+      "sha256": "c9e6db9de642c8a5a8b7da4d1755d4c9b67a592f9feca79309fdf3592d15ab0b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_dynamic_closure.mjs.json",
+      "sha256": "73780a7aff75c9a61137db7233ed5215830b92622f8c7bf464c7058caa674eb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_accumulation.bend",
+      "sha256": "93e0e625cf6a742d8f3a47701f8280111a989ebb76f563695437c67ab3da4297"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_accumulation.mjs",
+      "sha256": "8f8b5b6f1b316b06a34142d1ceeae492a68391dd2a669a3815e100d70876dfd1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_accumulation.mjs.json",
+      "sha256": "dbd111b9d5bb79dde2891270a8e6dfa9f6198eb2a1fe551bf24b89824f1d2db9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_builtin_agreement.bend",
+      "sha256": "598bf5de2c2b221a2d8f72b34298c40b4ee311fbdba6802c53b27272beb28536"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_builtin_agreement.mjs",
+      "sha256": "75c5c099515edcd125f12e2f450d8547fb6d697008d05aba2f5aaa6bed3c52db"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_builtin_agreement.mjs.json",
+      "sha256": "eed9cb340eea3382ac1b2e48d395c5f6b252d1eb8cbb917b4029b9120994e8a9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/float_roundtrip.bend",
+      "sha256": "7fc6dbd7a533f781d0a72632f38129be0591b7754cbfded2d8a644cc0933bfd4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_roundtrip.mjs",
+      "sha256": "720e7d1e37ca3b0b7614898dea58541e6ef7dd9e76f88a2929d2053ced147408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_roundtrip.mjs.json",
+      "sha256": "5acb5b21da92c61efa43621489c2b9de78799918595c65e011735e38e561c1fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_erased_binders.js",
+      "sha256": "3469a2e3cb9f5872b9f4bed2d473271a979e3270c57674c53edecec84bb7af51"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_erased_binders.bend",
+      "sha256": "434bfa849bd88393922f0d8ee2012775e40af9220f6f3ec0a5403ed4c21907f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_erased_binders.mjs",
+      "sha256": "b7f5ea0212b1973c2e81ada530db93f6e33b2073d80eba87fea0967d538c4c34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_erased_binders.mjs.json",
+      "sha256": "56c5a8e99a068c7764bcac907d8951afe686c17eaf0ffe37db1fcecad557d097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/shared_module_state.js",
+      "sha256": "d42ae5de0b56d7cba8835d7b00e50ee1565b8f6d3c97db5012d41816348e5123"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/shared_module_state.bend",
+      "sha256": "e6aa3a59587d40c9a473e75cf66180b36045309a6c1af17a9746f1810ee60af2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/shared_module_state.mjs",
+      "sha256": "118c6791abd8176e43d072503d206141611d48da9eff421af35c17b6dc693f37"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/shared_module_state.mjs.json",
+      "sha256": "96463a338e34e93e8d333476025b03e0eb105975c10f3d9dd23de94fb8096922"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/foreign_arrow_arity.js",
+      "sha256": "de87179b5f9d27b8b1f0387795a049547c4b00bd64597dec0b629468302376ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/foreign_arrow_arity.bend",
+      "sha256": "fae4838a694a354cb061ff422981d16b65a508dd287faa12562cae1cfb72fd56"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/foreign_arrow_arity.mjs",
+      "sha256": "6e7e416574492a3b82175e4508a700e28e0519be3921188f5ea1b76f251504bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/foreign_arrow_arity.mjs.json",
+      "sha256": "9fdbe651b18294bbe6c78907a5e440ad8d80cdc8669cfb6dd8dca79ca4a318bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_nat_bigint.js",
+      "sha256": "f10cbe24f0a29ae3ca3d2e53d53eb953eeb0152f4087efabf92086354bf0c607"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/marshal_nat_bigint.bend",
+      "sha256": "a99628e48b2258c70b71a4f1d3b707b7e18e0a2abbf6a9279e8e06e7c5ac50f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_nat_bigint.mjs",
+      "sha256": "005563adf058cf4505270c9ff4d62264d44c09f0f2bd1f0ebdd12b0ae855a882"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_nat_bigint.mjs.json",
+      "sha256": "2bf47161678d3bd00742bc288c37497313aa7f59c2e8e5178890f3510160c1f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/array_swap_header.bend",
+      "sha256": "e16438d4138cbf1700473d0f1a1805194787c107b39af819c0dbdeed752d7f87"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_swap_header.mjs",
+      "sha256": "11dc9aef808b8d6f299c4df5559a33f065228f416abf48ea4e1247158d6737e2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_swap_header.mjs.json",
+      "sha256": "540c31a8b4745599f4e0addb86bbd29e7bf9cc6c9aa1a38caec2fb05d805fe79"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/tail_pin.bend",
+      "sha256": "9501546a5f125a2cb82609f23c517e62dffe4eeb603f3e6cc991c4477bb78cd9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/tail_pin.mjs",
+      "sha256": "10bc9be273d2264e5a9be1f6dd54003f64a09afd3cc9946cbc31ed13fa41a5f6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/tail_pin.mjs.json",
+      "sha256": "da3afb98f9da1a7ce223ec6b0fdbbf54072126a4f9853d0ca3729af6510ebd02"
+    }
+  ],
+  "observations": [
+    {
+      "fixture": "direct-contract",
+      "test": "adt-owned-result",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--adt-owned-result.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--adt-owned-result.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "adt-owned-result",
+        "events": [],
+        "value": {
+          "$": "Packet",
+          "payload": 35,
+          "count": 7
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "adt-named-input",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--adt-named-input.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--adt-named-input.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "adt-named-input",
+        "events": [],
+        "value": 42,
+        "outcome": "return",
+        "inputUnchanged": true
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "adt-getter-order",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--adt-getter-order.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--adt-getter-order.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "adt-getter-order",
+        "events": [
+          [
+            "get",
+            "payload"
+          ],
+          [
+            "get",
+            "count"
+          ]
+        ],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "adt-getter-throw",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--adt-getter-throw.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--adt-getter-throw.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "adt-getter-throw",
+        "events": [
+          [
+            "get",
+            "payload"
+          ]
+        ],
+        "outcome": "throw",
+        "error": {
+          "type": "object",
+          "name": "Error",
+          "message": "payload-first"
+        }
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "saturated",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--saturated.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--saturated.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "saturated",
+        "events": [],
+        "value": 18,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "curried",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--curried.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--curried.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "curried",
+        "events": [],
+        "value": 18,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "empty-underapplication",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--empty-underapplication.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--empty-underapplication.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "empty-underapplication",
+        "events": [],
+        "value": 18,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "public-extra-argument",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--public-extra-argument.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--public-extra-argument.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "public-extra-argument",
+        "events": [],
+        "value": 18,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "capturing-factory",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--capturing-factory.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--capturing-factory.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "capturing-factory",
+        "events": [],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "matched-recursive-factory",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--matched-recursive-factory.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--matched-recursive-factory.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "matched-recursive-factory",
+        "events": [],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "matched-zero-factory",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--matched-zero-factory.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--matched-zero-factory.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "matched-zero-factory",
+        "events": [],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "erased-JS-slot",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--erased-JS-slot.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--erased-JS-slot.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "erased-JS-slot",
+        "events": [],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "tail-50000",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--tail-50000.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--tail-50000.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "tail-50000",
+        "events": [],
+        "value": 50017,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-0-0",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--nat-0-0.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--nat-0-0.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "nat-0-0",
+        "events": [],
+        "value": {
+          "$bigint": "0"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-1-2",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--nat-1-2.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--nat-1-2.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "nat-1-2",
+        "events": [],
+        "value": {
+          "$bigint": "3"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-281474976710654-1",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--nat-281474976710654-1.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--nat-281474976710654-1.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "nat-281474976710654-1",
+        "events": [],
+        "value": {
+          "$bigint": "281474976710655"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-overflow",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--nat-overflow.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--nat-overflow.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "nat-overflow",
+        "events": [],
+        "outcome": "throw",
+        "error": {
+          "type": "string",
+          "name": null,
+          "message": "bend: a Nat past the largest immediate 2^48-1"
+        }
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "nat-rejected-host",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--nat-rejected-host.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--nat-rejected-host.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "nat-rejected-host",
+        "events": [],
+        "outcome": "throw",
+        "error": {
+          "type": "string",
+          "name": null,
+          "message": "bend: a Nat past the largest immediate 2^48-1"
+        }
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-18",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-18.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-18.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "f32-18",
+        "events": [],
+        "value": 16777216,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-19",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-19.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-19.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "f32-19",
+        "events": [],
+        "value": 0.30000001192092896,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-20",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-20.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-20.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "f32-20",
+        "events": [],
+        "value": {
+          "$number": "-0"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-21",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-21.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-21.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "f32-21",
+        "events": [],
+        "value": 2.25,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-nan",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-nan.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-nan.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "f32-nan",
+        "events": [],
+        "value": {
+          "$number": "NaN"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-infinity",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-infinity.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-infinity.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "f32-infinity",
+        "events": [],
+        "value": {
+          "$number": "Infinity"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "f32-floor",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-floor.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--f32-floor.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "f32-floor",
+        "events": [],
+        "value": -2,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "char-astral",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--char-astral.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--char-astral.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "char-astral",
+        "events": [],
+        "value": "😀",
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "char-surrogate",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--char-surrogate.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--char-surrogate.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "char-surrogate",
+        "events": [],
+        "outcome": "throw",
+        "error": {
+          "type": "string",
+          "name": null,
+          "message": "bend: 55296 is not a Unicode scalar value"
+        }
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "order-stage-before-argument",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--order-stage-before-argument.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--order-stage-before-argument.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "order-stage-before-argument",
+        "events": [],
+        "outcome": "throw",
+        "error": {
+          "type": "string",
+          "name": null,
+          "message": "bend: 55296 is not a Unicode scalar value"
+        }
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "string-unicode",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--string-unicode.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--string-unicode.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "string-unicode",
+        "events": [],
+        "value": "a😀é\ud800",
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-floor-passthrough",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-floor-passthrough.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-floor-passthrough.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-Math-floor-passthrough",
+        "events": [
+          [
+            "builtin",
+            "Math.floor",
+            [
+              -1.5
+            ]
+          ]
+        ],
+        "value": -2,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-floor-getter",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-floor-getter.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-floor-getter.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-Math-floor-getter",
+        "events": [
+          [
+            "builtin-get",
+            "Math.floor"
+          ],
+          [
+            "builtin",
+            "Math.floor",
+            [
+              -1.5
+            ]
+          ]
+        ],
+        "value": -2,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-floor-throw",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-floor-throw.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-floor-throw.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-Math-floor-throw",
+        "events": [
+          [
+            "builtin",
+            "Math.floor",
+            [
+              -1.5
+            ]
+          ]
+        ],
+        "outcome": "throw",
+        "error": {
+          "type": "object",
+          "name": "Error",
+          "message": "phase52-hook:Math.floor"
+        }
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-fround-passthrough",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-fround-passthrough.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-fround-passthrough.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-Math-fround-passthrough",
+        "events": [
+          [
+            "builtin",
+            "Math.fround",
+            [
+              0.30000000000000004
+            ]
+          ]
+        ],
+        "value": 0.30000001192092896,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-fround-getter",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-fround-getter.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-fround-getter.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-Math-fround-getter",
+        "events": [
+          [
+            "builtin-get",
+            "Math.fround"
+          ],
+          [
+            "builtin",
+            "Math.fround",
+            [
+              0.30000000000000004
+            ]
+          ]
+        ],
+        "value": 0.30000001192092896,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Math-fround-throw",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-fround-throw.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Math-fround-throw.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-Math-fround-throw",
+        "events": [
+          [
+            "builtin",
+            "Math.fround",
+            [
+              0.30000000000000004
+            ]
+          ]
+        ],
+        "outcome": "throw",
+        "error": {
+          "type": "object",
+          "name": "Error",
+          "message": "phase52-hook:Math.fround"
+        }
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-String-fromCodePoint-passthrough",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-String-fromCodePoint-passthrough.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-String-fromCodePoint-passthrough.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-String-fromCodePoint-passthrough",
+        "events": [
+          [
+            "builtin",
+            "String.fromCodePoint",
+            [
+              128512
+            ]
+          ]
+        ],
+        "value": "😀",
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-String-fromCodePoint-getter",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-String-fromCodePoint-getter.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-String-fromCodePoint-getter.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-String-fromCodePoint-getter",
+        "events": [
+          [
+            "builtin-get",
+            "String.fromCodePoint"
+          ],
+          [
+            "builtin",
+            "String.fromCodePoint",
+            [
+              128512
+            ]
+          ]
+        ],
+        "value": "😀",
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-String-fromCodePoint-throw",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-String-fromCodePoint-throw.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-String-fromCodePoint-throw.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-String-fromCodePoint-throw",
+        "events": [
+          [
+            "builtin",
+            "String.fromCodePoint",
+            [
+              128512
+            ]
+          ]
+        ],
+        "outcome": "throw",
+        "error": {
+          "type": "object",
+          "name": "Error",
+          "message": "phase52-hook:String.fromCodePoint"
+        }
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Array-isArray-passthrough",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Array-isArray-passthrough.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Array-isArray-passthrough.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-Array-isArray-passthrough",
+        "events": [],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Array-isArray-getter",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Array-isArray-getter.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Array-isArray-getter.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-Array-isArray-getter",
+        "events": [],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "hook-Array-isArray-throw",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Array-isArray-throw.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--hook-Array-isArray-throw.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "hook-Array-isArray-throw",
+        "events": [],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "direct-contract",
+      "test": "public-callable-callback",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/direct-contract.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--public-callable-callback.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/direct-contract--public-callable-callback.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "public-callable-callback",
+        "events": [
+          [
+            "callback",
+            35
+          ]
+        ],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "erased_partial_closure",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_partial_closure.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/erased_partial_closure--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/erased_partial_closure--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": 3,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "closure_partial_app",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/closure_partial_app.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/closure_partial_app--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/closure_partial_app--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": 17,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "erased_recursive_arg",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_recursive_arg.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/erased_recursive_arg--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/erased_recursive_arg--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": 9,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "erased_apply",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/erased_apply.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/erased_apply--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/erased_apply--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": {
+          "$bigint": "4"
+        },
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "over_application",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/over_application.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/over_application--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/over_application--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "eta_closure_body",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_closure_body.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/eta_closure_body--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/eta_closure_body--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": 42,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "eta_ctor_arm",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/eta_ctor_arm.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/eta_ctor_arm--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/eta_ctor_arm--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": 100,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "array_dynamic_closure",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_dynamic_closure.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/array_dynamic_closure--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/array_dynamic_closure--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": 9,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "float_accumulation",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_accumulation.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/float_accumulation--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/float_accumulation--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": 2775,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "float_builtin_agreement",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_builtin_agreement.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/float_builtin_agreement--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/float_builtin_agreement--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": "-2 -1 -1 1.5",
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "float_roundtrip",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/float_roundtrip.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/float_roundtrip--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/float_roundtrip--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": 45,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "marshal_erased_binders",
+      "test": "independent-stdout",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_erased_binders.mjs"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "stdout": "121\n8\n",
+        "stderr": ""
+      }
+    },
+    {
+      "fixture": "shared_module_state",
+      "test": "independent-stdout",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/shared_module_state.mjs"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "stdout": "1\n2\n2\n",
+        "stderr": ""
+      }
+    },
+    {
+      "fixture": "foreign_arrow_arity",
+      "test": "independent-stdout",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/foreign_arrow_arity.mjs"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "stdout": "42\n",
+        "stderr": ""
+      }
+    },
+    {
+      "fixture": "marshal_nat_bigint",
+      "test": "independent-stdout",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/marshal_nat_bigint.mjs"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "stdout": "zero\nsucc\nsucc\n",
+        "stderr": ""
+      }
+    },
+    {
+      "fixture": "array_swap_header",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/array_swap_header.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/array_swap_header--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/array_swap_header--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": 2337,
+        "outcome": "return"
+      }
+    },
+    {
+      "fixture": "tail_pin",
+      "test": "independent-main-out",
+      "role": "typescript",
+      "pass": true,
+      "execution": {
+        "command": [
+          "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+          "--stack-size=4096",
+          "--max-old-space-size=1024",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-worker-v3.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/modules/tail_pin.mjs",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/tail_pin--independent-main-out.test.json",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/tail_pin--independent-main-out.observation.json"
+        ],
+        "status": 0,
+        "signal": null,
+        "error": null
+      },
+      "observation": {
+        "kind": "phase52-direct-semantic-observation",
+        "complete": true,
+        "test": "independent-main-out",
+        "events": [],
+        "value": {
+          "$bigint": "3"
+        },
+        "outcome": "return"
+      }
+    }
+  ],
+  "programAdapter": {
+    "identity": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-program-worker-v2.mjs",
+      "sha256": "aa97573d21f8c2b9694a391f051c4813478a8355598e5eb88d77386e87f3aad7"
+    },
+    "code": "// Upstream executes js_book as CommonJS (.cjs). Compile identical bytes with that host.\nimport assert from 'node:assert/strict';\nimport fs from 'node:fs';\nimport path from 'node:path';\nimport Module from 'node:module';\nconst [argument,...args]=process.argv.slice(2);assert(argument);\nconst file=fs.realpathSync(argument);process.argv=[process.execPath,file,...args];\nconst program=new Module(file);program.filename=file;program.paths=Module._nodeModulePaths(path.dirname(file));\nprogram._compile(fs.readFileSync(file,'utf8'),file);\n"
+  },
+  "scope": "Pinned TypeScript only. Frozen independent fixture values/errors and observed hook/getter traces. No candidate, differential or performance qualification.",
+  "counts": {
+    "pass": 59,
+    "fail": 0,
+    "total": 59
+  }
+}

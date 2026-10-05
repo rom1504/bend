@@ -1,0 +1,59 @@
+{
+  "kind": "phase52-direct-js-execution-comparison",
+  "complete": true,
+  "passed": true,
+  "callingContract": "upstream-compatible-direct-v1",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/compare.py",
+      "bytes": 4265,
+      "sha256": "d58e0cdd16cb55005ed0907e3b3176ed271af64a90538d620a79d6c39559986c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/run.py",
+      "bytes": 21467,
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/execute.mjs",
+      "bytes": 5572,
+      "sha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "bytes": 6779,
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/reference01/manifest.json",
+      "bytes": 43981,
+      "sha256": "b64c2be861da1a69dc51cfddae6d90c64942d1e9a106ae240cb18752b6117930"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/prepared-direct02/manifest.json",
+      "bytes": 7968,
+      "sha256": "8e814c1cf398d7c80e5bb6ead6cd8525add57e8eba7fd99fe6eccc05d28917b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase37/catalog.json",
+      "bytes": 83389,
+      "sha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c"
+    }
+  ],
+  "scope": "Same retained Bend sources, points, exact result oracles and unchanged timing protocol. Candidate uses a new upstream-compatible default callable/record contract; legacy G/descriptor mutation compatibility is not claimed. Compilation is excluded; saved historical timings are not denominators.",
+  "roles": {
+    "baseline": "Phase51 selected generic/guarded backend, exact saved outputs",
+    "candidate": "Checked direct JavaScript backend, upstream-compatible default exports",
+    "typescript": "Pinned upstream checked JavaScript outputs"
+  },
+  "outputObservation": "All scalar outputs checked on every invocation. Generic row observes all four arrays using each backend public layout; observer work remains timed.",
+  "methodReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/screen-direct02/report.json",
+    "bytes": 736068,
+    "sha256": "58fa3a49086c671515ab0d04f82ed7d98ac80d86b7934ef60e553b1b2784224b"
+  },
+  "selectedCases": 8,
+  "measuredCases": 8,
+  "status": "measured",
+  "inputsUnchanged": true
+}

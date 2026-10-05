@@ -3,6 +3,9 @@
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
 [Phase51 report](../implementation/phase51/README.md) and
 [JavaScript IR architecture](docs/JAVASCRIPT_IR.md).
+The [direct JavaScript guide](docs/direct-javascript.md) documents the Phase52
+candidate and its explicit upstream-compatible interface; see the
+[live qualification report](../implementation/phase52/README.md).
 **Phase51 is installed; release verification and all 42 CLI checks pass.**
 The [release manifest](dist/release.json) and
 [selected evidence](tools/performance/phase51/evidence/selected-qualification.json)

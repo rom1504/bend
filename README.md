@@ -16,6 +16,11 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
 fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
+The [Phase52 direct JavaScript backend](selfhost/docs/direct-javascript.md) is
+being qualified. Its [eight-point prototype](implementation/phase52/prototype.md)
+measures 1.035× TypeScript execution time and passes 55 library-semantic controls.
+The installed release and full-corpus figures below remain Phase51 until promotion.
+
 **Phase51 is installed; release verification and all 42 CLI checks pass.**
 The [phase report](implementation/phase51/README.md),
 [release manifest](selfhost/dist/release.json) and

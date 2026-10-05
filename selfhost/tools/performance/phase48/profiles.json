@@ -1,0 +1,43 @@
+{
+  "kind": "phase48-validation-selections",
+  "catalog": "../phase37/catalog.json",
+  "catalogSha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+  "scope": "Selections for unchanged programs/run.py; this is not a new catalog or timing protocol. Budgets are nominal presets, not completion guarantees. Actual private-path activation is a separate semantic gate.",
+  "profiles": {
+    "reject3": {
+      "budget": 20,
+      "cases": ["local-fold", "scalar-region-0", "complete-generic-row32"],
+      "purpose": "Initial affected-path, fixed-entry and public fallback rejection screen."
+    },
+    "fast5": {
+      "budget": 60,
+      "cases": ["local-pair", "local-fold", "scalar-region-0", "scalar-region-8192", "complete-generic-row32"],
+      "purpose": "Historical five canaries; insufficient alone for private composition."
+    },
+    "core8": {
+      "budget": 60,
+      "cases": ["local-pair", "local-fold", "scalar-region-0", "scalar-region-8192", "complete-generic-row32", "mandelbrot", "editdist", "test-rle-roundtrip"],
+      "purpose": "Default candidate screen: all five canaries plus positive private-tree composition, arithmetic and immutable results."
+    },
+    "worst6": {
+      "budget": 60,
+      "cases": ["test-morning-program", "scalar-region-0", "test-map-set-ops", "test-rle-roundtrip", "complete-generic-row32", "test-evening-program"],
+      "purpose": "Six largest remaining Phase47 array06/TypeScript ratios; targeted development evidence, not a representative aggregate."
+    },
+    "worst-extra3": {
+      "budget": 60,
+      "cases": ["test-morning-program", "test-map-set-ops", "test-evening-program"],
+      "purpose": "After core8, add only the three missing worst-six cases to avoid duplicate samples."
+    }
+  },
+  "finalProtocol": {
+    "selection": "unchanged catalog sets.full",
+    "points": 45,
+    "sources": 23,
+    "batches": 3,
+    "pointsPerBatch": 15,
+    "budgetPerBatch": 600,
+    "samplesWithThreeRoles": 669,
+    "scope": "One final selected compiler; reuse original rounds/warmups and expensive-raytrace policy. Intermediate hypotheses get focused checks and screens first."
+  }
+}

@@ -1,0 +1,22 @@
+--- a/selfhost/src/back/js/emit.bend
++++ b/selfhost/src/back/js/emit.bend
+@@ -874,10 +874,16 @@
+ 
+ @unsafe
+ def j_l_def_instance(+book: List<&2,KDef>, +d: KDef, +region: String, +instance: String) -> String:
+-  kc(String, String.eq(instance, ""), u =>
+-    j_l_def_selected(book, d, kc(String, String.eq(region, ""), u => j_u32_global(book, d, j_u32_worker(book, d)),
++  kc(String, String.eq(instance, ""),
++    u => j_l_def_function_flow(book, d, region, j_function_flow_root(book, lookup(book, dn(d)))),
++    u => j_l_global_worker(book, d, dv(d), instance))
++
++@unsafe
++def j_l_def_function_flow(+book: List<&2,KDef>, +d: KDef, +region: String, +flow: String) -> String:
++  kc(String, String.eq(flow, ""),
++    u => j_l_def_selected(book, d, kc(String, String.eq(region, ""), u => j_u32_global(book, d, j_u32_worker(book, d)),
+       u => j_l_global_worker(book, d, dv(d), region))),
+-    u => j_l_global_worker(book, d, dv(d), instance))
++    u => j_l_global_worker(book, d, dv(d), flow))
+ 
+ @unsafe
+ def j_l_def_selected(+book: List<&2,KDef>, +d: KDef, +code: String) -> String:

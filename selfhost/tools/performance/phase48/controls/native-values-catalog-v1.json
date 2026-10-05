@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Independent Unicode/native String.append source; one acquisition anchor plus untimed 7 ordinary rows,1372 complete-value rows,18 mutation/ABI boundaries. No execution or qualification asserted.",
+  "cases": [
+    {
+      "id": "native-values-independent",
+      "family": "typed-native-string-values",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "native-values-v1.bend",
+        "sha256": "1f502b3037f98f72437f729baefed38a568dca9322ea87e5909e903ca07cf505",
+        "bytes": 1090,
+        "provenance": {
+          "kind": "phase48-independent-controls",
+          "scope": "Renamed Nat recursion, primitive strings, pair/custom-record consumers and Unicode; no workload recognizer"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          3,
+          17
+        ],
+        "expected": "α🙂α🙂α🙂17é17é17é"
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Independent concatenation alpha/emoji left repeated n, decimal seed/accent right repeated n; full host/mutation controls supplied separately."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "native-values-independent"
+    ],
+    "core": [
+      "native-values-independent"
+    ],
+    "broad": [
+      "native-values-independent"
+    ],
+    "full": [
+      "native-values-independent"
+    ]
+  }
+}

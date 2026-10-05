@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Checked acquisition anchor only; composite result semantics and activation are checked by the separate untimed controller. No target execution or qualification yet.",
+  "cases": [
+    {
+      "id": "composite-results-independent",
+      "family": "public-composite-array-results",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "composite-results-v1.bend",
+        "sha256": "55a8114c57b020757db54ab6651a442a94680ada8c5a5b4efdb5aeef3565440b",
+        "bytes": 1497,
+        "provenance": {
+          "kind": "phase48-independent-controls",
+          "scope": "Original-handle output sharing, mutation, order, guard refusal"
+        }
+      },
+      "point": {
+        "exportName": "main",
+        "args": [],
+        "expected": 0
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Trivial scalar acquisition anchor. Separate controller computes independent four-cell recurrence and boundary traces."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "composite-results-independent"
+    ],
+    "core": [
+      "composite-results-independent"
+    ],
+    "broad": [
+      "composite-results-independent"
+    ],
+    "full": [
+      "composite-results-independent"
+    ]
+  }
+}

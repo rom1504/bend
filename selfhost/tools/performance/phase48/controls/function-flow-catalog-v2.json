@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Independent known lexical callback/factory controls; unqualified, no timing claim.",
+  "cases": [
+    {
+      "id": "function-flow-independent",
+      "family": "known-lexical-functions",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "function-flow-v2.bend",
+        "sha256": "388e70d385128178a74e71ceee913bfa71ea3ce4a6bae0d67d7660b447b78337",
+        "bytes": 1882,
+        "provenance": {
+          "kind": "phase48-independent-controls",
+          "scope": "Renamed lexical capture and argument-order probes, no benchmark recognizer"
+        }
+      },
+      "point": {
+        "exportName": "sample",
+        "args": [
+          10
+        ],
+        "expected": 18
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "U32 modular sums/subtractions with retained fresh captures; Nat successor overflow still demanded before later arguments."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "function-flow-independent"
+    ],
+    "core": [
+      "function-flow-independent"
+    ],
+    "broad": [
+      "function-flow-independent"
+    ],
+    "full": [
+      "function-flow-independent"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Proposed handle-preserving canonical literal array and zero-arity entry controls. Not yet executed.",
+  "cases": [
+    {
+      "id": "array-literals-independent",
+      "family": "literal-array-handle-entry",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "array-literals-v1.bend",
+        "sha256": "f1124b6a06c1e6182b0dfc4322fa27617f0464a948460546004045a447647be7",
+        "bytes": 1191,
+        "provenance": {
+          "kind": "phase48-independent-controls",
+          "scope": "Renamed canonical literal producers, scalar boundary and demanded nullary entry"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          2,
+          3
+        ],
+        "expected": 20
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Two independent old-cell swaps; fround each source add/sub/multiply, then checked conversion."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "array-literals-independent"
+    ],
+    "core": [
+      "array-literals-independent"
+    ],
+    "broad": [
+      "array-literals-independent"
+    ],
+    "full": [
+      "array-literals-independent"
+    ]
+  }
+}

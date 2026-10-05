@@ -1,0 +1,52 @@
+{
+  "kind": "phase48-function-flow-source-catalog-v1",
+  "status": "unqualified",
+  "source": {
+    "path": "selfhost/tools/performance/phase48/controls/function-flow-v1.bend",
+    "sha256": "887599fbd4fa69f0f021cae62888069ea3a411c4a5ca42d3a4b5ad35acaed327",
+    "bytes": 1248
+  },
+  "positive": [
+    {
+      "root": "sample",
+      "args": [
+        10
+      ],
+      "result": 18
+    },
+    {
+      "root": "ordered",
+      "args": [
+        10
+      ],
+      "result": 4
+    },
+    {
+      "root": "fresh",
+      "args": [
+        10
+      ],
+      "result": 11
+    },
+    {
+      "root": "retained",
+      "args": [
+        10
+      ],
+      "result": 11
+    }
+  ],
+  "firstOrderRefusals": [
+    "returned",
+    "unknown",
+    "branched"
+  ],
+  "obligations": [
+    "ordinary private entry activation",
+    "expanded source descriptor mutation fallback",
+    "factory capture freshness",
+    "callee-prefix before subsequent-argument failure",
+    "unknown and public escaping callback refusal"
+  ],
+  "targetExecution": false
+}

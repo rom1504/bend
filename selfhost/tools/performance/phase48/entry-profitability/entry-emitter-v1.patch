@@ -1,0 +1,20 @@
+--- a/selfhost/src/back/js/array-view.bend
++++ b/selfhost/src/back/js/array-view.bend
+@@ -180,7 +180,7 @@
+ @unsafe
+ def j_array_view_entry(+book: List<&2,KDef>, +d: KDef, +s: JRegionBuild) -> String:
+   "if(" ++ j_array_view_host_guard(book, d, s, atom("Absent")) ++ j_region_inputs(book, dt(d), 0, da(d), False{}) ++
+-    "&&localGuard($guards)){/* private raw array root */return $arrayViewBody(" ++
++    "&&arrayViewLocalGuard($guards)){/* private raw array root */return $arrayViewBody(" ++
+     j_region_vector_names("$s", 0, da(d)) ++ ");}"
+ 
+ # Statement destinations are existing region result slots or a return. Capture
+@@ -220,7 +220,7 @@
+ def j_array_view_tree_entry(+book: List<&2,KDef>, +d: KDef, +zero: KTerm, +s: JRegionBuild) -> String:
+   "if($entered&&" ++ j_array_view_host_guard(book, d, s, zero) ++
+     j_region_inputs(book, j_arm_type(book, wnf(book, dt(d)), "Succ"), 0, da(d), True{}) ++
+-    "&&$s0<32n&&localGuard($guards)){/* private raw array tree */return $arrayViewTreeBody(" ++
++    "&&$s0<32n&&arrayViewLocalGuard($guards)){/* private raw array tree */return $arrayViewTreeBody(" ++
+     j_region_vector_names("$s", 0, da(d)) ++ ");}"
+ 
+ 

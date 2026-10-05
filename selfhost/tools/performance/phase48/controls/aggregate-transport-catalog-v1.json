@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "scope": "Independent aggregate transport source controls; unexecuted.",
+  "cases": [
+    {
+      "id": "aggregate-transport-independent",
+      "family": "private-tuple-transport",
+      "category": "diagnostic",
+      "partition": "development",
+      "source": {
+        "path": "aggregate-transport-v1.bend",
+        "sha256": "78e3f056794421925ec0db0f5fa49b5f5a1717375c63c1ace78b9353e4a83a61",
+        "bytes": 3106,
+        "provenance": {
+          "kind": "phase48-independent-renamed-state-and-record-controls",
+          "scope": "Untimed values, allocation witnesses, exceptions, persistent alias and ABI"
+        }
+      },
+      "point": {
+        "exportName": "bench",
+        "args": [
+          8,
+          3
+        ],
+        "expected": 8089
+      },
+      "sets": [
+        "fast",
+        "core",
+        "broad",
+        "full"
+      ],
+      "oracle": "Build consecutive U32 values mod5; run encoding preserves sum and run count. Initial zero-length run merges with first value."
+    }
+  ],
+  "sets": {
+    "fast": [
+      "aggregate-transport-independent"
+    ],
+    "core": [
+      "aggregate-transport-independent"
+    ],
+    "broad": [
+      "aggregate-transport-independent"
+    ],
+    "full": [
+      "aggregate-transport-independent"
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "kind": "phase48-composite-results-data-review",
+  "complete": true,
+  "dataOnly": true,
+  "promoted": false,
+  "sourceReports": [
+    {
+      "path": "selfhost/build/phase48/checked-composite01/attempt.json",
+      "sha256": "25de994bf748b314a6fb05fa2e5ca914d4db9f53abcacea421c563e2a986787b"
+    },
+    {
+      "path": "selfhost/build/phase48/composite-controls02/report.json",
+      "sha256": "bf8de64634d2f3dd50d6a557e067bbedc7692d427826fd6d0cd025e12b9d2c71"
+    },
+    {
+      "path": "selfhost/build/phase48/composite-row-entry01/observations.json",
+      "sha256": "aae29fdb38699e86c26f8ea322627aa75e4e0942ef7a5b29981c0d20ab8d7098"
+    },
+    {
+      "path": "selfhost/build/phase48/composite-row-entry01/manifest.json",
+      "sha256": "83e835742e75d518521790ad6f33c9fe54a7f656e03a2beee4c7c5cf596f8116"
+    },
+    {
+      "path": "selfhost/build/phase48/composite-screen01/report.json",
+      "sha256": "35fd35bf9cba363da49ad863ba708191d77918a509c9282b99a6a6cc623da521"
+    }
+  ],
+  "candidateApi": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-composite01/equality/api.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-composite01/equality/api.mjs",
+    "sha256": "bec513e634527dd292834811e5875e36c40b5c7873dfe4ebc326e74a4c40ec3c"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-composite01/snapshot/src/runtime.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/checked-composite01/snapshot/src/runtime.mjs",
+    "sha256": "880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b"
+  },
+  "controls": {
+    "passed": true,
+    "oracleCount": 30,
+    "boundaryCount": 6,
+    "executedEntryWitness": {
+      "counters": {
+        "fast": 2,
+        "fallback": 1,
+        "external": 1,
+        "nested": 1
+      },
+      "timingEligible": false,
+      "diagnosticOnly": true,
+      "scope": "Admitted make executes fast; mutated dependency executes fallback; external/nested execute original public bodies."
+    },
+    "moduleReceiptBindings": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/composite-baseline01/modules/composite-results-v1.mjs",
+        "sha256": "bd8dfeae8b8e21f2e2820cac110dc6da6067989845474ccd41d9743a3c81fce4",
+        "receiptOutputBindingVerified": true
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase48/composite-candidate01/modules/composite-results-v1.mjs",
+        "sha256": "3fd3b5d22ce41e1a3f624b5b9bd16cece229eaf77854331a007e4eb4a392f975",
+        "receiptOutputBindingVerified": true
+      }
+    ]
+  },
+  "rowEntry": {
+    "jsonValid": true,
+    "finalByte": 10,
+    "before": {
+      "row.probe": {
+        "fast": 0,
+        "fallback": 0
+      }
+    },
+    "after": {
+      "row.probe": {
+        "fast": 1,
+        "fallback": 0
+      }
+    },
+    "valueTag": "Dp"
+  },
+  "screen": [
+    {
+      "id": "complete-generic-row32",
+      "roles": {
+        "baseline": {
+          "medianMs": 0.3854571424936386,
+          "samplesMs": [
+            0.38480591857506374,
+            0.38646156122448977,
+            0.3854571424936386
+          ]
+        },
+        "candidate": {
+          "medianMs": 0.030625255657327585,
+          "samplesMs": [
+            0.030625255657327585,
+            0.03367771556965372,
+            0.029209457757704577
+          ]
+        },
+        "typescript": {
+          "medianMs": 0.00703592421108226,
+          "samplesMs": [
+            0.007176409449161768,
+            0.007021595836832104,
+            0.00703592421108226
+          ]
+        }
+      },
+      "baselineOverCandidate": 12.586250603312491,
+      "candidateOverTypeScript": 4.352698343323518
+    },
+    {
+      "id": "local-pair",
+      "roles": {
+        "baseline": {
+          "medianMs": 1.4492096250000002,
+          "samplesMs": [
+            1.428989485714286,
+            1.4492096250000002,
+            1.4796406568627454
+          ]
+        },
+        "candidate": {
+          "medianMs": 1.4419457087378638,
+          "samplesMs": [
+            1.4419457087378638,
+            1.4456714854368924,
+            1.4310810666666667
+          ]
+        },
+        "typescript": {
+          "medianMs": 1.2427008347107429,
+          "samplesMs": [
+            1.2321787950819667,
+            1.2427008347107429,
+            1.2451103770491803
+          ]
+        }
+      },
+      "baselineOverCandidate": 1.0050375795830029,
+      "candidateOverTypeScript": 1.1603321318066855
+    }
+  ],
+  "caveats": [
+    "Three-round short-warmup screen; candidate row half-drift includes -22.94%.",
+    "No promotion or steady-state claim.",
+    "Counter derivative is excluded from timings."
+  ]
+}

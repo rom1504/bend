@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/js/jpure.bend
++++ b/selfhost/src/back/js/jpure.bend
+@@ -1340,7 +1340,7 @@
+   +at = j_instance_source_index(rows, d, 0)
+   +pure = j_pure_graph(view, lookup(view, j_instance_name(at)), JPure{Nil{}, 131072, True{}})
+   kc(String, j_pure_valid(pure) && Bool.not(U32.is_eq(at, 4294967295)), u =>
+-    j_instance_root_workers(book, view, d, rows, raw, at, pure, j_worker_emission(view, raw)), u => "")
++    j_instance_root_workers(book, view, d, rows, raw, at, pure, j_worker_emission(view, raw, jw_target(raw, j_instance_name(at), 0))), u => "")
+ 
+ @unsafe
+ def j_instance_root_workers(+book: List<&2,KDef>, +view: List<&2,KDef>, +d: KDef, +rows: List<&2,KDef>, +raw: List<&2,KDef>,

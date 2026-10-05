@@ -66,7 +66,7 @@ try{
     assert.equal(compiler.backend,'direct');
     for(const key of ['api','runtime','base','driver','directRuntime'])record(compiler[key]);
     const attemptFile=path.join(path.dirname(path.dirname(compiler.api.file)),'attempt.json');
-    const attempt=json(attemptFile);assert.equal(attempt.api.sha256,compiler.api.sha256);
+    const attempt=json(attemptFile);assert.equal(attempt.checked,true);assert.equal(attempt.api.sha256,compiler.api.sha256);
     record(attempt.node);assert.equal(attempt.node.sha256,report.node.sha256);
     for(const source of attempt.snapshot.sources){
       assert.equal(source.original.sha256,source.frozen.sha256);
@@ -117,7 +117,9 @@ try{
       const sourceRow=state.prep.sources.find(x=>x.source.sha256===item.source.sha256);assert(sourceRow);
       assert(sourceRow.process.complete);assert.equal(sourceRow.process.returncode,0);
       const receipt=json(path.resolve(state.dir,sourceRow.emission.path),sourceRow.emission);
-      assert(receipt.complete);assert.equal(receipt.backend,'direct');assert.equal(receipt.compiler.api.sha256,state.compiler.api.sha256);
+      assert(receipt.complete);assert.equal(receipt.backend,'direct');assert.deepEqual(receipt.compiler,state.compiler);
+      assert.equal(receipt.input.sha256,item.source.sha256);assert.equal(receipt.observation.checked,true);
+      assert.equal(receipt.observation.status,'ok');assert.equal(receipt.observation.exitCode,0);
       record(receipt.attempt);assert.equal(fs.realpathSync(receipt.attempt.file),fs.realpathSync(state.attemptFile));
       record(receipt.output);assert.equal(receipt.output.sha256,ids.at(-1).sha256);record(receipt.input);record(receipt.producer);
       for(const input of receipt.emissionInputs)record(input);

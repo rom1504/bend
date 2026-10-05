@@ -1,14 +1,16 @@
 # Final direct-backend comparison and publication plan
 
-Status: the lead authorized execution on frozen `checked-direct05`. Its separate
-semantic suite passed89/90 scenarios; one F32 NaN-payload scenario remains failed
-(pinned TypeScript returns1, direct returns39, independent source oracle40).
-That failure is preserved and prevents any blanket semantic/full-conformance
-claim. It does not waive any benchmark oracle: all45 selected benchmark cases
-must pass before their scoped performance comparison can complete. Direct mode
-remains explicit and has this known semantic limit. If another image is selected,
-change every05 attempt/output suffix together. Never reuse the direct03 timing
-rows as measurements of that image.
+Status: the lead selected frozen `checked-direct06` after rejecting the ordered
+IIFE07 experiment. Its separate semantic suite passes95/96 scenarios; the one
+pre-existing NaN-payload case remains failed (TypeScript1, direct39, independent
+source oracle40). This prevents a blanket semantic/full-conformance claim.
+The atomic06 screen measured1.074256× benefit against05, below its prewritten
+1.10× target. The lead explicitly retains06 for its five>5% source improvements,
+no>10% screen regressions and exact byte proof; this is a selection judgment,
+not a retroactively passed threshold. Every final benchmark oracle remains
+mandatory. Direct mode remains explicit and has the documented semantic limit.
+The final06 acquisition is authorized; completion must be established from
+its own reports. No direct03 or incomplete05 timing row is reused.
 The Phase51/TypeScript reference remains the frozen `reference01` bundle.
 
 Execution checkpoint: direct05 checked acquisition and smoke passed all45 points.
@@ -28,6 +30,24 @@ parents and own the shared serial CPU3 execution lock. Every target gets a
 target worker uses a4096KiB stack; smoke uses the default Node stack. No concurrent
 build, compiler request, profile, compression or other benchmark is permitted.
 
+## Next selected image: choose once before running
+
+The commands below are parameterized for the next full campaign. After the lead
+selects checked direct06 or direct07, set one variable and retain its value for
+all acquisition, smoke, three batches, aggregation and candidate packaging:
+
+```bash
+PHASE52_IMAGE=direct06
+```
+
+Use `direct07` instead only if that image is selected and frozen. This variable
+does not authorize execution. A fresh complete campaign needs23 source
+acquisitions,45 smoke points and219+225+225 timing samples; the incomplete05
+batches remain historical evidence and are not mixed into the new aggregate.
+The same fixed Phase51/TypeScript reference01 remains the full-corpus baseline.
+The separate atomic experiment uses direct05 as its baseline, and the ordered
+experiment uses direct06. Neither is the Phase51 full-corpus denominator.
+
 ## Acquisition and exact-output gate
 
 Use the reviewed successor worker for the full driver. It permits either no
@@ -37,17 +57,17 @@ remain unchanged and pinned as predecessors.
 
 ```bash
 python3 selfhost/tools/performance/phase52/prepare-v2.py \
-  --attempt selfhost/build/phase52/checked-direct05 \
+  --attempt "selfhost/build/phase52/checked-$PHASE52_IMAGE" \
   --catalog selfhost/tools/performance/phase37/catalog.json --set full \
   --role candidate --backend direct \
   --node /home/ai/.nvm/versions/node/v24.18.0/bin/node \
   --cpu 3 --heap-mib 1024 --rss-mib 2048 --available-mib 4096 --timeout 180 \
-  --out selfhost/build/phase52/prepared-direct05-full
+  --out "selfhost/build/phase52/prepared-$PHASE52_IMAGE-full"
 
 python3 selfhost/tools/performance/phase52/smoke.py \
-  --manifest selfhost/build/phase52/prepared-direct05-full/manifest.json \
+  --manifest "selfhost/build/phase52/prepared-$PHASE52_IMAGE-full/manifest.json" \
   --catalog selfhost/tools/performance/phase37/catalog.json \
-  --out selfhost/build/phase52/smoke-direct05-full
+  --out "selfhost/build/phase52/smoke-$PHASE52_IMAGE-full"
 ```
 
 Expected acquisition: all45 points from23 distinct sources, with checked-emission
@@ -70,11 +90,11 @@ PHASE52_BATCH=0
 python3 selfhost/tools/performance/phase52/compare.py \
   --catalog selfhost/tools/performance/phase37/catalog.json \
   --baseline selfhost/build/phase52/reference01/manifest.json \
-  --candidate selfhost/build/phase52/prepared-direct05-full/manifest.json \
+  --candidate "selfhost/build/phase52/prepared-$PHASE52_IMAGE-full/manifest.json" \
   --node /home/ai/.nvm/versions/node/v24.18.0/bin/node \
   --cpu 3 --rss-mib 2048 --available-mib 4096 --budget 600 \
   --cases "$(python3 -c 'import json,sys; print(",".join(json.load(open("selfhost/tools/performance/phase52/profiles.json"))["full45Batches"][int(sys.argv[1])]))' "$PHASE52_BATCH")" \
-  --out "selfhost/build/phase52/full-direct05-batch$PHASE52_BATCH"
+  --out "selfhost/build/phase52/full-$PHASE52_IMAGE-batch$PHASE52_BATCH"
 ```
 
 The600 preset is unchanged: five rotated rounds, at least three warmup calls and
@@ -91,14 +111,14 @@ It never imports a generated module or compiler API.
 
 ```bash
 taskset -c 0 python3 selfhost/tools/performance/phase52/aggregate.py \
-  --attempt selfhost/build/phase52/checked-direct05 \
-  --candidate selfhost/build/phase52/prepared-direct05-full/manifest.json \
+  --attempt "selfhost/build/phase52/checked-$PHASE52_IMAGE" \
+  --candidate "selfhost/build/phase52/prepared-$PHASE52_IMAGE-full/manifest.json" \
   --baseline selfhost/build/phase52/reference01/manifest.json \
-  --smoke selfhost/build/phase52/smoke-direct05-full/report.json \
-  --reports selfhost/build/phase52/full-direct05-batch0/report.json \
-            selfhost/build/phase52/full-direct05-batch1/report.json \
-            selfhost/build/phase52/full-direct05-batch2/report.json \
-  --out selfhost/build/phase52/full-direct05-aggregate
+  --smoke "selfhost/build/phase52/smoke-$PHASE52_IMAGE-full/report.json" \
+  --reports "selfhost/build/phase52/full-$PHASE52_IMAGE-batch0/report.json" \
+            "selfhost/build/phase52/full-$PHASE52_IMAGE-batch1/report.json" \
+            "selfhost/build/phase52/full-$PHASE52_IMAGE-batch2/report.json" \
+  --out "selfhost/build/phase52/full-$PHASE52_IMAGE-aggregate"
 ```
 
 The output schema records:
@@ -142,8 +162,8 @@ verification. The original method remains untouched and identity-pinned.
 
 ```bash
 taskset -c 0 python3 selfhost/tools/performance/phase52/freeze-candidate.py \
-  --from selfhost/build/phase52/prepared-direct05-full/manifest.json \
-  --attempt selfhost/build/phase52/checked-direct05 \
+  --from "selfhost/build/phase52/prepared-$PHASE52_IMAGE-full/manifest.json" \
+  --attempt "selfhost/build/phase52/checked-$PHASE52_IMAGE" \
   --catalog selfhost/tools/performance/phase37/catalog.json \
   --out selfhost/tools/performance/phase52/bundles/current
 

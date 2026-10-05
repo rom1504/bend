@@ -2,8 +2,9 @@
 
 Status: the precommitted eight-point screen completed on checked direct06.
 All output checks and72 timing samples passed. The measured7.4% geometric mean
-speedup misses the prewritten10% target; semantic and exact byte-attribution
-qualification are separate pending gates, not implied by this timing result.
+speedup misses the prewritten10% target. The subsequent static byte proof passes
+all eight modules, and the semantic suite passes95/96 scenarios with only the
+previously recorded NaN-payload failure. This is not a blanket semantic pass.
 
 ## Hypothesis and existing evidence
 
@@ -176,7 +177,24 @@ Evidence under `selfhost/build/phase52/`:
   same direct ABI and explicitly different baseline from the earlier Phase51
   comparisons. Neither original05 batch was rewritten or relabeled.
 
-Static byte-attribution work is still separate: fewer generated call references
-and smaller modules have been observed, but those counts alone do not prove all
-changes are intrinsic expansion/pruning. The full selected semantic checks and
-any final45 measurement must still report the known NaN-payload limitation.
+Subsequent static attribution passed all eight modules in
+`intrinsic-byte-proof06/report.json`, SHA256
+`3c26b3a3661082491cf8151236bf791a707fed13a759f83e3d3cae2a916de0a8`.
+Starting from exact05 bytes, the proof expands375 admitted atomic call sites
+using the89 unchanged native templates and removes52 now-unreferenced native
+wrapper declarations. These two transformations reconstruct every06 module byte;
+the simultaneous packaging changes introduce no other bytes in this profile.
+All614 consumed identities were rechecked. These are static site counts, not
+executed-call counts, and they do not separate expansion from pruning or explain
+how V8 distributes the measured gain.
+
+The completed selected semantic run is
+`semantic-direct06-controls01/report.json`, SHA256
+`5357c24a5a1c9623bb25278e0b60e6d4b79b377653a841db08ba088f47485bf8`:
+95/96 scenarios pass, including the six new native effect/order controls. The
+one unchanged NaN-table case still fails its independent40 oracle: TypeScript
+returns1 and direct returns39. The report correctly has `pass:false`; the
+[qualified-scope receipt](../../selfhost/tools/performance/phase52/semantic-qualified-scope-v2.json)
+records the limited result. No new discrepancy was observed, but neither this
+suite nor the eight-point timing screen establishes full conformance. The full
+selected45-point performance campaign is still pending.

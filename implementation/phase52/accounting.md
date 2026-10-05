@@ -168,3 +168,61 @@ It is not a paired program-compilation benchmark, a throughput comparison with
 TypeScript, a bootstrap fixed point, or the time for the whole Phase52 campaign.
 Generated-program execution measurements and semantic qualification remain
 separate from source size and this build time.
+
+## Direct06 checkpoint; final selection pending
+
+Direct06 adds caller-side expansion for already evaluated intrinsic arguments.
+The direct05 tables above remain its exact historical source inventory; they are
+not silently relabeled as a newer image. The same frozen counting method gives:
+
+| Metric | Phase51 | Direct05 | Direct06 |
+| --- | ---: | ---: | ---: |
+| Physical Bend lines | 23,662 | 25,744 | 25,790 |
+| Nonblank/non-comment lines | 19,489 | 21,198 | 21,235 |
+| Definitions | 2,673 | 2,951 | 2,957 |
+| Laws / types / modules | 629 / 87 / 92 | 629 / 95 / 101 | 629 / 95 / 101 |
+| Bend source bytes | 1,047,916 | 1,153,946 | 1,156,193 |
+| Derived B1 API bytes | 1,628,734 | 1,786,857 | 1,790,409 |
+
+Only two manifest modules differ from direct05: `direct/core.bend` adds 45
+physical lines, 36 code lines and six definitions; `direct/calls.bend` adds one
+physical/code line so terminal intrinsics do not leave dangling graph edges
+after expansion. Direct06 therefore adds **2,128 physical lines**, **1,746 code
+lines** and **284 definitions** relative to Phase51. Its direct directory has
+2,128 physical lines; the original 92 modules remain unchanged.
+
+The direct06 attempt is
+`selfhost/build/phase52/checked-direct06/attempt.json`, SHA-256
+`cf2e8ea55f70aef6796b10ebbda65ffa2367428e50afb6d6f9ae0f59b7730835`;
+its derived API is
+`472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a`.
+Its manifest and compatibility runtime identities are unchanged from direct05.
+The supervised build took 59.008 seconds, again a development-workflow observation.
+Any direct07 successor must be counted from its own frozen manifest after final
+selection; no prospective count or installation claim is included here.
+
+## Final evidence collection plan
+
+The [compact evidence collector](../../selfhost/tools/performance/phase52/collect-evidence.py)
+is prepared but has not been executed. After final selection, portable bundle
+publication and closure of all raw writers, it will copy reports, command/resource
+receipts, failed observations, catalogs, methods, fixtures and the selected frozen
+source graph verbatim into a fresh evidence directory. Its index records original
+paths, hashes and copy paths. The existing 39-file prototype packet stays intact.
+
+The collector requires the selected attempt, an explicit writer-closure receipt
+and the final 103-file protection audit. It verifies the selected API/direct
+runtime against the portable candidate and preserves the Phase51 reference
+identity. It retains failure outcomes as recorded; it does not reinterpret a
+known mismatch as a pass. Its 8 MiB file / 128 MiB packet bounds make oversized
+omissions explicit, with hashes and a requirement for the full raw capsule.
+
+Runnable benchmark artifacts use the existing Phase52
+[candidate](../../selfhost/tools/performance/phase52/freeze-candidate.py) and
+[baseline](../../selfhost/tools/performance/phase52/freeze-baseline.py) freezers,
+with archive reopening and member verification. The complete raw campaign uses
+the existing [streamed terminal archiver](../../selfhost/tools/performance/phase42/validation/archive-campaign-v1.py)
+only after writer closure. That separate archive must preserve omitted compiler
+images, historical snapshots, large logs and all failed receipts. The compact
+packet explicitly does not claim that archive has been joined or verified.
+No compression, large copying or publication runs concurrently with clean timing.

@@ -1,11 +1,12 @@
 # Phase52 direct JavaScript conformance checkpoints
 
-Recorded on 2026-10-05. The **checked-direct04 maintained JavaScript census
-passes all 26 agreement rows: 22 fixture passes and four N/A**. The separate,
-larger **checked-direct05 semantic gate passes 89 of 90 scenarios and fails
+Recorded on 2026-10-05. The **checked-direct06 maintained JavaScript census
+passes all 26 agreement rows: 22 fixture passes and four N/A**. The separate
+maintained eight-suite gate also passes against that checked image. The separate,
+larger **checked-direct06 semantic gate passes 95 of 96 scenarios and fails
 overall**. Its remaining signaling-NaN case disagrees with both the unchanged
-source oracle and the pinned upstream result. These are different acquisitions
-and scopes; the successful 04 census is not evidence of a 05 census rerun.
+source oracle and the pinned upstream result. These are distinct acquisitions
+and scopes; the successful census does not waive the semantic NaN failure.
 
 The target is Bend's TypeScript compiler at
 `018751270e800bc222a93dad7f257083ee53a5f7`. Direct output uses the explicitly
@@ -83,6 +84,28 @@ This is the JavaScript subset of the historical 81-row backend census. It does
 not renew that entire census, the larger frontend inventories, proof checking,
 native backends, all upstream source tests, or any performance result.
 
+## Selected06 maintained gates
+
+The same frozen checked-direct06 image passed the maintained eight suites:
+IR, backend, global initializers, choice, arm, primitive guards, provenance and
+foreign calls. These are eight suite verdicts against the selected compiler;
+they are separate from the direct callable-interface corpus.
+
+Its freshly executed JavaScript census also passed all **26 exact and semantic
+paired agreements**: 18 runtime passes, four expected compile-boundary
+rejections and four unchanged N/A cases. Both candidates and references have
+22 fixture passes and four N/A; none of the N/A cases is counted as execution.
+The source selection and judge match the earlier 04 census described above.
+The 06 census took **53.734 seconds**, with **369,242,112 bytes** peak summed
+process-tree RSS. Both gates used their own serial resource guard; there was no
+nested guard or concurrent target job.
+
+| Selected06 receipt | SHA-256 |
+| --- | --- |
+| `maintained06/report.json` | `36766ac5a5f435d2448803adcc8e1ffa653e29a32b2529fe6933ba5d2e3edbf8` |
+| `direct-conformance06/report.json` | `d72b393a43b564970cc83aa357ff41ec39eadc0f11f1ffc0192fdcfdbae2417c` |
+| `direct-conformance06/selected/paired.json` | `75dc4cb5dcc75178611cd81e3beeb5c540fc2f64be612f207eb9966e3a63e349` |
+
 ## Independent semantic controls and the retained failure
 
 These controls use independently stated values, errors and event sequences as
@@ -96,6 +119,7 @@ direct programs run unchanged as ESM. A host adapter is not a source rewrite.
 | --- | ---: | ---: | ---: | --- |
 | Direct04 | 22 / 64 | 63 | 1 | Fail |
 | Direct05 | 28 / 90 | 89 | 1 | Fail |
+| Direct06 | 29 / 96 | 95 | 1 | Fail |
 
 The 05 [catalog](../../selfhost/tools/performance/phase52/semantic-catalog-v7.json)
 adds 26 successful scenarios for Nat match demand, mixed-arity mutual tail
@@ -103,6 +127,24 @@ updates, closure snapshots, dead/erased/live FFI registration and proof-valued
 program output. All 28 direct05 source acquisitions completed successfully.
 These newer semantic observations belong to checked05; they do not overwrite
 or extend the identity of the checked04 maintained-source census.
+
+The 06 [catalog](../../selfhost/tools/performance/phase52/semantic-catalog-v8.json)
+retains every earlier scenario and adds six independently checked native-inline
+controls. Both the complex-argument and prior-let multiplication cases require
+callback completion before the `Math.imul` getter or throwing hook. The
+`Nat.double` cases require one argument callback followed by two coercions,
+including a throw on the second coercion. The Array.set case checks all four
+array elements after a wrapped-index store and requires the returned array to
+be the retained public input itself. All six passed against upstream and direct06;
+all 29 candidate sources emitted with checked receipts.
+
+The exact 06 run completed all 96 scenarios in **10.967 seconds**, with
+**142,954,496 bytes** peak summed process-tree RSS. Its report is complete and
+failing overall; the supervisor exited 1. The
+[qualified scope](../../selfhost/tools/performance/phase52/semantic-qualified-scope-v2.json)
+pins the catalog, controller, checked acquisition, strict role join, upstream
+six-control qualification and runtime reports. These observations do not claim
+full conformance or renew an earlier maintained census.
 
 The single failing scenario is `f32_table_nan_bits / nan-table-bits`:
 
@@ -112,6 +154,7 @@ The single failing scenario is `f32_table_nan_bits / nan-table-bits`:
 | Pinned TypeScript-generated JavaScript | 1 |
 | Direct04, separately observed after the first runner failure | 39 |
 | Direct05, observed by the successor runner alongside TypeScript | 39 |
+| Direct06, observed alongside TypeScript | 39 |
 
 The 04 runner stopped this scenario when the reference failed its source oracle;
 the separate candidate observation preserves its actual result. The 05 runner
@@ -141,12 +184,15 @@ All paths in the next table are relative to `selfhost/build/phase52/`:
 | `semantic-direct05-controls01/report.json` | `b366375483a4dbd77650846ed0aeab0bb4afe7fd5668dfe83b674e56afa46bec` |
 | `semantic-direct05-controls01-supervisor/run.json` | `f864d974114b92a7bcc9a2f80c790921369775518857ac3541bbd349b60c1e38` |
 | `semantic-nan-host01.json` | `73ec40b633bd3f23de225f97c5e5ab906f1c4b1d7f5a675e37cac60154bbadb3` |
+| `semantic-direct06-controls01/report.json` | `5357c24a5a1c9623bb25278e0b60e6d4b79b377653a841db08ba088f47485bf8` |
+| `semantic-direct06-controls01-supervisor/run.json` | `8215db764ab15d55d62f28691423249e5a1e2695afca5ae7bf8d4011b7669017` |
+| `semantic-direct06-acquisition01/manifest.json` | `07e9c6d278c3a20d319afff8f68126c1673680d5e6f3b8eac334c0ab311c44ac` |
 
 ## Remaining qualification at this checkpoint
 
-The maintained source census must be rerun on the final selected snapshot:
-05 changes Nat pattern demand, demanded-reference reachability and proof-valued
-program output after 04. The independent NaN failure remains open. Legacy
+The 06 maintained-eight suite and 26-row JavaScript census are complete and
+passing, separately from the 95/96 semantic verdict. Any later selected source
+image requires its own fresh qualification. The independent NaN failure remains open. Legacy
 regression suites, full-corpus runtime measurements and installation checks are
 separate gates owned by the phase report. Counts overlap and must not be summed
 as unique tests. No full-conformance, installation or promotion claim follows

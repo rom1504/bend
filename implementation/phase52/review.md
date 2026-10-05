@@ -266,3 +266,23 @@ The proposed 18-step direct release smoke received static approval for ordinary
 and relocated pure execution, emitted ESM, partial callable exports without `G`,
 actual IO printing, and a precise direct-runtime tamper rejection followed by
 restoration and re-verification. Only the lead may run those target steps.
+
+## Candidate07 ordered intrinsic proposal
+
+Static review approved `jd_call_held` in core SHA
+`43aebdc5b7d2ae9133a7a19eaa9cd00dd6b9af5cf8e9df437cc4adad5b2f0b66`.
+For non-atomic actuals, the emitted arrow call evaluates every original actual
+once, left to right, before evaluating the intrinsic template. Repeated or
+conditional template operands therefore read held locals, just as in the former
+native wrapper. Template property lookups occur after all actual evaluation.
+Arrow parameters scope only its body; argument expressions retain their outer
+bindings and `JD_USE` markers. Existing partial-application placement, intrinsic
+provenance and arity admission, atomic substitution, and plain-call fallback are
+unchanged. This is a static semantic verdict, not a build or timing result.
+
+The direct06 reference remapper and ordered-intrinsic comparison wrapper also
+received static approval. They bind the exact predecessor API/runtime and the
+precommitted eight-point catalog while retaining the established timing method.
+Their completion flag records method correctness; the recorded geometric-gain
+and maximum-slowdown thresholds still require an explicit retention decision.
+No target execution was performed by this reviewer.

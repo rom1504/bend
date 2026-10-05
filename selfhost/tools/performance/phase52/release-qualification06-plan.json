@@ -1,0 +1,242 @@
+{
+  "kind": "phase52-final-release-qualification-plan",
+  "version": 1,
+  "executed": false,
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06",
+  "attempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/attempt.json",
+    "sha256": "cf2e8ea55f70aef6796b10ebbda65ffa2367428e50afb6d6f9ae0f59b7730835",
+    "bytes": 283726
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/equality/api.mjs",
+    "canonicalPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/equality/api.mjs",
+    "sha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a"
+  },
+  "sourceSha256": "3c5671579628de5c113907403188df17e3d35a15dd520bc1d20b6dc3263d3513",
+  "directRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/src/runtime/js/direct.mjs",
+    "sha256": "417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a",
+    "bytes": 12952
+  },
+  "node": {
+    "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "canonicalPath": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+    "version": "v24.18.0"
+  },
+  "vendorManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06/snapshot/src/runtime/js/effs/manifest.json",
+    "sha256": "0c509cc90e56d95fe8fdb54f50dd4bd7f68a2d910acf04a93689364b126aad3c",
+    "bytes": 7870
+  },
+  "tools": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/release-qualification-plan.py",
+      "sha256": "879e45298ddb430b9082a0a63011d2f634af2f307cf398b1ed0a179691b6af7b",
+      "bytes": 4940
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/final-plan/tools/release-smoke-launch.mjs",
+      "sha256": "e6644ed3e1a7a008c03c0fd1a99a5be21f66f5c39099a472a22399b118b679bf",
+      "bytes": 2164
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/final-plan/tools/release-smoke.mjs",
+      "sha256": "2432fd747028e1a85bee1477b666d137350368f83ebfc0338a1997bd31287c0d",
+      "bytes": 9205
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/direct-release-smoke.mjs",
+      "sha256": "f1a11422df2d9522b7c92cb2c585b0ca05e36f2faf613f0b33a1f5dee5b49555",
+      "bytes": 7666
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/development/release.mjs",
+      "sha256": "dd8abbac72531b71daf6a14060db97ec7ddacbf9a0ac2b720d13e8ec88c5baa2",
+      "bytes": 14728
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase43/job.py",
+      "sha256": "5105ed50018cd46a2def013f6adf62c0f5b69f06edd10d03e500fcd0e9d5ab4b",
+      "bytes": 2672
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/job.py",
+      "sha256": "2ba8021cfeb1289b0dc02a920e7669aaaf0dd918d752c9bfb8816452f16d15e2",
+      "bytes": 1007
+    }
+  ],
+  "steps": [
+    {
+      "name": "install",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/development/release.mjs",
+        "--install-attempt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06"
+      ],
+      "seconds": 300,
+      "expected": {
+        "complete": true,
+        "apiSha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a",
+        "sourceSha256": "3c5671579628de5c113907403188df17e3d35a15dd520bc1d20b6dc3263d3513"
+      },
+      "guardedArgv": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/job.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/job-install",
+        "--seconds",
+        "300",
+        "--",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/development/release.mjs",
+        "--install-attempt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/checked-direct06"
+      ]
+    },
+    {
+      "name": "verify-before",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/development/release.mjs",
+        "--verify"
+      ],
+      "seconds": 120,
+      "expected": {
+        "complete": true,
+        "apiSha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a",
+        "sourceSha256": "3c5671579628de5c113907403188df17e3d35a15dd520bc1d20b6dc3263d3513"
+      },
+      "guardedArgv": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/job.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/job-verify-before",
+        "--seconds",
+        "120",
+        "--",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/development/release.mjs",
+        "--verify"
+      ]
+    },
+    {
+      "name": "legacy42",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/final-plan/tools/release-smoke-launch.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/legacy42",
+        "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a"
+      ],
+      "seconds": 1200,
+      "expected": {
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/legacy42/launcher.json",
+        "complete": true,
+        "pass": true,
+        "steps": 42
+      },
+      "guardedArgv": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/job.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/job-legacy42",
+        "--seconds",
+        "1200",
+        "--",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/final-plan/tools/release-smoke-launch.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/legacy42",
+        "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a"
+      ]
+    },
+    {
+      "name": "direct18",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/direct-release-smoke.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/direct18",
+        "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a",
+        "3c5671579628de5c113907403188df17e3d35a15dd520bc1d20b6dc3263d3513",
+        "417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a"
+      ],
+      "seconds": 900,
+      "expected": {
+        "report": "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/direct18/report.json",
+        "complete": true,
+        "pass": true,
+        "steps": 18
+      },
+      "guardedArgv": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/job.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/job-direct18",
+        "--seconds",
+        "900",
+        "--",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/direct-release-smoke.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/direct18",
+        "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a",
+        "3c5671579628de5c113907403188df17e3d35a15dd520bc1d20b6dc3263d3513",
+        "417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a"
+      ]
+    },
+    {
+      "name": "verify-after",
+      "argv": [
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/development/release.mjs",
+        "--verify"
+      ],
+      "seconds": 120,
+      "expected": {
+        "complete": true,
+        "apiSha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a",
+        "sourceSha256": "3c5671579628de5c113907403188df17e3d35a15dd520bc1d20b6dc3263d3513"
+      },
+      "guardedArgv": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase46/job.py",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/release-qualification06/job-verify-after",
+        "--seconds",
+        "120",
+        "--",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--stack-size=4096",
+        "--max-old-space-size=1024",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/development/release.mjs",
+        "--verify"
+      ]
+    }
+  ],
+  "guardPolicy": "Use guardedArgv only from an unlocked serial scheduler. phase43/job journals only; phase46/job owns the sole ExecutionGuard. Smoke children have no execution lock. If the parent already owns a guard, use argv directly instead. Never nest guardedArgv under another ExecutionGuard.",
+  "admission": "Root must close selected semantics, maintained conformance, full45 performance and cost/release selection before install. This plan neither grants admission nor executes.",
+  "closure": "Require all five supervised jobs complete; legacy launcher+checks pass exactly42, direct report pass exactly18, all direct inventory/input/output hashes unchanged, tampered copied runtime rejected and restored; final release API/source/directRuntime match selected identities."
+}

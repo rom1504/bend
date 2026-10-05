@@ -1,0 +1,352 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "cases": [
+    {
+      "id": "numeric-order",
+      "source": {
+        "path": "fixtures/numeric-order-v2.bend",
+        "sha256": "cb70c5b7a27c92c37aaa892b8b845a08155340454c405284c9396cb62a949697"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "computed-u32-order",
+          "exportName": "computed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "expected": 357,
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "prior-u32-order",
+          "exportName": "prior",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "expected": 357,
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              11
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "computed-u32-throw",
+          "exportName": "computed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul",
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "computed-f32-order",
+          "exportName": "float.computed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "expected": 35,
+          "mutation": {
+            "target": "Math.fround",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              11
+            ],
+            [
+              "builtin-get",
+              "Math.fround"
+            ],
+            [
+              "builtin",
+              "Math.fround",
+              [
+                35
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "computed-f32-throw",
+          "exportName": "float.computed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.fround",
+          "mutation": {
+            "target": "Math.fround",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              11
+            ],
+            [
+              "builtin",
+              "Math.fround",
+              [
+                35
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "deferred-scope-order",
+          "exportName": "deferred",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ],
+            [
+              11
+            ]
+          ],
+          "expected": 306,
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              11
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                18
+              ]
+            ]
+          ],
+          "expectedAfterGroups": [
+            [],
+            [
+              [
+                "callback",
+                10
+              ],
+              [
+                "callback",
+                11
+              ],
+              [
+                "builtin-get",
+                "Math.imul"
+              ],
+              [
+                "builtin",
+                "Math.imul",
+                [
+                  17,
+                  18
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "unselected-branch",
+          "exportName": "branch",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              10,
+              0
+            ]
+          ],
+          "expected": 42,
+          "expectedEvents": []
+        },
+        {
+          "id": "selected-branch",
+          "exportName": "branch",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              10,
+              1
+            ]
+          ],
+          "expected": 17,
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "renamed-nan-table",
+      "source": {
+        "path": "fixtures/renamed-nan-table-v1.bend",
+        "sha256": "dabbe6ed9af11e0b50ebed099b569e817a98b686e243525a32a254e2ccf5ab9d"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "renamed-table",
+          "exportName": "p53.entry",
+          "groups": [
+            []
+          ],
+          "expected": 40
+        }
+      ]
+    }
+  ],
+  "selectedScope": {
+    "kind": "phase53-independent-numeric-order",
+    "fixtures": 2,
+    "scenarios": 9,
+    "reason": "Source-first numeric and ordered computation controls; independent first/repeated raw-bit tests use the same checked source plus unchanged source-table module."
+  },
+  "parentCatalog": {
+    "path": "semantic-numeric-catalog-v2.json",
+    "sha256": "7f07714c8c276da8d465dc527ec9d80facc73c98ac393ad6b924758923e0176a"
+  },
+  "fixtureCorrection": "Upstream refuses +function binding because function Type is not Data. Use two affine function formals, each applied once, to independently observe the two ordered arguments. Expected outputs/events and branch controls unchanged.",
+  "oracleCorrection": "Exact pinned js_call two-stage policy: recursively produce every child expression/prefix first, then intrinsic emit_hold every non-atomic pending value. Thus nested right U32.add executes its g callback before pending outer-left f callback; explicit Let and F32 cases retain prior order. Candidate must now match this independent target contract; this is not a candidate waiver."
+}

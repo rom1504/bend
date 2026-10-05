@@ -50,16 +50,22 @@ document native callable/data layouts and the retained compatibility selector.
 
 Phase52 expanded intrinsics only for exact inert operands. Its attempted
 parameter-IIFE generalization was 25.75% slower and remains rejected. Instead,
-prototype statement prefixes plus one resulting expression: computed operands
-are evaluated once in source order, then admitted primitive operations are
-expanded without allocating an extra function boundary.
+prototype statement prefixes plus one resulting expression. The expanded controls
+exposed the pinned emitter's two-stage policy: emit child prefixes first, then
+evaluate pending intrinsic actuals once. Follow that policy when expanding
+primitive operations without allocating an extra function boundary. The
+[evaluation-order refinement](ordered-prefix-evaluation-order.md) records the
+counterexample and superseded unexecuted left-to-right prototype.
 
-Start with intrinsic applications in contexts that already emit statements.
+Start with intrinsic applications in contexts that already emit statements,
+and propagate prefixes through unknown calls, constructors and expression lets.
 Keep computation within its original branch, closure, lazy view and partial-call
 scope. Preserve erased argument behavior, coercion/getter/throw order, loop
 capture, demand metadata and emitted dependency discovery. Do not reorder effectful
-operands or duplicate evaluation. Fall back to the existing lowering when the
-new representation cannot establish these conditions. No benchmark-name rules.
+operands or duplicate evaluation. Reuse existing leaf lowering only where its
+semantics remain valid; never fall back where that would restore the exposed
+ordering mismatch. Unsupported forms must refuse explicitly. No benchmark-name
+rules.
 
 An independent reviewer checks the transformation and dedicated witnesses before
 building. The first numerical screen compares the corrected/default baseline

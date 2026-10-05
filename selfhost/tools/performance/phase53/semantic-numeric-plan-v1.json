@@ -1,0 +1,199 @@
+{
+  "kind": "phase53-cold-numeric-plan",
+  "sourceTable": {
+    "freshProcesses": 3,
+    "mode": "source-table",
+    "expected": 40,
+    "repetitions": 3,
+    "sourceGoldenUnchanged": true
+  },
+  "roundtrips": [
+    {
+      "id": "bits-0x0",
+      "mode": "roundtrip",
+      "bits": 0,
+      "expected": 0,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x80000000",
+      "mode": "roundtrip",
+      "bits": 2147483648,
+      "expected": 2147483648,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x1",
+      "mode": "roundtrip",
+      "bits": 1,
+      "expected": 1,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x80000001",
+      "mode": "roundtrip",
+      "bits": 2147483649,
+      "expected": 2147483649,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x7fffff",
+      "mode": "roundtrip",
+      "bits": 8388607,
+      "expected": 8388607,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x807fffff",
+      "mode": "roundtrip",
+      "bits": 2155872255,
+      "expected": 2155872255,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x800000",
+      "mode": "roundtrip",
+      "bits": 8388608,
+      "expected": 8388608,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x80800000",
+      "mode": "roundtrip",
+      "bits": 2155872256,
+      "expected": 2155872256,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x3f800000",
+      "mode": "roundtrip",
+      "bits": 1065353216,
+      "expected": 1065353216,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0xbf800000",
+      "mode": "roundtrip",
+      "bits": 3212836864,
+      "expected": 3212836864,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x7f800000",
+      "mode": "roundtrip",
+      "bits": 2139095040,
+      "expected": 2139095040,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0xff800000",
+      "mode": "roundtrip",
+      "bits": 4286578688,
+      "expected": 4286578688,
+      "repetitions": 5,
+      "kind": "finite-special",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x7f800001",
+      "mode": "roundtrip",
+      "bits": 2139095041,
+      "expected": 2143289345,
+      "repetitions": 5,
+      "kind": "nan-payload",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x7f800002",
+      "mode": "roundtrip",
+      "bits": 2139095042,
+      "expected": 2143289346,
+      "repetitions": 5,
+      "kind": "nan-payload",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x7f800003",
+      "mode": "roundtrip",
+      "bits": 2139095043,
+      "expected": 2143289347,
+      "repetitions": 5,
+      "kind": "nan-payload",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0xff800001",
+      "mode": "roundtrip",
+      "bits": 4286578689,
+      "expected": 4290772993,
+      "repetitions": 5,
+      "kind": "nan-payload",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0x7fc01234",
+      "mode": "roundtrip",
+      "bits": 2143294004,
+      "expected": 2143294004,
+      "repetitions": 5,
+      "kind": "nan-payload",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    },
+    {
+      "id": "bits-0xffc05678",
+      "mode": "roundtrip",
+      "bits": 4290795128,
+      "expected": 4290795128,
+      "repetitions": 5,
+      "kind": "nan-payload",
+      "oracleDomain": "JS Number quiets signaling NaNs; sign and payload must survive, without canonicalizing. Finite signed zero/subnormal/infinity bits are exact."
+    }
+  ],
+  "arithmetic": [
+    {
+      "id": "arithmetic-nan",
+      "mode": "export",
+      "exportName": "arithmetic.nan",
+      "expected": 1,
+      "repetitions": 3
+    },
+    {
+      "id": "negative-zero-product",
+      "mode": "export",
+      "exportName": "arithmetic.negative.zero",
+      "expected": 2147483648,
+      "repetitions": 3
+    }
+  ],
+  "scope": "Cold source-table firstcall and every repeat are hard candidate source gates. All fixed numeric bit oracles required for candidate. Reference failures are preserved; only explicit NaN payload rows may reflect the exact preexisting f32_bits defect; finite, signedzero, subnormal, arithmetic and ordering reference errors fail.",
+  "renamedTable": {
+    "freshProcesses": 3,
+    "mode": "source-table",
+    "exportName": "p53.entry",
+    "expected": 40,
+    "repetitions": 3,
+    "sourceGoldenUnchanged": true
+  }
+}

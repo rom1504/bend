@@ -1,0 +1,119 @@
+{
+  "kind": "phase53-observable-order-oracle-correction",
+  "complete": true,
+  "executed": false,
+  "priorCatalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-numeric-catalog-v2.json",
+    "sha256": "7f07714c8c276da8d465dc527ec9d80facc73c98ac393ad6b924758923e0176a"
+  },
+  "successorCatalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-numeric-catalog-v3.json",
+    "sha256": "dfcf99907fc0a9704c9fea16413119735e62722bdaa61a80caaac18d3293b703"
+  },
+  "priorFailedControls": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-runtime-corrected01/report.json",
+    "sha256": "f98af0bed8be8348977578aaf9569e280349100332970d626b33a5739f144862"
+  },
+  "sourceUnchanged": true,
+  "sourceGolden40Unchanged": true,
+  "changedTests": [
+    {
+      "test": "computed-u32-order",
+      "before": [
+        [
+          "callback",
+          10
+        ],
+        [
+          "callback",
+          11
+        ],
+        [
+          "builtin-get",
+          "Math.imul"
+        ],
+        [
+          "builtin",
+          "Math.imul",
+          [
+            17,
+            21
+          ]
+        ]
+      ],
+      "after": [
+        [
+          "callback",
+          11
+        ],
+        [
+          "callback",
+          10
+        ],
+        [
+          "builtin-get",
+          "Math.imul"
+        ],
+        [
+          "builtin",
+          "Math.imul",
+          [
+            17,
+            21
+          ]
+        ]
+      ]
+    },
+    {
+      "test": "computed-u32-throw",
+      "before": [
+        [
+          "callback",
+          10
+        ],
+        [
+          "callback",
+          11
+        ],
+        [
+          "builtin",
+          "Math.imul",
+          [
+            17,
+            21
+          ]
+        ]
+      ],
+      "after": [
+        [
+          "callback",
+          11
+        ],
+        [
+          "callback",
+          10
+        ],
+        [
+          "builtin",
+          "Math.imul",
+          [
+            17,
+            21
+          ]
+        ]
+      ]
+    }
+  ],
+  "policySources": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+      "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase52/parity-contract.md",
+      "sha256": "f0e16158de21739c9cdd3a3c2b7aa0b28e27dab1851c68b66ba58e65173a5e3e"
+    }
+  ],
+  "policy": "Pinned comp.ts js_call line3061 args.map(js_expr) emits all descendant prefixes, then line3082 intrinsic exprs.map emit_hold emits pending operand values. Existing direct callable contract requires its observable property reads, conversions, foreign callbacks and error order. No blanket source-level left-to-right guarantee was found that overrides this explicitly selected upstream-JS boundary. IO sequencing and branch/closure demand scope remain unchanged.",
+  "scope": "Only two newly authored computed-U32 expected event lists reverse their first two callbacks. Outputs/errors/source bytes, all other six event controls, unchanged96sourcecases, and all numeric/cold oracles stay fixed. Corrected01 is now explicitly expected to fail these two candidate boundary cases; ordered successor must pass."
+}

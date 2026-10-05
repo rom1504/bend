@@ -218,12 +218,7 @@ def jd_body_let_render(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,
 
 @unsafe
 def jd_let_values(+book: List<&2,KDef>, +env: List<&2,KTerm>, +xs: List<&2,KTerm>, +at: U32, +body: String) -> String:
-  match xs:
-    case Nil{}: ""
-    case Con{x, Nil{}}: ""
-    case Con{x, rest}: kc(String, String.contains(body, jd_use(ix(x))), u => "const $let" ++ U32.show(at) ++ "=" ++
-      kc(String, U32.is_eq(qt(x), 0), u => "null", u => jd_expr(book, env, kid(x, 0), j_type(book, env, kid(x, 0)))) ++
-      ";", u => "") ++ jd_let_values(book, env, rest, U32.inc(at), body)
+  jd_ordered_lets(book, env, xs, at, body, 0)
 
 @unsafe
 def jd_let_bindings(+xs: List<&2,KTerm>, +at: U32, +body: String) -> String:
@@ -245,13 +240,12 @@ def jd_return_self(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: K
   match r:
     case JDArgs{values, rest, result, missing}:
       kc(String, List.is_empty(&2,KTerm, rest) && U32.is_eq(jd_live_arity(book, result, missing), 0),
-        u => jd_transfer_args(book, jd_owner(env), nm(spine), values),
+        u => jd_ordered_transfer(book, env, nm(spine), ks(spine)),
         u => jd_return_regular(book, env, t, ty, spine))
 
 @unsafe
 def jd_return_regular(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm) -> String:
-  "return " ++ kc(String, String.eq(tg(t), "App") || String.eq(tg(t), "Ref"),
-    u => jd_application(book, env, t, jd_tail_position(env), spine), u => jd_expr(book, env, t, ty)) ++ ";"
+  jd_ordered_return(book, env, t, ty)
 
 @unsafe
 def jd_transfer_args(+book: List<&2,KDef>, +owner: String, +target: String, +values: List<&2,String>) -> String:

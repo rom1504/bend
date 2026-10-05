@@ -53,7 +53,9 @@ payload bits; ten finite, signed-zero, subnormal and infinity patterns roundtrip
 Nested coercion observes outer/nested once each; throwing coercion retains the
 thrown identity and runs once. Static reviewer approved the source-first contract.
 
-Root still must compile a checked candidate and execute the actual original and
-independently renamed source fixtures cold and repeated, complete semantic suite,
-and relevant performance rejection screens. Tiny helper substitution is not
-actual emitted qualification. Preserve all Phase52 failures and denominator rows.
+Corrected01 subsequently passed the original 96 source scenarios. Fresh checked
+original and independently renamed fixtures return 40 on each cold and repeated
+call; the reference's separate payload failure remains visible. Its eight-point
+performance screen shows effectively unchanged speed. The ordered successor
+requires its own selected-image qualification. Tiny helper substitution alone
+is not actual emitted qualification. All Phase52 failures remain preserved.

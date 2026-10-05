@@ -1,0 +1,789 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "selectedScope": {
+    "fixtures": 1,
+    "scenarios": 14,
+    "kind": "independent-composition-order"
+  },
+  "cases": [
+    {
+      "id": "composition-order",
+      "source": {
+        "path": "fixtures/composition-order-v4.bend",
+        "sha256": "8875a21d0dacc8620c1050589edda1c6058f9579fdc209f490825f13bbcd0798"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "opaque-getter",
+          "exportName": "opaque",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ],
+            [
+              "callback",
+              357
+            ]
+          ],
+          "expected": 364
+        },
+        {
+          "id": "opaque-throw",
+          "exportName": "opaque",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul"
+        },
+        {
+          "id": "boxed-getter",
+          "exportName": "boxed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expected": {
+            "$": "P53Box",
+            "value": 357
+          }
+        },
+        {
+          "id": "boxed-throw",
+          "exportName": "boxed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul"
+        },
+        {
+          "id": "let-argument-getter",
+          "exportName": "let.argument",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expected": 357
+        },
+        {
+          "id": "let-argument-throw",
+          "exportName": "let.argument",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul"
+        },
+        {
+          "id": "deferred-context-getter",
+          "exportName": "deferred.context",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ],
+            [
+              {
+                "$callback": "plus7"
+              }
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ],
+            [
+              "callback",
+              357
+            ]
+          ],
+          "expected": 364,
+          "expectedAfterGroups": [
+            [],
+            [
+              [
+                "callback",
+                11
+              ],
+              [
+                "callback",
+                10
+              ],
+              [
+                "builtin-get",
+                "Math.imul"
+              ],
+              [
+                "builtin",
+                "Math.imul",
+                [
+                  17,
+                  21
+                ]
+              ],
+              [
+                "callback",
+                357
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "deferred-context-throw",
+          "exportName": "deferred.context",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ],
+            [
+              {
+                "$callback": "plus7"
+              }
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul",
+          "expectedAfterGroups": [
+            [],
+            [
+              [
+                "callback",
+                11
+              ],
+              [
+                "callback",
+                10
+              ],
+              [
+                "builtin",
+                "Math.imul",
+                [
+                  17,
+                  21
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "capture-expression-getter",
+          "exportName": "capture.expression",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ],
+            [
+              20
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              20
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                27
+              ]
+            ]
+          ],
+          "expectedAfterGroups": [
+            [
+              [
+                "callback",
+                10
+              ]
+            ],
+            [
+              [
+                "callback",
+                10
+              ],
+              [
+                "callback",
+                20
+              ],
+              [
+                "builtin-get",
+                "Math.imul"
+              ],
+              [
+                "builtin",
+                "Math.imul",
+                [
+                  17,
+                  27
+                ]
+              ]
+            ]
+          ],
+          "expected": 459
+        },
+        {
+          "id": "capture-expression-throw",
+          "exportName": "capture.expression",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ],
+            [
+              20
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              20
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                27
+              ]
+            ]
+          ],
+          "expectedAfterGroups": [
+            [
+              [
+                "callback",
+                10
+              ]
+            ],
+            [
+              [
+                "callback",
+                10
+              ],
+              [
+                "callback",
+                20
+              ],
+              [
+                "builtin",
+                "Math.imul",
+                [
+                  17,
+                  27
+                ]
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul"
+        },
+        {
+          "id": "capture-inner-getter",
+          "exportName": "capture.inner",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ],
+            [
+              20
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              20
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                27
+              ]
+            ]
+          ],
+          "expectedAfterGroups": [
+            [
+              [
+                "callback",
+                10
+              ]
+            ],
+            [
+              [
+                "callback",
+                10
+              ],
+              [
+                "callback",
+                20
+              ],
+              [
+                "builtin-get",
+                "Math.imul"
+              ],
+              [
+                "builtin",
+                "Math.imul",
+                [
+                  17,
+                  27
+                ]
+              ]
+            ]
+          ],
+          "expected": 459
+        },
+        {
+          "id": "capture-inner-throw",
+          "exportName": "capture.inner",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ],
+            [
+              20
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              20
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                27
+              ]
+            ]
+          ],
+          "expectedAfterGroups": [
+            [
+              [
+                "callback",
+                10
+              ]
+            ],
+            [
+              [
+                "callback",
+                10
+              ],
+              [
+                "callback",
+                20
+              ],
+              [
+                "builtin",
+                "Math.imul",
+                [
+                  17,
+                  27
+                ]
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul"
+        },
+        {
+          "id": "capture-siblings-getter",
+          "exportName": "capture.siblings",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              11
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                18,
+                20
+              ]
+            ]
+          ],
+          "expected": 360
+        },
+        {
+          "id": "capture-siblings-throw",
+          "exportName": "capture.siblings",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              11
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                18,
+                20
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul"
+        }
+      ]
+    }
+  ],
+  "contract": "Pinned JS emitter generates child prefixes before pending intrinsic operand holds; branch/closure prefixes remain in demand scope. No NaN oracle exceptions.",
+  "parentCatalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-composition-catalog-v3.json",
+    "sha256": "c1b8a60dd4cbf421c12e97a799c6380ad3dd00af2a3606de9c601055f00ff14f"
+  },
+  "derivation": "Preserve original eight order cases; append six independently computed expression-Let capture, nested Let, and sibling same-name binder getter/throw cases."
+}

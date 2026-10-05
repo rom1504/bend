@@ -1,0 +1,425 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "selectedScope": {
+    "fixtures": 1,
+    "scenarios": 8,
+    "kind": "independent-composition-order"
+  },
+  "cases": [
+    {
+      "id": "composition-order",
+      "source": {
+        "path": "fixtures/composition-order-v3.bend",
+        "sha256": "d04255580ab12d67adf8c768d816efd575a674dc0af4eb5e31d39a2af0478c86"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "opaque-getter",
+          "exportName": "opaque",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ],
+            [
+              "callback",
+              357
+            ]
+          ],
+          "expected": 364
+        },
+        {
+          "id": "opaque-throw",
+          "exportName": "opaque",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul"
+        },
+        {
+          "id": "boxed-getter",
+          "exportName": "boxed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expected": {
+            "$": "P53Box",
+            "value": 357
+          }
+        },
+        {
+          "id": "boxed-throw",
+          "exportName": "boxed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul"
+        },
+        {
+          "id": "let-argument-getter",
+          "exportName": "let.argument",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expected": 357
+        },
+        {
+          "id": "let-argument-throw",
+          "exportName": "let.argument",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul"
+        },
+        {
+          "id": "deferred-context-getter",
+          "exportName": "deferred.context",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ],
+            [
+              {
+                "$callback": "plus7"
+              }
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ],
+            [
+              "callback",
+              357
+            ]
+          ],
+          "expected": 364,
+          "expectedAfterGroups": [
+            [],
+            [
+              [
+                "callback",
+                11
+              ],
+              [
+                "callback",
+                10
+              ],
+              [
+                "builtin-get",
+                "Math.imul"
+              ],
+              [
+                "builtin",
+                "Math.imul",
+                [
+                  17,
+                  21
+                ]
+              ],
+              [
+                "callback",
+                357
+              ]
+            ]
+          ]
+        },
+        {
+          "id": "deferred-context-throw",
+          "exportName": "deferred.context",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ],
+            [
+              {
+                "$callback": "plus7"
+              }
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul",
+          "expectedAfterGroups": [
+            [],
+            [
+              [
+                "callback",
+                11
+              ],
+              [
+                "callback",
+                10
+              ],
+              [
+                "builtin",
+                "Math.imul",
+                [
+                  17,
+                  21
+                ]
+              ]
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "contract": "Pinned JS emitter generates child prefixes before pending intrinsic operand holds; branch/closure prefixes remain in demand scope. No NaN oracle exceptions.",
+  "parentCatalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-composition-catalog-v2.json",
+    "sha256": "00abae907ada63097935d5a79d6286a59b901cb9305b7098569b0181b3da03a6"
+  },
+  "derivation": "Disjoint f input10/g input11 makes callback order independently observable; same source topology and eight getter/throw gates."
+}

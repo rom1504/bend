@@ -5,9 +5,10 @@ changes ordinary JavaScript compilation to direct output, and tests ordered
 intrinsic lowering for further execution-speed gains.
 
 [Design](../../design/phase53/default-direct-and-ordered-expressions.md) ·
-[NaN diagnosis](nan-payload.md) · [Independent review](review.md) ·
+[NaN diagnosis](nan-payload.md) · [Qualification](qualification.md) · [Independent review](review.md) ·
 [Benchmark plan](../../selfhost/tools/performance/phase53/PLAN.md) ·
-[Scaling limits](scaling.md) · [Table opportunity](table-opportunity.md).
+[Scaling limits](scaling.md) · [Table opportunity](table-opportunity.md) ·
+[Source accounting](complexity.md).
 
 ## Corrected baseline checkpoint
 
@@ -49,3 +50,28 @@ Evidence: `selfhost/build/phase53/checked-corrected01`,
 `semantic-corrected01-controls01/report.json`. The complete final campaign will
 be preserved in one closed raw archive at publication. Phase52 evidence remains
 unchanged. Optimization, final measurements and installation are in progress.
+
+## Expanded controls and optimization admission
+
+The correction/default-only eight-point screen completes all 72 samples in
+57.429 seconds. Corrected/TypeScript is 1.224461 and prior direct06/TypeScript
+is 1.226614: performance is effectively unchanged (1.001759 times speedup).
+No point regresses more than 10%. These eight points are a rejection screen,
+not the final 45-point result.
+
+New computed-U32 callback controls exposed another existing interface gap:
+direct06/corrected01 call `f` then `g`, while the pinned emitter's nested-prefix
+policy calls `g` then `f`. The initial independent test assumed left-to-right
+execution; its failure remains preserved. A versioned correction follows the
+published upstream-callable contract and the audited emitter implementation,
+leaving values/errors and all other expectations unchanged. Corrected01 fails
+those two revised interface controls; default release promotion remains pending.
+
+The [refined plan](../../design/phase53/ordered-prefix-evaluation-order.md)
+addresses this in a composable ordered-expression representation, including
+unknown calls, constructors and expression lets. The first isolated prototype
+was superseded before compilation or timing. Ordered02 now passes all 96 original
+source scenarios, 18 composition controls and 34 numeric controls. Pinned
+TypeScript's original NaN failure and six corresponding cold reference failures
+remain visible. Maintained-suite, performance and installed-interface gates
+remain separate; no mismatch is waived.

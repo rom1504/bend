@@ -7,7 +7,7 @@ const dir=path.join(project,'build/js-provenance');fs.mkdirSync(dir,{recursive:t
 const names=['True','False','Zero','Succ','SNil','SCon','Chr','Tuple','ALeaf','ANode'];
 const source='type Flag is Data:\n  Up{}\n  Down{}\n\ntype Foo is Data:\n'+names.map(n=>'  '+n+'{+value: Flag}\n').join('')+'\ndef pick(f: Foo) -> Flag:\n  match f:\n'+names.map(n=>'    case '+n+'{value}: value\n').join('')+'\n'+names.map((n,i)=>'def make'+i+'() -> Foo:\n  '+n+'{Up{}}\n').join('\n');
 const input=path.join(dir,'owned-constructors.bend'),output=path.join(dir,'owned-constructors.mjs');fs.writeFileSync(input,source);
-const result=await inspect(input,{mode:'library',api});assert.equal(result.status,'ok',JSON.stringify(result));fs.writeFileSync(output,result.code);
+const result=await inspect(input,{mode:'library',backend:'js',api});assert.equal(result.status,'ok',JSON.stringify(result));fs.writeFileSync(output,result.code);
 const library=(await import(pathToFileURL(output))).default;
 for(const [i,name] of names.entries()){const value=library['make'+i]();assert.equal(value.$,name);assert.deepEqual(library.pick(value),{$:'Up',a:[]});}
 fs.writeFileSync(path.join(dir,'report.json'),JSON.stringify({status:'pass',source,constructors:names,checked:result.checked},null,2)+'\n');

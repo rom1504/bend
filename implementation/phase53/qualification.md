@@ -37,6 +37,7 @@ without one function wrapper per primitive operation.
 | --- | ---: | ---: |
 | Original 29 checked fixtures / 96 source scenarios | 96/96 | 95/96 |
 | Composition: getter/throw, constructors, lets, captures, partial calls | 18/18 | 18/18 |
+| Genuine overapplication through a let barrier | 2/2 | 2/2 |
 | Numeric: bits, finite/signed-zero/subnormal arithmetic, callback ordering, cold/repeated NaN | 34/34 | 28/34 |
 
 The six numeric reference failures are the original and renamed NaN table in
@@ -50,6 +51,20 @@ The final strict controllers independently check process success, return/throw
 outcome, returned value or error, and ordered events. A shared assertion error
 cannot pass merely because both sides recorded similar observations. Earlier
 controller versions and their failures remain in the campaign evidence.
+
+The separate overapplication witness prevents arity raising with a let before
+the returned lambda. Inspection confirms a one-argument emitted function followed
+by application of its returned closure. The earlier similarly named composition
+case could be arity-raised; it was not sufficient evidence for this branch.
+
+The maintained direct JS census agrees on all 26 rows: 18 runtime passes, four
+expected compilation rejections and four N/A. The first legacy compatibility
+run passed three suites, then failed an assertion about the old code structure:
+`test-choice.mjs` implicitly requested the newly changed default backend. Four
+library requests in the choice and provenance tests now explicitly select
+`backend: 'js'`. Only test routing changes; every original assertion and frozen
+compiler file remains intact. Before/after bytes and the failed receipt are
+preserved in `maintained-routing-repair01/`; a fresh eight-suite run is required.
 
 Reports currently reside under `selfhost/build/phase53/`:
 `semantic-ordered02-controls01/report.json`,

@@ -1,0 +1,97 @@
+{
+  "kind": "phase53-direct-program-profiles",
+  "schemaVersion": 1,
+  "catalog": "../phase37/catalog.json",
+  "catalogSha256": "33e353f51d1c90d27ff05dd2051dfccbefb23e29cfd73d7839b4cb1d42690b1c",
+  "callingContract": "upstream-compatible-direct-v1",
+  "timingWorker": "../programs/execute.mjs",
+  "workerSha256": "5a37e3bdcc390cdc9a9745fcfacdcca75fc8a16a5b02405345aa618f770692c5",
+  "scope": "Same immutable workloads/oracles and execution protocol. Baseline is selected direct06, not legacy Phase51. All performance decisions require same-run denominators.",
+  "parents": [
+    {
+      "path": "../phase52/profiles.json",
+      "sha256": "d7f373d1e4861f7a6f4dc3cc57c04ce5e9bd2fe4ce8af6f9e9893a8f907e558a"
+    },
+    {
+      "path": "../phase52/intrinsic-profile-v1.json",
+      "sha256": "11e41bca09263752a3bec9500d0cc8e99731bd614398d3631a8206cdf9f637d9"
+    }
+  ],
+  "numeric3": [
+    "mandelbrot",
+    "variation-ray-active-64-2440",
+    "editdist"
+  ],
+  "screen8": [
+    "mandelbrot",
+    "local-pair",
+    "editdist",
+    "variation-ray-active-64-2440",
+    "variation-local-fold-8192-123",
+    "test-morning-program",
+    "coverage-expression-128",
+    "coverage-closures-64"
+  ],
+  "full45Batches": [
+    [
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32",
+      "mandelbrot",
+      "editdist",
+      "tree-bitonic",
+      "lexer",
+      "symreg",
+      "test-morning-program",
+      "test-evening-program",
+      "test-rle-roundtrip",
+      "test-map-set-ops",
+      "raytrace"
+    ],
+    [
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "variation-ray-active-256-2240",
+      "coverage-closures-64"
+    ],
+    [
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024",
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-expression-32",
+      "coverage-expression-128",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ]
+  ],
+  "expectedSamples": {
+    "numeric3": 27,
+    "screen8": 72,
+    "full45": [
+      219,
+      225,
+      225
+    ]
+  }
+}

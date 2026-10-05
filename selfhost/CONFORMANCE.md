@@ -1,8 +1,31 @@
 # Compiler validation
 
-## Current Phase48 RNFA04 validation
+## Current Phase51 validation
 
-RNFA04 (`checked-combined-rnfa04`) is installed. The checked B1 build, release
+Phase51 is installed. The checked B1 strict gate, release verification, all 42
+ordinary/relocated CLI checks and the 27-sample portable replay pass. The
+[phase report](../implementation/phase51/README.md) and
+[selected evidence](tools/performance/phase51/evidence/selected-qualification.json)
+bind API `c15718cbf3e744e47c0795d7d78db6351a61c21983f53ec9c722272782dba061`
+and runtime `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
+
+Actual checked output passes 33 String-boundary and 27 application observations,
+retained exact-entry/nullary/array controls and all eight maintained suites.
+The [qualification report](../implementation/phase51/qualification.md) records
+81 historical backend outcomes: 69 execution passes, eight N/A, four shared failures.
+Sixty outcomes are reused from the first run; 21 native outcomes come from a
+targeted retry after the sandbox refused Clang. Failed receipts remain unchanged.
+These overlapping inventories do not add up to unique new language tests.
+
+All 669 full benchmark samples pass; fresh execution time improves 3.008× → 2.928×
+TypeScript by equal point. Performance is separate from semantic qualification.
+The large frontend inventory below remains historical. No new self-hosted fixed
+point, full native/GPU conformance or independent proof validity is established.
+The upstream pin is unchanged.
+
+## Historical Phase48 RNFA04 validation
+
+RNFA04 (`checked-combined-rnfa04`) was installed at the Phase48 checkpoint. The checked B1 build, release
 verification and all 42 ordinary/relocated CLI checks pass. Portable replay also
 passes all 27 samples across three cases.
 API SHA256: `6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100`.
@@ -520,7 +543,7 @@ primitive/worker/nested/refusal controls,40+2 additional worker checks,22 compil
 components and full HVM output. The backend pilot preserves81 historical outcomes
 (69 pass /8 not applicable /4 shared failures), combining60 unaffected original
 rows and21 native retries in the approved Clang execution context. The original
-17 paired EPERM failures remain recorded. Release verification and all42 ordinary/
+17 paired EPERM failures remain recorded. Release verification and all 42 ordinary/
 relocated CLI checks pass. See [final conformance](../implementation/phase31/final-conformance.md)
 and the release report for exact scopes. No new H, full backend, GPU, fixed-point or independent
 proof-kernel claim follows. The optional811 additional JS cases remain deferred.
@@ -740,7 +763,7 @@ Phase20 also reruns the maintained36 with zero strict differences, decorator24,
 constructor50, first-element54 and expanded whitespace44, all exact. Original
 supplied39 and ordered-host43 now have zero strict differences. Three new accepted
 constructor programs pass check/interpreter/JS/native comparisons (12observations),
-and all42 installed/relocated CLI checks pass. These suites overlap; do not add
+and all 42 installed/relocated CLI checks pass. These suites overlap; do not add
 their counts as distinct programs. A rejected intermediate constructor candidate's
 semicolon false acceptances remain documented in the independent review.
 

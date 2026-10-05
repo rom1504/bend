@@ -5,52 +5,47 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-**Phase48 RNFA04 is installed; release verification and all 42 CLI checks pass.**
-API: `6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100`.
-Runtime: `880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
-The [report](../implementation/phase48/README.md),
+**Phase51 is installed; release verification and all 42 CLI checks pass.**
+API: `c15718cbf3e744e47c0795d7d78db6351a61c21983f53ec9c722272782dba061`.
+Runtime: `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
+The [report](../implementation/phase51/README.md),
 [release manifest](../selfhost/dist/release.json) and
-[selected evidence](../selfhost/tools/performance/phase48/evidence/selected-qualification.json)
-bind both identities and the exact checked attempt.
+[selected evidence](../selfhost/tools/performance/phase51/evidence/selected-qualification.json)
+bind both identities and the checked attempt.
 
-The general private backend retains calls, branches, layouts, tail loops,
-bounded recursion and continuation fallback. Phase48 adds public composite-result
-adaptation, direct proved String values, private finite F32 literals and typed
-Array effects. Original handles, sharing, field demand and ordered stores remain
-observable. Full guards retain the ordinary fallback. A bounded profitability
-rule declines directly mapped zero/one counts without coercion or cached host
-permission. See the [IR guide](../selfhost/docs/JAVASCRIPT_IR.md) and
-[representation contracts](self_hosted/phase48-representations.md). Historical
-specialized paths and opaque compatibility boundaries remain.
+Existing typed private calls, branches, layouts, tail loops, bounded recursion,
+composite boundaries, native values and Array effects remain. Phase51 extracts
+only the IO application body and reuses one String proof within a synchronous
+entry. It caches no permission across public calls. See the
+[runtime guide](self_hosted/v8-guided-runtime.md),
+[IR guide](../selfhost/docs/JAVASCRIPT_IR.md) and
+[representation contracts](self_hosted/phase48-representations.md).
 
-The [source graph](../implementation/phase48/accounting.md) contains **23,660
-physical / 19,489 code Bend lines, 2,673 definitions, 87 types and 92 modules**:
-406 more physical lines (1.75%) than array06. These counts exclude runtimes, tools,
-tests and generated images; declarations are complexity proxies. The runtime is
-unchanged, and summed library bytes across distinct source/output pairs grow 0.72%.
+[Source accounting](../implementation/phase51/accounting.md) records **23,662
+physical / 19,489 code Bend lines, 2,673 definitions, 87 types and 92 modules**.
+Code-line and definition counts are unchanged. The runtime adds six lines/304
+bytes, including comments. Tests, experiment tools and generated images are separate.
 
-The [full execution results](../implementation/phase48/results.md) cover 45
+The [full execution comparison](../implementation/phase51/results.md) covers 45
 points / 23 sources / 669 fresh samples. Equal-point slowdown improves
-**2.9024× → 2.6789× pinned TypeScript time**; equal-source slowdown improves
-3.9789× → 3.6793×. Generic row improves 13.47× and Unicode improves 1.26–1.46×.
-The other 44 points collectively improve 1.0231×; the largest primary regression
-is 3.25%. [Compiler requests](../implementation/phase48/compiler-cost-final.md)
-increase 3.27–4.41% on two inputs. Supplementary tiny literal loops still regress.
-The maintained corpus informed optimization and is not a universal speed estimate.
+**3.008× → 2.928× pinned TypeScript time**; equal-source slowdown improves
+4.078× → 3.929×. Unicode improves 24%/8%; the largest median regression is 2.65%.
+Evening is warmup-sensitive and sampled allocation remains unchanged. The prior
+RNFA04 2.679× ratio is historical; it is not the fresh denominator. These are
+maintained-corpus measurements, not universal parity or a compiler-throughput gain.
 
-[Conformance](../selfhost/CONFORMANCE.md) records fresh selected controls, eight
-maintained suites and exact agreement on 81 backend outcomes: 69 execution
-passes, eight N/A and four shared failures. The larger frontend inventory remains
-historical. This is a checked B1 derivative, not a new self-emitted fixed point.
-The pin remains [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),
-after Bend 2.0.34. Native IO.args remains a known gap; GPU/proof validity is not
-established by these checks.
+[Conformance](../selfhost/CONFORMANCE.md) records focused controls, eight maintained
+suites and 81 backend outcomes: 69 passes, eight N/A and four shared failures.
+The native batch was retried after an environment refusal. Larger frontend
+inventories remain historical. This is a checked B1 derivative, not a new fixed
+point. The pin remains `018751270e800bc222a93dad7f257083ee53a5f7`, after Bend2.0.34.
+Native IO.args and broader native/GPU/proof validity remain open.
 
-Use the [portable Phase48 guide](../selfhost/tools/performance/phase48/README.md)
-and [current bundle](../selfhost/tools/performance/phase48/current/manifest.json)
-for RNFA04 against array06 and pinned TypeScript. Start with a 20-second rejection
-screen; core8 includes the private tree path. Full coverage uses three serial
-600-second batches. Profiles and generated-JavaScript comparison run separately.
+Use the [portable Phase51 guide](../selfhost/tools/performance/phase51/README.md)
+for 20/60/300-second selections and three serial full-corpus batches. Profiles
+and generated-JavaScript comparison run separately. The
+[Phase48 report](../implementation/phase48/README.md) preserves earlier compiler
+request, representation and runtime measurements with their original denominators.
 
 ## Historical release results: Phase47
 

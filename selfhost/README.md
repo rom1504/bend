@@ -1,38 +1,37 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase48 report](../implementation/phase48/README.md) and
+[Phase51 report](../implementation/phase51/README.md) and
 [JavaScript IR architecture](docs/JAVASCRIPT_IR.md).
-**Phase48 RNFA04 is installed; release verification and all 42 CLI checks pass.**
+**Phase51 is installed; release verification and all 42 CLI checks pass.**
 The [release manifest](dist/release.json) and
-[selected evidence](tools/performance/phase48/evidence/selected-qualification.json)
-identify the exact checked B1 compiler/runtime pair.
+[selected evidence](tools/performance/phase51/evidence/selected-qualification.json)
+identify the checked B1 compiler/runtime pair.
 
-The private backend combines typed calls, cases, projections, tail loops,
-bounded recursion and an ordinary fallback. Phase48 extends composite result
-boundaries, native String values, finite F32 literals and typed Array effects.
-Public array handles, aliases, write order and mutable-host contracts remain.
-See the [representation guide](../docs/self_hosted/phase48-representations.md).
-Historical specialized paths remain; this is not a fully unified backend.
+The private backend retains typed calls, cases, layouts, tail loops, native
+representations and ordinary fallback. Phase51 adds a small IO helper and reuses
+an already-completed String check within one synchronous contextual entry.
+Dependency checks, argument-read order, host mutation and fallback behavior remain.
+See the [runtime guide](../docs/self_hosted/v8-guided-runtime.md) and
+[representation contracts](../docs/self_hosted/phase48-representations.md).
 
-All focused controls, eight maintained semantic suites and the fresh backend
-census pass their agreement checks: **69 execution passes, eight N/A and four
-shared failures** among 81 outcomes. The 3,026-main / 196-broader frontend inventory
-remains historical. [Conformance](CONFORMANCE.md) keeps those scopes separate.
+Focused controls and all eight maintained suites pass. The resolved backend
+census has **69 execution passes, eight N/A and four shared failures** among
+81 outcomes. A targeted native retry resolves a sandbox Clang refusal; failed
+receipts remain. The 3,026-main / 196-broader frontend inventory remains historical.
+[Conformance](CONFORMANCE.md) keeps those scopes separate.
 
-Source has **23,660 physical / 19,489 code Bend lines, 2,673 definitions, 87 types
-and 92 modules**: +406 physical lines over array06. See
-[accounting](../implementation/phase48/accounting.md). Deferred function-flow
-and aggregate-transport prototypes are preserved outside maintained source.
+The source has **23,662 physical / 19,489 code Bend lines, 2,673 definitions,
+87 types and 92 modules**. Code-line and definition counts are unchanged; the
+runtime adds six physical lines. See [accounting](../implementation/phase51/accounting.md).
 
-The [45-point / 23-source comparison](../implementation/phase48/results.md)
-improves **2.9024× → 2.6789× TypeScript time** by equal point and
-3.9789× → 3.6793× by equal source. Generic row gains 13.47×; other 44 points
-collectively gain 1.0231×. The largest primary regression is 3.25%.
-The corpus informed optimization and does not establish universal parity.
-Separate [compiler requests](../implementation/phase48/compiler-cost-final.md)
-cost 3.27–4.41% more on two inputs. Supplementary zero/one-trip array calls retain
-30.63% / 18.64% overhead despite large-loop gains.
+The [fresh 45-point / 23-source comparison](../implementation/phase51/results.md)
+improves **3.008× → 2.928× TypeScript time**, or 2.66% less execution time.
+Equal-source slowdown improves 4.078× → 3.929×. The largest median regression is
+2.65%, and Evening's gain is warmup-sensitive. The historical RNFA04 2.679× ratio
+is not this comparison's denominator. The corpus is not a universal speed estimate.
+Use the [portable replay guide](tools/performance/phase51/README.md) for fast loops.
+Compiler throughput was not newly measured.
 
 Ordinary compilation runs Bend code without a TypeScript fallback. The target is
 [`018751270e800bc222a93dad7f257083ee53a5f7`](https://github.com/bendlang/bend/tree/018751270e800bc222a93dad7f257083ee53a5f7),

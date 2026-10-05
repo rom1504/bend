@@ -31,6 +31,9 @@ predecessors for their explicit old-hook trace assertions; RNFA04 is not a
 substitute for those particular baseline arguments. Consumed prototype producers
 and controllers remain unchanged.
 
+The subsequent [qualification](qualification.md) and [release report](README.md)
+record completion of these requirements; this document retains the static review.
+
 The proposed dispatcher extraction is a good narrow first experiment: keep the
 existing prefix, argument formation, exact entry and partial application in
 `apply`, and move whole IO, type, nonfunction and overflow bodies into helpers.

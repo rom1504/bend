@@ -1,8 +1,9 @@
 # Phase51 guard experiment: batch captured-intrinsic descriptor inspection
 
-Status: descriptor batching was rejected after a short root-executed screen.
-The next saved-output experiment reuses a fresh String proof within one entry.
-Production source is unchanged by this track; root owns target execution.
+Final status: descriptor batching was rejected. Same-entry String proof reuse
+was integrated, qualified and installed; see the [phase report](README.md).
+The record below preserves the earlier prototype stages and their narrower
+evidence. Root owned integration and all target execution.
 
 Phase49 found that fresh entry validation dominates the small RLE public call.
 Phase50 distinguishes guard-heavy entries from generic dispatch and larger
@@ -138,6 +139,7 @@ The reviewed [production proposal](../../selfhost/tools/performance/phase51/prop
 and [identity manifest](../../selfhost/tools/performance/phase51/proposals/same-entry-string-proof.json)
 contain only a private runtime token, one `scalarGuard` predicate change and one
 argument at `j_instance_root_guarded_mode`'s `localGuard` call, with proof comments.
-No new graph analysis is needed. The patch is not applied by this track; assembled
-runtime regeneration, checked compilation and broader qualification remain root
-integration work. These results do not describe an installed compiler change.
+No new graph analysis is needed. At this prototype checkpoint, integration and
+qualification remained root work. Those steps are now complete; the
+[final report](README.md) records the installed compiler and full comparison.
+The short-screen numbers above retain their original prototype scope.

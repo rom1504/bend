@@ -16,39 +16,34 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
 fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-**Phase48 RNFA04 is installed; release verification and all 42 CLI checks pass.**
-The [phase report](implementation/phase48/README.md),
+**Phase51 is installed; release verification and all 42 CLI checks pass.**
+The [phase report](implementation/phase51/README.md),
 [release manifest](selfhost/dist/release.json) and
-[selected evidence](selfhost/tools/performance/phase48/evidence/selected-qualification.json)
-identify the exact checked B1 compiler and runtime.
+[selected evidence](selfhost/tools/performance/phase51/evidence/selected-qualification.json)
+identify the checked B1 compiler/runtime pair.
 
-Private composite results now retain array handles across the public boundary;
-proved String operations, finite F32 literals and typed Array operations compose
-with existing private regions. See the [compiler guide](docs/BEND-IN-BEND.md),
-[JavaScript IR guide](selfhost/docs/JAVASCRIPT_IR.md) and
-[representation contracts](docs/self_hosted/phase48-representations.md).
+The [fresh 45-point comparison](implementation/phase51/results.md) improves
+**3.008× → 2.928× TypeScript execution time**: 2.66% less time. Unicode improves
+24%/8% at two sizes. The largest median regression is 2.65%; Evening is strongly
+warmup-sensitive. Historical RNFA04 measured 2.679× in a different run, so use the
+fresh paired denominator rather than combining campaign ratios. This corpus
+informed optimization and does not establish typical-program or universal parity.
 
-The [45-point / 23-source comparison](implementation/phase48/results.md) improves
-from **2.9024× to 2.6789× TypeScript execution time** against a freshly paired
-array06 baseline: **8.34% faster**, or 7.70% less time. Generic row improves
-13.47× and Unicode improves 1.26–1.46×. Excluding generic row, the other 44 points
-improve 2.31% collectively. The largest observed primary regression is 3.25%.
-This corpus informed optimization; it does not establish typical-program speed
-or universal parity.
+The [runtime guide](docs/self_hosted/v8-guided-runtime.md) explains the small IO
+helper and safe reuse of a String check within one entry. Existing private
+representations and mutation fallbacks remain. [Source accounting](implementation/phase51/accounting.md)
+records 23,662 physical / 19,489 code Bend lines; code-line and definition counts
+are unchanged. [Conformance](selfhost/CONFORMANCE.md) records 69 execution passes,
+eight N/A and four shared failures across 81 backend outcomes, separately from
+the historical larger frontend inventory.
 
-[Compiler requests](implementation/phase48/compiler-cost-final.md) cost
-3.27–4.41% more on two inputs. [Source accounting](implementation/phase48/accounting.md)
-records 23,660 physical Bend lines (+406). [Conformance](selfhost/CONFORMANCE.md)
-separates fresh semantic/backend observations from historical frontend evidence.
-
-Use the [portable benchmark guide](selfhost/tools/performance/phase48/README.md)
-for 20/60/300-second selections, full batches, profiles and generated-code analysis.
-The [architecture survey](docs/self_hosted/README.md),
-[compiler research](research/compilers_architecture_and_techniques/README.md),
-[remaining work](implementation/phase48/remaining-opportunities.md) and
+Use the [compiler guide](docs/BEND-IN-BEND.md) and
+[portable benchmark guide](selfhost/tools/performance/phase51/README.md) for
+20/60/300-second checks, full batches and separate V8 diagnostics. The
+[architecture survey](docs/self_hosted/README.md),
+[compiler research](research/compilers_architecture_and_techniques/README.md) and
 [parallel validation plan](docs/self_hosted/parallel-validation.md) retain the
-next experiments. The [Phase46 JS/C study](implementation/phase46/README.md)
-keeps JS primary and records its native API gap.
+broader context. Compiler throughput was not newly benchmarked in Phase51.
 
 From `selfhost/`, run `npm run verify:release`, then `node cli.mjs FILE --run`.
 Use the [checked workflow](docs/PHASE5_DEVELOPMENT.md),

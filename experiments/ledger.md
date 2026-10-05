@@ -2925,3 +2925,30 @@ cost. 63 serial jobs pass, 137.40 s target occupancy, 200.04 MiB maximum tree RS
 No fixes, bypasses, compiler rebuilds, new clean ratios or release changes.
 **Updated frontier:** distinguish guard-heavy optimized paths from generic
 dispatch and materialized producer/consumer paths; investigate each independently.
+
+
+## Phase51 V8-guided optimization — 2026-10-05
+
+[Design](../design/phase51/v8-guided-runtime.md) pushed before targets as a79c114;
+[report](../implementation/phase51/README.md). Installed IO-only helper plus
+same-entry String-proof reuse. Batched descriptors lost; larger apply/invoke
+splits displaced useful inlining and were not selected. Actual checked output
+passes 33 String-boundary and 27 application observations, retained controls and
+all eight maintained suites. Backend agreement is 69 passes / eight N/A / four
+shared failures; only the native batch was retried after a sandbox Clang refusal.
+Release verification, 42 CLI checks and 27 portable replay samples pass.
+
+All 669 full samples pass: fresh RNFA04/TS 3.007942× → Phase51/TS 2.927825×, a 1.027364×
+speedup. Historical 2.678937× is not the denominator. 34 medians improve / 11 regress;
+worst regression 2.65%. Unicode gains 1.242× / 1.083×. Evening's 1.460× standard-protocol
+result shrinks to 1.0477× with longer fixed-work warmup; allocation remains about
+177 KB/call. Other 44 points gain 1.0192×. Source code lines/definitions unchanged,
++2 Bend comment lines and +6 runtime lines. No compiler-throughput/fixed-point claim.
+
+**Updated frontier:** V8 traces identify opportunities, but inlining and fewer
+allocations do not themselves establish a gain. Prove narrower guard requirements
+or improve generic closure/constructor transport next; first use saved-output
+counterexamples and clean screens. One checked build 53.48s, full45 comparison
+19m03s. At the accounting cutoff 73m26s elapsed, observed process occupancy 36m02s;
+other time includes code/review/docs/orchestration, not simply waiting. All 103
+unrelated files and failed receipts remain preserved. No PR comment was posted.

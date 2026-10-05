@@ -32415,7 +32415,7 @@ function $j_instance_root_guarded_mode$(_book_0, _d_0, _rows_0, _at_0, _pure_0, 
   const _x_26 = ("return " + _x_24);
   const _x_27 = (_x_25 + _x_26);
   const _x_28 = run_loop($j_region_inputs$(_book_0, ($dt$(_d_0)), 0, ($da$(_d_0)), false));
-  const _x_29 = ("&&localGuard($guards)){/* private contextual instances */" + _x_27);
+  const _x_29 = ("&&localGuard($guards,stringHostChecked)){/* private contextual instances */" + _x_27);
   const _x_30 = (_x_28 + _x_29);
   const _x_31 = run_loop($j_nat_loop_slots$(($da$(_d_0)), 0));
   const _x_32 = ("if($entered&&regionProof===null&&regionHostGuard()&&stringHostGuard()&&" + _x_30);

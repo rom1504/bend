@@ -1,112 +1,73 @@
-# Current compiler: Phase48 RNFA04; latest investigation: Phase50
+# Current compiler: Phase51; next work should target remaining mechanisms
 
-RNFA04 is installed. Release verification, all 42 ordinary/relocated CLI checks
-and portable replay pass. The [report](../implementation/phase48/README.md),
-[results](../implementation/phase48/results.md),
-[compiler costs](../implementation/phase48/compiler-cost-final.md),
-[representation guide](../docs/self_hosted/phase48-representations.md) and
-[portable benchmark guide](../selfhost/tools/performance/phase48/README.md)
-describe the selected version. Preserve all 103 unrelated starting files and
-closed historical evidence. No PR comment is authorized.
+Phase51 is installed; release verification, 42 CLI checks and portable replay
+pass. See the [report](../implementation/phase51/README.md),
+[results](../implementation/phase51/results.md),
+[runtime proof guide](../docs/self_hosted/v8-guided-runtime.md) and
+[portable benchmark guide](../selfhost/tools/performance/phase51/README.md).
+Preserve all 103 unrelated starting files and closed historical evidence.
+No PR comment is authorized. This phase is complete; no further timed campaign
+or autonomous budget is implied by this frontier.
 
-Selected API: `6f9d111aa68c19f3ce45b80785621d57c4d10efb12d50164f5cb0597bc952100`.
-The runtime remains byte-identical to array06:
-`880bce50e3194b9ee9d99bd57c18ef88bcb8925d9d1668dec6765040a4d3219b`.
+API: `c15718cbf3e744e47c0795d7d78db6351a61c21983f53ec9c722272782dba061`.
+Runtime: `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
+Target: `018751270e800bc222a93dad7f257083ee53a5f7` (after Bend2.0.34).
 
-## Selected mechanisms and scope
+## What is selected
 
-RNFA04 retains the existing typed private calls, layouts, bounded native recursion,
-continuation fallback and private Array regions. It adds four composable slices:
-handle-preserving public composite results (R), proved native String operations
-(N), finite F32 literal decoding with the original shared-view write retained
-(F), and typed Array effects/literal handles (A). A bounded general count mapping
-declines unprofitable direct zero/one-trip literal entry. Existing selector
-precedence, dependency/host checks and ordinary fallbacks remain. There is no
-program-name recognizer, mutable-host permission cache or target migration.
+All RNFA04 representations remain. Only the IO application body moves to a
+helper; contextual roots reuse a fresh String check through a private identity.
+Argument slots are read before validation; only inert scalar predicates intervene
+before dependency validation. Other checks and fallbacks remain. No permission
+is cached across public calls. Bend code lines/definitions are unchanged; two
+comments and six runtime lines are added. There is no new IR pass or name-based
+program recognizer. See [accounting](../implementation/phase51/accounting.md).
 
-All focused controls and eight maintained semantic suites pass. Fresh backend
-agreement covers all 81 observations: **69 execution passes, eight N/A and four
-shared failures**. The 3,026-main / 196-broader frontend inventories remain
-historical unchanged-frontend evidence, not new Phase48 executions. These counts
-have overlapping scopes and must not be summed. This remains a checked B1
-derivative, not a new self-emitted fixed point. Native IO.args remains a known
-gap; broad native/GPU execution and independent proof validity are unestablished.
+Focused controls, all eight maintained suites and resolved agreement on 81 backend
+outcomes pass: 69 execution passes, eight N/A, four shared failures. Native Clang permission
+refusals are preserved and resolved by a 21-case retry. The 3,026-main/196-broader
+frontend inventories remain historical. This is a checked B1 derivative, not a
+new self-emitted fixed point. Native IO.args and broader GPU/proof validity remain
+open. Counts have overlapping scopes; do not add them as unique tests.
 
-## Current measurements and tradeoffs
+## Current evidence
 
-All **45 points / 23 sources / 669 fresh samples** pass. Equal-point slowdown
-changes **2.9024375× → 2.6789370× TypeScript**, a **1.08343× speedup**: 8.34% faster
-or 7.70% less execution time. Equal-source slowdown changes 3.9789231× →
-3.6792514×; equal-family changes 4.4796607× → 3.9120521×. Historical array06's
-2.919418× result is not this campaign's fresh denominator.
+All 669 samples pass across 45 points / 23 sources. Fresh paired slowdown improves
+3.007942× → 2.927825× TS by equal point (2.66% less time). Equal-source slowdown
+improves 4.077637× → 3.929390×. Historical RNFA04 was 2.678937× in another run;
+its unchanged output now measures 3.007942×. Do not chain ratios across campaigns.
 
-Generic row improves **13.467×**, with its complete four-array result observed.
-Unicode16/64 improve **1.257× / 1.462×**; numeric1024 improves **1.062×**. Generic
-row accounts for **72.1% of net equal-point logarithmic gain**; the other 44
-points collectively improve **1.0231×**. The aggregate does not establish a large
-gain for most programs or universal TypeScript parity. Morning, scalar-zero,
-RLE, Map/Set and Evening remain approximately 49–62× TypeScript time.
+34 medians improve, 11 regress; worst regression 2.65%. Unicode16/64 gain 1.242× /
+1.083×. Evening gains 1.460× under the standard warmup but only 1.0477× after
+32,768 fixed-work warmup calls. It contributes 31.1% of the net logarithmic gain;
+the other 44 points gain 1.0192×. Evening allocation is flat at about 177 KB/call.
+This is useful incremental progress, not typical-program or universal parity.
 
-Twenty-three medians improve and 22 regress. The largest regressions are closures64
-3.25%, lists512 2.49% and tree-bitonic 2.31%, with byte-identical program output.
-Short fold has changed output and regresses 2.12%; the static fallback-guard
-addition does not prove that guard executed in timing. Signs and drift are not
-significance tests, and the regressions are retained. The supplementary literal
-screen still has **30.63% / 18.64%** zero/one-trip overhead despite strong gains
-at 128/8192 iterations; those extra points do not alter the primary weighting.
+## What we learned and what to test next
 
-Source grows **406 physical lines (+1.75%)** to **23,660**, with 19,489 code lines,
-2,673 definitions, 87 types and 92 modules. Generated output across 24 distinct
-source/output pairs grows 0.72%. All 18 fresh compiler requests match expected
-outputs, but median requests regress **3.274% Evening / 4.411% lexer**. This
-two-source screen is separate from program execution and self-compilation. No
-source simplification or compiler-throughput improvement is claimed.
+1. **Guards:** Phase49/50 show guard dominance in 11/45 points, but below 5% in 16.
+   Descriptor batching lost. Same-entry proof reuse works without weakening
+   observations. The next major gain requires a source/runtime effect proof of
+   fewer required checks or wider safe amortization. Dependency names alone do
+   not justify omitting String checks; cross-call host permission is not cached.
+2. **Generic transport:** IO-only extraction crosses V8's inlining threshold.
+   Four-helper extraction also inlines but displaces useful force inlining and
+   loses. Allocation remains. Investigate ordinary closure/vector/constructor
+   transport with saved-output ablations and complete boundary controls before
+   another compiler pass. Require actual hot-path activation and clean speed.
+3. **Producer/consumer transport:** Expression allocation remains a distinct
+   opportunity. Earlier tuple transport reduced allocations but introduced shared
+   context loads/stores and lost speed. Test caller-local values before a broad
+   convention; fewer constructors alone are not enough.
+4. **Measurement:** Keep clean timings separate from profiles. Warmup-sensitive
+   small effects need longer fixed-work checks. Use the existing short loops,
+   one checked build and one final full comparison; full45 costs about 19 minutes.
 
-## Next experiments after Phase49/50 V8 diagnosis
-
-The [Phase50 all-point CPU survey](../implementation/phase50/README.md) adds a
-necessary split: guards dominate 11/45 points but are below 5% in 16. Morning
-and Evening instead pay generic dispatch/matcher transport; these and MapSet
-allocate roughly 28–30× TS bytes per call. V8 refuses to inline `apply` because
-of its bytecode size, despite optimizing it; no measured-window deopts occur in
-six selected traces. Investigate a smaller common dispatcher separately from
-narrower guards. Expression producer/evaluator transport is a third hypothesis.
-This phase collects information only and leaves the installed compiler unchanged.
-
-The [Phase49 investigation](../implementation/phase49/README.md) changes the
-priority. Installed RNFA04's RLE output is byte-identical to retained array06.
-Five named guard routines account for 79.44% of sampled baseline self time, and
-reflection dominates roughly 33KB of estimated allocation per public call.
-A controlled but unsafe guard bypass changes 39.343µs to 0.804µs, against 0.589µs
-for TS. String-check omission alone reaches 22.370µs. These are one fixed
-six-element source's diagnostics, not legal optimizations or a new corpus ratio.
-
-First derive **required guard effects from complete original-source and runtime
-observations**, including forcing, errors, mutation and reentry. Test one omitted
-category with adversarial controls before implementing a compiler pass. Static
-absence of String operations among 17 dependencies is not enough. Preserve fresh
-validation where needed; do not cache permission across public calls or assume
-immutable host prototypes. Also investigate cheaper checks retaining the same
-coverage and safe amortization inside a genuinely established region.
-
-V8 already inlines the RLE step and optimizes both loops before measurement.
-The rejected tuple pass removes real allocation sites but adds shared-context
-loads/stores, initialization and barrier paths. In the bypass pair it allocates
-about 2,549→1,770B/call yet is 3.88% slower. Test caller-local scalar transport with
-one saved-output ablation before building another broad convention. Do not infer
-speed from fewer IR nodes or constructors.
-
-Matched recursive function families, expression producer/fold fusion and larger
-program admission remain open, as documented in
-[Phase48 opportunities](../implementation/phase48/remaining-opportunities.md).
-Require actual hot-path activation and cheap clean speed evidence before a
-checked compiler implementation. The new
-[V8-aware guide](../selfhost/tools/performance/phase49/README.md) complements the
-20/60/300-second benchmark selections with separate profiles, inlining traces and
-filtered optimizer/code dumps. No compiler build or full-corpus rerun was needed
-for Phase49. All unsafe derivatives remain uninstalled.
-
-Keep JS primary. The preserved [Phase46 JS/C study](../implementation/phase46/README.md)
-shows allocation and curried-call/continuation transport must improve before
-switching backend: our C lost to our JS on five of six batch workloads. LLVM and
-assembly remain deferred. The upstream pin is `018751270e800bc222a93dad7f257083ee53a5f7`.
+The [Phase49 V8 investigation](../implementation/phase49/README.md),
+[Phase50 all-point survey](../implementation/phase50/README.md),
+[Phase48 remaining work](../implementation/phase48/remaining-opportunities.md) and
+[compiler research](../research/compilers_architecture_and_techniques/README.md)
+retain supporting evidence and rejected alternatives. Keep JavaScript primary;
+the [JS/C study](../implementation/phase46/README.md) showed allocation/call
+transport must improve before switching backend. No new compiler-throughput gain
+is established in Phase51.

@@ -1,12 +1,13 @@
 # Phase51: make the generic application path small enough to inline
 
-Status: isolated saved-output prototypes; not integrated into the compiler or
-runtime. All three variants passed 27 focused controls. The IO-only extraction
-also showed a 1.0477× Evening improvement after a much longer fixed-work
-warmup, supporting integrated qualification of its three-line change. The
-full split and split-plus-entry variants remain unselected. These focused
-results alone do not establish release-wide improvement. Root owns all target
-execution.
+Status: IO-only extraction is incorporated into the checked Phase51 candidate
+and has passed all 27 focused controls against its actual emitted output.
+Full-corpus qualification is complete and the compiler is installed; see the
+[phase report](README.md). Both larger variants remain unselected.
+The isolated IO-only change showed a 1.0477× Evening improvement after a much
+longer fixed-work warmup; the actual candidate's allocation diagnostic shows
+no aggregate reduction. These focused results alone do not establish
+release-wide improvement. Root owns all target execution.
 
 ## Evidence and hypothesis
 
@@ -115,8 +116,8 @@ than widening the transformation without evidence.
 
 If retained, integration must edit the authoritative fragment and regenerate
 the concatenated runtime through `src/runtime/js/build.mjs`; it must not patch
-only the generated bundle. Production source and installed RNFA04 remain
-unchanged while the saved-output experiment runs.
+only the generated bundle. Production source and installed RNFA04 remained
+unchanged during this initial saved-output experiment.
 
 ## First executed checkpoint
 
@@ -214,8 +215,8 @@ contains the exact fragment change and corresponding assembled-runtime change.
 Its [identity manifest](../../selfhost/tools/performance/phase51/proposals/dispatch-io-runtime.json)
 pins both original sources and the consumed prototype recipe. The logical
 change adds three lines and 54 bytes; its appearance in both fragment and
-bundle must not be counted as two independent runtime additions. It remains
-a proposal, and production integration must verify regenerated assembly.
+bundle must not be counted as two independent runtime additions. This was still
+a proposal at this checkpoint; later integration regenerated and verified assembly.
 
 ## Longer IO screen: stationarity is still unresolved
 
@@ -296,8 +297,64 @@ Candidate trace `06-candidate-trace/process/stdout.log` SHA-256:
 The complete seven-process queue took 56.995 s; profiled timing is excluded
 from the clean comparison.
 
-Recommendation: qualify the IO-only change in the integrated compiler and
+Recommendation at this checkpoint: qualify the IO-only change in the integrated compiler and
 unchanged representative corpus. Its three-line cost and repeatable focused
 benefit justify that next gate. Keep both larger variants as unselected
 experiments. Do not describe this as a 55% steady-state improvement, a proved
 allocation optimization, or a substitute for full semantic qualification.
+
+## Actual checked output: controls and allocation
+
+The unchanged dispatch controller passes all 27 observations against the
+actual checked candidate's Evening output:
+`selfhost/build/phase51/checked-dispatch-controls02/report.json`, SHA-256
+`4c7e5bdabdb873d937b6d8f29cef904a77107ef8f7a3d8aeb5302ec780082570`.
+This is distinct from applying the saved-output prototype directly.
+
+A preserved setup failure preceded this pass. The first checked-output receipt
+put literal JavaScript dollar sequences into a replacement string consumed by
+`String.replace`, causing its source-reconstruction precondition to fail
+before any semantic observation. The successor receipt producer escapes those
+sequences. Neither the controller assertions nor compiler source was changed
+to obtain the pass. The failed report remains at
+`checked-test-evening-program01/report.json`, SHA-256
+`f72a79f3b3a4bfffd59136ec43d40364ef6afd986c327304990975b7af916160`;
+the corrected receipt producer is `guards-checked-receipts-v2.py`, SHA-256
+`aae53545cdec5245ee598cda3d481250d91e0c93f92253f4d33109a48a1d0a37`.
+
+The actual candidate allocation diagnostic uses 32,768 warmup calls and 8,192
+profiled calls per role, a 32,768-byte sampling interval, and includes objects
+collected by both major and minor GC. All values and digests pass. Estimated
+total allocation is **177,349.30 bytes/call baseline versus 177,524.37
+bytes/call candidate**, a +0.099% difference: effectively flat at this sampling
+resolution. This is sampled cumulative allocation, not retained heap or an
+exact object census, and the profiled durations are not speed samples.
+
+Frame attribution changes considerably despite the flat total:
+
+| Allocation frame | Baseline self share | Candidate self share |
+| --- | ---: | ---: |
+| `apply` | 10.064% | Not separately attributed |
+| `force` | 0% | 20.755% |
+| `callOwned` | 8.817% | 0.629% |
+| `project` | 6.733% | 6.566% |
+| `fn` | 1.134% | 1.115% |
+| `jump` | 1.013% | 1.107% |
+
+The shift from `apply`/`callOwned` toward `force` is consistent with the changed
+inlining composition seen in traces. It does **not** mean the allocations
+formerly attributed to `apply` disappeared. There is no measured aggregate
+allocation reduction, and the original context-elimination hypothesis remains
+unproved. Any accepted execution-time gain must stand on clean measurements,
+not on that hypothesis.
+
+The allocation reports are under
+`selfhost/build/phase51/selected-allocation01`: baseline report SHA-256
+`79452bc1691ca67522badefdcb5eea5289c526530ed6e265be4c5b53a216c5d7`;
+candidate report SHA-256
+`d80a798c63ed01ed55d6c271b6062f3895a156f960f7f0781ee4b2d7e85ed726`.
+Their exact module hashes are `b21b0bbd4e40873907038838d89c559ef73d6c7e599f87e63e94b9f5be77f8b7`
+and `757657b4c12e5a46dedacc1bda71893d31802f12b3eb0bc39876c44831e4de0e`.
+The latter is the checked combined candidate, not the earlier IO-only
+saved-output module. The subsequent full comparison and release checks passed;
+their complete scope and results are in the [final report](README.md).

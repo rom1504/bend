@@ -1,7 +1,7 @@
 # Self-hosted compiler: current architecture and development
 
-For the latest compiler work, see the [Phase48 report](../../implementation/phase48/README.md)
-and [representation extensions](phase48-representations.md). The source survey
+For the latest compiler work, see the [Phase51 report](../../implementation/phase51/README.md)
+and [V8-guided runtime](v8-guided-runtime.md). The source survey
 below remains a dated Phase45 baseline; its counts and timings are historical.
 
 This survey describes the selected **Phase45 worker23** compiler at repository

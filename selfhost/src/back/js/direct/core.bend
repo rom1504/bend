@@ -98,7 +98,16 @@ def jd_eta_head(+book: List<&2,KDef>, +owner: String, +name: String, +values: Li
 def jd_call(+book: List<&2,KDef>, +owner: String, +name: String, +values: List<&2,String>, +tail: Bool) -> String:
   kc(String, jd_inline_atoms(values),
     u => jd_call_inline(book, owner, name, values, tail, jd_intrinsic(book, name, values)),
-    u => jd_call_plain(book, owner, name, values, tail))
+    u => jd_call_held(book, owner, name, values, tail))
+
+# Bind computed actuals before the template so repeated/conditional uses and
+# host-method lookups preserve the original call's once-only argument order.
+@unsafe
+def jd_call_held(+book: List<&2,KDef>, +owner: String, +name: String, +values: List<&2,String>, +tail: Bool) -> String:
+  +params = jd_width_params(jd_string_len(values), 0)
+  +code = jd_intrinsic(book, name, params)
+  kc(String, String.eq(code, ""), u => jd_call_plain(book, owner, name, values, tail),
+    u => "(((" ++ jd_join(params) ++ ")=>(" ++ code ++ "))(" ++ jd_join(values) ++ "))")
 
 @unsafe
 def jd_call_inline(+book: List<&2,KDef>, +owner: String, +name: String, +values: List<&2,String>, +tail: Bool, +code: String) -> String:

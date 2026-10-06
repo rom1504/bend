@@ -1,0 +1,386 @@
+{
+  "kind": "phase55-semantic-launch-plan",
+  "executed": false,
+  "attempt": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01",
+  "outBase": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01",
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/semantic-launch-plan-v1.py",
+    "sha256": "174b05b75296bb64fe1a29c860087e8a642f3f2c1045e0efdc381a70e006a552"
+  },
+  "parentProducer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/semantic-launch-plan-v3.py",
+    "sha256": "8473354802fdd8e0cb1699a87774aa064bafa6696fae9afdf5cb133c9b5f5a2b"
+  },
+  "policy": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/semantic-plan-v1.json",
+    "sha256": "5e6bc3158760f1ccfc6b51edf1381a96f3d6867d04d83284e53c81005279bd7f"
+  },
+  "commands": [
+    {
+      "name": "acquire-composition",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/acquire-semantics-v2.py",
+        "--role",
+        "direct",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01",
+        "--catalog",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-composition-catalog-v8.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/composition-acquisition"
+      ],
+      "guard": "internal sole ExecutionGuard"
+    },
+    {
+      "name": "composition-controls",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "60",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/composition-controls-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-composition-v3.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/composition-acquisition/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-composition-reference-rebind01.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/composition-controls"
+      ],
+      "guard": "outer bounded supervisor only"
+    },
+    {
+      "name": "acquire-overapplication",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/acquire-semantics-v2.py",
+        "--role",
+        "direct",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01",
+        "--catalog",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-overapplication-catalog-v1.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/overapplication-acquisition"
+      ],
+      "guard": "internal sole ExecutionGuard"
+    },
+    {
+      "name": "overapplication-controls",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "60",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/overapplication-controls-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-overapplication-v1.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/overapplication-acquisition/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-overapplication-upstream01/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/overapplication-controls"
+      ],
+      "guard": "outer bounded supervisor only"
+    },
+    {
+      "name": "acquire-source",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/acquire-semantics-v2.py",
+        "--role",
+        "direct",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01",
+        "--catalog",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v8.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/source-acquisition"
+      ],
+      "guard": "internal sole ExecutionGuard"
+    },
+    {
+      "name": "source-role-join",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-full-join-v4.py",
+        "--direct",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/source-acquisition/manifest.json",
+        "--catalog",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/semantic-catalog-v8.json",
+        "--typescript",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-upstream04/manifest.json",
+        "--typescript",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-f32-upstream01/manifest.json",
+        "--typescript",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-upstream02/manifest.json",
+        "--typescript",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-upstream01/manifest.json",
+        "--reference-controls",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-reference-controls03/report.json",
+        "--successor-reference-controls",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-successor-reference-controls01/report.json",
+        "--native-reference-controls",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase52/semantic-native-reference-controls01/report.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/source-join.json"
+      ],
+      "guard": "data only"
+    },
+    {
+      "name": "source-controls",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "110",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/source-controls-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-source-v1.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/source-join.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/source-controls"
+      ],
+      "guard": "outer bounded supervisor only"
+    },
+    {
+      "name": "acquire-numeric",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/acquire-semantics-v2.py",
+        "--role",
+        "direct",
+        "--selection",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01",
+        "--catalog",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-numeric-catalog-v3.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/numeric-acquisition"
+      ],
+      "guard": "internal sole ExecutionGuard"
+    },
+    {
+      "name": "numeric-controls",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "60",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/numeric-controls-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/semantic-runtime-v2.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/source-join.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/numeric-acquisition/manifest.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-numeric-reference-rebind01.json",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/numeric-controls"
+      ],
+      "guard": "outer bounded supervisor only"
+    },
+    {
+      "name": "exact-bytes-source",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/semantic-byte-compare-v1.py",
+        "--format",
+        "semantic",
+        "--baseline",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/semantic-final02/source-acquisition/manifest.json",
+        "--candidate",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/source-acquisition/manifest.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/source-byte-comparison.json"
+      ],
+      "guard": "data only"
+    },
+    {
+      "name": "exact-bytes-numeric",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/semantic-byte-compare-v1.py",
+        "--format",
+        "semantic",
+        "--baseline",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/semantic-final02/numeric-acquisition/manifest.json",
+        "--candidate",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/numeric-acquisition/manifest.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/numeric-byte-comparison.json"
+      ],
+      "guard": "data only"
+    },
+    {
+      "name": "exact-bytes-composition",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/semantic-byte-compare-v1.py",
+        "--format",
+        "semantic",
+        "--baseline",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/semantic-final02/composition-acquisition/manifest.json",
+        "--candidate",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/composition-acquisition/manifest.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/composition-byte-comparison.json"
+      ],
+      "guard": "data only"
+    },
+    {
+      "name": "exact-bytes-overapplication",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/semantic-byte-compare-v1.py",
+        "--format",
+        "semantic",
+        "--baseline",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/semantic-final02/overapplication-acquisition/manifest.json",
+        "--candidate",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/overapplication-acquisition/manifest.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/overapplication-byte-comparison.json"
+      ],
+      "guard": "data only"
+    },
+    {
+      "name": "direct-census",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/semantic-census-v1.py",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/direct-census"
+      ],
+      "guard": "internal sole ExecutionGuard"
+    },
+    {
+      "name": "maintained-legacy",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase47/qualify.py",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/maintained-legacy"
+      ],
+      "guard": "internal sole ExecutionGuard"
+    },
+    {
+      "name": "production-js45-acquisition",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/acquire.py",
+        "--attempt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01",
+        "--set",
+        "full",
+        "--role",
+        "candidate",
+        "--backend",
+        "direct",
+        "--cpu",
+        "3",
+        "--heap-mib",
+        "1024",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/production-js45",
+        "--node",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node"
+      ],
+      "guard": "internal sole ExecutionGuard"
+    },
+    {
+      "name": "production-js45-exact-bytes",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/semantic-byte-compare-v1.py",
+        "--format",
+        "production",
+        "--baseline",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/semantic-final02-completion01/production-js45/manifest.json",
+        "--candidate",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/production-js45/manifest.json",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/production-js45-byte-comparison.json"
+      ],
+      "guard": "data only"
+    },
+    {
+      "name": "native-representatives",
+      "command": [
+        "python3",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase32/bounded-run.py",
+        "--seconds",
+        "240",
+        "--rss-mib",
+        "2048",
+        "--available-mib",
+        "4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/native-representatives-supervisor",
+        "--",
+        "taskset",
+        "-c",
+        "3",
+        "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+        "--max-old-space-size=1024",
+        "--stack-size=4096",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/semantic-native-v1.mjs",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/semantic-final01/native-representatives"
+      ],
+      "guard": "outer bounded supervisor only",
+      "environment": {
+        "CC": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/bin/clang-16",
+        "CPATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/include",
+        "LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu",
+        "LD_LIBRARY_PATH": "/home/ai/bend2/build/publish/bend/selfhost/build/phase1/clang/root/usr/lib/x86_64-linux-gnu"
+      }
+    }
+  ],
+  "scope": "Reviewable argv only. Root explicitly grants target slot and runs serially; stop on failure. Byte equality does not replace independent semantics. No historical files or outputs edited.",
+  "attemptIdentity": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01/attempt.json",
+    "sha256": "87f61624692529bc17191d2a21bf49971506fc41b36b092f047e8c8e8e644007"
+  },
+  "nativeToolchainBinding": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/semantic-native-retry01/toolchain-binding.json",
+    "bytes": 3703,
+    "sha256": "9165dce8a3d0c6cf78d3799b8ad5e869b180ca168ef9cba2fcb77544891836ab"
+  }
+}

@@ -5,42 +5,29 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-[Phase54 graph02](../implementation/phase54/README.md) is installed and verified.
+[Phase55 host02](../implementation/phase55/README.md) is installed and verified.
 The [direct JavaScript backend](../selfhost/docs/direct-javascript.md) remains the
 default for emitted programs/libraries and `--run`. From `selfhost/`, use
 `node cli.mjs FILE --run` or `node cli.mjs FILE --library -o module.mjs`.
-Select `--legacy-js` for mutable descriptors and the G table. Bootstrap and
-maintained private compiler-image workers keep their explicit legacy contract;
-native C remains available.
+Select `--legacy-js` for mutable descriptors and G. Bootstrap and maintained
+private compiler-image workers retain their explicit legacy contract; native C
+remains available, without a TypeScript fallback.
 
-Fresh qualification passes 96 source, 34 numeric, 18 composition and two
-overapplication controls, plus the 26-row census and eight maintained suites. Three representative native programs retain their emitted C bytes
-and pass their source goldens. Release integrity and all **42 legacy + 24 default
-ordinary/relocated CLI checks** pass. The [release manifest](../selfhost/dist/release.json)
-and [conformance record](../selfhost/CONFORMANCE.md) retain the distinct scopes.
-Selected API:
-`d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857`.
-Source:
-`32cddcf1a970a9726a9785b30269cdd8a0047f917f769a964995fa6a0633de84`.
-The direct runtime is unchanged:
-`c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
+The [phase report](../implementation/phase55/README.md) binds selected identities,
+the final 18 semantic gates, release integrity, 42 legacy + 24 default interface
+checks and exact 45-point output retention. The dated Phase53 **1.069599×
+TypeScript** result is retained by those identical bytes, not a new Phase55
+program-speed measurement. [Source accounting](../implementation/phase55/architecture.md)
+records the two-module +27 physical / +19 code-line change; native modules,
+runtimes and driver remain unchanged.
 
-All **45 benchmark point modules are byte-identical to Phase53**. Its dated
-**1.069599× TypeScript** result remains the performance evidence; Phase54 did
-not run another 669-sample campaign. Use the retained
-[benchmark recipes](../selfhost/tools/performance/phase53/PLAN.md) for new
-measurements, with fresh denominators and separate compiler-request timing.
-
-[Source accounting](../implementation/phase54/architecture.md) records **26,259
-physical / 21,598 code lines, 3,015 definitions, 100 types and 107 modules**.
-The cleanup adds 108 physical / 75 code lines and keeps all 17 native modules
-exact. Shared semantic queries and JS text helpers have explicit owners; direct
-SCC analysis shares graph facts and raises the definition budget to **4,096**.
-Checked source scaling passes through 3,004 definitions. Full direct compiler-image
-emission and a new self-emitted fixed point remain **unqualified**. See
-[backend boundaries](self_hosted/backend-boundaries.md),
-[scaling](../implementation/phase54/scaling.md) and
-[bootstrap investigation](../implementation/phase54/bootstrap.md).
+Full direct compiler-image generation passes for the fixed Phase54 subject and
+host02's own source, with eight exact ordinary-driver probes each. This qualifies
+those images and requests, not B2→B3 self-reproduction, a fresh full-source
+self-check or compiler-throughput parity. Phase54's
+[scaling](../implementation/phase54/scaling.md) remains historical evidence for
+source graphs and the retained 4,096-definition budget. See
+[backend boundaries](self_hosted/backend-boundaries.md) for the shared/target split.
 
 ## Historical release results: Phase53
 
@@ -662,12 +649,12 @@ full-source fixed point is not relabeled as B02's.
 
 ## Current release boundary
 
-Use the [Phase54 report](../implementation/phase54/README.md) and
-[current conformance record](../selfhost/CONFORMANCE.md) for graph02's installed
-identities and qualification. The historical reproduction results above remain
-bound to their original artifacts. The installed compiler is a checked B1
-release; neither the restricted direct-image transport probe nor larger source
-graph tests establish full direct compiler-image generation or a new fixed point.
+Use the [Phase55 report](../implementation/phase55/README.md) and
+[current conformance record](../selfhost/CONFORMANCE.md) for host02's installed
+identities and qualification. Historical reproduction results above remain
+bound to their original artifacts. This is a checked B1 release. Full direct
+image generation and eight ordinary-driver probes per image now pass; they do
+not establish B2→B3 self-reproduction or a fresh full-source self-check.
 The [backend boundary guide](self_hosted/backend-boundaries.md) explains what
 remains shared, what belongs to legacy/direct JS or native C, and the proposed
 future native-IR seam. No LLVM or assembly backend was added in this cleanup.

@@ -1,30 +1,27 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase54 report](../implementation/phase54/README.md),
+[Phase55 report](../implementation/phase55/README.md),
 [backend boundaries](../docs/self_hosted/backend-boundaries.md) and
 [direct JavaScript guide](docs/direct-javascript.md).
-**Graph02 is installed and verified.** Direct JavaScript is the default;
+**Host02 is installed and verified.** Direct JavaScript is the default;
 `--legacy-js` and native targets retain their contracts. Ordinary compilation
 runs Bend code without a TypeScript fallback.
 
-The shared-helper extraction and compact SCC analysis retain the generated
-program behavior. Fresh qualification passes 96 source, 34 numeric, 18 composition and two
-overapplication controls, plus the 26-row census and eight maintained suites.
-Three representative native programs and all **42 legacy + 24 default
-ordinary/relocated checks** also pass. Scope details are
-in [CONFORMANCE.md](CONFORMANCE.md); overlapping counts are not added together.
-All 45 benchmark point modules match Phase53 byte-for-byte, preserving its dated
-**1.069599× TypeScript** result. There is no fresh Phase54 669-sample campaign.
+Full direct compiler-image generation now passes for the fixed Phase54 subject
+and host02's own source, with eight exact ordinary-driver probes for each image.
+This does not establish B2→B3 self-reproduction or a fresh full-source self-check;
+maintained bootstrap/private-image clients still use their explicit legacy ABI.
+The [phase report](../implementation/phase55/README.md) owns timings, final semantic
+and 42 legacy + 24 default interface gates, and 45-point byte retention. The dated
+Phase53 **1.069599× TypeScript** result is retained by exact output identity;
+there is no new generated-program timing campaign.
 
-Current source has **26,259 physical / 21,598 code lines, 3,015 definitions,
-100 types and 107 modules** (+108 physical / +75 code). All 17 native modules
-are unchanged. The direct definition budget is **4,096**, with checked source
-scaling through 3,004 definitions. Graph qualification is separate from full
-direct compiler-image generation, which remains **unqualified**; no new fixed
-point or compiler-throughput parity is claimed. See
-[accounting](../implementation/phase54/architecture.md) and
-[scaling](../implementation/phase54/scaling.md).
+[Source accounting](../implementation/phase55/architecture.md) records 26,286
+physical / 21,617 code lines, 3,019 definitions, 100 types and 107 modules:
++27 physical / +19 code lines over graph02. All 17 native modules, both runtimes
+and the typed driver are unchanged. Phase54's [graph scaling](../implementation/phase54/scaling.md)
+remains historical evidence for the retained 4,096-definition budget.
 
 The [Phase53 performance report](../implementation/phase53/results.md) retains
 all 669 observations, per-program regressions and timing flags. The explicit
@@ -41,9 +38,9 @@ The [benchmark recipes](tools/performance/phase53/PLAN.md) cover checked acquisi
 fast screens and serial full-corpus validation. A checked build takes about 61 seconds;
 the full corpus takes about 20 minutes of timing. CPU/allocation/V8
 [diagnostics](tools/performance/programs/DIAGNOSTICS.md) remain separate from clean
-timing. The current [scaling report](../implementation/phase54/scaling.md)
-separates larger-program qualification from the still-unqualified direct
-compiler-image route. The pin remains
+timing. The historical [scaling report](../implementation/phase54/scaling.md)
+qualifies larger source graphs; the [Phase55 report](../implementation/phase55/README.md)
+separately qualifies full direct image generation and ordinary-driver probes. The pin remains
 `018751270e800bc222a93dad7f257083ee53a5f7`, after Bend 2.0.34.
 
 The [architecture survey](../docs/self_hosted/README.md),

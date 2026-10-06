@@ -1,8 +1,15 @@
 # Compiler architecture: source survey
 
+Current installed host02 is described by the [Phase55 report](../../implementation/phase55/README.md),
+[source accounting](../../implementation/phase55/architecture.md) and
+[backend boundaries](backend-boundaries.md). Full direct image generation and
+eight ordinary-driver probes per image pass; B2→B3 self-reproduction and a fresh
+full-source self-check remain unqualified. The survey below retains its dated
+Phase45 source/count scope.
+
 This survey describes the compiler written in Bend at repository snapshot
 `55e5b79dc9ac3e02436a712e34722f2eb519e5df`, inspected on **2026-10-04**.
-The selected, installed release is **Phase45 worker23**, targeting upstream
+The selected, installed release at that checkpoint was **Phase45 worker23**, targeting upstream
 `018751270e800bc222a93dad7f257083ee53a5f7`, after Bend `2.0.34`.
 It is a source survey, not a new benchmark or conformance run.
 
@@ -10,7 +17,7 @@ The executable architecture is defined by
 [`selfhost/src/compiler.json`](../../selfhost/src/compiler.json), its 85 modules,
 the host driver, and the embedded runtimes. In particular,
 `selfhost/src/compiler.bend` is **not in the manifest**; the old monolithic file
-and its introductory comments do not describe today's compilation boundary.
+and its introductory comments do not describe that snapshot's compilation boundary.
 
 For detailed JavaScript node contracts and mutation witnesses, use the existing
 [JavaScript IR guide](../../selfhost/docs/JAVASCRIPT_IR.md). The companion

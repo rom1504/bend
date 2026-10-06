@@ -1,8 +1,23 @@
 # Compiler validation
 
-## Current Phase54 qualification
+## Current Phase55 qualification
 
-Selected graph02 is installed and verified. The [Phase54 report](../implementation/phase54/README.md)
+Selected host02 is installed and verified. The [Phase55 report](../implementation/phase55/README.md)
+records the final 18 semantic gates, integrity checks, 42 legacy + 24 default
+ordinary/relocated interface checks and exact retention of all 45 point modules.
+Scopes overlap; no new whole-language/native/GPU conformance claim is made.
+
+Full direct compiler-image generation passes for the fixed graph02 subject and
+host02's own source; each passes eight exact ordinary-driver probes. Generation
+and these requests do not establish B2→B3 self-reproduction or a fresh full-source
+self-check. Legacy bootstrap/private-image clients remain supported dependencies.
+The dated Phase53 1.069599× TS result is retained by byte identity; Phase55 adds
+no new generated-program timing campaign. See [source accounting](../implementation/phase55/architecture.md)
+for the two-module change and unchanged native/runtime/driver identities.
+
+## Historical Phase54 qualification
+
+Selected graph02 was installed and verified at the Phase54 checkpoint. The [Phase54 report](../implementation/phase54/README.md)
 and [qualification record](../implementation/phase54/qualification.md) bind the
 new checked image, fresh semantic gates, exact emitted-byte comparisons and
 ordinary/relocated release checks. Shared helper bodies move unchanged; direct

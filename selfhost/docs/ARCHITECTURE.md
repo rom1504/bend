@@ -1,19 +1,19 @@
 # Compiler architecture
 
-**Current overview:** Phase54 graph02 is installed and verified. Direct JavaScript
+**Current overview:** Phase55 host02 is installed and verified. Direct JavaScript
 is the default for emitted programs, libraries and compiled runs; explicit legacy
-JavaScript and native targets remain available. The cleanup separates shared
-helpers and replaces repeated graph closure with compact SCC facts; the shared
-definition budget is 4,096. Full direct compiler-image emission and a new
-self-emitted fixed point remain **unqualified**.
+JavaScript and native targets remain available. The shared helper boundaries and
+4,096-definition SCC analysis from Phase54 remain. Phase55 reuses checked matcher
+ownership and a whole-signature no-Nat proof to remove repeated analysis.
 
 Read [backend boundaries](../../docs/self_hosted/backend-boundaries.md) for the
-shared checked core and distinct direct, descriptor and native representations,
-and the [direct guide](direct-javascript.md) for the public interface. The
-[Phase54 report](../../implementation/phase54/README.md) and
-[architecture/accounting](../../implementation/phase54/architecture.md) bind the
-current source and gates. This cleanup adds no universal runtime IR. The dated
-Phase53 timing is retained by byte-identical output, not fresh timing samples.
+shared core and target representations, the [direct guide](direct-javascript.md)
+for public interfaces, and the [compiler-image guide](../../docs/self_hosted/compiler-image-generation.md)
+for the new full-image generation and ordinary-driver qualification. A fresh
+full-source self-check and B2→B3 fixed point are separate, unexecuted gates.
+The [Phase55 report](../../implementation/phase55/README.md) and
+[source accounting](../../implementation/phase55/architecture.md) bind current
+source and tests. Dated Phase53 program timing is retained by byte identity.
 
 The sections below retain the **historical Phase48 architecture snapshot** and
 its earlier foundations. Their release labels, counts and measurements describe

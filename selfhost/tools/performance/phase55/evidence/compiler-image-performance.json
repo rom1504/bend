@@ -1,0 +1,531 @@
+{
+  "kind": "phase55-compiler-image-performance-summary",
+  "complete": true,
+  "fixedImageByteEqual": true,
+  "fixedImageBytes": 3895592,
+  "fixedImageSha256": "6c8055de86c34065ce7ff76a851835e039046ab23e1da707406345d9dc5cb090",
+  "arityThenHostTimeRatio": 2.0627585502532773,
+  "runs": [
+    {
+      "name": "bootstrap-full-arity0101",
+      "report": {
+        "path": "selfhost/build/phase55/bootstrap-full-arity0101/report.json",
+        "bytes": 12755,
+        "sha256": "71449a20e264af7dbb9d98cc2aad7917ee2cfd286ea583286db3de0408b04d32"
+      },
+      "seconds": 198.494401587,
+      "module": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-full-arity0101/compiler.mjs",
+        "sha256": "6c8055de86c34065ce7ff76a851835e039046ab23e1da707406345d9dc5cb090",
+        "bytes": 3895592
+      },
+      "subject": {
+        "attempt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/attempt.json",
+          "sha256": "594381ea67444070290efeb516458997c528829f9cd4b65385109afc2d0d4a76"
+        },
+        "bootstrap": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/api.mjs.bootstrap.json",
+          "sha256": "07d63f7c9481ab4902a2c1a3f49c9ef300361fa2a268b459ebb09b25847b6886"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/snapshot/build/typed/snapshots/0a99841c94056f3c4bac37daf4281d8ba835068a6dc8b3a8ec4668c6ec246895/compiler.bend",
+          "sha256": "32cddcf1a970a9726a9785b30269cdd8a0047f917f769a964995fa6a0633de84"
+        }
+      },
+      "generator": {
+        "attempt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01/attempt.json",
+          "sha256": "87f61624692529bc17191d2a21bf49971506fc41b36b092f047e8c8e8e644007"
+        },
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01/equality/api.mjs",
+          "sha256": "3277b2149d97ed9ed1fcfc8d585696a75676d725845686589bce12d58fd3ad35"
+        },
+        "bootstrap": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01/api.mjs.bootstrap.json",
+          "sha256": "eb995d27b825c9bce9079ceb2cb29bbd17bb3918a0b40105a870ba40181a46aa"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-arity01/snapshot/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        }
+      },
+      "phases": [
+        {
+          "name": "load-fixed-compiler-source",
+          "seconds": 9.735435529999998
+        },
+        {
+          "name": "remaining-todos",
+          "seconds": 0.1487035789999991
+        },
+        {
+          "name": "specialize-loaded-book",
+          "seconds": 4.894620186
+        },
+        {
+          "name": "owned-layout-identity",
+          "seconds": 0.04054335999999967
+        },
+        {
+          "name": "context",
+          "seconds": 0.07275799600000027,
+          "entries": 3579,
+          "definitions": 3456
+        },
+        {
+          "name": "native-stops",
+          "seconds": 0.012245825999998487
+        },
+        {
+          "name": "source-reachability",
+          "seconds": 1.2302296529999985,
+          "entries": 3206,
+          "definitions": 3093
+        },
+        {
+          "name": "annotate-selected",
+          "seconds": 2.6735483559999995,
+          "entries": 3206,
+          "definitions": 3093
+        },
+        {
+          "name": "emitted-reachability",
+          "seconds": 22.894662701999998
+        },
+        {
+          "name": "layout-proof",
+          "seconds": 3.2208137119999956
+        },
+        {
+          "name": "library-selected-context",
+          "seconds": 0.485725903999999,
+          "entries": 3579,
+          "definitions": 3456
+        },
+        {
+          "name": "library-callgraph",
+          "seconds": 4.372910787,
+          "entries": 3580,
+          "definitions": 3456
+        },
+        {
+          "name": "library-validity",
+          "seconds": 0.0001176049999994575
+        },
+        {
+          "name": "library-definitions",
+          "seconds": 14.109650915999998,
+          "characters": 3479598,
+          "utf8Bytes": 3479598
+        },
+        {
+          "name": "library-exports",
+          "seconds": 121.392050694,
+          "characters": 402711,
+          "utf8Bytes": 402711
+        },
+        {
+          "name": "foreign-modules",
+          "seconds": 0.1255584309999831,
+          "characters": 0,
+          "utf8Bytes": 0
+        }
+      ],
+      "selected": {
+        "entries": 3169,
+        "definitions": 3056
+      }
+    },
+    {
+      "name": "bootstrap-full-host02",
+      "report": {
+        "path": "selfhost/build/phase55/bootstrap-full-host02/report.json",
+        "bytes": 12742,
+        "sha256": "5078bc628b3fae57c5997c2b325a53e041d0be986c00d0659b180d3e66a3d4d7"
+      },
+      "seconds": 96.227646984,
+      "module": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-full-host02/compiler.mjs",
+        "sha256": "6c8055de86c34065ce7ff76a851835e039046ab23e1da707406345d9dc5cb090",
+        "bytes": 3895592
+      },
+      "subject": {
+        "attempt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/attempt.json",
+          "sha256": "594381ea67444070290efeb516458997c528829f9cd4b65385109afc2d0d4a76"
+        },
+        "bootstrap": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/api.mjs.bootstrap.json",
+          "sha256": "07d63f7c9481ab4902a2c1a3f49c9ef300361fa2a268b459ebb09b25847b6886"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/snapshot/build/typed/snapshots/0a99841c94056f3c4bac37daf4281d8ba835068a6dc8b3a8ec4668c6ec246895/compiler.bend",
+          "sha256": "32cddcf1a970a9726a9785b30269cdd8a0047f917f769a964995fa6a0633de84"
+        }
+      },
+      "generator": {
+        "attempt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/attempt.json",
+          "sha256": "c47c8df40ee13be2cc21bc43c2cd1348549684b5f14773781fdbd522b0d37cb0"
+        },
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/equality/api.mjs",
+          "sha256": "cfde1ebf44d958e593331cfd9af77f7b6ee657441dbd582db8d27f3928815a62"
+        },
+        "bootstrap": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/api.mjs.bootstrap.json",
+          "sha256": "f37fcaa41a36d901387b9a4431c83d1d9ef8fb80785e1dfac0961d3af6f99546"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/snapshot/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        }
+      },
+      "phases": [
+        {
+          "name": "load-fixed-compiler-source",
+          "seconds": 9.554277093000001
+        },
+        {
+          "name": "remaining-todos",
+          "seconds": 0.13730180199999995
+        },
+        {
+          "name": "specialize-loaded-book",
+          "seconds": 4.750180590999999
+        },
+        {
+          "name": "owned-layout-identity",
+          "seconds": 0.03914467599999989
+        },
+        {
+          "name": "context",
+          "seconds": 0.07454931099999886,
+          "entries": 3579,
+          "definitions": 3456
+        },
+        {
+          "name": "native-stops",
+          "seconds": 0.012174425000001066
+        },
+        {
+          "name": "source-reachability",
+          "seconds": 1.288839336000001,
+          "entries": 3206,
+          "definitions": 3093
+        },
+        {
+          "name": "annotate-selected",
+          "seconds": 2.706338287000002,
+          "entries": 3206,
+          "definitions": 3093
+        },
+        {
+          "name": "emitted-reachability",
+          "seconds": 21.907539908999997
+        },
+        {
+          "name": "layout-proof",
+          "seconds": 3.1654446830000014
+        },
+        {
+          "name": "library-selected-context",
+          "seconds": 0.47321237799999655,
+          "entries": 3579,
+          "definitions": 3456
+        },
+        {
+          "name": "library-callgraph",
+          "seconds": 4.091706824000001,
+          "entries": 3580,
+          "definitions": 3456
+        },
+        {
+          "name": "library-validity",
+          "seconds": 0.00011115699999936624
+        },
+        {
+          "name": "library-definitions",
+          "seconds": 13.800079916999996,
+          "characters": 3479598,
+          "utf8Bytes": 3479598
+        },
+        {
+          "name": "library-exports",
+          "seconds": 20.921414537999997,
+          "characters": 402711,
+          "utf8Bytes": 402711
+        },
+        {
+          "name": "foreign-modules",
+          "seconds": 0.004914982000002056,
+          "characters": 0,
+          "utf8Bytes": 0
+        }
+      ],
+      "selected": {
+        "entries": 3169,
+        "definitions": 3056
+      }
+    },
+    {
+      "name": "bootstrap-own-host02-full01",
+      "report": {
+        "path": "selfhost/build/phase55/bootstrap-own-host02-full01/report.json",
+        "bytes": 12786,
+        "sha256": "654af8869256b3a9367f2ad98b5006c7791623790a25196a8a00fe8fb730531a"
+      },
+      "seconds": 103.94790964500001,
+      "module": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/bootstrap-own-host02-full01/compiler.mjs",
+        "sha256": "ae5abd461c24f707747f37b187cedcecd86f5d3c727950f8f8a332fd9dca4091",
+        "bytes": 3900194
+      },
+      "subject": {
+        "attempt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/attempt.json",
+          "sha256": "c47c8df40ee13be2cc21bc43c2cd1348549684b5f14773781fdbd522b0d37cb0"
+        },
+        "bootstrap": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/api.mjs.bootstrap.json",
+          "sha256": "f37fcaa41a36d901387b9a4431c83d1d9ef8fb80785e1dfac0961d3af6f99546"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/snapshot/build/typed/snapshots/688e9f3d8f8dbd7ed864bd73d810024eef26fd1404d334cd64ba796b67ecd0e1/compiler.bend",
+          "sha256": "e4383fa08d621716acac437224de182af52e0b16c32b3f29b2614fc1ad1d6710"
+        }
+      },
+      "generator": {
+        "attempt": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/attempt.json",
+          "sha256": "c47c8df40ee13be2cc21bc43c2cd1348549684b5f14773781fdbd522b0d37cb0"
+        },
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/equality/api.mjs",
+          "sha256": "cfde1ebf44d958e593331cfd9af77f7b6ee657441dbd582db8d27f3928815a62"
+        },
+        "bootstrap": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/api.mjs.bootstrap.json",
+          "sha256": "f37fcaa41a36d901387b9a4431c83d1d9ef8fb80785e1dfac0961d3af6f99546"
+        },
+        "runtime": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase55/checked-host02/snapshot/src/runtime.mjs",
+          "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+        }
+      },
+      "phases": [
+        {
+          "name": "load-fixed-compiler-source",
+          "seconds": 10.953751755
+        },
+        {
+          "name": "remaining-todos",
+          "seconds": 0.1972595139999994
+        },
+        {
+          "name": "specialize-loaded-book",
+          "seconds": 4.5814968889999985
+        },
+        {
+          "name": "owned-layout-identity",
+          "seconds": 0.04365689799999745
+        },
+        {
+          "name": "context",
+          "seconds": 0.07238881100000072,
+          "entries": 3583,
+          "definitions": 3460
+        },
+        {
+          "name": "native-stops",
+          "seconds": 0.012278340000000753
+        },
+        {
+          "name": "source-reachability",
+          "seconds": 1.2998955519999982,
+          "entries": 3210,
+          "definitions": 3097
+        },
+        {
+          "name": "annotate-selected",
+          "seconds": 3.683396388000001,
+          "entries": 3210,
+          "definitions": 3097
+        },
+        {
+          "name": "emitted-reachability",
+          "seconds": 22.253606957
+        },
+        {
+          "name": "layout-proof",
+          "seconds": 3.246342515999997
+        },
+        {
+          "name": "library-selected-context",
+          "seconds": 0.47816484800000036,
+          "entries": 3583,
+          "definitions": 3460
+        },
+        {
+          "name": "library-callgraph",
+          "seconds": 4.1398799209999995,
+          "entries": 3584,
+          "definitions": 3460
+        },
+        {
+          "name": "library-validity",
+          "seconds": 0.00011463400000502589
+        },
+        {
+          "name": "library-definitions",
+          "seconds": 15.181262091999997,
+          "characters": 3483568,
+          "utf8Bytes": 3483568
+        },
+        {
+          "name": "library-exports",
+          "seconds": 22.788632545,
+          "characters": 403343,
+          "utf8Bytes": 403343
+        },
+        {
+          "name": "foreign-modules",
+          "seconds": 0.005346720999994432,
+          "characters": 0,
+          "utf8Bytes": 0
+        }
+      ],
+      "selected": {
+        "entries": 3173,
+        "definitions": 3060
+      }
+    }
+  ],
+  "baselineDiagnostic": {
+    "report": {
+      "path": "selfhost/build/phase55/bootstrap-full-baseline01-supervisor/run.json",
+      "bytes": 1637,
+      "sha256": "56b5f0df0b1a21b490f8fcb0bc1c929795887ad1a8f67c5975ed431a67a0b7be"
+    },
+    "progress": {
+      "path": "selfhost/build/phase55/bootstrap-full-baseline01/progress.jsonl",
+      "bytes": 3277,
+      "sha256": "d2f9399c318c4cc52e74c12c4b42d70a285d0dc818e86e4907dfa0cf9a8217de"
+    },
+    "deadlineSeconds": 120,
+    "completedPhases": [
+      {
+        "sequence": 2,
+        "phase": "load-fixed-compiler-source",
+        "event": "complete",
+        "elapsedSeconds": 14.289799962000002,
+        "seconds": 10.00664346
+      },
+      {
+        "sequence": 4,
+        "phase": "remaining-todos",
+        "event": "complete",
+        "elapsedSeconds": 14.458427932000001,
+        "seconds": 0.1643042920000007
+      },
+      {
+        "sequence": 6,
+        "phase": "specialize-loaded-book",
+        "event": "complete",
+        "elapsedSeconds": 19.321789972,
+        "seconds": 4.863209036000002
+      },
+      {
+        "sequence": 8,
+        "phase": "owned-layout-identity",
+        "event": "complete",
+        "elapsedSeconds": 19.364441939,
+        "seconds": 0.04240859199999977
+      },
+      {
+        "sequence": 10,
+        "phase": "context",
+        "event": "complete",
+        "elapsedSeconds": 19.452447281,
+        "seconds": 0.0813992700000017,
+        "entries": 3579,
+        "definitions": 3456
+      },
+      {
+        "sequence": 12,
+        "phase": "native-stops",
+        "event": "complete",
+        "elapsedSeconds": 19.465046893000004,
+        "seconds": 0.012400426000000152
+      },
+      {
+        "sequence": 14,
+        "phase": "source-reachability",
+        "event": "complete",
+        "elapsedSeconds": 20.823846071,
+        "seconds": 1.3583052470000003,
+        "entries": 3206,
+        "definitions": 3093
+      },
+      {
+        "sequence": 16,
+        "phase": "annotate-selected",
+        "event": "complete",
+        "elapsedSeconds": 23.920246776,
+        "seconds": 3.093128552999999,
+        "entries": 3206,
+        "definitions": 3093
+      },
+      {
+        "sequence": 18,
+        "phase": "emitted-reachability",
+        "event": "complete",
+        "elapsedSeconds": 75.08311598,
+        "seconds": 51.162725364
+      },
+      {
+        "sequence": 21,
+        "phase": "layout-proof",
+        "event": "complete",
+        "elapsedSeconds": 79.34481322100001,
+        "seconds": 4.257699936000004
+      },
+      {
+        "sequence": 23,
+        "phase": "library-selected-context",
+        "event": "complete",
+        "elapsedSeconds": 79.859727044,
+        "seconds": 0.5055873229999998,
+        "entries": 3579,
+        "definitions": 3456
+      },
+      {
+        "sequence": 25,
+        "phase": "library-callgraph",
+        "event": "complete",
+        "elapsedSeconds": 90.025058333,
+        "seconds": 10.161869375000009,
+        "entries": 3580,
+        "definitions": 3456
+      },
+      {
+        "sequence": 27,
+        "phase": "library-validity",
+        "event": "complete",
+        "elapsedSeconds": 90.025397139,
+        "seconds": 0.00011927499999001157
+      }
+    ]
+  },
+  "historicalFullBaseline": {
+    "deadlineSeconds": 240,
+    "publication": {
+      "path": "selfhost/tools/performance/phase54/publication.json",
+      "bytes": 6968,
+      "sha256": "4cf8fea9d861ecf0f5bd42bb9b4bc8380693853ed71cf014b617f6efee505c0e"
+    }
+  },
+  "scope": "Single same-CPU bounded diagnostic observations, including final identity checks. Fixed subject source and all exports retained; own-source emission is separate. Not warmed throughput or generated-user-program performance."
+}

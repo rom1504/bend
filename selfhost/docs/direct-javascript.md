@@ -1,29 +1,21 @@
 # Direct JavaScript output
 
-**Checked Phase54 graph02 is installed and verified; direct JavaScript remains
+**Checked Phase55 host02 is installed and verified; direct JavaScript remains
 the default.** Ordinary compilation, library output and `--run` use callable
 direct output. `--legacy-js` retains the descriptor compatibility interface.
-Fresh qualification passes the original 96 source scenarios, 18 composition
-controls, 34 numeric controls and two overapplication controls, plus the direct
-26-row census and eight explicit legacy suites. These overlapping gates are
-separate evidence, not a unique language-test total. Three representative native
-programs and all 42 legacy plus 24 default ordinary/relocated release checks pass.
+The [Phase55 report](../../implementation/phase55/README.md) records final semantic
+gates, release integrity, 42 legacy + 24 default ordinary/relocated checks and
+exact retention of all 45 benchmark point modules. The dated
+[Phase53 1.069599× TypeScript result](../../implementation/phase53/results.md)
+is retained by byte identity; Phase55 makes no new generated-program speed claim.
 
-The helper extraction and scalable SCC analysis preserve all 45 benchmark point
-modules byte-for-byte. The **1.069599× TypeScript** time ratio is the dated
-[Phase53 measurement](../../implementation/phase53/results.md), retained by that
-identity; Phase54 did not collect another 669-sample timing campaign. It is not
-universal parity or compiler throughput. See the
-[Phase54 report](../../implementation/phase54/README.md),
-[qualification](../../implementation/phase54/qualification.md) and
-[source accounting](../../implementation/phase54/architecture.md).
-
-The direct definition budget is **4,096**. Graph/budget controls and checked
-source scaling through 3,004 definitions pass, but full direct compiler-image
-emission and self-reproduction remain **unqualified**. The
-[backend boundary guide](../../docs/self_hosted/backend-boundaries.md) describes
-shared and target-specific source responsibilities. The Phase53 NaN and ordering
-results below remain historical evidence; their behavior is retained in graph02.
+Full direct compiler-image generation passes for the fixed graph02 subject and
+host02's own source; both pass eight exact ordinary-driver probes. This does not
+establish B2→B3 self-reproduction or a fresh full-source self-check. Bootstrap and
+private-image clients keep explicit legacy selection. The retained direct
+4,096-definition budget and [Phase54 scaling](../../implementation/phase54/scaling.md)
+are separate historical evidence. See [source accounting](../../implementation/phase55/architecture.md)
+and [backend boundaries](../../docs/self_hosted/backend-boundaries.md).
 
 ## Choose the JavaScript contract
 
@@ -159,7 +151,7 @@ Supported primitives require the checked native declaration; same-spelled user
 functions do not acquire primitive behavior. Operations without a direct template
 can retain their checked source implementation. Tail-call analysis and lexical
 SCC dispatch support the admitted recursive call graph without a mutable global
-callee registry. Installed Phase54 graph02 has the following bounds; these
+callee registry. Installed Phase55 host02 retains the following bounds; these
 supersede Phase53's historical 512-definition limit:
 
 - At most 4,096 conservatively eligible runtime definitions before exact emitted
@@ -266,8 +258,8 @@ verified exact restoration. The direct preparation wrapper also passed a fresh
 installed complete-row oracle. See the
 [Phase53 routing/release method](../tools/performance/phase53/routing.md) and
 [historical Phase53 report](../../implementation/phase53/README.md).
-Current graph02 identities and fresh qualification are in the
-[Phase54 report](../../implementation/phase54/README.md).
+Current host02 identities and fresh qualification are in the
+[Phase55 report](../../implementation/phase55/README.md).
 
 This is a checked B1 release, not a new self-emitted fixed point. Generated-program
 runtime measurements do not measure compiler throughput or request latency. The

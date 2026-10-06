@@ -3079,3 +3079,29 @@ or a checked constructor index as the next narrow experiment. Full direct image,
 fresh self-check and fixed point remain unqualified. Retain legacy bootstrap.
 Fixture/controller/environment failures, profile heap failure and both deadlines
 remain preserved alongside successful successors. No PR comment was posted.
+
+## Phase55 — resolve direct compiler-image timeout
+
+[Design](../design/phase55/direct-compiler-image-throughput.md),
+[report](../implementation/phase55/README.md),
+[publication](../selfhost/tools/performance/phase55/publication.json).
+Host02 is installed. Typed matcher ownership avoids redundant whole-book
+constructor search; one completed no-Nat signature proof avoids repeated export
+conversion analysis. Two source files add 27 physical / 19 code lines; all other 105
+Bend modules, runtimes, native modules and driver retain exact bytes.
+
+The old full image exceeded 240 s. Fixed-source arity01 completes in 198.49 s;
+host02 completes in 96.23 s with a byte-identical 3,895,592-byte image. Its export
+stage falls 121.39 → 20.92 s. Host02's own-source image completes in 103.95 s.
+Both images pass 8 exact ordinary-driver requests; no fresh self-check/B2→B3
+fixed point or legacy-client retirement is claimed. Times are bounded diagnostic
+observations, not user-program speed results.
+
+Final 96 source / 34 numeric / 18 composition / 2 overapplication, 26 census, 8 maintained,
+33 semantic module equality, 45 benchmark point equality, 3 native / 6 CPU and 42 + 24
+installed interface gates pass. Dated Phase53 runtime timing is retained for those
+exact bytes. Focused arity and 8 host-wrapper controls include fallbacks and budget
+exhaustion. Two harness book-event assumptions, launcher syntax failure and sandbox
+child-process EPERM remain preserved with their corrected successors. All 103
+unrelated files, 7 prior-release artifacts and 4,543 closed Phase54 files remain
+unchanged. Source commit c192b60; no PR comment posted.

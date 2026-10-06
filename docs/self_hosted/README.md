@@ -1,21 +1,23 @@
 # Self-hosted compiler: current architecture and development
 
-For the installed graph02 compiler, see the [Phase54 report](../../implementation/phase54/README.md),
-[source accounting](../../implementation/phase54/architecture.md) and
-[direct JavaScript backend guide](../../selfhost/docs/direct-javascript.md).
-Current source has 26,259 physical / 21,598 code lines across 107 modules;
-4,096-definition graph capacity and checked source scaling are separate from
-full direct compiler-image generation, which remains unqualified.
-[Phase53](../../implementation/phase53/README.md) is the historical direct-default
-and ordered-expression checkpoint. Its 1.069599× TS timing is retained by exact
-45-point output identity; Phase54 adds no new 669-sample campaign.
+For installed host02, see the [Phase55 report](../../implementation/phase55/README.md),
+[source accounting](../../implementation/phase55/architecture.md) and
+[direct JavaScript guide](../../selfhost/docs/direct-javascript.md).
+Full direct compiler-image generation and eight exact ordinary-driver probes per
+image now pass for the fixed Phase54 subject and host02's own source. This is
+not B2→B3 self-reproduction or a fresh full-source self-check. Legacy compiler-image
+clients are retained. Phase54's graph scaling remains historical evidence;
+Phase53's dated 1.069599× TS timing is retained by exact 45-point byte identity.
+Phase55 adds no new generated-program timing campaign.
 The [Phase51 V8-guided runtime](v8-guided-runtime.md) describes the retained
 compatibility mode. The source survey below remains a dated Phase45 baseline;
 its counts and timings are historical.
 
 For the current separation between shared checking, backend facts, direct
 JavaScript, legacy JavaScript and native C, read
-[Backend boundaries](backend-boundaries.md). It distinguishes implemented source
+[Backend boundaries](backend-boundaries.md). The
+[compiler-image guide](compiler-image-generation.md) explains direct image
+generation, its fast validation loop and the remaining bootstrap gates. It distinguishes implemented source
 from the proposed extension point for LLVM or assembly. The legacy IR is not a
 target-neutral compiler IR.
 

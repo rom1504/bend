@@ -5,22 +5,21 @@ The compiler does not yet have one target-neutral executable IR. Its JavaScript
 and native representations serve different runtime contracts; moving them into a
 shared directory would not make those contracts interchangeable.
 
-Phase54 graph02 is installed, retaining the direct JavaScript default introduced
-in Phase53 for emitted programs, libraries and compiled runs. Explicit legacy
-JavaScript and native targets remain available. See the
-[direct guide](../../selfhost/docs/direct-javascript.md) and
-[Phase54 qualification](../../implementation/phase54/qualification.md) for exact
-interfaces and tested scope. This architecture document is not an independent
-conformance, performance or fixed-point result.
+Phase55 host02 is installed, retaining the direct JavaScript default introduced
+in Phase53. Explicit legacy JavaScript and native targets remain available.
+See the [direct guide](../../selfhost/docs/direct-javascript.md) and
+[Phase55 report](../../implementation/phase55/README.md) for interfaces and tested
+scope. This architecture guide is not an independent conformance result.
 
-Phase54 separates source ownership and reusable facts. Its helper extraction and
-scalable graph implementation are present in installed graph02. Graph controls,
-scoped semantic/release gates and emitted-byte retention pass; full direct
-compiler-image emission and self-reproduction remain
-**unqualified**. The future runtime representation is explicitly a proposal,
-not an unused module added to the compiler. See the
-[source accounting](../../implementation/phase54/architecture.md) and
-[bootstrap scope](../../implementation/phase54/bootstrap.md).
+Phase54's shared-helper extraction and scalable graph implementation remain
+present; its [scaling evidence](../../implementation/phase54/scaling.md) remains
+historical. Phase55 reuses matcher ownership and host-export work. Full direct
+compiler-image generation and eight ordinary-driver probes per image now pass
+for the fixed Phase54 subject and host02's own source. They do not establish
+B2→B3 self-reproduction or a fresh full-source self-check; legacy bootstrap and
+private-image clients are not retired. [Source accounting](../../implementation/phase55/architecture.md)
+records the bounded change. A future runtime representation remains a proposal,
+not an unused module added to the compiler.
 
 ## The shared compiler boundary
 

@@ -16,29 +16,26 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
 fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-[Phase54 graph02](implementation/phase54/README.md) is installed and verified.
-Direct JavaScript remains the default; `--legacy-js` keeps the descriptor
-interface and native C remains available. The cleanup moves 27 semantic helpers
-and seven JS text helpers to explicit owners and replaces repeated graph closure
-with iterative SCC analysis. The direct definition budget is **4,096**; checked
-source scaling passes through 3,004 definitions. Full direct compiler-image
-emission and a new self-emitted fixed point remain **unqualified**.
+[Phase55 host02](implementation/phase55/README.md) is installed and verified.
+Direct JavaScript remains the default; `--legacy-js` retains the descriptor
+interface, and native C remains available. Matcher ownership and host-export
+work reuse improve full direct compiler-image generation. Fixed-subject emission
+completes in **96.2 seconds**, and host02's own-source image in **104
+seconds**; both pass eight exact ordinary-driver probes. This qualifies image
+generation and those probes, not B2→B3 self-reproduction or a fresh full-source
+self-check. Bootstrap/private-image clients retain their explicit legacy ABI.
 
-Fresh qualification passes 96 source, 34 numeric, 18 composition and two
-overapplication controls, plus the 26-row census and eight maintained suites.
-Three representative native programs and all **42 legacy + 24 default
-ordinary/relocated interface checks** also pass. These scopes overlap and do not
-establish full language/native/GPU conformance. All **45 emitted benchmark point
-modules are byte-identical to Phase53**. The dated Phase53 result, **1.069599×
-TypeScript time**, is retained by that identity; Phase54 did not run another
-669-sample timing campaign or establish a new program-speed gain.
-
-[Source accounting](implementation/phase54/architecture.md) records **26,259
-physical / 21,598 code lines, 3,015 definitions, 100 types and 107 modules**:
-+108 physical / +75 code lines. All 17 native modules and 95 original modules are
-byte-identical. [Backend boundaries](docs/self_hosted/backend-boundaries.md)
-separates checked core, shared facts and target-specific representations; no
-universal executable IR or LLVM emitter is being added.
+The [phase report](implementation/phase55/README.md) records the final 18 semantic
+gates, 42 legacy + 24 default ordinary/relocated release checks and exact emitted
+output retention. All 45 benchmark point modules retain the dated Phase53
+**1.069599× TypeScript time** result by byte identity; Phase55 adds no new
+program-speed claim. These scopes overlap and are not full language/native/GPU
+conformance. [Source accounting](implementation/phase55/architecture.md) records
++27 physical / +19 code lines in two modules; all 17 native modules, both runtimes
+and the typed driver remain exact. [Backend boundaries](docs/self_hosted/backend-boundaries.md)
+separates shared facts from target-specific representations. See the
+[compiler-image guide](docs/self_hosted/compiler-image-generation.md) for the
+bootstrap boundary and reproduction workflow.
 
 The [Phase53 results](implementation/phase53/results.md) retain the full timing
 campaign, per-program regressions and measurement flags; those results describe

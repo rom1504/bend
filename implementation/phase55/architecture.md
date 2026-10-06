@@ -1,5 +1,10 @@
 # Phase55 source accounting
 
+Host02 is installed and verified. The [phase report](README.md) owns final
+semantic/release gates and full-image qualification. Full generation plus eight
+ordinary-driver probes per image pass; no B2→B3 fixed point or fresh full-source
+self-check is established, and legacy compiler-image clients remain retained.
+
 Frozen `checked-host02` adds **27 physical lines, 19 code lines and four definitions** over Phase54 `checked-graph02`. Only the direct backend's `model.bend` and `host.bend` change. All 17 native modules, both JavaScript runtimes and the typed driver remain byte-identical. This is a small compiler-source optimization, not a backend removal or a runtime change.
 
 ## Method and totals
@@ -27,7 +32,7 @@ The fresh data-only producer is `selfhost/build/phase55/source-census-host02.py`
 | `src/back/js/direct/model.bend` | +20 | +15 | +3 | +985 |
 | `src/back/js/direct/host.bend` | +7 | +4 | +1 | +580 |
 
-The other **105 manifest modules** match exactly. Native C retains 17 modules, 2,092 physical lines, 1,745 code lines, 286 definitions, 41 laws and 17 types. The three common modules also match exactly. The model change reuses annotated matcher ownership when raising definitions; the host change reuses export eligibility work. Their behavior and compiler-cost qualification belong to the [arity report](arity.md) and [compiler-image study](bootstrap-usability.md), rather than this size census.
+The other **105 manifest modules** match exactly. Native C retains 17 modules, 2,092 physical lines, 1,745 code lines, 286 definitions, 41 laws and 17 types. The three common modules also match exactly. The model change reuses annotated matcher ownership when raising definitions; the host change reuses the whole-signature no-Nat proof for component marshalling. Their behavior and compiler-cost qualification belong to the [arity report](arity.md) and [compiler-image study](bootstrap-usability.md), rather than this size census.
 
 ## Runtime and image identities
 
@@ -51,4 +56,9 @@ The derived generator API grows from 1,828,672 to 1,830,492 bytes (+1,820); its 
 
 ## Timing boundary
 
-The first split full-image emission spent **121.392 seconds in library exports**. That is an observed phase of the earlier attempt, not a whole-request median or a paired measurement of host02. The successor result was still pending when this census completed. Source-size differences alone establish neither compiler throughput nor generated-program speed; full-image usability and self-reproduction require their separate gates.
+The fixed-source export stage falls from **121.392 seconds** with arity01 to
+**20.921 seconds** with host02; complete generation falls from 198.494 to 96.228
+seconds. These are separate bounded diagnostic observations, not measurements
+from this size census. Source-size differences alone establish neither compiler
+throughput nor generated-program speed. The [phase report](README.md) records
+image usability and distinguishes it from unexecuted self-reproduction gates.

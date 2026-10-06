@@ -1,0 +1,53 @@
+{
+  "kind": "phase55-frozen-checked-arity-corpus",
+  "baselineAttempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/attempt.json",
+    "sha256": "594381ea67444070290efeb516458997c528829f9cd4b65385109afc2d0d4a76"
+  },
+  "baselineAPI": "d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857",
+  "accepted": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/fixtures/direct-contract-v2.bend",
+      "sha256": "ab6c6253e9af697a0bbea999add8a4048c379019c451176e6f4c4b246200fb22"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/check/beta_ann_match.bend",
+      "sha256": "2367fdb3aed8e980da05a481d97879a9500a82175a1a37935d238291c447dd71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/check/erased_ctor_field.bend",
+      "sha256": "0699d5d647dffe8ed602d03e37151bcd227c63b9a549306c1fb9d2cccd953cb1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/check/param_shadow_def.bend",
+      "sha256": "b98b936fb166a75366364ad7f40e30b9e79c054f998d0fb935c0ffa98ac6e894"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/check/motive_var_shadow.bend",
+      "sha256": "33f5bbe064eab9f635352a4ee3ffcef116698aa0c6db99490c17eb4bb53df6ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/check/computed_match_specialize.bend",
+      "sha256": "f59d78738bcfbc7de39cb5cf0c229640835f4043e65bb469e3cf9fc42e183edc"
+    }
+  ],
+  "rejected": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/check/ctor_shared_tag.bend",
+      "sha256": "480bc012267f8b4497bde043f9181f30e8fe135e8ff26ac374dfba0714ebf71c",
+      "diagnosticContains": "fresh constructor name"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/check/ctor_arity.bend",
+      "sha256": "a0cb76d5432519e01e97e1991dd2b977c52f164ffc7c7212060c4191b626a7b3",
+      "diagnosticContains": "with 0 fields"
+    }
+  ],
+  "arityGoldens": {
+    "add": 2,
+    "capture": 2,
+    "factory": 2,
+    "unpack": 1
+  },
+  "scope": "Actual parsed, checked and annotated source terms; exact predecessor arities and genuinely unannotated fallback. No forged private Ann policy."
+}

@@ -1,0 +1,165 @@
+{
+  "kind": "phase55-qualified-compiler-image-optimization-publication",
+  "complete": true,
+  "selected": {
+    "attempt": "checked-host02",
+    "artifact": "equality-derived-b1",
+    "api": {
+      "path": "selfhost/dist/typed-api.mjs",
+      "bytes": 1830492,
+      "sha256": "cfde1ebf44d958e593331cfd9af77f7b6ee657441dbd582db8d27f3928815a62"
+    },
+    "release": {
+      "path": "selfhost/dist/release.json",
+      "bytes": 35733,
+      "sha256": "50ae7d6fb95d51af954c5eecb5243fff87266811df2b14dcff2ba40c44daf5e8"
+    },
+    "sourceSha256": "e4383fa08d621716acac437224de182af52e0b16c32b3f29b2614fc1ad1d6710",
+    "directRuntimeSha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+    "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+    "newSelfEmittedFixedPoint": false,
+    "sourceCommit": "c192b60"
+  },
+  "qualification": {
+    "source": 96,
+    "numeric": 34,
+    "composition": 18,
+    "overapplication": 2,
+    "directCensus": 26,
+    "maintainedLegacySuites": 8,
+    "nativeSources": 3,
+    "nativeCPUExecutions": 6,
+    "benchmarkPointsExact": 45,
+    "benchmarkCheckedSources": 23,
+    "semanticModulesExact": 33,
+    "releaseLegacy": 42,
+    "releaseDefault": 24,
+    "scopesOverlap": true
+  },
+  "focused": {
+    "aritySources": 6,
+    "arityRejections": 2,
+    "rawMatcherQueries": 13,
+    "annotatedMatcherQueries": 13,
+    "arityGoldens": 4,
+    "hostCases": 8,
+    "driverProbesPerImage": 8
+  },
+  "compilerImages": {
+    "historicalBaselineDeadlineSeconds": 240,
+    "fixedSourceAritySeconds": 198.494401587,
+    "fixedSourceHostSeconds": 96.227646984,
+    "ownSourceHostSeconds": 103.94790964500001,
+    "fixedModuleByteEqual": true,
+    "fixedModuleSha256": "6c8055de86c34065ce7ff76a851835e039046ab23e1da707406345d9dc5cb090",
+    "ownModuleSha256": "ae5abd461c24f707747f37b187cedcecd86f5d3c727950f8f8a332fd9dca4091",
+    "ordinaryDriverChecksPerImage": 8,
+    "freshSelfCheck": false,
+    "b2ToB3FixedPoint": false,
+    "scope": "Single CPU-pinned diagnostic generations, separate fixed/own subjects. Exact-byte reuse binds fixed host02 to arity01 driver checks; own-source driver checks are fresh."
+  },
+  "sourceSize": {
+    "physical": 26286,
+    "code": 21617,
+    "definitions": 3019,
+    "types": 100,
+    "modules": 107,
+    "deltaPhysical": 27,
+    "deltaCode": 19,
+    "unchangedOriginalModules": 105,
+    "nativeModulesUnchanged": 17
+  },
+  "programPerformance": {
+    "exactRetainedPoints": 45,
+    "uniqueCheckedSources": 23,
+    "uniqueModulesWithObserver": 24,
+    "priorPhase53EqualPointTimeOverTypeScript": 1.069599,
+    "priorPhase53EqualSourceTimeOverTypeScript": 1.078076,
+    "priorSamples": 669,
+    "scope": "Dated Phase53 timing retained by Phase54 and Phase55 complete module equality. No new program-runtime speedup or compiler-throughput parity claim.",
+    "bundle": {
+      "path": "selfhost/tools/performance/phase53/bundles/current/manifest.json",
+      "bytes": 33238,
+      "sha256": "0b0485b6e35db9aa4c499517050ea6366434c9f7d1eeaac7112ad433423eb969"
+    },
+    "bundleArchive": {
+      "path": "selfhost/tools/performance/phase53/bundles/current/programs.tar.gz",
+      "bytes": 524710,
+      "sha256": "9992bb711499cb6ef8abe2c302d14698b78b5e8bfd9bdcedc3073504f44fc631"
+    },
+    "priorMeasurement": {
+      "path": "selfhost/tools/performance/phase53/evidence/performance-summary.json",
+      "bytes": 20532,
+      "sha256": "3748bb63844b21b9d25db9fd18483aaf3f41526144c92e6abe6476127434c80f"
+    },
+    "freshPhase55TimingSamples": 0
+  },
+  "evidence": [
+    {
+      "path": "selfhost/tools/performance/phase55/evidence/closed-phase54-inventory-after-native.json",
+      "bytes": 485,
+      "sha256": "7614e35e5921d599ab94e0176afb1496667a0de6be2b341416a188e3bda6b5c4"
+    },
+    {
+      "path": "selfhost/tools/performance/phase55/evidence/compiler-image-performance.json",
+      "bytes": 17508,
+      "sha256": "7e82e322721195c8accb208ceb5ab7261fe286ab76f5c537df5c267f1f60fd8d"
+    },
+    {
+      "path": "selfhost/tools/performance/phase55/evidence/protected-final.json",
+      "bytes": 519,
+      "sha256": "5b0685dbd8dc86d0e476092831b01166e7a8fe7e80aace03430aa0e0e9c40b69"
+    },
+    {
+      "path": "selfhost/tools/performance/phase55/evidence/qualification-summary.json",
+      "bytes": 8388,
+      "sha256": "d0e833d55adda0e83c2b061074ef26274f7773d597b2a845d931fe1db5dbc8af"
+    },
+    {
+      "path": "selfhost/tools/performance/phase55/evidence/release-summary.json",
+      "bytes": 1981,
+      "sha256": "34617d9eacae71398fe4c4350eab5f84c671329fe396f70e3f989fbceb6e4d23"
+    },
+    {
+      "path": "selfhost/tools/performance/phase55/evidence/source-size-host02.json",
+      "bytes": 206057,
+      "sha256": "a02c565393be49a0196559ff7a6e959d179d9e3e31ed60831cb81b484acc906b"
+    },
+    {
+      "path": "selfhost/tools/performance/phase55/evidence/time-summary.json",
+      "bytes": 26367,
+      "sha256": "d612b6c26f9ac6f9edddcd98c71e9813b30f11bab86303555f938643a230268b"
+    },
+    {
+      "path": "selfhost/tools/performance/phase55/focused-semantic-summary-v1.json",
+      "bytes": 4686,
+      "sha256": "e4e6245fa2d8f0cf581b020f5e1408743f524681c44a2cc74f1bf2ceea22c29a"
+    }
+  ],
+  "rawArchive": {
+    "metadata": {
+      "path": "selfhost/tools/performance/phase55/artifacts/raw/archive.json",
+      "bytes": 921584,
+      "sha256": "568f9e84b5561bc71f7ede181686ba84d4c045d8f8bcb0df72bb26f9057387ca"
+    },
+    "archive": {
+      "path": "selfhost/tools/performance/phase55/artifacts/raw/raw-campaign.tar.gz",
+      "bytes": 19440320,
+      "sha256": "62921379e2f3247af0b9043dea76c043d7910cd6ef8cfd99c17061266de1cb7c"
+    },
+    "receipt": {
+      "path": "selfhost/tools/performance/phase55/publication-raw.json",
+      "bytes": 2436,
+      "sha256": "55d7e2c3c0a9ff212dc875b6d4fc8bec044a6a0e860c2ba0a71b3251a930a6c2"
+    },
+    "members": 4791,
+    "uncompressedBytes": 145043534
+  },
+  "preservation": {
+    "protectedUnrelatedFiles": 103,
+    "priorReleaseFilesExact": 7,
+    "closedPhase54FilesExact": 4543,
+    "noPRCommentPosted": true
+  },
+  "scope": "Checked compiler improvements and completed direct-image generation/ordinary-driver probes. Native, semantic and runtime-performance scopes remain explicit; no legacy-client migration or fresh self-hosted fixed point."
+}

@@ -2,8 +2,8 @@
 
 Completed checkpoints below are bound to their own images; the remaining
 sections describe root-run plans. Last01 is the current integration candidate:
-its checked build and fresh field controls have passed, while its broad/B2 gates
-are in progress. Choice01 passed its 14-job checked integration
+its checked build, fresh field controls and all 14 checked integration jobs have
+passed; its separate B2 gates also pass. The final [correctness index](../../selfhost/tools/performance/phase58/evidence/qualification-last01.json) binds their actual identities and scopes. Choice01 passed its 14-job checked integration
 gate before its full B2 emission hit the existing reachability budget. Reach01
 passed the focused scanner/graph controls, full B2 emission and fresh own-source
 type checking. Shared01 has passed its checked build, 36 exact selected probes,
@@ -46,10 +46,17 @@ The delta is five physical lines, four code lines, 220 bytes and one helper,
 26,560 physical lines, 21,823 code lines and 3,055 definitions. All earlier
 accounting receipts remain unchanged.
 
+The [fresh last01 checked execution](../../selfhost/build/phase58/final-last01/checked-execution/report.json)
+completed all 14 jobs, including the original source/numeric/composition/
+overapplication oracles, census26, maintained8, all45 program smoke values and
+native3 byte/output pairs. This is fresh last01 integration evidence.
+
 Lookup, scalar-residual, literal-choice, reach and shared-SCC mechanism bytes
 are unchanged. Their earlier focused controls remain observations on their
 recorded earlier APIs; they are not relabeled as fresh last01 passes. Fresh
-last01 broad and B2 integration gates remain required. The reviewed generic
+last01 B2 integration gates now pass, including fresh source acceptance, exact B3
+reproduction, source96/numeric34/composition18/overapplication2, and raw23/all45
+module equality. The reviewed generic
 orchestration, self-check, equality and performance tools need no new candidate
 special case. Once its checked 23-source acquisition exists, materialize the
 fresh comparison with:
@@ -61,9 +68,20 @@ taskset -c 0 python3 -B selfhost/tools/performance/phase58/performance/compare.p
   --out selfhost/build/phase58/final-performance-last01
 ```
 
-This data-only command has not been run at this checkpoint. Root separately
-launches its unchanged three-batch timing commands; the earlier shared01
-campaign is retained, without pooling its samples into last01's result.
+This data-only command has completed in
+[final-performance-last01](../../selfhost/build/phase58/final-performance-last01/report.json):
+39 changed and six exact point modules relative to Phase56, with 20 changed
+sources out of 23. Root separately launches its unchanged three-batch timing
+commands; the earlier shared01 campaign is retained, without pooling its samples
+into last01's result.
+
+The [actual-output comparison](../../selfhost/build/phase58/last-program-byte-comparison01.json)
+also proves that the genuinely checked last01 MapSet, editdist and Morning
+modules exactly match the three screened last-key diagnostic modules, including
+their runtime prefixes. All 23 raw source modules and 45 observed point modules
+were compared with shared01: 21 raw sources changed and two are exact; 41 point
+modules changed and four are exact. That comparison does not apply the
+diagnostic transformation to the other 20 sources or supply a new timing result.
 
 ## Cheap candidate admission
 

@@ -1,288 +1,167 @@
-# Phase58: allocation and generated-code improvements
+# Phase58: compiler allocation and code generation
 
-**Selected compiler: shared01; program timing complete, regression review and installation pending.**
-All selected B1/B2 correctness gates pass. Six general source changes reduce
-the self-emitted compiler's allocation and execution cost substantially, while
-the checked B1 compiler's request latency remains approximately flat.
+**Selected compiler: last01; final qualification and measurement in progress.**
 
-| Measured compiler cost | Phase56 baseline | Phase58 shared01 | Scope |
-| --- | ---: | ---: | --- |
-| B2 import + first request / pinned TypeScript | 5.11–5.48× | **2.14–2.32×** | Two inputs, three fresh processes per role/input |
-| B2 later-request speedup over baseline | — | **2.90–3.53×** | Medians of three later requests per process; still warming |
-| B2 lexer sampled allocation/request | 2,158.69 MB | **232.32 MB** | 89.24% less cumulative allocation; not peak memory |
-| B2 reproduces its own complete compiler image | 223.475 s | **36.018 s** | 6.20× faster; one fresh matched-method pair, changed sources |
-| Checked B1 import + first request / TS | 2.88–3.05× | **2.90–3.05×** | Separate paired B1 matrix; no broad B1 speedup |
+Phase58 implements six general optimizations in the compiler written in Bend:
+constructor lookup without intermediate missing records, proven scalar reconstruction
+cancellation, literal-choice lowering, reference deduplication, shared mutual-tail
+dispatch, and a revised literal-record printer. The final printer leaves the last
+live constructor field computed while quoting ordinary preceding keys; `__proto__`
+always stays computed. This balances compiler speed with generated-program speed.
 
-The installed artifact remains checked B1 until the final release gate. The
-faster B2 is independently qualified, with a fresh source check, byte-identical
-B3 and complete benchmark-output equality. Installing it as the default requires
-the distinct lineage support documented in the
-[B2 installation follow-up](b2-installation-followup.md); Phase58 does not relabel
-an emitted image as checked B1.
+[Design](../../design/phase58/compiler-allocation-and-code-generation.md) ·
+[Final selection](../../design/phase58/last-field-selection.md) ·
+[Reproduction recipes](../../selfhost/tools/performance/phase58/README.md) ·
+[Mechanism documentation](../../docs/self_hosted/compiler-allocation.md).
 
-![Compiler request latency](figures/compiler-latency.svg)
+## Final measurements
 
-![Cumulative compiler allocation](figures/compiler-allocation.svg)
+The clean same-method self-emission takes **36.058 seconds**, compared with
+**223.475 seconds** for the retained Phase56 control: **6.20× faster**. The
+baseline is an earlier run in this campaign, not a freshly consecutive pair.
+Both runs use their own exact compiler source and the same frozen method; the
+output is checked against each image independently.
 
-The [design](../../design/phase58/compiler-allocation-and-code-generation.md)
-sets admission criteria. The main finding so far is that **representation and
-emission choices carry substantial cost**: computed literal fields, intermediate
-missing records, residual Word reconstruction, callback closures and copied SCC
-switches create avoidable work. These observations do not show that Bend is
-inherently slow, nor that all allocation/JIT activity is harmful. Each mechanism
-has its own semantic proof and measured scope.
+Fresh B2 import-plus-first requests improve from **5.14–5.51× TypeScript to
+2.42–2.62×**, across Evening and Lexer with three fresh processes per role/input.
+Later requests are **2.44–2.99× faster than Phase56**, still **2.55–2.73× TypeScript**.
+Those later sequences are still warming; this is not steady-state throughput.
+Checked B1 remains roughly flat: first-request changes −0.76%/+1.59%, later
+−2.78%/+3.89% for Evening/Lexer. B2 gains are not B1 gains.
 
-## Baselines and selected identities
+Fresh B2 Lexer allocation sampling falls from **2,190.55 to 231.95 MB per
+request: 89.4% less cumulative allocation**. TypeScript uses 59.67 MB per request
+in this capture, so B2 remains about 3.89× higher. These estimates include collected
+objects and are not retained heap or peak RSS. There is one profile worker per
+role, with 3/11/32 completed requests; TypeScript reached the request cap. B1
+allocation was not remeasured for last01.
 
-Phase56's installed checked string01 release is the production comparator.
-Pinned TypeScript at `018751270e800bc222a93dad7f257083ee53a5f7` remains the
-independent reference, after Bend 2.0.34. It is not a fallback compiler. Retained
-reference NaN defects remain explicit: source candidate96 versus TS95, and numeric
-candidate34 versus TS28, where those existing gates apply. No additional candidate
-mismatch may be waived using those historical defects.
+See the [final measurement report](final-measurements.md) for individual runs,
+allocation counts, profile attribution and exact evidence identities.
 
-| Binding | SHA256 |
-| --- | --- |
-| Phase56 checked B1 API | `128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea` |
-| Phase56 source | `5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244` |
-| Phase56 qualified B2/B3 | `3f652f7d3e26e06fe74da18bf8709195c54e4620906ffb7c1d0643c96ecbd57e` |
-| Selected shared01 checked B1 API | `eddce7504207d91735e8369e7142f73ede8f77d8d2353b1ad6548796bdfd4569` |
-| Selected shared01 source | `a4ad6717934a8596c6bf707ecabf11346f57ca5b4e4e08cdcbdaac7921546d9a` |
-| Genuine shared01 B2 | `b7c5752d66ae4eaa8619e06b5a12655b370fba9d745d223660fbbb73da68fec8` |
+![Selected compiler latency](figures-last01/compiler-latency.svg)
 
-The genuine B2 is newly emitted from the selected source by its own checked B1;
-it is not the saved-image field or SCC diagnostic. Actual attempt, subject,
-generator, runtime, Base, driver and Node bindings remain required alongside API
-hashes. Separate completed gates establish the selected B2→B3 fixed point and
-fresh source type acceptance; generation and driver observations alone do not.
-The [qualification index](../../selfhost/tools/performance/phase58/evidence/qualification-shared01.json)
-joins their exact report identities and overlapping scopes.
+![Selected B2 cumulative allocation](figures-last01/compiler-allocation.svg)
 
-## Six production changes
+Final generated-program timings are still running.
+Earlier shared01 measurements are preserved in the
+[historical checkpoint](shared-checkpoint.md) and [latency investigation](latency.md).
+They are not measurements of the final last01 compiler.
 
-| Change | General rule and retained boundary | Completed evidence |
+## What changed and why
+
+| Mechanism | General rule | Semantic boundary |
 | --- | --- | --- |
-| [Literal fields](literal-fields.md) | Quoted ordinary keys for constructor/ordered/host-clone fields; exact `__proto__` stays computed. Values, own-property semantics and evaluation order remain unchanged. | Actual checked-source controls: 17 groups per role, complete values/prototypes/aliases/effects, and exact constructor/clone AST activation. |
-| [Constructor lookup](lookup.md) | Skip intermediate missing KDef/KTerm construction on child misses; use checked annotated owner where proven, retaining global fallback and first-match semantics. | 135 actual annotated queries plus four fallback rows; synthetic malformed/cached/global controls; exact source oracles. |
-| [Scalar residuals](scalar-residual.md) | Carry private U32 provenance through Word residual binders only when reconstruction covers all 32 positions of one origin. Refuse mixed/unproved/F32 shapes. | 1,728 counted observations per role across baseline, candidate and TS; arithmetic, aliases, callbacks, float bits and actual activation/refusal. |
-| [Literal choices](literal-choices.md) | Structurally proved Bool/Unit selector with saturated literal callbacks becomes the selected continuation, preserving condition/prefix order and tail transfers. | 36 value/error oracles, nine host observations per image, eight function-shape checks, default-stack self/mutual tails through 100,000 steps. |
-| [Reachability deduplication](validation.md#completed-choice-reach-and-shared-checkpoints) | Deduplicate repeated target references within one emitted definition; preserve validation, encounter order and all existing resource limits. | 22 scanner and 21 graph observations per role; reach01 full emission and its own fresh source check. |
-| [Shared mutual-tail dispatch](shared-scc.md) | One private switch worker per multi-function SCC; original entries retain formals and fixed PCs, complete refs and per-call local state. | Original choice controls plus shared shape checks; nine supplemental library oracles, 12 host observations per role, one three-role program oracle and three component checks. |
+| [Constructor lookup](lookup.md) | Avoid intermediate missing KDef/KTerm objects; use a checked owner annotation before the global fallback. | Preserve first-match behavior, malformed-query handling and fallback. |
+| [Scalar residuals](scalar-residual.md) | Carry private U32 origin facts through residual binders and cancel complete reconstruction of that same word. | Require all 32 positions of one origin; refuse mixed, unproved and F32 shapes. |
+| [Literal choices](literal-choices.md) | Lower structurally proved Bool/Unit choices directly to the selected continuation. | Preserve condition and prefix order, demand, errors, partial application and tail transfers. |
+| [Reachability](validation.md) | Deduplicate target references within each emitted definition. | Preserve encounter order, validation and all existing resource limits. |
+| [Mutual-tail dispatch](shared-scc.md) | Share one switch worker per multi-member tail-recursive component. | Keep entry formals, fixed program counters, complete references and local per-call state. |
+| [Record syntax](record-syntax-tradeoff.md) | Quote ordinary constructor prefix keys; compute the final live key and every `__proto__`; host marshalling retains quoted ordinary keys. | Preserve own-property semantics, evaluation order, erased fields and prototype behavior. |
 
-These counts overlap and are not a unique source-program total. The direct
-runtime, legacy runtime, ordinary driver and all **17 native modules** remain
-byte-identical to Phase56. No native representation change, new runtime cache,
-TypeScript fallback or relaxed frontend gate is introduced. Bootstrap and
-private-image legacy clients are not retired by these direct-output changes.
+The direct runtime, legacy runtime, ordinary driver and all 17 native modules
+retain their Phase56 bytes. There is no TypeScript fallback, runtime cache or
+frontend relaxation. The native and legacy interfaces remain supported.
 
-## Isolated measurements and what they establish
+The constructor-query probe reduced missing-helper calls from 4,248 to three
+across 139 actual/fallback queries; the annotated subset went from 2,391 to zero.
+These are helper counts, not total allocated bytes. Scalar controls cover 1,728
+observations per role. Choice and shared-dispatch controls include callback/error
+behavior and self/mutual tails through 100,000 steps. Their earlier exact APIs
+remain attached to those results; source-delta checks establish unchanged logic
+in last01, while fresh whole-compiler integration gates qualify the combination.
 
-The [compiler latency record](latency.md) separates saved-image causal ablations
-from genuinely changed-source images and from generated-program execution.
+## The important negative result
 
-| Experiment | Completed result | Limit |
-| --- | --- | --- |
-| Literal-field syntax, fixed Phase56 B2 source | Three rounds, six fresh processes: import/API/first median **3,147.51→2,373.32 ms (24.60% less)**; median of per-process later-request medians **1,778.88→1,377.90 ms (22.54% less)**. All emitted lexer bytes match. | Saved syntax derivative is explicitly unchecked; one source fixture, primed Base disk cache, continuing warmup; no memory reduction established. |
-| Constructor-query hooks | Across 139 actual/fallback rows, `missing` calls **4,248→3**; annotated subset **2,391→0**. | Counts are query-local helper invocations, not total allocated bytes or an equivalent request speedup. One-pair lexer timing is essentially flat. |
-| Reach01 genuine B2 lexer pilot | Import/API/first **3,291→1,531 ms**, sole later request **2,221→755 ms**, versus baseline B2. | One process per role and changed compiler source; promising diagnostic, not repeated selected-image throughput. |
-| Shared-dispatch saved-image pilot | API load **174.890→95.616 ms**; sole later request **749.915→750.518 ms**. | Large code-size saving, essentially flat later-request observation; one pair, no isolated parsing/JIT/memory attribution. |
+The intermediate shared01 compiler substantially reduced compiler cost, but its
+full 45-point campaign found regressions in Morning, Map/Set and edit distance.
+It was never installed. A dispatch ablation did not explain the regressions.
+Exact source comparison showed that ordinary field-key syntax was the entire
+old-to-new difference for Map/Set, edit distance and local-pair.
 
-The first single-pair field pilot remains retained separately; it is not pooled
-with confirmation. First requests, API imports, later requests and complete
-process wall time are distinct denominators. No profiled or traced duration is
-put into clean timing. The final B1/B2/TS matrices complete 36 fresh processes
-and 144 checked ordinary requests. Separate CPU/allocation processes never enter
-their clean ratios. B1's later Evening median improves 7.18%, while its Lexer
-median increases 4.50%; all individual sequences and ranges remain in the
-[latency report](latency.md). No fresh program-speed result is inferred from
-these compiler-request studies.
+Reverting all fields in the compiler image cost about 50–68% on the screened
+compiler requests. A small-record cutoff also lost compiler performance. The
+last-live-field rule restored the three targeted programs in a 45-sample screen:
+Map/Set −2.84%, edit distance +0.19%, Morning +1.09% versus Phase56. It cost
+13–17% relative to the all-literal compiler diagnostic, missing the approximate
+10% screen target. We explicitly selected this compromise for full qualification,
+not a claimed threshold pass. Actual last01 output for all three programs matches
+the screened derivatives byte for byte. Final fresh full-corpus results govern
+release; the focused screen is not substituted for them.
 
-The new B2's sampled Lexer allocation is still about 3.96× TypeScript. Its
-remaining exclusive allocation sites include substitution and persistent index
-operations. Driver span validation and Base-cache loading together account for
-24.97% of sampled CPU self weights on this workload. Those profile shares are
-directions to investigate, not promised speedups or summed inclusive costs.
-The small host key-reuse proposal remains deferred: no measured hot path
-justifies adding it to this selected compiler. Substitution sharing also needs
-a reduction proof because `core_rebuild` may reduce terms even when no variable
-replacement occurs.
+V8 inspection found the same eight inlined functions, four static allocation
+paths and zero executed deoptimizations in the compared edit-distance row.
+Object map initialization differed, but the data does not prove a particular
+V8 cause or justify a record-width cutoff. The unexecuted synthetic syntax grid
+stays labeled unexecuted. See [the source/trace evidence](program-regressions.md).
 
-Full-image profiles expose a different remaining cost. The candidate allocates
-an estimated 20.453 GB during emitted reachability and 15.869 GB during library
-emission, cumulatively at 1 MiB sampling. String search over generated use-marker
-text and reference-marker scanning dominate those stage allocations; no usable
-old-image allocation capture exists for a before/after ratio. The unsplit CPU
-profile's timestamp-weighted view is refused by the existing jitter policy, so
-its concentrated sample counts are not treated as elapsed-time shares.
+## Correctness and release scope
 
-The next small experiments are proof-backed string-view reconstruction
-cancellation and faster canonical string search. A blind JavaScript `includes`
-replacement is incorrect for some surrogate-boundary inputs because Base walks
-whole Unicode characters. Exact origin reuse or a proved input domain must come
-before an optimization. See the precise callers and falsifiers in
-[the profile findings](latency.md).
+The selected checked build passes strict36 exact agreement. Fresh focused record
+checks cover 17 groups per role plus nine supplemental groups, including trailing
+and all-erased fields, `__proto__`, ordered callbacks and throws. The checked B1
+integration stage passes all 14 jobs: source96, numeric34, composition18,
+overapplication2, direct census26, maintained8, all45 program-value checks and
+three native output/byte pairs. Counts overlap; they are not a total of distinct
+programs.
 
-## Generated-program execution and promotion hold
+The final B2 freshly accepts its source in 11.712 seconds internally (17.415
+seconds overall), with all 3,055 explicit unsafe declarations producing the
+expected proof-trust refusal. A separate gate emits byte-identical B3 in 39.199
+seconds. These are qualification timings, not the clean speed comparison below.
+B2 also passes source96, numeric34, composition18 and overapplication2; all 23
+benchmark sources and 45 generated modules match B1 exactly. Release interface
+checks remain pending. Type acceptance and expected
+unsafe proof-trust refusal are separate; self-reproduction is not a mathematical
+proof. Pinned TypeScript remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+Its known NaN oracle defects remain explicit: source95 versus candidate96 and
+numeric28 versus candidate34. No new candidate mismatch is waived.
 
-The fresh full campaign completes **45 points / 23 sources / 669 samples**, with
-all output oracles passing. Equal-point geometric means are **1.061620× TS** for
-Phase56 and **1.056043× TS** for shared01; equal-source means are 1.065430× and
-1.058515×. Aggregate execution cost is essentially unchanged.
+The installed artifact remains a checked-derived B1. Installing the faster,
+independently qualified B2 needs truthful emitted-image lineage support; that
+separate packaging follow-up is described [here](b2-installation-followup.md).
+B2 performance must not be advertised as installed-B1 request performance.
 
-Individual results require review: Morning is 18.26% slower than Phase56,
-Map/Set 11.28%, and edit-distance 11.23%. The other edit-distance sizes and
-local-pair regress about 8.5–8.9%. Evening improves 27.51%. All points and drift
-flags remain in the full report; these are not selected into a new aggregate.
-The edit-distance TypeScript samples have a large round spread, while its
-baseline/candidate spreads are below the inherited descriptive threshold.
+## Source complexity and image size
 
-Installation is held for a bounded causal comparison. Exact saved-module
-comparison already establishes that Map/Set, edit-distance and local-pair are
-unchanged between pre-sharing choice01 and shared01, so shared dispatch cannot
-explain their difference from Phase56. Morning's generated module does change.
-Two fresh paired choice01/shared01 runs with unchanged-byte controls now pass
-72 observations. Morning and Evening differ by about ±1%, providing no support
-for changing the shared-dispatch policy. A separate 36-observation repeat against
-Phase56 preserves Morning's slowdown at about 10%, but Map/Set changes direction
-under the shorter warmup. Neither replaces the full campaign or turns a
-diagnostic derivative into a qualified release.
+[Final accounting](source-complexity-last.md) uses unchanged counting rules:
+26,560 physical lines, 21,823 code lines, 3,055 definitions, 101 types and 108 modules.
+Against Phase56 that is +314 physical lines (1.20%), +238 code lines, +43 definitions,
+one type and one module. This phase improves execution, not source line count.
+The final record rule itself adds five physical lines and one helper versus shared01.
 
-The [exact source analysis](program-regressions.md) isolates ordinary record-key
-syntax as the entire Phase56-to-shared01 difference for Map/Set, edit-distance
-and local-pair. The next fixed-source experiment reverses that syntax in the
-current B2, testing whether the original compiler benefit remains after other
-changes eliminated its hot constructor-miss path. A uniform rollback may be
-simpler and more robust than retaining a locally beneficial optimization whose
-cost now falls on other programs. No source rollback has yet been selected.
+Choice lowering exposed mutual-tail edges that initially expanded the image to
+8,671,962 bytes because each entry copied its component switch. Sharing removes
+that duplication. The final B2/B3 is 3,821,470 bytes, 1.94% smaller than Phase56
+(3,896,951 bytes). Its SHA256 is
+`a73daccf86a807092a334d5f3121745e0b91c3054164c25462f1658644b7b081`.
+The much larger saving against the expanded intermediate is not a saving against
+the starting release, and emitted-image shrinkage is not source simplification.
 
-The inherited 10% listing is a review trigger, not a preregistered universal
-admission threshold. Measurement completion and semantic correctness do not
-by themselves establish the design's generated-program non-regression goal.
+## Remaining work suggested by the profiles
 
-## Source growth versus emitted-image duplication
+Intermediate profiles point to string scanning in emitted reachability and
+library emission, substitution, persistent index operations, and driver span/Base
+cache validation. The final selected profiles distinguish which remain hot.
+A blind replacement of Bend string search with JavaScript `includes` is not
+semantically equivalent at surrogate boundaries. Any next string optimization
+needs an origin-reuse proof or a proved input domain.
 
-[Selected source accounting](source-complexity-shared.md) uses unchanged Phase47
-counting rules and frozen attempts. Manifest Bend source grows **26,246→26,555
-physical lines: +309 (1.18%)**, with +234 code lines, +42 definitions, one type
-and one module. Selected totals are 21,819 code lines, 3,054 definitions, 101 types
-and 108 modules. This is not source simplification or a smaller compiler-source
-claim. Ninety-eight original modules retain exact bytes; support/native identity
-is verified independently.
+One old-B2 whole-source allocation capture exceeded the unchanged 2 GiB tree-RSS
+guard after 124.707 seconds. Its empty profile provides no baseline allocation
+result. We retained the failed attempt and did not increase the limit. Ordinary
+request allocation and clean image timings are independent successful methods.
+Cumulative sampled allocation is not retained heap or peak RSS.
 
-Literal-choice lowering exposes additional mutual-tail edges. The existing
-emitter originally copied each complete SCC switch into every entry. After
-reachability deduplication allowed the full source through, reach01's genuine
-B2 grew to **8,671,962 bytes**. The static census found 133 repeated loop groups
-across 437 entries, including a 70,138-byte loop repeated 34 times.
+## Reproduction and preservation
 
-Sharing those components produces a genuine shared01 B2 of **3,815,480 bytes**,
-including 3,393,116 definition bytes and 409,081 export bytes. This is distinct
-from the 3,812,483-byte saved diagnostic derivative. It also compares with the
-Phase56 3,896,951-byte image: **2.09% smaller than the starting release image**.
-The 56% SCC saving is against the expanded intermediate, not against Phase56.
-Source line growth and emitted-file shrinkage measure different things; neither
-alone determines runtime allocation, latency, correctness or maintainability.
+All unsuccessful attempts and their corrected successors remain recorded in the
+[historical checkpoint](shared-checkpoint.md), mechanism reports and raw campaign.
+Consumed producers and closed Phase54–57 evidence are immutable. Root ran heavy
+jobs serially on CPU3 with a 1 GiB Node heap, 2 GiB process-tree RSS limit and 4 GiB
+available-memory floor; agents handled code, review and data analysis separately.
+[Time accounting](timing-accounting.md) reports observed supervisor intervals,
+not invented CPU usage or agent effort.
 
-## Checked and bootstrap checkpoint progression
-
-Fields01 and lookup01 builds pass their 36 initial paired witnesses with zero
-exact differences, but their configurations omitted `strictExact`, defaulting
-to false. Image-admission controllers that demanded the flag refused them before
-target observations. Preserved successors verify the actual completed exact
-results and record the flag honestly. Scalar01 and later builds explicitly set
-strict exact checking; no checked receipt is rewritten to change its scope.
-
-Choice01 then completes a 14-job checked integration stage: source96, numeric34,
-composition18, overapplication2, direct census26, maintained8, all45 program-value
-smoke checks and three native output/byte pairs. Its full compiler-image emission
-subsequently refuses the unchanged reachability edge budget after 54.450 seconds.
-The checked-stage pass is valid for choice01; the refused bootstrap is not passed
-or silently transferred to a successor.
-
-Reach01's scoped deduplication preserves the **4,096-definition / 65,536 queued-
-dependency / 2,097,152-character per-definition** limits. Its genuine full B2
-emission completes in 104.416 seconds, and tiny comparison, both eight-observation
-driver roles and image join pass. Its fresh own-source ordinary type check passes
-in 10.451 seconds internally, 17.090 seconds in the worker; expected unsafe
-proof-trust failure is recorded separately. This is not a mathematical proof or
-new fixed point.
-
-Shared01's checked build and strict36 exact agreement pass. Its genuine full B2
-emission completes in **75.638 seconds**, with 13.939 seconds in emitted
-reachability and 7.694 seconds in definitions. Tiny comparison, both driver roles
-and the image join pass. These are individual instrumented pipeline observations
-over different sources, not a controlled clean emission-speed ratio. Reach01's
-self-check cannot qualify the new shared image automatically. Shared01's own
-fresh source check subsequently passes in 9.977 seconds internally; all 3,054
-explicit unsafe definitions retain the expected proof-trust refusal. Its
-separate fixed-point gate completes in 39.431 seconds. The later matched-method
-clean pair in the results table has different timing boundaries and yields
-36.018 seconds; those observations are not pooled.
-
-Selected shared01 passes all 14 checked integration jobs and its own B2 semantic
-matrix: source96, numeric34, composition18 and overapplication2. B2 checks all 23
-benchmark sources and emits exactly B1's 45 final point modules. Known reference
-NaN failures, unqualified GPU behavior and native coverage limits remain visible.
-
-## Preserved failures and diagnostic limits
-
-Failures remain alongside successful successors; details and exact identities
-are in the linked owner reports and raw recipes.
-
-- Field fixture v1 fails baseline quantity checking because a duplicated shared
-  product was declared Type. V2 changes that declaration to Data and retains the
-  sharing oracle. No candidate code had run at the failure.
-- Field controls-v2 count unrelated `prototype:true` export metadata as a field.
-  V3 scopes exact constructor/Nat-clone routes and retains all runtime/prototype
-  gates; the failure remains preserved.
-- Lookup admission v1 rejects the pilot's `strictExact:false` flag. The successor
-  checks genuine completed 36-case exact results without relabeling the flag.
-- The initial scalar TS acquisition hits a sandbox `git` spawn refusal; a fresh
-  permitted acquisition succeeds without changing source or expected values.
-  Consumed paired-producer bytes are preserved; hardened tooling is versioned.
-- The initial choice negative fixture uses reserved Bool/Unit names and is
-  rejected by the frontend. Its successor uses legal OpaqueBool/OpaqueUnit,
-  retaining an ordinary-layout refusal test rather than claiming valid shadowing.
-  Review also caught condition-prefix ordering in an early unbuilt draft; it was
-  fixed before any choice compiler build.
-- Choice01 full-image emission refuses its reachability budget. Deduplication
-  solves repeated edges without increasing limits or ignoring malformed metadata.
-- Shared choice controls first pass their values/host checks but fail a VM-array
-  prototype assertion. The successor copies AST arrays into the host context,
-  retaining identifier/structural expectations; no compiler fix is credited.
-- Supplemental shared controls first pass library/host observations, then fail
-  child launch with sandbox `spawnSync EPERM`. A fresh permitted run passes with
-  unchanged source/controller; the environment refusal is not a semantic pass.
-
-The failed data-only field derivation's initial missing output-parent-directory
-refusal is also retained. None of these unsuccessful attempts is pooled into
-passing counts, omitted from evidence, or repaired in place. Final time accounting
-and publication must include remaining failed attempts and report their scopes.
-
-The optional old-B2 whole-source allocation diagnostic also stops at the
-unchanged process-tree RSS guard while exporting its first sampled profile.
-The profile is empty and supplies no usable baseline allocation total. Its
-124.707 seconds and failure remain recorded; the clean emission comparison and
-successful ordinary-request allocation profiles are separate evidence.
-
-## Remaining admission and publication
-
-| Selected shared01 obligation | Status at this report checkpoint |
-| --- | --- |
-| Checked source build and initial strict36 agreement | **Pass** |
-| Focused changes, shared dispatcher controls, full own-source B2 generation and eight-driver joins | **Pass**, with scopes above |
-| Final selected checked-B1 broad semantic/maintained/census/native/program-value matrix | **Pass**, all 14 jobs |
-| Selected B2 broad semantics, fresh source self-check and exact B2→B3 reproduction | **Pass**, including raw23/all45 equality |
-| Repeated selected B1/B2/TS compiler latency and ordinary-request allocation | **Pass**; optional full-source baseline allocation capture failed separately |
-| Full selected 45-point generated-program timing / 669 samples | **Complete**; aggregate flat, three >10% regressions under review |
-| Install, integrity, 42 legacy + 24 default ordinary/relocated interfaces | **Pending**; installed release remains Phase56 |
-| Raw writer closure, protected-file verification, complete archive and reproducibility index | **Pending** |
-
-The [qualification plan](validation.md) keeps correctness, compiler latency,
-allocation, generated-program execution and release interfaces separate.
-[Timing accounting](timing-accounting.md) describes the eventual occupancy ledger;
-it is not a completed end-of-campaign result. Root runs targets serially on CPU3
-under the existing heap/tree-RSS/available-memory limits. All historical
-Phase54–57 raw evidence, prior release files and 103 protected unrelated files
-remain preservation obligations. No commit/install/publication claim follows
-from this report skeleton.
+Final archive, release integrity, protected-file verification and publication
+index will be linked after closure. No PR comment was posted.

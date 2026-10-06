@@ -16,7 +16,7 @@ actual Phase58 root, start and consumed receipts identify the new campaign.
 ```sh
 taskset -c 0 python3 -B selfhost/tools/performance/phase52/time-use-v1.py \
   --root selfhost/build/phase58 \
-  --categories selfhost/tools/performance/phase58/time-use-categories-v1.json \
+  --categories selfhost/tools/performance/phase58/time-use-categories-v4.json \
   --end ROOT_SUPPLIED_UTC_CUTOFF \
   --out selfhost/build/phase58/time-use-final.json
 ```
@@ -56,13 +56,22 @@ observed tree peak, not summed memory use or a continuous campaign measurement.
 
 ## Category assignments
 
-The [versioned category map](../../selfhost/tools/performance/phase58/time-use-categories-v1.json)
+The [versioned category map](../../selfhost/tools/performance/phase58/time-use-categories-v4.json)
 assigns exact raw path prefixes to known outer-job purposes. The longest match
 wins; unmatched rows use the frozen reader's command classifier and remain
 explicitly `other` if no rule matches. Current clean compiler-latency pilots are
 `cost`; these durations include all work inside their captured supervisors,
 not just the clean per-request metric. Inspector diagnostics, if added later,
 must use `profiles`, not a latency category.
+
+V2 preserves all 50 v1 entries and adds the earlier shared matrix's explicit paths:
+B1/B2 preparation, clean request measurements, CPU/allocation captures, the
+own-source clean and instrumented supervisors, the three program timing batches,
+selected self-check/fixed-point/program-equality supervisors, B2 semantic gates,
+and shared supplement acquisition/control supervisors. CPU/allocation paths
+must be explicit because the frozen fallback does not recognize `--mode cpu`
+or `--mode allocation` alone. The original map remains byte-identical
+(`4817acb4…`); preparing the successor did not run the ledger.
 
 | Category | Meaning |
 |---|---|
@@ -87,3 +96,9 @@ orchestration, unrecorded operations and idle time. It must not all be labeled
 waiting or attributed to one person. Root's concurrent edits and agent work are
 not recoverable from target supervisor receipts. Keep these limits next to any
 work-versus-test comparison.
+
+V3 adds the diagnostic and last01 qualification/program paths. V4 preserves all
+118 v3 mappings and adds the seven actual `comparison-last01` job prefixes. The
+earlier planned `latency-final-*` aliases remain harmless unused entries; actual
+clean versus instrumented jobs use explicit V4 categories. No category file
+changes a completed measurement.

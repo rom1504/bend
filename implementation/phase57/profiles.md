@@ -108,7 +108,7 @@ These are separately captured, role-matched observations, not aligned samples
 or causal decomposition. Optimizing one category need not improve the other
 in proportion.
 
-The strongest next discriminators are therefore broad dispatch/tag access
+The strongest next discriminators are therefore trampoline dispatch and term construction
 (`run_loop`, `kt`), repeated primitive lookup (`jd_primitive_table`), and the
 allocation-heavy source representation paths identified above. A change should
 be judged by exact outputs and fresh unprofiled requests; the observed shares
@@ -153,7 +153,7 @@ all signed accounting remain unchanged.
 
 The B2 `kt` self share is similar across two different requests: 9.28% for
 lexer library compilation and 9.32% for complete compiler-source checking.
-That supports testing tag-access cost as a general mechanism rather than a
+That supports testing term-construction/allocation shape as a general mechanism rather than a
 lexer-specific pattern. It does not establish a removable 9% runtime fraction.
 String comparison remains prominent in raw B1, while source lookup/index
 operations become prominent in all three large-source checks.

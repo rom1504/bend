@@ -7,6 +7,13 @@ all three root-supervised own-source checks subsequently passed. See
 [profile results](profiles.md) and the archived
 `selfhost/build/phase57/check-profile-analysis01/report.json`. The helper is pinned to
 `f472c5e565827e7a8cfc4181e19dffe61f4485c63a3d137c1315c82e388064f6`.
+The completed joined report has three rows and no failures, SHA-256
+`5599d37e36cdb25a585ed174de2cae987c35c34be2504563885a8ad34b9b4759`.
+Each retained the full type-acceptance/3,012-unsafe-definition oracle. Inspector
+request durations were 16.265 s for derived B1, 32.961 s for direct B2 and
+54.373 s for raw B1; these are diagnostic intervals, not clean latency ratios.
+The `kt` hotspot constructs KTerm records; it is not a tag-access operation.
+
 The original helper rejected tiny negative V8 sample deltas; v2 preserves raw
 data and explicit accounting, falling back to count-only views if weighted
 accounting is refused. That does not waive any source correctness assertion.

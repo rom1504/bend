@@ -1,0 +1,63 @@
+{
+  "parent": {
+    "file": "selfhost/tools/performance/phase58/choices/controls-v3.mjs",
+    "sha256": "76bcabeb17a9a72658eddfe81990190fc638cd48eb4e05c48b028d3178805fe0"
+  },
+  "output": {
+    "file": "selfhost/tools/performance/phase58/choices/controls-v4.mjs",
+    "sha256": "c34cd8d5d061f239f7032e3b345a927b5bbdde1ac71f28e67c8468ad8ccff3c0"
+  },
+  "edits": [
+    {
+      "before": "controls-v3.mjs BASELINE_REACH_MODULE",
+      "after": "controls-v4.mjs BASELINE_REACH_MODULE",
+      "count": 1
+    },
+    {
+      "before": "kind:'phase58-literal-choice-controls-v3'",
+      "after": "kind:'phase58-literal-choice-controls-v4'",
+      "count": 1
+    },
+    {
+      "before": "entry.params.map(x=>x.name)",
+      "after": "Array.from(entry.params,x=>x.name)",
+      "count": 3
+    },
+    {
+      "before": "old.params.map(x=>x.name)",
+      "after": "Array.from(old.params,x=>x.name)",
+      "count": 1
+    },
+    {
+      "before": "worker.params.map(x=>x.name)",
+      "after": "Array.from(worker.params,x=>x.name)",
+      "count": 1
+    },
+    {
+      "before": "call.arguments.slice(1).map(x=>",
+      "after": "Array.from(call.arguments).slice(1).map(x=>",
+      "count": 1
+    },
+    {
+      "before": "const attempts=new Map();",
+      "after": "assert.equal(pin(path.join(import.meta.dirname,'controls-v3.mjs')).sha256,'76bcabeb17a9a72658eddfe81990190fc638cd48eb4e05c48b028d3178805fe0');\nconst attempts=new Map();",
+      "count": 1
+    },
+    {
+      "before": "Array.from(entry.params,x=>x.name)",
+      "after": "Array.from(entry.params,x=>{assert.equal(x.type,'Identifier');return x.name;})",
+      "count": 3
+    },
+    {
+      "before": "Array.from(old.params,x=>x.name)",
+      "after": "Array.from(old.params,x=>{assert.equal(x.type,'Identifier');return x.name;})",
+      "count": 1
+    },
+    {
+      "before": "Array.from(worker.params,x=>x.name)",
+      "after": "Array.from(worker.params,x=>{assert.equal(x.type,'Identifier');return x.name;})",
+      "count": 1
+    }
+  ],
+  "scope": "Preserves consumed v3 and its cross-realm AST assertion failure. Converts compared parser-owned arrays into host arrays; all value/error/host/AST expectations remain unchanged."
+}

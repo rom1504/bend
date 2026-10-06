@@ -1,0 +1,346 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "cases": [
+    {
+      "id": "shared-scc-library",
+      "source": {
+        "path": "shared-scc-v1.bend",
+        "sha256": "ff635e7a8bc32ec03cf4d977441e63d86c18617924d6612812d11b71a19cc94a"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "relay.a-0",
+          "exportName": "relay.a",
+          "groups": [
+            [
+              {
+                "$bigint": "0"
+              },
+              10,
+              {
+                "$callback": "plus7"
+              }
+            ]
+          ],
+          "expected": 10,
+          "expectedEvents": []
+        },
+        {
+          "id": "relay.a-1",
+          "exportName": "relay.a",
+          "groups": [
+            [
+              {
+                "$bigint": "1"
+              },
+              10,
+              {
+                "$callback": "plus7"
+              }
+            ]
+          ],
+          "expected": 17,
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ]
+          ]
+        },
+        {
+          "id": "relay.a-2",
+          "exportName": "relay.a",
+          "groups": [
+            [
+              {
+                "$bigint": "2"
+              },
+              10,
+              {
+                "$callback": "plus7"
+              }
+            ]
+          ],
+          "expected": 27,
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              20
+            ]
+          ]
+        },
+        {
+          "id": "relay.a-17",
+          "exportName": "relay.a",
+          "groups": [
+            [
+              {
+                "$bigint": "17"
+              },
+              10,
+              {
+                "$callback": "plus7"
+              }
+            ]
+          ],
+          "expected": 153,
+          "expectedEvents": [
+            [
+              "callback",
+              10
+            ],
+            [
+              "callback",
+              20
+            ],
+            [
+              "callback",
+              27
+            ],
+            [
+              "callback",
+              37
+            ],
+            [
+              "callback",
+              44
+            ],
+            [
+              "callback",
+              54
+            ],
+            [
+              "callback",
+              61
+            ],
+            [
+              "callback",
+              71
+            ],
+            [
+              "callback",
+              78
+            ],
+            [
+              "callback",
+              88
+            ],
+            [
+              "callback",
+              95
+            ],
+            [
+              "callback",
+              105
+            ],
+            [
+              "callback",
+              112
+            ],
+            [
+              "callback",
+              122
+            ],
+            [
+              "callback",
+              129
+            ],
+            [
+              "callback",
+              139
+            ],
+            [
+              "callback",
+              146
+            ]
+          ]
+        },
+        {
+          "id": "relay.b-0",
+          "exportName": "relay.b",
+          "groups": [
+            [
+              {
+                "$bigint": "0"
+              },
+              10,
+              {
+                "$callback": "plus7"
+              },
+              5
+            ]
+          ],
+          "expected": 10,
+          "expectedEvents": []
+        },
+        {
+          "id": "relay.b-1",
+          "exportName": "relay.b",
+          "groups": [
+            [
+              {
+                "$bigint": "1"
+              },
+              10,
+              {
+                "$callback": "plus7"
+              },
+              5
+            ]
+          ],
+          "expected": 22,
+          "expectedEvents": [
+            [
+              "callback",
+              15
+            ]
+          ]
+        },
+        {
+          "id": "relay.b-2",
+          "exportName": "relay.b",
+          "groups": [
+            [
+              {
+                "$bigint": "2"
+              },
+              10,
+              {
+                "$callback": "plus7"
+              },
+              5
+            ]
+          ],
+          "expected": 29,
+          "expectedEvents": [
+            [
+              "callback",
+              15
+            ],
+            [
+              "callback",
+              22
+            ]
+          ]
+        },
+        {
+          "id": "relay.b-17",
+          "exportName": "relay.b",
+          "groups": [
+            [
+              {
+                "$bigint": "17"
+              },
+              10,
+              {
+                "$callback": "plus7"
+              },
+              5
+            ]
+          ],
+          "expected": 158,
+          "expectedEvents": [
+            [
+              "callback",
+              15
+            ],
+            [
+              "callback",
+              22
+            ],
+            [
+              "callback",
+              32
+            ],
+            [
+              "callback",
+              39
+            ],
+            [
+              "callback",
+              49
+            ],
+            [
+              "callback",
+              56
+            ],
+            [
+              "callback",
+              66
+            ],
+            [
+              "callback",
+              73
+            ],
+            [
+              "callback",
+              83
+            ],
+            [
+              "callback",
+              90
+            ],
+            [
+              "callback",
+              100
+            ],
+            [
+              "callback",
+              107
+            ],
+            [
+              "callback",
+              117
+            ],
+            [
+              "callback",
+              124
+            ],
+            [
+              "callback",
+              134
+            ],
+            [
+              "callback",
+              141
+            ],
+            [
+              "callback",
+              151
+            ]
+          ]
+        },
+        {
+          "id": "library-main-deep",
+          "exportName": "main",
+          "groups": [
+            []
+          ],
+          "expected": 150007
+        }
+      ]
+    },
+    {
+      "id": "shared-scc-program",
+      "source": {
+        "path": "shared-scc-v1.bend",
+        "sha256": "ff635e7a8bc32ec03cf4d977441e63d86c18617924d6612812d11b71a19cc94a"
+      },
+      "mode": "program",
+      "tests": [
+        {
+          "id": "sole-root-deep-main",
+          "stdout": "150007\n",
+          "exitCode": 0
+        }
+      ]
+    }
+  ]
+}

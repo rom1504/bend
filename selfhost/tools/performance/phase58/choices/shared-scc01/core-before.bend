@@ -284,39 +284,17 @@ def jd_definition_native(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String
     u => jd_definition_loop(book, d, params, jd_component(book, dn(d))),
     u => "function " ++ jd_name(dn(d)) ++ "(" ++ jd_join(params) ++ "){return " ++ native ++ ";}\n")
 
-# A mutual tail component owns one private dispatcher. Named entry wrappers
-# retain the existing maximum-width parameter ABI and pass an inert initial PC.
-# The leader explicitly retains every member before emitted reach is filtered;
-# rebuilding call facts therefore keeps the same complete ordered component.
+# Like pinned js_def, every entry into a mutual tail component owns its loop.
+# Cases open fresh lexical source binders on every iteration. Transfer captures
+# all actual values before mutating shared positional parameters or the PC.
 @unsafe
 def jd_definition_loop(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>, +members: List<&2,String>) -> String:
   kc(String, U32.is_gt(jd_string_len(members), 1), u =>
-    jd_component_definition(book, d, members), u =>
+    "function " ++ jd_name(dn(d)) ++ "(" ++ jd_join(jd_width_params(jd_component_width(book, members), 0)) ++
+      "){let $pc=" ++ U32.show(jd_component_id(book, dn(d))) ++ ";for(;;)switch($pc){" ++
+      jd_component_cases(book, members, 0) ++ "}}\n", u =>
     "function " ++ jd_name(dn(d)) ++ "(" ++ jd_join(params) ++ "){for(;;){" ++
       jd_body(book, [kt("$JD.Owner", dn(d), 4294967295, 0, Nil{})], dv(d), dt(d), params) ++ "}}\n")
-
-@unsafe
-def jd_component_definition(+book: List<&2,KDef>, +d: KDef, +members: List<&2,String>) -> String:
-  match members:
-    case Nil{}: jd_fail("empty direct tail component")
-    case Con{leader, rest}: jd_component_shared(book, d, members, leader,
-      jd_width_params(jd_component_width(book, members), 0))
-
-@unsafe
-def jd_component_shared(+book: List<&2,KDef>, +d: KDef, +members: List<&2,String>,
-  +leader: String, +params: List<&2,String>) -> String:
-  kc(String, String.eq(dn(d), leader), u =>
-    "function " ++ jd_name(leader) ++ "$scc(" ++ jd_join(Con{"$pc", params}) ++ "){" ++
-      jd_component_refs(members) ++ "for(;;)switch($pc){" ++ jd_component_cases(book, members, 0) ++ "}}\n",
-    u => "") ++
-    "function " ++ jd_name(dn(d)) ++ "(" ++ jd_join(params) ++ "){return (" ++ jd_ref(leader) ++
-      jd_name(leader) ++ "$scc(" ++ jd_join(Con{U32.show(jd_component_id(book, dn(d))), params}) ++ "));}\n"
-
-@unsafe
-def jd_component_refs(+members: List<&2,String>) -> String:
-  match members:
-    case Nil{}: ""
-    case Con{name, rest}: jd_ref(name) ++ jd_component_refs(rest)
 
 @unsafe
 def jd_component_width(+book: List<&2,KDef>, +members: List<&2,String>) -> U32:

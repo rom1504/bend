@@ -176,10 +176,6 @@ def j_array_view_book_children(+cache: KDef, +rest: List<&2,KDef>, +children: Li
 def j_array_view_data(+book: List<&2,KDef>, +value: String) -> String:
   kc(String, j_array_view_active(book), u => value, u => "arraydata(" ++ value ++ ")")
 
-@unsafe
-def j_array_view_native(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm) -> String:
-  j_array_effect_emit(book, env, t, True{})
-
 # Keep the original root's guards and handle-based path intact. The new private
 # closure is allocated once, and its raw helpers cannot reach the old fallback.
 @unsafe

@@ -469,15 +469,6 @@ def j_pure_sigma_head(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
     j_pure_native_ctor(lookup(dc(owner), "Tuple"), "Tuple", 2)
 
 @unsafe
-def j_pure_sigma_kind(+ty: KTerm) -> Bool:
-  +q = kid(ty, 0)
-  String.eq(tg(ty), "Typ") && U32.is_eq(terms_len(ks(ty)), 1) &&
-    kc(Bool, String.eq(tg(q), "Qua"), u => U32.is_eq(qt(q), 1) && List.is_empty(&2, KTerm, ks(q)), u =>
-      String.eq(tg(q), "Min") && U32.is_eq(terms_len(ks(q)), 2) &&
-      String.eq(tg(kid(q, 0)), "Qua") && U32.is_eq(qt(kid(q, 0)), 1) && List.is_empty(&2, KTerm, ks(kid(q, 0))) &&
-      String.eq(tg(kid(q, 1)), "Qua") && U32.is_eq(qt(kid(q, 1)), 1) && List.is_empty(&2, KTerm, ks(kid(q, 1))))
-
-@unsafe
 def j_pure_closed_list(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
   +head = wnf(book, ty)
   j_pure_list_head(book, head) && j_pure_type(book, head)
@@ -1089,20 +1080,6 @@ def j_instance_all_exact(+book: List<&2,KDef>, +rows: List<&2,KDef>) -> Bool:
     case Nil{}: True{}
     case Con{fact, rest}: j_instance_fact_exact(book, fact) && j_instance_all_exact(book, rest)
 
-@unsafe
-def j_instance_view_context(+view: List<&2,KDef>, +d: KDef, +pure: JPure) -> Bool:
-  j_pure_valid(pure) && j_component_prefix(view, Nil{}, dv(d), dt(d), j_component_slots(0, da(d)), d, 0)
-
-@unsafe
-def j_instance_clones_ready(+view: List<&2,KDef>, +defs: List<&2,KDef>) -> Bool:
-  match defs:
-    case Nil{}: True{}
-    case Con{d, rest}:
-      kc(Bool, U32.is_eq(da(d), 0), u =>
-        U32.is_eq(terms_len(ks(j_strip(dv(d)))), 0) &&
-          (String.eq(tg(j_strip(dv(d))), "Ctr") || String.eq(tg(j_strip(dv(d))), "Lit")) && j_instance_clones_ready(view, rest), u =>
-        j_pure_valid(j_pure_graph(view, d, JPure{Nil{}, 131072, True{}})) && j_instance_clones_ready(view, rest))
-
 # Covered emission requires exact Def membership in the private view plus a
 # provenance fact. Uncovered private instance names become Absent and fail the
 # pre-emission audit; there is no G[private-name] fallback.
@@ -1159,12 +1136,6 @@ def j_instance_guards(+rows: List<&2,KDef>) -> String:
   match rows:
     case Nil{}: ""
     case Con{fact, rest}: j_quote(dn(j_instance_original(fact))) ++ "," ++ j_instance_guards(rest)
-
-@unsafe
-def j_instance_capture(+rows: List<&2,KDef>) -> String:
-  match rows:
-    case Nil{}: ""
-    case Con{fact, rest}: "scalarCapture(" ++ j_quote(dn(j_instance_original(fact))) ++ ",G[" ++ j_quote(dn(j_instance_original(fact))) ++ "]);" ++ j_instance_capture(rest)
 
 # Profitability prefilter only: keep existing erased calls, also consider exact
 # source-call edges. Primitive/literal-only leaves do not duplicate private graphs.
@@ -1430,21 +1401,12 @@ def j_map_closed_maybe(+book: List<&2,KDef>, +ty: KTerm) -> Bool:
   j_map_maybe_head(book, head) && j_pure_type(book, head)
 
 @unsafe
-def j_map_sigma_quantity(+ty: KTerm) -> U32:
-  kc(U32, U32.is_eq(qt(kid(ty, 0)), 1) || U32.is_eq(qt(kid(ty, 1)), 1), u => 1, u => 2)
-
-@unsafe
 def j_map_sigma_kind(+ty: KTerm, +qa: U32, +qb: U32) -> Bool:
   +q = kid(ty, 0)
   String.eq(tg(ty), "Typ") && U32.is_eq(terms_len(ks(ty)), 1) &&
     kc(Bool, String.eq(tg(q), "Qua"), u => U32.is_eq(qt(q), kc(U32, U32.is_eq(qa, 1) || U32.is_eq(qb, 1), u => 1, u => 2)) && List.is_empty(&2,KTerm, ks(q)), u =>
       String.eq(tg(q), "Min") && U32.is_eq(terms_len(ks(q)), 2) && String.eq(tg(kid(q, 0)), "Qua") && U32.is_eq(qt(kid(q, 0)), qa) &&
       List.is_empty(&2,KTerm, ks(kid(q, 0))) && String.eq(tg(kid(q, 1)), "Qua") && U32.is_eq(qt(kid(q, 1)), qb) && List.is_empty(&2,KTerm, ks(kid(q, 1))))
-
-@unsafe
-def j_map_closed_field_quantity(+ty: KTerm, +left: U32) -> U32:
-  # Canonical Tuple fields are affine binders; the type parameters affect kind.
-  1
 
 @unsafe
 def j_map_native_binary(+book: List<&2,KDef>, +d: KDef) -> Bool:

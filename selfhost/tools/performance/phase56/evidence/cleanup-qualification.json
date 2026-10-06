@@ -1,0 +1,227 @@
+{
+  "kind": "phase56-unused-legacy-cleanup-qualification",
+  "version": 1,
+  "complete": true,
+  "pass": true,
+  "scope": "Data-only joins of a fresh checked build and focused frontend qualification to exact unchanged compiler API/runtime/host bytes; no new generated-program timing measurement.",
+  "roles": {
+    "baseline": {
+      "attempt": {
+        "path": "selfhost/build/phase55/checked-host02/attempt.json",
+        "sha256": "c47c8df40ee13be2cc21bc43c2cd1348549684b5f14773781fdbd522b0d37cb0",
+        "bytes": 289684
+      },
+      "bootstrap": {
+        "path": "selfhost/build/phase55/checked-host02/api.mjs.bootstrap.json",
+        "sha256": "f37fcaa41a36d901387b9a4431c83d1d9ef8fb80785e1dfac0961d3af6f99546",
+        "bytes": 83784
+      },
+      "assembly": {
+        "path": "selfhost/build/phase55/checked-host02/snapshot/build/typed/snapshots/688e9f3d8f8dbd7ed864bd73d810024eef26fd1404d334cd64ba796b67ecd0e1/compiler.bend",
+        "sha256": "e4383fa08d621716acac437224de182af52e0b16c32b3f29b2614fc1ad1d6710",
+        "bytes": 1310230
+      },
+      "manifest": {
+        "path": "selfhost/build/phase55/checked-host02/snapshot/src/compiler.json",
+        "sha256": "0b47088a0e189d832f3c79ee6bc6013069508a3844290b240e2b4eb710d01867",
+        "bytes": 3731
+      },
+      "checkedApi": {
+        "path": "selfhost/build/phase55/checked-host02/api.mjs",
+        "sha256": "79482fb656b9dbe1be44117ed2764271fb18b423bb59b79de90dd278e028060f",
+        "bytes": 1807041
+      },
+      "selectedApi": {
+        "path": "selfhost/build/phase55/checked-host02/equality/api.mjs",
+        "sha256": "cfde1ebf44d958e593331cfd9af77f7b6ee657441dbd582db8d27f3928815a62",
+        "bytes": 1830492
+      },
+      "legacyRuntime": {
+        "path": "selfhost/build/phase55/checked-host02/snapshot/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+        "bytes": 57500
+      },
+      "directRuntime": {
+        "path": "selfhost/build/phase55/checked-host02/snapshot/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+        "bytes": 13212
+      },
+      "counts": {
+        "modules": 107,
+        "physicalLines": 26286,
+        "codeLines": 21617,
+        "definitions": 3019,
+        "types": 100
+      }
+    },
+    "candidate": {
+      "attempt": {
+        "path": "selfhost/build/phase56/checked-clean01/attempt.json",
+        "sha256": "734866e173034020d218c56086544c1d176d64f90883b1c110961b538236f8e2",
+        "bytes": 290545
+      },
+      "bootstrap": {
+        "path": "selfhost/build/phase56/checked-clean01/api.mjs.bootstrap.json",
+        "sha256": "fdfd3342f35e86ca3d7b1173615705337628ff3757facc942481325bf0aeaa65",
+        "bytes": 84016
+      },
+      "assembly": {
+        "path": "selfhost/build/phase56/checked-clean01/snapshot/build/typed/snapshots/47951e6f0ddda33a7a3f93d2664b4a7065ac26b53aa39986a0de983729a42815/compiler.bend",
+        "sha256": "19498b7f40324cb5ff78345775d665f7530d413af87f7cbb6afeae6274294d5e",
+        "bytes": 1308021
+      },
+      "manifest": {
+        "path": "selfhost/build/phase56/checked-clean01/snapshot/src/compiler.json",
+        "sha256": "0b47088a0e189d832f3c79ee6bc6013069508a3844290b240e2b4eb710d01867",
+        "bytes": 3731
+      },
+      "checkedApi": {
+        "path": "selfhost/build/phase56/checked-clean01/api.mjs",
+        "sha256": "79482fb656b9dbe1be44117ed2764271fb18b423bb59b79de90dd278e028060f",
+        "bytes": 1807041
+      },
+      "selectedApi": {
+        "path": "selfhost/build/phase56/checked-clean01/equality/api.mjs",
+        "sha256": "cfde1ebf44d958e593331cfd9af77f7b6ee657441dbd582db8d27f3928815a62",
+        "bytes": 1830492
+      },
+      "legacyRuntime": {
+        "path": "selfhost/build/phase56/checked-clean01/snapshot/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+        "bytes": 57500
+      },
+      "directRuntime": {
+        "path": "selfhost/build/phase56/checked-clean01/snapshot/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+        "bytes": 13212
+      },
+      "counts": {
+        "modules": 107,
+        "physicalLines": 26244,
+        "codeLines": 21583,
+        "definitions": 3012,
+        "types": 100
+      }
+    }
+  },
+  "sourceComparison": {
+    "manifestModules": 107,
+    "unchangedManifestModules": 105,
+    "changedManifestModules": 2,
+    "verifiedSnapshotFilesPerRole": 306,
+    "unchangedSnapshotFiles": 304,
+    "changed": [
+      {
+        "path": "src/back/js/array-view.bend",
+        "baselineSha256": "3ff09fec7396c8bc8caf21fb8e63ecb22255e8e06d2a7896fe27e51f46524cb3",
+        "candidateSha256": "f5d0e58c301604bb496847fe0e114b06e9c8b455b55ef47a7636a79f91f495a0"
+      },
+      {
+        "path": "src/back/js/jpure.bend",
+        "baselineSha256": "f625c524b34144d80330327ae9da0016c4bc171ed1f93e1679e43579ba21b71b",
+        "candidateSha256": "b2dff40d2dd7f11f6c69641a8117f9c06ceb03fa02d86dfd136c39d33ed0f782"
+      }
+    ],
+    "removedPhysicalLines": 42,
+    "removedCodeLines": 34,
+    "removedDefinitions": 7,
+    "countMethod": "Sum manifest module splitlines; code excludes blank and # comment lines; definitions/types count line-start def/type."
+  },
+  "byteComparisons": [
+    {
+      "role": "checkedApi",
+      "equalBytes": true,
+      "sha256": "79482fb656b9dbe1be44117ed2764271fb18b423bb59b79de90dd278e028060f",
+      "bytes": 1807041
+    },
+    {
+      "role": "selectedApi",
+      "equalBytes": true,
+      "sha256": "cfde1ebf44d958e593331cfd9af77f7b6ee657441dbd582db8d27f3928815a62",
+      "bytes": 1830492
+    },
+    {
+      "role": "legacyRuntime",
+      "equalBytes": true,
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+      "bytes": 57500
+    },
+    {
+      "role": "directRuntime",
+      "equalBytes": true,
+      "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+      "bytes": 13212
+    }
+  ],
+  "hostComparison": {
+    "equal": true,
+    "verifiedFrozenToolFiles": 35,
+    "paths": [
+      "tools/assemble.mjs",
+      "tools/compiler-abi.mjs",
+      "tools/conformance/adapters/native-graph.mjs",
+      "tools/conformance/adapters/pipeline.mjs",
+      "tools/conformance/adapters/prototype.mjs",
+      "tools/conformance/adapters/typed.mjs",
+      "tools/conformance/adapters/upstream.mjs",
+      "tools/conformance/bootstrap-variant.mjs",
+      "tools/conformance/compare-artifacts.mjs",
+      "tools/conformance/freeze-adapter.mjs",
+      "tools/conformance/inventory.mjs",
+      "tools/conformance/judge.mjs",
+      "tools/conformance/merge-reports.mjs",
+      "tools/conformance/persistent-probe.mjs",
+      "tools/conformance/persistent-worker.mjs",
+      "tools/conformance/replay.mjs",
+      "tools/conformance/report.mjs",
+      "tools/conformance/run-probe.mjs",
+      "tools/conformance/run.mjs",
+      "tools/conformance/selection.mjs",
+      "tools/conformance/selfhost.mjs",
+      "tools/conformance/semantic-summary.mjs",
+      "tools/conformance/target.mjs",
+      "tools/conformance/typed-report.mjs",
+      "tools/conformance/verify-seed.mjs",
+      "tools/conformance/worker.mjs",
+      "tools/development/equality.mjs",
+      "tools/development/equality.test.mjs",
+      "tools/development/process.mjs",
+      "tools/development/release.mjs",
+      "tools/development/workflow.mjs",
+      "tools/native-build.mjs",
+      "tools/node-resource-args.mjs",
+      "tools/stage0-library.mjs",
+      "tools/typed-driver.mjs"
+    ],
+    "proof": "Every frozen snapshot entry rehashed against both attempts; equal tool paths and SHA256 values."
+  },
+  "freshQualification": {
+    "build": {
+      "path": "selfhost/build/phase56/checked-clean01/build.json",
+      "sha256": "fdc6beacca8d8550e9d46baca1ebe844b59e515bccc17c5ff4bfe6839b9739d3",
+      "bytes": 3635
+    },
+    "validation": {
+      "path": "selfhost/build/phase56/checked-clean01/validation-001/report.json",
+      "sha256": "35f008733450bf2e67c8624f08c238a9560eed74329f820686d9c59cd84b076c",
+      "bytes": 8930
+    },
+    "paired": {
+      "path": "selfhost/build/phase56/checked-clean01/validation-001/selected/paired.json",
+      "sha256": "b098e4fde1955eed02c3788a5de4110011dfe0e1228d8457a3f6dab744d50807",
+      "bytes": 50757
+    },
+    "supervisor": {
+      "path": "selfhost/build/phase56/build-clean01-supervisor/run.json",
+      "sha256": "85c27a8450de2956cb2075dd2b416395c1932c477c1599723a04670d47f5aee6",
+      "bytes": 1438
+    },
+    "wallSeconds": 60.90203197096707,
+    "peakTreeRssBytes": 1528971264,
+    "frontendProbes": 36,
+    "pass": 36,
+    "exactDifferences": 0,
+    "discrepancies": 0
+  },
+  "retainedEvidenceScope": "Existing behavior and dated timing attach to the unchanged selected linked API, runtimes and host inputs. This receipt does not claim a new runtime campaign, a direct self-emission fixed point, or fresh direct-image self-check."
+}

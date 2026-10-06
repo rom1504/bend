@@ -1,0 +1,45 @@
+{
+  "kind": "phase58-checked-pilot-method-successor",
+  "scope": "Accept genuine checked=true B1 attempts regardless of strictExact qualification; retain actual strictExact and productionQualified=false in image. No relaxation of attempt integrity, checked source proof, full pilot oracle or per-role emitted-byte checks. Method03 is unchanged.",
+  "derivations": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/setup.mjs",
+        "sha256": "be8917ce599cb44b99783facb5f0b6639441e28004ba362a7291e20e2c42ad90"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/setup-v2.mjs",
+        "sha256": "443790f456fa27401c227c6db968bce7293161ec3bbed24c8cad80d612734ee3"
+      },
+      "edits": [
+        {
+          "old": "assert.equal(a.config.strictExact,true)",
+          "new": "assert.equal(typeof a.config.strictExact,'boolean')",
+          "count": 1
+        },
+        {
+          "old": "checkedGenerator:selected.attemptId,",
+          "new": "checkedGenerator:selected.attemptId,strictExact:selected.attempt.config.strictExact,",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/make-method.py",
+        "sha256": "a221d3707a2006df0a4930cea8a482689f944113a9888ba16b77e386c2f9b40e"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/make-method-v2.py",
+        "sha256": "acd78404d5229823bf8b679ef1033b0838081cb24652267119b2ea09bfea8b14"
+      },
+      "edits": [
+        {
+          "old": "HERE/'setup.mjs'",
+          "new": "HERE/'setup-v2.mjs'",
+          "count": 3
+        }
+      ]
+    }
+  ]
+}

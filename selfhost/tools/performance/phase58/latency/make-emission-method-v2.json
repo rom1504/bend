@@ -1,0 +1,19 @@
+{
+  "kind": "phase58-emission-factory-path-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/make-emission-method.py",
+    "sha256": "c0421bc8f228ce3f99640362a5ed8485c8ecfe6f268989b5053b5aa243e47e9a"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/make-emission-method-v2.py",
+    "sha256": "36b69708bca86bf3b2577069734a019f1f18d2a9786f5d2e77d4ac6b154ff10a"
+  },
+  "edits": [
+    {
+      "old": "parents.push(identity(\"+url(HERE/'setup-v2.mjs')+\"),identity(\"+url(out/'profile.mjs')+\"),identity(\"+url(out/'derivation.json')+\"),report.binding);",
+      "new": "parents.push(identity(new URL(\"+url(HERE/'setup-v2.mjs')+\")),identity(new URL(\"+url(out/'profile.mjs')+\")),identity(new URL(\"+url(out/'derivation.json')+\")),report.binding);",
+      "count": 1
+    }
+  ],
+  "scope": "Preserve consumed data-only factory/output01. Wrap literal file URL strings in URL objects for fs-compatible identity only; pipeline and clocks unchanged."
+}

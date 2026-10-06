@@ -1,0 +1,379 @@
+{
+  "kind": "phase58-literal-fields-outcome",
+  "checkedSourceQualification": {
+    "complete": true,
+    "pass": true,
+    "controls": {
+      "file": "selfhost/build/phase58/fields-controls03/report.json",
+      "sha256": "2494de2387722f8f6a43c22018c818e60da7ab6171452e45b793e89910e9eeff",
+      "bytes": 124598
+    },
+    "groups": [
+      {
+        "role": "baseline",
+        "count": 17,
+        "getterTrace": [
+          "__proto__",
+          "constructor",
+          "field.name",
+          "__proto__",
+          "constructor",
+          "field.name",
+          "__proto__",
+          "constructor",
+          "field.name",
+          "__proto__",
+          "constructor",
+          "field.name"
+        ]
+      },
+      {
+        "role": "candidate",
+        "count": 17,
+        "getterTrace": [
+          "__proto__",
+          "constructor",
+          "field.name",
+          "__proto__",
+          "constructor",
+          "field.name",
+          "__proto__",
+          "constructor",
+          "field.name",
+          "__proto__",
+          "constructor",
+          "field.name"
+        ]
+      }
+    ],
+    "syntax": {
+      "baseline": {
+        "constructors": {
+          "objects": 5,
+          "plain": 0,
+          "computed": 19,
+          "protoComputed": 4,
+          "protoPlain": 0
+        },
+        "hostClones": {
+          "objects": 4,
+          "plain": 0,
+          "computed": 8,
+          "protoComputed": 4,
+          "protoPlain": 0
+        }
+      },
+      "candidate": {
+        "constructors": {
+          "objects": 5,
+          "plain": 19,
+          "computed": 0,
+          "protoComputed": 4,
+          "protoPlain": 0
+        },
+        "hostClones": {
+          "objects": 4,
+          "plain": 8,
+          "computed": 0,
+          "protoComputed": 4,
+          "protoPlain": 0
+        }
+      }
+    },
+    "baselineApi": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea",
+    "candidateApi": "ef4692ccc61dd7324b371f08b22c6f406418e99973a95769f378e2807c3eba97",
+    "candidateQualification": {
+      "checked": true,
+      "strictExact": false,
+      "selectedTests": 36,
+      "exactDifferences": 0,
+      "validation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/checked-fields01/validation-001/report.json",
+        "sha256": "c545c4fe0fa493d332ef3e353360cc944ec8df5f6ba16f4354ca4dab02e39bbc"
+      }
+    }
+  },
+  "savedImageCompilerRequestDiagnostic": {
+    "complete": true,
+    "pass": true,
+    "report": {
+      "file": "selfhost/build/phase58/fields-latency-confirm01/report.json",
+      "sha256": "a0cd762fd2c53264f5abdabd0318f06357d3988231c0ca56f7525f1174bb7fd5",
+      "bytes": 264739
+    },
+    "mode": "clean",
+    "statistics": {
+      "baseline": {
+        "firstRequestMs": {
+          "median": 3044.114558,
+          "min": 3036.1961170000004,
+          "max": 3047.58079,
+          "samples": [
+            3036.1961170000004,
+            3044.114558,
+            3047.58079
+          ]
+        },
+        "hostImportMs": {
+          "median": 4.1844200000000455,
+          "min": 4.173825000000079,
+          "max": 4.2266000000001895,
+          "samples": [
+            4.1844200000000455,
+            4.173825000000079,
+            4.2266000000001895
+          ]
+        },
+        "apiLoadMs": {
+          "median": 99.22220700000003,
+          "min": 98.67872899999998,
+          "max": 100.45681100000002,
+          "samples": [
+            98.67872899999998,
+            99.22220700000003,
+            100.45681100000002
+          ]
+        },
+        "importApiAndFirstMs": {
+          "median": 3147.5105900000003,
+          "min": 3139.059266,
+          "max": 3152.264201,
+          "samples": [
+            3139.059266,
+            3147.5105900000003,
+            3152.264201
+          ]
+        },
+        "maxRssKiB": {
+          "median": 542564,
+          "min": 539268,
+          "max": 542652,
+          "samples": [
+            542564,
+            539268,
+            542652
+          ]
+        },
+        "warmRequestMedianMs": {
+          "median": 1778.8843629999992,
+          "min": 1749.9528440000004,
+          "max": 1787.293694,
+          "samples": [
+            1749.9528440000004,
+            1778.8843629999992,
+            1787.293694
+          ]
+        },
+        "warmRequestMsByProcess": [
+          [
+            2072.7257879999997,
+            1749.9528440000004,
+            1572.2136059999993
+          ],
+          [
+            2085.105584,
+            1778.8843629999992,
+            1598.9576670000006
+          ],
+          [
+            2075.5255989999996,
+            1787.293694,
+            1719.1429399999997
+          ]
+        ],
+        "processWallMs": {
+          "median": 11232.570679974742,
+          "min": 11110.041243955493,
+          "max": 11452.894737012684,
+          "samples": [
+            11110.041243955493,
+            11232.570679974742,
+            11452.894737012684
+          ]
+        },
+        "peakTreeRssBytes": {
+          "median": 555581440,
+          "min": 552210432,
+          "max": 555675648,
+          "samples": [
+            555581440,
+            552210432,
+            555675648
+          ]
+        },
+        "outputBytes": {
+          "median": 28452,
+          "min": 28452,
+          "max": 28452,
+          "samples": [
+            28452,
+            28452,
+            28452
+          ]
+        }
+      },
+      "candidate": {
+        "firstRequestMs": {
+          "median": 2270.2662950000004,
+          "min": 2265.3986400000003,
+          "max": 2272.795018,
+          "samples": [
+            2270.2662950000004,
+            2265.3986400000003,
+            2272.795018
+          ]
+        },
+        "hostImportMs": {
+          "median": 4.181467999999995,
+          "min": 4.161809000000176,
+          "max": 4.191984000000048,
+          "samples": [
+            4.181467999999995,
+            4.191984000000048,
+            4.161809000000176
+          ]
+        },
+        "apiLoadMs": {
+          "median": 99.17470299999991,
+          "min": 98.87714599999981,
+          "max": 99.48205299999995,
+          "samples": [
+            98.87714599999981,
+            99.17470299999991,
+            99.48205299999995
+          ]
+        },
+        "importApiAndFirstMs": {
+          "median": 2373.324909,
+          "min": 2368.765327,
+          "max": 2376.4388799999997,
+          "samples": [
+            2373.324909,
+            2368.765327,
+            2376.4388799999997
+          ]
+        },
+        "maxRssKiB": {
+          "median": 543876,
+          "min": 540776,
+          "max": 544304,
+          "samples": [
+            540776,
+            544304,
+            543876
+          ]
+        },
+        "warmRequestMedianMs": {
+          "median": 1377.9047650000002,
+          "min": 1361.7189589999998,
+          "max": 1510.8341170000003,
+          "samples": [
+            1377.9047650000002,
+            1361.7189589999998,
+            1510.8341170000003
+          ]
+        },
+        "warmRequestMsByProcess": [
+          [
+            1570.8737929999998,
+            1377.9047650000002,
+            1232.6092799999997
+          ],
+          [
+            1577.5310719999998,
+            1361.7189589999998,
+            1231.8409810000003
+          ],
+          [
+            1659.0606349999998,
+            1510.8341170000003,
+            1331.880747000001
+          ]
+        ],
+        "processWallMs": {
+          "median": 9190.407724003308,
+          "min": 9170.564484025817,
+          "max": 9622.60989897186,
+          "samples": [
+            9190.407724003308,
+            9170.564484025817,
+            9622.60989897186
+          ]
+        },
+        "peakTreeRssBytes": {
+          "median": 556929024,
+          "min": 553754624,
+          "max": 557367296,
+          "samples": [
+            553754624,
+            557367296,
+            556929024
+          ]
+        },
+        "outputBytes": {
+          "median": 28452,
+          "min": 28452,
+          "max": 28452,
+          "samples": [
+            28452,
+            28452,
+            28452
+          ]
+        }
+      }
+    },
+    "exactBendOutputComparisons": [
+      {
+        "case": "lexer",
+        "roles": [
+          "baseline",
+          "candidate"
+        ],
+        "outputs": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/fields-latency-pilot01/prepare-baseline/lexer.mjs",
+            "sha256": "7391f503044de65bff0836feaeb8cabcc3ca10b888e081b83fe814c1286d826e",
+            "bytes": 28452
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/fields-latency-pilot01/prepare-candidate/lexer.mjs",
+            "sha256": "7391f503044de65bff0836feaeb8cabcc3ca10b888e081b83fe814c1286d826e",
+            "bytes": 28452
+          }
+        ],
+        "textEqual": true,
+        "required": false,
+        "oracle": "Complete per-role prepared catalog value"
+      }
+    ],
+    "wallSeconds": 66.98740043002181,
+    "candidateProductionQualified": false
+  },
+  "methodAndSourceInputs": [
+    {
+      "file": "selfhost/tools/performance/phase58/fields/literal-fields-v1.patch",
+      "sha256": "e6a917c51550120ba0dc7a5979eb906d88f7762be55b4c16dd6e7b630fb839ec",
+      "bytes": 2309
+    },
+    {
+      "file": "selfhost/tools/performance/phase58/fields/patch-v1.json",
+      "sha256": "3994c7c5796c788fab7841f7a7f72a6486e83f3869320e751768c68bb445e9b3",
+      "bytes": 1230
+    },
+    {
+      "file": "selfhost/tools/performance/phase58/fields/controls-v3.mjs",
+      "sha256": "0b9b20a1b34bbcc97c89e0989037f1df938f96aa5ebc6a310de37ba889f4f959",
+      "bytes": 10887
+    },
+    {
+      "file": "selfhost/tools/performance/phase58/fields/fields-v2.bend",
+      "sha256": "4890d6d9d91e3068ae8185c3dfefd5897f9c49374762b0bd79c8019d4d38103b",
+      "bytes": 997
+    },
+    {
+      "file": "selfhost/build/phase58/fields-derivative01/derivation.json",
+      "sha256": "b8c9a5d71e215cd8d3e450da27952d9705461701bdb871ce0a13007fbecb811e",
+      "bytes": 1388756
+    }
+  ]
+}

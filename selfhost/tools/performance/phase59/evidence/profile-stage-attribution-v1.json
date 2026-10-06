@@ -1,0 +1,1243 @@
+{
+  "kind": "phase59-first-window-exact-ancestor-attribution",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "scope": "Mutually exclusive attribution of individual CPU sample events or allocation samples by nearest exact API/source-driver boundary ancestor. This is sampled contextual attribution, not API call counts, phase wall clocks or causal removable cost. Unassigned mass retained. Anonymous/common helpers and SCC dispatchers are never assigned by their own names. Exact-boundary ancestry may be absent due to inlining or asynchronous stacks.",
+  "method": {
+    "cpu": "Each samples[] node contributes exactly 1; timeDeltas not used, including the original refused weighted TS Evening capture. Its healthy count view is kept separately from the fresh TS retry.",
+    "allocation": "Each samples[] event contributes its recorded size once. Ancestors classify that sample; neither ancestor selfSize nor inclusive totals are added. Minor/major collected-object inclusion remains the original producer policy.",
+    "overlap": "Nearest (deepest) exact matched ancestor wins. Therefore inner file-analysis/checking bins exclude their mass from enclosing library/load bins. A stack missing all exact boundaries is unassigned; no stage inferred from helper/dispatcher names.",
+    "crossCompiler": "TS file_book analysis and Bend emitted-reach are distinct bins, not an asserted stage-equivalence. check_program_diagnostic includes completion; discoverSources includes host loading/parsing/completion. Root wall clocks are a separate method.",
+    "integrity": "Worker/profile/raw and selected API/source bytes hashed before/after; original receipts retained. No whole transitive image/provenance audit inferred."
+  },
+  "rows": [
+    {
+      "campaign": "first-cpu01",
+      "case": "lexer",
+      "role": "direct",
+      "mode": "cpu",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-direct.result.json",
+        "sha256": "fd13eda0a47b1f61ca9cf2c6e42a402766e95080826fe13a517dc144c06b806a",
+        "bytes": 10349
+      },
+      "profileReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-direct-profile/report.json",
+        "sha256": "cc8e37c0f969ccb76b3b3bc6844765701acedb0b6decd2f0492dc03ff7e33157",
+        "bytes": 4971
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-direct-profile/profile.cpuprofile",
+        "sha256": "a9dd771e68a13919b65096122cd2d448dc9c1c4afe5f4d1c853ba848f9569675",
+        "bytes": 4370294
+      },
+      "oneFirstRequest": true,
+      "unit": "CPU samples",
+      "total": 1157,
+      "sampleEvents": 1157,
+      "weightedStatusReported": "admitted",
+      "weightedTimeComputed": false,
+      "partitions": [
+        {
+          "stage": "checking-and-completion",
+          "mass": 402,
+          "percent": 34.74503025064823
+        },
+        {
+          "stage": "unassigned",
+          "mass": 338,
+          "percent": 29.213483146067414
+        },
+        {
+          "stage": "source-discovery",
+          "mass": 253,
+          "percent": 21.866897147796024
+        },
+        {
+          "stage": "library-render",
+          "mass": 77,
+          "percent": 6.65514261019879
+        },
+        {
+          "stage": "emitted-reach",
+          "mass": 74,
+          "percent": 6.395851339671564
+        },
+        {
+          "stage": "source-reach",
+          "mass": 7,
+          "percent": 0.6050129645635264
+        },
+        {
+          "stage": "annotation",
+          "mass": 6,
+          "percent": 0.5185825410544511
+        }
+      ],
+      "unassignedLeafNames": [
+        {
+          "name": "compileSourceTextModule",
+          "mass": 61
+        },
+        {
+          "name": "validateSpanCache",
+          "mass": 48
+        },
+        {
+          "name": "readBaseCache",
+          "mass": 38
+        },
+        {
+          "name": "(garbage collector)",
+          "mass": 36
+        },
+        {
+          "name": "validateSpanBook",
+          "mass": 36
+        }
+      ],
+      "observedBoundaryStackNodes": {
+        "source-discovery": 1,
+        "checking-and-completion": 1,
+        "source-reach": 1,
+        "annotation": 1,
+        "emitted-reach": 1,
+        "library-render": 1
+      },
+      "rootPolicy": [
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$check_95_program_95_diagnostic",
+          "stage": "checking-and-completion"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$annotate_95_selected",
+          "stage": "annotation"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$reach_95_book",
+          "stage": "source-reach"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_reach_95_selected",
+          "stage": "emitted-reach"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_library_95_selected",
+          "stage": "library-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_program_95_selected",
+          "stage": "program-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/tools/typed-driver.mjs",
+          "functionName": "discoverSources",
+          "stage": "source-discovery"
+        }
+      ]
+    },
+    {
+      "campaign": "first-cpu01",
+      "case": "lexer",
+      "role": "typescript",
+      "mode": "cpu",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-typescript.result.json",
+        "sha256": "654bda8ce3df7aced98a1db4a25ee3b1907f9bb6598ae78de38c82dccc8f9479",
+        "bytes": 7630
+      },
+      "profileReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-typescript-profile/report.json",
+        "sha256": "84fedb38c5c3d710d218d27c8c63ba749b7cae13a1fc64b84a8ba74c7061f2aa",
+        "bytes": 4957
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-typescript-profile/profile.cpuprofile",
+        "sha256": "2a388d39451babd96978f038aa5fe954f6c948b4a4235ff66c374129ecb6bb6b",
+        "bytes": 554770
+      },
+      "oneFirstRequest": true,
+      "unit": "CPU samples",
+      "total": 597,
+      "sampleEvents": 597,
+      "weightedStatusReported": "admitted",
+      "weightedTimeComputed": false,
+      "partitions": [
+        {
+          "stage": "checking-and-completion",
+          "mass": 210,
+          "percent": 35.175879396984925
+        },
+        {
+          "stage": "unassigned",
+          "mass": 175,
+          "percent": 29.313232830820766
+        },
+        {
+          "stage": "typescript-load",
+          "mass": 135,
+          "percent": 22.613065326633166
+        },
+        {
+          "stage": "typescript-file-analysis",
+          "mass": 57,
+          "percent": 9.547738693467336
+        },
+        {
+          "stage": "library-render",
+          "mass": 20,
+          "percent": 3.350083752093802
+        }
+      ],
+      "unassignedLeafNames": [
+        {
+          "name": "__require",
+          "mass": 21
+        },
+        {
+          "name": "(garbage collector)",
+          "mass": 20
+        },
+        {
+          "name": "wasm-function[206]",
+          "mass": 10
+        },
+        {
+          "name": "compileSourceTextModule",
+          "mass": 10
+        },
+        {
+          "name": "passStringToWasm0",
+          "mass": 6
+        }
+      ],
+      "observedBoundaryStackNodes": {
+        "typescript-load": 1,
+        "checking-and-completion": 1,
+        "library-render": 1,
+        "typescript-file-analysis": 1
+      },
+      "rootPolicy": [
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "functionName": "book_load",
+          "stage": "typescript-load"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "functionName": "book_valid",
+          "stage": "checking-and-completion"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "file_book",
+          "stage": "typescript-file-analysis"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "js_lib",
+          "stage": "library-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "js_book",
+          "stage": "program-render"
+        }
+      ]
+    },
+    {
+      "campaign": "first-cpu01",
+      "case": "test-evening-program",
+      "role": "direct",
+      "mode": "cpu",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-direct.result.json",
+        "sha256": "a96623441f31865f9c1a1129f4dd4e19c9dc9c8c15ce9bfaf6c7f96cecd572ea",
+        "bytes": 10503
+      },
+      "profileReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-direct-profile/report.json",
+        "sha256": "35ca869150189bc9244982cbd38c40a25c504b0e27d413df54d35eaeb2469c02",
+        "bytes": 5027
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-direct-profile/profile.cpuprofile",
+        "sha256": "ad717274ece49d25ab8a30af98dc4c662086e9258b26f7fc03aa33bd8dab12c0",
+        "bytes": 8393833
+      },
+      "oneFirstRequest": true,
+      "unit": "CPU samples",
+      "total": 1650,
+      "sampleEvents": 1650,
+      "weightedStatusReported": "admitted",
+      "weightedTimeComputed": false,
+      "partitions": [
+        {
+          "stage": "unassigned",
+          "mass": 438,
+          "percent": 26.545454545454543
+        },
+        {
+          "stage": "checking-and-completion",
+          "mass": 376,
+          "percent": 22.78787878787879
+        },
+        {
+          "stage": "emitted-reach",
+          "mass": 363,
+          "percent": 22.0
+        },
+        {
+          "stage": "library-render",
+          "mass": 247,
+          "percent": 14.969696969696969
+        },
+        {
+          "stage": "source-discovery",
+          "mass": 171,
+          "percent": 10.363636363636363
+        },
+        {
+          "stage": "annotation",
+          "mass": 43,
+          "percent": 2.6060606060606064
+        },
+        {
+          "stage": "source-reach",
+          "mass": 12,
+          "percent": 0.7272727272727273
+        }
+      ],
+      "unassignedLeafNames": [
+        {
+          "name": "compileSourceTextModule",
+          "mass": 66
+        },
+        {
+          "name": "(garbage collector)",
+          "mass": 56
+        },
+        {
+          "name": "validateSpanCache",
+          "mass": 44
+        },
+        {
+          "name": "readBaseCache",
+          "mass": 39
+        },
+        {
+          "name": "validateSpanBook",
+          "mass": 37
+        }
+      ],
+      "observedBoundaryStackNodes": {
+        "source-discovery": 1,
+        "checking-and-completion": 1,
+        "source-reach": 1,
+        "annotation": 1,
+        "emitted-reach": 1,
+        "library-render": 1
+      },
+      "rootPolicy": [
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$check_95_program_95_diagnostic",
+          "stage": "checking-and-completion"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$annotate_95_selected",
+          "stage": "annotation"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$reach_95_book",
+          "stage": "source-reach"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_reach_95_selected",
+          "stage": "emitted-reach"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_library_95_selected",
+          "stage": "library-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_program_95_selected",
+          "stage": "program-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/tools/typed-driver.mjs",
+          "functionName": "discoverSources",
+          "stage": "source-discovery"
+        }
+      ]
+    },
+    {
+      "campaign": "first-cpu01",
+      "case": "test-evening-program",
+      "role": "typescript",
+      "mode": "cpu",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-typescript.result.json",
+        "sha256": "e329fa618c460f02e321db68f7559db8066a0ce2c04b046b1b34acedba973613",
+        "bytes": 7973
+      },
+      "profileReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-typescript-profile/report.json",
+        "sha256": "b291764057c2b36cdeaa5837628af0fbb72626a70dce67fef70d743ab59fee75",
+        "bytes": 5209
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-typescript-profile/profile.cpuprofile",
+        "sha256": "2ccf5ba540c7ba8c652aa36db9b08f54a8279b1e864f6b2ab0ec85d7e92f5240",
+        "bytes": 1323423
+      },
+      "oneFirstRequest": true,
+      "unit": "CPU samples",
+      "total": 842,
+      "sampleEvents": 842,
+      "weightedStatusReported": "refused",
+      "weightedTimeComputed": false,
+      "partitions": [
+        {
+          "stage": "unassigned",
+          "mass": 242,
+          "percent": 28.741092636579573
+        },
+        {
+          "stage": "typescript-file-analysis",
+          "mass": 203,
+          "percent": 24.109263657957243
+        },
+        {
+          "stage": "checking-and-completion",
+          "mass": 192,
+          "percent": 22.802850356294538
+        },
+        {
+          "stage": "typescript-load",
+          "mass": 124,
+          "percent": 14.726840855106888
+        },
+        {
+          "stage": "library-render",
+          "mass": 81,
+          "percent": 9.619952494061758
+        }
+      ],
+      "unassignedLeafNames": [
+        {
+          "name": "term_any",
+          "mass": 39
+        },
+        {
+          "name": "(garbage collector)",
+          "mass": 29
+        },
+        {
+          "name": "__require",
+          "mass": 21
+        },
+        {
+          "name": "(anonymous)",
+          "mass": 17
+        },
+        {
+          "name": "wasm-function[206]",
+          "mass": 8
+        }
+      ],
+      "observedBoundaryStackNodes": {
+        "typescript-load": 1,
+        "checking-and-completion": 1,
+        "library-render": 1,
+        "typescript-file-analysis": 2
+      },
+      "rootPolicy": [
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "functionName": "book_load",
+          "stage": "typescript-load"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "functionName": "book_valid",
+          "stage": "checking-and-completion"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "file_book",
+          "stage": "typescript-file-analysis"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "js_lib",
+          "stage": "library-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "js_book",
+          "stage": "program-render"
+        }
+      ]
+    },
+    {
+      "campaign": "first-allocation01",
+      "case": "lexer",
+      "role": "direct",
+      "mode": "allocation",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-direct.result.json",
+        "sha256": "25302d71d61b13281209430f4c1589d4aeab5c47644860724e9a4a39fa2f5faf",
+        "bytes": 9217
+      },
+      "profileReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-direct-profile/report.json",
+        "sha256": "23cd71da33f973b1d11561f49e413a7c7bae87147a900009abc3fca25cb27ade",
+        "bytes": 3870
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-direct-profile/profile.heapprofile",
+        "sha256": "125ce38c91eaf00125deca1dcce77515ac2a5587dea8f95c60cef23296320cda",
+        "bytes": 6297254
+      },
+      "oneFirstRequest": true,
+      "unit": "estimated sampled allocated bytes",
+      "total": 246094096,
+      "sampleEvents": 1817,
+      "weightedStatusReported": null,
+      "weightedTimeComputed": false,
+      "partitions": [
+        {
+          "stage": "checking-and-completion",
+          "mass": 93543536,
+          "percent": 38.01128817003395
+        },
+        {
+          "stage": "unassigned",
+          "mass": 66985040,
+          "percent": 27.219279571826867
+        },
+        {
+          "stage": "source-discovery",
+          "mass": 34510992,
+          "percent": 14.023494492935743
+        },
+        {
+          "stage": "library-render",
+          "mass": 26491344,
+          "percent": 10.764721474667153
+        },
+        {
+          "stage": "emitted-reach",
+          "mass": 20626024,
+          "percent": 8.381356698618239
+        },
+        {
+          "stage": "source-reach",
+          "mass": 3019160,
+          "percent": 1.2268315449550646
+        },
+        {
+          "stage": "annotation",
+          "mass": 918000,
+          "percent": 0.37302804696297953
+        }
+      ],
+      "unassignedLeafNames": [
+        {
+          "name": "$jd$index_95_remove",
+          "mass": 8784672
+        },
+        {
+          "name": "values",
+          "mass": 7341720
+        },
+        {
+          "name": "$jd$index_95_node",
+          "mass": 5512544
+        },
+        {
+          "name": "readBaseCache",
+          "mass": 4720216
+        },
+        {
+          "name": "$jd$subst$scc",
+          "mass": 4460224
+        }
+      ],
+      "observedBoundaryStackNodes": {
+        "library-render": 1,
+        "emitted-reach": 2,
+        "annotation": 1,
+        "source-reach": 1,
+        "checking-and-completion": 4,
+        "source-discovery": 1
+      },
+      "rootPolicy": [
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$check_95_program_95_diagnostic",
+          "stage": "checking-and-completion"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$annotate_95_selected",
+          "stage": "annotation"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$reach_95_book",
+          "stage": "source-reach"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_reach_95_selected",
+          "stage": "emitted-reach"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_library_95_selected",
+          "stage": "library-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_program_95_selected",
+          "stage": "program-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/tools/typed-driver.mjs",
+          "functionName": "discoverSources",
+          "stage": "source-discovery"
+        }
+      ]
+    },
+    {
+      "campaign": "first-allocation01",
+      "case": "lexer",
+      "role": "typescript",
+      "mode": "allocation",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-typescript.result.json",
+        "sha256": "b1ccbbf32e4b9a7fe028b994a49a06f396fee5b5744bb0c07d0bdc8493675017",
+        "bytes": 6503
+      },
+      "profileReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-typescript-profile/report.json",
+        "sha256": "e0e59342d7d7b3fc63bf829a66ba49cf4fc838d9ae5cc942fa1c81c26cb49de6",
+        "bytes": 3837
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-typescript-profile/profile.heapprofile",
+        "sha256": "6eb5d463d23f686f930c73d1cb6c2e52b2616e8145d1d9c4bfe2ed368b8b1f99",
+        "bytes": 1130251
+      },
+      "oneFirstRequest": true,
+      "unit": "estimated sampled allocated bytes",
+      "total": 64958408,
+      "sampleEvents": 464,
+      "weightedStatusReported": null,
+      "weightedTimeComputed": false,
+      "partitions": [
+        {
+          "stage": "checking-and-completion",
+          "mass": 28478272,
+          "percent": 43.840778856526164
+        },
+        {
+          "stage": "typescript-load",
+          "mass": 17606896,
+          "percent": 27.1048760924067
+        },
+        {
+          "stage": "unassigned",
+          "mass": 7870856,
+          "percent": 12.11676246745456
+        },
+        {
+          "stage": "library-render",
+          "mass": 5873784,
+          "percent": 9.042376777460433
+        },
+        {
+          "stage": "typescript-file-analysis",
+          "mass": 5128600,
+          "percent": 7.895205806152146
+        }
+      ],
+      "unassignedLeafNames": [
+        {
+          "name": "__require",
+          "mass": 3720200
+        },
+        {
+          "name": "term_higher",
+          "mass": 786544
+        },
+        {
+          "name": "Var",
+          "mass": 524544
+        },
+        {
+          "name": "decode",
+          "mass": 459856
+        },
+        {
+          "name": "compileSourceTextModule",
+          "mass": 409248
+        }
+      ],
+      "observedBoundaryStackNodes": {
+        "library-render": 1,
+        "typescript-file-analysis": 1,
+        "checking-and-completion": 1,
+        "typescript-load": 1
+      },
+      "rootPolicy": [
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "functionName": "book_load",
+          "stage": "typescript-load"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "functionName": "book_valid",
+          "stage": "checking-and-completion"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "file_book",
+          "stage": "typescript-file-analysis"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "js_lib",
+          "stage": "library-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "js_book",
+          "stage": "program-render"
+        }
+      ]
+    },
+    {
+      "campaign": "first-allocation01",
+      "case": "test-evening-program",
+      "role": "direct",
+      "mode": "allocation",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-direct.result.json",
+        "sha256": "9c534273ab0ce5df9ebbdbc5435566148e9976cdba42c4912595ddcc73ba859c",
+        "bytes": 9327
+      },
+      "profileReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-direct-profile/report.json",
+        "sha256": "dc92896be7d3d0c7fbd58e10724f10a1332f7ec978fce88b02f326f21fe6fd8f",
+        "bytes": 3890
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-direct-profile/profile.heapprofile",
+        "sha256": "7c7cdbf5cb9d8cfe490cf1086e92aa742cbebdd3665666cadbce4c438ee712ac",
+        "bytes": 21841423
+      },
+      "oneFirstRequest": true,
+      "unit": "estimated sampled allocated bytes",
+      "total": 898284512,
+      "sampleEvents": 6707,
+      "weightedStatusReported": null,
+      "weightedTimeComputed": false,
+      "partitions": [
+        {
+          "stage": "emitted-reach",
+          "mass": 456033696,
+          "percent": 50.76717787159176
+        },
+        {
+          "stage": "unassigned",
+          "mass": 191597168,
+          "percent": 21.329229819783425
+        },
+        {
+          "stage": "library-render",
+          "mass": 131568976,
+          "percent": 14.646693140357739
+        },
+        {
+          "stage": "checking-and-completion",
+          "mass": 89449664,
+          "percent": 9.957832157302073
+        },
+        {
+          "stage": "source-discovery",
+          "mass": 24126552,
+          "percent": 2.68584748792819
+        },
+        {
+          "stage": "annotation",
+          "mass": 3410800,
+          "percent": 0.37970152601272944
+        },
+        {
+          "stage": "source-reach",
+          "mass": 2097656,
+          "percent": 0.2335179970240876
+        }
+      ],
+      "unassignedLeafNames": [
+        {
+          "name": "$jd$String_46_contains_46_if$scc",
+          "mass": 42754328
+        },
+        {
+          "name": "$jd$subst$scc",
+          "mass": 33190384
+        },
+        {
+          "name": "$jd$jd_95_primitive_95_table",
+          "mass": 9308736
+        },
+        {
+          "name": "$jd$index_95_remove",
+          "mass": 8915776
+        },
+        {
+          "name": "$jd$subst_95_terms",
+          "mass": 7603472
+        }
+      ],
+      "observedBoundaryStackNodes": {
+        "library-render": 5,
+        "emitted-reach": 5,
+        "checking-and-completion": 5,
+        "source-discovery": 2,
+        "annotation": 5,
+        "source-reach": 1
+      },
+      "rootPolicy": [
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$check_95_program_95_diagnostic",
+          "stage": "checking-and-completion"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$annotate_95_selected",
+          "stage": "annotation"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$reach_95_book",
+          "stage": "source-reach"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_reach_95_selected",
+          "stage": "emitted-reach"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_library_95_selected",
+          "stage": "library-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+          "functionName": "$jd$jd_95_program_95_selected",
+          "stage": "program-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/tools/typed-driver.mjs",
+          "functionName": "discoverSources",
+          "stage": "source-discovery"
+        }
+      ]
+    },
+    {
+      "campaign": "first-allocation01",
+      "case": "test-evening-program",
+      "role": "typescript",
+      "mode": "allocation",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-typescript.result.json",
+        "sha256": "21ddec9ef62c4f6a49c559ef7fd2e6e3080062e8d84418c0439b869c77a948d9",
+        "bytes": 6624
+      },
+      "profileReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-typescript-profile/report.json",
+        "sha256": "3e3bcd8c9ecbc2e1001d18015c2f3604cc0392136a7bf7ea31a40025236d6ace",
+        "bytes": 3884
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-typescript-profile/profile.heapprofile",
+        "sha256": "e05b248310cac2c9b1e8da7d3b28625c151b2776ebb3da1ea9770054589708c3",
+        "bytes": 2681305
+      },
+      "oneFirstRequest": true,
+      "unit": "estimated sampled allocated bytes",
+      "total": 123967856,
+      "sampleEvents": 909,
+      "weightedStatusReported": null,
+      "weightedTimeComputed": false,
+      "partitions": [
+        {
+          "stage": "typescript-file-analysis",
+          "mass": 34157104,
+          "percent": 27.553194111867192
+        },
+        {
+          "stage": "checking-and-completion",
+          "mass": 30433928,
+          "percent": 24.54985427835422
+        },
+        {
+          "stage": "unassigned",
+          "mass": 26560128,
+          "percent": 21.425011980525017
+        },
+        {
+          "stage": "typescript-load",
+          "mass": 17961160,
+          "percent": 14.488562260849298
+        },
+        {
+          "stage": "library-render",
+          "mass": 14855536,
+          "percent": 11.983377368404275
+        }
+      ],
+      "unassignedLeafNames": [
+        {
+          "name": "(anonymous)",
+          "mass": 4326456
+        },
+        {
+          "name": "__require",
+          "mass": 3851296
+        },
+        {
+          "name": "term_higher",
+          "mass": 2359664
+        },
+        {
+          "name": "term_kids",
+          "mass": 1311032
+        },
+        {
+          "name": "Ctr",
+          "mass": 1310960
+        }
+      ],
+      "observedBoundaryStackNodes": {
+        "library-render": 3,
+        "typescript-file-analysis": 4,
+        "checking-and-completion": 2,
+        "typescript-load": 1
+      },
+      "rootPolicy": [
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "functionName": "book_load",
+          "stage": "typescript-load"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "functionName": "book_valid",
+          "stage": "checking-and-completion"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "file_book",
+          "stage": "typescript-file-analysis"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "js_lib",
+          "stage": "library-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "js_book",
+          "stage": "program-render"
+        }
+      ]
+    },
+    {
+      "campaign": "first-cpu-evening-ts02",
+      "case": "test-evening-program",
+      "role": "typescript",
+      "mode": "cpu",
+      "worker": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu-evening-ts02/test-evening-program-0-typescript.result.json",
+        "sha256": "3e7742a536d1cf3761eded54ca3b72c302f8b4c22d19f9b2a205e666ebfb7b98",
+        "bytes": 7851
+      },
+      "profileReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu-evening-ts02/test-evening-program-0-typescript-profile/report.json",
+        "sha256": "bf4d178ff1d701fd44cc51dc01706498b143437606595ddd1b4f07725891b5c3",
+        "bytes": 5041
+      },
+      "raw": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu-evening-ts02/test-evening-program-0-typescript-profile/profile.cpuprofile",
+        "sha256": "3a1ad907d212ce82fee699781dbbab8c7170735bc5758740d7b7614051d72097",
+        "bytes": 1258094
+      },
+      "oneFirstRequest": true,
+      "unit": "CPU samples",
+      "total": 863,
+      "sampleEvents": 863,
+      "weightedStatusReported": "admitted",
+      "weightedTimeComputed": false,
+      "partitions": [
+        {
+          "stage": "unassigned",
+          "mass": 240,
+          "percent": 27.809965237543455
+        },
+        {
+          "stage": "typescript-file-analysis",
+          "mass": 208,
+          "percent": 24.10196987253766
+        },
+        {
+          "stage": "checking-and-completion",
+          "mass": 199,
+          "percent": 23.059096176129778
+        },
+        {
+          "stage": "typescript-load",
+          "mass": 132,
+          "percent": 15.295480880648899
+        },
+        {
+          "stage": "library-render",
+          "mass": 84,
+          "percent": 9.73348783314021
+        }
+      ],
+      "unassignedLeafNames": [
+        {
+          "name": "term_any",
+          "mass": 38
+        },
+        {
+          "name": "(garbage collector)",
+          "mass": 31
+        },
+        {
+          "name": "__require",
+          "mass": 20
+        },
+        {
+          "name": "(anonymous)",
+          "mass": 13
+        },
+        {
+          "name": "wasm-function[206]",
+          "mass": 7
+        }
+      ],
+      "observedBoundaryStackNodes": {
+        "typescript-load": 2,
+        "checking-and-completion": 1,
+        "library-render": 1,
+        "typescript-file-analysis": 2
+      },
+      "rootPolicy": [
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "functionName": "book_load",
+          "stage": "typescript-load"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+          "functionName": "book_valid",
+          "stage": "checking-and-completion"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "file_book",
+          "stage": "typescript-file-analysis"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "js_lib",
+          "stage": "library-render"
+        },
+        {
+          "url": "file:///home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+          "functionName": "js_book",
+          "stage": "program-render"
+        }
+      ]
+    }
+  ],
+  "inputsUnchanged": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/bend.ts",
+      "sha256": "de2b39db2fcbd2f9115053e85e34d791693e1297bfeb6874da1013ff7b44b7dd",
+      "bytes": 137347
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/comp.ts",
+      "sha256": "3bd7ed49d33f1c61334d75a905e38c0345fb15a10b45d85884b77f49833dc5ee",
+      "bytes": 185444
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-direct.result.json",
+      "sha256": "fd13eda0a47b1f61ca9cf2c6e42a402766e95080826fe13a517dc144c06b806a",
+      "bytes": 10349
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-direct-profile/report.json",
+      "sha256": "cc8e37c0f969ccb76b3b3bc6844765701acedb0b6decd2f0492dc03ff7e33157",
+      "bytes": 4971
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-direct-profile/profile.cpuprofile",
+      "sha256": "a9dd771e68a13919b65096122cd2d448dc9c1c4afe5f4d1c853ba848f9569675",
+      "bytes": 4370294
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/dist/api.mjs",
+      "sha256": "a73daccf86a807092a334d5f3121745e0b91c3054164c25462f1658644b7b081",
+      "bytes": 3821470
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/preparation01/prepare-direct/stage/project/tools/typed-driver.mjs",
+      "sha256": "eb4bb871371fb2fb61fa1c077d093a817a1f6ae35205ebb2beecfb6e064fc417",
+      "bytes": 53800
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-typescript.result.json",
+      "sha256": "654bda8ce3df7aced98a1db4a25ee3b1907f9bb6598ae78de38c82dccc8f9479",
+      "bytes": 7630
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-typescript-profile/report.json",
+      "sha256": "84fedb38c5c3d710d218d27c8c63ba749b7cae13a1fc64b84a8ba74c7061f2aa",
+      "bytes": 4957
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/lexer-0-typescript-profile/profile.cpuprofile",
+      "sha256": "2a388d39451babd96978f038aa5fe954f6c948b4a4235ff66c374129ecb6bb6b",
+      "bytes": 554770
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-direct.result.json",
+      "sha256": "a96623441f31865f9c1a1129f4dd4e19c9dc9c8c15ce9bfaf6c7f96cecd572ea",
+      "bytes": 10503
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-direct-profile/report.json",
+      "sha256": "35ca869150189bc9244982cbd38c40a25c504b0e27d413df54d35eaeb2469c02",
+      "bytes": 5027
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-direct-profile/profile.cpuprofile",
+      "sha256": "ad717274ece49d25ab8a30af98dc4c662086e9258b26f7fc03aa33bd8dab12c0",
+      "bytes": 8393833
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-typescript.result.json",
+      "sha256": "e329fa618c460f02e321db68f7559db8066a0ce2c04b046b1b34acedba973613",
+      "bytes": 7973
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-typescript-profile/report.json",
+      "sha256": "b291764057c2b36cdeaa5837628af0fbb72626a70dce67fef70d743ab59fee75",
+      "bytes": 5209
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu01/test-evening-program-0-typescript-profile/profile.cpuprofile",
+      "sha256": "2ccf5ba540c7ba8c652aa36db9b08f54a8279b1e864f6b2ab0ec85d7e92f5240",
+      "bytes": 1323423
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-direct.result.json",
+      "sha256": "25302d71d61b13281209430f4c1589d4aeab5c47644860724e9a4a39fa2f5faf",
+      "bytes": 9217
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-direct-profile/report.json",
+      "sha256": "23cd71da33f973b1d11561f49e413a7c7bae87147a900009abc3fca25cb27ade",
+      "bytes": 3870
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-direct-profile/profile.heapprofile",
+      "sha256": "125ce38c91eaf00125deca1dcce77515ac2a5587dea8f95c60cef23296320cda",
+      "bytes": 6297254
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-typescript.result.json",
+      "sha256": "b1ccbbf32e4b9a7fe028b994a49a06f396fee5b5744bb0c07d0bdc8493675017",
+      "bytes": 6503
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-typescript-profile/report.json",
+      "sha256": "e0e59342d7d7b3fc63bf829a66ba49cf4fc838d9ae5cc942fa1c81c26cb49de6",
+      "bytes": 3837
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/lexer-0-typescript-profile/profile.heapprofile",
+      "sha256": "6eb5d463d23f686f930c73d1cb6c2e52b2616e8145d1d9c4bfe2ed368b8b1f99",
+      "bytes": 1130251
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-direct.result.json",
+      "sha256": "9c534273ab0ce5df9ebbdbc5435566148e9976cdba42c4912595ddcc73ba859c",
+      "bytes": 9327
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-direct-profile/report.json",
+      "sha256": "dc92896be7d3d0c7fbd58e10724f10a1332f7ec978fce88b02f326f21fe6fd8f",
+      "bytes": 3890
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-direct-profile/profile.heapprofile",
+      "sha256": "7c7cdbf5cb9d8cfe490cf1086e92aa742cbebdd3665666cadbce4c438ee712ac",
+      "bytes": 21841423
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-typescript.result.json",
+      "sha256": "21ddec9ef62c4f6a49c559ef7fd2e6e3080062e8d84418c0439b869c77a948d9",
+      "bytes": 6624
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-typescript-profile/report.json",
+      "sha256": "3e3bcd8c9ecbc2e1001d18015c2f3604cc0392136a7bf7ea31a40025236d6ace",
+      "bytes": 3884
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-allocation01/test-evening-program-0-typescript-profile/profile.heapprofile",
+      "sha256": "e05b248310cac2c9b1e8da7d3b28625c151b2776ebb3da1ea9770054589708c3",
+      "bytes": 2681305
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu-evening-ts02/test-evening-program-0-typescript.result.json",
+      "sha256": "3e7742a536d1cf3761eded54ca3b72c302f8b4c22d19f9b2a205e666ebfb7b98",
+      "bytes": 7851
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu-evening-ts02/test-evening-program-0-typescript-profile/report.json",
+      "sha256": "bf4d178ff1d701fd44cc51dc01706498b143437606595ddd1b4f07725891b5c3",
+      "bytes": 5041
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase59/first-cpu-evening-ts02/test-evening-program-0-typescript-profile/profile.cpuprofile",
+      "sha256": "3a1ad907d212ce82fee699781dbbab8c7170735bc5758740d7b7614051d72097",
+      "bytes": 1258094
+    }
+  ]
+}

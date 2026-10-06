@@ -3246,3 +3246,66 @@ Keep measured TS compiler gap and mixed B1 results visible. Deferred local key
 reuse, serialization/substitution and declaration-event indexing require concrete
 counters and context-complete proofs; a large representation rewrite or unsafe
 cache is not licensed by the completed allocation gains. Phase58 raw writers are closed.
+
+## Phase59 — first-request attribution (registered; information only)
+
+[Design](../design/phase59/first-request-attribution.md) and
+[initial hypotheses](phase59/) register four falsifiable questions: whether fresh
+import/first-compile attribution differs from warmed profiles; which disjoint
+stages explain the absolute B2/TS gap; where residual cumulative allocation
+originates; and whether narrow counters find genuinely repeated work beyond
+existing stable/memo paths. Lexer/Evening compilation is the workload, not
+generated-program execution. No new measurement outcome is credited yet.
+
+Installed Phase58 last01, source/API/runtime/driver and upstream pin remain
+unchanged. Clean fresh-process timing, separate before-import first-window
+profiles, diagnostic stage clocks and bounded counters have distinct evidence
+contracts. Root alone runs serial resource-guarded targets; data-only analysis
+uses CPU0. Closed Phase58 evidence and consumed methods remain immutable.
+
+**Updated frontier:** measure and attribute the remaining first-request gap
+before selecting an optimization. Require exact prepared-output equality, correct
+stage nesting, cumulative-allocation warnings and context-complete counter scope.
+Stop on null/incomplete evidence rather than inventing a speedup or a new release.
+
+### Phase59 completed attribution; unchanged release
+
+[Final report](../implementation/phase59/README.md),
+[clean/profile measurements](../implementation/phase59/measurements.md),
+[counter findings](../implementation/phase59/counter-findings.md) and
+[profile-stage attribution](../implementation/phase59/profile-stage-attribution.md)
+close the information-only questions. Clean import/API/first ratios repeat
+2.604×TS on Lexer and 2.400× on Evening; compile-only ratios 4.169×/3.204×. Startup
+already favors B2. Later requests remain warming, not steady state. First-window
+sampled allocations are 246.094/898.285MB versus TS 64.958/123.968MB, cumulative
+including collected objects rather than peak or exact allocation counts.
+
+Lexer emphasizes checking/completion, substitutions and persistent indexes;
+Evening exposes generated-String search and emitted-dependency processing.
+Exact-ancestor partitions preserve unassigned samples and avoid summing nested
+weights. Diagnostic stage means are not clean medians or equivalent TS stages.
+One refused weighted TS CPU view stays intact with valid count-only evidence
+and a separate retry, not clipped deltas or replacement of the original capture.
+
+The primary next hypothesis is generic unchanged String head+tail reconstruction
+elision, backed by actual source/generated shape and profiles, not proved copying
+complexity or a speedup. Next are the actual 90-row primitive table reconstructed
+711/2,595 times and 329,274/374,623 retained index_remove links. Existing stable
+substitution proofs already succeed; context/normalization and declaration-event
+precedence forbid a careless cache/storage shortcut. Quantity merging is lower
+priority on these inputs at ~2.83 visits per merged left entry. Counts are executed
+source operations and cannot be divided into sampled bytes as exact object costs.
+
+All workload/output diagnostic checks pass. 38 serial targets total 180.155 s recorded
+wall, peak 622.55 MiB tree RSS; this excludes development/analysis/review/publication.
+Preservation passes Phase58 closed 30,169 files, installed 7 and protected 103.
+No compiler/runtime/driver/release changed, optimization was promoted, PR comment
+posted or fresh generated-program speed claim made. Installed release is last01.
+
+**Updated frontier:** start a small general String-provenance falsifier before
+another representation rewrite; retain exact demand/Unicode/host effects. Then
+consider measured primitive-table and event-list work with complete proofs.
+Phase59 raw writers closed approximately 15:20 UTC. [Publication](../selfhost/tools/performance/phase59/artifacts/raw/publication.json)
+and [streamed archive/member verification](../selfhost/tools/performance/phase59/artifacts/raw/archive.json)
+pass: 518 members, 86,059,319 raw bytes, 5,330,436 gzip bytes; archive SHA256
+`711cde7dc2d8576b1a39d37efe5195c8ec7836f9c639a9f4c474cc79b0989673`.

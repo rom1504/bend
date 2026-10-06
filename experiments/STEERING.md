@@ -1,4 +1,4 @@
-# Current frontier: Phase58 last01
+# Current frontier: Phase59 information gathering
 
 **Last01 is installed and verified.**
 Direct JavaScript remains the default; explicit legacy JavaScript and native C
@@ -55,22 +55,48 @@ Source grows 314 physical/238 code lines to 26,560 physical/21,823 code,
 3,055 definitions,101 types,108 modules. 98 modules retain bytes. Generated-code
 shrinkage and source growth are different quantities; no source-simplification claim.
 
-## Remaining work and publication boundary
+## Completed Phase59 information pass and next experiments
 
-1. [Release execution](../selfhost/build/phase58/final-last01/release-execution/report.json)
-   is complete/pass: install, integrity before/after, legacy 42 and default 24.
-   Finish publication while preserving this installed identity.
-2. Complete final preservation/protected103 checks, time accounting and reports;
-   explicitly close raw writers, then create/reopen-verify the archive. No archive
-   completion is assumed from idle workers or a source checkpoint.
-3. Future performance work needs measured discriminators: remaining TS compiler
-   gap, substitution/serialization and declaration-event visits. Local ADT-key
-   reuse is deferred/unmeasured; context-incomplete caches remain unsupported.
-4. Keep B1 allocation missing for this final source explicit; do not substitute
-   intermediate shared01 profiles. Avoid more representation/emitter changes
-   solely on profile percentages or saved-code syntax counts.
+[Design](../design/phase59/first-request-attribution.md) ·
+[Report](../implementation/phase59/README.md) · [Hypotheses](phase59/).
+No optimization was promoted; installed Phase58 last01 remains exact. Phase59
+preservation passes closed Phase58's 30,169 files, installed 7 and protected 103;
+[publication](../selfhost/tools/performance/phase59/artifacts/raw/publication.json) and
+[archive member verification](../selfhost/tools/performance/phase59/artifacts/raw/archive.json)
+are complete; raw writers are closed (approximately 15:20 UTC). All targets completed: 38 serial processes,
+180.155 s recorded wall, maximum 622.55 MiB tree RSS. These costs exclude tool,
+source analysis/review/publication and are not a full elapsed-time classification.
+
+Clean import+API+first compile repeats 2.604× TS Lexer / 2.400×Evening; compile alone
+4.169×/3.204×. Startup favors B2, while later windows still warm. First-window
+sampled allocation is 246.094/898.285MB versus TS 64.958/123.968MB. These are
+cumulative estimates including collected objects, not RSS or exact object counts.
+One weighted TS CPU view is refused and retained alongside count-only evidence
+and a separate retry. No clipping, pooling or causal gap fraction is inferred.
+
+1. **Generic String reconstruction elision:** emitted head+tail reconstructs the
+   same original string before prefix tests/marker dropping. Evening's profiles
+   and source shape support a tiny length-scaling, provenance-preserving rewrite
+   falsifier first. Preserve empty/astral/overlap/failure and ordered host effects;
+   V8 flattening/copying and a speedup are unproved.
+2. **Primitive metadata:** actual 90-row table reconstructs 711/2,595 times.
+   Compare bounded dispatch/shared immutable data with unchanged admission and
+   output; executed literal sites are not guaranteed physical allocations.
+3. **Persistent reconstruction:** index removal reconstructs 329,274/374,623
+   retained list links; audit duplicate/event precedence before replacing storage.
+   Extend existing valid substitution reuse rather than repeating stable proofs
+   or assuming variable absence permits skipping beta/canonical reconstruction.
+4. **Text analysis and completion/cache:** use exact disjoint stage costs and
+   existing counter scope before carrying uses/refs with emitted text or changing
+   cache validation. Unlike TS stages remain unlike; inclusive weights cannot add.
+   Quantity merging is lower priority here (~2.83 visits/merged left entry), not
+   proven efficient on arbitrary wide scopes.
+
+This pass ends at evidence and ranked experiments. No compiler-source change,
+new release, broad conformance rerun or full45 program measurement occurred.
+Further optimization requires a separately authorized, bounded falsifiable pass.
 
 Heavy jobs remain root-serialized under one guard, private staging and fresh paths.
-Preserve failed attempts, consumed producers, closed Phase54–57 history, seven
+Preserve failed attempts, consumed producers, closed Phase54–58 history, seven
 previous release files and all 103 unrelated files. Stage explicit owned paths.
 No additional target is authorized by this frontier document.

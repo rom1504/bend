@@ -1,125 +1,81 @@
-# Active Phase54: backend cleanup and direct bootstrap qualification
+# Current compiler: Phase54 graph02
 
-The user authorized the cleanup recommendation. Installed release remains the
-qualified Phase53 ordered02 described below; no Phase54 promotion yet.
+**Graph02 is installed and verified.** Direct JavaScript remains the default for
+program/library emission and compiled runs. Legacy descriptor output and native
+C remain supported. The user authorized backend cleanup after the Phase53 change.
 [Design](../design/phase54/backend-cleanup-and-direct-bootstrap.md),
-[report](../implementation/phase54/README.md), and
-[backend boundaries](../docs/self_hosted/backend-boundaries.md).
+[report](../implementation/phase54/README.md),
+[backend boundaries](../docs/self_hosted/backend-boundaries.md),
+[publication](../selfhost/tools/performance/phase54/publication.json).
+No PR comments are authorized.
 
-Shared helpers moved unchanged:27 common semantic queries and7 shared JS text
-helpers. The helper-only checked build passes36 frontend witnesses and produces
-exactly the installed Phase53 API bytes. Two maintained compiler-image commands
-now explicitly select legacy; six host-only routing controls pass.
-
-The new compact SCC analysis has independent static review; checked graph facts,
-resource policy and larger source qualification remain separate gates. The
-existing no-G loader may support direct compiler images without an ABI rewrite;
-restricted exports/transport precede full compiler emission and self-reproduction.
-Legacy compatibility and native C remain required until their users migrate.
-No speculative universal IR, LLVM or assembly emitter is being added.
-
-Keep the103 inherited files untouched, historical producers immutable and heavy
-targets serialCPU3/1GiBheap/2GiBRSS/4GiBfloor. Root controls execution, installation,
-commits and pushes. No PR comments. Final Phase54 evidence will use one closed raw
-archive; all failures remain recorded. Do not rerun full timing if output is exact.
-
-# Current compiler: Phase53 ordered02
-
-The user authorized fixing the semantic mismatch, making direct JavaScript the
-default, and optimizing further. **Ordered02 is installed.** Semantic/compatibility gates, all45/669 benchmark
-observations, release integrity and legacy42/default24 interface checks pass.
-Portable replay passes three cases/27 samples. Final evidence is bound by the
-[publication index](../selfhost/tools/performance/phase53/publication.json).
-No PR comment is authorized.
-
-[Design](../design/phase53/default-direct-and-ordered-expressions.md),
-[report](../implementation/phase53/README.md),
-[qualification](../implementation/phase53/qualification.md),
-[direct guide](../selfhost/docs/direct-javascript.md),
-[measurement plan](../selfhost/tools/performance/phase53/PLAN.md), and
-[publication recipe](../selfhost/tools/performance/phase53/publication-plan.md).
-Preserve all 103 unrelated starting files and all closed historical evidence.
-
-Selected checked attempt: `selfhost/build/phase53/checked-ordered02`.
-API: `3e3fb8c3bc4c445567696ce62bd95979e36746ddde5bb9e0aad3038fc362c9b9`.
-Source: `1b54ede1643a131c1bb7c7b995900da7947b6f21aac71141f50a0f5c8d15899d`.
+Selected checked attempt: `selfhost/build/phase54/checked-graph02`.
+API: `d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857`.
+Source: `32cddcf1a970a9726a9785b30269cdd8a0047f917f769a964995fa6a0633de84`.
 Direct runtime: `c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
 Legacy runtime: `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
-Upstream remains `018751270e800bc222a93dad7f257083ee53a5f7`.
+Upstream pin remains `018751270e800bc222a93dad7f257083ee53a5f7`.
 
-## Selected behavior
+## Retained behavior and measured scope
 
-Direct output is the workspace default for emitted programs/libraries and
-`--run`; `--direct-js` remains an alias. `--legacy-js` and explicit API
-`backend:'js'` preserve the old descriptor interface. Pure interpretation and
-native target selection retain their routes. Private compiler-image workers and
-legacy-structure tests now select their required backend explicitly.
+Source 96, numeric 34, composition 18, overapplication 2, direct census 26 and eight
+maintained compatibility suites pass. Three native representatives retain exact
+C bytes and pass six CPU executions. Installed release passes 42 legacy + 24 default
+checks, integrity, relocation and tamper restoration. Counts overlap. The prior
+Phase53 release's seven history files remain exact. No new fixed point or broad
+native/GPU/proof claim follows.
 
-Fresh typed-array storage fixes cold NaN payload transport. The original oracle
-remains40: selected output40 passes, pinned TS1 fails. New callback controls
-exposed a separate prior ordering gap. Ordered prefixes and pending values follow
-pinned `js_call`: collect child prefixes first, then hold pending operands at
-intrinsic boundaries. Closures, constructors, lets, partial calls and genuine
-overapplication are covered. No TypeScript fallback or emitted-JS rewrite.
+All 45 benchmark point modules from 23 checked sources are byte-identical to
+Phase53. Its **dated** 669-sample result, 1.069599× TypeScript equal-point time and
+1.078076× equal-source, is retained for those exact bytes; Phase54 did not rerun
+runtime timing or establish compiler-throughput parity. See Phase53's
+[results](../implementation/phase53/results.md) for regressions and timing flags.
 
-Selected source has 26,151 physical /21,523 code Bend lines: +361/+288 versus
-Phase52. Only existing core.bend changes; the other100 old modules remain exact.
-Two new modules compose ordered expressions/values. The direct backend now has
-11 modules. The 512-definition cap is conservative and precedes exact emitted
-pruning; compiler-sized direct self-emission remains unqualified.
+## Implemented cleanup
 
-## Completed gates and publication
+34 helpers moved without body changes: 27 shared semantic queries and 7 JS text
+helpers. Two maintained compiler-image commands explicitly select legacy.
+Direct no longer obtains those helpers from legacy-emitter modules. All 17 native
+modules, both runtimes and the host driver remain unchanged. Preserve the shared
+checked/specialized/annotated core, erasure, ownership/effects and numeric facts
+for future targets; do not introduce an unused universal IR.
 
-- Original independent source suite:96/96 candidate,95/96 TS and differential;
-  only the reference's NaN source defect differs.
-- Numeric/cold controls:34/34 candidate,28/34 TS. The six reference failures are
-  original/renamed NaN-table calls in fresh processes, not unhealthy processes.
-- Composition18 and genuine-overapplication2 pass both roles.
-- Direct JS census agrees26/26 (18 runtime passes,four rejections,four N/A).
-- Maintained compatibility8 passes after four test calls explicitly select legacy.
-  The initial default-routing test failure remains preserved.
-- Causal screen8/72 passes: corrected01/TS1.207400 → ordered02/TS1.130115,
-  speedup1.068387. Prewritten≥1.05 and no>10% regression gate met. Morning and
-  closures regress5.01%/3.78%; no spread/drift flags. Full45 is separate.
+Call analysis now uses iterative forward/reverse traversal, source-order SCC
+members and reverse unknown-tail propagation. Graph visits/storage are linear;
+index and source-scanning costs remain separate. The shared definition budget is
+4,096. Fifteen fact cases, ten exact-budget controls, five checked source chains
+through 3,004 functions and their 15 output observations pass. Default graph-entry
+refusal at 4,097 also passes; this is not a 4,097-source compilation. New total-edge
+admission changes the old refusal policy explicitly.
 
-The complete final campaign uses original direct06 and pinned TS, never historical
-timings. All45 points/23 sources/669 samples pass. Equal-point time improves
-1.129266× →1.069599× TS, a1.055785× speedup; equal-source improves1.135543× →
-1.078076×, a1.053305× speedup. Fifteen points beat TS,34/45 are within±10%.
-Twelve regressions remain, none above3.4%; all six role/point timing flags remain.
-The worst TS ratio is grid4 at1.911888×, so this is not per-program parity.
+Source: 26,259 physical / 21,598 code lines, 3,015 definitions, 100 types, 107 modules.
+Delta: +108 physical / +75 code (+0.35%), with 95 original modules exact. This is a
+dependency/algorithm improvement, not a line-count reduction. Legacy modules
+remain required by real compiler-image/private-transform clients.
 
-Installation, both integrity checks, legacy42/default24, prior-history byte
-preservation, and the installed direct generic-row acquisition/oracle pass.
-Six sandbox Clang spawn refusals in the first legacy gate remain preserved;
-the unchanged authorized retry passes42. The last timing batch had one launch-only
-approval timeout and a successful retry, with no repeated completed samples.
-Final portable replay passes3/3 cases and27/27 samples. At the explicit
-00:09:58 UTC accounting cutoff, elapsed time is80.13 minutes and observed process
-occupancy35.12 minutes; the remainder is mixed work, not a waiting estimate.
-All135 portable mappings are verified. Compact replay bundles and one closed raw
-archive preserve the full campaign, including failures, under
-`selfhost/tools/performance/phase53/`. The publication index binds the evidence.
+## Next bounded investigation, not yet implemented
 
-## Follow-on experiments
+Restricted direct compiler-image transport passes 11-root ABI/data controls,
+including a 20,000-node frozen list. Full 77-root generation times out at 240s below
+864 MB RSS. A 90s diagnostic completes emitted reachability in 55.9s, then enters
+library emission. No complete full image, fresh self-check or fixed point exists.
 
-1. Five scalar Nat→F32 scene helpers still use branches where TS uses short
-   constant tables. Preserve source NaN bits and observable demand; the pinned
-   reference's bare-NaN folding is not a correct template to copy wholesale.
-2. Acyclic helpers retain redundant loop/block structure. Retain the singleton
-   self-edge fact and test ordinary function bodies using a cheap saved-output
-   ablation before committing to an emitter change. No speed effect is proved.
-3. Use linear graph algorithms and explicit budgets before scaling to compiler
-   inputs. Do not simply raise512 or add a silent legacy fallback.
+The sampled V8 profile identifies whole-book constructor lookup during arity
+recovery: j_find_ctor 26.5% of sampled ticks; missing 11.2%, mostly beneath that
+search; 80.3% of j_find_ctor samples beneath jd_raise_head. Top-level book lookup
+cannot replace constructor lookup: constructors live in owner dc lists. First
+try known normalized ADT-owner lookup, threading the telescope where required.
+Otherwise test an indexed constructor context with precedence/invalidation
+controls. Record exact emitted bytes and end-to-end request cost before promotion.
+Do not start by changing SCC body dispatch or deleting the working bootstrap.
 
-Finite F32 literals are already specialized. Mandelbrot uses U32 fixed-point,
-and inspected ray/Mandel modules have no generated f32_from_bits calls. Do not
-repeat that nonexistent literal optimization. The four-module shape census finds
-202 removed primitive calls, not a dynamic attribution or V8 mechanism proof.
+## Workflow and preservation
 
-Use one target owner, CPU3,1GiB heap,2GiB tree RSS,4GiB available-memory floor.
-Keep compilation/compression away from clean timing. Small checked builds/screens
-serve iteration; full45 is an integration gate. Close the raw campaign only after
-all writers stop. Publish one raw archive and compact replay bundles, not another
-13,930-file duplicate review packet. Broader language/native/GPU conformance,
-compiler-throughput parity and a new self-emitted fixed point remain separate.
+Use small checked builds/falsifiers before broad gates; skip runtime timing when
+executable bytes are exact. Use explicit Node selection for acquisition and the
+retained Clang 16 environment for native checks. Sandbox Clang EPERM needs an
+unchanged authorized environment retry, not compiler edits or oracle changes.
+Keep failed attempts and consumed producers immutable. Detailed Phase54 raw paths
+resolve within its single closed archive. Preserve all 103 inherited unrelated
+files. Heavy targets stay serial on CPU3, with 1 GiB heap, 2 GiB RSS and a 4 GiB available-memory floor;
+root controls target ownership, installation and publication.

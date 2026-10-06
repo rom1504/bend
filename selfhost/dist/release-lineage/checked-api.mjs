@@ -2080,7 +2080,7 @@ function $jd_library_context$(_book_0, _defs_0) {
 }
 
 function $jd_calls_context$(_book_0, _defs_0) {
-  return $jd_calls_context_rows$(_book_0, run_loop($jd_calls_rows$(_book_0, _defs_0, 512)));
+  return $jd_calls_context_rows$(_book_0, run_loop($jd_calls_rows$(_book_0, _defs_0, ($jd_definition_budget$()))));
 }
 
 function $jd_selected_context$($0, $1) {
@@ -2206,7 +2206,7 @@ function $j_foreign_path$(_paths_0) {
 
 function $jd_reach_context$(_defs_0, _roots_0, _book_0) {
   return $kc$(($jd_calls_valid$(_book_0)), run_clo((_x_0) => {
-  return $jd_reach_visit$(_book_0, ($book_cached$(($jd_reach_names$(_defs_0)), 0)), _defs_0, _roots_0, ($missing$()), 512, 65536);
+  return $jd_reach_visit$(_book_0, ($book_cached$(($jd_reach_names$(_defs_0)), 0)), _defs_0, _roots_0, ($missing$()), ($jd_definition_budget$()), 65536);
 }), run_clo((_x_1) => {
   return {$: "JDReach", "defs": {$: "Nil"}, "error": "direct reachability tail-call analysis refused"};
 }));
@@ -4339,12 +4339,7 @@ function $jd_fail$(_message_0) {
 }
 
 function $jd_calls_context_rows$(_book_0, _rows_0) {
-  if (_rows_0.$ === "None") {
-    return $jd_calls_status$(_book_0, false);
-  } else {
-    const _values_0 = _rows_0["value"];
-    return $jd_calls_context_closed$(_book_0, ($jd_calls_close$(($book_cached$(_values_0, 0)), _values_0)));
-  }
+  return $jd_calls_context_bounded$(_book_0, _rows_0, ($jd_definition_budget$()), 4194304);
 }
 
 function $jd_calls_rows$(_book_0, _defs_0, _left_0) {
@@ -4372,6 +4367,10 @@ function $jd_calls_rows$(_book_0, _defs_0, _left_0) {
   return $jd_calls_rows$(_book_0, _rest_0, _left_0);
 }));
   }
+}
+
+function $jd_definition_budget$() {
+  return 4096;
 }
 
 function $jd_native_known$(_book_0, _d_0) {
@@ -6764,30 +6763,12 @@ function $jd_host_exports$(_book_0, _defs_0) {
   }
 }
 
-function $jd_calls_status$(_book_0, _valid_0) {
-  return $book_put$(_book_0, {$: "KDef", "name": "$JD.Calls", "kind": "JDCalls", "arity": run_loop($kc$(_valid_0, run_clo((_x_0) => {
-  return 1;
-}), run_clo((_x_1) => {
-  return 0;
-}))), "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Nil"}, "native": false, "unsafe": false});
-}
-
-function $jd_calls_context_closed$(_book_0, _rows_0) {
+function $jd_calls_context_bounded$(_book_0, _rows_0, _vertices_0, _edges_0) {
   if (_rows_0.$ === "None") {
     return $jd_calls_status$(_book_0, false);
   } else {
     const _values_0 = _rows_0["value"];
-    return $jd_calls_context_components$(_book_0, ($jd_calls_components$(($book_cached$(_values_0, 0)), _values_0)));
-  }
-}
-
-function $jd_calls_close$(_rows_0, _todo_0) {
-  if (_todo_0.$ === "Nil") {
-    return {$: "Some", "value": {$: "Nil"}};
-  } else {
-    const _row_0 = _todo_0["head"];
-    const _rest_0 = _todo_0["tail"];
-    return $jd_calls_close_one$(_row_0, run_loop($jd_calls_reach$(_rows_0, {$: "Con", "head": ($kt$("Ref", ($dn$(_row_0)), 0, 0, {$: "Nil"})), "tail": {$: "Nil"}}, ($missing$()), {$: "Nil"}, 65536)), ($jd_calls_close$(_rows_0, _rest_0)));
+    return $jd_calls_context_indexed$(_book_0, _values_0, _edges_0, run_loop($jd_calls_index$(_values_0, _vertices_0, ($missing$()))));
   }
 }
 
@@ -9535,44 +9516,28 @@ function $jd_host_export$(_book_0, _d_0, _status_0) {
 }));
 }
 
-function $jd_calls_context_components$(_book_0, _rows_0) {
-  return $jd_calls_install$(_book_0, ($book_cached$(_rows_0, 0)), _rows_0);
+function $jd_calls_status$(_book_0, _valid_0) {
+  return $jd_calls_tables$(_book_0, _valid_0, ($missing$()), ($missing$()));
 }
 
-function $jd_calls_components$(_rows_0, _todo_0) {
-  if (_todo_0.$ === "Nil") {
-    return {$: "Nil"};
+function $jd_calls_context_indexed$(_book_0, _rows_0, _edges_0, _index_0) {
+  if (_index_0.$ === "None") {
+    return $jd_calls_status$(_book_0, false);
   } else {
-    const _row_0 = _todo_0["head"];
-    const _rest_0 = _todo_0["tail"];
-    return {$: "Con", "head": {$: "KDef", "name": ($dn$(_row_0)), "kind": "JDCall", "arity": ($da$(_row_0)), "templates": 0, "typ": ($jd_calls_component_type$(run_loop($jd_calls_members$(_row_0, _rows_0)), ($dn$(_row_0)))), "value": ($dv$(_row_0)), "ctors": ($dc$(_row_0)), "native": false, "unsafe": false}, "tail": ($jd_calls_components$(_rows_0, _rest_0))};
+    const _forward_0 = _index_0["value"];
+    return $jd_calls_context_graph$(_book_0, _rows_0, run_loop($jd_calls_reverse$(_forward_0, _rows_0, ($missing$()), {$: "Nil"}, _edges_0)));
   }
 }
 
-function $jd_calls_close_one$(_row_0, _reach_0, _more_0) {
-  if (_reach_0.$ === "None") {
-    return {$: "None"};
+function $jd_calls_index$(_rows_0, _left_0, _index_0) {
+  if (_rows_0.$ === "Nil") {
+    return {$: "Some", "value": _index_0};
   } else {
-    const _t_0 = _reach_0["value"];
-    const _names_0 = _t_0["names"];
-    const _seen_0 = _t_0["seen"];
-    return $jd_calls_row_cons$({$: "KDef", "name": ($dn$(_row_0)), "kind": "JDCall", "arity": ($da$(_row_0)), "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDCall", ($dn$(_row_0)), 0, 0, _names_0)), "ctors": {$: "Con", "head": _seen_0, "tail": {$: "Nil"}}, "native": false, "unsafe": false}, _more_0);
-  }
-}
-
-function $jd_calls_reach$(_rows_0, _todo_0, _seen_0, _out_0, _fuel_0) {
-  if (_todo_0.$ === "Nil") {
-    return {$: "Some", "value": {$: "JDCallReach", "names": _out_0, "seen": _seen_0}};
-  } else {
-    const _h_0 = _todo_0["head"];
-    const _rest_0 = _todo_0["tail"];
-    return $kc$((_fuel_0 > 0), run_clo((_x_0) => {
-  return $kc$(($String$eq$(($dk$(run_loop($index_find$(_seen_0, ($nm$(_h_0)), ($index_hash$(($nm$(_h_0)), 2166136261)), 32)))), "Absent")), run_clo((_x_1) => {
-  return $jd_calls_reach_row$(_rows_0, _rest_0, _seen_0, _out_0, ((_fuel_0 - 1) >>> 0), run_loop($lookup$(_rows_0, ($nm$(_h_0)))));
-}), run_clo((_x_2) => {
-  return $jd_calls_reach$(_rows_0, _rest_0, _seen_0, _out_0, ((_fuel_0 - 1) >>> 0));
-}));
-}), run_clo((_x_3) => {
+    const _row_0 = _rows_0["head"];
+    const _rest_0 = _rows_0["tail"];
+    return $kc$(($Bool$and$(($Bool$and$(($Bool$and$((_left_0 > 0), ($String$eq$(($dk$(_row_0)), "JDCall")))), ($String$eq$(($tg$(($dv$(_row_0)))), "JDCall")))), ($String$eq$(($dk$(run_loop($jd_calls_get$(_index_0, ($dn$(_row_0)))))), "Absent")))), run_clo((_x_0) => {
+  return $jd_calls_index$(_rest_0, ((_left_0 - 1) >>> 0), run_loop($jd_calls_put$(_index_0, _row_0)));
+}), run_clo((_x_1) => {
   return {$: "None"};
 }));
   }
@@ -12612,7 +12577,7 @@ function $jd_foreign_ready$(_book_0, _d_0, _arity_0, _live_0) {
 
 function $jd_definition_native$(_book_0, _d_0, _params_0, _native_0) {
   return $kc$(($String$eq$(_native_0, "")), run_clo((_x_0) => {
-  return $jd_definition_loop$(_book_0, _d_0, _params_0, ($jd_component$(_book_0, ($dn$(_d_0)))));
+  return $jd_definition_loop$(_book_0, _d_0, _params_0, run_loop($jd_component$(_book_0, ($dn$(_d_0)))));
 }), run_clo((_x_1) => {
   const _x_2 = (_native_0 + ";}\n");
   const _x_3 = ($jd_join$(_params_0));
@@ -12669,61 +12634,89 @@ function $jd_host$(_book_0, _d_0) {
   return ("(" + _x_13);
 }
 
-function $jd_calls_install$($0, $1, $2) {
-  for (;;) {
-    {
-      const _book_0 = $0;
-      const _rows_0 = $1;
-      const _todo_0 = $2;
-      if (_todo_0.$ === "Nil") {
-        return $jd_calls_status$(_book_0, true);
-      } else {
-        const _row_0 = _todo_0["head"];
-        const _rest_0 = _todo_0["tail"];
-        const _x_0 = ($dn$(_row_0));
-        $0 = run_loop($book_put$(_book_0, {$: "KDef", "name": ("$JD.Call:" + _x_0), "kind": "JDCall", "arity": 0, "templates": 0, "typ": ($dt$(_row_0)), "value": ($kt$("JDCall", ($dn$(_row_0)), run_loop($kc$(run_loop($jd_calls_bounces$(_rows_0, ($ks$(($dv$(_row_0)))))), run_clo((_x_1) => {
+function $jd_calls_tables$(_book_0, _valid_0, _facts_0, _groups_0) {
+  return $book_put$(_book_0, {$: "KDef", "name": "$JD.Calls", "kind": "JDCalls", "arity": run_loop($kc$(_valid_0, run_clo((_x_0) => {
   return 1;
-}), run_clo((_x_2) => {
+}), run_clo((_x_1) => {
   return 0;
-}))), 0, ($ks$(($dv$(_row_0)))))), "ctors": ($dc$(_row_0)), "native": false, "unsafe": false}));
+}))), "templates": 0, "typ": ($atom$("Absent")), "value": ($atom$("Absent")), "ctors": {$: "Con", "head": _facts_0, "tail": {$: "Con", "head": _groups_0, "tail": {$: "Nil"}}}, "native": false, "unsafe": false});
+}
+
+function $jd_calls_context_graph$(_book_0, _rows_0, _graph_0) {
+  if (_graph_0.$ === "None") {
+    return $jd_calls_status$(_book_0, false);
+  } else {
+    const _t_0 = _graph_0["value"];
+    const _forward_0 = _t_0["forward"];
+    const _reverse_0 = _t_0["reverse"];
+    const _seeds_0 = _t_0["seeds"];
+    return $jd_calls_context_parts$(_book_0, _rows_0, _reverse_0, _seeds_0, run_loop($jd_calls_partition$(_reverse_0, run_loop($jd_calls_finish$(_forward_0, ($jd_calls_roots$(_rows_0, {$: "Nil"})), ($missing$()), {$: "Nil"})), ($missing$()))));
+  }
+}
+
+function $jd_calls_reverse$($0, $1, $2, $3, $4, $5, $6) {
+  let $pc = 0;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _forward_0 = $0;
+      const _rows_0 = $1;
+      const _reverse_0 = $2;
+      const _seeds_0 = $3;
+      const _fuel_0 = $4;
+      if (_rows_0.$ === "Nil") {
+        return {$: "Some", "value": {$: "JDCallGraph", "forward": _forward_0, "reverse": _reverse_0, "seeds": _seeds_0}};
+      } else {
+        const _row_0 = _rows_0["head"];
+        const _rest_0 = _rows_0["tail"];
+        const _x_0 = ($da$(_row_0));
+        $0 = _forward_0;
+        $1 = _rest_0;
+        $2 = ($dn$(_row_0));
+        $3 = ($ks$(($dv$(_row_0))));
+        $4 = _reverse_0;
+        $5 = run_loop($kc$((_x_0 === 1), run_clo((_x_1) => {
+  return {$: "Con", "head": ($ref$(($dn$(_row_0)))), "tail": _seeds_0};
+}), run_clo((_x_2) => {
+  return _seeds_0;
+})));
+        $6 = _fuel_0;
+        $pc = 1; continue;
+      }
+    }
+    case 1: {
+      const _forward_0 = $0;
+      const _rows_0 = $1;
+      const _source_0 = $2;
+      const _edges_0 = $3;
+      const _reverse_0 = $4;
+      const _seeds_0 = $5;
+      const _fuel_0 = $6;
+      if (_edges_0.$ === "Nil") {
+        $0 = _forward_0;
         $1 = _rows_0;
-        $2 = _rest_0;
-        continue;
+        $2 = _reverse_0;
+        $3 = _seeds_0;
+        $4 = _fuel_0;
+        $pc = 0; continue;
+      } else {
+        const _edge_0 = _edges_0["head"];
+        const _rest_0 = _edges_0["tail"];
+        return $kc$(($Bool$and$(($Bool$and$((_fuel_0 > 0), ($String$eq$(($tg$(_edge_0)), "Ref")))), ($String$eq$(($dk$(run_loop($jd_calls_get$(_forward_0, ($nm$(_edge_0)))))), "JDCall")))), run_clo((_x_0) => {
+  return $jd_calls_reverse_edges$(_forward_0, _rows_0, _source_0, _rest_0, run_loop($jd_calls_put$(_reverse_0, {$: "KDef", "name": ($nm$(_edge_0)), "kind": "JDReverse", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDReverse", ($nm$(_edge_0)), 0, 0, {$: "Con", "head": ($ref$(_source_0)), "tail": ($ks$(($dv$(run_loop($jd_calls_get$(_reverse_0, ($nm$(_edge_0))))))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false})), _seeds_0, ((_fuel_0 - 1) >>> 0));
+}), run_clo((_x_1) => {
+  return {$: "None"};
+}));
       }
     }
   }
 }
 
-function $jd_calls_component_type$(_members_0, _name_0) {
-  if (_members_0.$ === "Nil") {
-    return $atom$("Absent");
-  } else {
-    const _h_0 = _members_0["head"];
-    const _rest_0 = _members_0["tail"];
-    return $kt$("JDComponent", ($nm$(_h_0)), run_loop($jd_calls_member_id$({$: "Con", "head": _h_0, "tail": _rest_0}, _name_0, 0)), 0, {$: "Con", "head": _h_0, "tail": _rest_0});
-  }
+function $jd_calls_get$(_index_0, _name_0) {
+  return $index_find$(_index_0, _name_0, ($index_hash$(_name_0, 2166136261)), 32);
 }
 
-function $jd_calls_members$(_row_0, _todo_0) {
-  if (_todo_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _other_0 = _todo_0["head"];
-    const _rest_0 = _todo_0["tail"];
-    return $kc$(($Bool$and$(($Bool$and$(($String$eq$(($dk$(_other_0)), "JDCall")), ($jd_calls_has$(_row_0, ($dn$(_other_0)))))), ($jd_calls_has$(_other_0, ($dn$(_row_0)))))), run_clo((_x_0) => {
-  return {$: "Con", "head": ($kt$("Ref", ($dn$(_other_0)), 0, 0, {$: "Nil"})), "tail": run_loop($jd_calls_members$(_row_0, _rest_0))};
-}), run_clo((_x_1) => {
-  return $jd_calls_members$(_row_0, _rest_0);
-}));
-  }
-}
-
-function $jd_calls_reach_row$(_rows_0, _rest_0, _seen_0, _out_0, _fuel_0, _row_0) {
-  return $kc$(($String$eq$(($dk$(_row_0)), "JDCall")), run_clo((_x_0) => {
-  return $jd_calls_reach$(_rows_0, ($List$append$(($ks$(($dv$(_row_0)))), _rest_0)), run_loop($index_set$(_seen_0, _row_0, ($index_hash$(($dn$(_row_0)), 2166136261)), 32)), {$: "Con", "head": ($kt$("Ref", ($dn$(_row_0)), 0, 0, {$: "Nil"})), "tail": _out_0}, _fuel_0);
-}), run_clo((_x_1) => {
-  return {$: "None"};
-}));
+function $jd_calls_put$(_index_0, _row_0) {
+  return $index_set$(_index_0, _row_0, ($index_hash$(($dn$(_row_0)), 2166136261)), 32);
 }
 
 function $jd_calls_lambda$(_book_0, _env_0, _t_0, _ty_0, _args_0, _s_0) {
@@ -15652,7 +15645,7 @@ function $jd_definition_loop$(_book_0, _d_0, _params_0, _members_0) {
 }
 
 function $jd_component$(_book_0, _name_0) {
-  return $jd_calls_member_names$(($ks$(($dt$(run_loop($lookup$(_book_0, ("$JD.Call:" + _name_0))))))));
+  return $jd_calls_component_members$(($index_child$(run_loop($lookup$(_book_0, "$JD.Calls")), true)), ($dt$(run_loop($jd_calls_fact$(_book_0, _name_0)))));
 }
 
 function $jd_primitive_candidate_emit$(_book_0, _d_0, _args_0) {
@@ -15692,32 +15685,115 @@ function $jd_host_back$(_book_0, _ty_0, _left_0, _at_0) {
 }));
 }
 
-function $jd_calls_bounces$(_rows_0, _names_0) {
-  if (_names_0.$ === "Nil") {
-    return false;
-  } else {
-    const _h_0 = _names_0["head"];
-    const _rest_0 = _names_0["tail"];
-    return $jd_calls_bounces_row$(_rows_0, run_loop($lookup$(_rows_0, ($nm$(_h_0)))), _rest_0);
-  }
+function $jd_calls_context_parts$(_book_0, _rows_0, _reverse_0, _seeds_0, _labels_0) {
+  return $jd_calls_context_groups$(_book_0, run_loop($jd_calls_mark$(_reverse_0, _seeds_0, ($missing$()), "")), ($jd_calls_groups$(($List$reverse$(_rows_0)), _labels_0, ($missing$()), {$: "Nil"})));
 }
 
-function $jd_calls_member_id$(_members_0, _name_0, _at_0) {
-  if (_members_0.$ === "Nil") {
-    return 4294967295;
+function $jd_calls_partition$(_reverse_0, _order_0, _labels_0) {
+  if (_order_0.$ === "Nil") {
+    return _labels_0;
   } else {
-    const _h_0 = _members_0["head"];
-    const _rest_0 = _members_0["tail"];
-    return $kc$(($String$eq$(($nm$(_h_0)), _name_0)), run_clo((_x_0) => {
-  return _at_0;
+    const _step_0 = _order_0["head"];
+    const _rest_0 = _order_0["tail"];
+    return $kc$(($String$eq$(($dk$(run_loop($jd_calls_get$(_labels_0, ($nm$(_step_0)))))), "Absent")), run_clo((_x_0) => {
+  return $jd_calls_partition$(_reverse_0, _rest_0, run_loop($jd_calls_mark$(_reverse_0, {$: "Con", "head": _step_0, "tail": {$: "Nil"}}, _labels_0, ($nm$(_step_0)))));
 }), run_clo((_x_1) => {
-  return $jd_calls_member_id$(_rest_0, _name_0, ((_at_0 + 1) >>> 0));
+  return $jd_calls_partition$(_reverse_0, _rest_0, _labels_0);
 }));
   }
 }
 
-function $jd_calls_has$(_row_0, _name_0) {
-  return $String$eq$(($dk$(run_loop($index_find$(($index_first$(($dc$(_row_0)))), _name_0, ($index_hash$(_name_0, 2166136261)), 32)))), "JDCall");
+function $jd_calls_finish$(_forward_0, _todo_0, _seen_0, _order_0) {
+  if (_todo_0.$ === "Nil") {
+    return _order_0;
+  } else {
+    const _step_0 = _todo_0["head"];
+    const _rest_0 = _todo_0["tail"];
+    return $kc$(($String$eq$(($tg$(_step_0)), "JDExit")), run_clo((_x_0) => {
+  return $jd_calls_finish$(_forward_0, _rest_0, _seen_0, {$: "Con", "head": ($ref$(($nm$(_step_0)))), "tail": _order_0});
+}), run_clo((_x_1) => {
+  return $kc$(($String$eq$(($dk$(run_loop($jd_calls_get$(_seen_0, ($nm$(_step_0)))))), "Absent")), run_clo((_x_2) => {
+  return $jd_calls_finish_row$(_forward_0, _rest_0, _seen_0, _order_0, run_loop($jd_calls_get$(_forward_0, ($nm$(_step_0)))));
+}), run_clo((_x_3) => {
+  return $jd_calls_finish$(_forward_0, _rest_0, _seen_0, _order_0);
+}));
+}));
+  }
+}
+
+function $jd_calls_roots$($0, $1) {
+  for (;;) {
+    {
+      const _rows_0 = $0;
+      const _done_0 = $1;
+      if (_rows_0.$ === "Nil") {
+        return _done_0;
+      } else {
+        const _row_0 = _rows_0["head"];
+        const _rest_0 = _rows_0["tail"];
+        $0 = _rest_0;
+        $1 = {$: "Con", "head": ($ref$(($dn$(_row_0)))), "tail": _done_0};
+        continue;
+      }
+    }
+  }
+}
+
+function $jd_calls_reverse_edges$($0, $1, $2, $3, $4, $5, $6) {
+  let $pc = 1;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _forward_0 = $0;
+      const _rows_0 = $1;
+      const _reverse_0 = $2;
+      const _seeds_0 = $3;
+      const _fuel_0 = $4;
+      if (_rows_0.$ === "Nil") {
+        return {$: "Some", "value": {$: "JDCallGraph", "forward": _forward_0, "reverse": _reverse_0, "seeds": _seeds_0}};
+      } else {
+        const _row_0 = _rows_0["head"];
+        const _rest_0 = _rows_0["tail"];
+        const _x_0 = ($da$(_row_0));
+        $0 = _forward_0;
+        $1 = _rest_0;
+        $2 = ($dn$(_row_0));
+        $3 = ($ks$(($dv$(_row_0))));
+        $4 = _reverse_0;
+        $5 = run_loop($kc$((_x_0 === 1), run_clo((_x_1) => {
+  return {$: "Con", "head": ($ref$(($dn$(_row_0)))), "tail": _seeds_0};
+}), run_clo((_x_2) => {
+  return _seeds_0;
+})));
+        $6 = _fuel_0;
+        $pc = 1; continue;
+      }
+    }
+    case 1: {
+      const _forward_0 = $0;
+      const _rows_0 = $1;
+      const _source_0 = $2;
+      const _edges_0 = $3;
+      const _reverse_0 = $4;
+      const _seeds_0 = $5;
+      const _fuel_0 = $6;
+      if (_edges_0.$ === "Nil") {
+        $0 = _forward_0;
+        $1 = _rows_0;
+        $2 = _reverse_0;
+        $3 = _seeds_0;
+        $4 = _fuel_0;
+        $pc = 0; continue;
+      } else {
+        const _edge_0 = _edges_0["head"];
+        const _rest_0 = _edges_0["tail"];
+        return $kc$(($Bool$and$(($Bool$and$((_fuel_0 > 0), ($String$eq$(($tg$(_edge_0)), "Ref")))), ($String$eq$(($dk$(run_loop($jd_calls_get$(_forward_0, ($nm$(_edge_0)))))), "JDCall")))), run_clo((_x_0) => {
+  return $jd_calls_reverse_edges$(_forward_0, _rows_0, _source_0, _rest_0, run_loop($jd_calls_put$(_reverse_0, {$: "KDef", "name": ($nm$(_edge_0)), "kind": "JDReverse", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDReverse", ($nm$(_edge_0)), 0, 0, {$: "Con", "head": ($ref$(_source_0)), "tail": ($ks$(($dv$(run_loop($jd_calls_get$(_reverse_0, ($nm$(_edge_0))))))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false})), _seeds_0, ((_fuel_0 - 1) >>> 0));
+}), run_clo((_x_1) => {
+  return {$: "None"};
+}));
+      }
+    }
+  }
 }
 
 function $jd_bind_env$(_env_0, _id_0, _ty_0) {
@@ -18618,7 +18694,7 @@ function $jd_component_width$(_book_0, _members_0) {
 }
 
 function $jd_component_id$(_book_0, _name_0) {
-  return $jd_calls_component_id$(($dt$(run_loop($lookup$(_book_0, ("$JD.Call:" + _name_0))))));
+  return $jd_calls_component_id$(($dt$(run_loop($jd_calls_fact$(_book_0, _name_0)))));
 }
 
 function $jd_component_cases$(_book_0, _members_0, _at_0) {
@@ -18676,14 +18752,16 @@ function $jd_body$(_book_0, _env_0, _t_0, _ty_0, _args_0) {
 }));
 }
 
-function $jd_calls_member_names$(_members_0) {
-  if (_members_0.$ === "Nil") {
-    return {$: "Nil"};
-  } else {
-    const _h_0 = _members_0["head"];
-    const _rest_0 = _members_0["tail"];
-    return {$: "Con", "head": ($nm$(_h_0)), "tail": ($jd_calls_member_names$(_rest_0))};
-  }
+function $jd_calls_component_members$(_groups_0, _fact_0) {
+  return $kc$(($String$eq$(($tg$(_fact_0)), "JDComponent")), run_clo((_x_0) => {
+  return $jd_calls_member_names$(($ks$(($dv$(run_loop($jd_calls_get$(_groups_0, ($nm$(_fact_0)))))))));
+}), run_clo((_x_1) => {
+  return {$: "Nil"};
+}));
+}
+
+function $jd_calls_fact$(_book_0, _name_0) {
+  return $jd_calls_get$(($index_first$(($dc$(run_loop($lookup$(_book_0, "$JD.Calls")))))), _name_0);
 }
 
 function $jd_primitive_emit$(_book_0, _d_0, _args_0, _p_0) {
@@ -18759,13 +18837,87 @@ function $jd_host_back_on$(_book_0, _t_0, _left_0, _at_0) {
 }));
 }
 
-function $jd_calls_bounces_row$(_rows_0, _row_0, _rest_0) {
-  const _x_0 = ($da$(_row_0));
-  return $kc$((_x_0 === 1), run_clo((_x_1) => {
-  return true;
-}), run_clo((_x_2) => {
-  return $jd_calls_bounces$(_rows_0, _rest_0);
+function $jd_calls_context_groups$(_book_0, _bounces_0, _groups_0) {
+  const _index_0 = _groups_0["index"];
+  const _keys_0 = _groups_0["keys"];
+  return $jd_calls_install$(_book_0, _keys_0, _index_0, _bounces_0, ($missing$()), ($missing$()));
+}
+
+function $jd_calls_mark$(_reverse_0, _todo_0, _seen_0, _key_0) {
+  if (_todo_0.$ === "Nil") {
+    return _seen_0;
+  } else {
+    const _step_0 = _todo_0["head"];
+    const _rest_0 = _todo_0["tail"];
+    return $kc$(($String$eq$(($dk$(run_loop($jd_calls_get$(_seen_0, ($nm$(_step_0)))))), "Absent")), run_clo((_x_0) => {
+  return $jd_calls_mark$(_reverse_0, ($List$reverse$go$(($ks$(($dv$(run_loop($jd_calls_get$(_reverse_0, ($nm$(_step_0)))))))), _rest_0)), run_loop($jd_calls_put$(_seen_0, {$: "KDef", "name": ($nm$(_step_0)), "kind": "JDMark", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($ref$(_key_0)), "ctors": {$: "Nil"}, "native": false, "unsafe": false})), _key_0);
+}), run_clo((_x_1) => {
+  return $jd_calls_mark$(_reverse_0, _rest_0, _seen_0, _key_0);
 }));
+  }
+}
+
+function $jd_calls_groups$($0, $1, $2, $3, $4, $5, $6) {
+  let $pc = 0;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _rows_0 = $0;
+      const _labels_0 = $1;
+      const _groups_0 = $2;
+      const _keys_0 = $3;
+      if (_rows_0.$ === "Nil") {
+        return {$: "JDCallGroups", "index": _groups_0, "keys": _keys_0};
+      } else {
+        const _row_0 = _rows_0["head"];
+        const _rest_0 = _rows_0["tail"];
+        $0 = _rest_0;
+        $1 = _labels_0;
+        $2 = _groups_0;
+        $3 = _keys_0;
+        $4 = ($dn$(_row_0));
+        $5 = ($nm$(($dv$(run_loop($jd_calls_get$(_labels_0, ($dn$(_row_0))))))));
+        $pc = 1; continue;
+      }
+    }
+    case 1: {
+      const _rest_0 = $0;
+      const _labels_0 = $1;
+      const _groups_0 = $2;
+      const _keys_0 = $3;
+      const _name_0 = $4;
+      const _key_0 = $5;
+      $0 = _rest_0;
+      $1 = _labels_0;
+      $2 = _groups_0;
+      $3 = _keys_0;
+      $4 = _name_0;
+      $5 = _key_0;
+      $6 = run_loop($jd_calls_get$(_groups_0, _key_0));
+      $pc = 2; continue;
+    }
+    case 2: {
+      const _rest_0 = $0;
+      const _labels_0 = $1;
+      const _groups_0 = $2;
+      const _keys_0 = $3;
+      const _name_0 = $4;
+      const _key_0 = $5;
+      const _old_0 = $6;
+      $0 = _rest_0;
+      $1 = _labels_0;
+      $2 = run_loop($jd_calls_put$(_groups_0, {$: "KDef", "name": _key_0, "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDGroup", _name_0, 0, 0, {$: "Con", "head": ($ref$(_name_0)), "tail": ($ks$(($dv$(_old_0))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
+      $3 = run_loop($kc$(($String$eq$(($dk$(_old_0)), "Absent")), run_clo((_x_0) => {
+  return {$: "Con", "head": ($ref$(_key_0)), "tail": _keys_0};
+}), run_clo((_x_1) => {
+  return _keys_0;
+})));
+      $pc = 0; continue;
+    }
+  }
+}
+
+function $jd_calls_finish_row$(_forward_0, _rest_0, _seen_0, _order_0, _row_0) {
+  return $jd_calls_finish$(_forward_0, ($List$reverse$go$(($ks$(($dv$(_row_0)))), {$: "Con", "head": ($kt$("JDExit", ($dn$(_row_0)), 0, 0, {$: "Nil"})), "tail": _rest_0})), run_loop($jd_calls_put$(_seen_0, _row_0)), _order_0);
 }
 
 function $jd_calls_match_ctor$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, _ctor_0) {
@@ -21812,6 +21964,16 @@ function $jd_body_apply$(_book_0, _env_0, _t_0, _ty_0, _args_0) {
   return ("return " + _x_1);
 }
 
+function $jd_calls_member_names$(_members_0) {
+  if (_members_0.$ === "Nil") {
+    return {$: "Nil"};
+  } else {
+    const _h_0 = _members_0["head"];
+    const _rest_0 = _members_0["tail"];
+    return {$: "Con", "head": ($nm$(_h_0)), "tail": ($jd_calls_member_names$(_rest_0))};
+  }
+}
+
 function $jd_primitive_arg_count$(_args_0) {
   if (_args_0.$ === "Nil") {
     return 0;
@@ -21885,6 +22047,109 @@ function $jd_host_marshal_on$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0)
   return "";
 }));
 }));
+}
+
+function $jd_calls_install$($0, $1, $2, $3, $4, $5, $6) {
+  let $pc = 0;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _book_0 = $0;
+      const _keys_0 = $1;
+      const _groups_0 = $2;
+      const _bounces_0 = $3;
+      const _facts_0 = $4;
+      const _ordered_0 = $5;
+      if (_keys_0.$ === "Nil") {
+        return $jd_calls_tables$(_book_0, true, _facts_0, _ordered_0);
+      } else {
+        const _key_0 = _keys_0["head"];
+        const _rest_0 = _keys_0["tail"];
+        $0 = _book_0;
+        $1 = _rest_0;
+        $2 = _groups_0;
+        $3 = _bounces_0;
+        $4 = _facts_0;
+        $5 = _ordered_0;
+        $6 = run_loop($jd_calls_get$(_groups_0, ($nm$(_key_0))));
+        $pc = 1; continue;
+      }
+    }
+    case 1: {
+      const _book_0 = $0;
+      const _rest_0 = $1;
+      const _groups_0 = $2;
+      const _bounces_0 = $3;
+      const _facts_0 = $4;
+      const _ordered_0 = $5;
+      const _group_0 = $6;
+      $0 = _book_0;
+      $1 = _rest_0;
+      $2 = _groups_0;
+      $3 = _bounces_0;
+      $4 = ($jd_calls_fact_members$(($ks$(($dv$(_group_0)))), ($nm$(($dv$(_group_0)))), 0, _bounces_0, _facts_0));
+      $5 = run_loop($jd_calls_put$(_ordered_0, {$: "KDef", "name": ($nm$(($dv$(_group_0)))), "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($dv$(_group_0)), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
+      $pc = 0; continue;
+    }
+  }
+}
+
+function $jd_calls_group_row$($0, $1, $2, $3, $4, $5, $6) {
+  let $pc = 1;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _rows_0 = $0;
+      const _labels_0 = $1;
+      const _groups_0 = $2;
+      const _keys_0 = $3;
+      if (_rows_0.$ === "Nil") {
+        return {$: "JDCallGroups", "index": _groups_0, "keys": _keys_0};
+      } else {
+        const _row_0 = _rows_0["head"];
+        const _rest_0 = _rows_0["tail"];
+        $0 = _rest_0;
+        $1 = _labels_0;
+        $2 = _groups_0;
+        $3 = _keys_0;
+        $4 = ($dn$(_row_0));
+        $5 = ($nm$(($dv$(run_loop($jd_calls_get$(_labels_0, ($dn$(_row_0))))))));
+        $pc = 1; continue;
+      }
+    }
+    case 1: {
+      const _rest_0 = $0;
+      const _labels_0 = $1;
+      const _groups_0 = $2;
+      const _keys_0 = $3;
+      const _name_0 = $4;
+      const _key_0 = $5;
+      $0 = _rest_0;
+      $1 = _labels_0;
+      $2 = _groups_0;
+      $3 = _keys_0;
+      $4 = _name_0;
+      $5 = _key_0;
+      $6 = run_loop($jd_calls_get$(_groups_0, _key_0));
+      $pc = 2; continue;
+    }
+    case 2: {
+      const _rest_0 = $0;
+      const _labels_0 = $1;
+      const _groups_0 = $2;
+      const _keys_0 = $3;
+      const _name_0 = $4;
+      const _key_0 = $5;
+      const _old_0 = $6;
+      $0 = _rest_0;
+      $1 = _labels_0;
+      $2 = run_loop($jd_calls_put$(_groups_0, {$: "KDef", "name": _key_0, "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDGroup", _name_0, 0, 0, {$: "Con", "head": ($ref$(_name_0)), "tail": ($ks$(($dv$(_old_0))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
+      $3 = run_loop($kc$(($String$eq$(($dk$(_old_0)), "Absent")), run_clo((_x_0) => {
+  return {$: "Con", "head": ($ref$(_key_0)), "tail": _keys_0};
+}), run_clo((_x_1) => {
+  return _keys_0;
+})));
+      $pc = 0; continue;
+    }
+  }
 }
 
 function $jd_calls_match_tel$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _args_0, _s_0, _tel_0) {
@@ -24630,7 +24895,7 @@ function $jd_owner$(_env_0) {
 }
 
 function $jd_same_component$(_book_0, _left_0, _right_0) {
-  return $jd_calls_same_component$(($dt$(run_loop($lookup$(_book_0, ("$JD.Call:" + _left_0))))), ($dt$(run_loop($lookup$(_book_0, ("$JD.Call:" + _right_0))))));
+  return $jd_calls_same_component$(($dt$(run_loop($jd_calls_fact$(_book_0, _left_0)))), ($dt$(run_loop($jd_calls_fact$(_book_0, _right_0)))));
 }
 
 function $jd_return_self$(_book_0, _env_0, _t_0, _ty_0, _spine_0, _r_0) {
@@ -24773,6 +25038,109 @@ function $jd_host_marshal_status$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fue
   return "";
 }));
 }));
+}
+
+function $jd_calls_install_group$($0, $1, $2, $3, $4, $5, $6) {
+  let $pc = 1;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _book_0 = $0;
+      const _keys_0 = $1;
+      const _groups_0 = $2;
+      const _bounces_0 = $3;
+      const _facts_0 = $4;
+      const _ordered_0 = $5;
+      if (_keys_0.$ === "Nil") {
+        return $jd_calls_tables$(_book_0, true, _facts_0, _ordered_0);
+      } else {
+        const _key_0 = _keys_0["head"];
+        const _rest_0 = _keys_0["tail"];
+        $0 = _book_0;
+        $1 = _rest_0;
+        $2 = _groups_0;
+        $3 = _bounces_0;
+        $4 = _facts_0;
+        $5 = _ordered_0;
+        $6 = run_loop($jd_calls_get$(_groups_0, ($nm$(_key_0))));
+        $pc = 1; continue;
+      }
+    }
+    case 1: {
+      const _book_0 = $0;
+      const _rest_0 = $1;
+      const _groups_0 = $2;
+      const _bounces_0 = $3;
+      const _facts_0 = $4;
+      const _ordered_0 = $5;
+      const _group_0 = $6;
+      $0 = _book_0;
+      $1 = _rest_0;
+      $2 = _groups_0;
+      $3 = _bounces_0;
+      $4 = ($jd_calls_fact_members$(($ks$(($dv$(_group_0)))), ($nm$(($dv$(_group_0)))), 0, _bounces_0, _facts_0));
+      $5 = run_loop($jd_calls_put$(_ordered_0, {$: "KDef", "name": ($nm$(($dv$(_group_0)))), "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($dv$(_group_0)), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
+      $pc = 0; continue;
+    }
+  }
+}
+
+function $jd_calls_group_old$($0, $1, $2, $3, $4, $5, $6) {
+  let $pc = 2;
+  for (;;) switch ($pc) {
+    case 0: {
+      const _rows_0 = $0;
+      const _labels_0 = $1;
+      const _groups_0 = $2;
+      const _keys_0 = $3;
+      if (_rows_0.$ === "Nil") {
+        return {$: "JDCallGroups", "index": _groups_0, "keys": _keys_0};
+      } else {
+        const _row_0 = _rows_0["head"];
+        const _rest_0 = _rows_0["tail"];
+        $0 = _rest_0;
+        $1 = _labels_0;
+        $2 = _groups_0;
+        $3 = _keys_0;
+        $4 = ($dn$(_row_0));
+        $5 = ($nm$(($dv$(run_loop($jd_calls_get$(_labels_0, ($dn$(_row_0))))))));
+        $pc = 1; continue;
+      }
+    }
+    case 1: {
+      const _rest_0 = $0;
+      const _labels_0 = $1;
+      const _groups_0 = $2;
+      const _keys_0 = $3;
+      const _name_0 = $4;
+      const _key_0 = $5;
+      $0 = _rest_0;
+      $1 = _labels_0;
+      $2 = _groups_0;
+      $3 = _keys_0;
+      $4 = _name_0;
+      $5 = _key_0;
+      $6 = run_loop($jd_calls_get$(_groups_0, _key_0));
+      $pc = 2; continue;
+    }
+    case 2: {
+      const _rest_0 = $0;
+      const _labels_0 = $1;
+      const _groups_0 = $2;
+      const _keys_0 = $3;
+      const _name_0 = $4;
+      const _key_0 = $5;
+      const _old_0 = $6;
+      $0 = _rest_0;
+      $1 = _labels_0;
+      $2 = run_loop($jd_calls_put$(_groups_0, {$: "KDef", "name": _key_0, "kind": "JDGroup", "arity": 0, "templates": 0, "typ": ($atom$("Absent")), "value": ($kt$("JDGroup", _name_0, 0, 0, {$: "Con", "head": ($ref$(_name_0)), "tail": ($ks$(($dv$(_old_0))))})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
+      $3 = run_loop($kc$(($String$eq$(($dk$(_old_0)), "Absent")), run_clo((_x_0) => {
+  return {$: "Con", "head": ($ref$(_key_0)), "tail": _keys_0};
+}), run_clo((_x_1) => {
+  return _keys_0;
+})));
+      $pc = 0; continue;
+    }
+  }
 }
 
 function $jd_native_layout$(_book_0, _ty_0) {
@@ -27039,6 +27407,34 @@ function $jd_host_marshal_named$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel
   const _x_17 = (_x_15 + _x_16);
   return ("(function $dm" + _x_17);
 }));
+}
+
+function $jd_calls_fact_members$($0, $1, $2, $3, $4) {
+  for (;;) {
+    {
+      const _members_0 = $0;
+      const _leader_0 = $1;
+      const _at_0 = $2;
+      const _bounces_0 = $3;
+      const _facts_0 = $4;
+      if (_members_0.$ === "Nil") {
+        return _facts_0;
+      } else {
+        const _member_0 = _members_0["head"];
+        const _rest_0 = _members_0["tail"];
+        $0 = _rest_0;
+        $1 = _leader_0;
+        $2 = ((_at_0 + 1) >>> 0);
+        $3 = _bounces_0;
+        $4 = run_loop($jd_calls_put$(_facts_0, {$: "KDef", "name": ($nm$(_member_0)), "kind": "JDCall", "arity": 0, "templates": 0, "typ": ($kt$("JDComponent", _leader_0, _at_0, 0, {$: "Nil"})), "value": ($kt$("JDCall", ($nm$(_member_0)), run_loop($kc$(($String$eq$(($dk$(run_loop($jd_calls_get$(_bounces_0, ($nm$(_member_0)))))), "JDMark")), run_clo((_x_0) => {
+  return 1;
+}), run_clo((_x_1) => {
+  return 0;
+}))), 0, {$: "Nil"})), "ctors": {$: "Nil"}, "native": false, "unsafe": false}));
+        continue;
+      }
+    }
+  }
 }
 
 function $jd_calls_word_row$($0, $1, $2, $3, $4, $5) {
@@ -35789,7 +36185,7 @@ function $jd_inline_atom$(_value_0) {
 }
 
 function $jd_may_bounce$(_book_0, _name_0) {
-  const _x_0 = ($ix$(($dv$(run_loop($lookup$(_book_0, ("$JD.Call:" + _name_0)))))));
+  const _x_0 = ($ix$(($dv$(run_loop($jd_calls_fact$(_book_0, _name_0))))));
   return (_x_0 === 1);
 }
 

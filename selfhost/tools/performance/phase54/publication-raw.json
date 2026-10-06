@@ -1,0 +1,57 @@
+{
+  "kind": "phase53-publication-adapter",
+  "complete": true,
+  "dataOnly": true,
+  "mode": "archive",
+  "displayLabel": "Phase53 archive",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/publication-wrapper.py",
+    "bytes": 4804,
+    "sha256": "6d777bbd5504118d9b10ce7079726425db060b923351e8c015a7c875daefc0c0"
+  },
+  "parentMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/archive-campaign-v1.py",
+    "bytes": 4632,
+    "sha256": "4d393286e9a3e26892ff52bb242f53f1ea3211a82caeee3ef79a52b4597cfaa6"
+  },
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/archive-campaign-v1.py",
+    "--raw",
+    "selfhost/build/phase54",
+    "--writers-closed",
+    "selfhost/build/phase54/writers-closed.json",
+    "--protected-final",
+    "selfhost/build/phase54/protected-final.json",
+    "--out",
+    "selfhost/tools/performance/phase54/artifacts/raw"
+  ],
+  "returncode": 0,
+  "stdout": "{\"complete\": true, \"out\": \"/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/artifacts/raw\", \"members\": 4543, \"archiveSha256\": \"81f88519a18244e208f38a553e23d65d21478ed4805aefd2bdf29d371bd2ebed\"}\n",
+  "stderr": "",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/publication-wrapper.py",
+      "bytes": 4804,
+      "sha256": "6d777bbd5504118d9b10ce7079726425db060b923351e8c015a7c875daefc0c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/archive-campaign-v1.py",
+      "bytes": 4632,
+      "sha256": "4d393286e9a3e26892ff52bb242f53f1ea3211a82caeee3ef79a52b4597cfaa6"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    }
+  ],
+  "scope": "Unchanged pinned parent algorithm and artifacts. Historical parent labels are provenance; this Phase53 wrapper adds context only. No compiler or target execution, semantic waiver, qualification or promotion.",
+  "artifact": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/artifacts/raw/archive.json",
+    "bytes": 884770,
+    "sha256": "9790d0d27948bdb80d2673216c85116297d0197944779d8778cdbbe4710b217e"
+  },
+  "inputsUnchanged": true
+}

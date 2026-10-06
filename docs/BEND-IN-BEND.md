@@ -5,7 +5,46 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-[Phase53](../implementation/phase53/README.md) makes the
+[Phase54 graph02](../implementation/phase54/README.md) is installed and verified.
+The [direct JavaScript backend](../selfhost/docs/direct-javascript.md) remains the
+default for emitted programs/libraries and `--run`. From `selfhost/`, use
+`node cli.mjs FILE --run` or `node cli.mjs FILE --library -o module.mjs`.
+Select `--legacy-js` for mutable descriptors and the G table. Bootstrap and
+maintained private compiler-image workers keep their explicit legacy contract;
+native C remains available.
+
+Fresh qualification passes 96 source, 34 numeric, 18 composition and two
+overapplication controls, plus the 26-row census and eight maintained suites. Three representative native programs retain their emitted C bytes
+and pass their source goldens. Release integrity and all **42 legacy + 24 default
+ordinary/relocated CLI checks** pass. The [release manifest](../selfhost/dist/release.json)
+and [conformance record](../selfhost/CONFORMANCE.md) retain the distinct scopes.
+Selected API:
+`d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857`.
+Source:
+`32cddcf1a970a9726a9785b30269cdd8a0047f917f769a964995fa6a0633de84`.
+The direct runtime is unchanged:
+`c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
+
+All **45 benchmark point modules are byte-identical to Phase53**. Its dated
+**1.069599× TypeScript** result remains the performance evidence; Phase54 did
+not run another 669-sample campaign. Use the retained
+[benchmark recipes](../selfhost/tools/performance/phase53/PLAN.md) for new
+measurements, with fresh denominators and separate compiler-request timing.
+
+[Source accounting](../implementation/phase54/architecture.md) records **26,259
+physical / 21,598 code lines, 3,015 definitions, 100 types and 107 modules**.
+The cleanup adds 108 physical / 75 code lines and keeps all 17 native modules
+exact. Shared semantic queries and JS text helpers have explicit owners; direct
+SCC analysis shares graph facts and raises the definition budget to **4,096**.
+Checked source scaling passes through 3,004 definitions. Full direct compiler-image
+emission and a new self-emitted fixed point remain **unqualified**. See
+[backend boundaries](self_hosted/backend-boundaries.md),
+[scaling](../implementation/phase54/scaling.md) and
+[bootstrap investigation](../implementation/phase54/bootstrap.md).
+
+## Historical release results: Phase53
+
+[Phase53](../implementation/phase53/README.md) made the
 [direct JavaScript backend](../selfhost/docs/direct-javascript.md) the workspace
 default for emitted programs/libraries and `--run`. From `selfhost/`, use
 `node cli.mjs FILE --run` or
@@ -13,7 +52,7 @@ default for emitted programs/libraries and `--run`. From `selfhost/`, use
 requires mutable function descriptors and the `G` table. Compiler bootstrap
 continues to use its explicit legacy interface; no TypeScript fallback is added.
 
-Selected ordered02 is installed. Release integrity verification and all 42
+Ordered02 was installed at the Phase53 checkpoint. Release integrity verification and all 42
 legacy plus 24 default ordinary/relocated CLI checks pass. The [release manifest](../selfhost/dist/release.json),
 [conformance record](../selfhost/CONFORMANCE.md) and
 [benchmark recipes](../selfhost/tools/performance/phase53/PLAN.md) separate these
@@ -30,7 +69,7 @@ All 12 regressions and six timing flags remain visible; none regresses more than
 upstream evaluation order. Its separate causal eight-point screen gains 1.068×.
 These are generated-program measurements, not compiler-throughput timing.
 
-The original independent semantic suite now passes **96/96**, plus 34 numeric,
+At that checkpoint, the original independent semantic suite passed **96/96**, plus 34 numeric,
 18 composition and two genuine overapplication controls. The corrected NaN
 fixture returns its original expected 40; pinned TypeScript still returns 1.
 The maintained JS census has 18 runtime passes, four expected compilation
@@ -619,3 +658,16 @@ scope. S4's A02 declaration-source proof
 is a genuine checked B1→H→H fixed point. Historical S4 B02 has its own
 checked bootstrap and byte-identical B01 behavioral/performance evidence; A02's
 full-source fixed point is not relabeled as B02's.
+
+
+## Current release boundary
+
+Use the [Phase54 report](../implementation/phase54/README.md) and
+[current conformance record](../selfhost/CONFORMANCE.md) for graph02's installed
+identities and qualification. The historical reproduction results above remain
+bound to their original artifacts. The installed compiler is a checked B1
+release; neither the restricted direct-image transport probe nor larger source
+graph tests establish full direct compiler-image generation or a new fixed point.
+The [backend boundary guide](self_hosted/backend-boundaries.md) explains what
+remains shared, what belongs to legacy/direct JS or native C, and the proposed
+future native-IR seam. No LLVM or assembly backend was added in this cleanup.

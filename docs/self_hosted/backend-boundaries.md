@@ -5,17 +5,22 @@ The compiler does not yet have one target-neutral executable IR. Its JavaScript
 and native representations serve different runtime contracts; moving them into a
 shared directory would not make those contracts interchangeable.
 
-Phase53 installed direct JavaScript as the default for emitted programs,
-libraries and compiled runs. Explicit legacy JavaScript and native targets remain
-available. See the [direct guide](../../selfhost/docs/direct-javascript.md) and
-[Phase53 qualification](../../implementation/phase53/qualification.md) for exact
-interfaces and tested scope. This architecture document is not a new conformance,
-performance or fixed-point result.
+Phase54 graph02 is installed, retaining the direct JavaScript default introduced
+in Phase53 for emitted programs, libraries and compiled runs. Explicit legacy
+JavaScript and native targets remain available. See the
+[direct guide](../../selfhost/docs/direct-javascript.md) and
+[Phase54 qualification](../../implementation/phase54/qualification.md) for exact
+interfaces and tested scope. This architecture document is not an independent
+conformance, performance or fixed-point result.
 
-Phase54 is separating source ownership and reusable facts. The helper extraction
-below is present in source and the manifest; checked integration and any graph
-replacement have their own qualification. The future runtime representation is
-explicitly a proposal, not an unused module added to the compiler.
+Phase54 separates source ownership and reusable facts. Its helper extraction and
+scalable graph implementation are present in installed graph02. Graph controls,
+scoped semantic/release gates and emitted-byte retention pass; full direct
+compiler-image emission and self-reproduction remain
+**unqualified**. The future runtime representation is explicitly a proposal,
+not an unused module added to the compiler. See the
+[source accounting](../../implementation/phase54/architecture.md) and
+[bootstrap scope](../../implementation/phase54/bootstrap.md).
 
 ## The shared compiler boundary
 
@@ -93,11 +98,23 @@ their names would not establish that their call layouts agree. Similarly,
 generic SCC discovery is reusable, but direct JavaScript's unknown-closure-tail
 seeds and selective `run_loop` forcing are runtime-specific facts.
 
-The planned scalable graph replacement stays in
-[direct/calls.bend](../../selfhost/src/back/js/direct/calls.bend). Its graph data
-still uses the direct backend's indexed metadata, and it currently has one
-consumer. A common graph abstraction can wait for a second real consumer; no
-extra conversion layer is needed merely to give the algorithm a shared location.
+The scalable graph implementation stays in
+[direct/calls.bend](../../selfhost/src/back/js/direct/calls.bend). Explicit
+forward/reverse worklists compute SCCs, ordered member lists and unknown-tail
+reach once, replacing a transitive closure per definition. Graph visits and
+retained graph data are `O(V + E)`; name-index costs and source normalization
+remain separate. The public query interfaces and component member order stay
+unchanged. Its graph data still uses direct-backend indexed metadata and has one
+consumer. A common abstraction can wait for a second real consumer.
+
+Checked graph02 shares a **4,096-definition** budget between initial call planning
+and exact emitted reach. Independent limits remain: 8,192 tail nodes per
+definition, 4,194,304 input edge occurrences, 65,536 queued exact-reach names and
+2,097,152 emitted characters per definition. Admission therefore expands beyond
+Phase53's 512 definitions; this is not an unchanged-refusal claim. Sparse graph
+controls and explicit refusal tests do not establish worst-case dense-graph
+memory use or successful whole-compiler emission. The
+[scaling report](../../implementation/phase54/scaling.md) preserves those scopes.
 
 Exact runtime reachability is also more than ordinary source-reference closure.
 [Direct reachability](../../selfhost/src/back/js/direct/reach.bend) follows emitted
@@ -213,9 +230,10 @@ speed gain from direct JS parity or from changing the IR's name.
 
 ## Small cleanup steps now
 
-First make routing and documentation unambiguous: direct default, explicit
-legacy, native target, shared checked core. Then extract only confirmed shared
-facts and replace duplicated graph machinery behind its existing interfaces.
+Keep routing and documentation unambiguous: direct default, explicit legacy,
+native target, shared checked core. The confirmed helper extraction and graph
+replacement are integrated in graph02; their scoped validation is recorded
+separately from the architectural claims.
 Require unchanged admitted output/behavior for a pure ownership move; any newly
 admitted larger graph needs separate boundary and resource evidence.
 

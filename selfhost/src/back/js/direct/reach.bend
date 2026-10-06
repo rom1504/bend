@@ -23,7 +23,7 @@ def jd_reach_selected(+book: List<&2,KDef>, +defs: List<&2,KDef>, +roots: List<&
 @unsafe
 def jd_reach_context(+defs: List<&2,KDef>, +roots: List<&2,String>, +book: List<&2,KDef>) -> JDReach:
   kc(JDReach, jd_calls_valid(book), u =>
-    jd_reach_visit(book, book_cached(jd_reach_names(defs), 0), defs, roots, missing(), 512, 65536),
+    jd_reach_visit(book, book_cached(jd_reach_names(defs), 0), defs, roots, missing(), jd_definition_budget(), 65536),
     u => JDReach{Nil{}, "direct reachability tail-call analysis refused"})
 
 @unsafe

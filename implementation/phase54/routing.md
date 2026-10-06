@@ -52,7 +52,9 @@ Legacy compiler-image generation remains deliberate. Private images presently
 package the descriptor runtime, and their optimization/host ABI controls depend
 on it. Direct compiler-sized reachability has separate scaling bounds and has
 not been qualified as a replacement image path. A later migration must first
-qualify direct compiler images, package their full runtime/dependencies, and
-adapt positional ABI/provenance/identity checks before removing these selectors
-or the legacy emitter. The public `--legacy-js` contract remains another separate
-compatibility obligation.
+qualify direct compiler images and their full runtime/dependencies, then migrate
+the G-dependent private-image transforms and provenance/identity pipeline before
+removing these selectors or the legacy emitter. The loader already bypasses
+positional compiler-ABI conversion when a module has no G export, so rewriting
+that conversion is not necessarily a prerequisite for a direct image. The public
+`--legacy-js` contract remains another separate compatibility obligation.

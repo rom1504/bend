@@ -1,11 +1,48 @@
 # Compiler validation
 
-## Current Phase53 qualification
+## Current Phase54 qualification
+
+Selected graph02 is installed and verified. The [Phase54 report](../implementation/phase54/README.md)
+and [qualification record](../implementation/phase54/qualification.md) bind the
+new checked image, fresh semantic gates, exact emitted-byte comparisons and
+ordinary/relocated release checks. Shared helper bodies move unchanged; direct
+call-graph analysis now shares SCC facts and admits up to 4,096 definitions.
+
+| Gate | Result |
+| --- | --- |
+| Original independent source controls | **96/96** candidate; the retained TS/differential result is 95/96 because of its unchanged NaN source failure |
+| Numeric/cold controls | **34/34** candidate; retained TS result 28/34 includes six healthy NaN-source failures |
+| Composed getter/throw order | **18/18** candidate |
+| Genuine overapplication | **2/2** candidate |
+| Direct JS census | **26/26 agreement**: 18 runtime passes, four expected rejections, four N/A |
+| Maintained compatibility suites | **8/8**, with explicit legacy selection |
+| Graph facts and resource boundaries | **15** graph cases and **10** budget/refusal cases pass; these scopes overlap |
+| Checked source scaling | Passes through **3,004** definitions; production definition budget **4,096** |
+| Benchmark output retention | All **45** complete point modules byte-identical to Phase53 |
+| Representative native retention | **Three** complete C outputs retained, fresh CPU executions match their source goldens |
+| Installed/relocated interface | **42 legacy + 24 default checks**, plus release integrity |
+
+The 45-point timing result **1.069599× TypeScript** belongs to Phase53's dated
+669-sample campaign. Byte-identical output retains that evidence; Phase54 did
+not collect a new 669-sample benchmark or measure a new generated-program gain.
+The scopes above are not a unique language-test total or full native/GPU coverage.
+
+API: `d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857`.
+Source: `32cddcf1a970a9726a9785b30269cdd8a0047f917f769a964995fa6a0633de84`.
+Direct runtime remains
+`c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
+The legacy runtime and upstream pin are unchanged. This is a checked B1
+release. Full direct compiler-image emission and a new self-emitted fixed point
+remain **unqualified**; the 3,004-definition source test is not a compiler image.
+See [architecture/accounting](../implementation/phase54/architecture.md) and
+[bootstrap investigation](../implementation/phase54/bootstrap.md).
+
+## Historical Phase53 qualification
 
 Selected ordered02 passes the [independent semantic qualification](../implementation/phase53/qualification.md)
 and [exact selected-image receipt](tools/performance/phase53/semantic-qualified-ordered02-v1.json).
-The compiler is installed. Release integrity and all 42 legacy plus 24 default
-ordinary/relocated interface checks pass. The new installed direct-acquisition
+Ordered02 was installed at that checkpoint. Its release integrity and all 42
+legacy plus 24 default ordinary/relocated interface checks passed. The new installed direct-acquisition
 entry point also passes the complete four-array row oracle.
 
 | Gate | Result |

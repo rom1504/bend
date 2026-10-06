@@ -16,32 +16,33 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
 fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-[Phase53](implementation/phase53/README.md) fixes cold NaN payload transport and
-makes [direct JavaScript](selfhost/docs/direct-javascript.md) the default for
-program/library emission and `--run`. Use `--legacy-js` for the mutable-descriptor
-compatibility interface. **Ordered02 is installed; release integrity and all 66 ordinary/relocated
-interface checks pass.**
+[Phase54 graph02](implementation/phase54/README.md) is installed and verified.
+Direct JavaScript remains the default; `--legacy-js` keeps the descriptor
+interface and native C remains available. The cleanup moves 27 semantic helpers
+and seven JS text helpers to explicit owners and replaces repeated graph closure
+with iterative SCC analysis. The direct definition budget is **4,096**; checked
+source scaling passes through 3,004 definitions. Full direct compiler-image
+emission and a new self-emitted fixed point remain **unqualified**.
 
-The original independent semantic suite now passes **96/96**, plus 34 numeric,
-18 composition and two genuine overapplication controls. Pinned TypeScript's
-NaN fixture still fails its unchanged source oracle; matching that erroneous
-result is not required. The 26-row JS census and all eight maintained
-compatibility suites pass. [Conformance](selfhost/CONFORMANCE.md) separates these
-overlapping scopes from broader language/native/GPU claims.
+Fresh qualification passes 96 source, 34 numeric, 18 composition and two
+overapplication controls, plus the 26-row census and eight maintained suites.
+Three representative native programs and all **42 legacy + 24 default
+ordinary/relocated interface checks** also pass. These scopes overlap and do not
+establish full language/native/GPU conformance. All **45 emitted benchmark point
+modules are byte-identical to Phase53**. The dated Phase53 result, **1.069599×
+TypeScript time**, is retained by that identity; Phase54 did not run another
+669-sample timing campaign or establish a new program-speed gain.
 
-Ordered expression lowering removes primitive call wrappers while preserving
-upstream callback order. The [complete 45-point / 23-source comparison](implementation/phase53/results.md)
-passes all **669 fresh samples**: execution time improves **1.129× → 1.070×
-TypeScript**, a **5.6% speedup**. Equal-source weighting gives 1.078× TypeScript.
-Twelve points regress, none by more than 3.4%; all results and six timing flags
-remain in the [diagram](implementation/phase53/ratios.svg). This maintained corpus
-is not universal parity or a compiler-throughput measurement.
+[Source accounting](implementation/phase54/architecture.md) records **26,259
+physical / 21,598 code lines, 3,015 definitions, 100 types and 107 modules**:
++108 physical / +75 code lines. All 17 native modules and 95 original modules are
+byte-identical. [Backend boundaries](docs/self_hosted/backend-boundaries.md)
+separates checked core, shared facts and target-specific representations; no
+universal executable IR or LLVM emitter is being added.
 
-[Source accounting](implementation/phase53/complexity.md) records **26,151 physical
-/ 21,523 code Bend lines**. The change adds 361 physical lines (1.4%); the other
-100 existing modules are unchanged. The compiler remains a checked B1 derivative,
-not a newly established self-emitted fixed point. Direct analysis currently caps
-conservatively eligible runtime definitions at 512 before final pruning.
+The [Phase53 results](implementation/phase53/results.md) retain the full timing
+campaign, per-program regressions and measurement flags; those results describe
+generated-program execution, not compiler throughput.
 
 From `selfhost/`, verify with `npm run verify:release`, then use
 `node cli.mjs FILE --run`. See the

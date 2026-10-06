@@ -1,0 +1,280 @@
+{
+  "kind": "phase54-direct-call-graph-controls",
+  "version": 2,
+  "complete": true,
+  "pass": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/graph-controls-v2.mjs",
+      "sha256": "4904d4e9b351b5e62f9053b582b1c81e21666b51de3b06794a78be8f395375f9",
+      "bytes": 11768
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/graph-controls.mjs",
+      "sha256": "d1d24caf2996049eb6892ba2e41d0dce84bbf498e55676dd7301228ce840fcf6",
+      "bytes": 10102
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/attempt.json",
+      "sha256": "594381ea67444070290efeb516458997c528829f9cd4b65385109afc2d0d4a76",
+      "bytes": 290545
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/equality/api.mjs",
+      "sha256": "d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857",
+      "bytes": 1828672
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/snapshot/src/runtime.mjs",
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+      "bytes": 57500
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "bytes": 71530
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/validation-001/report.json",
+      "sha256": "42630e68b50f372ff40dea28e27722c39431c0e28ce3b4f0b2b619eba4404d5d",
+      "bytes": 8929
+    }
+  ],
+  "cases": [
+    {
+      "name": "empty-zero-budgets",
+      "limits": {
+        "vertices": 0,
+        "edges": 0
+      },
+      "vertices": 0,
+      "edges": 0,
+      "inputSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "valid": true,
+      "graphMilliseconds": 2.0461639999998624,
+      "oracle": "Independent per-vertex reachability",
+      "facts": []
+    },
+    {
+      "name": "isolated-exact-budget",
+      "limits": {
+        "vertices": 1,
+        "edges": 0
+      },
+      "vertices": 1,
+      "edges": 0,
+      "inputSha256": "0a58daeadeda3175ab99c659535520f5f3a29a76d050e6d78273c23df8d061bc",
+      "valid": true,
+      "graphMilliseconds": 0.5831599999996797,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "single",
+          "members": [
+            "single"
+          ],
+          "id": 0,
+          "bounce": false
+        }
+      ]
+    },
+    {
+      "name": "vertex-zero-refusal",
+      "limits": {
+        "vertices": 0,
+        "edges": 0
+      },
+      "vertices": 1,
+      "edges": 0,
+      "inputSha256": "0a58daeadeda3175ab99c659535520f5f3a29a76d050e6d78273c23df8d061bc",
+      "valid": false,
+      "graphMilliseconds": 0.19668600000022707,
+      "oracle": "Independent per-vertex reachability",
+      "facts": []
+    },
+    {
+      "name": "self-exact-edge-budget",
+      "limits": {
+        "vertices": 1,
+        "edges": 1
+      },
+      "vertices": 1,
+      "edges": 1,
+      "inputSha256": "d2b5bec9154d086d04eb23699e3b843052ceb4a5be7ef0fe9eaa5b09def5704c",
+      "valid": true,
+      "graphMilliseconds": 0.9773009999998976,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "self",
+          "members": [
+            "self"
+          ],
+          "id": 0,
+          "bounce": false
+        }
+      ]
+    },
+    {
+      "name": "self-edge-zero-refusal",
+      "limits": {
+        "vertices": 1,
+        "edges": 0
+      },
+      "vertices": 1,
+      "edges": 1,
+      "inputSha256": "d2b5bec9154d086d04eb23699e3b843052ceb4a5be7ef0fe9eaa5b09def5704c",
+      "valid": false,
+      "graphMilliseconds": 0.06311400000004141,
+      "oracle": "Independent per-vertex reachability",
+      "facts": []
+    },
+    {
+      "name": "raw-duplicate-edges-exact",
+      "limits": {
+        "vertices": 2,
+        "edges": 3
+      },
+      "vertices": 2,
+      "edges": 3,
+      "inputSha256": "4e8db5338750771306a3723eb0ca1ffea629e7e95a55e405d30900ab03463d6d",
+      "valid": true,
+      "graphMilliseconds": 1.0172129999996287,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "a",
+          "members": [
+            "a"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "b",
+          "members": [
+            "b"
+          ],
+          "id": 0,
+          "bounce": true
+        }
+      ]
+    },
+    {
+      "name": "raw-duplicate-edges-one-short",
+      "limits": {
+        "vertices": 2,
+        "edges": 2
+      },
+      "vertices": 2,
+      "edges": 3,
+      "inputSha256": "4e8db5338750771306a3723eb0ca1ffea629e7e95a55e405d30900ab03463d6d",
+      "valid": false,
+      "graphMilliseconds": 0.20917099999996935,
+      "oracle": "Independent per-vertex reachability",
+      "facts": []
+    },
+    {
+      "name": "mutual-exact-budgets",
+      "limits": {
+        "vertices": 2,
+        "edges": 2
+      },
+      "vertices": 2,
+      "edges": 2,
+      "inputSha256": "ef8a5767980c4abd35ab76d9406caaeec9839d2f6848a191bd534df183c19473",
+      "valid": true,
+      "graphMilliseconds": 0.8755150000001777,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "later",
+          "members": [
+            "later",
+            "earlier"
+          ],
+          "id": 0,
+          "bounce": false
+        },
+        {
+          "name": "earlier",
+          "members": [
+            "later",
+            "earlier"
+          ],
+          "id": 1,
+          "bounce": false
+        }
+      ]
+    },
+    {
+      "name": "mutual-vertex-one-short",
+      "limits": {
+        "vertices": 1,
+        "edges": 2
+      },
+      "vertices": 2,
+      "edges": 2,
+      "inputSha256": "ef8a5767980c4abd35ab76d9406caaeec9839d2f6848a191bd534df183c19473",
+      "valid": false,
+      "graphMilliseconds": 0.22611199999983,
+      "oracle": "Independent per-vertex reachability",
+      "facts": []
+    },
+    {
+      "name": "invalid-target-with-budget",
+      "limits": {
+        "vertices": 1,
+        "edges": 1
+      },
+      "vertices": 1,
+      "edges": 1,
+      "inputSha256": "d255840d6c7808778723d8060f3f66e172cfba32f42da224749af9be466a51e4",
+      "valid": false,
+      "graphMilliseconds": 0.10935199999994438,
+      "oracle": "Independent per-vertex reachability",
+      "facts": []
+    }
+  ],
+  "scope": "Checked compiler graph-fact API through an appended diagnostic export. Independent small-graph reachability and sparse large-graph closed-form oracles. Does not execute generated programs, qualify source scanning, or claim a production size-limit change.",
+  "previousProducer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/graph-controls.mjs",
+    "sha256": "d1d24caf2996049eb6892ba2e41d0dce84bbf498e55676dd7301228ce840fcf6",
+    "bytes": 10102
+  },
+  "graphEntry": {
+    "name": "jd_calls_context_bounded(per-case)",
+    "vertices": null,
+    "edges": null,
+    "diagnosticOnly": true
+  },
+  "derivative": {
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/equality/api.mjs",
+      "sha256": "d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857",
+      "bytes": 1828672
+    },
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/graph02-boundaries01/diagnostic-api.mjs",
+      "sha256": "81b00f7ab9710c7dd342a07e69f27f4797e1dd29d0c1eb54272d2c88d48b63a1",
+      "bytes": 1829266
+    },
+    "suffixSha256": "464e796f3fe0f10e13fcb9a14c24d33fc8b41ac37f3c13713795c5298f4fd280",
+    "parser": {
+      "version": "8.16.0",
+      "sha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c"
+    },
+    "productionAbiChanged": false
+  },
+  "inputsUnchanged": true
+}

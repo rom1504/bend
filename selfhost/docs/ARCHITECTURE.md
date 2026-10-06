@@ -1,15 +1,19 @@
 # Compiler architecture
 
-**Current overview:** Phase53 ordered02 is the installed release. Direct
-JavaScript is the default for emitted programs, libraries and compiled runs;
-explicit legacy JavaScript and native targets remain available. Read
-[backend boundaries](../../docs/self_hosted/backend-boundaries.md) for the shared
-checked core and the distinct direct, descriptor and native representations,
-and the [direct guide](direct-javascript.md) for the current public interface.
-Phase54 helper separation and graph work are in progress and are qualified
-separately; they do not introduce a universal runtime IR. See the
-[Phase53 report](../../implementation/phase53/README.md) for installed identities
-and completed gates.
+**Current overview:** Phase54 graph02 is installed and verified. Direct JavaScript
+is the default for emitted programs, libraries and compiled runs; explicit legacy
+JavaScript and native targets remain available. The cleanup separates shared
+helpers and replaces repeated graph closure with compact SCC facts; the shared
+definition budget is 4,096. Full direct compiler-image emission and a new
+self-emitted fixed point remain **unqualified**.
+
+Read [backend boundaries](../../docs/self_hosted/backend-boundaries.md) for the
+shared checked core and distinct direct, descriptor and native representations,
+and the [direct guide](direct-javascript.md) for the public interface. The
+[Phase54 report](../../implementation/phase54/README.md) and
+[architecture/accounting](../../implementation/phase54/architecture.md) bind the
+current source and gates. This cleanup adds no universal runtime IR. The dated
+Phase53 timing is retained by byte-identical output, not fresh timing samples.
 
 The sections below retain the **historical Phase48 architecture snapshot** and
 its earlier foundations. Their release labels, counts and measurements describe

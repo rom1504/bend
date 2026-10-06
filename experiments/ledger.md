@@ -3046,3 +3046,36 @@ controls; use saved-output ablation to test whether acyclic loop scaffolding
 matters; replace repeated graph reachability before scaling compiler-sized direct
 self-emission. Finite F32 literals are already folded; do not repeat that proposal.
 Compiler-throughput parity and a new direct self-emitted fixed point are unproved.
+
+## Phase54 backend cleanup and scalable analysis — 2026-10-06
+
+[Design](../design/phase54/backend-cleanup-and-direct-bootstrap.md),
+[report](../implementation/phase54/README.md),
+[publication](../selfhost/tools/performance/phase54/publication.json).
+Graph02 is installed. Thirty-four unchanged helpers now have shared semantic/JS
+utility ownership, and two compiler-image callers explicitly request legacy.
+All 17 native modules, both runtimes and the driver remain exact. Source grows
+108 physical / 75 code lines to 26,259 / 21,598, across 107 modules; this is dependency
+cleanup rather than net line reduction.
+
+Iterative SCC traversal replaces repeated all-node closure. Independent 15 + 10
+graph controls, five checked/ran source chains through 3,004 functions, and the
+4,097-vertex default graph refusal pass. The production cap is 4,096. New edge
+budget and previously rejected dense inputs are explicit acceptance changes.
+A single cold 128-node graph observation improves 226.9 → 38.2 ms; this is not a
+whole-compiler throughput result.
+
+Source 96 / numeric 34 / composition 18 / overapplication 2 / direct 26 / maintained 8 pass.
+All 45 point modules from 23 checked sources and all 33 semantic modules retain
+Phase53 bytes. Three native sources retain exact C and pass six CPU runs.
+Installed integrity and 42 legacy + 24 default/relocated/tamper checks pass; seven
+prior-release files remain exact. The dated Phase53 result 1.069599× TS is reused
+for identical executable bytes; no fresh 669-sample timing is claimed.
+
+Restricted direct compiler transport works, including 20,000-element shared data.
+Full 77 generation exceeds 240s below 864 MB RSS. Diagnostic profiling identifies
+repeated constructor search beneath arity recovery, suggesting typed-owner lookup
+or a checked constructor index as the next narrow experiment. Full direct image,
+fresh self-check and fixed point remain unqualified. Retain legacy bootstrap.
+Fixture/controller/environment failures, profile heap failure and both deadlines
+remain preserved alongside successful successors. No PR comment was posted.

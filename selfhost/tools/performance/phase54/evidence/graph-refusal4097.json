@@ -1,0 +1,85 @@
+{
+  "kind": "phase54-direct-call-graph-controls",
+  "complete": true,
+  "pass": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/graph-controls.mjs",
+      "sha256": "d1d24caf2996049eb6892ba2e41d0dce84bbf498e55676dd7301228ce840fcf6",
+      "bytes": 10102
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/attempt.json",
+      "sha256": "594381ea67444070290efeb516458997c528829f9cd4b65385109afc2d0d4a76",
+      "bytes": 290545
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/equality/api.mjs",
+      "sha256": "d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857",
+      "bytes": 1828672
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/snapshot/src/runtime.mjs",
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+      "bytes": 57500
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "bytes": 71530
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/validation-001/report.json",
+      "sha256": "42630e68b50f372ff40dea28e27722c39431c0e28ce3b4f0b2b619eba4404d5d",
+      "bytes": 8929
+    }
+  ],
+  "cases": [
+    {
+      "name": "scale-chain-4097",
+      "vertices": 4097,
+      "edges": 4096,
+      "inputSha256": "ccd769c14c09cf07454eb1d318edfc80f8dd0f10bd9a46622c9f84194d84b3c6",
+      "valid": false,
+      "graphMilliseconds": 162.64911600000005,
+      "oracle": "Explicit sparse-shape formula",
+      "facts": []
+    }
+  ],
+  "scope": "Checked compiler graph-fact API through an appended diagnostic export. Independent small-graph reachability and sparse large-graph closed-form oracles. Does not execute generated programs, qualify source scanning, or claim a production size-limit change.",
+  "graphEntry": {
+    "name": "jd_calls_context_rows",
+    "vertices": null,
+    "edges": null,
+    "diagnosticOnly": false
+  },
+  "derivative": {
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/equality/api.mjs",
+      "sha256": "d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857",
+      "bytes": 1828672
+    },
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/graph02-refusal4097/diagnostic-api.mjs",
+      "sha256": "526693144e9269964c91e00100d3ef7344792af50cc6e98e9491dc4c3bc9c99f",
+      "bytes": 1829123
+    },
+    "suffixSha256": "3d020d313b9681506bf47e8eda346d5ea9e04755b416ea2a96c5c6f7609890f3",
+    "parser": {
+      "version": "8.16.0",
+      "sha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c"
+    },
+    "productionAbiChanged": false
+  },
+  "inputsUnchanged": true
+}

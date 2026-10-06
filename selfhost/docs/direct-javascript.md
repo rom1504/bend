@@ -1,20 +1,29 @@
 # Direct JavaScript output
 
-**Checked Phase53 ordered02 is installed and verified; direct JavaScript is the
-default.** Ordinary compilation, library output and `--run` use callable direct
-output. `--legacy-js` retains the descriptor compatibility interface. Ordered02
-passes the original 96 source scenarios, 18 composition controls, 34 numeric
-controls and two overapplication controls, plus the maintained direct census and
-eight explicit legacy suites. These overlapping gates are separate evidence, not
-a unique test total. Ordinary and relocated release checks passed all 42 legacy
-and 24 default-direct/legacy steps, including IO printing and runtime tamper
-rejection/restoration. Fresh installed preparation also passed the complete
-four-array row oracle. The final 45-point comparison completed all 669 samples
-with a 1.055785× geometric speedup over original direct06; this is scoped corpus
-evidence, not a universal performance claim. See the
-[Phase53 report](../../implementation/phase53/README.md),
-[qualification report](../../implementation/phase53/qualification.md) and
-[routing contract](../tools/performance/phase53/routing.md).
+**Checked Phase54 graph02 is installed and verified; direct JavaScript remains
+the default.** Ordinary compilation, library output and `--run` use callable
+direct output. `--legacy-js` retains the descriptor compatibility interface.
+Fresh qualification passes the original 96 source scenarios, 18 composition
+controls, 34 numeric controls and two overapplication controls, plus the direct
+26-row census and eight explicit legacy suites. These overlapping gates are
+separate evidence, not a unique language-test total. Three representative native
+programs and all 42 legacy plus 24 default ordinary/relocated release checks pass.
+
+The helper extraction and scalable SCC analysis preserve all 45 benchmark point
+modules byte-for-byte. The **1.069599× TypeScript** time ratio is the dated
+[Phase53 measurement](../../implementation/phase53/results.md), retained by that
+identity; Phase54 did not collect another 669-sample timing campaign. It is not
+universal parity or compiler throughput. See the
+[Phase54 report](../../implementation/phase54/README.md),
+[qualification](../../implementation/phase54/qualification.md) and
+[source accounting](../../implementation/phase54/architecture.md).
+
+The direct definition budget is **4,096**. Graph/budget controls and checked
+source scaling through 3,004 definitions pass, but full direct compiler-image
+emission and self-reproduction remain **unqualified**. The
+[backend boundary guide](../../docs/self_hosted/backend-boundaries.md) describes
+shared and target-specific source responsibilities. The Phase53 NaN and ordering
+results below remain historical evidence; their behavior is retained in graph02.
 
 ## Choose the JavaScript contract
 
@@ -150,19 +159,27 @@ Supported primitives require the checked native declaration; same-spelled user
 functions do not acquire primitive behavior. Operations without a direct template
 can retain their checked source implementation. Tail-call analysis and lexical
 SCC dispatch support the admitted recursive call graph without a mutable global
-callee registry. Analysis is bounded:
+callee registry. Installed Phase54 graph02 has the following bounds; these
+supersede Phase53's historical 512-definition limit:
 
-- At most 512 conservatively eligible runtime definitions before exact emitted
+- At most 4,096 conservatively eligible runtime definitions before exact emitted
   dependency pruning. This can reject a source whose final output would contain
-  fewer than 512 definitions; see the [scaling audit](../../implementation/phase53/scaling.md).
-- At most 8192 scanned tail nodes per definition and 65536 queued edges per
-  reachability walk.
+  fewer definitions. The same budget limits exact emitted reach. See the
+  [Phase54 scaling report](../../implementation/phase54/scaling.md).
+- At most 8,192 scanned tail nodes per definition and 4,194,304 total input
+  edge occurrences in call-graph planning. The SCC worklists share results
+  instead of retaining a reachable-name set for each definition.
+- Exact emitted reach separately permits at most 65,536 queued names and
+  2,097,152 emitted characters per definition. It still follows emitted demand,
+  including dead foreign-import pruning.
 - At most 1024 type-worklist visits for Nat conversion discovery and 64 levels
   for marshaller construction/field telescopes.
 - At most 4096 type nodes for pure-main readback schemas.
 
 These are compiler-analysis bounds, not limits on ordinary loop iteration counts.
-Exhausted analyses and unsupported emission fail explicitly. The driver rejects
+Exhausted analyses and unsupported emission fail explicitly. Independent graph
+and boundary controls qualify the new graph facts, not worst-case dense-graph
+resources or whole-compiler direct self-emission. The driver rejects
 `JD_UNSUPPORTED` source rather than accepting a delayed throw as qualification.
 There is no silent switch to the legacy backend or TypeScript compiler. Raising
 these limits requires separate scaling and refusal evidence.
@@ -191,7 +208,7 @@ condition is introduced. See the
 [ordering design](../../design/phase53/ordered-prefix-evaluation-order.md) and
 [source accounting](../../implementation/phase53/complexity.md).
 
-## Qualified correction and retained reference failure
+## Historical Phase53 correction and retained reference failure
 
 The Phase52 selected06 semantic aggregate passed 95/96 and remained failed.
 Its direct output returned 39 for `tests/compile/f32_table_nan_bits.bend`, whose
@@ -248,7 +265,9 @@ callable exports without G, rejected deliberate copied-runtime tampering and
 verified exact restoration. The direct preparation wrapper also passed a fresh
 installed complete-row oracle. See the
 [Phase53 routing/release method](../tools/performance/phase53/routing.md) and
-[current report](../../implementation/phase53/README.md).
+[historical Phase53 report](../../implementation/phase53/README.md).
+Current graph02 identities and fresh qualification are in the
+[Phase54 report](../../implementation/phase54/README.md).
 
 This is a checked B1 release, not a new self-emitted fixed point. Generated-program
 runtime measurements do not measure compiler throughput or request latency. The

@@ -1,0 +1,551 @@
+{
+  "kind": "phase54-direct-call-graph-controls",
+  "complete": true,
+  "pass": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase54/graph-controls.mjs",
+      "sha256": "d1d24caf2996049eb6892ba2e41d0dce84bbf498e55676dd7301228ce840fcf6",
+      "bytes": 10102
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/attempt.json",
+      "sha256": "594381ea67444070290efeb516458997c528829f9cd4b65385109afc2d0d4a76",
+      "bytes": 290545
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/equality/api.mjs",
+      "sha256": "d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857",
+      "bytes": 1828672
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/snapshot/src/runtime.mjs",
+      "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46",
+      "bytes": 57500
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "bytes": 71530
+    },
+    {
+      "file": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+      "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+      "bytes": 123655872
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/validation-001/report.json",
+      "sha256": "42630e68b50f372ff40dea28e27722c39431c0e28ce3b4f0b2b619eba4404d5d",
+      "bytes": 8929
+    }
+  ],
+  "cases": [
+    {
+      "name": "empty",
+      "vertices": 0,
+      "edges": 0,
+      "inputSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "valid": true,
+      "graphMilliseconds": 1.9327800000000934,
+      "oracle": "Independent per-vertex reachability",
+      "facts": []
+    },
+    {
+      "name": "isolated",
+      "vertices": 1,
+      "edges": 0,
+      "inputSha256": "861011b9cfce172277b06818210d0717729e918948fcc6517ff307ff0f8b9170",
+      "valid": true,
+      "graphMilliseconds": 0.5008100000000013,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "unrelated",
+          "members": [
+            "unrelated"
+          ],
+          "id": 0,
+          "bounce": false
+        }
+      ]
+    },
+    {
+      "name": "self-cycle-no-bounce",
+      "vertices": 1,
+      "edges": 1,
+      "inputSha256": "d2b5bec9154d086d04eb23699e3b843052ceb4a5be7ef0fe9eaa5b09def5704c",
+      "valid": true,
+      "graphMilliseconds": 0.384164999999939,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "self",
+          "members": [
+            "self"
+          ],
+          "id": 0,
+          "bounce": false
+        }
+      ]
+    },
+    {
+      "name": "self-unknown-tail",
+      "vertices": 1,
+      "edges": 1,
+      "inputSha256": "4fb382f1ed3cf13507793799c7ff6120b45e2126513e15ec0147fc1e25500297",
+      "valid": true,
+      "graphMilliseconds": 0.385330999999951,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "self",
+          "members": [
+            "self"
+          ],
+          "id": 0,
+          "bounce": true
+        }
+      ]
+    },
+    {
+      "name": "mutual-cycle",
+      "vertices": 2,
+      "edges": 2,
+      "inputSha256": "fb4943051bbcf1679e442dd0491ed0ae78065cefedda694d8deae5a817b4a2b4",
+      "valid": true,
+      "graphMilliseconds": 0.7130700000002435,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "west",
+          "members": [
+            "west",
+            "east"
+          ],
+          "id": 0,
+          "bounce": false
+        },
+        {
+          "name": "east",
+          "members": [
+            "west",
+            "east"
+          ],
+          "id": 1,
+          "bounce": false
+        }
+      ]
+    },
+    {
+      "name": "cycle-and-isolated",
+      "vertices": 3,
+      "edges": 2,
+      "inputSha256": "16c100a9a879445908cba152c1e529c7658c723a9457ab8f98894c4e819f9ef9",
+      "valid": true,
+      "graphMilliseconds": 1.049113000000034,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "zeta",
+          "members": [
+            "zeta",
+            "alpha"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "spare",
+          "members": [
+            "spare"
+          ],
+          "id": 0,
+          "bounce": false
+        },
+        {
+          "name": "alpha",
+          "members": [
+            "zeta",
+            "alpha"
+          ],
+          "id": 1,
+          "bounce": true
+        }
+      ]
+    },
+    {
+      "name": "unknown-reachable-one-way",
+      "vertices": 4,
+      "edges": 2,
+      "inputSha256": "c11307ec795e8014cdcc34e85cdf6442550b7d63d5f618985c417b8206850b16",
+      "valid": true,
+      "graphMilliseconds": 0.8532860000000255,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "start",
+          "members": [
+            "start"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "middle",
+          "members": [
+            "middle"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "last",
+          "members": [
+            "last"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "unrelated",
+          "members": [
+            "unrelated"
+          ],
+          "id": 0,
+          "bounce": false
+        }
+      ]
+    },
+    {
+      "name": "diamond-shared-successor",
+      "vertices": 5,
+      "edges": 5,
+      "inputSha256": "8c54ff4d940f30f39ec52068957e885bd4b2f2f13b1a3a8d5f5fda970c946376",
+      "valid": true,
+      "graphMilliseconds": 1.0390349999997852,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "root",
+          "members": [
+            "root"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "left",
+          "members": [
+            "left"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "right",
+          "members": [
+            "right"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "join",
+          "members": [
+            "join"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "leaf",
+          "members": [
+            "leaf"
+          ],
+          "id": 0,
+          "bounce": true
+        }
+      ]
+    },
+    {
+      "name": "duplicate-edges",
+      "vertices": 3,
+      "edges": 6,
+      "inputSha256": "7ea3064e8ff5ee001f04d03d7bab1cb05c7817366047a260fb75bbe7fa3f938c",
+      "valid": true,
+      "graphMilliseconds": 0.4970589999998083,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "q",
+          "members": [
+            "q"
+          ],
+          "id": 0,
+          "bounce": false
+        },
+        {
+          "name": "r",
+          "members": [
+            "r",
+            "s"
+          ],
+          "id": 0,
+          "bounce": false
+        },
+        {
+          "name": "s",
+          "members": [
+            "r",
+            "s"
+          ],
+          "id": 1,
+          "bounce": false
+        }
+      ]
+    },
+    {
+      "name": "unreachable-unknown",
+      "vertices": 4,
+      "edges": 2,
+      "inputSha256": "f0ba6b40660faef9d83882e1284147668ddb7e19c4ef212731d1cf4c66ef9634",
+      "valid": true,
+      "graphMilliseconds": 0.34999699999980294,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "a",
+          "members": [
+            "a",
+            "b"
+          ],
+          "id": 0,
+          "bounce": false
+        },
+        {
+          "name": "b",
+          "members": [
+            "a",
+            "b"
+          ],
+          "id": 1,
+          "bounce": false
+        },
+        {
+          "name": "c",
+          "members": [
+            "c"
+          ],
+          "id": 0,
+          "bounce": false
+        },
+        {
+          "name": "poison",
+          "members": [
+            "poison"
+          ],
+          "id": 0,
+          "bounce": true
+        }
+      ]
+    },
+    {
+      "name": "unicode-and-input-order",
+      "vertices": 4,
+      "edges": 3,
+      "inputSha256": "10a2dad634bd58045bd6b37e05c23ab6afe9b34fd8e6d01dcc2990d500f304ab",
+      "valid": true,
+      "graphMilliseconds": 0.26707600000008824,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "rho",
+          "members": [
+            "rho",
+            "λ",
+            "omega"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "λ",
+          "members": [
+            "rho",
+            "λ",
+            "omega"
+          ],
+          "id": 1,
+          "bounce": true
+        },
+        {
+          "name": "omega",
+          "members": [
+            "rho",
+            "λ",
+            "omega"
+          ],
+          "id": 2,
+          "bounce": true
+        },
+        {
+          "name": "spare",
+          "members": [
+            "spare"
+          ],
+          "id": 0,
+          "bounce": false
+        }
+      ]
+    },
+    {
+      "name": "permuted-3201",
+      "vertices": 4,
+      "edges": 3,
+      "inputSha256": "0516a715bae7206117fd8f94551cdf13aeae5c4334539f9e0f8a219b981e90f1",
+      "valid": true,
+      "graphMilliseconds": 0.23640900000009424,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "spare",
+          "members": [
+            "spare"
+          ],
+          "id": 0,
+          "bounce": false
+        },
+        {
+          "name": "omega",
+          "members": [
+            "omega",
+            "rho",
+            "λ"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "rho",
+          "members": [
+            "omega",
+            "rho",
+            "λ"
+          ],
+          "id": 1,
+          "bounce": true
+        },
+        {
+          "name": "λ",
+          "members": [
+            "omega",
+            "rho",
+            "λ"
+          ],
+          "id": 2,
+          "bounce": true
+        }
+      ]
+    },
+    {
+      "name": "permuted-1032",
+      "vertices": 4,
+      "edges": 3,
+      "inputSha256": "7487f07c25647a6c49ce373b67e1153a97989814868cf3ddcd60955183d1e3f5",
+      "valid": true,
+      "graphMilliseconds": 0.239875000000211,
+      "oracle": "Independent per-vertex reachability",
+      "facts": [
+        {
+          "name": "λ",
+          "members": [
+            "λ",
+            "rho",
+            "omega"
+          ],
+          "id": 0,
+          "bounce": true
+        },
+        {
+          "name": "rho",
+          "members": [
+            "λ",
+            "rho",
+            "omega"
+          ],
+          "id": 1,
+          "bounce": true
+        },
+        {
+          "name": "spare",
+          "members": [
+            "spare"
+          ],
+          "id": 0,
+          "bounce": false
+        },
+        {
+          "name": "omega",
+          "members": [
+            "λ",
+            "rho",
+            "omega"
+          ],
+          "id": 2,
+          "bounce": true
+        }
+      ]
+    },
+    {
+      "name": "missing-target",
+      "vertices": 1,
+      "edges": 1,
+      "inputSha256": "899828ca3981e815b4ff4abaac32919be663103b4c2aea52900cdc14421614b4",
+      "valid": false,
+      "graphMilliseconds": 0.06491800000003423,
+      "oracle": "Independent per-vertex reachability",
+      "facts": []
+    },
+    {
+      "name": "duplicate-names-refused",
+      "vertices": 2,
+      "edges": 0,
+      "inputSha256": "db768bea1d6736436156f3da6ad03198e2b58805fffe15f8b9513cff3827d196",
+      "valid": false,
+      "graphMilliseconds": 0.02518099999997503,
+      "oracle": "Independent per-vertex reachability",
+      "facts": []
+    }
+  ],
+  "scope": "Checked compiler graph-fact API through an appended diagnostic export. Independent small-graph reachability and sparse large-graph closed-form oracles. Does not execute generated programs, qualify source scanning, or claim a production size-limit change.",
+  "graphEntry": {
+    "name": "jd_calls_context_rows",
+    "vertices": null,
+    "edges": null,
+    "diagnosticOnly": false
+  },
+  "derivative": {
+    "parent": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/checked-graph02/equality/api.mjs",
+      "sha256": "d7d0396cda189918299ddeb0105e9d682f6a22bffa70004ab6d0ebeac20f4857",
+      "bytes": 1828672
+    },
+    "api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase54/graph02-parity01/diagnostic-api.mjs",
+      "sha256": "526693144e9269964c91e00100d3ef7344792af50cc6e98e9491dc4c3bc9c99f",
+      "bytes": 1829123
+    },
+    "suffixSha256": "3d020d313b9681506bf47e8eda346d5ea9e04755b416ea2a96c5c6f7609890f3",
+    "parser": {
+      "version": "8.16.0",
+      "sha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c"
+    },
+    "productionAbiChanged": false
+  },
+  "inputsUnchanged": true
+}

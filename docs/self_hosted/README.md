@@ -1,7 +1,14 @@
 # Self-hosted compiler: current architecture and development
 
-For the latest compiler work, see the [Phase53 report](../../implementation/phase53/README.md)
-and [direct JavaScript backend guide](../../selfhost/docs/direct-javascript.md).
+For the installed graph02 compiler, see the [Phase54 report](../../implementation/phase54/README.md),
+[source accounting](../../implementation/phase54/architecture.md) and
+[direct JavaScript backend guide](../../selfhost/docs/direct-javascript.md).
+Current source has 26,259 physical / 21,598 code lines across 107 modules;
+4,096-definition graph capacity and checked source scaling are separate from
+full direct compiler-image generation, which remains unqualified.
+[Phase53](../../implementation/phase53/README.md) is the historical direct-default
+and ordered-expression checkpoint. Its 1.069599× TS timing is retained by exact
+45-point output identity; Phase54 adds no new 669-sample campaign.
 The [Phase51 V8-guided runtime](v8-guided-runtime.md) describes the retained
 compatibility mode. The source survey below remains a dated Phase45 baseline;
 its counts and timings are historical.
@@ -20,7 +27,7 @@ The survey changes documentation only; it does not qualify a new compiler.
 | Document | Read it for |
 | --- | --- |
 | [Backend boundaries](backend-boundaries.md) | Shared checked core and facts, backend-local representations, retained native contracts, and the incremental runtime-IR proposal. |
-| [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Phase53 default callable/data interface, ordered prefix/value lowering, qualification and explicit limits. |
+| [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Current callable/data interface, ordered prefix/value lowering, 4,096-definition analysis bound and qualification limits. |
 | [Architecture](architecture.md) | Dated Phase45 source organization, representations, pipeline and complexity; use backend boundaries for the current backend split. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |
 | [Private array regions](private-array-regions.md) | Phase47 closed-array representation, ordered operations, host guards and research limits; separate from release qualification. |

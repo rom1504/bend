@@ -4,8 +4,11 @@
 type JDCallScan is Data:
   JDCallScan{+edges: List<&2,KTerm>, +unknown: Bool, +fuel: U32, +valid: Bool}
 
-type JDCallReach is Data:
-  JDCallReach{+names: List<&2,KTerm>, +seen: KDef}
+type JDCallGraph is Data:
+  JDCallGraph{+forward: KDef, +reverse: KDef, +seeds: List<&2,KTerm>}
+
+type JDCallGroups is Data:
+  JDCallGroups{+index: KDef, +keys: List<&2,KTerm>}
 
 @unsafe
 def jd_calls_bad(+s: JDCallScan) -> JDCallScan:
@@ -160,10 +163,9 @@ def jd_calls_extra_type(+book: List<&2,KDef>, +x: KTerm, +rest: List<&2,KTerm>, 
     kc(JDCallScan, List.is_empty(&2,KTerm, rest) && Bool.not(U32.is_eq(qt(ty), 0)),
       v => jd_calls_unknown(s), v => jd_calls_extra(book, rest, j_app_type(ty, x), s)), u => jd_calls_bad(s))
 
-# One source scan per emitted definition, then reachability over compact edges.
-# At most 512 definitions, 8192 tail nodes/definition, and 65536 queued edges
-# per reachability walk. Indexed seen/row maps avoid repeated source traversal;
-# closure sets and their indexes are reused for component and bounce queries.
+# One source scan per emitted definition. Keep the existing 8192-tail-node
+# per-definition budget; graph processing below visits each edge
+# a constant number of times and retains no per-definition reachable set.
 @unsafe
 def jd_calls_rows(+book: List<&2,KDef>, +defs: List<&2,KDef>, +left: U32) -> Maybe<&2,List<&2,KDef>>:
   match defs:
@@ -192,131 +194,223 @@ def jd_calls_row_cons(+row: KDef, +more: Maybe<&2,List<&2,KDef>>) -> Maybe<&2,Li
     case None{}: None{}
     case Some{rows}: Some{Con{row, rows}}
 
+# Validate once, then use persistent exact-name indexes. The only retained
+# result is a per-name component/id/bounce fact plus one list per component.
 @unsafe
-def jd_calls_reach(+rows: List<&2,KDef>, +todo: List<&2,KTerm>, +seen: KDef, +out: List<&2,KTerm>, +fuel: U32) -> Maybe<&2,JDCallReach>:
+def jd_calls_get(+index: KDef, +name: String) -> KDef:
+  index_find(index, name, index_hash(name, 2166136261), 32)
+
+@unsafe
+def jd_calls_put(+index: KDef, +row: KDef) -> KDef:
+  index_set(index, row, index_hash(dn(row), 2166136261), 32)
+
+@unsafe
+def jd_calls_index(+rows: List<&2,KDef>, +left: U32, +index: KDef) -> Maybe<&2,KDef>:
+  match rows:
+    case Nil{}: Some{index}
+    case Con{row, rest}: kc(Maybe<&2,KDef>, U32.is_gt(left, 0) &&
+      String.eq(dk(row), "JDCall") && String.eq(tg(dv(row)), "JDCall") &&
+      String.eq(dk(jd_calls_get(index, dn(row))), "Absent"), u =>
+        jd_calls_index(rest, U32.sub(left, 1), jd_calls_put(index, row)), u => None{})
+
+# Reverse edges are accumulated once. Duplicate edges remain legal and count
+# against the explicit edge budget; every target must name an admitted row.
+@unsafe
+def jd_calls_reverse(+forward: KDef, +rows: List<&2,KDef>, +reverse: KDef,
+  +seeds: List<&2,KTerm>, +fuel: U32) -> Maybe<&2,JDCallGraph>:
+  match rows:
+    case Nil{}: Some{JDCallGraph{forward, reverse, seeds}}
+    case Con{row, rest}: jd_calls_reverse_edges(forward, rest, dn(row), ks(dv(row)), reverse,
+      kc(List<&2,KTerm>, U32.is_eq(da(row), 1), u => Con{ref(dn(row)), seeds}, u => seeds), fuel)
+
+@unsafe
+def jd_calls_reverse_edges(+forward: KDef, +rows: List<&2,KDef>, +source: String,
+  +edges: List<&2,KTerm>, +reverse: KDef, +seeds: List<&2,KTerm>, +fuel: U32) -> Maybe<&2,JDCallGraph>:
+  match edges:
+    case Nil{}: jd_calls_reverse(forward, rows, reverse, seeds, fuel)
+    case Con{edge, rest}: kc(Maybe<&2,JDCallGraph>, U32.is_gt(fuel, 0) && String.eq(tg(edge), "Ref") &&
+      String.eq(dk(jd_calls_get(forward, nm(edge))), "JDCall"), u =>
+        jd_calls_reverse_edges(forward, rows, source, rest,
+          jd_calls_put(reverse, KDef{nm(edge), "JDReverse", 0, 0, atom("Absent"),
+            kt("JDReverse", nm(edge), 0, 0, Con{ref(source), ks(dv(jd_calls_get(reverse, nm(edge))))}),
+            Nil{}, False{}, False{}}), seeds, U32.sub(fuel, 1)), u => None{})
+
+@unsafe
+def jd_calls_roots(+rows: List<&2,KDef>, +done: List<&2,KTerm>) -> List<&2,KTerm>:
+  match rows:
+    case Nil{}: done
+    case Con{row, rest}: jd_calls_roots(rest, Con{ref(dn(row)), done})
+
+# First Kosaraju pass: explicit exit frames record reverse finishing order.
+# Each row is expanded once; an edge to an already entered row adds no frame.
+@unsafe
+def jd_calls_finish(+forward: KDef, +todo: List<&2,KTerm>, +seen: KDef,
+  +order: List<&2,KTerm>) -> List<&2,KTerm>:
   match todo:
-    case Nil{}: Some{JDCallReach{out, seen}}
-    case Con{h, rest}:
-      kc(Maybe<&2,JDCallReach>, U32.is_gt(fuel, 0), u =>
-        kc(Maybe<&2,JDCallReach>, String.eq(dk(index_find(seen, nm(h), index_hash(nm(h), 2166136261), 32)), "Absent"), v =>
-          jd_calls_reach_row(rows, rest, seen, out, U32.sub(fuel, 1), lookup(rows, nm(h))),
-          v => jd_calls_reach(rows, rest, seen, out, U32.sub(fuel, 1))), u => None{})
+    case Nil{}: order
+    case Con{step, rest}: kc(List<&2,KTerm>, String.eq(tg(step), "JDExit"), u =>
+      jd_calls_finish(forward, rest, seen, Con{ref(nm(step)), order}), u =>
+      kc(List<&2,KTerm>, String.eq(dk(jd_calls_get(seen, nm(step))), "Absent"), v =>
+        jd_calls_finish_row(forward, rest, seen, order, jd_calls_get(forward, nm(step))), v =>
+        jd_calls_finish(forward, rest, seen, order)))
 
 @unsafe
-def jd_calls_reach_row(+rows: List<&2,KDef>, +rest: List<&2,KTerm>, +seen: KDef, +out: List<&2,KTerm>, +fuel: U32, +row: KDef) -> Maybe<&2,JDCallReach>:
-  kc(Maybe<&2,JDCallReach>, String.eq(dk(row), "JDCall"), u =>
-    jd_calls_reach(rows, List.append(&2,KTerm, ks(dv(row)), rest), index_set(seen, row, index_hash(dn(row), 2166136261), 32),
-      Con{kt("Ref", dn(row), 0, 0, Nil{}), out}, fuel), u => None{})
+def jd_calls_finish_row(+forward: KDef, +rest: List<&2,KTerm>, +seen: KDef,
+  +order: List<&2,KTerm>, +row: KDef) -> List<&2,KTerm>:
+  jd_calls_finish(forward, List.reverse.go(&2,KTerm, ks(dv(row)),
+    Con{kt("JDExit", dn(row), 0, 0, Nil{}), rest}), jd_calls_put(seen, row), order)
 
+# This explicit worklist serves both reversed-component marking and the one
+# backwards propagation from unknown-call seeds. Neither needs a closure matrix.
 @unsafe
-def jd_calls_close(+rows: List<&2,KDef>, +todo: List<&2,KDef>) -> Maybe<&2,List<&2,KDef>>:
+def jd_calls_mark(+reverse: KDef, +todo: List<&2,KTerm>, +seen: KDef, +key: String) -> KDef:
   match todo:
-    case Nil{}: Some{Nil{}}
-    case Con{row, rest}: jd_calls_close_one(row,
-      jd_calls_reach(rows, [kt("Ref", dn(row), 0, 0, Nil{})], missing(), Nil{}, 65536), jd_calls_close(rows, rest))
+    case Nil{}: seen
+    case Con{step, rest}: kc(KDef, String.eq(dk(jd_calls_get(seen, nm(step))), "Absent"), u =>
+      jd_calls_mark(reverse, List.reverse.go(&2,KTerm, ks(dv(jd_calls_get(reverse, nm(step)))), rest),
+        jd_calls_put(seen, KDef{nm(step), "JDMark", 0, 0, atom("Absent"), ref(key), Nil{}, False{}, False{}}), key),
+      u => jd_calls_mark(reverse, rest, seen, key))
 
 @unsafe
-def jd_calls_close_one(+row: KDef, +reach: Maybe<&2,JDCallReach>, +more: Maybe<&2,List<&2,KDef>>) -> Maybe<&2,List<&2,KDef>>:
-  match reach:
-    case None{}: None{}
-    case Some{JDCallReach{names, seen}}:
-      jd_calls_row_cons(KDef{dn(row), "JDCall", da(row), 0, atom("Absent"), kt("JDCall", dn(row), 0, 0, names), [seen], False{}, False{}}, more)
+def jd_calls_partition(+reverse: KDef, +order: List<&2,KTerm>, +labels: KDef) -> KDef:
+  match order:
+    case Nil{}: labels
+    case Con{step, rest}: kc(KDef, String.eq(dk(jd_calls_get(labels, nm(step))), "Absent"), u =>
+      jd_calls_partition(reverse, rest, jd_calls_mark(reverse, [step], labels, nm(step))), u =>
+      jd_calls_partition(reverse, rest, labels))
+
+# The DFS representative is private. Scan the original rows backwards and cons
+# each name, so members and their eventual leader match selected source order.
+@unsafe
+def jd_calls_groups(+rows: List<&2,KDef>, +labels: KDef, +groups: KDef,
+  +keys: List<&2,KTerm>) -> JDCallGroups:
+  match rows:
+    case Nil{}: JDCallGroups{groups, keys}
+    case Con{row, rest}: jd_calls_group_row(rest, labels, groups, keys, dn(row),
+      nm(dv(jd_calls_get(labels, dn(row)))))
 
 @unsafe
-def jd_calls_has(+row: KDef, +name: String) -> Bool:
-  String.eq(dk(index_find(index_first(dc(row)), name, index_hash(name, 2166136261), 32)), "JDCall")
-
-# Both reachability directions identify exactly one strongly connected
-# component. Preserve selected-definition order to give every member the same
-# dense program-counter layout. Singleton components include their own name.
-@unsafe
-def jd_calls_members(+row: KDef, +todo: List<&2,KDef>) -> List<&2,KTerm>:
-  match todo:
-    case Nil{}: Nil{}
-    case Con{other, rest}:
-      kc(List<&2,KTerm>, String.eq(dk(other), "JDCall") &&
-        jd_calls_has(row, dn(other)) && jd_calls_has(other, dn(row)), u =>
-        Con{kt("Ref", dn(other), 0, 0, Nil{}), jd_calls_members(row, rest)},
-        u => jd_calls_members(row, rest))
+def jd_calls_group_row(+rest: List<&2,KDef>, +labels: KDef, +groups: KDef,
+  +keys: List<&2,KTerm>, +name: String, +key: String) -> JDCallGroups:
+  jd_calls_group_old(rest, labels, groups, keys, name, key, jd_calls_get(groups, key))
 
 @unsafe
-def jd_calls_member_id(+members: List<&2,KTerm>, +name: String, +at: U32) -> U32:
+def jd_calls_group_old(+rest: List<&2,KDef>, +labels: KDef, +groups: KDef,
+  +keys: List<&2,KTerm>, +name: String, +key: String, +old: KDef) -> JDCallGroups:
+  jd_calls_groups(rest, labels, jd_calls_put(groups,
+    KDef{key, "JDGroup", 0, 0, atom("Absent"),
+      kt("JDGroup", name, 0, 0, Con{ref(name), ks(dv(old))}), Nil{}, False{}, False{}}),
+    kc(List<&2,KTerm>, String.eq(dk(old), "Absent"), u => Con{ref(key), keys}, u => keys))
+
+@unsafe
+def jd_calls_fact_members(+members: List<&2,KTerm>, +leader: String, +at: U32,
+  +bounces: KDef, +facts: KDef) -> KDef:
   match members:
-    case Nil{}: 4294967295
-    case Con{h, rest}: kc(U32, String.eq(nm(h), name), u => at,
-      u => jd_calls_member_id(rest, name, U32.inc(at)))
+    case Nil{}: facts
+    case Con{member, rest}: jd_calls_fact_members(rest, leader, U32.inc(at), bounces,
+      jd_calls_put(facts, KDef{nm(member), "JDCall", 0, 0, kt("JDComponent", leader, at, 0, Nil{}),
+        kt("JDCall", nm(member), kc(U32, String.eq(dk(jd_calls_get(bounces, nm(member))), "JDMark"),
+          u => 1, u => 0), 0, Nil{}), Nil{}, False{}, False{}}))
 
 @unsafe
-def jd_calls_component_type(+members: List<&2,KTerm>, +name: String) -> KTerm:
-  match members:
-    case Nil{}: atom("Absent")
-    case Con{h, rest}: kt("JDComponent", nm(h), jd_calls_member_id(members, name, 0), 0, members)
+def jd_calls_install(+book: List<&2,KDef>, +keys: List<&2,KTerm>, +groups: KDef,
+  +bounces: KDef, +facts: KDef, +ordered: KDef) -> List<&2,KDef>:
+  match keys:
+    case Nil{}: jd_calls_tables(book, True{}, facts, ordered)
+    case Con{key, rest}: jd_calls_install_group(book, rest, groups, bounces, facts, ordered,
+      jd_calls_get(groups, nm(key)))
 
 @unsafe
-def jd_calls_components(+rows: List<&2,KDef>, +todo: List<&2,KDef>) -> List<&2,KDef>:
-  match todo:
-    case Nil{}: Nil{}
-    case Con{row, rest}:
-      Con{KDef{dn(row), "JDCall", da(row), 0,
-        jd_calls_component_type(jd_calls_members(row, rows), dn(row)), dv(row), dc(row), False{}, False{}},
-        jd_calls_components(rows, rest)}
+def jd_calls_install_group(+book: List<&2,KDef>, +rest: List<&2,KTerm>, +groups: KDef,
+  +bounces: KDef, +facts: KDef, +ordered: KDef, +group: KDef) -> List<&2,KDef>:
+  jd_calls_install(book, rest, groups, bounces,
+    jd_calls_fact_members(ks(dv(group)), nm(dv(group)), 0, bounces, facts),
+    jd_calls_put(ordered, KDef{nm(dv(group)), "JDGroup", 0, 0, atom("Absent"),
+      dv(group), Nil{}, False{}, False{}}))
 
+# Install one metadata row, avoiding a book-list replacement per graph vertex.
+# dc[0] is the per-name fact index; dc[1] owns the one ordered list per SCC.
 @unsafe
-def jd_calls_bounces(+rows: List<&2,KDef>, +names: List<&2,KTerm>) -> Bool:
-  match names:
-    case Nil{}: False{}
-    case Con{h, rest}: jd_calls_bounces_row(rows, lookup(rows, nm(h)), rest)
-
-@unsafe
-def jd_calls_bounces_row(+rows: List<&2,KDef>, +row: KDef, +rest: List<&2,KTerm>) -> Bool:
-  kc(Bool, U32.is_eq(da(row), 1),
-    u => True{}, u => jd_calls_bounces(rows, rest))
-
-@unsafe
-def jd_calls_install(+book: List<&2,KDef>, +rows: List<&2,KDef>, +todo: List<&2,KDef>) -> List<&2,KDef>:
-  match todo:
-    case Nil{}: jd_calls_status(book, True{})
-    case Con{row, rest}: jd_calls_install(book_put(book,
-      KDef{"$JD.Call:" ++ dn(row), "JDCall", 0, 0, dt(row),
-        kt("JDCall", dn(row), kc(U32, jd_calls_bounces(rows, ks(dv(row))), u => 1, u => 0), 0, ks(dv(row))), dc(row), False{}, False{}}), rows, rest)
+def jd_calls_tables(+book: List<&2,KDef>, +valid: Bool, +facts: KDef, +groups: KDef) -> List<&2,KDef>:
+  book_put(book, KDef{"$JD.Calls", "JDCalls", kc(U32, valid, u => 1, u => 0), 0,
+    atom("Absent"), atom("Absent"), [facts, groups], False{}, False{}})
 
 @unsafe
 def jd_calls_status(+book: List<&2,KDef>, +valid: Bool) -> List<&2,KDef>:
-  book_put(book, KDef{"$JD.Calls", "JDCalls", kc(U32, valid, u => 1, u => 0), 0, atom("Absent"), atom("Absent"), Nil{}, False{}, False{}})
+  jd_calls_tables(book, valid, missing(), missing())
+
+@unsafe
+def jd_definition_budget() -> U32:
+  4096
 
 @unsafe
 def jd_calls_context(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> List<&2,KDef>:
-  jd_calls_context_rows(book, jd_calls_rows(book, defs, 512))
+  jd_calls_context_rows(book, jd_calls_rows(book, defs, jd_definition_budget()))
 
+# Source selection and exact emitted reach share one definition budget. Keep
+# the total edge ceiling independent: increasing vertices does not increase
+# allowed edge occurrences. Diagnostic callers can supply explicit budgets.
 @unsafe
 def jd_calls_context_rows(+book: List<&2,KDef>, +rows: Maybe<&2,List<&2,KDef>>) -> List<&2,KDef>:
-  match rows:
-    case None{}: jd_calls_status(book, False{})
-    case Some{values}: jd_calls_context_closed(book, jd_calls_close(book_cached(values, 0), values))
+  jd_calls_context_bounded(book, rows, jd_definition_budget(), 4194304)
 
 @unsafe
-def jd_calls_context_closed(+book: List<&2,KDef>, +rows: Maybe<&2,List<&2,KDef>>) -> List<&2,KDef>:
+def jd_calls_context_bounded(+book: List<&2,KDef>, +rows: Maybe<&2,List<&2,KDef>>,
+  +vertices: U32, +edges: U32) -> List<&2,KDef>:
   match rows:
     case None{}: jd_calls_status(book, False{})
-    case Some{values}: jd_calls_context_components(book, jd_calls_components(book_cached(values, 0), values))
+    case Some{values}: jd_calls_context_indexed(book, values, edges, jd_calls_index(values, vertices, missing()))
 
 @unsafe
-def jd_calls_context_components(+book: List<&2,KDef>, +rows: List<&2,KDef>) -> List<&2,KDef>:
-  jd_calls_install(book, book_cached(rows, 0), rows)
+def jd_calls_context_indexed(+book: List<&2,KDef>, +rows: List<&2,KDef>, +edges: U32,
+  +index: Maybe<&2,KDef>) -> List<&2,KDef>:
+  match index:
+    case None{}: jd_calls_status(book, False{})
+    case Some{forward}: jd_calls_context_graph(book, rows,
+      jd_calls_reverse(forward, rows, missing(), Nil{}, edges))
+
+@unsafe
+def jd_calls_context_graph(+book: List<&2,KDef>, +rows: List<&2,KDef>,
+  +graph: Maybe<&2,JDCallGraph>) -> List<&2,KDef>:
+  match graph:
+    case None{}: jd_calls_status(book, False{})
+    case Some{JDCallGraph{forward, reverse, seeds}}:
+      jd_calls_context_parts(book, rows, reverse, seeds,
+        jd_calls_partition(reverse, jd_calls_finish(forward, jd_calls_roots(rows, Nil{}), missing(), Nil{}), missing()))
+
+@unsafe
+def jd_calls_context_parts(+book: List<&2,KDef>, +rows: List<&2,KDef>, +reverse: KDef,
+  +seeds: List<&2,KTerm>, +labels: KDef) -> List<&2,KDef>:
+  jd_calls_context_groups(book, jd_calls_mark(reverse, seeds, missing(), ""),
+    jd_calls_groups(List.reverse(&2,KDef, rows), labels, missing(), Nil{}))
+
+@unsafe
+def jd_calls_context_groups(+book: List<&2,KDef>, +bounces: KDef, +groups: JDCallGroups) -> List<&2,KDef>:
+  match groups:
+    case JDCallGroups{index, keys}: jd_calls_install(book, keys, index, bounces, missing(), missing())
 
 @unsafe
 def jd_calls_valid(+book: List<&2,KDef>) -> Bool:
   U32.is_eq(da(lookup(book, "$JD.Calls")), 1)
 
 @unsafe
+def jd_calls_fact(+book: List<&2,KDef>, +name: String) -> KDef:
+  jd_calls_get(index_first(dc(lookup(book, "$JD.Calls"))), name)
+
+@unsafe
 def jd_may_bounce(+book: List<&2,KDef>, +name: String) -> Bool:
-  U32.is_eq(ix(dv(lookup(book, "$JD.Call:" ++ name))), 1)
+  U32.is_eq(ix(dv(jd_calls_fact(book, name))), 1)
 
 # Mutual named transfers are emitted as component-loop transitions. Only
 # reachable unknown closure tails seed bounce forcing; cycles alone do not.
 @unsafe
 def jd_component(+book: List<&2,KDef>, +name: String) -> List<&2,String>:
-  jd_calls_member_names(ks(dt(lookup(book, "$JD.Call:" ++ name))))
+  jd_calls_component_members(index_child(lookup(book, "$JD.Calls"), True{}), dt(jd_calls_fact(book, name)))
+
+@unsafe
+def jd_calls_component_members(+groups: KDef, +fact: KTerm) -> List<&2,String>:
+  kc(List<&2,String>, String.eq(tg(fact), "JDComponent"),
+    u => jd_calls_member_names(ks(dv(jd_calls_get(groups, nm(fact))))), u => Nil{})
 
 @unsafe
 def jd_calls_member_names(+members: List<&2,KTerm>) -> List<&2,String>:
@@ -326,7 +420,7 @@ def jd_calls_member_names(+members: List<&2,KTerm>) -> List<&2,String>:
 
 @unsafe
 def jd_component_id(+book: List<&2,KDef>, +name: String) -> U32:
-  jd_calls_component_id(dt(lookup(book, "$JD.Call:" ++ name)))
+  jd_calls_component_id(dt(jd_calls_fact(book, name)))
 
 @unsafe
 def jd_calls_component_id(+fact: KTerm) -> U32:
@@ -334,7 +428,7 @@ def jd_calls_component_id(+fact: KTerm) -> U32:
 
 @unsafe
 def jd_same_component(+book: List<&2,KDef>, +left: String, +right: String) -> Bool:
-  jd_calls_same_component(dt(lookup(book, "$JD.Call:" ++ left)), dt(lookup(book, "$JD.Call:" ++ right)))
+  jd_calls_same_component(dt(jd_calls_fact(book, left)), dt(jd_calls_fact(book, right)))
 
 @unsafe
 def jd_calls_same_component(+left: KTerm, +right: KTerm) -> Bool:

@@ -1,37 +1,34 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase53 report](../implementation/phase53/README.md), and
+[Phase54 report](../implementation/phase54/README.md),
+[backend boundaries](../docs/self_hosted/backend-boundaries.md) and
 [direct JavaScript guide](docs/direct-javascript.md).
-**Ordered02 is installed; release integrity and all 42 legacy plus 24 default
-ordinary/relocated CLI checks pass.** Ordinary compilation runs Bend code without
-a TypeScript fallback.
+**Graph02 is installed and verified.** Direct JavaScript is the default;
+`--legacy-js` and native targets retain their contracts. Ordinary compilation
+runs Bend code without a TypeScript fallback.
 
-Direct JavaScript is now the workspace default for program/library emission and
-`--run`. It emits lexical functions, native closures/data layouts and self/mutual
-tail loops, with erased/partial calls, program output, IO and foreign JavaScript.
-`--legacy-js` retains the mutable-descriptor interface; its [IR guide](docs/JAVASCRIPT_IR.md)
-and [Phase51 runtime guide](../docs/self_hosted/v8-guided-runtime.md) remain applicable.
-The ordinary check-then-interpret mode and native target selection retain their
-existing behavior.
+The shared-helper extraction and compact SCC analysis retain the generated
+program behavior. Fresh qualification passes 96 source, 34 numeric, 18 composition and two
+overapplication controls, plus the 26-row census and eight maintained suites.
+Three representative native programs and all **42 legacy + 24 default
+ordinary/relocated checks** also pass. Scope details are
+in [CONFORMANCE.md](CONFORMANCE.md); overlapping counts are not added together.
+All 45 benchmark point modules match Phase53 byte-for-byte, preserving its dated
+**1.069599× TypeScript** result. There is no fresh Phase54 669-sample campaign.
 
-[Conformance](CONFORMANCE.md) records **96/96** original independent source
-scenarios, plus 34 numeric, 18 composition and two genuine overapplication controls.
-The candidate preserves the original NaN oracle 40; pinned TypeScript still
-returns 1. The maintained direct 26-row JS census and all eight compatibility
-suites pass. These overlapping inventories are not a unique language-test total.
+Current source has **26,259 physical / 21,598 code lines, 3,015 definitions,
+100 types and 107 modules** (+108 physical / +75 code). All 17 native modules
+are unchanged. The direct definition budget is **4,096**, with checked source
+scaling through 3,004 definitions. Graph qualification is separate from full
+direct compiler-image generation, which remains **unqualified**; no new fixed
+point or compiler-throughput parity is claimed. See
+[accounting](../implementation/phase54/architecture.md) and
+[scaling](../implementation/phase54/scaling.md).
 
-The [complete 45-point / 23-source comparison](../implementation/phase53/results.md)
-passes all **669 fresh samples**: execution time improves **1.129× → 1.070×
-TypeScript**, a **5.6% speedup**. Equal-source weighting gives 1.078× TypeScript.
-Twelve points regress, none by more than 3.4%; all timing flags remain visible.
-The causal eight-point screen separately gains 1.068× over the corrected baseline.
-These are generated-program execution measurements, not compiler throughput.
-
-The source has **26,151 physical / 21,523 code Bend lines, 3,004 definitions,
-99 types and 103 modules**. The direct backend occupies 11 modules. Relative to
-Phase52, this adds 361 physical / 288 code lines while preserving the other 100
-modules, including all 92 pre-direct modules. See [accounting](../implementation/phase53/complexity.md).
+The [Phase53 performance report](../implementation/phase53/results.md) retains
+all 669 observations, per-program regressions and timing flags. The explicit
+legacy interface is documented in the [IR guide](docs/JAVASCRIPT_IR.md).
 
 ```sh
 # From selfhost/, with Node.js 24+:
@@ -44,10 +41,9 @@ The [benchmark recipes](tools/performance/phase53/PLAN.md) cover checked acquisi
 fast screens and serial full-corpus validation. A checked build takes about 61 seconds;
 the full corpus takes about 20 minutes of timing. CPU/allocation/V8
 [diagnostics](tools/performance/programs/DIAGNOSTICS.md) remain separate from clean
-timing. Direct analysis refuses above 512 conservatively eligible runtime
-functions before final pruning. [Scaling limits](../implementation/phase53/scaling.md)
-explain compiler-sized inputs; no new direct self-emitted fixed point or compiler
-throughput parity is established. The pin remains
+timing. The current [scaling report](../implementation/phase54/scaling.md)
+separates larger-program qualification from the still-unqualified direct
+compiler-image route. The pin remains
 `018751270e800bc222a93dad7f257083ee53a5f7`, after Bend 2.0.34.
 
 The [architecture survey](../docs/self_hosted/README.md),

@@ -1,0 +1,35 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "sets": {
+    "fast": [
+      "last-live-fields"
+    ],
+    "core": [
+      "last-live-fields"
+    ],
+    "broad": [
+      "last-live-fields"
+    ],
+    "full": [
+      "last-live-fields"
+    ]
+  },
+  "cases": [
+    {
+      "id": "last-live-fields",
+      "source": {
+        "path": "fields-last-live-v1.bend",
+        "sha256": "940ebb86101d33b0664204c6615839162ab6da4d5d12b1201d17855f792a1b6f"
+      },
+      "point": {
+        "exportName": "checksum",
+        "args": [],
+        "expected": 24
+      },
+      "scope": "Independent zero/single/trailing-erased/ordered-last-field fixture; source checksum24.",
+      "mode": "library"
+    }
+  ]
+}

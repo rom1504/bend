@@ -1,7 +1,9 @@
 # Phase58 qualification status and plan
 
 Completed checkpoints below are bound to their own images; the remaining
-sections describe root-run plans. Choice01 passed its 14-job checked integration
+sections describe root-run plans. Last01 is the current integration candidate:
+its checked build and fresh field controls have passed, while its broad/B2 gates
+are in progress. Choice01 passed its 14-job checked integration
 gate before its full B2 emission hit the existing reachability budget. Reach01
 passed the focused scanner/graph controls, full B2 emission and fresh own-source
 type checking. Shared01 has passed its checked build, 36 exact selected probes,
@@ -24,6 +26,44 @@ source `5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244`;
 qualified B2/B3 `3f652f7d3e26e06fe74da18bf8709195c54e4620906ffb7c1d0643c96ecbd57e`.
 API equality alone does not establish image identity: bind the actual source,
 attempt, direct/legacy runtimes, Base, ordinary driver and Node as well.
+
+## Last01 integration checkpoint
+
+The genuine `checked-last01` build passed all 36 strict selected comparisons,
+with API `641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a`.
+Fresh [field controls](../../selfhost/build/phase58/last-fields-controls01/report.json)
+passed 17 groups in each role, and fresh
+[live-value controls](../../selfhost/build/phase58/last-live-controls01/report.json)
+passed nine groups in each role. These acquisitions used the real checked API;
+the earlier saved-JavaScript diagnostic remains a separate experiment.
+
+The [frozen inventory comparison](../../selfhost/build/phase58/source-delta-shared-last01.json)
+rehashes all 307 source/tool entries from shared01 and last01. Exactly three
+files differ: `direct/constructors.bend`, `direct/host.bend` and
+`direct/ordered-values.bend`; 304 entries and 105 of 108 Bend modules are exact.
+The delta is five physical lines, four code lines, 220 bytes and one helper,
+`jd_ctor_field_join`. The [last01 accounting](source-complexity-last.md) totals
+26,560 physical lines, 21,823 code lines and 3,055 definitions. All earlier
+accounting receipts remain unchanged.
+
+Lookup, scalar-residual, literal-choice, reach and shared-SCC mechanism bytes
+are unchanged. Their earlier focused controls remain observations on their
+recorded earlier APIs; they are not relabeled as fresh last01 passes. Fresh
+last01 broad and B2 integration gates remain required. The reviewed generic
+orchestration, self-check, equality and performance tools need no new candidate
+special case. Once its checked 23-source acquisition exists, materialize the
+fresh comparison with:
+
+```sh
+taskset -c 0 python3 -B selfhost/tools/performance/phase58/performance/compare.py \
+  --candidate selfhost/build/phase58/final-last01/checked/program45/manifest.json \
+  --attempt selfhost/build/phase58/checked-last01 --timing-scope full \
+  --out selfhost/build/phase58/final-performance-last01
+```
+
+This data-only command has not been run at this checkpoint. Root separately
+launches its unchanged three-batch timing commands; the earlier shared01
+campaign is retained, without pooling its samples into last01's result.
 
 ## Cheap candidate admission
 

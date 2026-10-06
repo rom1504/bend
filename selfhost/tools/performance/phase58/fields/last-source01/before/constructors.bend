@@ -251,10 +251,9 @@ def jd_ctor_fields(+book: List<&2,KDef>, +env: List<&2,KTerm>, +fields: List<&2,
       kc(String, String.eq(tg(tel), "All"), u => ",[\"$error\"]:" ++ jd_fail("missing constructor field"), u => "")
     case Con{field, rest}:
       kc(String, String.eq(tg(tel), "All"),
-        u => kc(String, U32.is_eq(qt(tel), 0),
-          v => jd_ctor_fields(book, env, rest, j_app_type(tel, field)),
-          v => jd_ctor_field_join(nm(tel), jd_expr(book, env, field, kid(tel, 0)),
-            jd_ctor_fields(book, env, rest, j_app_type(tel, field)))),
+        u => kc(String, U32.is_eq(qt(tel), 0), v => "",
+          v => "," ++ jd_literal_field_key(nm(tel)) ++ ":" ++ jd_expr(book, env, field, kid(tel, 0))) ++
+          jd_ctor_fields(book, env, rest, j_app_type(tel, field)),
         u => ",[\"$error\"]:" ++ jd_fail("extra constructor field"))
 
 @unsafe
@@ -280,12 +279,8 @@ def jd_ctor_native(+owner: String, +name: String, +args: List<&2,String>) -> Str
       v => "array_node(" ++ jd_arg(args, 0) ++ "," ++ jd_arg(args, 1) ++ ")"),
     u => jd_fail("unsupported native constructor"))))))))
 
-# The final live constructor field and every __proto__ key stay computed.
+# Quoted literal keys retain own-property order; __proto__ must stay computed.
 @unsafe
-def jd_ctor_field_join(+name: String, +value: String, +rest: String) -> String:
-  "," ++ jd_literal_field_key(name, String.eq(rest, "")) ++ ":" ++ value ++ rest
-
-@unsafe
-def jd_literal_field_key(+name: String, +last: Bool) -> String:
+def jd_literal_field_key(+name: String) -> String:
   +quoted = j_quote(name)
-  kc(String, last || String.eq(name, "__proto__"), u => "[" ++ quoted ++ "]", u => quoted)
+  kc(String, String.eq(name, "__proto__"), u => "[" ++ quoted ++ "]", u => quoted)

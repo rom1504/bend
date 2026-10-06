@@ -1,0 +1,28 @@
+{
+  "kind": "phase58-last-live-field-controller-successor",
+  "version": 5,
+  "executed": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/fields/controls-v3.mjs",
+    "sha256": "0b9b20a1b34bbcc97c89e0989037f1df938f96aa5ebc6a310de37ba889f4f959",
+    "bytes": 10887
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/fields/controls-v5.mjs",
+    "sha256": "17b8b958e02000398a8e4859ecfaea8f248c479d41997f3c9abdc4dfe438bdfe",
+    "bytes": 11206
+  },
+  "replacements": [
+    {
+      "old": "assert.equal(c[role==='candidate'?'plain':'computed'],ordinary);assert.equal(c[role==='candidate'?'computed':'plain'],0);",
+      "new": "const expectedComputed=role==='candidate'?(route==='constructors'?c.objects:0):ordinary;assert.equal(c.computed,expectedComputed);assert.equal(c.plain,ordinary-expectedComputed);",
+      "count": 1
+    },
+    {
+      "old": "const c=counts[route];c.objects++;",
+      "new": "const c=counts[route];c.objects++;\n  if(role==='candidate'){const fields=props.filter(p=>key(p)!=='$');for(const p of fields){assert.equal(p.key.type,'Literal');assert.equal(typeof p.key.value,'string');assert.equal(p.computed,key(p)==='__proto__'||(route==='constructors'&&p===fields.at(-1)));}}",
+      "count": 1
+    }
+  ],
+  "scope": "All17 semantic groups and checked provenance unchanged. Candidate constructors require each last emitted/live field computed, preceding ordinary fields literal, exact __proto__ always computed; Nat spread clones remain literal ordinary keys. Baseline retains original all-computed shape. No target executed."
+}

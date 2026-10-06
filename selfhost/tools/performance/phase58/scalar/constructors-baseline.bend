@@ -64,7 +64,7 @@ def jd_word_metadata(+bits: String) -> KTerm:
 
 @unsafe
 def jd_ctor_inverse(+env: List<&2,KTerm>, +t: KTerm, +ty: KTerm) -> String:
-  jd_ctor_inverse_scalar(env, t, ty, jd_ctor_inverse_field(env, j_strip(kid(t, 0)), nm(ty)))
+  jd_ctor_inverse_field(env, j_strip(kid(t, 0)), nm(ty))
 
 @unsafe
 def jd_ctor_inverse_field(+env: List<&2,KTerm>, +field: KTerm, +owner: String) -> String:
@@ -92,110 +92,6 @@ def jd_ctor_inverse_view(+id: U32, +owner: String, +view: KTerm) -> String:
       kc(String, String.eq(tg(view), "F32"), v => value, v =>
         kc(String, String.eq(tg(view), "U32"), w => "f32_from_bits(" ++ value ++ ")", w => "")), u => "")))
   kc(String, String.eq(code, ""), u => "", u => "(" ++ jd_use(id) ++ code ++ ")")
-
-# Fragment facts come only from canonical U32 numeric rows. Recomposition
-# proves every one of 32 positions; unknown/moved/mixed-origin fields refuse.
-# Literal prefix bits are reproduced, not assumed from the selected row test.
-# Thus the final unconditional default row needs no additional branch fact.
-type JDScalarBits is Data:
-  JDScalarBits{+keep: U32, +literal: U32}
-
-@unsafe
-def jd_ctor_inverse_scalar(+env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +prior: String) -> String:
-  kc(String, Bool.not(String.eq(prior, "")), u => prior, u =>
-    kc(String, String.eq(nm(ty), "U32"), v =>
-      jd_scalar_origin_done(env, j_strip(kid(t, 0)), jd_scalar_origin(env, j_strip(kid(t, 0)))), v => ""))
-
-@unsafe
-def jd_scalar_entry(+env: List<&2,KTerm>, +id: U32) -> KTerm:
-  match env:
-    case Nil{}: atom("Absent")
-    case Con{entry, rest}:
-      kc(KTerm, U32.is_eq(ix(entry), id),
-        u => kc(KTerm, String.eq(tg(entry), "$JD.U32Fragment"), v => kid(entry, 1), v => atom("Absent")),
-        u => jd_scalar_entry(rest, id))
-
-@unsafe
-def jd_scalar_origin(+env: List<&2,KTerm>, +t: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(t), "Var"), u => jd_scalar_entry(env, ix(t)), u =>
-    kc(KTerm, String.eq(tg(t), "Ctr") && String.eq(nm(t), "WCon") && U32.is_eq(terms_len(ks(t)), 2),
-      v => jd_scalar_origin_tail(env, j_strip(kid(t, 1)), jd_scalar_origin(env, j_strip(kid(t, 0)))),
-      v => atom("Absent")))
-
-@unsafe
-def jd_scalar_origin_tail(+env: List<&2,KTerm>, +tail: KTerm, +head: KTerm) -> KTerm:
-  kc(KTerm, String.eq(tg(head), "Absent"), u => jd_scalar_origin(env, tail), u => head)
-
-@unsafe
-def jd_scalar_origin_done(+env: List<&2,KTerm>, +word: KTerm, +origin: KTerm) -> String:
-  kc(String, String.eq(tg(origin), "Bit") || String.eq(tg(origin), "Tail"),
-    u => jd_scalar_result(nm(origin), jd_scalar_word(env, word, 0, nm(origin))), u => "")
-
-@unsafe
-def jd_scalar_result(+origin: String, +proof: Maybe<&2,JDScalarBits>) -> String:
-  match proof:
-    case None{}: ""
-    case Some{bits}: jd_scalar_code(origin, bits)
-
-@unsafe
-def jd_scalar_code(+origin: String, +bits: JDScalarBits) -> String:
-  match bits:
-    case JDScalarBits{keep, literal}:
-      "(\n/*JD_SCALAR_WORD*/((" ++ origin ++ "&" ++ U32.show(keep) ++ ")|" ++ U32.show(literal) ++ ")>>>0)"
-
-@unsafe
-def jd_scalar_word(+env: List<&2,KTerm>, +t: KTerm, +depth: U32, +origin: String) -> Maybe<&2,JDScalarBits>:
-  kc(Maybe<&2,JDScalarBits>, String.eq(tg(t), "Var"),
-    u => jd_scalar_tail(jd_scalar_entry(env, ix(t)), depth, origin), u =>
-    kc(Maybe<&2,JDScalarBits>, String.eq(tg(t), "Ctr") && String.eq(nm(t), "WNil") &&
-      U32.is_eq(depth, 32) && List.is_empty(&2,KTerm, ks(t)), v => Some{JDScalarBits{0, 0}}, v =>
-      kc(Maybe<&2,JDScalarBits>, U32.is_lt(depth, 32) && String.eq(tg(t), "Ctr") &&
-        String.eq(nm(t), "WCon") && U32.is_eq(terms_len(ks(t)), 2), w =>
-        jd_scalar_join(jd_scalar_head(env, j_strip(kid(t, 0)), depth, origin),
-          jd_scalar_word(env, j_strip(kid(t, 1)), U32.inc(depth), origin)), w => None{})))
-
-@unsafe
-def jd_scalar_tail(+view: KTerm, +depth: U32, +origin: String) -> Maybe<&2,JDScalarBits>:
-  kc(Maybe<&2,JDScalarBits>, String.eq(tg(view), "Tail") && String.eq(nm(view), origin) &&
-    U32.is_eq(ix(view), depth) && U32.is_le(depth, 32),
-    u => Some{JDScalarBits{kc(U32, U32.is_eq(depth, 32), v => 0,
-      v => U32.shln(4294967295, U32.to_nat(depth))), 0}}, u => None{})
-
-@unsafe
-def jd_scalar_head(+env: List<&2,KTerm>, +t: KTerm, +depth: U32, +origin: String) -> Maybe<&2,JDScalarBits>:
-  kc(Maybe<&2,JDScalarBits>, String.eq(tg(t), "Var"),
-    u => jd_scalar_bit(jd_scalar_entry(env, ix(t)), depth, origin), u =>
-    kc(Maybe<&2,JDScalarBits>, String.eq(tg(t), "Ctr") && List.is_empty(&2,KTerm, ks(t)) &&
-      (String.eq(nm(t), "True") || String.eq(nm(t), "False")),
-      v => Some{JDScalarBits{0, kc(U32, String.eq(nm(t), "True"),
-        w => U32.shln(1, U32.to_nat(depth)), w => 0)}}, v => None{}))
-
-@unsafe
-def jd_scalar_bit(+view: KTerm, +depth: U32, +origin: String) -> Maybe<&2,JDScalarBits>:
-  kc(Maybe<&2,JDScalarBits>, String.eq(tg(view), "Bit") && String.eq(nm(view), origin) && U32.is_eq(ix(view), depth),
-    u => Some{JDScalarBits{U32.shln(1, U32.to_nat(depth)), 0}}, u => None{})
-
-@unsafe
-def jd_scalar_join(+head: Maybe<&2,JDScalarBits>, +tail: Maybe<&2,JDScalarBits>) -> Maybe<&2,JDScalarBits>:
-  match head:
-    case None{}: None{}
-    case Some{h}: jd_scalar_join_tail(h, tail)
-
-@unsafe
-def jd_scalar_join_tail(+head: JDScalarBits, +tail: Maybe<&2,JDScalarBits>) -> Maybe<&2,JDScalarBits>:
-  match tail:
-    case None{}: None{}
-    case Some{t}: jd_scalar_join_bits(head, t)
-
-@unsafe
-def jd_scalar_join_bits(+head: JDScalarBits, +tail: JDScalarBits) -> Maybe<&2,JDScalarBits>:
-  match head:
-    case JDScalarBits{keep, literal}: jd_scalar_join_fields(keep, literal, tail)
-
-@unsafe
-def jd_scalar_join_fields(+keep: U32, +literal: U32, +tail: JDScalarBits) -> Maybe<&2,JDScalarBits>:
-  match tail:
-    case JDScalarBits{more, fixed}: Some{JDScalarBits{U32.or(keep, more), U32.or(literal, fixed)}}
 
 # Like upstream ctr_adt and Char's intrinsic, fold closed literals before
 # generating constructor fields. Runtime Word allocation and host conversion
@@ -252,7 +148,7 @@ def jd_ctor_fields(+book: List<&2,KDef>, +env: List<&2,KTerm>, +fields: List<&2,
     case Con{field, rest}:
       kc(String, String.eq(tg(tel), "All"),
         u => kc(String, U32.is_eq(qt(tel), 0), v => "",
-          v => "," ++ jd_literal_field_key(nm(tel)) ++ ":" ++ jd_expr(book, env, field, kid(tel, 0))) ++
+          v => ",[" ++ j_quote(nm(tel)) ++ "]:" ++ jd_expr(book, env, field, kid(tel, 0))) ++
           jd_ctor_fields(book, env, rest, j_app_type(tel, field)),
         u => ",[\"$error\"]:" ++ jd_fail("extra constructor field"))
 
@@ -278,9 +174,3 @@ def jd_ctor_native(+owner: String, +name: String, +args: List<&2,String>) -> Str
     u => kc(String, String.eq(name, "ALeaf"), v => "[" ++ jd_arg(args, 0) ++ "]",
       v => "array_node(" ++ jd_arg(args, 0) ++ "," ++ jd_arg(args, 1) ++ ")"),
     u => jd_fail("unsupported native constructor"))))))))
-
-# Quoted literal keys retain own-property order; __proto__ must stay computed.
-@unsafe
-def jd_literal_field_key(+name: String) -> String:
-  +quoted = j_quote(name)
-  kc(String, String.eq(name, "__proto__"), u => "[" ++ quoted ++ "]", u => quoted)

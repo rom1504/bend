@@ -1,0 +1,36 @@
+{
+  "kind": "phase58-scalar-residual-source",
+  "status": "isolated-unexecuted",
+  "files": [
+    {
+      "source": "selfhost/src/back/js/direct/pattern.bend",
+      "before": {
+        "file": "selfhost/tools/performance/phase58/scalar/pattern-baseline.bend",
+        "sha256": "5dfd61759478a5a94143cf44fb93b0f396901a5bf9852b0e4cce11a62b56f46e",
+        "bytes": 14644
+      },
+      "after": {
+        "file": "selfhost/tools/performance/phase58/scalar/pattern-scalar01.bend",
+        "sha256": "d41b8cfc1fa9b10dbcfabca73ed3ab8ad3f558606704c7a3628ad2853723ecac",
+        "bytes": 17161
+      }
+    },
+    {
+      "source": "selfhost/src/back/js/direct/constructors.bend",
+      "before": {
+        "file": "selfhost/tools/performance/phase58/scalar/constructors-baseline.bend",
+        "sha256": "58c392fbcc21fb7e0473dc4bf30b9d2609b7811ac85b625f1efa7c183327cbae",
+        "bytes": 9167
+      },
+      "after": {
+        "file": "selfhost/tools/performance/phase58/scalar/constructors-scalar01.bend",
+        "sha256": "a6e3d7b3aff90689a01a41e3c5ec7513aeeb861da4d7031bf35cee164f9b52cd",
+        "bytes": 14258
+      }
+    }
+  ],
+  "patch": {
+    "file": "selfhost/tools/performance/phase58/scalar/scalar01.patch",
+    "sha256": "0f9f08dba5b4e3ecfbc6733c6a18062a097bab9bcc0d56a3dc80de2082582787"
+  }
+}

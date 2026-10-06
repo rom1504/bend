@@ -28,10 +28,9 @@ def jd_closure(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm
 
 @unsafe
 def jd_application(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +tail: Bool, +spine: KTerm) -> String:
-  kc(String, jd_choice_call(book, spine), u => jd_choice_expr(book, env, ks(spine)), u =>
   kc(String, String.eq(tg(spine), "Call"), u =>
     jd_named(book, env, lookup(book, nm(spine)), ks(spine), tail), u =>
-    jd_unknown(book, env, t, tail, wnf(book, j_type(book, env, kid(t, 0))))))
+    jd_unknown(book, env, t, tail, wnf(book, j_type(book, env, kid(t, 0)))))
 
 @unsafe
 def jd_unknown(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +tail: Bool, +ty: KTerm) -> String:
@@ -231,11 +230,10 @@ def jd_let_bindings(+xs: List<&2,KTerm>, +at: U32, +body: String) -> String:
 
 @unsafe
 def jd_return(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm) -> String:
-  kc(String, jd_choice_call(book, spine), u => jd_choice_body(book, env, ks(spine)), u =>
   kc(String, String.eq(tg(spine), "Call") && Bool.not(String.eq(jd_owner(env), "")) &&
     jd_same_component(book, nm(spine), jd_owner(env)), u =>
     jd_return_self(book, env, t, ty, spine, jd_arguments(book, env, ks(spine), dt(lookup(book, nm(spine))), jd_arity(book, lookup(book, nm(spine))))),
-    u => jd_return_regular(book, env, t, ty, spine)))
+    u => jd_return_regular(book, env, t, ty, spine))
 
 @unsafe
 def jd_return_self(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +spine: KTerm, +r: JDArgs) -> String:

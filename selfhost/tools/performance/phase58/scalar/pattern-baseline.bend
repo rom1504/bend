@@ -154,7 +154,7 @@ def jd_nat_row_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,S
 @unsafe
 def jd_word_start(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +value: String, +float: Bool) -> String:
   jd_word_emit(book, env, rest, kc(String, float, u => "f32_bits(" ++ value ++ ")", u => value),
-    jd_word_rows(book, j_strip(t), ty, 0, 0, JDWordCover{atom("Absent"), 0, Nil{}}), Bool.not(float))
+    jd_word_rows(book, j_strip(t), ty, 0, 0, JDWordCover{atom("Absent"), 0, Nil{}}))
 
 @unsafe
 def jd_word_rows(+book: List<&2,KDef>, +t: KTerm, +ty: KTerm, +depth: U32, +value: U32, +cover: JDWordCover) -> List<&2,JDWordRow>:
@@ -239,13 +239,13 @@ def jd_word_unanns(+ts: List<&2,KTerm>) -> List<&2,KTerm>:
     case Con{t, rest}: Con{jd_word_unann(t), jd_word_unanns(rest)}
 
 @unsafe
-def jd_word_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +bits: String, +rows: List<&2,JDWordRow>, +scalar: Bool) -> String:
+def jd_word_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +bits: String, +rows: List<&2,JDWordRow>) -> String:
   match rows:
     case Nil{}: "throw \"bend: runtime fail-stop\";"
-    case Con{row, Nil{}}: jd_word_row_body(book, env, rest, bits, row, scalar)
+    case Con{row, Nil{}}: jd_word_row_body(book, env, rest, bits, row)
     case Con{row, more}:
-      "if(" ++ jd_word_row_test(bits, row) ++ "){" ++ jd_word_row_body(book, env, rest, bits, row, scalar) ++
-        "}else{" ++ jd_word_emit(book, env, rest, bits, more, scalar) ++ "}"
+      "if(" ++ jd_word_row_test(bits, row) ++ "){" ++ jd_word_row_body(book, env, rest, bits, row) ++
+        "}else{" ++ jd_word_emit(book, env, rest, bits, more) ++ "}"
 
 @unsafe
 def jd_word_row_test(+bits: String, +row: JDWordRow) -> String:
@@ -254,53 +254,14 @@ def jd_word_row_test(+bits: String, +row: JDWordRow) -> String:
       kc(String, U32.is_eq(depth, 32), u => bits ++ "==" ++ U32.show(value),
         u => "(" ++ bits ++ "&" ++ U32.show(U32.sub(U32.shln(1, U32.to_nat(depth)), 1)) ++ ")==" ++ U32.show(value))
 
-# Only canonical native U32 rows may attach scalar fragment facts. F32 rows
-# retain their original demanded conversions. A surviving Word use still gets
-# its original held object; facts do not change the public Word representation.
 @unsafe
-def jd_word_row_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +bits: String, +row: JDWordRow, +scalar: Bool) -> String:
+def jd_word_row_body(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: List<&2,String>, +bits: String, +row: JDWordRow) -> String:
   match row:
     case JDWordRow{term, typ, depth, value, fields}:
-      kc(String, scalar && Bool.not(U32.is_eq(fields, 1) && U32.is_eq(depth, 0)),
-        u => jd_word_bound_row(book, env, term, typ, rest, bits, depth, fields,
-          jd_word_bind(book, env, term, typ, rest, bits, depth, fields)),
-        u => jd_body(book, env, term, typ, jd_word_field_values(bits, depth, fields, rest)))
-
-@unsafe
-def jd_word_field_values(+bits: String, +depth: U32, +fields: U32, +rest: List<&2,String>) -> List<&2,String>:
-  List.append(&2,String,
-    kc(List<&2,String>, U32.is_eq(fields, 0), u => Nil{}, u =>
-      kc(List<&2,String>, U32.is_eq(fields, 1), v => [jd_word_view(bits, depth)],
-        v => [jd_word_view(bits, depth) ++ "[\"head\"]", jd_word_view(bits, U32.inc(depth))])), rest)
-
-@unsafe
-def jd_word_bind(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +bits: String, +depth: U32, +fields: U32) -> String:
-  kc(String, U32.is_eq(fields, 0), u => jd_body(book, env, t, ty, rest), u =>
-    kc(String, String.eq(tg(t), "Ann"), v => jd_word_bind(book, env, kid(t, 0), kid(t, 1), rest, bits, depth, fields), v =>
-      jd_word_bind_type(book, env, t, wnf(book, ty), rest, bits, depth, fields)))
-
-# Any surviving ordinary use (including one inside a closure) refuses the
-# entire row optimization. This prevents an escaped/mutated Word tail from
-# being read through stale scalar provenance; the old row then emits unchanged.
-@unsafe
-def jd_word_bound_row(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +bits: String, +depth: U32, +fields: U32, +body: String) -> String:
-  kc(String, String.eq(body, ""),
-    u => jd_body(book, env, t, ty, jd_word_field_values(bits, depth, fields, rest)), u => body)
-
-@unsafe
-def jd_word_bind_type(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +rest: List<&2,String>, +bits: String, +depth: U32, +fields: U32) -> String:
-  kc(String, String.eq(tg(t), "Lam") && String.eq(tg(ty), "All") && Bool.not(U32.is_eq(qt(ty), 0)),
-    u => jd_word_bind_used(ix(t),
-      jd_word_bind(book,
-        Con{kt("$JD.U32Fragment", "", ix(t), 0,
-          [kid(ty, 0), kt(kc(String, U32.is_eq(fields, 2), v => "Bit", v => "Tail"), bits, depth, 0, Nil{})]), env},
-        kid(t, 0), j_app_type(ty, var(nm(t), ix(t))), rest, bits,
-        kc(U32, U32.is_eq(fields, 2), v => U32.inc(depth), v => depth), U32.sub(fields, 1))),
-    u => "")
-
-@unsafe
-def jd_word_bind_used(+id: U32, +body: String) -> String:
-  kc(String, String.contains(body, jd_use(id)), u => "", u => body)
+      jd_body(book, env, term, typ, List.append(&2,String,
+        kc(List<&2,String>, U32.is_eq(fields, 0), u => Nil{}, u =>
+          kc(List<&2,String>, U32.is_eq(fields, 1), v => [jd_word_view(bits, depth)],
+            v => [jd_word_view(bits, depth) ++ "[\"head\"]", jd_word_view(bits, U32.inc(depth))])), rest))
 
 @unsafe
 def jd_word_view(+bits: String, +depth: U32) -> String:

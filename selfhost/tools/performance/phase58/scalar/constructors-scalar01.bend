@@ -252,7 +252,7 @@ def jd_ctor_fields(+book: List<&2,KDef>, +env: List<&2,KTerm>, +fields: List<&2,
     case Con{field, rest}:
       kc(String, String.eq(tg(tel), "All"),
         u => kc(String, U32.is_eq(qt(tel), 0), v => "",
-          v => "," ++ jd_literal_field_key(nm(tel)) ++ ":" ++ jd_expr(book, env, field, kid(tel, 0))) ++
+          v => ",[" ++ j_quote(nm(tel)) ++ "]:" ++ jd_expr(book, env, field, kid(tel, 0))) ++
           jd_ctor_fields(book, env, rest, j_app_type(tel, field)),
         u => ",[\"$error\"]:" ++ jd_fail("extra constructor field"))
 
@@ -278,9 +278,3 @@ def jd_ctor_native(+owner: String, +name: String, +args: List<&2,String>) -> Str
     u => kc(String, String.eq(name, "ALeaf"), v => "[" ++ jd_arg(args, 0) ++ "]",
       v => "array_node(" ++ jd_arg(args, 0) ++ "," ++ jd_arg(args, 1) ++ ")"),
     u => jd_fail("unsupported native constructor"))))))))
-
-# Quoted literal keys retain own-property order; __proto__ must stay computed.
-@unsafe
-def jd_literal_field_key(+name: String) -> String:
-  +quoted = j_quote(name)
-  kc(String, String.eq(name, "__proto__"), u => "[" ++ quoted ++ "]", u => quoted)

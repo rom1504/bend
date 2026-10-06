@@ -1,0 +1,527 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "cases": [
+    {
+      "id": "literal-choices",
+      "source": {
+        "path": "choices-v1.bend",
+        "sha256": "2252e585ad7fdffa0debd51d70465b3992820aa068c7a83fe67950981239e800"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "selected-0",
+          "exportName": "selected",
+          "groups": [
+            [
+              false,
+              0
+            ]
+          ],
+          "expected": 7
+        },
+        {
+          "id": "selected-1",
+          "exportName": "selected",
+          "groups": [
+            [
+              false,
+              17
+            ]
+          ],
+          "expected": 24
+        },
+        {
+          "id": "selected-2",
+          "exportName": "selected",
+          "groups": [
+            [
+              false,
+              4294967295
+            ]
+          ],
+          "expected": 6
+        },
+        {
+          "id": "counterfeit-3",
+          "exportName": "counterfeit",
+          "groups": [
+            [
+              false,
+              7
+            ]
+          ],
+          "expected": 7
+        },
+        {
+          "id": "unit_value-4",
+          "exportName": "unit_value",
+          "groups": [
+            [
+              false
+            ]
+          ],
+          "expected": {
+            "$": "Unit"
+          }
+        },
+        {
+          "id": "partial_value-5",
+          "exportName": "partial_value",
+          "groups": [
+            [
+              false,
+              17
+            ]
+          ],
+          "expected": 24
+        },
+        {
+          "id": "overapplied-6",
+          "exportName": "overapplied",
+          "groups": [
+            [
+              false,
+              17,
+              8
+            ]
+          ],
+          "expected": 9
+        },
+        {
+          "id": "captured-7",
+          "exportName": "captured",
+          "groups": [
+            [
+              false,
+              17
+            ],
+            [
+              8
+            ]
+          ],
+          "expected": 9
+        },
+        {
+          "id": "selected-8",
+          "exportName": "selected",
+          "groups": [
+            [
+              true,
+              0
+            ]
+          ],
+          "expected": 0
+        },
+        {
+          "id": "selected-9",
+          "exportName": "selected",
+          "groups": [
+            [
+              true,
+              17
+            ]
+          ],
+          "expected": 17
+        },
+        {
+          "id": "selected-10",
+          "exportName": "selected",
+          "groups": [
+            [
+              true,
+              4294967295
+            ]
+          ],
+          "expected": 4294967295
+        },
+        {
+          "id": "counterfeit-11",
+          "exportName": "counterfeit",
+          "groups": [
+            [
+              true,
+              7
+            ]
+          ],
+          "expected": 1007
+        },
+        {
+          "id": "unit_value-12",
+          "exportName": "unit_value",
+          "groups": [
+            [
+              true
+            ]
+          ],
+          "expected": {
+            "$": "Unit"
+          }
+        },
+        {
+          "id": "partial_value-13",
+          "exportName": "partial_value",
+          "groups": [
+            [
+              true,
+              17
+            ]
+          ],
+          "expected": 17
+        },
+        {
+          "id": "overapplied-14",
+          "exportName": "overapplied",
+          "groups": [
+            [
+              true,
+              17,
+              8
+            ]
+          ],
+          "expected": 25
+        },
+        {
+          "id": "captured-15",
+          "exportName": "captured",
+          "groups": [
+            [
+              true,
+              17
+            ],
+            [
+              8
+            ]
+          ],
+          "expected": 25
+        },
+        {
+          "id": "raises-16",
+          "exportName": "raises",
+          "groups": [
+            [
+              true,
+              {
+                "$bigint": "281474976710655"
+              }
+            ]
+          ],
+          "expected": {
+            "$bigint": "281474976710655"
+          }
+        },
+        {
+          "id": "raises-17",
+          "exportName": "raises",
+          "groups": [
+            [
+              false,
+              {
+                "$bigint": "20"
+              }
+            ]
+          ],
+          "expected": {
+            "$bigint": "21"
+          }
+        },
+        {
+          "id": "selected-overflow",
+          "exportName": "raises",
+          "groups": [
+            [
+              false,
+              {
+                "$bigint": "281474976710655"
+              }
+            ]
+          ],
+          "expectedError": "a Nat past the largest immediate"
+        },
+        {
+          "id": "countdown-19",
+          "exportName": "countdown",
+          "groups": [
+            [
+              {
+                "$bigint": "0"
+              },
+              7
+            ]
+          ],
+          "expected": 7
+        },
+        {
+          "id": "orbit.a-20",
+          "exportName": "orbit.a",
+          "groups": [
+            [
+              {
+                "$bigint": "0"
+              },
+              7
+            ]
+          ],
+          "expected": 7
+        },
+        {
+          "id": "countdown-21",
+          "exportName": "countdown",
+          "groups": [
+            [
+              {
+                "$bigint": "1"
+              },
+              7
+            ]
+          ],
+          "expected": 8
+        },
+        {
+          "id": "orbit.a-22",
+          "exportName": "orbit.a",
+          "groups": [
+            [
+              {
+                "$bigint": "1"
+              },
+              7
+            ]
+          ],
+          "expected": 8
+        },
+        {
+          "id": "countdown-23",
+          "exportName": "countdown",
+          "groups": [
+            [
+              {
+                "$bigint": "32"
+              },
+              7
+            ]
+          ],
+          "expected": 39
+        },
+        {
+          "id": "orbit.a-24",
+          "exportName": "orbit.a",
+          "groups": [
+            [
+              {
+                "$bigint": "32"
+              },
+              7
+            ]
+          ],
+          "expected": 55
+        },
+        {
+          "id": "countdown-25",
+          "exportName": "countdown",
+          "groups": [
+            [
+              {
+                "$bigint": "100000"
+              },
+              7
+            ]
+          ],
+          "expected": 100007
+        },
+        {
+          "id": "orbit.a-26",
+          "exportName": "orbit.a",
+          "groups": [
+            [
+              {
+                "$bigint": "100000"
+              },
+              7
+            ]
+          ],
+          "expected": 150007
+        },
+        {
+          "id": "nested-27",
+          "exportName": "nested",
+          "groups": [
+            [
+              {
+                "$bigint": "0"
+              },
+              7
+            ]
+          ],
+          "expected": 7
+        },
+        {
+          "id": "nested-28",
+          "exportName": "nested",
+          "groups": [
+            [
+              {
+                "$bigint": "1"
+              },
+              7
+            ]
+          ],
+          "expected": 9
+        },
+        {
+          "id": "nested-29",
+          "exportName": "nested",
+          "groups": [
+            [
+              {
+                "$bigint": "32"
+              },
+              7
+            ]
+          ],
+          "expected": 71
+        },
+        {
+          "id": "nested-30",
+          "exportName": "nested",
+          "groups": [
+            [
+              {
+                "$bigint": "128"
+              },
+              7
+            ]
+          ],
+          "expected": 263
+        },
+        {
+          "id": "observed-31",
+          "exportName": "observed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              3
+            ]
+          ],
+          "expected": 110,
+          "expectedEvents": [
+            [
+              "callback",
+              3
+            ],
+            [
+              "callback",
+              103
+            ]
+          ]
+        },
+        {
+          "id": "observed-32",
+          "exportName": "observed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              4
+            ]
+          ],
+          "expected": 211,
+          "expectedEvents": [
+            [
+              "callback",
+              4
+            ],
+            [
+              "callback",
+              204
+            ]
+          ]
+        },
+        {
+          "id": "composed-33",
+          "exportName": "composed",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              }
+            ]
+          ],
+          "expected": {
+            "$": "Tuple",
+            "fst": 21,
+            "snd": 9
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              1
+            ],
+            [
+              "callback",
+              2
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "non-native-choice",
+      "source": {
+        "path": "non-native-v2.bend",
+        "sha256": "192684e68cf1ccdf654ae1a5cb4d8cc2945792b47810c1619bcf4a2ca7a0603b"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "ordinary-true",
+          "exportName": "witness",
+          "groups": [
+            [
+              {
+                "$": "OpaqueTrue"
+              }
+            ]
+          ],
+          "expected": {
+            "$": "Left"
+          }
+        },
+        {
+          "id": "ordinary-false",
+          "exportName": "witness",
+          "groups": [
+            [
+              {
+                "$": "OpaqueFalse"
+              }
+            ]
+          ],
+          "expected": {
+            "$": "Right"
+          }
+        }
+      ]
+    }
+  ]
+}

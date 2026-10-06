@@ -1,0 +1,23 @@
+--- a/selfhost/src/back/common/queries.bend
++++ b/selfhost/src/back/common/queries.bend
+@@ -93,7 +93,19 @@
+     case Nil{}:
+       missing()
+     case Con{d, rest}:
+-      j_found_ctor(lookup(dc(d), name), rest, name)
++      j_find_ctor_children(dc(d), rest, name)
++
++# A failed child scan continues with the next owner without constructing Absent.
++# A cached child list retains lookup's cache-stop semantics, including a miss.
++@unsafe
++def j_find_ctor_children(+children: List<&2,KDef>, +rest: List<&2,KDef>, +name: String) -> KDef:
++  match children:
++    case Nil{}: j_find_ctor(rest, name)
++    case Con{d, more}:
++      kc(KDef, String.eq(dk(d), "BookCache"),
++        u => j_found_ctor(index_lookup(d, name), rest, name),
++        u => kc(KDef, String.eq(dn(d), name),
++          v => j_found_ctor(d, rest, name), v => j_find_ctor_children(more, rest, name)))
+ 
+ law j_found_ctor:
+   for +found: KDef

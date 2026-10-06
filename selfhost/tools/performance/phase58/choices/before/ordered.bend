@@ -63,8 +63,6 @@ def jd_ordered_unknown_done(+prefix: String, +callee: String, +tail: Bool, +arg:
 
 @unsafe
 def jd_ordered_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +tail: Bool, +next: U32, +xs: List<&2,KTerm>, +d: KDef) -> JDOrdered:
-  kc(JDOrdered, jd_choice_named(book, d, xs),
-    u => jd_choice_ordered(book, env, xs, next), u =>
   kc(JDOrdered, String.eq(dk(d), "Def") && U32.is_eq(dx(d), 0) &&
     (Bool.not(String.eq(tg(dv(d)), "Absent")) || jd_native_known(book, d)), u =>
       kc(JDOrdered, U32.is_eq(terms_len(xs), jd_arity(book, d)),
@@ -74,7 +72,7 @@ def jd_ordered_named(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty:
             U32.sub(jd_arity(book, d), terms_len(xs)), terms_len(env), tail,
             jd_ordered_args(book, env, xs, dt(d), next)),
           w => jd_ordered_unknown(book, env, t, tail, next, wnf(book, j_type(book, env, kid(t, 0)))))),
-    u => jd_ordered_leaf(book, env, t, ty, tail, next)))
+    u => jd_ordered_leaf(book, env, t, ty, tail, next))
 
 # Eta expansion keeps supplied prefixes and expressions in the eventual fully
 # applied closure. No provided computation runs merely to allocate the closure.

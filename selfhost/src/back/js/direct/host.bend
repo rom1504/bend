@@ -153,7 +153,7 @@ def jd_host_marshal_fields_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
 @unsafe
 def jd_host_marshal_field(+name: String, +marshal: String) -> String:
   kc(String, String.eq(marshal, ""), u => "", u =>
-    ",[" ++ j_quote(name) ++ "]:" ++ marshal ++ "(v[" ++ j_quote(name) ++ "])")
+    "," ++ jd_literal_field_key(name) ++ ":" ++ marshal ++ "(v[" ++ j_quote(name) ++ "])")
 
 # Core owns arity raising and live formal names; use jd_arity consistently.
 @unsafe

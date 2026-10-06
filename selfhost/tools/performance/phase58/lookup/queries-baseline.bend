@@ -93,19 +93,7 @@ def j_find_ctor(book, name):
     case Nil{}:
       missing()
     case Con{d, rest}:
-      j_find_ctor_children(dc(d), rest, name)
-
-# A failed child scan continues with the next owner without constructing Absent.
-# A cached child list retains lookup's cache-stop semantics, including a miss.
-@unsafe
-def j_find_ctor_children(+children: List<&2,KDef>, +rest: List<&2,KDef>, +name: String) -> KDef:
-  match children:
-    case Nil{}: j_find_ctor(rest, name)
-    case Con{d, more}:
-      kc(KDef, String.eq(dk(d), "BookCache"),
-        u => j_found_ctor(index_lookup(d, name), rest, name),
-        u => kc(KDef, String.eq(dn(d), name),
-          v => j_found_ctor(d, rest, name), v => j_find_ctor_children(more, rest, name)))
+      j_found_ctor(lookup(dc(d), name), rest, name)
 
 law j_found_ctor:
   for +found: KDef
@@ -139,16 +127,7 @@ law j_arm_type:
 
 @unsafe
 def j_arm_type(book, ty, name):
-  j_arm_type_domain(book, ty, name, wnf(book, kid(ty, 0)))
-
-# Checked books have unique constructor names. Like the Phase55 arity query,
-# use the normalized matcher owner only when both telescope and ADT are known.
-# Unknown shapes and absent owner constructors keep the global first-match path.
-@unsafe
-def j_arm_type_domain(+book: List<&2,KDef>, +ty: KTerm, +name: String, +domain: KTerm) -> KTerm:
-  j_arm_tel(book, j_specialize(book,
-    dt(kc(KDef, String.eq(tg(ty), "All") && String.eq(tg(domain), "ADT"),
-      u => j_layout_ctor(book, domain, name), u => j_find_ctor(book, name))), ks(domain)), kid(ty, 1))
+  j_arm_tel(book, j_specialize(book, dt(j_find_ctor(book, name)), ks(wnf(book, kid(ty, 0)))), kid(ty, 1))
 
 law j_arm_tel:
   for +book: List<&2, KDef>

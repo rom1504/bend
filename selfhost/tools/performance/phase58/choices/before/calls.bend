@@ -120,9 +120,7 @@ def jd_calls_word_row(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: U32,
 @unsafe
 def jd_calls_application(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +spine: KTerm, +s: JDCallScan) -> JDCallScan:
   kc(JDCallScan, String.eq(tg(spine), "Call"),
-    u => kc(JDCallScan, jd_choice_call(book, spine),
-      v => jd_choice_calls(book, env, ks(spine), s),
-      v => jd_calls_named(book, lookup(book, nm(spine)), ks(spine), s)), u =>
+    u => jd_calls_named(book, lookup(book, nm(spine)), ks(spine), s), u =>
     kc(JDCallScan, String.eq(tg(t), "App"), u =>
       jd_calls_unknown_type(wnf(book, j_type(book, env, kid(t, 0))), s), u => jd_calls_bad(s)))
 

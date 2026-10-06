@@ -1,0 +1,35 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "sets": {
+    "fast": [
+      "scalar-residual"
+    ],
+    "core": [
+      "scalar-residual"
+    ],
+    "broad": [
+      "scalar-residual"
+    ],
+    "full": [
+      "scalar-residual"
+    ]
+  },
+  "cases": [
+    {
+      "id": "scalar-residual",
+      "source": {
+        "path": "scalar-v1.bend",
+        "sha256": "a3b71274e3542e05144f27b22d783fb9ce4fa9b7107a1bc8e013e9e9eb6d9f01"
+      },
+      "point": {
+        "exportName": "checksum",
+        "args": [],
+        "expected": 127
+      },
+      "scope": "Native U32 default/residual reconstruction, alias/mutation refusal, moved/mixed bits, bit31, and unchanged F32 paths; independent controls-v1.mjs.",
+      "mode": "library"
+    }
+  ]
+}

@@ -71,7 +71,7 @@ def jd_ordered_field_head(+book: List<&2,KDef>, +env: List<&2,KTerm>, +rest: Lis
 @unsafe
 def jd_ordered_field_join(+prefix: String, +value: String, +name: String, +rest: JDOrderedFields) -> JDOrderedFields:
   match rest:
-    case JDOrderedFields{more, values, named, next}: JDOrderedFields{prefix ++ more, Con{value, values}, ",[" ++ j_quote(name) ++ "]:" ++ value ++ named, next}
+    case JDOrderedFields{more, values, named, next}: JDOrderedFields{prefix ++ more, Con{value, values}, "," ++ jd_literal_field_key(name) ++ ":" ++ value ++ named, next}
 
 @unsafe
 def jd_ordered_ctor_done(+ty: KTerm, +t: KTerm, +native: Bool, +fields: JDOrderedFields) -> JDOrdered:

@@ -1,0 +1,42 @@
+{
+  "kind": "phase58-field-fixture-source-correction",
+  "reason": "Baseline source checker requires Data for duplicated shared(+value:P58Fields); v1 Type fixture refused before candidate emission. No compiler failure established.",
+  "edits": [
+    "fields-v2 changes only P58Fields declaration Type -> Data",
+    "catalog-v2 binds only new source path/hash",
+    "controls-v2 changes only exact fixture/catalog path joins; all17groups, source/API/attempt/syntax/deferral gates retained"
+  ],
+  "inputs": [
+    {
+      "file": "fields-v1.bend",
+      "sha256": "be350b9b5200f7346acfc073b2df23e413641c761e4c5870349ce7b174380fcd",
+      "bytes": 997
+    },
+    {
+      "file": "catalog-v1.json",
+      "sha256": "a5283850faaf0b0ca99897ac79d6568cd466677f0b8bfd7f06e8ecbfd327adfb",
+      "bytes": 788
+    },
+    {
+      "file": "controls-v1.mjs",
+      "sha256": "34a3fdfb124e400210f4314642592235b0111f3942fe79fdb63a6f4faff1d96b",
+      "bytes": 9673
+    },
+    {
+      "file": "fields-v2.bend",
+      "sha256": "4890d6d9d91e3068ae8185c3dfefd5897f9c49374762b0bd79c8019d4d38103b",
+      "bytes": 997
+    },
+    {
+      "file": "catalog-v2.json",
+      "sha256": "5fff74205566cb6baf53359a4f10a63194aa9e71ab1ddcbf16cd5d42537f946a",
+      "bytes": 788
+    },
+    {
+      "file": "controls-v2.mjs",
+      "sha256": "743f40f14c3e47f63a435b4f7f25f7bcc9d926d93edbc37a35cc657a55568673",
+      "bytes": 9673
+    }
+  ],
+  "sourceDiff": "--- fields-v1.bend\n+++ fields-v2.bend\n@@ -1,6 +1,6 @@\n import Base\n \n-type P58Fields is Type:\n+type P58Fields is Data:\n   P58Fields{__proto__: U32, constructor: U32, prototype: U32, default: U32, field.name: U32, snake_case: U32}\n \n type P58NatFields is Type:\n"
+}

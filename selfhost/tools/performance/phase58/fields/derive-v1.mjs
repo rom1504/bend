@@ -1,0 +1,30 @@
+// Data-only saved-image diagnostic; never imports a compiler or generated target.
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const [parentArg,runtimeArg,outArg]=process.argv.slice(2);
+assert(parentArg&&runtimeArg&&outArg&&process.argv.length===5);
+const parent=fs.realpathSync(parentArg),runtime=fs.realpathSync(runtimeArg),out=path.resolve(outArg);
+fs.mkdirSync(out,{recursive:false});
+const hash=s=>createHash('sha256').update(s).digest('hex');
+const identity=p=>({file:p,sha256:hash(fs.readFileSync(p)),bytes:fs.statSync(p).size});
+const text=fs.readFileSync(parent,'utf8'),prefix=fs.readFileSync(runtime,'utf8')+'\n';
+assert(text.startsWith(prefix),'Exact selected direct runtime prefix required');
+const native=process.binding('natives')['internal/deps/acorn/acorn/dist/acorn'],pm={exports:{}};
+new Function('module','exports',native)(pm,pm.exports);
+const parse=s=>pm.exports.parse(s,{ecmaVersion:'latest',sourceType:'module'});
+const edits=[];let protoKept=0;
+function walk(n){if(!n||typeof n!=='object')return;if(n.type==='ObjectExpression'&&n.start>=prefix.length){for(const p of n.properties){if(p.type==='Property'&&p.kind==='init'&&!p.method&&!p.shorthand&&p.computed&&p.key.type==='Literal'&&typeof p.key.value==='string'){if(p.key.value==='__proto__'){protoKept++;continue;}const raw=text.slice(p.start,p.key.start),after=text.slice(p.key.end,p.value.start);assert(/^\[\s*$/.test(raw));const close=/^\s*\]\s*:/.exec(after);assert(close);const end=p.key.end+close[0].length;edits.push({start:p.start,end,key:p.key.value,before:text.slice(p.start,end),after:JSON.stringify(p.key.value)+':',keyStart:p.key.start,keyEnd:p.key.end});p.computed=false;}}}for(const [k,v]of Object.entries(n))if(!['start','end'].includes(k)){if(Array.isArray(v))v.forEach(walk);else if(v&&typeof v==='object')walk(v);}}
+const expected=parse(text);walk(expected);assert(edits.length>0);
+edits.sort((a,b)=>a.start-b.start);for(let i=1;i<edits.length;i++)assert(edits[i-1].end<=edits[i].start);
+let derived=text;for(const e of [...edits].reverse())derived=derived.slice(0,e.start)+e.after+derived.slice(e.end);
+const scrub=n=>{if(Array.isArray(n))return n.map(scrub);if(!n||typeof n!=='object')return n;return Object.fromEntries(Object.entries(n).filter(([k])=>!['start','end','raw'].includes(k)).map(([k,v])=>[k,scrub(v)]));};
+assert.deepEqual(scrub(parse(derived)),scrub(expected),'Only admitted key syntax/AST computed flag may change');
+let restored=derived,delta=0;const inverse=[];for(const e of edits){const start=e.start+delta;inverse.push({start,end:start+e.after.length,after:e.before});delta+=e.after.length-(e.end-e.start);}for(const e of inverse.reverse())restored=restored.slice(0,e.start)+e.after+restored.slice(e.end);assert.equal(restored,text);
+const output=path.join(out,'api.mjs');fs.writeFileSync(output,derived,{flag:'wx'});
+const producer=identity(import.meta.filename),node=identity(fs.realpathSync(process.execPath));
+const report={kind:'phase58-data-only-b2-literal-field-derivation',complete:true,pass:true,diagnosticOnly:true,productionQualified:false,changesRuntime:false,parent:identity(parent),runtime:identity(runtime),producer,node,parser:{source:'pinned Node internal Acorn',sha256:hash(native)},output:identity(output),scope:'Post-exact-runtime ObjectExpression init, nonmethod/nonshorthand constant string computed keys only. __proto__ remains computed. MemberExpression, values, ordering, representations and API exports unchanged.',editCount:edits.length,protoKept,edits,exactInverse:true,normalizedAstEquality:true};
+for(const row of [report.parent,report.runtime,producer,node])assert.equal(identity(row.file).sha256,row.sha256);
+fs.writeFileSync(path.join(out,'derivation.json'),JSON.stringify(report,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({complete:true,parent:report.parent.sha256,output:report.output.sha256,editCount:edits.length,protoKept}));

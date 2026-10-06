@@ -139,16 +139,7 @@ law j_arm_type:
 
 @unsafe
 def j_arm_type(book, ty, name):
-  j_arm_type_domain(book, ty, name, wnf(book, kid(ty, 0)))
-
-# Checked books have unique constructor names. Like the Phase55 arity query,
-# use the normalized matcher owner only when both telescope and ADT are known.
-# Unknown shapes and absent owner constructors keep the global first-match path.
-@unsafe
-def j_arm_type_domain(+book: List<&2,KDef>, +ty: KTerm, +name: String, +domain: KTerm) -> KTerm:
-  j_arm_tel(book, j_specialize(book,
-    dt(kc(KDef, String.eq(tg(ty), "All") && String.eq(tg(domain), "ADT"),
-      u => j_layout_ctor(book, domain, name), u => j_find_ctor(book, name))), ks(domain)), kid(ty, 1))
+  j_arm_tel(book, j_specialize(book, dt(j_find_ctor(book, name)), ks(wnf(book, kid(ty, 0)))), kid(ty, 1))
 
 law j_arm_tel:
   for +book: List<&2, KDef>

@@ -1,0 +1,60 @@
+{
+  "kind": "phase58-typed-literal-choice-proposal",
+  "status": "unexecuted-proposal",
+  "manifestIntegration": "Add src/back/js/direct/choices.bend after ordered-values.bend and before core.bend. All existing module paths retained.",
+  "sourceFiles": [
+    {
+      "destination": "selfhost/src/back/js/direct/choices.bend",
+      "after": {
+        "path": "selfhost/tools/performance/phase58/choices/after/choices.bend",
+        "sha256": "9fe0a3a9d4416563b70b48101d4ad04384ebc1052f9d0a481aacd7cea2f3588f",
+        "bytes": 5069
+      }
+    },
+    {
+      "destination": "selfhost/src/back/js/direct/core.bend",
+      "before": {
+        "path": "selfhost/tools/performance/phase58/choices/before/core.bend",
+        "sha256": "2012e7ba5e4a4140857f929eaf80b2d9b2f9f3b9dc72147678a7923f17bd109f",
+        "bytes": 18368
+      },
+      "after": {
+        "path": "selfhost/tools/performance/phase58/choices/after/core.bend",
+        "sha256": "85381e3c1418f575b818197ed66b5a590a4923bc91c7a366a36ad3260e521351",
+        "bytes": 18550
+      }
+    },
+    {
+      "destination": "selfhost/src/back/js/direct/ordered.bend",
+      "before": {
+        "path": "selfhost/tools/performance/phase58/choices/before/ordered.bend",
+        "sha256": "0dde638d997b828f8dc6db67b8abe52994a24d4f6c07e7874d7f2abc019d6d71",
+        "bytes": 11677
+      },
+      "after": {
+        "path": "selfhost/tools/performance/phase58/choices/after/ordered.bend",
+        "sha256": "09b5b985a06c27ea1f697736664ccc5e79b16502baa37e3e55587c36273ef65a",
+        "bytes": 11778
+      }
+    },
+    {
+      "destination": "selfhost/src/back/js/direct/calls.bend",
+      "before": {
+        "path": "selfhost/tools/performance/phase58/choices/before/calls.bend",
+        "sha256": "3b8129d1976a2016a7aef5a9e3cdd175fe7f5f9d5aec5ab220a427b37e1f0255",
+        "bytes": 22202
+      },
+      "after": {
+        "path": "selfhost/tools/performance/phase58/choices/after/calls.bend",
+        "sha256": "14e037349e61ecb8f0fc60cf5a50f1edfc05ae18f04a764f1da786c8d9f5f99d",
+        "bytes": 22311
+      }
+    }
+  ],
+  "patch": {
+    "path": "selfhost/tools/performance/phase58/choices/choices-v1.patch",
+    "sha256": "428b70cf6e043198e9decd5c41a8c30d1de77d2caee8f876c6b22a6e37d40468",
+    "bytes": 8586
+  },
+  "scope": "Checked annotated source with standard builtins; private closure/trampoline packaging is not public ABI. No live source edits."
+}

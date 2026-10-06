@@ -1,0 +1,35 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "sets": {
+    "fast": [
+      "literal-fields"
+    ],
+    "core": [
+      "literal-fields"
+    ],
+    "broad": [
+      "literal-fields"
+    ],
+    "full": [
+      "literal-fields"
+    ]
+  },
+  "cases": [
+    {
+      "id": "literal-fields",
+      "source": {
+        "path": "fields-v2.bend",
+        "sha256": "4890d6d9d91e3068ae8185c3dfefd5897f9c49374762b0bd79c8019d4d38103b"
+      },
+      "point": {
+        "exportName": "checksum",
+        "args": [],
+        "expected": 21
+      },
+      "scope": "Fresh checked library acquisition; checksum21 plus independent full data/ABI observations in controls-v1.mjs.",
+      "mode": "library"
+    }
+  ]
+}

@@ -1,0 +1,571 @@
+{
+  "kind": "phase58-shared01-qualification-index",
+  "complete": true,
+  "qualifiedScopesPassed": true,
+  "dataOnly": true,
+  "targetExecutedByIndex": false,
+  "scope": "Index of completed selected shared01 correctness gates. Report bytes are freshly hashed; image identities are the verified pins reported by their authoritative gates. This index does not rerun those gates or perform a new transitive artifact audit. Performance, installation, publication and closure are separate pending obligations. Historical schema labels in linked reports denote frozen method lineage.",
+  "selected": {
+    "attempt": {
+      "path": "selfhost/build/phase58/checked-shared01/attempt.json",
+      "sha256": "e5c6b34cbebe441e30806e6f84a121100ce775e5e02737f2cac7dd5d49d368a2",
+      "bytes": 292685
+    },
+    "imagePins": {
+      "path": "selfhost/build/phase58/final-shared01/bootstrap/image-pins.json",
+      "sha256": "225022b838cf0080654f2c48495e343d6a2fc7da91799a716f6047c491e46fc6",
+      "bytes": 4086
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/checked-shared01/snapshot/build/typed/snapshots/f757490bfe897d9f05870a9bc3ae219f3df8100c7eebb0c52876a7cdf2af7159/compiler.bend",
+      "sha256": "a4ad6717934a8596c6bf707ecabf11346f57ca5b4e4e08cdcbdaac7921546d9a"
+    },
+    "checkedB1": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/checked-shared01/equality/api.mjs",
+      "sha256": "eddce7504207d91735e8369e7142f73ede8f77d8d2353b1ad6548796bdfd4569"
+    },
+    "directB2": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/final-shared01/bootstrap/full/compiler.mjs",
+      "sha256": "b7c5752d66ae4eaa8619e06b5a12655b370fba9d745d223660fbbb73da68fec8"
+    },
+    "directRuntime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/checked-shared01/snapshot/src/runtime/js/direct.mjs",
+      "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+    },
+    "checkedValidation": {
+      "path": "selfhost/build/phase58/checked-shared01/validation-001/report.json",
+      "sha256": "54e322ebbf9206e3ebcd591caf938c75ee028728c358bc3e6f03a062d05a2feb",
+      "bytes": 8960
+    },
+    "strictProbeAgreements": 36
+  },
+  "queues": {
+    "checked": {
+      "receipt": {
+        "path": "selfhost/build/phase58/final-shared01/checked-execution/report.json",
+        "sha256": "189961b3e723b191d711b989a70b1d3be137bbf12d217b89444484798aa301ec",
+        "bytes": 14391
+      },
+      "completedJobs": 14,
+      "jobs": [
+        "acquire-composition",
+        "composition-controls",
+        "acquire-overapplication",
+        "overapplication-controls",
+        "acquire-source",
+        "source-role-join",
+        "source-controls",
+        "acquire-numeric",
+        "numeric-controls",
+        "direct-census",
+        "maintained8",
+        "program45-acquisition",
+        "program45-smoke",
+        "native3"
+      ]
+    },
+    "bootstrap": {
+      "receipt": {
+        "path": "selfhost/build/phase58/final-shared01/bootstrap-execution/report.json",
+        "sha256": "77020b6fb3e5d21396ccaa7fa71b698aa444530ae6d6cc5f13d547b80c9aaea9",
+        "bytes": 6964
+      },
+      "completedJobs": 6,
+      "jobs": [
+        "tiny",
+        "full",
+        "driver-source",
+        "driver-direct",
+        "driver-join",
+        "image-pins"
+      ]
+    },
+    "b2Semantics": {
+      "receipt": {
+        "path": "selfhost/build/phase58/final-shared01/b2-semantics-execution/report.json",
+        "sha256": "3d8cc4cedb0bdcef5d8e92bbc77e03bd20f7f231ee3de60b8d943d4ab3c15e18",
+        "bytes": 10872
+      },
+      "completedJobs": 8,
+      "jobs": [
+        "acquire-composition",
+        "composition-controls",
+        "acquire-overapplication",
+        "overapplication-controls",
+        "acquire-source",
+        "source-controls",
+        "acquire-numeric",
+        "numeric-controls"
+      ]
+    },
+    "b2Stage": {
+      "receipt": {
+        "path": "selfhost/build/phase58/final-shared01/b2-stage-execution/report.json",
+        "sha256": "d2bc975f829e5b6c6e4e63434e68bc1ca3d127688d7b3a286916adc33f8fd04d",
+        "bytes": 5085
+      },
+      "completedJobs": 5,
+      "jobs": [
+        "self-check",
+        "fixed-point",
+        "prepare-b2-semantics",
+        "execute-b2-semantics",
+        "b2-program-equality"
+      ]
+    }
+  },
+  "semantics": {
+    "checkedB1": {
+      "source": {
+        "receipt": {
+          "path": "selfhost/build/phase58/final-shared01/checked/source-controls/report.json",
+          "sha256": "d9edec6e5eb533a9b99fa3a149e2ae994cb173ff6739cd9d1d3e56735781a07e",
+          "bytes": 98093
+        },
+        "counts": {
+          "candidateSourcePass": 96,
+          "referenceSourcePass": 95,
+          "differentialAgreement": 95,
+          "knownReferenceDefects": 1,
+          "total": 96
+        }
+      },
+      "numeric": {
+        "receipt": {
+          "path": "selfhost/build/phase58/final-shared01/checked/numeric-controls/report.json",
+          "sha256": "546bdd293a617c8fffe8c8f3e8f63376e516abc4b998dd999708b6300cb85776",
+          "bytes": 89624
+        },
+        "counts": {
+          "candidatePass": 34,
+          "referencePass": 28,
+          "referenceFailures": [
+            "original-cold-0",
+            "original-cold-1",
+            "original-cold-2",
+            "renamed-cold-0",
+            "renamed-cold-1",
+            "renamed-cold-2"
+          ],
+          "total": 34
+        }
+      },
+      "composition": {
+        "receipt": {
+          "path": "selfhost/build/phase58/final-shared01/checked/composition-controls/report.json",
+          "sha256": "e13b4a540b5f1a1c36672938e848c3a8d6aa6178b9b3172ea370bfd11413b300",
+          "bytes": 55365
+        },
+        "counts": {
+          "candidatePass": 18,
+          "referencePass": 18,
+          "referenceFailures": [],
+          "total": 18
+        }
+      },
+      "overapplication": {
+        "receipt": {
+          "path": "selfhost/build/phase58/final-shared01/checked/overapplication-controls/report.json",
+          "sha256": "f9b6bc975cc1b09a46a61c18fc108864350362c8d37993d7218f90367b52f21d",
+          "bytes": 11451
+        },
+        "counts": {
+          "candidatePass": 2,
+          "referencePass": 2,
+          "referenceFailures": [],
+          "total": 2
+        }
+      }
+    },
+    "directB2": {
+      "source": {
+        "receipt": {
+          "path": "selfhost/build/phase58/final-shared01/b2-semantics/source-controls/report.json",
+          "sha256": "7a16f9dc8c4e6e81364020f383c8631b19e9eb2e08cde247a75f08b951dab570",
+          "bytes": 213414
+        },
+        "counts": {
+          "candidateSourcePass": 96,
+          "referenceSourcePass": 95,
+          "differentialAgreement": 95,
+          "knownReferenceDefects": 1,
+          "total": 96
+        }
+      },
+      "numeric": {
+        "receipt": {
+          "path": "selfhost/build/phase58/final-shared01/b2-semantics/numeric-controls/report.json",
+          "sha256": "2e78c02ab8fa3f78bedf5d146469a345d334a898abb88ee3dde623fcd0bb5d54",
+          "bytes": 234422
+        },
+        "counts": {
+          "candidatePass": 34,
+          "referencePass": 28,
+          "referenceFailures": [
+            "original-cold-0",
+            "original-cold-1",
+            "original-cold-2",
+            "renamed-cold-0",
+            "renamed-cold-1",
+            "renamed-cold-2"
+          ],
+          "total": 34
+        }
+      },
+      "composition": {
+        "receipt": {
+          "path": "selfhost/build/phase58/final-shared01/b2-semantics/composition-controls/report.json",
+          "sha256": "a73546555f407cf4138e7d16cd6381f08d8dd7956ea6e3b6acfa0e837e6b3e7e",
+          "bytes": 171875
+        },
+        "counts": {
+          "candidatePass": 18,
+          "referencePass": 18,
+          "referenceFailures": [],
+          "total": 18
+        }
+      },
+      "overapplication": {
+        "receipt": {
+          "path": "selfhost/build/phase58/final-shared01/b2-semantics/overapplication-controls/report.json",
+          "sha256": "5ea3e7df9eeaf1660e51fb38dd55e92262f512a0d6947a4965abce4389cb7663",
+          "bytes": 128157
+        },
+        "counts": {
+          "candidatePass": 2,
+          "referencePass": 2,
+          "referenceFailures": [],
+          "total": 2
+        }
+      }
+    }
+  },
+  "focused": [
+    {
+      "receipt": {
+        "path": "selfhost/build/phase58/shared-choice-controls02/report.json",
+        "sha256": "7fc1903eb44f021bbd7acf7c174071020d011af6c2286639d24f876d8782c623",
+        "bytes": 145628
+      },
+      "observations": 36,
+      "hostRowsPerRole": 9,
+      "activation": 8,
+      "sharedComponents": 1,
+      "programRoleExecutions": 0
+    },
+    {
+      "receipt": {
+        "path": "selfhost/build/phase58/shared-scc-controls02/report.json",
+        "sha256": "129c8b3adc3fc8332f9d6818a23832fbd35a612d0ce2e5ba64ffc383b7050fa9",
+        "bytes": 137211
+      },
+      "observations": 9,
+      "hostRowsPerRole": 12,
+      "activation": 3,
+      "sharedComponents": 0,
+      "programRoleExecutions": 3
+    }
+  ],
+  "bootstrap": {
+    "receipt": {
+      "path": "selfhost/build/phase58/final-shared01/bootstrap/full/report.json",
+      "sha256": "dcf5eb197c3f474cb39aa7b1f04fe1da9b07597417ca51f8163ceea6dc7546c4",
+      "bytes": 12863
+    },
+    "roots": 77,
+    "bytes": 3815480
+  },
+  "freshOwnSource": {
+    "receipt": {
+      "path": "selfhost/build/phase58/final-shared01/self-check/report.json",
+      "sha256": "1d4f193cb05dc986180f620e6f272baf1f2cac32089afd27e7c7c2f631cfaac8",
+      "bytes": 281658
+    },
+    "typeAccepted": true,
+    "expectedUnsafeProofTrustFailure": true,
+    "mathematicalProof": false,
+    "unsafeDefinitions": 3054,
+    "checkSeconds": 9.976986104,
+    "workerSeconds": 15.720376185000001
+  },
+  "fixedPoint": {
+    "receipt": {
+      "path": "selfhost/build/phase58/final-shared01/fixed-point/report.json",
+      "sha256": "11e57e1627b373320df20fad5d2e2dc2786f431b00e61a9f6db999ef5f8d67cf",
+      "bytes": 152634
+    },
+    "byteEquality": true,
+    "b2Sha256": "b7c5752d66ae4eaa8619e06b5a12655b370fba9d745d223660fbbb73da68fec8",
+    "b3Sha256": "b7c5752d66ae4eaa8619e06b5a12655b370fba9d745d223660fbbb73da68fec8",
+    "bytes": 3815480,
+    "workerSeconds": 39.430921916
+  },
+  "maintained": {
+    "receipt": {
+      "path": "selfhost/build/phase58/final-shared01/checked/maintained8/report.json",
+      "sha256": "eaa2307a097869788730dc0d733cd611957b2b94e940933e693f61d1f3af70e2",
+      "bytes": 61061
+    },
+    "suites": 8
+  },
+  "directCensus": {
+    "receipt": {
+      "path": "selfhost/build/phase58/final-shared01/checked/direct-census/report.json",
+      "sha256": "cfc7953d484ecc611314eb4cab58999ad03167c85f792307f190836f17582a7d",
+      "bytes": 175634
+    },
+    "semanticAgreement": 26,
+    "eachRole": {
+      "pass": 22,
+      "notApplicable": 4
+    }
+  },
+  "native": {
+    "receipt": {
+      "path": "selfhost/build/phase58/final-shared01/checked/native3/report.json",
+      "sha256": "371c807bd91a1049c98a020efec471920c82998916636c2f2f0c16d000c8426d",
+      "bytes": 246644
+    },
+    "cases": 3,
+    "completeCBytesEqual": true,
+    "bothRoleStdoutOracles": true,
+    "scope": "Representatives, not a broad native census."
+  },
+  "programs": {
+    "checkedB1Smoke": {
+      "path": "selfhost/build/phase58/final-shared01/checked/program45-smoke/report.json",
+      "sha256": "5c80a9cab260746e6ec39ef7dabd1c31b1e40fd51fda6903acb553fb0b74aa67",
+      "bytes": 208775
+    },
+    "points": 45,
+    "b2Equality": {
+      "path": "selfhost/build/phase58/final-shared01/b2-program-equality/report.json",
+      "sha256": "2ded0f1236525288d7ddfce9026b243df5496f970f21519fdc147961292f5fa1",
+      "bytes": 241497
+    },
+    "freshB2SourceEmissions": 23,
+    "b2EmissionsByteEqualToSelectedB1": true,
+    "programsExecutedByEqualityGate": false,
+    "outputComparison": {
+      "path": "selfhost/build/phase58/program-performance-shared01/report.json",
+      "sha256": "d84e601bfaa4b77fafeb77146b84f0627cdd280610a3b13e21e2654dee81d55b",
+      "bytes": 101797
+    },
+    "outputChangeCounts": {
+      "points": 45,
+      "sources": 23,
+      "changed": 41,
+      "unchanged": 4,
+      "changedSources": 21
+    },
+    "speedClaim": false
+  },
+  "sourceAccounting": {
+    "path": "selfhost/build/phase58/source-accounting-shared01.json",
+    "sha256": "c11a87cd9e0e72bdb3e7e37543fc01618fed5b7c922613078549599133c2dbd9",
+    "bytes": 333767
+  },
+  "preInstallPreservation": {
+    "receipt": {
+      "path": "selfhost/build/phase58/preservation-before-install.json",
+      "sha256": "ed7d4acfa0a8509c15466c79765105e1ce24ecfd316f74fc16da384d30f54276",
+      "bytes": 34714
+    },
+    "closedHistoricalFiles": 17639,
+    "protectedFiles": 103,
+    "installedFiles": 7,
+    "scope": "Pre-install only; no new release or closure claim."
+  },
+  "preservedFailures": [
+    {
+      "receipt": {
+        "path": "selfhost/build/phase58/final-choice02/bootstrap/full/report.json",
+        "sha256": "75cdb82f833906794f606155c647af2abe994f084a1d5604f89fb9d90e4c0e85",
+        "bytes": 11542
+      },
+      "reason": "Earlier choice01 full B2 emission exceeded the unchanged reachability queue budget."
+    },
+    {
+      "receipt": {
+        "path": "selfhost/build/phase58/shared-choice-controls01/report.json",
+        "sha256": "45b1a2b5a1e45632d9c7cd924ce1832762d81abd033dc7d060745c29e67d8bd9",
+        "bytes": 143704
+      },
+      "reason": "Controller v3 compared arrays from distinct JavaScript realms; v4 preserves oracles and corrects that check."
+    },
+    {
+      "receipt": {
+        "path": "selfhost/build/phase58/shared-scc-controls01/report.json",
+        "sha256": "6865254904b38f5d84c0906d813e97795e6085bc32b775e7e2e9ada779ab941d",
+        "bytes": 136004
+      },
+      "reason": "Node spawn EPERM; same controller retried in the authorized environment."
+    }
+  ],
+  "notCovered": [
+    "compiler performance matrix",
+    "generated-program timing",
+    "new installation and CLI 42/24",
+    "portable replay",
+    "post-install preservation",
+    "writer closure and archive"
+  ],
+  "reportInputsUnchanged": true,
+  "reportInputs": [
+    {
+      "path": "selfhost/build/phase58/final-shared01/bootstrap/image-pins.json",
+      "sha256": "225022b838cf0080654f2c48495e343d6a2fc7da91799a716f6047c491e46fc6",
+      "bytes": 4086
+    },
+    {
+      "path": "selfhost/build/phase58/checked-shared01/attempt.json",
+      "sha256": "e5c6b34cbebe441e30806e6f84a121100ce775e5e02737f2cac7dd5d49d368a2",
+      "bytes": 292685
+    },
+    {
+      "path": "selfhost/build/phase58/checked-shared01/validation-001/report.json",
+      "sha256": "54e322ebbf9206e3ebcd591caf938c75ee028728c358bc3e6f03a062d05a2feb",
+      "bytes": 8960
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/checked-execution/report.json",
+      "sha256": "189961b3e723b191d711b989a70b1d3be137bbf12d217b89444484798aa301ec",
+      "bytes": 14391
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/bootstrap-execution/report.json",
+      "sha256": "77020b6fb3e5d21396ccaa7fa71b698aa444530ae6d6cc5f13d547b80c9aaea9",
+      "bytes": 6964
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/b2-semantics-execution/report.json",
+      "sha256": "3d8cc4cedb0bdcef5d8e92bbc77e03bd20f7f231ee3de60b8d943d4ab3c15e18",
+      "bytes": 10872
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/b2-stage-execution/report.json",
+      "sha256": "d2bc975f829e5b6c6e4e63434e68bc1ca3d127688d7b3a286916adc33f8fd04d",
+      "bytes": 5085
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/checked/source-controls/report.json",
+      "sha256": "d9edec6e5eb533a9b99fa3a149e2ae994cb173ff6739cd9d1d3e56735781a07e",
+      "bytes": 98093
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/checked/numeric-controls/report.json",
+      "sha256": "546bdd293a617c8fffe8c8f3e8f63376e516abc4b998dd999708b6300cb85776",
+      "bytes": 89624
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/checked/composition-controls/report.json",
+      "sha256": "e13b4a540b5f1a1c36672938e848c3a8d6aa6178b9b3172ea370bfd11413b300",
+      "bytes": 55365
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/checked/overapplication-controls/report.json",
+      "sha256": "f9b6bc975cc1b09a46a61c18fc108864350362c8d37993d7218f90367b52f21d",
+      "bytes": 11451
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/b2-semantics/source-controls/report.json",
+      "sha256": "7a16f9dc8c4e6e81364020f383c8631b19e9eb2e08cde247a75f08b951dab570",
+      "bytes": 213414
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/b2-semantics/numeric-controls/report.json",
+      "sha256": "2e78c02ab8fa3f78bedf5d146469a345d334a898abb88ee3dde623fcd0bb5d54",
+      "bytes": 234422
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/b2-semantics/composition-controls/report.json",
+      "sha256": "a73546555f407cf4138e7d16cd6381f08d8dd7956ea6e3b6acfa0e837e6b3e7e",
+      "bytes": 171875
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/b2-semantics/overapplication-controls/report.json",
+      "sha256": "5ea3e7df9eeaf1660e51fb38dd55e92262f512a0d6947a4965abce4389cb7663",
+      "bytes": 128157
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/bootstrap/full/report.json",
+      "sha256": "dcf5eb197c3f474cb39aa7b1f04fe1da9b07597417ca51f8163ceea6dc7546c4",
+      "bytes": 12863
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/self-check/report.json",
+      "sha256": "1d4f193cb05dc986180f620e6f272baf1f2cac32089afd27e7c7c2f631cfaac8",
+      "bytes": 281658
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/fixed-point/report.json",
+      "sha256": "11e57e1627b373320df20fad5d2e2dc2786f431b00e61a9f6db999ef5f8d67cf",
+      "bytes": 152634
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/b2-program-equality/report.json",
+      "sha256": "2ded0f1236525288d7ddfce9026b243df5496f970f21519fdc147961292f5fa1",
+      "bytes": 241497
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/checked/program45-smoke/report.json",
+      "sha256": "5c80a9cab260746e6ec39ef7dabd1c31b1e40fd51fda6903acb553fb0b74aa67",
+      "bytes": 208775
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/checked/native3/report.json",
+      "sha256": "371c807bd91a1049c98a020efec471920c82998916636c2f2f0c16d000c8426d",
+      "bytes": 246644
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/checked/direct-census/report.json",
+      "sha256": "cfc7953d484ecc611314eb4cab58999ad03167c85f792307f190836f17582a7d",
+      "bytes": 175634
+    },
+    {
+      "path": "selfhost/build/phase58/final-shared01/checked/maintained8/report.json",
+      "sha256": "eaa2307a097869788730dc0d733cd611957b2b94e940933e693f61d1f3af70e2",
+      "bytes": 61061
+    },
+    {
+      "path": "selfhost/build/phase58/shared-choice-controls02/report.json",
+      "sha256": "7fc1903eb44f021bbd7acf7c174071020d011af6c2286639d24f876d8782c623",
+      "bytes": 145628
+    },
+    {
+      "path": "selfhost/build/phase58/shared-scc-controls02/report.json",
+      "sha256": "129c8b3adc3fc8332f9d6818a23832fbd35a612d0ce2e5ba64ffc383b7050fa9",
+      "bytes": 137211
+    },
+    {
+      "path": "selfhost/build/phase58/program-performance-shared01/report.json",
+      "sha256": "d84e601bfaa4b77fafeb77146b84f0627cdd280610a3b13e21e2654dee81d55b",
+      "bytes": 101797
+    },
+    {
+      "path": "selfhost/build/phase58/source-accounting-shared01.json",
+      "sha256": "c11a87cd9e0e72bdb3e7e37543fc01618fed5b7c922613078549599133c2dbd9",
+      "bytes": 333767
+    },
+    {
+      "path": "selfhost/build/phase58/preservation-before-install.json",
+      "sha256": "ed7d4acfa0a8509c15466c79765105e1ce24ecfd316f74fc16da384d30f54276",
+      "bytes": 34714
+    },
+    {
+      "path": "selfhost/build/phase58/final-choice02/bootstrap/full/report.json",
+      "sha256": "75cdb82f833906794f606155c647af2abe994f084a1d5604f89fb9d90e4c0e85",
+      "bytes": 11542
+    },
+    {
+      "path": "selfhost/build/phase58/shared-choice-controls01/report.json",
+      "sha256": "45b1a2b5a1e45632d9c7cd924ce1832762d81abd033dc7d060745c29e67d8bd9",
+      "bytes": 143704
+    },
+    {
+      "path": "selfhost/build/phase58/shared-scc-controls01/report.json",
+      "sha256": "6865254904b38f5d84c0906d813e97795e6085bc32b775e7e2e9ada779ab941d",
+      "bytes": 136004
+    }
+  ]
+}

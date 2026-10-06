@@ -1,0 +1,533 @@
+{
+  "kind": "phase58-compiler-comparison-figures",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/plot-comparison.py",
+    "sha256": "b687f3c05f3a8333d98800b958d85e9581d34b0a62ed6e53c625c10b0a7bb73a",
+    "bytes": 7588
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/latency-final-clean01/report.json",
+      "sha256": "abeca828f5a2242c52ed2d9cbc10d8cbaa5c711116b153ff773bd8f2f380cefe",
+      "bytes": 281306
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/latency-final-allocation01/report.json",
+      "sha256": "d5aa950419c17d8cf24182b294abd3c7a9de9ff04d0f50f4502112c5ae37937c",
+      "bytes": 313141
+    }
+  ],
+  "images": {
+    "b1": {
+      "baseline": {
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/comparison-shared01/b1-preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "sha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/snapshot/build/typed/snapshots/1027f6d7392aaf80fd3f0c6799a326af611b638ff754482705e9ea5a381f52f5/compiler.bend",
+          "sha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244"
+        }
+      },
+      "candidate": {
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/comparison-shared01/b1-preparation/prepare-candidate/stage/project/dist/api.mjs",
+          "sha256": "eddce7504207d91735e8369e7142f73ede8f77d8d2353b1ad6548796bdfd4569"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/checked-shared01/snapshot/build/typed/snapshots/f757490bfe897d9f05870a9bc3ae219f3df8100c7eebb0c52876a7cdf2af7159/compiler.bend",
+          "sha256": "a4ad6717934a8596c6bf707ecabf11346f57ca5b4e4e08cdcbdaac7921546d9a"
+        }
+      }
+    },
+    "b2": {
+      "baseline": {
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/comparison-shared01/b2-preparation/prepare-baseline/stage/project/dist/api.mjs",
+          "sha256": "3f652f7d3e26e06fe74da18bf8709195c54e4620906ffb7c1d0643c96ecbd57e"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/snapshot/build/typed/snapshots/1027f6d7392aaf80fd3f0c6799a326af611b638ff754482705e9ea5a381f52f5/compiler.bend",
+          "sha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244"
+        }
+      },
+      "candidate": {
+        "api": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/comparison-shared01/b2-preparation/prepare-candidate/stage/project/dist/api.mjs",
+          "sha256": "b7c5752d66ae4eaa8619e06b5a12655b370fba9d745d223660fbbb73da68fec8"
+        },
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/checked-shared01/snapshot/build/typed/snapshots/f757490bfe897d9f05870a9bc3ae219f3df8100c7eebb0c52876a7cdf2af7159/compiler.bend",
+          "sha256": "a4ad6717934a8596c6bf707ecabf11346f57ca5b4e4e08cdcbdaac7921546d9a"
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "importApiAndFirstMs",
+      "case": "test-evening-program",
+      "role": "baseline",
+      "median": 2578.039554,
+      "min": 2571.936592,
+      "max": 2592.8343299999997,
+      "samples": [
+        2578.039554,
+        2571.936592,
+        2592.8343299999997
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "importApiAndFirstMs",
+      "case": "test-evening-program",
+      "role": "candidate",
+      "median": 2575.518027,
+      "min": 2567.634346,
+      "max": 2577.845583,
+      "samples": [
+        2575.518027,
+        2567.634346,
+        2577.845583
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "importApiAndFirstMs",
+      "case": "test-evening-program",
+      "role": "typescript",
+      "median": 845.3113259999999,
+      "min": 841.139588,
+      "max": 850.817904,
+      "samples": [
+        841.139588,
+        850.817904,
+        845.3113259999999
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "importApiAndFirstMs",
+      "case": "lexer",
+      "role": "baseline",
+      "median": 1654.7806339999997,
+      "min": 1650.752199,
+      "max": 1655.8710899999999,
+      "samples": [
+        1650.752199,
+        1654.7806339999997,
+        1655.8710899999999
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "importApiAndFirstMs",
+      "case": "lexer",
+      "role": "candidate",
+      "median": 1664.169941,
+      "min": 1641.6260459999999,
+      "max": 1666.7999210000003,
+      "samples": [
+        1664.169941,
+        1666.7999210000003,
+        1641.6260459999999
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "importApiAndFirstMs",
+      "case": "lexer",
+      "role": "typescript",
+      "median": 574.053648,
+      "min": 572.4753969999999,
+      "max": 575.417022,
+      "samples": [
+        574.053648,
+        572.4753969999999,
+        575.417022
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "warmRequestMedianMs",
+      "case": "test-evening-program",
+      "role": "baseline",
+      "median": 1735.4997119999998,
+      "min": 1663.5030099999994,
+      "max": 1738.6439390000005,
+      "samples": [
+        1738.6439390000005,
+        1735.4997119999998,
+        1663.5030099999994
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "warmRequestMedianMs",
+      "case": "test-evening-program",
+      "role": "candidate",
+      "median": 1610.8313170000001,
+      "min": 1604.315399,
+      "max": 1629.369017,
+      "samples": [
+        1604.315399,
+        1610.8313170000001,
+        1629.369017
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "warmRequestMedianMs",
+      "case": "test-evening-program",
+      "role": "typescript",
+      "median": 393.448271,
+      "min": 390.5047069999998,
+      "max": 403.3290670000001,
+      "samples": [
+        393.448271,
+        403.3290670000001,
+        390.5047069999998
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "warmRequestMedianMs",
+      "case": "lexer",
+      "role": "baseline",
+      "median": 889.9623879999999,
+      "min": 878.0518720000005,
+      "max": 894.6198490000002,
+      "samples": [
+        894.6198490000002,
+        889.9623879999999,
+        878.0518720000005
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "warmRequestMedianMs",
+      "case": "lexer",
+      "role": "candidate",
+      "median": 929.9956520000001,
+      "min": 865.5708289999998,
+      "max": 931.2949090000002,
+      "samples": [
+        865.5708289999998,
+        931.2949090000002,
+        929.9956520000001
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b1",
+      "metric": "warmRequestMedianMs",
+      "case": "lexer",
+      "role": "typescript",
+      "median": 236.97483399999987,
+      "min": 234.01350099999968,
+      "max": 243.18764799999985,
+      "samples": [
+        236.97483399999987,
+        234.01350099999968,
+        243.18764799999985
+      ]
+    },
+    {
+      "kind": "allocation",
+      "image": "b1",
+      "metric": "estimatedBytesPerRequest",
+      "case": "lexer",
+      "role": "baseline",
+      "median": 924128234.6666666,
+      "min": 924128234.6666666,
+      "max": 924128234.6666666,
+      "samples": [
+        924128234.6666666
+      ]
+    },
+    {
+      "kind": "allocation",
+      "image": "b1",
+      "metric": "estimatedBytesPerRequest",
+      "case": "lexer",
+      "role": "candidate",
+      "median": 905075381.3333334,
+      "min": 905075381.3333334,
+      "max": 905075381.3333334,
+      "samples": [
+        905075381.3333334
+      ]
+    },
+    {
+      "kind": "allocation",
+      "image": "b1",
+      "metric": "estimatedBytesPerRequest",
+      "case": "lexer",
+      "role": "typescript",
+      "median": 59883116.75,
+      "min": 59883116.75,
+      "max": 59883116.75,
+      "samples": [
+        59883116.75
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "importApiAndFirstMs",
+      "case": "test-evening-program",
+      "role": "baseline",
+      "median": 4609.193557,
+      "min": 4590.041267999999,
+      "max": 4923.035809999999,
+      "samples": [
+        4590.041267999999,
+        4923.035809999999,
+        4609.193557
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "importApiAndFirstMs",
+      "case": "test-evening-program",
+      "role": "candidate",
+      "median": 1796.7416070000002,
+      "min": 1785.1038340000005,
+      "max": 1847.007195,
+      "samples": [
+        1785.1038340000005,
+        1847.007195,
+        1796.7416070000002
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "importApiAndFirstMs",
+      "case": "test-evening-program",
+      "role": "typescript",
+      "median": 840.6246859999998,
+      "min": 831.467078,
+      "max": 842.6560020000001,
+      "samples": [
+        831.467078,
+        840.6246859999998,
+        842.6560020000001
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "importApiAndFirstMs",
+      "case": "lexer",
+      "role": "baseline",
+      "median": 2938.60318,
+      "min": 2904.0883999999996,
+      "max": 2939.7339899999997,
+      "samples": [
+        2904.0883999999996,
+        2939.7339899999997,
+        2938.60318
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "importApiAndFirstMs",
+      "case": "lexer",
+      "role": "candidate",
+      "median": 1335.0640700000001,
+      "min": 1324.6383629999998,
+      "max": 1347.0779549999997,
+      "samples": [
+        1347.0779549999997,
+        1324.6383629999998,
+        1335.0640700000001
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "importApiAndFirstMs",
+      "case": "lexer",
+      "role": "typescript",
+      "median": 575.549885,
+      "min": 573.0502319999999,
+      "max": 591.4293629999999,
+      "samples": [
+        573.0502319999999,
+        575.549885,
+        591.4293629999999
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "warmRequestMedianMs",
+      "case": "test-evening-program",
+      "role": "baseline",
+      "median": 3053.756485,
+      "min": 3051.7858300000007,
+      "max": 3060.826076000001,
+      "samples": [
+        3053.756485,
+        3060.826076000001,
+        3051.7858300000007
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "warmRequestMedianMs",
+      "case": "test-evening-program",
+      "role": "candidate",
+      "median": 864.1507879999999,
+      "min": 842.8057630000003,
+      "max": 874.3369480000001,
+      "samples": [
+        842.8057630000003,
+        864.1507879999999,
+        874.3369480000001
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "warmRequestMedianMs",
+      "case": "test-evening-program",
+      "role": "typescript",
+      "median": 410.276926,
+      "min": 400.6937190000001,
+      "max": 415.18509099999983,
+      "samples": [
+        400.6937190000001,
+        410.276926,
+        415.18509099999983
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "warmRequestMedianMs",
+      "case": "lexer",
+      "role": "baseline",
+      "median": 1616.583517,
+      "min": 1615.257799,
+      "max": 1632.1252129999993,
+      "samples": [
+        1616.583517,
+        1615.257799,
+        1632.1252129999993
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "warmRequestMedianMs",
+      "case": "lexer",
+      "role": "candidate",
+      "median": 557.618962,
+      "min": 556.5798439999999,
+      "max": 587.1589309999999,
+      "samples": [
+        587.1589309999999,
+        557.618962,
+        556.5798439999999
+      ]
+    },
+    {
+      "kind": "latency",
+      "image": "b2",
+      "metric": "warmRequestMedianMs",
+      "case": "lexer",
+      "role": "typescript",
+      "median": 240.2934869999999,
+      "min": 236.2147789999999,
+      "max": 243.403908,
+      "samples": [
+        243.403908,
+        240.2934869999999,
+        236.2147789999999
+      ]
+    },
+    {
+      "kind": "allocation",
+      "image": "b2",
+      "metric": "estimatedBytesPerRequest",
+      "case": "lexer",
+      "role": "baseline",
+      "median": 2158688464.0,
+      "min": 2158688464.0,
+      "max": 2158688464.0,
+      "samples": [
+        2158688464.0
+      ]
+    },
+    {
+      "kind": "allocation",
+      "image": "b2",
+      "metric": "estimatedBytesPerRequest",
+      "case": "lexer",
+      "role": "candidate",
+      "median": 232318942.0,
+      "min": 232318942.0,
+      "max": 232318942.0,
+      "samples": [
+        232318942.0
+      ]
+    },
+    {
+      "kind": "allocation",
+      "image": "b2",
+      "metric": "estimatedBytesPerRequest",
+      "case": "lexer",
+      "role": "typescript",
+      "median": 58646696.75,
+      "min": 58646696.75,
+      "max": 58646696.75,
+      "samples": [
+        58646696.75
+      ]
+    }
+  ],
+  "matplotlib": "3.9.4",
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase58/figures/compiler-latency.svg",
+      "sha256": "b2a5f49427274fb7021d5a545810eaffa5bbff9c2f67c33a1c08c24eef98beb8",
+      "bytes": 52958
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase58/figures/compiler-latency.png",
+      "sha256": "14081b20ca2dfea05973608d37448d0c16677530a8978e97e6c26f0e2358664e",
+      "bytes": 208425
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase58/figures/compiler-allocation.svg",
+      "sha256": "a93c9a0c6cf32f0824744721e59b6ab17438537ed6c14c97c0a8ec4c6baa2da8",
+      "bytes": 14745
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase58/figures/compiler-allocation.png",
+      "sha256": "b407aa4a2201a22a01f3e94520ee2434c04fcd6dc028dcc02cefba60b64976f2",
+      "bytes": 110487
+    }
+  ],
+  "scope": "Separate campaigns and sampled allocations; no pooled timing, stationary rate, significance or single-pass causal claim."
+}

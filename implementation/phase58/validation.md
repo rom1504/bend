@@ -4,9 +4,13 @@ Completed checkpoints below are bound to their own images; the remaining
 sections describe root-run plans. Choice01 passed its 14-job checked integration
 gate before its full B2 emission hit the existing reachability budget. Reach01
 passed the focused scanner/graph controls, full B2 emission and fresh own-source
-type checking. Shared01 has passed its checked build, 36 exact selected probes
-and bootstrap emission/driver join, plus both shared-focused control sets.
-Its later broad and B2 gates are not credited here.
+type checking. Shared01 has passed its checked build, 36 exact selected probes,
+both focused control sets, the full 14-job checked gate, bootstrap/driver join,
+fresh B2 own-source type check, exact B2→B3 reproduction, B2 semantic controls
+and the B2-to-B1 benchmark-emission equality gate. The
+[qualification index](../../selfhost/tools/performance/phase58/evidence/qualification-shared01.json)
+binds those completed receipts and exact image identities. Compiler/program
+performance, installation and publication are separate obligations.
 
 Root owns the serial target slot and selection. The installed Phase56 string01 image
 and its seven release files remain the baseline until final admission. The
@@ -353,8 +357,30 @@ also passed in 75.638 seconds, producing 3,815,480 bytes with SHA256
 The [shared bootstrap execution](../../selfhost/build/phase58/final-shared01/bootstrap-execution/report.json)
 completed the tiny comparison, both driver roles, driver join and image pins.
 This is a new image, not an automatic transfer of reach01's own-source check.
-The shared broad suite, fresh self-check, fixed point, program timing and
-installation remain separate gates. These instrumented emission times are
+The shared [checked execution](../../selfhost/build/phase58/final-shared01/checked-execution/report.json)
+has now completed all 14 jobs: candidate source 96, numeric 34, composition 18,
+genuine overapplication 2, direct census 26, maintained 8, 45 program smoke
+oracles and three native C-byte/stdout pairs. The pinned reference's one source
+NaN defect and six cold numeric defects remain explicit in the 95/96 and 28/34
+reference counts. Census agreement includes 22 passing cases and four N/A in
+each role; it is not 26 executable passes or the full native census.
+
+The [shared fresh self-check](../../selfhost/build/phase58/final-shared01/self-check/report.json)
+passed with 3,054 independently censused unsafe definitions, 9.976986 seconds
+inside the check and 15.720376 seconds in the worker. Type acceptance and the
+expected proof-trust rejection retain the same separate contract as reach01.
+The [fixed-point receipt](../../selfhost/build/phase58/final-shared01/fixed-point/report.json)
+also passed in 39.430922 seconds: all 77 roots reproduce the identical
+3,815,480-byte B2/B3 image with the full `b7c5752d…` hash above. The separate
+[eight-job B2 semantic stage](../../selfhost/build/phase58/final-shared01/b2-semantics-execution/report.json)
+also passed all candidate source 96, numeric 34, composition 18 and genuine
+overapplication 2 oracles, with the same explicit pinned-reference defects.
+The [B2 program-equality gate](../../selfhost/build/phase58/final-shared01/b2-program-equality/report.json)
+freshly checked/emitted all 23 sources and reproduced the selected B1's raw
+modules and all 45 observer-bound points exactly. It ran no generated programs;
+the selected B1 smoke supplies their independently checked values. These two
+gates are actual executions, not consequences assumed from self-reproduction.
+Program timing and installation remain pending. These instrumented emission times are
 individual gate observations, not a clean compiler-speed comparison.
 
 The [shared choice controller v4](../../selfhost/build/phase58/shared-choice-controls02/report.json)
@@ -375,6 +401,12 @@ records 26,555 physical lines, 21,819 code lines, 3,054 definitions and 108 modu
 all 17 native modules and runtime/driver support remain byte-identical to the
 Phase56 baseline. The [reach accounting](source-complexity-reach.md) and
 choice accounting remain unchanged.
+
+The [shared program comparison](../../selfhost/build/phase58/program-performance-shared01/report.json)
+is complete and data-only: 41 changed and four byte-identical point modules,
+covering 21 changed sources out of 23. It preserves all 45 points and supplies
+the three fresh timing commands. No timing or speed result follows from this
+comparison; the final campaign has not started at this checkpoint.
 
 The [pre-install preservation audit](../../selfhost/build/phase58/preservation-before-install.json)
 passed for all 17,639 closed historical files, 103 protected files and seven

@@ -1,7 +1,7 @@
 # P58-001 — Avoid intermediate constructor misses and reuse checked owners
 
 - Owner / independent reviewer: constructor-query owner; independent phase44_review.
-- Evidence cutoff: selected `checked-shared01`, before final broad qualification and installation.
+- Evidence cutoff: selected `checked-last01`; checked build and 14 B1 integration jobs pass, final bootstrap/B2 and measurement pending.
 - Objective: reduce compiler allocation/code-generation cost while retaining source semantics, direct ABI and stack safety.
 - Correctness: Focused controls02 passes actual annotated queries, fallback probes, synthetic long miss/hit lists and ordinary source execution. The earlier strictExact-flag refusal remains preserved; the successor independently verifies selected exact agreement while recording the false flag honestly.
 - Measurement: The one-pair lexer pilot is essentially flat. Query-local missing/kt counters decrease; neither counts nor this pilot establish total allocation or large-source throughput gains.
@@ -23,7 +23,7 @@ The [design](../../design/phase58/compiler-allocation-and-code-generation.md) an
 
 ## Gates and observations
 
-The [focused evidence](../../selfhost/build/phase58/lookup-controls02/report.json) and [related attempt](../../selfhost/build/phase58/lookup-latency-pilot01/report.json) retain actual pass/refusal status and input joins. The canonical report lists completed observations, failed predecessors and limitations; counts are not recopied into a competing table here. Selected [shared01 checked validation](../../selfhost/build/phase58/checked-shared01/validation-001/report.json) is a separate completed gate. Its ongoing broad qualification is not credited before completion.
+The [focused evidence](../../selfhost/build/phase58/lookup-controls02/report.json) and [related attempt](../../selfhost/build/phase58/lookup-latency-pilot01/report.json) retain actual pass/refusal status and input joins. The canonical report lists completed observations, failed predecessors and limitations; counts are not recopied into a competing table here. Historical [shared01 checked validation](../../selfhost/build/phase58/checked-shared01/validation-001/report.json) is a separate completed gate. Its completed gates do not qualify last01 by inheritance. The [last01 checked validation](../../selfhost/build/phase58/checked-last01/validation-001/report.json) and completed 14-job B1 integration are current; final last01 bootstrap/B2 and measurements are pending.
 
 ## Independent audit
 
@@ -31,8 +31,8 @@ Independent source/controller review challenged the invariant and its negative b
 
 ## Decision and next discriminating test
 
-Keep in selected shared01 pending broad qualification. Next discriminator is actual selected compiler request/allocation evidence, not another synthetic count.
+Keep in selected last01 pending broad qualification. Next discriminator is actual selected compiler request/allocation evidence, not another synthetic count.
 
 ## Preservation
 
-Source changes are checkpointed at `67be31f`. Tracked isolated patches, fixtures, recipes and reports retain regeneration prerequisites; raw artifacts under `selfhost/build/phase58` remain local evidence, not automatically durable merely because a hash exists. The [evidence inventory](../../implementation/phase58/evidence/) and linked reports identify actual preserved manifests and failures. No historical receipt, ledger or steering entry is rewritten by this indexing step.
+The six-change shared01 predecessor is checkpointed at `67be31f`; the [last-field selection](../../selfhost/build/phase58/last-source-selection.json) records the subsequent general source policy. Tracked isolated patches, fixtures, recipes and reports retain regeneration prerequisites; raw artifacts under `selfhost/build/phase58` remain local evidence, not automatically durable merely because a hash exists. The [evidence inventory](../../implementation/phase58/evidence/) and linked reports identify actual preserved manifests and failures. No historical receipt, ledger or steering entry is rewritten by this indexing step.

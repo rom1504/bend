@@ -1,7 +1,7 @@
 # P58-004 — Lower proved literal callbacks to direct continuations
 
 - Owner / independent reviewer: choice owner; independent phase44_review.
-- Evidence cutoff: selected `checked-shared01`, before final broad qualification and installation.
+- Evidence cutoff: selected `checked-last01`; checked build and 14 B1 integration jobs pass, final bootstrap/B2 and measurement pending.
 - Objective: reduce compiler allocation/code-generation cost while retaining source semantics, direct ABI and stack safety.
 - Correctness: choices-controls02 passes value/error, host observation and actual function-shape checks, including self/mutual tails at the default stack. Earlier ordering corrections and fixture/controller failures remain in the canonical report.
 - Measurement: No isolated performance ratio is attributed to this mechanism. Its additional tail edges also exposed repeated reach edges and copied SCC bodies, requiring separate hypotheses below.
@@ -23,7 +23,7 @@ The [design](../../design/phase58/compiler-allocation-and-code-generation.md) an
 
 ## Gates and observations
 
-The [focused evidence](../../selfhost/build/phase58/choices-controls02/report.json) and [related attempt](../../selfhost/build/phase58/final-choice02/bootstrap/full/report.json) retain actual pass/refusal status and input joins. The canonical report lists completed observations, failed predecessors and limitations; counts are not recopied into a competing table here. Selected [shared01 checked validation](../../selfhost/build/phase58/checked-shared01/validation-001/report.json) is a separate completed gate. Its ongoing broad qualification is not credited before completion.
+The [focused evidence](../../selfhost/build/phase58/choices-controls02/report.json) and [related attempt](../../selfhost/build/phase58/final-choice02/bootstrap/full/report.json) retain actual pass/refusal status and input joins. The canonical report lists completed observations, failed predecessors and limitations; counts are not recopied into a competing table here. Historical [shared01 checked validation](../../selfhost/build/phase58/checked-shared01/validation-001/report.json) is a separate completed gate. Its completed gates do not qualify last01 by inheritance. The [last01 checked validation](../../selfhost/build/phase58/checked-last01/validation-001/report.json) and completed 14-job B1 integration are current; final last01 bootstrap/B2 and measurements are pending.
 
 ## Independent audit
 
@@ -31,8 +31,8 @@ Independent source/controller review challenged the invariant and its negative b
 
 ## Decision and next discriminating test
 
-Keep only with the separately qualified reach/dispatch successors in selected shared01. Final all-program and compiler-image gates remain distinct.
+Keep only with the separately qualified reach/dispatch successors in selected last01. Final all-program and compiler-image gates remain distinct.
 
 ## Preservation
 
-Source changes are checkpointed at `67be31f`. Tracked isolated patches, fixtures, recipes and reports retain regeneration prerequisites; raw artifacts under `selfhost/build/phase58` remain local evidence, not automatically durable merely because a hash exists. The [evidence inventory](../../implementation/phase58/evidence/) and linked reports identify actual preserved manifests and failures. No historical receipt, ledger or steering entry is rewritten by this indexing step.
+The six-change shared01 predecessor is checkpointed at `67be31f`; the [last-field selection](../../selfhost/build/phase58/last-source-selection.json) records the subsequent general source policy. Tracked isolated patches, fixtures, recipes and reports retain regeneration prerequisites; raw artifacts under `selfhost/build/phase58` remain local evidence, not automatically durable merely because a hash exists. The [evidence inventory](../../implementation/phase58/evidence/) and linked reports identify actual preserved manifests and failures. No historical receipt, ledger or steering entry is rewritten by this indexing step.

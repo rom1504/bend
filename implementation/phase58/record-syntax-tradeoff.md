@@ -1,8 +1,10 @@
 # Record syntax: compiler and generated-program tradeoff
 
 **Both completed reversals are rejected for production.** The working source
-remains checked-shared01; no rollback has been applied and release is held.
-A final bounded last-constructor-key diagnostic is pending. This note records
+has advanced to checked-last01; neither rejected reversal was applied and
+release is held.
+The final bounded last-constructor-key diagnostic is complete and its source
+rule is selected for fresh qualification. This note records
 completed measurements and static evidence, not publication or archive closure.
 
 ## Why another contrast was needed
@@ -15,12 +17,10 @@ comparison exposed regressions in Map/Set, edit distance and local row/pair.
 modules exactly by changing only the old computed field syntax to quoted keys.
 This establishes their complete source difference, without proving a V8 cause.
 
-The old compiler experiment preceded the other Phase58 changes. Its benefit
-cannot be assumed unchanged in the final image. The two new compiler-request
-contrasts therefore use the **same final compiler source and runtime**, changing
-only record-key spelling inside its saved genuine B2 image. They do not compile
-a source rollback, change the emitted program printer, or replace the final
-program-execution comparison.
+The earlier compiler study preceded the other Phase58 changes. These new
+contrasts change only record-key spelling in the final saved genuine B2, keeping
+compiler source and runtime fixed. They do not compile a source rollback or
+replace the generated-program comparison.
 
 ## Diagnostic images and retained semantics
 
@@ -44,12 +44,10 @@ keys. Its output is 3,826,312 bytes, SHA256
 `d442e555db1468fda0cbbe687f378bd4cfbbe115568560698a32bf8de67ac27d`.
 This was a hypothesis test, not an accepted field-count cutoff.
 
-Both producers preserve the runtime prefix, value expressions, evaluation order,
-member accesses, tags, export map and preexisting computed keys. Exact
-`__proto__` remains computed. Normalized AST comparison permits only the selected
-`computed` flag changes, and inverse edits recover the complete parent bytes.
-These saved-image derivatives are diagnostic APIs, not newly checked compiler
-images or portable releases.
+Both derivatives preserve runtime, values/order, member accesses, tags,
+exports and computed `__proto__`. Normalized AST comparison permits only selected
+`computed` changes; inverse edits recover the complete parent. These are saved
+image diagnostics, not newly checked compiler images or portable releases.
 
 ## Completed request measurements
 
@@ -59,9 +57,8 @@ and three later requests. The first interval below includes host import, API loa
 and the first library request; “later” is the median of the three per-process
 later-request medians. It is not a stationary-throughput claim.
 
-All values are milliseconds. “Quoted” is the unchanged shared01 parent;
-“computed” is the derivative. The separate experiments retain their own baseline
-samples; they are not pooled.
+All values are milliseconds: quoted shared01 parent → computed derivative.
+The experiments retain separate baseline samples; they are not pooled.
 
 | Saved-image variant | Input | First combined, quoted → computed | Later, quoted → computed |
 | --- | --- | ---: | ---: |
@@ -78,11 +75,9 @@ prepared output. Cross-role complete bytes also match: lexer 28,388 bytes, SHA25
 Evening 99,147 bytes, SHA256
 `963109d167da8c3323ecd89033acabc1523d6c87659e58dc17c1fc35ab9bba3a`.
 
-The unchanged method06 clean runner uses Node 24.18.0, fresh private staging and
-request-local roles, with the existing CPU3/resource guard. Base preparation and
-preflight are separate from these intervals. Continuing warmup, only three
-processes per cell and two sources limit generalization. Neither lower RSS nor a
-static field count would establish fewer physical allocations.
+Method06 uses Node 24.18.0, private staging and the CPU3/resource guard. Base
+preparation/preflight are separate. Continuing warmup and three processes per
+cell limit generalization; RSS/static fields do not establish allocation bytes.
 
 ## What the actual DP trace rules out
 
@@ -98,29 +93,59 @@ sentinel, scheduling and code offsets differ. Those differences motivate the
 last-key diagnostic; they do not identify a measured causal instruction or
 justify constructor-name or benchmark-specific policies.
 
-## Final bounded hypothesis and evidence
+## Completed last-key diagnostic and selected source
 
 The [last-key producer](../../selfhost/tools/performance/phase58/fields/last-key-v1.mjs)
 changes only an eligible final property of a tagged constructor back to computed
 syntax, retaining earlier quoted fields and all unknown marshalling spreads.
-It has no field-count or constructor-name rule. Its experiment is **pending**;
-no outcome, production patch or release approval is inferred here. This is the
-last bounded key-placement variant, not another threshold-tuning campaign.
+It has no field-count or constructor-name rule. This was the final bounded
+key-placement variant; no further threshold-tuning campaign is proposed.
 
-A synthetic constructor grid is prepared but unexecuted, with the width contrast
-correctly using computed keys at width ≤4. Preparing a proposal does not oblige
-executing it or supply qualification evidence.
+The three-point execution screen completes **45 samples**, five fresh balanced
+rotations per role, in 73.944 seconds. All complete oracles pass; zero role-points
+cross the configured spread/drift flags (max/min >1.20 or absolute sample half
+drift >20%). These descriptive flags are not a significance test.
 
-Frozen raw receipts, retained as raw member paths until publication:
+| Point | Phase56 µs | Saved diagnostic µs | TS µs | Diagnostic / Phase56 |
+| --- | ---: | ---: | ---: | ---: |
+| Map/Set | 19.099362 | 18.557730 | 22.232178 | 0.971641 |
+| Edit distance | 5,601.102741 | 5,611.975389 | 5,014.875267 | 1.001941 |
+| Morning | 3.292568 | 3.328507 | 3.667171 | 1.010915 |
 
-- `selfhost/build/phase58/fields-reverse01/derivation.json`: SHA256
-  `e182ec365da8a6fe4c5477cf7966c7555c9e76266ee12392bce284b0e1a397e8`.
-- `selfhost/build/phase58/fields-reverse-latency01/report.json`: SHA256
-  `90e3918a81b6bc6a439ad36b6e061565dfb93f6212df353dd0be3b6d6197034c`.
-- `selfhost/build/phase58/fields-width01/derivation.json`: SHA256
-  `675ccb07d927e9a947cd1c135c4818c4697238e2295aaac820c99669a18873e7`.
-- `selfhost/build/phase58/fields-width-latency01/report.json`: SHA256
-  `f0bc00b98ff94a0cf767b29ad05daf913e4fbcc9cb782e557f77f156a10321e8`.
+The fixed-source compiler-image contrast also completes 48 requests. Lexer
+first combined is **1,323.509→1,496.333 ms**, later **554.979→648.819 ms**;
+Evening first is **1,765.094→2,011.224 ms**, later **853.888→1,001.888 ms**.
+These are adverse increases of 13.06% / 13.94% first and 16.91% / 17.34% later.
+The approximately 10% compiler screen is missed, not relabeled as passed.
+They are smaller penalties than the two rejected reversals. Ratios from separate
+studies are not multiplied into a claimed selected-release result.
+
+The [source-selection design](../../design/phase58/last-field-selection.md)
+accepts this as a compromise for qualification: quoted prefix fields and a
+computed final live field in ordinary and ordered direct constructors. Every
+`__proto__` remains computed. Host spread marshalling retains its literal-key
+rule. One field-join helper adds five physical lines across three modules;
+rendered suffix length handles erased trailing fields without new analysis.
+
+Root applied the reviewed three-module proposal and froze checked-last01;
+the application receipt is not correctness or release qualification. Fresh final
+full45 and selected compiler latency/allocation/emission remain pending here.
+The three-point screen is not the full corpus; installation remains held.
+The corrected width ≤4 synthetic grid is prepared but unexecuted.
+
+Additional frozen last-key receipts:
+
+- `selfhost/build/phase58/last-key-program-analysis01/report.json`: SHA256 `53d13bac1438cbd98686bebc7bd6fe90d3d7ac4fd73aa2237948069c1f58b751`.
+- `selfhost/build/phase58/fields-last-latency01/report.json`: SHA256 `4db8839e83bfa56dcef20dea9ddd5dec48fd8ad2b04768a7a1f93986ff020753`.
+- `selfhost/build/phase58/fields-last01/derivation.json`: SHA256 `b229f48d88164d518eff5bc385110d58b4c3e30e3754d794bcfde414d3374219`.
+- `selfhost/build/phase58/last-source-selection.json`: SHA256 `d26c9217da3f4272836a44d4953716b2c13d611abe56e4d87c666835f9947c87`.
+
+Frozen earlier receipts, retained as raw member paths until publication:
+
+- `selfhost/build/phase58/fields-reverse01/derivation.json`: SHA256 `e182ec365da8a6fe4c5477cf7966c7555c9e76266ee12392bce284b0e1a397e8`.
+- `selfhost/build/phase58/fields-reverse-latency01/report.json`: SHA256 `90e3918a81b6bc6a439ad36b6e061565dfb93f6212df353dd0be3b6d6197034c`.
+- `selfhost/build/phase58/fields-width01/derivation.json`: SHA256 `675ccb07d927e9a947cd1c135c4818c4697238e2295aaac820c99669a18873e7`.
+- `selfhost/build/phase58/fields-width-latency01/report.json`: SHA256 `f0bc00b98ff94a0cf767b29ad05daf913e4fbcc9cb782e557f77f156a10321e8`.
 
 Their bindings join the checked attempt, genuine emission, producer and exact
 parent/output hashes. This note was prepared by reading reports and source only;

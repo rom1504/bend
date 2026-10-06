@@ -5,14 +5,16 @@
     "repository_url": "https://github.com/rom1504/bend/tree/selfhost/bootstrap",
     "pr_url": "https://github.com/bendlang/bend/pull/1207",
     "issue_url": "https://github.com/rom1504/bend/issues/1",
-    "checkpoint": "29dbaa41fb7988baae8355b1fba24312976d598d",
-    "checkpoint_url": "https://github.com/rom1504/bend/commit/29dbaa41fb7988baae8355b1fba24312976d598d",
+    "checkpoint": "6eecaefe3292774de5408994d21e31fc16c08dc5",
+    "checkpoint_url": "https://github.com/rom1504/bend/commit/6eecaefe3292774de5408994d21e31fc16c08dc5",
     "upstream_url": "https://github.com/bendlang/bend/commit/018751270e800bc222a93dad7f257083ee53a5f7",
     "collected_at": "2026-10-06",
-    "runtime_source": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase53/results.md",
-    "report_phase": "Phase 53",
-    "installed_commit": "29dbaa41fb7988baae8355b1fba24312976d598d",
-    "installed_url": "https://github.com/rom1504/bend/commit/29dbaa41fb7988baae8355b1fba24312976d598d"
+    "runtime_source": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/program-performance.md",
+    "report_phase": "Phase 58",
+    "installed_commit": "6eecaefe3292774de5408994d21e31fc16c08dc5",
+    "installed_url": "https://github.com/rom1504/bend/commit/6eecaefe3292774de5408994d21e31fc16c08dc5",
+    "latest_reviewed_commit": "a27fc4de95d67c705628bcba6454b7fdfa080576",
+    "latest_reviewed_url": "https://github.com/rom1504/bend/commit/a27fc4de95d67c705628bcba6454b7fdfa080576"
   },
   "cards": [
     {
@@ -20,86 +22,383 @@
       "number": "01",
       "title": "Compiled program speed",
       "direction": "TypeScript = 1× · Lower is better",
-      "value": "1.07×",
-      "unit": "TypeScript execution time · suite average",
-      "summary": "The 45-case geometric average is about 7% above TypeScript execution time; 15 cases are faster than the reference. Direct JavaScript is now the default.",
+      "value": "1.05×",
+      "unit": "TypeScript execution time · 45-case average",
+      "summary": "Generated programs average 4.6% above TypeScript execution time on the maintained suite. Eighteen of 45 cases are faster than the reference.",
       "chart": "runtime-average-history",
-      "alt": "Average runtime falls from 18.88× TypeScript at Phase37 to 1.07× at Phase53 across 13 recorded releases. The logarithmic chart separates the Phase41 timing change and Phase52 direct JavaScript interface change.",
-      "caption": "The same 45 source/input cases at every point. Lines break at the P41 timing change and P52 JavaScript interface change; direct output becomes the default at P53. Checkpoints use their own paired TypeScript runs, so neighboring historical values are not a controlled before/after comparison. Selected labels show release dates and commits; every point is in the table.",
-      "takeaway": "Direct JavaScript delivered a 2.34× paired suite speedup at P52. Ordered expressions add 5.6% more speed at P53, moving its fresh comparison from 1.129× to 1.070× TypeScript time.",
-      "finding": "direct-javascript",
+      "alt": "Generated-program execution history reaches 1.046× TypeScript at Phase 58. Separate lines mark the earlier timing and JavaScript-interface changes.",
+      "caption": "The same 45 source/input cases, with each recorded campaign compared to its own TypeScript runs. Lines break at the P41 timing change and P52 interface change. P58 adds a fresh full campaign; historical neighbors are not controlled before/after pairs.",
+      "takeaway": "The final P58 release preserves program speed while improving compiler work: 1.47% less execution time than its freshly measured P56 control. All 669 samples pass their output checks.",
+      "finding": "record-field-compromise",
       "table": "runtime",
       "breakdown_chart": "runtime-programs",
       "average_dataset": "runtime-average",
-      "cohort": "45 benchmark cases · 23 programs · Phase 53 ordered02 · direct JavaScript",
-      "breakdown_alt": "Phase53 direct JavaScript execution-time ratios across 23 source programs. The source-group averages range from about 0.87× to 1.74× TypeScript time; individual cases remain available below.",
-      "breakdown_caption": "Each bar averages that source program’s cases. The headline weights all 45 cases equally. Fifteen cases beat TypeScript; the slowest individual case takes 1.91× as long. The maintained corpus is a measured sample of programs.",
-      "method": "Geometric mean of all 45 per-case Bend / TypeScript median execution-time ratios. Every case gets equal weight. Grouping by source gives 23 bars; an equal-source mean would be 1.078×. All 669 fresh samples passed their output checks.",
+      "cohort": "45 benchmark cases · 23 programs · Phase 58 last01 · direct JavaScript",
+      "breakdown_alt": "Phase 58 generated-program execution-time ratios grouped into 23 source-program bars. Individual measurements and source links are available below.",
+      "breakdown_caption": "Each bar geometrically averages that program’s cases. The headline weights all 45 cases equally. Eighteen cases beat TypeScript; the largest individual gap is 1.66×.",
+      "method": "Geometric mean of 45 Bend / TypeScript median execution-time ratios. Grouping by source produces 23 bars; equal-source weighting gives 1.041×. The timed operation includes result checks; compilation, import and first calls are separate.",
       "history_label": "The suite average over commits",
-      "breakdown_label": "By program · Phase 53",
+      "breakdown_label": "By program · Phase 58",
       "history_height": 590,
       "breakdown_height": 1100
     },
     {
-      "id": "compilation",
+      "id": "second-stage",
       "number": "02",
-      "title": "Compilation speed",
+      "title": "Second stage compiler compilation speed",
       "direction": "TypeScript = 1× · Lower is better",
-      "value": "9.86×",
-      "unit": "TypeScript compilation time · latest measured sample",
-      "summary": "The latest published compilation sample covers Evening and the lexer at Phase 48. Phase 53’s new direct-JavaScript default has not been benchmarked for compilation throughput.",
+      "value": "2.52×",
+      "unit": "TypeScript compilation time · direct B2 image",
+      "summary": "The compiler generated by Bend now compiles the two measured programs in 52.69% less time than the paired P56 B2. This qualified image is separate from the installed B1 compiler.",
+      "chart": "second-stage-average-history",
+      "alt": "Direct B2 compiler import, API load and first checking/emission request. The two-input geometric ratio falls from roughly 5.3× TypeScript to 2.52× in Phase 58.",
+      "caption": "Evening and lexer, measured with three rotated fresh processes per role and input. Each checkpoint uses its own paired TypeScript results. The latest 52.69% reduction uses a fresh P56 control in the P58 campaign.",
+      "takeaway": "B2 now takes 2.42× TypeScript time for Evening and 2.62× for lexer. The combined compiler changes also reduce sampled cumulative lexer allocation by 89.4%.",
+      "finding": "avoid-transient-compiler-values",
+      "table": "second-stage",
+      "breakdown_chart": "second-stage-programs",
+      "average_dataset": "second-stage",
+      "cohort": "Genuine direct B2 · 2 programs · Phase 58 last01 · separately qualified",
+      "breakdown_alt": "Selected B2 import plus API load and first checking/emission request: Evening 2.415× and lexer 2.622× the paired TypeScript time.",
+      "breakdown_caption": "Evening: 4.582 → 2.009 seconds. Lexer: 2.938 → 1.500 seconds. These are compiler requests with identical input programs; they are separate from program runtime and self-emission.",
+      "method": "Equal-weight geometric mean of two program ratios. Each program uses the median of three fresh processes, timing host import, API load and the first check + library emission. Private Base disk caches are prepared first. Process launch, cache preparation, provenance and output hashing are outside timing; this is not a cold-filesystem test.",
+      "history_label": "The second-stage compiler over commits",
+      "breakdown_label": "By program · B2 first requests",
+      "history_intro": "Bend-generated compiler image. TypeScript = 1×.",
+      "history_height": 580,
+      "breakdown_height": 480,
+      "supplemental_chart": "second-stage-self-emission",
+      "supplemental_title": "Checking and reproducing the compiler itself",
+      "supplemental_alt": "Clean B2 own-source emission falls from 223.475 seconds for the retained Phase 56 control to 36.058 seconds for final Phase 58 last01, a 6.20× descriptive speedup. Fresh source checking and qualification reproduction are separate gates.",
+      "supplemental_caption": "Clean emission: 223.475 → 36.058 seconds under the same method, using each image’s own source. The control is an earlier retained run, not a consecutive pair. The separate qualification timings below establish fresh type acceptance and complete B2/B3 byte equality.",
+      "supplemental_stats": [
+        {
+          "value": "6.20×",
+          "label": "clean own-source emission speedup"
+        },
+        {
+          "value": "11.71 s",
+          "label": "fresh source type check · internal time"
+        },
+        {
+          "value": "39.20 s",
+          "label": "separate B2 → identical B3 gate"
+        }
+      ],
+      "supplemental_height": 490
+    },
+    {
+      "id": "compilation",
+      "number": "03",
+      "title": "First stage compiler compilation speed",
+      "direction": "TypeScript = 1× · Lower is better",
+      "value": "2.94×",
+      "unit": "TypeScript compilation time · installed checked B1",
+      "summary": "The installed checked B1 takes about 2.94× TypeScript time on Evening and lexer. Its paired aggregate changes by +0.40%; the larger compiler gains belong to B2.",
       "chart": "compilation-average-history",
-      "alt": "Earlier compiler-source checking snapshots decline from 73.20× to 2.99× TypeScript. Separate compilation samples show a four-program average through Phase45, three programs at Phase47, and two at Phase48. Latest measured legacy JavaScript sample: 9.86× TypeScript; Phase53 direct compilation is unmeasured.",
-      "caption": "Early compiler-source checking: 205.26 seconds at P8 and 11.16 seconds at P24; sources evolve and the reference changes at P23. Recent checked-library samples use four programs at P42–45, three at P47, and two at P48. Lines break when that set changes. Their averages cannot be read as one continuous throughput trend.",
-      "takeaway": "Early checking gains remain visible. In the latest measured compilation window, the same two sources take 3.84% more time at P48 than P47. Current direct-JavaScript compilation throughput still needs measurement.",
-      "finding": "repeated-work",
+      "alt": "Checked B1 history preserves early source-checking gains and later compilation samples. The latest Phase 58 two-program first-request average is 2.94× TypeScript; cohort and timing changes are separated.",
+      "caption": "Earlier compiler-source checking, legacy library requests and current import + first requests retain separate boundaries. From P56, the two-program measure includes host import and API load. Lines break when the workload set or timing boundary changes.",
+      "takeaway": "B1 stays roughly flat: the first Evening request is 0.76% faster and lexer 1.59% slower. The separately qualified B2 improvements are shown above.",
+      "finding": "reuse-checked-type-facts",
       "table": "compilation",
       "breakdown_chart": "compilation-programs",
       "average_dataset": "compilation-average",
-      "cohort": "Latest measured: Phase 48 legacy JavaScript · 2 programs · check + library emission",
-      "breakdown_alt": "Phase48 legacy JavaScript compilation-request time: Evening 6.95× and Lexer 13.97× TypeScript time.",
-      "breakdown_caption": "Three-sample median request time, including checking and library emission; host import is excluded. The two programs have equal weight. These measurements predate the direct-JavaScript default.",
-      "method": "Upper panel: individual compiler-source checking process times, without emission. Lower panel: geometric means of checked-library request ratios, with the program count labeled per cohort. The 9.86× headline is the latest two-program legacy sample, not a Phase53 measurement.",
-      "history_label": "Early reductions and later measured samples",
-      "breakdown_label": "By program · latest measured P48",
-      "method_label": "How to read the two histories",
-      "history_intro": "TypeScript = 1×. Workloads and backend scope are labeled separately.",
-      "history_height": 950,
-      "breakdown_height": 440
+      "cohort": "Installed checked B1 · 2 programs · Phase 58 last01 · check + library emission",
+      "breakdown_alt": "Phase 58 checked B1 import plus API load and first request: Evening 3.088× and lexer 2.807× TypeScript time.",
+      "breakdown_caption": "Three fresh processes per role and input. First-request medians are 2.573 seconds for Evening and 1.664 seconds for lexer. Each uses this B1 campaign’s paired TypeScript reference.",
+      "method": "The current headline equally weights two import + API load + first-request ratios, each from the median of three fresh processes. Private Base disk caches are prepared first; process launch, cache preparation, provenance and output hashing are excluded. Older checking-only and request-only samples retain their own boundaries.",
+      "history_label": "First-stage history, with timing boundaries",
+      "breakdown_label": "By program · installed B1 first requests",
+      "method_label": "How to read these histories",
+      "history_intro": "Installed checked compiler image. TypeScript = 1×.",
+      "history_height": 1320,
+      "breakdown_height": 480
     },
     {
       "id": "conformance",
-      "number": "03",
+      "number": "04",
       "title": "Conformance",
       "direction": "Correct source behavior",
       "value": "96 / 96",
-      "unit": "independent semantic observations · Phase 53",
-      "summary": "The original source-oracle suite now passes every observation, up from 95 at P52. All 66 ordinary and relocated interface checks pass too.",
+      "unit": "independent source scenarios · B1 and B2 · P58",
+      "summary": "Both the checked B1 and genuine direct B2 pass all 96 source scenarios. B2 freshly accepts its complete compiler source and reproduces identical B3 bytes; all 66 installed-interface checks pass.",
       "chart": "conformance",
-      "alt": "Two separate histories: exact frontend agreement reaches 3026 of 3026 at its last full acquisition in Phase45; independent direct-JavaScript semantics improves from95 of96 in Phase52 to96 of96 in Phase53.",
-      "caption": "The upper history tracks frontend agreement; its latest full acquisition is P45 (3,026 main and 196 broader observations). The lower comparison uses a separate fixed 96-observation source-oracle suite at P52 and P53. These scopes overlap and are not summed.",
-      "takeaway": "A NaN payload repair closes the remaining source-oracle failure. TypeScript still fails that fixture, so correct source behavior is distinct from exact reference agreement.",
-      "finding": "source-oracle-bits",
+      "alt": "Historical full frontend agreement ends at Phase 45 with 3,026 main and 196 broader exact observations. A separate independent source-oracle history reaches 96/96 and is freshly retained by both B1 and B2 at Phase 58.",
+      "caption": "The full frontend history ends at its latest fresh acquisition, P45. Current B1 and B2 have separately executed source96, numeric34, composition18 and overapplication2 controls. These scopes overlap and are not summed.",
+      "takeaway": "Type acceptance, byte-identical reproduction and mathematical proof validity are separate. The compiler’s 3,055 unsafe definitions retain their expected proof-trust refusal.",
+      "finding": "qualified-direct-self-hosting",
       "table": "conformance",
-      "chart_height": 940
+      "chart_height": 1100
     },
     {
       "id": "simplicity",
-      "number": "04",
+      "number": "05",
       "title": "Simplicity",
       "direction": "Fewer moving parts",
-      "value": "26,151",
-      "unit": "physical Bend lines · Phase 53",
-      "summary": "The compiler now has 21,523 code lines in 103 modules. Direct JavaScript adds a new backend while keeping explicit legacy compatibility; the size cost stays visible.",
+      "value": "26,560",
+      "unit": "physical Bend lines · Phase 58",
+      "summary": "The compiler has 21,823 code lines in 108 modules. P56 removed unused helpers; the six general P58 changes add 314 physical lines while reducing compiler work.",
       "chart": "simplicity",
-      "alt": "Compiler physical-line history retains the cleanup from16509 to14667 and later growth to26151 at Phase53. Direct JavaScript adds2128lines at Phase52; Phase53 adds361more.",
-      "caption": "Canonical Bend modules only, excluding host code, tests and generated files. P47–53 add new source snapshots. Later reports count physical and code-only lines; nonblank-only counts remain unavailable after P36.",
-      "takeaway": "P52 cuts emitted JavaScript by 74.9% while adding 2,128 compiler lines. P53 adds 361 more. Smaller compiled output and smaller compiler source are different metrics.",
-      "finding": "direct-javascript",
-      "table": "simplicity"
+      "alt": "Compiler physical-line history shows the early cleanup, later direct-backend growth, a 40-line Phase 56 reduction and growth to 26,560 physical lines at Phase 58.",
+      "caption": "Canonical Bend modules only, excluding host code, runtime, tests and generated files. Current code-line counts exclude blanks and whole-line comments; earlier nonblank counts are a separate series.",
+      "takeaway": "One shared recursive dispatcher removes repeated emitted switches. The final B2/B3 image is 3.82 MB, 1.94% smaller than P56; this output size is separate from compiler source size.",
+      "finding": "shared-recursive-dispatch",
+      "table": "simplicity",
+      "chart_height": 560
     }
   ],
   "findings": [
+    {
+      "id": "avoid-transient-compiler-values",
+      "phase": "PHASE 58",
+      "metrics": [
+        "second-stage"
+      ],
+      "title": "Stop constructing values just to discard them.",
+      "paragraphs": [
+        "Constructor queries now skip unmatched entries without building temporary missing records. Proven numeric residuals reuse their original U32 bits instead of rebuilding Word lists, and structurally known Boolean choices enter the selected branch directly. The constructor probe reduced missing-helper calls from 4,248 to three while preserving its fallback behavior.",
+        "Across the complete six-change release, sampled B2 lexer allocation fell from 2,190.55 to 231.95 MB per request. Fresh import-plus-first requests fell from 4.582 to 2.009 seconds for Evening and 2.938 to 1.500 seconds for lexer. The selected B2 takes 2.415× and 2.622× TypeScript time on these two inputs."
+      ],
+      "flow": [
+        "Reuse checked origins",
+        "Avoid transient objects",
+        "Do less compiler work"
+      ],
+      "stats": [
+        {
+          "value": "−89.4%",
+          "label": "sampled cumulative B2 lexer allocation"
+        },
+        {
+          "value": "4.582 → 2.009 s",
+          "label": "B2 Evening import + first request · final P58"
+        }
+      ],
+      "note": "These are combined release results, not isolated attribution. Allocation is a sampled cumulative estimate from one worker per role, not peak RSS. B1 request changes remain small and mixed; B2 later requests are still warming up.",
+      "sources": [
+        {
+          "title": "Final last01 measurements",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/final-measurements.md"
+        },
+        {
+          "title": "Six changes and final integration",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/README.md"
+        },
+        {
+          "title": "Scalar residual proof and fallbacks",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/scalar-residual.md"
+        }
+      ]
+    },
+    {
+      "id": "shared-recursive-dispatch",
+      "phase": "PHASE 58",
+      "metrics": [
+        "second-stage",
+        "simplicity"
+      ],
+      "title": "Share each recursive dispatcher once.",
+      "paragraphs": [
+        "Exposing more tail calls initially made each entry repeat its recursive component's entire switch. One private dispatcher now serves the component, while each named entry keeps its parameters and a fixed entry state. Per-call state preserves nesting and callback reentry. Reachability also records each target reference only once per definition, retaining encounter order and resource limits.",
+        "The final B2/B3 image is 3,821,470 bytes, 1.94% smaller than Phase 56. The complete release emits its own source in 36.058 seconds against a retained 223.475-second Phase 56 run under the same method: a descriptive 6.20× speedup. Both outputs reproduce their own compiler images exactly."
+      ],
+      "flow": [
+        "One recursive component",
+        "One shared switch",
+        "Distinct dependency edges"
+      ],
+      "stats": [
+        {
+          "value": "6.20×",
+          "label": "clean self-emission · complete P58 release"
+        },
+        {
+          "value": "3.82 MB",
+          "label": "final B2/B3 image · decimal bytes"
+        }
+      ],
+      "note": "The speed ratio compares changed sources and an earlier retained control, not a consecutive pair or dispatch-only effect. The expanded 8.67 MB intermediate was never the starting release. Clean 36.058-second emission is separate from the 39.199-second qualification gate.",
+      "sources": [
+        {
+          "title": "Final emission timing and retained baseline",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/final-measurements.md"
+        },
+        {
+          "title": "Final image accounting",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/README.md"
+        },
+        {
+          "title": "Shared dispatcher mechanism and controls",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/shared-scc.md"
+        }
+      ]
+    },
+    {
+      "id": "record-field-compromise",
+      "phase": "PHASE 58",
+      "metrics": [
+        "execution",
+        "second-stage",
+        "conformance"
+      ],
+      "title": "Measure record syntax in the compiler and its programs.",
+      "paragraphs": [
+        "Ordinary field keys made the compiler faster, but the first combined candidate slowed several generated programs. The selected printer uses quoted prefix keys and keeps the final live field computed; __proto__ always remains computed. This general rule preserves own-property and evaluation-order behavior while balancing the two costs.",
+        "The final last01 campaign passes all 45 points and 669 samples. Its equal-point execution ratio is 1.046110× TypeScript, versus a fresh Phase 56 baseline of 1.061731×: 1.47% less time. Evening improves 26.48% and RLE 12.75%. All 19 small regressions remain visible; the largest is 2.949%."
+      ],
+      "flow": [
+        "Measure both workloads",
+        "Select the field rule",
+        "Recheck the full program corpus"
+      ],
+      "stats": [
+        {
+          "value": "1.046×",
+          "label": "45-point generated-program time / TypeScript"
+        },
+        {
+          "value": "−1.47%",
+          "label": "execution time · fresh paired P58 campaign"
+        }
+      ],
+      "note": "The field compromise cost 13–17% against an all-literal compiler diagnostic and missed its approximate 10% target. The final combined release was then measured separately. V8 observations do not establish the precise cause; full release source grows by 314 physical lines.",
+      "sources": [
+        {
+          "title": "Final selected program measurements",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/program-performance.md"
+        },
+        {
+          "title": "Final selection and retained failures",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/README.md"
+        },
+        {
+          "title": "Record-key tradeoff investigation",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/record-syntax-tradeoff.md"
+        }
+      ]
+    },
+    {
+      "id": "qualified-direct-self-hosting",
+      "phase": "PHASE 56",
+      "metrics": [
+        "second-stage",
+        "conformance",
+        "simplicity"
+      ],
+      "title": "Qualify the compiler that the compiler produces.",
+      "paragraphs": [
+        "Native String.eq now uses JavaScript equality inside its function definition. Existing call sites keep their callback order and partial-application behavior. Alongside removal of seven unused helpers, this small change let the direct B2 image finish both a fresh check of its complete source and emission of an identical successor, B3.",
+        "The source check took 29.68 seconds internally. The separate reproduction gate completed in 250.72 seconds, with identical 3,896,951-byte B2 and B3 images. The two compiler generations also emitted identical modules for all 23 benchmark sources and 45 observed points. Phase 58 renews these qualifications for its later image."
+      ],
+      "flow": [
+        "B1 emits B2",
+        "B2 checks its source",
+        "B2 reproduces identical B3"
+      ],
+      "stats": [
+        {
+          "value": "B2 = B3",
+          "label": "complete image-byte equality · P56"
+        },
+        {
+          "value": "−40",
+          "label": "physical Bend lines · complete P56 change"
+        }
+      ],
+      "note": "The previous reproduction stopped at 300 seconds, so it supplies no exact speedup. Type acceptance retains the expected unsafe proof-trust refusal and is separate from mathematical proof validity. The installed package remains checked B1.",
+      "sources": [
+        {
+          "title": "P56 qualification and cleanup",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase56/README.md"
+        },
+        {
+          "title": "Exact reproduction and fresh-check boundaries",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase56/reproduction.md"
+        },
+        {
+          "title": "Latest renewed qualification",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/README.md"
+        }
+      ]
+    },
+    {
+      "id": "reuse-checked-type-facts",
+      "phase": "PHASE 55",
+      "metrics": [
+        "second-stage",
+        "compilation"
+      ],
+      "title": "Reuse the type facts the checker already established.",
+      "paragraphs": [
+        "B1 generation of the direct B2 compiler image kept searching the whole book to rediscover a constructor's datatype, even though checked matcher annotations already identified it. Export generation also rescanned recursive argument and result types for Nat conversions. The fixes use the known owner and one complete signature check, with the old paths retained when those facts are unavailable.",
+        "On one unchanged compiler source, the second change cut export-wrapper generation from 121.39 to 20.92 seconds. Complete B1 → B2 image generation fell from 198.49 to 96.23 seconds, and the resulting 3,895,592-byte images were exactly equal. These small general changes made the full direct compiler image usable after the earlier deadline failures."
+      ],
+      "flow": [
+        "Checked type information",
+        "One owner or signature proof",
+        "Skip repeated discovery"
+      ],
+      "stats": [
+        {
+          "value": "198.49 → 96.23 s",
+          "label": "fixed-source B1 → B2 image generation · P55"
+        },
+        {
+          "value": "+27",
+          "label": "physical Bend lines for both changes"
+        }
+      ],
+      "note": "Single bounded generation observations with diagnostic overhead, not ordinary request throughput. The original 240-second timeout has no completed baseline time. Eight ordinary-driver observations separately checked the emitted images.",
+      "sources": [
+        {
+          "title": "P55 image-generation results",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase55/README.md"
+        },
+        {
+          "title": "Compiler-image workflow",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/docs/self_hosted/compiler-image-generation.md"
+        }
+      ]
+    },
+    {
+      "id": "analyze-call-graph-once",
+      "phase": "PHASE 54",
+      "metrics": [
+        "compilation",
+        "simplicity"
+      ],
+      "title": "Analyze the call graph once.",
+      "paragraphs": [
+        "The direct backend used to store the functions reachable from every function separately. Forward and reverse graph walks now identify recursive groups once and share their facts. This removes repeated closure searches while preserving source order and the existing tail-call decisions.",
+        "The production definition budget rose from 512 to 4,096. Using the installed first-stage compiler, five checked source chains through 3,004 declared functions compiled successfully, and every emitted program returned the expected result. All 45 benchmark modules remained byte-identical to Phase 53."
+      ],
+      "flow": [
+        "One call graph",
+        "Shared recursive groups",
+        "Larger checked inputs"
+      ],
+      "stats": [
+        {
+          "value": "512 → 4,096",
+          "label": "production definition budget · P54"
+        },
+        {
+          "value": "3,004",
+          "label": "declared functions in the largest tested source chain"
+        }
+      ],
+      "note": "Phase 54 adds 108 physical Bend lines. Graph visits and retained graph data become linear in vertices plus edges, excluding name-index and type-normalization costs. Explicit budgets change the acceptance policy. These are capacity and correctness results, not a measured whole-compiler or program-speed gain.",
+      "sources": [
+        {
+          "title": "P54 graph algorithm and checked source gates",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase54/scaling.md"
+        },
+        {
+          "title": "P54 source accounting and shared ownership",
+          "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase54/architecture.md"
+        }
+      ]
+    },
     {
       "id": "direct-javascript",
       "phase": "PHASES 49–52",
@@ -142,7 +441,7 @@
           "url": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase52/results.md"
         },
         {
-          "title": "Current JavaScript interface",
+          "title": "P53 JavaScript interface",
           "url": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/selfhost/docs/direct-javascript.md"
         }
       ]
@@ -216,7 +515,7 @@
           "label": "ordinary + relocated interface checks"
         }
       ],
-      "note": "These control sets overlap and are not a unique language-test total. Exact agreement with TypeScript remains 95/96 because its NaN oracle failure is retained. Broader native/GPU qualification and a new self-emitted fixed point remain separate.",
+      "note": "These Phase 53 control sets overlap and are not a unique language-test total. Exact reference agreement was 95/96 because TypeScript retained its NaN oracle failure. The later P56/P58 B2 self-reproduction qualification is reported separately.",
       "sources": [
         {
           "title": "P53 semantic qualification",
@@ -770,7 +1069,7 @@
       "title": "Pay for the guard once. Compile the producer too.",
       "paragraphs": [
         "When the whole call graph is proved pure, covered nested calls can reuse the same guard checks inside a private scope. The scope is restored on exit, and error construction suspends the proof so callback reentry keeps its meaning. Private tree producers and selectors also become direct operations.",
-        "Symbolic regression improved from 15.582 to 4.265 milliseconds, and ray tracing from 1,859.589 to 801.893 milliseconds. Seven new control groups cover the tricky boundaries. The installed compiler retains exact frontend comparisons and all 42 ordinary and relocated CLI checks."
+        "Symbolic regression improved from 15.582 to 4.265 milliseconds, and ray tracing from 1,859.589 to 801.893 milliseconds. Seven new control groups cover the tricky boundaries. That Phase 36 release retained exact frontend comparisons and passed all 42 ordinary and relocated CLI checks."
       ],
       "flow": [
         "Prove the call graph",
@@ -802,48 +1101,44 @@
   ],
   "sources": [
     {
-      "title": "P53 installed release",
-      "url": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase53/README.md"
+      "title": "Next investigation · Phase 59 profiling plan",
+      "url": "https://github.com/rom1504/bend/blob/a27fc4de95d67c705628bcba6454b7fdfa080576/design/phase59/first-request-attribution.md"
     },
     {
-      "title": "P53 complete runtime results",
-      "url": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase53/results.md"
+      "title": "P58 installed release and scope",
+      "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/README.md"
     },
     {
-      "title": "P53 semantic qualification",
-      "url": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase53/qualification.md"
+      "title": "Final B1/B2 compiler measurements",
+      "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/final-measurements.md"
     },
     {
-      "title": "P53 source accounting",
-      "url": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase53/complexity.md"
+      "title": "P58 complete program-runtime results",
+      "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/program-performance.md"
     },
     {
-      "title": "P52 direct JavaScript",
-      "url": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase52/README.md"
+      "title": "P58 qualification",
+      "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/validation.md"
     },
     {
-      "title": "Latest measured compilation costs · P48",
-      "url": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/implementation/phase48/compiler-cost-final.md"
+      "title": "P58 source accounting",
+      "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase58/source-complexity-last.md"
+    },
+    {
+      "title": "Compiler-image workflow",
+      "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/docs/self_hosted/compiler-image-generation.md"
+    },
+    {
+      "title": "P56 direct reproduction",
+      "url": "https://github.com/rom1504/bend/blob/6eecaefe3292774de5408994d21e31fc16c08dc5/implementation/phase56/reproduction.md"
+    },
+    {
+      "title": "Historical full frontend evidence · P45",
+      "url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/selfhost/CONFORMANCE.md"
     },
     {
       "title": "Phase 24 retrospective",
       "url": "https://github.com/bendlang/bend/pull/1207#issuecomment-5901128359"
-    },
-    {
-      "title": "Historical Phase 45 release",
-      "url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/README.md"
-    },
-    {
-      "title": "Current conformance scope",
-      "url": "https://github.com/rom1504/bend/blob/29dbaa41fb7988baae8355b1fba24312976d598d/selfhost/CONFORMANCE.md"
-    },
-    {
-      "title": "Historical compilation costs · P45",
-      "url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/compiler-cost.md"
-    },
-    {
-      "title": "Historical runtime results · P45",
-      "url": "https://github.com/rom1504/bend/blob/91af94475b48494482b3417ef8066f35ef49afbb/implementation/phase45/results.md"
     }
   ]
 }

@@ -16,10 +16,12 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / "site" / "charts"
 INPUTS = ("history-research.json", "conformance-research.json", "runtime-research.json",
-          "runtime-average-research.json", "compilation-average-research.json")
+          "runtime-average-research.json", "compilation-average-research.json",
+          "second-stage-research.json")
 NAMES = ("simplicity", "compilation", "conformance", "runtime-gains", "runtime-gaps",
          "runtime-average-history", "runtime-programs", "compilation-average-history",
-         "compilation-programs")
+         "compilation-programs", "second-stage-average-history", "second-stage-programs",
+         "second-stage-self-emission")
 INK = "#202d29"
 MUTED = "#586660"
 PAPER = "#f6f7f2"
@@ -124,6 +126,8 @@ def simplicity(plt, data):
     # A missing count is a gap, never an invented value or a connecting segment.
     ax.plot(xs, [p.get("nonblankLines") or float("nan") for p in points], color=TEAL,
             linewidth=2.5, marker="o", markersize=4.5, label="Nonblank lines")
+    ax.plot(xs, [p.get("codeLines") or float("nan") for p in points], color=BLUE,
+            linewidth=2.5, marker="o", markersize=4.5, label="Code lines · excludes comments")
     upper = math.ceil(max(p["physicalLines"] for p in points) / 5000) * 5000 + 1000
     ax.set_ylim(0, upper)
     ax.set_xlim(-.2, len(points) - .5)
@@ -133,13 +137,17 @@ def simplicity(plt, data):
     tick_indices = [i for i in tick_indices if i < len(points)]
     ax.set_xticks(tick_indices, [points[i]["chartLabel"].replace(" / ", "\n") for i in tick_indices])
     ax.set_xlabel("Recorded development milestones", labelpad=10)
-    note(fig, "Compiler source · lines of code")
+    note(fig, "Compiler source size · three distinct line counts")
     ax.annotate(f"{points[0]['physicalLines']:,}", (0, points[0]["physicalLines"]),
                 xytext=(0, 18000), fontsize=13, color=GREEN,
                 arrowprops={"arrowstyle": "-", "color": GREEN, "linewidth": 1})
     ax.annotate(f"{points[-1]['physicalLines']:,}", (xs[-1], points[-1]["physicalLines"]),
                 xytext=(-3, 13), textcoords="offset points", ha="right",
                 fontsize=15, fontweight="bold", color=GREEN)
+    if points[-1].get("codeLines"):
+        ax.annotate(f"{points[-1]['codeLines']:,}", (xs[-1], points[-1]["codeLines"]),
+                    xytext=(-3, -22), textcoords="offset points", ha="right",
+                    fontsize=14, fontweight="bold", color=BLUE)
     latest_nonblank = next((i for i in reversed(xs) if points[i].get("nonblankLines")), None)
     if latest_nonblank is not None:
         count_label = f"{points[latest_nonblank]['nonblankLines']:,}"
@@ -147,7 +155,8 @@ def simplicity(plt, data):
             count_label += f"\n(last counted {points[latest_nonblank]['chartLabel']})"
         ax.annotate(count_label,
                     (latest_nonblank, points[latest_nonblank]["nonblankLines"]),
-                    xytext=(-3, -24), textcoords="offset points", ha="right",
+                    xytext=(20, -32), textcoords="offset points", ha="left", va="top",
+                    arrowprops={"arrowstyle": "-", "color": TEAL, "linewidth": 1},
                     fontsize=12, fontweight="bold", color=TEAL)
     ax.annotate("Cleanup\n−1,842 physical lines", (3, 14667), xytext=(1.1, 7600),
                 arrowprops={"arrowstyle": "-", "color": GREEN, "linewidth": 1},
@@ -155,13 +164,13 @@ def simplicity(plt, data):
     ax.text(7.1, 5100, "Later work adds\ncoverage and optimizations", fontsize=13,
             color=MUTED, linespacing=1.5)
     handles, labels = ax.get_legend_handles_labels()
-    fig.legend(handles, labels, loc="lower left", bbox_to_anchor=(.11, .001), ncol=2,
-               frameon=False, fontsize=12, handlelength=2)
+    fig.legend(handles, labels, loc="lower left", bbox_to_anchor=(.07, .001), ncol=3,
+               frameon=False, fontsize=10.5, handlelength=1.7, columnspacing=1.6)
     save(plt, fig, "simplicity",
-         f"Physical and nonblank compiler source lines across {len(points)} selected snapshots, on a zero-based "
+         f"Physical, historical nonblank and later nonblank/noncomment source lines across {len(points)} snapshots, on a zero-based "
          "axis. Dedicated consolidation removes 1842 physical lines from Phase5 to Phase7. Later "
          f"coverage and performance work increases source size to {points[-1]['physicalLines']} physical "
-         "lines. Missing nonblank counts are left unplotted. Source size is a proxy, not a complete measure of simplicity.")
+         "lines. Nonblank and code-line series are distinct and missing counts are left unplotted. Source size is a proxy, not a complete measure of simplicity.")
 
 
 def compilation(plt, data):
@@ -196,9 +205,9 @@ def conformance(plt, data):
     from matplotlib.ticker import FuncFormatter
     from matplotlib.lines import Line2D
     semantic = data["independentSemanticSeries"]
-    fig = plt.figure(figsize=(9, 9.4))
-    ax = fig.add_axes((.11, .555, .84, .285))
-    semantic_ax = fig.add_axes((.14, .155, .81, .15))
+    fig = plt.figure(figsize=(9, 11))
+    ax = fig.add_axes((.11, .62, .84, .23))
+    semantic_ax = fig.add_axes((.25, .15, .70, .29))
     ax.grid(axis="y")
     colors = (BLUE, TEAL, GREEN)
     for segment, color in zip(data["segments"], colors):
@@ -221,9 +230,9 @@ def conformance(plt, data):
     ax.set_xlabel("Development phase", labelpad=12)
     fig.text(.11, .977, "Conformance · two distinct test suites", fontsize=18,
              fontweight="bold", va="top")
-    fig.text(.11, .925, "HISTORICAL · Frontend agreement", fontsize=14,
+    fig.text(.11, .935, "HISTORICAL · Exact frontend agreement", fontsize=14,
              fontweight="bold", va="top")
-    fig.text(.11, .89, f"Last renewed P{last_phase} · pinned TypeScript · axis starts at 70%",
+    fig.text(.11, .903, f"Last full rerun: P{last_phase} · {last_point['total']:,} main observations · axis starts at 70%",
              fontsize=12, color=MUTED, va="top")
     ax.annotate("79.7%", (3, 2196 / 2756 * 100), xytext=(0, -24),
                 textcoords="offset points", fontsize=13, color=BLUE, ha="left")
@@ -236,36 +245,43 @@ def conformance(plt, data):
                 textcoords="offset points", fontsize=14, fontweight="bold", color=GREEN, ha="right")
     # Each target is a distinct series. No line crosses a changed denominator.
     for x, segment, color in zip((.11, .40, .69), data["segments"], colors):
-        fig.text(x, .456, f"● {segment['id']}  ({segment['total']:,})", fontsize=11, color=color)
-    fig.add_artist(Line2D([.11, .95], [.427, .427], transform=fig.transFigure,
+        fig.text(x, .542, f"● {segment['id']}  ({segment['total']:,})", fontsize=11, color=color)
+    fig.add_artist(Line2D([.11, .95], [.52, .52], transform=fig.transFigure,
                          color=GRID, linewidth=1.2))
-    fig.text(.11, .400, "INDEPENDENT · Source semantics", fontsize=14,
+    fig.text(.11, .497, "INDEPENDENT · Runtime semantics", fontsize=14,
              fontweight="bold", va="top")
     latest = semantic[-1]
-    fig.text(.11, .365, f"Same {latest['total']} scenarios across {latest['fixtures']} fixtures · independent source expectations",
+    fig.text(.11, .467, f"Same {latest['total']} source-oracle scenarios · {latest['fixtures']} fixtures · each image tested separately",
              fontsize=11.5, color=MUTED, va="top")
     totals = [p["total"] for p in semantic]
     passed = [p["pass"] for p in semantic]
     semantic_ax.barh(range(len(semantic)), totals, height=.48, color=ORANGE)
-    semantic_ax.barh(range(len(semantic)), passed, height=.48, color=[TEAL, GREEN])
+    semantic_ax.barh(range(len(semantic)), passed, height=.48,
+                     color=[GREEN if p['pass'] == p['total'] else TEAL for p in semantic])
     for i, p in enumerate(semantic):
         semantic_ax.text(p["pass"] - 3, i, f"{p['pass']} / {p['total']}",
                          ha="right", va="center", color=PAPER, fontsize=15, fontweight="bold")
-    semantic_ax.set_yticks(range(len(semantic)), [f"P{p['phase']}" for p in semantic])
+    image_labels = ["B1 + B2" if p.get("alsoQualifiedCompilerImages") else
+                    "B2" if p.get("compilerImage") == "directB2" else "B1" for p in semantic]
+    semantic_ax.set_yticks(range(len(semantic)),
+                          [f"P{p['phase']} · {role}" for p, role in zip(semantic, image_labels)],
+                          fontsize=12)
     semantic_ax.set_ylim(len(semantic) - .45, -.55)
     semantic_ax.set_xlim(0, max(totals) * 1.02)
     semantic_ax.set_xticks([0, 24, 48, 72, 96])
     semantic_ax.grid(axis="x")
     semantic_ax.set_xlabel("Passing independently specified scenarios", fontsize=12, labelpad=11)
-    fig.text(.11, .065, "One NaN case repaired at P53. TypeScript remains 95 / 96.", fontsize=11.5, color=GREEN)
-    fig.text(.11, .030, "The lower suite measures correctness; it is separate from frontend agreement.",
-             fontsize=11, color=MUTED)
+    fig.text(.11, .063, "P53 repaired one NaN case. Both P58 images pass 96/96 each; TypeScript stays 95/96.",
+             fontsize=10.5, color=GREEN)
+    fig.text(.11, .033, "B1 = installed checked compiler · B2 = separately self-emitted compiler",
+             fontsize=10.5, color=MUTED)
     save(plt, fig, "conformance",
          "Exact parse/check agreement across selected recorded milestones. Three disconnected "
          "series use distinct pinned upstream targets and denominators. Vertical axis starts "
          f"at 70 percent. Fresh frontend evidence ends at Phase{last_phase}, with 3026 of 3026 observations. "
          "A separate lower panel shows independent source semantics on the unchanged 96 scenarios: "
-         "Phase52 passes 95 and Phase53 passes 96. TypeScript remains at 95. These distinct suites "
+         "Phase52 B1 passes 95; Phases53, 54 and 55 B1, Phase56 B2, and both Phase58 B1 and B2 "
+         "pass 96 each. TypeScript remains at 95. B2 is separately qualified, not installed. These distinct suites "
          "measure different scopes and must not be combined into one percentage.")
 
 
@@ -401,7 +417,7 @@ def speed_history(plt, data, kind):
         if i not in label_indices:
             continue
         last = i == len(points) - 1
-        below = runtime and i == 0
+        below = runtime and i in {0, 7}
         ax.annotate(f"{ratio:.2f}×", (i, ratio), xytext=(0, -14 if below else 13),
                     textcoords="offset points", ha="center", va="top" if below else "bottom",
                     fontsize=17 if last else 14, fontweight="bold" if last else "normal",
@@ -434,7 +450,7 @@ def speed_history(plt, data, kind):
                 "Geometric mean of 4 programs · checks + JS emission · lower is better")
     fig.text(.10, .91, subtitle, fontsize=12.5, color=MUTED, va="top")
     footnote = ("Breaks mark P41’s warmup change and P52’s direct JavaScript contract.\n"
-                "Each point uses its own campaign’s TypeScript reference." if runtime else
+                "Each point uses its campaign’s TypeScript reference; P56 was remeasured in P58." if runtime else
                "Disconnected lines mark different suites; compare changes within each suite." if len(segments) > 1 else
                 "Same programs and inputs at every checkpoint; ratios use each report’s TypeScript reference.")
     fig.text(.10, .026, footnote, fontsize=10.5, color=MUTED, linespacing=1.5)
@@ -446,124 +462,214 @@ def speed_history(plt, data, kind):
          f"Latest recorded average is {ratios[-1]:.4f}x at Phase{points[-1]['phase']}.")
 
 
+def first_request_axis(ax, points, stage, value_size=14):
+    """Keep repeat observations isolated; connect only the fresh old/new pair."""
+    from matplotlib.ticker import FuncFormatter, MaxNLocator
+    ratios = [p["ratio"] for p in points]
+    xs = list(range(len(points)))
+    ax.axvspan(len(points) - 2.4, len(points) - .65, color="#eaf0e7", linewidth=0)
+    ax.scatter(xs, ratios, c=[TEAL] * (len(points) - 1) + [GREEN], s=72,
+               edgecolors=PAPER, linewidths=1.5, zorder=4)
+    # The earlier points are new measurements of the same P56 image, not releases.
+    ax.plot(xs[-2:], ratios[-2:], color=GREEN, linewidth=2.8, zorder=3)
+    ax.text(len(points) - 1.5, .96, "Same-campaign comparison", ha="center", va="top",
+            transform=ax.get_xaxis_transform(), color=GREEN, fontsize=10.5)
+    for i, ratio in enumerate(ratios):
+        ax.annotate(f"{ratio:.2f}×", (i, ratio), xytext=(0, 12),
+                    textcoords="offset points", ha="center", va="bottom",
+                    fontsize=value_size, fontweight="bold" if i == len(points) - 1 else "normal",
+                    color=GREEN if i == len(points) - 1 else MUTED)
+    labels = []
+    for i, point in enumerate(points):
+        phase = point["phase"]
+        compiler = point.get("compiler_phase", phase)
+        event = "release" if i == 0 else "baseline" if phase != compiler and phase == points[-1]["phase"] else "repeat" if phase != compiler else "selected"
+        date = point.get("commit_date", "")[:10][5:].replace("-", "/")
+        labels.append(f"P{phase} {event}\nP{compiler} compiler\n{date} · {point['commit'][:7]}")
+    ax.set_xticks(xs, labels, fontsize=9.5)
+    ax.set_xlim(-.35, len(points) - .65)
+    ax.set_ylim(0, max(ratios) * 1.35)
+    ax.yaxis.set_major_locator(MaxNLocator(nbins=5, min_n_ticks=4))
+    ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:g}×"))
+    ax.grid(axis="y")
+    ax.axhline(1, color=INK, linewidth=1.25)
+    ax.text(.01, 1, "1× = TypeScript", transform=ax.get_yaxis_transform(),
+            va="bottom", color=INK, fontsize=10.5,
+            bbox={"facecolor": PAPER, "edgecolor": "none", "pad": 2})
+
+
 def compilation_history(plt, current, history):
-    """Keep historical checking snapshots separate from the fixed-program compile suite."""
+    """Keep checking, legacy requests and import-inclusive direct requests separate."""
     from matplotlib.ticker import FuncFormatter
-
+    from matplotlib.lines import Line2D
     earlier = history["compilerChecking"]["series"]
-    recent = current["history"]
-    fig = plt.figure(figsize=(9, 9.5))
-    early_ax = fig.add_axes((.11, .585, .84, .24))
-    recent_ax = fig.add_axes((.11, .16, .84, .205))
-
-    fig.text(.11, .98, "Compilation cost across development", fontsize=18,
-             fontweight="bold", va="top")
-    fig.text(.11, .94, "Two measurement scopes · time ÷ TypeScript time · lower is better",
-             fontsize=12, color=MUTED, va="top")
-    fig.text(.11, .889, "EARLIER · Compiler-source checking", fontsize=14,
-             fontweight="bold", va="top")
-    fig.text(.11, .858, "Process time · no code emission · log scale",
-             fontsize=12, color=MUTED, va="top")
-
-    selected_phases = {8, 9, 11, 16, 24}
-    phases = [point["phase"] for point in earlier]
-    ratios = [point["bend_to_typescript_process_ratio"] for point in earlier]
-    # Source snapshots, measurement windows, and eventually the TypeScript pin change.
-    # Deliberately use isolated markers, without a connecting trendline.
-    colors = [GREEN if phase in selected_phases else TEAL for phase in phases]
-    early_ax.scatter(phases, ratios, s=53, c=colors, edgecolors=PAPER,
-                     linewidths=1.2, zorder=4)
+    legacy = [p for p in current["history"] if p.get("backend") != "direct-js"]
+    modern = [p for p in current["history"] if p.get("backend") == "direct-js"]
+    fig = plt.figure(figsize=(9, 13.2))
+    early_ax = fig.add_axes((.11, .708, .84, .155))
+    legacy_ax = fig.add_axes((.11, .397, .84, .155))
+    modern_ax = fig.add_axes((.11, .105, .84, .155))
+    fig.text(.11, .98, "First-stage compilation · B1", fontsize=19, fontweight="bold", va="top")
+    fig.text(.11, .946, "Three separate measurement scopes · time ÷ TypeScript time · lower is better",
+             fontsize=11.5, color=MUTED, va="top")
+    fig.text(.11, .914, "EARLIER · Compiler-source checking", fontsize=14, fontweight="bold", va="top")
+    fig.text(.11, .889, "Process time · no emission · changing source snapshots · log scale",
+             fontsize=11.5, color=MUTED, va="top")
+    phases = [p["phase"] for p in earlier]
+    ratios = [p["bend_to_typescript_process_ratio"] for p in earlier]
+    selected = {8, 9, 11, 16, 24}
+    early_ax.scatter(phases, ratios, s=50, c=[GREEN if p in selected else TEAL for p in phases],
+                     edgecolors=PAPER, linewidths=1.2, zorder=4)
     early_ax.set_yscale("log")
     early_ax.set_ylim(1, 100)
     early_ax.set_xlim(min(phases) - .8, max(phases) + .8)
     early_ax.set_yticks([1, 3, 10, 30, 100], ["1×", "3×", "10×", "30×", "100×"])
     early_ax.minorticks_off()
-    early_ticks = [phase for phase in (8, 9, 11, 14, 16, 19, 21, 23, 24) if phase in phases]
-    early_ax.set_xticks(early_ticks, [f"P{phase}" for phase in early_ticks], fontsize=11)
+    ticks = [p for p in (8, 9, 11, 14, 16, 19, 21, 23, 24) if p in phases]
+    early_ax.set_xticks(ticks, [f"P{p}" for p in ticks], fontsize=10.5)
     early_ax.grid(axis="y")
-    early_ax.axhline(1, color=INK, linewidth=1.3, zorder=2)
-    early_ax.text(.01, 1, "1× = TypeScript", transform=early_ax.get_yaxis_transform(),
-                  va="bottom", fontsize=11, color=INK,
-                  bbox={"facecolor": PAPER, "edgecolor": "none", "pad": 3})
+    early_ax.axhline(1, color=INK, linewidth=1.2)
     for phase, ratio in zip(phases, ratios):
-        if phase in selected_phases:
-            # Early large reductions and the final snapshot get direct value labels.
-            offset = (7, 8) if phase == 8 else ((-1, 12) if phase == 24 else (0, 12))
-            early_ax.annotate(f"{ratio:.2f}×", (phase, ratio), xytext=offset,
+        if phase in selected:
+            early_ax.annotate(f"{ratio:.2f}×", (phase, ratio), xytext=(5 if phase == 8 else 0, 9),
                               textcoords="offset points", ha="center", va="bottom",
-                              color=GREEN, fontsize=13, fontweight="bold")
-    pin_changes = [point["phase"] - .5 for previous, point in zip(earlier, earlier[1:])
-                   if previous["pin"] != point["pin"]]
-    for boundary in pin_changes:
-        early_ax.axvline(boundary, color=GRID, linewidth=1.5, linestyle=(0, (3, 4)))
-        early_ax.text(boundary - .25, 63, f"New TS pin\nat P{int(boundary + .5)}",
-                      ha="right", va="top", color=MUTED, fontsize=11, linespacing=1.5)
-    fig.text(.11, .527, "Source and timing windows evolve; each dot is a separate release snapshot.",
-             fontsize=11, color=MUTED)
-    first, last = earlier[0], earlier[-1]
-    fig.text(.11, .500,
-             f"Bend process time: {first['bend_process_seconds']:.3f} s (P{first['phase']}) → "
-             f"{last['bend_process_seconds']:.3f} s (P{last['phase']})",
+                              color=GREEN, fontsize=12, fontweight="bold")
+    for previous, point in zip(earlier, earlier[1:]):
+        if previous["pin"] != point["pin"]:
+            boundary = point["phase"] - .5
+            early_ax.axvline(boundary, color=GRID, linewidth=1.5, linestyle=(0, (3, 4)))
+            early_ax.text(boundary - .25, 65, f"New TS pin\nat P{point['phase']}",
+                          ha="right", va="top", color=MUTED, fontsize=10.5)
+    fig.text(.11, .665, "Separate release snapshots; dots do not form a matched-source speedup curve.",
+             fontsize=10.5, color=MUTED)
+    fig.text(.11, .641, f"Bend checking: {earlier[0]['bend_process_seconds']:.3f} s → {earlier[-1]['bend_process_seconds']:.3f} s",
              fontsize=11.5, color=GREEN)
-
-    # A full-width divider and separate axis prevent a false historical-to-current trend.
-    from matplotlib.lines import Line2D
-    fig.add_artist(Line2D([.11, .95], [.468, .468], transform=fig.transFigure,
-                         color=GRID, linewidth=1.2))
-    fig.text(.11, .438, "RECENT · Checking + JavaScript emission", fontsize=14,
-             fontweight="bold", va="top")
-    fig.text(.11, .407, "Legacy JS request time · separate program cohorts",
-             fontsize=12, color=MUTED, va="top")
-
-    xs = list(range(len(recent)))
-    recent_ratios = [point["ratio"] for point in recent]
-    cohorts = []
-    for i, point in enumerate(recent):
+    fig.add_artist(Line2D([.11, .95], [.621, .621], transform=fig.transFigure, color=GRID))
+    fig.text(.11, .601, "HISTORICAL · Legacy JavaScript requests", fontsize=14, fontweight="bold", va="top")
+    fig.text(.11, .576, "Checks + emission · host import excluded · changing program cohorts",
+             fontsize=11.5, color=MUTED, va="top")
+    xs = list(range(len(legacy)))
+    legacy_ratios = [p["ratio"] for p in legacy]
+    groups = []
+    for i, point in enumerate(legacy):
         key = (point["cohortKey"], tuple(point["cohortIds"]))
-        if not cohorts or cohorts[-1][0] != key or point.get("connectToPrevious") is False:
-            cohorts.append((key, []))
-        cohorts[-1][1].append(i)
-    for j, (_, indices) in enumerate(cohorts):
+        if not groups or groups[-1][0] != key or point.get("connectToPrevious") is False:
+            groups.append((key, []))
+        groups[-1][1].append(i)
+    for j, (_, indices) in enumerate(groups):
         color = (BLUE, TEAL, GREEN)[min(j, 2)]
-        recent_ax.plot(indices, [recent_ratios[i] for i in indices], color=color,
-                       linewidth=2.8, marker="o", markersize=8,
-                       markeredgecolor=PAPER, markeredgewidth=1.5, zorder=4)
-        recent_ax.text(sum(indices) / len(indices), 1.015,
-                       f"{recent[indices[0]]['cohortSize']} programs",
-                       transform=recent_ax.get_xaxis_transform(), ha="center", va="bottom",
-                       fontsize=11, color=color, fontweight="bold")
+        legacy_ax.plot(indices, [legacy_ratios[i] for i in indices], color=color,
+                       linewidth=2.7, marker="o", markersize=7, markeredgecolor=PAPER, zorder=4)
+        for i in indices:
+            legacy_ax.annotate(f"{legacy_ratios[i]:.2f}×", (i, legacy_ratios[i]), xytext=(0, 10),
+                               textcoords="offset points", ha="center", color=color, fontsize=12)
         if j:
-            recent_ax.axvline(indices[0] - .5, color=GRID, linewidth=1.5, linestyle=(0, (3, 4)))
-    recent_ax.set_xlim(-.35, len(recent) - .65)
-    recent_ax.set_ylim(0, max(10.8, max(recent_ratios) * 1.28))
-    recent_ax.set_yticks([0, 2.5, 5, 7.5, 10])
-    recent_ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:g}×"))
-    recent_ax.set_xticks(xs, [checkpoint_label(point) for point in recent], fontsize=11)
-    recent_ax.grid(axis="y")
-    recent_ax.axhline(1, color=INK, linewidth=1.3)
-    recent_ax.text(.01, 1, "1× = TypeScript", transform=recent_ax.get_yaxis_transform(),
-                   va="bottom", fontsize=11, color=INK,
-                   bbox={"facecolor": PAPER, "edgecolor": "none", "pad": 3})
-    for i, ratio in enumerate(recent_ratios):
-        recent_ax.annotate(f"{ratio:.2f}×", (i, ratio), xytext=(0, 11),
-                           textcoords="offset points", ha="center", va="bottom",
-                           fontsize=15 if i == len(recent) - 1 else 13,
-                           color=GREEN, fontweight="bold" if i == len(recent) - 1 else "normal")
-    fig.text(.11, .067, "Release checkpoints · commit date and ID", fontsize=11, color=MUTED)
-    fig.text(.11, .027, "Cohort changes break the line. Latest P48 legacy sample; no P53 default measurement.",
-             fontsize=11, color=MUTED)
+            legacy_ax.axvline(indices[0] - .5, color=GRID, linestyle=(0, (3, 4)))
+    legacy_ax.set_xlim(-.35, len(legacy) - .65)
+    legacy_ax.set_ylim(0, max(legacy_ratios) * 1.25)
+    legacy_ax.set_yticks([0, 2.5, 5, 7.5, 10])
+    legacy_ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:g}×"))
+    legacy_ax.set_xticks(xs, [f"P{p['phase']}\n{p['cohortSize']} programs\n{p['commit'][:7]}" for p in legacy], fontsize=9.5)
+    legacy_ax.axhline(1, color=INK, linewidth=1.2)
+    legacy_ax.grid(axis="y")
+    fig.text(.11, .335, "Cohort changes break the line. This request-only scope ends at P48.", fontsize=10.5, color=MUTED)
+    fig.add_artist(Line2D([.11, .95], [.316, .316], transform=fig.transFigure, color=GRID))
+    fig.text(.11, .299, "CURRENT · Direct JavaScript first request", fontsize=14, fontweight="bold", va="top")
+    fig.text(.11, .276, "Import + API load + first checked request · Evening and Lexer",
+             fontsize=11.5, color=MUTED, va="top")
+    first_request_axis(modern_ax, modern, "B1", value_size=12.5)
+    fig.text(.11, .024, "The first three dots measure the P56 compiler. Only the last pair compares images.\n"
+             "Fresh-process medians; Base caches primed. P58 B1 is effectively flat (+0.40% time).",
+             fontsize=10.5, color=MUTED, linespacing=1.45)
     save(plt, fig, "compilation-average-history",
-         "Two separate compilation measurement scopes. The upper panel shows 15 historical "
-         "compiler-source checking process-time snapshots from Phase8 to Phase24, without code "
-         "emission, on a logarithmic 1x to 100x axis. The source and timing windows evolve, so "
-         "the snapshots are unconnected. The TypeScript reference pin changes at Phase23. "
-         f"The recorded ratio declines from {ratios[0]:.2f}x to {ratios[-1]:.2f}x across these snapshots. "
-         "The lower panel separately shows the geometric mean of checked JavaScript emission "
-         "request-time ratios on four programs at Phase42 through Phase45, three programs at Phase47, "
-         "and two programs at Phase48. These cohorts have disconnected lines on a linear "
-         f"axis, ending at {recent_ratios[-1]:.2f}x. No Phase53 default compilation measurement is available. "
-         "Both panels show the 1x TypeScript reference. "
-         "Historical and current measurements are not joined or treated as a matched workload.")
+         "Three unjoined compilation scopes: historical compiler-source checking from P8 to P24 "
+         "with no emission, legacy checked-library requests from P42 to P48 excluding host import "
+         "and using separate cohorts, and modern B1 first checked direct-library requests including "
+         "host import and API load on Evening and Lexer. Modern observations at P56, P57 and the "
+         "fresh P58 baseline all measure the P56 compiler. Only the final pair compares P56 to "
+         f"selected P58, from {modern[-2]['ratio']:.4f}x to {modern[-1]['ratio']:.4f}x TypeScript. "
+         "Averaging uses equal-program geometric means; Base caches are primed and process startup is excluded.")
+
+
+def second_stage_history(plt, data):
+    fig, ax = line_axes(plt, height=5.8)
+    fig.subplots_adjust(left=.11, right=.95, top=.73, bottom=.29)
+    first_request_axis(ax, data["history"], "B2", value_size=15)
+    fig.text(.11, .97, "Second-stage compilation · B2", fontsize=19, fontweight="bold", va="top")
+    fig.text(.11, .91, "Import + API load + first checked request", fontsize=13, color=MUTED, va="top")
+    fig.text(.11, .857, "Evening + Lexer · equal-program geometric mean · lower is better", fontsize=11.5, color=MUTED, va="top")
+    fig.text(.11, .043, "The first three observations use the same P56 B2. Only the last pair compares images.\n"
+             "Three fresh processes per program; Base caches primed. Qualified B2 remains uninstalled.",
+             fontsize=10.5, color=MUTED, linespacing=1.55)
+    ax.set_ylabel("Time ÷ TypeScript time", fontsize=12)
+    save(plt, fig, "second-stage-average-history",
+         "Four separate B2 first-request observations with import and API load included. P56 original, "
+         "P57 repeat and P58 fresh baseline all use the P56 B2 compiler. The final same-campaign pair "
+         f"improves from {data['history'][-2]['ratio']:.4f}x to {data['history'][-1]['ratio']:.4f}x TypeScript. "
+         "Earlier observations are unconnected. Each equal-program geometric mean covers Evening and Lexer "
+         "with three fresh processes per role. Base caches are primed; process startup is excluded. B2 is not installed.")
+
+
+def compiler_programs(plt, data, stage):
+    points = sorted(data["programs"], key=lambda p: p["ratio"])
+    fig, ax = plt.subplots(figsize=(9, 4.8))
+    fig.subplots_adjust(left=.23, right=.94, top=.70, bottom=.33)
+    values = [p["ratio"] for p in points]
+    ax.barh(range(len(points)), values, height=.37, color=ORANGE)
+    for i, p in enumerate(points):
+        ax.text(p["ratio"] + .07, i, f"{p['ratio']:.2f}×", va="center", color=ORANGE,
+                fontsize=16, fontweight="bold")
+        ax.text(0, i + .30, f"Bend {p['bend_ms']/1000:.3f} s  ·  TypeScript {p['typescript_ms']/1000:.3f} s",
+                va="center", fontsize=11, color=MUTED,
+                bbox={"facecolor": PAPER, "edgecolor": "none", "pad": .4})
+    ax.set_yticks(range(len(points)), [p.get("name", p["id"]) for p in points], fontsize=15)
+    ax.set_ylim(len(points) - .42, -.52)
+    ax.set_xlim(0, max(values) * 1.26)
+    ax.set_xticks(range(0, math.ceil(max(values) * 1.26)),
+                  [f"{i}×" for i in range(0, math.ceil(max(values) * 1.26))])
+    ax.grid(axis="x")
+    ax.axvline(1, color=INK, linewidth=1.25)
+    ax.set_xlabel("Time ÷ TypeScript time · 1× = equal time", labelpad=12, fontsize=12)
+    fig.text(.07, .967, f"P{data['latest_phase']} · {'first' if stage == 'B1' else 'second'}-stage compilation ({stage})",
+             fontsize=18, fontweight="bold", va="top")
+    fig.text(.07, .881, "By program · import + API load + first checked request", fontsize=12.5, color=MUTED, va="top")
+    footer = "Installed checked B1" if stage == "B1" else "Separately qualified B2 · not installed"
+    fig.text(.07, .070, f"{footer} · three fresh processes per program and role.\n"
+             "Base caches primed; process startup excluded. Lower is better.", fontsize=11, color=MUTED, linespacing=1.6)
+    name = "compilation-programs" if stage == "B1" else "second-stage-programs"
+    save(plt, fig, name, f"Latest P{data['latest_phase']} {stage} first-request latency including import and API loading "
+         "for Evening and Lexer, shown against each campaign's TypeScript reference. "
+         + "; ".join(f"{p.get('name', p['id'])}: {p['ratio']:.4f}x, Bend {p['bend_ms']:.3f} ms, TypeScript {p['typescript_ms']:.3f} ms" for p in points)
+         + ". Three fresh processes per role and program; Base caches primed, process startup excluded. " + footer + ".")
+
+
+def second_stage_self_emission(plt, data):
+    points = data["selfEmissionHistory"]
+    fig, ax = plt.subplots(figsize=(9, 4.9))
+    fig.subplots_adjust(left=.28, right=.93, top=.70, bottom=.32)
+    values = [p["seconds"] for p in points]
+    ax.barh(range(len(points)), values, height=.43, color=[TEAL, GREEN])
+    for i, value in enumerate(values):
+        ax.text(value + 5, i, f"{value:.3f} s", va="center", fontsize=16, fontweight="bold",
+                color=TEAL if i == 0 else GREEN)
+    ax.set_yticks(range(len(points)), [f"P{p['phase']} B2" for p in points], fontsize=15)
+    ax.set_ylim(len(points) - .5, -.55)
+    ax.set_xlim(0, max(values) * 1.29)
+    ax.set_xticks([0, 50, 100, 150, 200, 250])
+    ax.set_xlabel("Complete compiler-image emission · seconds", fontsize=12, labelpad=12)
+    ax.grid(axis="x")
+    fig.text(.07, .968, f"Self-emission · {data['selfEmission']['speedup']:.2f}× faster", fontsize=19, fontweight="bold", va="top")
+    fig.text(.07, .88, "B2 emits its complete B3 · each compiles its own compiler source", fontsize=12, color=MUTED, va="top")
+    fig.text(.07, .066, "Same clean method; one observation per image. Baseline retained from earlier in P58.\n"
+             "Each output is byte-checked. Fresh source checking is a separate qualification.",
+             fontsize=10.5, color=MUTED, linespacing=1.6)
+    save(plt, fig, "second-stage-self-emission",
+         f"Clean complete compiler-image emission falls from {values[0]:.9f} seconds on P56 B2 "
+         f"to {values[1]:.9f} seconds on P58 last01 B2, a {data['selfEmission']['speedup']:.4f}x speedup. "
+         "Two observations under the same clean method; the baseline is retained from earlier in the P58 "
+         "campaign and was not rerun consecutively with the selected image. Each image compiles its own "
+         "source and verifies its own complete output bytes. Fresh type checking and 39.199-second "
+         "qualification reproduction are separate clocks.")
 
 
 def speed_programs(plt, data, kind):
@@ -643,7 +749,13 @@ def render():
                                 data["history-research.json"])
         else:
             speed_history(plt, data[f"{kind}-average-research.json"], kind)
-        speed_programs(plt, data[f"{kind}-average-research.json"], kind)
+        if kind == "runtime":
+            speed_programs(plt, data[f"{kind}-average-research.json"], kind)
+        else:
+            compiler_programs(plt, data["compilation-average-research.json"], "B1")
+    second_stage_history(plt, data["second-stage-research.json"])
+    compiler_programs(plt, data["second-stage-research.json"], "B2")
+    second_stage_self_emission(plt, data["second-stage-research.json"])
     manifest = {
         "version": 1,
         "inputs": {name: digest(ROOT / name)

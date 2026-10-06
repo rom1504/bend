@@ -2,16 +2,6 @@ import Base
 
 # Foreign source linkage, argument erasure and ABI descriptors.
 @unsafe
-def j_foreign_path(
-  +paths: List<&2, KTerm>,
-) -> String:
-  match paths:
-    case Nil{}:
-      ""
-    case Con{h, rest}:
-      kc(String, String.ends_with(nm(h), ".js\"") || String.ends_with(nm(h), ".js"), u => nm(h), u => j_foreign_path(rest))
-
-@unsafe
 def j_foreign_name(
   +name: String,
 ) -> String:

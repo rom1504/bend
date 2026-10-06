@@ -6,21 +6,6 @@
 # once, rather than exploring both Boolean values and duplicating their suffix.
 
 @unsafe
-def j_u32_native_ctor(+book: List<&2,KDef>, +owner: String, +name: String) -> Bool:
-  +d = lookup(book, owner)
-  +c = lookup(dc(d), name)
-  String.eq(dk(d), "ADT") && db(d) && String.eq(dk(c), "Ctr") && db(c)
-
-@unsafe
-def j_u32_native_book(+book: List<&2,KDef>) -> Bool:
-  j_u32_native_ctor(book, "U32", "U32") &&
-  j_u32_native_ctor(book, "Word.Nil", "WNil") &&
-  j_u32_native_ctor(book, "Word.Con", "WCon") &&
-  j_u32_native_ctor(book, "Bool", "False") &&
-  j_u32_native_ctor(book, "Bool", "True") &&
-  String.eq(dk(lookup(book, "Word")), "Def") && db(lookup(book, "Word"))
-
-@unsafe
 def j_u32_native_type(+ty: KTerm) -> Bool:
   String.eq(tg(ty), "ADT") && String.eq(nm(ty), "U32") &&
   U32.is_eq(terms_len(ks(ty)), 0) && Bool.not(has_name(rm(ty), "U32"))

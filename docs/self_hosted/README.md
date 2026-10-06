@@ -6,6 +6,12 @@ The [Phase51 V8-guided runtime](v8-guided-runtime.md) describes the retained
 compatibility mode. The source survey below remains a dated Phase45 baseline;
 its counts and timings are historical.
 
+For the current separation between shared checking, backend facts, direct
+JavaScript, legacy JavaScript and native C, read
+[Backend boundaries](backend-boundaries.md). It distinguishes implemented source
+from the proposed extension point for LLVM or assembly. The legacy IR is not a
+target-neutral compiler IR.
+
 This survey describes the selected **Phase45 worker23** compiler at repository
 commit `55e5b79dc9ac3e02436a712e34722f2eb519e5df`, inspected on 2026-10-04.
 It separates implemented behavior, historical experiments and proposed work.
@@ -13,8 +19,9 @@ The survey changes documentation only; it does not qualify a new compiler.
 
 | Document | Read it for |
 | --- | --- |
+| [Backend boundaries](backend-boundaries.md) | Shared checked core and facts, backend-local representations, retained native contracts, and the incremental runtime-IR proposal. |
 | [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Phase53 default callable/data interface, ordered prefix/value lowering, qualification and explicit limits. |
-| [Architecture](architecture.md) | Source organization, representations, compiler pipeline, runtime/host boundaries and current complexity. |
+| [Architecture](architecture.md) | Dated Phase45 source organization, representations, pipeline and complexity; use backend boundaries for the current backend split. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |
 | [Private array regions](private-array-regions.md) | Phase47 closed-array representation, ordered operations, host guards and research limits; separate from release qualification. |
 | [Phase48 representations](phase48-representations.md) | RNFA04 mechanisms, composition controls and original-path mutation contracts; the phase report records release status. |
@@ -26,8 +33,8 @@ The survey changes documentation only; it does not qualify a new compiler.
 | [Backend strategy](../remaining_opportunities/backend-strategy.md) | JavaScript, existing C/Clang, direct LLVM IR and custom machine-code tradeoffs. |
 
 For everyday usage, use the [compiler guide](../BEND-IN-BEND.md). For exact
-JavaScript node and ABI contracts, use the maintained
-[JavaScript IR guide](../../selfhost/docs/JAVASCRIPT_IR.md). The survey explains
+legacy JavaScript node and ABI contracts, use the maintained
+[legacy JavaScript IR guide](../../selfhost/docs/JAVASCRIPT_IR.md). The survey explains
 the architecture; it does not replace those operational references.
 
 ## Snapshot and evidence boundaries

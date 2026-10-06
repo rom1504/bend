@@ -285,15 +285,6 @@ def j_layout_bindings(book, env, xs, todo):
 
 # Checked constructor terms identify their ADT; its local telescope lookup avoids
 # repeatedly scanning every unrelated definition. Unknown shapes retain fallback.
-@unsafe
-def j_layout_ctor(
-  +book: List<&2, KDef>,
-  +ty: KTerm,
-  +name: String,
-) -> KDef:
-  +d = lookup(dc(lookup(book, nm(ty))), name)
-  kc(KDef, String.eq(tg(ty), "ADT") && String.eq(dk(d), "Ctr"), u => d, u => j_find_ctor(book, name))
-
 # A checked native Nat layer has no layout-sensitive fields. Visit its field
 # normally, preserving dynamic-tail references, instead of rescanning its suffix.
 @unsafe

@@ -1,6 +1,13 @@
-# JavaScript intermediate representations
+# Legacy JavaScript intermediate representations
 
-The JavaScript backend has two cooperating intermediate representations:
+This guide describes the retained **legacy descriptor backend**, selected with
+`--legacy-js` or API `backend: 'js'`. Since Phase53, ordinary JavaScript output
+uses the separate [direct backend](direct-javascript.md). Direct output does not
+pass through the JIR/JW pipeline described here. See
+[backend boundaries](../../docs/self_hosted/backend-boundaries.md) for the shared
+checked core, backend-local representations and future native extension point.
+
+The legacy JavaScript backend has two cooperating intermediate representations:
 
 - **Ordinary runtime IR (`JIR`)** represents expressions that keep the public
   descriptor, application, matcher and trampoline protocols.
@@ -12,7 +19,7 @@ The dependent core and checker remain separate. The backend is not yet one
 unified, source-independent IR: inherited optimizations and explicit compatibility
 adapters still participate in selection. Neither IR is SSA, and introducing an IR
 alone establishes no execution-speed claim. Its checked compiler API is not a
-new self-emitted fixed point. Worker21 changes the runtime exact-entry wrapper
+new self-emitted fixed point. Worker21 introduced the runtime exact-entry wrapper
 for admitted nullary definitions while preserving their public function metadata;
 compiler source and the selected runtime must be qualified together.
 
@@ -27,12 +34,14 @@ The original guarded handle-based and public fallbacks remain available. See the
 [Phase47 report](../../implementation/phase47/README.md) for selection status,
 measured costs and the short-call regression.
 
-This guide describes the worker23/array06 foundations plus installed Phase48 RNFA04.
-Release verification and all 42 CLI checks pass. The
-[`release manifest`](../dist/release.json),
+This guide describes the worker23/array06 foundations and the retained Phase48
+RNFA04 mechanisms. At that historical checkpoint, release verification and all
+42 CLI checks passed. The
 [qualification receipt](../tools/performance/phase48/evidence/selected-qualification.json)
-and [Phase48 report](../../implementation/phase48/README.md) bind the selected
-compiler/runtime and exact fresh scope. The
+and [Phase48 report](../../implementation/phase48/README.md) bind that
+compiler/runtime and its exact fresh scope. They are not current release
+identities. The [Phase53 report](../../implementation/phase53/README.md) records
+the direct-default release and its separate legacy compatibility checks. The
 [Phase45 worker design](../../design/phase45/general-workers.md) and
 [Phase44 ordinary IR design](../../design/phase44/README.md) retain their original
 decisions and qualification boundaries.
@@ -43,8 +52,9 @@ typed U32/F32 Array effects, and finite F32 leaves inside successful private
 region plans. The complete contracts, corrected strict-predicate demand and
 bounded zero/one literal-entry policy are documented in
 [private representations](../../docs/self_hosted/phase48-representations.md).
-The selected release is installed and verified; the campaign report separates
-its fresh qualification and performance evidence from historical foundation checks.
+That campaign report separates its qualification and performance evidence from
+earlier foundation checks. These preserved results are not measurements of the
+current direct backend.
 
 ```text
 checked, annotated KTerm
@@ -62,7 +72,7 @@ checked, annotated KTerm
         root-plan selection -> guarded public entry + ordinary fallback
 ```
 
-The diagram shows domains, not unconditional compilation of every alternative.
+The diagram shows legacy-backend domains, not unconditional compilation of every alternative.
 Root selection evaluates candidates in order and keeps one result. A refused
 private lowering retains the established fallback; it does not weaken the proof.
 
@@ -79,7 +89,7 @@ private lowering retains the established fallback; it does not weaken the proof.
 | [`emit.bend`](../src/back/js/ir/emit.bend) | Print the operations already selected by lowering. |
 | [`statement.bend`](../src/back/js/ir/statement.bend) | Emit return-position bindings and branches as lexical blocks. |
 
-The production entry is `j_expr -> jir_lower -> jir_compile`; `jir_compile`
+The legacy entry is `j_expr -> jir_lower -> jir_compile`; `jir_compile`
 runs `jir_simplify` before `jir_emit`. Lambda bodies use `jir_emit_return` for
 statement emission. Compatibility entry points use the same compile schedule.
 
@@ -163,7 +173,7 @@ input sizes or application algorithms.
 Worker lowering is a consumer of admission proofs, not a substitute for them.
 [`jpure.bend`](../src/back/js/jpure.bend) collects source instances and aliases,
 replays exact source facts, and checks the complete `JPure` graph, coverage,
-erasure and native provenance. The selected public root currently has zero to
+erasure and native provenance. An admitted legacy public root has zero to
 eight live scalar inputs and a scalar or exact native String result. Its declared
 arity must equal its consecutive leading lambda count. A matcher between
 arguments therefore retains its public partial-application and demand boundary,

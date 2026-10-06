@@ -1,5 +1,20 @@
 # Compiler architecture
 
+**Current overview:** Phase53 ordered02 is the installed release. Direct
+JavaScript is the default for emitted programs, libraries and compiled runs;
+explicit legacy JavaScript and native targets remain available. Read
+[backend boundaries](../../docs/self_hosted/backend-boundaries.md) for the shared
+checked core and the distinct direct, descriptor and native representations,
+and the [direct guide](direct-javascript.md) for the current public interface.
+Phase54 helper separation and graph work are in progress and are qualified
+separately; they do not introduce a universal runtime IR. See the
+[Phase53 report](../../implementation/phase53/README.md) for installed identities
+and completed gates.
+
+The sections below retain the **historical Phase48 architecture snapshot** and
+its earlier foundations. Their release labels, counts and measurements describe
+that checkpoint; they do not identify the currently installed compiler.
+
 The typed compiler uses a first-order representation shared by the frontend,
 checker, normalizer and emitters. The original single-file compiler remains
 available as a historical regression baseline.

@@ -90,7 +90,7 @@ async function compile(compiler,output) {
   report.currentStage={compiler,output,nodeArgs,started:new Date().toISOString()};save();
   const log=fs.openSync(output+'.log','w'),start=performance.now();
   try {
-    const child=spawn(process.execPath,[...nodeArgs,driver,source,'--library','-o',output],{
+    const child=spawn(process.execPath,[...nodeArgs,driver,source,'--legacy-js','--library','-o',output],{
       cwd:project,detached:process.platform!=='win32',stdio:['ignore',log,log],env:{...process.env,BEND_BASE:report.base.canonicalPath,BEND_TYPED_API:compiler,BEND_TYPED_RUNTIME:runtime,BEND_TYPED_TRACE:'1'}});
     activeChild=child;
     const alarm=setTimeout(()=>{

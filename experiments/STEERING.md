@@ -1,3 +1,28 @@
+# Active Phase54: backend cleanup and direct bootstrap qualification
+
+The user authorized the cleanup recommendation. Installed release remains the
+qualified Phase53 ordered02 described below; no Phase54 promotion yet.
+[Design](../design/phase54/backend-cleanup-and-direct-bootstrap.md),
+[report](../implementation/phase54/README.md), and
+[backend boundaries](../docs/self_hosted/backend-boundaries.md).
+
+Shared helpers moved unchanged:27 common semantic queries and7 shared JS text
+helpers. The helper-only checked build passes36 frontend witnesses and produces
+exactly the installed Phase53 API bytes. Two maintained compiler-image commands
+now explicitly select legacy; six host-only routing controls pass.
+
+The new compact SCC analysis has independent static review; checked graph facts,
+resource policy and larger source qualification remain separate gates. The
+existing no-G loader may support direct compiler images without an ABI rewrite;
+restricted exports/transport precede full compiler emission and self-reproduction.
+Legacy compatibility and native C remain required until their users migrate.
+No speculative universal IR, LLVM or assembly emitter is being added.
+
+Keep the103 inherited files untouched, historical producers immutable and heavy
+targets serialCPU3/1GiBheap/2GiBRSS/4GiBfloor. Root controls execution, installation,
+commits and pushes. No PR comments. Final Phase54 evidence will use one closed raw
+archive; all failures remain recorded. Do not rerun full timing if output is exact.
+
 # Current compiler: Phase53 ordered02
 
 The user authorized fixing the semantic mismatch, making direct JavaScript the

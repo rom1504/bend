@@ -1,14 +1,6 @@
 import Base
 
 # Constant constructors lower to the JavaScript primitive representation.
-law j_strip:
-  for +t: KTerm
-  KTerm
-
-@unsafe
-def j_strip(t):
-  kc(KTerm, String.eq(tg(t), "Ann"), u => j_strip(kid(t, 0)), u => t)
-
 @unsafe
 def j_literal(
   +t: KTerm,
@@ -31,43 +23,6 @@ law j_literal_ctor:
 @unsafe
 def j_literal_ctor(t):
   kc(String, String.eq(nm(t), "U32"), u => j_word_text(j_word(j_strip(kid(t, 0)), 0, 0), False{}), u => kc(String, String.eq(nm(t), "F32"), u => j_word_text(j_word(j_strip(kid(t, 0)), 0, 0), True{}), u => kc(String, String.eq(nm(t), "Chr"), u => j_char_text(j_u32(kid(t, 0))), u => kc(String, String.eq(nm(t), "Zero") || String.eq(nm(t), "Succ"), u => j_nat_text(j_nat(t, 0n)), u => kc(String, String.eq(nm(t), "SNil") || String.eq(nm(t), "SCon"), u => j_string_text(j_string(t, "")), u => "")))))
-
-law j_u32:
-  for +t: KTerm
-  Maybe<&2, U32>
-
-@unsafe
-def j_u32(t):
-  j_u32_node(j_strip(t))
-
-law j_u32_node:
-  for +t: KTerm
-  Maybe<&2, U32>
-
-@unsafe
-def j_u32_node(t):
-  kc(Maybe<&2,U32>, core_literal(t) && String.eq(nm(t), "U32"), u => Some{kl_number(t)}, u => kc(Maybe<&2, U32>, String.eq(tg(t), "Ctr") && String.eq(nm(t), "U32"), u => j_word(j_strip(kid(t, 0)), 0, 0), u => None{}))
-
-law j_word:
-  for +t: KTerm
-  for +at: U32
-  for +acc: U32
-  Maybe<&2, U32>
-
-@unsafe
-def j_word(t, at, acc):
-  kc(Maybe<&2, U32>, String.eq(tg(t), "Ctr"), u => kc(Maybe<&2, U32>, String.eq(nm(t), "WNil"), u => kc(Maybe<&2, U32>, U32.is_eq(at, 32), u => Some{acc}, u => None{}), u => kc(Maybe<&2, U32>, String.eq(nm(t), "WCon") && U32.is_lt(at, 32), u => j_word_bit(j_strip(kid(t, 0)), j_strip(kid(t, 1)), at, acc), u => None{})), u => None{})
-
-law j_word_bit:
-  for +bit: KTerm
-  for +rest: KTerm
-  for +at: U32
-  for +acc: U32
-  Maybe<&2, U32>
-
-@unsafe
-def j_word_bit(bit, rest, at, acc):
-  kc(Maybe<&2, U32>, String.eq(tg(bit), "Ctr") && (String.eq(nm(bit), "True") || String.eq(nm(bit), "False")), u => j_word(rest, U32.add(at, 1), U32.or(acc, kc(U32, String.eq(nm(bit), "True"), u => U32.shln(1, U32.to_nat(at)), u => 0))), u => None{})
 
 law j_word_text:
   for +value: Maybe<&2, U32>

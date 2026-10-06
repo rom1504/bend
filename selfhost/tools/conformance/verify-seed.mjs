@@ -50,7 +50,7 @@ save();
 const log=fs.openSync(logFile,'w'),start=performance.now();
 try {
   verifyInputs();
-  child=spawn(process.execPath,[...nodeArgs,driver,source,'--library','-o',output],{cwd:project,detached:process.platform!=='win32',stdio:['ignore',log,log],
+  child=spawn(process.execPath,[...nodeArgs,driver,source,'--legacy-js','--library','-o',output],{cwd:project,detached:process.platform!=='win32',stdio:['ignore',log,log],
     env:{...process.env,BEND_TYPED_API:seed,BEND_TYPED_RUNTIME:runtimePath,BEND_BASE:basePath,BEND_TYPED_TRACE:'1'}});
   const alarm=setTimeout(()=>{report.timedOut=true;try{if(process.platform!=='win32')process.kill(-child.pid,'SIGKILL');else child.kill('SIGKILL');}catch{}},timeoutMs);
   try {report.exit=await new Promise((resolve,reject)=>{child.once('error',reject);child.once('exit',(code,signal)=>resolve({code,signal}));});}

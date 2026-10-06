@@ -39,6 +39,7 @@ From `selfhost/`, verify with `npm run verify:release`, then use
 `node cli.mjs FILE --run`. See the
 [compiler guide](docs/BEND-IN-BEND.md), [image workflow](docs/self_hosted/compiler-image-generation.md),
 [phase report](implementation/phase56/README.md),
+[compiler performance investigation](implementation/phase57/README.md),
 [benchmark recipes](selfhost/tools/performance/phase53/PLAN.md),
 [architecture](docs/self_hosted/backend-boundaries.md),
 [experiment ledger](experiments/ledger.md) and [current strategy](experiments/STEERING.md).

@@ -1,0 +1,277 @@
+{
+  "kind": "phase57-trace-independent-interpretation",
+  "complete": true,
+  "diagnosticOnly": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/trace-analysis01/report.json",
+      "sha256": "5a0519db6cf8288c6b514d7b353439aa3ec7212720e4dd0eb8c78ca2434b127c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/cpu-analysis02/report.json",
+      "sha256": "5b759a62dfb43f61445ea16fddc2ceee7bba8a6ff9adfe964eb14b38fe817aa0"
+    }
+  ],
+  "rows": [
+    {
+      "role": "typescript",
+      "windows": [
+        {
+          "phase": "host-import",
+          "requests": 1,
+          "wallTotalMs": 271.504242,
+          "wallMedianMs": 271.504242,
+          "gcPauseTotalMs": 2.4,
+          "gcPauseOverWallPercent": 0.8839640892240646,
+          "deopts": 4,
+          "compileCompleteEvents": 4
+        },
+        {
+          "phase": "api-load",
+          "requests": 1,
+          "wallTotalMs": 0.03609099999994214,
+          "wallMedianMs": 0.03609099999994214,
+          "gcPauseTotalMs": 0,
+          "gcPauseOverWallPercent": 0.0,
+          "deopts": 0,
+          "compileCompleteEvents": 0
+        },
+        {
+          "phase": "first-request",
+          "requests": 1,
+          "wallTotalMs": 415.1403230000001,
+          "wallMedianMs": 415.1403230000001,
+          "gcPauseTotalMs": 31.5,
+          "gcPauseOverWallPercent": 7.587795801758335,
+          "deopts": 164,
+          "compileCompleteEvents": 251
+        },
+        {
+          "phase": "warm-request",
+          "requests": 3,
+          "wallTotalMs": 829.2124210000002,
+          "wallMedianMs": 265.25512100000014,
+          "gcPauseTotalMs": 104.1,
+          "gcPauseOverWallPercent": 12.554081121271576,
+          "deopts": 343,
+          "compileCompleteEvents": 231
+        },
+        {
+          "phase": "trace-request",
+          "requests": 32,
+          "wallTotalMs": 4315.965865,
+          "wallMedianMs": 119.68339049999986,
+          "gcPauseTotalMs": 883.4999999999998,
+          "gcPauseOverWallPercent": 20.470504810167206,
+          "deopts": 103,
+          "compileCompleteEvents": 505
+        }
+      ],
+      "stageMedianMs": {},
+      "clockBackwards": 0,
+      "allTypedEventsContained": true
+    },
+    {
+      "role": "raw",
+      "windows": [
+        {
+          "phase": "host-import",
+          "requests": 1,
+          "wallTotalMs": 5.695671999999831,
+          "wallMedianMs": 5.695671999999831,
+          "gcPauseTotalMs": 0,
+          "gcPauseOverWallPercent": 0.0,
+          "deopts": 2,
+          "compileCompleteEvents": 1
+        },
+        {
+          "phase": "api-load",
+          "requests": 1,
+          "wallTotalMs": 52.82102099999997,
+          "wallMedianMs": 52.82102099999997,
+          "gcPauseTotalMs": 0,
+          "gcPauseOverWallPercent": 0.0,
+          "deopts": 0,
+          "compileCompleteEvents": 0
+        },
+        {
+          "phase": "first-request",
+          "requests": 1,
+          "wallTotalMs": 3463.868416,
+          "wallMedianMs": 3463.868416,
+          "gcPauseTotalMs": 136.49999999999983,
+          "gcPauseOverWallPercent": 3.940680869096843,
+          "deopts": 73,
+          "compileCompleteEvents": 1263
+        },
+        {
+          "phase": "warm-request",
+          "requests": 3,
+          "wallTotalMs": 6923.887834,
+          "wallMedianMs": 2259.4349330000005,
+          "gcPauseTotalMs": 239.20000000000016,
+          "gcPauseOverWallPercent": 3.4547064558931755,
+          "deopts": 7,
+          "compileCompleteEvents": 1008
+        },
+        {
+          "phase": "trace-request",
+          "requests": 3,
+          "wallTotalMs": 6530.206022000002,
+          "wallMedianMs": 2126.6410720000003,
+          "gcPauseTotalMs": 214.10000000000008,
+          "gcPauseOverWallPercent": 3.2786101890002515,
+          "deopts": 3,
+          "compileCompleteEvents": 738
+        }
+      ],
+      "stageMedianMs": {
+        "discover": 408.0,
+        "load and elaborate graph": 0.0,
+        "check book": 1021.0,
+        "prune reachable definitions": 23.0,
+        "annotate book": 15.0,
+        "prune direct runtime dependencies": 80.0,
+        "validate runtime layouts": 16.0,
+        "emit library": 624.0
+      },
+      "clockBackwards": 0,
+      "allTypedEventsContained": true
+    },
+    {
+      "role": "source",
+      "windows": [
+        {
+          "phase": "host-import",
+          "requests": 1,
+          "wallTotalMs": 5.70283100000006,
+          "wallMedianMs": 5.70283100000006,
+          "gcPauseTotalMs": 0,
+          "gcPauseOverWallPercent": 0.0,
+          "deopts": 2,
+          "compileCompleteEvents": 1
+        },
+        {
+          "phase": "api-load",
+          "requests": 1,
+          "wallTotalMs": 62.57348100000013,
+          "wallMedianMs": 62.57348100000013,
+          "gcPauseTotalMs": 10.0,
+          "gcPauseOverWallPercent": 15.98121095420595,
+          "deopts": 0,
+          "compileCompleteEvents": 0
+        },
+        {
+          "phase": "first-request",
+          "requests": 1,
+          "wallTotalMs": 1856.0556769999998,
+          "wallMedianMs": 1856.0556769999998,
+          "gcPauseTotalMs": 89.69999999999996,
+          "gcPauseOverWallPercent": 4.832829160867892,
+          "deopts": 72,
+          "compileCompleteEvents": 1159
+        },
+        {
+          "phase": "warm-request",
+          "requests": 3,
+          "wallTotalMs": 3107.3138080000012,
+          "wallMedianMs": 1081.9223980000006,
+          "gcPauseTotalMs": 136.4,
+          "gcPauseOverWallPercent": 4.389643545136267,
+          "deopts": 12,
+          "compileCompleteEvents": 937
+        },
+        {
+          "phase": "trace-request",
+          "requests": 6,
+          "wallTotalMs": 5512.841496000003,
+          "wallMedianMs": 896.7362120000007,
+          "gcPauseTotalMs": 261.0,
+          "gcPauseOverWallPercent": 4.734400584333431,
+          "deopts": 2,
+          "compileCompleteEvents": 1073
+        }
+      ],
+      "stageMedianMs": {
+        "discover": 254.0,
+        "load and elaborate graph": 0.0,
+        "check book": 347.5,
+        "prune reachable definitions": 4.5,
+        "annotate book": 5.5,
+        "prune direct runtime dependencies": 38.5,
+        "validate runtime layouts": 7.0,
+        "emit library": 230.5
+      },
+      "clockBackwards": 0,
+      "allTypedEventsContained": true
+    },
+    {
+      "role": "direct",
+      "windows": [
+        {
+          "phase": "host-import",
+          "requests": 1,
+          "wallTotalMs": 5.86879799999997,
+          "wallMedianMs": 5.86879799999997,
+          "gcPauseTotalMs": 0,
+          "gcPauseOverWallPercent": 0.0,
+          "deopts": 2,
+          "compileCompleteEvents": 1
+        },
+        {
+          "phase": "api-load",
+          "requests": 1,
+          "wallTotalMs": 105.962041,
+          "wallMedianMs": 105.962041,
+          "gcPauseTotalMs": 9.4,
+          "gcPauseOverWallPercent": 8.8711013031544,
+          "deopts": 0,
+          "compileCompleteEvents": 1
+        },
+        {
+          "phase": "first-request",
+          "requests": 1,
+          "wallTotalMs": 3256.6197799999995,
+          "wallMedianMs": 3256.6197799999995,
+          "gcPauseTotalMs": 104.70000000000002,
+          "gcPauseOverWallPercent": 3.214989991862054,
+          "deopts": 63,
+          "compileCompleteEvents": 1273
+        },
+        {
+          "phase": "warm-request",
+          "requests": 3,
+          "wallTotalMs": 5534.008929,
+          "wallMedianMs": 1802.8202309999997,
+          "gcPauseTotalMs": 196.10000000000002,
+          "gcPauseOverWallPercent": 3.543543252566372,
+          "deopts": 7,
+          "compileCompleteEvents": 1065
+        },
+        {
+          "phase": "trace-request",
+          "requests": 4,
+          "wallTotalMs": 6518.374777999998,
+          "wallMedianMs": 1604.738710999999,
+          "gcPauseTotalMs": 257.1,
+          "gcPauseOverWallPercent": 3.944234701995531,
+          "deopts": 2,
+          "compileCompleteEvents": 946
+        }
+      ],
+      "stageMedianMs": {
+        "discover": 388.5,
+        "load and elaborate graph": 0.0,
+        "check book": 740.0,
+        "prune reachable definitions": 10.0,
+        "annotate book": 10.5,
+        "prune direct runtime dependencies": 78.5,
+        "validate runtime layouts": 11.5,
+        "emit library": 312.5
+      },
+      "clockBackwards": 0,
+      "allTypedEventsContained": true
+    }
+  ],
+  "rawReceipt": "selfhost/build/phase57/trace-interpretation01/budgets.json"
+}

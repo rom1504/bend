@@ -1,0 +1,88 @@
+{
+  "kind": "phase57-kt-dump-evidence",
+  "diagnosticOnly": true,
+  "images": [
+    {
+      "role": "source",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/latency-preparation01/prepare-source/stage/project/dist/api.mjs",
+        "sha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea"
+      },
+      "complete": true,
+      "pass": true,
+      "expectedOutput": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/latency-preparation01/prepare-source/lexer.mjs",
+        "sha256": "7391f503044de65bff0836feaeb8cabcc3ca10b888e081b83fe814c1286d826e",
+        "bytes": 28452
+      },
+      "actualOutput": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/kt-inspection01/source.mjs",
+        "sha256": "7391f503044de65bff0836feaeb8cabcc3ca10b888e081b83fe814c1286d826e",
+        "bytes": 28452
+      }
+    },
+    {
+      "role": "direct",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/latency-preparation01/prepare-direct/stage/project/dist/api.mjs",
+        "sha256": "3f652f7d3e26e06fe74da18bf8709195c54e4620906ffb7c1d0643c96ecbd57e"
+      },
+      "complete": true,
+      "pass": true,
+      "expectedOutput": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/latency-preparation01/prepare-direct/lexer.mjs",
+        "sha256": "7391f503044de65bff0836feaeb8cabcc3ca10b888e081b83fe814c1286d826e",
+        "bytes": 28452
+      },
+      "actualOutput": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/kt-inspection01/direct.mjs",
+        "sha256": "7391f503044de65bff0836feaeb8cabcc3ca10b888e081b83fe814c1286d826e",
+        "bytes": 28452
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/build/phase57/kt-inspection01/report.json",
+      "sha256": "47215c74637f08874574d96d4516d461fc8293f0d92b5eca2b51031896af496e",
+      "bytes": 3063
+    },
+    {
+      "file": "selfhost/build/phase57/kt-inspection01/source.result.json",
+      "sha256": "54fd7394009dafb2268b2200362561da0500c384b84fae95c2429f1a27b87ffe",
+      "bytes": 9987
+    },
+    {
+      "file": "selfhost/build/phase57/kt-inspection01/direct.result.json",
+      "sha256": "819a5923d4cf9a2f7ab394f3447b2b6f6bdce0b166decf294579baf790a37eb4",
+      "bytes": 9975
+    },
+    {
+      "file": "selfhost/build/phase57/kt-inspection01/job-source/stdout.log",
+      "sha256": "ebedbc1b2a89beed6f79654eb1d6b4537b488ff30c33f5a9e26ab1d0297a9797",
+      "bytes": 16840
+    },
+    {
+      "file": "selfhost/build/phase57/kt-inspection01/job-direct/stdout.log",
+      "sha256": "679f74fcb31041309f3c05de08117e4f6b1799aba9a5bead688ec91877a97a95",
+      "bytes": 25701
+    },
+    {
+      "file": "selfhost/tools/performance/phase57/latency/worker-v3.mjs",
+      "sha256": "1dac7b0c9b203769f014907c51d25bfad98f64a3cc53ac55ad88673c69923105",
+      "bytes": 9974
+    }
+  ],
+  "source": {
+    "bytecodeBytes": 38,
+    "registers": 1,
+    "frameBytes": 8,
+    "instructionBytes": 532
+  },
+  "direct": {
+    "bytecodeBytes": 103,
+    "registers": 7,
+    "frameBytes": 56,
+    "instructionBytes": 788
+  }
+}

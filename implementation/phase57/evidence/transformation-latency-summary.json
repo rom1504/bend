@@ -1,0 +1,1925 @@
+{
+  "kind": "phase57-existing-image-transformation-latency-summary",
+  "complete": true,
+  "pass": true,
+  "scope": "Saved-data recomputation. Conditional effects of the historical transformation sequence on the same upstream-emitted compiler; not independent contributions or expected gains for the direct backend. No target execution.",
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/report.json",
+    "sha256": "92b84eaf0d84762dbf1e4b9fe6f0e0f5586ebdc1bd3614533ab7c693361fdf3a",
+    "bytes": 951223
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/plan.json",
+    "sha256": "99a524d77cb1f98e1da46dd830d3431fffd1c216aa16ad9458ee8fb8ff2dcc1d"
+  },
+  "stageDerivation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/transform-stages01/report.json",
+    "sha256": "1f856fd87762f47ecf24a481ac35fff231870e4bc4a971143a4de4019311da02",
+    "bytes": 3145
+  },
+  "workerProcesses": 24,
+  "checkedRequests": 96,
+  "wallSeconds": 325.62174586200854,
+  "summedWorkerWallSeconds": 303.6421684071538,
+  "preparationsReusedFrom": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/report.json",
+    "sha256": "cdd9bf83106f0bec4f53e58df9b27f20fb465d9225bbb5b7d6da92595c91c888"
+  },
+  "images": {
+    "raw": {
+      "kind": "diagnostic-derived-bootstrap-image",
+      "role": "raw",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-raw/stage/project/dist/api.mjs",
+        "sha256": "1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52"
+      },
+      "rawCheckedApi": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs",
+        "sha256": "1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52"
+      },
+      "rawSourceProof": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs.bootstrap.json",
+        "sha256": "24ec503e7627d8d956a4589cbd4a4b06b7d148fbb616381436e5e4fa2580ace4"
+      },
+      "transformStages": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/transform-stages01/report.json",
+        "sha256": "1f856fd87762f47ecf24a481ac35fff231870e4bc4a971143a4de4019311da02"
+      },
+      "derivation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/equality/api.mjs.derivation.json",
+        "sha256": "5b0e2ecf90c7127cb122b6e56a119b7ca647216f804520fc202519388416308e"
+      },
+      "selectedStage": {
+        "role": "raw",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/transform-stages01/raw.mjs",
+        "sha256": "1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52",
+        "bytes": 1807265
+      },
+      "scope": "Compiler-host data with standard unmodified JavaScript built-ins; not arbitrary reflective/proxy/monkeypatched-host equivalence.",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/snapshot/build/typed/snapshots/1027f6d7392aaf80fd3f0c6799a326af611b638ff754482705e9ea5a381f52f5/compiler.bend",
+        "sha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/full/report.json",
+        "sha256": "e65a5c34c097955e002910901b37f7ce6ff952dfae3d60003b6dd64925b3f077"
+      },
+      "driverQualification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/driver-comparison.json",
+        "sha256": "a3fec2f4b41b671f65d30cfad80142a1aeb3d7544221ac5c2323e7dd681028ff"
+      },
+      "driverQualificationApplies": false,
+      "checkedSubject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/attempt.json",
+        "sha256": "236af8151841a63bc45d7c2691776fa6d272e4e1a29856cd831c3b4895c04ac7"
+      },
+      "pins": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/image-pins.json",
+        "sha256": "11c5e4982678ac88e86f7d304ba8c3fc12c22ec756b0b2fa43f615a23ab77619"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-raw/stage/project/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "directRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-raw/stage/project/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-raw/stage/project/tools/typed-driver.mjs",
+        "sha256": "eb4bb871371fb2fb61fa1c077d093a817a1f6ae35205ebb2beecfb6e064fc417"
+      }
+    },
+    "equality": {
+      "kind": "diagnostic-derived-bootstrap-image",
+      "role": "equality",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-equality/stage/project/dist/api.mjs",
+        "sha256": "0d4a58b3b2e4133d4a1747609173ce78b23f279773b6daa7eb67692bbb57943f"
+      },
+      "rawCheckedApi": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs",
+        "sha256": "1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52"
+      },
+      "rawSourceProof": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs.bootstrap.json",
+        "sha256": "24ec503e7627d8d956a4589cbd4a4b06b7d148fbb616381436e5e4fa2580ace4"
+      },
+      "transformStages": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/transform-stages01/report.json",
+        "sha256": "1f856fd87762f47ecf24a481ac35fff231870e4bc4a971143a4de4019311da02"
+      },
+      "derivation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/equality/api.mjs.derivation.json",
+        "sha256": "5b0e2ecf90c7127cb122b6e56a119b7ca647216f804520fc202519388416308e"
+      },
+      "selectedStage": {
+        "role": "equality",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/transform-stages01/equality.mjs",
+        "sha256": "0d4a58b3b2e4133d4a1747609173ce78b23f279773b6daa7eb67692bbb57943f",
+        "bytes": 1807347
+      },
+      "scope": "Compiler-host data with standard unmodified JavaScript built-ins; not arbitrary reflective/proxy/monkeypatched-host equivalence.",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/snapshot/build/typed/snapshots/1027f6d7392aaf80fd3f0c6799a326af611b638ff754482705e9ea5a381f52f5/compiler.bend",
+        "sha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/full/report.json",
+        "sha256": "e65a5c34c097955e002910901b37f7ce6ff952dfae3d60003b6dd64925b3f077"
+      },
+      "driverQualification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/driver-comparison.json",
+        "sha256": "a3fec2f4b41b671f65d30cfad80142a1aeb3d7544221ac5c2323e7dd681028ff"
+      },
+      "driverQualificationApplies": false,
+      "checkedSubject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/attempt.json",
+        "sha256": "236af8151841a63bc45d7c2691776fa6d272e4e1a29856cd831c3b4895c04ac7"
+      },
+      "pins": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/image-pins.json",
+        "sha256": "11c5e4982678ac88e86f7d304ba8c3fc12c22ec756b0b2fa43f615a23ab77619"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-equality/stage/project/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "directRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-equality/stage/project/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-equality/stage/project/tools/typed-driver.mjs",
+        "sha256": "eb4bb871371fb2fb61fa1c077d093a817a1f6ae35205ebb2beecfb6e064fc417"
+      }
+    },
+    "choices": {
+      "kind": "diagnostic-derived-bootstrap-image",
+      "role": "choices",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-choices/stage/project/dist/api.mjs",
+        "sha256": "769818565235c7a39cb88778a71265c40b00785faf3e8e058f87ac2d870435e6"
+      },
+      "rawCheckedApi": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs",
+        "sha256": "1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52"
+      },
+      "rawSourceProof": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs.bootstrap.json",
+        "sha256": "24ec503e7627d8d956a4589cbd4a4b06b7d148fbb616381436e5e4fa2580ace4"
+      },
+      "transformStages": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/transform-stages01/report.json",
+        "sha256": "1f856fd87762f47ecf24a481ac35fff231870e4bc4a971143a4de4019311da02"
+      },
+      "derivation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/equality/api.mjs.derivation.json",
+        "sha256": "5b0e2ecf90c7127cb122b6e56a119b7ca647216f804520fc202519388416308e"
+      },
+      "selectedStage": {
+        "role": "choices",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/transform-stages01/choices.mjs",
+        "sha256": "769818565235c7a39cb88778a71265c40b00785faf3e8e058f87ac2d870435e6",
+        "bytes": 1824731
+      },
+      "scope": "Compiler-host data with standard unmodified JavaScript built-ins; not arbitrary reflective/proxy/monkeypatched-host equivalence.",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/snapshot/build/typed/snapshots/1027f6d7392aaf80fd3f0c6799a326af611b638ff754482705e9ea5a381f52f5/compiler.bend",
+        "sha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/full/report.json",
+        "sha256": "e65a5c34c097955e002910901b37f7ce6ff952dfae3d60003b6dd64925b3f077"
+      },
+      "driverQualification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/driver-comparison.json",
+        "sha256": "a3fec2f4b41b671f65d30cfad80142a1aeb3d7544221ac5c2323e7dd681028ff"
+      },
+      "driverQualificationApplies": false,
+      "checkedSubject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/attempt.json",
+        "sha256": "236af8151841a63bc45d7c2691776fa6d272e4e1a29856cd831c3b4895c04ac7"
+      },
+      "pins": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/image-pins.json",
+        "sha256": "11c5e4982678ac88e86f7d304ba8c3fc12c22ec756b0b2fa43f615a23ab77619"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-choices/stage/project/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "directRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-choices/stage/project/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-choices/stage/project/tools/typed-driver.mjs",
+        "sha256": "eb4bb871371fb2fb61fa1c077d093a817a1f6ae35205ebb2beecfb6e064fc417"
+      }
+    },
+    "source": {
+      "kind": "diagnostic-derived-bootstrap-image",
+      "role": "source",
+      "api": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-source/stage/project/dist/api.mjs",
+        "sha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea"
+      },
+      "rawCheckedApi": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs",
+        "sha256": "1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52"
+      },
+      "rawSourceProof": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs.bootstrap.json",
+        "sha256": "24ec503e7627d8d956a4589cbd4a4b06b7d148fbb616381436e5e4fa2580ace4"
+      },
+      "transformStages": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/transform-stages01/report.json",
+        "sha256": "1f856fd87762f47ecf24a481ac35fff231870e4bc4a971143a4de4019311da02"
+      },
+      "derivation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/equality/api.mjs.derivation.json",
+        "sha256": "5b0e2ecf90c7127cb122b6e56a119b7ca647216f804520fc202519388416308e"
+      },
+      "selectedStage": {
+        "role": "source",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/transform-stages01/source.mjs",
+        "sha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea",
+        "bytes": 1830723
+      },
+      "scope": "Compiler-host data with standard unmodified JavaScript built-ins; not arbitrary reflective/proxy/monkeypatched-host equivalence.",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/snapshot/build/typed/snapshots/1027f6d7392aaf80fd3f0c6799a326af611b638ff754482705e9ea5a381f52f5/compiler.bend",
+        "sha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/full/report.json",
+        "sha256": "e65a5c34c097955e002910901b37f7ce6ff952dfae3d60003b6dd64925b3f077"
+      },
+      "driverQualification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/driver-comparison.json",
+        "sha256": "a3fec2f4b41b671f65d30cfad80142a1aeb3d7544221ac5c2323e7dd681028ff"
+      },
+      "driverQualificationApplies": true,
+      "checkedSubject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/attempt.json",
+        "sha256": "236af8151841a63bc45d7c2691776fa6d272e4e1a29856cd831c3b4895c04ac7"
+      },
+      "pins": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/image-pins.json",
+        "sha256": "11c5e4982678ac88e86f7d304ba8c3fc12c22ec756b0b2fa43f615a23ab77619"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-source/stage/project/src/runtime.mjs",
+        "sha256": "3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46"
+      },
+      "base": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase23/bend2/base.bend",
+        "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+      },
+      "directRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-source/stage/project/src/runtime/js/direct.mjs",
+        "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+      },
+      "driver": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-source/stage/project/tools/typed-driver.mjs",
+        "sha256": "eb4bb871371fb2fb61fa1c077d093a817a1f6ae35205ebb2beecfb6e064fc417"
+      }
+    }
+  },
+  "cases": {
+    "test-evening-program": {
+      "roles": {
+        "raw": {
+          "hostImportMs": {
+            "median": 3.9982370000000174,
+            "min": 3.9458430000001954,
+            "max": 4.0658820000001015,
+            "samples": [
+              3.9982370000000174,
+              3.9458430000001954,
+              4.0658820000001015
+            ]
+          },
+          "apiLoadMs": {
+            "median": 56.2720690000001,
+            "min": 55.92063099999996,
+            "max": 58.23728399999982,
+            "samples": [
+              56.2720690000001,
+              55.92063099999996,
+              58.23728399999982
+            ]
+          },
+          "firstRequestMs": {
+            "median": 6117.318008,
+            "min": 6105.494060000001,
+            "max": 6335.630494,
+            "samples": [
+              6335.630494,
+              6105.494060000001,
+              6117.318008
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 6179.621174,
+            "min": 6165.360534000001,
+            "max": 6395.9008,
+            "samples": [
+              6395.9008,
+              6165.360534000001,
+              6179.621174
+            ]
+          },
+          "processWallMs": {
+            "median": 24047.123834025115,
+            "min": 23836.819689022377,
+            "max": 24274.548068991862,
+            "samples": [
+              24274.548068991862,
+              24047.123834025115,
+              23836.819689022377
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 565080064,
+            "min": 563134464,
+            "max": 570114048,
+            "samples": [
+              570114048,
+              563134464,
+              565080064
+            ]
+          },
+          "loadMs": {
+            "median": 60.27030600000012,
+            "min": 59.86647400000015,
+            "max": 62.30316599999992,
+            "samples": [
+              60.27030600000012,
+              59.86647400000015,
+              62.30316599999992
+            ]
+          },
+          "warmRequestMedianMs": {
+            "median": 4903.807821999999,
+            "min": 4834.061987000001,
+            "max": 4974.101023000003,
+            "samples": [
+              4974.101023000003,
+              4834.061987000001,
+              4903.807821999999
+            ]
+          },
+          "warmByProcess": [
+            [
+              5591.230852000001,
+              4491.355562999999,
+              4974.101023000003
+            ],
+            [
+              5088.496541999999,
+              4501.491076999999,
+              4834.061987000001
+            ],
+            [
+              5182.29899,
+              4903.807821999999,
+              4861.978271
+            ]
+          ]
+        },
+        "equality": {
+          "hostImportMs": {
+            "median": 4.014844999999923,
+            "min": 3.9762470000000576,
+            "max": 4.172274000000016,
+            "samples": [
+              4.014844999999923,
+              3.9762470000000576,
+              4.172274000000016
+            ]
+          },
+          "apiLoadMs": {
+            "median": 56.30847499999982,
+            "min": 55.90402599999993,
+            "max": 64.9989680000001,
+            "samples": [
+              56.30847499999982,
+              55.90402599999993,
+              64.9989680000001
+            ]
+          },
+          "firstRequestMs": {
+            "median": 3758.4198749999996,
+            "min": 3748.3558790000006,
+            "max": 3783.081134,
+            "samples": [
+              3758.4198749999996,
+              3748.3558790000006,
+              3783.081134
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 3818.743194999999,
+            "min": 3808.2361520000004,
+            "max": 3852.2523760000004,
+            "samples": [
+              3818.743194999999,
+              3808.2361520000004,
+              3852.2523760000004
+            ]
+          },
+          "processWallMs": {
+            "median": 14626.162774045952,
+            "min": 14601.956051017623,
+            "max": 14945.947683998384,
+            "samples": [
+              14601.956051017623,
+              14945.947683998384,
+              14626.162774045952
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 568868864,
+            "min": 567209984,
+            "max": 577400832,
+            "samples": [
+              568868864,
+              577400832,
+              567209984
+            ]
+          },
+          "loadMs": {
+            "median": 60.32331999999974,
+            "min": 59.88027299999999,
+            "max": 69.17124200000012,
+            "samples": [
+              60.32331999999974,
+              59.88027299999999,
+              69.17124200000012
+            ]
+          },
+          "warmRequestMedianMs": {
+            "median": 2639.4006640000007,
+            "min": 2599.2883199999997,
+            "max": 2844.4897469999996,
+            "samples": [
+              2639.4006640000007,
+              2844.4897469999996,
+              2599.2883199999997
+            ]
+          },
+          "warmByProcess": [
+            [
+              2998.6530919999996,
+              2444.879086000001,
+              2639.4006640000007
+            ],
+            [
+              3005.2536,
+              2512.906511,
+              2844.4897469999996
+            ],
+            [
+              3022.6716259999994,
+              2442.402199,
+              2599.2883199999997
+            ]
+          ]
+        },
+        "choices": {
+          "hostImportMs": {
+            "median": 5.932700999999952,
+            "min": 3.9541679999999815,
+            "max": 6.907122999999956,
+            "samples": [
+              3.9541679999999815,
+              5.932700999999952,
+              6.907122999999956
+            ]
+          },
+          "apiLoadMs": {
+            "median": 64.32126599999992,
+            "min": 57.074855999999954,
+            "max": 77.4600190000001,
+            "samples": [
+              57.074855999999954,
+              64.32126599999992,
+              77.4600190000001
+            ]
+          },
+          "firstRequestMs": {
+            "median": 3042.786338,
+            "min": 3031.2907849999997,
+            "max": 3411.6133969999996,
+            "samples": [
+              3031.2907849999997,
+              3042.786338,
+              3411.6133969999996
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 3113.0403049999995,
+            "min": 3092.3198089999996,
+            "max": 3495.9805389999997,
+            "samples": [
+              3092.3198089999996,
+              3113.0403049999995,
+              3495.9805389999997
+            ]
+          },
+          "processWallMs": {
+            "median": 12309.83882700093,
+            "min": 12029.983633023221,
+            "max": 13699.392818030901,
+            "samples": [
+              12029.983633023221,
+              12309.83882700093,
+              13699.392818030901
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 583151616,
+            "min": 568287232,
+            "max": 598777856,
+            "samples": [
+              598777856,
+              583151616,
+              568287232
+            ]
+          },
+          "loadMs": {
+            "median": 70.25396699999988,
+            "min": 61.029023999999936,
+            "max": 84.36714200000006,
+            "samples": [
+              61.029023999999936,
+              70.25396699999988,
+              84.36714200000006
+            ]
+          },
+          "warmRequestMedianMs": {
+            "median": 2013.5335780000005,
+            "min": 2012.141107999999,
+            "max": 2142.950492,
+            "samples": [
+              2013.5335780000005,
+              2012.141107999999,
+              2142.950492
+            ]
+          },
+          "warmByProcess": [
+            [
+              2419.218213,
+              2013.5335780000005,
+              1799.1333969999996
+            ],
+            [
+              2446.76336,
+              2012.141107999999,
+              1875.717872000001
+            ],
+            [
+              2417.9913849999994,
+              2142.950492,
+              1938.5757290000001
+            ]
+          ]
+        },
+        "source": {
+          "hostImportMs": {
+            "median": 4.022587000000158,
+            "min": 3.9657920000001923,
+            "max": 4.037706999999955,
+            "samples": [
+              4.022587000000158,
+              3.9657920000001923,
+              4.037706999999955
+            ]
+          },
+          "apiLoadMs": {
+            "median": 57.4312460000001,
+            "min": 57.411207000000104,
+            "max": 59.03976700000021,
+            "samples": [
+              57.4312460000001,
+              59.03976700000021,
+              57.411207000000104
+            ]
+          },
+          "firstRequestMs": {
+            "median": 2905.9223650000004,
+            "min": 2905.2383099999997,
+            "max": 2906.9106620000002,
+            "samples": [
+              2906.9106620000002,
+              2905.9223650000004,
+              2905.2383099999997
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 2968.3644950000007,
+            "min": 2966.687224,
+            "max": 2968.9279240000005,
+            "samples": [
+              2968.3644950000007,
+              2968.9279240000005,
+              2966.687224
+            ]
+          },
+          "processWallMs": {
+            "median": 11665.251672966406,
+            "min": 11632.667754020076,
+            "max": 12191.882195009384,
+            "samples": [
+              12191.882195009384,
+              11665.251672966406,
+              11632.667754020076
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 577490944,
+            "min": 564916224,
+            "max": 591450112,
+            "samples": [
+              577490944,
+              591450112,
+              564916224
+            ]
+          },
+          "loadMs": {
+            "median": 61.45383300000026,
+            "min": 61.44891400000006,
+            "max": 63.0055590000004,
+            "samples": [
+              61.45383300000026,
+              63.0055590000004,
+              61.44891400000006
+            ]
+          },
+          "warmRequestMedianMs": {
+            "median": 1941.9934950000006,
+            "min": 1933.6263630000012,
+            "max": 2068.6122510000005,
+            "samples": [
+              2068.6122510000005,
+              1933.6263630000012,
+              1941.9934950000006
+            ]
+          },
+          "warmByProcess": [
+            [
+              2466.0537529999992,
+              2068.6122510000005,
+              1849.7732930000002
+            ],
+            [
+              2314.5379279999997,
+              1933.6263630000012,
+              1725.2553980000012
+            ],
+            [
+              2296.5740909999995,
+              1941.9934950000006,
+              1726.9570459999995
+            ]
+          ]
+        }
+      },
+      "orderedStageEffects": {
+        "firstRequestMs": [
+          {
+            "before": "raw",
+            "after": "equality",
+            "beforeMs": 6117.318008,
+            "afterMs": 3758.4198749999996,
+            "beforeOverAfter": 1.6276302838569894,
+            "timeChangePercent": -38.5609858751028,
+            "timeSavedMs": 2358.8981330000006
+          },
+          {
+            "before": "equality",
+            "after": "choices",
+            "beforeMs": 3758.4198749999996,
+            "afterMs": 3042.786338,
+            "beforeOverAfter": 1.2351902031578004,
+            "timeChangePercent": -19.04080865898464,
+            "timeSavedMs": 715.6335369999997
+          },
+          {
+            "before": "choices",
+            "after": "source",
+            "beforeMs": 3042.786338,
+            "afterMs": 2905.9223650000004,
+            "beforeOverAfter": 1.0470982895649381,
+            "timeChangePercent": -4.497981711392828,
+            "timeSavedMs": 136.86397299999953
+          },
+          {
+            "before": "raw",
+            "after": "source",
+            "beforeMs": 6117.318008,
+            "afterMs": 2905.9223650000004,
+            "beforeOverAfter": 2.105120935672347,
+            "timeChangePercent": -52.4967908943144,
+            "timeSavedMs": 3211.395643
+          }
+        ],
+        "importApiAndFirstMs": [
+          {
+            "before": "raw",
+            "after": "equality",
+            "beforeMs": 6179.621174,
+            "afterMs": 3818.743194999999,
+            "beforeOverAfter": 1.6182342876816573,
+            "timeChangePercent": -38.20425091643329,
+            "timeSavedMs": 2360.877979000001
+          },
+          {
+            "before": "equality",
+            "after": "choices",
+            "beforeMs": 3818.743194999999,
+            "afterMs": 3113.0403049999995,
+            "beforeOverAfter": 1.2266925002116218,
+            "timeChangePercent": -18.47997767757723,
+            "timeSavedMs": 705.7028899999996
+          },
+          {
+            "before": "choices",
+            "after": "source",
+            "beforeMs": 3113.0403049999995,
+            "afterMs": 2968.3644950000007,
+            "beforeOverAfter": 1.0487392334208603,
+            "timeChangePercent": -4.647412041778843,
+            "timeSavedMs": 144.67580999999882
+          },
+          {
+            "before": "raw",
+            "after": "source",
+            "beforeMs": 6179.621174,
+            "afterMs": 2968.3644950000007,
+            "beforeOverAfter": 2.0818269401918577,
+            "timeChangePercent": -51.965267588100204,
+            "timeSavedMs": 3211.256678999999
+          }
+        ],
+        "warmRequestMedianMs": [
+          {
+            "before": "raw",
+            "after": "equality",
+            "beforeMs": 4903.807821999999,
+            "afterMs": 2639.4006640000007,
+            "beforeOverAfter": 1.857924751207836,
+            "timeChangePercent": -46.176506914507684,
+            "timeSavedMs": 2264.407157999998
+          },
+          {
+            "before": "equality",
+            "after": "choices",
+            "beforeMs": 2639.4006640000007,
+            "afterMs": 2013.5335780000005,
+            "beforeOverAfter": 1.310830220483167,
+            "timeChangePercent": -23.712469824551054,
+            "timeSavedMs": 625.8670860000002
+          },
+          {
+            "before": "choices",
+            "after": "source",
+            "beforeMs": 2013.5335780000005,
+            "afterMs": 1941.9934950000006,
+            "beforeOverAfter": 1.036838477154631,
+            "timeChangePercent": -3.5529620057818456,
+            "timeSavedMs": 71.54008299999987
+          },
+          {
+            "before": "raw",
+            "after": "source",
+            "beforeMs": 4903.807821999999,
+            "afterMs": 1941.9934950000006,
+            "beforeOverAfter": 2.5251412193839493,
+            "timeChangePercent": -60.39825446895335,
+            "timeSavedMs": 2961.8143269999982
+          }
+        ]
+      }
+    },
+    "lexer": {
+      "roles": {
+        "raw": {
+          "hostImportMs": {
+            "median": 3.993302000000085,
+            "min": 3.991416999999956,
+            "max": 4.000328000000081,
+            "samples": [
+              3.993302000000085,
+              3.991416999999956,
+              4.000328000000081
+            ]
+          },
+          "apiLoadMs": {
+            "median": 56.26527400000009,
+            "min": 56.140460000000076,
+            "max": 56.62685899999997,
+            "samples": [
+              56.140460000000076,
+              56.26527400000009,
+              56.62685899999997
+            ]
+          },
+          "firstRequestMs": {
+            "median": 3400.119415,
+            "min": 3374.94743,
+            "max": 3434.179834,
+            "samples": [
+              3434.179834,
+              3374.94743,
+              3400.119415
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 3460.746602,
+            "min": 3435.204121,
+            "max": 3494.313596,
+            "samples": [
+              3494.313596,
+              3435.204121,
+              3460.746602
+            ]
+          },
+          "processWallMs": {
+            "median": 13339.713501976803,
+            "min": 12954.212867014576,
+            "max": 13350.060904980637,
+            "samples": [
+              13350.060904980637,
+              13339.713501976803,
+              12954.212867014576
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 543838208,
+            "min": 542339072,
+            "max": 566849536,
+            "samples": [
+              542339072,
+              543838208,
+              566849536
+            ]
+          },
+          "loadMs": {
+            "median": 60.256691000000046,
+            "min": 60.13376200000016,
+            "max": 60.62718700000005,
+            "samples": [
+              60.13376200000016,
+              60.256691000000046,
+              60.62718700000005
+            ]
+          },
+          "warmRequestMedianMs": {
+            "median": 2421.3735770000003,
+            "min": 2225.831323999999,
+            "max": 2443.581413,
+            "samples": [
+              2443.581413,
+              2421.3735770000003,
+              2225.831323999999
+            ]
+          },
+          "warmByProcess": [
+            [
+              2576.147538,
+              2143.6582040000003,
+              2443.581413
+            ],
+            [
+              2614.42616,
+              2187.9207399999996,
+              2421.3735770000003
+            ],
+            [
+              2535.3481249999995,
+              2225.831323999999,
+              2047.7777499999993
+            ]
+          ]
+        },
+        "equality": {
+          "hostImportMs": {
+            "median": 4.056644000000006,
+            "min": 4.052822999999989,
+            "max": 4.162775999999894,
+            "samples": [
+              4.162775999999894,
+              4.056644000000006,
+              4.052822999999989
+            ]
+          },
+          "apiLoadMs": {
+            "median": 55.96403599999985,
+            "min": 55.89355899999987,
+            "max": 56.04296099999988,
+            "samples": [
+              56.04296099999988,
+              55.96403599999985,
+              55.89355899999987
+            ]
+          },
+          "firstRequestMs": {
+            "median": 2276.3248160000003,
+            "min": 2272.725607,
+            "max": 2287.537378,
+            "samples": [
+              2276.3248160000003,
+              2287.537378,
+              2272.725607
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 2336.530553,
+            "min": 2332.6719889999995,
+            "max": 2347.5580579999996,
+            "samples": [
+              2336.530553,
+              2347.5580579999996,
+              2332.6719889999995
+            ]
+          },
+          "processWallMs": {
+            "median": 9192.322994989809,
+            "min": 9176.998589013238,
+            "max": 9250.126720988192,
+            "samples": [
+              9250.126720988192,
+              9192.322994989809,
+              9176.998589013238
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 548831232,
+            "min": 548220928,
+            "max": 553070592,
+            "samples": [
+              553070592,
+              548220928,
+              548831232
+            ]
+          },
+          "loadMs": {
+            "median": 60.02067999999986,
+            "min": 59.94638199999986,
+            "max": 60.20573699999977,
+            "samples": [
+              60.20573699999977,
+              60.02067999999986,
+              59.94638199999986
+            ]
+          },
+          "warmRequestMedianMs": {
+            "median": 1350.8773569999994,
+            "min": 1344.2712110000002,
+            "max": 1361.7540389999995,
+            "samples": [
+              1344.2712110000002,
+              1361.7540389999995,
+              1350.8773569999994
+            ]
+          },
+          "warmByProcess": [
+            [
+              1629.6358589999995,
+              1344.2712110000002,
+              1159.315498
+            ],
+            [
+              1630.0176190000002,
+              1361.7540389999995,
+              1162.5031419999996
+            ],
+            [
+              1633.1449679999996,
+              1350.8773569999994,
+              1169.5799229999993
+            ]
+          ]
+        },
+        "choices": {
+          "hostImportMs": {
+            "median": 4.083983999999873,
+            "min": 3.970446999999922,
+            "max": 4.189160000000129,
+            "samples": [
+              4.189160000000129,
+              3.970446999999922,
+              4.083983999999873
+            ]
+          },
+          "apiLoadMs": {
+            "median": 57.449791000000005,
+            "min": 57.32688200000007,
+            "max": 59.39689899999985,
+            "samples": [
+              59.39689899999985,
+              57.32688200000007,
+              57.449791000000005
+            ]
+          },
+          "firstRequestMs": {
+            "median": 1854.6889199999998,
+            "min": 1845.738495,
+            "max": 1858.8431930000002,
+            "samples": [
+              1845.738495,
+              1858.8431930000002,
+              1854.6889199999998
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1916.2226949999997,
+            "min": 1909.324554,
+            "max": 1920.1405220000001,
+            "samples": [
+              1909.324554,
+              1920.1405220000001,
+              1916.2226949999997
+            ]
+          },
+          "processWallMs": {
+            "median": 7973.196963022929,
+            "min": 7923.5677679535,
+            "max": 8006.221864023246,
+            "samples": [
+              7923.5677679535,
+              7973.196963022929,
+              8006.221864023246
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 543432704,
+            "min": 542109696,
+            "max": 551104512,
+            "samples": [
+              551104512,
+              542109696,
+              543432704
+            ]
+          },
+          "loadMs": {
+            "median": 61.53377499999988,
+            "min": 61.29732899999999,
+            "max": 63.58605899999998,
+            "samples": [
+              63.58605899999998,
+              61.29732899999999,
+              61.53377499999988
+            ]
+          },
+          "warmRequestMedianMs": {
+            "median": 1115.7002790000006,
+            "min": 1059.2366619999993,
+            "max": 1164.446046,
+            "samples": [
+              1059.2366619999993,
+              1164.446046,
+              1115.7002790000006
+            ]
+          },
+          "warmByProcess": [
+            [
+              1323.214899,
+              1059.2366619999993,
+              906.6392040000001
+            ],
+            [
+              1261.4429850000001,
+              1164.446046,
+              921.4407300000003
+            ],
+            [
+              1287.6175839999996,
+              1115.7002790000006,
+              967.3048140000001
+            ]
+          ]
+        },
+        "source": {
+          "hostImportMs": {
+            "median": 4.006959000000052,
+            "min": 3.9928909999998723,
+            "max": 5.171130000000176,
+            "samples": [
+              5.171130000000176,
+              4.006959000000052,
+              3.9928909999998723
+            ]
+          },
+          "apiLoadMs": {
+            "median": 58.000598999999966,
+            "min": 57.149445000000014,
+            "max": 58.92329000000018,
+            "samples": [
+              58.92329000000018,
+              58.000598999999966,
+              57.149445000000014
+            ]
+          },
+          "firstRequestMs": {
+            "median": 1761.562491,
+            "min": 1752.0148090000002,
+            "max": 1779.765169,
+            "samples": [
+              1752.0148090000002,
+              1779.765169,
+              1761.562491
+            ]
+          },
+          "importApiAndFirstMs": {
+            "median": 1822.7048269999998,
+            "min": 1816.1092290000006,
+            "max": 1841.772727,
+            "samples": [
+              1816.1092290000006,
+              1841.772727,
+              1822.7048269999998
+            ]
+          },
+          "processWallMs": {
+            "median": 7539.652556995861,
+            "min": 7533.13039400382,
+            "max": 7541.388281038962,
+            "samples": [
+              7539.652556995861,
+              7541.388281038962,
+              7533.13039400382
+            ]
+          },
+          "peakTreeRssBytes": {
+            "median": 529256448,
+            "min": 529063936,
+            "max": 529809408,
+            "samples": [
+              529063936,
+              529256448,
+              529809408
+            ]
+          },
+          "loadMs": {
+            "median": 62.00755800000002,
+            "min": 61.14233599999989,
+            "max": 64.09442000000035,
+            "samples": [
+              64.09442000000035,
+              62.00755800000002,
+              61.14233599999989
+            ]
+          },
+          "warmRequestMedianMs": {
+            "median": 1060.3692549999996,
+            "min": 1057.3427190000002,
+            "max": 1079.0431940000003,
+            "samples": [
+              1060.3692549999996,
+              1057.3427190000002,
+              1079.0431940000003
+            ]
+          },
+          "warmByProcess": [
+            [
+              1081.2079589999994,
+              1060.3692549999996,
+              868.1732929999998
+            ],
+            [
+              1103.4515720000004,
+              1057.3427190000002,
+              865.9951000000001
+            ],
+            [
+              1079.0431940000003,
+              1086.019856,
+              866.2607760000001
+            ]
+          ]
+        }
+      },
+      "orderedStageEffects": {
+        "firstRequestMs": [
+          {
+            "before": "raw",
+            "after": "equality",
+            "beforeMs": 3400.119415,
+            "afterMs": 2276.3248160000003,
+            "beforeOverAfter": 1.493688155179344,
+            "timeChangePercent": -33.05162148253549,
+            "timeSavedMs": 1123.7945989999998
+          },
+          {
+            "before": "equality",
+            "after": "choices",
+            "beforeMs": 2276.3248160000003,
+            "afterMs": 1854.6889199999998,
+            "beforeOverAfter": 1.2273351026435206,
+            "timeChangePercent": -18.522659553521315,
+            "timeSavedMs": 421.63589600000046
+          },
+          {
+            "before": "choices",
+            "after": "source",
+            "beforeMs": 1854.6889199999998,
+            "afterMs": 1761.562491,
+            "beforeOverAfter": 1.0528658105947375,
+            "timeChangePercent": -5.021134703279506,
+            "timeSavedMs": 93.12642899999992
+          },
+          {
+            "before": "raw",
+            "after": "source",
+            "beforeMs": 3400.119415,
+            "afterMs": 1761.562491,
+            "beforeOverAfter": 1.930172464713317,
+            "timeChangePercent": -48.19115813319163,
+            "timeSavedMs": 1638.5569240000002
+          }
+        ],
+        "importApiAndFirstMs": [
+          {
+            "before": "raw",
+            "after": "equality",
+            "beforeMs": 3460.746602,
+            "afterMs": 2336.530553,
+            "beforeOverAfter": 1.4811475919099613,
+            "timeChangePercent": -32.48478372702308,
+            "timeSavedMs": 1124.216049
+          },
+          {
+            "before": "equality",
+            "after": "choices",
+            "beforeMs": 2336.530553,
+            "afterMs": 1916.2226949999997,
+            "beforeOverAfter": 1.219341864125036,
+            "timeChangePercent": -17.98854534387937,
+            "timeSavedMs": 420.30785800000035
+          },
+          {
+            "before": "choices",
+            "after": "source",
+            "beforeMs": 1916.2226949999997,
+            "afterMs": 1822.7048269999998,
+            "beforeOverAfter": 1.051307192812959,
+            "timeChangePercent": -4.880323578465906,
+            "timeSavedMs": 93.51786799999991
+          },
+          {
+            "before": "raw",
+            "after": "source",
+            "beforeMs": 3460.746602,
+            "afterMs": 1822.7048269999998,
+            "beforeOverAfter": 1.898687352299419,
+            "timeChangePercent": -47.33203448219408,
+            "timeSavedMs": 1638.0417750000004
+          }
+        ],
+        "warmRequestMedianMs": [
+          {
+            "before": "raw",
+            "after": "equality",
+            "beforeMs": 2421.3735770000003,
+            "afterMs": 1350.8773569999994,
+            "beforeOverAfter": 1.792445157551043,
+            "timeChangePercent": -44.21028750657754,
+            "timeSavedMs": 1070.496220000001
+          },
+          {
+            "before": "equality",
+            "after": "choices",
+            "beforeMs": 1350.8773569999994,
+            "afterMs": 1115.7002790000006,
+            "beforeOverAfter": 1.2107887596934075,
+            "timeChangePercent": -17.40921015378296,
+            "timeSavedMs": 235.1770779999988
+          },
+          {
+            "before": "choices",
+            "after": "source",
+            "beforeMs": 1115.7002790000006,
+            "afterMs": 1060.3692549999996,
+            "beforeOverAfter": 1.052180901831222,
+            "timeChangePercent": -4.959308968676968,
+            "timeSavedMs": 55.33102400000098
+          },
+          {
+            "before": "raw",
+            "after": "source",
+            "beforeMs": 2421.3735770000003,
+            "afterMs": 1060.3692549999996,
+            "beforeOverAfter": 2.283519222744723,
+            "timeChangePercent": -56.207944735493435,
+            "timeSavedMs": 1361.0043220000007
+          }
+        ]
+      }
+    }
+  },
+  "rows": [
+    {
+      "case": "test-evening-program",
+      "round": 0,
+      "role": "raw",
+      "hostImportMs": 3.9982370000000174,
+      "apiLoadMs": 56.2720690000001,
+      "firstRequestMs": 6335.630494,
+      "importApiAndFirstMs": 6395.9008,
+      "warmRequestMs": [
+        5591.230852000001,
+        4491.355562999999,
+        4974.101023000003
+      ],
+      "processWallMs": 24274.548068991862,
+      "peakTreeRssBytes": 570114048
+    },
+    {
+      "case": "test-evening-program",
+      "round": 0,
+      "role": "equality",
+      "hostImportMs": 4.014844999999923,
+      "apiLoadMs": 56.30847499999982,
+      "firstRequestMs": 3758.4198749999996,
+      "importApiAndFirstMs": 3818.743194999999,
+      "warmRequestMs": [
+        2998.6530919999996,
+        2444.879086000001,
+        2639.4006640000007
+      ],
+      "processWallMs": 14601.956051017623,
+      "peakTreeRssBytes": 568868864
+    },
+    {
+      "case": "test-evening-program",
+      "round": 0,
+      "role": "choices",
+      "hostImportMs": 3.9541679999999815,
+      "apiLoadMs": 57.074855999999954,
+      "firstRequestMs": 3031.2907849999997,
+      "importApiAndFirstMs": 3092.3198089999996,
+      "warmRequestMs": [
+        2419.218213,
+        2013.5335780000005,
+        1799.1333969999996
+      ],
+      "processWallMs": 12029.983633023221,
+      "peakTreeRssBytes": 598777856
+    },
+    {
+      "case": "test-evening-program",
+      "round": 0,
+      "role": "source",
+      "hostImportMs": 4.022587000000158,
+      "apiLoadMs": 57.4312460000001,
+      "firstRequestMs": 2906.9106620000002,
+      "importApiAndFirstMs": 2968.3644950000007,
+      "warmRequestMs": [
+        2466.0537529999992,
+        2068.6122510000005,
+        1849.7732930000002
+      ],
+      "processWallMs": 12191.882195009384,
+      "peakTreeRssBytes": 577490944
+    },
+    {
+      "case": "test-evening-program",
+      "round": 1,
+      "role": "equality",
+      "hostImportMs": 3.9762470000000576,
+      "apiLoadMs": 55.90402599999993,
+      "firstRequestMs": 3748.3558790000006,
+      "importApiAndFirstMs": 3808.2361520000004,
+      "warmRequestMs": [
+        3005.2536,
+        2512.906511,
+        2844.4897469999996
+      ],
+      "processWallMs": 14945.947683998384,
+      "peakTreeRssBytes": 577400832
+    },
+    {
+      "case": "test-evening-program",
+      "round": 1,
+      "role": "choices",
+      "hostImportMs": 5.932700999999952,
+      "apiLoadMs": 64.32126599999992,
+      "firstRequestMs": 3042.786338,
+      "importApiAndFirstMs": 3113.0403049999995,
+      "warmRequestMs": [
+        2446.76336,
+        2012.141107999999,
+        1875.717872000001
+      ],
+      "processWallMs": 12309.83882700093,
+      "peakTreeRssBytes": 583151616
+    },
+    {
+      "case": "test-evening-program",
+      "round": 1,
+      "role": "source",
+      "hostImportMs": 3.9657920000001923,
+      "apiLoadMs": 59.03976700000021,
+      "firstRequestMs": 2905.9223650000004,
+      "importApiAndFirstMs": 2968.9279240000005,
+      "warmRequestMs": [
+        2314.5379279999997,
+        1933.6263630000012,
+        1725.2553980000012
+      ],
+      "processWallMs": 11665.251672966406,
+      "peakTreeRssBytes": 591450112
+    },
+    {
+      "case": "test-evening-program",
+      "round": 1,
+      "role": "raw",
+      "hostImportMs": 3.9458430000001954,
+      "apiLoadMs": 55.92063099999996,
+      "firstRequestMs": 6105.494060000001,
+      "importApiAndFirstMs": 6165.360534000001,
+      "warmRequestMs": [
+        5088.496541999999,
+        4501.491076999999,
+        4834.061987000001
+      ],
+      "processWallMs": 24047.123834025115,
+      "peakTreeRssBytes": 563134464
+    },
+    {
+      "case": "test-evening-program",
+      "round": 2,
+      "role": "choices",
+      "hostImportMs": 6.907122999999956,
+      "apiLoadMs": 77.4600190000001,
+      "firstRequestMs": 3411.6133969999996,
+      "importApiAndFirstMs": 3495.9805389999997,
+      "warmRequestMs": [
+        2417.9913849999994,
+        2142.950492,
+        1938.5757290000001
+      ],
+      "processWallMs": 13699.392818030901,
+      "peakTreeRssBytes": 568287232
+    },
+    {
+      "case": "test-evening-program",
+      "round": 2,
+      "role": "source",
+      "hostImportMs": 4.037706999999955,
+      "apiLoadMs": 57.411207000000104,
+      "firstRequestMs": 2905.2383099999997,
+      "importApiAndFirstMs": 2966.687224,
+      "warmRequestMs": [
+        2296.5740909999995,
+        1941.9934950000006,
+        1726.9570459999995
+      ],
+      "processWallMs": 11632.667754020076,
+      "peakTreeRssBytes": 564916224
+    },
+    {
+      "case": "test-evening-program",
+      "round": 2,
+      "role": "raw",
+      "hostImportMs": 4.0658820000001015,
+      "apiLoadMs": 58.23728399999982,
+      "firstRequestMs": 6117.318008,
+      "importApiAndFirstMs": 6179.621174,
+      "warmRequestMs": [
+        5182.29899,
+        4903.807821999999,
+        4861.978271
+      ],
+      "processWallMs": 23836.819689022377,
+      "peakTreeRssBytes": 565080064
+    },
+    {
+      "case": "test-evening-program",
+      "round": 2,
+      "role": "equality",
+      "hostImportMs": 4.172274000000016,
+      "apiLoadMs": 64.9989680000001,
+      "firstRequestMs": 3783.081134,
+      "importApiAndFirstMs": 3852.2523760000004,
+      "warmRequestMs": [
+        3022.6716259999994,
+        2442.402199,
+        2599.2883199999997
+      ],
+      "processWallMs": 14626.162774045952,
+      "peakTreeRssBytes": 567209984
+    },
+    {
+      "case": "lexer",
+      "round": 0,
+      "role": "raw",
+      "hostImportMs": 3.993302000000085,
+      "apiLoadMs": 56.140460000000076,
+      "firstRequestMs": 3434.179834,
+      "importApiAndFirstMs": 3494.313596,
+      "warmRequestMs": [
+        2576.147538,
+        2143.6582040000003,
+        2443.581413
+      ],
+      "processWallMs": 13350.060904980637,
+      "peakTreeRssBytes": 542339072
+    },
+    {
+      "case": "lexer",
+      "round": 0,
+      "role": "equality",
+      "hostImportMs": 4.162775999999894,
+      "apiLoadMs": 56.04296099999988,
+      "firstRequestMs": 2276.3248160000003,
+      "importApiAndFirstMs": 2336.530553,
+      "warmRequestMs": [
+        1629.6358589999995,
+        1344.2712110000002,
+        1159.315498
+      ],
+      "processWallMs": 9250.126720988192,
+      "peakTreeRssBytes": 553070592
+    },
+    {
+      "case": "lexer",
+      "round": 0,
+      "role": "choices",
+      "hostImportMs": 4.189160000000129,
+      "apiLoadMs": 59.39689899999985,
+      "firstRequestMs": 1845.738495,
+      "importApiAndFirstMs": 1909.324554,
+      "warmRequestMs": [
+        1323.214899,
+        1059.2366619999993,
+        906.6392040000001
+      ],
+      "processWallMs": 7923.5677679535,
+      "peakTreeRssBytes": 551104512
+    },
+    {
+      "case": "lexer",
+      "round": 0,
+      "role": "source",
+      "hostImportMs": 5.171130000000176,
+      "apiLoadMs": 58.92329000000018,
+      "firstRequestMs": 1752.0148090000002,
+      "importApiAndFirstMs": 1816.1092290000006,
+      "warmRequestMs": [
+        1081.2079589999994,
+        1060.3692549999996,
+        868.1732929999998
+      ],
+      "processWallMs": 7539.652556995861,
+      "peakTreeRssBytes": 529063936
+    },
+    {
+      "case": "lexer",
+      "round": 1,
+      "role": "equality",
+      "hostImportMs": 4.056644000000006,
+      "apiLoadMs": 55.96403599999985,
+      "firstRequestMs": 2287.537378,
+      "importApiAndFirstMs": 2347.5580579999996,
+      "warmRequestMs": [
+        1630.0176190000002,
+        1361.7540389999995,
+        1162.5031419999996
+      ],
+      "processWallMs": 9192.322994989809,
+      "peakTreeRssBytes": 548220928
+    },
+    {
+      "case": "lexer",
+      "round": 1,
+      "role": "choices",
+      "hostImportMs": 3.970446999999922,
+      "apiLoadMs": 57.32688200000007,
+      "firstRequestMs": 1858.8431930000002,
+      "importApiAndFirstMs": 1920.1405220000001,
+      "warmRequestMs": [
+        1261.4429850000001,
+        1164.446046,
+        921.4407300000003
+      ],
+      "processWallMs": 7973.196963022929,
+      "peakTreeRssBytes": 542109696
+    },
+    {
+      "case": "lexer",
+      "round": 1,
+      "role": "source",
+      "hostImportMs": 4.006959000000052,
+      "apiLoadMs": 58.000598999999966,
+      "firstRequestMs": 1779.765169,
+      "importApiAndFirstMs": 1841.772727,
+      "warmRequestMs": [
+        1103.4515720000004,
+        1057.3427190000002,
+        865.9951000000001
+      ],
+      "processWallMs": 7541.388281038962,
+      "peakTreeRssBytes": 529256448
+    },
+    {
+      "case": "lexer",
+      "round": 1,
+      "role": "raw",
+      "hostImportMs": 3.991416999999956,
+      "apiLoadMs": 56.26527400000009,
+      "firstRequestMs": 3374.94743,
+      "importApiAndFirstMs": 3435.204121,
+      "warmRequestMs": [
+        2614.42616,
+        2187.9207399999996,
+        2421.3735770000003
+      ],
+      "processWallMs": 13339.713501976803,
+      "peakTreeRssBytes": 543838208
+    },
+    {
+      "case": "lexer",
+      "round": 2,
+      "role": "choices",
+      "hostImportMs": 4.083983999999873,
+      "apiLoadMs": 57.449791000000005,
+      "firstRequestMs": 1854.6889199999998,
+      "importApiAndFirstMs": 1916.2226949999997,
+      "warmRequestMs": [
+        1287.6175839999996,
+        1115.7002790000006,
+        967.3048140000001
+      ],
+      "processWallMs": 8006.221864023246,
+      "peakTreeRssBytes": 543432704
+    },
+    {
+      "case": "lexer",
+      "round": 2,
+      "role": "source",
+      "hostImportMs": 3.9928909999998723,
+      "apiLoadMs": 57.149445000000014,
+      "firstRequestMs": 1761.562491,
+      "importApiAndFirstMs": 1822.7048269999998,
+      "warmRequestMs": [
+        1079.0431940000003,
+        1086.019856,
+        866.2607760000001
+      ],
+      "processWallMs": 7533.13039400382,
+      "peakTreeRssBytes": 529809408
+    },
+    {
+      "case": "lexer",
+      "round": 2,
+      "role": "raw",
+      "hostImportMs": 4.000328000000081,
+      "apiLoadMs": 56.62685899999997,
+      "firstRequestMs": 3400.119415,
+      "importApiAndFirstMs": 3460.746602,
+      "warmRequestMs": [
+        2535.3481249999995,
+        2225.831323999999,
+        2047.7777499999993
+      ],
+      "processWallMs": 12954.212867014576,
+      "peakTreeRssBytes": 566849536
+    },
+    {
+      "case": "lexer",
+      "round": 2,
+      "role": "equality",
+      "hostImportMs": 4.052822999999989,
+      "apiLoadMs": 55.89355899999987,
+      "firstRequestMs": 2272.725607,
+      "importApiAndFirstMs": 2332.6719889999995,
+      "warmRequestMs": [
+        1633.1449679999996,
+        1350.8773569999994,
+        1169.5799229999993
+      ],
+      "processWallMs": 9176.998589013238,
+      "peakTreeRssBytes": 548831232
+    }
+  ],
+  "consumedReceiptsAndOutputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/report.json",
+      "sha256": "92b84eaf0d84762dbf1e4b9fe6f0e0f5586ebdc1bd3614533ab7c693361fdf3a",
+      "bytes": 951223
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/plan.json",
+      "sha256": "99a524d77cb1f98e1da46dd830d3431fffd1c216aa16ad9458ee8fb8ff2dcc1d",
+      "bytes": 7131
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/report.json",
+      "sha256": "cdd9bf83106f0bec4f53e58df9b27f20fb465d9225bbb5b7d6da92595c91c888",
+      "bytes": 702747
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/transform-stages01/report.json",
+      "sha256": "1f856fd87762f47ecf24a481ac35fff231870e4bc4a971143a4de4019311da02",
+      "bytes": 3145
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-raw.result.json",
+      "sha256": "0891b41a143943b812861b6eda65f951205c200ade61ba0d75f27502fc0b983f",
+      "bytes": 155501
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-raw/test-evening-program.mjs",
+      "sha256": "c30d80b7d3db1377fd50156a286eb59ff8edb78d8827ca6030b423f86c9f974a",
+      "bytes": 103867
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-raw/lexer.mjs",
+      "sha256": "7391f503044de65bff0836feaeb8cabcc3ca10b888e081b83fe814c1286d826e",
+      "bytes": 28452
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-equality.result.json",
+      "sha256": "7cb70d918c7a9a34c992f7bd370f63ac2c00d6b688ce4467a64c90414bdda160",
+      "bytes": 156117
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-equality/test-evening-program.mjs",
+      "sha256": "c30d80b7d3db1377fd50156a286eb59ff8edb78d8827ca6030b423f86c9f974a",
+      "bytes": 103867
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-equality/lexer.mjs",
+      "sha256": "7391f503044de65bff0836feaeb8cabcc3ca10b888e081b83fe814c1286d826e",
+      "bytes": 28452
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-choices.result.json",
+      "sha256": "daac0667f5d8849df23e422afdcd593b9c02681ebf5aedd9037c32244ad74a0a",
+      "bytes": 156000
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-choices/test-evening-program.mjs",
+      "sha256": "c30d80b7d3db1377fd50156a286eb59ff8edb78d8827ca6030b423f86c9f974a",
+      "bytes": 103867
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-choices/lexer.mjs",
+      "sha256": "7391f503044de65bff0836feaeb8cabcc3ca10b888e081b83fe814c1286d826e",
+      "bytes": 28452
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-source.result.json",
+      "sha256": "92eabdef8f31894125e3b56581030779ec26b5a8ca3b35d72ee09acd3ee40304",
+      "bytes": 155870
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-source/test-evening-program.mjs",
+      "sha256": "c30d80b7d3db1377fd50156a286eb59ff8edb78d8827ca6030b423f86c9f974a",
+      "bytes": 103867
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-preparation01/prepare-source/lexer.mjs",
+      "sha256": "7391f503044de65bff0836feaeb8cabcc3ca10b888e081b83fe814c1286d826e",
+      "bytes": 28452
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-0-raw.result.json",
+      "sha256": "6dbfe81297cc1a9f7f8013b3438144a80e77cc3e4932a6b09f5332adb857aae6",
+      "bytes": 7193
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-0-equality.result.json",
+      "sha256": "548f5c3bdf07d9fed2e4676305ab8f5e6fe32969a369ceb074a6cd53a2cac537",
+      "bytes": 7281
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-0-choices.result.json",
+      "sha256": "1002e105a606b6516d29a6acaf7c96abccef5a575fce52f36d04e4c01cd334b4",
+      "bytes": 7259
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-0-source.result.json",
+      "sha256": "b69039a3887dd2b8a0c8b57ac166a19c1050836b8cf9445bb5130e44efaf3fc2",
+      "bytes": 7248
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-1-equality.result.json",
+      "sha256": "29922ce1ff36a8de77c4a12c70dd1247b8121dd81dc68c1e263b6c311c7d5bae",
+      "bytes": 7255
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-1-choices.result.json",
+      "sha256": "b28e658c9a5e28ec7e1b9c19389f633cbdaaab8558448994d2c56dabd3e3974e",
+      "bytes": 7247
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-1-source.result.json",
+      "sha256": "081783835e39f6353426cf94ad58cb2a139ee8c1739516e38a9460c53d18cce0",
+      "bytes": 7244
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-1-raw.result.json",
+      "sha256": "02ae7e05015e5ff58380cc0eee9bbe2c8d4a1de1f709bddb144ac033e6304dd1",
+      "bytes": 7208
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-2-choices.result.json",
+      "sha256": "a6f931c86cfc9e321bbd4e2b7b43aac0afedc998d21dafab25102fbd3758dee8",
+      "bytes": 7263
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-2-source.result.json",
+      "sha256": "d6b71c8710543eeb2331809c5a1d8e8ed928a7e18f388cd83ad5e3d18901f660",
+      "bytes": 7250
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-2-raw.result.json",
+      "sha256": "6f31047224a7198edc17b4e1ba9f8a812969f54149d0197623eac4c93016c36e",
+      "bytes": 7183
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/test-evening-program-2-equality.result.json",
+      "sha256": "c884a713a252634a897866da2e6919e62a6f76500b88ce116a0d5c5b1f5beac2",
+      "bytes": 7262
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-0-raw.result.json",
+      "sha256": "f03f777a4163c2abca01f346b9ee7d61da967d3d731a49d8415acf02935a8ea2",
+      "bytes": 7104
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-0-equality.result.json",
+      "sha256": "0fb64a3f93b17dfe6aacf7ba9c5d50b17651fb47f10da6418f548e663101845a",
+      "bytes": 7175
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-0-choices.result.json",
+      "sha256": "17c5c4c16fea26626cd52da2a3db6c99db07387cf07e6852aee7bbbaa79ea974",
+      "bytes": 7154
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-0-source.result.json",
+      "sha256": "2d980cdd224ded0720ffd23a0a241439a1452f13d571062aabebc5bce870138d",
+      "bytes": 7161
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-1-equality.result.json",
+      "sha256": "c438592f0ca0a94897a7acb16ed2a2aac5a19350b1bb9bf3aaa288269bc533ef",
+      "bytes": 7188
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-1-choices.result.json",
+      "sha256": "a5fc3146749eb0bfa37e08d3142f5ab08ac505e2f003c3908c626eceff7c9532",
+      "bytes": 7182
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-1-source.result.json",
+      "sha256": "64e04106cc67d4ea2eaa6dc50f96ba532a97774a7e404ad5f42080b3a1e97ffc",
+      "bytes": 7155
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-1-raw.result.json",
+      "sha256": "e15380a6669ee103822a730a19d181054796b09408d76eb709454cb575d94d01",
+      "bytes": 7109
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-2-choices.result.json",
+      "sha256": "552f714eb1cc9e0b3e4341d33f2079f3c15f32d59eb49556350182bdb22b1c4b",
+      "bytes": 7176
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-2-source.result.json",
+      "sha256": "034bdd2e34a2910e191755f0056df5816baee36e6760c76a4439848b43e8a7ee",
+      "bytes": 7156
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-2-raw.result.json",
+      "sha256": "bd6cecc17791e8e056ae7c6c4bd1390449725e83536cf18afc7d9f8ff7a98ab6",
+      "bytes": 7110
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase57/stages-latency01/lexer-2-equality.result.json",
+      "sha256": "0ef86f27d9fc44361ea87ebf810b9a29cdad979828de5d8665acfa8a74595d62",
+      "bytes": 7182
+    }
+  ],
+  "validation": "All24 leaf reports rehashed; role rotation, serial process intervals,96 reported exact-output checks, preparation value-oracle receipts, all-stage output equality and reported medians checked. Historical compiler/tool trees not broadly rehashed by this summary."
+}

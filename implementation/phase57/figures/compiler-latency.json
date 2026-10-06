@@ -1,0 +1,265 @@
+{
+  "kind": "phase57-compiler-latency-figure",
+  "complete": true,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase57/analysis/plot-latency.py",
+    "sha256": "7bc45a08d5ed637e105d0ed3c9a6102438fc1171fa41e60a4c6d985cde55d441",
+    "bytes": 5429
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase57/evidence/latency-summary.json",
+      "sha256": "e1dd05c49b2f14fec75d30532f5f466f90ee07b73b3f74685b923905f5b9d598",
+      "bytes": 54736
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase57/evidence/transformation-latency-summary.json",
+      "sha256": "97db288ac8012869455abcd5721dfc726282bc09b82b08ce0103509a9db6e7c6",
+      "bytes": 67985
+    }
+  ],
+  "matplotlib": "3.9.4",
+  "panels": [
+    "Fresh process: load + first request",
+    "Later requests: transformation stages"
+  ],
+  "rows": [
+    {
+      "panel": 0,
+      "case": "test-evening-program",
+      "role": "typescript",
+      "metric": "importApiAndFirstMs",
+      "median": 936.243117,
+      "min": 931.455187,
+      "max": 1009.2660700000001,
+      "samples": [
+        1009.2660700000001,
+        931.455187,
+        936.243117
+      ]
+    },
+    {
+      "panel": 0,
+      "case": "test-evening-program",
+      "role": "raw",
+      "metric": "importApiAndFirstMs",
+      "median": 6132.3724330000005,
+      "min": 6116.01307,
+      "max": 6174.06919,
+      "samples": [
+        6132.3724330000005,
+        6116.01307,
+        6174.06919
+      ]
+    },
+    {
+      "panel": 0,
+      "case": "test-evening-program",
+      "role": "source",
+      "metric": "importApiAndFirstMs",
+      "median": 2933.1716560000004,
+      "min": 2925.734585,
+      "max": 2933.613238000001,
+      "samples": [
+        2933.1716560000004,
+        2925.734585,
+        2933.613238000001
+      ]
+    },
+    {
+      "panel": 0,
+      "case": "test-evening-program",
+      "role": "direct",
+      "metric": "importApiAndFirstMs",
+      "median": 5099.937088000001,
+      "min": 5083.253516999999,
+      "max": 5103.191046999999,
+      "samples": [
+        5083.253516999999,
+        5103.191046999999,
+        5099.937088000001
+      ]
+    },
+    {
+      "panel": 0,
+      "case": "lexer",
+      "role": "typescript",
+      "metric": "importApiAndFirstMs",
+      "median": 646.5606909999999,
+      "min": 645.9683079999999,
+      "max": 657.255497,
+      "samples": [
+        645.9683079999999,
+        657.255497,
+        646.5606909999999
+      ]
+    },
+    {
+      "panel": 0,
+      "case": "lexer",
+      "role": "raw",
+      "metric": "importApiAndFirstMs",
+      "median": 3436.84748,
+      "min": 3382.9630180000004,
+      "max": 3737.5209250000003,
+      "samples": [
+        3737.5209250000003,
+        3382.9630180000004,
+        3436.84748
+      ]
+    },
+    {
+      "panel": 0,
+      "case": "lexer",
+      "role": "source",
+      "metric": "importApiAndFirstMs",
+      "median": 1831.2048180000002,
+      "min": 1819.068086,
+      "max": 1902.835736,
+      "samples": [
+        1831.2048180000002,
+        1902.835736,
+        1819.068086
+      ]
+    },
+    {
+      "panel": 0,
+      "case": "lexer",
+      "role": "direct",
+      "metric": "importApiAndFirstMs",
+      "median": 3208.6944059999996,
+      "min": 3196.868836,
+      "max": 3236.463638999999,
+      "samples": [
+        3236.463638999999,
+        3208.6944059999996,
+        3196.868836
+      ]
+    },
+    {
+      "panel": 1,
+      "case": "test-evening-program",
+      "role": "raw",
+      "metric": "warmRequestMedianMs",
+      "median": 4903.807821999999,
+      "min": 4834.061987000001,
+      "max": 4974.101023000003,
+      "samples": [
+        4974.101023000003,
+        4834.061987000001,
+        4903.807821999999
+      ]
+    },
+    {
+      "panel": 1,
+      "case": "test-evening-program",
+      "role": "equality",
+      "metric": "warmRequestMedianMs",
+      "median": 2639.4006640000007,
+      "min": 2599.2883199999997,
+      "max": 2844.4897469999996,
+      "samples": [
+        2639.4006640000007,
+        2844.4897469999996,
+        2599.2883199999997
+      ]
+    },
+    {
+      "panel": 1,
+      "case": "test-evening-program",
+      "role": "choices",
+      "metric": "warmRequestMedianMs",
+      "median": 2013.5335780000005,
+      "min": 2012.141107999999,
+      "max": 2142.950492,
+      "samples": [
+        2013.5335780000005,
+        2012.141107999999,
+        2142.950492
+      ]
+    },
+    {
+      "panel": 1,
+      "case": "test-evening-program",
+      "role": "source",
+      "metric": "warmRequestMedianMs",
+      "median": 1941.9934950000006,
+      "min": 1933.6263630000012,
+      "max": 2068.6122510000005,
+      "samples": [
+        2068.6122510000005,
+        1933.6263630000012,
+        1941.9934950000006
+      ]
+    },
+    {
+      "panel": 1,
+      "case": "lexer",
+      "role": "raw",
+      "metric": "warmRequestMedianMs",
+      "median": 2421.3735770000003,
+      "min": 2225.831323999999,
+      "max": 2443.581413,
+      "samples": [
+        2443.581413,
+        2421.3735770000003,
+        2225.831323999999
+      ]
+    },
+    {
+      "panel": 1,
+      "case": "lexer",
+      "role": "equality",
+      "metric": "warmRequestMedianMs",
+      "median": 1350.8773569999994,
+      "min": 1344.2712110000002,
+      "max": 1361.7540389999995,
+      "samples": [
+        1344.2712110000002,
+        1361.7540389999995,
+        1350.8773569999994
+      ]
+    },
+    {
+      "panel": 1,
+      "case": "lexer",
+      "role": "choices",
+      "metric": "warmRequestMedianMs",
+      "median": 1115.7002790000006,
+      "min": 1059.2366619999993,
+      "max": 1164.446046,
+      "samples": [
+        1059.2366619999993,
+        1164.446046,
+        1115.7002790000006
+      ]
+    },
+    {
+      "panel": 1,
+      "case": "lexer",
+      "role": "source",
+      "metric": "warmRequestMedianMs",
+      "median": 1060.3692549999996,
+      "min": 1057.3427190000002,
+      "max": 1079.0431940000003,
+      "samples": [
+        1060.3692549999996,
+        1057.3427190000002,
+        1079.0431940000003
+      ]
+    }
+  ],
+  "scope": "Data-only rendering; no pooled run, stationary-throughput or statistical-significance claim.",
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase57/figures/compiler-latency.svg",
+      "sha256": "68ae3e7fa993cd9b03866db6bc985a4ab38ed01137404bcff94de6ec1f7344f4",
+      "bytes": 32275
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase57/figures/compiler-latency.png",
+      "sha256": "cc7302bd48c678f537872c9abcbe2a9a6e78989a2ef8a4251ebb2e4ff75d5702",
+      "bytes": 223640
+    }
+  ]
+}

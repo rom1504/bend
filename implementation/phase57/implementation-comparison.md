@@ -174,6 +174,179 @@ compiler invocation and output observation. For these no-G B1/B2 roles, compare 
 against TS; use ABI hooks only in a separately verified G-bearing experiment. Compare emitted hot helper code only after
 profiles identify it; do not infer a runtime cause from the source language.
 
+## 7. `sk_char` is canonical-key escaping, with a separate numeric-lowering cost
+
+Root's lexer allocation screen attributes about 206 MB in B1 and 219 MB in B2
+to the shared `sk_char` frame (approximately 22%/10% of their respective totals).
+These supplied sampled totals are not retained heap or exact allocation counts.
+The source trace localizes this to key serialization, not the parser's generic
+character constructor.
+
+**Exact path.** `check/specialize.bend:132`, `term_key`, starts
+`sk_term(t,Nil,0)`. `sk_quote` at 104 calls `sk_escape` at 108; each character
+calls `sk_char` at 114, reverses its escaped fragment, and prepends it to a
+reversed accumulator. `sk_quote` reverses the completed accumulator again.
+`sk_char` implements JSON quoting: quotes/backslashes/control escapes, surrogate
+escapes, otherwise `Char.show`. Keys preserve names, erased quantities and
+constructor-removal lists, alpha-renumber bound IDs by lexical depth, follow
+stored Var values, and substitute `Sub` nodes. They are not merely type names or
+hashes; changing their equivalence changes specialization identity.
+
+**Callers and existing reuse.**
+
+- `check/specialize.bend:136`, `sp_keys`, serializes template arguments, joined
+  by newlines. `sp_live_args`/`sp_live_key` at 383/349 build this key before
+  `sp_find` looks in `KSpecMemo`. That memo reuses completed or active template
+  instances and enforces recursion rules; it does not cache serialization of
+  arguments before lookup. Key growth is capped at 32,768 UTF-16 units.
+- `back/js/direct/host.bend:18–27`, `jd_host_nat_status_on`, keys each non-Nat ADT
+  for a per-scan visited set. An unseen type is serialized once for membership
+  and again when inserted. Each `jd_marshal` starts a new type scan; nested
+  marshalling can scan again. The signature-wide completed no-Nat gate at
+  160–173 already skips component scans for signatures proved Nat-free.
+- `direct/host.bend:74–96`, `jd_host_marshal_key`/`named`, retains recursion keys
+  in the current marshaller's `seen` stack, with input/output direction included.
+  This prevents recursive expansion. There is no module-wide completed
+  marshaller cache in this source; identical public signatures can emit their
+  marshalling independently. Do not duplicate the existing recursion guard.
+- `direct/pattern.bend:203–211`, `jd_word_cover_diff`/`key`, serializes composed,
+  unannotated Word covers to prove cover equality. This is not template checking
+  and may run repeatedly during emitted reachability and final rendering.
+- `direct/program.bend:27–39`, `jd_show_find`/`ref_on`, serializes prior type
+  entries on each linear search. This path is for program readback, so it is not
+  an explanation for the lexer **library** request's printing stage.
+
+Upstream `bend.ts:1192`, `term_key`, is `JSON.stringify` with a replacer omitting
+source spans. `def_inst` at 3730–3758 still lowers and serializes each argument
+before looking in `book.tmps`; upstream does not universally memoize term keys.
+In emission, `comp.ts:1021` computes a key before the `LAYS` memo; `js_marshal`
+at 3328 uses `fl.spun` for completed named marshaller generation. Its separate
+`OPENS`/`USES`/`FOLDS` maps and `memo_gc` at 1950 are body-analysis caches, not an
+implicit memo for this `JSON.stringify` call. Current and upstream both pay some
+key construction even when downstream result memoization hits.
+
+**Additional concrete generated-code fact.** In the exact prepared source B1
+API, `$sk_char$` is 6,626 bytes; direct B2 `$jd$sk_95_char` is 8,219 bytes. Each
+contains eight textual `u32_to_word` sites and 24 `word_to_u32` sites across
+alternative matcher branches, not all executed on every character. For example,
+the residual `(n & 3)==2` branch converts the same scalar twice to read successive
+Word fields, then reconstructs WCon prefixes to recover `n` in range checks and
+closures. Both compiler images show this expansion. Runtime
+`runtime/js/direct.mjs:19–24`, `u32_to_word`, allocates WNil plus 32 WCon objects
+per invocation. Thus JSON escaping's U32 residual-pattern lowering can create
+substantial temporary Word graphs even for ordinary nonescaped characters.
+Actual optimized allocations may differ through V8 elimination; the source
+allocation totals alone do not separate those graphs from closure/string costs.
+
+**Why existing numeric lowering does not remove it.** This is already the
+native numeric-row path, not failure to recognize U32. `direct/pattern.bend:
+155–185`, `jd_word_start`/`rows`, turns literal paths into scalar equality/mask
+tests; fully known depth-32 rows have `fields=0`. Residual/default rows retain
+`fields=1` or `2`. `jd_word_row_body` at 258–264 supplies those demanded fields
+using `jd_word_view` at 267: a boxed Word suffix or head/tail from
+`u32_to_word(bits)`. The source's named default `other` is reconstructed from
+known constructor prefixes plus these fields, so range checks see a newly
+rebuilt U32. This is the familiar native-row fallback from upstream
+`comp.ts:3232–3238`; actual type facts survived, but scalar provenance through
+**partial** Word views/reconstruction is not represented.
+
+The current inverse-view optimization (`direct/constructors.bend:47–97`) only
+cancels a native constructor whose direct Var field names a compiler-created
+whole native `$JD.View`. It cannot cancel the nested WCon reconstruction from
+two residual fields. The Phase53 [table investigation](../phase53/table-opportunity.md)
+is separate and still a proposal: current direct emission has no table emitter.
+Even upstream's table filter cannot cover this case: `comp.ts:1230–1236` needs
+more than half the literal range populated (seven explicit keys through 92 give
+7*2 < 93), while `emit_tab` at 2757 requires constant-emittable rows. The named
+default's range tests and dependence on captured `c` are not constant table cells.
+A general opportunity is retaining exact scalar origin/bit-prefix provenance
+through owned residual views and constructor recomposition, with demand/alias
+proofs. Adding a dense constant table alone cannot repair this `sk_char` path.
+
+**Smallest discriminator, no implementation here.** First count `term_key`
+entries by caller/stage, serialized bytes and repeated resulting-key frequencies;
+count `sk_char` calls and `u32_to_word` calls beneath that frame. Aggregate once
+per request rather than logging strings or traversing arguments for every counter.
+This separates repeated serialization from the numeric matcher expansion.
+A saved-image diagnostic can replace only `sk_char`'s residual matcher with
+scalar switch/range tests, retaining existing `Char.show`/hex helpers and exact
+returned escaping bytes. Compare every key/output/unsafe diagnostic and all
+UTF-16 edge cases before timing; this is an ablation, not permission for a
+compiler-name intrinsic or native-template promotion. Alternatively a single
+local `jd_host_nat_status_on` key binding removes its demonstrated double
+serialization without changing the memo structure. That narrow change cannot
+address checker keys or the Word allocation path, so its possible gain is bounded
+by those caller counts. A global identity/key cache needs immutable terms and
+complete binder-environment/depth keys; caching `sk_term` by term alone is unsafe.
+
+## 8. Whole-source completion includes parsing; law-fill hits retain linear scans
+
+The [own-source profile report](profiles.md) attributes B2 51.86% inclusive to
+`discoverSources` and 44.96% to nested `f_complete_aliases`; `kt` has 9.32% self
+weight. These do not add. `load/modules.bend:234`, `f_complete_aliases`, is a
+wrapper around `f_source_body` and `f_complete_parsed`; it does not itself run
+an alias-rewrite loop. Its descendants include the whole contextual parser and
+module completion. Calling its inclusive share “alias processing” is misleading.
+
+**One concrete width-sensitive loop.** `front/declarations.bend:736`,
+`f_decl_local`, checks the persistent scope index first. A miss calls `f_find`
+on an empty list, deliberately avoiding an O(n) search for new names. A **hit**
+still calls `f_find(name,book)`, preserving original first-event semantics.
+`f_find`/`f_find_next` at 245–258 scan the newest-first local declaration list
+until a matching event; the index is not a replacement for this event lookup.
+`f_decl_find` at 693 invokes it during a definition's header (`f_def` dispatch
+at 289–293). Existing law names therefore trigger linear searches through the
+growing local event list, even though their scope-index lookup succeeds.
+
+The exact own-source assembly has 629 laws and 3,012 definitions; **all 629 laws
+precede the first def at line 5125**, and all have a matching definition later.
+Thus those successful law-fill lookups must cross preceding newer declarations.
+A source family of N early laws followed by N definitions admits O(N²) aggregate
+local-event visits. This is a demonstrated algorithmic shape, not a measured
+claim that it dominates the 44.96% frame. The profile's `f_find` self share
+(2.96% B2) supports counting it, but does not establish the full removable cost.
+Upstream's `Book.tlds` lookup is direct by name; its checker/loader need not
+scan a declaration-event list to retrieve a prior law.
+
+**Other loops and existing protections.**
+
+- `modules.bend:211`, `f_source_body`, builds exact-name and constructor indices
+  once for its prior scope. `front/contextual.bend:262`, `f_context_declared`,
+  incrementally updates them for every published header. Constructor lookup
+  uses `front/validate.bend:54–65`, `f_ctor_index`/`find`.
+- `front/contextual.bend:4–12`, `f_context_resolve`, can use recursive linear
+  `f_declared` membership for namespace/alias ambiguity. In this own-source
+  request the compiler assembly is the root namespace and imports only Base;
+  unchanged near names bypass that membership condition. It is not evidence
+  of an all-reference global scan in this particular request.
+- `load/graph.bend:194–213`, completion resolves imported fills, checks fresh
+  names with an index, qualifies only the new fragment, then appends it to
+  prior definitions. `f_graph_fill_defs` at 437 rebuilds definition shells,
+  not all term bodies. `front/contextual.bend:468–481` lowers new types and
+  rebuilds module shells; `load/paths.bend:64–73` rewrites Foreign bodies only.
+  `norm_defs_join` at `core/term.bend:478` copies the prior list spine. Across
+  many tiny modules those cumulative prior copies/index builds can be quadratic,
+  but this assembled compiler has one root body plus seeded Base, so that
+  many-module mechanism is not the immediate explanation.
+- `typed-driver.mjs:253–310`, `discoverSources`, retains physical-file parse
+  results, finishes dependencies before siblings and uses `f_complete_seed`
+  for the verified Base. `FCompletedSource` bypasses body parsing. Root
+  `f_context_result` explicitly avoids a second full scope walk; a proposed
+  blanket parse cache or global qualification deletion would duplicate
+  existing reuse or alter source-order/error semantics.
+
+**Cheapest discriminator.** Count `f_decl_local` index misses/hits, actual
+`f_find_next` visits for hits, and successful law-fill distances; separately
+count parsed tokens/created KTerm nodes and completion shell/Foreign-body visits.
+Aggregate per source, with no dump of every event. This determines whether
+wide event scans or ordinary parser construction explain the nested share.
+A possible replacement is a separate exact-name **local first-event index**,
+updated under the current reversed event-list order and kept distinct from the
+mapped/header scope index. It must reproduce law/def fill, imported aliases,
+constructor collisions and first-error order. Reusing the existing scope index
+as though it returned the same event is not justified by these source facts.
+No instrumentation or replacement has been implemented here.
+
 ## Priority
 
 First correlate emitted-reach and final-emission profiles with section 4's

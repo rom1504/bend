@@ -73,6 +73,107 @@ The failed CPU v1 summary is preserved separately. Its timestamp correction
 and the new weighted/count views are documented in [profiling.md](profiling.md);
 these allocation results do not depend on any CPU timestamp normalization.
 
+## Lexer CPU observations
+
+The fresh v3 capture completed all four roles and the [CPU analysis](../../selfhost/build/phase57/cpu-analysis02/report.json)
+passed all image, request, output, raw-profile and summary joins. Its SHA-256 is
+`5b759a62dfb43f61445ea16fddc2ceee7bba8a6ff9adfe964eb14b38fe817aa0`.
+All four weighted views were admitted with **zero negative-delta correction**.
+The failed earlier CPU receipt remains failed; this is a separate new capture.
+
+| Compiler image | Profiled requests | CPU samples | Leading weighted self-attributed frames |
+|---|---:|---:|---|
+| TypeScript | 32 | 2,544 | GC 21.39%; `match_flatten` 7.16%; `term_higher` 6.31%; `term_check` 4.14% |
+| Raw checked B1 | 3 | 5,645 | `String.cmp` 14.10%; `String.cmp.fin` 13.20%; `run_loop` 11.34%; GC 4.45% |
+| Derived B1 | 6 | 4,383 | `run_loop` 20.19%; GC 6.06%; `validateSpanCache` 4.94%; `sk_char` 4.17% |
+| Direct B2 | 4 | 5,409 | `run_loop` 15.15%; `kt` 9.28%; GC 4.29%; `jd_primitive_table` 2.93% |
+
+These percentages weight sampled stacks by their recorded time increments.
+The independent count view can differ materially: TypeScript's GC share is
+21.39% by time increments and 5.78% by sample count; derived B1's corresponding
+shares are 6.06% and 2.90%. Both views remain in the report. Unequal sample
+intervals are visible, and neither view is an instrumented measurement of every
+function or a basis for comparing clean compiler latency. TypeScript again
+hit the 32-request cap before five seconds; whole Bend requests overshot the
+nominal target. Three warm requests define the protocol; they do not prove
+that V8 has finished optimizing every function. No samples or elapsed residuals were reassigned to a frame.
+
+CPU and allocation evidence identify different costs. In direct B2,
+`run_loop` receives 15.15% of weighted self CPU attribution but no sampled self
+allocation. `run_clo` receives 3.68% of allocation attribution (80.11 MB/request)
+but only 0.33% of weighted self CPU attribution. The named `kt` frame receives
+9.28% of weighted self CPU attribution versus 0.33% of allocations. Conversely,
+`subst_terms` receives 4.54% of allocations versus 1.02% of weighted self CPU.
+These are separately captured, role-matched observations, not aligned samples
+or causal decomposition. Optimizing one category need not improve the other
+in proportion.
+
+The strongest next discriminators are therefore broad dispatch/tag access
+(`run_loop`, `kt`), repeated primitive lookup (`jd_primitive_table`), and the
+allocation-heavy source representation paths identified above. A change should
+be judged by exact outputs and fresh unprofiled requests; the observed shares
+are neither promised gains nor additive upper bounds. Derived B1 also places
+12.25% of its weighted self total in the ordinary host-driver group, including
+Base-cache reading/validation; B2 places 6.96% there. Those percentages have
+different total denominators and do not establish that either driver's absolute
+cost changed.
+
+For stack context, `check_program_diagnostic` has 41.08% inclusive weighted
+attribution in B2 and 35.01% in derived B1. This call also includes completion
+and specialization. Its descendants' weights overlap with it, so this does not
+supply an independent pure-checking stage duration. Timestamped stage captures
+and own-source checks are separate evidence with separate request boundaries.
+
+## Complete own-source checking
+
+The separate [own-source analysis](../../selfhost/build/phase57/check-profile-analysis01/report.json)
+passed all three image/source/profile joins (SHA-256
+`5599d37e36cdb25a585ed174de2cae987c35c34be2504563885a8ad34b9b4759`).
+Each image performed **one ordinary complete check of the same compiler
+source**, using its prepared private Base cache, with no preceding warm
+compiler request. Import and setup were outside the inspector. All three
+returned `checked: true` and `typeAccepted: true`, with the exactly expected
+unsafe-trust verdict for the 3,012 source definitions. This is successful
+completed type checking with preserved proof-trust failure; it is not a
+mathematical-proof claim or a fresh Base check.
+
+| Image | Profiled request seconds | Samples | Leading weighted self frames |
+|---|---:|---:|---|
+| Derived B1 | 16.265 | 12,018 | `run_loop` 14.72%; GC 11.68%; `validateSpanBook` 4.31%; `index_remove` 3.74%; `f_find` 2.79% |
+| Direct B2 | 32.961 | 25,366 | `run_loop` 11.74%; GC 10.21%; `kt` 9.32%; `f_find` 2.96%; `validateSpanBook` 2.41% |
+| Raw checked B1 | 54.373 | 44,701 | `String.cmp` 12.46%; `String.cmp.fin` 11.52%; `run_loop` 8.41%; GC 8.01%; `index_remove` 6.47% |
+
+These are one-shot diagnostic request durations under the inspector, **not
+fresh clean latency ratios**. They exclude the rest of their worker setup and
+post-capture summarization, and are not interchangeable with the worker's total
+wall time. Weighted and sample-count rankings are both retained. The raw B1
+capture contained 2 µs of negative increments, admitted at 0.0367 ppm under the
+bounded policy; the other two needed no correction. The original raw data and
+all signed accounting remain unchanged.
+
+The B2 `kt` self share is similar across two different requests: 9.28% for
+lexer library compilation and 9.32% for complete compiler-source checking.
+That supports testing tag-access cost as a general mechanism rather than a
+lexer-specific pattern. It does not establish a removable 9% runtime fraction.
+String comparison remains prominent in raw B1, while source lookup/index
+operations become prominent in all three large-source checks.
+
+`discoverSources` has 51.85%/51.86%/46.72% inclusive weighted attribution in
+derived B1/direct B2/raw B1 respectively; `f_complete_aliases` has
+42.70%/44.96%/41.84%. These are nested stack shares, not independent stages that
+can be added. The discovery path includes completion work as well as host I/O;
+this observation does not justify calling half the request pure parsing or
+pure kernel checking. Per-stage emission profiles cover another distinct
+operation and will be reported separately.
+
+The small [own-source reader](../../selfhost/tools/performance/phase57/analysis/check-profiles.py)
+reuses the frozen CPU-view validator, but verifies the source/trust oracle
+instead of borrowing the library output oracle. Its source-name mapping is
+intentionally narrower: only exact named identifiers within the matching
+whole-image inventory are mapped. Anonymous closures stay unmapped, so its
+named-definition group share must not be compared directly with the library
+reader's containing-function-span group.
+
 ```sh
 taskset -c 0 python3 -B selfhost/tools/performance/phase57/analysis/profiles-v2.py \
   --report selfhost/build/phase57/CPU_RUN/report.json \

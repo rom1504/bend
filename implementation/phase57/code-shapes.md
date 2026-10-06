@@ -260,3 +260,76 @@ are relatively close. Its underlying parser allocation remains a possible
 subsequent algorithmic target, but the present cross-image evidence favors
 investigating transport overhead first. Export narrowing and comment removal
 remain generation/import hypotheses, not established request-allocation fixes.
+
+## CPU correlation: `run_loop` and `kt`
+
+The next independent summary, `selfhost/build/phase57/cpu-analysis02/report.json`,
+admits time-weighted samples for all four lexer roles without correcting negative
+timestamps. These are profiled request samples, not the clean latency series.
+The [exact hot bodies](../../selfhost/tools/performance/phase57/static/cpu-hot-bodies.md)
+retain their parent hashes and source positions.
+
+`run_loop`, `run_tail` and `run_clo` have **identical function-body bytes** in raw,
+B1 and B2. In particular, `run_loop` has SHA256
+`b1f937dcb68edc1033b01d5a6055938ec2e34103bacd41b68c36f2ea66bd1c8f`:
+
+```javascript
+function run_loop(r) {
+  while (r !== null && typeof r === "object" && r.$ === "$JMP") {
+    r = r.f(...r.x);
+  }
+  return r;
+}
+```
+
+The same central indirect invocation can receive many named and closure targets;
+this is not a newly introduced B2 runtime protocol. Its observed target diversity,
+JIT specialization and jump counts are not established by the body or this CPU
+summary. The 6,269 force sites are also identical in count. Choice specialization
+can nevertheless change how often those sites receive an immediate value versus
+a jump, and how much closure work each jump performs.
+
+B1's `run_loop` self share is 20.19%; B2's is 15.15%. Dividing the corresponding
+sample weights by profiled request counts gives approximately **195.2 ms/request
+for B1 versus 266.1 ms/request for B2**. These remain diagnostic weighted samples;
+the smaller B2 percentage is not evidence of less trampoline work. Similarly,
+GC shares of 6.06% and 4.29% correspond to about 58.6 and 75.4 sampled ms/request.
+Neither these percentages nor the much larger inclusive `run_loop` share may be
+read as time that a runtime rewrite would save.
+
+B2's `kt` frame accounts for 9.28% of weighted self samples, approximately
+163.0 sampled ms/request; B1's corresponding function is not in the top-20
+summary. Both bodies construct exactly the same property sequence:
+`$`, `tag`, `name`, `id`, `quant`, `kids`, `removed`, `originBegin`, `originEnd`.
+Both allocate a fresh `Nil` for `removed`; neither boxes the entire KTerm in a
+closure, array or legacy descriptor. There is no representation change here.
+The concrete emitted differences are:
+
+- B1 uses ordinary literal property names and its five parameters directly.
+- B2 uses computed constant string keys such as `["tag"]`, five local aliases,
+  metadata comments and an unconditional loop whose first iteration returns.
+
+There are 312 raw/B2 syntactic `kt` calls. B1 has 303 direct calls plus nine
+literal `kt` jump targets created by its return-choice transform. This is no
+proof of different dynamic construction counts. Likewise the hot B2 frame could
+reflect inlining or attribution differences; this profile does not identify a
+computed-key or object-shape mechanism by itself.
+
+Two small discriminators follow, separately from any algorithm rewrite:
+
+1. In untimed diagnostic copies, count trampoline entries and loop iterations,
+   preserving the original invocation expression. Entries that never enter the
+   loop distinguish conservative forcing from actual deferred work. Compare
+   the exact existing transform stages before changing forcing analysis.
+2. In a saved-output syntax ablation, change only computed **constant string**
+   object keys to ordinary quoted keys, preserving property/value order and all
+   expressions. Explicitly exclude `__proto__`, whose noncomputed literal form
+   has different semantics. Keep aliases and loop scaffolds in this first
+   variant; a separate narrow constructor-body variant can test those later.
+
+The second experiment tests a general constructor emission choice at
+[`jd_ctor_fields`](../../selfhost/src/back/js/direct/constructors.bend:144), not
+special recognition of the lexer or a change to KTerm's layout. Both experiments
+remain proposals: no such derived variant, counter instrumentation or production
+edit has been executed here. Whole-compiler stage profiles are still needed
+before treating the lexer observations as the generation bottleneck.

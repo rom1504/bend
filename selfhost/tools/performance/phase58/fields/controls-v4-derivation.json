@@ -1,0 +1,40 @@
+{
+  "kind": "phase58-computed-field-controller-successor",
+  "version": 4,
+  "executed": false,
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/fields/controls-v3.mjs",
+    "sha256": "0b9b20a1b34bbcc97c89e0989037f1df938f96aa5ebc6a310de37ba889f4f959",
+    "bytes": 10887
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/fields/controls-v4.mjs",
+    "sha256": "4f1b066c98c4f0d74ecce173e92d9eb6781928aae24fbae15cf9240fb364598a",
+    "bytes": 10824
+  },
+  "replacements": [
+    {
+      "old": "assert.equal(c[role==='candidate'?'plain':'computed'],ordinary);assert.equal(c[role==='candidate'?'computed':'plain'],0);",
+      "new": "assert.equal(c.computed,ordinary);assert.equal(c.plain,0);",
+      "count": 1
+    }
+  ],
+  "scope": "Only ordinary-field AST policy changes: both baseline and rollback candidate must have the original computed-key shape. Constructor/host-clone object counts, exact computed __proto__ counts and zero plain __proto__ remain unchanged. All17 semantic observation groups per role, getter traces, alias/order/error/partial controls, checked receipt/source/catalog/private-copy and rehash obligations are byte-identical. This controller is unexecuted; no candidate qualification claimed.",
+  "expected": {
+    "constructors": {
+      "objects": 5,
+      "computed": 19,
+      "plain": 0,
+      "protoComputed": 4,
+      "protoPlain": 0
+    },
+    "hostClones": {
+      "objects": 4,
+      "computed": 8,
+      "plain": 0,
+      "protoComputed": 4,
+      "protoPlain": 0
+    }
+  },
+  "historical": "Consumed controls-v3, source fields-v2, catalogs and old mechanism evidence remain unchanged. Active field-helper removal is a root decision, not performed here."
+}

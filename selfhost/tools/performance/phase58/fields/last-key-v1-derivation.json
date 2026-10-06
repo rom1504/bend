@@ -1,0 +1,39 @@
+{
+  "parent": {
+    "file": "selfhost/tools/performance/phase58/fields/reverse-v1.mjs",
+    "sha256": "4288094a37293e1353860505263d002fa587a55d19c2c58ad1d70e9144db78b8",
+    "bytes": 4908
+  },
+  "output": {
+    "file": "selfhost/tools/performance/phase58/fields/last-key-v1.mjs",
+    "sha256": "e1240671918e997cca1676a1b476e12d879abf6a3e4a00529b0d2227df8d27b6",
+    "bytes": 5310
+  },
+  "edits": [
+    {
+      "before": "const edits=[];let protoKept=0,skippedQuotedKeys=0,constructorFields=0,marshalFields=0;",
+      "after": "const edits=[];let protoKept=0,skippedQuotedKeys=0,constructorFields=0,marshalFields=0,precedingConstructorKeysRetained=0,unknownMarshalKeysRetained=0;"
+    },
+    {
+      "before": "   if(!tagged&&!marshal){skippedQuotedKeys++;continue;}",
+      "after": "   if(!tagged&&!marshal){skippedQuotedKeys++;continue;}\n   if(!(tagged&&p===n.properties[n.properties.length-1])){if(tagged)precedingConstructorKeysRetained++;else unknownMarshalKeysRetained++;continue;}"
+    },
+    {
+      "before": "route:tagged?'constructor':'marshal'",
+      "after": "route:'constructor-last-field'"
+    },
+    {
+      "before": "kind:'phase58-data-only-b2-computed-field-reversion'",
+      "after": "kind:'phase58-data-only-last-constructor-key-diagnostic'"
+    },
+    {
+      "before": "scope:'Reverse post-runtime quoted own fields only in tagged constructor objects and leading local-v spread marshalling objects. Export-map keys, tag identifiers, __proto__, preexisting computed fields, MemberExpressions, values, order, representations and runtime stay unchanged. Same compiler source diagnostic, not a compiled source rollback.'",
+      "after": "scope:'Diagnostic key-placement hypothesis only: reverse only the last property of post-runtime tagged constructor objects when it is an ordinary quoted string init key. Earlier keys and spread marshalling objects stay unchanged. Export-map keys, tag identifiers, __proto__, preexisting computed fields, MemberExpressions, values, order, representations and runtime stay unchanged. No field-count or constructor-name policy; saved-image diagnostic, not a source implementation.'"
+    },
+    {
+      "before": "editCount:edits.length,constructorFields,marshalFields,skippedQuotedKeys,protoKept,edits",
+      "after": "editCount:edits.length,constructorFields,marshalFields,skippedQuotedKeys,protoKept,precedingConstructorKeysRetained,unknownMarshalKeysRetained,edits"
+    }
+  ],
+  "scope": "Last ordinary constructor property only; no width/name policy; preserve consumed predecessor."
+}

@@ -1,0 +1,47 @@
+{
+  "parent": {
+    "file": "selfhost/tools/performance/phase58/fields/derive-v1.mjs",
+    "sha256": "787e7312b8b96a11bd8408bc966aad85d67b001c38e7bea8763f988932baf6ba",
+    "bytes": 3985
+  },
+  "output": {
+    "file": "selfhost/tools/performance/phase58/fields/reverse-v1.mjs",
+    "sha256": "4288094a37293e1353860505263d002fa587a55d19c2c58ad1d70e9144db78b8",
+    "bytes": 4908
+  },
+  "edits": [
+    {
+      "before": "fs.mkdirSync(out,{recursive:false});",
+      "after": "const phaseRoot=fs.realpathSync(path.resolve(import.meta.dirname,'../../../../build/phase58'));\nassert(out.startsWith(phaseRoot+path.sep));assert.equal(path.dirname(out),fs.realpathSync(path.dirname(out)));\nfs.mkdirSync(out,{recursive:false});"
+    },
+    {
+      "before": "const edits=[];let protoKept=0;",
+      "after": "const edits=[];let protoKept=0,skippedQuotedKeys=0,constructorFields=0,marshalFields=0;"
+    },
+    {
+      "before": "function walk(n){if(!n||typeof n!=='object')return;if(n.type==='ObjectExpression'&&n.start>=prefix.length){for(const p of n.properties){if(p.type==='Property'&&p.kind==='init'&&!p.method&&!p.shorthand&&p.computed&&p.key.type==='Literal'&&typeof p.key.value==='string'){if(p.key.value==='__proto__'){protoKept++;continue;}const raw=text.slice(p.start,p.key.start),after=text.slice(p.key.end,p.value.start);assert(/^\\[\\s*$/.test(raw));const close=/^\\s*\\]\\s*:/.exec(after);assert(close);const end=p.key.end+close[0].length;edits.push({start:p.start,end,key:p.key.value,before:text.slice(p.start,end),after:JSON.stringify(p.key.value)+':',keyStart:p.key.start,keyEnd:p.key.end});p.computed=false;}}}for(const [k,v]of Object.entries(n))if(!['start','end'].includes(k)){if(Array.isArray(v))v.forEach(walk);else if(v&&typeof v==='object')walk(v);}}\n",
+      "after": "function walk(n){\n if(!n||typeof n!=='object')return;\n if(n.type==='ObjectExpression'&&n.start>=prefix.length){\n  const first=n.properties[0],tagged=first?.type==='Property'&&!first.computed&&first.key.type==='Identifier'&&first.key.name==='$'&&first.value.type==='Literal'&&typeof first.value.value==='string';\n  const marshal=first?.type==='SpreadElement'&&first.argument.type==='Identifier'&&first.argument.name==='v';\n  for(const p of n.properties){\n   if(p.type!=='Property'||p.kind!=='init'||p.method||p.shorthand||p.key.type!=='Literal'||typeof p.key.value!=='string')continue;\n   if(p.key.value==='__proto__'){protoKept++;continue;}\n   if(p.computed)continue;\n   if(!tagged&&!marshal){skippedQuotedKeys++;continue;}\n   assert.equal(p.start,p.key.start);const raw=text.slice(p.key.start,p.key.end);assert(raw.startsWith('\"')||raw.startsWith(\"'\"));\n   assert(/^\\s*:/.test(text.slice(p.key.end,p.value.start)));\n   edits.push({start:p.key.start,end:p.key.end,key:p.key.value,before:raw,after:'['+raw+']',route:tagged?'constructor':'marshal'});\n   if(tagged)constructorFields++;else marshalFields++;p.computed=true;\n  }\n }\n for(const [k,v]of Object.entries(n))if(!['start','end'].includes(k)){if(Array.isArray(v))v.forEach(walk);else if(v&&typeof v==='object')walk(v);}\n}\n"
+    },
+    {
+      "before": "kind:'phase58-data-only-b2-literal-field-derivation'",
+      "after": "kind:'phase58-data-only-b2-computed-field-reversion'"
+    },
+    {
+      "before": "scope:'Post-exact-runtime ObjectExpression init, nonmethod/nonshorthand constant string computed keys only. __proto__ remains computed. MemberExpression, values, ordering, representations and API exports unchanged.'",
+      "after": "scope:'Reverse post-runtime quoted own fields only in tagged constructor objects and leading local-v spread marshalling objects. Export-map keys, tag identifiers, __proto__, preexisting computed fields, MemberExpressions, values, order, representations and runtime stay unchanged. Same compiler source diagnostic, not a compiled source rollback.'"
+    },
+    {
+      "before": "editCount:edits.length,protoKept,edits",
+      "after": "editCount:edits.length,constructorFields,marshalFields,skippedQuotedKeys,protoKept,edits"
+    },
+    {
+      "before": "const text=fs.readFileSync(parent,'utf8'),prefix=",
+      "after": "const parentId=identity(parent),runtimeId=identity(runtime);\nconst text=fs.readFileSync(parent,'utf8'),prefix="
+    },
+    {
+      "before": "parent:identity(parent),runtime:identity(runtime)",
+      "after": "parent:parentId,runtime:runtimeId"
+    }
+  ],
+  "scope": "Reverse only structural constructor/marshal field routes; preserve original producer and use fresh Phase58 outputs."
+}

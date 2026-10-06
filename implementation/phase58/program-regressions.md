@@ -59,7 +59,7 @@ The edit-distance TypeScript role had 1.61× max/min spread, so its TS ratio nee
 additional caution. The old/new comparison above does not use that denominator.
 
 Phase56 freshly measured only Map/Set. Its string01 median was 17.536 µs, range
-17.524–19.536 µs, with 7.14% maximum half drift. That historical range overlaps
+17.523–19.536 µs, with 7.14% maximum half drift. That historical range overlaps
 the new median, but does not erase the separation between contemporaneous roles
 in the final Phase58 run. Phase56 retained dated Phase53 measurements for the
 other 44 byte-identical points; there was no fresh Phase56 edit-distance campaign.
@@ -91,6 +91,41 @@ constructor-miss path, so its earlier benefit need not survive the later changes
 Test the rollback on the final compiler image and these generated programs before
 choosing it. A benchmark-specific field rule would not follow from this evidence.
 This note implements neither rollback nor a production exception.
+
+## Actual optimized caller inspection
+
+The subsequent bounded `dp-v8-plan01` execution completed both ordinary full-oracle
+workers successfully. Node 24.18.0 / V8 13.6.233.17-node.50 printed the actual
+optimized `$jd$row`; no forced optimization or tier changes were used. These
+diagnostic timings are not replacements for the clean five-round measurements.
+
+Both versions compile that function once to TurboFan and inline the same eight
+functions: `cell`, `cell.f1`–`cell.f4`, `b2u`, `umin` and `umin.go`. Both reserve
+`0xb8` stack bytes, contain 75 deoptimization sites, and record no executed
+deoptimization bailout. The printed sites are possible exits, not observed
+deoptimizations. Code size is 3,676 bytes before and 3,656 bytes after.
+
+Both retain four static young-generation allocation paths, each advancing the
+allocation pointer by `0x40` (64 bytes) for a `Dp` record. Four paths in the
+printed function do not mean four allocations per cell. Neither optimized row
+eliminates the loop-carried record, and neither retains a keyed-property runtime
+call. This capture therefore contradicts the simple explanation that quoted
+keys uniquely lose inlining or scalar replacement here.
+
+The actual difference is initialization: the old code initializes a partial map,
+uses a filler in the not-yet-written final slot, and transitions to the final map;
+the new code installs the final map immediately and uses an uninitialized-value
+sentinel before writing that field. Register scheduling and code offsets also
+differ. Those are concrete code-shape differences, not a demonstrated cause of
+the execution-time difference or evidence of more allocated bytes.
+
+Logs are `selfhost/build/phase58/dp-v8-baseline01/stdout.log`, SHA
+`ab1b47bf92edc42d0908cd703fdb029cd577195f1622af416c9f741823e46dfc`,
+and `dp-v8-candidate01/stdout.log`, SHA
+`2a05b9f838067546c20db1b2c4956567ed58b7bf545a259f5f41feaa99b31ab0`.
+The exact safe-argv recipe is `dp-v8-plan01/commands.json`, SHA
+`072c22b97f0407be654617f2b432422cb25f80f44fb7ff3f5afdeaa0720966f5`.
+No record-width policy follows from this result.
 
 ## Evidence and replay
 

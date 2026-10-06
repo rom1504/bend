@@ -76,3 +76,63 @@ semantics, B2 reproduction, compiler costs and representative program measuremen
 then qualify the simpler successor. Retain all early literal-field gains as
 valid observations for their original image; a changed workload can invalidate
 the decision to retain an optimization without invalidating the experiment.
+
+## Second discriminator after the rejected full rollback
+
+The fixed-source rollback is materially worse on both compiler workloads:
+first-request medians rise about 48–52% and later-request medians 56–68%, across
+three fresh processes per role/input. All outputs agree. Thus uniformly removing
+literal-key printing is not selected, and its original benefit survives.
+
+There is a new, explicitly post-hoc hypothesis: wide escaping records may benefit
+from literal construction while narrow loop-carried records have different V8
+behavior. The compiler uses eight-field KTerm and nine-field KDef records; the
+regressing DP state has four fields and common Map nodes three. Width is correlated
+with payload and escape behavior, so this observation is not a production cost
+model or permission to tune a threshold against benchmark names.
+
+Run one saved-image diagnostic restoring computed fields only on fully known
+tagged constructors with at most four ordinary live fields. Exclude the tag from
+width; count existing computed/special keys, retain `__proto__` spelling, and leave
+spread records unchanged because their total width is unknown. Apply the same
+AST/inverse/runtime checks and three-process two-input compiler protocol. Record
+static site counts separately from dynamic allocation or timing.
+
+In parallel, inspect the old/new DP caller's optimized V8 code and allocation
+behavior with the existing complete output oracle. Standalone `cell.f4` returns
+the record, so any scalar replacement must be studied after caller inlining.
+No traced timing enters clean comparisons. A production width rule would require
+independent width/payload/escape controls and evidence of a stable relevant
+boundary; the immediate goal is to localize the tradeoff. Keep source unchanged
+and installation held while that question remains open.
+
+## Final bounded key-placement discriminator
+
+The narrow-width diagnostic still increases compiler first-request time about
+16% and later requests 27–36%; it is not selected. The DP optimized-code capture
+shows the same eight inlined functions, four static 64-byte allocation paths,
+and no executed deoptimization in either variant. Thus neither lost scalar
+replacement nor a width-four boundary is established. An independent synthetic
+width grid was prepared but remains unexecuted; it is not supporting evidence.
+
+One final syntax discriminator preserves the static record prefix and makes only
+the last ordinary constructor key computed. This has no type-name, field-name or
+width exception. The hypothesis is that this keeps most literal-prefix benefit
+while changing the final map initialization/store sequence seen in the DP trace.
+It is a hypothesis, not a source-backed V8 optimization claim.
+
+Use exact AST/inverse derivations for the same B2 and the saved Morning, Map/Set
+and edit-distance modules. Keep spreads, tags, existing computed/special keys,
+value evaluation order, runtime and exports unchanged. Measure compiler requests
+with the existing three-process two-input method; measure the three programs with
+the unchanged longer program protocol and full oracles. Diagnostic modules must
+be labelled as such, with genuine checked parents retained separately.
+
+An implementation is worth qualifying only if it preserves most compiler
+benefit (roughly within 10% of current first/later medians) and materially removes
+the reviewed program regressions. Keep all samples and uncertainty rather than
+turning these screens into a statistical guarantee. Do not continue searching
+record syntax variants if this one fails. Consolidation must then make the
+compiler-versus-program tradeoff explicit; uniform computed fields remain the
+conservative way to preserve prior generated record code, with the now-measured
+compiler cost, instead of inventing a program-specific exception.

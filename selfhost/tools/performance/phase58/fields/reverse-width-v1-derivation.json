@@ -1,0 +1,43 @@
+{
+  "parent": {
+    "file": "selfhost/tools/performance/phase58/fields/reverse-v1.mjs",
+    "sha256": "4288094a37293e1353860505263d002fa587a55d19c2c58ad1d70e9144db78b8",
+    "bytes": 4908
+  },
+  "output": {
+    "file": "selfhost/tools/performance/phase58/fields/reverse-width-v1.mjs",
+    "sha256": "474288fc82ee3c997b82775bfcfa662f3067cf02423479390b527b007c5254b9",
+    "bytes": 6342
+  },
+  "edits": [
+    {
+      "before": "const edits=[];let protoKept=0,skippedQuotedKeys=0,constructorFields=0,marshalFields=0;",
+      "after": "const edits=[];let protoKept=0,skippedQuotedKeys=0,constructorFields=0,marshalFields=0,wideLiteralKeysRetained=0,unknownMarshalKeysRetained=0;\nconst widthRows=new Map();"
+    },
+    {
+      "before": "  const marshal=first?.type==='SpreadElement'&&first.argument.type==='Identifier'&&first.argument.name==='v';",
+      "after": "  const marshal=first?.type==='SpreadElement'&&first.argument.type==='Identifier'&&first.argument.name==='v';\n  const fields=tagged?n.properties.slice(1):[],width=fields.length;\n  if(tagged){\n   assert(fields.every(p=>p.type==='Property'&&p.kind==='init'&&!p.method&&!p.shorthand&&p.key.type==='Literal'&&typeof p.key.value==='string'),'Complete ordinary-field width must be known');\n   const tag=first.value.value,key=JSON.stringify([tag,width]);\n   if(!widthRows.has(key))widthRows.set(key,{tag,width,objectSites:0,ordinaryFieldSites:0,literalFieldSites:0,computedFieldSites:0,policy:width<=4?'computed':'literal'});\n   const row=widthRows.get(key);row.objectSites++;row.ordinaryFieldSites+=width;row.literalFieldSites+=fields.filter(p=>!p.computed).length;row.computedFieldSites+=fields.filter(p=>p.computed).length;\n  }"
+    },
+    {
+      "before": "   if(!tagged&&!marshal){skippedQuotedKeys++;continue;}",
+      "after": "   if(!tagged&&!marshal){skippedQuotedKeys++;continue;}\n   if(!(tagged&&width<=4)){if(tagged)wideLiteralKeysRetained++;else unknownMarshalKeysRetained++;continue;}"
+    },
+    {
+      "before": "route:tagged?'constructor':'marshal'",
+      "after": "route:'constructor',width"
+    },
+    {
+      "before": "kind:'phase58-data-only-b2-computed-field-reversion'",
+      "after": "kind:'phase58-data-only-b2-narrow-computed-field-diagnostic'"
+    },
+    {
+      "before": "scope:'Reverse post-runtime quoted own fields only in tagged constructor objects and leading local-v spread marshalling objects. Export-map keys, tag identifiers, __proto__, preexisting computed fields, MemberExpressions, values, order, representations and runtime stay unchanged. Same compiler source diagnostic, not a compiled source rollback.'",
+      "after": "scope:'Diagnostic width hypothesis only: reverse post-runtime quoted own fields in tagged constructor objects with at most four ordinary fields (tag excluded; all computed/proto fields included in width). Constructors of width five or more and marshal spreads of unknown complete width stay unchanged. Export-map keys, tag identifiers, __proto__, preexisting computed fields, MemberExpressions, values, order, representations and runtime stay unchanged. Same compiler source diagnostic, not production policy or a compiled source rollback.'"
+    },
+    {
+      "before": "editCount:edits.length,constructorFields,marshalFields,skippedQuotedKeys,protoKept,edits,exactInverse:true",
+      "after": "editCount:edits.length,constructorFields,marshalFields,skippedQuotedKeys,protoKept,wideLiteralKeysRetained,unknownMarshalKeysRetained,staticConstructorInventory:[...widthRows.values()].sort((a,b)=>a.width-b.width||(a.tag<b.tag?-1:a.tag>b.tag?1:0)),inventoryScope:'Static constructor-expression and key sites, including cold paths and cloned/inlined bodies; not allocation execution frequency or physical heap allocation.',edits,exactInverse:true"
+    }
+  ],
+  "scope": "Add complete tagged-constructor width<=4 admission and static width inventory. Preserve consumed full reversal."
+}

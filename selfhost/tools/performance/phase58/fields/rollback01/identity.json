@@ -1,0 +1,53 @@
+{
+  "kind": "phase58-isolated-computed-field-rollback",
+  "files": [
+    {
+      "destination": "selfhost/src/back/js/direct/constructors.bend",
+      "before": {
+        "file": "selfhost/tools/performance/phase58/fields/rollback01/before/constructors.bend",
+        "sha256": "68f044086442fc00ad1efb41d6f8bb3c7a48406e1586cb26a1f87f37c49d5b9c",
+        "bytes": 14517
+      },
+      "after": {
+        "file": "selfhost/tools/performance/phase58/fields/rollback01/after/constructors.bend",
+        "sha256": "a6e3d7b3aff90689a01a41e3c5ec7513aeeb861da4d7031bf35cee164f9b52cd",
+        "bytes": 14258
+      },
+      "physicalDelta": -6
+    },
+    {
+      "destination": "selfhost/src/back/js/direct/ordered-values.bend",
+      "before": {
+        "file": "selfhost/tools/performance/phase58/fields/rollback01/before/ordered-values.bend",
+        "sha256": "0728b74dbc26ca71dbdc282f552ee33f315e934715029518bd541b2e9d154f11",
+        "bytes": 8334
+      },
+      "after": {
+        "file": "selfhost/tools/performance/phase58/fields/rollback01/after/ordered-values.bend",
+        "sha256": "162cf1d61766add1636a9c81fb363fa26ee7b50eece3a43ad4fb3382ff6fb9a3",
+        "bytes": 8323
+      },
+      "physicalDelta": 0
+    },
+    {
+      "destination": "selfhost/src/back/js/direct/host.bend",
+      "before": {
+        "file": "selfhost/tools/performance/phase58/fields/rollback01/before/host.bend",
+        "sha256": "73931b93dc9a7f4507cf6f2682c0866e08fbcb7e114f44245a212fa61b9e3aed",
+        "bytes": 17213
+      },
+      "after": {
+        "file": "selfhost/tools/performance/phase58/fields/rollback01/after/host.bend",
+        "sha256": "222954163ca422add112c7560a83c2121e10d6811ec183cad4eed3c72c7643b4",
+        "bytes": 17202
+      },
+      "physicalDelta": 0
+    }
+  ],
+  "patch": {
+    "file": "selfhost/tools/performance/phase58/fields/rollback01/computed-fields.patch",
+    "sha256": "d5df57c39630fe1b4b18757db53f2ad2bc32bdfbd57bebf65fa57e05634d9b46",
+    "bytes": 2309
+  },
+  "scope": "Only revert three field-key printer expressions to their exact pre-Phase58 computed spelling and remove the unused six-line helper. All lookup/scalar/choice/reach/shared-SCC logic stays unchanged. No live source edits."
+}

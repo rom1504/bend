@@ -140,10 +140,20 @@ Installation is held for a bounded causal comparison. Exact saved-module
 comparison already establishes that Map/Set, edit-distance and local-pair are
 unchanged between pre-sharing choice01 and shared01, so shared dispatch cannot
 explain their difference from Phase56. Morning's generated module does change.
-Fresh paired choice01/shared01 runs with unchanged-byte controls will test that
-specific mechanism. A separate repeat against Phase56 tests reproducibility;
-neither replaces the full campaign or turns a diagnostic derivative into a
-qualified release.
+Two fresh paired choice01/shared01 runs with unchanged-byte controls now pass
+72 observations. Morning and Evening differ by about ±1%, providing no support
+for changing the shared-dispatch policy. A separate 36-observation repeat against
+Phase56 preserves Morning's slowdown at about 10%, but Map/Set changes direction
+under the shorter warmup. Neither replaces the full campaign or turns a
+diagnostic derivative into a qualified release.
+
+The [exact source analysis](program-regressions.md) isolates ordinary record-key
+syntax as the entire Phase56-to-shared01 difference for Map/Set, edit-distance
+and local-pair. The next fixed-source experiment reverses that syntax in the
+current B2, testing whether the original compiler benefit remains after other
+changes eliminated its hot constructor-miss path. A uniform rollback may be
+simpler and more robust than retaining a locally beneficial optimization whose
+cost now falls on other programs. No source rollback has yet been selected.
 
 The inherited 10% listing is a review trigger, not a preregistered universal
 admission threshold. Measurement completion and semantic correctness do not

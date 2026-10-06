@@ -1,0 +1,15 @@
+{
+  "kind": "phase58-js-field-syntax-grid",
+  "hypothesis": "Fixed proposed rule: computed ordinary keys at widths <=4, literal keys above4; test, do not search a threshold.",
+  "screenWidths": [1, 2, 4, 5, 8, 12],
+  "withheldWidths": [3, 6, 7, 9, 10, 11],
+  "contexts": ["immediateProjection", "loopCarried", "opaqueEscape"],
+  "payloads": ["numeric", "mixed"],
+  "roles": ["literal", "computed"],
+  "rounds": 3,
+  "warmupMs": 350,
+  "targetMs": 150,
+  "batchRecords": 2048,
+  "sinkSlots": 64,
+  "workerTimeoutMs": 10000
+}

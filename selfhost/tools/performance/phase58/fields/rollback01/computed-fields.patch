@@ -1,0 +1,43 @@
+--- a/selfhost/src/back/js/direct/constructors.bend
++++ b/selfhost/src/back/js/direct/constructors.bend
+@@ -252,7 +252,7 @@
+     case Con{field, rest}:
+       kc(String, String.eq(tg(tel), "All"),
+         u => kc(String, U32.is_eq(qt(tel), 0), v => "",
+-          v => "," ++ jd_literal_field_key(nm(tel)) ++ ":" ++ jd_expr(book, env, field, kid(tel, 0))) ++
++          v => ",[" ++ j_quote(nm(tel)) ++ "]:" ++ jd_expr(book, env, field, kid(tel, 0))) ++
+           jd_ctor_fields(book, env, rest, j_app_type(tel, field)),
+         u => ",[\"$error\"]:" ++ jd_fail("extra constructor field"))
+ 
+@@ -278,9 +278,3 @@
+     u => kc(String, String.eq(name, "ALeaf"), v => "[" ++ jd_arg(args, 0) ++ "]",
+       v => "array_node(" ++ jd_arg(args, 0) ++ "," ++ jd_arg(args, 1) ++ ")"),
+     u => jd_fail("unsupported native constructor"))))))))
+-
+-# Quoted literal keys retain own-property order; __proto__ must stay computed.
+-@unsafe
+-def jd_literal_field_key(+name: String) -> String:
+-  +quoted = j_quote(name)
+-  kc(String, String.eq(name, "__proto__"), u => "[" ++ quoted ++ "]", u => quoted)
+--- a/selfhost/src/back/js/direct/ordered-values.bend
++++ b/selfhost/src/back/js/direct/ordered-values.bend
+@@ -71,7 +71,7 @@
+ @unsafe
+ def jd_ordered_field_join(+prefix: String, +value: String, +name: String, +rest: JDOrderedFields) -> JDOrderedFields:
+   match rest:
+-    case JDOrderedFields{more, values, named, next}: JDOrderedFields{prefix ++ more, Con{value, values}, "," ++ jd_literal_field_key(name) ++ ":" ++ value ++ named, next}
++    case JDOrderedFields{more, values, named, next}: JDOrderedFields{prefix ++ more, Con{value, values}, ",[" ++ j_quote(name) ++ "]:" ++ value ++ named, next}
+ 
+ @unsafe
+ def jd_ordered_ctor_done(+ty: KTerm, +t: KTerm, +native: Bool, +fields: JDOrderedFields) -> JDOrdered:
+--- a/selfhost/src/back/js/direct/host.bend
++++ b/selfhost/src/back/js/direct/host.bend
+@@ -153,7 +153,7 @@
+ @unsafe
+ def jd_host_marshal_field(+name: String, +marshal: String) -> String:
+   kc(String, String.eq(marshal, ""), u => "", u =>
+-    "," ++ jd_literal_field_key(name) ++ ":" ++ marshal ++ "(v[" ++ j_quote(name) ++ "])")
++    ",[" ++ j_quote(name) ++ "]:" ++ marshal ++ "(v[" ++ j_quote(name) ++ "])")
+ 
+ # Core owns arity raising and live formal names; use jd_arity consistently.
+ @unsafe

@@ -45,3 +45,34 @@ erase it. If material regressions remain, explicitly record the tradeoff and
 keep the installed compiler unchanged until the non-regression objective is
 resolved. Compiler B2 gains, installed B1 latency and generated-program time
 remain separate results.
+
+## Follow-up: interaction with literal record keys
+
+The three planned screens completed with 108 passing observations. Sharing
+changes Morning/Evening time by about ±1% in the two comparisons, while the
+Phase56-to-shared Morning slowdown repeats at about 10%. No component-size
+policy is justified by this result; retain the existing sharing rule.
+
+Independent parser-only reconstruction shows that replacing computed constant
+record keys with quoted keys reproduces the complete new Map/Set, edit-distance
+and local-pair modules exactly (1,008 / 16 / 20 edits). This isolates their code
+delta. The short-run Map/Set result changes direction substantially, emphasizing
+warmup dependence; the original longer campaign remains visible.
+
+Test whether literal-key printing still helps the compiler after constructor
+lookup and residual-allocation fixes remove its original hot paths. Derive an
+explicitly unchecked saved shared01 B2 image restoring computed keys only at the
+three affected printer shapes. Preserve tagged object fields, host spread fields,
+tag keys, special-key behavior, strings, exports and all unrelated bytes. Require
+AST validation and exact inversion. Use the existing private-image library
+method with genuine shared01 B2 as parent, exact output oracles and separate
+first/later timings. This is a fixed-source interaction test, not a source-build
+or release claim.
+
+If this syntax optimization now has little benefit or costs more than it saves,
+remove it uniformly from the three Bend printers and remove the helper. Do not
+special-case a program, record name or field count. Fresh checked-image, focused
+semantics, B2 reproduction, compiler costs and representative program measurements
+then qualify the simpler successor. Retain all early literal-field gains as
+valid observations for their original image; a changed workload can invalidate
+the decision to retain an optimization without invalidating the experiment.

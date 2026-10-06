@@ -96,7 +96,28 @@ def jd_domains_head(+book: List<&2,KDef>, +ty: KTerm) -> U32:
 
 @unsafe
 def jd_raise(+book: List<&2,KDef>, +t: KTerm, +left: U32) -> U32:
-  jd_raise_head(book, j_strip(t), left)
+  kc(U32, String.eq(tg(t), "Ann"), u =>
+    kc(U32, String.eq(tg(j_strip(t)), "Mat"), v =>
+      jd_raise_typed(book, j_strip(t), left, wnf(book, kid(t, 1))),
+      v => jd_raise_head(book, j_strip(t), left)),
+    u => jd_raise_head(book, j_strip(t), left))
+
+# Checked annotation supplies the matcher owner. Constructor names are unique
+# in checked books; unknown/unannotated inputs retain the original global search.
+@unsafe
+def jd_raise_typed(+book: List<&2,KDef>, +t: KTerm, +left: U32, +ty: KTerm) -> U32:
+  kc(U32, String.eq(tg(ty), "All"), u =>
+    jd_raise_domain(book, t, left, wnf(book, kid(ty, 0))), u => jd_raise_head(book, t, left))
+
+@unsafe
+def jd_raise_domain(+book: List<&2,KDef>, +t: KTerm, +left: U32, +domain: KTerm) -> U32:
+  kc(U32, String.eq(tg(domain), "ADT"), u =>
+    jd_raise_match(book, t, left, j_layout_ctor(book, domain, nm(t))), u => jd_raise_head(book, t, left))
+
+@unsafe
+def jd_raise_match(+book: List<&2,KDef>, +t: KTerm, +left: U32, +ctor: KDef) -> U32:
+  U32.min(jd_raise(book, kid(t, 0), jd_raise_arm(left, da(ctor))),
+    jd_raise(book, kid(t, 1), left))
 
 @unsafe
 def jd_raise_head(+book: List<&2,KDef>, +t: KTerm, +left: U32) -> U32:
@@ -104,8 +125,7 @@ def jd_raise_head(+book: List<&2,KDef>, +t: KTerm, +left: U32) -> U32:
     kc(U32, U32.is_gt(left, 0) && U32.is_lt(left, 2147483648), v => jd_raise(book, kid(t, 0), U32.sub(left, 1)),
       v => U32.inc(jd_raise(book, kid(t, 0), 0))), u =>
   kc(U32, String.eq(tg(t), "Mat"), u =>
-    U32.min(jd_raise(book, kid(t, 0), jd_raise_arm(left, da(j_find_ctor(book, nm(t))))),
-      jd_raise(book, kid(t, 1), left)), u =>
+    jd_raise_match(book, t, left, j_find_ctor(book, nm(t))), u =>
   kc(U32, String.eq(tg(t), "Efq"), u => 99, u => 0)))
 
 @unsafe

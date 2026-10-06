@@ -160,10 +160,17 @@ def jd_host_marshal_field(+name: String, +marshal: String) -> String:
 def jd_host(+book: List<&2,KDef>, +d: KDef) -> String:
   +arity = jd_arity(book, d)
   +live = jd_live_arity(book, dt(d), arity)
+  +marshal = Bool.not(U32.is_eq(jd_host_nat_status(book, [dt(d)], Nil{}, 1024), 0))
   "(" ++ jd_host_names(live, 0) ++ ")=>{const r=" ++
-    jd_marshal(book, jd_host_result(book, dt(d), arity), True{}) ++ "(run_loop(" ++ jd_name(dn(d)) ++
-    "(" ++ jd_host_args(book, dt(d), arity, 0, False{}) ++ ")));" ++
-    jd_host_back(book, dt(d), arity, 0) ++ "return r;}"
+    jd_host_convert(book, jd_host_result(book, dt(d), arity), True{}, marshal) ++ "(run_loop(" ++ jd_name(dn(d)) ++
+    "(" ++ jd_host_args(book, dt(d), arity, 0, False{}, marshal) ++ ")));" ++
+    jd_host_back(book, dt(d), arity, 0, marshal) ++ "return r;}"
+
+# Only a completed no-Nat signature scan can bypass the component scans.
+# Nat found or budget exhausted retains the original per-component marshalling.
+@unsafe
+def jd_host_convert(+book: List<&2,KDef>, +ty: KTerm, +out: Bool, +marshal: Bool) -> String:
+  kc(String, marshal, u => jd_marshal(book, ty, out), u => "")
 
 @unsafe
 def jd_host_names(+left: U32, +at: U32) -> String:
@@ -176,29 +183,29 @@ def jd_host_result(+book: List<&2,KDef>, +ty: KTerm, +left: U32) -> KTerm:
     jd_host_result(book, j_app_type(wnf(book, ty), atom("Absent")), U32.sub(left, 1)), u => wnf(book, ty))
 
 @unsafe
-def jd_host_args(+book: List<&2,KDef>, +ty: KTerm, +left: U32, +at: U32, +out: Bool) -> String:
+def jd_host_args(+book: List<&2,KDef>, +ty: KTerm, +left: U32, +at: U32, +out: Bool, +marshal: Bool) -> String:
   kc(String, U32.is_gt(left, 0),
-    u => jd_host_args_on(book, wnf(book, ty), left, at, out), u => "")
+    u => jd_host_args_on(book, wnf(book, ty), left, at, out, marshal), u => "")
 
 @unsafe
-def jd_host_args_on(+book: List<&2,KDef>, +t: KTerm, +left: U32, +at: U32, +out: Bool) -> String:
+def jd_host_args_on(+book: List<&2,KDef>, +t: KTerm, +left: U32, +at: U32, +out: Bool, +marshal: Bool) -> String:
   kc(String, String.eq(tg(t), "All"), u =>
     kc(String, U32.is_eq(qt(t), 0), u =>
-      jd_host_args(book, j_app_type(t, atom("Absent")), U32.sub(left, 1), at, out), u =>
-      jd_marshal(book, kid(t, 0), out) ++ "(a" ++ U32.show(at) ++ ")," ++
-        jd_host_args(book, j_app_type(t, atom("Absent")), U32.sub(left, 1), U32.inc(at), out)),
+      jd_host_args(book, j_app_type(t, atom("Absent")), U32.sub(left, 1), at, out, marshal), u =>
+      jd_host_convert(book, kid(t, 0), out, marshal) ++ "(a" ++ U32.show(at) ++ ")," ++
+        jd_host_args(book, j_app_type(t, atom("Absent")), U32.sub(left, 1), U32.inc(at), out, marshal)),
     u => jd_host_error("host formal telescope") ++ "(),")
 
 @unsafe
-def jd_host_back(+book: List<&2,KDef>, +ty: KTerm, +left: U32, +at: U32) -> String:
-  kc(String, U32.is_gt(left, 0), u => jd_host_back_on(book, wnf(book, ty), left, at), u => "")
+def jd_host_back(+book: List<&2,KDef>, +ty: KTerm, +left: U32, +at: U32, +marshal: Bool) -> String:
+  kc(String, U32.is_gt(left, 0), u => jd_host_back_on(book, wnf(book, ty), left, at, marshal), u => "")
 
 @unsafe
-def jd_host_back_on(+book: List<&2,KDef>, +t: KTerm, +left: U32, +at: U32) -> String:
+def jd_host_back_on(+book: List<&2,KDef>, +t: KTerm, +left: U32, +at: U32, +marshal: Bool) -> String:
   kc(String, String.eq(tg(t), "All"), u =>
-    kc(String, U32.is_eq(qt(t), 0), u => jd_host_back(book, j_app_type(t, atom("Absent")), U32.sub(left, 1), at), u =>
-      jd_marshal(book, kid(t, 0), True{}) ++ "(a" ++ U32.show(at) ++ ");" ++
-        jd_host_back(book, j_app_type(t, atom("Absent")), U32.sub(left, 1), U32.inc(at))), u => "")
+    kc(String, U32.is_eq(qt(t), 0), u => jd_host_back(book, j_app_type(t, atom("Absent")), U32.sub(left, 1), at, marshal), u =>
+      jd_host_convert(book, kid(t, 0), True{}, marshal) ++ "(a" ++ U32.show(at) ++ ");" ++
+        jd_host_back(book, j_app_type(t, atom("Absent")), U32.sub(left, 1), U32.inc(at), marshal)), u => "")
 
 @unsafe
 def jd_host_io(+book: List<&2,KDef>, +ty: KTerm, +fuel: U32) -> U32:

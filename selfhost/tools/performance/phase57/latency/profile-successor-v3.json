@@ -1,0 +1,66 @@
+{
+  "kind": "phase57-profiler-successor-tool-derivation",
+  "scope": "Unexecuted diagnostic-only successor. Preserves consumed v1/v2 tools and ordered trace markers; only profiling summarizer dependency changes in the worker. Original failed CPU receipts are not rewritten.",
+  "derivations": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase57/latency/worker-v2.mjs",
+        "sha256": "f1f37446c64db9cef9cb63dcfeeb821f5943227449bcc3fcb1ee9f159a492bc8"
+      },
+      "edits": [
+        {
+          "old": "import {profile} from '../profile.mjs';",
+          "new": "import {profile} from '../profile-v2.mjs';"
+        },
+        {
+          "old": "// Trace-only successor of worker.mjs; clean measurement producer remains unchanged.",
+          "new": "// Diagnostic successor: preserve trace markers and use bounded signed-delta profiler summary."
+        }
+      ],
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase57/latency/worker-v3.mjs",
+        "sha256": "1dac7b0c9b203769f014907c51d25bfad98f64a3cc53ac55ad88673c69923105"
+      }
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase57/latency/run-v2.py",
+        "sha256": "cf5b0607b8628a4331e2985b654551307da2b22cd504b00e0807a6c150fb6659"
+      },
+      "edits": [
+        {
+          "old": "\"\"\"Trace-only successor: explicit ordered markers around cold, warm and diagnostic requests.\"\"\"",
+          "new": "\"\"\"Diagnostic successor with ordered trace markers and bounded signed-delta CPU summary.\"\"\""
+        },
+        {
+          "old": "p.add_argument('--mode',choices=['trace'],default='trace')",
+          "new": "p.add_argument('--mode',choices=['cpu','allocation','trace'],default='cpu')"
+        },
+        {
+          "old": "HERE/'worker-v2.mjs',HERE/'run.py',HERE/'worker.mjs',HERE/'trace-markers-v2.json'",
+          "new": "HERE/'worker-v3.mjs',HERE/'run.py',HERE/'worker.mjs',HERE/'run-v2.py',HERE/'worker-v2.mjs',HERE/'trace-markers-v2.json',HERE/'profile-successor-v3.json'"
+        },
+        {
+          "old": "HERE.parent/'profile.mjs'",
+          "new": "HERE.parent/'profile-v2.mjs'"
+        },
+        {
+          "old": "str(HERE/'worker-v2.mjs'),str(request_file),str(result_file)",
+          "new": "str(HERE/'worker-v3.mjs'),str(request_file),str(result_file)"
+        },
+        {
+          "old": "image_pins=read(a.image_pins);assert image_pins['kind']=='phase56-direct-image-pins'",
+          "new": "image_pins=read(a.image_pins);assert image_pins['kind']=='phase56-direct-image-pins'\nassert identity(HERE.parent/'profile-v2.mjs')['sha256']=='f472c5e565827e7a8cfc4181e19dffe61f4485c63a3d137c1315c82e388064f6','Unreviewed profiling helper'"
+        }
+      ],
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase57/latency/run-v3.py",
+        "sha256": "0b3ea4f89c30061b473bbdbef1f19bfa0cf8d346760ba350eac0af5978d795b5"
+      }
+    }
+  ],
+  "profileHelper": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase57/profile-v2.mjs",
+    "sha256": "f472c5e565827e7a8cfc4181e19dffe61f4485c63a3d137c1315c82e388064f6"
+  }
+}

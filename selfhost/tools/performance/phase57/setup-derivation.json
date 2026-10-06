@@ -1,0 +1,108 @@
+{
+  "kind": "phase57-setup-derivation-v1",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/setup-v2.mjs",
+    "sha256": "74c9f097bc2ead3a8aef4ff07d52fd933ab574b45b9ef50bd1cd8cb9ecec212e"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase57/setup.mjs",
+    "sha256": "b31568cd06d8a5b725ad6f1ce92808bb0a407f29764b807db96f9ca4f4b68985"
+  },
+  "edits": [
+    {
+      "old": "// Shared Phase56 admission/staging. No checked metadata is created for B2.",
+      "new": "// Phase57 raw/derived/direct staging. No new checked metadata or compiler logic.",
+      "occurrences": 1
+    },
+    {
+      "old": "'../../../development/",
+      "new": "'../../development/",
+      "occurrences": 3
+    },
+    {
+      "old": "'../../../conformance/",
+      "new": "'../../conformance/",
+      "occurrences": 1
+    },
+    {
+      "old": "'../../phase54/",
+      "new": "'../phase54/",
+      "occurrences": 2
+    },
+    {
+      "old": "const root=path.resolve(import.meta.dirname,'../../../../..');",
+      "new": "const root=path.resolve(import.meta.dirname,'../../../..');",
+      "occurrences": 1
+    },
+    {
+      "old": "assert.ok(['source','direct'].includes(role));",
+      "new": "assert.ok(['raw','source','direct'].includes(role));",
+      "occurrences": 1
+    },
+    {
+      "old": "phase56=fs.realpathSync(path.join(root,'selfhost/build/phase56'))",
+      "new": "phase57=fs.realpathSync(path.join(root,'selfhost/build/phase57'))",
+      "occurrences": 1
+    },
+    {
+      "old": "phase56+path.sep",
+      "new": "phase57+path.sep",
+      "occurrences": 2
+    },
+    {
+      "old": "'Fresh output must be inside Phase56'",
+      "new": "'Fresh output must be inside Phase57'",
+      "occurrences": 1
+    },
+    {
+      "old": "  const binding=read(pinsFile);",
+      "new": "  assert.equal(pin(pinsFile).sha256,'11c5e4982678ac88e86f7d304ba8c3fc12c22ec756b0b2fa43f615a23ab77619','Exact string01 image pins');\n  const binding=read(pinsFile);",
+      "occurrences": 1
+    },
+    {
+      "old": "  const bootstrap=read(emission.subject.bootstrap),config=read(emission.config);",
+      "new": "  const bootstrap=read(emission.subject.bootstrap),config=read(emission.config);\n  assert.equal(pin(attempt.checkedApi).sha256,'1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52');\n  assert.equal(bootstrap.apiSha256,attempt.checkedApi.sha256,'Raw API is the genuinely checked upstream emission');",
+      "occurrences": 1
+    },
+    {
+      "old": "  const actualApi=copy(role==='direct'?emission.module.file:attempt.api.file,'dist/api.mjs');",
+      "new": "  const actualApi=copy(role==='direct'?emission.module.file:role==='raw'?attempt.checkedApi.file:attempt.api.file,'dist/api.mjs');",
+      "occurrences": 1
+    },
+    {
+      "old": "  const image={kind:role==='direct'?'direct-self-emitted-image':'checked-subject-api',api:actualApi,",
+      "new": "  const image={kind:role==='direct'?'direct-self-emitted-image':role==='raw'?'checked-bootstrap-api':'checked-subject-api',role,api:actualApi,",
+      "occurrences": 1
+    },
+    {
+      "old": "    source:emission.subject.source,emission:emissionId,driverQualification:comparisonId,checkedSubject:emission.subject.attempt,",
+      "new": "    source:emission.subject.source,emission:emissionId,driverQualification:comparisonId,driverQualificationApplies:role!=='raw',checkedSubject:emission.subject.attempt,",
+      "occurrences": 1
+    }
+  ],
+  "context": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/attempt.json",
+      "sha256": "236af8151841a63bc45d7c2691776fa6d272e4e1a29856cd831c3b4895c04ac7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/image-pins.json",
+      "sha256": "11c5e4982678ac88e86f7d304ba8c3fc12c22ec756b0b2fa43f615a23ab77619"
+    }
+  ],
+  "scope": "Narrow path/role/pin successor. Same source, checked attempt, historical emission and qualification joins; raw is the actual checkedApi, not a fabricated artifact. No compiler/target execution.",
+  "roles": {
+    "raw": {
+      "field": "attempt.checkedApi",
+      "sha256": "1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52"
+    },
+    "source": {
+      "field": "attempt.api",
+      "sha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea"
+    },
+    "direct": {
+      "field": "emission.module",
+      "sha256": "3f652f7d3e26e06fe74da18bf8709195c54e4620906ffb7c1d0643c96ecbd57e"
+    }
+  }
+}

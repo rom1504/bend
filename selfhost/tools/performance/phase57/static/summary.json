@@ -1,0 +1,1600 @@
+{
+  "kind": "phase57-static-compiler-code-shapes",
+  "complete": true,
+  "scope": "Syntax inventory only; generated modules never imported or executed. Counts include duplicated SCC bodies, dead definitions and wrappers; no dynamic frequency or optimization attribution.",
+  "node": {
+    "path": "/home/ai/.nvm/versions/node/v24.18.0/bin/node",
+    "sha256": "41a74efb34cbde5c7632cdac0cf8bd1a14d0b8d73dc1e82755014d9a9ce70f5c",
+    "bytes": 123655872
+  },
+  "parser": {
+    "version": "8.16.0",
+    "sha256": "2261c5f0e4abe860e889dfc67081683a4ba4d27deb7f4cbc8ad06a1b7fdd510c"
+  },
+  "inputs": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/attempt.json",
+      "sha256": "236af8151841a63bc45d7c2691776fa6d272e4e1a29856cd831c3b4895c04ac7",
+      "bytes": 291406
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/equality/api.mjs.derivation.json",
+      "sha256": "5b0e2ecf90c7127cb122b6e56a119b7ca647216f804520fc202519388416308e",
+      "bytes": 381327
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/full/report.json",
+      "sha256": "e65a5c34c097955e002910901b37f7ce6ff952dfae3d60003b6dd64925b3f077",
+      "bytes": 12857
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs.bootstrap.json",
+      "sha256": "24ec503e7627d8d956a4589cbd4a4b06b7d148fbb616381436e5e4fa2580ace4",
+      "bytes": 84248
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/snapshot/build/typed/snapshots/1027f6d7392aaf80fd3f0c6799a326af611b638ff754482705e9ea5a381f52f5/compiler.bend",
+      "sha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244",
+      "bytes": 1308141
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs",
+      "sha256": "1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52",
+      "bytes": 1807265
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/equality/api.mjs",
+      "sha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea",
+      "bytes": 1830723
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/full/compiler.mjs",
+      "sha256": "3f652f7d3e26e06fe74da18bf8709195c54e4620906ffb7c1d0643c96ecbd57e",
+      "bytes": 3896951
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase57/static/code-shapes.mjs",
+      "sha256": "4f879ca0c8f69c90737e6bb12511a45282016c1d0b56d027bed322d478c7e79d",
+      "bytes": 7892
+    }
+  ],
+  "subject": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/snapshot/build/typed/snapshots/1027f6d7392aaf80fd3f0c6799a326af611b638ff754482705e9ea5a381f52f5/compiler.bend",
+    "sha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244"
+  },
+  "derivation": {
+    "version": 6,
+    "equalityReplacements": 1,
+    "choices": 3315,
+    "tailChoices": 329,
+    "deferredGeneratedCalls": 301
+  },
+  "commonFunctions": 3054,
+  "roles": [
+    {
+      "role": "rawChecked",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/api.mjs",
+        "sha256": "1498f6758c1ce713225209cc6ad9e0c27a0d5aee2ed674c4ae35990cf945cf52",
+        "bytes": 1807265
+      },
+      "generatedFunctionCount": 3060,
+      "generatedFunctionBytes": 1787866,
+      "defaultExportBytes": 9732,
+      "metadataComments": 0,
+      "metadataCommentBytes": 0,
+      "identicalPcTails": [
+        [
+          "lookup",
+          "lookup_cached",
+          "lookup_named"
+        ],
+        [
+          "has_name",
+          "has_name_next"
+        ],
+        [
+          "String.contains",
+          "String.contains.if"
+        ],
+        [
+          "String.starts_with",
+          "String.starts_with.if"
+        ],
+        [
+          "index_remove",
+          "index_remove_step"
+        ],
+        [
+          "index_find",
+          "index_find_absent",
+          "index_find_leaf"
+        ],
+        [
+          "U32.show.go",
+          "U32.show.fin"
+        ],
+        [
+          "kr_refs",
+          "kr_refs_list"
+        ],
+        [
+          "String.trim_start",
+          "String.trim_start.if"
+        ],
+        [
+          "jd_calls_reverse",
+          "jd_calls_reverse_edges"
+        ],
+        [
+          "ffd_walk",
+          "ffd_done",
+          "ffd_type",
+          "ffd_frame",
+          "ffd_value"
+        ],
+        [
+          "f_find",
+          "f_find_next"
+        ],
+        [
+          "g_snf_children",
+          "g_snf_return"
+        ],
+        [
+          "jd_calls_groups",
+          "jd_calls_group_row",
+          "jd_calls_group_old"
+        ],
+        [
+          "g_return",
+          "g_resume"
+        ],
+        [
+          "j_direct_expand_terms",
+          "j_direct_expand_more"
+        ],
+        [
+          "jd_calls_install",
+          "jd_calls_install_group"
+        ],
+        [
+          "Nat.show.fin",
+          "Nat.show.go"
+        ],
+        [
+          "f_ctor_lookup",
+          "f_ctor_named",
+          "f_ctor_children"
+        ],
+        [
+          "jd_calls_word_rows",
+          "jd_calls_word_row"
+        ],
+        [
+          "g_share_terms",
+          "g_shared_term"
+        ],
+        [
+          "ffw_done",
+          "ffw_let",
+          "ffw_kids",
+          "ffw_frame"
+        ],
+        [
+          "jw_graph_edges",
+          "jw_graph_branches",
+          "jw_graph_resume"
+        ]
+      ],
+      "exports": 77,
+      "metrics": {
+        "generatedCalls": 30671,
+        "arrows": 6710,
+        "functionExpressions": 2,
+        "objects": 4411,
+        "arrays": 30,
+        "ifs": 1211,
+        "conditionals": 144,
+        "loops": 145,
+        "switches": 56,
+        "continues": 262,
+        "consts": 11463,
+        "orderedHolds": 0,
+        "unitObjects": 6
+      },
+      "runtimeCalls": {
+        "run_lib": 78,
+        "run_loop": 6347,
+        "run_clo": 6630,
+        "f32_bits": 1,
+        "f32_read": 1,
+        "char_new": 7,
+        "word_to_u32": 30,
+        "u32_to_word": 20,
+        "nat_divmod": 3,
+        "nat_chk": 11,
+        "cmp_new": 3,
+        "f32_from_bits": 1,
+        "f32_show": 1,
+        "run_tail": 6,
+        "f": 3,
+        "j": 1,
+        "Array": 1,
+        "BigInt": 5,
+        "Number": 5,
+        "f32_round": 2,
+        "String": 1
+      },
+      "choiceCalls": {
+        "kc": 2385,
+        "f_choose": 689,
+        "nt_choose": 241
+      },
+      "representatives": {
+        "String.eq": {
+          "identifier": "$String$eq$",
+          "line": 856,
+          "bytes": 88,
+          "sha256": "9879c7a2170260e74e4db58931ccf0dfac67a5d8246d6614372e6f95d22a695b",
+          "params": 2,
+          "calls": {
+            "$Cmp$is_eq$": 1,
+            "$String$order$": 1
+          },
+          "generatedCalls": 2,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 0,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "kc": {
+          "identifier": "$kc$",
+          "line": 840,
+          "bytes": 150,
+          "sha256": "aa06d94d00588b5f7695a5477c5f6b58013b338ba1704f593d2bee37c4dc079c",
+          "params": 3,
+          "calls": {
+            "run_tail": 2
+          },
+          "generatedCalls": 0,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 2,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 0,
+          "orderedHolds": 0,
+          "unitObjects": 2
+        },
+        "terms_at": {
+          "identifier": "$terms_at$",
+          "line": 1852,
+          "bytes": 312,
+          "sha256": "31ffd16a8f52eaa00ced5f73bc486091cccc7099ce564c21e835bb8670bd05cb",
+          "params": 2,
+          "calls": {
+            "$kc$": 1,
+            "run_clo": 2,
+            "$terms_at$": 1,
+            "$atom$": 1
+          },
+          "generatedCalls": 3,
+          "arrows": 2,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 2,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "kid": {
+          "identifier": "$kid$",
+          "line": 2452,
+          "bytes": 71,
+          "sha256": "c40726b401f55fbcc6b790a283016872124850223679389219db6b8d500b5a37",
+          "params": 2,
+          "calls": {
+            "$terms_at$": 1,
+            "$ks$": 1
+          },
+          "generatedCalls": 2,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 0,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "index_hash": {
+          "identifier": "$index_hash$",
+          "line": 3524,
+          "bytes": 553,
+          "sha256": "5dadb40331078bc94f2cdda1d6790a773b135418232ca3f6d1e15b690cd214c9",
+          "params": 2,
+          "calls": {
+            "$Char$to_u32$": 1
+          },
+          "generatedCalls": 1,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 2,
+          "loops": 1,
+          "switches": 0,
+          "continues": 1,
+          "consts": 6,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "index_find": {
+          "identifier": "$index_find$",
+          "line": 6896,
+          "bytes": 1327,
+          "sha256": "4da7204d08832bb88f15cf2f3757d198b9e71e09aba738ec9f1338a4e76430b1",
+          "params": 5,
+          "calls": {
+            "$index_child$": 1,
+            "$Bool$not$": 1,
+            "$dx$": 2,
+            "$index_find_hash$": 1,
+            "$da$": 1,
+            "$missing$": 1,
+            "$String$eq$": 1,
+            "$dk$": 1
+          },
+          "generatedCalls": 9,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 2,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 1,
+          "continues": 3,
+          "consts": 18,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "index_remove": {
+          "identifier": "$index_remove$",
+          "line": 5274,
+          "bytes": 776,
+          "sha256": "812d59ad92d6128cd9df0e4f4876adb9c752ee4ed9f84582ebfc2a4962683cff",
+          "params": 4,
+          "calls": {
+            "$index_remove$": 1,
+            "$String$eq$": 1,
+            "$dn$": 1
+          },
+          "generatedCalls": 3,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 2,
+          "arrays": 0,
+          "ifs": 2,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 1,
+          "continues": 2,
+          "consts": 8,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "subst": {
+          "identifier": "$subst$",
+          "line": 8590,
+          "bytes": 320,
+          "sha256": "59ba433a49eadafd4fccc120081bf5b7be38b359769076ee973a5616950b75ae",
+          "params": 3,
+          "calls": {
+            "$kc$": 2,
+            "run_clo": 4,
+            "$subst_node$": 1,
+            "$ix$": 1,
+            "$String$eq$": 1,
+            "$tg$": 1
+          },
+          "generatedCalls": 6,
+          "arrows": 4,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 1,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "subst_terms": {
+          "identifier": "$subst_terms$",
+          "line": 14657,
+          "bytes": 288,
+          "sha256": "0eddfe582d5b44aba7a261489b45d57afbef62fe4d03b0f274e64b633bb4baae",
+          "params": 3,
+          "calls": {
+            "$subst_terms$": 1,
+            "run_loop": 1,
+            "$subst$": 1
+          },
+          "generatedCalls": 2,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 2,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 2,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "norm_eval": {
+          "identifier": "$norm_eval$",
+          "line": 2460,
+          "bytes": 323,
+          "sha256": "6dad3b5a8d683045fbf31a683e02d214e4d0206026dcfd3e344dd3ea5be74120",
+          "params": 5,
+          "calls": {
+            "$kc$": 1,
+            "run_clo": 2,
+            "$norm_eval_node$": 1,
+            "$norm_var$": 1,
+            "$ks$": 1,
+            "$String$eq$": 1,
+            "$tg$": 1
+          },
+          "generatedCalls": 6,
+          "arrows": 2,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 0,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "check_node": {
+          "identifier": "$check_node$",
+          "line": 16866,
+          "bytes": 2101,
+          "sha256": "0c3a3c0272e13ae4b47fc1011974368dac37d5764bd351f568898216f6f56058",
+          "params": 5,
+          "calls": {
+            "$kc$": 10,
+            "run_clo": 20,
+            "$check_fits$": 1,
+            "run_loop": 9,
+            "$infer$": 2,
+            "$check_rwt$": 1,
+            "$kid$": 1,
+            "$String$eq$": 9,
+            "$tg$": 8,
+            "$check_let$": 1,
+            "$ks$": 1,
+            "$bad$": 1,
+            "$cw$": 3,
+            "$ok$": 2,
+            "$nm$": 1,
+            "$check_rfl$": 1,
+            "$wnf$": 5,
+            "$cb$": 6,
+            "$check_mat$": 1,
+            "$check_ctr$": 1,
+            "$check_lam$": 1,
+            "$check$": 1,
+            "$core_literal_step$": 1,
+            "$core_literal_type$": 1,
+            "$core_literal$": 1
+          },
+          "generatedCalls": 60,
+          "arrows": 20,
+          "functionExpressions": 0,
+          "objects": 7,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 2,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "jd_host_exports": {
+          "identifier": "$jd_host_exports$",
+          "line": 6745,
+          "bytes": 860,
+          "sha256": "c06f69dc1889340e6b6cfce7668bb7b92451c4e7b8476c7e839855877fa1c01b",
+          "params": 2,
+          "calls": {
+            "$jd_host_exports$": 1,
+            "run_loop": 5,
+            "$kc$": 2,
+            "run_clo": 4,
+            "$jd_host_export$": 1,
+            "$j_io_type$": 1,
+            "$dt$": 1,
+            "$Bool$and$": 4,
+            "$Bool$not$": 3,
+            "$String$eq$": 3,
+            "$tg$": 2,
+            "$j_strip$": 2,
+            "$dv$": 2,
+            "$db$": 1,
+            "$dk$": 1,
+            "$dx$": 1
+          },
+          "generatedCalls": 25,
+          "arrows": 4,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 5,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        }
+      }
+    },
+    {
+      "role": "derivedB1",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/checked-string01/equality/api.mjs",
+        "sha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea",
+        "bytes": 1830723
+      },
+      "generatedFunctionCount": 3060,
+      "generatedFunctionBytes": 1811324,
+      "defaultExportBytes": 9732,
+      "metadataComments": 0,
+      "metadataCommentBytes": 0,
+      "identicalPcTails": [
+        [
+          "lookup",
+          "lookup_cached",
+          "lookup_named"
+        ],
+        [
+          "has_name",
+          "has_name_next"
+        ],
+        [
+          "String.contains",
+          "String.contains.if"
+        ],
+        [
+          "String.starts_with",
+          "String.starts_with.if"
+        ],
+        [
+          "index_remove",
+          "index_remove_step"
+        ],
+        [
+          "index_find",
+          "index_find_absent",
+          "index_find_leaf"
+        ],
+        [
+          "U32.show.go",
+          "U32.show.fin"
+        ],
+        [
+          "kr_refs",
+          "kr_refs_list"
+        ],
+        [
+          "String.trim_start",
+          "String.trim_start.if"
+        ],
+        [
+          "jd_calls_reverse",
+          "jd_calls_reverse_edges"
+        ],
+        [
+          "ffd_walk",
+          "ffd_done",
+          "ffd_type",
+          "ffd_frame",
+          "ffd_value"
+        ],
+        [
+          "f_find",
+          "f_find_next"
+        ],
+        [
+          "g_snf_children",
+          "g_snf_return"
+        ],
+        [
+          "jd_calls_groups",
+          "jd_calls_group_row",
+          "jd_calls_group_old"
+        ],
+        [
+          "g_return",
+          "g_resume"
+        ],
+        [
+          "j_direct_expand_terms",
+          "j_direct_expand_more"
+        ],
+        [
+          "jd_calls_install",
+          "jd_calls_install_group"
+        ],
+        [
+          "Nat.show.fin",
+          "Nat.show.go"
+        ],
+        [
+          "f_ctor_lookup",
+          "f_ctor_named",
+          "f_ctor_children"
+        ],
+        [
+          "jd_calls_word_rows",
+          "jd_calls_word_row"
+        ],
+        [
+          "g_share_terms",
+          "g_shared_term"
+        ],
+        [
+          "ffw_done",
+          "ffw_let",
+          "ffw_kids",
+          "ffw_frame"
+        ],
+        [
+          "jw_graph_edges",
+          "jw_graph_branches",
+          "jw_graph_resume"
+        ]
+      ],
+      "exports": 77,
+      "metrics": {
+        "generatedCalls": 27055,
+        "arrows": 6052,
+        "functionExpressions": 2,
+        "objects": 8356,
+        "arrays": 331,
+        "ifs": 1541,
+        "conditionals": 3130,
+        "loops": 145,
+        "switches": 56,
+        "continues": 262,
+        "consts": 12121,
+        "orderedHolds": 0,
+        "unitObjects": 3650
+      },
+      "runtimeCalls": {
+        "run_lib": 78,
+        "run_loop": 6347,
+        "run_tail": 2992,
+        "f32_bits": 1,
+        "f32_read": 1,
+        "char_new": 7,
+        "word_to_u32": 30,
+        "u32_to_word": 20,
+        "nat_divmod": 3,
+        "nat_chk": 11,
+        "cmp_new": 3,
+        "f32_from_bits": 1,
+        "f32_show": 1,
+        "f": 3,
+        "j": 1,
+        "Array": 1,
+        "BigInt": 5,
+        "Number": 5,
+        "f32_round": 2,
+        "String": 1
+      },
+      "choiceCalls": {
+        "kc": 0,
+        "f_choose": 0,
+        "nt_choose": 0
+      },
+      "representatives": {
+        "String.eq": {
+          "identifier": "$String$eq$",
+          "line": 870,
+          "bytes": 170,
+          "sha256": "06dac77763ed25b6682876b4ce672d7039f1832f7b6e242dfce1211f7b6ba7a7",
+          "params": 2,
+          "calls": {
+            "$Cmp$is_eq$": 1,
+            "$String$order$": 1
+          },
+          "generatedCalls": 2,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 0,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "kc": {
+          "identifier": "$kc$",
+          "line": 854,
+          "bytes": 150,
+          "sha256": "aa06d94d00588b5f7695a5477c5f6b58013b338ba1704f593d2bee37c4dc079c",
+          "params": 3,
+          "calls": {
+            "run_tail": 2
+          },
+          "generatedCalls": 0,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 2,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 0,
+          "orderedHolds": 0,
+          "unitObjects": 2
+        },
+        "terms_at": {
+          "identifier": "$terms_at$",
+          "line": 1883,
+          "bytes": 339,
+          "sha256": "11c7fbc6d37e6f28f2d85167e9a2d970134dd54aedc7754dbac1855fcfa9e012",
+          "params": 2,
+          "calls": {
+            "$atom$": 1
+          },
+          "generatedCalls": 1,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 3,
+          "arrays": 1,
+          "ifs": 2,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 4,
+          "orderedHolds": 0,
+          "unitObjects": 2
+        },
+        "kid": {
+          "identifier": "$kid$",
+          "line": 2493,
+          "bytes": 71,
+          "sha256": "c40726b401f55fbcc6b790a283016872124850223679389219db6b8d500b5a37",
+          "params": 2,
+          "calls": {
+            "$terms_at$": 1,
+            "$ks$": 1
+          },
+          "generatedCalls": 2,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 0,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "index_hash": {
+          "identifier": "$index_hash$",
+          "line": 3581,
+          "bytes": 553,
+          "sha256": "5dadb40331078bc94f2cdda1d6790a773b135418232ca3f6d1e15b690cd214c9",
+          "params": 2,
+          "calls": {
+            "$Char$to_u32$": 1
+          },
+          "generatedCalls": 1,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 2,
+          "loops": 1,
+          "switches": 0,
+          "continues": 1,
+          "consts": 6,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "index_find": {
+          "identifier": "$index_find$",
+          "line": 7021,
+          "bytes": 1327,
+          "sha256": "4da7204d08832bb88f15cf2f3757d198b9e71e09aba738ec9f1338a4e76430b1",
+          "params": 5,
+          "calls": {
+            "$index_child$": 1,
+            "$Bool$not$": 1,
+            "$dx$": 2,
+            "$index_find_hash$": 1,
+            "$da$": 1,
+            "$missing$": 1,
+            "$String$eq$": 1,
+            "$dk$": 1
+          },
+          "generatedCalls": 9,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 2,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 1,
+          "continues": 3,
+          "consts": 18,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "index_remove": {
+          "identifier": "$index_remove$",
+          "line": 5363,
+          "bytes": 776,
+          "sha256": "812d59ad92d6128cd9df0e4f4876adb9c752ee4ed9f84582ebfc2a4962683cff",
+          "params": 4,
+          "calls": {
+            "$index_remove$": 1,
+            "$String$eq$": 1,
+            "$dn$": 1
+          },
+          "generatedCalls": 3,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 2,
+          "arrays": 0,
+          "ifs": 2,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 1,
+          "continues": 2,
+          "consts": 8,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "subst": {
+          "identifier": "$subst$",
+          "line": 8737,
+          "bytes": 333,
+          "sha256": "14914599e88ac7c80d64004cd754b774c2e75add6e1a8050c3f8c44ff6ba6b86",
+          "params": 3,
+          "calls": {
+            "run_tail": 1,
+            "$subst_node$": 1,
+            "$ix$": 1,
+            "$String$eq$": 1,
+            "$tg$": 1
+          },
+          "generatedCalls": 4,
+          "arrows": 2,
+          "functionExpressions": 0,
+          "objects": 3,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 1,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 3,
+          "orderedHolds": 0,
+          "unitObjects": 3
+        },
+        "subst_terms": {
+          "identifier": "$subst_terms$",
+          "line": 14896,
+          "bytes": 288,
+          "sha256": "0eddfe582d5b44aba7a261489b45d57afbef62fe4d03b0f274e64b633bb4baae",
+          "params": 3,
+          "calls": {
+            "$subst_terms$": 1,
+            "run_loop": 1,
+            "$subst$": 1
+          },
+          "generatedCalls": 2,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 2,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 2,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "norm_eval": {
+          "identifier": "$norm_eval$",
+          "line": 2501,
+          "bytes": 330,
+          "sha256": "3d246f117f532f79d96e5172dc04ee8855f30918fde94b46c11fc764d68da16d",
+          "params": 5,
+          "calls": {
+            "run_tail": 1,
+            "$norm_eval_node$": 1,
+            "$norm_var$": 1,
+            "$ks$": 1,
+            "$String$eq$": 1,
+            "$tg$": 1
+          },
+          "generatedCalls": 5,
+          "arrows": 2,
+          "functionExpressions": 0,
+          "objects": 1,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 1,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 0,
+          "orderedHolds": 0,
+          "unitObjects": 1
+        },
+        "check_node": {
+          "identifier": "$check_node$",
+          "line": 17147,
+          "bytes": 2171,
+          "sha256": "462ba954c0b0cf69cf8821cc3e4aed5a9e54ed8488e24bd0aa0248427e5d9ff1",
+          "params": 5,
+          "calls": {
+            "run_tail": 10,
+            "$check_fits$": 1,
+            "run_loop": 9,
+            "$infer$": 2,
+            "$check_rwt$": 1,
+            "$kid$": 1,
+            "$String$eq$": 9,
+            "$tg$": 8,
+            "$check_let$": 1,
+            "$ks$": 1,
+            "$bad$": 1,
+            "$cw$": 3,
+            "$ok$": 2,
+            "$nm$": 1,
+            "$check_rfl$": 1,
+            "$wnf$": 5,
+            "$cb$": 6,
+            "$check_mat$": 1,
+            "$check_ctr$": 1,
+            "$check_lam$": 1,
+            "$check$": 1,
+            "$core_literal_step$": 1,
+            "$core_literal_type$": 1,
+            "$core_literal$": 1
+          },
+          "generatedCalls": 50,
+          "arrows": 20,
+          "functionExpressions": 0,
+          "objects": 17,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 10,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 2,
+          "orderedHolds": 0,
+          "unitObjects": 10
+        },
+        "jd_host_exports": {
+          "identifier": "$jd_host_exports$",
+          "line": 6868,
+          "bytes": 874,
+          "sha256": "4d5cc5471ed6c45b6e399bcc27ab5473edf3017b2efb7316ba162316fbb31708",
+          "params": 2,
+          "calls": {
+            "$jd_host_exports$": 1,
+            "run_loop": 5,
+            "run_tail": 2,
+            "$jd_host_export$": 1,
+            "$j_io_type$": 1,
+            "$dt$": 1,
+            "$Bool$and$": 4,
+            "$Bool$not$": 3,
+            "$String$eq$": 3,
+            "$tg$": 2,
+            "$j_strip$": 2,
+            "$dv$": 2,
+            "$db$": 1,
+            "$dk$": 1,
+            "$dx$": 1
+          },
+          "generatedCalls": 23,
+          "arrows": 4,
+          "functionExpressions": 0,
+          "objects": 2,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 2,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 5,
+          "orderedHolds": 0,
+          "unitObjects": 2
+        }
+      }
+    },
+    {
+      "role": "directB2",
+      "identity": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase56/bootstrap-string01-plan/full/compiler.mjs",
+        "sha256": "3f652f7d3e26e06fe74da18bf8709195c54e4620906ffb7c1d0643c96ecbd57e",
+        "bytes": 3896951
+      },
+      "generatedFunctionCount": 3054,
+      "generatedFunctionBytes": 3477271,
+      "defaultExportBytes": 403229,
+      "metadataComments": 62803,
+      "metadataCommentBytes": 1274113,
+      "identicalPcTails": [
+        [
+          "String.starts_with.if",
+          "String.starts_with"
+        ],
+        [
+          "String.contains.if",
+          "String.contains"
+        ],
+        [
+          "String.trim_start.if",
+          "String.trim_start"
+        ],
+        [
+          "Nat.show.fin",
+          "Nat.show.go"
+        ],
+        [
+          "U32.show.fin",
+          "U32.show.go"
+        ],
+        [
+          "lookup",
+          "lookup_cached",
+          "lookup_named"
+        ],
+        [
+          "has_name",
+          "has_name_next"
+        ],
+        [
+          "index_find",
+          "index_find_absent",
+          "index_find_leaf"
+        ],
+        [
+          "index_remove",
+          "index_remove_step"
+        ],
+        [
+          "g_share_terms",
+          "g_shared_term"
+        ],
+        [
+          "g_return",
+          "g_resume"
+        ],
+        [
+          "g_snf_children",
+          "g_snf_return"
+        ],
+        [
+          "kr_refs",
+          "kr_refs_list"
+        ],
+        [
+          "f_find",
+          "f_find_next"
+        ],
+        [
+          "ffw_done",
+          "ffw_frame",
+          "ffw_kids",
+          "ffw_let"
+        ],
+        [
+          "ffd_walk",
+          "ffd_type",
+          "ffd_value",
+          "ffd_done",
+          "ffd_frame"
+        ],
+        [
+          "f_ctor_lookup",
+          "f_ctor_named",
+          "f_ctor_children"
+        ],
+        [
+          "j_direct_expand_terms",
+          "j_direct_expand_more"
+        ],
+        [
+          "jw_graph_edges",
+          "jw_graph_branches",
+          "jw_graph_resume"
+        ],
+        [
+          "jd_calls_word_rows",
+          "jd_calls_word_row"
+        ],
+        [
+          "jd_calls_reverse",
+          "jd_calls_reverse_edges"
+        ],
+        [
+          "jd_calls_groups",
+          "jd_calls_group_row",
+          "jd_calls_group_old"
+        ],
+        [
+          "jd_calls_install",
+          "jd_calls_install_group"
+        ]
+      ],
+      "exports": 2999,
+      "metrics": {
+        "generatedCalls": 33585,
+        "arrows": 9648,
+        "functionExpressions": 5,
+        "objects": 4413,
+        "arrays": 43,
+        "ifs": 1227,
+        "conditionals": 168,
+        "loops": 3070,
+        "switches": 59,
+        "continues": 264,
+        "consts": 28929,
+        "orderedHolds": 8868,
+        "unitObjects": 6
+      },
+      "runtimeCalls": {
+        "run_lib": 3000,
+        "run_loop": 3002,
+        "BigInt": 14,
+        "nat_host": 4,
+        "jd_clo": 6630,
+        "jd_run": 6269,
+        "word_to_u32": 30,
+        "u32_to_word": 20,
+        "run_tail": 6,
+        "nat_chk": 11,
+        "char_new": 7,
+        "f32_bits": 1,
+        "f32_read": 1,
+        "f32_show": 2,
+        "f32_from_bits": 1,
+        "nat_divmod": 3,
+        "cmp_new": 2,
+        "io_errs": 4,
+        "io_park_on": 1,
+        "Number": 7,
+        "io_wait": 1,
+        "io_push": 2,
+        "m": 1,
+        "at": 2,
+        "io_sys": 3,
+        "io_tup": 1,
+        "String": 4,
+        "require": 2,
+        "io_out": 3,
+        "io_bytes": 3,
+        "io_run": 1,
+        "show_val": 3,
+        "main": 1,
+        "show_chr": 2,
+        "f": 3,
+        "j": 1,
+        "Array": 1,
+        "f32_round": 2
+      },
+      "choiceCalls": {
+        "kc": 2385,
+        "f_choose": 689,
+        "nt_choose": 241
+      },
+      "representatives": {
+        "String.eq": {
+          "identifier": "$jd$String_46_eq",
+          "line": 561,
+          "bytes": 57,
+          "sha256": "0e5dc1231a55716218ad4af75d27bfe4853b16370b3605d5e51bab697ce2fa13",
+          "params": 2,
+          "calls": {},
+          "generatedCalls": 0,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 0,
+          "switches": 0,
+          "continues": 0,
+          "consts": 0,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "kc": {
+          "identifier": "$jd$kc",
+          "line": 771,
+          "bytes": 264,
+          "sha256": "8a0c9870bc2eb8c0bbda6ebb2c5ebce380301aa101f54dac85d5706d996a046f",
+          "params": 3,
+          "calls": {
+            "run_tail": 2
+          },
+          "generatedCalls": 0,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 2,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 0,
+          "continues": 0,
+          "consts": 5,
+          "orderedHolds": 0,
+          "unitObjects": 2
+        },
+        "terms_at": {
+          "identifier": "$jd$terms_95_at",
+          "line": 801,
+          "bytes": 499,
+          "sha256": "9ac5f11e1471ab34bc5a2d74f5266ef67a728fd21d911f4641615973bad7b777",
+          "params": 2,
+          "calls": {
+            "$jd$kc": 1,
+            "jd_clo": 2,
+            "$jd$terms_95_at": 1,
+            "$jd$atom": 1
+          },
+          "generatedCalls": 3,
+          "arrows": 2,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 0,
+          "continues": 0,
+          "consts": 5,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "kid": {
+          "identifier": "$jd$kid",
+          "line": 809,
+          "bytes": 201,
+          "sha256": "c64ea83970206cdfb09f162a0162074310aada3a953d9b8e9aa5252d0d26f82f",
+          "params": 2,
+          "calls": {
+            "$jd$terms_95_at": 1,
+            "$jd$ks": 1
+          },
+          "generatedCalls": 2,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 0,
+          "continues": 0,
+          "consts": 2,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "index_hash": {
+          "identifier": "$jd$index_95_hash",
+          "line": 1405,
+          "bytes": 638,
+          "sha256": "9d00357e8702759ea5bd788b7577442e43a90933131ebf7485241f60be17634f",
+          "params": 2,
+          "calls": {
+            "$jd$Char_46_to_95_u32": 1
+          },
+          "generatedCalls": 1,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 2,
+          "loops": 1,
+          "switches": 0,
+          "continues": 1,
+          "consts": 10,
+          "orderedHolds": 2,
+          "unitObjects": 0
+        },
+        "index_find": {
+          "identifier": "$jd$index_95_find",
+          "line": 1425,
+          "bytes": 1934,
+          "sha256": "aa4927b74fac097ed6b81ca7d81ccddaa8177d62aefb0415f493130dc1d6a659",
+          "params": 5,
+          "calls": {
+            "$jd$index_95_child": 1,
+            "$jd$Bool_46_not": 1,
+            "$jd$dx": 2,
+            "$jd$index_95_find_95_hash": 1,
+            "$jd$da": 1,
+            "$jd$missing": 1,
+            "$jd$String_46_eq": 1,
+            "$jd$dk": 1
+          },
+          "generatedCalls": 9,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 2,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 1,
+          "continues": 3,
+          "consts": 34,
+          "orderedHolds": 4,
+          "unitObjects": 0
+        },
+        "index_remove": {
+          "identifier": "$jd$index_95_remove",
+          "line": 1541,
+          "bytes": 1041,
+          "sha256": "0821c37d1b260e455b110b51b376f54d761be9abb6e16c91be256df4c032157e",
+          "params": 4,
+          "calls": {
+            "$jd$index_95_remove": 1,
+            "$jd$String_46_eq": 1,
+            "$jd$dn": 1
+          },
+          "generatedCalls": 3,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 2,
+          "arrays": 0,
+          "ifs": 2,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 1,
+          "continues": 2,
+          "consts": 16,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "subst": {
+          "identifier": "$jd$subst",
+          "line": 955,
+          "bytes": 648,
+          "sha256": "5714cbe25fb91a06f636c51ba076e98da18fe44ded525e7c64c435de2cdc5f54",
+          "params": 3,
+          "calls": {
+            "$jd$kc": 2,
+            "jd_clo": 4,
+            "$jd$subst_95_node": 1,
+            "$jd$ix": 1,
+            "$jd$String_46_eq": 1,
+            "$jd$tg": 1
+          },
+          "generatedCalls": 6,
+          "arrows": 4,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 0,
+          "continues": 0,
+          "consts": 4,
+          "orderedHolds": 1,
+          "unitObjects": 0
+        },
+        "subst_terms": {
+          "identifier": "$jd$subst_95_terms",
+          "line": 1000,
+          "bytes": 516,
+          "sha256": "972d4824093e01f3fc27b88aa2874a34cc8e3c835437869fa0855596521611e2",
+          "params": 3,
+          "calls": {
+            "$jd$subst_95_terms": 1,
+            "jd_run": 1,
+            "$jd$subst": 1
+          },
+          "generatedCalls": 2,
+          "arrows": 0,
+          "functionExpressions": 0,
+          "objects": 2,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 0,
+          "continues": 0,
+          "consts": 6,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "norm_eval": {
+          "identifier": "$jd$norm_95_eval",
+          "line": 2383,
+          "bytes": 749,
+          "sha256": "7ce30d729f11ad9ba45fbb03208929619a3082fea74f668382ae04deead50d56",
+          "params": 5,
+          "calls": {
+            "$jd$kc": 1,
+            "jd_clo": 2,
+            "$jd$norm_95_eval_95_node": 1,
+            "$jd$norm_95_var": 1,
+            "$jd$ks": 1,
+            "$jd$String_46_eq": 1,
+            "$jd$tg": 1
+          },
+          "generatedCalls": 6,
+          "arrows": 2,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 0,
+          "continues": 0,
+          "consts": 5,
+          "orderedHolds": 0,
+          "unitObjects": 0
+        },
+        "check_node": {
+          "identifier": "$jd$check_95_node",
+          "line": 6456,
+          "bytes": 4840,
+          "sha256": "6ba591e29137329a889b98c11f0f7e270d23441222e3c7cdeb83f7e94d195d71",
+          "params": 5,
+          "calls": {
+            "$jd$kc": 10,
+            "jd_clo": 20,
+            "$jd$check_95_fits": 1,
+            "jd_run": 9,
+            "$jd$infer": 2,
+            "$jd$check_95_rwt": 1,
+            "$jd$kid": 1,
+            "$jd$String_46_eq": 9,
+            "$jd$tg": 8,
+            "$jd$check_95_let": 1,
+            "$jd$ks": 1,
+            "$jd$bad": 1,
+            "$jd$cw": 3,
+            "$jd$ok": 2,
+            "$jd$nm": 1,
+            "$jd$check_95_rfl": 1,
+            "$jd$wnf": 5,
+            "$jd$cb": 6,
+            "$jd$check_95_mat": 1,
+            "$jd$check_95_ctr": 1,
+            "$jd$check_95_lam": 1,
+            "$jd$check": 1,
+            "$jd$core_95_literal_95_step": 1,
+            "$jd$core_95_literal_95_type": 1,
+            "$jd$core_95_literal": 1
+          },
+          "generatedCalls": 60,
+          "arrows": 20,
+          "functionExpressions": 0,
+          "objects": 7,
+          "arrays": 0,
+          "ifs": 0,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 0,
+          "continues": 0,
+          "consts": 7,
+          "orderedHolds": 2,
+          "unitObjects": 0
+        },
+        "jd_host_exports": {
+          "identifier": "$jd$jd_95_host_95_exports",
+          "line": 57317,
+          "bytes": 1785,
+          "sha256": "21346709292b75f62b95a428ca4dc4097686cb1befda868e3fbb0632d4c7fb75",
+          "params": 2,
+          "calls": {
+            "$jd$jd_95_host_95_exports": 1,
+            "jd_run": 5,
+            "$jd$kc": 2,
+            "jd_clo": 4,
+            "$jd$jd_95_host_95_export": 1,
+            "$jd$j_95_io_95_type": 1,
+            "$jd$dt": 1,
+            "$jd$Bool_46_and": 4,
+            "$jd$Bool_46_not": 3,
+            "$jd$String_46_eq": 3,
+            "$jd$tg": 2,
+            "$jd$j_95_strip": 2,
+            "$jd$dv": 2,
+            "$jd$db": 1,
+            "$jd$dk": 1,
+            "$jd$dx": 1
+          },
+          "generatedCalls": 25,
+          "arrows": 4,
+          "functionExpressions": 0,
+          "objects": 0,
+          "arrays": 0,
+          "ifs": 1,
+          "conditionals": 0,
+          "loops": 1,
+          "switches": 0,
+          "continues": 0,
+          "consts": 8,
+          "orderedHolds": 3,
+          "unitObjects": 0
+        }
+      }
+    }
+  ],
+  "fullInventory": {
+    "path": "selfhost/tools/performance/phase57/static/code-shapes.json",
+    "sha256": "9115a39159ea20b0ac4726181019c6f2e4ce1af5dc0c339f0d529f8581970cb2"
+  }
+}

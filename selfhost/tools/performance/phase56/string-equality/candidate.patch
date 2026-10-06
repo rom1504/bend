@@ -1,0 +1,31 @@
+--- a/selfhost/src/back/js/direct/primitive.bend
++++ b/selfhost/src/back/js/direct/primitive.bend
+@@ -10,7 +10,8 @@
+ 
+ @unsafe
+ def jd_intrinsic(+book: List<&2,KDef>, +name: String, +args: List<&2,String>) -> String:
+-  jd_primitive_candidate_emit(book, lookup(book, name), args)
++  kc(String, String.eq(name, "String.eq"), u => "",
++    u => jd_primitive_candidate_emit(book, lookup(book, name), args))
+ 
+ @unsafe
+ def jd_primitive_candidate_emit(+book: List<&2,KDef>, +d: KDef,
+@@ -212,6 +213,7 @@
+     JDPrimitive{"Bool.or", 2, "($0 || $1)"},
+     JDPrimitive{"Bool.xor", 2, "($0 !== $1)"},
+     JDPrimitive{"String.append", 2, "($0 + $1)"},
++    JDPrimitive{"String.eq", 2, "($0 === $1)"},
+     JDPrimitive{"String.length", 1, "[...$0].length"},
+     JDPrimitive{"Array.new", 2, "array_new($0, $1)"},
+     JDPrimitive{"Array.set", 3, "($0[$1 % $0.length] = $2, $0)"},
+--- a/selfhost/src/back/js/direct/core.bend
++++ b/selfhost/src/back/js/direct/core.bend
+@@ -274,7 +274,7 @@
+ 
+ @unsafe
+ def jd_definition_params(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>) -> String:
+-  jd_definition_native(book, d, params, jd_intrinsic(book, dn(d), params))
++  jd_definition_native(book, d, params, jd_primitive_candidate_emit(book, d, params))
+ 
+ @unsafe
+ def jd_definition_native(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>, +native: String) -> String:

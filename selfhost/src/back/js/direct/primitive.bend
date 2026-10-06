@@ -10,7 +10,8 @@ type JDPrimitive is Data:
 
 @unsafe
 def jd_intrinsic(+book: List<&2,KDef>, +name: String, +args: List<&2,String>) -> String:
-  jd_primitive_candidate_emit(book, lookup(book, name), args)
+  kc(String, String.eq(name, "String.eq"), u => "",
+    u => jd_primitive_candidate_emit(book, lookup(book, name), args))
 
 @unsafe
 def jd_primitive_candidate_emit(+book: List<&2,KDef>, +d: KDef,
@@ -212,6 +213,7 @@ def jd_primitive_table() -> List<&2,JDPrimitive>:
     JDPrimitive{"Bool.or", 2, "($0 || $1)"},
     JDPrimitive{"Bool.xor", 2, "($0 !== $1)"},
     JDPrimitive{"String.append", 2, "($0 + $1)"},
+    JDPrimitive{"String.eq", 2, "($0 === $1)"},
     JDPrimitive{"String.length", 1, "[...$0].length"},
     JDPrimitive{"Array.new", 2, "array_new($0, $1)"},
     JDPrimitive{"Array.set", 3, "($0[$1 % $0.length] = $2, $0)"},

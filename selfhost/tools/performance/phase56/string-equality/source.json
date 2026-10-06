@@ -1,0 +1,25 @@
+{
+  "kind": "phase56-definition-only-string-equality-source",
+  "status": "frozen-unbuilt",
+  "changes": [
+    {
+      "path": "selfhost/src/back/js/direct/primitive.bend",
+      "beforeSha256": "09dfa112680080cd2827f65074b4f4215c7fe026fbb70572d7a8969d634c1c8c",
+      "afterSha256": "896fe5d60d4b4ac5340e45b292cf660f381ddaa6c0f0b60c65175c84f73195b0",
+      "beforeBytes": 10825,
+      "afterBytes": 10933
+    },
+    {
+      "path": "selfhost/src/back/js/direct/core.bend",
+      "beforeSha256": "2bb2e2d60fa08e73532446dfc93eec2e4ac78b32350e7d305a99e2e53dd69fc9",
+      "afterSha256": "2012e7ba5e4a4140857f929eaf80b2d9b2f9f3b9dc72147678a7923f17bd109f",
+      "beforeBytes": 18357,
+      "afterBytes": 18368
+    }
+  ],
+  "patch": {
+    "path": "selfhost/tools/performance/phase56/string-equality/candidate.patch",
+    "sha256": "74c772acd122f196e879d50ae770a79bc4785febff36b1de1effcb0e02b17b62"
+  },
+  "scope": "Canonical native String.eq body only; ordinary callsite lowering and argument/eta demand preserved. Primitive JS String values, including malformed UTF-16; no arbitrary nonprimitive-host or builtin-hook identity claim."
+}

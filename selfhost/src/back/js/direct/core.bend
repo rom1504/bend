@@ -274,7 +274,7 @@ def jd_definition(+book: List<&2,KDef>, +d: KDef) -> String:
 
 @unsafe
 def jd_definition_params(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>) -> String:
-  jd_definition_native(book, d, params, jd_intrinsic(book, dn(d), params))
+  jd_definition_native(book, d, params, jd_primitive_candidate_emit(book, d, params))
 
 @unsafe
 def jd_definition_native(+book: List<&2,KDef>, +d: KDef, +params: List<&2,String>, +native: String) -> String:

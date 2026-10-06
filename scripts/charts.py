@@ -92,7 +92,7 @@ def save(plt, fig, name: str, description: str):
         "Title": name.replace("-", " ").title(),
         "Description": description,
         "Creator": "Bend Progress chart renderer",
-        "Date": "2026-10-04",
+        "Date": "2026-10-06",
     }
     fig.savefig(DEST / f"{name}.svg", metadata=metadata, transparent=True)
     fig.savefig(DEST / f"{name}.png", dpi=160, transparent=False, facecolor=PAPER,
@@ -129,7 +129,8 @@ def simplicity(plt, data):
     ax.set_xlim(-.2, len(points) - .5)
     ax.set_yticks(range(0, upper, 5000))
     ax.yaxis.set_major_formatter(FuncFormatter(lambda n, _: f"{n:,.0f}"))
-    tick_indices = sorted(set([0, 1, 3, 6, 8, 10, len(points) - 1]))
+    tick_indices = sorted(set([0, 3, 6, 10, *range(13, len(points), 3), len(points) - 1]))
+    tick_indices = [i for i in tick_indices if i < len(points)]
     ax.set_xticks(tick_indices, [points[i]["chartLabel"].replace(" / ", "\n") for i in tick_indices])
     ax.set_xlabel("Recorded development milestones", labelpad=10)
     note(fig, "Compiler source · lines of code")
@@ -141,10 +142,13 @@ def simplicity(plt, data):
                 fontsize=15, fontweight="bold", color=GREEN)
     latest_nonblank = next((i for i in reversed(xs) if points[i].get("nonblankLines")), None)
     if latest_nonblank is not None:
-        ax.annotate(f"{points[latest_nonblank]['nonblankLines']:,}",
+        count_label = f"{points[latest_nonblank]['nonblankLines']:,}"
+        if latest_nonblank != xs[-1]:
+            count_label += f"\n(last counted {points[latest_nonblank]['chartLabel']})"
+        ax.annotate(count_label,
                     (latest_nonblank, points[latest_nonblank]["nonblankLines"]),
                     xytext=(-3, -24), textcoords="offset points", ha="right",
-                    fontsize=14, fontweight="bold", color=TEAL)
+                    fontsize=12, fontweight="bold", color=TEAL)
     ax.annotate("Cleanup\n−1,842 physical lines", (3, 14667), xytext=(1.1, 7600),
                 arrowprops={"arrowstyle": "-", "color": GREEN, "linewidth": 1},
                 color=GREEN, fontsize=13, linespacing=1.5)
@@ -190,7 +194,12 @@ def compilation(plt, data):
 
 def conformance(plt, data):
     from matplotlib.ticker import FuncFormatter
-    fig, ax = line_axes(plt)
+    from matplotlib.lines import Line2D
+    semantic = data["independentSemanticSeries"]
+    fig = plt.figure(figsize=(9, 9.4))
+    ax = fig.add_axes((.11, .555, .84, .285))
+    semantic_ax = fig.add_axes((.14, .155, .81, .15))
+    ax.grid(axis="y")
     colors = (BLUE, TEAL, GREEN)
     for segment, color in zip(data["segments"], colors):
         points = segment["points"]
@@ -210,7 +219,12 @@ def conformance(plt, data):
     phases = sorted(set([3, 8, 16, 22, 28, 36, last_phase]))
     ax.set_xticks(phases, [f"P{phase}" for phase in phases])
     ax.set_xlabel("Development phase", labelpad=12)
-    note(fig, "Exact frontend agreement · vertical axis starts at 70%")
+    fig.text(.11, .977, "Conformance · two distinct test suites", fontsize=18,
+             fontweight="bold", va="top")
+    fig.text(.11, .925, "HISTORICAL · Frontend agreement", fontsize=14,
+             fontweight="bold", va="top")
+    fig.text(.11, .89, f"Last renewed P{last_phase} · pinned TypeScript · axis starts at 70%",
+             fontsize=12, color=MUTED, va="top")
     ax.annotate("79.7%", (3, 2196 / 2756 * 100), xytext=(0, -24),
                 textcoords="offset points", fontsize=13, color=BLUE, ha="left")
     ax.annotate("New target", (8, 2262 / 2996 * 100), xytext=(5, -27),
@@ -221,13 +235,38 @@ def conformance(plt, data):
                 (last_phase, last_point['exact'] / last_point['total'] * 100), xytext=(0, -29),
                 textcoords="offset points", fontsize=14, fontweight="bold", color=GREEN, ha="right")
     # Each target is a distinct series. No line crosses a changed denominator.
-    fig.text(.11, .037, "Pinned targets", fontsize=11, color=MUTED)
-    for x, segment, color in zip((.32, .53, .75), data["segments"], colors):
-        fig.text(x, .037, f"● {segment['id']}  ({segment['total']:,})", fontsize=11, color=color)
+    for x, segment, color in zip((.11, .40, .69), data["segments"], colors):
+        fig.text(x, .456, f"● {segment['id']}  ({segment['total']:,})", fontsize=11, color=color)
+    fig.add_artist(Line2D([.11, .95], [.427, .427], transform=fig.transFigure,
+                         color=GRID, linewidth=1.2))
+    fig.text(.11, .400, "INDEPENDENT · Source semantics", fontsize=14,
+             fontweight="bold", va="top")
+    latest = semantic[-1]
+    fig.text(.11, .365, f"Same {latest['total']} scenarios across {latest['fixtures']} fixtures · independent source expectations",
+             fontsize=11.5, color=MUTED, va="top")
+    totals = [p["total"] for p in semantic]
+    passed = [p["pass"] for p in semantic]
+    semantic_ax.barh(range(len(semantic)), totals, height=.48, color=ORANGE)
+    semantic_ax.barh(range(len(semantic)), passed, height=.48, color=[TEAL, GREEN])
+    for i, p in enumerate(semantic):
+        semantic_ax.text(p["pass"] - 3, i, f"{p['pass']} / {p['total']}",
+                         ha="right", va="center", color=PAPER, fontsize=15, fontweight="bold")
+    semantic_ax.set_yticks(range(len(semantic)), [f"P{p['phase']}" for p in semantic])
+    semantic_ax.set_ylim(len(semantic) - .45, -.55)
+    semantic_ax.set_xlim(0, max(totals) * 1.02)
+    semantic_ax.set_xticks([0, 24, 48, 72, 96])
+    semantic_ax.grid(axis="x")
+    semantic_ax.set_xlabel("Passing independently specified scenarios", fontsize=12, labelpad=11)
+    fig.text(.11, .065, "One NaN case repaired at P53. TypeScript remains 95 / 96.", fontsize=11.5, color=GREEN)
+    fig.text(.11, .030, "The lower suite measures correctness; it is separate from frontend agreement.",
+             fontsize=11, color=MUTED)
     save(plt, fig, "conformance",
          "Exact parse/check agreement across selected recorded milestones. Three disconnected "
          "series use distinct pinned upstream targets and denominators. Vertical axis starts "
-         "at 70 percent. Current recorded agreement is 3026 of 3026 observations.")
+         f"at 70 percent. Fresh frontend evidence ends at Phase{last_phase}, with 3026 of 3026 observations. "
+         "A separate lower panel shows independent source semantics on the unchanged 96 scenarios: "
+         "Phase52 passes 95 and Phase53 passes 96. TypeScript remains at 95. These distinct suites "
+         "measure different scopes and must not be combined into one percentage.")
 
 
 def milliseconds(value):
@@ -328,7 +367,7 @@ def speed_history(plt, data, kind):
     xs = list(range(len(points)))
     ratios = [point[ratio_key] for point in points]
     fig, ax = line_axes(plt, height=5.9)
-    fig.subplots_adjust(left=.10, right=.95, top=.80, bottom=.27)
+    fig.subplots_adjust(left=.10, right=.95, top=.79, bottom=.28)
     ax.axhline(1, color=INK, linewidth=1.25)
     ax.text(0.01, 1, "1× = TypeScript", color=INK, fontsize=12,
             transform=ax.get_yaxis_transform(), va="bottom", ha="left",
@@ -347,45 +386,63 @@ def speed_history(plt, data, kind):
                 linewidth=3, marker="o", markersize=8, markeredgecolor=PAPER,
                 markeredgewidth=1.5, zorder=4)
         if len(segments) > 1:
-            count = points[indices[0]]["pointCount"]
+            count = points[indices[0]].get("pointCount", points[indices[0]].get("cohortSize"))
             protocol = points[indices[0]].get("protocolGroup", "")
             segment_label = ("Mixed warmup" if protocol.startswith("mixed-") else
-                             "1,000 ms warmup" if protocol else f"{count} cases")
+                             "Direct JS" if "direct" in protocol else
+                             "Legacy JS" if protocol else f"{count} programs")
             ax.text(sum(indices) / len(indices), 1.015, segment_label,
                     transform=ax.get_xaxis_transform(), ha="center", va="bottom",
                     color=color, fontsize=12, fontweight="bold")
         if j:
             ax.axvline(indices[0] - .5, color=GRID, linewidth=1.5, linestyle=(0, (3, 4)))
+    label_indices = {0, 2, 4, 7, 9, len(points) - 1} if runtime else set(xs)
     for i, ratio in enumerate(ratios):
+        if i not in label_indices:
+            continue
         last = i == len(points) - 1
-        ax.annotate(f"{ratio:.2f}×", (i, ratio), xytext=(0, 13),
-                    textcoords="offset points", ha="center", va="bottom",
+        below = runtime and i == 0
+        ax.annotate(f"{ratio:.2f}×", (i, ratio), xytext=(0, -14 if below else 13),
+                    textcoords="offset points", ha="center", va="top" if below else "bottom",
                     fontsize=17 if last else 14, fontweight="bold" if last else "normal",
                     color=GREEN if last else MUTED)
-    upper = max(ratios) * 1.30
-    ax.set_ylim(0, max(upper, 4))
+    if runtime:
+        ax.set_yscale("log")
+        ax.set_ylim(.8, 25)
+        ax.set_yticks([1, 2, 5, 10, 20], ["1×", "2×", "5×", "10×", "20×"])
+        ax.minorticks_off()
+    else:
+        upper = max(ratios) * 1.30
+        ax.set_ylim(0, max(upper, 4))
     ax.set_xlim(-.35, len(points) - .65 if len(points) > 1 else .65)
     from matplotlib.ticker import FuncFormatter, MaxNLocator
-    ax.yaxis.set_major_locator(MaxNLocator(nbins=5, min_n_ticks=3))
-    ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:g}×"))
+    if not runtime:
+        ax.yaxis.set_major_locator(MaxNLocator(nbins=5, min_n_ticks=3))
+        ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:g}×"))
     labels = [checkpoint_label(point) for point in points]
     if len(points) > 5:
         labels = [label.replace(" · ", "\n") for label in labels]
-    ax.set_xticks(xs, labels, fontsize=12)
-    ax.set_ylabel("Time ÷ TypeScript time", labelpad=10)
+    tick_count = min(7, len(points))
+    ticks = (sorted({round(i * (len(points) - 1) / max(1, tick_count - 1))
+                     for i in range(tick_count)}) if runtime else xs)
+    ticks = [i for i in ticks if 0 <= i < len(points)]
+    ax.set_xticks(ticks, [labels[i] for i in ticks], fontsize=10.5 if runtime else 12)
+    ax.set_ylabel("Time ÷ TypeScript time" + (" · log scale" if runtime else ""), labelpad=10)
     ax.set_xlabel("Release checkpoints · commit date and ID", labelpad=13, fontsize=12)
     fig.text(.10, .966, "Average slowdown vs. TypeScript", fontsize=17, fontweight="bold", va="top")
-    subtitle = ("Geometric mean of benchmark cases · lower is better" if runtime else
+    subtitle = (f"Same {points[-1]['pointCount']} benchmark cases · geometric mean · lower is better" if runtime else
                 "Geometric mean of 4 programs · checks + JS emission · lower is better")
     fig.text(.10, .91, subtitle, fontsize=12.5, color=MUTED, va="top")
-    footnote = ("Same 45 cases. Warmup changed at P41; lines are separated at that boundary." if runtime and data.get("historyProtocolBoundary") else
+    footnote = ("Breaks mark P41’s warmup change and P52’s direct JavaScript contract.\n"
+                "Each point uses its own campaign’s TypeScript reference." if runtime else
                "Disconnected lines mark different suites; compare changes within each suite." if len(segments) > 1 else
                 "Same programs and inputs at every checkpoint; ratios use each report’s TypeScript reference.")
-    fig.text(.10, .028, footnote, fontsize=11, color=MUTED)
+    fig.text(.10, .026, footnote, fontsize=10.5, color=MUTED, linespacing=1.5)
     save(plt, fig, f"{kind}-average-history",
          f"Average {'compiled program execution' if runtime else 'compiler request'} time divided by "
          "TypeScript reference time at recorded release commits. Geometric means give each benchmark "
-         f"case equal weight. Lower is better and the 1x TypeScript reference is visible. {footnote} "
+         f"case equal weight. Lower is better and the 1x TypeScript reference is visible. "
+         f"{'Logarithmic axis from 0.8x to 25x. ' if runtime else ''}{footnote} "
          f"Latest recorded average is {ratios[-1]:.4f}x at Phase{points[-1]['phase']}.")
 
 
@@ -455,13 +512,28 @@ def compilation_history(plt, current, history):
                          color=GRID, linewidth=1.2))
     fig.text(.11, .438, "RECENT · Checking + JavaScript emission", fontsize=14,
              fontweight="bold", va="top")
-    fig.text(.11, .407, "Geometric mean of the same 4 programs · request time",
+    fig.text(.11, .407, "Legacy JS request time · separate program cohorts",
              fontsize=12, color=MUTED, va="top")
 
     xs = list(range(len(recent)))
     recent_ratios = [point["ratio"] for point in recent]
-    recent_ax.plot(xs, recent_ratios, color=GREEN, linewidth=2.8, marker="o", markersize=8,
-                   markeredgecolor=PAPER, markeredgewidth=1.5, zorder=4)
+    cohorts = []
+    for i, point in enumerate(recent):
+        key = (point["cohortKey"], tuple(point["cohortIds"]))
+        if not cohorts or cohorts[-1][0] != key or point.get("connectToPrevious") is False:
+            cohorts.append((key, []))
+        cohorts[-1][1].append(i)
+    for j, (_, indices) in enumerate(cohorts):
+        color = (BLUE, TEAL, GREEN)[min(j, 2)]
+        recent_ax.plot(indices, [recent_ratios[i] for i in indices], color=color,
+                       linewidth=2.8, marker="o", markersize=8,
+                       markeredgecolor=PAPER, markeredgewidth=1.5, zorder=4)
+        recent_ax.text(sum(indices) / len(indices), 1.015,
+                       f"{recent[indices[0]]['cohortSize']} programs",
+                       transform=recent_ax.get_xaxis_transform(), ha="center", va="bottom",
+                       fontsize=11, color=color, fontweight="bold")
+        if j:
+            recent_ax.axvline(indices[0] - .5, color=GRID, linewidth=1.5, linestyle=(0, (3, 4)))
     recent_ax.set_xlim(-.35, len(recent) - .65)
     recent_ax.set_ylim(0, max(10.8, max(recent_ratios) * 1.28))
     recent_ax.set_yticks([0, 2.5, 5, 7.5, 10])
@@ -478,7 +550,7 @@ def compilation_history(plt, current, history):
                            fontsize=15 if i == len(recent) - 1 else 13,
                            color=GREEN, fontweight="bold" if i == len(recent) - 1 else "normal")
     fig.text(.11, .067, "Release checkpoints · commit date and ID", fontsize=11, color=MUTED)
-    fig.text(.11, .027, "Each ratio uses its report’s TypeScript reference; lower is better.",
+    fig.text(.11, .027, "Cohort changes break the line. Latest P48 legacy sample; no P53 default measurement.",
              fontsize=11, color=MUTED)
     save(plt, fig, "compilation-average-history",
          "Two separate compilation measurement scopes. The upper panel shows 15 historical "
@@ -487,8 +559,10 @@ def compilation_history(plt, current, history):
          "the snapshots are unconnected. The TypeScript reference pin changes at Phase23. "
          f"The recorded ratio declines from {ratios[0]:.2f}x to {ratios[-1]:.2f}x across these snapshots. "
          "The lower panel separately shows the geometric mean of checked JavaScript emission "
-         "request-time ratios on the same four programs at Phase42 through Phase45, on a linear "
-         f"axis, ending at {recent_ratios[-1]:.2f}x. Both panels show the 1x TypeScript reference. "
+         "request-time ratios on four programs at Phase42 through Phase45, three programs at Phase47, "
+         "and two programs at Phase48. These cohorts have disconnected lines on a linear "
+         f"axis, ending at {recent_ratios[-1]:.2f}x. No Phase53 default compilation measurement is available. "
+         "Both panels show the 1x TypeScript reference. "
          "Historical and current measurements are not joined or treated as a matched workload.")
 
 
@@ -499,9 +573,13 @@ def speed_programs(plt, data, kind):
     ratio_key = "ratioToTypeScript" if runtime else "ratio"
     points = sorted(points, key=lambda point: point[ratio_key])
     count = len(points)
-    fig, ax = plt.subplots(figsize=(9, 2.6 + count * .365))
+    phase = data["latest"]["phase"] if runtime else data["latest_phase"]
+    height = 2.6 + count * .365
+    if not runtime:
+        height = max(4.4, height)
+    fig, ax = plt.subplots(figsize=(9, height))
     fig.subplots_adjust(left=.39 if runtime else .31, right=.91,
-                        top=.89 if runtime else .76, bottom=.15 if runtime else .27)
+                        top=.89 if runtime else .76, bottom=.15 if runtime else .35)
     values = [point[ratio_key] for point in points]
     colors = [GREEN if ratio <= 1 else ORANGE for ratio in values]
     ax.barh(range(count), [value - 1 for value in values], left=1, height=.49, color=colors)
@@ -533,17 +611,19 @@ def speed_programs(plt, data, kind):
     ax.grid(axis="x")
     ax.axvline(1, color=INK, linewidth=1.25)
     ax.set_xlabel("Time ÷ TypeScript time · log scale", labelpad=14, fontsize=12)
-    fig.text(.055, .975, "Current slowdown by program", fontsize=17, fontweight="bold", va="top")
+    title = f"P{phase} execution time by program" if runtime else f"P{phase} legacy compilation · latest measured"
+    fig.text(.055, .975, title, fontsize=17, fontweight="bold", va="top")
     fig.text(.055, .935 if runtime else .875,
              "Lower is better · 1× = TypeScript", fontsize=13, color=MUTED, va="top")
     if runtime:
-        footnote = ("P45 · geometric mean within each source program. Parentheses show case counts.\n"
-                    "The headline weights all 45 cases equally, rather than these 23 groups.")
+        footnote = (f"P{phase} · geometric mean within each source program. Parentheses show case counts.\n"
+                    f"The headline weights all {data['latest']['pointCount']} cases equally, rather than these {count} groups.")
     else:
-        footnote = "P45 · complete compiler requests, including checks and JavaScript emission."
+        footnote = (f"P{phase} · {count} programs · checking + legacy JavaScript emission.\n"
+                    f"The P{data['installed_phase']} default backend has no comparable compilation measurement.")
     fig.text(.055, .025, footnote, fontsize=11, color=MUTED, linespacing=1.6)
     save(plt, fig, f"{kind}-programs",
-         f"Phase45 {'execution' if runtime else 'compiler request'} times divided by same-window "
+         f"Phase{phase} {'execution' if runtime else 'compiler request'} times divided by same-window "
          f"TypeScript reference times for {count} program groups. Lower is better. The logarithmic "
          "axis has a visible 1x equal-time reference. " + footnote.replace("\n", " "))
 

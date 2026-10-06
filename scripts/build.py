@@ -87,13 +87,26 @@ def validate(config, research):
     require(len(grouped_ids) == len(set(grouped_ids)) and set(grouped_ids) == point_ids, 'Program breakdown omits or duplicates cases')
     require(len({p['suiteId'] for p in runtime['history']}) == 1, 'Runtime history mixes benchmark suites')
     require(all(p['pointCount'] == len(points) for p in runtime['history']), 'Runtime history changes case count')
+    require(math.isclose(runtime['history'][-1]['averageRatio'], runtime['headline']['averageRatio'], rel_tol=1e-9), 'Latest runtime history differs from headline')
     compilation = research['compilation-average']
     cohort = {p['id'] for p in compilation['cohort']}
+    cohort_members = {}
     for checkpoint in compilation['history']:
-        require({p['id'] for p in checkpoint['programs']} == cohort, 'Compilation history changes programs')
+        ids = {p['id'] for p in checkpoint['programs']}
+        key = checkpoint.get('cohortKey', 'fixed-four-programs')
+        require(len(ids) == len(checkpoint['programs']), 'Compilation history duplicates a program')
+        require(ids == set(checkpoint.get('cohortIds', ids)), 'Compilation history cohort metadata mismatch')
+        require(len(ids) == checkpoint.get('cohortSize', len(ids)), 'Compilation history cohort size mismatch')
+        require(key not in cohort_members or cohort_members[key] == ids, 'Compilation history changes programs within a cohort')
+        cohort_members[key] = ids
+        require(all(p['bend_ms'] > 0 and p['typescript_ms'] > 0 for p in checkpoint['programs']), 'Compilation medians must be positive')
         ratios = [p['bend_ms'] / p['typescript_ms'] for p in checkpoint['programs']]
         require(math.isclose(geometric_mean(ratios), checkpoint['ratio'], rel_tol=1e-9), 'Compilation history average mismatch')
+    require({p['id'] for p in compilation['programs']} == cohort, 'Latest compilation cohort mismatch')
     require(math.isclose(geometric_mean(p['bend_ms'] / p['typescript_ms'] for p in compilation['programs']), compilation['latest_average'], rel_tol=1e-9), 'Compilation headline average mismatch')
+    require(math.isclose(compilation['history'][-1]['ratio'], compilation['latest_average'], rel_tol=1e-9), 'Latest compilation history differs from headline')
+    for point in research['conformance'].get('independentSemanticSeries', []):
+        require(point['pass'] + point['failed'] == point['total'], 'Independent semantic total mismatch')
     checking = research['history']['compilerChecking']
     for point in checking['series']:
         require(point['bend_process_seconds'] > 0 and point['typescript_process_seconds'] > 0, 'Checking times must be positive')
@@ -114,8 +127,8 @@ def table(headers, rows, caption=None):
 def tables(research):
     h, c, r = (research[k] for k in ('history', 'conformance', 'runtime'))
     result = {}
-    result['simplicity'] = table(['Checkpoint', 'Physical lines', 'Nonblank', 'Modules', 'Source'], [
-        [e(p['chartLabel']), number(p['physicalLines'], 0), number(p['nonblankLines'], 0), e(p['modules']), link(p['sourceLink'], p['shortCommit'])]
+    result['simplicity'] = table(['Checkpoint', 'Physical lines', 'Nonblank', 'Code lines', 'Modules', 'Source'], [
+        [e(p['chartLabel']), number(p['physicalLines'], 0), number(p['nonblankLines'], 0), number(p.get('codeLines'), 0), e(p['modules']), link(p['sourceLink'], p['shortCommit'])]
         for p in h['simplicity']['series']
     ], 'Canonical Bend modules; equally spaced saved checkpoints, not elapsed time.')
     result['compilation'] = table(['Phase', 'Before (s)', 'After (s)', 'Less time', 'Source'], [
@@ -128,7 +141,11 @@ def tables(research):
         [e(p['workload']), number(p['baseline_ms']), number(p['candidate_ms']), f'{p["candidate_change_percent"]:+.2f}%', number(p['typescript_ms'])]
         for p in latest['points']
     ], 'Checked-library request time. This is different from the historical full-source checking workload above.')
-    result['conformance'] = table(['Phase', 'Target', 'Exact / total', 'Differences', 'Source'], [
+    result['conformance'] = '<h4>Independent semantic observations</h4>' + table(['Phase', 'Source-oracle passes', 'TypeScript passes', 'Source'], [
+        [e(p['label']), f'{p["pass"]} / {p["total"]}', f'{p["referencePass"]} / {p["referenceTotal"]}', link(p['source'], 'Report')]
+        for p in c.get('independentSemanticSeries', [])
+    ], 'The source oracle defines the expected answer. TypeScript retains a known NaN-fixture mismatch; matching that result is not required.')
+    result['conformance'] += '<h4>Historical frontend agreement</h4>' + table(['Phase', 'Target', 'Exact / total', 'Differences', 'Source'], [
         [e(p['label']), e(p['upstream'][:7]), f'{p["exact"]:,} / {p["total"]:,}', number(p['different'], 0), link(p['source'], p['commit'][:7])]
         for p in c['mainSeries']
     ], 'Main exact parse/check comparisons. Target changes introduce a different denominator.')
@@ -136,7 +153,20 @@ def tables(research):
         [e(p['label']), f'{p["exact"]} / {p["total"]}', link(p['source'], p['commit'][:7])]
         for p in c['broaderSeries']
     ], 'Separate broader selection; partly overlaps the main suite.')
-    result['conformance'] += '<p>Phase 45 backend pilot: 69 passes, 8 not applicable, 4 shared failures. All 81 match the reference outcome; they are not 81 execution passes. All 42 ordinary/relocated CLI checks pass.</p>'
+    current = c['current']
+    result['conformance'] += '<p>The full frontend and broader comparisons were last freshly measured at Phase ' + e(current.get('frontendLastFreshPhase', current['phase'])) + '. They remain historical evidence for the installed compiler.</p>'
+    result['conformance'] += '<h4>Latest release controls · Phase ' + e(current['phase']) + '</h4>' + table(['Scope', 'Result'], [
+        ['Independent semantic observations', f'{current.get("semanticPass", 0)} / {current.get("semanticTotal", 0)}'],
+        ['Numeric controls', f'{current.get("numericPass", 0)} / {current.get("numericTotal", 0)}'],
+        ['Composition controls', f'{current.get("compositionPass", 0)} / {current.get("compositionTotal", 0)}'],
+        ['Overapplication controls', f'{current.get("overapplicationPass", 0)} / {current.get("overapplicationTotal", 0)}'],
+        ['Ordinary / relocated interfaces', f'{current["cliPass"]} / {current["cliTotal"]}'],
+        ['Direct JavaScript census', f'{current["directBackendExact"]} / {current["directBackendTotal"]} outcomes: 18 runtime passes, 4 expected rejections, 4 not applicable'],
+        ['Maintained compatibility suites', e(current['maintainedSuites'])]
+    ], 'Scopes overlap and are not summed into a total pass count.')
+    backend = c['backendPilot']
+    outcomes = backend['rawOutcomes']
+    result['conformance'] += f'<p>Separate historical backend pilot (Phase {e(backend["phase"])}): {outcomes["pass"]} passes, {outcomes["notApplicable"]} not applicable, {outcomes["sharedFailures"]} shared failures. All {backend["exact"]} outcomes match the reference; they are not all execution passes.</p>'
     result['runtime'] = table(['Phase / program', 'Before (ms)', 'After (ms)', 'Speedup', 'Source'], [
         [e({30:'P29 → P30',31:'P30 → P31',32:'P31 → P32',35:'P32 → P35',36:'P35 → P36'}[p['phase']] + ' · ' + p['id']), number(p['beforeMs'], 6), number(p['afterMs'], 6), number(p['speedup'], 2) + '×', link(p['sourceUrl'], 'Report')]
         for p in r['pairedGains'] if p['phase'] in (30, 31, 32, 35, 36)
@@ -152,7 +182,8 @@ def speed_tables(card, research):
         date_value = p['date'] if is_runtime else p['commit_date']
         source = p['sourceUrl'] if is_runtime else p['source_url']
         scope = p.get('notes', '') if is_runtime else p.get('note', '')
-        rows.append([link('https://github.com/rom1504/bend/commit/' + p['commit'], 'P' + str(p['phase']) + ' · ' + p['commit'][:7]), e(date_value.replace('T', ' ').replace('Z', ' UTC')), number(p['ratio'], 3) + '×', link(source, 'Report'), e(scope)])
+        count = p['pointCount'] if is_runtime else len(p['programs'])
+        rows.append([link('https://github.com/rom1504/bend/commit/' + p['commit'], 'P' + str(p['phase']) + ' · ' + p['commit'][:7]), e(date_value.replace('T', ' ').replace('Z', ' UTC')), number(p['ratio'], 3) + '×', str(count), link(source, 'Report'), e(scope)])
     html = ''
     if not is_runtime:
         checking = research['history']['compilerChecking']
@@ -164,13 +195,13 @@ def speed_tables(card, research):
             [e(p['label']), number(p['same_window_predecessor_seconds']), number(p['bend_process_seconds']), number(p['process_time_reduction_percent'], 2) + '%', link(p['source_url'], 'Report')]
             for p in checking['selectedPairs']
         ], 'Each before/after pair uses the same frozen source in its own measurement window. Reductions are not compounded across windows.')
-    html += '<h4>Average by compiler commit</h4>' + table(['Release / commit', 'Commit date', 'Average / TS', 'Source', 'Measurement note'], rows)
+    html += '<h4>Average by compiler commit</h4>' + table(['Release / commit', 'Commit date', 'Average / TS', 'Cases' if is_runtime else 'Programs', 'Source', 'Measurement note'], rows)
     if is_runtime:
         html += '<h4>Latest program breakdown</h4>' + table(['Program / source', 'Cases', 'Average / TS'], [
             [e(p['label']), str(p['pointCount']), number(p['ratioToTypeScript'], 3) + '×']
             for p in sorted(data['latest']['sourceGroups'], key=lambda p: p['ratioToTypeScript'])
         ], 'Programs are grouped by source file. The headline weights cases equally, not programs equally.')
-        html += '<h4>All 45 individual benchmark cases</h4>' + table(['Case', 'Bend (ms)', 'TypeScript (ms)', 'Bend / TS', 'Source'], [
+        html += f'<h4>All {len(data["latest"]["points"])} individual benchmark cases</h4>' + table(['Case', 'Bend (ms)', 'TypeScript (ms)', 'Bend / TS', 'Source'], [
             [e(p['id']), number(p['candidate']['medianMs'], 6), number(p['reference']['medianMs'], 6), number(p['ratioToTypeScript'], 3) + '×', link(p['sourceUrl'], 'Report')]
             for p in data['latest']['points']
         ], 'Warmed generated-JavaScript execution medians per complete call. Compilation, import and first call are separate.')
@@ -181,9 +212,13 @@ def speed_tables(card, research):
             [e(p['name']), number(p['bend_ms']), number(p['typescript_ms']), number(p['ratio'], 3) + '×', link(p['source_url'], 'Program')]
             for p in data['programs']
         ], 'Checking and library emission; host import is outside the request boundary.')
-        html += '<p class="source-note">Latest same-window comparison: ' + number(data['same_run_baseline_average'], 3) + '× → ' + number(data['latest_average'], 3) + '× TypeScript time (' + number(data['same_run_change_percent'], 2) + '% more time). Historical checkpoints use separately paired TypeScript runs, so this differs from subtracting neighboring history points.</p>'
+        if data.get('same_run_change_percent') is not None:
+            change = data['same_run_change_percent']
+            html += '<p class="source-note">Latest same-window comparison: ' + number(data['same_run_baseline_average'], 3) + '× → ' + number(data['latest_average'], 3) + '× TypeScript time (' + number(abs(change), 2) + ('% more time' if change >= 0 else '% less time') + '). Historical checkpoints use separately paired TypeScript runs and may use different program sets; compare only the stated scopes.</p>'
+        if data.get('current_default_comparison', {}).get('status') == 'not_measured':
+            html += '<p class="source-note">Phase ' + e(data['installed_phase']) + ' uses direct JavaScript by default. Its compilation throughput has not been measured in a comparable published benchmark. The latest measured sample above is from the legacy JavaScript backend at Phase ' + e(data['latest_phase']) + '.</p>'
         average = data['latest_average']
-        source = data['source_refs'][-1]['url']
+        source = data['history'][-1]['source_url']
     return average, html, source
 
 
@@ -202,7 +237,7 @@ def render_speed_card(card, research):
 <div class="chart-card-top"><div class="card-category"><h3 id="title-{metric}"><span class="metric-dot {metric}-color"></span>{e(card['number'])} / {e(card['title'])}</h3><span>{e(card['direction'])}</span></div>
 <div class="speed-head"><div><div class="card-headline"><strong>{average:.2f}×</strong><span>{e(card['unit'])}</span></div><p class="speed-cohort">{e(card['cohort'])}</p></div><p class="card-summary">{e(card['summary'])}</p></div></div>
 <div class="speed-charts"><div class="speed-chart"><h4>{e(card['history_label'])}</h4><p>{e(card.get('history_intro', 'TypeScript = 1×. The benchmark set stays fixed.'))}</p><figure><div class="chart-frame"><img src="./charts/{chart}.svg" alt="{e(card['alt'])}" width="900" height="{int(card.get('history_height', 590))}" loading="lazy"></div><figcaption class="card-caption">{e(card['caption'])}</figcaption></figure><div class="average-method"><strong>{e(card.get('method_label', 'How this average is calculated'))}</strong><p>{e(card['method'])}</p></div></div>
-<div class="speed-chart"><h4>{e(card['breakdown_label'])}</h4><p>The same TypeScript baseline, one program at a time.</p><figure><div class="chart-frame"><img src="./charts/{breakdown}.svg" alt="{e(card['breakdown_alt'])}" width="900" height="600" loading="lazy"></div><figcaption class="card-caption">{e(card['breakdown_caption'])}</figcaption></figure>{historical_context}</div></div>
+<div class="speed-chart"><h4>{e(card['breakdown_label'])}</h4><p>The same TypeScript baseline, one program at a time.</p><figure><div class="chart-frame"><img src="./charts/{breakdown}.svg" alt="{e(card['breakdown_alt'])}" width="900" height="{int(card.get('breakdown_height', 600))}" loading="lazy"></div><figcaption class="card-caption">{e(card['breakdown_caption'])}</figcaption></figure>{historical_context}</div></div>
 <p class="card-takeaway"><span aria-hidden="true">↳</span><span>{e(card['takeaway'])}</span></p><div class="card-bottom">{link(source, 'Read the measured report')}<div class="speed-downloads"><span>History: <a href="./charts/{chart}.svg" download>SVG ↓</a> · <a href="./charts/{chart}.png" download>PNG ↓</a></span><span>Programs: <a href="./charts/{breakdown}.svg" download>SVG ↓</a> · <a href="./charts/{breakdown}.png" download>PNG ↓</a></span></div></div>
 <details class="data-details"><summary>All measurements, commit dates &amp; sources</summary>{measurements}</details></article>'''
 
@@ -218,7 +253,7 @@ def render_cards(config, research):
         content.append(f'''<article class="chart-card" id="{metric}" aria-labelledby="title-{metric}">
 <div class="chart-card-top"><div class="card-category"><h3 id="title-{metric}"><span class="metric-dot {metric}-color"></span>{e(card['number'])} / {e(card['title'])}</h3><span>{e(card['direction'])}</span></div>
 <div class="card-headline"><strong>{e(card['value'])}</strong><span>{e(card['unit'])}</span></div><p class="card-summary">{e(card['summary'])}</p></div>
-<figure style="margin:0"><div class="chart-frame"><img src="./charts/{chart}.svg" alt="{e(card['alt'])}" width="800" height="510" loading="lazy"></div><figcaption class="card-caption">{e(card['caption'])}</figcaption></figure>
+<figure style="margin:0"><div class="chart-frame"><img src="./charts/{chart}.svg" alt="{e(card['alt'])}" width="900" height="{int(card.get('chart_height', 560))}" loading="lazy"></div><figcaption class="card-caption">{e(card['caption'])}</figcaption></figure>
 <p class="card-takeaway"><span aria-hidden="true">↳</span><span>{e(card['takeaway'])}</span></p>
 <div class="card-bottom"><a href="#finding-{e(card['finding'])}" data-show-metric="{metric}">Explore the finding ↗</a><span><a href="./charts/{chart}.svg" download>SVG ↓</a> · <a href="./charts/{chart}.png" download>PNG ↓</a></span></div>
 <details class="data-details"><summary>Measurements &amp; sources</summary>{measurements[card['table']]}</details></article>''')

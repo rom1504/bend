@@ -98,6 +98,15 @@ checked output. The report separately records whether Bend roles emit equal text
 The built-in TypeScript role retains commit
 `018751270e800bc222a93dad7f257083ee53a5f7` and the same catalog oracle.
 
+The separate SCC-sharing experiment uses `latency-method06/run.py` with
+`scc-bindings.json`. Its baseline is the new genuine reach01 B2, not Phase56 B2.
+The candidate has the distinct role kind `scc-sharing`; its receipt must identify
+`phase58-data-only-shared-scc-census`, exact inversion and loop-body identity,
+the same genuine emission, and the exact unchanged runtime prefix. Both images
+share compiler source, driver, Base and runtime identities. The resulting image
+is labelled `diagnostic-scc-sharing`, not a checked compiler or a field-key edit.
+Methods03–05 and their consumed predecessors remain unchanged.
+
 Preparation loads the API in its own process. Measured processes explicitly time
 ordinary `D.loadApi()`, the first ordinary `D.inspect(..., backend: 'direct')`, and
 each later ordinary request; they do not use a persistent inspector. Reported
@@ -127,6 +136,15 @@ processes, each with a first request plus three later requests, or 72 requests.
 That is a larger follow-up, not the 20–60 s pilot. Each suite's preparation is
 reused for its clean run and optional two-image lexer CPU/allocation profiles.
 `commands.txt` preserves the exact launch arguments; the script launches none.
+
+For the selected shared candidate, `make-final-matrix.py COMPARISON_REPORT
+NEW_FINAL_MATRIX_JSON` preserves those clean commands, includes TypeScript in
+both B1/B2 lexer allocation and CPU campaigns, and adds two fresh own-source clean
+emissions under the same method02. The materialized plan is
+`selfhost/build/phase58/comparison-shared01/final-matrix.json`, with exact shell
+commands in `final-matrix.txt`. Its ten commands remain serial and explicitly
+identify which runner owns the sole resource guard. Generating this plan launches
+no targets.
 
 ## Full own-source emission
 

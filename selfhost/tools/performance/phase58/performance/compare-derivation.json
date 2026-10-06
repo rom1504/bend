@@ -1,0 +1,114 @@
+{
+  "kind": "phase58-program-performance-method-derivation",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/performance/compare.py",
+    "sha256": "a7c4f9cf699fe9e8eef4c435f105dd4435088b5c7e88fe6abe26e15cdd1f84ef"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/performance/compare.py",
+    "sha256": "3ba8926f642a2df5afbfd705e96b38dc51a0a307d3b606c81f5e76609d5bb294"
+  },
+  "edits": [
+    {
+      "old": "p.add_argument('--out',type=Path,required=True)",
+      "new": "p.add_argument('--out',type=Path,required=True);p.add_argument('--timing-scope',choices=['changed','full'],default='changed')",
+      "count": 1
+    },
+    {
+      "old": "ROOT/'selfhost/build/phase56')",
+      "new": "ROOT/'selfhost/build/phase58')",
+      "count": 1
+    },
+    {
+      "old": "ROOT/'selfhost/build/phase55/semantic-final-host02/production-js45/manifest.json'",
+      "new": "ROOT/'selfhost/build/phase56/string01-full/manifest.json'",
+      "count": 1
+    },
+    {
+      "old": "portable_file=TOOLS/'phase53/bundles/current/manifest.json';reference_file=TOOLS/'phase53/bundles/baseline/manifest.json'",
+      "new": "publication_file=TOOLS/'phase56/publication.json';installed_start_file=ROOT/'selfhost/build/phase58/installed-start.json';preserved_release_file=ROOT/'selfhost/build/phase58/prior-release/release.json';reference_file=TOOLS/'phase53/bundles/baseline/manifest.json'",
+      "count": 1
+    },
+    {
+      "old": "pin(__file__);pin(TOOLS/'programs/run.py');pin(TOOLS/'programs/support.py')",
+      "new": "pin(__file__);pin(TOOLS/'programs/run.py');pin(TOOLS/'programs/support.py');pin(TOOLS/'phase56/performance/compare.py',{'sha256':'a7c4f9cf699fe9e8eef4c435f105dd4435088b5c7e88fe6abe26e15cdd1f84ef'})",
+      "count": 1
+    },
+    {
+      "old": "'phase56_unchanged_observer'",
+      "new": "'phase58_unchanged_observer'",
+      "count": 1
+    },
+    {
+      "old": "baseline=read(baseline_file);candidate=read(a.candidate)",
+      "new": "baseline=read(baseline_file,{'sha256':'6fd08b9b05a7c4d3afeb1c05e34e18ca6c1f9501bfb83fe2cfbca4b76af2056c'});candidate=read(a.candidate)",
+      "count": 1
+    },
+    {
+      "old": "portable=read(portable_file,{'sha256':'0b0485b6e35db9aa4c499517050ea6366434c9f7d1eeaac7112ad433423eb969'})",
+      "new": "publication=read(publication_file);installed_start=read(installed_start_file);saved_release=read(preserved_release_file)\nassert publication['complete'] and publication['selected']['attempt']=='checked-string01'\nassert publication['selected']['api']['sha256']=='128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea'\nassert publication['selected']['release']['sha256']==pin(preserved_release_file)['sha256']\nstart_release=[r for r in installed_start['files']if r['file']==str(ROOT/'selfhost/dist/release.json')];assert len(start_release)==1\nassert pin(preserved_release_file,start_release[0])['sha256']==publication['selected']['release']['sha256']\nsaved_api=[r for r in saved_release['files']if r['path']=='dist/typed-api.mjs'];assert len(saved_api)==1\nassert saved_api[0]['sha256']==publication['selected']['api']['sha256'] and saved_release['sourceSha256']==publication['selected']['sourceSha256']\nassert saved_release['directRuntimeSha256']==publication['selected']['directRuntimeSha256']",
+      "count": 1
+    },
+    {
+      "old": "'cfde1ebf44d958e593331cfd9af77f7b6ee657441dbd582db8d27f3928815a62'",
+      "new": "'128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea'",
+      "count": 1
+    },
+    {
+      "old": "[baseline,candidate,portable,reference]",
+      "new": "[baseline,candidate,reference]",
+      "count": 1
+    },
+    {
+      "old": "ROOT/'selfhost/build/phase55/checked-host02/attempt.json'",
+      "new": "ROOT/'selfhost/build/phase56/checked-string01/attempt.json'",
+      "count": 1
+    },
+    {
+      "old": "dated=load_bundle(portable_file,catalog,catalog_id['sha256'],cases,['candidate'],inputs)\n",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": " assert same(left,dated['points'][key]['candidate']),'Host02 differs from dated Phase53 output: '+key\n",
+      "new": "",
+      "count": 1
+    },
+    {
+      "old": "'Exact Phase55 host02 output, equal to published Phase53 current bytes'",
+      "new": "'Exact Phase56 installed String01 output; whole checked-source modules unchanged by role remap'",
+      "count": 1
+    },
+    {
+      "old": "commands=[]\nfor n,start in enumerate(range(0,len(changed),15)):",
+      "new": "selected_timing=[c['id']for c in cases]if a.timing_scope=='full'else changed\ncommands=[]\nfor n,start in enumerate(range(0,len(selected_timing),15)):",
+      "count": 1
+    },
+    {
+      "old": "','.join(changed[start:start+15])",
+      "new": "','.join(selected_timing[start:start+15])",
+      "count": 1
+    },
+    {
+      "old": "dict(executed=False,commands=commands)",
+      "new": "dict(executed=False,timingScope=a.timing_scope,selectedIds=selected_timing,commands=commands,guard='Parent unpinned and unlocked; each unchanged programs/run.py command owns the single serial ExecutionGuard. Full45 means 3 batches/669 fresh samples under the retained ray policy.')",
+      "count": 1
+    },
+    {
+      "old": "kind='phase56-performance-retention'",
+      "new": "kind='phase58-performance-retention'",
+      "count": 1
+    },
+    {
+      "old": "datedPortable=pin(portable_file),",
+      "new": "baselinePublication=pin(publication_file),baselineInstalledStart=pin(installed_start_file),baselinePreservedRelease=pin(preserved_release_file),timingScope=a.timing_scope,selectedTimingIds=selected_timing,",
+      "count": 1
+    },
+    {
+      "old": "scope='Exact checked raw and observer output comparison, with host02 output joined to dated Phase53 portable bytes. Changed points require fresh paired timing. Unchanged points retain dated evidence; no new timing, semantic qualification or aggregate speedup is claimed.'",
+      "new": "scope='Exact checked raw and observer output comparison against the Phase56 installed String01 image. The Phase58 start receipt and retained prior release establish that baseline; no closed raw cache is written. Exact pinned TypeScript modules are reused. Changed-only mode requires fresh timing for each changed module; full mode requests all45 without mixing historical samples. This producer executes no compiler/target, proves no semantic oracle and claims no new speedup.'",
+      "count": 1
+    }
+  ],
+  "scope": "Retains exact acquisition, raw/observer, saved-module and timing worker verification. Rebinds prior selected baseline to installed Phase56 String01, and exposes explicit full45 versus changed-only timing choice."
+}

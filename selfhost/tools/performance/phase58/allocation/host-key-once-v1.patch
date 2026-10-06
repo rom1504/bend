@@ -1,0 +1,24 @@
+--- a/selfhost/src/back/js/direct/host.bend
++++ b/selfhost/src/back/js/direct/host.bend
+@@ -21,10 +21,17 @@
+       u => Con{j_app_type(t, atom("Absent")), rest}, u => Con{kid(t, 0), Con{j_app_type(t, atom("Absent")), rest}}), seen, fuel), u =>
+     kc(U32, String.eq(tg(t), "ADT"), u =>
+       kc(U32, String.eq(nm(t), "Nat") && db(lookup(book, nm(t))), u => 1, u =>
+-        kc(U32, has_name(seen, term_key(t)), u => jd_host_nat_status(book, rest, seen, fuel), u =>
+-          jd_host_nat_status(book, List.append(&2,KTerm,
+-            jd_host_ctor_types(book, dc(lookup(book, nm(t))), ks(t)), rest),
+-            Con{term_key(t), seen}, fuel))), u => jd_host_nat_status(book, rest, seen, fuel)))
++        jd_host_nat_status_key(book, t, rest, seen, fuel, term_key(t))),
++      u => jd_host_nat_status(book, rest, seen, fuel)))
++
++# Serialize only after the ADT/native-Nat tests, once for both seen operations.
++@unsafe
++def jd_host_nat_status_key(+book: List<&2,KDef>, +t: KTerm, +rest: List<&2,KTerm>,
++  +seen: List<&2,String>, +fuel: U32, +key: String) -> U32:
++  kc(U32, has_name(seen, key), u => jd_host_nat_status(book, rest, seen, fuel), u =>
++    jd_host_nat_status(book, List.append(&2,KTerm,
++      jd_host_ctor_types(book, dc(lookup(book, nm(t))), ks(t)), rest),
++      Con{key, seen}, fuel))
+ 
+ @unsafe
+ def jd_host_ctor_types(+book: List<&2,KDef>, +ctors: List<&2,KDef>, +args: List<&2,KTerm>) -> List<&2,KTerm>:

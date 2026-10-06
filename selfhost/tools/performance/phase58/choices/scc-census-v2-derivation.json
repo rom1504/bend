@@ -1,0 +1,47 @@
+{
+  "parent": {
+    "file": "selfhost/tools/performance/phase58/choices/scc-census.mjs",
+    "sha256": "9ae1f34a7e5bf6f9a1935208a5e9950722afbfaeef4e2f1caee34d3d4456370d",
+    "bytes": 5377
+  },
+  "output": {
+    "file": "selfhost/tools/performance/phase58/choices/scc-census-v2.mjs",
+    "sha256": "efd411138f49ca6fbc9ffbbf2450f799797c21b4c90e48a3b73cf0c94f411863",
+    "bytes": 6833
+  },
+  "edits": [
+    {
+      "before": "const parent=identity(input),producer=identity(import.meta.filename),text=fs.readFileSync(input,'utf8');",
+      "after": "const parent=identity(input),producer=identity(import.meta.filename),text=fs.readFileSync(input,'utf8');\nconst emissionFile=path.join(path.dirname(input),'report.json'),emission=JSON.parse(fs.readFileSync(emissionFile,'utf8'));\nassert(emission.complete&&emission.pass);assert.equal(emission.module.sha256,parent.sha256);assert.equal(emission.module.bytes,parent.bytes);\nconst runtime=identity(emission.directRuntime.file);assert.equal(runtime.sha256,emission.directRuntime.sha256);\nassert(text.startsWith(fs.readFileSync(runtime.file,'utf8')+'\\n'));\nconst emissionIdentity=identity(emissionFile);"
+    },
+    {
+      "before": "const shared=`function ${dispatcher}(${['$pc',...g.rows[0].params].join(',')}){${g.body}}\\n`;",
+      "after": "const references=g.rows.map(r=>`\\n/*JD_REF:${r.name}*/`).join('');\n  const shared=`function ${dispatcher}(${['$pc',...g.rows[0].params].join(',')}){${references}${g.body}}\\n`;"
+    },
+    {
+      "before": "edits.push({start:row.start,end:row.end,after:replacement});",
+      "after": "edits.push({start:row.start,end:row.end,before:text.slice(row.start,row.end),after:replacement});"
+    },
+    {
+      "before": "const next=parse(derived)",
+      "after": "let restored=derived,offset=0;const inverse=[];\nfor(const e of edits){const start=e.start+offset;inverse.push({start,end:start+e.after.length,before:e.before});offset+=e.after.length-(e.end-e.start);}\nfor(const e of inverse.reverse())restored=restored.slice(0,e.start)+e.before+restored.slice(e.end);assert.equal(restored,text);\nassert(derived.startsWith(fs.readFileSync(runtime.file,'utf8')+'\\n'));\nconst next=parse(derived)"
+    },
+    {
+      "before": "productionQualified:false,parent,producer,node:",
+      "after": "productionQualified:false,exactInverse:true,exactLoopBodyIdentity:true,emission:emissionIdentity,runtime,parent,producer,node:"
+    },
+    {
+      "before": "Every wrapper marks its canonical leader; all original loop bytes and JD_REF dependencies are retained once.",
+      "after": "Every wrapper marks its canonical leader, which explicitly marks every member; all original loop bytes and JD_REF dependencies are retained once."
+    },
+    {
+      "before": "[parent,producer,report.node]",
+      "after": "[parent,producer,report.node,runtime,emissionIdentity]"
+    },
+    {
+      "before": "fs.mkdirSync(out,{recursive:false});",
+      "after": "const phaseRoot=fs.realpathSync(path.resolve(path.dirname(import.meta.filename),'../../../../build/phase58'));\nassert(out.startsWith(phaseRoot+path.sep),'Output must be a fresh Phase58 raw directory');\nassert.equal(path.dirname(out),fs.realpathSync(path.dirname(out)),'Output parent must be canonical');\nfs.mkdirSync(out,{recursive:false});"
+    }
+  ],
+  "scope": "Adds exact full-emission/runtime binding, explicit leader retention of every component member, and byte-inversion validation; original consumed census remains unchanged."
+}

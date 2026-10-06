@@ -1,0 +1,19 @@
+{
+  "kind": "phase58-final-orchestration-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/final-orchestration.py",
+    "sha256": "0f52e862d2d14ad9bdcdee0949ee7ed0e542a4540555d9402b9e71647d978798"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/final-orchestration-v2.py",
+    "sha256": "f4a45b4f345c37e00be47b360071dd3006ffdb22fb5f75ee61d610c9550ffbf5"
+  },
+  "edits": [
+    {
+      "old": "s['rootLaunch']=run(s['plan'],out/(s['name']+'-stage-execution'))",
+      "new": "s['rootLaunch']=list(map(str,run(s['plan'],out/(s['name']+'-stage-execution'))))",
+      "count": 1
+    }
+  ],
+  "scope": "Only JSON serialization of rootLaunch argv. Preserves consumed v1 and its partial four-stage output; no command, oracle, admission or guard change."
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "phase58-paired-acquisition-successor",
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/paired-fixtures.mjs",
+    "sha256": "a428473a4fb83825794ecf9ed29c33b9d5392e9e5f07c169da8e239056a038d6"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/paired-fixtures-v2.mjs",
+    "sha256": "6a2947f7a3c9fd84f7a78215c607fd5f90773e1edddf31376828d2d1f7fe0fe7"
+  },
+  "edits": [
+    {
+      "old": "ids.add(c.id);}",
+      "new": "ids.add(c.id);assert(['library','program'].includes(c.mode));}",
+      "count": 1
+    },
+    {
+      "old": "const rr=report.roles[role]",
+      "new": "const actualConfig=JSON.parse(fs.readFileSync(path.join(state.attempt.snapshot.root,'src/compiler.json'),'utf8')),bootstrap=JSON.parse(fs.readFileSync(state.attempt.bootstrapReport.file,'utf8'));assert.equal(actualConfig.upstream,catalog.upstreamCommit);assert.equal(bootstrap.revision,catalog.upstreamCommit);\n  const rr=report.roles[role]",
+      "count": 1
+    },
+    {
+      "old": "kind:'bend-program-checked-emission',complete:false",
+      "new": "kind:'bend-program-checked-emission',backend:'direct',complete:false",
+      "count": 1
+    }
+  ],
+  "scope": "Preserves consumed v1 at its original path. V2 adds explicit snapshot/bootstrap upstream join, valid mode enumeration and top-level direct backend receipt. No source/output/ordinary-driver behavior changes."
+}

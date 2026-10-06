@@ -1,0 +1,261 @@
+{
+  "kind": "phase58-inherited-b2-methods",
+  "complete": true,
+  "dataOnly": true,
+  "targetExecuted": false,
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/make-b2-methods.py",
+    "sha256": "73c60e2201fe356e4de1ec4e6596a776fb1ace7d8e8ed256f8e77e6596e5375c"
+  },
+  "rows": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/prepare-candidate.py",
+        "sha256": "1c3aa85cf3d8b42a4e4926bf4216730e56a15590d304084b2ee3938b25f89f34"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/bootstrap/prepare-candidate.py",
+        "sha256": "b494389a40a0492be9cbded64cd5f8ce0289b807e49cf7e1c67da3c90821bbde"
+      },
+      "edits": [
+        {
+          "old": "selfhost/build/phase56",
+          "new": "selfhost/build/phase58"
+        },
+        {
+          "old": "'Phase56 candidate own-source generation",
+          "new": "'Phase58 candidate own-source generation"
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/setup-v2.mjs",
+        "sha256": "74c9f097bc2ead3a8aef4ff07d52fd933ab574b45b9ef50bd1cd8cb9ecec212e"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/bootstrap/setup.mjs",
+        "sha256": "cce0fbb0ef8e3714bee1c789d9ba390db4801478416129c6b37ffddb2e5b35dd"
+      },
+      "edits": [
+        {
+          "old": "selfhost/build/phase56",
+          "new": "selfhost/build/phase58"
+        },
+        {
+          "old": "Fresh output must be inside Phase56",
+          "new": "Fresh output must be inside Phase58"
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/bootstrap/reproduce-v2.mjs",
+        "sha256": "da4e4448de2004464409c745e81a20e1847d0054ec5cbfe89774607cd3f6ab24"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/bootstrap/reproduce.mjs",
+        "sha256": "eda7079a89b1995260cd9e8e896e027580e362518e0c7303904ee0d250ef6a37"
+      },
+      "edits": [
+        {
+          "old": "selfhost/build/phase56",
+          "new": "selfhost/build/phase58"
+        },
+        {
+          "old": "'./setup-v2.mjs'",
+          "new": "'./setup.mjs'"
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/self-check-v2.mjs",
+        "sha256": "fb7c322231cda3f5c59ee99be4c6d43b37387c07785ca165cbee59dad11b609e"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/self-check.mjs",
+        "sha256": "41f7ddb91f12aec3090a602e8ae762c1c0d6fe477a3e894180ab167909e1d977"
+      },
+      "edits": [
+        {
+          "old": "'../bootstrap/setup-v2.mjs'",
+          "new": "'../bootstrap/setup.mjs'"
+        },
+        {
+          "old": "assert.equal(definitions.length,3012);assert.equal(new Set(definitions).size,3012);",
+          "new": "assert(definitions.length>0);assert.equal(new Set(definitions).size,definitions.length);"
+        },
+        {
+          "old": "method:'Every one of the exact checked assembly\\'s 3012 unique def declarations is explicitly annotated @unsafe.',definitions:3012,explicitlyUnsafe:3012",
+          "new": "method:'Every unique def in the exact selected checked assembly is explicitly annotated @unsafe; count is derived from that pinned source.',definitions:definitions.length,explicitlyUnsafe:explicitlyUnsafe.length"
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/acquire-v2.mjs",
+        "sha256": "cb5fd322c6553189f92a404e1a0dff2d28b94b8404650cf0b253a5859c958c43"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/acquire.mjs",
+        "sha256": "ff0401ff8f887a988da5ae258a69fa00b5bb58368f5008da334f17e4873acbac"
+      },
+      "edits": [
+        {
+          "old": "'../bootstrap/setup-v2.mjs'",
+          "new": "'../bootstrap/setup.mjs'"
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/benchmark-equality.mjs",
+        "sha256": "986ee48ccd24916a484bcc90be90d2f166ba8457862bd1b8baa7402750936967"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/benchmark-equality.mjs",
+        "sha256": "694d1713a8e4bad4d3367131e0d5413367bc92acad6b056dddc0d371789b2164"
+      },
+      "edits": [
+        {
+          "old": "'../bootstrap/setup-v2.mjs'",
+          "new": "'../bootstrap/setup.mjs'"
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/image-provenance-v2.mjs",
+        "sha256": "9603a23f6e34295cd349810fc79cc77a50e5434ddd2753826229a22e74a16a45"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/image-provenance.mjs",
+        "sha256": "2612e640364545c435a5351fb9d9abf0dd7449ad334642c3af95d1be81f63b68"
+      },
+      "edits": [
+        {
+          "old": "../../../../build/phase56",
+          "new": "../../../../build/phase58"
+        },
+        {
+          "old": "Caches must stay in Phase56",
+          "new": "Caches must stay in Phase58"
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/source-controls-v2.mjs",
+        "sha256": "442dec4e8d8a1ed9ee08f40e2b3b3f04656a1ecc223150948d7830191997b225"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/source-controls.mjs",
+        "sha256": "82661103d43b1642e813642d64c9c620eda509638baf12e34f62195df5ee725a"
+      },
+      "edits": [
+        {
+          "old": "'./image-provenance-v2.mjs'",
+          "new": "'./image-provenance.mjs'"
+        }
+      ],
+      "oracleTailByteIdentical": true,
+      "oracleTailSha256": "9560b2d49298121eeecfc3ec1e38330c4adf30569c456e7a542a21b8efd377d8"
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/numeric-controls-v2.mjs",
+        "sha256": "ba8bd4f587a69f3b38bb579106be8afddc946eeed64bd0bd4d27d3f6c71ca145"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/numeric-controls.mjs",
+        "sha256": "5edf683d8c9b877b79bf4ed5bfcbe2c1d4f32ff4fa7d2a7e6ad8d52944d1f747"
+      },
+      "edits": [
+        {
+          "old": "'./image-provenance-v2.mjs'",
+          "new": "'./image-provenance.mjs'"
+        }
+      ],
+      "oracleTailByteIdentical": true,
+      "oracleTailSha256": "5053af7d2610a3048d7a12e0ea4073b37a6d371ec604aa4519e20e5d2da57d76"
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/composition-controls-v2.mjs",
+        "sha256": "8b98ef9ebf47b55266d589a292a847ead84f6b76eed1470d2cf233a76268298a"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/composition-controls.mjs",
+        "sha256": "e87340fdad71999fe7954e91d2b49b671e40db0979fd5cf8df69cc148f1f5b0a"
+      },
+      "edits": [
+        {
+          "old": "'./image-provenance-v2.mjs'",
+          "new": "'./image-provenance.mjs'"
+        }
+      ],
+      "oracleTailByteIdentical": true,
+      "oracleTailSha256": "605d146424e93b8158a82adce6300afc7d6d45827d022cd6dd879220c82df55c"
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/overapplication-controls-v2.mjs",
+        "sha256": "5e5b33b8d69c3b5f4665f1643e34a059b90df895712ad1ea47956b5684fcea32"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/overapplication-controls.mjs",
+        "sha256": "f42e3eaf13a38b3ada2f6c49f905b0e3cfd79c97512d28c51a63c8f5f6e27aa3"
+      },
+      "edits": [
+        {
+          "old": "'./image-provenance-v2.mjs'",
+          "new": "'./image-provenance.mjs'"
+        }
+      ],
+      "oracleTailByteIdentical": true,
+      "oracleTailSha256": "7d081977b02934b4ed687ebf5009b8758f7e266461a39cb05179556424a8e08e"
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase56/qualification/plan-v2.py",
+        "sha256": "42766f015d0ae96ebf11787d5c955b96b029365c6e249f82f38e28365aac4377"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/b2-plan.py",
+        "sha256": "25d44830d44b6b45ad6344c04dc332a68651dd3f0d3faf8661b697071e848718"
+      },
+      "edits": [
+        {
+          "old": "selfhost/build/phase56",
+          "new": "selfhost/build/phase58"
+        },
+        {
+          "old": "here/'acquire-v2.mjs'",
+          "new": "here/'acquire.mjs'"
+        },
+        {
+          "old": "here/'image-provenance-v2.mjs'",
+          "new": "here/'image-provenance.mjs'"
+        },
+        {
+          "old": "here/'controls-derivation-v2.json'",
+          "new": "here/'b2-methods-derivation.json'"
+        },
+        {
+          "old": "here.parent/'bootstrap/setup-v2.mjs'",
+          "new": "here.parent/'bootstrap/setup.mjs'"
+        },
+        {
+          "old": "pin(here/'plan.py')",
+          "new": "pin(tools/'phase56/qualification/plan-v2.py')"
+        },
+        {
+          "old": "here/(name+'-controls-v2.mjs')",
+          "new": "here/(name+'-controls.mjs')"
+        }
+      ]
+    }
+  ],
+  "scope": "Frozen Phase56 generation/admission/reproduction and independent oracle methods. Fresh Phase58 private paths and setup imports only, except self-check derives the unique unsafe-def set/count from the exact selected checked source rather than hardcoding3012. All four semantic oracle tails remain byte-identical. Inherited phase labels identify method schemas, not historical execution."
+}

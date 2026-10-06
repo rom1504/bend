@@ -1,0 +1,33 @@
+{
+  "parent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase55/semantic-census-v1.py",
+    "sha256": "880a2a55f391f634bf16e68d9722e7fcffd5fb434dbaf4af31fd154acc99ade4"
+  },
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/qualification/direct-census.py",
+    "sha256": "f60828cd97569a68a03f781ebc0fb0cbc4b0b4466689e37f1d8321eb0ef0e5d9"
+  },
+  "edits": [
+    {
+      "old": "HERE=Path(__file__).resolve().parent\nROOT=HERE.parents[3]",
+      "new": "HERE=Path(__file__).resolve().parent\nROOT=HERE.parents[4]"
+    },
+    {
+      "old": "HERE.parent/'",
+      "new": "HERE.parents[1]/'"
+    },
+    {
+      "old": "selfhost/build/phase55",
+      "new": "selfhost/build/phase58"
+    },
+    {
+      "old": "kind='phase55-direct-js-census'",
+      "new": "kind='phase58-direct-js-census'"
+    },
+    {
+      "old": "import sys\n",
+      "new": "import sys\nsys.dont_write_bytecode=True\n"
+    }
+  ],
+  "scope": "Only output namespace, import locations, method label and bytecode suppression change; 26-case selector/oracles/resources unchanged."
+}

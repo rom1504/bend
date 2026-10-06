@@ -1,0 +1,45 @@
+{
+  "kind": "phase58-scc-sharing-receipt-joins",
+  "scope": "Add exact census emission/runtime/inversion/loop-body joins before first consumption. Earlier method05/setup-v3 preserved. No target execution.",
+  "derivations": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/setup-v3.mjs",
+        "sha256": "7f748e3ec494c4cd344563e7de149a02687de891e12fe6baefec869facb5ddda"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/setup-v4.mjs",
+        "sha256": "f19673a81c434eeb96b2fe927b70cdb7105cd7aa0497bb981491e6d75a6b648e"
+      },
+      "edits": [
+        {
+          "old": "assert.equal(d.kind,'phase58-data-only-shared-scc-census');",
+          "new": "assert.equal(d.kind,'phase58-data-only-shared-scc-census');\n      assert.equal(d.exactInverse,true);assert.equal(d.exactLoopBodyIdentity,true);\n      assert.deepEqual(pin(d.emission),parent.emission);",
+          "count": 1
+        },
+        {
+          "old": "const prefix=Buffer.concat([fs.readFileSync(runtime.file),Buffer.from('\\n')]);",
+          "new": "assert.equal(pin(d.runtime).sha256,runtime.sha256);\n      const prefix=Buffer.concat([fs.readFileSync(runtime.file),Buffer.from('\\n')]);",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/make-method-v3.py",
+        "sha256": "bcb9b4b8282c2ff70be157b06b81cfc153b69f0e61ac0eb268ca9b4a2112569d"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/make-method-v4.py",
+        "sha256": "fc3d85e48c9523e48d26551c8b5c4a6c616ff95a167dbfa3983038462266370a"
+      },
+      "edits": [
+        {
+          "old": "HERE/'setup-v3.mjs'",
+          "new": "HERE/'setup-v4.mjs'",
+          "count": 3
+        }
+      ]
+    }
+  ]
+}

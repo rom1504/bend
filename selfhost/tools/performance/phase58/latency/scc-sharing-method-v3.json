@@ -1,0 +1,45 @@
+{
+  "kind": "phase58-scc-sharing-latency-method-successor",
+  "scope": "Explicit SCC-sharing diagnostic role; exact runtime prefix verified, genuine parent/source/runtime/private cache/oracle retained. Existing methods unchanged. No target executions.",
+  "derivations": [
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/setup-v2.mjs",
+        "sha256": "443790f456fa27401c227c6db968bce7293161ec3bbed24c8cad80d612734ee3"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/setup-v3.mjs",
+        "sha256": "7f748e3ec494c4cd344563e7de149a02687de891e12fe6baefec869facb5ddda"
+      },
+      "edits": [
+        {
+          "old": "    if(spec.kind==='syntax') {",
+          "new": "    if(spec.kind==='scc-sharing') {\n      assert.notEqual(spec.parentRole,name);const parent=await resolve(spec.parentRole,depth+1);\n      assert.equal(parent.kind,'direct','SCC sharing derives a genuine direct emission');\n      const id=pin(spec.derivation),d=read(id);\n      assert.equal(d.kind,'phase58-data-only-shared-scc-census');\n      assert.equal(d.complete,true);assert.equal(d.pass,true);\n      assert.equal(d.diagnosticOnly,true);assert.equal(d.productionQualified,false);\n      assert.equal(typeof d.scope,'string');assert.ok(d.scope.length>0);\n      assert.equal(pin(d.parent).sha256,parent.api.sha256);pin(d.producer);pin(d.node);\n      for(const item of d.inputs??[])pin(item);\n      const output=pin(d.output),runtime=pin(path.join(parent.attempt.snapshot.root,'src/runtime/js/direct.mjs'));\n      const prefix=Buffer.concat([fs.readFileSync(runtime.file),Buffer.from('\\n')]);\n      for(const file of [parent.api.file,output.file]) {\n        const bytes=fs.readFileSync(file);assert.ok(bytes.subarray(0,prefix.length).equals(prefix),'Exact direct runtime prefix changed');\n      }\n      return {...parent,kind:'diagnostic-scc-sharing',api:output,diagnosticDerivation:id,\n        diagnosticKind:d.kind,scope:d.scope,runtimePrefix:{identity:runtime,bytes:prefix.length,unchanged:true}};\n    }\n    if(spec.kind==='syntax') {",
+          "count": 1
+        },
+        {
+          "old": "diagnosticDerivation:selected.diagnosticDerivation??null,productionQualified:false,",
+          "new": "diagnosticDerivation:selected.diagnosticDerivation??null,productionQualified:false,\n    diagnosticKind:selected.diagnosticKind??null,diagnosticScope:selected.scope??null,runtimePrefix:selected.runtimePrefix??null,",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/make-method-v2.py",
+        "sha256": "acd78404d5229823bf8b679ef1033b0838081cb24652267119b2ea09bfea8b14"
+      },
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/latency/make-method-v3.py",
+        "sha256": "bcb9b4b8282c2ff70be157b06b81cfc153b69f0e61ac0eb268ca9b4a2112569d"
+      },
+      "edits": [
+        {
+          "old": "HERE/'setup-v2.mjs'",
+          "new": "HERE/'setup-v3.mjs'",
+          "count": 3
+        }
+      ]
+    }
+  ]
+}

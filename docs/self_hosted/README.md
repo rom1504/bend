@@ -33,7 +33,7 @@ The survey changes documentation only; it does not qualify a new compiler.
 | [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Current callable/data interface, ordered prefix/value lowering, 4,096-definition analysis bound and qualification limits. |
 | [Architecture](architecture.md) | Dated Phase45 source organization, representations, pipeline and complexity; use backend boundaries for the current backend split. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |
-| [Compiler allocation](compiler-allocation.md) | Phase58 candidate literal fields, constructor queries, scalar residuals and literal choices; proof/fallback boundaries and remaining key reuse. |
+| [Compiler allocation](compiler-allocation.md) | Six Phase58 candidate changes: literal fields, constructor queries, scalar residuals, literal choices, distinct dependency edges and shared recursive dispatch; qualification pending. |
 | [Private array regions](private-array-regions.md) | Phase47 closed-array representation, ordered operations, host guards and research limits; separate from release qualification. |
 | [Phase48 representations](phase48-representations.md) | RNFA04 mechanisms, composition controls and original-path mutation contracts; the phase report records release status. |
 | [V8-guided runtime](v8-guided-runtime.md) | Phase51 small IO helper, same-entry String proof, and the warmup/inlining limits. |

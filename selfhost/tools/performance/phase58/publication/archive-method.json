@@ -1,0 +1,45 @@
+{
+  "kind": "phase58-closed-archive-method-plan",
+  "executed": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/archive-campaign-v1.py",
+    "sha256": "4d393286e9a3e26892ff52bb242f53f1ea3211a82caeee3ef79a52b4597cfaa6",
+    "bytes": 4632
+  },
+  "command": [
+    "taskset",
+    "-c",
+    "0",
+    "python3",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase42/validation/archive-campaign-v1.py",
+    "--raw",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase58",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase58/artifacts/raw",
+    "--writers-closed",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/writers-closed.json",
+    "--protected-final",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase58/protected-final.json"
+  ],
+  "requiredBeforeExecution": [
+    "All target jobs, source/report writers and time accounting complete; root explicitly closes writers.",
+    "Fresh phase51/check-protected.py receipt complete/checked103/changed[]/protectedStaged[].",
+    "Reviewed preservation.py selected audit complete/pass, including old seven copies and exact closed54\u201357 file inventory.",
+    "writers-closed.json binds actual selected attempt/API identities and rawRoot with complete:true,writersClosed:true.",
+    "Archive destination fresh and outside raw; stdout/logs and publication metadata outside raw after closure."
+  ],
+  "methodBounds": {
+    "chunkBytes": 1048576,
+    "maxFileBytes": 2147483648,
+    "maxTotalBytes": 68719476736,
+    "maxMembers": 500000
+  },
+  "verification": [
+    "Deterministic streamed tar+gzip while hashing member bytes.",
+    "Complete streamed reopen and member byte/hash equality.",
+    "Before/after raw stat-token inventory equality, then exact raw content rehash.",
+    "Declaration/producer identities unchanged before atomic staging-directory rename."
+  ],
+  "scope": "Reuse unchanged historical streaming method; its phase42 kind labels method lineage. Archive only Phase58 raw, including failed/partial runs. No archive, target execution, snapshot or claim of writer closure is performed by this metadata file."
+}

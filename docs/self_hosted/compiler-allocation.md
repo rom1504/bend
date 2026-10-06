@@ -1,13 +1,14 @@
 # Compiler allocation and direct JavaScript generation
 
-This page describes four implemented **Phase58 candidate** changes. Combined
+This page describes six implemented **Phase58 candidate** changes. Combined
 release qualification is pending; the installed-release identity remains in the
 [self-hosted compiler index](README.md). The [Phase58 report](../../implementation/phase58/README.md)
 records checked artifacts, focused controls, measurements and the eventual
 selection decision. Implementation does not by itself establish a speedup.
 
-Three changes improve the JavaScript emitted by the compiler, including a
-self-emitted compiler image. One improves the compiler's own constructor queries.
+Four changes target the JavaScript emitted by the compiler, including a
+self-emitted compiler image. Two target the compiler's constructor queries and
+emitted-dependency traversal.
 All decisions are implemented in Bend. The runtime and diagnostic tools are
 separate: saved-JavaScript derivatives test hypotheses, while private acquisition
 and counter tools qualify actual source changes. They are not production passes.
@@ -18,6 +19,8 @@ and counter tools qualify actual source changes. They are not production passes.
 | Constructor query traversal | Temporary missing records and searches through unrelated constructor owners | `j_find_ctor_children`, `j_arm_type_domain`, [`common/queries.bend`](../../selfhost/src/back/common/queries.bend) |
 | Scalar residual reconstruction | Temporary Word lists built only to recover a native U32 | `jd_word_bind`, `jd_scalar_word`, [`direct/pattern.bend`](../../selfhost/src/back/js/direct/pattern.bend), [`direct/constructors.bend`](../../selfhost/src/back/js/direct/constructors.bend) |
 | Literal-choice lowering | Selector calls and literal callback transport around a proved conditional | `jd_choice_call`, `jd_choice_body`, [`direct/choices.bend`](../../selfhost/src/back/js/direct/choices.bend) |
+| Distinct dependency edges | Repeated reachability work for the same target within one emitted definition | `jd_reach_refs_unique`, `jd_reach_marker_done`, [`direct/reach.bend`](../../selfhost/src/back/js/direct/reach.bend) |
+| Shared recursive dispatcher | Complete mutual-tail loop bodies copied into every named entry | `jd_component_definition`, `jd_component_shared`, [`direct/core.bend`](../../selfhost/src/back/js/direct/core.bend) |
 
 These are narrow transformations with explicit facts and fallbacks. They are not
 a general escape-analysis, allocation-elimination or memoization pass. The
@@ -130,13 +133,68 @@ to reorder surrounding expression prefixes. See the
 [choice report](../../implementation/phase58/literal-choices.md) for the focused
 control and deep-recursion scope.
 
+## Distinct edges in emitted reachability
+
+Reachability follows the compiler's emitted `JD_REF` metadata. This preserves
+the decisions already made by erasure, demanded bindings, numeric pattern rows
+and constructor folding; it does not introduce a second source-body analysis.
+Previously, repeated references to one helper within a rendered definition each
+used a queue entry, even when that helper had already been visited.
+
+`jd_reach_refs_unique` now uses the existing exact-name index to collect each
+target once per rendered definition. `jd_reach_marker_done` still validates
+every occurrence, including duplicates. Unknown targets, unterminated metadata
+and exhausted text budgets refuse the whole graph. References from different
+definitions remain separate edges. The final filter retains original source
+definition order, and the public scanner wrapper preserves its supplied output
+list.
+
+The limits remain 2,097,152 scanned characters per definition, 4,096 definitions
+and 65,536 queue entries. The last limit now bounds roots plus distinct outgoing
+edges, rather than textual reference occurrences. This deliberately admits some
+graphs that the old accounting refused; it is not a raised limit or an unbounded
+cache. It changes compiler traversal, not generated runtime calls. The
+[design](../../design/phase58/reachability-deduplication.md) records the earlier
+four-change candidate's edge-budget refusal and the required boundary controls.
+
+## One dispatcher per mutual-tail component
+
+The direct backend already represents mutual tail recursion with a program
+counter and a loop. Previously, each named entry copied the complete component's
+loop and cases. `jd_component_shared` now emits that body once under the component
+leader. Every named entry keeps its existing maximum-width parameter list and
+calls the private dispatcher with its constant entry counter. Singleton and
+self-loop emission remain unchanged.
+
+The dispatcher reuses `jd_component_cases` and the existing ordered body emitter:
+case-local bindings, argument evaluation, parallel stores and counter updates
+retain their previous order. Internal tail transfers continue in the same loop;
+the additional wrapper call occurs on component entry. Each invocation owns its
+parameters and counter, so callback reentry does not share activation state.
+Non-tail and unknown calls retain their existing forcing protocol. This rule
+uses existing SCC facts rather than another recursion analysis.
+
+Wrappers reference the leader in `JD_REF` metadata. `jd_component_refs` makes
+the leader retain every member, preserving the complete ordered component when
+reachability and call facts are rebuilt. The private `$scc` suffix cannot collide
+with an encoded source name. Public host wrappers and data representations are
+unchanged.
+
+The [design](../../design/phase58/shared-recursive-dispatch.md),
+[dispatcher report](../../implementation/phase58/shared-scc.md) and
+[latency report](../../implementation/phase58/latency.md#fixed-source-scc-sharing-pilot)
+distinguish the fixed-source saved-image diagnostic from the genuine checked
+implementation. The `checked-shared01` build has passed; combined release
+qualification remains pending. Diagnostic image-size and startup observations
+do not establish the source candidate's request throughput or program speed.
+
 ## Remaining key reuse is a separate, unmeasured proposal
 
 `jd_host_nat_status_on` currently serializes an unseen non-native-Nat ADT twice:
 once for membership in its visited set and once for insertion. The isolated
 [local-key proposal](../../selfhost/tools/performance/phase58/allocation/README.md)
 would share that one immutable String inside the same selected branch. It is not
-one of the four implemented changes above and has no measured retention result.
+one of the six implemented changes above and has no measured retention result.
 It must retain the native-Nat/non-ADT short circuits, normalization, worklist
 order and fuel refusal; moving serialization before those tests changes demand.
 

@@ -1,0 +1,96 @@
+{
+  "kind": "phase58-allocation-key-once-proposal",
+  "complete": true,
+  "targetExecuted": false,
+  "productionModified": false,
+  "decision": "proposed-not-qualified",
+  "baselineSource": {
+    "file": "selfhost/src/back/js/direct/host.bend",
+    "sha256": "222954163ca422add112c7560a83c2121e10d6811ec183cad4eed3c72c7643b4",
+    "bytes": 17202
+  },
+  "savedBaseline": {
+    "file": "selfhost/tools/performance/phase58/allocation/host-baseline-v1.bend",
+    "sha256": "222954163ca422add112c7560a83c2121e10d6811ec183cad4eed3c72c7643b4",
+    "bytes": 17202
+  },
+  "candidateSource": {
+    "file": "selfhost/tools/performance/phase58/allocation/host-key-once-v1.bend",
+    "sha256": "a4cda67d4cdf07cf0b383033dec684641a1bc695abb7801ac1ffbd681782700c",
+    "bytes": 17471
+  },
+  "patch": {
+    "file": "selfhost/tools/performance/phase58/allocation/host-key-once-v1.patch",
+    "sha256": "cec784a2f052eb88b29e5a04ef325e75f9164873bf481bfc3a412fb10540cb29",
+    "bytes": 1429
+  },
+  "profile": {
+    "file": "selfhost/build/phase57/allocation-analysis01/report.json",
+    "sha256": "765dda156f3ae6e88619b4111f14fcd221bd2995180bc43859f40b9b1a9a6b05",
+    "bytes": 1124608
+  },
+  "profileObservations": {
+    "role": "direct",
+    "calls": 3,
+    "sampleCount": 49609,
+    "allocationBytesPerRequest": 2177759368.0,
+    "frames": [
+      {
+        "functionName": "$jd$sk_95_char",
+        "selfSamples": 5007,
+        "selfBytes": 656722968,
+        "estimatedBytesPerRequest": 218907656.0,
+        "selfPercent": 10.051967137261787
+      },
+      {
+        "functionName": "$jd$subst_95_terms",
+        "selfSamples": 2263,
+        "selfBytes": 296700216,
+        "estimatedBytesPerRequest": 98900072.0,
+        "selfPercent": 4.54136822705198
+      },
+      {
+        "functionName": "$jd$subst_95_node",
+        "selfSamples": 1827,
+        "selfBytes": 239974504,
+        "estimatedBytesPerRequest": 79991501.33333333,
+        "selfPercent": 3.6731101933817207
+      },
+      {
+        "functionName": "$jd$terms_95_at",
+        "selfSamples": 1019,
+        "selfBytes": 133690640,
+        "estimatedBytesPerRequest": 44563546.666666664,
+        "selfPercent": 2.046302604478874
+      }
+    ]
+  },
+  "counterInvariant": {
+    "nonADT": {
+      "before": 0,
+      "after": 0
+    },
+    "nativeNat": {
+      "before": 0,
+      "after": 0
+    },
+    "alreadySeenNonNatADT": {
+      "before": 1,
+      "after": 1
+    },
+    "unseenNonNatADT": {
+      "before": 2,
+      "after": 1
+    },
+    "wholeScanExpectedSavedKeyCalls": "number of unseen non-native-Nat ADT visits",
+    "dynamicOpportunityCount": null
+  },
+  "scope": "one exact non-native-Nat ADT branch; no serialization equivalence, cache, substitution, declaration order, fuel, runtime or emitter contract change",
+  "requiredBeforePromotion": [
+    "checked build",
+    "actual helper old/new status and emitted-wrapper bytes across status0/1/2, recursive/specialized/erased cases",
+    "instrument key entries; invariant 0/0/1/2 -> 0/0/1/1",
+    "ordinary source and semantic retention",
+    "unprofiled request comparison if proposed for performance"
+  ]
+}

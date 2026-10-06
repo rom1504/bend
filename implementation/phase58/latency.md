@@ -136,3 +136,99 @@ its inputs. The result is
 `selfhost/build/phase58/latency-analysis01/report.json`, SHA-256
 `8e182a6d413f831cb4b89e0cfc63eeb8a2ab44c03547352721971ddeb5b0b396`.
 This was data-only analysis, with no compiler or generated-program execution.
+
+## New genuine B2: first changed-source pilot
+
+`selfhost/build/phase58/reach-b2-latency-pilot01/report.json` passed two fresh
+lexer processes and four ordinary requests in 35.375 s, including 20.237 s of
+preparation. The comparison is the prior genuine B2 (`3f652f7d…`) against the
+new genuine B2 (`e7a6117e…`) compiled from changed Bend source. Report SHA-256:
+`706184a3500a3b0d302d2aafb9a476ddb84626d9cc620c0ba89c28c94a306533`.
+
+| Observation, ms | Prior B2 | New B2 | Before / after |
+|---|---:|---:|---:|
+| API load | 101.833 | 173.719 | 0.586× |
+| First request | 3,184.922 | 1,353.164 | 2.354× |
+| Import + API load + first request | 3,291.029 | 1,531.084 | 2.149× |
+| Single later request | 2,221.236 | 755.333 | 2.941× |
+| Complete worker process | 8,108.163 | 4,976.585 | 1.629× |
+
+Both full lexer oracles passed. Their outputs differ: 28,452 bytes before and
+28,388 after, each exactly reproduced within its own role. First-request time
+fell 57.51%, or 53.48% including import and API load; the single later request
+used 65.99% less time. These one-round observations motivate the final comparison
+but do not isolate lookup, fields, scalar lowering or choice lowering.
+
+The compiler image grew from 3,896,951 to 8,671,962 bytes. API-load time increased
+70.59% in this observation even though compilation was faster. Peak tree RSS was
+537,018,368 versus 491,679,744 bytes; one sample cannot establish a general memory
+change. The separate SCC-sharing diagnostic below holds this new source fixed;
+its result does not qualify the corresponding checked source implementation.
+
+## Fixed-source SCC-sharing pilot
+
+`selfhost/build/phase58/scc-latency-pilot01/report.json` passed in 27.725 s,
+including 16.040 s preparation. It compared reach01 B2 (`e7a6117e…`) with the
+exact-loop-body-sharing diagnostic (`cea4b818…`), using the same compiler source,
+driver, runtime and Base. Two fresh measured processes completed four requests,
+one first and one later request per image. Both passed the full lexer oracle and
+emitted identical 28,388-byte modules (`39800331…`). Report SHA-256:
+`0c6bd4e03b76a14fecd180f9472e49ec1c021dc60610ea92c6201abc17916a08`.
+
+| Observation, ms | Unshared reach01 B2 | Shared-body diagnostic | Before / after |
+|---|---:|---:|---:|
+| API load | 174.890 | 95.616 | 1.829× |
+| First request | 1,355.766 | 1,377.641 | 0.984× |
+| Import + API load + first request | 1,534.840 | 1,477.522 | 1.039× |
+| Single later request | 749.915 | 750.518 | 0.999× |
+| Complete worker process | 4,896.723 | 4,838.109 | 1.012× |
+
+The diagnostic image shrank from 8,671,962 to 3,812,483 bytes, **56.04% less**.
+API-load time fell **45.33%**, close to half. The first request used 1.61% more
+time; the single later request used 0.08% more, effectively flat in this pilot.
+Including import and API load, the first-request window used 3.73% less time.
+These observations support image-size and startup benefits; they do not show a
+later-request throughput gain. One process per role cannot establish precision,
+stationarity or a general memory benefit. Peak tree RSS was 493,449,216 versus
+486,248,448 bytes in these processes.
+
+The exact runtime prefix, retained loop bodies and inverse source transformation
+are recorded in the diagnostic receipt. They do not substitute for checking the
+Bend implementation, generating its genuine B2, or running its broader controls.
+`checked-shared01` has now produced its genuine 3,815,480-byte B2
+(`b7c5752d…`); its final two-case, three-round comparison with TypeScript has not
+yet been measured here. The
+existing genuine-image method04 can compare those final B1 and B2 roles without
+a diagnostic-role adapter.
+
+The frozen saved-data reader independently checked the new-B2 and SCC pilots in
+`selfhost/build/phase58/latency-analysis02/report.json`, SHA-256
+`f515de8804f460da02409bc1e9ca9d5e380097fd2bf909a282ec8b759092fe68`.
+This analysis re-read the worker, preparation, source and oracle bindings and
+recomputed all reported statistics without executing a compiler.
+
+## Final measurement plan
+
+The reviewed, data-only recipe is
+`selfhost/build/phase58/comparison-shared01/final-matrix.json`, SHA-256
+`81ac58460ddc4665cca1e729842a7443d47d069a15320897ecc1e305e3121306`.
+Its sibling `final-matrix.txt` contains exact commands. It binds the prior
+string01 images to the actual checked-shared01 B1 (`eddce750…`) and genuine B2
+(`b7c5752d…`), with separate changed-source B1 and B2 comparisons.
+
+Each clean matrix covers Evening and lexer, old/new/TypeScript, and three rotated
+rounds: 18 fresh processes with a first and three later ordinary requests, or 72
+requests. Each matrix prepares its three private images once, outside those
+measurements. Separate lexer allocation and CPU campaigns use all three roles,
+three ordinary warm requests and a roughly five-second profile window. Allocation
+includes objects collected by minor and major GC; estimated bytes per profiled
+request are reported separately from peak RSS and latency.
+
+The plan also requires fresh prior-B2 and candidate-B2 own-source emissions under
+the same method02, once per image, with matching clocks and resource ceilings.
+Both require their own complete B2/B3 byte equality. Different source remains an
+explicit limitation; a change in these requests is not a measurement of lookup
+in isolation. No high-rate full-source CPU capture is part of this clean pair.
+
+These are prepared commands, not completed results. Final allocation numbers,
+TypeScript ratios and own-source costs will be taken from their saved receipts.

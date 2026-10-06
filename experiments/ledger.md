@@ -3182,3 +3182,67 @@ count and remove redundant constructor-owner probes/miss construction; preserve
 scalar origin through residual numeric bindings; then generalize literal-choice
 lowering. Keep experiments small and independently measured before another large
 representation or emitter rewrite. Phase57 raw writers are closed.
+
+## Phase58 — allocation, scalar provenance and shared code generation
+
+[Design](../design/phase58/compiler-allocation-and-code-generation.md),
+[report](../implementation/phase58/README.md),
+[final compiler measurements](../implementation/phase58/final-measurements.md),
+[reproduction guide](../selfhost/tools/performance/phase58/README.md),
+[hypothesis records](phase58/).
+
+Selected checked-last01 is installed and verified after final compiler/source/
+generated-program gates and all five release steps. Integrity before/after,
+legacy 42 and default 24 pass; the archive is closed and verified.
+Source `85454aab…`, checked B1 `641381f6…`, genuine B2/B3 `a73daccf…` retain exact
+runtime/driver/native support. Six mechanisms are general typed/emitter rules:
+last-live-key placement, constructor-query miss elimination/checked-owner search,
+exact residual U32 provenance, proved literal continuations, per-definition
+validated edge deduplication, and private shared mutual-tail dispatchers.
+Source grows 314 physical/238 code lines;98 original modules retain exact bytes.
+
+Literal all-ordinary keys help compiler requests but regress three generated
+programs. Whole computed rollback restores those programs with a large compiler
+cost; last-live-field computed is the selected general compromise. Preceding
+ordinary keys and ordinary host-clone keys remain literal; __proto__ is always
+computed. Focused17-group controls and independent empty/single/all-erased,
+trailing-erased/final-proto/effect cases pass. Width cutoff is not selected and its
+synthetic grid remains unexecuted. Historical syntax diagnoses are not relabelled
+as checked final performance.
+
+The checked 14-job integration and fresh B2 qualification retain96 source,
+34 numeric,18 composition,2 overapplication,8 maintained suites, native pairs,
+full own-source type acceptance, exact fixed point and23-source/45-point module
+agreement. Unsafe proof-trust refusal is expected independently of type acceptance;
+these gates are not kernel soundness proofs. Existing pinned-reference NaN defects
+remain separate from candidate oracles.
+
+The fresh full45 campaign passes all 669 samples: equal-point new/TS 1.046110,
+old/TS 1.061731 and new/old 0.985287; equal-source new/TS 1.040502. No  >10% regression,
+worst 2.949%, zero timing flags. This is a new completed corpus result, not reuse of
+Phase53/56 dates or a universal parity claim. Exact tables/flags/plots remain in
+[aggregate](../selfhost/build/phase58/final-performance-last01/aggregate/report.json).
+
+Final B2 ordinary compiler requests improve 49–56% for import+first and 59–67% in
+later windows on two inputs, still 2.4–2.7× same-campaign TS. B1 results are small
+and mixed, including 3.89% later lexer regression. Separate B2 lexer sampling shows
+89.41% less cumulative allocation, not peak RSS. Fresh selected own-source emission
+36.058 s versus retained old 223.475 s gives descriptive 6.198×; baseline was not a
+fresh consecutive repeat, and each emits its own changed source. No isolated
+factor speedup or final B1 allocation claim is inferred from those comparisons.
+
+Preserved evidence includes strictExact-flag/controller successors, invalid
+computed scrutinee, cross-realm AST and sandbox-launch failures, choice01 edge
+exhaustion, failed old full-allocation capture, all-literal program regressions,
+whole rollback/compiler cost, and every partial/negative measurement. Dependency
+dedup preserves resource constants and validates malformed repeated metadata;
+shared dispatch retains component member closure, entry ABI and per-call state.
+No old checked receipt or source oracle was rewritten.
+
+**Updated frontier:** release42/default 24/integrity execution is complete/pass.
+Post-install preservation, accounting, writer closure and archive member verification
+are complete; the final publication index binds the exact evidence.
+Keep measured TS compiler gap and mixed B1 results visible. Deferred local key
+reuse, serialization/substitution and declaration-event indexing require concrete
+counters and context-complete proofs; a large representation rewrite or unsafe
+cache is not licensed by the completed allocation gains. Phase58 raw writers are closed.

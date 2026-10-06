@@ -16,31 +16,32 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
 fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-[Phase56 string01](implementation/phase56/README.md) is installed and verified.
+[Phase58 last01](implementation/phase58/README.md) is installed and verified.
 Direct JavaScript remains the default; `--legacy-js` and native C remain available.
-The direct compiler image now freshly type-checks its full source and emits a
-**byte-identical successor in 251 seconds**. The source still uses `@unsafe`;
-self-reproduction and type acceptance do not establish mathematical proof validity.
+The direct B2 compiler image freshly type-checks its complete source in **11.71
+seconds** and emits a **byte-identical B3 in 39.20 seconds**. Its 3,055 unsafe
+source definitions still cause the expected proof-trust refusal: type acceptance
+and self-reproduction do not establish mathematical proof validity.
 
-Seven unused legacy helpers were removed. Native string equality adds two lines,
-for a net **40 physical lines and seven definitions removed**. All 17 native
-modules, both runtimes and the typed driver remain unchanged. The new self-hosted
-image passes the semantic controls and emits the same 45 benchmark points as the
-checked compiler; all 42 legacy + 24 default package checks pass.
+Six general changes target compiler work and direct emission: record-key syntax,
+constructor queries, scalar residuals, literal choices, distinct reachability
+edges and shared recursive dispatch. The [allocation guide](docs/self_hosted/compiler-allocation.md)
+explains their proofs and fallbacks. B1 and B2 emit identical raw modules for all
+23 benchmark sources and all 45 observed points. The packaged compiler remains
+the checked B1; the separately qualified B2/B3 image is **3,821,470 bytes**.
+Native modules, runtimes and the typed driver retain their Phase56 bytes.
 
-Generated programs retain identical bytes on **44/45 benchmark points**. The one
-changed map/set point takes **15.9% less time** in fresh paired measurements.
-There is no new full-corpus aggregate; [Phase53's full results](implementation/phase53/results.md)
-remain dated evidence. Compiler speed is a separate gap: a two-input screen puts
-the checked compiler at **2.8–3.1× TypeScript time**, versus **5.1–5.6×** for the
-new self-hosted image. The faster checked compiler remains the packaged default.
+Compiler latency, allocation and generated-program speed have separate scopes
+in the [Phase58 report](implementation/phase58/README.md). Historical
+[Phase56 results](implementation/phase56/README.md) and
+[Phase53's full campaign](implementation/phase53/results.md) retain their original
+measurements; none is relabeled as a new timing observation.
 
 From `selfhost/`, verify with `npm run verify:release`, then use
 `node cli.mjs FILE --run`. See the
 [compiler guide](docs/BEND-IN-BEND.md), [image workflow](docs/self_hosted/compiler-image-generation.md),
-[phase report](implementation/phase56/README.md),
-[compiler performance investigation](implementation/phase57/README.md),
-[benchmark recipes](selfhost/tools/performance/phase53/PLAN.md),
+[qualification record](implementation/phase58/validation.md),
+[compiler latency](implementation/phase58/latency.md),
 [architecture](docs/self_hosted/backend-boundaries.md),
 [experiment ledger](experiments/ledger.md) and [current strategy](experiments/STEERING.md).
 

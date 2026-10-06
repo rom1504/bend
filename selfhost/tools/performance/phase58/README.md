@@ -1,11 +1,12 @@
 # Phase58 reproduction guide
 
-Selected candidate: **`selfhost/build/phase58/checked-last01`**, superseding
-`checked-shared01` with the general last-live-constructor-key policy. Its checked
-build and all 14 B1 integration jobs pass. Final bootstrap/B2 qualification and
-selected measurements are in progress; installation and archive publication are
-pending. Shared01's completed self-check/fixed point and measurements remain
-historical evidence and are not transferred automatically to last01.
+Selected release: **`selfhost/build/phase58/checked-last01`**, installed and
+verified. All final correctness gates, 14 B1 integration jobs, genuine B2
+qualification, exact fixed point, selected compiler measurements and the fresh
+23-source/45-point/669-sample program campaign pass. All five release steps pass,
+including integrity before/after and legacy42/default24. Writer closure and archive member verification are complete; the publication
+index binds the exact transport parts. Shared01 is preserved as the earlier candidate; its evidence is not
+silently substituted for final last01 observations.
 The [canonical report](../../../../implementation/phase58/README.md) owns final
 status and identities. [Hypothesis records](../../../../experiments/phase58/)
 index each change; their retrospective indexing is explicit.
@@ -48,7 +49,10 @@ preserve that tradeoff. No width threshold is selected; the synthetic width grid
 remains unexecuted. Actual [17-group field controls](../../../build/phase58/last-fields-controls01/report.json)
 and [last-live supplement](../../../build/phase58/last-live-controls01/report.json)
 pass on the newly checked source, including trailing erasure and empty/all-erased
-constructors. Final selected B2/program/measurement receipts are still required.
+constructors. Those diagnostic results are superseded for final selection by the completed
+[last01 compiler measurements](../../../../implementation/phase58/final-measurements.md)
+and [full45 aggregate](../../../build/phase58/final-performance-last01/aggregate/report.json),
+without changing the diagnostic receipts.
 
 ## Genuine compiler images and final correctness
 
@@ -87,8 +91,8 @@ why each successor exists. In particular, controller flag/schema refusals,
 choice01's old edge-budget refusal, cross-realm AST comparisons and sandbox
 child-launch failures retain their original status.
 
-After the last01 full-bootstrap report completes and passes, generate a fresh
-final comparison recipe without launching targets:
+For replay, after verifying the complete last01 full-bootstrap report, generate
+a fresh final comparison recipe without launching targets:
 
 ```sh
 python3 selfhost/tools/performance/phase58/latency/make-comparison.py \
@@ -100,9 +104,12 @@ python3 selfhost/tools/performance/phase58/latency/make-final-matrix.py \
   selfhost/build/phase58/comparison-replay01/final-matrix.json
 ```
 
-The preserved shared01 recipe is `build/phase58/comparison-shared01`:
-`final-matrix.json/.txt` specifies clean request and profile commands;
-`emission-diagnostics.json/.txt` specifies separate whole-source profiles.
+The completed final recipe is `build/phase58/comparison-last01`
+(shared01 remains preserved separately):
+`selected-matrix.json/.txt` records the actual seven final jobs. The fuller
+`final-matrix.json/.txt` remains a prepared method; do not claim its unselected
+jobs ran. Selected B2 allocation/CPU and own-source emission have distinct
+receipts, and missing final B1 allocation remains explicit.
 [make-emission-diagnostics.py](latency/make-emission-diagnostics.py) derives the
 latter from the former. Execute those exact command arrays serially with their
 specified guard ownership. First/import, later requests, emission-stage clocks,
@@ -113,8 +120,9 @@ objects and run in separate processes; they never enter clean timing statistics.
 
 [performance/compare.py](performance/compare.py) verifies actual acquisitions,
 records changed versus identical modules and generates fresh timing commands.
-Previous shared01 evidence is `build/phase58/program-performance-shared01/report.json`
-and its `timing-commands.json`. The campaign keeps **23 sources, 45 points and
+Final evidence is `build/phase58/final-performance-last01/report.json`, its
+`timing-commands.json` and completed `aggregate/report.json`. The earlier
+`program-performance-shared01` remains a distinct comparison. The campaign keeps **23 sources, 45 points and
 669 samples**, all original oracles/round counts, and three disjoint 15-point
 batches. Byte equality is not a timing result. Even identical points retain the
 full-corpus timing contract when aggregating a full campaign.
@@ -124,14 +132,16 @@ comparison, acquisition and all three timing reports. It preserves the inherited
 median/point/source weighting, every regression, drift/spread flags and SVG;
 its `--comparison` binding verifies the actual batch order. Use the saved timing
 commands and aggregator invocation from the final recipe, not an improvised
-subset or a renamed old result. Aggregate only after all required reports pass.
+subset or a renamed old result. The selected aggregate is complete/pass; future replays must still aggregate
+only after all required reports pass.
 
 ## Release, preservation and replay elsewhere
 
 [publication/README.md](publication/README.md) owns the final seven-file release
 preservation, protected103 audit, writer closure and streaming archive procedure.
 Its earlier candidate examples are historical; bind **checked-last01** in a
-fresh selected release plan. Root admits installation only after final gates.
+fresh selected release plan. Root admitted the completed installation after all final gates; replay
+admission must be explicit and refer to its own selected receipts.
 Release42/default24 validation and final preservation are separate from compiler
 and program performance. Finish reporting and stop every raw writer before
 archiving; publication writes outside the closed raw tree.

@@ -1,32 +1,33 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase56 report](../implementation/phase56/README.md),
+[Phase58 report](../implementation/phase58/README.md),
 [backend boundaries](../docs/self_hosted/backend-boundaries.md) and
 [direct JavaScript guide](docs/direct-javascript.md).
-**String01 is installed and verified.** Direct JavaScript is the default;
+**Last01 is installed and verified.** Direct JavaScript is the default;
 `--legacy-js` and native targets retain their contracts. Ordinary compilation
 runs Bend code without a TypeScript fallback.
 
-The emitted direct B2 now freshly type-checks its complete source and emits a
-byte-identical B3 in **250.72 seconds**. All 3,012 source definitions remain
-`@unsafe`; type acceptance and byte equality are separate from kernel proof
-validity. B2 passes eight exact driver observations, broader semantic controls
-and exact equality with checked B1 on all 45 benchmark point modules. See the
-[image workflow](../docs/self_hosted/compiler-image-generation.md).
+The emitted direct B2 freshly type-checks its complete source in **11.712 seconds**
+and emits a byte-identical B3 in **39.199 seconds**. All 3,055 definitions remain
+`@unsafe`; proof trust is refused. These are type acceptance and reproducibility
+results, not kernel proof validity. The installed package remains checked B1.
+B2 passes eight exact driver observations, broader semantic controls and complete
+raw-module equality with B1 for all 23 benchmark sources and 45 observed points.
+See the [image workflow](../docs/self_hosted/compiler-image-generation.md).
 
-[Source accounting](../implementation/phase56/architecture.md) records **26,246
-physical / 21,585 code lines**, 3,012 definitions, 100 types and 107 modules:
-net −40 physical / −32 code lines and seven removed helpers. All 17 native
-modules, both runtimes and the typed driver are unchanged.
+[Source accounting](../implementation/phase58/source-complexity-last.md) records
+**26,560 physical / 21,823 code lines**, 3,055 definitions, 101 types and 108
+modules: +314 physical / +238 code lines relative to Phase56. All 17 native
+modules, both runtimes and the typed driver remain unchanged. The
+[allocation guide](../docs/self_hosted/compiler-allocation.md) describes the six
+source changes; smaller emitted images are a separate measure from source size.
 
-[Program-speed checks](../implementation/phase56/performance.md) retain exact
-bytes on 44/45 points. The changed map/set point takes 15.9% less time in five
-fresh paired rounds. No new whole-corpus ratio is claimed; the
-[Phase53 campaign](../implementation/phase53/results.md) retains its dated
-669 observations and per-program flags. [Compiler latency](../implementation/phase56/latency.md)
-is separate: checked B1 takes 2.8–3.1× TypeScript time on two inputs, direct B2
-5.1–5.6×. Checked B1 remains the faster packaged development compiler.
+The [phase report](../implementation/phase58/README.md) separates generated-program
+speed, compiler latency, allocation and qualification. Phase56's 44/45 byte
+retention and map/set timing remain [historical results](../implementation/phase56/performance.md),
+not measurements of this release. The same applies to the
+[Phase53 campaign](../implementation/phase53/results.md).
 
 ```sh
 # From selfhost/, with Node.js 24+:
@@ -36,10 +37,10 @@ node cli.mjs tests/conformance/typed-smoke/base-u32.bend --legacy-js --run
 ```
 
 The [benchmark recipes](tools/performance/phase53/PLAN.md) cover checked acquisition,
-fast screens and serial full-corpus validation. A checked build takes about 61 seconds;
-the full timing campaign takes about 20 minutes. Use byte equality to retain
-unchanged programs and [Phase56 recipes](tools/performance/phase56/README.md) for
-direct self-hosting gates. CPU/allocation/V8
+fast screens and serial full-corpus validation. Use fresh attempts and the
+[Phase58 qualification record](../implementation/phase58/validation.md) for the
+selected image. Historical [Phase56 recipes](tools/performance/phase56/README.md)
+require fresh identity bindings before replay. CPU/allocation/V8
 [diagnostics](tools/performance/programs/DIAGNOSTICS.md) remain separate from clean
 timing. The pin remains `018751270e800bc222a93dad7f257083ee53a5f7`, after Bend 2.0.34.
 
@@ -121,8 +122,8 @@ For experiments that should leave the default intact, use the
 [maintained development workflow](../docs/PHASE5_DEVELOPMENT.md).
 
 Direct self-reproduction is a separate integration gate using a genuine checked
-parent. Follow the [current bounded recipes](tools/performance/phase56/README.md)
-and [Phase56 results](../implementation/phase56/reproduction.md). The
+parent. Follow the [image workflow](../docs/self_hosted/compiler-image-generation.md)
+and [Phase58 qualification record](../implementation/phase58/validation.md). The
 [legacy reproduction instructions](../docs/BEND-IN-BEND.md#full-self-reproduction-and-component-checks)
 and [Phase 5 record](../implementation/phase5/final-selfhost.md) describe the older
 pipeline. A derived API must not acquire a bootstrap sidecar. Low-level bootstrap commands need an

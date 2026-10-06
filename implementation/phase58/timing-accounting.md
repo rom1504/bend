@@ -1,10 +1,40 @@
-# Phase58 wall-time accounting procedure
+# Phase58 wall-time accounting
 
-This is a prepared data-only ledger, not a completed time report. Root supplies
-the cutoff after the selected target jobs finish. The start receipt records
-`2026-10-06T07:30:12.793654+00:00`; its scope explicitly excludes initial planning
-before that timestamp. No compiler, generated program or archive runs during
-the accounting command.
+The completed ledger covers **07:30:12.794–11:25:00 UTC on 2026-10-06**:
+**3 h 54 min 47 s** elapsed. It excludes about seven minutes of earlier planning
+and all final compression/publication after the cutoff.
+
+| Recorded purpose | Supervisor interval union |
+| --- | ---: |
+| Generated-program timing | 37 min 20 s |
+| Clean compiler cost measurement | 21 min 45 s |
+| Qualification and self-hosting | 18 min 06 s |
+| Fixture/program acquisition | 17 min 45 s |
+| CPU/allocation/trace profiles | 7 min 47 s |
+| Checked compiler builds | 7 min 01 s |
+| Focused controls | 4 min 37 s |
+| Preparation | 1 min 24 s |
+| Release interfaces/integrity | 1 min 20 s |
+| **Total observed union** | **1 h 57 min 06 s (49.88%)** |
+| **Unrecorded wall time** | **1 h 57 min 41 s (50.12%)** |
+
+All 2,085 completed process records are categorized; there are no skipped,
+unclassified or mixed-overlap records, and no temporal containment exclusions.
+Nine failed/refused jobs remain in the accounting. The largest observed tree RSS
+is 2,376,015,872 bytes in the refused old-image allocation capture: the supervisor
+stopped it after observing the 2 GiB limit being exceeded. That is a sampled
+overshoot in a failed diagnostic, not a successful-release memory requirement or
+an operating-system OOM.
+
+The unrecorded half includes analysis, coding, reviews, documentation, orchestration
+and any idle/unmeasured operations. The receipts cannot divide it into agent work
+or waiting. The long full-corpus campaigns found a real regression in the first
+candidate; cheap saved-image/three-program screens then selected the correction
+before the second broad campaign. Future iterations should keep this separation
+and reserve full qualification for a frozen selection.
+
+[Exact ledger](../../selfhost/build/phase58/time-use-final.json). The following
+procedure documents the completed calculation and its limitations.
 
 Reuse the frozen [Phase52 reader](../../selfhost/tools/performance/phase52/time-use-v1.py),
 SHA256 `74f1435846cdd22f71dd7b8b2d5bbbbdbcc872ce3886fe583359099f16fe8520`.
@@ -17,7 +47,7 @@ actual Phase58 root, start and consumed receipts identify the new campaign.
 taskset -c 0 python3 -B selfhost/tools/performance/phase52/time-use-v1.py \
   --root selfhost/build/phase58 \
   --categories selfhost/tools/performance/phase58/time-use-categories-v4.json \
-  --end ROOT_SUPPLIED_UTC_CUTOFF \
+  --end 2026-10-06T11:25:00+00:00 \
   --out selfhost/build/phase58/time-use-final.json
 ```
 

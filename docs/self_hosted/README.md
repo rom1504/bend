@@ -1,15 +1,19 @@
 # Self-hosted compiler: current architecture and development
 
-For installed string01, see the [Phase56 report](../../implementation/phase56/README.md),
-[source accounting](../../implementation/phase56/architecture.md) and
-[direct JavaScript guide](../../selfhost/docs/direct-javascript.md).
-The emitted direct B2 freshly type-checks its complete source and emits a
-byte-identical B3 in 250.72 seconds. Its 3,012 unsafe declarations still cause the
-expected proof-trust refusal. The installed package remains the faster checked
-B1. Legacy compiler-image clients are retained. Net source change is −40 physical
-lines and seven removed helpers; 44/45 benchmark points retain identical bytes
-and the changed map/set point takes 15.9% less time in fresh paired measurements.
-There is no new full-corpus aggregate.
+For installed last01, see the [Phase58 report](../../implementation/phase58/README.md),
+[source accounting](../../implementation/phase58/source-complexity-last.md) and
+[direct JavaScript guide](../../selfhost/docs/direct-javascript.md). The emitted
+B2 freshly type-checks its complete source in 11.712 seconds and emits a
+byte-identical B3 in 39.199 seconds. Its 3,055 unsafe declarations still cause
+the expected proof-trust refusal. The installed package remains checked B1;
+legacy compiler-image clients are retained.
+
+The [allocation guide](compiler-allocation.md) explains six general changes and
+their fallback boundaries. B1/B2 raw emissions agree on all 23 benchmark sources
+and 45 observed points. The phase report separates this equality from compiler
+latency, allocation and program timing. [Phase56 results](../../implementation/phase56/README.md)
+remain historical; its old ratios are not assigned to last01.
+
 The [Phase51 V8-guided runtime](v8-guided-runtime.md) describes the retained
 compatibility mode. The source survey below remains a dated Phase45 baseline;
 its counts and timings are historical.
@@ -33,7 +37,7 @@ The survey changes documentation only; it does not qualify a new compiler.
 | [Direct JavaScript backend](../../selfhost/docs/direct-javascript.md) | Current callable/data interface, ordered prefix/value lowering, 4,096-definition analysis bound and qualification limits. |
 | [Architecture](architecture.md) | Dated Phase45 source organization, representations, pipeline and complexity; use backend boundaries for the current backend split. |
 | [Optimization inventory](optimization-inventory.md) | Existing transformations, where they live, how generally they apply, and missing analyses. |
-| [Compiler allocation](compiler-allocation.md) | Six Phase58 candidate changes: literal fields, constructor queries, scalar residuals, literal choices, distinct dependency edges and shared recursive dispatch; qualification pending. |
+| [Compiler allocation](compiler-allocation.md) | Six Phase58 changes: final-live-field record syntax, constructor queries, scalar residuals, literal choices, distinct dependency edges and shared recursive dispatch; proof and fallback boundaries. |
 | [Private array regions](private-array-regions.md) | Phase47 closed-array representation, ordered operations, host guards and research limits; separate from release qualification. |
 | [Phase48 representations](phase48-representations.md) | RNFA04 mechanisms, composition controls and original-path mutation contracts; the phase report records release status. |
 | [V8-guided runtime](v8-guided-runtime.md) | Phase51 small IO helper, same-entry String proof, and the warmup/inlining limits. |

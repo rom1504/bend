@@ -1,8 +1,37 @@
 # Compiler validation
 
-## Current Phase56 qualification
+## Current Phase58 qualification
 
-Selected string01 is installed and verified. The [Phase56 report](../implementation/phase56/README.md)
+Selected last01 is installed and verified. The [Phase58 report](../implementation/phase58/README.md)
+and [qualification record](../implementation/phase58/validation.md) bind checked
+B1, genuine emitted B2/B3, source, driver and runtimes separately.
+
+- Selected B1 passes its strict 36-case source gate and the final 14-job broad
+  semantic, maintained, census, native and program-value matrix.
+- Selected B2 passes the eight-job semantic stage: 96 source, 34 numeric,
+  18 composition and two overapplication observations. Known pinned TypeScript
+  NaN failures remain explicit; the scopes overlap.
+- B2 freshly type-checks the complete source in 11.712 seconds. All 3,055 expected
+  unsafe declarations are accounted for; proof trust is refused.
+- B2 emits a byte-identical B3 in 39.199 seconds. Both are 3,821,470 bytes,
+  SHA256 `a73daccf86a807092a334d5f3121745e0b91c3054164c25462f1658644b7b081`.
+- B2 freshly checks all 23 benchmark sources and matches selected B1 on all
+  23 raw modules and 45 observed points, including the unchanged row observer.
+- Release installation, integrity verification and the 42 legacy + 24 default
+  ordinary/relocated interface checks pass.
+
+The installed B1 API is
+`641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a`;
+its source is `85454aab7a6ef25d1e78970b1c24d68ac2a90a23a4b39b64a30de311c2fc5091`.
+B2/B3 remain separately qualified images, not the package artifact. These gates
+are not a unique whole-language test total or a kernel proof. Native IO.args,
+GPU coverage and legacy-client migration remain separate frontiers. Timings of
+compiler requests and compiled programs are recorded separately in the phase
+report. See the [image workflow](../docs/self_hosted/compiler-image-generation.md).
+
+## Historical Phase56 qualification
+
+Selected string01 was installed and verified at its checkpoint. The [Phase56 report](../implementation/phase56/README.md)
 and [conformance detail](../implementation/phase56/conformance.md) bind the checked
 B1, emitted direct B2, source and runtime identities separately.
 

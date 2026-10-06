@@ -1,104 +1,76 @@
-# Current compiler: Phase56 string01
+# Current frontier: Phase58 last01
 
-**String01 is installed and verified.** Direct JavaScript remains the default;
-explicit legacy JavaScript and native C remain available. Ordinary compilation
-runs Bend code without a TypeScript fallback. No PR comments are authorized.
+**Last01 is installed and verified.**
+Direct JavaScript remains the default; explicit legacy JavaScript and native C
+remain available. Ordinary compilation runs Bend code without TypeScript fallback.
+Archive closure and member verification are complete; see the Phase58 publication index. No PR comments are authorized.
 
-[Design](../design/phase56/qualification-and-simplification.md) ·
-[String design](../design/phase56/native-string-equality.md) ·
-[Report](../implementation/phase56/README.md) ·
-[Image workflow](../docs/self_hosted/compiler-image-generation.md) ·
-[Publication](../selfhost/tools/performance/phase56/publication.json).
+[Design](../design/phase58/compiler-allocation-and-code-generation.md) ·
+[Report](../implementation/phase58/README.md) ·
+[Final measurements](../implementation/phase58/final-measurements.md) ·
+[Reproduction](../selfhost/tools/performance/phase58/README.md) ·
+[Hypotheses](phase58/).
 
-Selected checked attempt: `selfhost/build/phase56/checked-string01`.
-API: `128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea`.
-Source: `5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244`.
-Qualified direct B2/B3: `3f652f7d3e26e06fe74da18bf8709195c54e4620906ffb7c1d0643c96ecbd57e`.
-Direct runtime: `c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
-Legacy runtime: `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
-Upstream pin: `018751270e800bc222a93dad7f257083ee53a5f7`.
+Selected attempt: `selfhost/build/phase58/checked-last01`.
+Checked B1 API: `641381f638f1f4c1c8b349bef06502b42738c1c7feff0391f2e09b90f4ef282a`.
+Source: `85454aab7a6ef25d1e78970b1c24d68ac2a90a23a4b39b64a30de311c2fc5091`.
+Qualified direct B2/B3: `a73daccf86a807092a334d5f3121745e0b91c3054164c25462f1658644b7b081`.
+Upstream: `018751270e800bc222a93dad7f257083ee53a5f7`; Node 24.18.0.
+Both runtimes, driver and all 17 native modules retain Phase56 bytes.
+The installed artifact is checked B1; emitted B2 has no fabricated checked sidecar.
 
-## Findings and preservation
+## Established results
 
-Seven legacy helpers have no maintained consumers and were removed. Their checked
-and derived API bytes remained identical. Definition-only native String.eq then
-adds two lines, without runtime or call-site ordering changes. The original direct
-image's self-check profile put 17.6% of ticks in String.cmp and its recursive helper.
-String equality now uses native primitive comparison at the function definition;
-ordinary calls retain pending-argument order. All 484 UTF-16 pairs and callback,
-partial, throw, native-name and refusal controls pass. Net source change is
-−40 physical / −32 code lines and seven definitions; total 26,246 physical /
-21,585 code, 3,012 definitions, 100 types, 107 modules. All 17 native modules,
-both runtimes and typed driver remain exact. No new compiler representation/pass.
+Six general changes survive: last-live-constructor-key placement, allocation-free
+intermediate constructor misses with checked-owner fallback, scalar provenance
+through exact residual Word reconstruction, proved literal continuations,
+validated per-definition dependency deduplication, and shared mutual-tail SCC
+workers. Partial application, ordered effects/errors, aliasing/capture, erased
+fields, special keys, cycles and tail/reentry boundaries retain focused controls.
+The final key rule is last LIVE constructor field computed, earlier ordinary keys
+literal, __proto__ always computed; ordinary marshalling keys remain literal.
+All-literal and whole-computed rollback evidence remain historical, with their
+program/compiler tradeoff. No width cutoff is selected; its grid is unexecuted.
 
-Checked B1 emits the direct compiler image in 84.43 s. B2 freshly type-checks its
-full source in 29.68 s (35.39 s overall) and emits a byte-identical B3 in 250.72 s.
-The old direct B2 exceeded 300 s. Its 55.84 s check was profiled; do not compute a
-controlled speedup from that and the new unprofiled time. All 3,012 expected unsafe
-declarations cause proof-trust refusal; type acceptance and self-reproduction
-are not mathematical proof validity. The installed artifact remains checked B1.
-Do not give an emitted B2 a checked bootstrap sidecar.
+Final checked/source/B2 gates pass, including 14 B1 integration jobs,96 source,
+34 numeric,18 composition,2 overapplication,8 maintained suites, native retention,
+fresh own-source type acceptance and exact B2→B3 reproduction. Type acceptance
+and expected unsafe proof-trust refusal remain separate from kernel validity.
+Known pinned-reference NaN defects stay explicit; no new mismatch is waived.
 
-Fresh B2 source 96 / numeric 34 / composition 18 / overapplication 2 pass. B1 focused 36
-and maintained 8 pass. B2 checks 23 benchmark sources and matches B1 on all 45 point
-modules. Installed 42 legacy + 24 default/relocated checks, integrity and tamper
-restoration pass. Counts overlap. Known TS failures remain separate oracle defects.
+Fresh full-program timing passes23 sources / 45 points / 669 samples. Equal-point
+new/TS is 1.046110 versus old/TS 1.061731; new/old 0.985287. Equal-source new/TS is
+1.040502. No point regresses >10%; worst regression 2.949%, zero timing flags.
+These are corpus aggregates, not universal parity or a promise for other hosts.
 
-44/45 points retain host02 bytes. Changed map/set median 20.8518 → 17.5360 µs, compared
-with TS 20.5952 µs: 15.9% less time in five fresh rounds, 15 correct samples.
-No new full-corpus aggregate. Unchanged point measurements retain dated Phase53
-support; its whole-corpus 1.069599× result stays historical.
+Changed-source B2 request comparisons take49–56% less import+first time and 59–67%
+less later-window time on Evening/lexer. B2 still takes 2.4–2.7× same-campaign TS.
+B1 is mixed, including 3.89% later lexer regression. Separate sampled lexer
+allocation drops 89.41% versus old B2; cumulative sampled allocation is not RSS.
+Own-source emission 36.06s versus retained old 223.48s yields descriptive 6.198×;
+the baseline was not freshly rerun consecutively. Peak RSS does not improve.
+Samples still warm; no steady-state or isolated six-factor attribution claim.
 
-## Phase57 investigation and next work
+Source grows 314 physical/238 code lines to 26,560 physical/21,823 code,
+3,055 definitions,101 types,108 modules. 98 modules retain bytes. Generated-code
+shrinkage and source growth are different quantities; no source-simplification claim.
 
-[Report](../implementation/phase57/README.md) ·
-[Recipes](../selfhost/tools/performance/phase57/README.md).
-No compiler source or release change; no PR comment. Two clean matrices cover
-48 processes / 192 checked requests, not 192 distinct language tests.
+## Remaining work and publication boundary
 
-Fresh import+request: B1 2.83–3.13× TS; B2 4.96–5.45× TS. B2 takes 23–30% less
-later-request time than raw upstream-emitted Bend, but about 1.8× B1 time.
-B1 includes extra transforms: equality removes 44–46% of later time, literal
-choices another 17–24%, tail choices another 3.6–5% in an ordered-stage comparison.
-B2 already has native equality. Later requests still warm; no steady-state claim.
+1. [Release execution](../selfhost/build/phase58/final-last01/release-execution/report.json)
+   is complete/pass: install, integrity before/after, legacy 42 and default 24.
+   Finish publication while preserving this installed identity.
+2. Complete final preservation/protected103 checks, time accounting and reports;
+   explicitly close raw writers, then create/reopen-verify the archive. No archive
+   completion is assumed from idle workers or a source checkpoint.
+3. Future performance work needs measured discriminators: remaining TS compiler
+   gap, substitution/serialization and declaration-event visits. Local ADT-key
+   reuse is deferred/unmeasured; context-incomplete caches remain unsupported.
+4. Keep B1 allocation missing for this final source explicit; do not substitute
+   intermediate shared01 profiles. Avoid more representation/emitter changes
+   solely on profile percentages or saved-code syntax counts.
 
-Lexer sampled allocation/request: TS 59 MB, raw 4,385 MB, B1 927 MB, B2 2,178 MB; cumulative
-allocation estimates, not peak memory. All three full-source checks preserve 3,012
-expected unsafe declarations/type acceptance/trust refusal. No kernel proof.
-B2 reproduces exact B3 under 25 ms stage profiling; reach 93.20 s and emission 115.28 s
-are diagnostic times. A first 1 ms capture hit the RSS guard after reach returned;
-its eight completed profiles and failure remain preserved.
-
-Ranked next experiments:
-1. Ordinary literal record fields. Hot kt uses computed constant keys in B2;
-   filtered V8 dumps retain map updates and three runtime property calls. B1's literal
-   boilerplate is simpler. Preserve __proto__ semantics, evaluate unchanged
-   requests, then time a syntax-only ablation before promising gains.
-2. Owner-directed numeric-row constructor queries. j_arm_type still globally
-   scans nested constructor lists; intermediate misses create missing KDef+2
-   KTerms. This differs from Phase55's existing typed-arity shortcut. Count
-   callers/owner visits, preserve uniqueness and the original fallback.
-3. Scalar-origin facts through residual/default numeric bindings. sk_char
-   already has scalar tests but reconstructs temporary Word lists. A switch table
-   alone does not cover its demanded default expression.
-4. Typed literal-choice lowering with exact demand/error/tail boundaries. The
-   B1 effect is measured; the equivalent B2 gain remains unmeasured.
-5. Use counters before changing repeated key serialization, declaration-event
-   scans, substitution or render/scan/render reachability. Do not replace the
-   compiler representation merely on a broad complexity hypothesis.
-
-The public legacy ABI, seed transforms and native backend remain live dependencies.
-Keep checked B1 as the faster development compiler. Program execution performance
-and compiler throughput remain separate measurements; no fresh full-program-corpus
-aggregate was run in this information-gathering phase.
-
-## Working discipline
-
-Use checked build→focused controls→byte comparison→changed-point timing. Broad
-gates run once for the selected candidate. Heavy jobs remain serial on CPU3 with
-1 GiB heap, 2 GiB tree RSS, 4 GiB available-memory floor. Agents analyze/review/docs in
-parallel. Keep direct-image generation, source checking and kernel proof distinct.
-Preserve failed attempts and consumed producers; never mutate closed Phase54,
-Phase55, Phase56 or Phase57 raw archives. New runs use fresh private driver/runtime/cache
-copies and fresh paths. Retain the Clang environment. Preserve the 103 unrelated
-files and stage explicit paths. No nested shared execution guards.
+Heavy jobs remain root-serialized under one guard, private staging and fresh paths.
+Preserve failed attempts, consumed producers, closed Phase54–57 history, seven
+previous release files and all 103 unrelated files. Stage explicit owned paths.
+No additional target is authorized by this frontier document.

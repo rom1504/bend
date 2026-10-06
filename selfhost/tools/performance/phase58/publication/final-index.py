@@ -148,8 +148,9 @@ assert sorted(reported(row)['path'] for row in preservation['installedInventory'
 protected_id, protected = read(a.protected)
 assert protected['complete'] is True and protected['checked'] == 103
 assert protected['changed'] == protected['protectedStaged'] == []
-time_id, time_use = read(a.time_use, 'phase54-recorded-process-accounting')
+time_id, time_use = read(a.time_use, 'phase52-top-level-supervisor-time')
 assert time_use['complete'] is True and time_use['elapsedSeconds'] >= 0
+assert time_use['provisional'] is False and time_use['changedInputs'] == []
 
 archive_id, archive = read(a.archive, 'phase42-closed-raw-campaign-archive')
 assert archive['complete'] is True and archive['reopenedVerified'] is True and archive['inputStabilityVerified'] is True

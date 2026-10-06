@@ -1,6 +1,7 @@
 # Phase58: compiler allocation and code generation
 
-**Selected compiler: last01; final qualification and measurement in progress.**
+**Last01 is installed and verified.** Compiler allocation and self-hosted execution
+improve substantially; generated-program performance is preserved.
 
 Phase58 implements six general optimizations in the compiler written in Bend:
 constructor lookup without intermediate missing records, proven scalar reconstruction
@@ -43,7 +44,15 @@ allocation counts, profile attribution and exact evidence identities.
 
 ![Selected B2 cumulative allocation](figures-last01/compiler-allocation.svg)
 
-Final generated-program timings are still running.
+The full generated-program campaign passes **45 points / 23 sources / 669
+samples**. Equal-point geometric mean is **1.046110× TypeScript**, versus
+**1.061731×** for Phase56 (1.47% less execution time). Equal-source means are
+1.040502× and 1.066364×. No point regresses by more than 3%; the largest is
+edit-distance size3 at +2.949%. There are 19 small measured regressions, retained
+in the [full program report](program-performance.md), and zero configured timing
+flags. Evening improves 26.48%; RLE improves 12.75%. Eighteen points beat TypeScript.
+These aggregates are close to parity on this corpus, not a universal performance
+guarantee.
 Earlier shared01 measurements are preserved in the
 [historical checkpoint](shared-checkpoint.md) and [latency investigation](latency.md).
 They are not measurements of the final last01 compiler.
@@ -86,8 +95,8 @@ Map/Set −2.84%, edit distance +0.19%, Morning +1.09% versus Phase56. It cost
 13–17% relative to the all-literal compiler diagnostic, missing the approximate
 10% screen target. We explicitly selected this compromise for full qualification,
 not a claimed threshold pass. Actual last01 output for all three programs matches
-the screened derivatives byte for byte. Final fresh full-corpus results govern
-release; the focused screen is not substituted for them.
+the screened derivatives byte for byte. The final fresh full-corpus results confirm removal of the earlier regressions;
+the focused screen is not substituted for that campaign.
 
 V8 inspection found the same eight inlined functions, four static allocation
 paths and zero executed deoptimizations in the compared edit-distance row.
@@ -110,8 +119,8 @@ seconds overall), with all 3,055 explicit unsafe declarations producing the
 expected proof-trust refusal. A separate gate emits byte-identical B3 in 39.199
 seconds. These are qualification timings, not the clean speed comparison below.
 B2 also passes source96, numeric34, composition18 and overapplication2; all 23
-benchmark sources and 45 generated modules match B1 exactly. Release interface
-checks remain pending. Type acceptance and expected
+benchmark sources and 45 generated modules match B1 exactly. Installation, integrity before/after, **42 legacy + 24 ordinary/relocated interface
+checks all pass**. Type acceptance and expected
 unsafe proof-trust refusal are separate; self-reproduction is not a mathematical
 proof. Pinned TypeScript remains `018751270e800bc222a93dad7f257083ee53a5f7`.
 Its known NaN oracle defects remain explicit: source95 versus candidate96 and
@@ -163,5 +172,8 @@ available-memory floor; agents handled code, review and data analysis separately
 [Time accounting](timing-accounting.md) reports observed supervisor intervals,
 not invented CPU usage or agent effort.
 
-Final archive, release integrity, protected-file verification and publication
-index will be linked after closure. No PR comment was posted.
+All **17,639 closed Phase54–57 files**, **103 unrelated files**, and all seven
+prior installed files pass preservation checks. The closed archive contains **30,169 files / 1.303 GB uncompressed**, reopened
+and hash-verified, with exact ordered transport parts. Closure and the complete
+archive are recorded in the [publication index](../../selfhost/tools/performance/phase58/publication.json).
+No PR comment was posted.

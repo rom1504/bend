@@ -5,31 +5,40 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-[Phase56 string01](../implementation/phase56/README.md) is installed and verified.
+[Phase58 last01](../implementation/phase58/README.md) is installed and verified.
 The [direct JavaScript backend](../selfhost/docs/direct-javascript.md) remains the
 default for emitted programs/libraries and `--run`. From `selfhost/`, use
 `node cli.mjs FILE --run` or `node cli.mjs FILE --library -o module.mjs`.
 Select `--legacy-js` for mutable descriptors and G. Maintained bootstrap/private
 clients retain their explicit legacy interface; native C remains available.
 
-The direct B2 freshly type-checks all source and emits a **byte-identical B3 in
-250.72 seconds**. The expected proof-trust refusal accounts for all 3,012 unsafe
-source definitions; this is type acceptance and reproducibility, not a kernel
-proof. The faster checked B1 remains installed. See the
-[image guide](self_hosted/compiler-image-generation.md) for these distinct roles.
+Direct B2 freshly type-checks the complete source in **11.712 seconds** and emits
+a **byte-identical B3 in 39.199 seconds**. The expected proof-trust refusal
+accounts for 3,055 unsafe definitions. Type acceptance and reproduction are not
+a kernel proof. The installed package remains checked B1; the
+[image guide](self_hosted/compiler-image-generation.md) separates these roles.
 
-The [phase report](../implementation/phase56/README.md) records 96 source / 34
-numeric / 18 composition / 2 overapplication observations, eight maintained suites
-and 42 legacy + 24 default package checks. Counts overlap. B1 and B2 emit exactly
-the same 45 benchmark points. Relative to host02, 44 retain identical bytes and
-one map/set point takes 15.9% less time in fresh paired measurement. No new
-whole-corpus ratio is claimed. The [compiler latency screen](../implementation/phase56/latency.md)
-separately measures checked B1 at 2.8–3.1× TypeScript time and direct B2 at 5.1–5.6×.
+The [qualification record](../implementation/phase58/validation.md) records the
+selected B1 broad matrix, B2's 96 source / 34 numeric / 18 composition / two
+overapplication observations and installed interfaces. Counts overlap. B1 and
+B2 emit identical raw modules for all 23 benchmark sources and 45 observed
+points. Compiler latency and generated-program speed are separate results in
+the [phase report](../implementation/phase58/README.md).
 
-[Source accounting](../implementation/phase56/architecture.md) records net −40
-physical / −32 code lines and seven removed definitions. Native modules, runtimes
-and driver remain unchanged. [Backend boundaries](self_hosted/backend-boundaries.md)
-describes the shared and target-specific code.
+[Source accounting](../implementation/phase58/source-complexity-last.md) records
+26,560 physical / 21,823 code lines, 3,055 definitions, 101 types and 108 modules.
+The six changes are explained in the [allocation guide](self_hosted/compiler-allocation.md).
+Native modules, runtimes and driver retain exact Phase56 bytes;
+[backend boundaries](self_hosted/backend-boundaries.md) explains their separation.
+
+## Historical release results: Phase56
+
+[String01](../implementation/phase56/README.md) established a 250.72-second direct
+emission fixed point and a 29.681-second fresh type check with 3,012 unsafe
+definitions. It removed seven unused helpers and added canonical String.eq
+lowering: net −40 physical lines. Its 44/45 unchanged program points and 15.9%
+map/set timing reduction remain dated evidence. Those results do not supply a
+current whole-corpus ratio or a controlled compiler speedup against Phase58.
 
 ## Historical release results: Phase53
 

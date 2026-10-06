@@ -3,7 +3,7 @@
 - Owner: allocation investigator; source integration belongs to root.
 - Status: proposed/deferred; no checked candidate, focused execution or measurement credited.
 - Objective: reduce genuinely repeated compiler serialization without a context-incomplete cache.
-- Decision: defer outside the six-change selected `checked-last01` candidate.
+- Decision: defer outside the six-change installed `checked-last01` release.
 
 This is a **retrospective index** of the already frozen local proposal, not a preregistered run record. The [canonical proposal and falsification recipe](../../selfhost/tools/performance/phase58/allocation/README.md), [source/identity manifest](../../selfhost/tools/performance/phase58/allocation/host-key-once-v1.json) and [Phase58 design](../../design/phase58/compiler-allocation-and-code-generation.md) remain authoritative. Source plans preceded target execution; this particular slice has no target result.
 

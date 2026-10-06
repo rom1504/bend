@@ -3,7 +3,11 @@
 Completed checkpoints below are bound to their own images; the remaining
 sections describe root-run plans. Last01 is the current integration candidate:
 its checked build, fresh field controls and all 14 checked integration jobs have
-passed; its separate B2 gates also pass. The final [correctness index](../../selfhost/tools/performance/phase58/evidence/qualification-last01.json) binds their actual identities and scopes. Choice01 passed its 14-job checked integration
+passed; its separate B2 gates and full45/669 program timing also pass. The final
+[correctness index](../../selfhost/tools/performance/phase58/evidence/qualification-last01.json)
+binds the qualification identities and scopes; the
+[program performance report](program-performance.md) records the fresh timing.
+Installation and publication remain separate. Choice01 passed its 14-job checked integration
 gate before its full B2 emission hit the existing reachability budget. Reach01
 passed the focused scanner/graph controls, full B2 emission and fresh own-source
 type checking. Shared01 has passed its checked build, 36 exact selected probes,
@@ -71,9 +75,11 @@ taskset -c 0 python3 -B selfhost/tools/performance/phase58/performance/compare.p
 This data-only command has completed in
 [final-performance-last01](../../selfhost/build/phase58/final-performance-last01/report.json):
 39 changed and six exact point modules relative to Phase56, with 20 changed
-sources out of 23. Root separately launches its unchanged three-batch timing
-commands; the earlier shared01 campaign is retained, without pooling its samples
-into last01's result.
+sources out of 23. All three unchanged timing batches have now passed, with
+45 points and 669 fresh samples. The [final program report](program-performance.md)
+retains both weightings, all 19 regressions and zero configured flags. The
+earlier shared01 campaign is retained without pooling its samples into last01's
+result. These results do not themselves qualify a new installation.
 
 The [actual-output comparison](../../selfhost/build/phase58/last-program-byte-comparison01.json)
 also proves that the genuinely checked last01 MapSet, editdist and Morning

@@ -1,10 +1,10 @@
 # Compiler allocation and direct JavaScript generation
 
-This page describes six implemented **Phase58 candidate** changes. Combined
-release qualification is pending; the installed-release identity remains in the
+This page describes six implemented **Phase58 last01** changes. The selected
+checked B1 is installed and verified; its exact release identity remains in the
 [self-hosted compiler index](README.md). The [Phase58 report](../../implementation/phase58/README.md)
-records checked artifacts, focused controls, measurements and the eventual
-selection decision. Implementation does not by itself establish a speedup.
+records checked artifacts, focused controls, measurements and the selection
+decision. Implementation does not by itself establish a speedup.
 
 Four changes target the JavaScript emitted by the compiler, including a
 self-emitted compiler image. Two target the compiler's constructor queries and
@@ -15,7 +15,7 @@ and counter tools qualify actual source changes. They are not production passes.
 
 | Change | Work it targets | Main implementation |
 | --- | --- | --- |
-| Literal record keys | Repeated computed-key property setup in emitted constructors and host conversion clones | `jd_literal_field_key`, [`direct/constructors.bend`](../../selfhost/src/back/js/direct/constructors.bend) |
+| Record-key placement | Constructor key syntax and host conversion clones, with a general final-live-field rule | `jd_ctor_field_join`, `jd_literal_field_key`, [`direct/constructors.bend`](../../selfhost/src/back/js/direct/constructors.bend) |
 | Constructor query traversal | Temporary missing records and searches through unrelated constructor owners | `j_find_ctor_children`, `j_arm_type_domain`, [`common/queries.bend`](../../selfhost/src/back/common/queries.bend) |
 | Scalar residual reconstruction | Temporary Word lists built only to recover a native U32 | `jd_word_bind`, `jd_scalar_word`, [`direct/pattern.bend`](../../selfhost/src/back/js/direct/pattern.bend), [`direct/constructors.bend`](../../selfhost/src/back/js/direct/constructors.bend) |
 | Literal-choice lowering | Selector calls and literal callback transport around a proved conditional | `jd_choice_call`, `jd_choice_body`, [`direct/choices.bend`](../../selfhost/src/back/js/direct/choices.bend) |
@@ -27,27 +27,42 @@ a general escape-analysis, allocation-elimination or memoization pass. The
 [backend boundaries](backend-boundaries.md) explain which facts belong to shared
 checking, direct JavaScript, legacy JavaScript and native C.
 
-## Ordinary literal record keys
+## Record keys and the final live field
 
-A record field with a known name can be emitted as `"head": value` rather than
-`["head"]: value`. Both create the same ordinary own property, but the simpler
-syntax gives the JavaScript engine a more direct object layout. This matters for
-repeated constructors such as KTerm as well as ordinary user records. Engine
-optimization and actual allocation remain measurement questions.
+Ordinary direct constructors emit quoted keys for the preceding live fields and
+one computed key for the final live field. For example, a two-field constructor
+uses `"head": first, ["tail"]: last`. Native representations and the tag remain
+unchanged. The rule has no record-name, program-name or field-count selector.
 
-`jd_literal_field_key` has one necessary exception: `__proto__` remains
-`["__proto__"]`. In an object initializer, the noncomputed spelling can set the
-object's prototype rather than create the intended own field. Quoting alone
-does not remove that difference. Names such as `constructor`, `default` and
-`field.name` use ordinary quoted keys.
+`jd_ctor_field_join` shares the rule between `jd_ctor_fields` and
+`jd_ordered_field_join` in
+[`ordered-values.bend`](../../selfhost/src/back/js/direct/ordered-values.bend).
+It tests whether the rendered field suffix is empty, so erased trailing fields
+do not move the boundary. Zero-live-field constructors gain no new field;
+a single live field remains computed. Value expressions, property order,
+erasure and ordered prefixes stay in their existing positions.
 
-The shared helper is used by `jd_ctor_fields`, `jd_ordered_field_join` in
-[`ordered-values.bend`](../../selfhost/src/back/js/direct/ordered-values.bend),
-and `jd_host_marshal_field` in
-[`host.bend`](../../selfhost/src/back/js/direct/host.bend). Field order, erased
-fields, value expressions, conversion calls and getter/error order stay in their
-existing emitters. The change does not share objects, replace public data layouts,
-or turn constructor results into constants.
+`jd_literal_field_key(name, last)` also keeps every `__proto__` key computed,
+including an earlier field. Noncomputed `__proto__` in an object initializer can
+set the prototype instead of creating an own data property; quoting alone is
+insufficient. Other names, including `constructor`, `default` and `field.name`,
+use the same positional rule.
+
+Host conversion clones are a separate route. `jd_host_marshal_field` in
+[`host.bend`](../../selfhost/src/back/js/direct/host.bend) passes `last=false`,
+retaining quoted keys except `__proto__`. A spread clone does not expose the
+complete constructor layout at that site. Its getter/conversion order and
+aliases remain unchanged. No object is shared or made constant by this rule.
+
+The earlier [all-literal experiment](../../implementation/phase58/literal-fields.md)
+showed a compiler-request benefit on its exact saved image. Later generated
+programs exposed a tradeoff; that diagnostic cannot qualify the final rule.
+The [record-syntax investigation](../../implementation/phase58/record-syntax-tradeoff.md)
+and [final-field design](../../design/phase58/last-field-selection.md) preserve
+the competing measurements and the reasons for the general compromise. Static
+field spelling alone does not establish allocation bytes, JIT causality or
+universal speed. The last01 source change adds one helper and five physical
+lines relative to shared01; current source accounting and timing remain separate.
 
 ## Constructor queries with known owners
 
@@ -184,9 +199,10 @@ The [design](../../design/phase58/shared-recursive-dispatch.md),
 [dispatcher report](../../implementation/phase58/shared-scc.md) and
 [latency report](../../implementation/phase58/latency.md#fixed-source-scc-sharing-pilot)
 distinguish the fixed-source saved-image diagnostic from the genuine checked
-implementation. The `checked-shared01` build has passed; combined release
-qualification remains pending. Diagnostic image-size and startup observations
-do not establish the source candidate's request throughput or program speed.
+implementation. The selected `checked-last01` passes its checked build,
+focused and broad controls, genuine B2 generation, fresh source check and exact
+B2→B3 reproduction. Diagnostic image-size and startup observations remain
+separate from the source implementation's request throughput and program speed.
 
 ## Remaining key reuse is a separate, unmeasured proposal
 
@@ -206,8 +222,8 @@ serialized bytes and repeated keys before adding broader reuse. The
 [Phase57 analysis](../../implementation/phase57/implementation-comparison.md#7-sk_char-is-canonical-key-escaping-with-a-separate-numeric-lowering-cost)
 keeps that question separate from the scalar Word reconstruction removed here.
 
-Final qualification must still distinguish compiler request time, emitted-program
-runtime, sampled cumulative allocation, peak memory and source/code size. It must
-also preserve public calling behavior, native/legacy support and the compiler's
-explicit proof-trust limits. The Phase58 report is the authority for which
-candidate eventually passes those gates and is installed.
+The qualification record distinguishes compiler request time, emitted-program
+runtime, sampled cumulative allocation, peak memory and source/code size. Public
+calling behavior, native/legacy support and the compiler's explicit proof-trust
+limits remain separate obligations. The Phase58 report binds the installed
+selection to its completed evidence.

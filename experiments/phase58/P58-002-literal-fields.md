@@ -1,11 +1,11 @@
 # P58-002 — Use ordinary literal keys while preserving special-key semantics
 
 - Owner / independent reviewer: field owner; independent phase44_review.
-- Evidence cutoff: selected `checked-last01`; checked build and 14 B1 integration jobs pass, final bootstrap/B2 and measurement pending.
+- Evidence cutoff: installed `checked-last01`; final B1/B2, measurements and release gates pass; archive closed and verified.
 - Objective: reduce compiler allocation/code-generation cost while retaining source semantics, direct ABI and stack safety.
 - Correctness: Genuine checked-source acquisition and fields-controls03 pass own values/prototypes, key order, once-only effects, reentry, aliases and exact AST activation at all three emission routes.
 - Measurement: An independent fixed-source saved-image confirmation supports reduced lexer request latency. It is an unchecked syntax derivative; it does not establish fewer allocated bytes, general program speed or final selected-image performance.
-- Decision: supersede the all-literal constructor rule with last-live-field computed policy; retain preceding literal keys and literal host-clone keys. Final promotion pending.
+- Decision: supersede the all-literal constructor rule with last-live-field computed policy; retain preceding literal keys and literal host-clone keys. Final selected scope installed and verified; archive closed and verified.
 
 This record is **retrospectively indexed**. The linked designs and source plans existed and were committed before their target runs; this file was written afterwards. It is not a preregistered experiment artifact. Canonical results and identities remain in the [implementation report](../../implementation/phase58/literal-fields.md) and [Phase58 status](../../implementation/phase58/README.md).
 
@@ -23,7 +23,7 @@ The [design](../../design/phase58/compiler-allocation-and-code-generation.md) an
 
 ## Gates and observations
 
-The [focused evidence](../../selfhost/build/phase58/fields-controls03/report.json) and [related attempt](../../selfhost/build/phase58/fields-latency-confirm01/report.json) retain actual pass/refusal status and input joins. The canonical report lists completed observations, failed predecessors and limitations; counts are not recopied into a competing table here. Historical [shared01 checked validation](../../selfhost/build/phase58/checked-shared01/validation-001/report.json) is a separate completed gate. Its completed gates do not qualify last01 by inheritance. The [last01 checked validation](../../selfhost/build/phase58/checked-last01/validation-001/report.json) and completed 14-job B1 integration are current; final last01 bootstrap/B2 and measurements are pending.
+The [focused evidence](../../selfhost/build/phase58/fields-controls03/report.json) and [related attempt](../../selfhost/build/phase58/fields-latency-confirm01/report.json) retain actual pass/refusal status and input joins. The canonical report lists completed observations, failed predecessors and limitations; counts are not recopied into a competing table here. Historical [shared01 checked validation](../../selfhost/build/phase58/checked-shared01/validation-001/report.json) is a separate completed gate. Its completed gates do not qualify last01 by inheritance. The [last01 checked validation](../../selfhost/build/phase58/checked-last01/validation-001/report.json), final B2 gates and measurements now pass in their own scope; installed release execution is complete/pass.
 
 ## Independent audit
 
@@ -31,7 +31,7 @@ Independent source/controller review challenged the invariant and its negative b
 
 ## Decision and next discriminating test
 
-Keep the revised last-live-key policy in selected last01 pending its final gates. Final combined request/allocation comparison must distinguish source-image effects from the saved syntax ablation.
+Keep the revised last-live-key policy in selected last01 after completed final gates. The completed final combined request/allocation comparison remains distinct from the saved syntax ablation and does not isolate key-placement cost.
 
 ## Preservation
 
@@ -45,4 +45,8 @@ Whole computed rollback restores the three regressing program points but substan
 
 New genuine [controls-v5 execution](../../selfhost/build/phase58/last-fields-controls01/report.json) retains all 17 semantic groups per role and checks each actual last emitted field. The [independent supplement](../../selfhost/build/phase58/last-live-controls01/report.json) covers zero/single/all-erased constructors, trailing erased fields, last-position __proto__, and final-field effects/errors/partial calls. Its first invalid computed-match fixture is preserved; v2 uses a named scrutinee. Existing consumed controllers/receipts and earlier measurements are unchanged.
 
-Checked-last01 passes its checked build and all 14 B1 integration jobs. Its bootstrap/B2, final compiler/program measurements, release and archive remain pending at this cutoff.
+Checked-last01 passes its checked build, all 14 B1 integration jobs, final B2 qualification and compiler/program measurements. Its installed release passes all five interface/integrity steps; archive closure and member verification are complete.
+
+## Final selected closure
+
+Checked-last01's final scoped qualification, B2 fixed point and fresh 23-source/45-point program campaign pass. The [final compiler measurements](../../implementation/phase58/final-measurements.md), [full45 aggregate](../../selfhost/build/phase58/final-performance-last01/aggregate/report.json) and [release execution](../../selfhost/build/phase58/final-last01/release-execution/report.json) bind their own actual selected inputs. All five release steps pass, including legacy42/default24 and integrity before/after; last01 is installed. These combined-source outcomes do not isolate this mechanism's individual contribution. Earlier negative/null diagnostics remain unchanged. All raw writers are closed and every archive member is verified; the Phase58 publication index binds the final evidence.

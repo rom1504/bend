@@ -2999,3 +2999,50 @@ scale graph analysis before compiler-sized self-emission. A narrow checked
 build/emission/timing iteration is roughly three minutes of target work; full45
 costs about22 minutes including acquisition. Preserve scoped correctness and
 exact output checks. No PR comment was posted.
+
+
+## Phase53 corrected default and ordered expressions — 2026-10-06
+
+[Design](../design/phase53/default-direct-and-ordered-expressions.md),
+[report](../implementation/phase53/README.md),
+[results/chart](../implementation/phase53/results.md),
+[publication](../selfhost/tools/performance/phase53/publication.json).
+The compiler remains implemented in Bend. Direct JavaScript is now the ordinary
+program/library/run output; `--legacy-js` and explicit API `backend:'js'` retain
+compatibility. Fresh typed-array storage fixes the cold NaN payload mismatch
+without changing the source golden40; pinned TS still returns1. Independent
+callback controls also exposed an ordering gap. Composable statement prefixes
+and pending values now follow the pinned emitter's observable ordering through
+calls, constructors, lets, partial applications and true overapplication.
+
+The separate corrected-baseline screen admits ordered02 with1.068387× speedup.
+The complete same-run45-point/23-source/669-sample comparison improves
+**1.129266× →1.069599× TS**, a**1.055785× speedup**. Equal-source weighting is
+1.078076× TS. Fifteen points beat TS,34/45 lie within±10%,39/45 within±20%.
+All12 regressions below3.4% and six timing flags remain; worst point is1.912×TS.
+These are corpus summaries, not statistical bounds or universal parity.
+
+Original source scenarios pass96/96; numeric34/34; composition18/18 and genuine
+overapplication2/2; maintained census26/26 agreement and compatibility8/8.
+Overlapping scopes are not summed. TS's NaN failures remain explicit. Selected
+release passes42 legacy+24 default/legacy checks, relocation, integrity and
+runtime-tamper controls. Installed direct-row acquisition and final portable
+replay3cases/27samples pass. All135 portable mappings verify. Failed semantic
+assumptions, controller/routing failures and sandbox launch refusals are retained.
+
+Source is26,151 physical/21,523 code Bend lines (+361/+288), with two new modules
+and one changed old module;100 prior modules remain exact. Four-module static
+inspection finds202 primitive call sites and30 wrapper declarations removed,
+replaced by256 holds. This is syntax evidence, not a proven V8 mechanism.
+Selected build61.09s, peak1.513GB; causal screen57.50s; full timing18.69min.
+At the explicit accounting cutoff80.13min elapsed, recorded process occupancy
+was35.12min; the remaining45.01min combines development, review, docs, orchestration
+and unrecorded/idle time. Packaging follows that cutoff. Targets remained serial
+and memory bounded. One closed archive retains complete evidence. All103
+unrelated files are preserved. No PR comment was posted.
+
+**Updated frontier:** test general scalar numeric match tables with NaN/demand
+controls; use saved-output ablation to test whether acyclic loop scaffolding
+matters; replace repeated graph reachability before scaling compiler-sized direct
+self-emission. Finite F32 literals are already folded; do not repeat that proposal.
+Compiler-throughput parity and a new direct self-emitted fixed point are unproved.

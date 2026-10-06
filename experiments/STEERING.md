@@ -1,93 +1,100 @@
-# Current compiler: Phase52 direct06
+# Current compiler: Phase53 ordered02
 
-The user authorized a direct-backend prototype followed by full implementation
-if it proved valuable. The one-hour prototype gate passed; direct06 is installed
-with all42 legacy and18 direct CLI checks plus release verification passing.
-The final portable replay also passes 3 cases/27 samples. All raw writers are
-closed; the compact packet and complete raw archive are published with hashes
-in the [publication receipt](../selfhost/tools/performance/phase52/publication.json). See the
-[report](../implementation/phase52/README.md), [results](../implementation/phase52/results.md),
-[direct guide](../selfhost/docs/direct-javascript.md), and
-[benchmark recipes](../selfhost/tools/performance/phase52/README.md).
-No PR comment is authorized. Preserve all103 unrelated starting files and closed
-historical evidence. New investigations must use a new phase and fresh outputs.
+The user authorized fixing the semantic mismatch, making direct JavaScript the
+default, and optimizing further. **Ordered02 is installed.** Semantic/compatibility gates, all45/669 benchmark
+observations, release integrity and legacy42/default24 interface checks pass.
+Portable replay passes three cases/27 samples. Final evidence is bound by the
+[publication index](../selfhost/tools/performance/phase53/publication.json).
+No PR comment is authorized.
 
-API: `472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a`.
-Source: `3c5671579628de5c113907403188df17e3d35a15dd520bc1d20b6dc3263d3513`.
-Direct runtime: `417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a`.
-Compatibility runtime: `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
-Upstream: `018751270e800bc222a93dad7f257083ee53a5f7`.
+[Design](../design/phase53/default-direct-and-ordered-expressions.md),
+[report](../implementation/phase53/README.md),
+[qualification](../implementation/phase53/qualification.md),
+[direct guide](../selfhost/docs/direct-javascript.md),
+[measurement plan](../selfhost/tools/performance/phase53/PLAN.md), and
+[publication recipe](../selfhost/tools/performance/phase53/publication-plan.md).
+Preserve all 103 unrelated starting files and all closed historical evidence.
 
-## Selected behavior and limits
+Selected checked attempt: `selfhost/build/phase53/checked-ordered02`.
+API: `3e3fb8c3bc4c445567696ce62bd95979e36746ddde5bb9e0aad3038fc362c9b9`.
+Source: `1b54ede1643a131c1bb7c7b995900da7947b6f21aac71141f50a0f5c8d15899d`.
+Direct runtime: `c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
+Legacy runtime: `3158f543b3fb67d2319a83e18485c116708bc8f17998e602f29ee95e83c05e46`.
+Upstream remains `018751270e800bc222a93dad7f257083ee53a5f7`.
 
-`--direct-js` uses lexical functions, native closures/data, demand-sensitive
-views, native intrinsics with inert actuals, self/mutual tail loops, program IO
-and foreign modules. Ordinary compilation runs Bend code. The old mutable-G
-interface remains default compatibility mode; no legacy guard was silently
-removed. The 37 pinned Base JS effect providers are vendored for relocation.
+## Selected behavior
 
-All101 live source modules match frozen06; all92 original modules match Phase51.
-The new backend adds1,746 code lines in nine modules; keeping both interfaces
-increases total physical Bend source9.0%. Generated whole-module bytes fall
-about75% relative to Phase51. These are different size measures.
+Direct output is the workspace default for emitted programs/libraries and
+`--run`; `--direct-js` remains an alias. `--legacy-js` and explicit API
+`backend:'js'` preserve the old descriptor interface. Pure interpretation and
+native target selection retain their routes. Private compiler-image workers and
+legacy-structure tests now select their required backend explicitly.
 
-Independent semantics pass95/96 scenarios across29 checked fixtures. The source
-NaN-payload oracle is40; TS returns1 and direct39. This remains an unwaived failure,
-not full conformance. The direct JS census agrees on26 rows (18 runtime passes,
-four expected compiler rejections, four N/A); all eight maintained suites pass.
-Legacy core8 is byte-identical to Phase51 and passes a separate120-sample gate;
-its earlier20s budget-exhausted attempt remains failed. Broader native/frontend
-inventories are historical. No new self-emitted fixed point or compiler-throughput
-parity is established. Direct analysis currently refuses beyond512 definitions
-and other documented bounds. Arbitrary numeric-table/global-hook identity is
-not promised.
+Fresh typed-array storage fixes cold NaN payload transport. The original oracle
+remains40: selected output40 passes, pinned TS1 fails. New callback controls
+exposed a separate prior ordering gap. Ordered prefixes and pending values follow
+pinned `js_call`: collect child prefixes first, then hold pending operands at
+intrinsic boundaries. Closures, constructors, lets, partial calls and genuine
+overapplication are covered. No TypeScript fallback or emitted-JS rewrite.
 
-## Measured results and rejected work
+Selected source has 26,151 physical /21,523 code Bend lines: +361/+288 versus
+Phase52. Only existing core.bend changes; the other100 old modules remain exact.
+Two new modules compose ordered expressions/values. The direct backend now has
+11 modules. The 512-definition cap is conservative and precedes exact emitted
+pruning; compiler-sized direct self-emission remains unqualified.
 
-All45 points /23 sources /669 fresh samples pass. Equal-point Phase51/TS is
-2.630605× and direct06/TS1.123799×: a2.340815× speedup. Equal-source values are
-3.582113× and1.129112×: a3.172504× speedup. Historical Phase51's2.928× result is
-not the denominator. Twenty-nine points are within10% of TS; nine are faster;
-the worst direct/TS point is1.994×. This maintained corpus informed development.
+## Completed gates and publication
 
-Seven points regress against Phase51, five by more than10%. Closures256 and
-list512 lose2.217×/1.781× against already-faster legacy specializations while
-remaining1.038×/1.020× TS. Keep them visible. Three descriptive drift/spread
-flags remain; no rows are excluded and no significance/JIT-convergence claim
-follows from unflagged rows.
+- Original independent source suite:96/96 candidate,95/96 TS and differential;
+  only the reference's NaN source defect differs.
+- Numeric/cold controls:34/34 candidate,28/34 TS. The six reference failures are
+  original/renamed NaN-table calls in fresh processes, not unhealthy processes.
+- Composition18 and genuine-overapplication2 pass both roles.
+- Direct JS census agrees26/26 (18 runtime passes,four rejections,four N/A).
+- Maintained compatibility8 passes after four test calls explicitly select legacy.
+  The initial default-routing test failure remains preserved.
+- Causal screen8/72 passes: corrected01/TS1.207400 → ordered02/TS1.130115,
+  speedup1.068387. Prewritten≥1.05 and no>10% regression gate met. Morning and
+  closures regress5.01%/3.78%; no spread/drift flags. Full45 is separate.
 
-P52-002's atomic intrinsic expansion gains7.4% in its own paired screen, missing
-its prewritten10% target. It was retained by an explicit separate engineering
-decision: five sources improve>5%, none regress>10%, and exact byte attribution
-plus semantic controls pass within the known NaN limitation. P52-003's computed
-operand IIFEs lose25.75% overall and3.568× on Mandelbrot. They are rejected and
-preserved. Do not reintroduce that lowering merely because it removes wrappers.
+The complete final campaign uses original direct06 and pinned TS, never historical
+timings. All45 points/23 sources/669 samples pass. Equal-point time improves
+1.129266× →1.069599× TS, a1.055785× speedup; equal-source improves1.135543× →
+1.078076×, a1.053305× speedup. Fifteen points beat TS,34/45 are within±10%.
+Twelve regressions remain, none above3.4%; all six role/point timing flags remain.
+The worst TS ratio is grid4 at1.911888×, so this is not per-program parity.
 
-## Next investigations
+Installation, both integrity checks, legacy42/default24, prior-history byte
+preservation, and the installed direct generic-row acquisition/oracle pass.
+Six sandbox Clang spawn refusals in the first legacy gate remain preserved;
+the unchanged authorized retry passes42. The last timing batch had one launch-only
+approval timeout and a successful retry, with no repeated completed samples.
+Final portable replay passes3/3 cases and27/27 samples. At the explicit
+00:09:58 UTC accounting cutoff, elapsed time is80.13 minutes and observed process
+occupancy35.12 minutes; the remainder is mixed work, not a waiting estimate.
+All135 portable mappings are verified. Compact replay bundles and one closed raw
+archive preserve the full campaign, including failures, under
+`selfhost/tools/performance/phase53/`. The publication index binds the evidence.
 
-1. **Ordered expression lowering:** emit statement prefixes plus one value,
-   materializing earlier effectful operands before later prefixes. Keep work
-   inside its original branch/closure/demand scope. Compare actual straight-line
-   arithmetic with pinned `js_call`/`emit_hold`; preserve once-only evaluation,
-   Math getter/coercion order, partial calls and aliasing. The IIFE failure does
-   not establish a specific V8 mechanism or prove this successor faster.
-2. **NaN and numeric tables:** first localize cold/repeated raw-bit differences.
-   Separately evaluate bounded constant folding and scalar match tables, which
-   explain some raytrace code differences. Do not canonicalize payloads, change
-   the oracle, or warm up a failing first call to hide it.
-3. **Retain the best private optimizations:** investigate why legacy closure/list
-   workloads beat TS, and port a general proved transformation into direct mode.
-   Avoid benchmark-name selection or a per-program backend selector.
-4. **Scale compiler-sized inputs:** replace conservative call-analysis limits
-   with a scalable bounded graph implementation, then measure compiler requests
-   and a direct self-emission. Existing small-program timings cannot establish
-   self-host throughput or fixed-point correctness.
+## Follow-on experiments
 
-Use the three-minute checked build/eight-emission/short-screen loop for narrow
-candidates. Independent agents can write source, controls, analysis and reviews;
-serialize heavy targets and keep clean timing free of compilation/compression.
-A final45 campaign costs about22 minutes including acquisition. Freeze once and
-run it only after smaller falsifiers survive. Reuse exact emitted-byte evidence
-where valid; keep failed protocols and their successors distinct. Resource
-limits remain1GiB heap,2GiB tree RSS and4GiB available memory. No OOM occurred in
-this phase's guarded builds; the largest build was below1.5GB tree RSS.
+1. Five scalar Nat→F32 scene helpers still use branches where TS uses short
+   constant tables. Preserve source NaN bits and observable demand; the pinned
+   reference's bare-NaN folding is not a correct template to copy wholesale.
+2. Acyclic helpers retain redundant loop/block structure. Retain the singleton
+   self-edge fact and test ordinary function bodies using a cheap saved-output
+   ablation before committing to an emitter change. No speed effect is proved.
+3. Use linear graph algorithms and explicit budgets before scaling to compiler
+   inputs. Do not simply raise512 or add a silent legacy fallback.
+
+Finite F32 literals are already specialized. Mandelbrot uses U32 fixed-point,
+and inspected ray/Mandel modules have no generated f32_from_bits calls. Do not
+repeat that nonexistent literal optimization. The four-module shape census finds
+202 removed primitive calls, not a dynamic attribution or V8 mechanism proof.
+
+Use one target owner, CPU3,1GiB heap,2GiB tree RSS,4GiB available-memory floor.
+Keep compilation/compression away from clean timing. Small checked builds/screens
+serve iteration; full45 is an integration gate. Close the raw campaign only after
+all writers stop. Publish one raw archive and compact replay bundles, not another
+13,930-file duplicate review packet. Broader language/native/GPU conformance,
+compiler-throughput parity and a new self-emitted fixed point remain separate.

@@ -16,36 +16,40 @@ This fork develops the compiler in [`selfhost/`](selfhost/README.md), on branch
 `selfhost/bootstrap`. Ordinary compilation runs Bend code without a TypeScript
 fallback. The target remains pinned to **0187512, after Bend 2.0.34**.
 
-[Phase52](implementation/phase52/README.md) adds an explicit
-[direct JavaScript backend](selfhost/docs/direct-javascript.md), written in Bend.
-Use `--direct-js` for native callable exports and data layouts. The existing
-mutable-descriptor JavaScript interface remains the default compatibility mode.
+[Phase53](implementation/phase53/README.md) fixes cold NaN payload transport and
+makes [direct JavaScript](selfhost/docs/direct-javascript.md) the default for
+program/library emission and `--run`. Use `--legacy-js` for the mutable-descriptor
+compatibility interface. **Ordered02 is installed; release integrity and all 66 ordinary/relocated
+interface checks pass.**
 
-The [complete comparison](implementation/phase52/results.md) covers **45 points
-from 23 sources and 669 fresh samples**. Execution time improves **2.631× → 1.124×
-TypeScript**, a **2.34× speedup**; equal-source weighting gives 1.129× TypeScript.
-Twenty-nine points are within 10% of TypeScript. All benchmark outputs pass,
-but seven points regress against Phase51. The [diagram](implementation/phase52/ratios.svg)
-and report include every result; this corpus does not establish universal parity.
+The original independent semantic suite now passes **96/96**, plus 34 numeric,
+18 composition and two genuine overapplication controls. Pinned TypeScript's
+NaN fixture still fails its unchanged source oracle; matching that erroneous
+result is not required. The 26-row JS census and all eight maintained
+compatibility suites pass. [Conformance](selfhost/CONFORMANCE.md) separates these
+overlapping scopes from broader language/native/GPU claims.
 
-**Direct06 is installed; integrity verification and all 60 ordinary/relocated
-CLI checks pass.** [Conformance](selfhost/CONFORMANCE.md) separately records **95/96**
-independent direct semantic controls: exact NaN payloads remain a known failure
-in both this backend and pinned TypeScript, with different observed outputs.
-The 26-row JS census and all eight maintained compatibility suites pass.
-This is a checked B1 derivative, not a new self-emitted fixed point.
+Ordered expression lowering removes primitive call wrappers while preserving
+upstream callback order. The [complete 45-point / 23-source comparison](implementation/phase53/results.md)
+passes all **669 fresh samples**: execution time improves **1.129× → 1.070×
+TypeScript**, a **5.6% speedup**. Equal-source weighting gives 1.078× TypeScript.
+Twelve points regress, none by more than 3.4%; all results and six timing flags
+remain in the [diagram](implementation/phase53/ratios.svg). This maintained corpus
+is not universal parity or a compiler-throughput measurement.
 
-[Source accounting](implementation/phase52/accounting.md) records **25,790 physical
-/ 21,235 code Bend lines**. The direct backend adds 1,746 code lines in nine
-modules; the original 92 modules are unchanged. Keeping both interfaces grows
-total physical compiler source by 9.0%. Compiler throughput was not remeasured.
+[Source accounting](implementation/phase53/complexity.md) records **26,151 physical
+/ 21,523 code Bend lines**. The change adds 361 physical lines (1.4%); the other
+100 existing modules are unchanged. The compiler remains a checked B1 derivative,
+not a newly established self-emitted fixed point. Direct analysis currently caps
+conservatively eligible runtime definitions at 512 before final pruning.
 
-From `selfhost/`, run `npm run verify:release`, then
-`node cli.mjs FILE --direct-js --run`. Use the [compiler guide](docs/BEND-IN-BEND.md),
-[benchmark guide](selfhost/tools/performance/phase52/README.md),
-[checked workflow](docs/PHASE5_DEVELOPMENT.md),
-[architecture survey](docs/self_hosted/README.md),
+From `selfhost/`, verify with `npm run verify:release`, then use
+`node cli.mjs FILE --run`. See the
+[compiler guide](docs/BEND-IN-BEND.md), [benchmark recipes](selfhost/tools/performance/phase53/PLAN.md),
+[checked workflow](docs/PHASE5_DEVELOPMENT.md), [architecture survey](docs/self_hosted/README.md),
 [experiment ledger](experiments/ledger.md) and [current strategy](experiments/STEERING.md).
+The [Phase52 report](implementation/phase52/README.md) preserves the preceding
+2.34× improvement and its original validation/performance scope.
 
 ## Bend runs FAST
 

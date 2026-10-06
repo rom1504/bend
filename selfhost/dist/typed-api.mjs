@@ -25002,7 +25002,7 @@ function $jd_body_let_render$(_book_0, _env_0, _xs_0, _body_0) {
   const _x_0 = ($jd_let_bindings$(_xs_0, 0, _body_0));
   const _x_1 = (_body_0 + "}}");
   const _x_2 = (_x_0 + _x_1);
-  const _x_3 = ($jd_let_values$(_book_0, _env_0, _xs_0, 0, _body_0));
+  const _x_3 = run_loop($jd_let_values$(_book_0, _env_0, _xs_0, 0, _body_0));
   const _x_4 = ("{" + _x_2);
   const _x_5 = (_x_3 + _x_4);
   return ("{" + _x_5);
@@ -25029,13 +25029,12 @@ function $jd_same_component$(_book_0, _left_0, _right_0) {
 }
 
 function $jd_return_self$(_book_0, _env_0, _t_0, _ty_0, _spine_0, _r_0) {
-  const _values_0 = _r_0["values"];
   const _rest_0 = _r_0["rest"];
   const _result_0 = _r_0["typ"];
   const _missing_0 = _r_0["missing"];
   const _x_0 = run_loop($jd_live_arity$(_book_0, _result_0, _missing_0));
   return run_tail((($Bool$and$(($List$is_empty$(_rest_0)), (_x_0 === 0)))) ? ((_x_1) => {
-  return $jd_transfer_args$(_book_0, run_loop($jd_owner$(_env_0)), ($nm$(_spine_0)), _values_0);
+  return $jd_ordered_transfer$(_book_0, _env_0, ($nm$(_spine_0)), ($ks$(_spine_0)));
 }) : ((_x_2) => {
   return $jd_return_regular$(_book_0, _env_0, _t_0, _ty_0, _spine_0);
 }), {$: "Unit"});
@@ -25050,15 +25049,7 @@ function $jd_arguments$(_book_0, _env_0, _xs_0, _ty_0, _left_0) {
 }
 
 function $jd_return_regular$(_book_0, _env_0, _t_0, _ty_0, _spine_0) {
-  const _x_0 = ($String$eq$(($tg$(_t_0)), "App"));
-  const _x_1 = ($String$eq$(($tg$(_t_0)), "Ref"));
-  const _x_4 = run_loop(run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
-  return $jd_application$(_book_0, _env_0, _t_0, run_loop($jd_tail_position$(_env_0)), _spine_0);
-}) : ((_x_3) => {
-  return $jd_expr$(_book_0, _env_0, _t_0, _ty_0);
-}), {$: "Unit"}));
-  const _x_5 = (_x_4 + ";");
-  return ("return " + _x_5);
+  return $jd_ordered_return$(_book_0, _env_0, _t_0, _ty_0);
 }
 
 function $jd_apply_strings$($0, $1, $2) {
@@ -27369,33 +27360,7 @@ function $jd_match_type$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _arg_0, _rest_
 }
 
 function $jd_let_values$(_book_0, _env_0, _xs_0, _at_0, _body_0) {
-  if (_xs_0.$ === "Nil") {
-    return "";
-  } else {
-    const _x_0 = _xs_0["head"];
-    const _t_0 = _xs_0["tail"];
-    if (_t_0.$ === "Nil") {
-      return "";
-    } else {
-      const _x_11 = run_loop(run_tail((($String$contains$(_body_0, ($jd_use$(($ix$(_x_0))))))) ? ((_x_1) => {
-  const _x_2 = ($qt$(_x_0));
-  const _x_5 = run_loop(run_tail(((_x_2 === 0)) ? ((_x_3) => {
-  return "null";
-}) : ((_x_4) => {
-  return $jd_expr$(_book_0, _env_0, run_loop($kid$(_x_0, 0)), run_loop($j_type$(_book_0, _env_0, run_loop($kid$(_x_0, 0)))));
-}), {$: "Unit"}));
-  const _x_6 = (_x_5 + ";");
-  const _x_7 = ($U32$show$(_at_0));
-  const _x_8 = ("=" + _x_6);
-  const _x_9 = (_x_7 + _x_8);
-  return ("const $let" + _x_9);
-}) : ((_x_10) => {
-  return "";
-}), {$: "Unit"}));
-      const _x_12 = ($jd_let_values$(_book_0, _env_0, _t_0, ((_at_0 + 1) >>> 0), _body_0));
-      return (_x_11 + _x_12);
-    }
-  }
+  return $jd_ordered_lets$(_book_0, _env_0, _xs_0, _at_0, _body_0, 0);
 }
 
 function $jd_let_bindings$(_xs_0, _at_0, _body_0) {
@@ -27427,22 +27392,8 @@ function $jd_calls_same_component$(_left_0, _right_0) {
   return $Bool$and$(($Bool$and$(($String$eq$(($tg$(_left_0)), "JDComponent")), ($String$eq$(($tg$(_right_0)), "JDComponent")))), ($String$eq$(($nm$(_left_0)), ($nm$(_right_0)))));
 }
 
-function $jd_transfer_args$(_book_0, _owner_0, _target_0, _values_0) {
-  const _x_4 = run_loop(run_tail((($String$eq$(_owner_0, _target_0))) ? ((_x_0) => {
-  return "";
-}) : ((_x_1) => {
-  const _x_2 = ($U32$show$(run_loop($jd_component_id$(_book_0, _target_0))));
-  const _x_3 = (_x_2 + ";");
-  return ("$pc=" + _x_3);
-}), {$: "Unit"}));
-  const _x_5 = ($jd_self_stores$(_values_0, 0));
-  const _x_6 = (_x_4 + "continue;}");
-  const _x_7 = ($jd_self_temps$(_values_0, 0));
-  const _x_8 = (_x_5 + _x_6);
-  const _x_9 = ($jd_ref$(_target_0));
-  const _x_10 = (_x_7 + _x_8);
-  const _x_11 = (_x_9 + _x_10);
-  return ("{" + _x_11);
+function $jd_ordered_transfer$(_book_0, _env_0, _target_0, _xs_0) {
+  return $jd_ordered_transfer_done$(_book_0, run_loop($jd_owner$(_env_0)), _target_0, run_loop($jd_ordered_args$(_book_0, _env_0, _xs_0, ($dt$(run_loop($lookup$(_book_0, _target_0)))), 0)));
 }
 
 function $jd_arguments_more$(_book_0, _env_0, _xs_0, _ty_0, _left_0) {
@@ -27458,6 +27409,10 @@ function $jd_arguments_more$(_book_0, _env_0, _xs_0, _ty_0, _left_0) {
   return $jd_expr$(_book_0, _env_0, _x_0, run_loop($kid$(_ty_0, 0)));
 }), {$: "Unit"})), run_loop($jd_arguments$(_book_0, _env_0, _rest_0, run_loop($j_app_type$(_ty_0, _x_0)), ((_left_0 - 1) >>> 0))));
   }
+}
+
+function $jd_ordered_return$(_book_0, _env_0, _t_0, _ty_0) {
+  return $jd_ordered_return_done$(run_loop($jd_ordered_expr$(_book_0, _env_0, _t_0, _ty_0, run_loop($jd_tail_position$(_env_0)), 0)));
 }
 
 function $jd_primitive_arg$(_args_0, _at_0) {
@@ -30221,41 +30176,49 @@ function $jd_match_ctor$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _arg_0, _rest_
 }), {$: "Unit"});
 }
 
-function $jd_ref$(_name_0) {
-  const _x_0 = ($jd_name$(_name_0));
-  const _x_1 = (_x_0 + "*/");
-  return ("\n/*JD_REF:" + _x_1);
-}
-
-function $jd_self_temps$(_values_0, _at_0) {
-  if (_values_0.$ === "Nil") {
+function $jd_ordered_lets$(_book_0, _env_0, _xs_0, _at_0, _body_0, _next_0) {
+  if (_xs_0.$ === "Nil") {
     return "";
   } else {
-    const _x_0 = _values_0["head"];
-    const _rest_0 = _values_0["tail"];
-    const _x_1 = ($jd_self_temps$(_rest_0, ((_at_0 + 1) >>> 0)));
-    const _x_2 = (";" + _x_1);
-    const _x_3 = (_x_0 + _x_2);
-    const _x_4 = ($U32$show$(_at_0));
-    const _x_5 = ("=" + _x_3);
-    const _x_6 = (_x_4 + _x_5);
-    return ("const $next" + _x_6);
+    const _x_0 = _xs_0["head"];
+    const _t_0 = _xs_0["tail"];
+    if (_t_0.$ === "Nil") {
+      return "";
+    } else {
+      return run_tail((($String$contains$(_body_0, ($jd_use$(($ix$(_x_0))))))) ? ((_x_1) => {
+  const _x_2 = ($qt$(_x_0));
+  return $jd_ordered_let_done$(_book_0, _env_0, _t_0, _at_0, _body_0, run_loop(run_tail(((_x_2 === 0)) ? ((_x_3) => {
+  return {$: "JDOrdered", "prefix": "", "value": "null", "next": _next_0};
+}) : ((_x_4) => {
+  return $jd_ordered_expr$(_book_0, _env_0, run_loop($kid$(_x_0, 0)), run_loop($j_type$(_book_0, _env_0, run_loop($kid$(_x_0, 0)))), false, _next_0);
+}), {$: "Unit"})));
+}) : ((_x_5) => {
+  return $jd_ordered_lets$(_book_0, _env_0, _t_0, ((_at_0 + 1) >>> 0), _body_0, _next_0);
+}), {$: "Unit"});
+    }
   }
 }
 
-function $jd_self_stores$(_values_0, _at_0) {
-  if (_values_0.$ === "Nil") {
-    return "";
+function $jd_ordered_transfer_done$(_book_0, _owner_0, _target_0, _r_0) {
+  const _prefix_0 = _r_0["prefix"];
+  const _values_0 = _r_0["values"];
+  return run_tail((($String$eq$(_prefix_0, ""))) ? ((_x_0) => {
+  return $jd_transfer_args$(_book_0, _owner_0, _target_0, _values_0);
+}) : ((_x_1) => {
+  const _x_2 = ($jd_transfer_args$(_book_0, _owner_0, _target_0, _values_0));
+  const _x_3 = (_x_2 + "}");
+  const _x_4 = (_prefix_0 + _x_3);
+  return ("{" + _x_4);
+}), {$: "Unit"});
+}
+
+function $jd_ordered_args$(_book_0, _env_0, _xs_0, _ty_0, _next_0) {
+  if (_xs_0.$ === "Nil") {
+    return {$: "JDOrderedArgs", "prefix": "", "values": {$: "Nil"}, "next": _next_0};
   } else {
-    const _rest_0 = _values_0["tail"];
-    const _x_1 = ($jd_self_stores$(_rest_0, ((_at_0 + 1) >>> 0)));
-    const _x_2 = ($U32$show$(_at_0));
-    const _x_3 = (";" + _x_1);
-    const _x_4 = (_x_2 + _x_3);
-    const _x_5 = ($U32$show$(_at_0));
-    const _x_6 = ("=$next" + _x_4);
-    const _x_7 = (_x_5 + _x_6);
-    return ("$a" + _x_7);
+    const _x_0 = _xs_0["head"];
+    const _rest_0 = _xs_0["tail"];
+    return $jd_ordered_arg_type$(_book_0, _env_0, _x_0, _rest_0, run_loop($wnf$(_book_0, _ty_0)), _next_0);
   }
 }
 
@@ -30269,6 +30232,24 @@ function $jd_arguments_join$(_value_0, _r_0) {
 }) : ((_x_1) => {
   return {$: "Con", "head": _value_0, "tail": _values_0};
 }), {$: "Unit"})), "rest": _rest_0, "typ": _ty_0, "missing": _missing_0};
+}
+
+function $jd_ordered_return_done$(_r_0) {
+  const _prefix_0 = _r_0["prefix"];
+  const _value_0 = _r_0["value"];
+  return run_tail((($String$eq$(_prefix_0, ""))) ? ((_x_0) => {
+  const _x_1 = (_value_0 + ";");
+  return ("return " + _x_1);
+}) : ((_x_2) => {
+  const _x_3 = (_value_0 + ";}");
+  const _x_4 = ("return " + _x_3);
+  const _x_5 = (_prefix_0 + _x_4);
+  return ("{" + _x_5);
+}), {$: "Unit"});
+}
+
+function $jd_ordered_expr$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0) {
+  return $jd_ordered_node$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0);
 }
 
 function $jd_host_marshal_key$(_t_0, _out_0) {
@@ -32272,6 +32253,79 @@ function $jd_match_emit$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _arg_0, _rest_
   return $jd_match_emit_at$(_book_0, {$: "Con", "head": ($kt$("$JD.MatchScope", "", 4294967294, 0, {$: "Nil"})), "tail": _env_0}, _t_0, _ty_0, _domain_0, _arg_0, _rest_0, _tel_0, ("$match" + _x_0));
 }
 
+function $jd_ordered_let_done$(_book_0, _env_0, _rest_0, _at_0, _body_0, _r_0) {
+  const _prefix_0 = _r_0["prefix"];
+  const _value_0 = _r_0["value"];
+  const _next_0 = _r_0["next"];
+  const _x_0 = run_loop($jd_ordered_lets$(_book_0, _env_0, _rest_0, ((_at_0 + 1) >>> 0), _body_0, _next_0));
+  const _x_1 = (";" + _x_0);
+  const _x_2 = (_value_0 + _x_1);
+  const _x_3 = ($U32$show$(_at_0));
+  const _x_4 = ("=" + _x_2);
+  const _x_5 = (_x_3 + _x_4);
+  const _x_6 = ("const $let" + _x_5);
+  return (_prefix_0 + _x_6);
+}
+
+function $jd_transfer_args$(_book_0, _owner_0, _target_0, _values_0) {
+  const _x_4 = run_loop(run_tail((($String$eq$(_owner_0, _target_0))) ? ((_x_0) => {
+  return "";
+}) : ((_x_1) => {
+  const _x_2 = ($U32$show$(run_loop($jd_component_id$(_book_0, _target_0))));
+  const _x_3 = (_x_2 + ";");
+  return ("$pc=" + _x_3);
+}), {$: "Unit"}));
+  const _x_5 = ($jd_self_stores$(_values_0, 0));
+  const _x_6 = (_x_4 + "continue;}");
+  const _x_7 = ($jd_self_temps$(_values_0, 0));
+  const _x_8 = (_x_5 + _x_6);
+  const _x_9 = ($jd_ref$(_target_0));
+  const _x_10 = (_x_7 + _x_8);
+  const _x_11 = (_x_9 + _x_10);
+  return ("{" + _x_11);
+}
+
+function $jd_ordered_arg_type$(_book_0, _env_0, _x_0, _rest_0, _ty_0, _next_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_1) => {
+  const _x_2 = ($qt$(_ty_0));
+  return run_tail(((_x_2 === 0)) ? ((_x_3) => {
+  return $jd_ordered_args$(_book_0, _env_0, _rest_0, run_loop($j_app_type$(_ty_0, _x_0)), _next_0);
+}) : ((_x_4) => {
+  return $jd_ordered_arg_head$(_book_0, _env_0, _rest_0, run_loop($j_app_type$(_ty_0, _x_0)), run_loop($jd_ordered_expr$(_book_0, _env_0, _x_0, run_loop($kid$(_ty_0, 0)), false, _next_0)));
+}), {$: "Unit"});
+}) : ((_x_5) => {
+  return {$: "JDOrderedArgs", "prefix": "", "values": {$: "Con", "head": ($jd_fail$("ordered actual lacks checked telescope")), "tail": {$: "Nil"}}, "next": _next_0};
+}), {$: "Unit"});
+}
+
+function $jd_ordered_node$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0) {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Ann"))) ? ((_x_0) => {
+  return $jd_ordered_expr$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), run_loop($kid$(_t_0, 1)), _tail_0, _next_0);
+}) : ((_x_1) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Rwt"))) ? ((_x_2) => {
+  return $jd_ordered_expr$(_book_0, _env_0, run_loop($kid$(_t_0, 2)), _ty_0, _tail_0, _next_0);
+}) : ((_x_3) => {
+  return run_tail((($String$eq$(($tg$(_t_0)), "Let"))) ? ((_x_4) => {
+  return $jd_ordered_let$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0);
+}) : ((_x_5) => {
+  const _x_6 = ($String$eq$(($tg$(_t_0)), "Ctr"));
+  const _x_7 = ($core_literal$(_t_0));
+  return run_tail(((_x_6 || _x_7)) ? ((_x_8) => {
+  return $jd_ordered_ctor$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0);
+}) : ((_x_9) => {
+  const _x_10 = ($String$eq$(($tg$(_t_0)), "App"));
+  const _x_11 = ($String$eq$(($tg$(_t_0)), "Ref"));
+  return run_tail(((_x_10 || _x_11)) ? ((_x_12) => {
+  return $jd_ordered_spine$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0, run_loop($j_call_spine$(_t_0, {$: "Nil"})));
+}) : ((_x_13) => {
+  return $jd_ordered_leaf$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0);
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
 function $jd_host_marshal_arm$(_book_0, _c_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0) {
   const _tail_0 = run_loop($jd_host_marshal_tail$(_book_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0));
   const _copy_0 = run_loop($jd_host_marshal_fields$(_book_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0, _tail_0));
@@ -33648,6 +33702,81 @@ function $jd_match_emit_at$(_book_0, _env_0, _t_0, _ty_0, _domain_0, _arg_0, _re
   const _x_32 = ("=" + _x_31);
   const _x_33 = (_value_0 + _x_32);
   return ("{const " + _x_33);
+}
+
+function $jd_ref$(_name_0) {
+  const _x_0 = ($jd_name$(_name_0));
+  const _x_1 = (_x_0 + "*/");
+  return ("\n/*JD_REF:" + _x_1);
+}
+
+function $jd_self_temps$(_values_0, _at_0) {
+  if (_values_0.$ === "Nil") {
+    return "";
+  } else {
+    const _x_0 = _values_0["head"];
+    const _rest_0 = _values_0["tail"];
+    const _x_1 = ($jd_self_temps$(_rest_0, ((_at_0 + 1) >>> 0)));
+    const _x_2 = (";" + _x_1);
+    const _x_3 = (_x_0 + _x_2);
+    const _x_4 = ($U32$show$(_at_0));
+    const _x_5 = ("=" + _x_3);
+    const _x_6 = (_x_4 + _x_5);
+    return ("const $next" + _x_6);
+  }
+}
+
+function $jd_self_stores$(_values_0, _at_0) {
+  if (_values_0.$ === "Nil") {
+    return "";
+  } else {
+    const _rest_0 = _values_0["tail"];
+    const _x_1 = ($jd_self_stores$(_rest_0, ((_at_0 + 1) >>> 0)));
+    const _x_2 = ($U32$show$(_at_0));
+    const _x_3 = (";" + _x_1);
+    const _x_4 = (_x_2 + _x_3);
+    const _x_5 = ($U32$show$(_at_0));
+    const _x_6 = ("=$next" + _x_4);
+    const _x_7 = (_x_5 + _x_6);
+    return ("$a" + _x_7);
+  }
+}
+
+function $jd_ordered_arg_head$(_book_0, _env_0, _rest_0, _ty_0, _head_0) {
+  const _prefix_0 = _head_0["prefix"];
+  const _value_0 = _head_0["value"];
+  const _next_0 = _head_0["next"];
+  return $jd_ordered_arg_join$(_prefix_0, _value_0, run_loop($jd_ordered_args$(_book_0, _env_0, _rest_0, _ty_0, _next_0)));
+}
+
+function $jd_ordered_let$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0) {
+  return $jd_ordered_let_body$(_book_0, _env_0, ($ks$(_t_0)), _next_0, run_loop($jd_ordered_expr$(_book_0, ($jd_ordered_aliases$(_book_0, _env_0, ($ks$(_t_0)), _next_0)), ($j_body$(($ks$(_t_0)))), _ty_0, _tail_0, ($jd_ordered_alias_end$(($ks$(_t_0)), _next_0)))));
+}
+
+function $jd_ordered_ctor$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0) {
+  return run_tail((($core_literal$(_t_0))) ? ((_x_0) => {
+  return {$: "JDOrdered", "prefix": "", "value": run_loop($jd_ctor_literal$(_book_0, _t_0)), "next": _next_0};
+}) : ((_x_1) => {
+  return $jd_ordered_ctor_type$(_book_0, _env_0, _t_0, run_loop($wnf$(_book_0, _ty_0)), _next_0);
+}), {$: "Unit"});
+}
+
+function $jd_ordered_spine$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0, _spine_0) {
+  return run_tail((($String$eq$(($tg$(_spine_0)), "Call"))) ? ((_x_0) => {
+  return $jd_ordered_named$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0, ($ks$(_spine_0)), run_loop($lookup$(_book_0, ($nm$(_spine_0)))));
+}) : ((_x_1) => {
+  return $jd_ordered_unknown$(_book_0, _env_0, _t_0, _tail_0, _next_0, run_loop($wnf$(_book_0, run_loop($j_type$(_book_0, _env_0, run_loop($kid$(_t_0, 0)))))));
+}), {$: "Unit"});
+}
+
+function $jd_ordered_leaf$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0) {
+  const _x_0 = ($String$eq$(($tg$(_t_0)), "App"));
+  const _x_1 = ($String$eq$(($tg$(_t_0)), "Ref"));
+  return {$: "JDOrdered", "prefix": "", "value": run_loop(run_tail(((_x_0 || _x_1)) ? ((_x_2) => {
+  return $jd_application$(_book_0, _env_0, _t_0, _tail_0, run_loop($j_call_spine$(_t_0, {$: "Nil"})));
+}) : ((_x_3) => {
+  return $jd_expr$(_book_0, _env_0, _t_0, _ty_0);
+}), {$: "Unit"})), "next": _next_0};
 }
 
 function $jd_host_marshal_tail$(_book_0, _tel_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0) {
@@ -35042,6 +35171,105 @@ function $jd_word_start$(_book_0, _env_0, _t_0, _ty_0, _rest_0, _value_0, _float
 }), {$: "Unit"})), run_loop($jd_word_rows$(_book_0, run_loop($j_strip$(_t_0)), _ty_0, 0, 0, {$: "JDWordCover", "term": ($atom$("Absent")), "fields": 0, "prefix": {$: "Nil"}})));
 }
 
+function $jd_ordered_arg_join$(_prefix_0, _value_0, _rest_0) {
+  const _more_0 = _rest_0["prefix"];
+  const _values_0 = _rest_0["values"];
+  const _next_0 = _rest_0["next"];
+  return {$: "JDOrderedArgs", "prefix": (_prefix_0 + _more_0), "values": {$: "Con", "head": _value_0, "tail": _values_0}, "next": _next_0};
+}
+
+function $jd_ordered_let_body$(_book_0, _env_0, _xs_0, _slot_0, _body_0) {
+  const _prefix_0 = _body_0["prefix"];
+  const _value_0 = _body_0["value"];
+  const _next_0 = _body_0["next"];
+  return $jd_ordered_let_render$(_prefix_0, _value_0, run_loop($jd_ordered_bindings$(_book_0, _env_0, _xs_0, (_prefix_0 + _value_0), _slot_0, _next_0)));
+}
+
+function $jd_ordered_aliases$(_book_0, _env_0, _xs_0, _slot_0) {
+  if (_xs_0.$ === "Nil") {
+    return _env_0;
+  } else {
+    const _x_0 = _xs_0["head"];
+    const _t_0 = _xs_0["tail"];
+    if (_t_0.$ === "Nil") {
+      return _env_0;
+    } else {
+      const _x_1 = ($U32$show$(_slot_0));
+      const _x_2 = ($U32$show$(($ix$(_x_0))));
+      const _x_3 = ("_" + _x_1);
+      const _x_4 = (_x_2 + _x_3);
+      return {$: "Con", "head": ($kt$("$JD.View", ("$heldX" + _x_4), ($ix$(_x_0)), 0, {$: "Con", "head": run_loop($j_type$(_book_0, _env_0, run_loop($kid$(_x_0, 0)))), "tail": {$: "Con", "head": ($atom$("Absent")), "tail": {$: "Nil"}}})), "tail": ($jd_ordered_aliases$(_book_0, _env_0, _t_0, ((_slot_0 + 1) >>> 0)))};
+    }
+  }
+}
+
+function $jd_ordered_alias_end$($0, $1) {
+  for (;;) {
+    {
+      const _xs_0 = $0;
+      const _next_0 = $1;
+      if (_xs_0.$ === "Nil") {
+        return _next_0;
+      } else {
+        const _t_0 = _xs_0["tail"];
+        if (_t_0.$ === "Nil") {
+          return _next_0;
+        } else {
+          $0 = _t_0;
+          $1 = ((_next_0 + 1) >>> 0);
+          continue;
+        }
+      }
+    }
+  }
+}
+
+function $jd_ordered_ctor_type$(_book_0, _env_0, _t_0, _ty_0, _next_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "ADT"))) ? ((_x_0) => {
+  return $jd_ordered_ctor_checked$(_book_0, _env_0, _t_0, _ty_0, _next_0, run_loop($j_layout_ctor$(_book_0, _ty_0, ($nm$(_t_0)))));
+}) : ((_x_1) => {
+  return {$: "JDOrdered", "prefix": "", "value": ($jd_fail$("ordered constructor needs checked datatype")), "next": _next_0};
+}), {$: "Unit"});
+}
+
+function $jd_ordered_named$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0, _xs_0, _d_0) {
+  const _x_0 = ($dx$(_d_0));
+  const _x_1 = ($Bool$not$(($String$eq$(($tg$(($dv$(_d_0)))), "Absent"))));
+  const _x_2 = run_loop($jd_native_known$(_book_0, _d_0));
+  return run_tail((($Bool$and$(($Bool$and$(($String$eq$(($dk$(_d_0)), "Def")), (_x_0 === 0))), (_x_1 || _x_2)))) ? ((_x_3) => {
+  const _x_4 = ($terms_len$(_xs_0));
+  const _x_5 = run_loop($jd_arity$(_book_0, _d_0));
+  return run_tail(((_x_4 === _x_5)) ? ((_x_6) => {
+  return $jd_ordered_call$(_book_0, run_loop($jd_owner$(_env_0)), ($dn$(_d_0)), _tail_0, run_loop($jd_ordered_args$(_book_0, _env_0, _xs_0, ($dt$(_d_0)), _next_0)));
+}) : ((_x_7) => {
+  const _x_8 = ($terms_len$(_xs_0));
+  const _x_9 = run_loop($jd_arity$(_book_0, _d_0));
+  return run_tail(((_x_8 < _x_9)) ? ((_x_10) => {
+  const _x_11 = run_loop($jd_arity$(_book_0, _d_0));
+  const _x_12 = ($terms_len$(_xs_0));
+  return $jd_ordered_eta$(_book_0, run_loop($jd_owner$(_env_0)), ($dn$(_d_0)), ($jd_ordered_after$(_book_0, _xs_0, ($dt$(_d_0)))), ((_x_11 - _x_12) >>> 0), ($terms_len$(_env_0)), _tail_0, run_loop($jd_ordered_args$(_book_0, _env_0, _xs_0, ($dt$(_d_0)), _next_0)));
+}) : ((_x_13) => {
+  return $jd_ordered_unknown$(_book_0, _env_0, _t_0, _tail_0, _next_0, run_loop($wnf$(_book_0, run_loop($j_type$(_book_0, _env_0, run_loop($kid$(_t_0, 0)))))));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}) : ((_x_14) => {
+  return $jd_ordered_leaf$(_book_0, _env_0, _t_0, _ty_0, _tail_0, _next_0);
+}), {$: "Unit"});
+}
+
+function $jd_ordered_unknown$(_book_0, _env_0, _t_0, _tail_0, _next_0, _ty_0) {
+  return run_tail((($Bool$and$(($String$eq$(($tg$(_t_0)), "App")), ($String$eq$(($tg$(_ty_0)), "All"))))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_ty_0));
+  return run_tail(((_x_1 === 0)) ? ((_x_2) => {
+  return $jd_ordered_expr$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), _ty_0, false, _next_0);
+}) : ((_x_3) => {
+  return $jd_ordered_unknown_head$(_book_0, _env_0, run_loop($kid$(_t_0, 1)), run_loop($kid$(_ty_0, 0)), _tail_0, run_loop($jd_ordered_expr$(_book_0, _env_0, run_loop($kid$(_t_0, 0)), _ty_0, false, _next_0)));
+}), {$: "Unit"});
+}) : ((_x_4) => {
+  return {$: "JDOrdered", "prefix": "", "value": ($jd_fail$("unknown application lacks its checked function type")), "next": _next_0};
+}), {$: "Unit"});
+}
+
 function $jd_host_marshal_tail_on$(_book_0, _t_0, _out_0, _seen_0, _depth_0, _fuel_0, _self_0) {
   return run_tail((($String$eq$(($tg$(_t_0)), "All"))) ? ((_x_0) => {
   const _x_1 = ($qt$(_t_0));
@@ -36300,6 +36528,90 @@ function $jd_word_emit$(_book_0, _env_0, _rest_0, _bits_0, _rows_0) {
   }
 }
 
+function $jd_ordered_let_render$(_prefix_0, _value_0, _rhs_0) {
+  const _more_0 = _rhs_0["prefix"];
+  const _next_0 = _rhs_0["next"];
+  return {$: "JDOrdered", "prefix": (_more_0 + _prefix_0), "value": _value_0, "next": _next_0};
+}
+
+function $jd_ordered_bindings$(_book_0, _env_0, _xs_0, _body_0, _slot_0, _next_0) {
+  if (_xs_0.$ === "Nil") {
+    return {$: "JDOrderedBindings", "prefix": "", "bindings": "", "next": _next_0};
+  } else {
+    const _x_0 = _xs_0["head"];
+    const _t_0 = _xs_0["tail"];
+    if (_t_0.$ === "Nil") {
+      return {$: "JDOrderedBindings", "prefix": "", "bindings": "", "next": _next_0};
+    } else {
+      return run_tail((($String$contains$(_body_0, ($jd_use$(($ix$(_x_0))))))) ? ((_x_1) => {
+  const _x_2 = ($qt$(_x_0));
+  return $jd_ordered_binding_head$(_book_0, _env_0, _t_0, _body_0, ($ix$(_x_0)), _slot_0, run_loop(run_tail(((_x_2 === 0)) ? ((_x_3) => {
+  return {$: "JDOrdered", "prefix": "", "value": "null", "next": _next_0};
+}) : ((_x_4) => {
+  return $jd_ordered_expr$(_book_0, _env_0, run_loop($kid$(_x_0, 0)), run_loop($j_type$(_book_0, _env_0, run_loop($kid$(_x_0, 0)))), false, _next_0);
+}), {$: "Unit"})));
+}) : ((_x_5) => {
+  return $jd_ordered_bindings$(_book_0, _env_0, _t_0, _body_0, ((_slot_0 + 1) >>> 0), _next_0);
+}), {$: "Unit"});
+    }
+  }
+}
+
+function $jd_ordered_ctor_checked$(_book_0, _env_0, _t_0, _ty_0, _next_0, _ctor_0) {
+  return run_tail((($String$eq$(($dk$(_ctor_0)), "Ctr"))) ? ((_x_0) => {
+  return $jd_ordered_ctor_native_check$(_book_0, _env_0, _t_0, _ty_0, ($j_specialize$(_book_0, ($dt$(_ctor_0)), ($ks$(_ty_0)))), _next_0);
+}) : ((_x_1) => {
+  return {$: "JDOrdered", "prefix": "", "value": ($jd_fail$("ordered constructor missing telescope")), "next": _next_0};
+}), {$: "Unit"});
+}
+
+function $jd_ordered_call$(_book_0, _owner_0, _name_0, _tail_0, _r_0) {
+  const _prefix_0 = _r_0["prefix"];
+  const _values_0 = _r_0["values"];
+  const _next_0 = _r_0["next"];
+  const _code_0 = run_loop($jd_intrinsic$(_book_0, _name_0, _values_0));
+  return run_tail((($String$eq$(_code_0, ""))) ? ((_x_0) => {
+  return {$: "JDOrdered", "prefix": _prefix_0, "value": run_loop($jd_call$(_book_0, _owner_0, _name_0, _values_0, _tail_0)), "next": _next_0};
+}) : ((_x_1) => {
+  return $jd_ordered_native$(_book_0, _name_0, ($jd_ordered_holds$(_values_0, _prefix_0, _next_0)));
+}), {$: "Unit"});
+}
+
+function $jd_ordered_eta$(_book_0, _owner_0, _name_0, _ty_0, _left_0, _at_0, _tail_0, _args_0) {
+  return run_tail(((_left_0 === 0)) ? ((_x_0) => {
+  return $jd_ordered_call$(_book_0, _owner_0, _name_0, _tail_0, _args_0);
+}) : ((_x_1) => {
+  return $jd_ordered_eta_type$(_book_0, _owner_0, _name_0, run_loop($wnf$(_book_0, _ty_0)), _left_0, _at_0, _tail_0, _args_0);
+}), {$: "Unit"});
+}
+
+function $jd_ordered_after$($0, $1, $2) {
+  for (;;) {
+    {
+      const _book_0 = $0;
+      const _xs_0 = $1;
+      const _ty_0 = $2;
+      if (_xs_0.$ === "Nil") {
+        return _ty_0;
+      } else {
+        const _x_0 = _xs_0["head"];
+        const _rest_0 = _xs_0["tail"];
+        $0 = _book_0;
+        $1 = _rest_0;
+        $2 = run_loop($j_app_type$(run_loop($wnf$(_book_0, _ty_0)), _x_0));
+        continue;
+      }
+    }
+  }
+}
+
+function $jd_ordered_unknown_head$(_book_0, _env_0, _arg_0, _ty_0, _tail_0, _callee_0) {
+  const _prefix_0 = _callee_0["prefix"];
+  const _value_0 = _callee_0["value"];
+  const _next_0 = _callee_0["next"];
+  return $jd_ordered_unknown_done$(_prefix_0, _value_0, _tail_0, run_loop($jd_ordered_expr$(_book_0, _env_0, _arg_0, _ty_0, false, _next_0)));
+}
+
 function $jd_host_marshal_tail_done$(_name_0, _same_0, _rest_0) {
   return run_tail((($Bool$not$(($String$eq$(_rest_0, ""))))) ? ((_x_0) => {
   return _rest_0;
@@ -37510,6 +37822,71 @@ function $jd_word_row_test$(_bits_0, _row_0) {
 }), {$: "Unit"});
 }
 
+function $jd_ordered_binding_head$(_book_0, _env_0, _rest_0, _body_0, _id_0, _slot_0, _head_0) {
+  const _prefix_0 = _head_0["prefix"];
+  const _value_0 = _head_0["value"];
+  const _next_0 = _head_0["next"];
+  return $jd_ordered_binding_join$(_prefix_0, _value_0, _id_0, _slot_0, run_loop($jd_ordered_bindings$(_book_0, _env_0, _rest_0, _body_0, ((_slot_0 + 1) >>> 0), _next_0)));
+}
+
+function $jd_ordered_ctor_native_check$(_book_0, _env_0, _t_0, _ty_0, _tel_0, _next_0) {
+  return run_tail((($jd_native_layout$(_book_0, _ty_0))) ? ((_x_0) => {
+  return $jd_ordered_ctor_inverse$(_book_0, _env_0, _t_0, _ty_0, _tel_0, _next_0, run_loop($jd_ctor_inverse$(_env_0, _t_0, _ty_0)));
+}) : ((_x_1) => {
+  return $jd_ordered_ctor_done$(_ty_0, _t_0, false, run_loop($jd_ordered_fields$(_book_0, _env_0, ($ks$(_t_0)), _tel_0, _next_0)));
+}), {$: "Unit"});
+}
+
+function $jd_ordered_native$(_book_0, _name_0, _r_0) {
+  const _prefix_0 = _r_0["prefix"];
+  const _values_0 = _r_0["values"];
+  const _next_0 = _r_0["next"];
+  const _x_0 = run_loop($jd_intrinsic$(_book_0, _name_0, _values_0));
+  const _x_1 = (_x_0 + ")");
+  return {$: "JDOrdered", "prefix": _prefix_0, "value": ("(" + _x_1), "next": _next_0};
+}
+
+function $jd_ordered_holds$(_values_0, _prefix_0, _next_0) {
+  if (_values_0.$ === "Nil") {
+    return {$: "JDOrderedArgs", "prefix": _prefix_0, "values": {$: "Nil"}, "next": _next_0};
+  } else {
+    const _value_0 = _values_0["head"];
+    const _rest_0 = _values_0["tail"];
+    return $jd_ordered_hold_head$(_rest_0, run_loop($jd_ordered_hold$({$: "JDOrdered", "prefix": _prefix_0, "value": _value_0, "next": _next_0})));
+  }
+}
+
+function $jd_ordered_eta_type$(_book_0, _owner_0, _name_0, _ty_0, _left_0, _at_0, _tail_0, _args_0) {
+  return run_tail((($String$eq$(($tg$(_ty_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($qt$(_ty_0));
+  return run_tail(((_x_1 === 0)) ? ((_x_2) => {
+  return $jd_ordered_eta$(_book_0, _owner_0, _name_0, run_loop($j_app_type$(_ty_0, ($atom$("Absent")))), ((_left_0 - 1) >>> 0), _at_0, _tail_0, _args_0);
+}) : ((_x_3) => {
+  const _x_4 = ($U32$show$(_at_0));
+  return $jd_ordered_eta_wrap$(_at_0, run_loop($jd_ordered_eta$(_book_0, "", _name_0, run_loop($kid$(_ty_0, 1)), ((_left_0 - 1) >>> 0), ((_at_0 + 1) >>> 0), true, ($jd_ordered_eta_arg$(_args_0, ("$eta" + _x_4))))));
+}), {$: "Unit"});
+}) : ((_x_5) => {
+  return {$: "JDOrdered", "prefix": "", "value": ($jd_fail$("partial direct call lacks telescope")), "next": 0};
+}), {$: "Unit"});
+}
+
+function $jd_ordered_unknown_done$(_prefix_0, _callee_0, _tail_0, _arg_0) {
+  const _more_0 = _arg_0["prefix"];
+  const _value_0 = _arg_0["value"];
+  const _next_0 = _arg_0["next"];
+  return {$: "JDOrdered", "prefix": (_prefix_0 + _more_0), "value": run_loop(run_tail((_tail_0) ? ((_x_0) => {
+  const _x_1 = (_value_0 + ")");
+  const _x_2 = ("," + _x_1);
+  const _x_3 = (_callee_0 + _x_2);
+  return ("run_tail(" + _x_3);
+}) : ((_x_4) => {
+  const _x_5 = (_value_0 + ")");
+  const _x_6 = (")(" + _x_5);
+  const _x_7 = (_callee_0 + _x_6);
+  return ("(" + _x_7);
+}), {$: "Unit"})), "next": _next_0};
+}
+
 function $core_apply$(_f_0, _x_0) {
   return $core_apply_span$(_f_0, _x_0, 0, 0);
 }
@@ -38682,6 +39059,123 @@ function $jd_word_view$(_bits_0, _depth_0) {
   return ("u32_to_word(" + _x_2);
 }
 
+function $jd_ordered_binding_join$(_prefix_0, _value_0, _id_0, _slot_0, _rest_0) {
+  const _more_0 = _rest_0["prefix"];
+  const _next_0 = _rest_0["next"];
+  const _x_0 = (";" + _more_0);
+  const _x_1 = (_value_0 + _x_0);
+  const _x_2 = ($U32$show$(_slot_0));
+  const _x_3 = ("=" + _x_1);
+  const _x_4 = (_x_2 + _x_3);
+  const _x_5 = ($U32$show$(_id_0));
+  const _x_6 = ("_" + _x_4);
+  const _x_7 = (_x_5 + _x_6);
+  const _x_8 = ("const $heldX" + _x_7);
+  return {$: "JDOrderedBindings", "prefix": (_prefix_0 + _x_8), "bindings": "", "next": _next_0};
+}
+
+function $jd_ordered_ctor_inverse$(_book_0, _env_0, _t_0, _ty_0, _tel_0, _next_0, _inverse_0) {
+  return run_tail((($Bool$not$(($String$eq$(_inverse_0, ""))))) ? ((_x_0) => {
+  return {$: "JDOrdered", "prefix": "", "value": _inverse_0, "next": _next_0};
+}) : ((_x_1) => {
+  const _x_2 = ($String$eq$(($nm$(_ty_0)), "U32"));
+  const _x_3 = ($String$eq$(($nm$(_ty_0)), "F32"));
+  return run_tail(((_x_2 || _x_3)) ? ((_x_4) => {
+  return $jd_ordered_ctor_word$(_book_0, _env_0, _t_0, _ty_0, _tel_0, _next_0, run_loop($j_word$(run_loop($j_strip$(run_loop($kid$(_t_0, 0)))), 0, 0)));
+}) : ((_x_5) => {
+  return run_tail((($String$eq$(($nm$(_ty_0)), "Char"))) ? ((_x_6) => {
+  return $jd_ordered_ctor_char$(_book_0, _env_0, _t_0, _ty_0, _tel_0, _next_0, run_loop($j_u32$(run_loop($kid$(_t_0, 0)))));
+}) : ((_x_7) => {
+  return $jd_ordered_ctor_done$(_ty_0, _t_0, true, run_loop($jd_ordered_fields$(_book_0, _env_0, ($ks$(_t_0)), _tel_0, _next_0)));
+}), {$: "Unit"});
+}), {$: "Unit"});
+}), {$: "Unit"});
+}
+
+function $jd_ordered_ctor_done$(_ty_0, _t_0, _native_0, _fields_0) {
+  const _prefix_0 = _fields_0["prefix"];
+  const _values_0 = _fields_0["values"];
+  const _named_0 = _fields_0["named"];
+  const _next_0 = _fields_0["next"];
+  return {$: "JDOrdered", "prefix": _prefix_0, "value": run_loop(run_tail((_native_0) ? ((_x_0) => {
+  return $jd_ctor_native$(($nm$(_ty_0)), ($nm$(_t_0)), _values_0);
+}) : ((_x_1) => {
+  const _x_2 = ($j_quote$(($nm$(_t_0))));
+  const _x_3 = (_named_0 + "})");
+  const _x_4 = (_x_2 + _x_3);
+  return ("({$:" + _x_4);
+}), {$: "Unit"})), "next": _next_0};
+}
+
+function $jd_ordered_fields$(_book_0, _env_0, _fields_0, _tel_0, _next_0) {
+  if (_fields_0.$ === "Nil") {
+    return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_0) => {
+  const _x_1 = ($jd_fail$("ordered missing constructor field"));
+  return {$: "JDOrderedFields", "prefix": "", "values": {$: "Con", "head": ($jd_fail$("ordered missing constructor field")), "tail": {$: "Nil"}}, "named": (",[\"$error\"]:" + _x_1), "next": _next_0};
+}) : ((_x_2) => {
+  return {$: "JDOrderedFields", "prefix": "", "values": {$: "Nil"}, "named": "", "next": _next_0};
+}), {$: "Unit"});
+  } else {
+    const _field_0 = _fields_0["head"];
+    const _rest_0 = _fields_0["tail"];
+    return run_tail((($String$eq$(($tg$(_tel_0)), "All"))) ? ((_x_3) => {
+  const _x_4 = ($qt$(_tel_0));
+  return run_tail(((_x_4 === 0)) ? ((_x_5) => {
+  return $jd_ordered_fields$(_book_0, _env_0, _rest_0, run_loop($j_app_type$(_tel_0, _field_0)), _next_0);
+}) : ((_x_6) => {
+  return $jd_ordered_field_head$(_book_0, _env_0, _rest_0, run_loop($j_app_type$(_tel_0, _field_0)), ($nm$(_tel_0)), run_loop($jd_ordered_expr$(_book_0, _env_0, _field_0, run_loop($kid$(_tel_0, 0)), false, _next_0)));
+}), {$: "Unit"});
+}) : ((_x_7) => {
+  const _x_8 = ($jd_fail$("ordered extra constructor field"));
+  return {$: "JDOrderedFields", "prefix": "", "values": {$: "Con", "head": ($jd_fail$("ordered extra constructor field")), "tail": {$: "Nil"}}, "named": (",[\"$error\"]:" + _x_8), "next": _next_0};
+}), {$: "Unit"});
+  }
+}
+
+function $jd_ordered_hold_head$(_rest_0, _head_0) {
+  const _prefix_0 = _head_0["prefix"];
+  const _value_0 = _head_0["value"];
+  const _next_0 = _head_0["next"];
+  return $jd_ordered_arg_join$(_prefix_0, _value_0, ($jd_ordered_holds$(_rest_0, "", _next_0)));
+}
+
+function $jd_ordered_hold$(_r_0) {
+  const _prefix_0 = _r_0["prefix"];
+  const _value_0 = _r_0["value"];
+  const _next_0 = _r_0["next"];
+  return run_tail((run_loop($jd_inline_atom$(_value_0))) ? ((_x_0) => {
+  return {$: "JDOrdered", "prefix": _prefix_0, "value": _value_0, "next": _next_0};
+}) : ((_x_1) => {
+  const _x_2 = (_value_0 + ";");
+  const _x_3 = ($U32$show$(_next_0));
+  const _x_4 = ("=" + _x_2);
+  const _x_5 = (_x_3 + _x_4);
+  const _x_6 = ("const $ord" + _x_5);
+  const _x_7 = ($U32$show$(_next_0));
+  return {$: "JDOrdered", "prefix": (_prefix_0 + _x_6), "value": ("$ord" + _x_7), "next": ((_next_0 + 1) >>> 0)};
+}), {$: "Unit"});
+}
+
+function $jd_ordered_eta_wrap$(_at_0, _body_0) {
+  const _prefix_0 = _body_0["prefix"];
+  const _value_0 = _body_0["value"];
+  const _next_0 = _body_0["next"];
+  const _x_0 = (_value_0 + ";})");
+  const _x_1 = ("return " + _x_0);
+  const _x_2 = (_prefix_0 + _x_1);
+  const _x_3 = ($U32$show$(_at_0));
+  const _x_4 = (")=>{" + _x_2);
+  const _x_5 = (_x_3 + _x_4);
+  return {$: "JDOrdered", "prefix": "", "value": ("jd_clo(($eta" + _x_5), "next": _next_0};
+}
+
+function $jd_ordered_eta_arg$(_args_0, _value_0) {
+  const _prefix_0 = _args_0["prefix"];
+  const _values_0 = _args_0["values"];
+  const _next_0 = _args_0["next"];
+  return {$: "JDOrderedArgs", "prefix": _prefix_0, "values": ($List$append$(_values_0, {$: "Con", "head": _value_0, "tail": {$: "Nil"}})), "next": _next_0};
+}
+
 function $sp_live_done$(_head_0, _inst_0, _consumed_0, _r_0) {
   return run_tail((($good$(_r_0))) ? ((_x_0) => {
   return $sp_live_ref$({$: "KWorld", "book": run_loop($book_put$(($kw_book$(($rw$(_r_0)))), _inst_0)), "memo": ($sp_done_memo$(($kw_memo$(($rw$(_r_0)))), ($dn$(_inst_0)))), "fresh": ($kw_fresh$(($rw$(_r_0)))), "checked": {$: "Con", "head": {$: "KDef", "name": ($dn$(_inst_0)), "kind": ($dk$(_inst_0)), "arity": ($da$(_inst_0)), "templates": ($dx$(_inst_0)), "typ": ($dt$(_inst_0)), "value": ($ct$(_r_0)), "ctors": ($dc$(_inst_0)), "native": ($db$(_inst_0)), "unsafe": ($du$(_inst_0))}, "tail": ($kw_checked$(($rw$(_r_0))))}}, _head_0, ($dn$(_inst_0)), _consumed_0);
@@ -39453,6 +39947,31 @@ function $jd_word_tails$(_depth_0) {
 }), {$: "Unit"});
 }
 
+function $jd_ordered_ctor_word$(_book_0, _env_0, _t_0, _ty_0, _tel_0, _next_0, _value_0) {
+  if (_value_0.$ === "None") {
+    return $jd_ordered_ctor_done$(_ty_0, _t_0, true, run_loop($jd_ordered_fields$(_book_0, _env_0, ($ks$(_t_0)), _tel_0, _next_0)));
+  } else {
+    const _bits_0 = _value_0["value"];
+    return {$: "JDOrdered", "prefix": "", "value": run_loop($jd_ctor_word$(_book_0, _env_0, _t_0, _ty_0, _tel_0, {$: "Some", "value": _bits_0})), "next": _next_0};
+  }
+}
+
+function $jd_ordered_ctor_char$(_book_0, _env_0, _t_0, _ty_0, _tel_0, _next_0, _value_0) {
+  if (_value_0.$ === "None") {
+    return $jd_ordered_ctor_done$(_ty_0, _t_0, true, run_loop($jd_ordered_fields$(_book_0, _env_0, ($ks$(_t_0)), _tel_0, _next_0)));
+  } else {
+    const _code_0 = _value_0["value"];
+    return {$: "JDOrdered", "prefix": "", "value": run_loop($jd_ctor_char$(_book_0, _env_0, _t_0, _ty_0, _tel_0, {$: "Some", "value": _code_0})), "next": _next_0};
+  }
+}
+
+function $jd_ordered_field_head$(_book_0, _env_0, _rest_0, _tel_0, _name_0, _head_0) {
+  const _prefix_0 = _head_0["prefix"];
+  const _value_0 = _head_0["value"];
+  const _next_0 = _head_0["next"];
+  return $jd_ordered_field_join$(_prefix_0, _value_0, _name_0, run_loop($jd_ordered_fields$(_book_0, _env_0, _rest_0, _tel_0, _next_0)));
+}
+
 function $sp_done_memo$(_ms_0, _name_0) {
   if (_ms_0.$ === "Nil") {
     return {$: "Nil"};
@@ -40027,6 +40546,18 @@ function $j_erased_runtime_call$(_book_0, _spine_0, _rest_0, _binder_0, _fuel_0)
 }) : ((_x_4) => {
   return {$: "None"};
 }), {$: "Unit"});
+}
+
+function $jd_ordered_field_join$(_prefix_0, _value_0, _name_0, _rest_0) {
+  const _more_0 = _rest_0["prefix"];
+  const _values_0 = _rest_0["values"];
+  const _named_0 = _rest_0["named"];
+  const _next_0 = _rest_0["next"];
+  const _x_0 = (_value_0 + _named_0);
+  const _x_1 = ($j_quote$(_name_0));
+  const _x_2 = ("]:" + _x_0);
+  const _x_3 = (_x_1 + _x_2);
+  return {$: "JDOrderedFields", "prefix": (_prefix_0 + _more_0), "values": {$: "Con", "head": _value_0, "tail": _values_0}, "named": (",[" + _x_3), "next": _next_0};
 }
 
 function $f_quants$(_n_0, _q_0, _origin_0) {

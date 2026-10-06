@@ -1,0 +1,81 @@
+{
+  "kind": "phase53-publication-adapter",
+  "complete": true,
+  "dataOnly": true,
+  "mode": "verify",
+  "displayLabel": "Phase53 verify",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/publication-wrapper.py",
+    "bytes": 4804,
+    "sha256": "6d777bbd5504118d9b10ce7079726425db060b923351e8c015a7c875daefc0c0"
+  },
+  "parentMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/verify-portable.py",
+    "bytes": 2510,
+    "sha256": "a7a554df8c2b95c6421a350388c3dc1719382b807be72e87a9f3ea9825448877"
+  },
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/verify-portable.py",
+    "--candidate",
+    "selfhost/tools/performance/phase53/bundles/current/manifest.json",
+    "--baseline",
+    "selfhost/tools/performance/phase53/bundles/baseline/manifest.json",
+    "--prepared",
+    "selfhost/build/phase53/prepared-checked-ordered02-full/manifest.json",
+    "--reference",
+    "selfhost/build/phase53/reference-direct06/manifest.json",
+    "--catalog",
+    "selfhost/tools/performance/phase37/catalog.json",
+    "--out",
+    "selfhost/build/phase53/portable-verification.json"
+  ],
+  "returncode": 0,
+  "stdout": "{\"complete\": true, \"cases\": 45, \"rolePointMappings\": 135, \"report\": {\"path\": \"/home/ai/bend2/build/publish/bend/selfhost/build/phase53/portable-verification.json\", \"sha256\": \"6eaa8e37e557c846b7a04620729c30cb82811f635ccb245d80645a64c515007f\", \"bytes\": 34255}}\n",
+  "stderr": "",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/publication-wrapper.py",
+      "bytes": 4804,
+      "sha256": "6d777bbd5504118d9b10ce7079726425db060b923351e8c015a7c875daefc0c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/verify-portable.py",
+      "bytes": 2510,
+      "sha256": "a7a554df8c2b95c6421a350388c3dc1719382b807be72e87a9f3ea9825448877"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/run.py",
+      "bytes": 21467,
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/prepare.py",
+      "bytes": 11472,
+      "sha256": "0ecb4e405f377965e62cfba407785370fa7ee83cb81b6e0c24e1d5384b0faa4d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "bytes": 6779,
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase44/products/freeze-candidate-v1.py",
+      "bytes": 12362,
+      "sha256": "ff3954c285b83db99698b29ec83ae745ba3b749b6dd537ea7bb2e02ac40b360b"
+    }
+  ],
+  "scope": "Unchanged pinned parent algorithm and artifacts. Historical parent labels are provenance; this Phase53 wrapper adds context only. No compiler or target execution, semantic waiver, qualification or promotion.",
+  "artifact": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/portable-verification.json",
+    "bytes": 34255,
+    "sha256": "6eaa8e37e557c846b7a04620729c30cb82811f635ccb245d80645a64c515007f"
+  },
+  "inputsUnchanged": true
+}

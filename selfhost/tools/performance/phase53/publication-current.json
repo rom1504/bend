@@ -1,0 +1,77 @@
+{
+  "kind": "phase53-publication-adapter",
+  "complete": true,
+  "dataOnly": true,
+  "mode": "candidate",
+  "displayLabel": "Phase53 selected publication",
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/publication-wrapper.py",
+    "bytes": 4804,
+    "sha256": "6d777bbd5504118d9b10ce7079726425db060b923351e8c015a7c875daefc0c0"
+  },
+  "parentMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/freeze-candidate.py",
+    "bytes": 13520,
+    "sha256": "ae18fd864032239c20cdffff7081bbd6bf6dff087f30abb37f5897d8b718b41e"
+  },
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/freeze-candidate.py",
+    "--from",
+    "selfhost/build/phase53/prepared-checked-ordered02-full/manifest.json",
+    "--attempt",
+    "selfhost/build/phase53/checked-ordered02",
+    "--catalog",
+    "selfhost/tools/performance/phase37/catalog.json",
+    "--out",
+    "selfhost/tools/performance/phase53/bundles/current"
+  ],
+  "returncode": 0,
+  "stdout": "{\"complete\": true, \"checked\": true, \"cases\": 45, \"members\": 179, \"api\": \"3e3fb8c3bc4c445567696ce62bd95979e36746ddde5bb9e0aad3038fc362c9b9\", \"archiveBytes\": 524710, \"manifest\": \"/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/bundles/current/manifest.json\"}\n",
+  "stderr": "",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/publication-wrapper.py",
+      "bytes": 4804,
+      "sha256": "6d777bbd5504118d9b10ce7079726425db060b923351e8c015a7c875daefc0c0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase52/freeze-candidate.py",
+      "bytes": 13520,
+      "sha256": "ae18fd864032239c20cdffff7081bbd6bf6dff087f30abb37f5897d8b718b41e"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/run.py",
+      "bytes": 21467,
+      "sha256": "825f16ea085b2000595371a0b69bfc7c76b0630ae11079ae02480d7dac746a2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/prepare.py",
+      "bytes": 11472,
+      "sha256": "0ecb4e405f377965e62cfba407785370fa7ee83cb81b6e0c24e1d5384b0faa4d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/programs/support.py",
+      "bytes": 6779,
+      "sha256": "36e000b43f92809e2de0bcdb462e6e42005fad7341f6ec2122734311073d1cef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase44/products/freeze-candidate-v1.py",
+      "bytes": 12362,
+      "sha256": "ff3954c285b83db99698b29ec83ae745ba3b749b6dd537ea7bb2e02ac40b360b"
+    }
+  ],
+  "scope": "Unchanged pinned parent algorithm and artifacts. Historical parent labels are provenance; this Phase53 wrapper adds context only. No compiler or target execution, semantic waiver, qualification or promotion.",
+  "artifact": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/bundles/current/manifest.json",
+    "bytes": 33238,
+    "sha256": "0b0485b6e35db9aa4c499517050ea6366434c9f7d1eeaac7112ad433423eb969"
+  },
+  "inputsUnchanged": true
+}

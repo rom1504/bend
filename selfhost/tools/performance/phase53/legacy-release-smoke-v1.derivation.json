@@ -1,0 +1,28 @@
+{
+  "kind": "phase53-explicit-legacy-release-smoke-derivation",
+  "executed": false,
+  "parents": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/final-plan/tools/release-smoke.mjs",
+      "sha256": "2432fd747028e1a85bee1477b666d137350368f83ebfc0338a1997bd31287c0d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase43/integration01/final-plan/tools/release-smoke-launch.mjs",
+      "sha256": "e6644ed3e1a7a008c03c0fd1a99a5be21f66f5c39099a472a22399b118b679bf"
+    }
+  ],
+  "tools": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/legacy-release-smoke-v1.mjs",
+      "sha256": "b37051f8fcb04e47a820341246626eb92acc1c0b1024a2f76a67632a1ecc24f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/performance/phase53/legacy-release-smoke-launch-v1.mjs",
+      "sha256": "b1bd8e111be513e6566cf27172c1c58008a9fa65846bafcd5a5321c9e7635bf3"
+    }
+  ],
+  "changes": [
+    "Only JS emission argv adds --legacy-js; all42 check/interpreter/JS/CPU/integrity steps, three fixtures, CPU3, native toolchain and relocation assertions remain unchanged.",
+    "Successor launcher resolves new runner and labels Phase53 explicit legacy scope."
+  ]
+}

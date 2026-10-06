@@ -1,0 +1,113 @@
+{
+  "kind": "phase52-direct-semantic-catalog",
+  "schemaVersion": 1,
+  "upstreamCommit": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "selectedScope": {
+    "fixtures": 1,
+    "scenarios": 2,
+    "kind": "genuine-overapplication-after-let-barrier"
+  },
+  "cases": [
+    {
+      "id": "genuine-overapplication",
+      "source": {
+        "path": "fixtures/genuine-overapplication-v1.bend",
+        "sha256": "161d501bb4edd1fb6e25216095f1c8d57d63bf7a822ef0040f275f4254359093"
+      },
+      "mode": "library",
+      "tests": [
+        {
+          "id": "genuine-oversaturated-getter",
+          "exportName": "probe",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "getter"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin-get",
+              "Math.imul"
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ],
+            [
+              "callback",
+              357
+            ]
+          ],
+          "expected": 364
+        },
+        {
+          "id": "genuine-oversaturated-throw",
+          "exportName": "probe",
+          "groups": [
+            [
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              {
+                "$callback": "plus7"
+              },
+              10
+            ]
+          ],
+          "mutation": {
+            "target": "Math.imul",
+            "style": "throw"
+          },
+          "expectedEvents": [
+            [
+              "callback",
+              11
+            ],
+            [
+              "callback",
+              10
+            ],
+            [
+              "builtin",
+              "Math.imul",
+              [
+                17,
+                21
+              ]
+            ]
+          ],
+          "expectedError": "phase52-hook:Math.imul"
+        }
+      ]
+    }
+  ],
+  "scope": "Separate genuine function-return overapplication, Let barrier before returned lambda prevents ordinary def-arity raising; original composition18 unchanged."
+}

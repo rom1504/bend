@@ -14,3 +14,20 @@ mutable scratch storage. Pinned TypeScript's independent failure remains visible
 Plan: [Phase53 design](../../design/phase53/default-direct-and-ordered-expressions.md).
 Fresh evidence belongs under `selfhost/build/phase53`; outcomes belong in
 `implementation/phase53`. This is a pre-execution plan, not a passing result.
+
+## Outcome
+
+Confirmed and installed in ordered02. Replacing intermediate ordinary-array
+transport with a fresh typed array and indexed assignment preserves cold NaN
+payloads and once-only conversion. The original source golden remains40:
+candidate returns40 and pinned TypeScript returns1 because of its separate
+constant-table defect. Candidate cold/repeated sequences are40/40/40.
+
+The original suite passes96/96; expanded numeric controls pass34/34, including
+finite, signed-zero, subnormal, ordering and renamed cold controls. Reference
+numeric28/34 retains six healthy NaN-source failures. These overlapping scopes
+are not summed. The correction-only eight-point screen is effectively speed
+neutral (1.001759× versus original direct06); the later ordered optimization
+is measured separately. See [diagnosis](../../implementation/phase53/nan-payload.md),
+[qualification](../../implementation/phase53/qualification.md), and
+[publication index](../../selfhost/tools/performance/phase53/publication.json).

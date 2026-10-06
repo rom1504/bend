@@ -1,0 +1,61 @@
+{
+  "kind": "phase53-prior-installed-archive-plan",
+  "complete": true,
+  "executed": false,
+  "condition": "Before installing a selected image with unchanged API SHA, preserve this prior installed manifest and all dist release artifacts. An API change also permits ordinary installer history, but this explicit preservation remains valid.",
+  "project": "/home/ai/bend2/build/publish/bend/selfhost",
+  "priorManifestSha256": "5068640f10e4165976d502259b497824891c9414f3954e9e3fc500aecdcd27bb",
+  "priorSourceSha256": "3c5671579628de5c113907403188df17e3d35a15dd520bc1d20b6dc3263d3513",
+  "priorApiSha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a",
+  "destination": "/home/ai/bend2/build/publish/bend/selfhost/dist/release-history/by-manifest/5068640f10e4165976d502259b497824891c9414f3954e9e3fc500aecdcd27bb",
+  "files": [
+    {
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/dist/release.json",
+      "relative": "release.json",
+      "sha256": "5068640f10e4165976d502259b497824891c9414f3954e9e3fc500aecdcd27bb",
+      "bytes": 34736
+    },
+    {
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/dist/typed-api.mjs",
+      "relative": "typed-api.mjs",
+      "sha256": "472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a",
+      "bytes": 1790409
+    },
+    {
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/dist/base.bend",
+      "relative": "base.bend",
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+      "bytes": 71530
+    },
+    {
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/dist/release-lineage/checked-api.mjs",
+      "relative": "release-lineage/checked-api.mjs",
+      "sha256": "8d5772fdf95ad46da395be952214c43abf0053b0274206970be7bd6a41d85d9c",
+      "bytes": 1767260
+    },
+    {
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/dist/release-lineage/checked-bootstrap.json",
+      "relative": "release-lineage/checked-bootstrap.json",
+      "sha256": "cd5d08932e30d17dba1129493a2b81e4b1062666aee450a0c62edf899e8c2920",
+      "bytes": 79847
+    },
+    {
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/dist/release-lineage/derivation.json",
+      "relative": "release-lineage/derivation.json",
+      "sha256": "94e8c01113a323bb9ca9d95d5bb903784ba7008de527509065e0dda68c779e0a",
+      "bytes": 372791
+    },
+    {
+      "source": "/home/ai/bend2/build/publish/bend/selfhost/dist/release-lineage/equality.mjs",
+      "relative": "release-lineage/equality.mjs",
+      "sha256": "db2999aa879e0bc6c6359d37c19e7589c60d34b2b143d0ed6ecbc23eabfec951",
+      "bytes": 30150
+    }
+  ],
+  "executionRequirements": [
+    "Rehash all source items and prior release.json before copying. Reject any mismatch.",
+    "Require a fresh destination; do not overwrite an earlier archive.",
+    "Copy exact bytes preserving relative paths; write a hash-bound receipt only after all copied files match.",
+    "No upstream checkout or mutable current source copies are implied; source checkout inputs remain bound by the preserved manifest and Phase52 evidence capsule."
+  ]
+}

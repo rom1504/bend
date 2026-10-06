@@ -1,0 +1,136 @@
+{
+  "kind": "phase53-independent-semantic-qualification-summary",
+  "complete": true,
+  "pass": true,
+  "executed": false,
+  "attempt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/checked-ordered02/attempt.json",
+    "sha256": "c8e1a28b53d42a44eb7d8ebe69a17fa52967359019ea8eac7bd02671e961ba0f"
+  },
+  "reports": {
+    "source96": {
+      "identity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-ordered02-controls01/report.json",
+        "sha256": "030a4e820bf003a18fa6308fa50b68e3978a94f02285a3aebb45385705269f1a"
+      },
+      "kind": "phase53-independent-source-semantic-qualification",
+      "counts": {
+        "candidateSourcePass": 96,
+        "referenceSourcePass": 95,
+        "differentialAgreement": 95,
+        "knownReferenceDefects": 1,
+        "total": 96
+      },
+      "scope": "Candidate source-oracle qualification on all unchanged96 scenarios. TS source-oracle and differential counts remain separate. Only the exact frozen signaling-NaN table fixture may record TS1 defect versus independently required candidate40; every other TS/candidate divergence or error fails. No dropped scenario, legacy G or universal conformance claim."
+    },
+    "numeric34": {
+      "identity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-runtime-ordered02/report.json",
+        "sha256": "ffa13e9587352184cdf1d88b728a9d34920da291ec2259f3ce91f8d2cc4c87c0"
+      },
+      "kind": "phase53-independent-cold-numeric-and-order-controls",
+      "counts": {
+        "candidatePass": 34,
+        "referencePass": 28,
+        "referenceFailures": [
+          "original-cold-0",
+          "original-cold-1",
+          "original-cold-2",
+          "renamed-cold-0",
+          "renamed-cold-1",
+          "renamed-cold-2"
+        ],
+        "total": 34
+      },
+      "scope": "Candidate must satisfy every independent first/repeated numeric oracle. Reference numeric source failures remain explicit, including fixed signaling/quiet NaN payload probes; reference finite/signedzero/subnormal/arithmetic and every ordered-event case must pass. No source golden rewritten or cold result discarded."
+    },
+    "composition18": {
+      "identity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-composition-ordered02-controls/report.json",
+        "sha256": "5413b6742dbd5df2c13d07b379441301f470ea0a13ea182b913b5f938a07ba8c"
+      },
+      "kind": "phase53-independent-composition-order-controls",
+      "counts": {
+        "candidatePass": 18,
+        "referencePass": 18,
+        "referenceFailures": [],
+        "total": 18
+      },
+      "scope": "Every composition value/error/event oracle and exact upstream differential observation is mandatory. No reference exception or candidate waiver."
+    },
+    "genuineOverapplication2": {
+      "identity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-overapplication-ordered02-controls/report.json",
+        "sha256": "ecf2ea4b6815fe62837a81e7c45c9835ee67582ae2b9b5f66568ff01bb77c380"
+      },
+      "kind": "phase53-independent-genuine-overapplication-controls",
+      "counts": {
+        "candidatePass": 2,
+        "referencePass": 2,
+        "referenceFailures": [],
+        "total": 2
+      },
+      "scope": "Every composition value/error/event oracle and exact upstream differential observation is mandatory. No reference exception or candidate waiver."
+    },
+    "directCensus26": {
+      "identity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/direct-conformance-ordered02/report.json",
+        "sha256": "3023858c7982d55a7710780ce04ea620afbbf0505902699e9013848affe45c06"
+      },
+      "kind": "phase53-direct-js-census",
+      "counts": null,
+      "scope": "The unchanged maintained JS selection and fixture oracles, on a new explicitly selected backend. Not the 81-row native/interpreter census, full frontend conformance, or a speed sample.",
+      "agreement": {
+        "expectedRows": 26,
+        "exactAgreement": 26,
+        "semanticAgreement": 26,
+        "oraclePass": true
+      }
+    },
+    "maintainedLegacy8": {
+      "identity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/maintained-ordered02-explicit-legacy01/report.json",
+        "sha256": "23fbdc1de06454973fc416aeade8b09f2ae83a341241a164563112105171b0a7"
+      },
+      "kind": "phase47-maintained-semantic-qualification",
+      "counts": null,
+      "scope": "Eight maintained suites against one checked attempt. No full frontend, performance, fixed-point or installation claim.",
+      "passedSuites": [
+        "ir",
+        "backend",
+        "global-initializers",
+        "choice",
+        "arm",
+        "primitive-guards",
+        "provenance",
+        "foreign"
+      ]
+    }
+  },
+  "retainedHistory": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-runtime-corrected01/report.json",
+      "sha256": "f98af0bed8be8348977578aaf9569e280349100332970d626b33a5739f144862"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-composition-corrected01-controls/report.json",
+      "sha256": "de0abcec51bfcd42d53305e956ac26596611af25e18318f43a883bec484689fd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/semantic-composition-reference01/report.json",
+      "sha256": "1fd6f4443c4c4d872493dcce6083dea14a297fb3437dfcb47ab895d6c027dfb2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/maintained-ordered02/report.json",
+      "sha256": "c7049361f77b4a1fa43a9eade3a8b3fdd8d8811bd6c75761ae0fe05c907685c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase53/maintained-routing-repair01/report.json",
+      "sha256": "9dbaf73a5057838bf4875e392f38fba2edf7b5071a1f5edc487893306528aded"
+    }
+  ],
+  "scope": "Data-only summary of independently executed reports on one checked ordered02 image. Source96 candidate qualification is separate from TS95 and differential95; no full TS conformance, benchmark, default routing, installation, or release claim.",
+  "nanPolicy": "Original source golden40 retained. Candidate source96 passes; TS original NaN table produces1, and repeated cold controls retain healthy TS[1,0,0] versus candidate[40,40,40]. Bit roundtrips require the independently specified quieted payload/sign, not retained signaling bits in a JS Number.",
+  "orderPolicy": "Pinned upstream JS child-prefix-first, then pending intrinsic operand holds; complete values/errors/events and deferred closure demand are mandatory. Initial assumed left-to-right failures are retained; the correction is contract-derived, not a candidate waiver.",
+  "legacyScope": "First maintained attempt failed a legacy-marker assertion because its library request omitted a backend selector under the new direct default; runtime comparisons were not reached. Parent-owned routing repair changes only choice3/provenance1 inspect requests to explicit backendjs, retains before bytes/diff receipt, leaves selected checked image unchanged, and fresh all8 passed."
+}

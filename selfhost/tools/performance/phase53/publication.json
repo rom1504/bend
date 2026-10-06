@@ -1,0 +1,215 @@
+{
+  "kind": "phase53-final-publication",
+  "complete": true,
+  "publishedUtc": "2026-10-06T00:17:47.341776+00:00",
+  "branch": "selfhost/bootstrap",
+  "label": "Installed ordered02: corrected default direct JavaScript with composable ordered expressions",
+  "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+  "compilerWrittenIn": "Bend",
+  "selected": {
+    "sourceSha256": "1b54ede1643a131c1bb7c7b995900da7947b6f21aac71141f50a0f5c8d15899d",
+    "apiSha256": "3e3fb8c3bc4c445567696ce62bd95979e36746ddde5bb9e0aad3038fc362c9b9",
+    "directRuntimeSha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+    "driverSha256": "eb4bb871371fb2fb61fa1c077d093a817a1f6ae35205ebb2beecfb6e064fc417"
+  },
+  "callingContract": "upstream-compatible-direct-v1",
+  "status": {
+    "installed": true,
+    "sourceScenarios": "96/96",
+    "numericControls": "34/34",
+    "composition": "18/18",
+    "overapplication": "2/2",
+    "maintainedCensus": "26/26 agreement:18 runtime,4 rejection,4 N/A",
+    "maintainedSuites": "8/8",
+    "legacyRelease": "42/42",
+    "defaultRelease": "24/24",
+    "installedCompleteRow": "1 case/3 calls",
+    "fullBenchmark": "45 points/23 sources/669 samples",
+    "portableMappings": 135,
+    "portableReplay": "3 cases/27 samples",
+    "protectedFilesUnchanged": 103
+  },
+  "performanceWeightings": {
+    "equalPoint": {
+      "baseline/typescript": 1.1292662794997927,
+      "candidate/typescript": 1.0695986142741027,
+      "baseline/candidate": 1.0557850995966223
+    },
+    "equalSource": {
+      "baseline/typescript": 1.135542832495021,
+      "candidate/typescript": 1.0780760858902199,
+      "baseline/candidate": 1.053304908027292
+    }
+  },
+  "countsOverlap": true,
+  "referenceException": "Original NaN source oracle40 passes candidate; pinned TypeScript1 fails. Six numeric cold/renamed reference failures remain failures.",
+  "artifacts": {
+    "installedRelease": {
+      "path": "selfhost/dist/release.json",
+      "bytes": 35076,
+      "sha256": "ec6846e9ac4a36bbb54fa84f7a573df4e08bada67298a7a61ad03bc1b1aa96b2"
+    },
+    "installedApi": {
+      "path": "selfhost/dist/typed-api.mjs",
+      "bytes": 1814920,
+      "sha256": "3e3fb8c3bc4c445567696ce62bd95979e36746ddde5bb9e0aad3038fc362c9b9"
+    },
+    "directRuntime": {
+      "path": "selfhost/src/runtime/js/direct.mjs",
+      "bytes": 13212,
+      "sha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+    },
+    "driver": {
+      "path": "selfhost/tools/typed-driver.mjs",
+      "bytes": 53800,
+      "sha256": "eb4bb871371fb2fb61fa1c077d093a817a1f6ae35205ebb2beecfb6e064fc417"
+    },
+    "semanticQualification": {
+      "path": "selfhost/tools/performance/phase53/semantic-qualified-ordered02-v1.json",
+      "bytes": 7204,
+      "sha256": "2637dd27ede9083aaad109997ca91772e54bd29bb6399fc64013b4aa3eec534e"
+    },
+    "releaseQualification": {
+      "path": "selfhost/tools/performance/phase53/evidence/installed-release.json",
+      "bytes": 11268,
+      "sha256": "8b27d735574dc93e2c9066f5721c7e7eb9bd32657f3735740c1ba832a690ae18"
+    },
+    "performanceSummary": {
+      "path": "selfhost/tools/performance/phase53/evidence/performance-summary.json",
+      "bytes": 20532,
+      "sha256": "3748bb63844b21b9d25db9fd18483aaf3f41526144c92e6abe6476127434c80f"
+    },
+    "portableMappings": {
+      "path": "selfhost/tools/performance/phase53/evidence/portable-verification.json",
+      "bytes": 34255,
+      "sha256": "6eaa8e37e557c846b7a04620729c30cb82811f635ccb245d80645a64c515007f"
+    },
+    "portableReplay": {
+      "path": "selfhost/tools/performance/phase53/evidence/portable-replay.json",
+      "bytes": 1162,
+      "sha256": "b72303a709807f250dfe4c357307355b1fadb5d53cd5184412566ec051a4c5f7"
+    },
+    "timeAccounting": {
+      "path": "selfhost/tools/performance/phase53/evidence/time-summary.json",
+      "bytes": 2462,
+      "sha256": "6cfb37a87f0c394b86f62e2b6a614386ada41f46603e3840dacbe71b58a5d867"
+    },
+    "writerClosure": {
+      "path": "selfhost/tools/performance/phase53/evidence/writers-closed.json",
+      "bytes": 1993,
+      "sha256": "7b49a17dffda2648b22da936ea198af571e8e93ffa09794e45c4edf07bee850e"
+    },
+    "protectedAudit": {
+      "path": "selfhost/tools/performance/phase53/evidence/protected-final.json",
+      "bytes": 519,
+      "sha256": "5b0685dbd8dc86d0e476092831b01166e7a8fe7e80aace03430aa0e0e9c40b69"
+    },
+    "resultsJson": {
+      "path": "implementation/phase53/results.json",
+      "bytes": 334245,
+      "sha256": "2354f28489d01a5ae415f8b238353a67c275361f43031b2a9f3233e4462c1bbb"
+    },
+    "resultsMarkdown": {
+      "path": "implementation/phase53/results.md",
+      "bytes": 5208,
+      "sha256": "19c9a73a8061f810c134a9bc82a884f93843a405c7899ffa5ce813955ac3934f"
+    },
+    "allPointDiagram": {
+      "path": "implementation/phase53/ratios.svg",
+      "bytes": 15273,
+      "sha256": "ebf884f67736b0862c1ce05291d5d4881df6019ee85df2320c3cccdba836eb22"
+    },
+    "rawIndex": {
+      "path": "selfhost/tools/performance/phase53/artifacts/raw/archive.json",
+      "bytes": 1965354,
+      "sha256": "9d6083d76695ae5ca1adeb3840cc6447e81441dbc4d1f2cb8de6f197fb49cb2f"
+    },
+    "rawArchive": {
+      "path": "selfhost/tools/performance/phase53/artifacts/raw/raw-campaign.tar.gz",
+      "bytes": 14653738,
+      "sha256": "0137bb03e253527c0233c46052545e0cf626701157f4852eb9c04f0009ad0221"
+    }
+  },
+  "bundles": {
+    "baseline": [
+      {
+        "path": "selfhost/tools/performance/phase53/bundles/baseline/baseline-binding.json",
+        "bytes": 2864,
+        "sha256": "e27527a84d5ef9ce811ab3e515c858a4e414611cc2e122c6e30769fdffae6f94"
+      },
+      {
+        "path": "selfhost/tools/performance/phase53/bundles/baseline/manifest.json",
+        "bytes": 45127,
+        "sha256": "37be3740c46d98c16342448e5082313a49fdc32da806e10a75ce694934faa3d0"
+      },
+      {
+        "path": "selfhost/tools/performance/phase53/bundles/baseline/programs.tar.gz",
+        "bytes": 217186,
+        "sha256": "92e36a185c6ab3471b4ee8a38efcac78c26c3bd0365874c8aacc3cc6c1e71995"
+      },
+      {
+        "path": "selfhost/tools/performance/phase53/bundles/baseline/provenance.json",
+        "bytes": 6970,
+        "sha256": "3856769cf6334ce71e64af8e9b1599a66e909c1656dad1f84d0e88e4b3e48163"
+      }
+    ],
+    "current": [
+      {
+        "path": "selfhost/tools/performance/phase53/bundles/current/manifest.json",
+        "bytes": 33238,
+        "sha256": "0b0485b6e35db9aa4c499517050ea6366434c9f7d1eeaac7112ad433423eb969"
+      },
+      {
+        "path": "selfhost/tools/performance/phase53/bundles/current/programs.tar.gz",
+        "bytes": 524710,
+        "sha256": "9992bb711499cb6ef8abe2c302d14698b78b5e8bfd9bdcedc3073504f44fc631"
+      },
+      {
+        "path": "selfhost/tools/performance/phase53/bundles/current/provenance.json",
+        "bytes": 119154,
+        "sha256": "e7b3e724042e943bb99ead271aa34165163f8d56264b2fc7f80b8aba41e85eae"
+      }
+    ]
+  },
+  "publicationAdapters": [
+    {
+      "path": "selfhost/tools/performance/phase53/publication-baseline.json",
+      "bytes": 2658,
+      "sha256": "4197983f1a45eecebcc4b28fe05ca97e56d8870b36eb20df19e8871c6335c7cc"
+    },
+    {
+      "path": "selfhost/tools/performance/phase53/publication-current.json",
+      "bytes": 3398,
+      "sha256": "e085c3dac66545cdcbba2570d17f19fd00897ba98cd94248aa307924a321b109"
+    },
+    {
+      "path": "selfhost/tools/performance/phase53/publication-verification.json",
+      "bytes": 3544,
+      "sha256": "4fc08ca9a3c5f87e1a82fc6f99add695c9d2a90a7e1f8318ef564ec65a774011"
+    },
+    {
+      "path": "selfhost/tools/performance/phase53/publication-raw.json",
+      "bytes": 2437,
+      "sha256": "4ea984454ae5529260b3ecdf9b6cba6ed110a713af635fa208d60022c43a1aaf"
+    }
+  ],
+  "raw": {
+    "members": 9893,
+    "uncompressedBytes": 108703004,
+    "compressedBytes": 14653738,
+    "sha256": "0137bb03e253527c0233c46052545e0cf626701157f4852eb9c04f0009ad0221",
+    "reopenedVerified": true,
+    "inputStabilityVerified": true,
+    "pathMapping": "Paths under selfhost/build/phase53 map to identically named members relative to the archive root. Absolute original paths are provenance; portable bundles are independently runnable.",
+    "contents": "All raw files after writer closure, including rejected source proposals, failed controls and sandbox refusals; no filtered success-only inventory."
+  },
+  "limits": [
+    "Generated-program runtime ratios on the maintained corpus; not compiler-throughput ratios or universal program parity.",
+    "12 regressions versus direct06, largest3.3899%; six descriptive role/point flags retained.",
+    "Semantic inventories overlap; no universal language/native/GPU or arbitrary host-hook equivalence claim.",
+    "Checked B1 derivative, not a newly qualified direct self-emitted fixed point;512-definition analysis cap remains.",
+    "Time accounting cutoff00:09:58UTC precedes packaging. Uncovered wall time cannot be labeled waiting.",
+    "Historical parent tool kinds/labels retain their original spelling; adapter metadata identifies this Phase53 publication."
+  ],
+  "noPrCommentPosted": true
+}

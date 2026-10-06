@@ -1,11 +1,11 @@
 # P53-001: stable NaN payload transport
 
-Status: runtime fix reviewed and implemented. Corrected01 checked emission and
-all 96 existing candidate source scenarios pass, including the original fixture
-returning 40. Additional independently renamed/cold controls and final selected
-qualification remain separate.
+Status: runtime fix implemented, checked and installed in ordered02. All 96
+original source scenarios and all 34 numeric controls pass, including independently
+renamed/cold cases. The original fixture returns 40. See the separate
+[selected qualification](qualification.md) for all scopes and reference failures.
 
-The source oracle in `tests/compile/f32_table_nan_bits.bend` remains40. Installed
+The source oracle in `tests/compile/f32_table_nan_bits.bend` remains40. Previously installed
 Phase52 direct06 returns39 on the cold invocation; pinned TS returns1. Neither
 passes that source oracle. This investigation does not change the fixture or
 silently accept the erroneous upstream result.
@@ -39,7 +39,7 @@ this is not arbitrary overridden-constructor equivalence. Claims concern stable
 quieted payloads on the pinned native host. Signaling status or arbitrary NaN
 storage through other JavaScript structures is not guaranteed.
 
-## Evidence and remaining gates
+## Evidence and selected qualification
 
 Producers: `selfhost/tools/performance/phase53/nan-diagnostic-v1.mjs` and
 `nan-store-controls-v1.mjs`; receipts: `selfhost/build/phase53/nan-diagnostic01/`.
@@ -56,6 +56,7 @@ thrown identity and runs once. Static reviewer approved the source-first contrac
 Corrected01 subsequently passed the original 96 source scenarios. Fresh checked
 original and independently renamed fixtures return 40 on each cold and repeated
 call; the reference's separate payload failure remains visible. Its eight-point
-performance screen shows effectively unchanged speed. The ordered successor
-requires its own selected-image qualification. Tiny helper substitution alone
-is not actual emitted qualification. All Phase52 failures remain preserved.
+performance screen shows effectively unchanged speed. The ordered02 successor
+then passed its own checked emission, source/numeric controls and release gates.
+These actual emitted checks establish the selected result; tiny helper
+substitution alone would not suffice. All Phase52 failures remain preserved.

@@ -64,7 +64,8 @@ run passed three suites, then failed an assertion about the old code structure:
 library requests in the choice and provenance tests now explicitly select
 `backend: 'js'`. Only test routing changes; every original assertion and frozen
 compiler file remains intact. Before/after bytes and the failed receipt are
-preserved in `maintained-routing-repair01/`; a fresh eight-suite run is required.
+preserved in `maintained-routing-repair01/`. The fresh
+`maintained-ordered02-explicit-legacy01/report.json` passes all eight suites.
 
 Reports currently reside under `selfhost/build/phase53/`:
 `semantic-ordered02-controls01/report.json`,
@@ -74,6 +75,29 @@ runtime, driver and module identities are checked again at completion.
 
 The complete selected source suite passes, with 95/96 exact differential
 agreement; only the reference's unchanged NaN failure differs. The maintained
-census/compatibility gates and installed/relocated default-interface qualification
-are separate integration steps. No universal language/host equivalence, new
-self-emitted fixed point or native/GPU qualification follows from these controls.
+census and compatibility gates also pass. The tracked
+[selected semantic receipt](../../selfhost/tools/performance/phase53/semantic-qualified-ordered02-v1.json)
+binds every report and retained failure to the exact compiler image. No universal
+language/host equivalence, new self-emitted fixed point or broader native/GPU
+qualification follows from these controls.
+
+## Installed release and portable replay
+
+The [release receipt](../../selfhost/tools/performance/phase53/evidence/installed-release.json)
+records installation, integrity checks before/after, **42/42 explicit legacy**
+and **24/24 default/legacy** interface checks. The tests include ordinary and
+relocated operation without the upstream checkout, native CPU/check/interpreter
+routes, native-callable default libraries, partial applications, IO, explicit
+legacy descriptors, and rejection/restoration of a tampered runtime copy.
+Seven prior-release history files were preserved byte-for-byte.
+
+The initial legacy release run had six sandbox Clang spawn refusals. Its exact
+unchanged retry with permitted process spawning passes all 42 checks; the first
+process report and failures remain in the raw archive. This is separate from
+the earlier maintained-test routing correction described above.
+
+Installed direct acquisition passes the complete generic-row oracle (one case,
+three calls). The final [portable replay](../../selfhost/tools/performance/phase53/evidence/portable-replay.json)
+passes three cases and 27 samples after independently verifying all 135 portable
+point/role mappings. These are release/replay checks, not extra independent
+language coverage or replacements for the full performance campaign.

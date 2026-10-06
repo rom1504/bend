@@ -1,9 +1,10 @@
 # Phase53 benchmark plan
 
-Status: tools and commands prepared only. Root owns the one target slot and must
-select each frozen checked attempt before acquisition or execution. The authorized data-only direct06 reference packaging is complete (see below);
-no Phase53 benchmark, compilation or accounting result is claimed by this plan.
-Historical Phase52 tools, raw evidence and portable bundles remain unchanged.
+Status: the selected ordered02 comparison is complete:45 points,23 sources,
+669 samples, all output checks passing. See the [complete results](../../../../implementation/phase53/results.md)
+and [bound performance summary](evidence/performance-summary.json). The commands
+below retain the frozen method and require fresh output paths for reuse.
+Historical Phase52 tools, raw evidence and bundles remain unchanged.
 
 ## Roles and identities
 
@@ -312,3 +313,99 @@ speedup over corrected01 and no unexplained point slowdown above10%, in addition
 to the independent semantic gates. Keep every row and flag, including a failed
 performance threshold. Passing this screen does not itself authorize full45 or
 installation; the lead explicitly selects the next campaign.
+
+## Ordered02 causal screen outcome
+
+The planned acquisition and smoke each passed all eight points. The unchanged
+three-role screen then completed all 72 samples in 57.503 seconds with every
+result oracle passing. Equal-point corrected01/ordered02 speedup was **1.068387×**;
+ordered02/TypeScript was **1.130115×**, compared with same-run
+corrected01/TypeScript **1.207400×**. This meets the precommitted 1.05× screen
+threshold, with no point slowdown above 10% and no retained spread/drift flags.
+The full campaign remains a separate authorization and qualification step.
+
+| Point | Corrected01 / ordered02 speedup | Ordered02 / TypeScript |
+|---|---:|---:|
+| `mandelbrot` | 1.135010× | 1.501230× |
+| `local-pair` | 1.169650× | 1.144853× |
+| `editdist` | 1.118660× | 1.132820× |
+| `variation-ray-active-64-2440` | 1.146810× | 1.351583× |
+| `variation-local-fold-8192-123` | 1.061122× | 1.038468× |
+| `test-morning-program` | 0.952317× | 0.908069× |
+| `coverage-expression-128` | 1.023686× | 1.025686× |
+| `coverage-closures-64` | 0.963541× | 1.045330× |
+
+A speedup below 1 means a regression: Morning was 5.01% slower and closures64
+3.78% slower. Both remain in the geometric mean. The other six cases improved;
+these descriptive results do not identify the V8 mechanism or predict all45.
+
+The original measured report is
+`selfhost/build/phase53/screen-checked-ordered02/report.json`, SHA256
+`f19051a93dff6a00643cc41532d74ba0b19559784c16b5827fdb792a226426f7`.
+Its explicit comparison contract is SHA256
+`d7d5b0e57d1b825f29a33cf8ac3a0de7d1b591fae9d673252f7a3d171efdccda`.
+The data-only `screen-checked-ordered02-summary.json` records every median, ratio,
+flag threshold and the original decision-file hash; SHA256
+`4eef54ef4668a16fa1e5dfd6484c4fee5104ee086624f283f4f590f692ac9916`.
+No point or role was dropped, and no timing was repeated to obtain this result.
+
+The two preliminary screen summaries explicitly used a 1.25 round-spread flag.
+The unchanged full45 aggregator retains the historical stricter 1.20 threshold
+and absolute half-drift above 20%. Checking both screens at 1.20 also produces
+zero flags (maximum spreads 1.1664 and 1.1242); original summaries are preserved.
+This clarification changes neither their measurements nor acceptance decisions.
+
+## Full ordered02 campaign outcome
+
+The final acquisition checked all 23 source files and covered all 45 retained
+points; all 45 smoke oracles passed. Three unchanged 600-second profiles then
+completed 219,225,225 fresh samples: **669 total**, every result oracle passing.
+Their measured supervisor walls were 365.201,377.027,378.941 seconds, totaling
+1,121.170 seconds (18.686 minutes). The first attempt to launch the third batch
+hit an automatic permission-review timeout before creating output or running a
+sample. Its metadata is retained; the single permitted identical retry succeeded.
+Completed samples were never repeated or filtered.
+
+| Weighting | Previous direct06 / TS | Ordered02 / TS | Previous / ordered02 |
+|---|---:|---:|---:|
+| Equal point (45) | 1.129266× | 1.069599× | 1.055785× |
+| Equal source (23) | 1.135543× | 1.078076× | 1.053305× |
+
+Fifteen points ran faster than TypeScript; 34/45 were within ±10% and 39/45 within
+±20%. Twelve points regressed versus direct06, all by less than 10%; the largest
+was Evening at 3.3899%. The highest ordered02/TypeScript ratio remained the
+4-grid Mandelbrot variation at 1.911888×. These are same-run medians and
+geometric summaries, not confidence bounds or a guarantee for arbitrary programs.
+
+All six flagged role/point combinations remain in both summaries: candidate
+fold8192, TypeScript closures256, TypeScript list512, candidate expression128,
+TypeScript records64, and candidate records256. The full report retains each
+spread/half-drift measurement and the unchanged 1.20/20% thresholds. No timing
+flag permits dropping a point.
+
+The reviewed aggregator independently recomputed medians and both weights,
+joined the exact attempt, runtime, frozen driver, source, output and per-invocation
+oracle identities, and rehashed its inputs. Outputs under
+`selfhost/build/phase53/aggregate-checked-ordered02/`:
+
+- `report.json`: SHA256
+  `2354f28489d01a5ae415f8b238353a67c275361f43031b2a9f3233e4462c1bbb`.
+- `report.md`: SHA256
+  `19c9a73a8061f810c134a9bc82a884f93843a405c7899ffa5ce813955ac3934f`.
+- `ratios.svg`: SHA256
+  `ebf884f67736b0862c1ce05291d5d4881df6019ee85df2320c3cccdba836eb22`.
+
+Timing and aggregation are complete. These artifacts do not themselves claim
+installation, portable replay, archive closure or universal conformance; the
+release owner performs and records those separately.
+
+## Final release and publication
+
+Ordered02 is installed. Separate release qualification passes42 explicit legacy
+and24 default/legacy checks, integrity before/after, relocation and copied-runtime
+tamper controls. Installed direct-row acquisition passes its exact oracle.
+All135 portable point/role mappings verify; final portable replay passes3cases
+and27samples. See [installed release](evidence/installed-release.json),
+[portable replay](evidence/portable-replay.json), [time accounting](evidence/time-summary.json)
+and the [publication index](publication.json). These results retain their distinct
+scopes; none establishes universal conformance or a new compiler fixed point.

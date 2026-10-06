@@ -1,0 +1,582 @@
+{
+  "kind": "phase53-completed-program-performance-summary",
+  "schemaVersion": 1,
+  "complete": true,
+  "passed": true,
+  "dataOnly": true,
+  "scope": "All45 retained benchmark points and exact output oracles. Same-run generated-program execution medians; no compiler request timing, isolated causal attribution, installation or universal-conformance claim. The original failed launch receipts remain; no measured samples were retried or excluded.",
+  "roles": {
+    "baseline": "Phase52 selected direct06",
+    "candidate": "Phase53 checked-ordered02",
+    "typescript": "Pinned upstream 018751270e800bc222a93dad7f257083ee53a5f7"
+  },
+  "callingContract": "upstream-compatible-direct-v1",
+  "compilerIdentities": {
+    "sourceSha256": "1b54ede1643a131c1bb7c7b995900da7947b6f21aac71141f50a0f5c8d15899d",
+    "apiSha256": "3e3fb8c3bc4c445567696ce62bd95979e36746ddde5bb9e0aad3038fc362c9b9",
+    "directRuntimeSha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23",
+    "driverSha256": "eb4bb871371fb2fb61fa1c077d093a817a1f6ae35205ebb2beecfb6e064fc417"
+  },
+  "aggregate": {
+    "path": "selfhost/build/phase53/aggregate-checked-ordered02/report.json",
+    "bytes": 334245,
+    "sha256": "2354f28489d01a5ae415f8b238353a67c275361f43031b2a9f3233e4462c1bbb"
+  },
+  "counts": {
+    "points": 45,
+    "sources": 23,
+    "samples": 669,
+    "withinPlusMinus10PercentOfTypeScript": 34,
+    "withinPlusMinus20PercentOfTypeScript": 39,
+    "regressionsVersusDirect06": 12,
+    "regressionsAbove10Percent": 0,
+    "flaggedRolePointPairs": 6,
+    "candidateFasterThanTypeScript": 15
+  },
+  "weightings": {
+    "equalPoint": {
+      "baseline/typescript": 1.1292662794997927,
+      "candidate/typescript": 1.0695986142741027,
+      "baseline/candidate": 1.0557850995966223
+    },
+    "equalSource": {
+      "baseline/typescript": 1.135542832495021,
+      "candidate/typescript": 1.0780760858902199,
+      "baseline/candidate": 1.053304908027292
+    }
+  },
+  "ratioConvention": "Numerator runtime / denominator runtime; candidate/typescript below1 favors candidate; baseline/candidate above1 favors candidate.",
+  "ranges": {
+    "baseline/typescript": {
+      "minimum": "test-morning-program",
+      "minimumRatio": 0.8930445913027516,
+      "maximum": "variation-mandelbrot-grid-4-7",
+      "maximumRatio": 2.1719514431842453
+    },
+    "candidate/typescript": {
+      "minimum": "test-morning-program",
+      "minimumRatio": 0.8684424133387701,
+      "maximum": "variation-mandelbrot-grid-4-7",
+      "maximumRatio": 1.911887717075504
+    },
+    "baseline/candidate": {
+      "minimum": "test-evening-program",
+      "minimumRatio": 0.9672129204689164,
+      "maximum": "symreg",
+      "maximumRatio": 1.201962865009378
+    }
+  },
+  "regressions": [
+    {
+      "id": "local-fold",
+      "mediansMs": {
+        "typescript": 0.03932841334231804,
+        "baseline": 0.04070167482274434,
+        "candidate": 0.041581129914529905
+      },
+      "ratios": {
+        "baseline/typescript": 1.0349177951440172,
+        "candidate/typescript": 1.0572796200193488,
+        "baseline/candidate": 0.978849658640992,
+        "candidate/baseline": 1.0216073440617761
+      },
+      "slowdownPercent": 2.1607344061776113
+    },
+    {
+      "id": "complete-generic-row32",
+      "mediansMs": {
+        "typescript": 0.006767309400927678,
+        "baseline": 0.006767816207867722,
+        "candidate": 0.0069215798864375976
+      },
+      "ratios": {
+        "baseline/typescript": 1.0000748904638488,
+        "candidate/typescript": 1.0227964285907738,
+        "baseline/candidate": 0.977784887107759,
+        "candidate/baseline": 1.0227198366278214
+      },
+      "slowdownPercent": 2.27198366278214
+    },
+    {
+      "id": "tree-bitonic",
+      "mediansMs": {
+        "typescript": 0.27496711913357397,
+        "baseline": 0.2657406445035461,
+        "candidate": 0.26666592424242425
+      },
+      "ratios": {
+        "baseline/typescript": 0.9664451711204575,
+        "candidate/typescript": 0.9698102270653054,
+        "baseline/candidate": 0.9965301913189443,
+        "candidate/baseline": 1.0034818901738074
+      },
+      "slowdownPercent": 0.34818901738074004
+    },
+    {
+      "id": "test-evening-program",
+      "mediansMs": {
+        "typescript": 0.0026172775321873874,
+        "baseline": 0.00260969095634596,
+        "candidate": 0.002698155598542615
+      },
+      "ratios": {
+        "baseline/typescript": 0.9971013483483783,
+        "candidate/typescript": 1.0309016011334624,
+        "baseline/candidate": 0.9672129204689164,
+        "candidate/baseline": 1.0338985127650984
+      },
+      "slowdownPercent": 3.3898512765098365
+    },
+    {
+      "id": "test-map-set-ops",
+      "mediansMs": {
+        "typescript": 0.02037089512475488,
+        "baseline": 0.019078324634979802,
+        "candidate": 0.01931821818751959
+      },
+      "ratios": {
+        "baseline/typescript": 0.9365481741543926,
+        "candidate/typescript": 0.9483244633685209,
+        "baseline/candidate": 0.9875820041884209,
+        "candidate/baseline": 1.0125741414474072
+      },
+      "slowdownPercent": 1.2574141447407206
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "mediansMs": {
+        "typescript": 0.03689909768442362,
+        "baseline": 0.03691685855263159,
+        "candidate": 0.03694857673951267
+      },
+      "ratios": {
+        "baseline/typescript": 1.0004813361117897,
+        "candidate/typescript": 1.0013409285915935,
+        "baseline/candidate": 0.999141558628775,
+        "candidate/baseline": 1.0008591789259604
+      },
+      "slowdownPercent": 0.08591789259604354
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "mediansMs": {
+        "typescript": 0.001437572612051595,
+        "baseline": 0.0014552976244237457,
+        "candidate": 0.001466230619281829
+      },
+      "ratios": {
+        "baseline/typescript": 1.0123298205764055,
+        "candidate/typescript": 1.0199349980585226,
+        "baseline/candidate": 0.9925434684596627,
+        "candidate/baseline": 1.0075125490996473
+      },
+      "slowdownPercent": 0.751254909964727
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "mediansMs": {
+        "typescript": 0.02129245271472283,
+        "baseline": 0.019968559141927338,
+        "candidate": 0.020208417452053002
+      },
+      "ratios": {
+        "baseline/typescript": 0.9378233409493462,
+        "candidate/typescript": 0.9490882860141208,
+        "baseline/candidate": 0.9881307722044659,
+        "candidate/baseline": 1.0120117985689834
+      },
+      "slowdownPercent": 1.2011798568983378
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "mediansMs": {
+        "typescript": 0.761839755050505,
+        "baseline": 0.7452596567164179,
+        "candidate": 0.7470154663341647
+      },
+      "ratios": {
+        "baseline/typescript": 0.9782367640646582,
+        "candidate/typescript": 0.9805414608281271,
+        "baseline/candidate": 0.9976495672487705,
+        "candidate/baseline": 1.0023559703009859
+      },
+      "slowdownPercent": 0.2355970300985888
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "mediansMs": {
+        "typescript": 0.001991083110611273,
+        "baseline": 0.001985599714893842,
+        "candidate": 0.00204507294218078
+      },
+      "ratios": {
+        "baseline/typescript": 0.9972460236902176,
+        "candidate/typescript": 1.0271158101245366,
+        "baseline/candidate": 0.9709187745530885,
+        "candidate/baseline": 1.0299522742881324
+      },
+      "slowdownPercent": 2.9952274288132408
+    },
+    {
+      "id": "coverage-bst-32",
+      "mediansMs": {
+        "typescript": 0.022102352893535553,
+        "baseline": 0.02330392877651938,
+        "candidate": 0.02353689787471144
+      },
+      "ratios": {
+        "baseline/typescript": 1.054364161533918,
+        "candidate/typescript": 1.064904627488572,
+        "baseline/candidate": 0.9901019624832393,
+        "candidate/baseline": 1.0099969880798294
+      },
+      "slowdownPercent": 0.9996988079829405
+    },
+    {
+      "id": "coverage-bst-64",
+      "mediansMs": {
+        "typescript": 0.0539322779547063,
+        "baseline": 0.0555629084262475,
+        "candidate": 0.05621551927644802
+      },
+      "ratios": {
+        "baseline/typescript": 1.0302347783809658,
+        "candidate/typescript": 1.0423353399546602,
+        "baseline/candidate": 0.9883909130681295,
+        "candidate/baseline": 1.0117454407748792
+      },
+      "slowdownPercent": 1.1745440774879157
+    }
+  ],
+  "timingFlagPolicy": "Descriptive only: absolute half drift >20% or maximum/minimum fresh-round time >1.2. No rows excluded. Lack of flags is not proof of JIT convergence or statistical significance.",
+  "timingFlags": [
+    {
+      "id": "variation-local-fold-8192-123",
+      "role": "candidate",
+      "maxAbsoluteHalfDriftPercent": 1.5722778031755702,
+      "maxOverMinRoundMedian": 1.2272107037201512,
+      "halfDriftOver20Percent": false,
+      "roundSpreadOver20Percent": true,
+      "roundMedianSpanMs": {
+        "minimum": 0.12747392038753158,
+        "maximum": 0.15643735954474916,
+        "median": 0.1279465935511243
+      },
+      "halfDriftSpanPercent": {
+        "minimum": 0.4895319995164238,
+        "maximum": 1.5722778031755702
+      },
+      "report": {
+        "path": "selfhost/build/phase53/full-checked-ordered02-batch1/report.json",
+        "bytes": 1941656,
+        "sha256": "09c5b26b6237bacd417c77e9558e54d29d906788f2214df5370baa40e209e96f"
+      }
+    },
+    {
+      "id": "coverage-closures-256",
+      "role": "typescript",
+      "maxAbsoluteHalfDriftPercent": 9.231151827633454,
+      "maxOverMinRoundMedian": 1.2487258796317464,
+      "halfDriftOver20Percent": false,
+      "roundSpreadOver20Percent": true,
+      "roundMedianSpanMs": {
+        "minimum": 0.020563215496549662,
+        "maximum": 0.025677819358986134,
+        "median": 0.020960007968424184
+      },
+      "halfDriftSpanPercent": {
+        "minimum": -0.7026520481546727,
+        "maximum": 9.231151827633454
+      },
+      "report": {
+        "path": "selfhost/build/phase53/full-checked-ordered02-batch2/report.json",
+        "bytes": 2364614,
+        "sha256": "37a1e121072cc5e520941b3b0f0e77753e1762318b60962de0fd14416a7d19c1"
+      }
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "role": "typescript",
+      "maxAbsoluteHalfDriftPercent": 26.503933038967297,
+      "maxOverMinRoundMedian": 1.3329926428177983,
+      "halfDriftOver20Percent": true,
+      "roundSpreadOver20Percent": true,
+      "roundMedianSpanMs": {
+        "minimum": 0.027335239605618084,
+        "maximum": 0.0364376732839506,
+        "median": 0.027378726652969747
+      },
+      "halfDriftSpanPercent": {
+        "minimum": -26.503933038967297,
+        "maximum": -0.017578096087811357
+      },
+      "report": {
+        "path": "selfhost/build/phase53/full-checked-ordered02-batch2/report.json",
+        "bytes": 2364614,
+        "sha256": "37a1e121072cc5e520941b3b0f0e77753e1762318b60962de0fd14416a7d19c1"
+      }
+    },
+    {
+      "id": "coverage-expression-128",
+      "role": "candidate",
+      "maxAbsoluteHalfDriftPercent": 32.80303782334604,
+      "maxOverMinRoundMedian": 1.2906846756847576,
+      "halfDriftOver20Percent": true,
+      "roundSpreadOver20Percent": true,
+      "roundMedianSpanMs": {
+        "minimum": 0.008884204949705597,
+        "maximum": 0.011466707184227687,
+        "median": 0.009224742269944318
+      },
+      "halfDriftSpanPercent": {
+        "minimum": -32.80303782334604,
+        "maximum": 0.40446635768045525
+      },
+      "report": {
+        "path": "selfhost/build/phase53/full-checked-ordered02-batch2/report.json",
+        "bytes": 2364614,
+        "sha256": "37a1e121072cc5e520941b3b0f0e77753e1762318b60962de0fd14416a7d19c1"
+      }
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "role": "typescript",
+      "maxAbsoluteHalfDriftPercent": 37.14577730847842,
+      "maxOverMinRoundMedian": 1.320175004474412,
+      "halfDriftOver20Percent": true,
+      "roundSpreadOver20Percent": true,
+      "roundMedianSpanMs": {
+        "minimum": 0.29958657185332005,
+        "maximum": 0.39550670383693054,
+        "median": 0.2998077753479123
+      },
+      "halfDriftSpanPercent": {
+        "minimum": -37.14577730847842,
+        "maximum": 2.208639540064272
+      },
+      "report": {
+        "path": "selfhost/build/phase53/full-checked-ordered02-batch2/report.json",
+        "bytes": 2364614,
+        "sha256": "37a1e121072cc5e520941b3b0f0e77753e1762318b60962de0fd14416a7d19c1"
+      }
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "role": "candidate",
+      "maxAbsoluteHalfDriftPercent": 26.269881019687126,
+      "maxOverMinRoundMedian": 1.1230537501558162,
+      "halfDriftOver20Percent": true,
+      "roundSpreadOver20Percent": false,
+      "roundMedianSpanMs": {
+        "minimum": 1.2215358682170543,
+        "maximum": 1.3718504377510037,
+        "median": 1.2396829094488189
+      },
+      "halfDriftSpanPercent": {
+        "minimum": -1.757770198434494,
+        "maximum": 26.269881019687126
+      },
+      "report": {
+        "path": "selfhost/build/phase53/full-checked-ordered02-batch2/report.json",
+        "bytes": 2364614,
+        "sha256": "37a1e121072cc5e520941b3b0f0e77753e1762318b60962de0fd14416a7d19c1"
+      }
+    }
+  ],
+  "batches": [
+    {
+      "report": {
+        "path": "selfhost/build/phase53/full-checked-ordered02-batch0/report.json",
+        "bytes": 2151794,
+        "sha256": "8f02120036ea422bf823f1d36cec80fec55217fdae69b8367787eb2852a9b370"
+      },
+      "points": 15,
+      "samples": 219,
+      "wallSeconds": 365.2011867510155
+    },
+    {
+      "report": {
+        "path": "selfhost/build/phase53/full-checked-ordered02-batch1/report.json",
+        "bytes": 1941656,
+        "sha256": "09c5b26b6237bacd417c77e9558e54d29d906788f2214df5370baa40e209e96f"
+      },
+      "points": 15,
+      "samples": 225,
+      "wallSeconds": 377.0272971590166
+    },
+    {
+      "report": {
+        "path": "selfhost/build/phase53/full-checked-ordered02-batch2/report.json",
+        "bytes": 2364614,
+        "sha256": "37a1e121072cc5e520941b3b0f0e77753e1762318b60962de0fd14416a7d19c1"
+      },
+      "points": 15,
+      "samples": 225,
+      "wallSeconds": 378.94126853800844
+    }
+  ],
+  "timingWallSeconds": 1121.1697524480405,
+  "timingWallRoundedSeconds": 1121.17,
+  "resources": {
+    "cpu": 3,
+    "nodeVersion": "v24.18.0",
+    "heapMiB": 1024,
+    "stackKiB": 4096,
+    "treeRssLimitMiB": 2048,
+    "availableMemoryFloorMiB": 4096,
+    "nominalBudgetSecondsPerBatch": 600,
+    "protocol": {
+      "defaultSet": "full",
+      "rounds": 5,
+      "warmupCalls": 3,
+      "warmupMs": 1000,
+      "calibrationMs": 50,
+      "targetMs": 300
+    },
+    "expensivePointPolicy": "raytrace: one warmup call; at most three fresh rounds. Other points: three warmup calls. All also require preset warmup milliseconds.",
+    "maximumObservedTreeRssBytes": 130953216,
+    "peakTreeRssByRole": {
+      "baseline": {
+        "bytes": 99725312,
+        "case": "coverage-record-aggregation-256",
+        "round": 1
+      },
+      "candidate": {
+        "bytes": 105242624,
+        "case": "coverage-record-aggregation-256",
+        "round": 1
+      },
+      "typescript": {
+        "bytes": 130953216,
+        "case": "variation-tree-bitonic-9-123",
+        "round": 3
+      }
+    },
+    "minimumObservedAvailableBytes": 27338502144,
+    "scope": "Existing full timing guard process-tree observations only; not whole-session peak, compiler-build RSS, or CPU utilization."
+  },
+  "screens": [
+    {
+      "name": "corrected01",
+      "report": {
+        "path": "selfhost/build/phase53/screen-checked-corrected01/report.json",
+        "bytes": 679892,
+        "sha256": "366d94dd4d3c98742ae4332b8e21a6e14b7b41237d4ebc3abd92014a3a7ae95d"
+      },
+      "comparisonContract": {
+        "path": "selfhost/build/phase53/screen-checked-corrected01/phase53-comparison.json",
+        "bytes": 6640,
+        "sha256": "4c1d1560f76ae31af992c6ee3c6bdc3652de807853a2cfe95e15582a9cd00d5e"
+      },
+      "points": 8,
+      "samples": 72,
+      "wallSeconds": 57.428974142996594,
+      "geometricMeans": {
+        "baseline/typescript": 1.2266144803208616,
+        "candidate/typescript": 1.2244610255476784,
+        "baseline/candidate": 1.0017586960534084
+      },
+      "scope": "Correction-only baseline check; no gain requirement",
+      "performanceThresholdPassed": null
+    },
+    {
+      "name": "ordered02",
+      "report": {
+        "path": "selfhost/build/phase53/screen-checked-ordered02/report.json",
+        "bytes": 679648,
+        "sha256": "f19051a93dff6a00643cc41532d74ba0b19559784c16b5827fdb792a226426f7"
+      },
+      "comparisonContract": {
+        "path": "selfhost/build/phase53/screen-checked-ordered02/phase53-comparison.json",
+        "bytes": 6687,
+        "sha256": "d7d5b0e57d1b825f29a33cf8ac3a0de7d1b591fae9d673252f7a3d171efdccda"
+      },
+      "points": 8,
+      "samples": 72,
+      "wallSeconds": 57.50347918301122,
+      "geometricMeans": {
+        "baseline/typescript": 1.2074000202071953,
+        "candidate/typescript": 1.1301147469140687,
+        "baseline/candidate": 1.0683871027293153
+      },
+      "scope": "Precommitted optimization screen versus corrected01; gain>=1.05 and no unexplained>10%point slowdown",
+      "performanceThresholdPassed": true
+    }
+  ],
+  "optimizationDecision": {
+    "path": "selfhost/tools/performance/phase53/optimization-decision-v1.json",
+    "bytes": 1487,
+    "sha256": "addf7fc54461e0332c6352a562ae76060225f8799c90412c56ae1aafda7efb3b"
+  },
+  "preservedLaunchFailures": [
+    {
+      "path": "selfhost/build/phase53/screen-checked-corrected01-launch-failure.json",
+      "bytes": 1618,
+      "sha256": "383122c8f664e2b75ac03e0e07d8e2bc53cde813a2cafa7a574bc67e3ebe53e2"
+    },
+    {
+      "path": "selfhost/build/phase53/full-checked-ordered02-batch2-launch-timeout.json",
+      "bytes": 519,
+      "sha256": "8300c5aa3fc83384f23a893256e24fc5b2537cb7bd94dfe63e240eca1f4895d2"
+    }
+  ],
+  "derivation": "Read-only projection of the validated full aggregate plus original reports. Counts and screen geometric means recomputed; per-role memory extrema and variability spans read from existing process/sample records.",
+  "inputs": [
+    {
+      "path": "selfhost/build/phase53/aggregate-checked-ordered02/report.json",
+      "bytes": 334245,
+      "sha256": "2354f28489d01a5ae415f8b238353a67c275361f43031b2a9f3233e4462c1bbb"
+    },
+    {
+      "path": "selfhost/build/phase53/full-checked-ordered02-batch0/report.json",
+      "bytes": 2151794,
+      "sha256": "8f02120036ea422bf823f1d36cec80fec55217fdae69b8367787eb2852a9b370"
+    },
+    {
+      "path": "selfhost/build/phase53/full-checked-ordered02-batch1/report.json",
+      "bytes": 1941656,
+      "sha256": "09c5b26b6237bacd417c77e9558e54d29d906788f2214df5370baa40e209e96f"
+    },
+    {
+      "path": "selfhost/build/phase53/full-checked-ordered02-batch2/report.json",
+      "bytes": 2364614,
+      "sha256": "37a1e121072cc5e520941b3b0f0e77753e1762318b60962de0fd14416a7d19c1"
+    },
+    {
+      "path": "selfhost/build/phase53/screen-checked-corrected01/report.json",
+      "bytes": 679892,
+      "sha256": "366d94dd4d3c98742ae4332b8e21a6e14b7b41237d4ebc3abd92014a3a7ae95d"
+    },
+    {
+      "path": "selfhost/build/phase53/screen-checked-corrected01/phase53-comparison.json",
+      "bytes": 6640,
+      "sha256": "4c1d1560f76ae31af992c6ee3c6bdc3652de807853a2cfe95e15582a9cd00d5e"
+    },
+    {
+      "path": "selfhost/build/phase53/screen-checked-ordered02/report.json",
+      "bytes": 679648,
+      "sha256": "f19051a93dff6a00643cc41532d74ba0b19559784c16b5827fdb792a226426f7"
+    },
+    {
+      "path": "selfhost/build/phase53/screen-checked-ordered02/phase53-comparison.json",
+      "bytes": 6687,
+      "sha256": "d7d5b0e57d1b825f29a33cf8ac3a0de7d1b591fae9d673252f7a3d171efdccda"
+    },
+    {
+      "path": "selfhost/tools/performance/phase53/optimization-decision-v1.json",
+      "bytes": 1487,
+      "sha256": "addf7fc54461e0332c6352a562ae76060225f8799c90412c56ae1aafda7efb3b"
+    },
+    {
+      "path": "selfhost/build/phase53/screen-checked-corrected01-launch-failure.json",
+      "bytes": 1618,
+      "sha256": "383122c8f664e2b75ac03e0e07d8e2bc53cde813a2cafa7a574bc67e3ebe53e2"
+    },
+    {
+      "path": "selfhost/build/phase53/full-checked-ordered02-batch2-launch-timeout.json",
+      "bytes": 519,
+      "sha256": "8300c5aa3fc83384f23a893256e24fc5b2537cb7bd94dfe63e240eca1f4895d2"
+    }
+  ],
+  "inputsUnchanged": true
+}

@@ -1,9 +1,11 @@
 # Phase53 compact publication recipe
 
-Prepared without compression, target execution or raw-output changes. Root must
-select the final checked image and authorize each execution. Phase52 artifacts
-remain immutable. Publication preserves evidence; it does not turn a failed
-semantic gate into a pass.
+This recipe was prepared before publication. Selected ordered02 has now passed
+release qualification, all 135 portable mappings and the three-case/27-sample
+portable replay. The [publication index](publication.json) binds final artifacts.
+Phase52 artifacts remain immutable. Publication preserves evidence; it does not
+turn a failed semantic gate into a pass. The commands below retain the planned
+ordering and fresh-output requirements for reproducing a future campaign.
 
 ## Reuse and output shape
 

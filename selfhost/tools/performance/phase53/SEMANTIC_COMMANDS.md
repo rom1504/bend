@@ -1,5 +1,7 @@
 # Phase53 independent semantic qualification
 
+Current ordered02 qualification passed source96, cold/numeric34, composition18, separate genuine-overapplication2, direct census26, and fresh maintained8. Exact report identities and retained failures are in `semantic-qualified-ordered02-v1.json`. TS source95 and numeric28 remain separate from candidate qualification; no full-reference-conformance claim. The first maintained attempt failed inherited default routing, before semantic comparisons; its before bytes and the explicit-js choice3/provenance1 repair are preserved in `maintained-routing-repair01/report.json`.
+
 Root serializes target jobs. All acquisitions use the frozen Phase52 acquire-semantics-v2 producer, which owns its resource guard. Do not put a second supervisor around acquisition. Node controllers require the existing phase32 bounded supervisor, CPU3, 1GiB heap, 2GiB tree RSS and 4GiB available-memory floor. Never mix these untimed semantic observations into benchmark samples.
 
 The corrected/default checkpoint passed all96 independent source scenarios. Pinned TS passed95, with original NaN-table golden40 observed as1. Candidate40 remains mandatory. Numeric cold controls observed candidate40 on every original and renamed fresh/repeated call. Corrected01 still violates pinned callback order in computed intrinsic operands; the new ordered candidate must satisfy those controls, without a waiver.
@@ -22,7 +24,7 @@ python3 selfhost/tools/performance/phase32/bounded-run.py \
 
 The source controller requires96 candidate source passes and retains exact TS95/differential95. Runtime controls require all34 candidate oracles, every reference healthy, all reference finite/order oracles, and preserve exact TS NaN failures separately. Composition requires all18 candidate and reference value/error/event oracles and exact differential agreement. Strict runtime/composition successors also check observation outcome/value/error independently of the inherited worker's mutation catch.
 
-Only the final optimized selected image needs the unchanged maintained8 and census26 jobs:
+The final optimized selected image uses the unchanged maintained8 producer after the explicit legacy-selector test repair, and the census26 producer:
 
 ```sh
 python3 selfhost/tools/performance/phase47/qualify.py ATTEMPT NEW_MAINTAINED_OUT
@@ -30,3 +32,5 @@ python3 selfhost/tools/performance/phase53/direct-conformance-v1.py ATTEMPT NEW_
 ```
 
 Both own their existing execution guard. Explicit default/direct/legacy routing and release smoke belong to the release owner; these semantics controls explicitly acquire the direct backend and do not substitute for routing evidence.
+
+The separate genuine-overapplication catalog/controller pair uses a Let barrier before the returned lambda. Its emitted TS function retains one parameter, so its two getter/throw rows cover genuine outer-App application rather than arity-raised saturation. It does not change the frozen composition18 source/catalog.

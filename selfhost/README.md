@@ -1,56 +1,56 @@
 # Bend2 compiler port in Bend2
 
 Use the [compiler guide](../docs/BEND-IN-BEND.md),
-[Phase52 report](../implementation/phase52/README.md), and
+[Phase53 report](../implementation/phase53/README.md), and
 [direct JavaScript guide](docs/direct-javascript.md).
-**Direct06 is installed; integrity verification and all 42 legacy plus 18 direct
-ordinary/relocated CLI checks pass.** The [release manifest](dist/release.json) identifies the checked B1
-compiler. Ordinary compilation runs Bend code without a TypeScript fallback.
+**Ordered02 is installed; release integrity and all 42 legacy plus 24 default
+ordinary/relocated CLI checks pass.** Ordinary compilation runs Bend code without
+a TypeScript fallback.
 
-The new `--direct-js` mode emits lexical functions, native closures and native
-data layouts. It includes self/mutual tail loops, erased/partial calls, program
-output, IO and foreign JavaScript. The original mutable-descriptor backend stays
-the default compatibility mode; its [IR guide](docs/JAVASCRIPT_IR.md) and
-[Phase51 runtime guide](../docs/self_hosted/v8-guided-runtime.md) remain applicable.
+Direct JavaScript is now the workspace default for program/library emission and
+`--run`. It emits lexical functions, native closures/data layouts and self/mutual
+tail loops, with erased/partial calls, program output, IO and foreign JavaScript.
+`--legacy-js` retains the mutable-descriptor interface; its [IR guide](docs/JAVASCRIPT_IR.md)
+and [Phase51 runtime guide](../docs/self_hosted/v8-guided-runtime.md) remain applicable.
+The ordinary check-then-interpret mode and native target selection retain their
+existing behavior.
 
-The [full 45-point / 23-source comparison](../implementation/phase52/results.md)
-passes all 669 fresh samples and improves **2.631× → 1.124× TypeScript time**,
-a **2.34× speedup**. Equal-source weighting gives 1.129× TypeScript. Twenty-nine
-points are within 10%; seven regress against Phase51. The
-[all-point chart](../implementation/phase52/ratios.svg) includes every point.
-Historical ratios from other runs are not the denominator.
+[Conformance](CONFORMANCE.md) records **96/96** original independent source
+scenarios, plus 34 numeric, 18 composition and two genuine overapplication controls.
+The candidate preserves the original NaN oracle 40; pinned TypeScript still
+returns 1. The maintained direct 26-row JS census and all eight compatibility
+suites pass. These overlapping inventories are not a unique language-test total.
 
-[Conformance](CONFORMANCE.md) keeps distinct scopes: the direct 26-row JS census
-and all eight maintained compatibility suites pass; independent direct semantics
-pass **95/96** scenarios across 29 checked fixtures. One NaN-payload fixture fails
-its source oracle in both pinned TypeScript and direct output, differently.
-Direct mode has explicit analysis bounds, including 512 selected definitions in
-call analysis. Full language/host-hook conformance, a new self-emitted fixed point
-and compiler-throughput parity are not established. The pin remains
-`018751270e800bc222a93dad7f257083ee53a5f7`, after Bend 2.0.34.
+The [complete 45-point / 23-source comparison](../implementation/phase53/results.md)
+passes all **669 fresh samples**: execution time improves **1.129× → 1.070×
+TypeScript**, a **5.6% speedup**. Equal-source weighting gives 1.078× TypeScript.
+Twelve points regress, none by more than 3.4%; all timing flags remain visible.
+The causal eight-point screen separately gains 1.068× over the corrected baseline.
+These are generated-program execution measurements, not compiler throughput.
 
-The source now has **25,790 physical / 21,235 code Bend lines, 2,957 definitions,
-95 types and 101 modules**. The new backend adds 1,746 code lines in nine modules;
-all 92 original modules are byte-identical. See
-[accounting](../implementation/phase52/accounting.md) for runtimes, host tools and
-generated artifacts separately. Retaining compatibility grows source by 9.0%.
+The source has **26,151 physical / 21,523 code Bend lines, 3,004 definitions,
+99 types and 103 modules**. The direct backend occupies 11 modules. Relative to
+Phase52, this adds 361 physical / 288 code lines while preserving the other 100
+modules, including all 92 pre-direct modules. See [accounting](../implementation/phase53/complexity.md).
 
 ```sh
-# From selfhost/, with Node.js 24 or newer:
+# From selfhost/, with Node.js 24+:
 npm run verify:release
-node cli.mjs tests/conformance/typed-smoke/base-u32.bend --direct-js --run
 node cli.mjs tests/conformance/typed-smoke/base-u32.bend --run
+node cli.mjs tests/conformance/typed-smoke/base-u32.bend --legacy-js --run
 ```
 
-The [benchmark guide](tools/performance/phase52/README.md) documents fresh checked
-acquisition, fast screens and three serial full batches. CPU/allocation/V8
+The [benchmark recipes](tools/performance/phase53/PLAN.md) cover checked acquisition,
+fast screens and serial full-corpus validation. A checked build takes about 61 seconds;
+the full corpus takes about 20 minutes of timing. CPU/allocation/V8
 [diagnostics](tools/performance/programs/DIAGNOSTICS.md) remain separate from clean
-timing. A checked build is about 59 seconds; an eight-point build/emission/timing
-iteration used about three minutes of target work. Full45 takes about 22 minutes
-including acquisition. Compiler throughput was not newly measured.
+timing. Direct analysis refuses above 512 conservatively eligible runtime
+functions before final pruning. [Scaling limits](../implementation/phase53/scaling.md)
+explain compiler-sized inputs; no new direct self-emitted fixed point or compiler
+throughput parity is established. The pin remains
+`018751270e800bc222a93dad7f257083ee53a5f7`, after Bend 2.0.34.
 
-The [remaining work](../implementation/phase52/remaining-work.md),
-[architecture survey](../docs/self_hosted/README.md),
+The [architecture survey](../docs/self_hosted/README.md),
 [compiler research](../research/compilers_architecture_and_techniques/README.md),
 [ledger](../experiments/ledger.md), [strategy](../experiments/STEERING.md) and
 [checked workflow](../docs/PHASE5_DEVELOPMENT.md) retain the development context.

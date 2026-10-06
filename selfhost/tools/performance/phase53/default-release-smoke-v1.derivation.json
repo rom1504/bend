@@ -1,0 +1,17 @@
+{
+  "kind": "phase53-default-release-smoke-derivation",
+  "parent": {
+    "file": "selfhost/tools/performance/phase52/direct-release-smoke-v2.mjs",
+    "sha256": "f52ff1b41037f7abb599f0beba779c498782c5106bf40279f80168867fd206a0"
+  },
+  "producer": {
+    "file": "selfhost/tools/performance/phase53/default-release-smoke-v1.mjs",
+    "sha256": "24b26f26e0c373c7b39daa02b747b51ad51a61d4f6d65debb702c7b66087498d"
+  },
+  "scope": "Fresh successor; historical Phase52 producer unchanged. Not executed.",
+  "changes": [
+    "Omit explicit --direct-js in ordinary and relocated run/emission/library/IO checks to qualify default selection.",
+    "Add three explicit --legacy-js run/library/descriptor checks per location.",
+    "Require all 24 rows, preserving selected identity, relocation inventory, partial-call, IO, tamper, restoration and final hash gates."
+  ]
+}

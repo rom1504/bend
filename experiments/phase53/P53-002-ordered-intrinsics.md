@@ -118,3 +118,44 @@ gates.
 A final review removed the obsolete exact-source-arity tail fallback. The
 existing SCC caller already proves complete live saturation and no surplus
 actuals, so omitted erased-only suffixes also receive ordered argument lowering.
+
+## Checked result and causal screen
+
+Ordered02 builds successfully in 61.092 seconds, peaking at 1.513 GB process-tree
+RSS. It passes the original 96 source scenarios, 34 numeric controls, 18 composed
+ordering controls, two genuine overapplication controls, the 26-row JS census
+and all eight maintained compatibility suites. These overlapping scopes remain
+separate. The reference's NaN defect is reported explicitly. Two legacy tests
+needed explicit backend selection after the deliberate default change; their
+original failure and repaired rerun remain preserved.
+
+The unchanged eight-point, 72-sample causal screen takes 57.503 seconds. Corrected
+baseline / TypeScript is 1.207400; ordered02 / TypeScript is 1.130115. The geometric
+speedup is **1.068387**, exceeding the prewritten 1.05 threshold. No point slows
+more than 10%: Morning slows 5.01%, closures64 3.78%. Mandelbrot, local pair,
+edit distance and ray64 improve 1.1350×, 1.1697×, 1.1187× and 1.1468× respectively.
+No spread/drift flags appear under either the screen's 1.25 or the final
+aggregator's stricter 1.20 spread threshold.
+
+This admits the full 45-point comparison; it is not its result or installation.
+The final campaign compares against original direct06, whereas this causal screen
+uses corrected01 with the same runtime and driver as ordered02. No historical
+timings are divided. The [shape census](../../implementation/phase53/generated-shape.md)
+finds 202 removed primitive call sites across four modules; it does not attribute
+dynamic time or prove a particular V8 optimization. All raw screen evidence is
+in `selfhost/build/phase53/screen-checked-ordered02/`, with its complete summary
+at `screen-checked-ordered02-summary.json`.
+
+## Final selection and installation
+
+The complete45-point/23-source campaign passes669 fresh samples. Same-run
+original direct06/TS is1.129266×; ordered02/TS is1.069599×, a1.055785×
+speedup (equal source:1.053305×). All12 baseline regressions remain, none above
+3.4%, and all six descriptive timing flags remain. The worst TS ratio is1.912×;
+this is average near-parity on the maintained corpus, not universal parity.
+
+Ordered02 is installed as the default, with explicit legacy compatibility.
+Release gates pass42+24; installed generic-row acquisition passes; portable
+replay passes3cases/27samples. The final [report](../../implementation/phase53/README.md)
+and [publication index](../../selfhost/tools/performance/phase53/publication.json)
+bind correctness, independent review, measurements and selection separately.

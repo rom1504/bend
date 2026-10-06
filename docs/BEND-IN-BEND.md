@@ -5,42 +5,54 @@ dependent checker, normalizer, interpreter and JavaScript/native emitters in
 Bend. JavaScript handles filesystem/process orchestration, primitives and public
 adapters. Ordinary compilation has no TypeScript fallback.
 
-Phase52 adds the [direct JavaScript backend](../selfhost/docs/direct-javascript.md).
-Use `node cli.mjs FILE --direct-js --run` from `selfhost/`, or
-`node cli.mjs FILE --library --direct-js -o module.mjs` for callable exports.
-Default JavaScript retains the legacy mutable-descriptor interface. Direct06 is
-installed; integrity verification and all 42 legacy plus 18 direct ordinary/relocated
-CLI checks pass.
+[Phase53](../implementation/phase53/README.md) makes the
+[direct JavaScript backend](../selfhost/docs/direct-javascript.md) the workspace
+default for emitted programs/libraries and `--run`. From `selfhost/`, use
+`node cli.mjs FILE --run` or
+`node cli.mjs FILE --library -o module.mjs`. Select `--legacy-js` when a client
+requires mutable function descriptors and the `G` table. Compiler bootstrap
+continues to use its explicit legacy interface; no TypeScript fallback is added.
 
-The [report](../implementation/phase52/README.md),
-[release manifest](../selfhost/dist/release.json),
+Selected ordered02 is installed. Release integrity verification and all 42
+legacy plus 24 default ordinary/relocated CLI checks pass. The [release manifest](../selfhost/dist/release.json),
 [conformance record](../selfhost/CONFORMANCE.md) and
-[benchmark guide](../selfhost/tools/performance/phase52/README.md) define its scope.
-The actual installed API is
-`472da578ff9066413f0a2b8e5c0053b5bc26eae8c3cb343b5b0cbb2a62c03a3a`;
-the separate direct runtime is
-`417d2d47f98116d4eae889ff53132d9255c8a0ffaf047dd497b877f2df0c188a`.
+[benchmark recipes](../selfhost/tools/performance/phase53/PLAN.md) separate these
+obligations. Its selected API is
+`3e3fb8c3bc4c445567696ce62bd95979e36746ddde5bb9e0aad3038fc362c9b9`;
+the corrected direct runtime is
+`c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
 
-The [45-point / 23-source execution comparison](../implementation/phase52/results.md)
-passes all 669 samples and improves **2.631× → 1.124× TypeScript time**, a **2.34×
-speedup**. Equal-source weighting gives 1.129× TypeScript. Twenty-nine points are
-within 10%; seven regress against the previous release. Historical ratios are
-not this fresh paired denominator. This is a maintained-corpus result, not
-universal parity or a compiler-throughput measurement.
+The [full 45-point / 23-source comparison](../implementation/phase53/results.md)
+passes all 669 fresh samples and improves execution time **1.129× → 1.070×
+TypeScript**, a **5.6% speedup**. Equal-source weighting gives 1.078× TypeScript.
+All 12 regressions and six timing flags remain visible; none regresses more than
+3.4%. Ordered prefixes/pending values remove primitive wrappers while preserving
+upstream evaluation order. Its separate causal eight-point screen gains 1.068×.
+These are generated-program measurements, not compiler-throughput timing.
 
-The direct semantic controls pass **95/96** scenarios; the NaN-payload fixture
-still fails its source oracle, and pinned TypeScript fails it differently.
-The maintained direct JS census has 18 runtime passes, four expected compilation
-rejections and four N/A; all eight compatibility suites pass. Analysis limits
-and the numeric-table/global-hook boundary are documented in the direct guide.
-This remains a checked B1 derivative, not a new self-emitted fixed point. Native
-IO.args, broader native/GPU conformance and independent proof validity remain open.
-The upstream pin is unchanged at `018751270e800bc222a93dad7f257083ee53a5f7`.
+The original independent semantic suite now passes **96/96**, plus 34 numeric,
+18 composition and two genuine overapplication controls. The corrected NaN
+fixture returns its original expected 40; pinned TypeScript still returns 1.
+The maintained JS census has 18 runtime passes, four expected compilation
+rejections and four N/A; all eight compatibility suites pass. Counts overlap.
+Analysis bounds and host-hook limits remain explicit. This is a checked B1
+derivative, not a newly established self-emitted fixed point. Native IO.args,
+broader native/GPU conformance and independent proof validity remain open.
+The pin is unchanged at `018751270e800bc222a93dad7f257083ee53a5f7`.
 
-[Source accounting](../implementation/phase52/accounting.md) records **25,790
-physical / 21,235 code Bend lines, 2,957 definitions, 95 types and 101 modules**.
-The new backend adds 1,746 code lines; all 92 old modules are unchanged. Runtimes,
-host tools, experiments and generated images are counted separately.
+[Source accounting](../implementation/phase53/complexity.md) records **26,151
+physical / 21,523 code Bend lines, 3,004 definitions, 99 types and 103 modules**.
+The change adds 361 physical / 288 code lines; all other 100 Phase52 modules remain
+identical. Runtimes, tools, experiments and generated images are separate counts.
+
+## Historical release results: Phase52
+
+[Direct06](../implementation/phase52/README.md) introduced the Bend-written direct
+backend as an opt-in alternative. Its original 45-point campaign measured 1.124×
+TypeScript execution time versus same-run legacy Phase51's 2.631×, a 2.34× speedup.
+All 60 ordinary/relocated CLI checks passed, while its independent semantic suite
+remained 95/96 because of the NaN-payload failure corrected in Phase53. Those
+original observations remain preserved; later timings use fresh denominators.
 
 ## Historical release results: Phase51
 
@@ -369,7 +381,7 @@ npm run build -- /absolute/release-config.json /absolute/new-attempt
 Config fields and selection semantics are documented in the
 [maintained workflow guide](PHASE5_DEVELOPMENT.md). Broad conformance and checked
 self-reproduction are release/integration gates, not every small edit's build.
-The [Phase52 report](../implementation/phase52/README.md) records current
+The [Phase53 report](../implementation/phase53/README.md) records current
 qualification and installation status. The historical [Phase32 release report](../implementation/phase32/release-03.md)
 retains its own evidence, limits and ordinary/relocated CLI closure.
 

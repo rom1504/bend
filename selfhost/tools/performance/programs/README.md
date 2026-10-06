@@ -1,5 +1,12 @@
 # Generated-program execution loop
 
+**Current direct acquisition and comparisons:** use `prepare-direct.py` and the
+explicit Phase37 catalog/Phase53 bundles in [the current recipe](#prepare-a-checked-candidate-once).
+The opening reference description and first `run.py` commands below replay
+closed Phase32 historical defaults; installing a newer compiler does not replace
+those modules. Phase53 publication status is recorded in its
+[publication index](../phase53/publication.json).
+
 Use this suite when optimizing **the JavaScript produced by the compiler**.
 It compares freshly executed outputs from the frozen Phase32 checked03 compiler,
 the pinned upstream TypeScript compiler and, optionally, a prepared candidate.
@@ -83,6 +90,11 @@ rerun the relevant selection with a deeper preset before accepting a small gain.
 These are new protocols: historical Phase28–32 medians are context, never a
 denominator for a current comparison.
 
+Closed `run.py` defaults remain historical frozen bundles; installing a newer
+compiler does not regenerate them or change their selected backend. Use explicit
+`--candidate` and `--baseline` manifests to choose a current comparison. The
+[Phase53 plan](../phase53/PLAN.md) identifies current frozen pairs and gates.
+
 ## Prepare a checked candidate once
 
 Acquire only the set needed for the next experiment. Preparation verifies the
@@ -93,17 +105,43 @@ Changing compiler source requires a new checked attempt; preparation does not
 build it automatically. See the [checked development workflow](../../../../docs/PHASE5_DEVELOPMENT.md).
 
 ```sh
+P53_CATALOG=selfhost/tools/performance/phase37/catalog.json
+P53_BASELINE=selfhost/tools/performance/phase53/bundles/baseline/manifest.json
+P53_CURRENT=selfhost/tools/performance/phase53/bundles/current/manifest.json
+
 # Installed, verified compiler; no compiler build here.
-python3 "$PROGRAMS/prepare.py" --set core --out selfhost/build/programs/candidate-01
+python3 "$PROGRAMS/prepare-direct.py" --backend direct --catalog "$P53_CATALOG" \
+  --set core --out selfhost/build/programs/candidate-01
 
 # Alternatively, a newly built checked attempt.
-python3 "$PROGRAMS/prepare.py" --attempt selfhost/build/my-checked-attempt \
+python3 "$PROGRAMS/prepare-direct.py" --backend direct --catalog "$P53_CATALOG" \
+  --attempt selfhost/build/my-checked-attempt \
   --set core --out selfhost/build/programs/candidate-02
 
-python3 "$PROGRAMS/run.py" --budget 60 --set core \
+# Compare the new acquisition against the matching direct06/TypeScript bundle.
+python3 "$PROGRAMS/run.py" --catalog "$P53_CATALOG" --budget 60 --set core \
+  --baseline "$P53_BASELINE" \
   --candidate selfhost/build/programs/candidate-02/manifest.json \
   --out selfhost/build/programs/compare-02
+
+# Or replay the final published candidate; budgets and cases remain selectable.
+python3 "$PROGRAMS/run.py" --catalog "$P53_CATALOG" --budget 60 --set core \
+  --baseline "$P53_BASELINE" --candidate "$P53_CURRENT" \
+  --out selfhost/build/programs/published-compare-01
 ```
+
+The Phase53 bundle paths above are defined by the
+[publication index](../phase53/publication.json) and are published and runnable. That baseline contains the older original direct06
+checked output plus pinned TypeScript output, not the current installed compiler.
+Use the matching Phase37 catalog for both roles; do not mix those modules with
+the historical generic catalog or default baseline.
+
+`prepare-direct.py` verifies pinned `phase52/prepare-v2.py` and
+`emit-worker-v2.mjs` bytes, then forwards installed (default), `--attempt` and
+`--upstream` selections. It selects direct output explicitly and uses the named
+complete-row observer. Parent receipts retain their original Phase52 producer
+labels: those identify the acquisition method, not a historical compiler image.
+The wrapper refuses legacy selection. No TypeScript compiler fallback is added.
 
 The candidate must contain every selected point. Prepare `--set full` if several
 selections will reuse it. Preparation also accepts `--cases`; it refuses a changed
@@ -188,12 +226,12 @@ Maintainers can create a new one explicitly after agreeing on compiler/source
 identities. The TypeScript checkout must be clean at the catalog pin.
 
 ```sh
-python3 "$PROGRAMS/prepare.py" --role baseline --set full \
+python3 "$PROGRAMS/prepare-direct.py" --backend direct --catalog "$P53_CATALOG" --role baseline --set full \
   --out selfhost/build/programs/reference-bend-NEW
-python3 "$PROGRAMS/prepare.py" --role typescript --set full \
+python3 "$PROGRAMS/prepare-direct.py" --backend direct --catalog "$P53_CATALOG" --role typescript --set full \
   --upstream selfhost/.bootstrap/upstream-phase23 \
   --out selfhost/build/programs/reference-ts-NEW
-python3 "$PROGRAMS/freeze-reference.py" \
+python3 "$PROGRAMS/freeze-reference.py" --catalog "$P53_CATALOG" \
   --baseline selfhost/build/programs/reference-bend-NEW \
   --typescript selfhost/build/programs/reference-ts-NEW \
   --out selfhost/build/programs/reference-bundle-NEW
@@ -220,3 +258,17 @@ The tests use small synthetic modules to check result failures, timeouts,
 provenance rejection, pairing and resource cleanup. They do not benchmark Bend or
 replace the real-corpus runs. With Node outside `PATH`, set
 `PROGRAMS_TEST_NODE=/absolute/path/to/node` for the Python tests.
+
+The original `prepare.py`/`emit-worker.mjs` recipe is historical legacy
+acquisition evidence and remains byte-identical because downstream receipts pin
+its producer hash. Its omitted backend and legacy row observer are incompatible
+with the new installed direct default. To reproduce that old recipe, use its
+matching historical checked attempt/driver and closed source catalog; do not use
+it to acquire the current installed release. Current acquisition uses
+`prepare-direct.py` with explicit direct selection.
+
+```sh
+# Historical recipe only: a matching pre-default legacy driver/attempt is required.
+python3 "$PROGRAMS/prepare.py" --attempt HISTORICAL_LEGACY_ATTEMPT \
+  --set core --out selfhost/build/programs/historical-replay-NEW
+```

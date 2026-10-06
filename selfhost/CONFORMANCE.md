@@ -1,8 +1,40 @@
 # Compiler validation
 
-## Current Phase52 validation
+## Current Phase53 qualification
 
-Selected direct06 is installed. Integrity verification and all **42 legacy plus
+Selected ordered02 passes the [independent semantic qualification](../implementation/phase53/qualification.md)
+and [exact selected-image receipt](tools/performance/phase53/semantic-qualified-ordered02-v1.json).
+The compiler is installed. Release integrity and all 42 legacy plus 24 default
+ordinary/relocated interface checks pass. The new installed direct-acquisition
+entry point also passes the complete four-array row oracle.
+
+| Gate | Result |
+| --- | --- |
+| Original independent source controls | **96/96** candidate; 95/96 pinned TS and differential agreement |
+| Numeric/cold controls | **34/34** candidate; 28/34 TS, with six healthy reference NaN-source failures retained |
+| Composed getter/throw order | **18/18** both roles |
+| Genuine overapplication | **2/2** both roles |
+| Direct JS census | **26/26 agreement**: 18 runtime passes, four expected rejections, four N/A |
+| Maintained compatibility suites | **8/8**, with explicit legacy selection in choice/provenance tests |
+| Full execution benchmark | **45/45 outputs and 669/669 samples**, 1.069599× TS time |
+| Installed/relocated interface | **42 legacy + 24 default checks**, integrity and tamper/restoration |
+
+The fixed NaN fixture still expects40. Candidate 40 is required; reference 1 is a
+separately identified compiler defect, not an accepted candidate value. Expanded
+callback controls also exposed and fixed a previous direct-emitter ordering gap.
+Failed assumptions, original controller versions and the legacy-test routing
+failure remain preserved. Counts overlap and must not be added as unique tests.
+
+API: `3e3fb8c3bc4c445567696ce62bd95979e36746ddde5bb9e0aad3038fc362c9b9`.
+Source: `1b54ede1643a131c1bb7c7b995900da7947b6f21aac71141f50a0f5c8d15899d`.
+Direct runtime: `c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23`.
+The unchanged legacy runtime and upstream pin remain as below. This is a checked
+B1 derivative, not a new self-emitted fixed point. Native/GPU/proof coverage,
+arbitrary host-hook identity and compiler-throughput parity remain separate.
+
+## Historical Phase52 validation
+
+Selected direct06 was installed at its checkpoint. Integrity verification and all **42 legacy plus
 18 direct ordinary/relocated CLI checks pass**. Failed sandbox/controller attempts
 and their exact successful successors are preserved. [Report](../implementation/phase52/README.md),
 [semantic details](../implementation/phase52/conformance.md), and
@@ -11,7 +43,7 @@ from retained default compatibility mode.
 
 - All 29 independent direct fixtures check successfully; **95/96** runtime
   scenarios pass. `f32_table_nan_bits.bend` expects40, while pinned TypeScript
-  returns1 and direct returns39. This failure is unwaived; no full-conformance
+  returns 1 and direct returns39. This failure is unwaived; no full-conformance
   claim follows from the other controls.
 - The maintained direct JS census agrees on all26 rows: **18 runtime passes,
   four expected compilation rejections and four N/A**. These are distinct from

@@ -347,6 +347,54 @@ constructor collisions and first-error order. Reusing the existing scope index
 as though it returned the same event is not justified by these source facts.
 No instrumentation or replacement has been implemented here.
 
+## 9. Remaining constructor search is distinct from Phase55 typed arity recovery
+
+Root's finalized preliminary 25 ms emission-reach profile reports self weights
+`kt` 33.39%, `missing` 30.30%, anonymous `j_found_ctor` 8.09%, and `lookup` 2.73%.
+These sampled frame weights are not predicted savings. The source provides a
+specific explanation for repeated temporary absent records, independently of
+whether every observed sample belongs to that explanation.
+
+`common/queries.bend:91–106`, `j_find_ctor`/`j_found_ctor`, scans every top-level
+book row and calls `lookup(dc(d),name)`. Most function definitions have no
+constructors. `core/term.bend:247`, `missing`, creates a KDef with **two separate
+`atom("Absent")` KTerms**; `lookup` returns this fresh record on an empty child
+list. Finding a constructor late in the book therefore creates absent records
+for earlier owners, not only on an ultimately unsuccessful query. BookCache
+indexes top-level names; constructor names live in owners' `dc` lists, so this
+is not an indexed top-level lookup falsely reporting a missing constructor.
+
+Phase55 already improved `direct/model.bend:106–115`, `jd_raise_typed`/`domain`:
+an annotated matcher normalizes its All domain, then uses owner-specific
+`j_layout_ctor`. [That report](../phase55/arity.md) explicitly retained the old
+global fallback for unknown/unannotated terms. Repeating that proposal would
+miss the remaining source path.
+
+The remaining unconditional route is `common/queries.bend:130`, `j_arm_type`.
+It globally finds the constructor to specialize its telescope even though it
+also normalizes the matcher's input type for its parameters. Direct
+`pattern.bend:123,126` uses it for Nat Zero/Succ rows; lines 163–164 and 181 use
+it for Word and Boolean arms at numeric-row depths. A single literal tree can
+therefore issue many whole-book constructor searches during rendering.
+`jd_raise_head` at `direct/model.bend:128` separately retains the intentional
+unannotated fallback. Ordinary typed constructor emission and general typed
+match emission already use `j_layout_ctor`; do not attribute those normal
+owner hits to this global route without counters.
+
+**Tiny discriminator.** Count global `j_find_ctor` entries by direct caller and
+constructor name, rows examined per query, empty owner lists, and intermediate
+missing results. Separately count `j_layout_ctor` owner successes/global
+fallbacks and `jd_raise` annotated/unannotated branches. Report aggregate counts
+once per reach/final-render stage. This can test whether numeric `j_arm_type`
+queries or arity fallback account for the observed records. Counter hooks on
+`missing` alone cannot distinguish healthy top-level misses from constructor
+search misses. A plausible narrow successor would use the normalized All/ADT
+owner in direct row telescope recovery, retaining existing global fallback and
+checked constructor-name uniqueness. Do not globally share the absent object:
+its allocation profile is evidence for avoiding unnecessary searches, not proof
+that public/internal aliasing contracts permit a reusable mutable sentinel.
+No counters, source edits or target runs were performed.
+
 ## Priority
 
 First correlate emitted-reach and final-emission profiles with section 4's

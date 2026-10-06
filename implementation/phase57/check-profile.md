@@ -2,8 +2,10 @@
 
 Producer: `selfhost/tools/performance/phase57/check-profile.mjs`.
 Static syntax checking passed; the pipeline/oracle and final profile-v2 helper
-have independent static clearance. Final dependency-switch review also passed;
-execution has not occurred. The helper is pinned to
+have independent static clearance. Final dependency-switch review passed, and
+all three root-supervised own-source checks subsequently passed. See
+[profile results](profiles.md) and the archived
+`selfhost/build/phase57/check-profile-analysis01/report.json`. The helper is pinned to
 `f472c5e565827e7a8cfc4181e19dffe61f4485c63a3d137c1315c82e388064f6`.
 The original helper rejected tiny negative V8 sample deltas; v2 preserves raw
 data and explicit accounting, falling back to count-only views if weighted

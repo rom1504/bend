@@ -49,22 +49,48 @@ with TS 20.5952 µs: 15.9% less time in five fresh rounds, 15 correct samples.
 No new full-corpus aggregate. Unchanged point measurements retain dated Phase53
 support; its whole-corpus 1.069599× result stays historical.
 
-## Next work
+## Phase57 investigation and next work
 
-Compiler throughput is now the larger gap. Two-input three-round import+request
-screen: B1 2.84–3.11× TS, direct B2 5.08–5.55× TS, B2 ≈1.79× B1. The checked B1 path
-remains the faster development loop. This is not cold user CLI timing or a universal
-compiler ratio. Follow the recorded warm-base-cache and preflight scope.
+[Report](../implementation/phase57/README.md) ·
+[Recipes](../selfhost/tools/performance/phase57/README.md).
+No compiler source or release change; no PR comment. Two clean matrices cover
+48 processes / 192 checked requests, not 192 distinct language tests.
 
-Within B2 reproduction, emitted reachability 89.03 s and unsplit emission 111.68 s
-are the largest measured pieces. Profile those stages and the actual direct-image
-code before adding caches or global rewrites. These are stage timings, not proven
-internal causes. Guard string/order semantics and retain the fixed-point gate.
+Fresh import+request: B1 2.83–3.13× TS; B2 4.96–5.45× TS. B2 takes 23–30% less
+later-request time than raw upstream-emitted Bend, but about 1.8× B1 time.
+B1 includes extra transforms: equality removes 44–46% of later time, literal
+choices another 17–24%, tail choices another 3.6–5% in an ordered-stage comparison.
+B2 already has native equality. Later requests still warm; no steady-state claim.
 
-Legacy client migration can now build on actual direct B2 qualification, but it
-still requires each maintained client's contract and provenance gates. The public
-legacy JS ABI, seed transforms and native backend are live dependencies. No mass
-legacy deletion is justified by the seven dead helpers or B2 byte equality alone.
+Lexer sampled allocation/request: TS 59 MB, raw 4,385 MB, B1 927 MB, B2 2,178 MB; cumulative
+allocation estimates, not peak memory. All three full-source checks preserve 3,012
+expected unsafe declarations/type acceptance/trust refusal. No kernel proof.
+B2 reproduces exact B3 under 25 ms stage profiling; reach 93.20 s and emission 115.28 s
+are diagnostic times. A first 1 ms capture hit the RSS guard after reach returned;
+its eight completed profiles and failure remain preserved.
+
+Ranked next experiments:
+1. Ordinary literal record fields. Hot kt uses computed constant keys in B2;
+   filtered V8 dumps retain map updates and three runtime property calls. B1's literal
+   boilerplate is simpler. Preserve __proto__ semantics, evaluate unchanged
+   requests, then time a syntax-only ablation before promising gains.
+2. Owner-directed numeric-row constructor queries. j_arm_type still globally
+   scans nested constructor lists; intermediate misses create missing KDef+2
+   KTerms. This differs from Phase55's existing typed-arity shortcut. Count
+   callers/owner visits, preserve uniqueness and the original fallback.
+3. Scalar-origin facts through residual/default numeric bindings. sk_char
+   already has scalar tests but reconstructs temporary Word lists. A switch table
+   alone does not cover its demanded default expression.
+4. Typed literal-choice lowering with exact demand/error/tail boundaries. The
+   B1 effect is measured; the equivalent B2 gain remains unmeasured.
+5. Use counters before changing repeated key serialization, declaration-event
+   scans, substitution or render/scan/render reachability. Do not replace the
+   compiler representation merely on a broad complexity hypothesis.
+
+The public legacy ABI, seed transforms and native backend remain live dependencies.
+Keep checked B1 as the faster development compiler. Program execution performance
+and compiler throughput remain separate measurements; no fresh full-program-corpus
+aggregate was run in this information-gathering phase.
 
 ## Working discipline
 
@@ -73,6 +99,6 @@ gates run once for the selected candidate. Heavy jobs remain serial on CPU3 with
 1 GiB heap, 2 GiB tree RSS, 4 GiB available-memory floor. Agents analyze/review/docs in
 parallel. Keep direct-image generation, source checking and kernel proof distinct.
 Preserve failed attempts and consumed producers; never mutate closed Phase54,
-Phase55 or Phase56 raw archives. New runs use fresh private driver/runtime/cache
+Phase55, Phase56 or Phase57 raw archives. New runs use fresh private driver/runtime/cache
 copies and fresh paths. Retain the Clang environment. Preserve the 103 unrelated
 files and stage explicit paths. No nested shared execution guards.

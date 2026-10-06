@@ -3136,3 +3136,49 @@ Next profile emitted reachability 89.03 s and unsplit emission 111.68 s inside d
 B2 reproduction. Keep checked B1 as the development loop while qualifying legacy
 client migration separately. The baseline timeout, contained profile-processor
 heap failure and corrected fixture-loader failure are preserved. No PR comment.
+
+
+## Phase57 — compiler performance attribution — 2026-10-06
+
+[Design](../design/phase57/compiler-performance-attribution.md),
+[report](../implementation/phase57/README.md),
+[publication](../selfhost/tools/performance/phase57/publication.json).
+Information gathering only: Phase56 string01 remains installed, with no compiler
+source/runtime/driver change and no new generated-program aggregate or PR comment.
+
+Two clean matrices passed 48 fresh processes / 192 checked requests on two inputs.
+B1 import+first request is 2.83–3.13× handwritten TS; B2 is 4.96–5.45×. B2 takes
+23–30% less later-request time than raw upstream-emitted Bend but about 1.8× B1
+time. The ordered B1 stages show native equality removing 44–46% of later time,
+choices another 17–24%, tail choices another 3.6–5%. B2 already has native equality;
+these conditional B1 effects cannot simply be promised for B2. Repeats still warm.
+
+Lexer sampled allocations/request: TS 59 MB, raw 4,385 MB, B1 927 MB, B2 2,178 MB.
+These are cumulative estimated allocations including collected objects, not RSS.
+CPU profiles, allocation stacks, V8 events and exact generated bodies are retained.
+Full-source checks for all three Bend images preserve type acceptance and the
+expected 3,012 unsafe declarations/trust refusal, not kernel proof validity.
+
+A filtered V8 dump confirms B2's constant computed record keys retain map updates
+and three main-path runtime property calls in hot kt. Ordinary B1 literals have
+simpler boilerplates; both allocate, and no optimization gain has yet been measured.
+Full B2 emission reproduces exact 3,896,951-byte B3 under 25 ms stage sampling.
+kt + missing account for 63.683% of reachability and 51.062% of final-emission
+self weights. j_arm_type still globally scans nested constructors, creating many
+intermediate missing records even on successful queries. This is distinct from
+Phase55's already completed typed-arity fast path.
+
+The first 1 ms emission capture hit the RSS guard after reachability returned;
+eight earlier captures and the failed result remain. The lower-rate successor
+uses the same limits and peaks at 1.39 GiB tree RSS. No timing is presented as an
+optimization speedup. All 103 inherited files, seven installed artifacts and
+16,034 closed Phase54–56 files remain exact. All 1,605 Phase57 raw files are
+archived with reopened per-member verification. Pre-publication accounting:
+54.81 minutes elapsed, 25.66 minutes covered by recorded process intervals; the
+remaining time is not classified as waiting.
+
+**Updated frontier:** test ordinary literal record fields with __proto__ controls;
+count and remove redundant constructor-owner probes/miss construction; preserve
+scalar origin through residual numeric bindings; then generalize literal-choice
+lowering. Keep experiments small and independently measured before another large
+representation or emitter rewrite. Phase57 raw writers are closed.

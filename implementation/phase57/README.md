@@ -131,8 +131,66 @@ follow-ups:
 - [Bounded V8 diagnostics](v8-plan.md).
 - [V8 findings](v8-findings.md).
 - [Ordered transformation experiment](transformation-ablation.md).
+- [Full compiler emission profiles](emission.md).
 - [Investigation commands and approximate budgets](../../selfhost/tools/performance/phase57/README.md).
 
-The full-emission diagnostic is being consolidated.
-No production optimization or fresh generated-program speed claim is made by
-this information-gathering phase.
+## Recommended next experiments
+
+1. **Emit ordinary literal field names where equivalent.** This has direct V8
+   evidence in a constructor hot on both workloads, and requires a small emitter
+   change. First use an exact syntax-only diagnostic derivative, special-name
+   controls (especially `__proto__`), and the 20–30-second B1/B2 lexer screen.
+   Measure before promising an overall gain.
+2. **Avoid repeated global constructor queries and intermediate miss objects.**
+   Full emission puts `kt` plus `missing` at roughly 64% of reachability and 51%
+   of final-emission self time weights. Numeric-row `j_arm_type` still searches
+   nested constructor lists globally; even successful late searches create many
+   temporary misses. Count that path separately from Phase55's existing typed
+   arity shortcut. Test known-owner row lookup with the original safe fallback.
+3. **Keep native scalar bits through numeric default bindings.** `sk_char` is a
+   concrete reproducer for temporary Word reconstruction despite scalar tests.
+   Validate literal/mask boundaries, retained binders, partial applications and
+   dependent demand, then measure both allocation and clean compiler requests.
+4. **Generalize literal-choice lowering in Bend.** The existing B1 stage effect
+   is measured at 17–24% less later-request time. Preserve Unit binding, captures,
+   demand/error order and tail boundaries. Treat those B1 gains as evidence for
+   the experiment, not a promised B2 gain.
+5. **Reduce repeated source work where profiles and counters agree.** Separate
+   declaration-event visits, key-serialization/rebuilt-node counts, and repeated
+   emission/reference scanning. Avoid a broad representation rewrite until one
+   of those counts demonstrates the avoidable work and a bounded experiment
+   improves an unchanged semantic workload.
+
+These directions can improve general generated constructs or shared compiler
+operations; they do not depend on recognizing benchmark names. No production
+optimization or fresh generated-program speed claim is made by this
+information-gathering phase.
+
+## Full-emission result and preservation
+
+The [full-emission diagnostic](emission.md) completed and reproduced the exact
+3,896,951-byte B2 image. Reachability took 93.20 s and unsplit final emission
+115.28 s; these remain instrumented timings. The successful worker peaked at
+1.39 GiB process-tree RSS. An earlier 1 ms capture hit the 2 GiB guard during
+profile finalization after reachability returned. Its partial captures and
+failed status are preserved. The successful successor used 25 ms sampling for
+the two large stages under the same limits.
+
+The installed seven release artifacts, all 16,034 files in the closed Phase54–56
+trees, and all 103 inherited unrelated files remain unchanged. Tracked compiler
+source, runtimes and driver retain Phase56 bytes. This phase ran 48 clean workers
+and 192 checked requests across two matrices, three complete source checks, and
+one successful profiled reproduction. Those scopes are separate and overlapping,
+not a new full-language conformance score.
+
+Before archival/publication, the accounting window was 54.81 minutes, with
+25.66 minutes covered by the union of timestamped process receipts. The other
+29.15 minutes include analysis, harness preparation, review, documentation and
+orchestration; the records do not distinguish those from idle time. Agents did
+source analysis, trace interpretation, data analysis and independent review in
+parallel; target execution stayed serial. See the
+[accounting receipt](../../selfhost/tools/performance/phase57/evidence/time-summary.json).
+
+The [publication manifest](../../selfhost/tools/performance/phase57/publication.json)
+links exact measurements and the verified archive of all 1,605 raw files,
+including failed attempts. Restore/replay instructions are in the method guide.

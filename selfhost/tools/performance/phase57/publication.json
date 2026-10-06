@@ -1,0 +1,130 @@
+{
+  "kind": "phase57-compiler-performance-attribution-publication",
+  "complete": true,
+  "compilerChanged": false,
+  "installed": {
+    "attempt": "checked-string01",
+    "api": {
+      "path": "selfhost/dist/typed-api.mjs",
+      "bytes": 1830723,
+      "sha256": "128619779fb5e29138bd33273bc5de6b81f39bdb54c2cebb93e69f3ca63acaea"
+    },
+    "release": {
+      "path": "selfhost/dist/release.json",
+      "bytes": 35733,
+      "sha256": "f9cc1f6492d251186c6f5faeb2c19847247babf02ede34fa48be79ba46b5671d"
+    },
+    "sourceSha256": "5356ec9963db7b300e8cbdf5474328b72150f582df96b01aeea29d6a07868244",
+    "artifact": "equality-derived-b1",
+    "sourceCommit": "8d2f4f0",
+    "upstream": "018751270e800bc222a93dad7f257083ee53a5f7",
+    "directRuntimeSha256": "c328b77360c98489343d4752d4644d93f64de9d697d2c964f5fbae6442a77d23"
+  },
+  "upstreamPRCommentPosted": false,
+  "report": "implementation/phase57/README.md",
+  "cleanMeasurements": {
+    "fourImages": {
+      "path": "selfhost/build/phase57/latency-full01/report.json",
+      "bytes": 712085,
+      "sha256": "887e5fd28d6bd189159ae77f8a13557e045ee56ede88c515f7de3699f0e7561f"
+    },
+    "orderedTransforms": {
+      "path": "selfhost/build/phase57/stages-latency01/report.json",
+      "bytes": 951223,
+      "sha256": "92b84eaf0d84762dbf1e4b9fe6f0e0f5586ebdc1bd3614533ab7c693361fdf3a"
+    },
+    "freshWorkers": 48,
+    "checkedRequests": 192,
+    "fixtures": 2,
+    "steadyStateEstablished": false
+  },
+  "diagnostics": {
+    "allocation": {
+      "path": "selfhost/build/phase57/allocation-analysis01/report.json",
+      "bytes": 1124608,
+      "sha256": "765dda156f3ae6e88619b4111f14fcd221bd2995180bc43859f40b9b1a9a6b05"
+    },
+    "cpu": {
+      "path": "selfhost/build/phase57/cpu-analysis02/report.json",
+      "bytes": 386635,
+      "sha256": "5b759a62dfb43f61445ea16fddc2ceee7bba8a6ff9adfe964eb14b38fe817aa0"
+    },
+    "wholeSourceChecks": {
+      "path": "selfhost/build/phase57/check-profile-analysis01/report.json",
+      "bytes": 469747,
+      "sha256": "5599d37e36cdb25a585ed174de2cae987c35c34be2504563885a8ad34b9b4759"
+    },
+    "v8Trace": {
+      "path": "selfhost/build/phase57/trace-analysis01/report.json",
+      "bytes": 6030021,
+      "sha256": "5a0519db6cf8288c6b514d7b353439aa3ec7212720e4dd0eb8c78ca2434b127c"
+    },
+    "constructorInspection": {
+      "path": "selfhost/build/phase57/kt-inspection01/report.json",
+      "bytes": 3063,
+      "sha256": "47215c74637f08874574d96d4516d461fc8293f0d92b5eca2b51031896af496e"
+    },
+    "fullEmission": {
+      "path": "selfhost/build/phase57/emission-profile02-analysis/report.json",
+      "bytes": 376214,
+      "sha256": "398a873506ffa27b03c26c20f59b2fc35ed9b50e3193576716d8d58e696d15f4"
+    },
+    "partialFailedEmission": {
+      "path": "selfhost/build/phase57/emission-profile01-analysis/report.json",
+      "bytes": 1023403,
+      "sha256": "633a676fde59ad2a05e73a155d2d047a5d7d653ab68e41bd48065fda9762f75f"
+    }
+  },
+  "preservation": {
+    "installedFiles": 7,
+    "closedHistoricalFiles": 16034,
+    "inheritedFiles": 103,
+    "installedAndHistorical": {
+      "path": "selfhost/tools/performance/phase57/evidence/preservation-final.json",
+      "bytes": 1192,
+      "sha256": "ec7d1634762deb54c88b3d3ad849cdd681eb541600fae2489b0c38ede9dc7774"
+    },
+    "inherited": {
+      "path": "selfhost/tools/performance/phase57/evidence/protected-final.json",
+      "bytes": 519,
+      "sha256": "5b0685dbd8dc86d0e476092831b01166e7a8fe7e80aace03430aa0e0e9c40b69"
+    }
+  },
+  "rawArchive": {
+    "archive": {
+      "path": "selfhost/tools/performance/phase57/artifacts/raw/raw-campaign.tar.gz",
+      "bytes": 30344171,
+      "sha256": "089b1a7a663db8f304094fc712fdf96ded5ed7e7a7c3fa479257dcc4c5d667db"
+    },
+    "inventory": {
+      "path": "selfhost/tools/performance/phase57/artifacts/raw/archive.json",
+      "bytes": 303440,
+      "sha256": "17164ebec24b2636fd6b9cc51121f85ae83b418a83b8c0f6bd261eb242668459"
+    },
+    "members": 1605,
+    "uncompressedBytes": 733950172,
+    "reopenedVerified": true,
+    "inputStabilityVerified": true,
+    "writersClosed": true,
+    "scope": "All Phase57 raw files. Prerequisite Phase56 archives remain separate. Restore relative members to an empty inspection tree; do not append new evidence to this closed campaign."
+  },
+  "accounting": {
+    "receipt": {
+      "path": "selfhost/tools/performance/phase57/evidence/time-summary.json",
+      "bytes": 21757,
+      "sha256": "2022aabf50edecfdac790ff418d04de74aecdcc6b483b9d5610fefe9e2a8dbc1"
+    },
+    "elapsedBeforePublicationSeconds": 3288.758313894272,
+    "recordedProcessUnionSeconds": 1539.719812631607,
+    "otherElapsedSeconds": 1749.0385012626648
+  },
+  "limitations": [
+    "Two clean compiler inputs; later requests are still warming, not established steady state.",
+    "Profiles and traces are diagnostic, never pooled into clean timings.",
+    "Sampled cumulative allocations include collected objects and are not retained memory.",
+    "V8 code shapes and source mechanisms do not establish an unimplemented optimization speedup.",
+    "All 3012 compiler definitions remain unsafe; type acceptance and byte reproduction are not kernel proof validity.",
+    "First high-rate emission capture hit the memory guard; successful lower-rate successor kept the same limits.",
+    "No production compiler or generated-program aggregate changed."
+  ]
+}

@@ -333,3 +333,40 @@ special recognition of the lexer or a change to KTerm's layout. Both experiments
 remain proposals: no such derived variant, counter instrumentation or production
 edit has been executed here. Whole-compiler stage profiles are still needed
 before treating the lexer observations as the generation bottleneck.
+
+## Emission-reach hotspot: `missing` repeats the same constructor choice
+
+The emitted-reachability profile also motivates comparing `missing`, alongside
+`kt`. The [new exact extraction](../../selfhost/tools/performance/phase57/static/emission-hot-bodies.md)
+preserves raw/B1/B2 `missing`, `atom`, `j_found_ctor` and `j_find_ctor` bodies;
+the earlier consumed extracts remain unchanged. This is a code-shape explanation
+of the profile's scope, not attribution of its sampled percentages to one syntax.
+
+[`missing`](../../selfhost/src/core/term.bend:247) constructs the same KDef in
+both images: empty name, `Absent` kind, zero arity/templates, two separately
+constructed `atom("Absent")` values, a fresh Nil constructor list, and two false
+flags. B1 has nine ordinary quoted named keys; B2 has nine computed constant
+string keys. Each atom calls `kt`, which contributes eight such keys in B2.
+Thus one source-level `missing` evaluation reaches **25 computed named-key
+evaluations** versus the corresponding ordinary keys in B1. Both evaluate the
+same **eight object literals** transitively: one KDef, two KTerms and five Nils.
+These are source-level evaluations before any JIT allocation elimination, not
+measured physical heap allocations. Neither image shares a singleton absent
+value or omits either atom construction.
+
+This broadens the potential scope of the literal-field syntax experiment: it
+would affect both hot constructors through one general emission rule, without
+changing their fields, fresh identities, argument demand or lookup algorithm.
+It does not establish that computed keys are slow on this V8 version. A clean
+syntax-only ablation must keep the object value expressions and order exact,
+exclude the special `__proto__` key, and leave sharing or sentinel changes out.
+
+The adjacent query code has another, independent difference.
+[`j_find_ctor`](../../selfhost/src/back/common/queries.bend:91) walks definitions
+and calls `lookup(dc(d), name)` before `j_found_ctor`; its broad search exists in
+both images. B1's `j_found_ctor` uses a direct branch and a deferred named jump
+when the result is absent. B2 still constructs two `jd_clo` callbacks and calls
+`kc`. Repeated unsuccessful lookup can therefore expose both construction and
+choice transport. Narrowing the search using proved type/layout information is
+an algorithmic experiment separate from changing literal key syntax or lowering
+known continuations. Static bodies alone do not apportion the hotspot among them.

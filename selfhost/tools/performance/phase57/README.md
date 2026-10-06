@@ -14,9 +14,12 @@ equality/choice transforms to separate their effects.
 
 ## Reuse the preparation
 
-Run from the repository root. Restore the Phase56 and Phase57 archives to fresh
-matching paths in a replay checkout, or make new preparations. Existing closed
-raw directories must not receive new files. Use a new `NEW_*` output each time.
+Run new measurements in a separate replay environment at the recorded repository
+path. Restore the Phase56 prerequisites, initialize a **fresh** Phase57 raw tree,
+then make new preparations. The published Phase57 archive is for read-only
+inspection: do not restore it and append new runs, even under a new subdirectory.
+Its receipts contain absolute identities; portable path remapping is not provided.
+Use a new `NEW_*` output for each replay run.
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 taskset -c 0 python3 selfhost/tools/performance/phase57/latency/run.py selfhost/build/phase57/NEW_PREPARATION --prepare-only
@@ -73,3 +76,13 @@ expected `@unsafe` trust refusal; the latter performs one unchanged full emissio
 and requires B2/B3 byte equality. Neither installs a compiler or creates a checked
 bootstrap sidecar for an emitted image. Saved intermediate images are diagnostic
 derivatives, not new checked builds.
+
+## Durable archive
+
+All 1,605 Phase57 raw files, including failed captures and reader attempts, are
+preserved in [artifacts/raw/raw-campaign.tar.gz](artifacts/raw/raw-campaign.tar.gz).
+[archive.json](artifacts/raw/archive.json) records every member's size/hash and
+the successful reopened verification. Member names are relative to
+`selfhost/build/phase57`; restore only to an empty inspection tree. This archive
+does not duplicate the separately preserved Phase56 prerequisites. The
+[publication manifest](publication.json) links the exact reports and identities.
